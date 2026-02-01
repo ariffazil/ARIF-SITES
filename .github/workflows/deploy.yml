@@ -7,20 +7,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-frontend:
-    name: Deploy Frontend (Cloudflare Pages)
+  deploy-body:
+    name: Deploy BODY (arif-fazil.com)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      # Build and Deploy BODY (arif-fazil.com)
-      - name: Build BODY (arif-fazil.com)
+      - name: Build BODY
         run: |
           cd body
           npm ci
@@ -29,15 +25,22 @@ jobs:
           cp public/*.png dist/ 2>/dev/null || true
 
       - name: Deploy BODY to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ariffazil
-          directory: body/dist
+          command: pages deploy body/dist --project-name=ariffazil --branch=main
 
-      # Build and Deploy SOUL (apex.arif-fazil.com)
-      - name: Build SOUL (apex.arif-fazil.com)
+  deploy-soul:
+    name: Deploy SOUL (apex.arif-fazil.com)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build SOUL
         run: |
           cd soul
           npm ci
@@ -46,50 +49,56 @@ jobs:
           cp public/*.png dist/ 2>/dev/null || true
 
       - name: Deploy SOUL to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: apex
-          directory: soul/dist
+          command: pages deploy soul/dist --project-name=apex --branch=main
 
-      # Build and Deploy DOCS (arifos.arif-fazil.com)
-      - name: Build DOCS (arifos.arif-fazil.com)
+  deploy-docs:
+    name: Deploy DOCS (arifos.arif-fazil.com)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build DOCS
         run: |
           cd docs
           npm ci
           npm run build
 
       - name: Deploy DOCS to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: arifos
-          directory: docs/dist
+          command: pages deploy docs/dist --project-name=arifos --branch=main
 
   verify:
     name: Verify Sites Online
-    needs: deploy-frontend
+    needs: [deploy-body, deploy-soul, deploy-docs]
     runs-on: ubuntu-latest
     steps:
-      - name: Check BODY (arif-fazil.com)
-        run: curl -sf https://arif-fazil.com > /dev/null && echo "BODY ONLINE" || echo "BODY check failed"
+      - name: Wait for propagation
+        run: sleep 15
 
-      - name: Check SOUL (apex.arif-fazil.com)
-        run: curl -sf https://apex.arif-fazil.com > /dev/null && echo "SOUL ONLINE" || echo "SOUL check failed"
-
-      - name: Check DOCS (arifos.arif-fazil.com)
-        run: curl -sf https://arifos.arif-fazil.com > /dev/null && echo "DOCS ONLINE" || echo "DOCS check failed"
-
-      - name: Alignment Report
+      - name: Check all sites
         run: |
           echo "========================================"
-          echo "  TRINITY FRONTEND — ALIGNMENT REPORT"
+          echo "  TRINITY FRONTEND — DEPLOYMENT CHECK"
           echo "========================================"
-          echo "  BODY:  https://arif-fazil.com         (Cloudflare Pages)"
-          echo "  SOUL:  https://apex.arif-fazil.com    (Cloudflare Pages)"
-          echo "  DOCS:  https://arifos.arif-fazil.com  (Cloudflare Pages)"
+          for site in "https://arif-fazil.com BODY" "https://apex.arif-fazil.com SOUL" "https://arifos.arif-fazil.com DOCS"; do
+            url=$(echo $site | cut -d' ' -f1)
+            name=$(echo $site | cut -d' ' -f2)
+            if curl -sf --max-time 10 "$url" > /dev/null; then
+              echo "  $name: ONLINE  ($url)"
+            else
+              echo "  $name: CHECK   ($url) — may need a minute"
+            fi
+          done
           echo "========================================"
           echo "  DITEMPA BUKAN DIBERI"
           echo "========================================"

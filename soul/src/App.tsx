@@ -735,11 +735,11 @@ function App() {
         <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md' : ''}`}>
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-center gap-2 py-4">
-              <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-red-500/20 text-red-400 text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-red-400" /> BODY
+              <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-orange-500/20 text-orange-400 text-sm font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-orange-400" /> BODY
               </a>
-              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full bg-blue-500/20 text-blue-400 text-sm font-medium hover:bg-blue-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-400" /> MIND
+              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-colors flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-cyan-400" /> MIND
               </a>
               <a href="https://apex.arif-fazil.com" className="px-4 py-2 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-2 border border-amber-500/50">
                 <span className="w-2 h-2 rounded-full bg-amber-400" /> SOUL
@@ -754,7 +754,7 @@ function App() {
         <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20">
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
             <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-8">
-              <a href="https://arif-fazil.com" className="hover:text-orange-400 transition-colors">arifOS</a>
+              <a href="https://arif-fazil.com" className="hover:text-orange-400 transition-colors">Arif Fazil</a>
               <span>/</span>
               <span className="text-amber-400">APEX Constitutional Canon</span>
             </div>

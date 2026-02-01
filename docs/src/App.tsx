@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { 
-  BookOpen, 
-  Cpu, 
-  Shield, 
+import {
+  BookOpen,
+  Cpu,
+  Shield,
   Activity,
   Code,
   Terminal,
@@ -22,8 +22,9 @@ import {
   Search,
   Lightbulb,
   Scale,
-  Users
-  // Clock
+  Users,
+  AlertTriangle,
+  ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -47,102 +48,136 @@ const FLOORS = [
   { id: 'F13', name: 'Sovereign', desc: 'Human override', icon: Users, color: 'green' },
 ];
 
-// MCP Tools data — 7 canonical tools from codebase/mcp/core/tool_registry.py
+// MCP Tools data — v55.1 Explicit Tool Architecture (9 core tools)
+// Legacy _init_/_agi_/_asi_/_apex_/_vault_/_trinity_/_reality_ deprecated — removal in v56.0 (Phoenix-72)
 const MCP_TOOLS = [
   {
-    name: '_init_',
+    name: 'init_reboot',
     stage: '000',
-    description: 'Session initialization with identity verification, injection detection, budget allocation',
-    params: ['action', 'query', 'session_id', 'user_token'],
+    description: 'Gate & injection defense (F11/F12). Session bootstrap with identity verification and budget allocation',
+    params: ['session_id', 'user_token', 'nonce'],
     actions: ['init', 'gate', 'reset', 'validate', 'authorize'],
-    returns: 'session_id, authority_level, budget_allocated, injection_check_passed',
-    color: 'blue'
+    returns: 'session_id, authority_level, budget_allocated, injection_score',
+    color: 'blue',
+    engine: 'ADAM'
   },
   {
-    name: '_agi_',
-    stage: '111–333',
-    description: 'Deep reasoning engine (Δ Delta). Implements SENSE → THINK → FORGE',
-    params: ['action', 'query', 'context', 'session_id', 'lane'],
-    actions: ['sense', 'think', 'reflect', 'reason', 'atlas', 'forge', 'physics', 'full'],
-    returns: 'entropy_delta, omega_0, precision, vote, floor_scores',
-    color: 'cyan'
+    name: 'agi_sense',
+    stage: '111',
+    description: 'Input parsing & intent detection. First stage of the epistemic pipeline',
+    params: ['query', 'context', 'session_id'],
+    actions: ['parse', 'detect_intent', 'extract_entities'],
+    returns: 'parsed_input, intent, entities, confidence',
+    color: 'cyan',
+    engine: 'ARIF'
   },
   {
-    name: '_asi_',
-    stage: '444–777',
-    description: 'Safety engine (Ω Omega). Implements EMPATHY → ALIGN → SOCIETY',
-    params: ['action', 'query', 'reasoning', 'agi_context', 'session_id'],
-    actions: ['evidence', 'empathize', 'evaluate', 'act', 'witness', 'stakeholder', 'full'],
-    returns: 'empathy_kappa_r, peace_squared, reversibility_score, vote',
-    color: 'rose'
+    name: 'agi_think',
+    stage: '222',
+    description: 'Hypothesis generation with high entropy. Divergent reasoning and pattern exploration',
+    params: ['query', 'parsed_input', 'session_id'],
+    actions: ['hypothesize', 'explore', 'brainstorm'],
+    returns: 'hypotheses, entropy_delta, candidate_count',
+    color: 'cyan',
+    engine: 'ARIF'
   },
   {
-    name: '_apex_',
+    name: 'agi_reason',
+    stage: '333',
+    description: 'Deep logic chains with low entropy. Convergent reasoning and proof construction',
+    params: ['query', 'hypotheses', 'context', 'session_id'],
+    actions: ['reason', 'prove', 'refute', 'synthesize'],
+    returns: 'conclusion, omega_0, precision, floor_scores, vote',
+    color: 'cyan',
+    engine: 'ARIF'
+  },
+  {
+    name: 'asi_empathize',
+    stage: '444',
+    description: 'Stakeholder modeling (F6). Maps affected parties and impact vectors',
+    params: ['query', 'reasoning', 'session_id'],
+    actions: ['model_stakeholders', 'assess_impact', 'map_harm'],
+    returns: 'stakeholder_map, empathy_kappa_r, impact_vectors',
+    color: 'rose',
+    engine: 'ADAM'
+  },
+  {
+    name: 'asi_align',
+    stage: '555',
+    description: 'Constitutional alignment check. Validates against all 13 floors',
+    params: ['query', 'reasoning', 'stakeholder_map', 'session_id'],
+    actions: ['check_floors', 'validate_alignment', 'score'],
+    returns: 'floor_results, alignment_score, violations, peace_squared',
+    color: 'rose',
+    engine: 'ADAM'
+  },
+  {
+    name: 'asi_insight',
+    stage: '666',
+    description: 'Risk & impact foresight. Second-order consequence analysis',
+    params: ['query', 'alignment_result', 'session_id'],
+    actions: ['forecast', 'risk_assess', 'recommend'],
+    returns: 'risk_profile, reversibility_score, recommendations, vote',
+    color: 'rose',
+    engine: 'ADAM'
+  },
+  {
+    name: 'apex_verdict',
     stage: '888',
-    description: 'Judicial engine (Ψ Psi). 9-paradox equilibrium solver, final verdicts',
-    params: ['action', 'query', 'verdict', 'agi_context', 'asi_context', 'session_id'],
-    actions: ['eureka', 'judge', 'forge', 'proof', 'seal', 'full'],
-    returns: 'final_verdict, trinity_score, paradox_scores, equilibrium',
-    color: 'violet'
+    description: 'Final constitutional judgment. 9-paradox equilibrium solver, renders SEAL/VOID/SABAR/888_HOLD',
+    params: ['query', 'agi_context', 'asi_context', 'session_id'],
+    actions: ['judge', 'seal', 'proof'],
+    returns: 'final_verdict, trinity_score, paradox_scores, merkle_root',
+    color: 'violet',
+    engine: 'APEX'
   },
   {
-    name: '_vault_',
-    stage: '999',
-    description: 'Immutable ledger with Merkle-tree sealing. Implements F1 Amanah (Trust)',
-    params: ['action', 'verdict', 'decision_data', 'target', 'session_id'],
-    actions: ['seal', 'list', 'read', 'write', 'propose'],
-    returns: 'merkle_root, seal_id, integrity_hash, status',
-    color: 'emerald'
-  },
-  {
-    name: '_trinity_',
-    stage: '000→999',
-    description: 'Complete metabolic loop. Single-call: AGI → ASI → APEX → VAULT',
-    params: ['query', 'session_id', 'auto_seal', 'context'],
-    actions: ['full'],
-    returns: 'agi_result, asi_result, apex_result, vault_result, final_verdict',
-    color: 'amber'
-  },
-  {
-    name: '_reality_',
+    name: 'reality_search',
     stage: 'External',
-    description: 'Fact-checking via external sources. Implements F7 Humility',
-    params: ['query', 'session_id'],
-    actions: ['check'],
-    returns: 'verified, confidence, sources, caveats',
-    color: 'orange'
+    description: 'Grounding via external data (F2). Fact-checking against real-world sources',
+    params: ['query', 'session_id', 'sources'],
+    actions: ['search', 'verify', 'cross_check'],
+    returns: 'verified, confidence, sources, caveats, recency',
+    color: 'orange',
+    engine: 'ARIF'
   },
 ];
 
-// API Endpoints
+// API Endpoints — served from aaamcp.arif-fazil.com (Railway)
 const ENDPOINTS = [
   { path: '/health', method: 'GET', desc: 'System health check', status: 'stable' },
-  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation', status: 'stable' },
+  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 explicit tools)', status: 'stable' },
   { path: '/sse', method: 'GET', desc: 'Server-sent events stream', status: 'stable' },
   { path: '/dashboard', method: 'GET', desc: 'Live system dashboard', status: 'stable' },
   { path: '/docs', method: 'GET', desc: 'API documentation (OpenAPI)', status: 'stable' },
 ];
 
+const API_BASE = 'aaamcp.arif-fazil.com';
+
 // Code examples
 const INSTALL_CODE = `pip install arifos`;
 const USAGE_CODE = `from arifos import TrinityClient
 
-# Initialize with constitutional constraints
+# Initialize — connects to aaamcp.arif-fazil.com/mcp
 client = TrinityClient(
     floors=["F1", "F2", "F3", "F7", "F13"],
     require_witness=True
 )
 
-# Query with full governance
+# v55.1 explicit tools — parallel AGI || ASI
 response = client.ask(
     "Analyze this data",
     tri_witness_threshold=0.95
-)`;
+)
+
+# Direct tool invocation
+sense = client.tool("agi_sense", query="parse input")
+verdict = client.tool("apex_verdict", agi_context=..., asi_context=...)`;
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.1' });
+  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.1-SEAL' });
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   // const [activeTab, setActiveTab] = useState('overview');
 
@@ -156,9 +191,9 @@ function App() {
 
   // Check actual system status
   useEffect(() => {
-    fetch('https://arifos.arif-fazil.com/health')
-      .then(res => res.ok ? setSystemStatus({ online: true, version: 'v55.1' }) : setSystemStatus({ online: false, version: 'v55.1' }))
-      .catch(() => setSystemStatus({ online: false, version: 'v55.1' }));
+    fetch(`${API_BASE}/health`)
+      .then(res => res.ok ? setSystemStatus({ online: true, version: 'v55.1-SEAL' }) : setSystemStatus({ online: false, version: 'v55.1-SEAL' }))
+      .catch(() => setSystemStatus({ online: false, version: 'v55.1-SEAL' }));
   }, []);
 
   const copyToClipboard = (code: string, id: string) => {
@@ -220,6 +255,9 @@ function App() {
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-1.5">
                   <Globe className="w-3 h-3" /> BODY
                 </a>
+                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
+                  <Cpu className="w-3 h-3" /> MIND
+                </a>
                 <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-1.5">
                   <Sparkles className="w-3 h-3" /> SOUL
                 </a>
@@ -245,6 +283,7 @@ function App() {
             <a href="#api" className="block text-gray-400 hover:text-white">API</a>
             <div className="flex gap-2 pt-2">
               <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">BODY</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">MIND</a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs">SOUL</a>
             </div>
           </div>
@@ -270,9 +309,14 @@ function App() {
             AI That Can't Lie to You
           </p>
 
+          {/* Architecture Tag */}
+          <p className="text-sm text-gray-500 mb-3 font-mono">
+            Trinity Parallel Architecture (Async AGI || ASI)
+          </p>
+
           {/* Description */}
           <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
-            Constitutional AI governance framework with 13 safety floors, 7 MCP tools, and
+            Constitutional AI governance framework with 13 safety floors, 9 explicit MCP tools, and
             cryptographic verification. Every decision is measured, witnessed, and sealed.
           </p>
 
@@ -379,13 +423,13 @@ function App() {
                 <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-3">
                   <BookOpen className="w-5 h-5 text-blue-400" />
                 </div>
-                <CardTitle className="text-lg">Mind (AGI)</CardTitle>
+                <CardTitle className="text-lg">Mind — ARIF Engine</CardTitle>
                 <CardDescription>Deep reasoning & pattern recognition</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-400">
-                  Sense → Think → Reflect → Forge. The intelligence layer that processes 
-                  complex patterns and generates hypotheses.
+                  agi_sense → agi_think → agi_reason. Runs async in parallel with Heart.
+                  The epistemic pipeline that parses, hypothesizes, and proves.
                 </p>
               </CardContent>
             </Card>
@@ -395,13 +439,13 @@ function App() {
                 <div className="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center mb-3">
                   <Shield className="w-5 h-5 text-rose-400" />
                 </div>
-                <CardTitle className="text-lg">Heart (ASI)</CardTitle>
+                <CardTitle className="text-lg">Heart — ADAM Engine</CardTitle>
                 <CardDescription>Safety & empathy assessment</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-400">
-                  Evidence → Empathize → Evaluate → Act. The safety layer ensuring 
-                  alignment with human values and ethical constraints.
+                  asi_empathize → asi_align → asi_insight. Runs async in parallel with Mind.
+                  The safety pipeline ensuring alignment with human values.
                 </p>
               </CardContent>
             </Card>
@@ -411,13 +455,13 @@ function App() {
                 <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center mb-3">
                   <Scale className="w-5 h-5 text-violet-400" />
                 </div>
-                <CardTitle className="text-lg">Soul (APEX)</CardTitle>
+                <CardTitle className="text-lg">Soul — APEX Engine</CardTitle>
                 <CardDescription>Judicial consensus & sealing</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-400">
-                  Renders SEAL, SABAR, VOID, or 888_HOLD verdicts based on tri-witness 
-                  consensus and cryptographic verification.
+                  apex_verdict collapses parallel Mind + Heart results. Renders SEAL, SABAR,
+                  VOID, or 888_HOLD with cryptographic verification.
                 </p>
               </CardContent>
             </Card>
@@ -433,10 +477,10 @@ function App() {
               <Terminal className="w-4 h-4 text-amber-400" />
               <span className="text-sm text-amber-400">Model Context Protocol</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">7 MCP Tools</h2>
+            <h2 className="text-4xl font-bold mb-4">9 Explicit Tools</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              The complete metabolic loop from initialization through cryptographic sealing.
-              Each tool enforces constitutional constraints.
+              v55.1 Explicit Tool Architecture. Each tool maps to a specific stage in the
+              constitutional metabolic loop. Mind and Heart run in parallel, collapsing at Soul.
             </p>
           </div>
 
@@ -449,7 +493,14 @@ function App() {
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <code className={`text-lg font-mono ${colors.text}`}>{tool.name}</code>
-                      <Badge variant="outline" className="text-xs">{tool.stage}</Badge>
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="text-xs">{tool.stage}</Badge>
+                        <Badge className={`text-xs ${
+                          tool.engine === 'ARIF' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
+                          tool.engine === 'ADAM' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' :
+                          'bg-violet-500/20 text-violet-400 border-violet-500/30'
+                        }`}>{tool.engine}</Badge>
+                      </div>
                     </div>
                     <CardDescription className="text-gray-400">
                       {tool.description}
@@ -488,23 +539,63 @@ function App() {
             })}
           </div>
 
-          {/* Pipeline Visualization */}
+          {/* Pipeline Visualization — Trinity Parallel */}
           <div className="mt-10 p-6 rounded-xl bg-gray-900/30 border border-gray-800">
-            <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Full Pipeline (_trinity_)</p>
-            <div className="flex items-center gap-2 flex-wrap justify-center">
-              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">_init_</Badge>
+            <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Trinity Parallel Pipeline (Async AGI || ASI)</p>
+
+            {/* Gate */}
+            <div className="flex items-center gap-2 flex-wrap justify-center mb-4">
+              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">init_reboot</Badge>
               <ChevronRight className="w-4 h-4 text-gray-600" />
-              <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">_agi_</Badge>
-              <ChevronRight className="w-4 h-4 text-gray-600" />
-              <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30">_asi_</Badge>
-              <ChevronRight className="w-4 h-4 text-gray-600" />
-              <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">_apex_</Badge>
-              <ChevronRight className="w-4 h-4 text-gray-600" />
-              <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">_vault_</Badge>
             </div>
+
+            {/* Parallel lanes */}
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <div className="p-3 rounded-lg bg-cyan-500/5 border border-cyan-500/20">
+                <p className="text-xs text-cyan-400 font-mono mb-2">ARIF (Mind) — async</p>
+                <div className="flex items-center gap-1 flex-wrap">
+                  <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">agi_sense</Badge>
+                  <ArrowRight className="w-3 h-3 text-cyan-600" />
+                  <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">agi_think</Badge>
+                  <ArrowRight className="w-3 h-3 text-cyan-600" />
+                  <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">agi_reason</Badge>
+                </div>
+              </div>
+              <div className="p-3 rounded-lg bg-rose-500/5 border border-rose-500/20">
+                <p className="text-xs text-rose-400 font-mono mb-2">ADAM (Heart) — async</p>
+                <div className="flex items-center gap-1 flex-wrap">
+                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_empathize</Badge>
+                  <ArrowRight className="w-3 h-3 text-rose-600" />
+                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_align</Badge>
+                  <ArrowRight className="w-3 h-3 text-rose-600" />
+                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_insight</Badge>
+                </div>
+              </div>
+            </div>
+
+            {/* Collapse at APEX */}
+            <div className="flex items-center gap-2 flex-wrap justify-center">
+              <ChevronRight className="w-4 h-4 text-gray-600" />
+              <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">apex_verdict</Badge>
+            </div>
+
             <p className="text-sm text-gray-500 text-center mt-4">
-              _trinity_ orchestrates the complete 000→999 loop. _reality_ provides external fact-checking at any stage.
+              Mind and Heart run in parallel, collapsing at Soul for final verdict. reality_search provides external grounding at any stage.
             </p>
+          </div>
+
+          {/* Deprecation Notice */}
+          <div className="mt-6 p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
+            <div className="flex items-start gap-3">
+              <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="text-sm font-medium text-amber-400 mb-1">Migration Notice — Phoenix-72</p>
+                <p className="text-sm text-gray-400">
+                  Legacy tools (<code className="text-gray-300">_init_</code>, <code className="text-gray-300">_agi_</code>, <code className="text-gray-300">_asi_</code>, <code className="text-gray-300">_apex_</code>, <code className="text-gray-300">_vault_</code>, <code className="text-gray-300">_trinity_</code>, <code className="text-gray-300">_reality_</code>) are deprecated.
+                  Support ends in v56.0. Update your MCP config to use the explicit 9-tool names above.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -521,7 +612,7 @@ function App() {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold">API Endpoints</h2>
-                  <p className="text-sm text-gray-500">Live at arifos.arif-fazil.com</p>
+                  <p className="text-sm text-gray-500">Live at {API_BASE}</p>
                 </div>
               </div>
 
@@ -660,7 +751,7 @@ function App() {
       {/* Footer */}
       <footer className="py-12 border-t border-gray-800 relative">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+          <div className="grid md:grid-cols-5 gap-8 mb-12">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-4">
@@ -670,7 +761,7 @@ function App() {
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance framework with 13 floors and cryptographic verification.
+                Constitutional AI governance. 13 floors, 9 explicit tools, Trinity Parallel.
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-600">MIND Layer</span>
@@ -693,10 +784,10 @@ function App() {
             <div>
               <h4 className="font-medium mb-4">Live Services</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="https://arifos.arif-fazil.com/health" className="hover:text-white transition-colors">Health Check</a></li>
-                <li><a href="https://arifos.arif-fazil.com/sse" className="hover:text-white transition-colors">MCP SSE</a></li>
-                <li><a href="https://arifos.arif-fazil.com/dashboard" className="hover:text-white transition-colors">Dashboard</a></li>
-                <li><a href="https://arifos.arif-fazil.com/docs" className="hover:text-white transition-colors">OpenAPI</a></li>
+                <li><a href={`https://${API_BASE}/health`} className="hover:text-white transition-colors">Health Check</a></li>
+                <li><a href={`https://${API_BASE}/mcp`} className="hover:text-white transition-colors">MCP Endpoint</a></li>
+                <li><a href={`https://${API_BASE}/sse`} className="hover:text-white transition-colors">MCP SSE</a></li>
+                <li><a href={`https://${API_BASE}/dashboard`} className="hover:text-white transition-colors">Dashboard</a></li>
               </ul>
             </div>
 
@@ -723,6 +814,15 @@ function App() {
                     PyPI <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-medium mb-4">M2M Endpoints</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li><a href="https://apex.arif-fazil.com/llms.txt" className="hover:text-white transition-colors font-mono text-xs">llms.txt</a></li>
+                <li><a href="https://apex.arif-fazil.com/api/v1/floors.json" className="hover:text-white transition-colors font-mono text-xs">floors.json</a></li>
+                <li><a href={`https://${API_BASE}/mcp`} className="hover:text-white transition-colors font-mono text-xs">MCP endpoint</a></li>
               </ul>
             </div>
           </div>

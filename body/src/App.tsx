@@ -61,13 +61,13 @@ function App() {
             {/* Trinity nav */}
             <div className="hidden md:flex items-center gap-2">
               <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium border border-orange-500/40">
-                Me
+                BODY
               </a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-blue-400 text-xs font-medium hover:bg-blue-500/10 transition-colors">
-                Docs
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
+                MIND
               </a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
-                Theory
+                SOUL
               </a>
             </div>
 
@@ -86,9 +86,9 @@ function App() {
             <a href="#writing" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Writing</a>
             <Separator className="bg-gray-800" />
             <div className="flex gap-2 pt-1">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs border border-orange-500/40">Me</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-blue-400 text-xs">Docs</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs">Theory</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs border border-orange-500/40">BODY</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs">MIND</a>
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs">SOUL</a>
             </div>
           </div>
         )}
@@ -120,7 +120,12 @@ function App() {
 
           {/* One-liner */}
           <p className="text-xl text-center text-gray-400 mb-3">
-            Geologist. Economist. Learning AI.
+            Geoscientist. Economist. Building AI safety.
+          </p>
+
+          {/* Hook */}
+          <p className="text-sm text-center text-orange-400/80 font-medium mb-1">
+            I build blowout preventers for artificial intelligence.
           </p>
 
           {/* Location */}
@@ -131,11 +136,12 @@ function App() {
 
           {/* Bio */}
           <p className="text-center text-gray-300 leading-relaxed max-w-2xl mx-auto mb-10">
-            I'm an exploration geoscientist at <span className="text-white font-medium">PETRONAS</span>.
-            My day job is reading what the earth remembers — interpreting subsurface data,
-            mapping frontier basins, and figuring out where to drill next.
-            I studied geology and economics, and lately I've been teaching myself
-            how AI works and how to make sure it behaves.
+            I'm an exploration geoscientist at <span className="text-white font-medium">PETRONAS</span> with
+            12+ years reading what the earth remembers — interpreting subsurface data,
+            managing risk where failure has real consequences, and making decisions with
+            incomplete information. I apply that same discipline to AI: building governance
+            systems that treat intelligence as a high-pressure resource that must be piped,
+            cooled, and verified before it's safe for use.
           </p>
 
           {/* Social links */}
@@ -171,22 +177,23 @@ function App() {
 
           <div className="space-y-6 text-gray-300 leading-relaxed">
             <p>
-              I grew up curious about two things: how the earth works and how money moves.
-              That led me to study both — a degree in geology and another in economics.
-              They seem unrelated until you realise both are about reading messy data
-              and making decisions with incomplete information.
+              I studied geology and economics — two fields that seem unrelated until
+              you realise both are about reading messy data and making high-stakes
+              decisions with incomplete information.
             </p>
             <p>
-              At PETRONAS, I work in exploration geoscience — studying rock formations,
-              interpreting seismic data, and helping decide where to invest in new wells.
-              It's part science, part detective work, part risk management.
+              At PETRONAS, I work in exploration geoscience — interpreting seismic data,
+              evaluating frontier basins, and helping decide where to invest in new wells.
+              In this world, a wrong decision doesn't just cost money. It's part science,
+              part detective work, part risk management with real physical consequences.
             </p>
             <p>
-              Outside work, I've been learning about AI — not just how to use it,
-              but how it should be governed. The more I learned, the more I realised
-              nobody was building the "safety rules" the way I'd want them.
-              So I started building my own, as a side project called{' '}
-              <a href="https://arifos.arif-fazil.com" className="text-orange-400 hover:text-orange-300 underline underline-offset-2">arifOS</a>.
+              That background shaped how I think about AI safety. In Silicon Valley, a
+              "crash" means the server goes down. In energy, a "crash" means people get
+              hurt. I built{' '}
+              <a href="https://arifos.arif-fazil.com" className="text-orange-400 hover:text-orange-300 underline underline-offset-2">arifOS</a>{' '}
+              because I wanted AI systems held to the same rigorous safety standards
+              I grew up with — 13 checks that every decision has to pass before it executes.
             </p>
           </div>
         </div>
@@ -240,14 +247,14 @@ function App() {
                 <div className="w-10 h-10 rounded-lg bg-blue-500/15 flex items-center justify-center mb-4">
                   <Bot className="w-5 h-5 text-blue-400" />
                 </div>
-                <h3 className="font-semibold text-white mb-2">AI (Learning)</h3>
+                <h3 className="font-semibold text-white mb-2">AI Governance</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Teaching myself how AI systems work — from LLMs to governance frameworks.
-                  Built arifOS as a hands-on way to learn and contribute.
+                  Applying industrial safety thinking to AI systems. Built arifOS —
+                  an open-source governance framework with 13 constitutional floors.
                 </p>
                 <div className="mt-4 flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs border-gray-700 text-gray-500">Self-taught</Badge>
-                  <Badge variant="outline" className="text-xs border-gray-700 text-gray-500">Building</Badge>
+                  <Badge variant="outline" className="text-xs border-gray-700 text-gray-500">arifOS</Badge>
+                  <Badge variant="outline" className="text-xs border-gray-700 text-gray-500">Open Source</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -269,14 +276,15 @@ function App() {
                     <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs">Side project</Badge>
                   </div>
                   <p className="text-gray-300 leading-relaxed mb-4">
-                    An AI governance system — a set of safety rules that sit between an AI and
-                    its decisions. Think of it as a building code for AI: 13 checks that every
-                    action has to pass before it executes. I built it because I wanted to
-                    understand AI safety by actually building something, not just reading about it.
+                    An AI governance framework — 13 safety checks that sit between an AI and its
+                    decisions. Think of it as a building code for intelligence: every action
+                    passes through constitutional floors before it executes. Not magic —
+                    engineering. The same approach we use to prevent blowouts in wells,
+                    applied to prevent blowouts in AI.
                   </p>
                   <p className="text-gray-400 text-sm mb-6">
-                    It's open source, written in Python, and available as an MCP server
-                    that plugs into tools like Claude.
+                    Open source, written in Python, deployed as an MCP server with 9 explicit
+                    governance tools. Currently at v55.1-SEAL.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <a href="https://arifos.arif-fazil.com">
@@ -343,7 +351,7 @@ function App() {
             Muhammad Arif bin Fazil
           </p>
           <p className="text-gray-600 text-sm mb-6">
-            Geologist · Economist · Building AI governance
+            Geoscientist · Economist · AI Governance Architect
           </p>
 
           <div className="flex items-center justify-center gap-4 mb-8 flex-wrap">
@@ -367,13 +375,13 @@ function App() {
           {/* Ecosystem - subtle */}
           <div className="flex items-center justify-center gap-3">
             <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/15 text-orange-400 text-xs font-medium border border-orange-500/30">
-              Me
+              BODY
             </a>
-            <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-blue-400 text-xs font-medium hover:bg-blue-500/10 transition-colors">
-              Docs
+            <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
+              MIND
             </a>
             <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
-              Theory
+              SOUL
             </a>
           </div>
         </div>
