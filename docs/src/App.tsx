@@ -251,6 +251,7 @@ function App() {
               <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">13 Floors</a>
               <a href="#mcp" className="text-sm text-gray-400 hover:text-white transition-colors">MCP Tools</a>
               <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
+              <a href="#runtime" className="text-sm text-gray-400 hover:text-white transition-colors">Runtime</a>
               <div className="flex items-center gap-2 ml-4">
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-1.5">
                   <Globe className="w-3 h-3" /> BODY
@@ -281,6 +282,7 @@ function App() {
             <a href="#floors" className="block text-gray-400 hover:text-white">13 Floors</a>
             <a href="#mcp" className="block text-gray-400 hover:text-white">MCP Tools</a>
             <a href="#api" className="block text-gray-400 hover:text-white">API</a>
+            <a href="#runtime" className="block text-gray-400 hover:text-white">Runtime</a>
             <div className="flex gap-2 pt-2">
               <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">BODY</a>
               <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">MIND</a>
@@ -748,6 +750,60 @@ function App() {
         </div>
       </section>
 
+      {/* Runtime & Infrastructure */}
+      <section id="runtime" className="py-16 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-2">Runtime</h2>
+          <p className="text-gray-400 text-sm mb-8">Infrastructure and deployment details for the Trinity ecosystem.</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Frontend */}
+            <Card className="bg-gray-900/30 border-gray-800">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-cyan-400" />
+                  Frontend (Trinity Sites)
+                </CardTitle>
+                <CardDescription>Static SPAs served globally</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li className="flex justify-between"><span>Provider</span><span className="text-white">Cloudflare Pages</span></li>
+                  <li className="flex justify-between"><span>Regions</span><span className="text-white">Global CDN (300+ PoPs)</span></li>
+                  <li className="flex justify-between"><span>Build</span><span className="text-white">React + Vite, GitHub Actions CI</span></li>
+                  <li className="flex justify-between"><span>TLS</span><span className="text-white">Cloudflare Universal SSL</span></li>
+                  <li className="flex justify-between"><span>Headers</span><span className="text-white">HSTS, CSP, X-Frame-Options</span></li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Backend */}
+            <Card className="bg-gray-900/30 border-gray-800">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-base flex items-center gap-2">
+                  <Server className="w-4 h-4 text-amber-400" />
+                  Backend (arifOS Runtime)
+                </CardTitle>
+                <CardDescription>MCP server and governance engine</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li className="flex justify-between"><span>Provider</span><span className="text-white">Railway</span></li>
+                  <li className="flex justify-between"><span>Region</span><span className="text-white">US West</span></li>
+                  <li className="flex justify-between"><span>Runtime</span><span className="text-white">Python 3.12 + FastAPI</span></li>
+                  <li className="flex justify-between"><span>Protocol</span><span className="text-white">MCP (SSE + Streamable HTTP)</span></li>
+                  <li className="flex justify-between"><span>Redundancy</span><span className="text-white">Single instance, auto-restart</span></li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+
+          <p className="text-xs text-gray-600 mt-4">
+            Build provenance available at <code className="text-gray-500">/build-info.json</code> on each site — includes git SHA, branch, and build timestamp.
+          </p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-12 border-t border-gray-800 relative">
         <div className="max-w-7xl mx-auto px-4">
@@ -778,6 +834,7 @@ function App() {
                 <li><a href="#floors" className="hover:text-white transition-colors">13 Floors</a></li>
                 <li><a href="#mcp" className="hover:text-white transition-colors">MCP Tools</a></li>
                 <li><a href="#api" className="hover:text-white transition-colors">API Reference</a></li>
+                <li><a href="#runtime" className="hover:text-white transition-colors">Runtime</a></li>
               </ul>
             </div>
 

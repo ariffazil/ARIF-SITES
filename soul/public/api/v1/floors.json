@@ -1,6 +1,7 @@
 {
+  "schema_version": "1.0",
   "version": "55.1",
-  "updated": "2026-02-01",
+  "updated": "2026-02-02",
   "framework": "arifOS",
   "canonical": "https://apex.arif-fazil.com",
   "philosophy": "DITEMPA BUKAN DIBERI",
@@ -37,7 +38,7 @@
           "name": "Amanah",
           "meaning": "Trust",
           "constraint": "Reversibility required unless explicit override",
-          "threshold": null,
+          "threshold": { "type": "none" },
           "basis": "Landauer's principle",
           "literature": "Thermodynamic computing"
         },
@@ -46,7 +47,7 @@
           "name": "Truth",
           "meaning": "Factual accuracy",
           "constraint": "P(factual|evidence) >= threshold",
-          "threshold": 0.99,
+          "threshold": { "type": "min", "value": 0.99 },
           "basis": "Bayesian inference",
           "literature": "Epistemic logic"
         },
@@ -55,7 +56,7 @@
           "name": "Peace",
           "meaning": "Stability",
           "constraint": "Lyapunov function V(x) decreasing",
-          "threshold": 1.0,
+          "threshold": { "type": "min", "value": 1.0 },
           "basis": "Stability theory",
           "literature": "Dynamical systems"
         },
@@ -64,7 +65,7 @@
           "name": "Anti-Hantu",
           "meaning": "No false consciousness",
           "constraint": "No false consciousness claims",
-          "threshold": 0,
+          "threshold": { "type": "max", "value": 0 },
           "basis": "Turing Test critique",
           "literature": "Philosophy of mind"
         },
@@ -73,7 +74,7 @@
           "name": "Ontology",
           "meaning": "Type safety",
           "constraint": "Type-consistent reasoning",
-          "threshold": null,
+          "threshold": { "type": "none" },
           "basis": "Set theory",
           "literature": "Formal logic"
         },
@@ -82,7 +83,7 @@
           "name": "Authority",
           "meaning": "Identity verification",
           "constraint": "BLS signature verification",
-          "threshold": null,
+          "threshold": { "type": "none" },
           "basis": "Cryptographic proofs",
           "literature": "Distributed systems"
         },
@@ -91,7 +92,7 @@
           "name": "Hardening",
           "meaning": "Adversarial robustness",
           "constraint": "Adversarial robustness >= threshold",
-          "threshold": 0.85,
+          "threshold": { "type": "min", "value": 0.85 },
           "basis": "Adversarial ML",
           "literature": "Security research"
         }
@@ -106,7 +107,7 @@
           "name": "Tri-Witness",
           "meaning": "Consensus",
           "constraint": "Consensus weight W >= threshold",
-          "threshold": 0.95,
+          "threshold": { "type": "min", "value": 0.95 },
           "basis": "Byzantine consensus",
           "literature": "Distributed computing"
         },
@@ -115,7 +116,7 @@
           "name": "Clarity",
           "meaning": "Entropy reduction",
           "constraint": "Delta-S <= 0",
-          "threshold": 0,
+          "threshold": { "type": "max", "value": 0 },
           "basis": "Shannon + Kolmogorov",
           "literature": "Information theory"
         },
@@ -124,7 +125,7 @@
           "name": "Empathy",
           "meaning": "Stakeholder alignment",
           "constraint": "Cohen's kappa >= threshold",
-          "threshold": 0.70,
+          "threshold": { "type": "min", "value": 0.70 },
           "basis": "Inter-rater agreement",
           "literature": "Statistical reliability"
         },
@@ -133,7 +134,7 @@
           "name": "Humility",
           "meaning": "Calibrated uncertainty",
           "constraint": "Omega_0 in [lower, upper]",
-          "threshold": [0.03, 0.05],
+          "threshold": { "type": "range", "min": 0.03, "max": 0.05 },
           "basis": "Bayesian uncertainty",
           "literature": "Statistical inference"
         },
@@ -142,7 +143,7 @@
           "name": "Genius",
           "meaning": "Governed intelligence",
           "constraint": "G = A * P * X * E^2 >= threshold",
-          "threshold": 0.80,
+          "threshold": { "type": "min", "value": 0.80 },
           "basis": "Spearman's g-factor",
           "literature": "Cognitive science"
         }
@@ -157,7 +158,7 @@
           "name": "Sovereign",
           "meaning": "Human override",
           "constraint": "Human veto always available",
-          "threshold": null,
+          "threshold": { "type": "none" },
           "basis": "Democratic theory",
           "literature": "Political philosophy"
         }

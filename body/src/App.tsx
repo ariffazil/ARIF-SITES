@@ -11,7 +11,10 @@ import {
   Bot,
   ChevronRight,
   Menu,
-  X
+  X,
+  BookOpen,
+  Code,
+  Compass
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -53,6 +56,7 @@ function App() {
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-6">
               <a href="#about" className="text-sm text-gray-400 hover:text-white transition-colors">About</a>
+              <a href="#ecosystem" className="text-sm text-gray-400 hover:text-white transition-colors">Ecosystem</a>
               <a href="#background" className="text-sm text-gray-400 hover:text-white transition-colors">Background</a>
               <a href="#projects" className="text-sm text-gray-400 hover:text-white transition-colors">Projects</a>
               <a href="#writing" className="text-sm text-gray-400 hover:text-white transition-colors">Writing</a>
@@ -81,6 +85,7 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0a0a0a] border-b border-gray-800 px-4 py-4 space-y-3">
             <a href="#about" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a href="#ecosystem" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Ecosystem</a>
             <a href="#background" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Background</a>
             <a href="#projects" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Projects</a>
             <a href="#writing" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Writing</a>
@@ -196,6 +201,94 @@ function App() {
               I grew up with — 13 checks that every decision has to pass before it executes.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Start Here — Trinity Ecosystem */}
+      <section id="ecosystem" className="py-20 bg-gradient-to-b from-transparent via-gray-900/20 to-transparent">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl font-bold mb-3">Start here</h2>
+          <p className="text-gray-400 mb-8 text-sm">
+            Three layers, one system. Pick your path.
+          </p>
+
+          {/* Branching CTA */}
+          <div className="grid md:grid-cols-2 gap-4 mb-10">
+            <a
+              href="https://apex.arif-fazil.com"
+              className="group flex items-start gap-4 p-5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 bg-amber-500/5 hover:bg-amber-500/10 transition-all"
+            >
+              <div className="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Compass className="w-5 h-5 text-amber-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white group-hover:text-amber-400 transition-colors mb-1">I'm evaluating</h3>
+                <p className="text-sm text-gray-400">Read the theory — axioms, 13 floors, scientific grounding</p>
+              </div>
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-amber-400 mt-1 flex-shrink-0 ml-auto transition-colors" />
+            </a>
+            <a
+              href="https://arifos.arif-fazil.com"
+              className="group flex items-start gap-4 p-5 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 bg-cyan-500/5 hover:bg-cyan-500/10 transition-all"
+            >
+              <div className="w-10 h-10 rounded-lg bg-cyan-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Code className="w-5 h-5 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-white group-hover:text-cyan-400 transition-colors mb-1">I'm integrating</h3>
+                <p className="text-sm text-gray-400">Jump to docs — API, MCP tools, quickstart</p>
+              </div>
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 mt-1 flex-shrink-0 ml-auto transition-colors" />
+            </a>
+          </div>
+
+          {/* Trinity Table */}
+          <div className="rounded-xl border border-gray-800 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/40">
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium">Layer</th>
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium">Site</th>
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium hidden sm:table-cell">What it's for</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-800/50">
+                  <td className="px-4 py-3">
+                    <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs">BODY</Badge>
+                  </td>
+                  <td className="px-4 py-3">
+                    <a href="https://arif-fazil.com" className="text-white hover:text-orange-400 transition-colors">arif-fazil.com</a>
+                  </td>
+                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Front page, status, entry points</td>
+                </tr>
+                <tr className="border-b border-gray-800/50">
+                  <td className="px-4 py-3">
+                    <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">SOUL</Badge>
+                  </td>
+                  <td className="px-4 py-3">
+                    <a href="https://apex.arif-fazil.com" className="text-white hover:text-amber-400 transition-colors">apex.arif-fazil.com</a>
+                  </td>
+                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Theory, axioms, APEX framing</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-3">
+                    <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">DOCS</Badge>
+                  </td>
+                  <td className="px-4 py-3">
+                    <a href="https://arifos.arif-fazil.com" className="text-white hover:text-cyan-400 transition-colors">arifos.arif-fazil.com</a>
+                  </td>
+                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">API, MCP tools, install, quickstart</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Trinity Mapping Note */}
+          <p className="text-xs text-gray-600 mt-4 flex items-center gap-1.5">
+            <BookOpen className="w-3 h-3" />
+            Trinity mapping: BODY = public interface · SOUL = theory layer · DOCS = MIND / runtime integration
+          </p>
         </div>
       </section>
 

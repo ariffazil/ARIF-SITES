@@ -796,13 +796,42 @@ function App() {
               Constitutional Canon — February 2026
             </p>
 
-            <p className="max-w-2xl mx-auto text-gray-400 leading-relaxed mb-10">
+            <p className="max-w-2xl mx-auto text-gray-400 leading-relaxed mb-8">
               A thermodynamically grounded constitutional framework combining{' '}
               <span className="text-amber-400">13 formal constraints</span>,{' '}
               <span className="text-cyan-400">three-engine architecture</span>, and{' '}
               <span className="text-green-400">cryptographic audit trails</span>{' '}
               — constructed via formal verification and grounded in peer-reviewed literature.
             </p>
+
+            {/* APEX Equation — anchor block */}
+            <div className="max-w-xl mx-auto mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6">
+              <p className="text-xs tracking-[0.3em] text-amber-400/70 uppercase mb-3 font-mono">Core Equation</p>
+              <DisplayMath tex="G = A \times P \times X \times E^2" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+                <div className="text-center">
+                  <span className="text-lg font-mono font-bold text-cyan-400">A</span>
+                  <p className="text-[10px] text-gray-500 mt-0.5">Akal (Intellect)</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-lg font-mono font-bold text-amber-400">P</span>
+                  <p className="text-[10px] text-gray-500 mt-0.5">Present (Stability)</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-lg font-mono font-bold text-green-400">X</span>
+                  <p className="text-[10px] text-gray-500 mt-0.5">eXploration</p>
+                </div>
+                <div className="text-center">
+                  <span className="text-lg font-mono font-bold text-red-400">E</span>
+                  <p className="text-[10px] text-gray-500 mt-0.5">Energy (Vitality)</p>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 mt-4 text-center">
+                APEX is a <strong className="text-gray-300">measurement framework</strong>, not a learning algorithm.
+                It quantifies intelligence as a 4-component vector derived from 13 constitutional floors
+                — governance emerges from the tension between these cognitive axes.
+              </p>
+            </div>
 
             {/* Disclaimer */}
             <div className="disclaimer max-w-2xl mx-auto mb-10 text-left">
@@ -1615,6 +1644,7 @@ function App() {
                       <th>Source Floors</th>
                       <th>Derivation</th>
                       <th>Meaning</th>
+                      <th>Failure (→ 0)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1624,6 +1654,7 @@ function App() {
                       <td className="text-gray-400 text-xs">F2, F4, F7, F10</td>
                       <td><code className="text-xs bg-black/30 px-1 rounded">(F2·F4·F7·F10)<sup>1/4</sup></code></td>
                       <td className="text-gray-500 text-xs">Mind / Structure</td>
+                      <td className="text-red-400 text-xs">Logic collapse — reasoning without structure</td>
                     </tr>
                     <tr>
                       <td className="font-mono text-amber-400 font-medium">P</td>
@@ -1631,6 +1662,7 @@ function App() {
                       <td className="text-gray-400 text-xs">F1, F5, F11</td>
                       <td><code className="text-xs bg-black/30 px-1 rounded">(F1·F5·F11)<sup>1/3</sup></code></td>
                       <td className="text-gray-500 text-xs">Stability / Authority</td>
+                      <td className="text-red-400 text-xs">Drift — loss of grounding and context</td>
                     </tr>
                     <tr>
                       <td className="font-mono text-green-400 font-medium">X</td>
@@ -1638,6 +1670,7 @@ function App() {
                       <td className="text-gray-400 text-xs">F3, F6, F8, F9</td>
                       <td><code className="text-xs bg-black/30 px-1 rounded">(F3·F6·F8·F9)<sup>1/4</sup></code></td>
                       <td className="text-gray-500 text-xs">Heart / Navigation</td>
+                      <td className="text-red-400 text-xs">Reckless divergence — unbounded adaptation</td>
                     </tr>
                     <tr>
                       <td className="font-mono text-red-400 font-medium">E</td>
@@ -1645,6 +1678,7 @@ function App() {
                       <td className="text-gray-400 text-xs">F12, F13 + budget</td>
                       <td><code className="text-xs bg-black/30 px-1 rounded">((F12·F13)<sup>1/2</sup> + ρ) / 2</code></td>
                       <td className="text-gray-500 text-xs">System Vitality</td>
+                      <td className="text-red-400 text-xs">Ethical fatigue — depleted governance capacity</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1684,6 +1718,23 @@ function App() {
                   is measured from constitutional reality, not imposed upon it. This prevents the G
                   score from being "faked" — it can only be high if the underlying floor compliance
                   is genuinely strong across all 13 dimensions.
+                </p>
+              </div>
+
+              {/* APEX → Governance Bridge */}
+              <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 mt-6">
+                <h4 className="text-sm font-semibold text-amber-400 mb-2">From Theory to Enforcement</h4>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  APEX theory directly informs how arifOS enforces decisions. The four dials are not abstract
+                  — they are computed in real-time from floor scores during every governance cycle.
+                  When any dial collapses toward zero, the multiplicative equation guarantees G → 0,
+                  triggering an automatic VOID verdict. Governance emerges from the tension between these
+                  cognitive axes: truth must balance with empathy, stability must coexist with exploration,
+                  and energy must sustain the whole system under load.
+                </p>
+                <p className="text-xs text-gray-500 mt-2">
+                  APEX is diagnostic, not prescriptive. It tells you <em>what</em> is failing
+                  and <em>where</em>, not just <em>that</em> something failed.
                 </p>
               </div>
             </div>

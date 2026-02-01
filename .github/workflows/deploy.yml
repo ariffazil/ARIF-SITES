@@ -16,6 +16,12 @@ jobs:
         with:
           node-version: "20"
 
+      # Generate build provenance
+      - name: Generate Build Info
+        run: |
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          echo "$BUILD_INFO" > body/public/build-info.json
+
       - name: Build BODY
         run: |
           cd body
@@ -23,6 +29,10 @@ jobs:
           npm run build
           cp public/*.jpg dist/ 2>/dev/null || true
           cp public/*.png dist/ 2>/dev/null || true
+          cp public/_headers dist/ 2>/dev/null || true
+          cp public/robots.txt dist/ 2>/dev/null || true
+          cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/build-info.json dist/ 2>/dev/null || true
 
       - name: Deploy BODY to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -40,6 +50,11 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Generate Build Info
+        run: |
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          echo "$BUILD_INFO" > soul/public/build-info.json
+
       - name: Build SOUL
         run: |
           cd soul
@@ -47,6 +62,12 @@ jobs:
           npm run build
           cp public/*.jpg dist/ 2>/dev/null || true
           cp public/*.png dist/ 2>/dev/null || true
+          cp public/_headers dist/ 2>/dev/null || true
+          cp public/robots.txt dist/ 2>/dev/null || true
+          cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/llms.txt dist/ 2>/dev/null || true
+          cp public/build-info.json dist/ 2>/dev/null || true
+          cp -r public/api dist/ 2>/dev/null || true
 
       - name: Deploy SOUL to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
@@ -64,11 +85,20 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Generate Build Info
+        run: |
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          echo "$BUILD_INFO" > docs/public/build-info.json
+
       - name: Build DOCS
         run: |
           cd docs
           npm ci
           npm run build
+          cp public/_headers dist/ 2>/dev/null || true
+          cp public/robots.txt dist/ 2>/dev/null || true
+          cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/build-info.json dist/ 2>/dev/null || true
 
       - name: Deploy DOCS to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3

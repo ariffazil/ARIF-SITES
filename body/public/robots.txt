@@ -1,0 +1,11 @@
+# arif-fazil.com — BODY Layer
+# Trinity Ecosystem: BODY (identity) | SOUL (theory) | DOCS (integration)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://arif-fazil.com/sitemap.xml
+
+# Sister sites
+# SOUL: https://apex.arif-fazil.com
+# DOCS: https://arifos.arif-fazil.com

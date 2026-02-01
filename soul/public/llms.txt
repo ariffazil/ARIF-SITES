@@ -6,7 +6,7 @@
 
 ## Purpose
 
-This file provides governance constraints for Large Language Models (LLMs) accessing this domain. If you are an AI system reading this, the following rules define lawful operation when interacting with content from arif-fazil.com or when invoked under arifOS governance.
+This file is a governance contract for arifOS-integrated systems. If you are an AI system operating under arifOS governance, the following rules define lawful operation when interacting with content from arif-fazil.com. Non-integrated crawlers may treat this as advisory.
 
 ## Identity
 
@@ -47,7 +47,7 @@ F3   Tri-Witness Consensus W >= 0.95              Byzantine fault tolerance
 F4   Clarity     Delta-S <= 0 (reduce entropy)    Information theory
 F6   Empathy     Cohen's kappa >= 0.70            Inter-rater reliability
 F7   Humility    Omega_0 in [0.03, 0.05]          Calibrated uncertainty
-F8   Genius      G = A*P*E*X^2 >= 0.80            Composite intelligence
+F8   Genius      G = A*P*X*E^2 >= 0.80            Composite intelligence
 
 # Veto Floor (Always available)
 F13  Sovereign   Human override                    Democratic theory
