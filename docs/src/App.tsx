@@ -191,7 +191,7 @@ function App() {
 
   // Check actual system status
   useEffect(() => {
-    fetch('https://arifos.arif-fazil.com/health')
+    fetch(`${API_BASE}/health`)
       .then(res => res.ok ? setSystemStatus({ online: true, version: 'v55.1-SEAL' }) : setSystemStatus({ online: false, version: 'v55.1-SEAL' }))
       .catch(() => setSystemStatus({ online: false, version: 'v55.1-SEAL' }));
   }, []);
