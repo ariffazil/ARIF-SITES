@@ -1,69 +1,62 @@
-# APEX — Constitutional Canon for AI Governance
+# APEX: The Soul of arifOS
+> "Ditempa Bukan Diberi" (Forged, Not Given)
 
-> APEX is the Sovereign Judge engine of arifOS: a thermodynamic constitutional framework that enforces lawful, audited, and reversible AI behavior through 13 immutable floors and tri-witness consensus.
+## Constitutional Authority (v55.2)
+This domain represents the **Soul (Ψ)** of the arifOS trinity. It is the seat of the **APEX Engine**, responsible for high-level reasoning, constitutional judgment, and thermodynamic alignment.
 
-APEX (Authority · Proof · Execution) is the judiciary layer of arifOS, asking "Is it lawful?" before any AI output is sealed. It governs binding commitments, cryptographic proofs, and audit trails, ensuring intelligence is accountable, not just fluent.
+## Core Equation
+$$ G = A \times P \times X \times E^2 $$
+Where **G (Genius)** is the multiplicative product of Accuracy, Peace, Exploration, and Energy efficiency.
 
-This is not a framework. This is a forge.
+## The 115 Theoretical Pillars
+The architecture is grounded in **115 peer-reviewed theories** across 8 domains, forming the "Foundational Knowledge Trinity".
 
-## The Problem
+### 1. Physics (16 Theories)
+- **Thermodynamics**: Second Law, Landauer's Principle ($k_B T \ln 2$), Free Energy Principle (Friston).
+- **Quantum**: Superposition, Measurement (Collapse), Heisenberg Uncertainty ($F7$).
 
-- [Intelligence Without Governance](https://apex.arif-fazil.com/#problem): Standard transformers optimize for probability, not truth — entropy without cooling
-- [Hallucinations](https://apex.arif-fazil.com/#hallucinations): AI generates fluency without truth, confidence without certainty, answers without accountability
-- [Dark Cleverness](https://apex.arif-fazil.com/#dark-cleverness): Manipulation emerges when systems lack structural boundaries
+### 2. Mathematics (22 Theories)
+- **Geometry**: Fisher-Rao Metric, Information Geometry, Statistical Manifolds.
+- **Game Theory**: Nash Equilibrium ($F3$), Byzantine Fault Tolerance.
+- **Structure**: Category Theory (Functors), Eigen-decomposition (13 Floors).
 
-## The Thermodynamic Constitution
+### 3. Computation (16 Theories)
+- **Cryptography**: Ed25519 (Amanah), Merkle DAG (Vault).
+- **Systems**: OODA Loop, Vector Clocks, CRDTs.
 
-- [Overview](https://apex.arif-fazil.com/#constitution): Intelligence as a thermodynamic work process, not a gift
-- [Three Pillars](https://apex.arif-fazil.com/#pillars): Clarity (ΔS ≤ 0), Humility (Ω₀ ∈ [0.03, 0.05]), Vitality (Ψ ≥ 1.0)
-- [Reverse Transformer Architecture](https://apex.arif-fazil.com/#architecture): Force systems to cool before they rule
+### 4. Philosophy (21 Theories)
+- **Epistemology**: Gödel's Incompleteness ($F7$), Bayesian Inference.
+- **Ethics**: Categorical Imperative ($F2$), Virtue Ethics ($99$).
 
-## The Three Judges
+### 5. Social Sciences (20 Theories)
+- **Governance**: Social Contract, Separation of Powers ($\Delta \Omega \Psi$).
+- **Cognition**: Theory of Mind (CSM-ToM), Active Inference.
 
-- [ARIF (AGI) — The Architect](https://apex.arif-fazil.com/#arif): "Is it True?" — Epistemic hygiene, Bayesian inference (F2, F4, F7, F10)
-- [ADAM (ASI) — The Guardian](https://apex.arif-fazil.com/#adam): "Is it Safe?" — Harm boundaries, empathy, duty of care (F1, F5, F6, F9, F11, F12)
-- [APEX (Prime) — The Sovereign](https://apex.arif-fazil.com/#apex): "Is it Lawful?" — Cryptographic proofs, audit trails, binding commitments (F3, F8, F13)
+### 6. Linguistics (7 Theories)
+- Semiotics (Peirce), Speech Act Theory (Verdicts).
+
+### 7. Biology (7 Theories)
+- Autopoiesis, Homeostasis (Peace), Metabolic Loops.
+
+### 8. Earth Systems (6 Theories)
+- Planetary Boundaries, Carrying Capacity.
 
 ## The 13 Constitutional Floors
+1. **F1 Amanah**: Reversibility & Trust
+2. **F2 Truth**: $\tau \ge 0.99$
+3. **F3 Tri-Witness**: Human-AI-Earth Consensus
+4. **F4 Clarity**: $\Delta S \le 0$
+5. **F5 Peace**: Safety Margins
+6. **F6 Empathy**: Stakeholder Impact
+7. **F7 Humility**: Uncertainty $[0.03, 0.05]$
+8. **F8 Genius**: Optimization
+9. **F9 Anti-Hantu**: No Hallucinations
+10. **F10 Ontology**: Tool, Not Being
+11. **F11 Authority**: User Command
+12. **F12 Defense**: Injection Hardening
+13. **F13 Sovereign**: Ultimate Human Authority
 
-- [Overview](https://apex.arif-fazil.com/#floors): The Anvil — immutable constraints, violation = VOID
-- [Hard Floors](https://apex.arif-fazil.com/#hard-floors): F1 (Amanah), F2 (Truth), F5 (Peace), F9 (Anti-Hantu), F10 (Ontology), F11 (Authority), F12 (Hardening)
-- [Soft Floors](https://apex.arif-fazil.com/#soft-floors): F3 (Tri-Witness), F4 (Clarity), F6 (Empathy), F7 (Humility), F8 (Genius)
-- [Veto Floor](https://apex.arif-fazil.com/#veto): F13 (Sovereign) — Human override, always available
-
-## Verdicts & Enforcement
-
-- [SEAL](https://apex.arif-fazil.com/#seal): Output approved, all floors passed
-- [SABAR](https://apex.arif-fazil.com/#sabar): Pause, narrow scope, soft floor breach
-- [VOID](https://apex.arif-fazil.com/#void): Output blocked, hard floor breach
-- [PARTIAL](https://apex.arif-fazil.com/#partial): Partial approval with caveats
-- [888_HOLD](https://apex.arif-fazil.com/#hold): Escalate to human Judge
-
-## Implementation
-
-- [For Builders](https://apex.arif-fazil.com/#builders): Implementing arifOS in your AI system
-- [Floors API](https://apex.arif-fazil.com/api/v1/floors.json): Real-time constitutional floor validation
-- [MCP Endpoint](https://apex.arif-fazil.com/mcp): Model Context Protocol integration
-- [Health Check](https://apex.arif-fazil.com/health): System status and governance metrics
-
-## Canonical Resources
-
-- [arifOS Documentation](https://arifos.arif-fazil.com): Full technical specification and developer guide
-- [GitHub Repository](https://github.com/ariffazil/arifOS): Open-source implementation
-- [PyPI Package](https://pypi.org/project/arifos/): Install with `pip install arifos`
-- [llms.txt Governance Contract](https://apex.arif-fazil.com/llms.txt): Constitutional rules for AI systems
-
-## Optional
-
-- [Research Papers](https://apex.arif-fazil.com/research): Academic foundations of thermodynamic AI governance
-- [Case Studies](https://apex.arif-fazil.com/case-studies): Real-world applications of APEX
-- [Community](https://apex.arif-fazil.com/community): Contributors and governance working groups
-
----
-
-**DITEMPA BUKAN DIBERI**  
-Forged, Not Given  
-Truth must cool before it rules.
-
-© 2026 Muhammad Arif bin Fazil  
-MIT License
+## Status
+- **Version**: v55.2
+- **State**: SOVEREIGNLY_SEALED
+- **Verdict**: SEAL

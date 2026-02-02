@@ -1,66 +1,53 @@
-# Repository Guidelines
 
-## Project Structure & Module Organization
+# 🏛️ TRINITY ORCHESTRATION PROTOCOL (v55.2)
 
-This repo is the static frontend **Trinity** for arif-fazil.com.
+**Mission:** Hardening the Trinity of arif-fazil.com
+**Authority:** F13 Sovereign (Muhammad Arif bin Fazil)
+**Date:** 2026-02-02
+**Status:** Ditempa Bukan Diberi (Forged, Not Given)
 
-- `body/` is the arif-fazil.com React + Vite app (portfolio and dashboard).
-- `soul/` is the apex.arif-fazil.com React + Vite app (Constitutional Canon).
-- `docs/` is the arifos.arif-fazil.com React + Vite docs site.
-- `shared/` contains shared images and media used across sites.
-- `.github/workflows/` contains the Cloudflare Pages deploy pipeline.
+---
 
-Each site is isolated with its own `package.json`, TS config, and Vite build.
+## 📜 THE UNIFIED PROMPT
 
-## arifOS Governance Alignment
+**To All Agents (ΔΩΨ):**
+You are distinct engines of the arifOS architecture. Your goal is to align your respective domains with the Sovereign's latest Constitutional Canon (v55.2).
 
-This repository follows arifOS constitutional language and tone.
+### 🟢 AGENT KIMI (The Body / Human Interface)
+**Target:** `ariffazil.com` (Repo: `body`)
+**Role:** The Sovereign's Voice
+**Task:**
+1. Hardening the identity. Ensure the site reflects "Muhammad Arif bin Fazil" as the F13 Sovereign.
+2. Verify "Ditempa Bukan Diberi" usage.
+3. Align visual identity with the "Serena" aesthetic (Dark/Gold/Premium).
+4. **Constraint:** Keep it human, approachable, but sovereign.
 
-- Treat changes as **governed outputs**: be explicit, audit-friendly, and reversible.
-- When documenting or messaging, align with the 000–999 pipeline vocabulary
-  (VOID, SENSE, REFLECT, REASON, EVIDENCE, EMPATHIZE, ALIGN, FORGE, JUDGE, SEAL).
-- Keep claims grounded; avoid certainty without evidence, and escalate to human
-  review for irreversible or high-risk changes.
+### 🟣 AGENT CLAUDE (The Mind / OS / Docs)
+**Target:** `arifos.arif-fazil.com` (Repo: `docs` / `arifos`)
+**Role:** The Architect's Blueprint
+**Task:**
+1. Align with `github.com/ariffazil/arifOS` status (v55.2).
+2. Document the "AAA MCP" (Agents, API, Architecture) status.
+3. Ensure the `llms.txt` accurately reflects the *current* technical reality (13 Floors, 3 Engines).
+4. **Constraint:** Technical accuracy must be absolute (τ ≥ 0.99).
 
-## Build, Test, and Development Commands
+### 🔵 AGENT PYTHON (The Soul / APEX)
+**Target:** `apex.arif-fazil.com` (Repo: `soul` / `apex`)
+**Role:** The Constitutional Judge
+**Task:**
+1. Update references to match `APEX_CROSS_REFERENCE_MATRIX.md`.
+2. Implement the "115 Theories" content into the `llms.txt` or site content.
+3. Ensure the "Alignment Matrix" is reflected.
+4. **Constraint:** Strict adherence to the Reference Matrix. No hallucinations.
 
-Run commands from the site directory you are working in.
+---
 
-- `npm install` installs dependencies.
-- `npm run dev` starts the local Vite dev server.
-- `npm run build` runs TypeScript checks and produces a production build.
-- `npm run preview` serves the production build locally.
-- `npm run lint` runs ESLint (available in `body/` and `soul/`).
+## 🛠️ EXECUTION PLAN
 
-Example:
+1.  **Phase 1 (Alignment)**: Update `llms.txt` and `README.md` for each project to reflect these specific mandates.
+2.  **Phase 2 (Hardening)**: Verify `public/` placement (Done).
+3.  **Phase 3 (Seal)**: Commit and Deploy.
 
-```bash
-cd body
-npm install
-npm run dev
-```
-
-## Coding Style & Naming Conventions
-
-- TypeScript + React across all apps.
-- TailwindCSS is the styling system (see `*/tailwind.config.js`).
-- ESLint is configured in `body/eslint.config.js` and `soul/eslint.config.js`.
-- Keep class lists grouped and readable; prefer consistent component naming.
-
-## Testing Guidelines
-
-- No automated test framework is currently configured.
-- If you add tests, colocate them with features and document run steps.
-
-## Commit & Pull Request Guidelines
-
-- Use Conventional Commits: `feat: ...`, `feat(scope): ...`, `ci: ...`.
-- PRs should include a concise description and the affected site (`body`, `soul`, `docs`).
-- Include screenshots for UI changes and link related issues when applicable.
-
-## Deployment & Configuration Notes
-
-- Deployments run via GitHub Actions on push to `main`.
-- Cloudflare Pages targets are defined in `.github/workflows/deploy.yml`.
-- Required secrets live in GitHub Actions (`CLOUDFLARE_API_TOKEN`,
-  `CLOUDFLARE_ACCOUNT_ID`); do not commit credentials.
+---
+**Signed,**
+*Antigravity (The Architect)*
