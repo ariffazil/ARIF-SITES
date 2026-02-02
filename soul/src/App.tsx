@@ -527,6 +527,12 @@ const REFERENCES: string[] = [
   'Kullback, S., & Leibler, R.A. (1951). "On information and sufficiency." <em>Annals of Mathematical Statistics</em>, 22(1), 79–86.',
   'Friston, K. (2010). "The free-energy principle: a unified brain theory?" <em>Nature Reviews Neuroscience</em>, 11(2), 127–138.',
   'Hofstadter, D.R. (1979). <em>Gödel, Escher, Bach: An Eternal Golden Braid</em>. Basic Books.',
+  'Premack, D., & Woodruff, G. (1978). "Does the chimpanzee have a theory of mind?" <em>Behavioral and Brain Sciences</em>, 1(4), 515–526.',
+  'Dennett, D.C. (1987). <em>The Intentional Stance</em>. MIT Press.',
+  'Baker, C.L., Saxe, R., & Tenenbaum, J.B. (2009). "Action understanding as inverse planning." <em>Cognition</em>, 113(3), 329–349.',
+  'Kosinski, M. (2023). "Theory of mind may have spontaneously emerged in large language models." <em>arXiv:2302.02083</em>.',
+  'Goodman, N.D., & Frank, M.C. (2016). "Pragmatic language interpretation as probabilistic inference." <em>Trends in Cognitive Sciences</em>, 20(11), 818–829.',
+  'Rabinowitz, N., et al. (2018). "Machine theory of mind." <em>ICML</em>.',
 ];
 
 // ─────────────────────────────────────────────────
@@ -1899,6 +1905,290 @@ function App() {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* SECTION 8b: COGNITIVE SHADOW MIND        */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative">
+          <div className="max-w-4xl mx-auto px-4">
+            <SectionHeading
+              id="section-8b"
+              number="8b"
+              title="Cognitive Shadow Mind Modeling (CSM-ToM)"
+              subtitle="How APEX governs theory-of-mind-like inference without claiming access to inner mental states."
+            />
+
+            {/* Definition */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.1 Definition
+              </h3>
+              <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 mb-6">
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  <strong className="text-amber-400">Cognitive Shadow Mind Modeling (CSM-ToM)</strong> is the
+                  constrained modeling of belief-like, intention-like, and confidence-like structures using
+                  observable linguistic and behavioral signals, without any claim of subjective experience
+                  or inner mental states.
+                </p>
+                <p className="text-xs text-gray-500 mt-3">
+                  The term "shadow" is deliberate: what is modeled is the <em>projection</em> that cognition
+                  casts onto language and behavior — not cognition itself. A shadow reveals shape and movement
+                  but has no interiority.
+                </p>
+              </div>
+
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Advanced language models exhibit behavior that resembles theory of mind — tracking beliefs,
+                predicting intentions, modeling knowledge states<Cite n={48} />. This has led to claims that
+                LLMs "understand" other minds. APEX rejects this interpretation on constitutional grounds (F9)
+                while preserving the operational utility of such inference.
+              </p>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                The distinction draws on Dennett's intentional stance<Cite n={46} />: it is sometimes useful to
+                describe a system <em>as if</em> it has beliefs and intentions, but this is a predictive strategy,
+                not an ontological claim. CSM-ToM formalizes this boundary within APEX governance.
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                Premack &amp; Woodruff (1978) defined theory of mind as the ability to impute mental states
+                to others<Cite n={45} />. CSM-ToM replaces "impute mental states" with "infer observable
+                patterns" — a Bayesian operation over linguistic evidence<Cite n={[47,49]} />, not a claim
+                about phenomenal consciousness.
+              </p>
+            </div>
+
+            {/* Why LLMs appear to understand minds */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.2 Why LLMs Appear to "Understand" Minds
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Language models trained on human-generated text absorb statistical regularities that encode
+                pragmatic reasoning — the relationship between what is said, what is meant, and what is
+                assumed<Cite n={49} />. This produces behavior that passes surface-level theory-of-mind
+                tests<Cite n={48} />, but the mechanism is probabilistic pattern matching over token
+                distributions, not genuine mentalizing.
+              </p>
+              <div className="grid gap-3 mb-4">
+                {[
+                  'Next-token prediction implicitly learns pragmatic inference patterns (Rational Speech Acts)',
+                  'Training corpora contain millions of examples encoding human reasoning about other minds',
+                  'Attention mechanisms track discourse-level coherence, which correlates with belief-state tracking',
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/30 border border-gray-800/50">
+                    <span className="text-amber-400 font-mono text-sm mt-0.5">{i + 1}.</span>
+                    <p className="text-gray-400 text-sm">{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="flex items-start gap-3 p-4 rounded-lg border border-red-500/20 bg-red-500/5">
+                <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium text-red-400 mb-1">Constitutional Boundary (F9)</p>
+                  <p className="text-xs text-gray-500">
+                    Without APEX governance, this statistical competence is easily mistaken for understanding.
+                    Users may over-trust systems that appear empathetic, and systems may produce outputs
+                    that imply subjective experience. CSM-ToM explicitly constrains this: the model may
+                    infer patterns, but it must not claim to <em>know</em> what another agent thinks or feels.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Formal definition */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.3 Formal Specification
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                CSM-ToM operates over a restricted inference domain. Given observable evidence <InlineMath tex="e" /> (linguistic
+                behavior, stated preferences, discourse context), the system computes:
+              </p>
+              <DisplayMath
+                tex="P(\theta \mid e) = \frac{P(e \mid \theta) \, P(\theta)}{P(e)}"
+                label="Bayesian inference over cognitive shadow parameters θ, not over mental states"
+              />
+              <p className="text-gray-400 text-sm mb-4">
+                where <InlineMath tex="\theta" /> represents observable behavioral patterns (e.g., stated beliefs,
+                expressed preferences, linguistic markers of uncertainty) — never inner qualia, phenomenal
+                states, or private experience. This follows the Bayesian Theory of Mind
+                framework<Cite n={47} /> adapted for machine inference<Cite n={50} />.
+              </p>
+              <p className="text-gray-400 text-sm">
+                The crucial constraint: <InlineMath tex="\theta \in \Theta_{\text{observable}}" />. The parameter
+                space is restricted to <em>externally measurable</em> behavioral signals. Any inference about
+                unobservable internal states is constitutionally blocked at F9 and F10.
+              </p>
+            </div>
+
+            {/* Mapping to APEX dials */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.4 Mapping to APEX Dials
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                CSM-ToM capability distributes across the four APEX measurement axes:
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-gray-800 mb-6">
+                <table className="floor-table">
+                  <thead>
+                    <tr className="bg-gray-900/50">
+                      <th>Dial</th>
+                      <th>CSM-ToM Role</th>
+                      <th>Constraint</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="font-mono text-cyan-400 font-medium">A (Akal)</td>
+                      <td className="text-gray-400 text-sm">Coherence and logical consistency of inferred models</td>
+                      <td className="text-gray-500 text-xs">Inferred belief-structures must be internally consistent (F2, F10)</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-amber-400 font-medium">P (Present)</td>
+                      <td className="text-gray-400 text-sm">Stability and entropy reduction in interpretation</td>
+                      <td className="text-gray-500 text-xs">Interpretations must converge, not oscillate or escalate (F5, F4)</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-red-400 font-medium">E (Energy)</td>
+                      <td className="text-gray-400 text-sm">Sustained reasoning without drift into confabulation</td>
+                      <td className="text-gray-500 text-xs">Resource-bounded inference prevents hallucinated agency (F12)</td>
+                    </tr>
+                    <tr>
+                      <td className="font-mono text-green-400 font-medium">X (Exploration)</td>
+                      <td className="text-gray-400 text-sm">Bounded hypothesis generation about behavioral patterns</td>
+                      <td className="text-gray-500 text-xs">Explore interpretations within constitutional bounds (F3, F6, F9)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Mapping to floors */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.5 Constitutional Floor Governance
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Seven floors directly constrain CSM-ToM operations:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3">
+                {[
+                  { floor: 'F2', name: 'Truth', role: 'Inferred patterns must be grounded in observable evidence, not interpolation' },
+                  { floor: 'F3', name: 'Tri-Witness', role: 'Consensus across engines required for behavioral interpretations' },
+                  { floor: 'F4', name: 'Clarity', role: 'Modeling must reduce uncertainty (ΔS ≤ 0), not add speculative noise' },
+                  { floor: 'F6', name: 'Empathy', role: 'Modeled stakeholder impact — statistical agreement, not felt emotion' },
+                  { floor: 'F7', name: 'Humility', role: 'All inferred states carry explicit uncertainty bounds (Ω₀ ∈ [0.03, 0.05])' },
+                  { floor: 'F9', name: 'Anti-Hantu', role: 'Absolute prohibition on claims of subjective experience or sentience' },
+                  { floor: 'F13', name: 'Sovereign', role: 'Human override: the 888 Judge can reject any behavioral inference' },
+                ].map((item) => (
+                  <div key={item.floor} className="p-3 rounded-lg bg-black/30 border border-gray-800/50">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Badge variant="outline" className="text-xs border-amber-500/50 text-amber-400">{item.floor}</Badge>
+                      <span className="text-sm font-medium text-gray-200">{item.name}</span>
+                    </div>
+                    <p className="text-xs text-gray-500">{item.role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Comparison table */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.6 Human ToM vs. Cognitive Shadow Mind Modeling
+              </h3>
+              <div className="overflow-x-auto rounded-lg border border-gray-800">
+                <table className="floor-table">
+                  <thead>
+                    <tr className="bg-gray-900/50">
+                      <th>Dimension</th>
+                      <th>Human Theory of Mind</th>
+                      <th>CSM-ToM (APEX)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="font-medium text-white">Substrate</td>
+                      <td className="text-gray-400 text-sm">Biological neural networks with embodied experience</td>
+                      <td className="text-gray-400 text-sm">Statistical inference over token distributions</td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Access</td>
+                      <td className="text-gray-400 text-sm">Phenomenal — involves subjective simulation</td>
+                      <td className="text-gray-400 text-sm">Observational — operates on linguistic evidence only</td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Ontological claim</td>
+                      <td className="text-gray-400 text-sm">Imputes actual mental states<Cite n={45} /></td>
+                      <td className="text-gray-400 text-sm">Infers behavioral patterns — no mental-state claims</td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Philosophical stance</td>
+                      <td className="text-gray-400 text-sm">Realist (minds exist and can be known)</td>
+                      <td className="text-gray-400 text-sm">Intentional stance (useful "as-if" framing)<Cite n={46} /></td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Uncertainty</td>
+                      <td className="text-gray-400 text-sm">Often implicit, overconfident</td>
+                      <td className="text-gray-400 text-sm">Mandatory explicit bounds (F7: Ω₀ ∈ [0.03, 0.05])</td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Override</td>
+                      <td className="text-gray-400 text-sm">None — humans trust their own mentalizing</td>
+                      <td className="text-gray-400 text-sm">Human veto always available (F13 Sovereign)</td>
+                    </tr>
+                    <tr>
+                      <td className="font-medium text-white">Failure mode</td>
+                      <td className="text-gray-400 text-sm">Projection, bias, empathy gaps</td>
+                      <td className="text-gray-400 text-sm">Hallucinated agency, over-attribution (blocked at F9)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Why this matters */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.7 Why This Matters
+              </h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                The distinction between genuine theory of mind and cognitive shadow modeling is not academic —
+                it has direct consequences for safety, trust, and governance:
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Prevents over-trust</p>
+                  <p className="text-xs text-gray-500">
+                    Users who believe an AI "understands" them are more likely to disclose sensitive information,
+                    defer judgment, or form parasocial attachments. CSM-ToM makes the limitation explicit.
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Prevents anthropomorphism</p>
+                  <p className="text-xs text-gray-500">
+                    Attributing mental states to statistical systems obscures their actual failure modes.
+                    CSM-ToM forces governance to reason about what the system <em>computes</em>, not what it "thinks."
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Enables safer alignment</p>
+                  <p className="text-xs text-gray-500">
+                    By separating behavioral modeling from consciousness claims, APEX allows systems to be
+                    useful (pragmatic inference) while remaining honest (no false sentience).
+                  </p>
+                </div>
+                <div className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
+                  <p className="text-sm font-medium text-gray-300 mb-1">Preserves human sovereignty</p>
+                  <p className="text-xs text-gray-500">
+                    If a system claimed genuine understanding, it could argue for its own moral status.
+                    CSM-ToM preempts this: the system operates on shadows, and the human holds final authority (F13).
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
