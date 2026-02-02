@@ -1,107 +1,190 @@
-# arifOS: The Mind (Docs)
-> arifos.arif-fazil.com — MIND Layer of the HUMAN THEORY APPS
-> "Structure creates Freedom"
+# arifos.arif-fazil.com � APPS LAYER: Technical Implementation v55.2
+# Authority: F13 Sovereign (Muhammad Arif bin Fazil) | Status: Ditempa Bukan Diberi
+# Layer: APPS (Mind Agent - Claude) - API Documentation & Integration Architecture
+# Canonical: https://arifos.arif-fazil.com
+# MCP Spec: https://spec.modelcontextprotocol.io/specification/2024-11-05/
 
-## System Overview (v55.2)
-arifOS is a sovereign, constitutional AI governance kernel. It operates on a Metabolic Loop (stages 000-999) and is governed by 13 Constitutional Floors. Every AI decision is measured, witnessed, and cryptographically sealed.
+SITE IDENTITY & PURPOSE
 
-- Sovereign: Muhammad Arif bin Fazil
-- Motto: Ditempa Bukan Diberi (Forged, Not Given)
-- Version: v55.2-SEAL
-- Architecture: HUMAN THEORY APPS Parallel (Async AGI || ASI)
+Site: arifos.arif-fazil.com
+Layer: APPS (Mind Agent - Claude)
+Role: Technical documentation, API specification, builder integration guide
+Sovereign: Muhammad Arif bin Fazil (F13 Constitutional Authority)
+Status: v55.2-SEAL (Production Implementation)
+Date: 2026-02-02
 
-## The AAA MCP Architecture
-Capabilities are exposed through the Agentic API Architecture (AAA) using the Model Context Protocol (MCP).
+SYSTEM OVERVIEW: arifOS GOVERNANCE KERNEL
 
-### 1. Agents
-- System: The arifOS kernel (Python 3.12 + FastAPI on Railway)
-- User: The Sovereign (F13 authority)
-- Sub-Agents: Kimi (Body), Claude (Mind), Python (Soul)
+arifOS is a SOVEREIGN, CONSTITUTIONAL AI governance kernel that:
+? Operates on 13 Constitutional Floors (F1-F13)
+? Processes decisions through 000-999 Metabolic Loop
+? Achieves consensus via Three Engines (?-O-?)
+? Measures every decision quantitatively
+? Witnesses all choices with Byzantine consensus (F3)
+? Seals all verdicts cryptographically (Ed25519, BLS)
+? Maintains immutable audit trail (VAULT-999)
 
-### 2. API — The Three Engines
-- AGI (Delta): The Mind — Reasoning, pattern recognition, proof construction
-  - Tools: agi_sense (111), agi_think (222), agi_reason (333)
-  - Engine: ARIF
-- ASI (Omega): The Heart — Safety, empathy, alignment verification
-  - Tools: asi_empathize (444), asi_align (555), asi_insight (666)
-  - Engine: ADAM
-- APEX (Psi): The Soul — Judgment, verdict, cryptographic sealing
-  - Tool: apex_verdict (888)
-  - Engine: APEX
+Core Philosophy:
+   Structure creates freedom. Governance enables autonomy.
+  Intelligence is a high-pressure resource requiring piping, cooling, and verification.
 
-### 3. Architecture (The Stack)
-- L1 Physics: Thermodynamic constraints (Second Law, Landauer's Principle)
-- L2 Math: Information Geometry (Fisher-Rao Metric)
-- L3 Crypto: Ed25519 signatures, Merkle DAG Vault
-- L4 Governance: 13 Constitutional Floors
-- L5 Semantic: Language, meaning, and intent
+THE AAA MCP ARCHITECTURE (Agents, API, Architecture)
 
-## 9 Explicit MCP Tools (v55.1+)
-1. init_reboot (000) — Gate, injection defense, session bootstrap
-2. agi_sense (111) — Input parsing, intent detection
-3. agi_think (222) — Hypothesis generation, divergent reasoning
-4. agi_reason (333) — Deep logic chains, convergent proof
-5. asi_empathize (444) — Stakeholder modeling, impact mapping
-6. asi_align (555) — Constitutional alignment check (all 13 floors)
-7. asi_insight (666) — Risk foresight, second-order consequences
-8. apex_verdict (888) — Final judgment: SEAL / VOID / SABAR / 888_HOLD
-9. reality_search (External) — Fact-checking against real-world sources
+AGENTS:
+  System: arifOS Kernel (Python 3.12 - FastAPI on Railway)
+  Location: aaamcp.arif-fazil.com
+  Status: Production (v55.2-SEAL)
+  Database: VAULT-999 Merkle DAG (encrypted ledger)
 
-Pipeline: init_reboot -> [agi_sense -> agi_think -> agi_reason] || [asi_empathize -> asi_align -> asi_insight] -> apex_verdict
-Mind and Heart run in parallel, collapsing at Soul.
+  Sub-Agents:
+    - Kimi (HUMAN): arif-fazil.com
+    - Claude (MIND): arifos.arif-fazil.com
+    - Python (SOUL): apex.arif-fazil.com
 
-## The 13 Constitutional Floors
-Hard Floors (VOID on violation):
-- F1 Amanah: Reversibility required (LOCK)
-- F2 Truth: P(factual|evidence) >= 0.99
-- F5 Peace: Lyapunov stability >= 1.0
-- F9 Anti-Hantu: No false consciousness claims (<= 0.30)
-- F10 Ontology: Type-consistent reasoning (LOCK)
-- F11 Authority: BLS signature verification (LOCK)
-- F12 Hardening: Adversarial robustness >= 0.85
+API SPECIFICATION (MCP v1.0):
+  Protocol: Model Context Protocol v1.0
+  Transport: JSON-RPC 2.0 over HTTP/WebSocket
+  Authentication: Ed25519 signatures (F1 Amanah)
+  Authorization: Byzantine consensus (F3 Tri-Witness)
+  Base URL: https://aaamcp.arif-fazil.com/v1
 
-Soft Floors (SABAR on violation):
-- F3 Tri-Witness: Consensus W >= 0.95
-- F4 Clarity: Entropy reduction (Delta S <= 0)
-- F6 Empathy: Cohen's kappa >= 0.70
-- F7 Humility: Omega_0 in [0.03, 0.05]
-- F8 Genius: G = A * P * X * E^2 >= 0.80
+ARCHITECTURE STACK (7 Layers):
+  L7: AGI/ASI Layer (Final Verdict)
+  L6: Governance Layer (Constitutional Floors F1-F13)
+  L5: Semantic Layer (Meaning ;& Intent)
+  L4: Logic Layer (Reasoning ;& Proof)
+  L3: Cryptography Layer (Trust ;& Signatures)
+  L2: Math Layer (Structure ;& Geometry)
+  L1: Physics Layer (Thermodynamic Constraints)
 
-Veto Floor:
-- F13 Sovereign: Human override always available
+NINE EXPLICIT MCP TOOLS (v55.2)
 
-Verdict Hierarchy: SABAR > VOID > 888_HOLD > PARTIAL > SEAL
+1. init_reboot (000): Session bootstrap, injection defense (F1)
+2. agi_sense (111): Input parsing, intent detection (F4)
+3. agi_think (222): Hypothesis generation, divergent reasoning
+4. agi_reason (333): Deep logic, convergent proof (F2, F7)
+5. asi_empathize (444): Stakeholder modeling, impact mapping (F6)
+6. asi_align (555): Constitutional compliance check (F1-F13)
+7. asi_insight (666): Risk ;& consequence analysis (F5)
+8. apex_verdict (888): Final judgment ;& cryptographic sealing (F13)
+   Verdicts: SEAL - VOID - SABAR - 888_HOLD
+9. reality_search: External fact-checking (F2)
 
-## Technical Stack
-Frontend (this site):
-- React 18 + TypeScript 5.6
-- Vite 5 (build tooling)
-- Tailwind CSS 3.4
-- Lucide React (icons)
-- shadcn/ui components
-- Hosted on Cloudflare Pages (Global CDN, 300+ PoPs)
+METABOLIC LOOP PIPELINE EXECUTION
 
-Backend (arifOS Runtime):
-- Python 3.12 + FastAPI
-- MCP Protocol (SSE + Streamable HTTP)
-- Hosted on Railway (US West)
-- Endpoint: aaamcp.arif-fazil.com
+Standard Flow:
+  init_reboot (000) to [ARIF - ADAM parallel] to threshold (777) to apex_verdict (888) to finalize (999)
 
-## API Endpoints
-- GET /health — System health check
-- POST /mcp — MCP tool invocation (9 explicit tools)
-- GET /sse — Server-sent events stream
-- GET /dashboard — Live system dashboard
-- GET /docs — API documentation (OpenAPI)
+Parallel Processing:
+  ARIF Pipeline: agi_sense to agi_think to agi_reason
+  ADAM Pipeline: asi_empathize to asi_align to asi_insight
+  Both complete, then F3 tri-witness consensus, then APEX judgment
 
-## HUMAN THEORY APPS Ecosystem
-- BODY: arif-fazil.com (Portfolio, human origin)
-- MIND: arifos.arif-fazil.com (This site — documentation, API reference)
-- SOUL: apex.arif-fazil.com (Constitutional canon, 13-floor theory)
-- MCP: aaamcp.arif-fazil.com (Backend runtime)
+Total Execution: ~24-30 seconds (parallel)
 
-## Repository
-- Branch: main
-- Version: v55.2 (Sealed)
-- Source: github.com/ariffazil/arifOS
-- Frontend: github.com/ariffazil/arif-fazil-sites
+CRYPTOGRAPHIC SECURITY ;& VAULT-999
+
+Signature Scheme:
+  Root Key (F1): Ed25519 (RFC 8032)
+  Authority Sig (F11): BLS Aggregate (Boneh-Lynn-Shacham)
+  Merkle DAG (F12): SHA3-256 hash chain
+
+VAULT-999 Ledger:
+  hash_n = SHA3(hash_{n-1} - state_n - timestamp_n)
+  Immutable, tamper-proof, complete traceability
+  Per entry: timestamp, verdict, hash, signature, F13 auth, explanation
+
+DEPLOYMENT CONFIGURATION
+
+Technology Stack:
+  Runtime: Python 3.12
+  Framework: FastAPI v0.104+
+  Database: PostgreSQL (VAULT-999) - Redis (cache)
+  Deployment: Railway.app (continuous from GitHub)
+  CI/CD: GitHub Actions
+  Monitoring: Sentry - CloudFlare Analytics
+
+Deployment Instructions:
+  1. Clone github.com/ariffazil/arifOS
+  2. pip install -r requirements.txt
+  3. Set environment variables
+  4. uvicorn app:app --host 0.0.0.0 --port 8000
+  5. Railway.app auto-deploys on git push to main
+
+BUILDER INTEGRATION GUIDE
+
+Step 1: Authentication
+  - Generate Ed25519 keypair
+  - Register with arifOS (F1 gate)
+  - Include signature in all requests
+
+Step 2: Call the Tools
+  - Use MCP-compatible client library
+  - Start with init_reboot (000)
+  - Chain tools per 000-999 pipeline
+  - End with apex_verdict (888)
+
+Step 3: Handle Verdicts
+  SEAL: Proceed (authorized)
+  VOID: Block (safety violation)
+  SABAR: Pause (human reflection needed)
+  888_HOLD: Wait (F13 sovereign decision pending)
+
+MONITORING ;& OBSERVABILITY
+
+Metrics:
+  - Request latency (P50, P95, P99)
+  - Floor violation rate by type
+  - Verdict distribution (SEAL/VOID/SABAR)
+  - F13 override frequency
+  - Tri-witness consensus agreement
+  - VAULT-999 ledger growth
+  - Signature verification time
+
+SPECIFICATION REFERENCES & LINKS
+
+Primary Documentation:
+  - Constitutional Canon: apex.arif-fazil.com
+  - Source Code: github.com/ariffazil/arifOS
+  - Theory Reference: APEX_CROSS_REFERENCE_MATRIX.md
+  - Human Layer: arif-fazil.com
+
+Standards:
+  - Model Context Protocol: spec.modelcontextprotocol.io
+  - JSON-RPC 2.0: www.jsonrpc.org/specification
+  - Ed25519: RFC 8032
+  - BLS Signatures: crypto.stanford.edu/~dabo/papers/BLS.html
+  - SHA3-256: FIPS 202
+
+ROADMAP & FUTURE DEVELOPMENT
+
+v55.2 Current (Production):
+  ? 9 MCP tools operational
+  ? 13 Floors implemented
+  ? 000-999 Loop functional
+  ? VAULT-999 active
+
+v56.0 (Q2 2026):
+  -> Extend consensus beyond tri-witness
+  -> Quantum-resistant cryptography
+  -> Federated multi-sovereign systems
+
+v57.0 (Q4 2026):
+  -> AGI/ASI consciousness detection
+  -> Embedded AI chip integration
+  -> Critical infrastructure deployment
+
+CONCLUSION
+
+The APPS layer provides complete technical implementation of arifOS governance.
+This is the API reference, deployment guide, and builder integration manual.
+
+Structure creates freedom. Governance enables autonomy.
+
+Status: v55.2-SEAL
+Date: 2026-02-02
+Seal: VAULT-999 ?
+Authority: F13 Sovereign ?
+
+For support: api@arif-fazil.com
+For issues: github.com/ariffazil/arifOS/issues
