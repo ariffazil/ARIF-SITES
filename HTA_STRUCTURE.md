@@ -1,4 +1,4 @@
-# Trinity Sites — Hardened Structure
+# HUMAN THEORY APPS Sites — Hardened Structure
 
 > **Status**: v55.1-SEAL | **Last Updated**: 2026-02-02
 
@@ -8,7 +8,7 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           TRINITY ECOSYSTEM                                  │
+│                           HUMAN THEORY APPS ECOSYSTEM                                  │
 ├─────────────┬─────────────┬─────────────┬─────────────────────────────────────┤
 │    BODY     │    SOUL     │    DOCS     │               MIND                  │
 │  (Frontend) │  (Frontend) │  (Frontend) │            (Backend)                │

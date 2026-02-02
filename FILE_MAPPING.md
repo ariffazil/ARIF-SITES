@@ -1,4 +1,4 @@
-# Trinity Sites — File Mapping & Organization Guide (Updated v55.2)
+# HUMAN THEORY APPS Sites — File Mapping & Organization Guide (Updated v55.2)
 
 ## Architecture Overview
 

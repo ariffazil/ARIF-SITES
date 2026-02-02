@@ -47,9 +47,16 @@ function App() {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded bg-gradient-to-br from-red-900 to-red-600 flex items-center justify-center forge-glow">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-100" fill="currentColor">
-                  <path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/>
+              <div className="w-8 h-8 rounded flex items-center justify-center forge-glow tricolor-logo">
+                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                  <defs>
+                    <linearGradient id="logoTri" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#00D4FF" />
+                      <stop offset="50%" stopColor="#FFB800" />
+                      <stop offset="100%" stopColor="#FF2D2D" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z" fill="url(#logoTri)"/>
                 </svg>
               </div>
               <span className="font-semibold text-lg">Arif Fazil</span>
@@ -66,7 +73,7 @@ function App() {
 
             {/* Trinity nav */}
             <div className="hidden md:flex items-center gap-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-red-900/30 text-red-400 text-xs font-medium border border-red-800/50">
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-cyan-900/30 via-amber-900/30 to-red-900/30 text-gray-200 text-xs font-medium border border-gray-700/50 hover:border-amber-500/30 transition-colors">
                 HUMAN
               </a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs font-medium hover:bg-amber-900/20 transition-colors">
@@ -93,7 +100,7 @@ function App() {
             <a href="#writing" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Writing</a>
             <Separator className="bg-gray-800" />
             <div className="flex gap-2 pt-1">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-red-900/30 text-red-400 text-xs border border-red-800/50">HUMAN</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-cyan-900/30 via-amber-900/30 to-red-900/30 text-gray-200 text-xs border border-gray-700/50">HUMAN</a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs hover:bg-amber-900/20">THEORY</a>
               <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs hover:bg-cyan-900/20">APPS</a>
             </div>
@@ -103,14 +110,14 @@ function App() {
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16">
-        {/* Fractal void background with embers */}
+        {/* Fractal void background with embers - neutral with tricolor accents */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-950/10 via-[#050505] to-red-900/5" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-900/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-800/5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-950/5 rounded-full blur-3xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-950/5 via-[#050505] to-red-950/5" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-500/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-500/5 rounded-full blur-3xl" />
           
-          {/* Forge embers */}
+          {/* Forge embers - tricolor */}
           <div className="forge-embers">
             <div className="ember" />
             <div className="ember" />
@@ -126,23 +133,43 @@ function App() {
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4">
-          {/* Geometric Identity - Sierpinski Triangle */}
+          {/* Geometric Identity - Tricolor Triangle */}
           <div className="flex justify-center mb-8">
             <div className="relative w-32 h-32">
-              <svg viewBox="0 0 200 173" className="w-full h-full drop-shadow-[0_0_30px_rgba(139,0,0,0.5)]">
+              <svg viewBox="0 0 200 173" className="w-full h-full drop-shadow-[0_0_30px_rgba(255,184,0,0.3)]">
                 <defs>
-                  <linearGradient id="triGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#8B0000" />
-                    <stop offset="50%" stopColor="#DC143C" />
-                    <stop offset="100%" stopColor="#FF0000" />
+                  {/* Tricolor gradients - vibrant primer colors */}
+                  <linearGradient id="triTop" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#FFB800" />
+                    <stop offset="100%" stopColor="#FF9500" />
+                  </linearGradient>
+                  <linearGradient id="triLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#00D4FF" />
+                    <stop offset="100%" stopColor="#0099CC" />
+                  </linearGradient>
+                  <linearGradient id="triRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                    <stop offset="0%" stopColor="#FF2D2D" />
+                    <stop offset="100%" stopColor="#CC0000" />
+                  </linearGradient>
+                  <linearGradient id="triCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FFB800" />
+                    <stop offset="50%" stopColor="#00D4FF" />
+                    <stop offset="100%" stopColor="#FF2D2D" />
                   </linearGradient>
                 </defs>
-                <path d="M100 10 L190 163 L10 163 Z" fill="none" stroke="url(#triGradient)" strokeWidth="2"/>
-                <path d="M100 50 L145 130 L55 130 Z" fill="none" stroke="#8B0000" strokeWidth="1.5" opacity="0.6"/>
-                <path d="M100 80 L120 115 L80 115 Z" fill="none" stroke="#DC143C" strokeWidth="1" opacity="0.4"/>
-                <circle cx="100" cy="100" r="8" fill="#8B0000" opacity="0.8">
-                  <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+                {/* Main triangle - 3 segments */}
+                <path d="M100 10 L190 163 L10 163 Z" fill="none" stroke="url(#triCenter)" strokeWidth="2.5"/>
+                {/* Inner triangle - top gold */}
+                <path d="M100 50 L145 130 L55 130 Z" fill="none" stroke="url(#triTop)" strokeWidth="2" opacity="0.9"/>
+                {/* Center point - tricolor glow */}
+                <circle cx="100" cy="100" r="6" fill="url(#triCenter)" opacity="0.9">
+                  <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite"/>
                 </circle>
+                {/* Accent lines */}
+                <path d="M100 10 L100 50" stroke="url(#triTop)" strokeWidth="1.5" opacity="0.7"/>
+                <path d="M10 163 L55 130" stroke="url(#triLeft)" strokeWidth="1.5" opacity="0.7"/>
+                <path d="M190 163 L145 130" stroke="url(#triRight)" strokeWidth="1.5" opacity="0.7"/>
               </svg>
             </div>
           </div>
@@ -204,89 +231,6 @@ function App() {
         </div>
       </section>
 
-      {/* 13 Constitutional Floors */}
-      <section id="floors" className="py-20 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold mb-2 gradient-text-red">13 Constitutional Floors</h2>
-            <p className="text-gray-400 text-sm max-w-xl mx-auto">
-              Every AI decision passes through these safety checks before execution.
-              Hard floors trigger VOID, soft floors trigger SABAR, F13 is human veto.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-7 gap-2 md:gap-3">
-            {[
-              { id: 'F1', name: 'Amanah', type: 'hard', icon: '🔒' },
-              { id: 'F2', name: 'Truth', type: 'hard', icon: '👁' },
-              { id: 'F3', name: 'Witness', type: 'soft', icon: '⚖' },
-              { id: 'F4', name: 'Clarity', type: 'soft', icon: '✦' },
-              { id: 'F5', name: 'Peace', type: 'hard', icon: '☥' },
-              { id: 'F6', name: 'Empathy', type: 'soft', icon: '♥' },
-              { id: 'F7', name: 'Humility', type: 'soft', icon: 'Ω' },
-              { id: 'F8', name: 'Genius', type: 'soft', icon: '⚡' },
-              { id: 'F9', name: 'Anti-Hantu', type: 'hard', icon: '👻' },
-              { id: 'F10', name: 'Ontology', type: 'hard', icon: '◇' },
-              { id: 'F11', name: 'Authority', type: 'hard', icon: '✋' },
-              { id: 'F12', name: 'Hardening', type: 'hard', icon: '🛡' },
-              { id: 'F13', name: 'Sovereign', type: 'veto', icon: '👑' },
-            ].map((floor) => (
-              <a
-                key={floor.id}
-                href="https://apex.arif-fazil.com"
-                className={`
-                  floor-badge relative p-2 md:p-3 rounded border text-center cursor-pointer
-                  ${floor.type === 'hard' ? 'border-red-800/50 bg-red-950/20 hover:bg-red-900/30 hover:border-red-700' : ''}
-                  ${floor.type === 'soft' ? 'border-amber-800/50 bg-amber-950/20 hover:bg-amber-900/30 hover:border-amber-700' : ''}
-                  ${floor.type === 'veto' ? 'border-purple-800/50 bg-purple-950/20 hover:bg-purple-900/30 hover:border-purple-700' : ''}
-                `}
-                title={`${floor.id}: ${floor.name}`}
-              >
-                <span className="block text-lg mb-1">{floor.icon}</span>
-                <span className={`
-                  block text-[10px] font-bold font-mono
-                  ${floor.type === 'hard' ? 'text-red-400' : ''}
-                  ${floor.type === 'soft' ? 'text-amber-400' : ''}
-                  ${floor.type === 'veto' ? 'text-purple-400' : ''}
-                `}>
-                  {floor.id}
-                </span>
-                <span className="hidden md:block text-[9px] text-gray-500 mt-0.5 leading-tight">
-                  {floor.name}
-                </span>
-                <span className={`
-                  absolute -top-1 -right-1 w-2 h-2 rounded-full
-                  ${floor.type === 'hard' ? 'bg-red-500' : ''}
-                  ${floor.type === 'soft' ? 'bg-amber-500' : ''}
-                  ${floor.type === 'veto' ? 'bg-purple-500' : ''}
-                `} />
-              </a>
-            ))}
-          </div>
-          
-          <div className="mt-8 flex items-center justify-center gap-6 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-red-500" />
-              <span className="text-gray-500">Hard (VOID)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
-              <span className="text-gray-500">Soft (SABAR)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-purple-500" />
-              <span className="text-gray-500">Veto (888)</span>
-            </div>
-          </div>
-          
-          <p className="text-center mt-6">
-            <a href="https://apex.arif-fazil.com" className="text-red-400 hover:text-red-300 text-sm inline-flex items-center gap-1">
-              Explore the full constitution <ChevronRight className="w-4 h-4" />
-            </a>
-          </p>
-        </div>
-      </section>
-
       {/* About / Background */}
       <section id="about" className="py-20">
         <div className="max-w-3xl mx-auto px-4">
@@ -310,7 +254,8 @@ function App() {
               hurt. I built{' '}
               <a href="https://arifos.arif-fazil.com" className="text-red-400 hover:text-red-300 underline underline-offset-2">arifOS</a>{' '}
               because I wanted AI systems held to the same rigorous safety standards
-              I grew up with — 13 checks that every decision has to pass before it executes.
+              I grew up with — governance that treats intelligence as a high-pressure
+              resource requiring the same verification as any critical infrastructure.
             </p>
           </div>
         </div>
@@ -335,7 +280,7 @@ function App() {
               </div>
               <div>
                 <h3 className="font-semibold text-white group-hover:text-amber-500 transition-colors mb-1">I'm evaluating</h3>
-                <p className="text-sm text-gray-400">Read the theory — axioms, 13 floors, scientific grounding</p>
+                <p className="text-sm text-gray-400">Read the theory — axioms, constitutional canon, scientific grounding</p>
               </div>
               <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-amber-500 mt-1 flex-shrink-0 ml-auto transition-colors" />
             </a>
@@ -381,7 +326,7 @@ function App() {
                   <td className="px-4 py-3">
                     <a href="https://apex.arif-fazil.com" className="text-white hover:text-amber-400 transition-colors">apex.arif-fazil.com</a>
                   </td>
-                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Axioms, 13 floors, scientific basis</td>
+                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Axioms, constitutional canon, scientific basis</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3">
@@ -399,7 +344,7 @@ function App() {
           {/* Trinity Mapping Note */}
           <p className="text-xs text-gray-600 mt-4 flex items-center gap-1.5">
             <BookOpen className="w-3 h-3" />
-            Trinity mapping: BODY = public interface · SOUL = theory layer · DOCS = MIND / runtime integration
+            HTA mapping: BODY = public interface · SOUL = theory layer · DOCS = MIND / runtime integration
           </p>
         </div>
       </section>
@@ -455,7 +400,7 @@ function App() {
                 <h3 className="font-semibold text-white mb-2">AI Governance</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   Applying industrial safety thinking to AI systems. Built arifOS —
-                  an open-source governance framework with 13 constitutional floors.
+                  an open-source governance framework with constitutional safeguards.
                 </p>
                 <div className="mt-4 flex items-center gap-2">
                   <Badge variant="outline" className="text-xs border-gray-700 text-gray-500">arifOS</Badge>
@@ -481,15 +426,15 @@ function App() {
                     <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs">Side project</Badge>
                   </div>
                   <p className="text-gray-300 leading-relaxed mb-4">
-                    An AI governance framework — 13 safety checks that sit between an AI and its
-                    decisions. Think of it as a building code for intelligence: every action
-                    passes through constitutional floors before it executes. Not magic —
+                    An AI governance framework — constitutional safeguards that sit between an AI and its
+                    decisions. Think of it as a blowout preventer for intelligence: every action
+                    passes through verified governance before it executes. Not magic —
                     engineering. The same approach we use to prevent blowouts in wells,
                     applied to prevent blowouts in AI.
                   </p>
                   <p className="text-gray-400 text-sm mb-6">
-                    Open source, written in Python, deployed as an MCP server with 9 explicit
-                    governance tools. Currently at v55.1-SEAL.
+                    Open source, written in Python, deployed as an MCP server with explicit
+                    governance tools. Currently at v55.2-SEAL.
                   </p>
                   <div className="flex flex-wrap gap-3">
                     <a href="https://arifos.arif-fazil.com">

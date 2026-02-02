@@ -317,7 +317,7 @@ function App() {
 
           {/* Architecture Tag */}
           <p className="text-sm text-gray-500 mb-3 font-mono">
-            Trinity Parallel Architecture (Async AGI || ASI)
+            HUMAN THEORY APPS Parallel Architecture (Async AGI || ASI)
           </p>
 
           {/* Description */}

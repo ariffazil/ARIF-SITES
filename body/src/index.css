@@ -448,3 +448,41 @@
   box-shadow: 0 0 8px #FF0000;
 }
 .border-crimson { border-color: #DC143C; }
+
+/* === TRICOLOR LOGO STYLES === */
+/* Tricolor logo with vibrant primer colors */
+.tricolor-logo {
+  background: linear-gradient(135deg, 
+    rgba(0, 212, 255, 0.15) 0%, 
+    rgba(255, 184, 0, 0.15) 50%, 
+    rgba(255, 45, 45, 0.15) 100%
+  );
+  box-shadow: 
+    0 0 15px rgba(255, 184, 0, 0.3),
+    0 0 30px rgba(0, 212, 255, 0.2),
+    0 0 45px rgba(255, 45, 45, 0.15);
+  transition: all 0.3s ease;
+}
+
+.tricolor-logo:hover {
+  box-shadow: 
+    0 0 20px rgba(255, 184, 0, 0.5),
+    0 0 40px rgba(0, 212, 255, 0.3),
+    0 0 60px rgba(255, 45, 45, 0.2);
+}
+
+/* Tricolor text accents */
+.text-tricolor {
+  background: linear-gradient(90deg, #00D4FF 0%, #FFB800 50%, #FF2D2D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tricolor glow for hero elements */
+.tricolor-glow {
+  box-shadow: 
+    0 0 20px rgba(255, 184, 0, 0.2),
+    0 0 40px rgba(0, 212, 255, 0.15),
+    0 0 60px rgba(255, 45, 45, 0.1);
+}

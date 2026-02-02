@@ -809,7 +809,7 @@ function App() {
               <div className="flex items-center gap-4 text-[10px] font-display text-amber-500/60 mb-12 tracking-[0.3em]">
                 <span>ARIF FAZIL</span>
                 <span className="w-12 h-[1px] bg-amber-500/30" />
-                <span>v55.2 TRINITY</span>
+                <span>v55.2 HTA</span>
               </div>
 
               <h1 className="text-7xl md:text-9xl font-display font-bold mb-8 text-white leading-none">
@@ -825,7 +825,7 @@ function App() {
               <p className="max-w-xl text-gray-400 leading-relaxed mb-12 text-lg font-mono">
                 A thermodynamically grounded constitutional framework combining 
                 <span className="text-white font-bold"> 13 formal constraints</span>, 
-                <span className="text-white font-bold"> three-engine architecture</span>, and 
+                <span className="text-white font-bold"> HUMAN THEORY APPS architecture</span>, and 
                 <span className="text-white font-bold"> cryptographic audit trails</span>.
               </p>
 
@@ -1073,9 +1073,9 @@ function App() {
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
           <div className="max-w-6xl mx-auto px-4">
             <SectionHeading
-              id="trinity-dashboard"
+              id="hta-dashboard"
               number="1.5"
-              title="Trinity System Monitor"
+              title="HTA System Monitor"
               subtitle="Real-time constitutional compliance visualization."
             />
             <TrinityDashboard />
