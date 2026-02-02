@@ -1,73 +1,87 @@
-# React + TypeScript + Vite
+# arif-fazil.com (The Body)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> The **Body** of the arifOS Trinity — a high-performance React application serving as the personal portfolio and digital presence of **Muhammad Arif bin Fazil**.
 
-Currently, two official plugins are available:
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 Overview
 
-## React Compiler
+**arif-fazil.com** is the primary interface ("The Body") in the [Trinity Architecture](https://arifos.arif-fazil.com/concepts/trinity), bridging the gap between human intent and the computational governance of **arifOS**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This site showcases:
+-   **Professional Portfolio**: Geoscience, Energy, and AI Governance work.
+-   **Philosophy**: The thermodynamic principles behind arifOS ("Ditempa Bukan Diberi").
+-   **Identity**: The personal and professional history of Arif Fazil.
 
-## Expanding the ESLint configuration
+## 🛠 Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+-   **Language**: TypeScript
+-   **Styling**: [TailwindCSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Deployment**: [Railway](https://railway.app/) + Docker (Nginx)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🤖 AI Governance (`llms.txt`)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This site complies with the **arifOS Constitutional Governance** standards.
+It exposes a root-level `llms.txt` file for AI agents to understand the site's context, architecture, and governance rules.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+-   **Live URL**: [https://arif-fazil.com/llms.txt](https://arif-fazil.com/llms.txt)
+-   **Repo Source**: `body/llms.txt`
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+-   Node.js (LTS recommended)
+-   npm or pnpm
+
+### Installation
+
+```bash
+# Navigate to the body directory
+cd body
+
+# Install dependencies
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Start the dev server
+npm run dev
 ```
+
+### Build
+
+```bash
+# Type-check and build for production
+npm run build
+```
+
+## 📂 Project Structure
+
+```
+body/
+├── public/             # Static assets (images, llms.txt, robots.txt)
+├── src/                # Source code
+│   ├── components/     # Reusable UI components (shadcn/ui)
+│   ├── lib/            # Utilities (cn, validators)
+│   └── ...
+├── Dockerfile          # Production Docker image (Nginx)
+├── railway.json        # Railway deployment config
+├── vite.config.ts      # Vite configuration
+└── tailwind.config.js  # Tailwind configuration
+```
+
+## ⚖️ License
+
+© 2026 Muhammad Arif bin Fazil. All rights reserved.
+Licensed under the [MIT License](LICENSE).
+
+---
+
+**DITEMPA BUKAN DIBERI**
+*Forged, Not Given*
