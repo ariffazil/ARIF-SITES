@@ -34,6 +34,13 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
+// Import new Trinity components
+import { TrinityDashboard } from '@/components/TrinityDashboard';
+import { FloorVisualizer } from '@/components/FloorVisualizer';
+import { EngineDiagram } from '@/components/EngineDiagram';
+import { MetabolicLoop } from '@/components/MetabolicLoop';
+import { CitationBlock } from '@/components/CitationBlock';
+
 // ─────────────────────────────────────────────────
 // KaTeX Math Rendering Components
 // ─────────────────────────────────────────────────
@@ -1042,6 +1049,21 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
+        {/* TRINITY DASHBOARD                        */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+          <div className="max-w-6xl mx-auto px-4">
+            <SectionHeading
+              id="trinity-dashboard"
+              number="1.5"
+              title="Trinity System Monitor"
+              subtitle="Real-time constitutional compliance visualization."
+            />
+            <TrinityDashboard />
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
         {/* SECTION 2: THE SOLUTION                 */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
@@ -1135,6 +1157,21 @@ function App() {
             <div className="rounded-2xl overflow-hidden">
               <img src="/entropy-geometry.jpg" alt="Information-theoretic visualization" className="w-full h-48 object-cover opacity-60" />
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* FLOOR VISUALIZER                         */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+          <div className="max-w-7xl mx-auto px-4">
+            <SectionHeading
+              id="floor-visualizer"
+              number="2.5"
+              title="Interactive Floor Explorer"
+              subtitle="Click any floor to see its scientific basis, formula, and constraint details."
+            />
+            <FloorVisualizer />
           </div>
         </section>
 
@@ -1235,6 +1272,14 @@ function App() {
             <div className="mt-12 rounded-2xl overflow-hidden">
               <img src="/three-judges-geometric.jpg" alt="Three-Engine Architecture" className="w-full h-64 object-cover opacity-60" />
             </div>
+            
+            {/* Engine Diagram Interactive Component */}
+            <div className="mt-16">
+              <h3 className="text-xl font-semibold mb-6 text-gray-200 text-center">
+                Interactive Consensus Simulation
+              </h3>
+              <EngineDiagram />
+            </div>
           </div>
         </section>
 
@@ -1325,6 +1370,14 @@ function App() {
                   versa, preventing collusion and ensuring independent verification<Cite n={[19,20]} />.
                 </p>
               </div>
+            </div>
+            
+            {/* Interactive Metabolic Loop Component */}
+            <div className="mt-16">
+              <h3 className="text-xl font-semibold mb-6 text-gray-200 text-center">
+                Interactive Pipeline Simulation
+              </h3>
+              <MetabolicLoop />
             </div>
           </div>
         </section>
@@ -2666,6 +2719,21 @@ audit_trail = await arifos.vault.get_history({
                 </a>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* CITATION BLOCK                           */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+          <div className="max-w-4xl mx-auto px-4">
+            <SectionHeading
+              id="citations"
+              number="13.5"
+              title="Scientific Citations & Rigor"
+              subtitle="Academic foundation with 50 peer-reviewed references."
+            />
+            <CitationBlock />
           </div>
         </section>
 
