@@ -1,0 +1,81 @@
+name: Deploy Trinity Sites (Body, Soul, Docs)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  NETLIFY_SITE_ID_BODY: ${{ secrets.NETLIFY_SITE_ID_BODY }}
+  NETLIFY_SITE_ID_SOUL: ${{ secrets.NETLIFY_SITE_ID_SOUL }}
+  NETLIFY_SITE_ID_DOCS: ${{ secrets.NETLIFY_SITE_ID_DOCS }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        site: [body, soul, docs]
+        include:
+          - site: body
+            site_name: BODY (arif-fazil.com)
+            dir: body
+          - site: soul
+            site_name: SOUL (apex.arif-fazil.com)
+            dir: soul
+          - site: docs
+            site_name: DOCS (arifos.arif-fazil.com)
+            dir: docs
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: |
+            ${{ matrix.dir }}/package-lock.json
+      
+      - name: Install dependencies (${{ matrix.site_name }})
+        run: cd ${{ matrix.dir }} && npm install
+      
+      - name: Build (${{ matrix.site_name }})
+        run: cd ${{ matrix.dir }} && npm run build
+      
+      - name: Deploy to Netlify (${{ matrix.site_name }})
+        run: |
+          npm install -g netlify-cli
+          cd ${{ matrix.dir }}
+          
+          # Determine site ID based on matrix
+          if [ "${{ matrix.site }}" == "body" ]; then
+            SITE_ID=$NETLIFY_SITE_ID_BODY
+          elif [ "${{ matrix.site }}" == "soul" ]; then
+            SITE_ID=$NETLIFY_SITE_ID_SOUL
+          else
+            SITE_ID=$NETLIFY_SITE_ID_DOCS
+          fi
+          
+          netlify deploy --prod --dir=dist --site=$SITE_ID
+      
+      - name: ✅ Deployment Complete (${{ matrix.site_name }})
+        run: echo "Successfully deployed ${{ matrix.site_name }}"
+
+  summary:
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: 📢 Deployment Summary
+        run: |
+          echo "🚀 Trinity Deployment Complete!"
+          echo "📍 BODY (Portfolio): https://arif-fazil.com"
+          echo "📍 SOUL (APEX Canon): https://apex.arif-fazil.com"
+          echo "📍 DOCS (arifOS): https://arifos.arif-fazil.com"
