@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { 
-  Play, Pause, RotateCcw, ChevronRight, 
-  Bot, User, Shield, Eye, Heart, Zap, Crown, Lock, Gauge
+import {
+  Play, Pause, RotateCcw,
+  Bot, Shield, Eye, Heart, Zap, Crown, Lock, Gauge
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface Stage {
@@ -31,7 +30,108 @@ const STAGES: Stage[] = [
   { stage: '999', name: 'SEAL', engine: 'Ψ', function: 'Merkle DAG commit, audit trail', icon: Lock, color: '#FFD700' },
 ];
 
-// ... (rest of logic preserved)
+export function MetabolicLoop() {
+  const [currentStage, setCurrentStage] = useState<number>(-1);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [completedStages, setCompletedStages] = useState<Set<number>>(new Set());
+  const [entropy, setEntropy] = useState(100);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationRef = useRef<number>(0);
+
+  // Animation loop
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentStage(prev => {
+        if (prev >= STAGES.length - 1) {
+          setIsPlaying(false);
+          return prev;
+        }
+        const next = prev + 1;
+        setCompletedStages(s => new Set([...s, next]));
+        setEntropy(e => Math.max(0, e - 8));
+        return next;
+      });
+    }, 800);
+
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  // Canvas animation for entropy flow
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (rect) {
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
+    };
+    resize();
+
+    let particles: { x: number; y: number; vx: number; vy: number; life: number }[] = [];
+
+    const animate = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (!rect) return;
+
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      if (currentStage >= 0 && Math.random() < 0.3) {
+        const stageWidth = rect.width / STAGES.length;
+        const x = currentStage * stageWidth + stageWidth / 2;
+        const y = rect.height / 2;
+        particles.push({
+          x,
+          y: y + (Math.random() - 0.5) * 40,
+          vx: 2 + Math.random(),
+          vy: (Math.random() - 0.5) * 0.5,
+          life: 1
+        });
+      }
+
+      particles = particles.filter(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.02;
+
+        if (p.life > 0) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 3 * p.life, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 215, 0, ${p.life * 0.6})`;
+          ctx.fill();
+          return true;
+        }
+        return false;
+      });
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [currentStage]);
+
+  const reset = () => {
+    setCurrentStage(-1);
+    setCompletedStages(new Set());
+    setEntropy(100);
+    setIsPlaying(false);
+  };
+
+  const getStageStatus = (index: number) => {
+    if (index === currentStage) return 'active';
+    if (completedStages.has(index)) return 'completed';
+    return 'pending';
+  };
 
   return (
     <TooltipProvider>
@@ -179,10 +279,6 @@ const STAGES: Stage[] = [
             </div>
           </div>
         )}
-      </div>
-    </TooltipProvider>
-  );
-}
 
         {/* Completion Message */}
         {currentStage === STAGES.length - 1 && (

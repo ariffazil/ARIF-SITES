@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Activity, Shield, Crown, ArrowRight, CheckCircle2, AlertCircle, XCircle } from 'lucide-react';
+import { Activity, CheckCircle2, AlertCircle, XCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface Engine {
@@ -52,7 +51,73 @@ const ENGINES: Engine[] = [
   }
 ];
 
-// ... (ConsensusState and EngineDiagram component setup preserved)
+interface ConsensusState {
+  arif: boolean | null;
+  adam: boolean | null;
+  apex: boolean | null;
+  weight: number;
+  verdict: 'pending' | 'approved' | 'sabar' | 'void';
+}
+
+export function EngineDiagram() {
+  const [consensus, setConsensus] = useState<ConsensusState>({
+    arif: null,
+    adam: null,
+    apex: null,
+    weight: 0,
+    verdict: 'pending'
+  });
+  const [isAnimating, setIsAnimating] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Simulate consensus formation
+  const simulateConsensus = () => {
+    setIsAnimating(true);
+    setConsensus({ arif: null, adam: null, apex: null, weight: 0, verdict: 'pending' });
+
+    const sequence = [
+      { delay: 500, engine: 'arif' as const, value: true },
+      { delay: 1200, engine: 'adam' as const, value: true },
+      { delay: 2000, engine: 'apex' as const, value: true },
+    ];
+
+    sequence.forEach(({ delay, engine, value }) => {
+      setTimeout(() => {
+        setConsensus(prev => {
+          const newState = { ...prev, [engine]: value };
+          const votes = [newState.arif, newState.adam, newState.apex].filter(v => v === true).length;
+          const weight = votes / 3;
+          let verdict: ConsensusState['verdict'] = 'pending';
+          if (weight >= 0.95) verdict = 'approved';
+          else if (weight >= 0.67) verdict = 'sabar';
+          else if (votes > 0 && weight < 0.67) verdict = 'void';
+          return { ...newState, weight, verdict };
+        });
+      }, delay);
+    });
+
+    setTimeout(() => setIsAnimating(false), 3000);
+  };
+
+  // Animated connection lines
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const resize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (rect) {
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      }
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    let animationId: number;
 
     const animate = () => {
       const rect = canvas.parentElement?.getBoundingClientRect();

@@ -21,9 +21,6 @@ import {
   Eye,
   Lock,
   Gauge,
-  ArrowRight,
-  ArrowDown,
-  Terminal,
   Bot,
   User
 } from 'lucide-react';
@@ -603,10 +600,6 @@ function FloorTable({ title, floors, verdict }: {
   const borderColor = isHard ? 'border-red-500' :
                       isVeto ? 'border-purple-500' :
                       'border-amber-500';
-  const bgColor = isHard ? 'bg-red-500/[0.02]' :
-                   isVeto ? 'bg-purple-500/[0.02]' :
-                   'bg-amber-500/[0.02]';
-
   return (
     <div className={`mb-16 border-l-2 ${borderColor} pl-8`}>
       <div className="flex items-center gap-6 mb-8">
@@ -734,7 +727,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="border-green-500/50 text-green-400 text-xs">
-                <Activity className="w-3 h-3 mr-1" /> v55.1
+                <Activity className="w-3 h-3 mr-1" /> v55.2
               </Badge>
               <span className="text-gray-700">|</span>
               <Badge variant="outline" className="border-cyan-500/50 text-cyan-400 text-xs">
@@ -785,13 +778,13 @@ function App() {
                 <a href="#section-5" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Floors</a>
               </div>
               <div className="flex items-center justify-center gap-4">
-                <a href="https://arif-fazil.com" className="px-6 py-2 bg-transparent text-amber-500 text-[10px] font-display hover:bg-amber-500/10 transition-colors border border-amber-500/30">
+                <a href="https://arif-fazil.com" className="px-6 py-2 bg-transparent text-red-400 text-[10px] font-display hover:bg-red-900/20 transition-colors border border-red-800/50">
                   HUMAN
                 </a>
                 <a href="https://apex.arif-fazil.com" className="px-6 py-2 bg-amber-500 text-black text-[10px] font-display transition-colors border border-amber-500">
                   THEORY
                 </a>
-                <a href="https://arifos.arif-fazil.com" className="px-6 py-2 bg-transparent text-amber-500 text-[10px] font-display hover:bg-amber-500/10 transition-colors border border-amber-500/30">
+                <a href="https://arifos.arif-fazil.com" className="px-6 py-2 bg-transparent text-cyan-400 text-[10px] font-display hover:bg-cyan-500/10 transition-colors border border-cyan-500/30">
                   APPS
                 </a>
               </div>
@@ -2519,17 +2512,17 @@ audit_trail = await arifos.vault.get_history({
             {/* Builder Links */}
             <div className="grid sm:grid-cols-3 gap-6 mt-12">
               <a href="https://arifos.arif-fazil.com/getting-started/quick-start/" className="group">
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-orange-500/50 transition-all h-full">
+                <Card className="bg-gray-900/50 border-gray-800 hover:border-cyan-500/50 transition-all h-full">
                   <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center mb-4 group-hover:bg-orange-500/30 transition-colors">
-                      <Code2 className="w-6 h-6 text-orange-400" />
+                    <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
+                      <Code2 className="w-6 h-6 text-cyan-400" />
                     </div>
                     <CardTitle className="text-lg">Quick Start</CardTitle>
                     <p className="text-sm text-gray-500">Constitutional Floors</p>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-400 mb-4">Understand normative invariants</p>
-                    <span className="text-orange-400 text-sm flex items-center gap-1">
+                    <span className="text-cyan-400 text-sm flex items-center gap-1">
                       Begin <ExternalLink className="w-3 h-3" />
                     </span>
                   </CardContent>
@@ -2862,7 +2855,7 @@ audit_trail = await arifos.vault.get_history({
             <div className="mb-8 pt-4 border-t border-gray-800/30 max-w-lg mx-auto">
               <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">arifOS Architecture</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
-                <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-orange-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Human</a>
+                <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-red-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>Human</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
                 <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Theory</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
@@ -2876,15 +2869,15 @@ audit_trail = await arifos.vault.get_history({
             <p className="text-gray-600 text-sm mb-6">Penang, Malaysia · February 2026</p>
 
             <div className="flex items-center justify-center gap-4">
-              <a href="mailto:arifbfazil@gmail.com" className="text-gray-500 hover:text-orange-400 transition-colors text-sm">
+              <a href="mailto:arifbfazil@gmail.com" className="text-gray-500 hover:text-amber-400 transition-colors text-sm">
                 arifbfazil@gmail.com
               </a>
               <span className="text-gray-700">|</span>
-              <a href="https://github.com/ariffazil" className="text-gray-500 hover:text-orange-400 transition-colors flex items-center gap-1 text-sm">
+              <a href="https://github.com/ariffazil" className="text-gray-500 hover:text-amber-400 transition-colors flex items-center gap-1 text-sm">
                 <GitBranch className="w-4 h-4" /> GitHub
               </a>
               <span className="text-gray-700">|</span>
-              <a href="https://linkedin.com/in/arif-fazil" className="text-gray-500 hover:text-orange-400 transition-colors text-sm">
+              <a href="https://linkedin.com/in/arif-fazil" className="text-gray-500 hover:text-amber-400 transition-colors text-sm">
                 LinkedIn
               </a>
             </div>

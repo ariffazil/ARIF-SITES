@@ -41,8 +41,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy body/dist --project-name=ariffazil --branch=main
 
-  deploy-soul:
-    name: Deploy SOUL (apex.arif-fazil.com)
+  deploy-theory:
+    name: Deploy THEORY (apex.arif-fazil.com)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,11 +53,11 @@ jobs:
       - name: Generate Build Info
         run: |
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > soul/public/build-info.json
+          echo "$BUILD_INFO" > THEORY/public/build-info.json
 
       - name: Build SOUL
         run: |
-          cd soul
+          cd THEORY
           npm ci
           npm run build
           cp public/*.jpg dist/ 2>/dev/null || true
@@ -74,7 +74,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy soul/dist --project-name=apex --branch=main
+          command: pages deploy THEORY/dist --project-name=apex --branch=main
 
   deploy-docs:
     name: Deploy DOCS (arifos.arif-fazil.com)
@@ -109,7 +109,7 @@ jobs:
 
   verify:
     name: Verify Sites Online
-    needs: [deploy-body, deploy-soul, deploy-docs]
+    needs: [deploy-body, deploy-theory, deploy-docs]
     runs-on: ubuntu-latest
     steps:
       - name: Wait for propagation
@@ -120,7 +120,7 @@ jobs:
           echo "========================================"
           echo "  TRINITY FRONTEND — DEPLOYMENT CHECK"
           echo "========================================"
-          for site in "https://arif-fazil.com BODY" "https://apex.arif-fazil.com SOUL" "https://arifos.arif-fazil.com DOCS"; do
+          for site in "https://arif-fazil.com BODY" "https://apex.arif-fazil.com THEORY" "https://arifos.arif-fazil.com DOCS"; do
             url=$(echo $site | cut -d' ' -f1)
             name=$(echo $site | cut -d' ' -f2)
             if curl -sf --max-time 10 "$url" > /dev/null; then

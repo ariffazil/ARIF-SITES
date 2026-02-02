@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { Activity, Gauge, Crown, Zap, Eye, Heart, Lock, Shield } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// Card imports removed - not currently used
 
 interface SystemMetrics {
   clarity: number;

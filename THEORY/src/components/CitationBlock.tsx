@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { BookOpen, Copy, Check, ExternalLink, GraduationCap, Award, FileText } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface Reference {
   id: number;

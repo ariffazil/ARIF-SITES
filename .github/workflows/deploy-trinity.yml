@@ -1,4 +1,4 @@
-name: Deploy Trinity Sites (Body, Soul, Docs)
+name: Deploy Trinity Sites (Body, Theory, Docs)
 
 on:
   push:
@@ -10,7 +10,7 @@ env:
   CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   CLOUDFLARE_PAGES_PROJECT_BODY: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_BODY }}
-  CLOUDFLARE_PAGES_PROJECT_SOUL: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_SOUL }}
+  CLOUDFLARE_PAGES_PROJECT_THEORY: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_THEORY }}
   CLOUDFLARE_PAGES_PROJECT_DOCS: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_DOCS }}
 
 jobs:
@@ -19,16 +19,16 @@ jobs:
 
     strategy:
       matrix:
-        site: [body, soul, docs]
+        site: [body, theory, docs]
         include:
           - site: body
             site_name: BODY (arif-fazil.com)
             dir: body
             project_env: CLOUDFLARE_PAGES_PROJECT_BODY
-          - site: soul
-            site_name: SOUL (apex.arif-fazil.com)
-            dir: soul
-            project_env: CLOUDFLARE_PAGES_PROJECT_SOUL
+          - site: theory
+            site_name: THEORY (apex.arif-fazil.com)
+            dir: THEORY
+            project_env: CLOUDFLARE_PAGES_PROJECT_THEORY
           - site: docs
             site_name: DOCS (arifos.arif-fazil.com)
             dir: docs
@@ -74,5 +74,5 @@ jobs:
         run: |
           echo "🚀 Trinity Deployment Complete!"
           echo "📍 BODY (Portfolio): https://arif-fazil.com"
-          echo "📍 SOUL (APEX Canon): https://apex.arif-fazil.com"
+          echo "📍 THEORY (APEX Canon): https://apex.arif-fazil.com"
           echo "📍 DOCS (arifOS): https://arifos.arif-fazil.com"

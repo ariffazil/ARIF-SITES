@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, Lock, Eye, Heart, Zap, Crown, Gauge, AlertTriangle, CheckCircle2, XCircle, PauseCircle } from 'lucide-react';
+import { Shield, Lock, Eye, Heart, Zap, Crown, Gauge } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -286,16 +286,14 @@ export function FloorVisualizer() {
     }
   };
 
-  const getTypeIcon = (type: string) => {
-    switch (type) {
-      case 'hard':
-        return <XCircle className="w-4 h-4 text-red-400" />;
-      case 'soft':
-        return <PauseCircle className="w-4 h-4 text-amber-400" />;
-      case 'veto':
-        return <Crown className="w-4 h-4 text-purple-400" />;
-    }
-  };
+  // getTypeIcon reserved for future use
+  // const getTypeIcon = (type: string) => {
+  //   switch (type) {
+  //     case 'hard': return <XCircle className="w-4 h-4 text-red-400" />;
+  //     case 'soft': return <PauseCircle className="w-4 h-4 text-amber-400" />;
+  //     case 'veto': return <Crown className="w-4 h-4 text-purple-400" />;
+  //   }
+  // };
 
   return (
     <TooltipProvider>
