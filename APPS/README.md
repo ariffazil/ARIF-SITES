@@ -24,7 +24,7 @@ APPS   — Cyan: hsl(199 89% 48%)  → #0EA5E9  (sky-500)
 
 ## Features
 
-- **13 Floors Visualization** — Interactive constitutional safety floor cards with semantic colors
+- **9 Floors Visualization** — Interactive constitutional safety floor cards with semantic colors
 - **9 MCP Tools Reference** — v55.1 explicit tool architecture (agi_sense → apex_verdict)
 - **Trinity Parallel Pipeline** — Visual diagram of async AGI || ASI collapsing at APEX
 - **API Endpoints** — Live status for /health, /mcp, /sse, /dashboard, /docs

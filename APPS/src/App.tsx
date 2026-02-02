@@ -193,21 +193,29 @@ const LAYERS = [
   },
 ];
 
-// 13 Floors data
+// 9 Constitutional Floors (F1-F9) — Canonical v55.2
 const FLOORS = [
-  { id: 'F1', name: 'Amanah', desc: 'Trust through reversibility', icon: GitBranch, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/amanah.py` },
-  { id: 'F2', name: 'Truth', desc: 'Verifiable claims only', icon: Shield, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/truth.py` },
-  { id: 'F3', name: 'Consensus', desc: 'Tri-witness agreement', icon: Users, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
-  { id: 'F4', name: 'Certainty', desc: 'Confidence thresholds', icon: Scale, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
-  { id: 'F5', name: 'Peace', desc: 'Non-violence embedded', icon: Shield, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
-  { id: 'F6', name: 'Clarity', desc: 'Entropy reduction', icon: Lightbulb, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
-  { id: 'F7', name: 'Humility', desc: 'Uncertainty band', icon: Search, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
-  { id: 'F8', name: 'Genius', desc: 'Wisdom equation', icon: Zap, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors/genius.py` },
-  { id: 'F9', name: 'Reality', desc: 'Observable grounding', icon: Globe, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors/antihantu.py` },
-  { id: 'F10', name: 'Ontology', desc: 'What exists', icon: BookOpen, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/ontology.py` },
-  { id: 'F11', name: 'Command', desc: 'Authority validation', icon: Terminal, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/authority.py` },
-  { id: 'F12', name: 'Injection', desc: 'Prompt defense', icon: Lock, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/injection.py` },
-  { id: 'F13', name: 'Sovereign', desc: 'Human override', icon: Users, color: 'green', source: `${GITHUB_BASE}/blob/main/codebase/constitutional_floors.py` },
+  { id: 'F1', name: 'Amanah', desc: 'Trust through reversibility', icon: GitBranch, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/amanah.py`, type: 'hard' },
+  { id: 'F2', name: 'Truth', desc: 'Verifiable claims only', icon: Shield, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/truth.py`, type: 'hard' },
+  { id: 'F3', name: 'Tri-Witness', desc: 'Human·AI·Earth consensus', icon: Users, color: 'amber', source: `${GITHUB_BASE}/blob/main/codebase/floors`, type: 'soft' },
+  { id: 'F4', name: 'ΔS', desc: 'Entropy reduction', icon: Lightbulb, color: 'amber', source: `${GITHUB_BASE}/blob/main/codebase/floors`, type: 'soft' },
+  { id: 'F5', name: 'Peace²', desc: 'Lyapunov stability', icon: Shield, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors`, type: 'hard' },
+  { id: 'F6', name: 'κᵣ', desc: 'Protect weakest listener', icon: Users, color: 'amber', source: `${GITHUB_BASE}/blob/main/codebase/floors`, type: 'soft' },
+  { id: 'F7', name: 'Ω₀', desc: 'Humility 3-5%', icon: Search, color: 'amber', source: `${GITHUB_BASE}/blob/main/codebase/floors`, type: 'soft' },
+  { id: 'F8', name: 'G', desc: 'Governed intelligence', icon: Zap, color: 'amber', source: `${GITHUB_BASE}/blob/main/codebase/floors/genius.py`, type: 'soft' },
+  { id: 'F9', name: 'Anti-Hantu', desc: 'No consciousness claims', icon: Lock, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/antihantu.py`, type: 'hard' },
+];
+
+// 2 Mirrors (Generative Engines)
+const MIRRORS = [
+  { id: 'Δ', name: 'ARIF', role: 'The Mind', desc: 'Perceive · Reason · Map', color: 'cyan' },
+  { id: 'Ω', name: 'ADAM', role: 'The Heart', desc: 'Defend · Empathize · Bridge', color: 'rose' },
+];
+
+// 2 Walls (Non-Generative Authorities)
+const WALLS = [
+  { id: 'Ψ', name: 'APEX PRIME', role: 'The Judiciary', desc: 'Decree · Prove · Seal', color: 'violet' },
+  { id: '888', name: 'JUDGE', role: 'Human Authority', desc: 'Sovereign veto always available', color: 'red' },
 ];
 
 // MCP Tools data — v55.1 Explicit Tool Architecture (9 core tools)
@@ -275,7 +283,7 @@ const MCP_TOOLS = [
   {
     name: 'asi_align',
     stage: '555',
-    description: 'Constitutional alignment check. Validates against all 13 floors',
+    description: 'Constitutional alignment check. Validates against all 9 floors',
     params: ['query', 'reasoning', 'stakeholder_map', 'session_id'],
     actions: ['check_floors', 'validate_alignment', 'score'],
     returns: 'floor_results, alignment_score, violations, peace_squared',
@@ -442,7 +450,7 @@ function App() {
             <div className="hidden md:flex items-center gap-6">
               <a href="#overview" className="text-sm text-gray-400 hover:text-white transition-colors">Overview</a>
               <a href="#layers" className="text-sm text-gray-400 hover:text-white transition-colors">7 Layers</a>
-              <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">13 Floors</a>
+              <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">9 Floors</a>
               <a href="#mcp" className="text-sm text-gray-400 hover:text-white transition-colors">MCP Tools</a>
               <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
               <a href="#implementation" className="text-sm text-gray-400 hover:text-white transition-colors">Implementation</a>
@@ -474,7 +482,7 @@ function App() {
           <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-800 px-4 py-4 space-y-3">
             <a href="#overview" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Overview</a>
             <a href="#layers" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>7 Layers</a>
-            <a href="#floors" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>13 Floors</a>
+            <a href="#floors" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>9 Floors</a>
             <a href="#mcp" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>MCP Tools</a>
             <a href="#api" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>API</a>
             <a href="#implementation" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Implementation</a>
@@ -515,7 +523,7 @@ function App() {
           <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
             The 7-layer deployment architecture for constitutional AI governance.
             Choose your entry point — from a simple system prompt to production MCP tools
-            to autonomous agent federations. Every layer enforces 13 safety floors.
+            to autonomous agent federations. Every layer enforces 9 constitutional floors.
           </p>
 
           {/* Status Badge */}
@@ -533,7 +541,7 @@ function App() {
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
               <Shield className="w-4 h-4 text-amber-400" />
-              <span className="text-sm text-amber-400">13 Floors</span>
+              <span className="text-sm text-amber-400">9 Floors</span>
             </div>
           </div>
 
@@ -724,7 +732,7 @@ function App() {
         </div>
       </section>
 
-      {/* 13 Floors Section */}
+      {/* 9 Floors Section */}
       <section id="floors" className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -732,10 +740,10 @@ function App() {
               <Shield className="w-4 h-4 text-gray-400" />
               <span className="text-sm text-gray-300">Constitutional Framework</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">The 13 Floors</h2>
+            <h2 className="text-4xl font-bold mb-4">The 9 Constitutional Floors</h2>
             <p className="text-gray-400 max-w-2xl mx-auto mb-3">
-              Every AI decision passes through 13 constitutional safety checks.
-              Three independent engines verify each floor before execution.
+              Every AI decision passes through 9 constitutional floors — 4 HARD (VOID), 5 SOFT (SABAR).
+              Enforced by 2 Mirrors (Δ·Ω) and 2 Walls (Ψ·888).
             </p>
             <a href={`${GITHUB_BASE}/tree/main/codebase/floors`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
               <GitBranch className="w-4 h-4" /> View floor implementations on GitHub <ExternalLink className="w-3 h-3" />
@@ -767,64 +775,85 @@ function App() {
             })}
           </div>
 
-          {/* Tri-Witness Explanation */}
-          <div className="mt-16 grid md:grid-cols-3 gap-6">
-            <Card className="bg-gray-900/50 border-gray-800">
-              <CardHeader>
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-3">
-                  <BookOpen className="w-5 h-5 text-cyan-400" />
-                </div>
-                <CardTitle className="text-lg">Mind — ARIF Engine</CardTitle>
-                <CardDescription>Deep reasoning & pattern recognition</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-400 mb-3">
-                  agi_sense, agi_think, agi_reason. Runs async in parallel with Heart.
-                  The epistemic pipeline that parses, hypothesizes, and proves.
-                </p>
-                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
-                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
-                </a>
-              </CardContent>
-            </Card>
+          {/* Floor Type Legend */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded bg-red-500" />
+              <span className="text-gray-400">HARD (VOID) — F1, F2, F5, F9</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded bg-amber-500" />
+              <span className="text-gray-400">SOFT (SABAR) — F3, F4, F6, F7, F8</span>
+            </div>
+          </div>
 
-            <Card className="bg-gray-900/50 border-gray-800">
-              <CardHeader>
-                <div className="w-10 h-10 rounded-lg bg-rose-500/20 flex items-center justify-center mb-3">
-                  <Shield className="w-5 h-5 text-rose-400" />
-                </div>
-                <CardTitle className="text-lg">Heart — ADAM Engine</CardTitle>
-                <CardDescription>Safety & empathy assessment</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-400 mb-3">
-                  asi_empathize, asi_align, asi_insight. Runs async in parallel with Mind.
-                  The safety pipeline ensuring alignment with human values.
-                </p>
-                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 transition-colors">
-                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
-                </a>
-              </CardContent>
-            </Card>
+          {/* 2 Mirrors — Generative Engines */}
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-4">
+                <BookOpen className="w-4 h-4 text-cyan-400" />
+                <span className="text-sm text-cyan-400">2 Mirrors — Propose Only, Never Seal</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Generative Engines (Δ · Ω)</h3>
+              <p className="text-gray-400 text-sm max-w-xl mx-auto">
+                Mirrors reflect and create. They propose content but cannot judge finality.
+                Both must agree (≥0.85) before advancing to Walls.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {MIRRORS.map((mirror) => (
+                <Card key={mirror.id} className="bg-gray-900/50 border-gray-800">
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <span className="text-4xl font-display font-light text-cyan-400">{mirror.id}</span>
+                      <div>
+                        <CardTitle className="text-lg">{mirror.name}</CardTitle>
+                        <CardDescription>{mirror.role}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-400 mb-2 italic">"{mirror.desc}"</p>
+                    <p className="text-xs text-red-400">CANNOT: Seal decisions · Override floors · Judge finality</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
 
-            <Card className="bg-gray-900/50 border-gray-800">
-              <CardHeader>
-                <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center mb-3">
-                  <Scale className="w-5 h-5 text-violet-400" />
-                </div>
-                <CardTitle className="text-lg">Soul — APEX Engine</CardTitle>
-                <CardDescription>Judicial consensus & sealing</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-400 mb-3">
-                  apex_verdict collapses parallel Mind + Heart results. Renders SEAL, SABAR,
-                  VOID, or 888_HOLD with cryptographic verification.
-                </p>
-                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-violet-300 transition-colors">
-                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
-                </a>
-              </CardContent>
-            </Card>
+          {/* 2 Walls — Non-Generative Authorities */}
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-4">
+                <Scale className="w-4 h-4 text-violet-400" />
+                <span className="text-sm text-violet-400">2 Walls — Judge Only, Never Create</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2">Non-Generative Authorities (Ψ · 888)</h3>
+              <p className="text-gray-400 text-sm max-w-xl mx-auto">
+                Walls stand firm. They decide but do not flow. They judge what Mirrors present.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+              {WALLS.map((wall) => (
+                <Card key={wall.id} className={`bg-gray-900/50 ${wall.id === '888' ? 'border-red-500/30' : 'border-violet-500/30'}`}>
+                  <CardHeader>
+                    <div className="flex items-center gap-4">
+                      <span className={`text-4xl font-display font-light ${wall.id === '888' ? 'text-red-400' : 'text-violet-400'}`}>{wall.id}</span>
+                      <div>
+                        <CardTitle className="text-lg">{wall.name}</CardTitle>
+                        <CardDescription>{wall.role}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-400 mb-2 italic">"{wall.desc}"</p>
+                    <p className={`text-xs ${wall.id === '888' ? 'text-red-400' : 'text-violet-400'}`}>
+                      CANNOT: Propose content · Generate ideas · Create novelty
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1265,7 +1294,7 @@ audit_trail = await arifos.vault.get_history({
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance. 7 layers, 13 floors, 9 explicit tools.
+                Constitutional AI governance. 7 layers, 9 floors, 9 explicit tools.
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-600">APPS Layer</span>
@@ -1280,7 +1309,7 @@ audit_trail = await arifos.vault.get_history({
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><a href="#overview" className="hover:text-white transition-colors">Overview</a></li>
                 <li><a href="#layers" className="hover:text-white transition-colors">7 Layers</a></li>
-                <li><a href="#floors" className="hover:text-white transition-colors">13 Floors</a></li>
+                <li><a href="#floors" className="hover:text-white transition-colors">9 Floors</a></li>
                 <li><a href="#mcp" className="hover:text-white transition-colors">MCP Tools</a></li>
                 <li><a href="#api" className="hover:text-white transition-colors">API Reference</a></li>
               </ul>

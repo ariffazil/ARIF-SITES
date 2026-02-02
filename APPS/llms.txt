@@ -1,8 +1,8 @@
 # arifOS Documentation — Constitutional Governance Kernel
 
-> Complete technical documentation for arifOS: a thermodynamic constitutional governance framework that wraps any LLM (Claude, GPT, Gemini, Llama) and enforces lawful, audited, reversible behavior through 13 floors and Trinity architecture.
+> Complete technical documentation for arifOS: a thermodynamic constitutional governance framework that wraps any LLM (Claude, GPT, Gemini, Llama) and enforces lawful, audited, reversible behavior through 9 floors and Trinity architecture.
 
-arifOS is a governance kernel, not a model. It sits between users and AI systems, validating every output against 13 constitutional floors before release. Truth must cool before it rules.
+arifOS is a governance kernel, not a model. It sits between users and AI systems, validating every output against 9 constitutional floors before release. Truth must cool before it rules.
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ arifOS is a governance kernel, not a model. It sits between users and AI systems
 - [Trinity Architecture](https://arifos.arif-fazil.com/concepts/trinity): AGI (Mind), ASI (Heart), APEX (Soul) — three independent judges
 - [Tri-Witness Consensus](https://arifos.arif-fazil.com/concepts/consensus): How three engines reach agreement without coordination
 
-## The 13 Constitutional Floors
+## The 9 Constitutional Floors
 
 - [Overview](https://arifos.arif-fazil.com/floors): Immutable constraints for AI behavior
 - [F1: Amanah (Reversibility)](https://arifos.arif-fazil.com/floors/f1): Thermodynamic trust — actions must be reversible

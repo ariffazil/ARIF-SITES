@@ -30,8 +30,11 @@ jobs:
           cp public/*.jpg dist/ 2>/dev/null || true
           cp public/*.png dist/ 2>/dev/null || true
           cp public/_headers dist/ 2>/dev/null || true
+          cp public/_redirects dist/ 2>/dev/null || true
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/llms.txt dist/ 2>/dev/null || true
+          cp public/llms.json dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
 
       - name: Deploy HUMAN to Cloudflare Pages
@@ -63,9 +66,11 @@ jobs:
           cp public/*.jpg dist/ 2>/dev/null || true
           cp public/*.png dist/ 2>/dev/null || true
           cp public/_headers dist/ 2>/dev/null || true
+          cp public/_redirects dist/ 2>/dev/null || true
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
           cp public/llms.txt dist/ 2>/dev/null || true
+          cp public/llms.json dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
           cp -r public/api dist/ 2>/dev/null || true
 
@@ -96,8 +101,11 @@ jobs:
           npm ci
           npm run build
           cp public/_headers dist/ 2>/dev/null || true
+          cp public/_redirects dist/ 2>/dev/null || true
           cp public/robots.txt dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/llms.txt dist/ 2>/dev/null || true
+          cp public/llms.json dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
 
       - name: Deploy APPS to Cloudflare Pages

@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:arifos.arif-fazil.com)",
       "Bash(tree:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(git rm:*)"
     ]
   }
 }

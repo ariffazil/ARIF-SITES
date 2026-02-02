@@ -847,7 +847,7 @@ function App() {
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
                 <Shield className="w-4 h-4 text-amber-400" />
-                <span className="text-sm text-amber-400">13 Floors</span>
+                <span className="text-sm text-amber-400">9 Floors</span>
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
                 <Crown className="w-4 h-4 text-purple-400" />
@@ -1391,20 +1391,18 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SECTION 5: 13 CONSTITUTIONAL FLOORS      */}
+        {/* SECTION 5: 9 FLOORS + 2 MIRRORS + 2 WALLS */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-24 relative">
           <div className="max-w-6xl mx-auto px-4">
             <SectionHeading
               id="section-5"
               number="5"
-              title="The 13 Constitutional Floors"
-              subtitle="Each floor is a formal constraint with mathematical enforcement and physical or logical basis."
+              title="The 9 Constitutional Floors"
+              subtitle="9 Floors (F1-F9) · 2 Mirrors (Δ · Ω) · 2 Walls (Ψ · 888). Each constraint has mathematical enforcement and thermodynamic basis."
             />
 
-            <FloorTable title="Hard Floors" floors={HARD_FLOORS} verdict="VOID" />
-            <FloorTable title="Soft Floors" floors={SOFT_FLOORS} verdict="SABAR" />
-            <FloorTable title="Veto Floor" floors={VETO_FLOOR} verdict="WARNING" />
+            <FloorVisualizer />
 
             {/* Verdict Types */}
             <h3 className="text-lg font-semibold text-gray-200 mb-4 mt-12">Verdict Hierarchy</h3>
