@@ -254,13 +254,13 @@ function App() {
               <a href="#runtime" className="text-sm text-gray-400 hover:text-white transition-colors">Runtime</a>
               <div className="flex items-center gap-2 ml-4">
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-1.5">
-                  <Globe className="w-3 h-3" /> BODY
-                </a>
-                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
-                  <Cpu className="w-3 h-3" /> MIND
+                  <Globe className="w-3 h-3" /> HUMAN
                 </a>
                 <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3" /> SOUL
+                  <Sparkles className="w-3 h-3" /> IDEA
+                </a>
+                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
+                  <Cpu className="w-3 h-3" /> APP
                 </a>
               </div>
             </div>
@@ -284,9 +284,9 @@ function App() {
             <a href="#api" className="block text-gray-400 hover:text-white">API</a>
             <a href="#runtime" className="block text-gray-400 hover:text-white">Runtime</a>
             <div className="flex gap-2 pt-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">BODY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">MIND</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs">SOUL</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">HUMAN</a>
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs">IDEA</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">APP</a>
             </div>
           </div>
         )}
@@ -853,12 +853,12 @@ function App() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="https://arif-fazil.com" className="text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1">
-                    BODY <ExternalLink className="w-3 h-3" />
+                    HUMAN <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
                 <li>
                   <a href="https://apex.arif-fazil.com" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1">
-                    SOUL <ExternalLink className="w-3 h-3" />
+                    IDEA <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
                 <li>

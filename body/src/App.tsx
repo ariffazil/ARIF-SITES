@@ -65,13 +65,13 @@ function App() {
             {/* Trinity nav */}
             <div className="hidden md:flex items-center gap-2">
               <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium border border-orange-500/40">
-                BODY
-              </a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
-                MIND
+                HUMAN
               </a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
-                SOUL
+                IDEA
+              </a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
+                APP
               </a>
             </div>
 
@@ -91,9 +91,9 @@ function App() {
             <a href="#writing" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Writing</a>
             <Separator className="bg-gray-800" />
             <div className="flex gap-2 pt-1">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs border border-orange-500/40">BODY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs">MIND</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs">SOUL</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs border border-orange-500/40">HUMAN</a>
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs">IDEA</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs">APP</a>
             </div>
           </div>
         )}
@@ -468,14 +468,25 @@ function App() {
           {/* Ecosystem - subtle */}
           <div className="flex items-center justify-center gap-3">
             <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/15 text-orange-400 text-xs font-medium border border-orange-500/30">
-              BODY
-            </a>
-            <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
-              MIND
+              HUMAN
             </a>
             <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
-              SOUL
+              IDEA
             </a>
+            <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
+              APP
+            </a>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-gray-800/30">
+            <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">arifOS Architecture</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Human (Sovereign)</span>
+              <span className="hidden sm:inline text-gray-700">|</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Idea (Constitutional)</span>
+              <span className="hidden sm:inline text-gray-700">|</span>
+              <span className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Application (Runtime)</span>
+            </div>
           </div>
         </div>
       </footer>

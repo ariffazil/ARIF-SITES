@@ -749,13 +749,13 @@ function App() {
           <div className="max-w-7xl mx-auto px-4">
             <div className="flex items-center justify-center gap-2 py-4">
               <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-orange-500/20 text-orange-400 text-sm font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-orange-400" /> BODY
-              </a>
-              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-cyan-400" /> MIND
+                <span className="w-2 h-2 rounded-full bg-orange-400" /> HUMAN
               </a>
               <a href="https://apex.arif-fazil.com" className="px-4 py-2 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-2 border border-amber-500/50">
-                <span className="w-2 h-2 rounded-full bg-amber-400" /> SOUL
+                <span className="w-2 h-2 rounded-full bg-amber-400" /> IDEA
+              </a>
+              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-colors flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-cyan-400" /> APP
               </a>
             </div>
           </div>
@@ -2844,6 +2844,17 @@ audit_trail = await arifos.vault.get_history({
               <span className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">AI Role: Clerk, not Judge</span>
               <span className="text-gray-700">|</span>
               <span className="text-[10px] font-mono text-purple-400 uppercase tracking-wider">888 Judge: Human Sovereign</span>
+            </div>
+
+            <div className="mb-8 pt-4 border-t border-gray-800/30 max-w-lg mx-auto">
+              <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">arifOS Architecture</p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
+                <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-orange-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Human (Sovereign)</a>
+                <span className="hidden sm:inline text-gray-700">|</span>
+                <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Idea (Constitutional)</a>
+                <span className="hidden sm:inline text-gray-700">|</span>
+                <a href="https://arifos.arif-fazil.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Application (Runtime)</a>
+              </div>
             </div>
 
             <p className="text-gray-400 mb-1">
