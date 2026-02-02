@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:arifos.arif-fazil.com)"
+      "WebFetch(domain:arifos.arif-fazil.com)",
+      "Bash(tree:*)"
     ]
   }
 }

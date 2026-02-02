@@ -24,12 +24,115 @@ import {
   Scale,
   Users,
   AlertTriangle,
-  ArrowRight
+  ArrowRight,
+  MessageSquare,
+  Workflow,
+  Wrench,
+  Bot,
+  Building2,
+  Brain,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+
+// 7-Layer Stack data
+const LAYERS = [
+  {
+    id: 'L1',
+    name: 'PROMPT',
+    tagline: 'Zero-Context Entry',
+    desc: 'Copy a system prompt, paste to any AI. Instant constitutional governance with no setup required.',
+    coverage: '30%',
+    status: 'ready',
+    statusLabel: 'Ready',
+    icon: MessageSquare,
+    color: 'emerald',
+    stage: '000-111',
+    details: '5 prompt files + examples. Works with any LLM that accepts system instructions.',
+  },
+  {
+    id: 'L2',
+    name: 'SKILLS',
+    tagline: 'Parameterized Templates',
+    desc: 'Reusable YAML + Python skill definitions. Parameterized commands that enforce constitutional floors.',
+    coverage: '50%',
+    status: 'ready',
+    statusLabel: 'Ready',
+    icon: Sparkles,
+    color: 'emerald',
+    stage: '222',
+    details: '50+ skill templates. YAML frontmatter with Python wrappers for tool integration.',
+  },
+  {
+    id: 'L3',
+    name: 'WORKFLOW',
+    tagline: 'Documented Sequences',
+    desc: 'Team standard operating procedures. 6 workflow files mapping to constitutional stages.',
+    coverage: '70%',
+    status: 'ready',
+    statusLabel: 'Ready',
+    icon: Workflow,
+    color: 'emerald',
+    stage: '333-444',
+    details: 'Session init, intent detection, context mapping, safety checks, implementation, and commit workflows.',
+  },
+  {
+    id: 'L4',
+    name: 'TOOLS',
+    tagline: '9 MCP Tools · Production',
+    desc: 'The constitutional MCP server. 9 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
+    coverage: '80%',
+    status: 'production',
+    statusLabel: 'Production',
+    icon: Wrench,
+    color: 'cyan',
+    stage: '555-666',
+    details: 'FastAPI + SSE transport on Railway. 28/28 schema tests passing. v55.2-SEAL.',
+  },
+  {
+    id: 'L5',
+    name: 'AGENTS',
+    tagline: '4-Agent Federation',
+    desc: 'Architect, Engineer, Auditor, Validator — four autonomous agents coordinating under constitutional law.',
+    coverage: '90%',
+    status: 'stubs',
+    statusLabel: 'Stubs Only',
+    icon: Bot,
+    color: 'red',
+    stage: '777',
+    details: 'Architecture defined, stubs created with correct signatures. 0% functional — all methods pass.',
+  },
+  {
+    id: 'L6',
+    name: 'INSTITUTION',
+    tagline: 'Trinity Multi-Agent System',
+    desc: 'Mind/Heart/Soul roles, Tri-Witness gate, Phoenix-72 cooling system. Full institutional governance.',
+    coverage: '100%',
+    status: 'design',
+    statusLabel: 'Design Only',
+    icon: Building2,
+    color: 'amber',
+    stage: '888',
+    details: 'Design documented. Constitutional orchestrator, role definitions, witness gate planned for v56.0.',
+  },
+  {
+    id: 'L7',
+    name: 'AGI',
+    tagline: 'Constitutional AGI',
+    desc: 'Self-improving intelligence within constitutional bounds. F10 Ontology Lock + F13 Sovereign Veto.',
+    coverage: '∞',
+    status: 'research',
+    statusLabel: 'Research',
+    icon: Brain,
+    color: 'violet',
+    stage: '999→000',
+    details: 'Theoretical research phase. Hard constraints: no consciousness claims, human override always available.',
+  },
+];
 
 // 13 Floors data
 const FLOORS = [
@@ -39,7 +142,7 @@ const FLOORS = [
   { id: 'F4', name: 'Certainty', desc: 'Confidence thresholds', icon: Scale, color: 'orange' },
   { id: 'F5', name: 'Peace', desc: 'Non-violence embedded', icon: Shield, color: 'orange' },
   { id: 'F6', name: 'Clarity', desc: 'Entropy reduction', icon: Lightbulb, color: 'orange' },
-  { id: 'F7', name: 'Humility', desc: 'Gödel uncertainty', icon: Search, color: 'yellow' },
+  { id: 'F7', name: 'Humility', desc: 'Uncertainty band', icon: Search, color: 'yellow' },
   { id: 'F8', name: 'Genius', desc: 'Wisdom equation', icon: Zap, color: 'yellow' },
   { id: 'F9', name: 'Reality', desc: 'Observable grounding', icon: Globe, color: 'yellow' },
   { id: 'F10', name: 'Ontology', desc: 'What exists', icon: BookOpen, color: 'cyan' },
@@ -49,7 +152,6 @@ const FLOORS = [
 ];
 
 // MCP Tools data — v55.1 Explicit Tool Architecture (9 core tools)
-// Legacy _init_/_agi_/_asi_/_apex_/_vault_/_trinity_/_reality_ deprecated — removal in v56.0 (Phoenix-72)
 const MCP_TOOLS = [
   {
     name: 'init_reboot',
@@ -179,7 +281,7 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.1-SEAL' });
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  // const [activeTab, setActiveTab] = useState('overview');
+  const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -218,6 +320,17 @@ function App() {
     return colors[color] || colors.cyan;
   };
 
+  const getStatusBadge = (status: string, label: string) => {
+    const styles: Record<string, string> = {
+      ready: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+      production: 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30',
+      stubs: 'bg-red-500/20 text-red-400 border-red-500/30',
+      design: 'bg-amber-500/20 text-amber-400 border-amber-500/30',
+      research: 'bg-violet-500/20 text-violet-400 border-violet-500/30',
+    };
+    return <Badge className={`text-xs ${styles[status] || styles.ready}`}>{label}</Badge>;
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans relative overflow-x-hidden">
       {/* Animated Mesh Gradient Background */}
@@ -245,22 +358,22 @@ function App() {
               </div>
               <div>
                 <span className="font-semibold text-lg">arifOS</span>
-                <span className="text-xs text-gray-500 ml-2 hidden sm:inline">MIND</span>
+                <span className="text-xs text-gray-500 ml-2 hidden sm:inline">APPS</span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
               <a href="#overview" className="text-sm text-gray-400 hover:text-white transition-colors">Overview</a>
+              <a href="#layers" className="text-sm text-gray-400 hover:text-white transition-colors">7 Layers</a>
               <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">13 Floors</a>
               <a href="#mcp" className="text-sm text-gray-400 hover:text-white transition-colors">MCP Tools</a>
               <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
-              <a href="#runtime" className="text-sm text-gray-400 hover:text-white transition-colors">Runtime</a>
               <div className="flex items-center gap-2 ml-4">
-                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-red-900/30 text-red-400 text-xs font-medium hover:bg-red-900/40 transition-colors flex items-center gap-1.5 border border-red-800/50">
+                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors flex items-center gap-1.5">
                   <Globe className="w-3 h-3" /> HUMAN
                 </a>
-                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-1.5">
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs font-medium hover:bg-amber-900/20 transition-colors flex items-center gap-1.5">
                   <Sparkles className="w-3 h-3" /> THEORY
                 </a>
                 <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
@@ -270,7 +383,7 @@ function App() {
             </div>
 
             {/* Mobile menu button */}
-            <button 
+            <button
               className="md:hidden p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
@@ -282,15 +395,15 @@ function App() {
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-800 px-4 py-4 space-y-3">
-            <a href="#overview" className="block text-gray-400 hover:text-white">Overview</a>
-            <a href="#floors" className="block text-gray-400 hover:text-white">13 Floors</a>
-            <a href="#mcp" className="block text-gray-400 hover:text-white">MCP Tools</a>
-            <a href="#api" className="block text-gray-400 hover:text-white">API</a>
-            <a href="#runtime" className="block text-gray-400 hover:text-white">Runtime</a>
+            <a href="#overview" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Overview</a>
+            <a href="#layers" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>7 Layers</a>
+            <a href="#floors" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>13 Floors</a>
+            <a href="#mcp" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>MCP Tools</a>
+            <a href="#api" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>API</a>
             <div className="flex gap-2 pt-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs">HUMAN</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs">IDEA</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">APP</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs hover:bg-red-900/20">HUMAN</a>
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs hover:bg-amber-900/20">THEORY</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded bg-cyan-500/20 text-cyan-400 text-xs border border-cyan-500/40">APPS</a>
             </div>
           </div>
         )}
@@ -301,8 +414,8 @@ function App() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           {/* Tagline */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
-            <BookOpen className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm text-cyan-400">MIND Layer · Documentation & API</span>
+            <Cpu className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm text-cyan-400">APPS Layer · 7-Layer Application Stack</span>
           </div>
 
           {/* Title */}
@@ -317,13 +430,14 @@ function App() {
 
           {/* Architecture Tag */}
           <p className="text-sm text-gray-500 mb-3 font-mono">
-            HUMAN THEORY APPS Parallel Architecture (Async AGI || ASI)
+            From Zero-Context Prompt to Constitutional AGI
           </p>
 
           {/* Description */}
           <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
-            Constitutional AI governance framework with 13 safety floors, 9 explicit MCP tools, and
-            cryptographic verification. Every decision is measured, witnessed, and sealed.
+            The 7-layer deployment architecture for constitutional AI governance.
+            Choose your entry point — from a simple system prompt to production MCP tools
+            to autonomous agent federations. Every layer enforces 13 safety floors.
           </p>
 
           {/* Status Badge */}
@@ -331,30 +445,30 @@ function App() {
             <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${systemStatus.online ? 'border-green-500/30 bg-green-500/10' : 'border-red-500/30 bg-red-500/10'}`}>
               <Activity className={`w-4 h-4 ${systemStatus.online ? 'text-green-400' : 'text-red-400'}`} />
               <span className={`text-sm font-medium ${systemStatus.online ? 'text-green-400' : 'text-red-400'}`}>
-                {systemStatus.online ? '● ONLINE' : '● OFFLINE'}
+                {systemStatus.online ? 'ONLINE' : 'OFFLINE'}
               </span>
               <span className="text-sm text-gray-500">{systemStatus.version}</span>
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10">
-              <Shield className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm text-cyan-400">13 Floors Active</span>
+              <Layers className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm text-cyan-400">7 Layers</span>
             </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
-              <Lock className="w-4 h-4 text-amber-400" />
-              <span className="text-sm text-amber-400">MCP Protocol</span>
+              <Shield className="w-4 h-4 text-amber-400" />
+              <span className="text-sm text-amber-400">13 Floors</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a href="#mcp">
+            <a href="#layers">
               <Button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-6">
-                <Terminal className="w-4 h-4 mr-2" /> MCP Tools
+                <Layers className="w-4 h-4 mr-2" /> Explore Layers
               </Button>
             </a>
-            <a href="#api">
+            <a href="#mcp">
               <Button variant="outline" className="border-gray-700 hover:bg-gray-800">
-                <Code className="w-4 h-4 mr-2" /> API Reference
+                <Terminal className="w-4 h-4 mr-2" /> MCP Tools
               </Button>
             </a>
             <a href="https://github.com/ariffazil/arifOS" target="_blank" rel="noopener noreferrer">
@@ -368,7 +482,7 @@ function App() {
           <div className="mt-12 max-w-lg mx-auto">
             <div className="bg-black/50 rounded-lg p-4 border border-gray-800 flex items-center justify-between">
               <code className="text-sm text-cyan-400 font-mono">pip install arifos</code>
-              <button 
+              <button
                 onClick={() => copyToClipboard(INSTALL_CODE, 'install')}
                 className="p-2 hover:bg-gray-800 rounded transition-colors"
               >
@@ -386,18 +500,129 @@ function App() {
         </div>
       </section>
 
+      {/* 7 Layers Section */}
+      <section id="layers" className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6">
+              <Layers className="w-4 h-4 text-cyan-400" />
+              <span className="text-sm text-cyan-400">Application Architecture</span>
+            </div>
+            <h2 className="text-4xl font-bold mb-4">The 7-Layer Stack</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Choose your entry point based on complexity needs.
+              From a zero-context prompt to constitutional AGI research — each layer
+              builds on the one below it.
+            </p>
+          </div>
+
+          {/* Layer Stack Visualization */}
+          <div className="max-w-4xl mx-auto space-y-3">
+            {[...LAYERS].reverse().map((layer) => {
+              const colors = getColorClasses(layer.color);
+              const Icon = layer.icon;
+              const isExpanded = expandedLayer === layer.id;
+
+              return (
+                <button
+                  key={layer.id}
+                  onClick={() => setExpandedLayer(isExpanded ? null : layer.id)}
+                  className={`w-full text-left rounded-xl border transition-all duration-300 ${colors.border} ${isExpanded ? `${colors.bg} shadow-lg` : 'bg-gray-900/30 hover:bg-gray-900/50'}`}
+                >
+                  <div className="p-5">
+                    <div className="flex items-center gap-4">
+                      {/* Layer ID */}
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${colors.bg} border ${colors.border}`}>
+                        <Icon className={`w-5 h-5 ${colors.text}`} />
+                      </div>
+
+                      {/* Layer Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <span className="text-xs font-mono text-gray-500">{layer.id}</span>
+                          <h3 className="font-semibold text-white">{layer.name}</h3>
+                          <span className="text-xs text-gray-500 hidden sm:inline">— {layer.tagline}</span>
+                        </div>
+                        <p className="text-sm text-gray-400 mt-1 line-clamp-1">{layer.desc}</p>
+                      </div>
+
+                      {/* Status + Coverage */}
+                      <div className="flex items-center gap-3 flex-shrink-0">
+                        <span className="text-xs font-mono text-gray-600 hidden sm:inline">{layer.coverage}</span>
+                        {getStatusBadge(layer.status, layer.statusLabel)}
+                        {isExpanded ? (
+                          <ChevronUp className="w-4 h-4 text-gray-500" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-gray-500" />
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Expanded Details */}
+                    {isExpanded && (
+                      <div className="mt-4 pt-4 border-t border-gray-800/50">
+                        <div className="grid sm:grid-cols-3 gap-4">
+                          <div>
+                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Coverage</p>
+                            <p className="text-sm text-white">{layer.coverage}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Stages</p>
+                            <p className="text-sm font-mono text-white">{layer.stage}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Status</p>
+                            <p className="text-sm text-white">{layer.statusLabel}</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-400 mt-3">{layer.details}</p>
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Quick Reference Table */}
+          <div className="mt-16 max-w-4xl mx-auto rounded-xl border border-gray-800 overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-800 bg-gray-900/40">
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium">Layer</th>
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium hidden sm:table-cell">Use Case</th>
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {LAYERS.map((layer) => (
+                  <tr key={layer.id} className="border-b border-gray-800/50">
+                    <td className="px-4 py-3">
+                      <span className="font-mono text-xs text-gray-500 mr-2">{layer.id}</span>
+                      <span className="text-white">{layer.name}</span>
+                    </td>
+                    <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">{layer.tagline}</td>
+                    <td className="px-4 py-3">{getStatusBadge(layer.status, layer.statusLabel)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* 13 Floors Section */}
-      <section id="floors" className="py-24 relative">
+      <section id="floors" className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-red-500/20 via-yellow-500/20 to-cyan-500/20 border border-gray-700 mb-6">
-              <Layers className="w-4 h-4 text-gray-400" />
+              <Shield className="w-4 h-4 text-gray-400" />
               <span className="text-sm text-gray-300">Constitutional Framework</span>
             </div>
             <h2 className="text-4xl font-bold mb-4">The 13 Floors</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Every AI decision passes through 13 constitutional safety checks. 
-              Three independent judges verify each floor before execution.
+              Every AI decision passes through 13 constitutional safety checks.
+              Three independent engines verify each floor before execution.
             </p>
           </div>
 
@@ -407,7 +632,7 @@ function App() {
               const colors = getColorClasses(floor.color);
               const Icon = floor.icon;
               return (
-                <div 
+                <div
                   key={floor.id}
                   className={`relative p-4 rounded-xl border transition-all hover:scale-105 ${colors.border} ${colors.bg} hover:bg-opacity-10 hover:shadow-lg ${colors.glow}`}
                 >
@@ -426,15 +651,15 @@ function App() {
           <div className="mt-16 grid md:grid-cols-3 gap-6">
             <Card className="bg-gray-900/50 border-gray-800">
               <CardHeader>
-                <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-3">
-                  <BookOpen className="w-5 h-5 text-blue-400" />
+                <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-3">
+                  <BookOpen className="w-5 h-5 text-cyan-400" />
                 </div>
                 <CardTitle className="text-lg">Mind — ARIF Engine</CardTitle>
                 <CardDescription>Deep reasoning & pattern recognition</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-400">
-                  agi_sense → agi_think → agi_reason. Runs async in parallel with Heart.
+                  agi_sense, agi_think, agi_reason. Runs async in parallel with Heart.
                   The epistemic pipeline that parses, hypothesizes, and proves.
                 </p>
               </CardContent>
@@ -450,7 +675,7 @@ function App() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-400">
-                  asi_empathize → asi_align → asi_insight. Runs async in parallel with Mind.
+                  asi_empathize, asi_align, asi_insight. Runs async in parallel with Mind.
                   The safety pipeline ensuring alignment with human values.
                 </p>
               </CardContent>
@@ -476,7 +701,7 @@ function App() {
       </section>
 
       {/* MCP Tools Section */}
-      <section id="mcp" className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+      <section id="mcp" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6">
@@ -607,7 +832,7 @@ function App() {
       </section>
 
       {/* API Reference Section */}
-      <section id="api" className="py-24 relative">
+      <section id="api" className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* API Endpoints */}
@@ -624,14 +849,14 @@ function App() {
 
               <div className="space-y-3">
                 {ENDPOINTS.map((endpoint) => (
-                  <div 
+                  <div
                     key={endpoint.path}
                     className="flex items-center justify-between p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-700 transition-colors"
                   >
                     <div className="flex items-center gap-4">
-                      <Badge 
-                        className={endpoint.method === 'GET' 
-                          ? 'bg-green-500/20 text-green-400 border-green-500/30' 
+                      <Badge
+                        className={endpoint.method === 'GET'
+                          ? 'bg-green-500/20 text-green-400 border-green-500/30'
                           : 'bg-amber-500/20 text-amber-400 border-amber-500/30'
                         }
                       >
@@ -654,7 +879,7 @@ function App() {
                   <span className="text-sm font-medium text-blue-400">Server-Sent Events</span>
                 </div>
                 <p className="text-sm text-gray-400">
-                  Connect to <code className="text-cyan-400">/sse</code> for real-time 
+                  Connect to <code className="text-cyan-400">/sse</code> for real-time
                   constitutional verdicts and system status updates.
                 </p>
               </div>
@@ -675,7 +900,7 @@ function App() {
               <div className="bg-black/50 rounded-xl border border-gray-800 overflow-hidden">
                 <div className="flex items-center justify-between px-4 py-2 bg-gray-900/50 border-b border-gray-800">
                   <span className="text-xs text-gray-500">example.py</span>
-                  <button 
+                  <button
                     onClick={() => copyToClipboard(USAGE_CODE, 'usage')}
                     className="p-1.5 hover:bg-gray-800 rounded transition-colors"
                   >
@@ -691,7 +916,7 @@ function App() {
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <a href="https://pypi.org/project/arifos/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-gray-700 transition-colors group">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-lg">📦</span>
+                    <Server className="w-5 h-5 text-gray-400 group-hover:text-cyan-400 transition-colors" />
                     <span className="font-medium group-hover:text-cyan-400 transition-colors">PyPI</span>
                   </div>
                   <p className="text-xs text-gray-500">pip install arifos</p>
@@ -710,19 +935,19 @@ function App() {
       </section>
 
       {/* Constitutional Equations Section */}
-      <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] to-gray-900/30">
+      <section className="py-24 relative">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-12">Constitutional Equations</h2>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="bg-gray-900/30 border-gray-800 p-6">
               <div className="text-4xl font-mono text-cyan-400 mb-4">W₃</div>
               <h3 className="text-lg font-semibold mb-2">Tri-Witness Consensus</h3>
               <p className="text-sm text-gray-400 mb-4">
-                Geometric mean of Human × AI × System witnesses
+                Geometric mean of Human x AI x System witnesses
               </p>
               <code className="text-xs bg-black/50 px-3 py-2 rounded block">
-                W₃ = ∛(H × A × E) ≥ 0.95
+                W₃ = ∛(H x A x E) ≥ 0.95
               </code>
               <p className="text-xs text-gray-500 mt-3">Floor F3 Minimum</p>
             </Card>
@@ -734,16 +959,16 @@ function App() {
                 Multiplicative wisdom across four dimensions
               </p>
               <code className="text-xs bg-black/50 px-3 py-2 rounded block">
-                G = A × P × X × E² ≥ 0.80
+                G = A x P x X x E² ≥ 0.80
               </code>
               <p className="text-xs text-gray-500 mt-3">Floor F8 Minimum</p>
             </Card>
 
             <Card className="bg-gray-900/30 border-gray-800 p-6">
               <div className="text-4xl font-mono text-violet-400 mb-4">Ω₀</div>
-              <h3 className="text-lg font-semibold mb-2">Gödel Uncertainty</h3>
+              <h3 className="text-lg font-semibold mb-2">Uncertainty Band</h3>
               <p className="text-sm text-gray-400 mb-4">
-                Epistemic humility through uncertainty bands
+                Epistemic humility through calibrated uncertainty
               </p>
               <code className="text-xs bg-black/50 px-3 py-2 rounded block">
                 Ω₀ ∈ [0.03, 0.05]
@@ -755,7 +980,7 @@ function App() {
       </section>
 
       {/* Runtime & Infrastructure */}
-      <section id="runtime" className="py-16 relative">
+      <section id="runtime" className="py-16 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-2xl font-bold mb-2">Runtime</h2>
           <p className="text-gray-400 text-sm mb-8">Infrastructure and deployment details for the Trinity ecosystem.</p>
@@ -801,10 +1026,6 @@ function App() {
               </CardContent>
             </Card>
           </div>
-
-          <p className="text-xs text-gray-600 mt-4">
-            Build provenance available at <code className="text-gray-500">/build-info.json</code> on each site — includes git SHA, branch, and build timestamp.
-          </p>
         </div>
       </section>
 
@@ -821,12 +1042,12 @@ function App() {
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance. 13 floors, 9 explicit tools, Trinity Parallel.
+                Constitutional AI governance. 7 layers, 13 floors, 9 explicit tools.
               </p>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-600">MIND Layer</span>
+                <span className="text-xs text-gray-600">APPS Layer</span>
                 <span className="text-gray-700">|</span>
-                <span className="text-xs text-gray-600">Documentation</span>
+                <span className="text-xs text-gray-600">Application Stack</span>
               </div>
             </div>
 
@@ -835,10 +1056,10 @@ function App() {
               <h4 className="font-medium mb-4">Documentation</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><a href="#overview" className="hover:text-white transition-colors">Overview</a></li>
+                <li><a href="#layers" className="hover:text-white transition-colors">7 Layers</a></li>
                 <li><a href="#floors" className="hover:text-white transition-colors">13 Floors</a></li>
                 <li><a href="#mcp" className="hover:text-white transition-colors">MCP Tools</a></li>
                 <li><a href="#api" className="hover:text-white transition-colors">API Reference</a></li>
-                <li><a href="#runtime" className="hover:text-white transition-colors">Runtime</a></li>
               </ul>
             </div>
 
@@ -890,10 +1111,23 @@ function App() {
 
           <Separator className="mb-8 bg-gray-800" />
 
+          {/* Trinity badges - aligned with HUMAN page */}
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full text-red-400 text-xs font-medium hover:bg-red-500/10 transition-colors">
+              HUMAN
+            </a>
+            <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
+              THEORY
+            </a>
+            <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/15 text-cyan-400 text-xs font-medium border border-cyan-500/30">
+              APPS
+            </a>
+          </div>
+
           {/* Bottom */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-gray-600">
-              © {new Date().getFullYear()} Muhammad Arif bin Fazil · Penang, Malaysia
+              &copy; {new Date().getFullYear()} Muhammad Arif bin Fazil &middot; Penang, Malaysia
             </p>
             <p className="text-xs tracking-[0.3em] text-gray-700 uppercase">
               Ditempa Bukan Diberi — Forged, Not Given
