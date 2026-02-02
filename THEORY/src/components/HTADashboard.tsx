@@ -18,7 +18,7 @@ interface FloorStatus {
   value: number;
 }
 
-export function TrinityDashboard() {
+export function HTADashboard() {
   const [metrics, setMetrics] = useState<SystemMetrics>({
     clarity: 0,
     stability: 0,
@@ -184,7 +184,7 @@ export function TrinityDashboard() {
             </div>
             <div>
               <h3 className="font-display text-sm font-bold text-white tracking-widest uppercase">
-                TRINITY_CORE_MONITOR
+                HTA_CORE_MONITOR
               </h3>
               <p className="text-[10px] font-mono text-gray-600 mt-1 tracking-tighter uppercase">Real-time Constitutional State</p>
             </div>

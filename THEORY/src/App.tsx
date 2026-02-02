@@ -32,10 +32,10 @@ import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 // Import new Trinity components
-import { TrinityDashboard } from '@/components/TrinityDashboard';
+import { HTADashboard } from '@/components/HTADashboard';
 import { FloorVisualizer } from '@/components/FloorVisualizer';
 import { EngineDiagram } from '@/components/EngineDiagram';
-import { MetabolicLoop } from '@/components/MetabolicLoop';
+import { MetabolicLoop } from '@/components/HTAMetabolicLoop';
 import { CitationBlock } from '@/components/CitationBlock';
 
 // ─────────────────────────────────────────────────
@@ -1078,7 +1078,7 @@ function App() {
               title="HTA System Monitor"
               subtitle="Real-time constitutional compliance visualization."
             />
-            <TrinityDashboard />
+            <HTADashboard />
           </div>
         </section>
 
