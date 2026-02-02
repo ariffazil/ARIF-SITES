@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { 
-  Play, Pause, RotateCcw, 
-  Bot, Shield, Eye, Heart, Zap, Crown, Lock, Gauge
+  Play, Pause, RotateCcw, ChevronRight, 
+  Bot, User, Shield, Eye, Heart, Zap, Crown, Lock, Gauge
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -37,7 +37,7 @@ export function MetabolicLoop() {
   const [completedStages, setCompletedStages] = useState<Set<number>>(new Set());
   const [entropy, setEntropy] = useState(100);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number | undefined>(undefined);
+  const animationRef = useRef<number>();
 
   // Animation loop
   useEffect(() => {

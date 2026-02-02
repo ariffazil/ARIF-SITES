@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, Lock, Eye, Heart, Zap, Crown, Gauge, XCircle, PauseCircle } from 'lucide-react';
+import { Shield, Lock, Eye, Heart, Zap, Crown, Gauge, AlertTriangle, CheckCircle2, XCircle, PauseCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 

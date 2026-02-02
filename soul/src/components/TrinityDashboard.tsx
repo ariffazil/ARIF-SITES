@@ -152,7 +152,14 @@ export function TrinityDashboard() {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
-
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'pass': return 'bg-green-500';
+      case 'warn': return 'bg-amber-500';
+      case 'fail': return 'bg-red-500';
+      default: return 'bg-gray-600';
+    }
+  };
 
   const getVerdictColor = (verdict: string) => {
     switch (verdict) {
