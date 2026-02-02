@@ -1,12 +1,12 @@
 # arif-fazil-sites
 
-Frontend monorepo for the **HUMAN THEORY APPS** (HTA) ecosystem — three interconnected sites for AI constitutional governance.
+Frontend monorepo for the **arifOS Trinity** (HUMAN · THEORY · APPS) — three interconnected sites for constitutional AI governance.
 
-| Layer | Directory | Domain | What it does |
-|-------|-----------|--------|--------------|
-| **HUMAN** | `HUMAN/` | [arif-fazil.com](https://arif-fazil.com) | Personal portfolio, background, ecosystem entry point |
-| **THEORY** | `THEORY/` | [apex.arif-fazil.com](https://apex.arif-fazil.com) | Constitutional canon — 13 floors, three engines, scientific grounding |
-| **APPS** | `APPS/` | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | Documentation — 7-layer stack, MCP tools, API reference, implementation guides |
+| Layer | Symbol | Directory | Domain | Function |
+|-------|--------|-----------|--------|----------|
+| **HUMAN** | Δ | `HUMAN/` | [arif-fazil.com](https://arif-fazil.com) | The Body — Personal portfolio, Trinity entry point |
+| **THEORY** | Ψ | `THEORY/` | [apex.arif-fazil.com](https://apex.arif-fazil.com) | The Soul — Constitutional canon, 13 floors, scientific grounding |
+| **APPS** | Ω | `APPS/` | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | The Mind — Documentation, MCP tools, API reference |
 
 **MIND** (MCP backend) lives separately at `aaamcp.arif-fazil.com`, deployed from the [arifOS](https://github.com/ariffazil/arifOS) repo.
 
@@ -34,13 +34,13 @@ Each site is an **independent React + Vite + TypeScript** project with its own `
 
 ## Tech Stack
 
-| Site | React | Vite | Styling | Special |
-|------|-------|------|---------|---------|
-| HUMAN (`HUMAN/`) | 19 | 7 | TailwindCSS + 50+ shadcn/ui components | React Hook Form, Zod |
-| THEORY (`THEORY/`) | 19 | 7 | TailwindCSS + 50+ shadcn/ui components | KaTeX (math rendering) |
-| APPS (`APPS/`) | 18 | 5 | TailwindCSS + minimal shadcn/ui | — |
+| Site | React | Vite | Styling | Typography | Special |
+|------|-------|------|---------|------------|---------|
+| HUMAN | 19 | 7 | TailwindCSS + shadcn/ui | Inter + JetBrains Mono | Three discipline visuals (Geology/Economics/AI) |
+| THEORY | 19 | 7 | TailwindCSS + shadcn/ui | Space Mono + Syncopate | KaTeX math, Floor visualizer |
+| APPS | 18 | 5 | TailwindCSS + shadcn/ui | Inter + JetBrains Mono | Code blocks, API docs |
 
-All sites use Lucide React for icons.
+All sites use Lucide React for icons and share the **Forge Design System** (see `VISUAL_SCHEMA.md`).
 
 ---
 
@@ -61,41 +61,67 @@ cd APPS && npm install && npm run dev
 
 ---
 
+## 🎨 Visual Design System
+
+The arifOS ecosystem follows a unified **Forge Design Language** defined in [`HUMAN/public/VISUAL_SCHEMA.md`](HUMAN/public/VISUAL_SCHEMA.md):
+
+| Layer | Primary Color | Theme | Visual Metaphor |
+|-------|---------------|-------|-----------------|
+| HUMAN | `#8B0000` (Dark Red) | Fire/Blood | The Forge — transformation through heat |
+| THEORY | `#3D5A8A` (Steel Blue) | Blueprint | The Architect — precise, scholarly |
+| APPS | `#0EA5E9` (Cyan) | Circuit | The Runtime — flow, logic, clarity |
+
+**Trinity Symbol**: The Sierpinski Triangle (Δ) appears across all three sites, representing recursive self-similar governance.
+
 ## Deployment
 
 ### Automatic (GitHub Actions)
 
-Push to `main` triggers `.github/workflows/deploy.yml`, which:
+Push to `main` triggers `.github/workflows/deploy.yml`, which builds and deploys all three sites to Cloudflare Pages.
 
-1. Builds all three sites in parallel (`HUMAN/`, `THEORY/`, `APPS/`)
-2. Deploys each to its Cloudflare Pages project via `cloudflare/wrangler-action`
+### Manual Build
 
-### Required GitHub Secrets
-
-| Secret | Purpose |
-|--------|---------|
-| `CLOUDFLARE_API_TOKEN` | Cloudflare API authentication |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account identifier |
-| `CLOUDFLARE_PAGES_PROJECT_HUMAN` | Pages project name for arif-fazil.com |
-| `CLOUDFLARE_PAGES_PROJECT_THEORY` | Pages project name for apex.arif-fazil.com |
-| `CLOUDFLARE_PAGES_PROJECT_APPS` | Pages project name for arifos.arif-fazil.com |
+```bash
+# Build all sites
+npm run build --prefix HUMAN
+npm run build --prefix THEORY
+npm run build --prefix APPS
+```
 
 ### Cloudflare Pages Configuration
 
-| Pages Project | Root Directory | Build Command | Output Directory |
-|---------------|---------------|---------------|------------------|
-| HUMAN project | `HUMAN` | `npm run build` | `HUMAN/dist` |
-| APEX project | `THEORY` | `npm run build` | `THEORY/dist` |
-| APPS project | `APPS` | `npm run build` | `APPS/dist` |
+| Project | Root Directory | Build Command | Output |
+|---------|---------------|---------------|--------|
+| HUMAN | `HUMAN` | `npm run build` | `dist` |
+| THEORY | `THEORY` | `npm run build` | `dist` |
+| APPS | `APPS` | `npm run build` | `dist` |
 
-> **Note:** If you renamed a folder, you must also update the Root Directory in the Cloudflare Pages dashboard for that project.
+### Required Secrets
+
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_PAGES_PROJECT_HUMAN`
+- `CLOUDFLARE_PAGES_PROJECT_THEORY`
+- `CLOUDFLARE_PAGES_PROJECT_APPS`
 
 ---
 
 ## Related Repositories
 
-- **arifOS** ([github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)) — The MCP backend (MIND layer), deployed to Railway at `aaamcp.arif-fazil.com`
+- **arifOS** ([github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)) — The MCP backend (MIND layer)
+
+## AI Agent Context
+
+This repository provides canonical context files for AI systems:
+
+| File | Path | Purpose |
+|------|------|---------|
+| `llms.txt` | `HUMAN/public/llms.txt` | HUMAN layer sovereign memory |
+| `llms.json` | `HUMAN/public/llms.json` | Structured HUMAN data |
+| `VISUAL_SCHEMA.md` | `HUMAN/public/VISUAL_SCHEMA.md` | Complete design system |
 
 ---
 
-> DITEMPA BUKAN DIBERI — Forged, Not Given
+> **DITEMPA BUKAN DIBERI** — *Forged, Not Given*
+> 
+> v55.3 · SOVEREIGNLY_SEALED
