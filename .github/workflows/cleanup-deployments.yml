@@ -1,0 +1,28 @@
+name: Cleanup Old Deployments
+
+on:
+  schedule:
+    # Run every Sunday at 2 AM UTC
+    - cron: "0 2 * * 0"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [apex, ariffazil, arifos]
+
+    steps:
+      - name: Delete old deployments for ${{ matrix.project }}
+        run: |
+          # Get all deployments, keep only last 10
+          DEPLOYMENTS=$(curl -s -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/${{ matrix.project }}/deployments?per_page=100" \
+            | jq -r '.result[] | select(.status!="active") | .id' | tail -n +11)
+
+          for deployment_id in $DEPLOYMENTS; do
+            echo "Deleting deployment: $deployment_id"
+            curl -X DELETE -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+              "https://api.cloudflare.com/client/v4/accounts/${{ secrets.CLOUDFLARE_ACCOUNT_ID }}/pages/projects/${{ matrix.project }}/deployments/$deployment_id"
+          done
