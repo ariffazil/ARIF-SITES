@@ -1971,6 +1971,14 @@ function App() {
                 tests<Cite n={48} />, but the mechanism is probabilistic pattern matching over token
                 distributions, not genuine mentalizing.
               </p>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                The illusion feels "psychic" because compression is fast. An LLM can rapidly match a
+                user's phrasing against millions of discourse patterns and produce a response that
+                appears to anticipate intent — but this is the same mechanism that produces fluent
+                nonsense when evidence is thin. Users mistake <em>coherence</em> for <em>inner access</em>.
+                APEX treats this as a governance problem, not a philosophical one: the system must
+                be useful (pragmatic inference is allowed) while remaining honest (no claim of understanding).
+              </p>
               <div className="grid gap-3 mb-4">
                 {[
                   'Next-token prediction implicitly learns pragmatic inference patterns (Rational Speech Acts)',
@@ -2150,10 +2158,56 @@ function App() {
               </div>
             </div>
 
+            {/* Eureka is Orthogonal */}
+            <div className="mb-12">
+              <h3 className="text-xl font-semibold mb-4 text-gray-200">
+                8b.7 Doctrine: Eureka is Orthogonal
+              </h3>
+              <div className="p-5 rounded-xl border border-purple-500/20 bg-purple-500/5 mb-6">
+                <p className="text-sm text-gray-300 leading-relaxed mb-3">
+                  <strong className="text-purple-400">Eureka ≠ Understanding.</strong>{' '}
+                  The subjective experience of sudden insight ("aha!") is an alignment signal in
+                  biological cognition — it correlates with pattern completion but does not constitute
+                  verification. APEX does not measure eureka. APEX measures stability.
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3 mt-4">
+                  <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                    <p className="text-xs font-mono text-purple-400 mb-1">EUREKA</p>
+                    <p className="text-[10px] text-gray-500">Subjective alignment signal</p>
+                    <p className="text-[10px] text-gray-600 mt-1">Not auditable. Not governed.</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                    <p className="text-xs font-mono text-amber-400 mb-1">UNDERSTANDING</p>
+                    <p className="text-[10px] text-gray-500">Sustained constraint satisfaction</p>
+                    <p className="text-[10px] text-gray-600 mt-1">G ≥ 0.80 across all four dials</p>
+                  </div>
+                  <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
+                    <p className="text-xs font-mono text-green-400 mb-1">APEX MEASURE</p>
+                    <p className="text-[10px] text-gray-500">Stable predictions + auditability</p>
+                    <p className="text-[10px] text-gray-600 mt-1">Falsifiable. Governed. Sealed.</p>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                In biological cognition, eureka is a byproduct of neural pattern completion — the
+                feeling that pieces "click." It is epistemically unreliable: eureka occurs for
+                correct insights and false ones alike. APEX treats understanding not as a feeling
+                but as a measurable property: the system produces stable predictions under perturbation
+                (F5), reduces entropy in its outputs (F4), maintains calibrated uncertainty (F7),
+                and its decisions survive tri-witness consensus (F3).
+              </p>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                This doctrine is orthogonal to CSM-ToM because it applies to the system's own
+                processing, not to modeling others. A system governed by APEX does not need to
+                "feel" understanding — it needs to <em>demonstrate</em> it through constitutional
+                compliance. Eureka is a human privilege; machines have floors.
+              </p>
+            </div>
+
             {/* Why this matters */}
             <div className="mb-8">
               <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                8b.7 Why This Matters
+                8b.8 Why This Matters
               </h3>
               <p className="text-gray-400 leading-relaxed mb-4">
                 The distinction between genuine theory of mind and cognitive shadow modeling is not academic —
