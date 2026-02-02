@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
+    --background: 0 0% 2%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 6%;
+    --card: 0 0% 4%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
+    --popover: 0 0% 4%;
     --popover-foreground: 0 0% 98%;
-    --primary: 24 95% 53%;
+    --primary: 0 100% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 14%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14%;
+    --muted: 0 0% 12%;
     --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 24 95% 53%;
-    --radius: 0.75rem;
+    --border: 0 50% 15%;
+    --input: 0 50% 15%;
+    --ring: 0 100% 50%;
+    --radius: 0.5rem;
   }
 }
 
@@ -33,93 +33,339 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
     scroll-behavior: smooth;
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Red theme */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #050505;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #660000;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #990000;
 }
 
-/* Selection */
+/* Selection - Red glow */
 ::selection {
-  background: rgba(249, 115, 22, 0.3);
+  background: rgba(255, 0, 0, 0.3);
   color: white;
 }
 
-/* Code styling */
-pre {
-  font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+/* === TRIANGLE PATTERN BACKGROUNDS === */
+
+/* Sierpinski-style triangular grid */
+.triangle-bg {
+  background-color: #050505;
+  background-image: 
+    linear-gradient(30deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
+    linear-gradient(150deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
+    linear-gradient(30deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
+    linear-gradient(150deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1));
+  background-size: 80px 140px;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
 }
 
-/* Mathematical symbols */
-.math-symbol {
-  font-family: "Times New Roman", serif;
-  font-style: italic;
+/* Fractal noise overlay */
+.fractal-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* Sidebar styling */
-.sidebar-item-active {
-  background: rgba(249, 115, 22, 0.1);
-  color: #f97316;
+/* === EARTH ELEMENT - Geological Strata === */
+.strata-lines {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 69, 19, 0.1) 20%,
+    transparent 40%,
+    rgba(160, 82, 45, 0.08) 60%,
+    transparent 80%
+  );
 }
 
-/* Gradient text for MIND */
-.gradient-text-mind {
-  background: linear-gradient(135deg, #22d3ee 0%, #3b82f6 50%, #06b6d4 100%);
+/* Seismic wave pattern */
+.seismic-pattern {
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    transparent 0,
+    transparent 20px,
+    rgba(139, 0, 0, 0.05) 20px,
+    rgba(139, 0, 0, 0.05) 21px
+  );
+}
+
+/* === ECONOMICS ELEMENT - Market Geometry === */
+.market-grid {
+  background-image: 
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 50px 30px;
+}
+
+/* Candlestick-inspired vertical lines */
+.candlestick-pattern {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(220, 20, 60, 0.1) 10px,
+    rgba(220, 20, 60, 0.1) 12px,
+    transparent 12px,
+    transparent 30px
+  );
+}
+
+/* === AI ELEMENT - Neural/Circuit Patterns === */
+.neural-mesh {
+  background-image: 
+    linear-gradient(45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+/* Circuit board traces */
+.circuit-traces {
+  background-image: 
+    linear-gradient(90deg, rgba(178, 34, 34, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(178, 34, 34, 0.2) 1px, transparent 1px);
+  background-size: 100px 100px;
+  position: relative;
+}
+
+.circuit-traces::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 0, 0, 0.3) 2px, transparent 2px);
+  background-size: 100px 100px;
+  background-position: 50px 50px;
+}
+
+/* === COMBINED TRINITY BACKGROUND === */
+.trinity-void {
+  background-color: #050505;
+  background-image: 
+    /* Triangle layer */
+    linear-gradient(30deg, rgba(139, 0, 0, 0.08) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.08) 87.5%, rgba(139, 0, 0, 0.08)),
+    /* Strata layer */
+    linear-gradient(180deg, transparent 0%, rgba(139, 69, 19, 0.05) 50%, transparent 100%),
+    /* Circuit layer */
+    linear-gradient(90deg, rgba(178, 34, 34, 0.1) 1px, transparent 1px);
+  background-size: 80px 140px, 100% 100%, 100px 100px;
+}
+
+/* === ANIMATIONS === */
+
+@keyframes pulse-red {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    border-color: rgba(255, 0, 0, 0.5);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.8);
+  }
+}
+
+.pulse-red {
+  animation: pulse-red 3s ease-in-out infinite;
+}
+
+@keyframes fractal-shift {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  50% { background-position: 40px 70px, 0 0, 50px 50px; }
+  100% { background-position: 0 0, 0 0, 0 0; }
+}
+
+.fractal-animate {
+  animation: fractal-shift 20s ease-in-out infinite;
+}
+
+/* Triangle rotation - Sacred geometry */
+@keyframes triangle-rotate {
+  0% { transform: rotate(0deg) scale(1); }
+  33% { transform: rotate(120deg) scale(1.1); }
+  66% { transform: rotate(240deg) scale(0.9); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.triangle-rotate {
+  animation: triangle-rotate 12s ease-in-out infinite;
+}
+
+/* === TYPOGRAPHY & EFFECTS === */
+
+/* Gradient text - Blood red to crimson */
+.gradient-text-red {
+  background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF0000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Glass effect */
-.glass-mind {
-  background: rgba(10, 10, 10, 0.9);
+/* Forge glow effect */
+.forge-glow {
+  box-shadow: 
+    0 0 20px rgba(139, 0, 0, 0.4),
+    0 0 40px rgba(139, 0, 0, 0.2),
+    0 0 60px rgba(139, 0, 0, 0.1);
+}
+
+/* Glass effect - Dark red tint */
+.glass-forge {
+  background: rgba(5, 5, 5, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 0, 0, 0.3);
 }
 
-/* Code block glow */
-.code-glow {
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+/* Strata card - Earth element */
+.strata-card {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 10, 5, 0.95) 0%,
+    rgba(40, 20, 10, 0.9) 50%,
+    rgba(20, 10, 5, 0.95) 100%
+  );
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Link hover effect */
-.doc-link {
+.strata-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 10px,
+    rgba(139, 69, 19, 0.05) 10px,
+    rgba(139, 69, 19, 0.05) 11px
+  );
+  pointer-events: none;
+}
+
+/* Market data card - Economics element */
+.market-card {
+  background: rgba(10, 5, 5, 0.95);
+  border: 1px solid rgba(220, 20, 60, 0.3);
   position: relative;
 }
 
-.doc-link::after {
-  content: "";
+.market-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8B0000, #DC143C, #8B0000);
+}
+
+/* Neural card - AI element */
+.neural-card {
+  background: rgba(5, 5, 10, 0.95);
+  border: 1px solid rgba(178, 34, 34, 0.3);
+  position: relative;
+}
+
+.neural-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* === DECORATIVE ELEMENTS === */
+
+/* Triangular divider */
+.triangle-divider {
+  height: 60px;
+  background: linear-gradient(135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%),
+              linear-gradient(-135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%);
+  background-size: 60px 60px;
+  background-repeat: repeat-x;
+}
+
+/* Sierpinski triangle SVG decoration */
+.sierpinski-decoration {
+  width: 200px;
+  height: 173px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 173'%3E%3Cpath d='M100 0 L200 173 L0 173 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M50 86.5 L150 86.5 L100 173 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M75 43 L125 43 L100 86.5 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Code blocks - Forge styling */
+.code-forge {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: #0a0505;
+  border: 1px solid #4a0000;
+  border-left: 3px solid #8B0000;
+  padding: 1rem;
+}
+
+/* Link hover - Blood drip effect */
+.link-forge {
+  position: relative;
+  color: #ff4444;
+  transition: color 0.3s;
+}
+
+.link-forge:hover {
+  color: #ff6666;
+}
+
+.link-forge::after {
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+  background: linear-gradient(90deg, #8B0000, #DC143C);
   transition: width 0.3s ease;
 }
 
-.doc-link:hover::after {
+.link-forge:hover::after {
   width: 100%;
 }
+
+/* === UTILITY CLASSES === */
+
+.text-blood { color: #8B0000; }
+.text-crimson { color: #DC143C; }
+.text-forge { color: #ff4444; }
+
+.bg-void { background-color: #050505; }
+.bg-forge { background-color: #0a0505; }
+.bg-strata { background-color: #1a0f0a; }
+
+.border-blood { border-color: #8B0000; }
+.border-crimson { border-color: #DC143C; }

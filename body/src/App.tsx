@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans">
+    <div className="min-h-screen bg-void text-gray-100 font-sans trinity-void">
 
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
@@ -47,8 +47,10 @@ function App() {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">AF</span>
+              <div className="w-8 h-8 rounded bg-gradient-to-br from-red-900 to-red-600 flex items-center justify-center forge-glow">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-red-100" fill="currentColor">
+                  <path d="M12 2L2 22h20L12 2zm0 4l6 12H6l6-12z"/>
+                </svg>
               </div>
               <span className="font-semibold text-lg">Arif Fazil</span>
             </a>
@@ -64,14 +66,14 @@ function App() {
 
             {/* Trinity nav */}
             <div className="hidden md:flex items-center gap-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium border border-orange-500/40">
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-red-900/30 text-red-400 text-xs font-medium border border-red-800/50">
                 HUMAN
               </a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs font-medium hover:bg-amber-500/10 transition-colors">
-                IDEA
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs font-medium hover:bg-amber-900/20 transition-colors">
+                THEORY
               </a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs font-medium hover:bg-cyan-500/10 transition-colors">
-                APP
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs font-medium hover:bg-cyan-900/20 transition-colors">
+                APPS
               </a>
             </div>
 
@@ -91,9 +93,9 @@ function App() {
             <a href="#writing" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Writing</a>
             <Separator className="bg-gray-800" />
             <div className="flex gap-2 pt-1">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs border border-orange-500/40">HUMAN</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-amber-400 text-xs">IDEA</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-cyan-400 text-xs">APP</a>
+              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded bg-red-900/30 text-red-400 text-xs border border-red-800/50">HUMAN</a>
+              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs hover:bg-amber-900/20">THEORY</a>
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs hover:bg-cyan-900/20">APPS</a>
             </div>
           </div>
         )}
@@ -101,21 +103,34 @@ function App() {
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16">
-        {/* Subtle warm gradient background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-950/20 via-[#0a0a0a] to-amber-950/10" />
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/5 rounded-full blur-3xl" />
+        {/* Fractal void background */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-red-950/10 via-[#050505] to-red-900/5" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-900/5 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-800/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-950/5 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4">
-          {/* Avatar */}
+          {/* Geometric Identity - Sierpinski Triangle */}
           <div className="flex justify-center mb-8">
-            <img
-              src="/profile-avatar.jpg"
-              alt="Arif Fazil"
-              className="w-28 h-28 rounded-full object-cover ring-2 ring-orange-500/30 ring-offset-4 ring-offset-[#0a0a0a]"
-            />
+            <div className="relative w-32 h-32">
+              <svg viewBox="0 0 200 173" className="w-full h-full drop-shadow-[0_0_30px_rgba(139,0,0,0.5)]">
+                <defs>
+                  <linearGradient id="triGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#8B0000" />
+                    <stop offset="50%" stopColor="#DC143C" />
+                    <stop offset="100%" stopColor="#FF0000" />
+                  </linearGradient>
+                </defs>
+                <path d="M100 10 L190 163 L10 163 Z" fill="none" stroke="url(#triGradient)" strokeWidth="2"/>
+                <path d="M100 50 L145 130 L55 130 Z" fill="none" stroke="#8B0000" strokeWidth="1.5" opacity="0.6"/>
+                <path d="M100 80 L120 115 L80 115 Z" fill="none" stroke="#DC143C" strokeWidth="1" opacity="0.4"/>
+                <circle cx="100" cy="100" r="8" fill="#8B0000" opacity="0.8">
+                  <animate attributeName="opacity" values="0.8;0.4;0.8" dur="3s" repeatCount="indefinite"/>
+                </circle>
+              </svg>
+            </div>
           </div>
 
           {/* Name */}
@@ -129,7 +144,7 @@ function App() {
           </p>
 
           {/* Hook */}
-          <p className="text-sm text-center text-orange-400/80 font-medium mb-1">
+          <p className="text-sm text-center text-red-400/80 font-medium mb-1">
             I build blowout preventers for artificial intelligence.
           </p>
 
@@ -196,7 +211,7 @@ function App() {
               That background shaped how I think about AI safety. In Silicon Valley, a
               "crash" means the server goes down. In energy, a "crash" means people get
               hurt. I built{' '}
-              <a href="https://arifos.arif-fazil.com" className="text-orange-400 hover:text-orange-300 underline underline-offset-2">arifOS</a>{' '}
+              <a href="https://arifos.arif-fazil.com" className="text-red-400 hover:text-red-300 underline underline-offset-2">arifOS</a>{' '}
               because I wanted AI systems held to the same rigorous safety standards
               I grew up with — 13 checks that every decision has to pass before it executes.
             </p>
@@ -216,29 +231,29 @@ function App() {
           <div className="grid md:grid-cols-2 gap-4 mb-10">
             <a
               href="https://apex.arif-fazil.com"
-              className="group flex items-start gap-4 p-5 rounded-xl border border-amber-500/20 hover:border-amber-500/40 bg-amber-500/5 hover:bg-amber-500/10 transition-all"
+              className="group flex items-start gap-4 p-5 rounded border border-amber-800/30 hover:border-amber-700/50 bg-amber-950/20 hover:bg-amber-950/30 transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Compass className="w-5 h-5 text-amber-400" />
+              <div className="w-10 h-10 rounded bg-amber-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Compass className="w-5 h-5 text-amber-500" />
               </div>
               <div>
-                <h3 className="font-semibold text-white group-hover:text-amber-400 transition-colors mb-1">I'm evaluating</h3>
+                <h3 className="font-semibold text-white group-hover:text-amber-500 transition-colors mb-1">I'm evaluating</h3>
                 <p className="text-sm text-gray-400">Read the theory — axioms, 13 floors, scientific grounding</p>
               </div>
-              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-amber-400 mt-1 flex-shrink-0 ml-auto transition-colors" />
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-amber-500 mt-1 flex-shrink-0 ml-auto transition-colors" />
             </a>
             <a
               href="https://arifos.arif-fazil.com"
-              className="group flex items-start gap-4 p-5 rounded-xl border border-cyan-500/20 hover:border-cyan-500/40 bg-cyan-500/5 hover:bg-cyan-500/10 transition-all"
+              className="group flex items-start gap-4 p-5 rounded border border-cyan-800/30 hover:border-cyan-700/50 bg-cyan-950/20 hover:bg-cyan-950/30 transition-all"
             >
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Code className="w-5 h-5 text-cyan-400" />
+              <div className="w-10 h-10 rounded bg-cyan-900/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Code className="w-5 h-5 text-cyan-500" />
               </div>
               <div>
-                <h3 className="font-semibold text-white group-hover:text-cyan-400 transition-colors mb-1">I'm integrating</h3>
+                <h3 className="font-semibold text-white group-hover:text-cyan-500 transition-colors mb-1">I'm integrating</h3>
                 <p className="text-sm text-gray-400">Jump to docs — API, MCP tools, quickstart</p>
               </div>
-              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-400 mt-1 flex-shrink-0 ml-auto transition-colors" />
+              <ChevronRight className="w-5 h-5 text-gray-600 group-hover:text-cyan-500 mt-1 flex-shrink-0 ml-auto transition-colors" />
             </a>
           </div>
 
@@ -255,16 +270,16 @@ function App() {
               <tbody>
                 <tr className="border-b border-gray-800/50">
                   <td className="px-4 py-3">
-                    <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30 text-xs">BODY</Badge>
+                    <Badge className="bg-red-900/30 text-red-400 border-red-800/50 text-xs">BODY</Badge>
                   </td>
                   <td className="px-4 py-3">
-                    <a href="https://arif-fazil.com" className="text-white hover:text-orange-400 transition-colors">arif-fazil.com</a>
+                    <a href="https://arif-fazil.com" className="text-white hover:text-red-400 transition-colors">arif-fazil.com</a>
                   </td>
                   <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Front page, status, entry points</td>
                 </tr>
                 <tr className="border-b border-gray-800/50">
                   <td className="px-4 py-3">
-                    <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">SOUL</Badge>
+                    <Badge className="bg-amber-900/30 text-amber-400 border-amber-800/50 text-xs">SOUL</Badge>
                   </td>
                   <td className="px-4 py-3">
                     <a href="https://apex.arif-fazil.com" className="text-white hover:text-amber-400 transition-colors">apex.arif-fazil.com</a>
@@ -273,7 +288,7 @@ function App() {
                 </tr>
                 <tr>
                   <td className="px-4 py-3">
-                    <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">DOCS</Badge>
+                    <Badge className="bg-cyan-900/30 text-cyan-400 border-cyan-800/50 text-xs">DOCS</Badge>
                   </td>
                   <td className="px-4 py-3">
                     <a href="https://arifos.arif-fazil.com" className="text-white hover:text-cyan-400 transition-colors">arifos.arif-fazil.com</a>
@@ -299,10 +314,10 @@ function App() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Geology */}
-            <Card className="bg-gray-900/40 border-gray-800 hover:border-orange-500/30 transition-colors">
+            <Card className="strata-card hover:border-red-800/50 transition-colors">
               <CardContent className="pt-6">
-                <div className="w-10 h-10 rounded-lg bg-orange-500/15 flex items-center justify-center mb-4">
-                  <Mountain className="w-5 h-5 text-orange-400" />
+                <div className="w-10 h-10 rounded bg-red-900/30 flex items-center justify-center mb-4">
+                  <Mountain className="w-5 h-5 text-red-500" />
                 </div>
                 <h3 className="font-semibold text-white mb-2">Geology</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
@@ -317,10 +332,10 @@ function App() {
             </Card>
 
             {/* Economics */}
-            <Card className="bg-gray-900/40 border-gray-800 hover:border-green-500/30 transition-colors">
+            <Card className="market-card hover:border-red-800/50 transition-colors">
               <CardContent className="pt-6">
-                <div className="w-10 h-10 rounded-lg bg-green-500/15 flex items-center justify-center mb-4">
-                  <TrendingUp className="w-5 h-5 text-green-400" />
+                <div className="w-10 h-10 rounded bg-red-900/30 flex items-center justify-center mb-4">
+                  <TrendingUp className="w-5 h-5 text-red-400" />
                 </div>
                 <h3 className="font-semibold text-white mb-2">Economics</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
@@ -335,10 +350,10 @@ function App() {
             </Card>
 
             {/* AI */}
-            <Card className="bg-gray-900/40 border-gray-800 hover:border-blue-500/30 transition-colors">
+            <Card className="neural-card hover:border-red-800/50 transition-colors">
               <CardContent className="pt-6">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/15 flex items-center justify-center mb-4">
-                  <Bot className="w-5 h-5 text-blue-400" />
+                <div className="w-10 h-10 rounded bg-red-900/30 flex items-center justify-center mb-4">
+                  <Bot className="w-5 h-5 text-red-400" />
                 </div>
                 <h3 className="font-semibold text-white mb-2">AI Governance</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">
