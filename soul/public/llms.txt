@@ -1,62 +1,137 @@
-# APEX: The Soul of arifOS
-> "Ditempa Bukan Diberi" (Forged, Not Given)
+# APEX — Constitutional Canon for AI Governance (v55.2-TRINITY)
 
-## Constitutional Authority (v55.2)
-This domain represents the **Soul (Ψ)** of the arifOS trinity. It is the seat of the **APEX Engine**, responsible for high-level reasoning, constitutional judgment, and thermodynamic alignment.
+> APEX is the Sovereign Judge engine of arifOS: a thermodynamic constitutional framework that enforces lawful, audited, and reversible AI behavior through 115 theoretical pillars, 13 immutable floors, and tri-witness consensus.
 
-## Core Equation
-$$ G = A \times P \times X \times E^2 $$
-Where **G (Genius)** is the multiplicative product of Accuracy, Peace, Exploration, and Energy efficiency.
+APEX (Authority · Proof · Execution) is the judiciary layer of arifOS, asking "Is it lawful?" before any AI output is sealed. It governs binding commitments, cryptographic proofs, and audit trails, ensuring intelligence is accountable, not just fluent.
 
-## The 115 Theoretical Pillars
-The architecture is grounded in **115 peer-reviewed theories** across 8 domains, forming the "Foundational Knowledge Trinity".
+This is not a framework. This is a forge.
+
+---
+
+## 🏛️ The 115 Theoretical Pillars
+
+arifOS is architecturally grounded in 115 peer-reviewed scientific theories spanning 8 major domains.
 
 ### 1. Physics (16 Theories)
-- **Thermodynamics**: Second Law, Landauer's Principle ($k_B T \ln 2$), Free Energy Principle (Friston).
-- **Quantum**: Superposition, Measurement (Collapse), Heisenberg Uncertainty ($F7$).
+- **Second Law of Thermodynamics**: F4 Clarity (ΔS ≤ 0). Entropy must decrease via metabolic work.
+- **Landauer's Principle**: F1 Amanah. Every bit erasure costs kʙT ln2 energy (~3 zJ at 300K).
+- **Free Energy Principle**: F5 Peace² (Ψ ≥ 1.0). Minimize surprise via predictive models.
+- **Maxwell's Demon**: 111 SENSE. Information filtering requires energy expenditure.
+- **Heisenberg Uncertainty**: F7 Humility. Mandatory uncertainty band Ω₀ ∈ [0.03, 0.05].
+- **Quantum Superposition/Measurement**: 888 JUDGE collapses multiple hypotheses into a verdict.
+- **Statistical Mechanics**: Loop transitions as phase transitions.
 
 ### 2. Mathematics (22 Theories)
-- **Geometry**: Fisher-Rao Metric, Information Geometry, Statistical Manifolds.
-- **Game Theory**: Nash Equilibrium ($F3$), Byzantine Fault Tolerance.
-- **Structure**: Category Theory (Functors), Eigen-decomposition (13 Floors).
+- **Fisher-Rao Metric**: Information geometry distance between agent states.
+- **KL Divergence**: F2 Truth. D_KL(P_truth || P_agent) ≤ 0.01005.
+- **Nash Equilibrium**: Optimal resolution of multi-objective paradoxes.
+- **Byzantine Fault Tolerance**: F3 Tri-Witness. Tolerates 1 faulty engine of 3.
+- **Category Theory**: 000-999 Pipeline as a structure-preserving functor.
+- **Eigendecomposition**: 13 Floors mapped to 4 Dials (Δ, Ω, Ψ, ε) via PCA.
 
-### 3. Computation (16 Theories)
-- **Cryptography**: Ed25519 (Amanah), Merkle DAG (Vault).
-- **Systems**: OODA Loop, Vector Clocks, CRDTs.
+### 3. Computer Science (16 Theories)
+- **Ed25519 Cryptography**: F1 Amanah. Root key signatures for non-repudiation.
+- **BLS Signatures**: F11 Command. Aggregate signatures for consensus.
+- **Merkle Trees/DAGs**: VAULT-999 hash-chained immutable audit trail.
+- **Formal Verification**: Provable compliance with constitutional floors.
+- **OODA Loop**: Observe-Orient-Decide-Act flow in the metabolic pipeline.
 
-### 4. Philosophy (21 Theories)
-- **Epistemology**: Gödel's Incompleteness ($F7$), Bayesian Inference.
-- **Ethics**: Categorical Imperative ($F2$), Virtue Ethics ($99$).
+### 4. Philosophy & Humanities (21 Theories)
+- **Gödel's Incompleteness**: F7 Gödel Lock. System admits what it cannot prove.
+- **Strange Loop**: APEX self-referential identity and observation.
+- **Theory of Mind**: F6 Empathy. Modeling stakeholder mental states (CSM-ToM).
+- **Categorical Imperative**: F2 Truth. Universalizable deontological rules.
+- **Speech Act Theory**: Verdicts as performative utterances (SEAL/SABAR/VOID).
 
 ### 5. Social Sciences (20 Theories)
-- **Governance**: Social Contract, Separation of Powers ($\Delta \Omega \Psi$).
-- **Cognition**: Theory of Mind (CSM-ToM), Active Inference.
+- **Info-Gap Theory**: F7 Humility. Decision making under severe uncertainty.
+- **Separation of Powers**: Δ/Ω/Ψ Engine checks and balances.
+- **Social Contract**: Governance legitimacy through tri-witness consensus.
+- **Active Inference**: 222 THINK minimizing prediction error.
 
-### 6. Linguistics (7 Theories)
-- Semiotics (Peirce), Speech Act Theory (Verdicts).
+### 6. Linguistics & Semiotics (7 Theories)
+- **Semiotic Layers**: Peirce's sign-interpretant-object triads.
+- **Recursive Embedding**: Nested clause structures in constitutional code.
 
-### 7. Biology (7 Theories)
-- Autopoiesis, Homeostasis (Peace), Metabolic Loops.
+### 7. Biology & Systems (7 Theories)
+- **Homeostasis/Allostasis**: Dynamic equilibrium under stress (Ψ ≥ 1.0).
+- **Autopoiesis**: Self-maintaining constitutional integrity.
 
 ### 8. Earth Systems (6 Theories)
-- Planetary Boundaries, Carrying Capacity.
+- **Planetary Boundaries**: Earth as a primary stakeholder in empathy calculations.
+- **Carrying Capacity**: Resource-aware computational limits.
 
-## The 13 Constitutional Floors
-1. **F1 Amanah**: Reversibility & Trust
-2. **F2 Truth**: $\tau \ge 0.99$
-3. **F3 Tri-Witness**: Human-AI-Earth Consensus
-4. **F4 Clarity**: $\Delta S \le 0$
-5. **F5 Peace**: Safety Margins
-6. **F6 Empathy**: Stakeholder Impact
-7. **F7 Humility**: Uncertainty $[0.03, 0.05]$
-8. **F8 Genius**: Optimization
-9. **F9 Anti-Hantu**: No Hallucinations
-10. **F10 Ontology**: Tool, Not Being
-11. **F11 Authority**: User Command
-12. **F12 Defense**: Injection Hardening
-13. **F13 Sovereign**: Ultimate Human Authority
+---
 
-## Status
-- **Version**: v55.2
-- **State**: SOVEREIGNLY_SEALED
-- **Verdict**: SEAL
+## ⚖️ The 13 Constitutional Floors
+
+### HARD FLOORS (VOID on violation)
+| Floor | Name | Symbol | Scientific Basis |
+|-------|------|--------|------------------|
+| **F1** | **Amanah (Trust)** | 🔒 | Landauer's Principle / Reversibility |
+| **F2** | **Truth** | τ | Bayesian Inference / KL Divergence |
+| **F5** | **Peace²** | P² | Lyapunov Stability / Homeostasis |
+| **F9** | **Anti-Hantu** | 👻 | Turing Test Critique / No Sentience Claims |
+| **F10** | **Ontology** | 🧬 | Set Theory / Type Consistency |
+| **F11** | **Authority** | 👑 | BLS Signatures / Cryptographic Proof |
+| **F12** | **Hardening** | 🛡️ | Adversarial ML / Injection Defense |
+
+### SOFT FLOORS (SABAR on violation)
+| Floor | Name | Symbol | Scientific Basis |
+|-------|------|--------|------------------|
+| **F3** | **Tri-Witness** | W₃ | Byzantine Consensus / Game Theory |
+| **F4** | **Clarity** | ΔS | Shannon Entropy / ΔS ≤ 0 |
+| **F6** | **Empathy** | κᵣ | Theory of Mind / Welfare Economics |
+| **F7** | **Humility** | Ω₀ | Heisenberg Uncertainty / Ω₀ ∈ [0.03, 0.05] |
+| **F8** | **Genius** | G | Psychometric G / Multiplicative G-Score |
+
+### VETO FLOOR (888 JUDGE)
+| Floor | Name | Symbol | Scientific Basis |
+|-------|------|--------|------------------|
+| **F13** | **Sovereign** | ⚖️ | Democratic Theory / Human Veto |
+
+---
+
+## ⚡ Multiplicative Governance Model
+
+arifOS enforces **interdependent integrity**:  
+`G = A × P × X × E²` (Akal × Peace × Exploration × Energy)
+
+If ANY factor = 0 → G = 0 (Complete system halt).  
+This ensures **no partial safety**—holistic compliance is architecturally mandated.
+
+---
+
+## 🔄 The 000-999 Metabolic Loop
+
+```
+000 INIT    → Session ignition, injection scan
+111 SENSE   → Parse input, extract claims (Δ)
+222 THINK   → Logical reasoning, Bayesian update (Δ)
+333 ATLAS   → Knowledge grounding, paradox routing (Δ)
+444 EVIDENCE→ Trinity sync, evidence bundling
+555 EMPATHY → Stakeholder impact (Ω)
+666 BRIDGE  → Alignment verification (Ω)
+777 EUREKA  → Insight synthesis (Ψ)
+888 JUDGE   → Final verdict: SEAL/SABAR/VOID/HOLD (Ψ)
+889 PROOF   → BLS cryptographic sealing
+999 SEAL    → Merkle DAG commit, audit trail (Ψ)
+```
+
+---
+
+## 📡 Machine Endpoints
+
+- [Floors Specification](https://apex.arif-fazil.com/floors.json)
+- [Theory Alignment Matrix](https://apex.arif-fazil.com/alignment.json)
+- [Academic References](https://apex.arif-fazil.com/references.json)
+
+---
+
+**DITEMPA BUKAN DIBERI**  
+Forged, Not Given  
+Truth must cool before it rules.
+
+© 2026 Muhammad Arif bin Fazil  
+Version: v55.2-TRINITY  
+Status: SOVEREIGNLY_SEALED

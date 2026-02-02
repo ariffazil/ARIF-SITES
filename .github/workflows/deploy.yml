@@ -19,7 +19,7 @@ jobs:
       # Generate build provenance
       - name: Generate Build Info
         run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > body/public/build-info.json
 
       - name: Build BODY
@@ -52,7 +52,7 @@ jobs:
 
       - name: Generate Build Info
         run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > soul/public/build-info.json
 
       - name: Build SOUL
@@ -87,7 +87,7 @@ jobs:
 
       - name: Generate Build Info
         run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.1\"}"
+          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > docs/public/build-info.json
 
       - name: Build DOCS
