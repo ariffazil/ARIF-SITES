@@ -8,7 +8,3 @@
   Content-Type: application/json; charset=utf-8
   X-Content-Type-Options: nosniff
   Access-Control-Allow-Origin: *
-
-/api/v1/floors.json
-  Content-Type: application/json; charset=utf-8
-  Access-Control-Allow-Origin: *

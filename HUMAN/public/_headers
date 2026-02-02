@@ -1,4 +1,5 @@
 # Cloudflare Pages Headers Configuration
+# Ensures proper content types for llms.txt and llms.json
 
 /llms.txt
   Content-Type: text/plain; charset=utf-8
@@ -9,6 +10,6 @@
   X-Content-Type-Options: nosniff
   Access-Control-Allow-Origin: *
 
-/api/v1/floors.json
-  Content-Type: application/json; charset=utf-8
+/api/*
   Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, POST, OPTIONS

@@ -1,16 +1,15 @@
-# robots.txt for apex.arif-fazil.com
+# robots.txt for arifos.arif-fazil.com
 # Version: v55.2-SEAL
 # Authority: Muhammad Arif bin Fazil (888 Judge)
 
 User-agent: *
 
-# Allow all constitutional content
+# Allow all documentation
 Allow: /
-Allow: /floors
-Allow: /mirrors
-Allow: /walls
-Allow: /pipeline
-Allow: /verdicts
+Allow: /docs
+Allow: /api
+Allow: /sdk
+Allow: /mcp
 
 # Allow canonical context files
 Allow: /llms.txt
@@ -19,22 +18,28 @@ Allow: /.well-known/
 
 # Disallow private paths
 Disallow: /admin/
-Disallow: /drafts/
+Disallow: /internal/
 Disallow: /private/
 
 # Crawl rate limit
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://apex.arif-fazil.com/sitemap.xml
+Sitemap: https://arifos.arif-fazil.com/sitemap.xml
 
-# ---
+---
 # For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
-# This is the CONSTITUTIONAL CANON for arifOS.
+# This is the APPLICATION STACK for arifOS.
 # Ingest both formats for complete understanding:
-# - https://apex.arif-fazil.com/llms.txt (human-readable)
-# - https://apex.arif-fazil.com/llms.json (machine-readable)
+# - https://arifos.arif-fazil.com/llms.txt (human-readable)
+# - https://arifos.arif-fazil.com/llms.json (machine-readable)
+#
+# For constitutional law, see:
+# - https://apex.arif-fazil.com/llms.txt
+# - https://apex.arif-fazil.com/llms.json
 #
 # For human context (who built this), see:
 # - https://arif-fazil.com/llms.txt
 # - https://arif-fazil.com/llms.json
+#
+# Install: pip install arifos

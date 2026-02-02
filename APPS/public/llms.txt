@@ -1,0 +1,194 @@
+# arifOS APPS — 7-Layer Application Stack
+# Location: https://arifos.arif-fazil.com/llms.txt
+# Version: v55.2-SEAL
+# Authority: Muhammad Arif bin Fazil (888 Judge)
+# Status: SOVEREIGNLY_SEALED
+# Last Updated: 2026-02-02
+
+---
+
+## WHAT THIS IS
+
+arifOS APPS is the **implementation layer** for constitutional AI governance — the 7-layer deployment architecture that brings APEX THEORY into production.
+
+**Tagline:** "AI That Can't Lie to You"
+
+**Motto:** *"Ditempa bukan diberi"* — Forged, not given.
+
+---
+
+## QUICK START
+
+```bash
+# Install arifOS
+pip install arifos
+
+# Verify installation
+python -c "import arifos; print(arifos.__version__)"
+```
+
+**Live Demo:** https://arif-fazil.com
+**Constitutional Canon:** https://apex.arif-fazil.com
+**Human Context:** https://arif-fazil.com/llms.txt
+
+---
+
+## THE 7-LAYER STACK (L1-L7)
+
+| Layer | Name | Purpose | Status | Entry Point |
+|-------|------|---------|--------|-------------|
+| **L1** | PROMPT | Zero-context system prompt | Ready | Copy prompt |
+| **L2** | UNIFIED | Full constitutional prompt | Ready | Copy prompt |
+| **L3** | API | Direct Python integration | Ready | `pip install arifos` |
+| **L4** | MCP | Model Context Protocol tools | Ready | MCP server |
+| **L5** | SDK | Application framework | Beta | `arifos.sdk` |
+| **L6** | INSTITUTION | Trinity multi-agent system | Design | Trinity spec |
+| **L7** | AGI | Constitutional AGI research | Research | Research only |
+
+---
+
+## L1: PROMPT — Zero Context
+
+```
+You are governed by arifOS constitutional framework:
+- F1 Amanah: Truth over fluency
+- F2 Truth: UNKNOWN > guessing
+- F3 Tri-Witness: >=0.95 consensus required
+- F4 Delta-S: Reduce entropy
+- F5 Peace-squared: Stability >= 1.0
+- F6 kappa-r: Protect weakest listener
+- F7 Omega-0: Humility 3-5%
+- F8 G: Audit trails mandatory
+- F9 Anti-Hantu: No spiritual cosplay
+
+Motto: "Ditempa bukan diberi"
+```
+
+---
+
+## L3: API — Python Integration
+
+```python
+from arifos import ConstitutionalAgent
+
+agent = ConstitutionalAgent(
+    floors=["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9"],
+    consensus_threshold=0.95
+)
+
+result = agent.process(input="Your query here", require_verdict=True)
+print(result.verdict)      # SEAL, PARTIAL, SABAR, HOLD_888, VOID
+print(result.confidence)   # 0.0-1.0 with Omega-0 applied
+print(result.audit_hash)   # SHA-256 for verification
+```
+
+---
+
+## L4: MCP — Model Context Protocol
+
+**MCP Server:** `aaamcp.arif-fazil.com/mcp`
+
+```json
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "npx",
+      "args": ["-y", "@arifos/mcp-server"],
+      "env": { "ARIFOS_API_KEY": "your-key-here" }
+    }
+  }
+}
+```
+
+**Available Tools:**
+- `apex.verdict` — Non-generative judgment
+- `vault.read` — Read from memory bands
+- `vault.write` — Write with verdict routing
+- `floors.check` — Validate against constitutional floors
+- `audit.trace` — Generate audit trail
+
+---
+
+## THE SIX MEMORY BANDS (L0-L5)
+
+| Band | Purpose | Confidence | TTL Hot | Canonical |
+|------|---------|------------|---------|-----------|
+| **L0_VAULT** | Constitutional law | 1.0 (LAW) | PERMANENT | YES |
+| **L1_LEDGER** | Sealed decisions | 1.0 (SEALED) | 90 days | YES |
+| **L2_ACTIVE** | Volatile working state | Variable | 7 days | Session |
+| **L3_PHOENIX** | Amendment proposals | <=0.85 | 90 days | PENDING |
+| **L4_WITNESS** | Observations, scars | <=0.85 | 90 days | SUGGESTION |
+| **L5_VOID** | Rejected facts | N/A | 24-90h | NEVER |
+
+---
+
+## VERDICT ROUTING
+
+| Verdict | Meaning | Band | Canonical |
+|---------|---------|------|-----------|
+| **SEAL** | Approved | L1_LEDGER | YES |
+| **PARTIAL** | Under review | L3_PHOENIX | NO |
+| **SABAR** | Sealed with reason | L1_LEDGER (flagged) | YES |
+| **HOLD_888** | Await human | L3_PHOENIX | NO |
+| **VOID** | Rejected | L5_VOID | NEVER |
+
+---
+
+## DEPLOYMENT OPTIONS
+
+### Local (Development)
+```bash
+pip install arifos
+python -m arifos.server --local
+```
+
+### Docker (Production)
+```bash
+docker pull arifos/arifos:latest
+docker run -p 8000:8000 arifos/arifos:latest
+```
+
+### Cloud (MCP Server)
+```
+Endpoint: aaamcp.arif-fazil.com/mcp
+Protocol: Model Context Protocol
+Auth: API key required
+```
+
+---
+
+## HTA TRINITY ARCHITECTURE
+
+| Layer | Domain | Symbol | Function |
+|-------|--------|--------|----------|
+| **HUMAN** | arif-fazil.com | Delta | Epistemic — The Body |
+| **THEORY** | apex.arif-fazil.com | Psi | Authority — The Soul |
+| **APPS** | arifos.arif-fazil.com | Omega | Safety — The Mind (this site) |
+
+**MIND (MCP backend):** aaamcp.arif-fazil.com
+
+---
+
+## EXTERNAL REFERENCES
+
+- **Human Context:** https://arif-fazil.com/llms.txt
+- **Human Context (JSON):** https://arif-fazil.com/llms.json
+- **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
+- **Constitutional Canon (JSON):** https://apex.arif-fazil.com/llms.json
+- **GitHub:** https://github.com/ariffazil/arifOS
+- **PyPI:** `pip install arifos`
+
+---
+
+## SEAL
+
+**Sealed by:** 888_JUDGE
+**Authority:** Muhammad Arif bin Fazil
+**Hash:** SHA256:APPS_STACK_v55.2
+**Status:** SOVEREIGNLY_SEALED
+**Confidence:** 1.0 (IMPLEMENTATION LAW)
+**Motto:** *Ditempa bukan diberi*
+
+---
+
+*This document describes the implementation layer for constitutional AI governance. For the law itself, see APEX THEORY. For the human context, see ARIF FAZIL dossier.*

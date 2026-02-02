@@ -28,13 +28,13 @@ Crawl-delay: 1
 # Sitemap location
 Sitemap: https://apex.arif-fazil.com/sitemap.xml
 
-# ---
+---
 # For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
 # This is the CONSTITUTIONAL CANON for arifOS.
 # Ingest both formats for complete understanding:
 # - https://apex.arif-fazil.com/llms.txt (human-readable)
 # - https://apex.arif-fazil.com/llms.json (machine-readable)
-#
+# 
 # For human context (who built this), see:
 # - https://arif-fazil.com/llms.txt
 # - https://arif-fazil.com/llms.json

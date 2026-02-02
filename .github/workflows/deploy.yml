@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy-body:
-    name: Deploy BODY (arif-fazil.com)
+  deploy-human:
+    name: Deploy HUMAN (arif-fazil.com)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,11 +20,11 @@ jobs:
       - name: Generate Build Info
         run: |
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > body/public/build-info.json
+          echo "$BUILD_INFO" > HUMAN/public/build-info.json
 
-      - name: Build BODY
+      - name: Build HUMAN
         run: |
-          cd body
+          cd HUMAN
           npm ci
           npm run build
           cp public/*.jpg dist/ 2>/dev/null || true
@@ -34,12 +34,12 @@ jobs:
           cp public/sitemap.xml dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
 
-      - name: Deploy BODY to Cloudflare Pages
+      - name: Deploy HUMAN to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy body/dist --project-name=ariffazil --branch=main
+          command: pages deploy HUMAN/dist --project-name=ariffazil --branch=main
 
   deploy-theory:
     name: Deploy THEORY (apex.arif-fazil.com)
@@ -55,7 +55,7 @@ jobs:
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > THEORY/public/build-info.json
 
-      - name: Build SOUL
+      - name: Build THEORY
         run: |
           cd THEORY
           npm ci
@@ -69,15 +69,15 @@ jobs:
           cp public/build-info.json dist/ 2>/dev/null || true
           cp -r public/api dist/ 2>/dev/null || true
 
-      - name: Deploy SOUL to Cloudflare Pages
+      - name: Deploy THEORY to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy THEORY/dist --project-name=apex --branch=main
 
-  deploy-docs:
-    name: Deploy DOCS (arifos.arif-fazil.com)
+  deploy-apps:
+    name: Deploy APPS (arifos.arif-fazil.com)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -88,11 +88,11 @@ jobs:
       - name: Generate Build Info
         run: |
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > docs/public/build-info.json
+          echo "$BUILD_INFO" > APPS/public/build-info.json
 
-      - name: Build DOCS
+      - name: Build APPS
         run: |
-          cd docs
+          cd APPS
           npm ci
           npm run build
           cp public/_headers dist/ 2>/dev/null || true
@@ -100,16 +100,16 @@ jobs:
           cp public/sitemap.xml dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
 
-      - name: Deploy DOCS to Cloudflare Pages
+      - name: Deploy APPS to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy docs/dist --project-name=arifos --branch=main
+          command: pages deploy APPS/dist --project-name=arifos --branch=main
 
   verify:
     name: Verify Sites Online
-    needs: [deploy-body, deploy-theory, deploy-docs]
+    needs: [deploy-human, deploy-theory, deploy-apps]
     runs-on: ubuntu-latest
     steps:
       - name: Wait for propagation
@@ -120,7 +120,7 @@ jobs:
           echo "========================================"
           echo "  TRINITY FRONTEND — DEPLOYMENT CHECK"
           echo "========================================"
-          for site in "https://arif-fazil.com BODY" "https://apex.arif-fazil.com THEORY" "https://arifos.arif-fazil.com DOCS"; do
+          for site in "https://arif-fazil.com HUMAN" "https://apex.arif-fazil.com THEORY" "https://arifos.arif-fazil.com APPS"; do
             url=$(echo $site | cut -d' ' -f1)
             name=$(echo $site | cut -d' ' -f2)
             if curl -sf --max-time 10 "$url" > /dev/null; then
