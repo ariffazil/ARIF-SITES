@@ -114,7 +114,7 @@ function GeometricBackground() {
         length: Math.random() * 200 + 50,
         speed: (Math.random() - 0.5) * 0.5,
         vertical: Math.random() > 0.5,
-        color: Math.random() > 0.5 ? '#6B8CCE' : '#3D5A8A',
+        color: Math.random() > 0.5 ? '#FFD700' : '#D4AF37',
       });
     }
 
@@ -579,7 +579,7 @@ function App() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen bg-[#090B10] text-gray-100 relative overflow-x-hidden">
+      <div className="min-h-screen bg-[#1A1810] text-gray-100 relative overflow-x-hidden">
         <GeometricBackground />
 
         {/* Grid overlay */}
@@ -590,7 +590,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* NAVIGATION                              */}
         {/* ═══════════════════════════════════════ */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090B10]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#1A1810]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
@@ -633,7 +633,7 @@ function App() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="md:hidden bg-[#090B10] border-b border-gray-800 px-4 py-4 space-y-3">
+            <div className="md:hidden bg-[#1A1810] border-b border-gray-800 px-4 py-4 space-y-3">
               <a href="#section-1" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Problem</a>
               <a href="#section-2" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Solution</a>
               <a href="#section-5" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Floors</a>
@@ -939,7 +939,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* TRINITY DASHBOARD                        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-6xl mx-auto px-4">
             <SectionHeading
               id="hta-dashboard"
@@ -954,7 +954,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 2: THE SOLUTION                 */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-2"
@@ -1038,7 +1038,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* FLOOR VISUALIZER                         */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-7xl mx-auto px-4">
             <SectionHeading
               id="floor-visualizer"
@@ -1161,7 +1161,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 4: 000-999 METABOLIC LOOP        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-4"
@@ -1424,7 +1424,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 7: MATHEMATICAL FORMALIZATION    */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-7"
@@ -1694,7 +1694,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 8: PHILOSOPHICAL FOUNDATIONS     */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-8"
@@ -2245,7 +2245,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 10: EMD PROTECTION RELAY        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-5xl mx-auto px-4">
             <SectionHeading
               id="section-10"
@@ -2298,7 +2298,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 12: LIMITATIONS & UNCERTAINTY   */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-12"
@@ -2458,7 +2458,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* CITATION BLOCK                           */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="citations"
@@ -2473,7 +2473,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 14: REFERENCES                  */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
+        <section className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-14"
@@ -2616,3 +2616,4 @@ function App() {
 }
 
 export default App;
+

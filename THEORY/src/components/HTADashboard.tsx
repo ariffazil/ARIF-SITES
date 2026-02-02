@@ -100,7 +100,7 @@ export function HTADashboard() {
     resize();
 
     const shapes: { x: number; y: number; w: number; h: number; vx: number; vy: number; color: string }[] = [];
-    const colors = ['#6B8CCE', '#3D5A8A', '#FFFFFF'];
+    const colors = ['#FFD700', '#D4AF37', '#FFFACD'];
     
     for (let i = 0; i < 15; i++) {
       shapes.push({
@@ -133,7 +133,7 @@ export function HTADashboard() {
       });
 
       // Draw rigid connection lines
-      ctx.strokeStyle = '#6B8CCE';
+      ctx.strokeStyle = '#FFD700';
       ctx.globalAlpha = 0.05;
       for(let i=0; i<canvas.offsetWidth; i+=100) {
         ctx.beginPath();

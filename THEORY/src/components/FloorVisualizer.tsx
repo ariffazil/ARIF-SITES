@@ -58,7 +58,7 @@ const FLOORS: Floor[] = [
     literature: 'Lamport et al. (1982) ACM TOPLAS',
     description: 'Tolerates 1-of-3 faulty engines. Nash equilibrium satisfaction before canonical decision.',
     icon: Shield,
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'F4',
@@ -71,7 +71,7 @@ const FLOORS: Floor[] = [
     literature: 'Shannon (1948) Bell System Tech J',
     description: 'Clarity/Cooling. Output must reduce uncertainty, not add noise. Simplify before sealing.',
     icon: Gauge,
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'F5',
@@ -97,7 +97,7 @@ const FLOORS: Floor[] = [
     literature: 'Cohen (1960) Ed. & Psych. Measurement',
     description: 'Empathy. Assume 10x range in comprehension. Inter-rater agreement on stakeholder impact.',
     icon: Heart,
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'F7',
@@ -110,7 +110,7 @@ const FLOORS: Floor[] = [
     literature: 'Gelman et al. (2013) Bayesian Data Analysis',
     description: 'Humility. Explicit uncertainty 3-5%. Show your error bars. Calibrated confidence.',
     icon: Gauge,
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'F8',
@@ -123,7 +123,7 @@ const FLOORS: Floor[] = [
     literature: 'Spearman (1904) Am. J. Psychology',
     description: 'Lawful execution. Multiplicative composition of Intellect, Presence, Exploration, Energy.',
     icon: Zap,
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'F9',
@@ -161,7 +161,7 @@ const MIRRORS: Mirror[] = [
     function: 'Perceive · Reason · Map',
     domain: 'Epistemic',
     floors: ['F2', 'F4', 'F7'],
-    color: '#6B8CCE'
+    color: '#FFD700'
   },
   {
     id: 'Ω',
@@ -171,7 +171,7 @@ const MIRRORS: Mirror[] = [
     function: 'Defend · Empathize · Bridge',
     domain: 'Safety',
     floors: ['F1', 'F5', 'F6', 'F9'],
-    color: '#6B8CCE'
+    color: '#FFD700'
   }
 ];
 

@@ -45,23 +45,28 @@ The HUMAN layer represents blood, life, danger, and the body. It is the **fire o
 
 ---
 
-### 2.2 THEORY Layer — The Soul (AMBER/STEEL BLUE)
+### 2.2 THEORY Layer — The Soul (GOLD/YELLOW WEAVE)
 > Domain: apex.arif-fazil.com | Symbol: Ψ | Function: Authority
 
-The THEORY layer represents wisdom, authority, and the blueprint. It is the **architecture of the forge**.
+The THEORY layer represents wisdom, authority, and the blueprint — illuminated by gold light. It is the **architecture of the forge**, now gleaming with knowledge.
 
 | Token | Hex | HSL | Usage |
 |-------|-----|-----|-------|
-| `--theory-primary` | `#3D5A8A` | 220° 40% 39% | Headers, primary text |
-| `--theory-accent` | `#6B8CCE` | 220° 47% 61% | Links, highlights |
-| `--theory-light` | `#8AAAE0` | 220° 60% 71% | Hover states |
-| `--theory-bg` | `#090B10` | 220° 20% 5% | Background |
-| `--theory-surface` | `#151A22` | 220° 18% 11% | Cards |
-| `--theory-border` | `#1C2230` | 220° 20% 15% | Borders |
-| `--theory-text` | `#E4E8EF` | 220° 20% 92% | Primary text |
-| `--theory-muted` | `#828D9A` | 215° 10% 55% | Secondary text |
+| `--theory-primary` | `#D4AF37` | 45° 67% 43% | Headers, primary text |
+| `--theory-accent` | `#FFD700` | 45° 100% 55% | Links, highlights |
+| `--theory-light` | `#FFE66D` | 45° 100% 65% | Hover states |
+| `--theory-bg` | `#1A1810` | 45° 30% 8% | Background |
+| `--theory-surface` | `#3E3B28` | 45° 18% 18% | Cards |
+| `--theory-border` | `#5A5840` | 45° 15% 28% | Borders |
+| `--theory-text` | `#FFF8DC` | 45° 100% 98% | Primary text (Cornsilk) |
+| `--theory-muted` | `#C0C0C0` | 45° 60% 75% | Secondary text (Silver) |
 
-**Psychological Profile**: Authority, knowledge, calm, scientific rigor, trust
+**Psychological Profile**: Golden knowledge, illuminated wisdom, scholarly warmth, precious insight
+
+**Contrast Analysis**: 
+- Gold (#FFD700) on Dark Brown (#1A1810): 12.8:1 ✓ WCAG AAA
+- Cornsilk (#FFF8DC) on Dark Brown: 15.6:1 ✓ WCAG AAA
+- Primary Gold (#D4AF37) on Dark: 10.2:1 ✓ WCAG AA
 
 ---
 

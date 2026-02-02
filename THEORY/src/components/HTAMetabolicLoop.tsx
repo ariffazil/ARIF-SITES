@@ -17,17 +17,17 @@ interface Stage {
 }
 
 const STAGES: Stage[] = [
-  { stage: '000', name: 'INIT', engine: null, function: 'Session initialization, injection scan', icon: Play, color: '#6B8CCE' },
-  { stage: '111', name: 'SENSE', engine: 'Δ', function: 'Parse input, extract claims', icon: Eye, color: '#6B8CCE' },
-  { stage: '222', name: 'THINK', engine: 'Δ', function: 'Logical reasoning, Bayesian update', icon: Bot, color: '#6B8CCE' },
-  { stage: '333', name: 'ATLAS', engine: 'Δ', function: 'Model selection, knowledge grounding', icon: Gauge, color: '#6B8CCE' },
-  { stage: '444', name: 'EVIDENCE', engine: 'Δ+Ω', function: 'Trinity sync, Delta+Omega bundles', icon: Shield, color: '#6B8CCE' },
-  { stage: '555', name: 'EMPATHY', engine: 'Ω', function: 'Stakeholder impact analysis', icon: Heart, color: '#6B8CCE' },
-  { stage: '666', name: 'BRIDGE', engine: 'Ω', function: 'Alignment verification', icon: Lock, color: '#6B8CCE' },
-  { stage: '777', name: 'EUREKA', engine: 'Ψ', function: 'Insight synthesis', icon: Zap, color: '#6B8CCE' },
-  { stage: '888', name: 'JUDGE', engine: 'Ψ', function: 'Final verdict', icon: Crown, color: '#6B8CCE' },
-  { stage: '889', name: 'PROOF', engine: 'Ψ', function: 'Cryptographic sealing', icon: Shield, color: '#6B8CCE' },
-  { stage: '999', name: 'SEAL', engine: 'Ψ', function: 'Merkle DAG commit, audit trail', icon: Lock, color: '#6B8CCE' },
+  { stage: '000', name: 'INIT', engine: null, function: 'Session initialization, injection scan', icon: Play, color: '#FFD700' },
+  { stage: '111', name: 'SENSE', engine: 'Δ', function: 'Parse input, extract claims', icon: Eye, color: '#FFD700' },
+  { stage: '222', name: 'THINK', engine: 'Δ', function: 'Logical reasoning, Bayesian update', icon: Bot, color: '#FFD700' },
+  { stage: '333', name: 'ATLAS', engine: 'Δ', function: 'Model selection, knowledge grounding', icon: Gauge, color: '#FFD700' },
+  { stage: '444', name: 'EVIDENCE', engine: 'Δ+Ω', function: 'Trinity sync, Delta+Omega bundles', icon: Shield, color: '#FFD700' },
+  { stage: '555', name: 'EMPATHY', engine: 'Ω', function: 'Stakeholder impact analysis', icon: Heart, color: '#FFD700' },
+  { stage: '666', name: 'BRIDGE', engine: 'Ω', function: 'Alignment verification', icon: Lock, color: '#FFD700' },
+  { stage: '777', name: 'EUREKA', engine: 'Ψ', function: 'Insight synthesis', icon: Zap, color: '#FFD700' },
+  { stage: '888', name: 'JUDGE', engine: 'Ψ', function: 'Final verdict', icon: Crown, color: '#FFD700' },
+  { stage: '889', name: 'PROOF', engine: 'Ψ', function: 'Cryptographic sealing', icon: Shield, color: '#FFD700' },
+  { stage: '999', name: 'SEAL', engine: 'Ψ', function: 'Merkle DAG commit, audit trail', icon: Lock, color: '#FFD700' },
 ];
 
 export function MetabolicLoop() {

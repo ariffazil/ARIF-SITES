@@ -1,6 +1,6 @@
 # arif-fazil.com (HUMAN — The Body)
 
-> The **Body** of the arifOS Trinity — a minimal, high-performance React application serving as the personal portfolio and digital presence of **Muhammad Arif bin Fazil**.
+> The **Body** of the arifOS Trinity — a minimal, high-performance React application serving as the personal portfolio and digital presence of **ARIF FAZIL**.
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![Version](https://img.shields.io/badge/version-v55.3-red.svg)]()
@@ -92,7 +92,7 @@ HUMAN/
 
 ## ⚖️ License
 
-© 2026 Muhammad Arif bin Fazil. All rights reserved.
+© 2026 ARIF FAZIL. All rights reserved.
 Licensed under the [MIT License](LICENSE).
 
 ---

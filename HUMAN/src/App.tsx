@@ -304,8 +304,8 @@ function App() {
           </div>
 
           {/* Name */}
-          <h1 className="text-4xl sm:text-5xl font-semibold text-white mb-4 tracking-tight">
-            Muhammad Arif<span className="text-red-500">.</span>
+          <h1 className="text-5xl sm:text-7xl font-bold mb-4 tracking-tighter bg-gradient-to-r from-red-500 via-red-400 to-red-600 text-transparent bg-clip-text">
+            ARIF<span className="block">FAZIL</span>
           </h1>
 
           {/* One-liner */}
@@ -592,7 +592,7 @@ function App() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <p className="text-gray-300 font-medium">Muhammad Arif bin Fazil</p>
+              <p className="text-white font-bold text-lg">ARIF FAZIL</p>
               <p className="text-gray-500 text-sm">Ditempa Bukan Diberi — Forged, Not Given</p>
             </div>
             

@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 20% 92%;
-    --card: 220 18% 6%;
-    --card-foreground: 210 20% 92%;
-    --popover: 220 18% 6%;
-    --popover-foreground: 210 20% 92%;
-    --primary: 220 60% 65%;
-    --primary-foreground: 220 20% 4%;
-    --secondary: 220 15% 10%;
-    --secondary-foreground: 210 20% 92%;
-    --muted: 220 15% 10%;
-    --muted-foreground: 215 10% 55%;
-    --accent: 220 60% 65%;
-    --accent-foreground: 220 20% 4%;
+    --background: 45 25% 8%;
+    --foreground: 45 100% 98%;
+    --card: 45 20% 12%;
+    --card-foreground: 45 100% 98%;
+    --popover: 45 20% 12%;
+    --popover-foreground: 45 100% 98%;
+    --primary: 45 100% 55%;
+    --primary-foreground: 45 25% 8%;
+    --secondary: 45 15% 18%;
+    --secondary-foreground: 45 100% 98%;
+    --muted: 45 15% 18%;
+    --muted-foreground: 45 60% 60%;
+    --accent: 45 100% 55%;
+    --accent-foreground: 45 25% 8%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 20% 14%;
-    --input: 220 20% 14%;
-    --ring: 220 60% 65%;
+    --border: 45 20% 22%;
+    --input: 45 20% 22%;
+    --ring: 45 100% 55%;
     --radius: 0rem;
   }
 }
@@ -48,21 +48,21 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #060810;
+  background: #2B2818;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3D5A8A;
+  background: #D4AF37;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B8CCE;
+  background: #FFD700;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(107, 140, 206, 0.25);
-  color: white;
+  background: rgba(212, 175, 55, 0.35);
+  color: #1A1810;
 }
 
 /* Display font for headings */
@@ -80,7 +80,7 @@
 /* KaTeX overrides for scientific theme */
 .katex {
   font-size: 1.1em;
-  color: #E4E8EF;
+  color: #FFF8DC;
 }
 
 .katex-display {
@@ -96,9 +96,9 @@
 
 /* Math block container */
 .math-block {
-  background: rgba(9, 11, 16, 0.8);
-  border: 1px solid rgba(107, 140, 206, 0.15);
-  border-left: 4px solid #6B8CCE;
+  background: rgba(43, 40, 24, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-left: 4px solid #FFD700;
   padding: 1.5rem;
   margin: 1.5rem 0;
   overflow-x: auto;
@@ -106,7 +106,7 @@
 
 /* Citation reference styling */
 .cite-ref {
-  color: #6B8CCE;
+  color: #FFD700;
   font-size: 0.75em;
   vertical-align: super;
   cursor: pointer;
@@ -115,8 +115,8 @@
 }
 
 .cite-ref:hover {
-  color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(107, 140, 206, 0.6);
+  color: #FFF8DC;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
 }
 
 /* Reference list styling */
@@ -126,19 +126,19 @@
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #A0A0A0;
-  border-bottom: 1px solid rgba(107, 140, 206, 0.05);
+  color: #C0C0C0;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.08);
   padding-bottom: 0.5rem;
 }
 
 .reference-item:hover {
-  color: #8AAAE0;
+  color: #FFE66D;
 }
 
 /* Section divider */
 .section-divider {
   height: 2px;
-  background: #6B8CCE;
+  background: #FFD700;
   margin: 4rem 0;
   position: relative;
 }
@@ -150,7 +150,7 @@
   top: -4px;
   width: 10px;
   height: 10px;
-  background: #6B8CCE;
+  background: #FFD700;
 }
 
 .section-divider::after {
@@ -160,7 +160,7 @@
   top: -4px;
   width: 10px;
   height: 10px;
-  background: #6B8CCE;
+  background: #FFD700;
 }
 
 /* Table styling for constitutional floors */
@@ -173,24 +173,24 @@
 .floor-table th {
   text-align: left;
   padding: 1rem;
-  border: 1px solid rgba(107, 140, 206, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   font-weight: 700;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #6B8CCE;
-  background: rgba(107, 140, 206, 0.04);
+  color: #FFD700;
+  background: rgba(212, 175, 55, 0.08);
 }
 
 .floor-table td {
   padding: 1rem;
-  border: 1px solid rgba(107, 140, 206, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.15);
   font-size: 0.8rem;
-  color: #E0E0E0;
+  color: #FFF8DC;
 }
 
 .floor-table tr:hover td {
-  background: rgba(107, 140, 206, 0.03);
+  background: rgba(212, 175, 55, 0.05);
 }
 
 /* Geometric animations */
@@ -210,7 +210,7 @@
 .code-block {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   background: #000000;
-  border: 1px solid #3D5A8A;
+  border: 1px solid #D4AF37;
   padding: 1.5rem;
   overflow-x: auto;
   font-size: 0.8rem;
@@ -220,8 +220,8 @@
 
 /* Glass effect - Minimal */
 .glass-apex {
-  background: rgba(9, 11, 16, 0.9);
-  border: 1px solid rgba(107, 140, 206, 0.15);
+  background: rgba(43, 40, 24, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.25);
 }
 
 /* BibTeX export button */
@@ -229,8 +229,8 @@
   font-family: 'Syncopate', sans-serif;
   font-size: 0.65rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #6B8CCE;
-  color: #6B8CCE;
+  border: 1px solid #FFD700;
+  color: #FFD700;
   transition: all 0.2s;
   cursor: pointer;
   background: transparent;
@@ -238,14 +238,14 @@
 }
 
 .bibtex-btn:hover {
-  background: #6B8CCE;
-  color: #090B10;
+  background: #FFD700;
+  color: #1A1810;
 }
 
 /* Disclaimer banner */
 .disclaimer {
-  background: rgba(107, 140, 206, 0.02);
-  border: 1px solid #3D5A8A;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid #D4AF37;
   padding: 1.5rem;
   font-size: 0.8rem;
   color: #828D9A;
