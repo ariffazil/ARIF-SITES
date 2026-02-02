@@ -225,10 +225,14 @@ function App() {
         <div className="mesh-gradient mesh-1" />
         <div className="mesh-gradient mesh-2" />
         <div className="mesh-gradient mesh-3" />
+        <div className="torus-ring" />
       </div>
 
       {/* Geometric Grid Pattern */}
       <div className="fixed inset-0 geometric-bg pointer-events-none opacity-50" />
+
+      {/* Fractal Radial Layer */}
+      <div className="fixed inset-0 fractal-radial pointer-events-none opacity-40" />
 
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-800' : 'bg-transparent'}`}>
@@ -253,14 +257,14 @@ function App() {
               <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
               <a href="#runtime" className="text-sm text-gray-400 hover:text-white transition-colors">Runtime</a>
               <div className="flex items-center gap-2 ml-4">
-                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-orange-500/20 text-orange-400 text-xs font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-1.5">
+                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded-full bg-red-900/30 text-red-400 text-xs font-medium hover:bg-red-900/40 transition-colors flex items-center gap-1.5 border border-red-800/50">
                   <Globe className="w-3 h-3" /> HUMAN
                 </a>
                 <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-400 text-xs font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3" /> IDEA
+                  <Sparkles className="w-3 h-3" /> THEORY
                 </a>
                 <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
-                  <Cpu className="w-3 h-3" /> APP
+                  <Cpu className="w-3 h-3" /> APPS
                 </a>
               </div>
             </div>
@@ -852,13 +856,13 @@ function App() {
               <h4 className="font-medium mb-4">Ecosystem</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <a href="https://arif-fazil.com" className="text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-1">
+                  <a href="https://arif-fazil.com" className="text-red-400 hover:text-red-300 transition-colors flex items-center gap-1">
                     HUMAN <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
                 <li>
                   <a href="https://apex.arif-fazil.com" className="text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1">
-                    IDEA <ExternalLink className="w-3 h-3" />
+                    THEORY <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
                 <li>

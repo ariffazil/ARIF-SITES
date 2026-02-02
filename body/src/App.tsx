@@ -270,7 +270,7 @@ function App() {
               <tbody>
                 <tr className="border-b border-gray-800/50">
                   <td className="px-4 py-3">
-                    <Badge className="bg-red-900/30 text-red-400 border-red-800/50 text-xs">BODY</Badge>
+                    <Badge className="bg-red-900/30 text-red-400 border-red-800/50 text-xs">HUMAN</Badge>
                   </td>
                   <td className="px-4 py-3">
                     <a href="https://arif-fazil.com" className="text-white hover:text-red-400 transition-colors">arif-fazil.com</a>
@@ -279,16 +279,16 @@ function App() {
                 </tr>
                 <tr className="border-b border-gray-800/50">
                   <td className="px-4 py-3">
-                    <Badge className="bg-amber-900/30 text-amber-400 border-amber-800/50 text-xs">SOUL</Badge>
+                    <Badge className="bg-amber-900/30 text-amber-400 border-amber-800/50 text-xs">THEORY</Badge>
                   </td>
                   <td className="px-4 py-3">
                     <a href="https://apex.arif-fazil.com" className="text-white hover:text-amber-400 transition-colors">apex.arif-fazil.com</a>
                   </td>
-                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Theory, axioms, APEX framing</td>
+                  <td className="px-4 py-3 text-gray-400 hidden sm:table-cell">Axioms, 13 floors, scientific basis</td>
                 </tr>
                 <tr>
                   <td className="px-4 py-3">
-                    <Badge className="bg-cyan-900/30 text-cyan-400 border-cyan-800/50 text-xs">DOCS</Badge>
+                    <Badge className="bg-cyan-900/30 text-cyan-400 border-cyan-800/50 text-xs">APPS</Badge>
                   </td>
                   <td className="px-4 py-3">
                     <a href="https://arifos.arif-fazil.com" className="text-white hover:text-cyan-400 transition-colors">arifos.arif-fazil.com</a>

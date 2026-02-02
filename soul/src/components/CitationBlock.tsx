@@ -127,159 +127,116 @@ export function CitationBlock() {
 
   return (
     <TooltipProvider>
-      <div className="space-y-6">
+      <div className="space-y-12">
         {/* Header Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card className="bg-gray-900/30 border-gray-800">
-            <CardContent className="p-4 text-center">
-              <GraduationCap className="w-6 h-6 text-amber-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-gray-200">{stats.total}</p>
-              <p className="text-xs text-gray-500">Total Citations</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-gray-900/30 border-gray-800">
-            <CardContent className="p-4 text-center">
-              <Award className="w-6 h-6 text-green-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-gray-200">{stats.peerReviewed}</p>
-              <p className="text-xs text-gray-500">Peer-Reviewed</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-gray-900/30 border-gray-800">
-            <CardContent className="p-4 text-center">
-              <FileText className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-gray-200">{stats.articles}</p>
-              <p className="text-xs text-gray-500">Journal Articles</p>
-            </CardContent>
-          </Card>
-          <Card className="bg-gray-900/30 border-gray-800">
-            <CardContent className="p-4 text-center">
-              <BookOpen className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-              <p className="text-2xl font-bold text-gray-200">{stats.books}</p>
-              <p className="text-xs text-gray-500">Books</p>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-amber-500/20 bg-black/40">
+          {[
+            { icon: GraduationCap, val: stats.total, label: 'TOTAL_CITATIONS' },
+            { icon: Award, val: stats.peerReviewed, label: 'PEER_REVIEWED' },
+            { icon: FileText, val: stats.articles, label: 'JOURNAL_ARTICLES' },
+            { icon: BookOpen, val: stats.books, label: 'BOOKS_MANUSCRIPTS' }
+          ].map((stat, i) => (
+            <div key={i} className={`p-8 text-center border-r border-amber-500/10 last:border-r-0 hover:bg-amber-500/[0.02] transition-colors`}>
+              <stat.icon className="w-5 h-5 text-amber-500 mx-auto mb-4 opacity-40" />
+              <p className="text-3xl font-mono font-bold text-white mb-1">{stat.val}</p>
+              <p className="text-[8px] font-display text-gray-600 tracking-widest">{stat.label}</p>
+            </div>
+          ))}
         </div>
 
         {/* Scientific Rigor Score */}
-        <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/5">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-amber-400">Scientific Rigor Score</p>
-              <p className="text-xs text-gray-500">Based on peer-review status, citation density, and methodological transparency</p>
+        <div className="p-8 border border-amber-500 bg-black relative">
+          <div className="absolute top-0 left-0 w-2 h-2 bg-amber-500" />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="text-center md:text-left">
+              <p className="text-[10px] font-display font-bold text-amber-500 mb-2 tracking-widest">SCIENTIFIC_RIGOR_METRIC</p>
+              <p className="text-xs font-mono text-gray-500 italic max-w-md">Based on peer-review status, citation density, and methodological transparency protocols.</p>
             </div>
-            <div className="text-right">
-              <p className="text-3xl font-bold text-amber-400">95<span className="text-lg">/100</span></p>
-              <Badge variant="outline" className="border-green-500/50 text-green-400 text-[10px]">
-                A-Grade
+            <div className="flex items-center gap-8 border-l border-amber-500/20 pl-8">
+              <div className="text-right">
+                <p className="text-5xl font-mono font-bold text-white leading-none">95<span className="text-xl text-amber-500">/100</span></p>
+              </div>
+              <Badge variant="outline" className="rounded-none border-green-500 text-green-500 text-[10px] font-display tracking-widest bg-green-500/5 px-4 py-1">
+                A_GRADE_CANON
               </Badge>
             </div>
           </div>
-          <div className="mt-3 h-2 bg-gray-800 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-amber-500 to-green-500" style={{ width: '95%' }} />
+          <div className="mt-8 h-1 bg-gray-900 overflow-hidden">
+            <div className="h-full bg-amber-500" style={{ width: '95%' }} />
           </div>
         </div>
 
         {/* BibTeX Export */}
-        <Card className="bg-gray-900/30 border-gray-800">
-          <CardHeader className="pb-3">
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-sm font-medium text-gray-300 flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-amber-400" />
-                Cite This Work
-              </CardTitle>
-              <Button
-                onClick={copyBibtex}
-                variant="outline"
-                size="sm"
-                className="border-gray-600 text-gray-400 hover:border-amber-500/50 hover:text-amber-400"
-              >
-                {copiedBibtex ? <Check className="w-4 h-4 mr-1" /> : <Copy className="w-4 h-4 mr-1" />}
-                {copiedBibtex ? 'Copied!' : 'Copy BibTeX'}
-              </Button>
+        <div className="border border-amber-500/20 bg-black/40 p-8 relative">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-4">
+              <BookOpen className="w-4 h-4 text-amber-500" />
+              <h4 className="text-[10px] font-display text-gray-500 tracking-widest uppercase">CITE_THIS_CANON</h4>
             </div>
-          </CardHeader>
-          <CardContent>
-            <pre className="p-4 rounded-lg bg-black/50 text-xs text-gray-400 overflow-x-auto font-mono">
-              {BIBTEX}
-            </pre>
-          </CardContent>
-        </Card>
+            <Button
+              onClick={copyBibtex}
+              variant="outline"
+              className="rounded-none border-amber-500 text-amber-500 hover:bg-amber-500/10 font-display text-[9px] tracking-widest px-6"
+            >
+              {copiedBibtex ? <Check className="w-3 h-3 mr-2" /> : <Copy className="w-3 h-3 mr-2" />}
+              {copiedBibtex ? 'DATA_COPIED' : 'COPY_BIBTEX'}
+            </Button>
+          </div>
+          <pre className="p-6 border border-amber-500/10 bg-black text-[10px] text-gray-500 overflow-x-auto font-mono leading-relaxed italic">
+            {BIBTEX}
+          </pre>
+        </div>
 
         {/* Key References */}
-        <div>
-          <h4 className="text-sm font-semibold text-gray-300 mb-4 flex items-center gap-2">
-            <Award className="w-4 h-4 text-amber-400" />
-            Key References
-          </h4>
+        <div className="space-y-8">
+          <div className="flex items-center gap-4 mb-8">
+            <Award className="w-4 h-4 text-amber-500" />
+            <h4 className="text-[10px] font-display text-white tracking-[0.3em] uppercase">CANONICAL_REFERENCES</h4>
+          </div>
           
-          <div className="space-y-2">
+          <div className="grid gap-4">
             {REFERENCES.map((ref) => (
               <div
                 key={ref.id}
                 className={`
-                  p-3 rounded-lg border transition-all cursor-pointer
+                  p-6 transition-all cursor-pointer border rounded-none
                   ${expandedRef === ref.id 
-                    ? 'border-amber-500/50 bg-amber-500/5' 
-                    : 'border-gray-800 bg-gray-900/30 hover:border-gray-700'
+                    ? 'border-amber-500 bg-amber-500/[0.03]' 
+                    : 'border-amber-500/10 bg-black/40 hover:border-amber-500/30'
                   }
                 `}
                 onClick={() => setExpandedRef(expandedRef === ref.id ? null : ref.id)}
               >
-                <div className="flex items-start gap-3">
-                  <span className="text-xs font-mono text-gray-500 mt-0.5">[{ref.id}]</span>
+                <div className="flex items-start gap-8">
+                  <span className="text-[10px] font-display text-amber-500/40 mt-1">REF_{ref.id < 10 ? '0'+ref.id : ref.id}</span>
                   <div className="flex-1">
                     <p 
-                      className="text-sm text-gray-300"
+                      className="text-sm font-mono text-gray-300 leading-relaxed mb-4"
                       dangerouslySetInnerHTML={{ __html: ref.citation }}
                     />
-                    <div className="flex items-center gap-2 mt-2">
-                      <Badge variant="outline" className="text-[10px] border-gray-700">
+                    <div className="flex flex-wrap items-center gap-4">
+                      <Badge variant="outline" className="rounded-none border-amber-500/20 text-gray-500 text-[8px] font-display uppercase">
                         {ref.category}
                       </Badge>
                       {ref.peerReviewed && (
-                        <Badge variant="outline" className="text-[10px] border-green-500/50 text-green-400">
-                          Peer-Reviewed
+                        <Badge variant="outline" className="rounded-none border-green-500/30 text-green-500/60 text-[8px] font-display uppercase">
+                          Peer_Reviewed
                         </Badge>
                       )}
-                      <span className="text-[10px] text-gray-500">{ref.topic}</span>
+                      <span className="text-[9px] font-mono text-gray-600 italic tracking-tighter">{ref.topic}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    {ref.doi && (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <a
-                            href={`https://doi.org/${ref.doi}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 rounded hover:bg-gray-800 text-gray-500 hover:text-amber-400 transition-colors"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="text-xs">View DOI: {ref.doi}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    )}
-                    {ref.url && (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <a
-                            href={ref.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 rounded hover:bg-gray-800 text-gray-500 hover:text-amber-400 transition-colors"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="text-xs">View Paper</p>
-                        </TooltipContent>
-                      </Tooltip>
+                  <div className="flex items-center gap-2">
+                    {(ref.doi || ref.url) && (
+                      <a
+                        href={ref.doi ? `https://doi.org/${ref.doi}` : ref.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 border border-amber-500/20 text-gray-600 hover:text-amber-500 hover:border-amber-500 transition-all"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
                     )}
                   </div>
                 </div>
@@ -287,32 +244,29 @@ export function CitationBlock() {
             ))}
           </div>
           
-          <div className="mt-4 text-center">
+          <div className="text-center pt-8">
             <a 
               href="/references.json"
-              className="text-sm text-amber-400 hover:text-amber-300 inline-flex items-center gap-2"
+              className="font-display text-[9px] text-amber-500 hover:text-white tracking-[0.4em] uppercase transition-all flex items-center justify-center gap-4 group"
             >
-              View All 50 References
-              <ExternalLink className="w-4 h-4" />
+              <span className="w-8 h-[1px] bg-amber-500/20 group-hover:w-12 transition-all" />
+              Access_Complete_Bibliography_Archive
+              <span className="w-8 h-[1px] bg-amber-500/20 group-hover:w-12 transition-all" />
             </a>
           </div>
         </div>
 
         {/* Machine-Readable Endpoints */}
-        <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/30">
-          <p className="text-sm font-semibold text-gray-300 mb-3">Machine-Readable Endpoints</p>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between p-2 rounded bg-black/30">
-              <code className="text-xs text-cyan-400">/references.json</code>
-              <Badge variant="outline" className="text-[10px] border-cyan-500/50 text-cyan-400">
-                JSON
-              </Badge>
+        <div className="p-8 border border-amber-500/10 bg-black/60">
+          <p className="text-[10px] font-display text-gray-600 mb-6 tracking-widest uppercase">M2M_ENDPOINTS</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="flex items-center justify-between p-4 border border-amber-500/5 bg-amber-500/[0.01]">
+              <code className="text-xs font-mono text-amber-500/60">/references.json</code>
+              <Badge variant="outline" className="rounded-none border-amber-500/20 text-gray-600 text-[8px] font-display uppercase">JSON_PROTOCOL</Badge>
             </div>
-            <div className="flex items-center justify-between p-2 rounded bg-black/30">
-              <code className="text-xs text-amber-400">/llms.txt</code>
-              <Badge variant="outline" className="text-[10px] border-amber-500/50 text-amber-400">
-                Plain Text
-              </Badge>
+            <div className="flex items-center justify-between p-4 border border-amber-500/5 bg-amber-500/[0.01]">
+              <code className="text-xs font-mono text-amber-500/60">/llms.txt</code>
+              <Badge variant="outline" className="rounded-none border-amber-500/20 text-gray-600 text-[8px] font-display uppercase">RAW_CONTEXT</Badge>
             </div>
           </div>
         </div>

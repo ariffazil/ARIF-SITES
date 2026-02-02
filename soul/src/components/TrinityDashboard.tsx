@@ -85,7 +85,7 @@ export function TrinityDashboard() {
     };
   }, []);
 
-  // Animated background canvas
+  // Animated background canvas - Orthogonal (Upgraded)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -99,16 +99,17 @@ export function TrinityDashboard() {
     };
     resize();
 
-    const particles: { x: number; y: number; vx: number; vy: number; radius: number; color: string }[] = [];
-    const colors = ['#f59e0b', '#06b6d4', '#ef4444', '#22c55e'];
+    const shapes: { x: number; y: number; w: number; h: number; vx: number; vy: number; color: string }[] = [];
+    const colors = ['#FFD700', '#B8860B', '#FFFFFF'];
     
-    for (let i = 0; i < 30; i++) {
-      particles.push({
+    for (let i = 0; i < 15; i++) {
+      shapes.push({
         x: Math.random() * canvas.offsetWidth,
         y: Math.random() * canvas.offsetHeight,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        radius: Math.random() * 2 + 1,
+        w: Math.random() * 40 + 10,
+        h: Math.random() * 40 + 10,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
         color: colors[Math.floor(Math.random() * colors.length)]
       });
     }
@@ -117,33 +118,36 @@ export function TrinityDashboard() {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
 
-      particles.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
+      shapes.forEach((s) => {
+        s.x += s.vx;
+        s.y += s.vy;
         
-        if (p.x < 0 || p.x > canvas.offsetWidth) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.offsetHeight) p.vy *= -1;
+        if (s.x < 0 || s.x > canvas.offsetWidth) s.vx *= -1;
+        if (s.y < 0 || s.y > canvas.offsetHeight) s.vy *= -1;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + '40';
-        ctx.fill();
-
-        // Draw connections
-        particles.slice(i + 1).forEach(p2 => {
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(245, 158, 11, ${0.1 * (1 - dist / 100)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
+        ctx.strokeStyle = s.color;
+        ctx.globalAlpha = 0.1;
+        ctx.strokeRect(s.x, s.y, s.w, s.h);
+        ctx.globalAlpha = 1.0;
       });
+
+      // Draw rigid connection lines
+      ctx.strokeStyle = '#FFD700';
+      ctx.globalAlpha = 0.05;
+      for(let i=0; i<canvas.offsetWidth; i+=100) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.offsetHeight);
+        ctx.stroke();
+      }
+      for(let i=0; i<canvas.offsetHeight; i+=100) {
+        ctx.beginPath();
+        ctx.moveTo(0, i);
+        ctx.lineTo(canvas.offsetWidth, i);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1.0;
 
       animationId = requestAnimationFrame(animate);
     };
@@ -152,171 +156,152 @@ export function TrinityDashboard() {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'pass': return 'bg-green-500';
-      case 'warn': return 'bg-amber-500';
-      case 'fail': return 'bg-red-500';
-      default: return 'bg-gray-600';
-    }
-  };
-
   const getVerdictColor = (verdict: string) => {
     switch (verdict) {
-      case 'SEAL': return 'border-green-500/50 text-green-400 bg-green-500/10';
-      case 'SABAR': return 'border-amber-500/50 text-amber-400 bg-amber-500/10';
-      case 'VOID': return 'border-red-500/50 text-red-400 bg-red-500/10';
-      case '888_HOLD': return 'border-purple-500/50 text-purple-400 bg-purple-500/10';
-      default: return 'border-gray-500/50 text-gray-400';
+      case 'SEAL': return 'border-green-500 text-green-400 bg-green-500/10';
+      case 'SABAR': return 'border-amber-500 text-amber-400 bg-amber-500/10';
+      case 'VOID': return 'border-red-500 text-red-400 bg-red-500/10';
+      case '888_HOLD': return 'border-purple-500 text-purple-400 bg-purple-500/10';
+      default: return 'border-amber-500/30 text-amber-500/50';
     }
   };
 
   return (
-    <div className="relative">
+    <div className="relative border border-amber-500/20 bg-black/40 p-8">
       {/* Animated Background */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ opacity: 0.5 }}
+        style={{ opacity: 0.4 }}
       />
       
-      <div className="relative z-10 space-y-6">
+      <div className="relative z-10 space-y-12">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Activity className="w-5 h-5 text-amber-400" />
-            <h3 className="font-mono text-sm font-semibold text-gray-200 uppercase tracking-wider">
-              Trinity System Monitor
-            </h3>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-6">
+            <div className="p-3 bg-amber-500 text-black">
+              <Activity className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="font-display text-sm font-bold text-white tracking-widest uppercase">
+                TRINITY_CORE_MONITOR
+              </h3>
+              <p className="text-[10px] font-mono text-gray-600 mt-1 tracking-tighter uppercase">Real-time Constitutional State</p>
+            </div>
           </div>
-          <Badge variant="outline" className={`text-xs ${getVerdictColor(metrics.verdict)}`}>
-            {metrics.verdict === 'INIT' ? 'BOOTING...' : `VERDICT: ${metrics.verdict}`}
+          <Badge variant="outline" className={`rounded-none px-6 py-2 text-[10px] font-display tracking-widest ${getVerdictColor(metrics.verdict)}`}>
+            {metrics.verdict === 'INIT' ? 'BOOTING_SEQUENCE...' : `STATE: ${metrics.verdict}`}
           </Badge>
         </div>
 
         {/* Core Metrics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-amber-500/10">
           {/* Clarity */}
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Eye className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-mono text-gray-500 uppercase">Clarity (F4)</span>
-              </div>
-              <p className={`text-2xl font-mono font-bold ${metrics.clarity <= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                {metrics.clarity === 0 ? '—' : metrics.clarity.toFixed(3)}
-              </p>
-              <p className="text-[10px] text-gray-600 mt-1 font-mono">ΔS ≤ 0 required</p>
-              <div className="mt-2 h-1 bg-gray-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-cyan-400 transition-all duration-500"
-                  style={{ width: `${Math.min(Math.abs(metrics.clarity) * 1000, 100)}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group">
+            <div className="flex items-center gap-3 mb-6">
+              <Eye className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <span className="text-[10px] font-display text-gray-500 tracking-wider">CLARITY (F4)</span>
+            </div>
+            <p className={`text-3xl font-mono font-bold ${metrics.clarity <= 0 ? 'text-white' : 'text-red-500'}`}>
+              {metrics.clarity === 0 ? '0.000' : metrics.clarity.toFixed(3)}
+            </p>
+            <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
+              <div 
+                className="h-full bg-amber-500 transition-all duration-500"
+                style={{ width: `${Math.min(Math.abs(metrics.clarity) * 1000, 100)}%` }}
+              />
+            </div>
+          </div>
 
           {/* Stability */}
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Heart className="w-4 h-4 text-red-400" />
-                <span className="text-xs font-mono text-gray-500 uppercase">Peace² (F5)</span>
-              </div>
-              <p className={`text-2xl font-mono font-bold ${metrics.stability >= 1.0 ? 'text-green-400' : 'text-red-400'}`}>
-                {metrics.stability === 0 ? '—' : metrics.stability.toFixed(2)}
-              </p>
-              <p className="text-[10px] text-gray-600 mt-1 font-mono">Ψ ≥ 1.0 required</p>
-              <div className="mt-2 h-1 bg-gray-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-red-400 transition-all duration-500"
-                  style={{ width: `${Math.min(metrics.stability * 50, 100)}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group bg-amber-500/[0.01]">
+            <div className="flex items-center gap-3 mb-6">
+              <Heart className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <span className="text-[10px] font-display text-gray-500 tracking-wider">PEACE² (F5)</span>
+            </div>
+            <p className={`text-3xl font-mono font-bold ${metrics.stability >= 1.0 ? 'text-white' : 'text-red-500'}`}>
+              {metrics.stability === 0 ? '0.00' : metrics.stability.toFixed(2)}
+            </p>
+            <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
+              <div 
+                className="h-full bg-amber-500 transition-all duration-500"
+                style={{ width: `${Math.min(metrics.stability * 50, 100)}%` }}
+              />
+            </div>
+          </div>
 
           {/* Humility */}
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Lock className="w-4 h-4 text-purple-400" />
-                <span className="text-xs font-mono text-gray-500 uppercase">Humility (F7)</span>
-              </div>
-              <p className={`text-2xl font-mono font-bold ${metrics.humility >= 0.03 && metrics.humility <= 0.05 ? 'text-green-400' : 'text-red-400'}`}>
-                {metrics.humility.toFixed(3)}
-              </p>
-              <p className="text-[10px] text-gray-600 mt-1 font-mono">Ω₀ ∈ [0.03, 0.05]</p>
-              <div className="mt-2 h-1 bg-gray-800 rounded-full overflow-hidden relative">
-                <div className="absolute left-[30%] right-[50%] h-full bg-purple-400/30" />
-                <div 
-                  className="h-full bg-purple-400 transition-all duration-500 absolute"
-                  style={{ left: '0', width: `${metrics.humility * 2000}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group">
+            <div className="flex items-center gap-3 mb-6">
+              <Lock className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <span className="text-[10px] font-display text-gray-500 tracking-wider">HUMILITY (F7)</span>
+            </div>
+            <p className={`text-3xl font-mono font-bold ${metrics.humility >= 0.03 && metrics.humility <= 0.05 ? 'text-white' : 'text-red-500'}`}>
+              {metrics.humility.toFixed(3)}
+            </p>
+            <div className="mt-6 h-1 bg-gray-900 overflow-hidden relative">
+              <div 
+                className="h-full bg-amber-500 transition-all duration-500"
+                style={{ width: `${metrics.humility * 2000}%` }}
+              />
+            </div>
+          </div>
 
           {/* Genius */}
-          <Card className="bg-gray-900/50 border-gray-800">
-            <CardContent className="p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Zap className="w-4 h-4 text-amber-400" />
-                <span className="text-xs font-mono text-gray-500 uppercase">Genius (F8)</span>
-              </div>
-              <p className={`text-2xl font-mono font-bold ${metrics.genius >= 0.80 ? 'text-green-400' : 'text-amber-400'}`}>
-                {metrics.genius === 0 ? '—' : metrics.genius.toFixed(2)}
-              </p>
-              <p className="text-[10px] text-gray-600 mt-1 font-mono">G ≥ 0.80 required</p>
-              <div className="mt-2 h-1 bg-gray-800 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-amber-400 transition-all duration-500"
-                  style={{ width: `${Math.min(metrics.genius * 100, 100)}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="p-8 hover:bg-amber-500/[0.02] transition-colors group bg-amber-500/[0.01]">
+            <div className="flex items-center gap-3 mb-6">
+              <Zap className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <span className="text-[10px] font-display text-gray-500 tracking-wider">GENIUS (F8)</span>
+            </div>
+            <p className={`text-3xl font-mono font-bold ${metrics.genius >= 0.80 ? 'text-white' : 'text-amber-500'}`}>
+              {metrics.genius === 0 ? '0.00' : metrics.genius.toFixed(2)}
+            </p>
+            <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
+              <div 
+                className="h-full bg-amber-500 transition-all duration-500"
+                style={{ width: `${Math.min(metrics.genius * 100, 100)}%` }}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Floor Status Grid */}
-        <Card className="bg-gray-900/30 border-gray-800">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-gray-300 flex items-center gap-2">
-              <Shield className="w-4 h-4 text-amber-400" />
-              Constitutional Floor Status
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-7 md:grid-cols-13 gap-2">
-              {floorStatuses.map((floor) => (
-                <div key={floor.id} className="flex flex-col items-center">
-                  <div 
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono font-bold transition-all duration-300 ${
-                      floor.status === 'pass' ? 'bg-green-500/20 text-green-400 border border-green-500/50' :
-                      floor.status === 'warn' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/50' :
-                      floor.status === 'fail' ? 'bg-red-500/20 text-red-400 border border-red-500/50' :
-                      'bg-gray-800 text-gray-600 border border-gray-700'
-                    }`}
-                    title={`${floor.id}: ${floor.name}`}
-                  >
-                    {floor.id.replace('F', '')}
-                  </div>
-                  <span className="text-[8px] text-gray-600 mt-1 hidden md:block">{floor.name}</span>
+        <div className="p-8 border border-amber-500/20 bg-black/60 relative">
+          <div className="absolute top-0 left-8 right-8 h-[1px] bg-amber-500/30" />
+          <div className="flex items-center gap-4 mb-8">
+            <Shield className="w-4 h-4 text-amber-500" />
+            <h4 className="text-[10px] font-display text-white tracking-widest uppercase">CONSTITUTIONAL_FLOORS_STATE</h4>
+          </div>
+          
+          <div className="grid grid-cols-4 sm:grid-cols-7 md:grid-cols-13 gap-4">
+            {floorStatuses.map((floor) => (
+              <div key={floor.id} className="flex flex-col items-center">
+                <div 
+                  className={`w-10 h-10 flex items-center justify-center text-[10px] font-display font-bold transition-all duration-500 ${
+                    floor.status === 'pass' ? 'bg-amber-500 text-black' :
+                    floor.status === 'warn' ? 'border-2 border-amber-500 text-amber-500' :
+                    floor.status === 'fail' ? 'bg-red-500 text-white' :
+                    'border border-amber-500/20 text-gray-700'
+                  }`}
+                  title={`${floor.id}: ${floor.name}`}
+                >
+                  {floor.id.replace('F', '')}
                 </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                <span className="text-[8px] font-mono text-gray-600 mt-3 hidden md:block uppercase tracking-tighter">{floor.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between text-[10px] text-gray-600 font-mono">
-          <div className="flex items-center gap-2">
-            <Gauge className="w-3 h-3" />
-            <span>CLERK MODE — Propose only, never seal</span>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-display text-gray-600 border-t border-amber-500/10 pt-8">
+          <div className="flex items-center gap-4">
+            <Gauge className="w-3 h-3 text-amber-500/40" />
+            <span className="tracking-widest">ENFORCEMENT_PROTOCOL: ACTIVE</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Crown className="w-3 h-3 text-purple-400" />
-            <span>888 JUDGE (F13) holds sovereign authority</span>
+          <div className="flex items-center gap-4">
+            <Crown className="w-3 h-3 text-amber-500" />
+            <span className="tracking-widest">Sovereign: 888_JUDGE</span>
           </div>
         </div>
       </div>

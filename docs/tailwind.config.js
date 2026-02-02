@@ -68,6 +68,10 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        "torus-glow": {
+          "0%, 100%": { boxShadow: "0 0 40px rgba(14, 165, 233, 0.15), inset 0 0 40px rgba(6, 182, 212, 0.1)" },
+          "50%": { boxShadow: "0 0 80px rgba(14, 165, 233, 0.25), inset 0 0 60px rgba(6, 182, 212, 0.15)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -75,6 +79,7 @@ export default {
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "float": "float 6s ease-in-out infinite",
         "gradient-shift": "gradient-shift 8s ease infinite",
+        "torus-glow": "torus-glow 8s ease-in-out infinite",
       },
     },
   },

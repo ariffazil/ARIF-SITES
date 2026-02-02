@@ -230,34 +230,38 @@ export function FloorVisualizer() {
         }
       });
 
-      // Draw connections
+      // Draw rigid orthogonal connections
+      ctx.strokeStyle = `rgba(255, 215, 0, 0.15)`;
+      ctx.lineWidth = 1;
+      
       for (let i = 0; i < positions.length - 1; i++) {
         const p1 = positions[i];
         const p2 = positions[i + 1];
         
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
-        
-        // Curved line
-        const cpX = (p1.x + p2.x) / 2;
-        const cpY = Math.min(p1.y, p2.y) - 30;
-        ctx.quadraticCurveTo(cpX, cpY, p2.x, p2.y);
-        
-        ctx.strokeStyle = `rgba(245, 158, 11, 0.2)`;
-        ctx.lineWidth = 1;
-        ctx.setLineDash([5, 5]);
+        // Orthogonal path: move horizontally then vertically
+        ctx.lineTo(p2.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
         ctx.stroke();
-        ctx.setLineDash([]);
 
-        // Animated particle
+        // Animated rigid particle
         const time = Date.now() / 1000;
         const t = (time % 2) / 2;
-        const particleX = (1 - t) * (1 - t) * p1.x + 2 * (1 - t) * t * cpX + t * t * p2.x;
-        const particleY = (1 - t) * (1 - t) * p1.y + 2 * (1 - t) * t * cpY + t * t * p2.y;
+        let px, py;
+        if (t < 0.5) {
+          const t2 = t * 2;
+          px = p1.x + (p2.x - p1.x) * t2;
+          py = p1.y;
+        } else {
+          const t2 = (t - 0.5) * 2;
+          px = p2.x;
+          py = p1.y + (p2.y - p1.y) * t2;
+        }
         
         ctx.beginPath();
-        ctx.arc(particleX, particleY, 3, 0, Math.PI * 2);
-        ctx.fillStyle = '#f59e0b';
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFD700';
         ctx.fill();
       }
 
@@ -303,7 +307,7 @@ export function FloorVisualizer() {
         />
 
         {/* Floor Grid */}
-        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {FLOORS.map((floor) => {
             const Icon = floor.icon;
             const isActive = activeFloor === floor.id;
@@ -316,59 +320,47 @@ export function FloorVisualizer() {
                     data-floor-id={floor.id}
                     onClick={() => setActiveFloor(isActive ? null : floor.id)}
                     className={`
-                      relative p-4 rounded-xl border-2 cursor-pointer transition-all duration-300
-                      ${isActive ? 'scale-105 shadow-lg' : 'hover:scale-102'}
-                      ${floor.type === 'hard' ? 'border-red-500/30 bg-red-500/5 hover:border-red-500/50' : ''}
-                      ${floor.type === 'soft' ? 'border-amber-500/30 bg-amber-500/5 hover:border-amber-500/50' : ''}
-                      ${floor.type === 'veto' ? 'border-purple-500/30 bg-purple-500/5 hover:border-purple-500/50' : ''}
-                      ${!isAnimated ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}
+                      relative p-6 border-2 cursor-pointer transition-all duration-300 rounded-none
+                      ${isActive ? 'bg-amber-500/10 border-amber-500' : 'bg-black/40 border-amber-500/20 hover:border-amber-500/40'}
+                      ${!isAnimated ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}
                     `}
                     style={{ transitionDelay: `${parseInt(floor.id.slice(1)) * 50}ms` }}
                   >
-                    {/* Type Badge */}
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2">
-                      {getTypeBadge(floor.type)}
+                    {/* Type Indicator */}
+                    <div className="absolute top-0 right-0 p-1">
+                      <div className={`w-1 h-1 ${floor.type === 'hard' ? 'bg-red-500' : floor.type === 'soft' ? 'bg-amber-500' : 'bg-purple-500'}`} />
                     </div>
 
                     {/* Icon */}
-                    <div className="flex justify-center mb-2">
-                      <div 
-                        className="w-10 h-10 rounded-full flex items-center justify-center"
-                        style={{ backgroundColor: `${floor.color}20`, border: `1px solid ${floor.color}50` }}
-                      >
-                        <Icon className="w-5 h-5" style={{ color: floor.color }} />
-                      </div>
+                    <div className="flex justify-center mb-4">
+                      <Icon className={`w-5 h-5 ${isActive ? 'text-white' : 'text-gray-600'}`} />
                     </div>
 
                     {/* ID */}
-                    <p className="text-center font-mono text-sm font-bold" style={{ color: floor.color }}>
+                    <p className={`text-center font-display text-[10px] font-bold tracking-widest ${isActive ? 'text-amber-500' : 'text-gray-500'}`}>
                       {floor.id}
                     </p>
 
                     {/* Name */}
-                    <p className="text-center text-xs text-gray-400 mt-1">
+                    <p className="text-center text-[10px] font-mono text-gray-400 mt-2 uppercase tracking-tighter">
                       {floor.name}
                     </p>
-
-                    {floor.arabic && (
-                      <p className="text-center text-[10px] text-gray-600 mt-0.5 font-arabic">
-                        {floor.arabic}
-                      </p>
-                    )}
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="max-w-xs">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2">
-                      {getTypeIcon(floor.type)}
-                      <span className="font-semibold">{floor.id}: {floor.name}</span>
+                <TooltipContent side="top" className="max-w-xs rounded-none border-amber-500 bg-black">
+                  <div className="space-y-3 p-2 font-mono">
+                    <div className="flex items-center justify-between border-b border-amber-500/20 pb-2">
+                      <span className="font-display text-[10px] text-amber-500">{floor.id}_{floor.name.toUpperCase()}</span>
+                      {getTypeBadge(floor.type)}
                     </div>
-                    <p className="text-xs text-gray-400">{floor.description}</p>
-                    <code className="text-[10px] bg-black/50 px-1.5 py-0.5 rounded block">
-                      {floor.formula}
-                    </code>
-                    <p className="text-[10px] text-gray-500">
-                      <span className="text-gray-400">Basis:</span> {floor.basis}
+                    <p className="text-[10px] text-gray-400 leading-relaxed italic">"{floor.description}"</p>
+                    <div className="p-2 bg-amber-500/5 border border-amber-500/10">
+                      <code className="text-[9px] text-white break-all">
+                        {floor.formula}
+                      </code>
+                    </div>
+                    <p className="text-[9px] text-gray-600 uppercase tracking-widest">
+                      Basis: {floor.basis}
                     </p>
                   </div>
                 </TooltipContent>
@@ -379,54 +371,57 @@ export function FloorVisualizer() {
 
         {/* Expanded Detail Panel */}
         {activeFloor && (
-          <div className="mt-6 p-6 rounded-xl border border-gray-700 bg-gray-900/50">
+          <div className="mt-12 p-10 border border-amber-500 bg-black relative">
+            <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white" />
+            
             {(() => {
               const floor = FLOORS.find(f => f.id === activeFloor)!;
               const Icon = floor.icon;
               return (
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div 
-                      className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ backgroundColor: `${floor.color}20`, border: `2px solid ${floor.color}50` }}
-                    >
-                      <Icon className="w-7 h-7" style={{ color: floor.color }} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-bold" style={{ color: floor.color }}>
-                          {floor.id}: {floor.name}
-                        </h3>
-                        {getTypeBadge(floor.type)}
+                <div className="space-y-8">
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center gap-8">
+                      <div className="p-4 border border-amber-500/20 bg-amber-500/5">
+                        <Icon className="w-8 h-8 text-amber-500" />
                       </div>
-                      {floor.arabic && (
-                        <p className="text-sm text-gray-500 font-arabic mt-1">{floor.arabic}</p>
-                      )}
+                      <div>
+                        <div className="flex items-center gap-4 mb-2">
+                          <h3 className="text-2xl font-display font-bold text-white tracking-widest">
+                            {floor.id}<span className="text-amber-500">:</span> {floor.name.toUpperCase()}
+                          </h3>
+                          {getTypeBadge(floor.type)}
+                        </div>
+                        {floor.arabic && (
+                          <p className="text-sm text-gray-600 font-arabic tracking-widest">{floor.arabic}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <p className="text-gray-400">{floor.description}</p>
+                  <p className="text-gray-400 font-mono text-sm leading-relaxed max-w-3xl">
+                    {floor.description}
+                  </p>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="p-3 rounded-lg bg-black/30">
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Formula</p>
-                      <code className="text-sm" style={{ color: floor.color }}>{floor.formula}</code>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                      <p className="text-[10px] font-display text-gray-500 uppercase tracking-[0.3em] mb-4">FORMAL_SPECIFICATION</p>
+                      <code className="text-sm font-mono text-amber-500 block p-4 bg-black border-l-2 border-amber-500">{floor.formula}</code>
                     </div>
-                    <div className="p-3 rounded-lg bg-black/30">
-                      <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Constraint</p>
-                      <p className="text-sm text-gray-300">{floor.constraint}</p>
+                    <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                      <p className="text-[10px] font-display text-gray-500 uppercase tracking-[0.3em] mb-4">RUNTIME_CONSTRAINT</p>
+                      <p className="text-sm font-mono text-gray-300 p-4 bg-black border-l-2 border-gray-700">{floor.constraint}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 text-sm">
+                  <div className="flex flex-wrap items-center gap-12 text-[10px] font-display text-gray-600 border-t border-amber-500/10 pt-8">
                     <div>
-                      <span className="text-gray-500">Scientific Basis:</span>{' '}
-                      <span className="text-gray-300">{floor.basis}</span>
+                      <span className="text-gray-500">SCIENTIFIC_BASIS:</span>{' '}
+                      <span className="text-white ml-2 tracking-widest">{floor.basis.toUpperCase()}</span>
                     </div>
-                    <div className="text-gray-600">|</div>
                     <div>
-                      <span className="text-gray-500">Source:</span>{' '}
-                      <span className="text-gray-400 text-xs">{floor.literature}</span>
+                      <span className="text-gray-500">CANONICAL_SOURCE:</span>{' '}
+                      <span className="text-gray-400 ml-2 italic tracking-tighter">{floor.literature}</span>
                     </div>
                   </div>
                 </div>
@@ -436,18 +431,18 @@ export function FloorVisualizer() {
         )}
 
         {/* Legend */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-red-500/30 border border-red-500/50" />
-            <span className="text-gray-400">Hard Floor (VOID on fail)</span>
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-[10px] font-display tracking-widest uppercase">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-red-500" />
+            <span className="text-gray-500">HARD_VOID</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-amber-500/30 border border-amber-500/50" />
-            <span className="text-gray-400">Soft Floor (SABAR on fail)</span>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-amber-500" />
+            <span className="text-gray-500">SOFT_SABAR</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-purple-500/30 border border-purple-500/50" />
-            <span className="text-gray-400">Veto Floor (888 JUDGE)</span>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-purple-500" />
+            <span className="text-gray-500">VETO_888</span>
           </div>
         </div>
       </div>

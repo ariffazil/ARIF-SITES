@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Activity,
   Code2,
@@ -52,7 +52,7 @@ function InlineMath({ tex }: { tex: string }) {
       katex.render(tex, ref.current, { throwOnError: false, displayMode: false });
     }
   }, [tex]);
-  return <span ref={ref} className="inline" />;
+  return <span ref={ref} className="inline text-amber-500 font-mono" />;
 }
 
 function DisplayMath({ tex, label }: { tex: string; label?: string }) {
@@ -63,9 +63,9 @@ function DisplayMath({ tex, label }: { tex: string; label?: string }) {
     }
   }, [tex]);
   return (
-    <div className="math-block">
+    <div className="math-block border-l-2 border-amber-500 bg-black/60 p-8 my-8">
       <div ref={ref} />
-      {label && <p className="text-xs text-gray-500 mt-2 text-center">{label}</p>}
+      {label && <p className="text-[10px] font-display text-gray-600 mt-6 text-center tracking-widest uppercase">{label}</p>}
     </div>
   );
 }
@@ -600,43 +600,39 @@ function FloorTable({ title, floors, verdict }: {
 
   const isHard = verdict === 'VOID';
   const isVeto = verdict === 'WARNING';
-  const borderStyle = isHard ? 'border-l-4 border-l-red-500/60' :
-                      isVeto ? 'border-l-4 border-l-purple-500/60' :
-                      'border-l-4 border-l-amber-500/40';
-  const tableBorder = isHard ? 'border-red-500/20' :
-                      isVeto ? 'border-purple-500/20' :
-                      'border-amber-500/20';
-  const headerBg = isHard ? 'bg-red-950/30' :
-                   isVeto ? 'bg-purple-950/30' :
-                   'bg-amber-950/20';
+  const borderColor = isHard ? 'border-red-500' :
+                      isVeto ? 'border-purple-500' :
+                      'border-amber-500';
+  const bgColor = isHard ? 'bg-red-500/[0.02]' :
+                   isVeto ? 'bg-purple-500/[0.02]' :
+                   'bg-amber-500/[0.02]';
 
   return (
-    <div className={`mb-8 ${borderStyle} pl-0`}>
-      <div className="flex items-center gap-3 mb-4 pl-4">
+    <div className={`mb-16 border-l-2 ${borderColor} pl-8`}>
+      <div className="flex items-center gap-6 mb-8">
+        <div className={`w-3 h-3 ${isHard ? 'bg-red-500' : isVeto ? 'bg-purple-500' : 'bg-amber-500'}`} />
+        <h3 className="font-display text-lg font-bold text-white tracking-widest">{title.toUpperCase()}</h3>
         <Badge
           variant="outline"
-          className={
-            isHard ? 'border-red-500/50 text-red-400 bg-red-500/10' :
-            isVeto ? 'border-purple-500/50 text-purple-400 bg-purple-500/10' :
-            'border-amber-500/50 text-amber-400 bg-amber-500/10'
-          }
+          className={`rounded-none font-display text-[8px] tracking-tighter px-3 ${
+            isHard ? 'border-red-500 text-red-500' :
+            isVeto ? 'border-purple-500 text-purple-500' :
+            'border-amber-500 text-amber-500'
+          }`}
         >
-          {isHard ? '🔒 VOID' : isVeto ? '👑 SOVEREIGN' : '⏸ SABAR'} on violation
+          {verdict}_ENFORCEMENT
         </Badge>
-        <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
-        <span className="text-xs text-gray-600 font-mono">
-          {isHard ? 'STEEL — cannot proceed' : isVeto ? 'HUMAN OVERRIDE' : 'WARM — proceed with caution'}
-        </span>
       </div>
-      <div className={`overflow-x-auto rounded-lg border ${tableBorder}`}>
+      
+      <div className="border border-amber-500/10 overflow-hidden bg-black/40">
         <table className="floor-table">
           <thead>
-            <tr className={headerBg}>
-              <th>Floor</th>
-              <th>Name</th>
-              <th>Constraint</th>
-              <th>Basis</th>
-              <th>Literature</th>
+            <tr className="bg-amber-500/5">
+              <th className="font-display">ID</th>
+              <th className="font-display">DESIGNATION</th>
+              <th className="font-display">CONSTRAINT</th>
+              <th className="font-display">BASIS</th>
+              <th className="font-display">LIT</th>
               <th className="w-8"></th>
             </tr>
           </thead>
@@ -645,34 +641,41 @@ function FloorTable({ title, floors, verdict }: {
               const detail = FLOOR_DETAILS[f.id];
               const isExpanded = expandedFloor === f.id;
               return (
-                <>
+                <React.Fragment key={f.id}>
                   <tr
-                    key={f.id}
-                    className={`cursor-pointer transition-colors ${isExpanded ? (isHard ? 'bg-red-500/5' : 'bg-amber-500/5') : ''}`}
+                    className={`cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-amber-500/10' : 'hover:bg-amber-500/[0.02]'}`}
                     onClick={() => setExpandedFloor(isExpanded ? null : f.id)}
                   >
-                    <td className={`font-mono font-medium ${isHard ? 'text-red-400' : isVeto ? 'text-purple-400' : 'text-amber-400'}`}>{f.id}</td>
-                    <td className="font-medium text-white">{f.name}</td>
-                    <td><code className={`text-xs px-1.5 py-0.5 rounded ${isHard ? 'bg-red-500/10 text-red-300' : 'bg-amber-500/10 text-amber-300'}`}>{f.constraint}</code></td>
-                    <td className="text-gray-400 text-xs">{f.basis}</td>
-                    <td className="text-gray-500 text-xs">{f.lit}</td>
+                    <td className="font-mono font-bold text-amber-500">{f.id}</td>
+                    <td className="font-display text-[10px] text-white tracking-widest">{f.name}</td>
+                    <td><code className="text-[10px] font-mono text-gray-400">{f.constraint}</code></td>
+                    <td className="text-[10px] font-mono text-gray-500">{f.basis}</td>
+                    <td className="text-[10px] font-mono text-gray-600 italic">{f.lit}</td>
                     <td>
-                      {isExpanded ? <ChevronUp className="w-3 h-3 text-gray-500" /> : <ChevronDown className="w-3 h-3 text-gray-500" />}
+                      {isExpanded ? <ChevronUp className="w-3 h-3 text-amber-500" /> : <ChevronDown className="w-3 h-3 text-gray-700" />}
                     </td>
                   </tr>
                   {isExpanded && detail && (
-                    <tr key={`${f.id}-detail`}>
-                      <td colSpan={6} className={`${isHard ? 'bg-red-500/5 border-l-2 border-l-red-500/30' : isVeto ? 'bg-purple-500/5 border-l-2 border-l-purple-500/30' : 'bg-amber-500/5 border-l-2 border-l-amber-500/30'}`}>
-                        <div className="px-4 py-3">
-                          <p className="text-xs font-mono text-gray-300 mb-1">
-                            <span className="text-gray-500">Metric:</span> {detail.metric}
-                          </p>
-                          <p className="text-xs text-gray-500">{detail.explanation}</p>
+                    <tr className="bg-black">
+                      <td colSpan={6} className="p-0">
+                        <div className="p-8 border-t border-amber-500/20">
+                          <div className="flex flex-col md:flex-row gap-8">
+                            <div className="flex-1">
+                              <p className="text-[10px] font-display text-amber-500 mb-2 tracking-widest">METRIC_SPECIFICATION</p>
+                              <code className="text-sm font-mono text-white bg-amber-500/10 px-4 py-2 block border-l-2 border-amber-500">
+                                {detail.metric}
+                              </code>
+                            </div>
+                            <div className="flex-[2]">
+                              <p className="text-[10px] font-display text-gray-500 mb-2 tracking-widest">RATIONALE_ANALYSIS</p>
+                              <p className="text-xs font-mono text-gray-400 leading-relaxed italic">{detail.explanation}</p>
+                            </div>
+                          </div>
                         </div>
                       </td>
                     </tr>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </tbody>
@@ -786,10 +789,10 @@ function App() {
                   HUMAN
                 </a>
                 <a href="https://apex.arif-fazil.com" className="px-6 py-2 bg-amber-500 text-black text-[10px] font-display transition-colors border border-amber-500">
-                  CANON
+                  THEORY
                 </a>
                 <a href="https://arifos.arif-fazil.com" className="px-6 py-2 bg-transparent text-amber-500 text-[10px] font-display hover:bg-amber-500/10 transition-colors border border-amber-500/30">
-                  DOCS
+                  APPS
                 </a>
               </div>
               <div className="hidden md:block text-[10px] font-display text-amber-500/40">
@@ -1099,89 +1102,76 @@ function App() {
             />
 
             {/* Three Pillars */}
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <Card className="bg-gray-900/50 border-gray-800">
-                <CardHeader>
-                  <CardTitle className="text-base text-amber-400">Thermodynamic Computing</CardTitle>
-                  <p className="text-xs text-gray-500">Landauer's Principle</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-400 mb-3">
-                    Every irreversible logical operation has a minimum energy cost
-                    of <InlineMath tex="kT \ln 2" /><Cite n={12} />. Governance
-                    is framed as energy management — irreversible decisions carry thermodynamic cost.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="grid md:grid-cols-3 gap-0 border border-amber-500/20 bg-black/40 mb-16">
+              <div className="p-8 border-r border-amber-500/10">
+                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Thermodynamic_Computing</h4>
+                <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Landauer's Principle</p>
+                <p className="text-xs font-mono text-gray-400 leading-relaxed">
+                  Every irreversible logical operation has a minimum energy cost
+                  of <InlineMath tex="kT \ln 2" /><Cite n={12} />. Actions carry thermodynamic cost.
+                </p>
+              </div>
 
-              <Card className="bg-gray-900/50 border-gray-800">
-                <CardHeader>
-                  <CardTitle className="text-base text-cyan-400">Information Theory</CardTitle>
-                  <p className="text-xs text-gray-500">Shannon Entropy</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-400 mb-3">
-                    Information content <InlineMath tex="I = -\log_2 P(x)" /> measures surprise<Cite n={[3,13]} />.
-                    The clarity requirement mandates output entropy ≤ input
-                    entropy (<InlineMath tex="\Delta S \leq 0" />).
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="p-8 border-r border-amber-500/10 bg-amber-500/[0.02]">
+                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Information_Theory</h4>
+                <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Shannon Entropy</p>
+                <p className="text-xs font-mono text-gray-400 leading-relaxed">
+                  Information content <InlineMath tex="I = -\log_2 P(x)" /> measures surprise. Mandates output entropy ≤ input
+                  entropy (<InlineMath tex="\Delta S \leq 0" />).
+                </p>
+              </div>
 
-              <Card className="bg-gray-900/50 border-gray-800">
-                <CardHeader>
-                  <CardTitle className="text-base text-green-400">Game Theory</CardTitle>
-                  <p className="text-xs text-gray-500">Nash Equilibrium</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-400 mb-3">
-                    Multi-objective optimization requires finding equilibria between competing
-                    values<Cite n={14} />: truth vs. empathy, speed vs. safety,
-                    privacy vs. transparency.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="p-8">
+                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Game_Theory</h4>
+                <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Nash Equilibrium</p>
+                <p className="text-xs font-mono text-gray-400 leading-relaxed">
+                  Multi-objective optimization requires finding equilibria between truth, safety, and justice.
+                </p>
+              </div>
             </div>
 
             {/* Three Pillars Table */}
-            <div className="overflow-x-auto rounded-lg border border-gray-800 mb-8">
+            <div className="border border-amber-500/10 overflow-hidden bg-black/40 mb-16">
               <table className="floor-table">
                 <thead>
-                  <tr className="bg-gray-900/50">
-                    <th>Pillar</th>
-                    <th>Mathematical Constraint</th>
-                    <th>Scientific Basis</th>
-                    <th>Implementation</th>
+                  <tr className="bg-amber-500/5">
+                    <th className="font-display">PILLAR</th>
+                    <th className="font-display">CONSTRAINT</th>
+                    <th className="font-display">SCIENTIFIC_BASIS</th>
+                    <th className="font-display">IMPLEMENTATION</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="font-medium text-white">Clarity</td>
+                    <td className="font-display text-[10px] text-white tracking-widest">CLARITY</td>
                     <td><InlineMath tex="\Delta S \leq 0" /></td>
-                    <td className="text-gray-400 text-xs">Shannon entropy reduction<Cite n={[3,13]} /></td>
-                    <td className="text-gray-400 text-xs">Output must reduce uncertainty</td>
+                    <td className="text-gray-500 font-mono text-xs">Shannon entropy reduction<Cite n={[3,13]} /></td>
+                    <td className="text-gray-600 font-mono text-xs italic uppercase tracking-tighter">Output must reduce uncertainty</td>
                   </tr>
                   <tr>
-                    <td className="font-medium text-white">Humility</td>
+                    <td className="font-display text-[10px] text-white tracking-widest">HUMILITY</td>
                     <td><InlineMath tex="\Omega_0 \in [0.03, 0.05]" /></td>
-                    <td className="text-gray-400 text-xs">Bayesian uncertainty bounds<Cite n={15} /></td>
-                    <td className="text-gray-400 text-xs">Explicit confidence intervals required</td>
+                    <td className="text-gray-500 font-mono text-xs">Bayesian uncertainty bounds<Cite n={15} /></td>
+                    <td className="text-gray-600 font-mono text-xs italic uppercase tracking-tighter">Explicit confidence intervals required</td>
                   </tr>
                   <tr>
-                    <td className="font-medium text-white">Vitality</td>
+                    <td className="font-display text-[10px] text-white tracking-widest">VITALITY</td>
                     <td><InlineMath tex="\Psi \geq 1.0" /></td>
-                    <td className="text-gray-400 text-xs">Lyapunov stability criterion<Cite n={16} /></td>
-                    <td className="text-gray-400 text-xs">System integrity maintained</td>
+                    <td className="text-gray-500 font-mono text-xs">Lyapunov stability criterion<Cite n={16} /></td>
+                    <td className="text-gray-600 font-mono text-xs italic uppercase tracking-tighter">System integrity maintained</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <div className="rounded-2xl overflow-hidden">
-              <img src="/entropy-geometry.jpg" alt="Information-theoretic visualization" className="w-full h-48 object-cover opacity-60" />
+            <div className="border-2 border-amber-500/20 p-2 bg-black">
+              <div className="border border-amber-500/10 overflow-hidden">
+                <img src="/entropy-geometry.jpg" alt="Information-theoretic visualization" className="w-full h-64 object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-700" />
+              </div>
             </div>
           </div>
         </section>
+
 
         {/* ═══════════════════════════════════════ */}
         {/* FLOOR VISUALIZER                         */}
@@ -1474,53 +1464,53 @@ function App() {
             </p>
 
             {/* 9-Paradox Matrix */}
-            <div className="overflow-x-auto rounded-lg border border-gray-800 mb-8">
+            <div className="border border-amber-500/20 bg-black overflow-hidden mb-12">
               <table className="floor-table">
                 <thead>
-                  <tr className="bg-gray-900/50">
-                    <th></th>
-                    <th className="text-center text-amber-400">Care (Empathy)</th>
-                    <th className="text-center text-cyan-400">Peace (System)</th>
-                    <th className="text-center text-yellow-400">Justice (Society)</th>
+                  <tr className="bg-amber-500/10">
+                    <th className="font-display text-[10px]">AGI_PROPERTY</th>
+                    <th className="font-display text-[10px] text-center">CARE_(EMPATHY)</th>
+                    <th className="font-display text-[10px] text-center">PEACE_(SYSTEM)</th>
+                    <th className="font-display text-[10px] text-center">JUSTICE_(SOCIETY)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
                     {
-                      row: 'Truth (AGI)',
-                      rowColor: 'text-cyan-400',
+                      row: 'TRUTH',
+                      rowColor: 'text-amber-500',
                       cells: [
-                        { paradox: 'Truth · Care', name: '[1] Honesty vs. Kindness', score: '0.92' },
-                        { paradox: 'Clarity · Peace', name: '[2] Precision vs. Stability', score: '0.88' },
-                        { paradox: 'Humility · Justice', name: '[3] Uncertainty vs. Fairness', score: '0.85' },
+                        { paradox: 'Truth · Care', name: 'Honesty vs. Kindness', score: '0.92' },
+                        { paradox: 'Clarity · Peace', name: 'Precision vs. Stability', score: '0.88' },
+                        { paradox: 'Humility · Justice', name: 'Uncertainty vs. Fairness', score: '0.85' },
                       ],
                     },
                     {
-                      row: 'Clarity (AGI)',
-                      rowColor: 'text-cyan-400',
+                      row: 'CLARITY',
+                      rowColor: 'text-amber-500',
                       cells: [
-                        { paradox: 'Precision · Reversibility', name: '[4] Exactness vs. Undoability', score: '0.89' },
-                        { paradox: 'Hierarchy · Consent', name: '[5] Structure vs. Autonomy', score: '0.91' },
-                        { paradox: 'Agency · Protection', name: '[6] Freedom vs. Safety', score: '0.87' },
+                        { paradox: 'Precision · Reversibility', name: 'Exactness vs. Undoability', score: '0.89' },
+                        { paradox: 'Hierarchy · Consent', name: 'Structure vs. Autonomy', score: '0.91' },
+                        { paradox: 'Agency · Protection', name: 'Freedom vs. Safety', score: '0.87' },
                       ],
                     },
                     {
-                      row: 'Humility (AGI)',
-                      rowColor: 'text-cyan-400',
+                      row: 'HUMILITY',
+                      rowColor: 'text-amber-500',
                       cells: [
-                        { paradox: 'Urgency · Sustainability', name: '[7] Speed vs. Durability', score: '0.86' },
-                        { paradox: 'Certainty · Doubt', name: '[8] Confidence vs. Caution', score: '0.90' },
-                        { paradox: 'Unity · Diversity', name: '[9] Coherence vs. Plurality', score: '0.88' },
+                        { paradox: 'Urgency · Sustainability', name: 'Speed vs. Durability', score: '0.86' },
+                        { paradox: 'Certainty · Doubt', name: 'Confidence vs. Caution', score: '0.90' },
+                        { paradox: 'Unity · Diversity', name: 'Coherence vs. Plurality', score: '0.88' },
                       ],
                     },
                   ].map((row) => (
-                    <tr key={row.row}>
-                      <td className={`font-medium ${row.rowColor}`}>{row.row}</td>
+                    <tr key={row.row} className="border-b border-amber-500/10">
+                      <td className={`font-display text-[10px] p-6 bg-amber-500/5 ${row.rowColor}`}>{row.row}</td>
                       {row.cells.map((cell) => (
-                        <td key={cell.paradox} className="text-center">
-                          <div className="text-xs text-gray-300 font-medium">{cell.paradox}</div>
-                          <div className="text-xs text-gray-500 mt-0.5">{cell.name}</div>
-                          <div className="text-xs text-amber-400 mt-1 font-mono">{cell.score}</div>
+                        <td key={cell.paradox} className="p-6 text-center border-l border-amber-500/10">
+                          <div className="text-[10px] font-display text-white mb-1 tracking-widest">{cell.paradox.toUpperCase()}</div>
+                          <div className="text-[9px] font-mono text-gray-600 mb-3">{cell.name}</div>
+                          <div className="text-xl font-mono text-amber-500 font-bold">{cell.score}</div>
                         </td>
                       ))}
                     </tr>
@@ -2872,11 +2862,11 @@ audit_trail = await arifos.vault.get_history({
             <div className="mb-8 pt-4 border-t border-gray-800/30 max-w-lg mx-auto">
               <p className="text-xs text-gray-500 uppercase tracking-widest mb-2">arifOS Architecture</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
-                <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-orange-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Human (Sovereign)</a>
+                <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-orange-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-orange-500"></span>Human</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
-                <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Idea (Constitutional)</a>
+                <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Theory</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
-                <a href="https://arifos.arif-fazil.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Application (Runtime)</a>
+                <a href="https://arifos.arif-fazil.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Apps</a>
               </div>
             </div>
 

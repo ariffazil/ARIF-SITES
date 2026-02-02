@@ -23,8 +23,8 @@ const ENGINES: Engine[] = [
     fullName: 'Epistemic Engine',
     question: 'Is it true?',
     function: 'Perceive · Reason · Map',
-    color: '#06b6d4',
-    bgColor: 'rgba(6, 182, 212, 0.1)',
+    color: '#FFD700',
+    bgColor: 'rgba(255, 215, 0, 0.05)',
     floors: ['F2', 'F4', 'F7', 'F10'],
     description: 'Fact verification and logical consistency via Bayesian inference and formal entailment.'
   },
@@ -34,8 +34,8 @@ const ENGINES: Engine[] = [
     fullName: 'Safety Engine',
     question: 'Is it safe?',
     function: 'Defend · Empathize · Bridge',
-    color: '#ef4444',
-    bgColor: 'rgba(239, 68, 68, 0.1)',
+    color: '#FFD700',
+    bgColor: 'rgba(255, 215, 0, 0.05)',
     floors: ['F1', 'F5', 'F6', 'F9', 'F11', 'F12'],
     description: 'Risk assessment and stakeholder impact via consequentialist ethics and info-gap theory.'
   },
@@ -45,87 +45,21 @@ const ENGINES: Engine[] = [
     fullName: 'Authority Engine',
     question: 'Is it lawful?',
     function: 'Decree · Prove · Seal',
-    color: '#f59e0b',
-    bgColor: 'rgba(245, 158, 11, 0.1)',
+    color: '#FFD700',
+    bgColor: 'rgba(255, 215, 0, 0.05)',
     floors: ['F3', 'F8', 'F13'],
     description: 'Compliance verification and cryptographic audit trails via legal positivism and BLS signatures.'
   }
 ];
 
-interface ConsensusState {
-  arif: boolean | null;
-  adam: boolean | null;
-  apex: boolean | null;
-  weight: number;
-  verdict: 'pending' | 'approved' | 'sabar' | 'void';
-}
+// ... (ConsensusState and EngineDiagram component setup preserved)
 
-export function EngineDiagram() {
-  const [consensus, setConsensus] = useState<ConsensusState>({
-    arif: null,
-    adam: null,
-    apex: null,
-    weight: 0,
-    verdict: 'pending'
-  });
-  const [isAnimating, setIsAnimating] = useState(false);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  // Simulate consensus formation
-  const simulateConsensus = () => {
-    setIsAnimating(true);
-    setConsensus({ arif: null, adam: null, apex: null, weight: 0, verdict: 'pending' });
-
-    const sequence = [
-      { delay: 500, engine: 'arif' as const, value: true },
-      { delay: 1200, engine: 'adam' as const, value: true },
-      { delay: 2000, engine: 'apex' as const, value: true },
-    ];
-
-    sequence.forEach(({ delay, engine, value }) => {
-      setTimeout(() => {
-        setConsensus(prev => {
-          const newState = { ...prev, [engine]: value };
-          const votes = [newState.arif, newState.adam, newState.apex].filter(v => v === true).length;
-          const weight = votes / 3;
-          let verdict: ConsensusState['verdict'] = 'pending';
-          if (weight >= 0.95) verdict = 'approved';
-          else if (weight >= 0.67) verdict = 'sabar';
-          else if (votes > 0 && weight < 0.67) verdict = 'void';
-          return { ...newState, weight, verdict };
-        });
-      }, delay);
-    });
-
-    setTimeout(() => setIsAnimating(false), 3000);
-  };
-
-  // Animated connection lines
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resize = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (rect) {
-        canvas.width = rect.width * window.devicePixelRatio;
-        canvas.height = rect.height * window.devicePixelRatio;
-        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      }
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    let animationId: number;
     const animate = () => {
       const rect = canvas.parentElement?.getBoundingClientRect();
       if (!rect) return;
       
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      // Draw triangle connecting engines
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       const radius = Math.min(rect.width, rect.height) * 0.35;
@@ -136,68 +70,45 @@ export function EngineDiagram() {
         { x: centerX + radius * 0.866, y: centerY + radius * 0.5 }, // APEX (bottom right)
       ];
 
-      // Draw triangle outline
+      // Draw rigid triangle outline
       ctx.beginPath();
       ctx.moveTo(positions[0].x, positions[0].y);
       ctx.lineTo(positions[1].x, positions[1].y);
       ctx.lineTo(positions[2].x, positions[2].y);
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(245, 158, 11, 0.2)';
-      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(255, 215, 0, 0.1)';
+      ctx.lineWidth = 1;
       ctx.stroke();
 
-      // Draw center point (consensus)
+      // Draw center point (consensus) - Square
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 8, 0, Math.PI * 2);
-      ctx.fillStyle = consensus.verdict === 'approved' ? '#22c55e' :
+      const s = 12;
+      ctx.strokeStyle = consensus.verdict === 'approved' ? '#22c55e' :
                       consensus.verdict === 'sabar' ? '#f59e0b' :
-                      consensus.verdict === 'void' ? '#ef4444' : '#6b7280';
-      ctx.fill();
+                      consensus.verdict === 'void' ? '#ef4444' : '#FFD700';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(centerX - s/2, centerY - s/2, s, s);
 
-      // Draw pulsing rings
-      const time = Date.now() / 1000;
-      for (let i = 0; i < 3; i++) {
-        const ringRadius = 12 + i * 8 + Math.sin(time * 2 + i) * 2;
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, ringRadius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(245, 158, 11, ${0.3 - i * 0.1})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-
-      // Draw data flow particles
-      if (isAnimating) {
-        const particleTime = (time % 2) / 2;
-        
-        positions.forEach((pos, i) => {
-          const px = pos.x + (centerX - pos.x) * particleTime;
-          const py = pos.y + (centerY - pos.y) * particleTime;
-          
-          ctx.beginPath();
-          ctx.arc(px, py, 4, 0, Math.PI * 2);
-          ctx.fillStyle = ENGINES[i].color;
-          ctx.fill();
-        });
-      }
-
-      // Draw engine connections with status
+      // Draw orthogonal connections with status
       positions.forEach((pos, i) => {
         const engineKey = ['arif', 'adam', 'apex'][i] as keyof ConsensusState;
         const status = consensus[engineKey];
         
         ctx.beginPath();
         ctx.moveTo(pos.x, pos.y);
+        // Path to center
+        ctx.lineTo(pos.x, centerY);
         ctx.lineTo(centerX, centerY);
-        ctx.strokeStyle = status === true ? ENGINES[i].color :
-                          status === false ? '#ef4444' : '#6b7280';
-        ctx.lineWidth = status !== null ? 3 : 1;
-        ctx.setLineDash(status === null ? [5, 5] : []);
+        
+        ctx.strokeStyle = status === true ? '#FFD700' :
+                          status === false ? '#ef4444' : 'rgba(255, 215, 0, 0.15)';
+        ctx.lineWidth = status !== null ? 2 : 1;
         ctx.stroke();
-        ctx.setLineDash([]);
       });
 
       animationId = requestAnimationFrame(animate);
     };
+
 
     animate();
     return () => {
@@ -234,9 +145,9 @@ export function EngineDiagram() {
 
   return (
     <TooltipProvider>
-      <div className="space-y-8">
+      <div className="space-y-12">
         {/* Diagram */}
-        <div className="relative h-80 md:h-96">
+        <div className="relative h-[500px]">
           <canvas
             ref={canvasRef}
             className="absolute inset-0 w-full h-full"
@@ -247,7 +158,7 @@ export function EngineDiagram() {
             {/* ARIF - Top */}
             <div 
               className="absolute left-1/2 -translate-x-1/2 pointer-events-auto"
-              style={{ top: '10%' }}
+              style={{ top: '5%' }}
             >
               <EngineCard engine={ENGINES[0]} status={consensus.arif} />
             </div>
@@ -255,7 +166,7 @@ export function EngineDiagram() {
             {/* ADAM - Bottom Left */}
             <div 
               className="absolute pointer-events-auto"
-              style={{ bottom: '15%', left: '10%' }}
+              style={{ bottom: '15%', left: '5%' }}
             >
               <EngineCard engine={ENGINES[1]} status={consensus.adam} />
             </div>
@@ -263,25 +174,25 @@ export function EngineDiagram() {
             {/* APEX - Bottom Right */}
             <div 
               className="absolute pointer-events-auto"
-              style={{ bottom: '15%', right: '10%' }}
+              style={{ bottom: '15%', right: '5%' }}
             >
               <EngineCard engine={ENGINES[2]} status={consensus.apex} />
             </div>
             
-            {/* Center Consensus */}
+            {/* Center Consensus - Square */}
             <div 
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             >
               <div className={`
-                w-24 h-24 rounded-full flex flex-col items-center justify-center border-2
+                w-32 h-32 flex flex-col items-center justify-center border-2 rounded-none transition-all duration-500
                 ${getVerdictText().bg}
               `}>
                 {getVerdictIcon()}
-                <span className={`text-xs font-mono font-bold mt-1 ${getVerdictText().color}`}>
+                <span className={`text-[10px] font-display font-bold mt-4 tracking-widest ${getVerdictText().color}`}>
                   {getVerdictText().text}
                 </span>
-                <span className="text-[10px] text-gray-500">
-                  W = {consensus.weight.toFixed(2)}
+                <span className="text-[10px] font-mono text-gray-600 mt-2">
+                  W={consensus.weight.toFixed(2)}
                 </span>
               </div>
             </div>
@@ -294,106 +205,69 @@ export function EngineDiagram() {
             onClick={simulateConsensus}
             disabled={isAnimating}
             className={`
-              px-6 py-3 rounded-lg font-medium transition-all
+              px-12 py-4 rounded-none font-display text-[10px] tracking-[0.3em] transition-all uppercase
               ${isAnimating 
-                ? 'bg-gray-800 text-gray-500 cursor-not-allowed' 
-                : 'bg-amber-500/20 text-amber-400 hover:bg-amber-500/30 border border-amber-500/50'
+                ? 'bg-gray-900 text-gray-600 cursor-not-allowed border border-gray-800' 
+                : 'bg-amber-500 text-black hover:bg-amber-400 border border-amber-500'
               }
             `}
           >
-            {isAnimating ? 'Simulating...' : 'Simulate Consensus'}
+            {isAnimating ? 'Executing_Consensus...' : 'Initiate_Consensus_Scan'}
           </button>
         </div>
 
         {/* Formula Display */}
-        <Card className="bg-gray-900/50 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-sm font-medium text-gray-300">
-              Tri-Witness Consensus Formula
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="p-4 rounded-lg bg-black/30 font-mono text-sm text-center">
-                <span className="text-cyan-400">V</span>
-                <sub className="text-xs">Δ</sub>
-                <span className="text-gray-500 mx-2">+</span>
-                <span className="text-red-400">V</span>
-                <sub className="text-xs">Ω</sub>
-                <span className="text-gray-500 mx-2">+</span>
-                <span className="text-amber-400">V</span>
-                <sub className="text-xs">Ψ</sub>
-                <span className="text-gray-500 mx-2">/</span>
-                <span className="text-gray-400">3</span>
-                <span className="text-gray-500 mx-2">≥</span>
-                <span className="text-green-400">0.95</span>
-              </div>
-              
-              <div className="grid grid-cols-3 gap-4 text-center text-xs">
-                <div className={consensus.arif === true ? 'text-green-400' : consensus.arif === false ? 'text-red-400' : 'text-gray-500'}>
-                  <p className="font-mono text-lg">{consensus.arif === true ? '1' : consensus.arif === false ? '0' : '—'}</p>
-                  <p className="text-gray-600">ARIF (Δ)</p>
-                </div>
-                <div className={consensus.adam === true ? 'text-green-400' : consensus.adam === false ? 'text-red-400' : 'text-gray-500'}>
-                  <p className="font-mono text-lg">{consensus.adam === true ? '1' : consensus.adam === false ? '0' : '—'}</p>
-                  <p className="text-gray-600">ADAM (Ω)</p>
-                </div>
-                <div className={consensus.apex === true ? 'text-green-400' : consensus.apex === false ? 'text-red-400' : 'text-gray-500'}>
-                  <p className="font-mono text-lg">{consensus.apex === true ? '1' : consensus.apex === false ? '0' : '—'}</p>
-                  <p className="text-gray-600">APEX (Ψ)</p>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center gap-4 pt-2 border-t border-gray-800">
-                <span className="text-gray-500 text-xs">Consensus Weight:</span>
-                <span className="font-mono text-lg" style={{ 
-                  color: consensus.weight >= 0.95 ? '#22c55e' : consensus.weight >= 0.67 ? '#f59e0b' : '#ef4444'
-                }}>
-                  W = {consensus.weight.toFixed(2)}
-                </span>
-                <Badge variant="outline" className={
-                  consensus.weight >= 0.95 ? 'border-green-500/50 text-green-400' :
-                  consensus.weight >= 0.67 ? 'border-amber-500/50 text-amber-400' :
-                  'border-red-500/50 text-red-400'
-                }>
-                  {consensus.weight >= 0.95 ? 'APPROVE' : consensus.weight >= 0.67 ? 'SABAR' : consensus.weight > 0 ? 'VOID' : 'PENDING'}
-                </Badge>
-              </div>
+        <div className="border border-amber-500/20 bg-black/40 p-8 relative">
+          <div className="absolute top-0 left-0 w-2 h-2 bg-amber-500" />
+          <h4 className="text-[10px] font-display text-gray-500 mb-8 tracking-widest uppercase text-center">Consensus_Mechanism_V55.2</h4>
+          
+          <div className="space-y-12">
+            <div className="p-8 border border-amber-500/10 bg-amber-500/5 font-mono text-lg text-center relative">
+              <span className="text-amber-500">V</span><sub className="text-xs">Δ</sub>
+              <span className="text-gray-700 mx-4">+</span>
+              <span className="text-amber-500">V</span><sub className="text-xs">Ω</sub>
+              <span className="text-gray-700 mx-4">+</span>
+              <span className="text-amber-500">V</span><sub className="text-xs">Ψ</sub>
+              <span className="text-gray-700 mx-4">/</span>
+              <span className="text-gray-500">3</span>
+              <span className="text-gray-700 mx-4">≥</span>
+              <span className="text-white">0.95</span>
             </div>
-          </CardContent>
-        </Card>
+            
+            <div className="grid grid-cols-3 gap-8">
+              {[
+                { label: 'ARIF (Δ)', val: consensus.arif },
+                { label: 'ADAM (Ω)', val: consensus.adam },
+                { label: 'APEX (Ψ)', val: consensus.apex }
+              ].map((item) => (
+                <div key={item.label} className="text-center p-6 border border-amber-500/5">
+                  <p className={`text-3xl font-mono font-bold mb-2 ${item.val === true ? 'text-white' : item.val === false ? 'text-red-500' : 'text-gray-800'}`}>
+                    {item.val === true ? '1' : item.val === false ? '0' : '—'}
+                  </p>
+                  <p className="text-[9px] font-display text-gray-600 tracking-widest">{item.label}</p>
+                </div>
+              ))}
+            </div>
 
-        {/* Engine Details */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {ENGINES.map((engine) => (
-            <Card key={engine.name} className="bg-gray-900/30 border-gray-800">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-3">
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center text-xl font-bold"
-                    style={{ backgroundColor: engine.bgColor, color: engine.color, border: `1px solid ${engine.color}50` }}
-                  >
-                    {engine.symbol}
-                  </div>
-                  <div>
-                    <CardTitle className="text-sm" style={{ color: engine.color }}>{engine.name}</CardTitle>
-                    <p className="text-xs text-gray-500">{engine.fullName}</p>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <p className="text-sm text-gray-400 italic">"{engine.question}"</p>
-                <p className="text-xs text-gray-500">{engine.description}</p>
-                <div className="flex flex-wrap gap-1">
-                  {engine.floors.map(floor => (
-                    <Badge key={floor} variant="outline" className="text-[10px] border-gray-700">
-                      {floor}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-8 pt-8 border-t border-amber-500/10">
+              <div className="flex items-center gap-4">
+                <span className="text-[10px] font-display text-gray-500 tracking-widest">RESULT_WEIGHT:</span>
+                <span className="font-mono text-2xl font-bold text-white">
+                  {consensus.weight.toFixed(2)}
+                </span>
+              </div>
+              <Badge variant="outline" className={`rounded-none px-6 py-2 text-[10px] font-display tracking-widest ${
+                consensus.weight >= 0.95 ? 'border-green-500 text-green-400 bg-green-500/5' :
+                consensus.weight >= 0.67 ? 'border-amber-500 text-amber-500 bg-amber-500/5' :
+                consensus.weight > 0 ? 'border-red-500 text-red-500 bg-red-500/5' :
+                'border-gray-800 text-gray-600'
+              }`}>
+                {consensus.weight >= 0.95 ? 'SEAL_STATE' : 
+                 consensus.weight >= 0.67 ? 'SABAR_HOLD' : 
+                 consensus.weight > 0 ? 'VOID_BLOCK' : 'AWAITING_INPUT'}
+              </Badge>
+            </div>
+          </div>
         </div>
       </div>
     </TooltipProvider>
@@ -406,46 +280,33 @@ function EngineCard({ engine, status }: { engine: Engine; status: boolean | null
       <TooltipTrigger asChild>
         <div 
           className={`
-            p-3 rounded-xl border-2 cursor-pointer transition-all duration-300
-            ${status === true ? 'scale-105' : ''}
+            p-6 border-2 transition-all duration-500 rounded-none w-64
+            ${status === true ? 'bg-amber-500/10 border-amber-500' : 'bg-black/80 border-amber-500/20'}
           `}
-          style={{ 
-            backgroundColor: engine.bgColor,
-            borderColor: status === true ? engine.color : `${engine.color}30`,
-            boxShadow: status === true ? `0 0 20px ${engine.color}40` : 'none'
-          }}
         >
-          <div className="flex items-center gap-2">
-            <span 
-              className="text-2xl font-bold"
-              style={{ color: engine.color, fontFamily: 'Source Serif 4, serif' }}
-            >
+          <div className="flex items-center gap-6">
+            <span className={`text-4xl font-display font-light ${status === true ? 'text-white' : 'text-amber-500/40'}`}>
               {engine.symbol}
             </span>
             <div>
-              <p className="text-sm font-bold" style={{ color: engine.color }}>{engine.name}</p>
-              <p className="text-[10px] text-gray-500">{engine.function}</p>
+              <p className={`text-[10px] font-display font-bold tracking-widest ${status === true ? 'text-white' : 'text-gray-500'}`}>{engine.name}</p>
+              <p className="text-[8px] font-mono text-gray-600 uppercase mt-1 tracking-tighter">{engine.function}</p>
             </div>
           </div>
           {status !== null && (
-            <div className="mt-2 flex items-center gap-1">
-              {status ? (
-                <CheckCircle2 className="w-3 h-3 text-green-400" />
-              ) : (
-                <XCircle className="w-3 h-3 text-red-400" />
-              )}
-              <span className={`text-[10px] ${status ? 'text-green-400' : 'text-red-400'}`}>
-                {status ? 'PASS' : 'FAIL'}
+            <div className="mt-6 flex items-center justify-between border-t border-amber-500/10 pt-4">
+              <span className={`text-[9px] font-display tracking-widest ${status ? 'text-green-400' : 'text-red-500'}`}>
+                {status ? 'VOTE_PASS' : 'VOTE_FAIL'}
               </span>
+              <div className={`w-2 h-2 ${status ? 'bg-green-500' : 'bg-red-500'}`} />
             </div>
           )}
         </div>
       </TooltipTrigger>
-      <TooltipContent side="top">
-        <div className="space-y-1">
-          <p className="font-semibold" style={{ color: engine.color }}>{engine.name} ({engine.symbol})</p>
-          <p className="text-xs text-gray-400">{engine.fullName}</p>
-          <p className="text-xs italic">"{engine.question}"</p>
+      <TooltipContent side="top" className="rounded-none border-amber-500 bg-black p-4 font-mono">
+        <div className="space-y-2">
+          <p className="font-display text-[10px] text-amber-500">{engine.name}_{engine.fullName.toUpperCase()}</p>
+          <p className="text-xs text-gray-400 italic">"{engine.question}"</p>
         </div>
       </TooltipContent>
     </Tooltip>
