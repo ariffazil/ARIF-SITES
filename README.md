@@ -69,6 +69,11 @@ Required GitHub secrets:
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 
+## Cloudflare-Only Hosting
+
+This repo standardizes on Cloudflare Pages for all three sites (`body/`, `soul/`, `docs/`).
+Netlify is not used or maintained here.
+
 ---
 
 ## Related

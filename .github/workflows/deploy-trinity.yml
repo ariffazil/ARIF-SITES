@@ -7,15 +7,16 @@ on:
   workflow_dispatch:
 
 env:
-  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-  NETLIFY_SITE_ID_BODY: ${{ secrets.NETLIFY_SITE_ID_BODY }}
-  NETLIFY_SITE_ID_SOUL: ${{ secrets.NETLIFY_SITE_ID_SOUL }}
-  NETLIFY_SITE_ID_DOCS: ${{ secrets.NETLIFY_SITE_ID_DOCS }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_PAGES_PROJECT_BODY: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_BODY }}
+  CLOUDFLARE_PAGES_PROJECT_SOUL: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_SOUL }}
+  CLOUDFLARE_PAGES_PROJECT_DOCS: ${{ secrets.CLOUDFLARE_PAGES_PROJECT_DOCS }}
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         site: [body, soul, docs]
@@ -23,47 +24,43 @@ jobs:
           - site: body
             site_name: BODY (arif-fazil.com)
             dir: body
+            project_env: CLOUDFLARE_PAGES_PROJECT_BODY
           - site: soul
             site_name: SOUL (apex.arif-fazil.com)
             dir: soul
+            project_env: CLOUDFLARE_PAGES_PROJECT_SOUL
           - site: docs
             site_name: DOCS (arifos.arif-fazil.com)
             dir: docs
-    
+            project_env: CLOUDFLARE_PAGES_PROJECT_DOCS
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
           cache-dependency-path: |
             ${{ matrix.dir }}/package-lock.json
-      
+
       - name: Install dependencies (${{ matrix.site_name }})
         run: cd ${{ matrix.dir }} && npm install
-      
+
       - name: Build (${{ matrix.site_name }})
         run: cd ${{ matrix.dir }} && npm run build
-      
-      - name: Deploy to Netlify (${{ matrix.site_name }})
-        run: |
-          npm install -g netlify-cli
-          cd ${{ matrix.dir }}
-          
-          # Determine site ID based on matrix
-          if [ "${{ matrix.site }}" == "body" ]; then
-            SITE_ID=$NETLIFY_SITE_ID_BODY
-          elif [ "${{ matrix.site }}" == "soul" ]; then
-            SITE_ID=$NETLIFY_SITE_ID_SOUL
-          else
-            SITE_ID=$NETLIFY_SITE_ID_DOCS
-          fi
-          
-          netlify deploy --prod --dir=dist --site=$SITE_ID
-      
+
+      - name: Deploy to Cloudflare Pages (${{ matrix.site_name }})
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ env[matrix.project_env] }}
+          directory: ${{ matrix.dir }}/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
       - name: ✅ Deployment Complete (${{ matrix.site_name }})
         run: echo "Successfully deployed ${{ matrix.site_name }}"
 
@@ -71,7 +68,7 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     if: always()
-    
+
     steps:
       - name: 📢 Deployment Summary
         run: |

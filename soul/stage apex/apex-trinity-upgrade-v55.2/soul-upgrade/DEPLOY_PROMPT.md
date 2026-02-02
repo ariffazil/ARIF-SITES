@@ -201,20 +201,10 @@ ls -la dist/
 ### Step 7: Deploy
 
 ```bash
-# Deploy to your hosting platform
-# Examples:
-
-# Vercel
-vercel --prod
-
-# Netlify
-netlify deploy --prod --dir=dist
-
-# GitHub Pages
-npm run deploy
-
-# Cloudflare Pages
+# Cloudflare Pages (manual)
 wrangler pages deploy dist
+
+# Or rely on GitHub Actions on push to main (recommended)
 ```
 
 ---
