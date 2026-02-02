@@ -106,8 +106,8 @@ const LAYERS = [
   {
     id: 'L4',
     name: 'TOOLS',
-    tagline: '9 MCP Tools · Production',
-    desc: 'The constitutional MCP server. 9 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
+    tagline: '10 MCP Tools · Production',
+    desc: 'The constitutional MCP server. 10 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
     coverage: '80%',
     status: 'production',
     statusLabel: 'Production',
@@ -123,7 +123,7 @@ const LAYERS = [
       { label: 'APEX Verdict Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py` },
       { label: 'Vault Seal Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py` },
       { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/openapi.json` },
-      { label: 'JSON Schemas (9 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
+      { label: 'JSON Schemas (10 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
       { label: 'L4 Manifest', url: `${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md` },
     ],
   },
@@ -282,26 +282,15 @@ const MCP_TOOLS = [
   },
   {
     name: 'asi_align',
-    stage: '555',
-    description: 'Constitutional alignment check. Validates against all 9 floors',
+    stage: '555-666',
+    description: 'Constitutional alignment check + second-order foresight. Validates against all 9 floors with risk analysis',
     params: ['query', 'reasoning', 'stakeholder_map', 'session_id'],
-    actions: ['check_floors', 'validate_alignment', 'score'],
-    returns: 'floor_results, alignment_score, violations, peace_squared',
+    actions: ['check_floors', 'validate_alignment', 'score', 'forecast_risk'],
+    returns: 'floor_results, alignment_score, violations, peace_squared, risk_profile',
     color: 'rose',
     engine: 'ADAM',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/asi_align.schema.json`,
-  },
-  {
-    name: 'asi_insight',
-    stage: '666',
-    description: 'Risk & impact foresight. Second-order consequence analysis',
-    params: ['query', 'alignment_result', 'session_id'],
-    actions: ['forecast', 'risk_assess', 'recommend'],
-    returns: 'risk_profile, reversibility_score, recommendations, vote',
-    color: 'rose',
-    engine: 'ADAM',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
   },
   {
     name: 'apex_verdict',
@@ -332,7 +321,7 @@ const MCP_TOOLS = [
 // API Endpoints — served from aaamcp.arif-fazil.com (Railway)
 const ENDPOINTS = [
   { path: '/health', method: 'GET', desc: 'System health check', status: 'stable' },
-  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 explicit tools)', status: 'stable' },
+  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (10 explicit tools)', status: 'stable' },
   { path: '/sse', method: 'GET', desc: 'Server-sent events stream', status: 'stable' },
   { path: '/dashboard', method: 'GET', desc: 'Live system dashboard', status: 'stable' },
   { path: '/docs', method: 'GET', desc: 'API documentation (OpenAPI)', status: 'stable' },
@@ -866,10 +855,10 @@ function App() {
               <Terminal className="w-4 h-4 text-amber-400" />
               <span className="text-sm text-amber-400">Model Context Protocol</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">9 Explicit Tools</h2>
+            <h2 className="text-4xl font-bold mb-4">10 Explicit Tools</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              v55.1 Explicit Tool Architecture. Each tool maps to a specific stage in the
-              constitutional metabolic loop. Mind and Heart run in parallel, collapsing at Soul.
+              v55.3 Explicit Tool Architecture. 10 tools mapping to metabolic loop stages.
+              444 Thermodynamic Wall → 555-666 ASI (align+foresight) → 888 APEX (9-paradox equilibrium).
             </p>
           </div>
 
@@ -968,9 +957,7 @@ function App() {
                 <div className="flex items-center gap-1 flex-wrap">
                   <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_empathize</Badge>
                   <ArrowRight className="w-3 h-3 text-rose-600" />
-                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_align</Badge>
-                  <ArrowRight className="w-3 h-3 text-rose-600" />
-                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_insight</Badge>
+                  <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_align (555-666)</Badge>
                 </div>
               </div>
             </div>
@@ -978,11 +965,11 @@ function App() {
             {/* Collapse at APEX */}
             <div className="flex items-center gap-2 flex-wrap justify-center">
               <ChevronRight className="w-4 h-4 text-gray-600" />
-              <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">apex_verdict</Badge>
+              <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">apex_verdict (9-paradox)</Badge>
             </div>
 
             <p className="text-sm text-gray-500 text-center mt-4">
-              Mind and Heart run in parallel, collapsing at Soul for final verdict. reality_search provides external grounding at any stage.
+              Mind (AGI) and Heart (ASI) run in parallel. 444 Thermodynamic Wall → 555-666 ASI foresight → 888 APEX (9-paradox equilibrium). reality_search provides external grounding at any stage.
             </p>
           </div>
 
@@ -1294,7 +1281,7 @@ audit_trail = await arifos.vault.get_history({
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance. 7 layers, 9 floors, 9 explicit tools.
+                Constitutional AI governance. 7 layers, 9 floors, 10 explicit tools.
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-600">APPS Layer</span>

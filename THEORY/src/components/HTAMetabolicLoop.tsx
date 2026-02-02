@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import {
   Play, Pause, RotateCcw,
-  Bot, Shield, Eye, Heart, Zap, Crown, Lock, Gauge
+  Bot, Shield, Eye, Heart, Crown, Lock, Gauge
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -21,11 +21,10 @@ const STAGES: Stage[] = [
   { stage: '111', name: 'SENSE', engine: 'Δ', function: 'Parse input, extract claims', icon: Eye, color: '#FFD700' },
   { stage: '222', name: 'THINK', engine: 'Δ', function: 'Logical reasoning, Bayesian update', icon: Bot, color: '#FFD700' },
   { stage: '333', name: 'ATLAS', engine: 'Δ', function: 'Model selection, knowledge grounding', icon: Gauge, color: '#FFD700' },
-  { stage: '444', name: 'EVIDENCE', engine: 'Δ+Ω', function: 'Trinity sync, Delta+Omega bundles', icon: Shield, color: '#FFD700' },
+  { stage: '444', name: 'WALL', engine: 'Δ+Ω', function: 'Thermodynamic sync, Delta+Omega bundles', icon: Shield, color: '#FFD700' },
   { stage: '555', name: 'EMPATHY', engine: 'Ω', function: 'Stakeholder impact analysis', icon: Heart, color: '#FFD700' },
-  { stage: '666', name: 'BRIDGE', engine: 'Ω', function: 'Alignment verification', icon: Lock, color: '#FFD700' },
-  { stage: '777', name: 'EUREKA', engine: 'Ψ', function: 'Insight synthesis', icon: Zap, color: '#FFD700' },
-  { stage: '888', name: 'JUDGE', engine: 'Ψ', function: 'Final verdict', icon: Crown, color: '#FFD700' },
+  { stage: '666', name: 'ALIGN', engine: 'Ω', function: 'Constitutional check + risk foresight', icon: Lock, color: '#FFD700' },
+  { stage: '888', name: 'JUDGE', engine: 'Ψ', function: 'Final verdict (9-paradox equilibrium)', icon: Crown, color: '#FFD700' },
   { stage: '889', name: 'PROOF', engine: 'Ψ', function: 'Cryptographic sealing', icon: Shield, color: '#FFD700' },
   { stage: '999', name: 'SEAL', engine: 'Ψ', function: 'Merkle DAG commit, audit trail', icon: Lock, color: '#FFD700' },
 ];
