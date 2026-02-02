@@ -777,14 +777,14 @@ function App() {
                 <a href="#section-2" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Solution</a>
                 <a href="#section-5" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Floors</a>
               </div>
-              <div className="flex items-center justify-center gap-4">
-                <a href="https://arif-fazil.com" className="px-6 py-2 bg-transparent text-red-400 text-[10px] font-display hover:bg-red-900/20 transition-colors border border-red-800/50">
+              <div className="flex items-center justify-center gap-2">
+                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors">
                   HUMAN
                 </a>
-                <a href="https://apex.arif-fazil.com" className="px-6 py-2 bg-amber-500 text-black text-[10px] font-display transition-colors border border-amber-500">
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-amber-900/30 to-cyan-900/30 text-gray-200 text-xs font-medium border border-gray-700/50 hover:border-amber-500/30 transition-colors">
                   THEORY
                 </a>
-                <a href="https://arifos.arif-fazil.com" className="px-6 py-2 bg-transparent text-cyan-400 text-[10px] font-display hover:bg-cyan-500/10 transition-colors border border-cyan-500/30">
+                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs font-medium hover:bg-cyan-900/20 transition-colors">
                   APPS
                 </a>
               </div>
