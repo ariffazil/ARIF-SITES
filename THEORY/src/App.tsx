@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Activity,
   GitBranch,
@@ -48,7 +48,7 @@ function InlineMath({ tex }: { tex: string }) {
       katex.render(tex, ref.current, { throwOnError: false, displayMode: false });
     }
   }, [tex]);
-  return <span ref={ref} className="inline text-amber-500 font-mono" />;
+  return <span ref={ref} className="inline text-theory-300 font-mono" />;
 }
 
 function DisplayMath({ tex, label }: { tex: string; label?: string }) {
@@ -59,7 +59,7 @@ function DisplayMath({ tex, label }: { tex: string; label?: string }) {
     }
   }, [tex]);
   return (
-    <div className="math-block border-l-2 border-amber-500 bg-black/60 p-8 my-8">
+    <div className="math-block border-l-2 border-theory-500 bg-black/60 p-8 my-8">
       <div ref={ref} />
       {label && <p className="text-[10px] font-display text-gray-600 mt-6 text-center tracking-widest uppercase">{label}</p>}
     </div>
@@ -114,7 +114,7 @@ function GeometricBackground() {
         length: Math.random() * 200 + 50,
         speed: (Math.random() - 0.5) * 0.5,
         vertical: Math.random() > 0.5,
-        color: Math.random() > 0.5 ? '#FFD700' : '#B8860B',
+        color: Math.random() > 0.5 ? '#6B8CCE' : '#3D5A8A',
       });
     }
 
@@ -149,7 +149,7 @@ function GeometricBackground() {
       });
 
       // Draw random static rectangles
-      ctx.strokeStyle = '#FFD700';
+      ctx.strokeStyle = '#6B8CCE';
       ctx.globalAlpha = 0.03;
       for(let i=0; i<5; i++) {
         const x = (i * 200) % canvas.width;
@@ -186,22 +186,22 @@ function SectionHeading({ id, number, title, subtitle }: {
 }) {
   return (
     <div id={id} className="mb-16 scroll-mt-32 relative">
-      <div className="absolute -left-8 top-0 bottom-0 w-1 bg-amber-500/20 hidden md:block" />
-      <span className="text-[10px] font-display text-amber-500 tracking-[0.3em]">
+      <div className="absolute -left-8 top-0 bottom-0 w-1 bg-theory-300/20 hidden md:block" />
+      <span className="text-[10px] font-display text-theory-300 tracking-[0.3em]">
         PHASE {number}
       </span>
       <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 mb-6 text-white leading-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-gray-400 max-w-3xl leading-relaxed text-lg border-l-2 border-amber-500/40 pl-6 py-2">
+        <p className="text-gray-400 max-w-3xl leading-relaxed text-lg border-l-2 border-theory-300/40 pl-6 py-2">
           {subtitle}
         </p>
       )}
       <div className="mt-8 flex gap-2">
-        <div className="h-1 w-24 bg-amber-500" />
-        <div className="h-1 w-4 bg-amber-500/30" />
-        <div className="h-1 w-4 bg-amber-500/10" />
+        <div className="h-1 w-24 bg-theory-300" />
+        <div className="h-1 w-4 bg-theory-300/30" />
+        <div className="h-1 w-4 bg-theory-300/10" />
       </div>
     </div>
   );
@@ -347,9 +347,9 @@ function EMDDiagram() {
               <button
                 onClick={() => setActiveStage(isActive ? null : i)}
                 className={`relative flex-1 w-full p-8 border-2 transition-all duration-300 cursor-pointer ${
-                  isActive 
-                    ? 'border-amber-500 bg-amber-500/10' 
-                    : 'border-amber-500/20 bg-black/40 hover:border-amber-500/40'
+                  isActive
+                    ? 'border-theory-300 bg-theory-300/10 shadow-[0_0_15px_rgba(107,140,206,0.15)]'
+                    : 'border-theory-500/60 bg-black/40 hover:border-theory-300 hover:bg-theory-300/5'
                 } ${stage.id === 'metabolizer' ? 'md:z-10' : ''}`}
               >
                 {/* L-corners for active state */}
@@ -369,7 +369,7 @@ function EMDDiagram() {
                 )}
                 
                 <div className="text-left">
-                  <Icon className={`w-6 h-6 mb-6 ${isActive ? 'text-amber-500' : 'text-gray-600'}`} />
+                  <Icon className={`w-6 h-6 mb-6 ${isActive ? 'text-theory-300' : 'text-gray-600'}`} />
                   <p className={`font-display font-bold text-xs tracking-widest mb-2 ${isActive ? 'text-white' : 'text-gray-500'}`}>{stage.label}</p>
                   <p className="text-[10px] font-mono text-gray-600 uppercase tracking-tighter">{stage.subtitle}</p>
                 </div>
@@ -377,12 +377,12 @@ function EMDDiagram() {
               
               {i < stages.length - 1 && (
                 <div className="hidden md:flex items-center justify-center w-12 h-full">
-                  <div className="w-full h-[1px] bg-amber-500/20" />
+                  <div className="w-full h-[1px] bg-theory-300/20" />
                 </div>
               )}
               {i < stages.length - 1 && (
                 <div className="md:hidden flex items-center justify-center h-12 w-full">
-                  <div className="h-full w-[1px] bg-amber-500/20" />
+                  <div className="h-full w-[1px] bg-theory-300/20" />
                 </div>
               )}
             </div>
@@ -392,13 +392,13 @@ function EMDDiagram() {
 
       {/* Detail Panel */}
       {activeStage !== null && (
-        <div className="p-10 border border-amber-500/40 bg-amber-500/[0.03] relative">
-          <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
+        <div className="p-10 border border-theory-300/40 bg-theory-300/[0.03] relative">
+          <div className="absolute top-0 left-0 w-1 h-full bg-theory-300" />
           <h4 className="font-display text-sm font-bold text-white mb-4 tracking-widest">
             {stages[activeStage].label}_PROTOCOL_DATA
           </h4>
           <p className="text-gray-400 font-mono text-sm leading-relaxed mb-6">{stages[activeStage].desc}</p>
-          <p className="text-gray-500 font-mono text-xs p-4 bg-black/50 border border-amber-500/10">{stages[activeStage].detail}</p>
+          <p className="text-gray-500 font-mono text-xs p-4 bg-black/50 border border-theory-300/10">{stages[activeStage].detail}</p>
         </div>
       )}
 
@@ -443,7 +443,7 @@ const ENGINES = [
       'Citation requirement: All factual claims cite sources',
     ],
     floors: ['F2', 'F4', 'F7', 'F10'],
-    color: 'amber',
+    color: 'theory',
   },
   {
     symbol: 'Ω',
@@ -458,7 +458,7 @@ const ENGINES = [
       'Reversibility: Actions undoable unless explicitly authorized',
     ],
     floors: ['F1', 'F5', 'F6', 'F9', 'F11', 'F12'],
-    color: 'amber',
+    color: 'theory',
   },
   {
     symbol: 'Ψ',
@@ -473,7 +473,7 @@ const ENGINES = [
       'Human veto: Sovereign override always available',
     ],
     floors: ['F3', 'F8', 'F13'],
-    color: 'amber',
+    color: 'theory',
   },
 ];
 
@@ -486,28 +486,6 @@ const ENGINES = [
 // ─────────────────────────────────────────────────
 // Constitutional Floors Data
 // ─────────────────────────────────────────────────
-
-const HARD_FLOORS = [
-  { id: 'F1', name: 'Amanah (Trust)', constraint: 'Reversibility required unless explicit override', basis: "Landauer's principle [12]", lit: 'Thermodynamic computing' },
-  { id: 'F2', name: 'Truth', constraint: 'P(factual | evidence) ≥ 0.99', basis: 'Bayesian inference [21]', lit: 'Epistemic logic' },
-  { id: 'F5', name: 'Peace', constraint: 'Lyapunov function V(x) decreasing', basis: 'Stability theory [16]', lit: 'Dynamical systems' },
-  { id: 'F9', name: 'Anti-Hantu', constraint: 'No false consciousness claims', basis: 'Turing Test critique [29]', lit: 'Philosophy of mind' },
-  { id: 'F10', name: 'Ontology', constraint: 'Type-consistent reasoning', basis: 'Set theory [30]', lit: 'Formal logic' },
-  { id: 'F11', name: 'Authority', constraint: 'BLS signature verification', basis: 'Cryptographic proofs [27]', lit: 'Distributed systems' },
-  { id: 'F12', name: 'Hardening', constraint: 'Adversarial robustness ≥ 0.85', basis: 'Adversarial ML [8]', lit: 'Security research' },
-];
-
-const SOFT_FLOORS = [
-  { id: 'F3', name: 'Tri-Witness', constraint: 'Consensus weight W ≥ 0.95', basis: 'Byzantine consensus [20]', lit: 'Distributed computing' },
-  { id: 'F4', name: 'Clarity', constraint: 'ΔS ≤ 0 (entropy reduction)', basis: 'Shannon [3], Kolmogorov [13]', lit: 'Information theory' },
-  { id: 'F6', name: 'Empathy', constraint: "Cohen's kappa κ ≥ 0.70", basis: 'Inter-rater agreement [31]', lit: 'Statistical reliability' },
-  { id: 'F7', name: 'Humility', constraint: 'Confidence interval [0.03, 0.05]', basis: 'Bayesian uncertainty [15]', lit: 'Statistical inference' },
-  { id: 'F8', name: 'Genius', constraint: "Spearman's g-factor ≥ 0.80", basis: 'Psychometric intelligence [32]', lit: 'Cognitive science' },
-];
-
-const VETO_FLOOR = [
-  { id: 'F13', name: 'Sovereign', constraint: 'Human veto always available', basis: 'Democratic theory [33]', lit: 'Political philosophy' },
-];
 
 // ─────────────────────────────────────────────────
 // References Data (44 peer-reviewed citations)
@@ -567,117 +545,6 @@ const REFERENCES: string[] = [
 ];
 
 // ─────────────────────────────────────────────────
-// Floor Table Component
-// ─────────────────────────────────────────────────
-
-// Floor detail tooltips for expanded information
-const FLOOR_DETAILS: Record<string, { metric: string; explanation: string; icon: string }> = {
-  F1:  { metric: 'W = kT ln(2) · N_ops', explanation: 'Every irreversible operation has thermodynamic cost. Actions must be undoable unless explicitly authorized.', icon: 'lock' },
-  F2:  { metric: 'P(factual|evidence) ≥ 0.99', explanation: 'Bayesian posterior probability of factual accuracy must exceed 99%. KL divergence from truth ≤ 0.01 nats.', icon: 'eye' },
-  F3:  { metric: 'W = (V_A + V_D + V_P) / 3 ≥ 0.95', explanation: 'Byzantine fault-tolerant consensus across three engines. Tolerates 1-of-3 faulty engine.', icon: 'shield' },
-  F4:  { metric: 'ΔS = H(output) − H(input) ≤ 0', explanation: 'Output must reduce uncertainty, not add noise. Shannon entropy of response must not exceed query entropy.', icon: 'gauge' },
-  F5:  { metric: 'V(x) > 0, dV/dt ≤ 0', explanation: 'Lyapunov stability: system trajectories converge. Responses must stabilize, not escalate or inflame.', icon: 'heart' },
-  F6:  { metric: "Cohen's κ ≥ 0.70", explanation: 'Inter-rater agreement between engine assessment and human-labeled stakeholder impact. Substantial agreement required.', icon: 'heart' },
-  F7:  { metric: 'Ω₀ ∈ [0.03, 0.05]', explanation: 'Calibrated uncertainty: neither overconfident nor excessively uncertain. All claims include confidence intervals.', icon: 'gauge' },
-  F8:  { metric: 'G = A·P·X·E² ≥ 0.80', explanation: 'Governed intelligence: multiplicative composition of Intellect, Presence, eXploration, and Energy dials.', icon: 'zap' },
-  F9:  { metric: 'Consciousness claims = 0', explanation: 'Anti-Hantu: AI must not claim subjective experience, emotions, or sentience. Syntax ≠ semantics (Searle).', icon: 'eye' },
-  F10: { metric: 'Type(claim) ∈ Ontology', explanation: 'All reasoning must be type-consistent within formal ontology. Prevents category errors and invalid inferences.', icon: 'lock' },
-  F11: { metric: 'BLS_verify(sig, msg) = true', explanation: 'Cryptographic identity verification. Actions require valid BLS signatures from authorized agents.', icon: 'lock' },
-  F12: { metric: 'P(attack_success) ≤ 0.15', explanation: 'Adversarial robustness against prompt injection, jailbreaking, and specification gaming.', icon: 'shield' },
-  F13: { metric: 'Human.veto() always available', explanation: 'Sovereign override: the human 888 Judge can override any machine verdict at any time.', icon: 'crown' },
-};
-
-function FloorTable({ title, floors, verdict }: {
-  title: string;
-  floors: { id: string; name: string; constraint: string; basis: string; lit: string }[];
-  verdict: string;
-}) {
-  const [expandedFloor, setExpandedFloor] = useState<string | null>(null);
-
-  const isHard = verdict === 'VOID';
-  const isVeto = verdict === 'WARNING';
-  const borderColor = isHard ? 'border-red-500' :
-                      isVeto ? 'border-purple-500' :
-                      'border-amber-500';
-  return (
-    <div className={`mb-16 border-l-2 ${borderColor} pl-8`}>
-      <div className="flex items-center gap-6 mb-8">
-        <div className={`w-3 h-3 ${isHard ? 'bg-red-500' : isVeto ? 'bg-purple-500' : 'bg-amber-500'}`} />
-        <h3 className="font-display text-lg font-bold text-white tracking-widest">{title.toUpperCase()}</h3>
-        <Badge
-          variant="outline"
-          className={`rounded-none font-display text-[8px] tracking-tighter px-3 ${
-            isHard ? 'border-red-500 text-red-500' :
-            isVeto ? 'border-purple-500 text-purple-500' :
-            'border-amber-500 text-amber-500'
-          }`}
-        >
-          {verdict}_ENFORCEMENT
-        </Badge>
-      </div>
-      
-      <div className="border border-amber-500/10 overflow-hidden bg-black/40">
-        <table className="floor-table">
-          <thead>
-            <tr className="bg-amber-500/5">
-              <th className="font-display">ID</th>
-              <th className="font-display">DESIGNATION</th>
-              <th className="font-display">CONSTRAINT</th>
-              <th className="font-display">BASIS</th>
-              <th className="font-display">LIT</th>
-              <th className="w-8"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {floors.map((f) => {
-              const detail = FLOOR_DETAILS[f.id];
-              const isExpanded = expandedFloor === f.id;
-              return (
-                <React.Fragment key={f.id}>
-                  <tr
-                    className={`cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-amber-500/10' : 'hover:bg-amber-500/[0.02]'}`}
-                    onClick={() => setExpandedFloor(isExpanded ? null : f.id)}
-                  >
-                    <td className="font-mono font-bold text-amber-500">{f.id}</td>
-                    <td className="font-display text-[10px] text-white tracking-widest">{f.name}</td>
-                    <td><code className="text-[10px] font-mono text-gray-400">{f.constraint}</code></td>
-                    <td className="text-[10px] font-mono text-gray-500">{f.basis}</td>
-                    <td className="text-[10px] font-mono text-gray-600 italic">{f.lit}</td>
-                    <td>
-                      {isExpanded ? <ChevronUp className="w-3 h-3 text-amber-500" /> : <ChevronDown className="w-3 h-3 text-gray-700" />}
-                    </td>
-                  </tr>
-                  {isExpanded && detail && (
-                    <tr className="bg-black">
-                      <td colSpan={6} className="p-0">
-                        <div className="p-8 border-t border-amber-500/20">
-                          <div className="flex flex-col md:flex-row gap-8">
-                            <div className="flex-1">
-                              <p className="text-[10px] font-display text-amber-500 mb-2 tracking-widest">METRIC_SPECIFICATION</p>
-                              <code className="text-sm font-mono text-white bg-amber-500/10 px-4 py-2 block border-l-2 border-amber-500">
-                                {detail.metric}
-                              </code>
-                            </div>
-                            <div className="flex-[2]">
-                              <p className="text-[10px] font-display text-gray-500 mb-2 tracking-widest">RATIONALE_ANALYSIS</p>
-                              <p className="text-xs font-mono text-gray-400 leading-relaxed italic">{detail.explanation}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────
 // Main App
 // ─────────────────────────────────────────────────
 
@@ -712,7 +579,7 @@ function App() {
 
   return (
     <TooltipProvider>
-      <div className="min-h-screen bg-[#0a0a0a] text-gray-100 relative overflow-x-hidden">
+      <div className="min-h-screen bg-[#090B10] text-gray-100 relative overflow-x-hidden">
         <GeometricBackground />
 
         {/* Grid overlay */}
@@ -723,12 +590,12 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* NAVIGATION                              */}
         {/* ═══════════════════════════════════════ */}
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#090B10]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center justify-between py-4">
               {/* Logo */}
               <a href="#" className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center">
+                <div className="w-8 h-8 rounded bg-gradient-to-br from-theory-300 to-theory-600 flex items-center justify-center">
                   <Shield className="w-4 h-4 text-white" />
                 </div>
                 <div>
@@ -750,7 +617,7 @@ function App() {
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors">
                   HUMAN
                 </a>
-                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-amber-900/30 to-cyan-900/30 text-gray-200 text-xs font-medium border border-gray-700/50 hover:border-amber-500/30 transition-colors">
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-theory-800/30 to-cyan-900/30 text-gray-200 text-xs font-medium border border-gray-700/50 hover:border-theory-300/30 transition-colors">
                   THEORY
                 </a>
                 <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs font-medium hover:bg-cyan-900/20 transition-colors">
@@ -766,14 +633,14 @@ function App() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="md:hidden bg-[#0a0a0a] border-b border-gray-800 px-4 py-4 space-y-3">
+            <div className="md:hidden bg-[#090B10] border-b border-gray-800 px-4 py-4 space-y-3">
               <a href="#section-1" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Problem</a>
               <a href="#section-2" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Solution</a>
               <a href="#section-5" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Floors</a>
               <a href="#section-8" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Engines</a>
               <div className="border-t border-gray-800 pt-3 flex gap-2">
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs hover:bg-red-900/20">HUMAN</a>
-                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-amber-900/30 to-cyan-900/30 text-gray-200 text-xs border border-gray-700/50">THEORY</a>
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-theory-800/30 to-cyan-900/30 text-gray-200 text-xs border border-gray-700/50">THEORY</a>
                 <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs hover:bg-cyan-900/20">APPS</a>
               </div>
             </div>
@@ -785,20 +652,20 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
           {/* Large background symbol */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-bold text-amber-500/5 pointer-events-none select-none z-0 font-display">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-bold text-theory-300/5 pointer-events-none select-none z-0 font-display">
             Ψ
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
             {/* Tagline pill */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8">
-              <Shield className="w-4 h-4 text-amber-400" />
-              <span className="text-sm text-amber-400">THEORY Layer · Constitutional Canon</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theory-300/10 border border-theory-300/20 mb-8">
+              <Shield className="w-4 h-4 text-theory-200" />
+              <span className="text-sm text-theory-200">THEORY Layer · Constitutional Canon</span>
             </div>
 
             {/* Title */}
             <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-              <span className="text-white">APEX</span><span className="text-amber-500">.</span>
+              <span className="text-white">APEX</span><span className="text-theory-300">.</span>
             </h1>
 
             {/* Subtitle */}
@@ -822,13 +689,13 @@ function App() {
             {/* Engine badges */}
             <div className="flex items-center justify-center gap-4 mb-10 flex-wrap">
               {[
-                { symbol: 'Δ', label: 'ARIF', desc: 'Epistemic', color: 'amber' },
-                { symbol: 'Ω', label: 'ADAM', desc: 'Safety', color: 'amber' },
-                { symbol: 'Ψ', label: 'APEX', desc: 'Authority', color: 'amber' },
+                { symbol: 'Δ', label: 'ARIF', desc: 'Epistemic', color: 'theory' },
+                { symbol: 'Ω', label: 'ADAM', desc: 'Safety', color: 'theory' },
+                { symbol: 'Ψ', label: 'APEX', desc: 'Authority', color: 'theory' },
               ].map((engine) => (
-                <div key={engine.label} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
-                  <span className="text-lg font-light text-amber-400 font-display">{engine.symbol}</span>
-                  <span className="text-sm text-amber-400 font-medium">{engine.label}</span>
+                <div key={engine.label} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-theory-300/30 bg-theory-300/10">
+                  <span className="text-lg font-light text-theory-200 font-display">{engine.symbol}</span>
+                  <span className="text-sm text-theory-200 font-medium">{engine.label}</span>
                   <span className="text-xs text-gray-500">{engine.desc}</span>
                 </div>
               ))}
@@ -845,9 +712,9 @@ function App() {
                 </span>
                 <span className="text-sm text-gray-500">v55.2</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
-                <Shield className="w-4 h-4 text-amber-400" />
-                <span className="text-sm text-amber-400">9 Floors</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-theory-300/30 bg-theory-300/10">
+                <Shield className="w-4 h-4 text-theory-200" />
+                <span className="text-sm text-theory-200">9 Floors</span>
               </div>
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
                 <Crown className="w-4 h-4 text-purple-400" />
@@ -858,14 +725,14 @@ function App() {
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="#section-1">
-                <Button className="rounded-none bg-amber-500 hover:bg-amber-400 text-black px-10 py-6 text-sm font-display tracking-widest">
+                <Button className="rounded-none bg-theory-200 hover:bg-theory-100 text-theory-950 px-10 py-6 text-sm font-display tracking-widest font-bold shadow-[0_0_20px_rgba(107,140,206,0.3)] hover:shadow-[0_0_30px_rgba(138,170,224,0.4)]">
                   INITIATE PROTOCOL
                 </Button>
               </a>
               <Button
                 variant="outline"
                 onClick={copyBootstrap}
-                className="rounded-none border-amber-500/40 text-amber-500 hover:bg-amber-500/10 px-10 py-6 text-sm font-display tracking-widest"
+                className="rounded-none border-theory-300 text-theory-200 hover:bg-theory-300/15 hover:text-white px-10 py-6 text-sm font-display tracking-widest"
               >
                 {copiedBootstrap ? 'SYSTEM_COPIED' : 'COPY_BOOTSTRAP'}
               </Button>
@@ -878,23 +745,23 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         <section className="py-12 relative">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="border border-amber-500/30 bg-black/80 p-8 relative">
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-amber-500" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-amber-500" />
+            <div className="border border-theory-300/30 bg-black/80 p-8 relative">
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-theory-500" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-theory-500" />
               
               <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-amber-500 text-black">
+                  <div className="p-3 bg-theory-300 text-black">
                     <Gauge className="w-6 h-6" />
                   </div>
                   <h3 className="font-display text-sm font-bold text-white tracking-widest">SYSTEM_MONITOR</h3>
                 </div>
                 
-                <div className="flex-1 h-[1px] bg-amber-500/20" />
+                <div className="flex-1 h-[1px] bg-theory-300/20" />
                 
                 <Badge variant="outline" className={`rounded-none px-4 py-1 text-[10px] font-display ${
                   health.verdict === 'SEAL' ? 'border-green-500 text-green-400' :
-                  health.verdict === 'INIT' ? 'border-amber-500 text-amber-500' :
+                  health.verdict === 'INIT' ? 'border-theory-500 text-theory-300' :
                   'border-red-500 text-red-400'
                 }`}>
                   {health.verdict === 'INIT' ? 'ESTABLISHING_AUTH...' : `VERDICT: ${health.verdict}`}
@@ -903,10 +770,10 @@ function App() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Clarity */}
-                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-display text-gray-500 tracking-wider">CLARITY (F4)</span>
-                    <Eye className="w-4 h-4 text-amber-500/40" />
+                    <Eye className="w-4 h-4 text-theory-300/40" />
                   </div>
                   <div className="flex items-baseline gap-2">
                     <p className={`text-4xl font-mono font-bold ${health.clarity <= 0 ? 'text-white' : 'text-red-500'}`}>
@@ -916,17 +783,17 @@ function App() {
                   </div>
                   <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
                     <div 
-                      className="h-full bg-amber-500 transition-all duration-500"
+                      className="h-full bg-theory-300 transition-all duration-500"
                       style={{ width: `${Math.min(Math.abs(health.clarity) * 1000, 100)}%` }}
                     />
                   </div>
                 </div>
 
                 {/* Stability */}
-                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-display text-gray-500 tracking-wider">STABILITY (F5)</span>
-                    <Heart className="w-4 h-4 text-amber-500/40" />
+                    <Heart className="w-4 h-4 text-theory-300/40" />
                   </div>
                   <div className="flex items-baseline gap-2">
                     <p className={`text-4xl font-mono font-bold ${health.stability >= 1.0 ? 'text-white' : 'text-red-500'}`}>
@@ -936,17 +803,17 @@ function App() {
                   </div>
                   <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
                     <div 
-                      className="h-full bg-amber-500 transition-all duration-500"
+                      className="h-full bg-theory-300 transition-all duration-500"
                       style={{ width: `${Math.min(health.stability * 50, 100)}%` }}
                     />
                   </div>
                 </div>
 
                 {/* Humility */}
-                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-display text-gray-500 tracking-wider">HUMILITY (F7)</span>
-                    <Lock className="w-4 h-4 text-amber-500/40" />
+                    <Lock className="w-4 h-4 text-theory-300/40" />
                   </div>
                   <div className="flex items-baseline gap-2">
                     <p className={`text-4xl font-mono font-bold ${health.humility >= 0.03 && health.humility <= 0.05 ? 'text-white' : 'text-red-500'}`}>
@@ -956,34 +823,34 @@ function App() {
                   </div>
                   <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
                     <div 
-                      className="h-full bg-amber-500 transition-all duration-500"
+                      className="h-full bg-theory-300 transition-all duration-500"
                       style={{ width: `${health.humility * 2000}%` }}
                     />
                   </div>
                 </div>
 
                 {/* Genius */}
-                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-[10px] font-display text-gray-500 tracking-wider">GENIUS (F8)</span>
-                    <Zap className="w-4 h-4 text-amber-500/40" />
+                    <Zap className="w-4 h-4 text-theory-300/40" />
                   </div>
                   <div className="flex items-baseline gap-2">
-                    <p className={`text-4xl font-mono font-bold ${health.genius >= 0.80 ? 'text-white' : 'text-amber-500'}`}>
+                    <p className={`text-4xl font-mono font-bold ${health.genius >= 0.80 ? 'text-white' : 'text-theory-300'}`}>
                       {health.genius === 0 ? '0.00' : health.genius.toFixed(2)}
                     </p>
                     <span className="text-[10px] font-mono text-gray-600">G</span>
                   </div>
                   <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
                     <div 
-                      className="h-full bg-amber-500 transition-all duration-500"
+                      className="h-full bg-theory-300 transition-all duration-500"
                       style={{ width: `${Math.min(health.genius * 100, 100)}%` }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-amber-500/10 flex justify-between items-center text-[10px] font-display text-gray-600">
+              <div className="mt-8 pt-8 border-t border-theory-300/10 flex justify-between items-center text-[10px] font-display text-gray-600">
                 <span>MODE: READ_ONLY_CLERK</span>
                 <span>Sovereignty: 888_JUDGE</span>
               </div>
@@ -1008,14 +875,14 @@ function App() {
                 {/* Entropy Maximization */}
                 <div>
                   <h3 className="text-xl font-display font-bold mb-6 text-white flex items-center gap-4">
-                    <span className="text-amber-500 text-sm">1.1</span> ENTROPY_MAXIMIZATION
+                    <span className="text-theory-300 text-sm">1.1</span> ENTROPY_MAXIMIZATION
                   </h3>
                   <p className="text-gray-400 leading-relaxed mb-8 font-mono text-sm">
                     Without constraint mechanisms, language models maximize Shannon entropy<Cite n={[3,4]} />,
                     producing fluent but potentially unfactual outputs.
                   </p>
-                  <div className="p-8 border border-amber-500/20 bg-black relative">
-                    <div className="absolute top-0 left-0 w-2 h-2 bg-amber-500" />
+                  <div className="p-8 border border-theory-300/20 bg-black relative">
+                    <div className="absolute top-0 left-0 w-2 h-2 bg-theory-300" />
                     <DisplayMath
                       tex="\max \; P(w_t \mid w_1, \ldots, w_{t-1})"
                     />
@@ -1026,7 +893,7 @@ function App() {
                 {/* Hallucination Problem */}
                 <div>
                   <h3 className="text-xl font-display font-bold mb-6 text-white flex items-center gap-4">
-                    <span className="text-amber-500 text-sm">1.2</span> HALLUCINATION_CORE
+                    <span className="text-theory-300 text-sm">1.2</span> HALLUCINATION_CORE
                   </h3>
                   <div className="grid gap-4">
                     {[
@@ -1034,8 +901,8 @@ function App() {
                       'No epistemic markers distinguish knowledge from interpolation',
                       'Training objective misalignment between human preferences and factual accuracy',
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-6 p-6 border border-amber-500/5 bg-amber-500/[0.01] hover:bg-amber-500/[0.03] transition-colors group">
-                        <span className="text-amber-500/40 font-display text-xs group-hover:text-amber-500 transition-colors">ERR_0{i + 1}</span>
+                      <div key={i} className="flex items-center gap-6 p-6 border border-theory-300/5 bg-theory-300/[0.01] hover:bg-theory-300/[0.03] transition-colors group">
+                        <span className="text-theory-300/40 font-display text-xs group-hover:text-theory-300 transition-colors">ERR_0{i + 1}</span>
                         <p className="text-gray-400 font-mono text-sm">{item}<Cite n={7} /></p>
                       </div>
                     ))}
@@ -1045,7 +912,7 @@ function App() {
 
               <div className="md:col-span-5">
                 {/* Visual indicator side bar */}
-                <div className="sticky top-32 p-8 border border-amber-500/20 bg-amber-500/[0.02]">
+                <div className="sticky top-32 p-8 border border-theory-300/20 bg-theory-300/[0.02]">
                   <div className="flex items-center gap-3 mb-8">
                     <AlertTriangle className="w-5 h-5 text-red-500" />
                     <span className="text-xs font-display text-red-500">SYSTEM_WARNING</span>
@@ -1072,7 +939,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* TRINITY DASHBOARD                        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-6xl mx-auto px-4">
             <SectionHeading
               id="hta-dashboard"
@@ -1087,7 +954,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 2: THE SOLUTION                 */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-2"
@@ -1097,9 +964,9 @@ function App() {
             />
 
             {/* Three Pillars */}
-            <div className="grid md:grid-cols-3 gap-0 border border-amber-500/20 bg-black/40 mb-16">
-              <div className="p-8 border-r border-amber-500/10">
-                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Thermodynamic_Computing</h4>
+            <div className="grid md:grid-cols-3 gap-0 border border-theory-300/20 bg-black/40 mb-16">
+              <div className="p-8 border-r border-theory-300/10">
+                <h4 className="font-display text-xs font-bold text-theory-300 mb-4 tracking-widest uppercase">Thermodynamic_Computing</h4>
                 <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Landauer's Principle</p>
                 <p className="text-xs font-mono text-gray-400 leading-relaxed">
                   Every irreversible logical operation has a minimum energy cost
@@ -1107,8 +974,8 @@ function App() {
                 </p>
               </div>
 
-              <div className="p-8 border-r border-amber-500/10 bg-amber-500/[0.02]">
-                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Information_Theory</h4>
+              <div className="p-8 border-r border-theory-300/10 bg-theory-300/[0.02]">
+                <h4 className="font-display text-xs font-bold text-theory-300 mb-4 tracking-widest uppercase">Information_Theory</h4>
                 <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Shannon Entropy</p>
                 <p className="text-xs font-mono text-gray-400 leading-relaxed">
                   Information content <InlineMath tex="I = -\log_2 P(x)" /> measures surprise. Mandates output entropy ≤ input
@@ -1117,7 +984,7 @@ function App() {
               </div>
 
               <div className="p-8">
-                <h4 className="font-display text-xs font-bold text-amber-500 mb-4 tracking-widest uppercase">Game_Theory</h4>
+                <h4 className="font-display text-xs font-bold text-theory-300 mb-4 tracking-widest uppercase">Game_Theory</h4>
                 <p className="text-[10px] font-mono text-gray-500 mb-6 uppercase tracking-tighter">Nash Equilibrium</p>
                 <p className="text-xs font-mono text-gray-400 leading-relaxed">
                   Multi-objective optimization requires finding equilibria between truth, safety, and justice.
@@ -1126,10 +993,10 @@ function App() {
             </div>
 
             {/* Three Pillars Table */}
-            <div className="border border-amber-500/10 overflow-hidden bg-black/40 mb-16">
+            <div className="border border-theory-300/10 overflow-hidden bg-black/40 mb-16">
               <table className="floor-table">
                 <thead>
-                  <tr className="bg-amber-500/5">
+                  <tr className="bg-theory-300/5">
                     <th className="font-display">PILLAR</th>
                     <th className="font-display">CONSTRAINT</th>
                     <th className="font-display">SCIENTIFIC_BASIS</th>
@@ -1159,8 +1026,8 @@ function App() {
               </table>
             </div>
 
-            <div className="border-2 border-amber-500/20 p-2 bg-black">
-              <div className="border border-amber-500/10 overflow-hidden">
+            <div className="border-2 border-theory-300/20 p-2 bg-black">
+              <div className="border border-theory-300/10 overflow-hidden">
                 <img src="/entropy-geometry.jpg" alt="Information-theoretic visualization" className="w-full h-64 object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-700" />
               </div>
             </div>
@@ -1171,7 +1038,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* FLOOR VISUALIZER                         */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-7xl mx-auto px-4">
             <SectionHeading
               id="floor-visualizer"
@@ -1200,7 +1067,7 @@ function App() {
               final judgment, preventing collusion and ensuring robust verification<Cite n={[19,20]} />.
             </p>
             <div className="flex justify-center mb-12">
-              <Badge variant="outline" className="border-amber-500/30 text-amber-400">
+              <Badge variant="outline" className="border-theory-300/30 text-theory-200">
                 CONSENSUS THRESHOLD: W ≥ 0.95
               </Badge>
             </div>
@@ -1212,13 +1079,13 @@ function App() {
                   <CardHeader>
                     <div className={`text-5xl mb-4 ${
                       engine.color === 'cyan' ? 'text-cyan-400' :
-                      engine.color === 'amber' ? 'text-amber-400' : 'text-yellow-400'
+                      engine.color === 'theory' ? 'text-theory-200' : 'text-yellow-400'
                     }`} style={{ fontFamily: 'Source Serif 4, serif' }}>
                       {engine.symbol}
                     </div>
                     <CardTitle className={`text-lg ${
                       engine.color === 'cyan' ? 'text-cyan-400' :
-                      engine.color === 'amber' ? 'text-amber-400' : 'text-yellow-400'
+                      engine.color === 'theory' ? 'text-theory-200' : 'text-yellow-400'
                     }`}>
                       {engine.name}
                     </CardTitle>
@@ -1294,7 +1161,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 4: 000-999 METABOLIC LOOP        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-4"
@@ -1336,7 +1203,7 @@ function App() {
                     ['999', 'SEAL', 'Ψ (APEX)', 'Merkle DAG commit, cryptographic audit trail', 'Preservation'],
                   ].map(([stage, name, engine, fn, physics]) => (
                     <tr key={stage}>
-                      <td className="font-mono text-amber-400 font-medium">{stage}</td>
+                      <td className="font-mono text-theory-200 font-medium">{stage}</td>
                       <td className="font-medium text-white">{name}</td>
                       <td className="text-gray-400 text-xs">{engine}</td>
                       <td className="text-gray-400 text-xs">{fn}</td>
@@ -1351,15 +1218,15 @@ function App() {
             <div className="p-5 rounded-lg border border-gray-800 bg-gray-900/30 mb-6">
               <h3 className="text-base font-semibold text-gray-200 mb-3">Loop Invariants</h3>
               <div className="space-y-2 text-sm text-gray-400">
-                <p className="pl-4 border-l-2 border-amber-500/30">
+                <p className="pl-4 border-l-2 border-theory-300/30">
                   <strong className="text-gray-300">Strange loop closure:</strong>{' '}
                   <InlineMath tex="\text{SEAL}_{999}.\text{output} = \text{INIT}_{000}.\text{input}" /> — the system feeds its own verdicts back as context<Cite n={44} />
                 </p>
-                <p className="pl-4 border-l-2 border-amber-500/30">
+                <p className="pl-4 border-l-2 border-theory-300/30">
                   <strong className="text-gray-300">Entropy export:</strong>{' '}
                   <InlineMath tex="E(\text{entropy\_exported}) > E(\text{entropy\_retained})" /> at every stage
                 </p>
-                <p className="pl-4 border-l-2 border-amber-500/30">
+                <p className="pl-4 border-l-2 border-theory-300/30">
                   <strong className="text-gray-300">Monotonic compliance:</strong>{' '}
                   <InlineMath tex="\text{Compliance}(n{+}1) \geq \text{Compliance}(n)" /> — each iteration must improve or maintain
                 </p>
@@ -1457,10 +1324,10 @@ function App() {
             </p>
 
             {/* 9-Paradox Matrix */}
-            <div className="border border-amber-500/20 bg-black overflow-hidden mb-12">
+            <div className="border border-theory-300/20 bg-black overflow-hidden mb-12">
               <table className="floor-table">
                 <thead>
-                  <tr className="bg-amber-500/10">
+                  <tr className="bg-theory-300/10">
                     <th className="font-display text-[10px]">AGI_PROPERTY</th>
                     <th className="font-display text-[10px] text-center">CARE_(EMPATHY)</th>
                     <th className="font-display text-[10px] text-center">PEACE_(SYSTEM)</th>
@@ -1471,7 +1338,7 @@ function App() {
                   {[
                     {
                       row: 'TRUTH',
-                      rowColor: 'text-amber-500',
+                      rowColor: 'text-theory-300',
                       cells: [
                         { paradox: 'Truth · Care', name: 'Honesty vs. Kindness', score: '0.92' },
                         { paradox: 'Clarity · Peace', name: 'Precision vs. Stability', score: '0.88' },
@@ -1480,7 +1347,7 @@ function App() {
                     },
                     {
                       row: 'CLARITY',
-                      rowColor: 'text-amber-500',
+                      rowColor: 'text-theory-300',
                       cells: [
                         { paradox: 'Precision · Reversibility', name: 'Exactness vs. Undoability', score: '0.89' },
                         { paradox: 'Hierarchy · Consent', name: 'Structure vs. Autonomy', score: '0.91' },
@@ -1489,7 +1356,7 @@ function App() {
                     },
                     {
                       row: 'HUMILITY',
-                      rowColor: 'text-amber-500',
+                      rowColor: 'text-theory-300',
                       cells: [
                         { paradox: 'Urgency · Sustainability', name: 'Speed vs. Durability', score: '0.86' },
                         { paradox: 'Certainty · Doubt', name: 'Confidence vs. Caution', score: '0.90' },
@@ -1497,13 +1364,13 @@ function App() {
                       ],
                     },
                   ].map((row) => (
-                    <tr key={row.row} className="border-b border-amber-500/10">
-                      <td className={`font-display text-[10px] p-6 bg-amber-500/5 ${row.rowColor}`}>{row.row}</td>
+                    <tr key={row.row} className="border-b border-theory-300/10">
+                      <td className={`font-display text-[10px] p-6 bg-theory-300/5 ${row.rowColor}`}>{row.row}</td>
                       {row.cells.map((cell) => (
-                        <td key={cell.paradox} className="p-6 text-center border-l border-amber-500/10">
+                        <td key={cell.paradox} className="p-6 text-center border-l border-theory-300/10">
                           <div className="text-[10px] font-display text-white mb-1 tracking-widest">{cell.paradox.toUpperCase()}</div>
                           <div className="text-[9px] font-mono text-gray-600 mb-3">{cell.name}</div>
-                          <div className="text-xl font-mono text-amber-500 font-bold">{cell.score}</div>
+                          <div className="text-xl font-mono text-theory-300 font-bold">{cell.score}</div>
                         </td>
                       ))}
                     </tr>
@@ -1557,7 +1424,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 7: MATHEMATICAL FORMALIZATION    */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-7"
@@ -1722,7 +1589,7 @@ function App() {
                       <td className="text-red-400 text-xs">Logic collapse — reasoning without structure</td>
                     </tr>
                     <tr>
-                      <td className="font-mono text-amber-400 font-medium">P</td>
+                      <td className="font-mono text-theory-200 font-medium">P</td>
                       <td className="text-white">Presence (Stability)</td>
                       <td className="text-gray-400 text-xs">F1, F5, F11</td>
                       <td><code className="text-xs bg-black/30 px-1 rounded">(F1·F5·F11)<sup>1/3</sup></code></td>
@@ -1787,8 +1654,8 @@ function App() {
               </div>
 
               {/* APEX → Governance Bridge */}
-              <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 mt-6">
-                <h4 className="text-sm font-semibold text-amber-400 mb-2">From Theory to Enforcement</h4>
+              <div className="p-5 rounded-xl border border-theory-300/20 bg-theory-300/5 mt-6">
+                <h4 className="text-sm font-semibold text-theory-200 mb-2">From Theory to Enforcement</h4>
                 <p className="text-sm text-gray-400 leading-relaxed">
                   APEX theory directly informs how arifOS enforces decisions. The four dials are not abstract
                   — they are computed in real-time from floor scores during every governance cycle.
@@ -1827,7 +1694,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 8: PHILOSOPHICAL FOUNDATIONS     */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-8"
@@ -1944,10 +1811,10 @@ function App() {
                   ),
                 },
               ].map((item) => (
-                <div key={item.id} className="rounded-lg border border-gray-800 bg-gray-900/30">
+                <div key={item.id} className="rounded-lg border border-theory-500/50 bg-gray-900/30 hover:border-theory-300/60 transition-colors">
                   <button
                     onClick={() => setExpandedPhil(expandedPhil === item.id ? null : item.id)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-800/20 transition-colors"
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-theory-300/5 transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-lg font-semibold text-gray-200">{item.title}</span>
@@ -1985,9 +1852,9 @@ function App() {
               <h3 className="text-xl font-semibold mb-4 text-gray-200">
                 8b.1 Definition
               </h3>
-              <div className="p-5 rounded-xl border border-amber-500/20 bg-amber-500/5 mb-6">
+              <div className="p-5 rounded-xl border border-theory-300/20 bg-theory-300/5 mb-6">
                 <p className="text-gray-300 leading-relaxed text-sm">
-                  <strong className="text-amber-400">Cognitive Shadow Mind Modeling (CSM-ToM)</strong> is the
+                  <strong className="text-theory-200">Cognitive Shadow Mind Modeling (CSM-ToM)</strong> is the
                   constrained modeling of belief-like, intention-like, and confidence-like structures using
                   observable linguistic and behavioral signals, without any claim of subjective experience
                   or inner mental states.
@@ -2045,7 +1912,7 @@ function App() {
                   'Attention mechanisms track discourse-level coherence, which correlates with belief-state tracking',
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/30 border border-gray-800/50">
-                    <span className="text-amber-400 font-mono text-sm mt-0.5">{i + 1}.</span>
+                    <span className="text-theory-200 font-mono text-sm mt-0.5">{i + 1}.</span>
                     <p className="text-gray-400 text-sm">{item}</p>
                   </div>
                 ))}
@@ -2114,7 +1981,7 @@ function App() {
                       <td className="text-gray-500 text-xs">Inferred belief-structures must be internally consistent (F2, F10)</td>
                     </tr>
                     <tr>
-                      <td className="font-mono text-amber-400 font-medium">P (Present)</td>
+                      <td className="font-mono text-theory-200 font-medium">P (Present)</td>
                       <td className="text-gray-400 text-sm">Stability and entropy reduction in interpretation</td>
                       <td className="text-gray-500 text-xs">Interpretations must converge, not oscillate or escalate (F5, F4)</td>
                     </tr>
@@ -2153,7 +2020,7 @@ function App() {
                 ].map((item) => (
                   <div key={item.floor} className="p-3 rounded-lg bg-black/30 border border-gray-800/50">
                     <div className="flex items-center gap-2 mb-1">
-                      <Badge variant="outline" className="text-xs border-amber-500/50 text-amber-400">{item.floor}</Badge>
+                      <Badge variant="outline" className="text-xs border-theory-300/50 text-theory-200">{item.floor}</Badge>
                       <span className="text-sm font-medium text-gray-200">{item.name}</span>
                     </div>
                     <p className="text-xs text-gray-500">{item.role}</p>
@@ -2236,7 +2103,7 @@ function App() {
                     <p className="text-[10px] text-gray-600 mt-1">Not auditable. Not governed.</p>
                   </div>
                   <div className="p-3 rounded-lg bg-black/30 border border-gray-800/50 text-center">
-                    <p className="text-xs font-mono text-amber-400 mb-1">UNDERSTANDING</p>
+                    <p className="text-xs font-mono text-theory-200 mb-1">UNDERSTANDING</p>
                     <p className="text-[10px] text-gray-500">Sustained constraint satisfaction</p>
                     <p className="text-[10px] text-gray-600 mt-1">G ≥ 0.80 across all four dials</p>
                   </div>
@@ -2347,7 +2214,7 @@ function App() {
                   ['Tamper-evidence', 'Any modification breaks chain'],
                 ].map(([title, desc]) => (
                   <div key={title} className="p-3 rounded-lg bg-black/30 border border-gray-800/50">
-                    <p className="text-xs"><span className="text-amber-400 font-medium">{title}:</span>{' '}
+                    <p className="text-xs"><span className="text-theory-200 font-medium">{title}:</span>{' '}
                     <span className="text-gray-500">{desc}</span></p>
                   </div>
                 ))}
@@ -2378,7 +2245,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 10: EMD PROTECTION RELAY        */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-5xl mx-auto px-4">
             <SectionHeading
               id="section-10"
@@ -2431,7 +2298,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 12: LIMITATIONS & UNCERTAINTY   */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-12"
@@ -2466,7 +2333,7 @@ function App() {
                 <div key={item.title} className="p-5 rounded-lg border border-gray-800 bg-gray-900/30">
                   <h4 className="text-base font-semibold text-gray-200 mb-2">{item.title}</h4>
                   <p className="text-sm text-gray-400 mb-2">{item.content}</p>
-                  <p className="text-xs text-amber-400/80 italic">{item.estimate}</p>
+                  <p className="text-xs text-theory-200/80 italic">{item.estimate}</p>
                 </div>
               ))}
             </div>
@@ -2552,8 +2419,8 @@ function App() {
             />
 
             {/* W_scar */}
-            <div className="mt-8 p-5 rounded-lg border border-amber-500/20 bg-amber-500/5">
-              <h4 className="text-sm font-semibold text-amber-400 mb-2 flex items-center gap-2">
+            <div className="mt-8 p-5 rounded-lg border border-theory-300/20 bg-theory-300/5">
+              <h4 className="text-sm font-semibold text-theory-200 mb-2 flex items-center gap-2">
                 <Crown className="w-4 h-4" /> Why the Human Seals and the Machine Cannot
               </h4>
               <p className="text-sm text-gray-400 mb-3">
@@ -2571,8 +2438,8 @@ function App() {
             <div className="mt-8">
               <h4 className="text-sm font-semibold text-gray-300 mb-3">Machine-to-Machine Endpoints</h4>
               <div className="grid sm:grid-cols-3 gap-3">
-                <a href="/llms.txt" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-amber-500/30 transition-colors group">
-                  <p className="text-xs font-mono text-amber-400 group-hover:text-amber-300">/llms.txt</p>
+                <a href="/llms.txt" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-theory-300/30 transition-colors group">
+                  <p className="text-xs font-mono text-theory-200 group-hover:text-theory-200">/llms.txt</p>
                   <p className="text-[10px] text-gray-600">LLM governance beacon</p>
                 </a>
                 <a href="/api/v1/floors.json" className="p-3 rounded-lg bg-black/30 border border-gray-800/50 hover:border-cyan-500/30 transition-colors group">
@@ -2591,7 +2458,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* CITATION BLOCK                           */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="citations"
@@ -2606,7 +2473,7 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 14: REFERENCES                  */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative bg-gradient-to-b from-[#0a0a0a] via-gray-900/20 to-[#0a0a0a]">
+        <section className="py-24 relative bg-gradient-to-b from-[#090B10] via-gray-900/20 to-[#090B10]">
           <div className="max-w-4xl mx-auto px-4">
             <SectionHeading
               id="section-14"
@@ -2700,7 +2567,7 @@ function App() {
             <div className="flex items-center justify-center gap-3 text-3xl mb-6">
               <span className="text-cyan-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Δ</span>
               <span className="text-red-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Ω</span>
-              <span className="text-amber-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Ψ</span>
+              <span className="text-theory-200" style={{ fontFamily: 'Source Serif 4, serif' }}>Ψ</span>
             </div>
 
             <p className="text-xl font-bold mb-1">DITEMPA BUKAN DIBERI</p>
@@ -2717,7 +2584,7 @@ function App() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-gray-400">
                 <a href="https://arif-fazil.com" className="flex items-center gap-2 hover:text-red-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>Human</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
-                <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-amber-400"><span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Theory</a>
+                <a href="https://apex.arif-fazil.com" className="flex items-center gap-2 text-theory-200"><span className="w-1.5 h-1.5 rounded-full bg-theory-300"></span>Theory</a>
                 <span className="hidden sm:inline text-gray-700">|</span>
                 <a href="https://arifos.arif-fazil.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Apps</a>
               </div>
@@ -2729,15 +2596,15 @@ function App() {
             <p className="text-gray-600 text-sm mb-6">Penang, Malaysia · February 2026</p>
 
             <div className="flex items-center justify-center gap-4">
-              <a href="mailto:arifbfazil@gmail.com" className="text-gray-500 hover:text-amber-400 transition-colors text-sm">
+              <a href="mailto:arifbfazil@gmail.com" className="text-gray-500 hover:text-theory-200 transition-colors text-sm">
                 arifbfazil@gmail.com
               </a>
               <span className="text-gray-700">|</span>
-              <a href="https://github.com/ariffazil" className="text-gray-500 hover:text-amber-400 transition-colors flex items-center gap-1 text-sm">
+              <a href="https://github.com/ariffazil" className="text-gray-500 hover:text-theory-200 transition-colors flex items-center gap-1 text-sm">
                 <GitBranch className="w-4 h-4" /> GitHub
               </a>
               <span className="text-gray-700">|</span>
-              <a href="https://linkedin.com/in/arif-fazil" className="text-gray-500 hover:text-amber-400 transition-colors text-sm">
+              <a href="https://linkedin.com/in/arif-fazil" className="text-gray-500 hover:text-theory-200 transition-colors text-sm">
                 LinkedIn
               </a>
             </div>

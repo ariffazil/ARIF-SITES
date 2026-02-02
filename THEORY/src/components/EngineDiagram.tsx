@@ -22,8 +22,8 @@ const ENGINES: Engine[] = [
     fullName: 'Epistemic Engine',
     question: 'Is it true?',
     function: 'Perceive · Reason · Map',
-    color: '#FFD700',
-    bgColor: 'rgba(255, 215, 0, 0.05)',
+    color: '#6B8CCE',
+    bgColor: 'rgba(107, 140, 206, 0.05)',
     floors: ['F2', 'F4', 'F7', 'F10'],
     description: 'Fact verification and logical consistency via Bayesian inference and formal entailment.'
   },
@@ -33,8 +33,8 @@ const ENGINES: Engine[] = [
     fullName: 'Safety Engine',
     question: 'Is it safe?',
     function: 'Defend · Empathize · Bridge',
-    color: '#FFD700',
-    bgColor: 'rgba(255, 215, 0, 0.05)',
+    color: '#6B8CCE',
+    bgColor: 'rgba(107, 140, 206, 0.05)',
     floors: ['F1', 'F5', 'F6', 'F9', 'F11', 'F12'],
     description: 'Risk assessment and stakeholder impact via consequentialist ethics and info-gap theory.'
   },
@@ -44,8 +44,8 @@ const ENGINES: Engine[] = [
     fullName: 'Authority Engine',
     question: 'Is it lawful?',
     function: 'Decree · Prove · Seal',
-    color: '#FFD700',
-    bgColor: 'rgba(255, 215, 0, 0.05)',
+    color: '#6B8CCE',
+    bgColor: 'rgba(107, 140, 206, 0.05)',
     floors: ['F3', 'F8', 'F13'],
     description: 'Compliance verification and cryptographic audit trails via legal positivism and BLS signatures.'
   }
@@ -141,7 +141,7 @@ export function EngineDiagram() {
       ctx.lineTo(positions[1].x, positions[1].y);
       ctx.lineTo(positions[2].x, positions[2].y);
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(255, 215, 0, 0.1)';
+      ctx.strokeStyle = 'rgba(107, 140, 206, 0.1)';
       ctx.lineWidth = 1;
       ctx.stroke();
 
@@ -149,8 +149,8 @@ export function EngineDiagram() {
       ctx.beginPath();
       const s = 12;
       ctx.strokeStyle = consensus.verdict === 'approved' ? '#22c55e' :
-                      consensus.verdict === 'sabar' ? '#f59e0b' :
-                      consensus.verdict === 'void' ? '#ef4444' : '#FFD700';
+                      consensus.verdict === 'sabar' ? '#6B8CCE' :
+                      consensus.verdict === 'void' ? '#ef4444' : '#6B8CCE';
       ctx.lineWidth = 2;
       ctx.strokeRect(centerX - s/2, centerY - s/2, s, s);
 
@@ -165,8 +165,8 @@ export function EngineDiagram() {
         ctx.lineTo(pos.x, centerY);
         ctx.lineTo(centerX, centerY);
         
-        ctx.strokeStyle = status === true ? '#FFD700' :
-                          status === false ? '#ef4444' : 'rgba(255, 215, 0, 0.15)';
+        ctx.strokeStyle = status === true ? '#6B8CCE' :
+                          status === false ? '#ef4444' : 'rgba(107, 140, 206, 0.15)';
         ctx.lineWidth = status !== null ? 2 : 1;
         ctx.stroke();
       });
@@ -187,7 +187,7 @@ export function EngineDiagram() {
       case 'approved':
         return <CheckCircle2 className="w-6 h-6 text-green-400" />;
       case 'sabar':
-        return <AlertCircle className="w-6 h-6 text-amber-400" />;
+        return <AlertCircle className="w-6 h-6 text-theory-200" />;
       case 'void':
         return <XCircle className="w-6 h-6 text-red-400" />;
       default:
@@ -200,7 +200,7 @@ export function EngineDiagram() {
       case 'approved':
         return { text: 'SEAL', color: 'text-green-400', bg: 'bg-green-500/10 border-green-500/50' };
       case 'sabar':
-        return { text: 'SABAR', color: 'text-amber-400', bg: 'bg-amber-500/10 border-amber-500/50' };
+        return { text: 'SABAR', color: 'text-theory-200', bg: 'bg-theory-300/10 border-theory-300/50' };
       case 'void':
         return { text: 'VOID', color: 'text-red-400', bg: 'bg-red-500/10 border-red-500/50' };
       default:
@@ -271,9 +271,9 @@ export function EngineDiagram() {
             disabled={isAnimating}
             className={`
               px-12 py-4 rounded-none font-display text-[10px] tracking-[0.3em] transition-all uppercase
-              ${isAnimating 
-                ? 'bg-gray-900 text-gray-600 cursor-not-allowed border border-gray-800' 
-                : 'bg-amber-500 text-black hover:bg-amber-400 border border-amber-500'
+              ${isAnimating
+                ? 'bg-gray-900 text-gray-600 cursor-not-allowed border border-gray-700'
+                : 'bg-theory-200 text-theory-950 hover:bg-theory-100 border border-theory-300 font-bold shadow-[0_0_15px_rgba(107,140,206,0.2)] hover:shadow-[0_0_25px_rgba(138,170,224,0.3)]'
               }
             `}
           >
@@ -282,17 +282,17 @@ export function EngineDiagram() {
         </div>
 
         {/* Formula Display */}
-        <div className="border border-amber-500/20 bg-black/40 p-8 relative">
-          <div className="absolute top-0 left-0 w-2 h-2 bg-amber-500" />
+        <div className="border border-theory-300/20 bg-black/40 p-8 relative">
+          <div className="absolute top-0 left-0 w-2 h-2 bg-theory-300" />
           <h4 className="text-[10px] font-display text-gray-500 mb-8 tracking-widest uppercase text-center">Consensus_Mechanism_V55.2</h4>
           
           <div className="space-y-12">
-            <div className="p-8 border border-amber-500/10 bg-amber-500/5 font-mono text-lg text-center relative">
-              <span className="text-amber-500">V</span><sub className="text-xs">Δ</sub>
+            <div className="p-8 border border-theory-300/10 bg-theory-300/5 font-mono text-lg text-center relative">
+              <span className="text-theory-300">V</span><sub className="text-xs">Δ</sub>
               <span className="text-gray-700 mx-4">+</span>
-              <span className="text-amber-500">V</span><sub className="text-xs">Ω</sub>
+              <span className="text-theory-300">V</span><sub className="text-xs">Ω</sub>
               <span className="text-gray-700 mx-4">+</span>
-              <span className="text-amber-500">V</span><sub className="text-xs">Ψ</sub>
+              <span className="text-theory-300">V</span><sub className="text-xs">Ψ</sub>
               <span className="text-gray-700 mx-4">/</span>
               <span className="text-gray-500">3</span>
               <span className="text-gray-700 mx-4">≥</span>
@@ -305,7 +305,7 @@ export function EngineDiagram() {
                 { label: 'ADAM (Ω)', val: consensus.adam },
                 { label: 'APEX (Ψ)', val: consensus.apex }
               ].map((item) => (
-                <div key={item.label} className="text-center p-6 border border-amber-500/5">
+                <div key={item.label} className="text-center p-6 border border-theory-300/5">
                   <p className={`text-3xl font-mono font-bold mb-2 ${item.val === true ? 'text-white' : item.val === false ? 'text-red-500' : 'text-gray-800'}`}>
                     {item.val === true ? '1' : item.val === false ? '0' : '—'}
                   </p>
@@ -314,7 +314,7 @@ export function EngineDiagram() {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-8 pt-8 border-t border-amber-500/10">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-8 pt-8 border-t border-theory-300/10">
               <div className="flex items-center gap-4">
                 <span className="text-[10px] font-display text-gray-500 tracking-widest">RESULT_WEIGHT:</span>
                 <span className="font-mono text-2xl font-bold text-white">
@@ -323,7 +323,7 @@ export function EngineDiagram() {
               </div>
               <Badge variant="outline" className={`rounded-none px-6 py-2 text-[10px] font-display tracking-widest ${
                 consensus.weight >= 0.95 ? 'border-green-500 text-green-400 bg-green-500/5' :
-                consensus.weight >= 0.67 ? 'border-amber-500 text-amber-500 bg-amber-500/5' :
+                consensus.weight >= 0.67 ? 'border-theory-500 text-theory-300 bg-theory-300/5' :
                 consensus.weight > 0 ? 'border-red-500 text-red-500 bg-red-500/5' :
                 'border-gray-800 text-gray-600'
               }`}>
@@ -346,11 +346,11 @@ function EngineCard({ engine, status }: { engine: Engine; status: boolean | null
         <div 
           className={`
             p-6 border-2 transition-all duration-500 rounded-none w-64
-            ${status === true ? 'bg-amber-500/10 border-amber-500' : 'bg-black/80 border-amber-500/20'}
+            ${status === true ? 'bg-theory-300/10 border-theory-500' : 'bg-black/80 border-theory-300/20'}
           `}
         >
           <div className="flex items-center gap-6">
-            <span className={`text-4xl font-display font-light ${status === true ? 'text-white' : 'text-amber-500/40'}`}>
+            <span className={`text-4xl font-display font-light ${status === true ? 'text-white' : 'text-theory-300/40'}`}>
               {engine.symbol}
             </span>
             <div>
@@ -359,7 +359,7 @@ function EngineCard({ engine, status }: { engine: Engine; status: boolean | null
             </div>
           </div>
           {status !== null && (
-            <div className="mt-6 flex items-center justify-between border-t border-amber-500/10 pt-4">
+            <div className="mt-6 flex items-center justify-between border-t border-theory-300/10 pt-4">
               <span className={`text-[9px] font-display tracking-widest ${status ? 'text-green-400' : 'text-red-500'}`}>
                 {status ? 'VOTE_PASS' : 'VOTE_FAIL'}
               </span>
@@ -368,9 +368,9 @@ function EngineCard({ engine, status }: { engine: Engine; status: boolean | null
           )}
         </div>
       </TooltipTrigger>
-      <TooltipContent side="top" className="rounded-none border-amber-500 bg-black p-4 font-mono">
+      <TooltipContent side="top" className="rounded-none border-theory-500 bg-black p-4 font-mono">
         <div className="space-y-2">
-          <p className="font-display text-[10px] text-amber-500">{engine.name}_{engine.fullName.toUpperCase()}</p>
+          <p className="font-display text-[10px] text-theory-300">{engine.name}_{engine.fullName.toUpperCase()}</p>
           <p className="text-xs text-gray-400 italic">"{engine.question}"</p>
         </div>
       </TooltipContent>

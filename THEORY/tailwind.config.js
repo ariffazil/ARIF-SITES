@@ -5,6 +5,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        theory: {
+          50: '#E4E8EF',
+          100: '#C8D1E0',
+          200: '#8AAAE0',
+          300: '#6B8CCE',
+          400: '#5577B5',
+          500: '#3D5A8A',
+          600: '#2C4470',
+          700: '#1C2230',
+          800: '#151A22',
+          900: '#0D1017',
+          950: '#090B10',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

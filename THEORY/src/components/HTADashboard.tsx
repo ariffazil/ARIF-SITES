@@ -100,7 +100,7 @@ export function HTADashboard() {
     resize();
 
     const shapes: { x: number; y: number; w: number; h: number; vx: number; vy: number; color: string }[] = [];
-    const colors = ['#FFD700', '#B8860B', '#FFFFFF'];
+    const colors = ['#6B8CCE', '#3D5A8A', '#FFFFFF'];
     
     for (let i = 0; i < 15; i++) {
       shapes.push({
@@ -133,7 +133,7 @@ export function HTADashboard() {
       });
 
       // Draw rigid connection lines
-      ctx.strokeStyle = '#FFD700';
+      ctx.strokeStyle = '#6B8CCE';
       ctx.globalAlpha = 0.05;
       for(let i=0; i<canvas.offsetWidth; i+=100) {
         ctx.beginPath();
@@ -159,15 +159,15 @@ export function HTADashboard() {
   const getVerdictColor = (verdict: string) => {
     switch (verdict) {
       case 'SEAL': return 'border-green-500 text-green-400 bg-green-500/10';
-      case 'SABAR': return 'border-amber-500 text-amber-400 bg-amber-500/10';
+      case 'SABAR': return 'border-theory-500 text-theory-200 bg-theory-300/10';
       case 'VOID': return 'border-red-500 text-red-400 bg-red-500/10';
       case '888_HOLD': return 'border-purple-500 text-purple-400 bg-purple-500/10';
-      default: return 'border-amber-500/30 text-amber-500/50';
+      default: return 'border-theory-300/30 text-theory-300/50';
     }
   };
 
   return (
-    <div className="relative border border-amber-500/20 bg-black/40 p-8">
+    <div className="relative border border-theory-300/20 bg-black/40 p-8">
       {/* Animated Background */}
       <canvas
         ref={canvasRef}
@@ -179,7 +179,7 @@ export function HTADashboard() {
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-6">
-            <div className="p-3 bg-amber-500 text-black">
+            <div className="p-3 bg-theory-300 text-black">
               <Activity className="w-6 h-6" />
             </div>
             <div>
@@ -195,11 +195,11 @@ export function HTADashboard() {
         </div>
 
         {/* Core Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-amber-500/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-theory-300/10">
           {/* Clarity */}
-          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group">
+          <div className="p-8 border-r border-theory-300/10 hover:bg-theory-300/[0.02] transition-colors group">
             <div className="flex items-center gap-3 mb-6">
-              <Eye className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <Eye className="w-4 h-4 text-theory-300/40 group-hover:text-theory-300 transition-colors" />
               <span className="text-[10px] font-display text-gray-500 tracking-wider">CLARITY (F4)</span>
             </div>
             <p className={`text-3xl font-mono font-bold ${metrics.clarity <= 0 ? 'text-white' : 'text-red-500'}`}>
@@ -207,16 +207,16 @@ export function HTADashboard() {
             </p>
             <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
               <div 
-                className="h-full bg-amber-500 transition-all duration-500"
+                className="h-full bg-theory-300 transition-all duration-500"
                 style={{ width: `${Math.min(Math.abs(metrics.clarity) * 1000, 100)}%` }}
               />
             </div>
           </div>
 
           {/* Stability */}
-          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group bg-amber-500/[0.01]">
+          <div className="p-8 border-r border-theory-300/10 hover:bg-theory-300/[0.02] transition-colors group bg-theory-300/[0.01]">
             <div className="flex items-center gap-3 mb-6">
-              <Heart className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <Heart className="w-4 h-4 text-theory-300/40 group-hover:text-theory-300 transition-colors" />
               <span className="text-[10px] font-display text-gray-500 tracking-wider">PEACE² (F5)</span>
             </div>
             <p className={`text-3xl font-mono font-bold ${metrics.stability >= 1.0 ? 'text-white' : 'text-red-500'}`}>
@@ -224,16 +224,16 @@ export function HTADashboard() {
             </p>
             <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
               <div 
-                className="h-full bg-amber-500 transition-all duration-500"
+                className="h-full bg-theory-300 transition-all duration-500"
                 style={{ width: `${Math.min(metrics.stability * 50, 100)}%` }}
               />
             </div>
           </div>
 
           {/* Humility */}
-          <div className="p-8 border-r border-amber-500/10 hover:bg-amber-500/[0.02] transition-colors group">
+          <div className="p-8 border-r border-theory-300/10 hover:bg-theory-300/[0.02] transition-colors group">
             <div className="flex items-center gap-3 mb-6">
-              <Lock className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <Lock className="w-4 h-4 text-theory-300/40 group-hover:text-theory-300 transition-colors" />
               <span className="text-[10px] font-display text-gray-500 tracking-wider">HUMILITY (F7)</span>
             </div>
             <p className={`text-3xl font-mono font-bold ${metrics.humility >= 0.03 && metrics.humility <= 0.05 ? 'text-white' : 'text-red-500'}`}>
@@ -241,24 +241,24 @@ export function HTADashboard() {
             </p>
             <div className="mt-6 h-1 bg-gray-900 overflow-hidden relative">
               <div 
-                className="h-full bg-amber-500 transition-all duration-500"
+                className="h-full bg-theory-300 transition-all duration-500"
                 style={{ width: `${metrics.humility * 2000}%` }}
               />
             </div>
           </div>
 
           {/* Genius */}
-          <div className="p-8 hover:bg-amber-500/[0.02] transition-colors group bg-amber-500/[0.01]">
+          <div className="p-8 hover:bg-theory-300/[0.02] transition-colors group bg-theory-300/[0.01]">
             <div className="flex items-center gap-3 mb-6">
-              <Zap className="w-4 h-4 text-amber-500/40 group-hover:text-amber-500 transition-colors" />
+              <Zap className="w-4 h-4 text-theory-300/40 group-hover:text-theory-300 transition-colors" />
               <span className="text-[10px] font-display text-gray-500 tracking-wider">GENIUS (F8)</span>
             </div>
-            <p className={`text-3xl font-mono font-bold ${metrics.genius >= 0.80 ? 'text-white' : 'text-amber-500'}`}>
+            <p className={`text-3xl font-mono font-bold ${metrics.genius >= 0.80 ? 'text-white' : 'text-theory-300'}`}>
               {metrics.genius === 0 ? '0.00' : metrics.genius.toFixed(2)}
             </p>
             <div className="mt-6 h-1 bg-gray-900 overflow-hidden">
               <div 
-                className="h-full bg-amber-500 transition-all duration-500"
+                className="h-full bg-theory-300 transition-all duration-500"
                 style={{ width: `${Math.min(metrics.genius * 100, 100)}%` }}
               />
             </div>
@@ -266,10 +266,10 @@ export function HTADashboard() {
         </div>
 
         {/* Floor Status Grid */}
-        <div className="p-8 border border-amber-500/20 bg-black/60 relative">
-          <div className="absolute top-0 left-8 right-8 h-[1px] bg-amber-500/30" />
+        <div className="p-8 border border-theory-300/20 bg-black/60 relative">
+          <div className="absolute top-0 left-8 right-8 h-[1px] bg-theory-300/30" />
           <div className="flex items-center gap-4 mb-8">
-            <Shield className="w-4 h-4 text-amber-500" />
+            <Shield className="w-4 h-4 text-theory-300" />
             <h4 className="text-[10px] font-display text-white tracking-widest uppercase">CONSTITUTIONAL_FLOORS_STATE</h4>
           </div>
           
@@ -278,10 +278,10 @@ export function HTADashboard() {
               <div key={floor.id} className="flex flex-col items-center">
                 <div 
                   className={`w-10 h-10 flex items-center justify-center text-[10px] font-display font-bold transition-all duration-500 ${
-                    floor.status === 'pass' ? 'bg-amber-500 text-black' :
-                    floor.status === 'warn' ? 'border-2 border-amber-500 text-amber-500' :
+                    floor.status === 'pass' ? 'bg-theory-300 text-black' :
+                    floor.status === 'warn' ? 'border-2 border-theory-500 text-theory-300' :
                     floor.status === 'fail' ? 'bg-red-500 text-white' :
-                    'border border-amber-500/20 text-gray-700'
+                    'border border-theory-300/20 text-gray-700'
                   }`}
                   title={`${floor.id}: ${floor.name}`}
                 >
@@ -294,13 +294,13 @@ export function HTADashboard() {
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-display text-gray-600 border-t border-amber-500/10 pt-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] font-display text-gray-600 border-t border-theory-300/10 pt-8">
           <div className="flex items-center gap-4">
-            <Gauge className="w-3 h-3 text-amber-500/40" />
+            <Gauge className="w-3 h-3 text-theory-300/40" />
             <span className="tracking-widest">ENFORCEMENT_PROTOCOL: ACTIVE</span>
           </div>
           <div className="flex items-center gap-4">
-            <Crown className="w-3 h-3 text-amber-500" />
+            <Crown className="w-3 h-3 text-theory-300" />
             <span className="tracking-widest">Sovereign: 888_JUDGE</span>
           </div>
         </div>

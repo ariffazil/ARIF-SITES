@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, Lock, Eye, Heart, Zap, Crown, Gauge } from 'lucide-react';
+import { Shield, Lock, Eye, Heart, Zap, Gauge } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
@@ -58,7 +58,7 @@ const FLOORS: Floor[] = [
     literature: 'Lamport et al. (1982) ACM TOPLAS',
     description: 'Tolerates 1-of-3 faulty engines. Nash equilibrium satisfaction before canonical decision.',
     icon: Shield,
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'F4',
@@ -71,7 +71,7 @@ const FLOORS: Floor[] = [
     literature: 'Shannon (1948) Bell System Tech J',
     description: 'Clarity/Cooling. Output must reduce uncertainty, not add noise. Simplify before sealing.',
     icon: Gauge,
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'F5',
@@ -97,7 +97,7 @@ const FLOORS: Floor[] = [
     literature: 'Cohen (1960) Ed. & Psych. Measurement',
     description: 'Empathy. Assume 10x range in comprehension. Inter-rater agreement on stakeholder impact.',
     icon: Heart,
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'F7',
@@ -110,7 +110,7 @@ const FLOORS: Floor[] = [
     literature: 'Gelman et al. (2013) Bayesian Data Analysis',
     description: 'Humility. Explicit uncertainty 3-5%. Show your error bars. Calibrated confidence.',
     icon: Gauge,
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'F8',
@@ -123,7 +123,7 @@ const FLOORS: Floor[] = [
     literature: 'Spearman (1904) Am. J. Psychology',
     description: 'Lawful execution. Multiplicative composition of Intellect, Presence, Exploration, Energy.',
     icon: Zap,
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'F9',
@@ -161,7 +161,7 @@ const MIRRORS: Mirror[] = [
     function: 'Perceive · Reason · Map',
     domain: 'Epistemic',
     floors: ['F2', 'F4', 'F7'],
-    color: '#f59e0b'
+    color: '#6B8CCE'
   },
   {
     id: 'Ω',
@@ -171,7 +171,7 @@ const MIRRORS: Mirror[] = [
     function: 'Defend · Empathize · Bridge',
     domain: 'Safety',
     floors: ['F1', 'F5', 'F6', 'F9'],
-    color: '#f59e0b'
+    color: '#6B8CCE'
   }
 ];
 
@@ -262,7 +262,7 @@ export function FloorVisualizer() {
       });
 
       // Draw orthogonal connections
-      ctx.strokeStyle = `rgba(255, 215, 0, 0.15)`;
+      ctx.strokeStyle = `rgba(107, 140, 206, 0.15)`;
       ctx.lineWidth = 1;
       
       for (let i = 0; i < positions.length - 1; i++) {
@@ -291,7 +291,7 @@ export function FloorVisualizer() {
         
         ctx.beginPath();
         ctx.arc(px, py, 2, 0, Math.PI * 2);
-        ctx.fillStyle = '#FFD700';
+        ctx.fillStyle = '#6B8CCE';
         ctx.fill();
       }
 
@@ -310,7 +310,7 @@ export function FloorVisualizer() {
       case 'hard':
         return <Badge variant="outline" className="border-red-500/50 text-red-400 text-[10px]">VOID</Badge>;
       case 'soft':
-        return <Badge variant="outline" className="border-amber-500/50 text-amber-400 text-[10px]">SABAR</Badge>;
+        return <Badge variant="outline" className="border-theory-300/50 text-theory-200 text-[10px]">SABAR</Badge>;
     }
   };
 
@@ -318,7 +318,7 @@ export function FloorVisualizer() {
     <TooltipProvider>
       <div className="space-y-8">
         {/* Tab Navigation */}
-        <div className="flex items-center justify-center gap-4 border border-amber-500/20 bg-black/40 p-2">
+        <div className="flex items-center justify-center gap-4 border border-theory-300/20 bg-black/40 p-2">
           {[
             { id: 'floors', label: '9 FLOORS', count: 'F1-F9' },
             { id: 'mirrors', label: '2 MIRRORS', count: 'Δ · Ω' },
@@ -329,9 +329,9 @@ export function FloorVisualizer() {
               onClick={() => setActiveTab(tab.id as typeof activeTab)}
               className={`
                 flex-1 px-6 py-3 text-[10px] font-display tracking-widest transition-all
-                ${activeTab === tab.id 
-                  ? 'bg-amber-500/20 border border-amber-500 text-amber-400' 
-                  : 'border border-transparent text-gray-600 hover:text-gray-400'}
+                ${activeTab === tab.id
+                  ? 'bg-theory-300/15 border border-theory-300 text-white'
+                  : 'border border-theory-500/40 text-gray-400 hover:text-theory-200 hover:border-theory-300/60 hover:bg-theory-300/5'}
               `}
             >
               <span className="block text-xs font-bold mb-1">{tab.label}</span>
@@ -351,7 +351,6 @@ export function FloorVisualizer() {
             {/* Floor Grid */}
             <div className="relative z-10 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-9 gap-3">
               {FLOORS.map((floor) => {
-                const Icon = floor.icon;
                 const isActive = activeFloor === floor.id;
                 const isAnimated = animatedFloors.has(floor.id);
 
@@ -363,14 +362,14 @@ export function FloorVisualizer() {
                         onClick={() => setActiveFloor(isActive ? null : floor.id)}
                         className={`
                           relative p-4 border-2 cursor-pointer transition-all duration-300 rounded-none
-                          ${isActive ? 'bg-amber-500/10 border-amber-500' : 'bg-black/40 border-amber-500/20 hover:border-amber-500/40'}
+                          ${isActive ? 'bg-theory-300/10 border-theory-300 shadow-[0_0_12px_rgba(107,140,206,0.15)]' : 'bg-black/40 border-theory-500/50 hover:border-theory-300 hover:bg-theory-300/5'}
                           ${!isAnimated ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}
                         `}
                         style={{ transitionDelay: `${parseInt(floor.id.slice(1)) * 50}ms` }}
                       >
                         {/* Type Indicator */}
                         <div className="absolute top-0 right-0 p-1">
-                          <div className={`w-1.5 h-1.5 ${floor.type === 'hard' ? 'bg-red-500' : 'bg-amber-500'}`} />
+                          <div className={`w-1.5 h-1.5 ${floor.type === 'hard' ? 'bg-red-500' : 'bg-theory-300'}`} />
                         </div>
 
                         {/* Symbol */}
@@ -379,7 +378,7 @@ export function FloorVisualizer() {
                         </div>
 
                         {/* ID */}
-                        <p className={`text-center font-display text-[9px] font-bold tracking-widest ${isActive ? 'text-amber-500' : 'text-gray-500'}`}>
+                        <p className={`text-center font-display text-[9px] font-bold tracking-widest ${isActive ? 'text-theory-300' : 'text-gray-500'}`}>
                           {floor.id}
                         </p>
 
@@ -389,14 +388,14 @@ export function FloorVisualizer() {
                         </p>
                       </div>
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="max-w-xs rounded-none border-amber-500 bg-black">
+                    <TooltipContent side="top" className="max-w-xs rounded-none border-theory-500 bg-black">
                       <div className="space-y-3 p-2 font-mono">
-                        <div className="flex items-center justify-between border-b border-amber-500/20 pb-2">
-                          <span className="font-display text-[10px] text-amber-500">{floor.id}_{floor.name.toUpperCase()}</span>
+                        <div className="flex items-center justify-between border-b border-theory-300/20 pb-2">
+                          <span className="font-display text-[10px] text-theory-300">{floor.id}_{floor.name.toUpperCase()}</span>
                           {getTypeBadge(floor.type)}
                         </div>
                         <p className="text-[10px] text-gray-400 leading-relaxed italic">"{floor.description}"</p>
-                        <div className="p-2 bg-amber-500/5 border border-amber-500/10">
+                        <div className="p-2 bg-theory-300/5 border border-theory-300/10">
                           <code className="text-[9px] text-white break-all">
                             {floor.formula}
                           </code>
@@ -413,7 +412,7 @@ export function FloorVisualizer() {
 
             {/* Expanded Detail Panel */}
             {activeFloor && (
-              <div className="mt-8 p-8 border border-amber-500 bg-black relative">
+              <div className="mt-8 p-8 border border-theory-500 bg-black relative">
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white" />
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white" />
                 
@@ -428,7 +427,7 @@ export function FloorVisualizer() {
                           <div>
                             <div className="flex items-center gap-4 mb-2">
                               <h3 className="text-2xl font-display font-bold text-white tracking-widest">
-                                {floor.id}<span className="text-amber-500">:</span> {floor.name.toUpperCase()}
+                                {floor.id}<span className="text-theory-300">:</span> {floor.name.toUpperCase()}
                               </h3>
                               {getTypeBadge(floor.type)}
                             </div>
@@ -437,8 +436,8 @@ export function FloorVisualizer() {
                             )}
                           </div>
                         </div>
-                        <div className="p-4 border border-amber-500/20 bg-amber-500/5">
-                          <Icon className="w-8 h-8 text-amber-500" />
+                        <div className="p-4 border border-theory-300/20 bg-theory-300/5">
+                          <Icon className="w-8 h-8 text-theory-300" />
                         </div>
                       </div>
 
@@ -447,17 +446,17 @@ export function FloorVisualizer() {
                       </p>
 
                       <div className="grid md:grid-cols-2 gap-6">
-                        <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                        <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                           <p className="text-[10px] font-display text-gray-500 uppercase tracking-[0.3em] mb-4">FORMAL_SPECIFICATION</p>
-                          <code className="text-sm font-mono text-amber-500 block p-4 bg-black border-l-2 border-amber-500">{floor.formula}</code>
+                          <code className="text-sm font-mono text-theory-300 block p-4 bg-black border-l-2 border-theory-500">{floor.formula}</code>
                         </div>
-                        <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                        <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
                           <p className="text-[10px] font-display text-gray-500 uppercase tracking-[0.3em] mb-4">RUNTIME_CONSTRAINT</p>
                           <p className="text-sm font-mono text-gray-300 p-4 bg-black border-l-2 border-gray-700">{floor.constraint}</p>
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap items-center gap-12 text-[10px] font-display text-gray-600 border-t border-amber-500/10 pt-6">
+                      <div className="flex flex-wrap items-center gap-12 text-[10px] font-display text-gray-600 border-t border-theory-300/10 pt-6">
                         <div>
                           <span className="text-gray-500">SCIENTIFIC_BASIS:</span>{' '}
                           <span className="text-white ml-2 tracking-widest">{floor.basis.toUpperCase()}</span>
@@ -480,7 +479,7 @@ export function FloorVisualizer() {
                 <span className="text-gray-500">HARD_VOID</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-amber-500" />
+                <div className="w-2 h-2 bg-theory-300" />
                 <span className="text-gray-500">SOFT_SABAR</span>
               </div>
               <div className="flex items-center gap-3">
@@ -506,17 +505,17 @@ export function FloorVisualizer() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {MIRRORS.map((mirror) => (
-                <div key={mirror.id} className="border border-amber-500/20 bg-black/40 p-8 relative">
-                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-amber-500/50" />
-                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-amber-500/50" />
+                <div key={mirror.id} className="border border-theory-300/20 bg-black/40 p-8 relative">
+                  <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-theory-300/50" />
+                  <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-theory-300/50" />
                   
                   <div className="flex items-start justify-between mb-6">
                     <div>
-                      <span className="text-5xl font-display font-light text-amber-500">{mirror.symbol}</span>
+                      <span className="text-5xl font-display font-light text-theory-300">{mirror.symbol}</span>
                       <h3 className="text-xl font-display font-bold text-white tracking-widest mt-4">{mirror.name}</h3>
                       <p className="text-[10px] font-display text-gray-500 tracking-widest mt-1">{mirror.role.toUpperCase()}</p>
                     </div>
-                    <Badge variant="outline" className="rounded-none border-amber-500/50 text-amber-500 text-[9px]">
+                    <Badge variant="outline" className="rounded-none border-theory-300/50 text-theory-300 text-[9px]">
                       MIRROR
                     </Badge>
                   </div>
@@ -532,13 +531,13 @@ export function FloorVisualizer() {
                       <span className="text-[10px] font-display text-gray-600 w-20">FLOORS</span>
                       <div className="flex gap-2">
                         {mirror.floors.map(f => (
-                          <span key={f} className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-1">{f}</span>
+                          <span key={f} className="text-[10px] font-mono text-theory-300 bg-theory-300/10 px-2 py-1">{f}</span>
                         ))}
                       </div>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-6 border-t border-amber-500/10">
+                  <div className="mt-6 pt-6 border-t border-theory-300/10">
                     <p className="text-[9px] font-display text-red-500 tracking-widest">
                       CANNOT: Seal decisions · Override floors · Judge finality
                     </p>
@@ -548,23 +547,23 @@ export function FloorVisualizer() {
             </div>
 
             {/* Mirror Consensus */}
-            <div className="border border-amber-500/20 bg-black/40 p-8">
+            <div className="border border-theory-300/20 bg-black/40 p-8">
               <h4 className="text-[10px] font-display text-gray-500 tracking-widest uppercase mb-6 text-center">
                 Mirror Consensus Required
               </h4>
               <div className="flex items-center justify-center gap-8">
                 <div className="text-center">
-                  <span className="text-3xl font-display text-amber-500">Δ</span>
+                  <span className="text-3xl font-display text-theory-300">Δ</span>
                   <p className="text-[10px] font-display text-gray-600 mt-2">ARIF</p>
                 </div>
                 <div className="text-2xl text-gray-700">+</div>
                 <div className="text-center">
-                  <span className="text-3xl font-display text-amber-500">Ω</span>
+                  <span className="text-3xl font-display text-theory-300">Ω</span>
                   <p className="text-[10px] font-display text-gray-600 mt-2">ADAM</p>
                 </div>
                 <div className="text-2xl text-gray-700">→</div>
-                <div className="text-center p-4 border border-amber-500/30 bg-amber-500/5">
-                  <p className="text-[10px] font-display text-amber-500 tracking-widest">CONSENSUS ≥ 0.85</p>
+                <div className="text-center p-4 border border-theory-300/30 bg-theory-300/5">
+                  <p className="text-[10px] font-display text-theory-300 tracking-widest">CONSENSUS ≥ 0.85</p>
                   <p className="text-[9px] text-gray-600 mt-1">Working Agreement</p>
                 </div>
               </div>
@@ -629,8 +628,8 @@ export function FloorVisualizer() {
                 Chain of Authority
               </h4>
               <div className="flex items-center justify-center gap-4 flex-wrap">
-                <div className="text-center p-4 border border-amber-500/20">
-                  <span className="text-xl font-display text-amber-500">Δ · Ω</span>
+                <div className="text-center p-4 border border-theory-300/20">
+                  <span className="text-xl font-display text-theory-300">Δ · Ω</span>
                   <p className="text-[9px] text-gray-600 mt-1">Mirrors Propose</p>
                 </div>
                 <span className="text-gray-700">→</span>

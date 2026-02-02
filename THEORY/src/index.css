@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 45 100% 95%;
-    --card: 0 0% 3%;
-    --card-foreground: 45 100% 95%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 45 100% 95%;
-    --primary: 45 100% 50%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 8%;
-    --secondary-foreground: 45 100% 95%;
-    --muted: 0 0% 8%;
-    --muted-foreground: 45 20% 60%;
-    --accent: 45 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --background: 220 20% 4%;
+    --foreground: 210 20% 92%;
+    --card: 220 18% 6%;
+    --card-foreground: 210 20% 92%;
+    --popover: 220 18% 6%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 220 60% 65%;
+    --primary-foreground: 220 20% 4%;
+    --secondary: 220 15% 10%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 220 15% 10%;
+    --muted-foreground: 215 10% 55%;
+    --accent: 220 60% 65%;
+    --accent-foreground: 220 20% 4%;
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 45 50% 15%;
-    --input: 45 50% 15%;
-    --ring: 45 100% 50%;
+    --border: 220 20% 14%;
+    --input: 220 20% 14%;
+    --ring: 220 60% 65%;
     --radius: 0rem;
   }
 }
@@ -48,20 +48,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #020202;
+  background: #060810;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B8860B;
+  background: #3D5A8A;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFD700;
+  background: #6B8CCE;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 215, 0, 0.3);
+  background: rgba(107, 140, 206, 0.25);
   color: white;
 }
 
@@ -77,10 +77,10 @@
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* KaTeX overrides for gold theme */
+/* KaTeX overrides for scientific theme */
 .katex {
   font-size: 1.1em;
-  color: #FFD700;
+  color: #E4E8EF;
 }
 
 .katex-display {
@@ -94,11 +94,11 @@
   font-size: 1.15em;
 }
 
-/* Math block container - Orthogonal */
+/* Math block container */
 .math-block {
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-left: 4px solid #FFD700;
+  background: rgba(9, 11, 16, 0.8);
+  border: 1px solid rgba(107, 140, 206, 0.15);
+  border-left: 4px solid #6B8CCE;
   padding: 1.5rem;
   margin: 1.5rem 0;
   overflow-x: auto;
@@ -106,7 +106,7 @@
 
 /* Citation reference styling */
 .cite-ref {
-  color: #FFD700;
+  color: #6B8CCE;
   font-size: 0.75em;
   vertical-align: super;
   cursor: pointer;
@@ -116,7 +116,7 @@
 
 .cite-ref:hover {
   color: #FFFFFF;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+  text-shadow: 0 0 8px rgba(107, 140, 206, 0.6);
 }
 
 /* Reference list styling */
@@ -127,18 +127,18 @@
   font-size: 0.875rem;
   line-height: 1.6;
   color: #A0A0A0;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+  border-bottom: 1px solid rgba(107, 140, 206, 0.05);
   padding-bottom: 0.5rem;
 }
 
 .reference-item:hover {
-  color: #FFD700;
+  color: #8AAAE0;
 }
 
-/* Orthogonal section divider */
+/* Section divider */
 .section-divider {
   height: 2px;
-  background: #FFD700;
+  background: #6B8CCE;
   margin: 4rem 0;
   position: relative;
 }
@@ -150,7 +150,7 @@
   top: -4px;
   width: 10px;
   height: 10px;
-  background: #FFD700;
+  background: #6B8CCE;
 }
 
 .section-divider::after {
@@ -160,7 +160,7 @@
   top: -4px;
   width: 10px;
   height: 10px;
-  background: #FFD700;
+  background: #6B8CCE;
 }
 
 /* Table styling for constitutional floors */
@@ -173,24 +173,24 @@
 .floor-table th {
   text-align: left;
   padding: 1rem;
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  border: 1px solid rgba(107, 140, 206, 0.2);
   font-weight: 700;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #FFD700;
-  background: rgba(255, 215, 0, 0.05);
+  color: #6B8CCE;
+  background: rgba(107, 140, 206, 0.04);
 }
 
 .floor-table td {
   padding: 1rem;
-  border: 1px solid rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(107, 140, 206, 0.1);
   font-size: 0.8rem;
   color: #E0E0E0;
 }
 
 .floor-table tr:hover td {
-  background: rgba(255, 215, 0, 0.03);
+  background: rgba(107, 140, 206, 0.03);
 }
 
 /* Geometric animations */
@@ -210,7 +210,7 @@
 .code-block {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   background: #000000;
-  border: 1px solid #FFD700;
+  border: 1px solid #3D5A8A;
   padding: 1.5rem;
   overflow-x: auto;
   font-size: 0.8rem;
@@ -220,8 +220,8 @@
 
 /* Glass effect - Minimal */
 .glass-apex {
-  background: rgba(5, 5, 5, 0.9);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: rgba(9, 11, 16, 0.9);
+  border: 1px solid rgba(107, 140, 206, 0.15);
 }
 
 /* BibTeX export button */
@@ -229,8 +229,8 @@
   font-family: 'Syncopate', sans-serif;
   font-size: 0.65rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #FFD700;
-  color: #FFD700;
+  border: 1px solid #6B8CCE;
+  color: #6B8CCE;
   transition: all 0.2s;
   cursor: pointer;
   background: transparent;
@@ -238,25 +238,25 @@
 }
 
 .bibtex-btn:hover {
-  background: #FFD700;
-  color: #000000;
+  background: #6B8CCE;
+  color: #090B10;
 }
 
 /* Disclaimer banner */
 .disclaimer {
-  background: rgba(255, 215, 0, 0.02);
-  border: 1px solid #FFD700;
+  background: rgba(107, 140, 206, 0.02);
+  border: 1px solid #3D5A8A;
   padding: 1.5rem;
   font-size: 0.8rem;
-  color: #FFD700;
+  color: #828D9A;
   font-family: 'Space Mono', monospace;
 }
 
-/* Orthogonal grid - Blueprint style */
+/* Blueprint grid */
 .sacred-grid {
   background-image:
-    linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(107, 140, 206, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 140, 206, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -265,9 +265,8 @@
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 215, 0, 0.1) 2px, transparent 2px),
-    linear-gradient(90deg, rgba(255, 215, 0, 0.1) 2px, transparent 2px);
+    linear-gradient(rgba(107, 140, 206, 0.07) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(107, 140, 206, 0.07) 2px, transparent 2px);
   background-size: 200px 200px;
   pointer-events: none;
 }
-
