@@ -52,7 +52,7 @@ arif-fazil-sites/
 │   ├── tailwind.config.js
 │   └── tsconfig.json
 │
-├── soul/                          # SOUL (apex.arif-fazil.com)
+├── THEORY/                        # THEORY (apex.arif-fazil.com)
 │   ├── src/
 │   │   ├── App.tsx               # APEX canon application
 │   │   ├── main.tsx
@@ -145,7 +145,7 @@ arif-fazil-sites/
 | Site | Directory | Project Name | Domain | Build Command |
 |------|-----------|--------------|--------|---------------|
 | BODY | `body/` | ariffazil | arif-fazil.com | `npm install && npm run build` |
-| SOUL | `soul/` | apex | apex.arif-fazil.com | `npm install && npm run build` |
+| THEORY | `THEORY/` | apex | apex.arif-fazil.com | `npm install && npm run build` |
 | DOCS | `docs/` | arifos | arifos.arif-fazil.com | `npm install && npm run build` |
 
 ---
