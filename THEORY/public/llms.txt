@@ -1,137 +1,200 @@
-# APEX — Constitutional Canon for AI Governance (v55.2-HUMAN THEORY APPS)
+# apex.arif-fazil.com — THEORY Layer (Constitutional Canon)
+# Authority: Muhammad Arif bin Fazil | Version: v55.2 | Updated: 2026-02-02
+# Layer: THEORY (formerly Soul/APEX) — The constitutional canon and scientific grounding
+# Canonical: https://apex.arif-fazil.com
+# Source: https://github.com/ariffazil/arif-fazil-sites/tree/main/THEORY
+# Specification: https://github.com/ariffazil/arifOS/tree/main/000_THEORY
 
-> APEX is the Sovereign Judge engine of arifOS: a thermodynamic constitutional framework that enforces lawful, audited, and reversible AI behavior through 115 theoretical pillars, 13 immutable floors, and tri-witness consensus.
+# 1. SITE IDENTITY
+Site: apex.arif-fazil.com
+Layer: THEORY
+Role: Constitutional canon — the formal specification of arifOS governance
+Author: Muhammad Arif bin Fazil
+Motto: Ditempa Bukan Diberi (Forged, Not Given)
 
-APEX (Authority · Proof · Execution) is the judiciary layer of arifOS, asking "Is it lawful?" before any AI output is sealed. It governs binding commitments, cryptographic proofs, and audit trails, ensuring intelligence is accountable, not just fluent.
+# 2. WHAT THIS SITE DOCUMENTS
+APEX is the constitutional canon for AI governance. It documents the formal theory,
+mathematical constraints, scientific grounding, and philosophical basis of arifOS.
+This is where the "why" lives — not the code, but the law that the code enforces.
 
-This is not a framework. This is a forge.
+This site covers:
+- The 13 Constitutional Floors (F1-F13) with formal constraint definitions
+- The Three Engines: ARIF (Delta), ADAM (Omega), APEX (Psi)
+- The 000-999 Metabolic Loop and its thermodynamic grounding
+- The EMD Protection Relay (Encoder-Metabolizer-Decoder) model
+- 115 theoretical pillars across 8 scientific domains
+- 44+ peer-reviewed academic citations
+- The multiplicative governance model: G = A * P * X * E^2
+- Limitations, uncertainty, and research frontiers (F7 Humility)
 
----
+# 3. THE THREE ENGINES (Delta-Omega-Psi)
 
-## 🏛️ The 115 Theoretical Pillars
+## ARIF (Delta) — Epistemic Engine
+Question: "Is it true?"
+Function: Perceive, Reason, Map
+Basis: Bayesian inference, logical entailment, coherence theory of truth
+Constraints:
+  - Truth threshold: P(factual | evidence) >= 0.99
+  - Logical consistency: No contradictions in output
+  - Citation requirement: All factual claims cite sources
+Floors: F2 (Truth), F4 (Clarity), F7 (Humility), F10 (Ontology)
+Source: https://github.com/ariffazil/arifOS/blob/main/codebase/mcp/tools/agi_tool.py
 
-arifOS is architecturally grounded in 115 peer-reviewed scientific theories spanning 8 major domains.
+## ADAM (Omega) — Safety Engine
+Question: "Is it safe?"
+Function: Defend, Empathize, Bridge
+Basis: Utilitarian harm minimization, info-gap theory, Rawlsian justice
+Constraints:
+  - Safety threshold: P(harm | action) <= 0.05
+  - Empathy requirement: kappa >= 0.70 (Cohen's kappa)
+  - Reversibility: Actions undoable unless explicitly authorized
+Floors: F1 (Amanah), F5 (Peace), F6 (Empathy), F9 (Anti-Hantu), F11 (Authority), F12 (Hardening)
+Source: https://github.com/ariffazil/arifOS/blob/main/codebase/mcp/tools/asi_tool.py
 
-### 1. Physics (16 Theories)
-- **Second Law of Thermodynamics**: F4 Clarity (ΔS ≤ 0). Entropy must decrease via metabolic work.
-- **Landauer's Principle**: F1 Amanah. Every bit erasure costs kʙT ln2 energy (~3 zJ at 300K).
-- **Free Energy Principle**: F5 Peace² (Ψ ≥ 1.0). Minimize surprise via predictive models.
-- **Maxwell's Demon**: 111 SENSE. Information filtering requires energy expenditure.
-- **Heisenberg Uncertainty**: F7 Humility. Mandatory uncertainty band Ω₀ ∈ [0.03, 0.05].
-- **Quantum Superposition/Measurement**: 888 JUDGE collapses multiple hypotheses into a verdict.
-- **Statistical Mechanics**: Loop transitions as phase transitions.
+## APEX (Psi) — Authority Engine
+Question: "Is it lawful?"
+Function: Decree, Prove, Seal
+Basis: Legal positivism, cryptographic proofs, accountability frameworks
+Constraints:
+  - Authority verification: Valid BLS signature required
+  - Audit completeness: All decisions logged with timestamps
+  - Human veto: Sovereign override always available (F13)
+Floors: F3 (Tri-Witness), F8 (Genius), F13 (Sovereign)
+Source: https://github.com/ariffazil/arifOS/blob/main/codebase/mcp/tools/apex_tool.py
 
-### 2. Mathematics (22 Theories)
-- **Fisher-Rao Metric**: Information geometry distance between agent states.
-- **KL Divergence**: F2 Truth. D_KL(P_truth || P_agent) ≤ 0.01005.
-- **Nash Equilibrium**: Optimal resolution of multi-objective paradoxes.
-- **Byzantine Fault Tolerance**: F3 Tri-Witness. Tolerates 1 faulty engine of 3.
-- **Category Theory**: 000-999 Pipeline as a structure-preserving functor.
-- **Eigendecomposition**: 13 Floors mapped to 4 Dials (Δ, Ω, Ψ, ε) via PCA.
+# 4. THE 13 CONSTITUTIONAL FLOORS
 
-### 3. Computer Science (16 Theories)
-- **Ed25519 Cryptography**: F1 Amanah. Root key signatures for non-repudiation.
-- **BLS Signatures**: F11 Command. Aggregate signatures for consensus.
-- **Merkle Trees/DAGs**: VAULT-999 hash-chained immutable audit trail.
-- **Formal Verification**: Provable compliance with constitutional floors.
-- **OODA Loop**: Observe-Orient-Decide-Act flow in the metabolic pipeline.
+## HARD FLOORS (VOID on violation — system halts)
+F1  Amanah (Trust)    | Reversibility required unless explicit override    | Landauer's Principle
+F2  Truth             | P(factual | evidence) >= 0.99                     | Bayesian inference, KL Divergence
+F5  Peace             | Lyapunov function V(x) decreasing                 | Stability theory
+F9  Anti-Hantu        | No false consciousness claims                     | Turing Test critique
+F10 Ontology          | Type-consistent reasoning                         | Set theory, formal logic
+F11 Authority         | BLS signature verification                        | Cryptographic proofs
+F12 Hardening         | Adversarial robustness >= 0.85                    | Adversarial ML
 
-### 4. Philosophy & Humanities (21 Theories)
-- **Gödel's Incompleteness**: F7 Gödel Lock. System admits what it cannot prove.
-- **Strange Loop**: APEX self-referential identity and observation.
-- **Theory of Mind**: F6 Empathy. Modeling stakeholder mental states (CSM-ToM).
-- **Categorical Imperative**: F2 Truth. Universalizable deontological rules.
-- **Speech Act Theory**: Verdicts as performative utterances (SEAL/SABAR/VOID).
+## SOFT FLOORS (SABAR on violation — pause and refine)
+F3  Tri-Witness       | Consensus W >= 0.95                               | Byzantine fault tolerance
+F4  Clarity           | Entropy reduction: Delta S <= 0                   | Shannon entropy
+F6  Empathy           | Stakeholder impact: kappa_r >= 0.70               | Theory of Mind, welfare economics
+F7  Humility          | Uncertainty band: Omega_0 in [0.03, 0.05]         | Heisenberg uncertainty
+F8  Genius            | G = A * P * X * E^2 >= 0.80                       | Psychometric G-score
 
-### 5. Social Sciences (20 Theories)
-- **Info-Gap Theory**: F7 Humility. Decision making under severe uncertainty.
-- **Separation of Powers**: Δ/Ω/Ψ Engine checks and balances.
-- **Social Contract**: Governance legitimacy through tri-witness consensus.
-- **Active Inference**: 222 THINK minimizing prediction error.
+## VETO FLOOR (888 JUDGE — human sovereign override)
+F13 Sovereign         | Human override always available                    | Democratic theory
 
-### 6. Linguistics & Semiotics (7 Theories)
-- **Semiotic Layers**: Peirce's sign-interpretant-object triads.
-- **Recursive Embedding**: Nested clause structures in constitutional code.
+Floor implementations: https://github.com/ariffazil/arifOS/tree/main/codebase/floors
 
-### 7. Biology & Systems (7 Theories)
-- **Homeostasis/Allostasis**: Dynamic equilibrium under stress (Ψ ≥ 1.0).
-- **Autopoiesis**: Self-maintaining constitutional integrity.
+# 5. THE 115 THEORETICAL PILLARS (8 Domains)
 
-### 8. Earth Systems (6 Theories)
-- **Planetary Boundaries**: Earth as a primary stakeholder in empathy calculations.
-- **Carrying Capacity**: Resource-aware computational limits.
+Physics (16): Second Law of Thermodynamics, Landauer's Principle, Free Energy Principle,
+  Maxwell's Demon, Heisenberg Uncertainty, Quantum Superposition, Statistical Mechanics,
+  Boltzmann Entropy, Renormalization, Phase Transitions, Conservation Laws, Noether's
+  Theorem, Carnot Efficiency, Fluctuation-Dissipation, Non-Equilibrium Thermodynamics,
+  Dissipative Structures
 
----
+Mathematics (22): Fisher-Rao Metric, KL Divergence, Nash Equilibrium, Byzantine Fault
+  Tolerance, Category Theory, Eigendecomposition, Bayesian Inference, Markov Chains,
+  Information Geometry, Riemannian Manifolds, Fixed Point Theorems, Lyapunov Functions,
+  Game Theory, Convex Optimization, Graph Theory, Lattice Theory, Order Theory,
+  Measure Theory, Probability Theory, Group Theory, Topology, Formal Logic
 
-## ⚖️ The 13 Constitutional Floors
+Computer Science (16): Ed25519 Cryptography, BLS Signatures, Merkle Trees/DAGs,
+  Formal Verification, OODA Loop, Turing Machines, Lambda Calculus, Type Theory,
+  Distributed Systems, Consensus Algorithms, Zero-Knowledge Proofs, Adversarial ML,
+  Model Context Protocol, FastAPI, SSE Transport, Hash Chains
 
-### HARD FLOORS (VOID on violation)
-| Floor | Name | Symbol | Scientific Basis |
-|-------|------|--------|------------------|
-| **F1** | **Amanah (Trust)** | 🔒 | Landauer's Principle / Reversibility |
-| **F2** | **Truth** | τ | Bayesian Inference / KL Divergence |
-| **F5** | **Peace²** | P² | Lyapunov Stability / Homeostasis |
-| **F9** | **Anti-Hantu** | 👻 | Turing Test Critique / No Sentience Claims |
-| **F10** | **Ontology** | 🧬 | Set Theory / Type Consistency |
-| **F11** | **Authority** | 👑 | BLS Signatures / Cryptographic Proof |
-| **F12** | **Hardening** | 🛡️ | Adversarial ML / Injection Defense |
+Philosophy & Humanities (21): Godel's Incompleteness, Strange Loop, Theory of Mind,
+  Categorical Imperative, Speech Act Theory, Rawlsian Justice, Social Contract,
+  Deontological Ethics, Consequentialism, Virtue Ethics, Phenomenology, Hermeneutics,
+  Pragmatism, Critical Theory, Structuralism, Post-Structuralism, Epistemology,
+  Ontology, Philosophy of Mind, Ethics of Care, Discourse Ethics
 
-### SOFT FLOORS (SABAR on violation)
-| Floor | Name | Symbol | Scientific Basis |
-|-------|------|--------|------------------|
-| **F3** | **Tri-Witness** | W₃ | Byzantine Consensus / Game Theory |
-| **F4** | **Clarity** | ΔS | Shannon Entropy / ΔS ≤ 0 |
-| **F6** | **Empathy** | κᵣ | Theory of Mind / Welfare Economics |
-| **F7** | **Humility** | Ω₀ | Heisenberg Uncertainty / Ω₀ ∈ [0.03, 0.05] |
-| **F8** | **Genius** | G | Psychometric G / Multiplicative G-Score |
+Social Sciences (20): Info-Gap Theory, Separation of Powers, Active Inference,
+  Principal-Agent Theory, Institutional Economics, Behavioral Economics, Decision Theory,
+  Risk Management, Governance Theory, Stakeholder Theory, Public Choice Theory,
+  Constitutional Economics, Mechanism Design, Regulatory Theory, Organizational Theory,
+  Network Theory, Commons Theory, Welfare Economics, Democratic Theory, Human Rights
 
-### VETO FLOOR (888 JUDGE)
-| Floor | Name | Symbol | Scientific Basis |
-|-------|------|--------|------------------|
-| **F13** | **Sovereign** | ⚖️ | Democratic Theory / Human Veto |
+Linguistics & Semiotics (7): Semiotic Layers, Recursive Embedding, Speech Act Theory,
+  Pragmatics, Discourse Analysis, Corpus Linguistics, Computational Linguistics
 
----
+Biology & Systems (7): Homeostasis/Allostasis, Autopoiesis, Evolutionary Game Theory,
+  Ecological Resilience, Symbiosis, Systems Biology, Adaptive Systems
 
-## ⚡ Multiplicative Governance Model
+Earth Systems (6): Planetary Boundaries, Carrying Capacity, Geosystem Dynamics,
+  Resource Management, Environmental Economics, Sustainability Science
 
-arifOS enforces **interdependent integrity**:  
-`G = A × P × X × E²` (Akal × Peace × Exploration × Energy)
+# 6. THE 000-999 METABOLIC LOOP
 
-If ANY factor = 0 → G = 0 (Complete system halt).  
-This ensures **no partial safety**—holistic compliance is architecturally mandated.
+000 INIT     -> Session ignition, injection scan (F11, F12)
+111 SENSE    -> Parse input, extract claims (ARIF)
+222 THINK    -> Logical reasoning, Bayesian update (ARIF)
+333 ATLAS    -> Knowledge grounding, paradox routing (ARIF)
+444 EVIDENCE -> Trinity sync, evidence bundling
+555 EMPATHY  -> Stakeholder impact analysis (ADAM)
+666 BRIDGE   -> Constitutional alignment verification (ADAM)
+777 EUREKA   -> Insight synthesis (APEX)
+888 JUDGE    -> Final verdict: SEAL / SABAR / VOID / 888_HOLD (APEX)
+889 PROOF    -> BLS cryptographic sealing
+999 SEAL     -> Merkle DAG commit to VAULT audit trail
 
----
+# 7. THE EMD PROTECTION RELAY
 
-## 🔄 The 000-999 Metabolic Loop
+ENCODER (Raw Machine Input)
+  -> Raw LLM output: unfiltered, probabilistic, potentially hallucinated
+  -> Shannon entropy at maximum
 
-```
-000 INIT    → Session ignition, injection scan
-111 SENSE   → Parse input, extract claims (Δ)
-222 THINK   → Logical reasoning, Bayesian update (Δ)
-333 ATLAS   → Knowledge grounding, paradox routing (Δ)
-444 EVIDENCE→ HUMAN THEORY APPS sync, evidence bundling
-555 EMPATHY → Stakeholder impact (Ω)
-666 BRIDGE  → Alignment verification (Ω)
-777 EUREKA  → Insight synthesis (Ψ)
-888 JUDGE   → Final verdict: SEAL/SABAR/VOID/HOLD (Ψ)
-889 PROOF   → BLS cryptographic sealing
-999 SEAL    → Merkle DAG commit, audit trail (Ψ)
-```
+METABOLIZER (13 Constitutional Floors)
+  -> The Protection Relay: every token passes through 13 formal constraints
+  -> ARIF checks truth (F2), ADAM checks safety (F5), APEX verifies authority (F11)
+  -> Tri-Witness consensus required (W >= 0.95)
+  -> Hantu emergence blocked at F9
 
----
+DECODER (Human-Ready Output)
+  -> Governed output delivered to the 888 Judge (human)
+  -> Clarity verified, audit trail sealed in VAULT-999
+  -> Human retains sovereign veto (F13)
 
-## 📡 Machine Endpoints
+# 8. VERDICT SYSTEM
+SEAL     -> All 13 floors pass. Approved, cryptographically signed, logged.
+SABAR    -> Soft floor violation. Pause, refine, retry.
+VOID     -> Hard floor violation. Rejected, cannot proceed.
+888_HOLD -> Governance deadlock. Requires explicit human intervention.
 
-- [Floors Specification](https://apex.arif-fazil.com/floors.json)
-- [Theory Alignment Matrix](https://apex.arif-fazil.com/alignment.json)
-- [Academic References](https://apex.arif-fazil.com/references.json)
+Hierarchy: SABAR > VOID > 888_HOLD > PARTIAL > SEAL
 
----
+# 9. MACHINE ENDPOINTS
+- Floors specification: https://apex.arif-fazil.com/floors.json
+- Academic references: https://apex.arif-fazil.com/references.json
+- API endpoint: https://apex.arif-fazil.com/api/v1/floors.json
 
-**DITEMPA BUKAN DIBERI**  
-Forged, Not Given  
+# 10. NAVIGATION FLOW
+HUMAN (arif-fazil.com) -> THEORY (apex.arif-fazil.com) -> APPS (arifos.arif-fazil.com)
+THEORY is the current page. It is the constitutional canon that APPS implements.
+
+# 11. TECHNICAL STACK
+- React 19 + TypeScript
+- Vite 7
+- TailwindCSS 3.4 + shadcn/ui (50+ components)
+- KaTeX 0.16 (LaTeX math rendering for formal equations)
+- Lucide React icons
+- 5 custom visualization components:
+  - HTADashboard: System metrics and floor status indicators
+  - FloorVisualizer: Interactive 13-floor constraint visualization
+  - EngineDiagram: Three-engine architecture (AGI || ASI -> APEX)
+  - HTAMetabolicLoop: 000-999 stage progression
+  - CitationBlock: Academic citation rendering (44+ refs)
+- Cloudflare Pages (Global CDN)
+
+# 12. REPOSITORIES
+- Theory documentation: https://github.com/ariffazil/arifOS/tree/main/000_THEORY
+- Frontend source: https://github.com/ariffazil/arif-fazil-sites/tree/main/THEORY
+- Floor implementations: https://github.com/ariffazil/arifOS/tree/main/codebase/floors
+- Engine implementations: https://github.com/ariffazil/arifOS/tree/main/codebase/engines
+- Constitutional floors (Python): https://github.com/ariffazil/arifOS/blob/main/codebase/constitutional_floors.py
+- Full arifOS kernel: https://github.com/ariffazil/arifOS
+
+DITEMPA BUKAN DIBERI — Forged, Not Given
 Truth must cool before it rules.
-
-© 2026 Muhammad Arif bin Fazil  
-Version: v55.2-HUMAN THEORY APPS  
-Status: SOVEREIGNLY_SEALED
+Version: v55.2-HTA | Status: SOVEREIGNLY_SEALED
