@@ -103,12 +103,26 @@ function App() {
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16">
-        {/* Fractal void background */}
+        {/* Fractal void background with embers */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-red-950/10 via-[#050505] to-red-900/5" />
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-900/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-800/5 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-950/5 rounded-full blur-3xl" />
+          
+          {/* Forge embers */}
+          <div className="forge-embers">
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+            <div className="ember" />
+          </div>
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4">
@@ -187,6 +201,89 @@ function App() {
               </Button>
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* 13 Constitutional Floors */}
+      <section id="floors" className="py-20 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold mb-2 gradient-text-red">13 Constitutional Floors</h2>
+            <p className="text-gray-400 text-sm max-w-xl mx-auto">
+              Every AI decision passes through these safety checks before execution.
+              Hard floors trigger VOID, soft floors trigger SABAR, F13 is human veto.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-7 gap-2 md:gap-3">
+            {[
+              { id: 'F1', name: 'Amanah', type: 'hard', icon: '🔒' },
+              { id: 'F2', name: 'Truth', type: 'hard', icon: '👁' },
+              { id: 'F3', name: 'Witness', type: 'soft', icon: '⚖' },
+              { id: 'F4', name: 'Clarity', type: 'soft', icon: '✦' },
+              { id: 'F5', name: 'Peace', type: 'hard', icon: '☥' },
+              { id: 'F6', name: 'Empathy', type: 'soft', icon: '♥' },
+              { id: 'F7', name: 'Humility', type: 'soft', icon: 'Ω' },
+              { id: 'F8', name: 'Genius', type: 'soft', icon: '⚡' },
+              { id: 'F9', name: 'Anti-Hantu', type: 'hard', icon: '👻' },
+              { id: 'F10', name: 'Ontology', type: 'hard', icon: '◇' },
+              { id: 'F11', name: 'Authority', type: 'hard', icon: '✋' },
+              { id: 'F12', name: 'Hardening', type: 'hard', icon: '🛡' },
+              { id: 'F13', name: 'Sovereign', type: 'veto', icon: '👑' },
+            ].map((floor) => (
+              <a
+                key={floor.id}
+                href="https://apex.arif-fazil.com"
+                className={`
+                  floor-badge relative p-2 md:p-3 rounded border text-center cursor-pointer
+                  ${floor.type === 'hard' ? 'border-red-800/50 bg-red-950/20 hover:bg-red-900/30 hover:border-red-700' : ''}
+                  ${floor.type === 'soft' ? 'border-amber-800/50 bg-amber-950/20 hover:bg-amber-900/30 hover:border-amber-700' : ''}
+                  ${floor.type === 'veto' ? 'border-purple-800/50 bg-purple-950/20 hover:bg-purple-900/30 hover:border-purple-700' : ''}
+                `}
+                title={`${floor.id}: ${floor.name}`}
+              >
+                <span className="block text-lg mb-1">{floor.icon}</span>
+                <span className={`
+                  block text-[10px] font-bold font-mono
+                  ${floor.type === 'hard' ? 'text-red-400' : ''}
+                  ${floor.type === 'soft' ? 'text-amber-400' : ''}
+                  ${floor.type === 'veto' ? 'text-purple-400' : ''}
+                `}>
+                  {floor.id}
+                </span>
+                <span className="hidden md:block text-[9px] text-gray-500 mt-0.5 leading-tight">
+                  {floor.name}
+                </span>
+                <span className={`
+                  absolute -top-1 -right-1 w-2 h-2 rounded-full
+                  ${floor.type === 'hard' ? 'bg-red-500' : ''}
+                  ${floor.type === 'soft' ? 'bg-amber-500' : ''}
+                  ${floor.type === 'veto' ? 'bg-purple-500' : ''}
+                `} />
+              </a>
+            ))}
+          </div>
+          
+          <div className="mt-8 flex items-center justify-center gap-6 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-500" />
+              <span className="text-gray-500">Hard (VOID)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-500" />
+              <span className="text-gray-500">Soft (SABAR)</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-purple-500" />
+              <span className="text-gray-500">Veto (888)</span>
+            </div>
+          </div>
+          
+          <p className="text-center mt-6">
+            <a href="https://apex.arif-fazil.com" className="text-red-400 hover:text-red-300 text-sm inline-flex items-center gap-1">
+              Explore the full constitution <ChevronRight className="w-4 h-4" />
+            </a>
+          </p>
         </div>
       </section>
 

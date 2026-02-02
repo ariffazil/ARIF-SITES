@@ -368,4 +368,83 @@
 .bg-strata { background-color: #1a0f0a; }
 
 .border-blood { border-color: #8B0000; }
+
+/* === FORGE EMBERS ANIMATION === */
+@keyframes ember-float {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) scale(0); 
+    opacity: 0; 
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-50vh) translateX(20px) scale(1.5); 
+    opacity: 0.6; 
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% { 
+    transform: translateY(-100vh) translateX(-10px) scale(0.5); 
+    opacity: 0; 
+  }
+}
+
+.forge-embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #FF4500 0%, #FF0000 40%, transparent 70%);
+  border-radius: 50%;
+  animation: ember-float 12s ease-out infinite;
+  box-shadow: 0 0 6px #FF4500;
+}
+
+.ember:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 10s; }
+.ember:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 14s; }
+.ember:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 11s; }
+.ember:nth-child(4) { left: 35%; animation-delay: 1s; animation-duration: 13s; }
+.ember:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 10s; }
+.ember:nth-child(6) { left: 55%; animation-delay: 5s; animation-duration: 12s; }
+.ember:nth-child(7) { left: 65%; animation-delay: 0.5s; animation-duration: 15s; }
+.ember:nth-child(8) { left: 75%; animation-delay: 2.5s; animation-duration: 11s; }
+.ember:nth-child(9) { left: 85%; animation-delay: 4.5s; animation-duration: 13s; }
+.ember:nth-child(10) { left: 95%; animation-delay: 1.5s; animation-duration: 10s; }
+
+/* Floor badge hover effects */
+.floor-badge {
+  transition: all 0.3s ease;
+}
+
+.floor-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+}
+
+/* Active page indicator */
+.nav-active {
+  position: relative;
+}
+
+.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #FF0000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #FF0000;
+}
 .border-crimson { border-color: #DC143C; }
