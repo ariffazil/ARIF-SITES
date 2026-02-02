@@ -39,6 +39,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 
+// GitHub base URL
+const GITHUB_BASE = 'https://github.com/ariffazil/arifOS';
+
 // 7-Layer Stack data
 const LAYERS = [
   {
@@ -53,6 +56,14 @@ const LAYERS = [
     color: 'emerald',
     stage: '000-111',
     details: '5 prompt files + examples. Works with any LLM that accepts system instructions.',
+    links: [
+      { label: 'System Prompt', url: `${GITHUB_BASE}/blob/main/333_APPS/L1_PROMPT/SYSTEM_PROMPT.md` },
+      { label: 'CCC Prompt', url: `${GITHUB_BASE}/blob/main/333_APPS/L1_PROMPT/SYSTEM_PROMPT_CCC.md` },
+      { label: 'Ignition Protocol', url: `${GITHUB_BASE}/blob/main/333_APPS/L1_PROMPT/000_IGNITE.md` },
+      { label: 'MCP 7 Core Tools', url: `${GITHUB_BASE}/blob/main/333_APPS/L1_PROMPT/MCP_7_CORE_TOOLS.md` },
+      { label: 'Examples', url: `${GITHUB_BASE}/tree/main/333_APPS/L1_PROMPT/examples` },
+      { label: 'llms.txt', url: `${GITHUB_BASE}/blob/main/llms.txt` },
+    ],
   },
   {
     id: 'L2',
@@ -66,6 +77,12 @@ const LAYERS = [
     color: 'emerald',
     stage: '222',
     details: '50+ skill templates. YAML frontmatter with Python wrappers for tool integration.',
+    links: [
+      { label: 'Skill Templates (YAML)', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/skill_templates.yaml` },
+      { label: 'MCP Tool Templates (Python)', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/mcp_tool_templates.py` },
+      { label: 'Deployment Guide', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/DEPLOYMENT.md` },
+      { label: 'L2 README', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/README.md` },
+    ],
   },
   {
     id: 'L3',
@@ -79,6 +96,12 @@ const LAYERS = [
     color: 'emerald',
     stage: '333-444',
     details: 'Session init, intent detection, context mapping, safety checks, implementation, and commit workflows.',
+    links: [
+      { label: 'L3 Workflow README', url: `${GITHUB_BASE}/blob/main/333_APPS/L3_WORKFLOW/README.md` },
+      { label: 'Constitutional Stages', url: `${GITHUB_BASE}/tree/main/codebase/stages` },
+      { label: 'Metabolic Loop', url: `${GITHUB_BASE}/tree/main/codebase/loop` },
+      { label: 'FAG Quick Start', url: `${GITHUB_BASE}/blob/main/docs/FAG_QUICK_START.md` },
+    ],
   },
   {
     id: 'L4',
@@ -92,6 +115,17 @@ const LAYERS = [
     color: 'cyan',
     stage: '555-666',
     details: 'FastAPI + SSE transport on Railway. 28/28 schema tests passing. v55.2-SEAL.',
+    links: [
+      { label: 'MCP Tools Source', url: `${GITHUB_BASE}/tree/main/codebase/mcp/tools` },
+      { label: 'Trinity Pipeline', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/canonical_trinity.py` },
+      { label: 'AGI Tool (Sense/Think/Reason)', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py` },
+      { label: 'ASI Tool (Empathize/Align)', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py` },
+      { label: 'APEX Verdict Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py` },
+      { label: 'Vault Seal Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py` },
+      { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/openapi.json` },
+      { label: 'JSON Schemas (9 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
+      { label: 'L4 Manifest', url: `${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md` },
+    ],
   },
   {
     id: 'L5',
@@ -105,6 +139,14 @@ const LAYERS = [
     color: 'red',
     stage: '777',
     details: 'Architecture defined, stubs created with correct signatures. 0% functional — all methods pass.',
+    links: [
+      { label: 'Architect Agent', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/agents/architect.py` },
+      { label: 'Engineer Agent', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/agents/engineer.py` },
+      { label: 'Auditor Agent', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/agents/auditor.py` },
+      { label: 'Validator Agent', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/agents/validator.py` },
+      { label: 'Orchestrator', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/agents/orchestrator.py` },
+      { label: 'L5 README', url: `${GITHUB_BASE}/blob/main/333_APPS/L5_AGENTS/README.md` },
+    ],
   },
   {
     id: 'L6',
@@ -118,6 +160,15 @@ const LAYERS = [
     color: 'amber',
     stage: '888',
     details: 'Design documented. Constitutional orchestrator, role definitions, witness gate planned for v56.0.',
+    links: [
+      { label: 'Constitutional Orchestrator', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/constitutional_orchestrator.py` },
+      { label: 'Mind Role', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/mind_role.py` },
+      { label: 'Heart Role', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/heart_role.py` },
+      { label: 'Soul Role', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/soul_role.py` },
+      { label: 'Tri-Witness Gate', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/tri_witness_gate.py` },
+      { label: 'Phoenix-72 Cooling', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/institution/phoenix_72.py` },
+      { label: 'L6 README', url: `${GITHUB_BASE}/blob/main/333_APPS/L6_INSTITUTION/README.md` },
+    ],
   },
   {
     id: 'L7',
@@ -131,24 +182,32 @@ const LAYERS = [
     color: 'violet',
     stage: '999→000',
     details: 'Theoretical research phase. Hard constraints: no consciousness claims, human override always available.',
+    links: [
+      { label: 'L7 Research', url: `${GITHUB_BASE}/tree/main/333_APPS/L7_AGI/research` },
+      { label: 'Theory Foundation', url: `${GITHUB_BASE}/tree/main/333_APPS/L7_AGI/000_THEORY` },
+      { label: 'Constitutional Floors (Code)', url: `${GITHUB_BASE}/blob/main/codebase/constitutional_floors.py` },
+      { label: 'Floor Implementations', url: `${GITHUB_BASE}/tree/main/codebase/floors` },
+      { label: 'Kernel', url: `${GITHUB_BASE}/blob/main/codebase/kernel.py` },
+      { label: 'L7 README', url: `${GITHUB_BASE}/blob/main/333_APPS/L7_AGI/README.md` },
+    ],
   },
 ];
 
 // 13 Floors data
 const FLOORS = [
-  { id: 'F1', name: 'Amanah', desc: 'Trust through reversibility', icon: GitBranch, color: 'red' },
-  { id: 'F2', name: 'Truth', desc: 'Verifiable claims only', icon: Shield, color: 'red' },
-  { id: 'F3', name: 'Consensus', desc: 'Tri-witness agreement', icon: Users, color: 'red' },
-  { id: 'F4', name: 'Certainty', desc: 'Confidence thresholds', icon: Scale, color: 'orange' },
-  { id: 'F5', name: 'Peace', desc: 'Non-violence embedded', icon: Shield, color: 'orange' },
-  { id: 'F6', name: 'Clarity', desc: 'Entropy reduction', icon: Lightbulb, color: 'orange' },
-  { id: 'F7', name: 'Humility', desc: 'Uncertainty band', icon: Search, color: 'yellow' },
-  { id: 'F8', name: 'Genius', desc: 'Wisdom equation', icon: Zap, color: 'yellow' },
-  { id: 'F9', name: 'Reality', desc: 'Observable grounding', icon: Globe, color: 'yellow' },
-  { id: 'F10', name: 'Ontology', desc: 'What exists', icon: BookOpen, color: 'cyan' },
-  { id: 'F11', name: 'Command', desc: 'Authority validation', icon: Terminal, color: 'cyan' },
-  { id: 'F12', name: 'Injection', desc: 'Prompt defense', icon: Lock, color: 'cyan' },
-  { id: 'F13', name: 'Sovereign', desc: 'Human override', icon: Users, color: 'green' },
+  { id: 'F1', name: 'Amanah', desc: 'Trust through reversibility', icon: GitBranch, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/amanah.py` },
+  { id: 'F2', name: 'Truth', desc: 'Verifiable claims only', icon: Shield, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/truth.py` },
+  { id: 'F3', name: 'Consensus', desc: 'Tri-witness agreement', icon: Users, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
+  { id: 'F4', name: 'Certainty', desc: 'Confidence thresholds', icon: Scale, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
+  { id: 'F5', name: 'Peace', desc: 'Non-violence embedded', icon: Shield, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
+  { id: 'F6', name: 'Clarity', desc: 'Entropy reduction', icon: Lightbulb, color: 'orange', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
+  { id: 'F7', name: 'Humility', desc: 'Uncertainty band', icon: Search, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors` },
+  { id: 'F8', name: 'Genius', desc: 'Wisdom equation', icon: Zap, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors/genius.py` },
+  { id: 'F9', name: 'Reality', desc: 'Observable grounding', icon: Globe, color: 'yellow', source: `${GITHUB_BASE}/blob/main/codebase/floors/antihantu.py` },
+  { id: 'F10', name: 'Ontology', desc: 'What exists', icon: BookOpen, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/ontology.py` },
+  { id: 'F11', name: 'Command', desc: 'Authority validation', icon: Terminal, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/authority.py` },
+  { id: 'F12', name: 'Injection', desc: 'Prompt defense', icon: Lock, color: 'cyan', source: `${GITHUB_BASE}/blob/main/codebase/floors/injection.py` },
+  { id: 'F13', name: 'Sovereign', desc: 'Human override', icon: Users, color: 'green', source: `${GITHUB_BASE}/blob/main/codebase/constitutional_floors.py` },
 ];
 
 // MCP Tools data — v55.1 Explicit Tool Architecture (9 core tools)
@@ -161,7 +220,9 @@ const MCP_TOOLS = [
     actions: ['init', 'gate', 'reset', 'validate', 'authorize'],
     returns: 'session_id, authority_level, budget_allocated, injection_score',
     color: 'blue',
-    engine: 'ADAM'
+    engine: 'ADAM',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/canonical_trinity.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/init_gate.schema.json`,
   },
   {
     name: 'agi_sense',
@@ -171,7 +232,9 @@ const MCP_TOOLS = [
     actions: ['parse', 'detect_intent', 'extract_entities'],
     returns: 'parsed_input, intent, entities, confidence',
     color: 'cyan',
-    engine: 'ARIF'
+    engine: 'ARIF',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/agi_sense.schema.json`,
   },
   {
     name: 'agi_think',
@@ -181,7 +244,9 @@ const MCP_TOOLS = [
     actions: ['hypothesize', 'explore', 'brainstorm'],
     returns: 'hypotheses, entropy_delta, candidate_count',
     color: 'cyan',
-    engine: 'ARIF'
+    engine: 'ARIF',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/agi_think.schema.json`,
   },
   {
     name: 'agi_reason',
@@ -191,7 +256,9 @@ const MCP_TOOLS = [
     actions: ['reason', 'prove', 'refute', 'synthesize'],
     returns: 'conclusion, omega_0, precision, floor_scores, vote',
     color: 'cyan',
-    engine: 'ARIF'
+    engine: 'ARIF',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/agi_reason.schema.json`,
   },
   {
     name: 'asi_empathize',
@@ -201,7 +268,9 @@ const MCP_TOOLS = [
     actions: ['model_stakeholders', 'assess_impact', 'map_harm'],
     returns: 'stakeholder_map, empathy_kappa_r, impact_vectors',
     color: 'rose',
-    engine: 'ADAM'
+    engine: 'ADAM',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/asi_empathize.schema.json`,
   },
   {
     name: 'asi_align',
@@ -211,7 +280,9 @@ const MCP_TOOLS = [
     actions: ['check_floors', 'validate_alignment', 'score'],
     returns: 'floor_results, alignment_score, violations, peace_squared',
     color: 'rose',
-    engine: 'ADAM'
+    engine: 'ADAM',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/asi_align.schema.json`,
   },
   {
     name: 'asi_insight',
@@ -221,7 +292,8 @@ const MCP_TOOLS = [
     actions: ['forecast', 'risk_assess', 'recommend'],
     returns: 'risk_profile, reversibility_score, recommendations, vote',
     color: 'rose',
-    engine: 'ADAM'
+    engine: 'ADAM',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
   },
   {
     name: 'apex_verdict',
@@ -231,7 +303,9 @@ const MCP_TOOLS = [
     actions: ['judge', 'seal', 'proof'],
     returns: 'final_verdict, trinity_score, paradox_scores, merkle_root',
     color: 'violet',
-    engine: 'APEX'
+    engine: 'APEX',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/apex_verdict.schema.json`,
   },
   {
     name: 'reality_search',
@@ -241,7 +315,9 @@ const MCP_TOOLS = [
     actions: ['search', 'verify', 'cross_check'],
     returns: 'verified, confidence, sources, caveats, recency',
     color: 'orange',
-    engine: 'ARIF'
+    engine: 'ARIF',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/reality_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/reality_search.schema.json`,
   },
 ];
 
@@ -526,10 +602,13 @@ function App() {
               const isExpanded = expandedLayer === layer.id;
 
               return (
-                <button
+                <div
                   key={layer.id}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setExpandedLayer(isExpanded ? null : layer.id)}
-                  className={`w-full text-left rounded-xl border transition-all duration-300 ${colors.border} ${isExpanded ? `${colors.bg} shadow-lg` : 'bg-gray-900/30 hover:bg-gray-900/50'}`}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedLayer(isExpanded ? null : layer.id); } }}
+                  className={`w-full text-left rounded-xl border transition-all duration-300 cursor-pointer ${colors.border} ${isExpanded ? `${colors.bg} shadow-lg` : 'bg-gray-900/30 hover:bg-gray-900/50'}`}
                 >
                   <div className="p-5">
                     <div className="flex items-center gap-4">
@@ -577,11 +656,43 @@ function App() {
                             <p className="text-sm text-white">{layer.statusLabel}</p>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-400 mt-3">{layer.details}</p>
+                        <p className="text-sm text-gray-400 mt-3 mb-4">{layer.details}</p>
+
+                        {/* GitHub Links */}
+                        {layer.links && layer.links.length > 0 && (
+                          <div className="pt-3 border-t border-gray-800/30">
+                            <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Source Code</p>
+                            <div className="flex flex-wrap gap-2">
+                              {layer.links.map((link: { label: string; url: string }) => (
+                                <a
+                                  key={link.url}
+                                  href={link.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs bg-gray-800/60 border border-gray-700/50 text-gray-300 hover:text-white hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
+                                >
+                                  <GitBranch className="w-3 h-3 text-gray-500" />
+                                  {link.label}
+                                  <ExternalLink className="w-3 h-3 text-gray-600" />
+                                </a>
+                              ))}
+                            </div>
+                            <a
+                              href={`${GITHUB_BASE}/tree/main/333_APPS/${layer.id}_${layer.name}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="inline-flex items-center gap-1.5 mt-3 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                            >
+                              View full {layer.id} directory on GitHub <ExternalLink className="w-3 h-3" />
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
-                </button>
+                </div>
               );
             })}
           </div>
@@ -622,10 +733,13 @@ function App() {
               <span className="text-sm text-gray-300">Constitutional Framework</span>
             </div>
             <h2 className="text-4xl font-bold mb-4">The 13 Floors</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-400 max-w-2xl mx-auto mb-3">
               Every AI decision passes through 13 constitutional safety checks.
               Three independent engines verify each floor before execution.
             </p>
+            <a href={`${GITHUB_BASE}/tree/main/codebase/floors`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+              <GitBranch className="w-4 h-4" /> View floor implementations on GitHub <ExternalLink className="w-3 h-3" />
+            </a>
           </div>
 
           {/* Floors Grid */}
@@ -634,17 +748,21 @@ function App() {
               const colors = getColorClasses(floor.color);
               const Icon = floor.icon;
               return (
-                <div
+                <a
                   key={floor.id}
-                  className={`relative p-4 rounded-xl border transition-all hover:scale-105 ${colors.border} ${colors.bg} hover:bg-opacity-10 hover:shadow-lg ${colors.glow}`}
+                  href={floor.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`relative p-4 rounded-xl border transition-all hover:scale-105 ${colors.border} ${colors.bg} hover:bg-opacity-10 hover:shadow-lg ${colors.glow} block group`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-mono text-gray-500">{floor.id}</span>
                     <Icon className={`w-4 h-4 ${colors.text}`} />
                   </div>
-                  <p className="text-sm font-semibold text-white mb-1">{floor.name}</p>
+                  <p className="text-sm font-semibold text-white mb-1 group-hover:text-cyan-300 transition-colors">{floor.name}</p>
                   <p className="text-xs text-gray-400 leading-relaxed">{floor.desc}</p>
-                </div>
+                  <ExternalLink className="w-3 h-3 text-gray-600 group-hover:text-cyan-400 absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
               );
             })}
           </div>
@@ -660,10 +778,13 @@ function App() {
                 <CardDescription>Deep reasoning & pattern recognition</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-400 mb-3">
                   agi_sense, agi_think, agi_reason. Runs async in parallel with Heart.
                   The epistemic pipeline that parses, hypothesizes, and proves.
                 </p>
+                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
+                </a>
               </CardContent>
             </Card>
 
@@ -676,10 +797,13 @@ function App() {
                 <CardDescription>Safety & empathy assessment</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-400 mb-3">
                   asi_empathize, asi_align, asi_insight. Runs async in parallel with Mind.
                   The safety pipeline ensuring alignment with human values.
                 </p>
+                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-rose-400 hover:text-rose-300 transition-colors">
+                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
+                </a>
               </CardContent>
             </Card>
 
@@ -692,10 +816,13 @@ function App() {
                 <CardDescription>Judicial consensus & sealing</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-400 mb-3">
                   apex_verdict collapses parallel Mind + Heart results. Renders SEAL, SABAR,
                   VOID, or 888_HOLD with cryptographic verification.
                 </p>
+                <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-violet-400 hover:text-violet-300 transition-colors">
+                  <Code className="w-3 h-3" /> View source <ExternalLink className="w-3 h-3" />
+                </a>
               </CardContent>
             </Card>
           </div>
@@ -764,6 +891,19 @@ function App() {
                       <div>
                         <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Returns</p>
                         <p className="text-sm text-gray-400">{tool.returns}</p>
+                      </div>
+                      {/* Source Links */}
+                      <div className="pt-2 border-t border-gray-800/30 flex flex-wrap gap-2">
+                        {tool.source && (
+                          <a href={tool.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-cyan-400 transition-colors">
+                            <Code className="w-3 h-3" /> Source
+                          </a>
+                        )}
+                        {tool.schema && (
+                          <a href={tool.schema} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-cyan-400 transition-colors">
+                            <GitBranch className="w-3 h-3" /> Schema
+                          </a>
+                        )}
                       </div>
                     </div>
                   </CardContent>
