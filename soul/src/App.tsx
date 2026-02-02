@@ -89,7 +89,7 @@ function Cite({ n }: { n: number | number[] }) {
 }
 
 // ─────────────────────────────────────────────────
-// Geometric Background (preserved from original)
+// Geometric Background - Orthogonal (Upgraded)
 // ─────────────────────────────────────────────────
 
 function GeometricBackground() {
@@ -108,49 +108,59 @@ function GeometricBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    const points: { x: number; y: number; vx: number; vy: number }[] = [];
-    const numPoints = 50;
+    const lines: { x: number; y: number; length: number; speed: number; vertical: boolean; color: string }[] = [];
+    const numLines = 40;
 
-    for (let i = 0; i < numPoints; i++) {
-      points.push({
+    for (let i = 0; i < numLines; i++) {
+      lines.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
+        length: Math.random() * 200 + 50,
+        speed: (Math.random() - 0.5) * 0.5,
+        vertical: Math.random() > 0.5,
+        color: Math.random() > 0.5 ? '#FFD700' : '#B8860B',
       });
     }
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      ctx.fillStyle = 'rgba(2, 2, 2, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      points.forEach((p, i) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+      lines.forEach((l) => {
+        if (l.vertical) {
+          l.y += l.speed;
+          if (l.y > canvas.height) l.y = -l.length;
+          if (l.y < -l.length) l.y = canvas.height;
+        } else {
+          l.x += l.speed;
+          if (l.x > canvas.width) l.x = -l.length;
+          if (l.x < -l.length) l.x = canvas.width;
+        }
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${35 + (i % 20)}, 50%, 40%)`;
-        ctx.fill();
+        if (l.vertical) {
+          ctx.moveTo(l.x, l.y);
+          ctx.lineTo(l.x, l.y + l.length);
+        } else {
+          ctx.moveTo(l.x, l.y);
+          ctx.lineTo(l.x + l.length, l.y);
+        }
+        ctx.strokeStyle = l.color;
+        ctx.globalAlpha = 0.15;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.globalAlpha = 1.0;
       });
 
-      for (let i = 0; i < points.length; i++) {
-        for (let j = i + 1; j < points.length; j++) {
-          const dx = points[i].x - points[j].x;
-          const dy = points[i].y - points[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(points[i].x, points[i].y);
-            ctx.lineTo(points[j].x, points[j].y);
-            ctx.strokeStyle = `rgba(180, 140, 60, ${0.08 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
+      // Draw random static rectangles
+      ctx.strokeStyle = '#FFD700';
+      ctx.globalAlpha = 0.03;
+      for(let i=0; i<5; i++) {
+        const x = (i * 200) % canvas.width;
+        const y = (i * 150) % canvas.height;
+        ctx.strokeRect(x, y, 100, 100);
       }
+      ctx.globalAlpha = 1.0;
 
       requestAnimationFrame(animate);
     };
@@ -163,7 +173,7 @@ function GeometricBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 0.4 }}
+      style={{ opacity: 0.6 }}
     />
   );
 }
@@ -179,19 +189,24 @@ function SectionHeading({ id, number, title, subtitle }: {
   subtitle?: string;
 }) {
   return (
-    <div id={id} className="text-center mb-12 scroll-mt-24">
-      <span className="text-xs font-mono text-amber-400/60 tracking-widest uppercase">
-        Section {number}
+    <div id={id} className="mb-16 scroll-mt-32 relative">
+      <div className="absolute -left-8 top-0 bottom-0 w-1 bg-amber-500/20 hidden md:block" />
+      <span className="text-[10px] font-display text-amber-500 tracking-[0.3em]">
+        PHASE {number}
       </span>
-      <h2 className="text-3xl sm:text-4xl font-bold mt-2 mb-3 text-gray-100">
+      <h2 className="text-4xl md:text-5xl font-display font-bold mt-4 mb-6 text-white leading-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-gray-400 max-w-3xl leading-relaxed text-lg border-l-2 border-amber-500/40 pl-6 py-2">
           {subtitle}
         </p>
       )}
-      <div className="section-divider mt-6" />
+      <div className="mt-8 flex gap-2">
+        <div className="h-1 w-24 bg-amber-500" />
+        <div className="h-1 w-4 bg-amber-500/30" />
+        <div className="h-1 w-4 bg-amber-500/10" />
+      </div>
     </div>
   );
 }
@@ -302,7 +317,6 @@ function EMDDiagram() {
       label: 'ENCODER',
       subtitle: 'Raw Machine Input',
       icon: Bot,
-      color: 'cyan',
       desc: 'Raw LLM output: unfiltered, probabilistic, potentially hallucinated. Shannon entropy at maximum.',
       detail: 'Transforms user query → token sequence → raw probability distribution. No governance applied yet.',
     },
@@ -311,7 +325,6 @@ function EMDDiagram() {
       label: 'METABOLIZER',
       subtitle: '13 Constitutional Floors',
       icon: Shield,
-      color: 'amber',
       desc: 'The Protection Relay: every token passes through 13 formal constraints. Entropy is reduced (ΔS ≤ 0).',
       detail: 'ARIF checks truth (F2), ADAM checks safety (F5), APEX verifies authority (F11). Tri-Witness consensus required (W ≥ 0.95). Hantu emergence blocked at F9.',
     },
@@ -320,55 +333,61 @@ function EMDDiagram() {
       label: 'DECODER',
       subtitle: 'Human-Ready Output',
       icon: User,
-      color: 'green',
       desc: 'Governed output delivered to the 888 Judge (human). Clarity verified, audit trail sealed in VAULT-999.',
       detail: 'Response includes confidence intervals (F7), is reversible (F1), and carries a Merkle-signed verdict. The human retains sovereign veto (F13).',
     },
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-12">
       {/* Visual Pipeline */}
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+      <div className="flex flex-col md:flex-row items-stretch justify-center gap-0">
         {stages.map((stage, i) => {
           const Icon = stage.icon;
           const isActive = activeStage === i;
-          const borderColor = stage.color === 'cyan' ? 'border-cyan-500/50' :
-                              stage.color === 'amber' ? 'border-amber-500/50' : 'border-green-500/50';
-          const bgColor = stage.color === 'cyan' ? 'bg-cyan-500/10' :
-                          stage.color === 'amber' ? 'bg-amber-500/10' : 'bg-green-500/10';
-          const textColor = stage.color === 'cyan' ? 'text-cyan-400' :
-                            stage.color === 'amber' ? 'text-amber-400' : 'text-green-400';
-          const glowColor = stage.color === 'cyan' ? 'shadow-cyan-500/20' :
-                            stage.color === 'amber' ? 'shadow-amber-500/20' : 'shadow-green-500/20';
 
           return (
-            <div key={stage.id} className="flex flex-col md:flex-row items-center">
+            <div key={stage.id} className="flex-1 flex flex-col md:flex-row items-center">
               <button
                 onClick={() => setActiveStage(isActive ? null : i)}
-                className={`relative p-6 rounded-xl border-2 ${borderColor} ${bgColor} transition-all duration-300 cursor-pointer hover:scale-105 ${
-                  isActive ? `shadow-lg ${glowColor}` : ''
-                } ${stage.id === 'metabolizer' ? 'md:scale-110 md:z-10' : ''}`}
-                style={{ minWidth: '200px' }}
+                className={`relative flex-1 w-full p-8 border-2 transition-all duration-300 cursor-pointer ${
+                  isActive 
+                    ? 'border-amber-500 bg-amber-500/10' 
+                    : 'border-amber-500/20 bg-black/40 hover:border-amber-500/40'
+                } ${stage.id === 'metabolizer' ? 'md:z-10' : ''}`}
               >
+                {/* L-corners for active state */}
+                {isActive && (
+                  <>
+                    <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-white" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-white" />
+                  </>
+                )}
+                
                 {stage.id === 'metabolizer' && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge variant="outline" className="border-red-500/50 text-red-400 text-[10px] bg-black/80">
-                      PROTECTION RELAY
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <Badge variant="outline" className="rounded-none border-red-500 text-red-500 text-[8px] font-display bg-black px-3 py-0.5">
+                      PROTECTION_RELAY
                     </Badge>
                   </div>
                 )}
-                <div className="text-center">
-                  <Icon className={`w-8 h-8 ${textColor} mx-auto mb-2`} />
-                  <p className={`font-mono font-bold text-sm ${textColor}`}>{stage.label}</p>
-                  <p className="text-xs text-gray-500 mt-1">{stage.subtitle}</p>
+                
+                <div className="text-left">
+                  <Icon className={`w-6 h-6 mb-6 ${isActive ? 'text-amber-500' : 'text-gray-600'}`} />
+                  <p className={`font-display font-bold text-xs tracking-widest mb-2 ${isActive ? 'text-white' : 'text-gray-500'}`}>{stage.label}</p>
+                  <p className="text-[10px] font-mono text-gray-600 uppercase tracking-tighter">{stage.subtitle}</p>
                 </div>
               </button>
+              
               {i < stages.length - 1 && (
-                <>
-                  <ArrowRight className="hidden md:block w-6 h-6 text-gray-600 mx-3" />
-                  <ArrowDown className="md:hidden w-6 h-6 text-gray-600 my-2" />
-                </>
+                <div className="hidden md:flex items-center justify-center w-12 h-full">
+                  <div className="w-full h-[1px] bg-amber-500/20" />
+                </div>
+              )}
+              {i < stages.length - 1 && (
+                <div className="md:hidden flex items-center justify-center h-12 w-full">
+                  <div className="h-full w-[1px] bg-amber-500/20" />
+                </div>
               )}
             </div>
           );
@@ -377,26 +396,22 @@ function EMDDiagram() {
 
       {/* Detail Panel */}
       {activeStage !== null && (
-        <div className={`p-5 rounded-lg border ${
-          stages[activeStage].color === 'cyan' ? 'border-cyan-500/30 bg-cyan-500/5' :
-          stages[activeStage].color === 'amber' ? 'border-amber-500/30 bg-amber-500/5' :
-          'border-green-500/30 bg-green-500/5'
-        } transition-all`}>
-          <h4 className={`font-semibold mb-2 ${
-            stages[activeStage].color === 'cyan' ? 'text-cyan-400' :
-            stages[activeStage].color === 'amber' ? 'text-amber-400' : 'text-green-400'
-          }`}>{stages[activeStage].label}: {stages[activeStage].subtitle}</h4>
-          <p className="text-sm text-gray-400 mb-2">{stages[activeStage].desc}</p>
-          <p className="text-xs text-gray-500">{stages[activeStage].detail}</p>
+        <div className="p-10 border border-amber-500/40 bg-amber-500/[0.03] relative">
+          <div className="absolute top-0 left-0 w-1 h-full bg-amber-500" />
+          <h4 className="font-display text-sm font-bold text-white mb-4 tracking-widest">
+            {stages[activeStage].label}_PROTOCOL_DATA
+          </h4>
+          <p className="text-gray-400 font-mono text-sm leading-relaxed mb-6">{stages[activeStage].desc}</p>
+          <p className="text-gray-500 font-mono text-xs p-4 bg-black/50 border border-amber-500/10">{stages[activeStage].detail}</p>
         </div>
       )}
 
       {/* Hantu Warning */}
-      <div className="flex items-start gap-3 p-4 rounded-lg border border-red-500/20 bg-red-500/5">
-        <AlertTriangle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
-        <div>
-          <p className="text-sm font-medium text-red-400 mb-1">Anti-Hantu Protection (F9)</p>
-          <p className="text-xs text-gray-500">
+      <div className="flex items-start gap-6 p-8 border border-red-500/20 bg-red-500/[0.02]">
+        <AlertTriangle className="w-6 h-6 text-red-500 flex-shrink-0" />
+        <div className="font-mono">
+          <p className="text-xs font-display font-bold text-red-500 mb-2 tracking-widest uppercase">Warning: Hantu_Emergence (F9)</p>
+          <p className="text-xs text-gray-500 leading-relaxed">
             Without the Metabolizer, raw encoder output may exhibit "Hantu" emergence — false claims
             of consciousness, emotional manipulation, or simulated sentience. The Protection Relay
             blocks these patterns at F9 before they reach the human decoder.
@@ -406,6 +421,13 @@ function EMDDiagram() {
     </div>
   );
 }
+
+// ─────────────────────────────────────────────────
+// Section 2 Header Replacement (already handled by SectionHeading)
+// ─────────────────────────────────────────────────
+
+// Skipping to Section 2 content update...
+
 
 // ─────────────────────────────────────────────────
 // Engine Specifications Data
@@ -425,7 +447,7 @@ const ENGINES = [
       'Citation requirement: All factual claims cite sources',
     ],
     floors: ['F2', 'F4', 'F7', 'F10'],
-    color: 'cyan',
+    color: 'amber',
   },
   {
     symbol: 'Ω',
@@ -455,9 +477,15 @@ const ENGINES = [
       'Human veto: Sovereign override always available',
     ],
     floors: ['F3', 'F8', 'F13'],
-    color: 'gold',
+    color: 'amber',
   },
 ];
+
+// ... (rest of constants preserved)
+
+// Section 2 content update...
+// (Skipping to Section 2 cards in the render loop)
+
 
 // ─────────────────────────────────────────────────
 // Constitutional Floors Data
@@ -745,18 +773,28 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* NAVIGATION                              */}
         {/* ═══════════════════════════════════════ */}
-        <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md' : ''}`}>
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-center gap-2 py-4">
-              <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-orange-500/20 text-orange-400 text-sm font-medium hover:bg-orange-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-orange-400" /> HUMAN
-              </a>
-              <a href="https://apex.arif-fazil.com" className="px-4 py-2 rounded-full bg-amber-500/20 text-amber-400 text-sm font-medium hover:bg-amber-500/30 transition-colors flex items-center gap-2 border border-amber-500/50">
-                <span className="w-2 h-2 rounded-full bg-amber-400" /> IDEA
-              </a>
-              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full bg-cyan-500/20 text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-colors flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-cyan-400" /> APP
-              </a>
+        <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95' : ''}`}>
+          <div className="max-w-7xl mx-auto px-4 border-y border-amber-500/20">
+            <div className="flex items-center justify-between py-4">
+              <div className="hidden md:flex items-center gap-8">
+                <a href="#section-1" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Problem</a>
+                <a href="#section-2" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Solution</a>
+                <a href="#section-5" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Floors</a>
+              </div>
+              <div className="flex items-center justify-center gap-4">
+                <a href="https://arif-fazil.com" className="px-6 py-2 bg-transparent text-amber-500 text-[10px] font-display hover:bg-amber-500/10 transition-colors border border-amber-500/30">
+                  HUMAN
+                </a>
+                <a href="https://apex.arif-fazil.com" className="px-6 py-2 bg-amber-500 text-black text-[10px] font-display transition-colors border border-amber-500">
+                  CANON
+                </a>
+                <a href="https://arifos.arif-fazil.com" className="px-6 py-2 bg-transparent text-amber-500 text-[10px] font-display hover:bg-amber-500/10 transition-colors border border-amber-500/30">
+                  DOCS
+                </a>
+              </div>
+              <div className="hidden md:block text-[10px] font-display text-amber-500/40">
+                SOVEREIGNLY_SEALED
+              </div>
             </div>
           </div>
         </nav>
@@ -764,119 +802,76 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* HERO                                    */}
         {/* ═══════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20">
-          <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-            <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mb-8">
-              <a href="https://arif-fazil.com" className="hover:text-orange-400 transition-colors">Arif Fazil</a>
-              <span>/</span>
-              <span className="text-amber-400">APEX Constitutional Canon</span>
-            </div>
-
-            {/* Three Engine Symbols */}
-            <div className="flex items-center justify-center gap-12 mb-8">
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="text-6xl font-light text-cyan-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Δ</div>
-                </TooltipTrigger>
-                <TooltipContent>ARIF — Epistemic Engine (Truth)</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="text-6xl font-light text-red-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Ω</div>
-                </TooltipTrigger>
-                <TooltipContent>ADAM — Safety Engine (Harm Prevention)</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger>
-                  <div className="text-6xl font-light text-amber-400" style={{ fontFamily: 'Source Serif 4, serif' }}>Ψ</div>
-                </TooltipTrigger>
-                <TooltipContent>APEX — Authority Engine (Compliance)</TooltipContent>
-              </Tooltip>
-            </div>
-
-            <p className="text-xs tracking-[0.4em] text-gray-500 uppercase mb-6">
-              Ditempa Bukan Diberi — Forged, Not Given
-            </p>
-
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent tracking-wider">
-              APEX
-            </h1>
-
-            <p className="text-xl md:text-2xl text-gray-300 mb-2 font-medium">
-              Scientifically Grounded AI Governance Framework
-            </p>
-            <p className="text-sm text-gray-500 mb-8">
-              Constitutional Canon — February 2026
-            </p>
-
-            <p className="max-w-2xl mx-auto text-gray-400 leading-relaxed mb-8">
-              A thermodynamically grounded constitutional framework combining{' '}
-              <span className="text-amber-400">13 formal constraints</span>,{' '}
-              <span className="text-cyan-400">three-engine architecture</span>, and{' '}
-              <span className="text-green-400">cryptographic audit trails</span>{' '}
-              — constructed via formal verification and grounded in peer-reviewed literature.
-            </p>
-
-            {/* APEX Equation — anchor block */}
-            <div className="max-w-xl mx-auto mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6">
-              <p className="text-xs tracking-[0.3em] text-amber-400/70 uppercase mb-3 font-mono">Core Equation</p>
-              <DisplayMath tex="G = A \times P \times X \times E^2" />
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-                <div className="text-center">
-                  <span className="text-lg font-mono font-bold text-cyan-400">A</span>
-                  <p className="text-[10px] text-gray-500 mt-0.5">Akal (Intellect)</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-lg font-mono font-bold text-amber-400">P</span>
-                  <p className="text-[10px] text-gray-500 mt-0.5">Present (Stability)</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-lg font-mono font-bold text-green-400">X</span>
-                  <p className="text-[10px] text-gray-500 mt-0.5">eXploration</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-lg font-mono font-bold text-red-400">E</span>
-                  <p className="text-[10px] text-gray-500 mt-0.5">Energy (Vitality)</p>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500 mt-4 text-center">
-                APEX is a <strong className="text-gray-300">measurement framework</strong>, not a learning algorithm.
-                It quantifies intelligence as a 4-component vector derived from 13 constitutional floors
-                — governance emerges from the tension between these cognitive axes.
-              </p>
-            </div>
-
-            {/* Disclaimer */}
-            <div className="disclaimer max-w-2xl mx-auto mb-10 text-left">
-              <div className="flex items-start gap-2">
-                <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <p>
-                  <strong>Disclaimer:</strong> This is a research framework. Implementations should be
-                  validated for specific use cases. All claims are grounded in cited literature;
-                  limitations are explicitly acknowledged in Section 12.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#section-1">
-                <Button className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-500 hover:to-yellow-500 text-white px-8 py-6 text-lg">
-                  <BookOpen className="w-5 h-5 mr-2" /> Read the Canon →
-                </Button>
-              </a>
-              <Button
-                variant="outline"
-                onClick={copyBootstrap}
-                className="border-gray-600 text-gray-300 hover:border-amber-500/50 hover:text-amber-400 px-6 py-6 text-sm"
-              >
-                <Terminal className="w-4 h-4 mr-2" />
-                {copiedBootstrap ? 'Copied to Clipboard!' : 'Copy Bootstrap Prompt'}
-              </Button>
-            </div>
+        <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
+          {/* Large background symbol */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-bold text-amber-500/5 pointer-events-none select-none z-0 font-display">
+            Ψ
           </div>
 
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl opacity-30 pointer-events-none">
-            <img src="/apex-geometric-hero.jpg" alt="Geometric pattern" className="w-full" />
+          <div className="relative z-10 max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+            <div className="flex-1 text-left">
+              <div className="flex items-center gap-4 text-[10px] font-display text-amber-500/60 mb-12 tracking-[0.3em]">
+                <span>ARIF FAZIL</span>
+                <span className="w-12 h-[1px] bg-amber-500/30" />
+                <span>v55.2 TRINITY</span>
+              </div>
+
+              <h1 className="text-7xl md:text-9xl font-display font-bold mb-8 text-white leading-none">
+                APEX<span className="text-amber-500">.</span>
+              </h1>
+
+              <div className="inline-block px-4 py-2 border border-amber-500/40 bg-amber-500/5 mb-8">
+                <p className="text-xs font-display text-amber-500 tracking-widest">
+                  Constitutional Canon for AI Governance
+                </p>
+              </div>
+
+              <p className="max-w-xl text-gray-400 leading-relaxed mb-12 text-lg font-mono">
+                A thermodynamically grounded constitutional framework combining 
+                <span className="text-white font-bold"> 13 formal constraints</span>, 
+                <span className="text-white font-bold"> three-engine architecture</span>, and 
+                <span className="text-white font-bold"> cryptographic audit trails</span>.
+              </p>
+
+              <div className="flex flex-col sm:flex-row items-stretch gap-4">
+                <a href="#section-1">
+                  <Button className="rounded-none bg-amber-500 hover:bg-amber-400 text-black px-10 py-8 text-sm font-display tracking-widest w-full sm:w-auto">
+                    INITIATE PROTOCOL
+                  </Button>
+                </a>
+                <Button
+                  variant="outline"
+                  onClick={copyBootstrap}
+                  className="rounded-none border-amber-500/40 text-amber-500 hover:bg-amber-500/10 px-10 py-8 text-sm font-display tracking-widest w-full sm:w-auto"
+                >
+                  {copiedBootstrap ? 'SYSTEM_COPIED' : 'COPY_BOOTSTRAP'}
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex-shrink-0 w-full md:w-auto">
+              {/* Geometric side block */}
+              <div className="relative p-12 border-2 border-amber-500/20 bg-black/40 backdrop-blur-xl">
+                <div className="absolute -top-2 -left-2 w-4 h-4 bg-amber-500" />
+                <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-amber-500" />
+                
+                <div className="space-y-12">
+                  {[
+                    { symbol: 'Δ', label: 'ARIF', desc: 'Epistemic Logic' },
+                    { symbol: 'Ω', label: 'ADAM', desc: 'Safety Guard' },
+                    { symbol: 'Ψ', label: 'APEX', desc: 'Lawful Seal' },
+                  ].map((engine) => (
+                    <div key={engine.label} className="flex items-center gap-8">
+                      <div className="text-5xl font-light text-amber-500 font-display w-16">{engine.symbol}</div>
+                      <div>
+                        <div className="text-[10px] font-display text-amber-500 tracking-[0.2em]">{engine.label}</div>
+                        <div className="text-xs text-gray-500 font-mono mt-1">{engine.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -884,73 +879,116 @@ function App() {
         {/* SYSTEM HEALTH DASHBOARD                 */}
         {/* ═══════════════════════════════════════ */}
         <section className="py-12 relative">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="rounded-xl border border-gray-800 bg-black/60 backdrop-blur-sm p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <Gauge className="w-5 h-5 text-amber-400" />
-                <h3 className="font-mono text-sm font-semibold text-gray-200 uppercase tracking-wider">System Health Monitor</h3>
-                <Badge variant="outline" className={`text-xs ml-auto ${
-                  health.verdict === 'SEAL' ? 'border-green-500/50 text-green-400 bg-green-500/10' :
-                  health.verdict === 'INIT' ? 'border-gray-500/50 text-gray-400' :
-                  'border-yellow-500/50 text-yellow-400'
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="border border-amber-500/30 bg-black/80 p-8 relative">
+              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-amber-500" />
+              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-amber-500" />
+              
+              <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 bg-amber-500 text-black">
+                    <Gauge className="w-6 h-6" />
+                  </div>
+                  <h3 className="font-display text-sm font-bold text-white tracking-widest">SYSTEM_MONITOR</h3>
+                </div>
+                
+                <div className="flex-1 h-[1px] bg-amber-500/20" />
+                
+                <Badge variant="outline" className={`rounded-none px-4 py-1 text-[10px] font-display ${
+                  health.verdict === 'SEAL' ? 'border-green-500 text-green-400' :
+                  health.verdict === 'INIT' ? 'border-amber-500 text-amber-500' :
+                  'border-red-500 text-red-400'
                 }`}>
-                  {health.verdict === 'INIT' ? 'BOOTING...' : `VERDICT: ${health.verdict}`}
+                  {health.verdict === 'INIT' ? 'ESTABLISHING_AUTH...' : `VERDICT: ${health.verdict}`}
                 </Badge>
               </div>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {/* Clarity */}
-                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Eye className="w-4 h-4 text-cyan-400" />
-                    <span className="text-xs font-mono text-gray-500 uppercase">Clarity (F4)</span>
+                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-display text-gray-500 tracking-wider">CLARITY (F4)</span>
+                    <Eye className="w-4 h-4 text-amber-500/40" />
                   </div>
-                  <p className={`text-2xl font-mono font-bold ${health.clarity <= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                    {health.clarity === 0 ? '—' : health.clarity.toFixed(3)}
-                  </p>
-                  <p className="text-[10px] text-gray-600 mt-1 font-mono">ΔS ≤ 0 required</p>
+                  <div className="flex items-baseline gap-2">
+                    <p className={`text-4xl font-mono font-bold ${health.clarity <= 0 ? 'text-white' : 'text-red-500'}`}>
+                      {health.clarity === 0 ? '0.000' : health.clarity.toFixed(3)}
+                    </p>
+                    <span className="text-[10px] font-mono text-gray-600">ΔS</span>
+                  </div>
+                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
+                    <div 
+                      className="h-full bg-amber-500 transition-all duration-500"
+                      style={{ width: `${Math.min(Math.abs(health.clarity) * 1000, 100)}%` }}
+                    />
+                  </div>
                 </div>
 
                 {/* Stability */}
-                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Heart className="w-4 h-4 text-red-400" />
-                    <span className="text-xs font-mono text-gray-500 uppercase">Stability (F5)</span>
+                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-display text-gray-500 tracking-wider">STABILITY (F5)</span>
+                    <Heart className="w-4 h-4 text-amber-500/40" />
                   </div>
-                  <p className={`text-2xl font-mono font-bold ${health.stability >= 1.0 ? 'text-green-400' : 'text-red-400'}`}>
-                    {health.stability === 0 ? '—' : health.stability.toFixed(2)}
-                  </p>
-                  <p className="text-[10px] text-gray-600 mt-1 font-mono">Ψ ≥ 1.0 required</p>
+                  <div className="flex items-baseline gap-2">
+                    <p className={`text-4xl font-mono font-bold ${health.stability >= 1.0 ? 'text-white' : 'text-red-500'}`}>
+                      {health.stability === 0 ? '0.00' : health.stability.toFixed(2)}
+                    </p>
+                    <span className="text-[10px] font-mono text-gray-600">Ψ</span>
+                  </div>
+                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
+                    <div 
+                      className="h-full bg-amber-500 transition-all duration-500"
+                      style={{ width: `${Math.min(health.stability * 50, 100)}%` }}
+                    />
+                  </div>
                 </div>
 
                 {/* Humility */}
-                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Lock className="w-4 h-4 text-purple-400" />
-                    <span className="text-xs font-mono text-gray-500 uppercase">Humility (F7)</span>
+                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-display text-gray-500 tracking-wider">HUMILITY (F7)</span>
+                    <Lock className="w-4 h-4 text-amber-500/40" />
                   </div>
-                  <p className={`text-2xl font-mono font-bold ${health.humility >= 0.03 && health.humility <= 0.05 ? 'text-green-400' : 'text-red-400'}`}>
-                    {health.humility.toFixed(3)}
-                  </p>
-                  <p className="text-[10px] text-gray-600 mt-1 font-mono">Ω₀ ∈ [0.03, 0.05]</p>
+                  <div className="flex items-baseline gap-2">
+                    <p className={`text-4xl font-mono font-bold ${health.humility >= 0.03 && health.humility <= 0.05 ? 'text-white' : 'text-red-500'}`}>
+                      {health.humility.toFixed(3)}
+                    </p>
+                    <span className="text-[10px] font-mono text-gray-600">Ω₀</span>
+                  </div>
+                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
+                    <div 
+                      className="h-full bg-amber-500 transition-all duration-500"
+                      style={{ width: `${health.humility * 2000}%` }}
+                    />
+                  </div>
                 </div>
 
                 {/* Genius */}
-                <div className="p-4 rounded-lg bg-gray-900/50 border border-gray-800/50">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Zap className="w-4 h-4 text-amber-400" />
-                    <span className="text-xs font-mono text-gray-500 uppercase">Genius (F8)</span>
+                <div className="p-6 border border-amber-500/10 bg-amber-500/[0.02]">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-display text-gray-500 tracking-wider">GENIUS (F8)</span>
+                    <Zap className="w-4 h-4 text-amber-500/40" />
                   </div>
-                  <p className={`text-2xl font-mono font-bold ${health.genius >= 0.80 ? 'text-green-400' : 'text-amber-400'}`}>
-                    {health.genius === 0 ? '—' : health.genius.toFixed(2)}
-                  </p>
-                  <p className="text-[10px] text-gray-600 mt-1 font-mono">G ≥ 0.80 required</p>
+                  <div className="flex items-baseline gap-2">
+                    <p className={`text-4xl font-mono font-bold ${health.genius >= 0.80 ? 'text-white' : 'text-amber-500'}`}>
+                      {health.genius === 0 ? '0.00' : health.genius.toFixed(2)}
+                    </p>
+                    <span className="text-[10px] font-mono text-gray-600">G</span>
+                  </div>
+                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
+                    <div 
+                      className="h-full bg-amber-500 transition-all duration-500"
+                      style={{ width: `${Math.min(health.genius * 100, 100)}%` }}
+                    />
+                  </div>
                 </div>
               </div>
 
-              <p className="text-[10px] text-gray-600 mt-4 text-center font-mono">
-                CLERK MODE — Propose only, never seal. 888 Judge (F13) holds sovereign authority.
-              </p>
+              <div className="mt-8 pt-8 border-t border-amber-500/10 flex justify-between items-center text-[10px] font-display text-gray-600">
+                <span>MODE: READ_ONLY_CLERK</span>
+                <span>Sovereignty: 888_JUDGE</span>
+              </div>
             </div>
           </div>
         </section>
@@ -958,90 +996,75 @@ function App() {
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 1: THE PROBLEM                  */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative">
-          <div className="max-w-4xl mx-auto px-4">
+        <section className="py-32 relative">
+          <div className="max-w-5xl mx-auto px-4">
             <SectionHeading
               id="section-1"
-              number="1"
-              title="The Problem: Intelligence Without Governance"
-              subtitle="Standard transformer architectures optimize for next-token probability via maximum likelihood estimation, not epistemic accuracy."
+              number="01"
+              title="Intelligence Without Governance"
+              subtitle="Standard transformer architectures optimize for next-token probability via maximum likelihood estimation, not epistemic hygiene."
             />
 
-            {/* Entropy Maximization */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                1.1 Entropy Maximization in Language Models
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                Without constraint mechanisms, language models maximize Shannon entropy<Cite n={[3,4]} />,
-                producing fluent but potentially unfactual outputs<Cite n={[1,2]} />.
-                The standard LLM objective optimizes:
-              </p>
-              <DisplayMath
-                tex="\max \; P(w_t \mid w_1, \ldots, w_{t-1})"
-                label="Standard LLM objective: next-token probability maximization"
-              />
-              <p className="text-gray-400 leading-relaxed mb-4">
-                Critically, no explicit truth constraint is enforced:
-              </p>
-              <DisplayMath
-                tex="P(\text{factual} \mid \text{fluent}) \neq 1"
-                label="High perplexity reduction ≠ high factual accuracy"
-              />
-              <p className="text-gray-500 text-sm">
-                Shannon entropy is defined as <InlineMath tex="H(X) = -\sum_{x} p(x) \log p(x)" />,
-                measuring the average information content of a random variable<Cite n={3} />.
-                A governed system must perform thermodynamic work to reduce this entropy,
-                forcing it to clarify rather than confuse<Cite n={[12,17]} />.
-              </p>
-            </div>
-
-            {/* Hallucination Problem */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                1.2 The Hallucination Problem
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                AI systems generate responses with high surface coherence but low referential
-                accuracy — a phenomenon termed "confabulation" or "hallucination"<Cite n={[5,6]} />.
-                This occurs because:
-              </p>
-              <div className="grid gap-3 mb-4">
-                {[
-                  'Probabilistic generation optimizes fluency, not grounding',
-                  'No epistemic markers distinguish knowledge from interpolation',
-                  'Training objective misalignment between human preferences (RLHF) and factual accuracy',
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-black/30 border border-gray-800/50">
-                    <span className="text-amber-400 font-mono text-sm mt-0.5">{i + 1}.</span>
-                    <p className="text-gray-400 text-sm">{item}<Cite n={7} /></p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Adversarial Fragility */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">
-                1.3 Adversarial Fragility
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                Without structural boundaries, models are vulnerable to prompt injection
-                attacks<Cite n={8} />, jailbreaking via crafted adversarial inputs<Cite n={9} />,
-                and specification gaming exploiting reward function gaps<Cite n={10} />.
-                Research demonstrates that alignment via RLHF is brittle — models can be
-                manipulated to produce harmful outputs despite safety fine-tuning<Cite n={[8,11]} />.
-              </p>
-              <div className="flex items-start gap-4 p-5 rounded-xl border border-red-500/20 bg-red-500/5">
-                <AlertTriangle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
+            <div className="grid md:grid-cols-12 gap-16">
+              <div className="md:col-span-7 space-y-12">
+                {/* Entropy Maximization */}
                 <div>
-                  <p className="text-gray-300 text-sm font-medium mb-1">Empirical Observation</p>
-                  <p className="text-gray-500 text-sm">
-                    Zou et al. (2023) demonstrated universal adversarial suffixes that transfer across
-                    multiple aligned models, achieving approximately 80% attack success rate on safety-trained
-                    systems<Cite n={8} />. This suggests that current alignment approaches provide
-                    insufficient structural guarantees.
+                  <h3 className="text-xl font-display font-bold mb-6 text-white flex items-center gap-4">
+                    <span className="text-amber-500 text-sm">1.1</span> ENTROPY_MAXIMIZATION
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed mb-8 font-mono text-sm">
+                    Without constraint mechanisms, language models maximize Shannon entropy<Cite n={[3,4]} />,
+                    producing fluent but potentially unfactual outputs.
                   </p>
+                  <div className="p-8 border border-amber-500/20 bg-black relative">
+                    <div className="absolute top-0 left-0 w-2 h-2 bg-amber-500" />
+                    <DisplayMath
+                      tex="\max \; P(w_t \mid w_1, \ldots, w_{t-1})"
+                    />
+                    <p className="text-[10px] font-display text-gray-600 mt-4 text-center tracking-widest uppercase">Equation 1.1: Token Probability</p>
+                  </div>
+                </div>
+
+                {/* Hallucination Problem */}
+                <div>
+                  <h3 className="text-xl font-display font-bold mb-6 text-white flex items-center gap-4">
+                    <span className="text-amber-500 text-sm">1.2</span> HALLUCINATION_CORE
+                  </h3>
+                  <div className="grid gap-4">
+                    {[
+                      'Probabilistic generation optimizes fluency, not grounding',
+                      'No epistemic markers distinguish knowledge from interpolation',
+                      'Training objective misalignment between human preferences and factual accuracy',
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-6 p-6 border border-amber-500/5 bg-amber-500/[0.01] hover:bg-amber-500/[0.03] transition-colors group">
+                        <span className="text-amber-500/40 font-display text-xs group-hover:text-amber-500 transition-colors">ERR_0{i + 1}</span>
+                        <p className="text-gray-400 font-mono text-sm">{item}<Cite n={7} /></p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-5">
+                {/* Visual indicator side bar */}
+                <div className="sticky top-32 p-8 border border-amber-500/20 bg-amber-500/[0.02]">
+                  <div className="flex items-center gap-3 mb-8">
+                    <AlertTriangle className="w-5 h-5 text-red-500" />
+                    <span className="text-xs font-display text-red-500">SYSTEM_WARNING</span>
+                  </div>
+                  <p className="text-sm font-mono text-gray-500 leading-relaxed mb-8">
+                    Zou et al. (2023) demonstrated universal adversarial suffixes that transfer across
+                    multiple aligned models, achieving ~80% attack success rate.
+                  </p>
+                  <div className="space-y-4">
+                    <div className="h-1 w-full bg-gray-900">
+                      <div className="h-full bg-red-500 w-[80%]" />
+                    </div>
+                    <div className="flex justify-between text-[10px] font-display text-gray-600">
+                      <span>ATTACK_SUCCESS</span>
+                      <span>80%</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

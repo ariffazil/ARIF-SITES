@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 45 93% 47%;
+    --background: 0 0% 2%;
+    --foreground: 45 100% 95%;
+    --card: 0 0% 3%;
+    --card-foreground: 45 100% 95%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 45 100% 95%;
+    --primary: 45 100% 50%;
     --primary-foreground: 0 0% 0%;
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84% 60%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 45 100% 95%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 45 20% 60%;
+    --accent: 45 100% 50%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 45 93% 47%;
-    --radius: 0.75rem;
+    --border: 45 50% 15%;
+    --input: 45 50% 15%;
+    --ring: 45 100% 50%;
+    --radius: 0rem;
   }
 }
 
@@ -33,7 +33,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Space Mono', monospace;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
@@ -43,32 +43,33 @@
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #020202;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #B8860B;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #FFD700;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(234, 179, 8, 0.3);
+  background: rgba(255, 215, 0, 0.3);
   color: white;
 }
 
-/* Serif font for headings and mathematical context */
-.font-serif {
-  font-family: 'Source Serif 4', 'Georgia', serif;
+/* Display font for headings */
+.font-display {
+  font-family: 'Syncopate', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 /* Monospace for code and formulas */
@@ -76,10 +77,10 @@
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* KaTeX overrides for dark theme */
+/* KaTeX overrides for gold theme */
 .katex {
   font-size: 1.1em;
-  color: #e5e7eb;
+  color: #FFD700;
 }
 
 .katex-display {
@@ -93,190 +94,180 @@
   font-size: 1.15em;
 }
 
-/* Math block container */
+/* Math block container - Orthogonal */
 .math-block {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 0.5rem;
-  padding: 1rem 1.5rem;
-  margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  border-left: 4px solid #FFD700;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
   overflow-x: auto;
 }
 
 /* Citation reference styling */
 .cite-ref {
-  color: #60a5fa;
+  color: #FFD700;
   font-size: 0.75em;
   vertical-align: super;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s;
+  font-weight: bold;
 }
 
 .cite-ref:hover {
-  color: #93bbfc;
-  text-decoration: underline;
+  color: #FFFFFF;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
 }
 
 /* Reference list styling */
 .reference-item {
   padding-left: 2rem;
   text-indent: -2rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #9ca3af;
+  color: #A0A0A0;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.05);
+  padding-bottom: 0.5rem;
 }
 
 .reference-item:hover {
-  color: #d1d5db;
+  color: #FFD700;
 }
 
-/* Scholarly section divider */
+/* Orthogonal section divider */
 .section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(234, 179, 8, 0.3) 50%,
-    transparent 100%
-  );
-  margin: 3rem 0;
+  height: 2px;
+  background: #FFD700;
+  margin: 4rem 0;
+  position: relative;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: #FFD700;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  background: #FFD700;
 }
 
 /* Table styling for constitutional floors */
 .floor-table {
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Space Mono', monospace;
 }
 
 .floor-table th {
   text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  font-weight: 600;
-  font-size: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  font-weight: 700;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #9ca3af;
+  letter-spacing: 0.1em;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.05);
 }
 
 .floor-table td {
-  padding: 0.625rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 0.875rem;
-  color: #d1d5db;
+  padding: 1rem;
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  font-size: 0.8rem;
+  color: #E0E0E0;
 }
 
 .floor-table tr:hover td {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 215, 0, 0.03);
 }
 
 /* Geometric animations */
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes rotate-orthogonal {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(234, 179, 8, 0.5); }
-}
-
-.animate-rotate-slow {
-  animation: rotate-slow 60s linear infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-orthogonal {
+  animation: rotate-orthogonal 20s steps(4) infinite;
 }
 
 /* Code block styling */
 .code-block {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
+  background: #000000;
+  border: 1px solid #FFD700;
+  padding: 1.5rem;
   overflow-x: auto;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   line-height: 1.6;
+  position: relative;
 }
 
-/* Gradient text */
-.gradient-text-apex {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Glass effect */
+/* Glass effect - Minimal */
 .glass-apex {
-  background: rgba(10, 10, 10, 0.8);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  background: rgba(5, 5, 5, 0.9);
+  border: 1px solid rgba(255, 215, 0, 0.2);
 }
 
 /* BibTeX export button */
 .bibtex-btn {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0.25rem;
-  color: #9ca3af;
+  font-family: 'Syncopate', sans-serif;
+  font-size: 0.65rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #FFD700;
+  color: #FFD700;
   transition: all 0.2s;
   cursor: pointer;
   background: transparent;
+  text-transform: uppercase;
 }
 
 .bibtex-btn:hover {
-  border-color: rgba(234, 179, 8, 0.5);
-  color: #fbbf24;
+  background: #FFD700;
+  color: #000000;
 }
 
 /* Disclaimer banner */
 .disclaimer {
-  background: rgba(59, 130, 246, 0.05);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 0.5rem;
-  padding: 1rem 1.5rem;
-  font-size: 0.85rem;
-  color: #93c5fd;
+  background: rgba(255, 215, 0, 0.02);
+  border: 1px solid #FFD700;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+  color: #FFD700;
+  font-family: 'Space Mono', monospace;
 }
 
-/* Floor table row expansion animation */
-.floor-table tr {
-  transition: background-color 0.2s ease;
-}
-
-.floor-table tr:has(+ tr td[colspan]) {
-  border-bottom: none;
-}
-
-/* System health metric pulse */
-@keyframes metric-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-.metric-live {
-  animation: metric-pulse 2s ease-in-out infinite;
-}
-
-/* EMD diagram stage hover */
-@keyframes relay-glow {
-  0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.2); }
-  50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.4); }
-}
-
-.emd-metabolizer {
-  animation: relay-glow 3s ease-in-out infinite;
-}
-
-/* Sacred geometry grid - subtle background */
+/* Orthogonal grid - Blueprint style */
 .sacred-grid {
   background-image:
-    linear-gradient(rgba(234, 179, 8, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(234, 179, 8, 0.03) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(255, 215, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
+
+.sacred-grid::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.1) 2px, transparent 2px);
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+
