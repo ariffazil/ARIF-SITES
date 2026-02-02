@@ -1,34 +1,107 @@
 # arifOS: The Mind (Docs)
+> arifos.arif-fazil.com — MIND Layer of the Trinity
 > "Structure creates Freedom"
 
 ## System Overview (v55.2)
-arifOS is a sovereign, constitutional AI kernel designed for high-fidelity reasoning and safe autonomous action. It operates on a **Metabolic Loop** (000-999) and is governed by **13 Constitutional Floors**.
+arifOS is a sovereign, constitutional AI governance kernel. It operates on a Metabolic Loop (stages 000-999) and is governed by 13 Constitutional Floors. Every AI decision is measured, witnessed, and cryptographically sealed.
+
+- Sovereign: Muhammad Arif bin Fazil
+- Motto: Ditempa Bukan Diberi (Forged, Not Given)
+- Version: v55.2-SEAL
+- Architecture: Trinity Parallel (Async AGI || ASI)
 
 ## The AAA MCP Architecture
-The system exposes its capabilities through the **Agentic API Architecture (AAA)** using the Model Context Protocol (MCP).
+Capabilities are exposed through the Agentic API Architecture (AAA) using the Model Context Protocol (MCP).
 
 ### 1. Agents
-- **System**: The kernel itself.
-- **User**: The Sovereign (Arif).
-- **Sub-Agents**: Specialized specialized units (Kimi, Claude, Python instances).
+- System: The arifOS kernel (Python 3.12 + FastAPI on Railway)
+- User: The Sovereign (F13 authority)
+- Sub-Agents: Kimi (Body), Claude (Mind), Python (Soul)
 
-### 2. API (The Three Engines)
-- **AGI ($\Delta$)**: The Mind (Reasoning, Mapping).
-- **ASI ($\Omega$)**: The Heart (Safety, Empathy).
-- **APEX ($\Psi$)**: The Soul (Judgment, Verdict).
+### 2. API — The Three Engines
+- AGI (Delta): The Mind — Reasoning, pattern recognition, proof construction
+  - Tools: agi_sense (111), agi_think (222), agi_reason (333)
+  - Engine: ARIF
+- ASI (Omega): The Heart — Safety, empathy, alignment verification
+  - Tools: asi_empathize (444), asi_align (555), asi_insight (666)
+  - Engine: ADAM
+- APEX (Psi): The Soul — Judgment, verdict, cryptographic sealing
+  - Tool: apex_verdict (888)
+  - Engine: APEX
 
 ### 3. Architecture (The Stack)
-- **L1 Physics**: Thermodynamic Constraints.
-- **L2 Math**: Information Geometry.
-- **L3 Crypto**: Ed25519, Merkle Vault.
-- **L4 Governance**: The Constitution.
-- **L5 Semantic**: Language & Meaning.
+- L1 Physics: Thermodynamic constraints (Second Law, Landauer's Principle)
+- L2 Math: Information Geometry (Fisher-Rao Metric)
+- L3 Crypto: Ed25519 signatures, Merkle DAG Vault
+- L4 Governance: 13 Constitutional Floors
+- L5 Semantic: Language, meaning, and intent
 
-## Repository Status
-- **Current Branch**: `main`
-- **Version**: v55.2 (Sealed)
-- **Repo**: [github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)
+## 9 Explicit MCP Tools (v55.1+)
+1. init_reboot (000) — Gate, injection defense, session bootstrap
+2. agi_sense (111) — Input parsing, intent detection
+3. agi_think (222) — Hypothesis generation, divergent reasoning
+4. agi_reason (333) — Deep logic chains, convergent proof
+5. asi_empathize (444) — Stakeholder modeling, impact mapping
+6. asi_align (555) — Constitutional alignment check (all 13 floors)
+7. asi_insight (666) — Risk foresight, second-order consequences
+8. apex_verdict (888) — Final judgment: SEAL / VOID / SABAR / 888_HOLD
+9. reality_search (External) — Fact-checking against real-world sources
 
-## Quick Links
-- [Principles](https://arif-fazil.com)
-- [Constitution](https://apex.arif-fazil.com)
+Pipeline: init_reboot -> [agi_sense -> agi_think -> agi_reason] || [asi_empathize -> asi_align -> asi_insight] -> apex_verdict
+Mind and Heart run in parallel, collapsing at Soul.
+
+## The 13 Constitutional Floors
+Hard Floors (VOID on violation):
+- F1 Amanah: Reversibility required (LOCK)
+- F2 Truth: P(factual|evidence) >= 0.99
+- F5 Peace: Lyapunov stability >= 1.0
+- F9 Anti-Hantu: No false consciousness claims (<= 0.30)
+- F10 Ontology: Type-consistent reasoning (LOCK)
+- F11 Authority: BLS signature verification (LOCK)
+- F12 Hardening: Adversarial robustness >= 0.85
+
+Soft Floors (SABAR on violation):
+- F3 Tri-Witness: Consensus W >= 0.95
+- F4 Clarity: Entropy reduction (Delta S <= 0)
+- F6 Empathy: Cohen's kappa >= 0.70
+- F7 Humility: Omega_0 in [0.03, 0.05]
+- F8 Genius: G = A * P * X * E^2 >= 0.80
+
+Veto Floor:
+- F13 Sovereign: Human override always available
+
+Verdict Hierarchy: SABAR > VOID > 888_HOLD > PARTIAL > SEAL
+
+## Technical Stack
+Frontend (this site):
+- React 18 + TypeScript 5.6
+- Vite 5 (build tooling)
+- Tailwind CSS 3.4
+- Lucide React (icons)
+- shadcn/ui components
+- Hosted on Cloudflare Pages (Global CDN, 300+ PoPs)
+
+Backend (arifOS Runtime):
+- Python 3.12 + FastAPI
+- MCP Protocol (SSE + Streamable HTTP)
+- Hosted on Railway (US West)
+- Endpoint: aaamcp.arif-fazil.com
+
+## API Endpoints
+- GET /health — System health check
+- POST /mcp — MCP tool invocation (9 explicit tools)
+- GET /sse — Server-sent events stream
+- GET /dashboard — Live system dashboard
+- GET /docs — API documentation (OpenAPI)
+
+## Trinity Ecosystem
+- BODY: arif-fazil.com (Portfolio, human origin)
+- MIND: arifos.arif-fazil.com (This site — documentation, API reference)
+- SOUL: apex.arif-fazil.com (Constitutional canon, 13-floor theory)
+- MCP: aaamcp.arif-fazil.com (Backend runtime)
+
+## Repository
+- Branch: main
+- Version: v55.2 (Sealed)
+- Source: github.com/ariffazil/arifOS
+- Frontend: github.com/ariffazil/arif-fazil-sites
