@@ -369,6 +369,7 @@ function App() {
               <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">13 Floors</a>
               <a href="#mcp" className="text-sm text-gray-400 hover:text-white transition-colors">MCP Tools</a>
               <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
+              <a href="#implementation" className="text-sm text-gray-400 hover:text-white transition-colors">Implementation</a>
               <div className="flex items-center gap-2 ml-4">
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors flex items-center gap-1.5">
                   <Globe className="w-3 h-3" /> HUMAN
@@ -400,6 +401,7 @@ function App() {
             <a href="#floors" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>13 Floors</a>
             <a href="#mcp" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>MCP Tools</a>
             <a href="#api" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>API</a>
+            <a href="#implementation" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Implementation</a>
             <div className="flex gap-2 pt-2">
               <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs hover:bg-red-900/20">HUMAN</a>
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs hover:bg-amber-900/20">THEORY</a>
@@ -1025,6 +1027,87 @@ function App() {
                 </ul>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Implementation for Builders Section */}
+      <section id="implementation" className="py-24 relative">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">Implementation for Builders</h2>
+          <p className="text-gray-400 mb-12 max-w-2xl">
+            Integration architecture, API specification, and deployment options for production systems.
+          </p>
+
+          {/* Architecture Diagram */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">Integration Architecture</h3>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-gray-400 text-xs leading-relaxed font-mono">
+              <pre>{`User Query → arifOS Kernel → LLM (Claude / GPT / Gemini)
+    ↓
+[Constitutional Gates]
+    ↓
+ARIF (Truth Check)    ←  Bayesian inference, logical entailment
+ADAM (Safety Check)   ←  Harm minimization, stakeholder analysis
+APEX (Authority Check) ← Compliance verification, BLS signatures
+    ↓
+Floor Validation (F1–F13)
+    ↓
+Tri-Witness Consensus (W ≥ 0.95)
+    ↓
+VAULT (Merkle DAG Audit Log)
+    ↓
+Response to User`}</pre>
+            </div>
+          </div>
+
+          {/* API Specification */}
+          <div className="mb-12">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">API Specification</h3>
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 text-gray-300 text-sm font-mono">
+              <pre>{`// Initialize session
+await arifos.init({
+  authority_token: string,
+  injection_scan: boolean  // default: true
+})
+
+// Submit query through Trinity pipeline
+result = await arifos.trinity({
+  query: string,
+  context: dict | null
+})
+
+// Individual engine calls
+truth_check  = await arifos.arif(query, context)
+safety_check = await arifos.adam(action, context)
+verdict      = await arifos.apex(truth_check, safety_check)
+
+// Audit retrieval with Merkle verification
+audit_trail = await arifos.vault.get_history({
+  session_id: string,
+  verify_merkle: boolean  // default: true
+})`}</pre>
+            </div>
+          </div>
+
+          {/* Deployment Options */}
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold mb-4 text-gray-200">Deployment Options</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                ['L1 — System Prompts', 'Copy constitutional prompts into LLM chat interfaces (zero setup)'],
+                ['L2 — Skills', 'Reusable YAML templates for common governance tasks'],
+                ['L3 — Workflows', 'Standard Operating Procedures for team collaboration'],
+                ['L4 — MCP Tools', 'Production API for Claude Desktop, Cursor, etc.'],
+                ['L5 — Agents', 'Multi-agent federation with autonomous governance'],
+                ['L6 — Institution', 'Full organizational governance with checks and balances'],
+              ].map(([title, desc]) => (
+                <div key={title} className="p-4 rounded-lg bg-gray-900/50 border border-gray-800">
+                  <p className="text-sm font-medium text-cyan-400 mb-1">{title}</p>
+                  <p className="text-xs text-gray-500">{desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

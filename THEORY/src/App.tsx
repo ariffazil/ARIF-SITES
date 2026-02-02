@@ -1,15 +1,12 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Activity,
-  Code2,
-  Sigma,
   GitBranch,
   Shield,
   AlertTriangle,
   CheckCircle2,
   XCircle,
   PauseCircle,
-  ExternalLink,
   BookOpen,
   Copy,
   ChevronDown,
@@ -22,12 +19,14 @@ import {
   Lock,
   Gauge,
   Bot,
-  User
+  User,
+  Menu,
+  X
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
@@ -688,6 +687,7 @@ function App() {
   const [copiedBibtex, setCopiedBibtex] = useState(false);
   const [copiedBootstrap, setCopiedBootstrap] = useState(false);
   const [expandedPhil, setExpandedPhil] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const health = useSystemHealth();
 
   useEffect(() => {
@@ -721,63 +721,32 @@ function App() {
         />
 
         {/* ═══════════════════════════════════════ */}
-        {/* STATUS BAR                              */}
-        {/* ═══════════════════════════════════════ */}
-        <div className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-          <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Badge variant="outline" className="border-green-500/50 text-green-400 text-xs">
-                <Activity className="w-3 h-3 mr-1" /> v55.2
-              </Badge>
-              <span className="text-gray-700">|</span>
-              <Badge variant="outline" className="border-cyan-500/50 text-cyan-400 text-xs">
-                44 REFS
-              </Badge>
-              <span className="text-gray-700">|</span>
-              <Badge variant="outline" className={`text-xs ${
-                health.verdict === 'SEAL' ? 'border-green-500/50 text-green-400' :
-                health.verdict === 'INIT' ? 'border-gray-500/50 text-gray-400' :
-                'border-yellow-500/50 text-yellow-400'
-              }`}>
-                {health.verdict === 'INIT' ? '...' : health.verdict}
-              </Badge>
-            </div>
-            <div className="flex items-center gap-3">
-              {/* System Health Metrics */}
-              <div className="hidden sm:flex items-center gap-3 text-[10px] font-mono text-gray-500">
-                <span>ΔS: <span className={health.clarity <= 0 ? 'text-green-400' : 'text-red-400'}>{health.clarity.toFixed(3)}</span></span>
-                <span>Ψ: <span className={health.stability >= 1.0 ? 'text-green-400' : 'text-red-400'}>{health.stability.toFixed(2)}</span></span>
-                <span>Ω₀: <span className={health.humility >= 0.03 && health.humility <= 0.05 ? 'text-green-400' : 'text-red-400'}>{health.humility.toFixed(3)}</span></span>
-                <span>G: <span className={health.genius >= 0.80 ? 'text-green-400' : 'text-amber-400'}>{health.genius.toFixed(2)}</span></span>
-              </div>
-              <span className="text-gray-700">|</span>
-              {/* 888 Judge Sovereign Authority */}
-              <Tooltip>
-                <TooltipTrigger>
-                  <Badge variant="outline" className="border-purple-500/50 text-purple-400 text-xs bg-purple-500/5">
-                    <Crown className="w-3 h-3 mr-1" /> 888 JUDGE
-                  </Badge>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="text-xs">Human sovereign authority (F13). You hold final veto power over all machine verdicts.</p>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══════════════════════════════════════ */}
         {/* NAVIGATION                              */}
         {/* ═══════════════════════════════════════ */}
-        <nav className={`fixed top-10 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'bg-black/95' : ''}`}>
-          <div className="max-w-7xl mx-auto px-4 border-y border-amber-500/20">
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
+          <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center justify-between py-4">
-              <div className="hidden md:flex items-center gap-8">
-                <a href="#section-1" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Problem</a>
-                <a href="#section-2" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Solution</a>
-                <a href="#section-5" className="text-[10px] font-display text-gray-500 hover:text-amber-500 transition-colors">Floors</a>
+              {/* Logo */}
+              <a href="#" className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center">
+                  <Shield className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <span className="font-semibold text-lg">APEX</span>
+                  <span className="text-xs text-gray-500 ml-2 hidden sm:inline">THEORY</span>
+                </div>
+              </a>
+
+              {/* Desktop links */}
+              <div className="hidden md:flex items-center gap-6">
+                <a href="#section-1" className="text-sm text-gray-400 hover:text-white transition-colors">Problem</a>
+                <a href="#section-2" className="text-sm text-gray-400 hover:text-white transition-colors">Solution</a>
+                <a href="#section-5" className="text-sm text-gray-400 hover:text-white transition-colors">Floors</a>
+                <a href="#section-8" className="text-sm text-gray-400 hover:text-white transition-colors">Engines</a>
               </div>
-              <div className="flex items-center justify-center gap-2">
+
+              {/* Trinity nav */}
+              <div className="hidden md:flex items-center gap-2">
                 <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors">
                   HUMAN
                 </a>
@@ -788,85 +757,118 @@ function App() {
                   APPS
                 </a>
               </div>
-              <div className="hidden md:block text-[10px] font-display text-amber-500/40">
-                SOVEREIGNLY_SEALED
-              </div>
+
+              {/* Mobile menu */}
+              <button type="button" className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
             </div>
           </div>
+
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-[#0a0a0a] border-b border-gray-800 px-4 py-4 space-y-3">
+              <a href="#section-1" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Problem</a>
+              <a href="#section-2" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Solution</a>
+              <a href="#section-5" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Floors</a>
+              <a href="#section-8" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Engines</a>
+              <div className="border-t border-gray-800 pt-3 flex gap-2">
+                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs hover:bg-red-900/20">HUMAN</a>
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-gradient-to-r from-red-900/30 via-amber-900/30 to-cyan-900/30 text-gray-200 text-xs border border-gray-700/50">THEORY</a>
+                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs hover:bg-cyan-900/20">APPS</a>
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* ═══════════════════════════════════════ */}
         {/* HERO                                    */}
         {/* ═══════════════════════════════════════ */}
-        <section className="relative min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
           {/* Large background symbol */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[40rem] font-bold text-amber-500/5 pointer-events-none select-none z-0 font-display">
             Ψ
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
-            <div className="flex-1 text-left">
-              <div className="flex items-center gap-4 text-[10px] font-display text-amber-500/60 mb-12 tracking-[0.3em]">
-                <span>ARIF FAZIL</span>
-                <span className="w-12 h-[1px] bg-amber-500/30" />
-                <span>v55.2 HTA</span>
+          <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            {/* Tagline pill */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-8">
+              <Shield className="w-4 h-4 text-amber-400" />
+              <span className="text-sm text-amber-400">THEORY Layer · Constitutional Canon</span>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
+              <span className="text-white">APEX</span><span className="text-amber-500">.</span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
+              Constitutional Canon for AI Governance
+            </p>
+
+            {/* Architecture tag */}
+            <p className="text-sm text-gray-500 mb-3 font-mono">
+              Thermodynamically Grounded · 13 Formal Constraints · Cryptographic Audit
+            </p>
+
+            {/* Description */}
+            <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
+              A thermodynamically grounded constitutional framework combining{' '}
+              <span className="text-white font-medium">13 formal constraints</span>,{' '}
+              <span className="text-white font-medium">HUMAN THEORY APPS architecture</span>, and{' '}
+              <span className="text-white font-medium">cryptographic audit trails</span>.
+            </p>
+
+            {/* Engine badges */}
+            <div className="flex items-center justify-center gap-4 mb-10 flex-wrap">
+              {[
+                { symbol: 'Δ', label: 'ARIF', desc: 'Epistemic', color: 'amber' },
+                { symbol: 'Ω', label: 'ADAM', desc: 'Safety', color: 'amber' },
+                { symbol: 'Ψ', label: 'APEX', desc: 'Authority', color: 'amber' },
+              ].map((engine) => (
+                <div key={engine.label} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
+                  <span className="text-lg font-light text-amber-400 font-display">{engine.symbol}</span>
+                  <span className="text-sm text-amber-400 font-medium">{engine.label}</span>
+                  <span className="text-xs text-gray-500">{engine.desc}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Status + Version */}
+            <div className="flex items-center justify-center gap-4 mb-10 flex-wrap">
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
+                health.verdict === 'SEAL' ? 'border-green-500/30 bg-green-500/10' : 'border-gray-500/30 bg-gray-500/10'
+              }`}>
+                <Activity className={`w-4 h-4 ${health.verdict === 'SEAL' ? 'text-green-400' : 'text-gray-400'}`} />
+                <span className={`text-sm font-medium ${health.verdict === 'SEAL' ? 'text-green-400' : 'text-gray-400'}`}>
+                  {health.verdict === 'INIT' ? '...' : health.verdict}
+                </span>
+                <span className="text-sm text-gray-500">v55.2</span>
               </div>
-
-              <h1 className="text-7xl md:text-9xl font-display font-bold mb-8 text-white leading-none">
-                APEX<span className="text-amber-500">.</span>
-              </h1>
-
-              <div className="inline-block px-4 py-2 border border-amber-500/40 bg-amber-500/5 mb-8">
-                <p className="text-xs font-display text-amber-500 tracking-widest">
-                  Constitutional Canon for AI Governance
-                </p>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10">
+                <Shield className="w-4 h-4 text-amber-400" />
+                <span className="text-sm text-amber-400">13 Floors</span>
               </div>
-
-              <p className="max-w-xl text-gray-400 leading-relaxed mb-12 text-lg font-mono">
-                A thermodynamically grounded constitutional framework combining 
-                <span className="text-white font-bold"> 13 formal constraints</span>, 
-                <span className="text-white font-bold"> HUMAN THEORY APPS architecture</span>, and 
-                <span className="text-white font-bold"> cryptographic audit trails</span>.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-stretch gap-4">
-                <a href="#section-1">
-                  <Button className="rounded-none bg-amber-500 hover:bg-amber-400 text-black px-10 py-8 text-sm font-display tracking-widest w-full sm:w-auto">
-                    INITIATE PROTOCOL
-                  </Button>
-                </a>
-                <Button
-                  variant="outline"
-                  onClick={copyBootstrap}
-                  className="rounded-none border-amber-500/40 text-amber-500 hover:bg-amber-500/10 px-10 py-8 text-sm font-display tracking-widest w-full sm:w-auto"
-                >
-                  {copiedBootstrap ? 'SYSTEM_COPIED' : 'COPY_BOOTSTRAP'}
-                </Button>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-purple-500/30 bg-purple-500/10">
+                <Crown className="w-4 h-4 text-purple-400" />
+                <span className="text-sm text-purple-400">888 Judge</span>
               </div>
             </div>
 
-            <div className="flex-shrink-0 w-full md:w-auto">
-              {/* Geometric side block */}
-              <div className="relative p-12 border-2 border-amber-500/20 bg-black/40 backdrop-blur-xl">
-                <div className="absolute -top-2 -left-2 w-4 h-4 bg-amber-500" />
-                <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-amber-500" />
-                
-                <div className="space-y-12">
-                  {[
-                    { symbol: 'Δ', label: 'ARIF', desc: 'Epistemic Logic' },
-                    { symbol: 'Ω', label: 'ADAM', desc: 'Safety Guard' },
-                    { symbol: 'Ψ', label: 'APEX', desc: 'Lawful Seal' },
-                  ].map((engine) => (
-                    <div key={engine.label} className="flex items-center gap-8">
-                      <div className="text-5xl font-light text-amber-500 font-display w-16">{engine.symbol}</div>
-                      <div>
-                        <div className="text-[10px] font-display text-amber-500 tracking-[0.2em]">{engine.label}</div>
-                        <div className="text-xs text-gray-500 font-mono mt-1">{engine.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="#section-1">
+                <Button className="rounded-none bg-amber-500 hover:bg-amber-400 text-black px-10 py-6 text-sm font-display tracking-widest">
+                  INITIATE PROTOCOL
+                </Button>
+              </a>
+              <Button
+                variant="outline"
+                onClick={copyBootstrap}
+                className="rounded-none border-amber-500/40 text-amber-500 hover:bg-amber-500/10 px-10 py-6 text-sm font-display tracking-widest"
+              >
+                {copiedBootstrap ? 'SYSTEM_COPIED' : 'COPY_BOOTSTRAP'}
+              </Button>
             </div>
           </div>
         </section>
@@ -2426,147 +2428,7 @@ function App() {
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════ */}
-        {/* SECTION 11: IMPLEMENTATION              */}
-        {/* ═══════════════════════════════════════ */}
-        <section className="py-24 relative">
-          <div className="max-w-4xl mx-auto px-4">
-            <SectionHeading
-              id="section-11"
-              number="11"
-              title="Implementation for Builders"
-              subtitle="Integration architecture, API specification, and deployment options for production systems."
-            />
-
-            {/* Architecture Diagram */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.1 Integration Architecture</h3>
-              <div className="code-block text-gray-400 text-xs leading-relaxed">
-                <pre>{`User Query → arifOS Kernel → LLM (Claude / GPT / Gemini)
-    ↓
-[Constitutional Gates]
-    ↓
-ARIF (Truth Check)    ←  Bayesian inference, logical entailment
-ADAM (Safety Check)   ←  Harm minimization, stakeholder analysis
-APEX (Authority Check) ← Compliance verification, BLS signatures
-    ↓
-Floor Validation (F1–F13)
-    ↓
-Tri-Witness Consensus (W ≥ 0.95)
-    ↓
-VAULT (Merkle DAG Audit Log)
-    ↓
-Response to User`}</pre>
-              </div>
-            </div>
-
-            {/* API */}
-            <div className="mb-12">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.2 API Specification</h3>
-              <div className="code-block text-gray-300 text-sm">
-                <pre>{`// Initialize session
-await arifos.init({
-  authority_token: string,
-  injection_scan: boolean  // default: true
-})
-
-// Submit query through Trinity pipeline
-result = await arifos.trinity({
-  query: string,
-  context: dict | null
-})
-
-// Individual engine calls
-truth_check  = await arifos.arif(query, context)
-safety_check = await arifos.adam(action, context)
-verdict      = await arifos.apex(truth_check, safety_check)
-
-// Audit retrieval with Merkle verification
-audit_trail = await arifos.vault.get_history({
-  session_id: string,
-  verify_merkle: boolean  // default: true
-})`}</pre>
-              </div>
-            </div>
-
-            {/* Deployment Options */}
-            <div className="mb-8">
-              <h3 className="text-xl font-semibold mb-4 text-gray-200">10.3 Deployment Options</h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {[
-                  ['L1 — System Prompts', 'Copy constitutional prompts into LLM chat interfaces (zero setup)'],
-                  ['L2 — Skills', 'Reusable YAML templates for common governance tasks'],
-                  ['L3 — Workflows', 'Standard Operating Procedures for team collaboration'],
-                  ['L4 — MCP Tools', 'Production API for Claude Desktop, Cursor, etc.'],
-                  ['L5 — Agents', 'Multi-agent federation with autonomous governance'],
-                  ['L6 — Institution', 'Full organizational governance with checks and balances'],
-                ].map(([title, desc]) => (
-                  <div key={title} className="p-4 rounded-lg bg-black/30 border border-gray-800/50">
-                    <p className="text-sm font-medium text-amber-400 mb-1">{title}</p>
-                    <p className="text-xs text-gray-500">{desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Builder Links */}
-            <div className="grid sm:grid-cols-3 gap-6 mt-12">
-              <a href="https://arifos.arif-fazil.com/getting-started/quick-start/" className="group">
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-cyan-500/50 transition-all h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
-                      <Code2 className="w-6 h-6 text-cyan-400" />
-                    </div>
-                    <CardTitle className="text-lg">Quick Start</CardTitle>
-                    <p className="text-sm text-gray-500">Constitutional Floors</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-400 mb-4">Understand normative invariants</p>
-                    <span className="text-cyan-400 text-sm flex items-center gap-1">
-                      Begin <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </a>
-
-              <a href="https://arifos.arif-fazil.com/core-concepts/metabolic-loop/" className="group">
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-cyan-500/50 transition-all h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4 group-hover:bg-cyan-500/30 transition-colors">
-                      <Sigma className="w-6 h-6 text-cyan-400" />
-                    </div>
-                    <CardTitle className="text-lg">Core Concepts</CardTitle>
-                    <p className="text-sm text-gray-500">Metabolic Loop</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-400 mb-4">Runtime governance cycle</p>
-                    <span className="text-cyan-400 text-sm flex items-center gap-1">
-                      Study <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </a>
-
-              <a href="https://arifos.arif-fazil.com/constitutional-floors/" className="group">
-                <Card className="bg-gray-900/50 border-gray-800 hover:border-amber-500/50 transition-all h-full">
-                  <CardHeader>
-                    <div className="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mb-4 group-hover:bg-amber-500/30 transition-colors">
-                      <Shield className="w-6 h-6 text-amber-400" />
-                    </div>
-                    <CardTitle className="text-lg">ΔΩΨ Reference</CardTitle>
-                    <p className="text-sm text-gray-500">Engine Specifications</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-400 mb-4">Formal design documentation</p>
-                    <span className="text-amber-400 text-sm flex items-center gap-1">
-                      Explore <ExternalLink className="w-3 h-3" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* Section 11 (Implementation for Builders) moved to APPS site */}
 
         {/* ═══════════════════════════════════════ */}
         {/* SECTION 12: LIMITATIONS & UNCERTAINTY   */}
