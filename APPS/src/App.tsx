@@ -32,10 +32,9 @@ import {
   Building2,
   Brain,
   ChevronDown,
-  ChevronUp,
-  Triangle
+  ChevronUp
 } from 'lucide-react';
-import { TrinityLogo, DitempaBadge, SiteSwitcher } from '../../shared/components/TrinityLogo';
+import { TrinityLogo, DitempaBadge, SiteSwitcher } from './shared/components/TrinityLogo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';

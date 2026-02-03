@@ -1,6 +1,9 @@
 // TrinityLogo.tsx - Shared across all three sites
 // The "A" logo with blue (APPS), yellow (THEORY), red (HUMAN) segments
 
+/** @jsxImportSource react */
+import React from 'react';
+
 interface TrinityLogoProps {
   variant: 'human' | 'theory' | 'apps';
   size?: number;
