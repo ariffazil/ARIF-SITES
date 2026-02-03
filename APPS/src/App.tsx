@@ -34,7 +34,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
-import { TrinityLogo, DitempaBadge, SiteSwitcher } from './shared/components/TrinityLogo';
+// Note: TrinityLogo components temporarily disabled for Cloudflare Pages compatibility
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -438,7 +438,9 @@ function App() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <TrinityLogo variant="apps" size={36} />
+              <div className="w-9 h-9 rounded bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                <Cpu className="w-5 h-5 text-white" />
+              </div>
               <div>
                 <span className="font-semibold text-lg text-cyan-400">arifOS</span>
                 <span className="text-xs text-cyan-500/60 ml-2 hidden sm:inline font-mono">MIND</span>
@@ -453,7 +455,11 @@ function App() {
               <a href="#mcp" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">MCP Tools</a>
               <a href="#api" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">API</a>
               <a href="#implementation" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">Implementation</a>
-              <SiteSwitcher current="apps" />
+              <div className="flex items-center gap-2 ml-4">
+                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors">HUMAN</a>
+                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-yellow-400 text-xs font-medium hover:bg-yellow-900/20 transition-colors">THEORY</a>
+                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40">APPS</a>
+              </div>
             </div>
 
             {/* Mobile menu button */}
@@ -489,12 +495,17 @@ function App() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           {/* Center Logo */}
           <div className="flex justify-center mb-6">
-            <TrinityLogo variant="apps" size={140} />
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+              <Cpu className="w-16 h-16 text-white" />
+            </div>
           </div>
           
           {/* Ditempa Badge */}
           <div className="flex justify-center mb-8">
-            <DitempaBadge variant="apps" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-400 text-xs font-mono tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+              DITEMPA BUKAN DIBERI
+            </div>
           </div>
 
           {/* Tagline */}
