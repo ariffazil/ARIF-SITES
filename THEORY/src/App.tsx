@@ -13,6 +13,8 @@ import {
   ChevronUp,
   Info,
   Crown,
+  Bot,
+  User,
   Menu,
   X
 } from 'lucide-react';
@@ -220,29 +222,29 @@ const BIBTEX_CONTENT = `@techreport{arifos2026apex,
 
 const THREE_PILLARS = [
   {
-    symbol: 'Φ',
+    symbol: 'Phi',
     name: 'Physics',
     subtitle: 'The Foundation of Reality',
-    description: 'Thermodynamics, information theory, and the physical constraints that govern all computation. Landauer's principle: every irreversible operation has an energy cost of kT ln 2.',
-    equations: ['\\\\Delta S \\\\geq 0', 'E = mc^2', 'I = -\\\\log_2 P(x)'],
+    description: 'Thermodynamics, information theory, and the physical constraints that govern all computation. Landauer principle: every irreversible operation has an energy cost of kT ln 2.',
+    equations: ['Delta S >= 0', 'E = mc^2', 'I = -log_2 P(x)'],
     domains: ['Thermodynamics', 'Quantum Mechanics', 'Statistical Mechanics', 'Cosmology'],
     floors: ['F4', 'F5', 'F7'],
   },
   {
-    symbol: '∑',
+    symbol: 'Sum',
     name: 'Mathematics',
     subtitle: 'The Language of Measurement',
-    description: 'Bayesian inference, game theory, and formal systems that enable precise reasoning under uncertainty. Gödel, Nash, and Shannon provide the scaffolding.',
-    equations: ['P(A|B) = \\\\frac{P(B|A)P(A)}{P(B)}', '\\\\sum_{i} p_i = 1', '\\\\Omega_0 \\\\in [0.03, 0.05]'],
+    description: 'Bayesian inference, game theory, and formal systems that enable precise reasoning under uncertainty. Godel, Nash, and Shannon provide the scaffolding.',
+    equations: ['P(A|B) = P(B|A)P(A)/P(B)', 'Sum p_i = 1', 'Omega_0 in [0.03, 0.05]'],
     domains: ['Probability Theory', 'Game Theory', 'Information Theory', 'Logic'],
     floors: ['F2', 'F3', 'F8'],
   },
   {
-    symbol: 'λ',
+    symbol: 'Lambda',
     name: 'Language',
     subtitle: 'The Bridge of Knowledge',
     description: 'Natural language as the compression mechanism for human knowledge. Wittgenstein, Austin, and the pragmatics of meaning transfer across minds.',
-    equations: ['H(X) = -\\sum p(x) \\log p(x)', '\\lambda x. x', 'S \\rightarrow NP\\ VP'],
+    equations: ['H(X) = -Sum p(x) log p(x)', 'lambda x. x', 'S -> NP VP'],
     domains: ['Linguistics', 'Semantics', 'Pragmatics', 'Philosophy of Mind'],
     floors: ['F1', 'F6', 'F9'],
   },
@@ -252,16 +254,16 @@ const THREE_PILLARS = [
 // Meta-Intelligence Definition
 // ─────────────────────────────────────────────────
 
-const META_INTELLIGENCE = `Meta-Intelligence is intelligence that understands its own limits.
-
-Not merely pattern recognition, but awareness of:
-- Thermodynamic costs (Physics)
-- Epistemic uncertainty (Math)
-- Semantic drift (Language)
-
-The 13 Constitutional Floors emerge from these three pillars:
-• Physics mandates reversibility (F1), entropy reduction (F4), and stability (F5)
-• Mathematics enables truth verification (F2), consensus (F3), and calibration (F7)
+// const META_INTELLIGENCE = `Meta-Intelligence is intelligence that understands its own limits.
+// 
+// Not merely pattern recognition, but awareness of:
+// - Thermodynamic costs (Physics)
+// - Epistemic uncertainty (Math)
+// - Semantic drift (Language)
+// 
+// The 13 Constitutional Floors emerge from these three pillars:
+// • Physics mandates reversibility (F1), entropy reduction (F4), and stability (F5)
+// • Mathematics enables truth verification (F2), consensus (F3), and calibration (F7)
 • Language requires clarity (F4), empathy (F6), and anti-hantu constraints (F9)`;
 
 // ─────────────────────────────────────────────────
@@ -1854,20 +1856,20 @@ function App() {
               ].map((item) => (
                 <div key={item.id} className="rounded-lg border border-theory-500/50 bg-gray-900/30 hover:border-theory-300/60 transition-colors">
                   <button
-                    onClick={() => setExpandedPhil(expandedPhil === item.id ? null : item.id)}
+                    onClick={() => setExpandedPillar(expandedPillar === item.id ? null : item.id)}
                     className="w-full flex items-center justify-between p-4 text-left hover:bg-theory-300/5 transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <span className="text-lg font-semibold text-gray-200">{item.title}</span>
                       <Badge variant="outline" className="text-xs border-gray-700">{item.floors}</Badge>
                     </div>
-                    {expandedPhil === item.id ? (
+                    {expandedPillar === item.id ? (
                       <ChevronUp className="w-5 h-5 text-gray-500" />
                     ) : (
                       <ChevronDown className="w-5 h-5 text-gray-500" />
                     )}
                   </button>
-                  {expandedPhil === item.id && (
+                  {expandedPillar === item.id && (
                     <div className="px-4 pb-4">{item.content}</div>
                   )}
                 </div>
