@@ -122,6 +122,12 @@ npm run build --prefix APPS
 
 - **arifOS** ([github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)) — The MCP backend (MIND layer)
 
+## For AI Agents
+
+- **AGENTS.md** — Canonical instructions for AI systems interacting with arifOS
+- **TRINITY_ARCHITECTURE.md** — Philosophy and design rationale
+- **SECURITY_ANALYSIS_LLMS_TXT.md** — Threat model and verification procedures
+
 ## AI Agent Context — Trinity llms.txt
 
 AI systems can fetch canonical context from all three Trinity sites:
@@ -167,4 +173,6 @@ All sites auto-deploy on push to `main` via GitHub Actions → Cloudflare Pages.
 
 > **DITEMPA BUKAN DIBERI** — *Forged, Not Given*
 > 
-> v55.3 · Trinity Architecture · ΔΩΨ
+> v55.3 · Trinity Architecture · ΔΩΨ · llms.txt Standard Extension
+> 
+> **Status:** All 3 sites LIVE with cryptographic verification (SHA-256 hashes)
