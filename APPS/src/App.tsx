@@ -32,8 +32,10 @@ import {
   Building2,
   Brain,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Triangle
 } from 'lucide-react';
+import { TrinityLogo, DitempaBadge, SiteSwitcher } from '../../shared/components/TrinityLogo';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -406,19 +408,18 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans relative overflow-x-hidden">
-      {/* Animated Mesh Gradient Background */}
+      {/* Animated Mesh Gradient Background - Cyan Theme */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="mesh-gradient mesh-1" />
-        <div className="mesh-gradient mesh-2" />
-        <div className="mesh-gradient mesh-3" />
-        <div className="torus-ring" />
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-400/5 rounded-full blur-[100px]" />
       </div>
 
       {/* Geometric Grid Pattern */}
-      <div className="fixed inset-0 geometric-bg pointer-events-none opacity-50" />
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#06b6d4/5_1px,transparent_1px),linear-gradient(to_bottom,#06b6d4/5_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
-      {/* Fractal Radial Layer */}
-      <div className="fixed inset-0 fractal-radial pointer-events-none opacity-40" />
+      {/* Circuit Pattern Overlay */}
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.03)_0%,transparent_70%)] pointer-events-none" />
 
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-800' : 'bg-transparent'}`}>
@@ -426,34 +427,22 @@ function App() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                <Cpu className="w-4 h-4 text-white" />
-              </div>
+              <TrinityLogo variant="apps" size={36} />
               <div>
-                <span className="font-semibold text-lg">arifOS</span>
-                <span className="text-xs text-gray-500 ml-2 hidden sm:inline">APPS</span>
+                <span className="font-semibold text-lg text-cyan-400">arifOS</span>
+                <span className="text-xs text-cyan-500/60 ml-2 hidden sm:inline font-mono">MIND</span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              <a href="#overview" className="text-sm text-gray-400 hover:text-white transition-colors">Overview</a>
-              <a href="#layers" className="text-sm text-gray-400 hover:text-white transition-colors">7 Layers</a>
-              <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">9 Floors</a>
-              <a href="#mcp" className="text-sm text-gray-400 hover:text-white transition-colors">MCP Tools</a>
-              <a href="#api" className="text-sm text-gray-400 hover:text-white transition-colors">API</a>
-              <a href="#implementation" className="text-sm text-gray-400 hover:text-white transition-colors">Implementation</a>
-              <div className="flex items-center gap-2 ml-4">
-                <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors flex items-center gap-1.5">
-                  <Globe className="w-3 h-3" /> HUMAN
-                </a>
-                <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded text-amber-400 text-xs font-medium hover:bg-amber-900/20 transition-colors flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3" /> THEORY
-                </a>
-                <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-medium border border-cyan-500/40 flex items-center gap-1.5">
-                  <Cpu className="w-3 h-3" /> APPS
-                </a>
-              </div>
+              <a href="#overview" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">Overview</a>
+              <a href="#layers" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">7 Layers</a>
+              <a href="#floors" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">9 Floors</a>
+              <a href="#mcp" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">MCP Tools</a>
+              <a href="#api" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">API</a>
+              <a href="#implementation" className="text-sm text-gray-400 hover:text-cyan-400 transition-colors">Implementation</a>
+              <SiteSwitcher current="apps" />
             </div>
 
             {/* Mobile menu button */}
@@ -487,24 +476,34 @@ function App() {
       {/* Hero Section */}
       <section id="overview" className="relative min-h-screen flex items-center justify-center pt-16">
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+          {/* Center Logo */}
+          <div className="flex justify-center mb-6">
+            <TrinityLogo variant="apps" size={140} />
+          </div>
+          
+          {/* Ditempa Badge */}
+          <div className="flex justify-center mb-8">
+            <DitempaBadge variant="apps" />
+          </div>
+
           {/* Tagline */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-8">
             <Cpu className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm text-cyan-400">APPS Layer · 7-Layer Application Stack</span>
+            <span className="text-sm text-cyan-400 font-mono">MIND · L7 Application Stack</span>
           </div>
 
           {/* Title */}
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-            <span className="gradient-text">arifOS</span>
+            <span className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-blue-400 text-transparent bg-clip-text">arifOS</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
-            AI That Can't Lie to You
+          <p className="text-xl md:text-2xl text-cyan-200/80 mb-4 max-w-2xl mx-auto">
+            Constitutional Kernel for AI
           </p>
 
           {/* Architecture Tag */}
-          <p className="text-sm text-gray-500 mb-3 font-mono">
+          <p className="text-sm text-cyan-500/60 mb-3 font-mono">
             From Zero-Context Prompt to Constitutional AGI
           </p>
 
