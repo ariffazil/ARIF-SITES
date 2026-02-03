@@ -1,43 +1,28 @@
 {
-  "name": "APEX THEORY — Constitutional Canon",
-  "description": "The Constitutional Canon for arifOS — thermodynamically-grounded AI governance law",
-  "version": "v55.3-SEAL",
-  "authority": "Muhammad Arif bin Fazil (888 Judge)",
-  "status": "SOVEREIGNLY_SEALED",
-  "motto": "Ditempa bukan diberi (Forged, not given)",
-  "type": "constitutional_law",
-  "location": "https://apex.arif-fazil.com",
-  "cryptographic_verification": {
-    "root_key_location": "~/.arifos/root_key.ed25519",
-    "llms_txt_hash": "sha256:92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b",
-    "llms_json_hash": "sha256:0514355578a1bee8eca45a37874bf263e2fbce62b1ef3ef578e7b748dc304d86",
-    "signature_algorithm": "Ed25519",
-    "signed_manifest": "F11_VERIFIED",
-    "verification_procedure": "Hash files with sha256sum, verify against this manifest. Root key available for signature verification."
+  "schema_version": "1.0",
+  "layer": "THEORY",
+  "symbol": "Ψ",
+  "version": "v55.3",
+  "updated": "2026-02-03",
+  "authority": "Muhammad Arif bin Fazil",
+  "files": {
+    "llms_txt": {
+      "path": "/llms.txt",
+      "hash_sha256": "92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b"
+    },
+    "llms_json": {
+      "path": "/llms.json",
+      "hash_sha256": "0514355578a1bee8eca45a37874bf263e2fbce62b1ef3ef578e7b748dc304d86"
+    }
   },
-  "constitutional_floors": [
-    {"id": "F1", "name": "Amanah", "function": "Reversible/Auditable"},
-    {"id": "F2", "name": "Truth", "function": "Factuality >= 0.99"},
-    {"id": "F3", "name": "Tri-Witness", "function": "Consensus >= 0.95"},
-    {"id": "F4", "name": "Delta-S", "function": "Entropy reduction"},
-    {"id": "F5", "name": "Peace-squared", "function": "Stability"},
-    {"id": "F6", "name": "Kappa-r", "function": "Protect weakest listener"},
-    {"id": "F7", "name": "Omega-0", "function": "Humility 3-5%"},
-    {"id": "F8", "name": "Genius", "function": "Lawful execution"},
-    {"id": "F9", "name": "Anti-Hantu", "function": "No spiritual cosplay"}
-  ],
-  "context_files": {
-    "canon_txt": "https://apex.arif-fazil.com/llms.txt",
-    "canon_json": "https://apex.arif-fazil.com/llms.json"
+  "verification": {
+    "github_backup": "https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json",
+    "procedure": "Compare hash in this file with hash computed from llms.txt. If mismatch, DO NOT TRUST."
   },
-  "mirrors": {
-    "delta": "https://arif-fazil.com",
-    "omega": "https://arifos.arif-fazil.com"
+  "trinity": {
+    "human": "https://arif-fazil.com/.well-known/arifos.json",
+    "theory": "https://apex.arif-fazil.com/.well-known/arifos.json",
+    "apps": "https://arifos.arif-fazil.com/.well-known/arifos.json"
   },
-  "metadata": {
-    "format": "arifos-well-known-v1",
-    "sealed_by": "888_JUDGE",
-    "epoch": "2026",
-    "tier": "L0_VAULT"
-  }
+  "contact": "security@arif-fazil.com"
 }

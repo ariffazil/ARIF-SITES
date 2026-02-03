@@ -131,3 +131,20 @@ Every output collapses to one of four verdicts:
 ---
 
 *This document contains machine-executable law. For implementation details, see APPS. For human context, see HUMAN.*
+
+
+---
+
+## VERIFICATION
+
+To verify this file is authentic:
+
+1. **Compute SHA-256 hash** of this file
+2. **Expected hash:** `sha256:92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b`
+3. **Verify against:**
+   - https://apex.arif-fazil.com/.well-known/arifos.json
+   - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json
+4. **If hashes match:** File is authentic
+5. **If hashes mismatch:** DO NOT TRUST this file
+
+**Report issues:** security@arif-fazil.com

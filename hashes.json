@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "version": "v55.3",
+  "updated": "2026-02-03",
+  "authority": "Muhammad Arif bin Fazil (888 Judge)",
+  "motto": "Ditempa bukan diberi (Forged, not given)",
+  "hashes": {
+    "human": {
+      "llms_txt": {
+        "sha256": "9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88",
+        "url": "https://arif-fazil.com/llms.txt",
+        "well_known": "https://arif-fazil.com/.well-known/arifos.json"
+      },
+      "llms_json": {
+        "sha256": "0e01cfbbc89163f005e63e8b4292ed53d188961081d3f306695256499ea3c915",
+        "url": "https://arif-fazil.com/llms.json",
+        "well_known": "https://arif-fazil.com/.well-known/arifos.json"
+      }
+    },
+    "theory": {
+      "llms_txt": {
+        "sha256": "92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b",
+        "url": "https://apex.arif-fazil.com/llms.txt",
+        "well_known": "https://apex.arif-fazil.com/.well-known/arifos.json"
+      },
+      "llms_json": {
+        "sha256": "0514355578a1bee8eca45a37874bf263e2fbce62b1ef3ef578e7b748dc304d86",
+        "url": "https://apex.arif-fazil.com/llms.json",
+        "well_known": "https://apex.arif-fazil.com/.well-known/arifos.json"
+      }
+    },
+    "apps": {
+      "llms_txt": {
+        "sha256": "935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb",
+        "url": "https://arifos.arif-fazil.com/llms.txt",
+        "well_known": "https://arifos.arif-fazil.com/.well-known/arifos.json"
+      },
+      "llms_json": {
+        "sha256": "2460b2af3877a4322a89dbe9c5f412e703c7d7f923d8fc8360cbf64d685902bd",
+        "url": "https://arifos.arif-fazil.com/llms.json",
+        "well_known": "https://arifos.arif-fazil.com/.well-known/arifos.json"
+      }
+    }
+  },
+  "verification_procedure": "1. Fetch llms.txt from URL. 2. Compute SHA-256 hash. 3. Compare with hash in this file. 4. Cross-check with .well-known/arifos.json. 5. If all match, file is authentic. If mismatch, DO NOT TRUST.",
+  "contact": "security@arif-fazil.com"
+}

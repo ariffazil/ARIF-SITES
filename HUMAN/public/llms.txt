@@ -155,3 +155,20 @@ When interacting with Muhammad Arif bin Fazil, understand that:
 ---
 
 *Truth must cool before it rules.*
+
+
+---
+
+## VERIFICATION
+
+To verify this file is authentic:
+
+1. **Compute SHA-256 hash** of this file
+2. **Expected hash:** `sha256:9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88`
+3. **Verify against:**
+   - https://arif-fazil.com/.well-known/arifos.json
+   - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json
+4. **If hashes match:** File is authentic
+5. **If hashes mismatch:** DO NOT TRUST this file
+
+**Report issues:** security@arif-fazil.com

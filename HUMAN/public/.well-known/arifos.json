@@ -1,39 +1,28 @@
 {
-  "name": "Muhammad Arif bin Fazil — Sovereign Memory",
-  "description": "Human context and sovereign identity for arifOS constitutional AI governance",
-  "version": "v55.3-SEAL",
-  "authority": "Muhammad Arif bin Fazil (888 Judge)",
-  "status": "SOVEREIGNLY_SEALED",
-  "motto": "Ditempa bukan diberi (Forged, not given)",
-  "type": "human_context",
-  "location": "https://arif-fazil.com",
-  "identity": {
-    "name": "Muhammad Arif bin Fazil",
-    "born": "1990-05-22",
-    "origin": "Bayan Lepas, Penang, Malaysia",
-    "role": "Anak Sulung, Architect, Exploration Geoscientist",
-    "scar_weight": 1.0
+  "schema_version": "1.0",
+  "layer": "HUMAN",
+  "symbol": "Δ",
+  "version": "v55.3",
+  "updated": "2026-02-03",
+  "authority": "Muhammad Arif bin Fazil",
+  "files": {
+    "llms_txt": {
+      "path": "/llms.txt",
+      "hash_sha256": "9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88"
+    },
+    "llms_json": {
+      "path": "/llms.json",
+      "hash_sha256": "0e01cfbbc89163f005e63e8b4292ed53d188961081d3f306695256499ea3c915"
+    }
   },
-  "cryptographic_verification": {
-    "root_key_location": "~/.arifos/root_key.ed25519",
-    "llms_txt_hash": "sha256:9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88",
-    "llms_json_hash": "sha256:0e01cfbbc89163f005e63e8b4292ed53d188961081d3f306695256499ea3c915",
-    "signature_algorithm": "Ed25519",
-    "signed_manifest": "F11_VERIFIED",
-    "verification_procedure": "Hash files with sha256sum, verify against this manifest. Root key available for signature verification."
+  "verification": {
+    "github_backup": "https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json",
+    "procedure": "Compare hash in this file with hash computed from llms.txt. If mismatch, DO NOT TRUST."
   },
-  "context_files": {
-    "human_txt": "https://arif-fazil.com/llms.txt",
-    "human_json": "https://arif-fazil.com/llms.json"
+  "trinity": {
+    "human": "https://arif-fazil.com/.well-known/arifos.json",
+    "theory": "https://apex.arif-fazil.com/.well-known/arifos.json",
+    "apps": "https://arifos.arif-fazil.com/.well-known/arifos.json"
   },
-  "mirrors": {
-    "theory": "https://apex.arif-fazil.com",
-    "apps": "https://arifos.arif-fazil.com"
-  },
-  "metadata": {
-    "format": "arifos-well-known-v1",
-    "sealed_by": "888_JUDGE",
-    "epoch": "2026",
-    "tier": "AAA_HUMAN"
-  }
+  "contact": "security@arif-fazil.com"
 }

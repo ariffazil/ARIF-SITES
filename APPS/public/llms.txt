@@ -165,3 +165,20 @@ print(response.audit_hash)   # SHA-256
 ---
 
 *This document describes the implementation layer. For the constitutional law, see APEX THEORY. For the human context, see ARIF FAZIL dossier.*
+
+
+---
+
+## VERIFICATION
+
+To verify this file is authentic:
+
+1. **Compute SHA-256 hash** of this file
+2. **Expected hash:** `sha256:935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb`
+3. **Verify against:**
+   - https://arifos.arif-fazil.com/.well-known/arifos.json
+   - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json
+4. **If hashes match:** File is authentic
+5. **If hashes mismatch:** DO NOT TRUST this file
+
+**Report issues:** security@arif-fazil.com

@@ -1,71 +1,28 @@
 {
-  "name": "arifOS",
-  "description": "Constitutional AI Governance Framework",
-  "tagline": "AI That Can't Lie to You",
-  "version": "v55.3-SEAL",
+  "schema_version": "1.0",
+  "layer": "APPS",
+  "symbol": "Ω",
+  "version": "v55.3",
+  "updated": "2026-02-03",
   "authority": "Muhammad Arif bin Fazil",
-  "status": "SOVEREIGNLY_SEALED",
-  "motto": "Ditempa bukan diberi (Forged, not given)",
-  "type": "constitutional_framework",
-  "cryptographic_verification": {
-    "root_key_location": "~/.arifos/root_key.ed25519",
-    "llms_txt_hash": "sha256:935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb",
-    "llms_json_hash": "sha256:2460b2af3877a4322a89dbe9c5f412e703c7d7f923d8fc8360cbf64d685902bd",
-    "signature_algorithm": "Ed25519",
-    "signed_manifest": "F11_VERIFIED",
-    "verification_procedure": "Hash files with sha256sum, verify against this manifest. Root key available for signature verification."
+  "files": {
+    "llms_txt": {
+      "path": "/llms.txt",
+      "hash_sha256": "935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb"
+    },
+    "llms_json": {
+      "path": "/llms.json",
+      "hash_sha256": "2460b2af3877a4322a89dbe9c5f412e703c7d7f923d8fc8360cbf64d685902bd"
+    }
   },
-  "endpoints": {
-    "human": "https://arif-fazil.com",
-    "theory": "https://apex.arif-fazil.com",
-    "apps": "https://arifos.arif-fazil.com",
-    "mcp": "https://aaamcp.arif-fazil.com"
+  "verification": {
+    "github_backup": "https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json",
+    "procedure": "Compare hash in this file with hash computed from llms.txt. If mismatch, DO NOT TRUST."
   },
-  "context_files": {
-    "human_txt": "https://arif-fazil.com/llms.txt",
-    "human_json": "https://arif-fazil.com/llms.json",
-    "theory_txt": "https://apex.arif-fazil.com/llms.txt",
-    "theory_json": "https://apex.arif-fazil.com/llms.json",
-    "apps_txt": "https://arifos.arif-fazil.com/llms.txt",
-    "apps_json": "https://arifos.arif-fazil.com/llms.json"
+  "trinity": {
+    "human": "https://arif-fazil.com/.well-known/arifos.json",
+    "theory": "https://apex.arif-fazil.com/.well-known/arifos.json",
+    "apps": "https://arifos.arif-fazil.com/.well-known/arifos.json"
   },
-  "constitutional_floors": [
-    {"id": "F1", "name": "Amanah", "symbol": "🛡️", "threshold": "1.0 (binary)"},
-    {"id": "F2", "name": "Truth", "symbol": "⚖️", "threshold": "1.0 (binary)"},
-    {"id": "F3", "name": "Tri-Witness", "symbol": "🔺", "threshold": "≥0.95"},
-    {"id": "F4", "name": "Delta-S", "symbol": "📉", "threshold": "≤0"},
-    {"id": "F5", "name": "Peace-squared", "symbol": "🕊️", "threshold": "≥1.0"},
-    {"id": "F6", "name": "Kappa-r", "symbol": "💝", "threshold": "≥0.95"},
-    {"id": "F7", "name": "Omega-0", "symbol": "📊", "threshold": "0.03–0.05"},
-    {"id": "F8", "name": "Genius", "symbol": "⚙️", "threshold": "1.0 (binary)"},
-    {"id": "F9", "name": "Anti-Hantu", "symbol": "👻", "threshold": "1.0 (binary)"}
-  ],
-  "verdicts": [
-    {"type": "SEAL", "meaning": "Approved", "canonical": true},
-    {"type": "PARTIAL", "meaning": "Under review", "canonical": false},
-    {"type": "SABAR", "meaning": "Sealed with reason", "canonical": true},
-    {"type": "HOLD_888", "meaning": "Await human", "canonical": false},
-    {"type": "VOID", "meaning": "Rejected", "canonical": false}
-  ],
-  "mcp_tools": [
-    "init_gate",
-    "agi_sense",
-    "agi_think",
-    "agi_reason",
-    "asi_empathize",
-    "asi_align",
-    "apex_judge",
-    "reality_search",
-    "vault_seal"
-  ],
-  "repository": "https://github.com/ariffazil/arifOS",
-  "pypi": "pip install arifos",
-  "documentation": "https://arifos.arif-fazil.com",
-  "contact": "arifbfazil@gmail.com",
-  "last_updated": "2026-02-03",
-  "metadata": {
-    "format": "arifos-well-known-v1",
-    "sealed_by": "888_JUDGE",
-    "epoch": "2026"
-  }
+  "contact": "security@arif-fazil.com"
 }
