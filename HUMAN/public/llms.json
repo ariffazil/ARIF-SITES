@@ -67,8 +67,8 @@
     "pypi": "pip install arifos"
   },
   "metadata": {
-    "version": "v55.2-SEAL",
-    "epoch": "2026-02-02",
+    "version": "v55.3-SEAL",
+    "epoch": "2026-02-03",
     "sealed_by": "ARIF FAZIL (888 Judge)",
     "authority": "SOVEREIGNLY_SEALED",
     "vault_tier": "AAA (Human Context)",

@@ -3,7 +3,7 @@
   "description": "7-Layer Application Stack for Constitutional AI Governance",
   "tagline": "AI That Can't Lie to You",
   "location": "https://arifos.arif-fazil.com/llms.txt",
-  "version": "v55.2-SEAL",
+  "version": "v55.3-SEAL",
   "authority": "Muhammad Arif bin Fazil (888 Judge)",
   "status": "SOVEREIGNLY_SEALED",
   "motto": "Ditempa bukan diberi (Forged, not given)",
@@ -15,27 +15,36 @@
     "human_context": "https://arif-fazil.com/llms.txt"
   },
   "layers": [
-    { "id": "L1", "name": "PROMPT", "purpose": "Zero-context system prompt", "status": "Ready" },
-    { "id": "L2", "name": "UNIFIED", "purpose": "Full constitutional prompt", "status": "Ready" },
-    { "id": "L3", "name": "API", "purpose": "Direct Python integration", "status": "Ready" },
-    { "id": "L4", "name": "MCP", "purpose": "Model Context Protocol tools", "status": "Ready" },
+    { "id": "L1", "name": "PROMPT", "purpose": "Zero-context system prompt", "status": "Ready", "usage": "Copy from site hero" },
+    { "id": "L2", "name": "SKILLS", "purpose": "YAML + Python templates", "status": "Ready" },
+    { "id": "L3", "name": "API", "purpose": "Direct Python integration", "status": "Ready", "usage": "pip install arifos" },
+    { "id": "L4", "name": "MCP", "purpose": "Model Context Protocol tools", "status": "Production", "endpoint": "aaamcp.arif-fazil.com/mcp" },
     { "id": "L5", "name": "SDK", "purpose": "Application framework", "status": "Beta" },
     { "id": "L6", "name": "INSTITUTION", "purpose": "Trinity multi-agent system", "status": "Design" },
     { "id": "L7", "name": "AGI", "purpose": "Constitutional AGI research", "status": "Research" }
   ],
   "mcp_tools": [
-    { "name": "apex.verdict", "function": "Non-generative judgment" },
-    { "name": "vault.read", "function": "Read from memory bands" },
-    { "name": "vault.write", "function": "Write with verdict routing" },
-    { "name": "floors.check", "function": "Validate against constitutional floors" },
-    { "name": "audit.trace", "function": "Generate audit trail" }
+    { "name": "init_gate", "stage": "000", "engine": "ASI", "function": "Session bootstrap with F11/F12 defense" },
+    { "name": "agi_sense", "stage": "111", "engine": "AGI", "function": "Input parsing & intent detection" },
+    { "name": "agi_think", "stage": "222", "engine": "AGI", "function": "Hypothesis generation (high entropy)" },
+    { "name": "agi_reason", "stage": "333", "engine": "AGI", "function": "Deep logic chains (low entropy)" },
+    { "name": "asi_empathize", "stage": "444", "engine": "ASI", "function": "Stakeholder modeling (F6)" },
+    { "name": "asi_align", "stage": "555-666", "engine": "ASI", "function": "Constitutional alignment check" },
+    { "name": "apex_verdict", "stage": "888", "engine": "APEX", "function": "9-paradox equilibrium solver" },
+    { "name": "vault_commit", "stage": "999", "engine": "APEX", "function": "Immutable ledger with Merkle sealing" },
+    { "name": "reality_search", "stage": "External", "engine": "AGI", "function": "External fact-checking (F2)" }
+  ],
+  "trinity_engines": [
+    { "symbol": "Δ", "name": "AGI", "role": "The Mind", "function": "Perceive · Reason · Map" },
+    { "symbol": "Ω", "name": "ASI", "role": "The Heart", "function": "Defend · Empathize · Bridge" },
+    { "symbol": "Ψ", "name": "APEX", "role": "The Judiciary", "function": "Decree · Prove · Seal" }
   ],
   "memory_bands": [
     { "band": "L0_VAULT", "purpose": "Constitutional law", "confidence": 1.0, "canonical": true },
     { "band": "L1_LEDGER", "purpose": "Sealed decisions", "confidence": 1.0, "canonical": true },
     { "band": "L2_ACTIVE", "purpose": "Volatile working state", "confidence": "Variable", "canonical": "Session" },
-    { "band": "L3_PHOENIX", "purpose": "Amendment proposals", "confidence": "<=0.85", "canonical": "Pending" },
-    { "band": "L4_WITNESS", "purpose": "Observations, scars", "confidence": "<=0.85", "canonical": "Suggestion" },
+    { "band": "L3_PHOENIX", "purpose": "Amendment proposals", "confidence": "≤0.85", "canonical": "Pending" },
+    { "band": "L4_WITNESS", "purpose": "Observations, scars", "confidence": "≤0.85", "canonical": "Suggestion" },
     { "band": "L5_VOID", "purpose": "Rejected facts", "confidence": null, "canonical": false }
   ],
   "verdicts": [
@@ -51,9 +60,9 @@
     "cloud": { "endpoint": "aaamcp.arif-fazil.com/mcp", "protocol": "Model Context Protocol", "auth": "API key required" }
   },
   "hta_trinity": {
-    "human": { "domain": "arif-fazil.com", "symbol": "Delta", "function": "Epistemic — The Body" },
-    "theory": { "domain": "apex.arif-fazil.com", "symbol": "Psi", "function": "Authority — The Soul" },
-    "apps": { "domain": "arifos.arif-fazil.com", "symbol": "Omega", "function": "Safety — The Mind" },
+    "human": { "domain": "arif-fazil.com", "symbol": "Δ", "function": "Epistemic — The Body" },
+    "theory": { "domain": "apex.arif-fazil.com", "symbol": "Ψ", "function": "Authority — The Soul" },
+    "apps": { "domain": "arifos.arif-fazil.com", "symbol": "Ω", "function": "Safety — The Mind" },
     "mind": { "domain": "aaamcp.arif-fazil.com", "function": "Runtime execution layer" }
   },
   "external_references": {
@@ -65,11 +74,11 @@
     "pypi": "pip install arifos"
   },
   "metadata": {
-    "version": "v55.2-SEAL",
-    "epoch": "2026-02-02",
+    "version": "v55.3-SEAL",
+    "epoch": "2026-02-03",
     "sealed_by": "Muhammad Arif bin Fazil (888 Judge)",
     "status": "SOVEREIGNLY_SEALED",
     "confidence": 1.0,
-    "type": "IMPLEMENTATION LAW"
+    "type": "IMPLEMENTATION_LAW"
   }
 }
