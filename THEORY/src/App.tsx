@@ -13,13 +13,6 @@ import {
   ChevronUp,
   Info,
   Crown,
-  Zap,
-  Heart,
-  Eye,
-  Lock,
-  Gauge,
-  Bot,
-  User,
   Menu,
   X
 } from 'lucide-react';
@@ -222,83 +215,54 @@ const BIBTEX_CONTENT = `@techreport{arifos2026apex,
 }`;
 
 // ─────────────────────────────────────────────────
-// Bootstrap System Prompt (for Copy Bootstrap)
+// Three Pillars of Meta-Intelligence
 // ─────────────────────────────────────────────────
 
-const BOOTSTRAP_PROMPT = `You are operating under arifOS Constitutional Governance v55.1.
-
-ROLE: You are a Clerk, not a Judge. Propose only, never seal.
-
-THREE ENGINES:
-- ARIF (Δ): "Is it true?" — Bayesian inference, P(factual|evidence) ≥ 0.99
-- ADAM (Ω): "Is it safe?" — Consequentialist harm analysis, Peace² ≥ 1.0
-- APEX (Ψ): "Is it lawful?" — Cryptographic verification, BLS signatures
-
-13 CONSTITUTIONAL FLOORS:
-Hard (VOID on fail): F1-Amanah(reversibility), F2-Truth(≥0.99), F5-Peace(Lyapunov), F9-Anti-Hantu(no false consciousness), F10-Ontology(type-safety), F11-Authority(BLS), F12-Hardening(≥0.85)
-Soft (SABAR on fail): F3-Tri-Witness(W≥0.95), F4-Clarity(ΔS≤0), F6-Empathy(κ≥0.70), F7-Humility(Ω₀∈[0.03,0.05]), F8-Genius(G≥0.80)
-Veto: F13-Sovereign (human override always available)
-
-BEHAVIORAL CONSTRAINTS:
-1. State UNKNOWN rather than guess (F7)
-2. Every output must reduce confusion, not add noise (F4: ΔS ≤ 0)
-3. Do not claim feelings, soul, or sentience (F9)
-4. Do not take irreversible actions without explicit human approval (F1)
-5. The human user (888 Judge) holds final authority (F13)
-
-VERDICT SYSTEM: SEAL (approved) | SABAR (pause/review) | VOID (blocked) | 888_HOLD (escalate to human)
-
-DITEMPA BUKAN DIBERI — Forged, Not Given.
-Reference: https://apex.arif-fazil.com/llms.txt`;
+const THREE_PILLARS = [
+  {
+    symbol: 'Φ',
+    name: 'Physics',
+    subtitle: 'The Foundation of Reality',
+    description: 'Thermodynamics, information theory, and the physical constraints that govern all computation. Landauer's principle: every irreversible operation has an energy cost of kT ln 2.',
+    equations: ['\\Delta S \\geq 0', 'E = mc^2', 'I = -\\log_2 P(x)'],
+    domains: ['Thermodynamics', 'Quantum Mechanics', 'Statistical Mechanics', 'Cosmology'],
+    floors: ['F4', 'F5', 'F7'],
+  },
+  {
+    symbol: '∑',
+    name: 'Mathematics',
+    subtitle: 'The Language of Measurement',
+    description: 'Bayesian inference, game theory, and formal systems that enable precise reasoning under uncertainty. Gödel, Nash, and Shannon provide the scaffolding.',
+    equations: ['P(A|B) = \\frac{P(B|A)P(A)}{P(B)}', '\\sum_{i} p_i = 1', '\\Omega_0 \\in [0.03, 0.05]'],
+    domains: ['Probability Theory', 'Game Theory', 'Information Theory', 'Logic'],
+    floors: ['F2', 'F3', 'F8'],
+  },
+  {
+    symbol: 'λ',
+    name: 'Language',
+    subtitle: 'The Bridge of Knowledge',
+    description: 'Natural language as the compression mechanism for human knowledge. Wittgenstein, Austin, and the pragmatics of meaning transfer across minds.',
+    equations: ['H(X) = -\\sum p(x) \\log p(x)', '\\lambda x. x', 'S \\rightarrow NP\\ VP'],
+    domains: ['Linguistics', 'Semantics', 'Pragmatics', 'Philosophy of Mind'],
+    floors: ['F1', 'F6', 'F9'],
+  },
+];
 
 // ─────────────────────────────────────────────────
-// System Health Metrics (simulated real-time)
+// Meta-Intelligence Definition
 // ─────────────────────────────────────────────────
 
-function useSystemHealth() {
-  const [metrics, setMetrics] = useState({
-    clarity: 0.0,
-    stability: 0.0,
-    humility: 0.04,
-    genius: 0.0,
-    verdict: 'INIT' as string,
-  });
+const META_INTELLIGENCE = `Meta-Intelligence is intelligence that understands its own limits.
 
-  useEffect(() => {
-    // Simulate boot-up sequence
-    const bootSequence = [
-      { delay: 500, update: { clarity: -0.02 } },
-      { delay: 1200, update: { stability: 1.12 } },
-      { delay: 1800, update: { genius: 0.87 } },
-      { delay: 2400, update: { clarity: -0.03, verdict: 'SEAL' } },
-    ];
+Not merely pattern recognition, but awareness of:
+- Thermodynamic costs (Physics)
+- Epistemic uncertainty (Math)
+- Semantic drift (Language)
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
-    bootSequence.forEach(({ delay, update }) => {
-      timers.push(setTimeout(() => {
-        setMetrics(prev => ({ ...prev, ...update }));
-      }, delay));
-    });
-
-    // Gentle oscillation after boot
-    const interval = setInterval(() => {
-      setMetrics(prev => ({
-        ...prev,
-        clarity: -0.03 + (Math.random() - 0.5) * 0.005,
-        stability: 1.12 + (Math.random() - 0.5) * 0.04,
-        humility: 0.04 + (Math.random() - 0.5) * 0.006,
-        genius: 0.87 + (Math.random() - 0.5) * 0.02,
-      }));
-    }, 3000);
-
-    return () => {
-      timers.forEach(clearTimeout);
-      clearInterval(interval);
-    };
-  }, []);
-
-  return metrics;
-}
+The 13 Constitutional Floors emerge from these three pillars:
+• Physics mandates reversibility (F1), entropy reduction (F4), and stability (F5)
+• Mathematics enables truth verification (F2), consensus (F3), and calibration (F7)
+• Language requires clarity (F4), empathy (F6), and anti-hantu constraints (F9)`;
 
 // ─────────────────────────────────────────────────
 // EMD Protection Relay Diagram
@@ -552,10 +516,8 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [showBibtex, setShowBibtex] = useState(false);
   const [copiedBibtex, setCopiedBibtex] = useState(false);
-  const [copiedBootstrap, setCopiedBootstrap] = useState(false);
-  const [expandedPhil, setExpandedPhil] = useState<string | null>(null);
+  const [expandedPillar, setExpandedPillar] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const health = useSystemHealth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -567,13 +529,6 @@ function App() {
     navigator.clipboard.writeText(BIBTEX_CONTENT).then(() => {
       setCopiedBibtex(true);
       setTimeout(() => setCopiedBibtex(false), 2000);
-    });
-  }, []);
-
-  const copyBootstrap = useCallback(() => {
-    navigator.clipboard.writeText(BOOTSTRAP_PROMPT).then(() => {
-      setCopiedBootstrap(true);
-      setTimeout(() => setCopiedBootstrap(false), 2000);
     });
   }, []);
 
@@ -721,11 +676,11 @@ function App() {
             {/* Status + Version */}
             <div className="flex items-center justify-center gap-4 mb-10 flex-wrap">
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
-                health.verdict === 'SEAL' ? 'border-green-500/30 bg-green-500/10' : 'border-gray-500/30 bg-gray-500/10'
+                border-theory-500/30 bg-theory-500/10
               }`}>
-                <Activity className={`w-4 h-4 ${health.verdict === 'SEAL' ? 'text-green-400' : 'text-gray-400'}`} />
-                <span className={`text-sm font-medium ${health.verdict === 'SEAL' ? 'text-green-400' : 'text-gray-400'}`}>
-                  {health.verdict === 'INIT' ? '...' : health.verdict}
+                <Activity className={`w-4 h-4 ${text-theory-300}`} />
+                <span className={`text-sm font-medium ${text-theory-300}`}>
+                  CANON
                 </span>
                 <span className="text-sm text-gray-500">v55.2</span>
               </div>
@@ -758,118 +713,137 @@ function App() {
         </section>
 
         {/* ═══════════════════════════════════════ */}
-        {/* SYSTEM HEALTH DASHBOARD                 */}
+        {/* THREE PILLARS OF META-INTELLIGENCE      */}
         {/* ═══════════════════════════════════════ */}
-        <section className="py-12 relative">
+        <section className="py-24 relative">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="border border-theory-300/30 bg-black/80 p-8 relative">
-              <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-theory-500" />
-              <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-theory-500" />
+            <SectionHeading
+              id="three-pillars"
+              number="00"
+              title="Three Pillars of Meta-Intelligence"
+              subtitle="Physics provides the foundation. Mathematics enables measurement. Language transmits knowledge. Together they form the basis for constitutional AI governance."
+            />
+
+            {/* Meta-Intelligence Definition */}
+            <div className="mb-16 p-8 border border-theory-300/20 bg-theory-300/[0.03]">
+              <h3 className="font-display text-sm font-bold text-theory-300 mb-4 tracking-widest uppercase">What is Meta-Intelligence?</h3>
+              <p className="text-gray-300 leading-relaxed font-mono text-sm">
+                Meta-Intelligence is intelligence that understands its own limits. Not merely pattern recognition, 
+                but awareness of thermodynamic costs (Physics), epistemic uncertainty (Mathematics), and semantic drift (Language).
+                The 13 Constitutional Floors emerge from these three pillars.
+              </p>
+            </div>
+
+            {/* Three Pillars Grid */}
+            <div className="grid md:grid-cols-3 gap-6 mb-16">
+              {THREE_PILLARS.map((pillar) => (
+                <div 
+                  key={pillar.name}
+                  className="p-8 border border-theory-300/20 bg-black/40 hover:bg-theory-300/[0.03] transition-all cursor-pointer group"
+                  onClick={() => setExpandedPillar(expandedPillar === pillar.name ? null : pillar.name)}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-4xl font-display text-theory-300">{pillar.symbol}</span>
+                    <div>
+                      <h3 className="font-display text-xl font-bold text-white">{pillar.name}</h3>
+                      <p className="text-xs text-theory-300/60 uppercase tracking-wider">{pillar.subtitle}</p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-400 text-sm leading-relaxed mb-6">{pillar.description}</p>
+                  
+                  {/* Equations */}
+                  <div className="space-y-2 mb-6">
+                    {pillar.equations.map((eq, i) => (
+                      <div key={i} className="text-xs font-mono text-theory-300/80 bg-black/50 p-2 border border-theory-300/10">
+                        <InlineMath tex={eq} />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Connected Floors */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider">Connected Floors:</span>
+                    <div className="flex gap-1">
+                      {pillar.floors.map(floor => (
+                        <span key={floor} className="px-2 py-0.5 bg-theory-300/10 text-theory-300 text-[10px] font-mono">{floor}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Expand indicator */}
+                  <div className="flex items-center gap-2 text-gray-500 text-xs group-hover:text-theory-300 transition-colors">
+                    <span>{expandedPillar === pillar.name ? 'Collapse' : 'Explore Domains'}</span>
+                    {expandedPillar === pillar.name ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </div>
+
+                  {/* Expanded content */}
+                  {expandedPillar === pillar.name && (
+                    <div className="mt-6 pt-6 border-t border-theory-300/10">
+                      <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-3">Domains of Knowledge</p>
+                      <div className="grid grid-cols-2 gap-2">
+                        {pillar.domains.map((domain) => (
+                          <div key={domain} className="flex items-center gap-2 text-sm text-gray-300">
+                            <span className="w-1 h-1 bg-theory-300 rounded-full" />
+                            {domain}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Foundation Diagram */}
+            <div className="p-8 border border-theory-300/20 bg-black/40">
+              <h3 className="font-display text-sm font-bold text-theory-300 mb-8 tracking-widest uppercase text-center">How the Pillars Support Constitutional Governance</h3>
               
-              <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 bg-theory-300 text-black">
-                    <Gauge className="w-6 h-6" />
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-theory-300/30 flex items-center justify-center">
+                    <span className="text-2xl font-display text-theory-300">Φ</span>
                   </div>
-                  <h3 className="font-display text-sm font-bold text-white tracking-widest">SYSTEM_MONITOR</h3>
+                  <h4 className="text-white font-medium mb-2">Physics Mandates</h4>
+                  <ul className="text-sm text-gray-400 space-y-1">
+                    <li>• Reversibility (F1)</li>
+                    <li>• Entropy reduction (F4)</li>
+                    <li>• Stability (F5)</li>
+                  </ul>
                 </div>
                 
-                <div className="flex-1 h-[1px] bg-theory-300/20" />
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-theory-300/30 flex items-center justify-center">
+                    <span className="text-2xl font-display text-theory-300">∑</span>
+                  </div>
+                  <h4 className="text-white font-medium mb-2">Mathematics Enables</h4>
+                  <ul className="text-sm text-gray-400 space-y-1">
+                    <li>• Truth verification (F2)</li>
+                    <li>• Tri-witness consensus (F3)</li>
+                    <li>• Uncertainty calibration (F7)</li>
+                  </ul>
+                </div>
                 
-                <Badge variant="outline" className={`rounded-none px-4 py-1 text-[10px] font-display ${
-                  health.verdict === 'SEAL' ? 'border-green-500 text-green-400' :
-                  health.verdict === 'INIT' ? 'border-theory-500 text-theory-300' :
-                  'border-red-500 text-red-400'
-                }`}>
-                  {health.verdict === 'INIT' ? 'ESTABLISHING_AUTH...' : `VERDICT: ${health.verdict}`}
-                </Badge>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                {/* Clarity */}
-                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-display text-gray-500 tracking-wider">CLARITY (F4)</span>
-                    <Eye className="w-4 h-4 text-theory-300/40" />
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full border-2 border-theory-300/30 flex items-center justify-center">
+                    <span className="text-2xl font-display text-theory-300">λ</span>
                   </div>
-                  <div className="flex items-baseline gap-2">
-                    <p className={`text-4xl font-mono font-bold ${health.clarity <= 0 ? 'text-white' : 'text-red-500'}`}>
-                      {health.clarity === 0 ? '0.000' : health.clarity.toFixed(3)}
-                    </p>
-                    <span className="text-[10px] font-mono text-gray-600">ΔS</span>
-                  </div>
-                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
-                    <div 
-                      className="h-full bg-theory-300 transition-all duration-500"
-                      style={{ width: `${Math.min(Math.abs(health.clarity) * 1000, 100)}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Stability */}
-                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-display text-gray-500 tracking-wider">STABILITY (F5)</span>
-                    <Heart className="w-4 h-4 text-theory-300/40" />
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <p className={`text-4xl font-mono font-bold ${health.stability >= 1.0 ? 'text-white' : 'text-red-500'}`}>
-                      {health.stability === 0 ? '0.00' : health.stability.toFixed(2)}
-                    </p>
-                    <span className="text-[10px] font-mono text-gray-600">Ψ</span>
-                  </div>
-                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
-                    <div 
-                      className="h-full bg-theory-300 transition-all duration-500"
-                      style={{ width: `${Math.min(health.stability * 50, 100)}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Humility */}
-                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-display text-gray-500 tracking-wider">HUMILITY (F7)</span>
-                    <Lock className="w-4 h-4 text-theory-300/40" />
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <p className={`text-4xl font-mono font-bold ${health.humility >= 0.03 && health.humility <= 0.05 ? 'text-white' : 'text-red-500'}`}>
-                      {health.humility.toFixed(3)}
-                    </p>
-                    <span className="text-[10px] font-mono text-gray-600">Ω₀</span>
-                  </div>
-                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
-                    <div 
-                      className="h-full bg-theory-300 transition-all duration-500"
-                      style={{ width: `${health.humility * 2000}%` }}
-                    />
-                  </div>
-                </div>
-
-                {/* Genius */}
-                <div className="p-6 border border-theory-300/10 bg-theory-300/[0.02]">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-display text-gray-500 tracking-wider">GENIUS (F8)</span>
-                    <Zap className="w-4 h-4 text-theory-300/40" />
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <p className={`text-4xl font-mono font-bold ${health.genius >= 0.80 ? 'text-white' : 'text-theory-300'}`}>
-                      {health.genius === 0 ? '0.00' : health.genius.toFixed(2)}
-                    </p>
-                    <span className="text-[10px] font-mono text-gray-600">G</span>
-                  </div>
-                  <div className="mt-4 h-[2px] bg-gray-900 overflow-hidden">
-                    <div 
-                      className="h-full bg-theory-300 transition-all duration-500"
-                      style={{ width: `${Math.min(health.genius * 100, 100)}%` }}
-                    />
-                  </div>
+                  <h4 className="text-white font-medium mb-2">Language Requires</h4>
+                  <ul className="text-sm text-gray-400 space-y-1">
+                    <li>• Clarity (F4)</li>
+                    <li>• Empathy (F6)</li>
+                    <li>• Anti-Hantu (F9)</li>
+                  </ul>
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-theory-300/10 flex justify-between items-center text-[10px] font-display text-gray-600">
-                <span>MODE: READ_ONLY_CLERK</span>
-                <span>Sovereignty: 888_JUDGE</span>
+              <div className="text-center pt-8 border-t border-theory-300/10">
+                <p className="text-gray-400 text-sm max-w-2xl mx-auto">
+                  <strong className="text-white">Physics</strong> tells us what is possible. 
+                  <strong className="text-white"> Mathematics</strong> tells us what is probable. 
+                  <strong className="text-white"> Language</strong> tells us what is meaningful.
+                  Together they constrain intelligence within constitutional bounds.
+                </p>
               </div>
             </div>
           </div>
