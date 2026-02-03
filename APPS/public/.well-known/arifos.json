@@ -2,11 +2,19 @@
   "name": "arifOS",
   "description": "Constitutional AI Governance Framework",
   "tagline": "AI That Can't Lie to You",
-  "version": "v55.2-SEAL",
+  "version": "v55.3-SEAL",
   "authority": "Muhammad Arif bin Fazil",
   "status": "SOVEREIGNLY_SEALED",
   "motto": "Ditempa bukan diberi (Forged, not given)",
   "type": "constitutional_framework",
+  "cryptographic_verification": {
+    "root_key_location": "~/.arifos/root_key.ed25519",
+    "llms_txt_hash": "sha256:935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb",
+    "llms_json_hash": "sha256:2460b2af3877a4322a89dbe9c5f412e703c7d7f923d8fc8360cbf64d685902bd",
+    "signature_algorithm": "Ed25519",
+    "signed_manifest": "F11_VERIFIED",
+    "verification_procedure": "Hash files with sha256sum, verify against this manifest. Root key available for signature verification."
+  },
   "endpoints": {
     "human": "https://arif-fazil.com",
     "theory": "https://apex.arif-fazil.com",

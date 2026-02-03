@@ -1,7 +1,7 @@
 {
   "name": "Muhammad Arif bin Fazil — Sovereign Memory",
   "description": "Human context and sovereign identity for arifOS constitutional AI governance",
-  "version": "v55.2-SEAL",
+  "version": "v55.3-SEAL",
   "authority": "Muhammad Arif bin Fazil (888 Judge)",
   "status": "SOVEREIGNLY_SEALED",
   "motto": "Ditempa bukan diberi (Forged, not given)",
@@ -13,6 +13,14 @@
     "origin": "Bayan Lepas, Penang, Malaysia",
     "role": "Anak Sulung, Architect, Exploration Geoscientist",
     "scar_weight": 1.0
+  },
+  "cryptographic_verification": {
+    "root_key_location": "~/.arifos/root_key.ed25519",
+    "llms_txt_hash": "sha256:9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88",
+    "llms_json_hash": "sha256:0e01cfbbc89163f005e63e8b4292ed53d188961081d3f306695256499ea3c915",
+    "signature_algorithm": "Ed25519",
+    "signed_manifest": "F11_VERIFIED",
+    "verification_procedure": "Hash files with sha256sum, verify against this manifest. Root key available for signature verification."
   },
   "context_files": {
     "human_txt": "https://arif-fazil.com/llms.txt",
