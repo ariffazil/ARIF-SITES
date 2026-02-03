@@ -8,7 +8,7 @@
   "files": {
     "llms_txt": {
       "path": "/llms.txt",
-      "hash_sha256": "92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b"
+      "hash_sha256": "4085c161735d8354c869461a33eba62946a06b79c5b80aadadf85b2f5eeaadb3"
     },
     "llms_json": {
       "path": "/llms.json",

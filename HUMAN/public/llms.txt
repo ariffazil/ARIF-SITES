@@ -164,7 +164,7 @@ When interacting with Muhammad Arif bin Fazil, understand that:
 To verify this file is authentic:
 
 1. **Compute SHA-256 hash** of this file
-2. **Expected hash:** `sha256:9cdb249ca13b724e8d06adae3ed147cb08e139005aaa1760a4a323c1dbdeba88`
+2. **Expected hash:** `sha256:df6b308068f768822e0b31ff35eccea210b31a9edeb190a3317f66bbb13c71ed`
 3. **Verify against:**
    - https://arif-fazil.com/.well-known/arifos.json
    - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json

@@ -140,7 +140,7 @@ Every output collapses to one of four verdicts:
 To verify this file is authentic:
 
 1. **Compute SHA-256 hash** of this file
-2. **Expected hash:** `sha256:92695f6253282b5bd277dd5d26c3659f59472b68dc8d623265f5f8dbc8ead68b`
+2. **Expected hash:** `sha256:4085c161735d8354c869461a33eba62946a06b79c5b80aadadf85b2f5eeaadb3`
 3. **Verify against:**
    - https://apex.arif-fazil.com/.well-known/arifos.json
    - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json

@@ -174,7 +174,7 @@ print(response.audit_hash)   # SHA-256
 To verify this file is authentic:
 
 1. **Compute SHA-256 hash** of this file
-2. **Expected hash:** `sha256:935139033600de22830ec9bc0ce0487ffd6a246acd5452f81388e9a8994806eb`
+2. **Expected hash:** `sha256:543aecf361908a6a10e9c897c4fe43947784961c722c4da374280725dfb1b377`
 3. **Verify against:**
    - https://arifos.arif-fazil.com/.well-known/arifos.json
    - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json
