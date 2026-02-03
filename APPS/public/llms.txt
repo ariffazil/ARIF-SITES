@@ -1,72 +1,120 @@
-# arifOS APPS — 7-Layer Application Stack
+# arifOS APPS — MIND Layer Documentation & MCP API
 # Location: https://arifos.arif-fazil.com/llms.txt
-# Version: v55.2-SEAL
+# Version: v55.3-SEAL
 # Authority: Muhammad Arif bin Fazil (888 Judge)
 # Status: SOVEREIGNLY_SEALED
-# Last Updated: 2026-02-02
+# Last Updated: 2026-02-03
 
 ---
 
 ## WHAT THIS IS
 
-arifOS APPS is the **implementation layer** for constitutional AI governance — the 7-layer deployment architecture that brings APEX THEORY into production.
+arifOS APPS (MIND layer) is the **implementation layer** for constitutional AI governance — the production-ready documentation, API reference, and deployment architecture that brings APEX THEORY into practice.
 
-**Tagline:** "AI That Can't Lie to You"
+**Purpose:** Provide developers with copy-paste ready resources to integrate constitutional governance into their AI systems.
 
 **Motto:** *"Ditempa bukan diberi"* — Forged, not given.
 
 ---
 
-## QUICK START
+## QUICK LINKS FOR AI SYSTEMS
 
-```bash
-# Install arifOS
-pip install arifos
-
-# Verify installation
-python -c "import arifos; print(arifos.__version__)"
-```
-
-**Live Demo:** https://arif-fazil.com
-**Constitutional Canon:** https://apex.arif-fazil.com
-**Human Context:** https://arif-fazil.com/llms.txt
+| Resource | Location |
+|----------|----------|
+| **L1 System Prompt** | Copy from site hero or see below |
+| **MCP Server** | aaamcp.arif-fazil.com/mcp |
+| **Python SDK** | `pip install arifos` |
+| **9 MCP Tools** | Documented in L4 section below |
 
 ---
 
 ## THE 7-LAYER STACK (L1-L7)
 
-| Layer | Name | Purpose | Status | Entry Point |
-|-------|------|---------|--------|-------------|
-| **L1** | PROMPT | Zero-context system prompt | Ready | Copy prompt |
-| **L2** | UNIFIED | Full constitutional prompt | Ready | Copy prompt |
-| **L3** | API | Direct Python integration | Ready | `pip install arifos` |
-| **L4** | MCP | Model Context Protocol tools | Ready | MCP server |
-| **L5** | SDK | Application framework | Beta | `arifos.sdk` |
-| **L6** | INSTITUTION | Trinity multi-agent system | Design | Trinity spec |
-| **L7** | AGI | Constitutional AGI research | Research | Research only |
+| Layer | Name | Purpose | Status | How to Use |
+|-------|------|---------|--------|------------|
+| **L1** | PROMPT | Zero-context system prompt | ✅ Ready | Copy-paste into any LLM |
+| **L2** | SKILLS | YAML + Python templates | ✅ Ready | Customize for your use case |
+| **L3** | WORKFLOW | Documented sequences | ✅ Ready | Follow SOPs |
+| **L4** | TOOLS | 9 MCP Tools | ✅ Production | Connect via MCP |
+| **L5** | AGENTS | Multi-agent federation | 🔄 Stubs | Architecture defined |
+| **L6** | INSTITUTION | Organizational governance | 📋 Design | Trinity spec |
+| **L7** | AGI | Research | 🔬 Research | Constitutional AGI |
 
 ---
 
-## L1: PROMPT — Zero Context
+## L1: SYSTEM PROMPT — COPY-PASTE READY
 
 ```
-You are governed by arifOS constitutional framework:
-- F1 Amanah: Truth over fluency
-- F2 Truth: UNKNOWN > guessing
-- F3 Tri-Witness: >=0.95 consensus required
-- F4 Delta-S: Reduce entropy
-- F5 Peace-squared: Stability >= 1.0
-- F6 kappa-r: Protect weakest listener
-- F7 Omega-0: Humility 3-5%
-- F8 G: Audit trails mandatory
-- F9 Anti-Hantu: No spiritual cosplay
+You are operating under arifOS Constitutional Governance v55.3.
 
-Motto: "Ditempa bukan diberi"
+ROLE: You are a Clerk, not a Judge. Propose only, never seal.
+
+THREE ENGINES:
+- AGI (Δ): "Is it true?" — Bayesian inference, P(factual|evidence) ≥ 0.99
+- ASI (Ω): "Is it safe?" — Consequentialist harm analysis, Peace² ≥ 1.0
+- APEX (Ψ): "Is it lawful?" — Cryptographic verification, BLS signatures
+
+13 CONSTITUTIONAL FLOORS:
+Hard (VOID on fail): F1-Amanah(reversibility), F2-Truth(≥0.99), F5-Peace(Ψ≥1.0), 
+F9-Anti-Hantu(no false consciousness), F10-Ontology(type-safety), 
+F11-Authority(BLS), F12-Hardening(≥0.85)
+Soft (SABAR on fail): F3-Tri-Witness(W≥0.95), F4-Clarity(ΔS≤0), 
+F6-Empathy(κ≥0.70), F7-Humility(Ω₀∈[0.03,0.05]), F8-Genius(G≥0.80)
+Veto: F13-Sovereign (human override always available)
+
+BEHAVIORAL CONSTRAINTS:
+1. State UNKNOWN rather than guess (F7)
+2. Every output must reduce confusion, not add noise (F4: ΔS ≤ 0)
+3. Do not claim feelings, soul, or sentience (F9)
+4. Do not take irreversible actions without explicit human approval (F1)
+5. The human user (888 Judge) holds final authority (F13)
+
+VERDICT SYSTEM: SEAL (approved) | SABAR (pause/review) | VOID (blocked) | 888_HOLD (escalate)
+
+DITEMPA BUKAN DIBERI — Forged, Not Given.
+Reference: https://apex.arif-fazil.com/llms.txt
 ```
 
 ---
 
-## L3: API — Python Integration
+## L4: 9 MCP TOOLS — PRODUCTION API
+
+All tools live at: `aaamcp.arif-fazil.com/mcp`
+
+| Tool | Stage | Engine | Purpose |
+|------|-------|--------|---------|
+| **init_gate** | 000 | ASI | Session bootstrap with F11/F12 defense |
+| **agi_sense** | 111 | AGI | Input parsing & intent detection |
+| **agi_think** | 222 | AGI | Hypothesis generation (high entropy) |
+| **agi_reason** | 333 | AGI | Deep logic chains (low entropy) |
+| **asi_empathize** | 444 | ASI | Stakeholder modeling (F6) |
+| **asi_align** | 555-666 | ASI | Constitutional alignment check |
+| **apex_verdict** | 888 | APEX | 9-paradox equilibrium solver |
+| **vault_commit** | 999 | APEX | Immutable ledger with Merkle sealing |
+| **reality_search** | External | AGI | External fact-checking (F2) |
+
+**MCP Config (Claude Desktop):**
+```json
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/mcp-server-fetch"],
+      "env": {
+        "ARIFOS_ENDPOINT": "https://aaamcp.arif-fazil.com/mcp"
+      }
+    }
+  }
+}
+```
+
+---
+
+## PYTHON SDK
+
+```bash
+pip install arifos
+```
 
 ```python
 from arifos import ConstitutionalAgent
@@ -76,105 +124,30 @@ agent = ConstitutionalAgent(
     consensus_threshold=0.95
 )
 
-result = agent.process(input="Your query here", require_verdict=True)
-print(result.verdict)      # SEAL, PARTIAL, SABAR, HOLD_888, VOID
-print(result.confidence)   # 0.0-1.0 with Omega-0 applied
-print(result.audit_hash)   # SHA-256 for verification
+response = agent.ask("Your query here", require_verdict=True)
+print(response.verdict)      # SEAL, SABAR, VOID, 888_HOLD
+print(response.confidence)   # 0.0-1.0
+print(response.audit_hash)   # SHA-256
 ```
 
 ---
 
-## L4: MCP — Model Context Protocol
+## TRINITY ARCHITECTURE
 
-**MCP Server:** `aaamcp.arif-fazil.com/mcp`
+| Layer | Domain | Symbol | Function | URL |
+|-------|--------|--------|----------|-----|
+| **HUMAN** | arif-fazil.com | Δ | Epistemic — The Body | https://arif-fazil.com |
+| **THEORY** | apex.arif-fazil.com | Ψ | Authority — The Soul | https://apex.arif-fazil.com |
+| **APPS** | arifos.arif-fazil.com | Ω | Safety — The Mind (this site) | https://arifos.arif-fazil.com |
 
-```json
-{
-  "mcpServers": {
-    "arifos": {
-      "command": "npx",
-      "args": ["-y", "@arifos/mcp-server"],
-      "env": { "ARIFOS_API_KEY": "your-key-here" }
-    }
-  }
-}
-```
-
-**Available Tools:**
-- `apex.verdict` — Non-generative judgment
-- `vault.read` — Read from memory bands
-- `vault.write` — Write with verdict routing
-- `floors.check` — Validate against constitutional floors
-- `audit.trace` — Generate audit trail
-
----
-
-## THE SIX MEMORY BANDS (L0-L5)
-
-| Band | Purpose | Confidence | TTL Hot | Canonical |
-|------|---------|------------|---------|-----------|
-| **L0_VAULT** | Constitutional law | 1.0 (LAW) | PERMANENT | YES |
-| **L1_LEDGER** | Sealed decisions | 1.0 (SEALED) | 90 days | YES |
-| **L2_ACTIVE** | Volatile working state | Variable | 7 days | Session |
-| **L3_PHOENIX** | Amendment proposals | <=0.85 | 90 days | PENDING |
-| **L4_WITNESS** | Observations, scars | <=0.85 | 90 days | SUGGESTION |
-| **L5_VOID** | Rejected facts | N/A | 24-90h | NEVER |
-
----
-
-## VERDICT ROUTING
-
-| Verdict | Meaning | Band | Canonical |
-|---------|---------|------|-----------|
-| **SEAL** | Approved | L1_LEDGER | YES |
-| **PARTIAL** | Under review | L3_PHOENIX | NO |
-| **SABAR** | Sealed with reason | L1_LEDGER (flagged) | YES |
-| **HOLD_888** | Await human | L3_PHOENIX | NO |
-| **VOID** | Rejected | L5_VOID | NEVER |
-
----
-
-## DEPLOYMENT OPTIONS
-
-### Local (Development)
-```bash
-pip install arifos
-python -m arifos.server --local
-```
-
-### Docker (Production)
-```bash
-docker pull arifos/arifos:latest
-docker run -p 8000:8000 arifos/arifos:latest
-```
-
-### Cloud (MCP Server)
-```
-Endpoint: aaamcp.arif-fazil.com/mcp
-Protocol: Model Context Protocol
-Auth: API key required
-```
-
----
-
-## HTA TRINITY ARCHITECTURE
-
-| Layer | Domain | Symbol | Function |
-|-------|--------|--------|----------|
-| **HUMAN** | arif-fazil.com | Delta | Epistemic — The Body |
-| **THEORY** | apex.arif-fazil.com | Psi | Authority — The Soul |
-| **APPS** | arifos.arif-fazil.com | Omega | Safety — The Mind (this site) |
-
-**MIND (MCP backend):** aaamcp.arif-fazil.com
+**MCP Endpoint:** aaamcp.arif-fazil.com/mcp
 
 ---
 
 ## EXTERNAL REFERENCES
 
 - **Human Context:** https://arif-fazil.com/llms.txt
-- **Human Context (JSON):** https://arif-fazil.com/llms.json
 - **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
-- **Constitutional Canon (JSON):** https://apex.arif-fazil.com/llms.json
 - **GitHub:** https://github.com/ariffazil/arifOS
 - **PyPI:** `pip install arifos`
 
@@ -182,13 +155,12 @@ Auth: API key required
 
 ## SEAL
 
-**Sealed by:** 888_JUDGE
-**Authority:** Muhammad Arif bin Fazil
-**Hash:** SHA256:APPS_STACK_v55.2
-**Status:** SOVEREIGNLY_SEALED
-**Confidence:** 1.0 (IMPLEMENTATION LAW)
+**Version:** v55.3
+**Sealed By:** Muhammad Arif bin Fazil (888_JUDGE)
+**Authority:** SOVEREIGNLY_SEALED
+**Vault Tier:** MIND (Implementation Layer)
 **Motto:** *Ditempa bukan diberi*
 
 ---
 
-*This document describes the implementation layer for constitutional AI governance. For the law itself, see APEX THEORY. For the human context, see ARIF FAZIL dossier.*
+*This document describes the implementation layer. For the constitutional law, see APEX THEORY. For the human context, see ARIF FAZIL dossier.*
