@@ -189,42 +189,6 @@ function AIVisual() {
   );
 }
 
-// Trinity Triangle Component
-function TrinityTriangle() {
-  return (
-    <svg viewBox="0 0 200 173" className="w-24 h-24">
-      <defs>
-        <linearGradient id="triTop" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#FFB800" />
-          <stop offset="100%" stopColor="#FF9500" />
-        </linearGradient>
-        <linearGradient id="triLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#00D4FF" />
-          <stop offset="100%" stopColor="#0099CC" />
-        </linearGradient>
-        <linearGradient id="triRight" x1="100%" y1="0%" x2="0%" y2="0%">
-          <stop offset="0%" stopColor="#FF2D2D" />
-          <stop offset="100%" stopColor="#CC0000" />
-        </linearGradient>
-        <linearGradient id="triCenter" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FFB800" />
-          <stop offset="50%" stopColor="#00D4FF" />
-          <stop offset="100%" stopColor="#FF2D2D" />
-        </linearGradient>
-      </defs>
-      {/* Main triangle outline */}
-      <path d="M100 10 L190 163 L10 163 Z" fill="none" stroke="url(#triCenter)" strokeWidth="2"/>
-      {/* Inner triangle */}
-      <path d="M100 50 L145 130 L55 130 Z" fill="none" stroke="url(#triTop)" strokeWidth="1.5" opacity="0.7"/>
-      {/* Center point */}
-      <circle cx="100" cy="100" r="5" fill="url(#triCenter)">
-        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/>
-      </circle>
-    </svg>
-  );
-}
-
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
