@@ -675,11 +675,9 @@ function App() {
 
             {/* Status + Version */}
             <div className="flex items-center justify-center gap-4 mb-10 flex-wrap">
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
-                border-theory-500/30 bg-theory-500/10
-              }`}>
-                <Activity className={`w-4 h-4 ${text-theory-300}`} />
-                <span className={`text-sm font-medium ${text-theory-300}`}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-theory-500/30 bg-theory-500/10">
+                <Activity className="w-4 h-4 text-theory-300" />
+                <span className="text-sm font-medium text-theory-300">
                   CANON
                 </span>
                 <span className="text-sm text-gray-500">v55.2</span>
