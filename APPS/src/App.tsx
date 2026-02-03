@@ -209,8 +209,8 @@ const FLOORS = [
 
 // 2 Mirrors (Generative Engines)
 const MIRRORS = [
-  { id: 'Δ', name: 'ARIF', role: 'The Mind', desc: 'Perceive · Reason · Map', color: 'cyan' },
-  { id: 'Ω', name: 'ADAM', role: 'The Heart', desc: 'Defend · Empathize · Bridge', color: 'rose' },
+  { id: 'Δ', name: 'AGI', role: 'The Mind', desc: 'Perceive · Reason · Map', color: 'cyan' },
+  { id: 'Ω', name: 'ASI', role: 'The Heart', desc: 'Defend · Empathize · Bridge', color: 'rose' },
 ];
 
 // 2 Walls (Non-Generative Authorities)
@@ -229,7 +229,7 @@ const MCP_TOOLS = [
     actions: ['init', 'gate', 'validate', 'authorize'],
     returns: 'session_id, authority_level, budget_allocated, injection_score, motto, seal',
     color: 'blue',
-    engine: 'ADAM',
+    engine: 'ASI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/init_gate.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/init_gate.schema.json`,
   },
@@ -241,7 +241,7 @@ const MCP_TOOLS = [
     actions: ['parse', 'detect_intent', 'extract_entities'],
     returns: 'parsed_input, intent, entities, confidence',
     color: 'cyan',
-    engine: 'ARIF',
+    engine: 'AGI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/agi_sense.schema.json`,
   },
@@ -253,7 +253,7 @@ const MCP_TOOLS = [
     actions: ['hypothesize', 'explore', 'brainstorm'],
     returns: 'hypotheses, entropy_delta, candidate_count',
     color: 'cyan',
-    engine: 'ARIF',
+    engine: 'AGI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/agi_think.schema.json`,
   },
@@ -265,7 +265,7 @@ const MCP_TOOLS = [
     actions: ['reason', 'prove', 'refute', 'synthesize'],
     returns: 'conclusion, omega_0, precision, floor_scores, vote',
     color: 'cyan',
-    engine: 'ARIF',
+    engine: 'AGI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/agi_reason.schema.json`,
   },
@@ -277,7 +277,7 @@ const MCP_TOOLS = [
     actions: ['model_stakeholders', 'assess_impact', 'map_harm'],
     returns: 'stakeholder_map, empathy_kappa_r, impact_vectors',
     color: 'rose',
-    engine: 'ADAM',
+    engine: 'ASI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/asi_empathize.schema.json`,
   },
@@ -289,7 +289,7 @@ const MCP_TOOLS = [
     actions: ['check_floors', 'validate_alignment', 'score', 'forecast_risk'],
     returns: 'floor_results, alignment_score, violations, peace_squared, risk_profile',
     color: 'rose',
-    engine: 'ADAM',
+    engine: 'ASI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/asi_align.schema.json`,
   },
@@ -325,7 +325,7 @@ const MCP_TOOLS = [
     actions: ['search', 'verify', 'cross_check'],
     returns: 'verified, confidence, sources, caveats, recency',
     color: 'orange',
-    engine: 'ARIF',
+    engine: 'AGI',
     source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/reality_tool.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/reality_search.schema.json`,
   },
@@ -884,8 +884,8 @@ function App() {
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-xs">{tool.stage}</Badge>
                         <Badge className={`text-xs ${
-                          tool.engine === 'ARIF' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
-                          tool.engine === 'ADAM' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' :
+                          tool.engine === 'AGI' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
+                          tool.engine === 'ASI' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' :
                           'bg-violet-500/20 text-violet-400 border-violet-500/30'
                         }`}>{tool.engine}</Badge>
                       </div>
@@ -953,7 +953,7 @@ function App() {
             {/* Parallel lanes */}
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div className="p-3 rounded-lg bg-cyan-500/5 border border-cyan-500/20">
-                <p className="text-xs text-cyan-400 font-mono mb-2">ARIF (Mind) — async</p>
+                <p className="text-xs text-cyan-400 font-mono mb-2">AGI (Mind) — async</p>
                 <div className="flex items-center gap-1 flex-wrap">
                   <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">agi_sense</Badge>
                   <ArrowRight className="w-3 h-3 text-cyan-600" />
@@ -963,7 +963,7 @@ function App() {
                 </div>
               </div>
               <div className="p-3 rounded-lg bg-rose-500/5 border border-rose-500/20">
-                <p className="text-xs text-rose-400 font-mono mb-2">ADAM (Heart) — async</p>
+                <p className="text-xs text-rose-400 font-mono mb-2">ASI (Heart) — async</p>
                 <div className="flex items-center gap-1 flex-wrap">
                   <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">asi_empathize</Badge>
                   <ArrowRight className="w-3 h-3 text-rose-600" />
@@ -1213,8 +1213,8 @@ function App() {
     ↓
 [Constitutional Gates]
     ↓
-ARIF (Truth Check)    ←  Bayesian inference, logical entailment
-ADAM (Safety Check)   ←  Harm minimization, stakeholder analysis
+AGI (Truth Check)    ←  Bayesian inference, logical entailment
+ASI (Safety Check)   ←  Harm minimization, stakeholder analysis
 APEX (Authority Check) ← Compliance verification, BLS signatures
     ↓
 Floor Validation (F1–F13)
