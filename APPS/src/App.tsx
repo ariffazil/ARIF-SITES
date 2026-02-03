@@ -496,11 +496,11 @@ function App() {
       <section id="overview" className="relative min-h-screen flex items-center justify-center pt-16">
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           {/* Center Logo */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-8">
             <img 
               src="/images/arifos-logo.webp" 
               alt="arifOS — The Constitutional Kernel for AI" 
-              className="w-40 h-40 object-contain drop-shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+              className="w-64 h-64 object-contain drop-shadow-[0_0_40px_rgba(6,182,212,0.5)]"
             />
           </div>
           
