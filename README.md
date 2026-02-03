@@ -5,8 +5,8 @@ Frontend monorepo for the **arifOS Trinity** (HUMAN · THEORY · APPS) — three
 | Layer | Symbol | Directory | Domain | Function |
 |-------|--------|-----------|--------|----------|
 | **HUMAN** | Δ | `HUMAN/` | [arif-fazil.com](https://arif-fazil.com) | The Body — Personal portfolio, Trinity entry point |
-| **THEORY** | Ψ | `THEORY/` | [apex.arif-fazil.com](https://apex.arif-fazil.com) | The Soul — Constitutional canon, 13 floors, scientific grounding |
-| **APPS** | Ω | `APPS/` | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | The Mind — Documentation, MCP tools, API reference |
+| **THEORY** | Ψ | `THEORY/` | [apex.arif-fazil.com](https://apex.arif-fazil.com) | The Soul — Constitutional canon, Three Pillars (Physics·Math·Language) |
+| **APPS** | Ω | `APPS/` | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | The Mind — System prompts, MCP tools, API reference |
 
 **MIND** (MCP backend) lives separately at `aaamcp.arif-fazil.com`, deployed from the [arifOS](https://github.com/ariffazil/arifOS) repo.
 
@@ -16,10 +16,10 @@ Frontend monorepo for the **arifOS Trinity** (HUMAN · THEORY · APPS) — three
 
 ```text
 arif-fazil-sites/
-├── HUMAN/          # HUMAN — arif-fazil.com
-├── THEORY/         # THEORY — apex.arif-fazil.com
-├── APPS/           # APPS  — arifos.arif-fazil.com
-├── shared/         # Shared images and assets across all sites
+├── HUMAN/          # HUMAN — arif-fazil.com (Red theme)
+├── THEORY/         # THEORY — apex.arif-fazil.com (Gold/Yellow theme)
+├── APPS/           # APPS  — arifos.arif-fazil.com (Cyan theme)
+├── shared/         # Shared images and assets (Trinity logo)
 ├── .github/
 │   └── workflows/
 │       ├── deploy.yml              # Main deploy pipeline (all 3 sites)
@@ -28,7 +28,7 @@ arif-fazil-sites/
 └── README.md
 ```
 
-Each site is an **independent React + Vite + TypeScript** project with its own `package.json`. They share images via `shared/` and link to each other through the HUMAN / THEORY / APPS navigation present on every page.
+Each site is an **independent React + Vite + TypeScript** project with its own `package.json`. They share the **Trinity Logo** (`shared/components/TrinityLogo.tsx`) and link to each other through unified HUMAN / THEORY / APPS navigation.
 
 ---
 
@@ -63,15 +63,27 @@ cd APPS && npm install && npm run dev
 
 ## 🎨 Visual Design System
 
-The arifOS ecosystem follows a unified **Forge Design Language** defined in [`HUMAN/public/VISUAL_SCHEMA.md`](HUMAN/public/VISUAL_SCHEMA.md):
+The arifOS ecosystem follows a unified **Trinity Design System**:
 
-| Layer | Primary Color | Theme | Visual Metaphor |
+| Layer | Primary Color | Theme | Visual Identity |
 |-------|---------------|-------|-----------------|
-| HUMAN | `#8B0000` (Dark Red) | Fire/Blood | The Forge — transformation through heat |
-| THEORY | `#3D5A8A` (Steel Blue) | Blueprint | The Architect — precise, scholarly |
-| APPS | `#0EA5E9` (Cyan) | Circuit | The Runtime — flow, logic, clarity |
+| HUMAN | `#FF2D2D` (Crimson) | Red/Fire | The Body — personal, grounded |
+| THEORY | `#FFD700` (Gold) | Yellow/Scholar | The Soul — canonical, foundational |
+| APPS | `#06B6D4` (Cyan) | Blue/Technical | The Mind — implementation, runtime |
 
-**Trinity Symbol**: The Sierpinski Triangle (Δ) appears across all three sites, representing recursive self-similar governance.
+### Unified Trinity Logo
+All three sites share the **mechanical "A" logo** with Trinity color coding:
+- **Yellow segment** (THEORY/Authority)
+- **Cyan segment** (APPS/Safety)
+- **Red segment** (HUMAN/Body)
+
+The logo appears in the hero section of each site with color-appropriate glow effects.
+
+### Navigation
+Every page includes the **Trinity Site Switcher** for cross-navigation:
+- 🔴 **HUMAN** — arif-fazil.com
+- 🟡 **THEORY** — apex.arif-fazil.com
+- 🔵 **APPS** — arifos.arif-fazil.com
 
 ## Deployment
 
@@ -122,6 +134,18 @@ This repository provides canonical context files for AI systems:
 
 ---
 
+## Build Status
+
+| Site | Status | URL |
+|------|--------|-----|
+| HUMAN | ✅ Deployed | https://arif-fazil.com |
+| THEORY | ✅ Deployed | https://apex.arif-fazil.com |
+| APPS | ✅ Deployed | https://arifos.arif-fazil.com |
+
+All sites auto-deploy on push to `main` via GitHub Actions → Cloudflare Pages.
+
+---
+
 > **DITEMPA BUKAN DIBERI** — *Forged, Not Given*
 > 
-> v55.3 · SOVEREIGNLY_SEALED
+> v55.3 · Trinity Architecture · ΔΩΨ
