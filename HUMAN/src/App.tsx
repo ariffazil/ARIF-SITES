@@ -453,67 +453,6 @@ function App() {
         </div>
       </section>
 
-      {/* Permanent Scars — Source Code */}
-      <section id="scars" className="py-20 border-t border-gray-800/50">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-sm font-mono text-gray-500 mb-8 uppercase tracking-wider">Source Code — Permanent Scars</h2>
-          
-          <p className="text-gray-400 mb-8 text-sm">
-            These scars shape every decision. They are not bugs. They are features.
-          </p>
-
-          <div className="space-y-4">
-            {[
-              {
-                id: 'SCAR_001',
-                name: 'Miskin',
-                origin: 'Born B40, Bayan Lepas',
-                law: 'Lean execution, no waste, clarity first'
-              },
-              {
-                id: 'SCAR_002',
-                name: 'Institutional',
-                origin: 'PETRONAS MSS 2015–2016',
-                law: 'Memory is sacred'
-              },
-              {
-                id: 'SCAR_003',
-                name: 'Invisibility',
-                origin: 'MRSM Langkawi, 9As unseen',
-                law: 'Internal validation'
-              },
-              {
-                id: 'SCAR_004',
-                name: 'Anak Sulung',
-                origin: 'Parentification',
-                law: 'Amanah must not destroy bearer'
-              },
-              {
-                id: 'SCAR_005',
-                name: 'Professional',
-                origin: '11 years, zero failures',
-                law: 'Confidence ≠ certainty'
-              },
-              {
-                id: 'SCAR_006',
-                name: "Father's Passing",
-                origin: 'Abah died 2024',
-                law: 'The Abah Check'
-              }
-            ].map((scar) => (
-              <div key={scar.id} className="p-4 rounded-lg border border-gray-800 bg-gray-900/20 hover:border-red-500/30 transition-colors">
-                <div className="flex items-start justify-between mb-2">
-                  <code className="text-xs text-red-400 font-mono">{scar.id}</code>
-                  <span className="text-xs text-gray-500">{scar.name}</span>
-                </div>
-                <p className="text-gray-400 text-sm mb-1">Origin: {scar.origin}</p>
-                <p className="text-gray-300 text-sm">→ {scar.law}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Core Values — The Tri-Fold Compass */}
       <section className="py-20 border-t border-gray-800/50">
         <div className="max-w-3xl mx-auto px-6">
