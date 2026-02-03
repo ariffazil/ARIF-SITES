@@ -1,0 +1,63 @@
+{
+  "name": "arifOS",
+  "description": "Constitutional AI Governance Framework",
+  "tagline": "AI That Can't Lie to You",
+  "version": "v55.2-SEAL",
+  "authority": "Muhammad Arif bin Fazil",
+  "status": "SOVEREIGNLY_SEALED",
+  "motto": "Ditempa bukan diberi (Forged, not given)",
+  "type": "constitutional_framework",
+  "endpoints": {
+    "human": "https://arif-fazil.com",
+    "theory": "https://apex.arif-fazil.com",
+    "apps": "https://arifos.arif-fazil.com",
+    "mcp": "https://aaamcp.arif-fazil.com"
+  },
+  "context_files": {
+    "human_txt": "https://arif-fazil.com/llms.txt",
+    "human_json": "https://arif-fazil.com/llms.json",
+    "theory_txt": "https://apex.arif-fazil.com/llms.txt",
+    "theory_json": "https://apex.arif-fazil.com/llms.json",
+    "apps_txt": "https://arifos.arif-fazil.com/llms.txt",
+    "apps_json": "https://arifos.arif-fazil.com/llms.json"
+  },
+  "constitutional_floors": [
+    {"id": "F1", "name": "Amanah", "symbol": "🛡️", "threshold": "1.0 (binary)"},
+    {"id": "F2", "name": "Truth", "symbol": "⚖️", "threshold": "1.0 (binary)"},
+    {"id": "F3", "name": "Tri-Witness", "symbol": "🔺", "threshold": "≥0.95"},
+    {"id": "F4", "name": "Delta-S", "symbol": "📉", "threshold": "≤0"},
+    {"id": "F5", "name": "Peace-squared", "symbol": "🕊️", "threshold": "≥1.0"},
+    {"id": "F6", "name": "Kappa-r", "symbol": "💝", "threshold": "≥0.95"},
+    {"id": "F7", "name": "Omega-0", "symbol": "📊", "threshold": "0.03–0.05"},
+    {"id": "F8", "name": "Genius", "symbol": "⚙️", "threshold": "1.0 (binary)"},
+    {"id": "F9", "name": "Anti-Hantu", "symbol": "👻", "threshold": "1.0 (binary)"}
+  ],
+  "verdicts": [
+    {"type": "SEAL", "meaning": "Approved", "canonical": true},
+    {"type": "PARTIAL", "meaning": "Under review", "canonical": false},
+    {"type": "SABAR", "meaning": "Sealed with reason", "canonical": true},
+    {"type": "HOLD_888", "meaning": "Await human", "canonical": false},
+    {"type": "VOID", "meaning": "Rejected", "canonical": false}
+  ],
+  "mcp_tools": [
+    "init_gate",
+    "agi_sense",
+    "agi_think",
+    "agi_reason",
+    "asi_empathize",
+    "asi_align",
+    "apex_judge",
+    "reality_search",
+    "vault_seal"
+  ],
+  "repository": "https://github.com/ariffazil/arifOS",
+  "pypi": "pip install arifos",
+  "documentation": "https://arifos.arif-fazil.com",
+  "contact": "arifbfazil@gmail.com",
+  "last_updated": "2026-02-03",
+  "metadata": {
+    "format": "arifos-well-known-v1",
+    "sealed_by": "888_JUDGE",
+    "epoch": "2026"
+  }
+}

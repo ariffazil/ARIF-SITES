@@ -1,0 +1,31 @@
+{
+  "name": "Muhammad Arif bin Fazil — Sovereign Memory",
+  "description": "Human context and sovereign identity for arifOS constitutional AI governance",
+  "version": "v55.2-SEAL",
+  "authority": "Muhammad Arif bin Fazil (888 Judge)",
+  "status": "SOVEREIGNLY_SEALED",
+  "motto": "Ditempa bukan diberi (Forged, not given)",
+  "type": "human_context",
+  "location": "https://arif-fazil.com",
+  "identity": {
+    "name": "Muhammad Arif bin Fazil",
+    "born": "1990-05-22",
+    "origin": "Bayan Lepas, Penang, Malaysia",
+    "role": "Anak Sulung, Architect, Exploration Geoscientist",
+    "scar_weight": 1.0
+  },
+  "context_files": {
+    "human_txt": "https://arif-fazil.com/llms.txt",
+    "human_json": "https://arif-fazil.com/llms.json"
+  },
+  "mirrors": {
+    "theory": "https://apex.arif-fazil.com",
+    "apps": "https://arifos.arif-fazil.com"
+  },
+  "metadata": {
+    "format": "arifos-well-known-v1",
+    "sealed_by": "888_JUDGE",
+    "epoch": "2026",
+    "tier": "AAA_HUMAN"
+  }
+}
