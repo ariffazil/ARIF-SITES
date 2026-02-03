@@ -438,9 +438,11 @@ function App() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                <Cpu className="w-5 h-5 text-white" />
-              </div>
+              <img 
+                src="/images/arifos-logo.webp" 
+                alt="arifOS" 
+                className="w-9 h-9 rounded object-cover"
+              />
               <div>
                 <span className="font-semibold text-lg text-cyan-400">arifOS</span>
                 <span className="text-xs text-cyan-500/60 ml-2 hidden sm:inline font-mono">MIND</span>
@@ -495,9 +497,11 @@ function App() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           {/* Center Logo */}
           <div className="flex justify-center mb-6">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-              <Cpu className="w-16 h-16 text-white" />
-            </div>
+            <img 
+              src="/images/arifos-logo.webp" 
+              alt="arifOS — The Constitutional Kernel for AI" 
+              className="w-40 h-40 object-contain drop-shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+            />
           </div>
           
           {/* Ditempa Badge */}
@@ -1771,9 +1775,11 @@ audit_trail = await arifos.vault.get_history({
             {/* Brand */}
             <div>
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                  <Cpu className="w-4 h-4 text-white" />
-                </div>
+                <img 
+                  src="/images/arifos-logo.webp" 
+                  alt="arifOS" 
+                  className="w-8 h-8 rounded object-cover"
+                />
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
