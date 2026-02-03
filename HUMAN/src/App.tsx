@@ -298,9 +298,21 @@ function App() {
         </div>
 
         <div className="relative z-10 max-w-2xl mx-auto px-6 text-center">
-          {/* Trinity Triangle */}
+          {/* Trinity Logo */}
           <div className="flex justify-center mb-8">
-            <TrinityTriangle />
+            <img 
+              src="/images/arifos-logo.webp" 
+              alt="arifOS Trinity" 
+              className="w-48 h-48 object-contain drop-shadow-[0_0_40px_rgba(255,45,45,0.4)]"
+            />
+          </div>
+
+          {/* Ditempa Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-red-500/30 bg-red-950/20 text-red-400 text-xs font-mono tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+              DITEMPA BUKAN DIBERI
+            </div>
           </div>
 
           {/* Name */}
@@ -402,6 +414,166 @@ function App() {
                 safeguards that sit between an AI and its decisions.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Biography — Sovereign Memory */}
+      <section id="biography" className="py-20 border-t border-gray-800/50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-sm font-mono text-gray-500 mb-8 uppercase tracking-wider">Sovereign Memory</h2>
+
+          <div className="space-y-8">
+            {/* Identity Core */}
+            <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/20">
+              <h3 className="text-lg font-medium text-white mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-500" />
+                Identity Core
+              </h3>
+              <div className="space-y-3 text-gray-300">
+                <p><strong className="text-white">Name:</strong> Muhammad Arif bin Fazil</p>
+                <p><strong className="text-white">Born:</strong> May 22, 1990 — Bayan Lepas, Penang, Malaysia</p>
+                <p><strong className="text-white">Role:</strong> Anak Sulung (Eldest Son), Architect, Exploration Geoscientist</p>
+                <p><strong className="text-white">Cultural Roots:</strong> Penang Malay (Loghat Utara)</p>
+                <p className="text-red-400 font-mono text-sm mt-4">"DITEMPA BUKAN DIBERI" — Forged, Not Given</p>
+              </div>
+            </div>
+
+            {/* Professional Background */}
+            <div className="p-6 rounded-xl border border-gray-800 bg-gray-900/20">
+              <h3 className="text-lg font-medium text-white mb-4 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-red-500" />
+                Professional Background
+              </h3>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-white font-medium mb-2">PETRONAS — Exploration Geoscientist (2014–2026)</h4>
+                  <ul className="space-y-2 text-gray-400 text-sm">
+                    <li>• 11 years, 100% success rate, zero dry wells</li>
+                    <li>• <strong className="text-gray-300">Bekantan-1:</strong> Shallowest flowing oil in Malay Basin history</li>
+                    <li>• <strong className="text-gray-300">Puteri Basement-1:</strong> Instrumental to PM318 PSC value</li>
+                    <li>• <strong className="text-gray-300">Lebah Emas-1:</strong> Frontier slope play success</li>
+                    <li>• <strong className="text-gray-300">2018 Memory Act:</strong> Recalled critical risk from departed mentor's forgotten report, saved company millions</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-white font-medium mb-2">Education</h4>
+                  <ul className="space-y-2 text-gray-400 text-sm">
+                    <li>• <strong className="text-gray-300">B.Sc. Double Major:</strong> Geology & Geophysics + Economics</li>
+                    <li>• <strong className="text-gray-300">University:</strong> University of Wisconsin–Madison (2009–2013)</li>
+                    <li>• <strong className="text-gray-300">Scholarship:</strong> Full PETRONAS scholarship</li>
+                    <li>• <strong className="text-gray-300">Thesis:</strong> "Petroleum System and Stratigraphy of Malay Basin Province"</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Current Mission */}
+            <div className="p-6 rounded-xl border border-red-500/30 bg-red-950/10">
+              <h3 className="text-lg font-medium text-white mb-4 flex items-center gap-2">
+                <Bot className="w-5 h-5 text-red-500" />
+                Current Mission (2026)
+              </h3>
+              <p className="text-gray-300 leading-relaxed">
+                Building <strong className="text-white">arifOS</strong>: Constitutional AI governance framework. 
+                Thermodynamic discipline for artificial intelligence. Refuses to forget. 
+                Insists on truth. Protects humans.
+              </p>
+              <p className="text-gray-500 text-sm mt-3">
+                Left PETRONAS via MSS (~RM400k runway), building arifOS full-time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Permanent Scars — Source Code */}
+      <section id="scars" className="py-20 border-t border-gray-800/50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-sm font-mono text-gray-500 mb-8 uppercase tracking-wider">Source Code — Permanent Scars</h2>
+          
+          <p className="text-gray-400 mb-8 text-sm">
+            These scars shape every decision. They are not bugs. They are features.
+          </p>
+
+          <div className="space-y-4">
+            {[
+              {
+                id: 'SCAR_001',
+                name: 'Miskin',
+                origin: 'Born B40, Bayan Lepas',
+                law: 'Lean execution, no waste, clarity first'
+              },
+              {
+                id: 'SCAR_002',
+                name: 'Institutional',
+                origin: 'PETRONAS MSS 2015–2016',
+                law: 'Memory is sacred'
+              },
+              {
+                id: 'SCAR_003',
+                name: 'Invisibility',
+                origin: 'MRSM Langkawi, 9As unseen',
+                law: 'Internal validation'
+              },
+              {
+                id: 'SCAR_004',
+                name: 'Anak Sulung',
+                origin: 'Parentification',
+                law: 'Amanah must not destroy bearer'
+              },
+              {
+                id: 'SCAR_005',
+                name: 'Professional',
+                origin: '11 years, zero failures',
+                law: 'Confidence ≠ certainty'
+              },
+              {
+                id: 'SCAR_006',
+                name: "Father's Passing",
+                origin: 'Abah died 2024',
+                law: 'The Abah Check'
+              }
+            ].map((scar) => (
+              <div key={scar.id} className="p-4 rounded-lg border border-gray-800 bg-gray-900/20 hover:border-red-500/30 transition-colors">
+                <div className="flex items-start justify-between mb-2">
+                  <code className="text-xs text-red-400 font-mono">{scar.id}</code>
+                  <span className="text-xs text-gray-500">{scar.name}</span>
+                </div>
+                <p className="text-gray-400 text-sm mb-1">Origin: {scar.origin}</p>
+                <p className="text-gray-300 text-sm">→ {scar.law}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Core Values — The Tri-Fold Compass */}
+      <section className="py-20 border-t border-gray-800/50">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-sm font-mono text-gray-500 mb-8 uppercase tracking-wider">Core Values — Tri-Fold Compass</h2>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
+              <h3 className="text-white font-medium mb-2">Truth & Clarity</h3>
+              <p className="text-sm text-gray-400">UNKNOWN {'>'} unsafe certainty</p>
+            </div>
+            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
+              <h3 className="text-white font-medium mb-2">Dignity (Maruah)</h3>
+              <p className="text-sm text-gray-400">Non-negotiable self-respect</p>
+            </div>
+            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
+              <h3 className="text-white font-medium mb-2">Integrity (Amanah)</h3>
+              <p className="text-sm text-gray-400">Sacred trust and responsibility</p>
+            </div>
+          </div>
+
+          <div className="mt-8 p-4 rounded-lg border border-red-500/20 bg-red-950/10">
+            <p className="text-sm text-gray-300">
+              <strong className="text-white">The Abah Check:</strong> "Would this make Abah proud?" — ultimate moral veto
+            </p>
           </div>
         </div>
       </section>
@@ -591,9 +763,16 @@ function App() {
       <footer className="py-12 border-t border-gray-800/50">
         <div className="max-w-3xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <p className="text-white font-bold text-lg">ARIF FAZIL</p>
-              <p className="text-gray-500 text-sm">Ditempa Bukan Diberi — Forged, Not Given</p>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/images/arifos-logo.webp" 
+                alt="arifOS" 
+                className="w-10 h-10 rounded object-cover"
+              />
+              <div>
+                <p className="text-white font-bold text-lg">ARIF FAZIL</p>
+                <p className="text-gray-500 text-sm">Ditempa Bukan Diberi — Forged, Not Given</p>
+              </div>
             </div>
             
             <div className="flex items-center gap-3">
