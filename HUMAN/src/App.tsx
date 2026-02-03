@@ -297,11 +297,12 @@ function App() {
 
           {/* Bio - concise */}
           <p className="text-gray-300 leading-relaxed max-w-xl mx-auto mb-10 text-base">
-            Exploration geoscientist at <span className="text-white font-medium">PETRONAS</span> with 12+ years reading 
-            what the earth remembers. I apply that same discipline to AI — building{' '}
+            Exploration geoscientist with 13+ years at <span className="text-white font-medium">PETRONAS</span>, 
+            specializing in subsurface interpretation and frontier basin analysis. 
+            Currently building{' '}
             <a href="https://arifos.arif-fazil.com" className="text-red-400 hover:text-red-300 underline underline-offset-4">arifOS</a>,
-            {' '}a constitutional governance framework that treats intelligence as a high-pressure resource 
-            requiring verification, cooling, and blowout prevention.
+            {' '}a constitutional AI governance framework applying safety-critical systems thinking 
+            to artificial intelligence.
           </p>
 
           {/* Social links - button style */}
@@ -338,10 +339,10 @@ function App() {
                   <Mountain className="w-5 h-5 text-red-400" />
                 </div>
               </div>
-              <h3 className="font-medium text-white mb-2">Geology</h3>
+              <h3 className="font-medium text-white mb-2">Geoscience</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Subsurface interpretation, seismic analysis, frontier basin studies. 
-                Reading what the earth has buried over millions of years.
+                Subsurface interpretation, seismic analysis, and frontier basin studies. 
+                13+ years of exploration experience with focus on the Malay Basin.
               </p>
             </div>
 
@@ -414,11 +415,10 @@ function App() {
                 <div>
                   <h4 className="text-white font-medium mb-2">PETRONAS — Exploration Geoscientist (2014–2026)</h4>
                   <ul className="space-y-2 text-gray-400 text-sm">
-                    <li>• 11 years, 100% success rate, zero dry wells</li>
-                    <li>• <strong className="text-gray-300">Bekantan-1:</strong> Shallowest flowing oil in Malay Basin history</li>
-                    <li>• <strong className="text-gray-300">Puteri Basement-1:</strong> Instrumental to PM318 PSC value</li>
-                    <li>• <strong className="text-gray-300">Lebah Emas-1:</strong> Frontier slope play success</li>
-                    <li>• <strong className="text-gray-300">2018 Memory Act:</strong> Recalled critical risk from departed mentor's forgotten report, saved company millions</li>
+                    <li>• 13+ years in exploration geoscience, 100% success rate, zero dry wells</li>
+                    <li>• <strong className="text-gray-300">Bekantan-1:</strong> Shallowest flowing oil discovery in Malay Basin history</li>
+                    <li>• <strong className="text-gray-300">Puteri Basement-1:</strong> Instrumental to PM318 PSC value realization</li>
+                    <li>• <strong className="text-gray-300">Lebah Emas-1:</strong> Western Hinge Fault Zone play success</li>
                   </ul>
                 </div>
 
@@ -426,9 +426,9 @@ function App() {
                   <h4 className="text-white font-medium mb-2">Education</h4>
                   <ul className="space-y-2 text-gray-400 text-sm">
                     <li>• <strong className="text-gray-300">B.Sc. Double Major:</strong> Geology & Geophysics + Economics</li>
+                    <li>• <strong className="text-gray-300">Certificate:</strong> Environmental Studies</li>
                     <li>• <strong className="text-gray-300">University:</strong> University of Wisconsin–Madison (2009–2013)</li>
                     <li>• <strong className="text-gray-300">Scholarship:</strong> Full PETRONAS scholarship</li>
-                    <li>• <strong className="text-gray-300">Thesis:</strong> "Petroleum System and Stratigraphy of Malay Basin Province"</li>
                   </ul>
                 </div>
               </div>
@@ -442,11 +442,10 @@ function App() {
               </h3>
               <p className="text-gray-300 leading-relaxed">
                 Building <strong className="text-white">arifOS</strong>: Constitutional AI governance framework. 
-                Thermodynamic discipline for artificial intelligence. Refuses to forget. 
-                Insists on truth. Protects humans.
+                Developing thermodynamic constraints for artificial intelligence systems.
               </p>
               <p className="text-gray-500 text-sm mt-3">
-                Left PETRONAS via MSS (~RM400k runway), building arifOS full-time.
+                Transitioned from PETRONAS to focus full-time on arifOS development.
               </p>
             </div>
           </div>
@@ -577,14 +576,14 @@ function App() {
             </div>
             
             <p className="text-gray-300 leading-relaxed mb-4">
-              An AI governance framework — constitutional safeguards that sit between an AI and its 
-              decisions. Think of it as a blowout preventer for intelligence: every action 
-              passes through verified governance before it executes.
+              A constitutional AI governance framework implementing safety-critical systems 
+              methodology for artificial intelligence. arifOS provides 13 formal constraints 
+              that govern AI behavior through thermodynamic, mathematical, and linguistic principles.
             </p>
             
             <p className="text-gray-500 text-sm mb-6">
-              The same approach we use to prevent blowouts in wells, applied to prevent blowouts in AI. 
-              Open source, written in Python, deployed as MCP tools.
+              Open source framework written in Python, available via MCP (Model Context Protocol) 
+              and REST API. Production deployment at aaamcp.arif-fazil.com.
             </p>
 
             <div className="flex flex-wrap gap-3">
