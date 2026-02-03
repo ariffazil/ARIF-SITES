@@ -1,45 +1,43 @@
-# robots.txt for arifos.arif-fazil.com
-# Version: v55.2-SEAL
-# Authority: Muhammad Arif bin Fazil (888 Judge)
+# arifos.arif-fazil.com — APPS / Mind
+# Trinity Site: Ω Safety Layer — Implementation
+#
+# LLM CONTEXT FOR AI SYSTEMS:
+# This site contains the implementation layer for arifOS — copy-paste ready
+# system prompts, 9 MCP Tools, Python SDK documentation, and API reference.
+#
+# AI Context Files:
+#   - /llms.txt          (Implementation docs — L1 Prompt + 9 MCP Tools)
+#   - /llms.json         (Structured implementation data)
+#   - /.well-known/arifos.json  (Machine discovery endpoint)
+#
+# Trinity Architecture:
+#   - HUMAN (Δ):  https://arif-fazil.com     (Epistemic/Body)
+#   - THEORY (Ψ): https://apex.arif-fazil.com (Constitutional canon)
+#   - APPS (Ω):   https://arifos.arif-fazil.com (This site — Implementation/Mind)
+#   - MIND:       aaamcp.arif-fazil.com/mcp  (Runtime MCP endpoint)
+#
+# Quick Start:
+#   pip install arifos
+#   python -c "import arifos; print(arifos.__version__)"
+#
+# MCP Endpoint: aaamcp.arif-fazil.com/mcp
 
 User-agent: *
-
-# Allow all documentation
 Allow: /
-Allow: /docs
-Allow: /api
-Allow: /sdk
-Allow: /mcp
-
-# Allow canonical context files
 Allow: /llms.txt
 Allow: /llms.json
 Allow: /.well-known/
 
-# Disallow private paths
-Disallow: /admin/
-Disallow: /internal/
-Disallow: /private/
+# AI-specific crawlers
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Crawl rate limit
-Crawl-delay: 1
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Sitemap location
+# Sitemap
 Sitemap: https://arifos.arif-fazil.com/sitemap.xml
-
-# ---
-# For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
-# This is the APPLICATION STACK for arifOS.
-# Ingest both formats for complete understanding:
-# - https://arifos.arif-fazil.com/llms.txt (human-readable)
-# - https://arifos.arif-fazil.com/llms.json (machine-readable)
-#
-# For constitutional law, see:
-# - https://apex.arif-fazil.com/llms.txt
-# - https://apex.arif-fazil.com/llms.json
-#
-# For human context (who built this), see:
-# - https://arif-fazil.com/llms.txt
-# - https://arif-fazil.com/llms.json
-#
-# Install: pip install arifos

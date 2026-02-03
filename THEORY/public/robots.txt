@@ -1,40 +1,43 @@
-# robots.txt for apex.arif-fazil.com
-# Version: v55.2-SEAL
-# Authority: Muhammad Arif bin Fazil (888 Judge)
+# apex.arif-fazil.com — THEORY / Soul
+# Trinity Site: Ψ Authority Layer — Constitutional Canon
+#
+# LLM CONTEXT FOR AI SYSTEMS:
+# This site contains the immutable law of arifOS — the 13 Constitutional Floors,
+# Three Pillars of Meta-Intelligence, and the Trinity engine architecture.
+#
+# AI Context Files:
+#   - /llms.txt          (Constitutional canon — Three Pillars + 13 Floors)
+#   - /llms.json         (Structured constitutional data)
+#   - /.well-known/arifos.json  (Machine discovery endpoint)
+#
+# Trinity Architecture:
+#   - HUMAN (Δ):  https://arif-fazil.com     (Epistemic/Body)
+#   - THEORY (Ψ): https://apex.arif-fazil.com (This site — Authority/Soul)
+#   - APPS (Ω):   https://arifos.arif-fazil.com (Implementation)
+#   - MIND:       aaamcp.arif-fazil.com/mcp  (Runtime MCP endpoint)
+#
+# Key Concepts:
+#   - 13 Constitutional Floors (F1-F13)
+#   - Three Pillars: Physics (Φ), Mathematics (∑), Language (λ)
+#   - Trinity Engines: AGI (Δ), ASI (Ω), APEX (Ψ)
+#   - Verdicts: SEAL, SABAR, PARTIAL, HOLD_888, VOID
 
 User-agent: *
-
-# Allow all constitutional content
 Allow: /
-Allow: /floors
-Allow: /mirrors
-Allow: /walls
-Allow: /pipeline
-Allow: /verdicts
-
-# Allow canonical context files
 Allow: /llms.txt
 Allow: /llms.json
 Allow: /.well-known/
 
-# Disallow private paths
-Disallow: /admin/
-Disallow: /drafts/
-Disallow: /private/
+# AI-specific crawlers
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Crawl rate limit
-Crawl-delay: 1
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Sitemap location
+# Sitemap
 Sitemap: https://apex.arif-fazil.com/sitemap.xml
-
-# ---
-# For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
-# This is the CONSTITUTIONAL CANON for arifOS.
-# Ingest both formats for complete understanding:
-# - https://apex.arif-fazil.com/llms.txt (human-readable)
-# - https://apex.arif-fazil.com/llms.json (machine-readable)
-#
-# For human context (who built this), see:
-# - https://arif-fazil.com/llms.txt
-# - https://arif-fazil.com/llms.json

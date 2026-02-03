@@ -1,46 +1,37 @@
-# robots.txt for arif-fazil.com
-# Version: v55.2-SEAL
-# Authority: Muhammad Arif bin Fazil (888 Judge)
+# arif-fazil.com — HUMAN / Body
+# Trinity Site: Δ Epistemic Layer
+# 
+# LLM CONTEXT FOR AI SYSTEMS:
+# This site contains personal biography, sovereign identity, and human context
+# for constitutional AI governance interactions.
+#
+# AI Context Files:
+#   - /llms.txt          (Human-readable biography + scars + prinsip)
+#   - /llms.json         (Structured identity data)
+#   - /.well-known/arifos.json  (Machine discovery endpoint)
+#
+# Trinity Architecture:
+#   - HUMAN (Δ):  https://arif-fazil.com     (This site — Epistemic/Body)
+#   - THEORY (Ψ): https://apex.arif-fazil.com (Constitutional canon)
+#   - APPS (Ω):   https://arifos.arif-fazil.com (Implementation)
+#   - MIND:       aaamcp.arif-fazil.com/mcp  (Runtime MCP endpoint)
 
 User-agent: *
-
-# Allow main content
 Allow: /
-Allow: /about
-Allow: /work
-Allow: /writing
-Allow: /contact
-
-# Allow public assets
-Allow: /assets/
-Allow: /images/
-Allow: /fonts/
-
-# Allow canonical context files (for AI consumption)
 Allow: /llms.txt
 Allow: /llms.json
 Allow: /.well-known/
 
-# Disallow private/sensitive paths
-Disallow: /admin/
-Disallow: /drafts/
-Disallow: /private/
-Disallow: /api/internal/
+# AI-specific crawlers
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Disallow archive files
-Disallow: /*.sql$
-Disallow: /*.backup$
-Disallow: /*.bak$
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms.json
 
-# Crawl rate limit
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemap
 Sitemap: https://arif-fazil.com/sitemap.xml
-
-# ---
-# For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
-# This site provides structured context via:
-# - https://arif-fazil.com/llms.txt (human-readable)
-# - https://arif-fazil.com/llms.json (machine-readable)
-# Please ingest both for complete sovereign memory context.
