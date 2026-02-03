@@ -657,10 +657,27 @@ function App() {
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-            {/* Tagline pill */}
+            {/* Trinity Logo */}
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/images/arifos-logo.webp" 
+              alt="arifOS Trinity" 
+              className="w-48 h-48 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]"
+            />
+          </div>
+
+          {/* Ditempa Badge */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-950/20 text-yellow-400 text-xs font-mono tracking-wider">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              DITEMPA BUKAN DIBERI
+            </div>
+          </div>
+
+          {/* Tagline pill */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theory-300/10 border border-theory-300/20 mb-8">
               <Shield className="w-4 h-4 text-theory-200" />
-              <span className="text-sm text-theory-200">THEORY Layer · Constitutional Canon</span>
+              <span className="text-sm text-theory-200">THEORY · Constitutional Canon</span>
             </div>
 
             {/* Title */}
@@ -670,20 +687,20 @@ function App() {
 
             {/* Subtitle */}
             <p className="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
-              Constitutional Canon for AI Governance
+              The Law Behind the Machine
             </p>
 
             {/* Architecture tag */}
             <p className="text-sm text-gray-500 mb-3 font-mono">
-              Thermodynamically Grounded · 13 Formal Constraints · Cryptographic Audit
+              13 Immutable Floors · ΔΩΨ Trinity Architecture · Scientific Foundations
             </p>
 
             {/* Description */}
             <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
-              A thermodynamically grounded constitutional framework combining{' '}
-              <span className="text-white font-medium">13 formal constraints</span>,{' '}
-              <span className="text-white font-medium">HUMAN THEORY APPS architecture</span>, and{' '}
-              <span className="text-white font-medium">cryptographic audit trails</span>.
+              The <span className="text-white font-medium">constitutional canon</span> for arifOS — 
+              the immutable law that governs the machine. This is the <em>theory</em> of constitutional AI, 
+              not its implementation. For deployment details, see{' '}
+              <a href="https://arifos.arif-fazil.com" className="text-cyan-400 hover:underline">arifOS MIND</a>.
             </p>
 
             {/* Engine badges */}
@@ -724,17 +741,17 @@ function App() {
 
             {/* Action buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#section-1">
+              <a href="#section-5">
                 <Button className="rounded-none bg-theory-200 hover:bg-theory-100 text-theory-950 px-10 py-6 text-sm font-display tracking-widest font-bold shadow-[0_0_20px_rgba(107,140,206,0.3)] hover:shadow-[0_0_30px_rgba(138,170,224,0.4)]">
-                  INITIATE PROTOCOL
+                  READ_THE_CANON
                 </Button>
               </a>
               <Button
                 variant="outline"
-                onClick={copyBootstrap}
+                onClick={copyBibtex}
                 className="rounded-none border-theory-300 text-theory-200 hover:bg-theory-300/15 hover:text-white px-10 py-6 text-sm font-display tracking-widest"
               >
-                {copiedBootstrap ? 'SYSTEM_COPIED' : 'COPY_BOOTSTRAP'}
+                {copiedBibtex ? 'CITATION_COPIED' : 'CITE_BIBTEX'}
               </Button>
             </div>
           </div>
@@ -853,6 +870,58 @@ function App() {
               <div className="mt-8 pt-8 border-t border-theory-300/10 flex justify-between items-center text-[10px] font-display text-gray-600">
                 <span>MODE: READ_ONLY_CLERK</span>
                 <span>Sovereignty: 888_JUDGE</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════ */}
+        {/* TRINITY SEPARATION OF CONCERNS          */}
+        {/* ═══════════════════════════════════════ */}
+        <section className="py-16 relative border-t border-theory-300/10">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="p-8 border border-theory-300/20 bg-black/40">
+              <h3 className="font-display text-sm font-bold text-theory-300 mb-6 tracking-widest uppercase">Trinity Architecture — Separation of Concerns</h3>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <a href="https://arif-fazil.com" className="p-6 border border-red-500/20 bg-red-950/10 hover:border-red-500/40 transition-colors group">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-display text-red-400">Δ</span>
+                    <span className="text-sm font-bold text-red-400">HUMAN</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-2">The Body · Epistemic</p>
+                  <p className="text-sm text-gray-300">Personal context, biography, the sovereign behind the system.</p>
+                  <p className="text-xs text-red-400/60 mt-3 font-mono">arif-fazil.com →</p>
+                </a>
+
+                <div className="p-6 border border-yellow-500/30 bg-yellow-950/20 relative">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-yellow-500/20 text-yellow-400 text-[10px] font-display tracking-wider">YOU ARE HERE</div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-display text-theory-300">Ψ</span>
+                    <span className="text-sm font-bold text-theory-300">THEORY</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-2">The Soul · Authority</p>
+                  <p className="text-sm text-gray-300">The constitutional canon — immutable law, scientific foundations.</p>
+                  <p className="text-xs text-theory-300/60 mt-3 font-mono">apex.arif-fazil.com</p>
+                </div>
+
+                <a href="https://arifos.arif-fazil.com" className="p-6 border border-cyan-500/20 bg-cyan-950/10 hover:border-cyan-500/40 transition-colors group">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl font-display text-cyan-400">Ω</span>
+                    <span className="text-sm font-bold text-cyan-400">APPS</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-2">The Mind · Safety</p>
+                  <p className="text-sm text-gray-300">Implementation — MCP tools, deployment, L1-L7 stack.</p>
+                  <p className="text-xs text-cyan-400/60 mt-3 font-mono">arifos.arif-fazil.com →</p>
+                </a>
+              </div>
+
+              <div className="mt-6 p-4 border border-theory-300/10 bg-black/60">
+                <p className="text-sm text-gray-400">
+                  <strong className="text-white">This page (THEORY)</strong> contains the <em>law</em> — the 13 constitutional floors, 
+                  scientific foundations, and axioms. For <em>implementation</em> details (MCP tools, code, deployment), 
+                  visit <a href="https://arifos.arif-fazil.com" className="text-cyan-400 hover:underline">APPS/MIND</a>.
+                </p>
               </div>
             </div>
           </div>
