@@ -46,6 +46,15 @@ jobs:
           cache-dependency-path: |
             ${{ matrix.dir }}/package-lock.json
 
+      - name: Copy shared components
+        run: |
+          mkdir -p ${{ matrix.dir }}/src/shared/components
+          cp -r shared/components/* ${{ matrix.dir }}/src/shared/components/
+
+      - name: Update imports for local paths
+        run: |
+          find ${{ matrix.dir }}/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+
       - name: Install dependencies (${{ matrix.site_name }})
         run: cd ${{ matrix.dir }} && npm install
 

@@ -22,6 +22,21 @@ jobs:
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > HUMAN/public/build-info.json
 
+      - name: Copy shared components
+        run: |
+          mkdir -p HUMAN/src/shared/components
+          mkdir -p THEORY/src/shared/components
+          mkdir -p APPS/src/shared/components
+          cp -r shared/components/* HUMAN/src/shared/components/
+          cp -r shared/components/* THEORY/src/shared/components/
+          cp -r shared/components/* APPS/src/shared/components/
+
+      - name: Update imports for local paths
+        run: |
+          find HUMAN/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+          find THEORY/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+          find APPS/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+
       - name: Build HUMAN
         run: |
           cd HUMAN
@@ -57,6 +72,15 @@ jobs:
         run: |
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > THEORY/public/build-info.json
+
+      - name: Copy shared components
+        run: |
+          mkdir -p THEORY/src/shared/components
+          cp -r shared/components/* THEORY/src/shared/components/
+
+      - name: Update imports for local paths
+        run: |
+          find THEORY/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
 
       - name: Build THEORY
         run: |
@@ -94,6 +118,15 @@ jobs:
         run: |
           BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
           echo "$BUILD_INFO" > APPS/public/build-info.json
+
+      - name: Copy shared components
+        run: |
+          mkdir -p APPS/src/shared/components
+          cp -r shared/components/* APPS/src/shared/components/
+
+      - name: Update imports for local paths
+        run: |
+          find APPS/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
 
       - name: Build APPS
         run: |
