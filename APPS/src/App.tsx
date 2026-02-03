@@ -107,8 +107,8 @@ const LAYERS = [
   {
     id: 'L4',
     name: 'TOOLS',
-    tagline: '10 MCP Tools · Production',
-    desc: 'The constitutional MCP server. 10 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
+    tagline: '9 MCP Tools · Production',
+    desc: 'The constitutional MCP server. 9 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
     coverage: '80%',
     status: 'production',
     statusLabel: 'Production',
@@ -124,7 +124,7 @@ const LAYERS = [
       { label: 'APEX Verdict Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py` },
       { label: 'Vault Seal Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py` },
       { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/openapi.json` },
-      { label: 'JSON Schemas (10 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
+      { label: 'JSON Schemas (9 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
       { label: 'L4 Manifest', url: `${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md` },
     ],
   },
@@ -219,18 +219,18 @@ const WALLS = [
   { id: '888', name: 'JUDGE', role: 'Human Authority', desc: 'Sovereign veto always available', color: 'red' },
 ];
 
-// MCP Tools data — v55.1 Explicit Tool Architecture (9 core tools)
+// MCP Tools data — v55.3 Explicit Tool Architecture (9 canonical tools)
 const MCP_TOOLS = [
   {
-    name: 'init_reboot',
+    name: 'init_gate',
     stage: '000',
-    description: 'Gate & injection defense (F11/F12). Session bootstrap with identity verification and budget allocation',
-    params: ['session_id', 'user_token', 'nonce'],
-    actions: ['init', 'gate', 'reset', 'validate', 'authorize'],
-    returns: 'session_id, authority_level, budget_allocated, injection_score',
+    description: 'Session bootstrap with F11 CommandAuth identity verification, F12 injection defense, and budget allocation. Returns sealed session context.',
+    params: ['query', 'session_id', 'user_token', 'nonce'],
+    actions: ['init', 'gate', 'validate', 'authorize'],
+    returns: 'session_id, authority_level, budget_allocated, injection_score, motto, seal',
     color: 'blue',
     engine: 'ADAM',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/canonical_trinity.py`,
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/init_gate.py`,
     schema: `${GITHUB_BASE}/blob/main/schemas/init_gate.schema.json`,
   },
   {
@@ -306,6 +306,18 @@ const MCP_TOOLS = [
     schema: `${GITHUB_BASE}/blob/main/schemas/apex_verdict.schema.json`,
   },
   {
+    name: 'vault_commit',
+    stage: '999',
+    description: 'Immutable ledger write with F3 Tri-Witness verification. Cryptographic sealing of all outputs with Merkle tree root.',
+    params: ['session_id', 'verdict', 'outputs', 'metadata'],
+    actions: ['seal', 'witness', 'commit'],
+    returns: 'vault_id, merkle_root, timestamp, seal_signature',
+    color: 'emerald',
+    engine: 'APEX',
+    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py`,
+    schema: `${GITHUB_BASE}/blob/main/schemas/vault_commit.schema.json`,
+  },
+  {
     name: 'reality_search',
     stage: 'External',
     description: 'Grounding via external data (F2). Fact-checking against real-world sources',
@@ -322,7 +334,7 @@ const MCP_TOOLS = [
 // API Endpoints — served from aaamcp.arif-fazil.com (Railway)
 const ENDPOINTS = [
   { path: '/health', method: 'GET', desc: 'System health check', status: 'stable' },
-  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (10 explicit tools)', status: 'stable' },
+  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 explicit tools)', status: 'stable' },
   { path: '/sse', method: 'GET', desc: 'Server-sent events stream', status: 'stable' },
   { path: '/dashboard', method: 'GET', desc: 'Live system dashboard', status: 'stable' },
   { path: '/docs', method: 'GET', desc: 'API documentation (OpenAPI)', status: 'stable' },
@@ -353,7 +365,7 @@ verdict = client.tool("apex_verdict", agi_context=..., asi_context=...)`;
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.1-SEAL' });
+  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.3-SEAL' });
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
 
@@ -853,9 +865,9 @@ function App() {
               <Terminal className="w-4 h-4 text-amber-400" />
               <span className="text-sm text-amber-400">Model Context Protocol</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">10 Explicit Tools</h2>
+            <h2 className="text-4xl font-bold mb-4">9 Explicit Tools</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              v55.3 Explicit Tool Architecture. 10 tools mapping to metabolic loop stages.
+              v55.3 Explicit Tool Architecture. 9 tools mapping to metabolic loop stages.
               444 Thermodynamic Wall → 555-666 ASI (align+foresight) → 888 APEX (9-paradox equilibrium).
             </p>
           </div>
@@ -1279,7 +1291,7 @@ audit_trail = await arifos.vault.get_history({
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance. 7 layers, 9 floors, 10 explicit tools.
+                Constitutional AI governance. 7 layers, 9 floors, 9 explicit tools.
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-600">APPS Layer</span>
