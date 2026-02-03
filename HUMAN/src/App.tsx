@@ -413,7 +413,7 @@ function App() {
               
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-white font-medium mb-2">PETRONAS — Exploration Geoscientist (2014–2026)</h4>
+                  <h4 className="text-white font-medium mb-2">PETRONAS — Exploration Geoscientist (2014–present)</h4>
                   <ul className="space-y-2 text-gray-400 text-sm">
                     <li>• 13+ years in exploration geoscience, 100% success rate, zero dry wells</li>
                     <li>• <strong className="text-gray-300">Bekantan-1:</strong> Shallowest flowing oil discovery in Malay Basin history</li>
@@ -445,7 +445,7 @@ function App() {
                 Developing thermodynamic constraints for artificial intelligence systems.
               </p>
               <p className="text-gray-500 text-sm mt-3">
-                Transitioned from PETRONAS to focus full-time on arifOS development.
+                Developing arifOS alongside PETRONAS responsibilities.
               </p>
             </div>
           </div>
