@@ -148,6 +148,7 @@ print(response.audit_hash)   # SHA-256
 
 - **Human Context:** https://arif-fazil.com/llms.txt
 - **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
+- **Trinity Architecture Guide:** https://github.com/ariffazil/arif-fazil-sites/blob/main/TRINITY_ARCHITECTURE.md
 - **GitHub:** https://github.com/ariffazil/arifOS
 - **PyPI:** `pip install arifos`
 
