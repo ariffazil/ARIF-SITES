@@ -452,34 +452,6 @@ function App() {
         </div>
       </section>
 
-      {/* Core Values — The Tri-Fold Compass */}
-      <section className="py-20 border-t border-gray-800/50">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-sm font-mono text-gray-500 mb-8 uppercase tracking-wider">Core Values — Tri-Fold Compass</h2>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
-              <h3 className="text-white font-medium mb-2">Truth & Clarity</h3>
-              <p className="text-sm text-gray-400">UNKNOWN {'>'} unsafe certainty</p>
-            </div>
-            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
-              <h3 className="text-white font-medium mb-2">Dignity (Maruah)</h3>
-              <p className="text-sm text-gray-400">Non-negotiable self-respect</p>
-            </div>
-            <div className="p-5 rounded-xl border border-gray-800 bg-gray-900/20">
-              <h3 className="text-white font-medium mb-2">Integrity (Amanah)</h3>
-              <p className="text-sm text-gray-400">Sacred trust and responsibility</p>
-            </div>
-          </div>
-
-          <div className="mt-8 p-4 rounded-lg border border-red-500/20 bg-red-950/10">
-            <p className="text-sm text-gray-300">
-              <strong className="text-white">The Abah Check:</strong> "Would this make Abah proud?" — ultimate moral veto
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Trinity Ecosystem - Clean Table */}
       <section id="work" className="py-20 border-t border-gray-800/50">
         <div className="max-w-3xl mx-auto px-6">
