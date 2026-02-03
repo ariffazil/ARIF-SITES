@@ -264,7 +264,7 @@ const THREE_PILLARS = [
 // The 13 Constitutional Floors emerge from these three pillars:
 // • Physics mandates reversibility (F1), entropy reduction (F4), and stability (F5)
 // • Mathematics enables truth verification (F2), consensus (F3), and calibration (F7)
-• Language requires clarity (F4), empathy (F6), and anti-hantu constraints (F9)`;
+// • Language requires clarity (F4), empathy (F6), and anti-hantu constraints (F9)`;
 
 // ─────────────────────────────────────────────────
 // EMD Protection Relay Diagram
