@@ -122,15 +122,34 @@ npm run build --prefix APPS
 
 - **arifOS** ([github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)) — The MCP backend (MIND layer)
 
-## AI Agent Context
+## AI Agent Context — Trinity llms.txt
 
-This repository provides canonical context files for AI systems:
+AI systems can fetch canonical context from all three Trinity sites:
 
-| File | Path | Purpose |
-|------|------|---------|
-| `llms.txt` | `HUMAN/public/llms.txt` | HUMAN layer sovereign memory |
-| `llms.json` | `HUMAN/public/llms.json` | Structured HUMAN data |
-| `VISUAL_SCHEMA.md` | `HUMAN/public/VISUAL_SCHEMA.md` | Complete design system |
+| Site | llms.txt | llms.json | Purpose |
+|------|----------|-----------|---------|
+| **HUMAN** (Δ) | [arif-fazil.com/llms.txt](https://arif-fazil.com/llms.txt) | [llms.json](https://arif-fazil.com/llms.json) | Identity, scars, 888 Judge context |
+| **THEORY** (Ψ) | [apex.arif-fazil.com/llms.txt](https://apex.arif-fazil.com/llms.txt) | [llms.json](https://apex.arif-fazil.com/llms.json) | 13 Floors, Three Pillars, constitutional law |
+| **APPS** (Ω) | [arifos.arif-fazil.com/llms.txt](https://arifos.arif-fazil.com/llms.txt) | [llms.json](https://arifos.arif-fazil.com/llms.json) | 9 MCP Tools, L1-L7 stack, implementation |
+
+**MCP Backend:** `aaamcp.arif-fazil.com/mcp`
+
+### Why Three Files?
+
+The Trinity architecture separates concerns:
+- **HUMAN** → *Who* is building this? (epistemic context)
+- **THEORY** → *What law* governs action? (constitutional canon)
+- **APPS** → *How* to execute? (implementation tools)
+
+See [TRINITY_ARCHITECTURE.md](./TRINITY_ARCHITECTURE.md) for the complete philosophy.
+
+### Machine Discovery
+
+Each site exposes:
+- `<link rel="alternate" type="text/plain" href="/llms.txt">` in HTML `<head>`
+- `/.well-known/arifos.json` — structured discovery endpoint
+- `/robots.txt` — LLM context pointers
+- `/sitemap.xml` — high-priority llms.txt URLs
 
 ---
 
