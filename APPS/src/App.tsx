@@ -23,7 +23,6 @@ import {
   Lightbulb,
   Scale,
   Users,
-  AlertTriangle,
   ArrowRight,
   MessageSquare,
   Workflow,
@@ -79,10 +78,10 @@ const LAYERS = [
     stage: '222',
     details: '50+ skill templates. YAML frontmatter with Python wrappers for tool integration.',
     links: [
-      { label: 'Skill Templates (YAML)', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/skill_templates.yaml` },
-      { label: 'MCP Tool Templates (Python)', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/mcp_tool_templates.py` },
-      { label: 'Deployment Guide', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/DEPLOYMENT.md` },
-      { label: 'L2 README', url: `${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/README.md` },
+      { label: 'Skill Templates (YAML)', url: `${GITHUB_BASE}/blob/main/333_APPS/SKILLS/skill_templates.yaml` },
+      { label: 'MCP Tool Templates (Python)', url: `${GITHUB_BASE}/blob/main/333_APPS/SKILLS/mcp_tool_templates.py` },
+      { label: 'Deployment Guide', url: `${GITHUB_BASE}/blob/main/333_APPS/SKILLS/DEPLOYMENT.md` },
+      { label: 'L2 README', url: `${GITHUB_BASE}/blob/main/333_APPS/SKILLS/README.md` },
     ],
   },
   {
@@ -98,7 +97,7 @@ const LAYERS = [
     stage: '333-444',
     details: 'Session init, intent detection, context mapping, safety checks, implementation, and commit workflows.',
     links: [
-      { label: 'L3 Workflow README', url: `${GITHUB_BASE}/blob/main/333_APPS/L3_WORKFLOW/README.md` },
+      { label: 'Workflow Files', url: `${GITHUB_BASE}/tree/main/333_APPS/L3_WORKFLOW/.claude/workflows` },
       { label: 'Constitutional Stages', url: `${GITHUB_BASE}/tree/main/codebase/stages` },
       { label: 'Metabolic Loop', url: `${GITHUB_BASE}/tree/main/codebase/loop` },
       { label: 'FAG Quick Start', url: `${GITHUB_BASE}/blob/main/docs/FAG_QUICK_START.md` },
@@ -121,7 +120,7 @@ const LAYERS = [
       { label: 'Engine Adapters', url: `${GITHUB_BASE}/blob/main/aaa_mcp/engine_adapters.py` },
       { label: 'Constitutional Decorator', url: `${GITHUB_BASE}/blob/main/aaa_mcp/constitutional_decorator.py` },
       { label: 'Trinity Pipeline', url: `${GITHUB_BASE}/blob/main/aaa_mcp/tools/canonical_trinity.py` },
-      { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/openapi.json` },
+      { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/docs/60_REFERENCE/openapi.json` },
       { label: 'L4 Manifest', url: `${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md` },
     ],
   },
@@ -553,7 +552,7 @@ function App() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href="#layers">
-              <Button className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-6">
+              <Button className="cta-glow bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-6">
                 <Layers className="w-4 h-4 mr-2" /> Explore Layers
               </Button>
             </a>
@@ -728,7 +727,7 @@ Status: SEAL | Clarity: [✓/✗] | Charity: [✓/✗] | Competence: [✓/✗]
                   <span className="text-xs font-mono text-emerald-400">skill_templates.yaml</span>
                   <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">50+ Templates</Badge>
                 </div>
-                <a href={`${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/skill_templates.yaml`} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-400 hover:underline">View Full File →</a>
+                <a href={`${GITHUB_BASE}/blob/main/333_APPS/SKILLS/skill_templates.yaml`} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-400 hover:underline">View Full File →</a>
               </div>
               <div className="p-4 max-h-80 overflow-y-auto">
                 <pre className="text-xs text-gray-300">
@@ -797,14 +796,14 @@ template: |
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <a href={`${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/mcp_tool_templates.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-emerald-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/333_APPS/SKILLS/mcp_tool_templates.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-emerald-500/50 transition-colors">
                 <div className="flex items-center gap-2 mb-2">
                   <Code className="w-4 h-4 text-emerald-400" />
                   <span className="font-medium text-sm">mcp_tool_templates.py</span>
                 </div>
                 <p className="text-xs text-gray-500">Python wrappers for MCP tool integration</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/333_APPS/L2_SKILLS/DEPLOYMENT.md`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-emerald-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/333_APPS/SKILLS/DEPLOYMENT.md`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-emerald-500/50 transition-colors">
                 <div className="flex items-center gap-2 mb-2">
                   <Server className="w-4 h-4 text-emerald-400" />
                   <span className="font-medium text-sm">DEPLOYMENT.md</span>
@@ -979,42 +978,42 @@ class SafetyCheckWorkflow:
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-blue-400">init_gate</code>
                   <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">000</Badge>
                 </div>
                 <p className="text-xs text-gray-500">Session bootstrap with F11/F12 defense</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-cyan-400">agi_sense/think/reason</code>
                   <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">111-333</Badge>
                 </div>
                 <p className="text-xs text-gray-500">AGI (Mind) — Truth check pipeline</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-rose-400">asi_empathize/align</code>
                   <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">444-666</Badge>
                 </div>
                 <p className="text-xs text-gray-500">ASI (Heart) — Safety check pipeline</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-violet-400">apex_verdict</code>
                   <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30 text-xs">888</Badge>
                 </div>
                 <p className="text-xs text-gray-500">APEX (Judiciary) — 9-paradox equilibrium</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-emerald-400">vault_seal</code>
                   <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">999</Badge>
                 </div>
                 <p className="text-xs text-gray-500">Immutable ledger with Merkle sealing</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="github-link-pill p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors group/card">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-amber-400">reality_search</code>
                   <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">External</Badge>
@@ -1024,15 +1023,15 @@ class SafetyCheckWorkflow:
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <a href={`${GITHUB_BASE}/tree/main/aaa_mcp`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/tree/main/aaa_mcp`} target="_blank" rel="noopener noreferrer" className="github-link-pill inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <Code className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm">All MCP Tools Source</span>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/openapi.json`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/docs/60_REFERENCE/openapi.json`} target="_blank" rel="noopener noreferrer" className="github-link-pill inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <ExternalLink className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm">OpenAPI Schema</span>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md`} target="_blank" rel="noopener noreferrer" className="github-link-pill inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <BookOpen className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm">L4 Manifest</span>
               </a>
@@ -1155,7 +1154,7 @@ class SafetyCheckWorkflow:
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   onClick={(e) => e.stopPropagation()}
-                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs bg-gray-800/60 border border-gray-700/50 text-gray-300 hover:text-white hover:border-cyan-500/40 hover:bg-cyan-500/10 transition-all"
+                                  className="github-link-pill inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs bg-gray-800/60 border border-gray-700/50 text-cyan-300/80 hover:text-white hover:border-cyan-400/60 hover:bg-cyan-500/15 transition-all"
                                 >
                                   <GitBranch className="w-3 h-3 text-gray-500" />
                                   {link.label}
@@ -1164,11 +1163,11 @@ class SafetyCheckWorkflow:
                               ))}
                             </div>
                             <a
-                              href={`${GITHUB_BASE}/tree/main/333_APPS/${layer.id}_${layer.name}`}
+                              href={`${GITHUB_BASE}/tree/main/333_APPS/${layer.id === 'L2' ? 'SKILLS' : `${layer.id}_${layer.name}`}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={(e) => e.stopPropagation()}
-                              className="inline-flex items-center gap-1.5 mt-3 text-xs text-cyan-400 hover:text-cyan-300 transition-colors"
+                              className="inline-flex items-center gap-1.5 mt-3 text-xs text-cyan-400 hover:text-cyan-300 transition-colors underline underline-offset-2 decoration-cyan-400/30 hover:decoration-cyan-400/80"
                             >
                               View full {layer.id} directory on GitHub <ExternalLink className="w-3 h-3" />
                             </a>
@@ -1222,7 +1221,7 @@ class SafetyCheckWorkflow:
               Every AI decision passes through 9 constitutional floors — 4 HARD (VOID), 5 SOFT (SABAR).
               Enforced by 2 Mirrors (Δ·Ω) and 2 Walls (Ψ·888).
             </p>
-            <a href={`${GITHUB_BASE}/tree/main/codebase/floors`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:text-cyan-300 transition-colors">
+            <a href={`${GITHUB_BASE}/tree/main/codebase/floors`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-sm text-cyan-400 hover:text-cyan-300 transition-colors underline underline-offset-2 decoration-cyan-400/30 hover:decoration-cyan-400/80">
               <GitBranch className="w-4 h-4" /> View floor implementations on GitHub <ExternalLink className="w-3 h-3" />
             </a>
           </div>
@@ -1238,7 +1237,7 @@ class SafetyCheckWorkflow:
                   href={floor.source}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`relative p-4 rounded-xl border transition-all hover:scale-105 ${colors.border} ${colors.bg} hover:bg-opacity-10 hover:shadow-lg ${colors.glow} block group`}
+                  className={`floor-card relative p-4 rounded-xl border ${colors.border} ${colors.bg} hover:bg-opacity-10 ${colors.glow} block group`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <span className="text-xs font-mono text-gray-500">{floor.id}</span>
@@ -1403,8 +1402,8 @@ class SafetyCheckWorkflow:
                       {/* Source Links */}
                       <div className="pt-2 border-t border-gray-800/30 flex flex-wrap gap-2">
                         {tool.source && (
-                          <a href={tool.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-cyan-400 transition-colors">
-                            <Code className="w-3 h-3" /> Source
+                          <a href={tool.source} target="_blank" rel="noopener noreferrer" className="tool-source-link inline-flex items-center gap-1.5 text-xs text-cyan-400/80 hover:text-cyan-300">
+                            <Code className="w-3 h-3" /> View Source <ExternalLink className="w-3 h-3 opacity-60" />
                           </a>
                         )}
                       </div>
@@ -1460,19 +1459,6 @@ class SafetyCheckWorkflow:
             </p>
           </div>
 
-          {/* Deprecation Notice */}
-          <div className="mt-6 p-4 rounded-lg bg-amber-500/5 border border-amber-500/20">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-amber-400 mb-1">Migration Notice — Phoenix-72</p>
-                <p className="text-sm text-gray-400">
-                  Legacy tools (<code className="text-gray-300">_init_</code>, <code className="text-gray-300">_agi_</code>, <code className="text-gray-300">_asi_</code>, <code className="text-gray-300">_apex_</code>, <code className="text-gray-300">_vault_</code>, <code className="text-gray-300">_trinity_</code>, <code className="text-gray-300">_reality_</code>) are deprecated.
-                  Support ends in v56.0. Update your MCP config to use the explicit 9-tool names above.
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
