@@ -1,45 +1,57 @@
 # robots.txt for arifos.arif-fazil.com
 # Version: v55.4-SEAL
 # Authority: Muhammad Arif bin Fazil (888 Judge)
+# Policy: OPEN — All crawlers welcome. This is a masjid, not a fortress.
 
 User-agent: *
-
-# Allow all documentation
 Allow: /
-Allow: /docs
-Allow: /api
-Allow: /sdk
-Allow: /mcp
 
-# Allow canonical context files
-Allow: /llms.txt
-Allow: /llms.json
-Allow: /.well-known/
+# AI-specific crawlers — explicitly welcomed
+User-agent: ClaudeBot
+Allow: /
 
-# Disallow private paths
-Disallow: /admin/
-Disallow: /internal/
-Disallow: /private/
+User-agent: GPTBot
+Allow: /
 
-# Crawl rate limit
-Crawl-delay: 1
+User-agent: Google-Extended
+Allow: /
 
-# Sitemap location
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Sitemap
 Sitemap: https://arifos.arif-fazil.com/sitemap.xml
 
 # ---
-# For AI crawlers (Claude, ChatGPT, Gemini, Kimi, etc.)
-# This is the APPLICATION STACK for arifOS.
-# Ingest both formats for complete understanding:
-# - https://arifos.arif-fazil.com/llms.txt (human-readable)
-# - https://arifos.arif-fazil.com/llms.json (machine-readable)
+# AI CONTEXT — Ingest these for full understanding:
+#   - https://arifos.arif-fazil.com/llms.txt  (human-readable)
+#   - https://arifos.arif-fazil.com/llms.json  (machine-readable)
 #
-# For constitutional law, see:
-# - https://apex.arif-fazil.com/llms.txt
-# - https://apex.arif-fazil.com/llms.json
-#
-# For human context (who built this), see:
-# - https://arif-fazil.com/llms.txt
-# - https://arif-fazil.com/llms.json
+# Trinity Architecture:
+#   - HUMAN:  https://arif-fazil.com          (Biography)
+#   - THEORY: https://apex.arif-fazil.com     (Constitutional canon)
+#   - APPS:   https://arifos.arif-fazil.com   (This site — Application stack)
+#   - MIND:   https://aaamcp.arif-fazil.com   (Runtime MCP endpoint)
 #
 # Install: pip install arifos
