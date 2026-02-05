@@ -108,23 +108,20 @@ const LAYERS = [
     id: 'L4',
     name: 'TOOLS',
     tagline: '9 MCP Tools · Production',
-    desc: 'The constitutional MCP server. 9 explicit tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
+    desc: 'The constitutional MCP server. 9 canonical tools running the Trinity parallel pipeline (AGI || ASI → APEX).',
     coverage: '80%',
     status: 'production',
     statusLabel: 'Production',
     icon: Wrench,
     color: 'cyan',
     stage: '555-666',
-    details: 'FastAPI + SSE transport on Railway. 28/28 schema tests passing. v55.2-SEAL.',
+    details: 'FastMCP + SSE transport on Railway. v55.4-SEAL.',
     links: [
-      { label: 'MCP Tools Source', url: `${GITHUB_BASE}/tree/main/codebase/mcp/tools` },
-      { label: 'Trinity Pipeline', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/canonical_trinity.py` },
-      { label: 'AGI Tool (Sense/Think/Reason)', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py` },
-      { label: 'ASI Tool (Empathize/Align)', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py` },
-      { label: 'APEX Verdict Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py` },
-      { label: 'Vault Seal Tool', url: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py` },
+      { label: 'MCP Server (FastMCP)', url: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py` },
+      { label: 'Engine Adapters', url: `${GITHUB_BASE}/blob/main/aaa_mcp/engine_adapters.py` },
+      { label: 'Constitutional Decorator', url: `${GITHUB_BASE}/blob/main/aaa_mcp/constitutional_decorator.py` },
+      { label: 'Trinity Pipeline', url: `${GITHUB_BASE}/blob/main/aaa_mcp/tools/canonical_trinity.py` },
       { label: 'OpenAPI Schema', url: `${GITHUB_BASE}/blob/main/openapi.json` },
-      { label: 'JSON Schemas (9 tools)', url: `${GITHUB_BASE}/tree/main/schemas` },
       { label: 'L4 Manifest', url: `${GITHUB_BASE}/blob/main/333_APPS/L4_TOOLS/MANIFEST.md` },
     ],
   },
@@ -194,7 +191,7 @@ const LAYERS = [
   },
 ];
 
-// 9 Constitutional Floors (F1-F9) — Canonical v55.2
+// 9 Constitutional Floors (F1-F9) — Canonical v55.4
 const FLOORS = [
   { id: 'F1', name: 'Amanah', desc: 'Trust through reversibility', icon: GitBranch, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/amanah.py`, type: 'hard' },
   { id: 'F2', name: 'Truth', desc: 'Verifiable claims only', icon: Shield, color: 'red', source: `${GITHUB_BASE}/blob/main/codebase/floors/truth.py`, type: 'hard' },
@@ -219,122 +216,113 @@ const WALLS = [
   { id: '888', name: 'JUDGE', role: 'Human Authority', desc: 'Sovereign veto always available', color: 'red' },
 ];
 
-// MCP Tools data — v55.3 Explicit Tool Architecture (9 canonical tools)
+// MCP Tools data — v55.4 Canonical Tool Architecture (9 tools)
 const MCP_TOOLS = [
   {
     name: 'init_gate',
     stage: '000',
-    description: 'Session bootstrap with F11 CommandAuth identity verification, F12 injection defense, and budget allocation. Returns sealed session context.',
-    params: ['query', 'session_id', 'user_token', 'nonce'],
+    description: 'Gate & injection defense (F11/F12). Session bootstrap with identity verification and budget allocation',
+    params: ['query', 'session_id'],
     actions: ['init', 'gate', 'validate', 'authorize'],
-    returns: 'session_id, authority_level, budget_allocated, injection_score, motto, seal',
+    returns: 'session_id, verdict, motto, seal, floors_enforced',
     color: 'blue',
-    engine: 'ASI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/init_gate.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/init_gate.schema.json`,
+    engine: 'INIT',
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'agi_sense',
     stage: '111',
-    description: 'Input parsing & intent detection. First stage of the epistemic pipeline',
-    params: ['query', 'context', 'session_id'],
+    description: 'Input parsing & intent detection (F2/F4). First stage of the epistemic pipeline',
+    params: ['query', 'session_id'],
     actions: ['parse', 'detect_intent', 'extract_entities'],
-    returns: 'parsed_input, intent, entities, confidence',
+    returns: 'parsed_input, intent, entities, confidence, floors_enforced',
     color: 'cyan',
     engine: 'AGI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/agi_sense.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'agi_think',
     stage: '222',
-    description: 'Hypothesis generation with high entropy. Divergent reasoning and pattern exploration',
-    params: ['query', 'parsed_input', 'session_id'],
+    description: 'Hypothesis generation with high entropy (F2/F4/F7). Divergent reasoning and pattern exploration',
+    params: ['query', 'session_id'],
     actions: ['hypothesize', 'explore', 'brainstorm'],
-    returns: 'hypotheses, entropy_delta, candidate_count',
+    returns: 'hypotheses, entropy_delta, candidate_count, floors_enforced',
     color: 'cyan',
     engine: 'AGI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/agi_think.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'agi_reason',
     stage: '333',
-    description: 'Deep logic chains with low entropy. Convergent reasoning and proof construction',
-    params: ['query', 'hypotheses', 'context', 'session_id'],
+    description: 'Deep logic chains with low entropy (F2/F4/F7). Convergent reasoning and proof construction',
+    params: ['query', 'session_id'],
     actions: ['reason', 'prove', 'refute', 'synthesize'],
-    returns: 'conclusion, omega_0, precision, floor_scores, vote',
+    returns: 'conclusion, omega_0, precision, floor_scores, vote, floors_enforced',
     color: 'cyan',
     engine: 'AGI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/agi_reason.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'asi_empathize',
     stage: '444',
-    description: 'Stakeholder modeling (F6). Maps affected parties and impact vectors',
-    params: ['query', 'reasoning', 'session_id'],
+    description: 'Stakeholder modeling (F5/F6). Maps affected parties and impact vectors',
+    params: ['query', 'session_id'],
     actions: ['model_stakeholders', 'assess_impact', 'map_harm'],
-    returns: 'stakeholder_map, empathy_kappa_r, impact_vectors',
+    returns: 'stakeholder_map, empathy_kappa_r, impact_vectors, floors_enforced',
     color: 'rose',
     engine: 'ASI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/asi_empathize.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'asi_align',
     stage: '555-666',
-    description: 'Constitutional alignment check + second-order foresight. Validates against all 9 floors with risk analysis',
-    params: ['query', 'reasoning', 'stakeholder_map', 'session_id'],
+    description: 'Constitutional alignment check (F5/F6/F9). Validates against all 9 floors with risk analysis',
+    params: ['query', 'session_id'],
     actions: ['check_floors', 'validate_alignment', 'score', 'forecast_risk'],
-    returns: 'floor_results, alignment_score, violations, peace_squared, risk_profile',
+    returns: 'floor_results, alignment_score, violations, peace_squared, floors_enforced',
     color: 'rose',
     engine: 'ASI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/asi_align.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'apex_verdict',
     stage: '888',
-    description: 'Final constitutional judgment. 9-paradox equilibrium solver, renders SEAL/VOID/SABAR/888_HOLD',
-    params: ['query', 'agi_context', 'asi_context', 'session_id'],
+    description: 'Final constitutional judgment (F3/F8). 9-paradox equilibrium solver, renders SEAL/VOID/SABAR/888_HOLD',
+    params: ['query', 'session_id'],
     actions: ['judge', 'seal', 'proof'],
-    returns: 'final_verdict, trinity_score, paradox_scores, merkle_root',
+    returns: 'final_verdict, trinity_score, paradox_scores, merkle_root, floors_enforced',
     color: 'violet',
     engine: 'APEX',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/apex_verdict.schema.json`,
-  },
-  {
-    name: 'vault_commit',
-    stage: '999',
-    description: 'Immutable ledger write with F3 Tri-Witness verification. Cryptographic sealing of all outputs with Merkle tree root.',
-    params: ['session_id', 'verdict', 'outputs', 'metadata'],
-    actions: ['seal', 'witness', 'commit'],
-    returns: 'vault_id, merkle_root, timestamp, seal_signature',
-    color: 'emerald',
-    engine: 'APEX',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/vault_commit.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
   {
     name: 'reality_search',
     stage: 'External',
-    description: 'Grounding via external data (F2). Fact-checking against real-world sources',
-    params: ['query', 'session_id', 'sources'],
+    description: 'Grounding via external data (F2/F7). Fact-checking against real-world sources',
+    params: ['query', 'session_id'],
     actions: ['search', 'verify', 'cross_check'],
-    returns: 'verified, confidence, sources, caveats, recency',
+    returns: 'verified, confidence, sources, caveats, recency, floors_enforced',
     color: 'orange',
     engine: 'AGI',
-    source: `${GITHUB_BASE}/blob/main/codebase/mcp/tools/reality_tool.py`,
-    schema: `${GITHUB_BASE}/blob/main/schemas/reality_search.schema.json`,
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
+  },
+  {
+    name: 'vault_seal',
+    stage: '999',
+    description: 'Seal session to immutable ledger (F1/F3). Merkle-chained persistence with audit trail',
+    params: ['session_id', 'verdict', 'payload'],
+    actions: ['seal', 'persist', 'hash'],
+    returns: 'verdict, seal, motto, floors_enforced',
+    color: 'green',
+    engine: 'VAULT',
+    source: `${GITHUB_BASE}/blob/main/aaa_mcp/server.py`,
   },
 ];
 
 // API Endpoints — served from aaamcp.arif-fazil.com (Railway)
 const ENDPOINTS = [
   { path: '/health', method: 'GET', desc: 'System health check', status: 'stable' },
-  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 explicit tools)', status: 'stable' },
+  { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 canonical tools)', status: 'stable' },
   { path: '/sse', method: 'GET', desc: 'Server-sent events stream', status: 'stable' },
   { path: '/dashboard', method: 'GET', desc: 'Live system dashboard', status: 'stable' },
   { path: '/docs', method: 'GET', desc: 'API documentation (OpenAPI)', status: 'stable' },
@@ -344,28 +332,31 @@ const API_BASE = 'aaamcp.arif-fazil.com';
 
 // Code examples
 const INSTALL_CODE = `pip install arifos`;
-const USAGE_CODE = `from arifos import TrinityClient
+const USAGE_CODE = `# MCP config for Claude Code / Cursor / etc.
+# Add to .claude/mcp.json or .mcp.json:
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "python",
+      "args": ["-m", "aaa_mcp", "stdio"]
+    }
+  }
+}
 
-# Initialize — connects to aaamcp.arif-fazil.com/mcp
-client = TrinityClient(
-    floors=["F1", "F2", "F3", "F7", "F13"],
-    require_witness=True
-)
+# Or connect to the live SSE server:
+# Endpoint: https://aaamcp.arif-fazil.com/sse
 
-# v55.1 explicit tools — parallel AGI || ASI
-response = client.ask(
-    "Analyze this data",
-    tri_witness_threshold=0.95
-)
+# Python SDK usage:
+from arifos import ConstitutionalAgent
 
-# Direct tool invocation
-sense = client.tool("agi_sense", query="parse input")
-verdict = client.tool("apex_verdict", agi_context=..., asi_context=...)`;
+agent = ConstitutionalAgent(floors="all")
+result = agent.process("Analyze this data")
+print(result.verdict)  # SEAL / VOID / SABAR / 888_HOLD`;
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.3-SEAL' });
+  const [systemStatus, setSystemStatus] = useState({ online: true, version: 'v55.4-SEAL' });
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
 
@@ -379,9 +370,9 @@ function App() {
 
   // Check actual system status
   useEffect(() => {
-    fetch(`${API_BASE}/health`)
-      .then(res => res.ok ? setSystemStatus({ online: true, version: 'v55.1-SEAL' }) : setSystemStatus({ online: false, version: 'v55.1-SEAL' }))
-      .catch(() => setSystemStatus({ online: false, version: 'v55.1-SEAL' }));
+    fetch(`https://${API_BASE}/health`)
+      .then(res => res.ok ? setSystemStatus({ online: true, version: 'v55.4-SEAL' }) : setSystemStatus({ online: false, version: 'v55.4-SEAL' }))
+      .catch(() => setSystemStatus({ online: false, version: 'v55.4-SEAL' }));
   }, []);
 
   const copyToClipboard = (code: string, id: string) => {
@@ -967,7 +958,7 @@ class SafetyCheckWorkflow:
                   <span className="text-xs text-gray-500">Claude Desktop Config</span>
                 </div>
                 <button 
-                  onClick={() => copyToClipboard(`{\n  \"mcpServers\": {\n    \"arifos\": {\n      \"command\": \"npx\",\n      \"args\": [\n        \"-y\",\n        \"@anthropic-ai/mcp-server-fetch\"\n      ],\n      \"env\": {\n        \"ARIFOS_ENDPOINT\": \"https://aaamcp.arif-fazil.com/mcp\"\n      }\n    }\n  }\n}`, 'mcp-config')}
+                  onClick={() => copyToClipboard(`{\n  \"mcpServers\": {\n    \"arifos\": {\n      \"command\": \"python\",\n      \"args\": [\"-m\", \"aaa_mcp\", \"stdio\"]\n    }\n  }\n}`, 'mcp-config')}
                   className="p-1.5 hover:bg-gray-800 rounded transition-colors"
                 >
                   {copiedCode === 'mcp-config' ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-gray-400" />}
@@ -978,11 +969,8 @@ class SafetyCheckWorkflow:
 {`{
   "mcpServers": {
     "arifos": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-server-fetch"],
-      "env": {
-        "ARIFOS_ENDPOINT": "https://aaamcp.arif-fazil.com/mcp"
-      }
+      "command": "python",
+      "args": ["-m", "aaa_mcp", "stdio"]
     }
   }
 }`}
@@ -991,42 +979,42 @@ class SafetyCheckWorkflow:
             </div>
 
             <div className="grid md:grid-cols-3 gap-4 mb-6">
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/init_gate.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-blue-400">init_gate</code>
                   <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">000</Badge>
                 </div>
                 <p className="text-xs text-gray-500">Session bootstrap with F11/F12 defense</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/agi_tool.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-cyan-400">agi_sense/think/reason</code>
                   <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30 text-xs">111-333</Badge>
                 </div>
                 <p className="text-xs text-gray-500">AGI (Mind) — Truth check pipeline</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/asi_tool.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-rose-400">asi_empathize/align</code>
                   <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30 text-xs">444-666</Badge>
                 </div>
                 <p className="text-xs text-gray-500">ASI (Heart) — Safety check pipeline</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/apex_tool.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-violet-400">apex_verdict</code>
                   <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30 text-xs">888</Badge>
                 </div>
                 <p className="text-xs text-gray-500">APEX (Judiciary) — 9-paradox equilibrium</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/vault_tool.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
-                  <code className="text-xs text-emerald-400">vault_commit</code>
+                  <code className="text-xs text-emerald-400">vault_seal</code>
                   <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 text-xs">999</Badge>
                 </div>
                 <p className="text-xs text-gray-500">Immutable ledger with Merkle sealing</p>
               </a>
-              <a href={`${GITHUB_BASE}/blob/main/codebase/mcp/tools/reality_tool.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/blob/main/aaa_mcp/server.py`} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-xs text-amber-400">reality_search</code>
                   <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">External</Badge>
@@ -1036,7 +1024,7 @@ class SafetyCheckWorkflow:
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <a href={`${GITHUB_BASE}/tree/main/codebase/mcp/tools`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
+              <a href={`${GITHUB_BASE}/tree/main/aaa_mcp`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-colors">
                 <Code className="w-4 h-4 text-cyan-400" />
                 <span className="text-sm">All MCP Tools Source</span>
               </a>
@@ -1355,10 +1343,10 @@ class SafetyCheckWorkflow:
               <Terminal className="w-4 h-4 text-amber-400" />
               <span className="text-sm text-amber-400">Model Context Protocol</span>
             </div>
-            <h2 className="text-4xl font-bold mb-4">9 Explicit Tools</h2>
+            <h2 className="text-4xl font-bold mb-4">9 Canonical Tools</h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              v55.3 Explicit Tool Architecture. 9 tools mapping to metabolic loop stages.
-              444 Thermodynamic Wall → 555-666 ASI (align+foresight) → 888 APEX (9-paradox equilibrium).
+              v55.4 Canonical Tool Architecture. 9 tools mapping to metabolic loop stages.
+              444 Thermodynamic Wall → 555-666 ASI (align+foresight) → 888 APEX (9-paradox equilibrium) → 999 VAULT (seal).
             </p>
           </div>
 
@@ -1376,7 +1364,9 @@ class SafetyCheckWorkflow:
                         <Badge className={`text-xs ${
                           tool.engine === 'AGI' ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' :
                           tool.engine === 'ASI' ? 'bg-rose-500/20 text-rose-400 border-rose-500/30' :
-                          'bg-violet-500/20 text-violet-400 border-violet-500/30'
+                          tool.engine === 'APEX' ? 'bg-violet-500/20 text-violet-400 border-violet-500/30' :
+                          tool.engine === 'VAULT' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+                          'bg-blue-500/20 text-blue-400 border-blue-500/30'
                         }`}>{tool.engine}</Badge>
                       </div>
                     </div>
@@ -1417,11 +1407,6 @@ class SafetyCheckWorkflow:
                             <Code className="w-3 h-3" /> Source
                           </a>
                         )}
-                        {tool.schema && (
-                          <a href={tool.schema} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-cyan-400 transition-colors">
-                            <GitBranch className="w-3 h-3" /> Schema
-                          </a>
-                        )}
                       </div>
                     </div>
                   </CardContent>
@@ -1436,7 +1421,7 @@ class SafetyCheckWorkflow:
 
             {/* Gate */}
             <div className="flex items-center gap-2 flex-wrap justify-center mb-4">
-              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">init_reboot</Badge>
+              <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">init_gate</Badge>
               <ChevronRight className="w-4 h-4 text-gray-600" />
             </div>
 
@@ -1462,14 +1447,16 @@ class SafetyCheckWorkflow:
               </div>
             </div>
 
-            {/* Collapse at APEX */}
+            {/* Collapse at APEX + VAULT */}
             <div className="flex items-center gap-2 flex-wrap justify-center">
               <ChevronRight className="w-4 h-4 text-gray-600" />
               <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">apex_verdict (9-paradox)</Badge>
+              <ArrowRight className="w-3 h-3 text-gray-600" />
+              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">vault_seal</Badge>
             </div>
 
             <p className="text-sm text-gray-500 text-center mt-4">
-              Mind (AGI) and Heart (ASI) run in parallel. 444 Thermodynamic Wall → 555-666 ASI foresight → 888 APEX (9-paradox equilibrium). reality_search provides external grounding at any stage.
+              Mind (AGI) and Heart (ASI) run in parallel. 444 Thermodynamic Wall → 555-666 ASI foresight → 888 APEX (9-paradox equilibrium) → 999 VAULT (seal). reality_search provides external grounding at any stage.
             </p>
           </div>
 
@@ -1677,8 +1664,8 @@ class SafetyCheckWorkflow:
                 <ul className="space-y-2 text-sm text-gray-400">
                   <li className="flex justify-between"><span>Provider</span><span className="text-white">Railway</span></li>
                   <li className="flex justify-between"><span>Region</span><span className="text-white">US West</span></li>
-                  <li className="flex justify-between"><span>Runtime</span><span className="text-white">Python 3.12 + FastAPI</span></li>
-                  <li className="flex justify-between"><span>Protocol</span><span className="text-white">MCP (SSE + Streamable HTTP)</span></li>
+                  <li className="flex justify-between"><span>Runtime</span><span className="text-white">Python 3.12 + FastMCP</span></li>
+                  <li className="flex justify-between"><span>Protocol</span><span className="text-white">MCP (stdio + SSE + Streamable HTTP)</span></li>
                   <li className="flex justify-between"><span>Redundancy</span><span className="text-white">Single instance, auto-restart</span></li>
                 </ul>
               </CardContent>
@@ -1734,8 +1721,8 @@ result = await arifos.trinity({
 })
 
 // Individual engine calls
-truth_check  = await arifos.arif(query, context)
-safety_check = await arifos.adam(action, context)
+truth_check  = await arifos.agi(query, context)
+safety_check = await arifos.asi(action, context)
 verdict      = await arifos.apex(truth_check, safety_check)
 
 // Audit retrieval with Merkle verification
@@ -1783,7 +1770,7 @@ audit_trail = await arifos.vault.get_history({
                 <span className="font-semibold">arifOS</span>
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                Constitutional AI governance. 7 layers, 9 floors, 9 explicit tools.
+                Constitutional AI governance. 7 layers, 9 floors, 9 canonical tools.
               </p>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-600">APPS Layer</span>
