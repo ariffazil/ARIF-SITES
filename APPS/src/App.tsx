@@ -1214,7 +1214,7 @@ Response to User`}</pre>
                   <li className="flex justify-between"><span>Region</span><span className="text-white">US West</span></li>
                   <li className="flex justify-between"><span>Runtime</span><span className="text-white">Python 3.12 + FastMCP</span></li>
                   <li className="flex justify-between"><span>Protocol</span><span className="text-white">MCP (stdio + SSE + Streamable HTTP)</span></li>
-                  <li className="flex justify-between"><span>Redundancy</span><span className="text-white">Single instance, auto-restart</span></li>
+                  <li className="flex justify-between"><span>Redundancy</span><span className="text-white">Single instance, restart-on-failure</span></li>
                 </ul>
               </CardContent>
             </Card>
