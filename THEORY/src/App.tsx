@@ -3,13 +3,7 @@ import {
   Shield,
   Menu,
   X,
-  BookOpen,
-  Atom,
   Binary,
-  Brain,
-  Scale,
-  Network,
-  Activity,
   ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
