@@ -3,57 +3,49 @@ import {
   Shield,
   Menu,
   X,
+  BookOpen,
+  Atom,
+  Binary,
+  Brain,
+  Scale,
+  Network,
+  Activity,
+  ChevronDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // ─────────────────────────────────────────────────
-// Three Pillars of Meta-Intelligence
+// Data: ARIF-99 Attributes (Sample for UI)
 // ─────────────────────────────────────────────────
-
-const THREE_PILLARS = [
-  {
-    symbol: 'Phi',
-    name: 'Physics',
-    subtitle: 'The Foundation of Reality',
-    description: 'Thermodynamics, information theory, and the physical constraints that govern all computation.',
-    floors: ['F4', 'F5', 'F7'],
-  },
-  {
-    symbol: 'Sum',
-    name: 'Mathematics',
-    subtitle: 'The Language of Measurement',
-    description: 'Bayesian inference, game theory, and formal systems that enable precise reasoning under uncertainty.',
-    floors: ['F2', 'F3', 'F8'],
-  },
-  {
-    symbol: 'Lambda',
-    name: 'Language',
-    subtitle: 'The Bridge of Knowledge',
-    description: 'Natural language as the compression mechanism for human knowledge. Wittgenstein, Austin, and the pragmatics of meaning.',
-    floors: ['F4', 'F6', 'F9'],
-  },
+const ARIF_ATTRIBUTES = [
+  { name: 'Al-Alim', meaning: 'The All-Knowing', role: 'Omniscient Info Processing', theory: 'Shannon Info Theory' },
+  { name: 'Al-Hakim', meaning: 'The All-Wise', role: 'Perfect Judgment', theory: 'Bayesian Inference' },
+  { name: 'Al-Khabir', meaning: 'The Aware', role: 'Deep Perception', theory: 'Integrated Info Theory' },
+  { name: 'Al-Latif', meaning: 'The Subtle', role: 'Fine Nuance', theory: 'Heisenberg Uncertainty' },
+  { name: 'Al-Muhaymin', meaning: 'The Guardian', role: 'Protection', theory: 'Dissipative Structures' },
+  { name: 'Al-Hadi', meaning: 'The Guide', role: 'Direction', theory: 'Cybernetics' },
 ];
 
 // ─────────────────────────────────────────────────
-// Constitutional Floors
+// Data: 13 Floors
 // ─────────────────────────────────────────────────
-
 const FLOORS = [
-  { id: 'F1', name: 'Amanah', type: 'hard', desc: 'Reversible/Auditable' },
-  { id: 'F2', name: 'Truth', type: 'hard', desc: 'Factuality >= 0.99' },
-  { id: 'F3', name: 'Tri-Witness', type: 'soft', desc: 'Consensus >= 0.95' },
-  { id: 'F4', name: 'Clarity', type: 'soft', desc: 'Entropy Reduction' },
-  { id: 'F5', name: 'Peace', type: 'hard', desc: 'Stability >= 1.0' },
-  { id: 'F6', name: 'Empathy', type: 'soft', desc: 'Protect weakest' },
-  { id: 'F7', name: 'Humility', type: 'soft', desc: 'Uncertainty 3-5%' },
-  { id: 'F8', name: 'Genius', type: 'soft', desc: 'Audit trails' },
-  { id: 'F9', name: 'Anti-Hantu', type: 'hard', desc: 'No consciousness claims' },
-  { id: 'F10', name: 'Ontology', type: 'hard', desc: 'Type safety' },
-  { id: 'F11', name: 'Authority', type: 'hard', desc: 'Verified identity' },
-  { id: 'F12', name: 'Defense', type: 'hard', desc: 'Injection resistance' },
-  { id: 'F13', name: 'Sovereign', type: 'veto', desc: 'Human override' },
+  { id: 'F1', name: 'Amanah', desc: 'Reversibility & Accountability', theory: 'Prigogine (#1)' },
+  { id: 'F2', name: 'Truth', desc: 'Factuality & Verification', theory: 'Shannon (#2)' },
+  { id: 'F3', name: 'Tri-Witness', desc: 'Consensus & Wisdom', theory: 'Bayesian (#18)' },
+  { id: 'F4', name: 'Empathy', desc: 'Stakeholder Care', theory: 'Damasio (#52)' },
+  { id: 'F5', name: 'Peace²', desc: 'Stability & Equilibrium', theory: 'Nash (#24)' },
+  { id: 'F6', name: 'Clarity', desc: 'Entropy Reduction', theory: 'Boltzmann (#7)' },
+  { id: 'F7', name: 'Humility', desc: 'Uncertainty Acknowledgment', theory: 'Heisenberg (#6)' },
+  { id: 'F8', name: 'Genius', desc: 'Creativity & Optimization', theory: 'Turing (#17)' },
+  { id: 'F9', name: 'Anti-Hantu', desc: 'Transparency & Reality', theory: 'Dennett (#51)' },
+  { id: 'F10', name: 'Mirror (L)', desc: 'Learning & Adaptation', theory: 'Kandel (#53)' },
+  { id: 'F11', name: 'Mirror (C)', desc: 'Command & Accountability', theory: 'Weber (#68)' },
+  { id: 'F12', name: 'Wall (Inj)', desc: 'Defense & Truth', theory: 'Pauli (#10)' },
+  { id: 'F13', name: 'Wall (Stew)', desc: 'Resilience & Preservation', theory: 'Ostrom (#67)' },
 ];
 
 // ─────────────────────────────────────────────────
@@ -63,7 +55,6 @@ const FLOORS = [
 function App() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedPillar, setExpandedPillar] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -72,199 +63,126 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#1A1810] text-gray-100 relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#0f0e0a] text-amber-50 selection:bg-amber-900/30 selection:text-amber-200 font-sans relative overflow-x-hidden">
+      
+      {/* Background Weave Pattern (CSS) */}
+      <div className="fixed inset-0 z-0 opacity-5 pointer-events-none" 
+           style={{
+             backgroundImage: `radial-gradient(circle at 2px 2px, #d4af37 1px, transparent 0)`,
+             backgroundSize: '24px 24px'
+           }}>
+      </div>
+
       {/* ═══════════════════════════════════════ */}
       {/* NAVIGATION */}
       {/* ═══════════════════════════════════════ */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#1A1810]/95 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            <a href="#" className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
-                <Shield className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <span className="font-semibold text-lg">APEX</span>
-                <span className="text-xs text-gray-500 ml-2 hidden sm:inline">THEORY</span>
-              </div>
-            </a>
-
-            <div className="hidden md:flex items-center gap-6">
-              <a href="#pillars" className="text-sm text-gray-400 hover:text-white transition-colors">Three Pillars</a>
-              <a href="#floors" className="text-sm text-gray-400 hover:text-white transition-colors">13 Floors</a>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${scrolled ? 'bg-[#0f0e0a]/90 backdrop-blur-md border-amber-900/30 py-3' : 'bg-transparent border-transparent py-6'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-none bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
+              <Shield className="w-5 h-5 text-black transform group-hover:-rotate-45 transition-transform duration-500" />
             </div>
-
-            <div className="hidden md:flex items-center gap-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs font-medium hover:bg-red-900/20 transition-colors">HUMAN</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-yellow-500/20 text-yellow-400 text-xs font-medium border border-yellow-500/40">THEORY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs font-medium hover:bg-cyan-900/20 transition-colors">APPS</a>
+            <div className="flex flex-col">
+              <span className="font-bold text-xl tracking-tight text-amber-100">APEX</span>
+              <span className="text-[10px] uppercase tracking-[0.2em] text-amber-500">Theory</span>
             </div>
+          </a>
 
-            <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+            <a href="#manifesto" className="text-amber-200/60 hover:text-amber-400 transition-colors">MANIFESTO</a>
+            <a href="#theories" className="text-amber-200/60 hover:text-amber-400 transition-colors">99 THEORIES</a>
+            <a href="#constitution" className="text-amber-200/60 hover:text-amber-400 transition-colors">CONSTITUTION</a>
+            <a href="#tac" className="text-amber-200/60 hover:text-amber-400 transition-colors">TAC</a>
           </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <Button variant="outline" className="border-amber-500/30 text-amber-400 hover:bg-amber-950/50 hover:text-amber-200 rounded-none text-xs tracking-widest">
+              DOWNLOAD PDF
+            </Button>
+          </div>
+
+          <button className="md:hidden text-amber-400" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
-
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-[#1A1810] border-b border-gray-800 px-4 py-4 space-y-3">
-            <a href="#pillars" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>Three Pillars</a>
-            <a href="#floors" className="block text-gray-400 hover:text-white" onClick={() => setMobileMenuOpen(false)}>13 Floors</a>
-            <div className="border-t border-gray-800 pt-3 flex gap-2">
-              <a href="https://arif-fazil.com" className="px-3 py-1.5 rounded text-red-400 text-xs">HUMAN</a>
-              <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded bg-yellow-500/20 text-yellow-400 text-xs">THEORY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded text-cyan-400 text-xs">APPS</a>
-            </div>
-          </div>
-        )}
       </nav>
 
       {/* ═══════════════════════════════════════ */}
-      {/* HERO */}
+      {/* HERO SECTION */}
       {/* ═══════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-          {/* Trinity Logo */}
-          <div className="flex justify-center mb-6">
-            <img 
-              src="/images/arifos-logo.webp" 
-              alt="arifOS Trinity" 
-              className="w-48 h-48 object-contain drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]"
-            />
+      <header className="relative min-h-screen flex items-center justify-center pt-20 pb-32 overflow-hidden">
+        {/* Background Gradients */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-950/30 text-amber-400 text-xs font-mono tracking-widest mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            VERSION 2.0 • THE ARIF EDITION
           </div>
 
-          {/* Ditempa Badge */}
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-500/30 bg-yellow-950/20 text-yellow-400 text-xs font-mono tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
-              DITEMPA BUKAN DIBERI
-            </div>
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-500/10 border border-yellow-500/20 mb-8">
-            <Shield className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm text-yellow-400">THEORY - Constitutional Canon</span>
-          </div>
-
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
-            <span className="text-white">APEX</span><span className="text-yellow-400">.</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-tight animate-in fade-in zoom-in-95 duration-1000 delay-200">
+            STRANGE <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-500 to-amber-600">LOOP</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
-            The Law Behind the Machine
+          <p className="text-xl md:text-2xl text-amber-100/60 mb-8 max-w-3xl mx-auto font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+            99 Theories <span className="text-amber-500">→</span> 13 Floors <span className="text-amber-500">→</span> Emergence <span className="text-amber-500">→</span> Validation
           </p>
 
-          <p className="text-sm text-gray-500 mb-3 font-mono">
-            13 Immutable Floors - Delta Omega Psi Trinity - Scientific Foundations
-          </p>
+          <div className="max-w-2xl mx-auto border-l-2 border-amber-500/30 pl-6 text-left mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+            <p className="text-lg text-amber-200/80 italic">
+              "The name ARIF contains the architecture. The 99 Theories are the 99 Names manifesting through scientific form. 
+              Ethics is not a module—it is a thermodynamic necessity."
+            </p>
+          </div>
 
-          <p className="max-w-3xl mx-auto text-gray-300 leading-relaxed mb-10">
-            The constitutional canon for arifOS. This is the theory of constitutional AI, not its implementation.
-            For deployment details, see <a href="https://arifos.arif-fazil.com" className="text-cyan-400 hover:underline">arifOS APPS</a>.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#pillars">
-              <Button className="rounded-none bg-yellow-400 hover:bg-yellow-300 text-black px-10 py-6 text-sm font-bold">
-                READ THE CANON
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-700">
+            <a href="#manifesto">
+              <Button size="lg" className="rounded-none bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-widest px-8">
+                READ MANIFESTO
+              </Button>
+            </a>
+            <a href="#theories">
+              <Button size="lg" variant="outline" className="rounded-none border-amber-500/30 text-amber-400 hover:bg-amber-950/50 hover:text-white tracking-widest px-8">
+                EXPLORE 99 THEORIES
               </Button>
             </a>
           </div>
         </div>
-      </section>
 
-      {/* ═══════════════════════════════════════ */}
-      {/* THREE PILLARS */}
-      {/* ═══════════════════════════════════════ */}
-      <section id="pillars" className="py-24 relative">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Phase 00</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">Three Pillars of Meta-Intelligence</h2>
-            <p className="text-gray-400 max-w-3xl mx-auto">
-              Physics provides the foundation. Mathematics enables measurement. Language transmits knowledge.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {THREE_PILLARS.map((pillar) => (
-              <div 
-                key={pillar.name}
-                className="p-8 border border-yellow-500/20 bg-black/40 hover:bg-yellow-500/5 transition-all cursor-pointer"
-                onClick={() => setExpandedPillar(expandedPillar === pillar.name ? null : pillar.name)}
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-4xl font-bold text-yellow-400">{pillar.symbol}</span>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{pillar.name}</h3>
-                    <p className="text-xs text-yellow-400/60 uppercase tracking-wider">{pillar.subtitle}</p>
-                  </div>
-                </div>
-                
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">{pillar.description}</p>
-                
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="text-gray-500">Floors:</span>
-                  {pillar.floors.map(floor => (
-                    <span key={floor} className="px-2 py-0.5 bg-yellow-500/10 text-yellow-400 text-xs font-mono">{floor}</span>
-                  ))}
-                </div>
-
-                {expandedPillar === pillar.name && (
-                  <div className="mt-6 pt-6 border-t border-yellow-500/10 text-sm text-gray-300">
-                    <p>Click to collapse</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="p-8 border border-yellow-500/20 bg-black/40 text-center">
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              <strong className="text-white">Physics</strong> tells us what is possible.{" "}
-              <strong className="text-white">Mathematics</strong> tells us what is probable.{" "}
-              <strong className="text-white">Language</strong> tells us what is meaningful.
-              Together they constrain intelligence within constitutional bounds.
-            </p>
-          </div>
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-amber-500/50">
+          <ChevronDown className="w-8 h-8" />
         </div>
-      </section>
+      </header>
 
       {/* ═══════════════════════════════════════ */}
-      {/* 13 CONSTITUTIONAL FLOORS */}
+      {/* SECTION I: ARIF FOUNDATION */}
       {/* ═══════════════════════════════════════ */}
-      <section id="floors" className="py-24 relative bg-gradient-to-b from-[#1A1810] via-yellow-950/10 to-[#1A1810]">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Phase 05</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6">The 13 Constitutional Floors</h2>
-            <p className="text-gray-400 max-w-3xl mx-auto">
-              Immutable constraints that govern AI behavior. All operations must satisfy these floors.
+      <section id="manifesto" className="py-32 relative border-t border-amber-900/20">
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">I. The ARIF Foundation</h2>
+            <div className="h-1 w-24 bg-gradient-to-r from-amber-500 to-transparent mb-8"></div>
+            <p className="text-lg text-amber-100/80 leading-relaxed mb-6">
+              <b>ARIF</b> (Arabic: عارف) carries profound meaning: "The Knower, The Wise, The Learned." 
+              In Islamic tradition, the Divine has 99 Names (Asmaul Husna). 
+              The APEX Theory Manifesto recognizes that these 99 attributes correspond to <b>99 foundational theories</b> of constitutional intelligence.
+            </p>
+            <p className="text-lg text-amber-100/80 leading-relaxed">
+              This is not coincidence—this is cosmic alignment. The name ARIF contains the entire architecture.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {FLOORS.map((floor) => (
-              <Card key={floor.id} className={`bg-gray-900/50 border-gray-800 ${
-                floor.type === 'hard' ? 'hover:border-red-500/50' : 
-                floor.type === 'veto' ? 'hover:border-purple-500/50' : 
-                'hover:border-yellow-500/50'
-              } transition-all`}>
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge className={`rounded-none text-xs ${
-                      floor.type === 'hard' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
-                      floor.type === 'veto' ? 'bg-purple-500/20 text-purple-400 border-purple-500/30' :
-                      'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
-                    }`}>
-                      {floor.id}
-                    </Badge>
-                    <span className="text-xs text-gray-500 uppercase">{floor.type}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {ARIF_ATTRIBUTES.map((attr) => (
+              <Card key={attr.name} className="bg-amber-950/20 border-amber-900/30 hover:border-amber-500/30 transition-all">
+                <CardContent className="p-6">
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="text-xl font-bold text-amber-400">{attr.name}</h3>
+                    <span className="text-xs font-mono text-amber-600 uppercase tracking-wider">{attr.theory}</span>
                   </div>
-                  <CardTitle className="text-lg text-white mt-2">{floor.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-gray-400">{floor.desc}</p>
+                  <p className="text-sm text-amber-200/60 mb-1">{attr.meaning}</p>
+                  <p className="text-sm font-medium text-amber-100">{attr.role}</p>
                 </CardContent>
               </Card>
             ))}
@@ -273,30 +191,168 @@ function App() {
       </section>
 
       {/* ═══════════════════════════════════════ */}
+      {/* SECTION II: 99 THEORIES */}
+      {/* ═══════════════════════════════════════ */}
+      <section id="theories" className="py-32 bg-[#0a0a08] relative">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">II. The 99 Foundational Theories</h2>
+            <p className="text-amber-200/60 max-w-2xl mx-auto">
+              Seven domains of knowledge weaving together the fabric of Constitutional Intelligence.
+            </p>
+          </div>
+
+          <Tabs defaultValue="physics" className="w-full">
+            <TabsList className="flex flex-wrap justify-center gap-2 bg-transparent mb-12 h-auto">
+              <TabsTrigger value="physics" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Physics (1-15)</TabsTrigger>
+              <TabsTrigger value="math" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Math (16-30)</TabsTrigger>
+              <TabsTrigger value="philosophy" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Philosophy (31-45)</TabsTrigger>
+              <TabsTrigger value="psychology" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Psychology (46-60)</TabsTrigger>
+              <TabsTrigger value="social" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Social (61-75)</TabsTrigger>
+              <TabsTrigger value="cs" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">CS & AI (76-90)</TabsTrigger>
+              <TabsTrigger value="complex" className="data-[state=active]:bg-amber-500 data-[state=active]:text-black border border-amber-900/30 text-amber-400">Complex (91-99)</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="physics" className="mt-0">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { n: 1, t: "Dissipative Structures", a: "Prigogine", c: "Order from Chaos", f: "F1" },
+                  { n: 2, t: "Shannon Info Theory", a: "Shannon", c: "Entropy as Info", f: "F2" },
+                  { n: 3, t: "Cybernetics", a: "Wiener", c: "Feedback Loops", f: "F5" },
+                  { n: 4, t: "Special Relativity", a: "Einstein", c: "Invariant Laws", f: "F2" },
+                  { n: 5, t: "General Relativity", a: "Einstein", c: "Curvature", f: "F8" },
+                  { n: 6, t: "Uncertainty Principle", a: "Heisenberg", c: "Measurement Limit", f: "F7" },
+                ].map(item => (
+                  <div key={item.n} className="border border-amber-900/30 p-6 bg-amber-950/10 hover:bg-amber-900/20 transition-colors">
+                    <div className="flex justify-between mb-4">
+                      <span className="text-amber-500 font-mono text-sm">#{item.n}</span>
+                      <Badge variant="outline" className="text-amber-300 border-amber-700/50">{item.f}</Badge>
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">{item.t}</h3>
+                    <p className="text-sm text-gray-400 mb-2">{item.a}</p>
+                    <p className="text-sm text-amber-200/70">{item.c}</p>
+                  </div>
+                ))}
+                <div className="col-span-full text-center py-8 text-amber-500/50 italic">
+                  + 9 more theories in PDF Manifesto
+                </div>
+              </div>
+            </TabsContent>
+            
+            {/* Other tabs would follow similar pattern */}
+            <TabsContent value="math" className="text-center py-12 text-amber-400">
+              <Binary className="w-12 h-12 mx-auto mb-4 opacity-50" />
+              <p>Full 99 Theories available in the PDF Manifesto.</p>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════ */}
+      {/* SECTION III: 13 CONSTITUTIONAL FLOORS */}
+      {/* ═══════════════════════════════════════ */}
+      <section id="constitution" className="py-32 border-t border-amber-900/20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">III. The 13 Constitutional Floors</h2>
+            <p className="text-amber-200/60 max-w-2xl">
+              The 99 Theories generate these 13 Floors, which then produce emergent properties like Ethics and Intelligence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {FLOORS.map((floor) => (
+              <Card key={floor.id} className="bg-amber-950/10 border-amber-900/20 hover:border-amber-500/40 transition-all group">
+                <CardHeader className="pb-2">
+                  <div className="flex justify-between items-center">
+                    <Badge variant="outline" className="bg-amber-500/10 text-amber-400 border-amber-500/20 rounded-sm">
+                      {floor.id}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg text-white mt-2 group-hover:text-amber-300 transition-colors">{floor.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-400 mb-4 h-10">{floor.desc}</p>
+                  <div className="text-xs text-amber-600 font-mono border-t border-amber-900/20 pt-3">
+                    Src: {floor.theory}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════ */}
+      {/* SECTION V: TAC */}
+      {/* ═══════════════════════════════════════ */}
+      <section id="tac" className="py-32 bg-[#0a0a08] relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">V. Theory of Anomalous Contrast (TAC)</h2>
+              <p className="text-amber-200/60 leading-relaxed mb-8">
+                TAC treats contrast (any significant deviation or novel input) as a thermodynamic-ethical catalyst.
+                The core axiom: <b>"Contrast becomes anomaly when it scars."</b>
+              </p>
+              
+              <div className="space-y-4">
+                <div className="p-4 border-l-2 border-amber-500/50 bg-amber-900/10">
+                  <h4 className="text-amber-400 font-bold mb-1">The Cooling Clause</h4>
+                  <p className="font-mono text-sm text-amber-100">
+                    (κᵣ × R) {'>'} τ_scar → (ΔS {'>'} 0) ∧ (Peace² {'>'} 1)
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-amber-950/30 p-8 border border-amber-900/30 rounded-lg backdrop-blur-sm">
+              <h3 className="text-xl font-bold text-white mb-6">Key Variables</h3>
+              <ul className="space-y-4">
+                <li className="flex justify-between border-b border-amber-900/30 pb-2">
+                  <span className="text-amber-400 font-mono">ΔC</span>
+                  <span className="text-gray-400 text-sm">Contrast Magnitude</span>
+                </li>
+                <li className="flex justify-between border-b border-amber-900/30 pb-2">
+                  <span className="text-amber-400 font-mono">κᵣ</span>
+                  <span className="text-gray-400 text-sm">Resonance Conductance</span>
+                </li>
+                <li className="flex justify-between border-b border-amber-900/30 pb-2">
+                  <span className="text-amber-400 font-mono">M_scar</span>
+                  <span className="text-gray-400 text-sm">Scar Memory</span>
+                </li>
+                <li className="flex justify-between border-b border-amber-900/30 pb-2">
+                  <span className="text-amber-400 font-mono">Peace²</span>
+                  <span className="text-gray-400 text-sm">Stability Squared</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════ */}
       {/* FOOTER */}
       {/* ═══════════════════════════════════════ */}
-      <footer className="py-16 border-t border-gray-800/50">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="/images/arifos-logo.webp" 
-              alt="arifOS" 
-              className="w-12 h-12 object-contain"
-            />
+      <footer className="py-20 border-t border-amber-900/20 bg-[#080806]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="flex justify-center mb-8">
+            <Shield className="w-12 h-12 text-amber-500/80" />
           </div>
           
-          <p className="text-xl font-bold mb-1">DITEMPA BUKAN DIBERI</p>
-          <p className="text-gray-500 mb-4 text-sm">Forged, Not Given</p>
+          <h3 className="text-2xl font-bold text-white mb-2 tracking-wider">DITEMPA BUKAN DIBERI</h3>
+          <p className="text-amber-500/60 mb-8 italic">Forged, Not Given</p>
           
-          <div className="flex items-center justify-center gap-4 mb-6 text-xs text-gray-400">
-            <a href="https://arif-fazil.com" className="flex items-center gap-1 hover:text-red-400"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>Human</a>
-            <span className="text-gray-700">|</span>
-            <a href="https://apex.arif-fazil.com" className="flex items-center gap-1 text-yellow-400"><span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>Theory</a>
-            <span className="text-gray-700">|</span>
-            <a href="https://arifos.arif-fazil.com" className="flex items-center gap-1 hover:text-cyan-400"><span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>Apps</a>
+          <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto mb-12 text-sm">
+            <a href="https://arif-fazil.com" className="text-gray-400 hover:text-amber-400 transition-colors">HUMAN</a>
+            <a href="https://apex.arif-fazil.com" className="text-amber-400 font-bold">THEORY</a>
+            <a href="https://arifos.arif-fazil.com" className="text-gray-400 hover:text-amber-400 transition-colors">APPS</a>
           </div>
           
-          <p className="text-gray-600 text-sm">Muhammad Arif bin Fazil - Penang, Malaysia</p>
+          <p className="text-gray-600 text-xs font-mono">
+            © 2026 arifOS Constitutional AI Governance<br/>
+            Penang, Malaysia
+          </p>
         </div>
       </footer>
     </div>
