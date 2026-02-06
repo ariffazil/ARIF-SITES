@@ -115,7 +115,7 @@ function App() {
           </div>
 
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 leading-tight animate-in fade-in zoom-in-95 duration-1000 delay-200">
-            STRANGE <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-500 to-amber-600">LOOP</span>
+            APEX <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-500 to-amber-600">THEORY</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-amber-100/60 mb-8 max-w-3xl mx-auto font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
