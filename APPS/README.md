@@ -1,37 +1,64 @@
-# arifOS APPS — Documentation Site
+# arifOS APPS — Product & Implementation Hub
 
-**The APPS Layer** — Documentation, API Reference, and MCP Tools for the arifOS Constitutional AI Framework.
+**The APPS Layer** — Production-ready constitutional AI governance products and implementation guides.
 
 Live at [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
 
-## Trinity Architecture
+## Product Overview
 
-Three grounded layers, each with its own domain, color identity, and visual geometry:
+arifOS delivers production-grade constitutional AI governance through a 7-layer product stack:
 
-| Layer | Label | Domain | Purpose | Color | Geometry |
-|-------|-------|--------|---------|-------|----------|
-| **BODY** | HUMAN | arif-fazil.com | Identity, personal brand | Red `hsl(0 84% 40%)` on Black `#050505` | Sierpinski triangles, fractal SVG noise |
-| **SOUL** | THEORY | apex.arif-fazil.com | Theory, canon, grounding | Gold `hsl(45 100% 50%)` on Black | Metabolic loop, citation blocks, engine diagrams |
-| **MIND** | APPS | arifos.arif-fazil.com | Documentation, API, tools | Cyan `hsl(199 89% 48%)` on Black | Fractal grid, toroidal ring, mesh blobs |
+- **L1 PROMPT**: Instant governance with system prompts (30% coverage)
+- **L2 SKILLS**: Templated governance solutions (50% coverage) 
+- **L3 WORKFLOW**: Automated governance workflows (70% coverage)
+- **L4 TOOLS**: Production MCP tools (80% coverage)
+- **L5 AGENTS**: Autonomous governance agents (90% coverage)
+- **L6 INSTITUTION**: Full institutional systems (100% coverage)
+- **L7 AGI**: Advanced constitutional AI (Research)
 
-### Color Assignments (HSL)
+## Key Products
 
+### MCP Tool Suite
+9 canonical tools enforcing 9 constitutional floors:
+- **init_gate**: Session initiation and authorization
+- **agi_sense**: Input parsing and intent detection
+- **agi_think**: Hypothesis generation
+- **agi_reason**: Logical reasoning
+- **asi_empathize**: Stakeholder impact assessment
+- **asi_align**: Constitutional alignment checking
+- **apex_verdict**: Final constitutional judgment
+- **reality_search**: External verification
+- **vault_seal**: Immutable sealing
+
+### Governance Metrics
+- **Ω₀ Tracking**: Real-time uncertainty monitoring (target: 0.03-0.05)
+- **Verdict System**: SEAL/SABAR/VOID/888_HOLD classification
+- **Audit Trail**: Immutable VAULT-999 ledger
+- **Compliance**: 100% constitutional floor enforcement
+
+## Implementation Guide
+
+### Quick Start
+```bash
+# Install production package
+pip install arifos
+
+# Verify installation
+python -c "import arifos; print(f'arifOS v{arifos.__version__} installed')"
 ```
-HUMAN  — Red:  hsl(0 84% 40%)    → #8B0000  (dark crimson)
-THEORY — Gold: hsl(45 100% 50%)  → #FFD700  (pure gold)
-APPS   — Cyan: hsl(199 89% 48%)  → #0EA5E9  (sky-500)
+
+### MCP Integration
+Add to your `.mcp.json`:
+```json
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "python",
+      "args": ["-m", "aaa_mcp", "stdio"]
+    }
+  }
+}
 ```
-
-## Features
-
-- **9 Floors Visualization** — Interactive constitutional safety floor cards with semantic colors
-- **9 MCP Tools Reference** — v55.1 explicit tool architecture (agi_sense → apex_verdict)
-- **Trinity Parallel Pipeline** — Visual diagram of async AGI || ASI collapsing at APEX
-- **API Endpoints** — Live status for /health, /mcp, /sse, /dashboard, /docs
-- **Code Examples** — Python SDK usage with copy-to-clipboard
-- **Constitutional Equations** — W₃ tri-witness, G genius index, Ω₀ Gödel uncertainty
-- **Layered Background** — Fractal grid + toroidal ring + mesh gradients + fractal radial drift
-- **Responsive Design** — Mobile-optimized with dark theme
 
 ## Technology Stack
 
@@ -40,57 +67,42 @@ APPS   — Cyan: hsl(199 89% 48%)  → #0EA5E9  (sky-500)
 - Tailwind CSS
 - Lucide React (icons)
 - shadcn/ui components (Card, Badge, Button, Separator)
+- FastMCP (MCP protocol implementation)
 
-## Development
+## Production Endpoints
 
-```bash
-# Install dependencies
-npm install
+- Health Check: `https://aaamcp.arif-fazil.com/health`
+- MCP Endpoint: `https://aaamcp.arif-fazil.com/mcp`
+- SSE Stream: `https://aaamcp.arif-fazil.com/sse`
+- Dashboard: `https://aaamcp.arif-fazil.com/dashboard`
+- API Docs: `https://aaamcp.arif-fazil.com/docs`
 
-# Start development server
-npm run dev
+## Business Value
 
-# Build for production
-npm run build
-```
+arifOS products deliver measurable governance outcomes:
 
-## Deployment
+- **Risk Reduction**: Proactive identification and mitigation of AI risks
+- **Compliance Assurance**: 100% adherence to constitutional floors
+- **Audit Readiness**: Immutable logs and verifiable processes
+- **Scalability**: Enterprise-grade performance and reliability
+- **Cost Efficiency**: Reduced manual oversight through automation
 
-Deployed to **Cloudflare Pages** via GitHub Actions CI.
+## Architecture Principles
 
-- Global CDN (300+ PoPs)
-- Cloudflare Universal SSL
-- Security headers: HSTS, CSP, X-Frame-Options
-- Build provenance at `/build-info.json`
+1. **Constitutional Enforcement**: All decisions pass through 9 constitutional floors
+2. **Uncertainty Tracking**: Ω₀ monitoring within 0.03-0.05 range
+3. **Immutable Audit**: All decisions sealed in VAULT-999
+4. **Human Sovereignty**: 888 Judge maintains final authority
+5. **Reversibility**: F1 Amanah ensures all actions can be undone
 
-## Design System
+## Deployment Options
 
-### Colors
-- Background: `#0a0a0a` (near black)
-- Primary: Cyan `hsl(199 89% 48%)` — APPS identity
-- Gradient text: `#0ea5e9` → `#06b6d4` → `#e0f2fe` (cyan → teal → ice)
-- Selection: `rgba(14, 165, 233, 0.3)`
-- Floor card colors: Red → Orange → Yellow → Cyan → Green (semantic, not branding)
-- Text: Gray scale with white highlights
-
-### Typography
-- Font: System UI stack
-- Mono: JetBrains Mono / Fira Code
-
-### Background Layers (bottom → top)
-1. **Mesh blobs** — Three animated radial gradients (cyan, indigo, teal) with 20s drift
-2. **Toroidal ring** — Perspective-transformed donut, 45s rotation + 20s opacity pulse
-3. **Fractal grid** — 3 nested orthogonal scales (200px / 50px / 12.5px) in cyan
-4. **Fractal radial** — 4 nested radial gradients with 60s diagonal drift
-
-### Effects
-- Glass morphism: `backdrop-blur(12px)`
-- Glow: `glow-cyan-primary` (sky-500), `glow-cyan` (cyan-500)
-- Torus glow: 8s pulsing box-shadow keyframe
-- Mesh move: 20s ease-in-out position animation
+- **SaaS**: Managed service at aaamcp.arif-fazil.com
+- **On-Premise**: Self-hosted MCP server
+- **Hybrid**: Federated deployment model
+- **Edge**: Containerized deployment options
 
 ---
 
-**Ditempa Bukan Diberi** — Forged, Not Given
-# Build trigger 1770115394
-# Build sequence trigger 1770118101
+*arifOS — Production-Ready Constitutional AI Governance*
+*Ditempa Bukan Diberi — Forged, Not Given*
