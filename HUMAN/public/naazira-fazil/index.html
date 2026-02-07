@@ -10,15 +10,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1a365d;
-            --primary-light: #2c5282;
-            --accent: #d69e2e;
-            --accent-light: #ecc94b;
-            --text: #2d3748;
-            --text-light: #718096;
+            --primary: #0a66c2;
+            --primary-dark: #004182;
+            --primary-light: #378fe9;
+            --accent: #057642;
+            --accent-light: #44b37b;
+            --text: #191919;
+            --text-light: #666666;
             --bg: #ffffff;
-            --bg-alt: #f7fafc;
-            --border: #e2e8f0;
+            --bg-alt: #f3f2ef;
+            --border: #e0dfdc;
+            --gold: #c37d16;
         }
         
         * {
@@ -189,10 +191,11 @@
         }
         
         .hero-content .tagline {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--accent-light);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.9);
             margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
         }
         
         .hero-content .summary {
@@ -223,12 +226,12 @@
         }
         
         .btn-primary {
-            background: var(--accent);
-            color: var(--primary);
+            background: var(--primary);
+            color: white;
         }
         
         .btn-primary:hover {
-            background: var(--accent-light);
+            background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -251,26 +254,27 @@
         }
         
         .profile-card {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 3rem;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 12px;
+            padding: 2.5rem;
             text-align: center;
             max-width: 350px;
         }
         
         .profile-avatar {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            width: 100px;
+            height: 100px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin: 0 auto 1.5rem;
-            border: 4px solid rgba(255,255,255,0.3);
+            border: 3px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
         .profile-card h3 {
@@ -304,7 +308,7 @@
         }
         
         .contact-item a:hover {
-            color: var(--accent-light);
+            color: var(--primary-light);
         }
         
         /* Section Styles */
@@ -359,7 +363,7 @@
         
         .highlight-box {
             background: white;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--primary);
             padding: 1.5rem;
             border-radius: 0 8px 8px 0;
             margin-top: 1.5rem;
@@ -443,7 +447,7 @@
             position: absolute;
             width: 16px;
             height: 16px;
-            background: var(--accent);
+            background: var(--primary);
             border: 4px solid white;
             border-radius: 50%;
             top: 1.5rem;
@@ -454,7 +458,7 @@
         }
         
         .timeline-date {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 600;
             font-size: 0.9rem;
             margin-bottom: 0.25rem;
@@ -487,10 +491,11 @@
         }
         
         .timeline-content li::before {
-            content: '→';
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-weight: bold;
         }
         
         /* Skills Section */
@@ -557,7 +562,7 @@
             background: var(--bg-alt);
             padding: 2rem;
             border-radius: 12px;
-            border-left: 4px solid var(--accent);
+            border-left: 4px solid var(--primary);
         }
         
         .education-card h3 {
@@ -571,7 +576,7 @@
         }
         
         .education-card .year {
-            color: var(--accent);
+            color: var(--primary);
             font-weight: 600;
             font-size: 0.9rem;
         }
@@ -758,20 +763,14 @@
     </nav>
 
     <div class="availability-banner">
-        ✅ Available Immediately — Ready to Start Within 1 Week
+        ✅ Open to Opportunities — 2 Months Notice Period
     </div>
 
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="profile-photo-container">
-                    <div class="profile-photo-placeholder">
-                        <span>📷 Add Professional Photo</span>
-                        <small>Recommended: Business attire, neutral background</small>
-                    </div>
-                </div>
                 <h1>Naazira Fazil</h1>
-                <p class="tagline">Lab Administrator & Inventory Assistant</p>
+                <p class="tagline">Lab Administrator • Inventory Specialist • Technical Support</p>
                 <p class="summary">
                     Detail-oriented professional with 3+ years of experience in laboratory operations, 
                     inventory control, procurement, and technical support. Strong ability to troubleshoot 
@@ -790,8 +789,8 @@
             <div class="hero-visual">
                 <div class="profile-card">
                     <div class="profile-avatar">👩‍🔬</div>
-                    <h3>Available for Hire</h3>
-                    <p>Looking for Lab Admin & Inventory roles</p>
+                    <h3>Open to Opportunities</h3>
+                    <p>Lab Administration • Inventory Management • Technical Support</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <span>📱</span>
