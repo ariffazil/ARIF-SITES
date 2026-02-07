@@ -333,29 +333,62 @@
             text-decoration: none;
             cursor: pointer;
             border: none;
-            transition: var(--transition-fast);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn:active {
+            transform: scale(0.97);
         }
         
         .btn-primary {
             background: var(--linkedin-blue);
             color: white;
             padding: 0.6rem 1.5rem;
+            box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3);
         }
         
         .btn-primary:hover {
             background: var(--linkedin-blue-dark);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 20px rgba(10, 102, 194, 0.5), 0 0 30px rgba(10, 102, 194, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+            box-shadow: 0 2px 10px rgba(10, 102, 194, 0.4);
         }
         
         .btn-outline {
             background: transparent;
             color: var(--linkedin-blue);
             border: 2px solid var(--linkedin-blue);
+            box-shadow: 0 0 0 0 rgba(10, 102, 194, 0);
         }
         
         .btn-outline:hover {
-            background: var(--bg-light);
-            border-color: var(--linkedin-blue-dark);
+            background: rgba(10, 102, 194, 0.08);
+            border-color: var(--linkedin-blue);
+            box-shadow: 0 0 20px rgba(10, 102, 194, 0.25), inset 0 0 20px rgba(10, 102, 194, 0.05);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline:active {
+            transform: translateY(0) scale(0.98);
         }
         
         .btn-ghost {
@@ -367,6 +400,22 @@
         .btn-ghost:hover {
             background: var(--bg-cream);
             border-color: var(--text-secondary);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .btn-ghost:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        /* Glow effect for all interactive elements */
+        .btn-glow {
+            animation: subtle-glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-glow {
+            0%, 100% { box-shadow: 0 2px 8px rgba(10, 102, 194, 0.3); }
+            50% { box-shadow: 0 4px 20px rgba(10, 102, 194, 0.5); }
         }
         
         /* Content Layout */
@@ -398,6 +447,12 @@
             box-shadow: var(--shadow-sm);
             overflow: hidden;
             border: 1px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
         }
         
         .card-header {
@@ -449,12 +504,20 @@
             border-radius: 16px;
             font-size: 0.8rem;
             font-weight: 600;
-            transition: var(--transition-fast);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid transparent;
         }
         
         .skill-chip:hover {
             background: var(--linkedin-blue);
             color: white;
+            box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .skill-chip:active {
+            transform: translateY(0) scale(0.97);
         }
         
         /* Experience Section */
@@ -722,10 +785,15 @@
             color: var(--linkedin-blue);
             text-decoration: none;
             font-weight: 500;
+            transition: all 0.2s ease;
+            padding: 0.2rem 0.4rem;
+            margin: -0.2rem -0.4rem;
+            border-radius: 4px;
         }
         
         .contact-card a:hover {
-            text-decoration: underline;
+            background: rgba(10, 102, 194, 0.1);
+            box-shadow: 0 0 15px rgba(10, 102, 194, 0.2);
         }
         
         /* Languages */
@@ -783,19 +851,65 @@
         .cta-buttons .btn-primary {
             background: white;
             color: var(--linkedin-blue);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
         
         .cta-buttons .btn-primary:hover {
             background: var(--bg-cream);
+            box-shadow: 0 6px 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
         
         .cta-buttons .btn-outline {
             border-color: white;
             color: white;
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
         }
         
         .cta-buttons .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* QR Code Section */
+        .qr-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        
+        .qr-container {
+            display: inline-block;
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .qr-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .qr-container img {
+            width: 150px;
+            height: 150px;
+            display: block;
+        }
+        
+        .qr-label {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .qr-url {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
         }
         
         /* Footer */
@@ -961,7 +1075,7 @@
                 </p>
                 <p class="profile-connections animate-in animate-delay-2">Available for Lab Admin, Inventory & Technical roles</p>
                 <div class="profile-actions animate-in animate-delay-3">
-                    <a href="naazira-fazil-cv.pdf" class="btn btn-primary" download>📄 Download CV</a>
+                    <a href="naazira-fazil-cv.pdf" class="btn btn-primary btn-glow" download>📄 Download CV</a>
                     <a href="tel:+60142457488" class="btn btn-outline">📱 Call Now</a>
                     <a href="mailto:naazirafazil@yahoo.com" class="btn btn-ghost">✉️ Email</a>
                 </div>
@@ -1291,8 +1405,16 @@
         <h2 class="cta-title">Ready to Work Together?</h2>
         <p class="cta-subtitle">I'm actively seeking opportunities in Lab Administration, Inventory Management, and Technical Support roles.</p>
         <div class="cta-buttons">
-            <a href="naazira-fazil-cv.pdf" class="btn btn-primary" download>📄 Download Full CV</a>
+            <a href="naazira-fazil-cv.pdf" class="btn btn-primary btn-glow" download>📄 Download Full CV</a>
             <a href="mailto:naazirafazil@yahoo.com?subject=Job Opportunity for Naazira Fazil" class="btn btn-outline">✉️ Get In Touch</a>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-container">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://arif-fazil.com/naazira-fazil/&color=0a66c2" alt="QR Code - Scan to view portfolio" loading="lazy">
+            </div>
+            <p class="qr-label">📱 Scan to view on mobile</p>
+            <p class="qr-url">arif-fazil.com/naazira-fazil</p>
         </div>
     </section>
     
