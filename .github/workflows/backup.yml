@@ -1,0 +1,37 @@
+name: Backup to Mirror
+
+on:
+  schedule:
+    # Weekly backup every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+    # Allow manual trigger
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Create backup archive
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          git bundle create backup-$TIMESTAMP.bundle --all
+          echo "Created backup bundle: backup-$TIMESTAMP.bundle"
+          
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo-backup-${{ github.run_id }}
+          path: "*.bundle"
+          retention-days: 90
+          
+      - name: Log backup completion
+        run: |
+          echo "✅ Backup completed at $(date -u)"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
