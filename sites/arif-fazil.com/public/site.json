@@ -1,0 +1,27 @@
+{
+  "name": "arif-fazil.com",
+  "layer": "L1-SIGNAL",
+  "title": "Arif Fazil — Geoscientist · AI Architect · Sovereign Technologist",
+  "description": "Personal site of Muhammad Arif bin Fazil. Petroleum geologist and constitutional AI architect.",
+  "author": "Muhammad Arif bin Fazil",
+  "email": "arifbfazil@gmail.com",
+  "location": "Seri Kembangan, Selangor, Malaysia",
+  "motto": "Ditempa Bukan Diberi",
+  "version": "v2026.03.24",
+  "status": "SEAL",
+  "urls": {
+    "home": "https://arif-fazil.com",
+    "writing": "https://arif-fazil.com/writing/",
+    "llms": "https://arif-fazil.com/llms.txt",
+    "robots": "https://arif-fazil.com/robots.txt",
+    "mind": "https://arifos.arif-fazil.com",
+    "body": "https://arifosmcp.arif-fazil.com",
+    "github": "https://github.com/ariffazil",
+    "pypi": "https://pypi.org/project/arifosmcp/"
+  },
+  "trinity": {
+    "L1": "arif-fazil.com (SIGNAL — identity, writing)",
+    "L2": "arifos.arif-fazil.com (MIND — governance docs)",
+    "L3": "arifosmcp.arif-fazil.com (BODY — MCP runtime)"
+  }
+}

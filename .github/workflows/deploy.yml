@@ -1,156 +1,183 @@
-name: Deploy Trinity Frontend
+name: Deploy Trinity Sites
+
+# Triggers on push to main.
+# Builds and deploys all four sites to Cloudflare Pages via wrangler.
+# L1 SIGNAL:  sites/arif-fazil.com  → arif-fazil.com
+# L2 MIND:    sites/arifos          → arifos.arif-fazil.com
+# L3 BODY:    sites/arifosmcp       → arifosmcp.arif-fazil.com  (static only)
+# L4 THEORY:  sites/apex            → apex.arif-fazil.com
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   workflow_dispatch:
 
 jobs:
-  deploy-human:
-    name: Deploy HUMAN (arif-fazil.com)
+  # ─── L1 SIGNAL: arif-fazil.com (React + Vite) ────────────────────
+  deploy-signal:
+    name: L1 SIGNAL — arif-fazil.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+          cache-dependency-path: sites/arif-fazil.com/package-lock.json
 
-      # Generate build provenance
-      - name: Generate Build Info
+      - name: Build info
         run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > HUMAN/public/build-info.json
+          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
+            > sites/arif-fazil.com/public/build-info.json
 
-      - name: Copy shared components
-        run: |
-          mkdir -p HUMAN/src/shared/components
-          mkdir -p THEORY/src/shared/components
-          mkdir -p APPS/src/shared/components
-          cp -r shared/components/* HUMAN/src/shared/components/
-          cp -r shared/components/* THEORY/src/shared/components/
-          cp -r shared/components/* APPS/src/shared/components/
+      - name: Install
+        run: cd sites/arif-fazil.com && npm ci
 
-      - name: Update imports for local paths
-        run: |
-          find HUMAN/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
-          find THEORY/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
-          find APPS/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+      - name: Build
+        run: cd sites/arif-fazil.com && npm run build
+        env:
+          CI: false
 
-      - name: Build HUMAN
+      - name: Copy public assets to dist
         run: |
-          cd HUMAN
-          npm ci
-          npm run build
-          cp public/*.jpg dist/ 2>/dev/null || true
-          cp public/*.png dist/ 2>/dev/null || true
-          cp public/_headers dist/ 2>/dev/null || true
-          cp public/_redirects dist/ 2>/dev/null || true
-          cp public/robots.txt dist/ 2>/dev/null || true
-          cp public/sitemap.xml dist/ 2>/dev/null || true
-          cp public/llms.txt dist/ 2>/dev/null || true
-          cp public/llms.json dist/ 2>/dev/null || true
+          cd sites/arif-fazil.com
+          cp public/_headers       dist/ 2>/dev/null || true
+          cp public/_redirects     dist/ 2>/dev/null || true
+          cp public/robots.txt     dist/ 2>/dev/null || true
+          cp public/sitemap.xml    dist/ 2>/dev/null || true
+          cp public/llms.txt       dist/ 2>/dev/null || true
+          cp public/llms.json      dist/ 2>/dev/null || true
+          cp public/site.json      dist/ 2>/dev/null || true
+          cp public/humans.txt     dist/ 2>/dev/null || true
           cp public/build-info.json dist/ 2>/dev/null || true
+          cp public/*.jpg          dist/ 2>/dev/null || true
+          cp public/*.png          dist/ 2>/dev/null || true
+          cp public/*.webp         dist/ 2>/dev/null || true
+          cp -r public/.well-known dist/ 2>/dev/null || true
+          cp -r public/briefings   dist/ 2>/dev/null || true
+          cp -r public/naazira-fazil dist/ 2>/dev/null || true
 
-      - name: Deploy HUMAN to Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy HUMAN/dist --project-name=ariffazil --branch=main
+          command: pages deploy sites/arif-fazil.com/dist --project-name=ariffazil --branch=main
 
+  # ─── L2 MIND: arifos.arif-fazil.com (React + Vite) ──────────────
+  deploy-mind:
+    name: L2 MIND — arifos.arif-fazil.com
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: sites/arifos/package-lock.json
+
+      - name: Build info
+        run: |
+          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
+            > sites/arifos/public/build-info.json
+
+      - name: Install
+        run: cd sites/arifos && npm ci
+
+      - name: Build
+        run: cd sites/arifos && npm run build
+        env:
+          CI: false
+
+      - name: Copy public assets to dist
+        run: |
+          cd sites/arifos
+          cp public/_headers    dist/ 2>/dev/null || true
+          cp public/_redirects  dist/ 2>/dev/null || true
+          cp public/robots.txt  dist/ 2>/dev/null || true
+          cp public/sitemap.xml dist/ 2>/dev/null || true
+          cp public/llms.txt    dist/ 2>/dev/null || true
+          cp public/llms.json   dist/ 2>/dev/null || true
+          cp public/site.json   dist/ 2>/dev/null || true
+          cp public/*.jpg       dist/ 2>/dev/null || true
+          cp public/*.webp      dist/ 2>/dev/null || true
+          cp -r public/.well-known dist/ 2>/dev/null || true
+          cp -r public/assets   dist/ 2>/dev/null || true
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy sites/arifos/dist --project-name=arifos --branch=main
+
+  # ─── L3 BODY: arifosmcp.arif-fazil.com (Static HTML) ────────────
+  deploy-body:
+    name: L3 BODY — arifosmcp.arif-fazil.com
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy sites/arifosmcp --project-name=arifosmcp --branch=main
+
+  # ─── L4 THEORY: apex.arif-fazil.com (React + Vite) ──────────────
   deploy-theory:
-    name: Deploy THEORY (apex.arif-fazil.com)
+    name: L4 THEORY — apex.arif-fazil.com
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: npm
+          cache-dependency-path: sites/apex/package-lock.json
 
-      - name: Generate Build Info
+      - name: Build info
         run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > THEORY/public/build-info.json
+          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
+            > sites/apex/public/build-info.json
 
-      - name: Copy shared components
-        run: |
-          mkdir -p THEORY/src/shared/components
-          cp -r shared/components/* THEORY/src/shared/components/
+      - name: Install
+        run: cd sites/apex && npm ci
 
-      - name: Update imports for local paths
-        run: |
-          find THEORY/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
+      - name: Build
+        run: cd sites/apex && npm run build
+        env:
+          CI: false
 
-      - name: Build THEORY
+      - name: Copy public assets to dist
         run: |
-          cd THEORY
-          npm ci
-          npm run build
-          cp public/*.jpg dist/ 2>/dev/null || true
-          cp public/*.png dist/ 2>/dev/null || true
-          cp public/_headers dist/ 2>/dev/null || true
-          cp public/_redirects dist/ 2>/dev/null || true
-          cp public/robots.txt dist/ 2>/dev/null || true
+          cd sites/apex
+          cp public/_headers    dist/ 2>/dev/null || true
+          cp public/_redirects  dist/ 2>/dev/null || true
+          cp public/robots.txt  dist/ 2>/dev/null || true
           cp public/sitemap.xml dist/ 2>/dev/null || true
-          cp public/llms.txt dist/ 2>/dev/null || true
-          cp public/llms.json dist/ 2>/dev/null || true
-          cp public/build-info.json dist/ 2>/dev/null || true
-          cp -r public/api dist/ 2>/dev/null || true
+          cp public/llms.txt    dist/ 2>/dev/null || true
+          cp public/llms.json   dist/ 2>/dev/null || true
+          cp public/*.jpg       dist/ 2>/dev/null || true
+          cp public/*.webp      dist/ 2>/dev/null || true
+          cp -r public/.well-known dist/ 2>/dev/null || true
+          cp -r public/api      dist/ 2>/dev/null || true
 
-      - name: Deploy THEORY to Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy THEORY/dist --project-name=apex --branch=main
+          command: pages deploy sites/apex/dist --project-name=apex --branch=main
 
-  deploy-apps:
-    name: Deploy APPS (arifos.arif-fazil.com)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Generate Build Info
-        run: |
-          BUILD_INFO="{\"commit\":\"$(git rev-parse --short HEAD)\",\"branch\":\"$(git rev-parse --abbrev-ref HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"version\":\"v55.2\"}"
-          echo "$BUILD_INFO" > APPS/public/build-info.json
-
-      - name: Copy shared components
-        run: |
-          mkdir -p APPS/src/shared/components
-          cp -r shared/components/* APPS/src/shared/components/
-
-      - name: Update imports for local paths
-        run: |
-          find APPS/src -name "*.tsx" -exec sed -i "s|'../../shared/components/TrinityLogo'|'./shared/components/TrinityLogo'|g" {} \;
-
-      - name: Build APPS
-        run: |
-          cd APPS
-          npm ci
-          npm run build
-          cp public/_headers dist/ 2>/dev/null || true
-          cp public/_redirects dist/ 2>/dev/null || true
-          cp public/robots.txt dist/ 2>/dev/null || true
-          cp public/sitemap.xml dist/ 2>/dev/null || true
-          cp public/llms.txt dist/ 2>/dev/null || true
-          cp public/llms.json dist/ 2>/dev/null || true
-          cp public/build-info.json dist/ 2>/dev/null || true
-
-      - name: Deploy APPS to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy APPS/dist --project-name=arifos --branch=main
-
+  # ─── Verify ───────────────────────────────────────────────────────
   verify:
-    name: Verify Sites Online
-    needs: [deploy-human, deploy-theory, deploy-apps]
+    name: Health Check
+    needs: [deploy-signal, deploy-mind, deploy-body, deploy-theory]
     runs-on: ubuntu-latest
     steps:
       - name: Wait for propagation
@@ -158,18 +185,22 @@ jobs:
 
       - name: Check all sites
         run: |
-          echo "========================================"
-          echo "  TRINITY FRONTEND — DEPLOYMENT CHECK"
-          echo "========================================"
-          for site in "https://arif-fazil.com HUMAN" "https://apex.arif-fazil.com THEORY" "https://arifos.arif-fazil.com APPS"; do
-            url=$(echo $site | cut -d' ' -f1)
-            name=$(echo $site | cut -d' ' -f2)
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  TRINITY SITES — DEPLOY COMPLETE"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          for entry in \
+            "https://arif-fazil.com L1-SIGNAL" \
+            "https://arifos.arif-fazil.com L2-MIND" \
+            "https://arifosmcp.arif-fazil.com L3-BODY" \
+            "https://apex.arif-fazil.com L4-THEORY"; do
+            url=$(echo $entry | cut -d' ' -f1)
+            name=$(echo $entry | cut -d' ' -f2)
             if curl -sf --max-time 10 "$url" > /dev/null; then
-              echo "  $name: ONLINE  ($url)"
+              echo "  ✅ $name  $url"
             else
-              echo "  $name: CHECK   ($url) — may need a minute"
+              echo "  ⏳ $name  $url  (propagating)"
             fi
           done
-          echo "========================================"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
           echo "  DITEMPA BUKAN DIBERI"
-          echo "========================================"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

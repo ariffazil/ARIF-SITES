@@ -1,0 +1,56 @@
+name: Floor Audit — Site Integrity
+
+# Runs on every PR. Blocks merge if required files are missing.
+# Does NOT build or deploy — that's deploy.yml.
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: F4 Clarity — Required Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: L1 arif-fazil.com
+        run: |
+          test -f sites/arif-fazil.com/public/llms.txt  && echo "✅ L1 llms.txt"  || (echo "❌ L1 llms.txt missing"  && exit 1)
+          test -f sites/arif-fazil.com/public/robots.txt && echo "✅ L1 robots.txt" || (echo "❌ L1 robots.txt missing" && exit 1)
+          test -f sites/arif-fazil.com/src/App.tsx       && echo "✅ L1 App.tsx"   || (echo "❌ L1 App.tsx missing"   && exit 1)
+          test -f sites/arif-fazil.com/package.json      && echo "✅ L1 package.json" || (echo "❌ L1 package.json missing" && exit 1)
+
+      - name: L2 arifos
+        run: |
+          test -f sites/arifos/public/llms.txt  && echo "✅ L2 llms.txt"  || (echo "❌ L2 llms.txt missing"  && exit 1)
+          test -f sites/arifos/public/robots.txt && echo "✅ L2 robots.txt" || (echo "❌ L2 robots.txt missing" && exit 1)
+          test -f sites/arifos/src/App.tsx       && echo "✅ L2 App.tsx"   || (echo "❌ L2 App.tsx missing"   && exit 1)
+          test -f sites/arifos/package.json      && echo "✅ L2 package.json" || exit 1
+
+      - name: L3 arifosmcp (static)
+        run: |
+          test -f sites/arifosmcp/index.html    && echo "✅ L3 index.html" || (echo "❌ L3 index.html missing" && exit 1)
+          test -f sites/arifosmcp/llms.txt      && echo "✅ L3 llms.txt"   || (echo "❌ L3 llms.txt missing"  && exit 1)
+          test -f sites/arifosmcp/robots.txt    && echo "✅ L3 robots.txt" || (echo "❌ L3 robots.txt missing" && exit 1)
+
+      - name: L4 apex
+        run: |
+          test -f sites/apex/public/llms.txt   && echo "✅ L4 llms.txt"    || (echo "❌ L4 llms.txt missing" && exit 1)
+          test -f sites/apex/src/App.tsx        && echo "✅ L4 App.tsx"    || (echo "❌ L4 App.tsx missing" && exit 1)
+          test -f sites/apex/package.json       && echo "✅ L4 package.json" || exit 1
+
+      - name: No secrets in public dirs
+        run: |
+          if grep -rn "sk-\|hf_[A-Za-z0-9]\{20\}" \
+            sites/arif-fazil.com/public \
+            sites/arifos/public \
+            sites/arifosmcp \
+            sites/apex/public 2>/dev/null; then
+            echo "🚨 888 HOLD — Secret found in public dir"
+            exit 1
+          fi
+          echo "✅ No secrets in public dirs"
