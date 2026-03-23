@@ -1,6 +1,6 @@
-﻿# arifOS L1: SOUL (SIGNAL)
+﻿# arifOS — L1: SOUL (THE SIGNAL)
 
-**The SIGNAL Layer** — The Human identity, the "Why," personal "scars," and sovereign intent.
+**The SOUL Layer** — The Human face, the "Why," and the absolute source of Sovereign Intent.
 
 Live at [arif-fazil.com](https://arif-fazil.com)
 
@@ -10,7 +10,7 @@ Live at [arif-fazil.com](https://arif-fazil.com)
 |:---:|:---:|---|---|
 | **L1: SOUL** | **SIGNAL** | The "Why." Human identity & intent. | [arif-fazil.com](https://arif-fazil.com) |
 | **L2: MIND** | **KERNEL** | The "How." Documentation & Logic. | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
-| **L3: BODY** | **WIRE** | The "What." Execution & Transport. | [arifosmcp.arif-fazil.com](https://arifosmcp.arif-fazil.com) |
+| **L3: BODY** | **AAA WIRE** | The "What." Execution & Transport. | [aaa.arif-fazil.com](https://aaa.arif-fazil.com) |
 
 ## Features
 

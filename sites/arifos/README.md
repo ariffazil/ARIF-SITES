@@ -1,4 +1,4 @@
-﻿# arifOS L2: MIND (KERNEL)
+﻿# arifOS — L2: MIND (THE KERNEL)
 
 **The KERNEL Layer** — The "How." Documentation of the 13 Floors, metabolic loops (000-999), and governance logic.
 
@@ -10,7 +10,7 @@ Live at [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
 |:---:|:---:|---|---|
 | **L1: SOUL** | **SIGNAL** | The "Why." Human identity & intent. | [arif-fazil.com](https://arif-fazil.com) |
 | **L2: MIND** | **KERNEL** | The "How." Documentation & Logic. | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
-| **L3: BODY** | **WIRE** | The "What." Execution & Transport. | [arifosmcp.arif-fazil.com](https://arifosmcp.arif-fazil.com) |
+| **L3: BODY** | **AAA WIRE** | The "What." Execution & Transport. | [aaa.arif-fazil.com](https://aaa.arif-fazil.com) |
 
 ## Features
 
