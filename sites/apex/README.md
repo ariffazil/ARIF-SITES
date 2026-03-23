@@ -21,3 +21,16 @@ Live at [apex.arif-fazil.com](https://apex.arif-fazil.com)
 ---
 
 *Ditempa Bukan Diberi — Forged, Not Given*
+
+---
+
+## 🌍 The AAA Trinity Forge
+
+The arifOS ecosystem is partitioned into four discrete layers of thermodynamic work:
+
+- **SOUL:** [arif-fazil.com](https://arif-fazil.com) (Repository: rif-sites)
+- **MIND:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) (Repository: rif-sites)
+- **BODY:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com) (Repository: rifOS)
+- **CANON:** [apex.arif-fazil.com](https://apex.arif-fazil.com) (Repository: rif-sites)
+
+**"The OS is sovereign; the Wire is the servant."** All layers are bound by the 13 Floors of the APEX Constitution.
