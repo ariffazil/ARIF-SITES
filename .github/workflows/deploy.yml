@@ -1,206 +1,55 @@
-name: Deploy Trinity Sites
-
-# Triggers on push to main.
-# Builds and deploys all four sites to Cloudflare Pages via wrangler.
-# L1 SIGNAL:  sites/arif-fazil.com  → arif-fazil.com
-# L2 MIND:    sites/arifos          → arifos.arif-fazil.com
-# L3 BODY:    sites/arifosmcp       → arifosmcp.arif-fazil.com  (static only)
-# L4 THEORY:  sites/apex            → apex.arif-fazil.com
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-jobs:
-  # ─── L1 SIGNAL: arif-fazil.com (React + Vite) ────────────────────
-  deploy-signal:
-    name: L1 SIGNAL — arif-fazil.com
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          cache-dependency-path: sites/arif-fazil.com/package-lock.json
-
-      - name: Build info
-        run: |
-          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-            > sites/arif-fazil.com/public/build-info.json
-
-      - name: Install
-        run: cd sites/arif-fazil.com && npm ci
-
-      - name: Build
-        run: cd sites/arif-fazil.com && npm run build
-        env:
-          CI: false
-
-      - name: Copy public assets to dist
-        run: |
-          cd sites/arif-fazil.com
-          cp public/_headers       dist/ 2>/dev/null || true
-          cp public/_redirects     dist/ 2>/dev/null || true
-          cp public/robots.txt     dist/ 2>/dev/null || true
-          cp public/sitemap.xml    dist/ 2>/dev/null || true
-          cp public/llms.txt       dist/ 2>/dev/null || true
-          cp public/llms.json      dist/ 2>/dev/null || true
-          cp public/site.json      dist/ 2>/dev/null || true
-          cp public/humans.txt     dist/ 2>/dev/null || true
-          cp public/build-info.json dist/ 2>/dev/null || true
-          cp public/*.jpg          dist/ 2>/dev/null || true
-          cp public/*.png          dist/ 2>/dev/null || true
-          cp public/*.webp         dist/ 2>/dev/null || true
-          cp -r public/.well-known dist/ 2>/dev/null || true
-          cp -r public/briefings   dist/ 2>/dev/null || true
-          cp -r public/naazira-fazil dist/ 2>/dev/null || true
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy sites/arif-fazil.com/dist --project-name=ariffazil --branch=main
-
-  # ─── L2 MIND: arifos.arif-fazil.com (React + Vite) ──────────────
-  deploy-mind:
-    name: L2 MIND — arifos.arif-fazil.com
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          cache-dependency-path: sites/arifos/package-lock.json
-
-      - name: Build info
-        run: |
-          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-            > sites/arifos/public/build-info.json
-
-      - name: Install
-        run: cd sites/arifos && npm ci
-
-      - name: Build
-        run: cd sites/arifos && npm run build
-        env:
-          CI: false
-
-      - name: Copy public assets to dist
-        run: |
-          cd sites/arifos
-          cp public/_headers    dist/ 2>/dev/null || true
-          cp public/_redirects  dist/ 2>/dev/null || true
-          cp public/robots.txt  dist/ 2>/dev/null || true
-          cp public/sitemap.xml dist/ 2>/dev/null || true
-          cp public/llms.txt    dist/ 2>/dev/null || true
-          cp public/llms.json   dist/ 2>/dev/null || true
-          cp public/site.json   dist/ 2>/dev/null || true
-          cp public/*.jpg       dist/ 2>/dev/null || true
-          cp public/*.webp      dist/ 2>/dev/null || true
-          cp -r public/.well-known dist/ 2>/dev/null || true
-          cp -r public/assets   dist/ 2>/dev/null || true
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy sites/arifos/dist --project-name=arifos --branch=main
-
-  # ─── L3 BODY: arifosmcp.arif-fazil.com (Static HTML) ────────────
-  deploy-body:
-    name: L3 BODY — arifosmcp.arif-fazil.com
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy sites/arifosmcp --project-name=arifosmcp --branch=main
-
-  # ─── L4 THEORY: apex.arif-fazil.com (React + Vite) ──────────────
-  deploy-theory:
-    name: L4 THEORY — apex.arif-fazil.com
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-          cache: npm
-          cache-dependency-path: sites/apex/package-lock.json
-
-      - name: Build info
-        run: |
-          echo "{\"commit\":\"$(git rev-parse --short HEAD)\",\"built\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" \
-            > sites/apex/public/build-info.json
-
-      - name: Install
-        run: cd sites/apex && npm ci
-
-      - name: Build
-        run: cd sites/apex && npm run build
-        env:
-          CI: false
-
-      - name: Copy public assets to dist
-        run: |
-          cd sites/apex
-          cp public/_headers    dist/ 2>/dev/null || true
-          cp public/_redirects  dist/ 2>/dev/null || true
-          cp public/robots.txt  dist/ 2>/dev/null || true
-          cp public/sitemap.xml dist/ 2>/dev/null || true
-          cp public/llms.txt    dist/ 2>/dev/null || true
-          cp public/llms.json   dist/ 2>/dev/null || true
-          cp public/*.jpg       dist/ 2>/dev/null || true
-          cp public/*.webp      dist/ 2>/dev/null || true
-          cp -r public/.well-known dist/ 2>/dev/null || true
-          cp -r public/api      dist/ 2>/dev/null || true
-
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy sites/apex/dist --project-name=apex --branch=main
-
-  # ─── Verify ───────────────────────────────────────────────────────
-  verify:
-    name: Health Check
-    needs: [deploy-signal, deploy-mind, deploy-body, deploy-theory]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wait for propagation
-        run: sleep 15
-
-      - name: Check all sites
-        run: |
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "  TRINITY SITES — DEPLOY COMPLETE"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          for entry in \
-            "https://arif-fazil.com L1-SIGNAL" \
-            "https://arifos.arif-fazil.com L2-MIND" \
-            "https://arifosmcp.arif-fazil.com L3-BODY" \
-            "https://apex.arif-fazil.com L4-THEORY"; do
-            url=$(echo $entry | cut -d' ' -f1)
-            name=$(echo $entry | cut -d' ' -f2)
-            if curl -sf --max-time 10 "$url" > /dev/null; then
-              echo "  ✅ $name  $url"
-            else
-              echo "  ⏳ $name  $url  (propagating)"
-            fi
-          done
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-          echo "  DITEMPA BUKAN DIBERI"
-          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+name: Deploy Trinity Sites 
+ 
+on: 
+  push: 
+    branches: 
+      - main 
+ 
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest 
+    strategy: 
+      fail-fast: false 
+      matrix: 
+        include: 
+          - name: ariffazil 
+            directory: sites/arif-fazil.com 
+            build: true 
+          - name: arifos 
+            directory: sites/arifos 
+            build: true 
+          - name: aaa 
+            directory: sites/aaa 
+            build: false 
+          - name: apex 
+            directory: sites/apex 
+            build: true 
+ 
+    steps: 
+      - name: Checkout 
+        uses: actions/checkout@v4 
+ 
+      - name: Setup Node 
+        if: ${{ matrix.build == true }} 
+        uses: actions/setup-node@v4 
+        with: 
+          node-version: 20 
+ 
+      - name: Install Dependencies 
+        if: ${{ matrix.build == true }} 
+        run: | 
+          cd ${{ matrix.directory }} 
+          npm install 
+ 
+      - name: Build 
+        if: ${{ matrix.build == true }} 
+        run: | 
+          cd ${{ matrix.directory }} 
+          npm run build 
+ 
+      - name: Deploy to Cloudflare Pages 
+        uses: cloudflare/wrangler-action@v3 
+        with: 
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }} 
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} 
+          command: pages deploy ${{ matrix.build == true && format('{0}/dist', matrix.directory) || matrix.directory }} --project-name=${{ matrix.name }}
