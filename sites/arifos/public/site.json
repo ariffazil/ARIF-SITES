@@ -1,0 +1,19 @@
+{
+  "name": "arifos.arif-fazil.com",
+  "layer": "L2-MIND",
+  "title": "arifOS — Constitutional AI Governance",
+  "description": "Documentation hub for the arifOS constitutional AI governance kernel. 13 floors, 11 tools, 3 Trinity engines.",
+  "author": "Muhammad Arif bin Fazil",
+  "version": "v2026.03.24",
+  "status": "SEAL",
+  "urls": {
+    "home": "https://arifos.arif-fazil.com",
+    "floors": "https://arifos.arif-fazil.com/floors/",
+    "docs": "https://arifos.arif-fazil.com/docs/",
+    "llms": "https://arifos.arif-fazil.com/llms.txt",
+    "signal": "https://arif-fazil.com",
+    "body": "https://arifosmcp.arif-fazil.com",
+    "github": "https://github.com/ariffazil/arifOS",
+    "pypi": "https://pypi.org/project/arifosmcp/"
+  }
+}

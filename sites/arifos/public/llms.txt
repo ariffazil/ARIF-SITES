@@ -1,0 +1,51 @@
+# arifOS — Constitutional AI Governance Documentation
+
+> Layer: L2 MIND | arifos.arif-fazil.com
+> Version: v2026.03.24
+> Author: Muhammad Arif bin Fazil
+
+## What Is arifOS?
+
+arifOS is a constitutional AI governance kernel. It sits between an LLM and users/tools, enforcing 13 mathematical floors on every action. Every decision is logged. Every violation is blocked. Every audit trail is immutable.
+
+## Install
+
+pip install arifosmcp
+uv pip install arifosmcp  # recommended
+
+## Quick Start
+
+python -m arifosmcp.runtime stdio  # stdio for Claude Desktop, Cursor
+python -m arifosmcp.runtime http   # HTTP for remote agents
+
+## 13 Constitutional Floors
+
+F1 Amanah — Reversibility. All actions must be undoable or auditable.
+F2 Truth (τ≥0.99) — Factual accuracy. Claims require evidence.
+F3 Quad-Witness (W₄≥0.75) — Consensus from Human, AI, Earth, Vault.
+F4 Clarity (ΔS≤0) — Entropy must decrease. Cooling before ruling.
+F5 Peace² (P²≥1.0) — Non-destructive power. Buffers > risk.
+F6 Empathy (κᵣ≥0.7) — Protect the weakest stakeholder.
+F7 Humility (Ω₀∈[0.03,0.05]) — Uncertainty must stay in band.
+F8 Genius (G≥0.80) — Governed intelligence. G=A×P×X×E².
+F9 Anti-Hantu (C_dark≤0.30) — No dark cleverness.
+F10 Ontology Lock — Category definitions are immutable.
+F11 Command Auth — Only verified humans authorize irreversible acts.
+F12 Injection Defense — P(injection) < 0.85.
+F13 Sovereign — Human final authority. 888_JUDGE holds absolute veto.
+
+## Trinity Architecture
+
+Δ MIND (AGI)  — Stages 000,111,333 — Floors F2,F4,F7,F8 — Reason, sense, ground
+Ω HEART (ASI) — Stages 555,666     — Floors F5,F6,F9    — Empathy, memory, ethics
+Ψ SOUL (APEX) — Stages 777,888,999 — Floors F1,F3,F10,F11,F13 — Forge, judge, seal
+
+## Links
+
+- MCP Runtime: https://arifosmcp.arif-fazil.com
+- GitHub: https://github.com/ariffazil/arifOS
+- PyPI: https://pypi.org/project/arifosmcp/
+- Author: https://arif-fazil.com
+
+---
+Ditempa Bukan Diberi — G = A × P × X × E²
