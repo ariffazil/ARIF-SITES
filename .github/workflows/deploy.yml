@@ -1,55 +1,81 @@
-name: Deploy Trinity Sites 
- 
-on: 
-  push: 
-    branches: 
-      - main 
- 
-jobs: 
-  deploy: 
-    runs-on: ubuntu-latest 
-    strategy: 
-      fail-fast: false 
-      matrix: 
-        include: 
-          - name: ariffazil 
-            directory: sites/arif-fazil.com 
-            build: true 
-          - name: arifos 
-            directory: sites/arifos 
-            build: true 
-          - name: aaa 
-            directory: sites/aaa 
-            build: false 
-          - name: apex 
-            directory: sites/apex 
-            build: true 
- 
-    steps: 
-      - name: Checkout 
-        uses: actions/checkout@v4 
- 
-      - name: Setup Node 
-        if: ${{ matrix.build == true }} 
-        uses: actions/setup-node@v4 
-        with: 
-          node-version: 20 
- 
-      - name: Install Dependencies 
-        if: ${{ matrix.build == true }} 
-        run: | 
-          cd ${{ matrix.directory }} 
-          npm install 
- 
-      - name: Build 
-        if: ${{ matrix.build == true }} 
-        run: | 
-          cd ${{ matrix.directory }} 
-          npm run build 
- 
-      - name: Deploy to Cloudflare Pages 
-        uses: cloudflare/wrangler-action@v3 
-        with: 
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }} 
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }} 
-          command: pages deploy ${{ matrix.build == true && format('{0}/dist', matrix.directory) || matrix.directory }} --project-name=${{ matrix.name }}
+name: Build — Trinity Sites
+
+# This workflow ONLY builds. It does NOT deploy.
+# Deployment is handled by Cloudflare Pages native GitHub integration
+# (CF Pages watches this repo on main branch and auto-deploys).
+#
+# CF Pages project settings:
+#   ariffazil → Root: sites/arif-fazil.com  Build: npm run build  Output: dist
+#   arifos    → Root: sites/arifos          Build: npm run build  Output: dist
+#   aaa       → Root: sites/aaa             Build: (none)         Output: .
+#   apex      → Root: sites/apex            Build: npm run build  Output: dist
+#
+# For CF Pages to detect the build, it reads the Root Directory from its own
+# dashboard settings — this workflow just validates the build works.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: L1 arif-fazil.com
+            directory: sites/arif-fazil.com
+            build: true
+          - name: L2 arifos
+            directory: sites/arifos
+            build: true
+          - name: L3 aaa (static)
+            directory: sites/aaa
+            build: false
+          - name: L4 apex
+            directory: sites/apex
+            build: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        if: ${{ matrix.build == true }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ matrix.directory }}/package-lock.json
+
+      - name: Install
+        if: ${{ matrix.build == true }}
+        run: cd ${{ matrix.directory }} && npm ci
+
+      - name: Build
+        if: ${{ matrix.build == true }}
+        run: cd ${{ matrix.directory }} && npm run build
+        env:
+          CI: false
+
+      - name: Verify output
+        run: |
+          if [ "${{ matrix.build }}" = "true" ]; then
+            test -d "${{ matrix.directory }}/dist" && echo "✅ dist/ exists" || (echo "❌ dist/ missing" && exit 1)
+          else
+            test -f "${{ matrix.directory }}/index.html" && echo "✅ static index.html exists" || (echo "❌ index.html missing" && exit 1)
+          fi
+
+      - name: Audit required files
+        run: |
+          DIR="${{ matrix.directory }}"
+          if [ "${{ matrix.build }}" = "true" ]; then
+            test -f "$DIR/public/llms.txt"  && echo "✅ llms.txt"  || echo "⚠️  llms.txt missing from public/"
+            test -f "$DIR/public/robots.txt" && echo "✅ robots.txt" || echo "⚠️  robots.txt missing from public/"
+          else
+            test -f "$DIR/llms.txt"  && echo "✅ llms.txt"  || echo "⚠️  llms.txt missing"
+            test -f "$DIR/index.html" && echo "✅ index.html" || echo "⚠️  index.html missing"
+          fi
