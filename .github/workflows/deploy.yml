@@ -4,11 +4,11 @@ name: Build — Trinity Sites
 # Deployment is handled by Cloudflare Pages native GitHub integration
 # (CF Pages watches this repo on main branch and auto-deploys).
 #
-# CF Pages project settings:
-#   ariffazil → Root: sites/arif-fazil.com  Build: npm run build  Output: dist
-#   arifos    → Root: sites/arifos          Build: npm run build  Output: dist
-#   aaa       → Root: sites/aaa             Build: (none)         Output: .
-#   apex      → Root: sites/apex            Build: npm run build  Output: dist
+# CF Pages project settings (Updated):
+#   ariffazil → Root: arif          Build: npm run build  Output: dist
+#   arifos    → Root: arifos        Build: npm run build  Output: dist
+#   aaa       → Root: aaa           Build: (none)         Output: .
+#   apex      → Root: _archive/apex Build: npm run build  Output: dist
 #
 # For CF Pages to detect the build, it reads the Root Directory from its own
 # dashboard settings — this workflow just validates the build works.
