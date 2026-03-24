@@ -9,17 +9,17 @@ export default {
     extend: {
       colors: {
         apps: {
-          50: '#ECFEFF',
-          100: '#CFFAFE',
-          200: '#A5F3FC',
-          300: '#67E8F9',
-          400: '#22D3EE',
-          500: '#06B6D4',
-          600: '#0891B2',
-          700: '#0E7490',
-          800: '#155E75',
-          900: '#164E63',
-          950: '#083344',
+          50: '#FFFBEB',
+          100: '#FEF3C7',
+          200: '#FDE68A',
+          300: '#FCD34D',
+          400: '#FBBF24',
+          500: '#F5B700', /* Sunforge Yellow */
+          600: '#D97706',
+          700: '#B45309',
+          800: '#92400E',
+          900: '#78350F',
+          950: '#0B0F14',
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -70,8 +70,8 @@ export default {
           to: { height: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(6, 182, 212, 0.3)" },
-          "50%": { boxShadow: "0 0 40px rgba(6, 182, 212, 0.5)" },
+          "0%, 100%": { boxShadow: "0 0 20px rgba(245, 183, 0, 0.3)" },
+          "50%": { boxShadow: "0 0 40px rgba(245, 183, 0, 0.5)" },
         },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
@@ -82,8 +82,8 @@ export default {
           "50%": { backgroundPosition: "100% 50%" },
         },
         "torus-glow": {
-          "0%, 100%": { boxShadow: "0 0 40px rgba(14, 165, 233, 0.15), inset 0 0 40px rgba(6, 182, 212, 0.1)" },
-          "50%": { boxShadow: "0 0 80px rgba(14, 165, 233, 0.25), inset 0 0 60px rgba(6, 182, 212, 0.15)" },
+          "0%, 100%": { boxShadow: "0 0 40px rgba(17, 103, 216, 0.15), inset 0 0 40px rgba(245, 183, 0, 0.1)" },
+          "50%": { boxShadow: "0 0 80px rgba(17, 103, 216, 0.25), inset 0 0 60px rgba(245, 183, 0, 0.15)" },
         },
       },
       animation: {
