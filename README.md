@@ -85,11 +85,12 @@ This is the physics of governed intelligence made visible.
 
 ## 🚀 Structure
 
-```
+```text
 arif-sites/
 ├── arif/            # Ring 1: arif-fazil.com (Identity)
 ├── arifos/          # Ring 2: arifos.arif-fazil.com (Constitutional Kernel)
-└── aaa/             # Ring 3: aaa.arif-fazil.com (Operational)
+├── aaa/             # Ring 3: aaa.arif-fazil.com (Operational)
+└── sites/           # Legacy (scheduled for merge)
 ```
 
 ## 🛠️ Local Development
@@ -102,7 +103,7 @@ cd arif && npm run dev
 cd arifos && npm run dev
 
 # Ring 3: AAA (static)
-# Open aaa/index.html in browser
+cd aaa && npm run dev
 ```
 
 ---
