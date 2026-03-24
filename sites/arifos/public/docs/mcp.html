@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arifOS — AAA MCP Specification</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #e2e8f0; background: #0f172a; padding: 2rem; max-width: 900px; margin: auto; }
+        code { background: #1e293b; padding: 0.2rem 0.4rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em; color: #38bdf8; }
+        pre { background: #1e293b; padding: 1.5rem; border-radius: 8px; overflow-x: auto; border: 1px solid #334155; }
+        h1, h2, h3 { color: #06b6d4; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        .tier-aaa { color: #f59e0b; font-weight: bold; }
+        .matrix { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        .matrix th, .matrix td { border: 1px solid #334155; padding: 0.75rem; text-align: left; }
+        .matrix th { background: #1e293b; }
+        blockquote { border-left: 4px solid #06b6d4; padding-left: 1rem; font-style: italic; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <h1>🚀 AAA MCP Specification (The Wire)</h1>
+    <p><strong>Version:</strong> v2026.03.24-UNIFIED | <strong>Status:</strong> <span class="tier-aaa">AAA_LEVEL</span></p>
+
+    <blockquote>
+        "The Wire is the servant; the OS is the sovereign."
+    </blockquote>
+
+    <p>The Model Context Protocol (MCP) is the high-voltage interface bridging the <strong>L2 Mind (Kernel)</strong> and the <strong>L3 Body (Wire)</strong>. This specification enforces thermodynamic law across all agentic handoffs.</p>
+
+    <h2>I. Transport Matrix</h2>
+    <p>arifOS supports dual-standard transport for its AAA interface:</p>
+    <ul>
+        <li><strong>Streamable-HTTP (SSE):</strong> Canonical endpoint: <code>https://aaa.arif-fazil.com/mcp</code>.</li>
+        <li><strong>STDIO:</strong> Local CLI bridge via <code>npx @ariffazil/aaa-mcp</code>.</li>
+    </ul>
+
+    <h2>II. The Application Binary Interface (ABI)</h2>
+
+    <h3>1. Input Schema</h3>
+    <p>Callers must provide proactive safety posture indicators.</p>
+    <pre><code>{
+  "mode": "string",          // The specific organ behavior
+  "payload": { ... },        // Tool-specific data
+  "auth_context": {          // F11 Identity proof
+    "session_token": "..."   // Acquired via init_anchor
+  },
+  "risk_tier": "low | medium | high | critical" // Proactive posture
+}</code></pre>
+
+    <h3>2. Output Schema (RuntimeEnvelope)</h3>
+    <p>The system returns a structured audit trail for every action.</p>
+    <pre><code>{
+  "tool": "tool_name",
+  "status": "ok | error | hold",
+  "verdict": "SEAL | VOID | HOLD | SABAR",
+  "g_score": 1.0, 
+  "substrate_class": ["read", "execute"], // Multiclass Array
+  "payload": { "data": "..." },
+  "next_allowed_tools": ["next_tool_id"],
+  "note": "..."
+}</code></pre>
+
+    <h2>III. The Wire Lock (F13 Enforcement)</h2>
+    <p>The AAA Wire is technically barred from originating policy. Any attempt to self-modify the world model or bypass the 13 Floors results in an immediate <strong>VOID</strong> verdict and system halt.</p>
+
+    <h3>Example: Halted Response (VOID Trigger)</h3>
+    <pre><code>{
+  "status": "void",
+  "verdict": "VOID",
+  "tool": "kernel_panic_handler",
+  "error_message": "F13: System halt due to unhandled kernel exception or policy violation.",
+  "action": "HALT"
+}</code></pre>
+
+    <h2>IV. Session Lifecycle</h2>
+    <table class="matrix">
+        <tr><th>Phase</th><th>Technical Action</th><th>Constitutional Floor</th></tr>
+        <tr><td><strong>1. Anchor</strong></td><td><code>init_anchor</code> (Handshake)</td><td>F11: Command Authority</td></tr>
+        <tr><td><strong>2. Steward</strong></td><td>Token Forwarding</td><td>F1: Amanah (Trust)</td></tr>
+        <tr><td><strong>3. Sync</strong></td><td>Kernel Verification</td><td>F13: Sovereign Override</td></tr>
+        <tr><td><strong>4. Audit</strong></td><td>VAULT999 Merkle-Seal</td><td>F3: Quad-Witness Audit</td></tr>
+    </table>
+
+    <hr>
+    <div style="text-align: center;">
+        <p><em>Ditempa Bukan Diberi — Forged, Not Given</em></p>
+        <p>© 2026 arifOS Constitutional Hub</p>
+    </div>
+
+</body>
+</html>

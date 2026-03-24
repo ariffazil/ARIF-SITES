@@ -365,7 +365,7 @@ const MCP_TOOLS = [
   },
 ];
 
-// API Endpoints — served from aaamcp.arif-fazil.com (Railway)
+// API Endpoints — served from aaa.arif-fazil.com (Railway)
 const ENDPOINTS = [
   { path: '/health', method: 'GET', desc: 'System health check', status: 'stable' },
   { path: '/mcp', method: 'POST', desc: 'MCP tool invocation (9 canonical tools)', status: 'stable' },
@@ -374,7 +374,7 @@ const ENDPOINTS = [
   { path: '/docs', method: 'GET', desc: 'API documentation (OpenAPI)', status: 'stable' },
 ];
 
-const API_BASE = 'aaamcp.arif-fazil.com';
+const API_BASE = 'aaa.arif-fazil.com';
 
 // Code examples
 const INSTALL_CODE = `pip install arifos`;
@@ -390,7 +390,7 @@ const USAGE_CODE = `# MCP config for Claude Code / Cursor / etc.
 }
 
 # Or connect to the live SSE server:
-# Endpoint: https://aaamcp.arif-fazil.com/sse
+# Endpoint: https://aaa.arif-fazil.com/sse
 
 # Python SDK usage:
 from arifos import ConstitutionalAgent
@@ -1258,7 +1258,7 @@ function App() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="https://arif-fazil.com" className="text-red-400 hover:text-red-300 transition-colors flex items-center gap-1">
-                    HUMAN <ExternalLink className="w-3 h-3" />
+                    SOUL <ExternalLink className="w-3 h-3" />
                   </a>
                 </li>
                 <li>
@@ -1282,10 +1282,10 @@ function App() {
             <div>
               <h4 className="font-medium mb-4">Production</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="https://aaamcp.arif-fazil.com/health" className="hover:text-white transition-colors font-mono text-xs">Health Check</a></li>
-                <li><a href="https://aaamcp.arif-fazil.com/mcp" className="hover:text-white transition-colors font-mono text-xs">MCP Endpoint</a></li>
-                <li><a href="https://aaamcp.arif-fazil.com/sse" className="hover:text-white transition-colors font-mono text-xs">MCP SSE</a></li>
-                <li><a href="https://aaamcp.arif-fazil.com/dashboard" className="hover:text-white transition-colors font-mono text-xs">Dashboard</a></li>
+                <li><a href="https://aaa.arif-fazil.com/health" className="hover:text-white transition-colors font-mono text-xs">Health Check</a></li>
+                <li><a href="https://aaa.arif-fazil.com/mcp" className="hover:text-white transition-colors font-mono text-xs">MCP Endpoint</a></li>
+                <li><a href="https://aaa.arif-fazil.com/sse" className="hover:text-white transition-colors font-mono text-xs">MCP SSE</a></li>
+                <li><a href="https://aaa.arif-fazil.com/dashboard" className="hover:text-white transition-colors font-mono text-xs">Dashboard</a></li>
               </ul>
             </div>
           </div>
