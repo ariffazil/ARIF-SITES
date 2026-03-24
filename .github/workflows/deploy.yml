@@ -27,18 +27,15 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: L1 arif-fazil.com
-            directory: sites/arif-fazil.com
+          - name: Ring 1 - ARIF
+            directory: arif
             build: true
-          - name: L2 arifos
-            directory: sites/arifos
+          - name: Ring 2 - ARIFOS
+            directory: arifos
             build: true
-          - name: L3 aaa (static)
-            directory: sites/aaa
+          - name: Ring 3 - AAA
+            directory: aaa
             build: false
-          - name: L4 apex
-            directory: sites/apex
-            build: true
 
     steps:
       - uses: actions/checkout@v4
