@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 4%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 100% 50%;
+    --background: 210 29% 4%; /* #0B0F14 (Ink 950) */
+    --foreground: 210 20% 98%; /* Paper 50 */
+    --card: 210 29% 6%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 29% 6%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 355 78% 48%; /* #E11D2E (Forge Red) */
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 100% 50%;
+    --secondary: 210 20% 10%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 210 20% 12%;
+    --muted-foreground: 210 20% 60%;
+    --accent: 355 78% 48%; /* Forge Red */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 50% 15%;
-    --input: 0 50% 15%;
-    --ring: 0 100% 50%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 355 78% 15%;
+    --input: 355 78% 15%;
+    --ring: 355 78% 48%;
     --radius: 0.5rem;
   }
 }
@@ -40,11 +40,11 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   code, pre, .font-mono {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
   }
 }
 
-/* Custom scrollbar - Red theme */
+/* Custom scrollbar - Forge Red theme */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -55,17 +55,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #660000;
+  background: #E11D2E;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #990000;
+  background: #8B0000;
 }
 
 /* Selection - Red glow */
 ::selection {
-  background: rgba(255, 0, 0, 0.3);
+  background: rgba(225, 29, 46, 0.3);
   color: white;
 }
 

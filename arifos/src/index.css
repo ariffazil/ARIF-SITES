@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 199 89% 48%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 14%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 0 0% 14%;
-    --accent-foreground: 0 0% 98%;
+    --background: 210 29% 4%; /* Ink 950 */
+    --foreground: 210 20% 98%; /* Paper 50 */
+    --card: 210 29% 6%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 29% 6%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 45 100% 48%; /* #F5B700 (Sunforge Yellow) */
+    --primary-foreground: 210 29% 4%; /* Ink 950 for contrast */
+    --secondary: 214 85% 46%; /* #1167D8 (Strait Blue) */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 14%;
+    --muted-foreground: 210 20% 60%;
+    --accent: 45 100% 48%; /* Sunforge Yellow */
+    --accent-foreground: 210 29% 4%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 199 89% 48%;
+    --border: 45 100% 15%;
+    --input: 45 100% 15%;
+    --ring: 45 100% 48%;
     --radius: 0.75rem;
   }
 }
@@ -33,6 +33,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   html {
@@ -51,17 +52,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #F5B700;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #B88A00;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(6, 182, 212, 0.3);
+  background: rgba(245, 183, 0, 0.3);
   color: white;
 }
 
@@ -73,24 +74,24 @@ pre {
 }
 
 code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 }
 
 /* Multi-scale fractal grid background */
 .geometric-bg {
   background-image:
-    linear-gradient(rgba(14, 165, 233, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.015) 1px, transparent 1px),
-    linear-gradient(rgba(14, 165, 233, 0.01) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.01) 1px, transparent 1px),
-    linear-gradient(rgba(14, 165, 233, 0.005) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(14, 165, 233, 0.005) 1px, transparent 1px);
+    linear-gradient(rgba(245, 183, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 183, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(rgba(245, 183, 0, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 183, 0, 0.01) 1px, transparent 1px),
+    linear-gradient(rgba(245, 183, 0, 0.005) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 183, 0, 0.005) 1px, transparent 1px);
   background-size: 200px 200px, 200px 200px, 50px 50px, 50px 50px, 12.5px 12.5px, 12.5px 12.5px;
 }
 
-/* Gradient text — cyan→teal→ice */
+/* Gradient text — Yellow→Blue */
 .gradient-text {
-  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #e0f2fe 100%);
+  background: linear-gradient(135deg, #F5B700 0%, #1167D8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

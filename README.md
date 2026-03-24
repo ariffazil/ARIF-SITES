@@ -75,11 +75,28 @@ This is the physics of governed intelligence made visible.
 
 ---
 
-### 🎨 Visual Hierarchy
+### 🎨 Visual Identity (Aligned)
 
-- **ARIF**          → White / Gold / Black, serif, minimalist, sovereign  
-- **AGI-ASI-APEX** → Deep blue / Silver, geometric, technical, constitutional  
-- **AAA**          → Electric cyan / Charcoal, fast, modular, operational
+The ecosystem is aligned with the **Unified Brand System** centered on a primary triad reflecting constraint and order.
+
+- **Primary Colors:** 
+  - 🔴 **Forge Red** (#E11D2E) — Ring 1: Human Architect
+  - 🔵 **Strait Blue** (#1167D8) — Ring 3: Operational Apps
+  - 🟡 **Sunforge Yellow** (#F5B700) — Ring 2: Constitutional Theory
+- **Typography:** *Inter* (Sans) for UI/Headings, *IBM Plex Mono* for technical contexts.
+- **Logo:** Symmetric equilateral triangular loop (Human Sovereignty center).
+
+Detailed specifications can be found in `brand/visual-identity.md`.
+
+### ⚖️ Brand Alignment Status
+
+| Site | Primary Color | Typography | Logo | Alignment |
+|------|---------------|------------|------|-----------|
+| **Ring 1 (Human)** | Forge Red (#E11D2E) | Inter / IBM Plex | New | 🟢 Full |
+| **Ring 2 (Kernel)** | Sunforge Yellow (#F5B700) | Inter / IBM Plex | New | 🟢 Full |
+| **Ring 3 (Apps)** | Strait Blue (#1167D8) | Inter / IBM Plex | New | 🟢 Full |
+
+*Status: CSS variables from `brand/visual-identity.md` implemented across all sites.*
 
 ---
 
@@ -87,10 +104,11 @@ This is the physics of governed intelligence made visible.
 
 ```text
 arif-sites/
+├── brand/           # Unified Visual Identity (Specs & Assets)
 ├── arif/            # Ring 1: arif-fazil.com (Identity)
 ├── arifos/          # Ring 2: arifos.arif-fazil.com (Constitutional Kernel)
 ├── aaa/             # Ring 3: aaa.arif-fazil.com (Operational)
-└── sites/           # Legacy (scheduled for merge)
+└── sites/           # Shared templates & assets
 ```
 
 ## 🛠️ Local Development

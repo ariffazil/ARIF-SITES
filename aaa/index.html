@@ -9,20 +9,23 @@
     <!-- Modern Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --bg: #0a0a0a;
+            --bg: #0B0F14; /* Ink 950 */
             --surface: #121212;
-            --cyan: #00f2ff;
-            --cyan-glow: rgba(0, 242, 255, 0.15);
+            --brand-red: #E11D2E;
+            --brand-blue: #1167D8;
+            --brand-yellow: #F5B700;
+            --cyan: var(--brand-blue); /* Mapping legacy to new blue */
+            --cyan-glow: rgba(17, 103, 216, 0.15);
             --charcoal: #1a1a1a;
-            --text: #e0e0e0;
-            --text-dim: #888;
-            --border: #222;
+            --text: #F7F8FA; /* Paper 50 */
+            --text-dim: #697077; /* Cool Gray 600 */
+            --border: #212B36; /* Forge Gray 850 */
             --font-main: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font-mono: 'IBM Plex Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-space: border-box; }
