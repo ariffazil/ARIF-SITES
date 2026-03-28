@@ -1,14 +1,19 @@
-# 🌐 arif-sites — Sovereign Identity Stack
+# 🌐 arif-sites — Sovereign Identity Stack (Ring 1+2+3)
+
+> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) | **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
+> **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
+
+---
 
 **The Three-Ring Sovereignty Model**
 
 This repository holds the public web presence for the arifOS ecosystem.
 
-| Ring | Domain | Identity | Function |
+| Ring | Domain | Realm | Function |
 | :--- | :--- | :--- | :--- |
-| **Ring 1** | **arif-fazil.com** | **ARIF** | The Human Architect — Legitimacy & Philosophy |
-| **Ring 2** | **arifos.arif-fazil.com** | **A-RIF** | Constitutional Kernel — Accountable Inference |
-| **Ring 3** | **aaa.arif-fazil.com** | **AAA / smolagents** | Operational Intelligence — Execution & Tools |
+| **Ring 1** | **arif-fazil.com** | **THE SOUL** | The Human Architect — Legitimacy & Philosophy |
+| **Ring 2** | **arifos.arif-fazil.com** | **THE MIND** | Constitutional Kernel — Accountable Inference |
+| **Ring 3** | **aaa.arif-fazil.com** | **THE BODY** | Operational Intelligence — Execution & Tools |
 
 This is not marketing.  
 This is **governance geometry** — a visible separation of powers between Human, Law, and Machine.
