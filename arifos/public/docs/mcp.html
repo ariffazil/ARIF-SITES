@@ -18,8 +18,8 @@
 </head>
 <body>
 
-    <h1>🚀 AAA MCP Specification (The Wire)</h1>
-    <p><strong>Version:</strong> v2026.03.24-UNIFIED | <strong>Status:</strong> <span class="tier-aaa">AAA_LEVEL</span></p>
+    <h1 id="wire-spec">AAA MCP Specification (The Wire)</h1>
+    <p><strong>Version:</strong> 2026.3.28.1 | <strong>Status:</strong> <span class="tier-aaa">LIVE_AUDITED</span></p>
 
     <blockquote>
         "The Wire is the servant; the OS is the sovereign."
@@ -27,55 +27,45 @@
 
     <p>The Model Context Protocol (MCP) is the high-voltage interface bridging the <strong>L2 Mind (Kernel)</strong> and the <strong>L3 Body (Wire)</strong>. This specification enforces thermodynamic law across all agentic handoffs.</p>
 
-    <h2>I. Transport Matrix</h2>
-    <p>arifOS supports dual-standard transport for its AAA interface:</p>
+    <h2 id="transport-matrix">I. Transport Matrix</h2>
+    <p>arifOS currently exposes streamable HTTP on the live runtime domain and local stdio for local clients.</p>
     <ul>
-        <li><strong>Streamable-HTTP (SSE):</strong> Canonical endpoint: <code>https://aaa.arif-fazil.com/mcp</code>.</li>
-        <li><strong>STDIO:</strong> Local CLI bridge via <code>npx @ariffazil/aaa-mcp</code>.</li>
+        <li><strong>Streamable HTTP:</strong> Canonical endpoint: <code>https://arifosmcp.arif-fazil.com/mcp</code>.</li>
+        <li><strong>Runtime root:</strong> <code>https://arifosmcp.arif-fazil.com</code>.</li>
+        <li><strong>Tools index:</strong> <code>https://arifosmcp.arif-fazil.com/tools</code>.</li>
+        <li><strong>Health:</strong> <code>https://arifosmcp.arif-fazil.com/health</code>.</li>
+        <li><strong>STDIO:</strong> Local Python entrypoint via <code>python -m arifosmcp.runtime stdio</code>.</li>
     </ul>
 
-    <h2>II. The Application Binary Interface (ABI)</h2>
+    <h2 id="runtime-surface">II. Runtime Surface</h2>
+    <p>The live runtime currently reports <strong>23 publicly discoverable tools</strong> and <strong>39 internally loaded tools</strong>. Public tool discovery is available through both <code>/tools</code> and JSON-RPC <code>tools/list</code>.</p>
+    <h2 id="abi">III. The Application Binary Interface (ABI)</h2>
 
     <h3>1. Input Schema</h3>
-    <p>Callers must provide proactive safety posture indicators and behavioral contracts.</p>
+    <p>Callers must provide proactive safety posture indicators.</p>
     <pre><code>{
-  "mode": "string",          // init | state | status | revoke | refresh
-  "payload": {
-    "model_soul": {          // Deep identity contract (V2)
-      "base_identity": { "provider": "...", "model_variant": "..." },
-      "constitution": { "truth_policy": "...", "anti_hantu_policy": "..." }
-    }
-  },
+  "mode": "string",          // The specific organ behavior
+  "payload": { ... },        // Tool-specific data
   "auth_context": {          // F11 Identity proof
     "session_token": "..."   // Acquired via init_anchor
   },
   "risk_tier": "low | medium | high | critical" // Proactive posture
 }</code></pre>
 
-    <h3>2. Output Schema (RuntimeEnvelope V2)</h3>
-    <p>The system returns a flattened, governed audit trail for every action.</p>
+    <h3>2. Output Schema (RuntimeEnvelope)</h3>
+    <p>The system returns a structured audit trail for every action.</p>
     <pre><code>{
-  "ok": true,
-  "tool": "init_anchor",
-  "status": "SUCCESS",
-  "result_type": "init_anchor_result@v2",
-  "result": {
-    "session_id": "sess-...",
-    "base_identity": {
-      "declared": { "model_variant": "GPT-5" },
-      "verified": { "soul_archetype": "ARIF_SOVEREIGN_AGENT" },
-      "verification_status": "verified"
-    },
-    "self_claim_boundary": "verified_only",
-    "continuation": { "next_allowed_tools": ["arifOS_kernel"] }
-  },
-  "verdict": "SEAL",
+  "tool": "tool_name",
+  "status": "ok | error | hold",
+  "verdict": "SEAL | VOID | HOLD | SABAR",
   "g_score": 1.0, 
-  "organ_stage": "000_INIT",
-  "entropy": { "delta_s": 0.0, "is_stable": true }
+  "substrate_class": ["read", "execute"], // Multiclass Array
+  "payload": { "data": "..." },
+  "next_allowed_tools": ["next_tool_id"],
+  "note": "..."
 }</code></pre>
 
-    <h2>III. The Wire Lock (F13 Enforcement)</h2>
+    <h2 id="wire-lock">IV. The Wire Lock (F13 Enforcement)</h2>
     <p>The AAA Wire is technically barred from originating policy. Any attempt to self-modify the world model or bypass the 13 Floors results in an immediate <strong>VOID</strong> verdict and system halt.</p>
 
     <h3>Example: Halted Response (VOID Trigger)</h3>
@@ -87,7 +77,7 @@
   "action": "HALT"
 }</code></pre>
 
-    <h2>IV. Session Lifecycle</h2>
+    <h2 id="session-lifecycle">V. Session Lifecycle</h2>
     <table class="matrix">
         <tr><th>Phase</th><th>Technical Action</th><th>Constitutional Floor</th></tr>
         <tr><td><strong>1. Anchor</strong></td><td><code>init_anchor</code> (Handshake)</td><td>F11: Command Authority</td></tr>

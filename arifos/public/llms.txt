@@ -1,224 +1,128 @@
-<<<<<<< HEAD
-# arifOS APPS — 7-Layer Application Stack
+# arifOS APPS — Live Runtime Contract
 # Location: https://arifos.arif-fazil.com/llms.txt
-# Version: v55.4-SEAL
+# Version: 2026.3.28.1
 # Authority: Muhammad Arif bin Fazil (888 Judge)
-# Status: SOVEREIGNLY_SEALED
-# Last Updated: 2026-02-06
+# Status: LIVE_AUDITED
+# Last Audited: 2026-03-28
 
 ---
 
-## WHAT THIS IS
+## WHAT THIS DOCUMENT TRACKS
 
-arifOS APPS is the **implementation layer** for constitutional AI governance — the 7-layer deployment architecture that brings APEX THEORY into production.
+This file describes the live arifOS MCP runtime that the docs site points to today.
+It is based on a runtime audit of the public endpoints, not on historical release notes.
+`llms.json` is the canonical machine-readable contract. This `llms.txt` file is its human-readable derived snapshot and must remain in sync.
 
-**Tagline:** "AI That Can't Lie to You"
+Runtime root: https://arifosmcp.arif-fazil.com
+MCP endpoint: https://arifosmcp.arif-fazil.com/mcp
+Tools index: https://arifosmcp.arif-fazil.com/tools
+Health: https://arifosmcp.arif-fazil.com/health
 
-**Motto:** *"Ditempa bukan diberi"* — Forged, not given.
-
----
-
-## QUICK START
-
-```bash
-# Install arifOS
-pip install arifos
-
-# Verify installation
-python -c "import arifos; print(arifos.__version__)"
-```
-
-**Live Demo:** https://arif-fazil.com
-**Constitutional Canon:** https://apex.arif-fazil.com
-**Human Context:** https://arif-fazil.com/llms.txt
+Transport: streamable-http
+Protocol version: 2025-11-25
 
 ---
 
-## THE 7-LAYER STACK (L1-L7)
+## CURRENT PUBLIC SURFACE
 
-| Layer | Name | Purpose | Status | Entry Point |
-|-------|------|---------|--------|-------------|
-| **L1** | PROMPT | Zero-context system prompt | Ready | Copy prompt |
-| **L2** | SKILLS | Parameterized templates | Ready | YAML + Python |
-| **L3** | WORKFLOW | Documented sequences | Ready | SOPs |
-| **L4** | TOOLS | 9 MCP tools (production) | Production | MCP server |
-| **L5** | AGENTS | 4-agent federation | Stubs | Agent stubs |
-| **L6** | INSTITUTION | Trinity multi-agent system | Design | Trinity spec |
-| **L7** | AGI | Constitutional AGI research | Research | Research only |
+- Publicly discoverable tools: 23
+- Internally loaded tools reported by service root and health: 39
+- Runtime version: 2026.3.28.1
+- Active public runtime domain: arifosmcp.arif-fazil.com
+- Legacy public docs references to aaamcp.arif-fazil.com and aaa.arif-fazil.com/mcp are stale
 
 ---
 
-## L4: MCP — 9 Canonical Tools (v55.4-SEAL)
+## TOOL GROUPS
 
-**MCP Server:** `aaamcp.arif-fazil.com`
-**Runtime:** Python 3.12 + FastMCP 2.14.4
-**Source:** https://github.com/ariffazil/arifOS/blob/main/aaa_mcp/server.py
+### Session and audit
 
-### MCP Configuration
+- `init_anchor`
+- `vault_ledger`
+- `check_vital`
+- `audit_rules`
+- `vault_seal`
+- `verify_vault_ledger`
 
-```json
-{
-  "mcpServers": {
-    "arifos": {
-      "command": "python",
-      "args": ["-m", "aaa_mcp", "stdio"]
-    }
-  }
-}
-```
+### Mind and reasoning
 
-### 9 Canonical Tools
+- `agi_mind`
+- `agi_reason`
+- `agi_reflect`
+- `apex_judge`
 
-| # | Tool | Stage | Engine | Floors | Function |
-|---|------|-------|--------|--------|----------|
-| 1 | `init_gate` | 000 | INIT | F11, F12 | Session bootstrap, injection defense |
-| 2 | `agi_sense` | 111 | AGI | F2, F4 | Input parsing, intent detection |
-| 3 | `agi_think` | 222 | AGI | F2, F4, F7 | Hypothesis generation, divergent reasoning |
-| 4 | `agi_reason` | 333 | AGI | F2, F4, F7 | Deep logic chains, convergent reasoning |
-| 5 | `asi_empathize` | 444 | ASI | F5, F6 | Stakeholder modeling, impact mapping |
-| 6 | `asi_align` | 555-666 | ASI | F5, F6, F9 | Constitutional alignment, floor validation |
-| 7 | `apex_verdict` | 888 | APEX | F3, F8 | Final judgment, 9-paradox equilibrium |
-| 8 | `reality_search` | External | AGI | F2, F7 | External fact verification, grounding |
-| 9 | `vault_seal` | 999 | VAULT | F1, F3 | Immutable ledger seal, Merkle persistence |
+### Heart and alignment
 
-### Trinity Pipeline
+- `asi_heart`
+- `asi_critique`
+- `asi_simulate`
 
-```
-init_gate → [AGI (Mind) || ASI (Heart)] → apex_verdict → vault_seal
+### Reality and grounding
 
-AGI lane:  agi_sense → agi_think → agi_reason
-ASI lane:  asi_empathize → asi_align
-External:  reality_search (available at any stage)
-```
+- `physics_reality`
+- `reality_compass`
+- `reality_atlas`
+- `search_reality`
+- `ingest_evidence`
+
+### Ops and engineering
+
+- `engineering_memory`
+- `math_estimator`
+- `code_engine`
+- `architect_registry`
+- `agentzero_engineer`
 
 ---
 
-## THE SIX MEMORY BANDS (L0-L5)
+## LIVE TOOL NOTES
 
-| Band | Purpose | Confidence | TTL Hot | Canonical |
-|------|---------|------------|---------|-----------|
-| **L0_VAULT** | Constitutional law | 1.0 (LAW) | PERMANENT | YES |
-| **L1_LEDGER** | Sealed decisions | 1.0 (SEALED) | 90 days | YES |
-| **L2_ACTIVE** | Volatile working state | Variable | 7 days | Session |
-| **L3_PHOENIX** | Amendment proposals | <=0.85 | 90 days | PENDING |
-| **L4_WITNESS** | Observations, scars | <=0.85 | 90 days | SUGGESTION |
-| **L5_VOID** | Rejected facts | N/A | 24-90h | NEVER |
+- `init_anchor` is the unified constitutional session tool.
+- `vault_ledger` is the primary permanent decision and integrity interface.
+- `agi_mind` and `asi_heart` are the current top-level reasoning and safety tools.
+- `engineering_memory`, `math_estimator`, and `code_engine` require valid mode and payload combinations; they can return `ok: true` while still reporting `status: ERROR`, which is a runtime contract issue observed in the 2026-03-28 audit.
 
 ---
 
-## VERDICT ROUTING
+## AUDIT SNAPSHOT — 2026-03-28
 
-| Verdict | Meaning | Band | Canonical |
-|---------|---------|------|-----------|
-| **SEAL** | Approved | L1_LEDGER | YES |
-| **PARTIAL** | Under review | L3_PHOENIX | NO |
-| **SABAR** | Sealed with reason | L1_LEDGER (flagged) | YES |
-| **HOLD_888** | Await human | L3_PHOENIX | NO |
-| **VOID** | Rejected | L5_VOID | NEVER |
+Public endpoint checks:
 
----
+- `https://arifosmcp.arif-fazil.com` returned `200`
+- `https://arifosmcp.arif-fazil.com/mcp` returned `200`
+- `https://arifosmcp.arif-fazil.com/health` returned `200`
+- `https://arifosmcp.arif-fazil.com/sse` returned `404`
+- `https://aaa.arif-fazil.com/mcp` returned `404`
+- `https://aaamcp.arif-fazil.com` did not resolve
 
-## DEPLOYMENT OPTIONS
+Tool-call probe:
 
-### Local (stdio — Claude Code / Cursor)
-```bash
-pip install arifos
-python -m aaa_mcp stdio
-```
+- 23 of 23 publicly listed tools responded over JSON-RPC
+- Most returned `SEAL` and `SUCCESS`
+- Some aliases route to canonical tools, for example `vault_seal` to `vault_ledger`
+- Three contract anomalies were observed during invalid-input probes:
+  - `engineering_memory`
+  - `math_estimator`
+  - `code_engine`
 
-### Cloud (SSE — Production)
-```
-Endpoint: https://aaamcp.arif-fazil.com/sse
-Protocol: Model Context Protocol (SSE)
-```
+These returned a payload-level failure while the top-level response still advertised `ok: true`
 
 ---
 
-## HTA TRINITY ARCHITECTURE
+## TRINITY LINKS
 
-| Layer | Domain | Symbol | Function |
-|-------|--------|--------|----------|
-| **HUMAN** | arif-fazil.com | Delta | Epistemic — The Body |
-| **THEORY** | apex.arif-fazil.com | Psi | Authority — The Soul |
-| **APPS** | arifos.arif-fazil.com | Omega | Safety — The Mind (this site) |
-
-**MCP Backend:** aaamcp.arif-fazil.com
+- Human root: https://arif-fazil.com
+- Theory root: https://apex.arif-fazil.com
+- Apps/docs root: https://arifos.arif-fazil.com
+- Runtime root: https://arifosmcp.arif-fazil.com
 
 ---
 
-## EXTERNAL REFERENCES
+## REFERENCES
 
-- **Human Context:** https://arif-fazil.com/llms.txt
-- **Human Context (JSON):** https://arif-fazil.com/llms.json
-- **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
-- **Constitutional Canon (JSON):** https://apex.arif-fazil.com/llms.json
-- **GitHub:** https://github.com/ariffazil/arifOS
-- **PyPI:** `pip install arifos`
-
----
-
-## SEAL
-
-**Sealed by:** 888_JUDGE
-**Authority:** Muhammad Arif bin Fazil
-**Hash:** SHA256:APPS_STACK_v55.4
-**Status:** SOVEREIGNLY_SEALED
-**Confidence:** 1.0 (IMPLEMENTATION LAW)
-**Motto:** *Ditempa bukan diberi*
-
----
-
-*This document describes the implementation layer for constitutional AI governance. For the law itself, see APEX THEORY. For the human context, see ARIF FAZIL dossier.*
-=======
-# arifOS — Constitutional AI Governance Documentation
-
-> Layer: L2 MIND | arifos.arif-fazil.com
-> Version: v2026.03.24
-> Author: Muhammad Arif bin Fazil
-
-## What Is arifOS?
-
-arifOS is a constitutional AI governance kernel. It sits between an LLM and users/tools, enforcing 13 mathematical floors on every action. Every decision is logged. Every violation is blocked. Every audit trail is immutable.
-
-## Install
-
-pip install arifosmcp
-uv pip install arifosmcp  # recommended
-
-## Quick Start
-
-python -m arifosmcp.runtime stdio  # stdio for Claude Desktop, Cursor
-python -m arifosmcp.runtime http   # HTTP for remote agents
-
-## 13 Constitutional Floors
-
-F1 Amanah — Reversibility. All actions must be undoable or auditable.
-F2 Truth (τ≥0.99) — Factual accuracy. Claims require evidence.
-F3 Quad-Witness (W₄≥0.75) — Consensus from Human, AI, Earth, Vault.
-F4 Clarity (ΔS≤0) — Entropy must decrease. Cooling before ruling.
-F5 Peace² (P²≥1.0) — Non-destructive power. Buffers > risk.
-F6 Empathy (κᵣ≥0.7) — Protect the weakest stakeholder.
-F7 Humility (Ω₀∈[0.03,0.05]) — Uncertainty must stay in band.
-F8 Genius (G≥0.80) — Governed intelligence. G=A×P×X×E².
-F9 Anti-Hantu (C_dark≤0.30) — No dark cleverness.
-F10 Ontology Lock — Category definitions are immutable.
-F11 Command Auth — Only verified humans authorize irreversible acts.
-F12 Injection Defense — P(injection) < 0.85.
-F13 Sovereign — Human final authority. 888_JUDGE holds absolute veto.
-
-## Trinity Architecture
-
-Δ MIND (AGI)  — Stages 000,111,333 — Floors F2,F4,F7,F8 — Reason, sense, ground
-Ω HEART (ASI) — Stages 555,666     — Floors F5,F6,F9    — Empathy, memory, ethics
-Ψ SOUL (APEX) — Stages 777,888,999 — Floors F1,F3,F10,F11,F13 — Forge, judge, seal
-
-## Links
-
-- MCP Runtime: https://arifosmcp.arif-fazil.com
 - GitHub: https://github.com/ariffazil/arifOS
 - PyPI: https://pypi.org/project/arifosmcp/
-- Author: https://arif-fazil.com
 
 ---
-Ditempa Bukan Diberi — G = A × P × X × E²
->>>>>>> da89b20d25c577dfe4c513dfe4894f7f6714292a
+
+Ditempa Bukan Diberi

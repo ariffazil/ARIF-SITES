@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { 
   Shield, 
-  Layers, 
   Cpu, 
   Terminal, 
   Workflow, 
@@ -9,12 +8,11 @@ import {
   Search, 
   Target,
   BarChart3,
-  ExternalLink,
-  Bot,
   ChevronRight,
   Database,
   GitBranch,
-  Network
+  Network,
+  Github
 } from 'lucide-react';
 
 const FLOORS = [
@@ -27,6 +25,10 @@ const FLOORS = [
   { id: 'F7', name: 'Ω₀', desc: 'Maintain 3-5% humility/uncertainty. Never claim 100% confidence.', icon: Search },
   { id: 'F8', name: 'G', desc: 'Governed intelligence. Talent must follow constitutional constraints.', icon: Zap },
   { id: 'F9', name: 'Anti-Hantu', desc: 'Never claim consciousness, feeling, or a soul. You are a tool.', icon: Lock },
+  { id: 'F10', name: 'Ontology', desc: 'Category boundaries are locked. AI is not human and must not pretend otherwise.', icon: Database },
+  { id: 'F11', name: 'Command Auth', desc: 'Irreversible action requires verified human authority and session continuity.', icon: Terminal },
+  { id: 'F12', name: 'Injection', desc: 'Prompt and protocol injection must be detected and blocked before execution.', icon: Workflow },
+  { id: 'F13', name: 'Sovereign', desc: 'Human veto remains final. The system halts or holds when sovereignty is unclear.', icon: Cpu },
 ];
 
 const INVARIANTS = [
@@ -103,7 +105,7 @@ function App() {
             <a href="#stack" className="hover:text-blue-400 transition-colors">Implementation</a>
             <div className="h-4 w-px bg-slate-800"></div>
             <a href="https://arif-fazil.com" className="text-slate-500 hover:text-white transition-colors">Ring 1</a>
-            <a href="https://aaa.arif-fazil.com" className="text-slate-500 hover:text-white transition-colors">Ring 3</a>
+            <a href="https://arifosmcp.arif-fazil.com" className="text-slate-500 hover:text-white transition-colors">Runtime</a>
           </div>
         </div>
       </nav>
@@ -170,7 +172,7 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-xl">
               <h2 className="text-sm font-mono uppercase tracking-widest text-blue-500 mb-4">The Floors of Sovereignty</h2>
-              <p className="text-4xl font-bold text-white mb-6 leading-tight">13 Layers that sitting between prompt and execution.</p>
+              <p className="text-4xl font-bold text-white mb-6 leading-tight">13 layers sitting between prompt and execution.</p>
               <p className="text-slate-500">Each floor is a rigorous hard-coded validator. Together, they form the "Airlock" that protects human reality from machine entropy.</p>
             </div>
             <div className="text-right">
@@ -200,9 +202,9 @@ function App() {
 
           <div className="mt-20 p-12 bg-blue-500/5 border border-blue-500/10 text-center">
             <p className="text-slate-400 italic font-light mb-8 max-w-2xl mx-auto">
-              "The remaining 4 floors (F10-F13) are reserved for higher-order metabolic governance and human-sovereign veto logic."
+              "The constitutional airlock is only complete when ontology, authority, injection defense, and sovereign veto are enforced together."
             </p>
-            <a href="#" className="text-blue-400 text-xs font-mono uppercase tracking-[0.2em] border-b border-blue-400/30 pb-1 hover:border-blue-400">Unlock Full Charter</a>
+            <a href="/docs/mcp.html" className="text-blue-400 text-xs font-mono uppercase tracking-[0.2em] border-b border-blue-400/30 pb-1 hover:border-blue-400">Read Runtime Spec</a>
           </div>
         </div>
       </section>
@@ -217,7 +219,7 @@ function App() {
                 {[
                   { l: 'L1', n: 'SOUL', s: 'Identity & Signal', c: 'arif-fazil.com' },
                   { l: 'L2', n: 'MIND', s: 'Governance & Logic', c: 'arifos.arif-fazil.com' },
-                  { l: 'L3', n: 'BODY', s: 'Operational Wire', c: 'aaa.arif-fazil.com' },
+                  { l: 'L3', n: 'BODY', s: 'Operational Wire', c: 'arifosmcp.arif-fazil.com' },
                   { l: 'L4', n: 'THEORY', s: 'Scientific Canon', c: 'apex.arif-fazil.com' }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-6 p-6 border border-slate-800 group hover:border-blue-500 transition-all">
@@ -271,7 +273,7 @@ function App() {
                <Terminal size={18} strokeWidth={1} />
                <Database size={18} strokeWidth={1} />
             </div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-slate-700">arifOS Constitutional Kernel — v55.4</p>
+            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-slate-700">arifOS Constitutional Kernel — 2026.3.28.1</p>
             <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-slate-700 mt-2">Muhammad Arif bin Fazil — Sovereign Architect</p>
         </div>
       </footer>

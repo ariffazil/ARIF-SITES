@@ -10,13 +10,13 @@ Live at [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
 |:---:|:---:|---|---|
 | **L1: SOUL** | **SIGNAL** | The "Why." Human identity & intent. | [arif-fazil.com](https://arif-fazil.com) |
 | **L2: MIND** | **KERNEL** | The "How." Documentation & Logic. | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
-| **L3: BODY** | **AAA WIRE** | The "What." Execution & Transport. | [aaa.arif-fazil.com](https://aaa.arif-fazil.com) |
+| **L3: BODY** | **AAA WIRE** | The "What." Execution & Transport. | [arifosmcp.arif-fazil.com](https://arifosmcp.arif-fazil.com) |
 
 ## Features
 
 - **Governance Charter** — Detailed spec of the 13 Floors.
 - **Metabolic Loops** — Documentation of the 000-999 processes.
-- **API Reference** — How the Mind interacts with the Wire.
+- **API Reference** — How the Mind interacts with the live runtime at `/mcp`.
 
 ---
 
