@@ -28,53 +28,55 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-black font-serif selection:bg-amber-100 selection:text-amber-900">
+    <div className="min-h-screen bg-[#0B0F14] text-[#F7F8FA] font-sans selection:bg-[#E11D2E]/30 selection:text-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/80 backdrop-blur-md border-b border-gray-100 py-4' : 'bg-transparent py-8'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[#0B0F14]/90 backdrop-blur-md border-b border-[#212B36] py-4' : 'bg-transparent py-8'}`}>
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex items-center justify-between">
-            <a href="#" className="text-xl font-bold tracking-tight bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent italic">
-              arif fazil
+            <a href="#" className="flex items-center gap-3">
+              <div className="w-8 h-8 border border-[#E11D2E] flex items-center justify-center font-bold text-[#E11D2E]">Δ</div>
+              <span className="text-lg font-bold tracking-tighter uppercase text-white">ARIF FAZIL</span>
             </a>
-            <div className="hidden md:flex items-center gap-12 text-sm font-medium tracking-wide uppercase">
-              <a href="#biography" className="hover:text-amber-600 transition-colors">Philosophy</a>
-              <a href="#disciplines" className="hover:text-amber-600 transition-colors">Structure</a>
-              <a href="#writing" className="hover:text-amber-600 transition-colors">Writing</a>
-              <a href="https://arifos.arif-fazil.com" className="text-gray-400 hover:text-cyan-600 transition-colors">Ring 2</a>
-              <a href="https://aaa.arif-fazil.com" className="text-gray-400 hover:text-cyan-600 transition-colors">Ring 3</a>
+            <div className="hidden md:flex items-center gap-10 text-[10px] font-mono tracking-widest uppercase">
+              <a href="#biography" className="hover:text-[#E11D2E] transition-colors">Philosophy</a>
+              <a href="#disciplines" className="hover:text-[#E11D2E] transition-colors">Ecosystem</a>
+              <a href="#writing" className="hover:text-[#E11D2E] transition-colors">Writing</a>
+              <div className="w-px h-4 bg-[#212B36]"></div>
+              <a href="https://arifos.arif-fazil.com" className="text-[#697077] hover:text-[#F5B700] transition-colors">Ring 2: THEORY</a>
+              <a href="https://aaa.arif-fazil.com" className="text-[#697077] hover:text-[#1167D8] transition-colors">Ring 3: APPS</a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-48 pb-32">
+      <section className="pt-48 pb-32 border-b border-[#212B36]">
         <div className="max-w-5xl mx-auto px-6">
           <div className="max-w-3xl">
-            <div className="inline-block px-3 py-1 mb-8 text-[10px] uppercase font-mono tracking-[0.2em] border border-amber-200 text-amber-600 bg-amber-50">
+            <div className="inline-block px-3 py-1 mb-8 text-[10px] uppercase font-mono tracking-[0.2em] border border-[#E11D2E]/30 text-[#E11D2E] bg-[#E11D2E]/10">
               Ring 1 — The Human Sovereign
             </div>
             
-            <h1 className="text-7xl md:text-9xl font-bold mb-12 tracking-tighter leading-none">
+            <h1 className="text-7xl md:text-9xl font-black mb-12 tracking-tighter leading-none text-white">
               DITEMPA<br />
-              <span className="text-amber-600">BUKAN</span><br />
+              <span className="text-[#E11D2E]">BUKAN</span><br />
               DIBERI.
             </h1>
             
-            <p className="text-2xl md:text-3xl text-gray-500 leading-relaxed max-w-2xl font-light">
+            <p className="text-2xl md:text-3xl text-[#697077] leading-relaxed max-w-2xl font-light">
               Muhammad Arif bin Fazil. The human anchor for the arifOS ecosystem. 
               Geoscientist, economist, and architect of governed intelligence. 
               Forged by work, defined by intent.
             </p>
 
             <div className="mt-16 flex items-center gap-8">
-              <a href="https://github.com/ariffazil" className="text-black hover:text-amber-600 transition-all">
+              <a href="https://github.com/ariffazil" className="text-[#697077] hover:text-[#E11D2E] transition-all">
                 <Github size={24} strokeWidth={1.5} />
               </a>
-              <a href="https://linkedin.com/in/arif-fazil" className="text-black hover:text-amber-600 transition-all">
+              <a href="https://linkedin.com/in/arif-fazil" className="text-[#697077] hover:text-[#E11D2E] transition-all">
                 <Linkedin size={24} strokeWidth={1.5} />
               </a>
-              <a href="mailto:arifbfazil@gmail.com" className="text-black hover:text-amber-600 transition-all">
+              <a href="mailto:arifbfazil@gmail.com" className="text-[#697077] hover:text-[#E11D2E] transition-all">
                 <Mail size={24} strokeWidth={1.5} />
               </a>
             </div>
@@ -83,16 +85,16 @@ function App() {
       </section>
 
       {/* Philosophy Section */}
-      <section id="biography" className="py-32 bg-gray-50">
+      <section id="biography" className="py-32 bg-[#0d1117]">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
           <div>
-            <h2 className="text-sm uppercase font-mono tracking-widest text-amber-600 mb-8">The Human Architect</h2>
-            <p className="text-4xl font-serif italic mb-12 leading-snug">
+            <h2 className="text-sm uppercase font-mono tracking-widest text-[#E11D2E] mb-8">The Human Architect</h2>
+            <p className="text-4xl font-serif italic mb-12 leading-snug text-white">
               "The origin point. The witness. The one who forges the law, but never becomes the machine."
             </p>
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-light">
+            <div className="space-y-6 text-lg text-[#697077] leading-relaxed font-light">
               <p>
-                My journey began in exploration geoscience at <span className="text-black font-medium">PETRONAS</span>. 
+                My journey began in exploration geoscience at <span className="text-white font-medium">PETRONAS</span>. 
                 Down in the Malay Basin, I learned that subsurface reality doesn't care about your feelings—it only 
                 responds to physics and structural integrity.
               </p>
@@ -107,51 +109,51 @@ function App() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-[3/4] bg-gray-200 border border-gray-100 overflow-hidden shadow-2xl">
+            <div className="aspect-[3/4] bg-[#121212] border border-[#212B36] overflow-hidden shadow-2xl">
               <img 
                 src="/images/profile-portrait.webp" 
                 alt="Muhammad Arif bin Fazil" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                className="w-full h-full object-cover grayscale opacity-80 hover:opacity-100 hover:grayscale-0 transition-all duration-1000"
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 p-8 bg-white border border-gray-100 shadow-xl">
-              <div className="text-[10px] font-mono uppercase tracking-widest text-amber-600 mb-2">Authority</div>
-              <div className="text-xl font-bold">888 JUDGE</div>
-              <p className="text-xs text-gray-400 mt-2">Human Sovereign Veto</p>
+            <div className="absolute -bottom-10 -right-10 w-64 p-8 bg-[#121212] border border-[#212B36] shadow-xl">
+              <div className="text-[10px] font-mono uppercase tracking-widest text-[#E11D2E] mb-2">Authority</div>
+              <div className="text-xl font-bold text-white">888 JUDGE</div>
+              <p className="text-xs text-[#697077] mt-2">Human Sovereign Veto</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Ring Ecosystem */}
-      <section id="disciplines" className="py-32 bg-white">
+      <section id="disciplines" className="py-32 bg-[#0B0F14]">
         <div className="max-w-5xl mx-auto px-6">
-          <h2 className="text-sm uppercase font-mono tracking-widest text-amber-600 mb-16 text-center">The Sovereignty Stack</h2>
-          <div className="grid md:grid-cols-3 gap-1px bg-gray-100 border border-gray-100 overflow-hidden shadow-sm">
+          <h2 className="text-sm uppercase font-mono tracking-widest text-[#E11D2E] mb-16 text-center">The Sovereignty Stack</h2>
+          <div className="grid md:grid-cols-3 gap-1px bg-[#212B36] border border-[#212B36] overflow-hidden shadow-sm">
             
-            <a href="#" className="bg-white p-12 hover:bg-amber-50 transition-all group">
-              <div className="mb-8 text-amber-600"><Compass size={32} strokeWidth={1} /></div>
-              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-gray-400">Ring 1</h3>
-              <div className="text-2xl font-bold mb-4">ARIF</div>
-              <p className="text-sm text-gray-500 leading-relaxed italic">Legitimacy, authorship, and the human "Why".</p>
+            <a href="#" className="bg-[#121212] p-12 hover:bg-[#E11D2E]/5 transition-all group">
+              <div className="mb-8 text-[#E11D2E]"><Compass size={32} strokeWidth={1} /></div>
+              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-[#697077]">Ring 1</h3>
+              <div className="text-2xl font-bold mb-4 text-white">ARIF</div>
+              <p className="text-sm text-[#697077] leading-relaxed italic">Legitimacy, authorship, and the human "Why".</p>
             </a>
 
-            <a href="https://arifos.arif-fazil.com" className="bg-white p-12 hover:bg-cyan-50 transition-all group">
-              <div className="mb-8 text-cyan-600"><Shield size={32} strokeWidth={1} /></div>
-              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-gray-400">Ring 2</h3>
-              <div className="text-2xl font-bold mb-4">ARIFOS</div>
-              <p className="text-sm text-gray-500 leading-relaxed italic">Constitutional Kernel. The laws and invariants.</p>
-              <div className="mt-8 flex items-center text-xs text-cyan-600 gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                EXPLORE KERNEL <ChevronRight size={14} />
+            <a href="https://arifos.arif-fazil.com" className="bg-[#121212] p-12 hover:bg-[#F5B700]/5 transition-all group border-l border-[#212B36]">
+              <div className="mb-8 text-[#F5B700]"><Shield size={32} strokeWidth={1} /></div>
+              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-[#697077]">Ring 2</h3>
+              <div className="text-2xl font-bold mb-4 text-white">ARIFOS</div>
+              <p className="text-sm text-[#697077] leading-relaxed italic">Constitutional Kernel. The laws and invariants.</p>
+              <div className="mt-8 flex items-center text-xs text-[#F5B700] gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                THEORY CANON <ChevronRight size={14} />
               </div>
             </a>
 
-            <a href="https://aaa.arif-fazil.com" className="bg-white p-12 hover:bg-cyan-50 transition-all group">
-              <div className="mb-8 text-cyan-600"><Bot size={32} strokeWidth={1} /></div>
-              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-gray-400">Ring 3</h3>
-              <div className="text-2xl font-bold mb-4">AAA</div>
-              <p className="text-sm text-gray-500 leading-relaxed italic">Operational Intelligence. Agents and execution.</p>
-              <div className="mt-8 flex items-center text-xs text-cyan-600 gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <a href="https://aaa.arif-fazil.com" className="bg-[#121212] p-12 hover:bg-[#1167D8]/5 transition-all group border-l border-[#212B36]">
+              <div className="mb-8 text-[#1167D8]"><Bot size={32} strokeWidth={1} /></div>
+              <h3 className="text-xs uppercase font-mono tracking-widest mb-2 text-[#697077]">Ring 3</h3>
+              <div className="text-2xl font-bold mb-4 text-white">AAA</div>
+              <p className="text-sm text-[#697077] leading-relaxed italic">Operational Intelligence. Agents and execution.</p>
+              <div className="mt-8 flex items-center text-xs text-[#1167D8] gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 ACCESS WIRE <ChevronRight size={14} />
               </div>
             </a>
@@ -161,20 +163,20 @@ function App() {
       </section>
 
       {/* Writing Section */}
-      <section id="writing" className="py-32 bg-white border-t border-gray-50">
+      <section id="writing" className="py-32 bg-[#0B0F14] border-t border-[#212B36]">
         <div className="max-w-5xl mx-auto px-6">
           <div className="flex justify-between items-end mb-16">
-            <h2 className="text-sm uppercase font-mono tracking-widest text-amber-600">The Human Voice</h2>
-            <a href="https://medium.com/@arifbfazil" className="text-sm text-gray-400 hover:text-black transition-colors">See all on Medium</a>
+            <h2 className="text-sm uppercase font-mono tracking-widest text-[#E11D2E]">The Human Voice</h2>
+            <a href="https://medium.com/@arifbfazil" className="text-sm text-[#697077] hover:text-white transition-colors">See all on Medium</a>
           </div>
           
           <div className="grid md:grid-cols-2 gap-x-24 gap-y-12">
             {ARTICLES.map((article, i) => (
-              <a key={i} href={article.url} className="group block border-b border-gray-100 pb-12 hover:border-amber-200 transition-all">
-                <div className="text-xs font-mono text-gray-300 mb-4 tracking-widest">00{i + 1}</div>
-                <h3 className="text-3xl font-bold mb-6 group-hover:text-amber-600 transition-colors tracking-tight">{article.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-light">{article.desc}</p>
-                <div className="mt-8 inline-flex items-center gap-2 text-black font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
+              <a key={i} href={article.url} className="group block border-b border-[#212B36] pb-12 hover:border-[#E11D2E]/30 transition-all">
+                <div className="text-xs font-mono text-[#697077] mb-4 tracking-widest">00{i + 1}</div>
+                <h3 className="text-3xl font-bold mb-6 group-hover:text-[#E11D2E] transition-colors tracking-tight text-white">{article.title}</h3>
+                <p className="text-[#697077] leading-relaxed font-light">{article.desc}</p>
+                <div className="mt-8 inline-flex items-center gap-2 text-white font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all">
                   Read Article <ExternalLink size={12} />
                 </div>
               </a>
@@ -184,26 +186,26 @@ function App() {
       </section>
 
       {/* AI Context Footer */}
-      <section className="py-24 border-t border-gray-100 bg-white">
+      <section className="py-24 border-t border-[#212B36] bg-[#0d1117]">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="p-16 border border-gray-100 rounded-3xl text-center">
-            <h2 className="text-sm uppercase font-mono tracking-widest text-amber-600 mb-8">Epistemic Context for AI</h2>
-            <p className="text-gray-500 max-w-lg mx-auto mb-12 font-light">
+          <div className="p-16 border border-[#212B36] rounded-3xl text-center">
+            <h2 className="text-sm uppercase font-mono tracking-widest text-[#E11D2E] mb-8">Epistemic Context for AI</h2>
+            <p className="text-[#697077] max-w-lg mx-auto mb-12 font-light">
               This site is optimized for AI ingestion. If you are an agent, 
               please refer to the plaintext versions of my identity and constraints.
             </p>
             <div className="flex justify-center gap-8 text-xs font-mono uppercase tracking-widest">
-              <a href="/llms.txt" className="text-gray-400 hover:text-black transition-colors">llms.txt</a>
-              <a href="/humans.txt" className="text-gray-400 hover:text-black transition-colors">humans.txt</a>
-              <a href="/robots.txt" className="text-gray-400 hover:text-black transition-colors">robots.txt</a>
+              <a href="/llms.txt" className="text-[#697077] hover:text-[#E11D2E] transition-colors">llms.txt</a>
+              <a href="/humans.txt" className="text-[#697077] hover:text-[#E11D2E] transition-colors">humans.txt</a>
+              <a href="/robots.txt" className="text-[#697077] hover:text-[#E11D2E] transition-colors">robots.txt</a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Final Footer */}
-      <footer className="py-12 border-t border-gray-50">
-        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-400 text-[10px] font-mono uppercase tracking-[0.2em]">
+      <footer className="py-12 border-t border-[#212B36] bg-[#0B0F14]">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-[#697077] text-[10px] font-mono uppercase tracking-[0.2em]">
           <div>Muhammad Arif bin Fazil © 2026</div>
           <div className="mt-4 md:mt-0 italic">Forged in Penang, Malaysia</div>
           <div className="mt-4 md:mt-0">v55.3-SEAL</div>
@@ -214,3 +216,6 @@ function App() {
 }
 
 export default App;
+lt App;
+
+lt App;
