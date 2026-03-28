@@ -34,7 +34,7 @@ docker run -p 8080:8080 arifos/arifosmcp:latest
 
 ## 11 Mega-Tools
 
-init_anchor          000_INIT     — Forge session token (required first)
+init_anchor          000_INIT     — Deep Identity & MODEL_SOUL Verification (V2)
 arifOS_kernel        444_ROUTER   — Full 000→999 pipeline
 agi_mind             111/222      — Reasoning and synthesis
 asi_heart            555_EMPATHY  — Empathy assessment, red-teaming

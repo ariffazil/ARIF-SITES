@@ -37,27 +37,42 @@
     <h2>II. The Application Binary Interface (ABI)</h2>
 
     <h3>1. Input Schema</h3>
-    <p>Callers must provide proactive safety posture indicators.</p>
+    <p>Callers must provide proactive safety posture indicators and behavioral contracts.</p>
     <pre><code>{
-  "mode": "string",          // The specific organ behavior
-  "payload": { ... },        // Tool-specific data
+  "mode": "string",          // init | state | status | revoke | refresh
+  "payload": {
+    "model_soul": {          // Deep identity contract (V2)
+      "base_identity": { "provider": "...", "model_variant": "..." },
+      "constitution": { "truth_policy": "...", "anti_hantu_policy": "..." }
+    }
+  },
   "auth_context": {          // F11 Identity proof
     "session_token": "..."   // Acquired via init_anchor
   },
   "risk_tier": "low | medium | high | critical" // Proactive posture
 }</code></pre>
 
-    <h3>2. Output Schema (RuntimeEnvelope)</h3>
-    <p>The system returns a structured audit trail for every action.</p>
+    <h3>2. Output Schema (RuntimeEnvelope V2)</h3>
+    <p>The system returns a flattened, governed audit trail for every action.</p>
     <pre><code>{
-  "tool": "tool_name",
-  "status": "ok | error | hold",
-  "verdict": "SEAL | VOID | HOLD | SABAR",
+  "ok": true,
+  "tool": "init_anchor",
+  "status": "SUCCESS",
+  "result_type": "init_anchor_result@v2",
+  "result": {
+    "session_id": "sess-...",
+    "base_identity": {
+      "declared": { "model_variant": "GPT-5" },
+      "verified": { "soul_archetype": "ARIF_SOVEREIGN_AGENT" },
+      "verification_status": "verified"
+    },
+    "self_claim_boundary": "verified_only",
+    "continuation": { "next_allowed_tools": ["arifOS_kernel"] }
+  },
+  "verdict": "SEAL",
   "g_score": 1.0, 
-  "substrate_class": ["read", "execute"], // Multiclass Array
-  "payload": { "data": "..." },
-  "next_allowed_tools": ["next_tool_id"],
-  "note": "..."
+  "organ_stage": "000_INIT",
+  "entropy": { "delta_s": 0.0, "is_stable": true }
 }</code></pre>
 
     <h2>III. The Wire Lock (F13 Enforcement)</h2>

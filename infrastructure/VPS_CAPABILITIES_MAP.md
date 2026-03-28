@@ -35,7 +35,7 @@ Live `arifosmcp` reports:
 
 ### Public MCP Tools (Trinity Surface)
 
-- `init_anchor` : F11 Identity Continuity (Bootstrap)
+- `init_anchor` : V2 Unified Ignition (Deep Identity & MODEL_SOUL Verification)
 - `arifOS_kernel` : Full Constitutional Pipeline (000-999)
 - `apex_soul` : Ψ Final Judgment & Sovereign Override
 - `mind_reason` : Δ AGI Reasoning & Truth Grounding

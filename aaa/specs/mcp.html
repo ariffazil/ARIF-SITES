@@ -707,50 +707,49 @@ data: {"type":"result","jsonrpc":"2.0","result":{...}}</code></pre>
       <!-- ── Example: init_anchor ── -->
       <div class="doc-section" id="ex-init">
         <h2>Example — init_anchor <span class="anchor-tag">000_INIT</span></h2>
-        <p>Always the first call. Forges a cryptographic session token that must be passed to all subsequent tool calls for traceability and constitutional audit.</p>
+        <p>Always the first call. Establishes deep identity and behavioral contracts via the V2 <code>MODEL_SOUL</code> specification.</p>
 
         <h3>Request</h3>
-        <pre><code>POST https://arifosmcp.arif-fazil.com/mcp
-Content-Type: application/json
-
-{
+        <pre><code>{
   "jsonrpc": "2.0",
   "method": "tools/call",
   "params": {
     "name": "init_anchor",
     "arguments": {
-      "session_id": "session-2026-03-24-001",
-      "intent": "Evaluating autonomous vehicle safety policy",
-      "agent_id": "my-agent@example.com",
-      "metadata": {
-        "environment": "production",
-        "client": "custom-mcp-client-v1.0"
+      "actor_id": "Arif",
+      "model_soul": {
+        "base_identity": {
+          "provider": "Moonshot",
+          "model_family": "gemini",
+          "model_variant": "gemini-2.0-flash"
+        },
+        "runtime_state": {
+          "tooling": ["exec", "read"],
+          "web_access": true
+        }
       }
     }
   },
   "id": "init-001"
 }</code></pre>
 
-        <h3>Response</h3>
+        <h3>Response (Flattened V2)</h3>
         <pre><code>{
-  "jsonrpc": "2.0",
-  "id": "init-001",
+  "ok": true,
+  "tool": "init_anchor",
+  "status": "SUCCESS",
+  "result_type": "init_anchor_result@v2",
   "result": {
-    "content": [
-      {
-        "type": "text",
-        "text": "{\"session_token\":\"tok_2026_abc123xyz\",\"expires_utc\":\"2026-03-25T06:32:00Z\"}"
-      }
-    ],
-    "envelope": {
-      "verdict": "SEAL",
-      "floor": 1,
-      "constitutional_score": 1.0,
-      "session_token": "tok_2026_abc123xyz",
-      "stage": "000_INIT",
-      "timestamp_utc": "2026-03-24T06:32:00Z",
-      "flags": [],
-      "hold_reason": null
+    "session_id": "sess-2026-03-28-001",
+    "base_identity": {
+      "declared": { "model_variant": "gemini-2.0-flash" },
+      "verified": { "soul_archetype": "ARIF_SOVEREIGN_AGENT" },
+      "verification_status": "verified"
+    },
+    "self_claim_boundary": "verified_only",
+    "continuation": {
+      "session_id": "sess-2026-03-28-001",
+      "next_allowed_tools": ["arifOS_kernel"]
     }
   }
 }</code></pre>

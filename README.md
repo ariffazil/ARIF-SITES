@@ -4,11 +4,11 @@
 
 This repository holds the public web presence for the arifOS ecosystem.
 
-| Ring | Domain                        | Identity                  | Function                                      |
-|------|-------------------------------|---------------------------|-----------------------------------------------|
-| **Ring 1** | **arif-fazil.com**           | **ARIF**                  | The Human Architect — Legitimacy & Philosophy |
-| **Ring 2** | **arifos.arif-fazil.com**    | **AGI-ASI-APEX**          | Constitutional Kernel — Law & Invariants      |
-| **Ring 3** | **aaa.arif-fazil.com**       | **AGENTS · API · AI · APPS** | Operational Intelligence — Execution & Tools |
+| Ring | Domain | Identity | Function |
+| :--- | :--- | :--- | :--- |
+| **Ring 1** | **arif-fazil.com** | **ARIF** | The Human Architect — Legitimacy & Philosophy |
+| **Ring 2** | **arifos.arif-fazil.com** | **A-RIF** | Constitutional Kernel — Accountable Inference |
+| **Ring 3** | **aaa.arif-fazil.com** | **AAA / smolagents** | Operational Intelligence — Execution & Tools |
 
 This is not marketing.  
 This is **governance geometry** — a visible separation of powers between Human, Law, and Machine.
@@ -26,9 +26,9 @@ The physics of governed intelligence.
 Home of the ΔΩΨ invariants, the 13 Constitutional Floors, the Sacred Chain, the Double Helix, and the Cooling Ledger.  
 Visitors should feel: *“This is the constitution that makes intelligence lawful and sovereign.”*
 
-**AGENTS · API · AI · APPS** — The Operational Nervous System  
+**AAA / smolagents** — The Operational Nervous System  
 Where theory becomes action.  
-The practical layer where agents execute, APIs serve, and governed intelligence does real work — always under constitutional constraint.  
+The practical layer where [**smolagents**](https://github.com/huggingface/smolagents) execute, APIs serve, and governed intelligence does real work — always under constitutional constraint and **A-RIF** governance.  
 Visitors should feel: *“This is where intelligence becomes useful, safe, and auditable.”*
 
 ---
