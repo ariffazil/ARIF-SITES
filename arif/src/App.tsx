@@ -7,7 +7,6 @@ import {
   ExternalLink,
   Shield,
   Compass,
-  Zap,
   Bot
 } from 'lucide-react';
 
@@ -216,6 +215,3 @@ function App() {
 }
 
 export default App;
-lt App;
-
-lt App;
