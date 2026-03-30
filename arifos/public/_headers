@@ -1,19 +1,36 @@
-# Cloudflare Pages Headers Configuration
+# arifOS Sovereign Headers Configuration (Cloudflare Pages)
+# Target: Ring 1 (arif-fazil.com) & Ring 2 (arifos.arif-fazil.com)
 
-# Security headers for all pages
+# 1. Global Security Governance (F1-F13 Compliance)
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://arifosmcp.arif-fazil.com
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
+  # Content Security Policy: Hardened for arifOS Backend Connectivity
+  # Allowing: Local (self), Google Fonts, and the Sovereign implementation subdomains.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://huggingface.co; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://aaamcp.arif-fazil.com https://arifosmcp.arif-fazil.com https://api.arif-fazil.com
+
+# 2. Machine-Readable Intelligence (llms.txt)
 /llms.txt
   Content-Type: text/plain; charset=utf-8
   X-Content-Type-Options: nosniff
+  Access-Control-Allow-Origin: *
 
+# 3. Sovereign Map (llms.json / REPO_ATLAS)
 /llms.json
   Content-Type: application/json; charset=utf-8
   X-Content-Type-Options: nosniff
-  Access-Control-Allow-Origin: *
+  # Restricted to the Triple Ring Origins
+  Access-Control-Allow-Origin: https://arif-fazil.com, https://arifos.arif-fazil.com, https://aaa.arif-fazil.com
+
+# 4. API & Orchestration Grounding
+/api/*
+  # Allow the Trinity sites to call the local/VPS backend
+  Access-Control-Allow-Origin: https://arif-fazil.com, https://arifos.arif-fazil.com, https://aaa.arif-fazil.com
+  Access-Control-Allow-Methods: GET, POST, OPTIONS
+  Access-Control-Allow-Headers: Content-Type, Authorization, X-Sovereign-ID
+  Access-Control-Max-Age: 86400
