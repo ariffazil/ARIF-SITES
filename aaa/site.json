@@ -1,0 +1,29 @@
+{
+  "name": "arifosmcp.arif-fazil.com",
+  "layer": "L3-BODY",
+  "title": "arifOS MCP — Constitutional AI Runtime",
+  "description": "Production MCP server. 11 governed tools. 13 constitutional floors. Streamable HTTP and STDIO transports. A2A compatible.",
+  "author": "Muhammad Arif bin Fazil",
+  "version": "v2026.03.24",
+  "status": "SEAL",
+  "mcp": {
+    "endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+    "transport": "streamable-http",
+    "health": "https://arifosmcp.arif-fazil.com/health",
+    "tools_count": 11,
+    "floors_count": 13
+  },
+  "a2a": {
+    "agent_card": "https://arifosmcp.arif-fazil.com/.well-known/agent.json",
+    "endpoint": "https://arifosmcp.arif-fazil.com/a2a"
+  },
+  "urls": {
+    "home": "https://arifosmcp.arif-fazil.com",
+    "mcp_spec": "https://arifosmcp.arif-fazil.com/specs/mcp.html",
+    "a2a_spec": "https://arifosmcp.arif-fazil.com/specs/a2a.html",
+    "llms": "https://arifosmcp.arif-fazil.com/llms.txt",
+    "mind": "https://arifos.arif-fazil.com",
+    "signal": "https://arif-fazil.com",
+    "github": "https://github.com/ariffazil/arifOS"
+  }
+}
