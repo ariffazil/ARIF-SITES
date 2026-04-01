@@ -1,531 +1,626 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { 
-  Menu, X, ChevronRight, Terminal, Shield, Cpu, 
-  Network, Globe, Zap, Layers, Lock, Activity,
-  FileText, ArrowRight
-} from 'lucide-react';
+import { ArrowRight, Menu, X, ChevronDown } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('what-is-arifos');
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const section2Ref = useRef<HTMLDivElement>(null);
+  const section3Ref = useRef<HTMLDivElement>(null);
+  const section4Ref = useRef<HTMLDivElement>(null);
+  const section5Ref = useRef<HTMLDivElement>(null);
+  const section6Ref = useRef<HTMLDivElement>(null);
 
-  const sections = [
-    { id: 'what-is-arifos', title: 'What is arifOS', icon: <Terminal size={16} /> },
-    { id: 'apex-theory', title: 'APEX Theory', icon: <Zap size={16} /> },
-    { id: 'aaa', title: 'AAA Framework', icon: <Shield size={16} /> },
-    { id: 'waw', title: 'waw / w@w', icon: <Globe size={16} /> },
-    { id: 'geox', title: 'GEOX', icon: <Network size={16} /> },
-    { id: 'a2a', title: 'A2A Protocol', icon: <Cpu size={16} /> },
-    { id: 'architecture', title: '13-Floor Architecture', icon: <Layers size={16} /> },
-    { id: 'arifosmcp', title: 'arifOSmcp', icon: <Activity size={16} /> },
-    { id: 'governance', title: 'Constitutional Governance', icon: <Lock size={16} /> },
-  ];
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo('.docs-hero', 
-        { opacity: 0, y: 30 }, 
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
-      );
+      // Hero entrance animation
+      const heroTl = gsap.timeline({ delay: 0.3 });
+      
+      heroTl
+        .fromTo('.hero-rule', 
+          { scaleY: 0 }, 
+          { scaleY: 1, duration: 0.8, ease: 'power2.out', transformOrigin: 'top' }
+        )
+        .fromTo('.hero-headline span', 
+          { y: 40, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: 'power2.out' }, 
+          '-=0.5'
+        )
+        .fromTo('.hero-sub', 
+          { y: 18, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, 
+          '-=0.3'
+        )
+        .fromTo('.hero-cta', 
+          { y: 18, opacity: 0 }, 
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, 
+          '-=0.4'
+        )
+        .fromTo('.scroll-hint', 
+          { opacity: 0 }, 
+          { opacity: 1, duration: 0.5 }, 
+          '-=0.2'
+        );
 
-      gsap.fromTo('.section-animate', 
-        { opacity: 0, y: 20 }, 
+      // Hero scroll animation
+      const heroScrollTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: 'top top',
+          end: '+=130%',
+          pin: true,
+          scrub: 0.6,
+          onLeaveBack: () => {
+            gsap.set('.hero-headline', { x: 0, opacity: 1 });
+            gsap.set('.hero-rule', { scaleY: 1, opacity: 1 });
+            gsap.set('.hero-sub', { y: 0, opacity: 1 });
+            gsap.set('.hero-cta', { y: 0, opacity: 1 });
+          }
+        }
+      });
+
+      heroScrollTl
+        .fromTo('.hero-headline', 
+          { x: 0, opacity: 1 }, 
+          { x: '-40vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.hero-rule', 
+          { scaleY: 1, opacity: 1 }, 
+          { scaleY: 0.2, opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.hero-sub', 
+          { y: 0, opacity: 1 }, 
+          { y: '12vh', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.hero-cta', 
+          { y: 0, opacity: 1 }, 
+          { y: '12vh', opacity: 0, ease: 'power2.in' }, 
+          0.72
+        )
+        .fromTo('.scroll-hint', 
+          { opacity: 1 }, 
+          { opacity: 0, ease: 'power2.in' }, 
+          0.6
+        );
+
+      // Section 2
+      const section2Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section2Ref.current,
+          start: 'top top',
+          end: '+=130%',
+          pin: true,
+          scrub: 0.6,
+        }
+      });
+
+      section2Tl
+        .fromTo('.s2-bg', 
+          { scale: 1.08, opacity: 0.6 }, 
+          { scale: 1, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s2-rule', 
+          { scaleY: 0, opacity: 0 }, 
+          { scaleY: 1, opacity: 0.35, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s2-headline', 
+          { x: '-50vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s2-body', 
+          { y: '10vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s2-cta', 
+          { y: '8vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.1
+        )
+        .fromTo('.s2-headline', 
+          { x: 0, opacity: 1 }, 
+          { x: '-35vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s2-body', 
+          { y: 0, opacity: 1 }, 
+          { y: '10vh', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s2-cta', 
+          { y: 0, opacity: 1 }, 
+          { y: '10vh', opacity: 0, ease: 'power2.in' }, 
+          0.72
+        )
+        .fromTo('.s2-bg', 
+          { scale: 1, opacity: 1 }, 
+          { scale: 1.05, opacity: 0.6, ease: 'power2.in' }, 
+          0.7
+        );
+
+      // Section 3
+      const section3Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section3Ref.current,
+          start: 'top top',
+          end: '+=130%',
+          pin: true,
+          scrub: 0.6,
+        }
+      });
+
+      section3Tl
+        .fromTo('.s3-bg', 
+          { x: '100vw', scale: 1.06, opacity: 0.7 }, 
+          { x: 0, scale: 1, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s3-label', 
+          { y: '-6vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s3-headline', 
+          { x: '-60vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s3-body', 
+          { x: '40vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s3-cta', 
+          { x: '40vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0.1
+        )
+        .fromTo('.s3-headline', 
+          { x: 0, opacity: 1 }, 
+          { x: '-40vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s3-body', 
+          { x: 0, opacity: 1 }, 
+          { x: '30vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s3-cta', 
+          { x: 0, opacity: 1 }, 
+          { x: '30vw', opacity: 0, ease: 'power2.in' }, 
+          0.72
+        )
+        .fromTo('.s3-bg', 
+          { x: 0, opacity: 1 }, 
+          { x: '-18vw', opacity: 0.6, ease: 'power2.in' }, 
+          0.7
+        );
+
+      // Section 4
+      const section4Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section4Ref.current,
+          start: 'top top',
+          end: '+=130%',
+          pin: true,
+          scrub: 0.6,
+        }
+      });
+
+      section4Tl
+        .fromTo('.s4-bg', 
+          { scale: 1.07, opacity: 0.65 }, 
+          { scale: 1, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s4-headline', 
+          { x: '-55vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s4-body', 
+          { y: '10vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s4-cta', 
+          { y: '8vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.1
+        )
+        .fromTo('.s4-headline', 
+          { x: 0, opacity: 1 }, 
+          { x: '-35vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s4-body', 
+          { y: 0, opacity: 1 }, 
+          { y: '10vh', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s4-cta', 
+          { y: 0, opacity: 1 }, 
+          { y: '10vh', opacity: 0, ease: 'power2.in' }, 
+          0.72
+        )
+        .fromTo('.s4-bg', 
+          { scale: 1, opacity: 1 }, 
+          { scale: 1.05, opacity: 0.6, ease: 'power2.in' }, 
+          0.7
+        );
+
+      // Section 5
+      const section5Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section5Ref.current,
+          start: 'top top',
+          end: '+=130%',
+          pin: true,
+          scrub: 0.6,
+        }
+      });
+
+      section5Tl
+        .fromTo('.s5-bg', 
+          { x: '100vw', scale: 1.06, opacity: 0.7 }, 
+          { x: 0, scale: 1, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s5-label', 
+          { y: '-6vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s5-headline', 
+          { x: '-60vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s5-body', 
+          { x: '40vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s5-cta', 
+          { x: '40vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0.1
+        )
+        .fromTo('.s5-headline', 
+          { x: 0, opacity: 1 }, 
+          { x: '-40vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s5-body', 
+          { x: 0, opacity: 1 }, 
+          { x: '30vw', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s5-cta', 
+          { x: 0, opacity: 1 }, 
+          { x: '30vw', opacity: 0, ease: 'power2.in' }, 
+          0.72
+        )
+        .fromTo('.s5-bg', 
+          { x: 0, opacity: 1 }, 
+          { x: '-18vw', opacity: 0.6, ease: 'power2.in' }, 
+          0.7
+        );
+
+      // Section 6
+      const section6Tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section6Ref.current,
+          start: 'top top',
+          end: '+=120%',
+          pin: true,
+          scrub: 0.6,
+        }
+      });
+
+      section6Tl
+        .fromTo('.s6-overlay', 
+          { opacity: 0 }, 
+          { opacity: 0.55, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s6-headline', 
+          { x: '-55vw', opacity: 0 }, 
+          { x: 0, opacity: 1, ease: 'none' }, 
+          0
+        )
+        .fromTo('.s6-body', 
+          { y: '10vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.05
+        )
+        .fromTo('.s6-cta', 
+          { y: '8vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.1
+        )
+        .fromTo('.s6-email', 
+          { y: '6vh', opacity: 0 }, 
+          { y: 0, opacity: 1, ease: 'none' }, 
+          0.15
+        )
+        .fromTo('.s6-text-group', 
+          { y: 0, opacity: 1 }, 
+          { y: '-8vh', opacity: 0, ease: 'power2.in' }, 
+          0.7
+        )
+        .fromTo('.s6-overlay', 
+          { opacity: 0.55 }, 
+          { opacity: 0.75, ease: 'power2.in' }, 
+          0.7
+        );
+
+      // Footer
+      gsap.fromTo('.footer-content', 
+        { y: 24, opacity: 0 }, 
         { 
-          opacity: 1, 
           y: 0, 
-          duration: 0.5,
-          stagger: 0.1,
+          opacity: 1, 
+          duration: 0.6,
           scrollTrigger: {
-            trigger: '.docs-content',
+            trigger: '.footer',
             start: 'top 80%',
+            toggleActions: 'play none none reverse'
           }
         }
       );
-    }, contentRef);
+
+      // Global snap
+      const pinned = ScrollTrigger.getAll()
+        .filter(st => st.vars.pin)
+        .sort((a, b) => a.start - b.start);
+      
+      const maxScroll = ScrollTrigger.maxScroll(window);
+      
+      if (maxScroll && pinned.length > 0) {
+        const pinnedRanges = pinned.map(st => ({
+          start: st.start / maxScroll,
+          end: (st.end ?? st.start) / maxScroll,
+          center: (st.start + ((st.end ?? st.start) - st.start) * 0.5) / maxScroll,
+        }));
+
+        ScrollTrigger.create({
+          snap: {
+            snapTo: (value: number) => {
+              const inPinned = pinnedRanges.some(
+                r => value >= r.start - 0.02 && value <= r.end + 0.02
+              );
+              if (!inPinned) return value;
+
+              const target = pinnedRanges.reduce(
+                (closest, r) =>
+                  Math.abs(r.center - value) < Math.abs(closest - value)
+                    ? r.center
+                    : closest,
+                pinnedRanges[0]?.center ?? 0
+              );
+              return target;
+            },
+            duration: { min: 0.15, max: 0.35 },
+            delay: 0,
+            ease: 'power2.out',
+          },
+        });
+      }
+    }, mainRef);
 
     return () => ctx.revert();
   }, []);
 
-  const scrollToSection = (id: string) => {
-    setActiveSection(id);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setSidebarOpen(false);
-  };
-
   return (
-    <div ref={contentRef} className="min-h-screen bg-[var(--bg-primary)]">
+    <div ref={mainRef} className="relative">
       <div className="grain-overlay" />
 
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-primary)]/95 backdrop-blur-sm border-b border-[var(--border)]">
-        <div className="flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="lg:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6">
+        <a href="/" className="font-display text-lg font-semibold tracking-tight text-[var(--text-primary)]">
+          arif fazil
+        </a>
+        <button 
+          onClick={toggleMenu}
+          className="label-mono text-[var(--text-primary)] hover:text-[var(--accent-orange)] transition-colors"
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </nav>
+
+      {menuOpen && (
+        <div className="menu-overlay">
+          <button 
+            onClick={toggleMenu}
+            className="absolute top-6 right-8 text-[var(--text-primary)]"
+          >
+            <X size={24} />
+          </button>
+          {['Work', 'Archive', 'About', 'Contact'].map((item) => (
+            <a 
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={toggleMenu}
+              className="menu-link"
             >
-              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-            <a href="/" className="flex items-center gap-3">
-              <span className="font-display text-lg font-semibold text-[var(--text-primary)]">arifOS</span>
-              <span className="label-mono text-[var(--text-muted)] hidden sm:inline">DOCS</span>
+              {item}
             </a>
-          </div>
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="https://arif-fazil.com" className="nav-link">Hub</a>
-            <a href="https://arifosmcp.arif-fazil.com" className="nav-link">Runtime</a>
-            <a href="https://apex.arif-fazil.com" className="nav-link">Theory</a>
-          </nav>
+          ))}
         </div>
-      </header>
+      )}
 
-      <aside className={`fixed left-0 top-[65px] bottom-0 w-[280px] bg-[var(--bg-secondary)] border-r border-[var(--border)] z-40 transform transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="p-6">
-          <div className="mb-6">
-            <span className="label-mono text-[var(--text-muted)]">Version 2.1</span>
-          </div>
-          <nav className="space-y-1">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`sidebar-link w-full text-left flex items-center gap-3 ${activeSection === section.id ? 'active' : ''}`}
-              >
-                <span className="text-[var(--text-muted)]">{section.icon}</span>
-                <span>{section.title}</span>
-              </button>
-            ))}
-          </nav>
+      <section ref={heroRef} className="section-pinned bg-[var(--bg-primary)] z-10">
+        <div className="hero-rule absolute left-[8vw] top-[18vh] h-[64vh] w-[2px] rule-vertical-accent" style={{ transformOrigin: 'top' }} />
+        <div className="hero-headline absolute left-[12vw] top-[26vh] max-w-[80vw]">
+          <h1 className="headline-1 text-[var(--text-primary)]">
+            <span className="block">ARIF FAZIL</span>
+            <span className="block mt-2">DESIGN</span>
+            <span className="block mt-2">TECHNOLOGIST</span>
+          </h1>
         </div>
-      </aside>
-
-      <main className="lg:ml-[280px] pt-[65px]">
-        <div className="docs-hero px-8 py-16 lg:py-24 border-b border-[var(--border)]">
-          <div className="max-w-4xl">
-            <span className="label-mono text-blue mb-4 block">DOCUMENTATION</span>
-            <h1 className="headline-1 text-[var(--text-primary)] mb-6">arifOS</h1>
-            <p className="body-text text-lg max-w-2xl mb-8">
-              A production-grade Constitutional AI Governance System and Intelligence Kernel. 
-              13 Floors. Thermodynamic grounding. Trinity architecture. Sovereign audit model.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2">
-                <span className="status-dot online"></span>
-                <span className="label-mono text-[var(--text-secondary)]">SYSTEM OPERATIONAL</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="telemetry-label">PIPELINE:</span>
-                <span className="telemetry-value">999 SEAL</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="docs-content px-8 py-12">
-          <div className="max-w-4xl space-y-24">
-            <WhatIsArifOS />
-            <ApexTheory />
-            <AAAFramework />
-            <WawSection />
-            <GeoxSection />
-            <A2ASection />
-            <ArchitectureSection />
-            <ArifOSMCPSection />
-            <GovernanceSection />
-          </div>
-        </div>
-
-        <footer className="px-8 py-12 border-t border-[var(--border)] mt-24">
-          <div className="max-w-4xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <span className="font-display text-lg font-semibold text-[var(--text-primary)]">arifOS</span>
-              <p className="body-text mt-2">Physics over vibes. Governance over persuasion.</p>
-            </div>
-            <div className="flex gap-6">
-              <a href="https://arif-fazil.com" className="nav-link">Hub</a>
-              <a href="https://github.com/ariffazil/arifOS" className="nav-link">GitHub</a>
-            </div>
-          </div>
-        </footer>
-      </main>
-    </div>
-  );
-}
-
-function WhatIsArifOS() {
-  return (
-    <section id="what-is-arifos" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Terminal size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">What is arifOS</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">arifOS is not a chatbot wrapper.</strong> It is a 
-          production-grade Constitutional AI Governance System and Intelligence Kernel designed for 
-          sovereign control, auditability, and thermodynamic grounding.
+        <p className="hero-sub absolute left-[12vw] top-[70vh] body-text max-w-[400px]">
+          Portfolio + selected experiments
         </p>
-        <div className="doc-card mt-8">
-          <h3 className="headline-3 text-[var(--text-primary)] mb-4">What this is</h3>
-          <ul className="space-y-3 body-text">
-            <li className="flex items-start gap-3">
-              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
-              <span>A 13-floor architecture for AI system governance</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
-              <span>Trinity architecture: Model + Constitution + Audit</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
-              <span>Thermodynamic grounding for energy-aware computation</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
-              <span>Sovereign audit model with reversible decisions</span>
-            </li>
-          </ul>
+        <a href="#work" className="hero-cta absolute left-[12vw] top-[78vh] cta-button">
+          Explore work <ArrowRight size={16} />
+        </a>
+        <div className="scroll-hint absolute left-1/2 bottom-[6vh] -translate-x-1/2 flex flex-col items-center gap-2">
+          <span className="label-mono text-[var(--text-secondary)]">SCROLL</span>
+          <ChevronDown size={16} className="text-[var(--text-secondary)]" />
         </div>
-        <div className="doc-card border-red">
-          <h3 className="headline-3 text-[var(--text-primary)] mb-4">What this is not</h3>
-          <ul className="space-y-3 body-text">
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>A generic AI assistant or chat interface</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>A mystical AGI consciousness framework</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>A SaaS product with monthly subscriptions</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
+      </section>
 
-function ApexTheory() {
-  return (
-    <section id="apex-theory" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Zap size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">APEX Theory</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">APEX Theory</strong> is the theoretical foundation 
-          underlying arifOS. It addresses how we build AI systems that remain aligned, auditable, and 
-          accountable as they approach and exceed human-level capabilities.
+      <section ref={section2Ref} className="section-pinned z-20">
+        <img src="/hero_portrait.jpg" alt="Portrait" className="s2-bg bg-image" />
+        <div className="s2-rule absolute left-[6vw] top-[22vh] h-[56vh] w-[1px] rule-vertical" style={{ transformOrigin: 'top' }} />
+        <div className="s2-headline absolute left-[10vw] top-[28vh]">
+          <h2 className="headline-2 text-[var(--text-primary)]">
+            <span className="block">I'M ARIF</span>
+            <span className="block mt-1">FAZIL</span>
+          </h2>
+        </div>
+        <p className="s2-body absolute left-[10vw] top-[58vh] max-w-[34vw] body-text text-[var(--text-primary)]">
+          I build interfaces, tools, and stories at the edge of design and code.
         </p>
-        <div className="grid md:grid-cols-3 gap-4 mt-8">
-          <div className="doc-card">
-            <span className="label-mono text-yellow mb-2 block">AGI</span>
-            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Artificial General Intelligence</h4>
-            <p className="body-text text-sm">Human-level cognitive capabilities across domains.</p>
-          </div>
-          <div className="doc-card">
-            <span className="label-mono text-yellow mb-2 block">ASI</span>
-            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Artificial Super Intelligence</h4>
-            <p className="body-text text-sm">Systems exceeding human cognitive performance.</p>
-          </div>
-          <div className="doc-card border-yellow">
-            <span className="label-mono text-yellow mb-2 block">APEX</span>
-            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Aligned Persistent EXecution</h4>
-            <p className="body-text text-sm">Superintelligent systems bound by constitutional governance.</p>
-          </div>
+        <a href="#archive" className="s2-cta absolute left-[10vw] top-[74vh] cta-button">
+          Read the archive <ArrowRight size={16} />
+        </a>
+      </section>
+
+      <section ref={section3Ref} id="work" className="section-pinned z-30">
+        <img src="/project_01.jpg" alt="Project 01" className="s3-bg bg-image" />
+        <span className="s3-label absolute left-[8vw] top-[10vh] label-mono text-[var(--text-primary)]">PROJECT / 01</span>
+        <div className="s3-headline absolute left-[8vw] top-[18vh]">
+          <h2 className="headline-1 text-[var(--text-primary)]">
+            <span className="block">ARIF FAZIL</span>
+            <span className="block mt-2">DESIGN</span>
+          </h2>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function AAAFramework() {
-  return (
-    <section id="aaa" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Shield size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">AAA Framework</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">AAA</strong> stands for Authentication, Authorization, 
-          and Audit—the three pillars of sovereign AI governance.
+        <p className="s3-body absolute right-[8vw] bottom-[18vh] max-w-[34vw] body-text text-[var(--text-primary)] text-right">
+          A design system and web experience for a product launch—built for speed, clarity, and conversion.
         </p>
-        <div className="space-y-4 mt-8">
-          <div className="doc-card">
-            <div className="flex items-center gap-3 mb-2">
-              <Lock size={18} className="text-blue" />
-              <h3 className="headline-3 text-[var(--text-primary)]">Authentication</h3>
-            </div>
-            <p className="body-text">Every actor—human or machine—must be identifiable. No anonymous actions.</p>
-          </div>
-          <div className="doc-card">
-            <div className="flex items-center gap-3 mb-2">
-              <Shield size={18} className="text-blue" />
-              <h3 className="headline-3 text-[var(--text-primary)]">Authorization</h3>
-            </div>
-            <p className="body-text">Capabilities are granted, not assumed. The constitution defines permissions.</p>
-          </div>
-          <div className="doc-card">
-            <div className="flex items-center gap-3 mb-2">
-              <FileText size={18} className="text-blue" />
-              <h3 className="headline-3 text-[var(--text-primary)]">Audit</h3>
-            </div>
-            <p className="body-text">Every decision leaves a trace. Every action is reviewable.</p>
-          </div>
+        <a href="#case-study-01" className="s3-cta absolute right-[8vw] bottom-[10vh] cta-button">
+          View case study <ArrowRight size={16} />
+        </a>
+      </section>
+
+      <section ref={section4Ref} className="section-pinned z-40">
+        <img src="/philosophy_portrait.jpg" alt="Philosophy" className="s4-bg bg-image" />
+        <div className="s4-headline absolute left-[8vw] top-[28vh]">
+          <h2 className="headline-2 text-[var(--text-primary)]">
+            <span className="block">ARIF</span>
+            <span className="block mt-1">FAZIL</span>
+          </h2>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function WawSection() {
-  return (
-    <section id="waw" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Globe size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">waw / w@w</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">waw</strong> and <strong className="text-[var(--text-primary)]">w@w</strong> represent 
-          the dual nature of intelligence: the wonder of creation and the precision of execution.
+        <p className="s4-body absolute left-[8vw] top-[52vh] max-w-[34vw] body-text text-[var(--text-primary)]">
+          Systems thinking, typography, and motion—built to last beyond trends.
         </p>
-        <div className="grid md:grid-cols-2 gap-6 mt-8">
-          <div className="doc-card">
-            <span className="label-mono text-yellow mb-3 block">waw</span>
-            <h3 className="headline-3 text-[var(--text-primary)] mb-3">The Creative Spark</h3>
-            <p className="body-text">The moment of insight—the unexpected connection, the pattern recognized.</p>
-          </div>
-          <div className="doc-card border-yellow">
-            <span className="label-mono text-yellow mb-3 block">w@w</span>
-            <h3 className="headline-3 text-[var(--text-primary)] mb-3">The Executed Form</h3>
-            <p className="body-text">waw made concrete—the insight transformed into action, deployed into the world.</p>
-          </div>
+        <a href="#process" className="s4-cta absolute left-[8vw] top-[70vh] cta-button">
+          See the process <ArrowRight size={16} />
+        </a>
+      </section>
+
+      <section ref={section5Ref} className="section-pinned z-50">
+        <img src="/project_02.jpg" alt="Project 02" className="s5-bg bg-image" />
+        <span className="s5-label absolute left-[8vw] top-[10vh] label-mono text-[var(--text-primary)]">PROJECT / 02</span>
+        <div className="s5-headline absolute left-[8vw] top-[18vh]">
+          <h2 className="headline-1 text-[var(--text-primary)]">
+            <span className="block">ARIF FAZIL</span>
+            <span className="block mt-2">DESIGN</span>
+          </h2>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function GeoxSection() {
-  return (
-    <section id="geox" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Network size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">GEOX</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">GEOX</strong> is the spatial intelligence layer 
-          of arifOS. It provides geographic grounding and location-aware computation.
+        <p className="s5-body absolute right-[8vw] bottom-[18vh] max-w-[34vw] body-text text-[var(--text-primary)] text-right">
+          An interactive storytelling piece—scroll-driven, responsive, and performant.
         </p>
-        <div className="doc-card mt-8">
-          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Capabilities</h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Geographic Anchoring</h4>
-              <p className="body-text text-sm">All computations grounded in physical location.</p>
-            </div>
-            <div>
-              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Spatial Reasoning</h4>
-              <p className="body-text text-sm">Understanding proximity and spatial relationships.</p>
-            </div>
-            <div>
-              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Jurisdiction Awareness</h4>
-              <p className="body-text text-sm">Recognition of legal and regulatory boundaries.</p>
-            </div>
-            <div>
-              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Distributed Coordination</h4>
-              <p className="body-text text-sm">Multi-agent systems with geographic constraints.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+        <a href="#case-study-02" className="s5-cta absolute right-[8vw] bottom-[10vh] cta-button">
+          View case study <ArrowRight size={16} />
+        </a>
+      </section>
 
-function A2ASection() {
-  return (
-    <section id="a2a" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Cpu size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">A2A Protocol</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">A2A</strong> (Agent-to-Agent) is the protocol 
-          layer enabling sovereign AI agents to discover, authenticate, and communicate.
-        </p>
-        <div className="doc-card border-blue mt-8">
-          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Discovery Endpoints</h3>
-          <ul className="space-y-2 body-text font-mono text-sm">
-            <li className="flex items-center gap-3">
-              <span className="text-blue">GET</span>
-              <span>/.well-known/agent.json</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="text-blue">GET</span>
-              <span>/.well-known/ai-plugin.json</span>
-            </li>
-            <li className="flex items-center gap-3">
-              <span className="text-blue">GET</span>
-              <span>/agent-card.json</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ArchitectureSection() {
-  const floors = [
-    { floor: 'F13', name: 'Constitutional Apex', desc: 'Immutable principles', color: 'yellow' },
-    { floor: 'F12', name: 'Governance Layer', desc: 'Policy enforcement', color: 'blue' },
-    { floor: 'F11', name: 'Audit Plane', desc: 'Traceability and review', color: 'blue' },
-    { floor: 'F10', name: 'Identity Core', desc: 'AuthN and AuthZ', color: 'blue' },
-    { floor: 'F09', name: 'Agent Mesh', desc: 'A2A communication', color: 'blue' },
-    { floor: 'F08', name: 'Reasoning Engine', desc: 'Inference and decisions', color: 'blue' },
-    { floor: 'F07', name: 'Knowledge Base', desc: 'Structured memory', color: 'blue' },
-    { floor: 'F06', name: 'Tool Layer', desc: 'External capabilities', color: 'blue' },
-    { floor: 'F05', name: 'Compute Pool', desc: 'Processing resources', color: 'blue' },
-    { floor: 'F04', name: 'Thermodynamics', desc: 'Energy-aware scheduling', color: 'blue' },
-    { floor: 'F03', name: 'Storage Layer', desc: 'Persistent data', color: 'blue' },
-    { floor: 'F02', name: 'Network Core', desc: 'Connectivity and routing', color: 'blue' },
-    { floor: 'F01', name: 'Hardware Abstraction', desc: 'Physical compute', color: 'blue' },
-  ];
-
-  return (
-    <section id="architecture" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Layers size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">13-Floor Architecture</h2>
-      </div>
-      <div className="space-y-3 mt-8">
-        {floors.map((item) => (
-          <div key={item.floor} className="doc-card flex items-center gap-4 py-3">
-            <span className={`label-mono text-${item.color} w-12`}>{item.floor}</span>
-            <div className="flex-1">
-              <span className="font-display font-semibold text-[var(--text-primary)]">{item.name}</span>
-              <span className="body-text text-sm ml-4 hidden sm:inline">{item.desc}</span>
-            </div>
+      <section ref={section6Ref} id="contact" className="section-pinned z-[60]">
+        <img src="/closing_portrait.jpg" alt="Closing" className="s6-bg bg-image" />
+        <div className="s6-overlay earth-overlay" />
+        <div className="s6-text-group">
+          <div className="s6-headline absolute left-[8vw] top-[26vh]">
+            <h2 className="headline-2 text-[var(--text-primary)]">
+              <span className="block">ARIF</span>
+              <span className="block mt-1">FAZIL</span>
+            </h2>
           </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ArifOSMCPSection() {
-  return (
-    <section id="arifosmcp" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Activity size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">arifOSmcp</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">arifOSmcp</strong> is the runtime and API surface 
-          of arifOS. It provides health monitoring, metrics exposure, and machine-readable endpoints.
-        </p>
-        <div className="doc-card mt-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Activity size={18} className="text-green-500" />
-            <h3 className="headline-3 text-[var(--text-primary)]">System Status</h3>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
-              <span className="telemetry-label block mb-1">dS</span>
-              <span className="telemetry-value">-0.62</span>
-            </div>
-            <div>
-              <span className="telemetry-label block mb-1">peace2</span>
-              <span className="telemetry-value">1.19</span>
-            </div>
-            <div>
-              <span className="telemetry-label block mb-1">kappa_r</span>
-              <span className="telemetry-value">0.98</span>
-            </div>
-            <div>
-              <span className="telemetry-label block mb-1">confidence</span>
-              <span className="telemetry-value text-green-500">0.91</span>
-            </div>
-          </div>
-          <div className="mt-4 pt-4 border-t border-[var(--border)]">
-            <span className="telemetry-label">VERDICT: </span>
-            <span className="telemetry-value text-green-500">Alive</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function GovernanceSection() {
-  return (
-    <section id="governance" className="section-animate scroll-mt-24">
-      <div className="flex items-center gap-3 mb-6">
-        <Lock size={20} className="text-blue" />
-        <h2 className="headline-2 text-[var(--text-primary)]">Constitutional Governance</h2>
-      </div>
-      <div className="space-y-6">
-        <p className="body-text">
-          <strong className="text-[var(--text-primary)]">Constitutional AI Governance</strong> is the 
-          core innovation of arifOS. It replaces alignment-through-training with governance-through-constraints.
-        </p>
-        <div className="doc-card border-red mt-8">
-          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Anti-Hantu Ontology</h3>
-          <p className="body-text mb-4">
-            arifOS rejects the mystification of AI. The system is not conscious, not sacred, not supernatural.
+          <p className="s6-body absolute left-[8vw] top-[50vh] max-w-[34vw] body-text text-[var(--text-primary)]">
+            Available for select collaborations. Tell me what you're building.
           </p>
-          <ul className="space-y-2 body-text">
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>No "superintelligence is here" framing</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>No spiritual cosplay</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="text-red mt-1">×</span>
-              <span>No vague visionary fluff</span>
-            </li>
-          </ul>
+          <a href="mailto:hello@ariffazil.com" className="s6-cta absolute left-[8vw] top-[68vh] cta-button">
+            Send a message <ArrowRight size={16} />
+          </a>
+          <span className="s6-email absolute left-[8vw] top-[76vh] label-mono text-[var(--text-secondary)]">
+            hello@ariffazil.com
+          </span>
         </div>
-        <div className="code-block mt-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Terminal size={14} className="text-[var(--text-muted)]" />
-            <span className="label-mono text-[var(--text-muted)]">SEAL</span>
-          </div>
-          <pre className="text-[var(--text-primary)]">
-{`arifOS telemetry version 2.1
-pipeline 999 SEAL
-floors F1 F4 F7
-confidence PLAUSIBLE
-P2 1.0
-hold CLEAR
-uncertainty range 0.05
+      </section>
 
-seal: DITEMPA BUKAN DIBERI
-(Forge, don't be given)`}
-          </pre>
+      <footer className="footer relative z-[70] bg-[var(--bg-primary)] py-[8vh] px-[8vw]">
+        <div className="footer-content max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+            <div>
+              <h3 className="font-display text-3xl font-semibold text-[var(--text-primary)] mb-4">
+                Let's build something precise.
+              </h3>
+              <p className="body-text mb-8">
+                Open for freelance and studio collaborations.
+              </p>
+              <a 
+                href="mailto:hello@ariffazil.com"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-[var(--accent-orange)] text-[var(--accent-orange)] font-mono text-sm tracking-wide hover:bg-[var(--accent-orange)] hover:text-[var(--bg-primary)] transition-colors"
+              >
+                Start a project
+              </a>
+            </div>
+            <div className="flex flex-col md:items-end gap-8">
+              <div className="flex flex-wrap gap-8">
+                {['Work', 'Archive', 'About', 'Contact'].map((item) => (
+                  <a 
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="label-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-8">
+                {['Twitter', 'LinkedIn', 'GitHub'].map((item) => (
+                  <a 
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="label-mono text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-[var(--border)]">
+            <span className="label-mono text-[var(--text-secondary)]">
+              © 2026 Arif Fazil
+            </span>
+          </div>
         </div>
-      </div>
-    </section>
+      </footer>
+    </div>
   );
 }
 
