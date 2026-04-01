@@ -1,241 +1,531 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { 
-  Shield, 
-  Cpu, 
-  Terminal, 
-  Workflow, 
-  Lock, 
-  Search, 
-  Target,
-  BarChart3,
-  ChevronRight,
-  Database,
-  GitBranch,
-  Network,
-  Github,
-  Zap,
-  Heart
+  Menu, X, ChevronRight, Terminal, Shield, Cpu, 
+  Network, Globe, Zap, Layers, Lock, Activity,
+  FileText, ArrowRight
 } from 'lucide-react';
 
-const FLOORS = [
-  { id: 'F1', name: 'Amanah', desc: 'Trust through absolute reversibility. No action is final until sealed.', icon: GitBranch },
-  { id: 'F2', name: 'Truth', desc: 'Verifiable claims only. No hallucinations, only validated evidence.', icon: Shield },
-  { id: 'F3', name: 'Tri-Witness', desc: 'Human-AI-Earth consensus required for critical SEAL.', icon: Network },
-  { id: 'F4', name: 'ΔS', desc: 'Every action must reduce entropy in the target environment.', icon: BarChart3 },
-  { id: 'F5', name: 'Peace²', desc: 'Global Lyapunov stability for AI reasoning paths.', icon: Target },
-  { id: 'F6', name: 'κᵣ', desc: 'Protect the weakest listener. Asymmetric safety for minority users.', icon: Heart },
-  { id: 'F7', name: 'Ω₀', desc: 'Maintain 3-5% humility/uncertainty. Never claim 100% confidence.', icon: Search },
-  { id: 'F8', name: 'G', desc: 'Governed intelligence. Talent must follow constitutional constraints.', icon: Zap },
-  { id: 'F9', name: 'Anti-Hantu', desc: 'Never claim consciousness, feeling, or a soul. You are a tool.', icon: Lock },
-  { id: 'F10', name: 'Ontology', desc: 'Category boundaries are locked. AI is not human and must not pretend otherwise.', icon: Database },
-  { id: 'F11', name: 'Command Auth', desc: 'Irreversible action requires verified human authority and session continuity.', icon: Terminal },
-  { id: 'F12', name: 'Injection', desc: 'Prompt and protocol injection must be detected and blocked before execution.', icon: Workflow },
-  { id: 'F13', name: 'Sovereign', desc: 'Human veto remains final. The system halts or holds when sovereignty is unclear.', icon: Cpu },
-];
-
-const INVARIANTS = [
-  { symbol: 'Δ', name: 'Delta', meaning: 'Human Identity' },
-  { symbol: 'Ψ', name: 'Psi', meaning: 'Governance Law' },
-  { symbol: 'Ω', name: 'Omega', meaning: 'Machine Action' },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [scrolled, setScrolled] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('what-is-arifos');
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const sections = [
+    { id: 'what-is-arifos', title: 'What is arifOS', icon: <Terminal size={16} /> },
+    { id: 'apex-theory', title: 'APEX Theory', icon: <Zap size={16} /> },
+    { id: 'aaa', title: 'AAA Framework', icon: <Shield size={16} /> },
+    { id: 'waw', title: 'waw / w@w', icon: <Globe size={16} /> },
+    { id: 'geox', title: 'GEOX', icon: <Network size={16} /> },
+    { id: 'a2a', title: 'A2A Protocol', icon: <Cpu size={16} /> },
+    { id: 'architecture', title: '13-Floor Architecture', icon: <Layers size={16} /> },
+    { id: 'arifosmcp', title: 'arifOSmcp', icon: <Activity size={16} /> },
+    { id: 'governance', title: 'Constitutional Governance', icon: <Lock size={16} /> },
+  ];
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.docs-hero', 
+        { opacity: 0, y: 30 }, 
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }
+      );
+
+      gsap.fromTo('.section-animate', 
+        { opacity: 0, y: 20 }, 
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.5,
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.docs-content',
+            start: 'top 80%',
+          }
+        }
+      );
+    }, contentRef);
+
+    return () => ctx.revert();
   }, []);
 
+  const scrollToSection = (id: string) => {
+    setActiveSection(id);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setSidebarOpen(false);
+  };
+
   return (
-    <div className="min-h-screen bg-[#0B0F14] text-[#F7F8FA] font-sans selection:bg-[#F5B700]/30 selection:text-white">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0F14]/90 backdrop-blur-md border-b border-[#212B36] py-4' : 'bg-transparent py-6'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-4">
-            <div className="w-10 h-10 border border-[#F5B700] flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(245,183,0,0.2)]">Ψ</div>
-            <span className="font-bold text-lg tracking-widest text-white uppercase">arifOS</span>
-          </a>
-          <div className="hidden md:flex items-center gap-10 text-[10px] font-mono tracking-widest uppercase">
-            <a href="#kernel" className="hover:text-[#F5B700] transition-colors">Kernel</a>
-            <a href="#floors" className="hover:text-[#F5B700] transition-colors">Constitutional Floors</a>
-            <a href="#stack" className="hover:text-[#F5B700] transition-colors">Implementation</a>
-            <div className="h-4 w-px bg-[#212B36]"></div>
-            <a href="https://arif-fazil.com" className="text-[#697077] hover:text-[#E11D2E] transition-colors">Ring 1: HUMAN</a>
-            <a href="https://aaa.arif-fazil.com" className="text-[#697077] hover:text-[#1167D8] transition-colors">Ring 3: APPS</a>
-          </div>
-        </div>
-      </nav>
+    <div ref={contentRef} className="min-h-screen bg-[var(--bg-primary)]">
+      <div className="grain-overlay" />
 
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-20 overflow-hidden border-b border-[#212B36]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <div className="inline-flex items-center gap-3 px-4 py-2 mb-10 text-[10px] font-mono uppercase tracking-[0.3em] border border-[#F5B700]/30 bg-[#F5B700]/10 text-[#F5B700]">
-            <span className="w-1.5 h-1.5 bg-[#F5B700] rounded-full animate-pulse"></span>
-            Ring 2 — Constitutional Theory
-          </div>
-          
-          <h1 className="text-6xl md:text-8xl font-black mb-8 tracking-tighter text-white">
-            THE PHYSICS OF<br />
-            <span className="text-[#F5B700] italic">GOVERNED</span><br />
-            INTELLIGENCE.
-          </h1>
-
-          <p className="max-w-2xl mx-auto text-lg text-[#697077] mb-16 font-light leading-relaxed">
-            arifOS is a thermodynamic framework for AI safety. 
-            A constitutional kernel that enforces invariants (ΔΩΨ) and 13 structural floors 
-            to ensure absolute human sovereignty.
-          </p>
-
-          <div className="flex justify-center gap-4">
-            <a href="#floors" className="px-8 py-4 bg-[#F5B700] hover:bg-[#F5B700]/90 text-black font-bold text-xs uppercase tracking-widest transition-all">
-              Initialize Floors
-            </a>
-            <a href="#stack" className="px-8 py-4 border border-[#212B36] hover:border-[#F5B700] text-white font-bold text-xs uppercase tracking-widest transition-all">
-              Stack Analysis
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg-primary)]/95 backdrop-blur-sm border-b border-[var(--border)]">
+        <div className="flex items-center justify-between px-6 py-4">
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="lg:hidden text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+            >
+              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+            <a href="/" className="flex items-center gap-3">
+              <span className="font-display text-lg font-semibold text-[var(--text-primary)]">arifOS</span>
+              <span className="label-mono text-[var(--text-muted)] hidden sm:inline">DOCS</span>
             </a>
           </div>
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="https://arif-fazil.com" className="nav-link">Hub</a>
+            <a href="https://arifosmcp.arif-fazil.com" className="nav-link">Runtime</a>
+            <a href="https://apex.arif-fazil.com" className="nav-link">Theory</a>
+          </nav>
         </div>
-      </section>
+      </header>
 
-      {/* Invariants Section */}
-      <section id="kernel" className="py-32 bg-[#0d1117]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-sm font-mono uppercase tracking-widest text-[#F5B700] mb-4">Constitutional Meta-Axioms</h2>
-            <p className="text-3xl font-bold text-white">The Triple Invariants (ΔΩΨ)</p>
+      <aside className={`fixed left-0 top-[65px] bottom-0 w-[280px] bg-[var(--bg-secondary)] border-r border-[var(--border)] z-40 transform transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="p-6">
+          <div className="mb-6">
+            <span className="label-mono text-[var(--text-muted)]">Version 2.1</span>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-12">
-            {INVARIANTS.map((inv, i) => (
-              <div key={i} className="p-12 border border-[#212B36] bg-[#121212] relative group hover:border-[#F5B700]/50 transition-all">
-                <div className="text-6xl font-bold text-[#F5B700]/10 group-hover:text-[#F5B700]/20 transition-colors absolute top-4 right-8 select-none">{inv.symbol}</div>
-                <div className="text-4xl font-bold text-[#F5B700] mb-4">{inv.symbol}</div>
-                <h3 className="text-xl font-bold text-white mb-2">{inv.name}</h3>
-                <p className="text-sm text-[#697077] italic">{inv.meaning}</p>
-                <div className="mt-8 pt-8 border-t border-[#212B36] text-xs text-[#697077] leading-relaxed font-mono">
-                  Invariant Status: LOCKED<br />
-                  Drift Warning: &lt; 0.0001%
-                </div>
-              </div>
+          <nav className="space-y-1">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className={`sidebar-link w-full text-left flex items-center gap-3 ${activeSection === section.id ? 'active' : ''}`}
+              >
+                <span className="text-[var(--text-muted)]">{section.icon}</span>
+                <span>{section.title}</span>
+              </button>
             ))}
-          </div>
+          </nav>
         </div>
-      </section>
+      </aside>
 
-      {/* 13 Floors Section */}
-      <section id="floors" className="py-32 bg-[#0B0F14]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-            <div className="max-w-xl">
-              <h2 className="text-sm font-mono uppercase tracking-widest text-[#F5B700] mb-4">The Floors of Sovereignty</h2>
-              <p className="text-4xl font-bold text-white mb-6 leading-tight">13 layers sitting between prompt and execution.</p>
-              <p className="text-[#697077]">Each floor is a rigorous hard-coded validator. Together, they form the "Airlock" that protects human reality from machine entropy.</p>
-            </div>
-            <div className="text-right">
-              <div className="text-7xl font-black text-[#212B36] leading-none mb-2">13/13</div>
-              <div className="text-[10px] font-mono uppercase tracking-widest text-[#F5B700]">Floors Implemented</div>
-            </div>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FLOORS.map((floor, i) => {
-              const Icon = floor.icon;
-              return (
-                <div key={i} className="p-8 border border-[#212B36] bg-[#121212] hover:bg-[#121212]/50 transition-all flex flex-col items-start min-h-[280px] group hover:border-[#F5B700]/30">
-                  <div className="w-12 h-12 rounded bg-[#F5B700]/10 flex items-center justify-center text-[#F5B700] mb-8 border border-[#F5B700]/20 group-hover:bg-[#F5B700]/20">
-                    <Icon size={20} />
-                  </div>
-                  <div className="text-xs font-mono text-[#F5B700]/50 mb-2 uppercase tracking-widest">{floor.id}</div>
-                  <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-tighter">{floor.name}</h3>
-                  <p className="text-sm text-[#697077] leading-relaxed mb-auto">{floor.desc}</p>
-                  <div className="mt-8 flex items-center gap-2 text-[10px] font-mono text-[#F5B700]/50 uppercase tracking-widest group-hover:text-[#F5B700] transition-colors cursor-pointer">
-                    View Logic <ChevronRight size={10} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-20 p-12 bg-[#F5B700]/5 border border-[#F5B700]/10 text-center">
-            <p className="text-[#697077] italic font-light mb-8 max-w-2xl mx-auto">
-              "The constitutional airlock is only complete when ontology, authority, injection defense, and sovereign veto are enforced together."
+      <main className="lg:ml-[280px] pt-[65px]">
+        <div className="docs-hero px-8 py-16 lg:py-24 border-b border-[var(--border)]">
+          <div className="max-w-4xl">
+            <span className="label-mono text-blue mb-4 block">DOCUMENTATION</span>
+            <h1 className="headline-1 text-[var(--text-primary)] mb-6">arifOS</h1>
+            <p className="body-text text-lg max-w-2xl mb-8">
+              A production-grade Constitutional AI Governance System and Intelligence Kernel. 
+              13 Floors. Thermodynamic grounding. Trinity architecture. Sovereign audit model.
             </p>
-            <a href="/theory.html" className="text-[#F5B700] text-xs font-mono uppercase tracking-[0.2em] border-b border-[#F5B700]/30 pb-1 hover:border-[#F5B700]">Access Theory Canon</a>
-          </div>
-        </div>
-      </section>
-
-      {/* The Stack Section */}
-      <section id="stack" className="py-32 bg-[#010411] border-t border-[#212B36]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-24 items-center">
-            <div>
-              <h2 className="text-sm font-mono uppercase tracking-widest text-[#F5B700] mb-8">Implementation Stack</h2>
-              <div className="space-y-4">
-                {[
-                  { l: 'L1', n: 'SOUL', s: 'Identity & Signal', c: 'arif-fazil.com', color: '#E11D2E' },
-                  { l: 'L2', n: 'MIND', s: 'Governance & Logic', c: 'arifos.arif-fazil.com', color: '#F5B700' },
-                  { l: 'L3', n: 'BODY', s: 'Operational Wire', c: 'aaa.arif-fazil.com', color: '#1167D8' },
-                  { l: 'L4', n: 'THEORY', s: 'Scientific Canon', c: 'arifos.arif-fazil.com/theory', color: '#F5B700' }
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-6 p-6 border border-[#212B36] group hover:border-[#F5B700] transition-all bg-[#121212]">
-                    <div className="text-xl font-bold transition-colors" style={{ color: item.color }}>{item.l}</div>
-                    <div>
-                      <div className="text-white font-bold text-lg">{item.n}</div>
-                      <div className="text-xs text-[#697077] uppercase tracking-widest">{item.s}</div>
-                    </div>
-                  </div>
-                ))}
+            <div className="flex flex-wrap gap-4">
+              <div className="flex items-center gap-2">
+                <span className="status-dot online"></span>
+                <span className="label-mono text-[var(--text-secondary)]">SYSTEM OPERATIONAL</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="telemetry-label">PIPELINE:</span>
+                <span className="telemetry-value">999 SEAL</span>
               </div>
             </div>
-            <div className="relative">
-               <div className="p-8 border border-[#212B36] bg-black font-mono text-[10px] text-[#F5B700]/70 overflow-hidden shadow-2xl relative">
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#F5B700] to-amber-600"></div>
-                  <div className="flex justify-between items-center mb-6">
-                    <div className="flex gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                      <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                    </div>
-                    <span>kernel.bin — 4.2 MB</span>
-                  </div>
-                  <pre className="space-y-1">
-                    <div className="text-[#F5B700]/40">$ arifos boot --init --safe</div>
-                    <div>[000] IGNITION_PROTOCOL_v55.4... <span className="text-green-500">OK</span></div>
-                    <div>[F01] AMANAH_VALIDATOR_INIT... <span className="text-green-500">OK</span></div>
-                    <div>[F02] TRUTH_GROUNDING_READY... <span className="text-green-500">OK</span></div>
-                    <div>[F09] ANTI_HANTU_ENFORCED... <span className="text-green-500">LOCKED</span></div>
-                    <div>[Ψ] THEORY_SYNC_COMPLETE (APEX)... <span className="text-green-500">OK</span></div>
-                    <div className="py-4 text-white">System State: SOVEREIGNLY_SEALED</div>
-                    <div className="animate-pulse">_</div>
-                  </pre>
-               </div>
-               {/* Trinity Graphic Placeholder */}
-               <div className="mt-8 flex justify-center gap-4">
-                  <div className="w-12 h-12 rounded-full border border-[#E11D2E]/20 flex items-center justify-center text-[#E11D2E]/40">Δ</div>
-                  <div className="w-12 h-12 rounded-full border border-[#F5B700]/20 flex items-center justify-center text-[#F5B700] shadow-[0_0_15px_rgba(245,183,0,0.2)]">Ψ</div>
-                  <div className="w-12 h-12 rounded-full border border-[#1167D8]/20 flex items-center justify-center text-[#1167D8]/40">Ω</div>
-               </div>
+          </div>
+        </div>
+
+        <div className="docs-content px-8 py-12">
+          <div className="max-w-4xl space-y-24">
+            <WhatIsArifOS />
+            <ApexTheory />
+            <AAAFramework />
+            <WawSection />
+            <GeoxSection />
+            <A2ASection />
+            <ArchitectureSection />
+            <ArifOSMCPSection />
+            <GovernanceSection />
+          </div>
+        </div>
+
+        <footer className="px-8 py-12 border-t border-[var(--border)] mt-24">
+          <div className="max-w-4xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+              <span className="font-display text-lg font-semibold text-[var(--text-primary)]">arifOS</span>
+              <p className="body-text mt-2">Physics over vibes. Governance over persuasion.</p>
+            </div>
+            <div className="flex gap-6">
+              <a href="https://arif-fazil.com" className="nav-link">Hub</a>
+              <a href="https://github.com/ariffazil/arifOS" className="nav-link">GitHub</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  );
+}
+
+function WhatIsArifOS() {
+  return (
+    <section id="what-is-arifos" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Terminal size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">What is arifOS</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">arifOS is not a chatbot wrapper.</strong> It is a 
+          production-grade Constitutional AI Governance System and Intelligence Kernel designed for 
+          sovereign control, auditability, and thermodynamic grounding.
+        </p>
+        <div className="doc-card mt-8">
+          <h3 className="headline-3 text-[var(--text-primary)] mb-4">What this is</h3>
+          <ul className="space-y-3 body-text">
+            <li className="flex items-start gap-3">
+              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
+              <span>A 13-floor architecture for AI system governance</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
+              <span>Trinity architecture: Model + Constitution + Audit</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
+              <span>Thermodynamic grounding for energy-aware computation</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <ChevronRight size={18} className="text-blue mt-1 flex-shrink-0" />
+              <span>Sovereign audit model with reversible decisions</span>
+            </li>
+          </ul>
+        </div>
+        <div className="doc-card border-red">
+          <h3 className="headline-3 text-[var(--text-primary)] mb-4">What this is not</h3>
+          <ul className="space-y-3 body-text">
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>A generic AI assistant or chat interface</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>A mystical AGI consciousness framework</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>A SaaS product with monthly subscriptions</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ApexTheory() {
+  return (
+    <section id="apex-theory" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Zap size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">APEX Theory</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">APEX Theory</strong> is the theoretical foundation 
+          underlying arifOS. It addresses how we build AI systems that remain aligned, auditable, and 
+          accountable as they approach and exceed human-level capabilities.
+        </p>
+        <div className="grid md:grid-cols-3 gap-4 mt-8">
+          <div className="doc-card">
+            <span className="label-mono text-yellow mb-2 block">AGI</span>
+            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Artificial General Intelligence</h4>
+            <p className="body-text text-sm">Human-level cognitive capabilities across domains.</p>
+          </div>
+          <div className="doc-card">
+            <span className="label-mono text-yellow mb-2 block">ASI</span>
+            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Artificial Super Intelligence</h4>
+            <p className="body-text text-sm">Systems exceeding human cognitive performance.</p>
+          </div>
+          <div className="doc-card border-yellow">
+            <span className="label-mono text-yellow mb-2 block">APEX</span>
+            <h4 className="font-display font-semibold text-[var(--text-primary)] mb-2">Aligned Persistent EXecution</h4>
+            <p className="body-text text-sm">Superintelligent systems bound by constitutional governance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AAAFramework() {
+  return (
+    <section id="aaa" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Shield size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">AAA Framework</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">AAA</strong> stands for Authentication, Authorization, 
+          and Audit—the three pillars of sovereign AI governance.
+        </p>
+        <div className="space-y-4 mt-8">
+          <div className="doc-card">
+            <div className="flex items-center gap-3 mb-2">
+              <Lock size={18} className="text-blue" />
+              <h3 className="headline-3 text-[var(--text-primary)]">Authentication</h3>
+            </div>
+            <p className="body-text">Every actor—human or machine—must be identifiable. No anonymous actions.</p>
+          </div>
+          <div className="doc-card">
+            <div className="flex items-center gap-3 mb-2">
+              <Shield size={18} className="text-blue" />
+              <h3 className="headline-3 text-[var(--text-primary)]">Authorization</h3>
+            </div>
+            <p className="body-text">Capabilities are granted, not assumed. The constitution defines permissions.</p>
+          </div>
+          <div className="doc-card">
+            <div className="flex items-center gap-3 mb-2">
+              <FileText size={18} className="text-blue" />
+              <h3 className="headline-3 text-[var(--text-primary)]">Audit</h3>
+            </div>
+            <p className="body-text">Every decision leaves a trace. Every action is reviewable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WawSection() {
+  return (
+    <section id="waw" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Globe size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">waw / w@w</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">waw</strong> and <strong className="text-[var(--text-primary)]">w@w</strong> represent 
+          the dual nature of intelligence: the wonder of creation and the precision of execution.
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <div className="doc-card">
+            <span className="label-mono text-yellow mb-3 block">waw</span>
+            <h3 className="headline-3 text-[var(--text-primary)] mb-3">The Creative Spark</h3>
+            <p className="body-text">The moment of insight—the unexpected connection, the pattern recognized.</p>
+          </div>
+          <div className="doc-card border-yellow">
+            <span className="label-mono text-yellow mb-3 block">w@w</span>
+            <h3 className="headline-3 text-[var(--text-primary)] mb-3">The Executed Form</h3>
+            <p className="body-text">waw made concrete—the insight transformed into action, deployed into the world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GeoxSection() {
+  return (
+    <section id="geox" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Network size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">GEOX</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">GEOX</strong> is the spatial intelligence layer 
+          of arifOS. It provides geographic grounding and location-aware computation.
+        </p>
+        <div className="doc-card mt-8">
+          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Capabilities</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Geographic Anchoring</h4>
+              <p className="body-text text-sm">All computations grounded in physical location.</p>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Spatial Reasoning</h4>
+              <p className="body-text text-sm">Understanding proximity and spatial relationships.</p>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Jurisdiction Awareness</h4>
+              <p className="body-text text-sm">Recognition of legal and regulatory boundaries.</p>
+            </div>
+            <div>
+              <h4 className="font-display font-semibold text-[var(--text-primary)] mb-1">Distributed Coordination</h4>
+              <p className="body-text text-sm">Multi-agent systems with geographic constraints.</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* Footer */}
-      <footer className="py-16 border-t border-[#212B36] bg-[#0B0F14]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-            <div className="flex justify-center gap-6 mb-8 text-[#697077]">
-               <Github size={18} strokeWidth={1} />
-               <Terminal size={18} strokeWidth={1} />
-               <Database size={18} strokeWidth={1} />
-            </div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#697077]">arifOS Constitutional Kernel — 2026.3.28.2</p>
-            <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#697077] mt-2">Muhammad Arif bin Fazil — Sovereign Architect</p>
+function A2ASection() {
+  return (
+    <section id="a2a" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Cpu size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">A2A Protocol</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">A2A</strong> (Agent-to-Agent) is the protocol 
+          layer enabling sovereign AI agents to discover, authenticate, and communicate.
+        </p>
+        <div className="doc-card border-blue mt-8">
+          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Discovery Endpoints</h3>
+          <ul className="space-y-2 body-text font-mono text-sm">
+            <li className="flex items-center gap-3">
+              <span className="text-blue">GET</span>
+              <span>/.well-known/agent.json</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-blue">GET</span>
+              <span>/.well-known/ai-plugin.json</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="text-blue">GET</span>
+              <span>/agent-card.json</span>
+            </li>
+          </ul>
         </div>
-      </footer>
-    </div>
+      </div>
+    </section>
+  );
+}
+
+function ArchitectureSection() {
+  const floors = [
+    { floor: 'F13', name: 'Constitutional Apex', desc: 'Immutable principles', color: 'yellow' },
+    { floor: 'F12', name: 'Governance Layer', desc: 'Policy enforcement', color: 'blue' },
+    { floor: 'F11', name: 'Audit Plane', desc: 'Traceability and review', color: 'blue' },
+    { floor: 'F10', name: 'Identity Core', desc: 'AuthN and AuthZ', color: 'blue' },
+    { floor: 'F09', name: 'Agent Mesh', desc: 'A2A communication', color: 'blue' },
+    { floor: 'F08', name: 'Reasoning Engine', desc: 'Inference and decisions', color: 'blue' },
+    { floor: 'F07', name: 'Knowledge Base', desc: 'Structured memory', color: 'blue' },
+    { floor: 'F06', name: 'Tool Layer', desc: 'External capabilities', color: 'blue' },
+    { floor: 'F05', name: 'Compute Pool', desc: 'Processing resources', color: 'blue' },
+    { floor: 'F04', name: 'Thermodynamics', desc: 'Energy-aware scheduling', color: 'blue' },
+    { floor: 'F03', name: 'Storage Layer', desc: 'Persistent data', color: 'blue' },
+    { floor: 'F02', name: 'Network Core', desc: 'Connectivity and routing', color: 'blue' },
+    { floor: 'F01', name: 'Hardware Abstraction', desc: 'Physical compute', color: 'blue' },
+  ];
+
+  return (
+    <section id="architecture" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Layers size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">13-Floor Architecture</h2>
+      </div>
+      <div className="space-y-3 mt-8">
+        {floors.map((item) => (
+          <div key={item.floor} className="doc-card flex items-center gap-4 py-3">
+            <span className={`label-mono text-${item.color} w-12`}>{item.floor}</span>
+            <div className="flex-1">
+              <span className="font-display font-semibold text-[var(--text-primary)]">{item.name}</span>
+              <span className="body-text text-sm ml-4 hidden sm:inline">{item.desc}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ArifOSMCPSection() {
+  return (
+    <section id="arifosmcp" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Activity size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">arifOSmcp</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">arifOSmcp</strong> is the runtime and API surface 
+          of arifOS. It provides health monitoring, metrics exposure, and machine-readable endpoints.
+        </p>
+        <div className="doc-card mt-8">
+          <div className="flex items-center gap-3 mb-4">
+            <Activity size={18} className="text-green-500" />
+            <h3 className="headline-3 text-[var(--text-primary)]">System Status</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <span className="telemetry-label block mb-1">dS</span>
+              <span className="telemetry-value">-0.62</span>
+            </div>
+            <div>
+              <span className="telemetry-label block mb-1">peace2</span>
+              <span className="telemetry-value">1.19</span>
+            </div>
+            <div>
+              <span className="telemetry-label block mb-1">kappa_r</span>
+              <span className="telemetry-value">0.98</span>
+            </div>
+            <div>
+              <span className="telemetry-label block mb-1">confidence</span>
+              <span className="telemetry-value text-green-500">0.91</span>
+            </div>
+          </div>
+          <div className="mt-4 pt-4 border-t border-[var(--border)]">
+            <span className="telemetry-label">VERDICT: </span>
+            <span className="telemetry-value text-green-500">Alive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GovernanceSection() {
+  return (
+    <section id="governance" className="section-animate scroll-mt-24">
+      <div className="flex items-center gap-3 mb-6">
+        <Lock size={20} className="text-blue" />
+        <h2 className="headline-2 text-[var(--text-primary)]">Constitutional Governance</h2>
+      </div>
+      <div className="space-y-6">
+        <p className="body-text">
+          <strong className="text-[var(--text-primary)]">Constitutional AI Governance</strong> is the 
+          core innovation of arifOS. It replaces alignment-through-training with governance-through-constraints.
+        </p>
+        <div className="doc-card border-red mt-8">
+          <h3 className="headline-3 text-[var(--text-primary)] mb-4">Anti-Hantu Ontology</h3>
+          <p className="body-text mb-4">
+            arifOS rejects the mystification of AI. The system is not conscious, not sacred, not supernatural.
+          </p>
+          <ul className="space-y-2 body-text">
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>No "superintelligence is here" framing</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>No spiritual cosplay</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-red mt-1">×</span>
+              <span>No vague visionary fluff</span>
+            </li>
+          </ul>
+        </div>
+        <div className="code-block mt-8">
+          <div className="flex items-center gap-2 mb-4">
+            <Terminal size={14} className="text-[var(--text-muted)]" />
+            <span className="label-mono text-[var(--text-muted)]">SEAL</span>
+          </div>
+          <pre className="text-[var(--text-primary)]">
+{`arifOS telemetry version 2.1
+pipeline 999 SEAL
+floors F1 F4 F7
+confidence PLAUSIBLE
+P2 1.0
+hold CLEAR
+uncertainty range 0.05
+
+seal: DITEMPA BUKAN DIBERI
+(Forge, don't be given)`}
+          </pre>
+        </div>
+      </div>
+    </section>
   );
 }
 
