@@ -1,0 +1,14 @@
+{
+  "name": "arifOS",
+  "description": "Constitutional kernel for AI agents - governance framework with 13 floors",
+  "repository": "https://github.com/ariffazil/arifOS",
+  "sites": {
+    "kernel": "https://github.com/ariffazil/arifOS",
+    "mcp_server": "https://arifosmcp.arif-fazil.com",
+    "ring_1": "https://arif-fazil.com",
+    "ring_2": "https://arifos.arif-fazil.com",
+    "ring_3": "https://aaa.arif-fazil.com"
+  },
+  "version": "2.1",
+  "floors": 13
+}

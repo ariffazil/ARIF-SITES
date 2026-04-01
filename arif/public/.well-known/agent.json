@@ -1,0 +1,11 @@
+{
+  "name": "arifOS Agent",
+  "description": "Constitutional kernel agent with 13-floor governance",
+  "version": "2.1",
+  "repository": "https://github.com/ariffazil/arifOS",
+  "mcp_server": "https://arifosmcp.arif-fazil.com",
+  "endpoints": {
+    "health": "https://arifosmcp.arif-fazil.com/health",
+    "tools": "https://arifosmcp.arif-fazil.com/tools"
+  }
+}
