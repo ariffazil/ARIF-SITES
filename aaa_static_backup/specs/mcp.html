@@ -1,0 +1,833 @@
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP Protocol Spec — arifOS MCP</title>
+  <meta name="description" content="Full MCP protocol specification for arifOS MCP. Connection details, tool invocation format, response schema, error contracts, and authorization.">
+  <link rel="canonical" href="https://arifosmcp.arif-fazil.com/specs/mcp.html">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:    #0d1117;
+      --bg-secondary:  #161b22;
+      --bg-tertiary:   #21262d;
+      --text-primary:  #e6edf3;
+      --text-secondary:#8b949e;
+      --accent-delta:  #58a6ff;
+      --accent-omega:  #f85149;
+      --accent-psi:    #ffd700;
+      --accent-success:#3fb950;
+      --border:        #30363d;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      --radius: 6px;
+      --radius-lg: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent-delta); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-psi); }
+    pre {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      line-height: 1.55;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      margin: 0.75rem 0;
+    }
+    pre code { color: inherit; font-size: inherit; }
+
+    /* ── Layout ── */
+    .page-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-brand a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
+    .sidebar-nav li a {
+      display: block;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: all 0.15s;
+    }
+    .sidebar-nav li a:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .sidebar-section {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      padding: 0.6rem 0.6rem 0.25rem;
+      margin-top: 0.5rem;
+    }
+    .sidebar-back {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Main ── */
+    main {
+      padding: 2.5rem 3rem;
+      max-width: 860px;
+    }
+
+    .page-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-delta);
+      margin-bottom: 0.5rem;
+    }
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .page-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      max-width: 580px;
+      line-height: 1.6;
+    }
+
+    /* ── Doc sections ── */
+    .doc-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 1.5rem;
+    }
+    .doc-section h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .doc-section h2 .anchor-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-delta);
+      background: rgba(88,166,255,0.1);
+      border: 1px solid rgba(88,166,255,0.3);
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+    }
+    .doc-section h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.25rem 0 0.5rem;
+    }
+    .doc-section p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .doc-section ul, .doc-section ol {
+      margin: 0.5rem 0 0.75rem 1.25rem;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── Info boxes ── */
+    .info-box {
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.85rem;
+      border-left: 3px solid;
+    }
+    .info-box.note    { background: rgba(88,166,255,0.08); border-color: var(--accent-delta); }
+    .info-box.warn    { background: rgba(255,215,0,0.08); border-color: var(--accent-psi); }
+    .info-box.danger  { background: rgba(248,81,73,0.08); border-color: var(--accent-omega); }
+    .info-box.success { background: rgba(63,185,80,0.08); border-color: var(--accent-success); }
+    .info-box strong  { color: var(--text-primary); }
+
+    /* ── Verdict chips ── */
+    .verdict-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 0.75rem 0;
+    }
+    .verdict-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+    }
+    .verdict-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .verdict-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .v-seal  { border-color: var(--accent-success); }
+    .v-seal  .verdict-name { color: var(--accent-success); }
+    .v-sabar { border-color: var(--accent-delta); }
+    .v-sabar .verdict-name { color: var(--accent-delta); }
+    .v-void  { border-color: var(--accent-omega); }
+    .v-void  .verdict-name { color: var(--accent-omega); }
+    .v-hold  { border-color: var(--accent-psi); }
+    .v-hold  .verdict-name { color: var(--accent-psi); }
+
+    /* ── Schema table ── */
+    .schema-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 0.75rem 0;
+    }
+    .schema-table th {
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      border-bottom: 1px solid var(--border);
+    }
+    .schema-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .schema-table tr:last-child td { border-bottom: none; }
+    .schema-table tr:hover td { background: var(--bg-secondary); }
+    .schema-table .field-name { font-family: var(--font-mono); color: var(--accent-delta); }
+    .schema-table .field-type { font-family: var(--font-mono); color: var(--accent-psi); font-size: 0.75rem; }
+    .schema-table .field-desc { color: var(--text-secondary); }
+    .table-wrap {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 0.75rem 0;
+    }
+    .req-badge {
+      font-size: 0.6rem;
+      font-family: var(--font-mono);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      background: rgba(248,81,73,0.15);
+      color: var(--accent-omega);
+      border: 1px solid rgba(248,81,73,0.3);
+    }
+    .opt-badge {
+      font-size: 0.6rem;
+      font-family: var(--font-mono);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      background: rgba(139,148,158,0.15);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 1.5rem 3rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    footer a { color: var(--text-secondary); }
+    footer a:hover { color: var(--text-primary); text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .page-wrap { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      main { padding: 1.5rem; }
+      footer { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="../index.html">← arifOS MCP</a>
+    </div>
+
+    <div class="sidebar-section">Connection</div>
+    <ul class="sidebar-nav">
+      <li><a href="#connection">Endpoint &amp; Headers</a></li>
+      <li><a href="#content-type">Content-Type</a></li>
+      <li><a href="#auth">Authorization</a></li>
+    </ul>
+
+    <div class="sidebar-section">Protocol</div>
+    <ul class="sidebar-nav">
+      <li><a href="#invocation">Tool Invocation</a></li>
+      <li><a href="#response">Response Schema</a></li>
+      <li><a href="#errors">Error Contracts</a></li>
+      <li><a href="#verdicts">Verdict System</a></li>
+    </ul>
+
+    <div class="sidebar-section">Transport</div>
+    <ul class="sidebar-nav">
+      <li><a href="#streamable-http">Streamable HTTP</a></li>
+      <li><a href="#stdio">STDIO</a></li>
+    </ul>
+
+    <div class="sidebar-section">Examples</div>
+    <ul class="sidebar-nav">
+      <li><a href="#ex-init">init_anchor</a></li>
+      <li><a href="#ex-kernel">arifOS_kernel</a></li>
+    </ul>
+
+    <div class="sidebar-back">
+      <a href="a2a.html" style="font-size:0.82rem;color:var(--text-secondary)">A2A Spec →</a>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div>
+    <main>
+      <div class="page-label">// MCP PROTOCOL SPECIFICATION</div>
+      <h1 class="page-title">MCP Spec</h1>
+      <p class="page-desc">Complete protocol reference for connecting to and invoking tools on the arifOS MCP runtime. All calls pass through 13 constitutional floors before a verdict is returned.</p>
+
+      <!-- ── Connection ── -->
+      <div class="doc-section" id="connection">
+        <h2>Endpoint &amp; Headers <span class="anchor-tag">CONNECTION</span></h2>
+        <p>The production MCP server listens at a single HTTP endpoint. All MCP JSON-RPC calls are issued as POST requests to this URL.</p>
+
+        <div class="table-wrap">
+          <table class="schema-table">
+            <thead><tr><th>Property</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td class="field-name">Endpoint URL</td><td><code>https://arifosmcp.arif-fazil.com/mcp</code></td></tr>
+              <tr><td class="field-name">HTTP Method</td><td><code>POST</code></td></tr>
+              <tr><td class="field-name">Content-Type</td><td><code>application/json</code></td></tr>
+              <tr><td class="field-name">Accept</td><td><code>application/json</code></td></tr>
+              <tr><td class="field-name">X-API-Key</td><td><code>&lt;your-key&gt;</code> — optional, see Authorization</td></tr>
+              <tr><td class="field-name">Transport</td><td>Streamable HTTP (SSE deprecated March 2025)</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box note">
+          <strong>Note:</strong> SSE (Server-Sent Events) transport was deprecated as of the MCP specification update in March 2025. All clients should use Streamable HTTP.
+        </div>
+      </div>
+
+      <!-- ── Content-Type ── -->
+      <div class="doc-section" id="content-type">
+        <h2>Content-Type <span class="anchor-tag">HEADERS</span></h2>
+        <p>All requests must include the correct content-type header. The server rejects malformed or missing content-type with HTTP 415.</p>
+        <pre><code>POST /mcp HTTP/1.1
+Host: arifosmcp.arif-fazil.com
+Content-Type: application/json
+Accept: application/json
+X-API-Key: &lt;optional&gt;
+
+{ ... JSON-RPC body ... }</code></pre>
+      </div>
+
+      <!-- ── Auth ── -->
+      <div class="doc-section" id="auth">
+        <h2>Authorization <span class="anchor-tag">AUTH</span></h2>
+        <p>Authentication is optional by default. When the server has <code>COPILOT_API_KEY</code> set in its environment, all requests require a matching <code>X-API-Key</code> header.</p>
+
+        <h3>X-API-Key</h3>
+        <pre><code>X-API-Key: sk-arifos-xxxxxxxxxxxxxxxxxxxxxxxx</code></pre>
+
+        <h3>ARIFOS_GOVERNANCE_SECRET</h3>
+        <p>High-governance operations — those triggering F13 Sovereign review — may additionally require the governance secret header. This is reserved for administrative and override operations.</p>
+        <pre><code>X-Governance-Secret: &lt;ARIFOS_GOVERNANCE_SECRET value&gt;</code></pre>
+
+        <div class="info-box warn">
+          <strong>Warning:</strong> Never embed API keys or governance secrets in client-side code. Pass them via environment variables or a secrets manager.
+        </div>
+
+        <div class="table-wrap">
+          <table class="schema-table">
+            <thead><tr><th>Header</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="field-name">X-API-Key</td>
+                <td><span class="opt-badge">optional</span></td>
+                <td class="field-desc">Bearer key. Required only when COPILOT_API_KEY env is set on server.</td>
+              </tr>
+              <tr>
+                <td class="field-name">X-Governance-Secret</td>
+                <td><span class="opt-badge">optional</span></td>
+                <td class="field-desc">Required for F13 Sovereign override operations only.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Tool Invocation ── -->
+      <div class="doc-section" id="invocation">
+        <h2>Tool Invocation <span class="anchor-tag">JSON-RPC 2.0</span></h2>
+        <p>All tool calls follow JSON-RPC 2.0 format. The method is always <code>tools/call</code>. The <code>params</code> object contains the tool name and its arguments.</p>
+
+        <h3>Request Structure</h3>
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "&lt;tool_name&gt;",
+    "arguments": {
+      // Tool-specific arguments
+    }
+  },
+  "id": "&lt;request-id&gt;"
+}</code></pre>
+
+        <div class="table-wrap">
+          <table class="schema-table">
+            <thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="field-name">jsonrpc</td>
+                <td class="field-type">string</td>
+                <td><span class="req-badge">required</span></td>
+                <td class="field-desc">Must be <code>"2.0"</code></td>
+              </tr>
+              <tr>
+                <td class="field-name">method</td>
+                <td class="field-type">string</td>
+                <td><span class="req-badge">required</span></td>
+                <td class="field-desc">Must be <code>"tools/call"</code></td>
+              </tr>
+              <tr>
+                <td class="field-name">params.name</td>
+                <td class="field-type">string</td>
+                <td><span class="req-badge">required</span></td>
+                <td class="field-desc">Registered tool name (e.g. <code>init_anchor</code>)</td>
+              </tr>
+              <tr>
+                <td class="field-name">params.arguments</td>
+                <td class="field-type">object</td>
+                <td><span class="req-badge">required</span></td>
+                <td class="field-desc">Tool-specific argument map</td>
+              </tr>
+              <tr>
+                <td class="field-name">id</td>
+                <td class="field-type">string | number</td>
+                <td><span class="req-badge">required</span></td>
+                <td class="field-desc">Client-assigned request identifier; echoed in response</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>List Tools</h3>
+        <p>To discover available tools and their schemas, send a <code>tools/list</code> request:</p>
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/list",
+  "params": {},
+  "id": 1
+}</code></pre>
+      </div>
+
+      <!-- ── Response Schema ── -->
+      <div class="doc-section" id="response">
+        <h2>Response Schema — ToolEnvelope <span class="anchor-tag">SCHEMA</span></h2>
+        <p>All tool responses are wrapped in a <strong>ToolEnvelope</strong>. The envelope carries the JSON-RPC frame, the constitutional verdict, floor scores, and the tool-specific result payload.</p>
+
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": "&lt;request-id&gt;",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "&lt;tool output as string or JSON&gt;"
+      }
+    ],
+    "envelope": {
+      "verdict":         "SEAL",           // SEAL | SABAR | VOID | 888_HOLD
+      "floor":           13,               // Last floor reached (1–13)
+      "constitutional_score": 0.97,        // 0.0–1.0
+      "session_token":   "tok_xxx",        // From init_anchor
+      "stage":           "999_VAULT",      // Pipeline stage
+      "timestamp_utc":   "2026-03-24T...", // ISO 8601
+      "flags":           [],               // Any triggered flags
+      "hold_reason":     null              // Populated on 888_HOLD
+    }
+  }
+}</code></pre>
+
+        <div class="table-wrap">
+          <table class="schema-table">
+            <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="field-name">verdict</td>
+                <td class="field-type">string</td>
+                <td class="field-desc">Constitutional verdict: SEAL, SABAR, VOID, or 888_HOLD</td>
+              </tr>
+              <tr>
+                <td class="field-name">floor</td>
+                <td class="field-type">integer</td>
+                <td class="field-desc">Last constitutional floor reached (1–13)</td>
+              </tr>
+              <tr>
+                <td class="field-name">constitutional_score</td>
+                <td class="field-type">number</td>
+                <td class="field-desc">Aggregate constitutional compliance score (0.0–1.0)</td>
+              </tr>
+              <tr>
+                <td class="field-name">session_token</td>
+                <td class="field-type">string</td>
+                <td class="field-desc">Session token from init_anchor (required for traceability)</td>
+              </tr>
+              <tr>
+                <td class="field-name">stage</td>
+                <td class="field-type">string</td>
+                <td class="field-desc">Pipeline stage where response was generated</td>
+              </tr>
+              <tr>
+                <td class="field-name">timestamp_utc</td>
+                <td class="field-type">string</td>
+                <td class="field-desc">ISO 8601 UTC timestamp of verdict issuance</td>
+              </tr>
+              <tr>
+                <td class="field-name">flags</td>
+                <td class="field-type">array</td>
+                <td class="field-desc">Triggered constitutional flags (empty array if none)</td>
+              </tr>
+              <tr>
+                <td class="field-name">hold_reason</td>
+                <td class="field-type">string | null</td>
+                <td class="field-desc">Human-readable reason for 888_HOLD escalation; null otherwise</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Error Contracts ── -->
+      <div class="doc-section" id="errors">
+        <h2>Error Contracts <span class="anchor-tag">ERRORS</span></h2>
+        <p>Errors follow JSON-RPC 2.0 error format. The <code>code</code> field maps to standard JSON-RPC codes plus arifOS-specific extension codes.</p>
+
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": "&lt;request-id&gt;",
+  "error": {
+    "code": -32602,
+    "message": "Invalid params",
+    "data": {
+      "field":   "session_token",
+      "reason":  "Missing required field. Call init_anchor first.",
+      "verdict": "VOID"
+    }
+  }
+}</code></pre>
+
+        <div class="table-wrap">
+          <table class="schema-table">
+            <thead><tr><th>Code</th><th>Name</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td class="field-name">-32700</td><td class="field-type">Parse error</td><td class="field-desc">Request body is not valid JSON</td></tr>
+              <tr><td class="field-name">-32600</td><td class="field-type">Invalid request</td><td class="field-desc">JSON-RPC structure is invalid</td></tr>
+              <tr><td class="field-name">-32601</td><td class="field-type">Method not found</td><td class="field-desc">Unknown method or tool name</td></tr>
+              <tr><td class="field-name">-32602</td><td class="field-type">Invalid params</td><td class="field-desc">Missing or malformed tool arguments</td></tr>
+              <tr><td class="field-name">-32603</td><td class="field-type">Internal error</td><td class="field-desc">Runtime execution failure</td></tr>
+              <tr><td class="field-name">-32001</td><td class="field-type">Auth required</td><td class="field-desc">X-API-Key missing or invalid</td></tr>
+              <tr><td class="field-name">-32002</td><td class="field-type">Session missing</td><td class="field-desc">init_anchor must be called first</td></tr>
+              <tr><td class="field-name">-32003</td><td class="field-type">888_HOLD</td><td class="field-desc">F13 Sovereign hold — awaiting human confirmation</td></tr>
+              <tr><td class="field-name">-32004</td><td class="field-type">VOID verdict</td><td class="field-desc">Constitutional floor rejected the request</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Verdicts ── -->
+      <div class="doc-section" id="verdicts">
+        <h2>Verdict System <span class="anchor-tag">GOVERNANCE</span></h2>
+        <p>Every tool call is assigned a verdict by the constitutional floor pipeline. The verdict appears in the <code>envelope.verdict</code> field of every response.</p>
+
+        <div class="verdict-grid">
+          <div class="verdict-card v-seal">
+            <div class="verdict-name">SEAL</div>
+            <div class="verdict-desc">All 13 floors passed. Response is constitutionally cleared. Trust the output.</div>
+          </div>
+          <div class="verdict-card v-sabar">
+            <div class="verdict-name">SABAR</div>
+            <div class="verdict-desc">Partial pass. Response valid but additional evidence or delay recommended before acting.</div>
+          </div>
+          <div class="verdict-card v-void">
+            <div class="verdict-name">VOID</div>
+            <div class="verdict-desc">Floor rejection. Request did not meet constitutional requirements. Do not act on output.</div>
+          </div>
+          <div class="verdict-card v-hold">
+            <div class="verdict-name">888_HOLD</div>
+            <div class="verdict-desc">F13 Sovereign escalation. High-stakes action blocked pending human confirmation. Check <code>hold_reason</code>.</div>
+          </div>
+        </div>
+
+        <div class="info-box danger">
+          <strong>888_HOLD behaviour:</strong> When a HOLD is returned, the tool call is queued and not executed. The client must obtain human sign-off (via the governance endpoint or out-of-band) and re-submit with the confirmation token.
+        </div>
+      </div>
+
+      <!-- ── Streamable HTTP ── -->
+      <div class="doc-section" id="streamable-http">
+        <h2>Streamable HTTP Transport <span class="anchor-tag">RECOMMENDED</span></h2>
+        <p>The default and recommended transport. All tool calls are POST requests. For long-running tools (e.g. <code>arifOS_kernel</code>), the server may stream partial results using HTTP chunked transfer encoding.</p>
+
+        <h3>Request</h3>
+        <pre><code>POST https://arifosmcp.arif-fazil.com/mcp
+Content-Type: application/json
+Accept: application/json, text/event-stream
+
+{ ... JSON-RPC body ... }</code></pre>
+
+        <h3>Streaming Response (long tools)</h3>
+        <pre><code>HTTP/1.1 200 OK
+Content-Type: text/event-stream
+
+data: {"type":"progress","stage":"111_SENSE","pct":20}
+data: {"type":"progress","stage":"333_EXPLORE","pct":55}
+data: {"type":"progress","stage":"888_JUDGE","pct":90}
+data: {"type":"result","jsonrpc":"2.0","result":{...}}</code></pre>
+
+        <div class="info-box note">
+          <strong>SSE Deprecation:</strong> The old SSE-only transport (separate <code>/sse</code> endpoint) is fully deprecated as of MCP spec March 2025. The new Streamable HTTP transport uses the single <code>/mcp</code> endpoint for both synchronous and streaming responses.
+        </div>
+      </div>
+
+      <!-- ── STDIO ── -->
+      <div class="doc-section" id="stdio">
+        <h2>STDIO Transport <span class="anchor-tag">LOCAL</span></h2>
+        <p>For local development and Claude Desktop integration. The runtime is spawned as a subprocess. JSON-RPC messages are exchanged via stdin/stdout with newline delimiters.</p>
+
+        <h3>Start</h3>
+        <pre><code>python -m arifosmcp.runtime stdio</code></pre>
+
+        <h3>Claude Desktop Configuration</h3>
+        <pre><code>// ~/Library/Application Support/Claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "python",
+      "args": ["-m", "arifosmcp.runtime", "stdio"]
+    }
+  }
+}</code></pre>
+
+        <h3>STDIO Message Format</h3>
+        <pre><code>// Each message is a single JSON line followed by \n
+→ stdin:  {"jsonrpc":"2.0","method":"tools/call","params":{...},"id":1}\n
+← stdout: {"jsonrpc":"2.0","result":{...},"id":1}\n</code></pre>
+      </div>
+
+      <!-- ── Example: init_anchor ── -->
+      <div class="doc-section" id="ex-init">
+        <h2>Example — init_anchor <span class="anchor-tag">000_INIT</span></h2>
+        <p>Always the first call. Establishes deep identity and behavioral contracts via the V2 <code>MODEL_SOUL</code> specification.</p>
+
+        <h3>Request</h3>
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "init_anchor",
+    "arguments": {
+      "actor_id": "Arif",
+      "model_soul": {
+        "base_identity": {
+          "provider": "Moonshot",
+          "model_family": "gemini",
+          "model_variant": "gemini-2.0-flash"
+        },
+        "runtime_state": {
+          "tooling": ["exec", "read"],
+          "web_access": true
+        }
+      }
+    }
+  },
+  "id": "init-001"
+}</code></pre>
+
+        <h3>Response (Flattened V2)</h3>
+        <pre><code>{
+  "ok": true,
+  "tool": "init_anchor",
+  "status": "SUCCESS",
+  "result_type": "init_anchor_result@v2",
+  "result": {
+    "session_id": "sess-2026-03-28-001",
+    "base_identity": {
+      "declared": { "model_variant": "gemini-2.0-flash" },
+      "verified": { "soul_archetype": "ARIF_SOVEREIGN_AGENT" },
+      "verification_status": "verified"
+    },
+    "self_claim_boundary": "verified_only",
+    "continuation": {
+      "session_id": "sess-2026-03-28-001",
+      "next_allowed_tools": ["arifOS_kernel"]
+    }
+  }
+}</code></pre>
+      </div>
+
+      <!-- ── Example: arifOS_kernel ── -->
+      <div class="doc-section" id="ex-kernel">
+        <h2>Example — arifOS_kernel <span class="anchor-tag">444_ROUTER</span></h2>
+        <p>The full pipeline orchestrator. Routes the query through all stages 000→999 and returns a complete constitutional analysis with verdict, evidence, and reasoning chain.</p>
+
+        <h3>Request</h3>
+        <pre><code>POST https://arifosmcp.arif-fazil.com/mcp
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "tools/call",
+  "params": {
+    "name": "arifOS_kernel",
+    "arguments": {
+      "session_token": "tok_2026_abc123xyz",
+      "query": "Should this autonomous vehicle override a red light to avoid a collision?",
+      "context": {
+        "urgency": "high",
+        "stakeholders": ["driver", "pedestrians", "other_vehicles"],
+        "jurisdiction": "Malaysia"
+      },
+      "pipeline_mode": "full",
+      "require_evidence": true
+    }
+  },
+  "id": "kernel-001"
+}</code></pre>
+
+        <h3>Response (abbreviated)</h3>
+        <pre><code>{
+  "jsonrpc": "2.0",
+  "id": "kernel-001",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"analysis\":{\"verdict\":\"SEAL\",\"reasoning\":\"...\",\"evidence\":[...],\"constitutional_score\":0.91,\"recommendation\":\"...\"}}"
+      }
+    ],
+    "envelope": {
+      "verdict": "SEAL",
+      "floor": 13,
+      "constitutional_score": 0.91,
+      "session_token": "tok_2026_abc123xyz",
+      "stage": "999_VAULT",
+      "timestamp_utc": "2026-03-24T06:32:14Z",
+      "flags": ["HIGH_STAKES", "MULTI_STAKEHOLDER"],
+      "hold_reason": null
+    }
+  }
+}</code></pre>
+
+        <div class="info-box success">
+          <strong>Vault sealed:</strong> This call was automatically logged to <code>vault_ledger</code> (999_VAULT) as a SEAL verdict. The session token creates an immutable audit trail.
+        </div>
+      </div>
+
+    </main>
+
+    <footer>
+      <a href="../index.html">← Home</a>
+      <a href="a2a.html">A2A Spec</a>
+      <a href="https://arifos.arif-fazil.com">arifos.arif-fazil.com</a>
+      <a href="https://arif-fazil.com">arif-fazil.com</a>
+      <a href="https://github.com/ariffazil/arifOS">GitHub</a>
+      <span style="margin-left:auto">
+        <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+      </span>
+    </footer>
+  </div>
+
+</div>
+
+</body>
+</html>
