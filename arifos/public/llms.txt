@@ -1,4 +1,4 @@
-# arifOS - Constitutional Kernel for AI Agents
+# llms.txt - arifOS Machine Discovery
 
 ## Overview
 
@@ -19,24 +19,3 @@ https://github.com/ariffazil/arifOS
 - arifOS Kernel: https://github.com/ariffazil/arifOS
 - MCP Server: https://arifosmcp.arif-fazil.com
 - Documentation: https://arifos.arif-fazil.com
-- Ring 1 (Sovereign): https://arif-fazil.com
-- Ring 2 (OS): https://arifos.arif-fazil.com
-- Ring 3 (AAA): https://aaa.arif-fazil.com
-
-## Constitutional Floors
-
-The 13 floors (F1-F13) implement truth-power coupling:
-- F1: AMANAH — Reversibility
-- F2: TRUTH — Evidence required
-- F3: TRI_WITNESS — W³ ≥ 0.95
-- F4: CLARITY — Entropy ↓
-- F0: The Scar — Authority must contract when uncertainty rises
-
-## MCP Tools
-
-All tools run through the MCP server with constitutional governance:
-- File system operations
-- Git operations
-- Code execution
-- Web search and fetch
-- Deployment and infrastructure
