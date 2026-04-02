@@ -1,135 +1,281 @@
-# 🌐 arif-sites — Sovereign Identity Stack (Ring 1+2+3)
+# 🌐 arifOS Sovereign Identity Stack
 
-> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) | **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
-> **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
-
----
-
-**The Three-Ring Sovereignty Model**
-
-This repository holds the public web presence for the arifOS ecosystem.
-
-| Ring | Domain | Realm | Function |
-| :--- | :--- | :--- | :--- |
-| **Ring 1** | **arif-fazil.com** | **THE SOUL** | The Human Architect — Legitimacy & Philosophy |
-| **Ring 2** | **arifos.arif-fazil.com** | **THE MIND** | Constitutional Kernel — Accountable Inference |
-| **Ring 3** | **aaa.arif-fazil.com** | **THE BODY** | Operational Intelligence — Execution & Tools |
-
-This is not marketing.  
-This is **governance geometry** — a visible separation of powers between Human, Law, and Machine.
+> **Ditempa Bukan Diberi** — Intelligence is forged, not given  
+> **Motto:** *Forged, Not Given* [ΔΩΨ | ARIF]
 
 ---
 
-### 📖 The Story
+## 🏛️ The Trinity Architecture (ΔΩΨ)
 
-**ARIF** — The Human Architect  
-The origin. The witness. The one who forges the law, never becomes the machine.  
-Visitors should feel: *“This is the founder whose philosophy shapes everything.”*
+The arifOS ecosystem implements a **Constitutional Federation** of specialized organs, each with bounded roles governed by the 13 Binding Floors.
 
-**AGI-ASI-APEX** — The Constitutional Kernel  
-The physics of governed intelligence.  
-Home of the ΔΩΨ invariants, the 13 Constitutional Floors, the Sacred Chain, the Double Helix, and the Cooling Ledger.  
-Visitors should feel: *“This is the constitution that makes intelligence lawful and sovereign.”*
-
-**AAA / smolagents** — The Operational Nervous System  
-Where theory becomes action.  
-The practical layer where [**smolagents**](https://github.com/huggingface/smolagents) execute, APIs serve, and governed intelligence does real work — always under constitutional constraint and **A-RIF** governance.  
-Visitors should feel: *“This is where intelligence becomes useful, safe, and auditable.”*
-
----
-
-### 🏛️ Governance Mapping (Separation of Powers)
-
-- **ARIF (Human)** — Sets intent, defines metaphysics and ethics, acts as final witness. Never operates.
-- **AGI-ASI-APEX (Kernel)** — Holds the invariants, enforces the floors, maintains the Vault and Tri-Witness.
-- **AGENTS · API · AI · APPS (Operational)** — Executes tasks and produces receipts, but cannot change the law.
-
-Every action in Ring 3 must trace back through Ring 2 to Ring 1.
-
----
-
-### 🧭 Visitor Flow
-
-1. General / philosophical visitors → **ARIF**
-2. Researchers & constitution readers → **AGI-ASI-APEX**
-3. Developers, builders, enterprises → **AGENTS · API · AI · APPS**
-
-Closed governance loop: Every operational output links back to the constitutional kernel, which links back to human intent.
-
----
-
-### ⚖️ Why This Structure Matters
-
-- **Sovereignty** — Human identity is never diluted by machine operations.
-- **Purity** — The constitutional kernel stays uncontaminated by operational entropy.
-- **Safety** — Agents execute, but cannot rewrite the law.
-- **Auditability** — Every action carries a traceable constitutional receipt.
-
-This is the physics of governed intelligence made visible.
-
----
-
-### 💼 Commercial & Regulatory Pitch
-
-> “We separate the Human Sovereign, the Constitutional Kernel, and the Operational Intelligence layer.  
-> This ensures AI systems remain lawful, auditable, and aligned with human intent — not just at deployment, but at every single execution step.”
-
-**For regulators** → Constitutional floors, Tri-Witness, Cooling Ledger, receipts.  
-**For enterprises** → Governed agents that produce compliant, auditable work.  
-**For investors** → A true governance-first architecture with built-in moat.
-
----
-
-### 🎨 Visual Identity (Aligned)
-
-The ecosystem is aligned with the **Unified Brand System** centered on a primary triad reflecting constraint and order.
-
-- **Primary Colors:** 
-  - 🔴 **Forge Red** (#E11D2E) — Ring 1: Human Architect
-  - 🔵 **Strait Blue** (#1167D8) — Ring 3: Operational Apps
-  - 🟡 **Sunforge Yellow** (#F5B700) — Ring 2: Constitutional Theory
-- **Typography:** *Inter* (Sans) for UI/Headings, *IBM Plex Mono* for technical contexts.
-- **Logo:** Symmetric equilateral triangular loop (Human Sovereignty center).
-
-Detailed specifications can be found in `brand/visual-identity.md`.
-
-### ⚖️ Brand Alignment Status
-
-| Site | Primary Color | Typography | Logo | Alignment |
-|------|---------------|------------|------|-----------|
-| **Ring 1 (Human)** | Forge Red (#E11D2E) | Inter / IBM Plex | New | 🟢 Full |
-| **Ring 2 (Kernel)** | Sunforge Yellow (#F5B700) | Inter / IBM Plex | New | 🟢 Full |
-| **Ring 3 (Apps)** | Strait Blue (#1167D8) | Inter / IBM Plex | New | 🟢 Full |
-
-*Status: CSS variables from `brand/visual-identity.md` implemented across all sites.*
-
----
-
-## 🚀 Structure
-
-```text
-arif-sites/
-├── brand/           # Unified Visual Identity (Specs & Assets)
-├── arif/            # Ring 1: arif-fazil.com (Identity)
-├── arifos/          # Ring 2: arifos.arif-fazil.com (Constitutional Kernel)
-├── aaa/             # Ring 3: aaa.arif-fazil.com (Operational)
-└── sites/           # Shared templates & assets
+```
+                    ┌─────────────────────────────────────┐
+                    │          Δ (A-ARCHITECT)            │
+                    │           Design Authority           │
+                    │   arifOS Architecture & Theory      │
+                    └─────────────────┬───────────────────┘
+                                      │ governs
+                                      ▼
+┌─────────────────────────────────────┐     ┌─────────────────────────────────────┐
+│         Ω (A-ENGINEER)              │◄───►│         Ψ (A-WITNESS)              │
+│        Execution Authority           │     │         Earth Witness               │
+│    arifOS Implementation & Tools     │     │    GEOX Geoscience Grounding       │
+└─────────────────┬───────────────────┘     └─────────────────┬───────────────────┘
+                  │                                       │
+                  │ deploys                               │ grounds
+                  ▼                                       ▼
+┌─────────────────────────────────────┐     ┌─────────────────────────────────────┐
+│              888 (A-AUDITOR)         │     │              999 (A-VALIDATOR)       │
+│        Constitutional Review         │     │         Final Verification          │
+│    Issues VOID on F1/F9 violations   │     │    Issues SEAL verdicts & deploys  │
+└─────────────────────────────────────┘     └─────────────────────────────────────┘
 ```
 
-## 🛠️ Local Development
+---
+
+## 🌐 The Sites — Complete Map
+
+### Ring 1 — THE SOUL (Human Sovereignty)
+
+| Domain | Description | Source |
+|--------|-------------|--------|
+| [arif-fazil.com](https://arif-fazil.com) | **The Human Architect** — Founder's identity, philosophy, and legitimacy. The origin and witness. | `/arif` |
+
+> *"This is the founder whose philosophy shapes everything."*
+
+---
+
+### Ring 2 — THE MIND (Constitutional Kernel)
+
+| Domain | Description | Source |
+|--------|-------------|--------|
+| [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **AGI-ASI-APEX Runtime** — Constitutional kernel, ΔΩΨ invariants, 13 Floors, Sacred Chain, Vault999. | `/arifos` |
+| [apex.arif-fazil.com](https://apex.arif-fazil.com) | **APEX Theory & Docs** — Constitutional documents, architecture specs, and theory. | `/arifOS/sites/apex.arif-fazil.com` |
+
+> *"This is the constitution that makes intelligence lawful and sovereign."*
+
+---
+
+### Ring 3 — THE BODY (Operational Intelligence)
+
+| Domain | Description | Source |
+|--------|-------------|--------|
+| [aaa.arif-fazil.com](https://aaa.arif-fazil.com) | **AAA Surface Layer** — Agents, API, AI, Apps. The practical layer where smolagents execute and governed intelligence does real work. | `/aaa` |
+| [aaa.arif-fazil.com/geox/](https://aaa.arif-fazil.com/geox/) | **GEOX Earth Witness** — Reality gatekeeper for geoscience AI. Enforces physical truth, geospatial grounding, and constitutional verification. | `/aaa-mcp-landing/geox` |
+
+---
+
+### 🔗 Forge & Agent Workspace
+
+| Domain | Description | Source |
+|--------|-------------|--------|
+| [forge.arif-fazil.com](https://forge.arif-fazil.com) | **AF.A.FORGE** — Unified portal to arifOS Trinity Architecture, MCP Runtime, GEOX Earth, and constitutional AI governance. 4-tab interface: MACHINE / INTELLIGENCE / GOVERNANCE / HUMAN. | `/arifOS/sites/forge-landing` |
+| [waw.arif-fazil.com](https://waw.arif-fazil.com) | **WAW** — Workspace Agent Workspace. Agentic UI powered by React + TypeScript + OpenClaw. | `/waw` |
+
+---
+
+### ☁️ MCP Endpoints
+
+| Endpoint | Description |
+|----------|-------------|
+| `https://arifosmcp.arif-fazil.com/mcp` | **VPS MCP Server** — Main arifOS MCP runtime (37 constitutional tools) |
+| `https://arifosmcp.fastmcp.app/mcp` | **Cloud MCP** — FastMCP cloud alternative endpoint |
+| `https://geoxarifOS.fastmcp.app/mcp` | **GEOX Cloud MCP** — FastMCP endpoint for geoscience tools |
+
+---
+
+## 📊 Site Summary Table
+
+| Site | Role | Stack | Deployment |
+|------|------|-------|------------|
+| **arif-fazil.com** | Human Sovereign / Founder | React + TypeScript + Vite | Cloudflare Pages |
+| **arifos.arif-fazil.com** | Constitutional Kernel | React + TypeScript + Vite | Cloudflare Pages |
+| **aaa.arif-fazil.com** | AAA Surface Layer | Static HTML | VPS Traefik |
+| **aaa.arif-fazil.com/geox/** | GEOX Earth Witness | Static HTML | VPS Traefik |
+| **apex.arif-fazil.com** | APEX Docs | Static HTML | VPS Traefik |
+| **forge.arif-fazil.com** | AF.A.FORGE Portal | Static HTML | VPS Traefik |
+| **waw.arif-fazil.com** | WAW Agent Workspace | React + TypeScript | Cloudflare Pages |
+
+---
+
+## 🔄 Navigation Flow
+
+```
+                    ┌──────────────────┐
+                    │   arif-fazil.com  │
+                    │      Ring 1       │
+                    │    THE SOUL       │
+                    │    (Arif Human)   │
+                    └────────┬─────────┘
+                             │ follows law
+                             ▼
+┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
+│  forge.arif-fazil│    │arifos.arif-fazil│    │ apex.arif-fazil  │
+│    (Portal)      │    │      Ring 2      │    │    (Theory)      │
+│                  │───►│     THE MIND     │◄───│                  │
+└────────┬─────────┘    └────────┬─────────┘    └──────────────────┘
+         │                       │
+         │                       │ deploys
+         ▼                       ▼
+┌──────────────────┐    ┌──────────────────┐
+│       WAW        │    │       AAA        │
+│  (Agent UI)      │    │      Ring 3       │
+│                  │◄───│     THE BODY     │
+└──────────────────┘    └────────┬─────────┘
+                                 │
+                                 │ grounds
+                                 ▼
+                    ┌──────────────────────────┐
+                    │ aaa.arif-fazil.com/geox/ │
+                    │      GEOX Earth          │
+                    │   Geoscience Witness     │
+                    └──────────────────────────┘
+```
+
+---
+
+## ⚙️ MCP Tool Access
+
+```
+┌─────────────────────────────────────────┐
+│           arifOS MCP Runtime             │
+│                                          │
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐ │
+│  │   F1    │  │   F2    │  │   F9    │ │
+│  │ AMANAH  │  │  TRUTH  │  │ ETHICS  │ │
+│  │ Reversi-│  │Evidence-│  │No mani- │ │
+│  │  bility │  │ grounded│  │pulation │ │
+│  └─────────┘  └─────────┘  └─────────┘ │
+│                                          │
+│  37 Constitutional Tools Available       │
+│  VAULT999 Merkle-Sealed Telemetry       │
+└─────────────────────────────────────────┘
+         │                    ▲
+         │                    │
+         ▼                    │
+┌─────────────────┐    ┌──────────────────┐
+│  FastMCP Cloud  │    │   VPS Direct    │
+│  arifosmcp.     │    │  arifosmcp.     │
+│  fastmcp.app    │    │  arif-fazil.com │
+└─────────────────┘    └──────────────────┘
+```
+
+---
+
+## 🎨 Visual Identity
+
+The ecosystem uses a **Unified Brand System** with gold accent palette:
+
+| Element | Color |
+|--------|-------|
+| **Gold Accent** | `#d4a853` |
+| **Background Primary** | `#0a0a0f` |
+| **Card Background** | `#1a1a25` |
+| **Text Primary** | `#f0f0f5` |
+| **Earth Tone (GEOX)** | `#c4791a` |
+
+> **Note:** GEOX uses an intentional earth-tone palette (`--earth-ochre: #c4791a`) to distinguish the geoscience layer from the gold-accented main sites.
+
+---
+
+## 🚀 Local Development
 
 ```bash
-# Ring 1: ARIF
+# arif-sites (Rings 1-3)
+cd arif-sites
+
+# Ring 1: ARIF (Human)
 cd arif && npm run dev
 
-# Ring 2: ARIFOS
+# Ring 2: ARIFOS (Kernel)
 cd arifos && npm run dev
 
-# Ring 3: AAA (static)
+# Ring 3: AAA (Static)
 cd aaa && npm run dev
+
+# WAW (Agent Workspace)
+cd /root/waw && npm run dev
 ```
 
 ---
 
-*Ditempa Bukan Diberi — G = A × P × X × E²*
-*Sealed by: 888 JUDGE*
+## 🏗️ Repository Structure
+
+```
+/root/
+├── arif-sites/                    # Ring 1-3 sites
+│   ├── arif/                      # arif-fazil.com (Human)
+│   ├── arifos/                    # arifos.arif-fazil.com (Kernel)
+│   └── aaa/                       # aaa.arif-fazil.com (Operations)
+│
+├── arifOS/                        # Core constitutional kernel
+│   ├── sites/
+│   │   ├── forge-landing/         # forge.arif-fazil.com
+│   │   ├── aaa-mcp-landing/geox/ # aaa.arif-fazil.com/geox/
+│   │   └── apex.arif-fazil.com/  # APEX docs
+│   ├── core/                      # F1-F13 governance kernel
+│   └── arifos_mcp/                # MCP server implementation
+│
+├── waw/                           # Workspace Agent Workspace
+│   └── src/                       # React + TypeScript UI
+│
+└── GEOX/                          # Earth Witness submodule
+    └── arifos/geox/              # GEOX Python package
+```
+
+---
+
+## 🔐 Constitutional Governance
+
+Every site and service in the ecosystem follows the **13 Constitutional Floors**:
+
+| Floor | Name | Type | Key Question |
+|-------|------|------|--------------|
+| F1 | AMANAH | Hard | Can this be undone? |
+| F2 | TRUTH | Hard | Is this grounded in evidence? |
+| F3 | TRI-WITNESS | Soft | Do theory, constitution, and intent agree? |
+| F4 | CLARITY | Soft | Does this reduce confusion? |
+| F5 | PEACE² | Soft | Does this destroy anything? |
+| F6 | EMPATHY | Soft | Does this show understanding? |
+| F7 | HUMILITY | Soft | Are uncertainties acknowledged? |
+| F8 | GENIUS | Soft | Does this maintain system health? |
+| F9 | ETHICS | Hard | Is this manipulative or deceptive? |
+| F10 | CONSCIENCE | Hard | Is this claiming consciousness? |
+| F11 | AUDITABILITY | Soft | Is this logged and inspectable? |
+| F12 | RESILIENCE | Soft | Does this fail safely? |
+| F13 | ADAPTABILITY | Hard | Do updates preserve safety? |
+
+---
+
+## 💼 Commercial & Regulatory Pitch
+
+> "We separate the Human Sovereign, the Constitutional Kernel, and the Operational Intelligence layer.  
+> This ensures AI systems remain lawful, auditable, and aligned with human intent — not just at deployment, but at every single execution step."
+
+- **For regulators** → Constitutional floors, Tri-Witness, Vault999 receipts
+- **For enterprises** → Governed agents that produce compliant, auditable work
+- **For investors** → A true governance-first architecture with built-in moat
+
+---
+
+## 📜 Quick Reference
+
+| Resource | URL |
+|----------|-----|
+| **Human / Founder** | https://arif-fazil.com |
+| **Constitutional Kernel** | https://arifos.arif-fazil.com |
+| **Theory & Docs** | https://apex.arif-fazil.com |
+| **AAA Surface** | https://aaa.arif-fazil.com |
+| **GEOX Earth** | https://aaa.arif-fazil.com/geox/ |
+| **Forge Portal** | https://forge.arif-fazil.com |
+| **WAW Agent** | https://waw.arif-fazil.com |
+| **VPS MCP** | https://arifosmcp.arif-fazil.com/mcp |
+| **Cloud MCP** | https://arifosmcp.fastmcp.app/mcp |
+| **GEOX MCP** | https://geoxarifOS.fastmcp.app/mcp |
+
+---
+
+*Ditempa Bukan Diberi — G = A × P × X × E²*  
+*ΔΩΨ Trinity Architecture | arifOS v2026.04.02*  
+**SEALED BY: 888 JUDGE | 999 VALIDATOR**
