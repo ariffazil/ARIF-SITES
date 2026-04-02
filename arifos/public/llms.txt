@@ -1,0 +1,42 @@
+# arifOS - Constitutional Kernel for AI Agents
+
+## Overview
+
+arifOS is a constitutional kernel for AI agents, implementing a governance framework based on 13 floors of truth and verification.
+
+## Repository
+
+https://github.com/ariffazil/arifOS
+
+## Key Components
+
+- **Kernel**: Constitutional rules (F1-F13)
+- **MCP Server**: Runtime tool execution (arifosmcp.arif-fazil.com)
+- **Sites**: Ring 1-3 (arif-fazil.com, arifos.arif-fazil.com, aaa.arif-fazil.com)
+
+## Endpoints
+
+- arifOS Kernel: https://github.com/ariffazil/arifOS
+- MCP Server: https://arifosmcp.arif-fazil.com
+- Documentation: https://arifos.arif-fazil.com
+- Ring 1 (Sovereign): https://arif-fazil.com
+- Ring 2 (OS): https://arifos.arif-fazil.com
+- Ring 3 (AAA): https://aaa.arif-fazil.com
+
+## Constitutional Floors
+
+The 13 floors (F1-F13) implement truth-power coupling:
+- F1: AMANAH — Reversibility
+- F2: TRUTH — Evidence required
+- F3: TRI_WITNESS — W³ ≥ 0.95
+- F4: CLARITY — Entropy ↓
+- F0: The Scar — Authority must contract when uncertainty rises
+
+## MCP Tools
+
+All tools run through the MCP server with constitutional governance:
+- File system operations
+- Git operations
+- Code execution
+- Web search and fetch
+- Deployment and infrastructure

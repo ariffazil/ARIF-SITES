@@ -1,0 +1,22 @@
+{
+  "name": "arifOS",
+  "description": "Constitutional kernel for AI agents - governance framework with 13 floors of truth and verification",
+  "url": "https://arifos.arif-fazil.com",
+  "repository": "https://github.com/ariffazil/arifOS",
+  "endpoints": {
+    "kernel": "https://github.com/ariffazil/arifOS",
+    "mcp_server": "https://arifosmcp.arif-fazil.com/mcp",
+    "ring1": "https://arif-fazil.com",
+    "ring2": "https://arifos.arif-fazil.com",
+    "ring3": "https://aaa.arif-fazil.com"
+  },
+  "constitutional_floors": [
+    "F1: AMANAH — Reversibility",
+    "F2: TRUTH — Evidence required",
+    "F3: TRI_WITNESS — W³ ≥ 0.95",
+    "F4: CLARITY — Entropy ↓",
+    "F0: The Scar — Authority must contract when uncertainty rises"
+  ],
+  "version": "2026.04.02",
+  "status": "OPERATIONAL"
+}
