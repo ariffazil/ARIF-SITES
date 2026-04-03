@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOX — Earth Witness | arifOS</title>
+    <meta name="description" content="GEOX Earth Witness: Reality gatekeeper for geoscience AI. Enforces physical truth, geospatial grounding, and constitutional verification on every interpretation.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --earth-ochre: #c4791a;
+            --earth-sienna: #a0522d;
+            --earth-gold: #d4a853;
+            --earth-teal: #2d8a8a;
+            --accent-green: #4ade80;
+            --border: #2a2a3a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--earth-ochre), var(--earth-sienna));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .logo-text { color: var(--earth-ochre); }
+        .logo-subtitle { font-size: 12px; color: var(--text-muted); font-weight: 500; letter-spacing: 2px; margin-left: auto; }
+
+        .hero { padding: 60px 0 40px; text-align: center; }
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--earth-ochre), var(--earth-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            font-weight: 300;
+        }
+        .hero p {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .motto {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: var(--earth-teal);
+            letter-spacing: 2px;
+            margin: 24px 0;
+        }
+
+        .stack {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 24px 0;
+            flex-wrap: wrap;
+        }
+
+        .stack-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 20px;
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .stack-item .icon { font-size: 22px; margin-bottom: 6px; }
+        .stack-item .label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .stack-item .desc { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+        .stack-arrow { color: var(--earth-ochre); font-size: 18px; }
+
+        .actions { display: flex; gap: 12px; justify-content: center; margin: 24px 0; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--earth-ochre);
+            color: #0a0a0f;
+        }
+        .btn-primary:hover { background: var(--earth-gold); }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover { border-color: var(--earth-ochre); color: var(--earth-ochre); }
+
+        .why-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px 32px;
+            margin: 20px 0;
+        }
+
+        .why-section h2 {
+            font-size: 16px;
+            color: var(--earth-ochre);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .why-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .why-section strong { color: var(--text-primary); }
+
+        /* APPS GRID */
+        .apps-section { margin: 32px 0; }
+        .apps-section h2 {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .app-card:hover {
+            border-color: var(--earth-ochre);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(196, 121, 26, 0.1);
+        }
+
+        .app-card .app-icon { font-size: 28px; margin-bottom: 10px; }
+        .app-card .app-name { font-size: 14px; font-weight: 600; color: var(--earth-gold); margin-bottom: 4px; }
+        .app-card .app-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5; }
+        .app-card .app-meta { font-size: 10px; color: var(--earth-teal); font-family: 'Courier New', monospace; }
+
+        .endpoint-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 24px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .endpoint-label {
+            font-size: 10px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--earth-teal);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 0;
+            margin-top: 40px;
+        }
+
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover { color: var(--earth-ochre); }
+        footer .sep { color: var(--border); margin: 0 4px; }
+        footer .brand { font-size: 11px; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">🌍</div>
+            <span class="logo-text">GEOX</span>
+            <span class="logo-subtitle">EARTH WITNESS</span>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero">
+        <h1>Why GEOX</h1>
+        <div class="tagline">Geoscience is not a text problem.</div>
+        <p>
+            Plain LLMs generate language.<br>
+            GEOX generates grounded geoscience context.<br>
+            arifOS governs how that context becomes judgment.
+        </p>
+
+        <div class="stack">
+            <div class="stack-item">
+                <div class="icon">🧠</div>
+                <div class="label">LLM</div>
+                <div class="desc">Fluent reasoning surface</div>
+            </div>
+            <div class="stack-arrow">→</div>
+            <div class="stack-item">
+                <div class="icon">🌍</div>
+                <div class="label">GEOX</div>
+                <div class="desc">Earth grounding layer</div>
+            </div>
+            <div class="stack-arrow">→</div>
+            <div class="stack-item">
+                <div class="icon">⚖️</div>
+                <div class="label">arifOS</div>
+                <div class="desc">Constitutional control</div>
+            </div>
+        </div>
+
+        <div class="motto">
+            DITEMPA BUKAN DIBERI — FORGED, NOT GIVEN · 13 CONSTITUTIONAL FLOORS · PHYSICS OVER NARRATIVE
+        </div>
+
+        <div class="actions">
+            <a href="https://aaa.arif-fazil.com/geox/" class="btn btn-primary">
+                🌍 GEOX HUB
+            </a>
+            <a href="https://geoxarifOS.fastmcp.app/mcp" class="btn btn-secondary" target="_blank">
+                MCP ENDPOINT
+            </a>
+            <a href="https://github.com/ariffazil/GEOX" class="btn btn-secondary" target="_blank">
+                GITHUB
+            </a>
+        </div>
+    </section>
+
+    <!-- APPS SECTION -->
+    <section class="apps-section">
+        <h2>Applications</h2>
+        <div class="apps-grid">
+            <a href="/geox/geox_ratlas.html" class="app-card">
+                <div class="app-icon">📐</div>
+                <div class="app-name">RATLAS</div>
+                <div class="app-desc">99-material earth reference atlas. Triple-combo patterns, physics equations, symbolic token vocabulary.</div>
+                <div class="app-meta">99 MATERIALS · 11 FAMILIES</div>
+            </a>
+            <a href="/geox/geox_well_viewer.html" class="app-card">
+                <div class="app-icon">📊</div>
+                <div class="app-name">WELL VIEWER</div>
+                <div class="app-desc">Real Danish North Sea well log viewer. 19 curves, petrophysical decomposition, DAK processing.</div>
+                <div class="app-meta">WELL 15/9-19 · Q15 FIELD</div>
+            </a>
+            <a href="/geox/q15_dak_petro.las" class="app-card">
+                <div class="app-icon">📁</div>
+                <div class="app-name">LAS DATA</div>
+                <div class="app-desc">Processed interpretation LAS file. Download and load in your preferred log interpretation software.</div>
+                <div class="app-meta">LAS 1.7 · 23 CURVES</div>
+            </a>
+            <a href="https://geoxarifOS.fastmcp.app/mcp" class="app-card" target="_blank">
+                <div class="app-icon">⚙️</div>
+                <div class="app-name">MCP SERVER</div>
+                <div class="app-desc">Constitutional AI tool server. 11 governed tools. Streamable HTTP + STDIO. A2A compatible.</div>
+                <div class="app-meta">11 TOOLS · 13 FLOORS</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2>The Short Founder Version</h2>
+        <p><strong>Without GEOX,</strong> AI can sound geological without being geologically anchored. A plain assistant can describe a trap beautifully. GEOX asks whether the trap is actually grounded.</p>
+        <p><strong>Without arifOS,</strong> even grounded tools can still drift into unsafe certainty, premature conclusions, or hidden authority claims.</p>
+        <p><strong>GEOX is the layer that says:</strong></p>
+        <p>— where exactly is this?<br>
+        — at what depth, at what pressure?<br>
+        — what is the evidence, and what is inference?<br>
+        — what are the alternative interpretations?</p>
+        <p><strong>So GEOX is not "AI for geology chat."</strong><br>It is the <em>constitutional enforcement layer</em> between AI reasoning and physical reality.</p>
+    </section>
+
+    <section class="endpoint-card">
+        <div class="endpoint-label">Cloud MCP Endpoint</div>
+        <div class="endpoint-url">https://geoxarifOS.fastmcp.app/mcp</div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div>
+            <a href="https://arif-fazil.com">ARIF — Human</a>
+            <span class="sep">|</span>
+            <a href="https://apex.arif-fazil.com">THEORY — Docs</a>
+            <span class="sep">|</span>
+            <a href="https://arifos.arif-fazil.com">TRINITY — Runtime</a>
+            <span class="sep">|</span>
+            <a href="https://aaa.arif-fazil.com">AAA — Surface</a>
+        </div>
+        <div class="brand">
+            Built by <a href="https://arif-fazil.com">Muhammad Arif bin Fazil</a> |
+            DITEMPA BUKAN DIBERI |
+            <span style="color:var(--earth-ochre)">F1 F2 F4 F7 F9 F13</span>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
