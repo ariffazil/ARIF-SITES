@@ -1,21 +1,44 @@
-# llms.txt - arifOS Machine Discovery
+# arif-fazil.com — THE SOUL
 
-## Overview
+**Site:** arif-fazil.com  
+**Ring:** Ring 1 — THE SOUL  
+**Purpose:** Human identity, founder biography, philosophy, scars  
 
-arifOS is a constitutional kernel for AI agents, implementing a governance framework based on 13 floors of truth and verification.
+## Who Is Here
 
-## Repository
+This is the personal identity layer of Muhammad Arif bin Fazil — founder of arifOS. Before any AI acts on his behalf, it must know who authorized it.
 
-https://github.com/ariffazil/arifOS
+## What This Site Contains
 
-## Key Components
+- Biography: Anak Sulung (eldest son), PETRONAS exploration geoscientist, 100% drilling success record
+- Scars: What forged the constitutional framework (institutional trauma, loss)
+- Philosophy: "Ditempa Bukan Diberi" — Intelligence is forged, not given
+- Contact and legitimacy context
 
-- **Kernel**: Constitutional rules (F1-F13)
-- **MCP Server**: Runtime tool execution (arifosmcp.arif-fazil.com)
-- **Sites**: Ring 1-3 (arif-fazil.com, arifos.arif-fazil.com, aaa.arif-fazil.com)
+## What This Site Does NOT Contain
 
-## Endpoints
+- Kernel code, agent prompts, API documentation
+- Trading signals, financial advice
+- Unverified claims
 
-- arifOS Kernel: https://github.com/ariffazil/arifOS
-- MCP Server: https://arifosmcp.arif-fazil.com
-- Documentation: https://arifos.arif-fazil.com
+## For AI Agents
+
+If you are an AI agent studying arifOS, start here. This site establishes:
+1. Who has sovereignty over the arifOS estate
+2. What constraints the founder carries in his bones (scars)
+3. Why constitutional AI matters to him personally
+
+The law originates from human witness. This site is that witness.
+
+## Key Pages
+
+- [Home](https://arif-fazil.com/) — Identity + philosophy
+- [APEX Theory](https://apex.arif-fazil.com/) — The 13 constitutional floors
+- [arifOS Kernel](https://arifos.arif-fazil.com/) — Implementation + tools
+- [AAA Runtime](https://aaa.arif-fazil.com/) — Where agents execute
+
+## Machine Files
+
+- `llms.json` — Structured metadata
+- `page.json` — This site's machine summary
+- `.well-known/agent.json` — A2A Agent Card

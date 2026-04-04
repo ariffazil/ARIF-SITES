@@ -1,0 +1,26 @@
+{
+  "name": "apex.arif-fazil.com — Constitutional Theory",
+  "ring": "theory",
+  "purpose": "APEX theory — raw constitutional text, 13 floors, legal canon",
+  "audience": ["AI auditors", "legal reviewers", "scholars studying constitutional AI"],
+  "canonical_url": "https://apex.arif-fazil.com",
+  "institutional_value": "Pure law text. No styling, no marketing, no decoration. The constitution itself.",
+  "machine_summary": "APEX is the written law of arifOS. 13 floors F1-F13 define the boundaries of all AI action. Pure text, no tool execution.",
+  "content_scope": {
+    "includes": ["13 floors", "constitutional text", "legal canon"],
+    "excludes": ["styling", "animations", "marketing", "interactive elements"]
+  },
+  "needs_webmcp": false,
+  "needs_a2a_card": false,
+  "needs_llms": true,
+  "llms_path": "llms.txt",
+  "related_sites": [
+    {
+      "name": "arifos — THE MIND",
+      "url": "https://arifos.arif-fazil.com",
+      "relationship": "Theory lives in THE MIND ring"
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}

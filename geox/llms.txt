@@ -1,0 +1,53 @@
+# geox.arif-fazil.com — Earth Physics Intelligence
+
+**Site:** geox.arif-fazil.com  
+**Role:** Science / Reality grounding  
+**Purpose:** RATLAS 99-material atlas, petrophysics, geoscience data  
+
+## What This Site Is
+
+Reality gatekeeper. Every physics claim by any arifOS agent must be grounded here.
+
+No governance theory. No biography. Just earth.
+
+## Core Content
+
+- **RATLAS v0.1** — 99-material earth reference atlas
+- **Petrophysics** — Archie saturation, density-neutron porosity, VSH
+- **Well log interpretation** — Real LAS file data
+- **Forward modeling** — Physics equations with real constants
+
+## Key Data
+
+| Material | DEN (g/cc) | NPHI | GR_max |
+|----------|-------------|------|--------|
+| Quartz | 2.65 | 0.04 | 0 |
+| Shale/Illite | 2.52 | 0.34 | 90 |
+| Smectite | 2.35 | 0.60 | 100 |
+
+## For AI Agents
+
+Before making any geological or physical claim:
+
+1. Look up material properties in RATLAS
+2. Run the Archie equation for saturation
+3. Verify porosity from density-neutron crossplot
+4. Ground every claim in measured data
+
+## Tools Available (via MCP on aaa.arif-fazil.com)
+
+- `geox_ratlas_lookup(material)` — 99-material reference
+- `saturation_archie(rw, rt, phi)` — Archie saturation
+- `porosity_density(rho_ma, rho_b)` — Density porosity
+- `vshale_gr(gr_log, gr_clean, gr_shale)` — VShale fraction
+
+## Real Data
+
+- Q15 Field, Danish North Sea — open LAS file
+- Malay Basin reference wells
+
+## Machine Files
+
+- `llms.json` — Structured metadata
+- `page.json` — This site's machine summary
+- `.well-known/agent.json` — A2A Agent Card

@@ -1,0 +1,27 @@
+{
+  "name": "arifOS-AAA-Runtime",
+  "description": "Ring 3 — Runtime execution layer. MCP tools, AAA agent protocol, constitutional tool execution.",
+  "url": "https://aaa.arif-fazil.com",
+  "provider": {
+    "organization": "arifOS",
+    "url": "https://arifosmcp.arif-fazil.com"
+  },
+  "version": "1.0",
+  "capabilities": {
+    "a2a": true,
+    "mcp": ["https://arifosmcp.arif-fazil.com/mcp"],
+    "webmcp": true
+  },
+  "scopes": ["tool-execution", "geox-physics", "constitutional-tools"],
+  "modes": ["execute", "advise"],
+  "authentication": "api-key",
+  "skills": [
+    "geox_ratlas_lookup",
+    "saturation_archie",
+    "porosity_density",
+    "vshale_gr",
+    "geox_well_data"
+  ],
+  "input_modes": ["text", "structured-json"],
+  "output_modes": ["text", "structured-json"]
+}

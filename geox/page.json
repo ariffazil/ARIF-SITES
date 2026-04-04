@@ -1,0 +1,28 @@
+{
+  "name": "geox.arif-fazil.com — Earth Physics Intelligence",
+  "ring": "science",
+  "purpose": "Earth physics reality layer — RATLAS 99-material atlas, petrophysics, geoscience data",
+  "audience": ["geoscientists", "AI performing physical modeling", "petroleum engineers"],
+  "canonical_url": "https://geox.arif-fazil.com",
+  "institutional_value": "Reality gatekeeper. Enforces physical truth before any AI makes geological claims.",
+  "machine_summary": "GEOX provides 99-material reference atlas, Archie saturation, porosity-density transforms. Every physics claim by any arifOS agent must be grounded here.",
+  "content_scope": {
+    "includes": ["RATLAS", "well log interpretation", "petrophysics equations", "earth materials data"],
+    "excludes": ["governance text", "biography", "marketing"]
+  },
+  "needs_webmcp": true,
+  "needs_a2a_card": true,
+  "needs_llms": true,
+  "llms_path": "llms.txt",
+  "a2a_card_path": ".well-known/agent.json",
+  "webmcp_tools": ["ratlas_lookup", "porosity_calculation", "saturation_archie", "bulk_density"],
+  "related_sites": [
+    {
+      "name": "aaa — THE BODY",
+      "url": "https://aaa.arif-fazil.com",
+      "relationship": "GEOX tools embedded in runtime"
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "aaa.arif-fazil.com — THE BODY",
+  "ring": 3,
+  "purpose": "Runtime execution layer — agents, API surface, MCP tools, and AAA protocol implementation",
+  "audience": ["AI agents executing tasks", "developers integrating MCP", "constitutional auditors"],
+  "canonical_url": "https://aaa.arif-fazil.com",
+  "institutional_value": "The BODY that executes under THE MIND's law. Every tool is a governed syscall.",
+  "machine_summary": "AAA exposes MCP tools at https://arifosmcp.arif-fazil.com/mcp. All tools pass F1-F13 before execution. 888_JUDGE never self-approves its own outputs.",
+  "content_scope": {
+    "includes": ["MCP tools", "AAA protocol", "agent execution", "API docs", "geox earth physics"],
+    "excludes": ["pure theory without tool implementation", "biography", "marketing copy"]
+  },
+  "needs_webmcp": true,
+  "needs_a2a_card": true,
+  "needs_llms": true,
+  "llms_path": "llms.txt",
+  "a2a_card_path": ".well-known/agent.json",
+  "webmcp_tools": ["geox_ratlas_lookup", "geox_well_data", "saturation_archie", "porosity_density"],
+  "related_sites": [
+    {
+      "name": "arifos — THE MIND",
+      "url": "https://arifos.arif-fazil.com",
+      "relationship": "Runtime follows kernel law"
+    },
+    {
+      "name": "geox",
+      "url": "https://geox.arif-fazil.com",
+      "relationship": "Earth physics is embedded in this runtime"
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}

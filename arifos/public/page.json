@@ -1,0 +1,32 @@
+{
+  "name": "arifos.arif-fazil.com — THE MIND",
+  "ring": 2,
+  "purpose": "Constitutional kernel — 13 floors, ΔΩΨ invariants, vault999, and governance framework",
+  "audience": ["AI agents studying law", "humans reading constitution", "constitutional auditors"],
+  "canonical_url": "https://arifos.arif-fazil.com",
+  "institutional_value": "The law that makes intelligence sovereign. All AI products built on arifOS must pass F1-F13 before acting.",
+  "machine_summary": "arifOS implements 13 constitutional floors. F1 (AMANAH) requires reversibility. F9 (HANTU) prohibits consciousness claims. The ΔΩΨ Trinity separates Architect, Engineer, and Auditor roles. 888_JUDGE never self-approves.",
+  "content_scope": {
+    "includes": ["13 floors", "ΔΩΨ", "vault999", "governance", "AGENTS.md"],
+    "excludes": ["personal biography", "trading signals", "marketing copy"]
+  },
+  "needs_webmcp": false,
+  "needs_a2a_card": true,
+  "needs_llms": true,
+  "llms_path": "llms.txt",
+  "a2a_card_path": ".well-known/agent.json",
+  "related_sites": [
+    {
+      "name": "arif — THE SOUL",
+      "url": "https://arif-fazil.com",
+      "relationship": "Law originates from human witness"
+    },
+    {
+      "name": "aaa — THE BODY",
+      "url": "https://aaa.arif-fazil.com",
+      "relationship": "Kernel deploys to runtime"
+    }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}
