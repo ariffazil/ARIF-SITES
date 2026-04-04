@@ -613,10 +613,10 @@ function App() {
               </div>
               <div className="flex flex-wrap gap-8 mt-4 pt-4 border-t border-[var(--border)]">
                 <span className="label-mono text-[var(--text-muted)]">arifOS Stack:</span>
-                <a href="https://forge.arif-fazil.com" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">Forge</a>
-                <a href="https://aaa.arif-fazil.com" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">AAA</a>
-                <a href="https://arifosmcp.arif-fazil.com" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">MCP</a>
-                <a href="https://aaa.arif-fazil.com/geox" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">GEOX</a>
+                <a href="/forge" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">Forge</a>
+                <a href="/aaa" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">AAA</a>
+                <a href="/arifos" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">MCP</a>
+                <a href="/geox" className="label-mono text-[var(--accent-gold)] hover:text-[var(--accent-gold-light)] transition-colors">GEOX</a>
               </div>
             </div>
           </div>
