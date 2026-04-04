@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arifOS — A2A + MCP Protocol Specifications</title>
+    <meta name="description" content="A2A and MCP protocol references for arifOS intelligence layer. Agent-to-agent and agent-to-tool communication standards.">
+    <link rel="canonical" href="https://arif-fazil.com/specs/">
+</head>
+<body style="font-family:system-ui;max-width:720px;margin:40px auto;padding:0 20px;line-height:1.6">
+<nav style="margin-bottom:40px;border-bottom:1px solid #ccc;padding-bottom:20px">
+    <a href="https://arif-fazil.com/">← arif-fazil.com</a> |
+    <a href="https://forge.arif-fazil.com/">Forge</a> |
+    <a href="https://arifos.arif-fazil.com/">arifOS Kernel</a> |
+    <a href="https://aaa.arif-fazil.com/">AAA</a>
+</nav>
+
+<h1>arifOS — Protocol Specifications</h1>
+<p>These pages define how agents discover and communicate within the arifOS estate.</p>
+
+<h2>A2A — Agent-to-Agent Protocol</h2>
+<p><strong>Standard:</strong> Agent2Agent by Google / Linux Foundation</p>
+<p><strong>Spec:</strong> <a href="https://a2a-protocol.org/latest/">https://a2a-protocol.org/latest/</a></p>
+<p>Every agent in the arifOS Trinity publishes an Agent Card at <code>/.well-known/agent.json</code>.</p>
+<h3>arifOS Agent Cards</h3>
+<ul>
+<li><a href="https://arif-fazil.com/.well-known/agent.json">arif — THE SOUL</a> (Ring 1, observer)</li>
+<li><a href="https://arifOS.arif-fazil.com/.well-known/agent.json">arifOS Kernel</a> (Ring 2, advise)</li>
+<li><a href="https://aaa.arif-fazil.com/.well-known/agent.json">AAA Runtime</a> (Ring 3, execute)</li>
+<li><a href="https://forge.arif-fazil.com/.well-known/agent.json">Forge Portal</a> (discovery)</li>
+</ul>
+
+<h2>MCP — Model Context Protocol</h2>
+<p><strong>Standard:</strong> MCP by Anthropic / Model Context Protocol</p>
+<p><strong>Spec:</strong> <a href="https://modelcontextprotocol.io/specification">https://modelcontextprotocol.io/specification</a></p>
+<p><strong>arifOS MCP Server:</strong> <a href="https://arifosmcp.arif-fazil.com/mcp">https://arifosmcp.arif-fazil.com/mcp</a></p>
+
+<h3>WebMCP — Browser-Native Tool Registry</h3>
+<p>Registered on pages with real interactive tools:</p>
+<ul>
+<li><a href="https://aaa.arif-fazil.com/">AAA Runtime</a> — geox lookup, Archie saturation, porosity tools</li>
+<li><a href="https://geox.arif-fazil.com/">GEOX Earth</a> — 99-material atlas, well data explorer</li>
+</ul>
+
+<h2>How They Connect</h2>
+<p>A2A handles agent↔agent discovery. MCP handles agent↔tool calls. WebMCP lets browsers register tools directly.</p>
+<p>All three are complementary. A2A agents discover each other. MCP tools execute. WebMCP exposes browser-side resources.</p>
+
+<h2>Canonical URLs</h2>
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse">
+<tr><th>Protocol</th><th>URL</th></tr>
+<tr><td>A2A Spec</td><td><a href="https://a2a-protocol.org/latest/">https://a2a-protocol.org/latest/</a></td></tr>
+<tr><td>MCP Spec</td><td><a href="https://modelcontextprotocol.io/specification">modelcontextprotocol.io/specification</a></td></tr>
+<tr><td>WebMCP</td><td><a href="https://webmcp.dev/">https://webmcp.dev/</a></td></tr>
+<tr><td>arifOS MCP</td><td><a href="https://arifosmcp.arif-fazil.com/mcp">https://arifosmcp.arif-fazil.com/mcp</a></td></tr>
+</table>
+
+<footer style="margin-top:60px;border-top:1px solid #ccc;padding-top:20px;font-size:14px">
+<p><strong>arifOS Estate</strong> — Ditempa Bukan Diberi</p>
+<p>
+<a href="https://arif-fazil.com/">Ring 1</a> ·
+<a href="https://arifos.arif-fazil.com/">Ring 2</a> ·
+<a href="https://aaa.arif-fazil.com/">Ring 3</a> ·
+<a href="https://forge.arif-fazil.com/">Forge</a> ·
+<a href="https://geox.arif-fazil.com/">GEOX</a>
+</p>
+</footer>
+</body>
+</html>
