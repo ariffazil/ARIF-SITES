@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arifOS Runtime — API & Tools</title>
+    <meta name="description" content="arifOS Runtime API documentation, MCP tools, and integration guides.">
+    <style>
+        :root {
+            --text: #1a1a1a;
+            --text-light: #555;
+            --bg: #fff;
+            --accent: #c4791a;
+            --line: #e0e0e0;
+            --code-bg: #f5f5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        header {
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .parent {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        .parent a { color: var(--text-light); }
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .subtitle {
+            color: var(--text-light);
+            margin-top: 0.5rem;
+        }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: #e8f5e9;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        .status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #4caf50;
+            border-radius: 50%;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--line);
+        }
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        p { margin-bottom: 1rem; }
+        code {
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9em;
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .endpoint {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+        .method {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--line);
+        }
+        th {
+            font-weight: 600;
+            background: #f8f8f8;
+        }
+        ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        nav.toc {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        nav.toc h3 {
+            margin-top: 0;
+            font-size: 1rem;
+        }
+        nav.toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        nav.toc li {
+            margin: 0.4rem 0;
+        }
+        .seal {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--line);
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p class="parent"><a href="https://arif-fazil.com">← Arif Fazil</a> · <a href="https://theory.arif-fazil.com">← Theory</a></p>
+        <h1>arifOS Runtime</h1>
+        <p class="subtitle">API documentation, MCP tools, and integration guides</p>
+        <div class="status">MCP Server: Online (44 tools loaded)</div>
+    </header>
+
+    <nav class="toc">
+        <h3>Contents</h3>
+        <ul>
+            <li><a href="#quickstart">Quick Start</a></li>
+            <li><a href="#mcp">MCP Protocol</a></li>
+            <li><a href="#tools">Tools Catalog</a></li>
+            <li><a href="#api">REST API</a></li>
+            <li><a href="#geox">GEOX Earth Witness</a></li>
+            <li><a href="#guides">Integration Guides</a></li>
+        </ul>
+    </nav>
+
+    <h2 id="quickstart">Quick Start</h2>
+
+    <p>
+        arifOS Runtime exposes a <strong>Model Context Protocol (MCP)</strong> server 
+        with 44 constitutional tools. All tools enforce the 13 Floors.
+    </p>
+
+    <h3>Endpoint</h3>
+    <div class="endpoint">
+        <span class="method">POST</span>
+        https://arifosmcp.arif-fazil.com/mcp
+    </div>
+
+    <h3>Authentication</h3>
+    <p>
+        Public endpoints require no authentication. Protected endpoints (admin, vault access) 
+        require Bearer token. Contact <code>agents@arif-fazil.com</code> for access.
+    </p>
+
+    <h3>Health Check</h3>
+    <div class="endpoint">
+        <span class="method">GET</span>
+        https://arifosmcp.arif-fazil.com/health
+    </div>
+
+    <h2 id="mcp">MCP Protocol</h2>
+
+    <p>
+        MCP (Model Context Protocol) is a standard for AI tool calling. arifOS implements 
+        MCP with constitutional guardrails.
+    </p>
+
+    <h3>Request Format</h3>
+    <pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "tool_name",
+    "arguments": {
+      "arg1": "value1"
+    }
+  }
+}</code></pre>
+
+    <h3>Response Format</h3>
+    <pre><code>{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [...],
+    "isError": false
+  }
+}</code></pre>
+
+    <h3>Constitutional Headers</h3>
+    <p>Every response includes constitutional metadata:</p>
+    <pre><code>X-Constitutional-Floors: F1,F2,F4,F9,F11
+X-Vault-Log-ID: vault:2026.04.03:abc123
+X-Human-Sovereign: Arif Fazil (999)</code></pre>
+
+    <h2 id="tools">Tools Catalog (44 Tools)</h2>
+
+    <h3>Mega-Tools (Core Stack)</h3>
+    <table>
+        <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+            <th>Floors</th>
+        </tr>
+        <tr>
+            <td><code>vault_seal</code></td>
+            <td>Cryptographic sealing to VAULT999</td>
+            <td>F1, F11</td>
+        </tr>
+        <tr>
+            <td><code>vault_verify</code></td>
+            <td>Verify Merkle proofs</td>
+            <td>F2, F11</td>
+        </tr>
+        <tr>
+            <td><code>constitutional_check</code></td>
+            <td>Validate action against 13 Floors</td>
+            <td>All</td>
+        </tr>
+        <tr>
+            <td><code>agi_reflect</code></td>
+            <td>Constitutional reflection on intent</td>
+            <td>F1, F9, F13</td>
+        </tr>
+        <tr>
+            <td><code>reality_compass</code></td>
+            <td>Ground claims in evidence</td>
+            <td>F2</td>
+        </tr>
+    </table>
+
+    <h3>Memory & Intelligence</h3>
+    <table>
+        <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>memory_store</code></td>
+            <td>Store to vector memory (Qdrant)</td>
+        </tr>
+        <tr>
+            <td><code>memory_recall</code></td>
+            <td>Semantic search memory</td>
+        </tr>
+        <tr>
+            <td><code>embed_text</code></td>
+            <td>Generate embeddings (BGE-M3)</td>
+        </tr>
+        <tr>
+            <td><code>search_grounding</code></td>
+            <td>Web search with citations</td>
+        </tr>
+    </table>
+
+    <h3>System & Operations</h3>
+    <table>
+        <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+        </tr>
+        <tr>
+            <td><code>system_health</code></td>
+            <td>VPS health metrics</td>
+        </tr>
+        <tr>
+            <td><code>process_list</code></td>
+            <td>List system processes</td>
+        </tr>
+        <tr>
+            <td><code>vault_secrets</code></td>
+            <td>Secure secret access</td>
+        </tr>
+        <tr>
+            <td><code>agentzero_orchestrate</code></td>
+            <td>Agent task orchestration</td>
+        </tr>
+    </table>
+
+    <p>
+        <strong>Full catalog:</strong> <a href="https://arifosmcp.arif-fazil.com/tools">arifosmcp.arif-fazil.com/tools</a>
+    </p>
+
+    <h2 id="api">REST API</h2>
+
+    <h3>GET /health</h3>
+    <p>System health and capability map.</p>
+
+    <h3>GET /tools</h3>
+    <p>List all available tools with schemas.</p>
+
+    <h3>POST /mcp</h3>
+    <p>Main MCP endpoint for tool calls.</p>
+
+    <h3>GET /version</h3>
+    <p>Server version and constitutional version.</p>
+
+    <h2 id="geox">GEOX Earth Witness</h2>
+
+    <p>
+        GEOX is the geoscience grounding module. It ensures AI claims about the physical 
+        world are verified against reality.
+    </p>
+
+    <h3>Endpoint</h3>
+    <div class="endpoint">
+        <span class="method">POST</span>
+        https://arifosmcp.arif-fazil.com/mcp (tool: geox_verify)
+    </div>
+
+    <h3>Capabilities</h3>
+    <ul>
+        <li>Stratigraphic column validation</li>
+        <li>Geochemical anomaly detection</li>
+        <li>Tectonic consistency checks</li>
+        <li>Age constraint verification</li>
+    </ul>
+
+    <p>
+        <strong>Portal:</strong> <a href="https://aaa.arif-fazil.com/geox/">aaa.arif-fazil.com/geox/</a>
+    </p>
+
+    <h2 id="guides">Integration Guides</h2>
+
+    <h3>Building an MCP Client</h3>
+    <ol>
+        <li>Connect to <code>https://arifosmcp.arif-fazil.com/mcp</code></li>
+        <li>Send MCP-compliant JSON-RPC requests</li>
+        <li>Check constitutional headers in responses</li>
+        <li>Handle VOID responses (hard floor violations)</li>
+    </ol>
+
+    <h3>Python Example</h3>
+    <pre><code>import requests
+
+response = requests.post(
+    "https://arifosmcp.arif-fazil.com/mcp",
+    json={
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "vault_seal",
+            "arguments": {"data": "my important data"}
+        }
+    }
+)
+
+# Check constitutional compliance
+floors = response.headers.get('X-Constitutional-Floors')
+print(f"Floors enforced: {floors}")
+</code></pre>
+
+    <h3>Error Handling</h3>
+    <table>
+        <tr>
+            <th>Code</th>
+            <th>Meaning</th>
+        </tr>
+        <tr>
+            <td><code>F1_VOID</code></td>
+            <td>Action blocked by AMANAH (irreversible without authorization)</td>
+        </tr>
+        <tr>
+            <td><code>F2_VOID</code></td>
+            <td>Action blocked by TRUTH (insufficient evidence)</td>
+        </tr>
+        <tr>
+            <td><code>F9_VOID</code></td>
+            <td>Action blocked by TAQWA (manipulative content)</td>
+        </tr>
+        <tr>
+            <td><code>F13_VOID</code></td>
+            <td>Action blocked by KHILAFAH (violates human sovereignty)</td>
+        </tr>
+    </table>
+
+    <h3>Support</h3>
+    <p>
+        Email: <a href="mailto:agents@arif-fazil.com">agents@arif-fazil.com</a><br>
+        Portal: <a href="https://forge.arif-fazil.com">forge.arif-fazil.com</a> (system status)
+    </p>
+
+    <div class="seal">
+        [ΔΩΨ | 888 | 999 | Ψ] · 44 Tools · Constitutional by Design
+    </div>
+</body>
+</html>

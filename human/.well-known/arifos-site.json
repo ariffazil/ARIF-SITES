@@ -1,0 +1,19 @@
+{
+  "schema_version": "2026.04.03",
+  "site_id": "arif-fazil.com",
+  "tier": 1,
+  "realm": "HUMAN",
+  "delta": "Human Architect",
+  "omega": "Arif Fazil — Human sovereign, founder, final witness",
+  "authority": {
+    "name": "Arif Fazil",
+    "role": "Human-in-the-Loop",
+    "seal": "999-VALIDATOR"
+  },
+  "children": [
+    "theory.arif-fazil.com",
+    "runtime.arif-fazil.com",
+    "forge.arif-fazil.com",
+    "lab.arif-fazil.com"
+  ]
+}

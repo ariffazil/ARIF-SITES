@@ -1,0 +1,40 @@
+{
+  "schema_version": "2026.04.03",
+  "site_id": "example.arif-fazil.com",
+  "ring": 2,
+  "realm": "MIND",
+  "delta": "Site purpose in 3 words",
+  "omega": "What it actually does",
+  "authority": {
+    "human_sovereign": "Arif Fazil",
+    "constitutional_kernel": "arifOS v2026.04.02",
+    "seal": "999-VALIDATOR"
+  },
+  "source": {
+    "repo": "ariffazil/arif-sites",
+    "path": "/example",
+    "branch": "main",
+    "last_commit": "abc123def456"
+  },
+  "deployment": {
+    "target": "cloudflare-pages",
+    "region": "global-cdn",
+    "url": "https://example.arif-fazil.com",
+    "deployed_at": "2026-04-03T12:00:00Z"
+  },
+  "agents": {
+    "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+    "contact": "agents@arif-fazil.com",
+    "protocols": ["MCP", "A2A", "WebMCP"]
+  },
+  "navigation": {
+    "parent": "arif-fazil.com",
+    "siblings": ["arifos.arif-fazil.com", "aaa.arif-fazil.com"],
+    "child_sites": []
+  },
+  "constitutional": {
+    "floors_acknowledged": [1, 2, 4, 9, 11, 13],
+    "vault999_telemetry": true,
+    "human_in_the_loop": true
+  }
+}

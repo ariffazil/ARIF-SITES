@@ -1,0 +1,14 @@
+{
+  "schema_version": "2026.04.03",
+  "site_id": "runtime.arif-fazil.com",
+  "tier": 3,
+  "realm": "RUNTIME",
+  "delta": "API & Tools",
+  "omega": "MCP server, 44 tools, integration guides",
+  "parent": "arif-fazil.com",
+  "siblings": ["theory.arif-fazil.com"],
+  "agents": {
+    "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+    "tools_count": 44
+  }
+}

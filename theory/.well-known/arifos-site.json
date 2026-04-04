@@ -1,0 +1,10 @@
+{
+  "schema_version": "2026.04.03",
+  "site_id": "theory.arif-fazil.com",
+  "tier": 2,
+  "realm": "THEORY",
+  "delta": "Constitutional Law",
+  "omega": "13 Floors, APEX Theory, Constitutional documents",
+  "parent": "arif-fazil.com",
+  "siblings": ["runtime.arif-fazil.com"]
+}
