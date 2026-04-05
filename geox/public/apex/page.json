@@ -1,0 +1,19 @@
+{
+  "name": "APEX Theory — arifOS",
+  "ring": "knowledge",
+  "canonical_url": "https://geox.arif-fazil.com/apex/",
+  "machine_summary": "APEX Theory: Constitutional floors, thermodynamic governance, anti-hantu ontology. Ring 2 knowledge layer.",
+  "content_scope": {
+    "includes": ["APEX theory", "constitutional floors", "anti-hantu governance"],
+    "excludes": ["runtime code", "biography"]
+  },
+  "needs_webmcp": false,
+  "needs_a2a_card": false,
+  "needs_llms": true,
+  "llms_path": "/apex/llms.txt",
+  "related_sites": [
+    {"name": "arifOS — Ring 2", "url": "https://arifOS.arif-fazil.com"}
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}

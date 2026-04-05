@@ -1,0 +1,12 @@
+{
+  "name": "APEX Theory",
+  "ring": "knowledge",
+  "canonical_url": "https://arifOS.arif-fazil.com/apex/",
+  "machine_summary": "APEX Theory — Constitutional floors F1-F13, thermodynamic governance, anti-hantu ontology.",
+  "needs_webmcp": false,
+  "needs_a2a_card": false,
+  "needs_llms": true,
+  "related_sites": [{"name": "arifOS Kernel", "url": "https://arifOS.arif-fazil.com"}],
+  "version": "1.0",
+  "last_updated": "2026-04-04"
+}
