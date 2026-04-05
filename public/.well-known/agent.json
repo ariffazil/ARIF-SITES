@@ -1,0 +1,14 @@
+{
+  "name": "Forge Portal",
+  "description": "Orientation layer for the arifOS Trinity. Routes agents to HUMAN, THEORY, APPS, RUNTIME, GEOX, and SPECS.",
+  "url": "https://arif-fazil.com",
+  "provider": { "organization": "arifOS", "contact": "arifos@arif-fazil.com" },
+  "capabilities": { "discovery": true, "tool_use": false, "routing": true },
+  "surfaces": {
+    "llms_txt": "https://arif-fazil.com/llms.txt",
+    "humans_txt": "https://arif-fazil.com/humans.txt",
+    "page_json": "https://arif-fazil.com/page.json",
+    "runtime_docs": "https://runtime.arif-fazil.com",
+    "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp"
+  }
+}

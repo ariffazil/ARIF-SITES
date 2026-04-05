@@ -1,0 +1,28 @@
+{
+  "name": "arif-fazil.com — Forge Portal",
+  "ring": "portal",
+  "purpose": "Main entry point to the arifOS Trinity and its specialist domains.",
+  "audience": ["first-time visitors", "AI agents", "developers", "operators"],
+  "canonical_url": "https://arif-fazil.com",
+  "institutional_value": "Orientation layer for routing humans and machines into the correct truth surface.",
+  "machine_summary": "Forge is the front door. It routes to HUMAN, THEORY, APPS, RUNTIME, GEOX, and SPECS without duplicating their full content.",
+  "content_scope": {
+    "includes": ["Trinity overview", "routing map", "machine discovery files", "deploy order"],
+    "excludes": ["full biography", "complete doctrine", "deep API docs", "runtime execution"]
+  },
+  "needs_webmcp": true,
+  "needs_a2a_card": true,
+  "needs_llms": true,
+  "llms_path": "llms.txt",
+  "a2a_card_path": ".well-known/agent.json",
+  "related_sites": [
+    { "name": "HUMAN", "url": "https://arif-fazil.com", "relationship": "Human witness and identity" },
+    { "name": "THEORY", "url": "https://apex.arif-fazil.com", "relationship": "Constitutional canon" },
+    { "name": "APPS", "url": "https://arifos.arif-fazil.com", "relationship": "Kernel and governance surfaces" },
+    { "name": "RUNTIME", "url": "https://runtime.arif-fazil.com", "relationship": "API and MCP runtime docs" },
+    { "name": "GEOX", "url": "https://geox.arif-fazil.com", "relationship": "Earth witness and geoscience grounding" },
+    { "name": "SPECS", "url": "https://specs.arif-fazil.com", "relationship": "Machine contracts and schemas" }
+  ],
+  "version": "1.0",
+  "last_updated": "2026-04-06"
+}
