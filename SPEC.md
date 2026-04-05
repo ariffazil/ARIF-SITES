@@ -193,3 +193,36 @@ apex needs agent.json only if it exposes /api or /agent endpoint.
 ---
 
 Last sealed: 2026-04-04 · Confidence: HIGH · Uncertainty: LOW · Ω < 0.03
+
+---
+
+## 2026-04-05 — Phase 4: Unified Path Architecture
+
+### Target Architecture
+All submodules under `arif-fazil.com/(submodule)`:
+```
+arif-fazil.com/           → Ring 1 THE SOUL (SPA)
+arif-fazil.com/aaa/       → Ring 3 THE BODY
+arif-fazil.com/arifOS/    → Ring 2 THE MIND
+arif-fazil.com/forge/     → Trinity Portal
+arif-fazil.com/geox/      → Earth Physics
+arif-fazil.com/apex/      → APEX Theory
+```
+
+### VPS Nginx Config (unified)
+Written to: `/opt/arifos/sites/arifOS-FAZIL.COM/nginx.conf`
+- `server_name _` catch-all → unified path routing
+- `alias` directives for each `/path/` → correct site root
+- `proxy_pass` for geox → Python app on port 8000
+
+### Status: PENDING VPS REBOOT
+- Nginx config updated ✅
+- Container overlay caching old config ❌
+- Requires VPS reboot to clear overlay and load new config
+- Subdomains still work as fallback
+
+### Pending Actions
+1. [VPS] Reboot to clear overlay cache
+2. [DNS] Update subdomains to point to arif-fazil.com paths (or retire)
+3. [CF Pages] Update custom domains or retire
+4. [Deploy] Update deploy.sh to deploy all sites to unified path structure
