@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAA — AGENTS·API·AI·APPS | arifOS Surface Layer</title>
+  <meta name="description" content="AAA is the agents, API, and AI surface layer of the arifOS network. MCP endpoint, tool surface, ChatGPT integration, and agent gateway." />
+  <meta name="role" content="AGENTS" />
+  <link rel="canonical" href="https://aaa.arif-fazil.com" />
+  <style>
+    :root {
+      --bg: #040810;
+      --bg2: #080e1a;
+      --text: #c0d4f0;
+      --text2: #5a7aa0;
+      --blue: #2a6fbd;
+      --blue-dim: #0e2a50;
+      --green: #2aad5e;
+      --amber: #c4791a;
+      --red: #e04a3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: "Courier New", monospace; padding-bottom: 48px; min-height: 100vh; }
+    header { border-bottom: 1px solid #0e1a30; padding: 32px 48px 24px; }
+    .role-chip { display: inline-block; font-size: 9px; letter-spacing: 2px; color: var(--blue); border: 1px solid var(--blue-dim); padding: 3px 10px; margin-bottom: 16px; text-transform: uppercase; }
+    h1 { font-size: 28px; font-weight: 700; color: var(--blue); letter-spacing: 3px; margin-bottom: 8px; }
+    .hero-sub { font-size: 13px; color: var(--text2); letter-spacing: 1px; max-width: 540px; line-height: 1.6; }
+    .cta-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .cta { display: inline-block; font-size: 10px; letter-spacing: 1.5px; padding: 9px 20px; text-decoration: none; text-transform: uppercase; border: 1px solid; transition: background .15s; }
+    .cta-primary { color: var(--blue); border-color: var(--blue); }
+    .cta-primary:hover { background: var(--blue); color: #040810; }
+    .cta-secondary { color: var(--text2); border-color: #0e1a30; }
+    .cta-secondary:hover { background: #0a1020; }
+    main { padding: 40px 48px; max-width: 900px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; border-bottom: 1px solid #0e1a30; padding-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .card { background: var(--bg2); border: 1px solid #0e1a30; padding: 14px 16px; }
+    .card-label { font-size: 9px; letter-spacing: 1.5px; color: var(--text2); margin-bottom: 6px; text-transform: uppercase; }
+    .card-val { font-size: 14px; font-weight: 700; }
+    .card-val.ok { color: var(--green); }
+    .card-val.info { color: var(--blue); }
+    .card-val.amber { color: var(--amber); }
+    .links { display: flex; flex-direction: column; gap: 8px; }
+    .link-row { display: flex; align-items: center; gap: 12px; font-size: 11px; padding: 8px 0; border-bottom: 1px solid #0e1a30; }
+    .link-row:last-child { border-bottom: none; }
+    .link-row a { color: var(--blue); text-decoration: none; }
+    .link-row a:hover { text-decoration: underline; }
+    .link-row .lbl { color: var(--text2); width: 140px; flex-shrink: 0; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+    .code-block { background: var(--bg2); border: 1px solid #0e1a30; padding: 16px; font-size: 11px; line-height: 1.7; color: var(--text); overflow-x: auto; margin-top: 8px; }
+    .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 8px; }
+    .tool-item { background: var(--bg2); border: 1px solid #0e1a30; padding: 10px 14px; }
+    .tool-name { font-size: 11px; color: var(--blue); letter-spacing: 0.5px; margin-bottom: 3px; }
+    .tool-desc { font-size: 10px; color: var(--text2); line-height: 1.5; }
+    .badge { display: inline-block; font-size: 9px; padding: 2px 8px; letter-spacing: 1px; border: 1px solid; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
+    .badge-live { color: var(--green); border-color: var(--green); }
+    .motto { font-size: 10px; letter-spacing: 2px; color: var(--text2); text-align: center; padding: 20px; border-top: 1px solid #0e1a30; margin-top: 20px; }
+    @media (max-width: 600px) { header, main { padding: 20px 20px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="role-chip">AGENTS · API · AI · APPS</div>
+    <h1>AAA <span class="badge badge-live">● LIVE</span></h1>
+    <p class="hero-sub">arifOS surface layer. 11 governed mega-tools over the MCP protocol. Constitutional AI for agents, APIs, and AI integrations.</p>
+    <div class="cta-row">
+      <a href="https://arifosmcp.arif-fazil.com" class="cta cta-primary">MCP Server ↗</a>
+      <a href="https://arifosmcp.arif-fazil.com/health" class="cta cta-secondary">Health</a>
+      <a href="https://arifosmcp.arif-fazil.com/llms.txt" class="cta cta-secondary">llms.txt</a>
+      <a href="https://arifos.arif-fazil.com" class="cta cta-secondary">Kernel Docs</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Surface Status</h2>
+      <div class="grid" id="stats">
+        <div class="card"><div class="card-label">MCP Server</div><div class="card-val ok" id="sv-status">LOADING…</div></div>
+        <div class="card"><div class="card-label">Tool Surface</div><div class="card-val info" id="sv-tools">— Tools</div></div>
+        <div class="card"><div class="card-label">Governance</div><div class="card-val info">13 Floors</div></div>
+        <div class="card"><div class="card-label">Protocol</div><div class="card-val info">streamable-http</div></div>
+        <div class="card"><div class="card-label">Version</div><div class="card-val info" id="sv-ver">—</div></div>
+        <div class="card"><div class="card-label">Mode</div><div class="card-val info" id="sv-mode">—</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>MCP Endpoint</h2>
+      <div class="links">
+        <div class="link-row"><span class="lbl">Connect</span><a href="https://arifosmcp.arif-fazil.com/mcp">https://arifosmcp.arif-fazil.com/mcp</a></div>
+        <div class="link-row"><span class="lbl">Health</span><a href="https://arifosmcp.arif-fazil.com/health">https://arifosmcp.arif-fazil.com/health</a></div>
+        <div class="link-row"><span class="lbl">Tool List</span><a href="https://arifosmcp.arif-fazil.com/tools">https://arifosmcp.arif-fazil.com/tools</a></div>
+        <div class="link-row"><span class="lbl">OpenAPI</span><a href="https://arifosmcp.arif-fazil.com/openapi.json">https://arifosmcp.arif-fazil.com/openapi.json</a></div>
+        <div class="link-row"><span class="lbl">Discovery</span><a href="https://arifosmcp.arif-fazil.com/server.json">https://arifosmcp.arif-fazil.com/server.json</a></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Agent Integration (Claude / ChatGPT)</h2>
+      <div class="code-block"><pre>{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
+    }
+  }
+}</pre></div>
+    </section>
+
+    <section>
+      <h2>11 Sovereign Mega-Tools</h2>
+      <div class="tool-grid">
+        <div class="tool-item"><div class="tool-name">init_anchor</div><div class="tool-desc">Constitutional session airlock. F11/F12/F13.</div></div>
+        <div class="tool-item"><div class="tool-name">physics_reality</div><div class="tool-desc">Earth-witness grounding. Search, time, maps. F2/F3/F10.</div></div>
+        <div class="tool-item"><div class="tool-name">agi_mind</div><div class="tool-desc">Logic, reasoning, synthesis. F2/F4/F7/F8.</div></div>
+        <div class="tool-item"><div class="tool-name">asi_heart</div><div class="tool-desc">Safety, empathy, consequence modeling. F5/F6/F9.</div></div>
+        <div class="tool-item"><div class="tool-name">engineering_memory</div><div class="tool-desc">Vector memory and governed engineering. F10/F11/F2.</div></div>
+        <div class="tool-item"><div class="tool-name">math_estimator</div><div class="tool-desc">Thermodynamic vitals, costs, entropy. F4/F5.</div></div>
+        <div class="tool-item"><div class="tool-name">code_engine</div><div class="tool-desc">System-level observation and execution. F1.</div></div>
+        <div class="tool-item"><div class="tool-name">architect_registry</div><div class="tool-desc">Tool graph and model registry discovery. F10/F11.</div></div>
+        <div class="tool-item"><div class="tool-name">arifOS_kernel</div><div class="tool-desc">Primary metabolic conductor 000–999. F4/F11.</div></div>
+        <div class="tool-item"><div class="tool-name">apex_soul</div><div class="tool-desc">Constitutional verdict and defense. F3/F12/F13.</div></div>
+        <div class="tool-item"><div class="tool-name">vault_ledger</div><div class="tool-desc">Immutable decision recording. F1/F13.</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>GEOX — Earth Witness Module</h2>
+      <div class="links">
+        <div class="link-row"><span class="lbl">Endpoint</span><a href="https://geox.arif-fazil.com">https://geox.arif-fazil.com</a></div>
+        <div class="link-row"><span class="lbl">Role</span><span style="color:var(--text2)">Geoscience reality-guard — F2/F3/F10 compliant</span></div>
+      </div>
+    </section>
+
+    <p class="motto">DITEMPA BUKAN DIBERI — Forged, not given. [ΔΩΨ | ARIF]</p>
+  </main>
+
+  <style>#rn{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(4,8,16,0.97);border-top:1px solid #0e1a30;display:flex;align-items:stretch;justify-content:center;height:36px;font-family:"Courier New",monospace}#rn a{color:inherit;text-decoration:none;padding:0 13px;display:flex;align-items:center;font-size:10px;letter-spacing:1.2px;border-right:1px solid #0e1a30;white-space:nowrap;transition:background .15s}#rn a:last-child{border-right:none}#rn a:hover{background:#0a1020}#rn a.rn-active{background:#08101e;border-bottom:2px solid currentColor}body{padding-bottom:40px!important}</style>
+  <nav id="rn"><a href="https://arif-fazil.com" data-h="arif-fazil.com" style="color:#c94b2e">ARIF (human)</a><a href="https://apex.arif-fazil.com" data-h="apex.arif-fazil.com" style="color:#c4791a">APEX (theory)</a><a href="https://arifos.arif-fazil.com" data-h="arifos.arif-fazil.com" style="color:#2a8a6e">arifOS (kernel)</a><a href="https://aaa.arif-fazil.com" data-h="aaa.arif-fazil.com" style="color:#2a6fbd">AAA (agents)</a><a href="https://waw.arif-fazil.com" data-h="waw.arif-fazil.com" style="color:#6d4ade">WAW (state)</a><a href="https://arifosmcp.arif-fazil.com" data-h="arifosmcp.arif-fazil.com" style="color:#2a8a4a">MCP (endpoint)</a></nav>
+  <script>
+    (function(){
+      var h=location.hostname,a=document.querySelectorAll("#rn a");
+      a.forEach(function(x){if(x.dataset.h===h)x.classList.add("rn-active")});
+      fetch("https://arifosmcp.arif-fazil.com/health")
+        .then(function(r){return r.json()})
+        .then(function(d){
+          var s=document.getElementById("sv-status");
+          var t=document.getElementById("sv-tools");
+          var v=document.getElementById("sv-ver");
+          var m=document.getElementById("sv-mode");
+          if(s) s.textContent=d.status==="healthy"?"HEALTHY":"DEGRADED";
+          if(s) s.className="card-val "+(d.status==="healthy"?"ok":"amber");
+          if(t) t.textContent=(d.tools_loaded||d.tool_count||"11")+" Tools";
+          if(v) v.textContent=d.version||"—";
+          if(m) m.textContent=d.mode||d.environment||"PROD";
+        })
+        .catch(function(){
+          var s=document.getElementById("sv-status");
+          if(s){s.textContent="UNREACHABLE";s.className="card-val amber";}
+        });
+    })();
+  </script>
+</body>
+</html>

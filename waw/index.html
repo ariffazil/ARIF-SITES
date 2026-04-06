@@ -163,7 +163,7 @@
           var t=document.getElementById("mcp-tools");
           if(s) s.textContent = d.status==="healthy"?"HEALTHY":"DEGRADED";
           if(v) v.textContent = d.version||"—";
-          if(t) t.textContent = (d.tool_count||"?")+" Tools";
+          if(t) t.textContent = (d.tools_loaded||d.tool_count||"?")+" Tools";
         })
         .catch(function(){
           var s=document.getElementById("mcp-status");
