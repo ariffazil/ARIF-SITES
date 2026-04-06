@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WAW — State of the Machine | arifOS Runtime</title>
+  <meta name="description" content="WAW is the machine-state surface of the arifOS network. Runtime health, deploy state, vault continuity, and federation posture — live." />
+  <meta name="role" content="STATE" />
+  <link rel="canonical" href="https://waw.arif-fazil.com" />
+  <style>
+    :root {
+      --bg: #050a0c;
+      --bg2: #0a1214;
+      --text: #c8e8f0;
+      --text2: #6a9ab0;
+      --violet: #6d4ade;
+      --violet-dim: #3a2a7a;
+      --green: #2aad5e;
+      --amber: #c4791a;
+      --red: #e04a3a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: "Courier New", monospace; padding-bottom: 48px; min-height: 100vh; }
+    header { border-bottom: 1px solid #0e2030; padding: 32px 48px 24px; }
+    .role-chip { display: inline-block; font-size: 9px; letter-spacing: 2px; color: var(--violet); border: 1px solid var(--violet-dim); padding: 3px 10px; margin-bottom: 16px; text-transform: uppercase; }
+    h1 { font-size: 28px; font-weight: 700; color: var(--violet); letter-spacing: 3px; margin-bottom: 8px; }
+    .hero-sub { font-size: 13px; color: var(--text2); letter-spacing: 1px; max-width: 520px; line-height: 1.6; }
+    .cta-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+    .cta { display: inline-block; font-size: 10px; letter-spacing: 1.5px; padding: 9px 20px; text-decoration: none; text-transform: uppercase; border: 1px solid; transition: background .15s; }
+    .cta-primary { color: var(--violet); border-color: var(--violet); }
+    .cta-primary:hover { background: var(--violet); color: #050a0c; }
+    .cta-secondary { color: var(--text2); border-color: #0e2030; }
+    .cta-secondary:hover { background: #0a1a24; }
+    main { padding: 40px 48px; max-width: 900px; }
+    section { margin-bottom: 40px; }
+    h2 { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--violet); margin-bottom: 16px; border-bottom: 1px solid #0e2030; padding-bottom: 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .card { background: var(--bg2); border: 1px solid #0e2030; padding: 14px 16px; }
+    .card-label { font-size: 9px; letter-spacing: 1.5px; color: var(--text2); margin-bottom: 6px; text-transform: uppercase; }
+    .card-val { font-size: 14px; font-weight: 700; }
+    .card-val.ok { color: var(--green); }
+    .card-val.warn { color: var(--amber); }
+    .card-val.err { color: var(--red); }
+    .card-val.info { color: var(--violet); }
+    .links { display: flex; flex-direction: column; gap: 8px; }
+    .link-row { display: flex; align-items: center; gap: 12px; font-size: 11px; }
+    .link-row a { color: var(--violet); text-decoration: none; }
+    .link-row a:hover { text-decoration: underline; }
+    .link-row .lbl { color: var(--text2); width: 100px; flex-shrink: 0; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; }
+    .health-bar { display: flex; align-items: center; gap: 10px; font-size: 11px; padding: 10px 0; border-bottom: 1px solid #0e2030; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .dot.green { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .dot.amber { background: var(--amber); }
+    .dot.red { background: var(--red); }
+    .health-bar .service { width: 180px; flex-shrink: 0; }
+    .health-bar .url { color: var(--text2); font-size: 10px; }
+    footer { padding: 24px 48px; border-top: 1px solid #0e2030; font-size: 9px; letter-spacing: 1.5px; color: var(--text2); }
+    #rn{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(5,10,12,0.97);border-top:1px solid #0e2030;display:flex;align-items:stretch;justify-content:center;height:36px;font-family:"Courier New",monospace}
+    #rn a{color:inherit;text-decoration:none;padding:0 13px;display:flex;align-items:center;font-size:10px;letter-spacing:1.2px;border-right:1px solid #0e2030;white-space:nowrap;transition:background .15s}
+    #rn a:last-child{border-right:none}#rn a:hover{background:#0a1a24}#rn a.rn-active{background:#0a1214;border-bottom:2px solid currentColor}
+    @media(max-width:600px){header,main,footer{padding-left:20px;padding-right:20px}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="role-chip">ROLE: STATE</div>
+    <h1>WAW</h1>
+    <p class="hero-sub">State of the machine. Runtime health, deploy posture, vault continuity, and active governance — live from the arifOS VPS.</p>
+    <div class="cta-row">
+      <a class="cta cta-primary" href="https://arifosmcp.arif-fazil.com/health">View live health</a>
+      <a class="cta cta-secondary" href="https://arifosmcp.arif-fazil.com">MCP endpoint</a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Runtime Status</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-label">MCP Kernel</div>
+          <div class="card-val ok" id="mcp-status">CHECKING…</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Version</div>
+          <div class="card-val info" id="mcp-version">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Tool Surface</div>
+          <div class="card-val info" id="mcp-tools">—</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Governance</div>
+          <div class="card-val ok">13 Floors Active</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Service Endpoints</h2>
+      <div class="links">
+        <div class="health-bar"><span class="dot green"></span><span class="service">MCP Kernel</span><a href="https://arifosmcp.arif-fazil.com/health" class="url">arifosmcp.arif-fazil.com/health</a></div>
+        <div class="health-bar"><span class="dot green"></span><span class="service">MCP Endpoint</span><a href="https://arifosmcp.arif-fazil.com/mcp" class="url">arifosmcp.arif-fazil.com/mcp</a></div>
+        <div class="health-bar"><span class="dot green"></span><span class="service">OpenAPI Spec</span><a href="https://arifosmcp.arif-fazil.com/openapi.json" class="url">arifosmcp.arif-fazil.com/openapi.json</a></div>
+        <div class="health-bar"><span class="dot green"></span><span class="service">Tool Registry</span><a href="https://arifosmcp.arif-fazil.com/tools" class="url">arifosmcp.arif-fazil.com/tools</a></div>
+        <div class="health-bar"><span class="dot amber"></span><span class="service">Agent Logbook</span><a href="https://logbook.arif-fazil.com" class="url">logbook.arif-fazil.com</a></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Vault999 Continuity</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-label">Vault Mode</div>
+          <div class="card-val info">SEALED</div>
+        </div>
+        <div class="card">
+          <div class="card-label">F1 Amanah</div>
+          <div class="card-val ok">ACTIVE</div>
+        </div>
+        <div class="card">
+          <div class="card-label">F11 Auditability</div>
+          <div class="card-val ok">ACTIVE</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Chain Integrity</div>
+          <div class="card-val ok">VERIFIED</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Network Constellation</h2>
+      <div class="links">
+        <div class="link-row"><span class="lbl">Human</span><a href="https://arif-fazil.com">arif-fazil.com</a></div>
+        <div class="link-row"><span class="lbl">Theory</span><a href="https://apex.arif-fazil.com">apex.arif-fazil.com</a></div>
+        <div class="link-row"><span class="lbl">Kernel docs</span><a href="https://arifos.arif-fazil.com">arifos.arif-fazil.com</a></div>
+        <div class="link-row"><span class="lbl">Agents</span><a href="https://aaa.arif-fazil.com">aaa.arif-fazil.com</a></div>
+        <div class="link-row"><span class="lbl">MCP endpoint</span><a href="https://arifosmcp.arif-fazil.com">arifosmcp.arif-fazil.com</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>WAW — State of the Machine &nbsp;|&nbsp; DITEMPA BUKAN DIBERI — Forged, Not Given &nbsp;|&nbsp; ΔΩΨ</footer>
+
+  <nav id="rn">
+    <a href="https://arif-fazil.com" data-h="arif-fazil.com" style="color:#c94b2e">ARIF (human)</a>
+    <a href="https://apex.arif-fazil.com" data-h="apex.arif-fazil.com" style="color:#c4791a">APEX (theory)</a>
+    <a href="https://arifos.arif-fazil.com" data-h="arifos.arif-fazil.com" style="color:#2a8a6e">arifOS (kernel)</a>
+    <a href="https://aaa.arif-fazil.com" data-h="aaa.arif-fazil.com" style="color:#2a6fbd">AAA (agents)</a>
+    <a href="https://waw.arif-fazil.com" data-h="waw.arif-fazil.com" style="color:#6d4ade">WAW (state)</a>
+    <a href="https://arifosmcp.arif-fazil.com" data-h="arifosmcp.arif-fazil.com" style="color:#2a8a4a">MCP (endpoint)</a>
+  </nav>
+  <script>
+    (function(){
+      var h=location.hostname, a=document.querySelectorAll("#rn a");
+      a.forEach(function(x){if(x.dataset.h===h)x.classList.add("rn-active")});
+      // Live health fetch
+      fetch("https://arifosmcp.arif-fazil.com/health")
+        .then(function(r){return r.json()})
+        .then(function(d){
+          var s=document.getElementById("mcp-status");
+          var v=document.getElementById("mcp-version");
+          var t=document.getElementById("mcp-tools");
+          if(s) s.textContent = d.status==="healthy"?"HEALTHY":"DEGRADED";
+          if(v) v.textContent = d.version||"—";
+          if(t) t.textContent = (d.tool_count||"?")+" Tools";
+        })
+        .catch(function(){
+          var s=document.getElementById("mcp-status");
+          if(s){s.textContent="UNREACHABLE";s.className="card-val err";}
+        });
+    })();
+  </script>
+</body>
+</html>
