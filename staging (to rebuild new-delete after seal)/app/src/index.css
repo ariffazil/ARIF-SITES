@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SOUL - Earth Ochre */
+    --soul-primary: #c4791a;
+    --soul-secondary: #f0e6d3;
+    --soul-void: #0f0c08;
+    --soul-surface: #1a1510;
+    
+    /* MIND - Sovereign Gold */
+    --mind-primary: #d4a853;
+    --mind-secondary: #f0d878;
+    --mind-void: #0a0a14;
+    --mind-surface: #151528;
+    
+    /* BODY - Electric Teal */
+    --body-primary: #00d4aa;
+    --body-secondary: #00ffcc;
+    --body-void: #050508;
+    --body-surface: #0f1418;
+    
+    /* EXTENSION - Agent Orange */
+    --extension-primary: #ff6b35;
+    --extension-secondary: #ff9f6b;
+    --extension-void: #1a0f2e;
+    --extension-surface: #2d1b4e;
+    
+    /* FIELD - Steel Azure */
+    --field-primary: #6b8cae;
+    --field-secondary: #8bb0d0;
+    --field-void: #0a1018;
+    --field-surface: #1a2532;
+
+    /* shadcn variables */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Constitutional Glow Effects */
+  .glow-soul {
+    box-shadow: 0 0 30px rgba(196, 121, 26, 0.3);
+  }
+  
+  .glow-mind {
+    box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
+  }
+  
+  .glow-body {
+    box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+  }
+  
+  .glow-extension {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+  }
+  
+  .glow-field {
+    box-shadow: 0 0 30px rgba(107, 140, 174, 0.3);
+  }
+  
+  /* Ring Symbol */
+  .ring-symbol {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+  }
+  
+  /* Constitutional Card */
+  .constitutional-card {
+    @apply rounded-xl border backdrop-blur-sm transition-all duration-300;
+  }
+  
+  /* Pipeline Stage */
+  .pipeline-stage {
+    @apply px-3 py-1 rounded-lg font-mono text-xs;
+  }
+  
+  /* F10 Badge */
+  .f10-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient-soul {
+    background: linear-gradient(135deg, #c4791a, #e8a838);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-mind {
+    background: linear-gradient(135deg, #d4a853, #f0d878);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-body {
+    background: linear-gradient(135deg, #00d4aa, #00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animation Utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(196, 121, 26, 0.3);
+  color: inherit;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
