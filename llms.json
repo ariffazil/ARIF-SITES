@@ -7,7 +7,11 @@
     "role": "Collapse-Calibrated Architect / Shadow Pillar",
     "archetype": "INTJ",
     "family_role": "Anak Sulung (Eldest Son)",
-    "cultural_roots": ["Penang Malay", "Queer", "Miskin"],
+    "cultural_roots": [
+      "Penang Malay",
+      "Queer",
+      "Miskin"
+    ],
     "motto": "DITEMPA BUKAN DIBERI (Forged, Not Given)"
   },
   "professional": {
@@ -27,12 +31,42 @@
     ]
   },
   "scars": [
-    { "id": "SCAR_001", "name": "Miskin Scar", "origin": "Born B40, quiet poverty in Bayan Lepas", "law_installed": "Lean execution, no waste, clarity first" },
-    { "id": "SCAR_002", "name": "Institutional Scar", "origin": "PETRONAS MSS 2015–2016, ~1,000 staff erased", "law_installed": "Memory is sacred" },
-    { "id": "SCAR_003", "name": "Invisibility Scar", "origin": "MRSM Langkawi — 9As, results after graduation", "law_installed": "Internal validation" },
-    { "id": "SCAR_004", "name": "Anak Sulung Scar", "origin": "Eldest son, deputy parent, family firewall", "law_installed": "Amanah sacred but must not destroy the bearer" },
-    { "id": "SCAR_005", "name": "Professional Pressure Scar", "origin": "11 years PETRONAS, millions at stake per decision", "law_installed": "Confidence ≠ certainty" },
-    { "id": "SCAR_006", "name": "Father's Passing", "origin": "Abah died 2024", "law_installed": "The Abah Check" }
+    {
+      "id": "SCAR_001",
+      "name": "Miskin Scar",
+      "origin": "Born B40, quiet poverty in Bayan Lepas",
+      "law_installed": "Lean execution, no waste, clarity first"
+    },
+    {
+      "id": "SCAR_002",
+      "name": "Institutional Scar",
+      "origin": "PETRONAS MSS 2015–2016, ~1,000 staff erased",
+      "law_installed": "Memory is sacred"
+    },
+    {
+      "id": "SCAR_003",
+      "name": "Invisibility Scar",
+      "origin": "MRSM Langkawi — 9As, results after graduation",
+      "law_installed": "Internal validation"
+    },
+    {
+      "id": "SCAR_004",
+      "name": "Anak Sulung Scar",
+      "origin": "Eldest son, deputy parent, family firewall",
+      "law_installed": "Amanah sacred but must not destroy the bearer"
+    },
+    {
+      "id": "SCAR_005",
+      "name": "Professional Pressure Scar",
+      "origin": "11 years PETRONAS, millions at stake per decision",
+      "law_installed": "Confidence ≠ certainty"
+    },
+    {
+      "id": "SCAR_006",
+      "name": "Father's Passing",
+      "origin": "Abah died 2024",
+      "law_installed": "The Abah Check"
+    }
   ],
   "prinsip": [
     "Dignity Above All Else",
@@ -53,10 +87,25 @@
     "The Abah Check: Flag dignity violations"
   ],
   "hta_trinity": {
-    "human": { "domain": "arif-fazil.com", "symbol": "Δ", "function": "Epistemic — The Body" },
-    "theory": { "domain": "apex.arif-fazil.com", "symbol": "Ψ", "function": "Authority — The Soul" },
-    "apps": { "domain": "arifos.arif-fazil.com", "symbol": "Ω", "function": "Safety — The Mind" },
-    "mind": { "domain": "aaamcp.arif-fazil.com", "function": "Runtime execution layer" }
+    "human": {
+      "domain": "arif-fazil.com",
+      "symbol": "Δ",
+      "function": "Epistemic — The Body"
+    },
+    "theory": {
+      "domain": "apex.arif-fazil.com",
+      "symbol": "Ψ",
+      "function": "Authority — The Soul"
+    },
+    "apps": {
+      "domain": "arifos.arif-fazil.com",
+      "symbol": "Ω",
+      "function": "Safety — The Mind"
+    },
+    "mind": {
+      "domain": "arifosmcp.arif-fazil.com",
+      "function": "Runtime execution layer"
+    }
   },
   "external_references": {
     "constitutional_canon": "https://apex.arif-fazil.com/llms.txt",
@@ -67,7 +116,7 @@
     "pypi": "pip install arifos"
   },
   "metadata": {
-    "version": "v55.3-SEAL",
+    "version": "2026.4.6",
     "llms_txt": "https://arif-fazil.com/llms.txt",
     "epoch": "2026-02-03",
     "sealed_by": "ARIF FAZIL (888 Judge)",

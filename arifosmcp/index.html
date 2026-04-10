@@ -369,6 +369,11 @@
                 <span class="status-dot" id="status-dot"></span>
                 <span id="status-text">System Online — Loading live status</span>
             </div>
+            <div class="cta-buttons" style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#install" class="btn-primary" style="background: var(--accent-success); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s;">📦 Get Started</a>
+                <a href="https://github.com/ariffazil/arifOS" target="_blank" class="btn-secondary" style="background: var(--bg-tertiary); color: var(--accent-delta); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; border: 1px solid var(--accent-delta); transition: all 0.3s;">📚 View Source</a>
+                <a href="/dashboard" class="btn-tertiary" style="background: transparent; color: var(--accent-psi); padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; border: 1px solid var(--accent-psi); transition: all 0.3s;">⚡ Live Demo</a>
+            </div>
         </header>
 
         <nav>
@@ -377,6 +382,8 @@
             <a href="/health">Health</a>
             <a href="/dashboard">Dashboard</a>
             <a href="/static-sites/arifosmcp/docs.html">Documentation</a>
+            <a href="/humans.txt">humans.txt</a>
+            <a href="/llms.txt">llms.txt</a>
             <a href="https://github.com/ariffazil/arifosmcp" target="_blank">GitHub</a>
             <a href="https://pypi.org/project/arifosmcp/" target="_blank">PyPI</a>
         </nav>
@@ -429,7 +436,7 @@
             <p style="margin-top: 1rem; color: var(--text-secondary);" id="live-updated">Last update: --</p>
         </div>
 
-        <div class="section quickstart">
+        <div class="section quickstart" id="install">
             <h2>🚀 Quick Start</h2>
             <p>Install the world's first Constitutional AI Governance System in seconds:</p>
             
@@ -453,6 +460,110 @@
                 <a href="https://pypi.org/project/arifosmcp/" class="btn btn-primary" target="_blank">📦 Install from PyPI</a>
                 <a href="https://github.com/ariffazil/arifosmcp" class="btn btn-secondary" target="_blank">📚 View Source</a>
             </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Context-Rich Tool Registry v2.0.0</h2>
+            <p>arifOS now exposes <strong>semantic contracts</strong> for all tools—not just function signatures. AI agents can discover:</p>
+            <ul style="margin: 1rem 0; padding-left: 2rem; color: var(--text-secondary);">
+                <li><strong>purpose</strong> — What the tool is actually for</li>
+                <li><strong>when_to_use</strong> — Appropriate use cases</li>
+                <li><strong>when_not_to_use</strong> — Prevents bad routing</li>
+                <li><strong>context_contract</strong> — What context must be passed</li>
+                <li><strong>routing_hints</strong> — Upstream/downstream tools</li>
+                <li><strong>chatgpt_guidance</strong> — Plain English usage guidance</li>
+            </ul>
+            
+            <h3>🔗 MCP Schema Resources</h3>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/master</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">Complete system schema with stages, Trinity lanes, and transitions</p>
+            </div>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/tools</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">All 10 tool context packets with full semantic metadata</p>
+            </div>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/tool/{tool_id}</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">Individual tool context (e.g., arifos.mind, arifos.judge)</p>
+            </div>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/stages</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">Governance stage definitions and transitions</p>
+            </div>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/trinity</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">Δ Discernment, Ψ Sovereignty, Ω Stability lane definitions</p>
+            </div>
+            <div class="endpoint">
+                <span class="method get">RESOURCE</span>
+                <code>arifos://schema/routing-guide</code>
+                <p style="margin-top: 0.5rem; color: var(--text-secondary);">Lawful stage transitions for tool chaining</p>
+            </div>
+            
+            <h3>📊 10 Canonical Tools (Clean 2-Term Names)</h3>
+            <div class="tool-grid">
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_INIT | Ψ</span>
+                    <h4>arifos.init</h4>
+                    <p>Session establishment and actor binding</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">111_SENSE | Δ</span>
+                    <h4>arifos.sense</h4>
+                    <p>Reality grounding and evidence collection</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">333_MIND | Δ</span>
+                    <h4>arifos.mind</h4>
+                    <p>Structured reasoning and synthesis</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">444_ROUTER | Ψ</span>
+                    <h4>arifos.route</h4>
+                    <p>The Kernel — intelligent routing</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">555_MEMORY | Ω</span>
+                    <h4>arifos.memory</h4>
+                    <p>Governed memory retrieval and storage</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">666_HEART | Ω</span>
+                    <h4>arifos.heart</h4>
+                    <p>Safety critique and stress testing</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">777_OPS | Ω</span>
+                    <h4>arifos.ops</h4>
+                    <p>Cost estimation and thermodynamics</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_JUDGE | Ψ</span>
+                    <h4>arifos.judge</h4>
+                    <p>Constitutional verdict engine</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">999_VAULT | Ψ</span>
+                    <h4>arifos.vault</h4>
+                    <p>Immutable seal and ledger</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">FORGE_010 | Δ</span>
+                    <h4>arifos.forge</h4>
+                    <p>Execution bridge with attestation</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 1rem; color: var(--text-secondary);">
+                <strong>Public:</strong> arifos.init, arifos.route, arifos.judge, arifos.forge | 
+                <strong>Internal:</strong> sense, mind, heart, ops, memory, vault
+            </p>
         </div>
 
         <div class="section">

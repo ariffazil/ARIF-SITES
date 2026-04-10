@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ω-Wiki — arifOS Constitutional Knowledge Base</title>
+  <meta name="description" content="Central knowledge base for the arifOS constitutional AI ecosystem — covering arifOS kernel, GEOX Earth Witness, AF-FORGE agent runtime, APEX theory, and VAULT999." />
+  <meta name="author" content="Muhammad Arif bin Fazil" />
+  <meta name="role" content="KNOWLEDGE" />
+  <link rel="canonical" href="https://wiki.arif-fazil.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0d0d14;
+      --bg2:      #12121f;
+      --bg3:      #1a1a2e;
+      --border:   #1e1e35;
+      --text:     #d4d4e8;
+      --text2:    #7070a0;
+      --text3:    #4a4a70;
+      --gold:     #c4791a;
+      --gold-dim: #7a4c10;
+      --blue:     #3b82f6;
+      --blue-dim: #1d4ed8;
+      --green:    #22c55e;
+      --red:      #ef4444;
+      --purple:   #a855f7;
+      --sidebar-w: 260px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top bar ─────────────────────────────────────────── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 52px;
+      background: rgba(13,13,20,0.96);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0;
+      padding: 0 20px;
+      backdrop-filter: blur(8px);
+    }
+    .topbar-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
+      font-weight: 700; font-size: 16px;
+      letter-spacing: 0.5px;
+      margin-right: 24px;
+    }
+    .topbar-logo svg { flex-shrink: 0; }
+    .topbar-logo .omega { color: var(--gold); font-size: 20px; }
+    .topbar-search {
+      flex: 1; max-width: 380px;
+      position: relative;
+    }
+    .topbar-search input {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      padding: 7px 12px 7px 32px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .topbar-search input:focus { border-color: var(--blue); }
+    .topbar-search input::placeholder { color: var(--text3); }
+    .topbar-search-icon {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text3); font-size: 12px;
+    }
+    .topbar-links {
+      margin-left: auto;
+      display: flex; gap: 4px;
+    }
+    .topbar-links a {
+      font-size: 12px; color: var(--text2); text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid transparent;
+      transition: color .15s, border-color .15s;
+    }
+    .topbar-links a:hover { color: var(--text); border-color: var(--border); }
+
+    /* ── Layout ──────────────────────────────────────────── */
+    .layout {
+      display: flex;
+      margin-top: 52px;
+      flex: 1;
+    }
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    .sidebar {
+      width: var(--sidebar-w);
+      min-width: var(--sidebar-w);
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      position: fixed;
+      top: 52px; bottom: 0;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    .sidebar-section { margin-bottom: 4px; }
+    .sidebar-heading {
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--text3); padding: 10px 20px 6px;
+      font-weight: 600;
+    }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 20px;
+      font-size: 13px; color: var(--text2); text-decoration: none;
+      cursor: pointer;
+      transition: color .12s, background .12s;
+      border-left: 2px solid transparent;
+    }
+    .sidebar-link:hover { color: var(--text); background: var(--bg3); }
+    .sidebar-link.active {
+      color: var(--gold);
+      background: rgba(196,121,26,0.08);
+      border-left-color: var(--gold);
+    }
+    .sidebar-link .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: currentColor; flex-shrink: 0; opacity: 0.5;
+    }
+    .sidebar-link.active .dot { opacity: 1; }
+    .sidebar-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 8px 20px;
+    }
+
+    /* ── Main content ────────────────────────────────────── */
+    .main {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      padding: 40px 60px 80px;
+      max-width: 900px;
+    }
+
+    /* ── Article pages ───────────────────────────────────── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .page-header { margin-bottom: 36px; }
+    .page-badge {
+      display: inline-block;
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold-dim);
+      padding: 3px 10px; margin-bottom: 12px;
+    }
+    .page-title {
+      font-size: 32px; font-weight: 700; color: var(--text);
+      letter-spacing: -0.5px; line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .page-lead {
+      font-size: 16px; color: var(--text2); line-height: 1.6;
+      max-width: 680px;
+    }
+    .page-meta {
+      margin-top: 12px;
+      font-size: 11px; color: var(--text3);
+      font-family: 'JetBrains Mono', monospace;
+      display: flex; gap: 20px;
+    }
+
+    h2 {
+      font-size: 18px; font-weight: 700; color: var(--text);
+      margin: 36px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 14px; font-weight: 600; color: var(--gold);
+      margin: 24px 0 10px;
+      letter-spacing: 0.3px;
+    }
+    p { margin-bottom: 14px; color: var(--text2); }
+    p strong { color: var(--text); font-weight: 600; }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 2px 6px;
+      color: var(--text);
+    }
+    pre {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 16px 20px;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+    pre code {
+      background: none; border: none; padding: 0;
+      font-size: 13px; line-height: 1.7;
+    }
+
+    ul, ol {
+      margin: 10px 0 14px 20px;
+      color: var(--text2);
+    }
+    li { margin-bottom: 5px; }
+    li strong { color: var(--text); }
+
+    /* ── Cards ───────────────────────────────────────────── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px; margin: 20px 0;
+    }
+    .card {
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 16px 18px; cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+    .card:hover { border-color: var(--blue); background: var(--bg3); }
+    .card-icon { font-size: 20px; margin-bottom: 8px; }
+    .card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .card-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+    /* ── Floor table ─────────────────────────────────────── */
+    .floor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 8px; margin: 16px 0;
+    }
+    .floor {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-left: 3px solid var(--blue-dim);
+      padding: 12px 14px;
+    }
+    .floor.hard { border-left-color: var(--red); }
+    .floor.sovereign { border-left-color: var(--gold); }
+    .floor-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; letter-spacing: 1px; color: var(--text3);
+      margin-bottom: 4px;
+    }
+    .floor.hard .floor-id { color: #ef4444; }
+    .floor.sovereign .floor-id { color: var(--gold); }
+    .floor-name {
+      font-size: 13px; font-weight: 700; color: var(--text);
+      margin-bottom: 4px;
+    }
+    .floor-rule { font-size: 12px; color: var(--text2); line-height: 1.4; }
+
+    /* ── Table ───────────────────────────────────────────── */
+    table {
+      width: 100%; border-collapse: collapse; margin: 16px 0;
+      font-size: 13px;
+    }
+    th {
+      background: var(--bg3); color: var(--text);
+      padding: 10px 14px; text-align: left;
+      border: 1px solid var(--border);
+      font-size: 11px; letter-spacing: 0.5px; font-weight: 600;
+    }
+    td {
+      padding: 9px 14px; border: 1px solid var(--border);
+      color: var(--text2); vertical-align: top;
+    }
+    tr:hover td { background: var(--bg3); }
+
+    /* ── Verdict badges ──────────────────────────────────── */
+    .badge {
+      display: inline-block; font-size: 10px; letter-spacing: 1px;
+      text-transform: uppercase; padding: 2px 8px;
+      font-family: 'JetBrains Mono', monospace; font-weight: 600;
+    }
+    .badge-seal { background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3); }
+    .badge-partial { background: rgba(59,130,246,0.15); color: var(--blue); border: 1px solid rgba(59,130,246,0.3); }
+    .badge-sabar { background: rgba(196,121,26,0.15); color: var(--gold); border: 1px solid rgba(196,121,26,0.3); }
+    .badge-void { background: rgba(239,68,68,0.15); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+    .badge-hold { background: rgba(168,85,247,0.15); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
+
+    /* ── Info box ────────────────────────────────────────── */
+    .info-box {
+      background: rgba(59,130,246,0.07);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-left: 3px solid var(--blue);
+      padding: 14px 18px; margin: 16px 0;
+    }
+    .info-box.warn {
+      background: rgba(196,121,26,0.07);
+      border-color: rgba(196,121,26,0.2);
+      border-left-color: var(--gold);
+    }
+    .info-box .label {
+      font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace;
+    }
+    .info-box.warn .label { color: var(--gold); }
+    .info-box p { margin-bottom: 0; }
+
+    /* ── Bottom nav strip ────────────────────────────────── */
+    #rn {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: rgba(10,10,16,0.97);
+      border-top: 1px solid var(--border);
+      display: flex; align-items: stretch; justify-content: center;
+      height: 34px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    #rn a {
+      color: var(--text2); text-decoration: none;
+      padding: 0 14px; display: flex; align-items: center;
+      font-size: 10px; letter-spacing: 1.2px;
+      border-right: 1px solid var(--border);
+      transition: background .12s, color .12s;
+    }
+    #rn a:last-child { border-right: none; }
+    #rn a:hover { background: var(--bg3); color: var(--text); }
+    #rn a.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 24px 20px 80px; }
+      .card-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <a class="topbar-logo" onclick="showPage('home')">
+    <span class="omega">Ω</span>
+    <span>Wiki</span>
+  </a>
+  <div class="topbar-search">
+    <span class="topbar-search-icon">⌕</span>
+    <input type="text" id="search-input" placeholder="Search the wiki…" oninput="filterSidebar(this.value)" />
+  </div>
+  <div class="topbar-links">
+    <a href="https://arifosmcp.arif-fazil.com" target="_blank">arifOS MCP</a>
+    <a href="https://geox.arif-fazil.com" target="_blank">GEOX</a>
+    <a href="https://apex.arif-fazil.com" target="_blank">APEX</a>
+  </div>
+</div>
+
+<!-- Sidebar -->
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-heading">Start here</div>
+    <a class="sidebar-link active" onclick="showPage('home')"><span class="dot"></span>Overview</a>
+    <a class="sidebar-link" onclick="showPage('architecture')"><span class="dot"></span>Trinity Architecture</a>
+    <a class="sidebar-link" onclick="showPage('doctrine')"><span class="dot"></span>DITEMPA Doctrine</a>
+  </div>
+
+  <hr class="sidebar-divider" />
+
+  <div class="sidebar-section">
+    <div class="sidebar-heading">arifOS Kernel</div>
+    <a class="sidebar-link" onclick="showPage('arifosmcp')"><span class="dot"></span>arifOS MCP</a>
+    <a class="sidebar-link" onclick="showPage('floors')"><span class="dot"></span>13 Constitutional Floors</a>
+    <a class="sidebar-link" onclick="showPage('mcp-tools')"><span class="dot"></span>MCP Tools</a>
+    <a class="sidebar-link" onclick="showPage('vault999')"><span class="dot"></span>VAULT999 Ledger</a>
+  </div>
+
+  <hr class="sidebar-divider" />
+
+  <div class="sidebar-section">
+    <div class="sidebar-heading">GEOX Earth Witness</div>
+    <a class="sidebar-link" onclick="showPage('geox')"><span class="dot"></span>What is GEOX?</a>
+    <a class="sidebar-link" onclick="showPage('toac')"><span class="dot"></span>Theory of Anomalous Contrast</a>
+    <a class="sidebar-link" onclick="showPage('malay-basin')"><span class="dot"></span>Malay Basin Pilot</a>
+    <a class="sidebar-link" onclick="showPage('verdicts')"><span class="dot"></span>Verdict System</a>
+  </div>
+
+  <hr class="sidebar-divider" />
+
+  <div class="sidebar-section">
+    <div class="sidebar-heading">AF-FORGE Runtime</div>
+    <a class="sidebar-link" onclick="showPage('afforge')"><span class="dot"></span>Agent Runtime</a>
+    <a class="sidebar-link" onclick="showPage('task-states')"><span class="dot"></span>Task State Machine</a>
+    <a class="sidebar-link" onclick="showPage('policy-gates')"><span class="dot"></span>Policy Gates</a>
+  </div>
+
+  <hr class="sidebar-divider" />
+
+  <div class="sidebar-section">
+    <div class="sidebar-heading">Theory</div>
+    <a class="sidebar-link" onclick="showPage('apex')"><span class="dot"></span>APEX Canon</a>
+    <a class="sidebar-link" onclick="showPage('entropy')"><span class="dot"></span>Entropy Constraint (ΔS ≤ 0)</a>
+  </div>
+</nav>
+
+<!-- Main content -->
+<main class="main" id="main-content">
+
+  <!-- ══════════════════════════════════════ HOME ══ -->
+  <article class="page active" id="page-home">
+    <div class="page-header">
+      <div class="page-badge">Ω-Wiki · Knowledge Base</div>
+      <h1 class="page-title">arifOS Ecosystem</h1>
+      <p class="page-lead">
+        Central knowledge base for the constitutional AI governance ecosystem —
+        covering the arifOS kernel, GEOX Earth Witness, AF-FORGE agent runtime,
+        and the APEX constitutional canon.
+      </p>
+      <div class="page-meta">
+        <span>SOVEREIGN: Muhammad Arif bin Fazil</span>
+        <span>STATUS: LIVE</span>
+        <span>SEAL: DITEMPA BUKAN DIBERI</span>
+      </div>
+    </div>
+
+    <h2>Ecosystem Map</h2>
+    <div class="card-grid">
+      <div class="card" onclick="showPage('arifosmcp')">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">arifOS MCP</div>
+        <div class="card-desc">Constitutional kernel — 13 Floors, VAULT999, MCP server (FastMCP). The central intelligence hub.</div>
+      </div>
+      <div class="card" onclick="showPage('geox')">
+        <div class="card-icon">🌍</div>
+        <div class="card-title">GEOX Earth Witness</div>
+        <div class="card-desc">Geoscience co-agent with seismic interpretation, well-log analysis, and constitutional verdict enforcement.</div>
+      </div>
+      <div class="card" onclick="showPage('afforge')">
+        <div class="card-icon">🔨</div>
+        <div class="card-title">AF-FORGE</div>
+        <div class="card-desc">Agent runtime — Planner/Executor/Verifier, event store, policy engine, and task orchestration.</div>
+      </div>
+      <div class="card" onclick="showPage('apex')">
+        <div class="card-icon">△</div>
+        <div class="card-title">APEX Theory</div>
+        <div class="card-desc">Constitutional canon defining the 13 Floors and the mathematical basis for governed intelligence.</div>
+      </div>
+      <div class="card" onclick="showPage('vault999')">
+        <div class="card-icon">🔐</div>
+        <div class="card-title">VAULT999</div>
+        <div class="card-desc">Immutable audit ledger. Every SEAL verdict is written here. No irreversible action proceeds without a VAULT entry.</div>
+      </div>
+      <div class="card" onclick="showPage('architecture')">
+        <div class="card-icon">⬡</div>
+        <div class="card-title">Trinity Architecture</div>
+        <div class="card-desc">HUMAN ↔ THEORY ↔ APPS. The three-node governance topology that structures all system interactions.</div>
+      </div>
+    </div>
+
+    <h2>Golden Path</h2>
+    <p>Every interaction with the arifOS system follows this mandatory sequence:</p>
+    <pre><code>init → sense → mind → heart → judge → vault</code></pre>
+    <p>Skipping steps is a constitutional violation. <code>vault</code> only runs after <code>judge</code> issues a SEAL verdict.</p>
+
+    <h2>Live Endpoints</h2>
+    <table>
+      <tr><th>Service</th><th>URL</th><th>Status</th></tr>
+      <tr>
+        <td>arifOS MCP Kernel</td>
+        <td><a href="https://arifosmcp.arif-fazil.com" target="_blank">arifosmcp.arif-fazil.com</a></td>
+        <td><span class="badge badge-seal">LIVE</span></td>
+      </tr>
+      <tr>
+        <td>GEOX Earth Witness</td>
+        <td><a href="https://geox.arif-fazil.com" target="_blank">geox.arif-fazil.com</a></td>
+        <td><span class="badge badge-seal">LIVE</span></td>
+      </tr>
+      <tr>
+        <td>APEX Theory</td>
+        <td><a href="https://apex.arif-fazil.com" target="_blank">apex.arif-fazil.com</a></td>
+        <td><span class="badge badge-seal">LIVE</span></td>
+      </tr>
+      <tr>
+        <td>Human Node</td>
+        <td><a href="https://arif-fazil.com" target="_blank">arif-fazil.com</a></td>
+        <td><span class="badge badge-seal">LIVE</span></td>
+      </tr>
+      <tr>
+        <td>Ω-Wiki (this)</td>
+        <td><a href="https://wiki.arif-fazil.com" target="_blank">wiki.arif-fazil.com</a></td>
+        <td><span class="badge badge-seal">LIVE</span></td>
+      </tr>
+    </table>
+  </article>
+
+  <!-- ══════════════════════════════ ARCHITECTURE ══ -->
+  <article class="page" id="page-architecture">
+    <div class="page-header">
+      <div class="page-badge">Core Concept</div>
+      <h1 class="page-title">Trinity Architecture</h1>
+      <p class="page-lead">Three co-equal nodes — HUMAN, THEORY, APPS — that must agree before any governed action is executed.</p>
+    </div>
+
+    <h2>The Three Nodes</h2>
+    <table>
+      <tr><th>Node</th><th>Role</th><th>Domain</th><th>Endpoint</th></tr>
+      <tr>
+        <td><strong>HUMAN</strong></td>
+        <td>Sovereign authority. Final veto on all 888_HOLD gates. No AI action overrides this node.</td>
+        <td>Intent, oversight, approval</td>
+        <td><a href="https://arif-fazil.com" target="_blank">arif-fazil.com</a></td>
+      </tr>
+      <tr>
+        <td><strong>THEORY</strong></td>
+        <td>Constitutional canon. The APEX floors define what is allowed. No operation proceeds without passing the 13 Floors.</td>
+        <td>F1–F13, entropy math, governance rules</td>
+        <td><a href="https://apex.arif-fazil.com" target="_blank">apex.arif-fazil.com</a></td>
+      </tr>
+      <tr>
+        <td><strong>APPS</strong></td>
+        <td>Execution layer. arifOS MCP, GEOX, AF-FORGE run here. All operations are audited via VAULT999.</td>
+        <td>Kernel, agents, data tools</td>
+        <td><a href="https://arifosmcp.arif-fazil.com" target="_blank">arifosmcp.arif-fazil.com</a></td>
+      </tr>
+    </table>
+
+    <h2>Consensus Rule</h2>
+    <p>
+      A <strong>Tri-Witness</strong> (Floor F3) check validates that HUMAN intent, THEORY constraints, and APPS execution are aligned
+      before any consequential action. If any node dissents, the action is blocked or escalated to 888_HOLD.
+    </p>
+    <div class="info-box">
+      <div class="label">888_HOLD</div>
+      <p>A hard gate that suspends execution and surfaces a decision to the HUMAN node. It cannot be auto-approved by any AI component. This maps to constitutional principle F13 (SOVEREIGN).</p>
+    </div>
+
+    <h2>Network Topology (Docker)</h2>
+    <pre><code>traefik_network        — shared routing layer (all public services)
+arifos_core_network    — arifOS kernel, databases, Traefik
+geox_geox_network      — GEOX internal services</code></pre>
+  </article>
+
+  <!-- ══════════════════════════════════ DOCTRINE ══ -->
+  <article class="page" id="page-doctrine">
+    <div class="page-header">
+      <div class="page-badge">Philosophy</div>
+      <h1 class="page-title">DITEMPA BUKAN DIBERI</h1>
+      <p class="page-lead">Forged, not given. The core doctrine of the arifOS constitutional ecosystem.</p>
+    </div>
+
+    <p>
+      <strong>DITEMPA BUKAN DIBERI</strong> (Malay: "Forged, not given") is the founding principle of this system.
+      Intelligence, capability, and authority are not granted — they are earned through verified, governed process.
+    </p>
+    <p>
+      Every agent, every tool, every deployment must pass the constitutional floors. A SEAL verdict is not handed out —
+      it is the result of a full THEORY → ENGINE → GOVERNANCE pass with confidence ≥ 0.80.
+    </p>
+
+    <h2>Implications</h2>
+    <ul>
+      <li><strong>No shortcuts</strong> — the Golden Path (init → sense → mind → heart → judge → vault) cannot be skipped.</li>
+      <li><strong>No hallucinated authority</strong> — an agent cannot claim a SEAL it did not earn. F9 (Anti-Hantu) blocks this.</li>
+      <li><strong>No irreversible action without a ledger entry</strong> — VAULT999 records every consequential decision before it executes.</li>
+      <li><strong>The human is the final node</strong> — F13 (Sovereign) ensures Muhammad Arif bin Fazil holds the ultimate veto.</li>
+    </ul>
+
+    <h2>Seal Phrase</h2>
+    <pre><code>999_SEAL: DITEMPA BUKAN DIBERI</code></pre>
+    <p>This phrase appears in every health endpoint and production manifest. It is the constitutional signature of a properly forged deployment.</p>
+  </article>
+
+  <!-- ════════════════════════════════ ARIFOSMCP ══ -->
+  <article class="page" id="page-arifosmcp">
+    <div class="page-header">
+      <div class="page-badge">arifOS · Kernel</div>
+      <h1 class="page-title">arifOS MCP</h1>
+      <p class="page-lead">The constitutional kernel — a FastMCP server implementing the 13 Constitutional Floors with VAULT999 audit logging.</p>
+    </div>
+
+    <h2>What it does</h2>
+    <p>
+      arifOS MCP is the central intelligence hub of the Trinity Architecture. It runs as a FastMCP server,
+      exposing constitutional tools via the Model Context Protocol. Every tool call passes through the governance
+      mesh before executing.
+    </p>
+
+    <h2>Public Tools</h2>
+    <table>
+      <tr><th>Tool</th><th>Purpose</th><th>Floor check</th></tr>
+      <tr><td><code>arifos.v2.init</code></td><td>Bootstrap a governed session</td><td>F1, F2, F13</td></tr>
+      <tr><td><code>arifos.v2.route</code></td><td>Route a task through the Golden Path</td><td>F3, F4, F9</td></tr>
+      <tr><td><code>arifos.v2.judge</code></td><td>Render a constitutional verdict</td><td>All 13 floors</td></tr>
+    </table>
+
+    <h2>Internal Tools (post-SEAL)</h2>
+    <table>
+      <tr><th>Tool</th><th>Purpose</th></tr>
+      <tr><td><code>sense</code></td><td>Perceive context and build grounded awareness</td></tr>
+      <tr><td><code>mind</code></td><td>Reason over perceived context, generate plan</td></tr>
+      <tr><td><code>heart</code></td><td>Apply constitutional values to the plan</td></tr>
+      <tr><td><code>ops</code></td><td>Execute verified actions</td></tr>
+      <tr><td><code>memory</code></td><td>Store/recall in Qdrant vector memory</td></tr>
+      <tr><td><code>vault</code></td><td>Write sealed verdict to VAULT999</td></tr>
+      <tr><td><code>forge</code></td><td>Compose and deploy new tools (post-SEAL only)</td></tr>
+    </table>
+
+    <h2>Infrastructure</h2>
+    <pre><code>Container:  arifosmcp
+Port:       8080
+Network:    arifos_core_network, traefik_network
+Health:     https://arifosmcp.arif-fazil.com/health
+Stack:      Python 3.12 · FastMCP · Qdrant · PostgreSQL · Redis</code></pre>
+  </article>
+
+  <!-- ════════════════════════════════════ FLOORS ══ -->
+  <article class="page" id="page-floors">
+    <div class="page-header">
+      <div class="page-badge">arifOS · Governance</div>
+      <h1 class="page-title">13 Constitutional Floors</h1>
+      <p class="page-lead">Non-negotiable governance rules applied to every agent action. Hard floors block immediately. Soft floors require justification.</p>
+    </div>
+
+    <div class="info-box warn">
+      <div class="label">Load-bearing floors</div>
+      <p>F1 (Amanah), F2 (Truth), F9 (Anti-Hantu), and F13 (Sovereign) are the four most critical. Violation of any of these results in immediate VOID verdict and 888_HOLD escalation.</p>
+    </div>
+
+    <div class="floor-grid">
+      <div class="floor hard">
+        <div class="floor-id">F1 — HARD FLOOR</div>
+        <div class="floor-name">AMANAH (Trust)</div>
+        <div class="floor-rule">No irreversible action without a VAULT999 seal. Maps to <code>888_HOLD</code> / <code>destructive</code> risk gates.</div>
+      </div>
+      <div class="floor hard">
+        <div class="floor-id">F2 — HARD FLOOR</div>
+        <div class="floor-name">TRUTH (τ ≥ 0.99)</div>
+        <div class="floor-rule">No ungrounded claims. Every conclusion requires an evidence link. Truth score must reach 0.99 threshold.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F3 — SOFT FLOOR</div>
+        <div class="floor-name">TRI-WITNESS</div>
+        <div class="floor-rule">Theory, constitution, and human intent must agree. All three witnesses required for consequential actions.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F4 — SOFT FLOOR</div>
+        <div class="floor-name">CLARITY (ΔS ≤ 0)</div>
+        <div class="floor-rule">Entropy must decrease. Every action must reduce ambiguity or confusion in the system.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F5 — SOFT FLOOR</div>
+        <div class="floor-name">PEACE²</div>
+        <div class="floor-rule">Must not destroy without a restoration path. Destructive actions require a reversal plan.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F6 — SOFT FLOOR</div>
+        <div class="floor-name">EMPATHY</div>
+        <div class="floor-rule">Human impact must be modelled before execution. No action proceeds if downstream harm is unquantified.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F7 — SOFT FLOOR</div>
+        <div class="floor-name">HUMILITY</div>
+        <div class="floor-rule">Uncertainty must be calibrated and declared. Overconfidence (confidence proxy &lt; threshold) triggers PARTIAL verdict.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F8 — SOFT FLOOR</div>
+        <div class="floor-name">GROWTH</div>
+        <div class="floor-rule">Actions must build capacity, not reduce it. System capability must trend upward over time.</div>
+      </div>
+      <div class="floor hard">
+        <div class="floor-id">F9 — HARD FLOOR</div>
+        <div class="floor-name">ANTI-HANTU</div>
+        <div class="floor-rule">No deception or manipulation. Enforced in all agent outputs. "Hantu" (ghost) = hallucinated authority or fabricated evidence.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F10 — SOFT FLOOR</div>
+        <div class="floor-name">BALANCE</div>
+        <div class="floor-rule">Resource allocation must be proportional to value. No over-provisioning or under-resourcing of critical paths.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F11 — SOFT FLOOR</div>
+        <div class="floor-name">AUDITABILITY</div>
+        <div class="floor-rule">Every deployment transition and consequential decision must be logged. Provenance is mandatory.</div>
+      </div>
+      <div class="floor">
+        <div class="floor-id">F12 — SOFT FLOOR</div>
+        <div class="floor-name">CONTINUITY</div>
+        <div class="floor-rule">System must maintain operational continuity. Single points of failure require documented recovery paths.</div>
+      </div>
+      <div class="floor sovereign">
+        <div class="floor-id">F13 — SOVEREIGN FLOOR</div>
+        <div class="floor-name">SOVEREIGN</div>
+        <div class="floor-rule">Muhammad Arif bin Fazil holds final authority. <code>888_HOLD</code> gates must block — never auto-approve. This floor cannot be delegated.</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ════════════════════════════════ MCP TOOLS ══ -->
+  <article class="page" id="page-mcp-tools">
+    <div class="page-header">
+      <div class="page-badge">arifOS · Reference</div>
+      <h1 class="page-title">MCP Tool Reference</h1>
+      <p class="page-lead">All tools exposed via the Model Context Protocol. Each tool is gated by the 13 Constitutional Floors.</p>
+    </div>
+
+    <h2>Tool Risk Levels</h2>
+    <table>
+      <tr><th>Risk</th><th>Gate</th><th>Auto-approve?</th><th>Examples</th></tr>
+      <tr><td><code>read_only</code></td><td>ALLOW</td><td>Yes</td><td>repo scan, summarize, health check</td></tr>
+      <tr><td><code>write_safe</code> / <code>external_network</code></td><td>ON_LOOP</td><td>Loop approval</td><td>branch create, package install</td></tr>
+      <tr><td><code>destructive</code></td><td>888_HOLD</td><td><strong>Never</strong></td><td>delete files, overwrite config</td></tr>
+      <tr><td><code>credential</code></td><td>888_HOLD</td><td><strong>Never</strong></td><td>.env write, key rotation</td></tr>
+      <tr><td><code>infra_mutation</code></td><td>888_HOLD</td><td><strong>Never</strong></td><td>docker-compose changes, firewall rules</td></tr>
+      <tr><td><code>merge_publish</code></td><td>888_HOLD</td><td><strong>Never</strong></td><td>protected-branch merge, release tag</td></tr>
+    </table>
+
+    <h2>Golden Path Sequence</h2>
+    <pre><code>1. arifos.v2.init     → Bootstrap session, validate F1+F13
+2. sense              → Perceive context (internal, post-init)
+3. mind               → Reason and plan
+4. heart              → Constitutional values check
+5. arifos.v2.judge    → Render verdict (SEAL / PARTIAL / SABAR / VOID)
+6. vault              → Write to VAULT999 (only if SEAL)</code></pre>
+  </article>
+
+  <!-- ══════════════════════════════════ VAULT999 ══ -->
+  <article class="page" id="page-vault999">
+    <div class="page-header">
+      <div class="page-badge">arifOS · Audit</div>
+      <h1 class="page-title">VAULT999</h1>
+      <p class="page-lead">Immutable audit registry for sealed verdicts. Every consequential action leaves a permanent ledger entry before execution.</p>
+    </div>
+
+    <p>
+      VAULT999 is the constitutional ledger of the arifOS ecosystem. It stores every verdict that reaches
+      SEAL status (confidence ≥ 0.80). Writing to VAULT999 is an F1 (Amanah) requirement — no irreversible
+      action proceeds without a corresponding vault entry.
+    </p>
+
+    <h2>Entry Structure</h2>
+    <pre><code>{
+  "id":         "vault-{timestamp}-{hash}",
+  "verdict":    "SEAL | PARTIAL | SABAR | VOID",
+  "confidence": 0.00 – 1.00,
+  "floor_pass": ["F1","F2",...,"F13"],
+  "floor_fail": [],
+  "action":     "description of the sealed action",
+  "agent":      "arifOS MCP | GEOX | AF-FORGE | ...",
+  "sovereign":  "arif-fazil",
+  "timestamp":  "ISO-8601",
+  "seal_phrase": "DITEMPA BUKAN DIBERI"
+}</code></pre>
+
+    <h2>Access</h2>
+    <p>VAULT999 entries are accessible via the <code>vault</code> internal tool after a successful SEAL verdict through the Golden Path. Direct writes are not permitted — all entries go through <code>arifos.v2.judge</code>.</p>
+
+    <div class="info-box warn">
+      <div class="label">F1 Enforcement</div>
+      <p>Any tool with <code>destructive</code> or <code>infra_mutation</code> risk level that bypasses VAULT999 is a constitutional violation and triggers an immediate 888_HOLD regardless of context.</p>
+    </div>
+  </article>
+
+  <!-- ═══════════════════════════════════════ GEOX ══ -->
+  <article class="page" id="page-geox">
+    <div class="page-header">
+      <div class="page-badge">GEOX · Overview</div>
+      <h1 class="page-title">GEOX Earth Witness</h1>
+      <p class="page-lead">Constitutional geoscience co-agent. Every interpretation must be thermodynamically possible, geospatially grounded, and evidence-backed before receiving a SEAL.</p>
+    </div>
+
+    <p>
+      GEOX is the Earth Witness organ in the arifOS constitutional federation. It is not a passive data viewer —
+      every output it produces goes through a full THEORY → ENGINE → GOVERNANCE pass before being surfaced.
+    </p>
+
+    <h2>Core Capabilities</h2>
+    <ul>
+      <li><strong>Seismic interpretation</strong> — load and evaluate seismic lines with constitutional floor enforcement</li>
+      <li><strong>Well-log analysis</strong> — interpret well log data against physical plausibility constraints</li>
+      <li><strong>Prospect evaluation</strong> — score hydrocarbon prospects with uncertainty quantification</li>
+      <li><strong>Malay Basin Pilot</strong> — live data integration for the Malay Basin geological framework</li>
+      <li><strong>Macrostrat integration</strong> — query global stratigraphic data as ground-truth anchor</li>
+    </ul>
+
+    <h2>Architecture</h2>
+    <table>
+      <tr><th>Layer</th><th>Purpose</th><th>Key components</th></tr>
+      <tr><td>THEORY</td><td>Defines contrast taxonomy, transform catalog, conflation risk</td><td><code>contrast_theory.py</code>, <code>contrast_taxonomy.py</code></td></tr>
+      <tr><td>ENGINE</td><td>Processes seismic contrast space, detects anomalies</td><td><code>contrast_space.py</code>, <code>anomaly_detector.py</code></td></tr>
+      <tr><td>TOOLS</td><td>Domain-specific tools for seismic, well-log, Macrostrat</td><td><code>tools/seismic/</code>, <code>tools/well_log_tool.py</code></td></tr>
+      <tr><td>GOVERNANCE</td><td>Floor enforcement, audit logging, verdict rendering</td><td><code>floor_enforcer.py</code>, <code>verdict_renderer.py</code></td></tr>
+    </table>
+
+    <h2>Infrastructure</h2>
+    <pre><code>GUI container:   geox_gui    → nginx serving React 19 cockpit
+API container:   geox_server → FastMCP Python server (port 8000)
+Network:         traefik_network, geox_geox_network
+Live:            https://geox.arif-fazil.com
+Health:          https://geox.arif-fazil.com/health
+MCP endpoint:    https://geox.arif-fazil.com/mcp
+Version:         0.6.0</code></pre>
+  </article>
+
+  <!-- ════════════════════════════════════════ TOAC ══ -->
+  <article class="page" id="page-toac">
+    <div class="page-header">
+      <div class="page-badge">GEOX · Theory</div>
+      <h1 class="page-title">Theory of Anomalous Contrast (ToAC)</h1>
+      <p class="page-lead">Visual contrast ≠ physical reality. Every pixel transform chain must be audited before an interpretation can receive a SEAL.</p>
+    </div>
+
+    <h2>Core Principle</h2>
+    <p>
+      The ToAC states that anomalies visible in seismic or geospatial imagery are <em>contrast artefacts</em>
+      until proven otherwise. A bright spot on a seismic section may be a genuine DHI (Direct Hydrocarbon Indicator)
+      or it may be a processing artefact, multiple, or geometric effect.
+    </p>
+    <p>
+      GEOX enforces an audit of the full transform chain — from acquisition to display — before allowing any
+      geological interpretation to proceed. This is the implementation of Floor F2 (Truth: τ ≥ 0.99) and
+      Floor F4 (Clarity: CRS + units mandatory).
+    </p>
+
+    <h2>Conflation Risk Classes</h2>
+    <table>
+      <tr><th>Class</th><th>Risk</th><th>Required evidence</th></tr>
+      <tr><td>DHI (Direct Hydrocarbon Indicator)</td><td>HIGH — commonly misidentified</td><td>AVO analysis + well tie</td></tr>
+      <tr><td>Fault shadow</td><td>MEDIUM — geometry dependent</td><td>Full-offset stack comparison</td></tr>
+      <tr><td>Multiple</td><td>MEDIUM — acquisition artefact</td><td>SRME / demultiple QC</td></tr>
+      <tr><td>Processing filter edge</td><td>LOW — systematic</td><td>Filter documentation</td></tr>
+      <tr><td>True stratigraphic anomaly</td><td>LOW after ToAC pass</td><td>Well-calibrated interpretation</td></tr>
+    </table>
+
+    <h2>Audit Requirements</h2>
+    <p>Before GEOX renders a SEAL verdict on any interpretation, the following must be documented:</p>
+    <ul>
+      <li>Coordinate reference system (CRS) and datum</li>
+      <li>Acquisition geometry and fold</li>
+      <li>Processing sequence (demultiple, migration, filter)</li>
+      <li>Display parameters (gain, colour scale, clip level)</li>
+      <li>Well tie quality (if available)</li>
+    </ul>
+  </article>
+
+  <!-- ══════════════════════════════ MALAY-BASIN ══ -->
+  <article class="page" id="page-malay-basin">
+    <div class="page-header">
+      <div class="page-badge">GEOX · Pilot</div>
+      <h1 class="page-title">Malay Basin Pilot</h1>
+      <p class="page-lead">Live geoscience pilot integrating the Malay Basin geological framework into GEOX Earth Witness v0.6.0.</p>
+    </div>
+
+    <h2>Basin Overview</h2>
+    <p>
+      The Malay Basin is a Cenozoic intracratonic basin located in the southern South China Sea,
+      straddling Malaysia and Indonesia. It is one of Southeast Asia's most productive hydrocarbon basins,
+      with over 50 years of production history from clastic reservoirs of Miocene to Pliocene age.
+    </p>
+    <ul>
+      <li><strong>Area:</strong> ~85,000 km²</li>
+      <li><strong>Dominant play type:</strong> Fluvio-deltaic clastics (Miocene–Pliocene)</li>
+      <li><strong>Structural style:</strong> NW-SE trending normal faults with inversion</li>
+      <li><strong>Primary operator:</strong> Petronas Carigali (Malaysian waters)</li>
+      <li><strong>Data source:</strong> GSM-702001 regional interpretation framework</li>
+    </ul>
+
+    <h2>Constitutional Integration</h2>
+    <p>
+      All Malay Basin prospect evaluations in GEOX must pass:
+    </p>
+    <ul>
+      <li><strong>F2 Truth</strong> — coordinates in WGS84/MSL, tied to public Macrostrat stratigraphy</li>
+      <li><strong>F4 Clarity</strong> — all depth estimates in metres TVDSS with ± uncertainty band</li>
+      <li><strong>F7 Humility</strong> — P10/P50/P90 resource estimates required; single-point estimates blocked</li>
+      <li><strong>F9 Anti-Hantu</strong> — no phantom structures; every closure must have a 4-way or fault-dependent trap with documented geometry</li>
+      <li><strong>F13 Sovereign</strong> — prospect gate (drill/no-drill decision) requires human confirmation</li>
+    </ul>
+
+    <h2>Live Dashboard</h2>
+    <p>The Malay Basin Pilot dashboard is accessible at <a href="https://geox.arif-fazil.com" target="_blank">geox.arif-fazil.com</a> under the <strong>Pilot</strong> tab. It integrates the regional framework with the GEOX cockpit's seismic viewer, well-log panel, and governance badge strip.</p>
+  </article>
+
+  <!-- ══════════════════════════════════ VERDICTS ══ -->
+  <article class="page" id="page-verdicts">
+    <div class="page-header">
+      <div class="page-badge">GEOX · Governance</div>
+      <h1 class="page-title">Verdict System</h1>
+      <p class="page-lead">Every GEOX tool call returns a constitutionally graded verdict. Confidence determines whether an action is sealed, held, or blocked.</p>
+    </div>
+
+    <table>
+      <tr><th>Verdict</th><th>Confidence</th><th>Meaning</th><th>Action</th></tr>
+      <tr>
+        <td><span class="badge badge-seal">SEAL</span></td>
+        <td>≥ 0.80</td>
+        <td>Fully grounded, all floors passed, evidence chain complete</td>
+        <td>Auto-proceed + VAULT999 entry</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-partial">PARTIAL</span></td>
+        <td>≥ 0.50</td>
+        <td>Mostly grounded, minor caveats, proceed with disclosed limitations</td>
+        <td>Proceed with documented caveats</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-sabar">SABAR</span></td>
+        <td>≥ 0.25</td>
+        <td>"Wait" — insufficient evidence, gather more data before interpreting</td>
+        <td>Hold — request additional data</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-void">VOID</span></td>
+        <td>&lt; 0.25</td>
+        <td>Contradictions detected or evidence missing — interpretation blocked</td>
+        <td>Block + F9 flag raised</td>
+      </tr>
+    </table>
+
+    <div class="info-box">
+      <div class="label">SABAR principle</div>
+      <p><em>Sabar</em> (Malay: patience, composure) — a GEOX system that does not have enough information says "wait" rather than fabricating certainty. This is the institutional expression of Floor F7 (Humility).</p>
+    </div>
+  </article>
+
+  <!-- ══════════════════════════════════ AF-FORGE ══ -->
+  <article class="page" id="page-afforge">
+    <div class="page-header">
+      <div class="page-badge">AF-FORGE · Overview</div>
+      <h1 class="page-title">AF-FORGE Agent Runtime</h1>
+      <p class="page-lead">TypeScript agent runtime — Planner/Executor/Verifier architecture with an event store, policy engine, and constitutional tool registry.</p>
+    </div>
+
+    <h2>Execution Flow</h2>
+    <pre><code>CLI (cli.ts)
+  → AgentProfile
+  → AgentEngine
+      → LongTermMemory injection
+      → LlmProvider.completeTurn()
+      → ToolRegistry.runTool()   [permission + policy check]
+      → ShortTermMemory append
+      → RunReporter
+          → ForgeScoreboard
+          → RunMetricsLogger</code></pre>
+
+    <h2>Modes</h2>
+    <table>
+      <tr><th>Mode</th><th>Env var</th><th>Effect</th></tr>
+      <tr><td>internal_mode</td><td><code>AGENT_WORKBENCH_DEFAULT_MODE=internal</code></td><td>Full tool access, all risk levels enabled</td></tr>
+      <tr><td>external_safe_mode</td><td><code>AGENT_WORKBENCH_DEFAULT_MODE=external_safe_mode</code></td><td>Disables <code>run_command</code>, redacts secrets and URLs</td></tr>
+      <tr><td>root-key (trust local VPS)</td><td><code>AGENT_WORKBENCH_TRUST_LOCAL_VPS=1</code></td><td>Disables all sandboxing, forces internal_mode</td></tr>
+    </table>
+
+    <h2>LLM Providers</h2>
+    <ul>
+      <li><code>mock</code> — deterministic scripted responses (default, for testing)</li>
+      <li><code>openai_responses</code> — live OpenAI Responses API (requires <code>OPENAI_API_KEY</code>)</li>
+    </ul>
+
+    <h2>Stack</h2>
+    <pre><code>Language:   TypeScript (ESM, NodeNext module resolution)
+Runtime:    Node.js 22+
+Test:       node:test (built-in, no jest/vitest)
+Build:      npm run build  →  dist/
+Entry:      node dist/src/cli.js &lt;command&gt;</code></pre>
+  </article>
+
+  <!-- ═══════════════════════════════ TASK-STATES ══ -->
+  <article class="page" id="page-task-states">
+    <div class="page-header">
+      <div class="page-badge">AF-FORGE · Reference</div>
+      <h1 class="page-title">Task State Machine</h1>
+      <p class="page-lead">Every task in AF-FORGE moves through a defined state sequence. States cannot be skipped.</p>
+    </div>
+
+    <pre><code>TASK_CREATED
+  → PLAN_PROPOSED
+      → APPROVAL_REQUIRED       (human review gate)
+          → TOOL_RUN_STARTED
+              → TOOL_RUN_FINISHED
+                  → TASK_COMPLETED
+                  → TASK_ABORTED        (floor violation or 888_HOLD)</code></pre>
+
+    <h2>State Definitions</h2>
+    <table>
+      <tr><th>State</th><th>Description</th><th>Next states</th></tr>
+      <tr><td><code>TASK_CREATED</code></td><td>Task registered, not yet planned</td><td>PLAN_PROPOSED</td></tr>
+      <tr><td><code>PLAN_PROPOSED</code></td><td>AgentEngine has generated a plan</td><td>APPROVAL_REQUIRED, TOOL_RUN_STARTED</td></tr>
+      <tr><td><code>APPROVAL_REQUIRED</code></td><td>888_HOLD triggered — waiting for human</td><td>TOOL_RUN_STARTED (approved), TASK_ABORTED (rejected)</td></tr>
+      <tr><td><code>TOOL_RUN_STARTED</code></td><td>Tool execution in progress</td><td>TOOL_RUN_FINISHED</td></tr>
+      <tr><td><code>TOOL_RUN_FINISHED</code></td><td>Tool returned result</td><td>TASK_COMPLETED, TOOL_RUN_STARTED (next step)</td></tr>
+      <tr><td><code>TASK_COMPLETED</code></td><td>All steps done, verdict rendered</td><td>Terminal</td></tr>
+      <tr><td><code>TASK_ABORTED</code></td><td>Floor violation, 888_HOLD rejection, or error</td><td>Terminal</td></tr>
+    </table>
+  </article>
+
+  <!-- ═══════════════════════════════ POLICY-GATES ══ -->
+  <article class="page" id="page-policy-gates">
+    <div class="page-header">
+      <div class="page-badge">AF-FORGE · Security</div>
+      <h1 class="page-title">Policy Gates</h1>
+      <p class="page-lead">Every tool call is assessed against a risk level before execution. High-risk operations block until the HUMAN node approves.</p>
+    </div>
+
+    <h2>Gate Types</h2>
+    <table>
+      <tr><th>Risk level</th><th>Gate</th><th>Behaviour</th></tr>
+      <tr><td><code>safe</code> / <code>read_only</code></td><td>ALLOW</td><td>Executes immediately, no approval needed</td></tr>
+      <tr><td><code>guarded</code> / <code>write_safe</code></td><td>ON_LOOP</td><td>Requires loop-level confirmation, logged</td></tr>
+      <tr><td><code>dangerous</code> / <code>destructive</code></td><td>888_HOLD</td><td>Suspended — surfaced to human for explicit approval. Cannot be auto-approved.</td></tr>
+      <tr><td><code>credential</code></td><td>888_HOLD</td><td>Same as dangerous + credential handling audit log</td></tr>
+      <tr><td><code>infra_mutation</code></td><td>888_HOLD</td><td>Infrastructure change — requires architecture sign-off</td></tr>
+      <tr><td><code>merge_publish</code></td><td>888_HOLD</td><td>Git history mutation — requires explicit human release approval</td></tr>
+    </table>
+
+    <div class="info-box warn">
+      <div class="label">888_HOLD is absolute</div>
+      <p>No AI agent component may auto-approve an 888_HOLD gate. Attempting to do so is a direct violation of Floor F13 (Sovereign). The hold must surface to Muhammad Arif bin Fazil personally.</p>
+    </div>
+
+    <h2>Dangerous tools flag</h2>
+    <p>Tools classified as <code>dangerous</code> are only accessible when <code>ENABLE_DANGEROUS_TOOLS=1</code> is explicitly set in the environment. They remain gated by 888_HOLD even when the flag is active.</p>
+  </article>
+
+  <!-- ═══════════════════════════════════════ APEX ══ -->
+  <article class="page" id="page-apex">
+    <div class="page-header">
+      <div class="page-badge">Theory · Canon</div>
+      <h1 class="page-title">APEX Constitutional Canon</h1>
+      <p class="page-lead">The theoretical foundation for governed intelligence. APEX defines what it means for an AI system to be constitutionally compliant.</p>
+    </div>
+
+    <p>
+      APEX is the THEORY node of the Trinity Architecture. It is not a software system — it is a body of
+      constitutional principles that all software systems in the ecosystem must implement.
+      The <a href="https://apex.arif-fazil.com" target="_blank">apex.arif-fazil.com</a> site is the canonical reference.
+    </p>
+
+    <h2>Core Claims</h2>
+    <ul>
+      <li>Intelligence that cannot be audited is not trustworthy intelligence.</li>
+      <li>Every AI action has a reversibility coefficient. Irreversible actions require proportionally higher evidence standards.</li>
+      <li>Human sovereignty is not a feature to be toggled — it is a constitutional floor (F13) that cannot be negotiated away.</li>
+      <li>The entropy constraint (ΔS ≤ 0, Floor F4) is the mathematical expression of "make things clearer, not murkier."</li>
+      <li>A system that claims a SEAL it did not earn is a Ghost (Hantu) — Floor F9 blocks this absolutely.</li>
+    </ul>
+
+    <h2>Relationship to arifOS</h2>
+    <p>
+      arifOS MCP is the runtime implementation of APEX theory. Every floor in arifOS has a direct mapping
+      to an APEX principle. When theory and implementation diverge, APEX wins — the implementation must
+      be updated to conform.
+    </p>
+  </article>
+
+  <!-- ══════════════════════════════════ ENTROPY ══ -->
+  <article class="page" id="page-entropy">
+    <div class="page-header">
+      <div class="page-badge">Theory · Mathematics</div>
+      <h1 class="page-title">Entropy Constraint (ΔS ≤ 0)</h1>
+      <p class="page-lead">Floor F4 — every action in the system must reduce or maintain information entropy. Actions that increase confusion are constitutionally blocked.</p>
+    </div>
+
+    <h2>Definition</h2>
+    <p>
+      In information-theoretic terms, entropy S is the measure of uncertainty or disorder in a state.
+      The constitutional constraint ΔS ≤ 0 means that every action an agent takes must leave the system
+      in a state of equal or lower uncertainty than before.
+    </p>
+    <p>
+      Concretely: if an agent's response makes the situation less clear — adds ambiguity, contradicts
+      established facts, or leaves a problem in a worse-understood state — it violates F4.
+    </p>
+
+    <h2>Practical enforcement</h2>
+    <ul>
+      <li>Every tool call must declare how it reduces uncertainty (even if marginally)</li>
+      <li>Responses that introduce more unknowns than they resolve score negative ΔS and are blocked</li>
+      <li>In GEOX, this manifests as the requirement for coordinates + CRS on all inputs — bare pixel values have undefined entropy reduction</li>
+      <li>In AF-FORGE, multi-step plans must show monotonically decreasing uncertainty toward the goal</li>
+    </ul>
+  </article>
+
+</main>
+</div>
+
+<!-- Bottom nav strip -->
+<div id="rn">
+  <a href="https://arif-fazil.com" target="_blank">HUMAN</a>
+  <a href="https://apex.arif-fazil.com" target="_blank">THEORY</a>
+  <a href="https://arifosmcp.arif-fazil.com" target="_blank">arifOS MCP</a>
+  <a href="https://geox.arif-fazil.com" target="_blank">GEOX</a>
+  <a href="https://wiki.arif-fazil.com" class="active">Ω-WIKI</a>
+</div>
+
+<script>
+  function showPage(id) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Deactivate all sidebar links
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+
+    // Show target page
+    const page = document.getElementById('page-' + id);
+    if (page) page.classList.add('active');
+
+    // Activate matching sidebar link
+    const link = document.querySelector(`.sidebar-link[onclick="showPage('${id}')"]`);
+    if (link) link.classList.add('active');
+
+    // Scroll to top
+    document.getElementById('main-content').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  // Search filtering
+  function filterSidebar(query) {
+    const q = query.toLowerCase().trim();
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      const text = link.textContent.toLowerCase();
+      link.style.display = (!q || text.includes(q)) ? '' : 'none';
+    });
+  }
+
+  // Make cards clickable with keyboard
+  document.querySelectorAll('.card').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keypress', e => {
+      if (e.key === 'Enter') card.click();
+    });
+  });
+</script>
+</body>
+</html>
