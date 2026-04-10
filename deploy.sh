@@ -11,21 +11,40 @@ BUILD_LOG="/tmp/arif-sites-deploy.log"
 echo "=== arif-sites deploy $(date -u +%Y-%m-%dT%H:%M:%SZ) ===" | tee "$BUILD_LOG"
 
 # ---- Build React apps ----
+# Root portal (forge)
+echo "--- Installing Root Portal Deps ---" | tee -a "$BUILD_LOG"
+(cd /root/arif-sites && npm install --silent) >> "$BUILD_LOG" 2>&1
+echo "--- Building Root Portal (Forge) ---" | tee -a "$BUILD_LOG"
+(cd /root/arif-sites && npm run build) >> "$BUILD_LOG" 2>&1
+
 for site in arif arifos aaa; do
-  echo "--- Building $site ---" | tee -a "$BUILD_LOG"
-  (cd /root/arif-sites/$site && npm run build) >> "$BUILD_LOG" 2>&1
+  if [ -d "/root/arif-sites/$site" ]; then
+    echo "--- Installing $site Deps ---" | tee -a "$BUILD_LOG"
+    (cd /root/arif-sites/$site && npm install --silent) >> "$BUILD_LOG" 2>&1
+    echo "--- Building $site ---" | tee -a "$BUILD_LOG"
+    (cd /root/arif-sites/$site && npm run build) >> "$BUILD_LOG" 2>&1
+  fi
 done
 
 # ---- Copy React dist/ to VPS ----
+# Root portal (forge)
+echo "--- Syncing Root Portal (Forge) to VPS ---" | tee -a "$BUILD_LOG"
+mkdir -p "$VPS_PATH/forge"
+cp -r /root/arif-sites/dist/. "$VPS_PATH/forge/" 2>/dev/null
+
 for site in arif arifos aaa; do
-  echo "--- Syncing $site dist/ to VPS ---" | tee -a "$BUILD_LOG"
-  cp -r /root/arif-sites/$site/dist/. "$VPS_PATH/$site/" 2>/dev/null
+  if [ -d "/root/arif-sites/$site/dist" ]; then
+    echo "--- Syncing $site dist/ to VPS ---" | tee -a "$BUILD_LOG"
+    mkdir -p "$VPS_PATH/$site"
+    cp -r /root/arif-sites/$site/dist/. "$VPS_PATH/$site/" 2>/dev/null
+  fi
 done
 
-# ---- Static sites (forge, apex, geox) — copy from source ----
-for site in forge apex geox; do
+# ---- Static sites (apex, geox, waw, wiki) — copy from source ----
+for site in apex geox waw wiki; do
   if [ -d "/root/arif-sites/$site" ]; then
     echo "--- Syncing $site static ---" | tee -a "$BUILD_LOG"
+    mkdir -p "$VPS_PATH/$site"
     cp -r /root/arif-sites/$site/. "$VPS_PATH/$site/" 2>/dev/null
   fi
 done
