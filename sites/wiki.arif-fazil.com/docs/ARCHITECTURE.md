@@ -37,7 +37,7 @@ Wiki is the **constitutional knowledge repository** — documenting arifOS gover
 
 ```html
 <a href="https://arif-fazil.com">Ψ SOUL</a>
-<a href="https://arifos.arif-fazil.com">Ω MIND</a>
+<a href="https://apex.arif-fazil.com">Ω MIND</a>
 <a href="https://aaa.arif-fazil.com">Δ BODY</a>
 ```
 
@@ -66,7 +66,7 @@ Static files served from:
 | Resource | URL |
 |----------|-----|
 | arifOS Kernel | https://github.com/ariffazil/arifOS |
-| MIND (arifOS) | https://arifos.arif-fazil.com |
+| MIND (arifOS) | https://apex.arif-fazil.com |
 | MCP Gateway | https://arifosmcp.arif-fazil.com |
 
 ---

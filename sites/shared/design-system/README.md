@@ -37,7 +37,7 @@ Add `data-ring` attribute to `<html>` or section:
 
 ```html
 <html data-ring="SOUL">  <!-- for arif-fazil.com -->
-<html data-ring="MIND">  <!-- for arifos.arif-fazil.com -->
+<html data-ring="MIND">  <!-- for apex.arif-fazil.com -->
 <html data-ring="BODY">  <!-- for aaa.arif-fazil.com, arifosmcp.arif-fazil.com -->
 ```
 

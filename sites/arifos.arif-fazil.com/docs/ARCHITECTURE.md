@@ -1,6 +1,6 @@
 # MIND — Constitutional Kernel Architecture
 
-> **Ring 2: Ω** | arifos.arif-fazil.com | Ditempa Bukan Diberi [ΔΩΨ | ARIF]
+> **Ring 2: Ω** | apex.arif-fazil.com | Ditempa Bukan Diberi [ΔΩΨ | ARIF]
 
 ## Role in Trinity
 
@@ -64,7 +64,7 @@ Footer includes mandatory Trinity links:
 ```html
 <nav class="trinity-nav">
   <a href="https://arif-fazil.com" class="ring-soil">Ψ SOUL</a>
-  <a href="https://arifos.arif-fazil.com" class="ring-mind">Ω MIND</a>
+   <a href="https://apex.arif-fazil.com" class="ring-mind">Ω MIND</a>
   <a href="https://aaa.arif-fazil.com" class="ring-body">Δ BODY</a>
 </nav>
 ```

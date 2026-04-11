@@ -91,7 +91,7 @@ Footer includes mandatory Trinity links:
 ```html
 <nav class="trinity-nav">
   <a href="https://arif-fazil.com" class="ring-soil">Ψ SOUL</a>
-  <a href="https://arifos.arif-fazil.com" class="ring-mind">Ω MIND</a>
+  <a href="https://apex.arif-fazil.com" class="ring-mind">Ω MIND</a>
   <a href="https://aaa.arif-fazil.com" class="ring-body">Δ BODY</a>
 </nav>
 ```
@@ -129,7 +129,7 @@ Source: `/sites/arif-fazil.com`
 
 | Resource | URL |
 |----------|-----|
-| MIND (arifOS) | https://arifos.arif-fazil.com |
+| MIND (arifOS) | https://apex.arif-fazil.com |
 | BODY (AAA) | https://aaa.arif-fazil.com |
 | MCP Gateway | https://arifosmcp.arif-fazil.com |
 | arifOS Kernel | https://github.com/ariffazil/arifOS |

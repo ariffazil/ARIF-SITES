@@ -662,7 +662,7 @@ const SoulSite: React.FC = () => {
       >
         {[
           { label: 'Ψ SOUL', href: 'https://arif-fazil.com', color: SOUL.blood, active: true },
-          { label: 'Ω MIND', href: 'https://arifos.arif-fazil.com', color: SOUL.earth },
+          { label: 'Ω MIND', href: 'https://apex.arif-fazil.com', color: SOUL.earth },
           { label: 'Δ BODY', href: 'https://aaa.arif-fazil.com', color: SOUL.gold },
           { label: '◉ FORGE', href: 'https://forge.arif-fazil.com', color: SOUL.dim },
         ].map((link) => (

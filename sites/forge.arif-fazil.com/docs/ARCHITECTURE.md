@@ -37,7 +37,7 @@ Forge is the **agent deployment interface** — the CI/CD surface where agents a
 
 ```html
 <a href="https://arif-fazil.com">Ψ SOUL</a>
-<a href="https://arifos.arif-fazil.com">Ω MIND</a>
+<a href="https://apex.arif-fazil.com">Ω MIND</a>
 <a href="https://aaa.arif-fazil.com">Δ BODY</a>
 ```
 

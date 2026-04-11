@@ -58,7 +58,7 @@ Footer includes mandatory Trinity links:
 ```html
 <nav class="trinity-nav">
   <a href="https://arif-fazil.com">Ψ SOUL</a>
-  <a href="https://arifos.arif-fazil.com">Ω MIND</a>
+  <a href="https://apex.arif-fazil.com">Ω MIND</a>
   <span>Δ BODY</span>
 </nav>
 ```
@@ -100,7 +100,7 @@ BODY references the live MCP gateway:
 | Resource | URL |
 |----------|-----|
 | SOUL (arif-fazil) | https://arif-fazil.com |
-| MIND (arifOS) | https://arifos.arif-fazil.com |
+| MIND (arifOS) | https://apex.arif-fazil.com |
 | MCP Gateway | https://arifosmcp.arif-fazil.com |
 | GEOX (Domain) | https://geox.arif-fazil.com |
 

@@ -5,7 +5,7 @@
   "description": "arifOS AAA MCP runtime with streamable HTTP at /mcp, SSE compatibility, 7 public tools, and the APEX dashboard app resource.",
   "vendor": {
     "name": "arifOS",
-    "url": "https://arifos.arif-fazil.com"
+    "url": "https://apex.arif-fazil.com"
   },
   "license": "AGPL-3.0-only",
   "repository": {

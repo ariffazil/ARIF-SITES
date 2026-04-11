@@ -36,7 +36,7 @@ WAW (Workspace Agent Workspace) is the **runtime state monitoring surface** — 
 
 ```html
 <a href="https://arif-fazil.com">Ψ SOUL</a>
-<a href="https://arifos.arif-fazil.com">Ω MIND</a>
+<a href="https://apex.arif-fazil.com">Ω MIND</a>
 <a href="https://aaa.arif-fazil.com">Δ BODY</a>
 ```
 

@@ -64,7 +64,7 @@
         <div class="flex items-center gap-1 p-1 rounded-lg bg-primer-bg-secondary border border-primer-border">
           <a href="https://arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive">HUMAN</a>
           <a href="https://apex.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive">THEORY</a>
-          <a href="https://arifos.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive">APPS</a>
+          <a href="https://apex.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive">APPS</a>
         </div>
       </div>
     </div>
@@ -173,7 +173,7 @@
           <p class="text-sm text-primer-text-muted mb-4">
             WebMCP uses WebSocket as the primary transport. Fallback to HTTP long-polling is supported.
           </p>
-          <pre><code>const ws = new WebSocket('wss://api.arifos.arif-fazil.com/webmcp');
+          <pre><code>const ws = new WebSocket('wss://arifosmcp.arif-fazil.com/webmcp');
 
 ws.onopen = () => {
   ws.send(JSON.stringify({
@@ -230,7 +230,7 @@ ws.onopen = () => {
         <pre class="m-0 border-0"><code>import { WebMCPClient } from '@arifos/webmcp';
 
 const client = new WebMCPClient({
-  endpoint: 'wss://api.arifos.arif-fazil.com/webmcp',
+  endpoint: 'wss://arifosmcp.arif-fazil.com/webmcp',
   apiKey: 'your-api-key'
 });
 

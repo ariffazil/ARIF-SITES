@@ -1,5 +1,5 @@
 # arifOS Sovereign Headers Configuration (Cloudflare Pages)
-# Target: Ring 1 (arif-fazil.com) & Ring 2 (arifos.arif-fazil.com)
+# Target: Ring 1 (arif-fazil.com) & Ring 2 (apex.arif-fazil.com)
 
 # 1. Global Security Governance (F1-F13 Compliance)
 /*
@@ -25,12 +25,12 @@
   Content-Type: application/json; charset=utf-8
   X-Content-Type-Options: nosniff
   # Restricted to the Triple Ring Origins
-  Access-Control-Allow-Origin: https://arif-fazil.com, https://arifos.arif-fazil.com, https://aaa.arif-fazil.com
+  Access-Control-Allow-Origin: https://arif-fazil.com, https://apex.arif-fazil.com, https://aaa.arif-fazil.com
 
 # 4. API & Orchestration Grounding
 /api/*
   # Allow the Trinity sites to call the local/VPS backend
-  Access-Control-Allow-Origin: https://arif-fazil.com, https://arifos.arif-fazil.com, https://aaa.arif-fazil.com
+  Access-Control-Allow-Origin: https://arif-fazil.com, https://apex.arif-fazil.com, https://aaa.arif-fazil.com
   Access-Control-Allow-Methods: GET, POST, OPTIONS
   Access-Control-Allow-Headers: Content-Type, Authorization, X-Sovereign-ID
   Access-Control-Max-Age: 86400
