@@ -1,0 +1,275 @@
+# arif-sites — Deployment Decision Matrix
+# Deterministic routing logic for deployment lanes
+# Governance: arifOS F1-F13
+
+version: "2026.04.11"
+seal: "DITEMPA BUKAN DIBERI"
+
+---
+# LANE CLASSIFICATION RULES
+
+lanes:
+  static:
+    name: "Lane 1: Static"
+    description: "Pure HTML/CSS/JS, no server-side logic"
+    criteria:
+      - condition: "no_api_calls"
+        value: true
+      - condition: "no_server_state"
+        value: true
+      - condition: "build_output"
+        pattern: "dist/ with static files only"
+    targets:
+      primary: "cloudflare-pages"
+      fallback: "vps-nginx"
+    deploy_command: "git push origin main"
+    risk_level: "low"
+    
+  webmcp:
+    name: "Lane 2: WebMCP"
+    description: "Static UI + MCP bridge for tool calls"
+    criteria:
+      - condition: "uses_mcp"
+        value: true
+      - condition: "transport"
+        value: "sse|websocket"
+      - condition: "state_location"
+        value: "server-side"
+    targets:
+      static: "cloudflare-pages"
+      mcp_bridge: "vps-docker"
+    deploy_command: "npm run build && wrangler pages deploy dist/"
+    risk_level: "medium"
+    
+  edge:
+    name: "Lane 3: Edge Runtime"
+    description: "Lightweight compute at edge, stateless"
+    criteria:
+      - condition: "compute_required"
+        value: true
+      - condition: "cpu_time_ms"
+        max: 50
+      - condition: "memory_mb"
+        max: 128
+      - condition: "persistent_state"
+        value: false
+    targets:
+      - "cloudflare-workers"
+      - "vercel-edge"
+      - "deno-deploy"
+    deploy_command: "wrangler deploy"
+    risk_level: "high"
+    
+  runtime:
+    name: "Lane 4: MCP Runtime"
+    description: "Full server with persistent state"
+    criteria:
+      - condition: "persistent_state"
+        value: true
+      - condition: "database_required"
+        value: true
+      - condition: "heavy_compute"
+        value: true
+      - condition: "mcp_server"
+        value: true
+    targets:
+      - "vps-docker"
+      - "fly.io"
+      - "railway"
+    deploy_command: "docker compose up -d"
+    risk_level: "critical"
+
+---
+# DECISION TREE
+
+decision_tree:
+  start:
+    question: "What kind of surface are you deploying?"
+    branches:
+      - condition: "fully_static"
+        next: "lane_static"
+      - condition: "uses_webmcp"
+        next: "lane_webmcp"
+      - condition: "needs_edge_compute"
+        next: "lane_edge"
+      - condition: "needs_full_runtime"
+        next: "lane_runtime"
+        
+  lane_static:
+    action: "deploy_static"
+    verify:
+      - "build succeeds"
+      - "no secrets in dist/"
+      - "health check passes"
+      
+  lane_webmcp:
+    action: "deploy_webmcp"
+    verify:
+      - "mcp endpoint reachable"
+      - "cors configured"
+      - "auth tokens scoped"
+      
+  lane_edge:
+    action: "deploy_edge"
+    verify:
+      - "cpu time < 50ms"
+      - "no persistent state"
+      - "kv bindings correct"
+      
+  lane_runtime:
+    action: "deploy_runtime"
+    gates:
+      - "arifos_constitution_check"
+      - "888_hold_clear"
+    verify:
+      - "docker build succeeds"
+      - "health check passes"
+      - "database migrations ready"
+
+---
+# SITE MAPPING
+
+site_mapping:
+  arif-fazil.com:
+    lane: static
+    ring: soul
+    target: cloudflare-pages
+    
+  arifos.arif-fazil.com:
+    lane: static
+    ring: mind
+    target: cloudflare-pages
+    
+  aaa.arif-fazil.com:
+    lane: static
+    ring: body
+    target: cloudflare-pages
+    
+  wiki.arif-fazil.com:
+    lane: static
+    ring: mind
+    target: cloudflare-pages
+    
+  apex.arif-fazil.com:
+    lane: static
+    ring: mind
+    target: cloudflare-pages
+    
+  forge.arif-fazil.com:
+    lane: webmcp
+    ring: forge
+    static_target: cloudflare-pages
+    mcp_bridge: arifosmcp
+    
+  waw.arif-fazil.com:
+    lane: webmcp
+    ring: forge
+    static_target: cloudflare-pages
+    mcp_bridge: arifosmcp
+    
+  arifosmcp.arif-fazil.com:
+    lane: runtime
+    ring: body
+    target: vps-docker
+    risk: critical
+    
+  geox.arif-fazil.com:
+    lane: runtime
+    ring: field
+    target: vps-docker
+    risk: critical
+
+---
+# PERMISSION MATRIX
+
+permissions:
+  deploy-planner:
+    lanes: [all]
+    actions: [read, analyze, recommend]
+    prohibited: [deploy, modify]
+    
+  static-publisher:
+    lanes: [static]
+    actions: [read, build, deploy, rollback]
+    prohibited: [runtime-deploy, edge-deploy]
+    
+  webmcp-auditor:
+    lanes: [static, webmcp]
+    actions: [read, audit, validate]
+    prohibited: [deploy, modify]
+    
+  edge-runtime:
+    lanes: [edge]
+    actions: [read, deploy, rollback]
+    prohibited: [runtime-deploy]
+    requires: [constitution-check]
+    
+  mcp-server-operator:
+    lanes: [runtime]
+    actions: [read, deploy, rollback, config]
+    requires: [constitution-check, 888-hold-clear]
+
+---
+# ESCALATION TRIGGERS
+
+escalation:
+  level_1_skill:
+    condition: "skill_returns_hold"
+    action: "consult_decision_matrix"
+    
+  level_2_doctrine:
+    condition: "doctrine_ambiguous"
+    action: "read_deployment_md"
+    
+  level_3_constitution:
+    condition: "constitutional_question"
+    action: "query_arifos_judge"
+    endpoint: "https://arifosmcp.arif-fazil.com/judge"
+    
+  level_4_human:
+    condition: "888_hold_active"
+    action: "escalate_to_arif"
+    authority: "human_sovereign"
+
+---
+# HEALTH CHECKS
+
+health_checks:
+  static:
+    endpoint: "/"
+    expected: "HTTP 200"
+    check_trinity_nav: true
+    
+  webmcp:
+    endpoint: "/health"
+    expected: "HTTP 200"
+    check_mcp_bridge: true
+    
+  edge:
+    endpoint: "/"
+    expected: "HTTP 200"
+    max_latency_ms: 100
+    
+  runtime:
+    endpoint: "/health"
+    expected: "HTTP 200"
+    check_dependencies: [database, cache]
+    check_version_match: true
+
+---
+# ROLLBACK CONDITIONS
+
+rollback:
+  auto_rollback:
+    health_fail_duration: "60s"
+    error_rate_threshold: "5%"
+    error_rate_window: "5m"
+    
+  manual_rollback:
+    trigger: "user_report_critical"
+    authority: "any_agent_with_rollback skill"
+    
+  constitution_rollback:
+    trigger: "888_hold_issued"
+    authority: "immediate"
+    action: "revert_to_last_known_good"

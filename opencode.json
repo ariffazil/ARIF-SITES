@@ -1,0 +1,120 @@
+{
+  "$schema": "https://opencode.ai/schemas/opencode.json",
+  "name": "arif-sites",
+  "description": "Website doctrine and deployment discipline for arifOS Trinity network",
+  "version": "2026.04.11",
+  "seal": "DITEMPA BUKAN DIBERI",
+  
+  "agents": {
+    "deploy-planner": {
+      "role": "deployment planner",
+      "permissions": {
+        "read": "allow",
+        "edit": "deny",
+        "bash": "ask",
+        "skill_load": ["lane-classifier", "policy-gate", "arifos-constitution-check"]
+      },
+      "risk_level": "low"
+    },
+    "static-publisher": {
+      "role": "static site publisher",
+      "permissions": {
+        "read": "allow",
+        "edit": "allow",
+        "bash": "allow_limited",
+        "skill_load": ["static-deploy-check", "webmcp-audit", "rollback-recovery"]
+      },
+      "risk_level": "medium"
+    },
+    "webmcp-auditor": {
+      "role": "WebMCP compliance auditor",
+      "permissions": {
+        "read": "allow",
+        "edit": "ask",
+        "bash": "ask",
+        "skill_load": ["webmcp-audit", "policy-gate"]
+      },
+      "risk_level": "low"
+    },
+    "edge-runtime": {
+      "role": "edge runtime deployer",
+      "permissions": {
+        "read": "allow",
+        "edit": "allow_scoped",
+        "bash": "ask",
+        "skill_load": ["edge-runtime-deploy", "mcp-runtime-guard", "rollback-recovery"]
+      },
+      "risk_level": "high"
+    },
+    "mcp-server-operator": {
+      "role": "MCP server operator",
+      "permissions": {
+        "read": "allow",
+        "edit": "ask_approved_only",
+        "bash": "ask_deny_destructive",
+        "skill_load": ["mcp-runtime-guard", "rollback-recovery", "arifos-constitution-check"]
+      },
+      "risk_level": "critical"
+    }
+  },
+  
+  "skills": {
+    "discovery_path": ".opencode/skills",
+    "naming_convention": "lowercase-hyphenated",
+    "required_files": ["SKILL.md"],
+    "permission_levels": ["planning", "static", "audit", "runtime"]
+  },
+  
+  "governance": {
+    "authority": "arifOS",
+    "constitution_url": "https://arifos.arif-fazil.com",
+    "chokepoint_endpoint": "https://arifosmcp.arif-fazil.com/judge",
+    "required_floors": ["F1", "F2", "F7", "F9", "F11"],
+    "escalation_chain": [
+      "skill-decision",
+      "deployment-doctrine",
+      "arifos-constitution",
+      "human-override"
+    ]
+  },
+  
+  "deployment": {
+    "lanes": ["static", "webmcp", "edge", "runtime"],
+    "primary_target": "cloudflare-pages",
+    "fallback_target": "vps-nginx",
+    "health_endpoint": "/health",
+    "required_checks": ["build", "test", "secret-scan", "constitution-gate"]
+  },
+  
+  "integrations": {
+    "arifos": {
+      "repo": "https://github.com/ariffazil/arifOS",
+      "role": "constitutional_authority",
+      "endpoints": {
+        "judge": "https://arifosmcp.arif-fazil.com/judge",
+        "health": "https://arifosmcp.arif-fazil.com/health"
+      }
+    },
+    "geox": {
+      "repo": "https://github.com/ariffazil/GEOX",
+      "role": "domain_runtime",
+      "endpoints": {
+        "health": "https://geox.arif-fazil.com/health",
+        "mcp": "https://geox.arif-fazil.com/mcp"
+      }
+    }
+  },
+  
+  "telemetry": {
+    "enabled": true,
+    "schema": "arifos-telemetry-v1",
+    "endpoint": "https://arifosmcp.arif-fazil.com/telemetry",
+    "required_fields": ["agent_id", "action", "stance", "floor_report"]
+  },
+  
+  "docs": {
+    "agents": "AGENTS.md",
+    "deployment": "DEPLOYMENT.md",
+    "decision_matrix": "config/decision-matrix.yaml"
+  }
+}
