@@ -1,147 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ============================================================================
+ * MIND (Ω) Ring — Cyan Grid, Constitutional Logic
+ * Theory of Anomalous Contrast — Machine · Precision · Grid
+ * ============================================================================ */
+
+/* Layer 1: Import Shared Trinity Design System */
+@import url('https://arif-fazil.com/shared/design-system/tokens.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --bg-primary: #050a08; /* Deep Emerald Black */
-  --bg-secondary: #0a1410;
-  --text-primary: #e0f2f1;
-  --text-secondary: #80cbc4;
-  --accent-emerald: #2e7d32;
-  --accent-silver: #b0bec5;
-  --border: #1b2e28;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  /* ─── MIND Ring Override (Cyan + Teal) ─── */
+  --mind-primary: #00D4AA;
+  --mind-secondary: #008866;
+  --mind-accent: #00FFAA;
+  --mind-void: #050A08;
+  --mind-surface: #0A1410;
+  --mind-text: #E1F5F0;
+  --mind-dim: #80CBC4;
+
+  /* shadcn variables — MIND-tuned */
+  --background: 170 40% 4%;
+  --foreground: 170 30% 94%;
+  --card: 170 35% 6%;
+  --card-foreground: 170 30% 94%;
+  --popover: 170 35% 6%;
+  --popover-foreground: 170 30% 94%;
+  --primary: 170 85% 42%;
+  --primary-foreground: 170 40% 4%;
+  --secondary: 170 40% 12%;
+  --secondary-foreground: 170 30% 94%;
+  --muted: 170 30% 15%;
+  --muted-foreground: 170 15% 55%;
+  --accent: 160 100% 50%;
+  --accent-foreground: 170 40% 4%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 96%;
+  --border: 170 30% 15%;
+  --input: 170 30% 15%;
+  --ring: 170 85% 42%;
+  --radius: 0rem;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050A08;
+    background-image: 
+      linear-gradient(rgba(0, 212, 170, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 170, 0.08) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    color: #E1F5F0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-weight: 600;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
 }
 
-body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
+@layer base {
+  [data-ring="MIND"] {
+    --ring-primary: var(--mind-primary);
+    --ring-secondary: var(--mind-secondary);
+    --ring-accent: var(--mind-accent);
+    --ring-bg: var(--mind-void);
+    --ring-text: var(--mind-text);
+  }
 }
 
-.mind-grid {
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 4rem 4.5rem;
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
+@layer utilities {
+  .text-mind { color: #00D4AA; }
+  .text-mind-secondary { color: #008866; }
+  .text-mind-accent { color: #00FFAA; }
+  .text-mind-dim { color: #80CBC4; }
+  .bg-mind { background-color: #00D4AA; }
+  .bg-mind-surface { background-color: #0A1410; }
+  .border-mind { border-color: #00D4AA; }
+  .border-mind-secondary { border-color: #008866; }
+  .glow-mind {
+    box-shadow: 0 0 30px rgba(0, 212, 170, 0.3), 0 0 60px rgba(0, 212, 170, 0.1);
+  }
 }
 
-.container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  position: relative;
-  z-index: 1;
+@layer components {
+  .title-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #00D4AA;
+    border-radius: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #00D4AA;
+    background: rgba(0, 212, 170, 0.1);
+  }
+  
+  .nav-strip {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .nav-strip a {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 212, 170, 0.3);
+    border-radius: 0;
+    color: #80CBC4;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+  }
+  
+  .nav-strip a:hover {
+    border-color: #00D4AA;
+    color: #00D4AA;
+    background: rgba(0, 212, 170, 0.1);
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #00D4AA;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .text-gold { color: #00D4AA; }
+  
+  .hero-subtitle {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #80CBC4;
+    max-width: 600px;
+    line-height: 1.7;
+  }
+  
+  .section {
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 212, 170, 0.15);
+  }
+  
+  .laws-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .law-section {
+    padding: 1.25rem;
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    border-radius: 0;
+    background: rgba(0, 212, 170, 0.03);
+  }
+  
+  .law-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .law-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: #00D4AA;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid #00D4AA;
+    background: rgba(0, 212, 170, 0.1);
+  }
+  
+  .law-title {
+    font-weight: 600;
+    color: #E1F5F0;
+  }
+  
+  .text-secondary {
+    color: #80CBC4;
+    font-size: 0.9rem;
+  }
+  
+  .floor-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .floor-card {
+    padding: 1.25rem;
+    border: 1px solid rgba(0, 212, 170, 0.25);
+    border-radius: 0;
+    background: rgba(0, 212, 170, 0.03);
+    transition: all 0.2s ease;
+  }
+  
+  .floor-card:hover {
+    border-color: #00D4AA;
+    background: rgba(0, 212, 170, 0.08);
+    box-shadow: 0 0 20px rgba(0, 212, 170, 0.15);
+  }
+  
+  .floor-id {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+    border: 1px solid #00D4AA;
+    color: #00D4AA;
+    margin-bottom: 0.5rem;
+  }
+  
+  .container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 212, 170, 0.15);
+    text-align: center;
+    color: #80CBC4;
+  }
+  
+  .mind-grid {
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(0, 212, 170, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 170, 0.08) 1px, transparent 1px);
+    background-size: 3rem 3rem;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
-.mono {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-header {
-  border-bottom: 1px solid var(--border);
-  padding: 2rem 0;
-  margin-bottom: 4rem;
+::-webkit-scrollbar-track {
+  background: #050A08;
 }
 
-.title-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--accent-emerald);
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
+::-webkit-scrollbar-thumb {
+  background: #008866;
+  border-radius: 0;
 }
 
-h1 {
-  font-size: 3rem;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  margin-bottom: 1rem;
+::-webkit-scrollbar-thumb:hover {
+  background: #00D4AA;
 }
 
-.law-section {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  padding: 2rem;
-  border-radius: 4px;
-  margin-bottom: 2rem;
+::selection {
+  background: #00D4AA;
+  color: #050A08;
 }
 
-.law-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.law-number {
-  font-family: var(--font-mono);
-  color: var(--text-secondary);
-}
-
-.law-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
-.floor-matrix {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.floor-card {
-  padding: 1rem;
-  border: 1px solid var(--border);
-  font-size: 0.9rem;
-}
-
-.floor-id {
-  color: var(--accent-emerald);
-  font-weight: 800;
-  margin-right: 0.5rem;
-}
-
-footer {
-  margin-top: 8rem;
-  padding: 4rem 0;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--text-secondary);
-}
-
-.nav-strip {
-  display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.nav-strip a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-strip a:hover {
-  color: var(--text-primary);
-}
+/* ============================================================================
+ * END MIND RING STYLES
+ * ============================================================================
+ * Sealed under 999_SEAL | Ditempa Bukan Diberi
+ */

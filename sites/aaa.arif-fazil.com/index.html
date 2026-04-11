@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AAA Wire — MCP, WebMCP & A2A Protocols</title>
   <meta name="description" content="Constitutional AI protocol specifications: MCP, WebMCP, and A2A for agent communication.">
+  
+  <!-- Shared Trinity Design System -->
+  <link rel="stylesheet" href="https://arif-fazil.com/shared/design-system/tokens.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -15,6 +19,13 @@
       theme: {
         extend: {
           colors: {
+            /* BODY (Δ) Ring — Amber/Gold palette */
+            'body-primary': '#D4A853',
+            'body-secondary': '#C4791A',
+            'body-accent': '#E3B341',
+            'body-bg': '#1A1612',
+            'body-text': '#F5F0E8',
+            /* Legacy primer compatibility */
             'primer-bg': '#0d1117',
             'primer-bg-secondary': '#161b22',
             'primer-border': '#30363d',
@@ -28,21 +39,36 @@
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
+          },
+          borderRadius: {
+            'body': '12px',
           }
         }
       }
     }
   </script>
   <style>
+    /* Import shared tokens */
+    :root {
+      --body-primary: #D4A853;
+      --body-secondary: #C4791A;
+      --body-accent: #E3B341;
+      --body-bg: #1A1612;
+      --body-text: #F5F0E8;
+    }
+    
+    /* BODY ring styles */
+    [data-ring="BODY"] {
+      --ring-primary: var(--body-primary);
+      --ring-secondary: var(--body-secondary);
+      --ring-accent: var(--body-accent);
+      --ring-bg: var(--body-bg);
+      --ring-text: var(--body-text);
+    }
+    
     body {
       background-color: #0d1117;
       color: #f0f6fc;
-    }
-    .gradient-red {
-      background: linear-gradient(135deg, #da3633 0%, #f85149 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
     .gradient-gold {
       background: linear-gradient(135deg, #d29922 0%, #e3b341 100%);
@@ -50,12 +76,23 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .gradient-blue {
-      background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+    .gradient-amber {
+      background: linear-gradient(135deg, #C4791A 0%, #D4A853 50%, #E3B341 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+html[data-ring="BODY"] { --ring-primary: #D4A853; --ring-secondary: #C4791A; --ring-accent: #E3B341; }
+    
+    /* BODY ring utility classes */
+    .text-body { color: #D4A853; }
+    .text-body-secondary { color: #C4791A; }
+    .text-body-accent { color: #E3B341; }
+    .bg-body { background-color: #D4A853; }
+    .bg-body-surface { background-color: #1A1612; }
+    .border-body { border-color: #D4A853; }
+    .glow-body { box-shadow: 0 0 30px rgba(212, 168, 83, 0.25); }
+    
     .glass-card {
       background: rgba(22, 27, 34, 0.8);
       backdrop-filter: blur(12px);
@@ -155,6 +192,26 @@
       <p class="text-xl text-primer-text-muted mb-8 max-w-2xl mx-auto">
         Constitutional AI protocol specifications. MCP, WebMCP, and A2A for secure, governed agent communication.
       </p>
+      <!-- arifOS MCP Gateway Banner -->
+      <div class="mt-8 max-w-2xl mx-auto">
+        <a href="https://arifosmcp.arif-fazil.com" class="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primer-gold transition-all group">
+          <div class="w-12 h-12 rounded-lg bg-primer-gold/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-6 h-6 text-primer-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <div class="text-left flex-1">
+            <h3 class="text-lg font-bold text-primer-text group-hover:text-primer-gold transition-colors">Live arifOS MCP Gateway</h3>
+            <p class="text-sm text-primer-text-muted">Connect now to the constitutional intelligence kernel. 33 tools, 13 floors, human sovereignty.</p>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-primer-gold">
+            <span>Connect</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 

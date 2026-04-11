@@ -88,6 +88,24 @@
       <p class="text-lg text-primer-text-muted max-w-2xl mx-auto">
         Standard protocol for AI tool integration. Connect arifOS to Claude Desktop, Cursor, and any MCP-compatible client.
       </p>
+      <!-- Live Server Banner -->
+      <div class="mt-8 max-w-2xl mx-auto">
+        <a href="https://arifosmcp.arif-fazil.com" class="glass-card rounded-xl p-5 flex items-center gap-4 hover:border-primer-gold transition-all group">
+          <div class="w-12 h-12 rounded-lg bg-primer-gold/10 flex items-center justify-center flex-shrink-0">
+            <span class="text-2xl">◉</span>
+          </div>
+          <div class="text-left flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold text-primer-text group-hover:text-primer-gold transition-colors">Live arifOS MCP Gateway</h3>
+              <span class="w-2 h-2 rounded-full bg-primer-gold animate-pulse"></span>
+            </div>
+            <p class="text-sm text-primer-text-muted">Connect directly to the constitutional kernel. 33 tools, 13 floors, streamable HTTP.</p>
+          </div>
+          <div class="text-right">
+            <code class="text-xs text-primer-gold font-mono">arifosmcp.arif-fazil.com</code>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -240,6 +258,23 @@
 
       <div class="mt-6 glass-card rounded-xl p-6">
         <h3 class="text-lg font-semibold text-primer-text mb-4">Quick Start</h3>
+        
+        <!-- Streamable HTTP (Recommended) -->
+        <div class="mb-6 p-4 rounded-lg bg-primer-bg-secondary border border-primer-border">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs px-2 py-1 rounded bg-primer-gold/20 text-primer-gold font-mono uppercase">Recommended</span>
+            <span class="text-sm font-medium text-primer-text">Streamable HTTP</span>
+          </div>
+          <p class="text-xs text-primer-text-muted mb-3">For browsers, scripts, and direct API access:</p>
+          <div class="flex items-center gap-2">
+            <pre class="flex-1 bg-black rounded p-3 overflow-x-auto"><code class="text-green-400 text-sm">npx @arifos/cli connect --server https://arifosmcp.arif-fazil.com</code></pre>
+            <button onclick="copyText(this)" class="p-2 text-primer-text-muted hover:text-primer-gold transition-colors" title="Copy">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <h4 class="text-sm font-medium text-primer-text mb-3">Claude Desktop Configuration</h4>
         <ol class="space-y-3 text-sm text-primer-text-secondary">
           <li class="flex items-start gap-3">
             <span class="w-6 h-6 rounded-full bg-primer-blue/10 flex items-center justify-center text-xs font-bold text-primer-blue flex-shrink-0">1</span>
@@ -257,6 +292,13 @@
       </div>
     </div>
   </section>
+
+  <script>
+    function copyText(btn) {
+      const code = btn.parentElement.querySelector('code');
+      navigator.clipboard.writeText(code.textContent);
+    }
+  </script>
 
   <!-- 13 Floors Integration -->
   <section class="py-16 px-4">

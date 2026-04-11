@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arifOS MCP — Constitutional AI Governance Surface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00FFCC; /* Electric Teal */
+            --secondary: #00D4AA;
+            --bg: #050505;
+            --surface: #0A0A0A;
+            --border: #1A1A1A;
+        }
+        body {
+            background-color: var(--bg);
+            color: #E0E0E0;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+        }
+        .display-font { font-family: 'Space Grotesk', sans-serif; }
+        .glow-text { text-shadow: 0 0 10px var(--primary); }
+        .grid-bg {
+            background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .protocol-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .protocol-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+        }
+        .terminal-header {
+            background: var(--border);
+            padding: 4px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+        }
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px var(--primary);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body class="grid-bg min-h-screen">
+
+    <!-- HEADER / METADATA -->
+    <nav class="border-b border-[#1A1A1A] bg-[#050505]/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-8 h-8 bg-primary flex items-center justify-center text-black font-bold">Λ</div>
+                <div>
+                    <h1 class="text-sm font-bold tracking-widest text-white uppercase">arifOS MCP</h1>
+                    <p class="text-[10px] opacity-40 uppercase tracking-tighter">Constitutional Runtime Endpoint</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 text-[10px] font-bold tracking-widest">
+                <div class="flex items-center gap-2">
+                    <span class="status-pulse"></span>
+                    <span class="text-primary uppercase">System Operational</span>
+                </div>
+                <div class="hidden md:flex gap-4 opacity-40 uppercase">
+                    <span>v2.0.0</span>
+                    <span>SEAL_999</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO / AGENT CONTEXT -->
+    <header class="max-w-7xl mx-auto px-6 py-20 border-x border-[#1A1A1A] bg-[#050505]/50">
+        <div class="max-w-3xl">
+            <div class="inline-block px-3 py-1 border border-primary/30 text-primary text-[10px] uppercase tracking-[0.3em] mb-8">
+                Agent-First Interface
+            </div>
+            <h2 class="text-5xl md:text-7xl font-bold text-white display-font tracking-tighter leading-tight mb-8">
+                The Sovereign <br/> <span class="text-primary glow-text">Mediation</span> Layer.
+            </h2>
+            <p class="text-xl text-white/60 mb-12 leading-relaxed">
+                arifOS is a constitutional execution kernel for autonomous agents. 
+                It enforces physical grounding, ethical critique, and formal judgment on every tool invocation.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <code class="px-4 py-2 bg-white/5 border border-white/10 text-xs text-primary">
+                    GET https://arifosmcp.arif-fazil.com/mcp
+                </code>
+                <a href="#connect" class="px-6 py-2 bg-primary text-black text-[10px] font-bold uppercase tracking-widest hover:bg-white transition-colors">
+                    Connect CLI
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- TOOL REGISTRY -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-x border-[#1A1A1A]">
+        <div class="flex items-center gap-4 mb-16">
+            <h3 class="text-xs font-bold uppercase tracking-[0.5em] text-primary">Tool Surface</h3>
+            <div class="flex-1 h-[1px] bg-white/5"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+            <!-- arifos.init -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Δ MIND | 000_INIT</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.init</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Session airlock — establishes jurisdiction and identity binding.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-primary/10 text-primary uppercase">Risk: Safe</span>
+                </div>
+            </div>
+
+            <!-- arifos.sense -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Δ MIND | 111_SENSE</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.sense</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Reality acquisition — 8-stage governed sensing and evidence.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-primary/10 text-primary uppercase">Risk: Safe</span>
+                </div>
+            </div>
+
+            <!-- arifos.mind -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Δ MIND | 333_MIND</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.mind</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Structured reasoning with uncertainty bands and confidence check.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-primary/10 text-primary uppercase">Risk: Safe</span>
+                </div>
+            </div>
+
+            <!-- arifos.heart -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Ω HEART | 666_HEART</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.heart</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Adversarial ethical critique, simulation, and consequence modeling.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-primary/10 text-primary uppercase">Risk: Safe</span>
+                </div>
+            </div>
+
+            <!-- arifos.judge -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Ψ SOUL | 888_JUDGE</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.judge</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Final constitutional verdict evaluation. Outputs: SEAL / VOID / HOLD.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-red-500/20 text-red-500 uppercase">Risk: Sovereign</span>
+                </div>
+            </div>
+
+            <!-- arifos.forge -->
+            <div class="protocol-card p-8 group">
+                <div class="terminal-header mb-6">Lane: Δ MIND | 010_FORGE</div>
+                <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">arifos.forge</h4>
+                <p class="text-xs opacity-50 mb-6 leading-relaxed">Execution bridge — issues signed execution manifests. Requires Judge SEAL.</p>
+                <div class="flex gap-2">
+                    <span class="text-[9px] px-2 py-0.5 bg-orange-500/20 text-orange-500 uppercase">Risk: Guarded</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSTITUTIONAL FLOORS -->
+    <section class="max-w-7xl mx-auto px-6 py-24 border-x border-[#1A1A1A] bg-[#0A0A0A]/30">
+        <div class="flex items-center gap-4 mb-16">
+            <h3 class="text-xs font-bold uppercase tracking-[0.5em] text-primary">Floors (F1-F13)</h3>
+            <div class="flex-1 h-[1px] bg-white/5"></div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F1</div>
+                <div class="text-[9px] opacity-40 uppercase">Amanah</div>
+            </div>
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F2</div>
+                <div class="text-[9px] opacity-40 uppercase">Truth</div>
+            </div>
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F3</div>
+                <div class="text-[9px] opacity-40 uppercase">Clarity</div>
+            </div>
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F4</div>
+                <div class="text-[9px] opacity-40 uppercase">Entropy</div>
+            </div>
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F5</div>
+                <div class="text-[9px] opacity-40 uppercase">Peace²</div>
+            </div>
+            <div class="p-4 border border-white/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F7</div>
+                <div class="text-[9px] opacity-40 uppercase">Humility</div>
+            </div>
+            <div class="p-4 border border-white/10 bg-primary/5 text-center">
+                <div class="text-[10px] text-primary font-bold mb-1">F13</div>
+                <div class="text-[9px] opacity-100 text-white uppercase font-bold">Sovereign</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK CONNECT -->
+    <section id="connect" class="max-w-7xl mx-auto px-6 py-24 border-x border-[#1A1A1A]">
+        <div class="grid md:grid-cols-2 gap-16">
+            <div>
+                <h3 class="text-2xl font-bold text-white display-font mb-6">Quick Connect</h3>
+                <p class="text-sm opacity-50 mb-8">Add this to your Claude Desktop or Cursor configuration to enable constitutional governance.</p>
+                <div class="bg-black border border-white/10 p-6">
+                    <pre class="text-[11px] text-primary/80 overflow-x-auto">
+{
+  "mcpServers": {
+    "arifos": {
+      "type": "http",
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
+    }
+  }
+}</pre>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <div class="p-8 border border-primary/20 bg-primary/5">
+                    <h4 class="font-bold text-white mb-4 flex items-center gap-2 italic">
+                        <span class="text-primary text-xl">"</span>Ditempa Bukan Diberi<span class="text-primary text-xl">"</span>
+                    </h4>
+                    <p class="text-xs opacity-60 leading-relaxed">
+                        Every agentic operation must pass through the 13-Floor Membrane. 
+                        A violation at any level triggers a recursive 888_HOLD. 
+                        The Judge must render verdict before Forge executes.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="https://arifos.arif-fazil.com" class="p-4 border border-white/5 text-[9px] font-bold uppercase tracking-widest text-center hover:bg-white/5">Theory (MIND)</a>
+                    <a href="https://aaa.arif-fazil.com" class="p-4 border border-white/5 text-[9px] font-bold uppercase tracking-widest text-center hover:bg-white/5">Execution (BODY)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-[#1A1A1A] flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-[9px] font-bold tracking-[0.4em] opacity-30 uppercase">
+            © 2026 arifOS Trinity // Forged by Muhammad Arif bin Fazil
+        </div>
+        <div class="flex gap-8 text-[9px] font-bold tracking-[0.2em] opacity-40">
+            <a href="/llms.txt" class="hover:text-primary">LLMS.TXT</a>
+            <a href="/health" class="hover:text-primary">HEALTH</a>
+            <a href="/tools" class="hover:text-primary">TOOLS</a>
+            <a href="https://github.com/ariffazil/arifOS" class="hover:text-primary">GITHUB</a>
+        </div>
+    </footer>
+
+</body>
+</html>

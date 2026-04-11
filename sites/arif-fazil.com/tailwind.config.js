@@ -48,15 +48,19 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Constitutional Domain Colors
+        // Constitutional Domain Colors — SOUL (Ψ) Blood Red + Earth Tones
         soul: {
-          primary: '#c4791a',
-          secondary: '#f0e6d3',
-          accent: '#8b5a2b',
-          void: '#1a1510',
-          surface: '#2a2018',
-          heat: '#e8a838',
-          cool: '#5a4a3a',
+          blood: '#8B1A1A',
+          arterial: '#B33030',
+          gold: '#D4AF37',
+          earth: '#6B4423',
+          terracotta: '#C4703D',
+          ochre: '#CC9544',
+          void: '#1A0A0A',
+          surface: '#2A1414',
+          heat: '#E8A838',
+          cool: '#5A4A3A',
+          text: '#F5E8E8',
         },
         mind: {
           primary: '#d4a853',
