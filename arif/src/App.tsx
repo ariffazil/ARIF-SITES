@@ -32,6 +32,9 @@ const DISCOVERIES = [
 function App() {
   return (
     <div className="container">
+      <div style={{ background: 'var(--accent-gold)', color: 'black', padding: '0.25rem 1rem', textAlign: 'center', fontSize: '0.7rem', fontWeight: 'bold' }}>
+        SYSTEM REFRESHED: 2026-04-11 01:14 UTC
+      </div>
       <header>
         <div className="container" style={{ padding: '0 2rem' }}>
           <div className="motto">Ditempa Bukan Diberi</div>
