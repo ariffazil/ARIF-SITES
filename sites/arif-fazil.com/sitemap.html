@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arifOS Trinity Sites — Site Map</title>
+    <link rel="stylesheet" href="https://arif-fazil.com/shared/design-system/tokens.css">
+    <style>
+        :root {
+            --soul-primary: #8B1A1A;
+            --mind-primary: #00D4AA;
+            --body-primary: #D4A853;
+        }
+        body { 
+            background: #0a0a0a; 
+            color: #e5e5e5; 
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { text-align: center; margin-bottom: 3rem; }
+        h1 span { color: #D4AF37; }
+        .trinity-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .trinity-ring {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .ring-soul { background: #8B1A1A; color: white; }
+        .ring-mind { background: #00D4AA; color: #0a0a0a; }
+        .ring-body { background: #D4A853; color: #0a0a0a; }
+        
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .site-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .site-card:hover {
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+        }
+        .site-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+        }
+        .site-card h3 a {
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        .site-card h3 a:hover {
+            text-decoration: underline;
+        }
+        .site-card .domain {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #8b949e;
+            margin-bottom: 0.5rem;
+        }
+        .site-card .description {
+            font-size: 0.875rem;
+            color: #c9d1d9;
+            margin-bottom: 1rem;
+        }
+        .site-card .ring-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .ring-soul-badge { background: rgba(139,26,26,0.3); color: #ff6b6b; border: 1px solid #8B1A1A; }
+        .ring-mind-badge { background: rgba(0,212,170,0.2); color: #00D4AA; border: 1px solid #00D4AA; }
+        .ring-body-badge { background: rgba(212,168,83,0.2); color: #D4A853; border: 1px solid #D4A853; }
+        
+        .section-title {
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #30363d;
+            color: #8b949e;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .protocol-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #30363d;
+        }
+        .protocol-links a {
+            font-size: 0.75rem;
+            color: #58a6ff;
+            text-decoration: none;
+        }
+        .protocol-links a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #30363d;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>arifOS <span>Trinity Sites</span></h1>
+        
+        <div class="trinity-bar">
+            <div class="trinity-ring ring-soul">Ψ SOUL</div>
+            <div class="trinity-ring ring-mind">Ω MIND</div>
+            <div class="trinity-ring ring-body">Δ BODY</div>
+        </div>
+
+        <!-- SOUL Sites -->
+        <h2 class="section-title">Ψ SOUL — Human Sovereignty (arif-fazil.com)</h2>
+        <div class="sites-grid">
+            <div class="site-card">
+                <h3><a href="https://arif-fazil.com/">arif-fazil.com</a></h3>
+                <div class="domain">arif-fazil.com</div>
+                <div class="description">Primary human sovereign hub. Personal brand, identity, and constitutional authority context.</div>
+                <span class="ring-badge ring-soul-badge">SOUL</span>
+                <div class="protocol-links">
+                    <a href="https://arif-fazil.com/.well-known/mcp/server.json">MCP JSON</a>
+                    <a href="https://arif-fazil.com/llms.txt">LLMs.txt</a>
+                </div>
+            </div>
+            <div class="site-card">
+                <h3><a href="https://wiki.arif-fazil.com/">Ω-Wiki</a></h3>
+                <div class="domain">wiki.arif-fazil.com</div>
+                <div class="description">Constitutional knowledge base for arifOS ecosystem — kernel, GEOX, AF-FORGE, APEX, VAULT999.</div>
+                <span class="ring-badge ring-soul-badge">SOUL</span>
+            </div>
+        </div>
+
+        <!-- MIND Sites -->
+        <h2 class="section-title">Ω MIND — Constitutional Kernel (arifos.arif-fazil.com)</h2>
+        <div class="sites-grid">
+            <div class="site-card">
+                <h3><a href="https://arifos.arif-fazil.com/">arifOS Kernel</a></h3>
+                <div class="domain">arifos.arif-fazil.com</div>
+                <div class="description">The 13 Constitutional Floors in action. Theory, kernel docs, and governance implementation.</div>
+                <span class="ring-badge ring-mind-badge">MIND</span>
+                <div class="protocol-links">
+                    <a href="https://arifos.arif-fazil.com/.well-known/mcp/server.json">MCP JSON</a>
+                </div>
+            </div>
+            <div class="site-card">
+                <h3><a href="https://apex.arif-fazil.com/">APEX Theory</a></h3>
+                <div class="domain">apex.arif-fazil.com</div>
+                <div class="description">The 13 binding constitutional floors that govern all AI actions in the arifOS ecosystem.</div>
+                <span class="ring-badge ring-mind-badge">MIND</span>
+            </div>
+        </div>
+
+        <!-- BODY Sites -->
+        <h2 class="section-title">Δ BODY — MCP Runtime & Protocols (arifosmcp.arif-fazil.com)</h2>
+        <div class="sites-grid">
+            <div class="site-card">
+                <h3><a href="https://arifosmcp.arif-fazil.com/">arifOS MCP</a></h3>
+                <div class="domain">arifosmcp.arif-fazil.com</div>
+                <div class="description">Constitutional AI gateway. 17 tools, 13 floors, HTTP/SSE dual transport. Live health, tools, resources.</div>
+                <span class="ring-badge ring-body-badge">BODY</span>
+                <div class="protocol-links">
+                    <a href="https://arifosmcp.arif-fazil.com/mcp">/mcp</a>
+                    <a href="https://arifosmcp.arif-fazil.com/sse">/sse</a>
+                    <a href="https://arifosmcp.arif-fazil.com/tools">/tools</a>
+                    <a href="https://arifosmcp.arif-fazil.com/health">/health</a>
+                    <a href="https://arifosmcp.arif-fazil.com/.well-known/mcp/server.json">MCP JSON</a>
+                    <a href="https://arifosmcp.arif-fazil.com/llms.txt">LLMs.txt</a>
+                </div>
+            </div>
+            <div class="site-card">
+                <h3><a href="https://aaa.arif-fazil.com/">AAA Wire</a></h3>
+                <div class="domain">aaa.arif-fazil.com</div>
+                <div class="description">MCP, WebMCP, A2A protocol specifications. Constitutional AI protocol docs.</div>
+                <span class="ring-badge ring-body-badge">BODY</span>
+                <div class="protocol-links">
+                    <a href="https://aaa.arif-fazil.com/mcp/">MCP Spec</a>
+                    <a href="https://aaa.arif-fazil.com/webmcp/">WebMCP Spec</a>
+                    <a href="https://aaa.arif-fazil.com/a2a/">A2A Spec</a>
+                </div>
+            </div>
+            <div class="site-card">
+                <h3><a href="https://geox.arif-fazil.com/">GEOX Earth Witness</a></h3>
+                <div class="domain">geox.arif-fazil.com</div>
+                <div class="description">Governed geologist cockpit. Constitutional geoscience with theory grounding.</div>
+                <span class="ring-badge ring-body-badge">BODY</span>
+            </div>
+        </div>
+
+        <!-- Additional Sites -->
+        <h2 class="section-title">Additional Sites</h2>
+        <div class="sites-grid">
+            <div class="site-card">
+                <h3><a href="https://forge.arif-fazil.com/">Forge</a></h3>
+                <div class="domain">forge.arif-fazil.com</div>
+                <div class="description">Tool for code execution and artifact creation under constitutional governance.</div>
+                <span class="ring-badge ring-body-badge">BODY</span>
+            </div>
+            <div class="site-card">
+                <h3><a href="https://waw.arif-fazil.com/">WAW</a></h3>
+                <div class="domain">waw.arif-fazil.com</div>
+                <div class="description">Voice/chat interface for arifOS agents.</div>
+                <span class="ring-badge ring-body-badge">BODY</span>
+            </div>
+        </div>
+
+        <!-- MCP Server Endpoints -->
+        <h2 class="section-title">MCP Server Endpoints</h2>
+        <div class="sites-grid">
+            <div class="site-card">
+                <h3>arifOS MCP Server</h3>
+                <div class="description">Primary MCP runtime with HTTP and SSE transports</div>
+                <div class="protocol-links">
+                    <a href="https://arifosmcp.arif-fazil.com/mcp">HTTP /mcp</a>
+                    <a href="https://arifosmcp.arif-fazil.com/sse">SSE /sse</a>
+                    <a href="https://arifosmcp.arif-fazil.com/.well-known/mcp/server.json">server.json</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>ΔΩΨ — Trinity of Execution — DITEMPA BUKAN DIBERI</p>
+            <p>arifOS Constitutional AI Ecosystem</p>
+        </footer>
+    </div>
+</body>
+</html>
