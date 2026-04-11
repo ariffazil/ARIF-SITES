@@ -1,636 +1,206 @@
-/* Theory of Anomalous Contrast - SOUL Ring (arif-fazil.com)
- * 
- * Visual Philosophy:
- * - Strata: Layered like geological formations, revealing depth
- * - Fractal: Self-similar patterns at every scale
- * - Primer: Red (passion/blood), Blue (depth/ocean), Yellow (light/consciousness)
- * - Paradox: "The one who knows he doesn't know"
- * - Jagged Human: Sharp edges in a gentle flow
- */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;600&display=swap');
-
-:root {
-  /* Primer Palette on Void */
-  --primer-red: #ff3333;
-  --primer-red-dim: #cc0000;
-  --primer-red-glow: rgba(255, 51, 51, 0.4);
-  
-  --primer-blue: #3366ff;
-  --primer-blue-dim: #0033cc;
-  --primer-blue-glow: rgba(51, 102, 255, 0.4);
-  
-  --primer-yellow: #ffcc00;
-  --primer-yellow-dim: #cc9900;
-  --primer-yellow-glow: rgba(255, 204, 0, 0.4);
-  
-  /* Void Backgrounds */
-  --void-deep: #050505;
-  --void-mid: #0a0a0a;
-  --void-light: #111111;
-  
-  /* Strata Layers */
-  --strata-1: #0d0d0d;
-  --strata-2: #141414;
-  --strata-3: #1a1a1a;
-  --strata-4: #222222;
-  
-  /* Text */
-  --text-primary: #f5f5f5;
-  --text-dim: #888888;
-  --text-muted: #555555;
-  
-  /* Typography */
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  
-  /* Jagged Elements */
-  --jagged: polygon(0 0, 100% 2%, 98% 100%, 2% 98%);
-  --jagged-reverse: polygon(2% 0, 100% 0, 98% 100%, 0 98%);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--void-deep);
-  color: var(--text-primary);
-  font-family: var(--font-display);
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-/* Fractal Background Animation */
-.fractal-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.15;
-  background: 
-    radial-gradient(ellipse at 20% 80%, var(--primer-red-glow) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, var(--primer-blue-glow) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, var(--primer-yellow-glow) 0%, transparent 30%);
-  animation: fractalPulse 20s ease-in-out infinite;
-}
-
-@keyframes fractalPulse {
-  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.15; }
-  33% { transform: scale(1.1) rotate(2deg); opacity: 0.2; }
-  66% { transform: scale(0.95) rotate(-1deg); opacity: 0.12; }
-}
-
-/* Strata Layers */
-.strata {
-  position: relative;
-  border-top: 1px solid var(--strata-4);
-}
-
-.strata::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--primer-red) 20%, 
-    var(--primer-blue) 50%, 
-    var(--primer-yellow) 80%, 
-    transparent 100%
-  );
-  opacity: 0.5;
-}
-
-/* Main Container */
-.container {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 2rem;
-  position: relative;
-}
-
-/* Header - Minimal, Strata Border */
-header {
-  width: 100%;
-  padding: 2rem 0;
-  border-bottom: 1px solid var(--strata-3);
-  position: relative;
-  background: linear-gradient(180deg, var(--void-deep) 0%, var(--void-mid) 100%);
-}
-
-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    var(--primer-red) 0%, 
-    var(--primer-blue) 50%, 
-    var(--primer-yellow) 100%
-  );
-  opacity: 0.6;
-  clip-path: var(--jagged);
-}
-
-/* Motto - Jagged, Humble */
-.motto {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background: var(--void-light);
-  border-left: 3px solid var(--primer-red);
-  clip-path: var(--jagged);
-}
-
-/* HERO - ARIF FAZIL as Monument */
-.hero {
-  padding: 6rem 0 4rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200%;
-  height: 200%;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      var(--strata-2) 2px,
-      var(--strata-2) 4px
-    );
-  opacity: 0.1;
-  animation: strataShift 30s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes strataShift {
-  0% { transform: translate(-50%, -50%) translateY(0); }
-  100% { transform: translate(-50%, -50%) translateY(100px); }
-}
-
-/* ARIF FAZIL - The Name as First Act */
-.hero-name {
-  font-size: clamp(4rem, 12vw, 8rem);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.5rem;
-  position: relative;
-  display: inline-block;
-}
-
-.hero-name .arif {
-  color: var(--text-primary);
-  position: relative;
-  display: inline-block;
-}
-
-.hero-name .arif::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primer-red), var(--primer-yellow));
-  clip-path: var(--jagged);
-}
-
-.hero-name .fazil {
-  color: var(--text-dim);
-  font-weight: 300;
-  display: block;
-  font-size: 0.6em;
-  margin-top: -0.2em;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-}
-
-/* Paradox Tagline */
-.hero-paradox {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--primer-yellow);
-  margin: 2rem 0;
-  padding: 1rem 0;
-  border-left: 2px solid var(--primer-yellow);
-  padding-left: 1.5rem;
-  max-width: 500px;
-  font-style: italic;
-  opacity: 0.9;
-}
-
-/* The One Who Doesn't Know */
-.hero-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-dim);
-  max-width: 600px;
-  line-height: 1.7;
-  margin-top: 2rem;
-  position: relative;
-}
-
-.hero-subtitle::before {
-  content: '〰';
-  color: var(--primer-blue);
-  font-size: 2rem;
-  position: absolute;
-  top: -1.5rem;
-  left: 0;
-  opacity: 0.5;
-}
-
-/* Role & Age */
-.hero-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--strata-3);
-}
-
-.role {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--primer-red);
-  letter-spacing: 0.1em;
-}
-
-/* Age Clock - Jagged Container */
-.age-clock {
-  font-family: var(--font-mono);
-  background: var(--void-light);
-  padding: 0.75rem 1.5rem;
-  font-size: 0.85rem;
-  color: var(--primer-blue);
-  border: 1px solid var(--primer-blue-dim);
-  clip-path: var(--jagged);
-}
-
-/* Strata Divider */
-.strata-divider {
-  height: 80px;
-  background: linear-gradient(180deg, var(--void-deep) 0%, var(--strata-1) 50%, var(--void-deep) 100%);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.strata-divider::before {
-  content: '◈';
-  color: var(--primer-yellow);
-  font-size: 1.5rem;
-  opacity: 0.5;
-}
-
-/* Section Styling */
-.section {
-  padding: 4rem 0;
-  position: relative;
-}
-
-.section-title {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-
-.section-title::before {
-  content: '';
-  width: 40px;
-  height: 2px;
-  background: var(--primer-red);
-}
-
-.section-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--strata-3) 0%, transparent 100%);
-}
-
-/* Stats - Fractal Cards */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin: 3rem 0;
-}
-
-.stat-card {
-  background: var(--strata-1);
-  padding: 2rem;
-  border: 1px solid var(--strata-3);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--primer-red);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.stat-card:hover::before {
-  transform: scaleX(1);
-}
-
-.stat-card:nth-child(2)::before { background: var(--primer-blue); }
-.stat-card:nth-child(3)::before { background: var(--primer-yellow); }
-
-.stat-value {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.stat-card:nth-child(1) .stat-value { color: var(--primer-red); }
-.stat-card:nth-child(2) .stat-value { color: var(--primer-blue); }
-.stat-card:nth-child(3) .stat-value { color: var(--primer-yellow); }
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-}
-
-/* Discoveries Table - Strata Style */
-.table-container {
-  overflow-x: auto;
-  background: var(--strata-1);
-  border: 1px solid var(--strata-3);
-  clip-path: var(--jagged);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th {
-  text-align: left;
-  padding: 1.25rem 1rem;
-  background: var(--strata-2);
-  color: var(--text-dim);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 500;
-  border-bottom: 2px solid var(--primer-blue);
-}
-
-td {
-  padding: 1.25rem 1rem;
-  border-bottom: 1px solid var(--strata-2);
-  font-size: 0.9rem;
-}
-
-tr:hover td {
-  background: var(--strata-2);
-}
-
-.discovery-name {
-  font-weight: 600;
-  color: var(--primer-yellow);
-  font-family: var(--font-mono);
-}
-
-/* Trinity Grid */
-.trinity-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.ring-card {
-  padding: 2.5rem 2rem;
-  background: var(--strata-1);
-  border: 1px solid var(--strata-3);
-  position: relative;
-  transition: all 0.3s ease;
-  clip-path: var(--jagged);
-}
-
-.ring-card:hover {
-  border-color: var(--strata-4);
-  transform: translateY(-4px);
-}
-
-.ring-card:nth-child(1) { border-top: 3px solid var(--primer-red); }
-.ring-card:nth-child(2) { border-top: 3px solid var(--primer-blue); }
-.ring-card:nth-child(3) { border-top: 3px solid var(--primer-yellow); }
-
-.ring-symbol {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  display: block;
-  font-weight: 300;
-}
-
-.ring-card:nth-child(1) .ring-symbol { color: var(--primer-red); }
-.ring-card:nth-child(2) .ring-symbol { color: var(--primer-blue); }
-.ring-card:nth-child(3) .ring-symbol { color: var(--primer-yellow); }
-
-.ring-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.1em;
-}
-
-.ring-desc {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-}
-
-/* Integration Cards */
-.integration-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-.integration-card {
-  background: linear-gradient(135deg, var(--strata-1) 0%, var(--strata-2) 100%);
-  padding: 2rem;
-  border: 1px solid var(--strata-3);
-  position: relative;
-  clip-path: var(--jagged-reverse);
-}
-
-.integration-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: var(--primer-yellow);
-}
-
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  background: var(--primer-yellow);
-  color: var(--void-deep);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-right: 0.75rem;
-  clip-path: var(--jagged);
-}
-
-/* Contact - Jagged Buttons */
-.contact-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.contact-link {
-  color: var(--text-primary);
-  text-decoration: none;
-  padding: 1rem 2rem;
-  background: var(--strata-2);
-  border: 1px solid var(--strata-4);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  transition: all 0.2s ease;
-  clip-path: var(--jagged);
-}
-
-.contact-link:hover {
-  background: var(--primer-blue);
-  border-color: var(--primer-blue);
-  color: var(--void-deep);
-}
-
-/* Footer - Deep Strata */
-footer {
-  padding: 4rem 0;
-  text-align: center;
-  background: var(--strata-1);
-  border-top: 1px solid var(--strata-3);
-  position: relative;
-}
-
-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    var(--primer-red) 0%, 
-    var(--primer-blue) 50%, 
-    var(--primer-yellow) 100%
-  );
-  opacity: 0.5;
-}
-
-.footer-seal {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--primer-yellow);
-  margin-bottom: 1rem;
-  letter-spacing: 0.2em;
-}
-
-.footer-copy {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-name {
-    font-size: 3rem;
-  }
-  
-  .stats-grid,
-  .trinity-grid,
-  .integration-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-meta {
-    flex-direction: column;
-    align-items: flex-start;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SOUL - Earth Ochre */
+    --soul-primary: #c4791a;
+    --soul-secondary: #f0e6d3;
+    --soul-void: #0f0c08;
+    --soul-surface: #1a1510;
+    
+    /* MIND - Sovereign Gold */
+    --mind-primary: #d4a853;
+    --mind-secondary: #f0d878;
+    --mind-void: #0a0a14;
+    --mind-surface: #151528;
+    
+    /* BODY - Electric Teal */
+    --body-primary: #00d4aa;
+    --body-secondary: #00ffcc;
+    --body-void: #050508;
+    --body-surface: #0f1418;
+    
+    /* EXTENSION - Agent Orange */
+    --extension-primary: #ff6b35;
+    --extension-secondary: #ff9f6b;
+    --extension-void: #1a0f2e;
+    --extension-surface: #2d1b4e;
+    
+    /* FIELD - Steel Azure */
+    --field-primary: #6b8cae;
+    --field-secondary: #8bb0d0;
+    --field-void: #0a1018;
+    --field-surface: #1a2532;
+
+    /* shadcn variables */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.625rem;
   }
 }
 
-/* Selection */
-::selection {
-  background: var(--primer-yellow);
-  color: var(--void-deep);
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Constitutional Glow Effects */
+  .glow-soul {
+    box-shadow: 0 0 30px rgba(196, 121, 26, 0.3);
+  }
+  
+  .glow-mind {
+    box-shadow: 0 0 30px rgba(212, 168, 83, 0.3);
+  }
+  
+  .glow-body {
+    box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+  }
+  
+  .glow-extension {
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+  }
+  
+  .glow-field {
+    box-shadow: 0 0 30px rgba(107, 140, 174, 0.3);
+  }
+  
+  /* Ring Symbol */
+  .ring-symbol {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+  }
+  
+  /* Constitutional Card */
+  .constitutional-card {
+    @apply rounded-xl border backdrop-blur-sm transition-all duration-300;
+  }
+  
+  /* Pipeline Stage */
+  .pipeline-stage {
+    @apply px-3 py-1 rounded-lg font-mono text-xs;
+  }
+  
+  /* F10 Badge */
+  .f10-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient-soul {
+    background: linear-gradient(135deg, #c4791a, #e8a838);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-mind {
+    background: linear-gradient(135deg, #d4a853, #f0d878);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-body {
+    background: linear-gradient(135deg, #00d4aa, #00ffcc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animation Utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--void-deep);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--strata-3);
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primer-blue);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(196, 121, 26, 0.3);
+  color: inherit;
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
