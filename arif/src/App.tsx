@@ -181,7 +181,7 @@ function App() {
         <p className="motto" style={{ marginBottom: '1rem' }}>Forged, Not Given — ΔΩΨ | ARIF</p>
         <p className="mono">© 2026 Muhammad Arif bin Fazil. All rights reserved.</p>
         <p className="mono" style={{ fontSize: '0.7rem', marginTop: '0.5rem', opacity: 0.5 }}>
-          Constitutional Version: arifOS v54.1-SEAL
+          Constitutional Version: arifOS v54.1-SEAL [Pulse: 2026-04-11 01:12]
         </p>
       </footer>
     </div>
