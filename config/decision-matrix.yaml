@@ -136,9 +136,11 @@ site_mapping:
     target: cloudflare-pages
     
   arifos.arif-fazil.com:
-    lane: static
+    lane: deleted
     ring: mind
     target: cloudflare-pages
+    deprecated: 2026-04-11
+    note: Content merged into apex.arif-fazil.com and arifosmcp.arif-fazil.com
     
   aaa.arif-fazil.com:
     lane: static

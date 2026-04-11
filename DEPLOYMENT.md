@@ -181,10 +181,10 @@ curl https://<service>/health
 | Site | Lane | Target | Notes |
 |------|------|--------|-------|
 | arif-fazil.com | STATIC | Cloudflare Pages | SOUL ring — human anchor |
-| arifos.arif-fazil.com | STATIC | Cloudflare Pages | MIND ring — constitution |
+| arifos.arif-fazil.com | DELETED | — | MIND ring — merged into apex + arifosmcp |
 | aaa.arif-fazil.com | STATIC | Cloudflare Pages | BODY ring — protocols |
 | wiki.arif-fazil.com | STATIC | Cloudflare Pages | Knowledge base |
-| apex.arif-fazil.com | STATIC | Cloudflare Pages | 13 Floors |
+| apex.arif-fazil.com | STATIC | VPS nginx | 13 Floors (MIND ring) |
 | forge.arif-fazil.com | WEBMCP | Pages + VPS | Tool execution via MCP |
 | waw.arif-fazil.com | WEBMCP | Pages + VPS | State of machine |
 | arifosmcp.arif-fazil.com | MCP RUNTIME | VPS Docker | Full MCP gateway |

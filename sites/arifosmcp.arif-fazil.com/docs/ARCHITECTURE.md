@@ -112,7 +112,7 @@ Uses BODY (Δ) design system:
 
 ```html
 <a href="https://arif-fazil.com">Ψ SOUL</a>
-<a href="https://arifos.arif-fazil.com">Ω MIND</a>
+<a href="https://apex.arif-fazil.com">Ω MIND</a>
 <span>Δ BODY</span>
 ```
 
@@ -131,7 +131,7 @@ docker-compose up -d arifosmcp
 | Resource | URL |
 |----------|-----|
 | SOUL | https://arif-fazil.com |
-| MIND | https://arifos.arif-fazil.com |
+| MIND | https://apex.arif-fazil.com |
 | BODY | https://aaa.arif-fazil.com |
 | GEOX | https://geox.arif-fazil.com |
 

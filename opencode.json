@@ -67,7 +67,7 @@
   
   "governance": {
     "authority": "arifOS",
-    "constitution_url": "https://arifos.arif-fazil.com",
+    "constitution_url": "https://apex.arif-fazil.com",
     "chokepoint_endpoint": "https://arifosmcp.arif-fazil.com/judge",
     "required_floors": ["F1", "F2", "F7", "F9", "F11"],
     "escalation_chain": [

@@ -39,7 +39,7 @@
 | **Key Features** | Biological age clock, stratigraphic canvas, discovery cards |
 | **Identity** | **The Human** — listening to the earth |
 
-### Ω MIND — `arifos.arif-fazil.com`
+### Ω MIND — `apex.arif-fazil.com` (was `arifos.arif-fazil.com`)
 | Attribute | Value |
 |-----------|-------|
 | **Purpose** | arifOS constitutional kernel documentation |
@@ -48,10 +48,14 @@
 | **Geometry** | Rectilinear, grid-based, monospace aesthetics |
 | **Motion** | Precise snapping, calculated transitions |
 | **Typography** | JetBrains Mono / Monospace |
-| **Tech Stack** | React + Vite |
-| **Deployment** | Docker → arifos_landings container |
+| **Tech Stack** | Static HTML (VPS + nginx) |
+| **Deployment** | VPS: /opt/arifos/sites/apex.arif-fazil.com |
 | **Key Features** | 13 floors documentation, F1-F13 principles, constitutional API |
 | **Identity** | **The Machine** — constitutional governance |
+
+> **Note:** `arifos.arif-fazil.com` (Cloudflare Pages) was **deleted 2026-04-11**. Content merged into:
+> - `apex.arif-fazil.com` — Primary constitutional floor specs
+> - `arifosmcp.arif-fazil.com/#constitution` — Kernel integration with MCP
 
 ### Δ BODY — `aaa.arif-fazil.com`
 | Attribute | Value |
@@ -223,12 +227,14 @@ docker exec arifos_landings rm -rf /usr/share/nginx/html/arif-fazil.com/*
 docker cp dist/. arifos_landings:/usr/share/nginx/html/arif-fazil.com/
 ```
 
-### Deploy MIND Ring (arifos.arif-fazil.com)
+### Deploy MIND Ring (apex.arif-fazil.com)
 ```bash
-cd /root/arif-sites/sites/arifos.arif-fazil.com
-npm run build
-docker exec arifos_landings rm -rf /usr/share/nginx/html/arifos.arif-fazil.com/*
-docker cp dist/. arifos_landings:/usr/share/nginx/html/arifos.arif-fazil.com/
+# DEPREATED: arifos.arif-fazil.com Cloudflare Pages deleted 2026-04-11
+# MIND content now at apex.arif-fazil.com (VPS) and arifosmcp.arif-fazil.com
+cd /root/arif-sites/sites/apex.arif-fazil.com
+# Static HTML - no build needed
+docker exec arifos_landings rm -rf /usr/share/nginx/html/apex.arif-fazil.com/*
+docker cp . arifos_landings:/usr/share/nginx/html/apex.arif-fazil.com/
 ```
 
 ### Deploy BODY Ring (aaa.arif-fazil.com)
@@ -271,7 +277,7 @@ All sites operate under **arifOS F1-F13**:
 │              ARIF-FAZIL.COM AGENT CHEAT SHEET              │
 ├────────────────────────────────────────────────────────────┤
 │  Ψ SOUL   → arif-fazil.com      → React, Red, Jagged      │
-│  Ω MIND   → arifos.arif-fazil.com → React, Cyan, Grid     │
+│  Ω MIND   → apex.arif-fazil.com  → HTML, Cyan, Grid       │
 │  Δ BODY   → aaa.arif-fazil.com    → HTML, Gold, Rounded   │
 ├────────────────────────────────────────────────────────────┤
 │  INFRASTRUCTURE:                                           │
@@ -313,7 +319,8 @@ Need to update navigation?
 | Component | Status | Last Updated |
 |-----------|--------|--------------|
 | SOUL (arif-fazil.com) | ✅ OPERATIONAL | 2026-04-11 |
-| MIND (arifos.arif-fazil.com) | ✅ OPERATIONAL | 2026-04-11 |
+| MIND (apex.arif-fazil.com) | ✅ OPERATIONAL | 2026-04-11 |
+| MIND (arifos.arif-fazil.com) | ❌ DELETED | 2026-04-11 |
 | BODY (aaa.arif-fazil.com) | ✅ OPERATIONAL | 2026-04-11 |
 | MCP Dashboard | ✅ OPERATIONAL | 2026-04-11 |
 | GEOX | ✅ OPERATIONAL | 2026-04-11 |

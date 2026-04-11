@@ -40,9 +40,13 @@ The Trinity Sites form a **constitutional ecosystem** where three rings (SOUL/MI
 ---
 
 ### Ring 2: MIND (Ω) — Constitutional Kernel
-**Domain:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com)  
-**Stack:** React 18 + TypeScript + Vite + Tailwind CSS  
+**Domain:** [apex.arif-fazil.com](https://apex.arif-fazil.com) (VPS-hosted)  
+**Stack:** Static HTML (VPS + nginx)  
 **Role:** arifOS governance documentation, 13 Floors implementation, constitutional AI reference
+
+**Note:** arifos.arif-fazil.com (Cloudflare Pages) was decommissioned 2026-04-11. Content merged into:
+- [apex.arif-fazil.com](https://apex.arif-fazil.com) — Constitutional floor specs
+- [arifosmcp.arif-fazil.com/#constitution](https://arifosmcp.arif-fazil.com/#constitution) — Kernel integration
 
 **Core Resources:**
 | Path | Purpose |
@@ -137,7 +141,7 @@ The Trinity Sites form a **constitutional ecosystem** where three rings (SOUL/MI
                     ▼
 ┌──────────────────────────────────────────────────────────────────────────┐
 │                      arifOS MIND                                         │
-│              arifos.arif-fazil.com                                        │
+│              apex.arif-fazil.com                                          │
 │    Constitutional 13 Floors • Governance Reference                        │
 └──────────────────────────────────────────────────────────────────────────┘
                     │
@@ -182,7 +186,7 @@ Human → arif-fazil.com → soul.json/human.md/scar.json
 
 ### 2. Agent → MIND (Constitutional Check)
 ```
-Agent → arifos.arif-fazil.com/.well-known/arifOS/floors.json
+Agent → apex.arif-fazil.com/.well-known/arifOS/floors.json
         ↓
     Read F1-F13 definitions
         ↓
@@ -215,7 +219,7 @@ Agent → arifosmcp.arif-fazil.com/health (capability check)
 | Zone | Access | Governance |
 |------|--------|------------|
 | SOUL (arif-fazil.com) | Public | Static content, identity only |
-| MIND (arifos.arif-fazil.com) | Public | Read-only reference |
+| MIND (apex.arif-fazil.com) | Public | Read-only reference |
 | BODY (aaa.arif-fazil.com) | Public | Protocol specs, no exec |
 | MCP Gateway | Authenticated | arifOS F1-F13 + 888_HOLD |
 | GEOX | Authenticated | Domain-specific governance |
@@ -231,10 +235,8 @@ Cloudflare (DNS + Pages)
      ├── arif-fazil.com ──────► Cloudflare Pages (ariffazil project)
      │                              └── /sites/arif-fazil.com
      │
-     ├── arifos.arif-fazil.com ──► Cloudflare Pages (arifos project)
-     │                              └── /sites/arifos.arif-fazil.com
-     │
-     ├── aaa.arif-fazil.com ────► VPS: /opt/arifos/sites/aaa
+     ├── apex.arif-fazil.com ────► VPS: /opt/arifos/sites/apex.arif-fazil.com
+     ├── arifosmcp.arif-fazil.com ► VPS: /opt/arifos/sites/arifosmcp
      ├── arifosmcp.arif-fazil.com ► VPS: /opt/arifos/sites/arifosmcp
      ├── forge.arif-fazil.com ───► VPS: /opt/arifos/sites/forge
      ├── waw.arif-fazil.com ─────► VPS: /opt/arifos/sites/waw
@@ -255,7 +257,7 @@ https://arif-fazil.com/shared/design-system/tokens.css
 ### Trinity Navigation (Footer on all sites)
 ```html
 <a href="https://arif-fazil.com">Ψ SOUL</a>
-<a href="https://arifos.arif-fazil.com">Ω MIND</a>
+<a href="https://apex.arif-fazil.com">Ω MIND</a>
 <span>Δ BODY</span>
 ```
 
@@ -271,7 +273,8 @@ https://arif-fazil.com/shared/design-system/tokens.css
 | Site | Version | Seal | Last Verified |
 |------|---------|------|--------------|
 | arif-fazil.com | — | VAULT999 | 2026-04-11 |
-| arifos.arif-fazil.com | — | VAULT999 | 2026-04-11 |
+| apex.arif-fazil.com | — | VAULT999 | 2026-04-11 |
+| arifos.arif-fazil.com | DELETED | — | 2026-04-11 |
 | aaa.arif-fazil.com | — | VAULT999 | 2026-04-11 |
 | arifosmcp.arif-fazil.com | 2026.04.07 | SEAL | 2026-04-11 |
 | forge.arif-fazil.com | — | VAULT999 | 2026-04-11 |

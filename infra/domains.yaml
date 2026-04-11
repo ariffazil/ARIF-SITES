@@ -10,14 +10,15 @@ domains:
     deploy: cloudflare-pages
 
   - host: arifos.arif-fazil.com
-    type: static
+    type: deleted
     source: sites/arifos.arif-fazil.com
-    deploy: cloudflare-pages
+    deploy: deleted-2026-04-11
+    note: Cloudflare Pages project deleted. Content merged into apex + arifosmcp.
 
   - host: apex.arif-fazil.com
     type: static
     source: sites/apex.arif-fazil.com
-    deploy: cloudflare-pages
+    deploy: vps-nginx
 
   - host: wiki.arif-fazil.com
     type: static

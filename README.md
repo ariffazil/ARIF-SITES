@@ -12,7 +12,7 @@
 | Ring | Hostname | Type | Role |
 |------|----------|------|------|
 | **Ψ SOUL** | `arif-fazil.com` | Static | Human Anchor / Professional Portfolio |
-| **Ω MIND** | `arifos.arif-fazil.com` | Static | Constitutional Law / Theory |
+| **Ω MIND** | `apex.arif-fazil.com` | VPS | Constitutional Law / 13 Floors |
 | **Δ BODY** | `aaa.arif-fazil.com` | Static | Atomic Execution / Wire Protocol |
 | **Ξ EXT** | `arifosmcp.arif-fazil.com` | Dynamic | MCP Runtime Endpoint |
 | **Φ FIELD** | `geox.arif-fazil.com` | Dynamic | Earth Witness GUI |
