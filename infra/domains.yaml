@@ -1,0 +1,47 @@
+domains:
+  - host: arif-fazil.com
+    type: static
+    source: sites/arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: aaa.arif-fazil.com
+    type: static
+    source: sites/aaa.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: arifos.arif-fazil.com
+    type: static
+    source: sites/arifos.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: apex.arif-fazil.com
+    type: static
+    source: sites/apex.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: wiki.arif-fazil.com
+    type: static
+    source: sites/wiki.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: forge.arif-fazil.com
+    type: static
+    source: sites/forge.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: waw.arif-fazil.com
+    type: static
+    source: sites/waw.arif-fazil.com
+    deploy: cloudflare-pages
+
+  - host: geox.arif-fazil.com
+    type: dynamic
+    source: apps/geox
+    deploy: vps-docker
+    upstream: geox_gui:3000
+
+  - host: arifosmcp.arif-fazil.com
+    type: dynamic
+    source: services/arifosmcp
+    deploy: vps-docker
+    upstream: arifosmcp:8080
