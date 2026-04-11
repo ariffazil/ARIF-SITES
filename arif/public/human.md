@@ -1,4 +1,4 @@
-# Muhammad Arif bin Fazil
+# ARIF FAZIL
 
 ## Senior Exploration Geoscientist @ PETRONAS
 

@@ -17,7 +17,7 @@ function AgeClock({ birthDate }: { birthDate: string }) {
 
   return (
     <div className="age-clock">
-      <span className="text-gold">Age:</span> {age} years
+      <span className="text-gold">Age:</span> {age}
     </div>
   );
 }
@@ -29,20 +29,14 @@ const DISCOVERIES = [
   { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', play: 'Structural/Stratigraphic', note: 'MBR+ Round I, July 2024' },
 ];
 
-const SCARS = [
-  { name: 'Institutional Scar', desc: 'Witnessed the erasure of 1,000 staff and irreplaceable institutional knowledge. Memory is sacred.' },
-  { name: 'Professional Pressure', desc: '12+ years. Zero failures. Hundreds of millions of dollars per decision. Calibrated humility is survival.' },
-  { name: 'Father\'s Passing', desc: 'The Abah Check — the ultimate dignity veto. Would Abah be proud of this?' }
-];
-
 function App() {
   return (
     <div className="container">
       <header>
         <div className="container" style={{ padding: '0 2rem' }}>
           <div className="motto">Ditempa Bukan Diberi</div>
-          <h1 style={{ fontSize: '1.25rem' }}>Muhammad Arif bin Fazil</h1>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
+          <h1 style={{ fontSize: '1.5rem', letterSpacing: '0.02em' }}>ARIF FAZIL</h1>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem', flexWrap: 'wrap', gap: '1rem' }}>
             <p className="mono text-gold">Senior Exploration Geoscientist @ PETRONAS</p>
             <AgeClock birthDate="1990-05-22" />
           </div>
@@ -56,8 +50,9 @@ function App() {
           Decisions under uncertainty.
         </h2>
         <p className="hero-subtitle">
-          I bridge the gap between subsurface physical truth and digital governance. 
-          Explorationist by nature. Architect of arifOS by necessity.
+          I bridge the physical truth of the subsurface with digital governance—
+          explorationist by nature, architect of arifOS by necessity.
+          13+ years forging clarity where data ends and judgment begins.
         </p>
       </section>
 
@@ -78,11 +73,10 @@ function App() {
 
       <section className="section">
         <h3 className="section-title text-gold">Professional Journey</h3>
-        <p style={{ marginBottom: '2rem', maxWidth: '700px' }}>
-          My life's work involves listening to the Earth—interpreting the subtle, often fragmented signals 
-          of the subsurface to make high-stakes decisions under profound uncertainty. 
-          This same discipline—the constant need for grounding, verification, and humility in the face 
-          of the unknown—is what birthed <strong>arifOS</strong>.
+        <p style={{ marginBottom: '2rem', maxWidth: '700px', lineHeight: '1.7' }}>
+          My work is simple: read the Earth's quiet signals, translate them into high-stakes decisions, 
+          and never forget that every interpretation is provisional. The same discipline—rigorous verification, 
+          calibrated humility, and respect for what remains unknown—gave birth to <strong>arifOS</strong>.
         </p>
         
         <div className="table-container">
@@ -116,32 +110,20 @@ function App() {
             <span className="ring-symbol">Ψ</span>
             <h4 className="ring-name">SOUL</h4>
             <p className="mono text-red" style={{ marginBottom: '0.5rem' }}>Human Anchor</p>
-            <p className="ring-desc">Personal identity, philosophy, and scars. The source of human witness.</p>
+            <p className="ring-desc">Personal identity, philosophy, and lived witness.</p>
           </div>
           <div className="ring-card" style={{ borderColor: 'var(--accent-gold)' }}>
             <span className="ring-symbol">Ω</span>
             <h4 className="ring-name">MIND</h4>
             <p className="mono text-gold" style={{ marginBottom: '0.5rem' }}>Theory & Law</p>
-            <p className="ring-desc">Constitutional canon, axioms, and philosophical grounding of arifOS.</p>
+            <p className="ring-desc">Constitutional axioms and philosophical grounding of arifOS.</p>
           </div>
           <div className="ring-card" style={{ borderColor: '#2563eb' }}>
             <span className="ring-symbol">Δ</span>
             <h4 className="ring-name">BODY</h4>
             <p className="mono" style={{ color: '#2563eb', marginBottom: '0.5rem' }}>Execution</p>
-            <p className="ring-desc">The production runtime, MCP tools, and the metabolic execution kernel.</p>
+            <p className="ring-desc">Production runtime, MCP tools, and metabolic kernel.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <h3 className="section-title text-red">Scars of the Framework</h3>
-        <div className="scars-list">
-          {SCARS.map(s => (
-            <div className="scar-item" key={s.name}>
-              <div className="scar-name">{s.name}</div>
-              <div className="scar-desc">{s.desc}</div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -179,9 +161,9 @@ function App() {
 
       <footer>
         <p className="motto" style={{ marginBottom: '1rem' }}>Forged, Not Given — ΔΩΨ | ARIF</p>
-        <p className="mono">© 2026 Muhammad Arif bin Fazil. All rights reserved.</p>
+        <p className="mono">© 2026 ARIF FAZIL. All rights reserved.</p>
         <p className="mono" style={{ fontSize: '0.7rem', marginTop: '0.5rem', opacity: 0.5 }}>
-          Constitutional Version: arifOS v54.1-SEAL [Pulse: 2026-04-11 01:12]
+          Constitutional Version: arifOS v54.1-SEAL
         </p>
       </footer>
     </div>
