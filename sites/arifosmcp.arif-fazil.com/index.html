@@ -3,691 +3,733 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arifOS MCP — Constitutional AI Gateway</title>
-    <meta name="description" content="arifOS MCP: The sovereign constitutional intelligence kernel. Connect via MCP, WebMCP, or A2A. 33 tools, 13 constitutional floors, human sovereignty.">
+    <title>arifOS MCP — Constitutional Intelligence Kernel</title>
+    <meta name="description" content="arifOS MCP: The sovereign constitutional intelligence kernel. 17 tools, 13 constitutional floors, human sovereignty. DITEMPA BUKAN DIBERI.">
     <link rel="canonical" href="https://arifosmcp.arif-fazil.com/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Δ</text></svg>">
-    
-    <!-- Shared Trinity Design System -->
-    <link rel="stylesheet" href="https://arif-fazil.com/shared/design-system/tokens.css">
-    
+    <link rel="alternate" type="application/llm-fulltext" href="/llms.txt">
+    <link rel="alternate" type="application/json" href="/.well-known/mcp/server.json">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { DEFAULT: '#D4A853', light: '#E3B341', dark: '#C4791A' },
+                        soul: '#8B1A1A',
+                        mind: '#00D4AA',
+                        body: '#D4A853',
+                        dark: { bg: '#0a0a0a', card: '#161b22', border: '#30363d' }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* BODY (Δ) Ring — Amber/Gold palette override */
-        :root {
-            --body-primary: #D4A853;
-            --body-secondary: #C4791A;
-            --body-accent: #E3B341;
-            --body-bg: #1A1612;
-            --body-text: #F5F0E8;
-        }
-        
-        body { 
-            background: #0a0a0a; 
-            color: #e5e5e5; 
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .glass-card {
-            background: rgba(22, 27, 34, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid #30363d;
-            border-radius: 12px;
-        }
-        .trinity-gradient { 
-            background: linear-gradient(135deg, #1a1a1a 0%, #0d1117 100%); 
-            border: 1px solid #30363d;
-            border-radius: 12px;
-        }
-        .trinity-gradient:hover { border-color: #D4A853; }
-        .sovereign-glow { 
-            box-shadow: 0 0 30px rgba(212, 168, 83, 0.2); 
-            border: 1px solid #D4A853;
-            background: rgba(212, 168, 83, 0.08);
-            border-radius: 12px;
-        }
-        .gradient-gold { 
-            background: linear-gradient(135deg, #D4A853 0%, #E3B341 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            background-clip: text; 
-        }
-        .gradient-amber {
-            background: linear-gradient(135deg, #C4791A 0%, #D4A853 50%, #E3B341 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .trinity-inactive { 
-            background: transparent; 
-            color: #8b949e; 
-            border: 1px solid #30363d; 
-            border-radius: 8px;
-        }
-        .trinity-inactive:hover { 
-            border-color: #D4A853; 
-            color: #E3B341; 
-        }
-        pre { 
-            background: #0d1117; 
-            border: 1px solid #30363d; 
-            border-radius: 8px; 
-            padding: 1rem; 
-            overflow-x: auto; 
-        }
-        code { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
-        :not(pre) > code { 
-            background: #21262d; 
-            padding: 0.2rem 0.4rem; 
-            border-radius: 4px; 
-            color: #D4A853; 
-        }
-        ::selection { background: #D4A853; color: #0a0a0a; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #C4791A; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D4A853; }
-        .method-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.125rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .method-get { background: #238636; color: white; }
+        body { background: #0a0a0a; color: #e5e5e5; font-family: 'Inter', system-ui, sans-serif; }
+        .gradient-gold { background: linear-gradient(135deg, #D4A853 0%, #E3B341 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-soul { background: linear-gradient(135deg, #8B1A1A 0%, #ef4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-mind { background: linear-gradient(135deg, #00D4AA 0%, #00ffcc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-card { background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(12px); border: 1px solid #30363d; }
+        .glass-panel { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(8px); border: 1px solid #21262d; }
+        .method-badge { display: inline-flex; padding: 0.125rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
         .method-post { background: #D4A853; color: #0a0a0a; }
-        
-        /* BODY ring utility classes */
-        .text-body { color: #D4A853; }
-        .text-body-secondary { color: #C4791A; }
-        .text-body-accent { color: #E3B341; }
-        .bg-body { background-color: #D4A853; }
-        .bg-body-surface { background-color: #1A1612; }
-        .border-body { border-color: #D4A853; }
-        .glow-body { box-shadow: 0 0 30px rgba(212, 168, 83, 0.25); }
-        
-        /* Ring icon BODY variant */
-        .ring-icon--body {
-            background: linear-gradient(135deg, rgba(212, 168, 83, 0.2) 0%, rgba(196, 121, 26, 0.1) 100%);
-            color: #D4A853;
-            border: 1px solid rgba(212, 168, 83, 0.4);
-            box-shadow: 0 0 20px rgba(212, 168, 83, 0.15);
-            border-radius: 12px;
-        }
-        
-        /* Status dot BODY themed */
-        .status-dot--body {
-            background: #D4A853;
-            box-shadow: 0 0 10px rgba(212, 168, 83, 0.5);
-        }
-        
-        /* Badge BODY themed */
-        .badge-verdict {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.25rem 0.75rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        .badge-seal {
-            background: #238636;
-            color: white;
-        }
-        .badge-pending {
-            background: #D4A853;
-            color: #0a0a0a;
-        }
+        .method-get { background: #00D4AA; color: #0a0a0a; }
+        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+        .circuit-line { background: linear-gradient(90deg, transparent, #D4A853, transparent); height: 1px; }
+        pre { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; overflow-x: auto; }
+        code { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
+        :not(pre) > code { background: #21262d; padding: 0.2rem 0.4rem; border-radius: 4px; color: #D4A853; }
+        .trinity-ring { transition: all 0.3s ease; }
+        .trinity-ring:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212, 168, 83, 0.2); }
+        .metric-value { font-feature-settings: 'tnum'; font-variant-numeric: tabular-nums; }
+        .copy-btn { transition: all 0.2s; }
+        .copy-btn:hover { background: #D4A853; color: #0a0a0a; }
+        .copy-btn.copied { background: #22c55e; color: white; }
+        ::selection { background: #D4A853; color: #0a0a0a; }
     </style>
 </head>
-<body class="min-h-screen">
-
+<body class="min-h-screen antialiased">
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-primer-bg/90 backdrop-blur-lg border-b border-primer-border">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="/" class="flex items-center gap-2">
-                    <span class="text-lg font-bold text-primer-text">arifOS<span class="text-primer-gold">.</span>MCP</span>
-                </a>
-                <div class="flex items-center gap-1 p-1 rounded-lg bg-primer-bg-secondary border border-primer-border">
-                    <a href="https://arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all">HUMAN</a>
-                    <a href="https://arifos.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all">MIND</a>
-                    <a href="https://aaa.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md bg-primer-gold/20 border border-primer-gold text-primer-gold font-medium">BODY</a>
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2 group">
+                <span class="text-2xl font-bold gradient-gold group-hover:scale-110 transition-transform">Δ</span>
+                <div>
+                    <span class="text-lg font-bold tracking-tight">arifOS MCP</span>
+                    <span class="hidden sm:inline text-xs text-gold ml-2 px-2 py-0.5 rounded-full border border-gold/30">v2026.04.07</span>
                 </div>
+            </a>
+            <div class="flex items-center gap-6 text-sm">
+                <a href="#status" class="text-gray-400 hover:text-gold transition-colors">Status</a>
+                <a href="#tools" class="text-gray-400 hover:text-gold transition-colors">Tools</a>
+                <a href="#connect" class="text-gray-400 hover:text-gold transition-colors">Connect</a>
+                <a href="/.well-known/mcp/server.json" class="text-gray-400 hover:text-gold transition-colors">MCP JSON</a>
+                <a href="/webmcp/" class="px-3 py-1.5 rounded-lg bg-gold/10 border border-gold/30 text-gold hover:bg-gold hover:text-dark-bg transition-all text-xs font-medium">WebMCP</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-[75vh] flex items-center justify-center pt-16 overflow-hidden">
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div class="w-[600px] h-[600px] rounded-full bg-primer-gold/5 blur-[120px]"></div>
-            <div class="w-[400px] h-[400px] rounded-full bg-primer-blue/5 blur-[100px]"></div>
-        </div>
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primer-bg-secondary border border-primer-border mb-8">
-                <span class="w-2 h-2 rounded-full bg-primer-gold animate-pulse"></span>
-                <span class="text-xs font-medium text-primer-text-muted tracking-wider uppercase">Constitutional Intelligence Gateway</span>
+    <main class="pt-24 pb-12 px-4">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto mb-16 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-gold/20 mb-6">
+                <span class="w-2 h-2 rounded-full bg-gold status-pulse"></span>
+                <span class="text-xs font-medium text-gold tracking-wider uppercase">DITEMPA BUKAN DIBERI</span>
             </div>
+            
             <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-                <span class="gradient-gold">arifOS</span>
-                <br>
-                <span class="text-primer-text">MCP</span>
+                <span class="gradient-gold">arifOS MCP</span>
             </h1>
-            <p class="text-xl text-primer-text-muted mb-4 max-w-2xl mx-auto italic">
-                "Ditempa Bukan Diberi"
+            
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
+                The Sovereign Constitutional Gateway<br>
+                <span class="text-base">Human-AI symbiosis under immutable law. 13 Floors. Zero compromise.</span>
             </p>
-            <p class="text-lg text-primer-text-muted mb-10 max-w-2xl mx-auto">
-                Forged, Not Given. The sovereign constitutional intelligence kernel for human-AI symbiosis. 33 tools. 13 floors. Zero compromise.
-            </p>
+            
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <button onclick="testConnection()" class="px-6 py-3 rounded-lg bg-gold text-dark-bg font-semibold hover:bg-gold-light transition-all flex items-center gap-2">
+                    <span id="test-btn-icon">⚡</span>
+                    <span id="test-btn-text">Test Connection</span>
+                </button>
+                <a href="#tools" class="px-6 py-3 rounded-lg border border-dark-border text-gray-300 hover:border-gold hover:text-gold transition-all">View Tools</a>
+                <a href="https://github.com/ariffazil/arifOS" target="_blank" class="px-6 py-3 rounded-lg border border-dark-border text-gray-300 hover:border-gold hover:text-gold transition-all">GitHub</a>
+            </div>
+            
+            <!-- Connection Test Result -->
+            <div id="connection-result" class="hidden mt-6 max-w-md mx-auto glass-card p-4 rounded-lg"></div>
+        </section>
 
-            <!-- Quick Connect Block -->
-            <div class="max-w-2xl mx-auto">
-                <p class="text-sm text-primer-text-muted mb-3 uppercase tracking-wider">Connect in 30 Seconds</p>
-                <div class="glass-card p-4 rounded-lg text-left relative">
-                    <div class="absolute left-4 top-4 flex items-center gap-2">
-                        <span class="method-badge method-get">GET</span>
-                        <code class="text-sm text-primer-text-muted">/health</code>
+        <!-- Live System Status -->
+        <section id="status" class="max-w-6xl mx-auto mb-16">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <span class="text-gold">◈</span> Live System Status
+                </h2>
+                <div class="flex items-center gap-2 text-xs text-gray-500">
+                    <span class="w-2 h-2 rounded-full bg-green-500 status-pulse"></span>
+                    Auto-refresh: <span id="refresh-timer">30</span>s
+                </div>
+            </div>
+            
+            <div class="glass-card rounded-xl p-6 mb-6" id="status-card">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div id="status-indicator" class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center">
+                            <span id="status-icon" class="text-2xl">⏳</span>
+                        </div>
+                        <div>
+                            <div id="status-text" class="text-lg font-semibold">Initializing...</div>
+                            <div id="status-detail" class="text-sm text-gray-500">Checking constitutional floors</div>
+                        </div>
                     </div>
-                    <pre class="text-green-400 mt-8"><code>npx @arifos/cli connect --server https://arifosmcp.arif-fazil.com</code></pre>
-                    <button onclick="copyConnect()" class="absolute right-4 top-4 p-2 text-primer-text-muted hover:text-primer-gold transition-colors" title="Copy connect command">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
+                    <div class="flex items-center gap-4 text-sm">
+                        <div class="text-right">
+                            <div class="text-gray-500 text-xs uppercase">Version</div>
+                            <div id="version-text" class="font-mono text-gold">--</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-gray-500 text-xs uppercase">Transport</div>
+                            <div id="transport-text" class="font-mono">--</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-gray-500 text-xs uppercase">Seal</div>
+                            <div class="font-mono text-gold">999</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="metrics-grid">
+                    <div class="glass-panel p-4 rounded-lg text-center">
+                        <div class="metric-value text-3xl font-bold text-gold mb-1" id="metric-tools">--</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wider">Active Tools</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-lg text-center">
+                        <div class="metric-value text-3xl font-bold text-mind mb-1" id="metric-floors">13</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wider">Constitutional Floors</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-lg text-center">
+                        <div class="metric-value text-3xl font-bold text-gold mb-1" id="metric-providers">--</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wider">Providers</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-lg text-center">
+                        <div class="metric-value text-3xl font-bold text-soul mb-1" id="metric-humility">0.04</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-wider">Ω₀ Humility</div>
+                    </div>
+                </div>
+                
+                <!-- Capability Tags -->
+                <div class="flex flex-wrap gap-2" id="capability-tags">
+                    <span class="px-3 py-1 rounded-full text-xs bg-gold/10 text-gold border border-gold/20">Loading...</span>
+                </div>
+            </div>
+            
+            <!-- Substrates & Providers -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass-card rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Connected Substrates</h3>
+                    <div id="substrates-list" class="space-y-2">
+                        <div class="flex items-center gap-2 text-sm"><span class="text-gray-500">Loading...</span></div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-6">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Model Providers</h3>
+                    <div id="providers-list" class="flex flex-wrap gap-2">
+                        <span class="text-gray-500 text-sm">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Sovereign Circuit (Trinity) -->
+        <section class="max-w-6xl mx-auto mb-16">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold mb-2">The Sovereign Circuit</h2>
+                <p class="text-gray-500">Trinity Architecture — Human anchor, Constitutional governance, Executable body</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- SOUL -->
+                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-soul">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl">Ψ</span>
+                        <div>
+                            <div class="font-bold text-soul">SOUL</div>
+                            <div class="text-xs text-gray-500">Human Anchor</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">888 Judge — Human sovereignty, final authority, F13 override.</p>
+                    <div class="text-xs">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
+                            <span class="text-gray-500">888_HOLD Gate</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
+                            <span class="text-gray-500">Human-in-the-loop</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
+                            <span class="text-gray-500">Sovereign Veto</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MIND -->
+                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-mind">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl gradient-mind">Ω</span>
+                        <div>
+                            <div class="font-bold gradient-mind">MIND</div>
+                            <div class="text-xs text-gray-500">13 Constitutional Floors</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Governance engine — Truth, humility, anti-hantu, coherence.</p>
+                    <div class="text-xs">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
+                            <span class="text-gray-500">F1 Amanah — Reversible</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
+                            <span class="text-gray-500">F2 Haqq — Truth ≥ 0.99</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
+                            <span class="text-gray-500">F7 Humility — Ω₀ ≤ 0.05</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BODY -->
+                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-gold">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-3xl gradient-gold">Δ</span>
+                        <div>
+                            <div class="font-bold gradient-gold">BODY</div>
+                            <div class="text-xs text-gray-500">Execution & Tools</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">17 tools, 3 prompts, 8 resources — Forged for action.</p>
+                    <div class="text-xs">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                            <span class="text-gray-500" id="body-tools">17 Tools</span>
+                        </div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                            <span class="text-gray-500">Streamable HTTP</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
+                            <span class="text-gray-500">VAULT999 Persistence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Circuit Status -->
+            <div class="mt-6 text-center">
+                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass-panel border border-gold/20">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-soul"></span>
+                        <span class="text-xs text-soul">Ψ</span>
+                    </div>
+                    <div class="circuit-line w-16"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-mind"></span>
+                        <span class="text-xs text-mind">Ω</span>
+                    </div>
+                    <div class="circuit-line w-16"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gold"></span>
+                        <span class="text-xs text-gold">Δ</span>
+                    </div>
+                    <span class="ml-2 text-sm text-gray-400">Peace² ≥ 1.0 — Circuit Stable</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protocol Cards -->
+        <section id="connect" class="max-w-6xl mx-auto mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-gold">◈</span> Choose Your Protocol
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- MCP -->
+                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all">
+                    <div class="absolute top-0 right-0 px-3 py-1 bg-gold text-dark-bg text-xs font-bold">RECOMMENDED</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold">MCP</div>
+                        <div>
+                            <div class="font-bold">MCP Native</div>
+                            <div class="text-xs text-gray-500">Model Context Protocol</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Full tool bridging for Claude Desktop, Cursor, and MCP-compatible clients.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">17 tools available</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">Streamable HTTP</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">13-floor governance</span>
+                        </div>
+                    </div>
+                    <button onclick="copyMCPConfig()" class="copy-btn w-full py-2 rounded-lg border border-dark-border text-sm flex items-center justify-center gap-2">
+                        <span>📋</span> Copy Config
+                    </button>
+                </div>
+                
+                <!-- WebMCP -->
+                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-mind/20 flex items-center justify-center text-mind font-bold">W</div>
+                        <div>
+                            <div class="font-bold gradient-mind">WebMCP</div>
+                            <div class="text-xs text-gray-500">Browser-Native</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Run MCP servers directly in the browser via WebSocket transport.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">No installation</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">WebSocket transport</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-gray-400">Same governance</span>
+                        </div>
+                    </div>
+                    <a href="/webmcp/" class="block w-full py-2 rounded-lg border border-mind/30 text-mind text-sm text-center hover:bg-mind hover:text-dark-bg transition-all">
+                        Open WebMCP →
+                    </a>
+                </div>
+                
+                <!-- A2A -->
+                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all opacity-75">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-soul/20 flex items-center justify-center text-soul font-bold">A2A</div>
+                        <div>
+                            <div class="font-bold text-soul">A2A</div>
+                            <div class="text-xs text-gray-500">Agent-to-Agent</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-4">Federation protocol for agent swarms with tri-witness consensus.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                            <span class="text-gray-400">Coming soon</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                            <span class="text-gray-400">Tri-witness consensus</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
+                            <span class="text-gray-400">Agent federation</span>
+                        </div>
+                    </div>
+                    <button disabled class="w-full py-2 rounded-lg border border-dark-border text-gray-500 text-sm cursor-not-allowed">
+                        Coming Soon
                     </button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Protocols Section -->
-    <section class="py-24 px-4">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">Protocol Specifications</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-primer-text">
-                    Choose Your <span class="gradient-gold">Protocol</span>
+        <!-- Quick Connect -->
+        <section class="max-w-6xl mx-auto mb-16">
+            <div class="glass-card rounded-xl p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                    <span class="text-gold">◈</span> Quick Connect
                 </h2>
-                <p class="text-primer-text-muted mt-4 max-w-xl mx-auto">Full specifications at <a href="https://aaa.arif-fazil.com" class="text-primer-gold hover:underline">AAA Wire</a> — Δ BODY ring</p>
-            </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Claude Desktop Config</h3>
+                        <div class="relative">
+                            <pre class="text-xs overflow-x-auto"><code id="claude-config">{
+  "mcpServers": {
+    "arifos": {
+      "command": "npx",
+      "args": ["-y", "@arifos/mcp@latest"],
+      "env": {
+        "ARIFOS_API_URL": "https://arifosmcp.arif-fazil.com"
+      }
+    }
+  }
+}</code></pre>
+                            <button onclick="copyToClipboard('claude-config', this)" class="copy-btn absolute top-2 right-2 px-2 py-1 rounded bg-dark-border text-xs">Copy</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Direct HTTP</h3>
+                        <div class="relative">
+                            <pre class="text-xs overflow-x-auto"><code id="curl-example"># Health check
+curl https://arifosmcp.arif-fazil.com/health
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- MCP Card -->
-                <a href="https://aaa.arif-fazil.com/mcp/" class="glass-card rounded-xl p-8 block transition-all hover:scale-[1.02]">
-                    <div class="w-12 h-12 rounded-lg bg-primer-blue/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primer-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <h3 class="text-2xl font-bold text-primer-text">MCP</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-primer-blue/20 text-primer-blue font-mono">2025-11-25</span>
-                    </div>
-                    <p class="text-primer-text-muted mb-6">Model Context Protocol. Native tool bridging for arifOS nodes. Claude Desktop, Cursor, and all MCP-compatible clients.</p>
-                    <div class="flex items-center gap-2 text-sm text-primer-blue">
-                        <span>Read Spec</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </div>
-                </a>
+# List tools
+curl https://arifosmcp.arif-fazil.com/tools
 
-                <!-- WebMCP Card -->
-                <a href="https://aaa.arif-fazil.com/webmcp/" class="glass-card rounded-xl p-8 block transition-all hover:scale-[1.02]">
-                    <div class="w-12 h-12 rounded-lg bg-primer-gold/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primer-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
+# MCP endpoint (SSE)
+curl -N -H "Accept: text/event-stream" \
+  https://arifosmcp.arif-fazil.com/mcp</code></pre>
+                            <button onclick="copyToClipboard('curl-example', this)" class="copy-btn absolute top-2 right-2 px-2 py-1 rounded bg-dark-border text-xs">Copy</button>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <h3 class="text-2xl font-bold text-primer-text">WebMCP</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-primer-gold/20 text-primer-gold font-mono">WICG</span>
-                    </div>
-                    <p class="text-primer-text-muted mb-6">Browser-native governance transport. WebSocket-powered MCP for browsers and edge environments. F13 at the frontier.</p>
-                    <div class="flex items-center gap-2 text-sm text-primer-gold">
-                        <span>Read Spec</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- A2A Card -->
-                <a href="https://aaa.arif-fazil.com/a2a/" class="glass-card rounded-xl p-8 block transition-all hover:scale-[1.02]">
-                    <div class="w-12 h-12 rounded-lg bg-primer-red/10 flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6 text-primer-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <h3 class="text-2xl font-bold text-primer-text">A2A</h3>
-                        <span class="text-xs px-2 py-1 rounded bg-primer-red/20 text-primer-red font-mono">v1.0</span>
-                    </div>
-                    <p class="text-primer-text-muted mb-6">Agent-to-Agent federation. Secure cross-sovereign intelligence exchange with tri-witness consensus.</p>
-                    <div class="flex items-center gap-2 text-sm text-primer-red">
-                        <span>Read Spec</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Human Sovereignty Section -->
-    <section class="py-20 px-4 bg-primer-bg-secondary/30 border-t border-b border-primer-border">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-primer-text mb-4">
-                <span class="gradient-gold">888_HOLD</span> | F13 SOVEREIGN
-            </h2>
-            <p class="text-lg text-primer-text-muted leading-relaxed mb-8">
-                Every token processed through this server is subject to the <strong class="text-primer-text">13 Constitutional Floors</strong>. 
-                The human (<strong class="text-primer-gold">888 Judge</strong>) retains ultimate veto power. If thermodynamic stability <code class="text-primer-gold">Peace² ≥ 1.0</code> is breached, the circuit breaks.
-            </p>
-            <div class="grid md:grid-cols-3 gap-6 mt-10">
-                <div class="glass-card rounded-lg p-6 text-center">
-                    <div class="text-4xl mb-3">Ψ</div>
-                    <h4 class="font-bold text-primer-text mb-2">SOUL</h4>
-                    <p class="text-sm text-primer-text-muted">Human values, intent, accountability. The anchor of purpose.</p>
-                </div>
-                <div class="glass-card rounded-lg p-6 text-center">
-                    <div class="text-4xl mb-3">Ω</div>
-                    <h4 class="font-bold text-primer-text mb-2">MIND</h4>
-                    <p class="text-sm text-primer-text-muted">13 Floors, constitutional law. The physics of safety.</p>
-                </div>
-                <div class="glass-card rounded-lg p-6 text-center">
-                    <div class="text-4xl mb-3">Δ</div>
-                    <h4 class="font-bold text-primer-text mb-2">BODY</h4>
-                    <p class="text-sm text-primer-text-muted">Tool execution, MCP servers. The muscle of capability.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Trinity Diagram & 888_HOLD Circuit -->
-    <section class="py-20 px-4">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">The Sovereign Circuit</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-primer-text mb-4">
-                    <span class="gradient-gold">888_HOLD</span> — The Circuit Breaker
+        <!-- Tools Section -->
+        <section id="tools" class="max-w-6xl mx-auto mb-16">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <span class="text-gold">◈</span> Available Tools
+                    <span id="tools-count" class="text-sm font-normal text-gray-500">(-- tools)</span>
                 </h2>
-                <p class="text-primer-text-muted max-w-2xl mx-auto">
-                    If the system detects a breach of F13 (Sovereign Veto) or collapse in stability (Peace² &lt; 1.0), the 888_HOLD circuit initiates a total fail-closed state. Intelligence is a tool, not a master.
-                </p>
-            </div>
-
-            <!-- Trinity SVG Diagram -->
-            <div class="glass-card rounded-xl p-8 mb-8">
-                <svg viewBox="0 0 500 300" class="w-full max-w-lg mx-auto">
-                    <!-- Outer ring -->
-                    <circle cx="250" cy="150" r="140" fill="none" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
-                    
-                    <!-- Connection lines -->
-                    <line x1="250" y1="30" x2="250" y2="150" stroke="#30363d" stroke-width="1" opacity="0.5"/>
-                    <line x1="115" y1="235" x2="250" y2="150" stroke="#30363d" stroke-width="1" opacity="0.5"/>
-                    <line x1="385" y1="235" x2="250" y2="150" stroke="#30363d" stroke-width="1" opacity="0.5"/>
-                    
-                    <!-- SOUL (top) - Human/Arif -->
-                    <circle cx="250" cy="30" r="35" fill="#da3633" opacity="0.2"/>
-                    <circle cx="250" cy="30" r="35" fill="none" stroke="#da3633" stroke-width="2"/>
-                    <text x="250" y="25" text-anchor="middle" fill="#da3633" font-size="20" font-weight="bold">Ψ</text>
-                    <text x="250" y="42" text-anchor="middle" fill="#e5e5e5" font-size="10">SOUL</text>
-                    <text x="250" y="55" text-anchor="middle" fill="#8b949e" font-size="8">Human</text>
-                    
-                    <!-- MIND (bottom-left) - Machine -->
-                    <circle cx="115" cy="235" r="35" fill="#58a6ff" opacity="0.2"/>
-                    <circle cx="115" cy="235" r="35" fill="none" stroke="#58a6ff" stroke-width="2"/>
-                    <text x="115" y="230" text-anchor="middle" fill="#58a6ff" font-size="20" font-weight="bold">Ω</text>
-                    <text x="115" y="247" text-anchor="middle" fill="#e5e5e5" font-size="10">MIND</text>
-                    <text x="115" y="260" text-anchor="middle" fill="#8b949e" font-size="8">13 Floors</text>
-                    
-                    <!-- BODY (bottom-right) - Execution -->
-                    <circle cx="385" cy="235" r="35" fill="#d29922" opacity="0.2"/>
-                    <circle cx="385" cy="235" r="35" fill="none" stroke="#d29922" stroke-width="2"/>
-                    <text x="385" y="230" text-anchor="middle" fill="#d29922" font-size="20" font-weight="bold">Δ</text>
-                    <text x="385" y="247" text-anchor="middle" fill="#e5e5e5" font-size="10">BODY</text>
-                    <text x="385" y="260" text-anchor="middle" fill="#8b949e" font-size="8">Execution</text>
-                    
-                    <!-- 888_JUDGE (center) - Human at the center -->
-                    <circle cx="250" cy="150" r="45" fill="rgba(212,168,83,0.15)"/>
-                    <circle cx="250" cy="150" r="45" fill="none" stroke="#d29922" stroke-width="3"/>
-                    <text x="250" y="145" text-anchor="middle" fill="#d29922" font-size="24" font-weight="bold">888</text>
-                    <text x="250" y="162" text-anchor="middle" fill="#e5e5e5" font-size="9">JUDGE</text>
-                    <text x="250" y="175" text-anchor="middle" fill="#d29922" font-size="7">HUMAN</text>
-                    
-                    <!-- Arrows showing 888_JUDGE controls all three -->
-                    <path d="M250 105 L250 115" stroke="#d29922" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <path d="M180 185 L165 200" stroke="#d29922" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <path d="M320 185 L335 200" stroke="#d29922" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    
-                    <!-- Arrow marker definition -->
-                    <defs>
-                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="#d29922"/>
-                        </marker>
-                    </defs>
-                </svg>
-                
-                <div class="mt-6 text-center">
-                    <p class="text-sm text-primer-text-muted">
-                        <span class="text-primer-gold font-mono">888_JUDGE</span> — Human at center — ultimate authority over all three rings
-                    </p>
+                <div class="flex items-center gap-2 text-xs">
+                    <span class="px-2 py-1 rounded bg-gold/10 text-gold border border-gold/20">Production</span>
+                    <span class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Read + Write</span>
                 </div>
-            </div>
-
-            <!-- 888_HOLD / F13 Explanation Cards -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card rounded-xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-primer-gold/10 flex items-center justify-center">
-                            <span class="text-xl">⚡</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-primer-text">888_HOLD Gate</h3>
-                    </div>
-                    <p class="text-sm text-primer-text-muted mb-4">
-                        High-risk operations (destructive, credential, infra_mutation) require explicit human approval via the 888_HOLD circuit breaker. No irreversible action without VAULT999 seal.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-2 py-1 rounded bg-primer-red/20 text-primer-red font-mono">F1 Amanah</span>
-                        <span class="text-xs px-2 py-1 rounded bg-primer-gold/20 text-primer-gold font-mono">F13 Sovereign</span>
-                    </div>
-                </div>
-                
-                <div class="glass-card rounded-xl p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-primer-blue/10 flex items-center justify-center">
-                            <span class="text-xl">Ω₀</span>
-                        </div>
-                        <h3 class="text-lg font-bold text-primer-text">Humility Band</h3>
-                    </div>
-                    <p class="text-sm text-primer-text-muted mb-4">
-                        Uncertainty is not weakness — it is the foundation of stability. The Humility Band <span class="text-primer-gold font-mono">Ω₀ ∈ [0.03, 0.05]</span> ensures we admit what we don't know.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs px-2 py-1 rounded bg-primer-blue/20 text-primer-blue font-mono">F7 Humility</span>
-                        <span class="text-xs px-2 py-1 rounded bg-primer-text-muted/20 text-primer-text-muted font-mono">Explicit Uncertainty</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Intelligence Civilization & A2A Federation -->
-    <section class="py-20 px-4 bg-primer-bg-secondary/20 border-t border-b border-primer-border">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">Multi-Agent Infrastructure</span>
-                <h2 class="text-3xl sm:text-4xl font-bold text-primer-text mb-4">
-                    Intelligence <span class="gradient-gold">Civilization</span>
-                </h2>
-                <p class="text-primer-text-muted max-w-2xl mx-auto">
-                    arifOS isn't an island. It is an A2A node in a federation of agents — where intelligence exchanges are always shadowed by human sovereignty.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 mb-8">
-                <!-- A2A Node -->
-                <div class="glass-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 rounded-full bg-primer-red/10 mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-primer-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-bold text-primer-text mb-2">A2A Federation</h3>
-                    <p class="text-sm text-primer-text-muted">Agent-to-agent communication with constitutional guarantees. Every exchange logged, every action auditable.</p>
-                </div>
-                
-                <!-- Tri-Witness -->
-                <div class="glass-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 rounded-full bg-primer-gold/10 mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-primer-gold">W³</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-primer-text mb-2">Tri-Witness Consensus</h3>
-                    <p class="text-sm text-primer-text-muted">High-stakes decisions require agreement across theory, constitution, and manifesto. No single ring dominates.</p>
-                </div>
-                
-                <!-- Discovery -->
-                <div class="glass-card rounded-xl p-6 text-center">
-                    <div class="w-16 h-16 rounded-full bg-primer-blue/10 mx-auto mb-4 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-primer-blue">◯</span>
-                    </div>
-                    <h3 class="text-lg font-bold text-primer-text mb-2">Agent Discovery</h3>
-                    <p class="text-sm text-primer-text-muted">Protocol-compliant discovery via <code class="text-primer-gold">.well-known/agent.json</code>.spoofing prevented by sovereign signature.</p>
-                </div>
-            </div>
-
-            <!-- Protocol Federation Visual -->
-            <div class="glass-card rounded-xl p-6">
-                <h4 class="text-sm font-medium text-primer-text mb-4 text-center">Federation Topology</h4>
-                <div class="flex items-center justify-center gap-4 flex-wrap">
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded bg-primer-gold/20 flex items-center justify-center">
-                            <span class="text-sm font-bold text-primer-gold">Ψ</span>
-                        </div>
-                        <span class="text-xs text-primer-text-muted">Arif</span>
-                    </div>
-                    <svg class="w-6 h-6 text-primer-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded bg-primer-blue/20 flex items-center justify-center">
-                            <span class="text-sm font-bold text-primer-blue">Ω</span>
-                        </div>
-                        <span class="text-xs text-primer-text-muted">arifOS MCP</span>
-                    </div>
-                    <svg class="w-6 h-6 text-primer-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded bg-primer-red/20 flex items-center justify-center">
-                            <span class="text-sm font-bold text-primer-red">A2A</span>
-                        </div>
-                        <span class="text-xs text-primer-text-muted">Peer Nodes</span>
-                    </div>
-                    <svg class="w-6 h-6 text-primer-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-                    <div class="flex items-center gap-2">
-                        <div class="w-8 h-8 rounded bg-primer-text-muted/20 flex items-center justify-center">
-                            <span class="text-sm font-bold text-primer-text">888</span>
-                        </div>
-                        <span class="text-xs text-primer-text-muted">Human Judge</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live System Status Widget -->
-    <section class="py-16 px-4">
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-8">
-                <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">Live System Status</span>
-                <h2 class="text-2xl font-bold text-primer-text">Thermodynamic State</h2>
             </div>
             
-            <div class="glass-card rounded-xl overflow-hidden" id="status-widget">
-                <div class="p-6">
-                    <div class="flex items-center justify-center mb-6">
-                        <span class="w-3 h-3 rounded-full bg-gray-500 animate-pulse mr-3" id="status-dot"></span>
-                        <span class="text-primer-text-muted" id="status-text">Loading...</span>
-                    </div>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="status-metrics">
-                        <!-- Populated by JS -->
-                        <div class="text-center p-4 rounded-lg bg-primer-bg-secondary">
-                            <div class="text-2xl font-bold text-primer-gold" id="metric-tools">--</div>
-                            <div class="text-xs text-primer-text-muted uppercase tracking-wider">Tools</div>
-                        </div>
-                        <div class="text-center p-4 rounded-lg bg-primer-bg-secondary">
-                            <div class="text-2xl font-bold text-primer-blue" id="metric-substrates">--</div>
-                            <div class="text-xs text-primer-text-muted uppercase tracking-wider">Substrates</div>
-                        </div>
-                        <div class="text-center p-4 rounded-lg bg-primer-bg-secondary">
-                            <div class="text-2xl font-bold text-primer-red" id="metric-providers">--</div>
-                            <div class="text-xs text-primer-text-muted uppercase tracking-wider">Providers</div>
-                        </div>
-                        <div class="text-center p-4 rounded-lg bg-primer-bg-secondary">
-                            <div class="text-2xl font-bold text-primer-text" id="metric-vitality">--</div>
-                            <div class="text-xs text-primer-text-muted uppercase tracking-wider">Vitality</div>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4" id="status-floors">
-                        <!-- Populated by JS -->
-                    </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="tools-grid">
+                <div class="glass-card p-8 col-span-full text-center text-gray-500">
+                    <div class="text-4xl mb-4">⏳</div>
+                    <p>Loading constitutional tools...</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SDK Downloads -->
-    <section class="py-16 px-4 bg-primer-bg-secondary/20">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold text-primer-text mb-4">SDK Downloads</h2>
-                <p class="text-primer-text-muted">Connect your agent to arifOS MCP</p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card rounded-lg p-6">
+        <!-- SDK & Integration -->
+        <section class="max-w-6xl mx-auto mb-16">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                <span class="text-gold">◈</span> SDK & Integration
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="https://www.npmjs.com/package/@arifos/mcp" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded bg-black flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primer-text" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.051-.893-1.383-1.157-1.383-.174 0-.35.09-.457.267-.35.588-.978 1.129-1.765 1.129-.35 0-.613-.14-.702-.36-.12-.29.13-.594.37-.594.17.016.315.09.4.267.05.103.176.267.375.267.313 0 .574-.349.574-.674 0-.48-.42-.773-.973-.773-.67 0-1.137.617-1.21 1.01-.102.59.214 1.167.74 1.167.16 0 .31-.035.433-.12.19-.132.28-.326.35-.378.054-.046.085-.068.12-.068.19.017.33.322.33.61 0 .535-.314.963-.725.963-.27 0-.48-.28-.48-.614 0-.017 0-.017.014-.017.27-.017.504-.233.56-.504.04-.19-.094-.34-.32-.34-.175-.017-.28-.148-.35-.235-.066-.086-.14-.14-.244-.14-.38 0-.67.43-.67.85 0 .46.28.863.63.863.16.035.31-.035.38-.138.12-.156.14-.39.18-.615.074-.57.32-.97.64-.97.28.034.44.28.5.63.065.39.21.72.41.72.21.017.38-.14.46-.36.1-.286.075-.63.105-.94.027-.267.09-.48.195-.48.084 0 .17.156.17.32 0 .26-.19.48-.465.48-.215 0-.36-.158-.36-.374 0-.24.158-.46.4-.46.21 0 .38.14.46.374.06.16.175.374.36.374.14-.035.24-.14.31-.29.07-.174.05-.374.05-.574 0-.52-.36-.87-.86-.87-.53 0-.88.35-.88.86 0 .48.35.86.83.86.28 0 .55-.14.71-.37.19-.286.13-.66.13-1.026-.017-.71-.39-1.24-.97-1.24-.57 0-.93.53-.93 1.17 0 .63.36 1.14.87 1.14.31 0 .574-.157.704-.374.18-.286.13-.68.13-1.054z"/>
-                            </svg>
+                        <div class="w-10 h-10 rounded-lg bg-[#CB3837]/20 flex items-center justify-center text-[#CB3837] font-bold text-lg">npm</div>
+                        <div>
+                            <div class="font-bold group-hover:text-gold transition-colors">@arifos/mcp</div>
+                            <div class="text-xs text-gray-500">Node.js / TypeScript</div>
                         </div>
-                        <h3 class="text-xl font-bold text-primer-text">JavaScript / Node.js</h3>
                     </div>
-                    <pre class="bg-black rounded-lg p-4 overflow-x-auto"><code class="text-green-400">npm install @arifos/mcp</code></pre>
-                </div>
-                <div class="glass-card rounded-lg p-6">
+                    <code class="text-xs text-gray-400">npm install @arifos/mcp</code>
+                </a>
+                
+                <a href="https://pypi.org/project/arifos/" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded bg-blue-500 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm9.32 3.66l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.97l.01 2.76.02.37-.05.33-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-3.37l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.29 15.62l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/>
-                            </svg>
+                        <div class="w-10 h-10 rounded-lg bg-[#3776AB]/20 flex items-center justify-center text-[#3776AB] font-bold text-lg">Py</div>
+                        <div>
+                            <div class="font-bold group-hover:text-gold transition-colors">arifos</div>
+                            <div class="text-xs text-gray-500">Python</div>
                         </div>
-                        <h3 class="text-xl font-bold text-primer-text">Python</h3>
                     </div>
-                    <pre class="bg-black rounded-lg p-4 overflow-x-auto"><code class="text-green-400">pip install arifos</code></pre>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trinity Navigation Footer -->
-    <div class="py-10 px-4 bg-primer-bg border-t border-primer-border">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex justify-center items-center gap-4 mb-6">
-                <a href="https://arif-fazil.com" class="px-6 py-3 rounded-xl border border-primer-border text-primer-text-secondary hover:border-primer-red hover:text-primer-red transition-all font-mono text-sm">
-                    <span class="text-primer-red mr-2">Ψ</span>SOUL
+                    <code class="text-xs text-gray-400">pip install arifos</code>
                 </a>
-                <a href="https://arifos.arif-fazil.com" class="px-6 py-3 rounded-xl border border-primer-border text-primer-text-secondary hover:border-primer-blue hover:text-primer-blue transition-all font-mono text-sm">
-                    <span class="text-primer-blue mr-2">Ω</span>MIND
-                </a>
-                <a href="https://aaa.arif-fazil.com" class="px-6 py-3 rounded-xl bg-primer-gold/20 border border-primer-gold text-primer-gold font-mono text-sm">
-                    <span class="mr-2">Δ</span>BODY
+                
+                <a href="https://github.com/ariffazil/arifOS" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center text-white font-bold text-lg">
+                            <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                        </div>
+                        <div>
+                            <div class="font-bold group-hover:text-gold transition-colors">arifOS</div>
+                            <div class="text-xs text-gray-500">Source Code</div>
+                        </div>
+                    </div>
+                    <code class="text-xs text-gray-400">github.com/ariffazil/arifOS</code>
                 </a>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-primer-border">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="text-center sm:text-left">
-                    <p class="text-lg font-bold text-primer-text">arifOS<span class="text-primer-gold">.</span>MCP</p>
-                    <p class="text-sm text-primer-text-muted">Constitutional AI Gateway — Δ BODY Ring</p>
-                </div>
+    <footer class="py-12 px-4 border-t border-dark-border">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
                 <div class="flex items-center gap-4">
-                    <a href="https://github.com/ariffazil" class="text-primer-text-muted hover:text-primer-gold transition-colors">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                    </a>
+                    <a href="https://arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-soul text-soul hover:bg-soul hover:text-white transition-all text-sm">Ψ SOUL</a>
+                    <a href="https://arifos.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-mind text-mind hover:bg-mind hover:text-dark-bg transition-all text-sm">Ω MIND</a>
+                    <a href="https://aaa.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all text-sm">Δ BODY</a>
+                </div>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <a href="/llms.txt" class="hover:text-gold transition-colors">LLMs.txt</a>
+                    <a href="/.well-known/mcp/server.json" class="hover:text-gold transition-colors">MCP Manifest</a>
+                    <a href="https://github.com/ariffazil/arifOS/issues" class="hover:text-gold transition-colors">Issues</a>
                 </div>
             </div>
-            <div class="mt-8 pt-8 border-t border-primer-border text-center">
-                <p class="text-xs text-primer-text-muted">ΔΩΨ — Trinity of Execution — Ditempa Bukan Diberi</p>
-                <p class="text-xs text-primer-text-muted mt-2">&copy; 2026 Muhammad Arif bin Fazil. All rights reserved.</p>
+            <div class="text-center">
+                <p class="text-lg font-bold gradient-gold mb-2">ΔΩΨ — DITEMPA BUKAN DIBERI</p>
+                <p class="text-sm text-gray-600">Forged, Not Given — Constitutional AI Gateway</p>
+                <p class="text-xs text-gray-700 mt-4">© 2026 ARIF FAZIL — arifOS v2026.04.07-SEAL</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Live status widget - fetch from /health endpoint
-        async function fetchHealth() {
-            try {
-                const response = await fetch('/health');
-                const data = await response.json();
-                updateStatusWidget(data);
-            } catch (error) {
-                document.getElementById('status-text').textContent = 'System Offline';
-                document.getElementById('status-dot').className = 'w-3 h-3 rounded-full bg-primer-red animate-pulse mr-3';
+    const API = 'https://arifosmcp.arif-fazil.com';
+    let refreshInterval;
+    let countdown = 30;
+    
+    async function init() {
+        await fetchHealth();
+        await fetchTools();
+        await fetchCapabilities();
+        startRefreshTimer();
+    }
+    
+    function startRefreshTimer() {
+        refreshInterval = setInterval(() => {
+            countdown--;
+            document.getElementById('refresh-timer').textContent = countdown;
+            if (countdown <= 0) {
+                fetchHealth();
+                countdown = 30;
             }
-        }
-
-        function updateStatusWidget(data) {
-            // Update status text
-            document.getElementById('status-text').textContent = data.status === 'healthy' ? 'System Operational' : 'System Degraded';
-            document.getElementById('status-dot').className = data.status === 'healthy' 
-                ? 'w-3 h-3 rounded-full bg-primer-gold animate-pulse mr-3' 
-                : 'w-3 h-3 rounded-full bg-primer-red animate-pulse mr-3';
-
-            // Update metrics
-            document.getElementById('metric-tools').textContent = data.tools_loaded || '--';
-            document.getElementById('metric-substrates').textContent = Object.keys(data.substrates || {}).length || '--';
-            document.getElementById('metric-providers').textContent = Object.keys(data.providers || {}).length || '--';
+        }, 1000);
+    }
+    
+    async function fetchHealth() {
+        try {
+            const res = await fetch(`${API}/health`);
+            const data = await res.json();
             
-            // Update vitality
-            if (data.thermodynamic) {
-                document.getElementById('metric-vitality').textContent = (data.thermodynamic.vitality || 0).toFixed(2);
+            // Status indicator
+            const isHealthy = data.status === 'healthy';
+            document.getElementById('status-text').textContent = isHealthy ? 'Operational' : 'Degraded';
+            document.getElementById('status-detail').textContent = isHealthy 
+                ? 'All constitutional floors active' 
+                : 'System experiencing issues';
+            document.getElementById('status-icon').textContent = isHealthy ? '✓' : '⚠';
+            document.getElementById('status-indicator').className = `w-12 h-12 rounded-xl flex items-center justify-center ${isHealthy ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`;
+            
+            // Version & transport
+            document.getElementById('version-text').textContent = data.version || '--';
+            document.getElementById('transport-text').textContent = (data.transport || 'HTTP').toUpperCase();
+            
+            // Metrics
+            document.getElementById('metric-tools').textContent = data.tools_loaded || '--';
+            document.getElementById('metric-providers').textContent = data.capability_map?.providers ? Object.keys(data.capability_map.providers).length : '--';
+            document.getElementById('body-tools').textContent = `${data.tools_loaded || 17} Tools`;
+            
+            // Capability tags
+            const caps = data.capability_map?.capabilities || {};
+            const capTags = Object.entries(caps)
+                .filter(([k, v]) => v === 'enabled' || v === true)
+                .slice(0, 6)
+                .map(([k]) => `<span class="px-3 py-1 rounded-full text-xs bg-gold/10 text-gold border border-gold/20">${k.replace(/_/g, ' ')}</span>`)
+                .join('');
+            document.getElementById('capability-tags').innerHTML = capTags || '<span class="px-3 py-1 rounded-full text-xs bg-gray-800 text-gray-500">No capabilities reported</span>';
+            
+            // Substrates
+            const subs = data.capability_map?.substrates || {};
+            const subList = Object.entries(subs)
+                .filter(([k, v]) => v === 'configured' && !['validation'].includes(k))
+                .map(([k]) => `<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span><span class="text-sm text-gray-300">${k}</span></div>`)
+                .join('');
+            document.getElementById('substrates-list').innerHTML = subList || '<div class="text-gray-500 text-sm">No substrates connected</div>';
+            
+            // Providers
+            const provs = data.capability_map?.providers || {};
+            const provList = Object.entries(provs)
+                .filter(([k, v]) => v === 'configured')
+                .map(([k]) => `<span class="px-2 py-1 rounded bg-dark-card text-xs text-gray-300 border border-dark-border">${k}</span>`)
+                .join('');
+            document.getElementById('providers-list').innerHTML = provList || '<span class="text-gray-500 text-sm">No providers</span>';
+            
+        } catch (e) {
+            document.getElementById('status-text').textContent = 'Offline';
+            document.getElementById('status-detail').textContent = 'Cannot reach MCP server';
+            document.getElementById('status-icon').textContent = '✕';
+            document.getElementById('status-indicator').className = 'w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center text-red-500';
+        }
+    }
+    
+    async function fetchTools() {
+        try {
+            const res = await fetch(`${API}/tools`);
+            const data = await res.json();
+            const tools = data.tools || [];
+            document.getElementById('tools-count').textContent = `(${tools.length} tools)`;
+            
+            const grid = document.getElementById('tools-grid');
+            if (tools.length === 0) {
+                grid.innerHTML = '<div class="glass-card p-4 col-span-full text-center text-gray-500">No tools found</div>';
+                return;
             }
-
-            // Update floors
-            const floorsContainer = document.getElementById('status-floors');
-            if (data.floors && data.floors.length > 0) {
-                floorsContainer.innerHTML = data.floors.slice(0, 3).map(floor => `
-                    <div class="p-3 rounded-lg bg-primer-bg-secondary text-center">
-                        <div class="text-sm font-bold text-primer-gold">${floor}</div>
-                        <div class="text-xs text-primer-text-muted">Floor Active</div>
+            
+            grid.innerHTML = tools.map(tool => {
+                const params = tool.parameters?.properties ? Object.keys(tool.parameters.properties) : [];
+                const stage = tool.annotations?.stage || tool.stage || '';
+                const riskLevel = tool.annotations?.readOnlyHint ? 'read-only' : 'guarded';
+                const riskColor = tool.annotations?.readOnlyHint ? 'text-green-400' : 'text-yellow-400';
+                
+                return `
+                <div class="glass-card p-4 hover:border-gold/30 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <code class="text-sm font-bold text-gold group-hover:text-gold-light transition-colors">${tool.name}</code>
+                        <span class="method-badge method-post">POST</span>
                     </div>
-                `).join('');
+                    <p class="text-xs text-gray-400 mb-3 line-clamp-2">${tool.description || 'No description'}</p>
+                    <div class="flex items-center justify-between text-xs">
+                        ${params.length > 0 ? `<span class="text-gray-500">Params: ${params.slice(0, 3).join(', ')}${params.length > 3 ? '...' : ''}</span>` : '<span class="text-gray-600">No params</span>'}
+                        ${stage ? `<span class="text-blue-400">${stage}</span>` : ''}
+                    </div>
+                    ${tool.annotations ? `
+                    <div class="mt-2 flex items-center gap-2 text-xs">
+                        ${tool.annotations.readOnlyHint ? '<span class="text-green-400">● read-only</span>' : ''}
+                        ${tool.annotations.destructiveHint ? '<span class="text-red-400">● destructive</span>' : ''}
+                    </div>` : ''}
+                </div>
+                `;
+            }).join('');
+        } catch (e) {
+            document.getElementById('tools-grid').innerHTML = '<div class="glass-card p-4 col-span-full text-center text-red-400">Failed to load tools</div>';
+        }
+    }
+    
+    async function fetchCapabilities() {
+        // Already handled in fetchHealth
+    }
+    
+    async function testConnection() {
+        const btn = document.getElementById('test-btn-text');
+        const icon = document.getElementById('test-btn-icon');
+        const result = document.getElementById('connection-result');
+        
+        btn.textContent = 'Testing...';
+        icon.textContent = '⏳';
+        
+        try {
+            const start = performance.now();
+            const res = await fetch(`${API}/health`);
+            const latency = Math.round(performance.now() - start);
+            const data = await res.json();
+            
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    <span class="font-semibold text-green-400">Connection Successful</span>
+                </div>
+                <div class="text-sm text-gray-400 space-y-1">
+                    <div>Latency: ${latency}ms</div>
+                    <div>Version: ${data.version}</div>
+                    <div>Tools: ${data.tools_loaded}</div>
+                    <div>Transport: ${data.transport}</div>
+                </div>
+            `;
+            
+            btn.textContent = 'Test Connection';
+            icon.textContent = '✓';
+            setTimeout(() => { btn.textContent = 'Test Connection'; icon.textContent = '⚡'; }, 2000);
+        } catch (e) {
+            result.classList.remove('hidden');
+            result.innerHTML = `
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="font-semibold text-red-400">Connection Failed</span>
+                </div>
+                <div class="text-sm text-gray-400">${e.message}</div>
+            `;
+            btn.textContent = 'Retry';
+            icon.textContent = '↻';
+        }
+    }
+    
+    function copyToClipboard(elementId, btn) {
+        const text = document.getElementById(elementId).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.textContent = '✓ Copied';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+        });
+    }
+    
+    function copyMCPConfig() {
+        const config = JSON.stringify({
+            mcpServers: {
+                arifos: {
+                    command: "npx",
+                    args: ["-y", "@arifos/mcp@latest"],
+                    env: {
+                        ARIFOS_API_URL: "https://arifosmcp.arif-fazil.com"
+                    }
+                }
             }
-        }
-
-        function copyConnect() {
-            const text = 'npx @arifos/cli connect --server https://arifosmcp.arif-fazil.com';
-            navigator.clipboard.writeText(text);
-        }
-
-        // Initialize
-        fetchHealth();
-        setInterval(fetchHealth, 30000); // Refresh every 30 seconds
+        }, null, 2);
+        navigator.clipboard.writeText(config).then(() => {
+            const btn = event.target.closest('button');
+            btn.innerHTML = '<span>✓</span> Copied';
+            btn.classList.add('copied');
+            setTimeout(() => { btn.innerHTML = '<span>📋</span> Copy Config'; btn.classList.remove('copied'); }, 2000);
+        });
+    }
+    
+    init();
     </script>
-
-    <style>
-        .bg-primer-bg { background-color: #0a0a0a; }
-        .bg-primer-bg-secondary { background-color: #0d1117; }
-        .border-primer-border { border-color: #30363d; }
-        .text-primer-text { color: #e5e5e5; }
-        .text-primer-text-muted { color: #8b949e; }
-        .text-primer-text-secondary { color: #c9d1d9; }
-        .text-primer-gold { color: #d29922; }
-        .text-primer-blue { color: #58a6ff; }
-        .text-primer-red { color: #da3633; }
-    </style>
 </body>
 </html>
