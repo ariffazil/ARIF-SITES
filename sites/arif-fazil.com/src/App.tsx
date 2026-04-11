@@ -1,15 +1,40 @@
 // SOUL Ring - arif-fazil.com
 // The Human Anchor - Professional Portfolio
-// Muhammad Arif bin Fazil - Senior Exploration Geoscientist
+// Muhammad Arif bin Fazil - Senior/Lead Exploration Geoscientist
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  Mountain, Pickaxe, Target, Mail, Linkedin, Send, 
-  ChevronDown, Award, MapPin, GraduationCap, Briefcase, 
-  ExternalLink, Github, Cpu
+  Target, ChevronDown, Award, MapPin, Briefcase, 
+  ExternalLink, Cpu, Clock
 } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import tokens from '@/constitution/tokens';
+
+// ==================== BIOLOGICAL CLOCK ====================
+const AgeClock: React.FC = () => {
+  const [age, setAge] = useState<string>('');
+  
+  useEffect(() => {
+    const birthDate = new Date(tokens.identity.birthdate);
+    
+    const updateAge = () => {
+      const now = new Date();
+      const diffTime = now.getTime() - birthDate.getTime();
+      const ageInYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
+      setAge(ageInYears.toFixed(9));
+    };
+
+    const interval = setInterval(updateAge, 50);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="font-mono text-xs md:text-sm tracking-tighter text-soul-primary opacity-80 flex items-center gap-2">
+      <Clock size={14} className="animate-pulse" />
+      <span>AGE: {age}</span>
+    </div>
+  );
+};
 
 // ==================== ANIMATED HERO BACKGROUND ====================
 const GeologicalHero: React.FC = () => {
@@ -35,57 +60,38 @@ const GeologicalHero: React.FC = () => {
       const w = canvas.width;
       const h = canvas.height;
       
-      // Deep earth gradient
-      const gradient = ctx.createLinearGradient(0, 0, 0, h);
-      gradient.addColorStop(0, '#0f0c08');
-      gradient.addColorStop(0.5, '#1a1510');
-      gradient.addColorStop(1, '#2a2018');
-      ctx.fillStyle = gradient;
+      // Obsidian Void
+      ctx.fillStyle = '#0A0A0A';
       ctx.fillRect(0, 0, w, h);
 
-      // Animated strata layers
-      const layers = 8;
-      for (let i = 0; i < layers; i++) {
-        const y = (i / layers) * h * 0.8 + h * 0.2;
-        const amplitude = 30 + i * 10;
-        const frequency = 0.002 + i * 0.001;
-        const speed = 0.0005 + i * 0.0002;
-        
+      // Stratigraphic Layers - RADIANT PRIMERS
+      const layers = [
+        { color: '#FF4D00', amp: 40, freq: 0.001, speed: 0.0003, alpha: 0.15 }, // Igneous Red
+        { color: '#E8A838', amp: 60, freq: 0.0015, speed: 0.0002, alpha: 0.1 }, // Radiant Gold
+        { color: '#0070FF', amp: 30, freq: 0.002, speed: 0.0004, alpha: 0.12 }, // Stratigraphic Blue
+        { color: '#E8A838', amp: 80, freq: 0.0008, speed: 0.0001, alpha: 0.08 }, // Deep Ochre
+      ];
+
+      layers.forEach((layer, i) => {
+        const yBase = h * 0.4 + (i * 100);
         ctx.beginPath();
-        ctx.moveTo(0, y);
+        ctx.moveTo(0, yBase);
         
         for (let x = 0; x <= w; x += 5) {
-          const noise = Math.sin(x * frequency + time * speed) * amplitude +
-                       Math.sin(x * frequency * 2 + time * speed * 1.5) * amplitude * 0.5;
-          ctx.lineTo(x, y + noise);
+          const noise = Math.sin(x * layer.freq + time * layer.speed) * layer.amp +
+                       Math.cos(x * layer.freq * 0.5 + time * layer.speed * 0.8) * layer.amp * 0.5;
+          ctx.lineTo(x, yBase + noise);
         }
         
         ctx.lineTo(w, h);
         ctx.lineTo(0, h);
         ctx.closePath();
         
-        const alpha = 0.1 + (i / layers) * 0.2;
-        const hue = 30 + i * 5;
-        ctx.fillStyle = `hsla(${hue}, 60%, ${20 + i * 5}%, ${alpha})`;
+        ctx.fillStyle = layer.color;
+        ctx.globalAlpha = layer.alpha;
         ctx.fill();
-      }
-
-      // Oil/gas reservoir glows
-      for (let i = 0; i < 5; i++) {
-        const x = (Math.sin(time * 0.0003 + i * 1.5) * 0.4 + 0.5) * w;
-        const y = (Math.cos(time * 0.0002 + i * 2) * 0.3 + 0.6) * h;
-        const radius = 50 + Math.sin(time * 0.001 + i) * 20;
-        
-        const glow = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        glow.addColorStop(0, 'rgba(232, 168, 56, 0.3)');
-        glow.addColorStop(0.5, 'rgba(196, 121, 26, 0.1)');
-        glow.addColorStop(1, 'rgba(196, 121, 26, 0)');
-        
-        ctx.fillStyle = glow;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
-      }
+        ctx.globalAlpha = 1.0;
+      });
 
       time++;
       animationId = requestAnimationFrame(draw);
@@ -101,609 +107,192 @@ const GeologicalHero: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full"
-      style={{ filter: 'brightness(0.8)' }}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ opacity: 0.6 }}
     />
   );
 };
 
-// ==================== DISCOVERY CARD ====================
-const DiscoveryCard: React.FC<{
-  name: string;
-  type: string;
-  significance: string;
-  index: number;
-}> = ({ name, type, significance, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      viewport={{ once: true }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative group cursor-pointer"
-    >
-      <div className={`
-        relative p-6 rounded-2xl border transition-all duration-500
-        ${isHovered ? 'border-[#e8a838] bg-[#e8a838]/10' : 'border-[#c4791a]/30 bg-[#1a1510]/80'}
-      `}>
-        {/* Glow effect */}
-        <div className={`
-          absolute inset-0 rounded-2xl transition-opacity duration-500
-          ${isHovered ? 'opacity-100' : 'opacity-0'}
-        `}
-        style={{
-          background: 'radial-gradient(circle at 50% 0%, rgba(232, 168, 56, 0.2), transparent 70%)',
-        }}
-        />
-        
-        <div className="relative">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-[#f0e6d3] mb-1">{name}</h3>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-[#c4791a]/20 text-[#e8a838]">
-                <Target className="w-3 h-3" />
-                {type}
-              </span>
-            </div>
-            <div className={`
-              w-12 h-12 rounded-xl flex items-center justify-center
-              transition-all duration-500
-              ${isHovered ? 'bg-[#e8a838] text-[#0f0c08]' : 'bg-[#c4791a]/20 text-[#c4791a]'}
-            `}>
-              <Pickaxe className="w-6 h-6" />
-            </div>
-          </div>
-          
-          <p className="text-[#f0e6d3]/70 text-sm leading-relaxed">
-            {significance}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-// ==================== TRINITY RING NAVIGATOR ====================
-const TrinityNavigator: React.FC = () => {
-  const rings = [
-    { id: 'soul', symbol: 'Ψ', name: 'SOUL', desc: 'Human Anchor', color: '#c4791a', active: true },
-    { id: 'mind', symbol: 'Ω', name: 'MIND', desc: 'Theory & Law', color: '#d4a853', active: false },
-    { id: 'body', symbol: 'Δ', name: 'BODY', desc: 'Execution', color: '#00d4aa', active: false },
-  ];
-
-  return (
-    <div className="flex items-center justify-center gap-4 md:gap-8">
-      {rings.map((ring, i) => (
-        <motion.div
-          key={ring.id}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: i * 0.2 }}
-          className={`
-            relative flex flex-col items-center gap-2 p-4 rounded-xl
-            transition-all duration-300 cursor-pointer
-            ${ring.active ? 'bg-[#c4791a]/20' : 'hover:bg-white/5'}
-          `}
-        >
-          <div 
-            className={`
-              w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold
-              transition-all duration-300
-              ${ring.active 
-                ? 'bg-[#c4791a] text-[#0f0c08] shadow-lg shadow-[#c4791a]/30' 
-                : 'bg-[#c4791a]/20 text-[#c4791a]'
-              }
-            `}
-          >
-            {ring.symbol}
-          </div>
-          <div className="text-center">
-            <div className="text-xs font-bold text-[#f0e6d3]">{ring.name}</div>
-            <div className="text-[10px] text-[#f0e6d3]/50">{ring.desc}</div>
-          </div>
-          {ring.active && (
-            <motion.div 
-              layoutId="activeRing"
-              className="absolute -bottom-1 w-8 h-1 rounded-full bg-[#c4791a]"
-            />
-          )}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
+// ==================== SECTION HEADER ====================
+const SectionTitle: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="flex items-center gap-4 mb-12">
+    <h2 className="text-2xl font-bold tracking-tight uppercase border-b-2 border-soul-primary pb-2">
+      {children}
+    </h2>
+    <div className="flex-1 h-[1px] bg-white/10" />
+  </div>
+);
 
 // ==================== MAIN SOUL SITE ====================
 const SoulSite: React.FC = () => {
   const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
-
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   return (
-    <div className="min-h-screen bg-[#0f0c08] text-[#f0e6d3] font-sans overflow-x-hidden">
-      {/* SEO/AI Meta Tags - Invisible but ingestible */}
-      <div className="sr-only">
-        <h1>Muhammad Arif bin Fazil - Senior Exploration Geoscientist</h1>
-        <p>13+ years experience in offshore hydrocarbon exploration at PETRONAS Carigali.</p>
-        <p>Discoveries: BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1</p>
-        <p>Education: University of Wisconsin-Madison (Geology/Geophysics & Economics)</p>
-        <p>Architect of arifOS - Constitutional AI governance framework</p>
-        <p>Contact: arifbfazil@gmail.com | Telegram: ariffazil | LinkedIn: Muhammad Arif bin Fazil</p>
-      </div>
+    <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F0] font-sans selection:bg-soul-primary selection:text-black">
+      <GeologicalHero />
 
-      {/* ==================== HERO SECTION ==================== */}
-      <section className="relative min-h-screen flex flex-col">
-        <GeologicalHero />
-        
-        {/* Navigation */}
-        <nav className="relative z-10 px-6 py-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#c4791a] flex items-center justify-center text-[#0f0c08] font-bold text-lg">
+      {/* Header / Nav */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-8 flex justify-between items-start pointer-events-none">
+        <div className="pointer-events-auto">
+          <div className="flex items-center gap-3 group">
+            <div className="w-8 h-8 bg-soul-primary flex items-center justify-center text-black font-bold text-sm transition-transform group-hover:rotate-90">
               Λ
             </div>
-            <span className="font-bold text-[#f0e6d3]">arif-fazil.com</span>
+            <span className="font-bold tracking-widest text-sm uppercase opacity-60 group-hover:opacity-100 transition-opacity">
+              ARIF-FAZIL.COM
+            </span>
           </div>
-          <div className="hidden md:flex items-center gap-6 text-sm">
-            <button onClick={() => scrollToSection('about')} className="hover:text-[#e8a838] transition-colors">About</button>
-            <button onClick={() => scrollToSection('discoveries')} className="hover:text-[#e8a838] transition-colors">Discoveries</button>
-            <button onClick={() => scrollToSection('arifos')} className="hover:text-[#e8a838] transition-colors">arifOS</button>
-            <button onClick={() => scrollToSection('contact')} className="hover:text-[#e8a838] transition-colors">Contact</button>
+        </div>
+        <div className="pointer-events-auto text-right">
+          <AgeClock />
+          <div className="mt-2 flex gap-4 justify-end text-xs opacity-40 hover:opacity-100 transition-opacity">
+            <a href="https://t.me/ariffazil" className="hover:text-soul-primary">TELEGRAM</a>
+            <a href="https://linkedin.com/in/muhammad-arif-bin-fazil" className="hover:text-soul-primary">LINKEDIN</a>
+            <a href="https://github.com/ariffazil" className="hover:text-soul-primary">GITHUB</a>
           </div>
-        </nav>
+        </div>
+      </nav>
 
-        {/* Hero Content */}
-        <motion.div 
-          style={{ opacity: heroOpacity, scale: heroScale }}
-          className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-20"
-        >
+      {/* Hero Section */}
+      <motion.section 
+        style={{ opacity: heroOpacity }}
+        className="relative h-screen flex flex-col justify-center px-6 md:px-24"
+      >
+        <div className="max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl"
           >
-            {/* Badge */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c4791a]/20 border border-[#c4791a]/40 mb-8"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#e8a838] animate-pulse" />
-              <span className="text-sm text-[#e8a838]">Senior Exploration Geoscientist @ PETRONAS</span>
-            </motion.div>
-
-            {/* Name */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
-            >
-              <span className="text-[#f0e6d3]">Muhammad Arif</span>
-              <span className="block text-[#c4791a]">bin Fazil</span>
-            </motion.h1>
-
-            {/* Tagline */}
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-xl md:text-2xl text-[#f0e6d3]/70 mb-8 max-w-2xl mx-auto"
-            >
-              Listening to the Earth. Interpreting the subsurface. 
-              Making high-stakes decisions under uncertainty.
-            </motion.p>
-
-            {/* Trinity Navigator */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="mb-12"
-            >
-              <TrinityNavigator />
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap items-center justify-center gap-4"
-            >
-              <button 
-                onClick={() => scrollToSection('discoveries')}
-                className="px-8 py-4 rounded-xl bg-[#c4791a] text-[#0f0c08] font-bold hover:bg-[#e8a838] transition-all hover:scale-105 flex items-center gap-2"
-              >
-                <Target className="w-5 h-5" />
-                View Discoveries
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="px-8 py-4 rounded-xl border border-[#c4791a]/50 text-[#f0e6d3] font-bold hover:bg-[#c4791a]/10 transition-all flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                Get in Touch
-              </button>
-            </motion.div>
+            <h1 className="text-6xl md:text-9xl font-bold tracking-tighter leading-none mb-6">
+              ARIF <br />
+              <span className="text-soul-primary">FAZIL</span>
+            </h1>
+            <p className="text-xl md:text-2xl font-medium tracking-tight max-w-2xl opacity-80 leading-relaxed">
+              Senior/Lead Exploration Geoscientist at PETRONAS. <br />
+              Founder of arifOS. Architect of Constitutional AI Governance.
+            </p>
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm font-mono text-soul-primary">
+              <span className="flex items-center gap-2"><MapPin size={14} /> KUALA LUMPUR, MY</span>
+              <span className="flex items-center gap-2"><Briefcase size={14} /> 13+ YEARS EXP</span>
+              <span className="flex items-center gap-2"><Award size={14} /> 100% DISCOVERY RATE</span>
+            </div>
           </motion.div>
+        </div>
+        
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-20 animate-bounce">
+          <ChevronDown size={32} />
+        </div>
+      </motion.section>
 
-          {/* Scroll Indicator */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          >
-            <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="flex flex-col items-center gap-2 text-[#f0e6d3]/50"
-            >
-              <span className="text-xs">Scroll to explore</span>
-              <ChevronDown className="w-5 h-5" />
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* ==================== ABOUT SECTION ==================== */}
-      <section id="about" className="relative py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left: Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c4791a]/10 border border-[#c4791a]/30 mb-6">
-                <Briefcase className="w-4 h-4 text-[#c4791a]" />
-                <span className="text-sm text-[#c4791a]">Professional Journey</span>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="text-[#f0e6d3]">13+ Years</span>
-                <span className="block text-[#c4791a]">Underground</span>
-              </h2>
-
-              <div className="space-y-4 text-[#f0e6d3]/80 leading-relaxed">
+      {/* Main Content */}
+      <main className="relative z-10 px-6 md:px-24 py-24 bg-[#0A0A0A] shadow-[0_-50vh_100vh_#0A0A0A]">
+        <div className="max-w-5xl mx-auto">
+          
+          {/* Bio / Narrative */}
+          <section className="mb-32">
+            <SectionTitle>The Human Anchor</SectionTitle>
+            <div className="grid md:grid-cols-12 gap-12">
+              <div className="md:col-span-8 text-xl md:text-2xl leading-relaxed opacity-90 space-y-8">
                 <p>
-                  I'm a Senior Exploration Geoscientist at <strong className="text-[#e8a838]">PETRONAS Carigali</strong>, 
-                  with over a decade of experience in the offshore hydrocarbon basins of Peninsular Malaysia.
+                  I read the Earth's quiet signals. For over a decade, I've interpreted the fragmented 
+                  subsurface of Peninsular Malaysia to make high-stakes investment decisions under 
+                  profound physical uncertainty.
                 </p>
                 <p>
-                  My work involves listening to the Earth—interpreting the subtle, often fragmented signals 
-                  of the subsurface to make high-stakes decisions under profound uncertainty.
-                </p>
-                <p>
-                  This same discipline—the constant need for <strong className="text-[#e8a838]">grounding, verification, 
-                  and humility</strong> in the face of the unknown—is what birthed <strong className="text-[#e8a838]">arifOS</strong>.
+                  This discipline—rigorous grounding, calibrated humility, and the necessity of 
+                  verifiable truth—is what birthed <span className="text-soul-primary font-bold">arifOS</span>. 
+                  I bridge the physical reality of geoscience with the digital governance of autonomous systems.
                 </p>
               </div>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mt-8">
-                {[
-                  { value: '13+', label: 'Years Experience' },
-                  { value: '4', label: 'Major Discoveries' },
-                  { value: '2', label: 'Basins Explored' },
-                ].map((stat, i) => (
-                  <div key={i} className="text-center p-4 rounded-xl bg-[#1a1510] border border-[#c4791a]/20">
-                    <div className="text-3xl font-bold text-[#e8a838]">{stat.value}</div>
-                    <div className="text-xs text-[#f0e6d3]/50 mt-1">{stat.label}</div>
-                  </div>
-                ))}
+              <div className="md:col-span-4 space-y-6">
+                <div className="p-6 border border-white/5 bg-white/[0.02]">
+                  <h4 className="text-xs font-mono text-soul-primary mb-4 uppercase">Current Focus</h4>
+                  <ul className="text-sm space-y-3 opacity-70">
+                    <li>Subsurface Prospect Maturation</li>
+                    <li>Constitutional AI Governance</li>
+                    <li>Event-Sourced Agent Runtimes</li>
+                    <li>Subsurface Inverse Modelling</li>
+                  </ul>
+                </div>
               </div>
-            </motion.div>
+            </div>
+          </section>
 
-            {/* Right: Info Cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-4"
-            >
-              {[
-                { icon: Briefcase, label: 'Current Role', value: 'Senior Exploration Geoscientist @ PETRONAS Carigali' },
-                { icon: GraduationCap, label: 'Education', value: 'University of Wisconsin-Madison (Geology/Geophysics & Economics)' },
-                { icon: MapPin, label: 'Location', value: 'Peninsular Malaysia' },
-                { icon: Mountain, label: 'Specialization', value: 'Basin Analysis & Prospect Maturation' },
-              ].map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-[#1a1510] border border-[#c4791a]/20 hover:border-[#c4791a]/50 transition-colors"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#c4791a]/20 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-[#c4791a]" />
+          {/* Discoveries */}
+          <section className="mb-32">
+            <SectionTitle>Field Discoveries</SectionTitle>
+            <div className="grid md:grid-cols-2 gap-px bg-white/5 border border-white/5">
+              {tokens.discoveries.map((discovery, i) => (
+                <div key={i} className="bg-[#0A0A0A] p-8 hover:bg-white/[0.02] transition-colors group">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold group-hover:text-soul-primary transition-colors">{discovery.name}</h3>
+                    <Target size={16} className="text-soul-primary opacity-40" />
                   </div>
-                  <div>
-                    <div className="text-xs text-[#f0e6d3]/50">{item.label}</div>
-                    <div className="text-sm text-[#f0e6d3]">{item.value}</div>
-                  </div>
-                </motion.div>
+                  <p className="text-xs font-mono text-soul-primary mb-4 opacity-60 uppercase">{discovery.type}</p>
+                  <p className="text-sm opacity-60 leading-relaxed">{discovery.significance}</p>
+                </div>
               ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== DISCOVERIES SECTION ==================== */}
-      <section id="discoveries" className="relative py-24 px-6 bg-[#0a0805]">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c4791a]/10 border border-[#c4791a]/30 mb-6">
-              <Award className="w-4 h-4 text-[#c4791a]" />
-              <span className="text-sm text-[#c4791a]">Significant Discoveries</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Wells That <span className="text-[#c4791a]">Mattered</span>
-            </h2>
-            <p className="text-[#f0e6d3]/60 max-w-2xl mx-auto">
-              The quiet successes—wells matured through rigorous collaboration and 
-              an uncompromising commitment to factual grounding.
-            </p>
-          </motion.div>
+          </section>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {tokens.discoveries.map((discovery, i) => (
-              <DiscoveryCard
-                key={discovery.name}
-                name={discovery.name}
-                type={discovery.type}
-                significance={discovery.significance}
-                index={i}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== ARIFOS SECTION ==================== */}
-      <section id="arifos" className="relative py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left: Visual */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#1a1510] to-[#2a2018] border border-[#c4791a]/30 p-8 flex items-center justify-center">
-                {/* Animated Lambda Logo */}
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  className="relative w-48 h-48"
-                >
-                  {/* Outer ring */}
-                  <div className="absolute inset-0 rounded-full border-2 border-[#c4791a]/30" />
-                  <div className="absolute inset-4 rounded-full border border-[#c4791a]/20" />
-                  
-                  {/* Lambda symbol */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-8xl font-bold text-[#c4791a]">Λ</span>
-                  </div>
-                  
-                  {/* Orbiting dots */}
-                  {[0, 120, 240].map((deg, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-3 h-3 rounded-full bg-[#e8a838]"
-                      style={{
-                        top: '50%',
-                        left: '50%',
-                        transform: `rotate(${deg}deg) translateX(80px) translateY(-50%)`,
-                      }}
-                      animate={{ 
-                        boxShadow: ['0 0 10px #e8a838', '0 0 20px #e8a838', '0 0 10px #e8a838']
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
-                    />
-                  ))}
-                </motion.div>
-              </div>
-              
-              {/* Floating badges */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-4 -right-4 px-4 py-2 rounded-full bg-[#c4791a] text-[#0f0c08] text-sm font-bold"
-              >
-                13 Floors
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -bottom-4 -left-4 px-4 py-2 rounded-full bg-[#1a1510] border border-[#c4791a]/50 text-[#e8a838] text-sm font-bold"
-              >
-                Constitutional AI
-              </motion.div>
-            </motion.div>
-
-            {/* Right: Content */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c4791a]/10 border border-[#c4791a]/30 mb-6">
-                <Cpu className="w-4 h-4 text-[#c4791a]" />
-                <span className="text-sm text-[#c4791a]">The arifOS Ecosystem</span>
-              </div>
-              
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                From <span className="text-[#c4791a]">Basins</span> to <span className="text-[#c4791a]">Bits</span>
-              </h2>
-
-              <div className="space-y-4 text-[#f0e6d3]/80 leading-relaxed mb-8">
-                <p>
-                  <strong className="text-[#e8a838]">arifOS</strong> is a constitutional governance framework 
-                  for autonomous AI agents—translating offshore safety standards into the execution kernels of tomorrow.
-                </p>
-                <p>
-                  Just as I navigate the complex strata of the Sabah Basin with rigor and humility, 
-                  arifOS brings that same discipline to AI governance: <strong className="text-[#e8a838]">stability, 
-                  reversibility, and physical grounding</strong>.
-                </p>
-              </div>
-
-              {/* Trinity Matrix */}
-              <div className="space-y-3">
-                {[
-                  { ring: 'Ψ SOUL', name: 'arif-fazil.com', desc: 'Human Anchor (You are here)', active: true },
-                  { ring: 'Ω MIND', name: 'arifos.arif-fazil.com', desc: 'Theory & Law', active: false },
-                  { ring: 'Δ BODY', name: 'arifosmcp.arif-fazil.com', desc: 'Execution Runtime', active: false },
-                ].map((item, i) => (
-                  <a
-                    key={i}
-                    href={`https://${item.name}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`
-                      flex items-center gap-4 p-4 rounded-xl border transition-all
-                      ${item.active 
-                        ? 'bg-[#c4791a]/20 border-[#c4791a]' 
-                        : 'bg-[#1a1510] border-[#c4791a]/20 hover:border-[#c4791a]/50'
-                      }
-                    `}
-                  >
-                    <div className={`
-                      w-10 h-10 rounded-lg flex items-center justify-center font-bold
-                      ${item.active ? 'bg-[#c4791a] text-[#0f0c08]' : 'bg-[#c4791a]/20 text-[#c4791a]'}
-                    `}>
-                      {item.ring.split(' ')[0]}
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm font-bold text-[#f0e6d3]">{item.ring}</div>
-                      <div className="text-xs text-[#f0e6d3]/50">{item.desc}</div>
-                    </div>
-                    {!item.active && <ExternalLink className="w-4 h-4 text-[#f0e6d3]/30" />}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="relative py-24 px-6 bg-[#0a0805]">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#c4791a]/10 border border-[#c4791a]/30 mb-6">
-              <Mail className="w-4 h-4 text-[#c4791a]" />
-              <span className="text-sm text-[#c4791a]">Get in Touch</span>
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Let's <span className="text-[#c4791a]">Connect</span>
-            </h2>
-            <p className="text-[#f0e6d3]/60 mb-12 max-w-xl mx-auto">
-              If you share an interest in geophysics, the philosophy of systems, 
-              or the ethical governance of the tools we create, I would be honored to connect.
-            </p>
-
-            {/* Contact Cards */}
-            <div className="grid md:grid-cols-3 gap-4 mb-12">
-              {[
-                { icon: Send, label: 'Telegram', value: '@ariffazil', href: 'https://t.me/ariffazil' },
-                { icon: Linkedin, label: 'LinkedIn', value: 'Muhammad Arif bin Fazil', href: 'https://linkedin.com/in/ariffazil' },
-                { icon: Mail, label: 'Email', value: 'arifbfazil@gmail.com', href: 'mailto:arifbfazil@gmail.com' },
-              ].map((contact, i) => (
-                <motion.a
-                  key={i}
-                  href={contact.href}
+          {/* Articles */}
+          <section className="mb-32">
+            <SectionTitle>Writings & Theory</SectionTitle>
+            <div className="space-y-4">
+              {tokens.articles.map((article, i) => (
+                <a 
+                  key={i} 
+                  href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group p-6 rounded-xl bg-[#1a1510] border border-[#c4791a]/20 hover:border-[#c4791a]/50 transition-all"
+                  className="flex items-center justify-between p-6 border border-white/5 hover:border-soul-primary/30 hover:bg-white/[0.01] transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#c4791a]/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#c4791a]/30 transition-colors">
-                    <contact.icon className="w-6 h-6 text-[#c4791a]" />
+                  <div className="flex items-center gap-6">
+                    <span className="font-mono text-xs opacity-20">0{i+1}</span>
+                    <h3 className="text-lg md:text-xl font-medium group-hover:translate-x-2 transition-transform">{article.title}</h3>
                   </div>
-                  <div className="text-xs text-[#f0e6d3]/50 mb-1">{contact.label}</div>
-                  <div className="text-sm text-[#f0e6d3] font-medium">{contact.value}</div>
-                </motion.a>
+                  <ExternalLink size={18} className="opacity-20 group-hover:opacity-100 group-hover:text-soul-primary transition-all" />
+                </a>
               ))}
             </div>
+          </section>
 
-            {/* GitHub Link */}
-            <motion.a
-              href="https://github.com/ariffazil"
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#1a1510] border border-[#c4791a]/20 hover:border-[#c4791a]/50 transition-all"
-            >
-              <Github className="w-5 h-5 text-[#c4791a]" />
-              <span className="text-[#f0e6d3]">github.com/ariffazil</span>
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ==================== FOOTER ==================== */}
-      <footer className="relative py-12 px-6 border-t border-[#c4791a]/10">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-[#c4791a] flex items-center justify-center text-[#0f0c08] font-bold">
-                Λ
-              </div>
-              <div>
-                <div className="text-sm font-bold text-[#f0e6d3]">arif-fazil.com</div>
-                <div className="text-xs text-[#f0e6d3]/50">The SOUL Ring of arifOS</div>
+          {/* Trinity Call to Action */}
+          <section className="mb-32 p-12 border-2 border-soul-primary/20 bg-soul-primary/[0.02] relative overflow-hidden">
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 italic">"Ditempa Bukan Diberi"</h2>
+              <p className="max-w-2xl text-lg opacity-70 mb-12">
+                The arifOS ecosystem is a constitutional network for governed intelligence. 
+                Explore the Mind and Body rings.
+              </p>
+              <div className="flex flex-wrap gap-6">
+                <a href="https://arifos.arif-fazil.com" className="px-8 py-4 bg-soul-primary text-black font-bold hover:scale-105 transition-transform flex items-center gap-2">
+                  <Cpu size={18} /> EXPLORE MIND RING
+                </a>
+                <a href="https://aaa.arif-fazil.com" className="px-8 py-4 border border-soul-primary text-soul-primary font-bold hover:bg-soul-primary/10 transition-all">
+                  VIEW BODY RUNTIME
+                </a>
               </div>
             </div>
-            
-            <div className="text-center md:text-right">
-              <div className="text-lg font-bold text-[#c4791a]">Ditempa Bukan Diberi</div>
-              <div className="text-xs text-[#f0e6d3]/50">Forged, Not Given — ΔΩΨ | ARIF</div>
+            <div className="absolute top-0 right-0 text-[20rem] font-bold text-soul-primary opacity-[0.03] translate-x-1/4 -translate-y-1/4 select-none">
+              Λ
             </div>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t border-[#c4791a]/10 text-center text-xs text-[#f0e6d3]/30">
-            © 2026 Muhammad Arif bin Fazil. All rights reserved. 
-            <span className="mx-2">|</span>
-            Constitutional Version: arifOS v54.1-SEAL
-          </div>
+          </section>
+
         </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="px-6 md:px-24 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-xs font-mono opacity-40">
+        <div>© 2026 MUHAMMAD ARIF BIN FAZIL. ALL RIGHTS RESERVED.</div>
+        <div className="flex gap-8">
+          <a href="mailto:arifbfazil@gmail.com" className="hover:text-soul-primary transition-colors">EMAIL</a>
+          <a href="https://linkedin.com/in/muhammad-arif-bin-fazil" className="hover:text-soul-primary transition-colors">LINKEDIN</a>
+          <a href="https://github.com/ariffazil" className="hover:text-soul-primary transition-colors">GITHUB</a>
+        </div>
+        <div className="text-soul-primary font-bold uppercase tracking-widest">arifOS v54.1-SEAL</div>
       </footer>
     </div>
   );
