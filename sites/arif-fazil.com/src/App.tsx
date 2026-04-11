@@ -655,32 +655,35 @@ const SoulSite: React.FC = () => {
       </main>
 
       {/* Trinity Navigation Footer */}
-      <nav 
-        className="fixed bottom-0 left-0 right-0 z-50 px-6 py-4 flex justify-center gap-6"
+      <footer 
+        className="fixed bottom-0 left-0 right-0 z-50 px-4 py-3"
         style={{
-          background: 'linear-gradient(0deg, rgba(5,5,5,0.98) 0%, transparent 100%)',
+          background: 'linear-gradient(0deg, rgba(15,13,13,0.98) 0%, rgba(15,13,13,0.85) 100%)',
+          borderTop: `1px solid ${SOUL.blood}30`,
         }}
       >
-        {[
-          { label: 'Ψ SOUL', href: 'https://arif-fazil.com', color: SOUL.blood, active: true },
-          { label: 'Ω MIND', href: 'https://apex.arif-fazil.com', color: SOUL.earth },
-          { label: 'Δ BODY', href: 'https://aaa.arif-fazil.com', color: SOUL.gold },
-          { label: '◉ FORGE', href: 'https://forge.arif-fazil.com', color: SOUL.dim },
-        ].map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="text-xs font-mono tracking-widest transition-all duration-300 hover:scale-110"
-            style={{
-              color: link.active ? link.color : SOUL.dim,
-              borderBottom: link.active ? `2px solid ${link.color}` : '2px solid transparent',
-              paddingBottom: '4px',
-            }}
-          >
-            {link.label}
-          </a>
-        ))}
-      </nav>
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {[
+            { label: 'Ψ SOUL', href: 'https://arif-fazil.com', color: SOUL.blood },
+            { label: 'Ω MIND', href: 'https://apex.arif-fazil.com', color: SOUL.earth },
+            { label: 'Δ BODY', href: 'https://aaa.arif-fazil.com', color: SOUL.gold },
+            { label: 'Δ MCP', href: 'https://arifosmcp.arif-fazil.com', color: SOUL.gold },
+            { label: '◉ FORGE', href: 'https://forge.arif-fazil.com', color: SOUL.dim },
+            { label: '◎ WAW', href: 'https://waw.arif-fazil.com', color: SOUL.dim },
+            { label: 'Ω WIKI', href: 'https://wiki.arif-fazil.com', color: SOUL.dim },
+            { label: 'Φ GEOX', href: 'https://geox.arif-fazil.com', color: SOUL.earth },
+          ].map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-[10px] font-mono tracking-wider transition-all duration-200 hover:brightness-125"
+              style={{ color: link.color }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </footer>
 
       {/* CSS Keyframes */}
       <style>{`
