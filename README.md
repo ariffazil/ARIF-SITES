@@ -17,6 +17,9 @@
 | **Ξ EXT** | `arifosmcp.arif-fazil.com` | Dynamic | MCP Runtime Endpoint |
 | **Φ FIELD** | `geox.arif-fazil.com` | Dynamic | Earth Witness GUI |
 
+## 📐 Architecture
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for full system design, connection maps, and data flow.
+
 ## 🚀 Deployment
 Targets are defined in `/infra/domains.yaml`.
 - **Static**: Cloudflare Pages (Auto-deploy on git push)
