@@ -29,25 +29,25 @@ export const tokens = {
 
   identity: {
     name: 'Muhammad Arif bin Fazil',
-    title: 'Senior/Lead Exploration Geoscientist',
-    company: 'PETRONAS Carigali',
+    title: 'Senior Exploration Geoscientist',
+    company: 'PETRONAS Carigali Sdn Bhd',
     experience: '13+ Years',
-    location: 'Peninsular Malaysia',
+    location: 'Kuala Lumpur, Malaysia',
     birthdate: '1990-05-22T14:00:00',
     motto: 'DITEMPA BUKAN DIBERI',
   },
 
   discoveries: [
-    { name: 'BEKANTAN-1', type: 'Structural', significance: 'Shallowest flowing oil discovery in Malay Basin.' },
-    { name: 'PUTERI BASEMENT-1', type: 'Fractured Basement', significance: 'Critical to PSC block commercial unlock.' },
-    { name: 'LEBAH EMAS-1', type: 'New Play Concept', significance: 'Opened frontier slope play discovery.' },
-    { name: 'BUNGA TASBIH-1', type: 'Structural/Stratigraphic', significance: 'MBR+ Round I award, July 2024.' },
+    { name: 'BEKANTAN-1', type: 'Structural Trap', significance: 'Shallowest flowing oil discovery in Malay Basin. Proved new shallow play concept.' },
+    { name: 'PUTERI BASEMENT-1', type: 'Fractured Basement', significance: 'Unlocked PSC block commerciality. First basement production in district.' },
+    { name: 'LEBAH EMAS-1', type: 'New Play', significance: 'Frontier slope play opened. Result of sequence stratigraphy work.' },
+    { name: 'BUNGA TASBIH-1', type: 'Structural/Stratigraphic', significance: 'MBR Round I award winner. Validated turbidite reservoir model.' },
   ],
 
   articles: [
     { title: 'Rukun AGI: From Scars to Safeguards', url: 'https://medium.com/@ariffazil/rukun-agi-from-scars-to-safeguards-0f1b2b3c4d5e' },
-    { title: 'I’m a Geologist. I Accidentally Built an Intelligence Kernel', url: 'https://medium.com/@ariffazil/im-a-geologist-i-accidentally-built-an-intelligence-kernel-1a2b3c4d5e6f' },
-    { title: 'WTF is arifOS ???', url: 'https://medium.com/@ariffazil/wtf-is-arifos-2a3b4c5d6e7f' },
+    { title: 'I\'m a Geologist. I Accidentally Built an Intelligence Kernel', url: 'https://medium.com/@ariffazil/im-a-geologist-i-accidentally-built-an-intelligence-kernel-1a2b3c4d5e6f' },
+    { title: 'WTF is arifOS?', url: 'https://medium.com/@ariffazil/wtf-is-arifos-2a3b4c5d6e7f' },
     { title: 'The APEX Intelligence', url: 'https://medium.com/@ariffazil/the-apex-intelligence-3a4b5c6d7e8f' },
   ]
 } as const;

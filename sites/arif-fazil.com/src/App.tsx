@@ -9,16 +9,17 @@ import tokens from '@/constitution/tokens';
 
 // ==================== ANOMALOUS COLOR SYSTEM (SOUL) ====================
 // Blood Red + Earth Tones — Human Life, Igneous Core, Gold Sovereignty
+// Toned down for reduced eye strain while maintaining identity
 const SOUL = {
-  blood: '#8B1A1A',      // Primary - Blood red, life
-  arterial: '#B33030',    // Secondary - Arterial red, vitality
-  gold: '#D4AF37',       // Accent - Gold, F13 sovereignty
-  earth: '#6B4423',       // Earth brown - grounding, strata
-  terracotta: '#C4703D', // Terracotta - clay, human craft
-  ochre: '#CC9544',      // Ochre - discovery, fossil
-  void: '#1A0A0A',       // Background - deep blood black
-  text: '#F5E8E8',       // Primary text - warm white
-  dim: '#8B8B8B',        // Secondary text
+  blood: '#6B2020',      // Primary - Muted blood red, life
+  arterial: '#8B3030',   // Secondary - Softer arterial red
+  gold: '#B8962E',       // Accent - Muted gold, F13 sovereignty
+  earth: '#5A3D25',      // Earth brown - grounding, strata
+  terracotta: '#A06035', // Terracotta - clay, human craft
+  ochre: '#A07840',      // Ochre - discovery, fossil
+  void: '#0F0D0D',       // Background - soft dark (reduced contrast)
+  text: '#D8D0D0',      // Primary text - soft warm gray
+  dim: '#6B6B6B',        // Secondary text - muted
 } as const;
 
 // ==================== FRACTAL BIOLOGICAL CLOCK ====================
@@ -429,9 +430,9 @@ const SoulSite: React.FC = () => {
               Senior Exploration Geoscientist @ PETRONAS
             </p>
             <p className="text-sm md:text-base opacity-40 max-w-2xl mx-auto leading-relaxed mb-16">
-              Bridging the physical truth of the subsurface with constitutional AI governance.
+              Translating subsurface uncertainty into governed decisions. Building AI systems that remain accountable.
               <br />
-              <span style={{ color: SOUL.blood }}>Forged, Not Given</span> — 13 years interpreting the Malay Basin.
+              <span style={{ color: SOUL.blood }}>Ditempa Bukan Diberi</span> — Forged through experience, not given as theory.
             </p>
             
             <div className="flex flex-wrap justify-center gap-6">
