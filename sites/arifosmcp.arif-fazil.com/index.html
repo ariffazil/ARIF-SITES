@@ -3,738 +3,730 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arifOS MCP — Constitutional Intelligence Kernel</title>
-    <meta name="description" content="arifOS MCP: The sovereign constitutional intelligence kernel. 17 tools, 13 constitutional floors, human sovereignty. DITEMPA BUKAN DIBERI.">
+    <title>arifOS MCP — Constitutional AI Gateway</title>
+    <meta name="description" content="Constitutional tools, prompts, and resources for reality-aligned AI. MCP endpoint at /mcp, health at /health, 13 constitutional floors enforced.">
     <link rel="canonical" href="https://arifosmcp.arif-fazil.com/">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Δ</text></svg>">
     <link rel="alternate" type="application/llm-fulltext" href="/llms.txt">
     <link rel="alternate" type="application/json" href="/.well-known/mcp/server.json">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        gold: { DEFAULT: '#D4A853', light: '#E3B341', dark: '#C4791A' },
-                        soul: '#8B1A1A',
-                        mind: '#00D4AA',
-                        body: '#D4A853',
-                        dark: { bg: '#0a0a0a', card: '#161b22', border: '#30363d' }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        body { background: #0a0a0a; color: #e5e5e5; font-family: 'Inter', system-ui, sans-serif; }
-        .gradient-gold { background: linear-gradient(135deg, #D4A853 0%, #E3B341 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .gradient-soul { background: linear-gradient(135deg, #8B1A1A 0%, #ef4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .gradient-mind { background: linear-gradient(135deg, #00D4AA 0%, #00ffcc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .glass-card { background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(12px); border: 1px solid #30363d; }
-        .glass-panel { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(8px); border: 1px solid #21262d; }
-        .method-badge { display: inline-flex; padding: 0.125rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
-        .method-post { background: #D4A853; color: #0a0a0a; }
-        .method-get { background: #00D4AA; color: #0a0a0a; }
-        .status-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-        .circuit-line { background: linear-gradient(90deg, transparent, #D4A853, transparent); height: 1px; }
-        pre { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 1rem; overflow-x: auto; }
-        code { font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; }
-        :not(pre) > code { background: #21262d; padding: 0.2rem 0.4rem; border-radius: 4px; color: #D4A853; }
-        .trinity-ring { transition: all 0.3s ease; }
-        .trinity-ring:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212, 168, 83, 0.2); }
-        .metric-value { font-feature-settings: 'tnum'; font-variant-numeric: tabular-nums; }
-        .copy-btn { transition: all 0.2s; }
-        .copy-btn:hover { background: #D4A853; color: #0a0a0a; }
-        .copy-btn.copied { background: #22c55e; color: white; }
-        ::selection { background: #D4A853; color: #0a0a0a; }
+        :root {
+            --bg: #0a0a0a;
+            --bg-secondary: #111113;
+            --bg-tertiary: #1a1a1f;
+            --border: #2a2a30;
+            --border-hover: #3a3a40;
+            --text: #e5e5e5;
+            --text-secondary: #888;
+            --text-muted: #555;
+            --gold: #D4A853;
+            --gold-dim: #a08040;
+            --cyan: #00D4AA;
+            --red: #ef4444;
+            --green: #22c55e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--gold); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+        .section:last-child { border-bottom: none; }
+        h2 { font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+        h3 { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
+        code {
+            background: var(--bg-tertiary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: var(--gold);
+        }
+        pre {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        pre code { background: none; padding: 0; color: var(--text); font-size: 13px; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
+        .badge-gold { background: rgba(212,168,83,0.15); color: var(--gold); }
+        .badge-cyan { background: rgba(0,212,170,0.15); color: var(--cyan); }
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .card:hover { border-color: var(--border-hover); }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-primary { background: var(--gold); color: #000; }
+        .btn-primary:hover { background: #e0b560; text-decoration: none; }
+        .btn-secondary { background: var(--bg-tertiary); color: var(--text); border: 1px solid var(--border); }
+        .btn-secondary:hover { border-color: var(--border-hover); text-decoration: none; }
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin: 2px;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+        .status-dot.degraded { background: var(--gold); }
+        .status-dot.down { background: var(--red); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); font-size: 14px; }
+        th { color: var(--text-muted); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .copy-btn {
+            padding: 4px 8px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .copy-btn:hover { border-color: var(--border-hover); color: var(--text); }
+        .endpoint-block {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        .endpoint-block .method {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .method-get { background: rgba(0,212,170,0.2); color: var(--cyan); }
+        .method-post { background: rgba(212,168,83,0.2); color: var(--gold); }
+        .example-json {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+        .example-json .key { color: var(--cyan); }
+        .example-json .string { color: var(--gold); }
+        .example-json .number { color: var(--green); }
+        .tab-group { display: flex; gap: 4px; margin-bottom: 16px; }
+        .tab { padding: 8px 16px; background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--text-secondary); font-size: 13px; cursor: pointer; }
+        .tab.active { background: var(--bg-tertiary); color: var(--text); border-color: var(--border-hover); }
+        .tab:hover:not(.active) { border-color: var(--border-hover); }
+        .architecture-diagram {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+        }
+        .arch-box {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin: 8px;
+            font-size: 14px;
+        }
+        .arch-arrow { color: var(--text-muted); font-size: 20px; }
+        .trust-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(212,168,83,0.08);
+            border: 1px solid rgba(212,168,83,0.2);
+            border-radius: 6px;
+            font-size: 13px;
+            color: var(--gold);
+        }
+        @media (max-width: 768px) {
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body class="min-h-screen antialiased">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-dark-border">
-        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" class="flex items-center gap-2 group">
-                <span class="text-2xl font-bold gradient-gold group-hover:scale-110 transition-transform">Δ</span>
-                <div>
-                    <span class="text-lg font-bold tracking-tight">arifOS MCP</span>
-                    <span class="hidden sm:inline text-xs text-gold ml-2 px-2 py-0.5 rounded-full border border-gold/30">v2026.04.07</span>
+<body>
+
+    <!-- Header -->
+    <header style="border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: space-between; height: 64px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 24px; font-weight: 700; color: var(--gold);">Δ</span>
+                    <span style="font-size: 18px; font-weight: 600;">arifOS MCP</span>
+                    <span class="badge badge-green" id="header-status">
+                        <span class="status-dot"></span>
+                        <span id="header-status-text">Live</span>
+                    </span>
                 </div>
-            </a>
-            <div class="flex items-center gap-6 text-sm">
-                <a href="#status" class="text-gray-400 hover:text-gold transition-colors">Status</a>
-                <a href="#tools" class="text-gray-400 hover:text-gold transition-colors">Tools</a>
-                <a href="#connect" class="text-gray-400 hover:text-gold transition-colors">Connect</a>
-                <a href="/.well-known/mcp/server.json" class="text-gray-400 hover:text-gold transition-colors">MCP JSON</a>
-                <a href="/webmcp/" class="px-3 py-1.5 rounded-lg bg-gold/10 border border-gold/30 text-gold hover:bg-gold hover:text-dark-bg transition-all text-xs font-medium">WebMCP</a>
+                <nav style="display: flex; gap: 24px; font-size: 14px;">
+                    <a href="#quickstart" style="color: var(--text-secondary);">Quickstart</a>
+                    <a href="#capabilities" style="color: var(--text-secondary);">Capabilities</a>
+                    <a href="#protocols" style="color: var(--text-secondary);">Protocols</a>
+                    <a href="#governance" style="color: var(--text-secondary);">Governance</a>
+                    <a href="#reference" style="color: var(--text-secondary);">Reference</a>
+                    <a href="/health" style="color: var(--text-secondary);">Health</a>
+                </nav>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <main class="pt-24 pb-12 px-4">
-        <!-- Hero Section -->
-        <section class="max-w-6xl mx-auto mb-16 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-gold/20 mb-6">
-                <span class="w-2 h-2 rounded-full bg-gold status-pulse"></span>
-                <span class="text-xs font-medium text-gold tracking-wider uppercase">DITEMPA BUKAN DIBERI</span>
-            </div>
-            
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-                <span class="gradient-gold">arifOS MCP</span>
-            </h1>
-            
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">
-                The Sovereign Constitutional Gateway<br>
-                <span class="text-base">Human-AI symbiosis under immutable law. 13 Floors. Zero compromise.</span>
-            </p>
-            
-            <div class="flex flex-wrap items-center justify-center gap-4">
-                <button onclick="testConnection()" class="px-6 py-3 rounded-lg bg-gold text-dark-bg font-semibold hover:bg-gold-light transition-all flex items-center gap-2">
-                    <span id="test-btn-icon">⚡</span>
-                    <span id="test-btn-text">Test Connection</span>
-                </button>
-                <a href="#tools" class="px-6 py-3 rounded-lg border border-dark-border text-gray-300 hover:border-gold hover:text-gold transition-all">View Tools</a>
-                <a href="https://github.com/ariffazil/arifOS" target="_blank" class="px-6 py-3 rounded-lg border border-dark-border text-gray-300 hover:border-gold hover:text-gold transition-all">GitHub</a>
-            </div>
-            
-            <!-- Connection Test Result -->
-            <div id="connection-result" class="hidden mt-6 max-w-md mx-auto glass-card p-4 rounded-lg"></div>
-        </section>
+    <main>
+        <!-- Hero -->
+        <section class="section" style="padding: 80px 0;">
+            <div class="container">
+                <div style="max-width: 700px;">
+                    <h1 style="font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 16px;">
+                        Constitutional tools, prompts, and resources<br>
+                        <span style="color: var(--gold);">for reality-aligned AI.</span>
+                    </h1>
+                    <p style="font-size: 18px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7;">
+                        Connect your host to <code>/mcp</code>, inspect capabilities, enforce floors, 
+                        and route high-risk decisions through human approval.
+                    </p>
+                    
+                    <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                        <a href="#quickstart" class="btn btn-primary">Get Started</a>
+                        <a href="#capabilities" class="btn btn-secondary">View Capabilities</a>
+                        <a href="/health" class="btn btn-secondary">Check Health</a>
+                    </div>
 
-        <!-- Live System Status -->
-        <section id="status" class="max-w-6xl mx-auto mb-16">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <span class="text-gold">◈</span> Live System Status
-                </h2>
-                <div class="flex items-center gap-2 text-xs text-gray-500">
-                    <span class="w-2 h-2 rounded-full bg-green-500 status-pulse"></span>
-                    Auto-refresh: <span id="refresh-timer">30</span>s
-                </div>
-            </div>
-            
-            <div class="glass-card rounded-xl p-6 mb-6" id="status-card">
-                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
-                    <div class="flex items-center gap-4">
-                        <div id="status-indicator" class="w-12 h-12 rounded-xl bg-gold/20 flex items-center justify-center">
-                            <span id="status-icon" class="text-2xl">⏳</span>
-                        </div>
-                        <div>
-                            <div id="status-text" class="text-lg font-semibold">Initializing...</div>
-                            <div id="status-detail" class="text-sm text-gray-500">Checking constitutional floors</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 text-sm">
-                        <div class="text-right">
-                            <div class="text-gray-500 text-xs uppercase">Version</div>
-                            <div id="version-text" class="font-mono text-gold">--</div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-gray-500 text-xs uppercase">Transport</div>
-                            <div id="transport-text" class="font-mono">--</div>
-                        </div>
-                        <div class="text-right">
-                            <div class="text-gray-500 text-xs uppercase">Seal</div>
-                            <div class="font-mono text-gold">999</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Metrics Grid -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6" id="metrics-grid">
-                    <div class="glass-panel p-4 rounded-lg text-center">
-                        <div class="metric-value text-3xl font-bold text-gold mb-1" id="metric-tools">--</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wider">Active Tools</div>
-                    </div>
-                    <div class="glass-panel p-4 rounded-lg text-center">
-                        <div class="metric-value text-3xl font-bold text-mind mb-1" id="metric-floors">13</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wider">Constitutional Floors</div>
-                    </div>
-                    <div class="glass-panel p-4 rounded-lg text-center">
-                        <div class="metric-value text-3xl font-bold text-gold mb-1" id="metric-providers">--</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wider">Providers</div>
-                    </div>
-                    <div class="glass-panel p-4 rounded-lg text-center">
-                        <div class="metric-value text-3xl font-bold text-soul mb-1" id="metric-humility">0.04</div>
-                        <div class="text-xs text-gray-500 uppercase tracking-wider">Ω₀ Humility</div>
-                    </div>
-                </div>
-                
-                <!-- Capability Tags -->
-                <div class="flex flex-wrap gap-2" id="capability-tags">
-                    <span class="px-3 py-1 rounded-full text-xs bg-gold/10 text-gold border border-gold/20">Loading...</span>
-                </div>
-            </div>
-            
-            <!-- Substrates & Providers -->
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-card rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Connected Substrates</h3>
-                    <div id="substrates-list" class="space-y-2">
-                        <div class="flex items-center gap-2 text-sm"><span class="text-gray-500">Loading...</span></div>
-                    </div>
-                </div>
-                <div class="glass-card rounded-xl p-6">
-                    <h3 class="text-sm font-semibold text-gray-400 mb-4 uppercase tracking-wider">Model Providers</h3>
-                    <div id="providers-list" class="flex flex-wrap gap-2">
-                        <span class="text-gray-500 text-sm">Loading...</span>
+                    <div class="trust-line">
+                        <span>🛡️</span>
+                        <span>Enforces 13 constitutional floors across all AI operations. High-risk actions require human confirmation.</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- The Sovereign Circuit (Trinity) -->
-        <section class="max-w-6xl mx-auto mb-16">
-            <div class="text-center mb-8">
-                <h2 class="text-2xl font-bold mb-2">The Sovereign Circuit</h2>
-                <p class="text-gray-500">Trinity Architecture — Human anchor, Constitutional governance, Executable body</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- SOUL -->
-                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-soul">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl">Ψ</span>
-                        <div>
-                            <div class="font-bold text-soul">SOUL</div>
-                            <div class="text-xs text-gray-500">Human Anchor</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">888 Judge — Human sovereignty, final authority, F13 override.</p>
-                    <div class="text-xs">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
-                            <span class="text-gray-500">888_HOLD Gate</span>
-                        </div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
-                            <span class="text-gray-500">Human-in-the-loop</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-soul"></span>
-                            <span class="text-gray-500">Sovereign Veto</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- MIND -->
-                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-mind">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl gradient-mind">Ω</span>
-                        <div>
-                            <div class="font-bold gradient-mind">MIND</div>
-                            <div class="text-xs text-gray-500">13 Constitutional Floors</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">Governance engine — Truth, humility, anti-hantu, coherence.</p>
-                    <div class="text-xs">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
-                            <span class="text-gray-500">F1 Amanah — Reversible</span>
-                        </div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
-                            <span class="text-gray-500">F2 Haqq — Truth ≥ 0.99</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-mind"></span>
-                            <span class="text-gray-500">F7 Humility — Ω₀ ≤ 0.05</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- BODY -->
-                <div class="trinity-ring glass-card rounded-xl p-6 border-l-4 border-l-gold">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="text-3xl gradient-gold">Δ</span>
-                        <div>
-                            <div class="font-bold gradient-gold">BODY</div>
-                            <div class="text-xs text-gray-500">Execution & Tools</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">17 tools, 3 prompts, 8 resources — Forged for action.</p>
-                    <div class="text-xs">
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                            <span class="text-gray-500" id="body-tools">17 Tools</span>
-                        </div>
-                        <div class="flex items-center gap-2 mb-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                            <span class="text-gray-500">Streamable HTTP</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                            <span class="text-gray-500">VAULT999 Persistence</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Circuit Status -->
-            <div class="mt-6 text-center">
-                <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full glass-panel border border-gold/20">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-soul"></span>
-                        <span class="text-xs text-soul">Ψ</span>
-                    </div>
-                    <div class="circuit-line w-16"></div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-mind"></span>
-                        <span class="text-xs text-mind">Ω</span>
-                    </div>
-                    <div class="circuit-line w-16"></div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-gold"></span>
-                        <span class="text-xs text-gold">Δ</span>
-                    </div>
-                    <span class="ml-2 text-sm text-gray-400">Peace² ≥ 1.0 — Circuit Stable</span>
-                </div>
-            </div>
-        </section>
+        <!-- Quickstart -->
+        <section class="section" id="quickstart">
+            <div class="container">
+                <h2>Quickstart</h2>
+                <p>Connect to the arifOS MCP endpoint in under 60 seconds.</p>
 
-        <!-- Protocol Cards -->
-        <section id="connect" class="max-w-6xl mx-auto mb-16">
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                <span class="text-gold">◈</span> Choose Your Protocol
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <!-- MCP -->
-                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all">
-                    <div class="absolute top-0 right-0 px-3 py-1 bg-gold text-dark-bg text-xs font-bold">RECOMMENDED</div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-gold/20 flex items-center justify-center text-gold font-bold">MCP</div>
-                        <div>
-                            <div class="font-bold">MCP Native</div>
-                            <div class="text-xs text-gray-500">Model Context Protocol</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">Full tool bridging for Claude Desktop, Cursor, and MCP-compatible clients.</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">17 tools available</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">Streamable HTTP</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">13-floor governance</span>
-                        </div>
-                    </div>
-                    <button onclick="copyMCPConfig()" class="copy-btn w-full py-2 rounded-lg border border-dark-border text-sm flex items-center justify-center gap-2">
-                        <span>📋</span> Copy Config
-                    </button>
-                </div>
-                
-                <!-- WebMCP -->
-                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-mind/20 flex items-center justify-center text-mind font-bold">W</div>
-                        <div>
-                            <div class="font-bold gradient-mind">WebMCP</div>
-                            <div class="text-xs text-gray-500">Browser-Native</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">Run MCP servers directly in the browser via WebSocket transport.</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">No installation</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">WebSocket transport</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            <span class="text-gray-400">Same governance</span>
-                        </div>
-                    </div>
-                    <a href="/webmcp/" class="block w-full py-2 rounded-lg border border-mind/30 text-mind text-sm text-center hover:bg-mind hover:text-dark-bg transition-all">
-                        Open WebMCP →
-                    </a>
-                </div>
-                
-                <!-- A2A -->
-                <div class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-gold/50 transition-all opacity-75">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-soul/20 flex items-center justify-center text-soul font-bold">A2A</div>
-                        <div>
-                            <div class="font-bold text-soul">A2A</div>
-                            <div class="text-xs text-gray-500">Agent-to-Agent</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-gray-400 mb-4">Federation protocol for agent swarms with tri-witness consensus.</p>
-                    <div class="space-y-2 mb-4">
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
-                            <span class="text-gray-400">Coming soon</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                            <span class="text-gray-400">Tri-witness consensus</span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span>
-                            <span class="text-gray-400">Agent federation</span>
-                        </div>
-                    </div>
-                    <button disabled class="w-full py-2 rounded-lg border border-dark-border text-gray-500 text-sm cursor-not-allowed">
-                        Coming Soon
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Quick Connect -->
-        <section class="max-w-6xl mx-auto mb-16">
-            <div class="glass-card rounded-xl p-8">
-                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <span class="text-gold">◈</span> Quick Connect
-                </h2>
-                
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid-2" style="margin-top: 32px;">
                     <div>
-                        <h3 class="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Claude Desktop Config</h3>
-                        <div class="relative">
-                            <pre class="text-xs overflow-x-auto"><code id="claude-config">{
+                        <h3>Endpoints</h3>
+                        <div class="endpoint-block">
+                            <div style="margin-bottom: 12px;">
+                                <span class="method method-get">GET</span>
+                                <code>https://arifosmcp.arif-fazil.com</code>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <span class="method method-post">POST</span>
+                                <code>/mcp</code>
+                                <span style="color: var(--text-muted); font-size: 12px;">— MCP tool calls</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <span class="method method-get">GET</span>
+                                <code>/sse</code>
+                                <span style="color: var(--text-muted); font-size: 12px;">— A2A fallback transport</span>
+                            </div>
+                            <div style="margin-bottom: 12px;">
+                                <span class="method method-get">GET</span>
+                                <code>/health</code>
+                                <span style="color: var(--text-muted); font-size: 12px;">— Live status</span>
+                            </div>
+                            <div>
+                                <span class="method method-get">GET</span>
+                                <code>/metrics/json</code>
+                                <span style="color: var(--text-muted); font-size: 12px;">— Telemetry</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Connect via SDK</h3>
+                        <div class="tab-group">
+                            <button class="tab active" onclick="showTab(this, 'claude')">Claude Desktop</button>
+                            <button class="tab" onclick="showTab(this, 'http')">Direct HTTP</button>
+                        </div>
+                        <pre id="sdk-example"><code>npx @anthropic/mcp install arifos \\
+  --url https://arifosmcp.arif-fazil.com/mcp
+
+# Or add to claude_desktop_config.json:
+{
   "mcpServers": {
-    "arifos": {
-      "command": "npx",
-      "args": ["-y", "@arifos/mcp@latest"],
-      "env": {
-        "ARIFOS_API_URL": "https://arifosmcp.arif-fazil.com"
-      }
+    "arifOS": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
     }
   }
 }</code></pre>
-                            <button onclick="copyToClipboard('claude-config', this)" class="copy-btn absolute top-2 right-2 px-2 py-1 rounded bg-dark-border text-xs">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section class="section" id="capabilities">
+            <div class="container">
+                <h2>Capabilities</h2>
+                <p>arifOS MCP exposes three server-side primitives: tools, prompts, and resources.</p>
+
+                <div class="grid-3" style="margin-top: 32px;">
+                    <div class="card">
+                        <h3 style="color: var(--gold);">🔧 Tools</h3>
+                        <p style="font-size: 14px;">Structured actions returning JSON. Tools are model-controlled and discovered by MCP clients.</p>
+                        <div style="margin-top: 16px;">
+                            <code class="tag">constitutional_judge</code>
+                            <code class="tag">risk_score</code>
+                            <code class="tag">truth_band_check</code>
+                            <code class="tag">hold_gate</code>
+                            <code class="tag">telemetry_emit</code>
+                            <code class="tag">vault_seal</code>
+                        </div>
+                        <a href="#tools-list" style="display: inline-block; margin-top: 16px; font-size: 14px;">View all tools →</a>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: var(--cyan);">📋 Prompts</h3>
+                        <p style="font-size: 14px;">Reusable constitutional workflows. Pre-built reasoning chains under arifOS governance.</p>
+                        <div style="margin-top: 16px;">
+                            <code class="tag">run_111_think</code>
+                            <code class="tag">run_777_reason</code>
+                            <code class="tag">run_888_audit</code>
+                            <code class="tag">forge_verdict</code>
+                        </div>
+                        <a href="#prompts-list" style="display: inline-block; margin-top: 16px; font-size: 14px;">View all prompts →</a>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: var(--text);">📚 Resources</h3>
+                        <p style="font-size: 14px;">Doctrine, rules, schemas, and references. Static data your agent can read at runtime.</p>
+                        <div style="margin-top: 16px;">
+                            <code class="tag">floors/F1-F13</code>
+                            <code class="tag">pipeline/000-999</code>
+                            <code class="tag">telemetry/schema</code>
+                            <code class="tag">governance/policies</code>
+                        </div>
+                        <a href="/.well-known/mcp/server.json" style="display: inline-block; margin-top: 16px; font-size: 14px;">View resources →</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 32px;">
+                    <h3>Live Counts</h3>
+                    <div style="display: flex; gap: 24px; margin-top: 16px;">
+                        <div>
+                            <div style="font-size: 32px; font-weight: 700; color: var(--gold);" id="tools-count">--</div>
+                            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Tools</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 32px; font-weight: 700; color: var(--cyan);" id="prompts-count">--</div>
+                            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Prompts</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 32px; font-weight: 700; color: var(--text);" id="resources-count">--</div>
+                            <div style="font-size: 12px; color: var(--text-muted); text-transform: uppercase;">Resources</div>
                         </div>
                     </div>
-                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Protocols -->
+        <section class="section" id="protocols">
+            <div class="container">
+                <h2>Protocol Surfaces</h2>
+                <p>Three ways to interact with arifOS infrastructure.</p>
+
+                <div style="margin-top: 32px;">
+                    <div class="architecture-diagram">
+                        <div class="arch-box" style="border-color: var(--text-muted);">
+                            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Browser</div>
+                            <div>Web App</div>
+                        </div>
+                        <span class="arch-arrow">→</span>
+                        <div class="arch-box" style="border-color: var(--gold);">
+                            <div style="font-size: 12px; color: var(--gold); margin-bottom: 4px;">MCP</div>
+                            <div>Tool/Prompt/Resource</div>
+                        </div>
+                        <span class="arch-arrow">→</span>
+                        <div class="arch-box" style="border-color: var(--cyan);">
+                            <div style="font-size: 12px; color: var(--cyan); margin-bottom: 4px;">A2A</div>
+                            <div style="color: var(--text-muted);">Planned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid-3" style="margin-top: 32px;">
+                    <div class="card">
+                        <h3>MCP</h3>
+                        <p style="font-size: 14px;">Model Context Protocol. Native tool bridging for Claude Desktop, Cursor, and all MCP-compatible hosts.</p>
+                        <div style="margin-top: 12px;">
+                            <span class="badge badge-gold">Stable</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>WebMCP</h3>
+                        <p style="font-size: 14px;">Browser-native governance via WebSocket. Client-side tool execution with full constitutional enforcement.</p>
+                        <div style="margin-top: 12px;">
+                            <a href="/webmcp/" class="badge badge-cyan">View Console</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>A2A</h3>
+                        <p style="font-size: 14px;">Agent-to-Agent protocol. Tri-witness consensus for multi-agent coordination.</p>
+                        <div style="margin-top: 12px;">
+                            <span class="badge" style="background: var(--bg-tertiary); color: var(--text-muted);">Planned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Governance -->
+        <section class="section" id="governance">
+            <div class="container">
+                <h2>Governance</h2>
+                <p>arifOS MCP is not a generic tool server. Every operation passes through constitutional floors.</p>
+
+                <div class="grid-2" style="margin-top: 32px;">
                     <div>
-                        <h3 class="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">Direct HTTP</h3>
-                        <div class="relative">
-                            <pre class="text-xs overflow-x-auto"><code id="curl-example"># Health check
-curl https://arifosmcp.arif-fazil.com/health
-
-# List tools
-curl https://arifosmcp.arif-fazil.com/tools
-
-# MCP endpoint (SSE)
-curl -N -H "Accept: text/event-stream" \
-  https://arifosmcp.arif-fazil.com/mcp</code></pre>
-                            <button onclick="copyToClipboard('curl-example', this)" class="copy-btn absolute top-2 right-2 px-2 py-1 rounded bg-dark-border text-xs">Copy</button>
+                        <h3>13 Constitutional Floors</h3>
+                        <table style="margin-top: 16px;">
+                            <thead>
+                                <tr>
+                                    <th>Floor</th>
+                                    <th>Name</th>
+                                    <th>Enforcement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>F1</code></td>
+                                    <td>Amanah</td>
+                                    <td>No irreversible action without VAULT999</td>
+                                </tr>
+                                <tr>
+                                    <td><code>F2</code></td>
+                                    <td>Truth</td>
+                                    <td>No ungrounded claims (τ ≥ 0.99)</td>
+                                </tr>
+                                <tr>
+                                    <td><code>F6</code></td>
+                                    <td>Harm/Dignity</td>
+                                    <td>VOID check on task and tools</td>
+                                </tr>
+                                <tr>
+                                    <td><code>F9</code></td>
+                                    <td>Anti-Hantu</td>
+                                    <td>No deception/manipulation</td>
+                                </tr>
+                                <tr>
+                                    <td><code>F13</code></td>
+                                    <td>Sovereign</td>
+                                    <td>Human holds final authority</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="https://arifos.arif-fazil.com" style="display: inline-block; margin-top: 16px; font-size: 14px;">View full floor spec →</a>
+                    </div>
+                    <div>
+                        <h3>Approval Model</h3>
+                        <div class="card" style="margin-top: 16px;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <span style="font-size: 20px;">🔓</span>
+                                <span>Read-only operations</span>
+                            </div>
+                            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Health, capabilities, resource reads — always allowed.</p>
+                            
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <span style="font-size: 20px;">⚠️</span>
+                                <span>Moderate risk</span>
+                            </div>
+                            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Tool invocations logged with full telemetry.</p>
+                            
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                <span style="font-size: 20px;">🔒</span>
+                                <span>High risk / 888 HOLD</span>
+                            </div>
+                            <p style="font-size: 13px; color: var(--text-muted);">Destructive, credential, infra_mutation — require human confirmation.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tools Section -->
-        <section id="tools" class="max-w-6xl mx-auto mb-16">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold flex items-center gap-2">
-                    <span class="text-gold">◈</span> Available Tools
-                    <span id="tools-count" class="text-sm font-normal text-gray-500">(-- tools)</span>
-                </h2>
-                <div class="flex items-center gap-2 text-xs">
-                    <span class="px-2 py-1 rounded bg-gold/10 text-gold border border-gold/20">Production</span>
-                    <span class="px-2 py-1 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Read + Write</span>
-                </div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="tools-grid">
-                <div class="glass-card p-8 col-span-full text-center text-gray-500">
-                    <div class="text-4xl mb-4">⏳</div>
-                    <p>Loading constitutional tools...</p>
+        <!-- Example -->
+        <section class="section" id="example">
+            <div class="container">
+                <h2>Example Request</h2>
+                <p>Every tool call returns a structured response with constitutional metadata.</p>
+
+                <div class="grid-2" style="margin-top: 32px; gap: 32px;">
+                    <div>
+                        <h3>Request</h3>
+                        <pre class="example-json"><code>{
+  <span class="key">"jsonrpc"</span>: <span class="string">"2.0"</span>,
+  <span class="key">"method"</span>: <span class="string">"tools/call"</span>,
+  <span class="key">"params"</span>: {
+    <span class="key">"name"</span>: <span class="string">"constitutional_judge"</span>,
+    <span class="key">"arguments"</span>: {
+      <span class="key">"claim"</span>: <span class="string">"Deploy autonomous action"</span>,
+      <span class="key">"risk_class"</span>: <span class="string">"high"</span>,
+      <span class="key">"reversible"</span>: <span class="number">false</span>
+    }
+  },
+  <span class="key">"id"</span>: <span class="number">1</span>
+}</code></pre>
+                    </div>
+                    <div>
+                        <h3>Response</h3>
+                        <pre class="example-json"><code>{
+  <span class="key">"jsonrpc"</span>: <span class="string">"2.0"</span>,
+  <span class="key">"result"</span>: {
+    <span class="key">"verdict"</span>: <span class="string">"888 HOLD"</span>,
+    <span class="key">"confidence"</span>: <span class="number">0.94</span>,
+    <span class="key">"requires_human_confirmation"</span>: <span class="number">true</span>,
+    <span class="key">"floors_passed"</span>: [<span class="string">"F2"</span>, <span class="string">"F6"</span>, <span class="string">"F9"</span>],
+    <span class="key">"telemetry_id"</span>: <span class="string">"vault_20260411_7x9k"</span>
+  },
+  <span class="key">"id"</span>: <span class="number">1</span>
+}</code></pre>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SDK & Integration -->
-        <section class="max-w-6xl mx-auto mb-16">
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                <span class="text-gold">◈</span> SDK & Integration
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-6">
-                <a href="https://www.npmjs.com/package/@arifos/mcp" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#CB3837]/20 flex items-center justify-center text-[#CB3837] font-bold text-lg">npm</div>
-                        <div>
-                            <div class="font-bold group-hover:text-gold transition-colors">@arifos/mcp</div>
-                            <div class="text-xs text-gray-500">Node.js / TypeScript</div>
+        <!-- Operational Status -->
+        <section class="section" id="status">
+            <div class="container">
+                <h2>Operational Status</h2>
+                <p>Live system metrics from the arifOS MCP endpoint.</p>
+
+                <div class="grid-3" style="margin-top: 32px;">
+                    <div class="card">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <span class="status-dot" id="status-dot"></span>
+                            <span style="font-weight: 600;" id="status-main">Checking...</span>
+                        </div>
+                        <div style="font-size: 14px; color: var(--text-secondary);" id="status-sub">Loading status</div>
+                    </div>
+                    <div class="card">
+                        <h3>Version</h3>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--gold); margin-top: 8px;" id="version">--</div>
+                        <div style="font-size: 13px; color: var(--text-muted);" id="transport">--</div>
+                    </div>
+                    <div class="card">
+                        <h3>Thermodynamic</h3>
+                        <div style="display: flex; gap: 16px; margin-top: 8px;">
+                            <div>
+                                <div style="font-size: 18px; font-weight: 600;" id="vitality">--</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Vitality</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 18px; font-weight: 600;" id="peace">--</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Peace²</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 18px; font-weight: 600;" id="confidence">--</div>
+                                <div style="font-size: 11px; color: var(--text-muted);">Confidence</div>
+                            </div>
                         </div>
                     </div>
-                    <code class="text-xs text-gray-400">npm install @arifos/mcp</code>
-                </a>
-                
-                <a href="https://pypi.org/project/arifos/" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-[#3776AB]/20 flex items-center justify-center text-[#3776AB] font-bold text-lg">Py</div>
-                        <div>
-                            <div class="font-bold group-hover:text-gold transition-colors">arifos</div>
-                            <div class="text-xs text-gray-500">Python</div>
-                        </div>
-                    </div>
-                    <code class="text-xs text-gray-400">pip install arifos</code>
-                </a>
-                
-                <a href="https://github.com/ariffazil/arifOS" target="_blank" class="glass-card rounded-xl p-6 hover:border-gold/50 transition-all group">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center text-white font-bold text-lg">
-                            <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-                        </div>
-                        <div>
-                            <div class="font-bold group-hover:text-gold transition-colors">arifOS</div>
-                            <div class="text-xs text-gray-500">Source Code</div>
-                        </div>
-                    </div>
-                    <code class="text-xs text-gray-400">github.com/ariffazil/arifOS</code>
-                </a>
+                </div>
+
+                <div style="margin-top: 24px;">
+                    <a href="/health" class="btn btn-secondary">View Full Health JSON</a>
+                    <a href="/metrics/json" class="btn btn-secondary">View Telemetry JSON</a>
+                    <a href="/tools" class="btn btn-secondary">View Tools List</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reference -->
+        <section class="section" id="reference">
+            <div class="container">
+                <h2>Reference</h2>
+                <p>Jump to specific documentation sections.</p>
+
+                <div class="grid-3" style="margin-top: 32px;">
+                    <a href="https://arifos.arif-fazil.com" class="card" style="display: block;">
+                        <h3>arifOS Kernel</h3>
+                        <p style="font-size: 14px;">Constitutional governance documentation.</p>
+                    </a>
+                    <a href="https://aaa.arif-fazil.com" class="card" style="display: block;">
+                        <h3>AAA Protocols</h3>
+                        <p style="font-size: 14px;">MCP, WebMCP, A2A specifications.</p>
+                    </a>
+                    <a href="https://github.com/ariffazil/arifOS" class="card" style="display: block;">
+                        <h3>GitHub</h3>
+                        <p style="font-size: 14px;">Source code and issue tracking.</p>
+                    </a>
+                    <a href="/llms.txt" class="card" style="display: block;">
+                        <h3>LLMs.txt</h3>
+                        <p style="font-size: 14px;">Full-text documentation for AI readers.</p>
+                    </a>
+                    <a href="/.well-known/mcp/server.json" class="card" style="display: block;">
+                        <h3>MCP Manifest</h3>
+                        <p style="font-size: 14px;">Complete server capabilities JSON.</p>
+                    </a>
+                    <a href="/webmcp/" class="card" style="display: block;">
+                        <h3>WebMCP Console</h3>
+                        <p style="font-size: 14px;">Browser-native governance interface.</p>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-dark-border">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
-                <div class="flex items-center gap-4">
-                    <a href="https://arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-soul text-soul hover:bg-soul hover:text-white transition-all text-sm">Ψ SOUL</a>
-                    <a href="https://arifos.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-mind text-mind hover:bg-mind hover:text-dark-bg transition-all text-sm">Ω MIND</a>
-                    <a href="https://aaa.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all text-sm">Δ BODY</a>
-                    <a href="https://arifosmcp.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gold text-gold hover:bg-gold hover:text-dark-bg transition-all text-sm">Δ MCP</a>
-                    <a href="https://forge.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gray-600 hover:border-gray-500 transition-all text-sm">◉ FORGE</a>
-                    <a href="https://waw.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gray-600 hover:border-gray-500 transition-all text-sm">◎ WAW</a>
-                    <a href="https://wiki.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-gray-600 hover:border-gray-500 transition-all text-sm">Ω WIKI</a>
-                    <a href="https://geox.arif-fazil.com" class="trinity-ring px-4 py-2 rounded-lg border border-green-600 text-green-500 hover:bg-green-600 hover:text-white transition-all text-sm">Φ GEOX</a>
+    <footer style="border-top: 1px solid var(--border); padding: 48px 0;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+                <div>
+                    <div style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">ΔΩΨ — DITEMPA BUKAN DIBERI</div>
+                    <div style="font-size: 14px; color: var(--text-secondary);">Forged, Not Given — Constitutional AI Gateway</div>
                 </div>
-                <div class="flex items-center gap-4 text-sm text-gray-500">
-                    <a href="/llms.txt" class="hover:text-gold transition-colors">LLMs.txt</a>
-                    <a href="/.well-known/mcp/server.json" class="hover:text-gold transition-colors">MCP Manifest</a>
-                    <a href="https://github.com/ariffazil/arifOS/issues" class="hover:text-gold transition-colors">Issues</a>
+                <div style="display: flex; gap: 16px; font-size: 14px;">
+                    <a href="https://arif-fazil.com" style="color: var(--text-secondary);">Ψ SOUL</a>
+                    <a href="https://arifos.arif-fazil.com" style="color: var(--text-secondary);">Ω MIND</a>
+                    <a href="https://aaa.arif-fazil.com" style="color: var(--text-secondary);">Δ BODY</a>
+                    <a href="https://geox.arif-fazil.com" style="color: var(--text-secondary);">Φ GEOX</a>
                 </div>
             </div>
-            <div class="text-center">
-                <p class="text-lg font-bold gradient-gold mb-2">ΔΩΨ — DITEMPA BUKAN DIBERI</p>
-                <p class="text-sm text-gray-600">Forged, Not Given — Constitutional AI Gateway</p>
-                <p class="text-xs text-gray-700 mt-4">© 2026 ARIF FAZIL — arifOS v2026.04.07-SEAL</p>
+            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted);">
+                © 2026 ARIF FAZIL — arifOS v2026.04.07-SEAL
             </div>
         </div>
     </footer>
 
     <script>
-    const API = 'https://arifosmcp.arif-fazil.com';
-    let refreshInterval;
-    let countdown = 30;
-    
-    async function init() {
-        await fetchHealth();
-        await fetchTools();
-        await fetchCapabilities();
-        startRefreshTimer();
-    }
-    
-    function startRefreshTimer() {
-        refreshInterval = setInterval(() => {
-            countdown--;
-            document.getElementById('refresh-timer').textContent = countdown;
-            if (countdown <= 0) {
-                fetchHealth();
-                countdown = 30;
-            }
-        }, 1000);
-    }
-    
-    async function fetchHealth() {
-        try {
-            const res = await fetch(`${API}/health`);
-            const data = await res.json();
-            
-            // Status indicator
-            const isHealthy = data.status === 'healthy';
-            document.getElementById('status-text').textContent = isHealthy ? 'Operational' : 'Degraded';
-            document.getElementById('status-detail').textContent = isHealthy 
-                ? 'All constitutional floors active' 
-                : 'System experiencing issues';
-            document.getElementById('status-icon').textContent = isHealthy ? '✓' : '⚠';
-            document.getElementById('status-indicator').className = `w-12 h-12 rounded-xl flex items-center justify-center ${isHealthy ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`;
-            
-            // Version & transport
-            document.getElementById('version-text').textContent = data.version || '--';
-            document.getElementById('transport-text').textContent = (data.transport || 'HTTP').toUpperCase();
-            
-            // Metrics
-            document.getElementById('metric-tools').textContent = data.tools_loaded || '--';
-            document.getElementById('metric-providers').textContent = data.capability_map?.providers ? Object.keys(data.capability_map.providers).length : '--';
-            document.getElementById('body-tools').textContent = `${data.tools_loaded || 17} Tools`;
-            
-            // Capability tags
-            const caps = data.capability_map?.capabilities || {};
-            const capTags = Object.entries(caps)
-                .filter(([k, v]) => v === 'enabled' || v === true)
-                .slice(0, 6)
-                .map(([k]) => `<span class="px-3 py-1 rounded-full text-xs bg-gold/10 text-gold border border-gold/20">${k.replace(/_/g, ' ')}</span>`)
-                .join('');
-            document.getElementById('capability-tags').innerHTML = capTags || '<span class="px-3 py-1 rounded-full text-xs bg-gray-800 text-gray-500">No capabilities reported</span>';
-            
-            // Substrates
-            const subs = data.capability_map?.substrates || {};
-            const subList = Object.entries(subs)
-                .filter(([k, v]) => v === 'configured' && !['validation'].includes(k))
-                .map(([k]) => `<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span><span class="text-sm text-gray-300">${k}</span></div>`)
-                .join('');
-            document.getElementById('substrates-list').innerHTML = subList || '<div class="text-gray-500 text-sm">No substrates connected</div>';
-            
-            // Providers
-            const provs = data.capability_map?.providers || {};
-            const provList = Object.entries(provs)
-                .filter(([k, v]) => v === 'configured')
-                .map(([k]) => `<span class="px-2 py-1 rounded bg-dark-card text-xs text-gray-300 border border-dark-border">${k}</span>`)
-                .join('');
-            document.getElementById('providers-list').innerHTML = provList || '<span class="text-gray-500 text-sm">No providers</span>';
-            
-        } catch (e) {
-            document.getElementById('status-text').textContent = 'Offline';
-            document.getElementById('status-detail').textContent = 'Cannot reach MCP server';
-            document.getElementById('status-icon').textContent = '✕';
-            document.getElementById('status-indicator').className = 'w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center text-red-500';
-        }
-    }
-    
-    async function fetchTools() {
-        try {
-            const res = await fetch(`${API}/tools`);
-            const data = await res.json();
-            const tools = data.tools || [];
-            document.getElementById('tools-count').textContent = `(${tools.length} tools)`;
-            
-            const grid = document.getElementById('tools-grid');
-            if (tools.length === 0) {
-                grid.innerHTML = '<div class="glass-card p-4 col-span-full text-center text-gray-500">No tools found</div>';
-                return;
-            }
-            
-            grid.innerHTML = tools.map(tool => {
-                const params = tool.parameters?.properties ? Object.keys(tool.parameters.properties) : [];
-                const stage = tool.annotations?.stage || tool.stage || '';
-                const riskLevel = tool.annotations?.readOnlyHint ? 'read-only' : 'guarded';
-                const riskColor = tool.annotations?.readOnlyHint ? 'text-green-400' : 'text-yellow-400';
+        const API = 'https://arifosmcp.arif-fazil.com';
+        
+        async function fetchHealth() {
+            try {
+                const res = await fetch(`${API}/health`);
+                const data = await res.json();
                 
-                return `
-                <div class="glass-card p-4 hover:border-gold/30 transition-all group">
-                    <div class="flex items-center justify-between mb-2">
-                        <code class="text-sm font-bold text-gold group-hover:text-gold-light transition-colors">${tool.name}</code>
-                        <span class="method-badge method-post">POST</span>
-                    </div>
-                    <p class="text-xs text-gray-400 mb-3 line-clamp-2">${tool.description || 'No description'}</p>
-                    <div class="flex items-center justify-between text-xs">
-                        ${params.length > 0 ? `<span class="text-gray-500">Params: ${params.slice(0, 3).join(', ')}${params.length > 3 ? '...' : ''}</span>` : '<span class="text-gray-600">No params</span>'}
-                        ${stage ? `<span class="text-blue-400">${stage}</span>` : ''}
-                    </div>
-                    ${tool.annotations ? `
-                    <div class="mt-2 flex items-center gap-2 text-xs">
-                        ${tool.annotations.readOnlyHint ? '<span class="text-green-400">● read-only</span>' : ''}
-                        ${tool.annotations.destructiveHint ? '<span class="text-red-400">● destructive</span>' : ''}
-                    </div>` : ''}
-                </div>
-                `;
-            }).join('');
-        } catch (e) {
-            document.getElementById('tools-grid').innerHTML = '<div class="glass-card p-4 col-span-full text-center text-red-400">Failed to load tools</div>';
-        }
-    }
-    
-    async function fetchCapabilities() {
-        // Already handled in fetchHealth
-    }
-    
-    async function testConnection() {
-        const btn = document.getElementById('test-btn-text');
-        const icon = document.getElementById('test-btn-icon');
-        const result = document.getElementById('connection-result');
-        
-        btn.textContent = 'Testing...';
-        icon.textContent = '⏳';
-        
-        try {
-            const start = performance.now();
-            const res = await fetch(`${API}/health`);
-            const latency = Math.round(performance.now() - start);
-            const data = await res.json();
-            
-            result.classList.remove('hidden');
-            result.innerHTML = `
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
-                    <span class="font-semibold text-green-400">Connection Successful</span>
-                </div>
-                <div class="text-sm text-gray-400 space-y-1">
-                    <div>Latency: ${latency}ms</div>
-                    <div>Version: ${data.version}</div>
-                    <div>Tools: ${data.tools_loaded}</div>
-                    <div>Transport: ${data.transport}</div>
-                </div>
-            `;
-            
-            btn.textContent = 'Test Connection';
-            icon.textContent = '✓';
-            setTimeout(() => { btn.textContent = 'Test Connection'; icon.textContent = '⚡'; }, 2000);
-        } catch (e) {
-            result.classList.remove('hidden');
-            result.innerHTML = `
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                    <span class="font-semibold text-red-400">Connection Failed</span>
-                </div>
-                <div class="text-sm text-gray-400">${e.message}</div>
-            `;
-            btn.textContent = 'Retry';
-            icon.textContent = '↻';
-        }
-    }
-    
-    function copyToClipboard(elementId, btn) {
-        const text = document.getElementById(elementId).textContent;
-        navigator.clipboard.writeText(text).then(() => {
-            btn.textContent = '✓ Copied';
-            btn.classList.add('copied');
-            setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-        });
-    }
-    
-    function copyMCPConfig() {
-        const config = JSON.stringify({
-            mcpServers: {
-                arifos: {
-                    command: "npx",
-                    args: ["-y", "@arifos/mcp@latest"],
-                    env: {
-                        ARIFOS_API_URL: "https://arifosmcp.arif-fazil.com"
-                    }
+                // Status
+                const isHealthy = data.status === 'healthy';
+                document.getElementById('status-dot').className = 'status-dot' + (isHealthy ? '' : ' degraded');
+                document.getElementById('status-main').textContent = isHealthy ? 'Operational' : 'Degraded';
+                document.getElementById('status-sub').textContent = isHealthy 
+                    ? 'All constitutional floors active' 
+                    : 'System experiencing issues';
+                document.getElementById('header-status-text').textContent = isHealthy ? 'Live' : 'Degraded';
+                
+                // Version
+                document.getElementById('version').textContent = data.version || '--';
+                document.getElementById('transport').textContent = (data.transport || 'HTTP').toUpperCase();
+                
+                // Thermodynamic
+                if (data.thermodynamic) {
+                    document.getElementById('vitality').textContent = (data.thermodynamic.vitality_index || 0).toFixed(2);
+                    document.getElementById('peace').textContent = (data.thermodynamic.peace_squared || 0).toFixed(2);
+                    document.getElementById('confidence').textContent = (data.thermodynamic.confidence || 0).toFixed(2);
                 }
+                
+                // Counts
+                document.getElementById('tools-count').textContent = data.tools_loaded || '--';
+                
+            } catch (e) {
+                document.getElementById('status-dot').className = 'status-dot down';
+                document.getElementById('status-main').textContent = 'Unreachable';
+                document.getElementById('status-sub').textContent = 'Cannot reach ' + API;
+                document.getElementById('header-status-text').textContent = 'Down';
             }
-        }, null, 2);
-        navigator.clipboard.writeText(config).then(() => {
-            const btn = event.target.closest('button');
-            btn.innerHTML = '<span>✓</span> Copied';
-            btn.classList.add('copied');
-            setTimeout(() => { btn.innerHTML = '<span>📋</span> Copy Config'; btn.classList.remove('copied'); }, 2000);
-        });
+        }
+
+        async function fetchCapabilities() {
+            try {
+                const res = await fetch(`${API}/.well-known/mcp/server.json`);
+                const data = await res.json();
+                
+                document.getElementById('prompts-count').textContent = data.prompts?.length || '--';
+                document.getElementById('resources-count').textContent = data.resources?.length || '--';
+            } catch (e) {
+                // Silent fail
+            }
+        }
+
+        function showTab(btn, id) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const examples = {
+                claude: `<code>npx @anthropic/mcp install arifos \\
+  --url https://arifosmcp.arif-fazil.com/mcp
+
+# Or add to claude_desktop_config.json:
+{
+  "mcpServers": {
+    "arifOS": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
     }
-    
-    init();
+  }
+}`,
+                http: `<code>curl -X POST https://arifosmcp.arif-fazil.com/mcp \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "tools/call",
+    "params": {
+      "name": "health_check",
+      "arguments": {}
+    },
+    "id": 1
+  }'`
+            };
+            
+            document.getElementById('sdk-example').innerHTML = examples[id];
+        }
+
+        // Init
+        fetchHealth();
+        fetchCapabilities();
+        setInterval(fetchHealth, 30000);
     </script>
 </body>
 </html>

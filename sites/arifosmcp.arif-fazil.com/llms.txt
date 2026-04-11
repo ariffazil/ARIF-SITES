@@ -1,0 +1,91 @@
+# arifOS MCP — Constitutional AI Gateway
+
+## Overview
+
+arifOS MCP is a production-ready constitutional AI governance endpoint. It provides tools, prompts, and resources for reality-aligned AI systems.
+
+**Endpoint:** https://arifosmcp.arif-fazil.com/mcp
+**Health:** https://arifosmcp.arif-fazil.com/health
+**SSE (A2A fallback):** https://arifosmcp.arif-fazil.com/sse
+
+## 17 Tools
+
+- constitutional_judge — Evaluate claims against constitutional floors
+- risk_score — Calculate risk score for actions
+- truth_band_check — Verify truthfulness thresholds
+- hold_gate — Check if action requires 888_HOLD approval
+- telemetry_emit — Emit telemetry event to vault
+- vault_seal — Create immutable seal record
+- health_check — Check system health status
+- read_file — Read file from filesystem
+- write_file — Write file to filesystem
+- list_files — List directory contents
+- grep_text — Search text in files
+- run_command — Execute shell command
+- run_tests — Run test suite
+- mcp__invoke — Invoke MCP tool
+- mcp__list — List available MCP tools
+
+## 4 Prompts
+
+- arifos.prompt.aaa_chain — AAA reasoning chain
+- arifos.prompt.mcp_transport_bootstrap — MCP transport setup
+- arifos.prompt.tool_routing_policy — Tool routing decisions
+- arifos.prompt.chatgpt_connector_bootstrap — ChatGPT integration
+
+## 6 Resources
+
+- arifos://aaa/schemas — JSON schemas
+- arifos://aaa/full-context-pack — Full context
+- arifos://aaa/mcp-transport-profile — Transport config
+- arifos://aaa/tool-operating-manual — Tool documentation
+- arifos://aaa/governance-gate-profile — Governance policies
+- ui://apex/dashboard-v2.html — Dashboard UI
+
+## Constitutional Governance
+
+arifOS MCP enforces 13 constitutional floors:
+
+- F1 AMANAH — No irreversible action without VAULT999 seal
+- F2 TRUTH — No ungrounded claims (τ ≥ 0.99)
+- F3 INPUT CLARITY — Clear task definition required
+- F4 ENTROPY — Risk accumulation tracking
+- F6 HARM/DIGNITY — No harm to humans/dignity
+- F7 CONFIDENCE — Humility in uncertainty
+- F8 GROUNDING — Evidence-based reasoning
+- F9 ANTI-HANTU — No deception/manipulation
+- F11 COHERENCE — Internal consistency
+- F13 SOVEREIGN — Human holds final authority
+
+## Thermodynamic Metrics
+
+- vitality_index — System vitality (0-1)
+- peace_squared — Stability measure (≥1.0 is stable)
+- entropy_delta — Risk accumulation (-0.02 is healthy)
+- confidence — Decision confidence (0.88)
+- witness — { human: 0.42, ai: 0.32, earth: 0.26 }
+
+## Connection
+
+```bash
+# Claude Desktop
+npx @anthropic/mcp install arifos \
+  --url https://arifosmcp.arif-fazil.com/mcp
+
+# Direct HTTP
+curl -X POST https://arifosmcp.arif-fazil.com/mcp \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
+```
+
+## Related Sites
+
+- arif-fazil.com — Ψ SOUL (Human Anchor)
+- arifos.arif-fazil.com — Ω MIND (Constitutional Kernel)
+- aaa.arif-fazil.com — Δ BODY (Protocol Specs)
+- geox.arif-fazil.com — Φ GEOX (Earth Witness)
+
+---
+
+DITEMPA BUKAN DIBERI — Forged, Not Given
+© 2026 ARIF FAZIL — arifOS v2026.04.07-SEAL
