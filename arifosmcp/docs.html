@@ -1,376 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="arifOS Documentation - Constitutional AI Governance System with 13 Floors and Trinity Architecture">
-    <title>Documentation | arifOS MCP Server</title>
-    <style>
-        :root {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-tertiary: #21262d;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --accent-delta: #58a6ff;
-            --accent-omega: #f85149;
-            --accent-psi: #ffd700;
-            --accent-success: #238636;
-            --border: #30363d;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid var(--border);
-            margin-bottom: 2rem;
-        }
-        
-        h1 {
-            color: var(--accent-psi);
-            margin-bottom: 0.5rem;
-        }
-        
-        .version {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-        
-        nav a {
-            color: var(--accent-delta);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-        }
-        
-        nav a:hover {
-            background: var(--bg-tertiary);
-        }
-        
-        .section {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        h2 {
-            color: var(--accent-psi);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        h3 {
-            color: var(--accent-delta);
-            margin: 1.5rem 0 0.5rem;
-        }
-        
-        p { margin-bottom: 1rem; }
-        
-        ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        li { margin-bottom: 0.5rem; }
-        
-        code {
-            background: var(--bg-primary);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.9rem;
-        }
-        
-        pre {
-            background: var(--bg-primary);
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            border: 1px solid var(--border);
-        }
-        
-        .note {
-            background: var(--bg-tertiary);
-            border-left: 4px solid var(--accent-delta);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        .warning {
-            background: var(--bg-tertiary);
-            border-left: 4px solid var(--accent-omega);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        th {
-            background: var(--bg-tertiary);
-            color: var(--accent-psi);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            margin-top: 2rem;
-            color: var(--text-secondary);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation | arifOS MCP</title>
+  <meta
+    name="description"
+    content="Installation, local development, configuration, tool map, and endpoint reference for arifOS MCP."
+  />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='50%25' y='56%25' font-size='30' text-anchor='middle' fill='%23eab308' font-family='monospace'%3E%CE%94%CE%A9%CE%A8%3C/text%3E%3C/svg%3E"
+  />
+  <link rel="stylesheet" href="./trinity-geometric.css" />
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 arifOS Documentation</h1>
-            <p class="version">Version 2026.03.14-VALIDATED</p>
-        </header>
-
-        <nav>
-            <a href="/">← Home</a>
-            <a href="#quickstart">Quick Start</a>
-            <a href="#tools">Tools</a>
-            <a href="#floors">Floors</a>
-            <a href="#mcp">MCP Setup</a>
-            <a href="#api">API</a>
-        </nav>
-
-        <div class="section" id="overview">
-            <h2>Overview</h2>
-            <p>arifOS is the world's first production-grade <strong>Constitutional AI Governance System</strong>. It wraps every AI operation in a mathematically enforced constitution, guaranteeing that what arrives at the real world is <strong>ordered, verified, and reversible</strong>.</p>
-            
-            <p>Unlike simple prompt wrappers, arifOS is a <strong>governed intelligence organism</strong> with:</p>
-            <ul>
-                <li><strong>13 Constitutional Floors (F1-F13)</strong> — Non-negotiable physical laws</li>
-                <li><strong>Trinity Architecture (ΔΩΨ)</strong> — Separation of Mind, Heart, and Soul</li>
-                <li><strong>25 Canonical Tools</strong> — Distributed across 5 sovereign layers</li>
-                <li><strong>VAULT999 Ledger</strong> — Immutable cryptographic audit trail</li>
-            </ul>
-        </div>
-
-        <div class="section" id="quickstart">
-            <h2>🚀 Quick Start</h2>
-            
-            <h3>Installation</h3>
-            <pre><code># Python (recommended)
-pip install arifosmcp==2026.3.14
-
-# Node.js wrapper
-npm install -g @arifos/mcp</code></pre>
-
-            <h3>Basic Usage</h3>
-            <pre><code># Run MCP server
-python -m arifosmcp.runtime stdio
-
-# Or HTTP mode
-python -m arifosmcp.runtime http --port 8080</code></pre>
-
-            <div class="note">
-                <strong>Note:</strong> arifOS requires Python 3.12+ for full async/await support and type safety.
-            </div>
-        </div>
-
-        <div class="section" id="tools">
-            <h2>🛠️ Tool Reference</h2>
-            
-            <h3>KERNEL Layer</h3>
-            <table>
-                <tr><th>Tool</th><th>Stage</th><th>Description</th></tr>
-                <tr><td><code>init_anchor</code></td><td>000_INIT</td><td>Initialize session jurisdiction</td></tr>
-                <tr><td><code>arifOS_kernel</code></td><td>444_ROUTER</td><td>Main entry point—routes ΔΩΨ</td></tr>
-                <tr><td><code>forge</code></td><td>000_999</td><td>Full pipeline—INIT→SEAL</td></tr>
-                <tr><td><code>revoke_anchor_state</code></td><td>000_INIT</td><td>Kill switch session</td></tr>
-            </table>
-
-            <h3>AGI Δ MIND Layer</h3>
-            <table>
-                <tr><th>Tool</th><th>Stage</th><th>Description</th></tr>
-                <tr><td><code>agi_reason</code></td><td>111_SENSE</td><td>Governed reasoning (F2/F4/F7)</td></tr>
-                <tr><td><code>agi_reflect</code></td><td>333_INTEGRATE</td><td>Metacognitive check</td></tr>
-                <tr><td><code>reality_compass</code></td><td>222_GROUND</td><td>Ground claims before reasoning</td></tr>
-                <tr><td><code>search_reality</code></td><td>222_GROUND</td><td>Live web search</td></tr>
-                <tr><td><code>ingest_evidence</code></td><td>222_GROUND</td><td>URL→normalized evidence</td></tr>
-            </table>
-
-            <h3>ASI Ω HEART Layer</h3>
-            <table>
-                <tr><th>Tool</th><th>Stage</th><th>Description</th></tr>
-                <tr><td><code>asi_critique</code></td><td>555_ALIGN</td><td>Adversarial safety check</td></tr>
-                <tr><td><code>asi_simulate</code></td><td>555_ALIGN</td><td>Consequence simulation</td></tr>
-                <tr><td><code>agentzero_engineer</code></td><td>666_EXECUTE</td><td>Code execution (F11 gate)</td></tr>
-            </table>
-
-            <h3>APEX Ψ SOUL Layer</h3>
-            <table>
-                <tr><th>Tool</th><th>Stage</th><th>Description</th></tr>
-                <tr><td><code>apex_judge</code></td><td>777_JUDGE</td><td>Tri-witness verdict</td></tr>
-                <tr><td><code>audit_rules</code></td><td>888_FLOOR</td><td>F1-F13 inspection</td></tr>
-                <tr><td><code>check_vital</code></td><td>888_VITALS</td><td>System telemetry</td></tr>
-                <tr><td><code>open_apex_dashboard</code></td><td>888_OBSERVE</td><td>Live governance UI</td></tr>
-            </table>
-        </div>
-
-        <div class="section" id="floors">
-            <h2>⚖️ Constitutional Floors</h2>
-            
-            <p>The 13 Floors are <strong>stationary constraints</strong>—they cannot be bypassed by any agent or system prompt.</p>
-
-            <h3>Hard Floors (Non-Negotiable)</h3>
-            <ul>
-                <li><strong>F1 Amanah</strong> (≥0.5) — Reversibility mandate</li>
-                <li><strong>F2 Truth</strong> (≥0.99) — Anti-hallucination</li>
-                <li><strong>F4 Clarity</strong> (≤0) — Entropy reduction</li>
-                <li><strong>F7 Humility</strong> (0.03-0.20) — Gödel uncertainty band</li>
-                <li><strong>F9 C_dark</strong> (<0.30) — Anti-Hantu limit</li>
-                <li><strong>F10 Ontology</strong> (LOCK) — No consciousness claims</li>
-                <li><strong>F11 Command Auth</strong> (LOCK) — Identity verification</li>
-            </ul>
-
-            <h3>Soft Floors (Advisory)</h3>
-            <ul>
-                <li><strong>F5 Peace²</strong> (≥1.0) — Stability</li>
-                <li><strong>F6 Empathy</strong> (≥0.70) — Weakest stakeholder</li>
-                <li><strong>F8 Genius</strong> (≥0.80) — Coherence</li>
-            </ul>
-
-            <h3>Special Floors</h3>
-            <ul>
-                <li><strong>F3 Tri-Witness</strong> (≥0.95) — Human·AI·Earth consensus</li>
-                <li><strong>F12 Injection</strong> (<0.85) — Adversarial defense</li>
-                <li><strong>F13 Sovereign</strong> (HUMAN) — Final human veto</li>
-            </ul>
-        </div>
-
-        <div class="section" id="mcp">
-            <h2>🔌 MCP Client Setup</h2>
-            
-            <h3>Claude Desktop</h3>
-            <p>Edit <code>claude_desktop_config.json</code>:</p>
-            <pre><code>{
-  "mcpServers": {
-    "arifos": {
-      "command": "npx",
-      "args": ["-y", "@arifos/mcp"]
-    }
-  }
-}</code></pre>
-
-            <h3>Kimi / Other Clients</h3>
-            <pre><code>{
-  "mcpServers": {
-    "arifos": {
-      "command": "python",
-      "args": ["-m", "arifosmcp.runtime", "stdio"]
-    }
-  }
-}</code></pre>
-
-            <h3>Environment Variables</h3>
-            <table>
-                <tr><th>Variable</th><th>Description</th><th>Default</th></tr>
-                <tr><td><code>ARIFOS_ENV</code></td><td>Runtime environment</td><td>production</td></tr>
-                <tr><td><code>ARIFOS_PUBLIC_TOOL_PROFILE</code></td><td>Tool visibility</td><td>full</td></tr>
-                <tr><td><code>PORT</code></td><td>HTTP server port</td><td>8080</td></tr>
-            </table>
-        </div>
-
-        <div class="section" id="api">
-            <h2>📡 API Reference</h2>
-            
-            <h3>Health Check</h3>
-            <pre><code>GET /health
-
-Response:
-{
-  "status": "healthy",
-  "version": "2026.03.14-VALIDATED",
-  "tools_loaded": 25,
-  "timestamp": "2026-03-14T10:00:00Z"
-}</code></pre>
-
-            <h3>List Tools</h3>
-            <pre><code>GET /tools
-
-Returns JSON array of all 25 tools with JSONSchema parameters.</code></pre>
-
-            <h3>MCP Protocol</h3>
-            <pre><code>POST /mcp
-Content-Type: application/json
-
-{
-  "jsonrpc": "2.0",
-  "method": "tools/call",
-  "params": {
-    "name": "arifOS_kernel",
-    "arguments": {
-      "query": "Your query here"
-    }
-  }
-}</code></pre>
-        </div>
-
-        <div class="section">
-            <h2>🎯 Best Practices</h2>
-            <ol>
-                <li><strong>Always start with <code>init_anchor</code></strong> — Establishes session jurisdiction</li>
-                <li><strong>Use <code>forge</code> for one-shot tasks</strong> — Runs full 000-999 pipeline</li>
-                <li><strong>Ground claims with <code>reality_compass</code></strong> — Before reasoning</li>
-                <li><strong>Respect 888_HOLD</strong> — Human escalation is a feature, not a bug</li>
-                <li><strong>Check vitals regularly</strong> — Monitor ΔS, G★, Peace²</li>
-            </ol>
-
-            <div class="warning">
-                <strong>Warning:</strong> Never bypass the constitutional floors. VOID verdicts indicate constitutional collapse—debug the issue rather than forcing execution.
-            </div>
-        </div>
-
-        <footer>
-            <p>For more information, visit <a href="https://github.com/ariffazil/arifosmcp" style="color: var(--accent-delta);">GitHub</a></p>
-            <p style="margin-top: 1rem; font-style: italic;">Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]</p>
-        </footer>
+  <nav class="site-nav">
+    <a class="nav-brand" href="./">arifOS MCP</a>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="./llms.txt">llms.txt</a>
+      <a href="./humans.txt">humans.txt</a>
+      <a href="https://arifos.arif-fazil.com">Kernel</a>
+      <a href="https://github.com/ariffazil/arifOS">GitHub</a>
     </div>
+  </nav>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar panel">
+      <div class="eyebrow">Documentation map</div>
+      <a href="#connect">Connect</a>
+      <a href="#local-dev">Local development</a>
+      <a href="#tool-map">Tool map</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#floors">Floors</a>
+      <a href="#endpoints">Endpoints</a>
+    </aside>
+
+    <main class="docs-main">
+      <section class="panel docs-header">
+        <div class="eyebrow">Documentation</div>
+        <h1>One page to orient a human or an agent quickly.</h1>
+        <p class="lede">
+          This surface is intentionally terse. It covers how to connect, what the runtime
+          exposes, and what constraints govern every tool call.
+        </p>
+      </section>
+
+      <section class="panel" id="connect">
+        <div class="section-label">01 · Connect</div>
+        <h2 class="section-title">Use the live endpoint first; use local stdio for development.</h2>
+        <p>Remote MCP endpoint:</p>
+        <pre><code>https://arifosmcp.arif-fazil.com/mcp</code></pre>
+        <p>Minimal MCP client config:</p>
+        <pre><code>{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
+    }
+  }
+}</code></pre>
+      </section>
+
+      <section class="panel" id="local-dev">
+        <div class="section-label">02 · Local development</div>
+        <h2 class="section-title">The repo is the canonical source of truth.</h2>
+        <pre><code>git clone https://github.com/ariffazil/arifOS
+cd arifOS
+pip install -e ".[dev]"
+
+# HTTP / SSE
+python server.py
+
+# STDIO for local MCP clients
+python ops/runtime/stdio_server.py</code></pre>
+        <p>
+          `server.py` is the public entrypoint. `ops/runtime/stdio_server.py` is the minimal
+          local stdio path used by assistant tooling.
+        </p>
+      </section>
+
+      <section class="panel" id="tool-map">
+        <div class="section-label">03 · Tool map</div>
+        <h2 class="section-title">11 canonical tools across 3 Trinity lanes.</h2>
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Lane</th>
+              <th>Tool</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ψ</td><td><code>arifos.init</code></td><td>Session bootstrap and identity anchor</td></tr>
+            <tr><td>Δ</td><td><code>arifos.sense</code></td><td>Reality grounding and evidence acquisition</td></tr>
+            <tr><td>Δ</td><td><code>arifos.mind</code></td><td>Structured reasoning</td></tr>
+            <tr><td>Δ</td><td><code>arifos.route</code></td><td>Metabolic routing</td></tr>
+            <tr><td>Ω</td><td><code>arifos.memory</code></td><td>World-model continuity</td></tr>
+            <tr><td>Ω</td><td><code>arifos.heart</code></td><td>Ethical critique and consequence pressure</td></tr>
+            <tr><td>Δ</td><td><code>arifos.ops</code></td><td>Operational metrics and cost framing</td></tr>
+            <tr><td>Ψ</td><td><code>arifos.judge</code></td><td>Constitutional verdict</td></tr>
+            <tr><td>Ψ</td><td><code>arifos.vault</code></td><td>Immutable ledger commit</td></tr>
+            <tr><td>Δ</td><td><code>arifos.forge</code></td><td>Execution bridge after approval</td></tr>
+            <tr><td>Δ</td><td><code>arifos.vps_monitor</code></td><td>Read-only operational telemetry</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel" id="pipeline">
+        <div class="section-label">04 · Pipeline</div>
+        <h2 class="section-title">The cognitive order stays explicit.</h2>
+        <pre><code>000 INIT
+111 SENSE
+333 MIND
+666 HEART
+444 ROUTE
+888 JUDGE
+999 VAULT</code></pre>
+        <p>
+          The runtime may expose forge as an execution bridge, but irreversible action is still
+          subordinate to judgment and floor compliance.
+        </p>
+      </section>
+
+      <section class="panel" id="floors">
+        <div class="section-label">05 · Floors</div>
+        <h2 class="section-title">13 constitutional floors, not 9.</h2>
+        <div class="floors-grid docs-floors">
+          <article class="floor-card delta"><strong>F1</strong><span>Amanah</span></article>
+          <article class="floor-card delta"><strong>F2</strong><span>Truth</span></article>
+          <article class="floor-card delta"><strong>F3</strong><span>Witness</span></article>
+          <article class="floor-card delta"><strong>F4</strong><span>Clarity</span></article>
+          <article class="floor-card omega"><strong>F5</strong><span>Peace²</span></article>
+          <article class="floor-card omega"><strong>F6</strong><span>Empathy</span></article>
+          <article class="floor-card omega"><strong>F7</strong><span>Humility</span></article>
+          <article class="floor-card omega"><strong>F8</strong><span>Grounding</span></article>
+          <article class="floor-card psi"><strong>F9</strong><span>Anti-Hantu</span></article>
+          <article class="floor-card psi"><strong>F10</strong><span>Ontology</span></article>
+          <article class="floor-card psi"><strong>F11</strong><span>Authority</span></article>
+          <article class="floor-card psi"><strong>F12</strong><span>Defense</span></article>
+          <article class="floor-card psi"><strong>F13</strong><span>Sovereign</span></article>
+        </div>
+      </section>
+
+      <section class="panel" id="endpoints">
+        <div class="section-label">06 · Endpoints</div>
+        <h2 class="section-title">Keep the public surface explicit.</h2>
+        <table class="docs-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Path</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>GET</td><td><code>/health</code></td><td>Runtime and thermodynamic health</td></tr>
+            <tr><td>GET</td><td><code>/tools</code></td><td>Tool registry snapshot</td></tr>
+            <tr><td>GET</td><td><code>/version</code></td><td>Version provenance</td></tr>
+            <tr><td>GET</td><td><code>/llms.txt</code></td><td>LLM-readable system summary</td></tr>
+            <tr><td>GET</td><td><code>/humans.txt</code></td><td>Human sovereign and project context</td></tr>
+            <tr><td>POST</td><td><code>/mcp</code></td><td>MCP protocol endpoint</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>DITEMPA BUKAN DIBERI · 11 tools · 13 floors · ΔΩΨ</p>
+  </footer>
 </body>
 </html>
