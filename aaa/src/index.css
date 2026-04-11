@@ -1,270 +1,144 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
-
-@layer base {
-  :root {
-    /* Dark mode first - Cinematic night-drive palette */
-    --background: 220 18% 4%;
-    --foreground: 210 20% 96%;
-    --card: 220 18% 6%;
-    --card-foreground: 210 20% 96%;
-    --popover: 220 18% 6%;
-    --popover-foreground: 210 20% 96%;
-    --primary: 210 20% 96%;
-    --primary-foreground: 220 18% 4%;
-    --secondary: 220 12% 12%;
-    --secondary-foreground: 210 20% 96%;
-    --muted: 220 12% 16%;
-    --muted-foreground: 210 10% 68%;
-    --accent: 17 100% 62%;
-    --accent-foreground: 210 20% 96%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 96%;
-    --border: 220 12% 18%;
-    --input: 220 12% 18%;
-    --ring: 17 100% 62%;
-    --radius: 0px;
-    
-    /* Custom colors */
-    --bg-primary: #07080A;
-    --bg-secondary: #6B4C42;
-    --accent-orange: #FF6A3D;
-    --text-primary: #F4F6F8;
-    --text-secondary: #A9B1B6;
-    --rule-white: rgba(244, 246, 248, 0.35);
-    --rule-accent: rgba(255, 106, 61, 0.85);
-  }
+:root {
+  --bg-primary: #020617; /* Deep Space Blue */
+  --bg-secondary: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-cobalt: #2563eb;
+  --accent-cyan: #06b6d4;
+  --border: #1e293b;
+  --font-mono: 'Fira Code', 'JetBrains Mono', monospace;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  ::selection {
-    background-color: var(--accent-orange);
-    color: var(--bg-primary);
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Typography */
-.font-display {
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-.font-mono {
-  font-family: 'IBM Plex Mono', monospace;
-}
-
-/* Headline sizes */
-.headline-1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(44px, 6vw, 96px);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-}
-
-.headline-2 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(34px, 4.2vw, 72px);
-  font-weight: 600;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
-}
-
-/* Label style */
-.label-mono {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Body text */
-.body-text {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-mono); /* Force mono for the BODY ring */
   line-height: 1.6;
-  color: var(--text-secondary);
+  overflow-x: hidden;
 }
 
-/* Grain overlay */
-.grain-overlay {
+.execution-glow {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.04;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+  animation: scanning 4s linear infinite;
+  z-index: 1000;
 }
 
-/* Section base */
-.section-pinned {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  will-change: transform;
+@keyframes scanning {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
 }
 
-/* Background image */
-.bg-image {
-  position: absolute;
-  inset: 0;
+.container {
+  max-width: 1100px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-/* Hairline rules */
-.rule-vertical {
-  width: 1px;
-  background-color: var(--rule-white);
+header {
+  border-left: 4px solid var(--accent-cobalt);
+  padding-left: 2rem;
+  margin-bottom: 4rem;
 }
 
-.rule-vertical-accent {
-  width: 2px;
-  background-color: var(--rule-accent);
-}
-
-/* Link hover effect */
-.link-hover {
-  position: relative;
-  display: inline-block;
-}
-
-.link-hover::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-
-.link-hover:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* CTA button */
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--accent-orange);
-  transition: gap 0.3s ease;
-}
-
-.cta-button:hover {
-  gap: 12px;
-}
-
-/* Menu overlay */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: var(--bg-primary);
-  z-index: 100;
+.status-line {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
 }
 
-.menu-link {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(32px, 5vw, 64px);
-  font-weight: 600;
-  color: var(--text-primary);
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-cyan);
 }
 
-.menu-link:hover {
-  opacity: 1;
+h1 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-/* Scroll hint */
-.scroll-hint {
-  animation: bounce 2s infinite;
+.terminal-block {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-8px);
-  }
-  60% {
-    transform: translateY(-4px);
-  }
-}
-
-/* Earth tone overlay for closing section */
-.earth-overlay {
+.terminal-header {
   position: absolute;
-  inset: 0;
-  background-color: rgba(107, 76, 66, 0.55);
-  pointer-events: none;
+  top: 0;
+  right: 0;
+  padding: 0.25rem 0.75rem;
+  background: var(--border);
+  font-size: 0.6rem;
+  color: var(--text-secondary);
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+.tool-card {
+  border: 1px solid var(--border);
+  padding: 1rem;
+  transition: all 0.2s;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+.tool-card:hover {
+  border-color: var(--accent-cyan);
+  background: #1e293b;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--text-secondary);
-  border-radius: 3px;
+.tool-name {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-primary);
+footer {
+  margin-top: 6rem;
+  padding: 2rem 0;
+  border-top: 1px dashed var(--border);
+  text-align: left;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.ring-nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ring-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.ring-nav a:hover {
+  color: var(--accent-cyan);
+  border-bottom-color: var(--accent-cyan);
 }
