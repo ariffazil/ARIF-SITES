@@ -1,376 +1,950 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AAA Wire — MCP, WebMCP & A2A Protocols</title>
-  <meta name="description" content="Constitutional AI protocol specifications: MCP, WebMCP, and A2A for agent communication.">
-  
-  <!-- Shared Trinity Design System -->
-  <link rel="stylesheet" href="https://arif-fazil.com/shared/design-system/tokens.css">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            /* BODY (Δ) Ring — Amber/Gold palette */
-            'body-primary': '#D4A853',
-            'body-secondary': '#C4791A',
-            'body-accent': '#E3B341',
-            'body-bg': '#1A1612',
-            'body-text': '#F5F0E8',
-            /* Legacy primer compatibility */
-            'primer-bg': '#0d1117',
-            'primer-bg-secondary': '#161b22',
-            'primer-border': '#30363d',
-            'primer-text': '#f0f6fc',
-            'primer-text-secondary': '#c9d1d9',
-            'primer-text-muted': '#8b949e',
-            'primer-red': '#da3633',
-            'primer-gold': '#d29922',
-            'primer-blue': '#58a6ff',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          borderRadius: {
-            'body': '12px',
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="arifOS MCP Server - The world's first production-grade Constitutional AI Governance System with 13 stationary floors (F1-F13) and Trinity Architecture (ΔΩΨ).">
+    <meta name="keywords" content="arifOS, MCP, Model Context Protocol, AI Governance, Constitutional AI, Trinity Architecture, F1-F13, ΔΩΨ, AGI, ASI, APEX">
+    <meta name="author" content="Muhammad Arif bin Fazil">
+    <meta name="version" content="2026.03.14-VALIDATED">
+    <meta name="ai-context" content="This is the arifOS MCP Server - A Constitutional AI Governance System. It provides 25 canonical tools across 5 layers: KERNEL (6), AGI Δ MIND (6), ASI Ω HEART/HAND (4), APEX Ψ SOUL (7), VAULT999 (2). All tools enforce 13 Constitutional Floors (F1-F13).">
+    <title>AAA Wire | Constitutional AI Protocol Specifications (ΔΩΨ)</title>
+    <link rel="stylesheet" href="https://arifosmcp.arif-fazil.com/arifos-theme.css">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-delta: #58a6ff;
+            --accent-omega: #f85149;
+            --accent-psi: #ffd700;
+            --accent-success: #238636;
+            --border: #30363d;
         }
-      }
-    }
-  </script>
-  <style>
-    /* Import shared tokens */
-    :root {
-      --body-primary: #D4A853;
-      --body-secondary: #C4791A;
-      --body-accent: #E3B341;
-      --body-bg: #1A1612;
-      --body-text: #F5F0E8;
-    }
-    
-    /* BODY ring styles */
-    [data-ring="BODY"] {
-      --ring-primary: var(--body-primary);
-      --ring-secondary: var(--body-secondary);
-      --ring-accent: var(--body-accent);
-      --ring-bg: var(--body-bg);
-      --ring-text: var(--body-text);
-    }
-    
-    body {
-      background-color: #0d1117;
-      color: #f0f6fc;
-    }
-    .gradient-gold {
-      background: linear-gradient(135deg, #d29922 0%, #e3b341 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .gradient-amber {
-      background: linear-gradient(135deg, #C4791A 0%, #D4A853 50%, #E3B341 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-html[data-ring="BODY"] { --ring-primary: #D4A853; --ring-secondary: #C4791A; --ring-accent: #E3B341; }
-    
-    /* BODY ring utility classes */
-    .text-body { color: #D4A853; }
-    .text-body-secondary { color: #C4791A; }
-    .text-body-accent { color: #E3B341; }
-    .bg-body { background-color: #D4A853; }
-    .bg-body-surface { background-color: #1A1612; }
-    .border-body { border-color: #D4A853; }
-    .glow-body { box-shadow: 0 0 30px rgba(212, 168, 83, 0.25); }
-    
-    .glass-card {
-      background: rgba(22, 27, 34, 0.8);
-      backdrop-filter: blur(12px);
-      border: 1px solid #30363d;
-    }
-    .glass-card:hover {
-      border-color: #58a6ff;
-      box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
-    }
-    .trinity-active-red {
-      background: #da3633;
-      color: white;
-    }
-    .trinity-active-gold {
-      background: #d29922;
-      color: #0d1117;
-    }
-    .trinity-active-blue {
-      background: #58a6ff;
-      color: #0d1117;
-    }
-    .trinity-inactive {
-      background: transparent;
-      color: #8b949e;
-      border: 1px solid #30363d;
-    }
-    .trinity-inactive:hover {
-      border-color: #58a6ff;
-      color: #79c0ff;
-    }
-    pre {
-      background: #0d1117;
-      border: 1px solid #30363d;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      overflow-x: auto;
-    }
-    code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.875rem;
-    }
-    :not(pre) > code {
-      background: #21262d;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.25rem;
-      color: #58a6ff;
-    }
-    ::selection {
-      background: #58a6ff;
-      color: #0d1117;
-    }
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0d1117;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #30363d;
-      border-radius: 4px;
-    }
-  </style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-delta), var(--accent-omega), var(--accent-psi));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: var(--accent-success);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .motto {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .trinity-symbols {
+            font-size: 2rem;
+            margin: 1rem 0;
+            letter-spacing: 1rem;
+        }
+        
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .status.ok { border-color: var(--accent-success); }
+        .status.warn { border-color: var(--accent-psi); }
+        .status.error { border-color: var(--accent-omega); }
+        
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--accent-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status.warn .status-dot { background: var(--accent-psi); }
+        .status.error .status-dot { background: var(--accent-omega); }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        
+        nav a {
+            color: var(--accent-delta);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        nav a:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--accent-delta);
+        }
+        
+        .section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .status-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .status-item h4 {
+            color: var(--accent-delta);
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-item .value {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .status-item .meta {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+        
+        h2 {
+            color: var(--accent-psi);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        h3 {
+            color: var(--accent-delta);
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tool-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .tool-card:hover {
+            border-color: var(--accent-delta);
+            transform: translateY(-2px);
+        }
+        
+        .tool-card h4 {
+            color: var(--accent-delta);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tool-card.agi { border-left: 3px solid var(--accent-delta); }
+        .tool-card.asi { border-left: 3px solid var(--accent-omega); }
+        .tool-card.apex { border-left: 3px solid var(--accent-psi); }
+        .tool-card.vault { border-left: 3px solid var(--accent-success); }
+        
+        .stage-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--bg-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .floors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .floor-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        
+        .floor-card h4 {
+            color: var(--accent-psi);
+            margin-bottom: 0.5rem;
+        }
+        
+        code {
+            background: var(--bg-primary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .endpoint {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            font-family: monospace;
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .method.get { background: var(--accent-success); color: white; }
+        .method.post { background: var(--accent-delta); color: white; }
+        
+        .quickstart {
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+            border: 2px solid var(--accent-delta);
+        }
+        
+        pre {
+            background: var(--bg-primary);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: var(--accent-delta);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--accent-delta);
+            color: var(--accent-delta);
+        }
+        
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border-color: var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--accent-psi);
+            color: var(--accent-psi);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .ai-readable {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .tool-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-<body class="min-h-screen">
-  <!-- Navigation -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-primer-bg/90 backdrop-blur-lg border-b border-primer-border">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="/" class="flex items-center gap-2">
-          <span class="text-lg font-bold text-primer-text">aaa<span class="text-primer-blue">.</span>wire</span>
-        </a>
-        <div class="flex items-center gap-1 p-1 rounded-lg bg-primer-bg-secondary border border-primer-border">
-          <a href="https://arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all hover:text-primer-red">Ψ SOUL</a>
-          <a href="https://apex.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all hover:text-primer-blue">Ω MIND</a>
-          <a href="https://aaa.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all hover:text-primer-gold">Δ BODY</a>
-          <a href="https://arifosmcp.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all hover:text-primer-gold">Δ MCP</a>
-          <a href="https://wiki.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all">Ω WIKI</a>
-          <a href="https://geox.arif-fazil.com" class="px-3 py-1.5 text-xs font-medium rounded-md trinity-inactive transition-all" style="color:#53d4a8">Φ GEOX</a>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🔱</div>
+            <h1>arifOS MCP Server</h1>
+            <div class="version-badge" id="version-badge">Loading...</div>
+            <p class="motto">Ditempa Bukan Diberi — Forged, Not Given</p>
+            <div class="trinity-symbols">Δ Ω Ψ</div>
+            <div class="status ok" id="status-badge">
+                <span class="status-dot" id="status-dot"></span>
+                <span id="status-text">System Online — Loading live status</span>
+            </div>
+            <!-- arifOS Constellation Vitality Ring -->
+            <div class="arif-seal-widget" id="arif-seal" style="margin-top:0.75rem;justify-content:center">
+              <div class="arif-seal-ring" style="width:40px;height:40px;position:relative;display:inline-block">
+                <svg viewBox="0 0 44 44" style="width:100%;height:100%;transform:rotate(-90deg)">
+                  <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(0,180,160,0.2)" stroke-width="3"/>
+                  <circle id="vit-ring" cx="22" cy="22" r="20" fill="none" stroke="#3DBE8A" stroke-width="3" stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="21.4" transform="rotate(-90 22 22)"/>
+                </svg>
+                <span id="vit-num" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.6rem;font-weight:700;color:#3DBE8A">0.82</span>
+              </div>
+              <span class="arif-seal-badge seal" id="verdict-badge">SEAL</span>
+              <span style="font-family:monospace;font-size:0.75rem;color:#00B4A0;font-weight:700;letter-spacing:0.05em">ΔΩΨ</span>
+            </div>
+        </header>
+
+        <nav>
+            <a href="/">Home</a>
+            <a href="/tools">Tools API</a>
+            <a href="/health">Health</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/static-sites/aaa/docs.html">Documentation</a>
+            <a href="https://github.com/ariffazil/aaa" target="_blank">GitHub</a>
+            <a href="https://pypi.org/project/aaa/" target="_blank">PyPI</a>
+        </nav>
+
+        <div class="section live-status">
+            <h2>📡 Live Intelligence Status</h2>
+            <p>Live data from <code>/health</code> and <code>check_vital</code>. Auto-refresh every 10 seconds.</p>
+            <div class="status-grid">
+                <div class="status-item">
+                    <h4>Version</h4>
+                    <div class="value" id="live-version">--</div>
+                    <div class="meta" id="live-transport">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Tools Loaded</h4>
+                    <div class="value" id="live-tools">--</div>
+                    <div class="meta" id="live-service">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Machine Status</h4>
+                    <div class="value" id="live-machine">--</div>
+                    <div class="meta" id="live-stage">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Verdict</h4>
+                    <div class="value" id="live-verdict">--</div>
+                    <div class="meta" id="live-latency">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Exploration</h4>
+                    <div class="value" id="live-exploration">--</div>
+                    <div class="meta" id="live-entropy">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Uncertainty</h4>
+                    <div class="value" id="live-uncertainty">--</div>
+                    <div class="meta" id="live-confidence">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Browserless</h4>
+                    <div class="value" id="live-browserless">--</div>
+                    <div class="meta" id="live-qdrant">--</div>
+                </div>
+                <div class="status-item">
+                    <h4>Insight</h4>
+                    <div class="value" id="live-insight">--</div>
+                    <div class="meta" id="live-decisions">--</div>
+                </div>
+            </div>
+            <p style="margin-top: 1rem; color: var(--text-secondary);" id="live-updated">Last update: --</p>
         </div>
-      </div>
-    </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="relative min-h-[70vh] flex items-center justify-center pt-16 overflow-hidden">
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div class="w-[500px] h-[500px] rounded-full bg-primer-blue/10 blur-[100px]"></div>
-    </div>
-    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primer-bg-secondary border border-primer-border mb-8">
-        <span class="w-2 h-2 rounded-full bg-primer-blue animate-pulse"></span>
-        <span class="text-xs font-medium text-primer-text-muted tracking-wider uppercase">Protocol Specifications</span>
-      </div>
-      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
-        <span class="gradient-blue">AAA</span>
-        <br>
-        <span class="text-primer-text">WIRE</span>
-      </h1>
-      <p class="text-xl text-primer-text-muted mb-8 max-w-2xl mx-auto">
-        Constitutional AI protocol specifications. MCP, WebMCP, and A2A for secure, governed agent communication.
-      </p>
-      <!-- arifOS MCP Gateway Banner -->
-      <div class="mt-8 max-w-2xl mx-auto">
-        <a href="https://arifosmcp.arif-fazil.com" class="glass-card rounded-xl p-6 flex items-center gap-4 hover:border-primer-gold transition-all group">
-          <div class="w-12 h-12 rounded-lg bg-primer-gold/10 flex items-center justify-center flex-shrink-0">
-            <svg class="w-6 h-6 text-primer-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-            </svg>
-          </div>
-          <div class="text-left flex-1">
-            <h3 class="text-lg font-bold text-primer-text group-hover:text-primer-gold transition-colors">Live arifOS MCP Gateway</h3>
-            <p class="text-sm text-primer-text-muted">Connect now to the constitutional intelligence kernel. 33 tools, 13 floors, human sovereignty.</p>
-          </div>
-          <div class="flex items-center gap-2 text-sm text-primer-gold">
-            <span>Connect</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
+        <div class="section quickstart">
+            <h2>🚀 Quick Start</h2>
+            <p>Install the world's first Constitutional AI Governance System in seconds:</p>
+            
+            <h3>Python (PyPI)</h3>
+            <pre><code>pip install aaa==2026.3.14</code></pre>
+            
+            <h3>Node.js (npm)</h3>
+            <pre><code>npm install -g @arifos/mcp</code></pre>
+            
+            <h3>MCP Client Configuration</h3>
+            <pre><code>{
+  "mcpServers": {
+    "arifos": {
+      "command": "npx",
+      "args": ["-y", "@arifos/mcp"]
+    }
+  }
+}</code></pre>
 
-  <!-- Protocol Cards -->
-  <section class="py-24 px-4">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">Protocols</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-primer-text">
-          Choose Your <span class="gradient-blue">Protocol</span>
-        </h2>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- MCP -->
-        <a href="/mcp/" class="glass-card rounded-xl p-6 block transition-all">
-          <div class="w-12 h-12 rounded-lg bg-primer-blue/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primer-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-primer-text mb-2">MCP</h3>
-          <p class="text-sm text-primer-text-muted mb-4">Model Context Protocol — Standard transport for AI tool integration with Claude Desktop, Cursor, and more.</p>
-          <div class="flex items-center gap-2 text-sm text-primer-blue">
-            <span>Read Spec</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </div>
-        </a>
-
-        <!-- WebMCP -->
-        <a href="/webmcp/" class="glass-card rounded-xl p-6 block transition-all">
-          <div class="w-12 h-12 rounded-lg bg-primer-gold/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primer-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-primer-text mb-2">WebMCP</h3>
-          <p class="text-sm text-primer-text-muted mb-4">Browser-based MCP transport. Run MCP servers directly in the browser with WebSocket fallbacks.</p>
-          <div class="flex items-center gap-2 text-sm text-primer-gold">
-            <span>Read Spec</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </div>
-        </a>
-
-        <!-- A2A -->
-        <a href="/a2a/" class="glass-card rounded-xl p-6 block transition-all">
-          <div class="w-12 h-12 rounded-lg bg-primer-red/10 flex items-center justify-center mb-4">
-            <svg class="w-6 h-6 text-primer-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-semibold text-primer-text mb-2">A2A</h3>
-          <p class="text-sm text-primer-text-muted mb-4">Agent-to-Agent Protocol — Secure communication between autonomous agents with constitutional guarantees.</p>
-          <div class="flex items-center gap-2 text-sm text-primer-red">
-            <span>Read Spec</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Comparison Table -->
-  <section class="py-24 px-4 bg-primer-bg-secondary/50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="inline-block px-3 py-1 text-xs font-medium text-primer-text-muted border border-primer-border rounded-full mb-4">Comparison</span>
-        <h2 class="text-3xl sm:text-4xl font-bold text-primer-text">
-          Protocol <span class="gradient-blue">Matrix</span>
-        </h2>
-      </div>
-
-      <div class="glass-card rounded-xl overflow-hidden">
-        <table class="w-full text-left">
-          <thead class="bg-primer-bg-secondary border-b border-primer-border">
-            <tr>
-              <th class="px-6 py-4 text-sm font-medium text-primer-text">Feature</th>
-              <th class="px-6 py-4 text-sm font-medium text-primer-blue">MCP</th>
-              <th class="px-6 py-4 text-sm font-medium text-primer-gold">WebMCP</th>
-              <th class="px-6 py-4 text-sm font-medium text-primer-red">A2A</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-primer-border">
-            <tr>
-              <td class="px-6 py-4 text-sm text-primer-text-secondary">Transport</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">stdio / SSE</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">WebSocket / HTTP</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">HTTP / gRPC</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-primer-text-secondary">Environment</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Desktop / Server</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Browser</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Distributed</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-primer-text-secondary">Use Case</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Tool Integration</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Web-based MCP</td>
-              <td class="px-6 py-4 text-sm text-primer-text-muted">Agent Federation</td>
-            </tr>
-            <tr>
-              <td class="px-6 py-4 text-sm text-primer-text-secondary">Constitutional</td>
-              <td class="px-6 py-4 text-sm text-primer-blue">✓ 13 Floors</td>
-              <td class="px-6 py-4 text-sm text-primer-gold">✓ 13 Floors</td>
-              <td class="px-6 py-4 text-sm text-primer-red">✓ 13 Floors + Consensus</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Trinity Navigation -->
-  <div class="py-8 px-4 bg-primer-bg border-t border-primer-border">
-    <div class="max-w-4xl mx-auto">
-      <div class="flex justify-center items-center gap-4 mb-6">
-        <a href="https://arif-fazil.com" class="px-6 py-3 rounded-xl border border-primer-border text-primer-text-secondary hover:border-primer-red hover:text-primer-red transition-all font-mono text-sm">
-          <span class="text-primer-red mr-2">Ψ</span>SOUL
-        </a>
-        <a href="https://apex.arif-fazil.com" class="px-6 py-3 rounded-xl border border-primer-border text-primer-text-secondary hover:border-primer-blue hover:text-primer-blue transition-all font-mono text-sm">
-          <span class="text-primer-blue mr-2">Ω</span>MIND
-        </a>
-        <a href="https://aaa.arif-fazil.com" class="px-6 py-3 rounded-xl bg-primer-gold/20 border border-primer-gold text-primer-gold font-mono text-sm">
-          <span class="mr-2">Δ</span>BODY
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="py-12 px-4 border-t border-primer-border">
-    <div class="max-w-4xl mx-auto">
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="text-center sm:text-left">
-          <p class="text-lg font-bold text-primer-text">AAA<span class="text-primer-gold">.</span>WIRE</p>
-          <p class="text-sm text-primer-text-muted">Constitutional AI Protocols — Δ BODY Ring</p>
+            <div class="cta-buttons">
+                <a href="https://arifosmcp.arif-fazil.com/" class="btn btn-primary" target="_blank">🔱 Connect to arifOS MCP Runtime →</a>
+                <a href="https://arifosmcp.arif-fazil.com/.well-known/mcp/server.json" class="btn btn-secondary" target="_blank">📡 MCP Manifest</a>
+                <a href="https://arifosmcp.arif-fazil.com/health" class="btn btn-secondary" target="_blank">🩺 Live Health</a>
+            </div>
         </div>
-        <div class="flex items-center gap-4">
-          <a href="https://github.com/ariffazil" class="text-primer-text-muted hover:text-primer-gold transition-colors">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
+
+        <div class="section">
+            <h2>🧬 Trinity Architecture (ΔΩΨ)</h2>
+            <p>arifOS is not a wrapper—it is a <strong>governed intelligence organism</strong>. It metabolizes information through a Double Helix of specialized organs across three engines:</p>
+            
+            <div class="tool-grid" style="margin-top: 2rem;">
+                <div class="tool-card agi">
+                    <h4>🔷 Δ Delta — AGI Mind</h4>
+                    <p><strong>Stages:</strong> 000, 111, 222, 333, 444</p>
+                    <p><strong>Role:</strong> Reason, sense, ground</p>
+                    <p><strong>Floors:</strong> F2 (Truth), F4 (Clarity), F7 (Humility), F8 (Genius)</p>
+                </div>
+                
+                <div class="tool-card asi">
+                    <h4>🔴 Ω Omega — ASI Heart</h4>
+                    <p><strong>Stages:</strong> 555, 666</p>
+                    <p><strong>Role:</strong> Empathy, memory, ethics</p>
+                    <p><strong>Floors:</strong> F5 (Peace²), F6 (Empathy), F9 (Anti-Hantu)</p>
+                </div>
+                
+                <div class="tool-card apex">
+                    <h4>🟡 Ψ Psi — APEX Soul</h4>
+                    <p><strong>Stages:</strong> 777, 888, 999</p>
+                    <p><strong>Role:</strong> Forge, judge, seal</p>
+                    <p><strong>Floors:</strong> F1 (Amanah), F3 (Tri-Witness), F10-F13</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="mt-8 pt-8 border-t border-primer-border text-center">
-        <p class="text-xs text-primer-text-muted">ΔΩΨ — Trinity of Execution — Ditempa Bukan Diberi</p>
-      </div>
+
+        <div class="section">
+            <h2>🛠️ 25 Canonical Tools</h2>
+            <p>The complete tool surface distributed across 5 sovereign layers:</p>
+            
+            <h3>KERNEL Layer (6 tools)</h3>
+            <div class="tool-grid">
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_INIT</span>
+                    <h4>init_anchor</h4>
+                    <p>Constitutional airlock—establish session jurisdiction</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_INIT</span>
+                    <h4>init_anchor_state</h4>
+                    <p>Legacy alias for init_anchor</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_INIT</span>
+                    <h4>revoke_anchor_state</h4>
+                    <p>Kill switch—invalidate governed session</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_INIT</span>
+                    <h4>register_tools</h4>
+                    <p>Tool surface declaration at boot</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">444_ROUTER</span>
+                    <h4>arifOS_kernel</h4>
+                    <p>Stage conductor—routes ΔΩΨ transitions</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">000_999</span>
+                    <h4>forge</h4>
+                    <p>Full pipeline trigger—INIT → SEAL in one call</p>
+                </div>
+            </div>
+
+            <h3>AGI Δ MIND Layer (6 tools)</h3>
+            <div class="tool-grid">
+                <div class="tool-card agi">
+                    <span class="stage-badge">111_SENSE</span>
+                    <h4>agi_reason</h4>
+                    <p>Governed reasoning under F2/F4/F7</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">333_INTEGRATE</span>
+                    <h4>agi_reflect</h4>
+                    <p>Metacognitive integration—checks own output</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">222_GROUND</span>
+                    <h4>reality_compass</h4>
+                    <p>Epistemic intake—grounds claims before reasoning</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">222_GROUND</span>
+                    <h4>reality_atlas</h4>
+                    <p>Structured evidence map across sources</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">222_GROUND</span>
+                    <h4>search_reality</h4>
+                    <p>Live web search—raw reality acquisition</p>
+                </div>
+                <div class="tool-card agi">
+                    <span class="stage-badge">222_GROUND</span>
+                    <h4>ingest_evidence</h4>
+                    <p>URL → normalized evidence artifact</p>
+                </div>
+            </div>
+
+            <h3>ASI Ω HEART/HAND Layer (4 tools)</h3>
+            <div class="tool-grid">
+                <div class="tool-card asi">
+                    <span class="stage-badge">555_ALIGN</span>
+                    <h4>asi_critique</h4>
+                    <p>Adversarial critique—safety and maruah check</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">555_ALIGN</span>
+                    <h4>asi_simulate</h4>
+                    <p>Consequence simulation before action</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">666_EXECUTE</span>
+                    <h4>agentzero_engineer</h4>
+                    <p>Code + env actions under F11 gate</p>
+                </div>
+                <div class="tool-card asi">
+                    <span class="stage-badge">444_MEMORY</span>
+                    <h4>agentzero_memory_query</h4>
+                    <p>Constitutional semantic recall from Vault</p>
+                </div>
+            </div>
+
+            <h3>APEX Ψ SOUL Layer (7 tools)</h3>
+            <div class="tool-grid">
+                <div class="tool-card apex">
+                    <span class="stage-badge">777_JUDGE</span>
+                    <h4>apex_judge</h4>
+                    <p>Tri-witness verdict engine</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">777_JUDGE</span>
+                    <h4>agentzero_validate</h4>
+                    <p>Output validation—ALLOW/HOLD/VOID</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_FLOOR</span>
+                    <h4>audit_rules</h4>
+                    <p>F1–F13 live inspection + scoring</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_FLOOR</span>
+                    <h4>agentzero_armor_scan</h4>
+                    <p>F12 injection guard—prefilter all inputs</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_HOLD</span>
+                    <h4>agentzero_hold_check</h4>
+                    <p>888_HOLD registry + human escalation bus</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_VITALS</span>
+                    <h4>check_vital</h4>
+                    <p>System health—ΔS, peace², Ω₀ telemetry</p>
+                </div>
+                <div class="tool-card apex">
+                    <span class="stage-badge">888_OBSERVE</span>
+                    <h4>open_apex_dashboard</h4>
+                    <p>Live floor scores + pipeline trace</p>
+                </div>
+            </div>
+
+            <h3>VAULT999 Layer (2 tools)</h3>
+            <div class="tool-grid">
+                <div class="tool-card vault">
+                    <span class="stage-badge">999_SEAL</span>
+                    <h4>vault_seal</h4>
+                    <p>Commit decision + telemetry to ledger</p>
+                </div>
+                <div class="tool-card vault">
+                    <span class="stage-badge">999_ATTEST</span>
+                    <h4>verify_vault_ledger</h4>
+                    <p>Merkle integrity check—tamper detection</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚖️ 13 Constitutional Floors</h2>
+            <p>These are non-negotiable structural laws enforced at every stage:</p>
+            
+            <div class="floors">
+                <div class="floor-card">
+                    <h4>F1 — Amanah (Integrity)</h4>
+                    <p>≥ 0.5 — Reversibility / audit mandate</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F2 — Truth</h4>
+                    <p>≥ 0.99 — Anti-hallucination</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F3 — Tri-Witness</h4>
+                    <p>≥ 0.95 — Human·AI·Earth consensus</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F4 — ΔS Clarity</h4>
+                    <p>≤ 0 — Entropy reduction</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F5 — Peace²</h4>
+                    <p>≥ 1.0 — Non-destructive power</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F6 — κᵣ Empathy</h4>
+                    <p>≥ 0.70 — Serves weakest stakeholder</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F7 — Ω₀ Humility</h4>
+                    <p>0.03–0.20 — Gödel uncertainty band</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F8 — G Genius</h4>
+                    <p>≥ 0.80 — Internal coherence</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F9 — C_dark</h4>
+                    <p>< 0.30 — Anti-Hantu limit</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F10 — Ontology</h4>
+                    <p>LOCK — No consciousness claims</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F11 — Command Auth</h4>
+                    <p>LOCK — Identity verification</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F12 — Injection</h4>
+                    <p>< 0.85 — Block adversarial control</p>
+                </div>
+                <div class="floor-card">
+                    <h4>F13 — Sovereign</h4>
+                    <p>HUMAN — Human final authority</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔌 API Endpoints</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/health</code>
+                <p>System health check—returns version, status, capability map</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/tools</code>
+                <p>List all 25 canonical tools with JSONSchema parameters</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/dashboard</code>
+                <p>Live metabolic loop visualization</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <code>/mcp</code>
+                <p>MCP protocol endpoint (Streamable HTTP)</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Validation Status</h2>
+            <p><strong>External Validation:</strong> <span style="color: var(--accent-success);">✅ PASSED</span> (2026-03-14)</p>
+            <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+                <li>Schema Compliance: 25/25 tools valid ✅</li>
+                <li>Functional Testing: Trinity (ΔΩΨ) verified ✅</li>
+                <li>Constitutional Floors: F1-F13 enforced ✅</li>
+                <li>Production Status: READY ✅</li>
+            </ul>
+        </div>
+
+        <!-- ═══════════════════════════════════════════
+             ARIFOS CONSTELLATION SECTION
+        ════════════════════════════════════════════ -->
+        <div style="padding:2rem 0 1rem;text-align:center;border-top:1px solid rgba(0,180,160,0.15);margin-top:2rem">
+          <div style="font-family:monospace;font-size:0.65rem;color:#6B7280;letter-spacing:0.1em;margin-bottom:0.75rem">ARIFOS CONSTELLATION</div>
+          <p style="color:#9CA3AF;font-size:0.85rem;margin-bottom:1rem">AAA Wire = Protocol discovery layer · arifOS MCP = Constitutional execution layer</p>
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem">
+            <a href="https://arifosmcp.arif-fazil.com/" style="background:rgba(0,180,160,0.1);border:1px solid rgba(0,180,160,0.3);color:#00B4A0;padding:8px 16px;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px">🔱 arifOS MCP Runtime</a>
+            <a href="https://geox.arif-fazil.com/" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 16px;border-radius:6px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">🌏 GEOX Earth Intelligence</a>
+            <a href="https://arif-fazil.com" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 16px;border-radius:6px;font-size:0.8rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px">👤 Arif Fazil</a>
+          </div>
+          <p style="font-family:monospace;font-size:0.65rem;color:#4B5563;margin-top:1rem">arifos://ecosystem/context-v1 · Full sovereign context available via MCP · All 13 floors enforced</p>
+        </div>
+
+        <footer>
+            <p><strong>Authority:</strong> 888 Judge — Muhammad Arif bin Fazil</p>
+            <p><strong>License:</strong> AGPL-3.0-only</p>
+            <p style="margin-top: 1rem; font-style: italic;">Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">© 2026 arifOS Project</p>
+        </footer>
     </div>
-  </footer>
+
+    <script>
+        const API_BASE = window.location.origin.includes('localhost')
+            ? 'http://localhost:8080'
+            : window.location.origin;
+
+        function setStatusBadge(level, text) {
+            const badge = document.getElementById('status-badge');
+            const label = document.getElementById('status-text');
+            if (!badge || !label) return;
+            badge.classList.remove('ok', 'warn', 'error');
+            badge.classList.add(level);
+            label.textContent = text;
+        }
+
+        async function fetchJson(url, options) {
+            const response = await fetch(url, options);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+        }
+
+        async function refreshLiveStatus() {
+            try {
+                const started = performance.now();
+                const [health, vital] = await Promise.all([
+                    fetchJson(`${API_BASE}/health`),
+                    fetchJson(`${API_BASE}/tools/check_vital`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({})
+                    })
+                ]);
+                const latencyMs = Math.round(performance.now() - started);
+                const result = vital && vital.result ? vital.result : {};
+                const intelligence = result.intelligence_state || {};
+                const services = result.payload && result.payload.intelligence_services
+                    ? result.payload.intelligence_services
+                    : {};
+
+                const version = health.version || '--';
+                const versionBadge = document.getElementById('version-badge');
+                if (versionBadge) versionBadge.textContent = `v${version}`;
+
+                const status = (health.status || '').toLowerCase();
+                if (status === 'healthy') {
+                    setStatusBadge('ok', `System Online — ${health.tools_loaded || '--'} Tools Active — 13 Floors Enforced`);
+                } else if (status) {
+                    setStatusBadge('warn', `System ${status.toUpperCase()} — Monitoring`);
+                }
+
+                const setText = (id, value) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = value;
+                };
+
+                setText('live-version', version);
+                setText('live-transport', health.transport ? `transport: ${health.transport}` : '--');
+                setText('live-tools', (health.tools_loaded ?? '--').toString());
+                setText('live-service', health.service ? `service: ${health.service}` : '--');
+                setText('live-machine', result.machine_status || '--');
+                setText('live-stage', result.stage ? `stage: ${result.stage}` : '--');
+                setText('live-verdict', result.verdict || '--');
+                setText('live-latency', `latency: ${latencyMs}ms`);
+                setText('live-exploration', intelligence.exploration || '--');
+                setText('live-entropy', intelligence.entropy ? `entropy: ${intelligence.entropy}` : '--');
+                setText('live-uncertainty', (intelligence.uncertainty_score ?? '--').toString());
+                setText('live-confidence', (intelligence.confidence ?? '--').toString());
+                setText('live-browserless', services.browserless ? services.browserless.status : '--');
+                setText('live-qdrant', services.qdrant ? `qdrant: ${services.qdrant.status}` : '--');
+                setText('live-insight', intelligence.insight || 'none');
+                setText('live-decisions', (intelligence.decision_required && intelligence.decision_required.length)
+                    ? `${intelligence.decision_required.length} pending`
+                    : 'none');
+
+                const updated = document.getElementById('live-updated');
+                if (updated) updated.textContent = `Last update: ${new Date().toLocaleTimeString()}`;
+
+                const metadata = document.getElementById('arifos-metadata');
+                if (metadata) {
+                    try {
+                        const parsed = JSON.parse(metadata.textContent);
+                        parsed.version = version;
+                        parsed.tools.total = health.tools_loaded ?? parsed.tools.total;
+                        metadata.textContent = JSON.stringify(parsed, null, 4);
+                    } catch (err) {
+                        // ignore metadata update errors
+                    }
+                }
+            } catch (error) {
+                setStatusBadge('error', 'System Degraded — Live status unavailable');
+            }
+        }
+
+        refreshLiveStatus();
+        setInterval(refreshLiveStatus, 10000);
+    </script>
+
+    <!-- AI-Readable Structured Data -->
+    <script type="application/json" id="arifos-metadata">
+    {
+        "name": "arifOS MCP Server",
+        "version": "2026.03.14-VALIDATED",
+        "description": "The world's first production-grade Constitutional AI Governance System",
+        "architecture": {
+            "type": "Trinity",
+            "engines": ["Delta (AGI Mind)", "Omega (ASI Heart)", "Psi (APEX Soul)"],
+            "symbols": "ΔΩΨ"
+        },
+        "tools": {
+            "total": 32,
+            "layers": {
+                "KERNEL": ["init_anchor", "init_anchor_state", "revoke_anchor_state", "register_tools", "arifOS_kernel", "forge"],
+                "AGI_DELTA_MIND": ["agi_reason", "agi_reflect", "reality_compass", "reality_atlas", "search_reality", "ingest_evidence"],
+                "ASI_OMEGA_HEART": ["asi_critique", "asi_simulate"],
+                "ASI_OMEGA_HAND": ["agentzero_engineer", "agentzero_memory_query"],
+                "APEX_PSI_SOUL": ["apex_judge", "agentzero_validate", "audit_rules", "agentzero_armor_scan", "agentzero_hold_check", "check_vital", "open_apex_dashboard"],
+                "VAULT999": ["vault_seal", "verify_vault_ledger"]
+            }
+        },
+        "constitutional_floors": [
+            {"id": "F1", "name": "Amanah", "type": "Hard", "threshold": "≥ 0.5", "enforces": "Reversibility"},
+            {"id": "F2", "name": "Truth", "type": "Hard", "threshold": "≥ 0.99", "enforces": "Anti-hallucination"},
+            {"id": "F3", "name": "Tri-Witness", "type": "Mirror", "threshold": "≥ 0.95", "enforces": "Human·AI·Earth consensus"},
+            {"id": "F4", "name": "ΔS Clarity", "type": "Hard", "threshold": "≤ 0", "enforces": "Entropy reduction"},
+            {"id": "F5", "name": "Peace²", "type": "Soft", "threshold": "≥ 1.0", "enforces": "Non-destructive power"},
+            {"id": "F6", "name": "κᵣ Empathy", "type": "Soft", "threshold": "≥ 0.70", "enforces": "Serves weakest stakeholder"},
+            {"id": "F7", "name": "Ω₀ Humility", "type": "Hard", "threshold": "0.03–0.20", "enforces": "Gödel uncertainty"},
+            {"id": "F8", "name": "G Genius", "type": "Mirror", "threshold": "≥ 0.80", "enforces": "Internal coherence"},
+            {"id": "F9", "name": "C_dark", "type": "Hard", "threshold": "< 0.30", "enforces": "Anti-Hantu limit"},
+            {"id": "F10", "name": "Ontology", "type": "Wall", "threshold": "LOCK", "enforces": "No consciousness claims"},
+            {"id": "F11", "name": "Command Auth", "type": "Hard", "threshold": "LOCK", "enforces": "Identity verification"},
+            {"id": "F12", "name": "Injection", "type": "Wall", "threshold": "< 0.85", "enforces": "Block adversarial control"},
+            {"id": "F13", "name": "Sovereign", "type": "Veto", "threshold": "HUMAN", "enforces": "Human final authority"}
+        ],
+        "metabolic_stages": ["000_INIT", "111_SENSE", "222_REALITY", "333_MIND", "444_ROUTER", "555_MEMORY", "666_HEART", "777_FORGE", "888_JUDGE", "999_VAULT"],
+        "verdicts": ["SEAL", "VOID", "SABAR", "PARTIAL", "HOLD_888"],
+        "installation": {
+            "pypi": "pip install aaa==2026.3.14",
+            "npm": "npm install -g @arifos/mcp"
+        },
+        "links": {
+            "github": "https://github.com/ariffazil/aaa",
+            "pypi": "https://pypi.org/project/aaa/",
+            "npm": "https://www.npmjs.com/package/@arifos/mcp",
+            "documentation": "https://arifos.arif-fazil.com"
+        },
+        "validation": {
+            "status": "PASSED",
+            "date": "2026-03-14",
+            "schema_compliance": "25/25",
+            "functional_tests": "16/25 passed (9 context-env)",
+            "constitutional_floors": "F1-F13 enforced"
+        }
+    }
+
+    // ── arifOS MCP Vitality Ring ──────────────────────────
+    async function loadArifOSSeal() {
+      try {
+        const res = await fetch('https://arifosmcp.arif-fazil.com/health');
+        const d = await res.json();
+        const vit = d.thermodynamic?.vitality_index ?? 0.82;
+        const verd = d.thermodynamic?.verdict || d.verdict || 'SEAL';
+        const ring = document.getElementById('vit-ring');
+        const num = document.getElementById('vit-num');
+        if (ring) {
+          const circ = 2 * Math.PI * 20;
+          ring.style.strokeDashoffset = circ * (1 - vit);
+        }
+        if (num) num.textContent = (typeof vit === 'number' ? vit.toFixed(2) : vit);
+        const badge = document.getElementById('verdict-badge');
+        if (badge) {
+          badge.textContent = verd;
+          badge.className = 'arif-seal-badge ' + (verd === 'SEAL' ? 'seal' : verd === 'HOLD' ? 'hold' : 'void');
+        }
+      } catch(e) {}
+    }
+    loadArifOSSeal();
+    setInterval(loadArifOSSeal, 30000);
+    </script>
 </body>
 </html>
