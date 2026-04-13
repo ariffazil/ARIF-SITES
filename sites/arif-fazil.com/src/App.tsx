@@ -374,7 +374,7 @@ const SoulSite: React.FC = () => {
         }}
       >
         <div className="flex items-center gap-4 group cursor-pointer">
-          <div 
+          <div
             className="w-12 h-12 flex items-center justify-center text-black font-bold text-2xl transition-transform duration-500 group-hover:scale-110"
             style={{
               background: SOUL.blood,
@@ -389,6 +389,18 @@ const SoulSite: React.FC = () => {
           </div>
         </div>
         <AgeClock />
+        {/* arifOS Constellation Vitality Ring — live from MCP /health */}
+        <div className="hidden md:flex items-center gap-2 ml-6">
+          <div style="width:36px;height:36px;position:relative;display:inline-block">
+            <svg viewBox="0 0 44 44" style="width:100%;height:100%;transform:rotate(-90deg)">
+              <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(0,180,160,0.2)" strokeWidth="3"/>
+              <circle id="vit-ring" cx="22" cy="22" r="20" fill="none" stroke="#3DBE8A" strokeWidth="3" strokeLinecap="round" strokeDasharray="125.7" strokeDashoffset="21.4" transform="rotate(-90 22 22)"/>
+            </svg>
+            <span id="vit-num" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.55rem;font-weight:700;color:#3DBE8A">0.82</span>
+          </div>
+          <span id="verdict-badge" style="font-family:monospace;font-size:0.7rem;font-weight:700;color:#3DBE8A;border:1px solid rgba(61,190,138,0.3);padding:2px 6px;border-radius:4px;">SEAL</span>
+          <span style="font-family:monospace;font-size:0.75rem;color:#00B4A0;font-weight:700;letter-spacing:0.05em;">ΔΩΨ</span>
+        </div>
       </nav>
 
       {/* HERO SECTION - Anomalous presence */}
@@ -544,7 +556,7 @@ const SoulSite: React.FC = () => {
               {[
                 { value: '100%', label: 'Discovery Rate', color: SOUL.blood },
                 { value: '13+', label: 'Years Experience', color: SOUL.earth },
-                { value: '33', label: 'MCP Tools', color: SOUL.gold },
+                { value: '17+', label: 'Governed Tools (live)', color: SOUL.gold },
                 { value: '13', label: 'Constitutional Floors', color: SOUL.blood },
               ].map((stat, i) => (
                 <div
@@ -653,6 +665,47 @@ const SoulSite: React.FC = () => {
           </div>
         </footer>
       </main>
+
+      {/* arifOS Constellation Section */}
+      <div style="padding:3rem 2rem 2rem;text-align:center;border-top:1px solid rgba(0,180,160,0.12);margin:0 1rem;">
+        <p style="font-family:monospace;font-size:0.65rem;color:#6B7280;letter-spacing:0.1em;margin-bottom:0.75rem">ARIFOS CONSTELLATION</p>
+        <p style="color:#9CA3AF;font-size:0.8rem;margin-bottom:1.5rem">arifOS MCP · 13 constitutional floors · 888_HOLD human veto · VAULT999 sealed audit</p>
+        <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
+          <a href="https://arifosmcp.arif-fazil.com/" style="background:rgba(0,180,160,0.1);border:1px solid rgba(0,180,160,0.3);color:#00B4A0;padding:8px 14px;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🔱 arifOS MCP Runtime</a>
+          <a href="https://geox.arif-fazil.com/" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 14px;border-radius:6px;font-size:0.75rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🌏 GEOX Earth Intelligence</a>
+          <a href="https://aaa.arif-fazil.com/" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 14px;border-radius:6px;font-size:0.75rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">Δ AAA Wire</a>
+        </div>
+        <p style="font-family:monospace;font-size:0.6rem;color:#4B5563;margin-top:1rem">DITEMPA BUKAN DIBERI · MCP: arifos://ecosystem/context-v1</p>
+      </div>
+
+      {/* arifOS MCP Vitality Ring JS */}
+      <script async>
+      (function() {
+        async function loadArifOSSeal() {
+          try {
+            const res = await fetch('https://arifosmcp.arif-fazil.com/health');
+            const d = await res.json();
+            const vit = d.thermodynamic?.vitality_index ?? 0.82;
+            const verd = d.thermodynamic?.verdict || d.verdict || 'SEAL';
+            const ring = document.getElementById('vit-ring');
+            const num = document.getElementById('vit-num');
+            if (ring) {
+              const circ = 2 * Math.PI * 20;
+              ring.style.strokeDashoffset = circ * (1 - vit);
+            }
+            if (num) num.textContent = (typeof vit === 'number' ? vit.toFixed(2) : vit);
+            const badge = document.getElementById('verdict-badge');
+            if (badge) {
+              badge.textContent = verd;
+              badge.style.color = verd === 'SEAL' ? '#3DBE8A' : verd === 'HOLD' ? '#f59e0b' : '#ef4444';
+              badge.style.borderColor = verd === 'SEAL' ? 'rgba(61,190,138,0.3)' : verd === 'HOLD' ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)';
+            }
+          } catch(e) {}
+        }
+        loadArifOSSeal();
+        setInterval(loadArifOSSeal, 30000);
+      })();
+      </script>
 
       {/* Trinity Navigation Footer */}
       <footer 
