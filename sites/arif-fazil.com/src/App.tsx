@@ -1,31 +1,32 @@
-// SOUL Ring - arif-fazil.com
-// THEORY OF ANOMALOUS CONTRAST - v4.0
-// Blood Red + Earth Tones · Igneous · Strata · Human Sovereignty
+// arif-fazil.com — Rewritten 2026-04-13
+// Proof first. Philosophy second. Human first. arifOS second.
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Target, ChevronDown, ExternalLink } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import tokens from '@/constitution/tokens';
 
-// ==================== ANOMALOUS COLOR SYSTEM (SOUL) ====================
-// Blood Red + Earth Tones — Human Life, Igneous Core, Gold Sovereignty
-// Toned down for reduced eye strain while maintaining identity
+// ==================== SOUL COLOR SYSTEM ====================
+// Simplified: gold as single accent, earth as secondary, blood as structural only
 const SOUL = {
-  blood: '#6B2020',      // Primary - Muted blood red, life
-  arterial: '#8B3030',   // Secondary - Softer arterial red
-  gold: '#B8962E',       // Accent - Muted gold, F13 sovereignty
-  earth: '#5A3D25',      // Earth brown - grounding, strata
-  terracotta: '#A06035', // Terracotta - clay, human craft
-  ochre: '#A07840',      // Ochre - discovery, fossil
-  void: '#0F0D0D',       // Background - soft dark (reduced contrast)
-  text: '#D8D0D0',      // Primary text - soft warm gray
-  dim: '#6B6B6B',        // Secondary text - muted
+  gold:        '#C9A84C',   // Primary accent — used sparingly
+  goldDim:     '#8B7440',   // Subdued gold — hover states, borders
+  earth:       '#6B4D2E',   // Earth brown — headings, structural
+  earthLight:  '#8B6B42',   // Lighter earth — secondary text
+  blood:       '#5C2A2A',   // Muted blood — structural only (not primary)
+  bloodLight:  '#7A3A3A',   // Softer red — tertiary accents
+  bg:          '#0C0E12',   // Primary surface
+  bgSecondary: '#141620',   // Elevated surface
+  bgTertiary:  '#1A1D26',   // Card backgrounds
+  border:      '#2A2E3A',   // Structural lines
+  text:        '#E8E4DF',   // Primary text
+  textMuted:   '#8B8880',   // Secondary text
+  textDim:     '#5A5850',   // Tertiary text
 } as const;
 
 // ==================== FRACTAL BIOLOGICAL CLOCK ====================
 const AgeClock: React.FC = () => {
   const [age, setAge] = useState<string>('');
-  const [pulsePhase, setPulsePhase] = useState(0);
   
   useEffect(() => {
     const birthDate = new Date(tokens.identity.birthdate);
@@ -40,46 +41,17 @@ const AgeClock: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Fractal pulse animation
-  useEffect(() => {
-    let t = 0;
-    const animate = () => {
-      t += 0.05;
-      setPulsePhase(Math.sin(t) * 0.5 + 0.5);
-      requestAnimationFrame(animate);
-    };
-    animate();
-  }, []);
-
   return (
     <div 
-      className="font-mono text-xs tracking-[0.2em] uppercase px-5 py-2 relative overflow-hidden"
+      className="font-mono text-xs tracking-[0.2em] uppercase px-4 py-2"
       style={{
-        background: `linear-gradient(135deg, ${SOUL.blood}20 0%, ${SOUL.earth}15 50%, ${SOUL.gold}08 100%)`,
-        border: `1px solid ${SOUL.blood}`,
-        clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
+        background: `${SOUL.goldDim}15`,
+        border: `1px solid ${SOUL.goldDim}40`,
+        color: SOUL.textMuted,
       }}
     >
-      <div 
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at ${30 + pulsePhase * 40}% ${50 + Math.sin(pulsePhase * Math.PI) * 20}%, ${SOUL.arterial}25 0%, transparent 50%)`,
-        }}
-      />
-      <div className="relative flex items-center gap-3">
-        <div 
-          className="w-2 h-2"
-          style={{
-            background: SOUL.gold,
-            clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-            transform: `scale(${0.8 + pulsePhase * 0.4})`,
-            transition: 'transform 0.1s ease-out',
-            boxShadow: `0 0 ${8 + pulsePhase * 8}px ${SOUL.gold}`,
-          }}
-        />
-        <span style={{ color: SOUL.text }}>{age}</span>
-        <span style={{ color: SOUL.dim, fontSize: '0.7em' }}>YEARS</span>
-      </div>
+      <span>{age}</span>
+      <span className="ml-2 opacity-50">YEARS</span>
     </div>
   );
 };
@@ -104,9 +76,8 @@ const FractalStrata: React.FC = () => {
     let time = 0;
     let animationId: number;
 
-    // Fractal noise function
     const noise = (x: number, y: number, t: number) => {
-      return Math.sin(x * 0.01 + t) * Math.cos(y * 0.01 + t * 0.5) * 0.5 +
+      return Math.sin(x * 0.01 + t) * 0.5 +
              Math.sin(x * 0.02 - t * 0.3) * 0.25 +
              Math.cos(y * 0.015 + t * 0.7) * 0.25;
     };
@@ -115,55 +86,47 @@ const FractalStrata: React.FC = () => {
       const w = canvas.width;
       const h = canvas.height;
       
-      // Deep void background - blood black
-      ctx.fillStyle = SOUL.void;
+      ctx.fillStyle = SOUL.bg;
       ctx.fillRect(0, 0, w, h);
 
-      // Anomalous color layers - jagged fractal strata (Earth tones)
+      // Subtle earth-tone strata layers — reduced opacity, not dominant
       const layers = [
-        { color: SOUL.blood, amp: 80, freq: 0.008, speed: 0.001, yOffset: 0.3, alpha: 0.25 },
-        { color: SOUL.earth, amp: 60, freq: 0.012, speed: 0.0008, yOffset: 0.5, alpha: 0.18 },
-        { color: SOUL.terracotta, amp: 40, freq: 0.015, speed: 0.0012, yOffset: 0.7, alpha: 0.12 },
-        { color: SOUL.ochre, amp: 100, freq: 0.006, speed: 0.0005, yOffset: 0.4, alpha: 0.08 },
+        { color: SOUL.earth,     amp: 60,  freq: 0.008, speed: 0.0008, yOffset: 0.35, alpha: 0.06 },
+        { color: SOUL.earthLight, amp: 45, freq: 0.012, speed: 0.001,  yOffset: 0.55, alpha: 0.05 },
+        { color: SOUL.goldDim,   amp: 80,  freq: 0.006, speed: 0.0005, yOffset: 0.45, alpha: 0.03 },
       ];
 
-      layers.forEach((layer, idx) => {
+      layers.forEach((layer) => {
         ctx.beginPath();
         const yBase = h * layer.yOffset;
-        
-        // Jagged fractal path
         ctx.moveTo(0, h);
-        
         for (let x = 0; x <= w; x += 5) {
           const n = noise(x, yBase, time * layer.speed);
-          const jagged = Math.sin(x * layer.freq * 3 + time * layer.speed * 2) * 20 * (idx % 2 === 0 ? 1 : -1);
+          const jagged = Math.sin(x * layer.freq * 3 + time * layer.speed * 2) * 15;
           const y = yBase + n * layer.amp + jagged;
           ctx.lineTo(x, y);
         }
-        
         ctx.lineTo(w, h);
         ctx.lineTo(0, h);
         ctx.closePath();
-        
         ctx.fillStyle = layer.color;
         ctx.globalAlpha = layer.alpha;
         ctx.fill();
       });
 
-      // Fractal drift particles - earth tones with gold
-      ctx.globalAlpha = 0.6;
-      for (let i = 0; i < 50; i++) {
+      // Sparse gold particles — restrained
+      ctx.globalAlpha = 0.4;
+      for (let i = 0; i < 20; i++) {
         const x = (Math.sin(i * 137.5 + time * 0.001) * 0.5 + 0.5) * w;
         const y = (Math.cos(i * 73.3 + time * 0.0008) * 0.5 + 0.5) * h;
-        const size = (Math.sin(i + time * 0.01) + 1) * 1.5;
-        
+        const size = (Math.sin(i + time * 0.01) + 1) * 1.2;
         ctx.beginPath();
         ctx.arc(x, y, size, 0, Math.PI * 2);
-        // Cycle through: blood, earth, gold
-        ctx.fillStyle = i % 3 === 0 ? SOUL.blood : (i % 3 === 1 ? SOUL.earth : SOUL.gold);
+        ctx.fillStyle = SOUL.goldDim;
         ctx.fill();
       }
 
+      ctx.globalAlpha = 1;
       time++;
       animationId = requestAnimationFrame(draw);
     };
@@ -179,12 +142,12 @@ const FractalStrata: React.FC = () => {
     <canvas 
       ref={canvasRef} 
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.8 }}
+      style={{ opacity: 0.7 }}
     />
   );
 };
 
-// ==================== JAGGED BUTTON COMPONENT ====================
+// ==================== JAGGED BUTTON ====================
 const JaggedButton: React.FC<{ 
   children: React.ReactNode; 
   href?: string; 
@@ -193,310 +156,333 @@ const JaggedButton: React.FC<{
 }> = ({ children, href, variant = 'solid', onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  const getClipPath = () => {
-    const jitter = isHovered ? 2 : 0;
-    return `polygon(
-      0 ${4 + jitter}px, 
-      ${4 + jitter}px 0, 
-      calc(100% - ${8 - jitter}px) 0, 
-      100% ${8 - jitter}px, 
-      100% calc(100% - ${4 + jitter}px), 
-      calc(100% - ${4 + jitter}px) 100%, 
-      ${8 - jitter}px 100%, 
-      0 calc(100% - ${8 - jitter}px)
-    )`;
-  };
-
   const variants = {
     solid: {
-      bg: isHovered 
-        ? `linear-gradient(135deg, ${SOUL.blood} 0%, ${SOUL.earth} 100%)`
-        : SOUL.blood,
-      color: '#000',
-      border: 'none',
+      bg: isHovered ? SOUL.goldDim : SOUL.gold,
+      color: '#0C0E12',
     },
     outline: {
-      bg: isHovered ? `${SOUL.blood}15` : 'transparent',
-      color: SOUL.blood,
-      border: `2px solid ${SOUL.blood}`,
+      bg: isHovered ? `${SOUL.goldDim}15` : 'transparent',
+      color: SOUL.gold,
     },
     ghost: {
       bg: 'transparent',
-      color: SOUL.dim,
-      border: 'none',
+      color: SOUL.textMuted,
     },
   };
 
   const style = variants[variant];
   
-  const ButtonContent = (
+  const content = (
     <span
-      className="px-8 py-4 text-xs font-bold tracking-[0.25em] uppercase transition-all duration-200 flex items-center gap-3 relative overflow-hidden"
+      className="px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 inline-block"
       style={{
         background: style.bg,
         color: style.color,
-        border: variant === 'outline' ? style.border : undefined,
-        clipPath: getClipPath(),
+        border: variant === 'outline' ? `1px solid ${SOUL.goldDim}` : undefined,
+        clipPath: 'polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px))',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {isHovered && variant === 'solid' && (
-        <span 
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `linear-gradient(90deg, transparent 0%, ${SOUL.gold}40 50%, transparent 100%)`,
-            transform: 'translateX(-100%)',
-            animation: 'shimmer 0.6s ease-out',
-          }}
-        />
-      )}
-      <span className="relative z-10">{children}</span>
+      {children}
     </span>
   );
 
-  if (href) {
-    return <a href={href} className="inline-block">{ButtonContent}</a>;
-  }
-  return <button onClick={onClick} className="inline-block">{ButtonContent}</button>;
+  if (href) return <a href={href} className="inline-block no-underline">{content}</a>;
+  return <button onClick={onClick} className="inline-block border-none cursor-pointer">{content}</button>;
 };
 
-// ==================== DISCOVERY CARD WITH JAGGED EDGES ====================
+// ==================== DISCOVERY CARD ====================
 const DiscoveryCard: React.FC<{
   name: string;
-  type: string;
+  playType: string;
+  role: string;
   significance: string;
+  capability: string;
   index: number;
-}> = ({ name, type, significance, index }) => {
+}> = ({ name, playType, role, significance, capability, index }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const colors = [SOUL.blood, SOUL.earth, SOUL.gold];
-  const accentColor = colors[index % 3];
+  const colors = [SOUL.gold, SOUL.earth, SOUL.goldDim, SOUL.earthLight];
+  const accent = colors[index % colors.length];
 
   return (
     <div
-      className="group p-8 transition-all duration-500 relative overflow-hidden"
+      className="p-6 md:p-8 transition-all duration-300 relative"
       style={{
-        background: isHovered ? `${accentColor}08` : 'transparent',
-        border: `1px solid ${isHovered ? accentColor : 'rgba(255,255,255,0.1)'}`,
-        clipPath: 'polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px))',
+        background: isHovered ? `${accent}08` : SOUL.bgTertiary,
+        border: `1px solid ${isHovered ? accent : SOUL.border}`,
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Animated accent line */}
       <div 
-        className="absolute top-0 left-0 h-[2px] transition-all duration-500"
+        className="absolute top-0 left-0 h-[2px] transition-all duration-300"
         style={{
-          background: accentColor,
+          background: accent,
           width: isHovered ? '100%' : '0%',
-          boxShadow: isHovered ? `0 0 20px ${accentColor}` : 'none',
         }}
       />
       
-      <div className="flex justify-between items-start mb-6">
-        <h3 className="text-2xl font-bold tracking-tight">{name}</h3>
+      <div className="flex justify-between items-start mb-4">
+        <h3 className="text-base font-bold tracking-tight" style={{ color: SOUL.text }}>
+          {name}
+        </h3>
         <Target 
-          size={20} 
-          style={{ 
-            color: accentColor,
-            opacity: isHovered ? 1 : 0.3,
-            transform: isHovered ? 'rotate(45deg)' : 'rotate(0deg)',
-            transition: 'all 0.3s ease',
-          }} 
+          size={16} 
+          style={{ color: accent, opacity: isHovered ? 1 : 0.4 }} 
         />
       </div>
       
-      <div 
-        className="text-xs font-mono mb-4 tracking-[0.2em]"
-        style={{ color: accentColor }}
-      >
-        {type}
+      <div className="text-[10px] font-mono tracking-widest uppercase mb-3" style={{ color: accent }}>
+        {playType}
       </div>
       
-      <p className="opacity-50 text-sm leading-relaxed">{significance}</p>
-      
-      {/* Corner accent */}
-      <div 
-        className="absolute bottom-0 right-0 w-12 h-12 transition-all duration-500"
-        style={{
-          background: `linear-gradient(135deg, transparent 50%, ${accentColor}${isHovered ? '30' : '10'} 50%)`,
-        }}
-      />
+      <p className="text-sm leading-relaxed mb-4" style={{ color: SOUL.textMuted }}>
+        {significance}
+      </p>
+
+      <div className="pt-4 border-t" style={{ borderColor: `${accent}20` }}>
+        <div className="text-[10px] tracking-widest uppercase mb-1" style={{ color: SOUL.textDim }}>
+          Role
+        </div>
+        <div className="text-xs mb-3" style={{ color: SOUL.textMuted }}>
+          {role}
+        </div>
+        <div className="text-[10px] tracking-widest uppercase mb-1" style={{ color: SOUL.textDim }}>
+          Capability proven
+        </div>
+        <div className="text-xs" style={{ color: accent }}>
+          {capability}
+        </div>
+      </div>
     </div>
   );
 };
 
-// ==================== ANOMALOUS DIVIDER ====================
-const JaggedDivider: React.FC<{ color?: string }> = ({ color = SOUL.blood }) => (
-  <div className="flex items-center gap-4 my-16">
-    <div 
-      className="h-[2px] flex-1"
-      style={{
-        background: `linear-gradient(90deg, ${color} 0%, transparent 100%)`,
-        clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%)',
-      }}
-    />
-    <span 
-      className="text-2xl"
-      style={{ color }}
-    >
-      ◈
-    </span>
-    <div 
-      className="h-[2px] flex-1"
-      style={{
-        background: `linear-gradient(90deg, transparent 0%, ${color} 100%)`,
-        clipPath: 'polygon(8px 0, 100% 0, 100% 100%, 0 100%)',
-      }}
-    />
+// ==================== STAT ROW ====================
+const StatRow: React.FC<{ value: string; label: string; accent?: string }> = ({ 
+  value, label, accent = SOUL.gold 
+}) => (
+  <div className="flex items-baseline gap-4 py-3 border-b" style={{ borderColor: SOUL.border }}>
+    <span className="text-3xl font-bold" style={{ color: accent }}>{value}</span>
+    <span className="text-sm" style={{ color: SOUL.textMuted }}>{label}</span>
+  </div>
+);
+
+// ==================== EXPERIENCE ITEM ====================
+const ExperienceItem: React.FC<{
+  company: string; period: string; summary: string; skills: readonly string[];
+}> = ({ company, period, summary, skills }) => (
+  <div className="mb-10">
+    <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-3 gap-2">
+      <h3 className="text-base font-bold" style={{ color: SOUL.text }}>{company}</h3>
+      <span className="text-xs font-mono" style={{ color: SOUL.goldDim }}>{period}</span>
+    </div>
+    <p className="text-sm leading-relaxed mb-4" style={{ color: SOUL.textMuted }}>{summary}</p>
+    <div className="flex flex-wrap gap-2">
+      {skills.map((skill) => (
+        <span 
+          key={skill}
+          className="text-[10px] px-2 py-1 font-mono tracking-wider"
+          style={{ 
+            background: `${SOUL.goldDim}10`, 
+            color: SOUL.goldDim,
+            border: `1px solid ${SOUL.goldDim}30`,
+          }}
+        >
+          {skill}
+        </span>
+      ))}
+    </div>
+  </div>
+);
+
+// ==================== ARTICLE ROW ====================
+const ArticleRow: React.FC<{ title: string; url: string; index: number }> = ({ 
+  title, url, index 
+}) => (
+  <a 
+    href={url} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="flex items-center justify-between p-5 transition-all duration-200 group no-underline"
+    style={{
+      border: `1px solid ${SOUL.border}`,
+      background: 'transparent',
+    }}
+    onMouseEnter={e => {
+      (e.currentTarget as HTMLElement).style.background = `${SOUL.goldDim}08`;
+      (e.currentTarget as HTMLElement).style.borderColor = SOUL.goldDim;
+    }}
+    onMouseLeave={e => {
+      (e.currentTarget as HTMLElement).style.background = 'transparent';
+      (e.currentTarget as HTMLElement).style.borderColor = SOUL.border;
+    }}
+  >
+    <div className="flex items-center gap-4">
+      <span className="text-xs font-mono" style={{ color: SOUL.textDim }}>
+        {String(index).padStart(2, '0')}
+      </span>
+      <span className="text-sm" style={{ color: SOUL.text }}>{title}</span>
+    </div>
+    <ExternalLink size={14} style={{ color: SOUL.goldDim, opacity: 0.5 }} />
+  </a>
+);
+
+// ==================== SECTION HEADER ====================
+const SectionHeader: React.FC<{ 
+  label: string; 
+  title: React.ReactNode;
+  accent?: string;
+}> = ({ label, title, accent = SOUL.gold }) => (
+  <div className="mb-12">
+    <div className="flex items-center gap-3 mb-4">
+      <div className="h-[1px] w-8" style={{ background: accent }} />
+      <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: accent }}>
+        {label}
+      </span>
+    </div>
+    <h2 className="text-3xl md:text-4xl font-bold leading-tight" style={{ color: SOUL.text }}>
+      {title}
+    </h2>
   </div>
 );
 
 // ==================== MAIN SITE ====================
 const SoulSite: React.FC = () => {
   const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
-  const heroY = useTransform(scrollYProgress, [0, 0.2], [0, 100]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const heroY = useTransform(scrollYProgress, [0, 0.15], [0, 60]);
 
   return (
     <div 
-      className="min-h-screen overflow-x-hidden selection:bg-[#FF3333] selection:text-black"
-      style={{ background: SOUL.void, color: SOUL.text }}
+      className="min-h-screen overflow-x-hidden"
+      style={{ background: SOUL.bg, color: SOUL.text }}
     >
-      {/* Background with fractal strata */}
       <FractalStrata />
 
-      {/* FIXED HEADER - Jagged styling */}
+      {/* ==================== NAV ==================== */}
       <nav 
-        className="fixed top-0 left-0 right-0 z-50 p-8 flex flex-col md:flex-row justify-between items-center gap-6"
+        className="fixed top-0 left-0 right-0 z-50 px-6 py-5 flex justify-between items-center"
         style={{
-          background: 'linear-gradient(180deg, rgba(5,5,5,0.95) 0%, transparent 100%)',
+          background: `linear-gradient(180deg, ${SOUL.bg} 0%, transparent 100%)`,
         }}
       >
-        <div className="flex items-center gap-4 group cursor-pointer">
-          <div
-            className="w-12 h-12 flex items-center justify-center text-black font-bold text-2xl transition-transform duration-500 group-hover:scale-110"
-            style={{
-              background: SOUL.blood,
-              clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
-            }}
-          >
-            Λ
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-[0.3em] uppercase">ARIF-FAZIL</span>
-            <span className="text-[10px] tracking-[0.2em] uppercase" style={{ color: SOUL.dim }}>Lead Geoscientist</span>
-          </div>
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-bold tracking-[0.2em] uppercase" style={{ color: SOUL.text }}>
+            {tokens.identity.name}
+          </span>
+          <span className="text-xs hidden sm:inline" style={{ color: SOUL.textDim }}>
+            ·
+          </span>
+          <span className="text-xs hidden sm:inline" style={{ color: SOUL.textMuted }}>
+            {tokens.identity.title}
+          </span>
         </div>
         <AgeClock />
-        {/* arifOS Constellation Vitality Ring — live from MCP /health */}
-        <div className="hidden md:flex items-center gap-2 ml-6">
-          <div style="width:36px;height:36px;position:relative;display:inline-block">
-            <svg viewBox="0 0 44 44" style="width:100%;height:100%;transform:rotate(-90deg)">
-              <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(0,180,160,0.2)" strokeWidth="3"/>
-              <circle id="vit-ring" cx="22" cy="22" r="20" fill="none" stroke="#3DBE8A" strokeWidth="3" strokeLinecap="round" strokeDasharray="125.7" strokeDashoffset="21.4" transform="rotate(-90 22 22)"/>
-            </svg>
-            <span id="vit-num" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:monospace;font-size:0.55rem;font-weight:700;color:#3DBE8A">0.82</span>
-          </div>
-          <span id="verdict-badge" style="font-family:monospace;font-size:0.7rem;font-weight:700;color:#3DBE8A;border:1px solid rgba(61,190,138,0.3);padding:2px 6px;border-radius:4px;">SEAL</span>
-          <span style="font-family:monospace;font-size:0.75rem;color:#00B4A0;font-weight:700;letter-spacing:0.05em;">ΔΩΨ</span>
-        </div>
       </nav>
 
-      {/* HERO SECTION - Anomalous presence */}
+      {/* ==================== HERO ==================== */}
       <motion.section 
         style={{ opacity: heroOpacity, y: heroY }}
-        className="relative h-screen flex flex-col justify-center items-center text-center px-6"
+        className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24"
       >
-        <div className="max-w-5xl">
+        <div className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Trinity symbol */}
-            <div 
-              className="text-xs font-bold tracking-[0.5em] uppercase mb-8 flex items-center justify-center gap-4"
-            >
-              <span style={{ color: SOUL.blood }}>Ψ</span>
-              <span style={{ color: SOUL.dim }}>—</span>
-              <span style={{ color: SOUL.earth }}>Ω</span>
-              <span style={{ color: SOUL.dim }}>—</span>
-              <span style={{ color: SOUL.gold }}>Δ</span>
+            {/* Label */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-[1px] w-8" style={{ background: SOUL.gold }} />
+              <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: SOUL.gold }}>
+                {tokens.identity.subtitle}
+              </span>
             </div>
             
-            <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter leading-[0.85] mb-8">
-              <span style={{ color: SOUL.text }}>ARIF</span>
-              <br />
-              <span 
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage: `linear-gradient(135deg, ${SOUL.blood} 0%, ${SOUL.earth} 50%, ${SOUL.gold} 100%)`,
-                }}
-              >
-                FAZIL
-              </span>
+            {/* Name */}
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-8" style={{ color: SOUL.text }}>
+              {tokens.identity.name}
             </h1>
             
-            <p className="text-lg md:text-xl font-medium max-w-3xl mx-auto opacity-60 leading-relaxed mb-6">
-              Senior Exploration Geoscientist @ PETRONAS
-            </p>
-            <p className="text-sm md:text-base opacity-40 max-w-2xl mx-auto leading-relaxed mb-16">
-              Translating subsurface uncertainty into governed decisions. Building AI systems that remain accountable.
-              <br />
-              <span style={{ color: SOUL.blood }}>Ditempa Bukan Diberi</span> — Forged through experience, not given as theory.
+            {/* Proof line */}
+            <p className="text-lg md:text-xl leading-relaxed mb-6 max-w-xl" style={{ color: SOUL.textMuted }}>
+              {tokens.atAGlance[0]}. Built track record across structural, stratigraphic, basement, and frontier plays.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-6">
-              <JaggedButton href="#discoveries">Field Discoveries</JaggedButton>
-              <JaggedButton href="#theory" variant="outline">Constitutional Theory</JaggedButton>
+            {/* Tagline */}
+            <p 
+              className="text-sm mb-10 font-medium"
+              style={{ color: SOUL.gold }}
+            >
+              Ditempa Bukan Diberi — Forged through experience, not given as theory.
+            </p>
+            
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4">
+              <JaggedButton href="#discoveries">Exploration Work</JaggedButton>
+              <JaggedButton href="#arifos" variant="outline">arifOS Framework</JaggedButton>
+              <JaggedButton href="#writings" variant="ghost">Theory & Writings</JaggedButton>
             </div>
           </motion.div>
         </div>
         
+        {/* Scroll indicator */}
         <motion.div 
-          animate={{ y: [0, 12, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
-          className="absolute bottom-12 opacity-30"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
         >
-          <ChevronDown size={32} style={{ color: SOUL.blood }} />
+          <ChevronDown size={20} style={{ color: SOUL.textDim }} />
         </motion.div>
       </motion.section>
 
-      {/* MAIN CONTENT */}
-      <main className="relative z-10" style={{ background: SOUL.void }}>
-        
-        {/* DISCOVERIES SECTION */}
-        <section id="discoveries" className="py-32 px-6 md:px-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center gap-4 mb-4">
-              <div 
-                className="h-[1px] w-16"
-                style={{ background: SOUL.blood }}
-              />
-              <div 
-                className="text-xs font-bold tracking-[0.3em] uppercase"
-                style={{ color: SOUL.blood }}
-              >
-                Major Discoveries
-              </div>
+      {/* ==================== MAIN CONTENT ==================== */}
+      <main className="relative z-10" style={{ background: SOUL.bg }}>
+
+        {/* ==================== AT A GLANCE ==================== */}
+        <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <SectionHeader 
+              label="At a Glance" 
+              title={
+                <span style={{ color: SOUL.text }}>13+ years in exploration geoscience.</span>
+              }
+            />
+            <div className="space-y-4">
+              {tokens.atAGlance.map((item, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <span className="text-xs mt-1" style={{ color: SOUL.gold }}>◆</span>
+                  <p className="text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>{item}</p>
+                </div>
+              ))}
             </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold mb-16 leading-tight max-w-2xl">
-              Listening to the{' '}
-              <span style={{ color: SOUL.blood }}>Earth</span>.
-              <br />
-              Interpreting the{' '}
-              <span style={{ color: SOUL.earth }}>Subsurface</span>.
-            </h2>
-            
+          </div>
+        </section>
+
+        {/* ==================== SELECTED DISCOVERIES ==================== */}
+        <section id="discoveries" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-5xl">
+            <SectionHeader 
+              label="Selected Discoveries" 
+              title={
+                <>
+                  <span style={{ color: SOUL.text }}>What the work </span>
+                  <span style={{ color: SOUL.gold }}>proves.</span>
+                </>
+              }
+            />
             <div className="grid md:grid-cols-2 gap-4">
               {tokens.discoveries.map((d, i) => (
                 <DiscoveryCard
                   key={i}
                   name={d.name}
-                  type={d.type}
+                  playType={d.playType}
+                  role={d.role}
                   significance={d.significance}
+                  capability={d.capability}
                   index={i}
                 />
               ))}
@@ -504,232 +490,264 @@ const SoulSite: React.FC = () => {
           </div>
         </section>
 
-        <JaggedDivider />
+        {/* ==================== FROM GEOLOGY TO GOVERNANCE ==================== */}
+        <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <SectionHeader 
+              label="The Bridge" 
+              title={
+                <>
+                  <span style={{ color: SOUL.text }}>From Subsurface to </span>
+                  <span style={{ color: SOUL.earth }}>Systems.</span>
+                </>
+              }
+            />
+            <div className="space-y-6 text-base leading-relaxed" style={{ color: SOUL.textMuted }}>
+              <p>
+                Geology taught me something that didn't transfer to software engineering culture:
+              </p>
+              <p style={{ color: SOUL.text }}>
+                <strong>Uncertainty is not a weakness to be hidden.</strong> It is the condition you work in. 
+                The discipline is in knowing what your models still can't tell you.
+              </p>
+              <p>
+                Every basin I've worked: incomplete data, conflicting interpretations, high stakes on 
+                decisions that can't be unmade. The only professional integrity move is to expose the 
+                uncertainty rather than paper over it.
+              </p>
+              <p>
+                When I started building AI systems, I applied the same pressure: don't tell me what 
+                the model wants. Tell me what it doesn't know. Don't give me a confident answer when the 
+                confidence interval is wider than the question.
+              </p>
+              <p>
+                <span style={{ color: SOUL.gold }}>arifOS started as that discipline in code.</span> Then it 
+                became a framework. Then something other people could use.
+              </p>
+              <p className="text-sm" style={{ color: SOUL.textDim }}>
+                The 13 floors are not rules. They are calibrated constraints — the geological equivalent 
+                of "I need a pressure gradient and a seismic tie before I'll sign off on this prospect."
+              </p>
+            </div>
+          </div>
+        </section>
 
-        {/* THEORY SECTION */}
-        <section id="theory" className="py-32 px-6 md:px-24">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-start">
-            <div>
-              <div className="flex items-center gap-4 mb-4">
-                <div 
-                  className="h-[1px] w-16"
-                  style={{ background: SOUL.earth }}
-                />
-                <div 
-                  className="text-xs font-bold tracking-[0.3em] uppercase"
-                  style={{ color: SOUL.earth }}
-                >
-                  Constitutional AI
+        {/* ==================== WHAT I'M BUILDING NOW ==================== */}
+        <section id="arifos" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-5xl">
+            <SectionHeader 
+              label="What I'm Building Now" 
+              title={
+                <>
+                  <span style={{ color: SOUL.text }}>arifOS: </span>
+                  <span style={{ color: SOUL.gold }}>Governed AI Runtime.</span>
+                </>
+              }
+            />
+            <div className="grid md:grid-cols-2 gap-16 items-start">
+              {/* Left: explanation */}
+              <div className="space-y-5 text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>
+                <p>
+                  arifOS is a self-hosted AI agent framework built around explicit constraints, 
+                  not implicit guardrails.
+                </p>
+                <p>
+                  The core design pressure:
+                </p>
+                <ul className="space-y-2 pl-4">
+                  <li>— decisions must be reversible where possible</li>
+                  <li>— uncertainty must be stated, not performed</li>
+                  <li>— human authority is architectural, not advisory</li>
+                  <li>— every action is auditable against an immutable record</li>
+                </ul>
+                <p>
+                  13 constitutional floors (F1–F13) enforce these constraints at runtime. 
+                  They are not rules language — they are calibrated enforcement points.
+                </p>
+                <div className="pt-4">
+                  <code className="text-xs font-mono px-3 py-2 block" 
+                    style={{ background: SOUL.bgSecondary, color: SOUL.gold, border: `1px solid ${SOUL.border}` }}>
+                    pip install arifos
+                  </code>
                 </div>
+                <p className="text-xs" style={{ color: SOUL.textDim }}>
+                  arifOS is the consequence of working in high-stakes subsurface decisions. 
+                  It is not a startup product. It is a discipline, shipped.
+                </p>
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-bold mb-12 leading-tight">
-                From{' '}
-                <span style={{ color: SOUL.earth }}>Strata</span>
-                <br />
-                to{' '}
-                <span style={{ color: SOUL.gold }}>Systems</span>.
-              </h2>
-              
-              <div className="space-y-8 text-lg opacity-70 leading-relaxed">
-                <p>
-                  The discipline of rigorous verification and calibrated humility 
-                  born from 13+ years in the Malay Basin gave rise to{' '}
+              {/* Right: stats */}
+              <div className="space-y-0">
+                <StatRow value="17" label="MCP-native tools" accent={SOUL.gold} />
+                <StatRow value="13" label="Constitutional floors (F1–F13)" accent={SOUL.earth} />
+                <StatRow value="VAULT999" label="Immutable SHA-256 audit ledger" accent={SOUL.goldDim} />
+                <StatRow value="AGPL-3.0" label="License · Self-hosted" accent={SOUL.textDim} />
+                <div className="pt-4">
+                  <div className="flex flex-wrap gap-3">
+                    <JaggedButton href="https://arifosmcp.arif-fazil.com" variant="outline">
+                      Live Runtime
+                    </JaggedButton>
+                    <JaggedButton href="https://github.com/ariffazil/arifOS" variant="ghost">
+                      GitHub
+                    </JaggedButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ==================== EXPERIENCE ==================== */}
+        <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <SectionHeader 
+              label="Experience" 
+              title={
+                <span style={{ color: SOUL.text }}>Where the discipline came from.</span>
+              }
+            />
+            <ExperienceItem
+              company={tokens.experience.company}
+              period={tokens.experience.period}
+              summary={tokens.experience.summary}
+              skills={tokens.experience.skills}
+            />
+            <p className="text-sm italic" style={{ color: SOUL.textDim }}>
+              {tokens.experience.closing}
+            </p>
+          </div>
+        </section>
+
+        {/* ==================== EDUCATION ==================== */}
+        <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <SectionHeader 
+              label="Education" 
+              title={
+                <span style={{ color: SOUL.text }}>The dual training.</span>
+              }
+            />
+            <div className="mb-6">
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-2 mb-2">
+                <h3 className="text-base font-bold" style={{ color: SOUL.text }}>
+                  {tokens.education.school}
+                </h3>
+                <span className="text-xs font-mono" style={{ color: SOUL.goldDim }}>
+                  {tokens.education.period}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {tokens.education.degrees.map((d) => (
                   <span 
-                    className="font-bold border-b-2"
-                    style={{ borderColor: SOUL.blood, color: SOUL.text }}
-                  >
-                    arifOS
-                  </span>
-                  —a constitutional framework for agentic safety.
-                </p>
-                <p>
-                  13 binding floors. Thermodynamic governance. 
-                  Human sovereignty preserved through{' '}
-                  <span style={{ color: SOUL.gold }}>F13 KHILAFAH</span>.
-                </p>
-              </div>
-            </div>
-            
-            {/* Stats with jagged cards */}
-            <div className="grid grid-cols-1 gap-6">
-              {[
-                { value: '100%', label: 'Discovery Rate', color: SOUL.blood },
-                { value: '13+', label: 'Years Experience', color: SOUL.earth },
-                { value: '17+', label: 'Governed Tools (live)', color: SOUL.gold },
-                { value: '13', label: 'Constitutional Floors', color: SOUL.blood },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="p-8 transition-all duration-300 hover:scale-[1.02]"
-                  style={{
-                    background: `${stat.color}08`,
-                    border: `1px solid ${stat.color}30`,
-                    clipPath: 'polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px))',
-                  }}
-                >
-                  <div 
-                    className="text-5xl font-bold mb-2"
-                    style={{ color: stat.color }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div className="text-xs font-bold tracking-widest uppercase opacity-40">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <JaggedDivider color={SOUL.gold} />
-
-        {/* WRITINGS SECTION */}
-        <section className="py-32 px-6 md:px-24">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center gap-4 mb-4">
-              <div 
-                className="h-[1px] w-16"
-                style={{ background: SOUL.gold }}
-              />
-              <div 
-                className="text-xs font-bold tracking-[0.3em] uppercase"
-                style={{ color: SOUL.gold }}
-              >
-                Theory & Writings
-              </div>
-            </div>
-            
-            <div className="space-y-4 mt-12">
-              {tokens.articles.map((a, i) => (
-                <a 
-                  key={i} 
-                  href={a.url} 
-                  className="flex flex-col md:flex-row md:items-center justify-between p-8 border border-white/10 transition-all group relative overflow-hidden"
-                  style={{
-                    clipPath: 'polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px))',
-                  }}
-                >
-                  <div className="relative z-10 flex-1">
-                    <div 
-                      className="text-[10px] font-mono mb-2 opacity-30"
-                    >
-                      0{i+1}
-                    </div>
-                    <h3 
-                      className="text-xl font-medium transition-colors group-hover:text-[#FF3333]"
-                    >
-                      {a.title}
-                    </h3>
-                  </div>
-                  <ExternalLink 
-                    className="relative z-10 opacity-20 group-hover:opacity-100 transition-all mt-4 md:mt-0" 
-                    style={{ color: SOUL.text }}
-                  />
-                  {/* Hover fill */}
-                  <div 
-                    className="absolute inset-0 transition-transform duration-500 opacity-5"
-                    style={{
-                      background: SOUL.blood,
-                      transform: 'translateY(100%)',
+                    key={d}
+                    className="text-xs px-2 py-1"
+                    style={{ 
+                      background: `${SOUL.earth}15`, 
+                      color: SOUL.earth,
+                      border: `1px solid ${SOUL.earth}30`,
                     }}
-                  />
-                </a>
+                  >
+                    {d}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>
+              {tokens.education.summary}
+            </p>
+          </div>
+        </section>
+
+        {/* ==================== THEORY & WRITINGS ==================== */}
+        <section id="writings" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <SectionHeader 
+              label="Theory & Writings" 
+              title={
+                <>
+                  <span style={{ color: SOUL.text }}>Depth for those who </span>
+                  <span style={{ color: SOUL.gold }}>scrolled.</span>
+                </>
+              }
+            />
+            <div className="space-y-3">
+              {tokens.articles.map((a, i) => (
+                <ArticleRow key={i} title={a.title} url={a.url} index={i + 1} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="py-24 px-6 border-t border-white/5 text-center">
-          <div 
-            className="text-6xl font-bold mb-8"
-            style={{
-              background: `linear-gradient(135deg, ${SOUL.blood} 0%, ${SOUL.earth} 50%, ${SOUL.gold} 100%)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}
-          >
-            ΔΩΨ
-          </div>
-          <p className="text-sm opacity-40 tracking-widest uppercase mb-8">
-            Ditempa Bukan Diberi — Forged, Not Given
-          </p>
-          <div className="flex justify-center gap-8 text-xs opacity-30">
-            <span style={{ color: SOUL.blood }}>Ψ SOUL</span>
-            <span>·</span>
-            <span style={{ color: SOUL.earth }}>Ω MIND</span>
-            <span>·</span>
-            <span style={{ color: SOUL.gold }}>Δ BODY</span>
+        {/* ==================== FOOTER ==================== */}
+        <footer className="py-16 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
+          <div className="max-w-3xl">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 mb-12">
+              <div>
+                <div className="text-xl font-bold tracking-tight mb-2" style={{ color: SOUL.text }}>
+                  {tokens.identity.name}
+                </div>
+                <div className="text-sm" style={{ color: SOUL.textMuted }}>
+                  {tokens.identity.title}
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-6">
+                {[
+                  { label: 'GitHub', href: tokens.contact.github },
+                  { label: 'arifOS MCP', href: 'https://arifosmcp.arif-fazil.com' },
+                  { label: 'GEOX', href: 'https://geox.arif-fazil.com' },
+                  { label: 'Medium', href: tokens.contact.medium },
+                ].map((link) => (
+                  <a 
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs tracking-widest uppercase no-underline transition-opacity hover:opacity-100"
+                    style={{ color: SOUL.textDim, opacity: 0.6 }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            
+            <div className="pt-8 border-t" style={{ borderColor: SOUL.border }}>
+              <p className="text-xs leading-relaxed max-w-xl" style={{ color: SOUL.textDim }}>
+                <strong style={{ color: SOUL.textMuted }}>Disclaimer:</strong> arifOS is a personal 
+                initiative. The views and systems presented here are my own and not official statements 
+                of my employer.
+              </p>
+              <div className="flex items-center gap-4 mt-6">
+                <span className="text-xs" style={{ color: SOUL.goldDim }}>
+                  Ditempa Bukan Diberi
+                </span>
+                <span style={{ color: SOUL.textDim }}>·</span>
+                <span className="text-xs" style={{ color: SOUL.textDim }}>
+                  © Muhammad Arif bin Fazil
+                </span>
+              </div>
+            </div>
           </div>
         </footer>
       </main>
 
-      {/* arifOS Constellation Section */}
-      <div style="padding:3rem 2rem 2rem;text-align:center;border-top:1px solid rgba(0,180,160,0.12);margin:0 1rem;">
-        <p style="font-family:monospace;font-size:0.65rem;color:#6B7280;letter-spacing:0.1em;margin-bottom:0.75rem">ARIFOS CONSTELLATION</p>
-        <p style="color:#9CA3AF;font-size:0.8rem;margin-bottom:1.5rem">arifOS MCP · 13 constitutional floors · 888_HOLD human veto · VAULT999 sealed audit</p>
-        <div style="display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
-          <a href="https://arifosmcp.arif-fazil.com/" style="background:rgba(0,180,160,0.1);border:1px solid rgba(0,180,160,0.3);color:#00B4A0;padding:8px 14px;border-radius:6px;font-size:0.75rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🔱 arifOS MCP Runtime</a>
-          <a href="https://geox.arif-fazil.com/" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 14px;border-radius:6px;font-size:0.75rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">🌏 GEOX Earth Intelligence</a>
-          <a href="https://aaa.arif-fazil.com/" style="background:rgba(0,180,160,0.05);border:1px solid rgba(0,180,160,0.2);color:#9CA3AF;padding:8px 14px;border-radius:6px;font-size:0.75rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">Δ AAA Wire</a>
-        </div>
-        <p style="font-family:monospace;font-size:0.6rem;color:#4B5563;margin-top:1rem">DITEMPA BUKAN DIBERI · MCP: arifos://ecosystem/context-v1</p>
-      </div>
-
-      {/* arifOS MCP Vitality Ring JS */}
-      <script async>
-      (function() {
-        async function loadArifOSSeal() {
-          try {
-            const res = await fetch('https://arifosmcp.arif-fazil.com/health');
-            const d = await res.json();
-            const vit = d.thermodynamic?.vitality_index ?? 0.82;
-            const verd = d.thermodynamic?.verdict || d.verdict || 'SEAL';
-            const ring = document.getElementById('vit-ring');
-            const num = document.getElementById('vit-num');
-            if (ring) {
-              const circ = 2 * Math.PI * 20;
-              ring.style.strokeDashoffset = circ * (1 - vit);
-            }
-            if (num) num.textContent = (typeof vit === 'number' ? vit.toFixed(2) : vit);
-            const badge = document.getElementById('verdict-badge');
-            if (badge) {
-              badge.textContent = verd;
-              badge.style.color = verd === 'SEAL' ? '#3DBE8A' : verd === 'HOLD' ? '#f59e0b' : '#ef4444';
-              badge.style.borderColor = verd === 'SEAL' ? 'rgba(61,190,138,0.3)' : verd === 'HOLD' ? 'rgba(245,158,11,0.3)' : 'rgba(239,68,68,0.3)';
-            }
-          } catch(e) {}
-        }
-        loadArifOSSeal();
-        setInterval(loadArifOSSeal, 30000);
-      })();
-      </script>
-
-      {/* Trinity Navigation Footer */}
+      {/* ==================== FIXED BOTTOM NAV ==================== */}
       <footer 
         className="fixed bottom-0 left-0 right-0 z-50 px-4 py-3"
         style={{
-          background: 'linear-gradient(0deg, rgba(15,13,13,0.98) 0%, rgba(15,13,13,0.85) 100%)',
-          borderTop: `1px solid ${SOUL.blood}30`,
+          background: `linear-gradient(0deg, ${SOUL.bg}F5 0%, ${SOUL.bg}CC 100%)`,
+          borderTop: `1px solid ${SOUL.border}`,
+          backdropFilter: 'blur(8px)',
         }}
       >
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {[
-            { label: 'Ψ SOUL', href: 'https://arif-fazil.com', color: SOUL.blood },
-            { label: 'Ω MIND', href: 'https://apex.arif-fazil.com', color: SOUL.earth },
-            { label: 'Δ BODY', href: 'https://aaa.arif-fazil.com', color: SOUL.gold },
-            { label: 'Δ MCP', href: 'https://arifosmcp.arif-fazil.com', color: SOUL.gold },
-            { label: '◉ FORGE', href: 'https://forge.arif-fazil.com', color: SOUL.dim },
-            { label: '◎ WAW', href: 'https://waw.arif-fazil.com', color: SOUL.dim },
-            { label: 'Ω WIKI', href: 'https://wiki.arif-fazil.com', color: SOUL.dim },
-            { label: 'Φ GEOX', href: 'https://geox.arif-fazil.com', color: SOUL.earth },
-          ].map((link) => (
+          {tokens.trinity.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-[10px] font-mono tracking-wider transition-all duration-200 hover:brightness-125"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] font-mono tracking-wider transition-all duration-200 hover:brightness-125 no-underline"
               style={{ color: link.color }}
             >
               {link.label}
@@ -737,14 +755,6 @@ const SoulSite: React.FC = () => {
           ))}
         </div>
       </footer>
-
-      {/* CSS Keyframes */}
-      <style>{`
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(200%); }
-        }
-      `}</style>
     </div>
   );
 };
