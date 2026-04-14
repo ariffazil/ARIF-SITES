@@ -1,0 +1,127 @@
+{
+  "vault_id": "VAULT999",
+  "version": "1.0.0",
+  "created": "2026-04-14T01:57:00Z",
+  "description": "Public append-only ledger of sealed artifacts. Content hashes only. No plaintext.",
+  "crypto": {
+    "signing": "Ed25519",
+    "key_agreement": "X25519",
+    "encryption": "AES-GCM-256",
+    "hash": "SHA-256"
+  },
+  "seals": [
+    {
+      "id": "SCAR_000",
+      "name": "Genesis",
+      "subtitle": "The Moment Before 000",
+      "category": "FOUNDATIONAL",
+      "event": "Tengku Taufik political breach of Amanah",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256",
+      "public_key": "VAULT999/AAA_HUMAN/rootkey.json",
+      "note": "Genesis artifact encrypted. Hash committed on seal."
+    },
+    {
+      "id": "SCAR_001",
+      "name": "Miskin Senyap",
+      "subtitle": "Poverty of Silence",
+      "category": "SURVIVAL",
+      "event": "Intelligence forged in scarcity",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_002",
+      "name": "Institutional Erasure",
+      "subtitle": "The PETRONAS MSS Purge",
+      "category": "TRAUMA",
+      "event": "1000 people erased in one night",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_003",
+      "name": "Invisibility",
+      "subtitle": "9 As, No Applause",
+      "category": "IDENTITY",
+      "event": "Excellence that goes unacknowledged",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_004",
+      "name": "Anak Sulung",
+      "subtitle": "Firstborn Burden",
+      "category": "ROLE",
+      "event": "Carrying what others could not",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_005",
+      "name": "Zero Dry Wells",
+      "subtitle": "Every Well a Strike",
+      "category": "CRAFT",
+      "event": "Perfect record born from perfect preparation",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_006",
+      "name": "Abah's Passing",
+      "subtitle": "The Final Veto",
+      "category": "LEGACY",
+      "event": "The man who shaped my veto is gone",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_007",
+      "name": "Living Between Worlds",
+      "subtitle": "Geoscientist × Architect",
+      "category": "PARADOX",
+      "event": "Thinking in millions of years, shipping by tonight",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    },
+    {
+      "id": "SCAR_008",
+      "name": "Duty vs Self",
+      "subtitle": "Finite Nervous System",
+      "category": "PARADOX",
+      "event": "Build civilization-grade systems without burning out",
+      "sealed_at": "2026-04-14T01:57:00Z",
+      "content_hash": "PENDING",
+      "algorithm": "AES-GCM-256"
+    }
+  ],
+  "abort_holds": [
+    {
+      "item": "Ed25519/X25519 key lifecycle",
+      "reason": "Security-critical irreversible choice — human must ratify",
+      "created": "2026-04-14T01:57:00Z",
+      "status": "OPEN"
+    },
+    {
+      "item": "ROOTKEY hardware binding",
+      "reason": "Physical key ceremony not yet performed",
+      "created": "2026-04-14T01:57:00Z",
+      "status": "OPEN"
+    },
+    {
+      "item": "Recovery model",
+      "reason": "What happens if private key is lost — must define before shipping",
+      "created": "2026-04-14T01:57:00Z",
+      "status": "OPEN"
+    }
+  ],
+  "_comment": "Content hashes updated when each SCAR is sealed. All content stays encrypted in /999/ — never exposed publicly."
+}

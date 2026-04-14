@@ -97,40 +97,82 @@
       status.textContent = 'Loading crypto engine...';
 
       try {
-        await cryptoInit();
-        const challenge = generateChallenge();
-        status.textContent = 'Challenge ready. Sign with ROOTKEY on your device.';
-        // In production: challenge sent to companion app on phone
-        // For demo: accept any valid signature to show the vault
-        sessionOpen = true;
-        status.textContent = 'Session verified.';
-        document.getElementById('gate_challenge').style.display = 'none';
-        document.getElementById('gate_options').style.display = 'grid';
-        loadSealStatus();
+        await VaultCrypto.init();
+        status.textContent = 'Engine ready. Enter ROOTKEY to unlock...';
+
+        // PRODUCTION: ROOTKEY is entered via companion app on phone.
+        // The app receives the challenge, signs with Ed25519 ROOTKEY,
+        // and returns the signature + public key hex.
+        //
+        // For demo: Enter any Ed25519 private key hex (64 hex chars)
+        // to test the full crypto pipeline:
+        //   Ed25519 signing → X25519 key agreement → AES-GCM session
+
+        const keyInput = prompt(
+          'ROOTKEY Auth\n\n' +
+          'Production: Use companion app on phone.\n' +
+          'Demo: Paste your Ed25519 private key hex (64 chars)\n\n' +
+          'Your browser will verify Ed25519 signature, then derive\n' +
+          'AES-GCM session key via X25519 HKDF.'
+        );
+
+        if (!keyInput || keyInput.trim().length === 0) {
+          status.textContent = 'No key provided.';
+          btn.disabled = false;
+          return;
+        }
+
+        status.textContent = 'Verifying ROOTKEY signature...';
+
+        // For demo: use a test public key derived from the entered private key
+        // (This lets you test the full flow locally)
+        // Production would use the real server-side challenge
+        const pubKeyHex = await deriveTestPublicKey(keyInput.trim());
+        const opened = await VaultCrypto.openVault(pubKeyHex, keyInput.trim());
+
+        if (opened) {
+          sessionOpen = true;
+          status.textContent = '✓ Session verified. AES-GCM session open.';
+          document.getElementById('gate_challenge').style.display = 'none';
+          document.getElementById('gate_options').style.display = 'grid';
+          loadSealStatus();
+        }
       } catch(e) {
-        status.textContent = 'Crypto init failed: ' + e.message;
+        status.textContent = 'Auth failed: ' + e.message;
         btn.disabled = false;
       }
     }
 
+    async function deriveTestPublicKey(privateKeyHex) {
+      // For demo only: derive a test public key from the entered private key
+      // Production: public key comes from Vault999 manifest
+      const keyBytes = VaultCrypto.hexToBuf(privateKeyHex);
+      const key = await crypto.subtle.importKey(
+        'raw', keyBytes,
+        { name: 'Ed25519' },
+        false,
+        ['sign']
+      );
+      const publicKey = await crypto.subtle.exportKey('raw', key);
+      return VaultCrypto.bufToHex(publicKey);
+    }
+
     async function loadSealStatus() {
-      // Load seal metadata (hashes only, no content)
-      // In production: fetch from Vault999 on VPS
-      const seals = [
-        { id: '000', name: 'Genesis (Tengku Taufik)', hash: 'pending' },
-        { id: '001', name: 'Miskin Senyap', hash: 'pending' },
-        { id: '002', name: 'Institutional Erasure', hash: 'pending' },
-        { id: '003', name: 'Invisibility', hash: 'pending' },
-        { id: '004', name: 'Anak Sulung', hash: 'pending' },
-        { id: '005', name: 'Zero Dry Wells', hash: 'pending' },
-        { id: '006', name: "Abah's Passing (Abah Check)", hash: 'pending' },
-        { id: '007', name: 'Living Between Worlds', hash: 'pending' },
-        { id: '008', name: 'Duty vs Self', hash: 'pending' }
-      ];
-      seals.forEach((s, i) => {
-        const el = document.getElementById('seal_' + s.id);
-        if (el) el.setAttribute('data-name', s.name);
-      });
+      // Load seal registry from vault999.json (public, hashes only)
+      try {
+        const res = await fetch('vault/vault999.json');
+        const vault = await res.json();
+        vault.seals.forEach(seal => {
+          const id = seal.id.replace('SCAR_', '').replace('_', '').padStart(3, '0').slice(0,3);
+          const el = document.getElementById('seal_' + id);
+          if (el) {
+            el.setAttribute('data-name', seal.name);
+            el.setAttribute('title', seal.category + ': ' + seal.name);
+          }
+        });
+      } catch(e) {
+        console.warn('Could not fetch vault registry', e);
+      }
     }
   </script>
 </body>
