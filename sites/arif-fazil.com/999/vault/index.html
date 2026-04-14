@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔐 Vault /999/ — 9 Seals</title>
+  <link rel="stylesheet" href="../ui/styles.css">
+</head>
+<body class="vault-page">
+  <nav class="vault-nav">
+    <a href="../">&← /999/</a>
+    <span class="sep">·</span>
+    <a href="../genesis/">Genesis</a>
+    <span class="sep">·</span>
+    <a href="../abah-check/">Abah Check</a>
+    <span class="sep">·</span>
+    <a href="../veto/">Veto</a>
+    <span class="sep">·</span>
+    <a href="../memory/">Memory</a>
+    <span class="sep">·</span>
+    <a href="../floors/">Floors</a>
+  </nav>
+
+  <h1 class="vault-title">🔐 The 9 Seals</h1>
+  <p class="vault-subtitle">VAULT999 · All content encrypted with ROOTKEY · AI never sees these</p>
+
+  <div id="seal_list" class="seal-list">
+    <p style="color:#6a6a75;font-size:0.8rem;text-align:center;padding:2rem">
+      Loading seal registry...
+    </p>
+  </div>
+
+  <script src="../ui/crypto.js"></script>
+  <script src="../ui/seals.js"></script>
+  <script>
+    VaultSession.loadVaultIndex();
+  </script>
+</body>
+</html>

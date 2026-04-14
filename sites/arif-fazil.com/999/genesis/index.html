@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📜 Genesis — The Moment Before 000</title>
+  <link rel="stylesheet" href="../ui/styles.css">
+</head>
+<body class="vault-page">
+  <nav class="vault-nav">
+    <a href="../">&← /999/</a>
+    <span class="sep">·</span>
+    <a href="../vault/">Vault</a>
+    <span class="sep">·</span>
+    <a href="../abah-check/">Abah Check</a>
+    <span class="sep">·</span>
+    <a href="../veto/">Veto</a>
+  </nav>
+
+  <h1 class="vault-title">📜 Genesis Artifact</h1>
+  <p class="vault-subtitle">SCAR_000 · The Moment Before 000 · Tengku Taufik</p>
+
+  <div class="seal-card">
+    <div class="seal-card-header">
+      <span class="seal-id">SCAR_000 · FOUNDATIONAL · SEALED</span>
+      <span class="seal-status">🔒 ENCRYPTED</span>
+    </div>
+    <div class="seal-icon" style="font-size:3rem;margin:1rem 0">⚡</div>
+    <h3 class="seal-name">The Moment Before 000</h3>
+    <p class="seal-subtitle">The political breach of Amanah that started arifOS</p>
+    <p class="seal-desc" style="margin-top:1rem;color:#c5c5cd;line-height:1.7">
+      The Genesis artifact lives encrypted in VAULT999.<br>
+      It is the birth certificate of the sovereign kernel.<br>
+      ROOTKEY required to decrypt.
+    </p>
+    <button class="seal-read" onclick="decryptGenesis()" id="genesis_btn">
+      🔓 Decrypt Genesis
+    </button>
+    <div id="genesis_content" style="display:none;margin-top:1.5rem;text-align:left"></div>
+  </div>
+
+  <script>
+    async function decryptGenesis() {
+      if (!VaultSession.isSessionOpen()) {
+        alert('Verify ROOTKEY first at /999/');
+        return;
+      }
+      const btn = document.getElementById('genesis_btn');
+      const content = document.getElementById('genesis_content');
+      btn.disabled = true; btn.textContent = 'Decrypting...';
+      // In production: fetch .enc file, decrypt with session key
+      // For now: placeholder
+      content.style.display = 'block';
+      content.innerHTML = '<p style="color:#6a6a75;font-style:italic">Genesis content loads here, decrypted with ROOTKEY session key.</p>';
+      btn.textContent = '✓ Decrypted';
+    }
+  </script>
+  <script src="../ui/crypto.js"></script>
+  <script src="../ui/seals.js"></script>
+</body>
+</html>

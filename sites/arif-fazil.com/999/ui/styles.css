@@ -1,0 +1,351 @@
+/* /999/ UI — Sovereign Vault Styles */
+:root {
+  --gold: #c9a66b;
+  --gold-dim: rgba(201, 166, 107, 0.4);
+  --bg: #0a0a0a;
+  --bg-secondary: #0f0f12;
+  --text: #f5f5f5;
+  --text-muted: #6a6a75;
+  --border: rgba(255,255,255,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Gate screen */
+.vault-gate {
+  background: radial-gradient(ellipse at center, #0f0f12 0%, #0a0a0a 70%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.gate-container {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gate-header {
+  margin-bottom: 2rem;
+}
+
+.trinity-glyph {
+  font-size: 1.5rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+.trinity-glyph .psi { color: var(--gold); }
+.trinity-glyph .omega { color: #6b8cd6; }
+.trinity-glyph .delta { color: #00d4aa; }
+.trinity-glyph .sep { color: var(--text-muted); margin: 0 0.3em; }
+
+.gate-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.gate-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.gate-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 2rem 0;
+}
+
+.gate-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c5c5cd;
+  margin-bottom: 2rem;
+}
+
+/* Seal grid */
+.seal-preview {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.seal-grid {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.seal-slot {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.seal-slot:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.seal-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Challenge */
+.gate-challenge {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.challenge-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.unlock-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.unlock-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+.challenge-note {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+/* Room links */
+.gate-options {
+  display: grid;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.room-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+}
+
+.room-btn:hover {
+  border-color: var(--gold-dim);
+  transform: translateX(4px);
+}
+
+.room-icon {
+  font-size: 1.5rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.room-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c5c5cd;
+}
+
+.back-btn {
+  margin-top: 0.5rem;
+  border-color: rgba(255,255,255,0.05);
+}
+
+.back-btn:hover {
+  border-color: var(--gold-dim);
+}
+
+/* Footer */
+.gate-footer {
+  margin-top: 2.5rem;
+}
+
+.footer-note {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Vault inner pages */
+.vault-page {
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 2rem;
+}
+
+.vault-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.vault-nav a {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.vault-nav a:hover { color: var(--gold); }
+.vault-nav .sep { color: var(--text-muted); }
+
+.vault-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.vault-subtitle {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Seal cards */
+.seal-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s;
+}
+
+.seal-card:hover {
+  border-color: var(--gold-dim);
+}
+
+.seal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.seal-id {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.seal-status {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  color: var(--gold);
+}
+
+.seal-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.seal-desc {
+  font-size: 0.8rem;
+  color: #c5c5cd;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.seal-read {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.seal-read:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* Veto page */
+.veto-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.veto-empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}

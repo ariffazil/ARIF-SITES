@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛑 888_HOLD — Human Veto Interface</title>
+  <link rel="stylesheet" href="../ui/styles.css">
+</head>
+<body class="vault-page">
+  <nav class="vault-nav">
+    <a href="../">&← /999/</a>
+    <span class="sep">·</span>
+    <a href="../vault/">Vault</a>
+    <span class="sep">·</span>
+    <a href="../genesis/">Genesis</a>
+    <span class="sep">·</span>
+    <a href="../abah-check/">Abah Check</a>
+  </nav>
+
+  <h1 class="vault-title">🛑 888_HOLD Veto</h1>
+  <p class="vault-subtitle">Human Sovereign Veto · F12 Greek Layer · AI cannot bypass</p>
+
+  <div class="seal-card">
+    <div class="seal-card-header">
+      <span class="seal-id">888_HOLD · SOVEREIGN</span>
+      <span class="seal-status" style="border-color:#c94b2e;color:#c94b2e">⚡ ARMED</span>
+    </div>
+    <h3 class="seal-name">You hold the final key.</h3>
+    <p class="seal-desc">
+      When an action fails a constitutional floor or is flagged high-stakes,
+      it routes to 888_HOLD. Only you can sign it forward or veto it.
+    </p>
+  </div>
+
+  <h3 style="color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;margin:2rem 0 1rem">
+    Pending Actions
+  </h3>
+
+  <div id="pending_list">
+    <div class="veto-empty">
+      <p style="font-size:2rem;margin-bottom:0.5rem">✓</p>
+      <p>No pending actions. 888_HOLD is clear.</p>
+    </div>
+  </div>
+
+  <h3 style="color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;margin:2rem 0 1rem">
+    Veto History
+  </h3>
+  <div id="veto_log">
+    <div class="veto-empty">
+      <p>No vetoes cast. The log lives in VAULT999.</p>
+    </div>
+  </div>
+
+  <script>
+    async function loadVetoData() {
+      // In production: fetch pending.json and veto-log.json from server
+    }
+    loadVetoData();
+  </script>
+  <script src="../ui/crypto.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚖️ Abah Check — Legacy Veto</title>
+  <link rel="stylesheet" href="../ui/styles.css">
+</head>
+<body class="vault-page">
+  <nav class="vault-nav">
+    <a href="../">&← /999/</a>
+    <span class="sep">·</span>
+    <a href="../vault/">Vault</a>
+    <span class="sep">·</span>
+    <a href="../genesis/">Genesis</a>
+    <span class="sep">·</span>
+    <a href="../veto/">Veto</a>
+  </nav>
+
+  <h1 class="vault-title">⚖️ Abah Check</h1>
+  <p class="vault-subtitle">The highest moral veto in arifOS · Derived from Fazil bin Khamis</p>
+
+  <div class="seal-card">
+    <div class="seal-card-header">
+      <span class="seal-id">SCAR_006 · LEGACY · ACTIVE</span>
+      <span class="seal-status" style="border-color:#c94b2e;color:#c94b2e">⚡ ACTIVE</span>
+    </div>
+    <h3 class="seal-name">Would this make Abah proud?</h3>
+    <p class="seal-subtitle">The question that never sleeps</p>
+  </div>
+
+  <div class="seal-card" style="text-align:left">
+    <h4 style="color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:1rem">DEFINITION</h4>
+    <p class="seal-desc">
+      Abah Check is not fear of judgment. It is a dignity-law fail-safe derived from
+      Fazil bin Khamis — Arif's father, who died in 2024.
+    </p>
+    <p class="seal-desc" style="margin-top:1rem">
+      It is one of Arif's earliest and most sacred laws. It asks:
+    </p>
+    <blockquote style="border-left:2px solid var(--gold);padding-left:1rem;margin:1rem 0;font-size:1.1rem;color:#f5f5f5;font-style:italic">
+      "Would the person who shaped my integrity be proud of this action?"
+    </blockquote>
+  </div>
+
+  <div class="seal-card" style="text-align:left">
+    <h4 style="color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:1rem">OPERATIONAL SCOPE</h4>
+    <p class="seal-desc">
+      The Abah Check is triggered automatically by arifOS MCP when:
+    </p>
+    <ul style="list-style:none;margin-top:1rem;font-size:0.8rem;color:#c5c5cd">
+      <li>✓ An action affects another person's dignity or livelihood</li>
+      <li>✓ A decision is irreversible and high-stakes</li>
+      <li>✓ The TEARFRAME gate fires AMANAH=LOCK</li>
+      <li>✓ The action conflicts with a constitutional Floor (F1-F13)</li>
+      <li>✓ Arif explicitly invokes it on any decision</li>
+    </ul>
+  </div>
+
+  <div class="seal-card" style="text-align:left">
+    <h4 style="color:var(--gold);font-size:0.8rem;letter-spacing:0.1em;margin-bottom:1rem">WHEN IT FIRES</h4>
+    <p class="seal-desc">
+      Every time the Abah Check fires, it is logged here — not to judge, but to preserve
+      the record of a man who cared enough to ask the question.
+    </p>
+    <div id="trigger_log" style="margin-top:1rem">
+      <p style="color:#6a6a75;font-size:0.75rem;text-align:center;padding:1rem">Loading trigger log...</p>
+    </div>
+  </div>
+
+  <script src="../ui/crypto.js"></script>
+  <script>
+    // In production: fetch trigger log from server
+    document.getElementById('trigger_log').innerHTML =
+      '<p style="color:#6a6a75;font-size:0.75rem;text-align:center;padding:1rem">No triggers yet recorded. Log lives in VAULT999.</p>';
+  </script>
+</body>
+</html>
