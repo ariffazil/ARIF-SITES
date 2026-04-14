@@ -27,8 +27,8 @@ export const tokens = {
   identity: {
     name: 'ARIF FAZIL',
     fullName: 'Muhammad Arif bin Fazil',
-    title: 'Senior Exploration Geoscientist',
-    subtitle: 'Builder of governed AI systems',
+    title: 'Explorationist. Economist. AI Safety Architect.',
+    subtitle: 'Northern Malay, Penang-bred, Balakong-rooted.',
     company: 'PETRONAS Carigali Sdn Bhd',
     experience: '13+ Years',
     location: 'Kuala Lumpur, Malaysia',
@@ -48,39 +48,39 @@ export const tokens = {
 
   discoveries: [
     {
+      name: 'PM318',
+      playType: '12+ yrs · 100% · Shallowest in Malaysia',
+      role: 'Explorationist · Prospect leader',
+      significance: 'The 100% success rate is a statistic. The reality: 12 years of frontier basins where most data said \"dry hole.\" PM318 required holding position against negative sentiment for 8 quarters — the shallowest discovery in Malaysia came because we refused to dismiss the anomaly that didn\'t fit the model.',
+      capability: 'frontier basin evaluation, conviction-based drilling, anomaly trust',
+    },
+    {
+      name: 'LEBAH EMAS-1',
+      playType: 'Frontier play opening',
+      role: 'Workflow design / prospect evaluation',
+      significance: 'Workflow design and a major confirmed discovery in a slope-basement play. A demonstration that moving beyond template thinking toward system-level geological reasoning opens plays others marked as uneconomic until they flowed.',
+      capability: 'frontier play evaluation, sequence stratigraphy, system-level reasoning',
+    },
+    {
       name: 'BEKANTAN-1',
       playType: 'Shallow-play exploration success',
       role: 'Discovery leader / key contributor',
-      significance: 'Helped prove a new shallow play concept in the Malay Basin, reflecting the value of integrating structure, play understanding, and disciplined risking into a defensible drilling decision.',
+      significance: 'Proved a new shallow play concept in the Malay Basin — integrating structure, play understanding, and disciplined risking into a defensible drilling decision when the consensus was to walk away.',
       capability: 'structural interpretation, risking, decision quality',
     },
     {
       name: 'PUTERI BASEMENT-1',
       playType: 'Fractured basement play',
       role: 'Key contributor',
-      significance: 'Contributed to a breakthrough basement outcome tied to PSC value uplift and commercial significance. A demonstration that unconventional-looking opportunities often require stronger geological conviction, not weaker standards.',
+      significance: 'A breakthrough basement outcome tied to PSC value uplift. The lesson: unconventional-looking opportunities often require stronger geological conviction, not weaker standards.',
       capability: 'basement evaluation, play fairway mapping, commercial geology',
-    },
-    {
-      name: 'LEBAH EMAS-1',
-      playType: 'Frontier play opening',
-      role: 'Workflow design / prospect evaluation',
-      significance: 'Associated with workflow design and a major confirmed discovery in a slope-basement play. Reflects a longer pattern of moving beyond template thinking and toward system-level geological reasoning.',
-      capability: 'frontier play evaluation, sequence stratigraphy, system-level reasoning',
-    },
-    {
-      name: 'BUNGA TASBIH-1',
-      playType: 'Structural / stratigraphic opportunity',
-      role: 'Prospect maturation / evaluation',
-      significance: 'Part of the prospect maturation and evaluation arc tied to later value creation. Represents the kind of work where interpretation, risk, and strategic timing all matter together.',
-      capability: 'prospect maturation, turbidite interpretation, risk analysis',
     },
   ],
 
   experience: {
     company: 'PETRONAS — Exploration Geoscience',
     period: '2013 – Present',
-    summary: 'My work has spanned interpretation, prospect maturation, basin evaluation, well support, and post-drill learning across offshore Malaysian settings.',
+    summary: 'My work has spanned interpretation, prospect maturation, basin evaluation, well support, and post-drill learning across offshore Malaysian settings. The 12+ year track record looks clean on paper. The reality is 8 quarters of holding a position when the data said no, and 18 months of trusting an anomaly that didn\'t fit the model before it became the shallowest discovery in Malaysia.',
     skills: [
       '2D and 3D seismic interpretation',
       'seismic-to-well integration',

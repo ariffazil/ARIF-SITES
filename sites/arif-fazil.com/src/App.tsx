@@ -1,5 +1,6 @@
-// arif-fazil.com — Rewritten 2026-04-13
+// arif-fazil.com - Rewritten 2026-04-13
 // Proof first. Philosophy second. Human first. arifOS second.
+// F6 Empathy-first. F4 Clarity-second. Professional rigor without sombong.
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Target, ChevronDown, ExternalLink } from 'lucide-react';
@@ -9,25 +10,25 @@ import tokens from '@/constitution/tokens';
 // ==================== SOUL COLOR SYSTEM ====================
 // Simplified: gold as single accent, earth as secondary, blood as structural only
 const SOUL = {
-  gold:        '#C9A84C',   // Primary accent — used sparingly
-  goldDim:     '#8B7440',   // Subdued gold — hover states, borders
-  earth:       '#6B4D2E',   // Earth brown — headings, structural
-  earthLight:  '#8B6B42',   // Lighter earth — secondary text
-  blood:       '#5C2A2A',   // Muted blood — structural only (not primary)
-  bloodLight:  '#7A3A3A',   // Softer red — tertiary accents
+  gold:        '#C9A84C',   // Primary accent - used sparingly
+  goldDim:     '#8B7440',   // Subdued gold - hover states, borders
+  earth:       '#6B4D2E',   // Earth brown - headings, structural
+  earthLight:  '#8B6B42',   // Lighter earth - secondary text
+  blood:       '#5C2A2A',   // Muted blood - structural only (not primary)
+  bloodLight:  '#7A3A3A',   // Softer red - tertiary accents
   bg:          '#0C0E12',   // Primary surface
-  bgSecondary: '#141620',   // Elevated surface
-  bgTertiary:  '#1A1D26',   // Card backgrounds
-  border:      '#2A2E3A',   // Structural lines
+  bgSecondary: '#18150f',   // Warm dark elevated surface
+  bgTertiary:  '#201c14',   // Warm dark card backgrounds
+  border:      '#2A2520',   // Warm structural lines
   text:        '#E8E4DF',   // Primary text
-  textMuted:   '#8B8880',   // Secondary text
-  textDim:     '#5A5850',   // Tertiary text
+  textMuted:   '#9B9585',   // Warm secondary text
+  textDim:     '#5A5548',   // Warm tertiary text
 } as const;
 
 // ==================== FRACTAL BIOLOGICAL CLOCK ====================
 const AgeClock: React.FC = () => {
   const [age, setAge] = useState<string>('');
-  
+
   useEffect(() => {
     const birthDate = new Date(tokens.identity.birthdate);
     const updateAge = () => {
@@ -42,7 +43,7 @@ const AgeClock: React.FC = () => {
   }, []);
 
   return (
-    <div 
+    <div
       className="font-mono text-xs tracking-[0.2em] uppercase px-4 py-2"
       style={{
         background: `${SOUL.goldDim}15`,
@@ -59,7 +60,7 @@ const AgeClock: React.FC = () => {
 // ==================== JAGGED STRATIGRAPHIC CANVAS ====================
 const FractalStrata: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -85,11 +86,11 @@ const FractalStrata: React.FC = () => {
     const draw = () => {
       const w = canvas.width;
       const h = canvas.height;
-      
+
       ctx.fillStyle = SOUL.bg;
       ctx.fillRect(0, 0, w, h);
 
-      // Subtle earth-tone strata layers — reduced opacity, not dominant
+      // Subtle earth-tone strata layers - reduced opacity, not dominant
       const layers = [
         { color: SOUL.earth,     amp: 60,  freq: 0.008, speed: 0.0008, yOffset: 0.35, alpha: 0.06 },
         { color: SOUL.earthLight, amp: 45, freq: 0.012, speed: 0.001,  yOffset: 0.55, alpha: 0.05 },
@@ -114,7 +115,7 @@ const FractalStrata: React.FC = () => {
         ctx.fill();
       });
 
-      // Sparse gold particles — restrained
+      // Sparse gold particles - restrained
       ctx.globalAlpha = 0.4;
       for (let i = 0; i < 20; i++) {
         const x = (Math.sin(i * 137.5 + time * 0.001) * 0.5 + 0.5) * w;
@@ -130,7 +131,7 @@ const FractalStrata: React.FC = () => {
       time++;
       animationId = requestAnimationFrame(draw);
     };
-    
+
     draw();
     return () => {
       window.removeEventListener('resize', resize);
@@ -139,8 +140,8 @@ const FractalStrata: React.FC = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
       style={{ opacity: 0.7 }}
     />
@@ -148,14 +149,14 @@ const FractalStrata: React.FC = () => {
 };
 
 // ==================== JAGGED BUTTON ====================
-const JaggedButton: React.FC<{ 
-  children: React.ReactNode; 
-  href?: string; 
+const JaggedButton: React.FC<{
+  children: React.ReactNode;
+  href?: string;
   variant?: 'solid' | 'outline' | 'ghost';
   onClick?: () => void;
 }> = ({ children, href, variant = 'solid', onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const variants = {
     solid: {
       bg: isHovered ? SOUL.goldDim : SOUL.gold,
@@ -172,7 +173,7 @@ const JaggedButton: React.FC<{
   };
 
   const style = variants[variant];
-  
+
   const content = (
     <span
       className="px-6 py-3 text-xs font-bold tracking-[0.2em] uppercase transition-all duration-200 inline-block"
@@ -216,29 +217,29 @@ const DiscoveryCard: React.FC<{
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div 
+      <div
         className="absolute top-0 left-0 h-[2px] transition-all duration-300"
         style={{
           background: accent,
           width: isHovered ? '100%' : '0%',
         }}
       />
-      
+
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-base font-bold tracking-tight" style={{ color: SOUL.text }}>
           {name}
         </h3>
-        <Target 
-          size={16} 
-          style={{ color: accent, opacity: isHovered ? 1 : 0.4 }} 
+        <Target
+          size={16}
+          style={{ color: accent, opacity: isHovered ? 1 : 0.4 }}
         />
       </div>
-      
+
       <div className="text-[10px] font-mono tracking-widest uppercase mb-3" style={{ color: accent }}>
         {playType}
       </div>
-      
-      <p className="text-sm leading-relaxed mb-4" style={{ color: SOUL.textMuted }}>
+
+      <p className="text-sm leading-[1.7] mb-4" style={{ color: SOUL.textMuted }}>
         {significance}
       </p>
 
@@ -261,8 +262,8 @@ const DiscoveryCard: React.FC<{
 };
 
 // ==================== STAT ROW ====================
-const StatRow: React.FC<{ value: string; label: string; accent?: string }> = ({ 
-  value, label, accent = SOUL.gold 
+const StatRow: React.FC<{ value: string; label: string; accent?: string }> = ({
+  value, label, accent = SOUL.gold
 }) => (
   <div className="flex items-baseline gap-4 py-3 border-b" style={{ borderColor: SOUL.border }}>
     <span className="text-3xl font-bold" style={{ color: accent }}>{value}</span>
@@ -279,14 +280,14 @@ const ExperienceItem: React.FC<{
       <h3 className="text-base font-bold" style={{ color: SOUL.text }}>{company}</h3>
       <span className="text-xs font-mono" style={{ color: SOUL.goldDim }}>{period}</span>
     </div>
-    <p className="text-sm leading-relaxed mb-4" style={{ color: SOUL.textMuted }}>{summary}</p>
+    <p className="text-sm leading-[1.7] mb-4" style={{ color: SOUL.textMuted }}>{summary}</p>
     <div className="flex flex-wrap gap-2">
       {skills.map((skill) => (
-        <span 
+        <span
           key={skill}
           className="text-[10px] px-2 py-1 font-mono tracking-wider"
-          style={{ 
-            background: `${SOUL.goldDim}10`, 
+          style={{
+            background: `${SOUL.goldDim}10`,
             color: SOUL.goldDim,
             border: `1px solid ${SOUL.goldDim}30`,
           }}
@@ -299,12 +300,12 @@ const ExperienceItem: React.FC<{
 );
 
 // ==================== ARTICLE ROW ====================
-const ArticleRow: React.FC<{ title: string; url: string; index: number }> = ({ 
-  title, url, index 
+const ArticleRow: React.FC<{ title: string; url: string; index: number }> = ({
+  title, url, index
 }) => (
-  <a 
-    href={url} 
-    target="_blank" 
+  <a
+    href={url}
+    target="_blank"
     rel="noopener noreferrer"
     className="flex items-center justify-between p-5 transition-all duration-200 group no-underline"
     style={{
@@ -331,8 +332,8 @@ const ArticleRow: React.FC<{ title: string; url: string; index: number }> = ({
 );
 
 // ==================== SECTION HEADER ====================
-const SectionHeader: React.FC<{ 
-  label: string; 
+const SectionHeader: React.FC<{
+  label: string;
   title: React.ReactNode;
   accent?: string;
 }> = ({ label, title, accent = SOUL.gold }) => (
@@ -356,14 +357,14 @@ const SoulSite: React.FC = () => {
   const heroY = useTransform(scrollYProgress, [0, 0.15], [0, 60]);
 
   return (
-    <div 
+    <div
       className="min-h-screen overflow-x-hidden"
       style={{ background: SOUL.bg, color: SOUL.text }}
     >
       <FractalStrata />
 
       {/* ==================== NAV ==================== */}
-      <nav 
+      <nav
         className="fixed top-0 left-0 right-0 z-50 px-6 py-5 flex justify-between items-center"
         style={{
           background: `linear-gradient(180deg, ${SOUL.bg} 0%, transparent 100%)`,
@@ -384,7 +385,7 @@ const SoulSite: React.FC = () => {
       </nav>
 
       {/* ==================== HERO ==================== */}
-      <motion.section 
+      <motion.section
         style={{ opacity: heroOpacity, y: heroY }}
         className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24"
       >
@@ -401,25 +402,25 @@ const SoulSite: React.FC = () => {
                 {tokens.identity.subtitle}
               </span>
             </div>
-            
+
             {/* Name */}
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-[0.9] mb-8" style={{ color: SOUL.text }}>
               {tokens.identity.name}
             </h1>
-            
+
             {/* Proof line */}
-            <p className="text-lg md:text-xl leading-relaxed mb-6 max-w-xl" style={{ color: SOUL.textMuted }}>
+            <p className="text-lg md:text-xl leading-[1.7] mb-6 max-w-[65ch]" style={{ color: SOUL.textMuted }}>
               {tokens.atAGlance[0]}. Built track record across structural, stratigraphic, basement, and frontier plays.
             </p>
-            
+
             {/* Tagline */}
-            <p 
+            <p
               className="text-sm mb-10 font-medium"
               style={{ color: SOUL.gold }}
             >
-              Ditempa Bukan Diberi — Forged through experience, not given as theory.
+              Ditempa Bukan Diberi - Forged through experience, not given as theory.
             </p>
-            
+
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <JaggedButton href="#discoveries">Exploration Work</JaggedButton>
@@ -428,9 +429,9 @@ const SoulSite: React.FC = () => {
             </div>
           </motion.div>
         </div>
-        
+
         {/* Scroll indicator */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
@@ -445,8 +446,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== AT A GLANCE ==================== */}
         <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-3xl">
-            <SectionHeader 
-              label="At a Glance" 
+            <SectionHeader
+              label="At a Glance"
               title={
                 <span style={{ color: SOUL.text }}>13+ years in exploration geoscience.</span>
               }
@@ -455,7 +456,7 @@ const SoulSite: React.FC = () => {
               {tokens.atAGlance.map((item, i) => (
                 <div key={i} className="flex items-start gap-4">
                   <span className="text-xs mt-1" style={{ color: SOUL.gold }}>◆</span>
-                  <p className="text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>{item}</p>
+                  <p className="text-sm leading-[1.7]" style={{ color: SOUL.textMuted }}>{item}</p>
                 </div>
               ))}
             </div>
@@ -465,8 +466,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== SELECTED DISCOVERIES ==================== */}
         <section id="discoveries" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-5xl">
-            <SectionHeader 
-              label="Selected Discoveries" 
+            <SectionHeader
+              label="Selected Discoveries"
               title={
                 <>
                   <span style={{ color: SOUL.text }}>What the work </span>
@@ -493,8 +494,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== FROM GEOLOGY TO GOVERNANCE ==================== */}
         <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-3xl">
-            <SectionHeader 
-              label="The Bridge" 
+            <SectionHeader
+              label="The Bridge"
               title={
                 <>
                   <span style={{ color: SOUL.text }}>From Subsurface to </span>
@@ -502,30 +503,30 @@ const SoulSite: React.FC = () => {
                 </>
               }
             />
-            <div className="space-y-6 text-base leading-relaxed" style={{ color: SOUL.textMuted }}>
+            <div className="space-y-6 text-base leading-[1.7]" style={{ color: SOUL.textMuted }}>
               <p>
                 Geology taught me something that didn't transfer to software engineering culture:
               </p>
               <p style={{ color: SOUL.text }}>
-                <strong>Uncertainty is not a weakness to be hidden.</strong> It is the condition you work in. 
+                <strong>Uncertainty is not a weakness to be hidden.</strong> It is the condition you work in.
                 The discipline is in knowing what your models still can't tell you.
               </p>
               <p>
-                Every basin I've worked: incomplete data, conflicting interpretations, high stakes on 
-                decisions that can't be unmade. The only professional integrity move is to expose the 
+                Every basin I've worked: incomplete data, conflicting interpretations, high stakes on
+                decisions that can't be unmade. The only professional integrity move is to expose the
                 uncertainty rather than paper over it.
               </p>
               <p>
-                When I started building AI systems, I applied the same pressure: don't tell me what 
-                the model wants. Tell me what it doesn't know. Don't give me a confident answer when the 
+                When I started building AI systems, I applied the same pressure: don't tell me what
+                the model wants. Tell me what it doesn't know. Don't give me a confident answer when the
                 confidence interval is wider than the question.
               </p>
               <p>
-                <span style={{ color: SOUL.gold }}>arifOS started as that discipline in code.</span> Then it 
+                <span style={{ color: SOUL.gold }}>arifOS started as that discipline in code.</span> Then it
                 became a framework. Then something other people could use.
               </p>
               <p className="text-sm" style={{ color: SOUL.textDim }}>
-                The 13 floors are not rules. They are calibrated constraints — the geological equivalent 
+                The 13 floors are not rules. They are calibrated constraints - the geological equivalent
                 of "I need a pressure gradient and a seismic tie before I'll sign off on this prospect."
               </p>
             </div>
@@ -535,8 +536,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== WHAT I'M BUILDING NOW ==================== */}
         <section id="arifos" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-5xl">
-            <SectionHeader 
-              label="What I'm Building Now" 
+            <SectionHeader
+              label="What I'm Building Now"
               title={
                 <>
                   <span style={{ color: SOUL.text }}>arifOS: </span>
@@ -546,40 +547,40 @@ const SoulSite: React.FC = () => {
             />
             <div className="grid md:grid-cols-2 gap-16 items-start">
               {/* Left: explanation */}
-              <div className="space-y-5 text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>
+              <div className="space-y-5 text-sm leading-[1.7]" style={{ color: SOUL.textMuted }}>
                 <p>
-                  arifOS is a self-hosted AI agent framework built around explicit constraints, 
+                  arifOS is a self-hosted AI agent framework built around explicit constraints,
                   not implicit guardrails.
                 </p>
                 <p>
                   The core design pressure:
                 </p>
                 <ul className="space-y-2 pl-4">
-                  <li>— decisions must be reversible where possible</li>
-                  <li>— uncertainty must be stated, not performed</li>
-                  <li>— human authority is architectural, not advisory</li>
-                  <li>— every action is auditable against an immutable record</li>
+                  <li>- decisions must be reversible where possible</li>
+                  <li>- uncertainty must be stated, not performed</li>
+                  <li>- human authority is architectural, not advisory</li>
+                  <li>- every action is auditable against an immutable record</li>
                 </ul>
                 <p>
-                  13 constitutional floors (F1–F13) enforce these constraints at runtime. 
-                  They are not rules language — they are calibrated enforcement points.
+                  13 constitutional floors (F1-F13) enforce these constraints at runtime.
+                  They are not rules language - they are calibrated enforcement points.
                 </p>
                 <div className="pt-4">
-                  <code className="text-xs font-mono px-3 py-2 block" 
+                  <code className="text-xs font-mono px-3 py-2 block"
                     style={{ background: SOUL.bgSecondary, color: SOUL.gold, border: `1px solid ${SOUL.border}` }}>
                     pip install arifos
                   </code>
                 </div>
                 <p className="text-xs" style={{ color: SOUL.textDim }}>
-                  arifOS is the consequence of working in high-stakes subsurface decisions. 
+                  arifOS is the consequence of working in high-stakes subsurface decisions.
                   It is not a startup product. It is a discipline, shipped.
                 </p>
               </div>
-              
+
               {/* Right: stats */}
               <div className="space-y-0">
                 <StatRow value="17" label="MCP-native tools" accent={SOUL.gold} />
-                <StatRow value="13" label="Constitutional floors (F1–F13)" accent={SOUL.earth} />
+                <StatRow value="13" label="Constitutional floors (F1-F13)" accent={SOUL.earth} />
                 <StatRow value="VAULT999" label="Immutable SHA-256 audit ledger" accent={SOUL.goldDim} />
                 <StatRow value="AGPL-3.0" label="License · Self-hosted" accent={SOUL.textDim} />
                 <div className="pt-4">
@@ -597,11 +598,86 @@ const SoulSite: React.FC = () => {
           </div>
         </section>
 
+        {/* ==================== ECHO CHAMBER ==================== */}
+        <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border, background: `${SOUL.bg}98` }}>
+          <div className="max-w-[65ch] mx-auto">
+            <SectionHeader
+              label="The Echo Chamber"
+              title={
+                <>
+                  <span style={{ color: SOUL.text }}>Ditempa Bukan Diberi - </span>
+                  <span style={{ color: SOUL.gold }}>Forged, Not Given.</span>
+                </>
+              }
+            />
+            <p className="text-sm leading-[1.7] mb-12 max-w-[65ch]" style={{ color: SOUL.textMuted }}>
+              Every discipline leaves a scar. These three are mine - geoscience, economics, AI governance -
+              each one taught me something about what happens when capability runs ahead of constraint.
+            </p>
+
+            <div className="space-y-0">
+              {/* THE SCAR */}
+              <div className="p-8 border-b" style={{ borderColor: SOUL.border }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-mono tracking-widest uppercase" style={{ color: SOUL.gold }}>
+                    The Scar - Geoscience
+                  </span>
+                </div>
+                <p className="text-sm leading-[1.7] max-w-[65ch]" style={{ color: SOUL.textMuted }}>
+                  12 years reading the earth&apos;s stutter patterns. The shallowest oil discovery in Malaysia
+                  came after 18 months of data that said the opposite. The scar: learning to trust the
+                  anomaly that didn&apos;t fit the model - and having the conviction to hold while everyone
+                  else called it uneconomic.
+                </p>
+              </div>
+
+              {/* THE ECHO */}
+              <div className="p-8 border-b" style={{ borderColor: SOUL.border }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-mono tracking-widest uppercase" style={{ color: SOUL.earth }}>
+                    The Echo - Economics
+                  </span>
+                </div>
+                <p className="text-sm leading-[1.7] max-w-[65ch]" style={{ color: SOUL.textMuted }}>
+                  Incentive structures are scar tissue of past crises. PM318 required pricing risk that
+                  others called &quot;uneconomic&quot; until it flowed. The echo: every valuation model embeds
+                  the assumptions of the last crisis. The discipline is knowing which assumptions are
+                  load-bearing and which are habit.
+                </p>
+              </div>
+
+              {/* THE LAW */}
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-mono tracking-widest uppercase" style={{ color: SOUL.goldDim }}>
+                    The Law - AI Governance
+                  </span>
+                </div>
+                <p className="text-sm leading-[1.7] max-w-[65ch]" style={{ color: SOUL.textMuted }}>
+                  arifOS exists because I saw what happens when technical capability outpaces human
+                  constraint. The law: don&apos;t build the drill before you know what happens when it
+                  hits pressure. The constitution lives at{' '}
+                  <a
+                    href="https://apex.arif-fazil.com"
+                    className="underline hover:opacity-80 transition-opacity"
+                    style={{ color: SOUL.gold }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    apex.arif-fazil.com
+                  </a>
+                  . This site is the human layer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ==================== EXPERIENCE ==================== */}
         <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-3xl">
-            <SectionHeader 
-              label="Experience" 
+            <SectionHeader
+              label="Experience"
               title={
                 <span style={{ color: SOUL.text }}>Where the discipline came from.</span>
               }
@@ -621,8 +697,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== EDUCATION ==================== */}
         <section className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-3xl">
-            <SectionHeader 
-              label="Education" 
+            <SectionHeader
+              label="Education"
               title={
                 <span style={{ color: SOUL.text }}>The dual training.</span>
               }
@@ -638,11 +714,11 @@ const SoulSite: React.FC = () => {
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {tokens.education.degrees.map((d) => (
-                  <span 
+                  <span
                     key={d}
                     className="text-xs px-2 py-1"
-                    style={{ 
-                      background: `${SOUL.earth}15`, 
+                    style={{
+                      background: `${SOUL.earth}15`,
                       color: SOUL.earth,
                       border: `1px solid ${SOUL.earth}30`,
                     }}
@@ -652,7 +728,7 @@ const SoulSite: React.FC = () => {
                 ))}
               </div>
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: SOUL.textMuted }}>
+            <p className="text-sm leading-[1.7]" style={{ color: SOUL.textMuted }}>
               {tokens.education.summary}
             </p>
           </div>
@@ -661,8 +737,8 @@ const SoulSite: React.FC = () => {
         {/* ==================== THEORY & WRITINGS ==================== */}
         <section id="writings" className="py-24 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
           <div className="max-w-3xl">
-            <SectionHeader 
-              label="Theory & Writings" 
+            <SectionHeader
+              label="Theory & Writings"
               title={
                 <>
                   <span style={{ color: SOUL.text }}>Depth for those who </span>
@@ -680,45 +756,88 @@ const SoulSite: React.FC = () => {
 
         {/* ==================== FOOTER ==================== */}
         <footer className="py-16 px-6 md:px-12 lg:px-24 border-t" style={{ borderColor: SOUL.border }}>
-          <div className="max-w-3xl">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 mb-12">
-              <div>
-                <div className="text-xl font-bold tracking-tight mb-2" style={{ color: SOUL.text }}>
-                  {tokens.identity.name}
+          <div className="max-w-[65ch]">
+
+            {/* Paradox Navigation */}
+            <div className="mb-12 p-6" style={{ background: SOUL.bgSecondary, border: `1px solid ${SOUL.border}` }}>
+              <p className="text-xs leading-[1.7] mb-4" style={{ color: SOUL.textMuted }}>
+                This site is intentionally human. The constitution lives elsewhere.
+              </p>
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center gap-3">
+                  <span style={{ color: SOUL.gold }}>← You are here</span>
+                  <span style={{ color: SOUL.textDim }}>|</span>
+                  <a href="https://arif-fazil.com" className="no-underline hover:underline" style={{ color: SOUL.gold }}>Human layer — arif-fazil.com</a>
                 </div>
-                <div className="text-sm" style={{ color: SOUL.textMuted }}>
-                  {tokens.identity.title}
+                <div className="flex items-center gap-3">
+                  <span style={{ color: SOUL.textDim }}>↑</span>
+                  <span style={{ color: SOUL.textMuted }}>|</span>
+                  <a href="https://apex.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: SOUL.textMuted }}>Theory layer — apex.arif-fazil.com → 13 Floors, ΔΩΨ, 99 Theories</a>
                 </div>
-              </div>
-              <div className="flex flex-wrap gap-6">
-                {[
-                  { label: 'GitHub', href: tokens.contact.github },
-                  { label: 'arifOS MCP', href: 'https://arifosmcp.arif-fazil.com' },
-                  { label: 'GEOX', href: 'https://geox.arif-fazil.com' },
-                  { label: 'Medium', href: tokens.contact.medium },
-                ].map((link) => (
-                  <a 
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs tracking-widest uppercase no-underline transition-opacity hover:opacity-100"
-                    style={{ color: SOUL.textDim, opacity: 0.6 }}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+                <div className="flex items-center gap-3">
+                  <span style={{ color: SOUL.textDim }}>↑</span>
+                  <span style={{ color: SOUL.textMuted }}>|</span>
+                  <a href="https://arifosmcp.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="no-underline hover:underline" style={{ color: SOUL.textMuted }}>Runtime layer — arifosmcp.arif-fazil.com → Systems that run</a>
+                </div>
               </div>
             </div>
-            
+
+            {/* 2 a.m. Stutter Footer */}
             <div className="pt-8 border-t" style={{ borderColor: SOUL.border }}>
-              <p className="text-xs leading-relaxed max-w-xl" style={{ color: SOUL.textDim }}>
-                <strong style={{ color: SOUL.textMuted }}>Disclaimer:</strong> arifOS is a personal 
-                initiative. The views and systems presented here are my own and not official statements 
-                of my employer.
+              <p className="text-sm leading-[1.7] mb-6" style={{ color: SOUL.textMuted }}>
+                —
+                <br />
+                Built between rig shifts and code commits.
+                Sometimes in Bahasa Malaysia, sometimes in English,
+                always in the dialect of people who measure twice.
               </p>
-              <div className="flex items-center gap-4 mt-6">
-                <span className="text-xs" style={{ color: SOUL.goldDim }}>
+              <div className="flex flex-wrap items-center gap-6 mb-6">
+                <a
+                  href="mailto:arifos@arif-fazil.com"
+                  className="text-sm no-underline hover:underline"
+                  style={{ color: SOUL.gold }}
+                >
+                  arifos@arif-fazil.com
+                </a>
+                <span className="text-xs px-3 py-1" style={{ background: `${SOUL.goldDim}15`, color: SOUL.textDim, border: `1px solid ${SOUL.goldDim}30` }}>
+                  Response time: Human (24–72 hours, not automated)
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-6 mb-8">
+                <a
+                  href={tokens.contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs tracking-widest uppercase no-underline hover:opacity-80 transition-opacity"
+                  style={{ color: SOUL.textDim }}
+                >
+                  GitHub
+                </a>
+                <a
+                  href={tokens.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs tracking-widest uppercase no-underline hover:opacity-80 transition-opacity"
+                  style={{ color: SOUL.textDim }}
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://apex.arif-fazil.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs tracking-widest uppercase no-underline hover:opacity-80 transition-opacity"
+                  style={{ color: SOUL.textDim }}
+                >
+                  apex.arif-fazil.com →
+                </a>
+              </div>
+              <p className="text-xs leading-[1.7] mb-4" style={{ color: SOUL.textDim }}>
+                <strong style={{ color: SOUL.textMuted }}>LLM context:</strong> This is a human-maintained site.
+                arifOS is a personal initiative. Views are my own and not my employer&apos;s.
+              </p>
+              <div className="flex items-center gap-4">
+                <span className="text-sm font-medium" style={{ color: SOUL.gold }}>
                   Ditempa Bukan Diberi
                 </span>
                 <span style={{ color: SOUL.textDim }}>·</span>
@@ -732,7 +851,7 @@ const SoulSite: React.FC = () => {
       </main>
 
       {/* ==================== FIXED BOTTOM NAV ==================== */}
-      <footer 
+      <footer
         className="fixed bottom-0 left-0 right-0 z-50 px-4 py-3"
         style={{
           background: `linear-gradient(0deg, ${SOUL.bg}F5 0%, ${SOUL.bg}CC 100%)`,
@@ -741,18 +860,29 @@ const SoulSite: React.FC = () => {
         }}
       >
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {tokens.trinity.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[10px] font-mono tracking-wider transition-all duration-200 hover:brightness-125 no-underline"
-              style={{ color: link.color }}
-            >
-              {link.label}
-            </a>
-          ))}
+          <a href="https://arif-fazil.com" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.gold }}>
+            Human
+          </a>
+          <span className="text-[10px]" style={{ color: SOUL.textDim }}>|</span>
+          <a href="https://apex.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.textMuted }}>
+            Theory
+          </a>
+          <span className="text-[10px]" style={{ color: SOUL.textDim }}>|</span>
+          <a href="https://arifosmcp.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.textMuted }}>
+            Runtime
+          </a>
+          <span className="text-[10px]" style={{ color: SOUL.textDim }}> &middot; </span>
+          <a href="https://geox.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.textDim }}>
+            GEOX
+          </a>
+          <span className="text-[10px]" style={{ color: SOUL.textDim }}>|</span>
+          <a href="https://wiki.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.textDim }}>
+            Wiki
+          </a>
+          <span className="text-[10px]" style={{ color: SOUL.textDim }}>|</span>
+          <a href="https://forge.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="text-[10px] font-mono tracking-wider no-underline hover:underline" style={{ color: SOUL.textDim }}>
+            Forge
+          </a>
         </div>
       </footer>
     </div>
