@@ -1,9 +1,0 @@
-{
-  "version": "1.0",
-  "identity": "https://waw.arif-fazil.com",
-  "wells": [
-    { "id": "wealth-dashboard", "url": "/", "type": "dashboard" },
-    { "id": "scenario-modeler", "url": "/dashboards", "type": "tool" },
-    { "id": "wealth-api", "url": "https://mcp.arif-fazil.com", "type": "api" }
-  ]
-}

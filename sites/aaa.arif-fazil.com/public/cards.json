@@ -1,7 +1,56 @@
 {
-  "version": "1.0",
+  "version": "2.0",
+  "canonical": "https://aaa.arif-fazil.com/public/cards.json",
   "cards": [
-    { "id": "AAA_COCKPIT", "name": "AAA Governance Cockpit", "role": "System Operator Interface" },
-    { "id": "888_HOLD", "name": "Human Veto Interface", "role": "Constitutional Override" }
+    {
+      "id": "ARIF",
+      "name": "Arif Fazil",
+      "role": "Human / Geoscientist / Architect",
+      "site": "arif-fazil.com",
+      "links": ["https://github.com/ariffazil"]
+    },
+    {
+      "id": "arifOS",
+      "name": "arifOS",
+      "role": "Constitutional Kernel",
+      "site": "mcp",
+      "url": "https://mcp.arif-fazil.com"
+    },
+    {
+      "id": "AAA_COCKPIT",
+      "name": "AAA Governance Cockpit",
+      "role": "System Operator Interface",
+      "site": "aaa"
+    },
+    {
+      "id": "888_HOLD",
+      "name": "Human Veto Interface",
+      "role": "Constitutional Override",
+      "site": "aaa"
+    },
+    {
+      "id": "GEOX_EIC",
+      "name": "GEOX Earth Intelligence Core",
+      "role": "Geospatial Agent",
+      "site": "geox"
+    },
+    {
+      "id": "ADAM",
+      "name": "ADAM",
+      "role": "Subsurface Reasoning Agent",
+      "site": "geox"
+    },
+    {
+      "id": "WAW_INTELLIGENCE",
+      "name": "Wealth-as-Wisdom Hub",
+      "role": "Economic Governance",
+      "site": "waw"
+    },
+    {
+      "id": "MakCikGPT",
+      "name": "MakCikGPT",
+      "role": "Common-Sense Economic Reasoning",
+      "site": "waw"
+    }
   ]
 }

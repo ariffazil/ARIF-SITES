@@ -1,9 +1,39 @@
 {
-  "version": "1.0",
-  "identity": "https://aaa.arif-fazil.com",
-  "wells": [
-    { "id": "agent-registry", "url": "/agents", "type": "registry" },
-    { "id": "floor-status", "url": "/governance", "type": "status" },
-    { "id": "audit-ledger", "url": "https://arif-fazil.com/999/vault/vault999.json", "type": "ledger" }
-  ]
+  "version": "2.0",
+  "canonical": "https://aaa.arif-fazil.com/public/wells.json",
+  "constellation": {
+    "arif-fazil.com": {
+      "identity": "https://arif-fazil.com",
+      "wells": [
+        { "id": "canon", "url": "https://arif-fazil.com/canon", "type": "documentation" },
+        { "id": "discoveries", "url": "https://arif-fazil.com/discoveries", "type": "portfolio" },
+        { "id": "mcp-kernel", "url": "https://mcp.arif-fazil.com", "type": "api" }
+      ]
+    },
+    "aaa": {
+      "identity": "https://aaa.arif-fazil.com",
+      "wells": [
+        { "id": "agent-registry", "url": "https://aaa.arif-fazil.com/agents", "type": "registry" },
+        { "id": "floor-status", "url": "https://aaa.arif-fazil.com/governance", "type": "status" },
+        { "id": "audit-ledger", "url": "https://arif-fazil.com/999/vault/vault999.json", "type": "ledger" }
+      ]
+    },
+    "geox": {
+      "identity": "https://geox.arif-fazil.com",
+      "focus": "Southeast Asian Basins",
+      "wells": [
+        { "id": "basin-explorer", "url": "https://geox.arif-fazil.com/apps/basin-explorer", "type": "app" },
+        { "id": "risk-console", "url": "https://geox.arif-fazil.com/apps/risk-console", "type": "app" },
+        { "id": "seismic-vision", "url": "https://geox.arif-fazil.com/apps/seismic-vision", "type": "preview" }
+      ]
+    },
+    "waw": {
+      "identity": "https://waw.arif-fazil.com",
+      "wells": [
+        { "id": "wealth-dashboard", "url": "https://waw.arif-fazil.com/", "type": "dashboard" },
+        { "id": "scenario-modeler", "url": "https://waw.arif-fazil.com/dashboards", "type": "tool" },
+        { "id": "wealth-api", "url": "https://mcp.arif-fazil.com", "type": "api" }
+      ]
+    }
+  }
 }

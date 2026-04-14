@@ -1,7 +1,0 @@
-{
-  "version": "1.0",
-  "cards": [
-    { "id": "WAW_INTELLIGENCE", "name": "Wealth-as-Wisdom Hub", "role": "Economic Governance" },
-    { "id": "MakCikGPT", "name": "MakCikGPT", "role": "Common-Sense Economic Reasoning" }
-  ]
-}
