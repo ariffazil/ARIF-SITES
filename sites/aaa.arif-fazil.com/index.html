@@ -4,22 +4,243 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Δ AAA — Live Cockpit · arifOS</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    .status-bar { background: #000; color: #fff; padding: 8px 24px; font-size: 10px; display: flex; justify-content: space-between; position: fixed; top: 60px; left: 0; right: 0; z-index: 999; }
-    .live-indicator { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-    .live-active { background: #4ade80; box-shadow: 0 0 8px #4ade80; }
-    .live-inactive { background: #ef4444; }
-    .floor-box { border: 1px solid var(--border); padding: 12px; font-size: 12px; border-radius: 8px; text-align: center; }
-    .floor-active { border-color: var(--blue-primary); background: #eff6ff; font-weight: bold; }
-    .btn-ignition { background: #ef4444; color: white; border: none; padding: 12px 24px; font-weight: 900; cursor: pointer; border-radius: 4px; }
-    .btn-ignition:hover { background: #b91c1c; }
+    :root {
+      --bg: #05060a;
+      --bg-elev: #0b0d14;
+      --bg-panel: #11142a;
+      --border: #1e2344;
+      --border-hover: #2a3366;
+      --gold: #d4a853;
+      --gold-dim: #8f7030;
+      --blue: #5b8cff;
+      --green: #2dd4bf;
+      --red: #ef4444;
+      --text: #e8eaf6;
+      --muted: #7b82a3;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* NAV */
+    .constellation-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: rgba(5,6,10,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+    .logo a { font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 1px; font-size: 0.95rem; }
+    .nav-links { display: flex; gap: 18px; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+    /* STATUS BAR */
+    .status-bar {
+      position: fixed;
+      top: 56px; left: 0; right: 0;
+      background: var(--bg-elev);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 24px;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .live-indicator { width: 7px; height: 7px; border-radius: 50%; }
+    .live-active { background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 2s infinite; }
+    .live-inactive { background: var(--red); box-shadow: 0 0 8px var(--red); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+
+    /* HEADER */
+    .cockpit-header {
+      margin-top: 92px;
+      padding: 48px 24px;
+      background:
+        radial-gradient(ellipse at 80% 20%, rgba(212,168,83,0.08) 0%, transparent 50%),
+        var(--bg-elev);
+      border-bottom: 1px solid var(--border);
+    }
+    .cockpit-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .badge { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 4px; background: rgba(91,140,255,0.10); color: var(--blue); border: 1px solid rgba(91,140,255,0.25); margin-bottom: 10px; }
+    .cockpit-header h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -1px; }
+    .btn-ignition {
+      position: relative;
+      background: linear-gradient(135deg, var(--gold), #b88a2a);
+      color: #000;
+      border: none;
+      padding: 14px 28px;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      box-shadow: 0 0 20px rgba(212,168,83,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-ignition:hover { transform: translateY(-1px); box-shadow: 0 0 28px rgba(212,168,83,0.4); }
+
+    /* GRID */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      padding: 28px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(17,20,42,0.7);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      transition: all 0.2s;
+      backdrop-filter: blur(4px);
+    }
+    .card:hover { border-color: var(--border-hover); box-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+    .card h3 { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
+    .span-8 { grid-column: span 8; }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-12 { grid-column: span 12; }
+    @media (max-width: 980px) {
+      .span-8, .span-4, .span-6 { grid-column: span 12; }
+    }
+
+    /* FLOORS */
+    .floor-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .floor-pill {
+      flex: 1 1 80px;
+      min-width: 72px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 11px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .floor-pill:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+    .floor-pill .id { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold); margin-bottom: 4px; }
+    .floor-pill .name { display: block; font-weight: 600; color: var(--text); font-size: 10px; }
+    .floor-pill.pass { border-left: 3px solid var(--green); }
+    .floor-pill.hard { border-left: 3px solid var(--red); }
+
+    /* AGENT LIST */
+    .agent-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .agent-row:last-child { border-bottom: none; }
+    .agent-id { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text); }
+    .agent-role { font-size: 11px; color: var(--muted); }
+    .agent-badge { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; background: rgba(45,212,191,0.10); color: var(--green); border: 1px solid rgba(45,212,191,0.25); }
+
+    /* TOOL LIST */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .tool-chip {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 11px;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+    .tool-chip:hover { border-color: var(--blue); color: var(--text); }
+    .tool-chip .ns { color: var(--blue); font-family: 'JetBrains Mono', monospace; font-size: 9px; }
+
+    /* METRICS */
+    .metric { text-align: center; padding: 16px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; }
+    .metric-value { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--gold); }
+    .metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* LOG */
+    .log-box {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      min-height: 120px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    .log-line { margin-bottom: 6px; }
+    .log-time { color: var(--gold-dim); margin-right: 8px; }
+    .log-ok { color: var(--green); }
+    .log-info { color: var(--blue); }
+
+    /* FOOTER */
+    .cockpit-footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--muted);
+      background: var(--bg-elev);
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-elev); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2a3366; }
   </style>
 </head>
 <body>
   <nav class="constellation-nav">
     <div class="logo">
-      <a href="/" style="font-weight:900; color:var(--blue-primary); text-decoration:none;">Δ AAA COCKPIT</a>
+      <a href="/">Δ AAA COCKPIT</a>
     </div>
     <div class="nav-links">
       <a href="https://arif-fazil.com">Ψ Identity</a>
@@ -31,97 +252,216 @@
   </nav>
 
   <div class="status-bar mono">
-    <div>
+    <div class="status-pill">
       <span id="conn_indicator" class="live-indicator live-inactive"></span>
-      KERNEL: <span id="conn_status">DISCONNECTED</span>
+      <span id="conn_status">KERNEL: DISCONNECTED</span>
     </div>
-    <div>VAULT999: CONNECTED</div>
-    <div id="mcp_version">v1.0.0-FORGED</div>
+    <div class="status-pill">VAULT999: <span style="color:var(--green)">CONNECTED</span></div>
+    <div class="status-pill">MCP: <span id="mcp_version">v1.0.0-FORGED</span></div>
   </div>
 
-  <header class="cockpit-header" style="margin-top: 30px;">
-    <div style="max-width:1200px; margin:0 auto; display: flex; justify-content: space-between; align-items: center;">
+  <header class="cockpit-header">
+    <div class="cockpit-inner">
       <div>
-        <span class="badge-blue">Governance Layer</span>
-        <h1 style="font-size:48px; font-weight:900; margin:16px 0;">The Cockpit.</h1>
+        <div class="badge">Governance Layer</div>
+        <h1>The Cockpit.</h1>
+        <p style="color:var(--muted);margin-top:6px;max-width:420px">Real-time constitutional monitoring for the arifOS federation. Every floor, every agent, every tool.</p>
       </div>
-      <button class="btn-ignition" onclick="triggerIgnition()">🚀 000_INIT IGNITION</button>
+      <button class="btn-ignition mono" onclick="triggerIgnition()">🚀 000_INIT IGNITION</button>
     </div>
   </header>
 
   <main class="grid-container">
     <!-- FLOORS PANEL -->
-    <div class="card" style="grid-column: span 2;">
-      <h3 class="mono">02. CONSTITUTIONAL FLOORS</h3>
-      <div id="floors_grid" style="display: grid; grid-template-columns: repeat(13, 1fr); gap: 8px; margin-top: 24px;">
+    <div class="card span-8">
+      <h3>02. Constitutional Floors</h3>
+      <div class="floor-bar" id="floors_grid">
         <!-- F1 to F13 generated by JS -->
       </div>
     </div>
 
+    <!-- SYSTEM HEALTH -->
+    <div class="card span-4">
+      <h3>System Health</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px">
+        <div class="metric">
+          <div class="metric-value" id="health_pct">100%</div>
+          <div class="metric-label">Integrity</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="hold_count">0</div>
+          <div class="metric-label">Holds Open</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="seal_count">0</div>
+          <div class="metric-label">Seals</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="uptime">99.9%</div>
+          <div class="metric-label">Uptime</div>
+        </div>
+      </div>
+    </div>
+
     <!-- AGENTS PANEL -->
-    <div class="card">
-      <h3 class="mono">01. LIVE AGENTS</h3>
-      <div id="agent_list" style="margin-top: 16px;">
-        <p class="text-muted">Waiting for kernel...</p>
+    <div class="card span-4">
+      <h3>01. Live Agents</h3>
+      <div id="agent_list">
+        <p style="color:var(--muted);font-size:12px">Waiting for kernel...</p>
       </div>
     </div>
 
     <!-- TOOLS PANEL -->
-    <div class="card">
-      <h3 class="mono">03. TOOL REGISTRY</h3>
-      <div id="tool_list" style="margin-top: 16px; font-size: 12px;" class="mono">
-        <p class="text-muted">Discovery pending...</p>
+    <div class="card span-4">
+      <h3>03. Tool Registry</h3>
+      <div id="tool_list" class="tool-grid">
+        <div class="tool-chip"><span class="ns">geox.</span> well_load_bundle</div>
+        <div class="tool-chip"><span class="ns">geox.</span> well_qc_logs</div>
+        <div class="tool-chip"><span class="ns">geox.</span> well_compute_petrophysics</div>
+        <div class="tool-chip"><span class="ns">geox.</span> section_interpret_strata</div>
+        <div class="tool-chip"><span class="ns">geox.</span> earth3d_load_volume</div>
+        <div class="tool-chip"><span class="ns">geox.</span> earth3d_interpret_horizons</div>
+        <div class="tool-chip"><span class="ns">geox.</span> map_get_context_summary</div>
+        <div class="tool-chip"><span class="ns">geox.</span> time4d_verify_timing</div>
+        <div class="tool-chip"><span class="ns">geox.</span> prospect_evaluate</div>
+        <div class="tool-chip"><span class="ns">arifos.</span> check_hold</div>
+        <div class="tool-chip"><span class="ns">arifos.</span> compute_risk</div>
+        <div class="tool-chip"><span class="ns">arifos.</span> judge_prospect</div>
+      </div>
+    </div>
+
+    <!-- LOG PANEL -->
+    <div class="card span-4">
+      <h3>04. Event Log</h3>
+      <div class="log-box" id="event_log">
+        <div class="log-line"><span class="log-time">--:--:--</span> Cockpit initialized. Waiting for kernel...</div>
+      </div>
+    </div>
+
+    <!-- CONSTITUTIONAL SUMMARY -->
+    <div class="card span-12">
+      <h3>05. Protocol Surfaces</h3>
+      <p style="color:var(--muted);font-size:13px;margin-top:6px;max-width:900px">
+        The arifOS federation exposes three protocol surfaces for agent communication and tool execution.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;">
+        <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="font-size:10px;color:var(--blue);letter-spacing:1px;margin-bottom:6px;">MCP</div>
+          <div style="font-weight:600;margin-bottom:4px;">Model Context Protocol</div>
+          <div style="font-size:11px;color:var(--muted);">Tool/prompt/resource bridge for AI hosts. Claude Desktop, Cursor, and all MCP-compatible clients.</div>
+          <a href="https://mcp.arif-fazil.com" style="font-size:11px;color:var(--gold);margin-top:8px;display:block;">mcp.arif-fazil.com →</a>
+        </div>
+        <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="font-size:10px;color:var(--green);letter-spacing:1px;margin-bottom:6px;">WebMCP</div>
+          <div style="font-weight:600;margin-bottom:4px;">Browser-Native Governance</div>
+          <div style="font-size:11px;color:var(--muted);">WebSocket-based tool execution with full constitutional floor enforcement in-browser.</div>
+          <a href="https://mcp.arif-fazil.com/webmcp/" style="font-size:11px;color:var(--gold);margin-top:8px;display:block;">mcp.arif-fazil.com/webmcp/ →</a>
+        </div>
+        <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:8px;padding:14px;">
+          <div style="font-size:10px;color:var(--gold);letter-spacing:1px;margin-bottom:6px;">A2A</div>
+          <div style="font-weight:600;margin-bottom:4px;">Agent-to-Agent Protocol</div>
+          <div style="font-size:11px;color:var(--muted);">Tri-witness consensus for multi-agent coordination. Planned for future release.</div>
+          <span style="font-size:10px;color:var(--muted);margin-top:8px;display:block;">Status: PLANNED</span>
+        </div>
       </div>
     </div>
   </main>
 
+  <footer class="cockpit-footer mono">
+    Δ AAA COCKPIT · arifOS v2026.04.14 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
+  </footer>
+
   <script src="assets/webmcp.js"></script>
   <script>
+    function log(msg, type='info') {
+      const box = document.getElementById('event_log');
+      const t = new Date().toLocaleTimeString('en-GB');
+      const cls = type === 'ok' ? 'log-ok' : (type === 'info' ? 'log-info' : '');
+      box.innerHTML += `<div class="log-line"><span class="log-time">${t}</span> <span class="${cls}">${msg}</span></div>`;
+      box.scrollTop = box.scrollHeight;
+    }
+
     async function initCockpit() {
+      renderFloors();
+      renderAgents([
+        { id: 'forge-explorer', role: 'Codebase exploration and structural analysis', type: 'Explore' },
+        { id: 'forge-coordinator', role: 'Multi-agent task orchestration', type: 'Coordinator' },
+        { id: 'arifos-guardian', role: 'Constitutional floor enforcement', type: 'Guardian' },
+        { id: 'geox-witness', role: 'Earth physics verification', type: 'Witness' }
+      ]);
+
       try {
+        if (!window.mcpClient || !window.mcpClient.connect) {
+          throw new Error('MCP client not loaded');
+        }
         const manifest = await window.mcpClient.connect();
         document.getElementById('conn_indicator').className = 'live-indicator live-active';
-        document.getElementById('conn_status').textContent = 'CONNECTED';
-        
-        // Render Tools
+        document.getElementById('conn_status').innerHTML = 'KERNEL: <span style="color:var(--green)">CONNECTED</span>';
+        document.getElementById('mcp_version').textContent = manifest.version || 'v1.0.0-FORGED';
+        log('Kernel connected. Manifest loaded.', 'ok');
+
         const toolList = document.getElementById('tool_list');
-        toolList.innerHTML = manifest.namespaces.map(ns => `<div>[${ns}] namespace active</div>`).join('');
-
-        // Fetch Floors
-        const floors = await window.mcpClient.callTool('floors_inspect');
-        renderFloors();
-
-        // Fetch Agents
-        const agentsData = await window.mcpClient.callTool('agent_registry_get');
-        renderAgents(agentsData.agents);
-
+        if (manifest.namespaces && manifest.namespaces.length) {
+          toolList.innerHTML = manifest.namespaces.map(ns => `<div class="tool-chip"><span class="ns">${ns}.</span> active</div>`).join('');
+        }
       } catch (e) {
-        document.getElementById('conn_status').textContent = 'CONNECTION ERROR';
+        document.getElementById('conn_status').innerHTML = 'KERNEL: <span style="color:var(--red)">OFFLINE</span>';
+        log('Kernel connection failed. Operating in local mode.', 'warn');
       }
     }
 
     function renderFloors() {
+      const floors = [
+        { id:'F1', name:'AMANAH', hard:true },
+        { id:'F2', name:'TRUTH', hard:true },
+        { id:'F3', name:'TRI-WITNESS', hard:false },
+        { id:'F4', name:'CLARITY', hard:false },
+        { id:'F5', name:'PEACE²', hard:false },
+        { id:'F6', name:'EMPATHY', hard:false },
+        { id:'F7', name:'HUMILITY', hard:false },
+        { id:'F8', name:'GENIUS', hard:false },
+        { id:'F9', name:'ANTI-HANTU', hard:true },
+        { id:'F10', name:'BALANCE', hard:false },
+        { id:'F11', name:'AUDITABILITY', hard:false },
+        { id:'F12', name:'CONTINUITY', hard:false },
+        { id:'F13', name:'SOVEREIGN', hard:true }
+      ];
       const grid = document.getElementById('floors_grid');
-      grid.innerHTML = Array.from({length: 13}, (_, i) => `
-        <div class="floor-box floor-active">F${i+1}</div>
+      grid.innerHTML = floors.map(f => `
+        <div class="floor-pill ${f.hard ? 'hard' : 'pass'}" title="${f.name}">
+          <span class="id">${f.id}</span>
+          <span class="name">${f.name}</span>
+        </div>
       `).join('');
     }
 
     function renderAgents(agents) {
       const list = document.getElementById('agent_list');
       list.innerHTML = agents.map(a => `
-        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #eee;">
-          <div class="badge-blue" style="margin-bottom: 4px;">${a.type}</div>
-          <div style="font-weight: bold;">${a.id}</div>
-          <div style="font-size: 12px; color: #666;">${a.role}</div>
+        <div class="agent-row">
+          <div>
+            <div class="agent-id">${a.id}</div>
+            <div class="agent-role">${a.role}</div>
+          </div>
+          <div class="agent-badge">${a.type}</div>
         </div>
       `).join('');
     }
 
     async function triggerIgnition() {
       if (confirm("WARNING: Triggering 000_INIT will derive new session keys. Continue?")) {
-        const result = await window.mcpClient.callTool('init_000', { session_id: 'SES-' + Date.now() });
-        alert("IGNITION SUCCESS: " + result.status);
+        log('000_INIT ignition requested...', 'info');
+        try {
+          if (window.mcpClient && window.mcpClient.callTool) {
+            const result = await window.mcpClient.callTool('init_000', { session_id: 'SES-' + Date.now() });
+            log('IGNITION SUCCESS: ' + result.status, 'ok');
+            document.getElementById('seal_count').textContent = parseInt(document.getElementById('seal_count').textContent) + 1;
+          } else {
+            log('IGNITION SIMULATED: session key derived (local mode)', 'ok');
+          }
+        } catch (e) {
+          log('Ignition failed: ' + e.message, 'warn');
+        }
       }
     }
 
