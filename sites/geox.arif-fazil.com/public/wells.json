@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "identity": "https://geox.arif-fazil.com",
+  "focus": "Southeast Asian Basins",
+  "wells": [
+    { "id": "basin-explorer", "url": "/apps/basin-explorer", "type": "app" },
+    { "id": "risk-console", "url": "/apps/risk-console", "type": "app" },
+    { "id": "seismic-vision", "url": "/apps/seismic-vision", "type": "preview" }
+  ]
+}

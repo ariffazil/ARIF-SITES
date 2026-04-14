@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "identity": "https://arif-fazil.com",
+  "wells": [
+    { "id": "canon", "url": "/canon", "type": "documentation" },
+    { "id": "discoveries", "url": "/discoveries", "type": "portfolio" },
+    { "id": "mcp-kernel", "url": "https://mcp.arif-fazil.com", "type": "api" }
+  ]
+}

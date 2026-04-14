@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "cards": [
+    { "id": "GEOX_EIC", "name": "GEOX Earth Intelligence Core", "role": "Geospatial Agent" },
+    { "id": "ADAM", "name": "ADAM", "role": "Subsurface Reasoning Agent" }
+  ]
+}

@@ -2,8 +2,8 @@
   "name": "arifOS MCP Server",
   "version": "2026.04.11",
   "description": "The sovereign constitutional intelligence kernel. MCP, WebMCP, and A2A enabled. Human sovereignty first.",
-  "url": "https://arifosmcp.arif-fazil.com",
-  "canonicalUrl": "https://arifosmcp.arif-fazil.com",
+  "url": "https://mcp.arif-fazil.com",
+  "canonicalUrl": "https://mcp.arif-fazil.com",
   "sovereign": "Muhammad Arif bin Fazil",
   "sovereign_id": "arif-fazil",
   "contact": {
@@ -19,23 +19,23 @@
   "protocols": {
     "mcp": {
       "version": "2025-11-25",
-      "endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+      "endpoint": "https://mcp.arif-fazil.com/mcp",
       "transport": "streamable-http"
     },
     "webmcp": {
       "version": "WICG Draft",
-      "endpoint": "https://arifosmcp.arif-fazil.com/webmcp",
+      "endpoint": "https://mcp.arif-fazil.com/webmcp",
       "transport": "websocket"
     },
     "a2a": {
       "version": "1.0",
-      "endpoint": "https://arifosmcp.arif-fazil.com/a2a",
+      "endpoint": "https://mcp.arif-fazil.com/a2a",
       "transport": "http"
     }
   },
   "services": {
-    "health": "https://arifosmcp.arif-fazil.com/health",
-    "tools": "https://arifosmcp.arif-fazil.com/tools"
+    "health": "https://mcp.arif-fazil.com/health",
+    "tools": "https://mcp.arif-fazil.com/tools"
   },
   "wellKnown": {
     "mcpServer": "/.well-known/mcp/server.json"
@@ -44,7 +44,7 @@
     "soul": "https://arif-fazil.com",
     "mind": "https://apex.arif-fazil.com",
     "body": "https://aaa.arif-fazil.com",
-    "dashboard": "https://arifosmcp.arif-fazil.com"
+    "dashboard": "https://mcp.arif-fazil.com"
   },
   "constitution": {
     "floors": 13,

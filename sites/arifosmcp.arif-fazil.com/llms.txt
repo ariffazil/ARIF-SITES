@@ -4,9 +4,9 @@
 
 arifOS MCP is a production-ready constitutional AI governance endpoint. It provides tools, prompts, and resources for reality-aligned AI systems.
 
-**Endpoint:** https://arifosmcp.arif-fazil.com/mcp
-**Health:** https://arifosmcp.arif-fazil.com/health
-**SSE (A2A fallback):** https://arifosmcp.arif-fazil.com/sse
+**Endpoint:** https://mcp.arif-fazil.com/mcp
+**Health:** https://mcp.arif-fazil.com/health
+**SSE (A2A fallback):** https://mcp.arif-fazil.com/sse
 
 ## 17 Tools
 
@@ -70,10 +70,10 @@ arifOS MCP enforces 13 constitutional floors:
 ```bash
 # Claude Desktop
 npx @anthropic/mcp install arifos \
-  --url https://arifosmcp.arif-fazil.com/mcp
+  --url https://mcp.arif-fazil.com/mcp
 
 # Direct HTTP
-curl -X POST https://arifosmcp.arif-fazil.com/mcp \
+curl -X POST https://mcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
 ```

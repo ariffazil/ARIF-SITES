@@ -33,18 +33,18 @@
       "identifier": "docker.io/arifazil/arifosmcp:forge-20260309",
       "transport": {
         "type": "streamable-http",
-        "url": "https://arifosmcp.arif-fazil.com/mcp"
+        "url": "https://mcp.arif-fazil.com/mcp"
       }
     }
   ],
   "remotes": [
     {
       "type": "sse",
-      "url": "https://arifosmcp.arif-fazil.com/sse"
+      "url": "https://mcp.arif-fazil.com/sse"
     },
     {
       "type": "streamable-http",
-      "url": "https://arifosmcp.arif-fazil.com/mcp"
+      "url": "https://mcp.arif-fazil.com/mcp"
     }
   ],
   "resources": [

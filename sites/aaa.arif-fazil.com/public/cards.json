@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "cards": [
+    { "id": "AAA_COCKPIT", "name": "AAA Governance Cockpit", "role": "System Operator Interface" },
+    { "id": "888_HOLD", "name": "Human Veto Interface", "role": "Constitutional Override" }
+  ]
+}

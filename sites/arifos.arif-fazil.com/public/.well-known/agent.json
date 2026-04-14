@@ -4,12 +4,12 @@
   "url": "https://arifos.arif-fazil.com",
   "provider": {
     "organization": "arifOS",
-    "url": "https://arifosmcp.arif-fazil.com"
+    "url": "https://mcp.arif-fazil.com"
   },
   "version": "1.0",
   "capabilities": {
     "a2a": true,
-    "mcp": ["https://arifosmcp.arif-fazil.com/mcp"]
+    "mcp": ["https://mcp.arif-fazil.com/mcp"]
   },
   "scopes": ["constitutional-ai", "governance", "ΔΩΨ", "vault999"],
   "modes": ["advise", "execute"],

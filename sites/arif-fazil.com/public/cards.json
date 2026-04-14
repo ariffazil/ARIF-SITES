@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "cards": [
+    {
+      "id": "ARIF",
+      "name": "Arif Fazil",
+      "role": "Human / Geoscientist / Architect",
+      "links": ["https://github.com/ariffazil"]
+    },
+    {
+      "id": "arifOS",
+      "name": "arifOS",
+      "role": "Constitutional Kernel",
+      "url": "https://mcp.arif-fazil.com"
+    }
+  ]
+}

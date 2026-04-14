@@ -1,42 +1,16 @@
 {
-  "name": "arifOS /999/ Sovereign Vault",
-  "version": "1.0.0",
-  "description": "Private sovereign room nested under arif-fazil.com/999/. All content encrypted with Arif ROOTKEY.",
-  "created": "2026-04-14T01:57:00Z",
-  "vault_id": "VAULT999",
-  "layers": {
-    "public": "arif-fazil.com",
-    "private": "arif-fazil.com/999/"
+  "version": "1.0",
+  "name": "Ψ-PRIVATE /999/ Manifest",
+  "encryption": "X25519 + AES-GCM",
+  "authentication": "Ed25519 (ROOTKEY)",
+  "structure": {
+    "scars": "/scars",
+    "genesis": "/genesis",
+    "abah_check": "/abah-check",
+    "veto": "/veto",
+    "memory": "/memory",
+    "vault": "/vault",
+    "floors": "/floors"
   },
-  "seals": [
-    { "id": "000", "name": "Genesis", "subtitle": "The Moment Before 000", "category": "FOUNDATIONAL" },
-    { "id": "001", "name": "Miskin Senyap", "subtitle": "Poverty of Silence", "category": "SURVIVAL" },
-    { "id": "002", "name": "Institutional Erasure", "subtitle": "The PETRONAS MSS Purge", "category": "TRAUMA" },
-    { "id": "003", "name": "Invisibility", "subtitle": "9 As, No Applause", "category": "IDENTITY" },
-    { "id": "004", "name": "Anak Sulung", "subtitle": "Firstborn Burden", "category": "ROLE" },
-    { "id": "005", "name": "Zero Dry Wells", "subtitle": "Every Well a Strike", "category": "CRAFT" },
-    { "id": "006", "name": "Abah's Passing", "subtitle": "The Final Veto", "category": "LEGACY" },
-    { "id": "007", "name": "Living Between Worlds", "subtitle": "Geoscientist × Architect", "category": "PARADOX" },
-    { "id": "008", "name": "Duty vs Self", "subtitle": "Finite Nervous System", "category": "PARADOX" }
-  ],
-  "rooms": [
-    { "path": "/vault/", "name": "9 Seals", "icon": "🔐" },
-    { "path": "/genesis/", "name": "Genesis", "icon": "📜" },
-    { "path": "/abah-check/", "name": "Abah Check", "icon": "⚖️" },
-    { "path": "/veto/", "name": "888_HOLD", "icon": "🛑" },
-    { "path": "/memory/", "name": "Personal Memory", "icon": "🧠" },
-    { "path": "/floors/", "name": "13 Floors", "icon": "🏛️" }
-  ],
-  "auth": {
-    "mechanism": "ROOTKEY private key challenge/response",
-    "key_type": "Ed25519",
-    "band": "AAA_HUMAN",
-    "session_derivation": "HKDF-SHA256"
-  },
-  "security": {
-    "encryption": "AES-256-GCM",
-    "ai_access": "BLOCKED — F12 + AAA_HUMAN band",
-    "content_visibility": "Private — ROOTKEY holder only",
-    "vault_ledger": "SHA-256 hashes only in Vault999"
-  }
+  "seals": []
 }

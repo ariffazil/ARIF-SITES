@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "identity": "https://aaa.arif-fazil.com",
+  "wells": [
+    { "id": "agent-registry", "url": "/agents", "type": "registry" },
+    { "id": "floor-status", "url": "/governance", "type": "status" },
+    { "id": "audit-ledger", "url": "https://arif-fazil.com/999/vault/vault999.json", "type": "ledger" }
+  ]
+}

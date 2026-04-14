@@ -22,7 +22,7 @@
     "deployed_at": "2026-04-03T13:00:00Z"
   },
   "agents": {
-    "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+    "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
     "contact": "agents@arif-fazil.com",
     "protocols": ["MCP", "A2A", "WebMCP"]
   },

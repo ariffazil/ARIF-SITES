@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /999/
 
 Sitemap: https://arif-fazil.com/sitemap.xml

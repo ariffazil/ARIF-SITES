@@ -1,0 +1,122 @@
+:root {
+    --bg-color: #050805;
+    --text-color: #e2e8e2;
+    --muted-color: #8da38d;
+    --border-color: #1a241a;
+    --accent-color: #2d4a2d;
+    --geox-green: #4ade80;
+    --earth-gold: #c9a66b;
+    --sea-blue: #3b82f6;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+    padding-top: 60px;
+}
+
+.constellation-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #0a0f0a;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    z-index: 1000;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-left: 20px;
+    color: var(--muted-color);
+}
+
+.nav-links a.active {
+    color: var(--geox-green);
+    border-bottom: 2px solid var(--geox-green);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+.hero {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.badge-green {
+    background: rgba(74, 222, 128, 0.1);
+    color: var(--geox-green);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+h1 { font-size: 4rem; font-weight: 900; letter-spacing: -0.02em; line-height: 0.9; margin: 24px 0; color: #fff; }
+h2 { font-size: 2rem; font-weight: 800; margin-bottom: 24px; }
+
+.sea-focus {
+    background: rgba(59, 130, 246, 0.03);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 32px;
+    border-radius: 16px;
+    margin: 48px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.card {
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    background: #0a0f0a;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: var(--geox-green);
+}
+
+.mono { font-family: var(--font-mono); }
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--geox-green);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 16px;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--geox-green);
+    color: var(--geox-green);
+}

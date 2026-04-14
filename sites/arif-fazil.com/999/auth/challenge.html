@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ψ-PRIVATE — Handshake</title>
+  <link rel="stylesheet" href="../ui/styles.css">
+</head>
+<body class="auth-gate">
+  <div class="gate-container">
+    <h1>Ψ-PRIVATE Handshake</h1>
+    <p>Prove you hold the ROOTKEY to enter the Sovereign Room.</p>
+    
+    <div id="challenge_area">
+      <p>Challenge Nonce:</p>
+      <code id="nonce">Generating...</code>
+      <button onclick="copyNonce()">Copy Nonce</button>
+    </div>
+
+    <div id="response_area" style="margin-top: 2rem;">
+      <textarea id="signature_input" placeholder="Paste Ed25519 Signature (Base64)"></textarea>
+      <button onclick="attemptUnlock()" class="unlock-btn">Finalize Handshake</button>
+    </div>
+
+    <p id="status"></p>
+  </div>
+
+  <script src="../ui/crypto.js"></script>
+  <script src="verify.js"></script>
+  <script>
+    let activeNonce = '';
+
+    async function generateNonce() {
+      const array = new Uint8Array(32);
+      window.crypto.getRandomValues(array);
+      activeNonce = Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
+      document.getElementById('nonce').textContent = activeNonce;
+    }
+
+    function copyNonce() {
+      navigator.clipboard.writeText(activeNonce);
+      alert("Nonce copied. Sign this with your ROOTKEY.");
+    }
+
+    async function attemptUnlock() {
+      const sig = document.getElementById('signature_input').value.trim();
+      const status = document.getElementById('status');
+      const pubKey = "your_rootkey_public_hex"; // In production, this is loaded from vault999 manifest
+
+      try {
+        const isValid = await SovereignAuth.verifyROOTKEY(activeNonce, sig, pubKey);
+        if (isValid) {
+          status.textContent = "✓ Handshake Success. Decrypting session...";
+          sessionStorage.setItem('999_AUTH', 'VERIFIED');
+          window.location.href = "../vault/";
+        } else {
+          status.textContent = "❌ Invalid Signature. Access Denied.";
+        }
+      } catch (e) {
+        status.textContent = "Error: " + e.message;
+      }
+    }
+
+    generateNonce();
+  </script>
+</body>
+</html>

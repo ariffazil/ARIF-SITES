@@ -119,7 +119,7 @@ export const tokens = {
     { label: 'Ψ SOUL', href: 'https://arif-fazil.com', color: '#D4A853' },
     { label: 'Ω MIND', href: 'https://apex.arif-fazil.com', color: '#888888' },
     { label: 'Δ BODY', href: 'https://aaa.arif-fazil.com', color: '#888888' },
-    { label: 'Δ MCP', href: 'https://arifosmcp.arif-fazil.com', color: '#00D4AA' },
+    { label: 'Δ MCP', href: 'https://mcp.arif-fazil.com', color: '#00D4AA' },
     { label: '◉ FORGE', href: 'https://forge.arif-fazil.com', color: '#555555' },
     { label: '◎ WAW', href: 'https://waw.arif-fazil.com', color: '#555555' },
     { label: 'Ω WIKI', href: 'https://wiki.arif-fazil.com', color: '#555555' },

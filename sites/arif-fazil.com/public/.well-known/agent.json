@@ -9,7 +9,7 @@
   "version": "1.0",
   "capabilities": {
     "a2a": true,
-    "mcp": ["https://arifosmcp.arif-fazil.com/mcp"]
+    "mcp": ["https://mcp.arif-fazil.com/mcp"]
   },
   "scopes": ["constitutional-ai", "geoscience", "arifOS-governance"],
   "modes": ["observe", "advise"],

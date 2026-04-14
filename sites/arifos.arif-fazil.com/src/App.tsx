@@ -39,7 +39,7 @@ function App() {
           <div className="nav-strip">
             <a href="https://arif-fazil.com">The Soul</a>
             <a href="https://aaa.arif-fazil.com">The Body</a>
-            <a href="https://arifosmcp.arif-fazil.com/health">Live Vitals</a>
+            <a href="https://mcp.arif-fazil.com/health">Live Vitals</a>
           </div>
         </header>
 
@@ -78,7 +78,7 @@ function App() {
         <section className="section">
           <h2 className="section-title text-gold"><Zap className="inline mr-2" /> Trinity Integration</h2>
           <div className="floor-matrix">
-            <a href="https://arifosmcp.arif-fazil.com" className="floor-card block hover:border-emerald-500 transition-colors">
+            <a href="https://mcp.arif-fazil.com" className="floor-card block hover:border-emerald-500 transition-colors">
               <Cpu className="mb-2" />
               <h4 className="font-bold">MCP Runtime</h4>
               <p className="text-xs opacity-60">Production execution kernel.</p>

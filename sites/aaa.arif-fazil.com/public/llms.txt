@@ -1,0 +1,13 @@
+# aaa.arif-fazil.com
+
+## Purpose
+The Governance Cockpit for the arifOS constellation. Used for monitoring agents, tools, and constitutional compliance.
+
+## Canonical Pages
+- /agents: Active agent cards and registries.
+- /governance: The 13 Floors and Vault999 status.
+- /webmcp: Browser-native MCP execution interface.
+- /a2a: Agent-to-Agent protocol logs.
+
+## Connection
+Integrates with the mcp.arif-fazil.com kernel for real-time governance actions.

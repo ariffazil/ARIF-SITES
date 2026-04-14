@@ -1,0 +1,83 @@
+/* WAW Wealth-as-Wisdom — Visual Identity (Ω) */
+:root {
+  --gold-primary: #C9A84C;
+  --gold-dark: #8B7440;
+  --blue-accent: #3B82F6;
+  --bg-deep: #050505;
+  --bg-card: #0A0A0A;
+  --text-main: #E2E8F0;
+  --text-muted: #94A3B8;
+  --border: #1E293B;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-deep);
+  margin: 0;
+  padding-top: 60px;
+}
+
+.mono { font-family: 'IBM Plex Mono', monospace; }
+
+.constellation-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0; height: 60px;
+  background: #000; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; z-index: 1000;
+}
+
+.nav-links a {
+  text-decoration: none; font-size: 11px; font-weight: bold;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-left: 20px; color: var(--text-muted);
+}
+
+.nav-links a.active {
+  color: var(--gold-primary);
+  border-bottom: 2px solid var(--gold-primary);
+}
+
+.dashboard-header {
+  padding: 64px 24px;
+  border-bottom: 1px solid var(--border);
+  background: radial-gradient(circle at top right, #1e1b4b 0%, var(--bg-deep) 100%);
+}
+
+.badge-gold {
+  background: rgba(201, 168, 76, 0.1);
+  color: var(--gold-primary);
+  font-size: 10px; font-weight: bold;
+  padding: 4px 8px; border-radius: 4px;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+
+.grid-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px; padding: 48px 24px;
+  max-width: 1200px; margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 1px; /* Sharp professional edges */
+  transition: border-color 0.3s;
+}
+
+.card:hover { border-color: var(--gold-primary); }
+
+.stat-value {
+  font-size: 32px; font-weight: 900; color: var(--gold-primary);
+  margin: 16px 0 8px 0;
+}
+
+.btn-waw {
+  display: inline-block; padding: 12px 24px;
+  background: var(--gold-primary); color: #000;
+  text-decoration: none; font-weight: bold; font-size: 12px;
+  text-transform: uppercase; margin-top: 24px;
+}
