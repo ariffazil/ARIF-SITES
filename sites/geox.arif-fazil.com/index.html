@@ -102,6 +102,17 @@
             position: relative;
             z-index: 1;
         }
+        .debug-section {
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px solid rgba(0,212,170,0.2);
+            color: var(--accent-color, #00D4AA);
+            font-weight: 600;
+        }
+        .debug-label {
+            color: #D4A853;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -229,6 +240,13 @@
                     <span class="seal-badge" id="seal-badge">SEAL</span>
                     <span class="mono" style="font-size: 0.75rem; color: var(--muted-color);" id="server-version">Loading version</span>
                 </div>
+                <!-- Ψ_LE proxy: arifOS vitality metrics (shown in debug mode, approx always) -->
+                <div style="margin-top: 6px;">
+                    <span class="status-chip status-live" id="psi-le-chip" style="display:none;">
+                        <span class="status-dot"></span>
+                        <span id="psi-le-value" style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">Ψ_LE: loading</span>
+                    </span>
+                </div>
             </div>
             
             <div class="metric-grid" id="metrics-container">
@@ -295,6 +313,12 @@
             </div>
 
             <div class="last-updated" id="last-updated">Last updated: loading</div>
+
+            <!-- Debug Auditor Panel — visible only with ?debug=truth -->
+            <div id="debug-panel" style="display:none; margin-top: 16px; padding: 14px; background: var(--bg-secondary); border: 1px solid rgba(0,212,170,0.3); border-radius: 8px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--muted-color);">
+                <div style="color: var(--accent-color, #00D4AA); font-weight: 600; margin-bottom: 8px; font-size: 12px;">🔍 AUDITOR MODE — ?debug=truth</div>
+                <div id="debug-content">Loading...</div>
+            </div>
         </section>
 
         <!-- FOUR SURFACES -->
@@ -645,7 +669,9 @@
         // Live Data Fetching for SOT
         const API_BASE = '';
         const MCP_BASE = 'https://mcp.arif-fazil.com/geox';
-        
+        const ARIFOS_BASE = 'https://mcp.arif-fazil.com';
+        const DEBUG_MODE = new URLSearchParams(window.location.search).get('debug') === 'truth';
+
         async function fetchHealth() {
             try {
                 const res = await fetch(`${API_BASE}/health`);
@@ -653,6 +679,18 @@
                 return await res.json();
             } catch (e) {
                 console.error('Health fetch failed:', e);
+                return null;
+            }
+        }
+
+        async function fetchArifOSHealth() {
+            // Ψ_LE proxy: fetch arifOS vitality metrics as Ψ homeostatic indicator
+            try {
+                const res = await fetch(`${ARIFOS_BASE}/health`);
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return await res.json();
+            } catch (e) {
+                console.error('arifOS health fetch failed:', e);
                 return null;
             }
         }
@@ -696,7 +734,7 @@
             return 0.82 + Math.min(0.10, dims * 0.008 + Math.min(toolCount, 24) * 0.002);
         }
 
-        function updateUI(health, profile, tools) {
+        function updateUI(health, profile, tools, arifOS) {
             const now = new Date().toLocaleString();
             document.getElementById('last-updated').textContent = `Last updated: ${now}`;
 
@@ -754,8 +792,50 @@
                 });
 
                 // Footer status
-                document.getElementById('footer-status').textContent = 
+                document.getElementById('footer-status').textContent =
                     `SYSTEM_STATUS: [${health.status?.toUpperCase() || 'UNKNOWN'}]`;
+
+                // Ψ_LE proxy: expose arifOS vitality as Ψ homeostatic indicator
+                if (arifOS && document.getElementById('psi-le-value')) {
+                    const t = arifOS.thermodynamic || {};
+                    document.getElementById('psi-le-value').textContent =
+                        `v=${t.vitality_index?.toFixed(2) ?? '—'} | ψ²=${t.peace_squared?.toFixed(2) ?? '—'} | ΔS=${t.entropy_delta?.toFixed(3) ?? '—'} | Ω=${t.confidence?.toFixed(2) ?? '—'}`;
+                    document.getElementById('psi-le-chip').style.display = '';
+                    document.getElementById('psi-le-chip').className = 'status-chip ' + (t.vitality_index >= 0.8 ? 'status-live' : 'status-partial');
+                }
+
+                // Debug auditor panel
+                if (DEBUG_MODE && document.getElementById('debug-panel')) {
+                    document.getElementById('debug-panel').style.display = 'block';
+                    const db = document.getElementById('debug-content');
+                    if (db && arifOS) {
+                        const caps = arifOS.capability_map || {};
+                        db.innerHTML = `
+                            <div class="debug-section"><span class="debug-label">ΔΩΨ Trinity Health</span></div>
+                            <div><span class="debug-label">arifOS:</span> ${arifOS.status} | ${arifOS.version} | ${arifOS.tools_loaded} tools</div>
+                            <div><span class="debug-label">vitality:</span> ${arifOS.thermodynamic?.vitality_index ?? '—'}</div>
+                            <div><span class="debug-label">peace²:</span> ${arifOS.thermodynamic?.peace_squared ?? '—'}</div>
+                            <div><span class="debug-label">entropyΔ:</span> ${arifOS.thermodynamic?.entropy_delta ?? '—'}</div>
+                            <div><span class="debug-label">confidence:</span> ${arifOS.thermodynamic?.confidence ?? '—'}</div>
+                            <div><span class="debug-label">shadow:</span> ${arifOS.thermodynamic?.shadow ?? '—'}</div>
+                            <div class="debug-section"><span class="debug-label">Capabilities</span></div>
+                            <div><span class="debug-label">governed_continuity:</span> ${caps.capabilities?.governed_continuity ?? '—'}</div>
+                            <div><span class="debug-label">vault_persistence:</span> ${caps.capabilities?.vault_persistence ?? '—'}</div>
+                            <div><span class="debug-label">vector_memory:</span> ${caps.capabilities?.vector_memory ?? '—'}</div>
+                            <div><span class="debug-label">external_grounding:</span> ${caps.capabilities?.external_grounding ?? '—'}</div>
+                            <div class="debug-section"><span class="debug-label">Storage</span></div>
+                            <div><span class="debug-label">vault_postgres:</span> ${caps.storage?.vault_postgres ?? '—'}</div>
+                            <div><span class="debug-label">session_cache:</span> ${caps.storage?.session_cache ?? '—'}</div>
+                            <div class="debug-section"><span class="debug-label">arifOS MCP (/mcp)</span></div>
+                            <div><span class="debug-label">transport:</span> ${arifOS.transport ?? '—'}</div>
+                            <div><span class="debug-label">ml_floors:</span> ${arifOS.ml_floors?.ml_floors_enabled ? 'enabled' : 'disabled'}</div>
+                            <div class="debug-section"><span class="debug-label">GEOX</span></div>
+                            <div><span class="debug-label">service:</span> ${health?.service ?? '—'}</div>
+                            <div><span class="debug-label">dimensions:</span> ${(health?.enabled_dimensions || []).join(', ')}</div>
+                            <div><span class="debug-label">tools:</span> ${Array.isArray(tools) ? tools.length : 0} (${MCP_BASE}/mcp)</div>
+                        `;
+                    }
+                }
             } else {
                 document.getElementById('health-status').textContent = 'ERROR';
                 document.getElementById('health-status').classList.add('error-state');
@@ -796,11 +876,12 @@
         }
 
         async function loadAllData() {
-            const [health, tools] = await Promise.all([
+            const [health, tools, arifOS] = await Promise.all([
                 fetchHealth(),
-                fetchTools()
+                fetchTools(),
+                DEBUG_MODE ? fetchArifOSHealth() : Promise.resolve(null)
             ]);
-            updateUI(health, null, tools);
+            updateUI(health, null, tools, arifOS);
         }
 
         // Initial load
