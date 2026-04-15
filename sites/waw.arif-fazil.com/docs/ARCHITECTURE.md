@@ -51,7 +51,7 @@ Static files served from:
 
 | Resource | URL |
 |----------|-----|
-| MCP Gateway | https://arifosmcp.arif-fazil.com |
+| MCP Gateway | https://mcp.arif-fazil.com |
 | Forge | https://forge.arif-fazil.com |
 | arifOS Kernel | https://github.com/ariffazil/arifOS |
 

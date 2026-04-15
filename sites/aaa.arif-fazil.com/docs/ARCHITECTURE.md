@@ -20,7 +20,7 @@ BODY is the **protocol specification and tool execution layer** — defining how
               │
          Uses ▼
     ┌────────────────────────────────┐
-    │  arifosmcp.arif-fazil.com     │
+    │  mcp.arif-fazil.com     │
     │  MCP Gateway (17 tools)        │
     └────────────────────────────────┘
 ```
@@ -91,9 +91,9 @@ BODY references the live MCP gateway:
 
 | Endpoint | Purpose |
 |----------|---------|
-| `https://arifosmcp.arif-fazil.com/health` | System status |
-| `https://arifosmcp.arif-fazil.com/mcp` | Tool invocation |
-| `https://arifosmcp.arif-fazil.com/tools` | Tool manifest |
+| `https://mcp.arif-fazil.com/health` | System status |
+| `https://mcp.arif-fazil.com/mcp` | Tool invocation |
+| `https://mcp.arif-fazil.com/tools` | Tool manifest |
 
 ## External References
 
@@ -101,7 +101,7 @@ BODY references the live MCP gateway:
 |----------|-----|
 | SOUL (arif-fazil) | https://arif-fazil.com |
 | MIND (arifOS) | https://apex.arif-fazil.com |
-| MCP Gateway | https://arifosmcp.arif-fazil.com |
+| MCP Gateway | https://mcp.arif-fazil.com |
 | GEOX (Domain) | https://geox.arif-fazil.com |
 
 ---

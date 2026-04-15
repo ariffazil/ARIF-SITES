@@ -1,6 +1,6 @@
 # MCP Gateway — Constitutional AI Kernel
 
-> **MCP Endpoint** | arifosmcp.arif-fazil.com | Ditempa Bukan Diberi [ΔΩΨ | ARIF]
+> **MCP Endpoint** | mcp.arif-fazil.com | Ditempa Bukan Diberi [ΔΩΨ | ARIF]
 
 ## Role in Trinity
 
@@ -12,7 +12,7 @@ MCP Gateway is the **constitutional AI execution engine** — a FastMCP-powered 
               ▼
     ┌───────────────────────────────────┐
     │         MCP GATEWAY              │
-    │   arifosmcp.arif-fazil.com        │
+    │   mcp.arif-fazil.com        │
     │                                   │
     │   17 Tools • 13 Floors • 888_HOLD │
     └───────────────────────────────────┘

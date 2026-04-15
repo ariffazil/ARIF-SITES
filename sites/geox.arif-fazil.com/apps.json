@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "schema": "geox-app-registry/v1",
+    "generated_at": "2026-04-13T20:18:16Z",
+    "authority": "GEOX public surface",
+    "seal": "DITEMPA BUKAN DIBERI"
+  },
+  "statuses": {
+    "LIVE": "Usable now with tested or clearly exposed functionality.",
+    "PREVIEW": "Visible and informative, but not yet production-complete.",
+    "SCAFFOLD": "Public shell exists, but the workflow is still thin or mocked.",
+    "PLANNED": "Documented only; not yet available as a working operator surface."
+  },
+  "apps": [
+    {
+      "id": "georeference",
+      "title": "Georeference Map",
+      "status": "SCAFFOLD",
+      "route": "/apps/georeference/",
+      "summary": "Upload map context, identify control points, and move toward governed georeferencing.",
+      "dimensions": ["map", "earth"],
+      "evidence": ["tools/georeference_map.py"],
+      "notes": "Core pathway exists, but public operator UX still needs deepening."
+    },
+    {
+      "id": "seismic-review",
+      "title": "Seismic Vision Review",
+      "status": "SCAFFOLD",
+      "route": "/apps/seismic-review/",
+      "summary": "Single-line review surface for governed seismic interpretation with explicit humility about mock backends.",
+      "dimensions": ["section", "physics"],
+      "evidence": ["vision/governed_vlm.py"],
+      "notes": "Current public-facing review remains mock-backed."
+    },
+    {
+      "id": "attribute-audit",
+      "title": "Attribute Audit",
+      "status": "PREVIEW",
+      "route": "/apps/attribute-audit/",
+      "summary": "Inspect extracted seismic attributes and transform-chain notes before interpretation.",
+      "dimensions": ["section", "physics"],
+      "evidence": ["seismic_feature_extract.py"],
+      "notes": "Partial operator UI is now exposed, but not yet a full production workflow."
+    },
+    {
+      "id": "ac-risk",
+      "title": "AC_Risk Console",
+      "status": "LIVE",
+      "route": "/apps/ac-risk/",
+      "summary": "Evaluate anomalous contrast risk across physical uncertainty, transform distortion, and cognitive bias.",
+      "dimensions": ["physics", "governance"],
+      "evidence": ["ac_risk.py"],
+      "notes": "This is the strongest public operator surface today."
+    },
+    {
+      "id": "analog-digitizer",
+      "title": "Analog Digitizer",
+      "status": "PLANNED",
+      "route": "/apps/analog-digitizer/",
+      "summary": "Future workflow for tracing analog logs into governed digital outputs.",
+      "dimensions": ["well", "digitization"],
+      "evidence": [],
+      "notes": "Shown publicly as roadmap only."
+    }
+  ]
+}

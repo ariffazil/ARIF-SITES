@@ -145,12 +145,12 @@ wrangler deploy
 
 ---
 
-### Lane 4: MCP RUNTIME
+### Lane 4: MCP RUNTIME / GATEWAY
 
 **Use when:** Persistent state, heavy computation, database, full MCP server
 
 **Targets:**
-- VPS Docker (Traefik)
+- VPS Docker (nginx reverse proxy)
 - Fly.io
 - Railway
 
@@ -163,6 +163,7 @@ wrangler deploy
 **Deploy:**
 ```bash
 # VPS path
+cd /root/arifOS/deployments/af-forge
 docker compose build && docker compose up -d
 
 # Or via deploy script
@@ -173,6 +174,32 @@ docker compose build && docker compose up -d
 ```bash
 curl https://<service>/health
 ```
+
+### mcp.arif-fazil.com Gateway Architecture
+
+Single public endpoint routing to multiple internal MCP backends:
+
+```
+external agent ──▶ https://mcp.arif-fazil.com/mcp (nginx)
+                                        │
+                    ┌─────────────────────┴─────────────────────┐
+                    ▼                                           ▼
+           arifOS MCP (:8080)                          GEOX MCP (:8765)
+           arifos_* tools                               geox_* tools
+```
+
+**Nginx routing rules:**
+- `/mcp` → `127.0.0.1:8080/mcp` (arifOS MCP)
+- `/geox/mcp` → `127.0.0.1:8765/mcp` (GEOX MCP)
+- `/health` → `127.0.0.1:8080/health`
+
+**⚠️ Critical nginx rules (learned 2026-04-15):**
+1. Use `proxy_set_header Host $proxy_host` NOT `$host` — backends reject non-local Host headers
+2. Always kill and restart nginx fresh: `killall nginx; sleep 2; nginx` — never trust `-s reload` during debugging
+3. Config edit: use `cat > file << 'EOF'` not `tee -a`
+4. After any nginx change, purge Cloudflare cache immediately
+
+**CF Token location:** `/opt/arifos/secrets/cloudflare_token`
 
 ---
 
@@ -187,8 +214,9 @@ curl https://<service>/health
 | apex.arif-fazil.com | STATIC | VPS nginx | 13 Floors (MIND ring) |
 | forge.arif-fazil.com | WEBMCP | Pages + VPS | Tool execution via MCP |
 | waw.arif-fazil.com | WEBMCP | Pages + VPS | State of machine |
-| arifosmcp.arif-fazil.com | MCP RUNTIME | VPS Docker | Full MCP gateway |
-| geox.arif-fazil.com | MCP RUNTIME | VPS Docker | GEOX Earth Intelligence |
+| mcp.arif-fazil.com | MCP GATEWAY | VPS nginx → Docker | Public unified gateway (arifOS + GEOX) |
+| arifosmcp.arif-fazil.com | MCP RUNTIME | VPS Docker | Legacy — redirects to mcp.arif-fazil.com |
+| geox.arif-fazil.com | MCP RUNTIME | VPS Docker | GEOX Earth Intelligence (internal, :8765) |
 
 ---
 
@@ -213,6 +241,14 @@ curl https://<service>/health
 □ Verify health endpoint: curl -s https://<site>/health
 □ Check SSL: curl -sI https://<site> | grep "HTTP/2 200"
 □ Verify Trinity nav: curl -s https://<site> | grep "Ψ SOUL"
+
+# VPS/MCP-only steps:
+□ For nginx config changes: sudo killall nginx; sleep 2; sudo nginx
+□ Test locally BEFORE public: curl http://127.0.0.1:80/<path>
+□ Purge Cloudflare cache after any backend change:
+  TOKEN=$(cat /opt/arifos/secrets/cloudflare_token)
+  ZONE_ID=$(curl -s "https://api.cloudflare.com/client/v4/zones" -H "Authorization: Bearer $TOKEN" | python3 -c "import sys,json; print(json.load(sys.stdin)['result'][0]['id'])")
+  curl -s -X POST "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/purge" -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"purge_everything": true}'
 ```
 
 ### Post-Deploy
@@ -304,4 +340,5 @@ Deploy with discipline. Deploy with reversibility. Deploy with truth.
 
 ---
 
-*Last updated: 2026-04-11*
+*Last updated: 2026-04-15*
+*Update: 2026-04-15 — Added mcp.arif-fazil.com gateway, CF cache purge workflow, nginx $proxy_host rule*

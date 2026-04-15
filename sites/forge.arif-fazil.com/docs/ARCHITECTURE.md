@@ -20,7 +20,7 @@ Forge is the **agent deployment interface** — the CI/CD surface where agents a
               │
          Deploys To
     ┌──────────────────────────────────┐
-    │  arifosmcp.arif-fazil.com        │
+    │  mcp.arif-fazil.com        │
     │  (MCP Gateway - 17 tools)        │
     └──────────────────────────────────┘
 ```
@@ -52,7 +52,7 @@ Static files served from:
 
 | Resource | URL |
 |----------|-----|
-| MCP Gateway | https://arifosmcp.arif-fazil.com |
+| MCP Gateway | https://mcp.arif-fazil.com |
 | WAW | https://waw.arif-fazil.com |
 | arifOS Kernel | https://github.com/ariffazil/arifOS |
 

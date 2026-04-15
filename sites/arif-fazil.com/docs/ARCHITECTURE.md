@@ -131,7 +131,7 @@ Source: `/sites/arif-fazil.com`
 |----------|-----|
 | MIND (arifOS) | https://apex.arif-fazil.com |
 | BODY (AAA) | https://aaa.arif-fazil.com |
-| MCP Gateway | https://arifosmcp.arif-fazil.com |
+| MCP Gateway | https://mcp.arif-fazil.com |
 | arifOS Kernel | https://github.com/ariffazil/arifOS |
 
 ---
