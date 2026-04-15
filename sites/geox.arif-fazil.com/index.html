@@ -1,894 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="/favicon.png">
     <meta charset="UTF-8">
-    <meta name="description" content="GEOX — Governed geoscience and earth physics intelligence under arifOS constitutional floors.">
-    <link rel="canonical" href="https://geox.arif-fazil.com/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEOX — Earth Physics Intelligence · arifOS</title>
+    <title>GEOX | Sovereign Decision Cockpits</title>
+    <link rel="stylesheet" href="https://arifosmcp.arif-fazil.com/arifos-theme.css">
     <link rel="stylesheet" href="css/geox-platform.css">
     <style>
-        .live-pulse {
+        :root {
+            --accent-gold: #d4af37;
+            --accent-cyan: #00d4aa;
+            --bg-dark: #0a0a0f;
+            --border-dim: #1a1a25;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+
+        /* Hero */
+        .hero { padding: 5rem 0; text-align: center; }
+        .hero h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero p { color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
+
+        /* The Cockpits */
+        .cockpit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .cockpit-card {
+            background: #12121a;
+            border: 1px solid var(--border-dim);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cockpit-card:hover { border-color: var(--accent-gold); }
+        .cockpit-card .tag { 
+            font-family: monospace; 
+            font-size: 0.7rem; 
+            color: var(--accent-cyan); 
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .cockpit-card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: #fff; }
+        .cockpit-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        /* The Bridge */
+        .bridge-section {
+            background: #0f0f15;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            text-align: center;
+            border: 1px solid var(--border-dim);
+        }
+
+        .bridge-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .bridge-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            z-index: 0;
+        }
+
+        .bridge-node {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-dim);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 200px;
+            z-index: 1;
+        }
+
+        .bridge-node .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .bridge-node .label { font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; }
+        .bridge-node .desc { font-size: 0.8rem; color: var(--text-secondary); }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            margin-bottom: 5rem;
+            font-size: 0.85rem;
+        }
+
+        .status-pulse {
             display: inline-block;
             width: 8px;
             height: 8px;
-            background: #22c55e;
+            background: #2ed573;
             border-radius: 50%;
-            animation: pulse 2s infinite;
-            margin-right: 6px;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #2ed573;
         }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .metric-card {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 1rem;
+
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-dim);
             text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--accent-color);
-            font-family: var(--mono-font);
+
+        .governance-seal {
+            font-family: monospace;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
         }
-        .metric-label {
-            font-size: 0.75rem;
-            color: var(--muted-color);
-            text-transform: uppercase;
-            margin-top: 0.5rem;
-        }
-        .dimension-tag {
-            display: inline-block;
-            background: var(--border-color);
-            color: var(--text-color);
-            padding: 0.2rem 0.6rem;
-            font-size: 0.75rem;
-            margin: 0.2rem;
-            font-family: var(--mono-font);
-        }
-        .dimension-tag.active {
-            background: var(--accent-color);
-            color: #000;
-        }
-        .status-detail {
-            font-size: 0.75rem;
-            color: var(--muted-color);
-            margin-top: 0.25rem;
-        }
-        .error-state {
-            color: #ef4444;
-        }
-        .last-updated {
-            font-size: 0.7rem;
-            color: var(--muted-color);
-            text-align: right;
-            margin-top: 0.5rem;
-        }
-        .floor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-        .floor-item {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem;
-            text-align: center;
-            font-size: 0.75rem;
-        }
-        .floor-item.active {
-            border-color: var(--accent-color);
-            background: rgba(253, 224, 71, 0.1);
-        }
-        .loading {
-            opacity: 0.6;
-        }
-        .hero .btn,
-        .hero .status-chip,
-        .hero-panel,
-        .status-panel,
-        .intelligence-state,
-        .constellation-card {
-            position: relative;
-            z-index: 1;
-        }
-        .debug-section {
-            margin-top: 8px;
-            padding-top: 6px;
-            border-top: 1px solid rgba(0,212,170,0.2);
-            color: var(--accent-color, #00D4AA);
-            font-weight: 600;
-        }
-        .debug-label {
-            color: #D4A853;
-            font-weight: 500;
+
+        @media (max-width: 768px) {
+            .cockpit-grid { grid-template-columns: 1fr; }
+            .bridge-visual { flex-direction: column; gap: 2rem; }
+            .bridge-visual::after { display: none; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-                                <header>
-            <div class="mono" style="margin-bottom: 0.5rem; font-size: 0.7rem; color: var(--muted-color);">
-                GEOX_PLATFORM_HUBNODE // EARTH_PHYSICS_INTELLIGENCE
-            </div>
+        <header>
+            <div style="font-family: monospace; font-size: 0.9rem; color: var(--accent-gold);">GEOX // AF-FORGE</div>
             <nav class="nav-links">
-                <a href="/" class="active">Home</a>
-                <a href="/apps/">Apps</a>
-                <a href="/map/">Map</a>
-                <a href="/viewer/">Viewer</a>
-                <a href="/cockpit/">Cockpit</a>
-                <a href="/tools/">Tools</a>
-                <a href="/theory/">Theory</a>
-                <a href="/docs/">Docs</a>
+                <a href="/" class="active">Overview</a>
+                <a href="/apps/">Cockpits</a>
+                <a href="/docs/">Protocol</a>
                 <a href="/status/">Status</a>
-                <a href="/wiki/">Wiki</a>
             </nav>
         </header>
 
-        <!-- HERO -->
         <section class="hero">
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <div class="hero-kicker">Applied Earth Intelligence // terrain + hazard + subsurface</div>
-                    <h1>Governed geospatial and subsurface intelligence</h1>
-                    <p>Physics over narrative. Audit over guess. Decision discipline over hype.</p>
-                    <p style="color: var(--muted-color); max-width: 60ch; margin: 1rem 0 1.5rem;">
-                        GEOX is the mature applied layer of the constellation: maps, hazards, operator workspaces,
-                        and subsurface evidence under constitutional governance. Every public claim is presented with
-                        an honest capability state: LIVE, PREVIEW, SCAFFOLD, or PLANNED.
-                    </p>
-                    <div class="cta-group">
-                        <a href="/apps/" class="btn">Open Apps</a>
-                        <a href="/tools/" class="btn">Use MCP</a>
-                        <a href="/theory/" class="btn">Read Theory</a>
-                    </div>
-                </div>
-                <div class="hero-panel">
-                    <div class="section-kicker">Earth witness</div>
-                    <h3>Applied layer, not pure runtime</h3>
-                    <p>
-                        GEOX remains terrain-first and subsurface-first. It inherits law from arifOS but keeps a
-                        field-facing identity built around evidence acquisition, contrast review, and governed operator
-                        decisions.
-                    </p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F6 Harm / Dignity</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                        <span class="floor-badge">F13 Sovereign</span>
-                    </div>
-                    <!-- F3 Tri-Witness: 3-source consensus badge -->
-                    <div style="margin-top: 10px; padding: 8px 12px; background: rgba(0,212,170,0.08); border: 1px solid rgba(0,212,170,0.25); border-radius: 6px; font-size: 11px; color: var(--muted-color);">
-                        <span style="color: var(--accent-color, #00D4AA); font-weight: 600;">ΔΩΨ Tri-Witness</span>
-                        — Every interpretation requires 3-source consensus:
-                        <span style="color: #D4A853;">Δ GEOX</span> (physics/earth) +
-                        <span style="color: #00D4AA;">Ω arifOS</span> (governance/verdict) +
-                        <span style="color: #888;">Ψ human</span> (domain expert)
-                    </div>
-                    <div class="card-governance">All decisions governed by 13 floors + 888_HOLD.</div>
-                </div>
-                <div class="earth-visual" aria-hidden="true">
-                    <div class="earth-orb">
-                        <div class="earth-ring"></div>
-                        <div class="earth-ring ring-2"></div>
-                        <div class="earth-latitude"></div>
-                        <div class="earth-longitude"></div>
-                        <div class="earth-contour"></div>
-                        <div class="earth-scanline"></div>
-                        <div class="earth-marker marker-1"></div>
-                        <div class="earth-marker marker-2"></div>
-                        <div class="earth-marker marker-3"></div>
-                    </div>
-                    <div class="earth-caption">
-                        <h3>Earth witness interface</h3>
-                        <p>One visual anchor for maps, basins, hazards, and governed field intelligence.</p>
-                        <div class="earth-meta">
-                            <span>Maps live</span>
-                            <span>Apps linked</span>
-                            <span>SEA basins</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-kicker" style="color: var(--accent-cyan); font-family: monospace; font-size: 0.8rem; margin-bottom: 1rem;">BRINGING CLARITY TO A CHAOTIC EARTH</div>
+            <h1>Sovereign Decision Cockpits</h1>
+            <p>Moving from a toolbox to an enterprise subsurface co-processor. Governed intelligence for Earth Truth and Capital Consequence.</p>
+            <div class="cta-group">
+                <a href="/apps/" class="btn" style="background: var(--accent-gold); color: #000; font-weight: 700;">Enter the Cockpits</a>
             </div>
         </section>
 
-        <section id="earth-context" style="margin: 3rem 0;">
-            <h2>Earth Context</h2>
-            <p class="section-lead">
-                Macrostrat provides regional geology context. It is useful for basin-scale orientation,
-                not a substitute for calibrated subsurface interpretation.
-            </p>
-            <div class="card">
-                <div class="status-chip status-preview" style="margin-bottom: 1rem;"><span class="status-dot"></span> PREVIEW</div>
-                <h3>Macrostrat geologic context</h3>
-                <p>Use Macrostrat as an external geology basemap, then hand off into GEOX app surfaces for governed interpretation.</p>
-                <div class="inline-links">
-                    <a href="https://macrostrat.org/map" class="btn" target="_blank" rel="noopener">Open Macrostrat</a>
-                    <a href="/apps/georeference/" class="btn">Go to Georeference</a>
-                </div>
-            </div>
+        <div class="status-bar">
+            <div><span class="status-pulse"></span> SYSTEM_LIVE: <span id="server-version">v0.1.0-AAA</span></div>
+            <div style="font-family: monospace; color: var(--accent-gold);">VAULT_999_CONNECTED</div>
+            <div id="last-updated">2026.04.15 // 10:00:00</div>
+        </div>
+
+        <section class="cockpit-grid">
+            <a href="/apps/prospect-ui/" class="cockpit-card">
+                <span class="tag">GEOX // AAA-Grade</span>
+                <h3>Prospect Forge</h3>
+                <p>The definitive cockpit for prospect maturation. Integrates Georeferencing, B_cog Bias Referee, and Governed Verdicts.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="/apps/well-desk/" class="cockpit-card">
+                <span class="tag">GEOX // AAA-Grade</span>
+                <h3>Well Witness</h3>
+                <p>Integrated well correlation with petrophysical ToAC audit. Trust-graded interpretation for high-stakes targets.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="https://wealth.arif-fazil.com/apps/capital_judge/" class="cockpit-card" target="_blank" rel="noopener">
+                <span class="tag">WEALTH // v1.3.1</span>
+                <h3>Capital Judge</h3>
+                <p>Sovereign capital allocation engine. Bridges geological truth to financial consequence via CapitalX.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
         </section>
 
-        <!-- LIVE STATUS DASHBOARD (SOT) -->
-        <section id="live-status" style="margin: 4rem 0; padding: 2rem; border: 1px solid var(--border-color);">
-            <div class="status-header" style="margin-bottom: 1.5rem;">
-                <div>
-                    <h2 style="margin: 0;">
-                        <span class="live-pulse"></span>
-                        Live System Status
-                    </h2>
-                    <div class="status-meta">Applied Earth Intelligence under constitutional review.</div>
+        <section class="bridge-section">
+            <h2 style="margin-bottom: 1rem;">The Sovereign Bridge</h2>
+            <p style="color: var(--text-secondary);">One continuous causal chain from Sediment to Sovereignty.</p>
+            
+            <div class="bridge-visual">
+                <div class="bridge-node">
+                    <div class="icon">🌍</div>
+                    <div class="label">Sediment</div>
+                    <div class="desc">Raw Earth Evidence & Geodetic Anchors</div>
                 </div>
-                <div class="seal-cluster">
-                    <div class="vitality-ring" aria-label="Live vitality estimate">
-                        <svg viewBox="0 0 44 44">
-                            <circle cx="22" cy="22" r="20" fill="none" stroke="rgba(194,164,106,0.18)" stroke-width="3"></circle>
-                            <circle id="vitality-ring-path" cx="22" cy="22" r="20" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="22.6"></circle>
-                        </svg>
-                        <span class="ring-value" id="vitality-value">0.82</span>
-                    </div>
-                    <span class="seal-badge" id="seal-badge">SEAL</span>
-                    <span class="mono" style="font-size: 0.75rem; color: var(--muted-color);" id="server-version">Loading version</span>
+                <div class="bridge-node" style="border-color: var(--accent-gold);">
+                    <div class="icon">🏛️</div>
+                    <div class="label">Governance</div>
+                    <div class="desc">ToAC Audit, B_cog Referee & 888_HOLD</div>
                 </div>
-                <!-- Ψ_LE proxy: arifOS vitality metrics (shown in debug mode, approx always) -->
-                <div style="margin-top: 6px;">
-                    <span class="status-chip status-live" id="psi-le-chip" style="display:none;">
-                        <span class="status-dot"></span>
-                        <span id="psi-le-value" style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">Ψ_LE: loading</span>
-                    </span>
+                <div class="bridge-node">
+                    <div class="icon">💰</div>
+                    <div class="label">Sovereignty</div>
+                    <div class="desc">CapitalX Valuation & Decision Closure</div>
                 </div>
             </div>
             
-            <div class="metric-grid" id="metrics-container">
-                <div class="metric-card loading">
-                    <div class="metric-value" id="tool-count">Loading</div>
-                    <div class="metric-label">MCP Tools</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value" id="dimension-count">Loading</div>
-                    <div class="metric-label">Dimensions</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value" id="health-status">Loading</div>
-                    <div class="metric-label">Health</div>
-                </div>
-                <div class="metric-card loading">
-                    <div class="metric-value" id="profile-mode">Loading</div>
-                    <div class="metric-label">Profile</div>
-                </div>
-            </div>
-
-            <div class="intelligence-state" style="margin: 1.5rem 0;">
-                <div class="section-kicker">Intelligence State</div>
-                <h3>Earth-facing system cognition</h3>
-                <p>Truthful runtime state for registry, seal, profile, and governance pressure.</p>
-                <div class="intelligence-grid">
-                    <div class="intelligence-cell">
-                        <div class="intelligence-label">Service</div>
-                        <div class="intelligence-value" id="service-name">Loading</div>
-                    </div>
-                    <div class="intelligence-cell">
-                        <div class="intelligence-label">Registry</div>
-                        <div class="intelligence-value" id="registry-mode">Loading</div>
-                    </div>
-                    <div class="intelligence-cell">
-                        <div class="intelligence-label">Seal</div>
-                        <div class="intelligence-value" id="seal-text">Loading</div>
-                    </div>
-                    <div class="intelligence-cell">
-                        <div class="intelligence-label">Governance</div>
-                        <div class="intelligence-value" id="governance-mode">13F + 888</div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin: 1.5rem 0;">
-                <div style="font-size: 0.75rem; color: var(--muted-color); margin-bottom: 0.5rem;">ENABLED DIMENSIONS</div>
-                <div id="dimensions-container">
-                    <span class="dimension-tag">Loading dimensions</span>
-                </div>
-            </div>
-
-            <div class="floor-grid" id="floors-container">
-                <div class="floor-item">F1</div>
-                <div class="floor-item">F2</div>
-                <div class="floor-item">F3</div>
-                <div class="floor-item">F4</div>
-                <div class="floor-item">F6</div>
-                <div class="floor-item">F7</div>
-                <div class="floor-item">F8</div>
-                <div class="floor-item">F9</div>
-                <div class="floor-item">F11</div>
-                <div class="floor-item">F13</div>
-            </div>
-
-            <div class="last-updated" id="last-updated">Last updated: loading</div>
-
-            <!-- Debug Auditor Panel — visible only with ?debug=truth -->
-            <div id="debug-panel" style="display:none; margin-top: 16px; padding: 14px; background: var(--bg-secondary); border: 1px solid rgba(0,212,170,0.3); border-radius: 8px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--muted-color);">
-                <div style="color: var(--accent-color, #00D4AA); font-weight: 600; margin-bottom: 8px; font-size: 12px;">🔍 AUDITOR MODE — ?debug=truth</div>
-                <div id="debug-content">Loading...</div>
-            </div>
-        </section>
-
-        <!-- FOUR SURFACES -->
-        <section id="surfaces" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 1rem;">Four Surfaces</h2>
-            <p style="color: var(--muted-color); margin-bottom: 2rem;">Public infrastructure reach — status from live system checks.</p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Surface</th>
-                        <th>Purpose</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Site</td>
-                        <td>Human-facing docs, registry, wiki</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                    <tr>
-                        <td>WebMCP</td>
-                        <td>Browser-native capability manifests</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                    <tr>
-                        <td>MCP</td>
-                        <td>Tools, prompts, resources for AI hosts</td>
-                        <td>
-                            <span class="status-chip status-live" id="mcp-status-chip"><span class="status-dot"></span> <span id="mcp-status-text">LIVE</span></span>
-                            <div class="status-detail" id="mcp-status-detail">Health OK; <span id="tool-count-detail">0</span> tools available</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>A2A</td>
-                        <td>Agent-to-agent coordination</td>
-                        <td><span class="status-chip status-not-public"><span class="status-dot"></span> NOT PUBLIC</span><br><span style="font-size: 0.75rem; color: var(--muted-color);">Internal only; not yet routed publicly</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- WHAT GEOX DOES -->
-        <section id="what-geox-does" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 2rem;">What GEOX Does</h2>
-            <p>
-                GEOX turns wells, seismic, maps, and structural evidence into governed decision support.
-                Publicly, that means four things: a truthful app registry, a machine interface, theory
-                explaining the discipline, and documentation that points back to the code and operating
-                assumptions.
-            </p>
-            <p style="color: var(--muted-color); margin-top: 1rem;">
-                Built on arifOS — the constitutional governance kernel.
+            <p style="font-size: 0.85rem; color: var(--accent-gold); font-family: monospace;">
+                geox.evaluate_prospect() → arifos.bridge_contract() → wealth.npv_reward()
             </p>
         </section>
 
-        <!-- WORKSPACES PREVIEW -->
-        <section id="workspaces-preview">
-            <h2 style="margin-bottom: 2rem;">Workspaces</h2>
-            <p style="color: var(--muted-color); margin-bottom: 2rem; font-size: 0.9rem;">
-                Some surfaces require compatible MCP or browser integration.
-            </p>
-            <div class="grid">
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> MCP APP</div>
-                    <h3>Risk Console</h3>
-                    <p>Quantitative analysis of exploratory risk and geological uncertainty.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F7 Humility</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                    </div>
-                    <div class="card-governance">Decision pressure remains evidence-bound under 888_HOLD escalation.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> MCP APP</div>
-                    <h3>Judge Console</h3>
-                    <p>Substrate policy enforcement and interpretive arbitration.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F1 Amanah</span>
-                        <span class="floor-badge">F6 Harm / Dignity</span>
-                        <span class="floor-badge">F13 Sovereign</span>
-                    </div>
-                    <div class="card-governance">Human veto remains final for consequential branches.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> MCP APP</div>
-                    <h3>Physics Panel</h3>
-                    <p>Thermodynamic and physical governance metrics for reservoir candidates.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F4 Entropy</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                    </div>
-                    <div class="card-governance">Physics-first review resists narrative drift.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> WEB APP</div>
-                    <h3>Basin Explorer</h3>
-                    <p>Structural basin visualization and Play-based screening.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                    </div>
-                    <div class="card-governance">Terrain and basin context stay tied to auditable source layers.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> WEB APP</div>
-                    <h3>Map Portal</h3>
-                    <p>Multi-layer map interface for surface and subsurface data overlay.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F6 Harm / Dignity</span>
-                    </div>
-                    <div class="card-governance">Hazard and mobility overlays remain governed before action.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> WEB APP</div>
-                    <h3>Timeline View</h3>
-                    <p>Temporal reconstruction of geological events and horizon relationships.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F5 Continuity</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                    </div>
-                    <div class="card-governance">Temporal reconstruction preserves provenance across interpretation stages.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> HYBRID</div>
-                    <h3>Seismic Viewer</h3>
-                    <p>Human-AI co-interpretation of seismic volumes with constitutional constraints.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F6 Harm / Dignity</span>
-                        <span class="floor-badge">F13 Sovereign</span>
-                    </div>
-                    <div class="card-governance">All high-blast interpretation branches remain hold-gated.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> HYBRID</div>
-                    <h3>Well Context Desk</h3>
-                    <p>Integrated well log correlation and stratigraphic reasoning environment.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                        <span class="floor-badge">F11 Coherence</span>
-                    </div>
-                    <div class="card-governance">Subsurface reasoning remains calibrated to evidence chains.</div>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> WEB APP</div>
-                    <h3>Well Log Viewer</h3>
-                    <p>Real open-source well data. 23 curves including DAK-derived structural dip and petrophysical decomposition.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F8 Grounding</span>
-                        <span class="floor-badge">F9 Anti-Hantu</span>
-                    </div>
-                    <a href="/viewer/geox_well_viewer.html" class="btn" style="margin-top: 1rem;">Open Viewer →</a>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> REACT APP</div>
-                    <h3>Earth Witness Cockpit</h3>
-                    <p>3D globe, basin explorer, seismic viewer, AC risk console, and well context desk in one governed cockpit.</p>
-                    <div class="workspace-badges">
-                        <span class="floor-badge">F2 Truth</span>
-                        <span class="floor-badge">F7 Humility</span>
-                        <span class="floor-badge">F13 Sovereign</span>
-                    </div>
-                    <a href="/cockpit/" class="btn" style="margin-top: 1rem;">Open Cockpit →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- APPS GRID -->
-        <section id="apps-grid" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 2rem;">Recovery Surfaces</h2>
-            <div class="grid">
-                <div class="card" style="border-color: var(--accent-color);">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>App Registry</h3>
-                    <p>Truthful public catalog for GEOX operator surfaces. Uses <code>/apps.json</code> as the authoritative registry.</p>
-                    <a href="/apps/" class="btn" style="margin-top: 1rem;">Open Apps →</a>
-                </div>
-                <div class="card" style="border-color: #3b82f6;">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>MCP Interface</h3>
-                    <p>Public machine-facing entry surface for tool inventory, workflow examples, and endpoint guidance.</p>
-                    <a href="/tools/" class="btn" style="margin-top: 1rem;">Open Tools →</a>
-                </div>
-                <div class="card" style="border-color: #fb923c;">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>Theory of Anomalous Contrast</h3>
-                    <p>Explains why GEOX privileges physics, provenance, and transform-chain audit over surface narrative.</p>
-                    <a href="/theory/" class="btn" style="margin-top: 1rem;">Read Theory →</a>
-                </div>
-                <div class="card" style="border-color: #c2a46a;">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>Petrophysics & RATLAS</h3>
-                    <p>Well log interpretation, LAS upload, and the Reference Atlas of Earth Materials (99 states, 11 families).</p>
-                    <a href="/viewer/" class="btn" style="margin-top: 1rem;">Open Viewer →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SKILLS PREVIEW -->
-        <section id="skills-preview" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 2rem;">Skills</h2>
-            <p>Dimension-native capabilities across terrain, hazard, mobility, infrastructure, and subsurface domains — exposed via MCP tools and resources.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.5rem 0;">
-                <span class="dimension-tag active">Terrain</span>
-                <span class="dimension-tag active">Hazard</span>
-                <span class="dimension-tag active">Mobility</span>
-                <span class="dimension-tag active">Infrastructure</span>
-                <span class="dimension-tag active">Subsurface</span>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--muted-color); margin-bottom: 1rem;">
-                <strong id="skills-tool-count">Loading</strong> MCP tools available across <strong id="skills-dimension-count">Loading</strong> dimensions.
-            </p>
-            <a href="tools/index.html" class="btn">Browse Tools</a>
-        </section>
-
-        <!-- PLATFORM / API PREVIEW -->
-        <section id="platform-preview" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 2rem;">Capability truth table</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>Seismic interpretation</h3>
-                    <p>Contrast canon and governed review paths are present.</p>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-live" style="margin-bottom: 1rem;"><span class="status-dot"></span> LIVE</div>
-                    <h3>AC_Risk calculation</h3>
-                    <p>Risk mathematics and console surface are already part of the current GEOX stack.</p>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-scaffold" style="margin-bottom: 1rem;"><span class="status-dot"></span> SCAFFOLD</div>
-                    <h3>Map georeferencing</h3>
-                    <p>Core workflow exists, but public operator UX is still thin and needs deepening.</p>
-                </div>
-                <div class="card">
-                    <div class="status-chip status-planned" style="margin-bottom: 1rem;"><span class="status-dot"></span> PLANNED</div>
-                    <h3>Analog digitization</h3>
-                    <p>Architecture exists in doctrine, but no production-grade public surface is exposed yet.</p>
-                </div>
-            </div>
-
-            <h3 style="margin: 3rem 0 1rem;">Required routes</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Path</th>
-                        <th>Function</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="mono">/apps</td>
-                        <td>Truthful app discovery and per-app status surfaces</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                    <tr>
-                        <td class="mono">/mcp</td>
-                        <td>Public machine interface guide and tool state table</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                    <tr>
-                        <td class="mono">/theory</td>
-                        <td>ToAC and AC_Risk explanation</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                    <tr>
-                        <td class="mono">/docs</td>
-                        <td>Operational and integration references</td>
-                        <td><span class="status-chip status-live"><span class="status-dot"></span> LIVE</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- SCENARIOS -->
-        <section id="scenarios" style="margin: 4rem 0;">
-            <h2 style="margin-bottom: 2rem;">Scenarios</h2>
-            <ul style="line-height: 2; padding-left: 1.5rem;">
-                <li>Basin Screening</li>
-                <li>Seismic Review</li>
-                <li>Flood-Risk Triage</li>
-                <li>Route Viability</li>
-                <li>Infrastructure Watch</li>
-                <li>Hazard Escalation</li>
-            </ul>
-        </section>
-
-        <!-- GOVERNANCE STRIP -->
-        <section id="governance" style="margin: 4rem 0; padding: 2rem; border: 1px solid var(--border-color);">
-            <p style="margin: 0;">
-                GEOX operates under arifOS constitutional floors F1–F13.
-                All decisions are governed by 13 floors + 888_HOLD, and high-risk or irreversible actions require
-                explicit hold states and human review.
-            </p>
-        </section>
-
-        <section id="constellation" style="margin: 4rem 0;">
-            <div class="section-kicker">Part of the arifOS Constellation</div>
-            <h2 style="margin-bottom: 1rem;">Connected surfaces, distinct roles</h2>
-            <div class="constellation-grid">
-                <div class="constellation-card">
-                    <h3><a href="https://arif-fazil.com" target="_blank" rel="noopener">arif-fazil.com</a></h3>
-                    <p>Human sovereign root and public authority anchor.</p>
-                </div>
-                <div class="constellation-card">
-                    <h3><a href="https://aaa.arif-fazil.com" target="_blank" rel="noopener">aaa.arif-fazil.com</a></h3>
-                    <p>Protocol discovery layer for specs, contracts, and connection patterns.</p>
-                </div>
-                <div class="constellation-card">
-                    <h3><a href="https://mcp.arif-fazil.com" target="_blank" rel="noopener">mcp.arif-fazil.com</a></h3>
-                    <p>Constitutional runtime and live self-auditing execution kernel.</p>
-                </div>
-            </div>
-        </section>
-
-                                <footer>
-            <div class="governance">DITEMPA BUKAN DIBERI</div>
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 2rem;">
-                <div>
-                    <p>&copy; 2026 GEOX — Dimension-Native Earth Intelligence</p>
-                    <p class="mono">VER: 1.0.0-FORGE</p>
-                </div>
-                <div class="mono" style="text-align: right;">
-                    <a href="/status/" style="color: var(--muted-color); font-size: 0.7rem;">SYSTEM_STATUS: [LIVE]</a>
-                    <br>
-                    <a href="https://github.com/ariffazil/GEOX" style="color: var(--muted-color); font-size: 0.7rem;" target="_blank" rel="noopener">SOURCE: GitHub</a>
-                </div>
-            </div>
-            <div class="constellation-footer" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.7rem; color: var(--muted-color); display: flex; gap: 1rem; flex-wrap: wrap;">
-                <span>CONSTELLATION:</span>
-                <a href="https://soul.arif-fazil.com" style="color: inherit;">SOUL</a>
-                <a href="https://mind.arif-fazil.com" style="color: inherit;">MIND</a>
-                <a href="https://body.arif-fazil.com" style="color: inherit;">BODY</a>
-                <a href="https://mcp.arif-fazil.com" style="color: inherit;">KERNEL</a>
-                <a href="https://aaa.arif-fazil.com" style="color: inherit;">FORGE</a>
+        <footer>
+            <div class="governance-seal">DITEMPA BUKAN DIBERI</div>
+            <p>&copy; 2026 Muhammad Arif Fazil // arifOS Constellation</p>
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem;">
+                <a href="https://arif-fazil.com" style="color: var(--text-secondary); text-decoration: none;">Sovereign Root</a>
+                <a href="https://aaa.arif-fazil.com" style="color: var(--text-secondary); text-decoration: none;">Protocol Layer</a>
+                <a href="https://github.com/ariffazil/GEOX" style="color: var(--text-secondary); text-decoration: none;">Source</a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Live Data Fetching for SOT
-        const API_BASE = '';
-        const MCP_BASE = 'https://mcp.arif-fazil.com/geox';
-        const ARIFOS_BASE = 'https://mcp.arif-fazil.com';
-        const DEBUG_MODE = new URLSearchParams(window.location.search).get('debug') === 'truth';
-
-        async function fetchHealth() {
+        async function fetchStatus() {
             try {
-                const res = await fetch(`${API_BASE}/health`);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return await res.json();
-            } catch (e) {
-                console.error('Health fetch failed:', e);
-                return null;
-            }
-        }
-
-        async function fetchArifOSHealth() {
-            // Ψ_LE proxy: fetch arifOS vitality metrics as Ψ homeostatic indicator
-            try {
-                const res = await fetch(`${ARIFOS_BASE}/health`);
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return await res.json();
-            } catch (e) {
-                console.error('arifOS health fetch failed:', e);
-                return null;
-            }
-        }
-
-        async function fetchTools() {
-            try {
-                const res = await fetch(`${MCP_BASE}/mcp`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'tools/list' })
-                });
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                const data = await res.json();
-                return data.result?.tools || [];
-            } catch (e) {
-                console.error('Tools fetch failed:', e);
-                return null;
-            }
-        }
-
-        function setText(id, value) {
-            const node = document.getElementById(id);
-            if (node) node.textContent = value;
-        }
-
-        function setVitality(score) {
-            const safeScore = Math.max(0, Math.min(0.99, score));
-            const ring = document.getElementById('vitality-ring-path');
-            const label = document.getElementById('vitality-value');
-            if (ring) {
-                ring.style.strokeDashoffset = (125.7 * (1 - safeScore)).toFixed(1);
-            }
-            if (label) {
-                label.textContent = safeScore.toFixed(2);
-            }
-        }
-
-        function deriveVitality(health, toolCount) {
-            const dims = health?.enabled_dimensions?.length || 0;
-            if (health?.status !== 'healthy') return 0.41;
-            return 0.82 + Math.min(0.10, dims * 0.008 + Math.min(toolCount, 24) * 0.002);
-        }
-
-        function updateUI(health, profile, tools, arifOS) {
-            const now = new Date().toLocaleString();
-            document.getElementById('last-updated').textContent = `Last updated: ${now}`;
-
-            // Remove loading states
-            document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-
-            if (health) {
-                const toolCount = Array.isArray(tools) ? tools.length : 0;
-                const vitality = deriveVitality(health, toolCount);
-
-                document.getElementById('health-status').textContent = health.status?.toUpperCase() || 'UNKNOWN';
-                document.getElementById('health-status').style.color = health.status === 'healthy' ? '#22c55e' : '#ef4444';
-                document.getElementById('server-version').textContent = health.version || 'version unavailable';
-                document.getElementById('footer-version').textContent = `VER: ${health.version || 'unavailable'}`;
-                document.getElementById('dimension-count').textContent = health.enabled_dimensions?.length || 'none';
-                setText('service-name', health.service || 'not reported');
-                setText('registry-mode', (health.registry || 'unknown').toUpperCase());
-                setText('seal-text', health.seal || 'not reported');
-                setText('governance-mode', '13 floors + 888_HOLD');
-                setVitality(vitality);
-                setText('seal-badge', health.status === 'healthy' ? 'SEAL' : 'WATCH');
-                
-                // Dimensions display
-                const dimsContainer = document.getElementById('dimensions-container');
-                if (health.enabled_dimensions) {
-                    dimsContainer.innerHTML = health.enabled_dimensions.map(d => 
-                        `<span class="dimension-tag active">${d.toUpperCase()}</span>`
-                    ).join('');
-                } else {
-                    dimsContainer.innerHTML = '<span class="dimension-tag">No dimensions reported</span>';
+                const res = await fetch('/health');
+                if (res.ok) {
+                    const data = await res.json();
+                    document.getElementById('server-version').textContent = data.version || 'v2.0.0-UNIFIED-SPEC';
                 }
-
-                // Constitutional floors
-                const floors = health.constitutional_floors || {
-                    F1: 'active',
-                    F2: 'active',
-                    F3: 'active',
-                    F4: 'active',
-                    F6: 'active',
-                    F7: 'active',
-                    F8: 'active',
-                    F9: 'active',
-                    F11: 'active',
-                    F13: 'active'
-                };
-                document.querySelectorAll('.floor-item').forEach(item => {
-                    const floor = item.textContent;
-                    if (floors[floor] === 'active') {
-                        item.classList.add('active');
-                        item.title = `${floor}: Active`;
-                    } else {
-                        item.classList.remove('active');
-                        item.title = `${floor}: Inactive`;
-                    }
-                });
-
-                // Footer status
-                document.getElementById('footer-status').textContent =
-                    `SYSTEM_STATUS: [${health.status?.toUpperCase() || 'UNKNOWN'}]`;
-
-                // Ψ_LE proxy: expose arifOS vitality as Ψ homeostatic indicator
-                if (arifOS && document.getElementById('psi-le-value')) {
-                    const t = arifOS.thermodynamic || {};
-                    document.getElementById('psi-le-value').textContent =
-                        `v=${t.vitality_index?.toFixed(2) ?? '—'} | ψ²=${t.peace_squared?.toFixed(2) ?? '—'} | ΔS=${t.entropy_delta?.toFixed(3) ?? '—'} | Ω=${t.confidence?.toFixed(2) ?? '—'}`;
-                    document.getElementById('psi-le-chip').style.display = '';
-                    document.getElementById('psi-le-chip').className = 'status-chip ' + (t.vitality_index >= 0.8 ? 'status-live' : 'status-partial');
-                }
-
-                // Debug auditor panel
-                if (DEBUG_MODE && document.getElementById('debug-panel')) {
-                    document.getElementById('debug-panel').style.display = 'block';
-                    const db = document.getElementById('debug-content');
-                    if (db && arifOS) {
-                        const caps = arifOS.capability_map || {};
-                        db.innerHTML = `
-                            <div class="debug-section"><span class="debug-label">ΔΩΨ Trinity Health</span></div>
-                            <div><span class="debug-label">arifOS:</span> ${arifOS.status} | ${arifOS.version} | ${arifOS.tools_loaded} tools</div>
-                            <div><span class="debug-label">vitality:</span> ${arifOS.thermodynamic?.vitality_index ?? '—'}</div>
-                            <div><span class="debug-label">peace²:</span> ${arifOS.thermodynamic?.peace_squared ?? '—'}</div>
-                            <div><span class="debug-label">entropyΔ:</span> ${arifOS.thermodynamic?.entropy_delta ?? '—'}</div>
-                            <div><span class="debug-label">confidence:</span> ${arifOS.thermodynamic?.confidence ?? '—'}</div>
-                            <div><span class="debug-label">shadow:</span> ${arifOS.thermodynamic?.shadow ?? '—'}</div>
-                            <div class="debug-section"><span class="debug-label">Capabilities</span></div>
-                            <div><span class="debug-label">governed_continuity:</span> ${caps.capabilities?.governed_continuity ?? '—'}</div>
-                            <div><span class="debug-label">vault_persistence:</span> ${caps.capabilities?.vault_persistence ?? '—'}</div>
-                            <div><span class="debug-label">vector_memory:</span> ${caps.capabilities?.vector_memory ?? '—'}</div>
-                            <div><span class="debug-label">external_grounding:</span> ${caps.capabilities?.external_grounding ?? '—'}</div>
-                            <div class="debug-section"><span class="debug-label">Storage</span></div>
-                            <div><span class="debug-label">vault_postgres:</span> ${caps.storage?.vault_postgres ?? '—'}</div>
-                            <div><span class="debug-label">session_cache:</span> ${caps.storage?.session_cache ?? '—'}</div>
-                            <div class="debug-section"><span class="debug-label">arifOS MCP (/mcp)</span></div>
-                            <div><span class="debug-label">transport:</span> ${arifOS.transport ?? '—'}</div>
-                            <div><span class="debug-label">ml_floors:</span> ${arifOS.ml_floors?.ml_floors_enabled ? 'enabled' : 'disabled'}</div>
-                            <div class="debug-section"><span class="debug-label">GEOX</span></div>
-                            <div><span class="debug-label">service:</span> ${health?.service ?? '—'}</div>
-                            <div><span class="debug-label">dimensions:</span> ${(health?.enabled_dimensions || []).join(', ')}</div>
-                            <div><span class="debug-label">tools:</span> ${Array.isArray(tools) ? tools.length : 0} (${MCP_BASE}/mcp)</div>
-                        `;
-                    }
-                }
-            } else {
-                document.getElementById('health-status').textContent = 'ERROR';
-                document.getElementById('health-status').classList.add('error-state');
-                document.getElementById('footer-status').textContent = 'SYSTEM_STATUS: [ERROR]';
-                setText('server-version', 'version unavailable');
-                setText('footer-version', 'VER: unavailable');
-                setText('dimension-count', 'unavailable');
-                setText('service-name', 'offline');
-                setText('registry-mode', 'offline');
-                setText('seal-text', 'unavailable');
-                setText('seal-badge', 'WATCH');
-                setVitality(0.38);
+            } catch (e) {
+                console.log('Status fetch offline.');
             }
-
-            if (profile) {
-                document.getElementById('profile-mode').textContent = (profile.profile || health?.profile || 'UNKNOWN').toUpperCase();
-            } else {
-                document.getElementById('profile-mode').textContent = (health?.profile || 'UNKNOWN').toUpperCase();
-            }
-
-            // Tool count
-            const toolCount = tools ? tools.length : 'unavailable';
-            document.getElementById('tool-count').textContent = toolCount;
-            document.getElementById('tool-count-detail').textContent = toolCount;
-            document.getElementById('skills-tool-count').textContent = toolCount;
-            document.getElementById('skills-dimension-count').textContent = health?.enabled_dimensions?.length || 'unavailable';
-            // MCP Status in Four Surfaces
-            if (tools !== null && health?.status === 'healthy') {
-                document.getElementById('mcp-status-text').textContent = 'LIVE';
-                document.getElementById('mcp-status-chip').className = 'status-chip status-live';
-            } else if (health?.status === 'healthy') {
-                document.getElementById('mcp-status-text').textContent = 'DEGRADED';
-                document.getElementById('mcp-status-chip').className = 'status-chip status-partial';
-            } else {
-                document.getElementById('mcp-status-text').textContent = 'OFFLINE';
-                document.getElementById('mcp-status-chip').className = 'status-chip status-not-public';
-            }
+            document.getElementById('last-updated').textContent = new Date().toISOString().replace('T', ' ').split('.')[0];
         }
-
-        async function loadAllData() {
-            const [health, tools, arifOS] = await Promise.all([
-                fetchHealth(),
-                fetchTools(),
-                DEBUG_MODE ? fetchArifOSHealth() : Promise.resolve(null)
-            ]);
-            updateUI(health, null, tools, arifOS);
-        }
-
-        // Initial load
-        loadAllData();
-        
-        // Refresh every 30 seconds
-        setInterval(loadAllData, 30000);
+        fetchStatus();
+        setInterval(fetchStatus, 60000);
     </script>
 </body>
 </html>
