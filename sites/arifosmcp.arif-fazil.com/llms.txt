@@ -1,91 +1,180 @@
 # arifOS MCP — Constitutional AI Gateway
+## Source of Truth for arifOS Trinity System
 
-## Overview
+**Version:** 2026.4.13-UNIFIED  
+**Gateway:** https://mcp.arif-fazil.com  
+**Health:** https://mcp.arif-fazil.com/health  
+**MCP Protocol:** 2024-11-05  
+**Transports:** streamable-http (primary), SSE fallback  
+**Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given
 
-arifOS MCP is a production-ready constitutional AI governance endpoint. It provides tools, prompts, and resources for reality-aligned AI systems.
-
-**Endpoint:** https://mcp.arif-fazil.com/mcp
-**Health:** https://mcp.arif-fazil.com/health
-**SSE (A2A fallback):** https://mcp.arif-fazil.com/sse
-
-## 17 Tools
-
-- constitutional_judge — Evaluate claims against constitutional floors
-- risk_score — Calculate risk score for actions
-- truth_band_check — Verify truthfulness thresholds
-- hold_gate — Check if action requires 888_HOLD approval
-- telemetry_emit — Emit telemetry event to vault
-- vault_seal — Create immutable seal record
-- health_check — Check system health status
-- read_file — Read file from filesystem
-- write_file — Write file to filesystem
-- list_files — List directory contents
-- grep_text — Search text in files
-- run_command — Execute shell command
-- run_tests — Run test suite
-- mcp__invoke — Invoke MCP tool
-- mcp__list — List available MCP tools
-
-## 4 Prompts
-
-- arifos.prompt.aaa_chain — AAA reasoning chain
-- arifos.prompt.mcp_transport_bootstrap — MCP transport setup
-- arifos.prompt.tool_routing_policy — Tool routing decisions
-- arifos.prompt.chatgpt_connector_bootstrap — ChatGPT integration
-
-## 6 Resources
-
-- arifos://aaa/schemas — JSON schemas
-- arifos://aaa/full-context-pack — Full context
-- arifos://aaa/mcp-transport-profile — Transport config
-- arifos://aaa/tool-operating-manual — Tool documentation
-- arifos://aaa/governance-gate-profile — Governance policies
-- ui://apex/dashboard-v2.html — Dashboard UI
-
-## Constitutional Governance
-
-arifOS MCP enforces 13 constitutional floors:
-
-- F1 AMANAH — No irreversible action without VAULT999 seal
-- F2 TRUTH — No ungrounded claims (τ ≥ 0.99)
-- F3 INPUT CLARITY — Clear task definition required
-- F4 ENTROPY — Risk accumulation tracking
-- F6 HARM/DIGNITY — No harm to humans/dignity
-- F7 CONFIDENCE — Humility in uncertainty
-- F8 GROUNDING — Evidence-based reasoning
-- F9 ANTI-HANTU — No deception/manipulation
-- F11 COHERENCE — Internal consistency
-- F13 SOVEREIGN — Human holds final authority
-
-## Thermodynamic Metrics
-
-- vitality_index — System vitality (0-1)
-- peace_squared — Stability measure (≥1.0 is stable)
-- entropy_delta — Risk accumulation (-0.02 is healthy)
-- confidence — Decision confidence (0.88)
-- witness — { human: 0.42, ai: 0.32, earth: 0.26 }
+---
 
 ## Connection
 
 ```bash
-# Claude Desktop
-npx @anthropic/mcp install arifos \
-  --url https://mcp.arif-fazil.com/mcp
+# Claude Desktop / MCP-compatible hosts
+npx @anthropic/mcp install arifos --url https://mcp.arif-fazil.com/mcp
 
-# Direct HTTP
+# Direct HTTP (MCP JSON-RPC)
 curl -X POST https://mcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}'
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"client","version":"1.0"}},"id":0}'
 ```
-
-## Related Sites
-
-- arif-fazil.com — Ψ SOUL (Human Anchor)
-- apex.arif-fazil.com — Ω MIND (13 Constitutional Floors)
-- aaa.arif-fazil.com — Δ BODY (Protocol Specs)
-- geox.arif-fazil.com — Φ GEOX (Earth Witness)
 
 ---
 
-DITEMPA BUKAN DIBERI — Forged, Not Given
-© 2026 ARIF FAZIL — arifOS v2026.04.07-SEAL
+## Trinity Architecture
+
+arifOS MCP is a **constitutional gateway** for three orthogonal AI organs. Every tool call passes through the same 13-floor governance membrane. Agents SHOULD compose across all three organs.
+
+### Δ arifOS — Constitutional Core (Governance)
+- **Endpoint:** https://mcp.arif-fazil.com/mcp
+- **Namespace:** arifos_*
+- **Role:** Decision authority, VAULT999 audit ledger, 13-floor enforcement, 888_HOLD human veto
+- **Loaded tools:** 20
+- **Can emit:** SEAL / CAUTION / HOLD / VOID verdicts
+
+### Φ GEOX — Earth Intelligence (Physics Grounding)
+- **Endpoint:** https://mcp.arif-fazil.com/geox/mcp
+- **Namespace:** geox_*
+- **Role:** Petrophysics, stratigraphy, play risk, physics constraints, well data, seismic interpretation
+- **Epistemic rule:** OBS from pixels, DER from computation, INT from interpretation — never conflate
+- **Note:** Forces physics over narrative. Earth witness in the trinity.
+
+### Ψ WEALTH — Capital Engine (Financial Intelligence)
+- **Endpoint:** Not yet deployed (in development)
+- **Namespace:** wealth_*
+- **Role:** Brent crude analysis, NPV/IRR, DSCR, portfolio construction, capital efficiency
+- **Status:** Deploy to VPS port, then add nginx route
+
+---
+
+## Orthogonal Composition Protocol
+
+Agents SHOULD compose tools across all three organs in this sequence:
+
+```
+1. arifos_sense  → Capture OBS/INT/DER evidence (Φ GEOX domain)
+2. arifos_mind   → Inductive synthesis from evidence
+3. arifos_judge → Constitutional verdict (SEAL/CAUTION/HOLD/VOID)
+4. arifos_vault  → VAULT999 immutable seal
+```
+
+**Rule:** GEOX and WEALTH provide evidence; arifOS provides verdict. No organ may self-approve.
+
+---
+
+## All Tools (20 Loaded — arifOS Namespace)
+
+### Core Governance
+- **arifos_init** — Initialize constitutional session. Modes: init/probe/state/status (safe) | revoke (requires human_approval)
+- **arifos_sense** — Reality-grounded observation with OBS/INT/DER epistemic labels
+- **arifos_mind** — Inductive reasoning engine for hypothesis synthesis
+- **arifos_kernel** — Constitutional kernel syscall: seal, revoke, invoke, telemetry
+- **arifos_heart** — Thermodynamic vitality monitor (entropy, peace², shadow, witness ratios)
+- **arifos_judge** — Constitutional verdict engine. Returns: SEAL (proceed) / CAUTION (warn) / HOLD (human review) / VOID (stop)
+- **arifos_vault** — Create immutable seal records in VAULT999 (SHA-256 anchored)
+- **arifos_memory** — VAULT999 immutable audit ledger access
+
+### Operational Substrates
+- **arifos_ops** — Operational controls: git, filesystem, fetch, memory, time substrates
+- **arifos_forge** — AF-FORGE substrate dispatch and execution manifest
+- **arifos_reply** — Channel-native reply with constitutional wrapping
+- **arifos_health** — System health diagnostic
+- **arifos_fetch** — Web fetch with evidence preservation
+- **arifos_repo_read** — Read from git-backed repositories
+- **arifos_repo_seal** — Commit and seal repository state to VAULT999
+- **arifos_probe** — Substrate probe: git/filesystem/memory/time/fetch/validation
+- **arifos_diag_substrate** — Diagnostic runner across all substrates
+- **arifos_wisdom** — Wisdom extraction from VAULT999 history
+- **arifos_wisdom_stats** — VAULT999 telemetry statistics
+
+### Legacy Aliases (mapped to arifos_* internally)
+init_anchor, apex_soul, agi_mind, asi_heart, physics_reality, math_estimator, architect_registry, vault_ledger, engineering_memory, code_engine
+
+---
+
+## Constitutional Governance (13 Floors)
+
+Every operation passes through these floors:
+
+| Floor | Name | Rule |
+|-------|------|------|
+| F1 | AMANAH | No irreversible action without VAULT999 seal |
+| F2 | TRUTH | No ungrounded claims (τ ≥ 0.99) |
+| F3 | INPUT CLARITY | Clear task definition required |
+| F4 | ENTROPY | Risk accumulation tracking |
+| F6 | HARM/DIGNITY | No harm to humans/dignity |
+| F7 | CONFIDENCE | Humility in uncertainty |
+| F8 | GROUNDING | Evidence-based reasoning |
+| F9 | ANTI-HANTU | No deception/manipulation |
+| F11 | COHERENCE | Internal consistency |
+| F13 | SOVEREIGN | Human holds final authority |
+
+**Special:** 888_HOLD — No agent may approve their own output. Every high-risk action requires human confirmation.
+
+---
+
+## Thermodynamic Metrics (Live from /health)
+
+- **vitality_index** — System vitality (0-1, ≥0.8 is healthy)
+- **peace_squared** — Stability measure (≥1.0 is stable)
+- **entropy_delta** — Risk accumulation (-0.02 is healthy)
+- **shadow** — Unseen risk surface
+- **confidence** — Decision confidence (0.88)
+- **witness** — { human: 0.42, ai: 0.32, earth: 0.26 }
+
+---
+
+## Prompts (4)
+
+- **arifos.prompt.aaa_chain** — AAA reasoning chain
+- **arifos.prompt.mcp_transport_bootstrap** — MCP transport setup
+- **arifos.prompt.tool_routing_policy** — Tool routing decisions
+- **arifos.prompt.chatgpt_connector_bootstrap** — ChatGPT integration
+
+---
+
+## Resources (6)
+
+- **arifos://aaa/schemas** — JSON schemas
+- **arifos://aaa/full-context-pack** — Full context
+- **arifos://aaa/mcp-transport-profile** — Transport config
+- **arifos://aaa/tool-operating-manual** — Tool documentation
+- **arifos://aaa/governance-gate-profile** — Governance policies
+- **ui://apex/dashboard-v2.html** — Dashboard UI
+
+---
+
+## Site Map
+
+| URL | Description |
+|-----|-------------|
+| https://mcp.arif-fazil.com | This gateway — public entry point |
+| https://mcp.arif-fazil.com/mcp | arifOS MCP endpoint |
+| https://mcp.arif-fazil.com/geox/mcp | GEOX MCP endpoint |
+| https://mcp.arif-fazil.com/health | Live health + thermodynamic metrics |
+| https://mcp.arif-fazil.com/llms.txt | This document |
+| https://mcp.arif-fazil.com/.well-known/mcp/server.json | MCP manifest |
+| https://mcp.arif-fazil.com/webmcp/ | WebMCP browser console |
+| https://arif-fazil.com | Ψ SOUL — Human identity anchor |
+| https://apex.arif-fazil.com | Ω MIND — Governance cockpit |
+| https://aaa.arif-fazil.com | Δ BODY — AAA protocols |
+| https://geox.arif-fazil.com | Φ GEOX — Earth intelligence |
+
+---
+
+## Constitutional Metadata
+
+- **Canonical repository:** https://github.com/ariffazil/arifOS
+- **Current release:** v2026.4.13
+- **Source commit:** 909c4ca
+- **Release tag:** v2026.4.13-UNIFIED
+- **Gateway philosophy:** DITEMPA BUKAN DIBERI — forged through discipline, not granted
+
+---
+
+*This document is the Source of Truth for all agents. Read this before deploying or calling tools.*
+*Last updated: 2026-04-15*

@@ -1,76 +1,104 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.ariffazil/arifos-mcp",
-  "version": "2026.03.10-SEAL",
-  "description": "arifOS AAA MCP runtime with streamable HTTP at /mcp, SSE compatibility, 7 public tools, and the APEX dashboard app resource.",
-  "vendor": {
-    "name": "arifOS",
-    "url": "https://apex.arif-fazil.com"
+  "schema": "https://modelcontextprotocol.io/specification",
+  "server_info": {
+    "name": "arifOS MCP",
+    "version": "2026.4.13-UNIFIED",
+    "description": "Public unified gateway for arifOS 20-tool constitutional MCP (arifOS + GEOX + WEALTH organs). No client authentication required."
   },
-  "license": "AGPL-3.0-only",
-  "repository": {
-    "url": "https://github.com/ariffazil/arifosmcp",
-    "source": "github"
-  },
-  "protocolVersion": "2025-11-25",
-  "supportedProtocolVersions": ["2025-11-25", "2025-03-26", "2025-06-18"],
-  "authentication": {
-    "type": "none",
-    "description": "No authentication required. actor_id is used for logging only."
-  },
-  "packages": [
+  "version": "2026.4.13-UNIFIED",
+  "mcp_version": "2024-11-05",
+  "transports": [
+    "streamable-http",
+    "sse"
+  ],
+  "tools": [
     {
-      "registryType": "pypi",
-      "identifier": "arifos",
-      "version": "2026.03.10-SEAL",
-      "transport": {
-        "type": "stdio",
-        "command": "python -m arifosmcp.runtime stdio"
-      }
+      "name": "arifos_init",
+      "description": "Initialize constitutional session with identity binding and telemetry seed. Modes: init/probe/state/status | revoke requires human_approval."
     },
     {
-      "registryType": "oci",
-      "identifier": "docker.io/arifazil/arifosmcp:forge-20260309",
-      "transport": {
-        "type": "streamable-http",
-        "url": "https://mcp.arif-fazil.com/mcp"
-      }
+      "name": "arifos_sense",
+      "description": "Reality-grounded observation capture with OBS/INT/DER epistemic labels."
+    },
+    {
+      "name": "arifos_mind",
+      "description": "Inductive reasoning engine for hypothesis synthesis from evidence."
+    },
+    {
+      "name": "arifos_kernel",
+      "description": "Constitutional kernel syscall: seal, revoke, invoke, telemetry emit."
+    },
+    {
+      "name": "arifos_heart",
+      "description": "Thermodynamic vitality monitor: entropy, peace_squared, shadow, witness."
+    },
+    {
+      "name": "arifos_ops",
+      "description": "Operational substrate controls: git, filesystem, fetch, memory, time."
+    },
+    {
+      "name": "arifos_judge",
+      "description": "Constitutional verdict engine. Returns: SEAL/CAUTION/HOLD/VOID."
+    },
+    {
+      "name": "arifos_memory",
+      "description": "VAULT999 immutable audit ledger with SHA-256 anchoring."
+    },
+    {
+      "name": "arifos_vault",
+      "description": "Create immutable seal records in VAULT999."
+    },
+    {
+      "name": "arifos_forge",
+      "description": "AF-FORGE substrate dispatch and execution manifest."
+    },
+    {
+      "name": "arifos_reply",
+      "description": "Channel-native reply with constitutional wrapping."
+    },
+    {
+      "name": "arifos_health",
+      "description": "System health diagnostic."
+    },
+    {
+      "name": "arifos_fetch",
+      "description": "Web fetch with evidence preservation."
+    },
+    {
+      "name": "arifos_repo_read",
+      "description": "Read from git-backed repositories."
+    },
+    {
+      "name": "arifos_probe",
+      "description": "Substrate probe: git/filesystem/memory/time/fetch/validation."
+    },
+    {
+      "name": "arifos_diag_substrate",
+      "description": "Diagnostic runner across all substrates."
+    },
+    {
+      "name": "arifos_repo_seal",
+      "description": "Commit and seal repository state to VAULT999."
+    },
+    {
+      "name": "arifos_wisdom",
+      "description": "Wisdom extraction from VAULT999 history."
+    },
+    {
+      "name": "arifos_wisdom_stats",
+      "description": "VAULT999 telemetry statistics."
+    },
+    {
+      "name": "monitor_metabolism",
+      "description": "System metabolism and vitality tracking."
     }
   ],
-  "remotes": [
-    {
-      "type": "sse",
-      "url": "https://mcp.arif-fazil.com/sse"
-    },
-    {
-      "type": "streamable-http",
-      "url": "https://mcp.arif-fazil.com/mcp"
-    }
+  "constitutional_floors": true,
+  "floors_count": 13,
+  "organs": [
+    "arifOS",
+    "GEOX",
+    "WEALTH"
   ],
-  "resources": [
-    {
-      "uri": "arifos://aaa/schemas"
-    },
-    {
-      "uri": "arifos://aaa/full-context-pack"
-    },
-    {
-      "uri": "arifos://aaa/mcp-transport-profile"
-    },
-    {
-      "uri": "arifos://aaa/tool-operating-manual"
-    },
-    {
-      "uri": "arifos://aaa/governance-gate-profile"
-    },
-    {
-      "uri": "ui://apex/dashboard-v2.html"
-    }
-  ],
-  "prompts": [
-    "arifos.prompt.aaa_chain",
-    "arifos.prompt.mcp_transport_bootstrap",
-    "arifos.prompt.tool_routing_policy",
-    "arifos.prompt.chatgpt_connector_bootstrap"
-  ]
+  "gateway_note": "This is the public discovery endpoint. All tools are accessible without auth."
 }
