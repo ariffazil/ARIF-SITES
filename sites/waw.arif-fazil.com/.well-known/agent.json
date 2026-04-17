@@ -1,0 +1,21 @@
+{
+  "schema": "arifos-agent-manifest/v1",
+  "name": "WAW — Wealth as Wisdom",
+  "role": "wealth_governance",
+  "url": "https://waw.arif-fazil.com",
+  "service": "http://72.62.71.199:8010",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+  "transport": ["streamable-http"],
+  "capabilities": {
+    "tools": true,
+    "domains": ["npv", "irr", "emv", "monte_carlo", "score_kernel",
+                "crisis_triage", "coordination", "civilization"],
+    "vault": true,
+    "maruah_enforced": true,
+    "context": "Malaysia/ASEAN"
+  },
+  "identity": "https://arif-fazil.com/llms.txt",
+  "wells": "https://arif-fazil.com/wells.json",
+  "sealed": true,
+  "epoch": "2026-04-18"
+}
