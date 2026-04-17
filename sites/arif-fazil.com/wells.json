@@ -34,27 +34,27 @@
       "url": "https://mcp.arif-fazil.com",
       "repo": "github.com/ariffazil/arifOS",
       "role": "constitutional mcp kernel",
-      "status": "degraded",
+      "status": "live",
       "endpoint": "https://mcp.arif-fazil.com/mcp",
       "transport": "streamable-http",
       "tools": 20,
-      "discovery": false
+      "discovery": true
     },
     "geox": {
       "name": "GEOX — Earth Intelligence",
       "url": "https://geox.arif-fazil.com",
       "repo": "github.com/ariffazil/GEOX",
       "role": "geological prospect evaluation",
-      "status": "partial",
-      "discovery": false
+      "status": "live",
+      "discovery": true
     },
     "waw": {
       "name": "WAW — Wealth Governance",
       "url": "https://waw.arif-fazil.com",
       "repo": "github.com/ariffazil/waw",
       "role": "wealth governance engine",
-      "status": "partial",
-      "discovery": false
+      "status": "live",
+      "discovery": true
     }
   },
   "discovery": {
