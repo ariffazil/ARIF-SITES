@@ -1,0 +1,67 @@
+{
+  "schema": "arifos-well-manifest/v1",
+  "sealed": true,
+  "epoch": "2026-04-18",
+  "architect": "Arif Fazil",
+  "version": "2026.4.13",
+  "nodes": {
+    "body": {
+      "name": "BODY — Identity",
+      "url": "https://arif-fazil.com",
+      "repo": "github.com/ariffazil/arif-sites",
+      "role": "identity anchor",
+      "status": "live",
+      "discovery": true
+    },
+    "soul": {
+      "name": "SOUL — Constitution",
+      "url": "https://apex.arif-fazil.com",
+      "repo": "github.com/ariffazil/arif-sites",
+      "role": "constitutional canon",
+      "status": "live",
+      "discovery": false
+    },
+    "docs": {
+      "name": "DOCS — Documentation",
+      "url": "https://arifos.arif-fazil.com",
+      "repo": "github.com/ariffazil/arif-sites",
+      "role": "technical documentation",
+      "status": "live",
+      "discovery": false
+    },
+    "mcp": {
+      "name": "MCP — Kernel",
+      "url": "https://mcp.arif-fazil.com",
+      "repo": "github.com/ariffazil/arifOS",
+      "role": "constitutional mcp kernel",
+      "status": "degraded",
+      "endpoint": "https://mcp.arif-fazil.com/mcp",
+      "transport": "streamable-http",
+      "tools": 20,
+      "discovery": false
+    },
+    "geox": {
+      "name": "GEOX — Earth Intelligence",
+      "url": "https://geox.arif-fazil.com",
+      "repo": "github.com/ariffazil/GEOX",
+      "role": "geological prospect evaluation",
+      "status": "partial",
+      "discovery": false
+    },
+    "waw": {
+      "name": "WAW — Wealth Governance",
+      "url": "https://waw.arif-fazil.com",
+      "repo": "github.com/ariffazil/waw",
+      "role": "wealth governance engine",
+      "status": "partial",
+      "discovery": false
+    }
+  },
+  "discovery": {
+    "llms_txt": "https://arif-fazil.com/llms.txt",
+    "llms_json": "https://arif-fazil.com/llms.json",
+    "canonical": "https://arif-fazil.com/.well-known/arifos.json",
+    "agent_json": "https://arif-fazil.com/.well-known/agent.json",
+    "wells_json": "https://arif-fazil.com/wells.json"
+  }
+}

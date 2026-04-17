@@ -1,8 +1,8 @@
 {
   "schema": "arifos-agent-manifest/v1",
-  "name": "arifOS Node — BODY",
-  "role": "identity anchor",
-  "url": "https://arif-fazil.com",
+  "name": "arifOS Node — SOUL",
+  "role": "constitutional canon",
+  "url": "https://apex.arif-fazil.com",
   "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "transport": ["streamable-http"],
   "constitutional_floors": 13,

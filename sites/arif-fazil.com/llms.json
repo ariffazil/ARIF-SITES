@@ -1,7 +1,11 @@
 {
-  "name": "arif",
-  "version": "1.0",
-  "last_updated": "2026-04-04",
-  "repository": "https://github.com/ariffazil/arif-sites",
-  "deploy_doctrine": "VPS-nginx source-of-truth, CF as CDN proxy only"
+  "site_name": "BODY — Identity",
+  "domain": "arif-fazil.com",
+  "role": "identity anchor",
+  "canonical": "https://arif-fazil.com/llms.txt",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+  "constitutional_floors": 13,
+  "source": "https://github.com/ariffazil/arif-sites",
+  "sealed": true,
+  "epoch": "2026-04-18"
 }

@@ -1,0 +1,10 @@
+{
+  "name": "SOUL — Constitution",
+  "role": "constitutional canon",
+  "url": "https://apex.arif-fazil.com",
+  "canonical": "https://arif-fazil.com/.well-known/arifos.json",
+  "mcp": "https://mcp.arif-fazil.com/mcp",
+  "version": "2026.4.13",
+  "sealed": true,
+  "epoch": "2026-04-18"
+}
