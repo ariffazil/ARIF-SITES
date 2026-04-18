@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Σ — Student Σ OS · arifOS for University</title>
-  <meta name="description" content="One personal AI agent per student. Timetable guardian, deadline engine, and study companion — powered by arifOS MCP constitutional AI.">
+  <title>MERDEKA BELAJAR OS — Personal Academic AI · arifOS MCP</title>
+  <meta name="description" content="One personal AI agent per university student. Timetable guardian, deadline engine, and study companion — proactive, private, and powered by constitutional AI.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -23,6 +23,8 @@
       --purple: #a78bfa;
       --text: #e8eaf6;
       --muted: #7b82a3;
+      --merdeka-red: #cc0000;
+      --merdeka-gold: #f5c400;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -49,8 +51,18 @@
       padding: 0 24px;
       z-index: 1000;
     }
-    .logo a { font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 1px; font-size: 1rem; }
-    .logo .sigma { font-size: 1.3rem; margin-right: 4px; }
+    .logo a { font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 0.5px; font-size: 0.95rem; }
+    .logo .merdeka-tag {
+      font-size: 9px;
+      font-weight: 700;
+      background: var(--merdeka-red);
+      color: white;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+      letter-spacing: 0.5px;
+    }
     .nav-links { display: flex; gap: 18px; align-items: center; }
     .nav-links a {
       text-decoration: none;
@@ -63,8 +75,8 @@
     }
     .nav-links a:hover, .nav-links a.active { color: var(--gold); }
     .nav-cta {
-      background: var(--gold);
-      color: #000 !important;
+      background: linear-gradient(135deg, var(--merdeka-red), #990000);
+      color: white !important;
       padding: 7px 14px;
       border-radius: 6px;
       font-weight: 700 !important;
@@ -98,47 +110,46 @@
       opacity: 0.4;
       pointer-events: none;
     }
-    .hero-badge {
+    .merdeka-banner {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(91,140,255,0.08);
-      border: 1px solid rgba(91,140,255,0.2);
+      background: rgba(204,0,0,0.1);
+      border: 1px solid rgba(204,0,0,0.3);
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 11px;
-      font-weight: 600;
-      color: var(--blue);
+      font-weight: 700;
+      color: #ff6666;
       letter-spacing: 0.5px;
       margin-bottom: 28px;
       position: relative;
     }
-    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
-    .sigma-display {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: clamp(100px, 18vw, 180px);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      text-shadow: 0 0 60px rgba(212,168,83,0.3);
-      margin-bottom: 8px;
-      position: relative;
-      letter-spacing: -4px;
-    }
+    .merdeka-banner .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--merdeka-red); box-shadow: 0 0 8px var(--merdeka-red); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
     .hero h1 {
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 800;
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 900;
       letter-spacing: -1px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       position: relative;
     }
-    .hero h1 span { color: var(--gold); }
+    .hero h1 .merdeka { color: var(--merdeka-red); }
+    .hero h1 .gold { color: var(--gold); }
     .hero-sub {
       font-size: clamp(15px, 2.5vw, 18px);
       color: var(--muted);
-      max-width: 560px;
-      margin: 0 auto 36px;
+      max-width: 580px;
+      margin: 0 auto 16px;
       position: relative;
+    }
+    .hero-tagline {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--merdeka-gold);
+      font-weight: 600;
+      margin-bottom: 28px;
+      position: relative;
+      font-style: italic;
     }
     .hero-actions {
       display: flex;
@@ -149,22 +160,22 @@
       margin-bottom: 48px;
     }
     .btn-primary {
-      background: linear-gradient(135deg, var(--gold), #b88a2a);
-      color: #000;
+      background: linear-gradient(135deg, var(--merdeka-red), #990000);
+      color: white;
       border: none;
       padding: 14px 28px;
       font-weight: 800;
       cursor: pointer;
       border-radius: 8px;
       font-size: 0.85rem;
-      box-shadow: 0 0 24px rgba(212,168,83,0.25);
+      box-shadow: 0 0 24px rgba(204,0,0,0.3);
       transition: transform 0.15s, box-shadow 0.15s;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(212,168,83,0.4); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(204,0,0,0.45); }
     .btn-secondary {
       background: transparent;
       color: var(--text);
@@ -181,6 +192,24 @@
       gap: 8px;
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* STATS */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .stat-item { text-align: center; }
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
 
     /* SCAMPER STRIP */
     .scamper-strip {
@@ -203,37 +232,19 @@
       min-width: 90px;
     }
     .scamper-item:last-child { border-right: none; }
-    .scamper-item .letter {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 2px;
-    }
+    .scamper-item .letter { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; margin-bottom: 2px; }
     .scamper-item .label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
 
-    /* PROBLEM */
-    .section-problem {
-      padding: 100px 24px;
-      background: var(--bg-elev);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .section-inner { max-width: 960px; margin: 0 auto; }
-    .section-label {
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
-    .section-title {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 20px;
-    }
+    /* SECTIONS */
+    .section { padding: 100px 24px; }
+    .section-elev { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; }
+    .section-title { font-size: clamp(26px, 4vw, 38px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 20px; }
     .section-title span { color: var(--gold); }
+    .section-sub { color: var(--muted); font-size: 15px; max-width: 600px; margin-bottom: 40px; }
+
+    /* PROBLEM */
     .problem-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -245,78 +256,92 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
+      transition: all 0.2s;
     }
+    .problem-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
     .problem-card .icon { font-size: 24px; margin-bottom: 10px; }
     .problem-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
     .problem-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-    /* SOLUTION HERO */
-    .section-solution {
-      padding: 100px 24px;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(212,168,83,0.06) 0%, transparent 50%),
-        var(--bg);
-    }
-    .solution-layout {
+    /* FEATURES */
+    .features-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
     }
-    @media (max-width: 768px) {
-      .solution-layout { grid-template-columns: 1fr; gap: 40px; }
-    }
-    .solution-visual {
+    .feature-card {
       background: var(--bg-panel);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      text-align: center;
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s;
     }
-    .sigma-big {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 96px;
-      font-weight: 700;
-      color: var(--gold);
-      text-shadow: 0 0 40px rgba(212,168,83,0.3);
-      line-height: 1;
-      margin-bottom: 12px;
+    .feature-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--merdeka-red));
     }
-    .solution-desc { font-size: 13px; color: var(--muted); margin-top: 12px; }
-    .solution-features { display: flex; flex-direction: column; gap: 16px; }
-    .feature-item {
+    .feature-card .ficon { font-size: 32px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .feature-card > p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+    .feature-bullets { list-style: none; }
+    .feature-bullets li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(30,35,68,0.8);
       display: flex;
-      gap: 16px;
       align-items: flex-start;
+      gap: 8px;
     }
-    .feature-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-      border: 1px solid var(--border);
+    .feature-bullets li::before { content: '→'; color: var(--gold); font-size: 11px; margin-top: 1px; flex-shrink: 0; }
+    .feature-card .highlight-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+      background: rgba(212,168,83,0.1);
+      color: var(--gold);
+      border: 1px solid rgba(212,168,83,0.2);
     }
-    .feature-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
-    .feature-item p { font-size: 12px; color: var(--muted); }
 
-    /* SCAMPER DEEP DIVE */
-    .section-scampar {
-      padding: 100px 24px;
-      background: var(--bg-elev);
-      border-top: 1px solid var(--border);
+    /* STACK */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 32px;
     }
+    .stack-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .stack-item:hover { border-color: var(--blue); color: var(--text); }
+    .stack-item.active { border-color: var(--green); color: var(--green); }
+
+    /* SCAMPER CARDS */
     .scamper-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      max-width: 1100px;
-      margin: 40px auto 0;
+      margin-top: 40px;
     }
     .scamper-card {
       background: var(--bg-panel);
@@ -342,12 +367,7 @@
     .scamper-card.s-put::before { background: #f97316; }
     .scamper-card.s-eliminate::before { background: var(--red); }
     .scamper-card.s-reverse::before { background: var(--gold); }
-    .scamper-letter {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
+    .scamper-letter { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; margin-bottom: 4px; }
     .s-substitute .scamper-letter { color: var(--blue); }
     .s-combine .scamper-letter { color: var(--green); }
     .s-adapt .scamper-letter { color: var(--purple); }
@@ -370,11 +390,6 @@
     .scamper-card .example strong { color: var(--gold); font-weight: 600; }
 
     /* ARCHITECTURE */
-    .section-arch {
-      padding: 100px 24px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
     .arch-flow {
       display: flex;
       align-items: center;
@@ -382,9 +397,6 @@
       gap: 0;
       flex-wrap: wrap;
       margin-top: 48px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .arch-node {
       background: var(--bg-panel);
@@ -398,97 +410,33 @@
     .arch-node.highlight { border-color: var(--gold-dim); box-shadow: 0 0 20px var(--gold-glow); }
     .arch-node h4 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
     .arch-node p { font-size: 11px; color: var(--muted); }
-    .arch-arrow {
-      font-size: 20px;
-      color: var(--gold-dim);
-      padding: 0 12px;
-    }
-    .arch-note {
-      text-align: center;
-      margin-top: 36px;
-      font-size: 12px;
-      color: var(--muted);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 20px;
-    }
-    .arch-note code {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--gold);
-      font-size: 11px;
-      background: rgba(212,168,83,0.08);
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
+    .arch-arrow { font-size: 20px; color: var(--gold-dim); padding: 0 12px; }
 
-    /* CTA */
-    .section-cta {
-      padding: 100px 24px;
-      background:
-        radial-gradient(ellipse at 50% 100%, rgba(212,168,83,0.1) 0%, transparent 55%),
-        var(--bg-elev);
-      border-top: 1px solid var(--border);
-      text-align: center;
+    /* FLOORS */
+    .floors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 32px;
     }
-    .cta-box {
-      max-width: 640px;
-      margin: 0 auto;
+    .floor-chip {
       background: var(--bg-panel);
-      border: 1px solid var(--gold-dim);
-      border-radius: 20px;
-      padding: 48px 40px;
-      box-shadow: 0 0 60px rgba(212,168,83,0.08);
-    }
-    .cta-box h2 {
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-    .cta-box h2 span { color: var(--gold); }
-    .cta-box p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
-    .cta-form {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .cta-input {
-      background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 12px 16px;
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      width: 240px;
-      outline: none;
-      transition: border-color 0.2s;
+      padding: 12px 14px;
+      font-size: 11px;
     }
-    .cta-input:focus { border-color: var(--gold); }
-    .cta-input::placeholder { color: var(--muted); }
+    .floor-chip .fname { font-weight: 700; color: var(--gold); margin-bottom: 2px; }
+    .floor-chip .fdesc { color: var(--muted); font-size: 10px; }
 
     /* COMPARISON */
-    .section-compare {
-      padding: 100px 24px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
     .compare-table {
-      max-width: 800px;
-      margin: 40px auto 0;
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
+      margin-top: 40px;
     }
-    .compare-table table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    .compare-table table { width: 100%; border-collapse: collapse; }
     .compare-table th {
       background: var(--bg-elev);
       padding: 14px 20px;
@@ -509,9 +457,110 @@
     }
     .compare-table tr:last-child td { border-bottom: none; }
     .compare-table tr:nth-child(even) td { background: rgba(17,20,42,0.4); }
-    .check { color: var(--green); font-size: 16px; }
-    .cross { color: var(--red); font-size: 16px; }
-    .partial { color: var(--gold); font-size: 14px; }
+    .check { color: var(--green); }
+    .cross { color: var(--red); }
+    .partial { color: var(--gold); }
+
+    /* IDEA BOARD */
+    .idea-board {
+      max-width: 800px;
+      margin: 40px auto 0;
+      background: var(--bg-panel);
+      border: 2px solid var(--gold-dim);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .idea-board-header {
+      background: rgba(212,168,83,0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 28px;
+    }
+    .idea-board-header .brand {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .idea-board-header .subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .idea-board-body {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .idea-field .field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+    .idea-field .field-value { font-size: 14px; }
+    .idea-field.wide { grid-column: 1 / -1; }
+    .scamper-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .scamper-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(91,140,255,0.1);
+      border: 1px solid rgba(91,140,255,0.3);
+      color: var(--blue);
+    }
+    .unique-value { font-size: 14px; font-weight: 700; color: var(--gold); }
+    .idea-board-footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 28px;
+      background: rgba(0,0,0,0.2);
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .idea-board-footer strong { color: var(--text); }
+
+    /* CTA */
+    .cta-section {
+      padding: 100px 24px;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(204,0,0,0.08) 0%, transparent 55%),
+        var(--bg-elev);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 640px;
+      margin: 0 auto;
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-dim);
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 0 60px rgba(212,168,83,0.08);
+    }
+    .cta-box h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 14px; }
+    .cta-box h2 span { color: var(--merdeka-red); }
+    .cta-box > p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+    .cta-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+    .cta-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      width: 240px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-input:focus { border-color: var(--gold); }
+    .cta-input::placeholder { color: var(--muted); }
+
+    /* ABOUT */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      .about-layout { grid-template-columns: 1fr; }
+      .idea-board-body { grid-template-columns: 1fr; }
+    }
 
     /* FOOTER */
     .footer {
@@ -524,6 +573,7 @@
     }
     .footer a { color: var(--gold); text-decoration: none; }
     .footer .mono { color: var(--gold-dim); }
+    .footer .merdeka { color: var(--merdeka-red); }
 
     /* SCROLLBAR */
     ::-webkit-scrollbar { width: 8px; }
@@ -531,26 +581,13 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #2a3366; }
 
-    /* BADGE */
-    .badge-arifos {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10px;
-      font-weight: 700;
-      color: var(--gold);
-      background: rgba(212,168,83,0.08);
-      border: 1px solid rgba(212,168,83,0.2);
-      padding: 4px 10px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-    }
-
     @media (max-width: 600px) {
       .scamper-strip { flex-direction: column; }
       .scamper-item { border-right: none; border-bottom: 1px solid var(--border); }
       .arch-arrow { display: none; }
       .arch-flow { flex-direction: column; gap: 12px; }
+      .stats-row { gap: 24px; }
+      .cta-box { padding: 32px 20px; }
     }
   </style>
 </head>
@@ -559,28 +596,48 @@
 <!-- NAV -->
 <nav class="constellation-nav">
   <div class="logo">
-    <a href="/"><span class="sigma">Σ</span> Student Σ OS</a>
+    <a href="/">MERDEKA BELAJAR OS<span class="merdeka-tag">MERDEKA</span></a>
   </div>
   <div class="nav-links">
-    <a href="#problem">The Problem</a>
-    <a href="#solution">Solution</a>
+    <a href="#problem">Problem</a>
+    <a href="#features">Features</a>
     <a href="#scamper">SCAMPER</a>
-    <a href="#compare">vs ChatGPT</a>
-    <a href="https://aaa.arif-fazil.com" target="_blank" class="nav-cta">← AAA Cockpit</a>
+    <a href="#about">About</a>
+    <a href="#beta" class="nav-cta">🎓 Join Beta</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-badge">
+  <div class="merdeka-banner">
     <span class="dot"></span>
-    arifOS MCP · University Edition
+    arifOS MCP · University Edition · Malaysian-Made
   </div>
-  <div class="sigma-display">Σ</div>
-  <h1>Your Personal <span>Academic OS</span></h1>
-  <p class="hero-sub">One AI agent per student. Timetable guardian, deadline engine, and study companion — proactive, private, and powered by constitutional AI.</p>
+  <h1>
+    <span class="merdeka">MERDEKA</span> <span class="gold">BELAJAR</span> OS
+  </h1>
+  <p class="hero-tagline">"Information chases you — not the other way around."</p>
+  <p class="hero-sub">One personal AI agent per university student. Timetable guardian, deadline engine, and study companion — proactive, private, and powered by constitutional AI.</p>
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-value">5+</div>
+      <div class="stat-label">Platforms Integrated</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">100%</div>
+      <div class="stat-label">Privacy Protected</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">24/7</div>
+      <div class="stat-label">AI Availability</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">∞</div>
+      <div class="stat-label">Personalised Learning</div>
+    </div>
+  </div>
   <div class="hero-actions">
-    <a href="#beta" class="btn-primary">🚀 Join Beta — It's Free</a>
+    <a href="#beta" class="btn-primary">🚀 Join Beta — Free for Students</a>
     <a href="#scamper" class="btn-secondary">📐 See SCAMPER Breakdown</a>
   </div>
   <div class="scamper-strip">
@@ -595,13 +652,11 @@
 </section>
 
 <!-- PROBLEM -->
-<section class="section-problem" id="problem">
+<section class="section section-elev" id="problem">
   <div class="section-inner">
     <div class="section-label">Phase 1 — Problem Walkabout</div>
     <h2 class="section-title">Students don't lack apps.<br>They lack <span>a system that works for them.</span></h2>
-    <p style="color:var(--muted);font-size:15px;max-width:640px">
-      The average Malaysian university student uses 5+ platforms daily: Moodle, WhatsApp, email, Google Drive, and notepad reminders — yet still misses deadlines, loses notes, and feels overwhelmed. The problem isn't information. It's <strong style="color:var(--text)">organisation without intelligence</strong>.
-    </p>
+    <p class="section-sub">The average Malaysian university student uses 5+ platforms daily: Moodle, WhatsApp, email, Google Drive, MS Teams — nothing talks to anything else. The problem isn't information. It's <strong style="color:var(--text)">organisation without intelligence</strong>.</p>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="icon">📱</div>
@@ -611,12 +666,12 @@
       <div class="problem-card">
         <div class="icon">⏰</div>
         <h4>Deadline Blindspots</h4>
-        <p>Assignment due in 3 days? You remember when the WhatsApp message pops up — which is often too late.</p>
+        <p>Assignment due in 3 days? You remember when the WhatsApp message pops up — often too late.</p>
       </div>
       <div class="problem-card">
         <div class="icon">📝</div>
         <h4>Notes in Chaos</h4>
-        <p>Lecture notes scattered across Google Drive folders, WhatsApp files, and random screenshots.</p>
+        <p>Lecture notes scattered across Google Drive, WhatsApp files, and random screenshots.</p>
       </div>
       <div class="problem-card">
         <div class="icon">👥</div>
@@ -626,95 +681,111 @@
       <div class="problem-card">
         <div class="icon">🧠</div>
         <h4>Reactive, Not Proactive</h4>
-        <p>You chase information. You check. You follow up. What if information chased you instead?</p>
+        <p>You chase information. What if information chased you instead?</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section class="section-solution" id="solution">
+<!-- FEATURES -->
+<section class="section" id="features">
   <div class="section-inner">
-    <div class="section-label">Phase 2 — Reframe + Solution</div>
-    <h2 class="section-title">What if your <span>class schedule was a person?</span></h2>
-    <div class="solution-layout">
-      <div>
-        <p style="color:var(--muted);font-size:15px;margin-bottom:32px">
-          Σ — Student Σ OS — gives every university student their own personal AI agent. Not a chatbot you open. An agent that knows your timetable, your deadlines, your group members — and <strong style="color:var(--text)">pushes you what you need before you ask</strong>.
-        </p>
-        <div class="solution-features">
-          <div class="feature-item">
-            <div class="feature-icon">🗓️</div>
-            <div>
-              <h4>Timetable Guardian</h4>
-              <p>Knows your class schedule. Reminds you 15 minutes before — with the room number and any pre-class prep.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">⏱️</div>
-            <div>
-              <h4>Deadline Engine</h4>
-              <p>Tracks every assignment. Sends escalating nudges: 3 days / 1 day / same morning. Never surprised again.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">📚</div>
-            <div>
-              <h4>Lecture Companion</h4>
-              <p>Stores and summarises your notes. Ask anything about your syllabus — get answers from your own materials.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">👥</div>
-            <div>
-              <h4>Group Hub</h4>
-              <p>Coordinates group members, tracks contributions, surfaces who's lagging — without you having to chase anyone.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-icon">🎯</div>
-            <div>
-              <h4>Accountability Partner</h4>
-              <p>Checks on you. "Have you started the literature review?" — acts like a study buddy who doesn't let you slack.</p>
-            </div>
-          </div>
-        </div>
+    <div class="section-label">What MERDEKA BELAJAR OS Does</div>
+    <h2 class="section-title">5 Core Features. <span>Zero Excuses</span> for missing anything.</h2>
+    <p class="section-sub">Built from the ground up for Malaysian university students. Every feature designed around one principle: the system works for you, not the other way around.</p>
+    <div class="features-layout">
+      <div class="feature-card">
+        <div class="ficon">🧠</div>
+        <h3>Smart Scheduling</h3>
+        <p>MERDEKA BELAJAR learns your class schedule and habits to suggest optimal study times. No more guessing when to study.</p>
+        <ul class="feature-bullets">
+          <li>Auto-detect class times from your calendar</li>
+          <li>Suggest breaks based on focus patterns</li>
+          <li>Optimise study slots around your energy levels</li>
+        </ul>
+        <span class="highlight-tag">Available Now</span>
       </div>
-      <div class="solution-visual">
-        <div class="sigma-big">Σ</div>
-        <div style="font-weight:700;font-size:18px;margin-bottom:6px">Student Σ OS</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:20px">Powered by arifOS MCP</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left">
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:11px;">
-            <div style="color:var(--gold);font-weight:700;margin-bottom:2px">Telegram Interface</div>
-            <div style="color:var(--muted)">Message your agent like a friend</div>
-          </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:11px;">
-            <div style="color:var(--gold);font-weight:700;margin-bottom:2px">BM + English</div>
-            <div style="color:var(--muted)">Natural bilingual support</div>
-          </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:11px;">
-            <div style="color:var(--gold);font-weight:700;margin-bottom:2px">Privacy First</div>
-            <div style="color:var(--muted)">Your data stays yours — always</div>
-          </div>
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:11px;">
-            <div style="color:var(--gold);font-weight:700;margin-bottom:2px">Constitutional AI</div>
-            <div style="color:var(--muted)">13 floors protect your interests</div>
-          </div>
-        </div>
+      <div class="feature-card">
+        <div class="ficon">🔔</div>
+        <h3>Deadline Tracker</h3>
+        <p>Never miss an assignment again. MERDEKA BELAJAR crawls Moodle, email, and group chats to track all your deadlines.</p>
+        <ul class="feature-bullets">
+          <li>3-day advance warning system</li>
+          <li>Automatic categorisation by subject</li>
+          <li>Escalation to friends/mentors if you're falling behind</li>
+        </ul>
+        <span class="highlight-tag">Available Now</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">📝</div>
+        <h3>Note Summariser</h3>
+        <p>Turn lengthy lecture recordings into concise, searchable bullet points in seconds. Your own second brain.</p>
+        <ul class="feature-bullets">
+          <li>Auto-transcribe and summarise lectures</li>
+          <li>Extract key concepts and definitions</li>
+          <li>Search across all your notes instantly</li>
+        </ul>
+        <span class="highlight-tag">Beta</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">🎯</div>
+        <h3>Exam Prep Mode</h3>
+        <p>AI-powered quiz generation based on your coursework and past exam questions. Know your weak areas before the exam.</p>
+        <ul class="feature-bullets">
+          <li>Identify weak areas automatically from quiz results</li>
+          <li>Generate custom quizzes per subject</li>
+          <li>Track progress and improvement over time</li>
+        </ul>
+        <span class="highlight-tag">Coming Q3</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">❤️</div>
+        <h3>Wellness Check</h3>
+        <p>MERDEKA BELAJAR cares about your wellbeing. It checks in when you've been MIA and offers support.</p>
+        <ul class="feature-bullets">
+          <li>Notify when you've missed 2+ classes without explanation</li>
+          <li>Offer mental health resources and campus support contacts</li>
+          <li>Connect you with academic advisors if patterns emerge</li>
+        </ul>
+        <span class="highlight-tag">Beta</span>
+      </div>
+    </div>
+
+    <!-- Powered By -->
+    <div style="margin-top:60px">
+      <div class="section-label" style="margin-bottom:16px">Powered By</div>
+      <div class="stack-grid">
+        <div class="stack-item active">arifOS MCP<br><span style="font-size:9px;color:var(--green)">Constitutional AI</span></div>
+        <div class="stack-item">OpenClaw Platform<br><span style="font-size:9px">Telegram / WhatsApp</span></div>
+        <div class="stack-item">Moodle Integration<br><span style="font-size:9px">University LMS</span></div>
+        <div class="stack-item">Google Calendar<br><span style="font-size:9px">Schedule Sync</span></div>
+        <div class="stack-item">MS Teams<br><span style="font-size:9px">Class Integration</span></div>
+        <div class="stack-item">VAULT999<br><span style="font-size:9px">Privacy Ledger</span></div>
+      </div>
+    </div>
+
+    <!-- Constitutional Floors -->
+    <div style="margin-top:60px">
+      <div class="section-label" style="margin-bottom:8px">🔐 Constitutional AI Protection — 13 Floors</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:24px">Built on arifOS's 13 constitutional floors. Your data stays private, secure, and under your control.</p>
+      <div class="floors-grid">
+        <div class="floor-chip"><div class="fname">F1 Amanah</div><div class="fdesc">Data held in trust</div></div>
+        <div class="floor-chip"><div class="fname">F2 Truth</div><div class="fdesc">No hallucination policy</div></div>
+        <div class="floor-chip"><div class="fname">F7 Humility</div><div class="fdesc">Data minimisation</div></div>
+        <div class="floor-chip"><div class="fname">F9 Anti-Hantu</div><div class="fdesc">No autonomous deception</div></div>
+        <div class="floor-chip"><div class="fname">F13 Sovereign</div><div class="fdesc">You own your data</div></div>
+        <div class="floor-chip"><div class="fname">F11 Audit</div><div class="fdesc">Every action logged</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SCAMPER DEEP DIVE -->
-<section class="section-scampar" id="scamper">
+<!-- SCAMPER -->
+<section class="section section-elev" id="scamper">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">Phase 3 — SCAMPER in Action</div>
-    <h2 class="section-title">How we built <span>Σ OS</span> using SCAMPER</h2>
-    <p style="color:var(--muted);font-size:15px;max-width:600px;margin:0 auto">
-      We applied the SCAMPER framework to transform the student overload problem into a focused, innovative product. Here's the full breakdown.
-    </p>
+    <h2 class="section-title">How we built <span>MERDEKA BELAJAR OS</span></h2>
+    <p class="section-sub" style="margin:0 auto">We applied the SCAMPER framework to transform the student overload problem into a focused, innovative product. Here's the complete breakdown.</p>
   </div>
   <div class="scamper-grid">
     <div class="scamper-card s-substitute">
@@ -722,61 +793,59 @@
       <div class="scamper-word">Substitute</div>
       <h3>Replace scattered class groups with one AI-managed channel</h3>
       <p>Instead of juggling WhatsApp groups, email threads, and Moodle — one AI agent aggregates everything and manages it proactively.</p>
-      <div class="example"><strong>Example:</strong> "I have a class group chat for SOS3002 and a separate reminder app and my calendar — Σ substitutes all three with one agent that knows all three contexts.</p>
+      <div class="example"><strong>Example:</strong> WhatsApp class group + reminder app + calendar → one agent that knows all three contexts and manages them for you.</div>
     </div>
     <div class="scamper-card s-combine">
       <div class="scamper-letter">C</div>
       <div class="scamper-word">Combine</div>
       <h3>Timetable + Deadlines + Notes + Group Chat = One Agent</h3>
-      <p>Most apps solve one problem. Σ combines them — your agent holds all the threads and knows how they connect.</p>
-      <div class="example"><strong>Example:</strong> The same agent that reminds you about tomorrow's deadline also pulls your relevant lecture notes and sends them to your group chat before the meeting.</p>
+      <p>Most apps solve one problem. MERDEKA BELAJAR combines them — your agent holds all threads and knows how they connect.</p>
+      <div class="example"><strong>Example:</strong> Same agent reminds you about tomorrow's deadline, pulls your lecture notes, and posts to your group chat before the meeting.</div>
     </div>
     <div class="scamper-card s-adapt">
       <div class="scamper-letter">A</div>
       <div class="scamper-word">Adapt</div>
       <h3>Borrow arifOS governance model for student privacy</h3>
       <p>The proven arifOS constitutional AI framework — with 13 floors protecting data sovereignty — adapted for the student context.</p>
-      <div class="example"><strong>Example:</strong> Just as arifOS agents have F7 (data minimisation) and F9 (anti-hantu), Σ agents have privacy floors that prevent your data from being used without your explicit consent.</p>
+      <div class="example"><strong>Example:</strong> F7 (data minimisation) + F9 (anti-hantu) applied to student data — your information is never used without explicit consent.</div>
     </div>
     <div class="scamper-card s-modify">
       <div class="scamper-letter">M</div>
       <div class="scamper-word">Modify</div>
       <h3>Student-tier: simple UX + Malaysian university context</h3>
-      <p>Full arifOS MCP is complex. Σ is the simplified student-facing layer: WhatsApp-style interface, MUET-aware, Malaysian uni credit system.</p>
-      <div class="example"><strong>Example:</strong> No configuration required. You just tell your agent your name, course, and timetable — it builds your personal academic OS automatically.</p>
+      <p>Full arifOS MCP is complex. MERDEKA BELAJAR is the simplified student-facing layer: WhatsApp-style interface, MUET-aware, Malaysian uni credit system.</p>
+      <div class="example"><strong>Example:</strong> No configuration required. Tell your agent your name, course, and timetable — it builds your personal academic OS automatically.</div>
     </div>
     <div class="scamper-card s-put">
       <div class="scamper-letter">P</div>
       <div class="scamper-word">Put to Other Use</div>
       <h3>Agent as accountability partner — not just an information tool</h3>
-      <p>Most bots answer questions. Σ checks on you. It's the difference between a search engine and a personal assistant who knows your goals.</p>
-      <div class="example"><strong>Example:</strong> Every Friday, Σ asks: "What did you finish this week? What's next?" — like a study buddy who holds you accountable without judgment.</p>
+      <p>Most bots answer questions. MERDEKA BELAJAR checks on you. It's the difference between a search engine and a personal assistant who knows your goals.</p>
+      <div class="example"><strong>Example:</strong> Every Friday: "What did you finish this week? What's next?" — like a study buddy who holds you accountable without judgment.</div>
     </div>
     <div class="scamper-card s-eliminate">
       <div class="scamper-letter">E</div>
       <div class="scamper-word">Eliminate</div>
       <h3>Eliminate missed deadlines and "I didn't know" culture</h3>
-      <p>With proactive reminders and a complete view of your academic commitments, Σ eliminates the most common failure mode in university life.</p>
-      <div class="example"><strong>Example:</strong> Instead of discovering an assignment is due tomorrow, Σ has been gently escalating reminders for 3 days. You never get surprised.</p>
+      <p>With proactive reminders and a complete view of your academic commitments, MERDEKA BELAJAR eliminates the most common failure mode in university life.</p>
+      <div class="example"><strong>Example:</strong> Instead of discovering an assignment is due tomorrow, MERDEKA BELAJAR has been escalating reminders for 3 days. You never get surprised.</div>
     </div>
     <div class="scamper-card s-reverse">
       <div class="scamper-letter">R</div>
       <div class="scamper-word">Reverse</div>
       <h3>Information chases the student — not the other way around</h3>
-      <p>Traditional: student opens 5 apps to find information. Σ reverses this — the information flows to the student through one interface, at the right time.</p>
-      <div class="example"><strong>Example:</strong> You wake up and Σ has already sent: "Good morning. Today: SOS3002 lecture 9am, tutorial 2pm. Assignment due in 3 days — haven't started yet. Your group hasn't uploaded the draft."</p>
+      <p>Traditional: student opens 5 apps to find information. MERDEKA BELAJAR reverses this — information flows to you through one interface, at the right time.</p>
+      <div class="example"><strong>Example:</strong> You wake up: "Good morning. Today: SOS3002 lecture 9am, tutorial 2pm. Assignment due in 3 days — you haven't started. Your group hasn't uploaded the draft."</div>
     </div>
   </div>
 </section>
 
 <!-- ARCHITECTURE -->
-<section class="section-arch" id="arch">
+<section class="section" id="arch">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">How It Works</div>
     <h2 class="section-title">Built on <span>arifOS MCP</span> — proven constitutional infrastructure</h2>
-    <p style="color:var(--muted);font-size:15px;max-width:580px;margin:0 auto">
-      Σ OS isn't built from scratch. It layers a student intelligence domain on top of the arifOS MCP constitutional kernel — the same infrastructure running aaa.arif-fazil.com.
-    </p>
+    <p style="color:var(--muted);font-size:15px;max-width:580px;margin:0 auto">MERDEKA BELAJAR OS isn't built from scratch. It layers student intelligence on top of the arifOS MCP constitutional kernel — the same infrastructure running aaa.arif-fazil.com.</p>
   </div>
   <div class="arch-flow">
     <div class="arch-node">
@@ -785,7 +854,7 @@
     </div>
     <div class="arch-arrow">→</div>
     <div class="arch-node highlight">
-      <h4>Σ Agent</h4>
+      <h4>MERDEKA Agent</h4>
       <p>Student Skills Layer</p>
     </div>
     <div class="arch-arrow">→</div>
@@ -799,33 +868,18 @@
       <p>Privacy-protected storage</p>
     </div>
   </div>
-  <div class="arch-note" style="margin-top:32px">
-    <code>arifOS MCP</code> provides the constitutional foundation — F1 Amanah (trust), F7 Humility (data minimisation), F9 Anti-Hantu (no autonomous deception), F13 Sovereign (you own your data). Σ inherits all of it.
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:32px auto 0">
-    <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center">
-      <div style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:20px;font-weight:700">F1–F13</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Constitutional floors protect every interaction</div>
-    </div>
-    <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center">
-      <div style="font-family:'JetBrains Mono',monospace;color:var(--green);font-size:20px;font-weight:700">MCP</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Model Context Protocol — proven at scale</div>
-    </div>
-    <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center">
-      <div style="font-family:'JetBrains Mono',monospace;color:var(--blue);font-size:20px;font-weight:700">VAULT999</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:4px">Append-only sealed ledger for accountability</div>
-    </div>
+  <div style="max-width:600px;margin:36px auto 0;background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:16px 20px;text-align:center">
+    <code style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:12px">arifOS MCP</code>
+    <span style="color:var(--muted);font-size:12px;margin:0 8px">provides constitutional foundation — F1 Amanah, F7 Humility, F9 Anti-Hantu, F13 Sovereign. MERDEKA inherits all of it.</span>
   </div>
 </section>
 
-<!-- COMPARE -->
-<section class="section-compare" id="compare">
+<!-- COMPARISON -->
+<section class="section section-elev" id="compare">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">Why Not ChatGPT?</div>
-    <h2 class="section-title">Σ OS vs <span>Generic AI</span></h2>
-    <p style="color:var(--muted);font-size:15px;max-width:560px;margin:0 auto">
-      ChatGPT is powerful. But it's not built for your academic life. Here's the difference.
-    </p>
+    <h2 class="section-title">MERDEKA BELAJAR OS vs <span>Generic AI</span></h2>
+    <p class="section-sub" style="margin:0 auto">ChatGPT is powerful. But it's not built for your academic life. Here's the difference.</p>
   </div>
   <div class="compare-table">
     <table>
@@ -833,49 +887,49 @@
         <tr>
           <th>Capability</th>
           <th>ChatGPT / Generic AI</th>
-          <th>Σ OS</th>
+          <th>MERDEKA BELAJAR OS</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>Knows your class schedule</td>
-          <td class="cross">✗ No context of you</td>
-          <td class="check">✓ Full timetable memory</td>
+          <td><span class="cross">✗</span> No context of you</td>
+          <td><span class="check">✓</span> Full timetable memory</td>
         </tr>
         <tr>
           <td>Tracks your specific deadlines</td>
-          <td class="cross">✗ You have to tell it every time</td>
-          <td class="check">✓ Always knows what's due</td>
+          <td><span class="cross">✗</span> You have to tell it every time</td>
+          <td><span class="check">✓</span> Always knows what's due</td>
         </tr>
         <tr>
           <td>Proactively reminds you</td>
-          <td class="cross">✗ Waits for you to ask</td>
-          <td class="check">✓ Pushes before you forget</td>
+          <td><span class="cross">✗</span> Waits for you to ask</td>
+          <td><span class="check">✓</span> Pushes before you forget</td>
         </tr>
         <tr>
           <td>Remembers across the whole semester</td>
-          <td class="partial">◑ Short context window</td>
-          <td class="check">✓ Continuous semester context</td>
+          <td><span class="partial">◑</span> Short context window</td>
+          <td><span class="check">✓</span> Continuous semester context</td>
         </tr>
         <tr>
           <td>Malay / BM language support</td>
-          <td class="partial">◑ Basic translation only</td>
-          <td class="check">✓ Natural BM + English bilingual</td>
+          <td><span class="partial">◑</span> Basic translation only</td>
+          <td><span class="check">✓</span> Natural BM + English bilingual</td>
         </tr>
         <tr>
           <td>Privacy-protected by constitution</td>
-          <td class="cross">✗ Your data may train models</td>
-          <td class="check">✓ F7 data minimisation + F13 Sovereign</td>
+          <td><span class="cross">✗</span> Your data may train models</td>
+          <td><span class="check">✓</span> F7 data minimisation + F13 Sovereign</td>
         </tr>
         <tr>
           <td>Manages group project accountability</td>
-          <td class="cross">✗ Can't track other people</td>
-          <td class="check">✓ Group hub with member tracking</td>
+          <td><span class="cross">✗</span> Can't track other people</td>
+          <td><span class="check">✓</span> Group hub with member tracking</td>
         </tr>
         <tr>
           <td>Connects to university systems (Moodle)</td>
-          <td class="cross">✗ No institutional integration</td>
-          <td class="check">✓ MCP-linked to university tools</td>
+          <td><span class="cross">✗</span> No institutional integration</td>
+          <td><span class="check">✓</span> MCP-linked to university tools</td>
         </tr>
       </tbody>
     </table>
@@ -883,74 +937,127 @@
 </section>
 
 <!-- IDEA BOARD -->
-<section class="section-arch" id="board">
+<section class="section" id="board">
   <div class="section-inner" style="text-align:center">
     <div class="section-label">Phase 4 — Proof of Concept</div>
-    <h2 class="section-title">The <span>Σ OS</span> Idea Board</h2>
+    <h2 class="section-title">The <span>MERDEKA BELAJAR OS</span> Idea Board</h2>
   </div>
-  <div style="max-width:800px;margin:40px auto 0;background:var(--bg-panel);border:2px solid var(--gold-dim);border-radius:16px;overflow:hidden">
-    <div style="background:rgba(212,168,83,0.08);border-bottom:1px solid var(--border);padding:20px 28px">
-      <div style="font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:24px;font-weight:700;letter-spacing:2px">Σ — STUDENT Σ OS</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:4px">Preliminary Pitch · arifOS MCP × University Innovation Project</div>
+  <div class="idea-board">
+    <div class="idea-board-header">
+      <div class="brand">MERDEKA BELAJAR OS</div>
+      <div class="subtitle">Business Ideation Project · SCAMPER × arifOS MCP · University Assignment 2026</div>
     </div>
-    <div style="padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
-      <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Problem</div>
-        <div style="font-size:14px">University students juggle 5+ platforms daily yet still miss deadlines, lose notes, and experience group project drift.</div>
+    <div class="idea-board-body">
+      <div class="idea-field">
+        <div class="field-label">Problem</div>
+        <div class="field-value">University students juggle 5+ platforms daily yet still miss deadlines, lose notes, and experience group project drift.</div>
       </div>
-      <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Target Users</div>
-        <div style="font-size:14px">Malaysian university undergraduates — especially first-year students transitioning from SPM to university independence.</div>
+      <div class="idea-field">
+        <div class="field-label">Target Users</div>
+        <div class="field-value">Malaysian university undergraduates — especially first-year students transitioning from SPM to university independence.</div>
       </div>
-      <div style="grid-column:1/-1">
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Solution</div>
-        <div style="font-size:14px">A personal AI agent per student — timetable guardian, deadline engine, lecture companion, and group project hub — accessible via Telegram/WhatsApp, powered by arifOS MCP constitutional AI.</div>
+      <div class="idea-field wide">
+        <div class="field-label">Solution</div>
+        <div class="field-value">A personal AI agent per student — timetable guardian, deadline engine, lecture companion, and group project hub — accessible via Telegram/WhatsApp, powered by arifOS MCP constitutional AI.</div>
       </div>
+      <div class="idea-field">
+        <div class="field-label">SCAMPER Used</div>
+        <div class="scamper-tags">
+          <span class="scamper-tag" style="background:rgba(91,140,255,0.1);color:var(--blue)">S — Substitute</span>
+          <span class="scamper-tag" style="background:rgba(45,212,191,0.1);color:var(--green)">C — Combine</span>
+          <span class="scamper-tag" style="background:rgba(239,68,68,0.1);color:var(--red)">E — Eliminate</span>
+        </div>
+      </div>
+      <div class="idea-field">
+        <div class="field-label">Unique Value</div>
+        <div class="unique-value">Proactive vs Reactive — the system tells you what you need before you know to ask.</div>
+      </div>
+    </div>
+    <div class="idea-board-footer">
+      Revenue Model: <strong>Freemium</strong> — Basic (timetable + deadline reminders) free; Premium (group hub + AI tutoring + Moodle sync) = RM9/month student plan. &nbsp;|&nbsp; Privacy: <strong>F7 + F13 enforced</strong> — your data stays yours.
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-elev" id="about">
+  <div class="section-inner">
+    <div class="section-label">About This Project</div>
+    <h2 class="section-title">🌱 How <span>MERDEKA BELAJAR OS</span> Started</h2>
+    <div class="about-layout">
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">SCAMPER Elements Used</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
-          <span style="background:rgba(91,140,255,0.1);border:1px solid rgba(91,140,255,0.3);padding:4px 10px;border-radius:4px;font-size:11px;color:var(--blue);font-weight:600">S — Substitute</span>
-          <span style="background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.3);padding:4px 10px;border-radius:4px;font-size:11px;color:var(--green);font-weight:600">C — Combine</span>
-          <span style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);padding:4px 10px;border-radius:4px;font-size:11px;color:var(--red);font-weight:600">E — Eliminate</span>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:24px">
+          MERDEKA BELAJAR OS was born from a simple observation: university students are overwhelmed.
+        </p>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:24px">
+          Between Moodle, email, WhatsApp groups, MS Teams, and Google Meet — information is scattered everywhere. Students spend more time managing their tools than actually learning.
+        </p>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:24px">
+          We asked: <em style="color:var(--text)">"What if every student had their own personal AI assistant that knew their schedule, tracked their deadlines, and reminded them before they forgot?"</em>
+        </p>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8">
+          Thus MERDEKA BELAJAR OS was created — built on the <strong style="color:var(--text)">arifOS MCP constitutional AI framework</strong>, designed specifically for the unique needs of Malaysian university students. "Merdeka Belajar" — learning freely, independently, and without being constrained by broken systems.
+        </p>
+        <div style="margin-top:28px;padding:16px 20px;background:var(--bg-panel);border:1px solid var(--border);border-radius:10px">
+          <div style="font-size:12px;color:var(--muted)">
+            <strong style="color:var(--gold)">Built as a university innovation project</strong> using the SCAMPER framework. Submitted as part of Business Ideation coursework — demonstrating how real-world problems can be transformed into viable AI-powered solutions.
+          </div>
         </div>
       </div>
       <div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Unique Value</div>
-        <div style="font-size:14px;font-weight:700;color:var(--gold)">Proactive vs Reactive — the system tells you what you need before you know to ask.</div>
-      </div>
-    </div>
-    <div style="border-top:1px solid var(--border);padding:20px 28px;background:rgba(0,0,0,0.2)">
-      <div style="font-size:11px;color:var(--muted)">
-        Revenue Model: <strong style="color:var(--text)">Freemium</strong> — Basic (timetable + deadline reminders) free; Premium (group hub + AI tutoring + Moodle sync) = RM9/month student plan.
+        <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:14px;padding:28px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:16px">Key Stats</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+            <div style="text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--merdeka-red)">5+</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:4px">Platforms integrated</div>
+            </div>
+            <div style="text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--gold)">13</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:4px">Constitutional floors</div>
+            </div>
+            <div style="text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--green)">100%</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:4px">Privacy protected</div>
+            </div>
+            <div style="text-align:center;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:700;color:var(--blue)">24/7</div>
+              <div style="font-size:10px;color:var(--muted);margin-top:4px">AI availability</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--muted)">
+            <strong style="color:var(--text)">Technology stack:</strong> arifOS MCP · OpenClaw · Telegram API · Moodle · VAULT999
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="section-cta" id="beta">
+<section class="cta-section" id="beta">
   <div class="cta-box">
-    <div class="badge-arifos">🎓 University Beta — Limited Slots</div>
-    <h2 style="margin-top:20px">Be among the first<br><span>100 students</span> to deploy Σ OS</h2>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--merdeka-red);margin-bottom:12px">🎓 University Beta — Limited Slots</div>
+    <h2>Be among the first<br><span>100 students</span> to deploy MERDEKA BELAJAR OS</h2>
     <p>We're opening beta to Malaysian university students in select programmes. Free access during beta. Your feedback shapes the product.</p>
     <div class="cta-form">
-      <input type="text" class="cta-input" placeholder="Your name" id="name">
-      <input type="email" class="cta-input" placeholder="University email" id="email">
-      <input type="text" class="cta-input" placeholder="University / Programme" id="uni">
+      <input type="text" class="cta-input" placeholder="Nama / Your name" id="name">
+      <input type="email" class="cta-input" placeholder="Email universiti" id="email">
+      <input type="text" class="cta-input" placeholder="Universiti / Programme" id="uni">
     </div>
     <button class="btn-primary" onclick="handleSignup()" style="width:100%;justify-content:center;margin-top:4px">
-      🚀 Reserve My Beta Slot
+      🚀 Reserve My Beta Slot — Free
     </button>
-    <p style="font-size:11px;color:var(--muted);margin-top:12px;margin-bottom:0">No spam. No data selling. Constitutional privacy — F7 + F13 enforced.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;margin-bottom:0">Tiada spam. Tiada penjualan data. Privasi dilindungi F7 + F13. / No spam. No data selling. Privacy protected.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div style="margin-bottom:8px">
-    <span class="mono">Σ — Student Σ OS</span> · Built on <a href="https://mcp.arif-fazil.com" target="_blank">arifOS MCP</a> · Part of the <a href="https://aaa.arif-fazil.com" target="_blank">AAA Federation</a>
+    <span class="merdeka">MERDEKA</span> <span class="mono">BELAJAR OS</span> · Built on <a href="https://mcp.arif-fazil.com" target="_blank">arifOS MCP</a> · Part of the <a href="https://aaa.arif-fazil.com" target="_blank">AAA Federation</a>
   </div>
-  <div>DITEMPA BUKAN DIBERI · Kuala Lumpur 🇲🇾 · 2026</div>
+  <div><span class="merdeka">MERDEKA BUKAN DIBERI</span> · Kuala Lumpur 🇲🇾 · 2026</div>
 </footer>
 
 <script>
@@ -962,14 +1069,12 @@
       alert('Sila isi semua ruangan / Please fill in all fields.');
       return;
     }
-    const msg = `🎓 *Σ OS Beta Signup*\n\n*Name:* ${name}\n*Email:* ${email}\n*University:* ${uni}\n\n_Reserved via aaa.arif-fazil.com/scamper_`;
-    // Replace with your Telegram group ID or form handler
+    const msg = `🎓 *MERDEKA BELAJAR OS — Beta Signup*\n\n*Name:* ${name}\n*Email:* ${email}\n*University:* ${uni}\n\n_Submitted via aaa.arif-fazil.com/scamper_`;
     const encoded = encodeURIComponent(msg);
     window.open(`https://t.me/share/telegram?text=${encoded}`, '_blank');
-    alert(' redirecting... / Akan redirect...');
+    alert('Redirecting to Telegram... / Akan redirect...');
   }
 
-  // Smooth nav highlight
   const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
