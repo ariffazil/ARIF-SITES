@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAWA — Wide Academic Wisdom Assistant · arifOS MCP</title>
+  <meta name="description" content="One personal AI agent per university student. Timetable guardian, deadline engine, and study companion — proactive, private, and powered by constitutional AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-elev: #0b0d14;
+      --bg-panel: #11142a;
+      --border: #1e2344;
+      --border-hover: #2a3366;
+      --gold: #d4a853;
+      --gold-dim: #8f7030;
+      --gold-glow: rgba(212,168,83,0.15);
+      --blue: #5b8cff;
+      --green: #2dd4bf;
+      --red: #ef4444;
+      --purple: #a78bfa;
+      --orange: #f97316;
+      --text: #e8eaf6;
+      --muted: #7b82a3;
+      --teal: #14b8a6;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* NAV */
+    .constellation-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      background: rgba(5,6,10,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+    }
+    .logo a { font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 0.5px; font-size: 1.05rem; }
+    .logo .wawa { color: var(--teal); }
+    .logo .beta {
+      font-size: 9px;
+      font-weight: 700;
+      background: var(--teal);
+      color: #000;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--teal), #0d9488);
+      color: white !important;
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      font-size: 10px !important;
+      letter-spacing: 0.08em !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* HERO */
+    .hero {
+      margin-top: 56px;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(20,184,166,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(91,140,255,0.06) 0%, transparent 40%),
+        var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e2344' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .wawa-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.3);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--teal);
+      letter-spacing: 0.5px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .wawa-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+    .hero-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      text-shadow: 0 0 60px rgba(20,184,166,0.3);
+      margin-bottom: 8px;
+      position: relative;
+      letter-spacing: -2px;
+    }
+    .hero-expanded {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .hero h1 .teal { color: var(--teal); }
+    .hero-sub {
+      font-size: clamp(15px, 2.5vw, 18px);
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .hero-tagline {
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 28px;
+      position: relative;
+      font-style: italic;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal), #0d9488);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      box-shadow: 0 0 24px rgba(20,184,166,0.25);
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 36px rgba(20,184,166,0.4); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 14px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* STATS */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .stat-item { text-align: center; }
+    .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--teal); }
+    .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* WHAT IS WAWA */
+    .what-is {
+      background: var(--bg-elev);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .what-is-inner { max-width: 720px; margin: 0 auto; }
+    .what-is h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 20px; }
+    .what-is h2 .teal { color: var(--teal); }
+    .what-is p { font-size: 16px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+    .what-is p strong { color: var(--text); }
+    .wawa-acronym {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+    .acronym-item {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      min-width: 120px;
+    }
+    .acronym-item .letter { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--teal); }
+    .acronym-item .word { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-top: 4px; }
+
+    /* SECTIONS */
+    .section { padding: 100px 24px; }
+    .section-elev { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; }
+    .section-title { font-size: clamp(26px, 4vw, 38px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .section-title span { color: var(--teal); }
+    .section-sub { color: var(--muted); font-size: 15px; max-width: 600px; margin-bottom: 40px; }
+
+    /* PROBLEM */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .problem-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+    .problem-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+    .problem-card .icon { font-size: 24px; margin-bottom: 10px; }
+    .problem-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .problem-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* FEATURES */
+    .features-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .feature-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .feature-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+    .feature-card .ficon { font-size: 32px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .feature-card > p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.6; }
+    .feature-bullets { list-style: none; }
+    .feature-bullets li {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(30,35,68,0.8);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .feature-bullets li::before { content: '→'; color: var(--teal); font-size: 11px; margin-top: 1px; flex-shrink: 0; }
+    .feature-card .highlight-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+      background: rgba(20,184,166,0.1);
+      color: var(--teal);
+      border: 1px solid rgba(20,184,166,0.2);
+    }
+
+    /* SCAMPER */
+    .scamper-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .scamper-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .scamper-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .scamper-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 14px 14px 0 0; }
+    .scamper-card.s-substitute::before { background: var(--blue); }
+    .scamper-card.s-combine::before { background: var(--green); }
+    .scamper-card.s-adapt::before { background: var(--purple); }
+    .scamper-card.s-modify::before { background: var(--gold); }
+    .scamper-card.s-put::before { background: var(--orange); }
+    .scamper-card.s-eliminate::before { background: var(--red); }
+    .scamper-card.s-reverse::before { background: var(--teal); }
+    .scamper-letter { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; margin-bottom: 4px; }
+    .s-substitute .scamper-letter { color: var(--blue); }
+    .s-combine .scamper-letter { color: var(--green); }
+    .s-adapt .scamper-letter { color: var(--purple); }
+    .s-modify .scamper-letter { color: var(--gold); }
+    .s-put .scamper-letter { color: var(--orange); }
+    .s-eliminate .scamper-letter { color: var(--red); }
+    .s-reverse .scamper-letter { color: var(--teal); }
+    .scamper-word { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 12px; }
+    .scamper-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .scamper-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .scamper-card .example { margin-top: 14px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 12px; color: var(--text); }
+    .scamper-card .example strong { color: var(--teal); font-weight: 600; }
+
+    /* ARCHITECTURE */
+    .arch-flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; margin-top: 48px; }
+    .arch-node { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; text-align: center; min-width: 160px; position: relative; }
+    .arch-node.highlight { border-color: var(--teal); box-shadow: 0 0 20px rgba(20,184,166,0.15); }
+    .arch-node h4 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .arch-node p { font-size: 11px; color: var(--muted); }
+    .arch-arrow { font-size: 20px; color: var(--teal); padding: 0 12px; }
+
+    /* COMPARISON */
+    .compare-table { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-top: 40px; }
+    .compare-table table { width: 100%; border-collapse: collapse; }
+    .compare-table th { background: var(--bg-elev); padding: 14px 20px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); border-bottom: 1px solid var(--border); }
+    .compare-table th:last-child, .compare-table td:last-child { text-align: center; }
+    .compare-table td { padding: 14px 20px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:nth-child(even) td { background: rgba(17,20,42,0.4); }
+    .check { color: var(--green); } .cross { color: var(--red); } .partial { color: var(--gold); }
+
+    /* IDEA BOARD */
+    .idea-board { max-width: 800px; margin: 40px auto 0; background: var(--bg-panel); border: 2px solid var(--teal); border-radius: 16px; overflow: hidden; }
+    .idea-board-header { background: rgba(20,184,166,0.08); border-bottom: 1px solid var(--border); padding: 20px 28px; }
+    .idea-board-header .brand { font-family: 'JetBrains Mono', monospace; color: var(--teal); font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+    .idea-board-header .subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+    .idea-board-body { padding: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .idea-field .field-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+    .idea-field .field-value { font-size: 14px; }
+    .idea-field.wide { grid-column: 1 / -1; }
+    .scamper-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .scamper-tag { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 4px; background: rgba(20,184,166,0.1); border: 1px solid rgba(20,184,166,0.3); color: var(--teal); }
+    .unique-value { font-size: 14px; font-weight: 700; color: var(--teal); }
+    .idea-board-footer { border-top: 1px solid var(--border); padding: 20px 28px; background: rgba(0,0,0,0.2); font-size: 11px; color: var(--muted); }
+    .idea-board-footer strong { color: var(--text); }
+    @media (max-width: 600px) { .idea-board-body { grid-template-columns: 1fr; } }
+
+    /* MCP READY */
+    .mcp-ready {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .mcp-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+    .mcp-card:hover { border-color: var(--blue); }
+    .mcp-card .mcp-icon { font-size: 24px; margin-bottom: 10px; }
+    .mcp-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .mcp-card p { font-size: 12px; color: var(--muted); }
+    .mcp-card code { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--blue); background: rgba(91,140,255,0.08); padding: 2px 6px; border-radius: 4px; }
+
+    /* CTA */
+    .cta-section { padding: 100px 24px; background: radial-gradient(ellipse at 50% 100%, rgba(20,184,166,0.08) 0%, transparent 55%), var(--bg-elev); border-top: 1px solid var(--border); text-align: center; }
+    .cta-box { max-width: 640px; margin: 0 auto; background: var(--bg-panel); border: 1px solid var(--teal); border-radius: 20px; padding: 48px 40px; box-shadow: 0 0 60px rgba(20,184,166,0.08); }
+    .cta-box h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 800; margin-bottom: 14px; }
+    .cta-box h2 span { color: var(--teal); }
+    .cta-box > p { font-size: 15px; color: var(--muted); margin-bottom: 32px; }
+    .cta-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px; }
+    .cta-input { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; width: 240px; outline: none; transition: border-color 0.2s; }
+    .cta-input:focus { border-color: var(--teal); }
+    .cta-input::placeholder { color: var(--muted); }
+
+    /* FOOTER */
+    .footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; font-size: 11px; color: var(--muted); background: var(--bg-elev); }
+    .footer a { color: var(--teal); text-decoration: none; }
+    .footer .mono { color: var(--gold-dim); }
+    .footer .teal { color: var(--teal); }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-elev); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2a3366; }
+
+    /* MCP STRIP */
+    .mcp-strip {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 40px;
+      position: relative;
+      background: var(--bg-panel);
+    }
+    .mcp-strip-item {
+      padding: 14px 22px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      flex: 1 1 100px;
+      min-width: 90px;
+    }
+    .mcp-strip-item:last-child { border-right: none; }
+    .mcp-strip-item .letter { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; margin-bottom: 2px; color: var(--blue); }
+    .mcp-strip-item .label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+
+    @media (max-width: 600px) {
+      .mcp-strip { flex-direction: column; }
+      .mcp-strip-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .arch-arrow { display: none; }
+      .arch-flow { flex-direction: column; gap: 12px; }
+      .cta-box { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="constellation-nav">
+  <div class="logo">
+    <a href="/"><span class="wawa">WAWA</span><span class="beta">BETA</span></a>
+  </div>
+  <div class="nav-links">
+    <a href="#what">What is WAWA</a>
+    <a href="#features">Features</a>
+    <a href="#scamper">SCAMPER</a>
+    <a href="#mcp">MCP</a>
+    <a href="#beta" class="nav-cta">🎓 Join Beta</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wawa-badge">
+    <span class="dot"></span>
+    arifOS MCP · University Edition · Built for Malaysian Students
+  </div>
+  <div class="hero-logo">WAWA</div>
+  <div class="hero-expanded">Wide Academic Wisdom Assistant</div>
+  <h1>Your Personal <span class="teal">Academic OS</span></h1>
+  <p class="hero-tagline">"Information chases you — not the other way around."</p>
+  <p class="hero-sub">One AI agent per university student. Timetable guardian, deadline engine, lecture companion, and accountability partner — proactive, private, and powered by arifOS MCP constitutional AI.</p>
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-value">5+</div><div class="stat-label">Platforms Integrated</div></div>
+    <div class="stat-item"><div class="stat-value">100%</div><div class="stat-label">Privacy Protected</div></div>
+    <div class="stat-item"><div class="stat-value">24/7</div><div class="stat-label">AI Availability</div></div>
+    <div class="stat-item"><div class="stat-value">F13</div><div class="stat-label">Sovereign Data</div></div>
+  </div>
+  <div class="hero-actions">
+    <a href="#beta" class="btn-primary">🚀 Join Beta — Free for Students</a>
+    <a href="#scamper" class="btn-secondary">📐 SCAMPER Breakdown</a>
+  </div>
+  <div class="mcp-strip">
+    <div class="mcp-strip-item"><div class="letter">W</div><div class="label">WIDE</div></div>
+    <div class="mcp-strip-item"><div class="letter">A</div><div class="label">ACADEMIC</div></div>
+    <div class="mcp-strip-item"><div class="letter">W</div><div class="label">WISDOM</div></div>
+    <div class="mcp-strip-item"><div class="letter">A</div><div class="label">ASSISTANT</div></div>
+  </div>
+</section>
+
+<!-- WHAT IS WAWA -->
+<section class="what-is" id="what">
+  <div class="what-is-inner">
+    <div class="section-label" style="margin-bottom:16px">What is WAWA?</div>
+    <h2><span class="teal">WAWA</span> is your personal academic OS — powered by AI, protected by constitution.</h2>
+    <p>WAWA was born from a simple observation: <strong>university students are overwhelmed</strong>. Between Moodle, email, WhatsApp groups, MS Teams, and Google Meet — information is scattered everywhere. Students spend more time managing their tools than actually learning.</p>
+    <p>We asked: <em>"What if every student had their own personal AI assistant that knew their schedule, tracked their deadlines, and reminded them before they forgot?"</em></p>
+    <p><strong>WAWA — Wide Academic Wisdom Assistant</strong> — built on the arifOS MCP constitutional AI framework, designed specifically for Malaysian university students. "WAWA" means "ours" in Swahili. Here it means: <em>your own, personal, always-on academic companion</em>.</p>
+    <div class="wawa-acronym">
+      <div class="acronym-item"><div class="letter">W</div><div class="word">Wide Reach</div></div>
+      <div class="acronym-item"><div class="letter">A</div><div class="word">Academic Focus</div></div>
+      <div class="acronym-item"><div class="letter">W</div><div class="word">Wisdom Layer</div></div>
+      <div class="acronym-item"><div class="letter">A</div><div class="word">Always-On</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section section-elev" id="problem">
+  <div class="section-inner">
+    <div class="section-label">Phase 1 — Problem Walkabout</div>
+    <h2 class="section-title">Students don't lack apps.<br>They lack <span>a system that works for them.</span></h2>
+    <p class="section-sub">5+ platforms daily. Still miss deadlines. Still lose notes. Still feel lost. The problem isn't information — it's <strong style="color:var(--text)">organisation without intelligence</strong>.</p>
+    <div class="problem-grid">
+      <div class="problem-card"><div class="icon">📱</div><h4>Platform Overload</h4><p>Moodle, WhatsApp, email, Google Drive, MS Teams — nothing talks to anything else.</p></div>
+      <div class="problem-card"><div class="icon">⏰</div><h4>Deadline Blindspots</h4><p>Assignment due in 3 days? You remember when the WhatsApp message pops up — often too late.</p></div>
+      <div class="problem-card"><div class="icon">📝</div><h4>Notes in Chaos</h4><p>Lecture notes scattered across Google Drive, WhatsApp files, and random screenshots.</p></div>
+      <div class="problem-card"><div class="icon">👥</div><h4>Group Project Drift</h4><p>One person carries the weight. No one knows who's doing what until it's too late.</p></div>
+      <div class="problem-card"><div class="icon">🧠</div><h4>Reactive, Not Proactive</h4><p>You chase information. What if information chased you instead?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">What WAWA Does</div>
+    <h2 class="section-title">5 Core Features. <span>Zero Excuses</span> for missing anything.</h2>
+    <p class="section-sub">Built from the ground up for Malaysian university students. Every feature designed around one principle: the system works for you.</p>
+    <div class="features-layout">
+      <div class="feature-card">
+        <div class="ficon">🧠</div>
+        <h3>Smart Scheduling</h3>
+        <p>WAWA learns your class schedule and habits to suggest optimal study times. No more guessing when to study.</p>
+        <ul class="feature-bullets">
+          <li>Auto-detect class times from your calendar</li>
+          <li>Suggest breaks based on focus patterns</li>
+          <li>Optimise study slots around your energy levels</li>
+        </ul>
+        <span class="highlight-tag">Available Now</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">🔔</div>
+        <h3>Deadline Tracker</h3>
+        <p>Never miss an assignment again. WAWA crawls Moodle, email, and group chats to track all your deadlines.</p>
+        <ul class="feature-bullets">
+          <li>3-day advance warning system</li>
+          <li>Automatic categorisation by subject</li>
+          <li>Escalation to friends/mentors if you're falling behind</li>
+        </ul>
+        <span class="highlight-tag">Available Now</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">📝</div>
+        <h3>Note Summariser</h3>
+        <p>Turn lengthy lecture recordings into concise, searchable bullet points in seconds. Your own second brain.</p>
+        <ul class="feature-bullets">
+          <li>Auto-transcribe and summarise lectures</li>
+          <li>Extract key concepts and definitions</li>
+          <li>Search across all your notes instantly</li>
+        </ul>
+        <span class="highlight-tag">Beta</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">🎯</div>
+        <h3>Exam Prep Mode</h3>
+        <p>AI-powered quiz generation based on your coursework and past exam questions. Know your weak areas before the exam.</p>
+        <ul class="feature-bullets">
+          <li>Identify weak areas automatically from quiz results</li>
+          <li>Generate custom quizzes per subject</li>
+          <li>Track progress and improvement over time</li>
+        </ul>
+        <span class="highlight-tag">Coming Q3</span>
+      </div>
+      <div class="feature-card">
+        <div class="ficon">❤️</div>
+        <h3>Wellness Check</h3>
+        <p>WAWA cares about your wellbeing. It checks in when you've been MIA and offers support.</p>
+        <ul class="feature-bullets">
+          <li>Notify when you've missed 2+ classes without explanation</li>
+          <li>Offer mental health resources and campus support contacts</li>
+          <li>Connect you with academic advisors if patterns emerge</li>
+        </ul>
+        <span class="highlight-tag">Beta</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCAMPER -->
+<section class="section section-elev" id="scamper">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Phase 3 — SCAMPER in Action</div>
+    <h2 class="section-title">How we built <span>WAWA</span></h2>
+    <p class="section-sub" style="margin:0 auto">We applied the SCAMPER framework to transform the student overload problem into a focused, innovative product. Here's the complete breakdown.</p>
+  </div>
+  <div class="scamper-grid">
+    <div class="scamper-card s-substitute">
+      <div class="scamper-letter">S</div>
+      <div class="scamper-word">Substitute</div>
+      <h3>Replace scattered class groups with one AI-managed channel</h3>
+      <p>WhatsApp groups + reminder apps + calendar → one WAWA agent that knows all three and manages them proactively.</p>
+      <div class="example"><strong>Example:</strong> Instead of checking 5 places for class info, WAWA aggregates everything and sends you what matters.</div>
+    </div>
+    <div class="scamper-card s-combine">
+      <div class="scamper-letter">C</div>
+      <div class="scamper-word">Combine</div>
+      <h3>Timetable + Deadlines + Notes + Group Chat = One Agent</h3>
+      <p>Most apps solve one problem. WAWA combines them all — one agent that holds all threads.</p>
+      <div class="example"><strong>Example:</strong> Same agent reminds you about tomorrow's deadline AND pulls your relevant lecture notes.</div>
+    </div>
+    <div class="scamper-card s-adapt">
+      <div class="scamper-letter">A</div>
+      <div class="scamper-word">Adapt</div>
+      <h3>Borrow arifOS governance for student privacy</h3>
+      <p>The arifOS constitutional AI framework — 13 floors protecting data sovereignty — adapted for student context.</p>
+      <div class="example"><strong>Example:</strong> F7 (data minimisation) + F9 (anti-hantu) + F13 (sovereign) applied to student data.</div>
+    </div>
+    <div class="scamper-card s-modify">
+      <div class="scamper-letter">M</div>
+      <div class="scamper-word">Modify</div>
+      <h3>Student-tier: simple UX + Malaysian context</h3>
+      <p>WAWA is the simplified layer: WhatsApp-style interface, MUET-aware, Malaysian university credit system.</p>
+      <div class="example"><strong>Example:</strong> Just tell WAWA your name, course, timetable — it builds your personal OS automatically.</div>
+    </div>
+    <div class="scamper-card s-put">
+      <div class="scamper-letter">P</div>
+      <div class="scamper-word">Put to Other Use</div>
+      <h3>Agent as accountability partner — not just info tool</h3>
+      <p>Most bots answer questions. WAWA checks on you. Like a study buddy who holds you accountable.</p>
+      <div class="example"><strong>Example:</strong> Every Friday: "What did you finish this week? What's next?"</div>
+    </div>
+    <div class="scamper-card s-eliminate">
+      <div class="scamper-letter">E</div>
+      <div class="scamper-word">Eliminate</div>
+      <h3>Eliminate missed deadlines and "I didn't know" culture</h3>
+      <p>With proactive reminders and full academic view, WAWA eliminates the #1 university failure mode.</p>
+      <div class="example"><strong>Example:</strong> 3-day escalation reminders — you never get surprised by a deadline again.</div>
+    </div>
+    <div class="scamper-card s-reverse">
+      <div class="scamper-letter">R</div>
+      <div class="scamper-word">Reverse</div>
+      <h3>Information chases the student — not the other way around</h3>
+      <p>Traditional: student opens 5 apps. WAWA reverses: info flows to you, at the right time, through one interface.</p>
+      <div class="example"><strong>Example:</strong> Wake up: "Today: SOS3002 lecture 9am. Assignment due in 3 days — you haven't started. Group hasn't uploaded draft."</div>
+    </div>
+  </div>
+</section>
+
+<!-- MCP ARCHITECTURE -->
+<section class="section" id="mcp">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">MCP Ready — Model Context Protocol</div>
+    <h2 class="section-title">WAWA is <span>MCP-native</span></h2>
+    <p class="section-sub" style="margin:0 auto">WAWA's skills are implemented as arifOS MCP prompts and resources. Every student agent connects through the same constitutional kernel. Here's the architecture.</p>
+  </div>
+  <div class="arch-flow">
+    <div class="arch-node"><h4>Student</h4><p>Telegram / WhatsApp</p></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node highlight"><h4>WAWA Agent</h4><p>Student Skill Prompts</p></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node highlight"><h4>arifOS MCP</h4><p>Constitutional Kernel</p></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node"><h4>VAULT999</h4><p>Privacy Ledger</p></div>
+  </div>
+  <div class="mcp-ready" style="margin-top:48px">
+    <div class="mcp-card">
+      <div class="mcp-icon">📋</div>
+      <h4>Timetable Guardian Prompt</h4>
+      <p>Structured prompt that extracts class schedule, room, and pre-class prep from student input.</p>
+      <code>wawa.timetable_guardian</code>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-icon">⏱️</div>
+      <h4>Deadline Engine Prompt</h4>
+      <p>Tracks and escalates assignment deadlines with 3-day / 1-day / same-day reminder logic.</p>
+      <code>wawa.deadline_engine</code>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-icon">📚</div>
+      <h4>Lecture Companion Prompt</h4>
+      <p>Stores, summarizes, and retrieves lecture notes. Query across all subjects instantly.</p>
+      <code>wawa.lecture_companion</code>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-icon">👥</div>
+      <h4>Group Hub Prompt</h4>
+      <p>Coordinates group members, tracks contributions, surfaces accountability gaps per member.</p>
+      <code>wawa.group_hub</code>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-icon">🎯</div>
+      <h4>Exam Prep Prompt</h4>
+      <p>Identifies weak areas from quiz results, generates custom quizzes per subject.</p>
+      <code>wawa.exam_prep</code>
+    </div>
+    <div class="mcp-card">
+      <div class="mcp-icon">🔐</div>
+      <h4>Wellness Check Prompt</h4>
+      <p>Monitors class attendance patterns, sends wellbeing nudges when anomalies detected.</p>
+      <code>wawa.wellness_check</code>
+    </div>
+  </div>
+  <div style="margin-top:40px;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue);margin-bottom:8px">Connect via arifOS MCP</div>
+    <div style="font-size:13px;color:var(--muted)">npx @anthropic/mcp install wawa --url https://mcp.arif-fazil.com/mcp</div>
+    <div style="font-size:12px;color:var(--muted);margin-top:8px">WAWA MCP resources: student schema · subject definitions · academic calendar templates · group project templates</div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="section section-elev" id="compare">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Why Not ChatGPT?</div>
+    <h2 class="section-title">WAWA vs <span>Generic AI</span></h2>
+    <p class="section-sub" style="margin:0 auto">ChatGPT is powerful. But it's not built for your academic life. Here's the difference.</p>
+  </div>
+  <div class="compare-table">
+    <table>
+      <thead><tr><th>Capability</th><th>ChatGPT / Generic AI</th><th>WAWA</th></tr></thead>
+      <tbody>
+        <tr><td>Knows your class schedule</td><td><span class="cross">✗</span> No context of you</td><td><span class="check">✓</span> Full timetable memory</td></tr>
+        <tr><td>Tracks your specific deadlines</td><td><span class="cross">✗</span> You have to tell it every time</td><td><span class="check">✓</span> Always knows what's due</td></tr>
+        <tr><td>Proactively reminds you</td><td><span class="cross">✗</span> Waits for you to ask</td><td><span class="check">✓</span> Pushes before you forget</td></tr>
+        <tr><td>Remembers across the whole semester</td><td><span class="partial">◑</span> Short context window</td><td><span class="check">✓</span> Continuous semester context</td></tr>
+        <tr><td>Malay / BM language support</td><td><span class="partial">◑</span> Basic translation only</td><td><span class="check">✓</span> Natural BM + English bilingual</td></tr>
+        <tr><td>Privacy-protected by constitution</td><td><span class="cross">✗</span> Your data may train models</td><td><span class="check">✓</span> F7 + F13 Sovereign enforced</td></tr>
+        <tr><td>Manages group project accountability</td><td><span class="cross">✗</span> Can't track other people</td><td><span class="check">✓</span> Group hub with member tracking</td></tr>
+        <tr><td>Connects to university systems (Moodle)</td><td><span class="cross">✗</span> No institutional integration</td><td><span class="check">✓</span> MCP-linked to university tools</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- IDEA BOARD -->
+<section class="section" id="board">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label">Phase 4 — Proof of Concept</div>
+    <h2 class="section-title">The <span>WAWA</span> Idea Board</h2>
+  </div>
+  <div class="idea-board">
+    <div class="idea-board-header">
+      <div class="brand">WAWA OS</div>
+      <div class="subtitle">Business Ideation Project · SCAMPER × arifOS MCP · University Assignment 2026</div>
+    </div>
+    <div class="idea-board-body">
+      <div class="idea-field"><div class="field-label">Problem</div><div class="field-value">University students juggle 5+ platforms daily yet still miss deadlines, lose notes, and experience group project drift.</div></div>
+      <div class="idea-field"><div class="field-label">Target Users</div><div class="field-value">Malaysian university undergraduates — especially first-year students transitioning from SPM to university independence.</div></div>
+      <div class="idea-field wide"><div class="field-label">Solution</div><div class="field-value">A personal AI agent per student — timetable guardian, deadline engine, lecture companion, and group project hub — accessible via Telegram/WhatsApp, powered by arifOS MCP constitutional AI.</div></div>
+      <div class="idea-field"><div class="field-label">SCAMPER Used</div><div class="scamper-tags"><span class="scamper-tag">S — Substitute</span><span class="scamper-tag">C — Combine</span><span class="scamper-tag">E — Eliminate</span></div></div>
+      <div class="idea-field"><div class="field-label">Unique Value</div><div class="unique-value">Proactive vs Reactive — the system tells you what you need before you know to ask.</div></div>
+    </div>
+    <div class="idea-board-footer">Revenue Model: <strong>Freemium</strong> — Basic free; Premium (group hub + AI tutoring + Moodle sync) = RM9/month. Privacy: <strong>F7 + F13 enforced</strong>.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="beta">
+  <div class="cta-box">
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:12px">🎓 University Beta — Limited Slots</div>
+    <h2>Be among the first<br><span>100 students</span> to deploy WAWA</h2>
+    <p>We're opening beta to Malaysian university students. Free access during beta. Your feedback shapes the product.</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Nama / Your name" id="name">
+      <input type="email" class="cta-input" placeholder="Email universiti" id="email">
+      <input type="text" class="cta-input" placeholder="Universiti / Programme" id="uni">
+    </div>
+    <button class="btn-primary" onclick="handleSignup()" style="width:100%;justify-content:center;margin-top:4px">🚀 Reserve My Beta Slot — Free</button>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;margin-bottom:0">Tiada spam. Tiada penjualan data. Privasi dilindungi F7 + F13. / No spam. No data selling. Privacy protected.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="margin-bottom:8px"><span class="teal">WAWA</span> <span class="mono">Wide Academic Wisdom Assistant</span> · Built on <a href="https://mcp.arif-fazil.com" target="_blank">arifOS MCP</a> · Part of the <a href="https://aaa.arif-fazil.com" target="_blank">AAA Federation</a></div>
+  <div>DITEMPA BUKAN DIBERI · Kuala Lumpur 🇲🇾 · 2026</div>
+</footer>
+
+<script>
+  function handleSignup() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const uni = document.getElementById('uni').value.trim();
+    if (!name || !email || !uni) { alert('Sila isi semua ruangan / Please fill in all fields.'); return; }
+    const msg = `🎓 *WAWA — Beta Signup*\n\n*Name:* ${name}\n*Email:* ${email}\n*University:* ${uni}\n\n_Submitted via waw.arif-fazil.com_`;
+    window.open(`https://t.me/share/telegram?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
