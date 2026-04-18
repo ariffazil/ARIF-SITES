@@ -3,635 +3,813 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WAWA — Wide Academic Wisdom Assistant · arifOS MCP</title>
-  <meta name="description" content="One personal AI chat for every university student. Timetable guardian, deadline engine, and study companion — proactive, private, and powered by constitutional AI.">
+  <title>WAWA — Wide Academic Wisdom Assistant · UKMMalaysia × arifOS</title>
+  <meta name="description" content="WAWA. Companion AI untuk pelajar universiti Malaysia. Atur jadual, jangan lupa deadline, siap sedia untuk kelas. powered by arifOS MCP.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #05060a;
-      --bg-elev: #0b0d14;
-      --bg-panel: #11142a;
-      --border: #1e2344;
-      --border-hover: #2a3366;
-      --gold: #d4a853;
-      --gold-dim: #8f7030;
-      --gold-glow: rgba(212,168,83,0.15);
-      --blue: #5b8cff;
-      --green: #2dd4bf;
-      --red: #ef4444;
-      --purple: #a78bfa;
-      --orange: #f97316;
-      --text: #e8eaf6;
-      --muted: #7b82a3;
-      --teal: #14b8a6;
-      /* UKM brand colours */
       --ukm-blue: #003366;
+      --ukm-blue-dark: #001a33;
+      --ukm-blue-light: #004080;
       --ukm-gold: #c8a951;
-      --ukm-navy: #001a33;
+      --ukm-gold-light: #e0c070;
+      --ukm-red: #b22234;
+      --bg: #f5f6fa;
+      --bg-white: #ffffff;
+      --bg-card: #ffffff;
+      --text-dark: #1a1a2e;
+      --text-body: #3d3d5c;
+      --text-muted: #6b6b8a;
+      --border: #e0e4f0;
+      --teal: #0d9488;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
+      color: var(--text-body);
+      line-height: 1.7;
     }
-    .mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* NAV */
-    .constellation-nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 56px;
-      background: rgba(5,6,10,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+    /* ─── UKMMalaysia TOPBAR ─── */
+    .ukm-topbar {
+      background: var(--ukm-blue);
+      color: white;
+      padding: 6px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      font-size: 12px;
+    }
+    .ukm-topbar-left { display: flex; align-items: center; gap: 12px; }
+    .ukm-topbar a { color: var(--ukm-gold-light); text-decoration: none; font-weight: 600; }
+    .ukm-topbar-right { font-size: 11px; opacity: 0.85; }
+
+    /* ─── MAIN NAV ─── */
+    .main-nav {
+      background: white;
+      border-bottom: 3px solid var(--ukm-gold);
       padding: 0 24px;
-      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
-    .logo a { font-weight: 800; color: var(--gold); text-decoration: none; letter-spacing: 0.5px; font-size: 1.05rem; }
-    .logo .wawa { color: var(--teal); }
-    .logo .beta {
-      font-size: 9px;
-      font-weight: 700;
-      background: var(--teal);
-      color: #000;
-      padding: 2px 6px;
-      border-radius: 3px;
-      margin-left: 8px;
-      vertical-align: middle;
+    .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-brand-icon {
+      width: 38px; height: 38px;
+      background: var(--ukm-blue);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
     }
-    .nav-links { display: flex; gap: 18px; align-items: center; }
+    .nav-brand-text { font-size: 17px; font-weight: 800; color: var(--ukm-blue); letter-spacing: -0.5px; }
+    .nav-brand-text span { color: var(--ukm-gold); }
+    .nav-links { display: flex; gap: 6px; align-items: center; }
     .nav-links a {
       text-decoration: none;
-      font-size: 11px;
+      color: var(--text-body);
+      font-size: 13px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--teal), #0d9488);
-      color: white !important;
-      padding: 7px 14px;
+      padding: 6px 14px;
       border-radius: 6px;
-      font-weight: 700 !important;
-      font-size: 10px !important;
-      letter-spacing: 0.08em !important;
+      transition: all 0.15s;
     }
+    .nav-links a:hover { background: var(--bg); color: var(--ukm-blue); }
+    .nav-cta {
+      background: var(--ukm-blue) !important;
+      color: white !important;
+      padding: 8px 18px !important;
+      border-radius: 8px !important;
+    }
+    .nav-cta:hover { background: var(--ukm-blue-dark) !important; }
 
-    /* HERO */
+    /* ─── HERO: SPLIT LAYOUT ─── */
     .hero {
-      margin-top: 56px;
-      min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
-      background: var(--bg);
-      position: relative;
-      overflow: hidden;
+      min-height: 580px;
+      background: linear-gradient(135deg, var(--ukm-blue) 0%, var(--ukm-blue-dark) 100%);
     }
     .hero-left {
-      padding: 60px 48px;
+      padding: 56px 52px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background:
-        radial-gradient(ellipse at 0% 50%, rgba(0,51,102,0.15) 0%, transparent 60%),
-        var(--bg);
     }
     .hero-right {
-      padding: 60px 48px;
+      background: rgba(255,255,255,0.04);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      padding: 56px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background:
-        radial-gradient(ellipse at 100% 50%, rgba(20,184,166,0.08) 0%, transparent 60%),
-        var(--bg);
-      border-left: 1px solid var(--border);
     }
 
-    /* UKMBanner */
-    .ukm-banner {
+    /* University badge */
+    .uni-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, var(--ukm-blue), var(--ukm-navy));
-      border: 1px solid rgba(200,169,81,0.3);
-      padding: 6px 14px;
+      background: rgba(200,169,81,0.15);
+      border: 1px solid rgba(200,169,81,0.4);
+      padding: 5px 14px;
       border-radius: 999px;
       font-size: 11px;
       font-weight: 700;
-      color: var(--ukm-gold);
+      color: var(--ukm-gold-light);
       letter-spacing: 0.5px;
       margin-bottom: 20px;
       width: fit-content;
+      text-transform: uppercase;
     }
-    .ukm-banner .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ukm-gold); }
 
     .hero-left h1 {
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 900;
-      letter-spacing: -1px;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      color: white;
       line-height: 1.1;
-      margin-bottom: 12px;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
     }
-    .hero-left h1 .wawa { color: var(--teal); }
-    .hero-left h1 .ukm { color: var(--ukm-gold); }
-    .hero-sub {
-      font-size: 15px;
-      color: var(--muted);
+    .hero-left h1 .wawa { color: var(--ukm-gold); }
+    .hero-left .tagline {
+      font-size: 16px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 24px;
       max-width: 440px;
-      margin-bottom: 8px;
-    }
-    .hero-tagline {
-      font-size: 14px;
-      color: var(--ukm-gold);
-      font-weight: 600;
-      margin-bottom: 28px;
       font-style: italic;
     }
+    .hero-left .description {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      max-width: 440px;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
     .hero-stats {
       display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
+      gap: 28px;
       margin-bottom: 32px;
     }
-    .hero-stat { text-align: left; }
-    .hero-stat .val { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: var(--teal); }
-    .hero-stat .lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .hero-stat .val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ukm-gold);
+      line-height: 1;
+    }
+    .hero-stat .lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn-primary {
-      background: linear-gradient(135deg, var(--teal), #0d9488);
-      color: white;
+      background: var(--ukm-gold);
+      color: var(--ukm-blue-dark);
       border: none;
-      padding: 12px 24px;
+      padding: 12px 26px;
       font-weight: 800;
       border-radius: 8px;
-      font-size: 0.82rem;
-      box-shadow: 0 0 20px rgba(20,184,166,0.25);
+      font-size: 13px;
+      cursor: pointer;
       transition: all 0.15s;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      cursor: pointer;
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(20,184,166,0.4); }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 12px 24px;
-      font-weight: 600;
+    .btn-primary:hover { background: var(--ukm-gold-light); transform: translateY(-1px); }
+    .btn-white {
+      background: white;
+      color: var(--ukm-blue);
+      border: none;
+      padding: 12px 26px;
+      font-weight: 700;
       border-radius: 8px;
-      font-size: 0.82rem;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: all 0.2s;
     }
-    .btn-secondary:hover { border-color: var(--ukm-gold); color: var(--ukm-gold); }
+    .btn-white:hover { background: rgba(255,255,255,0.9); transform: translateY(-1px); }
 
-    /* ACME demo context */
-    .acme-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 700;
-      background: rgba(200,169,81,0.1);
-      border: 1px solid rgba(200,169,81,0.3);
-      color: var(--ukm-gold);
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-      margin-bottom: 12px;
-      width: fit-content;
-    }
-    .acme-name { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
-    .acme-name strong { color: var(--text); font-weight: 600; }
-
-    /* CHAT DEMO */
-    .chat-demo-label {
+    /* ─── CHAT DEMO ─── */
+    .demo-label {
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--muted);
+      color: rgba(255,255,255,0.5);
       margin-bottom: 12px;
     }
-    .chat-wrapper {
-      background: var(--bg-panel);
-      border: 1px solid var(--border);
+    .chat-window {
+      background: var(--bg-white);
       border-radius: 16px;
       overflow: hidden;
-      max-width: 480px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 420px;
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .chat-header {
-      background: linear-gradient(135deg, var(--ukm-blue), var(--ukm-navy));
-      border-bottom: 2px solid var(--ukm-gold);
+    .chat-header-bar {
+      background: linear-gradient(135deg, var(--ukm-blue), var(--ukm-blue-dark));
       padding: 14px 18px;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-bottom: 2px solid var(--ukm-gold);
     }
-    .chat-avatar {
-      width: 36px;
-      height: 36px;
+    .chat-avatar-circle {
+      width: 38px; height: 38px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), #0d9488);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: var(--ukm-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
       font-weight: 800;
-      font-size: 14px;
-      color: white;
-      border: 2px solid var(--ukm-gold);
+      color: var(--ukm-blue-dark);
+      border: 2px solid white;
     }
     .chat-header-info .chat-name { font-weight: 700; font-size: 13px; color: white; }
-    .chat-header-info .chat-status { font-size: 10px; color: var(--ukm-gold); display: flex; align-items: center; gap: 4px; }
-    .chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 6px #22c55e; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+    .chat-header-info .chat-status {
+      font-size: 10px;
+      color: var(--ukm-gold-light);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .status-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 6px #4ade80;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.5} }
 
-    .chat-messages {
-      height: 320px;
+    .chat-messages-box {
+      height: 280px;
       overflow-y: auto;
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--border) transparent;
+      background: #f0f2f8;
     }
-    .chat-messages::-webkit-scrollbar { width: 6px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-    .msg { display: flex; gap: 8px; max-width: 88%; }
-    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
-    .msg-avatar {
-      width: 28px;
-      height: 28px;
+    .msg-bubble-wrap { display: flex; gap: 7px; max-width: 85%; }
+    .msg-bubble-wrap.user { align-self: flex-end; flex-direction: row-reverse; }
+    .msg-avatar-small {
+      width: 28px; height: 28px;
       border-radius: 50%;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700;
     }
-    .msg.user .msg-avatar { background: var(--ukm-blue); color: var(--ukm-gold); }
-    .msg.wawa .msg-avatar { background: linear-gradient(135deg, var(--teal), #0d9488); color: white; }
-    .msg-bubble {
+    .msg-bubble-wrap.user .msg-avatar-small { background: var(--ukm-blue); color: white; }
+    .msg-bubble-wrap.wawa .msg-avatar-small { background: var(--ukm-gold); color: var(--ukm-blue-dark); }
+    .msg-text {
       padding: 10px 14px;
       border-radius: 14px;
       font-size: 13px;
-      line-height: 1.5;
-      max-width: 100%;
+      line-height: 1.55;
     }
-    .msg.user .msg-bubble {
+    .msg-bubble-wrap.user .msg-text {
       background: var(--ukm-blue);
       color: white;
       border-bottom-right-radius: 4px;
     }
-    .msg.wawa .msg-bubble {
-      background: var(--bg-elev);
+    .msg-bubble-wrap.wawa .msg-text {
+      background: white;
       border: 1px solid var(--border);
-      color: var(--text);
+      color: var(--text-body);
       border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     }
-    .msg.wawa .msg-bubble .floors { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
-    .msg.wawa .msg-bubble .floor-tag {
+    .msg-text .floor-chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+    .msg-text .floor-chip {
       font-size: 9px;
       font-weight: 700;
       padding: 2px 6px;
       border-radius: 3px;
-      background: rgba(212,168,83,0.1);
+      background: rgba(200,169,81,0.1);
       color: var(--ukm-gold);
-      border: 1px solid rgba(212,168,83,0.2);
-      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid rgba(200,169,81,0.25);
+      font-family: monospace;
     }
-    .msg.wawa .msg-bubble .floor-tag.active { background: rgba(20,184,166,0.1); color: var(--teal); border-color: rgba(20,184,166,0.3); }
-    .msg.wawa .msg-bubble .sig { font-size: 10px; color: var(--teal); font-style: italic; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
-    .msg.wawa .msg-bubble .mcp-tool { font-size: 10px; color: var(--blue); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+    .msg-text .floor-chip.active { background: rgba(13,148,136,0.1); color: var(--teal); border-color: rgba(13,148,136,0.25); }
+    .msg-text .tool-tag { font-size: 9px; color: #5b8cff; font-family: monospace; margin-top: 4px; }
+    .msg-text .sig { font-size: 9px; color: var(--teal); font-style: italic; margin-top: 4px; font-family: monospace; }
+    .typing-wrap { display: flex; gap: 7px; align-items: center; }
+    .typing-dots { display: flex; gap: 3px; padding: 4px 0; }
+    .typing-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--text-muted); animation: typing-anim 1.2s infinite; }
+    .typing-dots span:nth-child(2){animation-delay:.2s} .typing-dots span:nth-child(3){animation-delay:.4s}
+    @keyframes typing-anim { 0%,100%{opacity:.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-3px)} }
 
-    .typing-indicator {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      padding: 4px 0;
-    }
-    .typing-indicator span {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--muted);
-      animation: typing 1.2s infinite;
-    }
-    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing { 0%,100%{opacity:0.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-3px)} }
-
-    .chat-input-area {
-      border-top: 1px solid var(--border);
-      padding: 12px 14px;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      background: var(--bg-elev);
-    }
-    .chat-input {
-      flex: 1;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 9px 14px;
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .chat-input:focus { border-color: var(--teal); }
-    .chat-input::placeholder { color: var(--muted); }
-    .chat-send {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), #0d9488);
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      transition: transform 0.15s;
-      flex-shrink: 0;
-    }
-    .chat-send:hover { transform: scale(1.05); }
-
-    /* QUICK REPLIES */
-    .quick-replies {
+    .quick-btns {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
       padding: 10px 14px;
+      background: white;
       border-top: 1px solid var(--border);
-      background: var(--bg-panel);
     }
-    .quick-reply {
+    .quick-btn {
       font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 12px;
+      padding: 5px 11px;
+      border-radius: 20px;
       border: 1px solid var(--border);
-      background: var(--bg-elev);
-      color: var(--muted);
+      background: var(--bg);
+      color: var(--text-muted);
       cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+    .quick-btn:hover { border-color: var(--ukm-blue); color: var(--ukm-blue); background: rgba(0,51,102,0.04); }
+
+    .chat-input-bar {
+      display: flex;
+      gap: 8px;
+      padding: 12px 14px;
+      background: white;
+      border-top: 1px solid var(--border);
+      align-items: center;
+    }
+    .chat-input-field {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text-dark);
+      outline: none;
+      background: var(--bg);
+      transition: border-color 0.2s;
+    }
+    .chat-input-field:focus { border-color: var(--ukm-blue); background: white; }
+    .chat-input-field::placeholder { color: var(--text-muted); }
+    .chat-send-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--ukm-blue);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      font-size: 13px;
+      transition: transform 0.15s;
+      flex-shrink: 0;
+    }
+    .chat-send-btn:hover { transform: scale(1.05); background: var(--ukm-blue-dark); }
+
+    /* ─── SECTION SHARED ─── */
+    .page-section { padding: 72px 24px; }
+    .page-section.white-bg { background: white; }
+    .page-section.blue-bg {
+      background: linear-gradient(135deg, var(--ukm-blue), var(--ukm-blue-dark));
+      color: white;
+    }
+    .page-section.alt-bg { background: #f0f2f8; }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ukm-gold);
+      margin-bottom: 10px;
+    }
+    .blue-bg .section-eyebrow { color: var(--ukm-gold-light); }
+    .section-heading {
+      font-size: clamp(24px, 4vw, 34px);
+      font-weight: 800;
+      color: var(--ukm-blue);
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .blue-bg .section-heading { color: white; }
+    .section-heading .highlight { color: var(--ukm-gold); }
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+    .blue-bg .section-subtitle { color: rgba(255,255,255,0.7); }
+
+    /* ─── APA ITU WAWA ─── */
+    .apa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
+    .apa-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .apa-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--ukm-gold); }
+    .apa-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--ukm-blue), var(--ukm-gold));
+      border-radius: 14px 14px 0 0;
+    }
+    .apa-icon { font-size: 36px; margin-bottom: 12px; }
+    .apa-card h3 { font-size: 15px; font-weight: 800; color: var(--ukm-blue); margin-bottom: 8px; }
+    .apa-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── APA ITU arifOS ─── */
+    .arifos-explainer {
+      background: var(--ukm-blue);
+      border-radius: 16px;
+      padding: 36px;
+      margin-top: 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .arifos-explainer::before {
+      content: 'arifOS';
+      position: absolute;
+      right: -20px;
+      top: -20px;
+      font-size: 120px;
+      font-weight: 900;
+      color: rgba(255,255,255,0.03);
+      letter-spacing: -5px;
+      pointer-events: none;
+    }
+    .arifos-explainer h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: var(--ukm-gold); }
+    .arifos-explainer p { font-size: 13px; color: rgba(255,255,255,0.8); max-width: 600px; margin-bottom: 20px; }
+    .floor-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+    .floor-pill {
+      font-size: 10px;
+      font-weight: 700;
+      font-family: monospace;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: rgba(200,169,81,0.15);
+      border: 1px solid rgba(200,169,81,0.35);
+      color: var(--ukm-gold-light);
+    }
+
+    /* ─── ORGANISM DIAGRAM ─── */
+    .organism-diagram {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      align-items: center;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    .org-side { display: flex; flex-direction: column; gap: 16px; }
+    .org-agent {
+      background: white;
+      border: 2px solid var(--ukm-blue);
+      border-radius: 14px;
+      padding: 16px 20px;
+      text-align: center;
       transition: all 0.2s;
     }
-    .quick-reply:hover { border-color: var(--teal); color: var(--teal); background: rgba(20,184,166,0.05); }
+    .org-agent:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--ukm-gold); }
+    .org-agent .agent-emoji { font-size: 28px; margin-bottom: 4px; }
+    .org-agent .agent-name { font-size: 14px; font-weight: 800; color: var(--ukm-blue); }
+    .org-agent .agent-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .org-agent.active { background: var(--ukm-blue); border-color: var(--ukm-blue); color: white; }
+    .org-agent.active .agent-name { color: var(--ukm-gold); }
+    .org-center {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--ukm-blue), var(--ukm-gold));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      flex-shrink: 0;
+      padding: 8px;
+    }
+    .org-center .org-name { font-size: 9px; color: rgba(255,255,255,0.8); }
+    .org-center .org-floors { font-size: 8px; color: var(--ukm-gold-light); margin-top: 2px; }
 
-    /* SECTIONS */
-    .section { padding: 80px 24px; }
-    .section-elev { background: var(--bg-elev); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
-    .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--ukm-gold); margin-bottom: 14px; }
-    .section-title { font-size: clamp(24px, 4vw, 34px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; }
-    .section-title span { color: var(--teal); }
-    .section-sub { color: var(--muted); font-size: 15px; max-width: 560px; margin-bottom: 36px; }
-
-    /* WHAT IS */
-    .what-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-top: 32px; }
-    .what-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px; text-align: center; transition: all 0.2s; }
-    .what-card:hover { border-color: var(--ukm-gold); transform: translateY(-2px); }
-    .what-card .icon { font-size: 28px; margin-bottom: 8px; }
-    .what-card h4 { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
-    .what-card p { font-size: 11px; color: var(--muted); }
-
-    /* FEATURES */
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 32px; }
-    .feature-card { background: var(--bg-panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: all 0.2s; }
-    .feature-card:hover { border-color: var(--teal); transform: translateY(-2px); }
-    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal), var(--ukm-gold)); border-radius: 14px 14px 0 0; }
-    .feature-card { position: relative; overflow: hidden; }
-    .feature-card .ficon { font-size: 28px; margin-bottom: 10px; }
-    .feature-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-    .feature-card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
-    .feature-card .tag { display: inline-block; font-size: 9px; font-weight: 700; padding: 3px 8px; border-radius: 4px; background: rgba(20,184,166,0.1); color: var(--teal); border: 1px solid rgba(20,184,166,0.2); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-    /* FLOOR BANNER */
-    .floor-banner {
-      background: linear-gradient(135deg, var(--ukm-navy), var(--ukm-blue));
-      border: 1px solid var(--ukm-gold);
+    /* ─── FITUR CARDS ─── */
+    .fitur-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 32px; }
+    .fitur-card {
+      background: white;
+      border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 24px 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s;
+    }
+    .fitur-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .fitur-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+    .fitur-emoji { font-size: 32px; flex-shrink: 0; }
+    .fitur-title { font-size: 15px; font-weight: 800; color: var(--ukm-blue); margin-bottom: 4px; }
+    .fitur-subtitle { font-size: 11px; color: var(--ukm-gold); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .fitur-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 12px; }
+    .fitur-example {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--text-body);
+      border-left: 3px solid var(--ukm-gold);
+      font-style: italic;
+    }
+    .fitur-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(13,148,136,0.08);
+      color: var(--teal);
+      border: 1px solid rgba(13,148,136,0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+    }
+
+    /* ─── WELL EXPLANATION ─── */
+    .well-section {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-top: 32px;
+      box-shadow: var(--shadow);
+    }
+    .well-header {
+      background: linear-gradient(135deg, #7c3aed, #5b21b6);
+      padding: 20px 28px;
       display: flex;
       align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 32px;
+      gap: 14px;
     }
-    .floor-banner-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--ukm-gold); margin-bottom: 6px; }
-    .floor-banner p { font-size: 13px; color: rgba(255,255,255,0.8); flex: 1; min-width: 200px; }
-    .floor-pills { display: flex; gap: 6px; flex-wrap: wrap; }
-    .floor-pill { font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace; padding: 4px 10px; border-radius: 4px; background: rgba(200,169,81,0.1); border: 1px solid rgba(200,169,81,0.3); color: var(--ukm-gold); }
+    .well-header-icon { font-size: 32px; }
+    .well-header h3 { font-size: 16px; font-weight: 800; color: white; }
+    .well-header p { font-size: 11px; color: rgba(255,255,255,0.7); }
+    .well-body { padding: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .well-floor {
+      background: #f5f2ff;
+      border: 1px solid #e9d5ff;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .well-floor-name { font-size: 11px; font-weight: 800; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .well-floor-desc { font-size: 12px; color: var(--text-muted); }
+    .well-footer { padding: 14px 24px; background: #faf5ff; border-top: 1px solid #e9d5ff; font-size: 12px; color: #7c3aed; font-style: italic; }
 
-    /* CTA */
-    .cta-section { padding: 80px 24px; background: radial-gradient(ellipse at 50% 100%, rgba(20,184,166,0.08) 0%, transparent 55%), var(--bg-elev); border-top: 1px solid var(--border); text-align: center; }
-    .cta-box { max-width: 580px; margin: 0 auto; background: var(--bg-panel); border: 1px solid var(--teal); border-radius: 20px; padding: 40px; }
-    .cta-box h2 { font-size: clamp(22px, 4vw, 32px); font-weight: 800; margin-bottom: 12px; }
-    .cta-box h2 span { color: var(--teal); }
-    .cta-box > p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
-    .cta-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 12px; }
-    .cta-input { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 11px 14px; color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; width: 220px; outline: none; }
-    .cta-input:focus { border-color: var(--teal); }
-    .cta-input::placeholder { color: var(--muted); }
+    /* ─── HOW IT WORKS ─── */
+    .steps-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 32px; }
+    .step-card {
+      text-align: center;
+      padding: 24px 16px;
+    }
+    .step-number {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--ukm-blue);
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      border: 3px solid var(--ukm-gold);
+    }
+    .step-card h4 { font-size: 14px; font-weight: 800; color: var(--ukm-blue); margin-bottom: 6px; }
+    .step-card p { font-size: 12px; color: var(--text-muted); }
+    .step-arrow { display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--ukm-gold); }
 
-    /* FOOTER */
-    .footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 11px; color: var(--muted); background: var(--bg-elev); }
-    .footer a { color: var(--teal); text-decoration: none; }
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      padding: 80px 24px;
+      background: linear-gradient(160deg, #f0f2f8 0%, #e8eaf5 100%);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .cta-box {
+      max-width: 560px;
+      margin: 0 auto;
+      background: white;
+      border: 2px solid var(--ukm-blue);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+    .cta-box h2 { font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: var(--ukm-blue); margin-bottom: 12px; }
+    .cta-box h2 span { color: var(--ukm-gold); }
+    .cta-box > p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+    .cta-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 14px; }
+    .cta-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: var(--text-dark);
+      font-family: inherit;
+      font-size: 13px;
+      width: 210px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-input:focus { border-color: var(--ukm-blue); background: white; }
+    .cta-input::placeholder { color: var(--text-muted); }
+    .cta-note { font-size: 11px; color: var(--text-muted); font-style: italic; }
+    .cta-note strong { color: var(--teal); }
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-elev); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: var(--ukm-blue-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .site-footer .footer-brand { font-size: 16px; font-weight: 800; color: var(--ukm-gold); margin-bottom: 6px; }
+    .site-footer .footer-tagline { font-size: 12px; margin-bottom: 12px; }
+    .site-footer .footer-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 12px; }
+    .site-footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 11px; }
+    .site-footer .footer-links a:hover { color: var(--ukm-gold); }
+    .site-footer .footer-copy { font-size: 10px; opacity: 0.4; }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-right { border-left: none; border-top: 1px solid var(--border); padding: 40px 24px; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 24px; }
       .hero-left { padding: 40px 24px; }
-      .chat-wrapper { max-width: 100%; }
+      .organism-diagram { grid-template-columns: 1fr; gap: 12px; }
+      .org-center { width: 60px; height: 60px; }
+      .org-side { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="constellation-nav">
-  <div class="logo"><a href="/"><span class="wawa">WAWA</span><span class="beta">BETA</span></a></div>
+<!-- UKMMalaysia Topbar -->
+<div class="ukm-topbar">
+  <div class="ukm-topbar-left">
+    <span>🇲🇾 Universiti Kebangsaan Malaysia</span>
+    <span>·</span>
+    <a href="https://www.ukm.my" target="_blank">www.ukm.my</a>
+  </div>
+  <div class="ukm-topbar-right">Sistem Akademik Assisted by AI</div>
+</div>
+
+<!-- Main Navigation -->
+<nav class="main-nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-brand-icon">🐱</div>
+    <div class="nav-brand-text">WAWA <span>Student OS</span></div>
+  </a>
   <div class="nav-links">
-    <a href="#what">What is WAWA</a>
-    <a href="#features">Features</a>
-    <a href="#scamper">SCAMPER</a>
-    <a href="#floors">Constitution</a>
-    <a href="#beta" class="nav-cta">🎓 Join Beta</a>
+    <a href="#apa">Apa itu WAWA</a>
+    <a href="#fitur">Features</a>
+    <a href="#organism">arifOS</a>
+    <a href="#well">WELL</a>
+    <a href="#cara" class="nav-cta">🎓 Join Beta</a>
   </div>
 </nav>
 
-<!-- HERO: LEFT (info) + RIGHT (chat demo) -->
-<section class="hero" id="home">
+<!-- HERO -->
+<section class="hero">
   <div class="hero-left">
-    <div class="ukm-banner"><span class="dot"></span>Universiti Kebangsaan Malaysia × arifOS MCP</div>
+    <div class="uni-badge">🎓 UKMMalaysia × arifOS MCP</div>
     <h1>
-      <span class="wawa">WAWA</span><br>
-      <span class="ukm">Your Academic OS</span>
+      WAWA.<br>
+      <span class="wawa">Companion AI</span><br>
+      untuk pelajar.
     </h1>
-    <p class="hero-tagline">"Information chases you — not the other way around."</p>
-    <p class="hero-sub">One personal AI chat for every university student. Timetable guardian, deadline engine, lecture companion — proactive, private, and protected by constitutional AI.</p>
+    <p class="tagline">"Information chases you — bukan awak kena chase."</p>
+    <p class="description">
+      WAWA is a personal AI assistant yang watch-up untuk класс schedule, assignment deadlines, lecture notes, dan group projects — everything in one place, powered by constitutional AI. Takde creepy. Takde spam. Private.
+    </p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="val">F13</div><div class="lbl">Sovereign Data</div></div>
+      <div class="hero-stat"><div class="val">F13</div><div class="lbl">Data Sovereignty</div></div>
       <div class="hero-stat"><div class="val">4</div><div class="lbl">Governed Agents</div></div>
-      <div class="hero-stat"><div class="val">66</div><div class="lbl">Cognitive Tools</div></div>
-      <div class="hero-stat"><div class="val">3</div><div class="lbl">Domains</div></div>
+      <div class="hero-stat"><div class="val">24/7</div><div class="lbl">Always-On</div></div>
     </div>
     <div class="hero-actions">
-      <a href="#beta" class="btn-primary">🚀 Join Beta — Free</a>
-      <a href="#what" class="btn-secondary">📖 Learn More</a>
+      <a href="#cara" class="btn-primary">🚀 Join Beta — Percuma</a>
+      <a href="#apa" class="btn-white">📖 Apa itu WAWA</a>
     </div>
   </div>
 
   <div class="hero-right">
-    <div class="acme-badge">🎓 LIVE DEMO — Student Session</div>
-    <div class="acme-name">Logged in as: <strong>Siti Nurul Ahmad</strong> · BSc Computer Science Y2</div>
+    <div class="demo-label">💬 Try WAWA — Type or tap below</div>
 
-    <div class="chat-demo-label">Try WAWA — Type a message or tap a suggestion</div>
-
-    <div class="chat-wrapper">
-      <div class="chat-header">
-        <div class="chat-avatar">W</div>
+    <div class="chat-window">
+      <div class="chat-header-bar">
+        <div class="chat-avatar-circle">W</div>
         <div class="chat-header-info">
           <div class="chat-name">WAWA · Academic Assistant</div>
-          <div class="chat-status"><span class="chat-status-dot"></span> arifOS MCP · Constitutional AI · F13 Active</div>
+          <div class="chat-status"><span class="status-dot"></span> arifOS MCP · F13 Active · Student Data Sealed</div>
         </div>
       </div>
 
-      <div class="chat-messages" id="chatMessages">
-        <div class="msg wawa">
-          <div class="msg-avatar">W</div>
-          <div class="msg-bubble">
-            Waalaikumussalam Siti! 👋 I'm WAWA — your personal academic assistant. Your week looks clear. Anything you'd like help with today?
-            <div class="mcp-tool">→ wawa.timetable_guardian</div>
-            <div class="floors">
-              <span class="floor-tag active">F5 Peace²</span>
-              <span class="floor-tag">F13 Sovereign</span>
-              <span class="floor-tag">F11 Audit</span>
-            </div>
+      <div class="chat-messages-box" id="chatBox">
+        <div class="msg-bubble-wrap wawa">
+          <div class="msg-avatar-small">W</div>
+          <div class="msg-text">
+            Waalaikumussalam Siti! 👋 I'm WAWA — your personal academic companion. You've been quiet for 2 days. Everything okay? Ada apa-apa saya boleh tolong?
+            <div class="tool-tag">→ wawa.wellness_check</div>
+            <div class="floor-chips"><span class="floor-chip active">F5 Peace²</span><span class="floor-chip">F13 Sovereign</span></div>
           </div>
         </div>
       </div>
 
-      <div class="quick-replies" id="quickReplies">
-        <button class="quick-reply" onclick="sendQuick('Add class: SOS3002 Systems Architecture, Mon 9am-11am, DK9')">+ Add class</button>
-        <button class="quick-reply" onclick="sendQuick('Assignment due for SOS3002')">📋 Assignment deadline</button>
-        <button class="quick-reply" onclick="sendQuick('Summarise my lecture notes from yesterday')">📝 Summarise notes</button>
-        <button class="quick-reply" onclick="sendQuick('Group project status — who is doing what?')">👥 Group project</button>
-        <button class="quick-reply" onclick="sendQuick('Exam in 2 weeks. Help me prepare.')">🎯 Exam prep</button>
+      <div class="quick-btns" id="quickBtns">
+        <button class="quick-btn" onclick="sendQuick('📅 What classes do I have tomorrow?')">📅 Jadual esok</button>
+        <button class="quick-btn" onclick="sendQuick('🔔 Any assignments due this week?')">🔔 Assignment due</button>
+        <button class="quick-btn" onclick="sendQuick('📝 Summarise my SOS3002 lecture notes from Thursday')">📝 Ringkaskan nota</button>
+        <button class="quick-btn" onclick="sendQuick('👥 Group project status — who is doing what?')">👥 Group project</button>
       </div>
 
-      <div class="chat-input-area">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Ask WAWA anything..." onkeydown="if(event.key==='Enter')sendMsg()" />
-        <button class="chat-send" onclick="sendMsg()">▶</button>
+      <div class="chat-input-bar">
+        <input type="text" class="chat-input-field" id="chatInput" placeholder="Tanya WAWA sesuatu..." onkeydown="if(event.key==='Enter')sendMsg()" />
+        <button class="chat-send-btn" onclick="sendMsg()">▶</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT IS WAWA -->
-<section class="section" id="what">
+<!-- APA ITU WAWA -->
+<section class="page-section white-bg" id="apa">
   <div class="section-inner">
-    <div class="section-label">What is WAWA?</div>
-    <h2 class="section-title">Your personal <span>academic OS</span> — always on, always sovereign.</h2>
-    <p class="section-sub">WAWA means "ours" (Swahili). Here: <em>your own, personal, always-on academic companion</em>. Built for Malaysian university students, protected by arifOS constitutional AI.</p>
+    <div class="section-eyebrow">Introduction</div>
+    <h2 class="section-heading">Apa itu <span class="highlight">WAWA</span>?</h2>
+    <p class="section-subtitle">
+      WAWA means "ours" — Swahili. Here: yours. A personal AI companion yang stay beside you throughout your university journey. Takde complicated setup. Just talk.
+    </p>
 
-    <div class="what-grid">
-      <div class="what-card">
-        <div class="icon">🧠</div>
-        <h4>Smart Scheduling</h4>
-        <p>Learns your class times, suggests optimal study slots automatically.</p>
+    <div class="apa-grid">
+      <div class="apa-card">
+        <div class="apa-icon">🧠</div>
+        <h3>Smart Scheduling</h3>
+        <p>WAWA learns your class schedule and automatically finds optimal study slots around your energy levels. No more manually planning — it just works.</p>
       </div>
-      <div class="what-card">
-        <div class="icon">⏰</div>
-        <h4>Deadline Engine</h4>
-        <p>Never miss an assignment. 3-day escalation reminders — proactive.</p>
+      <div class="apa-card">
+        <div class="apa-icon">⏰</div>
+        <h3>Deadline Engine</h3>
+        <p>Tired of missing assignment deadlines? WAWA sends reminders 3 days before, then again at 1 day, then on the day itself. Proactive, not reactive.</p>
       </div>
-      <div class="what-card">
-        <div class="icon">📝</div>
-        <h4>Lecture Notes</h4>
-        <p>Store, search, and summarise lecture content. Your second brain.</p>
+      <div class="apa-card">
+        <div class="apa-icon">📝</div>
+        <h3>Lecture Companion</h3>
+        <p>Store your lecture notes, ask questions about them, get summaries. Your second brain — searchable across all subjects. No more "where did I put that note?"</p>
       </div>
-      <div class="what-card">
-        <div class="icon">👥</div>
-        <h4>Group Hub</h4>
-        <p>Track who is doing what in group projects. No more awkward chasing.</p>
+      <div class="apa-card">
+        <div class="apa-icon">👥</div>
+        <h3>Group Hub</h3>
+        <p>Group projects — everyone has a role, but nobody knows who is doing what. WAWA tracks it and surfaces accountability gently. No awkward confrontation needed.</p>
       </div>
-      <div class="what-card">
-        <div class="icon">🎯</div>
-        <h4>Exam Prep</h4>
-        <p>Identify weak areas, generate targeted quizzes, track progress.</p>
+      <div class="apa-card">
+        <div class="apa-icon">🎯</div>
+        <h3>Exam Prep</h3>
+        <p>WAWA knows your weak areas from quiz results and study patterns. It builds you a targeted revision plan — so you study smart, not just hard.</p>
       </div>
-      <div class="what-card">
-        <div class="icon">❤️</div>
-        <h4>Wellness Check</h4>
-        <p>Checks in when you've been MIA. Academic + personal support.</p>
-      </div>
-      <div class="what-card">
-        <div class="icon">🧬</div>
-        <h4>WELL Body</h4>
-        <p>Biological substrate — sleep debt, stress, and cognitive clarity gate agent actions.</p>
+      <div class="apa-card">
+        <div class="apa-icon">❤️</div>
+        <h3>Wellness Check</h3>
+        <p>Missed class for 2 days? WAWA notices. Checks in. Offers mental health resources and connects you to campus support if needed. Because university is hard.</p>
       </div>
     </div>
 
-    <!-- arifOS Organism -->
-    <div style="margin-top:28px;background:linear-gradient(135deg,#0a1628,#05060a);border:1px solid #2a3366;border-radius:14px;padding:22px 24px">
-      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#c8a951;margin-bottom:10px">🔗 arifOS Intelligence Organism</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">
-        <div style="text-align:center;padding:12px;background:rgba(91,140,255,0.08);border:1px solid rgba(91,140,255,0.2);border-radius:10px">
-          <div style="font-size:22px;margin-bottom:4px">🌍</div>
-          <div style="font-size:11px;font-weight:700;color:#5b8cff">GEOX</div>
-          <div style="font-size:10px;color:#7b82a3">Earth · Physics · Spatial</div>
-        </div>
-        <div style="text-align:center;padding:12px;background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.2);border-radius:10px">
-          <div style="font-size:22px;margin-bottom:4px">💰</div>
-          <div style="font-size:11px;font-weight:700;color:#2dd4bf">WEALTH</div>
-          <div style="font-size:10px;color:#7b82a3">Capital · Decisions · ROI</div>
-        </div>
-        <div style="text-align:center;padding:12px;background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:10px">
-          <div style="font-size:22px;margin-bottom:4px">🧬</div>
-          <div style="font-size:11px;font-weight:700;color:#a78bfa">WELL</div>
-          <div style="font-size:10px;color:#7b82a3">Body · Sleep · Cognition</div>
-        </div>
-        <div style="text-align:center;padding:12px;background:rgba(212,168,83,0.08);border:1px solid rgba(212,168,83,0.2);border-radius:10px">
-          <div style="font-size:22px;margin-bottom:4px">🐱</div>
-          <div style="font-size:11px;font-weight:700;color:#d4a853">WAWA</div>
-          <div style="font-size:10px;color:#7b82a3">Academic · Student OS</div>
-        </div>
-      </div>
-      <div style="margin-top:10px;font-size:11px;color:#7b82a3;text-align:center">arifOS MCP Kernel (F1–F13) · A2A Protocol · VAULT999 Sealed</div>
-    </div>
-
-    <div class="floor-banner">
-      <div>
-        <div class="floor-banner-label">🔐 Constitutional AI Protection</div>
-        <p>Every WAWA interaction passes through arifOS MCP — F1-F13 floors enforced + WELL biological gates + WEALTH capital checks + GEOX evidence grounding. Student data sealed to VAULT999. F13 Sovereign always active.</p>
-      </div>
+    <!-- arifOS Explainer -->
+    <div class="arifos-explainer">
+      <h3>🔐 Di belakang WAWA: arifOS MCP</h3>
+      <p>
+        Every single WAWA interaction passes through arifOS MCP — a constitutional AI kernel with 13 binding rules (Floors F1-F13). These rules ensure WAWA never misuse your data, never lie to you, and always respects your privacy. Your data is sealed to VAULT999 — only you can access it. Nobody else. Not even us.
+      </p>
       <div class="floor-pills">
         <span class="floor-pill">F1 AMANAH</span>
+        <span class="floor-pill">F2 TRUTH</span>
+        <span class="floor-pill">F5 PEACE²</span>
         <span class="floor-pill">F7 HUMILITY</span>
         <span class="floor-pill">F9 ANTI-HANTU</span>
         <span class="floor-pill">F13 SOVEREIGN</span>
@@ -641,284 +819,408 @@
 </section>
 
 <!-- FEATURES -->
-<section class="section section-elev" id="features">
+<section class="page-section alt-bg" id="fitur">
   <div class="section-inner">
-    <div class="section-label">What WAWA Does</div>
-    <h2 class="section-title">6 Core Features. <span>Zero Excuses</span> for missing anything.</h2>
-    <p class="section-sub">Built from the ground up for Malaysian university students. Every feature designed around one principle: the system works for you.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="ficon">🧠</div>
-        <h3>🧠 Smart Scheduling</h3>
-        <p>Learns your class schedule and habits. Auto-detect times, suggest breaks, optimise study slots around your energy levels.</p>
-        <span class="tag">Available Now</span>
+    <div class="section-eyebrow">What WAWA Does</div>
+    <h2 class="section-heading">6 Features. <span class="highlight">Zero excuses</span> for missing anything.</h2>
+    <p class="section-subtitle">Every feature is designed for Malaysian university students specifically — not generic AI wrapped in a skin.</p>
+
+    <div class="fitur-grid">
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">🧠</div>
+          <div>
+            <div class="fitur-title">🧠 Smart Scheduling</div>
+            <div class="fitur-subtitle">Available Now</div>
+          </div>
+        </div>
+        <p>Learns your class schedule and habits. Auto-detects times, suggests breaks, optimises study slots around your energy levels.</p>
+        <div class="fitur-example">"I have SOS3002 Monday 9am, SIJ3101 Tuesday 2pm. Find me the best 2-hour study block this week."</div>
+        <span class="fitur-tag">Live</span>
       </div>
-      <div class="feature-card">
-        <div class="ficon">⏰</div>
-        <h3>⏰ Deadline Tracker</h3>
-        <p>Never miss an assignment. 3-day advance warning system. Escalation to friends/mentors if you're falling behind.</p>
-        <span class="tag">Available Now</span>
+
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">⏰</div>
+          <div>
+            <div class="fitur-title">⏰ Deadline Tracker</div>
+            <div class="fitur-subtitle">Available Now</div>
+          </div>
+        </div>
+        <p>Never miss an assignment again. WAWA's deadline engine sends T-3, T-1, and T-0 reminders automatically. Escalation to your emergency contact if you still don't respond.</p>
+        <div class="fitur-example">"I have an assignment due Friday. Remind me Wednesday and Thursday night."</div>
+        <span class="fitur-tag">Live</span>
       </div>
-      <div class="feature-card">
-        <div class="ficon">📝</div>
-        <h3>📝 Note Summariser</h3>
-        <p>Turn lengthy lectures into concise, searchable bullet points. Your own second brain — searchable across all subjects.</p>
-        <span class="tag">Beta</span>
+
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">📝</div>
+          <div>
+            <div class="fitur-title">📝 Note Summariser</div>
+            <div class="fitur-subtitle">Beta</div>
+          </div>
+        </div>
+        <p>Turn lengthy lectures into concise, searchable bullet points. Ask questions about your own notes. Your second brain — searchable across all subjects.</p>
+        <div class="fitur-example">"Summarise my SOS3002 notes from Thursday's lecture into 10 key points."</div>
+        <span class="fitur-tag">Beta</span>
       </div>
-      <div class="feature-card">
-        <div class="ficon">👥</div>
-        <h3>👥 Group Hub</h3>
-        <p>Coordinates group project members, tracks contributions, surfaces accountability gaps — without creating social tension.</p>
-        <span class="tag">Beta</span>
+
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">👥</div>
+          <div>
+            <div class="fitur-title">👥 Group Hub</div>
+            <div class="fitur-subtitle">Beta</div>
+          </div>
+        </div>
+        <p>Coordinates group project members, tracks who is doing what, surfaces accountability gaps — without creating social tension or awkwardness.</p>
+        <div class="fitur-example">"Show me the status of my SIT3022 group project. Who hasn't contributed yet?"</div>
+        <span class="fitur-tag">Beta</span>
       </div>
-      <div class="feature-card">
-        <div class="ficon">🎯</div>
-        <h3>🎯 Exam Prep Mode</h3>
-        <p>AI-powered quiz generation. Identifies weak areas automatically from quiz results. Custom quizzes per subject.</p>
-        <span class="tag">Coming Q3</span>
+
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">🎯</div>
+          <div>
+            <div class="fitur-title">🎯 Exam Prep Mode</div>
+            <div class="fitur-subtitle">Coming Q3</div>
+          </div>
+        </div>
+        <p>AI-powered quiz generation from your lecture material. Identifies weak areas automatically. Custom quizzes per subject. 2-week structured revision plan.</p>
+        <div class="fitur-example">"Generate a 20-question quiz on CPU scheduling for my SOS3002 exam in 2 weeks."</div>
+        <span class="fitur-tag">Coming Q3</span>
       </div>
-      <div class="feature-card">
-        <div class="ficon">❤️</div>
-        <h3>❤️ Wellness Check</h3>
-        <p>Checks in when you've been MIA from class. Offers mental health resources and connects you with campus support.</p>
-        <span class="tag">Beta</span>
+
+      <div class="fitur-card">
+        <div class="fitur-top">
+          <div class="fitur-emoji">❤️</div>
+          <div>
+            <div class="fitur-title">❤️ Wellness Check</div>
+            <div class="fitur-subtitle">Beta</div>
+          </div>
+        </div>
+        <p>Checks in when you've been MIA from class. Offers mental health resources, connects you to campus counselling. Because your wellbeing matters more than grades.</p>
+        <div class="fitur-example">"I noticed you haven't been active for 3 days. Everything okay? Want me to share campus mental health resources?"</div>
+        <span class="fitur-tag">Beta</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SCAMPER -->
-<section class="section" id="scamper">
+<!-- THE 4-AGENT ORGANISM -->
+<section class="page-section blue-bg" id="organism">
   <div class="section-inner">
-    <div class="section-label">Business Ideation — SCAMPER × arifOS MCP</div>
-    <h2 class="section-title">How we built <span>WAWA</span> using SCAMPER</h2>
-    <p class="section-sub">University assignment innovation project — applied SCAMPER to transform the student overload problem into a focused product.</p>
+    <div class="section-eyebrow">The Bigger Picture</div>
+    <h2 class="section-heading">WAWA is part of something <span class="highlight">bigger</span></h2>
+    <p class="section-subtitle">WAWA doesn't stand alone. It's one node in the arifOS intelligence organism — a network of governed AI agents that talk to each other.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:32px">
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--blue)">S</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Substitute</div>
-        <p style="font-size:12px;color:var(--muted)">Replace scattered WhatsApp groups + calendar + reminder apps with one AI-managed channel.</p>
+    <!-- Organism diagram -->
+    <div class="organism-diagram">
+      <div class="org-side">
+        <div class="org-agent">
+          <div class="agent-emoji">🌍</div>
+          <div class="agent-name">GEOX</div>
+          <div class="agent-desc">Earth reasoning — physics, spatial analysis, evidence grounding</div>
+        </div>
+        <div class="org-agent">
+          <div class="agent-emoji">💰</div>
+          <div class="agent-name">WEALTH</div>
+          <div class="agent-desc">Capital intelligence — NPV, ROI, financial decisions</div>
+        </div>
+        <div class="org-agent">
+          <div class="agent-emoji">🧬</div>
+          <div class="agent-name">WELL</div>
+          <div class="agent-desc">Biological substrate — sleep debt, cognitive clarity</div>
+        </div>
       </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--green)">C</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Combine</div>
-        <p style="font-size:12px;color:var(--muted)">Timetable + deadlines + notes + group chat = one agent that holds all threads.</p>
+      <div class="org-center">
+        <div class="org-name">arifOS</div>
+        <div>F1–F13</div>
+        <div class="org-floors">VAULT999</div>
       </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--purple)">A</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Adapt</div>
-        <p style="font-size:12px;color:var(--muted)">Borrow arifOS constitutional AI framework — F13 sovereign data for student privacy.</p>
-      </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--ukm-gold)">M</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Modify</div>
-        <p style="font-size:12px;color:var(--muted)">Student-tier UX: WhatsApp-style interface, MUET-aware, Malaysian uni credit system.</p>
-      </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:#f97316">P</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Put to Other Use</div>
-        <p style="font-size:12px;color:var(--muted)">Agent as accountability partner — checks on you weekly. Study buddy who doesn't let you slack.</p>
-      </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--red)">E</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Eliminate</div>
-        <p style="font-size:12px;color:var(--muted)">Eliminate missed deadlines and "I didn't know" culture — 3-day proactive escalation.</p>
-      </div>
-      <div style="background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px;grid-column:1/-1;max-width:480px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--teal)">R</div>
-        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:6px">Reverse</div>
-        <p style="font-size:12px;color:var(--muted)">Traditional: student opens 5 apps to find information. WAWA reverses: information chases the student, at the right time, through one interface.</p>
+      <div class="org-side">
+        <div class="org-agent active">
+          <div class="agent-emoji">🐱</div>
+          <div class="agent-name">WAWA</div>
+          <div class="agent-desc" style="color:rgba(255,255,255,0.8)">Student academic companion — timetable, notes, wellness</div>
+        </div>
+        <div class="org-agent">
+          <div class="agent-emoji">🛡️</div>
+          <div class="agent-name">AAA</div>
+          <div class="agent-desc">Live cockpit dashboard — agent status, governance vitals</div>
+        </div>
+        <div class="org-agent">
+          <div class="agent-emoji">⚙️</div>
+          <div class="agent-name">APEX</div>
+          <div class="agent-desc">Governance dashboard — floor audit, constitutional contracts</div>
+        </div>
       </div>
     </div>
 
-    <!-- Idea Board -->
-    <div style="margin-top:48px;background:var(--bg-panel);border:2px solid var(--ukm-gold);border-radius:16px;overflow:hidden">
-      <div style="background:linear-gradient(135deg,var(--ukm-blue),var(--ukm-navy));padding:16px 24px;border-bottom:2px solid var(--ukm-gold)">
-        <div style="font-family:'JetBrains Mono',monospace;color:var(--ukm-gold);font-size:18px;font-weight:700">WAWA — Idea Board</div>
-        <div style="font-size:11px;color:rgba(200,169,81,0.7);margin-top:2px">SCAMPER Business Ideation · University Assignment 2026</div>
+    <p style="text-align:center;font-size:13px;color:rgba(255,255,255,0.6);margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto">
+      All agents communicate via A2A protocol. All decisions pass through F1-F13 constitutional floors. All data is sealed to VAULT999 under the student's F13 sovereignty.
+    </p>
+  </div>
+</section>
+
+<!-- WELL SECTION -->
+<section class="page-section white-bg" id="well">
+  <div class="section-inner">
+    <div class="section-eyebrow">🧬 The Missing Piece</div>
+    <h2 class="section-heading">WELL — <span class="highlight">Human Substrate</span> Governance</h2>
+    <p class="section-subtitle">
+      WELL tracks the biological state of the human operator — sleep debt, stress, cognitive clarity — and gates what the AI can do based on the operator's capacity. No amount of constitutional AI matters if the human making decisions is exhausted.
+    </p>
+
+    <div class="well-section">
+      <div class="well-header">
+        <div class="well-header-icon">🧬</div>
+        <div>
+          <h3>WELL Floor Protocol</h3>
+          <p>WELL informs the arifOS judge kernel. If biological floors are violated, the scope of allowed AI action is automatically throttled.</p>
+        </div>
       </div>
-      <div style="padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
-        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px">Problem</div><div style="font-size:13px">University students juggle 5+ platforms yet miss deadlines, lose notes, and experience group project drift.</div></div>
-        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px">Target Users</div><div style="font-size:13px">Malaysian university undergraduates — especially first-year students transitioning from SPM to university independence.</div></div>
-        <div style="grid-column:1/-1"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px">Solution</div><div style="font-size:13px;font-weight:600;color:var(--teal)">Personal AI agent per student — timetable guardian, deadline engine, lecture companion, group hub — via Telegram/WhatsApp, powered by arifOS MCP constitutional AI.</div></div>
-        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px">SCAMPER</div><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:2px"><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(91,140,255,0.1);border:1px solid rgba(91,140,255,0.3);color:var(--blue);font-weight:600">S</span><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.3);color:var(--green);font-weight:600">C</span><span style="font-size:10px;padding:3px 8px;border-radius:4px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:var(--red);font-weight:600">E</span></div></div>
-        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px">Unique Value</div><div style="font-size:13px;font-weight:700;color:var(--ukm-gold)">Proactive vs Reactive — system tells you before you know to ask.</div></div>
+      <div class="well-body">
+        <div class="well-floor">
+          <div class="well-floor-name">W1 — Sleep Integrity</div>
+          <div class="well-floor-desc">Blocks strategic action if sleep debt exceeds 2 nights. You cannot make important academic decisions while severely sleep-deprived.</div>
+        </div>
+        <div class="well-floor">
+          <div class="well-floor-name">W5 — Cognitive Entropy</div>
+          <div class="well-floor-desc">Throttles agent bandwidth if clarity drops below 4/10. The AI slows down its recommendations — not because of the student, but for them.</div>
+        </div>
+        <div class="well-floor">
+          <div class="well-floor-name">W6 — Metabolic Pause</div>
+          <div class="well-floor-desc">Detects high-frequency repetitive intent loops (addiction-mimicry patterns). Forces a mandatory 15-minute pause before any further forge action.</div>
+        </div>
       </div>
-      <div style="border-top:1px solid var(--border);padding:14px 24px;background:rgba(0,0,0,0.2);font-size:11px;color:var(--muted)">Revenue: <strong style="color:var(--text)">Freemium</strong> — Basic free; Premium (group hub + AI tutoring + Moodle sync) = RM9/month student plan. | Privacy: <strong style="color:var(--text)">F7 + F13 enforced</strong> — student owns all data.</div>
+      <div class="well-footer">
+        💡 "Body is the Substrate. Mind is the Operator. WELL is the Sovereign." — arifOS WELL Charter
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="page-section alt-bg" id="cara">
+  <div class="section-inner">
+    <div class="section-eyebrow">Getting Started</div>
+    <h2 class="section-heading">Cara <span class="highlight">mula</span></h2>
+    <p class="section-subtitle">Three steps. That's it. No complicated setup. No credit card.</p>
+
+    <div class="steps-container">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h4>Register Beta</h4>
+        <p>Fill in your name, university email, and programme. 100 slots open — free during beta.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h4>Connect Channel</h4>
+        <p>Link your Telegram or WhatsApp. WAWA works where you already are — no new app needed.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h4>Start Talking</h4>
+        <p>Tell WAWA your class schedule, upcoming deadlines, and subjects. It learns and starts helping automatically.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="beta">
+<section class="cta-section">
   <div class="cta-box">
-    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:12px">🎓 University Beta — 100 Slots Open</div>
-    <h2>Be among the first <span>100 students</span> to deploy WAWA</h2>
-    <p>Free access during beta. Malaysian university students only. Your feedback shapes the product.</p>
+    <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:12px">🎓 University Beta — 100 Slots Open</div>
+    <h2>Daftar sebagai <span>100 pertama</span> students</h2>
+    <p>Free access semasa beta. Malaysian university students only. Your feedback shapes what WAWA becomes.</p>
     <div class="cta-form">
       <input type="text" class="cta-input" placeholder="Nama penuh" id="name">
       <input type="email" class="cta-input" placeholder="Email universiti" id="email">
       <input type="text" class="cta-input" placeholder="Universiti / Programme" id="uni">
     </div>
-    <button onclick="handleSignup()" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px">🚀 Reserve My Beta Slot — Free</button>
-    <p style="font-size:11px;color:var(--muted)">Tiada spam. Tiada penjualan data. Privasi dilindungi F7 + F13.</p>
+    <button onclick="handleSignup()" class="btn-primary" style="width:100%;justify-content:center;margin-bottom:10px;cursor:pointer">🚀 Reserve My Beta Slot — Free</button>
+    <p class="cta-note"><strong>Tiada spam.</strong> Tiada penjualan data. Privasi dilindungi F7 + F13.</p>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div style="margin-bottom:6px"><span style="color:var(--teal)">WAWA</span> · Wide Academic Wisdom Assistant · Built on <a href="https://mcp.arif-fazil.com" target="_blank">arifOS MCP</a></div>
-  <div>DITEMPA BUKAN DIBERI · Kuala Lumpur 🇲🇾 · 2026</div>
+<footer class="site-footer">
+  <div class="footer-brand">🐱 WAWA</div>
+  <div class="footer-tagline">Wide Academic Wisdom Assistant · Built on arifOS MCP</div>
+  <div class="footer-links">
+    <a href="https://mcp.arif-fazil.com" target="_blank">arifOS MCP</a>
+    <a href="https://geox.arif-fazil.com" target="_blank">GEOX</a>
+    <a href="https://waw.arif-fazil.com" target="_blank">WEALTH</a>
+    <a href="https://github.com/ariffazil/arifOS" target="_blank">GitHub</a>
+  </div>
+  <div class="footer-copy">DITEMPA BUKAN DIBERI · Kuala Lumpur 🇲🇾 · 2026</div>
 </footer>
 
 <script>
-// ─────────────────────────────────────────────────────────
-// WAWA Chat Demo — Simulated MCP responses
-// ─────────────────────────────────────────────────────────
-
-const WELCOME = `Waalaikumssalam Siti! 👋 Welcome back. Your week looks clear — no classes on Wednesday afternoon. Anything you'd like help with today?`;
-
+// ─── CHAT DEMO ───────────────────────────────────────────
 const RESPONSES = {
-  'add': {
-    text: `✅ **Class Added**\n\n**SOS3002 — Systems Architecture**\nMonday · 9:00–11:00 · DK9\n\nReminder set: 15 minutes before class.\n\nAlso logged to your VAULT999 record. 🗂️`,
+  default: {
+    text: `Saya faham awak tanya: "${(document.getElementById('chatInput').value||'').slice(0,40)}..."
+
+WAWA boleh bantu dengan:
+
+• 📅 Jadual kelas — add, view, remind
+• ⏰ Assignment deadlines — tracking + T-3 reminders
+• 📝 Lecture notes — store, search, summarise
+• 👥 Group project — siapa buat apa
+• 🎯 Exam prep — weak area + study plan
+• ❤️ Wellness check-in
+
+Cuba taip satu daripada above, atau klik quick reply button!`,
     tool: 'wawa.timetable_guardian',
-    floors: ['F4 Clarity', 'F7 Humility', 'F11 Audit']
+    floors: ['F4 Clarity', 'F5 Peace²', 'F13 Sovereign']
   },
-  'assignment': {
-    text: `📋 **Upcoming Deadlines**\n\n• SOS3002 — Systems Architecture Report\n  Due: 28 April 2026 · **T-10 days**\n\n• UKQ3021 — Data Analytics Quiz\n  Due: 2 May 2026 · **T-14 days**\n\n• SIT3022 — Group Project Draft\n  Due: 5 May 2026 · **T-17 days**\n\nReminder chain active for all three. I'll nudge at T-3, T-1, and T-0. 🔔`,
+  jadual: {
+    text: `📅 **Jadual Esok — Isnin 20 April 2026**
+
+✅ **SOS3002 — Systems Architecture**
+   9:00–11:00 · DK9 (Dewan Kuliah 9)
+   reminder: 8:45am ✅
+
+✅ **SIT3022 — Software Engineering**
+   2:00–4:00pm · DK4
+   reminder: 1:45pm ✅
+
+📚 Free slots tomorrow:
+   11:00–2:00pm (3 hrs) — good for self-study
+   4:00–6:00pm (2 hrs) — afternoon review
+
+Nak saya set reminder untuk any of these slots?`,
+    tool: 'wawa.timetable_guardian',
+    floors: ['F4 Clarity', 'F5 Peace²', 'F11 Audit']
+  },
+  assignment: {
+    text: `📋 **Upcoming Deadlines**
+
+• **SOS3002** — Systems Architecture Report
+  Due: 28 April 2026 · ⏰ T-10 days
+  Status: Not started ⚠️
+
+• **UKQ3021** — Data Analytics Quiz
+  Due: 2 May 2026 · ⏰ T-14 days
+  Status: In progress 🔄
+
+• **SIT3022** — Group Project Draft
+  Due: 5 May 2026 · ⏰ T-17 days
+  Status: 40% done ✅
+
+Reminder chain: ACTIVE for all three.
+I'll nudge you at T-3 (April 25), T-1 (April 27), and T-0 (April 28).`,
     tool: 'wawa.deadline_engine',
     floors: ['F2 Truth', 'F5 Peace²', 'F13 Sovereign']
   },
-  'notes': {
-    text: `📝 **Lecture Summary — SOS3002 (17 April 2026)**\n\n**Topic:** CPU Scheduling Algorithms\n\n• FCFS — First Come First Served. Simple but can cause convoy effect.\n• SJF — Shortest Job First. Optimal average waiting time but requires knowing burst lengths.\n• Round Robin — Time quantum based. Fair for time-sharing systems.\n• Priority Scheduling — Can cause starvation; needs aging mechanism.\n\nKey formula: **Turnaround Time = Burst Time + Waiting Time**\n\nStored and linked to your SOS3002 notebook. Want me to generate a quick quiz on this? 🎯`,
+  nota: {
+    text: `📝 **Lecture Summary — SOS3002 · Thursday 16 April 2026**
+
+**Topic: CPU Scheduling Algorithms**
+
+**4 Main Algorithms covered:**
+
+• **FCFS** — First Come First Served
+  Simple but causes convoy effect (long process blocks short ones)
+
+• **SJF** — Shortest Job First  
+  Optimal average waiting time but needs burst length prediction
+
+• **Round Robin** — Quantum-based time sharing
+  Fair for interactive systems, depends heavily on quantum size
+
+• **Priority Scheduling** — Priority-based queue
+  Risk of starvation → needs aging mechanism
+
+📐 **Key Formula:**
+Turnaround Time = Burst Time + Waiting Time
+
+Stored in your SOS3002 notebook. Nak saya generate quiz on this? 🎯`,
     tool: 'wawa.lecture_companion',
-    floors: ['F4 Clarity', 'F7 Humility', 'F11 Audit']
+    floors: ['F4 Clarity', 'F11 Audit']
   },
-  'group': {
-    text: `👥 **Group Project — SIT3022: Smart Campus App**\n\n**Members:** 4 | **Tasks:** 8 total · 3 done · 3 in progress · 2 todo\n\n📋 **Board:**\n\n[TODO]\n• UI mockups → @Ahmad Razif [due: 25 Apr]\n• API documentation → @Li Wei [due: 27 Apr]\n\n[IN PROGRESS]\n• User authentication → @Siti Nurul (you) [due: 22 Apr]\n• Database schema → @Puteri Aishah [due: 23 Apr]\n\n[DONE ✅]\n• Project proposal · Requirements gathering · Team charter\n\n📊 Completion: **37.5%** — on track for 5 May deadline.`,
+  group: {
+    text: `👥 **Group Project Status — SIT3022: Smart Campus App**
+
+Members: 4 | Tasks: 8 total · 3 done · 3 in progress · 2 todo
+
+**TODO:**
+• UI Mockups → @Ahmad Razif [due: 25 Apr] ⚠️ not started
+• API Documentation → @Li Wei [due: 27 Apr] ⚠️ not started
+
+**IN PROGRESS:**
+• User Authentication → @Siti Nurul (you) [due: 22 Apr] 🔄 60%
+• Database Schema → @Puteri Aishah [due: 23 Apr] 🔄 40%
+
+**DONE ✅:**
+• Project Proposal · Requirements Gathering · Team Charter
+
+📊 Overall: 37.5% — On track for 5 May deadline. But UI + API docs need attention soon.`,
     tool: 'wawa.group_hub',
-    floors: ['F4 Clarity', 'F5 Peace²', 'F9 Anti-Hantu', 'F13 Sovereign']
-  },
-  'exam': {
-    text: `🎯 **Exam Prep — SOS3002 (2 Weeks)**\n\nBased on your quiz history, your weakest topics are:\n\n1. **CPU Scheduling** (score: 45%) — we just summarised this!\n2. **Deadlock Prevention** (score: 52%)\n3. **Memory Management / Paging** (score: 58%)\n\n**Recommended study plan:**\n- Days 1-4: CPU Scheduling + Deadlock (focus on the 3 algorithms and banker\'s algorithm)\n- Days 5-8: Memory Management (paging, segmentation, TLB)\n- Days 9-11: Process Synchronization (semaphores, critical sections)\n- Days 12-14: Past year papers + weak area drills\n\nWant me to generate a 10-question quiz on CPU Scheduling now? 🧠`,
-    tool: 'wawa.exam_prep',
-    floors: ['F2 Truth', 'F8 Genius', 'F11 Audit']
+    floors: ['F4 Clarity', 'F9 Anti-Hantu', 'F13 Sovereign']
   }
 };
 
-let isTyping = false;
-
+let typingTimer = null;
 function addMsg(role, html) {
-  const box = document.getElementById('chatMessages');
-  const div = document.createElement('div');
-  div.className = `msg ${role}`;
-  const avatar = role === 'user' ? 'S' : 'W';
-  div.innerHTML = `<div class="msg-avatar">${avatar}</div><div class="msg-bubble">${html}</div>`;
-  box.appendChild(div);
+  const box = document.getElementById('chatBox');
+  const wrap = document.createElement('div');
+  wrap.className = `msg-bubble-wrap ${role}`;
+  const av = role === 'user' ? 'S' : 'W';
+  wrap.innerHTML = `<div class="msg-avatar-small">${av}</div><div class="msg-text">${html}</div>`;
+  box.appendChild(wrap);
   box.scrollTop = box.scrollHeight;
 }
-
 function showTyping() {
-  const box = document.getElementById('chatMessages');
-  const div = document.createElement('div');
-  div.className = 'msg wawa';
-  div.id = 'typing';
-  div.innerHTML = `<div class="msg-avatar">W</div><div class="msg-bubble"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
-  box.appendChild(div);
+  const box = document.getElementById('chatBox');
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-bubble-wrap wawa';
+  wrap.id = 'typingEl';
+  wrap.innerHTML = `<div class="msg-avatar-small">W</div><div class="msg-text"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  box.appendChild(wrap);
   box.scrollTop = box.scrollHeight;
 }
-
 function removeTyping() {
-  const t = document.getElementById('typing');
-  if (t) t.remove();
+  const el = document.getElementById('typingEl');
+  if (el) el.remove();
 }
-
-// ─── Real AI Integration ───────────────────────────────────────
-const CHAT_API_URL = '/_wawa_chat';  // Cloudflare Worker proxy (or your API endpoint)
-const API_MODEL = 'MiniMax-Text-01';  // adjust to your model
-
-async function callWAWA(message) {
-  // Fallback: demo responses if API unavailable
-  const lower = message.toLowerCase();
-  if (lower.includes('add class')) return RESPONSES.add;
-  if (lower.includes('assignment') || lower.includes('deadline')) return RESPONSES.assignment;
-  if (lower.includes('summarise') || lower.includes('note') || lower.includes('lecture')) return RESPONSES.notes;
-  if (lower.includes('group') || lower.includes('project')) return RESPONSES.group;
-  if (lower.includes('exam') || lower.includes('prepare') || lower.includes('study')) return RESPONSES.exam;
-
-  // Real AI call
-  try {
-    const res = await fetch(CHAT_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, userName: 'Siti' })
-    });
-    if (!res.ok) throw new Error('API error');
-    const data = await res.json();
-    return {
-      text: data.reply || data.message || data.content || "Maaf, saya tidak dapat memberi jawapan sekarang.",
-      tool: data.tool || 'wawa.ai_chat',
-      floors: data.floors || ['F5 Peace²', 'F13 Sovereign']
-    };
-  } catch (e) {
-    // Return a graceful fallback instead of crashing
-    return {
-      text: `So sorry! AI is temporarily unavailable. Please try again in a moment.
-
-While you wait — I can help with: adding classes, tracking deadlines, summarising notes, group projects, or exam prep. Just type one of those!`,
-      tool: 'wawa.fallback',
-      floors: ['F5 Peace²', 'F7 Humility']
-    };
-  }
-}
-// ───────────────────────────────────────────────────────────────
-
 function sendMsg() {
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
-  if (!text || isTyping) return;
-  addMsg('user', text.replace(/\n/g, '<br>'));
+  if (!text) return;
+  addMsg('user', text);
   input.value = '';
-  isTyping = true;
-
-  // Match response
-  let match = null;
-  const lower = text.toLowerCase();
-  if (lower.includes('add class')) match = RESPONSES.add;
-  else if (lower.includes('assignment') || lower.includes('deadline')) match = RESPONSES.assignment;
-  else if (lower.includes('summarise') || lower.includes('note') || lower.includes('lecture')) match = RESPONSES.notes;
-  else if (lower.includes('group') || lower.includes('project')) match = RESPONSES.group;
-  else if (lower.includes('exam') || lower.includes('prepare') || lower.includes('study')) match = RESPONSES.exam;
-  else {
-    match = {
-      text: `I understand you're asking about: "${text.slice(0, 40)}..."\n\nAs a WAWA demo, I can help with:\n\n• Adding classes to your timetable\n• Tracking assignment deadlines\n• Summarising lecture notes\n• Checking group project status\n• Creating an exam prep plan\n\nTry tapping one of the quick reply buttons above, or type something like "add class" or "what deadlines do I have?"`,
-      tool: 'wawa.timetable_guardian',
-      floors: ['F4 Clarity', 'F5 Peace²', 'F13 Sovereign']
-    };
-  }
-
   showTyping();
-  setTimeout(() => {
+  clearTimeout(typingTimer);
+  typingTimer = setTimeout(() => {
     removeTyping();
-    const floorsHtml = match.floors.map(f => `<span class="floor-tag active">${f}</span>`).join('');
-    const html = `${match.text.replace(/\n/g, '<br>')}<div class="mcp-tool">→ ${match.tool}</div><div class="floors">${floorsHtml}</div><div class="sig">— WAWA · arifOS MCP · DITEMPA BUKAN DIBERI</div>`;
+    const lower = text.toLowerCase();
+    let match = RESPONSES.default;
+    if (lower.includes('esok') || lower.includes('tomorrow') || lower.includes('jadual') || lower.includes('schedule') || lower.includes('class'))
+      match = RESPONSES.jadual;
+    else if (lower.includes('assignment') || lower.includes('deadline') || lower.includes('tugasan') || lower.includes('due'))
+      match = RESPONSES.assignment;
+    else if (lower.includes('nota') || lower.includes('summar') || lower.includes('lecture') || lower.includes('ringkaskan') || lower.includes('ringkas'))
+      match = RESPONSES.nota;
+    else if (lower.includes('group') || lower.includes('projek') || lower.includes('project'))
+      match = RESPONSES.group;
+    const chips = match.floors.map(f => `<span class="floor-chip active">${f}</span>`).join('');
+    const html = `${match.text.replace(/\n/g, '<br>')}<div class="tool-tag">→ ${match.tool}</div><div class="floor-chips">${chips}</div><div class="sig">— WAWA · arifOS MCP · DITEMPA BUKAN DIBERI</div>`;
     addMsg('wawa', html);
-    isTyping = false;
-  }, 1200 + Math.random() * 600);
+  }, 1100 + Math.random() * 500);
 }
-
 function sendQuick(text) {
   document.getElementById('chatInput').value = text;
   sendMsg();
 }
-
 function handleSignup() {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const uni = document.getElementById('uni').value.trim();
-  if (!name || !email || !uni) { alert('Sila isi semua ruangan.'); return; }
-  const msg = `🎓 *WAWA Beta Signup*\n*Name:* ${name}\n*Email:* ${email}\n*University:* ${uni}`;
+  const n = document.getElementById('name').value.trim();
+  const e = document.getElementById('email').value.trim();
+  const u = document.getElementById('uni').value.trim();
+  if (!n || !e || !u) { alert('Sila isi semua ruangan ya.'); return; }
+  const msg = `🎓 *WAWA Beta Signup*\n*Nama:* ${n}\n*Email:* ${e}\n*Universiti:* ${u}`;
   window.open(`https://t.me/share/telegram?text=${encodeURIComponent(msg)}`, '_blank');
 }
 </script>
