@@ -801,6 +801,46 @@ function removeTyping() {
   if (t) t.remove();
 }
 
+// ─── Real AI Integration ───────────────────────────────────────
+const CHAT_API_URL = '/_wawa_chat';  // Cloudflare Worker proxy (or your API endpoint)
+const API_MODEL = 'MiniMax-Text-01';  // adjust to your model
+
+async function callWAWA(message) {
+  // Fallback: demo responses if API unavailable
+  const lower = message.toLowerCase();
+  if (lower.includes('add class')) return RESPONSES.add;
+  if (lower.includes('assignment') || lower.includes('deadline')) return RESPONSES.assignment;
+  if (lower.includes('summarise') || lower.includes('note') || lower.includes('lecture')) return RESPONSES.notes;
+  if (lower.includes('group') || lower.includes('project')) return RESPONSES.group;
+  if (lower.includes('exam') || lower.includes('prepare') || lower.includes('study')) return RESPONSES.exam;
+
+  // Real AI call
+  try {
+    const res = await fetch(CHAT_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, userName: 'Siti' })
+    });
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    return {
+      text: data.reply || data.message || data.content || "Maaf, saya tidak dapat memberi jawapan sekarang.",
+      tool: data.tool || 'wawa.ai_chat',
+      floors: data.floors || ['F5 Peace²', 'F13 Sovereign']
+    };
+  } catch (e) {
+    // Return a graceful fallback instead of crashing
+    return {
+      text: `So sorry! AI is temporarily unavailable. Please try again in a moment.
+
+While you wait — I can help with: adding classes, tracking deadlines, summarising notes, group projects, or exam prep. Just type one of those!`,
+      tool: 'wawa.fallback',
+      floors: ['F5 Peace²', 'F7 Humility']
+    };
+  }
+}
+// ───────────────────────────────────────────────────────────────
+
 function sendMsg() {
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
