@@ -185,7 +185,7 @@ fazil.com  arif-fazil.com arif-fazil.com arif-fazil.com
 │   ├── aaa.arif-fazil.com/      # Δ BODY (HTML + Tailwind)
 │   └── arifosmcp.arif-fazil.com/# MCP Dashboard (HTML)
 ├── arifOS/
-│   └── infrastructure/
+│   └── infra/
 │       └── nginx/
 │           └── arifos_landings.conf  # vhost config
 └── GEOX/

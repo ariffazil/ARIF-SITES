@@ -374,7 +374,7 @@
       "outputs": ["asset_database", "locations", "condition_assessment"],
       "complexity": 3,
       "dependencies": ["surface_classify"],
-      "mcp_resource": "geox://resources/infrastructure/inventory"
+      "mcp_resource": "geox://resources/infra/inventory"
     },
     "network_trace": {
       "id": "network_trace",
@@ -386,7 +386,7 @@
       "outputs": ["connected_components", "upstream", "downstream"],
       "complexity": 2,
       "dependencies": [],
-      "mcp_resource": "geox://resources/infrastructure/network"
+      "mcp_resource": "geox://resources/infra/network"
     },
     "urban_growth": {
       "id": "urban_growth",
@@ -398,7 +398,7 @@
       "outputs": ["growth_scenarios", "projections", "impact_areas"],
       "complexity": 4,
       "dependencies": ["surface_classify", "change_detect", "accessibility_map"],
-      "mcp_resource": "geox://resources/infrastructure/urban"
+      "mcp_resource": "geox://resources/infra/urban"
     },
     "facility_siting": {
       "id": "facility_siting",
@@ -410,7 +410,7 @@
       "outputs": ["suitability_map", "ranked_sites", "tradeoff_analysis"],
       "complexity": 4,
       "dependencies": ["surface_classify", "accessibility_map", "flood_model"],
-      "mcp_resource": "geox://resources/infrastructure/siting"
+      "mcp_resource": "geox://resources/infra/siting"
     },
     "seismic_hazard": {
       "id": "seismic_hazard",
