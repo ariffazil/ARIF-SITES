@@ -1,0 +1,64 @@
+# GEOX — Earth Intelligence Layer for arifOS
+## Machine & Agent Interface Specification
+
+**Version:** 0.1.0
+**URL:** https://geox.arif-fazil.com
+**Source:** https://github.com/ariffazil/GEOX
+
+## What GEOX Is
+GEOX is the Earth intelligence layer of the arifOS constellation. It provides sovereign decision cockpits for subsurface evaluation — bridging geological evidence to capital consequence.
+
+## Three Cockpits
+
+### GEOX Cockpit (AAA-Grade Prospect Forge)
+- URL: https://geox.arif-fazil.com/cockpit
+- Purpose: Prospect maturation, georeferencing, B_cog bias referee, governed verdicts
+- Input: Geological evidence → Output: AAA-grade prospect verdict
+
+### WELL Cockpit (AAA-Grade Well Witness)
+- URL: https://geox.arif-fazil.com/cockpit
+- Purpose: Well correlation with petrophysical ToAC audit
+- Input: Well log data → Output: Trust-graded interpretation
+
+### WEALTH Cockpit (Capital Judge)
+- URL: https://geox.arif-fazil.com/prospect
+- Purpose: Sovereign capital allocation engine, CapitalX valuation, NPV reward signal
+- Input: Geological truth → Output: Financial consequence (NPV)
+
+## Architecture
+One causal chain from sediment to capital:
+1. Earth Evidence (sediment, seismic, well logs)
+2. Govern Layer (ToAC audit, B_cog Referee, 888_HOLD constitutional review)
+3. Capital Layer (CapitalX valuation, NPV, decision closure)
+
+geox.evaluate_prospect() → arifos.bridge_contract() → wealth.npv_reward()
+
+## Navigation
+- / — GEOX home
+- /cockpit — Decision cockpits
+- /prospect — WEALTH capital judge
+- /map — Spatial commons (Leaflet geospatial)
+- /viewer — Petrophysics + RATLAS data viewer
+- /docs — Theory, MCP tools, integration guides
+- /health — Runtime SOT, container health, constitutional floors
+
+## MCP Tool: arifos_111_sense (Visual Mode)
+- Purpose: Image understanding via MiniMax VLM
+- Required parameter: image_url (public HTTPS URL)
+- mode: visual
+
+## MCP Tool: arifos_222_witness (Web Search Mode)
+- Purpose: External evidence via MiniMax web search bridge
+- mode: web_search
+- search_query: override query
+
+## Evidence Classification
+- OBS: Direct geological observation (publicly verified)
+- DER: Derived from primary data (analyst-graded)
+- INT: Interpretation (not confirmed)
+- SPEC: Speculative (explicitly flagged)
+
+## For Agents
+- Crawl: https://geox.arif-fazil.com/sitemap.xml
+- MCP health: https://geox.arif-fazil.com/health
+- Source: https://github.com/ariffazil/GEOX
