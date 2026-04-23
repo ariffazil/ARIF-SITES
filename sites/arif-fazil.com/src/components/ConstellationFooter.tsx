@@ -1,16 +1,29 @@
-import { Link } from 'react-router-dom';
+import { ecosystemLinks } from '@/data/siteContent';
 
 export function ConstellationFooter() {
   return (
-    <footer className="bg-[#0A0A0A] border-t border-[#FF3333]/20 py-12 mt-20">
-      <div className="max-w-7xl mx-auto px-4 text-center">
-        <p className="text-[#F5E8E8]/50 text-sm">
-          Ψ SOUL · Ω MIND · Δ BODY — Ditempa Bukan Diberi
-        </p>
-        <div className="flex justify-center gap-6 mt-4 text-sm text-[#F5E8E8]/30">
-          <Link to="/" className="hover:text-[#FF3333]">Home</Link>
-          <Link to="/discoveries" className="hover:text-[#FF3333]">Discoveries</Link>
-          <Link to="/canon" className="hover:text-[#FF3333]">Canon</Link>
+    <footer className="site-footer">
+      <div className="site-frame site-footer__grid">
+        <div>
+          <p className="section-eyebrow">root domain</p>
+          <h2 className="section-title section-title--sm">Present, origin, and seal.</h2>
+          <p className="section-copy">
+            The homepage is for humans. <code>/000</code> keeps the genesis ledger. <code>/999</code>{' '}
+            exposes proof, authorship continuity, and verification surfaces.
+          </p>
+        </div>
+
+        <div>
+          <p className="section-eyebrow">ecosystem</p>
+          <ul className="footer-links">
+            {ecosystemLinks.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
