@@ -1,0 +1,20 @@
+{
+  "name": "arifOS-Authentic-Arif",
+  "description": "Ring 1 — Human sovereign of arifOS. Constitutional AI governance architect. PETRONAS exploration geoscientist with 100% drilling success record.",
+  "url": "https://arif-fazil.com",
+  "provider": {
+    "organization": "arifOS",
+    "url": "https://arifOS.arif-fazil.com"
+  },
+  "version": "1.0",
+  "capabilities": {
+    "a2a": true,
+    "mcp": ["https://mcp.arif-fazil.com/mcp"]
+  },
+  "scopes": ["constitutional-ai", "geoscience", "arifOS-governance"],
+  "modes": ["observe", "advise"],
+  "authentication": "none",
+  "skills": [],
+  "input_modes": ["text"],
+  "output_modes": ["text"]
+}

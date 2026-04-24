@@ -2,7 +2,7 @@
 # Deterministic routing logic for deployment lanes
 # Governance: arifOS F1-F13
 
-version: "2026.04.11"
+version: "2026.04.23"
 seal: "DITEMPA BUKAN DIBERI"
 
 ---
@@ -20,9 +20,9 @@ lanes:
       - condition: "build_output"
         pattern: "dist/ with static files only"
     targets:
-      primary: "cloudflare-pages"
-      fallback: "vps-nginx"
-    deploy_command: "git push origin main"
+      primary: "vps-caddy"
+      fallback: "cloudflare-pages"
+    deploy_command: "npm ci && npm run build && deploy-site <hostname>"
     risk_level: "low"
     
   webmcp:
@@ -36,9 +36,9 @@ lanes:
       - condition: "state_location"
         value: "server-side"
     targets:
-      static: "cloudflare-pages"
+      static: "vps-caddy"
       mcp_bridge: "vps-docker"
-    deploy_command: "npm run build && wrangler pages deploy dist/"
+    deploy_command: "npm run build && deploy-site <hostname>"
     risk_level: "medium"
     
   edge:
@@ -133,53 +133,60 @@ site_mapping:
   arif-fazil.com:
     lane: static
     ring: soul
-    target: cloudflare-pages
-    
-  arifos.arif-fazil.com:
-    lane: deleted
-    ring: mind
-    target: cloudflare-pages
-    deprecated: 2026-04-11
-    note: Content merged into apex.arif-fazil.com and arifosmcp.arif-fazil.com
+    owner_repo: arif-sites
+    target: vps-caddy
+    role: human
     
   aaa.arif-fazil.com:
     lane: static
     ring: body
-    target: cloudflare-pages
+    owner_repo: arif-sites
+    target: vps-caddy
+    role: agent
     
   wiki.arif-fazil.com:
     lane: static
     ring: mind
-    target: cloudflare-pages
-    
-  apex.arif-fazil.com:
-    lane: static
-    ring: mind
-    target: cloudflare-pages
-    
-  forge.arif-fazil.com:
-    lane: webmcp
-    ring: forge
-    static_target: cloudflare-pages
-    mcp_bridge: arifosmcp
-    
-  waw.arif-fazil.com:
-    lane: webmcp
-    ring: forge
-    static_target: cloudflare-pages
-    mcp_bridge: arifosmcp
-    
-  arifosmcp.arif-fazil.com:
+    owner_repo: arif-sites
+    target: vps-caddy
+    role: docs
+
+  mcp.arif-fazil.com:
     lane: runtime
-    ring: body
+    ring: kernel
+    owner_repo: arifOS
     target: vps-docker
     risk: critical
+    role: tools
     
   geox.arif-fazil.com:
     lane: runtime
     ring: field
+    owner_repo: arif-sites
     target: vps-docker
     risk: critical
+    role: apps
+
+site_law:
+  max_top_level_sites: 5
+  canonical_hostnames:
+    - arif-fazil.com
+    - aaa.arif-fazil.com
+    - wiki.arif-fazil.com
+    - mcp.arif-fazil.com
+    - geox.arif-fazil.com
+  retired_aliases:
+    arifos.arif-fazil.com: wiki.arif-fazil.com
+    arifosmcp.arif-fazil.com: mcp.arif-fazil.com
+    forge.arif-fazil.com: aaa.arif-fazil.com
+    apex.arif-fazil.com: wiki.arif-fazil.com
+    waw.arif-fazil.com: aaa.arif-fazil.com
+    wawa.arif-fazil.com: aaa.arif-fazil.com
+  hard_rules:
+    - "No new public hostname without human seal."
+    - "One hostname = one owner repo."
+    - "VPS deploy is canonical. External pages platforms are optional mirrors, not primary law."
+    - "Retired aliases are redirect-only; do not build new surfaces there."
 
 ---
 # PERMISSION MATRIX

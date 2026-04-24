@@ -1,175 +1,91 @@
 import {
-  collaborationOffers,
   contactLinks,
-  ecosystemLinks,
-  selectedWork,
-  trustStrip,
-  workingStyle,
+  practiceAreas,
+  wellsPortfolio,
 } from '@/data/siteContent';
 
 export function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="site-frame hero__grid">
-          <div>
-            <p className="section-eyebrow">human homepage · present layer</p>
-            <h1 className="hero__title">Arif Fazil</h1>
-            <p className="hero__subtitle">Geologist. AI systems architect. Builder of arifOS.</p>
-            <p className="hero__copy">
-              Senior exploration geoscientist working with uncertainty, evidence, and real operational
-              consequences. I apply that same discipline to AI systems, geospatial products, and
-              machine-readable public surfaces.
-            </p>
-            <div className="hero__actions">
-              <a className="button" href="#work">
-                View selected work
-              </a>
-              <a className="button button--secondary" href="/000/">
-                Read /000 genesis
-              </a>
-              <a className="button button--secondary" href="/999/">
-                Inspect /999 proof
-              </a>
+      <section className="hero" style={{ padding: '4rem 0 3rem' }}>
+        <div className="site-frame">
+          <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '0.5rem' }}>
+            Arif Fazil
+          </h1>
+          <p style={{ fontSize: '1.1rem', color: 'var(--muted)', marginBottom: '2rem' }}>
+            Exploration geoscientist, offshore Malaysia. Also writes code.
+          </p>
+          <p style={{ maxWidth: '540px', lineHeight: 1.7, marginBottom: '2rem' }}>
+            I work the basin — reading signals, building prospects, making decisions when the data isn&apos;t clean.
+            The software grew out of that: needed better tools for thinking and verifying, so I built them.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <a className="button" href="#wells">Wells</a>
+            <a className="button button--secondary" href="/999/">/999 for AI</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="site-section">
+        <div className="site-frame">
+          <hr style={{ border: 'none', borderTop: '1px solid var(--border)', margin: '2rem 0' }} />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', fontSize: '0.9rem' }}>
+            <div>
+              <p style={{ color: 'var(--muted)', marginBottom: '0.25rem' }}>Background</p>
+              <p>PETRONAS Carigali, offshore Malaysia</p>
+            </div>
+            <div>
+              <p style={{ color: 'var(--muted)', marginBottom: '0.25rem' }}>Training</p>
+              <p>Geology, geophysics, economics — UW Madison</p>
+            </div>
+            <div>
+              <p style={{ color: 'var(--muted)', marginBottom: '0.25rem' }}>What I actually do</p>
+              <p>Prospect work, basin analysis, write code when it helps</p>
             </div>
           </div>
-
-          <aside className="card card--accent">
-            <p className="section-eyebrow">thesis</p>
-            <h2 className="section-title section-title--sm">
-              Professional at the surface. Origin and proof in deeper layers.
-            </h2>
-            <p className="section-copy">
-              This domain is split on purpose: <code>/</code> is the hireable human entry,{' '}
-              <code>/000</code> explains how the work was forged, and <code>/999</code> exposes
-              bounded trust artifacts for verifiers and agents.
-            </p>
-          </aside>
         </div>
       </section>
 
-      <section className="site-section">
+      <section className="site-section" id="wells">
         <div className="site-frame">
-          <p className="section-eyebrow">trust strip</p>
-          <div className="pill-row">
-            {trustStrip.map((item) => (
-              <span className="pill" key={item}>
-                {item}
-              </span>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>Wells</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            {wellsPortfolio.map((well) => (
+              <div key={well.name} style={{ borderLeft: '2px solid var(--border)', paddingLeft: '1.25rem' }}>
+                <p style={{ color: 'var(--muted)', fontSize: '0.8rem', marginBottom: '0.2rem' }}>
+                  {well.basin}
+                </p>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.4rem' }}>{well.name}</h3>
+                <p style={{ fontSize: '0.95rem', lineHeight: 1.6 }}>{well.summary}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="site-section" id="work">
-        <div className="site-frame">
-          <p className="section-eyebrow">selected work</p>
-          <div className="section-head">
-            <h2 className="section-title">Work that translates uncertainty into usable structure.</h2>
-            <p className="section-copy">
-              The through-line is consistent: name the unknowns honestly, build the right frame, and
-              leave behind a system other people can trust.
-            </p>
-          </div>
-
-          <div className="card-grid card-grid--two">
-            {selectedWork.map((item) => (
-              <article className="card" key={item.title}>
-                <p className="card__meta">{item.role}</p>
-                <h3 className="card__title">{item.title}</h3>
-                <p className="card__body">
-                  <strong>Problem:</strong> {item.problem}
-                </p>
-                <p className="card__body">
-                  <strong>Value:</strong> {item.value}
-                </p>
-                {item.href ? (
-                  <p className="card__action">
-                    <a href={item.href} target="_blank" rel="noreferrer">
-                      Open related surface
-                    </a>
-                  </p>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="site-section" id="about">
-        <div className="site-frame card-grid card-grid--two">
-          <article className="card">
-            <p className="section-eyebrow">about</p>
-            <h2 className="section-title section-title--sm">Grounded by geology, not by branding.</h2>
-            <p className="section-copy">
-              The public face should stay calm, exact, and useful. The work comes from exploration
-              geology, basin thinking, and the habit of showing what is known, what is inferred, and
-              what is still uncertain.
-            </p>
-            <p className="section-copy">
-              arifOS emerged from that same discipline: human authority visible, evidence explicit,
-              and system behaviour constrained by law instead of optimistic storytelling.
-            </p>
-          </article>
-
-          <article className="card">
-            <p className="section-eyebrow">working style</p>
-            <ul className="stack-list">
-              {workingStyle.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </section>
-
       <section className="site-section">
-        <div className="site-frame card-grid card-grid--two">
-          <article className="card">
-            <p className="section-eyebrow">collaboration</p>
-            <h2 className="section-title section-title--sm">Where collaboration makes sense.</h2>
-            <ul className="stack-list">
-              {collaborationOffers.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="card">
-            <p className="section-eyebrow">ecosystem</p>
-            <h2 className="section-title section-title--sm">One domain, deeper surfaces.</h2>
-            <ul className="link-list">
-              {ecosystemLinks.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </article>
+        <div className="site-frame">
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1.5rem' }}>How I work</h2>
+          <ul style={{ lineHeight: 1.8, paddingLeft: '1.5rem' }}>
+            {practiceAreas.map((item) => (
+              <li key={item} style={{ marginBottom: '0.5rem' }}>{item}</li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section className="site-section" id="contact">
         <div className="site-frame">
-          <article className="card card--accent">
-            <p className="section-eyebrow">contact</p>
-            <h2 className="section-title">Low-friction entry points.</h2>
-            <p className="section-copy">
-              Use the surfaces that already carry real authorship and proof. This keeps contact grounded
-              in the same trust layer as the work itself.
-            </p>
-            <ul className="link-list link-list--inline">
-              {contactLinks.map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </article>
+          <p style={{ color: 'var(--muted)', fontSize: '0.9rem', marginBottom: '0.75rem' }}>Contact</p>
+          <ul style={{ listStyle: 'none', padding: 0, lineHeight: 1.8 }}>
+            {contactLinks.map((item) => (
+              <li key={item.label}>
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </>

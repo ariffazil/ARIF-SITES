@@ -1,11 +1,25 @@
 {
-  "site_name": "BODY — Identity",
+  "site_name": "arif-fazil.com",
   "domain": "arif-fazil.com",
-  "role": "identity anchor",
+  "role": "human homepage with genesis and proof subroutes",
   "canonical": "https://arif-fazil.com/llms.txt",
-  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
-  "constitutional_floors": 13,
-  "source": "https://github.com/ariffazil/arif-sites",
-  "sealed": true,
-  "epoch": "2026-04-18"
+  "repository": "https://github.com/ariffazil/arif-sites",
+  "route_roles": {
+    "/": "professional human entry",
+    "/000/": "genesis and wisdom archive",
+    "/999/": "trust and proof chamber"
+  },
+  "related_sites": [
+    "https://wiki.arif-fazil.com",
+    "https://aaa.arif-fazil.com",
+    "https://mcp.arif-fazil.com",
+    "https://geox.arif-fazil.com"
+  ],
+  "machine_surfaces": [
+    "https://arif-fazil.com/page.json",
+    "https://arif-fazil.com/.well-known/agent.json",
+    "https://arif-fazil.com/.well-known/did.json",
+    "https://arif-fazil.com/proof/geologist-credential.json"
+  ],
+  "last_updated": "2026-04-23"
 }

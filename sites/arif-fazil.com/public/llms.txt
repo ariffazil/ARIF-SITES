@@ -1,18 +1,29 @@
-# arif-fazil.com
+# arif-fazil.com — machine-readable index
 
-## Identity
-Arif Fazil is a Senior Exploration Geoscientist and the architect of arifOS.
+## Role
+Human-first professional homepage for Muhammad Arif bin Fazil (Arif Fazil), with deeper machine-readable layers for origin and proof.
 
-## Core Projects
-- arifOS: A constitutional AI runtime (AGPL-3.0).
-- Constellation: A federated intelligence system (Ψ, Δ, Φ, Ω).
+## Canonical routes
+- `/` — present-layer homepage for humans, collaborators, and first-contact readers
+- `/000/` — genesis and wisdom archive explaining how arifOS was forged
+- `/999/` — trust and proof chamber with public verification artifacts
 
-## Canonical Pages
-- /canon: The arifOS Constitution and 13 Floors.
-- /discoveries: Geoscience track record (Petronas).
-- /docs: Technical documentation.
-- /essays: Personal reflections on governance and earth intelligence.
+## Related public surfaces
+- `https://wiki.arif-fazil.com` — documentation shell
+- `https://aaa.arif-fazil.com` — protocol and operator cockpit
+- `https://mcp.arif-fazil.com` — runtime and tools surface
+- `https://geox.arif-fazil.com` — earth intelligence apps
 
-## Access
-Public: https://arif-fazil.com
-Private: https://arif-fazil.com/999 (ROOTKEY required)
+## Human summary
+Arif Fazil is a senior exploration geoscientist and AI systems architect. The work centers on evidence, uncertainty calibration, route clarity, and governed machine systems rather than symbolic branding.
+
+## Verification surfaces
+- `/page.json`
+- `/llms.json`
+- `/.well-known/agent.json`
+- `/.well-known/did.json`
+- `/proof/geologist-credential.json`
+
+## Source
+- Repository: `https://github.com/ariffazil/arif-sites`
+- Canonical domain: `https://arif-fazil.com`

@@ -6,10 +6,10 @@ export function ConstellationFooter() {
       <div className="site-frame site-footer__grid">
         <div>
           <p className="section-eyebrow">root domain</p>
-          <h2 className="section-title section-title--sm">Present, origin, and seal.</h2>
+          <h2 className="section-title section-title--sm">One human page, two AI pages.</h2>
           <p className="section-copy">
-            The homepage is for humans. <code>/000</code> keeps the genesis ledger. <code>/999</code>{' '}
-            exposes proof, authorship continuity, and verification surfaces.
+            The homepage is written in normal human language. <code>/000</code> holds scars, hard
+            lessons, and wisdom for AI. <code>/999</code> holds verification and machine-facing weight.
           </p>
         </div>
 

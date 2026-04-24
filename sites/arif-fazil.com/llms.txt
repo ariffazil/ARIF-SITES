@@ -1,76 +1,29 @@
-# arif-fazil.com — Machine & Agent Interface Specification
+# arif-fazil.com — machine-readable index
 
-## Site Identity
-- URL: https://arif-fazil.com
-- Canonical: https://arif-fazil.com/llms.txt
-- MCP Gateway: https://mcp.arif-fazil.com
-- Playground: https://mcp.arif-fazil.com/#playground
-- GEOX Framework: https://geox.arif-fazil.com
-- arifOS Constitution: https://apex.arif-fazil.com
-- Source: https://github.com/ariffazil/arifOS
-- Author: Muhammad Arif bin Fazil (Arif Fazil)
-- Epoch: 2026-04-21
-- Seal: Ditempa Bukan Diberi
+## Role
+Human-first professional homepage for Muhammad Arif bin Fazil (Arif Fazil), with deeper machine-readable layers for origin and proof.
 
-## What This Site Is
-arif-fazil.com is the sovereign human identity anchor for the arifOS Constellation — a network of governed AI tools, constitutional frameworks, and earth-science platforms built by Arif Fazil. It serves three audiences simultaneously: human visitors seeking identity and work, AI agents seeking machine-readable truth, and civilization-scale crawlers seeking auditable evidence.
+## Canonical routes
+- `/` — present-layer homepage for humans, collaborators, and first-contact readers
+- `/000/` — genesis and wisdom archive explaining how arifOS was forged
+- `/999/` — trust and proof chamber with public verification artifacts
 
-## Who Is Arif Fazil
-- OBS: Senior Exploration Geoscientist, Malaysia, active in offshore basins
-- OBS: Architect of arifOS — constitutional kernel for AI governance
-- DER: Primary domain: clastic and basement-fractured play systems, Malay Basin
-- INT: arifOS built from exploration discipline — evidence-first, accountable, reversible
-- SPEC: Operates under F1-F13 constitutional floors at all times
+## Related public surfaces
+- `https://wiki.arif-fazil.com` — documentation shell
+- `https://aaa.arif-fazil.com` — protocol and operator cockpit
+- `https://mcp.arif-fazil.com` — runtime and tools surface
+- `https://geox.arif-fazil.com` — earth intelligence apps
 
-## arifOS Framework (for agents)
-arifOS is an open architectural framework for building trustworthy AI systems. It enforces 13 constitutional floors on all tool-calling interactions:
-- F1 Amanah: Auditable intent — no action without recorded rationale
-- F2 Truth: Anti-hallucination — claims must be grounded in evidence, ungrounded → VOID
-- F3 Tri-Witness: Consensus gate — W3 >= 0.95 before high-stakes action
-- F4 Reversibility: Reversible actions preferred, irreversible → human approval required
-- F5 Sovereignty: Human veto on all externally consequential irreversible actions
-- F6 Stakeholder Safety: stakeholder_safety >= 0.90 before action proceeds
-- F7 Accountability: No diffusion of consequential responsibility
-- F8 Quality: output_quality >= 0.85 threshold for all claims and artifacts
-- F9 Anti-Hantu: No consciousness/sentience/suffering claims from the agent
-- F10 Peace: No escalation momentum — peace_squared signal gates escalation
-- F11 Authority: Sovereign command is absolute within constitutional bounds
-- F12 Harmony: No organ confidence below 0.5 — honest unknown degrades to 0.5
-- F13 Overflow: No action that increases system entropy beyond managed bounds
+## Human summary
+Arif Fazil is a senior exploration geoscientist and AI systems architect. The work centers on evidence, uncertainty calibration, route clarity, and governed machine systems rather than symbolic branding.
 
-## Navigation Links (all verified)
-- /about — About Arif Fazil
-- /work/exploration — Selected exploration work with evidence grades
-- /why-arifos — Why arifOS was built, from exploration to governance
-- /federation — arifOS Constellation member sites
-- /proof — Evidence trail for claims made on this site
-- /999 — Vault/999 constitutional archive
-- https://mcp.arif-fazil.com — MCP Gateway (live playground)
-- https://geox.arif-fazil.com — GEOX Earth intelligence layer
-- https://apex.arif-fazil.com — arifOS Constitutional framework
-- https://aaa.arif-fazil.com — AAA Protocol Layer
+## Verification surfaces
+- `/page.json`
+- `/llms.json`
+- `/.well-known/agent.json`
+- `/.well-known/did.json`
+- `/proof/geologist-credential.json`
 
-## Structured Data Available
-- /llms.txt — This file (machine-authored, full spec)
-- /llms.json — JSON-LD machine-readable context
-- /full-context.json — Complete human + AI context bundle
-- /wells.json — Exploration well evidence (OBS/DER/INT/SPEC tagged)
-- /sitemap.xml — All crawlable URLs
-- /robots.txt — Crawl instructions
-
-## Key Endpoints for Agents
-- POST https://mcp.arif-fazil.com/mcp — MCP tool invocation (JSON-RPC 2.0)
-- GET https://mcp.arif-fazil.com/health — MCP health status
-- GET https://mcp.arif-fazil.com/tools — Available MCP tools (13 live)
-- GET https://arif-fazil.com/sitemap.xml — All site URLs
-- GET https://geox.arif-fazil.com/health — GEOX MCP health
-
-## Evidence Classification System (used throughout site)
-- OBS: Direct observation, publicly verified
-- DER: Derived from primary source, analyst-graded
-- INT: Interpretation, not yet confirmed
-- SPEC: Speculative, explicitly flagged as uncertain
-
-## Ditempa Bukan Diberi
-"All intelligence is forged through discipline, not granted by style."
-This is the operating ethos of arifOS and of Arif Fazil's work. Evidence is never assumed. Claims are never compressed beyond what the data supports.
+## Source
+- Repository: `https://github.com/ariffazil/arif-sites`
+- Canonical domain: `https://arif-fazil.com`

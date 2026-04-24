@@ -1,20 +1,25 @@
 {
-  "name": "arifOS-Authentic-Arif",
-  "description": "Ring 1 — Human sovereign of arifOS. Constitutional AI governance architect. PETRONAS exploration geoscientist with 100% drilling success record.",
+  "name": "arif-fazil.com",
+  "description": "Human-first homepage and trust root for Arif Fazil. Use this surface for identity, route discovery, and public proof links.",
   "url": "https://arif-fazil.com",
   "provider": {
-    "organization": "arifOS",
-    "url": "https://arifOS.arif-fazil.com"
+    "organization": "arif-fazil.com",
+    "url": "https://mcp.arif-fazil.com"
   },
   "version": "1.0",
   "capabilities": {
-    "a2a": true,
-    "mcp": ["https://mcp.arif-fazil.com/mcp"]
+    "a2a": false,
+    "mcp": ["https://mcp.arif-fazil.com/mcp"],
+    "verification": true
   },
-  "scopes": ["constitutional-ai", "geoscience", "arifOS-governance"],
-  "modes": ["observe", "advise"],
+  "scopes": ["identity", "geoscience", "governed-ai", "proof-discovery"],
+  "modes": ["observe", "advise", "verify"],
   "authentication": "none",
-  "skills": [],
+  "skills": [
+    "Discover canonical routes /, /000/, /999/",
+    "Read public proof artifacts",
+    "Navigate to related canonical sites"
+  ],
   "input_modes": ["text"],
   "output_modes": ["text"]
 }

@@ -1,7 +1,25 @@
 {
-  "name": "arif",
-  "version": "1.0",
-  "last_updated": "2026-04-04",
+  "site_name": "arif-fazil.com",
+  "domain": "arif-fazil.com",
+  "role": "human homepage with genesis and proof subroutes",
+  "canonical": "https://arif-fazil.com/llms.txt",
   "repository": "https://github.com/ariffazil/arif-sites",
-  "deploy_doctrine": "VPS-nginx source-of-truth, CF as CDN proxy only"
+  "route_roles": {
+    "/": "professional human entry",
+    "/000/": "genesis and wisdom archive",
+    "/999/": "trust and proof chamber"
+  },
+  "related_sites": [
+    "https://wiki.arif-fazil.com",
+    "https://aaa.arif-fazil.com",
+    "https://mcp.arif-fazil.com",
+    "https://geox.arif-fazil.com"
+  ],
+  "machine_surfaces": [
+    "https://arif-fazil.com/page.json",
+    "https://arif-fazil.com/.well-known/agent.json",
+    "https://arif-fazil.com/.well-known/did.json",
+    "https://arif-fazil.com/proof/geologist-credential.json"
+  ],
+  "last_updated": "2026-04-23"
 }
