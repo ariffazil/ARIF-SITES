@@ -1,12 +1,43 @@
 # arifOS Trinity Network
 **Single Source of Truth Repository**
 
+<!-- SOT:version_info -->
+| Field | Value |
+|-------|-------|
+| REPO_TYPE | Static + Docusaurus site monorepo |
+| SITES_COUNT | 9 active sites |
+| SERVICES | 1 (arifosmcp) |
+| DEPLOY_STATIC | Cloudflare Pages |
+| DEPLOY_DYNAMIC | VPS Docker + Traefik |
+| ARCHIVE_SIZE | Large (legacy content preserved) |
+
+_Auto-generated — run generate.py to refresh_
+<!-- /SOT:version_info -->
+
 ## 🏛️ Repository Ontology
 - `/sites/` - Public Frontends (Static, Hostname-aligned)
 - `/apps/` - Dynamic Product UIs (VPS-hosted)
 - `/services/` - Backends & MCP Kernels
 - `/infra/` - Constitutional Manifests & Deployment Logic
 - `/archive/` - Legacy Chaos (Purged & Preserved)
+
+## 🌐 Active Sites
+
+<!-- SOT:sites_inventory -->
+| Domain | Type | Role |
+|--------|------|------|
+| `arif-fazil.com` | Static | Human anchor / professional portfolio |
+| `apex.arif-fazil.com` | Static | Constitutional law / 13 Floors |
+| `aaa.arif-fazil.com` | Static | Atomic execution / wire protocol |
+| `arifosmcp.arif-fazil.com` | Dynamic | MCP runtime endpoint |
+| `geox.arif-fazil.com` | Dynamic | Earth witness GUI |
+| `forge.arif-fazil.com` | Static | Forge docs |
+| `waw.arif-fazil.com` | Static | WAW site |
+| `wawa.arif-fazil.com` | Static | Wawa site |
+| `wiki.arif-fazil.com` | Static | arifOS wiki |
+
+<!-- /SOT:sites_inventory -->
+
 
 ## 🌐 Active Domains
 | Ring | Hostname | Type | Role |
