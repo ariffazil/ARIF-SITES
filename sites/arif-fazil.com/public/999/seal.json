@@ -1,0 +1,23 @@
+{
+  "seal_id": "SEAL-001",
+  "issued_by": "did:web:arif-fazil.com",
+  "issued_at": "2026-04-30T00:00:00Z",
+  "domain": "arif-fazil.com",
+  "intent": "Public seal declaring the arifOS Constitutional Federation as a governed, verifiable, and honest AI coordination system.",
+  "scope": [
+    "arifOS — Constitutional governance kernel (F1–F13)",
+    "AAA — A2A coordination and agent handoff",
+    "GEOX — Earth and geoscience intelligence",
+    "WEALTH — Capital and economic reasoning",
+    "WELL — Human readiness and operator wellness"
+  ],
+  "verdict_authority": "888_JUDGE",
+  "vault": "VAULT999",
+  "human": "Muhammad Arif bin Fazil",
+  "human_did": "did:web:arif-fazil.com",
+  "proof_url": "https://arif-fazil.com/.well-known/did-configuration.json",
+  "status": "active",
+  "cryptographic_proof": "did:web:arif-fazil.com",
+  "what_this_seal_proves": "Control of the domain arif-fazil.com and authorship of the federation declaration.",
+  "what_this_seal_does_not_prove": "Legitimacy, government recognition, professional licensure, or metaphysical humanity."
+}

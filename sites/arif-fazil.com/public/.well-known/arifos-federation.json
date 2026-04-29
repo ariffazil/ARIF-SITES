@@ -1,0 +1,56 @@
+{
+  "federation": "arifOS",
+  "version": "1.0.0",
+  "protocol": "A2A v1.0.0",
+  "domain": "arif-fazil.com",
+  "genesis_did": "did:web:arif-fazil.com",
+  "constitutional_floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+  "verdict_authority": "888_JUDGE",
+  "vault": "VAULT999",
+  "governance_root": "https://arif-fazil.com/.well-known/arifos-federation.json",
+  "domains": {
+    "arifOS": {
+      "url": "https://arifos.arif-fazil.com",
+      "role": "Constitutional governance kernel",
+      "protocol": "MCP",
+      "status": "active"
+    },
+    "AAA": {
+      "url": "https://aaa.arif-fazil.com",
+      "role": "A2A coordination endpoint",
+      "protocol": "A2A v1.0.0",
+      "status": "active"
+    },
+    "GEOX": {
+      "url": "https://geox.arif-fazil.com",
+      "role": "Earth and geoscience intelligence",
+      "protocol": "MCP",
+      "status": "planned"
+    },
+    "WEALTH": {
+      "url": "https://wealth.arif-fazil.com",
+      "role": "Capital and economic reasoning",
+      "protocol": "MCP",
+      "status": "planned"
+    },
+    "WELL": {
+      "url": "https://well.arif-fazil.com",
+      "role": "Human readiness and operator wellness",
+      "protocol": "MCP",
+      "status": "planned"
+    }
+  },
+  "doctrine": {
+    "GEOX": "Is it real?",
+    "WEALTH": "Is it worth it?",
+    "WELL": "Is the human steady?",
+    "arifOS": "Is it governed?",
+    "888_JUDGE": "Do I approve?"
+  },
+  "links": {
+    "human_identity": "https://arif-fazil.com/000/",
+    "seal_verification": "https://arif-fazil.com/999/",
+    "did_document": "https://arif-fazil.com/.well-known/did.json",
+    "did_configuration": "https://arif-fazil.com/.well-known/did-configuration.json"
+  }
+}

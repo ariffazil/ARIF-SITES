@@ -1,0 +1,12 @@
+{
+  "key_id": "genesis-2026",
+  "algorithm": "Ed25519",
+  "type": "Multikey",
+  "public_key_base58": "PLACEHOLDER_PUBLIC_KEY_BASE58",
+  "verification_method": "did:web:arif-fazil.com#genesis-2026",
+  "usage": ["assertionMethod", "authentication"],
+  "issued_at": "2026-04-30T00:00:00Z",
+  "rotation_policy": "Manual. New key will be published at /999/rootkey.json with updated metadata.",
+  "issuer": "did:web:arif-fazil.com",
+  "note": "Real key pair generated offline. Private key held in secure offline storage. Public key is published here for verification."
+}
