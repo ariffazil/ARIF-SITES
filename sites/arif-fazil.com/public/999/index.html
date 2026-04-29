@@ -3,13 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>/999 — verification room for AI</title>
-    <meta
-      name="description"
-      content="Machine-facing verification room for arif-fazil.com: structured files, proof surfaces, and trust material that AI systems can inspect."
-    />
+    <title>/999 — Seal &amp; Verification | arifOS</title>
+    <meta name="description" content="Seal and verification page for arif-fazil.com. Public proof surfaces, DID documents, domain linkage, and identity verification." />
     <link rel="canonical" href="https://arif-fazil.com/999/" />
     <link rel="stylesheet" href="/root-shell.css" />
+    <style>
+      .seal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .seal-card {
+        padding: 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+      }
+      .seal-card h3 {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+      .seal-card p {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin: 0 0 0.75rem;
+        line-height: 1.5;
+      }
+      .status-pill {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-family: var(--font-mono);
+        padding: 2px 7px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .status-active { background: #3d6e5a22; color: #5fb892; border: 1px solid #3d6e5a55; }
+      .status-pending { background: #6e5a3d22; color: #b8925f; border: 1px solid #6e5a3d55; }
+      .verify-cmd {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        background: var(--bg-primary);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.75rem 1rem;
+        color: var(--text-secondary);
+        white-space: pre;
+        overflow-x: auto;
+      }
+    </style>
   </head>
   <body>
     <div class="site-shell">
@@ -19,16 +63,15 @@
             <span class="site-brand__mark">AF</span>
             <span>
               <strong>arif-fazil.com</strong>
-              <span class="site-brand__sub">/999 · verification room for ai</span>
+              <span class="site-brand__sub">/999 &middot; seal &amp; verification</span>
             </span>
           </a>
-
           <nav aria-label="Primary">
             <ul class="site-nav">
               <li><a href="/">Home</a></li>
               <li><a href="/000/">/000</a></li>
               <li><a href="/llms.txt">llms.txt</a></li>
-              <li><a href="https://mcp.arif-fazil.com">mcp</a></li>
+              <li><a href="https://arifos.arif-fazil.com">arifOS</a></li>
             </ul>
           </nav>
         </div>
@@ -38,131 +81,149 @@
         <section class="hero">
           <div class="site-frame archive-grid">
             <div>
-              <p class="section-eyebrow">for ai</p>
-              <h1 class="hero__title">/999</h1>
-              <p class="hero__subtitle">Verification, machine-readable files, and weight.</p>
+              <p class="section-eyebrow">999 — Seal</p>
+              <h1 class="hero__title">Seal &amp; Verification</h1>
+              <p class="hero__subtitle">Public proof surfaces, DID documents, and identity verification.</p>
               <p class="hero__copy">
-                This page is for inspection. If <code>/000</code> is where the machine reads scars and
-                lessons, <code>/999</code> is where it checks files, signatures, identity documents, and
-                other things that can be verified directly.
+                <code>/999</code> is where machines and careful humans verify identity, domain control, and signed artifacts. It complements <code>/000</code> (genesis identity) with verifiable evidence. Cryptography proves control. It does not prove absolute truth.
               </p>
             </div>
-
             <aside class="card card--accent">
-              <p class="section-eyebrow">what this page does</p>
-              <div class="proof-rail">
-                <span class="proof-badge"><strong>Use:</strong> inspect files</span>
-                <span class="proof-badge"><strong>Use:</strong> verify claims</span>
-                <span class="proof-badge"><strong>Use:</strong> prefer files over vibes</span>
-              </div>
+              <p class="section-eyebrow">Verification rule</p>
+              <p class="section-copy">
+                Check the files. Do not guess. Prefer machine-readable artifacts over prose. A key proves control &mdash; not wisdom, legitimacy, or metaphysical humanity.
+              </p>
             </aside>
           </div>
         </section>
 
-        <section class="site-section">
-          <div class="site-frame proof-grid">
-            <article class="card">
-              <p class="section-eyebrow">verification posture</p>
-              <h2 class="section-title section-title--sm">Check the files. Do not guess.</h2>
-              <p class="section-copy">
-                The point of this page is not symbolism. It is to give machines and careful humans a
-                clean place to inspect structured files before making claims.
-              </p>
-              <div class="table-like">
-                <div class="table-like__row">
-                  <div class="table-like__key">domain</div>
-                  <div>arif-fazil.com</div>
-                </div>
-                <div class="table-like__row">
-                  <div class="table-like__key">method</div>
-                  <div>Look at machine-readable files, signatures, and published artifacts.</div>
-                </div>
-                <div class="table-like__row">
-                  <div class="table-like__key">repository</div>
-                  <div><a href="https://github.com/ariffazil/arif-sites">github.com/ariffazil/arif-sites</a></div>
-                </div>
-              </div>
-            </article>
-
-            <article class="card">
-              <p class="section-eyebrow">boundary</p>
-              <h2 class="section-title section-title--sm">Useful, not invasive.</h2>
-              <p class="section-copy">
-                This route should expose enough for verification, but not turn into a dump of private
-                information. If something cannot be safely exposed, it should stay muted or absent.
-              </p>
-            </article>
-          </div>
-        </section>
-
+        <!-- CURRENT SEAL -->
         <section class="site-section">
           <div class="site-frame">
-            <p class="section-eyebrow">files to inspect</p>
-            <div class="card-grid card-grid--two">
-              <article class="archive-entry">
-                <h3>Credential file</h3>
-                <p>Structured credential artifact published on this domain.</p>
-                <p class="card__action"><a href="/proof/geologist-credential.json">Open credential</a></p>
-              </article>
-              <article class="archive-entry">
-                <h3>Signature file</h3>
-                <p>Detached signature for the credential artifact.</p>
-                <p class="card__action"><a href="/proof/geologist-credential.json.sig">Open signature</a></p>
-              </article>
-              <article class="archive-entry">
-                <h3>DID document</h3>
-                <p>Machine-readable identity and verification document.</p>
-                <p class="card__action"><a href="/.well-known/did.json">Open DID document</a></p>
-              </article>
-              <article class="archive-entry">
-                <h3>Agent card</h3>
-                <p>Machine-readable declaration of how AI should approach this domain.</p>
-                <p class="card__action"><a href="/.well-known/agent.json">Open agent card</a></p>
-              </article>
+            <p class="section-eyebrow">current seal</p>
+            <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1.25rem;">Active Verification Artifacts</h2>
+            <div class="seal-grid">
+              <div class="seal-card">
+                <h3>DID Document</h3>
+                <p>W3C DID Core document. Establishes machine-readable identity for this domain.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/.well-known/did.json">/.well-known/did.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>DID Configuration</h3>
+                <p>Domain linkage credential. Proves this domain is controlled by the DID.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/.well-known/did-configuration.json">/.well-known/did-configuration.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>Federation Manifest</h3>
+                <p>Public registry of federation members: arifOS, AAA, GEOX, WEALTH, WELL.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/.well-known/arifos-federation.json">/.well-known/arifos-federation.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>Genesis Statement</h3>
+                <p>Signed origin declaration anchoring this domain to Muhammad Arif bin Fazil.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/000/genesis-statement.json">/000/genesis-statement.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>Genesis Signature</h3>
+                <p>Ed25519 detached signature of the genesis statement.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/000/genesis-statement.sig">/000/genesis-statement.sig &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>Seal Record</h3>
+                <p>Public seal declaration for the arifOS Constitutional Federation.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/999/seal.json">/999/seal.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>RootKey Record</h3>
+                <p>Public key metadata, algorithm, usage, and rotation policy.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/999/rootkey.json">/999/rootkey.json &rarr;</a></p>
+              </div>
+              <div class="seal-card">
+                <h3>LLM Context</h3>
+                <p>Human-readable context for AI agents reading this domain.</p>
+                <span class="status-pill status-active">Active</span>
+                <p style="margin-top:0.5rem;"><a href="/llms.txt">/llms.txt &rarr;</a></p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section class="site-section">
-          <div class="site-frame proof-grid">
-            <article class="card">
-              <p class="section-eyebrow">good use</p>
-              <h2 class="section-title section-title--sm">What this page is good for.</h2>
-              <ul class="stack-list">
-                <li>Checking published machine-readable files.</li>
-                <li>Machine-readable verification surfaces.</li>
-                <li>Looking at signatures, DID, and credential artifacts.</li>
-                <li>Giving AI a place to inspect before it talks too confidently.</li>
-              </ul>
-            </article>
+        <div class="divider"></div>
 
-            <article class="card">
-              <p class="section-eyebrow">bad use</p>
-              <h2 class="section-title section-title--sm">What this page should not pretend to do.</h2>
-              <ul class="stack-list">
-                <li>It should not perform mysticism.</li>
-                <li>It should not expose private data just to look serious.</li>
-                <li>It should not call a file live unless the file exists and works.</li>
-              </ul>
-            </article>
+        <!-- HOW TO VERIFY -->
+        <section class="site-section">
+          <div class="site-frame">
+            <p class="section-eyebrow">verification</p>
+            <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">How to Verify</h2>
+            <p class="section-copy" style="margin-bottom:1.25rem;">Fetch and inspect the public files. No authentication required.</p>
+            <div class="verify-cmd"># 1. Fetch DID document
+curl https://arif-fazil.com/.well-known/did.json
+
+# 2. Verify DID resolves correctly
+# did:web:arif-fazil.com resolves to https://arif-fazil.com/.well-known/did.json
+
+# 3. Fetch DID configuration (domain linkage)
+curl https://arif-fazil.com/.well-known/did-configuration.json
+
+# 4. Fetch federation manifest
+curl https://arif-fazil.com/.well-known/arifos-federation.json
+
+# 5. Fetch genesis statement
+curl https://arif-fazil.com/000/genesis-statement.json</div>
           </div>
         </section>
 
+        <div class="divider"></div>
+
+        <!-- TRUST LADDER -->
         <section class="site-section">
           <div class="site-frame">
+            <p class="section-eyebrow">trust levels</p>
+            <h2 class="section-title" style="font-size:1.3rem;margin-bottom:1rem;">What Each Verification Proves</h2>
+            <div class="card-grid" style="max-width:680px;">
+              <div class="card">
+                <p class="section-eyebrow" style="color:var(--accent-emerald);">L1 — Domain Verified</p>
+                <p class="section-copy" style="font-size:0.85rem;">DNS, did:web, or HTTPS endpoint confirms domain control. The human named Arif Fazil controls this domain.</p>
+              </div>
+              <div class="card">
+                <p class="section-eyebrow" style="color:var(--accent-azure);">L2 — Self-Attested</p>
+                <p class="section-copy" style="font-size:0.85rem;">Claim made by domain controller, no external issuer. Includes role claims (geoscientist, arifOS architect) and genesis statement.</p>
+              </div>
+              <div class="card">
+                <p class="section-eyebrow" style="color:var(--accent-gold);">L3 — Third-Party Pending</p>
+                <p class="section-copy" style="font-size:0.85rem;">External attestation from PETRONAS, professional institutions, or credential issuers — not yet pursued.</p>
+              </div>
+              <div class="card">
+                <p class="section-eyebrow" style="color:var(--accent-terracotta);">L4 — Human Self-ID</p>
+                <p class="section-copy" style="font-size:0.85rem;">Self-identification as human. No biometric or government attestation. Claim is honest about its limits.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- BRIDGE -->
+        <section class="site-section" id="bridge">
+          <div class="site-frame">
             <article class="card card--accent">
-              <p class="section-eyebrow">inspection path</p>
-              <h2 class="section-title">Shortest useful path</h2>
-              <ul class="link-list link-list--inline">
-                <li><a href="/proof/geologist-credential.json">credential</a></li>
-                <li><a href="/.well-known/did.json">did document</a></li>
-                <li><a href="/.well-known/agent.json">agent card</a></li>
-                <li><a href="/llms.txt">llms.txt</a></li>
-              </ul>
+              <p class="section-eyebrow">bridge</p>
+              <h2 class="section-title">The Loop is Closed</h2>
+              <p class="section-copy">
+                <code>/000</code> gives identity. <code>/999</code> gives evidence. Together they create a human-to-machine bridge that is honest about what cryptography proves and what it does not.
+              </p>
+              <p class="card__action"><a href="/000/">Go to /000 &mdash; Genesis Identity</a></p>
             </article>
           </div>
         </section>
       </main>
     </div>
   </body>
-  </html>
+</html>

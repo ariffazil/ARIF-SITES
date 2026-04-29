@@ -1,0 +1,4 @@
+# Cloudflare Pages redirect rules
+# Fix: /a2a/ subdirectory requires trailing slash or explicit index.html
+/a2a  /a2a/  301
+/.well-known/agent-card.json  /.well-known/agent-card.json  200
