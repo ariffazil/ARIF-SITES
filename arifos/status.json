@@ -1,0 +1,54 @@
+{
+  "system": "arifOS Federation",
+  "status": "ok",
+  "version": "kanon-fb39550",
+  "release": "v2026.04.26-KANON",
+  "git_commit": "fb39550",
+  "build_time": "2026-04-29T18:13:12.757616+00:00",
+  "tools_loaded": 13,
+  "transport": "streamable-http",
+  "timestamp": "2026-04-29T21:30:24.027521+00:00",
+  "nodes": {
+    "arifOS": {
+      "role": "constitutional_kernel",
+      "mcp": true,
+      "status": "ok"
+    },
+    "GEOX": {
+      "role": "earth_intelligence",
+      "mcp": true,
+      "status": "ok"
+    },
+    "WEALTH": {
+      "role": "capital_intelligence",
+      "mcp": true,
+      "status": "ok"
+    },
+    "WELL": {
+      "role": "biological_substrate",
+      "mcp": true,
+      "status": "DEGRADED"
+    },
+    "AAA": {
+      "role": "agent_workspace",
+      "mcp": false,
+      "status": "ok"
+    }
+  },
+  "thermodynamic": {
+    "entropy_delta": -0.01,
+    "peace_squared": 1.0,
+    "vitality_index": 0.9873,
+    "echo_debt": 0.0,
+    "shadow": 0.0,
+    "confidence": 0.95,
+    "verdict": "SEAL",
+    "metabolic_stage": 999,
+    "witness": {
+      "human": 0.42,
+      "ai": 0.99,
+      "earth": 0.26
+    }
+  },
+  "source": "localhost:8080/health"
+}

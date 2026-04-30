@@ -1,0 +1,106 @@
+{
+  "agent_id": "arifOS",
+  "role": "Constitutional Kernel \u2014 Ring 2 THE MIND",
+  "version": "v2026.04.26-KANON",
+  "git_commit": "fb39550",
+  "build_time": "2026-04-29T18:13:12.757616+00:00",
+  "generated": "2026-04-29T21:31:22.665916Z",
+  "constitutional_floors": {
+    "hard_doctrinal": [
+      "F1",
+      "F2",
+      "F6",
+      "F9",
+      "F10",
+      "F11",
+      "F13"
+    ],
+    "soft_doctrinal": [
+      "F3",
+      "F4",
+      "F5",
+      "F7",
+      "F8",
+      "F12"
+    ]
+  },
+  "mcp_tools": {
+    "count": 13,
+    "naming_convention": "arif_<noun>_<verb>",
+    "list": [
+      "arif_session_init",
+      "arif_sense_observe",
+      "arif_evidence_fetch",
+      "arif_mind_reason",
+      "arif_kernel_route",
+      "arif_reply_compose",
+      "arif_memory_recall",
+      "arif_heart_critique",
+      "arif_gateway_connect",
+      "arif_ops_measure",
+      "arif_judge_deliberate",
+      "arif_forge_execute",
+      "arif_vault_seal"
+    ]
+  },
+  "federation": {
+    "arifOS": {
+      "mcp": true,
+      "status": "ok"
+    },
+    "GEOX": {
+      "mcp": true,
+      "status": "ok"
+    },
+    "WEALTH": {
+      "mcp": true,
+      "status": "ok"
+    },
+    "WELL": {
+      "mcp": true,
+      "status": "DEGRADED"
+    },
+    "AAA": {
+      "mcp": false,
+      "status": "ok"
+    }
+  },
+  "providers": {
+    "openai": "configured",
+    "anthropic": "configured",
+    "ollama_local": "configured",
+    "minimax": "configured"
+  },
+  "storage": {
+    "vault_postgres": "configured",
+    "session_cache": "configured",
+    "vector_memory": "configured"
+  },
+  "thermodynamic": {
+    "verdict": "SEAL",
+    "vitality_index": 0.9873,
+    "peace_squared": 1.0,
+    "entropy_delta": -0.01,
+    "confidence": 0.95
+  },
+  "known_issues": [
+    {
+      "id": "WELL_DEGRADED",
+      "description": "WELL state.json shows DEGRADED \u2014 test contamination from 2026-04-29 session",
+      "affected": "WELL node",
+      "resolution": "ARIF DECISION REQUIRED: clear test entries or confirm manual override"
+    },
+    {
+      "id": "STATUS_JSON_BROKEN",
+      "description": "/status.json returns catch-all HTML instead of JSON federation status",
+      "affected": "mcp.arif-fazil.com",
+      "resolution": "Container needs rebuild with public_surface.py + rest_routes.py changes baked in"
+    }
+  ],
+  "surface_urls": {
+    "hub": "https://arif-fazil.com",
+    "mind": "https://arifos.arif-fazil.com",
+    "body": "https://aaa.arif-fazil.com",
+    "mcp_runtime": "https://mcp.arif-fazil.com/mcp"
+  }
+}
