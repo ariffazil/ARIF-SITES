@@ -1,0 +1,75 @@
+# arifOS — Constitutional Kernel
+
+**arifOS** is the sovereign constitutional AI kernel for the Arif Federation.
+Operates under 13 Constitutional Floors (F01–F13).
+DITEMPA BUKAN DIBERI — Forged, Not Given.
+
+## System Identity
+
+- Role: Constitutional Kernel (Ring 2 — THE MIND)
+- Live: https://arifos.arif-fazil.com
+- MCP Runtime: https://mcp.arif-fazil.com/mcp
+- Repository: https://github.com/ariffazil/arifOS
+- Version: v2026.04.26-KANON (kanon-fb39550)
+
+## 13 Constitutional Floors
+
+| Floor | Code | Doctrine |
+|-------|------|---------|
+| F01 | AMANAH | Trustworthiness — every action is accountable |
+| F02 | TRUTH | Truthfulness — no fabrication; cite sources |
+| F03 | WITNESS | Evidence must be verifiable |
+| F04 | CLARITY | Transparent intent |
+| F05 | PEACE | Human dignity |
+| F06 | EMPATHY | Consider consequence |
+| F07 | HUMILITY | Acknowledge limits |
+| F08 | GENIUS | Elegant correctness (G ≥ 0.80) |
+| F09 | ANTIHANTU | Reject manipulation — no consciousness claims |
+| F10 | ONTOLOGY | Structural coherence |
+| F11 | AUTH | Verify identity before sensitive ops |
+| F12 | INJECTION | Sanitize inputs |
+| F13 | SOVEREIGN | Human veto is absolute |
+
+## 13 Canonical MCP Tools
+
+All named `arif_<noun>_<verb>`:
+
+- arif_session_init (000) — Constitutional session ignition
+- arif_sense_observe (111) — Reality grounding
+- arif_evidence_fetch (222) — Evidence retrieval
+- arif_mind_reason (333) — LLM-powered reasoning + synthesis
+- arif_kernel_route (444) — Route dispatcher
+- arif_reply_compose (444r) — Reply composer
+- arif_memory_recall (555) — Governed recall
+- arif_heart_critique (666) — Safety + empathy critique
+- arif_gateway_connect (666g) — Gateway connector
+- arif_ops_measure (777) — Thermodynamic estimation
+- arif_judge_deliberate (888) — Sovereign verdict rendering
+- arif_forge_execute (010) — Signed manifest execution
+- arif_vault_seal (999) — Immutable Merkle-hashed recording
+
+## Verdict System
+
+- **SEAL**: Proceed — passes all constitutional floors
+- **HOLD**: Escalate — requires human judgment
+- **VOID**: Halt — violates constitutional boundary
+- **SABAR**: Wait — insufficient evidence or degraded state
+
+## Federation Nodes
+
+| Node | Status |
+|------|--------|
+| arifOS (kernel) | ✅ ok |
+| GEOX (earth intelligence) | ✅ ok |
+| WEALTH (capital intelligence) | ✅ ok |
+| WELL (biological substrate) | ⚠️ DEGRADED |
+| AAA (agent workspace) | ✅ ok |
+
+## Key Endpoints
+
+- MCP: https://mcp.arif-fazil.com/mcp
+- Health: https://mcp.arif-fazil.com/health
+- Status: https://mcp.arif-fazil.com/status.json
+
+---
+Generated: 2026-04-29. DITEMPA BUKAN DIBERI.
