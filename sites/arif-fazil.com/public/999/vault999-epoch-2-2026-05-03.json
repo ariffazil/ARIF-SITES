@@ -1,0 +1,76 @@
+{
+  "seal_id": "arifos-epoch-2-key-rotation-policy-2026-05-03",
+  "seal_version": "0.1",
+  "epoch": "2026-05-02T21:52:33.616Z",
+  "event": "KEY_ROTATION_POLICY_AMENDMENT",
+  "did": "did:web:arif-fazil.com",
+  "domain": "arif-fazil.com",
+  "operator_name": "Muhammad Arif bin Fazil",
+  "operator_role": "Human sovereign / final judge",
+  "constitution_manifest_url": "https://arif-fazil.com/arifos/AGENTS.md",
+  "constitution_manifest_sha256": "c60ff5d28222ff78037ee105fce725e21d27c1cf73f86799f16c149993c2d04b",
+  "did_document_sha256": "e8d424551e7abe0fcba0c5452d6f185567f17d396ceb4622f31d1272b060f673",
+  "runtime_snapshot_sha256": "b1d08406f1770b0d52f822a9c6892880fe2f585e4e81182e03df7d65daac77b1",
+  "previous_seal_hash": "ea2d1cae54a25e0d96d248549b55632029d38ddd7512dfdd540593c19f762b68",
+  "deliverables": {
+    "key_rotation_policy": {
+      "path": "/root/A-FORGE/governance/KEY_ROTATION_POLICY.md",
+      "sha256": "72b569a12ec76e405282ad70b0d37e4df79b030bd52f8668739026cd502c1aa4",
+      "status": "SEALED_IN_CONSTITUTION_AMENDMENT"
+    },
+    "agents_amendment": {
+      "path": "sites/arif-fazil.com/public/arifos/AGENTS.md",
+      "sha256": "c60ff5d28222ff78037ee105fce725e21d27c1cf73f86799f16c149993c2d04b",
+      "signature": "sites/arif-fazil.com/public/arifos/AGENTS.md.sig",
+      "signature_namespace": "arifos-constitution",
+      "status": "SIGNED"
+    },
+    "vc_2_migration": {
+      "path": "sites/arif-fazil.com/public/proof/geologist-credential.json",
+      "sha256": "f30c41c4f3a6709442a8954d71991de8f834f37ae446c552ae627a7f178b99ec",
+      "context": "https://www.w3.org/ns/credentials/v2",
+      "date_fields": [
+        "validFrom"
+      ],
+      "signature": "sites/arif-fazil.com/public/proof/geologist-credential.json.sig",
+      "signature_namespace": "arifos-credential",
+      "status": "SIGNED"
+    }
+  },
+  "rotation_event_schema": {
+    "epoch": "ISO8601 timestamp",
+    "event": "KEY_ROTATION",
+    "old_key_sha256": "SHA256 fingerprint or retired key hash",
+    "new_key_sha256": "SHA256 fingerprint",
+    "trigger": "PEM exposure | key age >365d | suspected compromise | repo secret scan alert",
+    "quarantine_path": "<keyname>.COMPROMISED_PEM_EXPOSED",
+    "witness": {
+      "human": "sovereign reviewer",
+      "ai": "agent verifier",
+      "earth": "external evidence"
+    }
+  },
+  "evidence": {
+    "policy_hash": "72b569a12ec76e405282ad70b0d37e4df79b030bd52f8668739026cd502c1aa4",
+    "agents_hash": "c60ff5d28222ff78037ee105fce725e21d27c1cf73f86799f16c149993c2d04b",
+    "vc_hash": "f30c41c4f3a6709442a8954d71991de8f834f37ae446c552ae627a7f178b99ec",
+    "verifier_command": "node scripts/verify-arifos.mjs --local-root sites/arif-fazil.com/public --seal https://arif-fazil.com/999/vault999-epoch-2-2026-05-03.json"
+  },
+  "human_witness": {
+    "required": true,
+    "status": "APPROVED",
+    "statement": "Sovereign requested key rotation policy amendment, AGENTS.md re-sign, VC 2.0 migration, and Epoch 2 verifier continuity check."
+  },
+  "witness": {
+    "human": "Muhammad Arif bin Fazil",
+    "ai": "Codex verifier/seal agent",
+    "earth": "Local artifact hashes, SSH signatures, and verify-arifos continuity check"
+  },
+  "limitations": [
+    "No ZK, VC human proof, biometric attestation, or multi-key quorum is implemented.",
+    "This Epoch 2 seal records PKI-layer policy and artifact continuity only."
+  ],
+  "status": "PASS",
+  "verdict": "PASS",
+  "seal_self_hash_sha256": "0f716cd07f67eccb7eb5c2e69e3560f2832cddbbf705d20f73a69a529b8fa103"
+}

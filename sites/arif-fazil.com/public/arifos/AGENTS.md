@@ -490,3 +490,22 @@ These filenames are hard-coded in deployment manifests, MCP client configs, buil
 ---
 
 *Last updated: 2026-04-26 by workspace audit. For conflicts, arifOS repo wins on doctrine; live endpoints win on runtime surface.*
+
+---
+
+## Constitutional Amendment: Key Rotation Policy v1.0
+
+**Epoch:** 2026-05-02T21:50:02Z
+**Policy:** `/root/A-FORGE/governance/KEY_ROTATION_POLICY.md`
+**Policy SHA256:** `72b569a12ec76e405282ad70b0d37e4df79b030bd52f8668739026cd502c1aa4`
+**Status:** ACTIVE
+
+This amendment binds agents operating under `did:web:arif-fazil.com` to the arifOS Key Rotation Policy v1.0.
+
+Key rotation is mandatory when private key material is exposed, a key exceeds 365 days of age, compromise is suspected, or a repository secret scan alerts on key material.
+
+Compromised keys must be quarantined by renaming to `<keyname>.COMPROMISED_PEM_EXPOSED`, preserved for audit, and recorded in VAULT999.
+
+`AGENTS.md` must be re-signed with the active key during the same rotation window. `verify-arifos.mjs` must pass against the active key and updated artifacts before any rotation is sealed.
+
+Any agent detecting a key-rotation trigger must emit `888_HOLD` and surface to the sovereign before further irreversible action.
