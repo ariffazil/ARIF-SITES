@@ -30,9 +30,6 @@ jobs:
           - name: Ring 1 - ARIF
             directory: sites/arif-fazil.com
             build: true
-          - name: Ring 2 - ARIFOS
-            directory: sites/arifos.arif-fazil.com
-            build: true
           - name: Ring 3 - AAA
             directory: sites/aaa.arif-fazil.com
             build: false
