@@ -1,48 +1,86 @@
 domains:
+  # ─── TRINITY NETWORK ───────────────────────────────────────────────────────
+
   - host: arif-fazil.com
     type: static
     source: sites/arif-fazil.com
     deploy: cloudflare-pages
+    role: SOUL      # Human anchor, identity, portfolio, /000 genesis, /999 validation
+    status: flagship
+
+  - host: arifos.arif-fazil.com
+    type: static
+    source: sites/arifos.arif-fazil.com
+    deploy: cloudflare-pages
+    role: MIND      # arifOS docs, tool registry, observatory, /labs index
+    status: flagship
+
+  - host: mcp.arif-fazil.com
+    type: dynamic
+    source: services/arifosmcp
+    deploy: vps-docker
+    upstream: arifosmcp:8080
+    role: MIND-MCP  # Canonical MCP API endpoint — /mcp, /health, /tools, /.well-known/agent.json
+    status: flagship
 
   - host: aaa.arif-fazil.com
     type: static
     source: sites/aaa.arif-fazil.com
     deploy: cloudflare-pages
+    role: BODY      # AAA + A-FORGE overview, operator cockpit entry, agent governance
+    status: flagship
 
-  - host: arifos.arif-fazil.com
-    type: deleted
-    source: sites/arifos.arif-fazil.com
-    deploy: deleted-2026-04-11
-    note: Cloudflare Pages project deleted. Content merged into apex + arifosmcp.
+  # ─── LEGACY / DEPRECATED ────────────────────────────────────────────────────
+
+  - host: arifosmcp.arif-fazil.com
+    type: redirect
+    target: https://mcp.arif-fazil.com
+    note: Legacy MCP hostname — redirect only, do not use
+    status: deprecated
 
   - host: apex.arif-fazil.com
     type: static
     source: sites/apex.arif-fazil.com
     deploy: vps-nginx
+    note: Superseded by arifos.arif-fazil.com — kept for backward compat
+    status: legacy
 
-  - host: wiki.arif-fazil.com
-    type: static
-    source: sites/wiki.arif-fazil.com
-    deploy: cloudflare-pages
+  # ─── SECONDARY / FIELD ──────────────────────────────────────────────────────
 
   - host: forge.arif-fazil.com
     type: static
     source: sites/forge.arif-fazil.com
     deploy: cloudflare-pages
+    role: FORGE    # Agent deployment CI/CD surface
+    status: active
 
-  - host: waw.arif-fazil.com
+  - host: wiki.arif-fazil.com
     type: static
-    source: sites/waw.arif-fazil.com
+    source: sites/wiki.arif-fazil.com
     deploy: cloudflare-pages
+    role: WIKI     # Constitutional knowledge base
+    status: active
 
   - host: geox.arif-fazil.com
     type: dynamic
     source: apps/geox
     deploy: vps-docker
     upstream: geox_gui:3000
+    role: FIELD    # GEOX earth science UI — lab/field surface, not flagship
+    status: active
 
-  - host: arifosmcp.arif-fazil.com
-    type: dynamic
-    source: services/arifosmcp
-    deploy: vps-docker
-    upstream: arifosmcp:8080
+  # ─── ARCHIVE ────────────────────────────────────────────────────────────────
+
+  - host: waw.arif-fazil.com
+    type: static
+    source: sites/waw.arif-fazil.com
+    deploy: cloudflare-pages
+    note: Merged into BODY/forge surfaces — archive candidate
+    status: archived
+
+  - host: wawa.arif-fazil.com
+    type: static
+    source: sites/wawa.arif-fazil.com
+    deploy: cloudflare-pages
+    note: Absorbed by waw — archive candidate
+    status: archived
