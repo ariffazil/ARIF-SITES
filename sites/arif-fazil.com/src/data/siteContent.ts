@@ -31,8 +31,9 @@ export type SystemProject = {
 
 export const primaryLinks: LinkItem[] = [
   { label: 'Wells', href: '#wells' },
-  { label: 'Practice', href: '#practice' },
   { label: 'Systems', href: '#systems' },
+  { label: 'Practice', href: '#practice' },
+  { label: 'Contact', href: '#contact' },
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
 ];
@@ -116,37 +117,47 @@ export const publicRecord = [
 export const systemProjects: SystemProject[] = [
   {
     title: 'arifOS',
-    role: 'Constitutional AI runtime',
+    role: 'Constitutional AI kernel · F1–F13 floors',
     status: 'LIVE',
     summary:
-      'A set of principles and tools that keep AI systems honest — grounded, reversible, and bounded. Built for my own work, shared because that\'s how systems hold up.',
+      'A sovereign AI governance kernel. 13 constitutional floors enforce truth, reversibility, and bounded action. Every tool call is traced to a floor. Every outcome is sealed to VAULT999. Built because the geology work demanded tools that don\'t hallucinate or hide their reasoning.',
     artifactLabel: 'Constitution',
     artifactHref: 'https://mcp.arif-fazil.com/constitution.json',
     surfaceLabel: 'Runtime surface',
     surfaceHref: 'https://mcp.arif-fazil.com',
   },
   {
-    title: 'AAA',
-    role: 'Operations surface',
+    title: 'GEOX',
+    role: 'Earth intelligence · Physics-9 witness',
     status: 'LIVE',
     summary:
-      'How I keep track of what\'s running, what\'s health, and where the system stands. Not a product — just the way I work.',
-    artifactLabel: 'Endpoint metadata',
-    artifactHref: 'https://aaa.arif-fazil.com/mcp/endpoint.json',
-    surfaceLabel: 'Cockpit',
-    surfaceHref: 'https://aaa.arif-fazil.com',
-  },
-  {
-    title: 'GEOX',
-    role: 'Earth intelligence',
-    status: 'MIXED',
-    summary:
-      'Geology tools that take physics seriously. Some parts are working, some are in progress. It\'s a workbench, not a showcase.',
+      'Geology and geophysics tools that take physics seriously. Basin analysis, well log interpretation, seismic section reasoning — all evidence-gated through contrast theory. Reads like a geoscientist, verifies like an engineer.',
     artifactLabel: 'App registry',
     artifactHref: 'https://geox.arif-fazil.com/apps.json',
     surfaceLabel: 'GEOX surface',
     surfaceHref: 'https://geox.arif-fazil.com',
-    placeholderLabel: 'Preview paths intentionally quiet',
+  },
+  {
+    title: 'WEALTH',
+    role: 'Capital intelligence · NPV / EMV engine',
+    status: 'LIVE',
+    summary:
+      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. 79 MCP endpoints for valuation, risk triage, and portfolio logic.',
+    artifactLabel: 'Endpoint manifest',
+    artifactHref: 'https://mcp.arif-fazil.com/tools/list',
+    surfaceLabel: 'WEALTH surface',
+    surfaceHref: 'https://mcp.arif-fazil.com',
+  },
+  {
+    title: 'AAA',
+    role: 'Operations surface · Agent gateway',
+    status: 'LIVE',
+    summary:
+      'How the trinity stays operational. Health monitoring, MCP endpoint registry, session continuity, and the operator console for the full federation stack. Not a product — the way the work actually runs.',
+    artifactLabel: 'Endpoint metadata',
+    artifactHref: 'https://aaa.arif-fazil.com/mcp/endpoint.json',
+    surfaceLabel: 'AAA cockpit',
+    surfaceHref: 'https://aaa.arif-fazil.com',
   },
 ];
 
