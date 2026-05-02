@@ -1,6 +1,6 @@
 # arifOS Key Rotation Policy
 **Version:** 1.0
-**Epoch:** 2026-05-02T21:47:06Z
+**Epoch:** 2026-05-02T21:50:02Z
 **Sovereign:** did:web:arif-fazil.com
 **Status:** ACTIVE
 
@@ -8,72 +8,71 @@
 A key rotation event is mandatory when ANY of the following occur:
 
 1. Private key content is exposed in any chat, log, or communication channel
-2. Private key file is accessible by any process or person other than the sovereign
-3. Key fingerprint appears in any public or semi-public record unexpectedly
-4. Sovereign suspects key compromise for any reason
+2. Key age exceeds 365 days
+3. Sovereign suspects key compromise for any reason
+4. Repository secret scan raises an alert on key material
 
-When in doubt — rotate. The cost of unnecessary rotation is low.
+When in doubt, rotate. The cost of unnecessary rotation is low.
 The cost of ignoring a real compromise is irreversible.
 
-## Quarantine Protocol (Within 1 Hour of Detection)
-1. Do NOT delete the compromised key
-2. Rename the compromised key at all known paths:
-   - `mv <path> <path>.COMPROMISED_<reason>_<date>`
-3. Confirm the renamed file exists before proceeding
-4. Document the exposure vector in plain language
+## Quarantine Path
+Compromised keys must be preserved for audit and renamed at every known path:
 
-## Rotation Protocol (Within 24 Hours of Detection)
-1. Confirm the new active key fingerprint with:
-   `ssh-keygen -l -f ~/.ssh/operator_did_ed25519`
-2. Confirm the new key matches the live DID doc public key:
-   `ssh-keygen -y -f ~/.ssh/operator_did_ed25519`
-   Compare against publicKeyMultibase in did.json
-3. If DID doc does NOT match new key — update did.json first, deploy, confirm resolution
-4. Re-sign all active constitution files under the new key
-5. Verify all signatures before deploying
-6. Deploy to live webroot
-7. Run verify-arifos.mjs — must return PASS before any commit
+```bash
+mv <keyname> <keyname>.COMPROMISED_PEM_EXPOSED
+```
 
-## VAULT999 Record Requirement
-Every rotation event requires a signed JSON record at:
-  /999/key-rotation-<YYYY-MM-DD>.json
+Do not delete compromised key material during the rotation window.
+Deletion requires a separate 888_HOLD and explicit sovereign approval.
 
-Required fields:
-- event: "key_compromise_and_rotation"
-- epoch: ISO8601 timestamp
-- did: "did:web:arif-fazil.com"
-- compromised_key.path_was
-- compromised_key.reason
-- compromised_key.exposure_vector
-- compromised_key.status: "retired"
-- compromised_key.renamed_to
-- active_key.fingerprint
-- active_key.status: "active"
-- live_seal_status
-- sovereign: "did:web:arif-fazil.com"
+## Maximum Rotation Window
+The maximum rotation window is 4 hours from detection.
 
-The rotation record must be signed under namespace arifos-vault999
-and verified before committing.
+Within that window:
 
-## Maximum Allowable Response Times
-| Phase | Maximum Time |
-|---|---|
-| Detection to quarantine | 1 hour |
-| Quarantine to rotation record in VAULT999 | 24 hours |
-| Rotation record to verifier PASS | 24 hours |
-| Total: detection to clean PASS | 48 hours |
+1. Quarantine the compromised key material
+2. Confirm the active key fingerprint
+3. Update DID key material if needed
+4. Re-sign active constitutional artifacts
+5. Write the VAULT999 rotation event
+6. Run the verifier to PASS
 
-## What This Policy Does NOT Cover
-- ZK/VC proof of sovereign presence (not yet implemented)
-- Biometric attestation (not yet implemented)
-- Multi-key quorum (not yet implemented)
+## Required VAULT999 Rotation Event Schema
+Every rotation event must be recorded as JSON with this shape:
 
-These are future layers. This policy governs the current PKI layer only.
+```json
+{
+  "epoch": "ISO8601 timestamp",
+  "event": "KEY_ROTATION",
+  "old_key_sha256": "SHA256 fingerprint or retired key hash",
+  "new_key_sha256": "SHA256 fingerprint",
+  "trigger": "PEM exposure | key age >365d | suspected compromise | repo secret scan alert",
+  "quarantine_path": "<keyname>.COMPROMISED_PEM_EXPOSED",
+  "witness": {
+    "human": "sovereign reviewer",
+    "ai": "agent performing or verifying rotation",
+    "earth": "external evidence or runtime observation"
+  }
+}
+```
 
-## Enforcement
-This policy is part of the arifOS constitution.
-It is binding on all agents operating under did:web:arif-fazil.com.
-Any agent that detects a trigger condition must immediately emit 888_HOLD
-and surface to the sovereign before taking any further action.
+The rotation record must be signed under the `arifos-vault999` namespace and verified before commit.
+
+## Re-Sign Requirement
+`AGENTS.md` must be re-signed with the new active key within the same 4-hour rotation window.
+
+If the DID document changes, then:
+
+1. Deploy the updated DID document
+2. Confirm DID resolution
+3. Re-sign `AGENTS.md`
+4. Re-sign active VC artifacts
+5. Re-run `verify-arifos.mjs`
+
+## Verifier Continuity Clause
+`verify-arifos.mjs` must pass all checks against the new key and updated artifacts before rotation is SEALED.
+
+If any verifier check fails, the rotation enters `888_HOLD`.
+No public seal, public verifier page, or public claim may proceed until the failing assertion is surfaced to the sovereign and corrected.
 
 DITEMPA BUKAN DIBERI — 999 SEAL ALIVE
