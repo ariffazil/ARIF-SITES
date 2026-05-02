@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const DID = "did:web:arif-fazil.com";
 const BASE = "https://arif-fazil.com";
+const LOCAL_ROOT = argValue("--local-root", "");
 const DID_URL = `${BASE}/.well-known/did.json`;
 const RUNTIME_STATUS_URL = `${BASE}/999/runtime-status.json`;
 const RUNTIME_SNAPSHOT_URL = `${BASE}/999/runtime-snapshot.json`;
@@ -157,6 +158,39 @@ function didMultikeyToAuthorizedKey(publicKeyMultibase) {
 }
 
 async function fetchBytes(url) {
+  if (LOCAL_ROOT && url.startsWith(BASE)) {
+    const pathname = new URL(url).pathname.replace(/^\/+/, "");
+    const filePath = join(LOCAL_ROOT, pathname);
+    try {
+      const bytes = readFileSync(filePath);
+      const lower = filePath.toLowerCase();
+      const contentType = lower.endsWith(".json")
+        ? "application/json"
+        : lower.endsWith(".md")
+          ? "text/markdown"
+          : lower.endsWith(".sig")
+            ? "application/octet-stream"
+            : "application/octet-stream";
+      return {
+        url,
+        ok: true,
+        status: 200,
+        contentType,
+        bytes,
+        text: bytes.toString("utf8"),
+      };
+    } catch (error) {
+      return {
+        url,
+        ok: false,
+        status: 404,
+        contentType: "",
+        bytes: Buffer.alloc(0),
+        text: error.message,
+      };
+    }
+  }
+
   const response = await fetch(url, {
     headers: {
       "user-agent": "verify-arifos/0.1",
@@ -190,13 +224,24 @@ function verifySshSignature({ payload, signature, namespace, authorizedKey }) {
   try {
     const allowedSigners = join(workdir, "allowed_signers");
     const signatureFile = join(workdir, "artifact.sig");
+    const payloadFile = join(workdir, "artifact.payload");
     writeFileSync(allowedSigners, `${DID} ${authorizedKey}\n`);
     writeFileSync(signatureFile, signature);
+    writeFileSync(payloadFile, payload);
 
     const verification = spawnSync(
-      "ssh-keygen",
-      ["-Y", "verify", "-f", allowedSigners, "-I", DID, "-n", namespace, "-s", signatureFile],
-      { input: payload, encoding: "utf8" },
+      "bash",
+      [
+        "-c",
+        'ssh-keygen -Y verify -f "$1" -I "$2" -n "$3" -s "$4" < "$5"',
+        "verify-arifos",
+        allowedSigners,
+        DID,
+        namespace,
+        signatureFile,
+        payloadFile,
+      ],
+      { encoding: "utf8" },
     );
 
     return {
