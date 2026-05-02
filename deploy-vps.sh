@@ -25,7 +25,7 @@ rsync -avz $SITES_ROOT/shared/ $WEB_ROOT/arif-fazil.com/shared/
 
 # Sync Ω — ARIFOS OBSERVATORY (from arifOS kernel static surface)
 rsync -avz --delete /root/arifOS/static/ $WEB_ROOT/arifos.arif-fazil.com/
-cp /root/arifOS/static/dashboard/index.html $WEB_ROOT/arifos.arif-fazil.com/index.html
+cp /root/arifOS/static/landing/dynamic-index.html $WEB_ROOT/arifos.arif-fazil.com/index.html
 
 # Sync Others
 rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $WEB_ROOT/aaa.arif-fazil.com/
