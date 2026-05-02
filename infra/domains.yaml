@@ -63,7 +63,7 @@ domains:
     source: sites/wiki.arif-fazil.com
     deploy: cloudflare-pages
     role: WIKI     # Constitutional knowledge base
-    status: active
+    status: secondary
 
   - host: geox.arif-fazil.com
     type: dynamic

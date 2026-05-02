@@ -5,20 +5,23 @@
 
 ---
 
-## Trinity Web Architecture
+## Trinity Web Architecture (Target)
 
-Three flagship surfaces. Domain organs remain internal.
+| Domain | Ring | Role |
+|--------|------|------|
+| **arif-fazil.com** | **Ψ SOUL** | Human anchor — identity, portfolio, `/000` genesis, `/999` validation |
+| **arifos.arif-fazil.com** | **Ω MIND** | arifOS docs, tool registry, observatory |
+| **aaa.arif-fazil.com** | **Δ BODY** | AAA + A-FORGE — agent workspace, operator cockpit entry |
+| **mcp.arif-fazil.com** | **Ξ MIND** | Canonical machine/API MCP endpoint |
 
-| Ring | Domain | Role |
-|------|--------|------|
-| **Ψ SOUL** | `arif-fazil.com` | Human anchor — identity, portfolio, `/000` genesis, `/999` validation |
-| **Ω MIND** | `arifos.arif-fazil.com` | arifOS docs, tool registry, observatory |
-| **Ξ MIND** | `mcp.arif-fazil.com` | Canonical MCP API endpoint — `/mcp`, `/health`, `/tools`, `/.well-known/agent.json` |
-| **Δ BODY** | `aaa.arif-fazil.com` | AAA + A-FORGE — agent workspace, operator cockpit |
+**Legacy:** `arifosmcp.arif-fazil.com` → 302 redirect to `mcp.arif-fazil.com`.
 
-**Legacy:** `arifosmcp.arif-fazil.com` → 302 redirect to `mcp.arif-fazil.com`. Do not use.
-
-**Domain organs** (WELL, WEALTH, GEOX) are internal services behind arifOS and A-FORGE. No first-class public hostnames yet. Narrative surfaces: `/labs/well`, `/labs/wealth`, `/labs/geox` on flagship domains.
+**Site Roles (Details):**
+- **arif-fazil.com (SOUL):** Human site. `/000` (Genesis / Experiment), `/999` (Validation / zkPC).
+- **arifos.arif-fazil.com (MIND):** arifOS docs + observatory.
+- **aaa.arif-fazil.com (BODY):** AAA agent workspace + A-FORGE operator surface.
+- **mcp.arif-fazil.com (MIND):** Canonical MCP endpoint (/mcp, /health, /tools, etc).
+- **geox.arif-fazil.com (FIELD):** Lab GUI (not a Trinity pillar).
 
 ---
 
@@ -86,7 +89,15 @@ Domain routing and target folders are declared in `/infra/domains.yaml`.
 | **Ω MIND** | `arifos.arif-fazil.com` | Static | arifOS docs + observatory |
 | **Ξ MIND** | `mcp.arif-fazil.com` | Dynamic | Canonical MCP API |
 | **Δ BODY** | `aaa.arif-fazil.com` | Static | AAA + A-FORGE surface |
-| **Φ FIELD** | `geox.arif-fazil.com` | Dynamic | GEOX field/lab GUI |
+---
+
+## Secondary / Field
+
+| Hostname | Type | Role |
+|----------|------|------|
+| `geox.arif-fazil.com` | Dynamic | GEOX field/lab GUI |
+| `wiki.arif-fazil.com` | Static | Constitutional wiki |
+| `forge.arif-fazil.com` | Static | Forge CI/CD surface |
 
 ---
 
