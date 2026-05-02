@@ -1,0 +1,19 @@
+{
+  "schema": "runtime-status/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "arifos_health_endpoint": "https://mcp.arif-fazil.com/health",
+  "aaa_cockpit_endpoint": "https://aaa.arif-fazil.com/",
+  "tools_count": 13,
+  "holds_count": 0,
+  "seals_count": 0,
+  "timestamp": "2026-05-02T21:14:35.681Z",
+  "runtime_snapshot_hash_sha256": "b1d08406f1770b0d52f822a9c6892880fe2f585e4e81182e03df7d65daac77b1",
+  "endpoint_statuses": {
+    "arifos_health": "DECLARED",
+    "arifos_tools": "DECLARED",
+    "aaa_cockpit": "VERIFIED",
+    "aaa_health": "VERIFIED",
+    "vault_surface": "VERIFIED"
+  },
+  "status": "VERIFIED"
+}

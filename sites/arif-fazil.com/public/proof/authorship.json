@@ -1,0 +1,17 @@
+{
+  "claim": "The published AGENTS.md is the constitution manifest intended for verify-arifos v0.1 sealing.",
+  "evidence": {
+    "agents_md_url": "https://arif-fazil.com/arifos/AGENTS.md",
+    "agents_md_sha256": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+    "signature_url": "https://arif-fazil.com/arifos/AGENTS.md.sig",
+    "signature_status": "VERIFIED",
+    "verification_method": "did:web:arif-fazil.com#arif-fazil",
+    "signature_namespace": "arifos-constitution"
+  },
+  "verification_method": "Run node scripts/verify-arifos.mjs or ssh-keygen -Y verify with allowed_signers and namespace arifos-constitution.",
+  "limitations": [
+    "No ZK, VC, biometric, government ID, or third-party KYC proof is implemented."
+  ],
+  "status": "VERIFIED",
+  "updated_at": "2026-05-02T21:24:16.505Z"
+}

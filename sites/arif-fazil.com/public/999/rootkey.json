@@ -1,12 +1,17 @@
 {
-  "key_id": "genesis-2026",
+  "key_id": "did-web-arif-fazil-com-arif-fazil",
   "algorithm": "Ed25519",
   "type": "Multikey",
-  "public_key_base58": "PLACEHOLDER_PUBLIC_KEY_BASE58",
-  "verification_method": "did:web:arif-fazil.com#genesis-2026",
-  "usage": ["assertionMethod", "authentication"],
-  "issued_at": "2026-04-30T00:00:00Z",
-  "rotation_policy": "Manual. New key will be published at /999/rootkey.json with updated metadata.",
+  "public_key_multibase": "z6MkncqhqV2Zr5h3LWeWPjsTvn3L5A6YAsDZcjwz7iDht1xh",
+  "public_key_fingerprint": "sha256:a0d34d5a388df23a1a3a923c1706124a710f88dce3796a61b3e88c909f8c466b",
+  "verification_method": "did:web:arif-fazil.com#arif-fazil",
+  "usage": [
+    "assertionMethod",
+    "authentication"
+  ],
+  "issued_at": "2026-05-02T21:05:00Z",
+  "rotation_policy": "Manual 888_HOLD required before publishing a new DID public key or replacing this root key.",
   "issuer": "did:web:arif-fazil.com",
-  "note": "Real key pair generated offline. Private key held in secure offline storage. Public key is published here for verification."
+  "private_key_status": "not_published_not_requested",
+  "note": "This file publishes only public verification metadata. Private keys must remain in Arif/operator-controlled signing environment."
 }

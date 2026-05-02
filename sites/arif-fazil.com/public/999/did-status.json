@@ -1,0 +1,85 @@
+{
+  "schema": "did-status/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "did": "did:web:arif-fazil.com",
+  "did_document_url": "https://arif-fazil.com/.well-known/did.json",
+  "did_document_hash_sha256": "e8d424551e7abe0fcba0c5452d6f185567f17d396ceb4622f31d1272b060f673",
+  "id_check": "VERIFIED",
+  "verification_method_id": "did:web:arif-fazil.com#arif-fazil",
+  "public_key_fingerprint": "sha256:a0d34d5a388df23a1a3a923c1706124a710f88dce3796a61b3e88c909f8c466b",
+  "service_endpoints": {
+    "did:web:arif-fazil.com#constitution": {
+      "type": "SignedManifest",
+      "serviceEndpoint": "https://arif-fazil.com/arifos/AGENTS.md",
+      "proof": "https://arif-fazil.com/arifos/AGENTS.md.sig",
+      "status": "VERIFIED",
+      "status_code": 200,
+      "content_type": "text/markdown; charset=utf-8",
+      "hash_sha256": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+      "final_url": "https://arif-fazil.com/arifos/AGENTS.md"
+    },
+    "did:web:arif-fazil.com#arif-fazil": {
+      "type": "Entity",
+      "serviceEndpoint": "https://arif-fazil.com",
+      "proof": null,
+      "status": "DECLARED",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hash_sha256": "e5a84c37a853030eef2194d0b98d6709298e34d6880bf95a8e9e7b1e1de5f304",
+      "final_url": "https://arif-fazil.com/"
+    },
+    "did:web:arif-fazil.com#proof-human": {
+      "type": "VerificationService",
+      "serviceEndpoint": "https://arif-fazil.com/proof/human",
+      "proof": null,
+      "status": "VERIFIED",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hash_sha256": "744b19e199fc156d8303348070dbc3fc8f603c58cd3305f59dc1d6d6d58ba0b0",
+      "final_url": "https://arif-fazil.com/proof/human"
+    },
+    "did:web:arif-fazil.com#proof-authorship": {
+      "type": "VerificationService",
+      "serviceEndpoint": "https://arif-fazil.com/proof/authorship",
+      "proof": null,
+      "status": "VERIFIED",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hash_sha256": "7e6b95e64e9e34bda1b2fb64542eb0372d6f945d756dd814d50b53dfea317272",
+      "final_url": "https://arif-fazil.com/proof/authorship"
+    },
+    "did:web:arif-fazil.com#proof-runtime": {
+      "type": "VerificationService",
+      "serviceEndpoint": "https://arif-fazil.com/proof/runtime",
+      "proof": null,
+      "status": "VERIFIED",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hash_sha256": "72391380fb30fd9f96b261b7a23d54109c2a70212244c1ff9b9452443701a9c8",
+      "final_url": "https://arif-fazil.com/proof/runtime"
+    },
+    "did:web:arif-fazil.com#vault": {
+      "type": "SecuredMessage",
+      "serviceEndpoint": "https://arif-fazil.com/999",
+      "proof": null,
+      "status": "VERIFIED",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "hash_sha256": "2568fd6a9ab839ed9cbe8654afba354a710d8d96bb73dd0e26a1d9211ec52494",
+      "final_url": "https://arif-fazil.com/999"
+    }
+  },
+  "field_classification": {
+    "@context": "VERIFIED",
+    "id": "VERIFIED",
+    "controller": "PENDING",
+    "verificationMethod": "VERIFIED",
+    "authentication": "VERIFIED",
+    "assertionMethod": "VERIFIED",
+    "service": "VERIFIED",
+    "created": "DECLARED",
+    "updated": "DECLARED",
+    "relinkMetadata": "DECLARED"
+  },
+  "status": "VERIFIED"
+}

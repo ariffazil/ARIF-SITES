@@ -1,0 +1,26 @@
+{
+  "schema": "manifest-status/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "did": "did:web:arif-fazil.com",
+  "verification_method_id": "did:web:arif-fazil.com#arif-fazil",
+  "agents_md_url": "https://arif-fazil.com/arifos/AGENTS.md",
+  "local_source": "/root/AGENTS.md",
+  "sha256_lf_normalized": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+  "live_sha256": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+  "live_content_type": "text/markdown; charset=utf-8",
+  "live_status_code": 200,
+  "live_payload_matches_local": "VERIFIED",
+  "signature_file_url": "https://arif-fazil.com/arifos/AGENTS.md.sig",
+  "signature_file_status": "VERIFIED",
+  "signature_verification_result": "VERIFIED",
+  "constitution_checks": {
+    "names_arifos_as_governance_kernel": true,
+    "names_aaa_as_cockpit_or_observability": true,
+    "names_vault999_as_ledger_or_seal_layer": true,
+    "names_arif_or_888_as_human_sovereign": true,
+    "irreversible_actions_require_888_hold": true
+  },
+  "status": "VERIFIED",
+  "updated_at": "2026-05-02T21:24:16.505Z",
+  "signature_sha256": "3308b3f2274e5c13fe1a6b4eeed677725599456a8d174ad84adae0d1b9f1f8e4"
+}
