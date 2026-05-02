@@ -1,0 +1,14 @@
+{
+  "claim": "Public arifOS/AAA runtime endpoints were observed at seal-generation time.",
+  "evidence": {
+    "runtime_status": "https://arif-fazil.com/999/runtime-status.json",
+    "runtime_snapshot": "https://arif-fazil.com/999/runtime-snapshot.json",
+    "runtime_snapshot_sha256": "b1d08406f1770b0d52f822a9c6892880fe2f585e4e81182e03df7d65daac77b1"
+  },
+  "verification_method": "Fetch runtime-status.json and runtime-snapshot.json; compare hashes and endpoint observations.",
+  "limitations": [
+    "Public endpoint observation only; does not prove hidden internal state."
+  ],
+  "status": "VERIFIED",
+  "zk_vc_status": "not_implemented"
+}

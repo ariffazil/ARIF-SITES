@@ -1,0 +1,10 @@
+{
+  "schema": "manifest-signing-packet/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "file_path": "sites/arif-fazil.com/public/arifos/AGENTS.md",
+  "hash_sha256": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+  "did": "did:web:arif-fazil.com",
+  "verification_method_id": "did:web:arif-fazil.com#arif-fazil",
+  "namespace": "arifos-constitution",
+  "status": "PENDING_OPERATOR_SIGNATURE"
+}

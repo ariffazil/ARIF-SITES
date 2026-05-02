@@ -1,0 +1,14 @@
+{
+  "claim": "The arif-fazil.com operator declares continuity with Muhammad Arif bin Fazil and did:web:arif-fazil.com.",
+  "evidence": [
+    "Domain-hosted DID document",
+    "Public proof and vault endpoints under the same domain"
+  ],
+  "verification_method": "https://arif-fazil.com/.well-known/did.json",
+  "limitations": [
+    "No government ID, biometric, ZK, VC, or third-party KYC proof is implemented.",
+    "This is domain/DID/operator continuity evidence only."
+  ],
+  "status": "DECLARED",
+  "zk_vc_status": "not_implemented"
+}

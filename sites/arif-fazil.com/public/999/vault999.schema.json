@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VAULT999 v0.1 seal",
+  "type": "object",
+  "required": [
+    "seal_id",
+    "seal_version",
+    "created_at",
+    "did",
+    "domain",
+    "operator_name",
+    "operator_role",
+    "constitution_manifest_url",
+    "constitution_manifest_sha256",
+    "did_document_sha256",
+    "runtime_snapshot_sha256",
+    "proof_surfaces",
+    "previous_seal_hash",
+    "evidence",
+    "verdict",
+    "human_witness",
+    "limitations",
+    "signature",
+    "status"
+  ],
+  "properties": {
+    "verdict": {
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "HOLD",
+        "FAIL"
+      ]
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "HOLD",
+        "FAIL"
+      ]
+    }
+  }
+}

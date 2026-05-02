@@ -1,0 +1,46 @@
+{
+  "seal_id": "arifos-v0.1-2026-05-02",
+  "seal_version": "0.1",
+  "created_at": "2026-05-02T21:14:35.681Z",
+  "did": "did:web:arif-fazil.com",
+  "domain": "arif-fazil.com",
+  "operator_name": "Muhammad Arif bin Fazil",
+  "operator_role": "Human sovereign / final judge",
+  "constitution_manifest_url": "https://arif-fazil.com/arifos/AGENTS.md",
+  "constitution_manifest_sha256": "017a43f688b08a6a63f8bf948d44e8abd8f82b587fe6aad47bb678cae6c29f51",
+  "did_document_sha256": "e8d424551e7abe0fcba0c5452d6f185567f17d396ceb4622f31d1272b060f673",
+  "runtime_snapshot_sha256": "b1d08406f1770b0d52f822a9c6892880fe2f585e4e81182e03df7d65daac77b1",
+  "proof_surfaces": {
+    "human": "https://arif-fazil.com/proof/human",
+    "authorship": "https://arif-fazil.com/proof/authorship",
+    "runtime": "https://arif-fazil.com/proof/runtime",
+    "index": "https://arif-fazil.com/proof/index.json"
+  },
+  "previous_seal_hash": null,
+  "evidence": {
+    "did_status": "https://arif-fazil.com/999/did-status.json",
+    "manifest_status": "https://arif-fazil.com/999/manifest-status.json",
+    "runtime_status": "https://arif-fazil.com/999/runtime-status.json",
+    "runtime_snapshot": "https://arif-fazil.com/999/runtime-snapshot.json"
+  },
+  "verdict": "PASS",
+  "human_witness": {
+    "required": true,
+    "status": "APPROVED",
+    "statement": "Operator approved publication of the v0.1 public proof loop and produced signatures from the did:web:arif-fazil.com operator-controlled signing key. This is not a ZK, VC, biometric, government ID, or third-party KYC proof."
+  },
+  "limitations": [
+    "No ZK, VC, biometric, government ID, or third-party KYC proof is implemented.",
+    "PASS means the verify-arifos v0.1 public proof loop is reproducible: DID, manifest hash/signature, runtime snapshot, seal hash/signature, and service endpoints verify.",
+    "Runtime proof is public endpoint observation only.",
+    "VAULT999 records evidence; it is not an oracle."
+  ],
+  "signature": {
+    "status": "VERIFIED",
+    "verification_method": "did:web:arif-fazil.com#arif-fazil",
+    "signature_url": "https://arif-fazil.com/999/vault999-seal-v0.1.json.sig"
+  },
+  "status": "PASS",
+  "sealed_at": "2026-05-02T21:21:38.744Z",
+  "seal_self_hash_sha256": "ea2d1cae54a25e0d96d248549b55632029d38ddd7512dfdd540593c19f762b68"
+}

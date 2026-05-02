@@ -1,0 +1,280 @@
+{
+  "schema": "runtime-snapshot/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "endpoints": {
+    "arifos_health": {
+      "url": "https://mcp.arif-fazil.com/health",
+      "status_code": 200,
+      "ok": true,
+      "final_url": "https://arifos.arif-fazil.com/health",
+      "content_type": "application/json",
+      "response_sha256": "c339c576617193f1dcb3260e7e029f9419a403929e2f4212e6f8211b23fa5dbf",
+      "classification": "DECLARED",
+      "body_summary": {
+        "status": "healthy",
+        "service": "arifOS-mcp",
+        "release_name": "v2026.05.01-KANON",
+        "version": "kanon-6f99a42",
+        "git_commit": "6f99a42",
+        "git_branch": "main",
+        "build_time": "2026-05-02T20:23:50.934575+00:00",
+        "image": "ghcr.io/ariffazil/arifos:6f99a42",
+        "deployment_source": "ghcr",
+        "transport": "streamable-http",
+        "tools_loaded": 13,
+        "tool_registry_hash": "133a866abde558f5",
+        "schema_hash": "15b2e051d81b22e8",
+        "runtime_drift": false,
+        "build_commit": "6f99a42",
+        "live_commit": "unknown",
+        "git_dirty": null,
+        "graphiti_enabled": false,
+        "vault999_health": "healthy",
+        "langfuse_tracing": {
+          "status": "ACTIVE",
+          "host": "https://jp.cloud.langfuse.com",
+          "public_key_prefix": "pk-lf-bbe515...",
+          "traced_tools_count": 5
+        },
+        "ml_floors": {
+          "ml_floors_enabled": false,
+          "ml_model_available": false,
+          "ml_method": "heuristic"
+        },
+        "seal_readiness": {
+          "vault999_health": "healthy",
+          "ack_irreversible_gate": "passable",
+          "hold_reasons_schema": "returns top-level reasons[] + next_safe_action",
+          "runtime_drift": false,
+          "graphiti_read": "degraded",
+          "langfuse_traces": "ACTIVE"
+        },
+        "known_gaps": [
+          {
+            "id": "mcp_session_init",
+            "title": "Public /mcp route: returns Session not found",
+            "detail": "MCP session requires initialization via tool call, not direct HTTP",
+            "severity": "info",
+            "floors": []
+          },
+          {
+            "id": "langfuse_tool_traces",
+            "title": "Langfuse tool traces: arif_mind_reason, arif_heart_critique, arif_judge_deliberate, memory wired",
+            "detail": "SDK active with 4 tools traced — remaining 9 tools not instrumented",
+            "severity": "info",
+            "floors": []
+          },
+          {
+            "id": "outputschema_validation",
+            "title": "outputSchema validation: partially enforced — validate_tool_response_schema exists for 4 core tools, 9 others pending",
+            "detail": "schema exists but runtime enforcement is nascent — F8 Genius G≥0.80 target not yet measured",
+            "severity": "warning",
+            "floors": [
+              "F8",
+              "F10"
+            ]
+          },
+          {
+            "id": "cosign_supply_chain",
+            "title": "Cosign/SLSA: image signed with cosign key pair — provenance verified",
+            "detail": "ghcr.io/ariffazil/arifos:kanon-final signed; transparency log entry index 1422405653",
+            "severity": "info",
+            "floors": []
+          }
+        ],
+        "capability_map": {
+          "schema": "capability-map/v1",
+          "redaction_policy": "no_raw_credential_values",
+          "server_identity": {
+            "continuity_signing": "ephemeral_process_local",
+            "human_label": "server identity"
+          },
+          "credential_classes": {
+            "server_identity": "ephemeral_process_local",
+            "storage_access": "configured",
+            "provider_access": "partial",
+            "ops_controls": "partial"
+          },
+          "capabilities": {
+            "governed_continuity": "degraded",
+            "vault_persistence": "enabled",
+            "vector_memory": "enabled",
+            "external_grounding": "enabled",
+            "model_provider_access": "enabled",
+            "local_model_runtime": "disabled",
+            "auto_deploy": "disabled"
+          },
+          "storage": {
+            "vault_postgres": "configured",
+            "session_cache": "configured",
+            "vector_memory": "configured"
+          },
+          "providers": {
+            "openai": "configured",
+            "anthropic": "configured",
+            "sea_lion": "configured",
+            "google": "not_configured",
+            "openrouter": "not_configured",
+            "venice": "not_configured",
+            "ollama_local": "not_configured",
+            "minimax": "configured",
+            "brave": "configured",
+            "jina": "configured",
+            "perplexity": "not_configured",
+            "firecrawl": "configured",
+            "browserless": "not_configured",
+            "ddgs_local": "configured"
+          },
+          "substrates": {
+            "git": "configured",
+            "fetch": "configured",
+            "memory": "configured",
+            "time": "configured",
+            "filesystem": "configured",
+            "validation": {
+              "everything": {
+                "probe": "configured",
+                "protocol_smoke": "configured"
+              }
+            }
+          },
+          "ops": {
+            "webhook_deploy": "not_configured",
+            "grafana_access": "configured",
+            "openclaw_restart": "not_configured",
+            "api_bearer_auth": "not_configured"
+          },
+          "notes": [
+            "Capability map is redacted by design. It reports what the server can do, never raw credential values.",
+            "Agents should reason from capability state and credential classes, not from private secrets/tokens/passwords.",
+            "Continuity signing is ephemeral. Anchored auth_context will break across restart or replica changes."
+          ]
+        },
+        "timestamp": "2026-05-02T21:14:36.617028+00:00",
+        "source_repo": "https://github.com/ariffazil/arifOS",
+        "release_tag": "v2026.05.01-KANON",
+        "source_of_truth": {
+          "doctrine": "https://github.com/ariffazil/arifOS",
+          "runtime": "/health and /tools on this server",
+          "canonical_index": "/.well-known/mcp/server.json"
+        },
+        "thermodynamic": {
+          "entropy_delta": 0,
+          "peace_squared": 0.5,
+          "vitality_index": 0.5946,
+          "echo_debt": 0,
+          "shadow": 0,
+          "confidence": 0.5,
+          "verdict": "HOLD",
+          "metabolic_stage": 333,
+          "witness": {
+            "human": 0,
+            "ai": 0,
+            "earth": 0
+          }
+        },
+        "governance": {
+          "tau_confidence_system": 0.5,
+          "tau_threshold_f2": 0.99,
+          "psi_vitality": 0.5946,
+          "peace_squared": 0.5,
+          "last_seal_timestamp": null,
+          "floors_hard_doctrinal": [
+            "F1",
+            "F2",
+            "F6",
+            "F9",
+            "F10",
+            "F11",
+            "F13"
+          ],
+          "floors_soft_doctrinal": [
+            "F3",
+            "F4",
+            "F5",
+            "F7",
+            "F8",
+            "F12"
+          ],
+          "sovereign_status": null,
+          "sovereign_subject": null
+        }
+      }
+    },
+    "arifos_tools": {
+      "url": "https://mcp.arif-fazil.com/tools",
+      "status_code": 200,
+      "ok": true,
+      "final_url": "https://arifos.arif-fazil.com/tools",
+      "content_type": "application/json",
+      "response_sha256": "3959f14a6253667857de59958cffa6315258014bd561d687cf2b1c95df1ecff1",
+      "classification": "DECLARED",
+      "body_summary": {
+        "tools": [
+          "arif_session_init",
+          "arif_sense_observe",
+          "arif_evidence_fetch",
+          "arif_mind_reason",
+          "arif_heart_critique",
+          "arif_kernel_route",
+          "arif_reply_compose",
+          "arif_memory_recall",
+          "arif_gateway_connect",
+          "arif_judge_deliberate",
+          "arif_vault_seal",
+          "arif_forge_execute",
+          "arif_ops_measure"
+        ],
+        "count": 13,
+        "version": "kanon-6f99a42a"
+      }
+    },
+    "aaa_cockpit": {
+      "url": "https://aaa.arif-fazil.com/",
+      "status_code": 200,
+      "ok": true,
+      "final_url": "https://aaa.arif-fazil.com/",
+      "content_type": "text/html; charset=utf-8",
+      "response_sha256": "e1e95fd7e33afa913c9b2517848427c0caccacec65c7693532527b6f159db53c",
+      "classification": "VERIFIED",
+      "body_summary": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    \n    <!-- Primary Meta Tags -->\n    <title>AAA Cockpit - Evidence-Based Industrialism | arifOS</title>\n    <meta name=\"title\" content=\"AAA Cockpit - Evidence-Based Industrialism | arifOS\" />\n    <meta name=\"description\" content=\"AAA Cockpit is the "
+    },
+    "aaa_health": {
+      "url": "https://aaa.arif-fazil.com/health",
+      "status_code": 200,
+      "ok": true,
+      "final_url": "https://aaa.arif-fazil.com/health",
+      "content_type": "application/json; charset=utf-8",
+      "response_sha256": "019eee75f288671d92bfd05015ee8c202c0d74a5b9b3c1f84c172706d5d82fee",
+      "classification": "VERIFIED",
+      "body_summary": {
+        "status": "healthy",
+        "protocol": "A2A",
+        "version": "1.0.0",
+        "gateway": "AAA",
+        "motto": "Ditempa Bukan Diberi",
+        "vault": "CONNECTED"
+      }
+    },
+    "vault_surface": {
+      "url": "https://arif-fazil.com/999",
+      "status_code": 200,
+      "ok": true,
+      "final_url": "https://arif-fazil.com/999",
+      "content_type": "text/html; charset=utf-8",
+      "response_sha256": "e177bdcabdc796feeb69d83905511ee4a8005bf6e3ef0b329f793ab22decd645",
+      "classification": "VERIFIED",
+      "body_summary": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <title>/999 — Seal &amp; Verification | arifOS</title>\n    <meta name=\"description\" content=\"Seal and verification page for arif-fazil.com. Public proof surfaces, DID documents, domain linkage, and identity verification.\" />\n    <link rel=\"canonica"
+    }
+  },
+  "observed_counts": {
+    "tools_count": 13,
+    "holds_count": 0,
+    "seals_count": 0
+  },
+  "limitations": [
+    "Runtime attestation is based only on public endpoint responses.",
+    "AAA cockpit is observed as a cockpit/telemetry surface, not an authority surface.",
+    "VAULT999 is treated as evidence storage, not an oracle."
+  ]
+}

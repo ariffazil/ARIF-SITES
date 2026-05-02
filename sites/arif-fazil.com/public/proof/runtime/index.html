@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>arifOS proof/runtime</title>
+  <style>
+    body { max-width: 780px; margin: 48px auto; padding: 0 20px; font-family: system-ui, sans-serif; line-height: 1.55; color: #1f2933; }
+    code, pre { background: #f3f4f6; padding: 2px 5px; border-radius: 4px; }
+    .status { font-weight: 700; }
+  </style>
+</head>
+<body>
+<h1>proof/runtime</h1>
+<p class="status">Status: VERIFIED</p>
+<h2>Claim</h2>
+<p>Public arifOS/AAA runtime endpoints were observed at seal-generation time.</p>
+<h2>Verification method</h2>
+<p>Fetch runtime-status.json and runtime-snapshot.json; compare hashes and endpoint observations.</p>
+<h2>Machine-readable JSON</h2>
+<p><a href="/proof/runtime.json">/proof/runtime.json</a></p>
+<h2>Limitations</h2>
+<ul><li>Public endpoint observation only; does not prove hidden internal state.</li></ul>
+<p><strong>This is not yet a ZK/VC human credential system unless explicitly marked VERIFIED.</strong></p>
+</body>
+</html>

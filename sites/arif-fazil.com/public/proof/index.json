@@ -1,0 +1,26 @@
+{
+  "schema": "proof-index/v0.1",
+  "generated_at": "2026-05-02T21:14:35.681Z",
+  "did": "did:web:arif-fazil.com",
+  "proofs": {
+    "human": {
+      "url": "https://arif-fazil.com/proof/human",
+      "json": "https://arif-fazil.com/proof/human.json",
+      "status": "DECLARED",
+      "zk_vc_status": "not_implemented"
+    },
+    "authorship": {
+      "url": "https://arif-fazil.com/proof/authorship",
+      "json": "https://arif-fazil.com/proof/authorship.json",
+      "status": "VERIFIED",
+      "zk_vc_status": "not_implemented"
+    },
+    "runtime": {
+      "url": "https://arif-fazil.com/proof/runtime",
+      "json": "https://arif-fazil.com/proof/runtime.json",
+      "status": "VERIFIED",
+      "zk_vc_status": "not_implemented"
+    }
+  },
+  "updated_at": "2026-05-02T21:24:58.528Z"
+}
