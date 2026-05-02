@@ -1,0 +1,23 @@
+{
+  "event": "key_compromise_and_rotation",
+  "epoch": "2026-05-02T21:37:15.546Z",
+  "did": "did:web:arif-fazil.com",
+  "compromised_key": {
+    "path_was": "/root/arifOS/secrets/did_ed25519_private.key",
+    "reason": "PEM private key content exposed in chat session 2026-05-03",
+    "exposure_vector": "pasted into LLM conversation context",
+    "status": "retired",
+    "renamed_to": "/root/arifOS/secrets/did_ed25519_private.key.COMPROMISED_PEM_EXPOSED"
+  },
+  "active_key": {
+    "path": "~/.ssh/operator_did_ed25519",
+    "fingerprint": "SHA256:0zbqNfmTzvxnk/eyTKoIuvAVJ6xciSWZNIlMcIluiHI",
+    "type": "Ed25519",
+    "status": "active",
+    "note": "DID-matching OpenSSH key. Used for live seal commit 9ecbffd."
+  },
+  "live_seal_status": "PASS — unaffected, signed with active key not compromised key",
+  "next_action_required": "key_revocation_policy — define rotation schedule",
+  "sovereign": "did:web:arif-fazil.com",
+  "witness": "arifOS_bot automated rotation record"
+}
