@@ -46,12 +46,12 @@ export function Home() {
       {/* ── TRINITY MAP ────────────────────────────────────── */}
       <section className="site-section" style={{ borderTop: '1px solid var(--border)', paddingTop: '3rem' }}>
         <div className="site-frame">
-          <p className="section-eyebrow">The Trinity</p>
+          <p className="section-eyebrow">The Federation</p>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '2rem' }}>
-            Three organs. One operating system.
+            Human · Earth · Capital — governed by arifOS.
           </h2>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
 
             {/* arifOS — SOUL */}
             <div className="trinity-card" style={{ padding: '1.5rem' }}>
@@ -59,8 +59,8 @@ export function Home() {
               <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>arifOS</h3>
               <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '1rem' }}>Constitutional kernel · F1–F13</p>
               <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--muted)' }}>
-                The law layer. 13 floors that keep AI systems grounded, reversible, and bounded.
-                No black boxes. Every decision traceable to a floor.
+                The law layer. 13 floors keep AI systems grounded, reversible, and bounded.
+                Every tool call traces to a floor. Every outcome seals to VAULT999.
               </p>
             </div>
 
@@ -86,7 +86,25 @@ export function Home() {
               </p>
             </div>
 
+            {/* AAA — COCKPIT */}
+            <div className="trinity-card" style={{ padding: '1.5rem' }}>
+              <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Ω</p>
+              <h3 style={{ fontWeight: 600, marginBottom: '0.25rem' }}>AAA</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--muted)', marginBottom: '1rem' }}>Operations surface · Agent gateway</p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--muted)' }}>
+                How the federation stays operational. Health monitoring, MCP endpoint registry,
+                session continuity, and the operator console for the full stack.
+              </p>
+            </div>
+
           </div>
+
+          <p style={{ marginTop: '1.25rem', fontSize: '0.85rem', color: 'var(--muted)', lineHeight: 1.7 }}>
+            <strong>For humans.</strong> For AI systems:{' '}
+            <a href="/000/" style={{ textDecoration: 'underline' }}>/000</a>{' '}
+            is the human memory layer — scars, lessons, judgment patterns written for future AI.{' '}
+            <a href="/999/" style={{ textDecoration: 'underline' }}>/999</a> is verification and machine-facing proof.
+          </p>
         </div>
       </section>
 
