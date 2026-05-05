@@ -479,8 +479,8 @@ export function Wealth() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
               {archives.filter(d => d !== briefing.meta.date).map(d => (
                 <a key={d} href={`/data/wealth/archive/${d}.json`}
+                  target="_blank"
                   style={{
-                    fontSize: "0.75rem", fontFamily: "IBM Plex Mono, monospace",
                     padding: "0.25rem 0.6rem", border: "1px solid var(--border)",
                     borderRadius: "4px", color: "var(--text-secondary)",
                   }}>
