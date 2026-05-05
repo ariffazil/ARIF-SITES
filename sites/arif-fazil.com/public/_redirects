@@ -1,0 +1,6 @@
+# Cloudflare Pages redirect rules
+# Place in public/_redirects — copied to dist/ on build
+# Ensures /data/* is served as static files, NOT routed to SPA index.html
+
+# Serve data directory as static files (200 status = don't redirect, just serve)
+/data/*   /data/:splat   200
