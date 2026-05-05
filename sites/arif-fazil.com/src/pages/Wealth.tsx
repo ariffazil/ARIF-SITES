@@ -163,9 +163,11 @@ export function Wealth() {
   useEffect(() => {
     async function load() {
       try {
+        // Fetch from WEALTH MCP /briefing endpoint on VPS (proxied via mcp.arif-fazil.com)
+        const BASE = "https://mcp.arif-fazil.com";
         const [bRes, aRes] = await Promise.all([
-          fetch("/data/wealth/latest.json"),
-          fetch("/data/wealth/archive_index.json"),
+          fetch(`${BASE}/briefing`),
+          fetch("/data/wealth/archive_index.json"),  // archive index (static, CF Pages)
         ]);
         if (!bRes.ok) throw new Error(`HTTP ${bRes.status}`);
         const b: Briefing = await bRes.json();
