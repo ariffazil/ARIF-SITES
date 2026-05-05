@@ -36,6 +36,7 @@ export const primaryLinks: LinkItem[] = [
   { label: 'Contact', href: '#contact' },
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
+  { label: '/wealth', href: '/wealth/' },
 ];
 
 // Plain — no scores, no stats, no framing
