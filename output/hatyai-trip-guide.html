@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hat Yai Trip Guide — 9-11 Mei 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f1923;
+  --card-bg: #1a2332;
+  --text: #e8eaed;
+  --muted: #8b9bb4;
+  --day1: #1b4332;
+  --day2: #1e3a5f;
+  --day3: #4a1942;
+  --halal: #2d6a4f;
+  --halal-badge: #52b788;
+  --accent: #64dfdf;
+  --warning: #ff6b35;
+  --baby: #f4a261;
+  --border: #2d3f5a;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  width: 210mm;
+  min-height: 297mm;
+  padding: 12mm;
+  font-size: 9pt;
+  line-height: 1.5;
+}
+
+.cover {
+  text-align: center;
+  padding: 20mm 0;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 8mm;
+}
+
+.cover h1 {
+  font-size: 22pt;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+  margin-bottom: 4pt;
+}
+
+.cover .subtitle {
+  font-size: 11pt;
+  color: var(--muted);
+  margin-bottom: 12pt;
+}
+
+.cover .group-tag {
+  display: inline-block;
+  background: var(--day1);
+  color: #a8dadc;
+  padding: 4pt 12pt;
+  border-radius: 20px;
+  font-size: 9pt;
+  font-weight: 500;
+}
+
+.cover .date-badge {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 3pt 10pt;
+  border-radius: 6px;
+  font-size: 8.5pt;
+  margin-top: 8pt;
+}
+
+.trip-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10pt 12pt;
+  margin-bottom: 6mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8pt;
+}
+
+.trip-card .field {
+  display: flex;
+  flex-direction: column;
+  gap: 2pt;
+}
+
+.trip-card .field .label {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.trip-card .field .value {
+  font-size: 9.5pt;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.trip-card .field .value.accent {
+  color: var(--accent);
+}
+
+.trip-card .field .value.warning {
+  color: var(--warning);
+}
+
+.section-title {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 6pt;
+  padding-bottom: 4pt;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6pt;
+}
+
+.section-title .icon {
+  font-size: 13pt;
+}
+
+/* Safety Box */
+.safety-box {
+  background: #1a1a2e;
+  border: 1px solid #e63946;
+  border-radius: 8px;
+  padding: 8pt 10pt;
+  margin-bottom: 6mm;
+}
+
+.safety-box .safety-title {
+  font-size: 9pt;
+  font-weight: 700;
+  color: #e63946;
+  margin-bottom: 5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.safety-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4pt 12pt;
+}
+
+.safety-item {
+  display: flex;
+  gap: 5pt;
+  font-size: 8.5pt;
+}
+
+.safety-item .sk {
+  color: var(--warning);
+  font-weight: 700;
+  min-width: 60pt;
+}
+
+.safety-item .sv {
+  color: var(--text);
+}
+
+/* Baby Box */
+.baby-box {
+  background: #1a2a1a;
+  border: 1px solid var(--baby);
+  border-radius: 8px;
+  padding: 8pt 10pt;
+  margin-bottom: 6mm;
+}
+
+.baby-box .baby-title {
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--baby);
+  margin-bottom: 5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Day sections */
+.day {
+  margin-bottom: 8mm;
+  break-inside: avoid;
+}
+
+.day-header {
+  border-radius: 8px 8px 0 0;
+  padding: 7pt 10pt;
+  display: flex;
+  align-items: center;
+  gap: 8pt;
+  margin-bottom: 0;
+}
+
+.day-header .day-num {
+  font-size: 13pt;
+  font-weight: 700;
+  color: white;
+}
+
+.day-header .day-info {
+  flex: 1;
+}
+
+.day-header .day-theme {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: white;
+}
+
+.day-header .day-date {
+  font-size: 8pt;
+  color: rgba(255,255,255,0.7);
+}
+
+.day-header.day1 { background: var(--day1); }
+.day-header.day2 { background: var(--day2); }
+.day-header.day3 { background: var(--day3); }
+
+.day-body {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  padding: 8pt 10pt;
+}
+
+.critical-box {
+  background: rgba(255,107,53,0.1);
+  border: 1px solid var(--warning);
+  border-radius: 6px;
+  padding: 6pt 8pt;
+  margin-bottom: 6pt;
+}
+
+.critical-box .crit-title {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: var(--warning);
+  margin-bottom: 3pt;
+}
+
+.critical-box .crit-text {
+  font-size: 8.5pt;
+  color: var(--text);
+}
+
+.stop {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 7pt 9pt;
+  margin-bottom: 5pt;
+  break-inside: avoid;
+}
+
+.stop:last-child { margin-bottom: 0; }
+
+.stop-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4pt;
+}
+
+.stop-name {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 4pt;
+}
+
+.stop-name .time {
+  font-size: 8pt;
+  font-weight: 500;
+  color: var(--muted);
+  background: rgba(255,255,255,0.07);
+  padding: 1pt 5pt;
+  border-radius: 4px;
+}
+
+.halal-badge {
+  display: inline-block;
+  background: var(--halal-badge);
+  color: #0d1f17;
+  font-size: 7pt;
+  font-weight: 700;
+  padding: 1.5pt 6pt;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.halal-badge.pub { background: #3a5a8a; color: #c8d8f0; }
+
+.stop-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2pt 8pt;
+  font-size: 8pt;
+  color: var(--muted);
+  margin-bottom: 3pt;
+}
+
+.stop-meta strong { color: var(--text); font-weight: 500; }
+
+.stop-notes {
+  font-size: 8pt;
+  color: var(--baby);
+  margin-bottom: 2pt;
+}
+
+.stop-abort {
+  font-size: 7.5pt;
+  color: var(--warning);
+  font-style: italic;
+}
+
+.evening-box {
+  background: rgba(100,223,223,0.07);
+  border: 1px solid rgba(100,223,223,0.2);
+  border-radius: 6px;
+  padding: 5pt 8pt;
+  margin-top: 5pt;
+}
+
+.evening-box .ev-title {
+  font-size: 8pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 3pt;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.ev-title + div, .ev-list li { font-size: 8pt; color: var(--muted); }
+
+.ev-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5pt;
+}
+
+.ev-list li::before {
+  content: "→ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Budget */
+.budget-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10pt 12pt;
+  margin-bottom: 6mm;
+}
+
+.budget-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4pt 12pt;
+}
+
+.budget-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5pt;
+  padding: 2pt 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.budget-row .br-label { color: var(--muted); }
+.budget-row .br-value { font-weight: 600; color: var(--text); }
+.budget-row.total { border-top: 1px solid var(--border); margin-top: 2pt; padding-top: 4pt; }
+.budget-row.total .br-label { color: var(--accent); font-weight: 700; font-size: 9pt; }
+.budget-row.total .br-value { color: var(--accent); font-weight: 700; font-size: 9pt; }
+
+/* Map links */
+.maps-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8pt 10pt;
+  margin-bottom: 4mm;
+}
+
+.maps-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3pt;
+}
+
+.maps-list li {
+  font-size: 8pt;
+  color: var(--muted);
+}
+
+.maps-list li a {
+  color: var(--accent);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 7pt;
+  color: var(--muted);
+  padding-top: 5mm;
+  border-top: 1px solid var(--border);
+  margin-top: 6mm;
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <h1>🇹🇭 Hat Yai + Songkhla</h1>
+  <p class="subtitle">3D2N Family Road Trip — Halal & Baby-Friendly</p>
+  <div class="group-tag">👨‍👩‍👧‍👦 Azwa + Arif + Naazira + Naufal (18 bulan)</div>
+  <div class="date-badge">📅 9 – 11 Mei 2026 &nbsp;|&nbsp; 🚗 Malaysia → Thailand</div>
+</div>
+
+<!-- TRIP CARD -->
+<div class="trip-card">
+  <div class="field">
+    <span class="label">Base</span>
+    <span class="value accent">Lamoon Villa ⭐9.4</span>
+    <span class="value" style="font-size:8pt;color:var(--muted)">7 Tienjawuthit Rd, Hat Yai</span>
+  </div>
+  <div class="field">
+    <span class="label">Route</span>
+    <span class="value">Sadao → Hat Yai → Songkhla</span>
+    <span class="value" style="font-size:8pt;color:var(--muted)">~220 km total driving</span>
+  </div>
+  <div class="field">
+    <span class="label">Budget</span>
+    <span class="value">~16,000–27,000 THB</span>
+    <span class="value" style="font-size:8pt;color:var(--muted)">~RM500–830/pax (4 adults)</span>
+  </div>
+  <div class="field">
+    <span class="label">Style</span>
+    <span class="value">Halal-first ✅</span>
+    <span class="value" style="font-size:8pt;color:var(--muted)">Baby gear: Central Hatyai</span>
+  </div>
+</div>
+
+<!-- SAFETY -->
+<div class="safety-box">
+  <div class="safety-title">⚠️ Safety & Emergency IDs</div>
+  <div class="safety-grid">
+    <div class="safety-item"><span class="sk">🏥 Clinic</span><span class="sv">Health Link International — 1.5 km dari Lamoon Villa ⭐4.9</span></div>
+    <div class="safety-item"><span class="sk">💊 Pharmacy</span><span class="sv">B&T Pharmacy ⭐5 — Central Hatyai G-05, 1.8 km</span></div>
+    <div class="safety-item"><span class="sk">👶 Baby Supply</span><span class="sv">Central Hatyai supermarket — ground floor</span></div>
+    <div class="safety-item"><span class="sk">🚑 Border Buffer</span><span class="sv">Keluar sebelum 16:00 jika awal weeked</span></div>
+  </div>
+</div>
+
+<!-- BABY -->
+<div class="baby-box">
+  <div class="baby-title">👶 Naufal Notes (18 bulan)</div>
+  <div style="font-size:8pt;color:var(--muted);margin-bottom:4pt;">🍼 Nap time: 18:00–20:00 (jadwalkan selepas makan malam)</div>
+  <div style="font-size:8pt;color:var(--muted);margin-bottom:4pt;">🚶 Stroller: Municipal Park ✅, Samila Beach ✅, Central Hatyai ✅</div>
+  <div style="font-size:8pt;color:var(--muted);">🛒 Diapers/milk: beli di Central Festival Hat Yai</div>
+</div>
+
+<!-- DAY 1 -->
+<div class="day">
+  <div class="day-header day1">
+    <div class="day-num">D1</div>
+    <div class="day-info">
+      <div class="day-theme">Jumaat — Arrival & Exploration</div>
+      <div class="day-date">9 Mei 2026 &nbsp;|&nbsp; Theme: Border → Check-in → Park → Night Market</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🛬 <strong>Bukit Kayu Hitam Border</strong></div>
+        <span class="time">~09:00–10:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 6.7025, 100.4242</span>
+        <span><strong>⏱</strong> Immigration ~30–60 min</span>
+        <span><strong>📝</strong> Sedia kad imigresen TDAC siap sedia</span>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🍽 <strong>R&R Halal Sadao</strong> <span class="halal-badge">✅ Halal</span></div>
+        <span class="time">~10:15</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> ~6.7250, 100.4450 (5 min dari border)</span>
+        <span><strong>⏱</strong> 30–45 min makan</span>
+      </div>
+      <div class="stop-notes">🥘 Muslim Thai restaurant —证实 halal, santai, sesuai family</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🏨 <strong>Check-in Lamoon Villa</strong></div>
+        <span class="time">~12:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.0128, 100.5408</span>
+        <span><strong>⏱</strong> 49 min dari Sadao</span>
+      </div>
+      <div class="stop-notes">🧳 Letak行李, rehat sikit, singleton Naufal nap time</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🌳 <strong>Hat Yai Municipal Park</strong></div>
+        <span class="time">~15:00–17:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.0031, 100.4667</span>
+        <span><strong>⏱</strong> 23 min dari villa, 5AM–8PM</span>
+        <span><strong>🚶</strong> Stroller ✅ — ada cable car</span>
+      </div>
+      <div class="stop-notes">📸 Panorama view, cable car (60 THB), Giant Buddha, butterfly garden</div>
+      <div class="stop-abort">⚠️ Abort if hujan — terus ke Lee Garden Night Market</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🌙 <strong>Lee Garden Night Bazaar</strong></div>
+        <span class="time">~18:30–21:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.0127, 100.5394 (10 min dari park)</span>
+        <span><strong>⏱</strong> ~6PM–11PM</span>
+      </div>
+      <div class="stop-notes">🛍 Clothes, shoes, street food, massage around</div>
+    </div>
+
+    <div class="evening-box">
+      <div class="ev-title">🌙 Evening Prep — Day 2</div>
+      <ul class="ev-list">
+        <li>Sediajadual Zoo — sampai 08:30 ( Zoo OPENS 8:30AM sharp)</li>
+        <li>Sediajadual Zoo — sampai 08:30 ( Zoo OPENS 8:30AM sharp)</li>
+        <li>Beli breakfast + baby supplies awal pg</li>
+        <li>Group split option — siapa zoo, siapa mall</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="day">
+  <div class="day-header day2">
+    <div class="day-num">D2</div>
+    <div class="day-info">
+      <div class="day-theme">Sabtu — Songkhla Full Day ⚠️ HIGH FATIGUE</div>
+      <div class="day-date">10 Mei 2026 &nbsp;|&nbsp; Theme: Zoo + Samila Beach + Massage</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="critical-box">
+      <div class="crit-title">⚠️ CRITICAL: Fatigue Math — With Baby (18 bulan)</div>
+      <div class="crit-text">
+        78 min driving + 2-3 hrs zoo + lunch + massage = 6–9 hrs active time<br>
+        <strong>Verdict:</strong> DO NOT execute as single block<br>
+        <em>Option A (Recommended):</em> Azwa+Fizie zoo | Arif+Naazira+baby kat AC mall<br>
+        <em>Option B:</em> Zoo 08:30–11:30 → beach/AC break → return 3PM → massage 4PM
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🦁 <strong>Songkhla Zoo</strong></div>
+        <span class="time">~08:30–11:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.1595, 100.6190</span>
+        <span><strong>⏱</strong> 40 min dari Lamoon Villa, +7 min dari ISDU</span>
+        <span><strong>🎟</strong> ~100–150 THB/pax (family ~400–600 THB)</span>
+        <span><strong>🕗</strong> 8:30AM–4:30PM</span>
+      </div>
+      <div class="stop-notes">🦒 +500 animals, bird show, Safari World vibes — sampai awal supayatak sesak</div>
+      <div class="stop-abort">⚠️ Must exit by 16:00 (close to zoo closing). Exit earlier if Naufal cranky.</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🏖 <strong>Samila Beach</strong> <span class="halal-badge pub">Public Beach</span></div>
+        <span class="time">~12:00–13:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.2068, 100.6078</span>
+        <span><strong>⏱</strong> 15 min dari zoo</span>
+        <span><strong>🚶</strong> Stroller ✅ — sand + flat path</span>
+      </div>
+      <div class="stop-notes">🏖️ Merriman Monument (logo kucing), cantik sunset/afternoon, grab Seathonglang seafood旁边</div>
+      <div class="stop-notes">🍽 Halal option: Seathonglang Seafood (muslim-owned, verify di situ)</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🍽 <strong>ISDU Premium Restaurant Songkhla</strong> <span class="halal-badge">✅ Halal</span></div>
+        <span class="time">~13:30–14:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> ~7.1864, 100.6005</span>
+        <span><strong>⏱</strong> 261/263 ถ.สงขลาพลาซ่า</span>
+        <span><strong>🍽</strong> Thai Muslim cuisine, fully halal certified</span>
+      </div>
+      <div class="stop-notes">📸 Best halal lunch spot — confirm Thai Muslim kitchen, no pork/alcohol</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">💆 <strong>Friendly Health Massage</strong> <span class="halal-badge">✅</span></div>
+        <span class="time">~15:30–17:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> ~7.0083, 100.5299 (1.4 km dari villa)</span>
+        <span><strong>💰</strong> ~150–250 THB/hr</span>
+      </div>
+      <div class="stop-notes">👫 Foot/body massage — pisau pisau, ada rooms for couples/family</div>
+    </div>
+
+    <div class="evening-box">
+      <div class="ev-title">🌙 Evening Prep — Day 3</div>
+      <ul class="ev-list">
+        <li>Reps from Day 2 — esok leasure je</li>
+        <li>Masa 08:00-09:00: Wat Hat Yai Nai (reclining Buddha)</li>
+        <li>10:00+: Central Hatyai shopping + baby supplies</li>
+        <li>Siapjadual border return — keluar sebelum 15:00 (avoid Thursday leave crowd)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="day">
+  <div class="day-header day3">
+    <div class="day-num">D3</div>
+    <div class="day-info">
+      <div class="day-theme">Ahad — Temple + Massage + Shopping → Return</div>
+      <div class="day-date">11 Mei 2026 &nbsp;|&nbsp; Theme: Wat → Central → Border → Home</div>
+    </div>
+  </div>
+  <div class="day-body">
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🛕 <strong>Wat Hat Yai Nai</strong></div>
+        <span class="time">~08:00–09:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.0225, 100.5500</span>
+        <span><strong>⏱</strong> 6 min dari Lamoon Villa</span>
+        <span><strong>🕗</strong> 7AM–6PM</span>
+      </div>
+      <div class="stop-notes">🙏 Giant Reclining Buddha (42 m) — one of the largest in Thailand, sangat solemn</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🛍 <strong>Central Hatyai</strong></div>
+        <span class="time">~10:00–13:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 7.0089, 100.5327</span>
+        <span><strong>🕐</strong> 10AM–9PM</span>
+        <span><strong>🛒</strong> Hypermarket kat ground floor — baby supplies, snacks, Thai products</span>
+      </div>
+      <div class="stop-notes">👶 Diapers, milk, wet wipes — stock up di sini untuk Naufal</div>
+      <div class="stop-notes">🎁 Souvenirs, clothes, NakPro food — good for last-minute gifts</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">💆 <strong>Malika Beauty Massage</strong> <span class="halal-badge">✅</span></div>
+        <span class="time">~11:00–12:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> ~7.0111, 100.5411</span>
+        <span><strong>💰</strong> ~200–350 THB/hr</span>
+      </div>
+      <div class="stop-notes">💅 Spa + beauty services — ada separate rooms, suitable for family/group</div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🍽 <strong>Last Lunch — Ban Phang Nai / Halal spot</strong> <span class="halal-badge">✅</span></div>
+        <span class="time">~12:30–13:30</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> ~7.0120, 100.5380 (0.6 km dari massage)</span>
+        <span><strong>⏱</strong> 30–45 min</span>
+      </div>
+    </div>
+
+    <div class="stop">
+      <div class="stop-header">
+        <div class="stop-name">🚗 <strong>Return: Border → Home</strong></div>
+        <span class="time">~14:00–16:00</span>
+      </div>
+      <div class="stop-meta">
+        <span><strong>📍</strong> 42.6 km / 54 min to border</span>
+        <span><strong>⚠️</strong> Sunday return — crowd avoid if possible</span>
+      </div>
+      <div class="stop-notes">📦 Border: siapsijalanjalan immigration, tol + visa runs smooth</div>
+      <div class="stop-abort">⚠️ Leave by 15:00 latest to beat Sunday return traffic</div>
+    </div>
+
+    <div class="evening-box">
+      <div class="ev-title">🏠 Post-Trip Notes</div>
+      <ul class="ev-list">
+        <li>Rehat — whole group tired dari trip (esp Naufal)</li>
+        <li>Review photos — tag lokasi di Google Photos</li>
+        <li>Track expenses — update budget tracker</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- BUDGET -->
+<div class="budget-box">
+  <div class="section-title"><span class="icon">💰</span> Budget Estimate</div>
+  <div class="budget-grid">
+    <div class="budget-row"><span class="br-label">Food (3D × 4 pax)</span><span class="br-value">3,200–5,000 THB</span></div>
+    <div class="budget-row"><span class="br-label">Massage × 2 sessions</span><span class="br-value">1,200–2,400 THB</span></div>
+    <div class="budget-row"><span class="br-label">Petrol (round trip)</span><span class="br-value">250–350 THB</span></div>
+    <div class="budget-row"><span class="br-label">Toll Malaysia</span><span class="br-value">60–80 MYR</span></div>
+    <div class="budget-row"><span class="br-label">Border vehicle ins.</span><span class="br-value">100–300 THB</span></div>
+    <div class="budget-row"><span class="br-label">Songkhla Zoo (family)</span><span class="br-value">400–600 THB</span></div>
+    <div class="budget-row"><span class="br-label">Misc / buffer</span><span class="br-value">1,000 THB</span></div>
+    <div class="budget-row total"><span class="br-label">TOTAL ESTIMATE</span><span class="br-value">~16,000–27,000 THB</span></div>
+    <div class="budget-row total"><span class="br-label">Per Pax (4 adults)</span><span class="br-value">~RM500–830</span></div>
+  </div>
+</div>
+
+<!-- MAP LINKS -->
+<div class="maps-box">
+  <div class="section-title"><span class="icon">🗺</span> Google Maps Links</div>
+  <ul class="maps-list">
+    <li>📍 <strong>Bukit Kayu Hitam Border:</strong> <a href="https://www.google.com/maps/search/?api=1&query=6.7025,100.4242">6.7025, 100.4242</a></li>
+    <li>🍽 <strong>R&R Halal Sadao:</strong> <a href="https://www.google.com/maps/search/?api=1&query=6.7250,100.4450">6.7250, 100.4450</a></li>
+    <li>🏨 <strong>Lamoon Villa:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.0128,100.5408">7.0128, 100.5408</a></li>
+    <li>🌳 <strong>Municipal Park:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.0031,100.4667">7.0031, 100.4667</a></li>
+    <li>🦁 <strong>Songkhla Zoo:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.1595,100.6190">7.1595, 100.6190</a></li>
+    <li>🏖 <strong>Samila Beach:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.2068,100.6078">7.2068, 100.6078</a></li>
+    <li>🍽 <strong>ISDU Premium Songkhla:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.1864,100.6005">7.1864, 100.6005</a></li>
+    <li>🛕 <strong>Wat Hat Yai Nai:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.0225,100.5500">7.0225, 100.5500</a></li>
+    <li>💆 <strong>Friendly Health Massage:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.0083,100.5299">7.0083, 100.5299</a></li>
+    <li>🛍 <strong>Central Hatyai:</strong> <a href="https://www.google.com/maps/search/?api=1&query=7.0089,100.5327">7.0089, 100.5327</a></li>
+  </ul>
+</div>
+
+<div class="footer">
+  DITEMPA BUKAN DIBERI — arifOS Travel Intelligence Protocol v2026.05.08<br>
+  SEAL 999 | Generated: 2026-05-09 | Halal · Baby-Friendly · Driver-Ready
+</div>
+
+</body>
+</html>

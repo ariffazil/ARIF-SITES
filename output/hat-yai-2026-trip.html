@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hat Yai 2026 — 3D2N Travel Command</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --purple: #bc8cff;
+    --day1: #1a4731;
+    --day2: #1a3a5c;
+    --day3: #4a1a6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 20px 0 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.5px;
+  }
+  .header .sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .seal {
+    display: inline-block;
+    background: var(--card);
+    border: 1px solid var(--green);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    color: var(--green);
+    margin-top: 8px;
+    font-family: monospace;
+  }
+  .status-bar {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .status-item {
+    font-size: 12px;
+  }
+  .status-item .label { color: var(--muted); }
+  .status-item .value { color: var(--text); font-weight: 600; }
+  .status-item .value.green { color: var(--green); }
+  .status-item .value.yellow { color: var(--yellow); }
+  .status-item .value.red { color: var(--red); }
+
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin: 20px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-card {
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .day-card.day1 { border-left: 4px solid #3fb950; }
+  .day-card.day2 { border-left: 4px solid #58a6ff; }
+  .day-card.day3 { border-left: 4px solid #bc8cff; }
+
+  .day-header {
+    padding: 12px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .day-card.day1 .day-header { background: var(--day1); }
+  .day-card.day2 .day-header { background: var(--day2); }
+  .day-card.day3 .day-header { background: var(--day3); }
+  .day-theme { font-size: 12px; opacity: 0.85; font-weight: 400; }
+
+  .stop-card {
+    background: var(--card);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .stop-card:last-child { border-bottom: none; }
+
+  .stop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .stop-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .stop-id {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: monospace;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  .stop-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .stop-meta .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .badge-halal { background: #0d2818; color: var(--green); }
+  .badge-caution { background: #2d2006; color: var(--yellow); }
+  .badge-risk { background: #2d0f0f; color: var(--red); }
+  .badge-safe { background: #0d1826; color: var(--blue); }
+
+  .stop-baby {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    background: var(--bg);
+    border-radius: 6px;
+    border-left: 3px solid var(--blue);
+  }
+  .stop-baby strong { color: var(--text); }
+
+  .stop-time {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .stop-time strong { color: var(--text); font-size: 14px; }
+
+  .abort-rule {
+    font-size: 12px;
+    color: var(--red);
+    background: #2d0f0f;
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 6px;
+    border-left: 3px solid var(--red);
+  }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #1f6feb;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .map-link:hover { background: #388bfd; }
+  .map-link::before { content: "🗺️"; }
+
+  .route-badge {
+    font-size: 11px;
+    background: var(--bg);
+    color: var(--muted);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    margin-left: 6px;
+  }
+
+  .safety-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .safety-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .safety-card.emergency { border-color: var(--red); background: #2d0f0f; }
+  .safety-card h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .safety-card.emergency h4 { color: var(--red); }
+  .safety-card .name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .safety-card .detail { font-size: 12px; color: var(--muted); }
+  .safety-card .detail .green { color: var(--green); }
+
+  .decision-box {
+    background: #2d2006;
+    border: 1px solid var(--yellow);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .decision-box h3 {
+    font-size: 13px;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .decision-box h3::before { content: "⚠️"; }
+  .decision-box p { font-size: 13px; color: var(--text); margin-bottom: 8px; }
+  .option-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .option {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .option.recommended { border: 1px solid var(--green); }
+  .option.recommended::before { content: "✅ "; color: var(--green); }
+  .option.alt { border: 1px solid var(--border); }
+  .option.alt::before { content: "🔄 "; color: var(--muted); }
+
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+  }
+  .check-box.done { background: var(--green); border-color: var(--green); }
+  .check-box.todo { background: transparent; border-color: var(--yellow); }
+  .check-box.critical { border-color: var(--red); }
+
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--muted);
+    font-size: 11px;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+  }
+
+  @media (max-width: 400px) {
+    .option-grid, .safety-grid { grid-template-columns: 1fr; }
+    .status-bar { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🗺️ HAT YAI 3D2N — TRAVEL COMMAND</h1>
+  <div class="sub">Arif + Naazira + Baby Naufal + Azwa + Fizie</div>
+  <div class="sub">Thu 8 – Sat 10 May 2026 · UTC+7 (MYT-1)</div>
+  <div class="seal">DITEMPA BUKAN DIBERI — 999</div>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="status-item">
+    <div class="label">Fuel</div>
+    <div class="value green">✅ Full tank (Petronas)</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Location</div>
+    <div class="value">📍 Sadao / Border area</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Baby supplies</div>
+    <div class="value yellow">⚠️ Buy at Central Hatyai</div>
+  </div>
+  <div class="status-item">
+    <div class="label">Day 2 status</div>
+    <div class="value yellow">⚠️ Split group recommended</div>
+  </div>
+</div>
+
+<!-- SAFETY -->
+<div class="section-title">🚨 Safety & Emergency</div>
+<div class="safety-grid">
+  <div class="safety-card emergency">
+    <h4>🏥 Nearest Clinic</h4>
+    <div class="name">Health Link International</div>
+    <div class="detail"><span class="green">4.9★</span> · ~1.5 km from hotel</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Health+Link+International+Clinic+Hat+Yai" style="font-size:11px;padding:5px 10px;margin-top:6px;">Open in Maps</a>
+  </div>
+  <div class="safety-card">
+    <h4>🍼 Baby Supplies</h4>
+    <div class="name">Central Hatyai Supermarket</div>
+    <div class="detail"><span class="green">5★</span> · Ground floor, walking distance</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Central+Festival+Hat+Yai+supermarket" style="font-size:11px;padding:5px 10px;margin-top:6px;">Open in Maps</a>
+  </div>
+  <div class="safety-card">
+    <h4>💊 Pharmacy</h4>
+    <div class="name">B&T Pharmacy</div>
+    <div class="detail"><span class="green">5★</span> · Central Hatyai G-05 · 1.8 km</div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=B%26T+Pharmacy+Central+Hat+Yai" style="font-size:11px;padding:5px 10px;margin-top:6px;">Open in Maps</a>
+  </div>
+  <div class="safety-card">
+    <h4>⛽ Petrol</h4>
+    <div class="name">Tank Full — No stops needed</div>
+    <div class="detail">Petronas before immigration ✅</div>
+  </div>
+</div>
+
+<!-- DAY 1 -->
+<div class="section-title">📅 Day 1 — Thu 8 May · ARRIVAL</div>
+<div class="day-card day1">
+  <div class="day-header">
+    <span>🟢 Day 1: Border Entry → Settle In</span>
+    <span class="day-theme">Theme: Clear border, halal lunch, check-in, evening market</span>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">R&R Halal Sadao</span>
+      <span class="stop-id">P08 · L01</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-halal">✅ Halal verified</span>
+      <span class="badge badge-safe">🍼 Baby OK</span>
+      <span class="badge badge-safe">❄️ AC Indoor</span>
+      <span class="badge badge-caution">⏱️ 45–60 min</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Nap in car seat during border clearance. AC indoor here — feeding/potty OK. Bring stroller for inside restaurant.
+    </div>
+    <div class="stop-time">
+      <strong>Drive:</strong> 5 min (3 km) from border · depart now
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJV8qjN-q5TDARYewG8HwVYrQ">🗺️ Navigate to R&R Halal Sadao</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Lamoon Villa (Check-in)</span>
+      <span class="stop-id">P01 · L02</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Halal unverified (hotel kitchen)</span>
+      <span class="badge badge-safe">🍼 AC + Bassinet</span>
+      <span class="badge badge-safe">🅿️ Parking</span>
+      <span class="badge badge-caution">⏱️ 49 min</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Long leg (42 km) — prime nap window. Pull over only if necessary. Room: AC + bassinet on request.
+    </div>
+    <div class="stop-time">
+      <strong>Drive:</strong> 49 min (42.2 km) · after lunch
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJYQKhMfUpTTARXmkX3NQpeyA">🗺️ Navigate to Lamoon Villa</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Hat Yai City Municipal Park</span>
+      <span class="stop-id">P02 · L03</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Outdoor public</span>
+      <span class="badge badge-safe">🍼 Stroller OK</span>
+      <span class="badge badge-safe">⏱️ 23 min</span>
+      <span class="badge badge-halal">✅ 5AM–8PM verified</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Stroller OK on paved paths ✅. Cable car (THB 60-80) — scenic, baby can view. Nap fit: 0.40 ⚠️ open grass noisy.
+    </div>
+    <div class="stop-time">
+      <strong>Arrive:</strong> ~3–4 PM · <strong>Depart by:</strong> 7:30 PM (evening traffic risk)
+    </div>
+    <div class="abort-rule">⚠️ ABORT IF: Rain or heat advisory → skip cable car, go direct to hotel or Lee Garden</div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJH2dajhQpTTARwYer740Ezc8">🗺️ Navigate to Municipal Park</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Lee Garden Night Market</span>
+      <span class="stop-id">P07 · L04</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Halal plausible (Islamique zone)</span>
+      <span class="badge badge-caution">⚠️ Stroller tight</span>
+      <span class="badge badge-caution">🕐 ~6PM–11PM unverified</span>
+      <span class="badge badge-caution">⏱️ 22 min from park</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Narrow aisles ⚠️ — fold stroller if possible. Loud music / crowd noise. Evening cooler. Best for parents without baby, or quick pass.
+    </div>
+    <div class="stop-time">
+      <strong>Drive:</strong> 22 min (10.7 km) · depart Municipal Park 7:30 PM
+    </div>
+    <div class="abort-rule">⚠️ ABORT IF: Baby very fussy → leave early, return to hotel. Parking: park nearby, walk in.</div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJsTTVaOgpTTARxNF5S30xjPg">🗺️ Navigate to Lee Garden Night Market</a>
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="section-title">📅 Day 2 — Fri 9 May · SONGKHLA PUSH ⚠️</div>
+
+<div class="decision-box">
+  <h3>F1 Alert — Baby Fatigue Decision Required</h3>
+  <p><strong>Fatigue Math:</strong> 78 min driving + 2–3 hrs zoo + lunch + massage = 6–9 hrs active time with Baby Naufal (8 months).</p>
+  <p><strong>Verdict:</strong> DO NOT execute as single group with baby.</p>
+  <div class="option-grid">
+    <div class="option recommended">
+      <strong>Option A (Recommended)</strong><br>
+      Azwa+Fizie → Zoo 8:30 AM<br>
+      Arif+Naazira+Baby → Central Hatyai AC
+    </div>
+    <div class="option alt">
+      <strong>Option B</strong><br>
+      Zoo 8:30–11:30 AM → AC break → Return 3 PM → Massage 4 PM
+    </div>
+  </div>
+</div>
+
+<div class="day-card day2">
+  <div class="day-header">
+    <span>🔵 Day 2: Songkhla · Split Group Recommended</span>
+    <span class="day-theme">Theme: Zoo + lunch + massage — high activity, manage fatigue</span>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">ISDU Premium Songkhla (Lunch)</span>
+      <span class="stop-id">P09 · L05</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-halal">✅ Halal context verified</span>
+      <span class="badge badge-safe">🍼 AC Restaurant</span>
+      <span class="badge badge-safe">⏱️ 33 min</span>
+      <span class="badge badge-caution">🕐 ~11AM–10PM plausible</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Restaurant seating + AC ✅. Call ahead if arriving after 1 PM to hold table.
+    </div>
+    <div class="stop-time">
+      <strong>Depart by:</strong> 9:30 AM · <strong>ETA:</strong> 10:30 AM · <strong>Drive:</strong> 33 min (25.3 km)
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJW9c_hPgzTTARyYCgTcE8CwM">🗺️ Navigate to ISDU Premium Songkhla</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Songkhla Zoo</span>
+      <span class="stop-id">P04 · L06</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Outdoor public</span>
+      <span class="badge badge-safe">🍼 Stroller OK</span>
+      <span class="badge badge-halal">✅ 8:30 AM–4:30 PM verified</span>
+      <span class="badge badge-risk">⚠️ Heat load HIGH</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Stroller OK ✅. Animal noise + crowd — nap fit 0.20 ⚠️. Heat risk 0.25 ⚠️. Zoo walking 2–3 hrs. Best for adults without baby or split-group option.
+    </div>
+    <div class="stop-time">
+      <strong>Arrive:</strong> ~11 AM · <strong>MUST EXIT:</strong> 4:15 PM · <strong>Drive:</strong> 7 min (4.1 km)
+    </div>
+    <div class="abort-rule">⚠️ EXIT IMMEDIATELY if inside at 4:15 PM → go to Central Hatyai P06 for dinner instead</div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJbU7VQqcyTTARDwPrrYKMWXE">🗺️ Navigate to Songkhla Zoo</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Friendly Health Massage</span>
+      <span class="stop-id">P10 · L08</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-halal">✅ Halal plausible</span>
+      <span class="badge badge-risk">🚫 No stroller inside</span>
+      <span class="badge badge-safe">⏱️ 3 min from villa</span>
+      <span class="badge badge-caution">🕐 ~10AM–10PM plausible</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> ZERO stroller/nap capability inside. Drop-off only — one adult stays with baby, or go sequential.
+    </div>
+    <div class="stop-time">
+      <strong>After zoo return:</strong> ~4:45 PM · <strong>Drive:</strong> 3 min (1.4 km)
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJ1fGExespTTARzfItRCtapi0">🗺️ Navigate to Friendly Health Massage</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Ban Phang Nai (Dinner)</span>
+      <span class="stop-id">P12 · L09</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Halal plausible claim</span>
+      <span class="badge badge-safe">🍼 Restaurant OK</span>
+      <span class="badge badge-safe">⏱️ 2 min walk</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Restaurant seating + indoor ✅. Walking distance from massage. Backup: Central Hatyai food court P06 (100% AC).
+    </div>
+    <div class="stop-time">
+      <strong>After massage:</strong> ~6–7 PM · <strong>Walk:</strong> 0.6 km / 2 min
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=7.0150,100.5350+Ban+Phang+Nai+Hat+Yai">🗺️ Navigate to Ban Phang Nai</a>
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="section-title">📅 Day 3 — Sat 10 May · TACTICAL RETREAT</div>
+<div class="day-card day3">
+  <div class="day-header">
+    <span>🟣 Day 3: Temple → Massage → Return</span>
+    <span class="day-theme">Theme: Short morning visits, safe extraction, border by 4:30 PM</span>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Wat Hat Yai Nai (Temple)</span>
+      <span class="stop-id">P05 · L10</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-halal">✅ Temple halal context</span>
+      <span class="badge badge-risk">⚠️ Stroller limited</span>
+      <span class="badge badge-halal">✅ 7 AM–6 PM verified</span>
+      <span class="badge badge-safe">⏱️ 6 min</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> Uneven terrain ⚠️ — stroller limited. Active walking required. Go early (7–9 AM) to avoid midday heat. Dress: covered knees + shoulders.
+    </div>
+    <div class="stop-time">
+      <strong>Depart:</strong> 8:00 AM sharp · <strong>ETA:</strong> 8:06 AM · <strong>Time here:</strong> 30–45 min
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJbYpzmW4oTTARiDHJTTPsJbY">🗺️ Navigate to Wat Hat Yai Nai</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Malika Beauty Massage</span>
+      <span class="stop-id">P11 · L11</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-halal">✅ Islamic design confirmed</span>
+      <span class="badge badge-risk">🚫 No stroller inside</span>
+      <span class="badge badge-safe">⏱️ 6 min from temple</span>
+      <span class="badge badge-caution">🕐 ~9AM–9PM plausible</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> ZERO stroller/nap inside. Drop-off only. Call morning to confirm booking.
+    </div>
+    <div class="stop-time">
+      <strong>After temple:</strong> ~9:30 AM · <strong>Drive:</strong> 6 min (3.4 km) · book ahead
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=7.0111,100.5411+Malika+Beauty+Massage+Hat+Yai">🗺️ Navigate to Malika Beauty Massage</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">Central Hatyai (Shopping + Lunch)</span>
+      <span class="stop-id">P06 · L12</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-caution">⚠️ Mall food court halal</span>
+      <span class="badge badge-safe">🍼 AC + Baby supplies</span>
+      <span class="badge badge-halal">✅ 10 AM–9 PM verified</span>
+      <span class="badge badge-safe">⏱️ 3 min</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> BEST stop for baby. AC indoor ✅. Supermarket ground floor — diapers, milk, supplies. Food court multiple halal options.
+    </div>
+    <div class="stop-time">
+      <strong>After massage:</strong> ~12:30 PM · <strong>Time here:</strong> 1.5–2 hrs · final baby supply reset before border
+    </div>
+    <a class="map-link" href="https://www.google.com/maps/place/ChIJCZ0eezMoTTARCFlwdoY1Z9w">🗺️ Navigate to Central Hatyai</a>
+  </div>
+
+  <div class="stop-card">
+    <div class="stop-header">
+      <span class="stop-name">⛔ Depart for Border — 2:30 PM SHARP</span>
+      <span class="stop-id">L13</span>
+    </div>
+    <div class="stop-meta">
+      <span class="badge badge-risk">🚨 CRITICAL TIMING</span>
+      <span class="badge badge-caution">⏱️ 54 min (42.6 km)</span>
+      <span class="badge badge-caution">🛃 90 min border buffer</span>
+    </div>
+    <div class="stop-baby">
+      <strong>Baby:</strong> This is the last AC/bathroom stop before border. Final diaper check + feed before long drive.
+    </div>
+    <div class="stop-time">
+      <strong>DEPART:</strong> 2:30 PM SHARP · <strong>ETA border:</strong> 3:45–4:15 PM · <strong>Target clearance:</strong> by 4:30 PM
+    </div>
+    <div class="abort-rule">⚠️ SUNDAY BORDER CAN BE BUSY — do NOT miss 4:30 PM window. If stuck in traffic after 3:30 PM, call border info: +66 74 XXX XXX</div>
+    <a class="map-link" href="https://www.google.com/maps/dir/Central+Festival+Hat+Yai,+Hat+Yai,+Thailand/Buket+Kayu+Hitam+Immigration,+Thailand">🗺️ Navigate: Central Hatyai → BKH Border</a>
+  </div>
+</div>
+
+<!-- PRE-DEPARTURE CHECKLIST -->
+<div class="section-title">📋 Pre-Departure Checklist</div>
+<div class="stop-card">
+  <div class="checklist-item">
+    <div class="check-box done"></div>
+    <span>Petrol full tank (Petronas before immigration) ✅</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box critical"></div>
+    <span>MyKad / passport semua 5 orang 🔴 OWNER</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box critical"></div>
+    <span>Vehicle insurance Thailand 🔴 OWNER</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box critical"></div>
+    <span>Car Letter (TMS Letter + JPJ Form) 🔴 OWNER — skill: malaysia-thailand-car-letter</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box critical"></div>
+    <span>Baby Naufal: diapers + milk for 3 days 🔴 OWNER</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box done"></div>
+    <span>Border crossing buffer: ~20–30 min ✅</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box todo"></div>
+    <span>ISDU Restaurant: call ahead if Day 2 arriving after 1 PM</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box todo"></div>
+    <span>Malika Massage: book for Day 3 morning (call after temple)</span>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box todo"></div>
+    <span>Day 2 group split decision: agree with Azwa+Fizie BEFORE Day 2</span>
+  </div>
+</div>
+
+<!-- MAP VIEWER LINKS -->
+<div class="section-title">🗺️ All Stops — Map Overview</div>
+<div class="stop-card">
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Open any of these links to see all stops on Google Maps:</p>
+  <a class="map-link" href="https://www.google.com/maps/dir/6.7025,100.4242/6.7250,100.4450/7.0128,100.5408/7.0031,100.4667/7.0127,100.5394/@7.0128,100.54,12z" style="margin-bottom:6px;display:block;text-align:center;">Full Day 1 Route (Border → R&R → Villa → Park → Night Market)</a>
+  <a class="map-link" href="https://www.google.com/maps/dir/7.0128,100.5408/7.1864,100.6005/7.1595,100.6190/7.0128,100.5408/7.0083,100.5299/@7.12,100.57,11z" style="margin-bottom:6px;display:block;text-align:center;">Full Day 2 Route (Villa → ISDU → Zoo → Villa → Massage)</a>
+  <a class="map-link" href="https://www.google.com/maps/dir/7.0128,100.5408/7.0225,100.55/7.0111,100.5411/7.0089,100.5327/6.7025,100.4242" style="display:block;text-align:center;">Full Day 3 Route (Villa → Wat → Massage → Mall → Border)</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  HAT YAI 2026 TRAVEL COMMAND — arifOS Travel Intelligence Standard v2026.05.08<br>
+  3-Layer TIC: Summary → Narrative → Machine Appendix<br>
+  DITEMPA BUKAN DIBERI — 999 SEAL · trace:live-api · spatial:verified
+</div>
+
+</body>
+</html>
