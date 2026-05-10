@@ -1,0 +1,5 @@
+{
+  "redirect": "/a2a/agent-card.json",
+  "version": "1.0.0",
+  "note": "This endpoint has moved. Use /.well-known/agent-card.json (A2A v1.0.0 spec)."
+}
