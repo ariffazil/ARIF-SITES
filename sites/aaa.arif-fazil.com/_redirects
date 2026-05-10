@@ -1,4 +1,8 @@
-# Cloudflare Pages redirect rules
-# Fix: /a2a/ subdirectory requires trailing slash or explicit index.html
-/a2a  /a2a/  301
-/.well-known/agent-card.json  /.well-known/agent-card.json  200
+# Cloudflare Pages Redirects Configuration
+# Ensure llms.json and llms.txt are served directly
+
+/llms.txt    /llms.txt    200
+/llms.json   /llms.json   200
+
+# SPA fallback for React Router
+/*    /index.html   200
