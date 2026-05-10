@@ -24,3 +24,6 @@ npm-debug.log*
 
 # Cache
 .vite/
+
+# Secrets — never commit credentials
+infra/vps_root/opencode-config/auth.json
