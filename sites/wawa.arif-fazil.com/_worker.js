@@ -7,7 +7,7 @@
  * 2. Paste this entire file into the worker editor
  * 3. Add these Secrets:
  *    - MINIMAX_API_KEY   → your sk-7B4_... key
- *    - MINIMAX_BASE_URL  → your MiniMax API base URL (e.g. https://api.minimax.chat/v1)
+ *    - MINIMAX_BASE_URL  → your MiniMax API base URL (e.g. https://api.minimax.io)
  * 4. Set route: wawa.arif-fazil.com/chat → this worker
  * 5. Or: deploy as separate worker and update the frontend URL
  *
@@ -69,7 +69,7 @@ export default {
       }
 
       // Call MiniMax API
-      const baseUrl = env.MINIMAX_BASE_URL || 'https://api.minimax.chat/v1';
+      const baseUrl = env.MINIMAX_BASE_URL || 'https://api.minimax.io';
       const apiKey = env.MINIMAX_API_KEY;
 
       if (!apiKey) {
