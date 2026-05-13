@@ -16,7 +16,7 @@ npm run build
 
 # 2. Synchronize Files to Web Roots
 echo "[2/5] Syncing to $WEB_ROOT..."
-mkdir -p $WEB_ROOT/{arif-fazil.com,aaa.arif-fazil.com,apex.arif-fazil.com,waw.arif-fazil.com,wiki.arif-fazil.com,forge.arif-fazil.com,geox.arif-fazil.com,mcp.arif-fazil.com,arifos.arif-fazil.com}
+mkdir -p $WEB_ROOT/{arif-fazil.com,aaa.arif-fazil.com,apex.arif-fazil.com,waw.arif-fazil.com,wiki.arif-fazil.com,forge.arif-fazil.com,geox.arif-fazil.com,mcp.arif-fazil.com,html/arifos}
 
 # Sync Ψ — BODY
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $WEB_ROOT/arif-fazil.com/
@@ -24,8 +24,7 @@ rsync -avz $SITES_ROOT/arif-fazil.com/999/ $WEB_ROOT/arif-fazil.com/999/
 rsync -avz $SITES_ROOT/shared/ $WEB_ROOT/arif-fazil.com/shared/
 
 # Sync Ω — ARIFOS OBSERVATORY (from arifOS kernel static surface)
-rsync -avz --delete /root/arifOS/static/ $WEB_ROOT/arifos.arif-fazil.com/
-cp /root/arifOS/static/landing/dynamic-index.html $WEB_ROOT/arifos.arif-fazil.com/index.html
+rsync -avz --delete /root/arifOS/static/ $WEB_ROOT/html/arifos/
 
 # Sync Others
 rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $WEB_ROOT/aaa.arif-fazil.com/
@@ -45,7 +44,7 @@ echo "[4/5] Setting permissions..."
 chown -R www-data:www-data $WEB_ROOT
 
 # 5. Reload Nginx
-echo "[5/5] Reloading Nginx..."
-nginx -t && systemctl reload nginx
+echo "[5/5] Reloading Caddy..."
+caddy reload --config /etc/caddy/Caddyfile
 
 echo "✅ DEPLOYMENT COMPLETE. Constellation is Live."
