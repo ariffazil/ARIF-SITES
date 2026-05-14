@@ -1,3 +1,0 @@
-/docs/*  /docs/:splat  200
-/apex/*  /apex/:splat  200
-/.well-known/*  /.well-known/:splat  200

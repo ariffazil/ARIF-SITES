@@ -34,20 +34,8 @@ domains:
     role: BODY      # AAA + A-FORGE overview, operator cockpit entry, agent governance
     status: flagship
 
-  # ─── LEGACY / DEPRECATED ────────────────────────────────────────────────────
-
-  - host: arifosmcp.arif-fazil.com
-    type: redirect
-    target: https://mcp.arif-fazil.com
-    note: Legacy MCP hostname — redirect only, do not use
-    status: deprecated
-
-  - host: apex.arif-fazil.com
-    type: static
-    source: sites/apex.arif-fazil.com
-    deploy: vps-nginx
-    note: Superseded by arifos.arif-fazil.com — kept for backward compat
-    status: legacy
+  # ─── REMOVED ────────────────────────────────────────────────────────────────
+  # arifosmcp.arif-fazil.com  — removed 2026-05-12 (was redirect to mcp)
 
   # ─── SECONDARY / FIELD ──────────────────────────────────────────────────────
 
@@ -73,18 +61,9 @@ domains:
     role: FIELD    # GEOX earth science UI — lab/field surface, not flagship
     status: active
 
-  # ─── ARCHIVE ────────────────────────────────────────────────────────────────
-
-  - host: waw.arif-fazil.com
-    type: static
-    source: sites/waw.arif-fazil.com
-    deploy: cloudflare-pages
-    note: Merged into BODY/forge surfaces — archive candidate
-    status: archived
-
-  - host: wawa.arif-fazil.com
-    type: static
-    source: sites/wawa.arif-fazil.com
-    deploy: cloudflare-pages
-    note: Absorbed by waw — archive candidate
-    status: archived
+  # ─── REMOVED ────────────────────────────────────────────────────────────────
+  # waw.arif-fazil.com       — removed 2026-05-12
+  # wawa.arif-fazil.com      — removed 2026-05-12
+  # travel.arif-fazil.com    — removed 2026-05-12
+  # apex.arif-fazil.com      — removed 2026-05-12
+  # arifosmcp.arif-fazil.com — removed 2026-05-12
