@@ -553,7 +553,7 @@ a:hover{color:var(--color-gold)}
         </tr>
       </thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">arifOS</td><td style="padding:6px 4px">8080</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">v2026.05.01-KANON</td><td style="padding:6px 4px;color:var(--color-text-muted)">13/13 tools, outputSchema ENFORCED, Langfuse traced, vault999 healthy, build=5d8abe7</td></tr>
+        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">arifOS</td><td style="padding:6px 4px">8080</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">live</td><td style="padding:6px 4px;color:var(--color-text-muted)">13 canonical tools, outputSchema ENFORCED, Langfuse traced, vault999 healthy, build from /api/build-info</td></tr>
         <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">GEOX</td><td style="padding:6px 4px">8081</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">HTTP 200, streamable-http, 15 tools</td></tr>
         <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">WEALTH</td><td style="padding:6px 4px">8082</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">2026.05.02</td><td style="padding:6px 4px;color:var(--color-text-muted)">Capital engine up</td></tr>
         <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">WELL</td><td style="padding:6px 4px">8083</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">2026.05.08-ΩWELL</td><td style="padding:6px 4px;color:var(--color-text-muted)">verdict=NOT_WELL by design — REFLECT_ONLY authority mode</td></tr>
@@ -1250,8 +1250,6 @@ async function renderFederationDossiers(organs, probeResults) {
 loadFederationManifest();
 
 // ── SOT Drift Badge ──────────────────────────────────────────────────────
-// Truth anchor: live git HEAD from canonical repo (/root/arifOS)
-const CANONICAL_GIT_SHA = '5d8abe7a';
 (async function sotBadge() {
   function render(sot, bi) {
     let badge = document.getElementById('sot-float');
@@ -1263,14 +1261,17 @@ const CANONICAL_GIT_SHA = '5d8abe7a';
       document.body.appendChild(badge);
     }
     const reportedSha = (bi.short_sha || (bi.sha || '').slice(0,7) || '');
-    const drift = reportedSha && reportedSha !== CANONICAL_GIT_SHA.slice(0,7);
-    const seal = sot.verdict === 'SEAL' && !drift;
-    badge.style.background = drift ? 'rgba(184,48,96,0.08)' : seal ? 'rgba(74,222,128,0.08)' : 'rgba(249,115,22,0.08)';
-    badge.style.border = '1px solid ' + (drift ? 'rgba(184,48,96,0.5)' : seal ? 'rgba(74,222,128,0.4)' : 'rgba(249,115,22,0.4)');
-    badge.style.color = drift ? '#b83060' : seal ? '#4ade80' : '#f97316';
-    badge.innerHTML = (drift ? '🚨 DRIFT' : seal ? '✅' : '⚠️') + ' SOT ' + (drift ? 'MISMATCH' : sot.verdict) +
-      ' · ' + (sot.live_count || '?') + '/' + (sot.main_count || '?') +
-      ' tools · repo=' + CANONICAL_GIT_SHA.slice(0,7) + ' runtime=' + (reportedSha || '—');
+    const extra = Array.isArray(sot.extra_on_live) ? sot.extra_on_live.length : 0;
+    const missing = Array.isArray(sot.missing_on_live) ? sot.missing_on_live.length : 0;
+    const canonicalAligned = missing === 0 && Number(sot.main_count || 0) === 13;
+    const seal = sot.verdict === 'SEAL' || (canonicalAligned && extra === 0);
+    badge.style.background = seal ? 'rgba(74,222,128,0.08)' : 'rgba(249,115,22,0.08)';
+    badge.style.border = '1px solid ' + (seal ? 'rgba(74,222,128,0.4)' : 'rgba(249,115,22,0.4)');
+    badge.style.color = seal ? '#4ade80' : '#f97316';
+    const suffix = extra > 0 ? ` · +${extra} extension` : '';
+    badge.innerHTML = (seal ? '✅' : '⚠️') + ' SOT ' + (seal ? 'SEAL' : 'HOLD') +
+      ' · canonical ' + (sot.main_count || '?') + '/13' + suffix +
+      ' · runtime=' + (reportedSha || '—');
   }
   async function refresh() {
     try {
