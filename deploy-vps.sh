@@ -1,50 +1,51 @@
 #!/bin/bash
 # arif-fazil.com Constellation — VPS Deployment Script
 # Automates build, sync, and canonicalization
+# Caddy web root: /var/www/html/<site> (NOT /var/www/<domain>)
 
 set -e
 
 SITES_ROOT="/root/arif-sites/sites"
-WEB_ROOT="/var/www"
+HTML_ROOT="/var/www/html"
 
-echo "🚀 Starting Deployment Strike..."
+echo "Starting VPS Deployment..."
 
-# 1. Build React Site (Ψ)
-echo "[1/5] Building arif-fazil.com (React)..."
+# 1. Build React Site (arif-fazil.com — Ψ SOUL)
+echo "[1/5] Building arif-fazil.com (React/Vite)..."
 cd $SITES_ROOT/arif-fazil.com
 npm run build
 
-# 2. Synchronize Files to Web Roots
-echo "[2/5] Syncing to $WEB_ROOT..."
-mkdir -p $WEB_ROOT/{arif-fazil.com,aaa.arif-fazil.com,apex.arif-fazil.com,waw.arif-fazil.com,wiki.arif-fazil.com,forge.arif-fazil.com,geox.arif-fazil.com,mcp.arif-fazil.com,html/arifos}
+# 2. Sync Shared Design System + WebMCP (served via /_shared/* on all domains)
+echo "[2/5] Syncing shared assets..."
+mkdir -p $HTML_ROOT/_shared/design-system $HTML_ROOT/_shared/webmcp
+rsync -avz --delete $SITES_ROOT/shared/design-system/ $HTML_ROOT/_shared/design-system/
+rsync -avz --delete $SITES_ROOT/shared/webmcp/ $HTML_ROOT/_shared/webmcp/
 
-# Sync Ψ — BODY
-rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $WEB_ROOT/arif-fazil.com/
-rsync -avz $SITES_ROOT/arif-fazil.com/999/ $WEB_ROOT/arif-fazil.com/999/
-rsync -avz $SITES_ROOT/shared/ $WEB_ROOT/arif-fazil.com/shared/
+# 3. Sync sites to Caddy-served directories
+echo "[3/5] Syncing sites..."
 
-# Sync Ω — ARIFOS OBSERVATORY (from arifOS kernel static surface)
-rsync -avz --delete /root/arifOS/static/ $WEB_ROOT/html/arifos/
+# arif-fazil.com (Ψ SOUL) — built React app
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $HTML_ROOT/arif/
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
 
-# Sync Others
-rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $WEB_ROOT/aaa.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/apex.arif-fazil.com/ $WEB_ROOT/apex.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/waw.arif-fazil.com/ $WEB_ROOT/waw.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/ $WEB_ROOT/wiki.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/ $WEB_ROOT/forge.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/geox.arif-fazil.com/ $WEB_ROOT/geox.arif-fazil.com/
-rsync -avz --delete $SITES_ROOT/arifosmcp.arif-fazil.com/ $WEB_ROOT/mcp.arif-fazil.com/
+# arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
+rsync -avz --delete $SITES_ROOT/arifos.arif-fazil.com/ $HTML_ROOT/arifos/
 
-# 3. Canonicalize Domain References
-echo "[3/5] Canonicalizing references to mcp.arif-fazil.com..."
-grep -r "arifosmcp.arif-fazil.com" $WEB_ROOT | cut -d: -f1 | sort -u | xargs -I {} sed -i 's/arifosmcp.arif-fazil.com/mcp.arif-fazil.com/g' {} || true
+# aaa.arif-fazil.com (Δ BODY) — built React cockpit
+rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $HTML_ROOT/aaa/
+
+# Other sites
+rsync -avz --delete $SITES_ROOT/geox.arif-fazil.com/   $HTML_ROOT/geox/     2>/dev/null || true
+rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
+rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
 
 # 4. Permissions
 echo "[4/5] Setting permissions..."
-chown -R www-data:www-data $WEB_ROOT
+chown -R www-data:www-data $HTML_ROOT
 
-# 5. Reload Nginx
+# 5. Reload Caddy
 echo "[5/5] Reloading Caddy..."
 caddy reload --config /etc/caddy/Caddyfile
 
-echo "✅ DEPLOYMENT COMPLETE. Constellation is Live."
+echo "DEPLOYMENT COMPLETE. Constellation is Live."
