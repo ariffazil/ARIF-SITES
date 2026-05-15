@@ -21,6 +21,7 @@
 
 (shared_assets) {
     handle /_shared/* {
+        uri strip_prefix /_shared
         root * /var/www/html/_shared
         file_server
     }
@@ -192,9 +193,21 @@ aaa.arif-fazil.com {
     encode zstd gzip
     root * /var/www/html/aaa
 
+    @a2a_static path /a2a/agent-card.json /a2a/agent.json /a2a/agents.json /a2a/status.json /a2a/index.html
+    handle @a2a_static {
+        file_server
+    }
+
     handle /a2a/* {
         reverse_proxy aaa-a2a:3001
     }
+
+    # Built assets have content-hashed names — serve directly, never SPA fallback
+    handle /assets/* {
+        header Cache-Control "public, max-age=31536000, immutable"
+        file_server
+    }
+
     handle {
         try_files {path} /index.html
         file_server
