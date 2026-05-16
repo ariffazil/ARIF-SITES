@@ -1,153 +1,176 @@
-@import url('/root-shell.css');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: #050505;
+    --foreground: #F0F0F0;
+    --border: #222222;
+    --muted: #8A8D91;
+    --accent: #FF4500;
+    --radius: 0px;
+  }
+
   * {
     box-sizing: border-box;
+    border-color: var(--border);
+    border-radius: var(--radius) !important;
   }
 
   html {
     scroll-behavior: smooth;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Satoshi', 'Space Grotesk', sans-serif;
   }
 
   body {
     margin: 0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cabinet Grotesk', 'Space Grotesk', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+
+  code, pre, .technical {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
   }
 
   a {
     color: inherit;
     text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+}
+
+@layer components {
+  .site-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Scanline Overlay */
+  .site-shell::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 999;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    opacity: 0.15;
+  }
+
+  .site-frame {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: 2rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #8A8D91;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #222;
+  }
+
+  .brutalist-card {
+    background: #111;
+    border: 2px solid #222;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .brutalist-card:hover {
+    border-color: var(--accent);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px 0px var(--accent);
+  }
+
+  .badge-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid currentColor;
+    text-transform: uppercase;
+  }
+
+  .badge-status--live { color: #00FF41; border-color: rgba(0, 255, 65, 0.3); background: rgba(0, 255, 65, 0.05); }
+  .badge-status--hold { color: #FF4500; border-color: rgba(255, 69, 0, 0.3); background: rgba(255, 69, 0, 0.05); }
+
+  .button-forge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid #F0F0F0;
+    color: #F0F0F0;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .button-forge:hover {
+    background: #F0F0F0;
+    color: #050505;
+  }
+
+  .button-forge--accent {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .button-forge--accent:hover {
+    background: var(--accent);
+    color: #050505;
   }
 }
 
 @layer utilities {
-  /* ─── SOUL Earth Tone Utilities ─── */
-  .text-blood { color: #8B1A1A; }
-  .text-arterial { color: #B33030; }
-  .text-gold-sovereign { color: #D4AF37; }
-  .text-earth { color: #6B4423; }
-  .text-terracotta { color: #C4703D; }
-  .text-ochre { color: #CC9544; }
-  
-  .bg-blood { background-color: #8B1A1A; }
-  .bg-arterial { background-color: #B33030; }
-  .bg-gold-sovereign { background-color: #D4AF37; }
-  .bg-earth { background-color: #6B4423; }
-  .bg-terracotta { background-color: #C4703D; }
-  .bg-ochre { background-color: #CC9544; }
-  
-  .border-blood { border-color: #8B1A1A; }
-  .border-gold-sovereign { border-color: #D4AF37; }
-  .border-earth { border-color: #6B4423; }
-  
-  /* ─── Strata Effect (Layered Earth) ─── */
-  .bg-strata {
-    background: 
-      linear-gradient(180deg, rgba(139, 26, 26, 0.3) 0%, transparent 30%),
-      linear-gradient(180deg, rgba(107, 68, 35, 0.2) 30%, transparent 60%),
-      linear-gradient(180deg, rgba(196, 112, 61, 0.15) 60%, transparent 100%);
-  }
-  
-  /* ─── Blood Pulse Glow ─── */
-  .glow-gold-sovereign {
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4), 0 0 60px rgba(212, 175, 55, 0.2);
-  }
-  
-  .glow-blood {
-    box-shadow: 0 0 20px rgba(139, 26, 26, 0.5), 0 0 40px rgba(139, 26, 26, 0.3);
-  }
-  
-  /* ─── Jagged Clip Path ─── */
-  .clip-jagged {
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-  }
-  
-  .clip-jagged-sm {
-    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
-  }
+  .text-glow-green { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
+  .text-glow-orange { text-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
 }
 
-/* ─── SOUL-Specific Component Overrides ─── */
-@layer components {
-  /* Override default ring-icon for SOUL */
-  .ring-icon--soul {
-    background: linear-gradient(135deg, rgba(139, 26, 26, 0.4) 0%, rgba(212, 175, 55, 0.2) 100%);
-    color: #D4AF37;
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-  }
-  
-  /* SOUL trinity card with gold glow on hover */
-  .trinity-card {
-    background: #141416;
-    border: 1px solid #27272A;
-    border-radius: 12px;
-    transition: all 0.25s ease;
-  }
-  
-  .trinity-card:hover {
-    border-color: #D4AF37;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), 0 4px 20px rgba(0, 0, 0, 0.5);
-  }
-}
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb { background: #222; border: 2px solid #050505; }
+::-webkit-scrollbar-thumb:hover { background: #FF4500; }
 
-/* Scrollbar — SOUL themed */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0A0A0A;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8B1A1A;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
-}
-
-/* Selection — Blood + Gold */
 ::selection {
-  background: #D4AF37;
-  color: #000;
+  background: #FF4500;
+  color: #050505;
 }
-
-/* ─── Blood Pulse Animation Keyframes ─── */
-@keyframes blood-pulse {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(139, 26, 26, 0.4);
-  }
-  50% { 
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 60px rgba(139, 26, 26, 0.2);
-  }
-}
-
-@keyframes gold-glow {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 40px rgba(212, 175, 55, 0.4);
-  }
-}
-
-.animate-blood-pulse {
-  animation: blood-pulse 3s ease-in-out infinite;
-}
-
-.animate-gold-glow {
-  animation: gold-glow 2s ease-in-out infinite;
-}
-
-/* ============================================================================
- * END SOUL RING STYLES
- * ============================================================================
- * Sealed under 999_SEAL | Ditempa Bukan Diberi
- */

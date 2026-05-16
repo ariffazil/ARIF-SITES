@@ -2,28 +2,48 @@ import { ecosystemLinks } from '@/data/siteContent';
 
 export function ConstellationFooter() {
   return (
-    <footer className="site-footer">
-      <div className="site-frame site-footer__grid">
-        <div>
-          <p className="section-eyebrow">root domain</p>
-          <h2 className="section-title section-title--sm">One human page, two AI pages.</h2>
-          <p className="section-copy">
-            The homepage is written in normal human language. <code>/000</code> holds scars, hard
-            lessons, and wisdom for AI. <code>/999</code> holds verification and machine-facing weight.
+    <footer className="border-t-2 border-forge-iron bg-forge-black py-16 mt-auto">
+      <div className="site-frame grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="space-y-6">
+          <div className="section-label">Root Domain</div>
+          <h2 className="font-display font-black text-2xl uppercase leading-none italic">One human page. Two AI pages.</h2>
+          <p className="font-body text-forge-dim leading-relaxed max-w-md">
+            The homepage is written for human observation. <code className="text-forge-orange bg-forge-steel px-1">/000</code> holds scars, hard
+            lessons, and wisdom for AI agents. <code className="text-forge-green bg-forge-steel px-1">/999</code> holds verification and machine-facing weight.
           </p>
+          <div className="flex gap-4">
+             <a href="/llms.txt" className="badge-status badge-status--live">llms.txt</a>
+             <a href="/soul.json" className="badge-status badge-status--live">soul.json</a>
+          </div>
         </div>
 
-        <div>
-          <p className="section-eyebrow">ecosystem</p>
-          <ul className="footer-links">
+        <div className="space-y-6">
+          <div className="section-label">Ecosystem Federation</div>
+          <ul className="grid grid-cols-2 gap-y-3">
             {ecosystemLinks.map((item) => (
               <li key={item.label}>
-                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+                <a 
+                  href={item.href} 
+                  target={item.external ? '_blank' : undefined} 
+                  rel={item.external ? 'noreferrer' : undefined}
+                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                >
+                  <span className="w-1.5 h-1.5 bg-forge-iron"></span>
                   {item.label}
+                  {item.external && <span className="text-[0.6rem]">↗</span>}
                 </a>
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+      
+      <div className="site-frame mt-16 pt-8 border-t border-forge-iron flex justify-between items-center">
+        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
+          © 2026 Arif Fazil · Sealed under 999_SEAL
+        </div>
+        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest animate-pulse">
+          Substrate: PEAK OPERATIONAL STATE
         </div>
       </div>
     </footer>

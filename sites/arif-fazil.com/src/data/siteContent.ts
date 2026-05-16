@@ -163,12 +163,15 @@ export const systemProjects: SystemProject[] = [
 ];
 
 export const ecosystemLinks: LinkItem[] = [
-  { label: '/ — human page', href: '/' },
-  { label: '/000 — notes for AI', href: '/000/' },
-  { label: '/999 — verification for AI', href: '/999/' },
+  { label: '/ — home', href: '/' },
+  { label: '/000 — genesis', href: '/000/' },
+  { label: '/999 — proof', href: '/999/' },
+  { label: '/discoveries', href: '/discoveries/' },
+  { label: '/constellation', href: '/constellation/' },
+  { label: '/wealth', href: '/wealth/' },
+  { label: '/canon', href: '/canon/' },
+  { label: '/essays', href: '/essays/' },
   { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
-  { label: 'mcp', href: 'https://mcp.arif-fazil.com', external: true },
-  { label: 'geox', href: 'https://geox.arif-fazil.com', external: true },
 ];
 
 export const contactLinks: LinkItem[] = [

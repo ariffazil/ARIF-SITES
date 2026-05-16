@@ -4,6 +4,10 @@ import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { Home } from '@/pages/Home';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
+import { Discoveries } from '@/pages/Discoveries';
+import { Constellation } from '@/pages/Constellation';
+import { Canon } from '@/pages/Canon';
+import { Essays } from '@/pages/Essays';
 
 function App() {
   return (
@@ -17,6 +21,14 @@ function App() {
             <Route path="/000/" element={<Genesis />} />
             <Route path="/wealth" element={<Wealth />} />
             <Route path="/wealth/" element={<Wealth />} />
+            <Route path="/discoveries" element={<Discoveries />} />
+            <Route path="/discoveries/" element={<Discoveries />} />
+            <Route path="/constellation" element={<Constellation />} />
+            <Route path="/constellation/" element={<Constellation />} />
+            <Route path="/canon" element={<Canon />} />
+            <Route path="/canon/" element={<Canon />} />
+            <Route path="/essays" element={<Essays />} />
+            <Route path="/essays/" element={<Essays />} />
           </Routes>
         </main>
         <ConstellationFooter />
