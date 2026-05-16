@@ -1,28 +1,34 @@
 # arif-fazil.com — machine-readable index
 
 ## Role
-Human-first professional homepage for Muhammad Arif bin Fazil (Arif Fazil), with deeper machine-readable layers for origin and proof.
+Human-first professional homepage for Muhammad Arif bin Fazil (Arif Fazil), a Malaysian exploration geoscientist and creator of arifOS.
+
+## The Sovereign (Ψ SOUL)
+Arif Fazil is a Senior Exploration Geoscientist specializing in full-spectrum subsurface strategy and risk under uncertainty. He has made material contributions to major discoveries in offshore Malaysia (BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1). He is the creator of arifOS, a constitutional AI governance kernel designed to enforce "adult supervision" for agents in high-stakes environments.
+
+## The Federation Architecture (ΔΩΨ)
+- Ψ SOUL: Human intent and values (arif-fazil.com)
+- Ω MIND: Constitutional law and invariants (arifos.arif-fazil.com)
+- Δ BODY: Machine execution and tools (aaa.arif-fazil.com)
 
 ## Canonical routes
 - `/` — present-layer homepage for humans, collaborators, and first-contact readers
-- `/000/` — genesis and wisdom archive explaining how arifOS was forged
-- `/999/` — trust and proof chamber with public verification artifacts
+- `/000/` — genesis and wisdom archive (Genesis Chamber)
+- `/999/` — trust and proof chamber (Proof Chamber)
+- `/wealth/` — daily capital intelligence briefing
+- `/discoveries/` — documented subsurface impact history
 
 ## Related public surfaces
-- `https://wiki.arif-fazil.com` — documentation shell
-- `https://aaa.arif-fazil.com` — protocol and operator cockpit
-- `https://mcp.arif-fazil.com` — runtime and tools surface
-- `https://geox.arif-fazil.com` — earth intelligence apps
+- `https://arifos.arif-fazil.com` — Ω MIND (Docs & Kernel Law)
+- `https://aaa.arif-fazil.com` — Δ BODY (Operator Cockpit)
+- `https://mcp.arif-fazil.com` — Execution Surface
+- `https://geox.arif-fazil.com` — Earth Intelligence (Φ)
+- `https://wealth.arif-fazil.com` — Capital Intelligence (Ξ)
 
-## Human summary
-Arif Fazil is a senior exploration geoscientist and AI systems architect. The work centers on evidence, uncertainty calibration, route clarity, and governed machine systems rather than symbolic branding.
-
-## Verification surfaces
-- `/page.json`
-- `/llms.json`
-- `/.well-known/agent.json`
-- `/.well-known/did.json`
-- `/proof/geologist-credential.json`
+## Operational Invariants
+1. F1 AMANAH: Reversible-First action.
+2. F7 HUMILITY: Epistemic clarity (CLAIM/PLAUSIBLE/HYPOTHESIS).
+3. F13 SOVEREIGN: Mandatory human veto power.
 
 ## Source
 - Repository: `https://github.com/ariffazil/arif-sites`
