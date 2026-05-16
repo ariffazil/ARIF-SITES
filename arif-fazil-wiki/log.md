@@ -84,7 +84,7 @@
 | arif-fazil.com | Ψ SOUL | Red/Jagged/Fractal | v4.0 deployed |
 | arifos.arif-fazil.com | Ω MIND | Cyan/Grid/Precise | Operational |
 | aaa.arif-fazil.com | Δ BODY | Gold/Rounded/Organic | Operational |
-| arifosmcp.arif-fazil.com | Infrastructure | Dashboard | 33 tools active |
+| mcp.arif-fazil.com | Infrastructure | MCP Gateway | 13 canonical tools |
 | geox.arif-fazil.com | GEOX | Deep space/Gold | Traefik routed |
 
 **Key Documentation:**

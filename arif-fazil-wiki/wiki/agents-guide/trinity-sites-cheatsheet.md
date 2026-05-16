@@ -50,9 +50,9 @@ Need to update the PROTOCOL SPECS (MCP, A2A, WebMCP)?
     Color: Gold (#D4A853)
 
 Need to CHECK SYSTEM HEALTH?
-└── Endpoint: https://arifosmcp.arif-fazil.com/health
-    Tools: 33 loaded
-    Substrates: 6 configured
+└── Endpoint: https://mcp.arif-fazil.com/health
+    Tools: 13 canonical (arif_* naming)
+    MCP: https://mcp.arif-fazil.com/mcp (canonical) | https://arifOS.arif-fazil.com/mcp (primary)
 
 Need to UPDATE ALL NAVIGATION?
 └── All sites have inline <nav id="rn"> in index.html
@@ -106,11 +106,12 @@ docker exec arifos_landings rm -rf /usr/share/nginx/html/aaa.arif-fazil.com/* &&
 docker cp . arifos_landings:/usr/share/nginx/html/aaa.arif-fazil.com/
 ```
 
-**MCP Dashboard:**
+**MCP Dashboard** (deprecated — use `mcp.arif-fazil.com`):
 ```bash
-cd /root/arif-sites/sites/arifosmcp.arif-fazil.com && \
-docker exec arifos_landings rm -rf /usr/share/nginx/html/arifosmcp.arif-fazil.com/* && \
-docker cp . arifos_landings:/usr/share/nginx/html/arifosmcp.arif-fazil.com/
+# arifosmcp.arif-fazil.com is now a 302 redirect to mcp.arif-fazil.com
+# Live MCP endpoints:
+#   https://mcp.arif-fazil.com/mcp  (canonical)
+#   https://arifOS.arif-fazil.com/mcp (primary)
 ```
 
 ---
@@ -135,8 +136,7 @@ docker cp . arifos_landings:/usr/share/nginx/html/arifosmcp.arif-fazil.com/
 │   │   ├── index.html               # AAA Wire protocols
 │   │   └── styles.css
 │   │
-│   └── arifosmcp.arif-fazil.com/    # MCP Dashboard
-│       └── index.html               # Live health dashboard
+│   └── arifosmcp.arif-fazil.com/    # Legacy redirect → mcp.arif-fazil.com (do not use)
 │
 ├── arifOS/
 │   └── infrastructure/nginx/
@@ -164,7 +164,8 @@ docker cp . arifos_landings:/usr/share/nginx/html/arifosmcp.arif-fazil.com/
 https://arif-fazil.com              → SOUL (red)
 https://arifos.arif-fazil.com       → MIND (cyan)
 https://aaa.arif-fazil.com          → BODY (gold)
-https://arifosmcp.arif-fazil.com    → MCP Dashboard
+https://mcp.arif-fazil.com          → MCP Gateway (canonical)
+https://arifOS.arif-fazil.com/mcp   → MCP Primary (canonical)
 https://geox.arif-fazil.com         → GEOX GUI
 https://forge.arif-fazil.com        → FORGE (future)
 ```
@@ -214,7 +215,7 @@ All sites share a unified navigation footer. To update:
 
 ### Check Health Status
 ```bash
-curl -s https://arifosmcp.arif-fazil.com/health | jq '.'
+curl -s https://mcp.arif-fazil.com/health | jq '.'
 ```
 
 ### Restart After Deployment

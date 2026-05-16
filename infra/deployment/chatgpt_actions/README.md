@@ -10,14 +10,14 @@ This package targets ChatGPT Custom GPT Actions using arifOS via REST (not MCP).
 
 ## Expected base URL
 
-- Production: `https://arifosmcp.arif-fazil.com`
+- Production: `https://mcp.arif-fazil.com`
 
 ## Quick verification
 
 ```bash
-curl -fsS https://arifosmcp.arif-fazil.com/health
-curl -fsS https://arifosmcp.arif-fazil.com/openapi.json
-curl -fsS -X POST https://arifosmcp.arif-fazil.com/checkpoint \
+curl -fsS https://mcp.arif-fazil.com/health
+curl -fsS https://mcp.arif-fazil.com/openapi.json
+curl -fsS -X POST https://mcp.arif-fazil.com/checkpoint \
   -H "Content-Type: application/json" \
   -d '{"task":"Explain photosynthesis","mode":"full"}'
 ```

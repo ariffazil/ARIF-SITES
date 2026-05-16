@@ -1,12 +1,12 @@
 http:
   routers:
     arifos-http:
-      rule: "Host(`arifosmcp.arif-fazil.com`)"
+      rule: "Host(`mcp.arif-fazil.com`)"
       entryPoints: ["web"]
       middlewares: ["redirect-https"]
       service: arifos-svc
     arifos-https:
-      rule: "Host(`arifosmcp.arif-fazil.com`)"
+      rule: "Host(`mcp.arif-fazil.com`)"
       entryPoints: ["websecure"]
       tls:
         certResolver: letsencrypt

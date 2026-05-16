@@ -41,7 +41,7 @@ At a high level: LSP = “code eyes”, ACP = “editor↔agent voice”, MCP = 
 
 - MCP ↔ arifOS  
   - arifOS *is* an MCP server already; all your tools (`arifOS_kernel`, `search_reality`, `office_forge_*`, `lsp_*`, etc.) are surfaced via the MCP spec that hosts like Claude Desktop or ChatGPT can auto‑discover. [codilime](https://codilime.com/blog/model-context-protocol-explained/)
-  - MCP is the **spine**, where each tool is a governed syscall in your 000→999 pipeline, and each AI product you use is just another MCP client pointing at `https://arifosmcp.arif-fazil.com/mcp`.
+  - MCP is the **spine**, where each tool is a governed syscall in your 000→999 pipeline, and each AI product you use is just another MCP client pointing at `https://mcp.arif-fazil.com/mcp`.
 
 - A2A ↔ arifOS  
   - A2A lets your arifOS “kernel agent” discover and collaborate with other agents that publish Agent Cards: e.g. a specialized travel agent, code‑migration agent, or financial simulation agent. [ibm](https://www.ibm.com/think/topics/agent-communication-protocol)
