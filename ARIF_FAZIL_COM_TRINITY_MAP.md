@@ -55,7 +55,7 @@
 
 > **Note:** `arifos.arif-fazil.com` (Cloudflare Pages) was **deleted 2026-04-11**. Content merged into:
 > - `apex.arif-fazil.com` — Primary constitutional floor specs
-> - `arifosmcp.arif-fazil.com/#constitution` — Kernel integration with MCP
+> - `mcp.arif-fazil.com` — MCP gateway (canonical)
 
 ### Δ BODY — `aaa.arif-fazil.com`
 | Attribute | Value |
@@ -75,16 +75,19 @@
 
 ## III. INFRASTRUCTURE SITES
 
-### arifOS MCP Dashboard — `arifosmcp.arif-fazil.com`
+### arifOS MCP Gateway — `mcp.arif-fazil.com`
 | Attribute | Value |
 |-----------|-------|
-| **Purpose** | Live MCP server health & tool inventory |
+| **Purpose** | Live MCP server — 13 canonical governance tools |
 | **Type** | Dynamic (API-driven) |
-| **Health Endpoint** | `https://arifosmcp.arif-fazil.com/health` |
-| **Tools Count** | 33 tools, 6 substrates, 11 providers |
-| **Tech Stack** | HTML + Vanilla JS (fetches live data) |
-| **Deployment** | Served via arifos_landings nginx, proxied to arifosmcp:8080 |
-| **Key Features** | Trinity grid, thermodynamic metrics, SEAL badge |
+| **Health Endpoint** | `https://mcp.arif-fazil.com/health` |
+| **MCP Endpoint** | `https://mcp.arif-fazil.com/mcp` (canonical) |
+| **Primary Endpoint** | `https://arifOS.arif-fazil.com/mcp` (primary) |
+| **Tools Count** | 13 canonical tools (arif_* naming) |
+| **Tech Stack** | FastMCP + FastAPI + Uvicorn (Docker: arifosmcp:8080) |
+| **Deployment** | Docker container via compose; Caddy reverse proxy |
+| **Key Features** | Trinity grid, thermodynamic metrics, F1-F13 floor enforcement |
+| **Note** | `arifosmcp.arif-fazil.com` is a legacy redirect — do not use directly |
 
 ### GEOX — `geox.arif-fazil.com`
 | Attribute | Value |
@@ -183,7 +186,7 @@ fazil.com  arif-fazil.com arif-fazil.com arif-fazil.com
 │   │   └── package.json
 │   ├── arifos.arif-fazil.com/   # Ω MIND (React + Vite)
 │   ├── aaa.arif-fazil.com/      # Δ BODY (HTML + Tailwind)
-│   └── arifosmcp.arif-fazil.com/# MCP Dashboard (HTML)
+│   └── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
 ├── arifOS/
 │   └── infra/
 │       └── nginx/
@@ -196,20 +199,21 @@ fazil.com  arif-fazil.com arif-fazil.com arif-fazil.com
 
 ## VI. API ENDPOINTS
 
-### MCP Server (`arifosmcp.arif-fazil.com`)
+### MCP Server (`mcp.arif-fazil.com`)
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/health` | GET | Health status, tools, substrates, providers |
-| `/tools` | GET | Tool inventory (33 tools) |
-| `/mcp` | POST | MCP protocol endpoint |
+| `/health` | GET | Health status, 13 canonical tools, thermodynamic metrics |
+| `/tools` | GET | Tool inventory (13 tools) |
+| `/mcp` | POST | MCP protocol endpoint (canonical) |
+| `https://arifOS.arif-fazil.com/mcp` | POST | MCP primary endpoint |
 
 ### Health Response Schema
 ```json
 {
   "status": "healthy",
-  "tools_loaded": 33,
-  "substrates": { "git": "configured", ... },
-  "providers": { "openai": "configured", ... },
+  "tools_loaded": 13,
+  "canonical_tools": ["arif_session_init", "arif_sense_observe", ...],
+  "floors_count": 13,
   "thermodynamic": { "verdict": "999_SEAL", ... },
   "timestamp": "ISO8601"
 }
@@ -230,7 +234,7 @@ docker cp dist/. arifos_landings:/usr/share/nginx/html/arif-fazil.com/
 ### Deploy MIND Ring (apex.arif-fazil.com)
 ```bash
 # DEPREATED: arifos.arif-fazil.com Cloudflare Pages deleted 2026-04-11
-# MIND content now at apex.arif-fazil.com (VPS) and arifosmcp.arif-fazil.com
+# MIND content now at apex.arif-fazil.com (VPS) and mcp.arif-fazil.com (MCP gateway)
 cd /root/arif-sites/sites/apex.arif-fazil.com
 # Static HTML - no build needed
 docker exec arifos_landings rm -rf /usr/share/nginx/html/apex.arif-fazil.com/*
@@ -245,12 +249,13 @@ docker exec arifos_landings rm -rf /usr/share/nginx/html/aaa.arif-fazil.com/*
 docker cp . arifos_landings:/usr/share/nginx/html/aaa.arif-fazil.com/
 ```
 
-### Deploy MCP Dashboard
+### Deploy MCP Gateway
 ```bash
-cd /root/arif-sites/sites/arifosmcp.arif-fazil.com
-# HTML files - no build needed
-docker exec arifos_landings rm -rf /usr/share/nginx/html/arifosmcp.arif-fazil.com/*
-docker cp . arifos_landings:/usr/share/nginx/html/arifosmcp.arif-fazil.com/
+# arifosmcp.arif-fazil.com is a legacy redirect — live service is Docker container
+# MCP endpoints:
+#   https://mcp.arif-fazil.com/mcp  (canonical)
+#   https://arifOS.arif-fazil.com/mcp (primary)
+# Health: curl https://mcp.arif-fazil.com/health
 ```
 
 ---
@@ -281,7 +286,8 @@ All sites operate under **arifOS F1-F13**:
 │  Δ BODY   → aaa.arif-fazil.com    → HTML, Gold, Rounded   │
 ├────────────────────────────────────────────────────────────┤
 │  INFRASTRUCTURE:                                           │
-│  MCP Dashboard → arifosmcp.arif-fazil.com (live API)      │
+│  MCP Gateway  → mcp.arif-fazil.com (canonical)           │
+│  MCP Primary → arifOS.arif-fazil.com/mcp (primary)       │
 │  GEOX          → geox.arif-fazil.com (Traefik routed)     │
 ├────────────────────────────────────────────────────────────┤
 │  DEPLOYMENT:                                               │
@@ -306,7 +312,7 @@ Need to update BODY (protocols)?
   └─→ /sites/aaa.arif-fazil.com/ → HTML + Gold theme
 
 Need to check system health?
-  └─→ curl https://arifosmcp.arif-fazil.com/health
+  └─→ curl https://mcp.arif-fazil.com/health
 
 Need to update navigation?
   └─→ All sites have inline <nav id="rn"> in index.html

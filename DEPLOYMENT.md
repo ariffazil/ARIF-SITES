@@ -94,7 +94,7 @@ Browser ──▶ Static HTML/JS (CDN)
 **Configuration:**
 ```json
 {
-  "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "transport": "sse",
   "auth": "bearer"
 }

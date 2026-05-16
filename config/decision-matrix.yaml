@@ -233,7 +233,7 @@ escalation:
   level_3_constitution:
     condition: "constitutional_question"
     action: "query_arifos_judge"
-    endpoint: "https://arifosmcp.arif-fazil.com/judge"
+    endpoint: "https://mcp.arif-fazil.com/judge"
     
   level_4_human:
     condition: "888_hold_active"

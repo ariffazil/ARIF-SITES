@@ -23,7 +23,7 @@ arif-sites/
 │   ├── travel.arif-fazil.com/ # React + Vite + MapLibre (has dev proxy)
 │   ├── aaa.arif-fazil.com/   # Static HTML
 │   ├── arifos.arif-fazil.com/# Static docs
-│   ├── arifosmcp.arif-fazil.com/ # Static docs / MCP surface
+│   ├── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
 │   ├── forge.arif-fazil.com/ # Static CI/CD surface
 │   ├── wiki.arif-fazil.com/  # Static constitutional wiki
 │   ├── geox.arif-fazil.com/  # Static lab/field GUI
