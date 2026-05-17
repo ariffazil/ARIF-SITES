@@ -82,6 +82,7 @@
         }
         .card:hover { border-color: var(--border-hover); }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         .btn {
             display: inline-flex;
@@ -192,6 +193,7 @@
         }
         @media (max-width: 768px) {
             .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: repeat(2, 1fr); }
             .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
@@ -213,6 +215,7 @@
                 <nav style="display: flex; gap: 24px; font-size: 14px;">
                     <a href="#quickstart" style="color: var(--text-secondary);">Quickstart</a>
                     <a href="#capabilities" style="color: var(--text-secondary);">Capabilities</a>
+                    <a href="#federation-sot" style="color: var(--text-secondary);">SOT</a>
                     <a href="#protocols" style="color: var(--text-secondary);">Protocols</a>
                     <a href="#constitution" style="color: var(--text-secondary);">Constitution</a>
                     <a href="#governance" style="color: var(--text-secondary);">Governance</a>
@@ -538,6 +541,222 @@
             </div>
         </section>
 
+        <!-- Federation SOT Dashboard -->
+        <section class="section" id="federation-sot">
+            <div class="container">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                    <h2 style="margin-bottom: 0;">Federation Source of Truth</h2>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <span class="badge badge-cyan" id="federation-refresh-badge" style="font-size: 10px;">
+                            <span id="federation-last-update">--</span>
+                        </span>
+                        <button onclick="federationSOT.refresh()" style="background:none;border:1px solid var(--border);border-radius:4px;color:var(--text-secondary);font-size:11px;padding:4px 8px;cursor:pointer;" title="Refresh now">↻</button>
+                    </div>
+                </div>
+                <p style="margin-bottom: 32px;">Live constitutional posture from all four federation organs. Auto-refreshes every 60 seconds. Probe source: <code id="federation-probe-source" style="font-size:11px;">--</code></p>
+
+                <!-- Federation organ cards -->
+                <div class="grid-4" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 32px;" id="federation-organs">
+                    <div class="card organ-card" id="organ-arifos">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <span style="font-size: 16px;">Δ</span>
+                            <span style="font-weight: 600; font-size: 14px;">arifOS</span>
+                            <span class="badge badge-gold" style="margin-left: auto; font-size: 9px;">MIND</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span class="status-dot" id="organ-arifos-dot" style="width:6px;height:6px;"></span>
+                            <span style="font-size: 12px; color: var(--text-secondary);" id="organ-arifos-status">Probing...</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 12px;">
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--gold);" id="organ-arifos-tools">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">tools</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--cyan);" id="organ-arifos-prompts">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">prompts</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--text);" id="organ-arifos-resources">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">resources</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 10px; color: var(--text-muted);" id="organ-arifos-version">--</div>
+                    </div>
+
+                    <div class="card organ-card" id="organ-geox">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <span style="font-size: 16px;">Φ</span>
+                            <span style="font-weight: 600; font-size: 14px;">GEOX</span>
+                            <span class="badge badge-cyan" style="margin-left: auto; font-size: 9px;">EARTH</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span class="status-dot" id="organ-geox-dot" style="width:6px;height:6px;"></span>
+                            <span style="font-size: 12px; color: var(--text-secondary);" id="organ-geox-status">Probing...</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 12px;">
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--gold);" id="organ-geox-tools">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">tools</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 10px; color: var(--text-muted);" id="organ-geox-version">--</div>
+                    </div>
+
+                    <div class="card organ-card" id="organ-wealth">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <span style="font-size: 16px;">Ψ</span>
+                            <span style="font-weight: 600; font-size: 14px;">WEALTH</span>
+                            <span class="badge" style="background:rgba(34,197,94,0.15);color:#4ade80;margin-left:auto;font-size:9px;">CAPITAL</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span class="status-dot" id="organ-wealth-dot" style="width:6px;height:6px;"></span>
+                            <span style="font-size: 12px; color: var(--text-secondary);" id="organ-wealth-status">Probing...</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 12px;">
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--gold);" id="organ-wealth-public">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">public</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--text-muted);" id="organ-wealth-aliases">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">aliases</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 10px; color: var(--text-muted);" id="organ-wealth-version">--</div>
+                    </div>
+
+                    <div class="card organ-card" id="organ-well">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <span style="font-size: 16px;">♥</span>
+                            <span style="font-weight: 600; font-size: 14px;">WELL</span>
+                            <span class="badge" style="background:rgba(244,114,182,0.15);color:#f472b6;margin-left:auto;font-size:9px;">SUBSTRATE</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span class="status-dot" id="organ-well-dot" style="width:6px;height:6px;"></span>
+                            <span style="font-size: 12px; color: var(--text-secondary);" id="organ-well-status">Probing...</span>
+                        </div>
+                        <div style="display: flex; gap: 12px; margin-top: 12px;">
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: var(--gold);" id="organ-well-score">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">well-score</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 20px; font-weight: 700; color: #f472b6;" id="organ-well-verdict">--</div>
+                                <div style="font-size: 10px; color: var(--text-muted);">verdict</div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 8px; font-size: 10px; color: var(--text-muted);" id="organ-well-version">--</div>
+                    </div>
+                </div>
+
+                <!-- Langfuse + Vault999 telemetry row -->
+                <div class="grid-3" style="margin-bottom: 32px;" id="telemetry-row">
+                    <div class="card">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 14px;">📡</span>
+                            <span style="font-weight: 600; font-size: 13px;">Langfuse Tracing</span>
+                            <span class="badge badge-green" id="langfuse-status-badge" style="font-size: 9px; margin-left: auto;">--</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);" id="langfuse-detail">Probing...</div>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 14px;">🔗</span>
+                            <span style="font-weight: 600; font-size: 13px;">VAULT999 Ledger</span>
+                            <span class="badge badge-green" id="vault999-status-badge" style="font-size: 9px; margin-left: auto;">--</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);" id="vault999-detail">Probing...</div>
+                    </div>
+                    <div class="card">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 14px;">🏛️</span>
+                            <span style="font-weight: 600; font-size: 13px;">ML Floors</span>
+                            <span class="badge badge-green" id="mlfloors-status-badge" style="font-size: 9px; margin-left: auto;">--</span>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-muted);" id="mlfloors-detail">Probing...</div>
+                    </div>
+                </div>
+
+                <!-- Gap Table -->
+                <div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                        <h3 style="margin-bottom: 0;">Tracked Gaps <span id="gap-count" style="color: var(--text-muted); font-weight: 400; font-size: 14px;">(6 active)</span></h3>
+                        <span class="badge" style="background: rgba(239,68,68,0.1); color: var(--red); font-size: 9px;" id="gap-severity-summary">2 HIGH · 3 MEDIUM · 1 LOW</span>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table style="font-size: 12px;">
+                            <thead>
+                                <tr>
+                                    <th style="width:32px;">#</th>
+                                    <th>Gap</th>
+                                    <th style="width:72px;">Severity</th>
+                                    <th style="width:80px;">Class</th>
+                                    <th style="width:80px;">Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="gap-table-body">
+                                <tr id="gap-g01">
+                                    <td><code style="color: var(--gold);">G01</code></td>
+                                    <td>GEOX tool count unverified — live probe returns no tool count</td>
+                                    <td><span class="badge" style="background:rgba(251,191,36,0.1);color:#fbbf24;font-size:9px;">MEDIUM</span></td>
+                                    <td><span style="font-size:11px;color:var(--cyan);">GOVERNANCE</span></td>
+                                    <td><span style="font-size:11px;color:var(--gold);">OPEN</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Add tool_count to GEOX /health or create MCP probe</td>
+                                </tr>
+                                <tr id="gap-g02">
+                                    <td><code style="color: var(--gold);">G02</code></td>
+                                    <td>well_assess_metabolism failing per federation_audit</td>
+                                    <td><span class="badge" style="background:rgba(251,191,36,0.1);color:#fbbf24;font-size:9px;">MEDIUM</span></td>
+                                    <td><span style="font-size:11px;color:var(--cyan);">GOVERNANCE</span></td>
+                                    <td><span style="font-size:11px;color:var(--gold);">OPEN</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Investigate WELL metabolism tool; add to gap table</td>
+                                </tr>
+                                <tr id="gap-g03">
+                                    <td><code style="color: var(--gold);">G03</code></td>
+                                    <td>AAA/A-FORGE MCP discovery — internal bridges mislabeled as public gaps</td>
+                                    <td><span class="badge" style="background:rgba(251,191,36,0.1);color:#fbbf24;font-size:9px;">MEDIUM</span></td>
+                                    <td><span style="font-size:11px;color:var(--cyan);">LABELING</span></td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Reclassified as internal-only; removed from public surface</td>
+                                </tr>
+                                <tr id="gap-g04">
+                                    <td><code style="color: var(--gold);">G04</code></td>
+                                    <td>WEALTH tool count mislabeled — 15 public + 68 aliases ≠ "50"</td>
+                                    <td><span class="badge" style="background:rgba(107,114,128,0.1);color:#9ca3af;font-size:9px;">LOW</span></td>
+                                    <td><span style="font-size:11px;color:var(--cyan);">LABELING</span></td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Observatory now shows public vs alias distinction</td>
+                                </tr>
+                                <tr id="gap-g05">
+                                    <td><code style="color: var(--gold);">G05</code></td>
+                                    <td>Langfuse contradiction — page label vs actual status</td>
+                                    <td><span class="badge" style="background:rgba(107,114,128,0.1);color:#9ca3af;font-size:9px;">LOW</span></td>
+                                    <td><span style="font-size:11px;color:var(--cyan);">LABELING</span></td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Langfuse status now driven by live probe</td>
+                                </tr>
+                                <tr id="gap-g06">
+                                    <td><code style="color: var(--gold);">G06</code></td>
+                                    <td>Grafana 503 — transient infrastructure (was incorrectly labeled HIGH)</td>
+                                    <td><span class="badge" style="background:rgba(107,114,128,0.1);color:#9ca3af;font-size:9px;">LOW</span></td>
+                                    <td><span style="font-size:11px;color:var(--text-muted);">INFRA</span></td>
+                                    <td><span style="font-size:11px;color:var(--green);">RESOLVED</span></td>
+                                    <td style="color:var(--text-muted);font-size:11px;">Grafana healthy; no gap filing needed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 12px; font-size: 11px; color: var(--text-muted);">
+                        <span style="color: var(--cyan);">● LIVE_PROBE</span> — metric sourced from live health endpoint ·
+                        <span style="color: var(--gold);">● STATIC</span> — hardcoded value ·
+                        <span style="color: var(--text-muted);">● CACHED</span> — from server manifest
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Operational Status -->
         <section class="section" id="status">
             <div class="container">
@@ -645,7 +864,11 @@
                             <code style="font-size: 11px; color: var(--cyan);">https://mcp.arif-fazil.com/mcp</code>
                             <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Tool namespace:</div>
                             <code style="font-size: 11px;">arifos_*</code>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">13 sovereign tools + 8 resources</div>
+                            <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                <span class="badge badge-gold" id="trinity-arifos-tools-badge" style="font-size: 9px;">-- tools</span>
+                                <span class="badge badge-cyan" id="trinity-arifos-prompts-badge" style="font-size: 9px;">-- prompts</span>
+                                <span class="badge" style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:9px;" id="trinity-arifos-resources-badge">-- resources</span>
+                            </div>
                         </div>
                         <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
                             <div style="font-size: 18px; font-weight: 700; color: var(--cyan); margin-bottom: 8px;">Φ GEOX</div>
@@ -655,7 +878,10 @@
                             <code style="font-size: 11px; color: var(--cyan);">https://geox.arif-fazil.com/mcp</code>
                             <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Tool namespace:</div>
                             <code style="font-size: 11px;">geox_*</code>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">15 tools — includes mcp_health_check</div>
+                            <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                <span class="badge badge-gold" id="trinity-geox-tools-badge" style="font-size: 9px;">-- tools</span>
+                                <span class="badge badge-cyan" id="trinity-geox-probe-badge" style="font-size: 9px;">LIVE</span>
+                            </div>
                         </div>
                         <div style="background: var(--bg-primary); padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
                             <div style="font-size: 18px; font-weight: 700; color: #4ade80; margin-bottom: 8px;">Ψ WEALTH</div>
@@ -665,7 +891,10 @@
                             <code style="font-size: 11px; color: #4ade80;">https://wealth.arif-fazil.com/mcp</code>
                             <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Tool namespace:</div>
                             <code style="font-size: 11px;">wealth_*</code>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">14 tools — capital thermodynamics live</div>
+                            <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                <span class="badge badge-gold" id="trinity-wealth-tools-badge" style="font-size: 9px;">-- public</span>
+                                <span class="badge" style="background:rgba(255,255,255,0.05);color:var(--text-muted);font-size:9px;" id="trinity-wealth-aliases-badge">-- aliases</span>
+                            </div>
                         </div>
                     </div>
 
@@ -678,7 +907,10 @@
                             <code style="font-size: 11px; color: #f472b6;">https://well.arif-fazil.com/mcp</code>
                             <div style="margin-top: 12px; font-size: 11px; color: var(--text-secondary); margin-bottom: 4px;">Tool namespace:</div>
                             <code style="font-size: 11px;">well_*</code>
-                            <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">12 tools — H-WELL + M-WELL + C-WELL</div>
+                            <div style="display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap;">
+                                <span class="badge badge-gold" id="trinity-well-tools-badge" style="font-size: 9px;">-- tools</span>
+                                <span class="badge" style="background:rgba(244,114,182,0.15);color:#f472b6;font-size:9px;" id="trinity-well-score-badge">-- score</span>
+                            </div>
                         </div>
                     </div>
 
@@ -760,35 +992,41 @@
 
     <script>
         const API = 'https://mcp.arif-fazil.com';
-        
+        const FEDERATION = {
+            arifos: 'https://mcp.arif-fazil.com',
+            geox:    'https://geox.arif-fazil.com',
+            wealth:  'https://wealth.arif-fazil.com',
+            well:    'https://well.arif-fazil.com'
+        };
+
         async function fetchHealth() {
             try {
                 const res = await fetch(`${API}/health`);
                 const data = await res.json();
-                
+
                 // Status
                 const isHealthy = data.status === 'healthy';
                 document.getElementById('status-dot').className = 'status-dot' + (isHealthy ? '' : ' degraded');
                 document.getElementById('status-main').textContent = isHealthy ? 'Operational' : 'Degraded';
-                document.getElementById('status-sub').textContent = isHealthy 
-                    ? 'All constitutional floors active' 
+                document.getElementById('status-sub').textContent = isHealthy
+                    ? 'All constitutional floors active'
                     : 'System experiencing issues';
                 document.getElementById('header-status-text').textContent = isHealthy ? 'Live' : 'Degraded';
-                
+
                 // Version
                 document.getElementById('version').textContent = data.version || '--';
                 document.getElementById('transport').textContent = (data.transport || 'HTTP').toUpperCase();
-                
+
                 // Thermodynamic
                 if (data.thermodynamic) {
                     document.getElementById('vitality').textContent = (data.thermodynamic.vitality_index || 0).toFixed(2);
                     document.getElementById('peace').textContent = (data.thermodynamic.peace_squared || 0).toFixed(2);
                     document.getElementById('confidence').textContent = (data.thermodynamic.confidence || 0).toFixed(2);
                 }
-                
+
                 // Counts
                 document.getElementById('tools-count').textContent = data.tools_loaded || '--';
-                
+
             } catch (e) {
                 document.getElementById('status-dot').className = 'status-dot down';
                 document.getElementById('status-main').textContent = 'Unreachable';
@@ -801,9 +1039,14 @@
             try {
                 const res = await fetch(`${API}/.well-known/mcp/server.json`);
                 const data = await res.json();
-                
+
                 document.getElementById('prompts-count').textContent = data.prompts?.length || '--';
                 document.getElementById('resources-count').textContent = data.resources?.length || '--';
+
+                // Trinity badges - arifOS (from manifest)
+                document.getElementById('trinity-arifos-tools-badge').textContent = (data.tools?.length || '--') + ' tools';
+                document.getElementById('trinity-arifos-prompts-badge').textContent = (data.prompts?.length || '--') + ' prompts';
+                document.getElementById('trinity-arifos-resources-badge').textContent = (data.resources?.length || '--') + ' resources';
             } catch (e) {
                 // Silent fail
             }
@@ -812,7 +1055,7 @@
         function showTab(btn, id) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
-            
+
             const examples = {
                 claude: `<code>npx @anthropic/mcp install arifos \\
   --url https://mcp.arif-fazil.com/mcp
@@ -837,13 +1080,181 @@
     "id": 1
   }'`
             };
-            
+
             document.getElementById('sdk-example').innerHTML = examples[id];
         }
 
-        // Init
+        // ─────────────────────────────────────────────────────────
+        // FederationSOT — Live Source-of-Truth probe
+        // Probes all 4 organs in parallel, updates dashboard
+        // ─────────────────────────────────────────────────────────
+        class FederationSOT {
+            constructor() {
+                this.probeSource = 'LIVE_PROBE';
+                this.lastUpdate = null;
+                this.interval = 60000; // 60s
+                this._timer = null;
+            }
+
+            async probe() {
+                const [arifos, geox, wealth, well] = await Promise.allSettled([
+                    this.fetchOrgan(FEDERATION.arifos, 'arifos'),
+                    this.fetchOrgan(FEDERATION.geox, 'geox'),
+                    this.fetchOrgan(FEDERATION.wealth, 'wealth'),
+                    this.fetchOrgan(FEDERATION.well, 'well')
+                ]);
+
+                this.renderOrgan('arifos', arifos.status === 'fulfilled' ? arifos.value : null);
+                this.renderOrgan('geox', geox.status === 'fulfilled' ? geox.value : null);
+                this.renderOrgan('wealth', wealth.status === 'fulfilled' ? wealth.value : null);
+                this.renderOrgan('well', well.status === 'fulfilled' ? well.value : null);
+
+                // arifOS-specific telemetry
+                if (arifos.status === 'fulfilled' && arifos.value) {
+                    this.renderArifOSExtras(arifos.value);
+                }
+
+                // Trinity badges for GEOX / WEALTH / WELL
+                if (geox.status === 'fulfilled' && geox.value) {
+                    const tools = geox.value.tool_count || '--';
+                    document.getElementById('trinity-geox-tools-badge').textContent = tools + ' tools';
+                }
+                if (wealth.status === 'fulfilled' && wealth.value) {
+                    const pub = wealth.value.public_surface_count || '--';
+                    const alias = wealth.value.hidden_alias_count || '--';
+                    document.getElementById('trinity-wealth-tools-badge').textContent = pub + ' public';
+                    document.getElementById('trinity-wealth-aliases-badge').textContent = alias + ' aliases';
+                }
+                if (well.status === 'fulfilled' && well.value) {
+                    const score = well.value.well_score;
+                    document.getElementById('trinity-well-tools-badge').textContent = (well.value.tool_count || '--') + ' tools';
+                    document.getElementById('trinity-well-score-badge').textContent = score != null ? score + ' score' : '-- score';
+                }
+
+                const now = new Date();
+                this.lastUpdate = now;
+                document.getElementById('federation-last-update').textContent =
+                    now.toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                document.getElementById('federation-probe-source').textContent = this.probeSource;
+            }
+
+            async fetchOrgan(baseUrl, organ) {
+                const res = await fetch(`${baseUrl}/health`);
+                if (!res.ok) throw new Error(`${organ} returned ${res.status}`);
+                const data = await res.json();
+                data._organ = organ;
+                data._baseUrl = baseUrl;
+                return data;
+            }
+
+            renderOrgan(organ, data) {
+                const dot = document.getElementById(`organ-${organ}-dot`);
+                const status = document.getElementById(`organ-${organ}-status`);
+
+                if (!data) {
+                    dot.className = 'status-dot down';
+                    status.textContent = 'Unreachable';
+                    return;
+                }
+
+                const isHealthy = data.status === 'healthy' || data.verdict === 'WELL_PASS';
+                dot.className = 'status-dot' + (isHealthy ? '' : ' degraded');
+                status.textContent = isHealthy ? 'Operational' : (data.verdict || data.status || 'Unknown');
+
+                if (organ === 'arifos') {
+                    document.getElementById('organ-arifos-tools').textContent = data.tools_loaded || '--';
+                    document.getElementById('organ-arifos-prompts').textContent = '--'; // filled by fetchCapabilities
+                    document.getElementById('organ-arifos-resources').textContent = '--'; // filled by fetchCapabilities
+                    document.getElementById('organ-arifos-version').textContent = data.release_name || data.version || '--';
+                } else if (organ === 'geox') {
+                    // GEOX /health doesn't expose tool_count — mark as unknown
+                    const toolCount = data.tool_count || '?';
+                    document.getElementById('organ-geox-tools').textContent = toolCount;
+                    document.getElementById('organ-geox-version').textContent = data.service || data.version || '--';
+                    // Update probe badge
+                    const probeBadge = document.getElementById('trinity-geox-probe-badge');
+                    if (toolCount === '?') {
+                        probeBadge.textContent = 'PARTIAL';
+                        probeBadge.style.color = '#fbbf24';
+                        probeBadge.style.background = 'rgba(251,191,36,0.15)';
+                    } else {
+                        probeBadge.textContent = 'LIVE';
+                    }
+                } else if (organ === 'wealth') {
+                    document.getElementById('organ-wealth-public').textContent = data.public_surface_count || '--';
+                    document.getElementById('organ-wealth-aliases').textContent = data.hidden_alias_count || '--';
+                    document.getElementById('organ-wealth-version').textContent = data.version || data.repo_head || '--';
+                } else if (organ === 'well') {
+                    document.getElementById('organ-well-score').textContent = data.well_score != null ? data.well_score : '--';
+                    document.getElementById('organ-well-verdict').textContent = data.verdict || '--';
+                    document.getElementById('organ-well-version').textContent = data.version || '--';
+                }
+            }
+
+            renderArifOSExtras(data) {
+                // Langfuse
+                const lf = data.langfuse_tracing;
+                const lfBadge = document.getElementById('langfuse-status-badge');
+                const lfDetail = document.getElementById('langfuse-detail');
+                if (lf) {
+                    const active = lf.status === 'ACTIVE';
+                    lfBadge.textContent = lf.status;
+                    lfBadge.className = 'badge ' + (active ? 'badge-green' : 'badge-gold');
+                    lfDetail.textContent = `${lf.traced_tools_count} tools traced · ${lf.host}`;
+                } else {
+                    lfBadge.textContent = 'N/A';
+                    lfBadge.className = 'badge';
+                    lfDetail.textContent = 'Not configured';
+                }
+
+                // VAULT999
+                const v999 = data.vault999_health;
+                const v999Badge = document.getElementById('vault999-status-badge');
+                const v999Detail = document.getElementById('vault999-detail');
+                if (v999) {
+                    const healthy = v999 === 'healthy';
+                    v999Badge.textContent = v999.toUpperCase();
+                    v999Badge.className = 'badge ' + (healthy ? 'badge-green' : 'badge-gold');
+                    v999Detail.textContent = 'VAULT999 ledger operational';
+                } else {
+                    v999Badge.textContent = 'N/A';
+                    v999Detail.textContent = 'Health key not present';
+                }
+
+                // ML Floors
+                const ml = data.ml_floors;
+                const mlBadge = document.getElementById('mlfloors-status-badge');
+                const mlDetail = document.getElementById('mlfloors-detail');
+                if (ml) {
+                    const ready = ml.ml_floors_enabled && ml.ml_runtime_ready;
+                    mlBadge.textContent = ready ? 'ACTIVE' : 'DISABLED';
+                    mlBadge.className = 'badge ' + (ready ? 'badge-green' : 'badge-gold');
+                    mlDetail.textContent = `${ml.ml_method} · ${ml.ml_model_name || 'model loaded'}`;
+                } else {
+                    mlBadge.textContent = 'N/A';
+                    mlDetail.textContent = 'ML floors not configured';
+                }
+            }
+
+            refresh() {
+                this.probe();
+            }
+
+            start() {
+                this.probe(); // immediate
+                this._timer = setInterval(() => this.probe(), this.interval);
+            }
+
+            stop() {
+                if (this._timer) clearInterval(this._timer);
+            }
+        }
+
+        // ─── Init ───
+        const federationSOT = new FederationSOT();
         fetchHealth();
         fetchCapabilities();
+        federationSOT.start();
         setInterval(fetchHealth, 30000);
     </script>
 </body>
