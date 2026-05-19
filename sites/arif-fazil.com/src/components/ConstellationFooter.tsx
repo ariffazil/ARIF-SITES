@@ -1,4 +1,4 @@
-import { ecosystemLinks } from '@/data/siteContent';
+import { ecosystemLinks, arifosLinks } from '@/data/siteContent';
 
 export function ConstellationFooter() {
   return (
@@ -18,13 +18,30 @@ export function ConstellationFooter() {
         </div>
 
         <div className="space-y-6">
-          <div className="section-label">Ecosystem Federation</div>
+          <div className="section-label">arifOS Federation</div>
+          <ul className="grid grid-cols-2 gap-y-3">
+            {arifosLinks.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noreferrer' : undefined}
+                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                >
+                  <span className="w-1.5 h-1.5 bg-forge-gold"></span>
+                  {item.label}
+                  {item.external && <span className="text-[0.6rem]">↗</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="section-label" style={{marginTop:'1.5rem'}}>Ecosystem</div>
           <ul className="grid grid-cols-2 gap-y-3">
             {ecosystemLinks.map((item) => (
               <li key={item.label}>
-                <a 
-                  href={item.href} 
-                  target={item.external ? '_blank' : undefined} 
+                <a
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noreferrer' : undefined}
                   className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
                 >

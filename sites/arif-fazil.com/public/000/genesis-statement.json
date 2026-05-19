@@ -1,0 +1,126 @@
+{
+  "genesis_id": "GENESIS-001",
+  "type": "ArifGenesisStatement",
+  "version": "1.0",
+  "signed_at": "2026-04-30T00:00:00Z",
+  "last_updated": "2026-05-17T00:00:00Z",
+  "human": {
+    "name": "Muhammad Arif bin Fazil",
+    "alternate_name": "Arif Fazil",
+    "root_domain": "https://arif-fazil.com",
+    "did": "did:web:arif-fazil.com",
+    "root_key": "did:web:arif-fazil.com#genesis-2026"
+  },
+  "statement": {
+    "summary": "Human judgment remains final. AI is an instrument.",
+    "full_text": "I am Muhammad Arif bin Fazil.\n\narifOS is a system I built to keep AI useful, auditable, and accountable to human judgment.\n\nAI systems may assist, draft, test, and coordinate. They do not replace human responsibility. The human remains the final judge — not as a courtesy, but as a structural constraint.\n\nThis is not a claim of perfection. It is a commitment to discipline, evidence, and accountability.\n\nThe 13 constitutional floors exist because intelligence without constraint is dangerous."
+  },
+  "evidence_scope": {
+    "proves": [
+      "The controller of this domain holds the private key corresponding to this public key.",
+      "The human named Muhammad Arif bin Fazil issued this genesis statement.",
+      "This domain is controlled and maintained by a specific human operator.",
+      "The genesis statement has not been tampered with since signing."
+    ],
+    "does_not_prove": [
+      "Humanity, consciousness, or moral authority.",
+      "Employment, formal credentials, or professional licenses.",
+      "Government-issued identity or legal personhood.",
+      "That the human is always right, wise, or infallible."
+    ],
+    "note": "Cryptography proves control and authorship. It supports identity. It does not replace human judgment, wisdom, or accountability."
+  },
+  "wisdom_laws": {
+    "field_laws": [
+      {
+        "id": "0001",
+        "title": "Uncertainty named early is cheaper than certainty invented late.",
+        "meaning": "Good work starts by stating what is unknown before the story hardens.",
+        "builds_arifos": "Unknowns must stay explicit or the system starts to hallucinate confidence."
+      },
+      {
+        "id": "0002",
+        "title": "A quiet well decision beats a dramatic post-mortem.",
+        "meaning": "Discipline matters more than performance when consequences are real.",
+        "builds_arifos": "Reversible, sober action outranks spectacle and platform theatrics."
+      },
+      {
+        "id": "0006",
+        "title": "Ground truth outranks elegance.",
+        "meaning": "A beautiful theory still loses if the evidence does not support it.",
+        "builds_arifos": "Proof and runtime state must override polished but unsupported claims."
+      },
+      {
+        "id": "0009",
+        "title": "Signal without calibration is only noise wearing a badge.",
+        "meaning": "Data becomes useful only when its limitations are visible.",
+        "builds_arifos": "Public trust surfaces must separate real, partial, and speculative state."
+      }
+    ],
+    "systems_laws": [
+      {
+        "id": "0003",
+        "title": "Every interface teaches behaviour.",
+        "meaning": "Labels, routes, and layouts train people and agents into assumptions.",
+        "builds_arifos": "Site law exists because misaligned architecture causes misaligned action."
+      },
+      {
+        "id": "0005",
+        "title": "A map is honest only when its scale is obvious.",
+        "meaning": "People need to know whether they are seeing biography, origin, or proof.",
+        "builds_arifos": "The root domain split keeps those layers from collapsing into one symbolic blur."
+      },
+      {
+        "id": "0008",
+        "title": "Names are part of the architecture.",
+        "meaning": "If naming drifts, ownership drifts, and trust drifts with it.",
+        "builds_arifos": "Hostname law and repo law prevent semantic sprawl from becoming operational sprawl."
+      },
+      {
+        "id": "0010",
+        "title": "A bounded surface is kinder than an unlimited one.",
+        "meaning": "Clear constraints reduce confusion and prevent false expectations.",
+        "builds_arifos": "Machine-facing routes expose only what can be explained, maintained, and verified."
+      }
+    ],
+    "weight": [
+      {
+        "id": "0004",
+        "title": "Authority should stay visible.",
+        "meaning": "If a human owns the consequence, the human must remain legible.",
+        "builds_arifos": "Human sovereignty is structural, not decorative."
+      },
+      {
+        "id": "0007",
+        "title": "Dignity survives precision.",
+        "meaning": "Exactness does not require coldness, mysticism, or manipulation.",
+        "builds_arifos": "The system aims for humane clarity rather than intimidation."
+      },
+      {
+        "id": "0011",
+        "title": "Trust grows where authorship is continuous.",
+        "meaning": "People trust work more when the line from author to artifact remains visible.",
+        "builds_arifos": "/999 exposes proofs that tie claims back to domain control, credentials, and signed artifacts."
+      },
+      {
+        "id": "0012",
+        "title": "Humility is a systems feature.",
+        "meaning": "Honest limits make collaboration safer and more useful.",
+        "builds_arifos": "Governance works only when the system can admit partial truth without collapsing."
+      }
+    ]
+  },
+  "canonical_endpoints": {
+    "genesis": "https://arif-fazil.com/000/",
+    "proof": "https://arif-fazil.com/999/",
+    "identity": "https://arif-fazil.com/.well-known/did.json",
+    "soul": "https://arif-fazil.com/soul.json",
+    "llms_txt": "https://arif-fazil.com/llms.txt"
+  },
+  "signature": {
+    "type": "Ed25519",
+    "encoding": "base58",
+    "reference": "/000/genesis-statement.sig",
+    "note": "Real signature generated offline with offline private key. The .sig file contains the detached signature metadata."
+  }
+}

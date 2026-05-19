@@ -134,23 +134,35 @@ Cloudflare Pages projects each point to this same repo (`ariffazil/arif-sites`) 
    arifos.arif-fazil.com      aaa.arif-fazil.com
    (MIND docs + observatory)   (BODY agents + forge)
             │                         │
-            ▼                         │
-   mcp.arif-fazil.com (MCP API)        │
-            │                         │
-     ┌──────┴──────┐                   │
-     ▼             ▼                   ▼
-   WELL         WEALTH              GEOX
-  (internal)   (internal)         (field/lab)
-     │             │                 │
-     └─────────────┴────────────┬────┘
-                    ▲            │
-               arifOS kernel     │
-              (F1–F13 +         │
-               VAULT999)        │
-                    ▲            │
-                    └────────────┘
-              A-FORGE orchestration
+            └────────────┬────────────┘
+                         │
+              ┌──────────▼──────────┐
+              │   MCP Transport     │
+              │  (mcp.arif-fazil.com)│
+              │   JSON-RPC / HTTP   │
+              └──────────┬──────────┘
+                         │
+     ┌───────────────────┼───────────────────┐
+     ▼                   ▼                   ▼
+   WELL               WEALTH               GEOX
+  (MCP server)      (MCP server)       (MCP server)
+  (internal)         (internal)         (field/lab)
+     │                   │                 │
+     └───────────────────┴────────┬────────┘
+                                  │
+                         ┌────────▼────────┐
+                         │  arifOS Kernel  │
+                         │  (F1–F13 +      │
+                         │   VAULT999)     │
+                         └────────┬────────┘
+                                  │
+                         ┌────────▼────────┐
+                         │ A-FORGE         │
+                         │ (orchestration) │
+                         └─────────────────┘
 ```
+
+> **MCP is the transport membrane, not the authority layer.** The MCP endpoint at `mcp.arif-fazil.com` exposes the federation's tool/resource/prompt surfaces to LLM hosts. Constitutional authority lives in the arifOS kernel behind the boundary.
 
 ---
 

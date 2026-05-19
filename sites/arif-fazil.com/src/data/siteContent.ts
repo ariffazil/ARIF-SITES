@@ -174,6 +174,13 @@ export const ecosystemLinks: LinkItem[] = [
   { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
 ];
 
+export const arifosLinks: LinkItem[] = [
+  { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
+  { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
+  { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
+];
+
 export const contactLinks: LinkItem[] = [
   { label: 'GitHub / ariffazil', href: 'https://github.com/ariffazil', external: true },
   { label: 'Telegram / ariffazil', href: 'https://t.me/ariffazil', external: true },
