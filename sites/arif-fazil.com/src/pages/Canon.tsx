@@ -810,3 +810,8 @@ class ThermodynamicMetrics:
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "canon",
+  routeUrl: "/canon/",
+};

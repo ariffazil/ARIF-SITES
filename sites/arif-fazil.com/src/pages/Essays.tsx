@@ -52,3 +52,8 @@ export function Essays() {
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "essays",
+  routeUrl: "/essays/",
+};

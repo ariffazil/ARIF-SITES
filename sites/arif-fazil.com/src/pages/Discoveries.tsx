@@ -101,3 +101,8 @@ export function Discoveries() {
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "discoveries",
+  routeUrl: "/discoveries/",
+};

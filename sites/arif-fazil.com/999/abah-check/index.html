@@ -70,9 +70,18 @@
 
   <script src="../ui/crypto.js"></script>
   <script>
-    // In production: fetch trigger log from server
-    document.getElementById('trigger_log').innerHTML =
-      '<p style="color:#6a6a75;font-size:0.75rem;text-align:center;padding:1rem">No triggers yet recorded. Log lives in VAULT999.</p>';
+    async function loadTriggerLog() {
+      const el = document.getElementById('trigger_log');
+      try {
+        // In production: fetch from /vault/abah-triggers.json
+        el.innerHTML =
+          '<p style="color:#6a6a75;font-size:0.75rem;text-align:center;padding:1rem">No triggers yet recorded. Log lives in VAULT999.</p>';
+      } catch(e) {
+        el.innerHTML =
+          '<p style="color:#6a6a75;font-size:0.75rem;text-align:center;padding:1rem">No triggers yet recorded. Log lives in VAULT999.</p>';
+      }
+    }
+    loadTriggerLog();
   </script>
 </body>
 </html>
