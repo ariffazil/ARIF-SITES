@@ -29,6 +29,9 @@ rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $HTML_ROOT/arif/
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
 
+# SPA fix: /000/ needs index.html for Caddy SPA fallback (Genesis route)
+cp $HTML_ROOT/arif/index.html $HTML_ROOT/arif/000/index.html
+
 # arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
 rsync -avz --delete $SITES_ROOT/arifos.arif-fazil.com/ $HTML_ROOT/arifos/
 
