@@ -1,0 +1,108 @@
+{
+  "schema": "federation-manifest/v1",
+  "source": "arifOS MCP /api/federation-probe",
+  "generated": "2026-05-19T05:38:00Z",
+  "stack": {
+    "topology": {
+      "ordinal": 1,
+      "name": "APEX · Human Sovereign",
+      "role": "Final authority. F13 veto absolute. Constitutional witness to all terminal verdicts.",
+      "status": "live",
+      "layers": [
+        {
+          "ordinal": 1,
+          "name": "APEX · Human Sovereign",
+          "role": "Final authority. F13 veto absolute. Constitutional witness to all terminal verdicts.",
+          "status": "live"
+        },
+        {
+          "ordinal": 2,
+          "name": "arifOS Governance Kernel",
+          "role": "13-floor constitutional engine. 888_JUDGE verdicts. 999_VAULT immutable ledger. ΔΩΨ Trinity routing.",
+          "status": "live"
+        },
+        {
+          "ordinal": 3,
+          "name": "GEOX · WEALTH · WELL · AAA",
+          "role": "Earth · Capital · Vitality · A2A Hub. MCP-connected organs. 147 total tools across 4 services.",
+          "status": "live"
+        },
+        {
+          "ordinal": 4,
+          "name": "OpenClaw · Hermes · OpenCode",
+          "role": "Agent runtime. Telegram interface. A2A bridge. Model routing and execution.",
+          "status": "live"
+        },
+        {
+          "ordinal": 5,
+          "name": "Observatory · Canon · Wiki",
+          "role": "Public-facing surfaces. Read-only governance visibility. Constitutional doctrine.",
+          "status": "live"
+        }
+      ],
+      "flow": [
+        "APEX (human) → arifOS kernel → GEOX/WEALTH/WELL → agents → public surfaces"
+      ]
+    },
+    "organs": {
+      "arifos": {
+        "name": "arifOS",
+        "type": "governance_kernel",
+        "role": "Constitutional engine. F1–F13 floors. 888_JUDGE. 999_VAULT.",
+        "port": 8080,
+        "mcp": true,
+        "tools": 13,
+        "health_endpoint": "/health",
+        "status": "healthy"
+      },
+      "geox": {
+        "name": "GEOX",
+        "type": "earth_intelligence",
+        "role": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.",
+        "port": 8081,
+        "mcp": true,
+        "tools": 53,
+        "health_endpoint": "/health",
+        "discovery_endpoint": "/.well-known/mcp/server.json",
+        "status": "healthy"
+      },
+      "wealth": {
+        "name": "WEALTH",
+        "type": "capital_intelligence",
+        "role": "NPV/EMV. Risk scoring. Makcik² relational credit. Capital conservation.",
+        "port": 8082,
+        "mcp": true,
+        "tools": 50,
+        "health_endpoint": "/health",
+        "discovery_endpoint": "/.well-known/mcp/server.json",
+        "status": "healthy"
+      },
+      "well": {
+        "name": "WELL",
+        "type": "vitality_engine",
+        "role": "Biological substrate. Operator cognitive pressure. Thermodynamic wellness.",
+        "port": 8083,
+        "mcp": true,
+        "tools": 31,
+        "health_endpoint": "/health",
+        "discovery_endpoint": "/.well-known/mcp/server.json",
+        "status": "healthy"
+      },
+      "aaa": {
+        "name": "AAA",
+        "type": "a2a_hub",
+        "role": "A2A broker for cross-agent tasks. Inter-federation coordination.",
+        "port": 3001,
+        "mcp": false,
+        "status": "healthy"
+      },
+      "wiki": {
+        "name": "Wiki",
+        "type": "knowledge_base",
+        "role": "Compiled constitutional memory. Read-only wiki.",
+        "mcp": false,
+        "status": "static"
+      }
+    }
+  }
+}
