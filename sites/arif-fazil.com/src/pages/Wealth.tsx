@@ -398,3 +398,8 @@ export function Wealth() {
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "wealth",
+  routeUrl: "/wealth/",
+};

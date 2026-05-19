@@ -1,7 +1,7 @@
 // /999/ — Seal Display Engine
 // Loads seal metadata from Vault999, decrypts content locally
 
-const SEAL_DEFINITIONS = [
+const SEALS = [
   {
     id: '000',
     name: 'Genesis',
@@ -96,11 +96,11 @@ function isSessionOpen() {
   return _sessionKey !== null || sessionStorage.getItem('vault_session') === 'open';
 }
 
-async function loadVaultIndex() {
+async function renderSeals() {
   const container = document.getElementById('seal_list');
   if (!container) return;
 
-  container.innerHTML = SEAL_DEFINITIONS.map(seal => `
+  container.innerHTML = SEALS.map(seal => `
     <div class="seal-card" id="seal_card_${seal.id}">
       <div class="seal-card-header">
         <span class="seal-id">SCAR_${seal.id} · ${seal.category}</span>
@@ -111,14 +111,14 @@ async function loadVaultIndex() {
       <p class="seal-subtitle">${seal.subtitle}</p>
       <p class="seal-desc">${seal.paradox}</p>
       <p class="seal-law">${seal.law} floor</p>
-      <button class="seal-read" id="seal_btn_${seal.id}" onclick="readSeal('${seal.id}')">
+      <button class="seal-read" id="seal_btn_${seal.id}" onclick="decryptSeal('${seal.id}')">
         🔓 Read Seal
       </button>
     </div>
   `).join('');
 }
 
-async function readSeal(sealId) {
+async function decryptSeal(sealId) {
   if (!isSessionOpen()) {
     alert('Session expired. Reload and re-verify ROOTKEY.');
     return;
@@ -132,7 +132,7 @@ async function readSeal(sealId) {
     // In production: fetch encrypted blob from /vault/seals/SCAR_XXX.enc
     // Decrypt locally with sessionKey
     // For now: show the definition as the "decrypted" content
-    const seal = SEAL_DEFINITIONS.find(s => s.id === sealId);
+    const seal = SEALS.find(s => s.id === sealId);
     const card = document.getElementById('seal_card_' + sealId);
 
     card.innerHTML = `
@@ -155,4 +155,4 @@ async function readSeal(sealId) {
   }
 }
 
-window.VaultSession = { openSession, isSessionOpen, loadVaultIndex, readSeal };
+window.VaultUI = { openSession, isSessionOpen, renderSeals, decryptSeal };

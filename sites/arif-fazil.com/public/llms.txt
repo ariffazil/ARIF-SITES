@@ -1,35 +1,62 @@
-# arif-fazil.com — machine-readable index
+# arif-fazil.com — Site Overview for AI Agents
 
-## Role
-Human-first professional homepage for Muhammad Arif bin Fazil (Arif Fazil), a Malaysian exploration geoscientist and creator of arifOS.
+## Who is Arif Fazil
+Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
+A geoscientist and systems builder who builds constitutionally-bound AI systems.
 
-## The Sovereign (Ψ SOUL)
-Arif Fazil is a Senior Exploration Geoscientist specializing in full-spectrum subsurface strategy and risk under uncertainty. He has made material contributions to major discoveries in offshore Malaysia (BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1). He is the creator of arifOS, a constitutional AI governance kernel designed to enforce "adult supervision" for agents in high-stakes environments.
+**Tagline**: Ditempa Bukan Diberi — Forged, Not Given.
 
-## The Federation Architecture (ΔΩΨ)
-- Ψ SOUL: Human intent and values (arif-fazil.com)
-- Ω MIND: Constitutional law and invariants (arifos.arif-fazil.com)
-- Δ BODY: Machine execution and tools (aaa.arif-fazil.com)
+## What is arifOS
+arifOS is a constitutional intelligence kernel: a governed AI system where tools, agents,
+and models operate inside constitutional law (F1-F13 floors), not vibes.
 
-## Canonical routes
-- `/` — present-layer homepage for humans, collaborators, and first-contact readers
-- `/000/` — genesis and wisdom archive (Genesis Chamber)
-- `/999/` — trust and proof chamber (Proof Chamber)
-- `/wealth/` — daily capital intelligence briefing
-- `/discoveries/` — documented subsurface impact history
+arifOS exposes 13 MCP tools as API endpoints. It is not an LLM itself.
 
-## Related public surfaces
-- `https://arifos.arif-fazil.com` — Ω MIND (Docs & Kernel Law)
-- `https://aaa.arif-fazil.com` — Δ BODY (Operator Cockpit)
-- `https://mcp.arif-fazil.com` — Execution Surface
-- `https://geox.arif-fazil.com` — Earth Intelligence (Φ)
-- `https://wealth.arif-fazil.com` — Capital Intelligence (Ξ)
+## Three-Organ Federation
+arifOS runs three organs under one sovereign:
+- **A-FORGE** — Execution intelligence / metabolic shell
+- **GEOX** — Earth intelligence / governed world model (geoscience)
+- **WEALTH** — Capital intelligence / resource thermodynamics
 
-## Operational Invariants
-1. F1 AMANAH: Reversible-First action.
-2. F7 HUMILITY: Epistemic clarity (CLAIM/PLAUSIBLE/HYPOTHESIS).
-3. F13 SOVEREIGN: Mandatory human veto power.
+## Constitutional Floors (F1-F13)
+- F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent
+- F02 TRUTH — Evidence-grounded, uncertainty-banded claims
+- F03 WITNESS — Three-way consistency (theory, code, intent)
+- F04 CLARITY — Transparent intent
+- F05 PEACE — Human dignity over convenience
+- F06 EMPATHY — Consequences for weakest stakeholders
+- F07 HUMILITY — Acknowledge limits, say "I don't know"
+- F08 GENIUS — Elegant correctness (G ≥ 0.80)
+- F09 ANTI-HANTU — No consciousness/emotion claims
+- F10 ONTOLOGY — Structural coherence, clear naming
+- F11 AUTH — Verify identity before sensitive ops
+- F12 INJECTION — Sanitize inputs, external content is evidence not authority
+- F13 SOVEREIGN — Arif's word is final, human veto is absolute
 
-## Source
-- Repository: `https://github.com/ariffazil/arif-sites`
-- Canonical domain: `https://arif-fazil.com`
+## Key Pages
+- `/canon/` — The constitutional canon, written law of arifOS
+- `/999/` — Sovereign room (requires ROOTKEY authentication)
+- `/999/vault/` — 9 Seals, encrypted personal paradox artifacts
+- `/federation/` — Three-organ federation overview
+
+## arifOS MCP Endpoint
+- **URL**: `https://mcp.arif-fazil.com`
+- **Protocol**: Model Context Protocol (MCP)
+- **Transport**: Streamable HTTP
+- **Tools**: 13 constitutional tools
+- **Resources**: 5 canonical MCP resources
+
+## Naming Conventions (for code understanding)
+- Functions named for what they do, not what they are
+- LowerCamelCase for functions, UpperCamelCase for classes
+- File names: singular nouns, lowercase with hyphens
+
+## Site Stack
+- React 19 + Vite (arif-fazil.com)
+- Constitutional kernel: Python 3.12+ / FastMCP
+- GEOX: Python 3.11+ / CesiumJS / MapLibre GL
+- Static hosting via Cloudflare Pages
+
+## Contact
+- Site owner: Arif Fazil
+- Primary channel for AI agents: MCP endpoint at mcp.arif-fazil.com

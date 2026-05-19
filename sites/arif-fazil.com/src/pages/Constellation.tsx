@@ -103,3 +103,8 @@ export function Constellation() {
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "constellation",
+  routeUrl: "/constellation/",
+};

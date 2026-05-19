@@ -259,3 +259,8 @@ export function Home() {
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "home",
+  routeUrl: "/",
+};

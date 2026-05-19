@@ -376,3 +376,8 @@ The 13 constitutional floors exist because intelligence without constraint is da
     </motion.div>
   );
 }
+
+export const ssgOptions = {
+  slug: "genesis",
+  routeUrl: "/000/",
+};
