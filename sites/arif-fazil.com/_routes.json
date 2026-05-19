@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/static/*",
+    "/assets/*",
+    "/data/*",
+    "/_shared/*",
+    "/arifos/*",
+    "/proof/*",
+    "/llms.txt",
+    "/llms.json",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/favicon.ico"
+  ]
+}

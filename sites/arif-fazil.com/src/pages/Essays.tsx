@@ -57,3 +57,5 @@ export const ssgOptions = {
   slug: "essays",
   routeUrl: "/essays/",
 };
+
+export default Essays;

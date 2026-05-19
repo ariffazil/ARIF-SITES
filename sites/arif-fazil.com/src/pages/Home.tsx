@@ -264,3 +264,5 @@ export const ssgOptions = {
   slug: "home",
   routeUrl: "/",
 };
+
+export default Home;

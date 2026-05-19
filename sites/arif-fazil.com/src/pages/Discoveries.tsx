@@ -106,3 +106,5 @@ export const ssgOptions = {
   slug: "discoveries",
   routeUrl: "/discoveries/",
 };
+
+export default Discoveries;

@@ -108,3 +108,5 @@ export const ssgOptions = {
   slug: "constellation",
   routeUrl: "/constellation/",
 };
+
+export default Constellation;
