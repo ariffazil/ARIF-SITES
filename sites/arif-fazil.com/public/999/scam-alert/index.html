@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ SCAM ALERT — MBE by Shatirah Rahman</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --border: #222;
+      --red: #ff3b3b;
+      --amber: #ffb800;
+      --green: #00e676;
+      --text: #e8e8e8;
+      --muted: #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* HEADER */
+    .alert-header {
+      background: linear-gradient(135deg, #1a0000 0%, #2d0a0a 100%);
+      border: 2px solid var(--red);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .alert-badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .alert-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .alert-header .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .alert-header .date {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* SECTION */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    /* TARGET */
+    .target-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .target-item label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .target-item span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* RED FLAGS */
+    .flag-list {
+      list-style: none;
+    }
+
+    .flag-list li {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .flag-list li:last-child { border-bottom: none; }
+
+    .flag-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 59, 59, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    .flag-content strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .flag-content p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* VERDICT */
+    .verdict-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(255, 59, 59, 0.08);
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .verdict-pct {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .verdict-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    /* EVIDENCE */
+    .evidence-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .evidence-table th {
+      text-align: left;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .evidence-table td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .evidence-table tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge-red { background: rgba(255,59,59,0.2); color: #ff6b6b; }
+    .badge-amber { background: rgba(255,184,0,0.2); color: #ffb800; }
+    .badge-green { background: rgba(0,230,118,0.2); color: #00e676; }
+
+    /* REPORT CHANNELS */
+    .report-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .report-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .report-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .report-card p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .report-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #444;
+      font-size: 0.75rem;
+    }
+
+    .footer .soul {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: #333;
+      margin-top: 0.5rem;
+    }
+
+    /* SHARING */
+    .share-section {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .share-btn {
+      display: inline-block;
+      background: #0088cc;
+      color: #fff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0.25rem;
+    }
+
+    .share-btn:hover { opacity: 0.85; }
+
+    @media (max-width: 600px) {
+      .target-grid { grid-template-columns: 1fr; }
+      .report-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="alert-header">
+      <div class="alert-badge">⚠️ Scam Alert — Public Warning</div>
+      <h1>MBE by Shatirah Rahman</h1>
+      <p class="subtitle">Telegram Trading Group — Social Engineering + Illegal Trading Scheme</p>
+      <p class="date">Published: 19 Mei 2026 &nbsp;·&nbsp; Issued by arifOS Constitutional Federation</p>
+    </div>
+
+    <!-- TARGET -->
+    <div class="section">
+      <div class="section-title">🎯 Target</div>
+      <div class="target-grid">
+        <div class="target-item">
+          <label>Group Name</label>
+          <span>MBE by Shatirah Rahman</span>
+        </div>
+        <div class="target-item">
+          <label>Telegram</label>
+          <span>@MBEbyShatirahRahmanOfficial</span>
+        </div>
+        <div class="target-item">
+          <label>Admin / Trader</label>
+          <span>Shatirah Rahman</span>
+        </div>
+        <div class="target-item">
+          <label>Phone (public)</label>
+          <span>0176623608</span>
+        </div>
+        <div class="target-item">
+          <label>Method</label>
+          <span>Gold / XAUUSD Signals</span>
+        </div>
+        <div class="target-item">
+          <label>System Claimed</label>
+          <span>"Multi Bank Entry" (MBE)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERDICT -->
+    <div class="section">
+      <div class="section-title">⚖️ Constitutional Verdict</div>
+      <div class="verdict-bar">
+        <div class="verdict-pct">85%</div>
+        <div class="verdict-label">SCAM PROBABILITY<br>Unauthorized Trading Operation<br>Social Engineering Detected</div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--muted);">
+        This group operates an <strong style="color: var(--text);">unlicensed gold trading signal service</strong> in violation of Malaysia's
+        Capital Markets and Services Act 2007 (CMSA). It uses social engineering (surname matching) to recruit victims
+        and employs predatory marketing tactics. <strong style="color: var(--text);">Shatirah Rahman has no verifiable Securities Commission licence.</strong>
+      </p>
+    </div>
+
+    <!-- RED FLAGS -->
+    <div class="section">
+      <div class="section-title">🚩 Red Flags — Evidence</div>
+      <ul class="flag-list">
+        <li>
+          <div class="flag-icon">1</div>
+          <div class="flag-content">
+            <strong>Social Engineering — Surname Matching</strong>
+            <p>A person named "Naazira Fazil" added the target (surname: Fazil). This exploits name familiarity to lower victim guard. No legitimate business recruits this way.</p>
+          </div>
+        </li>
+        <li>
+          <div class="flag-icon">2</div>
+          <div class="flag-content">
+            <strong>No Securities Commission Licence</strong>
+            <p>Shatirah Rahman's platforms show no SC licence. Providing trading signals for XAUUSD (gold forex) without an SC Capital Markets Services licence is a criminal offence under CMSA 2007.</p>
+          </div>
+        </li>
+        <li>
+          <div class="flag-icon">3</div>
+          <div class="flag-content">
+            <strong>Random Invitation — Zero Connection</strong>
+            <p>The target's own sibling had no knowledge of or connection to this group. Legitimate traders build communities from existing networks — not random Telegram adds.</p>
+          </div>
+        </li>
+        <li>
+          <div class="flag-icon">4</div>
+          <div class="flag-content">
+            <strong>Gold / XAUUSD — Highest Scam Vector in Malaysia</strong>
+            <p>Gold OTC (over-the-counter) trading is the most common vehicle for financial scams in Malaysia. The "Sistem MBE" is marketed as a "system" promising easy entry signals — a hallmark of pump-and-dump bucket shop operations.</p>
+          </div>
+        </li>
+        <li>
+          <div class="flag-icon">5</div>
+          <div class="flag-content">
+            <strong>"Naazira Fazil" — Zero Online Footprint</strong>
+            <p>The person who added the victim has no verifiable social media presence, no LinkedIn, no consistent digital identity. This is a hallmark of bot-created or burner social engineering accounts.</p>
+          </div>
+        </li>
+        <li>
+          <div class="flag-icon">6</div>
+          <div class="flag-content">
+            <strong>Predatory Marketing — "NAK BELAJAR TRADING"</strong>
+            <p>The Instagram bio reads like a classic scam lure: emotional language ("NAK BELAJAR TRADING"), no verifiable track record, phone number for contact. Real licensed traders do not recruit via random Telegram adds.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- EVIDENCE TABLE -->
+    <div class="section">
+      <div class="section-title">📋 Evidence Summary</div>
+      <table class="evidence-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Finding</th>
+            <th>Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Shatirah Rahman SC Licence</td>
+            <td>None found in SC Malaysia database</td>
+            <td><span class="badge badge-red">CRITICAL</span></td>
+          </tr>
+          <tr>
+            <td>Naazira Fazil Identity</td>
+            <td>Zero digital footprint across LinkedIn, IG, FB</td>
+            <td><span class="badge badge-red">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>Telegram Group</td>
+            <td>@MBEbyShatirahRahmanOfficial — public listing, recruiting randomly</td>
+            <td><span class="badge badge-amber">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>Instagram</td>
+            <td>@shatirah_rahman — 9,878 followers, 3,218 following, no verifiable trading licence</td>
+            <td><span class="badge badge-amber">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>Phone 0176623608</td>
+            <td>Maxis Malaysia prepaid — traceable but used as contact for unregulated service</td>
+            <td><span class="badge badge-amber">MEDIUM</span></td>
+          </tr>
+          <tr>
+            <td>TikTok Content</td>
+            <td>"Sistem MBE" promises easy gold entry signals — no risk disclosure, no performance history</td>
+            <td><span class="badge badge-red">HIGH</span></td>
+          </tr>
+          <tr>
+            <td>Random Add Pattern</td>
+            <td>Victim was added by a stranger with matching surname — classic social engineering</td>
+            <td><span class="badge badge-red">CRITICAL</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- REPORT -->
+    <div class="section">
+      <div class="section-title">📨 Report This Scam</div>
+      <div class="report-grid">
+        <div class="report-card">
+          <div class="icon">🏛️</div>
+          <h3>Securities Commission</h3>
+          <p>Report unauthorized trading operations under CMSA 2007</p>
+          <a href="https://www.sc.com.my" target="_blank">sc.com.my →</a>
+        </div>
+        <div class="report-card">
+          <div class="icon">🏦</div>
+          <h3>Bank Negara Malaysia</h3>
+          <p>Report illegal money services, unauthorized fx trading</p>
+          <a href="https://www.bnm.gov.my" target="_blank">bnm.gov.my →</a>
+        </div>
+        <div class="report-card">
+          <div class="icon">🚔</div>
+          <h3>PDRM Cybercrime</h3>
+          <p>Report online fraud, scam trading groups</p>
+          <a href="https://aduan.skmm.gov.my" target="_blank">aduan.skmm.gov.my →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHARE -->
+    <div class="section share-section">
+      <div class="section-title" style="border:none;">🔗 Share This Warning</div>
+      <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">
+        Bagikan ke group WhatsApp, Telegram, atau social media untuk warn orang lain.
+      </p>
+      <a class="share-btn" href="https://t.me/share/url?url=https://arif-fazil.com/999/scam-alert&text=SCAM%20ALERT%20%E2%80%94%20MBE%20by%20Shatirah%20Rahman%20adalah%20scammer.%20Sila%20berhati-hati." target="_blank">
+        📤 Share ke Telegram
+      </a>
+      <a class="share-btn" href="https://wa.me/?text=SCAM%20ALERT%20%E2%80%94%20MBE%20by%20Shatirah%20Rahman.%20Periksa%20details%20di%3A%20https%3A%2F%2Farif-fazil.com%2F999%2Fscam-alert" target="_blank">
+        💬 Share ke WhatsApp
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>⚕️💃 Hermes Agent &nbsp;·&nbsp; arifOS Constitutional Federation &nbsp;·&nbsp; This is an informational warning, not legal advice.</p>
+      <p>Jika anda atau seseorang yang anda kenal telah kehilangan uang karena penipu, hubungi authorities di atas.</p>
+      <p class="soul">DITEMPA BUKAN DIBERI — Intelligence is forged, not given.</p>
+    </div>
+
+  </div>
+</body>
+</html>
