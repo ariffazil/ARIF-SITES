@@ -1,4 +1,14 @@
-﻿# arif-sites — Static Surfaces & Domain Hosts
+﻿<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-05-19
+valid_from: 2026-05-19
+valid_until: 2026-06-19
+confidence: high
+scope: /root/arif-sites
+epistemic_status: CLAIM
+-->
+
+# arif-sites — Static Surfaces & Domain Hosts
 
 > **Status:** OPERATIONAL | **Organ:** SURFACE | **Authority:** arifOS
 > **Domains:** `arif-fazil.com`, `arifos.arif-fazil.com`, `wiki.arif-fazil.com`, etc.
