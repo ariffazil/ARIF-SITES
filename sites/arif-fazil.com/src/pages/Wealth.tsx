@@ -403,3 +403,5 @@ export const ssgOptions = {
   slug: "wealth",
   routeUrl: "/wealth/",
 };
+
+export default Wealth;

@@ -815,3 +815,5 @@ export const ssgOptions = {
   slug: "canon",
   routeUrl: "/canon/",
 };
+
+export default Canon;

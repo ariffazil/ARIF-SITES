@@ -381,3 +381,5 @@ export const ssgOptions = {
   slug: "genesis",
   routeUrl: "/000/",
 };
+
+export default Genesis;
