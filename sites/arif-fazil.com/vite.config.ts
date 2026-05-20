@@ -7,9 +7,11 @@ export default defineConfig({
   base: '/',
   plugins: [
     react(),
+    /*
     ssgPlugin({
       pages: 'src/pages/',
     }),
+    */
   ],
   resolve: {
     alias: {
