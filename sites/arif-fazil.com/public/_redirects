@@ -4,3 +4,7 @@
 
 # Serve data directory as static files (200 status = don't redirect, just serve)
 /data/*   /data/:splat   200
+
+# Fix clean URLs for subdirectory index.html pages (SPA mode fallback fix)
+/canon    /canon/index.html    200
+/999      /999/index.html      200
