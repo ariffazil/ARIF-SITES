@@ -47,7 +47,7 @@ jobs:
 
       - name: Install
         if: ${{ matrix.build == true }}
-        run: cd ${{ matrix.directory }} && npm ci
+        run: cd ${{ matrix.directory }} && npm ci --legacy-peer-deps
 
       - name: Build
         if: ${{ matrix.build == true }}
