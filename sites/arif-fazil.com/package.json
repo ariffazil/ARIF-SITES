@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postinstall": "node patches/vite-plugin-ssg.js"
+    "postinstall": "node patches/vite-plugin-ssg.js",
+    "postbuild": "node scripts/copy-static-html.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
