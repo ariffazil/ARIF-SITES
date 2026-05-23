@@ -1,144 +1,85 @@
-# arif-sites — Agent Behavioral Contract
-**Repository:** `arif-sites` — Website Doctrine & Deployment Discipline  
-**Seal:** DITEMPA BUKAN DIBERI | **Constitution:** arifOS F1-F13  
-**Version:** 2026.04.11  
+<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-05-22
+valid_from: 2026-05-22
+valid_until: 2026-06-22
+confidence: high
+scope: /root/arif-sites
+-->
 
----
+# AGENTS.md — arif-sites | Website Estate & Deployment Discipline
 
-## 1. Purpose
+> **DITEMPA BUKAN DIBERI** — The web surface is forged, not given.
 
-This repository defines **how we build, deploy, and defend websites** across the arifOS Trinity network. It is the **human-and-agent-facing surface** for all web deployment logic.
+## Who You Serve
 
-**Role separation:**
-- `arif-sites` ← You are here (web doctrine, deployment patterns, skill packs)
-- `arifOS` ← Constitutional kernel & governance authority
-- `GEOX` ← Domain runtime (geoscience workflows & tools)
+Arif. This is the **arif-sites** repository — static site estate, React frontends, and deployment infrastructure for the arifOS federation web surface.
 
----
+## What This Repo Is
 
-## 2. Universal Agent Rules
+The canonical web estate. Hosts subsites under `arif-fazil.com` and related domains.
 
-### 2.1 Pre-Action Checklist (MANDATORY)
+| Attribute | Value |
+|-----------|-------|
+| **Deployment** | Cloudflare Pages (auto-deploy) + VPS (Caddy) |
+| **Build tool** | Vite 7 (React subsites only) |
+| **Reverse proxy** | Caddy 2 (ports 80/443, TLS via Cloudflare Origin CA) |
+| **Dynamic services** | VPS Docker + Caddy reverse proxy |
 
-Before any deployment action:
+### Live Subsites
 
-```
-□ Read DEPLOYMENT.md for current deployment lane
-□ Check config/decision-matrix.yaml for routing logic
-□ Verify no 888_HOLD is active in arifOS
-□ Confirm target matches allowed environment (static/edge/runtime)
-□ Validate skill permission level against agent role
-```
+| Site | Path | Type | Build Required |
+|------|------|------|----------------|
+| `arif-fazil.com/` | `sites/arif-fazil.com/` | React 19 + Vite | ✅ Yes |
+| `aaa.arif-fazil.com/` | `sites/aaa.arif-fazil.com/` | Static HTML | No |
+| `arifos.arif-fazil.com/` | `sites/arifos.arif-fazil.com/` | Static docs | No |
+| `arifosmcp.arif-fazil.com/` | `sites/arifosmcp.arif-fazil.com/` | Static docs | No |
+| `geox.arif-fazil.com/` | `sites/geox.arif-fazil.com/` | Static lab GUI | No |
+| `wiki.arif-fazil.com/` | `sites/wiki.arif-fazil.com/` | Static wiki | No |
+| `wealth/` | `sites/wealth/` | Static HTML | No |
+| `makcikgpt.arif-fazil.com/` | `sites/makcikgpt.arif-fazil.com/` | Static HTML | No |
 
-### 2.2 Forbidden Actions (HARD BLOCKS)
+> **Claimed but NOT on disk:** `travel`, `forge`, `apex`, `waw`, `wawa` — do not reference these.
 
-| Action | Verdict | Reason |
-|--------|---------|--------|
-| Self-modify production permissions | 888_HOLD | Only human (Arif) can escalate permissions |
-| Bypass arifOS constitution check for runtime deploy | 888_HOLD | Runtime must pass F1-F13 |
-| Commit secrets to repo | VOID | F9 Anti-Hantu: No credential exposure |
-| Deploy without provenance trace | HOLD | F11 Auditability requires lineage |
-| Override rollback without human confirm | 888_HOLD | F1 Amanah: Must be reversible |
+## Authority & Autonomy
 
-### 2.3 Escalation Chain
+### Autonomous
+- Build static sites, update HTML/CSS/JS
+- Update `sites/arif-fazil.com/` React source
+- Run `./deploy-vps.sh` and `scripts/deploy-site.sh <site-dir>`
+- Modify Caddyfile routing (verify with `docker compose restart caddy`)
 
-```
-L1: Skill-level decision → Use decision-matrix.yaml
-L2: Policy ambiguity → Check DEPLOYMENT.md doctrine
-L3: Constitutional question → Query arifOS /judge
-L4: Runtime emergency → Human (Arif) 888_HOLD override
-```
+### Requires 888_HOLD
+- Cloudflare Pages production push (auto-deploy on `git push main`)
+- Domain/DNS changes
+- `.env` or secret exposure in static files
+- `rm -rf sites/` or deletion of live subsites
 
----
+## Build & Test
 
-## 3. Agent Roles & Permissions
+```bash
+cd /root/arif-sites
 
-### deploy-planner
-- **Purpose:** Analyze requirements, choose deployment lane
-- **Read:** Allow (all docs, configs, matrices)
-- **Edit:** Deny (no file modifications)
-- **Bash:** Ask (read-only inspection commands only)
-- **Skills:** lane-classifier, policy-gate, arifos-constitution-check
-- **Risk:** Low
+# Only the flagship site requires a build:
+cd sites/arif-fazil.com && npm install && npm run build
 
-### static-publisher
-- **Purpose:** Build and publish static sites
-- **Read:** Allow
-- **Edit:** Allow (repo only, build artifacts)
-- **Bash:** Allow limited (build commands: npm run build, etc.)
-- **Skills:** static-deploy-check, webmcp-audit, rollback-recovery
-- **Risk:** Medium
+# Deploy to VPS
+./deploy-vps.sh
+scripts/deploy-site.sh <site-dir>
 
-### webmcp-auditor
-- **Purpose:** Validate WebMCP compliance, check security
-- **Read:** Allow
-- **Edit:** Ask (suggestions only, not auto-apply)
-- **Bash:** Ask (test commands)
-- **Skills:** webmcp-audit, policy-gate
-- **Risk:** Low
-
-### edge-runtime
-- **Purpose:** Deploy to edge runtimes (Cloudflare Workers, etc.)
-- **Read:** Allow
-- **Edit:** Allow scoped (edge config only)
-- **Bash:** Ask by default
-- **Skills:** edge-runtime-deploy, mcp-runtime-guard, rollback-recovery
-- **Risk:** High
-
-### mcp-server-operator
-- **Purpose:** Operate MCP runtime servers
-- **Read:** Allow
-- **Edit:** Ask/allow approved paths only
-- **Bash:** Ask, deny destructive patterns (rm -rf, etc.)
-- **Skills:** mcp-runtime-guard, rollback-recovery, arifos-constitution-check
-- **Risk:** Critical
-
----
-
-## 4. Skill Loading Rules
-
-### 4.1 Skill Discovery Path
-
-OpenCode discovers skills in:
-```
-.opencode/skills/<name>/SKILL.md
+# Cloudflare Pages: git push main -> auto-deploy
 ```
 
-### 4.2 Skill Naming Convention
+## Key Files
 
-- Lowercase, hyphenated
-- Must match directory name exactly
-- Examples: `lane-classifier`, `static-deploy-check`
+| File | Purpose |
+|------|---------|
+| `deploy/Caddyfile` | Reverse proxy config |
+| `deploy/docker-compose.yml` | Compose overlay for sites |
+| `sites/shared/` | Design-system + WebMCP (synced to `/var/www/html/_shared/`) |
+| `scripts/deploy-site.sh` | Per-site VPS deploy script |
 
-### 4.3 Skill Permission Levels
-
-| Level | Can Load | Typical Use |
-|-------|----------|-------------|
-| `planning` | deploy-planner | Read-only analysis |
-| `static` | static-publisher | Build & deploy static |
-| `audit` | webmcp-auditor | Compliance checking |
-| `runtime` | edge-runtime, mcp-server-operator | Live deployment |
-
----
-
-## 5. Integration Points
-
-### 5.1 arifOS Integration
-
-- **Authority:** arifOS is the constitutional chokepoint
-- **Pattern:** Call `arifos/judge` before high-stakes actions
-- **Reference:** See `docs/maps/arifos-integration.md`
-
-### 5.2 GEOX Integration
-
-- **Public surfaces:** Classified in arif-sites
-- **Private runtime:** Stays in GEOX repo
-- **Pattern:** Use `geox-surface-classifier` to determine lane
-- **Reference:** See `docs/maps/geox-integration.md`
-
----
-
-## 6. Response Contract
+## Response Contract
 
 All agent responses must include:
 
@@ -154,12 +95,4 @@ NEXT_ACTION: [proceed | escalate_to_arifos | hold_for_human]
 
 ---
 
-## 7. Seal
-
-**DITEMPA BUKAN DIBERI** — Forged, Not Given  
-**ΔΩΨ** — Trinity of Execution  
-**999_SEAL** — Constitutional Completeness
-
----
-
-*Last updated: 2026-04-11*
+*DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
