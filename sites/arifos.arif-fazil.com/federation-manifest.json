@@ -1,7 +1,7 @@
 {
   "schema": "federation-manifest/v1",
   "source": "arifOS MCP /api/federation-probe",
-  "generated": "2026-05-19T05:38:00Z",
+  "generated": "2026-05-22T11:34:00Z",
   "stack": {
     "topology": {
       "ordinal": 1,
@@ -24,7 +24,7 @@
         {
           "ordinal": 3,
           "name": "GEOX · WEALTH · WELL · AAA",
-          "role": "Earth · Capital · Vitality · A2A Hub. MCP-connected organs. 147 total tools across 4 services.",
+          "role": "Earth · Capital · Vitality · A2A Hub. MCP-connected organs. 70 total tools across 4 services.",
           "status": "live"
         },
         {
@@ -61,7 +61,7 @@
         "role": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.",
         "port": 8081,
         "mcp": true,
-        "tools": 53,
+        "tools": 22,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
         "status": "healthy"
@@ -72,7 +72,7 @@
         "role": "NPV/EMV. Risk scoring. Makcik² relational credit. Capital conservation.",
         "port": 8082,
         "mcp": true,
-        "tools": 50,
+        "tools": 17,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
         "status": "healthy"
@@ -83,7 +83,7 @@
         "role": "Biological substrate. Operator cognitive pressure. Thermodynamic wellness.",
         "port": 8083,
         "mcp": true,
-        "tools": 31,
+        "tools": 15,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
         "status": "healthy"

@@ -671,21 +671,21 @@ a:hover{color:var(--color-gold)}
         <circle cx="110" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="110" y="304" text-anchor="middle" fill="#5a9e38" font-size="13" font-weight="700" font-family="var(--font-display)">GEOX</text>
         <text x="110" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Earth</text>
-        <text x="110" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 15 tools</text>
+        <text x="110" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 22 tools</text>
         <text x="110" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8081</text>
 
         <!-- WEALTH -->
         <circle cx="310" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="310" y="304" text-anchor="middle" fill="#d4a853" font-size="13" font-weight="700" font-family="var(--font-display)">WEALTH</text>
         <text x="310" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Capital</text>
-        <text x="310" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 15 tools</text>
+        <text x="310" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 17 tools</text>
         <text x="310" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8082</text>
 
         <!-- WELL -->
-        <circle cx="530" cy="310" r="36" fill="#0d1a1c" stroke="#c46a1a" stroke-width="2"/>
+        <circle cx="530" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="530" y="304" text-anchor="middle" fill="#b83060" font-size="13" font-weight="700" font-family="var(--font-display)">WELL</text>
         <text x="530" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Vitality</text>
-        <text x="530" y="329" text-anchor="middle" fill="#c46a1a" font-size="8" font-family="var(--font-mono)">🟡 11 tools</text>
+        <text x="530" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 15 tools</text>
         <text x="530" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8083</text>
 
         <!-- AAA -->
@@ -1056,9 +1056,9 @@ a:hover{color:var(--color-gold)}
 
 <script>
 const FLOOR_NAMES = {
-  F1:'AMANAH',F2:'TRUTH',F3:'WITNESS',F4:'ΔS',F5:'PEACE²',
+  F1:'AMANAH',F2:'TRUTH',F3:'WITNESS',F4:'CLARITY',F5:'PEACE²',
   F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',
-  F10:'ONTOLOGY',F11:'AUTH',F12:'INJECTION',F13:'SOVEREIGN'
+  F10:'ONTOLOGY',F11:'AUDIT',F12:'INJECTION',F13:'SOVEREIGN'
 };
 
 function renderFloors(rf) {
@@ -1266,16 +1266,16 @@ setInterval(poll, 8000);
 // Audit note (2026-05-03): All 4 organs use streamable-http MCP.
 // Session ID obtained via mcp-session-id response header from initialize.
 // Only arifOS exposes REST discovery; others require MCP protocol.
-// Verified counts: arifOS 13 | GEOX 53 | WEALTH 50 | WELL 31 | TOTAL 147
+// Verified counts: arifOS 16 | GEOX 22 | WEALTH 17 | WELL 15 | TOTAL 70
 //
 // FIX (2026-05-04): Browser-side CORS fetches to organ subdomains fail behind
 // Cloudflare. We now use the same-origin /api/federation-probe as primary
 // health source, and only attempt CORS discovery when probe confirms healthy.
 async function loadOrganDiscovery() {
   const organs = [
-    {id:'geox',url:'https://geox.arif-fazil.com',verifiedCount:53,note:'MCP session required'},
-    {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:50,note:'MCP session required'},
-    {id:'well',url:'https://well.arif-fazil.com',verifiedCount:31,note:'MCP session required'},
+    {id:'geox',url:'https://geox.arif-fazil.com',verifiedCount:22,note:'MCP session required'},
+    {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:17,note:'MCP session required'},
+    {id:'well',url:'https://well.arif-fazil.com',verifiedCount:15,note:'MCP session required'},
     {id:'aaa',url:'https://aaa.arif-fazil.com',verifiedCount:null,note:'unknown'},
     {id:'forge',url:'https://forge.arif-fazil.com',verifiedCount:null,note:'unknown'},
     {id:'wiki',url:'https://wiki.arif-fazil.com',verifiedCount:null,note:'static site'},
