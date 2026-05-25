@@ -529,12 +529,12 @@ waw.arif-fazil.com {
 ###############################################################################
 
 arifosmcp.arif-fazil.com {
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:8088
 
     @sse {
         path /sse
     }
-    reverse_proxy @sse localhost:8080 {
+    reverse_proxy @sse localhost:8088 {
         transport http {
             keepalive off
         }
