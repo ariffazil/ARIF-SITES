@@ -1,7 +1,7 @@
 {
   "schema": "federation-manifest/v1",
   "source": "arifOS MCP /api/federation-probe",
-  "generated": "2026-05-22T11:34:00Z",
+  "generated": "2026-05-24T13:33:26Z",
   "stack": {
     "topology": {
       "ordinal": 1,
@@ -49,7 +49,7 @@
         "name": "arifOS",
         "type": "governance_kernel",
         "role": "Constitutional engine. F1–F13 floors. 888_JUDGE. 999_VAULT.",
-        "port": 8080,
+        "port": 8088,
         "mcp": true,
         "tools": 13,
         "health_endpoint": "/health",
@@ -64,7 +64,8 @@
         "tools": 22,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "healthy"
+        "status": "offline",
+        "reason": "decontainerized per PHOENIX-72"
       },
       "wealth": {
         "name": "WEALTH",
@@ -75,7 +76,8 @@
         "tools": 17,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "healthy"
+        "status": "offline",
+        "reason": "decontainerized per PHOENIX-72"
       },
       "well": {
         "name": "WELL",
@@ -86,7 +88,8 @@
         "tools": 15,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "healthy"
+        "status": "offline",
+        "reason": "decontainerized per PHOENIX-72"
       },
       "aaa": {
         "name": "AAA",
@@ -94,7 +97,8 @@
         "role": "A2A broker for cross-agent tasks. Inter-federation coordination.",
         "port": 3001,
         "mcp": false,
-        "status": "healthy"
+        "status": "offline",
+        "reason": "decontainerized per PHOENIX-72"
       },
       "wiki": {
         "name": "Wiki",
