@@ -390,7 +390,7 @@ The federation shares Docker networks:
 ### Health Endpoints
 - arifOS: `http://localhost:8088/health`
 - A-FORGE: `http://localhost:7071/health`
-- GEOX: No HTTP /health — health exposed as MCP resource (`geox://health`) only; use `http://localhost:8081/mcp` for MCP probe
+- GEOX: No HTTP /health — health exposed as MCP resource (`geox://health`) only; use `http://localhost:18081/mcp` for MCP probe
 
 ---
 
