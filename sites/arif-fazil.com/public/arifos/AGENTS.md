@@ -236,7 +236,7 @@ python internal/monolith.py
 python mcp_server.py
 
 # Health check
-curl http://localhost:8080/health
+curl http://localhost:8088/health
 ```
 
 ### Production Stack (compose/)
@@ -388,7 +388,7 @@ The federation shares Docker networks:
 | `caddy` | `caddy:2-alpine` | 80/443 | Reverse proxy |
 
 ### Health Endpoints
-- arifOS: `http://localhost:8080/health`
+- arifOS: `http://localhost:8088/health`
 - A-FORGE: `http://localhost:7071/health`
 - GEOX: No HTTP /health — health exposed as MCP resource (`geox://health`) only; use `http://localhost:8081/mcp` for MCP probe
 

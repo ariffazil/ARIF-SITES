@@ -542,7 +542,7 @@ arifosmcp.arif-fazil.com {
 }
 
 geox.arif-fazil.com {
-    reverse_proxy localhost:8081
+    reverse_proxy localhost:18081
 }
 
 ###############################################################################
