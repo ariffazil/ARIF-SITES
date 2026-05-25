@@ -63,10 +63,10 @@ domains:
     routes: ["/", "/mcp*", "/health", "/sse*"]
     deploy: vps-caddy
     webroot: /var/www/html/wealth
-    upstream: 127.0.0.1:8082
+    upstream: 127.0.0.1:18082
     role: CAPITAL
     status: active
-    note: Static site + MCP proxy to 127.0.0.1:8082. Missing from prior domains.yml.
+    note: Static site + MCP proxy to 127.0.0.1:18082. Missing from prior domains.yml.
 
   - host: well.arif-fazil.com
     type: organ

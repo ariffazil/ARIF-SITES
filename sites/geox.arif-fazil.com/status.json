@@ -27,7 +27,7 @@
       "tools_loaded": 17,
       "verdict": "SEAL",
       "source_path": "/root/arifOS/",
-      "health_endpoint": "http://localhost:8080/health"
+      "health_endpoint": "http://localhost:8088/health"
     },
     "arifos_landings": {
       "container_name": "arifos_landings",
