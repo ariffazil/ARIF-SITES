@@ -1,0 +1,15 @@
+# ═══════════════════════════════════════════════════════════════
+# arif-sites Canonical Workflow Manifest
+# Single source of truth for the workflow automation stack.
+# ═══════════════════════════════════════════════════════════════
+
+canonical_workflows:
+  - audit.yml                # F4 Clarity: required file check on every PR
+  - deploy.yml               # Build validation for all trinity sites
+  - repo-routing-validation.yml # Enforces REPO= trailer on commits
+
+required_checks_for_main:
+  - "Floor Audit — Site Integrity"
+  - "Repo Routing Validation"
+
+last_audit: "2026-05-26"
