@@ -1,0 +1,77 @@
+name: Weekly Repo Hygiene
+
+on:
+  schedule:
+    - cron: "45 2 * * 1"  # Monday 02:45 UTC (10:45 MYT)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+concurrency:
+  group: arif-sites-hygiene
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    name: 📊 Automation Health Digest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build automation health digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          WEEK=$(date -u +%Y-%m-%d)
+          REPORT=report.md
+
+          POLICY=".github/repo-policy.yml"
+          if [ -f "$POLICY" ]; then
+            TIER=$(grep "^tier:" "$POLICY" | awk '{print $2}')
+            POLICY_STATUS="present (tier=$TIER)"
+          else
+            POLICY_STATUS="MISSING"
+          fi
+
+          PR_COUNT=$(gh pr list --repo "$REPO" --state open --json number --jq 'length' 2>/dev/null || echo "?")
+          DEP_COUNT=$(gh pr list --repo "$REPO" --state open \
+            --author "app/dependabot" --json number --jq 'length' 2>/dev/null || echo "?")
+          FAILURES=$(gh run list --repo "$REPO" --status failure --limit 5 \
+            --json displayTitle,createdAt,url \
+            --jq '.[] | "- \(.displayTitle)"' 2>/dev/null || echo "none")
+
+          MANIFEST_COUNT=$(grep -c "\.yml$" ".github/workflows.CANONICAL.yml" 2>/dev/null || echo "?")
+          ACTUAL_COUNT=$(ls .github/workflows/*.yml 2>/dev/null | wc -l)
+
+          {
+            echo "## Automation Health — $WEEK"
+            echo ""
+            echo "**Repo:** arif-sites | **Tier:** site"
+            echo ""
+            echo "| Check | Status |"
+            echo "|---|---|"
+            echo "| repo-policy.yml | $POLICY_STATUS |"
+            echo "| Canonical workflows declared | $MANIFEST_COUNT |"
+            echo "| Actual workflows | $ACTUAL_COUNT |"
+            echo "| Open PRs | $PR_COUNT |"
+            echo "| Dependabot PRs open | $DEP_COUNT |"
+            echo ""
+            echo "### CI Failures (last 7 days)"
+            echo "$FAILURES"
+            echo ""
+            echo "### Checklist"
+            echo "- [ ] Manifest count matches actual count"
+            echo "- [ ] No Dependabot PRs older than 14 days"
+            echo "- [ ] No failing scheduled workflows"
+            echo "- [ ] Deploy preview working"
+          } > "$REPORT"
+
+          gh issue create --repo "$REPO" \
+            --title "Automation Health — $WEEK" \
+            --body-file "$REPORT" \
+            --label "automation" || true
