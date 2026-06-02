@@ -21,7 +21,7 @@ jobs:
     name: F4 Clarity — Required Files
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: L1 arif-fazil.com
         run: |
@@ -60,3 +60,9 @@ jobs:
             exit 1
           fi
           echo "✅ No secrets in public dirs"
+
+  secrets-gate:
+    name: F11 — Secrets Gate
+    uses: ariffazil/arifos/.github/workflows/_shared-secrets-gate.yml@main
+    secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
