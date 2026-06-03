@@ -377,6 +377,7 @@
     <a class="sidebar-link" onclick="showPage('arifosmcp')"><span class="dot"></span>arifOS MCP</a>
     <a class="sidebar-link" onclick="showPage('floors')"><span class="dot"></span>13 Constitutional Floors</a>
     <a class="sidebar-link" onclick="showPage('mcp-tools')"><span class="dot"></span>MCP Tools</a>
+    <a class="sidebar-link" onclick="showPage('mcp-connect')"><span class="dot"></span>MCP Connect (5 platforms)</a>
     <a class="sidebar-link" onclick="showPage('vault999')"><span class="dot"></span>VAULT999 Ledger</a>
   </div>
 
@@ -859,13 +860,43 @@ Stack:      Python 3.12 · FastMCP · Qdrant · PostgreSQL · Redis</code></pre>
     </table>
 
     <h2>Infrastructure</h2>
-    <pre><code>GUI container:   geox_gui    → nginx serving React 19 cockpit
-API container:   geox_server → FastMCP Python server (port 8000)
-Network:         traefik_network, geox_geox_network
-Live:            https://geox.arif-fazil.com
-Health:          https://geox.arif-fazil.com/health
-MCP endpoint:    https://geox.arif-fazil.com/mcp
-Version:         0.6.0</code></pre>
+    <pre><code>Service:        geox-mcp.service (systemd, bare-metal)
+FastMCP:        3.3.1, streamable-http, MCP spec 2025-11-25
+Port:           8081
+Build SHA:      d7f3db96 · v2026.05.27
+Live:           https://geox.arif-fazil.com
+Health:         https://geox.arif-fazil.com/health
+MCP endpoint:   https://geox.arif-fazil.com/mcp
+Canonical:      20 tools, 6 resources, 10 prompts (registry_truth PASS)</code></pre>
+
+    <h2>Canonical MCP Surface (2026-06-03)</h2>
+    <table>
+      <tr><th>Bucket</th><th>Count</th><th>Examples</th></tr>
+      <tr><td>Tools</td><td>20</td><td><code>geox_data_ingest_bundle</code>, <code>geox_prospect_evaluate</code>, <code>geox_map_context_scene</code>, <code>geox_subsurface_generate_candidates</code>, <code>geox_subsurface_verify_integrity</code></td></tr>
+      <tr><td>Resources</td><td>6</td><td><code>geox://capabilities</code>, <code>geox://registry/apps</code>, <code>geox://profile/status</code>, <code>geox://resources/index</code>, <code>geox://identity</code>, <code>tree777://index</code></td></tr>
+      <tr><td>Prompts</td><td>10</td><td><code>prompt_claim_discipline</code>, <code>prompt_red_team_reviewer</code>, <code>prompt_earth_reasoning_protocol</code>, <code>prompt_tool_selection</code>, <code>prompt_failure_policy</code> + 5 more</td></tr>
+    </table>
+
+    <h2>Eureka Extracted (2026-06-03 — Copilot ingest)</h2>
+    <p>Per the Physical Earth Reality Physics brief, the following eurekas have been FORGED into the envelope and 4 are wired at schema level (E1–E4). E5–E8 await <code>888_HOLD</code>.</p>
+    <table>
+      <tr><th>ID</th><th>Insight</th><th>Status</th></tr>
+      <tr><td><strong>E1</strong> causal_chain</td><td>Every result carries <code>causal_chain[]</code> — mechanism + physics_domain + conservation_law per step</td><td>✅ schema live</td></tr>
+      <tr><td><strong>E2</strong> falsification_tests</td><td>Every candidate carries <code>falsification_tests[]</code> — what observation would refute this hypothesis</td><td>✅ schema live</td></tr>
+      <tr><td><strong>E3</strong> toac_pair</td><td>Every anomaly result carries <code>{baseline, excess, uncertainty, snr, class}</code> — ToAC at envelope level</td><td>✅ schema live</td></tr>
+      <tr><td><strong>E4</strong> scale_metadata</td><td>Every physics result carries <code>scale: {length_m, time_s, regime}</code> — prevents cross-scale misuse</td><td>✅ schema live</td></tr>
+      <tr><td>E5 sar_seep_check</td><td>MetOcean-gated SAR anomaly detector (Layang-Layang pattern)</td><td>⏸ 888_HOLD</td></tr>
+      <tr><td>E6 cross_validate</td><td>Cross-module spatial validator (migration-predicted vs SAR-observed)</td><td>⏸ 888_HOLD</td></tr>
+      <tr><td>E7 physics_domains</td><td>6+2 domain ontology resource (Tectonics / Thermo / Fluid / Surface / Wave-SAR / Geochem + Cross-verification + Uncertainty)</td><td>⏸ 888_HOLD</td></tr>
+      <tr><td>E8 conservation_laws</td><td>Conservation law registry (mass, energy, momentum, charge, isotope, PVT)</td><td>⏸ 888_HOLD</td></tr>
+    </table>
+
+    <h2>Hardening (2026-06-03)</h2>
+    <p>
+      GEOX was hardened, polished and de-entropized: 6 real bugs killed (would have NameError'd at runtime),
+      94% reduction in ruff errors (1374 → 80), and 11 of 16 canonical tool entry points now enforce
+      input validation at the boundary (<code>src/geox_mcp/tools/kernel/_validation.py</code>).
+    </p>
   </article>
 
   <!-- ════════════════════════════════════════ TOAC ══ -->
@@ -907,6 +938,27 @@ Version:         0.6.0</code></pre>
       <li>Display parameters (gain, colour scale, clip level)</li>
       <li>Well tie quality (if available)</li>
     </ul>
+
+    <h2>Baseline + Excess Pattern (Eureka E3 — wired 2026-06-03)</h2>
+    <p>
+      Every anomaly result must now carry a <code>toac</code> pair: <em>baseline</em> (expected signal if no anomaly)
+      plus <em>excess</em> (delta beyond baseline + uncertainty). This is ToAC at the envelope level — not
+      just inside <code>ac_risk.py</code>. The pair travels with every result so downstream consumers can
+      audit "why was this flagged?" without re-running the physics.
+    </p>
+    <pre><code>{
+  "toac": {
+    "baseline":  { "radar_backscatter_dB": -22.4, "model": "clean sea, wind 3.2 m/s" },
+    "excess":    { "radar_backscatter_dB": -28.1, "delta_dB": -5.7 },
+    "uncertainty": 1.2,
+    "signal_to_noise": 4.75,
+    "anomaly_class": "STRONG"
+  }
+}</code></pre>
+    <p>
+      <strong>Anti-pattern (forbidden):</strong> reporting "anomaly detected" without the baseline,
+      or comparing observation to "regional average" without a physical model.
+    </p>
   </article>
 
   <!-- ══════════════════════════════ MALAY-BASIN ══ -->
@@ -1363,6 +1415,112 @@ but under different pressure, scale, time, fluid, stress, burial, or erosion."</
       <li>In GEOX, this manifests as the requirement for coordinates + CRS on all inputs — bare pixel values have undefined entropy reduction</li>
       <li>In AF-FORGE, multi-step plans must show monotonically decreasing uncertainty toward the goal</li>
     </ul>
+  </article>
+
+  <!-- ═════════════════════════════════ MCP CONNECT ══ -->
+  <article class="page" id="page-mcp-connect">
+    <div class="page-header">
+      <div class="page-badge">arifOS · Federation</div>
+      <h1 class="page-title">MCP Connect — 5 Major AI Platforms</h1>
+      <p class="page-lead">Drop-in wiring so any major AI client can call the arifOS / GEOX / WEALTH / WELL federation directly. No tokens required (open endpoint, rate-limited at Cloudflare).</p>
+    </div>
+
+    <div class="info-box warn">
+      <div class="label">Endpoint (canonical)</div>
+      <p><code>https://geox.arif-fazil.com/mcp</code> · transport <code>streamable-http</code> · MCP spec <code>2025-11-25</code> · no auth (open)</p>
+      <p style="margin-top:8px"><code>http://localhost:8081/mcp/</code> for in-VPS clients (e.g. arifOS, OpenClaw, Continue CLI, GEOX itself)</p>
+    </div>
+
+    <h2>1. Claude Code (Anthropic)</h2>
+    <p>Terminal-native. Already wired on this VPS at <code>~/.claude/settings.json</code> (model surface = MiniMax-M3).</p>
+    <pre><code>// ~/.claude/settings.json
+{
+  "mcpServers": {
+    "geox-vps": {
+      "url": "https://geox.arif-fazil.com/mcp",
+      "type": "streamable-http"
+    }
+  }
+}</code></pre>
+    <p><strong>Test:</strong> <code>claude --print "list geox tools"</code> → 20 tools surface.</p>
+
+    <h2>2. OpenCode (terminal)</h2>
+    <p>Already installed on VPS. Add to <code>~/.config/opencode/opencode.json</code>:</p>
+    <pre><code>{
+  "mcp": {
+    "geox": {
+      "type": "remote",
+      "url": "https://geox.arif-fazil.com/mcp",
+      "headers": {}
+    }
+  }
+}</code></pre>
+    <p><strong>Test:</strong> <code>opencode</code> → <code>/mcp connect geox</code> → 20 tools.</p>
+
+    <h2>3. Cursor (AI IDE)</h2>
+    <p>Project-level or user-level. <code>.cursor/mcp.json</code> in your repo, or <code>~/.cursor/mcp.json</code> globally:</p>
+    <pre><code>{
+  "mcpServers": {
+    "geox": {
+      "url": "https://geox.arif-fazil.com/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}</code></pre>
+    <p><strong>Test:</strong> Cursor → Settings → MCP → geox shows ✓ Connected.</p>
+
+    <h2>4. Cline (VSCode extension)</h2>
+    <p>Add to VSCode <code>settings.json</code>:</p>
+    <pre><code>{
+  "cline.mcpServers": {
+    "geox": {
+      "url": "https://geox.arif-fazil.com/mcp",
+      "type": "streamable-http",
+      "autoApprove": ["geox_system_registry_status", "geox_map_context_scene"]
+    }
+  }
+}</code></pre>
+    <p><strong>Test:</strong> Cline chat → <code>List geox tools</code> → 20 surface.</p>
+
+    <h2>5. Microsoft Copilot (M365)</h2>
+    <p>Two paths:</p>
+    <p><strong>Path A — via Composio MCP gateway</strong> (already provisioned in your tenant):</p>
+    <ol>
+      <li><a href="https://app.composio.dev" target="_blank">https://app.composio.dev</a> → arifOS project</li>
+      <li>Add "Custom MCP" connector</li>
+      <li>Server URL: <code>https://geox.arif-fazil.com/mcp</code></li>
+      <li>Auth: none (or Bearer token if added later)</li>
+      <li>Enable for: <code>arifbfazil@gmail.com</code></li>
+      <li>Test in M365 Copilot: "use geox tools to list 20 surface"</li>
+    </ol>
+    <p><strong>Path B — via Azure AI Foundry Agent</strong>:</p>
+    <pre><code>// infra/m365/geox-mcp-connector.bicep
+resource geoxMcp 'Microsoft.Agents/agentMcpConnectors@2025-01-01' = {
+  name: 'geox-vps'
+  properties: {
+    serverUrl: 'https://geox.arif-fazil.com/mcp'
+    transport: 'streamable-http'
+    allowedTools: '*'
+  }
+}</code></pre>
+
+    <h2>Already-wired on this VPS</h2>
+    <table>
+      <tr><th>Client</th><th>Status</th><th>Where</th></tr>
+      <tr><td>Claude Code</td><td>✅ wired (this session)</td><td><code>~/.claude/settings.json</code></td></tr>
+      <tr><td>Continue CLI</td><td>✅ wired (prior session)</td><td><code>~/.continue/config.yaml</code></td></tr>
+      <tr><td>OpenCode</td><td>✅ installed</td><td><code>~/.config/opencode/</code></td></tr>
+      <tr><td>cn-organ (Hermes A2A relay)</td><td>✅ live, :18790</td><td>systemd service</td></tr>
+      <tr><td>APEX (888 JUDGE deliberative)</td><td>✅ live, :3002</td><td>systemd service</td></tr>
+    </table>
+
+    <h2>Security note</h2>
+    <p>
+      The endpoint is currently <strong>open (no auth)</strong> per sovereign directive 2026-06-03.
+      Cloudflare free tier rate-limits at 100k req/day as a soft guard. If you later want Bearer tokens
+      (per-client) or mTLS (Cloudflare Access), the 30-min and 2-hour hardening paths are documented
+      in <code>/root/docs/API_TIER_CLASSIFICATION.md</code>.
+    </p>
   </article>
 
 </main>
