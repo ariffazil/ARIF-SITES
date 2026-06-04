@@ -19,6 +19,16 @@ The static site hosting layer for the arifOS federation. Each subsite is aligned
 
 **arif-sites owns the SURFACE — the observable face of every federation domain.**
 
+## ⚡ Quick Start
+
+```bash
+cd /root/arif-sites
+# Build React subsites
+cd src/arif && npm install && npm run build
+# Caddy routes: see deploy/Caddyfile
+# Sites: https://arif-fazil.com, https://aaa.arif-fazil.com
+```
+
 ## 📦 Ownership
 
 - **Owns**: All static site content, React subsite builds, Cloudflare Pages deployment, VPS Caddy routing.
@@ -90,3 +100,7 @@ This repository is a core organ of the **arifOS Federation**:
 *   **Public Surfaces (arif-sites):** [github.com/ariffazil/arif-sites](https://github.com/ariffazil/arif-sites)
 
 *Unified under the arifOS Sovereign Constitution (F1–F13).*
+
+## License
+
+AGPL-3.0. See [LICENSE](LICENSE).
