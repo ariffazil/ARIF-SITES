@@ -1,7 +1,8 @@
 {
-  "schema": "federation-manifest/v1",
-  "source": "arifOS MCP /api/federation-probe",
-  "generated": "2026-05-24T13:33:26Z",
+  "schema": "federation-manifest/v2",
+  "source": "arifOS MCP /api/federation-probe + /health",
+  "generated": "2026-06-04T00:35:00Z",
+  "note": "This manifest is refreshed by /api/federation-probe. Static claims are prohibited by F2 TRUTH.",
   "stack": {
     "topology": {
       "ordinal": 1,
@@ -23,8 +24,8 @@
         },
         {
           "ordinal": 3,
-          "name": "GEOX · WEALTH · WELL · AAA",
-          "role": "Earth · Capital · Vitality · A2A Hub. MCP-connected organs. 70 total tools across 4 services.",
+          "name": "GEOX · WEALTH · WELL · AAA · A-FORGE",
+          "role": "Earth · Capital · Vitality · A2A Hub · Forge. MCP-connected organs. ~85 total tools across 5 services.",
           "status": "live"
         },
         {
@@ -61,35 +62,32 @@
         "role": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.",
         "port": 8081,
         "mcp": true,
-        "tools": 22,
+        "tools": 20,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "offline",
-        "reason": "decontainerized per PHOENIX-72"
+        "status": "healthy"
       },
       "wealth": {
         "name": "WEALTH",
         "type": "capital_intelligence",
         "role": "NPV/EMV. Risk scoring. Makcik² relational credit. Capital conservation.",
-        "port": 8082,
+        "port": 18082,
         "mcp": true,
-        "tools": 17,
+        "tools": 44,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "offline",
-        "reason": "decontainerized per PHOENIX-72"
+        "status": "healthy"
       },
       "well": {
         "name": "WELL",
         "type": "vitality_engine",
         "role": "Biological substrate. Operator cognitive pressure. Thermodynamic wellness.",
-        "port": 8083,
+        "port": 18083,
         "mcp": true,
-        "tools": 15,
+        "tools": 45,
         "health_endpoint": "/health",
         "discovery_endpoint": "/.well-known/mcp/server.json",
-        "status": "offline",
-        "reason": "decontainerized per PHOENIX-72"
+        "status": "healthy"
       },
       "aaa": {
         "name": "AAA",
@@ -97,8 +95,15 @@
         "role": "A2A broker for cross-agent tasks. Inter-federation coordination.",
         "port": 3001,
         "mcp": false,
-        "status": "offline",
-        "reason": "decontainerized per PHOENIX-72"
+        "status": "healthy"
+      },
+      "forge": {
+        "name": "A-FORGE",
+        "type": "metabolic_shell",
+        "role": "Deployment orchestration. Agent engine loop. Cross-organ mesh protocol.",
+        "port": 7071,
+        "mcp": false,
+        "status": "healthy"
       },
       "wiki": {
         "name": "Wiki",

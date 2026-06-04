@@ -314,16 +314,28 @@ a:hover{color:var(--color-gold)}
     <a class="nav-chip" href="https://arif-fazil.com/canon/"><span class="icon">📐</span>Canon</a>
   </div>
 
+  <!-- DOCTRINE BANNER — truth-bound invariant -->
+  <div class="doctrine-banner" style="background:linear-gradient(90deg, rgba(212,168,83,0.10), rgba(212,168,83,0.02)); border-bottom:1px solid rgba(212,168,83,0.25); padding:6px 0; font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; color:var(--color-gold); text-align:center;">
+    DOCTRINE · <strong>UI STATE MUST NEVER BE MORE CONFIDENT THAN KERNEL STATE</strong> · if UI shows SEAL but kernel drifts, UI is wrong, not kernel
+  </div>
+
+  <!-- REALITY CHECK BANNER — no propaganda -->
+  <div id="realityBanner" style="background:var(--color-surface-offset); border-bottom:1px solid var(--color-border); padding:8px var(--space-4); font-family:var(--font-mono); font-size:11px; color:var(--color-text-muted); text-align:center; display:none;">
+    <span id="realityText"></span>
+  </div>
+
   <!-- STATUS STRIP -->
   <div class="status-strip" id="statusStrip">
-    <span class="status-pill"><span class="live-dot live-ok" id="statusDot"></span><span class="val" id="verdictVal">—</span></span>
-    <span class="status-pill"><span class="val-ok" id="toolsCount">—</span> <span>tools</span></span>
-    <span class="status-pill"><span class="val-gold" id="floorsActive">—/13</span> <span>floors</span></span>
+    <span class="status-pill"><span class="live-dot" id="statusDot" style="background:var(--color-text-faint);box-shadow:none"></span><span class="val" id="verdictVal">probe...</span></span>
+    <span class="status-pill"><span class="val" id="toolsCount">—</span> <span>tools</span></span>
+    <span class="status-pill"><span class="val" id="floorsActive">—/13</span> <span>floors</span></span>
     <span class="status-pill"><span class="val" id="psiVital">—</span> <span>Ψ_v</span></span>
-    <span class="status-pill"><span class="val" id="vaultStatus">—</span> <span>VAULT999</span></span>
+    <span class="status-pill" title="VAULT999 disambiguation. ① Service health (kernel reachable). ② Record count (audit trail). Both shown separately in the governance card."><span class="val" id="vaultStatus">—</span> <span>VAULT999 svc</span></span>
     <span class="status-pill"><span class="val" id="langfuseStatus">—</span> <span>langfuse</span></span>
     <span class="status-pill"><span class="val" id="runtimeDrift">—</span> <span>drift</span></span>
     <span class="status-pill"><span class="val" id="trinityStatus">—</span> <span>trinity</span></span>
+    <span class="status-pill" title="UI state vs kernel state synchronization. DEGRADED means UI may be more confident than kernel."><span class="val" id="uiKernelSync">—</span> <span>UI↔Kernel</span></span>
+    <span class="status-pill" title="Session identity provenance. CLAIMED = no cryptographic verification. VERIFIED = signed."><span class="val" id="identityState">CLAIMED</span> <span>identity</span></span>
     <span class="status-pill staleness-pill" id="stalenessPill" style="display:none"><span class="val-hold">⚠️</span> <span id="lastUpdated">—</span></span>
   </div>
 
@@ -340,7 +352,7 @@ a:hover{color:var(--color-gold)}
       <span class="pill" id="heroVerdict">VERDICT: —</span>
       <span class="pill">🛡️ F1–F13 Constitutional Floors</span>
       <span class="pill">⚖️ ΔΩΨ Trinity Governance</span>
-      <span class="pill">🌐 3 Organs · 13 Tools</span>
+      <span class="pill" id="heroOrgans">🌐 Federation Organs · Probing...</span>
       <span class="pill"><a href="/canon/aaa-doctrine" style="color:var(--color-text-muted)">📜 AAA Doctrine</a></span>
       <span class="pill"><a href="/canon/mcp-boundary" style="color:var(--color-text-muted)">🔌 MCP Boundary</a></span>
     </div>
@@ -602,24 +614,8 @@ a:hover{color:var(--color-gold)}
           <th style="padding:8px 4px">Notes</th>
         </tr>
       </thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">arifOS</td><td style="padding:6px 4px">8088</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">live</td><td style="padding:6px 4px;color:var(--color-text-muted)">13 canonical tools, outputSchema ENFORCED, Langfuse traced, vault999 healthy, build from /api/build-info</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">GEOX</td><td style="padding:6px 4px">8081</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">HTTP 200, streamable-http, 15 tools</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">WEALTH</td><td style="padding:6px 4px">8082</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">2026.05.02</td><td style="padding:6px 4px;color:var(--color-text-muted)">Capital engine up</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">WELL</td><td style="padding:6px 4px">8083</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">2026.05.08-ΩWELL</td><td style="padding:6px 4px;color:var(--color-text-muted)">verdict=NOT_WELL by design — REFLECT_ONLY authority mode</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">AAA A2A</td><td style="padding:6px 4px">3001</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">A2A v1.0.0</td><td style="padding:6px 4px;color:var(--color-text-muted)">vault=CONNECTED</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">vault999-writer</td><td style="padding:6px 4px">5001</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">1 seal, 0 pending holds</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">vault999</td><td style="padding:6px 4px">8100</td><td style="padding:6px 4px"><span class="badge badge-ok">Connected</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">Vault service healthy</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Redis</td><td style="padding:6px 4px">6379</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)"></td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Postgres</td><td style="padding:6px 4px">5432</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)"></td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Qdrant</td><td style="padding:6px 4px">6333</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">Vector store</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Ollama</td><td style="padding:6px 4px">11434</td><td style="padding:6px 4px"><span class="badge badge-ok">Up</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">Local LLM runtime</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">NATS</td><td style="padding:6px 4px">4222</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)">Messaging</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Loki</td><td style="padding:6px 4px">3100</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)"></td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">Grafana</td><td style="padding:6px 4px">3000</td><td style="padding:6px 4px"><span class="badge badge-hold">Degraded</span></td><td style="padding:6px 4px">12.0.2</td><td style="padding:6px 4px;color:var(--color-text-muted)">Database failing — HTTP 503</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">af-bridge</td><td style="padding:6px 4px">7071</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">0.1.0</td><td style="padding:6px 4px;color:var(--color-text-muted)">A-FORGE bridge</td></tr>
-        <tr style="border-bottom:1px solid var(--color-divider)"><td style="padding:6px 4px">hermes-agent</td><td style="padding:6px 4px">3002</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)"></td></tr>
-        <tr><td style="padding:6px 4px">forge-notifier</td><td style="padding:6px 4px">—</td><td style="padding:6px 4px"><span class="badge badge-ok">Healthy</span></td><td style="padding:6px 4px">—</td><td style="padding:6px 4px;color:var(--color-text-muted)"></td></tr>
+      <tbody id="federationCensus">
+        <tr><td colspan="5" style="padding:12px 4px;color:var(--color-text-faint);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Probing federation census... <span class="live-dot live-ok" style="animation:pulse 1s infinite"></span></td></tr>
       </tbody>
     </table>
     </div>
@@ -664,35 +660,35 @@ a:hover{color:var(--color-gold)}
         <circle cx="450" cy="145" r="42" fill="#0d1a1c" stroke="#3a9ea8" stroke-width="2.5"/>
         <text x="450" y="138" text-anchor="middle" fill="#3a9ea8" font-size="13" font-weight="800" font-family="var(--font-display)">arifOS</text>
         <text x="450" y="151" text-anchor="middle" fill="#3a9ea8" font-size="8" font-family="var(--font-mono)">KERNEL</text>
-        <text x="450" y="163" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">13 tools · F1–F13</text>
-        <text x="450" y="175" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">🟢 13/13 floors</text>
+        <text id="svg-arifos-tools" x="450" y="163" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">— tools · F1–F13</text>
+        <text id="svg-arifos-floors" x="450" y="175" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">—/13 floors</text>
 
         <!-- GEOX -->
         <circle cx="110" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="110" y="304" text-anchor="middle" fill="#5a9e38" font-size="13" font-weight="700" font-family="var(--font-display)">GEOX</text>
         <text x="110" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Earth</text>
-        <text x="110" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 22 tools</text>
+        <text id="svg-geox-tools" x="110" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
         <text x="110" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8081</text>
 
         <!-- WEALTH -->
         <circle cx="310" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="310" y="304" text-anchor="middle" fill="#d4a853" font-size="13" font-weight="700" font-family="var(--font-display)">WEALTH</text>
         <text x="310" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Capital</text>
-        <text x="310" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 17 tools</text>
+        <text id="svg-wealth-tools" x="310" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
         <text x="310" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8082</text>
 
         <!-- WELL -->
         <circle cx="530" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="530" y="304" text-anchor="middle" fill="#b83060" font-size="13" font-weight="700" font-family="var(--font-display)">WELL</text>
         <text x="530" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Vitality</text>
-        <text x="530" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 15 tools</text>
+        <text id="svg-well-tools" x="530" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
         <text x="530" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8083</text>
 
         <!-- AAA -->
         <circle cx="830" cy="190" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
         <text x="830" y="184" text-anchor="middle" fill="#5a9e38" font-size="13" font-weight="700" font-family="var(--font-display)">AAA</text>
         <text x="830" y="197" text-anchor="middle" fill="#706e6b" font-size="8">A2A Hub</text>
-        <text x="830" y="209" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">🟢 port 3001</text>
+        <text id="svg-aaa-status" x="830" y="209" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">port 3001</text>
         <text x="830" y="221" text-anchor="middle" fill="#706e6b" font-size="7">A2A broker</text>
 
         <!-- APEX -->
@@ -751,7 +747,12 @@ a:hover{color:var(--color-gold)}
       <div class="metric-row"><span class="metric-label">PSI VITALITY</span><span class="metric-val primary" id="psiVit">—</span></div>
       <div class="metric-row"><span class="metric-label">VAULT999 HEALTH</span><span class="metric-val" id="vault999Val">—</span></div>
       <div class="metric-row"><span class="metric-label">RUNTIME DRIFT</span><span class="metric-val" id="driftVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">SEAL READINESS</span><span class="metric-val hold" id="sealRec">—</span></div>
+      <div class="metric-row" style="border-top:1px dashed var(--color-divider);margin-top:var(--space-2);padding-top:var(--space-2)"><span class="metric-label" style="font-size:9px;color:var(--color-text-faint);letter-spacing:0.15em">SEAL · 5-WAY SPLIT (must not collapse into one verdict)</span></div>
+      <div class="metric-row" title="Service health = /health HTTP 200. NOT a constitutional verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">① Service health</span><span class="metric-val" id="sealService" style="font-size:11px">—</span></div>
+      <div class="metric-row" title="Constitutional floors passing per live receipt. NOT a service health check."><span class="metric-label" style="padding-left:10px;font-size:10px">② Floor pass</span><span class="metric-val" id="sealFloors" style="font-size:11px">—</span></div>
+      <div class="metric-row" title="Judge verdict authorizes execution. NEVER self-attested."><span class="metric-label" style="padding-left:10px;font-size:10px">③ Execution auth</span><span class="metric-val" id="sealExec" style="font-size:11px">—</span></div>
+      <div class="metric-row" title="VAULT999 immutability proof. Independent of any other SEAL meaning."><span class="metric-label" style="padding-left:10px;font-size:10px">④ Audit seal</span><span class="metric-val" id="sealAudit" style="font-size:11px">—</span></div>
+      <div class="metric-row" title="APEX sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:11px">—</span></div>
     </div>
 
     <!-- WITNESS -->
@@ -781,19 +782,19 @@ a:hover{color:var(--color-gold)}
   <!-- IV. CONSTITUTIONAL FLOORS -->
   <div class="section-label">IV · Constitutional Floors F1–F13</div>
   <div class="floor-grid fade-up" id="floorGrid" style="margin-bottom:var(--space-12)">
-    <div class="floor-chip pass"><div class="floor-id">F1</div><div class="floor-name">AMANAH</div><div class="floor-score">1.00</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F2</div><div class="floor-name">TRUTH</div><div class="floor-score">0.98</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F3</div><div class="floor-name">WITNESS</div><div class="floor-score">0.95</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F4</div><div class="floor-name">ΔS</div><div class="floor-score">0.92</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F5</div><div class="floor-name">PEACE²</div><div class="floor-score">1.00</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F6</div><div class="floor-name">EMPATHY</div><div class="floor-score">0.88</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F7</div><div class="floor-name">HUMILITY</div><div class="floor-score">0.96</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F8</div><div class="floor-name">GENIUS</div><div class="floor-score">0.85</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F9</div><div class="floor-name">ANTIHANTU</div><div class="floor-score">1.00</div></div>
-    <div class="floor-chip lock"><div class="floor-id">F10</div><div class="floor-name">ONTOLOGY</div><div class="floor-score">0.82</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F11</div><div class="floor-name">AUTH</div><div class="floor-score">0.94</div></div>
-    <div class="floor-chip pass"><div class="floor-id">F12</div><div class="floor-name">INJECTION</div><div class="floor-score">0.97</div></div>
-    <div class="floor-chip human"><div class="floor-id">F13</div><div class="floor-name">SOVEREIGN</div><div class="floor-score">1.00</div></div>
+    <div class="floor-chip band"><div class="floor-id">F1</div><div class="floor-name">AMANAH</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F2</div><div class="floor-name">TRUTH</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F3</div><div class="floor-name">WITNESS</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F4</div><div class="floor-name">ΔS</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F5</div><div class="floor-name">PEACE²</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F6</div><div class="floor-name">EMPATHY</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F7</div><div class="floor-name">HUMILITY</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F8</div><div class="floor-name">GENIUS</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F9</div><div class="floor-name">ANTIHANTU</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F10</div><div class="floor-name">ONTOLOGY</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F11</div><div class="floor-name">AUTH</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F12</div><div class="floor-name">INJECTION</div><div class="floor-score">—</div></div>
+    <div class="floor-chip band"><div class="floor-id">F13</div><div class="floor-name">SOVEREIGN</div><div class="floor-score">—</div></div>
   </div>
 
   <!-- IV·b CONSTITUTIONAL DOCTRINE -->
@@ -990,18 +991,7 @@ a:hover{color:var(--color-gold)}
         </tr>
       </thead>
       <tbody id="capBody">
-        <tr><td class="cap-key">Governed Continuity</td><td class="cap-val">enabled</td><td><span class="badge badge-ok">enabled</span></td><td class="cap-val">Session binding + constitution hash</td></tr>
-        <tr><td class="cap-key">Vault Persistence</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">PostgreSQL append-only</td></tr>
-        <tr><td class="cap-key">Vector Memory</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Qdrant embeddings</td></tr>
-        <tr><td class="cap-key">Langfuse Tracing</td><td class="cap-val">enabled</td><td><span class="badge badge-ok">enabled</span></td><td class="cap-val">13/13 tools traced</td></tr>
-        <tr><td class="cap-key">Model Providers</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Ollama + OpenRouter fallback</td></tr>
-        <tr><td class="cap-key">Local Model Runtime</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Ollama port 11434</td></tr>
-        <tr><td class="cap-key">Git Substrate</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Source-of-truth tracking</td></tr>
-        <tr><td class="cap-key">Fetch Substrate</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Evidence ingestion</td></tr>
-        <tr><td class="cap-key">Memory Substrate</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">6-tier governed memory</td></tr>
-        <tr><td class="cap-key">Filesystem Substrate</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">Sandboxed access</td></tr>
-        <tr><td class="cap-key">Webhook Deploy</td><td class="cap-val">configured</td><td><span class="badge badge-ok">configured</span></td><td class="cap-val">A-FORGE CI/CD trigger</td></tr>
-        <tr><td class="cap-key">Grafana Access</td><td class="cap-val">degraded</td><td><span class="badge badge-hold">degraded</span></td><td class="cap-val">DB HTTP 503 — known gap</td></tr>
+        <tr><td colspan="4" style="padding:12px 4px;color:var(--color-text-faint);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Probing capability map... <span class="live-dot live-ok" style="animation:pulse 1s infinite"></span></td></tr>
       </tbody>
     </table>
   </div>
@@ -1041,7 +1031,7 @@ a:hover{color:var(--color-gold)}
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer-logo">arifOS Observatory</div>
-  <div class="footer-sub">DITEMPA BUKAN DIBERI · v2.0-KANON · FEDERATION GOVERNANCE HUB</div>
+  <div class="footer-sub">DITEMPA BUKAN DIBERI · v2.1-TRUTH-BOUND · FEDERATION GOVERNANCE HUB · UI ↔ KERNEL DOCTRINE ENFORCED</div>
   <div class="footer-links">
     <a href="https://github.com/ariffazil/arifOS">GitHub</a>
     <a href="https://arif-fazil.com/">arif-fazil.com</a>
@@ -1157,16 +1147,95 @@ function renderCap(cap) {
   tbody.innerHTML = html;
 }
 
+function renderFederationCensus(probeResults) {
+  const tbody = document.getElementById('federationCensus');
+  if (!tbody) return;
+  const organs = [
+    {id:'arifos', name:'arifOS', port:8088, note:'Governance kernel', knownTools:13},
+    {id:'geox', name:'GEOX', port:8081, note:'Earth intelligence organ', knownTools:20},
+    {id:'wealth', name:'WEALTH', port:18082, note:'Capital intelligence organ', knownTools:44},
+    {id:'well', name:'WELL', port:18083, note:'Biological substrate organ', knownTools:45},
+    {id:'aaa', name:'AAA A2A', port:3001, note:'A2A broker', knownTools:null},
+    {id:'forge', name:'A-FORGE', port:7071, note:'Metabolic shell', knownTools:null},
+    {id:'redis', name:'Redis', port:6379, note:'Session cache', knownTools:null},
+    {id:'postgres', name:'Postgres', port:5432, note:'Primary database', knownTools:null},
+    {id:'qdrant', name:'Qdrant', port:6333, note:'Vector store', knownTools:null},
+    {id:'nats', name:'NATS', port:4222, note:'Messaging', knownTools:null},
+    {id:'grafana', name:'Grafana', port:3000, note:'Dashboard (DB HTTP 503 — known gap)', knownTools:null},
+  ];
+  let html = '';
+  for (const o of organs) {
+    const probed = probeResults[o.id] || {};
+    const health = probed.health || 'unknown';
+    const isHealthy = health === 'healthy';
+    const isDegraded = health === 'degraded';
+    const badgeClass = isHealthy ? 'badge-ok' : isDegraded ? 'badge-hold' : 'badge-err';
+    const badgeText = isHealthy ? 'Healthy' : isDegraded ? 'Degraded' : health.toUpperCase();
+    const tools = probed.tool_count != null ? probed.tool_count : o.knownTools;
+    const toolStr = tools != null ? tools + ' tools' : '';
+    const note = toolStr ? (o.note + ' · ' + toolStr) : o.note;
+    html += `<tr style="border-bottom:1px solid var(--color-divider)">
+      <td style="padding:6px 4px">${o.name}</td>
+      <td style="padding:6px 4px">${o.port}</td>
+      <td style="padding:6px 4px"><span class="badge ${badgeClass}">${badgeText}</span></td>
+      <td style="padding:6px 4px">${probed.version || '—'}</td>
+      <td style="padding:6px 4px;color:var(--color-text-muted)">${note}</td>
+    </tr>`;
+  }
+  tbody.innerHTML = html;
+}
+
+function updateSvgCounts(probeResults, health) {
+  const setText = (id, text, color) => {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = text; if (color) el.setAttribute('fill', color); }
+  };
+  const pr = probeResults || {};
+  const h = health || {};
+  const arifosTools = h.tools_loaded != null ? h.tools_loaded + ' tools · F1–F13' : '— tools · F1–F13';
+  const arifosFloors = (h.floors_active || '—') + '/13 floors';
+  setText('svg-arifos-tools', arifosTools);
+  setText('svg-arifos-floors', arifosFloors);
+  setText('svg-geox-tools', (pr.geox?.tool_count || '—') + ' tools');
+  setText('svg-wealth-tools', (pr.wealth?.tool_count || '—') + ' tools');
+  setText('svg-well-tools', (pr.well?.tool_count || '—') + ' tools');
+  const aaaStatus = pr.aaa?.health === 'healthy' ? 'healthy · port 3001' : (pr.aaa?.health || 'unknown') + ' · port 3001';
+  setText('svg-aaa-status', aaaStatus, pr.aaa?.health === 'healthy' ? '#5a9e38' : '#c46a1a');
+}
+
 function updateClock() {
   document.getElementById('clock').textContent = new Date().toISOString().replace('T',' ').substring(0,19) + ' UTC';
 }
 setInterval(updateClock, 1000);
 updateClock();
 
+function showReality(status, text) {
+  const banner = document.getElementById('realityBanner');
+  const el = document.getElementById('realityText');
+  if (!banner || !el) return;
+  banner.style.display = 'block';
+  el.textContent = text;
+  banner.style.color = status === 'ok' ? 'var(--color-success)' : status === 'warn' ? 'var(--color-hold)' : 'var(--color-error)';
+  banner.style.borderBottomColor = status === 'ok' ? 'rgba(74,222,128,0.3)' : status === 'warn' ? 'rgba(212,168,83,0.3)' : 'rgba(184,48,96,0.3)';
+}
+
+function renderProbeError(err) {
+  showReality('err', 'Δ PROBE FAILED · Kernel unreachable · ' + (err.message || String(err)));
+  document.getElementById('verdictVal').textContent = 'PROBE FAILED';
+  document.getElementById('verdictVal').className = 'val err';
+  const dot = document.getElementById('statusDot');
+  dot.className = 'live-dot live-err';
+  dot.style.background = ''; dot.style.boxShadow = '';
+  document.getElementById('heroVerdict').textContent = 'VERDICT: PROBE FAILED';
+  document.getElementById('federationCensus').innerHTML = '<tr><td colspan="5" style="padding:12px 4px;color:var(--color-error);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Δ PROBE FAILED · Cannot reach kernel /api/status</td></tr>';
+}
+
 async function poll() {
   try {
-    const res = await fetch('/api/status');
-    if (!res.ok) return;
+    const res = await fetch('/api/status', { cache: 'no-store' });
+    if (!res.ok) {
+      throw new Error('HTTP ' + res.status + ' from /api/status');
+    }
     const d = await res.json();
     const h = d.health || {};
     const th = h.thermodynamic || {};
@@ -1182,8 +1251,11 @@ async function poll() {
     // Status strip
     document.getElementById('verdictVal').textContent = verdict;
     document.getElementById('verdictVal').className = 'val ' + (verdict === 'SEAL' ? 'ok' : verdict === 'HOLD' ? 'hold' : 'err');
-    document.getElementById('statusDot').className = 'live-dot ' + (verdict === 'SEAL' ? 'live-ok' : verdict === 'HOLD' ? 'live-hold' : 'live-err');
+    const statusDot = document.getElementById('statusDot');
+    statusDot.className = 'live-dot ' + (verdict === 'SEAL' ? 'live-ok' : verdict === 'HOLD' ? 'live-hold' : 'live-err');
+    statusDot.style.background = ''; statusDot.style.boxShadow = '';
     document.getElementById('heroVerdict').textContent = 'VERDICT: ' + verdict;
+    document.getElementById('heroOrgans').textContent = '🌐 ' + (h.tools_loaded || '?') + ' Tools · Federation Live';
     document.getElementById('toolsCount').textContent = h.tools_loaded || '—';
     document.getElementById('psiVital').textContent = (gov.psi_vitality || 0).toFixed(2);
     document.getElementById('vaultStatus').textContent = (h.vault999_health || '—').toUpperCase();
@@ -1194,6 +1266,33 @@ async function poll() {
     document.getElementById('runtimeDrift').className = 'val ' + (sr.runtime_drift ? 'err' : 'ok');
     document.getElementById('trinityStatus').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
     document.getElementById('trinityStatus').className = 'val ' + (ok ? 'ok' : 'err');
+
+    // UI↔Kernel Sync — DEGRADED when any of: runtime drift, contract drift, missing identity verification, or verdict says SEAL but drift=true
+    const runtimeDrifted = !!sr.runtime_drift;
+    const contractDrifted = !!h.contract_drift;
+    const identityClaimed = (h.identity_marker || '').toLowerCase().includes('sovereign-runtime') && !h.boot_attestation;
+    const verdictLies = (verdict === 'SEAL') && (runtimeDrifted || contractDrifted);
+    const syncState = (runtimeDrifted || contractDrifted || verdictLies) ? 'DEGRADED' : (ok ? 'SYNC' : 'UNKNOWN');
+    const syncEl = document.getElementById('uiKernelSync');
+    syncEl.textContent = syncState;
+    syncEl.className = 'val ' + (syncState === 'SYNC' ? 'ok' : (syncState === 'DEGRADED' ? 'err' : 'hold'));
+    syncEl.title = 'UI state vs kernel state. DEGRADED means: ' + [
+      runtimeDrifted ? 'runtime drift TRUE' : null,
+      contractDrifted ? 'contract drift TRUE' : null,
+      verdictLies ? 'verdict=SEAL despite drift' : null,
+    ].filter(Boolean).join('; ') || 'no drift signals';
+
+    // Identity state — sovereign-runtime marker is fine, but boot_attestation must be true
+    const idEl = document.getElementById('identityState');
+    if (h.boot_attestation) {
+      idEl.textContent = 'VERIFIED';
+      idEl.className = 'val ok';
+      idEl.title = 'boot_attestation=true. Identity is cryptographically anchored.';
+    } else {
+      idEl.textContent = 'CLAIMED';
+      idEl.className = 'val hold';
+      idEl.title = 'boot_attestation=false. Identity is asserted by config (identity.toml), not cryptographically verified by an external witness. All F13 / F11 verdicts operate under this constraint.';
+    }
     // Last-updated timestamp for staleness visibility
     const now = new Date();
     document.getElementById('lastUpdated').textContent = now.toISOString().replace('T',' ').substring(0,19) + ' UTC';
@@ -1225,8 +1324,41 @@ async function poll() {
     document.getElementById('vault999Val').className = 'metric-val ' + (h.vault999_health === 'healthy' ? 'ok' : 'err');
     document.getElementById('driftVal').textContent = String(sr.runtime_drift || false).toUpperCase();
     document.getElementById('driftVal').className = 'metric-val ' + (sr.runtime_drift ? 'err' : 'ok');
-    document.getElementById('sealRec').textContent = verdict;
-    document.getElementById('sealRec').className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : 'hold');
+
+    // 5-WAY SEAL SPLIT — do not collapse these into one verdict.
+    // ① Service health = HTTP /health 200 (kernel reachability, not constitutional)
+    const svcOk = (h.status || '').toLowerCase() === 'healthy';
+    const svcEl = document.getElementById('sealService');
+    svcEl.textContent = svcOk ? 'healthy' : (h.status || 'unknown');
+    svcEl.className = 'metric-val ' + (svcOk ? 'ok' : 'err');
+    // ② Floor pass = count of runtime floors with positive signal
+    const rfKeys = Object.keys(rf);
+    const floorPassCount = rfKeys.filter(k => {
+      const v = rf[k];
+      if (typeof v === 'boolean') return v === true;
+      if (typeof v === 'object' && v !== null) {
+        return v.pass === true || v.verdict === 'PASS' || v.status === 'active';
+      }
+      return false;
+    }).length;
+    const floorEl = document.getElementById('sealFloors');
+    floorEl.textContent = floorPassCount + '/' + rfKeys.length;
+    floorEl.className = 'metric-val ' + (floorPassCount === rfKeys.length && rfKeys.length > 0 ? 'ok' : (floorPassCount >= rfKeys.length / 2 ? 'hold' : 'err'));
+    // ③ Execution auth = judge verdict. NEVER self-attest.
+    const execEl = document.getElementById('sealExec');
+    execEl.textContent = verdict;
+    execEl.className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : (verdict === 'HOLD' ? 'hold' : 'err'));
+    // ④ Audit seal = VAULT999 service health + record availability
+    const auditEl = document.getElementById('sealAudit');
+    const vaultOk = (h.vault999_health || '').toLowerCase() === 'healthy';
+    auditEl.textContent = vaultOk ? 'service up' : (h.vault999_health || 'unknown');
+    auditEl.className = 'metric-val ' + (vaultOk ? 'ok' : 'err');
+    auditEl.title = vaultOk ? 'Vault service reachable. Record count not shown here — see VAULT999 page.' : 'Vault service degraded';
+    // ⑤ Human approval = APEX sovereign. Default = NOT_REQUESTED (operator has not invoked).
+    const humanEl = document.getElementById('sealHuman');
+    humanEl.textContent = 'not_invoked';
+    humanEl.className = 'metric-val hold';
+    humanEl.title = 'APEX sovereign approval has not been requested in this session. Cannot be true-green unless an operator explicitly invokes an irreversible action and approves it.';
 
     // Witness card
     const wit = th.witness || {};
@@ -1256,7 +1388,14 @@ async function poll() {
     if (h.known_gaps) renderGaps(h.known_gaps);
     if (cap && Object.keys(cap).length) renderCap(cap);
 
-  } catch(e) { console.warn('poll error:', e); }
+    // Reality banner: honest summary of what we know
+    const driftNote = sr.runtime_drift ? ' · RUNTIME DRIFT DETECTED' : '';
+    showReality('ok', 'Δ LIVE · tools=' + (h.tools_loaded || '?') + ' · vault=' + (h.vault999_health || '?') + ' · langfuse=' + (lf.status || '?') + ' · drift=' + (sr.runtime_drift || false) + driftNote);
+
+  } catch(e) {
+    console.warn('poll error:', e);
+    renderProbeError(e);
+  }
 }
 
 poll();
@@ -1273,9 +1412,9 @@ setInterval(poll, 8000);
 // health source, and only attempt CORS discovery when probe confirms healthy.
 async function loadOrganDiscovery() {
   const organs = [
-    {id:'geox',url:'https://geox.arif-fazil.com',verifiedCount:22,note:'MCP session required'},
-    {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:17,note:'MCP session required'},
-    {id:'well',url:'https://well.arif-fazil.com',verifiedCount:15,note:'MCP session required'},
+    {id:'geox',url:'https://geox.arif-fazil.com',verifiedCount:20,note:'MCP session required'},
+    {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:44,note:'MCP session required'},
+    {id:'well',url:'https://well.arif-fazil.com',verifiedCount:45,note:'MCP session required'},
     {id:'aaa',url:'https://aaa.arif-fazil.com',verifiedCount:null,note:'unknown'},
     {id:'forge',url:'https://forge.arif-fazil.com',verifiedCount:null,note:'unknown'},
     {id:'wiki',url:'https://wiki.arif-fazil.com',verifiedCount:null,note:'static site'},
@@ -1284,12 +1423,23 @@ async function loadOrganDiscovery() {
   // Primary health source: same-origin server-side probe (bypasses CORS)
   let probeResults = {};
   try {
-    const pr = await fetch('/api/federation-probe');
+    const pr = await fetch('/api/federation-probe', { cache: 'no-store' });
     if (pr.ok) {
       const pd = await pr.json();
       probeResults = pd.probed || {};
     }
-  } catch(e) { /* probe failed — fall through to degraded display */ }
+  } catch(e) { console.warn('federation-probe failed:', e); }
+
+  // Update census table and SVG with honest probe data
+  renderFederationCensus(probeResults);
+
+  // Also fetch /api/status for arifOS-specific counts
+  let health = {};
+  try {
+    const hr = await fetch('/api/status', { cache: 'no-store' });
+    if (hr.ok) health = (await hr.json()).health || {};
+  } catch(e) { /* ignore */ }
+  updateSvgCounts(probeResults, health);
 
   for (const o of organs) {
     const probed = probeResults[o.id] || {};
@@ -1301,9 +1451,6 @@ async function loadOrganDiscovery() {
     const el2 = document.getElementById(o.id+'-resources');
     const el3 = document.getElementById(o.id+'-prompts');
 
-    // Use server-side probe tool_count directly — browser-side CORS fetches to
-    // organ subdomains are blocked (confirmed 2026-05-15). federation-probe
-    // runs server-side and already has authoritative counts.
     const liveCount = probed.tool_count != null ? probed.tool_count : o.verifiedCount;
 
     if (isHealthy && liveCount != null) {
