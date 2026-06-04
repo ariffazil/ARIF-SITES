@@ -1,6 +1,6 @@
 ﻿<!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-05-19
+last_verified: 2026-06-04
 valid_from: 2026-05-19
 valid_until: 2026-06-19
 confidence: high
@@ -73,7 +73,7 @@ scripts/deploy-site.sh <site-dir>
 
 ---
 
-*Last Verified: 2026.05.16 | 999 SEAL ALIVE*
+*Last Verified: 2026.06.04 | 999 SEAL ALIVE*
 
 
 ---
@@ -81,12 +81,12 @@ scripts/deploy-site.sh <site-dir>
 ## 🏛️ Federated Architecture
 
 This repository is a core organ of the **arifOS Federation**:
-*   **Operator Cockpit (AAA):** [C:\ariffazil\AAA](file:///C:/Users/User/../ariffazil/AAA)
-*   **Constitutional Kernel (arifOS):** [C:\ariffazil\arifOS](file:///C:/Users/User/../ariffazil/arifOS)
-*   **Vision Shell (A-FORGE):** [C:\ariffazil\A-FORGE](file:///C:/Users/User/../ariffazil/A-FORGE)
-*   **Geological Engine (GEOX):** [C:\ariffazil\geox](file:///C:/Users/User/../ariffazil/geox)
-*   **Capital Engine (WEALTH):** [C:\ariffazil\wealth](file:///C:/Users/User/../ariffazil/wealth)
-*   **Biological Substrate (WELL):** [C:\ariffazil\well](file:///C:/Users/User/../ariffazil/well)
-*   **Informational Surfaces (arif-sites):** [C:\ariffazil\arif-sites](file:///C:/Users/User/../ariffazil/arif-sites)
+*   **Reality Console (AAA):** [github.com/ariffazil/AAA](https://github.com/ariffazil/AAA)
+*   **Constitutional Kernel (arifOS):** [github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS)
+*   **Execution Shell (A-FORGE):** [github.com/ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE)
+*   **Earth Intelligence (GEOX):** [github.com/ariffazil/geox](https://github.com/ariffazil/geox)
+*   **Capital Intelligence (WEALTH):** [github.com/ariffazil/wealth](https://github.com/ariffazil/wealth)
+*   **Human Readiness (WELL):** [github.com/ariffazil/well](https://github.com/ariffazil/well)
+*   **Public Surfaces (arif-sites):** [github.com/ariffazil/arif-sites](https://github.com/ariffazil/arif-sites)
 
 *Unified under the arifOS Sovereign Constitution (F1–F13).*
