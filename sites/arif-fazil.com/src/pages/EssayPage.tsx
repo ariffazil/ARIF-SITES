@@ -2,8 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { getEssay } from '@/data/essays/index';
-import type { EssayMeta } from '@/data/essays/index';
-import { essays } from '@/data/essays';
 
 export function EssayPage() {
   const { slug } = useParams<{ slug: string }>();
