@@ -8,6 +8,7 @@ import { Discoveries } from '@/pages/Discoveries';
 import { Constellation } from '@/pages/Constellation';
 import { Canon } from '@/pages/Canon';
 import { Essays } from '@/pages/Essays';
+import { EssayPage } from '@/pages/EssayPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/canon/" element={<Canon />} />
             <Route path="/essays" element={<Essays />} />
             <Route path="/essays/" element={<Essays />} />
+            <Route path="/essays/:slug" element={<EssayPage />} />
           </Routes>
         </main>
         <ConstellationFooter />

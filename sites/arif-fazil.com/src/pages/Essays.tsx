@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { essays } from '@/data/essays';
 
 export function Essays() {
+  useEffect(() => {
+    document.title = 'Essays — Arif Fazil | arifOS';
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,7 +35,7 @@ export function Essays() {
             <span className="text-forge-gold text-2xl">✍️</span>
             <div>
               <div className="font-display font-bold text-base text-forge-white group-hover:text-forge-gold transition-colors">
-                Read stories from ARIF FAZIL on Medium
+                Follow on Medium
               </div>
               <div className="font-mono text-xs text-forge-dim mt-0.5">
                 medium.com/@arifbfazil
@@ -39,13 +46,51 @@ export function Essays() {
         </div>
       </section>
 
-      <section className="py-24">
+      {/* Essay List */}
+      <section className="py-16">
         <div className="site-frame">
-          <div className="brutalist-card border-dashed p-12 text-center">
-            <h2 className="text-2xl font-black uppercase mb-4 italic">Coming Soon.</h2>
-            <p className="font-mono text-sm text-forge-dim">
-              Essays are linked directly to Medium. Share your first essay URL and I'll wire it up properly.
-            </p>
+          <div className="grid gap-6">
+            {essays.map((essay) => (
+              <Link
+                key={essay.slug}
+                to={`/essays/${essay.slug}`}
+                className="brutalist-card border border-forge-iron hover:border-forge-gold/40 px-8 py-6 transition-all group block"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">
+                  <h2 className="text-xl font-black uppercase tracking-tight text-forge-white group-hover:text-forge-gold transition-colors leading-tight">
+                    {essay.title}
+                  </h2>
+                  <time
+                    dateTime={essay.date}
+                    className="font-mono text-xs text-forge-dim whitespace-nowrap"
+                  >
+                    {new Date(essay.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                </div>
+
+                <p className="font-body text-forge-dim text-sm leading-relaxed line-clamp-2 mb-3">
+                  {essay.excerpt}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  {essay.tags?.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-forge-iron text-forge-dim"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  <span className="font-mono text-xs text-forge-gold ml-auto group-hover:translate-x-1 transition-transform">
+                    Read →
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

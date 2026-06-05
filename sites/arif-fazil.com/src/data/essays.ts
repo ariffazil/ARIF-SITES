@@ -8,5 +8,5 @@ export interface Essay {
   mediumUrl: string;
 }
 
-// Add essays here ONLY when they are confirmed published on Medium
-export const essays: Essay[] = [];
+// Re-export from the essays data directory
+export { allEssays as essays, getEssay } from './essays/index';

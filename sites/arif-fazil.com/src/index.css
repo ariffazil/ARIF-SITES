@@ -174,3 +174,108 @@
   background: #FF4500;
   color: #050505;
 }
+
+/* Essay Content Typography */
+.essay-content h1 { 
+  font-size: 2rem; 
+  font-weight: 900; 
+  margin-top: 2rem; 
+  margin-bottom: 1rem; 
+  line-height: 1.1;
+}
+.essay-content h2 { 
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  margin-top: 1.75rem; 
+  margin-bottom: 0.75rem; 
+  line-height: 1.2;
+}
+.essay-content h3 { 
+  font-size: 1.25rem; 
+  font-weight: 700; 
+  margin-top: 1.5rem; 
+  margin-bottom: 0.5rem; 
+}
+.essay-content h4 { 
+  font-size: 1.1rem; 
+  font-weight: 700; 
+  margin-top: 1.25rem; 
+  margin-bottom: 0.5rem; 
+}
+.essay-content p { 
+  margin-bottom: 1.25rem; 
+  line-height: 1.75; 
+  font-size: 1.05rem;
+}
+.essay-content a { 
+  color: #FF4500; 
+  text-decoration: underline; 
+  text-underline-offset: 3px;
+}
+.essay-content a:hover { 
+  color: #FF8C00; 
+}
+.essay-content strong { 
+  font-weight: 700; 
+  color: #FFFFFF; 
+}
+.essay-content em { 
+  font-style: italic; 
+}
+.essay-content blockquote {
+  border-left: 3px solid #FF4500;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: rgba(255,69,0,0.05);
+  font-style: italic;
+}
+.essay-content blockquote p { 
+  margin-bottom: 0.5rem; 
+}
+.essay-content ul, .essay-content ol { 
+  margin: 1rem 0 1.5rem 1.5rem; 
+}
+.essay-content li { 
+  margin-bottom: 0.5rem; 
+  line-height: 1.6;
+}
+.essay-content pre { 
+  background: #0D0D0D; 
+  border: 1px solid #222; 
+  padding: 1.25rem; 
+  overflow-x: auto; 
+  margin: 1.25rem 0; 
+  font-size: 0.875rem; 
+  line-height: 1.6;
+}
+.essay-content code { 
+  font-family: 'JetBrains Mono', monospace; 
+  font-size: 0.875em; 
+}
+.essay-content p code { 
+  background: rgba(255,255,255,0.06); 
+  padding: 0.15em 0.4em; 
+  border: 1px solid #222;
+}
+.essay-content hr {
+  border: none;
+  border-top: 1px solid #222;
+  margin: 2rem 0;
+}
+.essay-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+}
+.essay-content figure {
+  margin: 1.5rem 0;
+}
+.essay-content figure img {
+  margin: 0;
+}
+.essay-content figcaption {
+  font-size: 0.85rem;
+  color: #8A8D91;
+  margin-top: 0.5rem;
+  text-align: center;
+}
