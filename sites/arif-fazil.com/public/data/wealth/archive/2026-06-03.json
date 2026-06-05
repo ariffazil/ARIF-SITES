@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-06-04",
-    "generated_at": "2026-06-04T09:00:01Z",
+    "date": "2026-06-03",
+    "generated_at": "2026-06-03T09:00:02Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -16,7 +16,12 @@
       {
         "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
         "url": "https://www.tradinghours.com/markets/myx",
-        "desc": "Bursa Malaysia countdown, 2026 market calendar, trading hours, settlement details, and contact information. MYX is open Mon-Fri, 9:00am - 12:30pm, <strong>2:30pm - 4:45pm</strong>"
+        "desc": "Bursa Malaysia is closed on · <strong>Tuesday, June 2, 2026</strong> in observation of Vesak Day. Details · Market Countdown, Trading Hours, 2026 Market Holidays · Popout Countdown Access API Report Change · Market Countdown: -- : -- : -- : -- — · Open ..."
+      },
+      {
+        "title": "Bursa closes marginally lower amid late selling in blue chips | FMT",
+        "url": "https://www.freemalaysiatoday.com/category/business/2026/05/29/bursa-closes-marginally-lower-amid-late-selling-in-blue-chips",
+        "desc": "Bursa Malaysia will be closed on <strong>June 1 and 2</strong> for the king’s birthday and Wesak Day holidays, and will resume operations on June 3."
       },
       {
         "title": "Trading Calendar",
@@ -32,11 +37,6 @@
         "title": "Bursa Malaysia MYX Holidays 2026 | Trading Hours.",
         "url": "https://www.forexchurch.com/stock-market-holidays/bursa-malaysia",
         "desc": "Below is a list of the Opening, Closing, Current as well as Countdown Times for the Bursa Malaysia (MYX)."
-      },
-      {
-        "title": "CGS iTrade",
-        "url": "https://itrade.cgsi.com.my/index.php?ch=gen_media&pg=gen_media_notice&ac=834",
-        "desc": "a. If a public holiday falls on Sunday, the following day shall be a public holiday, and if this day is already a holiday, then the next day shall be a public holiday · b. Bursa Malaysia and its subsidiaries will operate under normal trading hours on the eve of Chinese New Year and Hari Raya ..."
       }
     ],
     "most_active": {
@@ -50,12 +50,12 @@
         "desc": "Among top gainers, <strong>Malaysian Pacific Industries</strong> advanced RM2.30 to RM48.50, Hong Leong Industries gained 84 sen to RM18.74, Vitrox Co"
       },
       {
-        "title": "Bursa Malaysia - FBMKLCI Stocks",
-        "desc": "MalaysiaStock.Biz is a free channel for you to access the KLSE market watch information covered from Market Summary Overview, Top Volume, Top Gainers,"
+        "title": "Consumer Stocks Lift Bursa Malaysia Higher At Midday - BusinessToday",
+        "desc": "The broader market indices were mixed, with the <strong>FBM Emas</strong> gained 28.27 points to 12,608.39 and the FBM Shariah rose 26.22 points to 12"
       },
       {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Malaysia&#x27;s main stock market index, the FKLCI, rose to <strong>1686 points on June 3, 2026</strong>, gaining 0.20% from the previous session. Ove"
+        "title": "Bursa Malaysia - FBMKLCI Stocks",
+        "desc": "MalaysiaStock.Biz is a free channel for you to access the KLSE market watch information covered from Market Summary Overview, Top Volume, Top Gainers,"
       }
     ],
     "klci_close": null,
@@ -64,7 +64,7 @@
     "source_urls": [
       "https://www.bursamalaysia.com/trade/trading_resources/derivatives/trading_calendar",
       "https://www.tradinghours.com/markets/myx",
-      "https://www.bursamalaysia.com/about_bursa/about_us/calendar"
+      "https://www.freemalaysiatoday.com/category/business/2026/05/29/bursa-closes-marginally-lower-amid-late-selling-in-blue-chips"
     ]
   },
   "ringgit": {
@@ -85,8 +85,8 @@
       }
     ],
     "sources": [
-      "https://www.bloomberg.com/quote/USDMYR:CUR",
-      "https://tradingeconomics.com/malaysia/currency"
+      "https://tradingeconomics.com/malaysia/currency",
+      "https://www.bloomberg.com/quote/USDMYR:CUR"
     ]
   },
   "economy": {
@@ -143,14 +143,14 @@
         "source": "https://www.fairobserver.com/politics/malaysias-anwar-ibrahim-struggles-with-reform-politics-in-unstable-coalition/"
       },
       {
-        "title": "Next Malaysian general election - Wikipedia",
-        "desc": "Redistribution and boundary changes ... Ibrahim, leader of Pakatan Harapan, currently leads a coalition government consisting of <strong>PH, BN, GPS, GRS, WARISAN and other minor parties</strong>....",
-        "source": "https://en.wikipedia.org/wiki/Next_Malaysian_general_election"
-      },
-      {
         "title": "Malaysia enters election mode in 2026 | East Asia Forum",
         "desc": "The DAP’s other problem is UMNO youth chief Akmal Saleh, who publicly declared his only political aim before the next election as to ‘fight DAP to the end’ and bring about an all-Malay government thro",
         "source": "https://eastasiaforum.org/2026/02/08/malaysia-enters-election-mode-in-2026/"
+      },
+      {
+        "title": "Next Malaysian general election - Wikipedia",
+        "desc": "Redistribution and boundary changes ... Ibrahim, leader of Pakatan Harapan, currently leads a coalition government consisting of <strong>PH, BN, GPS, GRS, WARISAN and other minor parties</strong>....",
+        "source": "https://en.wikipedia.org/wiki/Next_Malaysian_general_election"
       }
     ],
     "economy_policy": [
@@ -185,8 +185,8 @@
         "desc": "The average salary in Malaysia is <strong>RM4,000/mo ($1,007.56 USD) as of May 2026. Min wage: RM8.72/hr</strong>. Compare wages, explore history, and see how Malaysia ranks globally."
       },
       {
-        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jun 2026",
-        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,986.2 (RM7,935.4), excluding rent</strong>. The estimated monthly costs for a single person are $544."
+        "title": "Exciting Insights: Average Salary in Malaysia 2026",
+        "desc": "In 2026, the minimum wage in Malaysia is <strong>RM1,700 monthly</strong>, irrespective of the sector, industry, or location, as announced by the government. It is to be noted that while this figure w"
       }
     ],
     "labor": [
@@ -224,12 +224,12 @@
     ],
     "energy_transition": [
       {
-        "title": "Malaysia: 2026 Updates to Renewable Energy Schemes | Insight | Baker McKenzie",
-        "desc": "The 2026 updates include the <strong>new Solar ATAP scheme, updates to the CRESS guidelines and updates regarding the standby charge payable and the Battery Energy Storage System (BESS) requirement un"
-      },
-      {
         "title": "Malaysia's energy transition to accelerate into 2026 on solar, carbon policies-Xinhua",
         "desc": "23 (Xinhua) -- Malaysia&#x27;s energy transition is set to gather pace into 2026, underpinned by <strong>aggressive renewable energy (RE) targets, expanding solar capacity and new carbon-related polic"
+      },
+      {
+        "title": "Malaysia: 2026 Updates to Renewable Energy Schemes | Insight | Baker McKenzie",
+        "desc": "The 2026 updates include the <strong>new Solar ATAP scheme, updates to the CRESS guidelines and updates regarding the standby charge payable and the Battery Energy Storage System (BESS) requirement un"
       }
     ]
   },
@@ -237,12 +237,12 @@
     "fed": {
       "items": [
         {
-          "title": "Federal Reserve Board - H.15 - Selected Interest Rates (Daily) - June 03, 2026",
-          "desc": "Release date: <strong>June 3, 2026</strong> · Yields in percent per annum ·"
-        },
-        {
           "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
           "desc": "Available indicators suggest that economic activity has been expanding at a solid pace. Job gains have remained low, and the unemployment rate has been little"
+        },
+        {
+          "title": "Minutes of the Federal Open Market Committee",
+          "desc": "The Board of Governors of the Federal Reserve System voted unanimously to approve the establishment of the primary credit rate at the existing level of <strong>3.75 percent</strong>. It was agreed tha"
         }
       ]
     },

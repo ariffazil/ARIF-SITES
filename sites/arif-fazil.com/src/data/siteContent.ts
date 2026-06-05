@@ -123,9 +123,9 @@ export const systemProjects: SystemProject[] = [
     summary:
       'A sovereign AI governance kernel. 13 constitutional floors enforce truth, reversibility, and bounded action. Every tool call is traced to a floor. Every outcome is sealed to VAULT999. Built because the geology work demanded tools that don\'t hallucinate or hide their reasoning.',
     artifactLabel: 'Constitution',
-    artifactHref: 'https://mcp.arif-fazil.com/constitution.json',
-    surfaceLabel: 'Runtime surface',
-    surfaceHref: 'https://mcp.arif-fazil.com',
+    artifactHref: 'https://arifos.arif-fazil.com/constitution.json',
+    surfaceLabel: 'Observatory',
+    surfaceHref: 'https://arifos.arif-fazil.com',
   },
   {
     title: 'GEOX',
@@ -141,20 +141,20 @@ export const systemProjects: SystemProject[] = [
   {
     title: 'WEALTH',
     role: 'Capital intelligence · NPV / EMV engine',
-    status: 'LIVE',
+    status: 'MIXED',
     summary:
-      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. 79 MCP endpoints for valuation, risk triage, and portfolio logic.',
-    artifactLabel: 'Endpoint manifest',
-    artifactHref: 'https://mcp.arif-fazil.com/tools/list',
-    surfaceLabel: 'WEALTH surface',
-    surfaceHref: 'https://mcp.arif-fazil.com',
+      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. Daily briefing: Bursa, Ringgit, oil, politics — all evidence-gated. Dedicated MCP surface deploying. 44 designed tools · 17 production · callable from this client depends on mount — never self-authorizes execution.',
+    artifactLabel: 'Tool registry',
+    artifactHref: 'https://aaa.arif-fazil.com/mcp/tools.json',
+    surfaceLabel: 'Daily briefing',
+    surfaceHref: '/wealth/',
   },
   {
     title: 'AAA',
     role: 'Operations surface · Agent gateway',
     status: 'LIVE',
     summary:
-      'How the trinity stays operational. Health monitoring, MCP endpoint registry, session continuity, and the operator console for the full federation stack. Not a product — the way the work actually runs.',
+      'How the trinity stays operational. Health monitoring, MCP endpoint registry, session continuity, and the operator console for the full federation stack. Not a chatbot wrapper — the operating surface for governed agentic work.',
     artifactLabel: 'Endpoint metadata',
     artifactHref: 'https://aaa.arif-fazil.com/mcp/endpoint.json',
     surfaceLabel: 'AAA cockpit',
@@ -176,9 +176,9 @@ export const ecosystemLinks: LinkItem[] = [
 
 export const arifosLinks: LinkItem[] = [
   { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
-  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
   { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
+  { label: 'WEALTH Briefing', href: '/wealth/' },
 ];
 
 export const contactLinks: LinkItem[] = [

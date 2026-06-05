@@ -4,12 +4,12 @@
   "url": "https://arif-fazil.com",
   "provider": {
     "organization": "arif-fazil.com",
-    "url": "https://mcp.arif-fazil.com"
+    "url": "https://arifos.arif-fazil.com"
   },
-  "version": "1.0",
+  "version": "1.1",
   "capabilities": {
     "a2a": false,
-    "mcp": ["https://mcp.arif-fazil.com/mcp"],
+    "mcp": ["https://arifos.arif-fazil.com/mcp"],
     "verification": true
   },
   "scopes": ["identity", "geoscience", "governed-ai", "proof-discovery"],
@@ -18,8 +18,28 @@
   "skills": [
     "Discover canonical routes /, /000/, /999/",
     "Read public proof artifacts",
-    "Navigate to related canonical sites"
+    "Navigate to related canonical sites",
+    "Access WEALTH daily briefing at /wealth/",
+    "Access federation map at /constellation/"
   ],
   "input_modes": ["text"],
-  "output_modes": ["text"]
+  "output_modes": ["text"],
+  "related_agents": [
+    {
+      "name": "arifOS Observatory",
+      "url": "https://arifos.arif-fazil.com",
+      "mcp": "https://arifos.arif-fazil.com/mcp",
+      "role": "constitutional governance kernel"
+    },
+    {
+      "name": "AAA Cockpit",
+      "url": "https://aaa.arif-fazil.com",
+      "role": "operations surface and agent gateway"
+    },
+    {
+      "name": "GEOX",
+      "url": "https://geox.arif-fazil.com",
+      "role": "earth and geoscience intelligence"
+    }
+  ]
 }

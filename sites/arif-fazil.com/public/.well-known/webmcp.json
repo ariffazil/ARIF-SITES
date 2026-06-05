@@ -1,0 +1,44 @@
+{
+  "name": "arif-fazil.com WebMCP Surface",
+  "version": "1.0",
+  "description": "Browser-native agent tool surface for arif-fazil.com, governed by arifOS constitutional floors F1-F13.",
+  "sovereign": "did:web:arif-fazil.com",
+  "constitutional_kernel": "https://arifos.arif-fazil.com",
+  "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+  "adapter_script": "/_shared/webmcp/arifos-webmcp-adapter.js",
+  "tools": [
+    {
+      "name": "get_federation_status",
+      "description": "Returns live health status of all arifOS federation organs (arifOS, GEOX, WEALTH, WELL, AAA)",
+      "endpoint": "https://arif-fazil.com/api/organs",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_wealth_briefing",
+      "description": "Returns the latest WEALTH daily briefing (Bursa, Ringgit, oil, macro) — live or cached snapshot",
+      "endpoint": "https://arif-fazil.com/data/wealth/latest.json",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "verify_did",
+      "description": "Returns the W3C DID document for did:web:arif-fazil.com — sovereign identity chain",
+      "endpoint": "https://arif-fazil.com/.well-known/did.json",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_constitution",
+      "description": "Returns the arifOS constitutional floor definitions (F1-F13)",
+      "endpoint": "https://arifos.arif-fazil.com/constitution.json",
+      "method": "GET",
+      "floor": "F2"
+    }
+  ],
+  "constraints": {
+    "read_only": true,
+    "requires_sovereign_confirm": false,
+    "floor_guards": ["F1", "F2", "F8", "F9", "F12", "F13"]
+  }
+}

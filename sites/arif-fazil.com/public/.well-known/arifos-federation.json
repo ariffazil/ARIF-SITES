@@ -25,13 +25,14 @@
       "url": "https://geox.arif-fazil.com",
       "role": "Earth and geoscience intelligence",
       "protocol": "MCP",
-      "status": "planned"
+      "status": "active"
     },
     "WEALTH": {
-      "url": "https://wealth.arif-fazil.com",
-      "role": "Capital and economic reasoning",
+      "url": "https://arif-fazil.com/wealth/",
+      "role": "Capital and economic reasoning — daily briefing surface",
       "protocol": "MCP",
-      "status": "planned"
+      "status": "mixed",
+      "note": "Briefing surface active. Dedicated MCP subdomain deploying."
     },
     "WELL": {
       "url": "https://well.arif-fazil.com",

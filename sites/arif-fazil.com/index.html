@@ -17,27 +17,63 @@
     <meta property="og:title" content="Arif Fazil — ΔΩΨ Architect · Creator of arifOS" />
     <meta
       property="og:description"
-      content="Constitutional AI kernel, earth intelligence, and capital logic. Three organs — arifOS, GEOX, WEALTH — one sovereign operating system."
+      content="Constitutional AI kernel, earth intelligence, and capital logic. Five domains — arifOS, GEOX, WEALTH, WELL, AAA — one sovereign operating system."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://arif-fazil.com" />
+    <meta property="og:image" content="https://arif-fazil.com/hero_portrait.jpg" />
+    <meta property="og:image:alt" content="Arif Fazil — ΔΩΨ Architect and Senior Exploration Geoscientist" />
+    <meta property="og:site_name" content="arif-fazil.com" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arif Fazil — ΔΩΨ Architect · Creator of arifOS" />
+    <meta name="twitter:description" content="Constitutional AI kernel, earth intelligence, and capital logic. Five domains — one sovereign operating system." />
+    <meta name="twitter:image" content="https://arif-fazil.com/hero_portrait.jpg" />
+
+    <!-- Agent Discovery -->
+    <link rel="mcp" href="https://arifos.arif-fazil.com/mcp" type="application/json" />
+    <link rel="agent" href="/.well-known/agent.json" type="application/json" />
+    <link rel="webmcp" href="/.well-known/webmcp.json" type="application/json" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Muhammad Arif bin Fazil",
-      "alternateName": "Arif Fazil",
-      "jobTitle": "ΔΩΨ Architect · Creator of arifOS",
-      "description": "ΔΩΨ Architect, creator of arifOS constitutional AI kernel, and Senior Exploration Geoscientist. Builds sovereign AI systems that hold up under real operating conditions.",
-      "url": "https://arif-fazil.com",
-      "sameAs": [
-        "https://github.com/ariffazil",
-        "https://aaa.arif-fazil.com",
-        "https://mcp.arif-fazil.com",
-        "https://geox.arif-fazil.com",
-        "https://wiki.arif-fazil.com"
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Muhammad Arif bin Fazil",
+          "alternateName": "Arif Fazil",
+          "jobTitle": "ΔΩΨ Architect · Creator of arifOS",
+          "description": "ΔΩΨ Architect, creator of arifOS constitutional AI kernel, and Senior Exploration Geoscientist. Builds sovereign AI systems that hold up under real operating conditions.",
+          "url": "https://arif-fazil.com",
+          "image": "https://arif-fazil.com/hero_portrait.jpg",
+          "sameAs": [
+            "https://github.com/ariffazil",
+            "https://arifos.arif-fazil.com",
+            "https://aaa.arif-fazil.com",
+            "https://geox.arif-fazil.com",
+            "https://wiki.arif-fazil.com"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "arif-fazil.com",
+          "url": "https://arif-fazil.com",
+          "description": "Sovereign operating system — constitutional AI kernel, earth intelligence, and capital logic."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "arifOS",
+          "applicationCategory": "AIApplication",
+          "description": "Constitutional AI governance kernel with 13 floors enforcing truth, reversibility, and bounded action.",
+          "url": "https://arifos.arif-fazil.com",
+          "author": {
+            "@type": "Person",
+            "name": "Muhammad Arif bin Fazil"
+          }
+        }
       ]
     }
     </script>
@@ -47,6 +83,58 @@
     <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Ψ</text></svg>" />
+
+    <!-- arifOS WebMCP Surface — Tier 2 Agent Tool Registration -->
+    <script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+    <script>
+      (function () {
+        if (typeof window.arifosWebMCP === 'undefined') return;
+
+        arifosWebMCP.registerReadonly(
+          'get_federation_status',
+          'Returns the arifOS federation manifest — live domain statuses, roles, and protocol declarations',
+          {},
+          async function () {
+            const res = await fetch('/.well-known/arifos-federation.json');
+            if (!res.ok) throw new Error('federation manifest unreachable');
+            return await res.json();
+          }
+        );
+
+        arifosWebMCP.registerReadonly(
+          'get_wealth_briefing',
+          'Returns the latest WEALTH daily briefing — Bursa, Ringgit, oil price, and macro signals (live or cached snapshot)',
+          {},
+          async function () {
+            const res = await fetch('/data/wealth/latest.json');
+            if (!res.ok) throw new Error('briefing snapshot unavailable');
+            return await res.json();
+          }
+        );
+
+        arifosWebMCP.registerReadonly(
+          'verify_did',
+          'Returns the W3C DID document for did:web:arif-fazil.com — cryptographic sovereign identity chain',
+          {},
+          async function () {
+            const res = await fetch('/.well-known/did.json');
+            if (!res.ok) throw new Error('DID document unreachable');
+            return await res.json();
+          }
+        );
+
+        arifosWebMCP.registerReadonly(
+          'get_constitution',
+          'Returns the arifOS constitutional floor definitions (F1–F13) — the governing law of the federation',
+          {},
+          async function () {
+            const res = await fetch('https://arifos.arif-fazil.com/constitution.json');
+            if (!res.ok) throw new Error('constitution unreachable');
+            return await res.json();
+          }
+        );
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -16,10 +16,16 @@ type BriefingMeta = {
 type SoWhatItem = {
   domain: string;
   signal: string;
-  for_aia: string;
-  for_izzu: string;
-  for_aliff: string;
-  for_arif: string;
+  // Trinity-aligned lenses — Δ → Ω → Ξ → Ψ.
+  delta?: string;
+  omega?: string;
+  xi?: string;
+  psi?: string;
+  // Legacy family-member fields (kept for backwards-compat with older payloads).
+  for_aia?: string;
+  for_izzu?: string;
+  for_aliff?: string;
+  for_arif?: string;
   tone: string;
 };
 
@@ -79,6 +85,16 @@ function DeltaChip({ value, label, decimals = 2 }: { value: number; label: strin
   );
 }
 
+function AckFloor({ id, name, color, desc }: { id: string; name: string; color: string; desc: string }) {
+  return (
+    <li className="grid grid-cols-[3.5rem_7rem_1fr] gap-3 items-baseline px-3 py-2.5 bg-white/[0.02] border-l-2 border-forge-iron">
+      <span className="font-mono text-sm font-bold" style={{ color }}>{id}</span>
+      <span className="font-mono text-[0.7rem] uppercase tracking-[0.15em] text-forge-white">{name}</span>
+      <span className="text-sm text-forge-dim leading-relaxed">{desc}</span>
+    </li>
+  );
+}
+
 function SoWhatCard({ item }: { item: SoWhatItem }) {
   const accentClass: Record<string, string> = {
     MARKET: "border-blue-500/40 bg-blue-500/5 text-blue-400",
@@ -88,6 +104,27 @@ function SoWhatCard({ item }: { item: SoWhatItem }) {
     POLITICS: "border-gray-500/40 bg-gray-500/5 text-gray-400",
   };
   const accent = accentClass[item.domain] || "border-forge-orange/40 bg-forge-orange/5 text-forge-orange";
+
+  // Trinity lenses — Δ (ground) → Ω (mind) → Ξ (capital) → Ψ (sovereign).
+  // Falls back to legacy for_aia/for_izzu/for_aliff/for_arif for older payloads.
+  const lenses: Array<[string, string, string, keyof SoWhatItem]> = [
+    ["Δ", "GROUND",   "text-forge-orange", "delta"],
+    ["Ω", "MIND",     "text-forge-green",  "omega"],
+    ["Ξ", "CAPITAL",  "text-purple-400",   "xi"],
+    ["Ψ", "SOVEREIGN","text-forge-gold",   "psi"],
+  ];
+  const legacy: Record<string, keyof SoWhatItem> = {
+    delta: "for_aia",
+    omega: "for_izzu",
+    xi:    "for_aliff",
+    psi:   "for_arif",
+  };
+  const lensValue = (k: keyof SoWhatItem): string => {
+    const v = (item as any)[k];
+    if (v) return v as string;
+    const lk = legacy[k as string];
+    return lk ? ((item as any)[lk] as string) || "" : "";
+  };
 
   return (
     <div className={`brutalist-card p-6 mb-4 !border-l-4 ${accent}`}>
@@ -101,22 +138,14 @@ function SoWhatCard({ item }: { item: SoWhatItem }) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-3 bg-white/5 border border-white/10">
-          <p className="font-mono text-[0.6rem] text-forge-orange uppercase mb-1">ALL AIA</p>
-          <p className="text-xs leading-relaxed">{item.for_aia}</p>
-        </div>
-        <div className="p-3 bg-white/5 border border-white/10">
-          <p className="font-mono text-[0.6rem] text-blue-400 uppercase mb-1">IZZU</p>
-          <p className="text-xs leading-relaxed">{item.for_izzu}</p>
-        </div>
-        <div className="p-3 bg-white/5 border border-white/10">
-          <p className="font-mono text-[0.6rem] text-green-400 uppercase mb-1">ALIFF</p>
-          <p className="text-xs leading-relaxed">{item.for_aliff}</p>
-        </div>
-        <div className="p-3 bg-white/5 border border-white/10">
-          <p className="font-mono text-[0.6rem] text-orange-400 uppercase mb-1">ARIF</p>
-          <p className="text-xs leading-relaxed">{item.for_arif}</p>
-        </div>
+        {lenses.map(([symbol, label, color, key]) => (
+          <div key={symbol} className="p-3 bg-white/5 border border-white/10">
+            <p className={`font-mono text-[0.6rem] uppercase mb-1 ${color}`}>
+              {symbol} {label}
+            </p>
+            <p className="text-xs leading-relaxed">{lensValue(key)}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -128,29 +157,81 @@ export function Wealth() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>("");
+  const [isOffline, setIsOffline] = useState(false);
+  const [acked, setAcked] = useState(false);
 
   useEffect(() => {
     async function load() {
       try {
-        const BASE = "https://mcp.arif-fazil.com";
-        const [bRes, aRes] = await Promise.all([
-          fetch(`${BASE}/briefing`),
+        const bRes = await fetch("https://mcp.arif-fazil.com/briefing");
+        if (!bRes.ok) throw new Error(`HTTP ${bRes.status}`);
+        const [b, aRes] = await Promise.all([
+          bRes.json() as Promise<Briefing>,
           fetch("/data/wealth/archive_index.json"),
         ]);
-        if (!bRes.ok) throw new Error(`HTTP ${bRes.status}`);
-        const b: Briefing = await bRes.json();
         const a: ArchiveEntry = aRes.ok ? await aRes.json() : { briefings: [] };
         setBriefing(b);
         setArchives(a.briefings || []);
         setLastUpdated(b.meta.generated_at);
-      } catch (e: any) {
-        setError(e.message || "Failed to load briefing");
+      } catch {
+        // Live endpoint unavailable — fall back to static snapshot
+        try {
+          const [staticRes, archiveRes] = await Promise.all([
+            fetch("/data/wealth/latest.json"),
+            fetch("/data/wealth/archive_index.json"),
+          ]);
+          if (!staticRes.ok) throw new Error("Static snapshot unavailable");
+          const b: Briefing = await staticRes.json();
+          const a: ArchiveEntry = archiveRes.ok ? await archiveRes.json() : { briefings: [] };
+          setBriefing(b);
+          setArchives(a.briefings || []);
+          setLastUpdated(b.meta.generated_at);
+          setIsOffline(true);
+        } catch (e: any) {
+          setError(e.message || "Failed to load briefing");
+        }
       } finally {
         setLoading(false);
       }
     }
     load();
   }, []);
+
+  // Hydrate constitutional acknowledgment from localStorage.
+  useEffect(() => {
+    if (!briefing) return;
+    try {
+      const dates: string[] = JSON.parse(localStorage.getItem("arifos_wealth_ack") || "[]");
+      setAcked(dates.indexOf(briefing.meta.date) !== -1);
+    } catch {
+      setAcked(false);
+    }
+  }, [briefing]);
+
+  const acknowledge = () => {
+    if (!briefing) return;
+    try {
+      const dates: string[] = JSON.parse(localStorage.getItem("arifos_wealth_ack") || "[]");
+      if (dates.indexOf(briefing.meta.date) === -1) {
+        dates.push(briefing.meta.date);
+        // bounded KV-cache pattern: keep last 30
+        localStorage.setItem("arifos_wealth_ack", JSON.stringify(dates.slice(-30)));
+      }
+      setAcked(true);
+    } catch {
+      setAcked(true);
+    }
+  };
+
+  const revoke = () => {
+    if (!briefing) return;
+    try {
+      const dates: string[] = JSON.parse(localStorage.getItem("arifos_wealth_ack") || "[]");
+      const next = dates.filter((d) => d !== briefing.meta.date);
+      localStorage.setItem("arifos_wealth_ack", JSON.stringify(next));
+    } catch {}
+    setAcked(false);
+  };
 
   if (loading) {
     return (
@@ -163,14 +244,19 @@ export function Wealth() {
 
   if (error || !briefing) {
     return (
-      <section className="py-24">
-        <div className="site-frame text-center">
-          <div className="brutalist-card border-red-500 inline-block p-8">
-            <h2 className="text-2xl font-black mb-4 uppercase text-red-500">⚠ Synchronization Failure</h2>
-            <p className="text-sm text-forge-dim mb-6">{error || "No data received from WEALTH engine."}</p>
-            <p className="text-[0.65rem] font-mono text-forge-dim max-w-sm mx-auto">
-              Briefing runs daily at 09:00 UTC (5pm MYT). Check mcp.arif-fazil.com for system health.
+      <section className="py-24 bg-forge-black min-h-screen">
+        <div className="site-frame text-center max-w-2xl mx-auto">
+          <div className="brutalist-card border-forge-iron inline-block p-12 w-full">
+            <h2 className="text-2xl font-black mb-4 uppercase text-forge-white">System Offline</h2>
+            <p className="text-sm text-forge-dim mb-8">
+              The WEALTH engine is currently offline or synchronizing. No cached state is available.
             </p>
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-8 h-8 rounded-full border-2 border-forge-iron border-t-forge-orange animate-spin"></div>
+              <p className="text-[0.65rem] font-mono text-forge-dim">
+                Please check back later. System health can be monitored at the Observatory.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -180,11 +266,78 @@ export function Wealth() {
   const delta = briefing.meta.delta_vs_yesterday;
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
+    <motion.div
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="bg-forge-black min-h-screen"
     >
+      {/* ── CONSTITUTIONAL ACKNOWLEDGMENT ────────────────── */}
+      <section className="pt-12">
+        <div className="site-frame">
+          {!acked ? (
+            <div className="brutalist-card border-forge-orange bg-gradient-to-b from-forge-orange/[0.04] to-transparent">
+              <div className="flex justify-between items-baseline mb-5 flex-wrap gap-3">
+                <span className="font-mono text-[0.7rem] text-forge-orange uppercase tracking-[0.2em]">
+                  ◆ CONSTITUTIONAL ACKNOWLEDGMENT
+                </span>
+                <span className="font-mono text-[0.7rem] text-forge-dim uppercase tracking-[0.2em]">
+                  Briefing {briefing.meta.date}
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-black italic uppercase leading-tight mb-4">
+                Read this before you act on anything below.
+              </h2>
+              <p className="text-forge-dim text-base leading-relaxed mb-6 max-w-3xl">
+                This briefing is AI-synthesized under arifOS F1–F13 constitutional governance.
+                The data is real (Bernama, Reuters, BURSA Malaysia, BNM) but the
+                <span className="text-forge-orange"> translation layer </span>
+                is the model's. By proceeding you accept the following floors as the contract on
+                which these signals rest:
+              </p>
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+                <AckFloor id="F1"  name="AMANAH"      color="#FF4500" desc="Reversible first. No sealed action without an escape path." />
+                <AckFloor id="F2"  name="TRUTH"       color="#00FF41" desc="Evidence-gated. Every claim has a band — CLAIM, PLAUSIBLE, ESTIMATE, UNKNOWN." />
+                <AckFloor id="F7"  name="STEWARDSHIP" color="#A855F7" desc="HARAM patterns blocked. We do not act on what the sovereign would not endorse." />
+                <AckFloor id="F9"  name="ANTI-CASCADE" color="#3B82F6" desc="No runaway loops. The system halts and surfaces when its own confidence drops." />
+                <AckFloor id="F13" name="SOVEREIGN"   color="#D4A853" desc="Human veto is final. You can SEAL, HOLD, or VOID any output of this system." />
+              </ul>
+              <div className="flex flex-wrap gap-3 items-center mb-4">
+                <button
+                  type="button"
+                  onClick={acknowledge}
+                  className="font-mono text-sm font-bold uppercase tracking-wider px-5 py-3 bg-forge-orange text-forge-black border-2 border-forge-orange hover:bg-forge-orange/80 transition-colors"
+                >
+                  ✓ I acknowledge — proceed
+                </button>
+                <a
+                  href="/canon/"
+                  className="font-mono text-sm font-bold uppercase tracking-wider px-5 py-3 bg-transparent text-forge-dim border-2 border-forge-iron hover:text-forge-white hover:border-forge-white transition-colors"
+                >
+                  Read the full canon →
+                </a>
+              </div>
+              <p className="font-mono text-[0.65rem] text-forge-dim uppercase tracking-wider leading-relaxed">
+                Acknowledgment is stored locally on this device, keyed to this briefing date.
+                A new briefing asks again. You can revoke it any time.
+              </p>
+            </div>
+          ) : (
+            <div className="inline-flex items-center gap-2.5 bg-forge-green/10 border border-forge-green/40 py-2 px-3 mt-2 font-mono text-xs uppercase tracking-[0.15em] text-forge-green">
+              <span className="font-bold">✓</span>
+              <span>Constitutional floors acknowledged</span>
+              <button
+                type="button"
+                onClick={revoke}
+                className="text-forge-dim hover:text-forge-red font-mono text-base leading-none ml-1"
+                title="Revoke acknowledgment"
+              >
+                ×
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* ── HERO HEADER ─────────────────────────────────── */}
       <section className="py-20 border-b-2 border-forge-iron">
         <div className="site-frame">
@@ -195,6 +348,13 @@ export function Wealth() {
           <p className="font-body text-xl text-forge-dim mb-8">
             {briefing.meta.date} · BURSA Malaysia + Ekonomi + Politik + Social
           </p>
+
+          {isOffline && (
+            <div className="mb-6 brutalist-card border-yellow-500/50 bg-yellow-500/5 p-4 flex items-center gap-3">
+              <span className="text-yellow-500 font-mono text-xs">⚠ OFFLINE MODE</span>
+              <span className="text-forge-dim text-xs">Live engine unreachable — showing last cached briefing ({briefing?.meta?.date}). Briefing updates daily at 09:00 UTC.</span>
+            </div>
+          )}
 
           {/* Key metrics strip */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-0 -space-x-[2px] -space-y-[2px]">
@@ -246,10 +406,16 @@ export function Wealth() {
         <div className="site-frame">
           <div className="section-label">◆ SO WHAT — Decision Logic</div>
           <div className="max-w-3xl mb-12">
-            <h2 className="text-4xl font-black uppercase italic mb-6">Translation Layer.</h2>
+            <h2 className="text-4xl font-black uppercase italic mb-6">
+              Translation Layer. <span className="text-forge-orange">Δ → Ω → Ξ → Ψ</span>
+            </h2>
             <p className="font-body text-lg text-forge-dim leading-relaxed">
-              Data without context is noise. This section translates market signals into decisions 
-              for the AIA circle. Evidence-gated and risk-aware.
+              Data without context is noise. The translation layer moves from{" "}
+              <span className="text-forge-orange font-bold">Δ</span> (what the ground says) to{" "}
+              <span className="text-forge-green font-bold">Ω</span> (what the logic concludes) to{" "}
+              <span className="text-purple-400 font-bold">Ξ</span> (what capital should do), with{" "}
+              <span className="text-forge-gold font-bold">Ψ</span> as the sovereign check.
+              Evidence-gated. Risk-aware. No vibes.
             </p>
           </div>
 

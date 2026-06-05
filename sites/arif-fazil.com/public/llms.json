@@ -1,25 +1,37 @@
 {
   "site_name": "arif-fazil.com",
   "domain": "arif-fazil.com",
-  "role": "human homepage with genesis and proof subroutes",
+  "role": "human homepage with genesis, proof, and capital briefing subroutes",
   "canonical": "https://arif-fazil.com/llms.txt",
   "repository": "https://github.com/ariffazil/arif-sites",
   "route_roles": {
-    "/": "professional human entry",
-    "/000/": "genesis and wisdom archive",
-    "/999/": "trust and proof chamber"
+    "/": "professional human entry — portfolio, wells, systems overview",
+    "/000/": "genesis and wisdom archive — origin context for agents",
+    "/999/": "trust and proof chamber — verification artifacts",
+    "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
+    "/constellation/": "federation map — system topology and organ status",
+    "/canon/": "constitutional canon — written law of arifOS",
+    "/discoveries/": "well portfolio — exploration record and subsurface dossier",
+    "/essays/": "long-form writing and analysis"
   },
   "related_sites": [
+    "https://arifos.arif-fazil.com",
     "https://wiki.arif-fazil.com",
     "https://aaa.arif-fazil.com",
-    "https://mcp.arif-fazil.com",
     "https://geox.arif-fazil.com"
   ],
   "machine_surfaces": [
+    "https://arif-fazil.com/llms.txt",
+    "https://arif-fazil.com/llms.json",
     "https://arif-fazil.com/page.json",
     "https://arif-fazil.com/.well-known/agent.json",
     "https://arif-fazil.com/.well-known/did.json",
+    "https://arif-fazil.com/.well-known/arifos-federation.json",
+    "https://arif-fazil.com/.well-known/webmcp.json",
+    "https://arif-fazil.com/soul.json",
     "https://arif-fazil.com/proof/geologist-credential.json"
   ],
-  "last_updated": "2026-05-16"
+  "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+  "did": "did:web:arif-fazil.com",
+  "last_updated": "2026-06-02"
 }

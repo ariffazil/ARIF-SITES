@@ -35,7 +35,7 @@ export function Constellation() {
                 The constitutional kernel. 13 floors of invariants keeping AI systems grounded and bounded. 
                 Human sovereignty enforced at the machine level.
               </p>
-              <a href="https://mcp.arif-fazil.com" target="_blank" rel="noreferrer" className="button-forge button-forge--accent w-full">
+              <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer" className="button-forge button-forge--accent w-full">
                 Kernel Surface ↗
               </a>
             </motion.div>
@@ -80,8 +80,8 @@ export function Constellation() {
                 The value layer. Decision-quality intelligence for capital allocation 
                 under extreme uncertainty. NPV/EMV risk engines.
               </p>
-              <a href="https://wealth.arif-fazil.com" target="_blank" rel="noreferrer" className="button-forge w-full">
-                Wealth Terminal ↗
+              <a href="/wealth/" className="button-forge w-full">
+                Daily Briefing ↗
               </a>
             </motion.div>
           </div>
