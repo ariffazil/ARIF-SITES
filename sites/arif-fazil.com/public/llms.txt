@@ -1,8 +1,9 @@
 # arif-fazil.com — Site Overview for AI Agents
 
 ## Who is Arif Fazil
-Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
-A geoscientist and systems builder who builds constitutionally-bound AI systems.
+Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
+Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
+Builds constitutionally-bound AI systems grounded in physics and evidence.
 
 **Tagline**: Ditempa Bukan Diberi — Forged, Not Given.
 
@@ -11,12 +12,15 @@ arifOS is a constitutional intelligence kernel: a governed AI system where tools
 and models operate inside constitutional law (F1-F13 floors), not vibes.
 
 arifOS exposes 13 MCP tools as API endpoints. It is not an LLM itself.
+The Observatory surface is live at https://arifos.arif-fazil.com
 
-## Three-Organ Federation
-arifOS runs three organs under one sovereign:
-- **A-FORGE** — Execution intelligence / metabolic shell
-- **GEOX** — Earth intelligence / governed world model (geoscience)
-- **WEALTH** — Capital intelligence / resource thermodynamics
+## Five-Domain Federation
+The arifOS federation runs five domains under one sovereign:
+- **arifOS** — Constitutional governance kernel (MIND)
+- **AAA** — Operations surface and agent gateway (SOUL)
+- **GEOX** — Earth intelligence / geoscience tools (BODY)
+- **WEALTH** — Capital intelligence / NPV / EMV engine (CAPITAL)
+- **WELL** — Human and machine readiness surface (planned)
 
 ## Constitutional Floors (F1-F13)
 - F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent
@@ -34,29 +38,36 @@ arifOS runs three organs under one sovereign:
 - F13 SOVEREIGN — Arif's word is final, human veto is absolute
 
 ## Key Pages
-- `/canon/` — The constitutional canon, written law of arifOS
-- `/999/` — Sovereign room (requires ROOTKEY authentication)
-- `/999/vault/` — 9 Seals, encrypted personal paradox artifacts
-- `/federation/` — Three-organ federation overview
+- `/` — Human-first professional homepage
+- `/000/` — Genesis archive, wisdom canon, origin context for agents
+- `/999/` — Proof and verification chamber
+- `/wealth/` — WEALTH daily briefing surface (Bursa, Ringgit, oil, macro)
+- `/constellation/` — Federation map and system overview
+- `/canon/` — Constitutional canon, written law of arifOS
+- `/discoveries/` — Well portfolio and exploration record
 
 ## arifOS MCP Endpoint
-- **URL**: `https://mcp.arif-fazil.com`
+- **URL**: `https://arifos.arif-fazil.com`
+- **MCP surface**: `https://arifos.arif-fazil.com/mcp`
 - **Protocol**: Model Context Protocol (MCP)
 - **Transport**: Streamable HTTP
 - **Tools**: 13 constitutional tools
-- **Resources**: 5 canonical MCP resources
+- **Constitution**: `https://arifos.arif-fazil.com/constitution.json`
 
-## Naming Conventions (for code understanding)
-- Functions named for what they do, not what they are
-- LowerCamelCase for functions, UpperCamelCase for classes
-- File names: singular nouns, lowercase with hyphens
+## Machine-Readable Discovery
+- `/.well-known/agent.json` — Agent capability declaration
+- `/.well-known/did.json` — W3C DID document (did:web:arif-fazil.com)
+- `/.well-known/arifos-federation.json` — Federation manifest
+- `/soul.json` — Sovereign identity and philosophy anchor
+- `/llms.json` — Structured site overview (this file, JSON form)
 
 ## Site Stack
-- React 19 + Vite (arif-fazil.com)
+- React 19 + Vite + Tailwind (arif-fazil.com)
 - Constitutional kernel: Python 3.12+ / FastMCP
 - GEOX: Python 3.11+ / CesiumJS / MapLibre GL
-- Static hosting via Cloudflare Pages
+- Hosted on VPS af-forge (Caddy reverse proxy)
 
 ## Contact
 - Site owner: Arif Fazil
-- Primary channel for AI agents: MCP endpoint at mcp.arif-fazil.com
+- Primary channel for AI agents: MCP endpoint at https://arifos.arif-fazil.com/mcp
+- GitHub: https://github.com/ariffazil

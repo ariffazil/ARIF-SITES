@@ -44,7 +44,7 @@ export function Home() {
         
         <div className="site-frame relative z-10">
           <motion.div variants={itemVariants}>
-            <div className="section-label">Operational Status: LIVE</div>
+            <div className="section-label">Operational Status: LIVE · Human-gated</div>
             <h1 className="font-display font-black text-[clamp(2.5rem,10vw,6rem)] leading-[0.9] uppercase tracking-tighter mb-8 italic">
               Arif<br />Fazil
             </h1>
@@ -98,8 +98,9 @@ export function Home() {
               <h3 className="text-xl mb-2">arifOS</h3>
               <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">MIND · CONSTITUTIONAL KERNEL</p>
               <p className="text-sm text-forge-dim leading-relaxed">
-                The law layer. 13 floors keeping AI systems grounded and bounded. 
-                Every tool call traces to a floor. Every outcome seals to VAULT999.
+                The law layer. 13 floors keeping AI systems grounded and bounded.
+                Every tool call traces to a floor. Every consequential action is receipt-traced;
+                terminal outcomes seal to VAULT999 only after authority checks.
               </p>
             </motion.div>
 
@@ -203,8 +204,12 @@ export function Home() {
                 </div>
                 
                 <div className="flex gap-4 lg:w-1/4 lg:justify-end">
-                  <a href={sys.surfaceHref} target="_blank" rel="noreferrer" className="button-forge text-[0.65rem] px-3 py-2">
-                    Surface ↗
+                  <a
+                    href={sys.surfaceHref}
+                    {...(sys.surfaceHref.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
+                    className="button-forge text-[0.65rem] px-3 py-2"
+                  >
+                    {sys.surfaceLabel} ↗
                   </a>
                   <a href={sys.artifactHref} target="_blank" rel="noreferrer" className="button-forge button-forge--accent text-[0.65rem] px-3 py-2">
                     Artifact ↗
