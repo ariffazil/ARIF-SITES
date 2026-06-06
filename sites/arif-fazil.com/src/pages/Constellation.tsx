@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export function Constellation() {
+  useEffect(() => {
+    document.title = 'Federation Constellation — Arif Fazil | arifOS';
+  }, []);
   return (
     <motion.div 
       initial={{ opacity: 0 }}

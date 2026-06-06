@@ -82,17 +82,29 @@ export function EssayPage() {
           <hr className="border-forge-iron my-12" />
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <a
-              href={essay.mediumUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="brutalist-card border border-forge-gold px-5 py-3 hover:bg-forge-gold/10 transition-colors inline-flex items-center gap-2 font-mono text-sm"
-            >
-              <span className="text-forge-gold">✍️</span>
-              <span className="text-forge-dim">Read on</span>
-              <span className="text-forge-white font-bold">Medium</span>
-              <span className="text-forge-dim">↗</span>
-            </a>
+            {essay.mediumUrl ? (
+              <a
+                href={essay.mediumUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="brutalist-card border border-forge-gold px-5 py-3 hover:bg-forge-gold/10 transition-colors inline-flex items-center gap-2 font-mono text-sm"
+              >
+                <span className="text-forge-gold">✍️</span>
+                <span className="text-forge-dim">Read on</span>
+                <span className="text-forge-white font-bold">Medium</span>
+                <span className="text-forge-dim">↗</span>
+              </a>
+            ) : (
+              <div>
+                {essay.isDirectPublication && (
+                  <span className="brutalist-card border border-forge-gold/50 px-5 py-3 inline-flex items-center gap-2 font-mono text-sm bg-forge-gold/5">
+                    <span className="text-forge-gold">⚒️</span>
+                    <span className="text-forge-dim">Published directly on</span>
+                    <span className="text-forge-white font-bold">arif-fazil.com</span>
+                  </span>
+                )}
+              </div>
+            )}
 
             <Link
               to="/essays/"

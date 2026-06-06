@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { discoveries } from '@/data/discoveries';
 
 export function Discoveries() {
+  useEffect(() => {
+    document.title = 'Subsurface Discoveries — Arif Fazil | arifOS';
+  }, []);
   return (
     <motion.div 
       initial={{ opacity: 0 }}

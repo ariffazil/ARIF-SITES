@@ -39,6 +39,34 @@ export const discoveries: Discovery[] = [
     linkLabel: 'Open Viewer →'
   },
   {
+    id: 'lebah-emas-1',
+    title: 'LEBAH EMAS‑1',
+    year: '2021',
+    location: 'Offshore Terengganu · Block PM6/12, Malaysia',
+    summary: 'A wildcat exploration well testing a new play concept in a frontier area of offshore Terengganu. The well proved a working petroleum system in a basin segment that had been written off by multiple operators. Opened a new exploration play fairway.',
+    evidence: [
+      'Hydrocarbon shows confirmed new play concept viability',
+      'Post-drill seismic remapping expanded prospect inventory',
+      'Block PM6/12 PSC value reassessed upward post-discovery'
+    ],
+    link: 'https://geox.arif-fazil.com',
+    linkLabel: 'Explore GEOX →'
+  },
+  {
+    id: 'bunga-tasbih-1',
+    title: 'BUNGA TASBIH‑1',
+    year: '2024',
+    location: 'Malaysia Bid Round Plus · Offshore Malaysia',
+    summary: 'Contribution to a discovered resource opportunity in the Malaysia Bid Round Plus (MBR+) Round I. Structural and stratigraphic evaluation supported the field\'s commercial case, leading to a successful Small Field Asset PSC award.',
+    evidence: [
+      'Structural / stratigraphic trap evaluation completed',
+      'Resource assessment supported commercial viability',
+      'Field awarded under Small Field Asset PSC in MBR+ Round I, 2024'
+    ],
+    link: 'https://geox.arif-fazil.com',
+    linkLabel: 'Explore GEOX →'
+  },
+  {
     id: 'malay-basin',
     title: 'Malay Basin Regional',
     year: '2014–Present',

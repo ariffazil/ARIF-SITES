@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // ─── Constants from kernel source ──────────────────────────────────────────────
@@ -372,6 +373,10 @@ const SECTIONS = [
 ];
 
 export function Canon() {
+  useEffect(() => {
+    document.title = 'The Canon — Arif Fazil | arifOS';
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
