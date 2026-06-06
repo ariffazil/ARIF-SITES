@@ -6,6 +6,7 @@ export interface EssayContent {
   excerpt: string;
   mediumUrl: string;
   html: string;
+  isDirectPublication?: boolean;
 }
 
 export interface EssayMeta {
@@ -15,4 +16,5 @@ export interface EssayMeta {
   excerpt: string;
   tags: string[];
   mediumUrl: string;
+  isDirectPublication?: boolean;
 }

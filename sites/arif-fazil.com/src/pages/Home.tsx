@@ -223,7 +223,7 @@ export function Home() {
 
       {/* ── PRACTICE & CONTACT ────────────────────────────── */}
       <section className="py-24 bg-forge-steel grid grid-cols-1 lg:grid-cols-2 gap-0 border-b-2 border-forge-iron">
-        <div className="p-12 md:p-24 border-b-2 lg:border-b-0 lg:border-r-2 border-forge-iron">
+        <div id="practice" className="p-12 md:p-24 border-b-2 lg:border-b-0 lg:border-r-2 border-forge-iron">
           <div className="section-label">The Practice</div>
           <h2 className="text-4xl font-black uppercase mb-12 italic leading-none tracking-tighter">Decisions under noise.</h2>
           <ul className="space-y-6">
@@ -242,7 +242,7 @@ export function Home() {
           </ul>
         </div>
         
-        <div className="p-12 md:p-24 bg-forge-black">
+        <div id="contact" className="p-12 md:p-24 bg-forge-black">
           <div className="section-label">Secure Relay</div>
           <h2 className="text-4xl font-black uppercase mb-12 italic leading-none tracking-tighter">Initiate Handoff.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
