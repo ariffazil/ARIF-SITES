@@ -89,6 +89,12 @@
             <p>An LLM must never interpret geology from raw pixels. Instead, the image passes through a governed contrast-decomposition pipeline that separates <strong>physical truth</strong> from <strong>display artifact</strong> from <strong>perceptual bias</strong>. The LLM only sees the decomposed channels &mdash; never the original image.</p>
         </section>
 
+        <div class="rule-box" style="border-left-color: var(--earth-clay);">
+            <div class="rule-label">THE ONE-LINE SUMMARY</div>
+            <p style="font-size: 1.1rem; margin: 0; font-style: italic;">Other seismic-AI systems compute attributes from seismic and display them for a human to interpret. <strong style="color: var(--earth-clay);">GEOX computes attributes from seismic <em>images</em>, composes them into an LLM-native perception format, and governs the gap between what the pixels show and what the earth actually is.</strong></p>
+            <p style="margin-top: 0.5rem; color: var(--muted-color);">That gap &mdash; between display and truth &mdash; is the entire problem of seismic interpretation. GEOX has named it (Theory of Anomalous Contrast), formalized it (AC_Risk = U<sub>phys</sub> &times; D<sub>transform</sub> &times; B<sub>cog</sub>), and built a pipeline that quantifies it.</p>
+        </div>
+
         <div class="rule-box">
             <div class="rule-label">THE RULE</div>
             <p style="font-size: 1.1rem; margin: 0;">Observation &minus; Expectation = Signal.</p>
@@ -98,6 +104,28 @@
         <!-- ═══════════════════════════════════════════════════════════════════ -->
         <!-- THE 9 ATTRIBUTES                                                   -->
         <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>The 3 things that are genuinely novel</h2>
+            <p>Every seismic AI system computes physical attributes (amplitude, coherence, dip, spectral decomposition). What none of them have &mdash; and what GEOX has &mdash; is a gouvernance layer that audits the attributes for display lies, and an LLM-native composition that maps physically meaningful signals into RGB channels the LLM can perceive.</p>
+            <div class="attribute-grid">
+                <div class="attribute-card" style="border-color: var(--danger);">
+                    <h4>1. AC_Risk as Constitucional Firewall</h4>
+                    <div class="axis">governance: display_bias_audit</div>
+                    <p>AC_Risk = U<sub>phys</sub> &times; D<sub>transform</sub> &times; B<sub>cog</sub>. A per-pixel heatmap of where the image is lying. Triggers 888_HOLD when AC_Risk &gt; 0.5. <strong>Not image processing. Epistemology encoded as a pixel map.</strong></p>
+                </div>
+                <div class="attribute-card">
+                    <h4>2. RGB Triplet Composite (LLM-native fusion)</h4>
+                    <div class="axis">perceptual_compression: 3 channels &rarr; 3 RGB</div>
+                    <p>Maps 3 independent physical attributes (R=edge, G=amplitude, B=texture) into the 3 channels an LLM's vision encoder natively processes. The LLM doesn't need to learn geology &mdash; it needs to learn what red looks like.</p>
+                </div>
+                <div class="attribute-card" style="border-color: var(--warning);">
+                    <h4>3. Dangerous-Similarity Flag</h4>
+                    <div class="axis">analogue: aggregate_similarity &gt; threshold AND contrast_diversity &gt; threshold</div>
+                    <p>Returns HOLD instead of QUALIFY when an analog matches at aggregate but diverges on critical dimensions. The verdict reason says it: "Score is high but multiple high-contrast dimensions exist. Verify with PRIMARY DATA."</p>
+                </div>
+            </div>
+        </section>
+
         <section>
             <h2>The 9 Contrast Visual Attributes</h2>
             <p>8 physical attributes + 1 governance attribute. The 9th (AC_Risk) is not a physical signal &mdash; it is the constitutional firewall that audits the other 8 for display lies. <strong>That is the G&ouml;del Lock in visual form</strong>: the system that audits itself.</p>
@@ -409,6 +437,27 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- HONEST CRITIQUE                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>What's genuinely missing (the honest gap)</h2>
+            <p style="font-size: 1.05rem; font-style: italic; color: var(--earth-clay);">"With 3 of 9, the LLM can tell you what kind of geology is here but it cannot yet track a horizon across the section."</p>
+            <p>Phase 1.1 ships 3 of 9 attributes. The shipped 3 are enough for mega-domain segmentation, gross fault detection, and facies classification. They are <strong>not</strong> enough for:</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem; color: var(--text-color);">
+                <li><strong>Horizon tracking</strong> &mdash; needs #6 local_dip + #7 phase_symmetry (Phase 1.3)</li>
+                <li><strong>Sequence stratigraphy</strong> &mdash; needs #4 horizontal_gradient + #5 vertical_gradient (Phase 1.2)</li>
+                <li><strong>DHI screening</strong> &mdash; needs #7 phase_symmetry + #8 frequency_content (Phase 1.3 / 1.4)</li>
+                <li><strong>Self-audit</strong> &mdash; needs #9 AC_Risk spatial heatmap (Phase 2.0)</li>
+            </ul>
+            <p>Phase 1.2 (horizontal + vertical gradient) is where autonomous horizon interpretation becomes possible. Phase 1.3 (dip + phase) is where it becomes reliable. Phase 2.0 is where the system can audit itself.</p>
+            <p><strong>Open question:</strong> who defines the "expectation baseline" for the ToAC formula (Observation &minus; Expectation = Signal)? Options: (a) prior model from regional statistics, (b) LLM's own internal representation (closed reasoning loop), (c) human-provided (governed but human-dependent). <em>Architect's recommendation: (a) for mega-domain baselines, (b) for per-feature subtleties. Resolve before Phase 1.5.</em></p>
+            <p><strong>Real vs synthetic gap:</strong> the demo uses synthetic sections. The KL2V1 Kinabalu composite is the real test &mdash; it has multiple survey merges, variable trace spacing, different amplitude scaling, real multiples. The AC_Risk attribute is specifically designed to catch these, but it's in Phase 2.0. Until then, the pipeline has no self-awareness of its own limitations on real data.</p>
+
+            <h3 style="margin-top: 2rem;">The operational protocol</h3>
+            <p>The 6-phase workflow (Reconnaissance &rarr; Structural Framework &rarr; Anchor Horizons &rarr; Well Ties &rarr; Hard Horizons &rarr; Integration &rarr; Audit) is codified as a canonical GEOX doc: <a href="https://github.com/ariffazil/geox/blob/feat/band-a-raster-pipeline-2026-06-08/docs/SEISMIC_INTERPRETATION_GOVERNANCE%20PROTOCOL.md" style="color: var(--earth-gold);"><code>SEISMIC_INTERPRETATION_GOVERNANCE PROTOCOL.md</code></a> on branch <code>feat/band-a-raster-pipeline-2026-06-08</code>. It maps each phase to: the primary ToAC attribute, the constitucional floors in play, the GEOX tool (existing or to-forge), and the fail-closed condition. Includes the system prompt for <code>2_seismic_vision.py</code> deployment.</p>
+            <p>The Iron Law from that doc: <em>Earth (Rungs 1&ndash;2: Signal/Measurement) outranks interpreter (Rungs 4&ndash;7) in all contradiccions.</em> When in doubt, trust the well.</p>
+        </section>
+
         <!-- PHASE ROADMAP                                                      -->
         <!-- ═══════════════════════════════════════════════════════════════════ -->
         <section>
