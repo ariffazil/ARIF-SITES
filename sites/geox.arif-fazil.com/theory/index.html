@@ -5,15 +5,67 @@
     <meta charset="UTF-8">
     <link rel="canonical" href="https://geox.arif-fazil.com/theory/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEOX — Theory of Anomalous Contrast · arifOS</title>
-    <meta name="description" content="GEOX — Governed geoscience and earth physics intelligence under arifOS constitutional floors.">
+    <title>GEOX — Band A Raster Pipeline (Phase 1) · Theory of Anomalous Contrast</title>
+    <meta name="description" content="How an LLM sees a seismic section. The 9-attribute contrast-decomposition pipeline. Phase 1 ships 3 of 9 attributes (amplitude envelope, edge map, texture energy) on raster images — no SEG-Y required.">
     <link rel="stylesheet" href="../css/geox-platform.css">
+    <style>
+        /* Theory-page-specific styles. Kept small and inline to avoid
+           touching the shared CSS file. */
+        .attribute-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .attribute-card { padding: 1rem; border: 1px solid var(--border-color); background: var(--earth-overlay); }
+        .attribute-card h4 { font-family: var(--font-mono); color: var(--earth-gold); margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .attribute-card .axis { font-family: var(--font-mono); color: var(--muted-color); font-size: 0.75rem; }
+        .attribute-card .governance { color: var(--earth-clay); font-family: var(--font-mono); font-size: 0.7rem; margin-top: 0.5rem; }
+
+        .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+        .demo-row.triplet { grid-template-columns: 1fr 1fr; }
+        .demo-row.attrs { grid-template-columns: 80px 1fr 1fr 1fr; align-items: center; }
+        .demo-row.attrs .label { font-family: var(--font-mono); color: var(--earth-gold); font-size: 0.8rem; }
+        .demo-row.attrs img { max-width: 100%; }
+        .demo-row .scenario-label { text-align: center; font-family: var(--font-mono); color: var(--muted-color); font-size: 0.8rem; padding-top: 0.5rem; }
+        .demo-row .scenario-label strong { color: var(--earth-gold); display: block; font-size: 0.95rem; margin-bottom: 0.25rem; }
+
+        .demo-img-block { padding: 0.5rem; border: 1px solid var(--border-color); background: var(--earth-overlay); }
+        .demo-img-block .caption { font-family: var(--font-mono); color: var(--muted-color); font-size: 0.7rem; margin-top: 0.5rem; text-align: center; }
+        .demo-img-block img { width: 100%; display: block; image-rendering: pixelated; }
+
+        .color-legend { display: inline-flex; gap: 0.5rem; align-items: center; font-family: var(--font-mono); font-size: 0.75rem; margin: 0.5rem 0; }
+        .color-swatch { width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px; }
+        .swatch-r { background: #e84a5f; }   /* edge_map — red */
+        .swatch-g { background: #6fbf6f; }   /* amplitude_envelope — green */
+        .swatch-b { background: #5e8fc8; }   /* texture_energy — blue */
+
+        .number-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+        .number-table th, .number-table td { padding: 0.4rem 0.6rem; border: 1px solid var(--border-color); text-align: left; }
+        .number-table th { background: var(--bg-color); color: var(--earth-gold); font-family: var(--font-mono); }
+        .number-table td.num { text-align: right; font-family: var(--font-mono); }
+        .number-table td.delta { color: var(--warning); }
+        .number-table td.dangerous { color: var(--danger); font-weight: bold; }
+
+        .rule-box { padding: 1.25rem 1.5rem; border-left: 4px solid var(--earth-gold); background: var(--earth-overlay); margin: 1.5rem 0; }
+        .rule-box .rule-label { font-family: var(--font-mono); color: var(--earth-gold); font-size: 0.75rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+        .compare-block { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; align-items: center; }
+        .compare-block .text-side h3 { color: var(--earth-gold); margin-bottom: 0.5rem; }
+
+        .contrast-signal { padding: 0.5rem 0.75rem; border-left: 3px solid var(--danger); background: rgba(248, 113, 113, 0.08); margin: 0.5rem 0; font-family: var(--font-mono); font-size: 0.8rem; }
+
+        .phase-pill { display: inline-block; padding: 2px 8px; border-radius: 3px; font-family: var(--font-mono); font-size: 0.7rem; }
+        .phase-pill.phase-1 { background: var(--success); color: #000; }
+        .phase-pill.phase-2 { background: var(--warning); color: #000; }
+        .phase-pill.phase-3 { background: var(--muted-color); color: #000; }
+
+        @media (max-width: 900px) {
+            .demo-row, .compare-block { grid-template-columns: 1fr; }
+            .demo-row.attrs { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-                                <header>
+        <header>
             <div class="mono" style="margin-bottom: 0.5rem; font-size: 0.7rem; color: var(--muted-color);">
-                GEOX_PLATFORM_HUBNODE // THEORY_OF_ANOMALOUS_CONTRAST
+                GEOX PLATFORM_HUBNODE // THEORY_OF_ANOMALOUS_CONTRAST // BAND_A_PHASE_1
             </div>
             <nav class="nav-links">
                 <a href="/">Home</a>
@@ -29,52 +81,406 @@
             </nav>
         </header>
 
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- HERO: The rule                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
         <section class="hero">
-            <h1>Theory of anomalous contrast</h1>
-            <p>Contrast is not the reservoir. It is only a transform-space signal that must be audited before meaning is attached.</p>
+            <h1>How an LLM sees a seismic section</h1>
+            <p>An LLM must never interpret geology from raw pixels. Instead, the image passes through a governed contrast-decomposition pipeline that separates <strong>physical truth</strong> from <strong>display artifact</strong> from <strong>perceptual bias</strong>. The LLM only sees the decomposed channels &mdash; never the original image.</p>
         </section>
 
+        <div class="rule-box">
+            <div class="rule-label">THE RULE</div>
+            <p style="font-size: 1.1rem; margin: 0;">Observation &minus; Expectation = Signal.</p>
+            <p style="margin-top: 0.5rem; color: var(--muted-color);">Each of the 9 attributes isolates a different contrast primitive &mdash; a different axis along which the seismic image can surprise the interpreter. When an LLM receives all 9 simultaneously, it does what a good geologist does: decomposes the visual into independent physical channels, checks each for anomalous contrast, and builds a model from the convergence of evidence.</p>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- THE 9 ATTRIBUTES                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
         <section>
-            <div class="grid">
-                <div class="card">
-                    <h3>Physics over narrative</h3>
-                    <p>GEOX treats bright spots, polarity shifts, and similar anomalies as evidence to audit, not stories to believe.</p>
+            <h2>The 9 Contrast Visual Attributes</h2>
+            <p>8 physical attributes + 1 governance attribute. The 9th (AC_Risk) is not a physical signal &mdash; it is the constitutional firewall that audits the other 8 for display lies. <strong>That is the G&ouml;del Lock in visual form</strong>: the system that audits itself.</p>
+
+            <div class="attribute-grid">
+                <div class="attribute-card">
+                    <h4>1. Amplitude Envelope</h4>
+                    <div class="axis">physical: reflection_strength</div>
+                    <p>Brightness = energy. Bright zones = strong impedance contrast. Dim zones = gradational or transparent.</p>
+                    <div class="governance"><span class="phase-pill phase-1">SHIPPED</span></div>
                 </div>
-                <div class="card">
-                    <h3>Transform-chain accountability</h3>
-                    <p>Every acquisition, processing, display, and interpretation step can add distortion. That chain must be visible.</p>
+                <div class="attribute-card">
+                    <h4>2. Edge / Discontinuity Map</h4>
+                    <div class="axis">physical: structural_discontinuity</div>
+                    <p>Sobel gradient magnitude. Sharp pixel transitions = faults, unconformities, lateral facies boundaries. Skeleton of structural interpretation.</p>
+                    <div class="governance"><span class="phase-pill phase-1">SHIPPED</span></div>
                 </div>
-                <div class="card">
-                    <h3>Governed humility</h3>
-                    <p>If the evidence is thin, GEOX should hold or downgrade rather than fabricate certainty.</p>
+                <div class="attribute-card">
+                    <h4>3. Texture Energy</h4>
+                    <div class="axis">physical: seismic_facies_character</div>
+                    <p>Local variance. High = chaotic (mass transport, fractured). Low = well-layered (shelf, prodelta). Near-zero = transparent (shale, salt, water).</p>
+                    <div class="governance"><span class="phase-pill phase-1">SHIPPED</span></div>
+                </div>
+                <div class="attribute-card">
+                    <h4>4. Horizontal Gradient</h4>
+                    <div class="axis">physical: lateral_amplitude_change</div>
+                    <p>Lateral heterogeneity. Sharp = fault throws. Gradual = progradation / retrogradation. The language of sequence stratigraphy.</p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 1.2</span></div>
+                </div>
+                <div class="attribute-card">
+                    <h4>5. Vertical Gradient</h4>
+                    <div class="axis">physical: impedance_transition_rate</div>
+                    <p>Sharpness of acoustic boundaries. Strong = hard boundary (unconformity). Weak = gradational. Alternating = cyclicity. Sequence boundary detection.</p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 1.2</span></div>
+                </div>
+                <div class="attribute-card">
+                    <h4>6. Local Dip</h4>
+                    <div class="axis">physical: structure_tensor / reflector_geometry</div>
+                    <p>Structure tensor within sliding window. Flat = horizontal. Steep = faulted/folded. Converging = syncline/anticline. The structural story.</p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 1.3</span></div>
+                </div>
+                <div class="attribute-card">
+                    <h4>7. Phase Symmetry</h4>
+                    <div class="axis">physical: waveform_character_proxy</div>
+                    <p>Peak/trough/zero-crossing identity. Polarity reversals = fluid contact candidates. Separates "picking a reflector" from "understanding what it means."</p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 1.3</span></div>
+                </div>
+                <div class="attribute-card">
+                    <h4>8. Frequency Content</h4>
+                    <div class="axis">physical: resolution / attenuation</div>
+                    <p>Depth-dependent resolution. High-freq = well-resolved thin beds. Low-freq = attenuated (deep, gas-charged, or low-Q). Tells the LLM where resolution limits interpretation.</p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 1.4</span></div>
+                </div>
+                <div class="attribute-card" style="border-color: var(--earth-clay);">
+                    <h4>9. AC_Risk Heatmap <span class="phase-pill phase-2">GOVERNANCE</span></h4>
+                    <div class="axis">governance: display_bias_audit</div>
+                    <p>A heatmap showing where display contrast &ne; physical contrast. AC_Risk = U<sub>phys</sub> &times; D<sub>transform</sub> &times; B<sub>cog</sub>. The LLM knows where to trust itself and where to trigger 888_HOLD. <strong>Not a physical signal &mdash; a constitutional firewall.</strong></p>
+                    <div class="governance"><span class="phase-pill phase-2">PHASE 2.0</span></div>
                 </div>
             </div>
         </section>
 
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- THE PIPELINE                                                      -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
         <section>
-            <h2>AC_Risk framing</h2>
-            <table class="data-table">
-                <thead><tr><th>Component</th><th>Interpretation</th></tr></thead>
-                <tbody>
-                    <tr><td class="mono">U_phys</td><td>Unknowns in the physical system itself.</td></tr>
-                    <tr><td class="mono">D_transform</td><td>Distortion introduced by the transform chain.</td></tr>
-                    <tr><td class="mono">B_cog</td><td>Bias pressure from human or model interpretation.</td></tr>
-                </tbody>
-            </table>
-            <div class="callout"><strong>Reference posture:</strong> the public theory surface explains the discipline; operator trust still depends on route-level evidence and runtime provenance.</div>
+            <h2>The pipeline</h2>
+            <p style="font-family: var(--font-mono); color: var(--muted-color); font-size: 0.85rem;">
+                PNG/JPG image &rarr; <code style="color: var(--earth-gold);">geox_contrast_views</code> (modes) &rarr; 9 attribute images &rarr; <code style="color: var(--earth-gold);">geox_vision_perceptual_inventory</code> (LLM input) &rarr; arifOS judges
+            </p>
         </section>
 
-                                <footer>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- LIVE DEMO: SYNTHETIC SEISMIC                                        -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>Live demo: synthetic seismic that knows what it is</h2>
+            <p>Two synthetic sections that should look geologically different &mdash; one a rifted layered shelf (Malay-Basin-style), one a fold-thrust belt (Sabah-style). The pipeline's job is to surface the difference numerically. <strong>It does.</strong></p>
+
+            <h3 style="margin-top: 2rem;">Input sections</h3>
+            <div class="demo-row">
+                <div class="demo-img-block">
+                    <img src="img/section_malay_rifted.png" alt="Malay Basin rifted shelf — synthetic seismic section">
+                    <div class="caption">MALAY_BASIN: Cenozoic failed rift / pull-apart. Group H/I layered, normal fault at col 130, basal unconformity, deep Group J/K.</div>
+                </div>
+                <div class="demo-img-block">
+                    <img src="img/section_sabah_foldthrust.png" alt="Sabah fold-thrust belt — synthetic seismic section">
+                    <div class="caption">SABAH_OFFSHORE: compressional. Fold-thrust system (rows 30-100), mass transport deposit (rows 100-150), deep folded sediments.</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">3 attributes Phase 1 ships (out of 9)</h3>
+            <div class="demo-row attrs" style="grid-template-columns: 1fr;">
+                <table class="number-table" style="margin-top: 0.5rem;">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Attribute</th>
+                            <th style="width: 25%;">Malay Basin (rifted)</th>
+                            <th style="width: 25%;">Sabah (fold-thrust)</th>
+                            <th style="width: 20%;">Reading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong>amplitude_envelope</strong><br>
+                                <span class="mono" style="color: var(--muted-color); font-size: 0.75rem;">reflection_strength</span>
+                            </td>
+                            <td class="num">mean 0.407 &middot; p99 0.912</td>
+                            <td class="num">mean 0.508 &middot; p99 0.926</td>
+                            <td>Sabah's chaotic + folded zone raises mean; both have bright peaks.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>edge_map</strong><br>
+                                <span class="mono" style="color: var(--muted-color); font-size: 0.75rem;">structural_discontinuity</span>
+                            </td>
+                            <td class="num">mean 0.310 &middot; p99 1.534</td>
+                            <td class="num">mean 0.345 &middot; p99 1.154</td>
+                            <td>Malay p99 dominated by single sharp fault. Sabah p99 lower (faults spread out) but mean higher (more total edges).</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>texture_energy</strong><br>
+                                <span class="mono" style="color: var(--muted-color); font-size: 0.75rem;">seismic_facies_character</span>
+                            </td>
+                            <td class="num">mean 0.015 &middot; p99 0.090</td>
+                            <td class="num">mean 0.029 &middot; p99 0.094</td>
+                            <td>Sabah mean <strong>2&times; Malay</strong> &mdash; its chaotic zone + thrust faults create more local variance.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Per-scenario attribute images (grayscale)</h3>
+            <h4 style="color: var(--earth-gold); margin-top: 1.5rem;">Malay Basin (rifted layered shelf)</h4>
+            <div class="demo-row attrs">
+                <div class="label">amplitude<br>envelope</div>
+                <div class="demo-img-block"><img src="img/malay_amplitude_envelope.png" alt="Malay amplitude envelope"><div class="caption">layered reflectors</div></div>
+                <div class="demo-img-block"><img src="img/malay_edge_map.png" alt="Malay edge map"><div class="caption">fault + unconformity</div></div>
+                <div class="demo-img-block"><img src="img/malay_texture_energy.png" alt="Malay texture energy"><div class="caption">mostly low (layered)</div></div>
+            </div>
+            <h4 style="color: var(--earth-gold); margin-top: 1.5rem;">Sabah (fold-thrust)</h4>
+            <div class="demo-row attrs">
+                <div class="label">amplitude<br>envelope</div>
+                <div class="demo-img-block"><img src="img/sabah_amplitude_envelope.png" alt="Sabah amplitude envelope"><div class="caption">folded reflectors</div></div>
+                <div class="demo-img-block"><img src="img/sabah_edge_map.png" alt="Sabah edge map"><div class="caption">thrust fault curves</div></div>
+                <div class="demo-img-block"><img src="img/sabah_texture_energy.png" alt="Sabah texture energy"><div class="caption">high in MTD + thrust zones</div></div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">RGB triplet composite &mdash; what the LLM sees</h3>
+            <div class="color-legend">
+                <span><span class="color-swatch swatch-r"></span>R = edge_map</span>
+                <span><span class="color-swatch swatch-g"></span>G = amplitude_envelope</span>
+                <span><span class="color-swatch swatch-b"></span>B = texture_energy</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--muted-color);">
+                Yellow = bright + sharp (strong reflector edge). Cyan = bright + chaotic. Magenta = sharp + chaotic. White = all three high.
+            </p>
+            <div class="demo-row">
+                <div class="demo-img-block">
+                    <img src="img/malay_triplet.png" alt="Malay triplet composite">
+                    <div class="caption">MALAY: green bands (layered) + red vertical line (fault) + minimal blue (not chaotic)</div>
+                </div>
+                <div class="demo-img-block">
+                    <img src="img/sabah_triplet.png" alt="Sabah triplet composite">
+                    <div class="caption">SABAH: red curves (thrusts) + blue patch (MTD chaos) + green variably (folded reflectors)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- THE NUMBERS: ToAC primitive                                        -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>The numbers a geologist can read</h2>
+            <p>The Theory of Anomalous Contrast says: <em>Observation &minus; Expectation = Signal</em>. For texture energy, the expected baseline is a layered package (low variance). Anything above that is a disruption signal.</p>
+
+            <h3>Texture energy in geological ROIs</h3>
+            <table class="number-table">
+                <thead>
+                    <tr>
+                        <th>Region</th>
+                        <th>Geological class</th>
+                        <th>Expected</th>
+                        <th>Measured</th>
+                        <th>ToAC signal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Malay &mdash; layered Group H/I</td>
+                        <td>layered reflectors</td>
+                        <td>low</td>
+                        <td class="num">0.01365</td>
+                        <td class="num" style="color: var(--muted-color);">+0.00000 <span style="color: var(--muted-color); font-size: 0.7rem;">(baseline)</span></td>
+                    </tr>
+                    <tr>
+                        <td>Malay &mdash; deep Group J/K</td>
+                        <td>transparent / low amp</td>
+                        <td>very low</td>
+                        <td class="num">0.00102</td>
+                        <td class="num" style="color: var(--success);">&minus;0.01263 (more uniform than baseline)</td>
+                    </tr>
+                    <tr>
+                        <td>Sabah &mdash; fold-thrust system</td>
+                        <td>sharp thrust surfaces</td>
+                        <td>medium-high</td>
+                        <td class="num">0.04913</td>
+                        <td class="num" style="color: var(--warning);">+0.03548 (most disrupted)</td>
+                    </tr>
+                    <tr>
+                        <td>Sabah &mdash; Mass Transport Deposit</td>
+                        <td>chaotic, mixed</td>
+                        <td>high</td>
+                        <td class="num">0.03005</td>
+                        <td class="num" style="color: var(--warning);">+0.01640 (chaotic)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: var(--muted-color); margin-top: 1rem;">
+                The signal ordering is correct: deep &lt; layered &lt; MTD &lt; fold-thrust. Thrust faults create sharper local variance than MTD chaos &mdash; that is the expected physics.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- THE DANGEROUS-SIMILARITY EUREKA                                    -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>The dangerous-similarity eureka</h2>
+            <p style="font-size: 1.05rem; font-style: italic; color: var(--earth-gold);">"The analog that kills you is the one that looks 90% similar but has a fundamentally different charge history or seal mechanism."</p>
+            <p>The <code style="color: var(--earth-gold);">geox_analog_atlas</code> tool enforces this. Aggregate similarity score is shown alongside per-dimension contrast signals. If the score is high BUT multiple dimensions diverge, the tool returns <strong style="color: var(--danger);">HOLD</strong> instead of QUALIFY.</p>
+
+            <div class="compare-block">
+                <div class="text-side">
+                    <h3>Case: 5 of 7 dimensions match Malay, 2 critical mismatches</h3>
+                    <p>Query: tectonic, basin_age, lithology, depth, reservoir_rock all match a Malay Basin analog. But <em>trap_style</em> (compressional vs tilted fault block) and <em>source_rock</em> (Type I marine vs Group E lacustrine) mismatch.</p>
+                    <p style="font-family: var(--font-mono); color: var(--muted-color); font-size: 0.85rem;">
+                        similarity_score = 0.70<br>
+                        confidence_band = [0.62, 0.78]<br>
+                        high_contrast_dims = 2 (trap_style, source_rock)<br>
+                        dangerous_similarity_flag = <strong style="color: var(--danger);">YES</strong>
+                    </p>
+                    <p>Verdict: <strong style="color: var(--danger);">HOLD</strong>. Verdict reason: <em>"1/2 analog(s) hit dangerous-similarity flag. Score is high but multiple high-contrast dimensions exist. Verify with PRIMARY DATA before using."</em></p>
+                </div>
+                <div>
+                    <div class="contrast-signal">
+                        &gt; contrast signal on <strong>trap_style</strong> &mdash; delta = 1.00<br>
+                        &nbsp;&nbsp;observation: "tilted fault block + roll-over anticline"<br>
+                        &nbsp;&nbsp;implication: trap integrity fundamentally different
+                    </div>
+                    <div class="contrast-signal">
+                        &gt; contrast signal on <strong>source_rock</strong> &mdash; delta = 1.00<br>
+                        &nbsp;&nbsp;observation: "Group E lacustrine shale (syn-rift)"<br>
+                        &nbsp;&nbsp;implication: charge timing and phase differ
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--muted-color);">
+                Without the contrast dimension flag, a downstream well-commitment decision would treat the analog as a direct substitute. The dangerous-similarity flag forces the geologist to verify the two critical mismatches with primary data (logs, seismic, PVT) before substituting.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- GARBAGE DETECTOR                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>The garbage detector</h2>
+            <p>The same attribute statistics tell the LLM when the input image is not worth interpreting. <strong>Flat images return zero signal. Random noise returns maximum signal. Real seismic is in between.</strong></p>
+            <table class="number-table">
+                <thead>
+                    <tr>
+                        <th>Image type</th>
+                        <th>edge_map mean</th>
+                        <th>texture_energy mean</th>
+                        <th>Reading</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>flat uniform (no signal)</td>
+                        <td class="num">0.0000</td>
+                        <td class="num">0.0000</td>
+                        <td style="color: var(--muted-color);">dead image &mdash; tool sees nothing to compute</td>
+                    </tr>
+                    <tr>
+                        <td>random noise (no signal)</td>
+                        <td class="num">0.4187</td>
+                        <td class="num">0.0817</td>
+                        <td style="color: var(--warning);">high everywhere &mdash; low quality, escalate</td>
+                    </tr>
+                    <tr>
+                        <td>Malay (real, layered)</td>
+                        <td class="num">0.3098</td>
+                        <td class="num">0.0150</td>
+                        <td>structured but not chaotic</td>
+                    </tr>
+                    <tr>
+                        <td>Sabah (real, chaotic)</td>
+                        <td class="num">0.3453</td>
+                        <td class="num">0.0288</td>
+                        <td>structured and disrupted &mdash; real signal</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: var(--muted-color);">
+                The AC_Risk primitive (Attribute 9) extends this &mdash; computing a per-pixel heatmap of where display contrast may be lying about physical contrast. Phase 2 forge.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- PHASE ROADMAP                                                      -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>Phase roadmap</h2>
+            <table class="number-table">
+                <thead>
+                    <tr>
+                        <th>Phase</th>
+                        <th>What</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1.1</td>
+                        <td>amplitude_envelope, edge_map, texture_energy</td>
+                        <td><span class="phase-pill phase-1">SHIPPED</span></td>
+                    </tr>
+                    <tr>
+                        <td>1.2</td>
+                        <td>horizontal_gradient, vertical_gradient</td>
+                        <td><span class="phase-pill phase-2">next</span></td>
+                    </tr>
+                    <tr>
+                        <td>1.3</td>
+                        <td>local_dip, phase_symmetry</td>
+                        <td><span class="phase-pill phase-2">queued</span></td>
+                    </tr>
+                    <tr>
+                        <td>1.4</td>
+                        <td>frequency_content</td>
+                        <td><span class="phase-pill phase-2">queued</span></td>
+                    </tr>
+                    <tr>
+                        <td>2.0</td>
+                        <td>ac_risk_heatmap (Attribute 9 &mdash; the gouvernance layer)</td>
+                        <td><span class="phase-pill phase-2">queued</span></td>
+                    </tr>
+                    <tr>
+                        <td>3.0</td>
+                        <td>LLM composition via vision_perceptual_inventory</td>
+                        <td><span class="phase-pill phase-3">integration</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.85rem; color: var(--muted-color);">
+                Each phase is a forgeable chunk. Phase 1.1 ships 3 of 9. The remaining 6 follow the same engineering pattern. The forge lives at <a href="https://github.com/ariffazil/geox" style="color: inherit;"><code>github.com/ariffazil/geox</code></a> on branch <code>feat/band-a-raster-pipeline-2026-06-08</code>.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- WHY THIS MATTERS                                                  -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section>
+            <h2>Why this matters</h2>
+            <p>Other seismic-AI systems &mdash; SeisCoDE, Geoteric AI Hub, subsurfaceAI &mdash; all process pixels. GEOX governs the gap between pixels and truth. No other system on Earth has the AC_Risk heatmap as Attribute 9 of its perceptual pipeline.</p>
+            <p>The 9th attribute is what makes this GEOX and not just image processing. It is the attribute that watches the other 8 for display lies. The G&ouml;del Lock in visual form: the system that audits itself.</p>
+        </section>
+
+        <div class="callout"><strong>Reference posture:</strong> the public theory surface explains the discipline; operator trust still depends on route-level evidence and runtime provenance. Source: <a href="https://github.com/ariffazil/geox/blob/main/GEOX_DOCTRINE.md" style="color: inherit;">GEOX_DOCTRINE.md</a>. F13 audit pending sovereign ratification of the 3 new tools (Vision V1 +4, geox_analog_atlas, geox_contrast_views).</div>
+
+        <footer>
             <div class="governance">DITEMPA BUKAN DIBERI</div>
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 2rem;">
                 <div>
-                    <p>&copy; 2026 GEOX — Dimension-Native Earth Intelligence</p>
-                    <p class="mono">VER: 1.0.0-FORGE</p>
+                    <p>&copy; 2026 GEOX &mdash; Dimension-Native Earth Intelligence</p>
+                    <p class="mono">VER: 1.1.0-FORGE &middot; BAND_A_PHASE_1</p>
                 </div>
                 <div class="mono" style="text-align: right;">
-                    <a href="/status/" style="color: var(--muted-color); font-size: 0.7rem;">SYSTEM_STATUS: [LIVE]</a>
+                    <a href="/status/" style="color: var(--muted-color); font-size: 0.7rem;">SYSTEM STATUS: [LIVE]</a>
                     <br>
-                    <a href="https://github.com/ariffazil/GEOX" style="color: var(--muted-color); font-size: 0.7rem;" target="_blank" rel="noopener">SOURCE: GitHub</a>
+                    <a href="https://github.com/ariffazil/geox" style="color: var(--muted-color); font-size: 0.7rem;" target="_blank" rel="noopener">SOURCE: GitHub</a>
                 </div>
             </div>
             <div class="constellation-footer" style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.7rem; color: var(--muted-color); display: flex; gap: 1rem; flex-wrap: wrap;">
