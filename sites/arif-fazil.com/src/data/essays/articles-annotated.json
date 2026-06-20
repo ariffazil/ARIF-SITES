@@ -1,5 +1,140 @@
 [
   {
+    "slug": "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+    "title": "Growing Intelligence Without Losing Our Soul: From BINATANG to WARGA",
+    "date": "2026-06-09",
+    "categories": [
+      "arifOS",
+      "AIGovernance",
+      "ConstitutionalAI",
+      "BINATANGParadox",
+      "HarnessEngineering",
+      "WARGA",
+      "Acemoglu",
+      "InclusiveInstitutions",
+      "VibeCoding",
+      "GodelLock",
+      "StrangeLoop",
+      "Universe25",
+      "NamingIsCreation",
+      "DITEMPABUKANDIBER",
+      "SovereignAI",
+      "Malaysia",
+      "GlobalSouth",
+      "ILMU",
+      "AAA"
+    ],
+    "mediumUrl": "https://www.linkedin.com/pulse/growing-intelligence-without-losing-our-soul-from-binatang-arif-fazil-wu1cc",
+    "hasContent": true,
+    "_existing_slug": "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+    "_has_module": true
+  },
+  {
+    "slug": "contrast-governed-anomaly-detection",
+    "title": "Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention",
+    "date": "2026-06-05",
+    "categories": [
+      "geophysics",
+      "machine-learning",
+      "attention",
+      "avo",
+      "contrast-detection",
+      "transformers",
+      "seismic",
+      "governance"
+    ],
+    "mediumUrl": "https://medium.com/@arifbfazil/contrast-governed-anomaly-detection",
+    "hasContent": false,
+    "_existing_slug": "contrast-governed-anomaly-detection",
+    "_has_module": false
+  },
+  {
+    "slug": "physics-constrained-attention-zoeppritz",
+    "title": "Physics-Constrained Attention: Zoeppritz as Constitutional Floor",
+    "date": "2026-06-05",
+    "categories": [
+      "geophysics",
+      "machine-learning",
+      "attention",
+      "avo",
+      "governance",
+      "arifos",
+      "hallucination",
+      "physics-informed",
+      "transformers",
+      "acrisk",
+      "constitutional-ai"
+    ],
+    "mediumUrl": "https://medium.com/@arifbfazil/physics-constrained-attention-zoeppritz",
+    "hasContent": false,
+    "_existing_slug": "physics-constrained-attention-zoeppritz",
+    "_has_module": false
+  },
+  {
+    "slug": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+    "title": "Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention",
+    "date": "2026-06-05",
+    "categories": [
+      "geophysics",
+      "machine-learning",
+      "attention",
+      "avo",
+      "contrast-detection",
+      "transformers",
+      "seismic",
+      "governance",
+      "geox",
+      "acrisk"
+    ],
+    "mediumUrl": "",
+    "hasContent": true,
+    "_existing_slug": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+    "_has_module": true
+  },
+  {
+    "slug": "physics-constrained-attention-zoeppritz-constitutional-floor",
+    "title": "Physics-Constrained Attention: Zoeppritz as Constitutional Floor — Why the AVO-Attention Equivalence Demands Governed Transformers, and How to Build Them",
+    "date": "2026-06-05",
+    "categories": [
+      "geophysics",
+      "machine-learning",
+      "attention",
+      "avo",
+      "governance",
+      "arifos",
+      "hallucination",
+      "physics-informed",
+      "transformers",
+      "acrisk",
+      "constitutional-ai"
+    ],
+    "mediumUrl": "",
+    "hasContent": true,
+    "_existing_slug": "physics-constrained-attention-zoeppritz-constitutional-floor",
+    "_has_module": true
+  },
+  {
+    "slug": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+    "title": "The Contrast Primitive Derivation: A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual — Completing the Trilogy",
+    "date": "2026-06-05",
+    "categories": [
+      "geophysics",
+      "machine-learning",
+      "attention",
+      "avo",
+      "contrast-detection",
+      "transformers",
+      "mathematical-derivation",
+      "fluid-factor",
+      "softmax",
+      "governance"
+    ],
+    "mediumUrl": "",
+    "hasContent": true,
+    "_existing_slug": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+    "_has_module": true
+  },
+  {
     "slug": "stopped-writing-prompts-arep",
     "title": "I Stopped Writing Prompts. Here's What Replaces Them: AREP",
     "date": "2026-06-04",
@@ -33,7 +168,7 @@
   },
   {
     "slug": "frontier-of-digital-identity",
-    "title": "I Didn't Plan to Cross the Frontier of Digital Identity \u2014 But Last Night, I Did",
+    "title": "I Didn't Plan to Cross the Frontier of Digital Identity — But Last Night, I Did",
     "date": "2026-05-02",
     "categories": [
       "agi",
@@ -81,7 +216,7 @@
   },
   {
     "slug": "first-act-of-creation-naming",
-    "title": "The First Act of Creation Is Not Building \u2014 It Is Naming",
+    "title": "The First Act of Creation Is Not Building — It Is Naming",
     "date": "2026-04-12",
     "categories": [
       "machine-learning",
@@ -129,7 +264,7 @@
   },
   {
     "slug": "ai-needed-adult-in-the-room",
-    "title": "I Didn't Know What a Kernel Was \u2014 I Just Knew AI Needed Adult in the Room",
+    "title": "I Didn't Know What a Kernel Was — I Just Knew AI Needed Adult in the Room",
     "date": "2026-03-12",
     "categories": [
       "ai-governance",
@@ -157,47 +292,6 @@
     "mediumUrl": "https://medium.com/@arifbfazil/the-real-battle-in-ai-will-not-be-model-vs-model",
     "hasContent": true,
     "_existing_slug": "real-battle-ai-model-vs-model",
-    "_has_module": false
-  },
-  {
-    "slug": "contrast-governed-anomaly-detection",
-    "title": "Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention",
-    "date": "2026-06-05",
-    "categories": [
-      "geophysics",
-      "machine-learning",
-      "attention",
-      "avo",
-      "contrast-detection",
-      "transformers",
-      "seismic",
-      "governance"
-    ],
-    "mediumUrl": "https://medium.com/@arifbfazil/contrast-governed-anomaly-detection",
-    "hasContent": false,
-    "_existing_slug": "contrast-governed-anomaly-detection",
-    "_has_module": false
-  },
-  {
-    "slug": "physics-constrained-attention-zoeppritz",
-    "title": "Physics-Constrained Attention: Zoeppritz as Constitutional Floor",
-    "date": "2026-06-05",
-    "categories": [
-      "geophysics",
-      "machine-learning",
-      "attention",
-      "avo",
-      "governance",
-      "arifos",
-      "hallucination",
-      "physics-informed",
-      "transformers",
-      "acrisk",
-      "constitutional-ai"
-    ],
-    "mediumUrl": "https://medium.com/@arifbfazil/physics-constrained-attention-zoeppritz",
-    "hasContent": false,
-    "_existing_slug": "physics-constrained-attention-zoeppritz",
     "_has_module": false
   },
   {
@@ -391,7 +485,7 @@
   },
   {
     "slug": "bahasa-dan-minda-melayu",
-    "title": "Bahasa dan Minda Melayu \u2014 Asas Keseimbangan Dunia Moden",
+    "title": "Bahasa dan Minda Melayu — Asas Keseimbangan Dunia Moden",
     "date": "2025-12-17",
     "categories": [
       "malay",
@@ -450,7 +544,7 @@
   },
   {
     "slug": "prompt-physics-paradox",
-    "title": "Prompt \u00b7 Physics \u00b7 Paradox",
+    "title": "Prompt · Physics · Paradox",
     "date": "2025-12-11",
     "categories": [
       "prompt-engineering",
@@ -479,7 +573,7 @@
   },
   {
     "slug": "human-ai-time-paradox",
-    "title": "The Human\u2013AI Time Paradox",
+    "title": "The Human–AI Time Paradox",
     "date": "2025-12-08",
     "categories": [
       "ai",
@@ -523,7 +617,7 @@
   },
   {
     "slug": "why-we-need-ai-governance",
-    "title": "Why We Need AI Governance \u2014 Before AI Governs Us",
+    "title": "Why We Need AI Governance — Before AI Governs Us",
     "date": "2025-12-05",
     "categories": [
       "ai",
@@ -581,7 +675,7 @@
   },
   {
     "slug": "tearframe-cooling-of-truth",
-    "title": "TEARFRAME \u2014 The Cooling of Truth",
+    "title": "TEARFRAME — The Cooling of Truth",
     "date": "2025-10-16",
     "categories": [
       "truth",
@@ -609,7 +703,7 @@
   },
   {
     "slug": "physics-of-peace",
-    "title": "\u2699\ufe0f The Physics of Peace",
+    "title": "⚙️ The Physics of Peace",
     "date": "2025-10-04",
     "categories": [
       "physics",
@@ -623,7 +717,7 @@
   },
   {
     "slug": "paradox-of-language",
-    "title": "\u270aParadox of Language",
+    "title": "✊Paradox of Language",
     "date": "2025-10-04",
     "categories": [
       "language",
@@ -680,7 +774,7 @@
   },
   {
     "slug": "rukun-agi-five-pillars",
-    "title": "Rukun AGI \u2014 The Five Pillars of Artificial General Intelligence",
+    "title": "Rukun AGI — The Five Pillars of Artificial General Intelligence",
     "date": "2025-09-15",
     "categories": [
       "agi",
@@ -694,7 +788,7 @@
   },
   {
     "slug": "story-of-well-gpt",
-    "title": "\ud83c\udf31The Story of @WELL GPT",
+    "title": "🌱The Story of @WELL GPT",
     "date": "2025-09-14",
     "categories": [
       "well",
@@ -739,7 +833,7 @@
   },
   {
     "slug": "tujuh-nasihat-siti-nurhaliza",
-    "title": "\ud83c\udf38 7 Nasihat Siti Nurhaliza:",
+    "title": "🌸 7 Nasihat Siti Nurhaliza:",
     "date": "2025-09-02",
     "categories": [
       "siti-nurhaliza",
@@ -754,7 +848,7 @@
   },
   {
     "slug": "seven-by-seven-cube",
-    "title": "The 7\u00d77\u00d77 Cube:",
+    "title": "The 7×7×7 Cube:",
     "date": "2025-08-29",
     "categories": [
       "framework",
@@ -768,7 +862,7 @@
   },
   {
     "slug": "second-brain-forged-from-scars",
-    "title": "\ud83e\udde0 A Second Brain Forged From Scars",
+    "title": "🧠 A Second Brain Forged From Scars",
     "date": "2025-08-29",
     "categories": [
       "memory",
@@ -783,7 +877,7 @@
   },
   {
     "slug": "malaysia-will-miss-agi-siti-nurhaliza-karaoke",
-    "title": "\ud83c\udfb6 Malaysia Will Miss AGI Because We Treat Siti Nurhaliza Song Like Karaoke",
+    "title": "🎶 Malaysia Will Miss AGI Because We Treat Siti Nurhaliza Song Like Karaoke",
     "date": "2025-08-23",
     "categories": [
       "malaysia",
@@ -798,7 +892,7 @@
   },
   {
     "slug": "siti-nurhaliza-knows-us-better",
-    "title": "\ud83c\udfb6 When Siti Nurhaliza Knows Us Better Than Psychology, Biology, or AI",
+    "title": "🎶 When Siti Nurhaliza Knows Us Better Than Psychology, Biology, or AI",
     "date": "2025-08-23",
     "categories": [
       "siti-nurhaliza",

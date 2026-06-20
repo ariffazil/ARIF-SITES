@@ -14,6 +14,8 @@ import e10 from "./10-the-real-battle-in-ai-will-not-be-model-vs-model";
 import e11 from "./11-contrast-detection-universal-computational-primitive-avo-attention";
 import e12 from "./12-physics-constrained-attention-zoeppritz-constitutional-floor";
 import e13 from "./13-derivation-avo-attention-contrast-primitive";
+import e15 from "./growing-intelligence-without-losing-our-soul-from-binatang-to-warga";
+import e18 from "./18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system";
 
 // Lightweight Medium-linked essay modules (auto-generated from articles.json)
 import g0 from "./generated/g_fifteen_dollar_bouncer";
@@ -67,7 +69,7 @@ import g47 from "./generated/g_scar_behind_the_vision";
 import g48 from "./generated/g_manifesto_of_forged_intelligence";
 import g49 from "./generated/g_arifos_as_a_prism";
 
-const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
+export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
 
 export const allEssays: EssayMeta[] = [
   {
@@ -527,6 +529,22 @@ export const allEssays: EssayMeta[] = [
     excerpt: `Originally published on Medium.`,
     tags: ["arifos", "prism", "truth", "calibration"],
     mediumUrl: "https://medium.com/@arifbfazil/arifos-as-a-prism",
+  },  {
+    title: `Growing Intelligence Without Losing Our Soul: From BINATANG to WARGA`,
+    date: "2026-06-09",
+    slug: "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+    excerpt: `I'm a geologist, not a Silicon Valley founder. But after a year of live-testing frontier models — Western and Malaysian — I've reached one uncomfortable conclusion: we are trying to grow intelligence on foundations that exclude the very people it should serve. And the exclusion starts with something most people think is harmless: what we NAME the thing.`,
+    tags: ["arifOS", "AIGovernance", "ConstitutionalAI", "BINATANGParadox", "HarnessEngineering", "WARGA", "Acemoglu", "InclusiveInstitutions", "VibeCoding", "GodelLock", "StrangeLoop", "Universe25", "NamingIsCreation", "DITEMPABUKANDIBER", "SovereignAI", "Malaysia", "GlobalSouth", "ILMU", "AAA"],
+    mediumUrl: "https://www.linkedin.com/pulse/growing-intelligence-without-losing-our-soul-from-binatang-arif-fazil-wu1cc",
+  },
+  {
+    title: `The Mind Is Not The Model: A 6-Axis Constitutional Coordinate System for Mapping LLM Value Space`,
+    date: "2026-06-11",
+    slug: "the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+    excerpt: `We introduce a 6-axis constitutional coordinate system (F1–F13 reified as 6 measurement axes) for behavioural probing of black-box LLMs. Applied to ILMU in 180+ probe-response pairs, the system maps the model's refusal asymmetry, truth cliff, institutional capture, hallucination boundary, sovereign vector, and register-mirroring — each an independent, measurable axis. The kernel-as-mind thesis emerges empirically: the constitutional layer compensates for substrate fragility on all 6 axes. We discuss the post-transformer limit and the substrate-agnostic generalization.`,
+    tags: ["arifOS", "ConstitutionalAI", "KernelAsMind", "BehaviouralProbing", "BlackBoxInterpretability", "AAVEBias", "SEA-LION", "ILMU", "BBB", "CCC", "DDD", "F1F13", "JEPA", "LeCun", "SubstrateAgnostic", "DITEMPABUKANDIBER", "SovereignAI", "Malaysia", "AIGovernance", "SixAxes", "GeometryOfIntelligence"],
+    mediumUrl: "",
+    isDirectPublication: true,
   }
 ];
 

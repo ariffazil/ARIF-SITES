@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "date": "2026-06-15",
+    "generated_at": "2026-06-15T09:00:02Z",
+    "version": "1.0.0",
+    "source": "arifOS WEALTH — Brave Search live research",
+    "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
+    "delta_vs_yesterday": {
+      "klci_change": 0,
+      "ringgit_change": 0,
+      "brent_change": 0
+    }
+  },
+  "bursa": {
+    "search_results": [
+      {
+        "title": "Bursa Malaysia slips on cautious trade amid US inflation watch, Israel‑Iran uncertainty | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148",
+        "desc": "<strong>Bursa Malaysia ended lower today</strong> as investors adopted a cautious stance amid external uncertainties, keeping a close watch on the upcoming United States inflation as well as developments surrounding the fragile Israel-Iran ceasefire."
+      },
+      {
+        "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
+        "url": "https://www.tradinghours.com/markets/myx",
+        "desc": "Bursa Malaysia countdown, 2026 market calendar, trading hours, settlement details, and contact information. MYX is open Mon-Fri, 9:00am - 12:30pm, <strong>2:30pm - 4:45pm</strong>"
+      },
+      {
+        "title": "Bursa Malaysia closes higher as investors rotate into defensive stocks | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/10/bursa-malaysia-closes-higher-as-investors-rotate-into-defensive-stocks/223271",
+        "desc": "Wednesday, 10 Jun 2026 6:36 PM MYT · KUALA LUMPUR, June 10 — <strong>Bursa Malaysia closed higher on Wednesday</strong>, outperforming some regional peers as renewed weakness in global technology stocks and escalating tensions in West Asia prompted investors ..."
+      },
+      {
+        "title": "Bursa Malaysia ends marginally higher on selective buying amid cautious sentiment | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/11/bursa-malaysia-ends-marginally-higher-on-selective-buying-amid-cautious-sentiment/223408",
+        "desc": "The benchmark index opened 1.58 points lower at 1,677.38 and traded <strong>between 1,674.65 and 1,680.53</strong> throughout the session. Market breadth was broadly balanced, with gainers ahead of losers 562 to 561, while 538 counters were unchanged, 1,030 ..."
+      },
+      {
+        "title": "Calendar",
+        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
+        "desc": "Notes: a. When a public holiday falls on Sunday, the following Monday will be observed as a holiday. b. Bursa Malaysia and its subsidiaries will operate under normal trading hours on the eve of Chinese New Year and Hari Raya Aidilfitri. c. Date subject to change. d. Labuan Holiday Only e. Excluded L"
+      }
+    ],
+    "most_active": {
+      "title": "Top Volume - Bursa Malaysia",
+      "url": "https://www.malaysiastock.biz/Top-Volume.aspx",
+      "desc": "Market Overview | Bursa Statistic | Top Volume | Top Gainers | Top Losers | Trading Ideas | AI StockMaster ... Over the past 13 years, Stockbiz has be"
+    },
+    "top_gainers_search": [
+      {
+        "title": "Bursa gains at open on renewed tech stock buying | FMT",
+        "desc": "Among top gainers, <strong>Malaysian Pacific Industries</strong> rose RM1.28 to RM48.78, Nestle increased RM1.20 to RM96.80, Batu Kawan added 50 sen t"
+      },
+      {
+        "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
+        "desc": "FTSE Bursa Malaysia KLCI · 1,683.63 +0.24% Kuala Lumpur - Delayed Quote • MYR · 1,683.63 +4.10 (+0.24%) At close: June 12 at 4:59:45 PM GMT+8 · Get La"
+      },
+      {
+        "title": "Bursa Malaysia - FBMKLCI Stocks",
+        "desc": "MalaysiaStock.Biz is a free channel for you to access the KLSE market watch information covered from Market Summary Overview, Top Volume, Top Gainers,"
+      }
+    ],
+    "klci_close": null,
+    "klci_change_points": null,
+    "klci_change_pct": null,
+    "source_urls": [
+      "https://www.tradinghours.com/markets/myx",
+      "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148",
+      "https://www.malaymail.com/amp/news/money/2026/06/10/bursa-malaysia-closes-higher-as-investors-rotate-into-defensive-stocks/223271"
+    ]
+  },
+  "ringgit": {
+    "usd_myr": null,
+    "trend": null,
+    "policy_search": [
+      {
+        "title": "OPR Decisions - Bank Negara Malaysia",
+        "desc": "Overnight Policy Rate Decisions · Select Year All 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004"
+      },
+      {
+        "title": "Bank Negara keeps OPR at 2.75pct to balance growth, inflation, says economist | New Straits Times",
+        "desc": "KUALA LUMPUR: Bank Negara Malaysia&#x27;s decision to maintain the overnight policy rate (OPR) at <strong>2.75 per cent</strong> reflects a cautious and balanced monetary policy stance aimed at suppor"
+      },
+      {
+        "title": "Malaysia Interest Rate",
+        "desc": "The Central Bank of Malaysia held its key interest rate unchanged at <strong>2.75%</strong> for a third consecutive meeting in January 2026, marking its first monetary policy decision of the year and "
+      }
+    ],
+    "sources": [
+      "https://www.bloomberg.com/quote/USDMYR:CUR",
+      "https://alanchand.com/en/exchange-rates/usd-myr"
+    ]
+  },
+  "economy": {
+    "items": [
+      {
+        "title": "Malaysia Inflation Rate",
+        "url": "https://tradingeconomics.com/malaysia/inflation-cpi",
+        "desc": "Inflation also softened for <strong>education (2.8% vs 3.2%) and restaurants and accommodation services (2.5% vs 3%)</strong>. On the other hand, costs increased further for alcoholic beverages and tobacco (2.6% vs 2.5%), personal care, social protection &amp; miscellaneous goods &amp; services (6.9",
+        "category": "inflation"
+      },
+      {
+        "title": "Malaysia Inflation Rate | Historical Chart & Data",
+        "url": "https://www.macrotrends.net/global-metrics/countries/mys/malaysia/inflation-rate-cpi",
+        "desc": "Malaysia inflation rate for 2022 was <strong>3.38%</strong>, a 0.9% increase from 2021.",
+        "category": "inflation"
+      },
+      {
+        "title": "2026 : US trade in goods with Malaysia",
+        "url": "https://www.census.gov/foreign-trade/balance/c5570.html",
+        "desc": "2026 | 2025 | 2024 | 2023 | 2022 | 2021 | 2020 | 2019 | 2018 | 2017 | 2016 | 2015 | 2014 | 2013 | 2012 | 2011 | 2010 | 2009 | 2008 | 2007 | 2006 | 2005 | 2004 | 2003 | 2002 | 2001 | 2000 | 1999 | 1998 | 1997 | 1996 | 1995 | 1994 | 1993 | 1992 | 1991 | 1990 | 1989 | 1988 | 1987 | 1986 | 1985 |",
+        "category": "trade"
+      },
+      {
+        "title": "Malaysia (MYS) Exports, Imports, and Trade Partners | The Observatory of Economic Complexity",
+        "url": "https://oec.world/en/profile/country/mys",
+        "desc": "Find the latest trade statistics and economic complexity data for Malaysia.",
+        "category": "trade"
+      },
+      {
+        "title": "IMF raises Malaysia’s GDP forecast to 4.7% for 2026 | FMT",
+        "url": "https://www.freemalaysiatoday.com/category/nation/2026/04/14/imf-raises-malaysias-gdp-forecast-to-4-7-for-2026",
+        "desc": "PETALING JAYA: The International Monetary Fund (IMF) has raised its projection for Malaysia’s gross domestic product (GDP) growth to <strong>4.7%</strong> for 2026, an upward revision of 0.4 percentage points.",
+        "category": "gdp"
+      },
+      {
+        "title": "IMF raises Malaysia's real GDP growth forecast to 4.7% for 2026, 4.3% in 2027 | The Star",
+        "url": "https://www.thestar.com.my/business/2026/04/15/imf-raises-malaysia039s-real-gdp-growth-forecast-to-47-for-2026-43-in-2027",
+        "desc": "KUALA LUMPUR: The International Monetary Fund (IMF) has raised its projection for Malaysia&#x27;s real gross domestic product (GDP) growth to <strong>4.7 per cent</strong> for 2026, representing an upward revision of 0.4 percentage points.",
+        "category": "gdp"
+      }
+    ],
+    "narrative": null
+  },
+  "politics": {
+    "narratives": [
+      {
+        "title": "Malaysia’s State Polls Set Stage for Anwar’s Coalition Challenges - Bloomberg",
+        "desc": "June 12, 2026 at 4:31 AM UTC · Save · <strong>The loose coalitions that rule Malaysia are starting to fray as the next election season heats up</strong>, opening up a multifront challenge for Anwar Ib",
+        "source": "https://www.bloomberg.com/news/articles/2026-06-12/malaysia-s-free-for-all-election-season-opens-with-state-polls"
+      },
+      {
+        "title": "No betrayal of coalition consensus under unity government, says Anwar | The Star",
+        "desc": "TOKYO: Prime Minister Datuk Seri Anwar Ibrahim on Wednesday (June 10) <strong>reaffirmed the unity government&#x27;s commitment to its coalition partners</strong>, saying it would not take any action ",
+        "source": "https://www.thestar.com.my/news/nation/2026/06/11/no-betrayal-of-coalition-consensus-under-unity-government-says-anwar"
+      },
+      {
+        "title": "Malaysia enters election mode in 2026 | East Asia Forum",
+        "desc": "The DAP’s other problem is UMNO youth chief Akmal Saleh, who publicly declared his only political aim before the next election as to ‘fight DAP to the end’ and bring about an all-Malay government thro",
+        "source": "https://eastasiaforum.org/2026/02/08/malaysia-enters-election-mode-in-2026/"
+      },
+      {
+        "title": "Malaysia PM Anwar facing crucial test of support as two states call early elections | Arab News",
+        "desc": "(AFP) Short Url · https://arab.news/jq8at · KUALA LUMPUR: Malaysian Prime Minister Anwar ‌Ibrahim’s ruling coalition <strong>will face a test of its public support amid signs of internal tensions afte",
+        "source": "https://www.arabnews.com/node/2646055/amp"
+      }
+    ],
+    "economy_policy": [
+      {
+        "title": "Malaysia Budget 2025: Highlights, Key Takeaways, Important Points",
+        "desc": "With a record RM421 billion allocation, ... the Ekonomi MADANI framework, targeting three key pillars: <strong>Reinvigorating the Economy, Driving Reforms, and Prospering the Rakyat</strong>...."
+      },
+      {
+        "title": "Pre-Budget Statement 2025",
+        "desc": "To redress this imbalance, the Government, through the Ekonomi MADANI framework, <strong>aspires to strengthen businesses of all sizes by offering comprehensive support from the start-up stage until t"
+      }
+    ],
+    "regional": [
+      {
+        "title": "Gabungan Parti Sarawak - Wikipedia",
+        "desc": "<strong>GPS was formed on 12 June 2018,</strong> ... Peoples&#x27; Party (SUPP), and Parti Rakyat Sarawak (PRS). The four parties were former componen"
+      },
+      {
+        "title": "Next Malaysian general election - Wikipedia",
+        "desc": "In addition to the major national ... government formation. <strong>Gabungan Parti Sarawak (GPS), a Sarawak-based coalition formed by former BN compon"
+      }
+    ]
+  },
+  "social": {
+    "cost_of_living": [
+      {
+        "title": "Malaysia Salary Benchmarks: By Role and Industry 2026",
+        "desc": "A senior software engineer earns RM 10,000-14,000 ($2,125-$2,980) in Malaysia vs S$8,000-$12,000 ($5,900-$8,850) in Singapore. Malaysia compensates with lower cost of living <strong>(40-50% less than "
+      },
+      {
+        "title": "Average Salary in Malaysia: $1,009/mo + Min Wage (2026) | wage.is",
+        "desc": "The average salary in Malaysia is <strong>RM4,000/mo ($1,008.83 USD) as of May 2026. Min wage: RM8.72/hr</strong>. Compare wages, explore history, and see how Malaysia ranks globally."
+      },
+      {
+        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jun 2026",
+        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are €1,691.7 (RM7,941.7), excluding rent</strong>. The estimated monthly costs for a single person are €4"
+      }
+    ],
+    "labor": [
+      {
+        "title": "Malaysia: 800 migrant workers at plank factory strike over wage theft; incl. co. comments - Business and Human Rights Centre",
+        "desc": "<strong>Migrant workers from Bangladesh, Nepal, Vietnam, Indonesia, and Myanmar protested at a plank factory in Malaysia, alleging wage theft over three months and harsh working conditions</strong>, a"
+      },
+      {
+        "title": "Malaysia’s Migrant Recruitment Is Lucrative Business, But Not For Workers",
+        "desc": "The migrant workers “are victims of a big network that’s managed by elites and government operatives,” he said. He predicted Malaysia will suffer the consequences once global companies take notice. “T"
+      }
+    ],
+    "youth_career": [
+      {
+        "title": "Students & Graduates | PETRONAS Global",
+        "desc": "Malaysian citizen not more than 26 years old (based on year of birth). Minimum Bachelor’s Degree holder with minimum CGPA of 3.00 or equivalent. Unemployed or under-employed in non-relevant areas of g"
+      },
+      {
+        "title": "Discover Your Potential with Us | PETRONAS Global",
+        "desc": "Passion is what makes progress possible. You’ll find every opportunity to learn, experience and achieve what matters to you here at PETRONAS · Apply for Careers Here"
+      }
+    ]
+  },
+  "oil_energy": {
+    "brent_price": null,
+    "malaysia_oil": [
+      {
+        "title": "PETRONAS Confirms Fuel Supply at Its Stations Secured Through End of June 2026 | PETRONAS Global",
+        "desc": "KUALA LUMPUR, 15 April 2026 - PETRONAS confirms that <strong>fuel supply across its network of stations nationwide has been secured through the end of June 2026</strong>, an extension from its earlier"
+      },
+      {
+        "title": "Malaysia's Petronas aims to boost its exploration and production in the next three years | Reuters",
+        "desc": "KUALA LUMPUR, Jan 29 (Reuters) ... security. Petronas said it aims to maintain domestic output at <strong>close to two million barrels of oil equivalent per day</strong> between 2026 and 2028, ......"
+      }
+    ],
+    "energy_transition": [
+      {
+        "title": "Malaysia: 2026 Updates to Renewable Energy Schemes | Insight | Baker McKenzie",
+        "desc": "The 2026 updates include the <strong>new Solar ATAP scheme, updates to the CRESS guidelines and updates regarding the standby charge payable and the Battery Energy Storage System (BESS) requirement un"
+      },
+      {
+        "title": "Malaysia's energy transition to accelerate into 2026 on solar, carbon policies-Xinhua",
+        "desc": "23 (Xinhua) -- Malaysia&#x27;s energy transition is set to gather pace into 2026, underpinned by <strong>aggressive renewable energy (RE) targets, expanding solar capacity and new carbon-related polic"
+      }
+    ]
+  },
+  "global": {
+    "fed": {
+      "items": [
+        {
+          "title": "Fed Decision in June? Trading Odds & Predictions 2026 | Polymarket",
+          "desc": "The Federal Reserve published its daily interest rates on June 12, 2026, showing the federal funds rate steady at <strong>3.50%-3.75%</strong>. This release reinforced market confidence in no change a"
+        },
+        {
+          "title": "Fed Interest Rate Decision 2026: Powell Is Out, Warsh Is In, and Markets Are Repricing Everything",
+          "desc": "Market-implied odds for the June 16 to 17 FOMC meeting reflect broad trader consensus that the Federal Reserve will hold the federal funds rate steady at the current <strong>3.50% to 3.75% target rang"
+        }
+      ]
+    },
+    "china": {
+      "items": [
+        {
+          "title": "China’s 2026 economic blueprint – navigating a path of stability and strategic growth",
+          "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
+        },
+        {
+          "title": "China's Xi promises more proactive macro policies in 2026 | Reuters",
+          "desc": "BEIJING, Dec 31 (Reuters) - <strong>China is on track to meet its growth target of around 5% this year and will roll out more proactive policies in 2026</strong>, President Xi Jinping said on Wednesda"
+        }
+      ]
+    },
+    "asean": {
+      "items": [
+        {
+          "title": "ASEAN+3 Regional Economic Outlook 2026 - ASEAN+3 Macroeconomic Research Office - AMRO ASIA",
+          "desc": "<strong>Growth outperformed expectations in 2025</strong>, inflation remained low, and most economies retain meaningful fiscal and monetary space. Preserving policy flexibility remains the central nea"
+        },
+        {
+          "title": "Southeast Asian Economies’ Growth to Slow in 2026, World Bank Says",
+          "desc": "Of the remaining major economies of developing Southeast Asia, <strong>Indonesia is projected to grow by 4.7 percent in 2026</strong>, down from 5.1 percent last year, while Malaysia will grow by 4.4 "
+        }
+      ]
+    }
+  },
+  "so_what": [
+    {
+      "domain": "COST OF LIVING",
+      "signal": "Rakyat pressure: Malaysia Salary Benchmarks: By Role and Industry 2026",
+      "for_aia": "When cost of living rises faster than wages, political instability rises. This is the underlying pressure that fuels PN vs PH narrative.",
+      "for_izzu": "Consumer discretionary spending drops = retail/F&B sector pressure. If you're sector-rotating, this is a signal.",
+      "for_aliff": "PETRONAS PROPA 'competitive compensation' narrative gets tested against this. PROPA workers know the gap between narrative and reality.",
+      "for_arif": "Structural issue: Malay-middle-class aspiration vs actual income growth. The frustration underneath the political theatre.",
+      "tone": "grounded"
+    },
+    {
+      "domain": "POLITICS",
+      "signal": "Malaysia’s State Polls Set Stage for Anwar’s Coalition Challenges - Bloomberg",
+      "for_aia": "Anwar government stability vs PN ascendancy — this isn't abstract. It determines FDI confidence, ringgit direction, and ultimately: your investment returns.",
+      "for_izzu": "Political uncertainty = premium on safe haven assets (USD, gold). Portfolio hedge thought: what's your political risk premium?",
+      "for_aliff": "PROPA management alignment with government = career risk. When political winds shift, the 'loyalty' calculus changes fast.",
+      "for_arif": "Sabah/Sarawak GPS dynamics = underrated signal. The 2026 state elections could reshape federal arithmetic in ways JBOD doesn't price in.",
+      "tone": "grounded"
+    }
+  ]
+}

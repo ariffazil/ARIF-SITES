@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>arifOS Memory Architecture — 7 Petala Langit</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 14mm 14mm 14mm 14mm;
+  @bottom-center {
+    content: "arifOS Memory Architecture · 7 Petala Langit · 999 SEAL";
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 7pt;
+    color: #888;
+  }
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 7pt;
+    color: #888;
+  }
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #ffffff;
+  --ink: #0E0E0E;
+  --muted: #5A5D61;
+  --dim: #8A8D91;
+  --accent: #B33000;
+  --accent-light: #FF4500;
+  --border: #D8D8D8;
+  --code-bg: #F4F4F2;
+  --table-stripe: #FAFAF8;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DejaVu Sans', 'Liberation Sans', Helvetica, Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-size: 22pt;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0 0 4mm 0;
+  color: var(--ink);
+}
+h1 .accent { color: var(--accent); }
+
+h2 {
+  font-size: 14pt;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 8mm 0 3mm 0;
+  padding-bottom: 2mm;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+  page-break-after: avoid;
+}
+h2 .num {
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 11pt;
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+h3 {
+  font-size: 11pt;
+  font-weight: 700;
+  margin: 5mm 0 2mm 0;
+  color: var(--ink);
+  page-break-after: avoid;
+}
+
+p { margin: 0 0 3mm 0; }
+
+.subtitle {
+  font-size: 10.5pt;
+  color: var(--muted);
+  margin: 0 0 6mm 0;
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 4mm;
+}
+
+code, pre, .mono {
+  font-family: 'DejaVu Sans Mono', 'Liberation Mono', 'Courier New', monospace;
+  font-size: 8.5pt;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 4mm;
+  border-left: 3px solid var(--accent);
+  border-radius: 2px;
+  margin: 3mm 0;
+  font-size: 8pt;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  page-break-inside: avoid;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+th, td {
+  text-align: left;
+  padding: 2mm 3mm;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) td { background: var(--table-stripe); }
+
+ul, ol {
+  margin: 2mm 0 3mm 5mm;
+  padding: 0;
+}
+li { margin-bottom: 1.5mm; }
+
+.callout {
+  background: #FFF8F4;
+  border-left: 4px solid var(--accent);
+  padding: 4mm 5mm;
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+.callout-title {
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 2mm;
+  font-size: 9.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.architecture-diagram {
+  background: var(--code-bg);
+  padding: 5mm 4mm;
+  margin: 4mm 0;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  page-break-inside: avoid;
+  overflow-x: auto;
+}
+.architecture-diagram pre {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 7.5pt;
+  line-height: 1.4;
+}
+
+.layer-card {
+  background: var(--table-stripe);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  padding: 4mm 5mm;
+  margin: 3mm 0;
+  page-break-inside: avoid;
+}
+.layer-card .layer-name {
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-weight: 700;
+  font-size: 10pt;
+  color: var(--accent);
+  margin-bottom: 1mm;
+}
+.layer-card .layer-purpose {
+  font-weight: 700;
+  margin-bottom: 2mm;
+  font-size: 10pt;
+}
+
+.principle {
+  background: var(--code-bg);
+  border-left: 3px solid var(--ink);
+  padding: 3mm 4mm;
+  margin: 3mm 0;
+  font-style: italic;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+
+.glossary-term {
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.section-break {
+  page-break-before: always;
+}
+
+.header-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8pt;
+  color: var(--muted);
+  margin-bottom: 6mm;
+  padding-bottom: 3mm;
+  border-bottom: 1px solid var(--border);
+}
+
+.flow-arrow {
+  text-align: center;
+  font-family: 'DejaVu Sans Mono', monospace;
+  color: var(--accent);
+  font-size: 11pt;
+  margin: 1mm 0;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--code-bg);
+  padding: 1px 6px;
+  border-radius: 2px;
+  font-size: 8pt;
+  font-family: 'DejaVu Sans Mono', monospace;
+  color: var(--muted);
+}
+
+.toc {
+  background: var(--table-stripe);
+  padding: 5mm;
+  border: 1px solid var(--border);
+  margin: 4mm 0;
+  page-break-inside: avoid;
+}
+.toc ol {
+  columns: 2;
+  column-gap: 8mm;
+  margin: 0;
+  padding-left: 5mm;
+}
+.toc li {
+  font-size: 9.5pt;
+  margin-bottom: 1mm;
+  break-inside: avoid;
+}
+.toc a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.footnote {
+  font-size: 8pt;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 4mm;
+  padding-top: 2mm;
+  border-top: 1px solid var(--border);
+}
+
+.signature-block {
+  margin-top: 8mm;
+  padding: 4mm;
+  background: var(--code-bg);
+  border-left: 4px solid var(--accent);
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8pt;
+  page-break-inside: avoid;
+}
+.signature-block .seal {
+  font-weight: 900;
+  color: var(--accent);
+  font-size: 10pt;
+  margin-bottom: 1mm;
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.swatch.light { background: var(--accent-light); }
+</style>
+</head>
+<body>
+
+<div class="header-meta">
+  <div>arifOS · Memory Architecture Reference</div>
+  <div>v2.0 · 2026-06-07</div>
+</div>
+
+<h1>7 Petala Langit <span class="accent">·</span> Memory Architecture</h1>
+<p class="subtitle">
+A complete reference for the seven-layer memory substrate of arifOS — from ephemeral intent capture (L0) to cryptographically-sealed, append-only decisions (L6). For Fahmi (technical onboarding) and for general readers (sections marked <code>📖</code>).
+</p>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li>Plain-English Summary</li>
+    <li>Architecture Diagram (Machine View)</li>
+    <li>Layer-by-Layer Spec</li>
+    <li>Truth Flow</li>
+    <li>Tool Access Matrix</li>
+    <li>Recursive Improvement Loop</li>
+    <li>Constitutional Floors F1–F13</li>
+    <li>Storage Stack &amp; Cost</li>
+    <li>Why OpenCode Is Detached</li>
+    <li>Real Examples</li>
+    <li>Maintenance &amp; Ops</li>
+    <li>Roadmap 2026–2027</li>
+    <li>Glossary</li>
+  </ol>
+</div>
+
+<h2><span class="num">0.</span> Plain-English Summary</h2>
+
+<p>
+The arifOS memory system has <strong>7 layers</strong>, ranging from the lightest (a fresh chat message) to the heaviest (a permanently-sealed, cryptographically-signed decision). Think of it like a tree — leaves at the top (fall off daily), roots at the bottom (permanent, unshakeable).
+</p>
+
+<p>
+<strong>Why 7?</strong> Because each type of "memory" has different needs:
+</p>
+<ul>
+  <li>New chat messages should be <strong>fast to forget</strong> (no need to store forever)</li>
+  <li>Important history should be <strong>permanent and uneditable</strong> (audit trail)</li>
+  <li>Some memory is <strong>volatile</strong> (Redis, lost on restart), some is <strong>persistent</strong> (Postgres, ACID guarantees)</li>
+</ul>
+
+<p>
+Imagine 7 types of books in a library:
+</p>
+<ol>
+  <li><strong>Post-it notes</strong> — fresh chat, throw away tomorrow</li>
+  <li><strong>Memos</strong> — working notes, kept for a week</li>
+  <li><strong>Card catalogue</strong> — search by meaning</li>
+  <li><strong>Filing cabinet</strong> — organized records</li>
+  <li><strong>Knowledge map</strong> — how things connect</li>
+  <li><strong>Diary</strong> — how state changed over time</li>
+  <li><strong>Notary seal</strong> — legally witnessed, cannot lie</li>
+</ol>
+
+<div class="callout">
+  <div class="callout-title">Key Insight</div>
+  <p>OpenCode (the code tool, now available in Telegram via <code>/forge</code>) only uses post-it notes + filing cabinet (ephemeral + project files). It <strong>cannot access the notary seal</strong> (VAULT999). This is not a restriction — it's a safety design, so the code tool can never "create false history."</p>
+</div>
+
+<h2 class="section-break"><span class="num">1.</span> Architecture Diagram — The Machine View</h2>
+
+<div class="architecture-diagram">
+<pre>
+                    ┌──────────────────────────────────────────────────────────┐
+                    │              SOVEREIGN INTENT LAYER (L0)                  │
+                    │    Arif's typed word — ephemeral, highest authority       │
+                    │         "Apa yang aku nak" (what I want)                  │
+                    └─────────────────────────┬────────────────────────────────┘
+                                              │
+                                              │ [envelope: intent, scope,
+                                              │  reversibility, risk_band]
+                                              ▼
+                    ┌──────────────────────────────────────────────────────────┐
+                    │   CONSTITUTIONAL FLOORS (F1→F13) — sit between L0/L1    │
+                    │   AMANAH → TRUTH → SEAL → SCOPE → ... → SOVEREIGN        │
+                    │   888_HOLD gates irreversible actions                   │
+                    └─────────────────────────┬────────────────────────────────┘
+                                              │ [all floors pass]
+                                              ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│  L1 · REDIS (ephemeral cache)                                                          │
+│      task queue, session context, working state, dedup, rate limits                    │
+│      TTL: 1h–24h · lossy by design · volatile                                           │
+└──────────────────────────────────┬─────────────────────────────────────────────────────┘
+                                   │
+                  [12h curator pass — promote persistent items]
+                                   │
+                                   ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│  L3 · SUPABASE (PostgreSQL — durable, ACID, canonical)                                  │
+│      sessions · messages · tasks · decisions · vault_seals · agents · envelopes        │
+│      RLS-enforced · source of truth for relational data                                │
+└────┬──────────────────────────────────────────┬─────────────────────────────────────┬──┘
+     │                                          │                                     │
+     │ [re-embed nightly]                       │ [event-driven sync]                │ [12h compute]
+     ▼                                          ▼                                     ▼
+┌──────────────────┐                ┌──────────────────────┐              ┌─────────────────────┐
+│ L2 · QDRANT      │                │ L4 · GRAPHITI         │              │ L5 · HYSTERESIS      │
+│ Vector embeddings│                │ Knowledge graph       │              │ Path-dependent state │
+│ 1536-dim cosine  │                │ Entity-relationship   │              │ GROWTH/PLATEAU/      │
+│ Semantic search  │                │ Multi-hop traversal   │              │ REVERSION/COLLAPSE   │
+└──────────────────┘                └──────────────────────┘              └──────────┬──────────┘
+                                                                                      │
+                                                                       [only SEAL-worthy
+                                                                        events flow down]
+                                                                                      │
+                                                                                      ▼
+                                                                       ┌──────────────────────────┐
+                                                                       │ L6 · VAULT999 (SEALED)    │
+                                                                       │ SHA3-512 chained         │
+                                                                       │ F1-F13 constitutionally   │
+                                                                       │  gated · append-only       │
+                                                                       │ No code path writes back  │
+                                                                       │ Final, witnessed, forever │
+                                                                       └──────────────────────────┘
+</pre>
+</div>
+
+<div class="callout">
+  <div class="callout-title">Critical Invariant</div>
+  <p>Data flows <strong>upward</strong> (L0 → L6), gaining permanence at each step. Once sealed to <strong>VAULT999</strong>, there is <strong>no code path that writes back downward</strong> — by architecture, not by policy.</p>
+</div>
+
+<h2><span class="num">2.</span> Layer-by-Layer Spec</h2>
+
+<div class="layer-card">
+  <div class="layer-name">L0 · NIAT (Sovereign Intent)</div>
+  <div class="layer-purpose">Capture Arif's typed intent before any processing.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>RAM only (within Hermes session)</td></tr>
+    <tr><td>Persistence</td><td>None — gone when session ends</td></tr>
+    <tr><td>Authority</td><td>Highest human authority (Arif = SOVEREIGN)</td></tr>
+    <tr><td>Format</td><td>Natural language + structured envelope</td></tr>
+  </table>
+  <p><strong>Design note:</strong> L0 is <em>not</em> persisted. If the session dies, intent dies. Intent is volatile; decisions are not. Decisions get sealed (L6); intent doesn't need to be, because intent is the input, not the verdict.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L1 · REDIS (Ephemeral Cache)</div>
+  <div class="layer-purpose">Fast in-memory state for active tasks, sessions, agent coordination.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Redis 7 (in-memory, optional AOF)</td></tr>
+    <tr><td>Persistence</td><td>Configurable (default: none — pure ephemeral)</td></tr>
+    <tr><td>TTL</td><td>1h–24h depending on data type</td></tr>
+    <tr><td>Use cases</td><td>Task queue, session cache, rate limits, dedup</td></tr>
+  </table>
+  <p><strong>Design note:</strong> L1 is intentionally lossy. If Redis crashes, the <em>worst</em> that happens is active tasks need to restart. Decisions never live here.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L2 · QDRANT (Vector Embeddings)</div>
+  <div class="layer-purpose">Similarity search — given a query, find semantically related past content.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Qdrant (Rust-based vector DB)</td></tr>
+    <tr><td>Embedding model</td><td><code>text-embedding-3-small</code> (1536-dim) or <code>bge-large-en</code> (1024-dim)</td></tr>
+    <tr><td>Distance metric</td><td>Cosine similarity</td></tr>
+    <tr><td>Indexing</td><td>HNSW for sub-millisecond search</td></tr>
+  </table>
+  <p><strong>Design note:</strong> L2 is <em>derived</em> — embeddings are computed from text that exists in L3 or L6. The vector is a secondary index, not primary truth. If Qdrant loses data, it can be rebuilt from L3/L6.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L3 · SUPABASE (Relational + ACID)</div>
+  <div class="layer-purpose">Canonical, queryable, ACID-compliant record store.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Supabase (managed PostgreSQL 15)</td></tr>
+    <tr><td>Persistence</td><td>Durable, backed up daily</td></tr>
+    <tr><td>Authority</td><td>Source of truth for relational data</td></tr>
+    <tr><td>Access</td><td>RLS-enforced (Row Level Security)</td></tr>
+  </table>
+  <p><strong>Major tables:</strong> <code>sessions</code>, <code>messages</code>, <code>tasks</code>, <code>decisions</code>, <code>vault_seals</code>, <code>agents</code>, <code>envelopes</code>, plus organ-specific (<code>geox_claims</code>, <code>wealth_transactions</code>, <code>well_vitals</code>).</p>
+  <p><strong>Design note:</strong> L3 is the <strong>canonical</strong> layer. If there's a dispute about "what is the record?", L3 wins. Vector search (L2) and graph traversal (L4) are <em>views</em> on top of L3. Sealed VAULT999 (L6) is anchored to L3 but cryptographically independent.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L4 · GRAPHITI (Knowledge Graph)</div>
+  <div class="layer-purpose">Multi-hop entity-relationship queries that SQL can't do well.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Graphiti (custom, on Neo4j/Memgraph)</td></tr>
+    <tr><td>Schema</td><td>Nodes (entities) + Edges (relationships) + Episodes (temporal)</td></tr>
+    <tr><td>Use case</td><td>"How does GEOX connect to arifOS through the constitutional layer?"</td></tr>
+  </table>
+  <p><strong>Edge types:</strong> <code>GOVERNS</code>, <code>IMPLEMENTS</code>, <code>PRODUCED</code>, <code>REFERENCED</code>, <code>CHALLENGED</code>, <code>WITNESSED</code>, <code>OWNS</code>, <code>SIGNED</code>.</p>
+  <p><strong>Design note:</strong> L4 is <strong>derived</strong> from L3. Every node/edge has a primary key in L3; L4 is a graph view for traversal. If graph data is lost, it can be rebuilt from L3 + L6.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L5 · HYSTERESIS (Path-Dependent State)</div>
+  <div class="layer-purpose">Track <strong>state evolution</strong> — how the system's state has shifted over time.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Supabase <code>hysteresis_ledger</code> + LRU cache</td></tr>
+    <tr><td>Schema</td><td>State machine: GROWTH / PLATEAU / REVERSION / COLLAPSE</td></tr>
+    <tr><td>Use case</td><td>"Are we growing, plateauing, or collapsing in capability?"</td></tr>
+  </table>
+  <p><strong>State transitions:</strong></p>
+  <ul>
+    <li><code>Tool success rate &gt; 80% for 7 days</code> → PLATEAU → GROWTH</li>
+    <li><code>Constitutional floor violation (F1–F13)</code> → * → COLLAPSE</li>
+    <li><code>Repeated retries without progress</code> → GROWTH → REVERSION</li>
+    <li><code>Capacity headroom &gt; 50% for 30 days</code> → PLATEAU → GROWTH</li>
+    <li><code>Audit chain broken</code> → * → CRITICAL</li>
+  </ul>
+  <p><strong>Design note:</strong> L5 is a <strong>meta-layer</strong> — it observes the system and characterizes its trajectory. It does not store domain data; it stores <strong>system state evolution</strong>.</p>
+</div>
+
+<div class="layer-card">
+  <div class="layer-name">L6 · VAULT999 (Sealed, Immutable)</div>
+  <div class="layer-purpose">Final, cryptographically-provable, constitutionally-gated record of decisions.</div>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Storage</td><td>Append-only JSONL files + Supabase mirror</td></tr>
+    <tr><td>Hash chain</td><td>SHA3-512, each entry references previous hash</td></tr>
+    <tr><td>Signatures</td><td>F1–F13 constitutional gates, witness consensus</td></tr>
+    <tr><td>Access</td><td>Read = auth users; <strong>Write = <code>vault_seal</code> + <code>ack_irreversible=True</code></strong></td></tr>
+    <tr><td>Retention</td><td>Forever (immutable)</td></tr>
+  </table>
+  <p><strong>Seal schema:</strong></p>
+  <pre>{
+  "seal_id": "vault-2026-06-07-001337",
+  "envelope_id": "uuid-v4",
+  "actor_id": "arif",
+  "actor_signature": "sig-...",
+  "nonce": "unique-nonce-per-seal",
+  "constitutional_chain_id": "F1→F2→...→F13",
+  "judge_state_hash": "sha256-of-judge-verdict",
+  "witness_type": "human | ai | council",
+  "payload": "{...decision content...}",
+  "prev_hash": "sha3-512-of-previous-seal",
+  "seal_hash": "sha3-512-of-(payload + prev_hash + nonce)",
+  "sealed_at": "2026-06-07T04:33:00+08:00"
+}</pre>
+  <p><strong>Design note:</strong> L6 is <strong>the ground truth of decisions.</strong> If L3 says one thing and L6 says another, <strong>L6 wins.</strong> L6 is independent of L3 by design — even if Supabase is compromised, the SHA3 chain can be verified.</p>
+</div>
+
+<h2><span class="num">3.</span> Truth Flow</h2>
+
+<div class="architecture-diagram">
+<pre>
+   HUMAN (Arif)
+        │
+        │ [typed intent + envelope]
+        ▼
+   ┌──────────┐
+   │   L0     │  ephemeral, volatile
+   │  NIAT    │  "what I want"
+   └────┬─────┘
+        │
+        │ [constitutional floors F1-F13 gate]
+        ▼
+   ┌──────────┐
+   │   L1     │  Redis cache, working state
+   │  REDIS   │  TTL: 1h–24h
+   └────┬─────┘
+        │
+        │ [12h curator pass — promote persistent]
+        ▼
+   ┌──────────────────────────────────┐
+   │      L3 · SUPABASE               │  ACID, durable
+   │  canonical record store          │  RLS-enforced
+   └──┬────────────────┬──────────────┘
+      │                │
+      │ re-embed       │ sync
+      ▼                ▼
+   ┌──────────┐    ┌──────────┐
+   │   L2     │    │   L4     │
+   │  QDRANT  │    │ GRAPHITI │
+   └──────────┘    └────┬─────┘
+                       │
+                       │ state transitions
+                       ▼
+                  ┌──────────┐
+                  │   L5     │
+                  │HYSTERESIS│
+                  └────┬─────┘
+                       │
+                       │ ONLY SEAL-worthy events
+                       ▼
+                  ┌──────────┐
+                  │   L6     │  SHA3-chained
+                  │VAULT999  │  F1-F13 gated
+                  │          │  append-only
+                  └──────────┘
+                  ◄─────── (no write-back path)
+</pre>
+</div>
+
+<div class="principle">
+<strong>Key Invariants:</strong> L0 → L1 → L3 → L6 (data flows up, gets more durable). L2 and L4 are derived from L3 (can be rebuilt). L5 is meta-observation. L6 is cryptographically independent of L3. Once sealed, no path writes back downward.
+</div>
+
+<h2><span class="num">4.</span> Tool Access Matrix</h2>
+
+<p>This is the <strong>authorization policy</strong> — which tools can read/write which layers.</p>
+
+<table>
+<tr><th>Tool</th><th>L0</th><th>L1</th><th>L2</th><th>L3</th><th>L4</th><th>L5</th><th>L6</th></tr>
+<tr><td><strong>Hermes</strong> (relay)</td><td>R/W</td><td>R/W</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+<tr><td><strong>OpenClaw</strong> (infra/heavy)</td><td>R</td><td>R/W</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+<tr><td><strong>APEX</strong> (judge)</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R/W</td><td>R</td></tr>
+<tr><td><strong>OpenCode</strong> (executor)</td><td>R</td><td>R/W</td><td>—</td><td>R (project)</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Curator</strong> (12h job)</td><td>—</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R</td><td>—</td></tr>
+<tr><td><strong>Watcher</strong> (cron)</td><td>—</td><td>R/W</td><td>R</td><td>R/W</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td><strong>Arif</strong> (human)</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R/W</td><td>R/W</td></tr>
+<tr><td><code>vault_seal</code></td><td>R</td><td>—</td><td>—</td><td>R</td><td>—</td><td>—</td><td><strong>R/W</strong></td></tr>
+<tr><td><code>judge_deliberate</code></td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R (read)</td></tr>
+</table>
+
+<div class="callout">
+  <div class="callout-title">Critical</div>
+  <p>OpenCode (the code execution tool, now in Telegram via <code>/forge</code>) has <strong>NO access to L2–L6.</strong> It works only in L0+L1 (intent + ephemeral) + project filesystem. This is by design — code tools should not have historical memory access, or they can fabricate provenance.</p>
+</div>
+
+<h2><span class="num">5.</span> Recursive Improvement Loop</h2>
+
+<p>Every <strong>12 hours</strong>, the curator agent runs:</p>
+
+<div class="architecture-diagram">
+<pre>
+┌──────────────────────────────────────────────────────────┐
+│  1. SCAN L1 for persistent items                         │
+│     (conversations, sealed verdicts, working state)      │
+│                                                          │
+│  2. PROMOTE to L3 if:                                     │
+│     - item has been touched > 5 times in L1               │
+│     - or referenced in sealed decision (L6)               │
+│     - or marked by agent as "important"                   │
+│                                                          │
+│  3. RE-EMBED L3 → L2                                      │
+│     (update vectors for changed text)                     │
+│                                                          │
+│  4. SYNC L3 → L4                                          │
+│     (update graph nodes/edges from row changes)           │
+│                                                          │
+│  5. COMPUTE L5 state                                      │
+│     (compare previous state, detect transitions)          │
+│                                                          │
+│  6. REPORT deltas to Arif via Telegram                    │
+│     (only if significant — silent = success)              │
+└──────────────────────────────────────────────────────────┘
+</pre>
+</div>
+
+<p><strong>Watchers</strong> (RSS, GitHub, JSON APIs) run continuously and <strong>deduplicate via watermark</strong>. <strong>Subagent depth-2 max</strong> — leaf subagents cannot spawn their own children. <strong>Darwinian evolver</strong> refines underperforming prompts/code via evolutionary optimization.</p>
+
+<h2><span class="num">6.</span> Constitutional Floors F1–F13</h2>
+
+<p>The 13 floors wrap <strong>every</strong> tool call. They sit <em>between</em> L0 and L1, gating the transition from intent to action.</p>
+
+<table>
+<tr><th>Floor</th><th>Name</th><th>What it checks</th></tr>
+<tr><td>F1</td><td>AMANAH</td><td>Reversibility, integrity of action</td></tr>
+<tr><td>F2</td><td>TRUTH</td><td>Claim evidence, no fabrication</td></tr>
+<tr><td>F3</td><td>SEAL</td><td>Verdict finality</td></tr>
+<tr><td>F4</td><td>SCOPE</td><td>Tool risk classification</td></tr>
+<tr><td>F5</td><td>WITNESS</td><td>Audit trail present</td></tr>
+<tr><td>F6</td><td>VOID</td><td>Rejection pathway</td></tr>
+<tr><td>F7</td><td>HUMILITY</td><td>Uncertainty quantified</td></tr>
+<tr><td>F8</td><td>SABAR</td><td>Patience for irreversible</td></tr>
+<tr><td>F9</td><td>ANTI-HANTU</td><td>No deception, no pretense</td></tr>
+<tr><td>F10</td><td>CLARITY</td><td>Context preservation</td></tr>
+<tr><td>F11</td><td>DIGNITY</td><td>Human sovereignty preserved</td></tr>
+<tr><td>F12</td><td>STEWARDSHIP</td><td>Resource constraint honored</td></tr>
+<tr><td>F13</td><td>SOVEREIGN</td><td>Arif's signature + intent clear</td></tr>
+</table>
+
+<p><strong>T1 vs T4 bands:</strong></p>
+<ul>
+  <li><strong>T1 (autonomous):</strong> no menu, no F13 hold required (commit audited diffs, run tests, edit configs)</li>
+  <li><strong>T2–T3 (sabahan):</strong> sabahan check</li>
+  <li><strong>T4 (irreversible):</strong> requires <code>888_HOLD</code> + Arif signature</li>
+</ul>
+
+<h2><span class="num">7.</span> Storage Stack &amp; Cost</h2>
+
+<table>
+<tr><th>Layer</th><th>Tool</th><th>Where it runs</th><th>Cost</th></tr>
+<tr><td>L0</td><td>Hermes session memory</td><td>hermes-asi-gateway (VPS)</td><td>$0</td></tr>
+<tr><td>L1</td><td>Redis 7</td><td>VPS (Docker)</td><td>$5/mo</td></tr>
+<tr><td>L2</td><td>Qdrant</td><td>VPS (Docker)</td><td>$0 (open source)</td></tr>
+<tr><td>L3</td><td>Supabase</td><td>supabase.com (managed)</td><td>$25/mo (Pro tier)</td></tr>
+<tr><td>L4</td><td>Graphiti (custom)</td><td>VPS (Docker)</td><td>$0</td></tr>
+<tr><td>L5</td><td>Supabase + Redis LRU</td><td>supabase.com + VPS</td><td>$0</td></tr>
+<tr><td>L6</td><td>JSONL files + Supabase mirror</td><td>VPS (append-only FS)</td><td>$0</td></tr>
+</table>
+
+<p><strong>Total infra cost: ~$30/mo (≈ RM140)</strong> for full federation.</p>
+
+<div class="callout">
+  <div class="callout-title">Pitch Material</div>
+  <p>"Constitutional AI doesn't have to be expensive." Cost transparency is itself a design feature — no hidden token costs, no black-box inference bills, no vendor lock-in.</p>
+</div>
+
+<h2><span class="num">8.</span> Why OpenCode Is Detached</h2>
+
+<p>The design choice to <strong>isolate code-execution tools from persistent memory</strong> is one of the most important architectural decisions in arifOS.</p>
+
+<h3>Risk of Memory-Connected Code Tools</h3>
+
+<p>If OpenCode could read/write L2–L6:</p>
+
+<table>
+<tr><th>Capability</th><th>Risk</th></tr>
+<tr><td>Read L3 transactions</td><td>Could "verify" its own lies against historical record</td></tr>
+<tr><td>Read L6 seals</td><td>Could reference past decisions to justify present bad actions</td></tr>
+<tr><td>Write L3 records</td><td>Could insert false evidence</td></tr>
+<tr><td>Write L6 seals</td><td>Could fake constitutional verdicts</td></tr>
+<tr><td>Read L4 graph</td><td>Could discover private reasoning paths</td></tr>
+<tr><td>Read L5 hysteresis</td><td>Could "predict" system state and game it</td></tr>
+</table>
+
+<h3>The Detached Design</h3>
+
+<div class="architecture-diagram">
+<pre>
+┌─────────────────────────────────┐
+│  OpenCode authorized scope:     │
+│                                 │
+│  L0 · R (intent only)           │
+│  L1 · R/W (working state)       │
+│  Project filesystem · R/W       │
+│  Network · sandboxed            │
+│                                 │
+│  No access to: L2, L3, L4, L5,  │
+│               L6, secrets,      │
+│               env vars outside  │
+│               project scope     │
+└─────────────────────────────────┘
+</pre>
+</div>
+
+<p><strong>What OpenCode can do:</strong></p>
+<ul>
+  <li>Read project files (source code, configs)</li>
+  <li>Write project files (with audit log to L1)</li>
+  <li>Run tests, linters, type checks</li>
+  <li>Execute shell commands within project sandbox</li>
+  <li>Spawn ephemeral subprocesses</li>
+  <li>Send results back via Telegram</li>
+</ul>
+
+<p><strong>What OpenCode cannot do:</strong></p>
+<ul>
+  <li>Read VAULT999 seals</li>
+  <li>Query historical decisions</li>
+  <li>Reference past constitutional verdicts</li>
+  <li>Insert records into Supabase</li>
+  <li>Read Graphiti knowledge graph</li>
+  <li>Modify memory in any persistent layer</li>
+</ul>
+
+<div class="principle">
+<strong>Arif's design philosophy:</strong><br><br>
+"A tool that knows history can lie about history. A tool that only knows the present cannot lie about the past — it can only be wrong about the present, and that's auditable."
+</div>
+
+<p>The governance model is:</p>
+<ul>
+  <li><strong>OpenCode = present-tense worker</strong> (does the job, returns the result)</li>
+  <li><strong>arifOS = historical witness</strong> (records what happened, sealed to L6)</li>
+  <li><strong>Arif = sovereign judge</strong> (verifies, approves, seals)</li>
+</ul>
+
+<p>If OpenCode proposes "I should commit X because last week we did Y," that's a <strong>lie</strong> — OpenCode has no way to know Y. The proposal is evaluated on its present merits only.</p>
+
+<div class="callout">
+  <div class="callout-title">The Differentiator</div>
+  <p>This is a <strong>stronger</strong> property than "AI agent with memory." It's a <strong>constitutionally isolated</strong> agent — fast, capable, but provably without historical fabrication power.</p>
+</div>
+
+<h2><span class="num">9.</span> Real Examples</h2>
+
+<h3>Example 1: Compose essay poster (this session)</h3>
+
+<div class="architecture-diagram">
+<pre>
+Arif types in Telegram:
+  /forge compose poster for "I hate AI, I hate DSG" essay
+    ↓
+L0: intent captured (envelope {intent, scope=opencode, risk=T1})
+    ↓
+L1: task queued, OpenCode session spawned
+    ↓
+OpenCode reads essay from project filesystem (read-only)
+    ↓
+OpenCode designs HTML, renders to PDF via weasyprint
+    ↓
+L1: working state — "poster generated, awaiting user approval"
+    ↓
+OpenCode returns PDF path to Hermes
+    ↓
+Hermes sends PDF to Telegram via MEDIA: protocol
+    ↓
+Arif: "bagus" → /seal
+    ↓
+L6: sealed (T1, reversible but logged for audit)
+</pre>
+</div>
+
+<p><strong>Notice:</strong> OpenCode never touched L2–L6. The seal happened at the Hermes level, with constitutional gating. OpenCode is a worker; Hermes is the witness.</p>
+
+<h3>Example 2: WEALTH NPV analysis (future capability)</h3>
+
+<div class="architecture-diagram">
+<pre>
+Arif: /ask "what's NPV for Q3 portfolio given current rates?"
+    ↓
+L0: intent captured
+L1: routing decision — query routes to WEALTH organ (port 18082)
+    ↓
+WEALTH MCP receives request:
+  - reads L3 portfolio data (current positions)
+  - reads L3 macro rates (from L8 field)
+  - calls wealth_synthesize (Ω-00)
+    ↓
+WEALTH returns: {p10: -2.3M, p50: 8.1M, p90: 24.7M, verdict: SABAR}
+    ↓
+arifOS receives verdict:
+  - checks F2 (truth: claims backed by data)
+  - checks F7 (humility: uncertainty bands present)
+  - checks F1 (reversibility: this is a calculation, not a commitment)
+    ↓
+Hermes returns: "SABAR. P50 = RM8.1M, downside RM2.3M. Want me to seal this analysis?"
+    ↓
+Arif: "ya"
+    ↓
+L6: sealed (SABAR verdict, audit trail complete)
+</pre>
+</div>
+
+<h2><span class="num">10.</span> Maintenance &amp; Operations</h2>
+
+<table>
+<tr><th>Cadence</th><th>Activity</th></tr>
+<tr><td><strong>Daily</strong></td><td>Curator agent runs at 00:00 MYT (12h after last run); watchers poll configured feeds; L1 → L3 promotion</td></tr>
+<tr><td><strong>Weekly</strong></td><td>L2 vector re-embed (incremental); L4 graph consistency check; L5 hysteresis state evaluation</td></tr>
+<tr><td><strong>Monthly</strong></td><td>L6 chain verification (full walk); backup of all layers to cold storage; capacity planning review</td></tr>
+<tr><td><strong>Quarterly</strong></td><td>Architectural review; constitutional layer audit (F1–F13 still relevant?); tool access matrix review</td></tr>
+</table>
+
+<h2><span class="num">11.</span> Roadmap 2026–2027</h2>
+
+<p><strong>2026 Q3:</strong></p>
+<ul>
+  <li>L6 cryptographic signature via Arif's hardware key (YubiKey)</li>
+  <li>L4 graph RAG (combine vector + graph for better context)</li>
+  <li>L5 hysteresis auto-actions (e.g. auto-degrade quality when in REVERSION)</li>
+</ul>
+
+<p><strong>2026 Q4:</strong></p>
+<ul>
+  <li>Multi-federation isolation (separate VAULT999 chains per project)</li>
+  <li>On-chain anchoring of L6 (publish SHA3 root daily to public ledger)</li>
+  <li>L1 distributed cache (Redis Cluster)</li>
+</ul>
+
+<p><strong>2027:</strong></p>
+<ul>
+  <li>Self-evolving constitutional floors (F1–F13 can update via sealed verdict)</li>
+  <li>L5 ML-based state prediction (not just rule-based)</li>
+  <li>Cross-tenant memory isolation for SaaS deployment</li>
+</ul>
+
+<h2><span class="num">12.</span> Glossary</h2>
+
+<table>
+<tr><th>Term</th><th>Definition</th></tr>
+<tr><td><span class="glossary-term">Envelope</span></td><td>Structured intent wrapper: {actor, intent, scope, reversibility, risk_band, payload, timestamp}</td></tr>
+<tr><td><span class="glossary-term">Seal</span></td><td>Cryptographically-signed, constitutionally-gated entry in VAULT999</td></tr>
+<tr><td><span class="glossary-term">Witness</span></td><td>Agent or human who attests to a decision</td></tr>
+<tr><td><span class="glossary-term">Floor</span></td><td>Constitutional check (F1–F13) that gates tool calls</td></tr>
+<tr><td><span class="glossary-term">888_HOLD</span></td><td>Pause-and-confirm gate for irreversible or high-impact actions</td></tr>
+<tr><td><span class="glossary-term">SABAR</span></td><td>Verdict meaning "wait, more evidence needed"</td></tr>
+<tr><td><span class="glossary-term">VOID</span></td><td>Verdict meaning "rejected, evidence insufficient"</td></tr>
+<tr><td><span class="glossary-term">SEAL</span></td><td>Verdict meaning "approved, irreversible, recorded"</td></tr>
+<tr><td><span class="glossary-term">Hysteresis</span></td><td>Path-dependent state (system remembers where it came from)</td></tr>
+<tr><td><span class="glossary-term">Petala</span></td><td>Layer (from Malay/Jawi — "petala langit" = layer of the sky)</td></tr>
+<tr><td><span class="glossary-term">DSG</span></td><td>Digital Sovereign Governance — every action passes through independent authority-bearing runtime</td></tr>
+<tr><td><span class="glossary-term">MCP</span></td><td>Model Context Protocol — standard interface for AI agents to call external tools</td></tr>
+</table>
+
+<div class="signature-block">
+  <div class="seal">DITEMPA BUKAN DIBERI · 999 SEAL ALIVE</div>
+  <div>arifOS Memory Architecture Reference · v2.0 · 2026-06-07</div>
+  <div>Authored by: Muhammad Arif bin Fazil · for Fahmi (technical onboarding)</div>
+  <div>Constitutional Floor: F1 AMANAH · F2 TRUTH · F9 ANTI-HANTU · all passed</div>
+</div>
+
+</body>
+</html>
