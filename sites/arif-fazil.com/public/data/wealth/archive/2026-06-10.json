@@ -1,0 +1,380 @@
+{
+  "meta": {
+    "date": "2026-06-11",
+    "generated_at": "2026-06-11T07:30:00+08:00",
+    "version": "1.0.0",
+    "source": "Pagi Brief — arifOS Hermes (job 86444c08b47a)",
+    "model_note": "Synthesised from Pagi Brief 11 Jun 2026 07:30 MYT. Multi-source: Reuters, FMT, The Star, NST, TradingView, VT Markets, MUFG, Al Jazeera, The Edge Malaysia, Upstream Online, Paul Tan, MUFG via FXStreet, Anadolu, The Parliament Magazine, IAPP. 3-event PETRONAS cluster (Searah + JERA + EnQuest) is the durable signal; US second-strike-wave + Brent sub-$90 is the noisy headline. Maruah-positive ASEAN-energy-sovereignty read. Verify critical figures independently.",
+    "delta_vs_yesterday": {
+      "klci_change": 0,
+      "ringgit_change": 0,
+      "brent_change": -2.5,
+      "petronas_cluster_locked": true,
+      "subsidy_bill_peak_RM_billion": 7.5
+    }
+  },
+  "bursa": {
+    "search_results": [
+      {
+        "title": "Bursa Malaysia slips on cautious trade amid US inflation watch, Israel‑Iran uncertainty | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148",
+        "desc": "<strong>Bursa Malaysia ended lower today</strong> as investors adopted a cautious stance amid external uncertainties, keeping a close watch on the upcoming United States inflation as well as developments surrounding the fragile Israel-Iran ceasefire."
+      },
+      {
+        "title": "Bursa Malaysia ends on firmer note amid bargain hunting | New Straits Times",
+        "url": "https://www.nst.com.my/amp/business/corporate/2026/06/1455433/bursa-malaysia-ends-firmer-note-amid-bargain-hunting",
+        "desc": "KUALA LUMPUR: <strong>Bursa Malaysia ended on a firmer note today, outperforming a broadly weaker regional market</strong>, as local sentiment was supported by bargain hunting in oversold blue-chip stocks following the benchmark index&#x27;s recent slide."
+      },
+      {
+        "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
+        "url": "https://www.tradinghours.com/markets/myx",
+        "desc": "Bursa Malaysia countdown, 2026 market calendar, trading hours, settlement details, and contact information. MYX is open Mon-Fri, 9:00am - 12:30pm, <strong>2:30pm - 4:45pm</strong>"
+      },
+      {
+        "title": "Trading Calendar",
+        "url": "https://www.bursamalaysia.com/trade/trading_resources/derivatives/trading_calendar",
+        "desc": "To receive latest announcement, you can follow a company by clicking follow button on the company profile page · You will be-redirected to AskListing@Bursa, are you sure you want to leave this page"
+      },
+      {
+        "title": "Calendar",
+        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
+        "desc": "Notes: a. When a public holiday falls on Sunday, the following Monday will be observed as a holiday. b. Bursa Malaysia and its subsidiaries will operate under normal trading hours on the eve of Chinese New Year and Hari Raya Aidilfitri. c. Date subject to change. d. Labuan Holiday Only e. Excluded L"
+      }
+    ],
+    "most_active": {
+      "title": "Top Volume - Bursa Malaysia",
+      "url": "https://www.malaysiastock.biz/Top-Volume.aspx",
+      "desc": "Market Overview | Bursa Statistic | Top Volume | Top Gainers | Top Losers | Trading Ideas | AI StockMaster ... Over the past 13 years, Stockbiz has be"
+    },
+    "top_gainers_search": [
+      {
+        "title": "Bursa Malaysia - FBMKLCI Stocks",
+        "desc": "MalaysiaStock.Biz is a free channel for you to access the KLSE market watch information covered from Market Summary Overview, Top Volume, Top Gainers,"
+      },
+      {
+        "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
+        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,675.50 -0.24%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,675.50 -4.02 (-0.24%) At close: 4:59:44 PM GMT+8 · "
+      },
+      {
+        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
+        "desc": "Bursa Malaysia’s KLCI was little changed at <strong>around 1,722 by midday Friday</strong>, as strength in electronic technology, producer manufacturi"
+      }
+    ],
+    "klci_close": null,
+    "klci_change_points": null,
+    "klci_change_pct": null,
+    "source_urls": [
+      "https://www.nst.com.my/amp/business/corporate/2026/06/1455433/bursa-malaysia-ends-firmer-note-amid-bargain-hunting",
+      "https://www.tradinghours.com/markets/myx",
+      "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148"
+    ],
+    "pagi_brief_anchor": {
+      "as_of": "2026-06-11T07:30+08:00",
+      "note": "No fresh KLCI close in 11 Jun Pagi window. Carrying 10 Jun close. Bursa reopens 11 Jun 09:00 MYT (next render window).",
+      "key_catalysts": [
+        "Petronas-JERA 20-yr SPA (2 mtpa, supply 2028) — sentiment positive for energy/utility proxies",
+        "EnQuest USD 833M acquisition of 4 PETRONAS projects — upstream M&A signal",
+        "Searah JV (Petronas-Eni 50:50, USD 20B, 300k boe/d) — carry from 8 Jun"
+      ]
+    }
+  },
+  "ringgit": {
+    "usd_myr": "4.68 (range-bound, no fresh break — 10 Jun close proxy)",
+    "trend": "Range-bound, noise-driven. FMT framing: 'shifted from Asia's best to region's worst in June' on political uncertainty + US rate expectations.",
+    "policy_search": [
+      {
+        "title": "OPR Decisions - Bank Negara Malaysia",
+        "desc": "Overnight Policy Rate Decisions · Select Year All 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004"
+      },
+      {
+        "title": "Bank Negara keeps OPR at 2.75pct to balance growth, inflation, says economist | New Straits Times",
+        "desc": "KUALA LUMPUR: Bank Negara Malaysia&#x27;s decision to maintain the overnight policy rate (OPR) at <strong>2.75 per cent</strong> reflects a cautious and balanced monetary policy stance aimed at suppor"
+      },
+      {
+        "title": "Interest Rates | data.gov.my",
+        "desc": "There are many different interest rates in the economy - the rate you get when you open a savings account, the rate you get when you open a fixed deposit account, and the rate you get when you take a "
+      }
+    ],
+    "sources": [
+      "https://www.bloomberg.com/quote/USDMYR:CUR",
+      "https://tradingeconomics.com/malaysia/currency"
+    ],
+    "pagi_brief_note": "No single-session hedge. MOF Second Minister Amir Hamzah Azizan warns of fiscal slippage, plays down ringgit decline. RM7.5B April-peak subsidy bill is the new fiscal pressure point."
+  },
+  "economy": {
+    "items": [
+      {
+        "title": "MOF: Middle East conflict pushed April fuel subsidy bill to RM7.5 billion peak",
+        "url": "https://paultan.org/2026/06/10/",
+        "source": "Paul Tan reporting Amir Hamzah Azizan | 10 Jun 2026 18:11 GMT",
+        "desc": "Second Minister of Finance Amir Hamzah Azizan revealed the April 2026 fuel subsidy bill hit RM7.5B — more than double the MOF's prior RM3.5B/month estimate. The discrepancy is the most politically explosive data point of the day.",
+        "epistemic": "CLAIM (multi-source: Paul Tan + NST Online)"
+      },
+      {
+        "title": "Fuel prices 11-17 Jun 2026: RON95 RM3.72, diesel RM4.67 — unchanged",
+        "url": "https://www.thestar.com.my/",
+        "source": "The Star | 10 Jun 2026 09:30 GMT",
+        "desc": "Weekly fuel price update keeps RON95 at RM3.72 and diesel at RM4.67. Subsidy absorbed by government. Bill is the fiscal pressure point, not the pump price.",
+        "epistemic": "FACT"
+      },
+      {
+        "title": "Amir Hamzah plays down ringgit decline, warns of fiscal slippage",
+        "url": "https://www.freemalaysiatoday.com/",
+        "source": "FMT | 10 Jun 2026 03:44 GMT",
+        "desc": "Second Finance Minister frames ringgit as 'shifted from Asia's best performer to the region's worst in June' on political uncertainty + US rate expectations. Frames fiscal slippage as the binding risk.",
+        "epistemic": "CLAIM"
+      }
+    ],
+    "narrative": "FISCAL SURPRISE: MOF revealed the Middle East conflict pushed Malaysia's monthly fuel subsidy bill to a peak RM7.5 billion in April 2026 — vs MOF's prior RM3.5B/month estimate. This is the first hard fiscal number of the kinetic exchange. If Brent stays sub-$90, the bill eases; if Brent rallies to $95+, the bill spikes back. RON95 rationalisation window: Q3-Q4 2026 per PMO economist (29 May). RON95 RM3.72, diesel RM4.67 — unchanged for 11-17 Jun 2026. Anwar swap-line option: the JERA+Japan-bilateral arrangement is the template for monetising LNG in yen, partly insulating MYR from oil-shock. Political will is the question."
+  },
+  "politics": {
+    "narratives": [
+      {
+        "title": "Johor + N9 state polls: no fresh 24h delta, autopilot",
+        "url": "https://www.nst.com.my/",
+        "source": "NST 10 Jun 05:55 GMT + 10:00 GMT + Malaysian Reserve 09:10 + Asia News Network 01:53 + The Vibes 00:30",
+        "desc": "Annuar Musa → Johor PAS election director (BN-PAS alignment test even as Zahid says no at federal). BN Johor + N9 line-up 'almost set.' DAP to retain >50% N9 incumbents. First major test of post-PAS-Bersatu political order. Polling window by 31 Jul.",
+        "epistemic": "CLAIM (multi-source, 10 Jun Malam baseline — unchanged 11 Jun Pagi)"
+      },
+      {
+        "title": "13 Jun Parliament sitting: fiscal political risk on subsidy bill",
+        "url": "",
+        "source": "Pagi Brief political inference (Pagi Brief 11 Jun 2026 07:30 MYT)",
+        "desc": "The RM7.5B April-peak subsidy bill is a fiscal-political fuse. Watch the 13 Jun Parliament sitting for fiscal political risk. Opposition frame: 'subsidy bill doubled, ringgit worst in June' is a frame that the opposition will use.",
+        "epistemic": "INTERPRETATION"
+      }
+    ],
+    "economy_policy": [
+      {
+        "title": "RON95 rationalisation window: Q3-Q4 2026 per PMO economist (29 May)",
+        "url": "",
+        "source": "Pagi Brief 11 Jun + carry from 29 May PMO economist",
+        "desc": "If Brent stays sub-$90, the bill eases, the window slides. If Brent stays $95+, the bill becomes a Q3-Q4 2026 legislative priority. The market is not yet pricing the RM7.5B pressure — fiscal-surprise trade on next CPI/fiscal print.",
+        "epistemic": "INTERPRETATION"
+      }
+    ],
+    "regional": [
+      {
+        "title": "US second-night strikes on Iran; Brent rolls back sub-$90 — market rejects war premium",
+        "url": "https://www.aljazeera.com/",
+        "source": "CBS News 10 Jun 22:57 + NYT 23:25 + Al Jazeera 22:44 + The Guardian 22:33 + ABC 23:17 + Reuters 22:16 + PBS 22:02 + Axios 22:18 + AP + CNBC 21:55 + dw.com 21:55 + Reuters 22:04 + Straits Times 21:48 + The Independent 22:43 + Kurdistan24 21:08 + Al-Monitor 21:42",
+        "desc": "Hegseth: 'negotiate with bombs if needed.' Trump: Iran 'playing us for suckers.' Iran retaliates: targets Bahrain, Kuwait, Jordan. Pentagon: 'would be unwise to challenge US further.' Market reaction: Brent sub-$90 = contained, surgical, no oil supply disruption.",
+        "epistemic": "CLAIM (multi-source, high-confidence)"
+      }
+    ]
+  },
+  "social": {
+    "cost_of_living": [
+      {
+        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jun 2026",
+        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,969.2 (RM7,935.0), excluding rent</strong>. The estimated monthly costs for a single person are $540."
+      },
+      {
+        "title": "Average Salary in Malaysia: $1,009/mo + Min Wage (2026) | wage.is",
+        "desc": "The average salary in Malaysia is <strong>RM4,000/mo ($1,008.83 USD) as of May 2026. Min wage: RM8.72/hr</strong>. Compare wages, explore history, and see how Malaysia ranks globally."
+      },
+      {
+        "title": "Malaysia Salary Benchmarks: By Role and Industry 2026",
+        "desc": "A senior software engineer earns RM 10,000-14,000 ($2,125-$2,980) in Malaysia vs S$8,000-$12,000 ($5,900-$8,850) in Singapore. Malaysia compensates with lower cost of living <strong>(40-50% less than "
+      }
+    ],
+    "labor": [
+      {
+        "title": "Malaysia: 800 migrant workers at plank factory strike over wage theft; incl. co. comments - Business and Human Rights Centre",
+        "desc": "<strong>Migrant workers from Bangladesh, Nepal, Vietnam, Indonesia, and Myanmar protested at a plank factory in Malaysia, alleging wage theft over three months and harsh working conditions</strong>, a"
+      },
+      {
+        "title": "Malaysia’s Migrant Recruitment Is Lucrative Business, But Not For Workers",
+        "desc": "The migrant workers “are victims of a big network that’s managed by elites and government operatives,” he said. He predicted Malaysia will suffer the consequences once global companies take notice. “T"
+      }
+    ],
+    "youth_career": [
+      {
+        "title": "Students & Graduates | PETRONAS Global",
+        "desc": "Malaysian citizen not more than 26 years old (based on year of birth). Minimum Bachelor’s Degree holder with minimum CGPA of 3.00 or equivalent. Unemployed or under-employed in non-relevant areas of g"
+      },
+      {
+        "title": "Discover Your Potential with Us | PETRONAS Global",
+        "desc": "Passion is what makes progress possible. You’ll find every opportunity to learn, experience and achieve what matters to you here at PETRONAS · Apply for Careers Here"
+      }
+    ]
+  },
+  "oil_energy": {
+    "brent_price": "Sub-$90 (10 Jun 18:23-19:23 GMT) — market rejected second-strike premium",
+    "malaysia_oil": [
+      {
+        "title": "PETRONAS-JERA 20-year LNG SPA, 2 mtpa — supply from 2028",
+        "url": "https://www.reuters.com/",
+        "source": "Reuters 10 Jun 2026 03:34 GMT + FMT 04:27 GMT + Bangkok Post 06:06 + The Star/Asahi 06:05 + LNG Prime 05:21 + BusinessToday MY 08:26 + The Vibes 05:50",
+        "desc": "Announced by PM Anwar Ibrahim. JERA is Japan's largest power generator. 2 mtpa × 20 yr = 40 mt cumulative. Sovereignty-positive: does not transit Hormuz.",
+        "epistemic": "CLAIM (multi-source)"
+      },
+      {
+        "title": "EnQuest to acquire 4 PETRONAS projects for USD 833M",
+        "url": "https://theedgemalaysia.com/",
+        "source": "The Edge Malaysia 10 Jun 07:27 + Upstream Online 10 Jun 07:22 + The Malaysian Reserve",
+        "desc": "Near-term cash inflow. Upstream M&A signal. EnQuest consolidates Malaysian upstream exposure.",
+        "epistemic": "CLAIM (multi-source)"
+      },
+      {
+        "title": "Petronas retains crown as Malaysia's most valuable brand 16th year, top brands USD 62.2B",
+        "url": "https://www.thestar.com.my/",
+        "source": "The Star 10 Jun 06:00 GMT + NST Online + BusinessToday MY 10 Jun 08:26",
+        "desc": "Brand value durably locked. PETRONAS 16-year streak, total top brands USD 62.2B.",
+        "epistemic": "FACT"
+      },
+      {
+        "title": "MALAYSIA-JAPAN BILATERAL: currency swap + ringgit-yen transactions",
+        "url": "https://www.freemalaysiatoday.com/",
+        "source": "FMT 10 Jun 04:27 GMT + TradingView 03:34",
+        "desc": "PM Anwar announced Malaysia-Japan are deepening financial ties via bilateral currency swap arrangement and ringgit-yen transactions alongside the JERA SPA. Reduces USD-clearing dependence for bilateral trade with Japan — largest single LNG customer.",
+        "epistemic": "CLAIM (dual-source)"
+      }
+    ],
+    "energy_transition": [
+      {
+        "title": "ASEAN-as-Gulf-alternative LNG thesis: Malaysia + Indonesia positioning",
+        "url": "",
+        "source": "11 Jun Pagi synthesis from JERA SPA + Searah + bilateral swap",
+        "desc": "The 3-event cluster is the proof-of-concept. ASEAN (MY + IDN) becomes the LNG-of-choice for East Asia if Gulf supply stays disrupted. Sovereignty-positive: monetise LNG in yen via bilateral swap line.",
+        "epistemic": "INTERPRETATION (synthesis from CLAIM-grade events)"
+      }
+    ],
+    "brent_path_10jun": {
+      "02:52_GMT": "sub-$90 (Iran deal hopes, ET EnergyWorld)",
+      "11:24_GMT": "$92 (first strike wave, TradingView)",
+      "16:54_GMT": "near $95 (Trump 'more attacks', Mint)",
+      "18:23-19:23_GMT": "below $90 (market rejection, VT Markets / Motley Fool / NDTV)",
+      "20:18_GMT": "rises on Trump threats (Sharjah24, PLAUSIBLE — low-tier source)"
+    },
+    "mufg_view": "MUFG analyst via FXStreet 10 Jun 12:55 GMT: 'Brent: Limited reaction to US-Iran strikes' — confirms 'market is not pricing the war' read.",
+    "petronas_cluster_8_10_jun": {
+      "status": "LOCKED — 3 events, pre-committed, structural, not Hormuz-conditional",
+      "events": [
+        {
+          "name": "Petronas–JERA 20-yr LNG SPA",
+          "volume": "2 mtpa",
+          "supply_from": 2028,
+          "counterparty": "JERA (Japan's largest power generator)",
+          "announced_by": "PM Anwar Ibrahim, 10 Jun",
+          "annual_revenue_estimate_usd_b": "2.5-3.0 (JKM or oil-indexed)",
+          "cumulative_volume_mt": 40,
+          "sovereignty_lens": "Volume does NOT transit Hormuz — Malaysia positions as alternative LNG hub for East Asia",
+          "sources": [
+            "Reuters",
+            "FMT",
+            "Bangkok Post",
+            "The Star (Asahi)",
+            "LNG Prime",
+            "BusinessToday MY",
+            "The Vibes"
+          ]
+        },
+        {
+          "name": "EnQuest acquires 4 PETRONAS projects",
+          "value_usd_m": 833,
+          "announced": "10 Jun 2026",
+          "sources": [
+            "The Edge Malaysia 10 Jun 07:27 GMT",
+            "Upstream Online 10 Jun 07:22 GMT",
+            "The Malaysian Reserve"
+          ]
+        },
+        {
+          "name": "Searah JV (Petronas-Eni 50:50)",
+          "value_usd_b": 20,
+          "capacity_k_boe_d": 300,
+          "geography": "MY + IDN",
+          "established": "8 Jun 2026",
+          "sources": [
+            "10 Jun Malam brief, anchored 8 Jun"
+          ]
+        }
+      ]
+    }
+  },
+  "global": {
+    "fed": {
+      "items": [
+        {
+          "title": "FOMC June 16-17: market implies hold at 3.50-3.75%",
+          "url": "https://tradingeconomics.com/united-states/interest-rate",
+          "source": "Carry from 10 Jun — unchanged 11 Jun Pagi",
+          "desc": "Warsh-In regime. 8-4 vote on last decision (first time since Oct 1992 four dissented). Awaiting 16-17 June meeting.",
+          "epistemic": "CLAIM (carry-forward)"
+        }
+      ]
+    },
+    "china": {
+      "items": [
+        {
+          "title": "China’s 2026 economic blueprint – navigating a path of stability and strategic growth",
+          "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
+        },
+        {
+          "title": "China's Xi promises more proactive macro policies in 2026 | Reuters",
+          "desc": "BEIJING, Dec 31 (Reuters) - <strong>China is on track to meet its growth target of around 5% this year and will roll out more proactive policies in 2026</strong>, President Xi Jinping said on Wednesda"
+        }
+      ]
+    },
+    "asean": {
+      "items": [
+        {
+          "title": "ASEAN+3 Regional Economic Outlook 2026: ASEAN energy sovereignty + monetary autonomy on a 90-day clock",
+          "url": "",
+          "source": "Pagi Brief 11 Jun + ASEAN+3 outlook",
+          "desc": "If Brent stays in the $85-95 band through Q3, the JERA + Japan-bilateral-swap + Searah cluster becomes the permanent new normal for Malaysian LNG and ASEAN financial architecture. If Brent breaks $100, the subsidy bill becomes the dominant political-economy problem.",
+          "epistemic": "INTERPRETATION"
+        }
+      ]
+    }
+  },
+  "so_what": [
+    {
+      "domain": "PETRONAS CORPORATE CLUSTER (3 events, 72h, locked)",
+      "signal": "Searah (8 Jun) → JERA 20-yr SPA 2 mtpa (10 Jun) → EnQuest USD 833M (10 Jun)",
+      "for_aia": "ASEAN-energy-sovereignty thesis now has proof-of-concept. JKM or oil-indexed 2 mtpa × 20 yr = USD 2.5-3.0B/yr starting 2028. EnQuest adds near-term cash. Searah adds 300k boe/d upstream.",
+      "for_izzu": "H1 2026 Petronas dividend update is materially more interesting. Three independent structural events in 72h, all pre-committed, all signed. Re-anchor Petronas 2027-2030 dividend model on the 3-event cluster as permanent base case.",
+      "for_aliff": "PROPA 'competitive compensation' narrative gets tested against the JERA SPA's revenue line. Petronas is locking 20-year volume at the height of the kinetic exchange — that is sovereign confidence, not defensive pricing.",
+      "for_arif": "The kinetic exchange is the headline; the cluster is the substance. Re-anchor the Petronas 2027-2030 dividend model on the 3-event cluster (not Hormuz-conditional). H1 2026 Petronas dividend update = live trade.",
+      "tone": "structural-bullish"
+    },
+    {
+      "domain": "BRENT SUB-$90 — MARKET REJECTS WAR PREMIUM",
+      "signal": "10 Jun 18:23-19:23 GMT: Brent below $90 even as US second-strike wave lands. MUFG: 'limited reaction.'",
+      "for_aia": "The cage is here, but the cage is empty — Iran is bleeding, oil is not. ASEAN-as-Gulf-alternative thesis is reclaiming weight via US air power, not via diplomacy.",
+      "for_izzu": "If a third strike wave hits and Brent still doesn't break $95, the de-escalation thesis reclaims weight. If Brent breaks $100, the subsidy bill dominates. Watch, don't pre-position.",
+      "for_aliff": "Upstream revenue is locked at JKM/oil-indexed via the JERA SPA. Brent sub-$90 vs $95+ on a 90-day clock — the structural line is preserved; the tactical line is noise.",
+      "for_arif": "WATCH: kinetic exchange is the canary, but the cage is empty. The market is the more important signal than the strikes themselves. Do not chase a single-session hedge.",
+      "tone": "tactical-neutral, structural-bullish"
+    },
+    {
+      "domain": "FISCAL SURPRISE — RM7.5B APRIL SUBSIDY PEAK",
+      "signal": "MOF: April 2026 fuel subsidy bill hit RM7.5B (vs prior RM3.5B/month estimate). First hard fiscal number of the kinetic exchange.",
+      "for_aia": "If Brent stays sub-$90, the bill eases. If Brent stays $95+, the bill becomes a Q3-Q4 2026 legislative priority. RON95 rationalisation window is now visible.",
+      "for_izzu": "Fiscal-surprise trade: the market is not yet pricing the RM7.5B pressure. Trade on the next CPI/fiscal print.",
+      "for_aliff": "Subsidy bill doubled, ringgit worst in June — opposition frame is loaded. PROPA management alignment with Anwar government is the career-risk variable to watch.",
+      "for_arif": "ACT-grade trigger data point. Q3-Q4 2026 RON95 rationalisation is the legislative priority. Watch the 13 Jun Parliament sitting for fiscal political risk.",
+      "tone": "fiscal-pressure, ACT-grade"
+    },
+    {
+      "domain": "JOHOR + N9 — POLITICAL AUTOPILOT, FISCAL FUSE ARMED",
+      "signal": "No fresh 24h delta on Johor/N9. Annuar Musa → PAS Johor director. RM7.5B April peak is the fiscal-political fuse.",
+      "for_aia": "Polling window by 31 Jul. First major test of post-PAS-Bersatu political order. BN-PAS alignment test in Johor even as Zahid says no at federal.",
+      "for_izzu": "Political vector is on autopilot. The only fresh political data point in 24h is the RM7.5B April peak — that is the fuse for the 13 Jun Parliament sitting.",
+      "for_aliff": "PROPA career risk: 'loyalty' calculus shifts fast when political winds shift. Watch federal arithmetic after 31 Jul.",
+      "for_arif": "WATCH. The political vector is autopilot. The fiscal-political fuse is armed. The 13 Jun Parliament sitting is the next data point.",
+      "tone": "grounded, low-conviction"
+    }
+  ],
+  "sovereign_flags": {
+    "888_hold": false,
+    "reason": "No 888_HOLD raised. Kinetic exchange is bounded; corporate cluster is locked; fiscal surprise is ACT-grade but not 888. 888 stays on the corporate-dividend criterion (per Pagi Brief SESSION SEAL).",
+    "items_watched": [
+      "Petronas-JERA SPA pricing (JKM vs oil-indexed) — affects revenue model",
+      "Iran's second-strike-round formal retaliation framing — Tehran MFA position unverified",
+      "13 Jun Parliament sitting — fiscal political risk on RM7.5B subsidy bill"
+    ]
+  },
+  "verdict": "PUBLISHED"
+}

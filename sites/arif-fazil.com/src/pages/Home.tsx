@@ -91,7 +91,7 @@ export function Home() {
       <section className="py-24 bg-forge-steel border-b-2 border-forge-iron">
         <div className="site-frame">
           <div className="section-label">The Federation Architecture</div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 -space-x-[2px] -space-y-[2px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 -space-x-[2px] -space-y-[2px]">
             {/* arifOS */}
             <motion.div variants={itemVariants} className="brutalist-card group">
               <div className="font-display text-4xl mb-4 group-hover:text-forge-orange transition-colors">Ψ</div>
@@ -132,8 +132,30 @@ export function Home() {
               <h3 className="text-xl mb-2">AAA</h3>
               <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">SOUL · OPERATIONAL COCKPIT</p>
               <p className="text-sm text-forge-dim leading-relaxed">
-                The identity layer. Control plane for the full federation stack. 
+                The identity layer. Control plane for the full federation stack.
                 Health, registry, and human-in-the-loop sovereign veto surface.
+              </p>
+            </motion.div>
+
+            {/* WELL */}
+            <motion.div variants={itemVariants} className="brutalist-card group">
+              <div className="font-display text-4xl mb-4 group-hover:text-forge-orange transition-colors">❤️</div>
+              <h3 className="text-xl mb-2">WELL</h3>
+              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">VITALITY · SUBSTRATE MIRROR</p>
+              <p className="text-sm text-forge-dim leading-relaxed">
+                The vitality layer. Reflects operator state, machine governance health,
+                and coupled risk. Holds a mirror, never a veto — operator sovereignty invariant.
+              </p>
+            </motion.div>
+
+            {/* A-FORGE */}
+            <motion.div variants={itemVariants} className="brutalist-card group">
+              <div className="font-display text-4xl mb-4 group-hover:text-forge-orange transition-colors">⚡</div>
+              <h3 className="text-xl mb-2">A-FORGE</h3>
+              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">METABOLIC · ENGINEERING ACTUATOR</p>
+              <p className="text-sm text-forge-dim leading-relaxed">
+                The engineering layer. Plans, simulates, executes, rolls back — only after arifOS SEAL.
+                Executes, never legislates. Never self-authorizes.
               </p>
             </motion.div>
           </div>

@@ -1,12 +1,23 @@
 {
   "system": "AAA Cockpit",
-  "version": "2026.05.03",
+  "version": "2026.06.19",
   "status": "operational",
   "kernel": "arifOS",
   "kernel_status": "online",
   "vault999": "connected",
-  "mcp_version": "v1.0.0-FORGED",
+  "transport": "JSON-RPC 2.0 · streamable-http",
+  "delta_s": "≤ 0",
+  "mcp_version": "JSON-RPC 2.0 · 6 organs unified",
   "floors_verified": 13,
+  "federation": {
+    "arifOS": "https://arifosmcp.arif-fazil.com · 42 tools · healthy",
+    "GEOX": "https://geox.arif-fazil.com · 40 tools · healthy",
+    "WEALTH": "https://wealth.arif-fazil.com · 23 tools · healthy",
+    "WELL": "https://well.arif-fazil.com · 21 tools · healthy",
+    "A-FORGE": "https://forge.arif-fazil.com · healthy",
+    "AAA": "https://aaa.arif-fazil.com · A2A · healthy",
+    "VAULT999": "immutable · append-only"
+  },
   "approval_queue": {
     "pending": 0,
     "description": "Zero pending approvals"
@@ -20,13 +31,6 @@
     "irreversible_requires_human": true,
     "self_approval_forbidden": true
   },
-  "federation": {
-    "arifOS": "https://arifosmcp.arif-fazil.com",
-    "GEOX": "https://geox.arif-fazil.com",
-    "WEALTH": "https://wealth.arif-fazil.com",
-    "WELL": "https://well.arif-fazil.com",
-    "VAULT999": "https://vault.arif-fazil.com"
-  },
-  "build_hash": "c1d451b",
-  "timestamp": "2026-05-03T00:00:00+08:00"
+  "build_hash": "904f960",
+  "timestamp": "2026-06-19T00:00:00+08:00"
 }

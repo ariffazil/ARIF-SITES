@@ -55,12 +55,17 @@ export function ConstellationFooter() {
         </div>
       </div>
       
-      <div className="site-frame mt-16 pt-8 border-t border-forge-iron flex justify-between items-center">
+      <div className="site-frame mt-16 pt-8 border-t border-forge-iron flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
           © 2026 Arif Fazil · Sealed under 999_SEAL
         </div>
-        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest animate-pulse">
-          Substrate: PEAK OPERATIONAL STATE
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+          <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
+            Federation: 6 organs · streamable-http + JSON-RPC · ΔS ≤ 0 · 18 June 2026
+          </div>
+          <a href="https://wiki.arif-fazil.com" className="font-technical text-[0.6rem] text-forge-orange uppercase tracking-widest hover:text-forge-white transition-colors">
+            Ω-Wiki → full state
+          </a>
         </div>
       </div>
     </footer>

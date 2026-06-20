@@ -141,9 +141,9 @@ export const systemProjects: SystemProject[] = [
   {
     title: 'WEALTH',
     role: 'Capital intelligence · NPV / EMV engine',
-    status: 'MIXED',
+    status: 'LIVE',
     summary:
-      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. Daily briefing: Bursa, Ringgit, oil, politics — all evidence-gated. Dedicated MCP surface deploying. 44 designed tools · 17 production · callable from this client depends on mount — never self-authorizes execution.',
+      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. 23 tools — streamable-http + JSON-RPC. Daily briefing: Bursa, Ringgit, oil, politics — all evidence-gated. Computes, never allocates — arifOS judges, Arif decides.',
     artifactLabel: 'Tool registry',
     artifactHref: 'https://aaa.arif-fazil.com/mcp/tools.json',
     surfaceLabel: 'Daily briefing',
@@ -159,6 +159,28 @@ export const systemProjects: SystemProject[] = [
     artifactHref: 'https://aaa.arif-fazil.com/mcp/endpoint.json',
     surfaceLabel: 'AAA cockpit',
     surfaceHref: 'https://aaa.arif-fazil.com',
+  },
+  {
+    title: 'WELL',
+    role: 'Vitality mirror · Substrate health monitor',
+    status: 'LIVE',
+    summary:
+      'Universal substrate vitality mirror. 21 tools — streamable-http + JSON-RPC. Reflects operator cognitive pressure, thermodynamic state, and machine governance health. H-WELL, M-WELL, G-WELL, C-WELL, U-WELL substrates. Holds a mirror, not a veto — operator sovereignty invariant.',
+    artifactLabel: 'Health endpoint',
+    artifactHref: 'https://well.arif-fazil.com/health',
+    surfaceLabel: 'WELL surface',
+    surfaceHref: 'https://well.arif-fazil.com',
+  },
+  {
+    title: 'A-FORGE',
+    role: 'Metabolic shell · Engineering actuator',
+    status: 'LIVE',
+    summary:
+      'Deployment orchestration and agent engine loop. Plans, simulates, executes, and rolls back — only after arifOS SEAL. Cross-organ mesh protocol. The engineering arm of the federation. Executes, never legislates, never self-authorizes.',
+    artifactLabel: 'Health endpoint',
+    artifactHref: 'https://forge.arif-fazil.com/health',
+    surfaceLabel: 'A-FORGE surface',
+    surfaceHref: 'https://forge.arif-fazil.com',
   },
 ];
 
@@ -179,6 +201,8 @@ export const arifosLinks: LinkItem[] = [
   { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
   { label: 'WEALTH Briefing', href: '/wealth/' },
+  { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
+  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
 ];
 
 export const contactLinks: LinkItem[] = [
