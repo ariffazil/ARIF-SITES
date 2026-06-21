@@ -1,3 +1,6 @@
+# ⛔ SUPERSEDED by SITES.md — 2026-06-20. Do not update this file. See SITES.md for canonical routing truth.
+# ⛔ This document is preserved for historical reference only.
+
 # ROUTING_INVARIANTS — arifOS Federation
 > **DITEMPA BUKAN DIBERI** — Federated routing truth. Last verified: 2026-05-25.
 

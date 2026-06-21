@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebMCP Docs — Browser↔MCP Guide · AAA</title>
+<link rel="canonical" href="https://aaa.arif-fazil.com/webmcp/docs">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>:root{--bg:#0d0c0b;--surface:#121110;--gold:#D4A853;--amber:#C4791A;--text:#d4d2ce;--cyan:#00D4AA}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.card{background:var(--surface);border:1px solid #2a2826;border-radius:8px;padding:1.25rem}code{background:#1a1816;padding:.15rem .4rem;border-radius:3px;font-size:.85em}pre{background:#0a0a0a;padding:1rem;border-radius:6px;overflow-x:auto;font-size:.8rem;border:1px solid #2a2826}</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+<main style="max-width:800px;margin:3rem auto;padding:0 1.5rem;">
+<h1 style="color:var(--gold);font-size:2rem;font-weight:700;margin-bottom:.5rem;">WebMCP Documentation</h1>
+<p style="color:#888;margin-bottom:2rem;">How to build browser applications that call arifOS MCP tools.</p>
+<div class="card" style="margin-bottom:1.5rem;">
+<h2 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:.75rem;">Architecture</h2>
+<pre>Browser (your app)
+  |  fetch() or EventSource
+  v
+arifos.arif-fazil.com/mcp
+  |  F1-F13 constitutional floors
+  v
+arifOS Kernel (:8088)
+  |  19 tools
+  v
+JSON-RPC Response</pre>
+</div>
+<div class="card" style="margin-bottom:1.5rem;">
+<h2 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:.75rem;">HTTP POST</h2>
+<pre>const res = await fetch('https://arifos.arif-fazil.com/mcp', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    jsonrpc: '2.0',
+    method: 'tools/call',
+    params: { name: 'arif_ping', arguments: {} },
+    id: 1
+  })
+});</pre>
+</div>
+<div class="card" style="margin-bottom:1.5rem;">
+<h2 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:.75rem;">SSE Streaming</h2>
+<pre>const es = new EventSource('https://arifos.arif-fazil.com/sse');
+es.onmessage = (e) => console.log(JSON.parse(e.data));</pre>
+</div>
+<div class="card">
+<h2 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:.75rem;">All 19 Tools</h2>
+<p>See <a href="/mcp-gui" style="color:var(--gold);">MCP GUI</a> for the full tool explorer with schemas.</p>
+<p style="margin-top:.5rem"><strong>CORS:</strong> arifOS MCP returns <code>Access-Control-Allow-Origin: *</code>.</p>
+</div>
+</main>
+</body>
+</html>

@@ -1,3 +1,6 @@
+# ⛔ SUPERSEDED by SITES.md — 2026-06-20. Do not update this file. See SITES.md for canonical routing truth.
+# ⛔ This document is preserved for historical reference only.
+
 # INVARIANTS.md — arif-sites Public Federation Surface
 > **DITEMPA BUKAN DIBERI** — Federated Source of Truth.
 > **Owner:** arif-sites
