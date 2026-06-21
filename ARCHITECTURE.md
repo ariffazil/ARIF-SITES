@@ -1,3 +1,6 @@
+# ⛔ SUPERSEDED by SITES.md — 2026-06-20. Do not update this file. See SITES.md for canonical routing truth.
+# ⛔ This document is preserved for historical reference only.
+
 # Trinity Network v2 — Architecture Map
 
 > **Ditempa Bukan Diberi** — Intelligence is forged, not given

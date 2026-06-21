@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP GUI — Tool Explorer · AAA</title>
+<meta name="description" content="Visual MCP tool explorer — browse all 19 arifOS constitutional tools, view schemas, test invocations.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/mcp-gui">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.25rem; }
+  .tool-card { cursor: pointer; transition: border-color 0.15s; }
+  .tool-card:hover { border-color: var(--amber); }
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 0.75rem; }
+  .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.05em; }
+  .badge-observe { background: rgba(0,212,170,0.1); color: var(--cyan); }
+  .badge-judge { background: rgba(212,168,83,0.1); color: var(--gold); }
+  .badge-mutate { background: rgba(255,51,51,0.1); color: #FF3333; }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:1100px;margin:3rem auto;padding:0 1.5rem;">
+  <h1 style="color:var(--gold);font-size:2rem;font-weight:700;margin-bottom:0.25rem;">MCP Tool Explorer</h1>
+  <p style="color:#888;margin-bottom:2rem;">19 constitutional tools. Governed by F1-F13. Connected to <code style="color:var(--cyan);">arifos.arif-fazil.com/mcp</code></p>
+
+  <!-- Category: Observe -->
+  <h2 style="color:var(--cyan);font-size:1rem;font-weight:600;margin:1.5rem 0 0.75rem;">OBSERVE — Read-only intelligence</h2>
+  <div class="tool-grid">
+    <div class="card tool-card" onclick="this.querySelector('pre').classList.toggle('hidden')">
+      <strong>arif_ping</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Liveness probe — kernel reachability</p>
+      <pre class="hidden" style="margin-top:0.5rem;font-size:0.7rem;">POST /mcp
+{"method":"tools/call","params":{"name":"arif_ping","arguments":{}}}</pre>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_kernel_health</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Kernel liveness + runtime status</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_kernel_status</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Telemetry, discovery, predictions</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_kernel_attest</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Live organ attestation</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_sense_observe</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Web search, ingest, compass, vitals</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_ops_measure</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Health, vitals, cost, topology</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_triage</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Preflight check, status, lane routing</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_conformance_report</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">ARIF Conformance Spine verdicts</p>
+    </div>
+  </div>
+
+  <!-- Category: Deliberate -->
+  <h2 style="color:var(--gold);font-size:1rem;font-weight:600;margin:1.5rem 0 0.75rem;">DELIBERATE — Reasoning + judgment</h2>
+  <div class="tool-grid">
+    <div class="card tool-card">
+      <strong>arif_mind_reason</strong>
+      <span class="badge badge-judge">JUDGE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Multi-step reasoning, planning, verification</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_judge_deliberate</strong>
+      <span class="badge badge-judge">JUDGE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Constitutional verdict — SEAL/SABAR/HOLD/VOID</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_heart_critique</strong>
+      <span class="badge badge-judge">JUDGE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Ethical risk assessment, red-team, empathy</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_route</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Intent routing to correct organ</p>
+    </div>
+  </div>
+
+  <!-- Category: Memory + Vault -->
+  <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin:1.5rem 0 0.75rem;">MEMORY — Recall, seal, evidence</h2>
+  <div class="tool-grid">
+    <div class="card tool-card">
+      <strong>arif_memory_recall</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Search past sessions, assets, sealed events</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_evidence_fetch</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">External evidence with source citations</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_vault_seal</strong>
+      <span class="badge badge-mutate">MUTATE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Seal verdict to immutable audit ledger</p>
+    </div>
+  </div>
+
+  <!-- Category: Federation -->
+  <h2 style="color:#888;font-size:1rem;font-weight:600;margin:1.5rem 0 0.75rem;">FEDERATION — Cross-organ</h2>
+  <div class="tool-grid">
+    <div class="card tool-card">
+      <strong>arif_session_init</strong>
+      <span class="badge badge-judge">GATE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Start/resume constitutional session</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_gateway_connect</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Bridge to federation agents</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_reply_compose</strong>
+      <span class="badge badge-observe">OBSERVE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Compose final response for user</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_forge_execute</strong>
+      <span class="badge badge-mutate">MUTATE</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Execute after SEAL verdict only</p>
+    </div>
+  </div>
+
+  <!-- Diagnostic tools -->
+  <h2 style="color:#666;font-size:1rem;font-weight:600;margin:1.5rem 0 0.75rem;">DIAGNOSTIC — Transport + schema</h2>
+  <div class="tool-grid">
+    <div class="card tool-card">
+      <strong>arif_transport_echo</strong>
+      <span class="badge badge-observe">CANARY</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Transport-level detail diagnostic</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_schema_echo</strong>
+      <span class="badge badge-observe">CANARY</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">Payload round-trip diagnostic</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_version_echo</strong>
+      <span class="badge badge-observe">CANARY</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">MCP protocol version probe</p>
+    </div>
+    <div class="card tool-card">
+      <strong>arif_initialize_probe</strong>
+      <span class="badge badge-observe">CANARY</span>
+      <p style="color:#888;font-size:0.8rem;margin-top:0.25rem;">MCP init handshake without ceremony</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>

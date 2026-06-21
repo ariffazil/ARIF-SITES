@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WebMCP Playground — Live Tool Sandbox · AAA</title>
+<meta name="description" content="Interactive MCP tool invocation sandbox. Call arifOS constitutional tools from your browser. See request/response in real time.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/webmcp/playground">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; }
+  body { background: var(--bg); color: var(--text); font-family: 'JetBrains Mono', monospace; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.25rem; }
+  textarea, pre { background: #0a0a0a; border: 1px solid #2a2826; border-radius: 6px; padding: 0.75rem; color: var(--text); font-family: inherit; font-size: 0.8rem; width: 100%; }
+  button { background: var(--amber); color: #0a0a0a; border: none; border-radius: 6px; padding: 0.6rem 1.5rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+  button:hover { background: var(--gold); }
+  .response { max-height: 400px; overflow-y: auto; }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:900px;margin:2rem auto;padding:0 1.5rem;">
+  <h1 style="color:var(--gold);font-size:1.5rem;margin-bottom:0.25rem;">🛝 WebMCP Playground</h1>
+  <p style="color:#888;margin-bottom:1.5rem;font-size:0.85rem;">Live MCP tool invocation. Endpoint: <code style="color:var(--cyan);">arifos.arif-fazil.com/mcp</code></p>
+
+  <div class="card" style="margin-bottom:1rem;">
+    <label style="font-size:0.8rem;color:#888;">Tool</label>
+    <select id="tool" style="width:100%;background:#0a0a0a;border:1px solid #2a2826;color:var(--text);padding:0.5rem;border-radius:6px;margin:0.25rem 0 0.75rem;">
+      <option value="arif_ping">arif_ping — Liveness probe</option>
+      <option value="arif_kernel_health">arif_kernel_health — Kernel health</option>
+      <option value="arif_kernel_status">arif_kernel_status — Telemetry</option>
+      <option value="arif_triage">arif_triage — Preflight check</option>
+      <option value="arif_sense_observe">arif_sense_observe — Web search</option>
+      <option value="arif_mind_reason">arif_mind_reason — Reasoning</option>
+      <option value="arif_memory_recall">arif_memory_recall — Memory search</option>
+    </select>
+
+    <label style="font-size:0.8rem;color:#888;">Arguments (JSON)</label>
+    <textarea id="args" rows="3" style="margin:0.25rem 0 0.75rem;">{}</textarea>
+
+    <button onclick="callTool()">Invoke Tool</button>
+    <span id="status" style="margin-left:1rem;font-size:0.8rem;color:#888;"></span>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);font-size:0.9rem;margin-bottom:0.5rem;">Response</h3>
+    <pre id="response" class="response" style="color:#888;">// Response will appear here</pre>
+  </div>
+</main>
+
+<script>
+async function callTool() {
+  const tool = document.getElementById('tool').value;
+  const argsStr = document.getElementById('args').value;
+  const status = document.getElementById('status');
+  const response = document.getElementById('response');
+
+  status.textContent = 'Calling...';
+  response.textContent = '';
+
+  try {
+    const args = JSON.parse(argsStr);
+    const res = await fetch('https://arifos.arif-fazil.com/mcp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        method: 'tools/call',
+        params: { name: tool, arguments: args },
+        id: Date.now()
+      })
+    });
+    const data = await res.json();
+    response.textContent = JSON.stringify(data, null, 2);
+    status.textContent = res.ok ? '✓ Done' : '✗ Error';
+    status.style.color = res.ok ? 'var(--cyan)' : '#FF3333';
+  } catch (e) {
+    response.textContent = 'Error: ' + e.message;
+    status.textContent = '✗ Failed';
+    status.style.color = '#FF3333';
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operator Cockpit · AAA</title>
+<meta name="description" content="AAA Operator Cockpit — active agents, recent verdicts, session list, federation status. Sovereignty at a glance.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/cockpit">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; --red: #FF3333; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.25rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 1rem; }
+  .metric { font-size: 2rem; font-weight: 700; }
+  .metric-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:1100px;margin:2rem auto;padding:0 1.5rem;">
+  <h1 style="color:var(--gold);font-size:2rem;font-weight:700;margin-bottom:0.25rem;">Operator Cockpit</h1>
+  <p style="color:#888;margin-bottom:2rem;">Federation status at a glance. arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA</p>
+
+  <div class="grid-3" style="margin-bottom:2rem;">
+    <div class="card">
+      <div class="metric-label">Organs Live</div>
+      <div class="metric" style="color:var(--cyan);">6/7</div>
+    </div>
+    <div class="card">
+      <div class="metric-label">MCP Tools</div>
+      <div class="metric" style="color:var(--gold);">19</div>
+    </div>
+    <div class="card">
+      <div class="metric-label">Floors Active</div>
+      <div class="metric" style="color:var(--amber);">13</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;">
+    <div class="card">
+      <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Quick Links</h2>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;">
+        <a href="/webmcp" style="color:var(--cyan);text-decoration:none;">WebMCP Bridge</a>
+        <a href="/mcp-gui" style="color:var(--gold);text-decoration:none;">MCP Tool Explorer</a>
+        <a href="/agents" style="color:var(--amber);text-decoration:none;">Agent Registry</a>
+        <a href="/apps" style="color:var(--gold);text-decoration:none;">MCP Apps</a>
+        <a href="/a2a/discovery" style="color:#888;text-decoration:none;">A2A Discovery</a>
+      </div>
+    </div>
+    <div class="card">
+      <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin-bottom:0.75rem;">External Dashboards</h2>
+      <div style="display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;">
+        <a href="https://arifos.arif-fazil.com/health" style="color:#888;text-decoration:none;">arifOS Health</a>
+        <a href="https://arifos.arif-fazil.com/observatory" style="color:#888;text-decoration:none;">Federation Observatory</a>
+        <a href="https://grafana.arif-fazil.com" style="color:#888;text-decoration:none;">Grafana Metrics</a>
+        <a href="https://status.arif-fazil.com" style="color:#888;text-decoration:none;">Uptime Kuma</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

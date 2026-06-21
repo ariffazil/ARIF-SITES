@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Apps — Application Directory · AAA</title>
+<meta name="description" content="MCP App directory — applications powered by arifOS MCP tools. Observatory, Judge, Vault, Forge dashboards.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/apps">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.25rem; text-decoration: none; display: block; color: inherit; transition: border-color 0.15s; }
+  a.card:hover { border-color: var(--amber); }
+  .app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:1000px;margin:3rem auto;padding:0 1.5rem;">
+  <h1 style="color:var(--gold);font-size:2rem;font-weight:700;margin-bottom:0.25rem;">MCP Apps</h1>
+  <p style="color:#888;margin-bottom:2rem;">Applications powered by arifOS MCP tools — each app calls the constitutional kernel via WebMCP.</p>
+
+  <div class="app-grid">
+    <a href="/apps/observatory" class="card">
+      <h3 style="color:var(--cyan);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🔭 Observatory</h3>
+      <p style="color:#888;font-size:0.9rem;">Live federation dashboard — health, tools, floors, sessions, organ status. Real-time telemetry from all 7 organs.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">MCP: arif_kernel_health · arif_kernel_status · arif_ops_measure</p>
+    </a>
+
+    <a href="/apps/judge" class="card">
+      <h3 style="color:var(--gold);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">⚖️ 888 JUDGE</h3>
+      <p style="color:#888;font-size:0.9rem;">Constitutional judgment interface — submit verdicts, review holds, check floor status. SEAL/SABAR/HOLD/VOID.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">MCP: arif_judge_deliberate · arif_triage · arif_conformance_report</p>
+    </a>
+
+    <a href="/apps/vault" class="card">
+      <h3 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🗄️ VAULT999</h3>
+      <p style="color:#888;font-size:0.9rem;">Immutable audit ledger browser — sealed events, hash-chain verification, constitutional continuity checks.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">MCP: arif_vault_seal · arif_memory_recall · arif_evidence_fetch</p>
+    </a>
+
+    <a href="/apps/forge" class="card">
+      <h3 style="color:#C4791A;font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">⚒️ A-FORGE</h3>
+      <p style="color:#888;font-size:0.9rem;">Engineering dashboard — deploy status, build logs, rollback history. Execute only after SEAL verdict.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">MCP: arif_forge_execute · arif_gateway_connect</p>
+    </a>
+
+    <a href="/webmcp/playground" class="card">
+      <h3 style="color:var(--cyan);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🛝 WebMCP Playground</h3>
+      <p style="color:#888;font-size:0.9rem;">Interactive tool invocation sandbox. Call any of the 19 MCP tools from your browser. See request/response live.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">All 19 tools · SSE transport · F1-F13 governed</p>
+    </a>
+
+    <a href="/cockpit" class="card">
+      <h3 style="color:var(--gold);font-size:1.1rem;font-weight:600;margin-bottom:0.5rem;">🕹️ Operator Cockpit</h3>
+      <p style="color:#888;font-size:0.9rem;">Full operator dashboard — active agents, recent verdicts, session list, approval queue. Sovereignty at a glance.</p>
+      <p style="color:var(--amber);font-size:0.8rem;margin-top:0.5rem;">MCP: arif_session_init · arif_triage · arif_mind_reason</p>
+    </a>
+  </div>
+
+  <div class="card" style="margin-top:2rem;">
+    <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Build Your Own MCP App</h2>
+    <p style="font-size:0.9rem;margin-bottom:0.5rem;">Every app here uses the same pattern:</p>
+    <pre style="background:#0a0a0a;padding:1rem;border-radius:6px;font-size:0.8rem;overflow-x:auto;">1. Connect to arifos.arif-fazil.com/mcp (SSE or HTTP POST)
+2. Call arif_session_init to start a constitutional session
+3. Use any of the 19 tools — F1-F13 governs every call
+4. Render results in your browser
+
+See /webmcp/docs for the full WebMCP guide.</pre>
+  </div>
+</main>
+</body>
+</html>
