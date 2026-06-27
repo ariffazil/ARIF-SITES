@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-06-27",
-    "generated_at": "2026-06-27T06:00:01Z",
+    "date": "2026-06-21",
+    "generated_at": "2026-06-21T09:00:01Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -14,29 +14,29 @@
   "bursa": {
     "search_results": [
       {
-        "title": "Bursa Malaysia closes lower amid caution over US inflation, global rate outlook | Malay Mail",
-        "url": "https://www.malaymail.com/amp/news/money/2026/06/25/bursa-malaysia-closes-lower-amid-caution-over-us-inflation-global-rate-outlook/225179",
-        "desc": "Thursday, 25 Jun 2026 6:26 PM MYT · KUALA LUMPUR, June 25 — <strong>Bursa Malaysia ended lower today as selling pressure in industrial products and services stocks outweighed gains in the telecommunications sector</strong>, an analyst said."
-      },
-      {
-        "title": "Bursa Malaysia ends on softer note amid profit-taking | New Straits Times",
-        "url": "https://www.nst.com.my/amp/business/corporate/2026/06/1469880/bursa-malaysia-ends-softer-note-amid-profit-taking",
-        "desc": "KUALA LUMPUR: Bursa Malaysia ended ... an analyst said. <strong>At 5pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) declined by 0.65 per cent, or 11.19 points, to 1,700.84 from last Friday&#x27;s close of 1,712.03</strong>...."
-      },
-      {
-        "title": "Bursa Malaysia edges higher as last-minute banking rebound lifts market into green zone | Malay Mail",
-        "url": "https://www.malaymail.com/news/money/2026/06/26/bursa-malaysia-edges-higher-as-last-minute-banking-rebound-lifts-market-into-green-zone/225335",
-        "desc": "KUALA LUMPUR, June 26 — <strong>Bursa Malaysia reversed earlier losses to settle slightly higher on Friday</strong>, supported by a late rebound in banking stocks that lifted the benchmark index..."
-      },
-      {
         "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
         "url": "https://www.tradinghours.com/markets/myx",
         "desc": "Bursa Malaysia is closed on · <strong>Wednesday, June 17, 2026</strong> in observation of Islamic New Year. Details · Market Countdown, Trading Hours, 2026 Market Holidays · Popout Countdown Access API Report Change · Market Countdown: -- : -- : -- : -- ..."
       },
       {
-        "title": "Bursa Malaysia closes higher as bargain hunters return after recent losses | Malay Mail",
-        "url": "https://www.malaymail.com/news/money/2026/06/24/bursa-malaysia-closes-higher-as-bargain-hunters-return-after-recent-losses/225027",
-        "desc": "Wednesday, 24 Jun 2026 5:58 PM ... pullback in the market, analysts said. <strong>At 5pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) increased 0.13 per cent, or 2.21 points, to 1,682.13</strong> from Tuesday’s close of 1,679.92..."
+        "title": "Bursa Malaysia slips on cautious trade amid US inflation watch, Israel‑Iran uncertainty | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148",
+        "desc": "<strong>Bursa Malaysia ended lower today</strong> as investors adopted a cautious stance amid external uncertainties, keeping a close watch on the upcoming United States inflation as well as developments surrounding the fragile Israel-Iran ceasefire."
+      },
+      {
+        "title": "Trading Calendar",
+        "url": "https://www.bursamalaysia.com/trade/trading_resources/derivatives/trading_calendar",
+        "desc": "To receive latest announcement, you can follow a company by clicking follow button on the company profile page · You will be-redirected to AskListing@Bursa, are you sure you want to leave this page"
+      },
+      {
+        "title": "Bursa Malaysia closes higher as investors rotate into defensive stocks | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/06/10/bursa-malaysia-closes-higher-as-investors-rotate-into-defensive-stocks/223271",
+        "desc": "Wednesday, 10 Jun 2026 6:36 PM MYT · KUALA LUMPUR, June 10 — <strong>Bursa Malaysia closed higher on Wednesday</strong>, outperforming some regional peers as renewed weakness in global technology stocks and escalating tensions in West Asia prompted investors ..."
+      },
+      {
+        "title": "Calendar",
+        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
+        "desc": "Notes: a. When a public holiday falls on Sunday, the following Monday will be observed as a holiday. b. Bursa Malaysia and its subsidiaries will operate under normal trading hours on the eve of Chinese New Year and Hari Raya Aidilfitri. c. Date subject to change. d. Labuan Holiday Only e. Excluded L"
       }
     ],
     "most_active": {
@@ -46,25 +46,25 @@
     },
     "top_gainers_search": [
       {
-        "title": "FBMKLCI Quote - FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index - Bloomberg",
-        "desc": "Index performance for FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index (FBMKLCI) including value, chart, profile &amp; other market data."
-      },
-      {
         "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
-        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,667.74 +0.24%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,667.74 +3.92 (+0.24%) At close: 4:59:45 PM GMT+8 · "
+        "desc": "FTSE Bursa Malaysia KLCI · 1,712.03 +0.04% Kuala Lumpur - Delayed Quote • MYR · 1,712.03 +0.64 (+0.04%) At close: June 19 at 4:59:45 PM GMT+8 · Get La"
       },
       {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Bursa Malaysia’s KLCI was little changed at <strong>around 1,722 by midday Friday</strong>, as strength in electronic technology, producer manufacturi"
+        "title": "Bursa Malaysia - FBMKLCI Stocks",
+        "desc": "MalaysiaStock.Biz is a free channel for you to access the KLSE market watch information covered from Market Summary Overview, Top Volume, Top Gainers,"
+      },
+      {
+        "title": "Bursa Malaysia ends higher as bargain hunting lifts FBM KLCI, sentiment steadies on easing West Asia tensions | Malay Mail",
+        "desc": "Among top gainers, <strong>Malaysian Pacific Industries</strong> advanced RM2.30 to RM48.50, Hong Leong Industries gained 84 sen to RM18.74, Vitrox Co"
       }
     ],
     "klci_close": null,
     "klci_change_points": null,
     "klci_change_pct": null,
     "source_urls": [
-      "https://www.nst.com.my/amp/business/corporate/2026/06/1469880/bursa-malaysia-ends-softer-note-amid-profit-taking",
-      "https://www.malaymail.com/amp/news/money/2026/06/25/bursa-malaysia-closes-lower-amid-caution-over-us-inflation-global-rate-outlook/225179",
-      "https://www.malaymail.com/news/money/2026/06/26/bursa-malaysia-edges-higher-as-last-minute-banking-rebound-lifts-market-into-green-zone/225335"
+      "https://www.malaymail.com/amp/news/money/2026/06/09/bursa-malaysia-slips-on-cautious-trade-amid-us-inflation-watch-israeliran-uncertainty/223148",
+      "https://www.tradinghours.com/markets/myx",
+      "https://www.bursamalaysia.com/trade/trading_resources/derivatives/trading_calendar"
     ]
   },
   "ringgit": {
@@ -80,8 +80,8 @@
         "desc": "KUALA LUMPUR: Bank Negara Malaysia&#x27;s decision to maintain the overnight policy rate (OPR) at <strong>2.75 per cent</strong> reflects a cautious and balanced monetary policy stance aimed at suppor"
       },
       {
-        "title": "Malaysia Interest Rate",
-        "desc": "The Central Bank of Malaysia held its key interest rate unchanged at <strong>2.75%</strong> for a third consecutive meeting in January 2026, marking its first monetary policy decision of the year and "
+        "title": "Bank Negara’s OPR stays at 2.75% as widely expected | The Star",
+        "desc": "​​​​​​​KUALA LUMPUR: Bank Negara has maintained the overnight policy rate (OPR) at <strong>2.75%</strong>, in line with market expectations, after keeping the benchmark rate unchanged for the past yea"
       }
     ],
     "sources": [
@@ -110,9 +110,9 @@
         "category": "trade"
       },
       {
-        "title": "Malaysia Balance of Trade",
-        "url": "https://tradingeconomics.com/malaysia/balance-of-trade",
-        "desc": "<strong>Imports rose 8.2% year-on-year to MYR 114.2 billion</strong>, as purchases increased across all three main categories by end use, namely intermediate goods (0.8%), capital goods (15.4%), and consumption goods (1.5%). Import growth was strongest from China (27.3%), South Korea (86.8%), and Ta",
+        "title": "Malaysia Exports By Category",
+        "url": "https://tradingeconomics.com/malaysia/exports-by-category",
+        "desc": "Trading Economics provides data for 20 million economic indicators from 196 countries including actual values, consensus figures, forecasts, historical time series and news. Malaysia Exports By Category - was last updated on Monday, June 15, 2026.",
         "category": "trade"
       },
       {
@@ -122,9 +122,9 @@
         "category": "gdp"
       },
       {
-        "title": "Malaysia’s Economy Grows 5.4% In Q1 2026, Outpacing Expectations Amid Global Uncertainty",
-        "url": "https://www.mof.gov.my/portal/en/news/press-release/malaysias-economy-grows-5-4-in-q1-2026-outpacing-expectations-amid-global-uncertainty",
-        "desc": "Malaysia’s economy exceeded expectations for a second consecutive quarter, growing <strong>5.4% in Q1 2026</strong> despite heightened global uncertainty arising from the conflict in West Asia. The sustained momentum reflects the MADANI Government’s fiscal ...",
+        "title": "IMF raises real GDP growth forecasts for Malaysia to 4.7% for 2026, 4.3% in 2027",
+        "url": "https://theedgemalaysia.com/node/799903",
+        "desc": "KUALA LUMPUR (April 14): The International Monetary Fund (IMF) has raised its projection for Malaysia&#x27;s real gross domestic product (GDP) growth to <strong>4.7%</strong> for 2026, representing an upward revision of 0.4 percentage point.",
         "category": "gdp"
       }
     ],
@@ -138,9 +138,9 @@
         "source": "https://www.bloomberg.com/news/articles/2026-06-12/malaysia-s-free-for-all-election-season-opens-with-state-polls"
       },
       {
-        "title": "Two state elections may break Malaysia’s ruling coalition",
-        "desc": "<strong>Anwar Ibrahim faces coalition partners eyeing exits ahead of state elections in Johor and Negeri Sembilan that could trigger his government&#x27;s collapse</strong>. | Asia",
-        "source": "https://www.economist.com/asia/2026/06/25/two-state-elections-may-break-malaysias-ruling-coalition"
+        "title": "Malaysia PM Anwar facing crucial test of support as two states call early elections | Arab News",
+        "desc": "(AFP) Short Url · https://arab.news/jq8at · KUALA LUMPUR: Malaysian Prime Minister Anwar ‌Ibrahim’s ruling coalition <strong>will face a test of its public support amid signs of internal tensions afte",
+        "source": "https://www.arabnews.com/node/2646055/amp"
       },
       {
         "title": "Malaysia Election 2026: Anwar Weighs Early Poll Amid Pressure - Modern Diplomacy",
@@ -159,18 +159,18 @@
         "desc": "With a record RM421 billion allocation, ... the Ekonomi MADANI framework, targeting three key pillars: <strong>Reinvigorating the Economy, Driving Reforms, and Prospering the Rakyat</strong>...."
       },
       {
-        "title": "Budget 2025 - Malaysia |Eastspring Investments",
-        "desc": "Prime Minister Datuk Seri Anwar Ibrahim tabled the third MADANI Budget 2025 on 18 October 2024, with three focus: <strong>reforming the economy, fueling change and bringing prosperity to the people</s"
+        "title": "Budget 2025 Malaysia: Towards Greater Stability and Empowerment",
+        "desc": "With an unprecedented <strong>RM421 billion</strong> allocated for 2025, the Malaysian government is well-positioned to craft sustainable strategies to further fuel the economy and is on track to narr"
       }
     ],
     "regional": [
       {
         "title": "Gabungan Parti Sarawak - Wikipedia",
-        "desc": "<strong>GPS</strong> was formed on 12 <strong>June</strong> 2018, ... Peoples&#x27; Party (SUPP), and Parti Rakyat <strong>Sarawak</strong> (PRS). The"
+        "desc": "<strong>GPS was formed on 12 June 2018,</strong> ... Peoples&#x27; Party (SUPP), and Parti Rakyat Sarawak (PRS). The four parties were former componen"
       },
       {
         "title": "Next Malaysian general election - Wikipedia",
-        "desc": "MUDA defected into opposition in ... to <strong>Sabah</strong>. Further rupture of ties were seen in first half of <strong>2026</strong>, both in gove"
+        "desc": "Gabungan Parti Sarawak (GPS), a Sarawak-based coalition formed by former BN components, presently dominates politics in Sarawak and commands a signifi"
       }
     ]
   },
@@ -181,12 +181,12 @@
         "desc": "The average salary in Malaysia is <strong>RM4,000/mo ($1,008.83 USD) as of May 2026. Min wage: RM8.72/hr</strong>. Compare wages, explore history, and see how Malaysia ranks globally."
       },
       {
-        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jun 2026",
-        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,925.0 (RM7,930.9), excluding rent</strong>. The estimated monthly costs for a single person are $528."
+        "title": "Welder Salary in Malaysia 2026 — Affordability Guide",
+        "desc": "Welder average salary in Malaysia: <strong>$1,623/month</strong>. Affordability ratio vs cost of living: 1.8x. Data: Estimated from World Bank GNI per capita 2024 June 2..."
       },
       {
-        "title": "Malaysia Salary Benchmarks: By Role and Industry 2026",
-        "desc": "A senior software engineer earns RM 10,000-14,000 ($2,125-$2,980) in Malaysia vs S$8,000-$12,000 ($5,900-$8,850) in Singapore. Malaysia compensates with lower cost of living <strong>(40-50% less than "
+        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jun 2026",
+        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are €1,671.5 (RM7,938.6), excluding rent</strong>. The estimated monthly costs for a single person are €4"
       }
     ],
     "labor": [
@@ -224,12 +224,12 @@
     ],
     "energy_transition": [
       {
-        "title": "Malaysia's energy transition to accelerate into 2026 on solar, carbon policies-Xinhua",
-        "desc": "23 (Xinhua) -- Malaysia&#x27;s energy transition is set to gather pace into 2026, underpinned by <strong>aggressive renewable energy (RE) targets, expanding solar capacity and new carbon-related polic"
-      },
-      {
         "title": "Malaysia: 2026 Updates to Renewable Energy Schemes | Insight | Baker McKenzie",
         "desc": "The 2026 updates include the <strong>new Solar ATAP scheme, updates to the CRESS guidelines and updates regarding the standby charge payable and the Battery Energy Storage System (BESS) requirement un"
+      },
+      {
+        "title": "Malaysia's energy transition to accelerate into 2026 on solar, carbon policies-Xinhua",
+        "desc": "23 (Xinhua) -- Malaysia&#x27;s energy transition is set to gather pace into 2026, underpinned by <strong>aggressive renewable energy (RE) targets, expanding solar capacity and new carbon-related polic"
       }
     ]
   },
@@ -253,20 +253,20 @@
           "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
         },
         {
-          "title": "China's Xi promises more proactive macro policies in 2026 | Reuters",
-          "desc": "BEIJING, Dec 31 (Reuters) - <strong>China is on track to meet its growth target of around 5% this year and will roll out more proactive policies in 2026</strong>, President Xi Jinping said on Wednesda"
+          "title": "Our economic outlook for China | Vanguard",
+          "desc": "Solid near-term growth reduces the urgency for near‑term stimulus. However, warning signs from the domestic economy are likely to keep policymakers on alert and may accelerate the rollout of policy su"
         }
       ]
     },
     "asean": {
       "items": [
         {
-          "title": "Southeast Asia quarterly economic review Q1 2026 | McKinsey",
-          "desc": "Indonesia’s economy expanded by <strong>5.61 percent</strong> in the first quarter of 2026, its fastest growth in more than three years, boosted by a surge in government spending and strong household "
+          "title": "Southeast Asian Economies’ Growth to Slow in 2026, World Bank Says",
+          "desc": "Of the remaining major economies of developing Southeast Asia, <strong>Indonesia is projected to grow by 4.7 percent in 2026</strong>, down from 5.1 percent last year, while Malaysia will grow by 4.4 "
         },
         {
-          "title": "List of ASEAN countries by GDP - Wikipedia",
-          "desc": "This is a list of <strong>ASEAN</strong> countries by GDP. GDP Nominal is the total value of the market products and services that an <strong>economy</strong> produces in the current market prices. In"
+          "title": "ASEAN+3 Regional Economic Outlook 2026 - ASEAN+3 Macroeconomic Research Office - AMRO ASIA",
+          "desc": "<strong>Growth outperformed expectations in 2025</strong>, inflation remained low, and most economies retain meaningful fiscal and monetary space. Preserving policy flexibility remains the central nea"
         }
       ]
     }

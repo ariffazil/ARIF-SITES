@@ -24,11 +24,10 @@
     
     "THEORY": {
       "symbol": "⚖️",
-      "domain": "apex.arif-fazil.com",
+      "domain": "arif-fazil.com/apex",
       "function": "Constitutional Canon & Governance Law",
-      "llms_txt": "https://apex.arif-fazil.com/llms.txt",
-      "llms_json": "https://apex.arif-fazil.com/llms.json",
-      "canonical_index": "https://apex.arif-fazil.com/.well-known/arifos.json",
+      "llms_txt": "https://arif-fazil.com/llms.txt",
+      "canonical_index": "https://arif-fazil.com/.well-known/arifos.json",
       "webmcp_tools": 3,
       "status": "live"
     },

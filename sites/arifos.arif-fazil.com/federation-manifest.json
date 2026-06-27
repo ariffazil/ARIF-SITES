@@ -1,7 +1,7 @@
 {
   "schema": "federation-manifest/v3",
-  "source": "arifOS MCP /health + /tools + live kernel probe",
-  "generated": "2026-06-18T17:37:33Z",
+  "source": "arifOS MCP /health + /tools + live kernel probe (generate_federation_manifest.py)",
+  "generated": "2026-06-26T15:48:15Z",
   "transport": {
     "protocol": "streamable-http + JSON-RPC 2.0",
     "json_response": true,
@@ -9,36 +9,67 @@
     "delta_s": 0,
     "note": "Transport standardized across federation organs. ΔS ≤ 0. No SSE remaining."
   },
-  "federation_verdict": "All organs healthy. Commit 1f4f04e. 999 SEAL ALIVE.",
-  "note": "Canonical tool count = 13 (constitutional core). MCP-exposed surface = 42 (includes operational, lease, probe, attestation, diagnostics). All numbers from live kernel /health.",
+  "federation_verdict": "Mixed: arifOS=healthy, GEOX=healthy, WEALTH=alive, WELL=degraded, AAA=healthy, A-FORGE=healthy. arifOS v2026.05.05-SSCT (c791a24). 120 tools live across 5/6 organs.",
+  "note": "All numbers from live /health probe at 2026-06-26T15:48:15Z. arifOS canonical_tools=17, diagnostic_tools=41, mcp_exposed=7, total_declared=58.",
   "stack": {
     "topology": {
       "ordinal": 1,
-      "name": "APEX · Human Sovereign",
-      "role": "Final authority. F13 veto absolute.",
+      "name": "Human Sovereign (Arif · F13)",
+      "role": "Final authority. F13 veto absolute. Constitutional witness.",
       "status": "live",
       "layers": [
-        { "ordinal": 1, "name": "APEX · Human Sovereign", "role": "Final authority. F13 veto absolute.", "status": "live" },
-        { "ordinal": 2, "name": "arifOS Governance Kernel", "role": "13 canonical tools. 13-floor engine. 888_JUDGE. 999_VAULT. Streamable HTTP.", "status": "live" },
-        { "ordinal": 3, "name": "GEOX · WEALTH · WELL · AAA · A-FORGE", "role": "Earth · Capital · Vitality · A2A Hub · Metabolic Shell. MCP-connected organs.", "status": "live" },
-        { "ordinal": 4, "name": "OpenClaw · Hermes · OpenCode", "role": "Agent runtime. Telegram interface. A2A bridge.", "status": "live" },
-        { "ordinal": 5, "name": "Observatory · Canon · Wiki", "role": "Public surfaces. Read-only governance visibility.", "status": "live" }
+        {
+          "ordinal": 1,
+          "name": "Human Sovereign (Arif · F13)",
+          "role": "Final authority. F13 veto absolute. Constitutional witness.",
+          "status": "live"
+        },
+        {
+          "ordinal": 2,
+          "name": "arifOS Governance Kernel",
+          "role": "13-floor constitutional engine. 888_JUDGE. 999_VAULT. ΔΩΨ Trinity routing.",
+          "status": "live"
+        },
+        {
+          "ordinal": 3,
+          "name": "GEOX · WEALTH · WELL · AAA · A-FORGE",
+          "role": "Earth · Capital · Vitality · A2A Hub · Metabolic Shell. MCP-connected organs.",
+          "status": "live"
+        },
+        {
+          "ordinal": 4,
+          "name": "OpenClaw · Hermes · OpenCode",
+          "role": "Agent runtime. Telegram interface. A2A bridge. Model routing and execution.",
+          "status": "live"
+        },
+        {
+          "ordinal": 5,
+          "name": "Observatory · Canon · Wiki",
+          "role": "Public-facing surfaces. Read-only governance visibility. Constitutional doctrine.",
+          "status": "live"
+        }
       ]
     },
     "organs": {
       "arifos": {
         "name": "arifOS",
         "type": "governance_kernel",
-        "role": "Constitutional engine. F1–F13 floors. 888_JUDGE. 999_VAULT.",
+        "role": "Constitutional engine. F1-F13 floors. 888_JUDGE. 999_VAULT.",
         "port": 8088,
         "mcp": true,
-        "tools": 13,
-        "tools_exposed_mcp": 42,
         "transport": "streamable-http + JSON-RPC",
         "health_endpoint": "/health",
         "status": "healthy",
+        "tools": 58,
         "release": "v2026.05.05-SSCT",
-        "commit": "1f4f04e"
+        "version": "kanon-c791a24",
+        "commit": "c791a24",
+        "canonical_tools": 17,
+        "diagnostic_tools": 41,
+        "tools_exposed_mcp": 7,
+        "floors_active": 13,
+        "vault_health": "healthy",
+        "manifest_hash": "d53b77bbc45962e8"
       },
       "geox": {
         "name": "GEOX",
@@ -46,10 +77,12 @@
         "role": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.",
         "port": 8081,
         "mcp": true,
-        "tools": 40,
         "transport": "streamable-http + JSON-RPC",
         "health_endpoint": "/health",
-        "status": "healthy"
+        "status": "healthy",
+        "tools": 16,
+        "version": "v2026.06.22-phase2",
+        "git_version": "geox-98cd5383"
       },
       "wealth": {
         "name": "WEALTH",
@@ -57,10 +90,11 @@
         "role": "NPV/EMV. Risk scoring. Makcik² relational credit. Capital conservation.",
         "port": 18082,
         "mcp": true,
-        "tools": 23,
         "transport": "streamable-http + JSON-RPC",
         "health_endpoint": "/health",
-        "status": "healthy"
+        "status": "alive",
+        "tools": 28,
+        "version": "2026.06.15"
       },
       "well": {
         "name": "WELL",
@@ -68,10 +102,11 @@
         "role": "Biological substrate. Operator cognitive pressure. Thermodynamic wellness.",
         "port": 18083,
         "mcp": true,
-        "tools": 21,
         "transport": "streamable-http + JSON-RPC",
         "health_endpoint": "/health",
-        "status": "healthy"
+        "status": "degraded",
+        "tools": 18,
+        "version": "2026.05.15-ΩWELL+GWELL+FEDERATION"
       },
       "aaa": {
         "name": "AAA",
@@ -80,7 +115,11 @@
         "port": 3001,
         "mcp": false,
         "transport": "A2A (internal)",
-        "status": "healthy"
+        "health_endpoint": "/health",
+        "status": "healthy",
+        "tools": 0,
+        "version": "1.0.0",
+        "agent_cards": 23
       },
       "forge": {
         "name": "A-FORGE",
@@ -89,7 +128,10 @@
         "port": 7071,
         "mcp": true,
         "transport": "streamable-http + JSON-RPC",
-        "status": "healthy"
+        "health_endpoint": "/health",
+        "status": "healthy",
+        "tools": 0,
+        "version": "0.1.0"
       }
     }
   }

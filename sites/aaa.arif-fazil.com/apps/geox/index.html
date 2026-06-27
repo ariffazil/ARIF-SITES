@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOX — Earth Intelligence · AAA</title>
+<meta name="description" content="GEOX Earth Intelligence — geological, geophysical, and geospatial MCP tools for the arifOS federation.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/apps/geox">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; --green: #22c55e; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.5rem; }
+  a.card { text-decoration: none; display: block; color: inherit; transition: border-color 0.15s; }
+  a.card:hover { border-color: var(--cyan); }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:800px;margin:3rem auto;padding:0 1.5rem;">
+  <div style="margin-bottom:0.5rem;">
+    <a href="/apps" style="color:var(--amber);font-size:0.8rem;text-decoration:none;">← App Directory</a>
+  </div>
+
+  <h1 style="color:var(--cyan);font-size:2rem;font-weight:700;margin-bottom:0.25rem;">🌍 GEOX</h1>
+  <p style="color:#888;margin-bottom:2rem;">Earth Intelligence — geological, geophysical, and geospatial MCP tools.</p>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <h3 style="color:var(--cyan);font-size:1.1rem;font-weight:600;margin-bottom:0.75rem;">About GEOX</h3>
+    <p style="color:#aaa;font-size:0.9rem;line-height:1.7;">
+      GEOX is the Earth Intelligence organ of the arifOS federation. It provides MCP tools for 
+      geological interpretation, petrophysical analysis, seismic processing, and geospatial reasoning. 
+      GEOX operates under the constitutional floors (F1–F13) and feeds evidence to the WEALTH and 
+      WELL organs for cross-domain intelligence.
+    </p>
+  </div>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <h3 style="color:var(--gold);font-size:1.1rem;font-weight:600;margin-bottom:0.75rem;">MCP Tools</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:0.75rem;">
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_basin_resolve</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Basin analysis and stratigraphic resolution</p>
+      </div>
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_seismic_compute</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Seismic forward modeling and analysis</p>
+      </div>
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_prospect_evaluate</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Prospect volumetrics and risk assessment</p>
+      </div>
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_well_ingest</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Well log data loading and QC</p>
+      </div>
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_petrophysics</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Vsh, porosity, Sw, permeability transforms</p>
+      </div>
+      <div style="padding:0.75rem;background:rgba(0,212,170,0.05);border:1px solid rgba(0,212,170,0.15);border-radius:6px;">
+        <code style="font-size:0.8rem;color:var(--cyan);">geox_sequence</code>
+        <p style="font-size:0.75rem;color:#888;margin-top:0.25rem;">Sequence stratigraphy and correlation</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="color:var(--amber);font-size:1.1rem;font-weight:600;margin-bottom:0.75rem;">Access</h3>
+    <p style="color:#aaa;font-size:0.9rem;margin-bottom:1rem;">
+      GEOX has its own dedicated surface with full tool documentation, live demos, and API access.
+    </p>
+    <a href="https://geox.arif-fazil.com" target="_blank" rel="noopener noreferrer" 
+       style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;background:var(--cyan);color:#000;font-weight:700;font-size:0.85rem;border-radius:6px;text-decoration:none;transition:opacity 0.15s;"
+       onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      Open GEOX →
+    </a>
+  </div>
+</main>
+</body>
+</html

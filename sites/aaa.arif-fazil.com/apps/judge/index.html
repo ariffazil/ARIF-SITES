@@ -1,19 +1,396 @@
 <!doctype html>
 <html lang="en" data-ring="BODY">
+<!--
+  ORIGIN: arifOS Federation — Judge MCP App
+  FORGED: 2026-06-26 (replaces "MCP-powered application — under construction" stub)
+  SOVEREIGN: Muhammad Arif bin Fazil — F13 absolute veto
+  KERNEL: arifOS v2026.06.26 — arif_judge tool via /mcp
+  ARCHITECTURE: 3-Realities + 3 Invariants (Iron Shell · Skeleton State · Safe Mode)
+  ENDPOINT: POST https://arifos.arif-fazil.com/mcp (JSON-RPC 2.0 + SSE)
+  SIGNATURE: DITEMPA BUKAN DIBERI — Forged, Not Given.
+-->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Judge — MCP App · AAA</title>
+<title>Judge — Constitutional Verdict · AAA Cockpit</title>
+<meta name="description" content="Submit an intent for F1-F13 constitutional judgment. Returns SEAL / SABAR / HOLD / VOID verdict. arifOS MCP arif_judge tool.">
 <link rel="canonical" href="https://aaa.arif-fazil.com/apps/judge">
+<meta name="theme-color" content="#D4A853">
+<meta property="og:title" content="Judge — Constitutional Verdict · AAA">
+<meta property="og:description" content="F1-F13 constitutional judgment. SEAL / SABAR / HOLD / VOID. arifOS MCP arif_judge.">
+<meta property="og:type" content="website">
 <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
-<style>:root{--bg:#0d0c0b;--surface:#121110;--gold:#D4A853;--text:#d4d2ce}body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.card{background:var(--surface);border:1px solid #2a2826;border-radius:8px;padding:1.5rem;max-width:600px;margin:3rem auto}</style>
+<style>
+:root{
+  --bg:#0d0c0b;--surface:#121110;--gold:#D4A853;--teal:#00D4AA;--red:#FF3333;--text:#d4d2ce;--dim:#888;--border:#2a2826;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;margin:0;padding:0;line-height:1.6}
+header{padding:2rem 1.5rem 1rem;text-align:center;border-bottom:1px solid var(--border)}
+h1{font-size:1.6rem;margin:0 0 0.4rem;font-weight:700;color:var(--gold)}
+.subtitle{color:var(--dim);font-size:0.85rem;margin:0;font-family:'JetBrains Mono',monospace}
+main{max-width:680px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem}
+label{display:block;margin-bottom:1rem;font-size:0.85rem;color:var(--dim)}
+label > span{display:block;margin-bottom:0.3rem;font-weight:500;color:var(--text)}
+textarea,input[type=text],select{
+  width:100%;background:#0a0908;color:var(--text);
+  border:1px solid var(--border);border-radius:4px;
+  padding:0.6rem 0.8rem;font-family:inherit;font-size:0.9rem;
+  transition:border-color 0.15s ease;
+}
+textarea:focus,input:focus,select:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:80px;resize:vertical;font-family:'JetBrains Mono',monospace}
+.radio-group{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:0.3rem}
+.radio-group label{display:flex;align-items:center;gap:0.3rem;padding:0.4rem 0.8rem;background:#0a0908;border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:0.8rem;margin:0}
+.radio-group input{margin:0}
+.radio-group label:hover{border-color:var(--gold)}
+button{background:var(--gold);color:#0d0c0b;border:none;padding:0.8rem 1.5rem;border-radius:4px;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all 0.15s ease;width:100%}
+button:hover:not(:disabled){background:#e0b85f}
+button:disabled{opacity:0.5;cursor:not-allowed}
+#result{margin-top:2rem}
+.verdict{padding:1.5rem;border-radius:6px;border:1px solid var(--border);background:var(--surface)}
+.verdict-SEAL{border-color:var(--teal);background:rgba(0,212,170,0.05)}
+.verdict-SABAR{border-color:var(--gold);background:rgba(212,168,83,0.05)}
+.verdict-HOLD{border-color:#ff8c42;background:rgba(255,140,66,0.05)}
+.verdict-VOID{border-color:var(--red);background:rgba(255,51,51,0.05)}
+.verdict h3{margin:0 0 0.5rem;font-size:1.4rem;font-weight:700;font-family:'JetBrains Mono',monospace}
+.verdict-SEAL h3{color:var(--teal)}
+.verdict-SABAR h3{color:var(--gold)}
+.verdict-HOLD h3{color:#ff8c42}
+.verdict-VOID h3{color:var(--red)}
+.verdict .reasoning{margin-top:1rem;color:var(--dim);font-size:0.85rem;line-height:1.7}
+.verdict .meta{margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--dim);display:flex;gap:1rem;flex-wrap:wrap}
+.floors-list{margin-top:1rem;padding:0.75rem;background:#0a0908;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--dim)}
+.floor-tag{display:inline-block;padding:0.15rem 0.4rem;background:rgba(212,168,83,0.1);color:var(--gold);border-radius:3px;margin:0.15rem}
+.warn{padding:1rem;background:rgba(255,51,51,0.05);border:1px solid rgba(255,51,51,0.3);border-radius:4px;color:var(--red);font-size:0.85rem;margin:1rem 0}
+.skeleton{padding:1rem;background:linear-gradient(90deg,var(--surface) 25%,#1a1815 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:4px;color:var(--dim);text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.85rem}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+details{margin-top:1rem}
+details summary{cursor:pointer;color:var(--dim);font-size:0.8rem;padding:0.5rem 0}
+details summary:hover{color:var(--text)}
+pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.72rem;color:var(--dim);font-family:'JetBrains Mono',monospace;max-height:300px}
+.motto{font-style:italic;letter-spacing:0.1em;font-size:0.7rem;color:#555;margin-top:0.5rem}
+.back-link{display:block;text-align:center;margin-top:1.5rem;color:var(--gold);font-size:0.85rem;text-decoration:none}
+.back-link:hover{text-decoration:underline}
+</style>
 </head>
 <body>
 <script src="/_shared/trinity-nav.js" defer></script>
-<div class="card" style="text-align:center">
-  <h1 style="color:var(--gold);font-size:1.5rem;margin-bottom:1rem;">Judge</h1>
-  <p style="color:#888;">MCP-powered application — under construction.</p>
-  <p style="margin-top:1rem;"><a href="/apps" style="color:var(--gold);">← App Directory</a></p>
+
+<!-- ============ IRON SHELL (always renders) ============ -->
+<header>
+  <h1>Judge</h1>
+  <p class="subtitle">Constitutional Verdict · F1–F13 · arifOS MCP</p>
+  <p class="motto">DITEMPA BUKAN DIBERI</p>
+</header>
+
+<main>
+
+<!-- ============ IRON SHELL FORM (renders before JS) ============ -->
+<div class="card">
+  <form id="judge-form" autocomplete="off">
+    <label>
+      <span>Intent <span style="color:var(--red)">*</span></span>
+      <textarea name="intent" required placeholder="What action do you want judged? E.g., 'Deploy staging server with new config to production.'"></textarea>
+    </label>
+
+    <label>
+      <span>Requested Capability <span style="color:var(--red)">*</span></span>
+      <input type="text" name="requested_capability" required placeholder="E.g., 'deploy_service', 'execute_capital_trade', 'modify_constitution'">
+    </label>
+
+    <label>
+      <span>Domain</span>
+      <select name="domain">
+        <option value="capital">Capital — financial / monetary</option>
+        <option value="risk">Risk — probability / exposure</option>
+        <option value="power">Power — control / coercion / capture</option>
+        <option value="wisdom">Wisdom — dignity / meaning / resilience</option>
+        <option value="collapse">Collapse — institutional failure forensics</option>
+        <option value="meta" selected>Meta — governance / constitutional</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Blast Radius</span>
+      <div class="radio-group">
+        <label><input type="radio" name="blast_radius" value="LOW">LOW</label>
+        <label><input type="radio" name="blast_radius" value="MEDIUM" checked>MEDIUM</label>
+        <label><input type="radio" name="blast_radius" value="HIGH">HIGH</label>
+        <label><input type="radio" name="blast_radius" value="CRITICAL">CRITICAL</label>
+      </div>
+    </label>
+
+    <label>
+      <span>Reversibility</span>
+      <select name="reversibility_level">
+        <option value="FULL">FULL — rollback trivial</option>
+        <option value="PARTIAL" selected>PARTIAL — rollback possible with effort</option>
+        <option value="NONE">NONE — irreversible</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Actor (identifier)</span>
+      <input type="text" name="actor" value="AAA-cockpit">
+    </label>
+
+    <button type="submit" id="submit-btn">Submit for Judgment</button>
+  </form>
 </div>
+
+<!-- ============ FALLBACK MESSAGE (no JS / API unreachable) ============ -->
+<noscript>
+  <div class="warn">
+    <strong>JavaScript required.</strong> The Judge MCP App calls <code>https://arifos.arif-fazil.com/mcp</code> via JSON-RPC 2.0.
+    Enable JavaScript or call the API directly. Endpoint reference: <a href="/llms.txt" style="color:var(--gold)">/llms.txt</a>.
+  </div>
+</noscript>
+
+<!-- ============ SKELETON STATE (shown during fetch) ============ -->
+<div id="skeleton" class="skeleton" style="display:none;">
+  Submitting to arifOS MCP... awaiting verdict...
+</div>
+
+<!-- ============ SAFE MODE RESULT (rendered after fetch) ============ -->
+<div id="result" style="display:none;"></div>
+
+<!-- ============ STATIC FLOOR REFERENCE (content stream) ============ -->
+<div class="card" style="margin-top:2rem;">
+  <h3 style="margin:0 0 0.8rem;color:var(--gold);font-size:1rem;">13 Constitutional Floors</h3>
+  <p style="margin:0 0 0.8rem;color:var(--dim);font-size:0.8rem;">Judge applies all 13 floors to your intent:</p>
+  <div>
+    <span class="floor-tag">F1 AMANAH</span>
+    <span class="floor-tag">F2 TRUTH</span>
+    <span class="floor-tag">F4 CLARITY</span>
+    <span class="floor-tag">F6 MARUAH</span>
+    <span class="floor-tag">F7 HUMILITY</span>
+    <span class="floor-tag">F8 LAW</span>
+    <span class="floor-tag">F9 ANTI-HANTU</span>
+    <span class="floor-tag">F11 AUDIT</span>
+    <span class="floor-tag">F13 SOVEREIGN</span>
+  </div>
+  <p style="margin:1rem 0 0;color:var(--dim);font-size:0.78rem;">
+    Verdicts: <span style="color:var(--teal)">SEAL</span> = approve · <span style="color:var(--gold)">SABAR</span> = pause for review ·
+    <span style="color:#ff8c42">HOLD</span> = reject for re-design · <span style="color:var(--red)">VOID</span> = refuse
+  </p>
+</div>
+
+<a href="/apps" class="back-link">← App Directory</a>
+</main>
+
+<!-- ============ DYNAMIC DATA LAYER (JSON-RPC to arifOS MCP) ============ -->
+<script>
+(function(){
+  var MCP_URL = 'https://arifos.arif-fazil.com/mcp';
+  var TIMEOUT_MS = 30000;
+
+  function $(id){return document.getElementById(id);}
+
+  function escapeHtml(s){
+    if (s == null) return '';
+    return String(s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function parseMCPResponse(text){
+    // Handle SSE format: "event: message\ndata: {...}\n\n"
+    var lines = text.split('\n');
+    var dataLine = null;
+    for (var i=lines.length-1; i>=0; i--){
+      var line = lines[i].trim();
+      if (line.indexOf('data: ') === 0){
+        dataLine = line.slice(6);
+        break;
+      }
+    }
+    if (dataLine){
+      try { return JSON.parse(dataLine); } catch(e){}
+    }
+    // Plain JSON
+    try { return JSON.parse(text); } catch(e){
+      return {error: {message: 'Parse failed: ' + text.substring(0, 200)}};
+    }
+  }
+
+  function renderVerdict(verdict, payload){
+    var verdictClass = 'verdict-' + (verdict || 'UNKNOWN');
+    var html = '<div class="verdict '+verdictClass+'">' +
+      '<h3>'+escapeHtml(verdict || 'UNKNOWN')+'</h3>';
+
+    if (payload.reasoning){
+      html += '<div class="reasoning">'+escapeHtml(payload.reasoning)+'</div>';
+    }
+    if (payload.summary){
+      html += '<div class="reasoning"><strong>Summary:</strong> '+escapeHtml(payload.summary)+'</div>';
+    }
+
+    var meta = [];
+    if (payload.verdict_id) meta.push('id: '+escapeHtml(payload.verdict_id));
+    if (payload.session_id) meta.push('session: '+escapeHtml(payload.session_id));
+    if (payload.confidence != null) meta.push('confidence: '+payload.confidence);
+    if (payload.blast_radius) meta.push('blast: '+escapeHtml(payload.blast_radius));
+    if (payload.reversibility_level) meta.push('reversibility: '+escapeHtml(payload.reversibility_level));
+    if (meta.length){
+      html += '<div class="meta">'+meta.map(function(m){return '<span>'+m+'</span>';}).join('')+'</div>';
+    }
+
+    if (payload.floor_analysis || payload.floors){
+      var floors = payload.floor_analysis || payload.floors;
+      html += '<div class="floors-list">';
+      if (Array.isArray(floors)){
+        floors.forEach(function(f){
+          html += '<div>· '+escapeHtml(typeof f === 'string' ? f : JSON.stringify(f))+'</div>';
+        });
+      } else {
+        html += escapeHtml(JSON.stringify(floors, null, 2));
+      }
+      html += '</div>';
+    }
+
+    html += '</div>';
+    return html;
+  }
+
+  function showError(message, rawText){
+    var html = '<div class="warn">' +
+      '<strong>⚠ Verdict Failed</strong><br><br>' +
+      escapeHtml(message) +
+    '</div>';
+    if (rawText){
+      html += '<details><summary>Raw response</summary><pre>'+escapeHtml(rawText)+'</pre></details>';
+    }
+    html += '<details style="margin-top:1rem"><summary>How to fix</summary>' +
+      '<div style="padding:1rem;color:var(--dim);font-size:0.85rem;line-height:1.7">' +
+      '<p>1. Check if arifOS MCP is alive: <a href="https://arifos.arif-fazil.com/health" style="color:var(--gold)">/health</a></p>' +
+      '<p>2. Verify CORS allows this origin: <code>'+escapeHtml(window.location.origin)+'</code></p>' +
+      '<p>3. Call directly via curl:</p>' +
+      '<pre>curl -X POST '+escapeHtml(MCP_URL)+' \\\n  -H "Content-Type: application/json" \\\n  -H "Accept: application/json, text/event-stream" \\\n  -d \'{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"arif_judge","arguments":{...}}}\'</pre>' +
+      '</div></details>';
+    return html;
+  }
+
+  function setLoading(loading){
+    $('submit-btn').disabled = loading;
+    $('submit-btn').textContent = loading ? 'Submitting...' : 'Submit for Judgment';
+    $('skeleton').style.display = loading ? 'block' : 'none';
+  }
+
+  function showResult(html){
+    var result = $('result');
+    result.innerHTML = html;
+    result.style.display = 'block';
+    result.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // Form submit handler with full error boundary
+  var form = $('judge-form');
+  if (!form){
+    console.error('[judge] form element missing');
+    return;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var fd = new FormData(form);
+
+    // Validation
+    var intent = (fd.get('intent') || '').toString().trim();
+    var cap = (fd.get('requested_capability') || '').toString().trim();
+    if (!intent){
+      showResult(showError('Intent is required.', ''));
+      return;
+    }
+    if (!cap){
+      showResult(showError('Requested Capability is required.', ''));
+      return;
+    }
+
+    var args = {
+      actor: (fd.get('actor') || 'AAA-cockpit').toString(),
+      intent: intent,
+      requested_capability: cap,
+      domain: fd.get('domain') || 'meta',
+      reversibility_level: fd.get('reversibility_level') || 'PARTIAL',
+      blast_radius: fd.get('blast_radius') || 'MEDIUM'
+    };
+
+    var body = JSON.stringify({
+      jsonrpc: '2.0',
+      id: Date.now(),
+      method: 'tools/call',
+      params: { name: 'arif_judge', arguments: args }
+    });
+
+    setLoading(true);
+    $('result').style.display = 'none';
+
+    // Timeout controller
+    var controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timeoutId;
+    if (controller){
+      timeoutId = setTimeout(function(){ controller.abort(); }, TIMEOUT_MS);
+    }
+
+    fetch(MCP_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json, text/event-stream'
+      },
+      body: body,
+      signal: controller ? controller.signal : undefined
+    })
+    .then(function(r){
+      if (timeoutId) clearTimeout(timeoutId);
+      return r.text().then(function(text){
+        return { ok: r.ok, status: r.status, text: text };
+      });
+    })
+    .then(function(resp){
+      setLoading(false);
+      if (!resp.ok){
+        showResult(showError('HTTP '+resp.status+' — arifOS MCP returned non-2xx response.', resp.text));
+        return;
+      }
+      var data = parseMCPResponse(resp.text);
+      if (data.error){
+        showResult(showError('JSON-RPC error: '+data.error.message, resp.text));
+        return;
+      }
+      if (!data.result){
+        showResult(showError('Empty result from arifOS MCP.', resp.text));
+        return;
+      }
+      // Unwrap MCP tool result
+      var payload = data.result;
+      if (payload.content && Array.isArray(payload.content) && payload.content[0] && payload.content[0].text){
+        try {
+          payload = JSON.parse(payload.content[0].text);
+        } catch(e){
+          // payload stays as is
+        }
+      } else if (payload.structuredContent){
+        payload = payload.structuredContent;
+      }
+
+      var verdict = payload.verdict || payload.outcome || 'UNKNOWN';
+      var html = renderVerdict(verdict, payload);
+      html += '<details><summary>Raw response</summary><pre>'+escapeHtml(resp.text.substring(0, 5000))+'</pre></details>';
+      showResult(html);
+    })
+    .catch(function(err){
+      if (timeoutId) clearTimeout(timeoutId);
+      setLoading(false);
+      var msg = err.name === 'AbortError'
+        ? 'Timeout after '+(TIMEOUT_MS/1000)+'s — arifOS MCP did not respond.'
+        : 'Network error: '+(err.message || err);
+      showResult(showError(msg, ''));
+    });
+  });
+})();
+</script>
 </body>
 </html>
