@@ -1,0 +1,52 @@
+# arifOS Observatory — Constitutional Governance Dashboard
+# https://arifos.arif-fazil.com
+
+> Constitutional governance observatory for the arifOS federation. Real-time organ health, floor scores, vault status, and federation topology.
+
+## What This Is
+
+arifOS is a constitutional AI governance framework. This observatory provides real-time visibility into:
+- **7 Federation Organs**: arifOS (kernel), GEOX (earth), WEALTH (capital), WELL (vitality), AAA (A2A hub), A-FORGE (execution), VAULT999 (audit)
+- **13 Constitutional Floors**: F1 AMANAH through F13 SOVEREIGN
+- **VAULT999**: Immutable audit chain with hash-chained seals
+- **888 JUDGE**: Constitutional verdict engine
+
+## MCP Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/mcp` | POST | MCP JSON-RPC 2.0 (streamable-http) |
+| `/health` | GET | Organ health status |
+| `/tools.json` | GET | Available MCP tools |
+| `/sse` | GET | Server-sent events (legacy) |
+| `/api/status` | GET | Federation status |
+
+## Agent Discovery
+
+- Agent Card: `/.well-known/agent-card.json`
+- MCP Manifest: `/.well-known/mcp.json`
+- AI Plugin: `/.well-known/ai-plugin.json`
+- Federation Manifest: `/federation-manifest.json`
+
+## Federation Organs
+
+| Organ | Port | Domain | Role |
+|-------|------|--------|------|
+| arifOS | 8088 | arifos.arif-fazil.com | Constitutional kernel |
+| GEOX | 8081 | geox.arif-fazil.com | Earth intelligence |
+| WEALTH | 18082 | wealth.arif-fazil.com | Capital intelligence |
+| WELL | 18083 | well.arif-fazil.com | Vitality engine |
+| AAA | 3001 | aaa.arif-fazil.com | A2A hub |
+| A-FORGE | 7071 | — | Execution shell |
+
+## Links
+
+- Main site: https://arif-fazil.com
+- AAA Cockpit: https://aaa.arif-fazil.com
+- GEOX: https://geox.arif-fazil.com
+- WEALTH: https://wealth.arif-fazil.com
+- GitHub: https://github.com/ariffazil/arifos
+
+## Governance
+
+All operations governed by 13 constitutional floors (F1-F13). Irreversible actions require human sovereign approval (F13). DITEMPA BUKAN DIBERI — Forged, Not Given.

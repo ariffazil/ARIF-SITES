@@ -28,10 +28,10 @@
       ]
     },
     "waw": {
-      "identity": "https://waw.arif-fazil.com",
+      "identity": "https://arif-fazil.com",
       "wells": [
-        { "id": "wealth-dashboard", "url": "https://waw.arif-fazil.com/", "type": "dashboard" },
-        { "id": "scenario-modeler", "url": "https://waw.arif-fazil.com/dashboards", "type": "tool" },
+        { "id": "wealth-dashboard", "url": "https://arif-fazil.com/", "type": "dashboard" },
+        { "id": "scenario-modeler", "url": "https://arif-fazil.com/dashboards", "type": "tool" },
         { "id": "wealth-api", "url": "https://mcp.arif-fazil.com", "type": "api" }
       ]
     }

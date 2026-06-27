@@ -1,0 +1,50 @@
+/* iron-shell.css — Layer 0 Guaranteed Render
+ * Part of SEAL_SESSION_arif-2026-06-27-001
+ * DITEMPA BUKAN DIBERI
+ * 
+ * This CSS guarantees a visible state at t=0, even if dynamic CSS fails.
+ * It is the constitutional render contract: Iron Shell before dynamic data.
+ */
+:root { color-scheme: dark; }
+
+html, body {
+  background-color: #111110;
+  color: #cdccca;
+  min-height: 100dvh;
+  font-family: 'Satoshi', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Panel boundary states */
+[data-state="loading"]  { opacity: 0.5; }
+[data-state="fallback"] { border-left: 2px solid #4f98a3; padding-left: 1rem; }
+[data-state="live"]     { opacity: 1; transition: opacity 0.3s ease; }
+[data-state="error"]    { border-left: 2px solid #a12c7b; padding-left: 1rem; }
+
+/* Skeleton loader */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #1c1b19 25%, #2d2c2a 50%, #1c1b19 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+.skeleton-text    { height: 1em;   margin-bottom: 0.5rem; }
+.skeleton-heading { height: 1.5em; width: 40%; margin-bottom: 1rem; }
+
+/* Constitutional floor indicators */
+.floor-ok     { color: #22c55e; }
+.floor-warn   { color: #f59e0b; }
+.floor-hold   { color: #ef4444; }
+.floor-void   { color: #6b7280; }
+
+/* Organ status dots */
+.dot-ok   { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+.dot-warn { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+.dot-hold { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #ef4444; }
+.dot-void { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6b7280; }

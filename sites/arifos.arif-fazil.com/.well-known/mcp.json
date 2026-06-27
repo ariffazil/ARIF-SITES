@@ -1,0 +1,27 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-manifest.json",
+  "author": {
+    "name": "Arif Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "categories": ["governance", "federation", "constitution", "observatory", "arifos"],
+  "description": "arifOS Constitutional Governance Observatory. Real-time federation health, floor scores, vault status, and organ topology. MCP transport: streamable-http + JSON-RPC 2.0.",
+  "homepage": "https://arifos.arif-fazil.com",
+  "license": "AGPL-3.0",
+  "name": "arifOS Observatory",
+  "repository": "https://github.com/ariffazil/arifos",
+  "version": "2026.06.26",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://arifos.arif-fazil.com/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools_summary": {
+    "total": 7,
+    "categories": ["governance", "health", "vault", "federation"]
+  }
+}

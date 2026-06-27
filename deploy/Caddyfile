@@ -1,389 +1,655 @@
 # arifOS Sovereign Caddyfile
 # DITEMPA BUKAN DIBERI
-# 3 Main Sites: arif-fazil.com | arifos.arif-fazil.com | aaa.arif-fazil.com
-# Federation MCP: arifos (13) | geox (28) | wealth (40+) | well (30+)
-# Last reconcile: 2026-05-01 — FULL SWEEP: root→dist, apex+wiki merged, handle_path fixed
-
+# Trinity: Ψ arif-fazil.com | Ω arifos.arif-fazil.com | Δ aaa.arif-fazil.com
+# Organ MCP (API-only): geox | wealth | well | forge
+# Infra (internal): ollama | openclaw | claw | deploy | prometheus | grafana | temporal | nats | monitor | vault999
+# Legacy redirects: mcp | arifosmcp | wiki
+# Last reconcile: 2026-06-20 — Trinity consolidation (wiki→arifos/wiki, mcp simplified, header cleaned)
 {
-    admin unix//var/run/caddy-admin.sock
-    email arif@arif-fazil.com
+	admin unix//var/run/caddy-admin.sock
+	email arif@arif-fazil.com
+	http_port 80
+	https_port 443
 }
-
 (tls_origin) {
-    tls /data/cloudflare-origin/cert.pem /data/cloudflare-origin/key.pem
-    header {
-        Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
-        X-Content-Type-Options "nosniff"
-        X-Frame-Options "SAMEORIGIN"
-        Referrer-Policy "strict-origin-when-cross-origin"
-    }
+	header {
+		Strict-Transport-Security "max-age=15552000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+	}
 }
-
 (shared_assets) {
-    handle /_shared/* {
-        uri strip_prefix /_shared
-        root * /var/www/html/_shared
-        file_server
-    }
+	handle /_shared/* {
+		uri strip_prefix /_shared
+		root * /var/www/html/_shared
+		file_server
+	}
 }
-
 (cors_public) {
-    header Access-Control-Allow-Origin *
-    header Access-Control-Allow-Methods "GET, POST, OPTIONS"
+	@preflight method OPTIONS
+	handle @preflight {
+		header Access-Control-Allow-Origin *
+		header Access-Control-Allow-Methods "GET, POST, OPTIONS"
+		header Access-Control-Allow-Headers "Content-Type, Mcp-Session-Id, Authorization, X-Requested-With"
+		header Access-Control-Max-Age 86400
+		respond "" 204
+	}
+	header Access-Control-Allow-Origin *
+	header Access-Control-Allow-Methods "GET, POST, OPTIONS"
+	header Access-Control-Allow-Headers "Content-Type, Mcp-Session-Id, Authorization, X-Requested-With"
 }
-
 # ═══════════════════════════════════════════════════════════════════════
 # MAIN SITE 1 — Ψ HUMAN SURFACE
-# arif-fazil.com | www.arif-fazil.com
-# Root: /var/www/html/arif/dist (built React bundle — was source tree)
-# Sub-pages: /apex | /wiki | /888 | /000 | /999 | /.well-known
-# ═══════════════════════════════════════════════════════════════════════
-arif-fazil.com {
-    import tls_origin
-    import shared_assets
-    encode zstd gzip
-    root * /var/www/html/arif
-
-    # ACME challenge + identity
-    handle_path /.well-known/* {
-        root * /var/www/html/arif/.well-known
-        file_server
-    }
-
-    # Constitutional genesis
-    handle_path /000/* {
-        root * /var/www/html/arif/000
-        try_files {path} /index.html
-        file_server
-    }
-
-    # Constitutional validation
-    handle_path /999/* {
-        root * /var/www/html/arif/999
-        try_files {path} /index.html
-        file_server
-    }
-
-    # AGI lane (888)
-    handle_path /888/* {
-        root * /var/www/html/arif/888
-        try_files {path} /index.html
-        file_server
-    }
-
-    # APEX theory
-    handle_path /apex/* {
-        root * /var/www/html/apex
-        try_files {path} /index.html
-        file_server
-    }
-
-    # Ω-Wiki
-    handle_path /wiki/* {
-        root * /var/www/html/wiki
-        try_files {path} /index.html
-        file_server
-    }
-
-    # MCP endpoint — arifOS constitutional kernel
-    handle /mcp* {
-        reverse_proxy arifosmcp:8080 {
-            header_up Host arifosmcp
-        }
-    }
-
-    # Health + Tools endpoints
-    handle /health {
-        reverse_proxy arifosmcp:8080
-    }
-
-    handle /tools {
-        reverse_proxy arifosmcp:8080
-    }
-
-    handle {
-        try_files {path} /index.html
-        file_server
-    }
-}
-
-# ═══════════════════════════════════════════════════════════════════════
-# MAIN SITE 2 — Ω ARIFOS OBSERVATORY
-# arifos.arif-fazil.com
-# Root: /var/www/html/arifos
-# MCP: /mcp*, /health, /tools, /sse → arifosmcp:8080
-# Ω-Wiki: /wiki/*
-# ═══════════════════════════════════════════════════════════════════════
-arifos.arif-fazil.com {
-    import tls_origin
-    import shared_assets
-    encode zstd gzip
-    root * /var/www/html/arifos
-
-    handle_path /.well-known/* {
-        root * /var/www/html/arifos/.well-known
-        file_server
-    }
-
-    handle /mcp* {
-        reverse_proxy arifosmcp:8080
-    }
-    handle /health {
-        reverse_proxy arifosmcp:8080
-    }
-
-    handle /tools.json {
-        reverse_proxy arifosmcp:8080
-    }
-    handle /sse* {
-        reverse_proxy arifosmcp:8080
-    }
-    handle /api/status {
-        reverse_proxy arifosmcp:8080
-    }
-
-    # Agent discovery + WebMCP routes (P0 fix)
-    handle /agent-card.json {
-        root * /var/www/html/arifos
-        file_server
-    }
-    handle /a2a/discovery {
-        root * /var/www/html/arifos/a2a
-        try_files {path} /discovery.json
-        file_server
-    }
-    handle /llms.txt {
-        root * /var/www/html/arifos
-        file_server
-    }
-    handle /llms.json {
-        root * /var/www/html/arifos
-        file_server
-    }
-    handle /llms-full.txt {
-        root * /var/www/html/arifos
-        file_server
-    }
-    handle /webmcp {
-        reverse_proxy arifosmcp:8080 {
-            flush_interval 100ms
-        }
-    }
-    # Ω-Wiki merged from wiki.arif-fazil.com
-    handle_path /wiki/* {
-        root * /var/www/html/wiki
-        try_files {path} /index.html
-        file_server
-    }
-
-    handle {
-        try_files {path} /index.html
-        file_server
-    }
-}
-
-# ═══════════════════════════════════════════════════════════════════════
-# MAIN SITE 3 — Δ AAA COCKPIT
-# aaa.arif-fazil.com
-# A2A: /a2a/* → aaa-a2a:3001
-# ═══════════════════════════════════════════════════════════════════════
-aaa.arif-fazil.com {
-    import tls_origin
-    import shared_assets
-    encode zstd gzip
-    root * /var/www/html/aaa
-
-    @a2a_static path /a2a/agent-card.json /a2a/agent.json /a2a/agents.json /a2a/status.json /a2a/index.html
-    handle @a2a_static {
-        file_server
-    }
-
-    handle /a2a/* {
-        reverse_proxy aaa-a2a:3001
-    }
-
-    # Built assets have content-hashed names — serve directly, never SPA fallback
-    handle /assets/* {
-        header Cache-Control "public, max-age=31536000, immutable"
-        file_server
-    }
-
-    handle {
-        try_files {path} /index.html
-        file_server
-    }
-}
-
-# ═══════════════════════════════════════════════════════════════════════
-# WWW — canonicalize to bare apex
 # ═══════════════════════════════════════════════════════════════════════
 www.arif-fazil.com {
-    import tls_origin
-    redir https://arif-fazil.com{uri} permanent
+	import tls_origin
+	redir https://arif-fazil.com{uri} permanent
+}
+arif-fazil.com {
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	root * /var/www/html/arif
+	@well-known path /.well-known/*
+	handle @well-known {
+		uri strip_prefix /.well-known
+		root * /var/www/html/arif/.well-known
+		try_files {path} {path}/index.html /index.html
+		file_server
+	}
+	@genesis path /000/*
+	handle @genesis {
+		uri strip_prefix /000
+		root * /var/www/html/arif/000
+		try_files {path} /index.html
+		file_server
+	}
+	@validation path /999/*
+	handle @validation {
+		uri strip_prefix /999
+		root * /var/www/html/arif/999
+		try_files {path} /index.html
+		file_server
+	}
+	# Built assets have content-hashed names — serve directly, never SPA fallback
+	handle /assets/* {
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+	# SSG pre-rendered pages — serve static HTML instead of SPA shell
+	# Homepage
+	handle / {
+		try_files {path} /static/home.html {path} /index.html
+		file_server
+	}
+	# SSG routes: serve pre-rendered static HTML directly
+	handle /canon/* {
+		try_files /static/canon.html /index.html
+		file_server
+	}
+	handle /constellation/* {
+		try_files /static/constellation.html /index.html
+		file_server
+	}
+	handle /discoveries/* {
+		try_files /static/discoveries.html /index.html
+		file_server
+	}
+	handle /essays/* {
+		try_files /static/essays.html /index.html
+		file_server
+	}
+	handle /genesis/* {
+		try_files /static/genesis.html /index.html
+		file_server
+	}
+	handle /wealth/* {
+		try_files /static/wealth.html /index.html
+		file_server
+	}
+	handle {
+		try_files {path} /index.html
+		file_server
+	}
+}
+# ═══════════════════════════════════════════════════════════════════════
+# MAIN SITE 2 — Ω ARIFOS OBSERVATORY
+# ═══════════════════════════════════════════════════════════════════════
+arifos.arif-fazil.com {
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	root * /var/www/html/arifos
+
+	# ── MCP API routes → arifOS kernel (port 8088) ──────────────────────────
+	handle /.well-known/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	@llmsfile path /llms.txt
+	header @llmsfile {
+		Cache-Control "no-cache, no-store, must-revalidate"
+		CDN-Cache-Control "no-cache"
+		Cloudflare-CDN-Cache-Control "no-cache"
+		Pragma "no-cache"
+		Expires "0"
+	}
+	handle /manifest.txt {
+		header Cache-Control "no-cache"
+		root * /var/www/html/arifos
+		file_server
+	}
+	handle /llms.txt {
+		root * /var/www/html/arifos
+		file_server
+	}
+
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:8088 {
+			header_up Accept "text/event-stream, application/json, application/json-rpc"
+		}
+	}
+
+	handle /api/status {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /api/federation-probe {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /api/build-info {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	# F13 #4 closure (2026-06-11): serve arifOS doctrine (floors F0-F13,
+	# scar.json, theory/000/*) publicly so the constitution is legible
+	# to any client. The kernel is the source of truth; Caddy is a
+	# passthrough file_server, no governance on the bytes themselves
+	# (governance is on the AGENT, not the pages).
+	handle /static/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /inspector/sot {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /ready {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /tools {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /tools/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /tools.json {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /sse* {
+		reverse_proxy 127.0.0.1:8088 {
+			header_up Accept "text/event-stream, application/json, application/json-rpc"
+		}
+	}
+
+	# ── Phase 3E: Approval ticket mutation ────────────────────────────────────
+	handle /approval* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	# ── Organ health proxy routes (bypass Cloudflare challenge for API calls) ─
+	handle /api/organs/arifos/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /api/organs/geox/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /api/organs/wealth/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /api/organs/well/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /api/organs/apex/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:3002
+	}
+	handle /api/organs/a-forge/health {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:7071
+	}
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /inspector/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	handle /health {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	# ── SSH key files for Termux provisioning (2026-06-14) ──────────────────
+	handle /arifos-pubkey.pub {
+		file_server
+	}
+	handle /arifos-hostkey.pub {
+		file_server
+	}
+
+	# ── SOT dashboard (React SPA) → static files (SPA fallback) ──────────
+	# root * MUST be inside handle for file_server (handle scope is
+	# separate from vhost scope; without it, file_server falls back to
+	# default root and 404s even when files exist).
+	handle {
+		root * /var/www/html/arifos
+		try_files {path} {path}/index.html /index.html
+		file_server
+	}
 }
 
+ai.arif-fazil.com {
+	import tls_origin
+	encode zstd gzip
+	import cors_public
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8091
+	}
+	handle /mcp* {
+		reverse_proxy 127.0.0.1:8091
+	}
+	handle {
+		reverse_proxy 127.0.0.1:8091
+	}
+}
 # ═══════════════════════════════════════════════════════════════════════
-# APEX — removed; served at /apex/ under bare domain
+# THEORY / APEX — DECOMMISSIONED 2026-06-24
+# APEX deliberation absorbed into AAA a2a-server. Service stopped/disabled.
 # ═══════════════════════════════════════════════════════════════════════
 # apex.arif-fazil.com {
-#     import tls_origin
-#     redir https://arif-fazil.com/apex{uri} permanent
+# 	import tls_origin
+# 	import shared_assets
+# 	encode zstd gzip
+# 	# A2A protocol endpoints → APEX Prime (port 3002)
+# 	# APEX exposes: /.well-known/agent-card.json, /tasks, /tasks/{id}, /tasks/{id}/stream
+# 	handle /tasks {
+# 		import cors_public
+# 		reverse_proxy 127.0.0.1:3002
+# 	}
+# 	handle /tasks/* {
+# 		import cors_public
+# 		reverse_proxy 127.0.0.1:3002
+# 	}
+# 	handle /.well-known/agent-card.json {
+# 		import cors_public
+# 		reverse_proxy 127.0.0.1:3002
+# 	}
+# 	# Static landing at root
+# 	handle {
+# 		root * /var/www/html/apex
+# 		try_files {path} /index.html
+# 		file_server
+# 	}
 # }
-
 # ═══════════════════════════════════════════════════════════════════════
 # FEDERATION MCP — GEOX
-# geox.arif-fazil.com
-# ChatGPT registered here — DO NOT MOVE
+# Keep at geox.arif-fazil.com — ChatGPT registered here
 # ═══════════════════════════════════════════════════════════════════════
 geox.arif-fazil.com {
-    import tls_origin
-    import shared_assets
-    encode zstd gzip
-    root * /var/www/html/geox
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	root * /var/www/html/geox
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /health {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /api/build-info {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081
+	}
 
-    # Serve .las files with correct content-type
-    @las_files {
-        path *.las
-    }
-    handle @las_files {
-        header Content-Type "application/octet-stream"
-        file_server
-    }
-
-    # GEOX artifact download — PNG/CSV panels
-    handle /panels/* {
-        root * /data/geox_panels
-        file_server
-        header Cache-Control "no-store, no-cache"
-    }
-
-    # GEOX MCP — proxy /mcp to geox_eic, FastMCP serves at root
-    handle /mcp* {
-        reverse_proxy 172.19.0.5:8081 {
-            header_up Host {host}
-            header_up X-Real-IP {remote_host}
-            header_up Accept "text/event-stream, application/json"
-            flush_interval -1
-        }
-    }
-    handle /health {
-        import cors_public
-        reverse_proxy 172.19.0.5:8081
-    }
-    handle /ready {
-        import cors_public
-        reverse_proxy 172.19.0.5:8081
-    }
-    handle /status {
-        import cors_public
-        reverse_proxy 172.19.0.5:8081
-    }
-    handle /sse* {
-        reverse_proxy 172.19.0.5:8081
-    }
-
-    handle {
-        try_files {path} /index.html
-        file_server
-    }
+	handle /ready {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /sse* {
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /status {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /.well-known/mcp/server.json {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle /tools {
+		import cors_public
+		reverse_proxy 127.0.0.1:8081 {
+			header_up Host geox.arif-fazil.com
+		}
+	}
+	handle {
+		try_files {path} /index.html
+		file_server
+	}
 }
-
 # ═══════════════════════════════════════════════════════════════════════
 # FEDERATION MCP — WEALTH
-# wealth.arif-fazil.com
-# ChatGPT registered here — DO NOT MOVE
+# Keep at wealth.arif-fazil.com — ChatGPT registered here
+# Note: wealth-organ internal port is 18082
 # ═══════════════════════════════════════════════════════════════════════
 wealth.arif-fazil.com {
-    import tls_origin
-    import shared_assets
-    encode zstd gzip
-    root * /var/www/html/wealth
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	root * /var/www/html/wealth
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /health {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /sse* {
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /.well-known/mcp/server.json {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /tools {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle /api/build-info {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
 
-    handle /mcp* {
-        import cors_public
-        reverse_proxy wealth-organ:8082
-    }
-    handle /health {
-        import cors_public
-        reverse_proxy wealth-organ:8082
-    }
-    handle /ready {
-        import cors_public
-        reverse_proxy wealth-organ:8082
-    }
-    handle /sse* {
-        reverse_proxy wealth-organ:8082
-    }
-
-    handle {
-        try_files {path} /index.html
-        file_server
-    }
+	handle /ready {
+		import cors_public
+		reverse_proxy 127.0.0.1:18082
+	}
+	handle {
+		try_files {path} /index.html
+		file_server
+	}
 }
-
 # ═══════════════════════════════════════════════════════════════════════
 # FEDERATION MCP — WELL
-# well.arif-fazil.com
-# ChatGPT registered here — DO NOT MOVE
-# Root → redirects to arifos.arif-fazil.com
+# Add this — was completely missing from Caddyfile
+# ChatGPT registered at well.arif-fazil.com/mcp
 # ═══════════════════════════════════════════════════════════════════════
 well.arif-fazil.com {
-    import tls_origin
-    encode zstd gzip
+	import tls_origin
+	encode zstd gzip
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /health {
+		import cors_public
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /api/build-info {
+		import cors_public
+		reverse_proxy 127.0.0.1:18083
+	}
 
-    handle /mcp* {
-        import cors_public
-        reverse_proxy well:8083
-    }
-    handle /health {
-        import cors_public
-        reverse_proxy well:8083
-    }
-    handle /sse* {
-        reverse_proxy well:8083
-    }
-    handle {
-        redir https://arifos.arif-fazil.com permanent
-    }
+	handle /ready {
+		import cors_public
+		rewrite * /health
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /sse* {
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /.well-known/mcp/server.json {
+		import cors_public
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle /tools {
+		import cors_public
+		reverse_proxy 127.0.0.1:18083
+	}
+	handle {
+		redir https://arifos.arif-fazil.com permanent
+	}
 }
-
 # ═══════════════════════════════════════════════════════════════════════
-# LEGACY REDIRECTS — consolidated to main sites
+# LEGACY REDIRECTS — old subdomains → main sites
 # ═══════════════════════════════════════════════════════════════════════
-arifosmcp.arif-fazil.com {
-    import tls_origin
-    redir https://arifos.arif-fazil.com/mcp{uri} permanent
-}
-
+# MCP — legacy alias. Canonical MCP surface is arifos.arif-fazil.com/mcp.
+# Keep /mcp* proxy live for existing MCP clients; humans → Observatory.
 mcp.arif-fazil.com {
-    import tls_origin
-    handle /mcp* {
-        reverse_proxy arifosmcp:8080
-    }
-    handle /.well-known/mcp/* {
-        root * /var/www/html/arifos
-        file_server
-    }
-    handle {
-        redir https://arifos.arif-fazil.com{uri} permanent
-    }
+	import tls_origin
+	# Microsoft Copilot / public MCP clients need proper CORS preflight.
+	# Keep cors_public at the edge so OPTIONS is answered before it reaches arifOS.
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /sse* {
+		import cors_public
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle {
+		redir https://arifos.arif-fazil.com{uri} permanent
+	}
 }
+# ═══════════════════════════════════════════════════════════════════════
+# FORGE WEBHOOK — A-FORGE event receiver + arifOS governance gateway
+# Route: forge.arif-fazil.com/webhook/forge → port 7071 (A-FORGE)
+# ─────────────────────────────────────────────────────────────────────
+forge.arif-fazil.com {
+	import tls_origin
+	# /webhook/* removed 2026-06-17 — was pointing at :8443 (no backend).
+	# For deploy webhooks use deploy.arif-fazil.com (port 18000, /deploy).
 
-# WIKI — consolidated into arifos.arif-fazil.com/wiki
+	# OpenCode Web IDE (Tier 1, 2026-06-19)
+	handle /opencode/* {
+		reverse_proxy 127.0.0.1:4096 {
+			header_up Host 127.0.0.1:4096
+		}
+	}
+	handle /opencode {
+		reverse_proxy 127.0.0.1:4096
+	}
+
+	# NOTE: opencode acp is stdio-only (JSON-RPC over stdin/stdout).
+	# Not exposed as HTTP. A-FORGE → opencode connection uses MCP client (stdio).
+	# Service: systemd unit /etc/systemd/system/opencode-acp.service (disabled, kept for reference).
+
+	# A-FORGE MCP (existing)
+	handle /mcp* {
+		import cors_public
+		reverse_proxy 127.0.0.1:7071
+	}
+	handle /health {
+		import cors_public
+		reverse_proxy 127.0.0.1:7071
+	}
+	handle {
+		respond "forge.arif-fazil.com — A-FORGE MCP gateway + OpenCode IDE (/opencode). ACP is stdio-only. /webhook/* removed 2026-06-17 (no backend); use deploy.arif-fazil.com/deploy for deploy webhooks."
+	}
+}
+# ═══════════════════════════════════════════════════════════════════════
+# WIKI → arifos.arif-fazil.com/wiki (Trinity consolidation 2026-06-20)
+# ═══════════════════════════════════════════════════════════════════════
 wiki.arif-fazil.com {
-    import tls_origin
-    redir https://arifos.arif-fazil.com/wiki{uri} permanent
+	import tls_origin
+	redir https://arifos.arif-fazil.com/wiki{uri} permanent
 }
+# MAIN SITE 3 — Δ AAA COCKPIT
+# ═══════════════════════════════════════════════════════════════════════
+aaa.arif-fazil.com {
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	root * /var/www/html/aaa
 
+	@a2a_static path /a2a/agent-card.json /a2a/agent.json /a2a/agents.json /a2a/status.json /a2a/index.html
+	handle @a2a_static {
+		file_server
+	}
+
+	handle /a2a/* {
+		reverse_proxy 127.0.0.1:3001
+	}
+	handle /api/* {
+		reverse_proxy 127.0.0.1:3001
+	}
+	handle /health {
+		reverse_proxy 127.0.0.1:3001
+	}
+
+	handle /ready {
+		rewrite * /health
+		reverse_proxy 127.0.0.1:3001
+	}
+	handle /.well-known/* {
+		reverse_proxy 127.0.0.1:3001
+	}
+
+	handle /assets/* {
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# Cockpit pages + SPA fallback - try directory index first, then SPA shell
+	handle {
+		try_files {path} {path}/index.html /index.html
+		file_server
+	}
+}
 # ═══════════════════════════════════════════════════════════════════════
 # INFRASTRUCTURE
 # ═══════════════════════════════════════════════════════════════════════
-dozzle.arif-fazil.com {
-    import tls_origin
-    reverse_proxy dozzle:8080
+ollama.arif-fazil.com {
+	import tls_origin
+	reverse_proxy 127.0.0.1:11434
+}
+# ═══════════════════════════════════════════════════════════════════════
+# OPENCLAW WEBHOOK PROXY
+# ═══════════════════════════════════════════════════════════════════════
+claw.arif-fazil.com {
+	import tls_origin
+	# Proxy /telegram webhook calls to OpenClaw gateway
+	handle /telegram* {
+		reverse_proxy 127.0.0.1:18789
+	}
+	# Health check
+	handle /health {
+		reverse_proxy 127.0.0.1:18789
+	}
+	# Main gateway for OpenClaw web UI
+	handle {
+		reverse_proxy 127.0.0.1:18789
+	}
+}
+# ═══════════════════════════════════════════════════════════════════════
+# OPENCLAW GATEWAY
+# Telegram webhook: /telegram-webhook → OpenClaw gateway :18789
+# deploy webhook: deploy.arif-fazil.com → webhook-receiver :18000
+# agent-card: /.well-known/agent-card.json → cn-organ :18795
+# ═══════════════════════════════════════════════════════════════════════
+openclaw.arif-fazil.com {
+	import tls_origin
+	encode zstd gzip
+	handle /telegram-webhook {
+		reverse_proxy 127.0.0.1:8787
+	}
+	handle /.well-known/agent-card.json {
+		reverse_proxy 127.0.0.1:18795
+	}
+	handle {
+		reverse_proxy 127.0.0.1:18789
+	}
+}
+# ═══════════════════════════════════════════════════════════════════════
+# WEBHOOK DEPLOY ENDPOINT
+# ═══════════════════════════════════════════════════════════════════════
+deploy.arif-fazil.com {
+	import tls_origin
+	reverse_proxy 127.0.0.1:18000
+}
+# ═══════════════════════════════════════════════════════════════════════
+# LEGACY REDIRECT — arifosmcp.arif-fazil.com → arifos.arif-fazil.com
+# ═══════════════════════════════════════════════════════════════════════
+arifosmcp.arif-fazil.com {
+	import tls_origin
+	handle /mcp* {
+		redir https://arifos.arif-fazil.com{uri} permanent
+	}
+	handle {
+		redir https://arifos.arif-fazil.com permanent
+	}
 }
 
-ollama.arif-fazil.com {
-    import tls_origin
-    reverse_proxy ollama-engine-prod:11434
+# ═══════════════════════════════════════════════════════════════════════
+# APEX MONITORING STACK (L9) — Prometheus + Grafana + Temporal + NATS
+# ═══════════════════════════════════════════════════════════════════════
+prometheus.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:9090
+}
+
+grafana.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:3000
+}
+
+temporal.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:8233
+}
+
+nats.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:8222
+}
+
+monitor.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:3000
+}
+
+# ═══════════════════════════════════════════════════════════════════════
+# VAULT999 CONSTITUTIONAL LEDGER
+# ═══════════════════════════════════════════════════════════════════════
+vault999.arif-fazil.com {
+	import tls_origin
+	reverse_proxy localhost:8100
 }

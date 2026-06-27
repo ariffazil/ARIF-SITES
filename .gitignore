@@ -25,5 +25,10 @@ npm-debug.log*
 # Cache
 .vite/
 
+# Backup files — dated snapshots from deploys
+*.bak.*
+dist.bak*/
+Caddyfile.bak*
+
 # Secrets — never commit credentials
 infra/vps_root/opencode-config/auth.json

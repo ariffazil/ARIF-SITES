@@ -1,6 +1,6 @@
 # SITES.md — arifOS Federation Canonical Routing Table
 > **DITEMPA BUKAN DIBERI** — Single source of truth. Generated from live Caddyfile.
-> **Last reconciled:** 2026-06-20
+> **Last reconciled:** 2026-06-26 (1st loop fix — Caddyfile sync + SITES.md alignment)
 > **Replaces:** ARCHITECTURE.md, ARIF_FAZIL_COM_TRINITY_MAP.md, INVARIANTS.md, ROUTING_INVARIANTS.md, DEPLOYMENT.md (sections on routing)
 
 ---
@@ -19,20 +19,12 @@
 
 | Domain | Upstream | Port | Status |
 |--------|----------|------|--------|
-| `geox.arif-fazil.com` | `127.0.0.1:8081` | GEOX daemon | ✅ LIVE — future own repo |
-| `wealth.arif-fazil.com` | `127.0.0.1:18082` | WEALTH organ | ✅ LIVE — future own repo |
+| `geox.arif-fazil.com` | `127.0.0.1:8081` | GEOX daemon | ✅ LIVE |
+| `wealth.arif-fazil.com` | `127.0.0.1:18082` | WEALTH organ | ✅ LIVE |
 | `well.arif-fazil.com` | `127.0.0.1:18083` | WELL organ | ✅ LIVE (MCP only; root → arifos) |
-| `forge.arif-fazil.com` | `127.0.0.1:7071` | A-FORGE | ✅ LIVE — future own repo |
+| `forge.arif-fazil.com` | `127.0.0.1:7071` (A-FORGE MCP) + `/opencode/*` → 4096 (OpenCode IDE) | A-FORGE + OpenCode | ✅ LIVE |
 
 > **ChatGPT-registered at these domains. DO NOT MOVE without updating ChatGPT MCP configs.**
-
----
-
-## SECONDARY — Theory + Reference
-
-| Domain | Upstream | Role |
-|--------|----------|------|
-| `apex.arif-fazil.com` | `127.0.0.1:3002` (APEX) | Theory surface, A2A tasks |
 
 ---
 
@@ -74,6 +66,7 @@
 | `wawa.arif-fazil.com` | Archived |
 | `hermes.arif-fazil.com` | Never deployed |
 | `copilot.arif-fazil.com` | Never deployed |
+| `apex.arif-fazil.com` | ⚠️ DECOMMISSIONED — deliberation absorbed into AAA `:3001`. Use `/apex/` under `arif-fazil.com`. |
 
 ---
 
@@ -87,7 +80,7 @@
 | WELL organ | 18083 | python3 |
 | AAA A2A | 3001 | node |
 | A-FORGE | 7071 | node |
-| APEX | 3002 | archived (read-only) |
+| APEX | 3002 | ⚠️ DECOMMISSIONED — deliberation absorbed into AAA `:3001` |
 | Caddy | 80, 443 | reverse proxy |
 
 ---
@@ -105,14 +98,24 @@ curl https://well.arif-fazil.com/health    # WELL → 200
 
 ---
 
+## KNOWN ISSUES
+
+| Issue | Severity | Status | Resolution |
+|-------|----------|--------|------------|
+| `/static/` routes in Caddyfile reference non-existent files | LOW | Known — SPA fallback masks | 888_HOLD — requires Caddy reload |
+| Live Caddyfile was edited directly (not via repo) | MEDIUM | Fixed 2026-06-26 | Repo now synced from live |
+| ARCHITECTURE.md still exists despite supersession | LOW | Known | Preserved for historical reference |
+
+---
+
 ## SOURCE OF TRUTH
 
-- **Caddyfile:** `/etc/caddy/Caddyfile` (live runtime)
-- **arif-sites repo:** `github.com/ariffazil/arif-sites` (static content)
+- **Caddyfile:** `/etc/caddy/Caddyfile` (live runtime) — NOW SYNCED to repo
+- **arif-sites repo:** `github.com/ariffazil/arif-sites` (static content + Caddyfile)
 - **Verification:** `ss -ltnp | grep <port>` for process ownership
 - **This document:** Regenerate from Caddyfile on any routing change
 
 ---
 
-*Sealed 2026-06-20. Trinity consolidation — 5 conflicting docs replaced by 1.*
+*Sealed 2026-06-20. Last updated 2026-06-26 (1st loop fix — Caddyfile sync + SITES.md alignment).*
 *DITEMPA BUKAN DIBERI — Forged, Not Given.*

@@ -304,13 +304,13 @@ a:hover{color:var(--color-gold)}
     <a class="nav-chip" href="https://arif-fazil.com/"><span class="icon">🏛️</span>arif-fazil.com</a>
     <a class="nav-chip" href="https://aaa.arif-fazil.com/"><span class="dot dot-ok"></span>AAA Cockpit</a>
     <a class="nav-chip active" href="https://arifos.arif-fazil.com/"><span class="dot dot-ok"></span>Observatory</a>
-    <a class="nav-chip" href="https://arifos.arif-fazil.com/dashboard-v2.html"><span class="icon">📊</span>Dashboard v2</a>
+    <a class="nav-chip" href="https://arifos.arif-fazil.com/federation.html"><span class="icon">📊</span>Federation</a>
     <a class="nav-chip" href="https://geox.arif-fazil.com/"><span class="dot dot-ok" id="geoxDot"></span>GEOX</a>
     <a class="nav-chip" href="https://wealth.arif-fazil.com/"><span class="dot dot-ok" id="wealthDot"></span>WEALTH</a>
     <a class="nav-chip" href="https://well.arif-fazil.com/"><span class="dot dot-ok" id="wellDot"></span>WELL</a>
     <a class="nav-chip" href="https://mcp.arif-fazil.com/"><span class="icon">🔌</span>MCP Gateway</a>
-    <a class="nav-chip" href="https://wiki.arif-fazil.com/"><span class="icon">📖</span>Ω-Wiki</a>
-    <a class="nav-chip" href="https://apex.arif-fazil.com/"><span class="icon">⚡</span>APEX</a>
+    <a class="nav-chip" href="https://arifos.arif-fazil.com/wiki/"><span class="icon">📖</span>Ω-Wiki</a>
+    <a class="nav-chip" href="https://arif-fazil.com/apex/"><span class="icon">⚡</span>APEX</a>
     <a class="nav-chip" href="https://arif-fazil.com/canon/"><span class="icon">📐</span>Canon</a>
   </div>
 
@@ -497,7 +497,7 @@ a:hover{color:var(--color-gold)}
           <a class="organ-link" href="https://aaa.arif-fazil.com/">aaa.arif-fazil.com →</a>
         </div>
         <!-- A-FORGE -->
-        <div class="organ-card" data-organ="forge" data-url="https://forge.arif-fazil.com">
+        <div class="organ-card" data-organ="forge" data-url="">
           <div class="organ-card-header">
             <span class="organ-card-icon">⚡</span>
             <div>
@@ -516,10 +516,10 @@ a:hover{color:var(--color-gold)}
             <div class="organ-cap"><span class="cdot cdot-planned"></span>Cross-organ mesh protocol</div>
           </div>
           <div class="organ-neg">Not a generic CI/CD pipeline. Sovereign metabolic execution only.</div>
-          <a class="organ-link" href="https://forge.arif-fazil.com/">forge.arif-fazil.com →</a>
+          <span class="organ-link" style="opacity:0.5">Internal service — no public site</span>
         </div>
         <!-- Ω-Wiki -->
-        <div class="organ-card" data-organ="wiki" data-url="https://wiki.arif-fazil.com">
+        <div class="organ-card" data-organ="wiki" data-url="https://arifos.arif-fazil.com/wiki/">
           <div class="organ-card-header">
             <span class="organ-card-icon">📖</span>
             <div>
@@ -538,7 +538,7 @@ a:hover{color:var(--color-gold)}
             <div class="organ-cap"><span class="cdot cdot-planned"></span>Cross-repo schema linking</div>
           </div>
           <div class="organ-neg">Not a generic wiki. Compiled constitutional memory only.</div>
-          <a class="organ-link" href="https://wiki.arif-fazil.com/">wiki.arif-fazil.com →</a>
+          <a class="organ-link" href="https://arifos.arif-fazil.com/wiki/">arifos.arif-fazil.com/wiki →</a>
         </div>
       </div>
     </div>
@@ -887,7 +887,7 @@ a:hover{color:var(--color-gold)}
           <div class="route-item"><span class="method method-get">GET</span>/tools</div>
           <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
           <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp/server.json</div>
-          <div class="route-item"><span class="method method-get">GET</span>/dashboard-v2.html</div>
+          <div class="route-item"><span class="method method-get">GET</span>/federation.html</div>
         </div>
       </div>
     </div>
@@ -967,7 +967,7 @@ a:hover{color:var(--color-gold)}
 
     <div class="sitemap-card">
       <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-hold"></span> wiki.arif-fazil.com</span>
+        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> arifos.arif-fazil.com/wiki</span>
         <span class="sitemap-tag">KNOWLEDGE</span>
       </div>
       <div class="sitemap-body">
@@ -980,7 +980,7 @@ a:hover{color:var(--color-gold)}
 
     <div class="sitemap-card">
       <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> apex.arif-fazil.com</span>
+        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> arif-fazil.com/apex</span>
         <span class="sitemap-tag">AUTHORITY</span>
       </div>
       <div class="sitemap-body">
@@ -1437,8 +1437,8 @@ async function loadOrganDiscovery() {
     {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:44,note:'MCP session required'},
     {id:'well',url:'https://well.arif-fazil.com',verifiedCount:45,note:'MCP session required'},
     {id:'aaa',url:'https://aaa.arif-fazil.com',verifiedCount:null,note:'unknown'},
-    {id:'forge',url:'https://forge.arif-fazil.com',verifiedCount:null,note:'unknown'},
-    {id:'wiki',url:'https://wiki.arif-fazil.com',verifiedCount:null,note:'static site'},
+    {id:'forge',url:'',verifiedCount:null,note:'internal service'},
+    {id:'wiki',url:'https://arifos.arif-fazil.com/wiki/',verifiedCount:null,note:'static site'},
   ];
 
   // Primary health source: same-origin server-side probe (bypasses CORS)

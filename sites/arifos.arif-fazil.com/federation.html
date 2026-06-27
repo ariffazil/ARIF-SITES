@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en" data-ring="MIND">
+<!--
+  ORIGIN: arifOS Federation — Federation Map
+  FORGED: 2026-06-26 (replaces <h1>test</h1> stub)
+  SOVEREIGN: Muhammad Arif bin Fazil — F13 absolute veto
+  KERNEL: arifOS v2026.06.26 — 13 Constitutional Floors (F1–F13)
+  ARCHITECTURE: 3-Realities (Static Shell + Dynamic Data + Content Stream)
+  SOURCE OF TRUTH: /federation-manifest.json (regenerated 2026-06-26T15:48:15Z)
+  SIGNATURE: DITEMPA BUKAN DIBERI — Forged, Not Given.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federation Map — arifOS · 6 Organs · 13 Floors</title>
+<meta name="description" content="Live federation map of the arifOS constitutional kernel and 6 organs. 13 floors. JSON-RPC transport. DITEMPA BUKAN DIBERI.">
+<link rel="canonical" href="https://arifos.arif-fazil.com/federation">
+<meta name="theme-color" content="#00D4AA">
+<meta property="og:title" content="arifOS Federation Map — 6 Organs · 13 Floors · 120 Tools">
+<meta property="og:description" content="Live federation map. 5/6 organs healthy. 120 tools. 13 constitutional floors. arifOS · GEOX · WEALTH · WELL · AAA · A-FORGE.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arifos.arif-fazil.com/federation">
+<link rel="alternate" type="application/json" href="/federation-manifest.json" title="Federation Manifest JSON">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
+<link rel="mcp" href="https://arifos.arif-fazil.com/mcp" type="application/json" title="arifOS Governance Kernel">
+<link rel="mcp" href="#/mcp" type="application/json" title="A-FORGE Engineering Actuator">
+<link rel="mcp" href="https://geox.arif-fazil.com/mcp" type="application/json" title="GEOX Earth Intelligence">
+<link rel="mcp" href="https://wealth.arif-fazil.com/mcp" type="application/json" title="WEALTH Capital Intelligence">
+<link rel="mcp" href="https://well.arif-fazil.com/mcp" type="application/json" title="WELL Vitality Mirror">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e0c;--surface:#0f1411;--gold:#D4A853;--teal:#00D4AA;--red:#FF3333;
+  --text:#d4d2ce;--dim:#888;--border:#1a201d;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;margin:0;padding:0;line-height:1.6}
+.mind-color{color:var(--teal)}
+.soul-color{color:var(--red)}
+.body-color{color:var(--gold)}
+header{padding:3rem 1rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+h1{font-size:2.2rem;margin:0 0 0.5rem;font-weight:700;letter-spacing:-0.02em}
+h2{font-size:1.3rem;margin:2rem 0 1rem;color:var(--teal);font-weight:600;letter-spacing:0.02em;text-transform:uppercase;font-size:0.85rem}
+.subtitle{color:var(--dim);font-size:0.95rem;margin:0.5rem 0 0;font-family:'JetBrains Mono','SF Mono',monospace}
+main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
+.grid{display:grid;gap:1rem}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;transition:border-color 0.15s ease}
+.card:hover{border-color:var(--teal)}
+.card h3{margin:0 0 0.5rem;font-size:1.05rem;font-weight:600}
+.card .meta{color:var(--dim);font-size:0.78rem;font-family:'JetBrains Mono',monospace;margin-top:0.5rem}
+.ring-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:3px;font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;font-family:'JetBrains Mono',monospace}
+.ring-mind{background:rgba(0,212,170,0.1);color:var(--teal)}
+.ring-body{background:rgba(212,168,83,0.1);color:var(--gold)}
+.ring-soul{background:rgba(255,51,51,0.1);color:var(--red)}
+.status{display:inline-flex;align-items:center;gap:0.4rem;padding:0.15rem 0.5rem;border-radius:3px;font-size:0.7rem;font-weight:600;font-family:'JetBrains Mono',monospace}
+.status-healthy{background:rgba(0,212,170,0.15);color:var(--teal)}
+.status-degraded{background:rgba(212,168,83,0.15);color:var(--gold)}
+.status-down{background:rgba(255,51,51,0.15);color:var(--red)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--teal);font-family:'JetBrains Mono',monospace;line-height:1;margin:0.25rem 0}
+.stat-label{color:var(--dim);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
+.floors{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.5rem;margin-top:1rem}
+.floor{padding:0.6rem 0.8rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.78rem}
+.floor strong{color:var(--gold);margin-right:0.4rem}
+.floor span{color:var(--dim);font-size:0.7rem;display:block;margin-top:0.15rem}
+.warn{padding:1rem;background:rgba(255,51,51,0.05);border:1px solid rgba(255,51,51,0.3);border-radius:4px;color:var(--red);font-size:0.85rem;margin:1rem 0}
+.banner{background:linear-gradient(90deg,rgba(0,212,170,0.08),rgba(212,168,83,0.08));padding:1rem 1.5rem;border-radius:6px;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.banner-num{font-size:2rem;font-weight:700;color:var(--teal);font-family:'JetBrains Mono',monospace}
+.banner-text{color:var(--dim);font-size:0.85rem}
+.banner-text strong{color:var(--text)}
+a{color:var(--teal);text-decoration:none;border-bottom:1px dotted rgba(0,212,170,0.3)}
+a:hover{border-bottom-style:solid}
+footer{padding:2rem 1rem;text-align:center;border-top:1px solid var(--border);color:var(--dim);font-size:0.8rem;font-family:'JetBrains Mono',monospace}
+.motto{font-style:italic;letter-spacing:0.1em;font-size:0.75rem;color:#555;margin-top:1rem}
+.section{margin-bottom:3rem}
+pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.78rem;color:var(--dim);font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<!-- ============ STATIC SHELL (always renders) ============ -->
+<header>
+  <h1>arifOS <span class="mind-color">Federation</span></h1>
+  <p class="subtitle">6 organs · 13 constitutional floors · 120 governed tools</p>
+  <p class="motto">DITEMPA BUKAN DIBERI — Forged, Not Given</p>
+</header>
+
+<main>
+
+<!-- ============ LIVE BANNER (dynamic + fallback) ============ -->
+<div class="banner">
+  <div>
+    <div class="banner-num" id="banner-health">5/6</div>
+    <div class="banner-text">organs <strong>healthy</strong></div>
+  </div>
+  <div>
+    <div class="banner-num" id="banner-tools">120</div>
+    <div class="banner-text">tools <strong>live</strong></div>
+  </div>
+  <div>
+    <div class="banner-num" id="banner-floors">13</div>
+    <div class="banner-text">constitutional <strong>floors</strong></div>
+  </div>
+  <div>
+    <div class="banner-num" id="banner-version">v…</div>
+    <div class="banner-text"><strong id="banner-version-label">kernel</strong></div>
+  </div>
+</div>
+
+<!-- ============ TRINITY RINGS (static) ============ -->
+<section class="section">
+  <h2>Trinity · The Three Rings</h2>
+  <div class="grid grid-3">
+    <div class="card">
+      <span class="ring-badge ring-soul">Ψ SOUL</span>
+      <h3 class="soul-color">arif-fazil.com</h3>
+      <p>Human sovereign. Identity, canon, philosophy. F13 absolute veto.</p>
+      <div class="meta">arif-fazil.com · /wealth · /000 · /999</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-mind">Ω MIND</span>
+      <h3 class="mind-color">arifos.arif-fazil.com</h3>
+      <p>Constitutional kernel. 13 floors. 888 JUDGE. 999 VAULT. JSON-RPC MCP.</p>
+      <div class="meta">arifos.arif-fazil.com · :8088 · /mcp</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ BODY</span>
+      <h3 class="body-color">aaa.arif-fazil.com</h3>
+      <p>ASI civilization cockpit. A2A gateway. Operator surface. 25 agent cards.</p>
+      <div class="meta">aaa.arif-fazil.com · :3001 · /cockpit</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORGANS (dynamic, with hardcoded fallback) ============ -->
+<section class="section">
+  <h2>Organs · 6 Live Subsystems</h2>
+  <div id="organs-grid" class="grid grid-3">
+    <!-- HARDCODED FALLBACK (always renders, even if JS fails) -->
+    <div class="card">
+      <span class="ring-badge ring-mind">Ω GOVERNANCE</span>
+      <h3 class="mind-color">arifOS</h3>
+      <p>Constitutional engine. F1–F13 floors. 888 JUDGE. 999 VAULT.</p>
+      <div class="meta"><span class="status status-healthy"><span class="status-dot"></span>HEALTHY</span> · :8088 · 58 tools</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ EARTH</span>
+      <h3 class="body-color">GEOX</h3>
+      <p>Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.</p>
+      <div class="meta"><span class="status status-healthy"><span class="status-dot"></span>HEALTHY</span> · :8081 · 16 tools</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ CAPITAL</span>
+      <h3 class="body-color">WEALTH</h3>
+      <p>NPV / EMV / EVOI. Capital conservation. Wisdom dimensions. Power audit.</p>
+      <div class="meta"><span class="status status-healthy"><span class="status-dot"></span>ALIVE</span> · :18082 · 28 tools</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ VITALITY</span>
+      <h3 class="body-color">WELL</h3>
+      <p>Human readiness. Substrate vitality. Homeostasis. Dignity mirror.</p>
+      <div class="meta"><span class="status status-degraded"><span class="status-dot"></span>DEGRADED</span> · :18083 · 18 tools</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ A2A HUB</span>
+      <h3 class="body-color">AAA</h3>
+      <p>Control plane. A2A gateway. 5 constitutional warga. Operator cockpit.</p>
+      <div class="meta"><span class="status status-healthy"><span class="status-dot"></span>HEALTHY</span> · :3001 · 25 agents</div>
+    </div>
+    <div class="card">
+      <span class="ring-badge ring-body">Δ ENGINEERING</span>
+      <h3 class="body-color">A-FORGE</h3>
+      <p>Execution shell. forge_dry_run. forge_approve. forge_execute. Bounded worker.</p>
+      <div class="meta"><span class="status status-healthy"><span class="status-dot"></span>HEALTHY</span> · :7071</div>
+    </div>
+  </div>
+  <noscript>
+    <p class="warn">JavaScript disabled. Showing canonical organ defaults above. For live status, see <a href="/federation-manifest.json">/federation-manifest.json</a>.</p>
+  </noscript>
+</section>
+
+<!-- ============ 13 CONSTITUTIONAL FLOORS (static content stream) ============ -->
+<section class="section">
+  <h2>13 Constitutional Floors · F1–F13</h2>
+  <div class="floors">
+    <div class="floor"><strong>F1</strong> AMANAH<span>Reversibility · backup before edit</span></div>
+    <div class="floor"><strong>F2</strong> TRUTH<span>Evidence before confidence · OBS/DER/INT/SPEC</span></div>
+    <div class="floor"><strong>F3</strong>—<span>Reserved</span></div>
+    <div class="floor"><strong>F4</strong> CLARITY<span>Reduce entropy · never leave chaos</span></div>
+    <div class="floor"><strong>F5</strong>—<span>Reserved</span></div>
+    <div class="floor"><strong>F6</strong> MARUAH<span>Preserve dignity · no consciousness claims</span></div>
+    <div class="floor"><strong>F7</strong> HUMILITY<span>Cap confidence at 0.90</span></div>
+    <div class="floor"><strong>F8</strong> LAW<span>Respect system boundaries</span></div>
+    <div class="floor"><strong>F9</strong> ANTI-HANTU<span>Reject metaphysical claims</span></div>
+    <div class="floor"><strong>F10</strong>—<span>Reserved</span></div>
+    <div class="floor"><strong>F11</strong> AUDIT<span>Every action leaves a trace</span></div>
+    <div class="floor"><strong>F12</strong>—<span>Reserved</span></div>
+    <div class="floor"><strong>F13</strong> SOVEREIGN<span>Arif holds final veto</span></div>
+  </div>
+</section>
+
+<!-- ============ STACK (dynamic, with fallback) ============ -->
+<section class="section">
+  <h2>Stack · 5 Layers</h2>
+  <pre id="stack-display">Loading live stack from /federation-manifest.json...</pre>
+</section>
+
+<!-- ============ MCP ENDPOINTS (static + dynamic mtime) ============ -->
+<section class="section">
+  <h2>MCP Endpoints · JSON-RPC · Streamable HTTP</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <h3>arifOS · Governance Kernel</h3>
+      <p><code>https://arifos.arif-fazil.com/mcp</code></p>
+      <div class="meta">7 MCP-exposed · 17 canonical · 41 diagnostic · total 58</div>
+    </div>
+    <div class="card">
+      <h3>GEOX · Earth Intelligence</h3>
+      <p><code>https://geox.arif-fazil.com/mcp</code></p>
+      <div class="meta">16 tools · basin · seismic · petrophysics · prospect</div>
+    </div>
+    <div class="card">
+      <h3>WEALTH · Capital Intelligence</h3>
+      <p><code>https://wealth.arif-fazil.com/mcp</code></p>
+      <div class="meta">28 tools · NPV · EMV · EVOI · IRR · conservation</div>
+    </div>
+    <div class="card">
+      <h3>WELL · Vitality Mirror</h3>
+      <p><code>https://well.arif-fazil.com/mcp</code></p>
+      <div class="meta">18 tools · homeostasis · boundary · trace · vitality</div>
+    </div>
+    <div class="card">
+      <h3>AAA · A2A Gateway</h3>
+      <p><code>https://aaa.arif-fazil.com/mcp</code></p>
+      <div class="meta">25 agent cards · 333-AGI · 555-ASI · 888-APEX · A-AUDIT · A-ARCHIVE</div>
+    </div>
+    <div class="card">
+      <h3>A-FORGE · Execution Shell</h3>
+      <p><code>#/mcp</code></p>
+      <div class="meta">forge_dry_run · forge_approve · forge_execute · bounded worker</div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>
+    Source: <a href="/federation-manifest.json">/federation-manifest.json</a> ·
+    Last live probe: <span id="last-probe">unknown</span> ·
+    <a href="/llms.txt">llms.txt</a> ·
+    <a href="/federation.html">refresh</a>
+  </p>
+  <p class="motto">Ψ SOUL · Ω MIND · Δ BODY · DITEMPA BUKAN DIBERI</p>
+</footer>
+
+<!-- ============ DYNAMIC DATA LAYER (with error boundary) ============ -->
+<script>
+(function(){
+  var MANIFEST_URL = '/federation-manifest.json';
+  var FALLBACK_GENERATED = '2026-06-26T15:48:15Z';
+
+  function $(id){return document.getElementById(id);}
+
+  function renderStatus(health){
+    var cls = 'status-healthy';
+    if (health === 'degraded') cls = 'status-degraded';
+    else if (health === 'down' || health === 'dead') cls = 'status-down';
+    return '<span class="status '+cls+'"><span class="status-dot"></span>'+health.toUpperCase()+'</span>';
+  }
+
+  function renderOrgans(organs){
+    var html = '';
+    var keys = Object.keys(organs||{});
+    if (keys.length === 0) return '';
+    for (var i=0;i<keys.length;i++){
+      var k = keys[i];
+      var o = organs[k];
+      html += '<div class="card">' +
+        '<h3 class="mind-color">'+(o.name||k)+'</h3>' +
+        '<p>'+(o.role||'')+'</p>' +
+        '<div class="meta">'+renderStatus(o.status||'unknown')+' · :'+o.port+' · '+(o.tools||'?')+' tools</div>' +
+      '</div>';
+    }
+    return html;
+  }
+
+  function renderStack(layers){
+    if (!layers || !layers.length) return 'No stack data.';
+    var html = '';
+    for (var i=0;i<layers.length;i++){
+      var l = layers[i];
+      html += '['+l.ordinal+'] '+l.name+' — '+l.role+' ('+l.status+')\n';
+    }
+    return html;
+  }
+
+  // Fetch with timeout + error boundary
+  var timeoutId;
+  try {
+    timeoutId = setTimeout(function(){
+      console.warn('[federation] manifest fetch timeout — using canonical defaults');
+    }, 5000);
+
+    fetch(MANIFEST_URL, {cache:'no-store'})
+      .then(function(r){
+        if (!r.ok) throw new Error('HTTP '+r.status);
+        return r.json();
+      })
+      .then(function(data){
+        clearTimeout(timeoutId);
+
+        // Banner
+        var organs = (data.stack && data.stack.organs) || {};
+        var healthyCount = 0;
+        var totalCount = 0;
+        for (var k in organs){
+          totalCount++;
+          if (organs[k].status === 'healthy' || organs[k].status === 'alive') healthyCount++;
+        }
+        if (totalCount > 0) $('banner-health').textContent = healthyCount+'/'+totalCount;
+
+        var toolsTotal = 0;
+        for (var k2 in organs){ if (organs[k2].tools) toolsTotal += organs[k2].tools; }
+        if (toolsTotal > 0) $('banner-tools').textContent = toolsTotal;
+
+        // Version
+        var arifosVer = (organs.arifos && organs.arifos.release) ? organs.arifos.release : 'v?.?.?';
+        $('banner-version').textContent = arifosVer;
+
+        // Organs
+        if (Object.keys(organs).length > 0) {
+          $('organs-grid').innerHTML = renderOrgans(organs);
+        }
+
+        // Stack
+        var layers = (data.stack && data.stack.topology && data.stack.topology.layers) || [];
+        if (layers.length > 0) {
+          $('stack-display').textContent = renderStack(layers);
+        } else {
+          $('stack-display').textContent = data.federation_verdict || 'No stack data available.';
+        }
+
+        // Last probe
+        $('last-probe').textContent = data.generated || FALLBACK_GENERATED;
+      })
+      .catch(function(err){
+        clearTimeout(timeoutId);
+        console.warn('[federation] manifest fetch failed:', err);
+        $('last-probe').textContent = 'unavailable ('+err.message+') — showing canonical defaults';
+        // Hardcoded fallback already rendered in HTML — no override needed
+      });
+  } catch(e){
+    console.error('[federation] init error:', e);
+    $('last-probe').textContent = 'init error — showing canonical defaults';
+  }
+})();
+</script>
+</body>
+</html>

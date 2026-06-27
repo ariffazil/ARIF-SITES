@@ -30,10 +30,10 @@ export type SystemProject = {
 };
 
 export const primaryLinks: LinkItem[] = [
-  { label: 'Wells', href: '#wells' },
-  { label: 'Systems', href: '#systems' },
-  { label: 'Practice', href: '#practice' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Wells', href: '/#wells' },
+  { label: 'Systems', href: '/#systems' },
+  { label: 'Practice', href: '/#practice' },
+  { label: 'Contact', href: '/#contact' },
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
   { label: '/wealth', href: '/wealth/' },
