@@ -14,7 +14,7 @@ export function ConstellationNav() {
           </div>
         </a>
 
-        <nav aria-label="Primary">
+        <nav aria-label="Primary navigation">
           <ul className="flex items-center gap-6">
             {primaryLinks.map((item) => (
               <li key={item.label}>

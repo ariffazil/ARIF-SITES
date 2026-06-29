@@ -7,7 +7,7 @@
     --background: #050505;
     --foreground: #F0F0F0;
     --border: #222222;
-    --muted: #8A8D91;
+    --muted: #A0A0A0;
     --accent: #FF4500;
     --radius: 0px;
   }
@@ -50,6 +50,20 @@
   a:hover {
     color: var(--accent);
   }
+
+  :focus-visible {
+    outline: 2px solid #FF4500;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
 }
 
 @layer components {
@@ -86,7 +100,7 @@
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    color: #8A8D91;
+    color: #A0A0A0;
     text-transform: uppercase;
     letter-spacing: 0.2em;
     margin-bottom: 1rem;
@@ -162,6 +176,36 @@
 @layer utilities {
   .text-glow-green { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
   .text-glow-orange { text-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+
+  /* Screen reader only — visible on focus for skip link */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .sr-only:focus {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.25rem;
+    clip: auto;
+    white-space: normal;
+    background: #F0F0F0;
+    color: #050505;
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10000;
+    border: 2px solid #FF4500;
+  }
 }
 
 /* Custom Scrollbar */

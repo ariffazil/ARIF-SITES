@@ -15,7 +15,7 @@ function App() {
     <BrowserRouter>
       <div className="site-shell">
         <ConstellationNav />
-        <main className="site-main">
+        <main className="site-main" id="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/000" element={<Genesis />} />
