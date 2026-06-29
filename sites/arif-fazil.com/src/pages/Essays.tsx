@@ -80,7 +80,7 @@ export function Essays() {
                   {essay.tags?.map((tag) => (
                     <span
                       key={tag}
-                      className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 border border-forge-iron text-forge-dim"
+                      className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 border border-forge-iron text-forge-dim"
                     >
                       {tag}
                     </span>

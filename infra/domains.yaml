@@ -111,7 +111,7 @@ domains:
     note: Local LLM endpoint. Missing from prior domains.yml.
 
   # ─── REMOVED 2026-05-12 — Do not resurrect without sovereign approval ──────
-  # arifosmcp.arif-fazil.com  → redirect to arifos.arif-fazil.com/mcp
+  # arifosmcp.arif-fazil.com  → redirect to mcp.arif-fazil.com/mcp
   # waw.arif-fazil.com        → removed
   # wawa.arif-fazil.com       → removed
   # travel.arif-fazil.com     → removed

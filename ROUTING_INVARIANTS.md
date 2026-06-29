@@ -60,7 +60,7 @@ If you update the Caddyfile, you must update this document.
 
 | Service | MCP URL |
 |---------|---------|
-| arifOS | `https://arifos.arif-fazil.com/mcp` |
+| arifOS | `https://mcp.arif-fazil.com/mcp` |
 | GEOX | `https://geox.arif-fazil.com/mcp` |
 | WEALTH | `https://wealth.arif-fazil.com/mcp` |
 

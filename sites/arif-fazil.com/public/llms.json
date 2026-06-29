@@ -31,7 +31,7 @@
     "https://arif-fazil.com/soul.json",
     "https://arif-fazil.com/proof/geologist-credential.json"
   ],
-  "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "did": "did:web:arif-fazil.com",
   "last_updated": "2026-06-02"
 }

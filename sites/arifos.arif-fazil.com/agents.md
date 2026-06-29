@@ -21,7 +21,7 @@
 - Access `llms.json` for structured site data
 
 ### MCP Endpoints
-- **arifOS Kernel:** `https://arifos.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
+- **arifOS Kernel:** `https://mcp.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
 - **Health:** `https://arifos.arif-fazil.com/health` (GET)
 - **Tools:** `https://arifos.arif-fazil.com/tools.json` (GET)
 - **SSE:** `https://arifos.arif-fazil.com/sse` (GET, server-sent events)

@@ -22,7 +22,7 @@
 
 <main style="max-width:900px;margin:2rem auto;padding:0 1.5rem;">
   <h1 style="color:var(--gold);font-size:1.5rem;margin-bottom:0.25rem;">🛝 WebMCP Playground</h1>
-  <p style="color:#888;margin-bottom:1.5rem;font-size:0.85rem;">Live MCP tool invocation. Endpoint: <code style="color:var(--cyan);">arifos.arif-fazil.com/mcp</code></p>
+  <p style="color:#888;margin-bottom:1.5rem;font-size:0.85rem;">Live MCP tool invocation. Endpoint: <code style="color:var(--cyan);">mcp.arif-fazil.com/mcp</code></p>
 
   <div class="card" style="margin-bottom:1rem;">
     <label style="font-size:0.8rem;color:#888;">Tool</label>
@@ -61,7 +61,7 @@ async function callTool() {
 
   try {
     const args = JSON.parse(argsStr);
-    const res = await fetch('https://arifos.arif-fazil.com/mcp', {
+    const res = await fetch('https://mcp.arif-fazil.com/mcp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({

@@ -18,7 +18,7 @@
       "domain": "arifOS",
       "ring": "MIND",
       "status": "active",
-      "endpoint": "https://arifos.arif-fazil.com/mcp"
+      "endpoint": "https://mcp.arif-fazil.com/mcp"
     },
     {
       "id": "geox-witness",
