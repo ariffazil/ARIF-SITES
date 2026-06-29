@@ -1,0 +1,52 @@
+name: Playwright Audit
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  playwright-audit:
+    name: Playwright Web Integrity & SEO Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: sites/arif-fazil.com/package-lock.json
+
+      - name: Install dependencies
+        run: cd sites/arif-fazil.com && npm ci --legacy-peer-deps
+
+      - name: Build site
+        run: cd sites/arif-fazil.com && npm run build
+
+      - name: Install Playwright Browsers & Deps
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright Audits
+        run: cd sites/arif-fazil.com && npx playwright test
+
+      - name: Upload Playwright report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: sites/arif-fazil.com/playwright-report/
+          retention-days: 30
+
+      - name: Upload traces & results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-test-results
+          path: sites/arif-fazil.com/test-results/
+          retention-days: 7
