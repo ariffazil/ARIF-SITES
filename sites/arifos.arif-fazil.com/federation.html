@@ -26,21 +26,55 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Federation Map — arifOS Observatory",
-  "description": "Live federation map of the arifOS constitutional kernel and 6 organs. 13 floors. JSON-RPC transport. DITEMPA BUKAN DIBERI.",
-  "url": "https://arifos.arif-fazil.com/federation",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "arifOS Observatory",
-    "url": "https://arifos.arif-fazil.com"
-  },
-  "about": {
-    "@type": "SoftwareApplication",
-    "name": "arifOS",
-    "softwareVersion": "2.0",
-    "applicationCategory": "BusinessApplication"
-  }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arifos.arif-fazil.com/#website",
+      "name": "arifOS Observatory",
+      "url": "https://arifos.arif-fazil.com",
+      "description": "Read-only governance visibility for the arifOS constitutional federation: live organ health, F1-F13 floors, and canonical docs.",
+      "publisher": {"@id": "https://arifos.arif-fazil.com/#arifos"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://arifos.arif-fazil.com/federation",
+      "url": "https://arifos.arif-fazil.com/federation",
+      "name": "Federation Map — arifOS Observatory",
+      "description": "Live federation map of the arifOS constitutional kernel and 6 organs. 13 floors. JSON-RPC transport. DITEMPA BUKAN DIBERI.",
+      "isPartOf": {"@id": "https://arifos.arif-fazil.com/#website"},
+      "about": {"@id": "https://arifos.arif-fazil.com/#federation"}
+    },
+    {
+      "@type": "GovernmentOrganization",
+      "@id": "https://arifos.arif-fazil.com/#arifos",
+      "name": "arifOS",
+      "url": "https://arifos.arif-fazil.com",
+      "sameAs": ["https://github.com/ariffazil/arifOS"],
+      "member": {"@id": "https://arifos.arif-fazil.com/#organs"}
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://arifos.arif-fazil.com/#organs",
+      "name": "arifOS Federation Organs",
+      "itemListElement": [
+        {"@type": "Organization", "name": "arifOS", "description": "Constitutional engine. F1–F13 floors. 888 JUDGE. 999 VAULT.", "url": "https://arifos.arif-fazil.com"},
+        {"@type": "Organization", "name": "GEOX", "description": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.", "url": "https://geox.arif-fazil.com"},
+        {"@type": "Organization", "name": "WEALTH", "description": "NPV / EMV / EVOI. Capital conservation. Wisdom dimensions. Power audit.", "url": "https://wealth.arif-fazil.com"},
+        {"@type": "Organization", "name": "WELL", "description": "Human readiness. Substrate vitality. Homeostasis. Dignity mirror.", "url": "https://well.arif-fazil.com"},
+        {"@type": "Organization", "name": "AAA", "description": "Control plane. A2A gateway. 5 constitutional warga. Operator cockpit.", "url": "https://aaa.arif-fazil.com"},
+        {"@type": "Organization", "name": "A-FORGE", "description": "Execution shell. forge_dry_run. forge_approve. forge_execute. Bounded worker.", "url": "https://aforge.arif-fazil.com"}
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://arifos.arif-fazil.com/#federation",
+      "name": "arifOS Federation Map",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Linux",
+      "url": "https://arifos.arif-fazil.com/federation",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+  ]
 }
 </script>
 
@@ -51,7 +85,7 @@
 <style>
 :root{
   --bg:#0a0e0c;--surface:#0f1411;--gold:#D4A853;--teal:#00D4AA;--red:#FF3333;
-  --text:#d4d2ce;--dim:#888;--border:#1a201d;
+  --text:#d4d2ce;--dim:#9b9995;--border:#1a201d;
 }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;margin:0;padding:0;line-height:1.6}
@@ -71,11 +105,11 @@ main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
 .card:hover{border-color:var(--teal)}
 .card h3{margin:0 0 0.5rem;font-size:1.05rem;font-weight:600}
 .card .meta{color:var(--dim);font-size:0.78rem;font-family:'JetBrains Mono',monospace;margin-top:0.5rem}
-.ring-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:3px;font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;font-family:'JetBrains Mono',monospace}
+.ring-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:3px;font-size:0.75rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;font-family:'JetBrains Mono',monospace}
 .ring-mind{background:rgba(0,212,170,0.1);color:var(--teal)}
 .ring-body{background:rgba(212,168,83,0.1);color:var(--gold)}
 .ring-soul{background:rgba(255,51,51,0.1);color:var(--red)}
-.status{display:inline-flex;align-items:center;gap:0.4rem;padding:0.15rem 0.5rem;border-radius:3px;font-size:0.7rem;font-weight:600;font-family:'JetBrains Mono',monospace}
+.status{display:inline-flex;align-items:center;gap:0.4rem;padding:0.15rem 0.5rem;border-radius:3px;font-size:0.75rem;font-weight:600;font-family:'JetBrains Mono',monospace}
 .status-healthy{background:rgba(0,212,170,0.15);color:var(--teal)}
 .status-degraded{background:rgba(212,168,83,0.15);color:var(--gold)}
 .status-down{background:rgba(255,51,51,0.15);color:var(--red)}
@@ -85,7 +119,7 @@ main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
 .floors{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.5rem;margin-top:1rem}
 .floor{padding:0.6rem 0.8rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.78rem}
 .floor strong{color:var(--gold);margin-right:0.4rem}
-.floor span{color:var(--dim);font-size:0.7rem;display:block;margin-top:0.15rem}
+.floor span{color:var(--dim);font-size:0.75rem;display:block;margin-top:0.15rem}
 .warn{padding:1rem;background:rgba(255,51,51,0.05);border:1px solid rgba(255,51,51,0.3);border-radius:4px;color:var(--red);font-size:0.85rem;margin:1rem 0}
 .banner{background:linear-gradient(90deg,rgba(0,212,170,0.08),rgba(212,168,83,0.08));padding:1rem 1.5rem;border-radius:6px;margin-bottom:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .banner-num{font-size:2rem;font-weight:700;color:var(--teal);font-family:'JetBrains Mono',monospace}
@@ -94,7 +128,7 @@ main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
 a{color:var(--teal);text-decoration:none;border-bottom:1px dotted rgba(0,212,170,0.3)}
 a:hover{border-bottom-style:solid}
 footer{padding:2rem 1rem;text-align:center;border-top:1px solid var(--border);color:var(--dim);font-size:0.8rem;font-family:'JetBrains Mono',monospace}
-.motto{font-style:italic;letter-spacing:0.1em;font-size:0.75rem;color:#555;margin-top:1rem}
+.motto{font-style:italic;letter-spacing:0.1em;font-size:0.75rem;color:var(--dim);margin-top:1rem}
 .section{margin-bottom:3rem}
 pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.78rem;color:var(--dim);font-family:'JetBrains Mono',monospace}
 </style>
@@ -236,7 +270,7 @@ pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.7
     <h3>One public MCP door for the federation</h3>
     <p><code>https://mcp.arif-fazil.com/mcp</code></p>
     <div class="meta">streamable-http · JSON-RPC 2.0 · routes to arifOS / GEOX / WEALTH / WELL / A-FORGE</div>
-    <p style="margin-top:12px;font-size:var(--text-xs);color:var(--color-text-muted)">
+    <p style="margin-top:12px;font-size:0.75rem;color:var(--dim)">
       Per-organ public MCP endpoints have been collapsed into this single gateway. The observatory remains a read-only governance surface; it does not execute MCP tools itself.
     </p>
   </div>
