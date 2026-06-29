@@ -434,7 +434,7 @@ well.arif-fazil.com {
 # ═══════════════════════════════════════════════════════════════════════
 # LEGACY REDIRECTS — old subdomains → main sites
 # ═══════════════════════════════════════════════════════════════════════
-# MCP — legacy alias. Canonical MCP surface is arifos.arif-fazil.com/mcp.
+# MCP — legacy alias. Canonical MCP surface is mcp.arif-fazil.com/mcp.
 # Keep /mcp* proxy live for existing MCP clients; humans → Observatory.
 mcp.arif-fazil.com {
 	import tls_origin

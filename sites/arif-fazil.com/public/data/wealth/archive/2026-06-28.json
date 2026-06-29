@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-06-29",
-    "generated_at": "2026-06-29T06:00:01Z",
+    "date": "2026-06-28",
+    "generated_at": "2026-06-28T06:00:02Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -19,24 +19,24 @@
         "desc": "Thursday, 25 Jun 2026 6:26 PM MYT · KUALA LUMPUR, June 25 — <strong>Bursa Malaysia ended lower today as selling pressure in industrial products and services stocks outweighed gains in the telecommunications sector</strong>, an analyst said."
       },
       {
-        "title": "Bursa Malaysia ends slightly higher as late rebound in banking stocks lifts market | New Straits Times",
-        "url": "https://www.nst.com.my/amp/business/corporate/2026/06/1473494/bursa-malaysia-ends-slightly-higher-late-rebound-banking-stocks",
-        "desc": "<strong>June 26, 2026 @ 6:17pm</strong> · Bursa Malaysia reversed earlier losses to settle slightly higher on Friday, supported by a late rebound in banking stocks that lifted the benchmark index into positive territory just minutes before the market closed, ..."
-      },
-      {
         "title": "Bursa Malaysia ends on softer note amid profit-taking | New Straits Times",
         "url": "https://www.nst.com.my/amp/business/corporate/2026/06/1469880/bursa-malaysia-ends-softer-note-amid-profit-taking",
         "desc": "KUALA LUMPUR: Bursa Malaysia ended ... an analyst said. <strong>At 5pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) declined by 0.65 per cent, or 11.19 points, to 1,700.84 from last Friday&#x27;s close of 1,712.03</strong>...."
       },
       {
-        "title": "Market Wrap: Bursa Malaysia Ends Week Higher As Banking Rally Offsets Cautious Sentiment",
-        "url": "https://www.businesstoday.com.my/2026/06/28/market-wrap-bursa-malaysia-ends-week-higher-as-banking-rally-offsets-cautious-sentiment/",
-        "desc": "<strong>June 28, 2026</strong> · Share · Facebook · Twitter · WhatsApp · Linkedin · Bursa Malaysia ended the trading week on a firmer footing after a late rally in banking stocks lifted the benchmark index into positive territory, capping a week that began ..."
+        "title": "Bursa Malaysia ends slightly higher as late rebound in banking stocks lifts market | New Straits Times",
+        "url": "https://www.nst.com.my/amp/business/corporate/2026/06/1473494/bursa-malaysia-ends-slightly-higher-late-rebound-banking-stocks",
+        "desc": "<strong>June 26, 2026 @ 6:17pm</strong> · Bursa Malaysia reversed earlier losses to settle slightly higher on Friday, supported by a late rebound in banking stocks that lifted the benchmark index into positive territory just minutes before the market closed, ..."
       },
       {
         "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
         "url": "https://www.tradinghours.com/markets/myx",
         "desc": "Bursa Malaysia is closed on · <strong>Wednesday, June 17, 2026</strong> in observation of Islamic New Year. Details · Market Countdown, Trading Hours, 2026 Market Holidays · Popout Countdown Access API Report Change · Market Countdown: -- : -- : -- : -- ..."
+      },
+      {
+        "title": "Bursa Malaysia closes higher as bargain hunters return after recent losses | Malay Mail",
+        "url": "https://www.malaymail.com/news/money/2026/06/24/bursa-malaysia-closes-higher-as-bargain-hunters-return-after-recent-losses/225027",
+        "desc": "Wednesday, 24 Jun 2026 5:58 PM ... pullback in the market, analysts said. <strong>At 5pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) increased 0.13 per cent, or 2.21 points, to 1,682.13</strong> from Tuesday’s close of 1,679.92..."
       }
     ],
     "most_active": {
@@ -46,25 +46,25 @@
     },
     "top_gainers_search": [
       {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Malaysia&#x27;s main stock market index, the FKLCI, rose to <strong>1668 points on June 26, 2026</strong>, gaining 0.24% from the previous session. Ov"
-      },
-      {
         "title": "FBMKLCI Quote - FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index - Bloomberg",
         "desc": "Index performance for FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index (FBMKLCI) including value, chart, profile &amp; other market data."
       },
       {
         "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
-        "desc": "FTSE Bursa Malaysia KLCI · 1,667.74 +0.24% Kuala Lumpur - Delayed Quote • MYR · 1,667.74 +3.92 (+0.24%) At close: June 26 at 4:59:45 PM GMT+8 · Top St"
+        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,667.74 +0.24%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,667.74 +3.92 (+0.24%) At close: 4:59:45 PM GMT+8 · "
+      },
+      {
+        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
+        "desc": "Malaysia&#x27;s main stock market index, the FKLCI, rose to <strong>1668 points on June 26, 2026</strong>, gaining 0.24% from the previous session. Ov"
       }
     ],
     "klci_close": null,
     "klci_change_points": null,
     "klci_change_pct": null,
     "source_urls": [
-      "https://www.nst.com.my/amp/business/corporate/2026/06/1469880/bursa-malaysia-ends-softer-note-amid-profit-taking",
+      "https://www.malaymail.com/amp/news/money/2026/06/25/bursa-malaysia-closes-lower-amid-caution-over-us-inflation-global-rate-outlook/225179",
       "https://www.nst.com.my/amp/business/corporate/2026/06/1473494/bursa-malaysia-ends-slightly-higher-late-rebound-banking-stocks",
-      "https://www.malaymail.com/amp/news/money/2026/06/25/bursa-malaysia-closes-lower-amid-caution-over-us-inflation-global-rate-outlook/225179"
+      "https://www.nst.com.my/amp/business/corporate/2026/06/1469880/bursa-malaysia-ends-softer-note-amid-profit-taking"
     ]
   },
   "ringgit": {
@@ -110,9 +110,9 @@
         "category": "trade"
       },
       {
-        "title": "Malaysia Balance of Trade",
-        "url": "https://tradingeconomics.com/malaysia/balance-of-trade",
-        "desc": "<strong>Imports rose 8.2% year-on-year to MYR 114.2 billion</strong>, as purchases increased across all three main categories by end use, namely intermediate goods (0.8%), capital goods (15.4%), and consumption goods (1.5%). Import growth was strongest from China (27.3%), South Korea (86.8%), and Ta",
+        "title": "Malaysia Exports By Category",
+        "url": "https://tradingeconomics.com/malaysia/exports-by-category",
+        "desc": "Trading Economics provides data for 20 million economic indicators from 196 countries including actual values, consensus figures, forecasts, historical time series and news. Malaysia Exports By Category - was last updated on Monday, June 15, 2026.",
         "category": "trade"
       },
       {
@@ -122,9 +122,9 @@
         "category": "gdp"
       },
       {
-        "title": "Malaysia’s Economy Grows 5.4% In Q1 2026, Outpacing Expectations Amid Global Uncertainty",
-        "url": "https://www.mof.gov.my/portal/en/news/press-release/malaysias-economy-grows-5-4-in-q1-2026-outpacing-expectations-amid-global-uncertainty",
-        "desc": "Malaysia’s economy exceeded expectations for a second consecutive quarter, growing <strong>5.4% in Q1 2026</strong> despite heightened global uncertainty arising from the conflict in West Asia. The sustained momentum reflects the MADANI Government’s fiscal ...",
+        "title": "IMF raises real GDP growth forecasts for Malaysia to 4.7% for 2026, 4.3% in 2027",
+        "url": "https://theedgemalaysia.com/node/799903",
+        "desc": "KUALA LUMPUR (April 14): The International Monetary Fund (IMF) has raised its projection for Malaysia&#x27;s real gross domestic product (GDP) growth to <strong>4.7%</strong> for 2026, representing an upward revision of 0.4 percentage point.",
         "category": "gdp"
       }
     ],
@@ -143,14 +143,14 @@
         "source": "https://www.economist.com/asia/2026/06/25/two-state-elections-may-break-malaysias-ruling-coalition"
       },
       {
+        "title": "Malaysia PM Anwar facing crucial test of support as two states call early elections | Arab News",
+        "desc": "(AFP) Short Url · https://arab.news/jq8at · KUALA LUMPUR: Malaysian Prime Minister Anwar ‌Ibrahim’s ruling coalition <strong>will face a test of its public support amid signs of internal tensions afte",
+        "source": "https://www.arabnews.com/node/2646055/amp"
+      },
+      {
         "title": "Malaysia Election 2026: Anwar Weighs Early Poll Amid Pressure - Modern Diplomacy",
         "desc": "Malaysian Prime Minister Anwar Ibrahim has indicated that he may consider calling an early general election if tensions inside his ruling coalition continue to worsen.",
         "source": "https://moderndiplomacy.eu/2026/05/29/malaysia-election-2026-anwar-weighs-early-poll-amid-pressure/"
-      },
-      {
-        "title": "Malaysia enters election mode in 2026 | East Asia Forum",
-        "desc": "The DAP’s other problem is UMNO youth chief Akmal Saleh, who publicly declared his only political aim before the next election as to ‘fight DAP to the end’ and bring about an all-Malay government thro",
-        "source": "https://eastasiaforum.org/2026/02/08/malaysia-enters-election-mode-in-2026/"
       }
     ],
     "economy_policy": [
@@ -238,7 +238,7 @@
       "items": [
         {
           "title": "Fed interest rate decision June 2026: Fed holds rates steady",
-          "desc": "The statement also noted that the Fed would maintain its policy of “ample reserves” in the banking system, indicating there are no immediate plans to reduce the central bank’s bond holdings on its $6."
+          "desc": "The statement also noted that <strong>the Fed would maintain its policy of &quot;ample reserves&quot; in the banking system</strong>, indicating there are no immediate plans to reduce the central bank"
         },
         {
           "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
@@ -253,8 +253,8 @@
           "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
         },
         {
-          "title": "China Economic Outlook. June 2026 | BBVA Research",
-          "desc": "We maintain our <strong>2026 GDP forecast at 4.5%</strong> which is in line with the authorities’ 4.5-5% growth target announced in March “two sessions” and we also maintain 2027 GDP forecast at 4.2%."
+          "title": "Our economic outlook for China | Vanguard",
+          "desc": "Solid near-term growth reduces the urgency for near‑term stimulus. However, warning signs from the domestic economy are likely to keep policymakers on alert and may accelerate the rollout of policy su"
         }
       ]
     },

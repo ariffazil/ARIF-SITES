@@ -27,7 +27,7 @@
     <pre><code>Browser (fetch/EventSource)
   │  SSE or HTTP POST
   ▼
-arifos.arif-fazil.com/mcp
+mcp.arif-fazil.com/mcp
   │  F1-F13 constitutional floors
   ▼
 arifOS Kernel (:8088)
@@ -45,7 +45,7 @@ Response (JSON-RPC)</code></pre>
       <li>Call <code>arif_mind_reason</code> — multi-step reasoning</li>
       <li>All 19 tools, governed by F1-F13</li>
     </ul>
-    <p style="margin-top:0.75rem;"><strong>Endpoint:</strong> <code>https://arifos.arif-fazil.com/mcp</code></p>
+    <p style="margin-top:0.75rem;"><strong>Endpoint:</strong> <code>https://mcp.arif-fazil.com/mcp</code></p>
     <p><strong>Transport:</strong> SSE (EventSource) or HTTP POST</p>
   </div>
 
@@ -71,7 +71,7 @@ const es = new EventSource('https://arifos.arif-fazil.com/sse');
 es.onmessage = (e) => console.log(JSON.parse(e.data));
 
 // Or HTTP POST
-const res = await fetch('https://arifos.arif-fazil.com/mcp', {
+const res = await fetch('https://mcp.arif-fazil.com/mcp', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({

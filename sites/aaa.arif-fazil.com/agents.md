@@ -35,7 +35,7 @@
 - **Status:** `https://aaa.arif-fazil.com/a2a/status.json`
 
 ### MCP Endpoints (via Federation)
-- **arifOS Kernel:** `https://arifos.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
+- **arifOS Kernel:** `https://mcp.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
 - **GEOX:** `https://geox.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
 - **WEALTH:** `https://wealth.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)
 - **WELL:** `https://well.arif-fazil.com/mcp` (POST, JSON-RPC 2.0)

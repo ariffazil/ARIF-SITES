@@ -48,7 +48,7 @@ The arifOS federation runs five domains under one sovereign:
 
 ## arifOS MCP Endpoint
 - **URL**: `https://arifos.arif-fazil.com`
-- **MCP surface**: `https://arifos.arif-fazil.com/mcp`
+- **MCP surface**: `https://mcp.arif-fazil.com/mcp`
 - **Protocol**: Model Context Protocol (MCP)
 - **Transport**: Streamable HTTP
 - **Tools**: 13 constitutional tools
@@ -69,5 +69,5 @@ The arifOS federation runs five domains under one sovereign:
 
 ## Contact
 - Site owner: Arif Fazil
-- Primary channel for AI agents: MCP endpoint at https://arifos.arif-fazil.com/mcp
+- Primary channel for AI agents: MCP endpoint at https://mcp.arif-fazil.com/mcp
 - GitHub: https://github.com/ariffazil

@@ -9,7 +9,7 @@
   "version": "1.1",
   "capabilities": {
     "a2a": false,
-    "mcp": ["https://arifos.arif-fazil.com/mcp"],
+    "mcp": ["https://mcp.arif-fazil.com/mcp"],
     "verification": true
   },
   "scopes": ["identity", "geoscience", "governed-ai", "proof-discovery"],
@@ -28,7 +28,7 @@
     {
       "name": "arifOS Observatory",
       "url": "https://arifos.arif-fazil.com",
-      "mcp": "https://arifos.arif-fazil.com/mcp",
+      "mcp": "https://mcp.arif-fazil.com/mcp",
       "role": "constitutional governance kernel"
     },
     {

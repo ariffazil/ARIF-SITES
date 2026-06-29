@@ -18,8 +18,8 @@
   --color-divider:#2a2826;
   --color-border:#333130;
   --color-text:#d4d2ce;
-  --color-text-muted:#706e6b;
-  --color-text-faint:#484644;
+  --color-text-muted:#9b9995;
+  --color-text-faint:#807e7b;
   --color-text-inverse:#0d0c0b;
   --color-primary:#3a9ea8;
   --color-primary-hover:#1e8a96;
@@ -62,7 +62,7 @@ a:hover{color:var(--color-gold)}
 .shell{max-width:1100px;margin-inline:auto;padding:var(--space-8) var(--space-4)}
 .header{display:flex;align-items:center;justify-content:space-between;padding-block:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-8)}
 .logo{display:flex;align-items:center;gap:var(--space-3)}
-.logo-mark{width:32px;height:32px;border-radius:6px;background:oklch(0.4 0.12 192 / 0.15);border:1px solid oklch(0.6 0.12 192 / 0.4);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:800;font-size:11px;color:oklch(0.7 0.14 192);flex-shrink:0}
+.logo-mark{width:32px;height:32px;border-radius:6px;background:oklch(0.4 0.12 192 / 0.15);border:1px solid oklch(0.6 0.12 192 / 0.4);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:800;font-size:12px;color:oklch(0.7 0.14 192);flex-shrink:0}
 .logo-text{font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);letter-spacing:-0.03em;color:var(--color-text)}
 .logo-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:1px}
 .header-right{display:flex;align-items:center;gap:var(--space-4)}
@@ -358,12 +358,12 @@ a:hover{color:var(--color-gold)}
   <main id="main-content">
 
   <!-- DOCTRINE BANNER — truth-bound invariant -->
-  <div class="doctrine-banner" style="background:linear-gradient(90deg, rgba(212,168,83,0.10), rgba(212,168,83,0.02)); border-bottom:1px solid rgba(212,168,83,0.25); padding:6px 0; font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; color:var(--color-gold); text-align:center;">
+  <div class="doctrine-banner" style="background:linear-gradient(90deg, rgba(212,168,83,0.10), rgba(212,168,83,0.02)); border-bottom:1px solid rgba(212,168,83,0.25); padding:6px 0; font-family:var(--font-mono); font-size:12px; letter-spacing:0.2em; color:var(--color-gold); text-align:center;">
     DOCTRINE · <strong>UI STATE MUST NEVER BE MORE CONFIDENT THAN KERNEL STATE</strong> · if UI shows SEAL but kernel drifts, UI is wrong, not kernel
   </div>
 
   <!-- REALITY CHECK BANNER — no propaganda -->
-  <div id="realityBanner" style="background:var(--color-surface-offset); border-bottom:1px solid var(--color-border); padding:8px var(--space-4); font-family:var(--font-mono); font-size:11px; color:var(--color-text-muted); text-align:center; display:none;">
+  <div id="realityBanner" style="background:var(--color-surface-offset); border-bottom:1px solid var(--color-border); padding:8px var(--space-4); font-family:var(--font-mono); font-size:12px; color:var(--color-text-muted); text-align:center; display:none;">
     <span id="realityText"></span>
   </div>
 
@@ -785,12 +785,12 @@ a:hover{color:var(--color-gold)}
       <div class="metric-row"><span class="metric-label">PSI VITALITY</span><span class="metric-val primary" id="psiVit">—</span></div>
       <div class="metric-row"><span class="metric-label">VAULT999 HEALTH</span><span class="metric-val" id="vault999Val">—</span></div>
       <div class="metric-row"><span class="metric-label">RUNTIME DRIFT</span><span class="metric-val" id="driftVal">—</span></div>
-      <div class="metric-row" style="border-top:1px dashed var(--color-divider);margin-top:var(--space-2);padding-top:var(--space-2)"><span class="metric-label" style="font-size:9px;color:var(--color-text-faint);letter-spacing:0.15em">SEAL · 5-WAY SPLIT (must not collapse into one verdict)</span></div>
-      <div class="metric-row" title="Service health = /health HTTP 200. NOT a constitutional verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">① Service health</span><span class="metric-val" id="sealService" style="font-size:11px">—</span></div>
-      <div class="metric-row" title="Constitutional floors passing per live receipt. NOT a service health check."><span class="metric-label" style="padding-left:10px;font-size:10px">② Floor pass</span><span class="metric-val" id="sealFloors" style="font-size:11px">—</span></div>
-      <div class="metric-row" title="Judge verdict authorizes execution. NEVER self-attested."><span class="metric-label" style="padding-left:10px;font-size:10px">③ Execution auth</span><span class="metric-val" id="sealExec" style="font-size:11px">—</span></div>
-      <div class="metric-row" title="VAULT999 immutability proof. Independent of any other SEAL meaning."><span class="metric-label" style="padding-left:10px;font-size:10px">④ Audit seal</span><span class="metric-val" id="sealAudit" style="font-size:11px">—</span></div>
-      <div class="metric-row" title="F13 human sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:11px">—</span></div>
+      <div class="metric-row" style="border-top:1px dashed var(--color-divider);margin-top:var(--space-2);padding-top:var(--space-2)"><span class="metric-label" style="font-size:12px;color:var(--color-text-faint);letter-spacing:0.15em">SEAL · 5-WAY SPLIT (must not collapse into one verdict)</span></div>
+      <div class="metric-row" title="Service health = /health HTTP 200. NOT a constitutional verdict."><span class="metric-label" style="padding-left:10px;font-size:12px">① Service health</span><span class="metric-val" id="sealService" style="font-size:12px">—</span></div>
+      <div class="metric-row" title="Constitutional floors passing per live receipt. NOT a service health check."><span class="metric-label" style="padding-left:10px;font-size:12px">② Floor pass</span><span class="metric-val" id="sealFloors" style="font-size:12px">—</span></div>
+      <div class="metric-row" title="Judge verdict authorizes execution. NEVER self-attested."><span class="metric-label" style="padding-left:10px;font-size:12px">③ Execution auth</span><span class="metric-val" id="sealExec" style="font-size:12px">—</span></div>
+      <div class="metric-row" title="VAULT999 immutability proof. Independent of any other SEAL meaning."><span class="metric-label" style="padding-left:10px;font-size:12px">④ Audit seal</span><span class="metric-val" id="sealAudit" style="font-size:12px">—</span></div>
+      <div class="metric-row" title="F13 human sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:12px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:12px">—</span></div>
     </div>
 
     <!-- WITNESS -->
