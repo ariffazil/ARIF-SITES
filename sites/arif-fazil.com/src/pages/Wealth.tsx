@@ -547,6 +547,51 @@ export function Wealth() {
         </div>
       </section>
 
+      {/* ── WAW: WEALTH-AS-WISDOM ─────────────────────────── */}
+      <section className="py-16 border-b-2 border-forge-iron bg-gradient-to-b from-forge-steel to-forge-black">
+        <div className="site-frame">
+          <div className="brutalist-card border-forge-gold/40 bg-gradient-to-br from-forge-gold/[0.06] to-transparent">
+            <div className="flex flex-wrap items-baseline gap-3 mb-6">
+              <span className="font-mono text-[0.65rem] text-forge-gold uppercase tracking-[0.25em]">
+                ◆ WAW · Wealth-as-Wisdom
+              </span>
+              <span className="font-mono text-[0.6rem] text-forge-dim">EUEREKA — what WAW discovered</span>
+            </div>
+            <h2 className="text-3xl font-black italic uppercase mb-6">
+              Capital has <span className="text-forge-gold">physics</span>. Not narrative.
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="p-4 bg-white/[0.03] border border-white/10">
+                <p className="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">NPV</p>
+                <p className="text-sm font-bold mb-1">Stored Energy</p>
+                <p className="text-xs text-forge-dim">Reward accumulated in the system. Energy stored, not promised.</p>
+              </div>
+              <div className="p-4 bg-white/[0.03] border border-white/10">
+                <p className="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">IRR</p>
+                <p className="text-sm font-bold mb-1">Rate of Work</p>
+                <p className="text-xs text-forge-dim">Capital efficiency per unit time. Energy released per cycle.</p>
+              </div>
+              <div className="p-4 bg-white/[0.03] border border-white/10">
+                <p className="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">DSCR</p>
+                <p className="text-sm font-bold mb-1">Survival Margin</p>
+                <p className="text-xs text-forge-dim">Structural load capacity. Can the system survive the next stress?</p>
+              </div>
+            </div>
+            <p className="text-sm text-forge-dim leading-relaxed mb-6">
+              WAW is the WEALTH EUREKA. It was confirmed in the EUREKA trilogy (AVO contrast detection) — 
+              where physics-grounded measurement outperforms narrative projection. WEALTH applies the same 
+              doctrine to capital: every metric is grounded in a physical dimension. No narratives. No projections without evidence.
+            </p>
+            <a
+              href="/essays/"
+              className="inline-flex items-center gap-2 font-mono text-[0.7rem] text-forge-gold uppercase tracking-wider hover:text-forge-orange transition-colors"
+            >
+              Read the EUREKA trilogy →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── FOOTER NOTE ───────────────────────────────────── */}
       <section className="py-12 bg-forge-black">
         <div className="site-frame">

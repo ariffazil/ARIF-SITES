@@ -37,6 +37,7 @@ export const primaryLinks: LinkItem[] = [
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
   { label: '/wealth', href: '/wealth/' },
+  { label: 'WAW', href: '/essays/' },
 ];
 
 // Plain — no scores, no stats, no framing
@@ -121,7 +122,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Constitutional AI kernel · F1–F13 floors',
     status: 'LIVE',
     summary:
-      'A sovereign AI governance kernel. 13 constitutional floors enforce truth, reversibility, and bounded action. Every tool call is traced to a floor. Every outcome is sealed to VAULT999. Built because the geology work demanded tools that don\'t hallucinate or hide their reasoning.',
+      'Philosophy: Sovereign human veto must be absolute. Engineering: Pre-execution constraints validate all dynamic tool leases. Verification: Live cognitive test harness verifies 42/42 validation floors.',
     artifactLabel: 'Constitution',
     artifactHref: 'https://arifos.arif-fazil.com/constitution.json',
     surfaceLabel: 'Observatory',
@@ -132,7 +133,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Earth intelligence · Physics-9 witness',
     status: 'LIVE',
     summary:
-      'Geology and geophysics tools that take physics seriously. Basin analysis, well log interpretation, seismic section reasoning — all evidence-gated through contrast theory. Reads like a geoscientist, verifies like an engineer.',
+      'Philosophy: Subsurface evidence precedes model confidence. Engineering: Contrast theory heatmaps process raw seismic and well-log payloads. Verification: Core lithology classification tests validated against public basin records.',
     artifactLabel: 'App registry',
     artifactHref: 'https://geox.arif-fazil.com/apps.json',
     surfaceLabel: 'GEOX surface',
@@ -143,7 +144,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Capital intelligence · NPV / EMV engine',
     status: 'LIVE',
     summary:
-      'Decision-quality intelligence for capital allocation under uncertainty. NPV, EMV, cascade risk detection, Makcik² relational credit scoring. 23 tools — streamable-http + JSON-RPC. Daily briefing: Bursa, Ringgit, oil, politics — all evidence-gated. Computes, never allocates — arifOS judges, Arif decides.',
+      'Philosophy: Capital obeys thermodynamic limits, not narratives. Engineering: NPV/EMV valuation engine built on 13 cash flow primitives. Verification: Historical pipeline runs audited against verified bursa financial statements.',
     artifactLabel: 'Tool registry',
     artifactHref: 'https://aaa.arif-fazil.com/mcp/tools.json',
     surfaceLabel: 'Daily briefing',
@@ -154,7 +155,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Operations surface · Agent gateway',
     status: 'LIVE',
     summary:
-      'How the trinity stays operational. Health monitoring, MCP endpoint registry, session continuity, and the operator console for the full federation stack. Not a chatbot wrapper — the operating surface for governed agentic work.',
+      'Philosophy: Trust must be explicit and structural, not ambient. Engineering: A2A gateways require valid bearer credentials and issue HOLD/SEAL tokens. Verification: Dynamic-state checks verify process live port bounds.',
     artifactLabel: 'Endpoint metadata',
     artifactHref: 'https://aaa.arif-fazil.com/mcp/endpoint.json',
     surfaceLabel: 'AAA cockpit',
@@ -165,7 +166,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Vitality mirror · Substrate health monitor',
     status: 'LIVE',
     summary:
-      'Universal substrate vitality mirror. 21 tools — streamable-http + JSON-RPC. Reflects operator cognitive pressure, thermodynamic state, and machine governance health. H-WELL, M-WELL, G-WELL, C-WELL, U-WELL substrates. Holds a mirror, not a veto — operator sovereignty invariant.',
+      'Philosophy: Technology must protect operator dignity, not bypass it. Engineering: Passive telemetry surfaces cognitive and metabolic pressure trends. Verification: Read-only check guarantees prevent any automated feedback execution.',
     artifactLabel: 'Health endpoint',
     artifactHref: 'https://well.arif-fazil.com/health',
     surfaceLabel: 'WELL surface',
@@ -176,7 +177,7 @@ export const systemProjects: SystemProject[] = [
     role: 'Metabolic shell · Engineering actuator',
     status: 'LIVE',
     summary:
-      'Deployment orchestration and agent engine loop. Plans, simulates, executes, and rolls back — only after arifOS SEAL. Cross-organ mesh protocol. The engineering arm of the federation. Executes, never legislates, never self-authorizes.',
+      'Philosophy: Execution has no independent legislative authority. Engineering: Strict task graphs execute mutations only when a valid SEAL is present. Verification: Local git status and build checks run automatically before deployment.',
     artifactLabel: 'Health endpoint',
     artifactHref: 'https://forge.arif-fazil.com/health',
     surfaceLabel: 'A-FORGE surface',
