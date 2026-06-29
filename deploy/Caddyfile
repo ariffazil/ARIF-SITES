@@ -314,10 +314,7 @@ geox.arif-fazil.com {
 	encode zstd gzip
 	root * /var/www/html/geox
 	handle /mcp* {
-		import cors_public
-		reverse_proxy 127.0.0.1:8081 {
-			header_up Host geox.arif-fazil.com
-		}
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /health {
 		import cors_public
@@ -337,9 +334,7 @@ geox.arif-fazil.com {
 		}
 	}
 	handle /sse* {
-		reverse_proxy 127.0.0.1:8081 {
-			header_up Host geox.arif-fazil.com
-		}
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /status {
 		import cors_public
@@ -348,16 +343,10 @@ geox.arif-fazil.com {
 		}
 	}
 	handle /.well-known/mcp/server.json {
-		import cors_public
-		reverse_proxy 127.0.0.1:8081 {
-			header_up Host geox.arif-fazil.com
-		}
+		redir https://mcp.arif-fazil.com/.well-known/mcp/server.json permanent
 	}
 	handle /tools {
-		import cors_public
-		reverse_proxy 127.0.0.1:8081 {
-			header_up Host geox.arif-fazil.com
-		}
+		redir https://mcp.arif-fazil.com/tools permanent
 	}
 	handle {
 		try_files {path} /index.html
@@ -375,23 +364,20 @@ wealth.arif-fazil.com {
 	encode zstd gzip
 	root * /var/www/html/wealth
 	handle /mcp* {
-		import cors_public
-		reverse_proxy 127.0.0.1:18082
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /health {
 		import cors_public
 		reverse_proxy 127.0.0.1:18082
 	}
 	handle /sse* {
-		reverse_proxy 127.0.0.1:18082
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /.well-known/mcp/server.json {
-		import cors_public
-		reverse_proxy 127.0.0.1:18082
+		redir https://mcp.arif-fazil.com/.well-known/mcp/server.json permanent
 	}
 	handle /tools {
-		import cors_public
-		reverse_proxy 127.0.0.1:18082
+		redir https://mcp.arif-fazil.com/tools permanent
 	}
 	handle /api/build-info {
 		import cors_public
@@ -416,8 +402,7 @@ well.arif-fazil.com {
 	import tls_origin
 	encode zstd gzip
 	handle /mcp* {
-		import cors_public
-		reverse_proxy 127.0.0.1:18083
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /health {
 		import cors_public
@@ -434,15 +419,13 @@ well.arif-fazil.com {
 		reverse_proxy 127.0.0.1:18083
 	}
 	handle /sse* {
-		reverse_proxy 127.0.0.1:18083
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /.well-known/mcp/server.json {
-		import cors_public
-		reverse_proxy 127.0.0.1:18083
+		redir https://mcp.arif-fazil.com/.well-known/mcp/server.json permanent
 	}
 	handle /tools {
-		import cors_public
-		reverse_proxy 127.0.0.1:18083
+		redir https://mcp.arif-fazil.com/tools permanent
 	}
 	handle {
 		redir https://arifos.arif-fazil.com permanent

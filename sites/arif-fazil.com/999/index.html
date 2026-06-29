@@ -1,18 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Ψ-PRIVATE /999/ — Locked</title>
-  <link rel="stylesheet" href="ui/styles.css">
-</head>
-<body class="vault-gate">
-  <div class="gate-container">
-    <h1>Ψ-PRIVATE /999/</h1>
-    <p class="status-msg">Vault Status: 🔒 LOCKED</p>
-    <p>This room holds the 9 seals of Arif Fazil.</p>
-    <button onclick="window.location.href='auth/challenge.html'" class="unlock-btn">
-      🔑 Unlock with ROOTKEY
-    </button>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>/999 — Trust & Proof Chamber | arifOS</title>
+    <meta name="description" content="Seal and verification page for arif-fazil.com. Public proof surfaces, DID documents, domain linkage, and identity verification." />
+    <link rel="canonical" href="https://arif-fazil.com/999/" />
+    <link rel="stylesheet" href="/root-shell.css" />
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --background: #050505;
+        --foreground: #F0F0F0;
+        --border: #222222;
+        --muted: #8A8D91;
+        --accent: #FF4500;
+        --green: #00FF41;
+      }
+      body {
+        background: var(--background);
+        color: var(--foreground);
+        font-family: 'Satoshi', sans-serif;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      .site-shell::after {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 999;
+        background-size: 100% 2px, 3px 100%;
+        pointer-events: none;
+        opacity: 0.15;
+      }
+      .site-frame {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      header {
+        border-bottom: 2px solid var(--border);
+        padding: 1.5rem 0;
+        background: var(--background);
+      }
+      h1, h2, h3 {
+        font-family: 'Cabinet Grotesk', sans-serif;
+        text-transform: uppercase;
+        font-weight: 900;
+        margin: 0;
+      }
+      .section-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .seal-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 0;
+      }
+      .seal-card {
+        padding: 2rem;
+        background: var(--background);
+        border: 1px solid var(--border);
+        transition: all 0.2s ease;
+      }
+      .seal-card:hover {
+        border-color: var(--green);
+        background: #0a0a0a;
+        transform: translate(-2px, -2px);
+        box-shadow: 4px 4px 0px 0px var(--green);
+      }
+      .status-pill {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-family: 'JetBrains Mono', monospace;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid var(--green);
+        color: var(--green);
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+      .verify-cmd {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        background: #111;
+        border: 2px solid var(--border);
+        padding: 2rem;
+        color: var(--foreground);
+        overflow-x: auto;
+      }
+      .brutalist-button {
+        display: inline-flex;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--foreground);
+        font-family: 'Cabinet Grotesk', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--foreground);
+        transition: all 0.2s ease;
+      }
+      .brutalist-button:hover {
+        background: var(--foreground);
+        color: var(--background);
+      }
+      .brutalist-button--accent {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .brutalist-button--accent:hover {
+        background: var(--accent);
+        color: var(--background);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header>
+        <div class="site-frame" style="display:flex; justify-content:space-between; align-items:center;">
+          <a href="/" style="display:flex; align-items:center; gap:1rem; text-decoration:none; color:inherit;">
+            <div style="width:40px; height:40px; border:2px solid var(--foreground); display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono'; font-weight:bold;">AF</div>
+            <div style="font-family:'Cabinet Grotesk'; font-weight:900; text-transform:uppercase; font-size:1.2rem; line-height:1;">/999 Seal</div>
+          </a>
+          <nav>
+            <ul style="display:flex; gap:1.5rem; list-style:none; padding:0; font-family:'JetBrains Mono'; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em;">
+              <li><a href="/" style="color:var(--muted); text-decoration:none;">Home</a></li>
+              <li><a href="/000/" style="color:var(--muted); text-decoration:none;">/000</a></li>
+              <li><a href="/llms.txt" style="color:var(--muted); text-decoration:none;">llms.txt</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section style="padding: 6rem 0; border-bottom: 2px solid var(--border);">
+          <div class="site-frame" style="display:grid; grid-template-columns: 1fr 1fr; gap:4rem;">
+            <div>
+              <div class="section-label">999 — Validation / zkPC</div>
+              <h1 style="font-size: 5rem; line-height: 0.9; margin-bottom: 2rem; italic;">Trust &<br>Proof</h1>
+              <p style="font-size: 1.25rem; color: var(--muted); line-height: 1.6;">
+                Verification is not absolute truth. It is the evidence of control. <code>/999</code> is where machines and careful humans verify identity, domain control, and signed artifacts.
+              </p>
+            </div>
+            <div style="display:flex; flex-direction:column; justify-content:center;">
+              <div style="border: 2px solid var(--accent); padding: 2rem; background: rgba(255, 69, 0, 0.05);">
+                <div class="section-label" style="color:var(--accent);">Verification Rule</div>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.8;">
+                  Check the files. Do not guess. Prefer machine-readable artifacts over prose. A key proves control — not wisdom, legitimacy, or metaphysical humanity.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CURRENT SEAL -->
+        <section style="padding: 6rem 0; background: #111; border-bottom: 2px solid var(--border);">
+          <div class="site-frame">
+            <div class="section-label">Active Verification Artifacts</div>
+            <div class="seal-grid">
+              <div class="seal-card">
+                <span class="status-pill">Active</span>
+                <h3>DID Document</h3>
+                <p style="color:var(--muted); font-size:0.8rem; margin: 1rem 0;">W3C DID Core document. Establishes machine-readable identity.</p>
+                <a href="/.well-known/did.json" style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--green);">/.well-known/did.json &rarr;</a>
+              </div>
+              <div class="seal-card">
+                <span class="status-pill">Active</span>
+                <h3>DID Configuration</h3>
+                <p style="color:var(--muted); font-size:0.8rem; margin: 1rem 0;">Domain linkage credential. Proves control by the DID.</p>
+                <a href="/.well-known/did-configuration.json" style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--green);">/did-configuration.json &rarr;</a>
+              </div>
+              <div class="seal-card">
+                <span class="status-pill">Active</span>
+                <h3>Federation Manifest</h3>
+                <p style="color:var(--muted); font-size:0.8rem; margin: 1rem 0;">Public registry of federation members: arifOS, AAA, GEOX.</p>
+                <a href="/.well-known/arifos-federation.json" style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--green);">/arifos-federation.json &rarr;</a>
+              </div>
+              <div class="seal-card">
+                <span class="status-pill">Active</span>
+                <h3>Seal Record</h3>
+                <p style="color:var(--muted); font-size:0.8rem; margin: 1rem 0;">Public seal declaration for the Constitutional Federation.</p>
+                <a href="/999/seal.json" style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--green);">/999/seal.json &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- HOW TO VERIFY -->
+        <section style="padding: 6rem 0; border-bottom: 2px solid var(--border);">
+          <div class="site-frame">
+            <div class="section-label">Machine Instructions</div>
+            <h2 style="font-size: 2rem; margin-bottom: 2rem;">How to Verify</h2>
+            <div class="verify-cmd"># 1. Fetch DID document
+curl https://arif-fazil.com/.well-known/did.json
+
+# 2. Verify DID resolves correctly
+# did:web:arif-fazil.com resolves to the URL above
+
+# 3. Fetch federation manifest
+curl https://arif-fazil.com/.well-known/arifos-federation.json</div>
+          </div>
+        </section>
+
+        <!-- BRIDGE -->
+        <section style="padding: 8rem 0; background: #000;">
+          <div class="site-frame" style="text-align:center;">
+             <div class="section-label" style="justify-content:center;">Closing the Loop</div>
+             <h2 style="font-size: 4rem; line-height: 1; margin-bottom: 3rem;">Evidence Governs Truth.</h2>
+             <div style="display:flex; justify-content:center; gap:2rem;">
+               <a href="/000/" class="brutalist-button">Go to /000 (Genesis)</a>
+               <a href="/" class="brutalist-button brutalist-button--accent">Back to Home</a>
+             </div>
+          </div>
+        </section>
+      </main>
+
+      <footer style="padding: 4rem 0; border-top: 2px solid var(--border); text-align:center; font-family:'JetBrains Mono'; font-size:0.6rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.2em;">
+        Ditempa Bukan Diberi · Sealed under 999_SEAL · v2.0
+      </footer>
+    </div>
+  </body>
 </html>

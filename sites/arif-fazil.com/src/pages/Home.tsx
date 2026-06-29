@@ -53,12 +53,10 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
             <motion.div variants={itemVariants} className="max-w-xl">
               <p className="font-technical text-forge-orange uppercase tracking-widest mb-4">
-                ΔΩΨ Architect · Geoscientist · Forge Master
+                ΔΩΨ Architect · Geoscientist · Agentic Auditor
               </p>
               <p className="font-body text-xl text-forge-dim leading-relaxed mb-8">
-                I build sovereign intelligence systems that hold up under real operating conditions — 
-                from subsurface exploration logs to constitutional AI kernels. 
-                Intelligence is forged, not given.
+                I build and audit sovereign agentic institutions that prioritize restraint, auditable constraints, and empirical verification over narrative claims.
               </p>
               <div className="flex flex-wrap gap-4">
                 <a href="#systems" className="button-forge">The Systems</a>
