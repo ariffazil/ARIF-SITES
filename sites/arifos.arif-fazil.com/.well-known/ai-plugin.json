@@ -3,7 +3,7 @@
   "name_for_human": "arifOS Observatory",
   "name_for_model": "arifos_observatory",
   "description_for_human": "Constitutional governance observatory — live federation health, floor scores, vault status.",
-  "description_for_model": "arifOS Observatory provides real-time visibility into the arifOS federation: 7 organs (arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE), 13 constitutional floors (F1-F13), VAULT999 immutable audit chain. Use to check organ health, floor compliance, federation topology, and governance status. MCP endpoints: POST /mcp, GET /health, GET /tools.json.",
+  "description_for_model": "arifOS Observatory provides read-only visibility into the arifOS federation: 6 organs (arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE), 13 constitutional floors (F1-F13), and VAULT999 immutable audit chain. Use to check organ health, floor compliance, federation topology, and governance status. MCP tool execution is handled by the canonical gateway at mcp.arif-fazil.com.",
   "auth": {
     "type": "none"
   },

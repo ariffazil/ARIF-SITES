@@ -1,0 +1,146 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "arifOS Observatory",
+    "description": "Read-only governance visibility for the arifOS constitutional federation. For MCP tool execution, use the canonical gateway at https://mcp.arif-fazil.com/mcp.",
+    "version": "2026.06.29",
+    "contact": {
+      "name": "Arif Fazil",
+      "email": "arif@arif-fazil.com",
+      "url": "https://arif-fazil.com"
+    },
+    "license": {
+      "name": "AGPL-3.0",
+      "url": "https://www.gnu.org/licenses/agpl-3.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://arifos.arif-fazil.com",
+      "description": "Production observatory"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Observatory health",
+        "description": "Returns a simple health status for the observatory web surface.",
+        "responses": {
+          "200": {
+            "description": "Healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/status": {
+      "get": {
+        "summary": "Federation status",
+        "description": "Live federation organ status, floor scores, and vault signal.",
+        "responses": {
+          "200": {
+            "description": "Federation status object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/federation-manifest.json": {
+      "get": {
+        "summary": "Federation manifest",
+        "description": "Static JSON manifest describing the federation topology, organs, and discovery files.",
+        "responses": {
+          "200": {
+            "description": "Federation manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "LLM context file",
+        "description": "Plain-text context for LLMs and agents describing the observatory and canonical MCP gateway.",
+        "responses": {
+          "200": {
+            "description": "LLM context",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/agent-card.json": {
+      "get": {
+        "summary": "Agent card",
+        "description": "A2A agent card for the arifOS Observatory.",
+        "responses": {
+          "200": {
+            "description": "Agent card JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/mcp.json": {
+      "get": {
+        "summary": "MCP discovery manifest",
+        "description": "MCP client discovery manifest. The transport endpoint is the canonical gateway at https://mcp.arif-fazil.com/mcp.",
+        "responses": {
+          "200": {
+            "description": "MCP manifest",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HealthStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ok"
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,15 +5,15 @@
     "url": "https://arif-fazil.com"
   },
   "categories": ["governance", "federation", "constitution", "observatory", "arifos"],
-  "description": "arifOS Constitutional Governance Observatory. Real-time federation health, floor scores, vault status, and organ topology. MCP transport: streamable-http + JSON-RPC 2.0.",
+  "description": "arifOS Constitutional Governance Observatory. Read-only federation health, floor scores, vault status, and organ topology. MCP tool execution is handled by the canonical gateway at mcp.arif-fazil.com.",
   "homepage": "https://arifos.arif-fazil.com",
   "license": "AGPL-3.0",
   "name": "arifOS Observatory",
   "repository": "https://github.com/ariffazil/arifos",
-  "version": "2026.06.26",
+  "version": "2026.06.29",
   "transport": {
     "type": "streamable-http",
-    "endpoint": "https://arifos.arif-fazil.com/mcp"
+    "endpoint": "https://mcp.arif-fazil.com/mcp"
   },
   "capabilities": {
     "tools": true,
