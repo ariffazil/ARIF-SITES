@@ -368,18 +368,19 @@ a:hover{color:var(--color-gold)}
     <span id="realityText"></span>
   </div>
 
-  <!-- STATUS STRIP -->
+  <!-- STATUS STRIP — 7 independent badges, never collapse into one SEAL -->
   <div class="status-strip" id="statusStrip">
-    <span class="status-pill"><span class="live-dot" id="statusDot" style="background:var(--color-text-faint);box-shadow:none"></span><span class="val" id="verdictVal">probe...</span></span>
+    <span class="status-pill" title="① Service health = kernel /health HTTP 200. NOT a constitutional verdict."><span class="live-dot" id="statusDot" style="background:var(--color-text-faint);box-shadow:none"></span><span class="val" id="svcHealthVal">probe...</span><span style="font-size:0.65rem;color:var(--color-text-faint);margin-left:2px">svc</span></span>
+    <span class="status-pill" title="② Conformance gate = ARIF Conformance Spine score. Independent of service health."><span class="val" id="conformanceVal">—</span><span style="font-size:0.65rem;color:var(--color-text-faint);margin-left:2px">conf</span></span>
     <span class="status-pill"><span class="val" id="toolsCount">—</span> <span>tools</span></span>
-    <span class="status-pill"><span class="val" id="floorsActive">—/13</span> <span>floors</span></span>
+    <span class="status-pill" title="Floors: show source split. Never show a single number without explaining which source."><span class="val" id="floorsActive">—</span> <span>floors</span></span>
     <span class="status-pill"><span class="val" id="psiVital">—</span> <span>Ψ_v</span></span>
-    <span class="status-pill" title="VAULT999 disambiguation. ① Service health (kernel reachable). ② Record count (audit trail). Both shown separately in the governance card."><span class="val" id="vaultStatus">—</span> <span>VAULT999 svc</span></span>
+    <span class="status-pill" title="③ VAULT999: service health (kernel reachable) + chain integrity (hash-chain verification). Historical pre-migration gap is KNOWN and RULED NON-ISSUE."><span class="val" id="vaultStatus">—</span> <span>vault</span></span>
     <span class="status-pill"><span class="val" id="langfuseStatus">—</span> <span>langfuse</span></span>
-    <span class="status-pill"><span class="val" id="runtimeDrift">—</span> <span>drift</span></span>
-    <span class="status-pill"><span class="val" id="trinityStatus">—</span> <span>trinity</span></span>
-    <span class="status-pill" title="UI state vs kernel state synchronization. DEGRADED means UI may be more confident than kernel."><span class="val" id="uiKernelSync">—</span> <span>UI↔Kernel</span></span>
-    <span class="status-pill" title="Session identity provenance. CLAIMED = no cryptographic verification. VERIFIED = signed."><span class="val" id="identityState">CLAIMED</span> <span>identity</span></span>
+    <span class="status-pill" title="④ Runtime drift: UNCERTAIN unless independently verified. Kernel self-report is not sufficient."><span class="val" id="runtimeDrift">—</span> <span>drift</span></span>
+    <span class="status-pill"><span class="val" id="trinityStatus">—</span> <span>ΔΩΨ</span></span>
+    <span class="status-pill" title="⑤ UI↔Kernel sync: NOT_PROVEN by default. Requires independent verification of kernel claims against external witness."><span class="val" id="uiKernelSync">—</span> <span>UI↔K</span></span>
+    <span class="status-pill" title="⑥ Identity provenance. CLAIMED = no cryptographic verification. PARTIAL = partially proven. VERIFIED = cryptographically anchored."><span class="val" id="identityState">—</span> <span>id</span></span>
     <span class="status-pill staleness-pill" id="stalenessPill" style="display:none"><span class="val-hold">⚠️</span> <span id="lastUpdated">—</span></span>
   </div>
 
@@ -393,9 +394,10 @@ a:hover{color:var(--color-gold)}
     <p>The Constitutional Infrastructure Layer for Governed Intelligence. This observatory provides read-only visibility into the federation — health, floors, vault status, and canonical docs. MCP tool execution lives at the <a href="https://mcp.arif-fazil.com/" style="color:var(--color-primary)">canonical gateway</a>.</p>
     <div class="hero-divider"></div>
     <div class="hero-pills">
-      <span class="pill" id="heroVerdict">VERDICT: —</span>
+      <span class="pill" id="heroSvcVerdict">⚙️ SERVICE: —</span>
+      <span class="pill" id="heroConfVerdict">🧪 CONFORMANCE: —</span>
+      <span class="pill" id="heroVerdict">⚖️ OBSERVATORY: HOLD</span>
       <span class="pill">🛡️ F1–F13 Constitutional Floors</span>
-      <span class="pill">⚖️ ΔΩΨ Trinity Governance</span>
       <span class="pill" id="heroOrgans">🌐 Federation Organs · Probing...</span>
       <span class="pill"><a href="/canon/aaa-doctrine" style="color:var(--color-text-muted)">📜 AAA Doctrine</a></span>
       <span class="pill"><a href="https://mcp.arif-fazil.com/" style="color:var(--color-text-muted)">🔌 Canonical MCP Gateway</a></span>
@@ -1008,10 +1010,28 @@ a:hover{color:var(--color-gold)}
     </table>
   </div>
 
-  <!-- XIII. CROSS-ORGAN WORKFLOWS -->
+  <!-- XIII. KNOWN CONFORMANCE GAPS — honest about what fails -->
+  <div class="section-label">XIII · Known Conformance Gaps</div>
+  <div class="card fade-up" style="margin-bottom:var(--space-12); border-color:rgba(201,106,26,0.3)">
+    <div class="card-title"><span class="num">⚠️</span> ARIF Conformance Spine — 6/9 (AMBER)</div>
+    <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem">These are independently verified gaps. The kernel is alive, but these checks fail. Honesty requires showing them.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem">
+      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ protocol_version</span>
+      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ schema_echo_stable</span>
+      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ cooling_ledger</span>
+      <span style="background:rgba(90,158,56,0.1);color:#5a9e38;padding:4px 8px;border-radius:4px">✅ 6 other checks pass</span>
+    </div>
+    <div style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:var(--color-surface-offset);border-radius:4px;font-size:0.72rem;color:var(--color-text-faint);font-family:var(--font-mono);line-height:1.5">
+      <strong style="color:var(--color-gold)">cooling_ledger:</strong> VAULT999 chain_integrity=BROKEN · vault_seals_total=270 · well_entropy_seals_found=0<br>
+      <strong>Ruled:</strong> NON-ISSUE (2026-06-05) — known pre-migration historical gap. Does not prove collapse.<br>
+      <strong>Additional:</strong> registry/runtime tool mismatch observed — arif_triage, arif_measure, arif_canary listed but return Unknown tool.
+    </div>
+  </div>
+
+  <!-- XIV. CROSS-ORGAN WORKFLOWS -->
   <div class="section-label">XIII · Cross-Organ Workflows</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">Ψ→Ω→❤️</span> Federated Decision Loop</div>
+    <div class="card-title"><span class="num">Δ→Ω→Ψ</span> Federated Decision Loop</div>
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-4)">
       <div style="flex:1;min-width:200px">
         <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2)">1. GEOX · Evidence</div>
@@ -1061,23 +1081,33 @@ const FLOOR_NAMES = {
 
 function renderFloors(rf) {
   const grid = document.getElementById('floorGrid');
+  if (!grid) return;
+  const keys = Object.keys(rf || {});
+  if (keys.length === 0) {
+    document.getElementById('floorsActive').textContent = '—';
+    return;
+  }
   let html = '', pass = 0;
   for (let i = 1; i <= 13; i++) {
     const fid = 'F' + i;
-    const score = rf[fid] ?? 0;
+    const v = rf[fid];
+    // rf values may be numeric scores, booleans, or objects
+    var score = (typeof v === 'number') ? v : (v && typeof v === 'object' ? (v.score || 0) : 0);
     let status = 'band';
     if (score >= 0.8) {
       status = i >= 10 ? 'lock' : i === 13 ? 'human' : 'pass';
       pass++;
     }
-    html += `<div class="floor-chip ${status}">
-      <div class="floor-id">${fid}</div>
-      <div class="floor-name">${FLOOR_NAMES[fid]}</div>
-      <div class="floor-score">${score.toFixed(2)}</div>
-    </div>`;
+    html += '<div class="floor-chip ' + status + '">' +
+      '<div class="floor-id">' + fid + '</div>' +
+      '<div class="floor-name">' + (FLOOR_NAMES[fid] || fid) + '</div>' +
+      '<div class="floor-score">' + score.toFixed(2) + '</div>' +
+    '</div>';
   }
   grid.innerHTML = html;
+  // Source note: these scores come from kernel runtime_floors, not independently verified
   document.getElementById('floorsActive').textContent = pass + '/13';
+  document.getElementById('floorsActive').title = 'Floor pass count from kernel runtime_floors (score >= 0.8). Source: kernel self-report. NOT independently verified.';
 }
 
 function renderTools(tools) {
@@ -1202,12 +1232,13 @@ function showReality(status, text) {
 
 function renderProbeError(err) {
   showReality('err', 'Δ PROBE FAILED · Kernel unreachable · ' + (err.message || String(err)));
-  document.getElementById('verdictVal').textContent = 'PROBE FAILED';
-  document.getElementById('verdictVal').className = 'val err';
+  document.getElementById('svcHealthVal').textContent = 'PROBE FAILED';
+  document.getElementById('svcHealthVal').className = 'val err';
   const dot = document.getElementById('statusDot');
   dot.className = 'live-dot live-err';
   dot.style.background = ''; dot.style.boxShadow = '';
-  document.getElementById('heroVerdict').textContent = 'VERDICT: PROBE FAILED';
+  document.getElementById('heroSvcVerdict').textContent = '⚙️ SERVICE: PROBE FAILED';
+  document.getElementById('heroVerdict').textContent = '⚖️ OBSERVATORY: HOLD';
   document.getElementById('federationCensus').innerHTML = '<tr><td colspan="5" style="padding:12px 4px;color:var(--color-error);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Δ PROBE FAILED · Cannot reach kernel /api/status</td></tr>';
 }
 
@@ -1228,64 +1259,117 @@ async function poll() {
 
     const ok = d.overall_ok !== false;
     const verdict = th.verdict || 'HOLD';
+    const lf = h.langfuse_tracing || {};
 
-    // Status strip
-    document.getElementById('verdictVal').textContent = verdict;
-    document.getElementById('verdictVal').className = 'val ' + (verdict === 'SEAL' ? 'ok' : verdict === 'HOLD' ? 'hold' : 'err');
+    // ── HONEST STATUS STRIP ──────────────────────────────────────────
+    // 7 independent badges. Never collapse into one SEAL.
+    // Service health ≠ constitutional verdict ≠ conformance score.
+
+    const svcOk = (h.status || '').toLowerCase() === 'healthy';
+    const svcVerdict = svcOk ? 'SEAL' : (h.status || 'UNKNOWN').toUpperCase();
+
+    // ① Service health — kernel /health HTTP 200. NOT a constitutional verdict.
+    const svcEl = document.getElementById('svcHealthVal');
+    svcEl.textContent = svcVerdict;
+    svcEl.className = 'val ' + (svcOk ? 'ok' : 'err');
+    svcEl.title = '① Service health = /health HTTP 200. Kernel reachable. NOT a constitutional verdict. Independent of all other badges.';
     const statusDot = document.getElementById('statusDot');
-    statusDot.className = 'live-dot ' + (verdict === 'SEAL' ? 'live-ok' : verdict === 'HOLD' ? 'live-hold' : 'live-err');
+    statusDot.className = 'live-dot ' + (svcOk ? 'live-ok' : 'live-err');
     statusDot.style.background = ''; statusDot.style.boxShadow = '';
-    document.getElementById('heroVerdict').textContent = 'VERDICT: ' + verdict;
-    document.getElementById('heroOrgans').textContent = '🌐 ' + (h.tools_loaded || '?') + ' Tools · Federation Live';
+
+    // ② Conformance gate — ARIF Conformance Spine score. Always AMBER unless proven otherwise.
+    var confScore = 'AMBER';
+    var confClass = 'hold';
+    // If we have a conformance score from the API, use it
+    if (h.conformance_score != null) {
+      confScore = h.conformance_score + '/9';
+      confClass = h.conformance_score >= 9 ? 'ok' : h.conformance_score >= 6 ? 'hold' : 'err';
+    }
+    document.getElementById('conformanceVal').textContent = confScore;
+    document.getElementById('conformanceVal').className = 'val ' + confClass;
+    document.getElementById('heroConfVerdict').textContent = '🧪 CONFORMANCE: ' + confScore;
+
+    // ③ Vault — HEALTHY_WITH_EXPLAINED_HISTORICAL_GAP
+    var vaultDisplay = (h.vault999_health || '—').toUpperCase();
+    var vaultClass = 'hold'; // Default: not safe to claim full green
+    if (h.vault999_health === 'healthy') {
+      vaultDisplay = 'HEALTHY*';
+      vaultClass = 'hold'; // asterisk = historical gap, cannot show green
+    } else if (h.vault999_health === 'degraded') {
+      vaultClass = 'err';
+    }
+    document.getElementById('vaultStatus').textContent = vaultDisplay;
+    document.getElementById('vaultStatus').className = 'val ' + vaultClass;
+    document.getElementById('vaultStatus').title = 'VAULT999: service reachable, but chain integrity has a known pre-migration historical gap (ruled NON-ISSUE 2026-06-05). * = healthy with explained gap. Not full green.';
+
+    // Langfuse — UNVERIFIED by default
+    var lfDisplay = (lf.status || 'UNVERIFIED');
+    var lfClass = 'hold';
+    if (lf.status === 'active' || lf.status === 'ACTIVE') {
+      lfDisplay = 'UNVERIFIED';
+      lfClass = 'hold';
+    }
+    document.getElementById('langfuseStatus').textContent = lfDisplay;
+    document.getElementById('langfuseStatus').className = 'val ' + lfClass;
+    document.getElementById('langfuseStatus').title = 'Langfuse tracing: kernel reports ' + (lf.status || '?') + '. Not independently verified. Cannot show green without external confirmation.';
+
+    // ④ Drift — UNCERTAIN. Kernel self-report is not sufficient.
+    var driftDisplay = 'UNCERTAIN';
+    var driftClass = 'hold';
+    if (sr.runtime_drift === true) {
+      driftDisplay = 'TRUE';
+      driftClass = 'err';
+    }
+    document.getElementById('runtimeDrift').textContent = driftDisplay;
+    document.getElementById('runtimeDrift').className = 'val ' + driftClass;
+    document.getElementById('runtimeDrift').title = 'Drift detection: kernel self-reports ' + (sr.runtime_drift || false) + '. UNCERTAIN = not independently verified. Kernel self-report is not sufficient proof of absence.';
+
+    // ⑤ UI↔Kernel sync — NOT_PROVEN by default
+    var syncDisplay = 'NOT_PROVEN';
+    var syncClass = 'hold';
+    if (sr.runtime_drift === true || h.contract_drift === true) {
+      syncDisplay = 'DRIFT';
+      syncClass = 'err';
+    }
+    document.getElementById('uiKernelSync').textContent = syncDisplay;
+    document.getElementById('uiKernelSync').className = 'val ' + syncClass;
+    document.getElementById('uiKernelSync').title = 'UI↔Kernel synchronization: NOT_PROVEN by default. Requires independent verification of kernel claims against external witness. Kernel self-attestation is not sufficient.';
+
+    // ⑥ Identity — PARTIAL by default (no cryptographic proof)
+    var idDisplay = 'PARTIAL';
+    var idClass = 'hold';
+    if (h.boot_attestation) {
+      idDisplay = 'VERIFIED';
+      idClass = 'ok';
+    }
+    document.getElementById('identityState').textContent = idDisplay;
+    document.getElementById('identityState').className = 'val ' + idClass;
+    document.getElementById('identityState').title = h.boot_attestation ? 'boot_attestation=true. Identity cryptographically anchored.' : 'Identity provenance is PARTIAL — asserted by config (identity.toml), not cryptographically verified by an external witness.';
+
+    // Trinity — not safe to claim ALIGNED without independent verification
+    document.getElementById('trinityStatus').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
+    document.getElementById('trinityStatus').className = 'val ' + (ok ? 'hold' : 'err');
+    document.getElementById('trinityStatus').title = ok ? 'Trinity reports ALIGNED. Not independently verified.' : 'Trinity MISALIGNED.';
+
+    // Tools count — just the number, no verdict
     document.getElementById('toolsCount').textContent = h.tools_loaded || '—';
     document.getElementById('psiVital').textContent = (gov.psi_vitality || 0).toFixed(2);
-    document.getElementById('vaultStatus').textContent = (h.vault999_health || '—').toUpperCase();
-    document.getElementById('vaultStatus').className = 'val ' + (h.vault999_health === 'healthy' ? 'ok' : 'err');
-    const lf = h.langfuse_tracing || {};
-    document.getElementById('langfuseStatus').textContent = (lf.status || '—') + ' · ' + (lf.traced_tools_count || 0) + '/13';
-    document.getElementById('runtimeDrift').textContent = String(sr.runtime_drift || false).toUpperCase();
-    document.getElementById('runtimeDrift').className = 'val ' + (sr.runtime_drift ? 'err' : 'ok');
-    document.getElementById('trinityStatus').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
-    document.getElementById('trinityStatus').className = 'val ' + (ok ? 'ok' : 'err');
 
-    // UI↔Kernel Sync — DEGRADED when any of: runtime drift, contract drift, missing identity verification, or verdict says SEAL but drift=true
-    const runtimeDrifted = !!sr.runtime_drift;
-    const contractDrifted = !!h.contract_drift;
-    const identityClaimed = (h.identity_marker || '').toLowerCase().includes('sovereign-runtime') && !h.boot_attestation;
-    const verdictLies = (verdict === 'SEAL') && (runtimeDrifted || contractDrifted);
-    const syncState = (runtimeDrifted || contractDrifted || verdictLies) ? 'DEGRADED' : (ok ? 'SYNC' : 'UNKNOWN');
-    const syncEl = document.getElementById('uiKernelSync');
-    syncEl.textContent = syncState;
-    syncEl.className = 'val ' + (syncState === 'SYNC' ? 'ok' : (syncState === 'DEGRADED' ? 'err' : 'hold'));
-    syncEl.title = 'UI state vs kernel state. DEGRADED means: ' + [
-      runtimeDrifted ? 'runtime drift TRUE' : null,
-      contractDrifted ? 'contract drift TRUE' : null,
-      verdictLies ? 'verdict=SEAL despite drift' : null,
-    ].filter(Boolean).join('; ') || 'no drift signals';
-
-    // Identity state — sovereign-runtime marker is fine, but boot_attestation must be true
-    const idEl = document.getElementById('identityState');
-    if (h.boot_attestation) {
-      idEl.textContent = 'VERIFIED';
-      idEl.className = 'val ok';
-      idEl.title = 'boot_attestation=true. Identity is cryptographically anchored.';
-    } else {
-      idEl.textContent = 'CLAIMED';
-      idEl.className = 'val hold';
-      idEl.title = 'boot_attestation=false. Identity is asserted by config (identity.toml), not cryptographically verified by an external witness. All F13 / F11 verdicts operate under this constraint.';
-    }
+    // Hero verdicts — SPLIT, never collapsed
+    document.getElementById('heroSvcVerdict').textContent = '⚙️ SERVICE: ' + svcVerdict;
+    document.getElementById('heroVerdict').textContent = '⚖️ OBSERVATORY: HOLD';
+    document.getElementById('heroOrgans').textContent = '🌐 ' + (h.tools_loaded || '?') + ' Tools · 7 Organs · ΔΩΨ';
     // Last-updated timestamp for staleness visibility
     const now = new Date();
     document.getElementById('lastUpdated').textContent = now.toISOString().replace('T',' ').substring(0,19) + ' UTC';
     document.getElementById('stalenessPill').style.display = 'inline-flex';
-    // Staleness: show warning if vault/langfuse shows degraded/not_configured
-    const vaultStale = (h.vault999_health || '').toLowerCase() !== 'healthy';
-    const langfuseStale = (lf.status || '').toLowerCase() === 'not_wired' || (lf.status || '').toLowerCase() === 'false';
-    document.getElementById('stalenessPill').className = 'status-pill staleness-pill ' + (vaultStale || langfuseStale ? 'val-hold' : 'val-ok');
+    // Staleness: vault with historical gap = AMBER, langfuse unverified = AMBER
+    document.getElementById('stalenessPill').className = 'status-pill staleness-pill val-hold';
 
-    // Thermo card
-    document.getElementById('thermoVerdict').textContent = verdict;
-    document.getElementById('thermoVerdict').className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : verdict === 'HOLD' ? 'hold' : 'err');
+    // Thermo card — honest, never overclaim
+    document.getElementById('thermoVerdict').textContent = svcVerdict;
+    document.getElementById('thermoVerdict').className = 'metric-val ' + (svcOk ? 'ok' : 'err');
+    document.getElementById('thermoVerdict').title = 'Service health verdict only. NOT a constitutional or total-system verdict.';
     const dS = th.entropy_delta ?? 0;
     document.getElementById('entropyVal').textContent = (dS >= 0 ? '+' : '') + dS.toFixed(3);
     document.getElementById('entropyVal').className = 'metric-val ' + (Math.abs(dS) < 0.3 ? 'ok' : dS > 0 ? 'err' : 'hold');
@@ -1295,59 +1379,59 @@ async function poll() {
     const ps = th.peace_squared ?? 0;
     document.getElementById('peaceVal').textContent = ps.toFixed(3);
     document.getElementById('peaceVal').className = 'metric-val ' + (ps >= 1.0 ? 'ok' : ps >= 0.5 ? 'hold' : 'err');
-    document.getElementById('confVal').textContent = ((th.confidence ?? 0) * 100).toFixed(0) + '%';
+    // Confidence: cap at measured, never show 99% unless independently verified
+    var confRaw = (th.confidence ?? 0);
+    var confDisplay = confRaw > 0 ? (confRaw * 100).toFixed(0) + '%' : 'NOT RATED';
+    document.getElementById('confVal').textContent = confDisplay;
+    document.getElementById('confVal').className = 'metric-val ' + (confRaw > 0.9 ? 'hold' : 'hold');
+    document.getElementById('confVal').title = 'Confidence: ' + confDisplay + '. NOT independently verified. High confidence claims require external witness.';
     document.getElementById('metaStage').textContent = 'STAGE ' + (th.metabolic_stage || '—');
 
-    // Governance card
+    // Governance card — honest posture
     document.getElementById('tauVal').textContent = (gov.tau_confidence_system || 0).toFixed(3);
     document.getElementById('psiVit').textContent = (gov.psi_vitality || 0).toFixed(4);
-    document.getElementById('vault999Val').textContent = (h.vault999_health || '—').toUpperCase();
-    document.getElementById('vault999Val').className = 'metric-val ' + (h.vault999_health === 'healthy' ? 'ok' : 'err');
-    document.getElementById('driftVal').textContent = String(sr.runtime_drift || false).toUpperCase();
-    document.getElementById('driftVal').className = 'metric-val ' + (sr.runtime_drift ? 'err' : 'ok');
+    document.getElementById('vault999Val').textContent = vaultDisplay;
+    document.getElementById('vault999Val').className = 'metric-val ' + vaultClass;
+    document.getElementById('vault999Val').title = 'VAULT999: ' + vaultDisplay + '. Known historical pre-migration chain gap (ruled NON-ISSUE). * = healthy with explained gap.';
+    document.getElementById('driftVal').textContent = driftDisplay;
+    document.getElementById('driftVal').className = 'metric-val ' + driftClass;
+    document.getElementById('driftVal').title = 'Runtime drift: ' + driftDisplay + '. Kernel self-report is insufficient proof.';
 
-    // 5-WAY SEAL SPLIT — do not collapse these into one verdict.
-    // ① Service health = HTTP /health 200 (kernel reachability, not constitutional)
-    const svcOk = (h.status || '').toLowerCase() === 'healthy';
-    const svcEl = document.getElementById('sealService');
-    svcEl.textContent = svcOk ? 'healthy' : (h.status || 'unknown');
-    svcEl.className = 'metric-val ' + (svcOk ? 'ok' : 'err');
-    // ② Floor pass = count of runtime floors with positive signal
+    // 5-WAY SEAL SPLIT — must not collapse into one verdict
+    // ① Service health
+    document.getElementById('sealService').textContent = svcOk ? 'healthy' : (h.status || 'unknown');
+    document.getElementById('sealService').className = 'metric-val ' + (svcOk ? 'ok' : 'err');
+    // ② Floor pass — use same logic as renderFloors
     const rfKeys = Object.keys(rf);
-    const floorPassCount = rfKeys.filter(k => {
-      const v = rf[k];
-      if (typeof v === 'boolean') return v === true;
-      if (typeof v === 'object' && v !== null) {
-        return v.pass === true || v.verdict === 'PASS' || v.status === 'active';
-      }
-      return false;
-    }).length;
-    const floorEl = document.getElementById('sealFloors');
-    floorEl.textContent = floorPassCount + '/' + rfKeys.length;
-    floorEl.className = 'metric-val ' + (floorPassCount === rfKeys.length && rfKeys.length > 0 ? 'ok' : (floorPassCount >= rfKeys.length / 2 ? 'hold' : 'err'));
-    // ③ Execution auth = judge verdict. NEVER self-attest.
-    const execEl = document.getElementById('sealExec');
-    execEl.textContent = verdict;
-    execEl.className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : (verdict === 'HOLD' ? 'hold' : 'err'));
-    // ④ Audit seal = VAULT999 service health + record availability
-    const auditEl = document.getElementById('sealAudit');
-    const vaultOk = (h.vault999_health || '').toLowerCase() === 'healthy';
-    auditEl.textContent = vaultOk ? 'service up' : (h.vault999_health || 'unknown');
-    auditEl.className = 'metric-val ' + (vaultOk ? 'ok' : 'err');
-    auditEl.title = vaultOk ? 'Vault service reachable. Record count not shown here — see VAULT999 page.' : 'Vault service degraded';
-    // ⑤ Human approval = F13 sovereign. Default = NOT_REQUESTED (operator has not invoked).
-    const humanEl = document.getElementById('sealHuman');
-    humanEl.textContent = 'not_invoked';
-    humanEl.className = 'metric-val hold';
-    humanEl.title = 'F13 human sovereign approval has not been requested in this session. Cannot be true-green unless an operator explicitly invokes an irreversible action and approves it.';
+    var floorPassCount = 0;
+    for (var i = 0; i < rfKeys.length; i++) {
+      var k = rfKeys[i], v = rf[k];
+      var score = (typeof v === 'number') ? v : (v && typeof v === 'object' ? (v.score || 0) : 0);
+      if (score >= 0.8) floorPassCount++;
+    }
+    var floorFrac = rfKeys.length > 0 ? floorPassCount + '/' + rfKeys.length : '—';
+    document.getElementById('sealFloors').textContent = floorFrac + (rfKeys.length === 0 ? '' : ' (kernel)');
+    document.getElementById('sealFloors').className = 'metric-val ' + (floorPassCount === rfKeys.length && rfKeys.length > 0 ? 'ok' : (floorPassCount >= rfKeys.length / 2 ? 'hold' : 'err'));
+    document.getElementById('sealFloors').title = 'Floor pass count from kernel runtime_floors. Source: kernel self-report. NOT independently verified.';
+    // ③ Execution auth
+    document.getElementById('sealExec').textContent = verdict;
+    document.getElementById('sealExec').className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : (verdict === 'HOLD' ? 'hold' : 'err'));
+    // ④ Audit seal
+    document.getElementById('sealAudit').textContent = vaultDisplay;
+    document.getElementById('sealAudit').className = 'metric-val ' + vaultClass;
+    // ⑤ Human approval
+    document.getElementById('sealHuman').textContent = 'not_invoked';
+    document.getElementById('sealHuman').className = 'metric-val hold';
+    document.getElementById('sealHuman').title = 'F13 human sovereign approval has not been requested in this session.';
 
-    // Witness card
+    // Witness card — don't overclaim trinity alignment
     const wit = th.witness || {};
     document.getElementById('wHuman').textContent = (wit.human ?? 0).toFixed(2);
     document.getElementById('wAi').textContent = (wit.ai ?? 0).toFixed(2);
     document.getElementById('wEarth').textContent = (wit.earth ?? 0).toFixed(2);
     document.getElementById('trinityOk').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
-    document.getElementById('trinityOk').className = 'metric-val ' + (ok ? 'ok' : 'err');
+    document.getElementById('trinityOk').className = 'metric-val ' + (ok ? 'hold' : 'err');
+    document.getElementById('trinityOk').title = ok ? 'Trinity reports ALIGNED. NOT independently verified. Cannot show full green.' : 'Trinity MISALIGNED.';
     const deltaEv = (tm.delta || {}).evidence || [];
     const psiEv = (tm.psi || {}).evidence || [];
     document.getElementById('deltaEv').textContent = deltaEv.length > 0 ? deltaEv.length + ' ISSUES' : 'CLEAR';
@@ -1361,7 +1445,7 @@ async function poll() {
     document.getElementById('imageTag').textContent = (h.image || '—').replace('ghcr.io/ariffazil/', '');
     document.getElementById('toolsLoaded').textContent = h.tools_loaded || '—';
     document.getElementById('buildTime').textContent = (h.build_time || '—').substring(0, 19);
-    document.getElementById('langfuseVal').textContent = (lf.status || '—');
+    document.getElementById('langfuseVal').textContent = lfDisplay;
 
     // Populate dynamic sections
     if (d.tools && d.tools.length) renderTools(d.tools);
@@ -1369,9 +1453,8 @@ async function poll() {
 
     if (cap && Object.keys(cap).length) renderCap(cap);
 
-    // Reality banner: honest summary of what we know
-    const driftNote = sr.runtime_drift ? ' · RUNTIME DRIFT DETECTED' : '';
-    showReality('ok', 'Δ LIVE · tools=' + (h.tools_loaded || '?') + ' · vault=' + (h.vault999_health || '?') + ' · langfuse=' + (lf.status || '?') + ' · drift=' + (sr.runtime_drift || false) + driftNote);
+    // Reality banner: HONEST summary. Never claim more than we know.
+    showReality('warn', 'Δ LIVE · svc=' + svcVerdict + ' · tools=' + (h.tools_loaded || '?') + ' · vault=' + vaultDisplay + ' · conf=' + confScore + ' · drift=' + driftDisplay);
 
   } catch(e) {
     console.warn('poll error:', e);
