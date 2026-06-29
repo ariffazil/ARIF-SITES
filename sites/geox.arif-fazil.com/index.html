@@ -165,6 +165,45 @@
             margin-bottom: 1rem;
         }
 
+        /* RASA Panel */
+        .rasa-section {
+            background: linear-gradient(135deg, #0f0f15 0%, #12121a 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            border: 1px solid var(--border-dim);
+        }
+
+        .rasa-formula {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            background: rgba(0, 212, 170, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .rasa-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .rasa-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-dim);
+        }
+
+        .rasa-card .value { font-size: 2rem; font-weight: 800; color: var(--accent-cyan); }
+        .rasa-card .label { font-size: 0.75rem; color: var(--accent-gold); text-transform: uppercase; margin-top: 0.5rem; }
+        .rasa-card .desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+
         @media (max-width: 768px) {
             .cockpit-grid { grid-template-columns: 1fr; }
             .bridge-visual { flex-direction: column; gap: 2rem; }
@@ -180,6 +219,7 @@
                 <a href="/" class="active">Overview</a>
                 <a href="/apps/">Cockpits</a>
                 <a href="/docs/">Protocol</a>
+                <a href="#rasa">RASA</a>
                 <a href="/status/">Status</a>
             </nav>
         </header>
@@ -244,6 +284,40 @@
             
             <p style="font-size: 0.85rem; color: var(--accent-gold); font-family: monospace;">
                 geox.evaluate_prospect() → arifos.bridge_contract() → wealth.npv_reward()
+            </p>
+        </section>
+
+        <section class="rasa-section" id="rasa">
+            <h2 style="text-align: center; margin-bottom: 1rem;">RASA — Context-Fit Score</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+                Every GEOX claim carries a <strong>Relevance-Aware Substrate Alignment</strong> score.
+                RASA measures whether an interpretation is anchored to its evidence context or floating in abstraction.
+            </p>
+
+            <div class="rasa-formula">
+                RASA = evidence_credit × (1 − u_ambiguity)
+            </div>
+
+            <div class="rasa-grid">
+                <div class="rasa-card">
+                    <div class="value">0.90</div>
+                    <div class="label">F7 Humility Cap</div>
+                    <div class="desc">GEOX never claims perfect context fit. 10% epistemic room is mandatory.</div>
+                </div>
+                <div class="rasa-card">
+                    <div class="value">30</div>
+                    <div class="label">Canonical Tools</div>
+                    <div class="desc">Every tool output can carry a RASA score when <code>rasa_present=True</code>.</div>
+                </div>
+                <div class="rasa-card">
+                    <div class="value">AAA</div>
+                    <div class="label">Evidence Grade</div>
+                    <div class="desc">RASA feeds the CLAIM / PLAUSIBLE / HYPOTHESIS epistemic ladder.</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.85rem; color: var(--text-secondary); font-family: monospace;">
+                geox.compute_ac_risk_governed(...) → rasa_context_fit ∈ [0.0, 0.90]
             </p>
         </section>
 
