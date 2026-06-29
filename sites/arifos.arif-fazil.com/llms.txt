@@ -5,28 +5,36 @@
 
 ## What This Is
 
-arifOS is a constitutional AI governance framework. This observatory provides real-time visibility into:
-- **7 Federation Organs**: arifOS (kernel), GEOX (earth), WEALTH (capital), WELL (vitality), AAA (A2A hub), A-FORGE (execution), VAULT999 (audit)
+arifOS is a constitutional AI governance framework. This observatory provides read-only visibility into the federation:
+- **6 Federation Organs**: arifOS (kernel), GEOX (earth), WEALTH (capital), WELL (vitality), AAA (A2A hub), A-FORGE (execution)
 - **13 Constitutional Floors**: F1 AMANAH through F13 SOVEREIGN
 - **VAULT999**: Immutable audit chain with hash-chained seals
 - **888 JUDGE**: Constitutional verdict engine
 
-## MCP Endpoints
+## Canonical MCP Gateway
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/mcp` | POST | MCP JSON-RPC 2.0 (streamable-http) |
-| `/health` | GET | Organ health status |
-| `/tools.json` | GET | Available MCP tools |
-| `/sse` | GET | Server-sent events (legacy) |
-| `/api/status` | GET | Federation status |
+All public MCP traffic routes through one canonical gateway:
+
+| Endpoint | Method | Domain | Description |
+|----------|--------|--------|-------------|
+| `/mcp` | POST | `mcp.arif-fazil.com` | MCP JSON-RPC 2.0 (streamable-http) |
+| `/tools.json` | GET | `mcp.arif-fazil.com` | Available MCP tools |
+| `/sse` | GET | `mcp.arif-fazil.com` | Server-sent events |
+
+## Observatory Read-Only Endpoints
+
+| Endpoint | Method | Domain | Description |
+|----------|--------|--------|-------------|
+| `/health` | GET | `arifos.arif-fazil.com` | Observatory health |
+| `/api/status` | GET | `arifos.arif-fazil.com` | Federation status |
+| `/federation-manifest.json` | GET | `arifos.arif-fazil.com` | Federation topology manifest |
 
 ## Agent Discovery
 
-- Agent Card: `/.well-known/agent-card.json`
-- MCP Manifest: `/.well-known/mcp.json`
-- AI Plugin: `/.well-known/ai-plugin.json`
-- Federation Manifest: `/federation-manifest.json`
+- Agent Card: `https://arifos.arif-fazil.com/.well-known/agent-card.json`
+- MCP Manifest: `https://arifos.arif-fazil.com/.well-known/mcp.json`
+- AI Plugin: `https://arifos.arif-fazil.com/.well-known/ai-plugin.json`
+- Federation Manifest: `https://arifos.arif-fazil.com/federation-manifest.json`
 
 ## Federation Organs
 
@@ -37,12 +45,13 @@ arifOS is a constitutional AI governance framework. This observatory provides re
 | WEALTH | 18082 | wealth.arif-fazil.com | Capital intelligence |
 | WELL | 18083 | well.arif-fazil.com | Vitality engine |
 | AAA | 3001 | aaa.arif-fazil.com | A2A hub |
-| A-FORGE | 7071 | — | Execution shell |
+| A-FORGE | 7071 | forge.arif-fazil.com | Execution shell |
 
 ## Links
 
 - Main site: https://arif-fazil.com
 - AAA Cockpit: https://aaa.arif-fazil.com
+- MCP Gateway: https://mcp.arif-fazil.com
 - GEOX: https://geox.arif-fazil.com
 - WEALTH: https://wealth.arif-fazil.com
 - GitHub: https://github.com/ariffazil/arifos

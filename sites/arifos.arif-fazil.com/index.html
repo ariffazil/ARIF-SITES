@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arifOS Observatory · ΔΩΨ · Federation Governance Hub</title>
-<meta name="description" content="arifOS MCP Observatory v2.0 — Live constitutional governance dashboard. Federation hub for arifOS, GEOX, WEALTH, WELL, A-FORGE, and AAA.">
+<title>arifOS Observatory — Constitutional Governance Dashboard</title>
+<meta name="description" content="Read-only governance visibility for the arifOS constitutional federation. Live organ health, F1-F13 floors, VAULT999 status, and canonical docs. MCP tools live at mcp.arif-fazil.com.">
 <link rel="canonical" href="https://arifos.arif-fazil.com/">
 <!-- Trinity Design System (SOT) -->
 <link rel="stylesheet" href="/_shared/design-system/tokens.css">
@@ -39,7 +39,7 @@
   --font-display:'Cabinet Grotesk','Helvetica Neue',sans-serif;
   --font-body:'Satoshi','Inter',sans-serif;
   --font-mono:'JetBrains Mono','Fira Code',monospace;
-  --text-xs:clamp(0.65rem,0.6rem + 0.2vw,0.75rem);
+  --text-xs:clamp(0.75rem,0.7rem + 0.2vw,0.8125rem);
   --text-sm:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
   --text-base:clamp(0.875rem,0.85rem + 0.2vw,1rem);
   --text-lg:clamp(1rem,0.9rem + 0.5vw,1.25rem);
@@ -53,6 +53,10 @@ body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-t
 .mono{font-family:var(--font-mono);letter-spacing:-0.02em}
 a{color:var(--color-primary);text-decoration:none}
 a:hover{color:var(--color-gold)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;border-radius:var(--radius-sm)}
+.skip-link{position:absolute;top:-40px;left:var(--space-4);background:var(--color-primary);color:#fff;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;z-index:1000;transition:top .2s}
+.skip-link:focus{top:var(--space-2)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 
 /* LAYOUT */
 .shell{max-width:1100px;margin-inline:auto;padding:var(--space-8) var(--space-4)}
@@ -280,8 +284,47 @@ a:hover{color:var(--color-gold)}
 .fade-up:nth-child(5){animation-delay:0.25s}
 .fade-up:nth-child(6){animation-delay:0.30s}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "arifOS Observatory",
+      "url": "https://arifos.arif-fazil.com",
+      "description": "Read-only governance visibility for the arifOS constitutional federation: live organ health, F1-F13 floors, and canonical docs.",
+      "publisher": {"@id": "https://arifos.arif-fazil.com/#arifos"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://arifos.arif-fazil.com/",
+      "url": "https://arifos.arif-fazil.com/",
+      "name": "arifOS Observatory — Constitutional Governance Dashboard",
+      "isPartOf": {"@id": "https://arifos.arif-fazil.com/#website"},
+      "about": {"@id": "https://arifos.arif-fazil.com/#arifos"}
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://arifos.arif-fazil.com/#arifos",
+      "name": "arifOS",
+      "url": "https://arifos.arif-fazil.com",
+      "sameAs": ["https://github.com/ariffazil/arifOS"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "arifOS Constitutional Kernel",
+      "applicationCategory": "GovernanceFramework",
+      "operatingSystem": "Linux",
+      "url": "https://arifos.arif-fazil.com",
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+    }
+  ]
+}
+</script>
 </head>
 <body>
+
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <div class="shell">
 
@@ -309,10 +352,10 @@ a:hover{color:var(--color-gold)}
     <a class="nav-chip" href="https://wealth.arif-fazil.com/"><span class="dot dot-ok" id="wealthDot"></span>WEALTH</a>
     <a class="nav-chip" href="https://well.arif-fazil.com/"><span class="dot dot-ok" id="wellDot"></span>WELL</a>
     <a class="nav-chip" href="https://mcp.arif-fazil.com/"><span class="icon">🔌</span>MCP Gateway</a>
-    <a class="nav-chip" href="https://arifos.arif-fazil.com/wiki/"><span class="icon">📖</span>Ω-Wiki</a>
-    <a class="nav-chip" href="https://arif-fazil.com/apex/"><span class="icon">⚡</span>APEX</a>
     <a class="nav-chip" href="https://arif-fazil.com/canon/"><span class="icon">📐</span>Canon</a>
   </div>
+
+  <main id="main-content">
 
   <!-- DOCTRINE BANNER — truth-bound invariant -->
   <div class="doctrine-banner" style="background:linear-gradient(90deg, rgba(212,168,83,0.10), rgba(212,168,83,0.02)); border-bottom:1px solid rgba(212,168,83,0.25); padding:6px 0; font-family:var(--font-mono); font-size:10px; letter-spacing:0.2em; color:var(--color-gold); text-align:center;">
@@ -343,10 +386,10 @@ a:hover{color:var(--color-gold)}
   <section class="hero fade-up">
     <div class="hero-tag">
       <svg width="8" height="8" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.8"/></svg>
-      FEDERATION GOVERNANCE HUB · LIVE · 18 JUNE 2026 · STREAMABLE-HTTP + JSON-RPC · ΔS ≤ 0
+      ARIFOS OBSERVATORY · READ-ONLY GOVERNANCE VISIBILITY · LIVE
     </div>
     <h1>arifOS Observatory</h1>
-    <p>The Constitutional Infrastructure Layer for Governed Intelligence. AI capability without constitutional governance creates instability. arifOS exists to make intelligence <strong>observable, constrained, auditable, and human-sovereign.</strong></p>
+    <p>The Constitutional Infrastructure Layer for Governed Intelligence. This observatory provides read-only visibility into the federation — health, floors, vault status, and canonical docs. MCP tool execution lives at the <a href="https://mcp.arif-fazil.com/" style="color:var(--color-primary)">canonical gateway</a>.</p>
     <div class="hero-divider"></div>
     <div class="hero-pills">
       <span class="pill" id="heroVerdict">VERDICT: —</span>
@@ -354,8 +397,8 @@ a:hover{color:var(--color-gold)}
       <span class="pill">⚖️ ΔΩΨ Trinity Governance</span>
       <span class="pill" id="heroOrgans">🌐 Federation Organs · Probing...</span>
       <span class="pill"><a href="/canon/aaa-doctrine" style="color:var(--color-text-muted)">📜 AAA Doctrine</a></span>
-      <span class="pill"><a href="/canon/mcp-boundary" style="color:var(--color-text-muted)">🔌 MCP Boundary</a></span>
-      <span class="pill">🔗 JSON-RPC · 6 Organs · streamable-http</span>
+      <span class="pill"><a href="https://mcp.arif-fazil.com/" style="color:var(--color-text-muted)">🔌 Canonical MCP Gateway</a></span>
+      <span class="pill">📖 Read the Canon</span>
     </div>
   </section>
 
@@ -364,7 +407,7 @@ a:hover{color:var(--color-gold)}
   <div class="grid-3 fade-up" style="margin-bottom:var(--space-12)">
     <div class="card">
       <div class="card-title"><span class="num">🔭</span> Observatory</div>
-      <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">Public visibility layer. Prove governance exists. Show constitutional health, runtime posture, known gaps, and live organ status. <strong>Trust through exposure.</strong></p>
+      <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">Public visibility layer. Prove governance exists. Show constitutional health, runtime posture, and live organ status. <strong>Trust through exposure.</strong></p>
     </div>
     <div class="card">
       <div class="card-title"><span class="num">🧪</span> Constitutional Laboratory</div>
@@ -383,7 +426,7 @@ a:hover{color:var(--color-gold)}
 
     <div class="arch-card sovereign">
       <div class="arch-psi">👤</div>
-      <div class="arch-label">APEX · SOVEREIGN</div>
+      <div class="arch-label">F13 · SOVEREIGN</div>
       <div class="arch-name">Human</div>
       <div class="arch-desc">Final authority. Veto absolute. F13 Sovereign Floor. Constitutional witness to all terminal verdicts.</div>
       <div style="margin-top:var(--space-3)"><span class="badge badge-gold">F13 SOVEREIGN</span></div>
@@ -518,35 +561,14 @@ a:hover{color:var(--color-gold)}
           <div class="organ-neg">Not a generic CI/CD pipeline. Sovereign metabolic execution only.</div>
           <span class="organ-link" style="opacity:0.5">Internal service — no public site</span>
         </div>
-        <!-- Ω-Wiki -->
-        <div class="organ-card" data-organ="wiki" data-url="https://arifos.arif-fazil.com/wiki/">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">📖</span>
-            <div>
-              <div class="organ-card-name">Ω-Wiki</div>
-              <div class="organ-card-role">Knowledge Base</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="wiki-tools">—</span>
-            <span id="wiki-resources">—</span>
-            <span id="wiki-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Federation knowledge graph</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Text &gt; Brain persistence</div>
-            <div class="organ-cap"><span class="cdot cdot-planned"></span>Cross-repo schema linking</div>
-          </div>
-          <div class="organ-neg">Not a generic wiki. Compiled constitutional memory only.</div>
-          <a class="organ-link" href="https://arifos.arif-fazil.com/wiki/">arifos.arif-fazil.com/wiki →</a>
-        </div>
+
       </div>
     </div>
 
   </div>
 
   <!-- IIb. STACK TOPOLOGY -->
-  <div class="section-label">II · Stack Topology</div>
+  <div class="section-label">III · Stack Topology</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12)">
     <div class="card-title"><span class="num">Ψ</span> Federation Architecture</div>
     <div id="stackTopology">
@@ -554,8 +576,8 @@ a:hover{color:var(--color-gold)}
         <div class="topo-layer">
           <div style="font-size:1.25rem">1</div>
           <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">APEX · Human Sovereign</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Final authority. F13 veto absolute. Constitutional witness to all terminal verdicts.</div>
+            <div style="font-weight:700;font-size:var(--text-sm)">F13 SOVEREIGN · Human Architect</div>
+            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Final authority. Arif holds veto. Constitutional witness to all terminal verdicts.</div>
           </div>
           <span class="badge badge-gold">LIVE</span>
         </div>
@@ -582,7 +604,7 @@ a:hover{color:var(--color-gold)}
           <div style="font-size:1.25rem">4</div>
           <div style="flex:1">
             <div style="font-weight:700;font-size:var(--text-sm)">Federation Organs</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">GEOX Ψ · WEALTH Ω · WELL ❤️ · AAA · A-FORGE · Ω-Wiki. Domain intelligence behind the membrane.</div>
+            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">GEOX Ψ · WEALTH Ω · WELL ❤️ · AAA · A-FORGE. Domain intelligence behind the membrane.</div>
           </div>
           <span class="badge badge-ok">LIVE</span>
         </div>
@@ -595,19 +617,19 @@ a:hover{color:var(--color-gold)}
           </div>
           <span class="badge badge-ok">LIVE</span>
         </div>
-        <div style="margin-top:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);line-height:1.5">APEX → arifOS → MCP → Organs → Substrate. Authority flows down. Evidence flows up.</div>
+        <div style="margin-top:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);line-height:1.5">F13 → arifOS → MCP Gateway → Organs → Substrate. Authority flows down. Evidence flows up.</div>
       </div>
     </div>
   </div>
 
   <!-- II·b+ TRANSPORT UNIFICATION MILESTONE -->
-  <div class="section-label">II · Transport Unification — 18 June 2026</div>
+  <div class="section-label">IV · MCP Gateway Collapse — 29 June 2026</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12); border-color: oklch(from var(--color-success) l c h / 0.4);">
-    <div class="card-title"><span class="num">🔗</span> Transport Layer Standardized — Streamable HTTP + JSON-RPC Across All Organs</div>
+    <div class="card-title"><span class="num">🚪</span> One Public MCP Door</div>
     <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-3)">
-      The federation transport layer is fully unified: <strong>streamable-http + JSON-RPC 2.0</strong> on every MCP organ.
-      <strong>Zero SSE remaining.</strong> ΔS ≤ 0 enforced at the protocol boundary.
-      arifOS kernel commit <code style="font-family:var(--font-mono);color:var(--color-primary)">1f4f04e</code>, release <code style="font-family:var(--font-mono);color:var(--color-primary)">v2026.05.05-SSCT</code>.
+      All public MCP traffic now routes through a single canonical gateway: <strong>mcp.arif-fazil.com</strong>.
+      Per-organ public MCP endpoints are collapsed. The observatory remains a read-only governance surface;
+      it does not execute MCP tools itself. ΔS ≤ 0 enforced at the protocol boundary.
       <strong>999 SEAL ALIVE.</strong>
     </p>
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs)">
@@ -621,7 +643,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- II·c FEDERATION STATUS -->
-  <div class="section-label">II · Federation Status</div>
+  <div class="section-label">V · Federation Status</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12)">
     <div class="card-title"><span class="num">✅</span> Live Organ Census</div>
     <div style="overflow-x:auto">
@@ -643,7 +665,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- II·b CONSTELLATION GRAPH -->
-  <div class="section-label">II · Federation Constellation</div>
+  <div class="section-label">VI · Federation Constellation</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12)">
     <div class="card-title"><span class="num">🌌</span> Organ Federation Graph</div>
     <p style="font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-4);line-height:1.6">Read-only topology. Node status from live /api/federation-probe. Colors: 🟢 healthy · 🟡 degraded · 🔴 down · ⬜ unknown.</p>
@@ -653,7 +675,7 @@ a:hover{color:var(--color-gold)}
         <line x1="0" y1="210" x2="900" y2="210" stroke="#2a2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
         <line x1="450" y1="0" x2="450" y2="420" stroke="#2a2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
 
-        <!-- Connection lines: APEX → arifOS -->
+        <!-- Connection lines: F13 → arifOS -->
         <line x1="450" y1="60" x2="450" y2="115" stroke="#d4a853" stroke-width="2.5" opacity="0.9"/>
         <!-- arifOS → organs -->
         <line x1="380" y1="185" x2="140" y2="270" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
@@ -666,15 +688,13 @@ a:hover{color:var(--color-gold)}
         <!-- arifOS ↔ AAA (peer) -->
         <line x1="760" y1="145" x2="830" y2="200" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
         <line x1="830" y1="220" x2="760" y2="165" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <!-- Wiki (static) -->
-        <line x1="760" y1="165" x2="870" y2="320" stroke="#706e6b" stroke-width="1.5" opacity="0.5"/>
-        <!-- arifOS ↔ APEX label -->
+        <!-- arifOS ↔ F13 label -->
         <text x="458" y="90" fill="#d4a853" font-size="9" font-family="var(--font-mono)">F13 veto</text>
 
-        <!-- APEX -->
+        <!-- F13 SOVEREIGN -->
         <circle cx="450" cy="38" r="28" fill="#1a1800" stroke="#d4a853" stroke-width="2.5"/>
         <text x="450" y="34" text-anchor="middle" fill="#d4a853" font-size="16" font-weight="700">👤</text>
-        <text x="450" y="48" text-anchor="middle" fill="#d4a853" font-size="8" font-weight="700" font-family="var(--font-mono)">APEX</text>
+        <text x="450" y="48" text-anchor="middle" fill="#d4a853" font-size="8" font-weight="700" font-family="var(--font-mono)">F13</text>
         <text x="450" y="78" text-anchor="middle" fill="#706e6b" font-size="8" font-family="var(--font-body)">Human Sovereign</text>
 
         <!-- arifOS Kernel -->
@@ -712,10 +732,7 @@ a:hover{color:var(--color-gold)}
         <text id="svg-aaa-status" x="830" y="209" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">port 3001</text>
         <text x="830" y="221" text-anchor="middle" fill="#706e6b" font-size="7">A2A broker</text>
 
-        <!-- APEX -->
-        <circle cx="830" cy="330" r="32" fill="#1a1800" stroke="#706e6b" stroke-width="2"/>
-        <text x="830" y="326" text-anchor="middle" fill="#706e6b" font-size="12" font-weight="700" font-family="var(--font-display)">Wiki</text>
-        <text x="830" y="339" text-anchor="middle" fill="#706e6b" font-size="7">⬜ static</text>
+
 
         <!-- OpenClaw Agent -->
         <rect x="60" y="72" width="90" height="50" rx="8" fill="#0d1a1c" stroke="#3a9ea8" stroke-width="1.5"/>
@@ -746,7 +763,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- III. LIVE DATA -->
-  <div class="section-label">III · Live Constitutional Data</div>
+  <div class="section-label">VII · Live Constitutional Data</div>
   <div class="grid-2 fade-up" style="margin-bottom:var(--space-8)">
 
     <!-- THERMO -->
@@ -773,7 +790,7 @@ a:hover{color:var(--color-gold)}
       <div class="metric-row" title="Constitutional floors passing per live receipt. NOT a service health check."><span class="metric-label" style="padding-left:10px;font-size:10px">② Floor pass</span><span class="metric-val" id="sealFloors" style="font-size:11px">—</span></div>
       <div class="metric-row" title="Judge verdict authorizes execution. NEVER self-attested."><span class="metric-label" style="padding-left:10px;font-size:10px">③ Execution auth</span><span class="metric-val" id="sealExec" style="font-size:11px">—</span></div>
       <div class="metric-row" title="VAULT999 immutability proof. Independent of any other SEAL meaning."><span class="metric-label" style="padding-left:10px;font-size:10px">④ Audit seal</span><span class="metric-val" id="sealAudit" style="font-size:11px">—</span></div>
-      <div class="metric-row" title="APEX sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:11px">—</span></div>
+      <div class="metric-row" title="F13 human sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:10px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:11px">—</span></div>
     </div>
 
     <!-- WITNESS -->
@@ -801,7 +818,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- IV. CONSTITUTIONAL FLOORS -->
-  <div class="section-label">IV · Constitutional Floors F1–F13</div>
+  <div class="section-label">VIII · Constitutional Floors F1–F13</div>
   <div class="floor-grid fade-up" id="floorGrid" style="margin-bottom:var(--space-12)">
     <div class="floor-chip band"><div class="floor-id">F1</div><div class="floor-name">AMANAH</div><div class="floor-score">—</div></div>
     <div class="floor-chip band"><div class="floor-id">F2</div><div class="floor-name">TRUTH</div><div class="floor-score">—</div></div>
@@ -819,7 +836,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- IV·b CONSTITUTIONAL DOCTRINE -->
-  <div class="section-label">IV · Constitutional Doctrine</div>
+  <div class="section-label">IX · Constitutional Doctrine</div>
   <div class="grid-2 fade-up" style="margin-bottom:var(--space-12)">
     <div class="card">
       <div class="card-title"><span class="num">📜</span> F1–F13 Full Text</div>
@@ -871,7 +888,7 @@ a:hover{color:var(--color-gold)}
   </div>
 
   <!-- V. SITE MAP -->
-  <div class="section-label">V · Federation Site Map</div>
+  <div class="section-label">X · Federation Site Map</div>
   <div class="sitemap-grid fade-up" id="sitemapGrid" style="margin-bottom:var(--space-12)">
 
     <div class="sitemap-card">
@@ -884,10 +901,9 @@ a:hover{color:var(--color-gold)}
         <div class="route-list">
           <div class="route-item"><span class="method method-get">GET</span>/api/status</div>
           <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-get">GET</span>/tools</div>
-          <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp/server.json</div>
           <div class="route-item"><span class="method method-get">GET</span>/federation.html</div>
+          <div class="route-item"><span class="method method-get">GET</span>/.well-known/agent-card.json</div>
+          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp.json</div>
         </div>
       </div>
     </div>
@@ -901,8 +917,7 @@ a:hover{color:var(--color-gold)}
         <p class="sitemap-desc">Earth intelligence organ. Subsurface interpretation, petrophysics, well log analysis. Physics-9 compliant Ψ node.</p>
         <div class="route-list">
           <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp/server.json</div>
+          <div class="route-item"><span class="method method-get">GET</span>/</div>
         </div>
       </div>
     </div>
@@ -916,7 +931,7 @@ a:hover{color:var(--color-gold)}
         <p class="sitemap-desc">Capital intelligence organ. NPV/EMV computation, risk scoring, Makcik² relational credit, crisis triage.</p>
         <div class="route-list">
           <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
+          <div class="route-item"><span class="method method-get">GET</span>/</div>
           <div class="route-item"><span class="method method-get">GET</span>/ready</div>
         </div>
       </div>
@@ -931,7 +946,7 @@ a:hover{color:var(--color-gold)}
         <p class="sitemap-desc">Biological substrate monitor. Operator cognitive pressure, thermodynamic WELL state.</p>
         <div class="route-list">
           <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
+          <div class="route-item"><span class="method method-get">GET</span>/</div>
         </div>
       </div>
     </div>
@@ -945,7 +960,6 @@ a:hover{color:var(--color-gold)}
         <p class="sitemap-desc">Arif Autonomous Agent live cockpit. Agentic AI control plane. ΔΩΨ agent supervision, session anchoring.</p>
         <div class="route-list">
           <div class="route-item"><span class="method method-get">GET</span>/</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp/server.json</div>
         </div>
       </div>
     </div>
@@ -965,42 +979,18 @@ a:hover{color:var(--color-gold)}
       </div>
     </div>
 
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> arifos.arif-fazil.com/wiki</span>
-        <span class="sitemap-tag">KNOWLEDGE</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Ω-Wiki federation knowledge base. Persistent compiled knowledge. Text > Brain memory philosophy.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> arif-fazil.com/apex</span>
-        <span class="sitemap-tag">AUTHORITY</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">APEX authority resolution. Human sovereign interface. Constitutional proof surfaces.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-        </div>
-      </div>
-    </div>
 
   </div>
 
   <!-- VI. TOOL REGISTRY -->
-  <div class="section-label">VI · Constitutional Tool Registry (13)</div>
+  <div class="section-label">XI · Constitutional Tool Registry (13)</div>
   <div class="tools-grid fade-up" id="toolsGrid" style="margin-bottom:var(--space-12)">
     <!-- JS populates -->
   </div>
 
   <!-- VII. CAPABILITY MAP -->
-  <div class="section-label">VII · Capability Map</div>
+  <div class="section-label">XII · Capability Map</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12);overflow:hidden;">
     <table class="cap-table">
       <thead>
@@ -1017,14 +1007,8 @@ a:hover{color:var(--color-gold)}
     </table>
   </div>
 
-  <!-- VIII. KNOWN GAPS -->
-  <div class="section-label">VIII · Known Gaps</div>
-  <div class="gaps-list fade-up" id="gapsList" style="margin-bottom:var(--space-12)">
-    <!-- JS populates -->
-  </div>
-
-  <!-- IX. CROSS-ORGAN WORKFLOWS -->
-  <div class="section-label">IX · Cross-Organ Workflows</div>
+  <!-- XIII. CROSS-ORGAN WORKFLOWS -->
+  <div class="section-label">XIII · Cross-Organ Workflows</div>
   <div class="card fade-up" style="margin-bottom:var(--space-12)">
     <div class="card-title"><span class="num">Ψ→Ω→❤️</span> Federated Decision Loop</div>
     <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-4)">
@@ -1047,12 +1031,14 @@ a:hover{color:var(--color-gold)}
     </div>
   </div>
 
+  </main>
+
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer-logo">arifOS Observatory</div>
-  <div class="footer-sub">DITEMPA BUKAN DIBERI · v2.2-TRUTH-BOUND · 18 JUNE 2026 · 6 ORGANS · STREAMABLE-HTTP + JSON-RPC · ΔS ≤ 0</div>
+  <div class="footer-sub">DITEMPA BUKAN DIBERI · Constitutional Governance Observatory · ΔS ≤ 0</div>
   <div class="footer-links">
     <a href="https://github.com/ariffazil/arifOS">GitHub</a>
     <a href="https://arif-fazil.com/">arif-fazil.com</a>
@@ -1110,33 +1096,6 @@ function renderTools(tools) {
     </div>`;
   });
   grid.innerHTML = html;
-}
-
-function renderGaps(gaps) {
-  const list = document.getElementById('gapsList');
-  // Merge API gaps with hardcoded real-world gaps (F7 in action — honest disclosure)
-  const STATIC_GAPS = [
-    { title: 'Grafana DB HTTP 503', detail: 'Dashboard database is returning 503. Metrics visible but history/grafana-db degraded. No credentials exposed.', severity: 'warning' },
-    { title: 'Browser CORS blocks organ discovery', detail: 'Cross-origin fetches to geox./wealth./well. blocked by Cloudflare. Organ counts from server-side probe only (confirmed 2026-05-15).', severity: 'info' },
-    { title: '/canon/ — seed content only', detail: 'Immutable bedrock page seeded with real kernel source. KaTeX equations and full annotation remain in-progress.', severity: 'info' },
-  ];
-  const merged = [...(gaps || []), ...STATIC_GAPS];
-  if (!merged.length) { list.innerHTML = '<div class="card-sm" style="color:var(--color-text-faint)">No known gaps.</div>'; return; }
-  let html = '';
-  merged.forEach(g => {
-    const icon = g.severity === 'warning' ? '⚠️' : 'ℹ️';
-    const cls = g.severity === 'warning' ? 'sev-warn' : 'sev-info';
-    const label = g.severity === 'warning' ? 'WARNING' : 'INFO';
-    html += `<div class="gap-item">
-      <span class="gap-icon">${icon}</span>
-      <div style="flex:1">
-        <div class="gap-title">${g.title}</div>
-        <div class="gap-detail">${g.detail}</div>
-      </div>
-      <span class="gap-sev ${cls}">${label}</span>
-    </div>`;
-  });
-  list.innerHTML = html;
 }
 
 function renderCap(cap) {
@@ -1375,11 +1334,11 @@ async function poll() {
     auditEl.textContent = vaultOk ? 'service up' : (h.vault999_health || 'unknown');
     auditEl.className = 'metric-val ' + (vaultOk ? 'ok' : 'err');
     auditEl.title = vaultOk ? 'Vault service reachable. Record count not shown here — see VAULT999 page.' : 'Vault service degraded';
-    // ⑤ Human approval = APEX sovereign. Default = NOT_REQUESTED (operator has not invoked).
+    // ⑤ Human approval = F13 sovereign. Default = NOT_REQUESTED (operator has not invoked).
     const humanEl = document.getElementById('sealHuman');
     humanEl.textContent = 'not_invoked';
     humanEl.className = 'metric-val hold';
-    humanEl.title = 'APEX sovereign approval has not been requested in this session. Cannot be true-green unless an operator explicitly invokes an irreversible action and approves it.';
+    humanEl.title = 'F13 human sovereign approval has not been requested in this session. Cannot be true-green unless an operator explicitly invokes an irreversible action and approves it.';
 
     // Witness card
     const wit = th.witness || {};
@@ -1406,7 +1365,7 @@ async function poll() {
     // Populate dynamic sections
     if (d.tools && d.tools.length) renderTools(d.tools);
     if (Object.keys(rf).length) renderFloors(rf);
-    if (h.known_gaps) renderGaps(h.known_gaps);
+
     if (cap && Object.keys(cap).length) renderCap(cap);
 
     // Reality banner: honest summary of what we know
@@ -1599,16 +1558,6 @@ async function renderFederationDossiers(organs, probeResults) {
         <div class="organ-section-title">TODO</div>
         <ul class="organ-list">
           ${org.todo.map(t => `<li>[${t.status.toUpperCase()}] ${t.item}</li>`).join('')}
-        </ul>
-      </div>`;
-    }
-
-    // Known Gaps
-    if (org.known_gaps && org.known_gaps.length) {
-      html += `<div class="organ-section">
-        <div class="organ-section-title">Known Gaps</div>
-        <ul class="organ-list">
-          ${org.known_gaps.map(g => `<li>[${g.severity.toUpperCase()}] ${g.item}</li>`).join('')}
         </ul>
       </div>`;
     }

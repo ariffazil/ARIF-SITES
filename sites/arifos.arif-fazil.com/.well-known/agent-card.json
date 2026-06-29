@@ -1,6 +1,6 @@
 {
   "name": "arifOS Observatory",
-  "description": "Constitutional governance observatory for the arifOS federation. Real-time organ health, floor scores, vault status, and federation topology. Part of the arifOS constellation — 7 organs, 13 constitutional floors, 120+ MCP tools.",
+  "description": "Constitutional governance observatory for the arifOS federation. Read-only visibility into organ health, floor scores, vault status, and federation topology. Tool execution is routed through the canonical MCP gateway at mcp.arif-fazil.com.",
   "url": "https://arifos.arif-fazil.com",
   "provider": {
     "organization": "arifOS",
@@ -45,10 +45,10 @@
     "irreversible_requires_human": true
   },
   "a2a_endpoints": {
-    "health": "GET /health",
-    "mcp": "POST /mcp",
-    "tools": "GET /tools.json",
-    "sse": "GET /sse"
+    "health": "GET https://arifos.arif-fazil.com/health",
+    "mcp": "POST https://mcp.arif-fazil.com/mcp",
+    "tools": "GET https://mcp.arif-fazil.com/tools.json",
+    "sse": "GET https://mcp.arif-fazil.com/sse"
   },
   "federation_organs": {
     "arifos": {"port": 8088, "role": "governance_kernel"},
