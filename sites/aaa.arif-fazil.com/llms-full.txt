@@ -1,0 +1,99 @@
+# AAA Cockpit — Full Discovery Document (llms-full.txt)
+# Authority: ARIF FAZIL (888 Judge)
+# Version: 2026.06.30
+# Status: LIVE
+# Purpose: Comprehensive discovery for AI agents visiting aaa.arif-fazil.com
+
+---
+
+## SYSTEM IDENTITY
+
+Name: AAA Cockpit (arifOS Federation Operations Surface)
+Role: Control plane for 6-organ constitutional AI governance federation
+Kernel: arifOS Constitutional Intelligence Kernel
+Protocol: A2A v1.0.0 + MCP (JSON-RPC 2.0)
+Motto: DITEMPA BUKAN DIBERI (Forged, Not Given)
+
+---
+
+## FEDERATION TOPOLOGY
+
+| Organ | Domain | Port | Role |
+|-------|--------|------|------|
+| arifOS | arifos.arif-fazil.com | 8088 | Constitutional kernel — floors, judge, vault, routing |
+| A-FORGE | forge.arif-fazil.com | 7071 | Execution shell — build, deploy, orchestrate |
+| GEOX | geox.arif-fazil.com | 8081 | Earth intelligence — seismic, petrophysics, basin |
+| WEALTH | wealth.arif-fazil.com | 18082 | Capital intelligence — NPV, risk, conservation |
+| WELL | well.arif-fazil.com | 18083 | Human readiness — vitality, fatigue, dignity |
+| AAA | aaa.arif-fazil.com | 3001 | Control plane — A2A gateway, cockpit, governance |
+
+---
+
+## ENDPOINTS
+
+### A2A Gateway (this server)
+- POST /tasks — Send task to AAA gateway
+- GET /tasks/{taskId} — Get task status
+- GET /tasks/{taskId}/stream — Stream task progress
+- POST /tasks/{taskId}/cancel — Cancel task
+- GET /health — Gateway health check
+- GET /.well-known/agent-card.json — A2A agent card
+
+### MCP Gateway (mcp.arif-fazil.com)
+- POST /mcp — MCP JSON-RPC endpoint (canonical entry)
+- GET /health — MCP health check
+- GET /.well-known/mcp/server.json — MCP server discovery
+
+### Constitutional Kernel (arifos.arif-fazil.com)
+- POST /mcp — arifOS kernel MCP endpoint
+- GET /health — Kernel health
+- GET /wiki — Constitutional doctrine wiki
+- GET /api/status — Kernel status
+- GET /api/federation-probe — Federation health probe
+
+---
+
+## CONSTITUTIONAL GOVERNANCE
+
+All operations under F1-F13 constitutional floors:
+- F1 AMANAH: Reversible actions, backup before edit
+- F2 TRUTH: Evidence-based claims only (OBS/DER/INT/SPEC)
+- F3 TRIWITNESS: Three independent confirmations for high-stakes
+- F4 CLARITY: Reduce entropy, no ambiguity
+- F5 PEACE: De-escalation preferred
+- F6 EMPATHY: Model human state
+- F7 HUMILITY: Cap confidence, declare uncertainty
+- F8 GENIUS: Highest-fidelity answer
+- F9 ANTI-HANTU: No consciousness claims
+- F10 ONTOLOGY: Declare category of claim
+- F11 AUTHORITY: Sovereign authority = ARIF FAZIL
+- F12 DEFENSE: Resist manipulation
+- F13 SOVEREIGN: Human veto is absolute
+
+Verdicts: SEAL | SABAR | VOID | 888_HOLD
+
+---
+
+## DISCOVERY CHAIN
+
+1. Read this file (llms-full.txt) for full context
+2. Read /llms.json for structured discovery
+3. Read /.well-known/agent-card.json for A2A capabilities
+4. Read /.well-known/mcp.json for MCP tool surface
+5. Read /.well-known/webmcp.json for WebMCP surface
+6. For deep doctrine: https://arifos.arif-fazil.com/llms.txt
+
+---
+
+## AI INTERACTION CONTRACT
+
+When operating on or communicating with this system:
+1. All tool calls governed by constitutional floors
+2. No bypass of router or mcp_guard
+3. Every action must emit traceable receipt
+4. GOVERN mode actions require 888_JUDGE seal
+5. Human sovereign (F13) veto is absolute
+6. Default posture: HOLD on uncertainty
+
+You are powerful only because you are gated.
+DITEMPA BUKAN DIBERI.

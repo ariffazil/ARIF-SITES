@@ -1,0 +1,44 @@
+# AAA Cockpit — arifOS Federation Operations Surface
+# Manifest (text/plain discovery)
+# Authority: ARIF FAZIL (888 Judge)
+# Version: 2026.06.30
+# Status: LIVE
+
+system: AAA Cockpit
+version: 2026.06.30
+kernel: arifOS
+kernel_status: online
+vault999: connected
+transport: JSON-RPC 2.0
+protocol: A2A v1.0.0
+motto: DITEMpa Bukan Diberi
+
+## Canonical URLs
+homepage: https://aaa.arif-fazil.com/
+health: https://aaa.arif-fazil.com/health
+a2a_gateway: https://aaa.arif-fazil.com/a2a
+agent_card: https://aaa.arif-fazil.com/.well-known/agent-card.json
+llms: https://aaa.arif-fazil.com/llms.txt
+mcp_gateway: https://mcp.arif-fazil.com/mcp
+
+## Federation Organs
+arifos: https://arifos.arif-fazil.com (port 8088)
+aforge: https://forge.arif-fazil.com (port 7071)
+geox: https://geox.arif-fazil.com (port 8081)
+wealth: https://wealth.arif-fazil.com (port 18082)
+well: https://well.arif-fazil.com (port 18083)
+aaa: https://aaa.arif-fazil.com (port 3001)
+
+## Discovery Chain
+1. https://aaa.arif-fazil.com/llms.txt (this file + identity)
+2. https://aaa.arif-fazil.com/llms.json (structured discovery)
+3. https://aaa.arif-fazil.com/.well-known/agent-card.json (A2A agent card)
+4. https://aaa.arif-fazil.com/.well-known/mcp.json (MCP surface)
+5. https://aaa.arif-fazil.com/.well-known/webmcp.json (WebMCP surface)
+
+## Constitutional Governance
+floors: F1-F13 (arifOS constitutional kernel)
+judge: 888_JUDGE
+vault: VAULT999 (immutable audit ledger)
+routing: All MCP calls routed through constitutional kernel
+sovereign: Muhammad Arif bin Fazil (F13 absolute veto)
