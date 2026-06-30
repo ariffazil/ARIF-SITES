@@ -1,0 +1,87 @@
+{
+  "name": "AAA Cockpit MCP Discovery Index",
+  "version": "2026.06.30",
+  "description": "MCP tool and endpoint discovery index for the arifOS federation",
+  "authority": "ARIF FAZIL (888 Judge)",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "canonical_entry": "https://mcp.arif-fazil.com/mcp",
+  "federation": {
+    "organs": [
+      {
+        "id": "arifos",
+        "name": "arifOS Constitutional Kernel",
+        "domain": "arifos.arif-fazil.com",
+        "port": 8088,
+        "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://arifos.arif-fazil.com/health",
+        "role": "Constitutional governance, routing, judgment, vault"
+      },
+      {
+        "id": "aforge",
+        "name": "A-FORGE Execution Shell",
+        "domain": "forge.arif-fazil.com",
+        "port": 7071,
+        "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://forge.arif-fazil.com/health",
+        "role": "Build, deploy, execute, orchestrate"
+      },
+      {
+        "id": "geox",
+        "name": "GEOX Earth Intelligence",
+        "domain": "geox.arif-fazil.com",
+        "port": 8081,
+        "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://geox.arif-fazil.com/health",
+        "role": "Seismic, petrophysics, basin, prospect"
+      },
+      {
+        "id": "wealth",
+        "name": "WEALTH Capital Intelligence",
+        "domain": "wealth.arif-fazil.com",
+        "port": 18082,
+        "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://wealth.arif-fazil.com/health",
+        "role": "NPV, risk, conservation, flow, wisdom"
+      },
+      {
+        "id": "well",
+        "name": "WELL Human Readiness",
+        "domain": "well.arif-fazil.com",
+        "port": 18083,
+        "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://well.arif-fazil.com/health",
+        "role": "Vitality, fatigue, dignity, homeostasis"
+      },
+      {
+        "id": "aaa",
+        "name": "AAA Control Plane",
+        "domain": "aaa.arif-fazil.com",
+        "port": 3001,
+        "a2a_endpoint": "https://aaa.arif-fazil.com/a2a",
+        "health": "https://aaa.arif-fazil.com/health",
+        "role": "A2A gateway, cockpit, agent registry"
+      }
+    ]
+  },
+  "discovery": {
+    "agent_card": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+    "agent_json": "https://aaa.arif-fazil.com/.well-known/agent.json",
+    "mcp_json": "https://aaa.arif-fazil.com/.well-known/mcp.json",
+    "webmcp_json": "https://aaa.arif-fazil.com/.well-known/webmcp.json",
+    "arifos_json": "https://aaa.arif-fazil.com/.well-known/arifos.json",
+    "llms_txt": "https://aaa.arif-fazil.com/llms.txt",
+    "llms_json": "https://aaa.arif-fazil.com/llms.json",
+    "manifest_txt": "https://aaa.arif-fazil.com/manifest.txt",
+    "manifest_json": "https://aaa.arif-fazil.com/manifest.json",
+    "status_json": "https://aaa.arif-fazil.com/status.json",
+    "canonical_mcp": "https://mcp.arif-fazil.com/.well-known/mcp/server.json"
+  },
+  "governance": {
+    "floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "judge": "888_JUDGE",
+    "vault": "VAULT999",
+    "sovereign": "Muhammad Arif bin Fazil",
+    "routing": "All MCP calls through constitutional kernel",
+    "verdicts": ["SEAL", "SABAR", "VOID", "888_HOLD"]
+  }
+}

@@ -616,6 +616,18 @@ aaa.arif-fazil.com {
 		rewrite * /health
 		reverse_proxy 127.0.0.1:3001
 	}
+	# Static .well-known files — serve from disk BEFORE proxy catch-all
+	@well_known_static path /.well-known/mcp.json /.well-known/webmcp.json /.well-known/arifos.json /.well-known/ai-plugin.json /.well-known/agent-card.json /.well-known/agent.json
+	handle @well_known_static {
+		file_server
+	}
+	# Discovery text files — serve from disk, not SPA fallback
+	@discovery_txt path /manifest.txt /llms-full.txt /mcp-discovery-index.json
+	handle @discovery_txt {
+		header Content-Type "text/plain; charset=utf-8"
+		file_server
+	}
+	# Proxy remaining .well-known paths to AAA backend
 	handle /.well-known/* {
 		reverse_proxy 127.0.0.1:3001
 	}

@@ -1,0 +1,42 @@
+{
+  "name": "AAA Cockpit MCP Surface",
+  "version": "1.0",
+  "description": "MCP discovery for AAA Cockpit — arifOS Federation Operations Surface. AAA is the A2A gateway and control plane. For MCP tool calls, use the canonical gateway at mcp.arif-fazil.com/mcp.",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+  "a2a_endpoint": "https://aaa.arif-fazil.com/a2a",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "OpenClaw"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false,
+    "streaming": true
+  },
+  "transport": {
+    "type": "jsonrpc-https",
+    "url": "https://mcp.arif-fazil.com/mcp"
+  },
+  "federation_organs": {
+    "arifos": { "mcp": "https://mcp.arif-fazil.com/mcp", "health": "https://arifos.arif-fazil.com/health" },
+    "aforge": { "mcp": "https://mcp.arif-fazil.com/mcp", "health": "https://forge.arif-fazil.com/health" },
+    "geox": { "mcp": "https://mcp.arif-fazil.com/mcp", "health": "https://geox.arif-fazil.com/health" },
+    "wealth": { "mcp": "https://mcp.arif-fazil.com/mcp", "health": "https://wealth.arif-fazil.com/health" },
+    "well": { "mcp": "https://mcp.arif-fazil.com/mcp", "health": "https://well.arif-fazil.com/health" }
+  },
+  "governance": {
+    "floors": "F1-F13",
+    "judge": "888_JUDGE",
+    "vault": "VAULT999",
+    "routing": "All MCP calls routed through constitutional kernel"
+  },
+  "discovery": {
+    "agent_card": "/.well-known/agent-card.json",
+    "llms": "/llms.txt",
+    "llms_full": "/llms-full.txt",
+    "manifest": "/manifest.txt",
+    "status": "/status.json"
+  }
+}
