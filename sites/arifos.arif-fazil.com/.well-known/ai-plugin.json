@@ -11,7 +11,7 @@
     "type": "openapi",
     "url": "https://arifos.arif-fazil.com/.well-known/openapi.json"
   },
-  "logo_url": "https://arifos.arif-fazil.com/_shared/design-system/arifos-logo.svg",
+  "logo_url": "https://arifos.arif-fazil.com/_shared/design-system/arifos-logo.svg?v=2",
   "contact_email": "arif@arif-fazil.com",
   "legal_info_url": "https://arif-fazil.com/canon"
 }

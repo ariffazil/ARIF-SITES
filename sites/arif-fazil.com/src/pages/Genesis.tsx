@@ -106,7 +106,25 @@ const wisdomEntries = [
   }
 ];
 
+import { useWebMCP } from '@/hooks/useWebMCP';
+
+const genesisTools = [
+  {
+    name: 'get_genesis_wisdom',
+    description: 'Get details of wisdom and field laws behind arifOS (FL-001 to FL-004, WT-001 to WT-004)',
+    execute() {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(wisdomEntries, null, 2)
+        }]
+      };
+    }
+  }
+];
+
 export function Genesis() {
+  useWebMCP(genesisTools);
   return (
     <motion.div
       initial={{ opacity: 0 }}

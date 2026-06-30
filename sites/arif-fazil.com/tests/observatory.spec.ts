@@ -71,9 +71,11 @@ test.describe('arifos.arif-fazil.com (Observatory)', () => {
     const bodyText = await page.innerText('body');
     expect(bodyText.toLowerCase()).toContain('observatory');
     
-    // MCP link check
-    const mcpLink = page.locator('link[rel="mcp"]');
-    await expect(mcpLink).toHaveAttribute('href', 'https://mcp.arif-fazil.com/mcp');
+    // MCP link check — use evaluate() since <link> in <head> isn't in Playwright's visible DOM
+    const mcpHref = await page.evaluate(
+      () => document.querySelector('link[rel="mcp"]')?.getAttribute('href') ?? null
+    );
+    expect(mcpHref).toBe('https://mcp.arif-fazil.com/mcp');
   });
 
   test('Federation map page loads successfully and references canonical endpoints', async ({ page }) => {

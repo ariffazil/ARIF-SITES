@@ -37,7 +37,7 @@ export const primaryLinks: LinkItem[] = [
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
   { label: '/wealth', href: '/wealth/' },
-  { label: 'WAW', href: '/essays/' },
+  { label: 'Writing', href: '/essays/' },
 ];
 
 // Plain — no scores, no stats, no framing
@@ -199,9 +199,11 @@ export const ecosystemLinks: LinkItem[] = [
 
 export const arifosLinks: LinkItem[] = [
   { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
   { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
   { label: 'WEALTH Briefing', href: '/wealth/' },
+  { label: 'MakcikGPT', href: '/wealth/makcikgpt/' },
   { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
   { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
 ];

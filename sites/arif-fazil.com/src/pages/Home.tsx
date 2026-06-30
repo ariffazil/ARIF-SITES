@@ -1,9 +1,37 @@
 import { motion, type Variants } from 'framer-motion';
+import { useWebMCP } from '@/hooks/useWebMCP';
 import {
   contactLinks,
   wellsPortfolio,
   systemProjects,
 } from '@/data/siteContent';
+
+const homeTools = [
+  {
+    name: 'get_portfolio_wells',
+    description: 'Get details of wells in Arif Fazil\'s subsurface portfolio (Malay Basin, Bekantan-1, Puteri Basement-1, etc.)',
+    execute() {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(wellsPortfolio, null, 2)
+        }]
+      };
+    }
+  },
+  {
+    name: 'get_system_projects',
+    description: 'Get details of system projects built (arifOS, GEOX, WEALTH, AAA, WELL, A-FORGE)',
+    execute() {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(systemProjects, null, 2)
+        }]
+      };
+    }
+  }
+];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -28,6 +56,7 @@ const itemVariants: Variants = {
 };
 
 export function Home() {
+  useWebMCP(homeTools);
   return (
     <motion.div 
       initial="hidden"
