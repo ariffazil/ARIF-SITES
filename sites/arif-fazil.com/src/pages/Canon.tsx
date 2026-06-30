@@ -372,7 +372,25 @@ const SECTIONS = [
   { id: "amendment", label: "Amendment" },
 ];
 
+import { useWebMCP } from '@/hooks/useWebMCP';
+
+const canonTools = [
+  {
+    name: 'get_constitutional_floors',
+    description: 'Get details of the 13 constitutional floors of arifOS (F1 to F13) including names, thresholds, and execution pseudocode',
+    execute() {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({ thresholds: FLOOR_THRESHOLDS, definitions: FLOOR_DEFINITIONS }, null, 2)
+        }]
+      };
+    }
+  }
+];
+
 export function Canon() {
+  useWebMCP(canonTools);
   useEffect(() => {
     document.title = 'The Canon — Arif Fazil | arifOS';
   }, []);

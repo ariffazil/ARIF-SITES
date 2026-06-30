@@ -9,4 +9,4 @@ export interface Essay {
 }
 
 // Re-export from the essays data directory
-export { essayModules as essays, getEssay } from './essays/index';
+export { essayModules as essays, getEssay, curatedEssays } from './essays/index';

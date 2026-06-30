@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useWebMCP } from '@/hooks/useWebMCP';
 
 type BriefingMeta = {
   date: string;
@@ -159,6 +160,27 @@ export function Wealth() {
   const [lastUpdated, setLastUpdated] = useState<string>("");
   const [isOffline, setIsOffline] = useState(false);
   const [acked, setAcked] = useState(false);
+
+  const wealthTools = useMemo(() => {
+    return [
+      {
+        name: 'get_wealth_page_briefing',
+        description: 'Get the loaded WEALTH briefing data currently shown on the page (KLCI, Forex, Brent, Macro signals)',
+        execute() {
+          return {
+            content: [{
+              type: 'text',
+              text: briefing 
+                ? JSON.stringify(briefing, null, 2) 
+                : 'No briefing currently loaded on page.'
+            }]
+          };
+        }
+      }
+    ];
+  }, [briefing]);
+
+  useWebMCP(wealthTools);
 
   useEffect(() => {
     async function load() {

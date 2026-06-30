@@ -551,3 +551,73 @@ export const allEssays: EssayMeta[] = [
 export function getEssay(slug: string) {
   return essayModules.find(e => e.slug === slug);
 }
+
+// ── CURATED 33 — organized by knowledge domain ──
+const CURATED_SLUGS: Record<string, string> = {
+  // 🏗️ arifOS Origin
+  "im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live": "arifOS Origin",
+  "i-accidentally-built-an-intelligence-kernel-for-ai": "arifOS Origin",
+  "i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room": "arifOS Origin",
+  "wtf-is-arifos": "arifOS Origin",
+  "accidentally-built-something": "arifOS Origin",
+
+  // ⚖️ AI Governance
+  "the-real-battle-in-ai-will-not-be-model-vs-model": "AI Governance",
+  "why-we-need-ai-governance": "AI Governance",
+  "three-devils-of-modern-ai": "AI Governance",
+  "trilemma-of-ai": "AI Governance",
+  "no-such-thing-as-evil-genius": "AI Governance",
+  "truth-comes-before-intelligence": "AI Governance",
+
+  // 🧠 Constitutional AI
+  "ai-constitution-based-on-physics": "Constitutional AI",
+  "what-if-ai-couldnt-hallucinate": "Constitutional AI",
+  "forget-smart-ai-governed-genius-apex": "Constitutional AI",
+  "the-mind-is-not-the-model-6-axis-constitutional-coordinate-system": "Constitutional AI",
+  "arifos-as-a-prism": "Constitutional AI",
+
+  // 🔧 Technical
+  "i-stopped-writing-prompts-heres-what-replaces-them-arep": "Technical",
+  "i-have-trust-issues-with-agents": "Technical",
+  "when-your-ai-cant-find-itself": "Technical",
+  "the-coder-paradoxes-ai-makes-software-harder": "Technical",
+  "the-15-bouncer": "Technical",
+
+  // 🌍 Geophysics × AI
+  "contrast-governed-anomaly-detection-formal-bridge-avo-attention": "Geophysics × AI",
+  "physics-constrained-attention-zoeppritz-constitutional-floor": "Geophysics × AI",
+  "contrast-primitive-derivation-avo-fluid-factor-attention-residual": "Geophysics × AI",
+
+  // 🇲🇾 Malaysia & Language
+  "growing-intelligence-without-losing-our-soul-from-binatang-to-warga": "Malaysia & Language",
+  "asal-usul-arifos": "Malaysia & Language",
+  "bahasa-dan-minda-melayu": "Malaysia & Language",
+  "malaysia-will-miss-agi-siti-nurhaliza-karaoke": "Malaysia & Language",
+  "rukun-agi-five-pillars": "Malaysia & Language",
+
+  // 🪞 Human Reflection
+  "the-first-act-of-creation-is-not-building-it-is-naming": "Human Reflection",
+  "paradox-of-language": "Human Reflection",
+  "the-human-ai-time-paradox": "Human Reflection",
+  "second-brain-forged-from-scars": "Human Reflection",
+};
+
+const DOMAIN_ORDER = [
+  "arifOS Origin",
+  "AI Governance",
+  "Constitutional AI",
+  "Technical",
+  "Geophysics × AI",
+  "Malaysia & Language",
+  "Human Reflection",
+];
+
+export const curatedEssays: EssayMeta[] = allEssays
+  .filter(e => e.slug in CURATED_SLUGS)
+  .map(e => ({ ...e, domain: CURATED_SLUGS[e.slug] }))
+  .sort((a, b) => {
+    const da = DOMAIN_ORDER.indexOf(a.domain || "");
+    const db = DOMAIN_ORDER.indexOf(b.domain || "");
+    if (da !== db) return da - db;
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });

@@ -114,12 +114,14 @@ Service restart on production, schema migration on dev, new dependency, deploy a
 
 ### Tier 3 — ASK / 888_HOLD (only these)
 - `rm -rf` of unknown dirs, `DROP TABLE`, volume removal
-- `git push --force` to main, branch deletion
+- Branch deletion (non-recoverable)
 - New paid API > $10/month
 - Constitutional changes (F1-F13)
 - Secret exposure or rotation
 - External communications (email, social)
 - Production deploy without test pass
+
+> **Note:** `git push --force` on feature branches and production redeploys are DIGITAL NORMAL per root AGENTS.md §10. Probe T1 state, do the thing.
 
 **Ask format:** Decision needed (1 line) + My recommendation (1 line) + Risk if wrong (1 line).
 

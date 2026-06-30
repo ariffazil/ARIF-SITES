@@ -17,4 +17,5 @@ export interface EssayMeta {
   tags: string[];
   mediumUrl: string;
   isDirectPublication?: boolean;
+  domain?: string;
 }

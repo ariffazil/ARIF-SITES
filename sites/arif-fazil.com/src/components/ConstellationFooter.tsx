@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ecosystemLinks, arifosLinks } from '@/data/siteContent';
 
 export function ConstellationFooter() {
@@ -22,16 +23,26 @@ export function ConstellationFooter() {
           <ul className="grid grid-cols-2 gap-y-3">
             {arifosLinks.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noreferrer' : undefined}
-                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-forge-gold"></span>
-                  {item.label}
-                  {item.external && <span className="text-[0.6rem]">↗</span>}
-                </a>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
+                    {item.label}
+                    <span className="text-[0.6rem]">↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -39,16 +50,26 @@ export function ConstellationFooter() {
           <ul className="grid grid-cols-2 gap-y-3">
             {ecosystemLinks.map((item) => (
               <li key={item.label}>
-                <a
-                  href={item.href}
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noreferrer' : undefined}
-                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                >
-                  <span className="w-1.5 h-1.5 bg-forge-iron"></span>
-                  {item.label}
-                  {item.external && <span className="text-[0.6rem]">↗</span>}
-                </a>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
+                    {item.label}
+                    <span className="text-[0.6rem]">↗</span>
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
+                  >
+                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

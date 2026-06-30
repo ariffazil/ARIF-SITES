@@ -1,8 +1,25 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { discoveries } from '@/data/discoveries';
+import { useWebMCP } from '@/hooks/useWebMCP';
+
+const discoveriesTools = [
+  {
+    name: 'get_discoveries_data',
+    description: 'Get details of discoveries made offshore Malaysia (Bekantan-1, Lebah Emas-1, Bunga Tasbih-1, Puteri Basement-1, etc.) including stratigraphic details, play types, and structural interpretations',
+    execute() {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(discoveries, null, 2)
+        }]
+      };
+    }
+  }
+];
 
 export function Discoveries() {
+  useWebMCP(discoveriesTools);
   useEffect(() => {
     document.title = 'Subsurface Discoveries — Arif Fazil | arifOS';
   }, []);
