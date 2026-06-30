@@ -58,6 +58,25 @@ arif-fazil.com {
 		try_files {path} {path}/index.html /index.html
 		file_server
 	}
+	# API routes → arifOS kernel (same as arifos.arif-fazil.com)
+	# Fixes silent SPA-fallback for /api/* and /manifest.txt
+	handle /api/status {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /api/federation-probe {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /api/build-info {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /manifest.txt {
+		header Cache-Control "no-cache"
+		root * /var/www/html/arifos
+		file_server
+	}
 	@genesis path /000/*
 	handle @genesis {
 		uri strip_prefix /000
@@ -123,6 +142,25 @@ arifos.arif-fazil.com {
 	root * /var/www/html/arifos
 
 	# ── MCP API routes → arifOS kernel (port 8088) ──────────────────────────
+	# Collapse: public discovery routes → canonical mcp.arif-fazil.com
+	handle /.well-known/mcp/server.json {
+		redir https://mcp.arif-fazil.com/.well-known/mcp/server.json permanent
+	}
+	handle /.well-known/oauth-protected-resource* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/oauth-authorization-server* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/openid-configuration* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	# Observatory-specific discovery files (served from static root, not kernel)
+	@observatory_discovery path /.well-known/openapi.json /.well-known/ai-plugin.json /.well-known/agent-card.json /.well-known/mcp.json
+	handle @observatory_discovery {
+		root * /var/www/html/arifos
+		file_server
+	}
 	handle /.well-known/* {
 		reverse_proxy 127.0.0.1:8088
 	}
@@ -145,11 +183,12 @@ arifos.arif-fazil.com {
 		file_server
 	}
 
+	# 2026-06-30 — MCP endpoint: proxy to kernel (was 301 redirect, lost POST bodies)
+	# Canonical MCP door is mcp.arif-fazil.com/mcp — advertised in llms.txt.
+	# This vhost proxies /mcp so MCP clients connecting to arifos.arif-fazil.com/mcp
+	# (the most commonly registered/ingress endpoint) get direct JSON-RPC responses.
 	handle /mcp* {
-		import cors_public
-		reverse_proxy 127.0.0.1:8088 {
-			header_up Accept "text/event-stream, application/json, application/json-rpc"
-		}
+		reverse_proxy 127.0.0.1:8088
 	}
 
 	handle /api/status {
@@ -181,22 +220,21 @@ arifos.arif-fazil.com {
 		reverse_proxy 127.0.0.1:8088
 	}
 
+	# Collapse: public tool surface → canonical mcp.arif-fazil.com
 	handle /tools {
-		reverse_proxy 127.0.0.1:8088
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 
 	handle /tools/* {
-		reverse_proxy 127.0.0.1:8088
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 
 	handle /tools.json {
-		reverse_proxy 127.0.0.1:8088
+		redir https://mcp.arif-fazil.com/tools.json permanent
 	}
 
 	handle /sse* {
-		reverse_proxy 127.0.0.1:8088 {
-			header_up Accept "text/event-stream, application/json, application/json-rpc"
-		}
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 
 	# ── Phase 3E: Approval ticket mutation ────────────────────────────────────
@@ -251,12 +289,10 @@ arifos.arif-fazil.com {
 	}
 
 	# ── SOT dashboard (React SPA) → static files (SPA fallback) ──────────
-	# root * MUST be inside handle for file_server (handle scope is
-	# separate from vhost scope; without it, file_server falls back to
-	# default root and 404s even when files exist).
+	# Pattern matches the working AAA vhost.
 	handle {
 		root * /var/www/html/arifos
-		try_files {path} {path}/index.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
 }
@@ -265,10 +301,11 @@ ai.arif-fazil.com {
 	import tls_origin
 	encode zstd gzip
 	import cors_public
-	handle /api/* {
-		reverse_proxy 127.0.0.1:8091
-	}
+	# Collapse: public MCP surface → canonical mcp.arif-fazil.com
 	handle /mcp* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /api/* {
 		reverse_proxy 127.0.0.1:8091
 	}
 	handle {
@@ -276,34 +313,33 @@ ai.arif-fazil.com {
 	}
 }
 # ═══════════════════════════════════════════════════════════════════════
-# THEORY / APEX — DECOMMISSIONED 2026-06-24
-# APEX deliberation absorbed into AAA a2a-server. Service stopped/disabled.
+# THEORY / APEX
 # ═══════════════════════════════════════════════════════════════════════
-# apex.arif-fazil.com {
-# 	import tls_origin
-# 	import shared_assets
-# 	encode zstd gzip
-# 	# A2A protocol endpoints → APEX Prime (port 3002)
-# 	# APEX exposes: /.well-known/agent-card.json, /tasks, /tasks/{id}, /tasks/{id}/stream
-# 	handle /tasks {
-# 		import cors_public
-# 		reverse_proxy 127.0.0.1:3002
-# 	}
-# 	handle /tasks/* {
-# 		import cors_public
-# 		reverse_proxy 127.0.0.1:3002
-# 	}
-# 	handle /.well-known/agent-card.json {
-# 		import cors_public
-# 		reverse_proxy 127.0.0.1:3002
-# 	}
-# 	# Static landing at root
-# 	handle {
-# 		root * /var/www/html/apex
-# 		try_files {path} /index.html
-# 		file_server
-# 	}
-# }
+apex.arif-fazil.com {
+	import tls_origin
+	import shared_assets
+	encode zstd gzip
+	# A2A protocol endpoints → APEX Prime (port 3002)
+	# APEX exposes: /.well-known/agent-card.json, /tasks, /tasks/{id}, /tasks/{id}/stream
+	handle /tasks {
+		import cors_public
+		reverse_proxy 127.0.0.1:3002
+	}
+	handle /tasks/* {
+		import cors_public
+		reverse_proxy 127.0.0.1:3002
+	}
+	handle /.well-known/agent-card.json {
+		import cors_public
+		reverse_proxy 127.0.0.1:3002
+	}
+	# Static landing at root
+	handle {
+		root * /var/www/html/apex
+		try_files {path} /index.html
+		file_server
+	}
+}
 # ═══════════════════════════════════════════════════════════════════════
 # FEDERATION MCP — GEOX
 # Keep at geox.arif-fazil.com — ChatGPT registered here
@@ -348,6 +384,20 @@ geox.arif-fazil.com {
 	handle /tools {
 		redir https://mcp.arif-fazil.com/tools permanent
 	}
+
+	# 2026-06-29 — Collapse to one door (well/wealth/geox → mcp.arif-fazil.com)
+	# External clients must hit ONE MCP entry. Organ-specific discovery
+	# endpoints redirect to the canonical mcp.arif-fazil.com.
+	handle /.well-known/oauth-protected-resource* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/oauth-authorization-server* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/openid-configuration* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+
 	handle {
 		try_files {path} /index.html
 		file_server
@@ -388,6 +438,20 @@ wealth.arif-fazil.com {
 		import cors_public
 		reverse_proxy 127.0.0.1:18082
 	}
+
+	# 2026-06-29 — Collapse to one door (well/wealth/geox → mcp.arif-fazil.com)
+	# External clients must hit ONE MCP entry. Organ-specific discovery
+	# endpoints redirect to the canonical mcp.arif-fazil.com.
+	handle /.well-known/oauth-protected-resource* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/oauth-authorization-server* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/openid-configuration* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+
 	handle {
 		try_files {path} /index.html
 		file_server
@@ -427,29 +491,58 @@ well.arif-fazil.com {
 	handle /tools {
 		redir https://mcp.arif-fazil.com/tools permanent
 	}
+
+	# 2026-06-29 — Collapse to one door (well/wealth/geox → mcp.arif-fazil.com)
+	# External clients must hit ONE MCP entry. Organ-specific discovery
+	# endpoints redirect to the canonical mcp.arif-fazil.com.
+	handle /.well-known/oauth-protected-resource* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/oauth-authorization-server* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+	handle /.well-known/openid-configuration* {
+		redir https://mcp.arif-fazil.com{uri} permanent
+	}
+
+	# 2026-06-30 — Serve WELL landing page instead of blind redirect
 	handle {
-		redir https://arifos.arif-fazil.com permanent
+		root * /var/www/html/well
+		try_files {path} /index.html
+		file_server
 	}
 }
 # ═══════════════════════════════════════════════════════════════════════
-# LEGACY REDIRECTS — old subdomains → main sites
-# ═══════════════════════════════════════════════════════════════════════
-# MCP — legacy alias. Canonical MCP surface is mcp.arif-fazil.com/mcp.
-# Keep /mcp* proxy live for existing MCP clients; humans → Observatory.
+# MCP GATEWAY — canonical public MCP door
+# Public MCP surface is mcp.arif-fazil.com/mcp.
+# Keep /mcp* proxy live for existing MCP clients; humans → landing page.
 mcp.arif-fazil.com {
 	import tls_origin
-	# Microsoft Copilot / public MCP clients need proper CORS preflight.
-	# Keep cors_public at the edge so OPTIONS is answered before it reaches arifOS.
 	handle /mcp* {
-		import cors_public
 		reverse_proxy 127.0.0.1:8088
 	}
 	handle /sse* {
-		import cors_public
 		reverse_proxy 127.0.0.1:8088
 	}
+	# 2026-06-29 — Federation-wide OAuth discovery proxy (Hermes-flow).
+	# arifOS (port 8088) is the canonical authorization server for the whole federation;
+	# every organ's well-known endpoints proxy to it so spec-compliant MCP clients can
+	# complete RFC 8707 / OIDC discovery. Fixes 'failed to get oauth authorization url'.
+	handle /.well-known/oauth-protected-resource* {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /.well-known/oauth-authorization-server* {
+		reverse_proxy 127.0.0.1:8088
+	}
+	handle /.well-known/openid-configuration* {
+		reverse_proxy 127.0.0.1:8088
+	}
+
+	# 2026-06-30 — Serve MCP landing page instead of blind redirect
 	handle {
-		redir https://arifos.arif-fazil.com{uri} permanent
+		root * /var/www/html/mcp
+		try_files {path} /index.html
+		file_server
 	}
 }
 # ═══════════════════════════════════════════════════════════════════════
@@ -475,10 +568,9 @@ forge.arif-fazil.com {
 	# Not exposed as HTTP. A-FORGE → opencode connection uses MCP client (stdio).
 	# Service: systemd unit /etc/systemd/system/opencode-acp.service (disabled, kept for reference).
 
-	# A-FORGE MCP (existing)
+	# A-FORGE MCP collapsed to canonical gateway
 	handle /mcp* {
-		import cors_public
-		reverse_proxy 127.0.0.1:7071
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle /health {
 		import cors_public
@@ -502,6 +594,8 @@ aaa.arif-fazil.com {
 	import shared_assets
 	encode zstd gzip
 	root * /var/www/html/aaa
+
+	redir /geox /apps/geox permanent
 
 	@a2a_static path /a2a/agent-card.json /a2a/agent.json /a2a/agents.json /a2a/status.json /a2a/index.html
 	handle @a2a_static {
@@ -542,7 +636,7 @@ aaa.arif-fazil.com {
 # ═══════════════════════════════════════════════════════════════════════
 ollama.arif-fazil.com {
 	import tls_origin
-	reverse_proxy 127.0.0.1:11434
+	reverse_proxy ollama-engine-prod:11434
 }
 # ═══════════════════════════════════════════════════════════════════════
 # OPENCLAW WEBHOOK PROXY
@@ -594,10 +688,10 @@ deploy.arif-fazil.com {
 arifosmcp.arif-fazil.com {
 	import tls_origin
 	handle /mcp* {
-		redir https://arifos.arif-fazil.com{uri} permanent
+		redir https://mcp.arif-fazil.com{uri} permanent
 	}
 	handle {
-		redir https://arifos.arif-fazil.com permanent
+		redir https://mcp.arif-fazil.com permanent
 	}
 }
 

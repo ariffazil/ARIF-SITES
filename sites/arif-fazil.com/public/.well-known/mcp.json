@@ -1,0 +1,23 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-manifest.json",
+  "name": "arif-fazil.com MCP",
+  "description": "Canonical MCP gateway for the arifOS federation. All tool execution routes through mcp.arif-fazil.com/mcp.",
+  "homepage": "https://arif-fazil.com",
+  "author": {
+    "name": "Arif Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://mcp.arif-fazil.com/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools_summary": {
+    "total": 17,
+    "note": "Full tool surface at arifos.arif-fazil.com/api/status"
+  }
+}
