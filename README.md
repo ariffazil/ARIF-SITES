@@ -1,8 +1,8 @@
 ﻿<!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-04
-valid_from: 2026-05-19
-valid_until: 2026-06-19
+last_verified: 2026-07-01
+valid_from: 2026-07-01
+valid_until: 2026-07-31
 confidence: high
 scope: /root/arif-sites
 epistemic_status: CLAIM
@@ -12,6 +12,11 @@ epistemic_status: CLAIM
 
 > **Status:** OPERATIONAL | **Organ:** SURFACE | **Authority:** arifOS
 > **Domains:** `arif-fazil.com`, `arifos.arif-fazil.com`, `wiki.arif-fazil.com`, etc.
+
+[![Site Integrity](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml)
+[![Build — Trinity Sites](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml)
+[![Playwright Audit](https://github.com/ariffazil/arif-sites/actions/workflows/playwright-audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/playwright-audit.yml)
+[![License](https://img.shields.io/github/license/ariffazil/arif-sites?label=License)](LICENSE)
 
 ## 🏛️ What this repo is
 
@@ -24,7 +29,7 @@ The static site hosting layer for the arifOS federation. Each subsite is aligned
 ```bash
 cd /root/arif-sites
 # Build React subsites
-cd src/arif && npm install && npm run build
+cd sites/arif-fazil.com && npm install && npm run build
 # Caddy routes: see deploy/Caddyfile
 # Sites: https://arif-fazil.com, https://aaa.arif-fazil.com
 ```
@@ -40,16 +45,14 @@ cd src/arif && npm install && npm run build
 arif-sites/
 ├── sites/                    # Static frontends (hostname-aligned)
 │   ├── arif-fazil.com/       # React 19 + Vite (builds to dist/)
-│   ├── travel.arif-fazil.com/ # React + Vite + MapLibre (has dev proxy)
 │   ├── aaa.arif-fazil.com/   # Static HTML
-│   ├── arifos.arif-fazil.com/# Static docs
+│   ├── arifos.arif-fazil.com/ # Static docs
 │   ├── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
-│   ├── forge.arif-fazil.com/ # Static CI/CD surface
-│   ├── wiki.arif-fazil.com/  # Static constitutional wiki
 │   ├── geox.arif-fazil.com/  # Static lab/field GUI
-│   ├── apex.arif-fazil.com/  # Apex landing
-│   ├── waw.arif-fazil.com/   # WAW subsite
-│   └── wawa.arif-fazil.com/  # WAWA subsite
+│   ├── makcikgpt.arif-fazil.com/ # Static MakcikGPT surface
+│   ├── wealth.arif-fazil.com/ # Static WEALTH surface
+│   ├── wiki.arif-fazil.com/  # Static constitutional wiki
+│   └── shared/               # Shared design system assets
 ├── apps/                   # Dynamic product UIs (VPS Docker)
 ├── services/              # Backend MCP kernel surfaces
 ├── infra/                # Constitutional manifests, domains map
@@ -67,7 +70,6 @@ arif-sites/
 
 # React subsites:
 cd sites/arif-fazil.com && npm install && npm run build
-cd sites/travel.arif-fazil.com && npm install && npm run build
 
 # Deploy: git push main → Cloudflare Pages auto-deploy
 # VPS deploy (Caddy):
