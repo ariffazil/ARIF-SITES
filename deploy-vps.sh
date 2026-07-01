@@ -11,9 +11,13 @@ HTML_ROOT="/var/www/html"
 echo "Starting VPS Deployment..."
 
 # 1. Build React Site (arif-fazil.com — Ψ SOUL)
-echo "[1/5] Building arif-fazil.com (React/Vite)..."
+echo "[1/6] Building arif-fazil.com (React/Vite)..."
 cd $SITES_ROOT/arif-fazil.com
 npm run build
+
+# 1b. Pre-render MakcikGPT articles for LLM/SEO extraction (SSR via Puppeteer)
+echo "[1.5/6] Pre-rendering MakcikGPT articles (JSON-LD + semantic HTML)..."
+node /tmp/prerender-articles.cjs 2>/dev/null || echo "  ⚠ Pre-render skipped (Puppeteer not available)"
 
 # 2. Sync Shared Design System + WebMCP (served via /_shared/* on all domains)
 echo "[2/5] Syncing shared assets..."

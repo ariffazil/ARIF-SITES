@@ -7,9 +7,11 @@ import ilmuBbb from './ilmu-bbb';
 import ytlMonopoli from './ytl-monopoli';
 import searahFollowup from './searah-followup';
 import samAltmanElonMuskAnwarAkal from './sam-altman-elon-musk-anwar-akal';
+import petronasDna from './petronas-dna';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  petronasDna,
   samAltmanElonMuskAnwarAkal,
   daily_2026_07_01,
   ceritaMakcik,
@@ -21,6 +23,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'petronas-dna',
+    title: 'PETRONAS DNA — Dulu Bulldog, Sekarang Anjing',
+    subtitle: 'Dulu CEO PETRONAS berani cakap "tidak" kat Perdana Menteri. Sekarang CEO tulis disclaimer kat LinkedIn. Makcik tanya: DNA hang hilang kat mana?',
+    date: '2026-07-01',
+    domain: 'MAKCIKGPT × PETRONAS',
+    language: 'ms',
+    excerpt: 'Dari Rastam yang "fight like bulldogs" dan Azizan yang "dared to face political masters" — kepada CEO yang tulis "personal viewpoints" kat LinkedIn dan buat deal RM70 bilion kat London. Makcik tanya: DNA PETRONAS masih hidup ke?',
+    tags: ['petronas', 'dna', 'ceo', 'linkedin', 'integrity', 'rightsizing', 'searah', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'sam-altman-elon-musk-anwar-akal',
     title: 'Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?',
