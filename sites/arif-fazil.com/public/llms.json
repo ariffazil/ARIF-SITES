@@ -1,7 +1,7 @@
 {
   "site_name": "arif-fazil.com",
   "domain": "arif-fazil.com",
-  "role": "human homepage with genesis, proof, and capital briefing subroutes",
+  "role": "human homepage with genesis, proof, capital briefing, and civic intelligence subroutes",
   "canonical": "https://arif-fazil.com/llms.txt",
   "repository": "https://github.com/ariffazil/arif-sites",
   "route_roles": {
@@ -9,6 +9,15 @@
     "/000/": "genesis and wisdom archive — origin context for agents",
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
+    "/wealth/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability",
+    "/wealth/makcikgpt/petronas-dna": "PETRONAS institutional DNA analysis — 1988 values vs 2026 leadership reality",
+    "/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal": "Power and wisdom critique — Sam Altman, Elon Musk, Anwar Ibrahim",
+    "/wealth/makcikgpt/searah-followup": "SEARAH operations start + PETRONAS leak court case",
+    "/wealth/makcikgpt/cerita-makcik": "Original SEARAH exposé — London shell company, 19 oilfields, PETROS excluded",
+    "/wealth/makcikgpt/siasatan-harakah": "RM70 billion deal structure investigation",
+    "/wealth/makcikgpt/iran-hormuz": "Hormuz disruption + PETRONAS rightsizing cycle",
+    "/wealth/makcikgpt/ilmu-bbb": "YTL ILMU AI red-team audit — sovereign AI claims debunked",
+    "/wealth/makcikgpt/ytl-monopoli": "YTL vertical monopoly — electricity, water, telco, land, AI",
     "/constellation/": "federation map — system topology and organ status",
     "/canon/": "constitutional canon — written law of arifOS",
     "/discoveries/": "well portfolio — exploration record and subsurface dossier",
@@ -22,6 +31,7 @@
   ],
   "machine_surfaces": [
     "https://arif-fazil.com/llms.txt",
+    "https://arif-fazil.com/llms-full.txt",
     "https://arif-fazil.com/llms.json",
     "https://arif-fazil.com/page.json",
     "https://arif-fazil.com/.well-known/agent.json",
@@ -33,5 +43,14 @@
   ],
   "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "did": "did:web:arif-fazil.com",
-  "last_updated": "2026-06-02"
+  "semantic_architecture": {
+    "pre_rendered": true,
+    "json_ld": "NewsArticle (Schema.org)",
+    "open_graph": true,
+    "twitter_cards": true,
+    "robots": "AI crawlers explicitly whitelisted (GPTBot, ClaudeBot, PerplexityBot, Bytespider, Applebot)",
+    "llms_txt": true,
+    "sitemap": true
+  },
+  "last_updated": "2026-07-01"
 }

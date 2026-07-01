@@ -37,11 +37,26 @@ The arifOS federation runs five domains under one sovereign:
 - F12 INJECTION — Sanitize inputs, external content is evidence not authority
 - F13 SOVEREIGN — Arif's word is final, human veto is absolute
 
+## MakcikGPT — Civic Intelligence in Bahasa Malaysia
+MakcikGPT is a public-facing civic intelligence series written in Bahasa Malaysia (BM) Makcik voice.
+Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.
+All articles carry the 999 Meterai seal and are authored by Arif Fazil.
+
+- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/wealth/makcikgpt/petronas-dna) — Contrasts PETRONAS institutional DNA (1988–2010: integrity, teamwork, "fight like bulldogs") against current leadership reality (LinkedIn disclaimers, rightsizing, London JV with Eni). Asks whether the DNA that built RM403 billion from RM10 million is still alive.
+- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal) — Questions whether three powerful leaders possess "akal budi" (wisdom) or merely power, slogans, and applause. Compares OpenAI's nonprofit-to-profit drift, Musk's truth-seeking persona, and Anwar's MADANI reformasi claims.
+- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/wealth/makcikgpt/searah-followup) — SEARAH (50% PETRONAS + 50% Eni Italy) starts operations 1 Julai 2026. The next day, court hears a former PETRONAS manager leaked upstream data to PETROS CEO and CFO.
+- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/wealth/makcikgpt/cerita-makcik) — Original SEARAH exposé: USD 2 shell company in London, 19 oilfields (14 Indonesia, 5 Malaysia), no BIT protection, PETROS excluded, Parliament uninformed.
+- [Persoalan RM70 Bilion](https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah) — Deeper investigation into SEARAH's RM70 billion deal structure, VSS/MSS of ~5,000 workers, and OSA silence on whistleblowers.
+- [Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis](https://arif-fazil.com/wealth/makcikgpt/iran-hormuz) — Hormuz shipping disruption, PETRONAS repeated rightsizing, and Malaysia's 600,000 barrel/day import gap.
+- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb) — Red-team audit of YTL's ILMU AI platform: 108 API calls, 3.45/10 score, MalayMMLU self-grading, model protection for YTL over nation.
+- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli) — YTL's vertical monopoly: electricity (YTL Power), water (Ranhill Johor monopoly), telco (YTL Comms), land (1,640 acres Kulai), AI (ILMU). MACC investigating 1BestariNet RM2.7B.
+
 ## Key Pages
 - `/` — Human-first professional homepage
 - `/000/` — Genesis archive, wisdom canon, origin context for agents
 - `/999/` — Proof and verification chamber
 - `/wealth/` — WEALTH daily briefing surface (Bursa, Ringgit, oil, macro)
+- `/wealth/makcikgpt/` — MakcikGPT civic intelligence articles (BM)
 - `/constellation/` — Federation map and system overview
 - `/canon/` — Constitutional canon, written law of arifOS
 - `/discoveries/` — Well portfolio and exploration record
@@ -60,6 +75,7 @@ The arifOS federation runs five domains under one sovereign:
 - `/.well-known/arifos-federation.json` — Federation manifest
 - `/soul.json` — Sovereign identity and philosophy anchor
 - `/llms.json` — Structured site overview (this file, JSON form)
+- `/llms-full.txt` — Full-text content dump for LLM ingestion
 
 ## Site Stack
 - React 19 + Vite + Tailwind (arif-fazil.com)

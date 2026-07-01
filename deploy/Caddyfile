@@ -123,6 +123,12 @@ arif-fazil.com {
 		try_files /static/genesis.html /index.html
 		file_server
 	}
+	# SSG pre-rendered MakcikGPT articles — serve static HTML with JSON-LD
+	@makcikgpt path /wealth/makcikgpt/*
+	handle @makcikgpt {
+		try_files {path}/index.html /index.html
+		file_server
+	}
 	handle /wealth/* {
 		try_files /static/wealth.html /index.html
 		file_server
