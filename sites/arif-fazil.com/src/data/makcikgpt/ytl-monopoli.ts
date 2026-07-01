@@ -1,0 +1,217 @@
+import type { ArticleContent } from './types';
+
+const content: ArticleContent = {
+  slug: 'ytl-monopoli',
+  html: `<div class="cover">
+<p class="cover-emoji">🏭 💧 ⚡ 🤖</p>
+<p class="cover-kicker">Cerita untuk Jiran-Jiran</p>
+<h1 class="cover-title">Satu Tangan Kuasa<br>Semua — Air, Api,<br>Rangkaian, AI</h1>
+<p class="cover-subtitle">YTL kuasai elektrik, air Johor, telco, tanah data center, dan ILMU. Makcik tanya: ni syarikat ke ni negara?</p>
+<div class="cover-byline">
+<strong>Oleh Arif Fazil</strong>, anak Malaysia yang tengok sendiri macam mana satu syarikat kuasai rantaian AI<br>
+999 Meterai · Versi 1.0 Bahasa Makcik · 1 Julai 2026
+</div>
+</div>
+
+<h1>Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI</h1>
+<p><strong>YTL kuasai elektrik, air Johor, telco, tanah data center, dan ILMU. Makcik tanya: ni syarikat ke ni negara?</strong></p>
+<p><strong>999 Meterai | Versi 1.0 Bahasa Makcik | 1 Julai 2026</strong></p>
+
+<hr />
+
+<h2>Hai Makcik! Mari Makcik Cerita Satu Rangkaian</h2>
+
+<p>Makcik, hang tau macam mana satu syarikat boleh kuasai satu rantaian penuh — dari tanah sampai ke AI?</p>
+
+<p>Ni cerita pasal <strong>YTL Corporation</strong>. Satu keluarga — <strong>keluarga Yeoh</strong> — yang bermula dengan bina jalan raya, sekarang miliki:</p>
+
+<div class="key-numbers">
+<span class="row"><span class="k">⚡ YTL Power</span><span class="v">Elektrik — generator, jana kuasa</span></span>
+<span class="row"><span class="k">💧 Ranhill Utilities</span><span class="v">Air — 53% milik YTL, MONOPOLI air Johor</span></span>
+<span class="row"><span class="k">📡 YTL Comms</span><span class="v">Rangkaian — 5G, fiber, YES</span></span>
+<span class="row"><span class="k">🏗️ YTL Data Center</span><span class="v">Tanah — 1,640 ekar di Kulai</span></span>
+<span class="row"><span class="k">🤖 YTL AI Labs</span><span class="v">AI — ILMU, "Malaysia's AI"</span></span>
+</div>
+
+<p>Satu syarikat. Satu keluarga. Kuasai <strong>semua</strong> — dari elektrik yang bagi kuasa, air yang sejuk, rangkaian yang sambung, tanah yang tapak, sampai AI yang berfikir.</p>
+
+<p>Macam mana satu syarikat boleh dapat semua ni? Mari Makcik cerita slow-slow.</p>
+
+<hr />
+
+<h2>Cerita 1: Air Johor — Makcik Punya Ke YTL Punya?</h2>
+
+<p>Tahun 2024, YTL Power beli <strong>53% saham Ranhill Utilities</strong>. Ranhill ni apa dia? <strong>Dia pegang 80% saham Ranhill SAJ</strong>. Ranhill SAJ ni apa? <strong>Dia satu-satunya pengendali air di negeri Johor.</strong> Monopoli. Tiada pesaing.</p>
+
+<p>Maknanya <strong>setiap rumah, setiap kilang, setiap data center di Johor — air mereka datang dari Ranhill, yang 53% milik YTL.</strong></p>
+
+<p>Bulan Ogos 2025, kerajaan negeri Johor luluskan <strong>kenaikan tarif air</strong>. Kali pertama dalam 9 tahun. Data center kena bayar <strong>RM5.33 semeter padu</strong> — tarif khas. Sebelum ni takde kategori "data center" dalam bil air.</p>
+
+<p>Sekarang dah ada.</p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ Siapa Dapat Duit?</div>
+<div class="fact-box-content">
+<strong>Data center bayar:</strong> RM5.33/m3 untuk air<br>
+<strong>Rumah biasa bayar:</strong> lebih murah<br>
+<strong>YTL punya Ranhill:</strong> dapat semua untung<br>
+<strong>YTL punya data center:</strong> bayar pada YTL punya Ranhill<br>
+<strong>Kesimpulan:</strong> YTL jual air pada diri sendiri. Untung kiri masuk kanan.
+</div>
+</div>
+
+<p>Makcik, cuba fikir. Hang ada kedai. Hang jual barang kat kedai hang sendiri. Hang tentukan harga. Hang untung dua kali. Tu la jadi kat Johor.</p>
+
+<hr />
+
+<h2>Cerita 2: Tanah 1,640 Ekar — Siapa Bagi?</h2>
+
+<p>YTL ada tanah data center di <strong>Kulai, Johor</strong>. Luas: <strong>1,640 ekar</strong>. Besar macam bandar kecil.</p>
+
+<p>Depa panggil <strong>YTL Green Data Center Park</strong>. Kapasiti <strong>600MW</strong> — cukup untuk bagi kuasa pada ribuan rumah. Depa dah dapat <strong>300MW</strong> komitmen daripada penyewa.</p>
+
+<p>Dengan <strong>500MW solar plant</strong> atas tanah sendiri.</p>
+
+<p>Soal Makcik: <strong>tanah 1,640 ekar tu, siapa punya asal? Dapat harga berapa? Incentive apa?</strong></p>
+
+<p>Sebab bawah <strong>DESAC (Digital Ecosystem Acceleration Scheme)</strong>, data center layak dapat <strong>100% investment tax allowance</strong> — maksudnya tak payah bayar cukai pendapatan sehingga 10 tahun.</p>
+
+<p>Bukan YTL sorang dapat incentive ni. Tapi YTL yang paling besar — dan paling senyap.</p>
+
+<hr />
+
+<h2>Cerita 3: Tender RM2 Bilion — Terus Ke YTL?</h2>
+
+<p>Dalam Bajet 2026, PM Anwar Ibrahim umum <strong>RM2 bilion</strong> untuk bina <strong>sovereign AI cloud</strong> — awan kerajaan untuk simpan data rakyat Malaysia.</p>
+
+<p>Di samping tu, <strong>RM5.9 bilion</strong> lagi untuk kuatkan sektor AI.</p>
+
+<p>Banyak syarikat berebut projek ni. <strong>Gamuda</strong>, <strong>MRCB</strong> — semua nak. Tapi siapa dapat? Nampak macam <strong>YTL Power</strong> jadi pilihan utama.</p>
+
+<p>Sebab? Sebab <strong>PM Anwar sendiri</strong> jumpa YTL dan Jensen Huang (CEO NVIDIA) kat Korea, dalam sidang APEC, untuk bincang projek ni.</p>
+
+<div class="pull-quote">
+Bila tender besar tak diumum secara terbuka, dan PM sendiri jumpa syarikat tertentu kat luar negara — Makcik tanya: ni tender ke ni janji?
+</div>
+
+<p>Kerajaan kata YTL pilihan tepat sebab depa dah bina data center, dah ada ILMU, dah ada NVIDIA. Tapi kalau Gamuda atau MRCB tak dapat peluang sama, macam mana nak tahu YTL paling murah? Paling baik? Paling selamat?</p>
+
+<p>Makcik ingat: <strong>tender terbuka — itu demokrasi. Tender terus — itu istimewa.</strong></p>
+
+<hr />
+
+<h2>Cerita 4: MACC Pernah Siasat — Jangan Lupa</h2>
+
+<p>Makcik, hang ingat tak <strong>1BestariNet</strong>? Projek internet untuk sekolah — RM2.7 bilion — diberi kepada YTL Communications tanpa tender terbuka. Lepastu MACC (Suruhanjaya Pencegahan Rasuah) siasat.</p>
+
+<p>Tahun 2025, MACC siasat lagi. Kali ni pasal <strong>data centre construction graft</strong> — rasuah tender bina data center di Johor bernilai <strong>RM180 juta</strong>. MACC tahan kontraktor, isteri dia, dua pengarah syarikat. Lepastu depa cuba bakar <strong>RM1 juta wang tunai</strong> masa MACC serbu rumah.</p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ Kronologi MACC</div>
+<div class="fact-box-content">
+<strong>2024:</strong> MACC siasat YTL Comms — 1BestariNet RM2.7b — ketua MACC sendiri awasi<br>
+<strong>Julai 2025:</strong> MACC tahan 4 orang — data centre graft RM180 juta Johor — wang RM1 juta cuba dibakar<br>
+<strong>2025-2026:</strong> YTL Power kata "no distraction" — tapi saham jatuh<br>
+<strong>Jun 2026:</strong> YTL terus dapat projek AI — macam takde apa jadi
+</div>
+</div>
+
+<p>Makcik, Makcik bukan kata YTL salah. Tapi MACC dah siasat dua kali. Bila kerajaan nak bagi RM2 bilion projek pada syarikat yang pernah disiasat MACC, Makcik rasa rakyat berhak tahu: <strong>kes tu selesai ke belum?</strong></p>
+
+<hr />
+
+<h2>Cerita 5: ILMU — "Malaysia's AI" Ke "YTL's AI"?</h2>
+
+<p>Makcik, dalam artikel sebelum ni (ILMU 'Sovereign AI' Konon — Tapi Bila DiAudit, Menangis), Arif dah buktikan:</p>
+
+<ul>
+<li>ILMU guna framework NVIDIA — bukan dari scratch</li>
+<li>MalayMMLU — exam buatan YTL sendiri</li>
+<li>Model protect YTL lebih dari negara — dapat markah 3.45/10</li>
+</ul>
+
+<p>Sekarang Makcik tambah satu lagi: <strong>ILMU ni "sovereign AI" — tapi YTL yang punya.</strong></p>
+
+<p>"Sovereign" maksudnya berdaulat — milik negara, bukan milik swasta. Tapi ILMU ni:</p>
+<ul>
+<li>Dibina oleh <strong>YTL AI Labs</strong> — anak syarikat YTL Corporation</li>
+<li>Disimpan di <strong>YTL AI Cloud</strong> — server YTL</li>
+<li>Dijalankan atas <strong>NVIDIA GPU</strong> — cip Amerika</li>
+<li>Dikawal oleh <strong>guardrails YTL</strong> — bukan undang-undang Malaysia</li>
+</ul>
+
+<p>Kalau YTL bankrap esok, ILMU mati. Kalau YTL dijual, ILMU ikut. Kalau YTL tukar polisi, ILMU ikut. <strong>Rakyat Malaysia tak ada suara.</strong></p>
+
+<div class="pull-quote">
+"Sovereign AI" yang duduk dalam syarikat swasta, guna cip Amerika, dan protect marketing lebih dari negara — tu bukan sovereign. Tu PR.
+</div>
+
+<hr />
+
+<h2>So, Apa Masalah Sebenarnya?</h2>
+
+<p>Makcik, ni ringkasan satu-satu:</p>
+
+<ol>
+<li><strong>MONOPOLI VERTIKAL</strong> — YTL kuasai elektrik, air, rangkaian, tanah, AI. Satu rantai, satu tangan. Tak sihat untuk persaingan.</li>
+<li><strong>KONFLIK KEPENTINGAN</strong> — YTL punya Ranhill yang jual air — dan YTL punya data center yang guna air. Untung dua kali, risiko rakyat tanggung.</li>
+<li><strong>TENDER TERTUTUP</strong> — RM2 bilion sovereign AI cloud nampak macam terus ke YTL. Gamuda, MRCB tak dapat peluang sama.</li>
+<li><strong>MACC BELUM SELESAI</strong> — Dua siasatan rasuah. Satu RM2.7b (1BestariNet), satu RM180juta (data centre graft). Rakyat berhak tahu status.</li>
+<li><strong>INCENTIVE RAKYAT</strong> — 100% tax allowance, 10 tahun. Tanah 1,640 ekar. Tarif air khas. Budget RM5.9 bilion. Semua ni duit rakyat.</li>
+</ol>
+
+<hr />
+
+<h2>Makcik Bukan Anti-YTL</h2>
+
+<p>Makcik bukan benci YTL. YTL syarikat Malaysia yang berjaya — tiru apa depa buat baik, jangan tiru apa depa buat tak baik.</p>
+
+<p>Tapi Makcik nak <strong>ketelusan</strong>. Kalau YTL nak jadi "penyedia AI negara," tunjuk:</p>
+
+<ul>
+<li><strong>Resit tender</strong> — siapa lagi bida? Berapa harga YTL vs Gamuda vs MRCB?</li>
+<li><strong>Resit tanah</strong> — 1,640 ekar dapat dari mana? Harga berapa?</li>
+<li><strong>Resit air</strong> — RM5.33/m3 tu cukup untuk air rakyat Johor?</li>
+<li><strong>Resit MACC</strong> — kes 1BestariNet selesai ke belum? Data centre graft?</li>
+<li><strong>Resit AI</strong> — ILMU dapat 3.45/10, lepas tu kerajaan nak guna?</li>
+</ul>
+
+<p>Bukan susah. Bagi resit, bagi nombor, bagi fakta. Lepastu rakyat boleh nilai sendiri.</p>
+
+<hr />
+
+<h2>Penutup — Untuk Makcik dan Pakcik</h2>
+
+<p>Makcik, dunia AI ni bukan pasal coding semata. Ni pasal <strong>siapa kuasai infrastruktur</strong>. Siapa punya elektrik, siapa punya air, siapa punya tanah, siapa punya data.</p>
+
+<p>YTL dah buat langkah bijak — depa kuasai semua. Tapi dalam negara demokrasi, <strong>siapa yang kuasai semua, kena diawasi semua.</strong></p>
+
+<p>Kalau satu syarikat boleh kuasai elektrik, air, rangkaian, tanah, dan AI negara — Makcik tanya sekali lagi:</p>
+
+<p><strong>Ni syarikat ke ni negara?</strong></p>
+
+<p>Ditempa Bukan Diberi.</p>
+
+<hr />
+
+<h2>Rujukan</h2>
+<ul>
+<li>The Edge, Okt 2024: "Hamdan's surprise exit from Ranhill paves the way for YTL Power in Johor water sector" — Ranhill SAJ monopoli air Johor</li>
+<li>The Star, Ogos 2025: "Johor's water tariff adjustment: Data centres would have to pay more" — RM5.33/m3 data centre tariff</li>
+<li>The Edge, Jun 2024: "MACC says probe against YTL Comms over 1BestariNet" — RM2.7 billion</li>
+<li>FMT, Jul 2025: "MACC identifies 2 more firms offering bribes in data centre project probe" — RM180 juta graft</li>
+<li>The Rakyat Post, Jul 2025: "Construction Boss Burns Nearly RM1 Million During MACC Raid"</li>
+<li>Dragon Leong Substack, Nov 2025: YTL Power analysis — Gamuda, MRCB vying for sovereign AI cloud</li>
+<li>EqualOcean, Jan 2026: "How Malaysia Became Southeast Asia's Computing Power Hub" — DESAC 100% tax allowance</li>
+<li>Bernama, 2026: Budget 2026 RM5.9 billion for AI sector</li>
+<li>ISIS Malaysia, Okt 2025: "Owning the future: Malaysia's sovereign AI cloud" — RM2 billion allocation</li>
+<li>DCD, Jun 2024: "YTL Power and Nvidia to invest $2.3bn in AI infrastructure"</li>
+<li>The Edge, Okt 2025: "YTL Power completes first Nvidia-powered AI data centre in Johor"</li>
+<li>huggingface.co/datasets/ariffazil/BBB — ILMU audit, markah 3.45/10</li>
+</ul>
+
+<p><em>DITEMPA BUKAN DIBERI — Yang benar dikorek, bukan diberi percuma.</em></p>
+<p><em>Meterai 999 — arifOS Perisikan Persekutuan, 1 Julai 2026.</em></p>`,
+};
+
+export default content;
