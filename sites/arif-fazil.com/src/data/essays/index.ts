@@ -16,6 +16,9 @@ import e12 from "./12-physics-constrained-attention-zoeppritz-constitutional-flo
 import e13 from "./13-derivation-avo-attention-contrast-primitive";
 import e15 from "./growing-intelligence-without-losing-our-soul-from-binatang-to-warga";
 import e18 from "./18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system";
+import e19 from "./19-the-tool-is-the-thought";
+import e20 from "./20-survival-of-the-fittest-tools";
+import e21 from "./21-three-timelines-one-boundary";
 
 // Lightweight Medium-linked essay modules (auto-generated from articles.json)
 import g0 from "./generated/g_fifteen_dollar_bouncer";
@@ -69,7 +72,7 @@ import g47 from "./generated/g_scar_behind_the_vision";
 import g48 from "./generated/g_manifesto_of_forged_intelligence";
 import g49 from "./generated/g_arifos_as_a_prism";
 
-export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
+export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
 
 export const allEssays: EssayMeta[] = [
   {
@@ -545,6 +548,33 @@ export const allEssays: EssayMeta[] = [
     tags: ["arifOS", "ConstitutionalAI", "KernelAsMind", "BehaviouralProbing", "BlackBoxInterpretability", "AAVEBias", "SEA-LION", "ILMU", "BBB", "CCC", "DDD", "F1F13", "JEPA", "LeCun", "SubstrateAgnostic", "DITEMPABUKANDIBER", "SovereignAI", "Malaysia", "AIGovernance", "SixAxes", "GeometryOfIntelligence"],
     mediumUrl: "",
     isDirectPublication: true,
+  },
+  {
+    title: `The Tool Is the Thought`,
+    date: "2026-07-03",
+    slug: "the-tool-is-the-thought",
+    excerpt: `Two million years ago, someone picked up a rock and hit another rock until it had a sharp edge. Last Tuesday, I described a tool in three sentences and it materialized. Same species. Same brain. Completely different physics of creation. How MCP collapsed the tool-building chain — and why the quality of your thinking is now the only thing that matters.`,
+    tags: ["MCP", "ToolBuilding", "AgenticIntelligence", "Governance", "arifOS", "DomainExperts", "ConstitutionalAI", "HumanCognition"],
+    mediumUrl: "",
+    isDirectPublication: true,
+  },
+  {
+    title: `Survival of the Fittest Tools`,
+    date: "2026-07-03",
+    slug: "survival-of-the-fittest-tools",
+    excerpt: `A closed-source SaaS tool, at its most reduced form, is text pretending to be a product. For 50 years, we hid this behind compiled binaries and license servers. MCP just collapsed the moat. The entire closed-source stack was already a lease — we just didn't have the AI to notice.`,
+    tags: ["MCP", "OpenSource", "ClosedSource", "AgenticIntelligence", "Governance", "DarwinianSelection", "Sovereignty", "arifOS", "TextCollapse"],
+    mediumUrl: "",
+    isDirectPublication: true,
+  },
+  {
+    title: `Three Timelines, One Boundary`,
+    date: "2026-07-03",
+    slug: "three-timelines-one-boundary",
+    excerpt: `Every major leap in biology is the same trick: an intelligence acquires new effectors. MCP is that trick again. Three timelines just converged — biology got effectors, human evolution removed the body from creation, and agentic systems went multicellular. Same month. Same protocol. In geology we'd call that a boundary event.`,
+    tags: ["MCP", "Evolution", "Biology", "AgenticIntelligence", "HumanEvolution", "Cambrian", "DeepTime", "arifOS", "Governance", "BoundaryEvent"],
+    mediumUrl: "",
+    isDirectPublication: true,
   }
 ];
 
@@ -568,6 +598,9 @@ const CURATED_SLUGS: Record<string, string> = {
   "trilemma-of-ai": "AI Governance",
   "no-such-thing-as-evil-genius": "AI Governance",
   "truth-comes-before-intelligence": "AI Governance",
+  "the-tool-is-the-thought": "AI Governance",
+  "survival-of-the-fittest-tools": "AI Governance",
+  "three-timelines-one-boundary": "AI Governance",
 
   // 🧠 Constitutional AI
   "ai-constitution-based-on-physics": "Constitutional AI",
