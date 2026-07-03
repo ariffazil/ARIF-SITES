@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-07-03",
-    "generated_at": "2026-07-03T06:00:02Z",
+    "date": "2026-07-02",
+    "generated_at": "2026-07-02T06:00:01Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -14,29 +14,29 @@
   "bursa": {
     "search_results": [
       {
-        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
-        "url": "https://www.malaymail.com/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
-        "desc": "KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark index in positive territory despite ..."
-      },
-      {
-        "title": "Bursa Ends Higher On Telecom And Banking Support Amid Mixed Broader Trade - BusinessToday",
-        "url": "https://www.businesstoday.com.my/2026/07/02/bursa-ends-higher-on-telecom-and-banking-support-amid-mixed-broader-trade/",
-        "desc": "Bursa Malaysia extended its upward momentum to close higher on <strong>July 2,</strong> underpinned by buying in telecommunications counters and a rebound in heavyweight banking stocks, even as overall market sentiment remained cautious."
-      },
-      {
-        "title": "Calendar",
-        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
-        "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing Date · 03 Jul 2026 IPO for ECKEM HOLDINGS BERHAD ·"
-      },
-      {
         "title": "Bursa Malaysia (BURSA) Trading Hours 2026 - Market Status: Closed - World Market Hours - MarketHours.io",
         "url": "https://markethours.io/market/bursa",
         "desc": "Get real-time Bursa Malaysia trading hours, market status, and 2026 holiday schedule. <strong>Currently closed</strong>. Track BURSA opening times, lunch breaks, and special trading days."
       },
       {
-        "title": "Bursa Opens Firmer As Fed Rate Cut Bets Lift Sentiment Across The Board",
-        "url": "https://www.businesstoday.com.my/2026/07/03/bursa-opens-firmer-as-fed-rate-cut-bets-lift-sentiment-across-the-board/",
-        "desc": "Markets · By Business Today Editorial ... could move towards a more accommodative interest rate stance. <strong>At 9.42am, the FBM KLCI rose 11.42 points or 0.69% to 1,673.25</strong>, compared with the previous close...."
+        "title": "Calendar",
+        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
+        "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. IPO Listing Date · 30 Jun 2026 IPO for LIFTECH GROUP BERHAD · Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing "
+      },
+      {
+        "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
+        "url": "https://www.tradinghours.com/markets/myx",
+        "desc": "Bursa Malaysia countdown, 2026 market calendar, trading hours, settlement details, and contact information. MYX is open Mon-Fri, 9:00am - 12:30pm, <strong>2:30pm - 4:45pm</strong>"
+      },
+      {
+        "title": "Trading Calendar",
+        "url": "https://www.bursamalaysia.com/trade/trading_resources/derivatives/trading_calendar",
+        "desc": "To receive latest announcement, you can follow a company by clicking follow button on the company profile page · You will be-redirected to AskListing@Bursa, are you sure you want to leave this page"
+      },
+      {
+        "title": "Bursa Malaysia MYX Holidays 2026 | Trading Hours.",
+        "url": "https://www.forexchurch.com/stock-market-holidays/bursa-malaysia",
+        "desc": "Below is a list of the Opening, Closing, Current as well as Countdown Times for the Bursa Malaysia (MYX)."
       }
     ],
     "most_active": {
@@ -46,25 +46,25 @@
     },
     "top_gainers_search": [
       {
-        "title": "FBM KLCI opens higher, tracking Wall Street gains amid cautious sentiment | The Star",
-        "desc": "Among the top gainers on Bursa Malaysia, <strong>Dutch Lady rose 44 sen to RM32.50, Hong Leong Bank gained 12 sen to RM21.46, PPB Group added 11 sen t"
-      },
-      {
         "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
         "desc": "Malaysia&#x27;s main stock market index, the FKLCI, rose to <strong>1662 points on July 2, 2026, gaining 0.33% from the previous session</strong>. Ove"
       },
       {
         "title": "FBMKLCI Quote - FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index - Bloomberg",
         "desc": "Index performance for FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index (FBMKLCI) including value, chart, profile &amp; other market data."
+      },
+      {
+        "title": "Markets | KLSE Screener",
+        "desc": "FTSE Bursa Malaysia KLCI · Malaysia · trending_up1,662.34 · +5.510 +0.333% STI · Singapore · trending_up5,186.51 · +25.000 +0.484% HANG SENG INDEX · H"
       }
     ],
     "klci_close": null,
     "klci_change_points": null,
     "klci_change_pct": null,
     "source_urls": [
-      "https://www.malaymail.com/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
+      "https://www.tradinghours.com/markets/myx",
       "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
-      "https://www.businesstoday.com.my/2026/07/02/bursa-ends-higher-on-telecom-and-banking-support-amid-mixed-broader-trade/"
+      "https://markethours.io/market/bursa"
     ]
   },
   "ringgit": {
@@ -177,16 +177,16 @@
   "social": {
     "cost_of_living": [
       {
-        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
-        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,934.8 (RM7,924.0), excluding rent</strong>. The estimated monthly costs for a single person are $530."
-      },
-      {
         "title": "Average Salary in Malaysia: $1,009/mo + Min Wage (2026) | wage.is",
         "desc": "The average salary in Malaysia is <strong>RM4,000/mo ($1,008.83 USD) as of May 2026. Min wage: RM8.72/hr</strong>. Compare wages, explore history, and see how Malaysia ranks globally."
       },
       {
         "title": "Malaysia Salary Benchmarks: By Role and Industry 2026",
         "desc": "A senior software engineer earns RM 10,000-14,000 ($2,125-$2,980) in Malaysia vs S$8,000-$12,000 ($5,900-$8,850) in Singapore. Malaysia compensates with lower cost of living <strong>(40-50% less than "
+      },
+      {
+        "title": "Average Salary Malaysia 2026: MYR 3,650 ($770 USD/Month)",
+        "desc": "Average salary in Malaysia 2026: <strong>MYR 3,650/month</strong> national (~$770 USD). Sector and role benchmarks, EPF/SOCSO costs, tax brackets."
       }
     ],
     "labor": [
@@ -195,8 +195,8 @@
         "desc": "The migrant workers “are victims of a big network that’s managed by elites and government operatives,” he said. He predicted Malaysia will suffer the consequences once global companies take notice. “T"
       },
       {
-        "title": "Malaysia: 800 migrant workers at plank factory strike over wage theft; incl. co. comments - Business and Human Rights Centre",
-        "desc": "Migrants &amp; Immigrants Labour Rights Access to Information Protests Workers/Employees Strikes and other work stoppages Wage Theft Work &amp; Conditions Minimum Wage"
+        "title": "Rampant Labor Abuses Against Bangladeshi Migrant Workers in Malaysia | Human Rights Watch",
+        "desc": "Malaysia and labor-sending governments like Bangladesh should implement the UN experts’ call to promptly investigate reported abuses and provide effective remedies. The experts emphasized that “involu"
       }
     ],
     "youth_career": [
@@ -205,8 +205,8 @@
         "desc": "Malaysian citizen not more than 26 years old (based on year of birth). Minimum Bachelor’s Degree holder with minimum CGPA of 3.00 or equivalent. Unemployed or under-employed in non-relevant areas of g"
       },
       {
-        "title": "Careers | PETRONAS Global",
-        "desc": "Information on licensing and registration for Malaysian-based vendors."
+        "title": "Graduate Employability Enhancement Scheme (GEES) (Ongoing) at Petroliam Nasional Berhad - Prosple Malaysia",
+        "desc": "Here are the eligibility criteria you should meet in order to be able to apply for this role: Malaysian citizen not more than 26 years old. Minimum Bachelor’s Degree holder with a minimum CGPA of 3.0."
       }
     ]
   },
@@ -241,8 +241,8 @@
           "desc": "The Federal Open Market Committee approved the following statement for release by a 12 – 0 vote: The Committee decided to maintain the target range for"
         },
         {
-          "title": "Federal Reserve Interest Rate Decision July 2026: Market Impact Analysis",
-          "desc": "Consider signing up for Intellectia.AI ... decisions in this complex environment. As of July 2026, the Federal Reserve is <strong>maintaining interest rates at elevated levels with a &quot;higher-for-"
+          "title": "United States Fed Funds Interest Rate",
+          "desc": "Last month, the Fed held rates steady but signaled growing support among officials for additional hikes later this year as inflation remains elevated. 2026-07-01 ... The Fed kept the federal funds rat"
         }
       ]
     },
@@ -274,7 +274,7 @@
   "so_what": [
     {
       "domain": "COST OF LIVING",
-      "signal": "Rakyat pressure: Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
+      "signal": "Rakyat pressure: Average Salary in Malaysia: $1,009/mo + Min Wage (2026) | wage.is",
       "for_aia": "When cost of living rises faster than wages, political instability rises. This is the underlying pressure that fuels PN vs PH narrative.",
       "for_izzu": "Consumer discretionary spending drops = retail/F&B sector pressure. If you're sector-rotating, this is a signal.",
       "for_aliff": "PETRONAS PROPA 'competitive compensation' narrative gets tested against this. PROPA workers know the gap between narrative and reality.",
