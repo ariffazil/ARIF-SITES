@@ -8,10 +8,14 @@ import ytlMonopoli from './ytl-monopoli';
 import searahFollowup from './searah-followup';
 import samAltmanElonMuskAnwarAkal from './sam-altman-elon-musk-anwar-akal';
 import petronasDna from './petronas-dna';
+import petronasHiveSale from './petronas-hive-sale';
+import surinameExxonCabut from './suriname-exxon-cabut';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
   petronasDna,
+  petronasHiveSale,
+  surinameExxonCabut,
   samAltmanElonMuskAnwarAkal,
   daily_2026_07_01,
   ceritaMakcik,
@@ -32,6 +36,28 @@ export const makcikArticlesMeta: MakcikArticleMeta[] = [
     language: 'ms',
     excerpt: 'Dari Rastam yang "fight like bulldogs" dan Azizan yang "dared to face political masters" — kepada CEO yang tulis "personal viewpoints" kat LinkedIn dan buat deal RM70 bilion kat London. Makcik tanya: DNA PETRONAS masih hidup ke?',
     tags: ['petronas', 'dna', 'ceo', 'linkedin', 'integrity', 'rightsizing', 'searah', 'malaysia'],
+    seal: '999',
+  },
+  {
+    slug: 'petronas-hive-sale',
+    title: 'Bila Petronas Kata "Strategic Partnership", Makcik Kata "Mereka Nak Lepas Beban"',
+    subtitle: 'EnQuest dapat 30% PM6/12. Lebah Emas-1. Rightsizing. Makcik tanya: kenapa jual sarang yang baru kena madu?',
+    date: '2026-07-05',
+    domain: 'MAKCIKGPT × PETRONAS',
+    language: 'ms',
+    excerpt: 'Faisal jual Lebah blok sebab nak tunjuk bagus kat CEO. Tengku bina rightsizing. Lebah Emas korban. Makcik cakap pasal niat manusia dalam extractive system.',
+    tags: ['petronas', 'enquest', 'pm6/12', 'lebah-emas', 'rightsizing', 'faisal-bakar', 'tengku-taufik', 'shadow', 'makcikgpt'],
+    seal: '999',
+  },
+  {
+    slug: 'suriname-exxon-cabut',
+    title: 'Exxon Cabut dari Suriname, PETRONAS Masih Hebat?',
+    subtitle: 'Block 52: Partner besar tinggalkan, tapi pengumuman penemuan terus. Makcik tanya: siapa yang sebenarnya strategic?',
+    date: '2026-07-05',
+    domain: 'MAKCIKGPT × PETRONAS',
+    language: 'ms',
+    excerpt: 'Exxon keluar Block 52 Nov 2024. PETRONAS ambil 100%. Jun 2026: dua penemuan lagi, total 8, >1 bilion boe. Sementara Malaysia farm out Lebah Emas ke EnQuest. Makcik cakap pasal narrative vs realiti.',
+    tags: ['petronas', 'exxon', 'suriname', 'block52', 'lebah-emas', 'rightsizing', 'makcikgpt'],
     seal: '999',
   },
   {

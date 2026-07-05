@@ -1,0 +1,44 @@
+{
+  "schema": "agent-manifest/v1",
+  "name": "arifOS Observatory",
+  "description": "Read-only governance observatory for the arifOS constitutional federation. Shows live organ health, F1-F13 constitutional floors, VAULT999 status, MCP tool registry, and federation topology. MCP tool execution lives at the canonical gateway (mcp.arif-fazil.com).",
+  "url": "https://arifos.arif-fazil.com",
+  "version": "2026.07.04",
+  "capabilities": {
+    "a2a": false,
+    "mcp": ["https://mcp.arif-fazil.com/mcp"],
+    "verification": true
+  },
+  "scopes": ["governance", "observatory", "constitutional-floors", "federation-health", "vault-status"],
+  "modes": ["observe", "verify"],
+  "endpoints": {
+    "health": "https://arifos.arif-fazil.com/health",
+    "status": "https://arifos.arif-fazil.com/api/status",
+    "federation_probe": "https://arifos.arif-fazil.com/api/federation-probe",
+    "build_info": "https://arifos.arif-fazil.com/api/build-info"
+  },
+  "related_agents": [
+    {
+      "name": "arifOS Kernel",
+      "url": "https://arifos.arif-fazil.com",
+      "mcp": "https://mcp.arif-fazil.com/mcp",
+      "role": "constitutional governance kernel"
+    },
+    {
+      "name": "AAA Cockpit",
+      "url": "https://aaa.arif-fazil.com",
+      "role": "operations surface and agent gateway"
+    },
+    {
+      "name": "MCP Gateway",
+      "url": "https://mcp.arif-fazil.com",
+      "role": "canonical MCP tool execution endpoint"
+    }
+  ],
+  "doctrine": {
+    "floors": "F1-F13 constitutional floors enforced on all operations",
+    "verdict": "888_JUDGE renders SEAL/HOLD/SABAR/VOID",
+    "vault": "VAULT999 immutable audit ledger",
+    "sovereign": "Arif (F13) holds final veto"
+  }
+}

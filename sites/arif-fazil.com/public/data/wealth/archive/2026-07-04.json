@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-07-05",
-    "generated_at": "2026-07-05T06:00:02Z",
+    "date": "2026-07-04",
+    "generated_at": "2026-07-04T06:00:03Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -19,14 +19,14 @@
         "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
       },
       {
-        "title": "Banking rally lifts Bursa Malaysia nearly 17 points on softer US jobs data | Malay Mail",
-        "url": "https://www.malaymail.com/amp/news/money/2026/07/03/banking-rally-lifts-bursa-malaysia-nearly-17-points-on-softer-us-jobs-data/226245",
-        "desc": "Friday, 03 Jul 2026 6:24 PM MYT · KUALA LUMPUR, <strong>July 3 — Bursa Malaysia ended today’s trade with a bounce on the back of a rally in banking stocks</strong> as investor sentiment improved following softer-than-expected US labour market data."
-      },
-      {
         "title": "Bursa Malaysia reverses gains to close lower | The Star",
         "url": "https://www.thestar.com.my/business/business-news/2026/07/02/bursa-malaysia-reverses-gains-to-close-lower",
         "desc": "Thursday, 02 Jul 2026 · share ... in the final minutes. KUALA LUMPUR: Bursa Malaysia’s benchmark index <strong>fell 0.43% to close at its intraday low</strong>, reversing earlier gains as a wave of late-session selling erased the day’s ..."
+      },
+      {
+        "title": "Bursa Malaysia (BURSA) Trading Hours 2026 - Market Status: Closed - World Market Hours - MarketHours.io",
+        "url": "https://markethours.io/market/bursa",
+        "desc": "Get real-time Bursa Malaysia trading hours, market status, and 2026 holiday schedule. <strong>Currently closed</strong>. Track BURSA opening times, lunch breaks, and special trading days."
       },
       {
         "title": "Calendar",
@@ -34,9 +34,9 @@
         "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing Date · 03 Jul 2026 IPO for ECKEM HOLDINGS BERHAD ·"
       },
       {
-        "title": "Bursa Malaysia (BURSA) Trading Hours 2026 - Market Status: Closed - World Market Hours - MarketHours.io",
-        "url": "https://markethours.io/market/bursa",
-        "desc": "Get real-time Bursa Malaysia trading hours, market status, and 2026 holiday schedule. <strong>Currently closed</strong>. Track BURSA opening times, lunch breaks, and special trading days."
+        "title": "MYX Market Hours & Holidays 2026 - TradingHours.com",
+        "url": "https://www.tradinghours.com/markets/myx",
+        "desc": "Bursa Malaysia countdown, 2026 market calendar, trading hours, settlement details, and contact information. MYX is open Mon-Fri, 9:00am - 12:30pm, <strong>2:30pm - 4:45pm</strong>"
       }
     ],
     "most_active": {
@@ -50,20 +50,20 @@
         "desc": "Among the top gainers on Bursa Malaysia, <strong>Dutch Lady rose 44 sen to RM32.50, Hong Leong Bank gained 12 sen to RM21.46, PPB Group added 11 sen t"
       },
       {
-        "title": "FBMKLCI Quote - FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index - Bloomberg",
-        "desc": "Index performance for FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index (FBMKLCI) including value, chart, profile &amp; other market data."
+        "title": "FBM KLCI climbs at midday amid broad buying, upside seen capped | The Star",
+        "desc": "Gainers on Bursa Malaysia included <strong>F&amp;N, which rose 68 sen to RM28.78, Kuala Lumpur Kepong, which gained 52 sen to RM21.48, Lysaght Galvani"
       },
       {
-        "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
-        "desc": "FTSE Bursa Malaysia KLCI · 1,679.05 +1.04% Kuala Lumpur - Delayed Quote • MYR · 1,679.05 +17.22 (+1.04%) At close: July 3 at 4:59:44 PM GMT+8 · Top St"
+        "title": "FBMKLCI Quote - FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index - Bloomberg",
+        "desc": "Index performance for FTSE Bursa Malaysia KLCI Index - Kuala Lumpur Composite Index (FBMKLCI) including value, chart, profile &amp; other market data."
       }
     ],
     "klci_close": null,
     "klci_change_points": null,
     "klci_change_pct": null,
     "source_urls": [
-      "https://www.malaymail.com/amp/news/money/2026/07/03/banking-rally-lifts-bursa-malaysia-nearly-17-points-on-softer-us-jobs-data/226245",
       "https://www.thestar.com.my/business/business-news/2026/07/02/bursa-malaysia-reverses-gains-to-close-lower",
+      "https://markethours.io/market/bursa",
       "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107"
     ]
   },
@@ -85,8 +85,8 @@
       }
     ],
     "sources": [
-      "https://tradingeconomics.com/malaysia/currency",
-      "https://www.xe.com/currencycharts/?from=USD&to=MYR"
+      "https://www.xe.com/currencycharts/?from=USD&to=MYR",
+      "https://tradingeconomics.com/malaysia/currency"
     ]
   },
   "economy": {
@@ -116,15 +116,15 @@
         "category": "trade"
       },
       {
-        "title": "Malaysia GDP Annual Growth Rate",
-        "url": "https://tradingeconomics.com/malaysia/gdp-growth-annual",
-        "desc": "Still, Governor Ghaffour said the economy is seen to remain resilient in 2026, with growth projected at 4%–5%, supported by steady domestic demand and export expansion. 2026-05-15 ... Malaysia’s economy expanded <strong>5.3% year-on-year in Q1 2026</strong>, slowing from 6.3% in Q4, preliminary esti",
-        "category": "gdp"
-      },
-      {
         "title": "IMF raises Malaysia's real GDP growth forecast to 4.7% for 2026, 4.3% in 2027 | The Star",
         "url": "https://www.thestar.com.my/business/2026/04/15/imf-raises-malaysia039s-real-gdp-growth-forecast-to-47-for-2026-43-in-2027",
         "desc": "KUALA LUMPUR: The International Monetary Fund (IMF) has raised its projection for Malaysia&#x27;s real gross domestic product (GDP) growth to <strong>4.7 per cent</strong> for 2026, representing an upward revision of 0.4 percentage points.",
+        "category": "gdp"
+      },
+      {
+        "title": "Malaysia GDP Annual Growth Rate",
+        "url": "https://tradingeconomics.com/malaysia/gdp-growth-annual",
+        "desc": "Still, Governor Ghaffour said the economy is seen to remain resilient in 2026, with growth projected at 4%–5%, supported by steady domestic demand and export expansion. 2026-05-15 ... Malaysia’s economy expanded <strong>5.3% year-on-year in Q1 2026</strong>, slowing from 6.3% in Q4, preliminary esti",
         "category": "gdp"
       }
     ],
@@ -143,14 +143,14 @@
         "source": "https://www.straitstimes.com/asia/se-asia/from-federal-tussle-to-royal-intrigue-your-cheat-sheet-to-the-johor-state-election"
       },
       {
+        "title": "YOURSAY | Anwar lets down his non-Malay fans",
+        "desc": "What is often overlooked in this debate is that Anwar and DAP secretary-general Anthony Loke have sustained a government that initially lacked a clear parliamentary majority of its own. Over the past ",
+        "source": "https://www.malaysiakini.com/news/778581"
+      },
+      {
         "title": "Malaysia Election 2026: Anwar Weighs Early Poll Amid Pressure - Modern Diplomacy",
         "desc": "<strong>His coalition brought together former rivals, including the Pakatan Harapan alliance and the once dominant Barisan Nasional bloc led by the United Malays National Organisation</strong>. Althou",
         "source": "https://moderndiplomacy.eu/2026/05/29/malaysia-election-2026-anwar-weighs-early-poll-amid-pressure/"
-      },
-      {
-        "title": "Ethnic rifts flare in Malaysia as Johor polls threaten stability of Anwar’s unity coalition | South China Morning Post",
-        "desc": "Fissures along ethnic lines are ... government coalition members against each other. <strong>Prime Minister Anwar Ibrahim helms an uneasy coalition of erstwhile political rivals</strong>....",
-        "source": "https://www.scmp.com/week-asia/politics/article/3358377/ethnic-rifts-flare-malaysia-johor-polls-threaten-stability-anwars-unity-coalition"
       }
     ],
     "economy_policy": [
@@ -165,12 +165,12 @@
     ],
     "regional": [
       {
-        "title": "Next Malaysian general election - Wikipedia",
-        "desc": "MUDA defected into opposition in ... to <strong>Sabah</strong>. Further rupture of ties were seen in first half of <strong>2026</strong>, both in gove"
-      },
-      {
         "title": "Gabungan Parti Sarawak - Wikipedia",
         "desc": "<strong>GPS</strong> was formed on 12 June 2018, ... Peoples&#x27; Party (SUPP), and Parti Rakyat <strong>Sarawak</strong> (PRS). The four parties wer"
+      },
+      {
+        "title": "Next Malaysian general election - Wikipedia",
+        "desc": "MUDA defected into opposition in ... to <strong>Sabah</strong>. Further rupture of ties were seen in first half of <strong>2026</strong>, both in gove"
       }
     ]
   },
@@ -178,7 +178,7 @@
     "cost_of_living": [
       {
         "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
-        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,946.9 (RM7,925.7), excluding rent</strong>. The estimated monthly costs for a single person are $534."
+        "desc": "Tell us some prices in Ashburn ... <strong>The estimated monthly costs for a family of four are $1,934.8 (RM7,924.0), excluding rent</strong>. The estimated monthly costs for a single person are $530."
       },
       {
         "title": "Average Salary in Malaysia: $1,009/mo + Min Wage (2026) | wage.is",
@@ -205,8 +205,8 @@
         "desc": "Malaysian citizen not more than 26 years old (based on year of birth). Minimum Bachelor’s Degree holder with minimum CGPA of 3.00 or equivalent. Unemployed or under-employed in non-relevant areas of g"
       },
       {
-        "title": "Graduate Employability Enhancement Scheme (GEES) (Ongoing) at Petroliam Nasional Berhad - Prosple Malaysia",
-        "desc": "Here are the eligibility criteria you should meet in order to be able to apply for this role: Malaysian citizen not more than 26 years old. Minimum Bachelor’s Degree holder with a minimum CGPA of 3.0."
+        "title": "Careers | PETRONAS Global",
+        "desc": "Information on licensing and registration for Malaysian-based vendors."
       }
     ]
   },
@@ -253,8 +253,8 @@
           "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
         },
         {
-          "title": "The state of China’s economy in 5 numbers | World Economic Forum",
-          "desc": "Participants will soon descend on &quot;Summer Davos&quot; in China to parse the expanded role of the second-biggest economy. Here are five figures to get them started."
+          "title": "China in 2026: five factors behind a resilient outlook | Allianz Gobal Investors",
+          "desc": "As growth remains stable, <strong>China will continue to refrain from aggressive stimulus</strong>, but consumer demand is still expected to expand amid rising wages and a bottoming real estate sector"
         }
       ]
     },
