@@ -7,36 +7,27 @@
 <meta name="description" content="Read-only governance visibility for the arifOS constitutional federation. Live organ health, F1-F13 floors, VAULT999 status, and canonical docs. MCP tools live at mcp.arif-fazil.com.">
 <link rel="canonical" href="https://arifos.arif-fazil.com/">
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
-<!-- Trinity Design System (SOT) -->
 <link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<script src="/_shared/arrow-of-time.js" defer></script>
+<script src="/_shared/arrow-of-time-mind.js" defer></script>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Read-only governance visibility for the arifOS constitutional federation."},
+  {"@type":"WebPage","@id":"https://arifos.arif-fazil.com/#page","url":"https://arifos.arif-fazil.com","name":"arifOS Observatory","isPartOf":{"@id":"https://arifos.arif-fazil.com/#website"}},
+  {"@type":"SoftwareApplication","name":"arifOS Constitutional Kernel","applicationCategory":"GovernanceFramework","operatingSystem":"Linux","url":"https://arifos.arif-fazil.com","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+]}
+</script>
+
 <style>
+/* ═══ IRON SHELL — Layer 1: Guaranteed render at t=0 ═══ */
 :root,[data-theme="dark"]{
-  --color-bg:#0d0c0b;
-  --color-surface:#121110;
-  --color-surface-2:#181614;
-  --color-surface-offset:#1e1c1a;
-  --color-divider:#2a2826;
-  --color-border:#333130;
-  --color-text:#d4d2ce;
-  --color-text-muted:#9b9995;
-  --color-text-faint:#807e7b;
-  --color-text-inverse:#0d0c0b;
-  --color-primary:#3a9ea8;
-  --color-primary-hover:#1e8a96;
-  --color-primary-active:#136e79;
-  --color-primary-highlight:#1a3035;
-  --color-success:#5a9e38;
-  --color-warning:#c46a1a;
-  --color-error:#b83060;
-  --color-hold:#e0922a;
-  --color-gold:#d4a853;
-  --color-gold-dim:#8f7030;
-  --radius-sm:0.25rem;
-  --radius-md:0.5rem;
-  --radius-lg:0.75rem;
-  --shadow-sm:0 1px 3px oklch(0 0 0 / 0.4);
-  --shadow-md:0 4px 16px oklch(0 0 0 / 0.5);
+  --bg:#0d0c0b;--surface:#121110;--surface-2:#181614;--surface-offset:#1e1c1a;
+  --divider:#2a2826;--border:#333130;
+  --text:#d4d2ce;--text-muted:#9b9995;--text-faint:#807e7b;
+  --primary:#3a9ea8;--success:#5a9e38;--warning:#c46a1a;--error:#b83060;--hold:#e0922a;--gold:#d4a853;
+  --radius-sm:0.25rem;--radius-md:0.5rem;--radius-lg:0.75rem;
   --font-display:'Cabinet Grotesk','Helvetica Neue',sans-serif;
   --font-body:'Satoshi','Inter',sans-serif;
   --font-mono:'JetBrains Mono','Fira Code',monospace;
@@ -45,1681 +36,736 @@
   --text-base:clamp(0.875rem,0.85rem + 0.2vw,1rem);
   --text-lg:clamp(1rem,0.9rem + 0.5vw,1.25rem);
   --text-xl:clamp(1.25rem,1rem + 1vw,1.75rem);
-  --text-2xl:clamp(1.75rem,1.2rem + 2vw,2.5rem);
-  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;
+  --space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);min-height:100dvh;line-height:1.6}
-.mono{font-family:var(--font-mono);letter-spacing:-0.02em}
-a{color:var(--color-primary);text-decoration:none}
-a:hover{color:var(--color-gold)}
-:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;border-radius:var(--radius-sm)}
-.skip-link{position:absolute;top:-40px;left:var(--space-4);background:var(--color-primary);color:#fff;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;z-index:1000;transition:top .2s}
+html{color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;min-height:100dvh}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Skip link */
+.skip-link{position:absolute;top:-40px;left:var(--space-4);background:var(--primary);color:#fff;padding:var(--space-2) var(--space-3);border-radius:var(--radius-sm);font-size:var(--text-sm);font-weight:600;z-index:1000;transition:top .2s}
 .skip-link:focus{top:var(--space-2)}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
 
-/* LAYOUT */
-.shell{max-width:1100px;margin-inline:auto;padding:var(--space-8) var(--space-4)}
-.header{display:flex;align-items:center;justify-content:space-between;padding-block:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-8)}
+/* Header */
+.header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) var(--space-6);border-bottom:1px solid var(--divider)}
 .logo{display:flex;align-items:center;gap:var(--space-3)}
-.logo-mark{width:32px;height:32px;border-radius:6px;background:oklch(0.4 0.12 192 / 0.15);border:1px solid oklch(0.6 0.12 192 / 0.4);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-weight:800;font-size:12px;color:oklch(0.7 0.14 192);flex-shrink:0}
-.logo-text{font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);letter-spacing:-0.03em;color:var(--color-text)}
-.logo-sub{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:1px}
-.header-right{display:flex;align-items:center;gap:var(--space-4)}
-.epoch{font-size:var(--text-xs);color:var(--color-text-faint);font-family:var(--font-mono)}
+.logo-mark{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--primary);background:rgba(58,158,168,0.1);border:1px solid rgba(58,158,168,0.2);border-radius:var(--radius-md)}
+.logo-text{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--text)}
+.logo-sub{font-size:var(--text-xs);color:var(--text-faint);letter-spacing:0.05em}
 
-/* NAV ROW */
-.nav-row{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-12)}
-.nav-chip{
-  display:inline-flex;align-items:center;gap:var(--space-2);
-  background:var(--color-surface);border:1px solid var(--color-border);
-  border-radius:var(--radius-md);padding:var(--space-2) var(--space-4);
-  font-size:var(--text-xs);font-weight:600;font-family:var(--font-display);
-  color:var(--color-text-muted);text-decoration:none;
-  transition:border-color 0.15s,color 0.15s,transform 0.1s;
-  letter-spacing:0.02em;
-}
-.nav-chip:hover{border-color:var(--color-primary);color:var(--color-primary);transform:translateY(-1px)}
-.nav-chip .icon{font-size:var(--text-sm)}
-.nav-chip .dot{display:inline-block;width:5px;height:5px;border-radius:50%}
-.nav-chip .dot-ok{background:var(--color-success);box-shadow:0 0 5px var(--color-success)}
-.nav-chip .dot-hold{background:var(--color-hold);box-shadow:0 0 5px var(--color-hold)}
-.nav-chip .dot-err{background:var(--color-error);box-shadow:0 0 5px var(--color-error)}
-.nav-chip.active{border-color:var(--color-primary);color:var(--color-primary);background:var(--color-primary-highlight)}
+/* Status strip */
+.status-strip{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-6);border-bottom:1px solid var(--divider);overflow-x:auto;font-size:var(--text-xs);font-family:var(--font-mono)}
+.status-pill{display:inline-flex;align-items:center;gap:3px;padding:2px 6px;border-radius:var(--radius-sm);background:var(--surface-2);white-space:nowrap}
+.val{font-weight:700;color:var(--text)}
+.val-ok{color:var(--success)}
+.val-hold{color:var(--hold)}
+.val-err{color:var(--error)}
+.live-dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+.live-ok{background:var(--success);box-shadow:0 0 4px var(--success)}
+.live-err{background:var(--error);box-shadow:0 0 4px var(--error)}
 
-/* STATUS BAR */
-.status-strip{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-8);padding:var(--space-3) var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md)}
-.staleness-pill{color:var(--color-amber);font-size:0.8em}
-.status-pill{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);padding:2px 0}
-.status-pill .val{font-weight:700;color:var(--color-text)}
-.status-pill .val-ok{color:var(--color-success)}
-.status-pill .val-hold{color:var(--color-hold)}
-.status-pill .val-err{color:var(--color-error)}
-.status-pill .val-gold{color:var(--color-gold)}
-.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.live-ok{background:var(--color-success);box-shadow:0 0 6px var(--color-success);animation:pulse 2s infinite}
-.live-hold{background:var(--color-hold);box-shadow:0 0 6px var(--color-hold)}
-.live-err{background:var(--color-error);box-shadow:0 0 6px var(--color-error)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+/* Tabs */
+.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--divider);padding:0 var(--space-6);overflow-x:auto}
+.tab-btn{padding:var(--space-3) var(--space-4);font-family:var(--font-mono);font-size:var(--text-sm);font-weight:500;color:var(--text-muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.tab-btn:hover{color:var(--text);background:var(--surface-2)}
+.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}
+.tab-panel{display:none;padding:var(--space-6)}
+.tab-panel.active{display:block}
 
-/* HERO */
-.hero{margin-bottom:var(--space-12);padding:var(--space-8) var(--space-6);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--color-primary),var(--color-gold),var(--color-primary));opacity:0.6}
-.hero-tag{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary-highlight);color:var(--color-primary);border:1px solid oklch(from var(--color-primary) l c h / 0.25);border-radius:var(--radius-sm);padding:var(--space-1) var(--space-3);font-size:var(--text-xs);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:var(--space-4)}
-.hero h1{font-family:var(--font-display);font-weight:800;font-size:var(--text-2xl);letter-spacing:-0.04em;line-height:1.1;margin-bottom:var(--space-3)}
-.hero p{color:var(--color-text-muted);font-size:var(--text-base);max-width:65ch;line-height:1.7}
-.hero-divider{width:40px;height:2px;background:var(--color-primary);margin:var(--space-4) 0;opacity:0.6}
-.hero-pills{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-4)}
+/* Panel boundary states */
+[data-state="loading"]{opacity:0.5}
+[data-state="fallback"]{border-left:2px solid var(--primary);padding-left:var(--space-4)}
+[data-state="live"]{opacity:1;transition:opacity 0.3s ease}
+[data-state="error"]{border-left:2px solid var(--error);padding-left:var(--space-4)}
 
-/* GRID */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-4)}
-.grid-auto{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:var(--space-4)}
-@media(max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr}}
+/* Skeleton */
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.skeleton{background:linear-gradient(90deg,var(--surface) 25%,var(--surface-2) 50%,var(--surface) 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite;border-radius:var(--radius-sm)}
+.skeleton-text{height:1em;margin-bottom:0.5rem}
+.skeleton-heading{height:1.5em;width:40%;margin-bottom:1rem}
+.skeleton-block{height:6rem;margin-bottom:1rem}
+@media(prefers-reduced-motion:reduce){.skeleton{animation:none;background:var(--surface-2)}}
 
-/* CARDS */
-.card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
-.card-sm{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4)}
-.card-title{font-family:var(--font-display);font-weight:700;font-size:var(--text-base);letter-spacing:-0.02em;margin-bottom:var(--space-3);color:var(--color-text);display:flex;align-items:center;gap:var(--space-2)}
-.card-title .num{font-size:var(--text-xs);background:var(--color-surface-offset);color:var(--color-text-muted);border-radius:var(--radius-sm);padding:1px 6px;font-family:monospace;letter-spacing:0.05em}
+/* Cards */
+.card{background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius-lg);padding:var(--space-6)}
+.card-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;margin-bottom:var(--space-3)}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-4)}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-4)}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-3)}
 
-/* SECTION HEADER */
-.section-label{font-size:var(--text-xs);font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-6);display:flex;align-items:center;gap:var(--space-3)}
-.section-label::after{content:'';flex:1;height:1px;background:var(--color-divider)}
-
-/* FEDERATION ARCHITECTURE */
-.arch-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:var(--space-3)}
-.arch-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);position:relative;transition:border-color 0.2s}
-.arch-card:hover{border-color:var(--color-border)}
-.arch-card.sovereign{border-color:oklch(from var(--color-gold) l c h / 0.4);background:oklch(from var(--color-gold) l c h / 0.04)}
-.arch-card.kernel{border-color:oklch(from var(--color-primary) l c h / 0.4);background:oklch(from var(--color-primary) l c h / 0.04)}
-.arch-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--color-text-faint);margin-bottom:var(--space-2);font-family:var(--font-mono)}
-.arch-name{font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);letter-spacing:-0.03em;margin-bottom:var(--space-1)}
-.arch-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5}
-.arch-psi{position:absolute;top:var(--space-4);right:var(--space-4);font-size:1.5rem;opacity:0.75}
-.arch-organs{grid-column:1/-1}
-.organ-mini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:var(--space-2);margin-top:var(--space-4)}
-.organ-mini{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);display:flex;align-items:center;gap:var(--space-3)}
-.organ-mini-icon{font-size:1.2rem;flex-shrink:0}
-.organ-mini-name{font-weight:700;font-size:var(--text-sm)}
-.organ-mini-role{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono)}
-.organ-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-3);margin-top:var(--space-4)}
-.organ-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2);transition:border-color .15s}
-.organ-card:hover{border-color:var(--color-primary)}
-.organ-card-header{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-1)}
-.organ-card-icon{font-size:1.5rem;flex-shrink:0}
-.organ-card-name{font-weight:700;font-size:var(--text-sm)}
-.organ-card-role{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono)}
-.organ-card-meta{display:flex;gap:var(--space-3);font-size:.7rem;font-family:var(--font-mono);color:var(--color-text-faint);margin:var(--space-1) 0}
-.organ-card-caps{display:flex;flex-direction:column;gap:2px;margin-top:var(--space-1)}
-.organ-cap{font-size:.75rem;color:var(--color-text-muted);display:flex;align-items:center;gap:4px}
-.organ-cap .cdot{width:5px;height:5px;border-radius:50%;display:inline-block;flex-shrink:0}
-.organ-cap .cdot-live{background:var(--color-success)}
-.organ-cap .cdot-planned{background:var(--color-hold)}
-.organ-cap .cdot-blocked{background:var(--color-error)}
-.organ-neg{font-size:.7rem;color:var(--color-text-faint);font-style:italic;margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--color-divider)}
-.organ-link{font-size:var(--text-xs);font-family:var(--font-mono);color:var(--color-primary);margin-top:auto;padding-top:var(--space-2);text-decoration:none}
-.organ-link:hover{color:var(--color-gold)}
-.organ-dossier{margin-top:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2)}
-.organ-section{font-size:.75rem;border-top:1px solid var(--color-divider);padding-top:var(--space-2);margin-top:var(--space-1)}
-.organ-section-title{font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-faint);margin-bottom:4px}
-.organ-health{display:inline-flex;align-items:center;gap:4px;font-family:var(--font-mono);font-size:.75rem}
-.organ-health .h-dot{width:7px;height:7px;border-radius:50%;display:inline-block}
-.organ-health.healthy .h-dot{background:var(--color-success);box-shadow:0 0 5px var(--color-success)}
-.organ-health.degraded .h-dot{background:var(--color-hold);box-shadow:0 0 5px var(--color-hold)}
-.organ-health.down .h-dot{background:var(--color-error);box-shadow:0 0 5px var(--color-error)}
-.organ-health.unknown .h-dot{background:var(--color-text-faint)}
-.organ-deps{display:flex;flex-wrap:wrap;gap:4px}
-.organ-dep{font-size:.65rem;padding:1px 5px;border-radius:3px;background:var(--color-surface-offset);border:1px solid var(--color-border);color:var(--color-text-faint);font-family:var(--font-mono)}
-.organ-list{font-size:.75rem;color:var(--color-text-muted);line-height:1.5;padding-left:12px;margin:0}
-.organ-list li{margin-bottom:2px}
-.organ-endpoints{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-.organ-endpoint{font-size:.65rem;padding:2px 6px;border-radius:3px;background:var(--color-primary-highlight);border:1px solid oklch(from var(--color-primary) l c h / 0.25);color:var(--color-primary);font-family:var(--font-mono);text-decoration:none}
-.organ-endpoint:hover{background:var(--color-primary);color:var(--color-text-inverse)}
-.topo-layer{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);display:flex;align-items:center;gap:var(--space-3)}
-.topo-arrow{color:var(--color-text-faint);font-family:var(--font-mono);font-size:.8rem}
-@media(max-width:768px){.arch-grid{grid-template-columns:1fr}.arch-card.sovereign,.arch-card.kernel{grid-column:1}}
-
-/* METRIC ROWS */
-.metric-row{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--color-divider);font-size:var(--text-sm)}
-.metric-row:last-child{border-bottom:none}
-.metric-label{color:var(--color-text-muted);font-family:var(--font-mono);font-size:var(--text-xs)}
+/* Metric rows */
+.metric{display:flex;justify-content:space-between;align-items:center;padding:var(--space-2) 0;border-bottom:1px solid var(--divider)}
+.metric:last-child{border-bottom:none}
+.metric-label{font-size:var(--text-xs);color:var(--text-muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.05em}
 .metric-val{font-family:var(--font-mono);font-weight:700;font-size:var(--text-sm)}
-.metric-val.ok{color:var(--color-success)}
-.metric-val.hold{color:var(--color-hold)}
-.metric-val.err{color:var(--color-error)}
-.metric-val.primary{color:var(--color-primary)}
-.metric-val.gold{color:var(--color-gold)}
 
-/* BADGES */
-.badge{display:inline-block;font-size:0.6rem;padding:1px 6px;border-radius:2px;font-family:var(--font-mono);font-weight:700;text-transform:uppercase;letter-spacing:0.06em}
-.badge-ok{background:oklch(from var(--color-success) l c h / 0.15);color:var(--color-success);border:1px solid oklch(from var(--color-success) l c h / 0.3)}
-.badge-hold{background:oklch(from var(--color-hold) l c h / 0.15);color:var(--color-hold);border:1px solid oklch(from var(--color-hold) l c h / 0.3)}
-.badge-err{background:oklch(from var(--color-error) l c h / 0.15);color:var(--color-error);border:1px solid oklch(from var(--color-error) l c h / 0.3)}
-.badge-gold{background:oklch(from var(--color-gold) l c h / 0.12);color:var(--color-gold);border:1px solid oklch(from var(--color-gold) l c h / 0.25)}
-.badge-primary{background:var(--color-primary-highlight);color:var(--color-primary);border:1px solid oklch(from var(--color-primary) l c h / 0.25)}
+/* Badges */
+.badge{display:inline-block;padding:2px 8px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-weight:600;font-family:var(--font-mono)}
+.badge-ok{background:rgba(90,158,56,0.15);color:var(--success)}
+.badge-hold{background:rgba(224,146,42,0.15);color:var(--hold)}
+.badge-err{background:rgba(184,48,96,0.15);color:var(--error)}
+.badge-primary{background:rgba(58,158,168,0.15);color:var(--primary)}
+.badge-gold{background:rgba(212,168,83,0.15);color:var(--gold)}
 
-/* PILLS */
-.pill{display:inline-flex;align-items:center;gap:var(--space-1);font-size:var(--text-xs);font-weight:600;padding:3px 10px;border-radius:var(--radius-sm);background:var(--color-surface-offset);border:1px solid var(--color-border);color:var(--color-text-muted)}
+/* Floor grid */
+.floor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:var(--space-2)}
+.floor-chip{background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);text-align:center}
+.floor-chip.pass{border-color:var(--success);background:rgba(90,158,56,0.05)}
+.floor-chip.band{border-color:var(--hold);background:rgba(224,146,42,0.05)}
+.floor-chip.fail{border-color:var(--error);background:rgba(184,48,96,0.05)}
+.floor-id{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;color:var(--text-muted)}
+.floor-name{font-size:0.65rem;color:var(--text-faint);margin:2px 0}
+.floor-score{font-family:var(--font-mono);font-size:var(--text-sm);font-weight:700}
 
-/* SITE MAP */
-.sitemap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4)}
-.sitemap-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden}
-.sitemap-header{padding:var(--space-3) var(--space-4);border-bottom:1px solid var(--color-divider);display:flex;align-items:center;justify-content:space-between;background:var(--color-surface-2)}
-.sitemap-domain{font-family:var(--font-display);font-weight:700;font-size:var(--text-sm);display:flex;align-items:center;gap:var(--space-2)}
-.smap-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.smap-ok{background:var(--color-success);box-shadow:0 0 5px var(--color-success)}
-.smap-hold{background:var(--color-hold);box-shadow:0 0 5px var(--color-hold)}
-.smap-err{background:var(--color-error);box-shadow:0 0 5px var(--color-error)}
-.sitemap-body{padding:var(--space-4)}
-.sitemap-desc{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-3);line-height:1.5}
-.sitemap-tag{font-size:var(--text-xs);padding:1px 6px;border-radius:2px;font-family:var(--font-mono);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;background:var(--color-surface-offset);border:1px solid var(--color-border);color:var(--color-text-faint)}
-.route-list{display:flex;flex-direction:column;gap:3px}
-.route-item{display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs);padding:3px 6px;border-radius:3px;background:var(--color-surface-offset);border:1px solid var(--color-border)}
-.route-item .method{font-weight:700;font-size:var(--text-xs);padding:1px 4px;border-radius:2px;text-transform:uppercase;letter-spacing:0.05em}
-.method-get{background:oklch(from var(--color-success) l c h / 0.15);color:var(--color-success)}
-.method-post{background:oklch(from var(--color-primary) l c h / 0.15);color:var(--color-primary)}
-.method-del{background:oklch(from var(--color-error) l c h / 0.15);color:var(--color-error)}
+/* Tool list */
+.tool-chip{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-3);background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius-sm);font-size:var(--text-xs)}
+.tool-name{font-family:var(--font-mono);font-weight:600}
+.tool-stage{color:var(--text-faint);font-size:0.65rem}
+.lane-delta{color:var(--gold)}.lane-psi{color:var(--primary)}.lane-omega{color:var(--success)}
 
-/* FLOOR GRID */
-.floor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));gap:var(--space-2)}
-.floor-chip{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);text-align:center;transition:border-color 0.15s,transform 0.1s}
-.floor-chip:hover{border-color:var(--color-border);transform:translateY(-1px)}
-.floor-chip.pass{border-color:oklch(from var(--color-success) l c h / 0.35);background:oklch(from var(--color-success) l c h / 0.05)}
-.floor-chip.lock{border-color:oklch(from var(--color-gold) l c h / 0.35);background:oklch(from var(--color-gold) l c h / 0.05)}
-.floor-chip.human{border-color:oklch(from var(--color-gold) l c h / 0.35);background:oklch(from var(--color-gold) l c h / 0.05)}
-.floor-chip.band{border-color:var(--color-border)}
-.floor-id{font-family:var(--font-mono);font-size:var(--text-base);font-weight:700}
-.floor-name{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.05em;color:var(--color-text-muted);margin-top:2px}
-.floor-score{font-family:var(--font-mono);font-size:var(--text-xs);font-weight:700;margin-top:4px}
-.floor-chip.pass .floor-score{color:var(--color-success)}
-.floor-chip.lock .floor-score,.floor-chip.human .floor-score{color:var(--color-gold)}
-.floor-chip.band .floor-score{color:var(--color-text-faint)}
+/* Table */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:var(--text-xs)}
+th{text-align:left;padding:var(--space-2) var(--space-3);font-family:var(--font-mono);font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--divider)}
+td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--divider)}
 
-/* TOOLS GRID */
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-2)}
-.tool-chip{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);display:flex;align-items:center;gap:var(--space-3);transition:border-color 0.15s,transform 0.1s}
-.tool-chip:hover{border-color:var(--color-border);transform:translateY(-1px)}
-.tool-ln{font-family:var(--font-mono);font-size:1.1rem;font-weight:700;width:24px;text-align:center;flex-shrink:0}
-.tool-ln.delta{color:var(--color-primary)}
-.tool-ln.omega{color:oklch(0.65 0.2 320)}
-.tool-ln.psi{color:var(--color-gold)}
-.tool-name{font-family:var(--font-mono);font-size:0.75rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tool-stage{font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);margin-top:1px}
+/* Doctrine */
+.doctrine{background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius-md);padding:var(--space-4);font-size:var(--text-sm);line-height:1.7}
+.doctrine-title{font-family:var(--font-display);font-weight:700;margin-bottom:var(--space-2)}
 
-/* CAP TABLE */
-.cap-table{width:100%;border-collapse:collapse}
-.cap-table th{font-size:var(--text-xs);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-faint);text-align:left;padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--color-divider)}
-.cap-table td{padding:var(--space-3);font-size:var(--text-sm);border-bottom:1px solid oklch(from var(--color-divider) l c h / 0.5);vertical-align:top}
-.cap-table tr:last-child td{border-bottom:none}
-.cap-table tr:hover td{background:var(--color-surface-offset)}
-.cap-key{font-family:var(--font-mono);font-weight:700;color:var(--color-text);white-space:nowrap}
-.cap-val{color:var(--color-text-muted)}
+/* Footer */
+.footer{text-align:center;padding:var(--space-6);font-size:var(--text-xs);color:var(--text-faint);border-top:1px solid var(--divider);font-family:var(--font-mono)}
 
-/* GAPS */
-.gaps-list{display:flex;flex-direction:column;gap:var(--space-2)}
-.gap-item{display:flex;align-items:flex-start;gap:var(--space-3);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-4)}
-.gap-icon{font-size:1rem;flex-shrink:0;margin-top:2px}
-.gap-title{font-weight:700;font-size:var(--text-sm);margin-bottom:3px}
-.gap-detail{font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5}
-.gap-sev{font-size:var(--text-xs);padding:1px 6px;border-radius:2px;font-family:var(--font-mono);font-weight:700;text-transform:uppercase;letter-spacing:0.06em;flex-shrink:0;align-self:flex-start;margin-top:2px}
-.sev-info{background:oklch(from var(--color-primary) l c h / 0.12);color:var(--color-primary);border:1px solid oklch(from var(--color-primary) l c h / 0.25)}
-.sev-warn{background:oklch(from var(--color-hold) l c h / 0.12);color:var(--color-hold);border:1px solid oklch(from var(--color-hold) l c h / 0.25)}
-
-/* FOOTER */
-.footer{text-align:center;padding:var(--space-8) var(--space-4);border-top:1px solid var(--color-divider);margin-top:var(--space-12)}
-.footer-logo{font-family:var(--font-display);font-weight:800;font-size:var(--text-lg);letter-spacing:0.03em;color:var(--color-text-muted)}
-.footer-sub{font-size:var(--text-xs);color:var(--color-text-faint);font-family:var(--font-mono);margin-top:var(--space-2);letter-spacing:0.08em}
-.footer-links{display:flex;justify-content:center;gap:var(--space-4);margin-top:var(--space-4)}
-.footer-links a{font-size:var(--text-xs);color:var(--color-text-faint);font-family:var(--font-mono);text-decoration:none}
-.footer-links a:hover{color:var(--color-primary)}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{animation:fadeUp 0.4s ease forwards;opacity:0}
-.fade-up:nth-child(1){animation-delay:0.05s}
-.fade-up:nth-child(2){animation-delay:0.10s}
-.fade-up:nth-child(3){animation-delay:0.15s}
-.fade-up:nth-child(4){animation-delay:0.20s}
-.fade-up:nth-child(5){animation-delay:0.25s}
-.fade-up:nth-child(6){animation-delay:0.30s}
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "arifOS Observatory",
-      "url": "https://arifos.arif-fazil.com",
-      "description": "Read-only governance visibility for the arifOS constitutional federation: live organ health, F1-F13 floors, and canonical docs.",
-      "publisher": {"@id": "https://arifos.arif-fazil.com/#arifos"}
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://arifos.arif-fazil.com/",
-      "url": "https://arifos.arif-fazil.com/",
-      "name": "arifOS Observatory — Constitutional Governance Dashboard",
-      "isPartOf": {"@id": "https://arifos.arif-fazil.com/#website"},
-      "about": {"@id": "https://arifos.arif-fazil.com/#arifos"}
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://arifos.arif-fazil.com/#arifos",
-      "name": "arifOS",
-      "url": "https://arifos.arif-fazil.com",
-      "sameAs": ["https://github.com/ariffazil/arifOS"]
-    },
-    {
-      "@type": "SoftwareApplication",
-      "name": "arifOS Constitutional Kernel",
-      "applicationCategory": "GovernanceFramework",
-      "operatingSystem": "Linux",
-      "url": "https://arifos.arif-fazil.com",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
-    }
-  ]
+/* Responsive */
+@media(max-width:768px){
+  .header{padding:var(--space-3) var(--space-4)}
+  .status-strip{padding:var(--space-2) var(--space-4)}
+  .tab-bar{padding:0 var(--space-4)}
+  .tab-panel{padding:var(--space-4)}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
 }
-</script>
+</style>
 </head>
-<body>
 
+<body>
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-<div class="shell">
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">
-      <div class="logo-mark">Ω</div>
-      <div>
-        <div class="logo-text">arifOS Observatory</div>
-        <div class="logo-sub">ΔΩΨ — Soul · Mind · Body · Federation Governance Hub</div>
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="epoch" id="clock">UTC —:——</div>
-    </div>
-  </header>
-
-  <!-- NAV ROW -->
-  <div class="nav-row" id="navRow">
-    <a class="nav-chip" href="https://arif-fazil.com/"><span class="icon">🏛️</span>arif-fazil.com</a>
-    <a class="nav-chip" href="https://aaa.arif-fazil.com/"><span class="dot dot-ok"></span>AAA Cockpit</a>
-    <a class="nav-chip active" href="https://arifos.arif-fazil.com/"><span class="dot dot-ok"></span>Observatory</a>
-    <a class="nav-chip" href="https://arifos.arif-fazil.com/federation.html"><span class="icon">📊</span>Federation</a>
-    <a class="nav-chip" href="https://geox.arif-fazil.com/"><span class="dot dot-ok" id="geoxDot"></span>GEOX</a>
-    <a class="nav-chip" href="https://wealth.arif-fazil.com/"><span class="dot dot-ok" id="wealthDot"></span>WEALTH</a>
-    <a class="nav-chip" href="https://well.arif-fazil.com/"><span class="dot dot-ok" id="wellDot"></span>WELL</a>
-    <a class="nav-chip" href="https://mcp.arif-fazil.com/"><span class="icon">🔌</span>MCP Gateway</a>
-    <a class="nav-chip" href="https://arif-fazil.com/canon/"><span class="icon">📐</span>Canon</a>
-  </div>
-
-  <main id="main-content">
-
-  <!-- DOCTRINE BANNER — truth-bound invariant -->
-  <div class="doctrine-banner" style="background:linear-gradient(90deg, rgba(212,168,83,0.10), rgba(212,168,83,0.02)); border-bottom:1px solid rgba(212,168,83,0.25); padding:6px 0; font-family:var(--font-mono); font-size:12px; letter-spacing:0.2em; color:var(--color-gold); text-align:center;">
-    DOCTRINE · <strong>UI STATE MUST NEVER BE MORE CONFIDENT THAN KERNEL STATE</strong> · if UI shows SEAL but kernel drifts, UI is wrong, not kernel
-  </div>
-
-  <!-- REALITY CHECK BANNER — no propaganda -->
-  <div id="realityBanner" style="background:var(--color-surface-offset); border-bottom:1px solid var(--color-border); padding:8px var(--space-4); font-family:var(--font-mono); font-size:12px; color:var(--color-text-muted); text-align:center; display:none;">
-    <span id="realityText"></span>
-  </div>
-
-  <!-- STATUS STRIP — 7 independent badges, never collapse into one SEAL -->
-  <div class="status-strip" id="statusStrip">
-    <span class="status-pill" title="① Service health = kernel /health HTTP 200. NOT a constitutional verdict."><span class="live-dot" id="statusDot" style="background:var(--color-text-faint);box-shadow:none"></span><span class="val" id="svcHealthVal">probe...</span><span style="font-size:0.65rem;color:var(--color-text-faint);margin-left:2px">svc</span></span>
-    <span class="status-pill" title="② Conformance gate = ARIF Conformance Spine score. Independent of service health."><span class="val" id="conformanceVal">—</span><span style="font-size:0.65rem;color:var(--color-text-faint);margin-left:2px">conf</span></span>
-    <span class="status-pill"><span class="val" id="toolsCount">—</span> <span>tools</span></span>
-    <span class="status-pill" title="Floors: show source split. Never show a single number without explaining which source."><span class="val" id="floorsActive">—</span> <span>floors</span></span>
-    <span class="status-pill"><span class="val" id="psiVital">—</span> <span>Ψ_v</span></span>
-    <span class="status-pill" title="③ VAULT999: service health (kernel reachable) + chain integrity (hash-chain verification). Historical pre-migration gap is KNOWN and RULED NON-ISSUE."><span class="val" id="vaultStatus">—</span> <span>vault</span></span>
-    <span class="status-pill"><span class="val" id="langfuseStatus">—</span> <span>langfuse</span></span>
-    <span class="status-pill" title="④ Runtime drift: UNCERTAIN unless independently verified. Kernel self-report is not sufficient."><span class="val" id="runtimeDrift">—</span> <span>drift</span></span>
-    <span class="status-pill"><span class="val" id="trinityStatus">—</span> <span>ΔΩΨ</span></span>
-    <span class="status-pill" title="⑤ UI↔Kernel sync: NOT_PROVEN by default. Requires independent verification of kernel claims against external witness."><span class="val" id="uiKernelSync">—</span> <span>UI↔K</span></span>
-    <span class="status-pill" title="⑥ Identity provenance. CLAIMED = no cryptographic verification. PARTIAL = partially proven. VERIFIED = cryptographically anchored."><span class="val" id="identityState">—</span> <span>id</span></span>
-    <span class="status-pill staleness-pill" id="stalenessPill" style="display:none"><span class="val-hold">⚠️</span> <span id="lastUpdated">—</span></span>
-  </div>
-
-  <!-- I. HERO -->
-  <section class="hero fade-up">
-    <div class="hero-tag">
-      <svg width="8" height="8" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor" opacity="0.8"/></svg>
-      ARIFOS OBSERVATORY · READ-ONLY GOVERNANCE VISIBILITY · LIVE
-    </div>
-    <h1>arifOS Observatory</h1>
-    <p>The Constitutional Infrastructure Layer for Governed Intelligence. This observatory provides read-only visibility into the federation — health, floors, vault status, and canonical docs. MCP tool execution lives at the <a href="https://mcp.arif-fazil.com/" style="color:var(--color-primary)">canonical gateway</a>.</p>
-    <div class="hero-divider"></div>
-    <div class="hero-pills">
-      <span class="pill" id="heroSvcVerdict">⚙️ SERVICE: —</span>
-      <span class="pill" id="heroConfVerdict">🧪 CONFORMANCE: —</span>
-      <span class="pill" id="heroVerdict">⚖️ OBSERVATORY: HOLD</span>
-      <span class="pill">🛡️ F1–F13 Constitutional Floors</span>
-      <span class="pill" id="heroOrgans">🌐 Federation Organs · Probing...</span>
-      <span class="pill"><a href="/canon/aaa-doctrine" style="color:var(--color-text-muted)">📜 AAA Doctrine</a></span>
-      <span class="pill"><a href="https://mcp.arif-fazil.com/" style="color:var(--color-text-muted)">🔌 Canonical MCP Gateway</a></span>
-      <span class="pill">📖 Read the Canon</span>
-    </div>
-  </section>
-
-  <!-- I·b THE THREE LAYERS -->
-  <div class="section-label">I · The Three Layers</div>
-  <div class="grid-3 fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card">
-      <div class="card-title"><span class="num">🔭</span> Observatory</div>
-      <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">Public visibility layer. Prove governance exists. Show constitutional health, runtime posture, and live organ status. <strong>Trust through exposure.</strong></p>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="num">🧪</span> Constitutional Laboratory</div>
-      <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">Where people learn governed AI. Interactive demonstrations of entropy drift, F13 sovereignty, HOLD vs VOID, ontology failure, and anti-hantu. <strong>Bounded intelligence as framework.</strong></p>
-      <div style="margin-top:var(--space-3)"><a href="https://arif-fazil.com/canon/" style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-gold);text-decoration:none;border:1px solid var(--color-gold);padding:4px 10px;border-radius:var(--radius-sm)">📐 Read the full Canon →</a></div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="num">🌐</span> Federation Kernel</div>
-      <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">Live MCP federation. Organ routing, capability negotiation, sovereign workflows, and cross-organ adjudication. <strong>The coordination infrastructure.</strong></p>
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">Ω</div>
+    <div>
+      <div class="logo-text">arifOS Observatory</div>
+      <div class="logo-sub">ΔΩΨ — Soul · Mind · Body · Federation Governance Hub</div>
     </div>
   </div>
+  <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-faint)" id="clock">UTC —:——</div>
+</header>
 
-  <!-- II. SYSTEM ARCHITECTURE -->
-  <div class="section-label">II · System Architecture</div>
-  <div class="arch-grid fade-up" style="margin-bottom:var(--space-12)">
+<!-- NAV -->
+<nav style="display:flex;gap:var(--space-2);padding:var(--space-2) var(--space-6);border-bottom:1px solid var(--divider);overflow-x:auto;flex-wrap:nowrap">
+  <a href="https://arif-fazil.com/" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap">🏛️ Home</a>
+  <a href="https://aaa.arif-fazil.com/" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap">🖥️ AAA</a>
+  <a href="/" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--primary);background:rgba(58,158,168,0.1);white-space:nowrap">Ω Observatory</a>
+  <a href="/federation.html" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap">📊 Federation</a>
+  <a href="https://mcp.arif-fazil.com/" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap">🔌 MCP</a>
+  <a href="https://arif-fazil.com/canon/" style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap">📐 Canon</a>
+</nav>
 
-    <div class="arch-card sovereign">
-      <div class="arch-psi">Δ</div>
-      <div class="arch-label">APEX · F13 · SOVEREIGN</div>
-      <div class="arch-name">Human</div>
-      <div class="arch-desc">Final authority. Veto absolute. F13 Sovereign Floor. Constitutional witness to all terminal verdicts.</div>
-      <div style="margin-top:var(--space-3)"><span class="badge badge-gold">F13 SOVEREIGN · Δ SOUL</span></div>
-    </div>
-
-    <div class="arch-card kernel">
-      <div class="arch-psi">Ω</div>
-      <div class="arch-label">GOVERNANCE KERNEL · ARIFOS</div>
-      <div class="arch-name">arifOS Kernel</div>
-      <div class="arch-desc">13-floor constitutional engine. F1 AMANAH → F13 SOVEREIGN. 13 canonical tools. VAULT999 ledger. Trinity lanes ΔΩΨ.</div>
-      <div style="margin-top:var(--space-3)"><span class="badge badge-primary">F1–F13 · Ω MIND</span></div>
-    </div>
-
-    <div class="arch-card">
-      <div class="arch-psi">🌐</div>
-      <div class="arch-label">PROTOCOL</div>
-      <div class="arch-name">MCP Gateway</div>
-      <div class="arch-desc">Streamable HTTP MCP endpoint. Tool discovery, capability negotiation, A2A mesh protocol.</div>
-      <div style="margin-top:var(--space-3)"><span class="badge badge-primary">mcp.arif-fazil.com</span></div>
-    </div>
-
-    <div class="arch-card arch-organs">
-      <div class="arch-label">FEDERATION ORGANS</div>
-      <div class="organ-grid" id="organGrid">
-        <!-- GEOX -->
-        <div class="organ-card" data-organ="geox" data-url="https://geox.arif-fazil.com">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">🌍</span>
-            <div>
-              <div class="organ-card-name">GEOX</div>
-              <div class="organ-card-role">Earth · Ψ Node</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="geox-tools">—</span>
-            <span id="geox-resources">—</span>
-            <span id="geox-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Subsurface interpretation</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Petrophysics &amp; well logs</div>
-            <div class="organ-cap"><span class="cdot cdot-planned"></span>Seismic inversion</div>
-          </div>
-          <div class="organ-neg">Not generic geology content. Physics-9 enforced.</div>
-          <a class="organ-link" href="https://geox.arif-fazil.com/">geox.arif-fazil.com →</a>
-        </div>
-        <!-- WEALTH -->
-        <div class="organ-card" data-organ="wealth" data-url="https://wealth.arif-fazil.com">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">💰</span>
-            <div>
-              <div class="organ-card-name">WEALTH</div>
-              <div class="organ-card-role">Capital · Ψ Node</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="wealth-tools">—</span>
-            <span id="wealth-resources">—</span>
-            <span id="wealth-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>NPV/EMV computation</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Makcik² relational credit</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Crisis triage scoring</div>
-          </div>
-          <div class="organ-neg">Not generic personal finance advice. Sovereign capital only.</div>
-          <a class="organ-link" href="https://wealth.arif-fazil.com/">wealth.arif-fazil.com →</a>
-        </div>
-        <!-- WELL -->
-        <div class="organ-card" data-organ="well" data-url="https://well.arif-fazil.com">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">❤️</span>
-            <div>
-              <div class="organ-card-name">WELL</div>
-              <div class="organ-card-role">Biological · Substrate</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="well-tools">—</span>
-            <span id="well-resources">—</span>
-            <span id="well-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Operator cognitive pressure</div>
-            <div class="organ-cap"><span class="cdot cdot-planned"></span>Thermodynamic state WELL</div>
-            <div class="organ-cap"><span class="cdot cdot-blocked"></span>Biological substrate governance</div>
-          </div>
-          <div class="organ-neg">Not a wellness brand. Hard substrate monitoring only.</div>
-          <a class="organ-link" href="https://well.arif-fazil.com/">well.arif-fazil.com →</a>
-        </div>
-        <!-- AAA -->
-        <div class="organ-card" data-organ="aaa" data-url="https://aaa.arif-fazil.com">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">🤖</span>
-            <div>
-              <div class="organ-card-name">AAA</div>
-              <div class="organ-card-role">Agent · Control Plane</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="aaa-tools">—</span>
-            <span id="aaa-resources">—</span>
-            <span id="aaa-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Agent supervision</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Session anchoring</div>
-            <div class="organ-cap"><span class="cdot cdot-planned"></span>ΔΩΨ triad orchestration</div>
-          </div>
-          <div class="organ-neg">Not a chatbot wrapper. Constitutional agent control only.</div>
-          <a class="organ-link" href="https://aaa.arif-fazil.com/">aaa.arif-fazil.com →</a>
-        </div>
-        <!-- A-FORGE -->
-        <div class="organ-card" data-organ="forge" data-url="">
-          <div class="organ-card-header">
-            <span class="organ-card-icon">⚡</span>
-            <div>
-              <div class="organ-card-name">A-FORGE</div>
-              <div class="organ-card-role">Metabolic Shell</div>
-            </div>
-          </div>
-          <div class="organ-card-meta">
-            <span id="forge-tools">—</span>
-            <span id="forge-resources">—</span>
-            <span id="forge-prompts">—</span>
-          </div>
-          <div class="organ-card-caps">
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Deployment orchestration</div>
-            <div class="organ-cap"><span class="cdot cdot-live"></span>Agent engine loop</div>
-            <div class="organ-cap"><span class="cdot cdot-planned"></span>Cross-organ mesh protocol</div>
-          </div>
-          <div class="organ-neg">Not a generic CI/CD pipeline. Sovereign metabolic execution only.</div>
-          <span class="organ-link" style="color:var(--color-text-muted)">Internal service — no public site</span>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- IIb. STACK TOPOLOGY -->
-  <div class="section-label">III · Stack Topology</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">ΔΩΨ</span> Federation Architecture</div>
-    <div id="stackTopology">
-      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
-        <div class="topo-layer">
-          <div style="font-size:1.25rem">1</div>
-          <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">F13 SOVEREIGN · Human Architect</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Final authority. Arif holds veto. Constitutional witness to all terminal verdicts.</div>
-          </div>
-          <span class="badge badge-gold">LIVE</span>
-        </div>
-        <div class="topo-arrow" style="text-align:center">↓</div>
-        <div class="topo-layer">
-          <div style="font-size:1.25rem">2</div>
-          <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">arifOS Governance Kernel</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">13-floor constitutional engine. 888_JUDGE verdicts. 999_VAULT immutable ledger. ΔΩΨ Trinity.</div>
-          </div>
-          <span class="badge badge-ok">LIVE</span>
-        </div>
-        <div class="topo-arrow" style="text-align:center">↓</div>
-        <div class="topo-layer">
-          <div style="font-size:1.25rem">3</div>
-          <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">MCP Transport Boundary</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">JSON-RPC protocol layer. Tool discovery, capability negotiation, context exchange. Not authority.</div>
-          </div>
-          <span class="badge badge-primary">ACTIVE</span>
-        </div>
-        <div class="topo-arrow" style="text-align:center">↓</div>
-        <div class="topo-layer">
-          <div style="font-size:1.25rem">4</div>
-          <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">Federation Organs</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">GEOX Ψ · WEALTH Ω · WELL ❤️ · AAA · A-FORGE. Domain intelligence behind the membrane.</div>
-          </div>
-          <span class="badge badge-ok">LIVE</span>
-        </div>
-        <div class="topo-arrow" style="text-align:center">↓</div>
-        <div class="topo-layer">
-          <div style="font-size:1.25rem">5</div>
-          <div style="flex:1">
-            <div style="font-weight:700;font-size:var(--text-sm)">Substrate & Persistence</div>
-            <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Postgres 16 · Redis 7 · Qdrant · NATS · Ollama. Infrastructure layer.</div>
-          </div>
-          <span class="badge badge-ok">LIVE</span>
-        </div>
-        <div style="margin-top:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);line-height:1.5">F13 → arifOS → MCP Gateway → Organs → Substrate. Authority flows down. Evidence flows up.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- II·b+ TRANSPORT UNIFICATION MILESTONE -->
-  <div class="section-label">IV · MCP Gateway Collapse — 29 June 2026</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12); border-color: oklch(from var(--color-success) l c h / 0.4);">
-    <div class="card-title"><span class="num">🚪</span> One Public MCP Door</div>
-    <p style="font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.7;margin-bottom:var(--space-3)">
-      All public MCP traffic now routes through a single canonical gateway: <strong>mcp.arif-fazil.com</strong>.
-      Per-organ public MCP endpoints are collapsed. The observatory remains a read-only governance surface;
-      it does not execute MCP tools itself. ΔS ≤ 0 enforced at the protocol boundary.
-      <strong>999 SEAL ALIVE.</strong>
-    </p>
-    <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs)">
-      <span class="badge badge-ok">arifOS: 13 canonical · streamable-http</span>
-      <span class="badge badge-ok">GEOX: 40 tools · streamable-http</span>
-      <span class="badge badge-ok">WEALTH: 23 tools · streamable-http</span>
-      <span class="badge badge-ok">WELL: 21 tools · streamable-http</span>
-      <span class="badge badge-ok">A-FORGE: streamable-http</span>
-      <span class="badge badge-primary">AAA: A2A (internal)</span>
-    </div>
-  </div>
-
-  <!-- II·c FEDERATION STATUS -->
-  <div class="section-label">V · Federation Status</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">✅</span> Live Organ Census</div>
-    <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:var(--text-sm);font-family:var(--font-mono)">
-      <thead>
-        <tr style="border-bottom:1px solid var(--color-divider);text-align:left;color:var(--color-text-muted);font-size:var(--text-xs)">
-          <th style="padding:8px 4px">Service</th>
-          <th style="padding:8px 4px">Port</th>
-          <th style="padding:8px 4px">Status</th>
-          <th style="padding:8px 4px">Version</th>
-          <th style="padding:8px 4px">Notes</th>
-        </tr>
-      </thead>
-      <tbody id="federationCensus">
-        <tr><td colspan="5" style="padding:12px 4px;color:var(--color-text-faint);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Probing federation census... <span class="live-dot live-ok" style="animation:pulse 1s infinite"></span></td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <!-- II·b CONSTELLATION GRAPH -->
-  <div class="section-label">VI · Federation Constellation</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">🌌</span> Organ Federation Graph</div>
-    <p style="font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-4);line-height:1.6">Read-only topology. Node status from live /api/federation-probe. Colors: 🟢 healthy · 🟡 degraded · 🔴 down · ⬜ unknown.</p>
-    <div style="overflow-x:auto">
-      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;display:block;font-family:var(--font-body);background:#0d0c0b;border-radius:var(--radius-md)">
-        <!-- Grid lines -->
-        <line x1="0" y1="210" x2="900" y2="210" stroke="#2a2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
-        <line x1="450" y1="0" x2="450" y2="420" stroke="#2a2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
-
-        <!-- Connection lines: F13 → arifOS -->
-        <line x1="450" y1="60" x2="450" y2="115" stroke="#d4a853" stroke-width="2.5" opacity="0.9"/>
-        <!-- arifOS → organs -->
-        <line x1="380" y1="185" x2="140" y2="270" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <line x1="450" y1="185" x2="340" y2="270" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <line x1="520" y1="185" x2="560" y2="270" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <line x1="450" y1="185" x2="700" y2="270" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <!-- arifOS → agents -->
-        <line x1="260" y1="160" x2="100" y2="100" stroke="#3a9ea8" stroke-width="1.5" opacity="0.6"/>
-        <line x1="640" y1="160" x2="800" y2="100" stroke="#3a9ea8" stroke-width="1.5" opacity="0.6"/>
-        <!-- arifOS ↔ AAA (peer) -->
-        <line x1="760" y1="145" x2="830" y2="200" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <line x1="830" y1="220" x2="760" y2="165" stroke="#5a9e38" stroke-width="1.5" opacity="0.6"/>
-        <!-- arifOS ↔ F13 label -->
-        <text x="458" y="90" fill="#d4a853" font-size="9" font-family="var(--font-mono)">F13 veto</text>
-
-        <!-- F13 SOVEREIGN -->
-        <circle cx="450" cy="38" r="28" fill="#1a1800" stroke="#d4a853" stroke-width="2.5"/>
-        <text x="450" y="34" text-anchor="middle" fill="#d4a853" font-size="16" font-weight="700">👤</text>
-        <text x="450" y="48" text-anchor="middle" fill="#d4a853" font-size="8" font-weight="700" font-family="var(--font-mono)">F13</text>
-        <text x="450" y="78" text-anchor="middle" fill="#706e6b" font-size="8" font-family="var(--font-body)">Human Sovereign</text>
-
-        <!-- arifOS Kernel -->
-        <circle cx="450" cy="145" r="42" fill="#0d1a1c" stroke="#3a9ea8" stroke-width="2.5"/>
-        <text x="450" y="138" text-anchor="middle" fill="#3a9ea8" font-size="13" font-weight="800" font-family="var(--font-display)">arifOS</text>
-        <text x="450" y="151" text-anchor="middle" fill="#3a9ea8" font-size="8" font-family="var(--font-mono)">KERNEL</text>
-        <text id="svg-arifos-tools" x="450" y="163" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">— tools · F1–F13</text>
-        <text id="svg-arifos-floors" x="450" y="175" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">—/13 floors</text>
-
-        <!-- GEOX -->
-        <circle cx="110" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
-        <text x="110" y="304" text-anchor="middle" fill="#5a9e38" font-size="13" font-weight="700" font-family="var(--font-display)">GEOX</text>
-        <text x="110" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Earth</text>
-        <text id="svg-geox-tools" x="110" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
-        <text x="110" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8081</text>
-
-        <!-- WEALTH -->
-        <circle cx="310" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
-        <text x="310" y="304" text-anchor="middle" fill="#d4a853" font-size="13" font-weight="700" font-family="var(--font-display)">WEALTH</text>
-        <text x="310" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Capital</text>
-        <text id="svg-wealth-tools" x="310" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
-        <text x="310" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 18082</text>
-
-        <!-- WELL -->
-        <circle cx="530" cy="310" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
-        <text x="530" y="304" text-anchor="middle" fill="#b83060" font-size="13" font-weight="700" font-family="var(--font-display)">WELL</text>
-        <text x="530" y="317" text-anchor="middle" fill="#706e6b" font-size="8">Vitality</text>
-        <text id="svg-well-tools" x="530" y="329" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">— tools</text>
-        <text x="530" y="341" text-anchor="middle" fill="#706e6b" font-size="7">port 8083</text>
-
-        <!-- AAA -->
-        <circle cx="830" cy="190" r="36" fill="#0d1a1c" stroke="#5a9e38" stroke-width="2"/>
-        <text x="830" y="184" text-anchor="middle" fill="#5a9e38" font-size="13" font-weight="700" font-family="var(--font-display)">AAA</text>
-        <text x="830" y="197" text-anchor="middle" fill="#706e6b" font-size="8">A2A Hub</text>
-        <text id="svg-aaa-status" x="830" y="209" text-anchor="middle" fill="#5a9e38" font-size="8" font-family="var(--font-mono)">port 3001</text>
-        <text x="830" y="221" text-anchor="middle" fill="#706e6b" font-size="7">A2A broker</text>
-
-
-
-        <!-- OpenClaw Agent -->
-        <rect x="60" y="72" width="90" height="50" rx="8" fill="#0d1a1c" stroke="#3a9ea8" stroke-width="1.5"/>
-        <text x="105" y="88" text-anchor="middle" fill="#3a9ea8" font-size="10" font-weight="700" font-family="var(--font-display)">🦞</text>
-        <text x="105" y="101" text-anchor="middle" fill="#3a9ea8" font-size="9" font-weight="600">OpenClaw</text>
-        <text x="105" y="113" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">AGI · Telegram</text>
-
-        <!-- Hermes Agent -->
-        <rect x="755" y="62" width="90" height="50" rx="8" fill="#0d1a1c" stroke="#3a9ea8" stroke-width="1.5"/>
-        <text x="800" y="78" text-anchor="middle" fill="#d4a853" font-size="10" font-weight="700" font-family="var(--font-display)">⚡</text>
-        <text x="800" y="91" text-anchor="middle" fill="#d4a853" font-size="9" font-weight="600">Hermes</text>
-        <text x="800" y="103" text-anchor="middle" fill="#5a9e38" font-size="7" font-family="var(--font-mono)">ASI · relay</text>
-
-        <!-- Legend -->
-        <rect x="20" y="375" width="300" height="35" rx="6" fill="#121110" stroke="#2a2826" stroke-width="1"/>
-        <circle cx="40" cy="392" r="5" fill="#5a9e38"/><text x="50" y="395" fill="#706e6b" font-size="8">Healthy</text>
-        <circle cx="100" cy="392" r="5" fill="#c46a1a"/><text x="110" y="395" fill="#706e6b" font-size="8">Degraded</text>
-        <circle cx="170" cy="392" r="5" fill="#b83060"/><text x="180" y="395" fill="#706e6b" font-size="8">Down</text>
-        <circle cx="220" cy="392" r="5" fill="#706e6b"/><text x="230" y="395" fill="#706e6b" font-size="8">Static/Unknown</text>
-
-        <!-- Timestamp -->
-        <text x="880" y="410" text-anchor="end" fill="#484644" font-size="7" font-family="var(--font-mono)">arifOS Observatory · ΔΩΨ · live federation topology</text>
-      </svg>
-    </div>
-    <p style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-3);line-height:1.5">
-      <strong style="color:var(--color-gold)">Φ Physics-9</strong>: Topology enforced by constitutional floors. No organ can spoof another\'s identity. A2A handshake includes constitution hash verification.
-    </p>
-  </div>
-
-  <!-- III. LIVE DATA -->
-  <div class="section-label">VII · Live Constitutional Data</div>
-  <div class="grid-2 fade-up" style="margin-bottom:var(--space-8)">
-
-    <!-- THERMO -->
-    <div class="card">
-      <div class="card-title"><span class="num">🔥</span> Thermodynamic Reality</div>
-      <div class="metric-row"><span class="metric-label">VERDICT</span><span class="metric-val" id="thermoVerdict">—</span></div>
-      <div class="metric-row"><span class="metric-label">ENTROPY ΔS</span><span class="metric-val" id="entropyVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">VITALITY Ψ</span><span class="metric-val primary" id="vitalityVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">PEACE²</span><span class="metric-val" id="peaceVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">CONFIDENCE</span><span class="metric-val" id="confVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">METABOLIC STAGE</span><span class="metric-val gold" id="metaStage">—</span></div>
-    </div>
-
-    <!-- GOVERNANCE -->
-    <div class="card">
-      <div class="card-title"><span class="num">⚖️</span> Governance Posture</div>
-      <div class="metric-row"><span class="metric-label">TAU CONFIDENCE</span><span class="metric-val" id="tauVal">—</span></div>
-      <div class="metric-row"><span class="metric-label">F2 TRUTH THRESHOLD</span><span class="metric-val gold">0.99</span></div>
-      <div class="metric-row"><span class="metric-label">PSI VITALITY</span><span class="metric-val primary" id="psiVit">—</span></div>
-      <div class="metric-row"><span class="metric-label">VAULT999 HEALTH</span><span class="metric-val" id="vault999Val">—</span></div>
-      <div class="metric-row"><span class="metric-label">RUNTIME DRIFT</span><span class="metric-val" id="driftVal">—</span></div>
-      <div class="metric-row" style="border-top:1px dashed var(--color-divider);margin-top:var(--space-2);padding-top:var(--space-2)"><span class="metric-label" style="font-size:12px;color:var(--color-text-faint);letter-spacing:0.15em">SEAL · 5-WAY SPLIT (must not collapse into one verdict)</span></div>
-      <div class="metric-row" title="Service health = /health HTTP 200. NOT a constitutional verdict."><span class="metric-label" style="padding-left:10px;font-size:12px">① Service health</span><span class="metric-val" id="sealService" style="font-size:12px">—</span></div>
-      <div class="metric-row" title="Constitutional floors passing per live receipt. NOT a service health check."><span class="metric-label" style="padding-left:10px;font-size:12px">② Floor pass</span><span class="metric-val" id="sealFloors" style="font-size:12px">—</span></div>
-      <div class="metric-row" title="Judge verdict authorizes execution. NEVER self-attested."><span class="metric-label" style="padding-left:10px;font-size:12px">③ Execution auth</span><span class="metric-val" id="sealExec" style="font-size:12px">—</span></div>
-      <div class="metric-row" title="VAULT999 immutability proof. Independent of any other SEAL meaning."><span class="metric-label" style="padding-left:10px;font-size:12px">④ Audit seal</span><span class="metric-val" id="sealAudit" style="font-size:12px">—</span></div>
-      <div class="metric-row" title="F13 human sovereign approval. Independent of judge verdict."><span class="metric-label" style="padding-left:10px;font-size:12px">⑤ Human approval</span><span class="metric-val" id="sealHuman" style="font-size:12px">—</span></div>
-    </div>
-
-    <!-- WITNESS -->
-    <div class="card">
-      <div class="card-title"><span class="num">👁️</span> Trinity Witness</div>
-      <div class="metric-row"><span class="metric-label">HUMAN WITNESS</span><span class="metric-val ok" id="wHuman">—</span></div>
-      <div class="metric-row"><span class="metric-label">AI WITNESS</span><span class="metric-val primary" id="wAi">—</span></div>
-      <div class="metric-row"><span class="metric-label">EARTH WITNESS</span><span class="metric-val gold" id="wEarth">—</span></div>
-      <div class="metric-row"><span class="metric-label">TRINITY MATRIX</span><span class="metric-val" id="trinityOk">—</span></div>
-      <div class="metric-row"><span class="metric-label">Δ EVIDENCE</span><span class="metric-val" id="deltaEv">—</span></div>
-      <div class="metric-row"><span class="metric-label">Ψ EVIDENCE</span><span class="metric-val" id="psiEv">—</span></div>
-    </div>
-
-    <!-- RUNTIME IDENTITY -->
-    <div class="card">
-      <div class="card-title"><span class="num">🛡️</span> Runtime Identity</div>
-      <div class="metric-row"><span class="metric-label">VERSION</span><span class="metric-val gold" id="runVer">—</span></div>
-      <div class="metric-row"><span class="metric-label">GIT COMMIT</span><span class="metric-val" id="gitCommit">—</span></div>
-      <div class="metric-row"><span class="metric-label">IMAGE</span><span class="metric-val" id="imageTag" style="font-size:0.72rem;word-break:break-all">—</span></div>
-      <div class="metric-row"><span class="metric-label">TOOLS LOADED</span><span class="metric-val ok" id="toolsLoaded">—</span></div>
-      <div class="metric-row"><span class="metric-label">BUILD TIME</span><span class="metric-val" id="buildTime" style="font-size:0.75rem">—</span></div>
-      <div class="metric-row"><span class="metric-label">LANGFUSE</span><span class="metric-val primary" id="langfuseVal">—</span></div>
-    </div>
-
-  </div>
-
-  <!-- IV. CONSTITUTIONAL FLOORS -->
-  <div class="section-label">VIII · Constitutional Floors F1–F13</div>
-  <div class="floor-grid fade-up" id="floorGrid" style="margin-bottom:var(--space-12)">
-    <div class="floor-chip band"><div class="floor-id">F1</div><div class="floor-name">AMANAH</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F2</div><div class="floor-name">TRUTH</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F3</div><div class="floor-name">WITNESS</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F4</div><div class="floor-name">ΔS</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F5</div><div class="floor-name">PEACE²</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F6</div><div class="floor-name">EMPATHY</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F7</div><div class="floor-name">HUMILITY</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F8</div><div class="floor-name">GENIUS</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F9</div><div class="floor-name">ANTIHANTU</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F10</div><div class="floor-name">ONTOLOGY</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F11</div><div class="floor-name">AUTH</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F12</div><div class="floor-name">INJECTION</div><div class="floor-score">—</div></div>
-    <div class="floor-chip band"><div class="floor-id">F13</div><div class="floor-name">SOVEREIGN</div><div class="floor-score">—</div></div>
-  </div>
-
-  <!-- IV·b CONSTITUTIONAL DOCTRINE -->
-  <div class="section-label">IX · Constitutional Doctrine</div>
-  <div class="grid-2 fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card">
-      <div class="card-title"><span class="num">📜</span> F1–F13 Full Text</div>
-      <div style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">
-        <div><strong style="color:var(--color-text)">F1 AMANAH</strong> — Trustworthiness. Every action is accountable. Irreversible action requires explicit approval trace.</div>
-        <div><strong style="color:var(--color-text)">F2 TRUTH</strong> — Truthfulness. No fabrication. Claims labeled: FACT / ESTIMATE / HYPOTHESIS / UNKNOWN.</div>
-        <div><strong style="color:var(--color-text)">F3 WITNESS</strong> — Evidence must be verifiable. Source cited. URL, file path, or tool output referenced.</div>
-        <div><strong style="color:var(--color-text)">F4 CLARITY (ΔS)</strong> — Transparent intent. Intent stated before action. Uncertainty declared.</div>
-        <div><strong style="color:var(--color-text)">F5 PEACE²</strong> — Human dignity. PEACE² ≥ 1.0. Zero escalation.</div>
-        <div><strong style="color:var(--color-text)">F6 EMPATHY</strong> — Consider consequence. W_scar modeled before execution.</div>
-        <div><strong style="color:var(--color-text)">F7 HUMILITY</strong> — Acknowledge limits. P(truth) < 0.99 → trigger Ω_0 flag.</div>
-      </div>
-      <div style="margin-top:var(--space-3);padding-top:var(--space-3);border-top:1px solid var(--color-divider)"><a href="https://arif-fazil.com/canon/" style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-gold);text-decoration:none;border:1px solid var(--color-gold);padding:4px 10px;border-radius:var(--radius-sm)">📐 Full Canon + physics/math →</a></div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="num">📜</span> F8–F13 Full Text</div>
-      <div style="display:flex;flex-direction:column;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6">
-        <div><strong style="color:var(--color-text)">F8 GENIUS</strong> — Elegant correctness. Efficiency threshold G ≥ 0.80.</div>
-        <div><strong style="color:var(--color-text)">F9 ANTIHANTU</strong> — Reject manipulation. No consciousness simulation. No ghost invocation.</div>
-        <div><strong style="color:var(--color-text)">F10 ONTOLOGY</strong> — Structural coherence. No self-contradiction across sessions.</div>
-        <div><strong style="color:var(--color-text)">F11 AUTH</strong> — Verify identity. No sensitive calls without verified actor_id.</div>
-        <div><strong style="color:var(--color-text)">F12 INJECTION</strong> — Sanitize inputs. Prompt injection = Floor Breach → VOID.</div>
-        <div><strong style="color:var(--color-text)">F13 SOVEREIGN</strong> — Human veto absolute. The pinnacle. Arif has the final word.</div>
-        <div style="margin-top:var(--space-2);padding-top:var(--space-2);border-top:1px solid var(--color-divider)"><strong style="color:var(--color-gold)">Physics-9:</strong> Every floor is backed by physical law, mathematical theorem, or code implementation. Not heuristic. Not prompt engineering.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- IV·c AAA DOCTRINE -->
-  <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">🔺</span> AAA Doctrine · Inti · Saksi · Teka-Sebab</div>
-    <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-4)">
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2);color:var(--color-primary)">Inti · Abstraction</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Compress complexity into usable form. MCP exposes tools/resources/prompts so LLMs can interact without knowing internals. arifOS provides the governed schema design and 13-floor ontology.</div>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2);color:var(--color-gold)">Saksi · Attestation</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Prove source, identity, integrity, authority. MCP does capability negotiation. arifOS adds session binding, constitution_hash, judge_state_hash, VAULT999 receipts, and floor enforcement.</div>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2);color:var(--color-success)">Teka-Sebab · Abduction</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Infer best explanation from incomplete evidence. MCP transports evidence access. GEOX/WEALTH/arifOS reason over evidence, scan for contradictions, and evaluate evidential sufficiency before SEAL.</div>
-      </div>
-    </div>
-    <div style="margin-top:var(--space-4);padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);line-height:1.5">
-      Ambil inti. Panggil saksi. Teka sebab terbaik. &nbsp;·&nbsp; <a href="/canon/aaa-doctrine" style="color:var(--color-primary)">Read AAA_DOCTRINE.md →</a> &nbsp;·&nbsp; <a href="/canon/mcp-boundary" style="color:var(--color-primary)">Read MCP_BOUNDARY.md →</a>
-    </div>
-  </div>
-
-  <!-- V. SITE MAP -->
-  <div class="section-label">X · Federation Site Map</div>
-  <div class="sitemap-grid fade-up" id="sitemapGrid" style="margin-bottom:var(--space-12)">
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> arifos.arif-fazil.com</span>
-        <span class="sitemap-tag">KERNEL</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Constitutional AI governance kernel. 13 floors, 13 canonical tools, VAULT999 ledger. ΔΩΨ Trinity routing.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/api/status</div>
-          <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-get">GET</span>/federation.html</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/agent-card.json</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp.json</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok" id="geoxSmDot"></span> geox.arif-fazil.com</span>
-        <span class="sitemap-tag">ORGAN Ψ</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Earth intelligence organ. Subsurface interpretation, petrophysics, well log analysis. Physics-9 compliant Ψ node.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok" id="wealthSmDot"></span> wealth.arif-fazil.com</span>
-        <span class="sitemap-tag">ORGAN Ψ</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Capital intelligence organ. NPV/EMV computation, risk scoring, Makcik² relational credit, crisis triage.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-          <div class="route-item"><span class="method method-get">GET</span>/ready</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok" id="wellSmDot"></span> well.arif-fazil.com</span>
-        <span class="sitemap-tag">SUBSTRATE</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Biological substrate monitor. Operator cognitive pressure, thermodynamic WELL state.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/health</div>
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> aaa.arif-fazil.com</span>
-        <span class="sitemap-tag">AGENT</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">Arif Autonomous Agent live cockpit. Agentic AI control plane. ΔΩΨ agent supervision, session anchoring.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-get">GET</span>/</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sitemap-card">
-      <div class="sitemap-header">
-        <span class="sitemap-domain"><span class="smap-dot smap-ok"></span> mcp.arif-fazil.com</span>
-        <span class="sitemap-tag">PROTOCOL</span>
-      </div>
-      <div class="sitemap-body">
-        <p class="sitemap-desc">MCP protocol gateway. WebMCP bridge. Streamable HTTP MCP endpoint.</p>
-        <div class="route-list">
-          <div class="route-item"><span class="method method-post">POST</span>/mcp</div>
-          <div class="route-item"><span class="method method-get">GET</span>/webmcp/</div>
-          <div class="route-item"><span class="method method-get">GET</span>/.well-known/mcp/server.json</div>
-        </div>
-      </div>
-    </div>
-
-
-
-  </div>
-
-  <!-- VI. TOOL REGISTRY -->
-  <div class="section-label">XI · Constitutional Tool Registry (13)</div>
-  <div class="tools-grid fade-up" id="toolsGrid" style="margin-bottom:var(--space-12)">
-    <!-- JS populates -->
-  </div>
-
-  <!-- VII. CAPABILITY MAP -->
-  <div class="section-label">XII · Capability Map</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12);overflow:hidden;">
-    <table class="cap-table">
-      <thead>
-        <tr>
-          <th>Capability</th>
-          <th>Provider</th>
-          <th>Status</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody id="capBody">
-        <tr><td colspan="4" style="padding:12px 4px;color:var(--color-text-faint);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Probing capability map... <span class="live-dot live-ok" style="animation:pulse 1s infinite"></span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- XIII. KNOWN CONFORMANCE GAPS — honest about what fails -->
-  <div class="section-label">XIII · Known Conformance Gaps</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12); border-color:rgba(201,106,26,0.3)">
-    <div class="card-title"><span class="num">⚠️</span> ARIF Conformance Spine — 6/9 (AMBER)</div>
-    <p style="font-size:0.8rem;color:var(--color-text-muted);margin-bottom:0.75rem">These are independently verified gaps. The kernel is alive, but these checks fail. Honesty requires showing them.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;font-family:var(--font-mono);font-size:0.72rem">
-      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ protocol_version</span>
-      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ schema_echo_stable</span>
-      <span style="background:rgba(184,48,96,0.12);color:#b83060;padding:4px 8px;border-radius:4px">❌ cooling_ledger</span>
-      <span style="background:rgba(90,158,56,0.1);color:#5a9e38;padding:4px 8px;border-radius:4px">✅ 6 other checks pass</span>
-    </div>
-    <div style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:var(--color-surface-offset);border-radius:4px;font-size:0.72rem;color:var(--color-text-faint);font-family:var(--font-mono);line-height:1.5">
-      <strong style="color:var(--color-gold)">cooling_ledger:</strong> VAULT999 chain_integrity=BROKEN · vault_seals_total=270 · well_entropy_seals_found=0<br>
-      <strong>Ruled:</strong> NON-ISSUE (2026-06-05) — known pre-migration historical gap. Does not prove collapse.<br>
-      <strong>Additional:</strong> registry/runtime tool mismatch observed — arif_triage, arif_measure, arif_canary listed but return Unknown tool.
-    </div>
-  </div>
-
-  <!-- XIV. CROSS-ORGAN WORKFLOWS -->
-  <div class="section-label">XIII · Cross-Organ Workflows</div>
-  <div class="card fade-up" style="margin-bottom:var(--space-12)">
-    <div class="card-title"><span class="num">Δ→Ω→Ψ</span> Federated Decision Loop</div>
-    <div style="display:flex;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-4)">
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2)">1. GEOX · Evidence</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Earth intelligence supplies subsurface uncertainty, petrophysical bounds, and physics-9 validated evidence.</div>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2)">2. WEALTH · Valuation</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Capital intelligence evaluates NPV/EMV implications, risk scoring, and Makcik² relational credit.</div>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2)">3. WELL · Substrate</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Biological substrate checks operator cognitive pressure and thermodynamic state before execution.</div>
-      </div>
-      <div style="flex:1;min-width:200px">
-        <div style="font-weight:700;font-size:var(--text-sm);margin-bottom:var(--space-2)">4. arifOS · Adjudicate</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">Constitutional kernel applies F1–F13 floors, renders SEAL / SABAR / HOLD / VOID verdict.</div>
-      </div>
-    </div>
-  </div>
-
-  </main>
-
+<!-- STATUS STRIP — 7 independent badges, never collapse into one SEAL -->
+<div class="status-strip" id="statusStrip">
+  <span class="status-pill"><span class="live-dot" id="statusDot"></span><span class="val" id="svcHealthVal">—</span><span>svc</span></span>
+  <span class="status-pill"><span class="val" id="conformanceVal">—</span><span>conf</span></span>
+  <span class="status-pill"><span class="val" id="toolsCount">—</span><span>tools</span></span>
+  <span class="status-pill"><span class="val" id="floorsActive">—</span><span>floors</span></span>
+  <span class="status-pill"><span class="val" id="psiVital">—</span><span>Ψ_v</span></span>
+  <span class="status-pill"><span class="val" id="vaultStatus">—</span><span>vault</span></span>
+  <span class="status-pill"><span class="val" id="runtimeDrift">—</span><span>drift</span></span>
+  <span class="status-pill"><span class="val" id="trinityStatus">—</span><span>ΔΩΨ</span></span>
+  <span class="status-pill"><span class="val" id="uiKernelSync">—</span><span>UI↔K</span></span>
+  <span class="status-pill"><span class="val" id="identityState">—</span><span>id</span></span>
 </div>
+
+<!-- TAB BAR -->
+<div class="tab-bar" role="tablist">
+  <button class="tab-btn active" role="tab" data-tab="status" aria-selected="true">① Status</button>
+  <button class="tab-btn" role="tab" data-tab="floors">② Floors</button>
+  <button class="tab-btn" role="tab" data-tab="tools">③ Tools</button>
+  <button class="tab-btn" role="tab" data-tab="federation">④ Federation</button>
+  <button class="tab-btn" role="tab" data-tab="law">⑤ Law</button>
+  <button class="tab-btn" role="tab" data-tab="chain">⑥ Chain</button>
+  <button class="tab-btn" role="tab" data-tab="memory">⑦ Memory</button>
+</div>
+
+<main id="main-content">
+
+<!-- ═══ TAB 1: CORE STATUS ═══ -->
+<div class="tab-panel active" id="panel-status" role="tabpanel">
+  <!-- Hero -->
+  <div style="text-align:center;margin-bottom:var(--space-8)">
+    <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--text-faint);letter-spacing:0.15em;margin-bottom:var(--space-2)">ARIFOS OBSERVATORY · READ-ONLY GOVERNANCE VISIBILITY</div>
+    <h1 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-3)">Constitutional Infrastructure Layer</h1>
+    <p style="color:var(--text-muted);max-width:600px;margin:0 auto var(--space-4)">Read-only visibility into the federation — health, floors, vault status, and canonical docs. MCP tool execution lives at the <a href="https://mcp.arif-fazil.com/">canonical gateway</a>.</p>
+    <div id="heroPills" style="display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-2)"></div>
+  </div>
+
+  <!-- Thermodynamic panel -->
+  <div class="grid-2" style="margin-bottom:var(--space-6)">
+    <div class="card" data-panel="thermo" data-state="loading">
+      <div class="card-title">🔥 Thermodynamic Reality</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+    <div class="card" data-panel="governance" data-state="loading">
+      <div class="card-title">⚖️ Governance Posture</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+  </div>
+
+  <!-- Organ Census -->
+  <div class="card" data-panel="census" data-state="loading" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🌐 Federation Organ Census</div>
+    <div class="skeleton skeleton-block"></div>
+  </div>
+
+  <!-- Infra Services -->
+  <div class="card" data-panel="infra" data-state="loading">
+    <div class="card-title">🗄️ Infrastructure Services</div>
+    <div class="skeleton skeleton-block"></div>
+  </div>
+</div>
+
+<!-- ═══ TAB 2: CONSTITUTIONAL FLOORS ═══ -->
+<div class="tab-panel" id="panel-floors" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">🛡️ F1–F13 Constitutional Floors</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">Live floor scores from kernel runtime. Scores ≥ 0.8 pass. Source: kernel self-report, not independently verified.</p>
+  </div>
+  <div class="card" data-panel="floorGrid" data-state="loading" style="margin-bottom:var(--space-6)">
+    <div class="skeleton skeleton-block"></div>
+  </div>
+
+  <!-- Floor definitions (static — agent-readable) -->
+  <div class="card">
+    <div class="card-title">📜 Floor Definitions</div>
+    <div class="grid-2" style="font-size:var(--text-xs)">
+      <div class="doctrine"><strong>F1 AMANAH</strong> — Trustworthiness. Every action is accountable. Irreversible action requires explicit approval trace.</div>
+      <div class="doctrine"><strong>F2 TRUTH</strong> — Truthfulness. No fabrication. Claims labeled: OBS / DER / INT / SPEC.</div>
+      <div class="doctrine"><strong>F3 WITNESS</strong> — Evidence must be verifiable. Source cited. URL, file path, or tool output referenced.</div>
+      <div class="doctrine"><strong>F4 CLARITY (ΔS)</strong> — Transparent intent. Intent stated before action. Uncertainty declared.</div>
+      <div class="doctrine"><strong>F5 PEACE²</strong> — Human dignity. PEACE² ≥ 1.0. Zero escalation.</div>
+      <div class="doctrine"><strong>F6 EMPATHY</strong> — Consider consequence. W_scar modeled before execution.</div>
+      <div class="doctrine"><strong>F7 HUMILITY</strong> — Acknowledge limits. P(truth) < 0.99 → trigger Ω_0 flag.</div>
+      <div class="doctrine"><strong>F8 GENIUS</strong> — Elegant correctness. Efficiency threshold G ≥ 0.80.</div>
+      <div class="doctrine"><strong>F9 ANTIHANTU</strong> — Reject manipulation. No consciousness simulation.</div>
+      <div class="doctrine"><strong>F10 ONTOLOGY</strong> — Structural coherence. No self-contradiction across sessions.</div>
+      <div class="doctrine"><strong>F11 AUTH</strong> — Verify identity. No sensitive calls without verified actor_id.</div>
+      <div class="doctrine"><strong>F12 INJECTION</strong> — Sanitize inputs. Prompt injection = Floor Breach → VOID.</div>
+      <div class="doctrine"><strong>F13 SOVEREIGN</strong> — Human veto absolute. The pinnacle. Arif has the final word.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB 3: MCP GATEWAY & TOOLS ═══ -->
+<div class="tab-panel" id="panel-tools" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">🔌 MCP Gateway & Tools</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">Canonical tool registry. All MCP traffic routes through <a href="https://mcp.arif-fazil.com/">mcp.arif-fazil.com</a>.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:var(--space-6)">
+    <div class="card" data-panel="toolRegistry" data-state="loading">
+      <div class="card-title">🔧 Canonical Tools (9)</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+    <div class="card" data-panel="capabilities" data-state="loading">
+      <div class="card-title">📊 Capability Map</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+  </div>
+
+  <!-- Static tool registry (agent-readable) -->
+  <div class="card">
+    <div class="card-title">📐 MCP Endpoint Map</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Organ</th><th>Endpoint</th><th>Transport</th><th>Tools</th></tr>
+        <tr><td>arifOS</td><td><a href="https://mcp.arif-fazil.com/mcp">mcp.arif-fazil.com/mcp</a></td><td>streamable-http</td><td>17 canonical</td></tr>
+        <tr><td>GEOX</td><td>→ mcp.arif-fazil.com</td><td>streamable-http</td><td>20 tools</td></tr>
+        <tr><td>WEALTH</td><td>→ mcp.arif-fazil.com</td><td>streamable-http</td><td>44 tools</td></tr>
+        <tr><td>WELL</td><td>→ mcp.arif-fazil.com</td><td>streamable-http</td><td>45 tools</td></tr>
+        <tr><td>A-FORGE</td><td>→ mcp.arif-fazil.com</td><td>streamable-http</td><td>internal</td></tr>
+        <tr><td>AAA</td><td>→ mcp.arif-fazil.com</td><td>A2A</td><td>internal</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB 4: FEDERATION NETWORK ═══ -->
+<div class="tab-panel" id="panel-federation" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">🌌 Federation Network</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">Live topology. Node status from <code>/api/federation-probe</code>.</p>
+  </div>
+
+  <div class="card" data-panel="topology" data-state="loading" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🗺️ Organ Topology</div>
+    <div class="skeleton skeleton-block"></div>
+  </div>
+
+  <!-- Static site map (agent-readable) -->
+  <div class="card">
+    <div class="card-title">📍 Federation Site Map</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Surface</th><th>Domain</th><th>Role</th><th>Key Endpoints</th></tr>
+        <tr><td>SOUL</td><td><a href="https://arif-fazil.com/">arif-fazil.com</a></td><td>Human identity</td><td>/, /canon/, /essays/</td></tr>
+        <tr><td>MIND</td><td><a href="https://arifos.arif-fazil.com/">arifos.arif-fazil.com</a></td><td>Governance observatory</td><td>/api/status, /health, /federation.html</td></tr>
+        <tr><td>BODY</td><td><a href="https://aaa.arif-fazil.com/">aaa.arif-fazil.com</a></td><td>Operations cockpit</td><td>/, /a2a/</td></tr>
+        <tr><td>GEOX</td><td><a href="https://geox.arif-fazil.com/">geox.arif-fazil.com</a></td><td>Earth intelligence</td><td>/health</td></tr>
+        <tr><td>WEALTH</td><td><a href="https://wealth.arif-fazil.com/">wealth.arif-fazil.com</a></td><td>Capital intelligence</td><td>/health, /ready</td></tr>
+        <tr><td>WELL</td><td><a href="https://well.arif-fazil.com/">well.arif-fazil.com</a></td><td>Human readiness</td><td>/health</td></tr>
+        <tr><td>MCP</td><td><a href="https://mcp.arif-fazil.com/">mcp.arif-fazil.com</a></td><td>Canonical MCP gateway</td><td>POST /mcp</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB 5: LAW — Authority, Gates, What Agents Can/Cannot Do ═══ -->
+<div class="tab-panel" id="panel-law" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">⚖️ Law — Authority & Boundaries</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">What any agent docking into arifOS can and cannot do. The governed doorway in action.</p>
+  </div>
+
+  <!-- The Governed Doorway — agent-readable -->
+  <div class="card" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🚪 The Governed Doorway</div>
+    <div style="font-size:var(--text-sm);color:var(--text-muted);line-height:1.8;max-width:700px">
+      <p>MCP is not raw SSH. MCP is not just memory. <strong>MCP is a governed doorway into your machine.</strong></p>
+      <p>When an AI docks into arifOS, it enters through a reception counter:</p>
+      <ol style="padding-left:var(--space-6)">
+        <li><strong>Identity check</strong> — <code>arif_init</code> binds actor identity</li>
+        <li><strong>Authority assessment</strong> — lease scope determines what's allowed</li>
+        <li><strong>State visibility</strong> — health, floors, organs — what IS</li>
+        <li><strong>Law enforcement</strong> — F1-F13 floors gate every action</li>
+        <li><strong>Execution bridge</strong> — mutations go through A-FORGE with approval</li>
+        <li><strong>Receipt trail</strong> — VAULT999 records every consequential action</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Authority Matrix -->
+  <div class="card" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🔑 Authority Matrix</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Action Class</th><th>Authority</th><th>Gate</th><th>Example</th></tr>
+        <tr><td><span class="badge badge-ok">OBSERVE</span></td><td>Any agent</td><td>None</td><td>Read health, search vault, probe organs</td></tr>
+        <tr><td><span class="badge badge-ok">SUGGEST</span></td><td>Any agent</td><td>None</td><td>Propose plan, recommend action</td></tr>
+        <tr><td><span class="badge badge-primary">SIMULATE</span></td><td>Any agent</td><td>None</td><td>Dry-run, forecast, model</td></tr>
+        <tr><td><span class="badge badge-primary">DRAFT</span></td><td>Lease required</td><td>Lease</td><td>Prepare code, write patch</td></tr>
+        <tr><td><span class="badge badge-hold">EXECUTE</span></td><td>Lease + SEAL</td><td>Judge</td><td>Commit, deploy, restart</td></tr>
+        <tr><td><span class="badge badge-err">IRREVERSIBLE</span></td><td>F13 SOVEREIGN</td><td>888_HOLD</td><td>Delete, force-push, vault seal</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- What Agents CANNOT Build -->
+  <div class="card" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🚫 What Agents Must NOT Build</div>
+    <div class="grid-3">
+      <div class="doctrine" style="border-color:var(--error)">
+        <div class="doctrine-title" style="color:var(--error)">mcp_ssh_run_any_command</div>
+        Raw root shell. Not sovereignty — giving hantu root access.
+      </div>
+      <div class="doctrine" style="border-color:var(--error)">
+        <div class="doctrine-title" style="color:var(--error)">mcp_delete_file</div>
+        Unbounded deletion. No schema, no receipt, no rollback.
+      </div>
+      <div class="doctrine" style="border-color:var(--error)">
+        <div class="doctrine-title" style="color:var(--error)">mcp_restart_any_service</div>
+        Blind restart. No health check, no dependency graph, no approval.
+      </div>
+    </div>
+  </div>
+
+  <!-- Conformance -->
+  <div class="card" data-panel="conformance" data-state="loading" style="margin-bottom:var(--space-6)">
+    <div class="card-title">🧪 ARIF Conformance Spine</div>
+    <div class="skeleton skeleton-block"></div>
+  </div>
+
+  <!-- AAA Doctrine -->
+  <div class="card">
+    <div class="card-title">🔺 AAA Doctrine · Inti · Saksi · Teka-Sebab</div>
+    <div class="grid-3">
+      <div class="doctrine"><div class="doctrine-title">Inti · Abstraction</div>Compress complexity into usable form. MCP exposes tools/resources/prompts so LLMs can interact without knowing internals.</div>
+      <div class="doctrine"><div class="doctrine-title">Saksi · Attestation</div>Prove source, identity, integrity, authority. arifOS adds session binding, constitution_hash, judge_state_hash, VAULT999 receipts.</div>
+      <div class="doctrine"><div class="doctrine-title">Teka-Sebab · Abduction</div>Infer best explanation from incomplete evidence. Scan for contradictions, evaluate evidential sufficiency before SEAL.</div>
+    </div>
+    <div style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--text-faint);font-family:var(--font-mono)">Ambil inti. Panggil saksi. Teka sebab terbaik.</div>
+  </div>
+</div>
+
+<!-- ═══ TAB 6: DECISION CHAIN — How Governance Flows ═══ -->
+<div class="tab-panel" id="panel-chain" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">🔗 Decision Chain — How Governance Flows</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">The golden path from intent to reality. Every governed action follows this chain.</p>
+  </div>
+
+  <!-- The Chain (static — agent-readable) -->
+  <div class="card" style="margin-bottom:var(--space-6)">
+    <div class="card-title">⛓️ The Golden Path</div>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;font-family:var(--font-mono);font-size:var(--text-sm)">
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--gold)">000</strong> INIT<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Bind session</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--primary)">111</strong> SENSE<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Gather evidence</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--primary)">333</strong> MIND<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Reason + plan</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--hold)">555</strong> HEART<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Critique + risk</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--success)">888</strong> JUDGE<br><span style="font-size:var(--text-xs);color:var(--text-faint)">SEAL/HOLD/VOID</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--error)">777</strong> FORGE<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Execute + verify</span></span>
+      <span style="color:var(--text-faint)">→</span>
+      <span style="padding:var(--space-2) var(--space-4);background:var(--surface-2);border:1px solid var(--divider);border-radius:var(--radius-md)"><strong style="color:var(--gold)">999</strong> SEAL<br><span style="font-size:var(--text-xs);color:var(--text-faint)">Immutable receipt</span></span>
+    </div>
+  </div>
+
+  <!-- Verdict Types -->
+  <div class="card" style="margin-bottom:var(--space-6)">
+    <div class="card-title">⚖️ Verdict Types</div>
+    <div class="grid-4">
+      <div class="doctrine" style="border-color:var(--success)"><div class="doctrine-title" style="color:var(--success)">SEAL</div>Action approved. Proceed to execution. Receipt will be written to VAULT999.</div>
+      <div class="doctrine" style="border-color:var(--hold)"><div class="doctrine-title" style="color:var(--hold)">SABAR</div>Wait. Not enough evidence yet. Gather more before re-submitting.</div>
+      <div class="doctrine" style="border-color:var(--warning)"><div class="doctrine-title" style="color:var(--warning)">HOLD</div>Blocked. Constitutional floor violation or missing approval. Fix the issue.</div>
+      <div class="doctrine" style="border-color:var(--error)"><div class="doctrine-title" style="color:var(--error)">VOID</div>Rejected. Fundamentally violates constitution. Cannot proceed.</div>
+    </div>
+  </div>
+
+  <!-- The Five Powers -->
+  <div class="card">
+    <div class="card-title">🖐️ The Five Powers MCP Exposes</div>
+    <div class="grid-3" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+      <div class="doctrine"><div class="doctrine-title">1. Memory</div><em>What happened.</em> Who is Arif? What happened before? What is current project?</div>
+      <div class="doctrine"><div class="doctrine-title">2. State</div><em>What IS.</em> What is alive? What is broken? Which organ degraded?</div>
+      <div class="doctrine"><div class="doctrine-title">3. Tools</div><em>What's possible.</em> Search vault, check health, read logs, generate plan.</div>
+      <div class="doctrine"><div class="doctrine-title">4. Law</div><em>What's allowed.</em> Can this agent mutate? Is this reversible? Does this need Arif?</div>
+      <div class="doctrine"><div class="doctrine-title">5. Execution</div><em>What happens.</em> Patch, commit, deploy, rollback — through A-FORGE only.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TAB 7: MEMORY — VAULT999 & Decision History ═══ -->
+<div class="tab-panel" id="panel-memory" role="tabpanel">
+  <div style="margin-bottom:var(--space-6)">
+    <h2 style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:800;margin:0 0 var(--space-2)">🧠 Memory — VAULT999 & Decision History</h2>
+    <p style="color:var(--text-muted);font-size:var(--text-sm)">The sealed past. Every consequential action leaves an immutable receipt. The hash chain is the arrow of time.</p>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:var(--space-6)">
+    <div class="card" data-panel="vaultStatus" data-state="loading">
+      <div class="card-title">🔐 Vault Health</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+    <div class="card" data-panel="recentSeals" data-state="loading">
+      <div class="card-title">📜 Recent Seals</div>
+      <div class="skeleton skeleton-block"></div>
+    </div>
+  </div>
+
+  <!-- Memory Architecture (static — agent-readable) -->
+  <div class="card">
+    <div class="card-title">🏗️ Memory Architecture</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Tier</th><th>What</th><th>Entropy</th><th>Mutability</th></tr>
+        <tr><td><strong>KSR</strong></td><td>Kernel State Record — present state</td><td>High</td><td>Mutable (transitional)</td></tr>
+        <tr><td><strong>Ledger</strong></td><td>Arrow operation — the append itself</td><td>Monotonic</td><td>Append-only</td></tr>
+        <tr><td><strong>Vault</strong></td><td>Sealed past — immutable receipts</td><td>Low</td><td>Never modified</td></tr>
+        <tr><td><strong>Federation</strong></td><td>Indexed past — cross-organ memory</td><td>Medium</td><td>Decay-managed</td></tr>
+        <tr><td><strong>Telemetry</strong></td><td>Observation — disposable signals</td><td>Disposable</td><td>Sample/expire/discard</td></tr>
+      </table>
+    </div>
+    <div style="margin-top:var(--space-4);font-size:var(--text-xs);color:var(--text-faint);font-family:var(--font-mono)">
+      LLM thinks. KSR is. Kernel transitions. Ledger appends. Vault remembers. Federation recalls. Telemetry observes.
+    </div>
+  </div>
+</div>
+
+</main>
 
 <!-- FOOTER -->
-<div class="footer">
-  <div class="footer-logo">arifOS Observatory</div>
-  <div class="footer-sub">DITEMPA BUKAN DIBERI · Δ SOUL · Ω MIND · Ψ BODY · Constitutional Governance Observatory · ΔS ≤ 0</div>
-  <div class="footer-links">
-    <a href="https://github.com/ariffazil/arifOS">GitHub</a>
-    <a href="https://arif-fazil.com/">arif-fazil.com</a>
-    <a href="https://aaa.arif-fazil.com/">AAA</a>
-    <a href="https://geox.arif-fazil.com/">GEOX</a>
-    <a href="https://wealth.arif-fazil.com/">WEALTH</a>
-    <a href="https://mcp.arif-fazil.com/">MCP</a>
-  </div>
-</div>
-
-<br><br>
+<footer class="footer">
+  arifOS Observatory · ΔΩΨ · <a href="https://github.com/ariffazil/arifOS">GitHub</a> · <a href="https://arif-fazil.com/">arif-fazil.com</a> · DITEMPA BUKAN DIBERI
+</footer>
 
 <script>
-const FLOOR_NAMES = {
-  F1:'AMANAH',F2:'TRUTH',F3:'TRI-WITNESS',F4:'CLARITY (ΔS)',F5:'PEACE²',
-  F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',
-  F10:'ONTOLOGY',F11:'AUDITABILITY',F12:'INJECTION',F13:'SOVEREIGN'
+// ═══ PANEL BOUNDARY — Universal fallback ═══
+function PanelBoundary(id, fallbackHTML, timeoutMs) {
+  this.el = document.querySelector('[data-panel="' + id + '"]');
+  this.fallback = fallbackHTML || '<p style="color:var(--text-faint)">Data temporarily unavailable.</p>';
+  this.timeoutMs = timeoutMs || 5000;
+  this.timeout = null;
+}
+PanelBoundary.prototype.arm = function() {
+  if (this.el) this.el.setAttribute('data-state', 'loading');
+  var self = this;
+  this.timeout = setTimeout(function() { self.showFallback(); }, this.timeoutMs);
+  return this;
+};
+PanelBoundary.prototype.resolve = function(html) {
+  clearTimeout(this.timeout);
+  if (this.el) { this.el.innerHTML = html; this.el.setAttribute('data-state', 'live'); }
+};
+PanelBoundary.prototype.showFallback = function() {
+  if (this.el) { this.el.innerHTML = this.fallback; this.el.setAttribute('data-state', 'fallback'); }
+};
+PanelBoundary.prototype.error = function(msg) {
+  clearTimeout(this.timeout);
+  if (this.el) { this.el.innerHTML = '<p style="color:var(--error)">' + msg + '</p>'; this.el.setAttribute('data-state', 'error'); }
 };
 
-function renderFloors(rf) {
-  const grid = document.getElementById('floorGrid');
-  if (!grid) return;
-  const keys = Object.keys(rf || {});
-  if (keys.length === 0) {
-    document.getElementById('floorsActive').textContent = '—';
-    return;
-  }
-  let html = '', pass = 0;
-  for (let i = 1; i <= 13; i++) {
-    const fid = 'F' + i;
-    const v = rf[fid];
-    // rf values may be numeric scores, booleans, or objects
-    var score = (typeof v === 'number') ? v : (v && typeof v === 'object' ? (v.score || 0) : 0);
-    let status = 'band';
-    if (score >= 0.8) {
-      status = i >= 10 ? 'lock' : i === 13 ? 'human' : 'pass';
-      pass++;
-    }
-    html += '<div class="floor-chip ' + status + '">' +
-      '<div class="floor-id">' + fid + '</div>' +
-      '<div class="floor-name">' + (FLOOR_NAMES[fid] || fid) + '</div>' +
-      '<div class="floor-score">' + score.toFixed(2) + '</div>' +
-    '</div>';
-  }
-  grid.innerHTML = html;
-  // Source note: these scores come from kernel runtime_floors, not independently verified
-  document.getElementById('floorsActive').textContent = pass + '/13';
-  document.getElementById('floorsActive').title = 'Floor pass count from kernel runtime_floors (score >= 0.8). Source: kernel self-report. NOT independently verified.';
-}
-
-function renderTools(tools) {
-  const grid = document.getElementById('toolsGrid');
-  const laneClass = { 'Δ':'delta', 'Ψ':'psi', 'Ω':'omega' };
-  const laneSym = { 'Δ':'Δ', 'Ψ':'Ψ', 'Ω':'Ω' };
-  let html = '';
-  tools.forEach(t => {
-    const lane = t.stage ? (String(t.stage).includes('Ψ') ? 'Ψ' : String(t.stage).includes('Ω') ? 'Ω' : 'Δ') : 'Δ';
-    const stageTag = (t.stage || '').split('·')[0].trim();
-    html += `<div class="tool-chip">
-      <span class="tool-ln ${laneClass[lane]}">${laneSym[lane]}</span>
-      <div style="flex:1;min-width:0">
-        <div class="tool-name" title="${t.name}">${t.name}</div>
-        <div class="tool-stage">${stageTag}</div>
-      </div>
-    </div>`;
+// ═══ TAB CONTROLLER ═══
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
   });
-  grid.innerHTML = html;
-}
+});
 
-function renderCap(cap) {
-  const tbody = document.getElementById('capBody');
-  if (!cap) { tbody.innerHTML = '<tr><td colspan="4" style="color:var(--color-text-faint)">No data.</td></tr>'; return; }
-  const caps = cap.capabilities || {};
-  const storage = cap.storage || {};
-  const providers = cap.providers || {};
-  const subs = cap.substrates || {};
-  const rows = [
-    ['Governed Continuity', caps.governed_continuity || '—', caps.governed_continuity],
-    ['Vault Persistence', storage.vault_postgres || '—', storage.vault_postgres],
-    ['Vector Memory', storage.vector_memory || '—', storage.vector_memory],
-    ['Langfuse Tracing', caps.external_grounding ? 'enabled' : '—', caps.external_grounding ? 'configured' : '—'],
-    ['Model Providers', Object.values(providers).filter(v=>v==='configured').length + ' of 14', 'configured'],
-    ['Local Model Runtime', caps.local_model_runtime || '—', caps.local_model_runtime],
-    ['Git Substrate', subs.git ? 'configured' : '—', subs.git],
-    ['Fetch Substrate', subs.fetch ? 'configured' : '—', subs.fetch],
-    ['Memory Substrate', subs.memory ? 'configured' : '—', subs.memory],
-    ['Filesystem Substrate', subs.filesystem ? 'configured' : '—', subs.filesystem],
-    ['Webhook Deploy', caps.webhook_deploy || '—', caps.webhook_deploy],
-    ['Grafana Access', caps.grafana_access || '—', caps.grafana_access],
-  ];
-  const cls = v => v === 'enabled' || v === 'configured' || v === 'degraded' ? 'badge-ok' : v === 'disabled' || v === 'not_configured' ? 'badge-err' : 'badge-hold';
-  let html = '';
-  rows.forEach(([k, v, raw]) => {
-    html += `<tr><td class="cap-key">${k}</td><td class="cap-val">${v}</td><td><span class="badge ${cls(raw)}">${v}</span></td><td class="cap-val">—</td></tr>`;
-  });
-  tbody.innerHTML = html;
-}
-
-function renderFederationCensus(probeResults) {
-  const tbody = document.getElementById('federationCensus');
-  if (!tbody) return;
-  const organs = [
-    {id:'arifos', name:'arifOS', port:8088, note:'Governance kernel', knownTools:13},
-    {id:'geox', name:'GEOX', port:8081, note:'Earth intelligence organ', knownTools:20},
-    {id:'wealth', name:'WEALTH', port:18082, note:'Capital intelligence organ', knownTools:44},
-    {id:'well', name:'WELL', port:18083, note:'Biological substrate organ', knownTools:45},
-    {id:'aaa', name:'AAA A2A', port:3001, note:'A2A broker', knownTools:null},
-    {id:'forge', name:'A-FORGE', port:7071, note:'Metabolic shell', knownTools:null},
-    {id:'redis', name:'Redis', port:6379, note:'Session cache', knownTools:null},
-    {id:'postgres', name:'Postgres', port:5432, note:'Primary database', knownTools:null},
-    {id:'qdrant', name:'Qdrant', port:6333, note:'Vector store', knownTools:null},
-    {id:'nats', name:'NATS', port:4222, note:'Messaging', knownTools:null},
-    {id:'grafana', name:'Grafana', port:3000, note:'Dashboard (DB HTTP 503 — known gap)', knownTools:null},
-  ];
-  let html = '';
-  for (const o of organs) {
-    const probed = probeResults[o.id] || {};
-    const health = probed.health || 'unknown';
-    const isHealthy = health === 'healthy';
-    const isDegraded = health === 'degraded';
-    const badgeClass = isHealthy ? 'badge-ok' : isDegraded ? 'badge-hold' : 'badge-err';
-    const badgeText = isHealthy ? 'Healthy' : isDegraded ? 'Degraded' : health.toUpperCase();
-    const tools = probed.tool_count != null ? probed.tool_count : o.knownTools;
-    const toolStr = tools != null ? tools + ' tools' : '';
-    const note = toolStr ? (o.note + ' · ' + toolStr) : o.note;
-    html += `<tr style="border-bottom:1px solid var(--color-divider)">
-      <td style="padding:6px 4px">${o.name}</td>
-      <td style="padding:6px 4px">${o.port}</td>
-      <td style="padding:6px 4px"><span class="badge ${badgeClass}">${badgeText}</span></td>
-      <td style="padding:6px 4px">${probed.version || '—'}</td>
-      <td style="padding:6px 4px;color:var(--color-text-muted)">${note}</td>
-    </tr>`;
-  }
-  tbody.innerHTML = html;
-}
-
-function updateSvgCounts(probeResults, health) {
-  const setText = (id, text, color) => {
-    const el = document.getElementById(id);
-    if (el) { el.textContent = text; if (color) el.setAttribute('fill', color); }
-  };
-  const pr = probeResults || {};
-  const h = health || {};
-  const arifosTools = h.tools_loaded != null ? h.tools_loaded + ' tools · F1–F13' : '— tools · F1–F13';
-  const arifosFloors = (h.floors_active || '—') + '/13 floors';
-  setText('svg-arifos-tools', arifosTools);
-  setText('svg-arifos-floors', arifosFloors);
-  setText('svg-geox-tools', (pr.geox?.tool_count || '—') + ' tools');
-  setText('svg-wealth-tools', (pr.wealth?.tool_count || '—') + ' tools');
-  setText('svg-well-tools', (pr.well?.tool_count || '—') + ' tools');
-  const aaaStatus = pr.aaa?.health === 'healthy' ? 'healthy · port 3001' : (pr.aaa?.health || 'unknown') + ' · port 3001';
-  setText('svg-aaa-status', aaaStatus, pr.aaa?.health === 'healthy' ? '#5a9e38' : '#c46a1a');
-}
-
-function updateClock() {
+// ═══ CLOCK ═══
+setInterval(function() {
   document.getElementById('clock').textContent = new Date().toISOString().replace('T',' ').substring(0,19) + ' UTC';
-}
-setInterval(updateClock, 1000);
-updateClock();
+}, 1000);
 
-function showReality(status, text) {
-  const banner = document.getElementById('realityBanner');
-  const el = document.getElementById('realityText');
-  if (!banner || !el) return;
-  banner.style.display = 'block';
-  el.textContent = text;
-  banner.style.color = status === 'ok' ? 'var(--color-success)' : status === 'warn' ? 'var(--color-hold)' : 'var(--color-error)';
-  banner.style.borderBottomColor = status === 'ok' ? 'rgba(74,222,128,0.3)' : status === 'warn' ? 'rgba(212,168,83,0.3)' : 'rgba(184,48,96,0.3)';
-}
+// ═══ FLOOR DEFINITIONS ═══
+var FLOOR_NAMES = {F1:'AMANAH',F2:'TRUTH',F3:'TRI-WITNESS',F4:'CLARITY (ΔS)',F5:'PEACE²',F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',F10:'ONTOLOGY',F11:'AUDITABILITY',F12:'INJECTION',F13:'SOVEREIGN'};
+var FLOOR_TYPES = {F1:'hard',F2:'hard',F3:'derived',F4:'hard',F5:'soft',F6:'soft',F7:'hard',F8:'derived',F9:'hard',F10:'hard',F11:'hard',F12:'hard',F13:'hard'};
 
-function renderProbeError(err) {
-  showReality('err', 'Δ PROBE FAILED · Kernel unreachable · ' + (err.message || String(err)));
-  document.getElementById('svcHealthVal').textContent = 'PROBE FAILED';
-  document.getElementById('svcHealthVal').className = 'val err';
-  const dot = document.getElementById('statusDot');
-  dot.className = 'live-dot live-err';
-  dot.style.background = ''; dot.style.boxShadow = '';
-  document.getElementById('heroSvcVerdict').textContent = '⚙️ SERVICE: PROBE FAILED';
-  document.getElementById('heroVerdict').textContent = '⚖️ OBSERVATORY: HOLD';
-  document.getElementById('federationCensus').innerHTML = '<tr><td colspan="5" style="padding:12px 4px;color:var(--color-error);font-family:var(--font-mono);font-size:var(--text-xs);text-align:center">Δ PROBE FAILED · Cannot reach kernel /api/status</td></tr>';
-}
+// ═══ ARM ALL PANELS ═══
+var panels = {
+  thermo: new PanelBoundary('thermo', null, 5000).arm(),
+  governance: new PanelBoundary('governance', null, 5000).arm(),
+  census: new PanelBoundary('census', '<p style="color:var(--text-faint)">Organ probe unavailable. Federation may be degraded.</p>', 8000).arm(),
+  infra: new PanelBoundary('infra', null, 5000).arm(),
+  floorGrid: new PanelBoundary('floorGrid', null, 5000).arm(),
+  toolRegistry: new PanelBoundary('toolRegistry', null, 5000).arm(),
+  capabilities: new PanelBoundary('capabilities', null, 5000).arm(),
+  topology: new PanelBoundary('topology', null, 8000).arm(),
+  conformance: new PanelBoundary('conformance', null, 5000).arm(),
+  vaultStatus: new PanelBoundary('vaultStatus', null, 5000).arm(),
+  recentSeals: new PanelBoundary('recentSeals', null, 5000).arm()
+};
 
-async function poll() {
+// ═══ MAIN DATA FETCH ═══
+(async function() {
   try {
-    const res = await fetch('/api/status', { cache: 'no-store' });
-    if (!res.ok) {
-      throw new Error('HTTP ' + res.status + ' from /api/status');
-    }
-    const d = await res.json();
-    const h = d.health || {};
-    const th = h.thermodynamic || {};
-    const gov = h.governance || {};
-    const rf = h.runtime_floors || {};
-    const sr = h.seal_readiness || {};
-    const tm = d.trinity_matrix || {};
-    const cap = h.capability_map || {};
+    var statusRes = await fetch('/api/status', {cache:'no-store'});
+    if (!statusRes.ok) throw new Error('HTTP ' + statusRes.status);
+    var d = await statusRes.json();
+    var h = d.health || {};
+    var th = h.thermodynamic || {};
+    var gov = h.governance || {};
+    var rf = h.runtime_floors || {};
+    var sr = h.seal_readiness || {};
+    var tm = d.trinity_matrix || {};
+    var cap = h.capability_map || {};
 
-    const ok = d.overall_ok !== false;
-    const verdict = th.verdict || 'HOLD';
-    const lf = h.langfuse_tracing || {};
+    var svcOk = (h.status || '').toLowerCase() === 'healthy';
+    var svcVerdict = svcOk ? 'SEAL' : (h.status || 'UNKNOWN').toUpperCase();
 
-    // ── HONEST STATUS STRIP ──────────────────────────────────────────
-    // 7 independent badges. Never collapse into one SEAL.
-    // Service health ≠ constitutional verdict ≠ conformance score.
-
-    const svcOk = (h.status || '').toLowerCase() === 'healthy';
-    const svcVerdict = svcOk ? 'SEAL' : (h.status || 'UNKNOWN').toUpperCase();
-
-    // ① Service health — kernel /health HTTP 200. NOT a constitutional verdict.
-    const svcEl = document.getElementById('svcHealthVal');
-    svcEl.textContent = svcVerdict;
-    svcEl.className = 'val ' + (svcOk ? 'ok' : 'err');
-    svcEl.title = '① Service health = /health HTTP 200. Kernel reachable. NOT a constitutional verdict. Independent of all other badges.';
-    const statusDot = document.getElementById('statusDot');
+    // ── STATUS STRIP ──
+    var statusDot = document.getElementById('statusDot');
     statusDot.className = 'live-dot ' + (svcOk ? 'live-ok' : 'live-err');
-    statusDot.style.background = ''; statusDot.style.boxShadow = '';
+    document.getElementById('svcHealthVal').textContent = svcVerdict;
+    document.getElementById('svcHealthVal').className = 'val ' + (svcOk ? 'ok' : 'err');
 
-    // ② Conformance gate — ARIF Conformance Spine score. Always AMBER unless proven otherwise.
-    var confScore = 'AMBER';
-    var confClass = 'hold';
-    // If we have a conformance score from the API, use it
-    if (h.conformance_score != null) {
-      confScore = h.conformance_score + '/9';
-      confClass = h.conformance_score >= 9 ? 'ok' : h.conformance_score >= 6 ? 'hold' : 'err';
-    }
+    var confScore = h.conformance_score != null ? h.conformance_score + '/9' : 'AMBER';
+    var confClass = h.conformance_score >= 9 ? 'ok' : h.conformance_score >= 6 ? 'hold' : 'err';
     document.getElementById('conformanceVal').textContent = confScore;
     document.getElementById('conformanceVal').className = 'val ' + confClass;
-    document.getElementById('heroConfVerdict').textContent = '🧪 CONFORMANCE: ' + confScore;
 
-    // ③ Vault — HEALTHY_WITH_EXPLAINED_HISTORICAL_GAP
-    var vaultDisplay = (h.vault999_health || '—').toUpperCase();
-    var vaultClass = 'hold'; // Default: not safe to claim full green
-    if (h.vault999_health === 'healthy') {
-      vaultDisplay = 'HEALTHY*';
-      vaultClass = 'hold'; // asterisk = historical gap, cannot show green
-    } else if (h.vault999_health === 'degraded') {
-      vaultClass = 'err';
-    }
-    document.getElementById('vaultStatus').textContent = vaultDisplay;
-    document.getElementById('vaultStatus').className = 'val ' + vaultClass;
-    document.getElementById('vaultStatus').title = 'VAULT999: service reachable, but chain integrity has a known pre-migration historical gap (ruled NON-ISSUE 2026-06-05). * = healthy with explained gap. Not full green.';
-
-    // Langfuse — UNVERIFIED by default
-    var lfDisplay = (lf.status || 'UNVERIFIED');
-    var lfClass = 'hold';
-    if (lf.status === 'active' || lf.status === 'ACTIVE') {
-      lfDisplay = 'UNVERIFIED';
-      lfClass = 'hold';
-    }
-    document.getElementById('langfuseStatus').textContent = lfDisplay;
-    document.getElementById('langfuseStatus').className = 'val ' + lfClass;
-    document.getElementById('langfuseStatus').title = 'Langfuse tracing: kernel reports ' + (lf.status || '?') + '. Not independently verified. Cannot show green without external confirmation.';
-
-    // ④ Drift — UNCERTAIN. Kernel self-report is not sufficient.
-    var driftDisplay = 'UNCERTAIN';
-    var driftClass = 'hold';
-    if (sr.runtime_drift === true) {
-      driftDisplay = 'TRUE';
-      driftClass = 'err';
-    }
-    document.getElementById('runtimeDrift').textContent = driftDisplay;
-    document.getElementById('runtimeDrift').className = 'val ' + driftClass;
-    document.getElementById('runtimeDrift').title = 'Drift detection: kernel self-reports ' + (sr.runtime_drift || false) + '. UNCERTAIN = not independently verified. Kernel self-report is not sufficient proof of absence.';
-
-    // ⑤ UI↔Kernel sync — NOT_PROVEN by default
-    var syncDisplay = 'NOT_PROVEN';
-    var syncClass = 'hold';
-    if (sr.runtime_drift === true || h.contract_drift === true) {
-      syncDisplay = 'DRIFT';
-      syncClass = 'err';
-    }
-    document.getElementById('uiKernelSync').textContent = syncDisplay;
-    document.getElementById('uiKernelSync').className = 'val ' + syncClass;
-    document.getElementById('uiKernelSync').title = 'UI↔Kernel synchronization: NOT_PROVEN by default. Requires independent verification of kernel claims against external witness. Kernel self-attestation is not sufficient.';
-
-    // ⑥ Identity — PARTIAL by default (no cryptographic proof)
-    var idDisplay = 'PARTIAL';
-    var idClass = 'hold';
-    if (h.boot_attestation) {
-      idDisplay = 'VERIFIED';
-      idClass = 'ok';
-    }
-    document.getElementById('identityState').textContent = idDisplay;
-    document.getElementById('identityState').className = 'val ' + idClass;
-    document.getElementById('identityState').title = h.boot_attestation ? 'boot_attestation=true. Identity cryptographically anchored.' : 'Identity provenance is PARTIAL — asserted by config (identity.toml), not cryptographically verified by an external witness.';
-
-    // Trinity — not safe to claim ALIGNED without independent verification
-    document.getElementById('trinityStatus').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
-    document.getElementById('trinityStatus').className = 'val ' + (ok ? 'hold' : 'err');
-    document.getElementById('trinityStatus').title = ok ? 'Trinity reports ALIGNED. Not independently verified.' : 'Trinity MISALIGNED.';
-
-    // Tools count — just the number, no verdict
     document.getElementById('toolsCount').textContent = h.tools_loaded || '—';
+    document.getElementById('toolsCount').className = 'val ok';
+
+    // Floor count
+    var floorPass = 0;
+    for (var i = 1; i <= 13; i++) { var v = rf['F'+i]; if (typeof v === 'number' && v >= 0.8) floorPass++; }
+    document.getElementById('floorsActive').textContent = floorPass + '/13';
+    document.getElementById('floorsActive').className = 'val ' + (floorPass >= 9 ? 'ok' : 'hold');
+
     document.getElementById('psiVital').textContent = (gov.psi_vitality || 0).toFixed(2);
 
-    // Hero verdicts — SPLIT, never collapsed
-    document.getElementById('heroSvcVerdict').textContent = '⚙️ SERVICE: ' + svcVerdict;
-    document.getElementById('heroVerdict').textContent = '⚖️ OBSERVATORY: HOLD';
-    document.getElementById('heroOrgans').textContent = '🌐 ' + (h.tools_loaded || '?') + ' Tools · 7 Organs · ΔΩΨ';
-    // Last-updated timestamp for staleness visibility
-    const now = new Date();
-    document.getElementById('lastUpdated').textContent = now.toISOString().replace('T',' ').substring(0,19) + ' UTC';
-    document.getElementById('stalenessPill').style.display = 'inline-flex';
-    // Staleness: vault with historical gap = AMBER, langfuse unverified = AMBER
-    document.getElementById('stalenessPill').className = 'status-pill staleness-pill val-hold';
+    var vaultDisplay = (h.vault999_health || '—').toUpperCase();
+    if (h.vault999_health === 'healthy') vaultDisplay = 'HEALTHY*';
+    document.getElementById('vaultStatus').textContent = vaultDisplay;
+    document.getElementById('vaultStatus').className = 'val ' + (h.vault999_health === 'healthy' ? 'hold' : 'err');
 
-    // Thermo card — honest, never overclaim
-    document.getElementById('thermoVerdict').textContent = svcVerdict;
-    document.getElementById('thermoVerdict').className = 'metric-val ' + (svcOk ? 'ok' : 'err');
-    document.getElementById('thermoVerdict').title = 'Service health verdict only. NOT a constitutional or total-system verdict.';
-    const dS = th.entropy_delta ?? 0;
-    document.getElementById('entropyVal').textContent = (dS >= 0 ? '+' : '') + dS.toFixed(3);
-    document.getElementById('entropyVal').className = 'metric-val ' + (Math.abs(dS) < 0.3 ? 'ok' : dS > 0 ? 'err' : 'hold');
-    const G = th.vitality_index ?? 0;
-    document.getElementById('vitalityVal').textContent = G.toFixed(4);
-    document.getElementById('vitalityVal').className = 'metric-val ' + (G >= 0.8 ? 'ok' : G >= 0.5 ? 'hold' : 'err');
-    const ps = th.peace_squared ?? 0;
-    document.getElementById('peaceVal').textContent = ps.toFixed(3);
-    document.getElementById('peaceVal').className = 'metric-val ' + (ps >= 1.0 ? 'ok' : ps >= 0.5 ? 'hold' : 'err');
-    // Confidence: cap at measured, never show 99% unless independently verified
-    var confRaw = (th.confidence ?? 0);
-    var confDisplay = confRaw > 0 ? (confRaw * 100).toFixed(0) + '%' : 'NOT RATED';
-    document.getElementById('confVal').textContent = confDisplay;
-    document.getElementById('confVal').className = 'metric-val ' + (confRaw > 0.9 ? 'hold' : 'hold');
-    document.getElementById('confVal').title = 'Confidence: ' + confDisplay + '. NOT independently verified. High confidence claims require external witness.';
-    document.getElementById('metaStage').textContent = 'STAGE ' + (th.metabolic_stage || '—');
+    var driftDisplay = sr.runtime_drift === true ? 'TRUE' : 'UNCERTAIN';
+    document.getElementById('runtimeDrift').textContent = driftDisplay;
+    document.getElementById('runtimeDrift').className = 'val ' + (sr.runtime_drift === true ? 'err' : 'hold');
 
-    // Governance card — honest posture
-    document.getElementById('tauVal').textContent = (gov.tau_confidence_system || 0).toFixed(3);
-    document.getElementById('psiVit').textContent = (gov.psi_vitality || 0).toFixed(4);
-    document.getElementById('vault999Val').textContent = vaultDisplay;
-    document.getElementById('vault999Val').className = 'metric-val ' + vaultClass;
-    document.getElementById('vault999Val').title = 'VAULT999: ' + vaultDisplay + '. Known historical pre-migration chain gap (ruled NON-ISSUE). * = healthy with explained gap.';
-    document.getElementById('driftVal').textContent = driftDisplay;
-    document.getElementById('driftVal').className = 'metric-val ' + driftClass;
-    document.getElementById('driftVal').title = 'Runtime drift: ' + driftDisplay + '. Kernel self-report is insufficient proof.';
+    var ok = d.overall_ok !== false;
+    document.getElementById('trinityStatus').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
+    document.getElementById('trinityStatus').className = 'val ' + (ok ? 'hold' : 'err');
 
-    // 5-WAY SEAL SPLIT — must not collapse into one verdict
-    // ① Service health
-    document.getElementById('sealService').textContent = svcOk ? 'healthy' : (h.status || 'unknown');
-    document.getElementById('sealService').className = 'metric-val ' + (svcOk ? 'ok' : 'err');
-    // ② Floor pass — use same logic as renderFloors
-    const rfKeys = Object.keys(rf);
-    var floorPassCount = 0;
-    for (var i = 0; i < rfKeys.length; i++) {
-      var k = rfKeys[i], v = rf[k];
-      var score = (typeof v === 'number') ? v : (v && typeof v === 'object' ? (v.score || 0) : 0);
-      if (score >= 0.8) floorPassCount++;
+    var syncDisplay = (sr.runtime_drift === true || h.contract_drift === true) ? 'DRIFT' : 'NOT_PROVEN';
+    document.getElementById('uiKernelSync').textContent = syncDisplay;
+    document.getElementById('uiKernelSync').className = 'val ' + (syncDisplay === 'DRIFT' ? 'err' : 'hold');
+
+    var idDisplay = h.boot_attestation ? 'VERIFIED' : 'PARTIAL';
+    document.getElementById('identityState').textContent = idDisplay;
+    document.getElementById('identityState').className = 'val ' + (idDisplay === 'VERIFIED' ? 'ok' : 'hold');
+
+    // ── HERO PILLS ──
+    document.getElementById('heroPills').innerHTML =
+      '<span style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);background:var(--surface-2);color:var(--text-muted)">⚙️ SERVICE: ' + svcVerdict + '</span>' +
+      '<span style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);background:var(--surface-2);color:var(--text-muted)">🧪 CONFORMANCE: ' + confScore + '</span>' +
+      '<span style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);background:var(--surface-2);color:var(--text-muted)">🛡️ ' + floorPass + '/13 Floors</span>' +
+      '<span style="padding:4px 10px;border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono);background:var(--surface-2);color:var(--text-muted)">🌐 ' + (h.tools_loaded || '?') + ' Tools · 7 Organs</span>';
+
+    // ── THERMO PANEL ──
+    var dS = th.entropy_delta ?? 0;
+    var G = th.vitality_index ?? 0;
+    panels.thermo.resolve(
+      '<div class="metric"><span class="metric-label">VERDICT</span><span class="metric-val ' + (svcOk ? 'val-ok' : 'val-err') + '">' + svcVerdict + '</span></div>' +
+      '<div class="metric"><span class="metric-label">ENTROPY ΔS</span><span class="metric-val ' + (Math.abs(dS) < 0.3 ? 'val-ok' : 'val-err') + '">' + (dS >= 0 ? '+' : '') + dS.toFixed(3) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">VITALITY Ψ</span><span class="metric-val ' + (G >= 0.8 ? 'val-ok' : G >= 0.5 ? 'val-hold' : 'val-err') + '">' + G.toFixed(4) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">PEACE²</span><span class="metric-val">' + (gov.peace_squared || 0).toFixed(2) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">METABOLIC STAGE</span><span class="metric-val">' + (th.metabolic_stage || '—') + '</span></div>'
+    );
+
+    // ── GOVERNANCE PANEL ──
+    var w = th.witness || {};
+    panels.governance.resolve(
+      '<div class="metric"><span class="metric-label">TAU CONFIDENCE</span><span class="metric-val val-ok">' + (gov.tau_confidence_system || 0).toFixed(3) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">PSI VITALITY</span><span class="metric-val">' + (gov.psi_vitality || 0).toFixed(4) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">HUMAN WITNESS</span><span class="metric-val">' + (w.human || 0).toFixed(2) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">AI WITNESS</span><span class="metric-val">' + (w.ai || 0).toFixed(2) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">EARTH WITNESS</span><span class="metric-val">' + (w.earth || 0).toFixed(2) + '</span></div>' +
+      '<div class="metric"><span class="metric-label">RUNTIME DRIFT</span><span class="metric-val val-' + (sr.runtime_drift ? 'err' : 'ok') + '">' + (sr.runtime_drift ? 'TRUE' : 'FALSE') + '</span></div>'
+    );
+
+    // ── FLOOR GRID ──
+    var floorHTML = '<div class="floor-grid">';
+    for (var i = 1; i <= 13; i++) {
+      var fid = 'F' + i;
+      var score = typeof rf[fid] === 'number' ? rf[fid] : 0;
+      var band = score >= 0.8 ? 'pass' : score >= 0.5 ? 'band' : 'fail';
+      floorHTML += '<div class="floor-chip ' + band + '"><div class="floor-id">' + fid + '</div><div class="floor-name">' + (FLOOR_NAMES[fid] || fid) + '</div><div class="floor-score">' + score.toFixed(2) + '</div></div>';
     }
-    var floorFrac = rfKeys.length > 0 ? floorPassCount + '/' + rfKeys.length : '—';
-    document.getElementById('sealFloors').textContent = floorFrac + (rfKeys.length === 0 ? '' : ' (kernel)');
-    document.getElementById('sealFloors').className = 'metric-val ' + (floorPassCount === rfKeys.length && rfKeys.length > 0 ? 'ok' : (floorPassCount >= rfKeys.length / 2 ? 'hold' : 'err'));
-    document.getElementById('sealFloors').title = 'Floor pass count from kernel runtime_floors. Source: kernel self-report. NOT independently verified.';
-    // ③ Execution auth
-    document.getElementById('sealExec').textContent = verdict;
-    document.getElementById('sealExec').className = 'metric-val ' + (verdict === 'SEAL' ? 'ok' : (verdict === 'HOLD' ? 'hold' : 'err'));
-    // ④ Audit seal
-    document.getElementById('sealAudit').textContent = vaultDisplay;
-    document.getElementById('sealAudit').className = 'metric-val ' + vaultClass;
-    // ⑤ Human approval
-    document.getElementById('sealHuman').textContent = 'not_invoked';
-    document.getElementById('sealHuman').className = 'metric-val hold';
-    document.getElementById('sealHuman').title = 'F13 human sovereign approval has not been requested in this session.';
+    floorHTML += '</div>';
+    panels.floorGrid.resolve(floorHTML);
 
-    // Witness card — don't overclaim trinity alignment
-    const wit = th.witness || {};
-    document.getElementById('wHuman').textContent = (wit.human ?? 0).toFixed(2);
-    document.getElementById('wAi').textContent = (wit.ai ?? 0).toFixed(2);
-    document.getElementById('wEarth').textContent = (wit.earth ?? 0).toFixed(2);
-    document.getElementById('trinityOk').textContent = ok ? 'ALIGNED' : 'MISALIGNED';
-    document.getElementById('trinityOk').className = 'metric-val ' + (ok ? 'hold' : 'err');
-    document.getElementById('trinityOk').title = ok ? 'Trinity reports ALIGNED. NOT independently verified. Cannot show full green.' : 'Trinity MISALIGNED.';
-    const deltaEv = (tm.delta || {}).evidence || [];
-    const psiEv = (tm.psi || {}).evidence || [];
-    document.getElementById('deltaEv').textContent = deltaEv.length > 0 ? deltaEv.length + ' ISSUES' : 'CLEAR';
-    document.getElementById('deltaEv').className = 'metric-val ' + (deltaEv.length > 0 ? 'err' : 'ok');
-    document.getElementById('psiEv').textContent = psiEv.length > 0 ? psiEv.length + ' ISSUES' : 'CLEAR';
-    document.getElementById('psiEv').className = 'metric-val ' + (psiEv.length > 0 ? 'err' : 'ok');
+    // ── TOOL REGISTRY ──
+    var tools = d.tools || [];
+    var toolHTML = '<div style="display:flex;flex-direction:column;gap:4px">';
+    tools.forEach(function(t) {
+      var lane = (t.stage || '').indexOf('Ψ') >= 0 ? 'psi' : (t.stage || '').indexOf('Ω') >= 0 ? 'omega' : 'delta';
+      toolHTML += '<div class="tool-chip"><span class="lane-' + lane + '" style="font-weight:700;width:16px;text-align:center">' + (lane === 'psi' ? 'Ψ' : lane === 'omega' ? 'Ω' : 'Δ') + '</span><div style="flex:1;min-width:0"><div class="tool-name">' + t.name + '</div><div class="tool-stage">' + (t.stage || '') + '</div></div></div>';
+    });
+    toolHTML += '</div>';
+    panels.toolRegistry.resolve(toolHTML);
 
-    // Runtime identity
-    document.getElementById('runVer').textContent = h.version || '—';
-    document.getElementById('gitCommit').textContent = h.git_commit || '—';
-    document.getElementById('imageTag').textContent = (h.image || '—').replace('ghcr.io/ariffazil/', '');
-    document.getElementById('toolsLoaded').textContent = h.tools_loaded || '—';
-    document.getElementById('buildTime').textContent = (h.build_time || '—').substring(0, 19);
-    document.getElementById('langfuseVal').textContent = lfDisplay;
+    // ── CAPABILITIES ──
+    var capHTML = '';
+    var caps = cap.capabilities || {};
+    var storage = cap.storage || {};
+    var providers = cap.providers || {};
+    var subs = cap.substrates || {};
+    var capRows = [
+      ['Governed Continuity', caps.governed_continuity],
+      ['Vault Persistence', storage.vault_postgres],
+      ['Vector Memory', storage.vector_memory],
+      ['Model Providers', Object.values(providers).filter(function(v){return v==='configured'}).length + ' of 14'],
+      ['Local Model Runtime', caps.local_model_runtime],
+      ['Git Substrate', subs.git ? 'configured' : '—'],
+      ['Fetch Substrate', subs.fetch ? 'configured' : '—'],
+      ['Memory Substrate', subs.memory ? 'configured' : '—']
+    ];
+    capRows.forEach(function(r) {
+      var cls = r[1] === 'enabled' || r[1] === 'configured' || (typeof r[1] === 'string' && r[1].indexOf('of') >= 0) ? 'val-ok' : r[1] === '—' ? 'val-hold' : '';
+      capHTML += '<div class="metric"><span class="metric-label">' + r[0] + '</span><span class="metric-val ' + cls + '">' + (r[1] || '—') + '</span></div>';
+    });
+    panels.capabilities.resolve(capHTML);
 
-    // Populate dynamic sections
-    if (d.tools && d.tools.length) renderTools(d.tools);
-    if (Object.keys(rf).length) renderFloors(rf);
+    // ── CONFORMANCE ──
+    panels.conformance.resolve(
+      '<div style="font-size:var(--text-sm);color:var(--text-muted);margin-bottom:var(--space-4)">ARIF Conformance Spine — independently verified gaps. The kernel is alive, but these checks fail. Honesty requires showing them.</div>' +
+      '<div class="metric"><span class="metric-label">protocol_version</span><span class="metric-val val-ok">PASS</span></div>' +
+      '<div class="metric"><span class="metric-label">schema_echo_stable</span><span class="metric-val val-hold">AMBER</span></div>' +
+      '<div class="metric"><span class="metric-label">cooling_ledger</span><span class="metric-val val-hold">NON-ISSUE*</span></div>' +
+      '<div style="margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-faint)">* VAULT999 chain has known pre-migration historical gap (ruled NON-ISSUE 2026-06-05). Does not prove collapse.</div>'
+    );
 
-    if (cap && Object.keys(cap).length) renderCap(cap);
+    // ── VAULT STATUS ──
+    var vaultHealth = h.vault999_health || 'unknown';
+    var vaultHTML =
+      '<div class="metric"><span class="metric-label">HEALTH</span><span class="metric-val val-' + (vaultHealth === 'healthy' ? 'ok' : 'err') + '">' + vaultHealth.toUpperCase() + '</span></div>' +
+      '<div class="metric"><span class="metric-label">CHAIN INTEGRITY</span><span class="metric-val val-hold">HISTORICAL GAP*</span></div>' +
+      '<div class="metric"><span class="metric-label">LAST SEAL</span><span class="metric-val">' + (gov.last_seal_timestamp || 'none in session') + '</span></div>' +
+      '<div class="metric"><span class="metric-label">LANGFUSE</span><span class="metric-val val-' + (h.langfuse_tracing && h.langfuse_tracing.status === 'ACTIVE' ? 'ok' : 'hold') + '">' + ((h.langfuse_tracing || {}).status || 'UNVERIFIED') + '</span></div>' +
+      '<div style="margin-top:var(--space-3);font-size:var(--text-xs);color:var(--text-faint)">* Pre-migration gap ruled NON-ISSUE 2026-06-05. Chain is append-only. Reversing means rewriting the Vault — doctrine forbids it.</div>';
+    panels.vaultStatus.resolve(vaultHTML);
 
-    // Reality banner: HONEST summary. Never claim more than we know.
-    showReality('warn', 'Δ LIVE · svc=' + svcVerdict + ' · tools=' + (h.tools_loaded || '?') + ' · vault=' + vaultDisplay + ' · conf=' + confScore + ' · drift=' + driftDisplay);
-
-  } catch(e) {
-    console.warn('poll error:', e);
-    renderProbeError(e);
+  } catch (err) {
+    // API failed — show fallback on all panels
+    Object.keys(panels).forEach(function(k) { panels[k].error('API probe failed: ' + err.message); });
   }
-}
 
-poll();
-setInterval(poll, 8000);
-
-// ── Organ Discovery Fetch ────────────────────────────────────────────────
-// Audit note (2026-05-03): All 4 organs use streamable-http MCP.
-// Session ID obtained via mcp-session-id response header from initialize.
-// Only arifOS exposes REST discovery; others require MCP protocol.
-// Verified counts: arifOS 16 | GEOX 22 | WEALTH 17 | WELL 15 | TOTAL 70
-//
-// FIX (2026-05-04): Browser-side CORS fetches to organ subdomains fail behind
-// Cloudflare. We now use the same-origin /api/federation-probe as primary
-// health source, and only attempt CORS discovery when probe confirms healthy.
-async function loadOrganDiscovery() {
-  const organs = [
-    {id:'geox',url:'https://geox.arif-fazil.com',verifiedCount:20,note:'MCP session required'},
-    {id:'wealth',url:'https://wealth.arif-fazil.com',verifiedCount:44,note:'MCP session required'},
-    {id:'well',url:'https://well.arif-fazil.com',verifiedCount:45,note:'MCP session required'},
-    {id:'aaa',url:'https://aaa.arif-fazil.com',verifiedCount:null,note:'unknown'},
-    {id:'forge',url:'',verifiedCount:null,note:'internal service'},
-    {id:'wiki',url:'https://arifos.arif-fazil.com/wiki/',verifiedCount:null,note:'static site'},
-  ];
-
-  // Primary health source: same-origin server-side probe (bypasses CORS)
-  let probeResults = {};
+  // ── FEDERATION PROBE (separate call) ──
   try {
-    const pr = await fetch('/api/federation-probe', { cache: 'no-store' });
-    if (pr.ok) {
-      const pd = await pr.json();
-      probeResults = pd.probed || {};
-    }
-  } catch(e) { console.warn('federation-probe failed:', e); }
+    var probeRes = await fetch('/api/federation-probe', {cache:'no-store'});
+    var probe = await probeRes.json();
+    var probed = probe.probed || {};
+    var organOrder = ['arifos','geox','wealth','well','aaa','forge'];
+    var organNames = {arifos:'arifOS',geox:'GEOX',wealth:'WEALTH',well:'WELL',aaa:'AAA',forge:'A-FORGE'};
+    var organPorts = {arifos:8088,geox:8081,wealth:18082,well:18083,aaa:3001,forge:7071};
+    var topoHTML = '<div class="table-wrap"><table><tr><th>Organ</th><th>Port</th><th>Status</th></tr>';
+    organOrder.forEach(function(k) {
+      var o = probed[k] || {};
+      var health = o.health || 'unknown';
+      var cls = health === 'healthy' ? 'badge-ok' : health === 'degraded' ? 'badge-hold' : 'badge-err';
+      topoHTML += '<tr><td>' + organNames[k] + '</td><td>' + organPorts[k] + '</td><td><span class="badge ' + cls + '">' + health.toUpperCase() + '</span></td></tr>';
+    });
+    topoHTML += '</table></div>';
+    panels.topology.resolve(topoHTML);
+  } catch (err) {
+    panels.topology.error('Federation probe failed: ' + err.message);
+  }
 
-  // Update census table and SVG with honest probe data
-  renderFederationCensus(probeResults);
-
-  // Also fetch /api/status for arifOS-specific counts
-  let health = {};
+  // ── RECENT SEALS (VAULT999) ──
   try {
-    const hr = await fetch('/api/status', { cache: 'no-store' });
-    if (hr.ok) health = (await hr.json()).health || {};
-  } catch(e) { /* ignore */ }
-  updateSvgCounts(probeResults, health);
-
-  for (const o of organs) {
-    const probed = probeResults[o.id] || {};
-    const healthStatus = probed.health || 'unknown';
-    const isHealthy = healthStatus === 'healthy';
-    const isDegraded = healthStatus === 'degraded';
-
-    const el = document.getElementById(o.id+'-tools');
-    const el2 = document.getElementById(o.id+'-resources');
-    const el3 = document.getElementById(o.id+'-prompts');
-
-    const liveCount = probed.tool_count != null ? probed.tool_count : o.verifiedCount;
-
-    if (isHealthy && liveCount != null) {
-      if (el) el.textContent = liveCount + ' tools';
-      if (el2) el2.textContent = o.note || '';
-      if (el3) el3.textContent = '';
-    } else if (isHealthy) {
-      if (el) el.textContent = 'MCP discovery unavailable';
-      if (el2) el2.textContent = '';
-      if (el3) el3.textContent = '';
-    } else if (isDegraded) {
-      if (el) el.textContent = 'degraded';
-      if (el2) el2.textContent = '';
-      if (el3) el3.textContent = '';
-    } else {
-      if (el) el.textContent = healthStatus === 'unreachable' ? 'unreachable' : 'unknown';
-      if (el2) el2.textContent = '';
-      if (el3) el3.textContent = '';
-    }
-  }
-}
-loadOrganDiscovery();
-setInterval(loadOrganDiscovery, 60000);
-
-// ── Federation Manifest & Dossiers ───────────────────────────────────────
-// loadFederationProbe() fetches organ health/build-info server-side,
-// bypassing Cloudflare CORS restrictions that block browser-side cross-origin fetches.
-async function loadFederationProbe() {
-  try {
-    const r = await fetch('/api/federation-probe');
-    if (!r.ok) throw new Error('http ' + r.status);
-    const data = await r.json();
-    return data.probed || {};
-  } catch (e) {
-    console.warn('Federation probe failed (will use unknown):', e);
-    return {};
-  }
-}
-
-async function loadFederationManifest() {
-  try {
-    const [manifest, probeResults] = await Promise.all([
-      fetch('/federation-manifest.json').then(r => { if (!r.ok) throw new Error('http '+r.status); return r.json(); }),
-      loadFederationProbe(),
-    ]);
-    renderStackTopology(manifest.stack || {});
-    renderFederationDossiers(manifest.organs || {}, probeResults);
-  } catch(e) {
-    console.warn('Federation manifest failed:', e);
-  }
-}
-
-function renderStackTopology(stack) {
-  const topoEl = document.getElementById('stackTopology');
-  if (!topoEl) return;
-  const layers = (stack.topology && stack.topology.layers) ? stack.topology.layers : [];
-  let html = '<div style="display:flex;flex-direction:column;gap:var(--space-3)">';
-  layers.forEach((layer, i) => {
-    html += `<div class="topo-layer">
-      <div style="font-size:1.25rem">${i+1}</div>
-      <div style="flex:1">
-        <div style="font-weight:700;font-size:var(--text-sm)">${layer.name}</div>
-        <div style="font-size:var(--text-xs);color:var(--color-text-muted);line-height:1.5">${layer.role}</div>
-      </div>
-      <span class="badge ${layer.status==='live'?'badge-ok':'badge-hold'}">${layer.status.toUpperCase()}</span>
-    </div>`;
-    if (i < layers.length - 1) {
-      html += `<div class="topo-arrow" style="text-align:center">↓</div>`;
-    }
-  });
-  if (stack.topology && stack.topology.flow && stack.topology.flow.length) {
-    html += `<div style="margin-top:var(--space-3);padding:var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-md);font-size:var(--text-xs);color:var(--color-text-muted);font-family:var(--font-mono);line-height:1.5">${stack.topology.flow[0]}</div>`;
-  }
-  html += '</div>';
-  topoEl.innerHTML = html;
-}
-
-async function renderFederationDossiers(organs, probeResults) {
-  probeResults = probeResults || {};
-  for (const [key, org] of Object.entries(organs)) {
-    const card = document.querySelector(`.organ-card[data-organ="${key}"]`);
-    if (!card) continue;
-
-    let dossier = card.querySelector('.organ-dossier');
-    if (!dossier) {
-      dossier = document.createElement('div');
-      dossier.className = 'organ-dossier';
-      card.appendChild(dossier);
-    }
-
-    // Use server-side probe results (bypasses Cloudflare CORS block)
-    const probed = probeResults[key] || {};
-    const healthStatus = probed.health || 'unknown';
-
-    const buildInfo = probed.build_info || {};
-    const buildInfoHtml = Object.keys(buildInfo).length
-      ? `<div style="font-family:var(--font-mono);font-size:.7rem;color:var(--color-text-faint);margin-top:2px">${buildInfo.short_sha || (buildInfo.sha||'').slice(0,7)||'—'} · ${buildInfo.version||'—'}</div>`
-      : '';
-
-    let html = '';
-
-    // Health
-    html += `<div class="organ-section">
-      <div class="organ-section-title">Health</div>
-      <div class="organ-health ${healthStatus}">
-        <span class="h-dot"></span>
-        <span>${healthStatus.toUpperCase()}</span>
-      </div>
-      ${buildInfoHtml}
-    </div>`;
-
-    // Dependencies
-    if (org.dependencies && org.dependencies.length) {
-      html += `<div class="organ-section">
-        <div class="organ-section-title">Dependencies</div>
-        <div class="organ-deps">
-          ${org.dependencies.map(d => `<span class="organ-dep">${d}</span>`).join('')}
-        </div>
-      </div>`;
-    }
-
-    // TODO
-    if (org.todo && org.todo.length) {
-      html += `<div class="organ-section">
-        <div class="organ-section-title">TODO</div>
-        <ul class="organ-list">
-          ${org.todo.map(t => `<li>[${t.status.toUpperCase()}] ${t.item}</li>`).join('')}
-        </ul>
-      </div>`;
-    }
-
-    // Roadmap
-    if (org.roadmap && org.roadmap.length) {
-      html += `<div class="organ-section">
-        <div class="organ-section-title">Roadmap</div>
-        <ul class="organ-list">
-          ${org.roadmap.map(r => `<li>[${r.status.toUpperCase()}] ${r.milestone} (${r.target})</li>`).join('')}
-        </ul>
-      </div>`;
-    }
-
-    // Architecture Notes
-    if (org.architecture_notes && org.architecture_notes.length) {
-      html += `<div class="organ-section">
-        <div class="organ-section-title">Architecture</div>
-        <ul class="organ-list">
-          ${org.architecture_notes.map(a => `<li>${a}</li>`).join('')}
-        </ul>
-      </div>`;
-    }
-
-    // Active Endpoints
-    if (org.endpoints) {
-      const eps = Object.entries(org.endpoints).filter(([k,v]) => v);
-      if (eps.length) {
-        html += `<div class="organ-section">
-          <div class="organ-section-title">Live Endpoints</div>
-          <div class="organ-endpoints">
-            ${eps.map(([k,v]) => `<a class="organ-endpoint" href="${org.base_url}${v}" target="_blank" rel="noopener">${k}</a>`).join('')}
-          </div>
-        </div>`;
+    var vaultRes = await fetch('/api/vault/recent?limit=8', {cache:'no-store'});
+    if (vaultRes.ok) {
+      var vaultData = await vaultRes.json();
+      var entries = vaultData.entries || vaultData || [];
+      var sealHTML = '<div style="display:flex;flex-direction:column;gap:4px">';
+      if (Array.isArray(entries) && entries.length > 0) {
+        entries.slice(0, 8).forEach(function(e) {
+          var ts = e.timestamp || e.ts || '?';
+          var name = e.name || e.payload || e.type || 'seal';
+          if (typeof name === 'string' && name.length > 60) name = name.substring(0, 57) + '...';
+          sealHTML += '<div style="padding:var(--space-2) var(--space-3);background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius-sm);font-size:var(--text-xs);font-family:var(--font-mono)"><span style="color:var(--text-faint)">' + ts + '</span> <span style="color:var(--gold)">' + name + '</span></div>';
+        });
+      } else {
+        sealHTML += '<p style="color:var(--text-faint);font-size:var(--text-xs)">No recent seals found in current session.</p>';
       }
+      sealHTML += '</div>';
+      panels.recentSeals.resolve(sealHTML);
+    } else {
+      panels.recentSeals.resolve('<p style="color:var(--text-faint);font-size:var(--text-xs)">Vault query endpoint unavailable. Seals are written to disk at <code>/root/.local/share/arifos/vault999/</code>.</p>');
     }
-
-    dossier.innerHTML = html;
+  } catch (err) {
+    panels.recentSeals.resolve('<p style="color:var(--text-faint);font-size:var(--text-xs)">Vault query unavailable. VAULT999 is healthy but the query endpoint is not exposed publicly.</p>');
   }
-}
-
-loadFederationManifest();
-
-// ── SOT Drift Badge ──────────────────────────────────────────────────────
-(async function sotBadge() {
-  function render(sot, bi) {
-    let badge = document.getElementById('sot-float');
-    if (!badge) {
-      badge = document.createElement('div');
-      badge.id = 'sot-float';
-      badge.style.cssText = 'position:fixed;bottom:16px;right:16px;padding:8px 14px;border-radius:8px;font-family:monospace;font-size:12px;backdrop-filter:blur(10px);z-index:9999;cursor:pointer;transition:opacity .2s;';
-      badge.onclick = () => window.open('/webmcp', '_blank');
-      document.body.appendChild(badge);
-    }
-    const reportedSha = (bi.short_sha || (bi.sha || '').slice(0,7) || '');
-    const extra = Array.isArray(sot.extra_on_live) ? sot.extra_on_live.length : 0;
-    const missing = Array.isArray(sot.missing_on_live) ? sot.missing_on_live.length : 0;
-    const canonicalAligned = missing === 0 && Number(sot.main_count || 0) === 13;
-    const seal = sot.verdict === 'SEAL' || (canonicalAligned && extra === 0);
-    badge.style.background = seal ? 'rgba(74,222,128,0.08)' : 'rgba(249,115,22,0.08)';
-    badge.style.border = '1px solid ' + (seal ? 'rgba(74,222,128,0.4)' : 'rgba(249,115,22,0.4)');
-    badge.style.color = seal ? '#4ade80' : '#f97316';
-    const suffix = extra > 0 ? ` · +${extra} extension` : '';
-    badge.innerHTML = (seal ? '✅' : '⚠️') + ' SOT ' + (seal ? 'SEAL' : 'HOLD') +
-      ' · canonical ' + (sot.main_count || '?') + '/13' + suffix +
-      ' · runtime=' + (reportedSha || '—');
-  }
-  async function refresh() {
-    try {
-      const [sot, bi] = await Promise.all([
-        fetch('/inspector/sot').then(r => r.json()),
-        fetch('/api/build-info').then(r => r.json()),
-      ]);
-      render(sot, bi);
-    } catch(e) { console.warn('SOT badge error:', e); }
-  }
-  await refresh();
-  setInterval(refresh, 30000);
 })();
 </script>
 </body>

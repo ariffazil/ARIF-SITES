@@ -47,7 +47,12 @@ rsync -avz --delete $SITES_ROOT/wealth.arif-fazil.com/ $HTML_ROOT/wealth/   2>/d
 rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
 rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
 
-# 4. Permissions
+# 4. Sync runtime state (seal chain heartbeat for Δ BODY clock)
+echo "[3.6/5] Syncing seal chain head..."
+mkdir -p $HTML_ROOT/aaa/_state
+cp /root/VAULT999/seal_chain_head.json $HTML_ROOT/aaa/_state/seal_chain_head.json 2>/dev/null || true
+
+# 5. Permissions
 echo "[4/5] Setting permissions..."
 chown -R www-data:www-data $HTML_ROOT
 

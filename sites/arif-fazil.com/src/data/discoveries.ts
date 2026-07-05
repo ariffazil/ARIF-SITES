@@ -41,13 +41,15 @@ export const discoveries: Discovery[] = [
   {
     id: 'lebah-emas-1',
     title: 'LEBAH EMAS‑1',
-    year: '2021',
-    location: 'Offshore Terengganu · Block PM6/12, Malaysia',
-    summary: 'A wildcat exploration well testing a new play concept in a frontier area of offshore Terengganu. The well proved a working petroleum system in a basin segment that had been written off by multiple operators. Opened a new exploration play fairway.',
+    year: '2025',
+    location: 'Western hinge fault zone, Malay Basin margin · Block PM6/12',
+    summary: 'Wildcat exploration well at the western hinge fault zone of the Malay Basin margin. The well encountered multiple hydrocarbon-bearing reservoirs, confirming a working petroleum system in a frontier area previously written off. It opened a new play fairway along the margin.',
     evidence: [
-      'Hydrocarbon shows confirmed new play concept viability',
-      'Post-drill seismic remapping expanded prospect inventory',
-      'Block PM6/12 PSC value reassessed upward post-discovery'
+      '11 hydrocarbon-bearing intervals logged (gas and oil)',
+      'P50 recoverable resources estimated at ~235 Bscf gas equivalent',
+      'Sidetrack required; post-drill seismic expanded the prospect inventory in the margin play',
+      'Block PM6/12 subsequently included in 2026 farm-out arrangements (30% to EnQuest as "mature asset" in US$833M deal)',
+      'Discovery legacy treated as transaction footnote — new play opened but reframed for quick monetization'
     ],
     link: 'https://geox.arif-fazil.com',
     linkLabel: 'Explore GEOX →'

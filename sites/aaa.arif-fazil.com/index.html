@@ -8,7 +8,7 @@
   GOLDEN PATH: SENSE → MIND → HEART → JUDGE → VAULT
   FEDERATION: 6 organs — arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA
   TRANSPORT: JSON-RPC unified · ΔS ≤ 0
-  CANON: arifos.arif-fazil.com/wiki — deep constitutional doctrine
+  CANON: wiki.arif-fazil.com — deep constitutional doctrine
   THEORY: APEX 888 Judge · VAULT999 immutable ledger · 13 Floors
   DISCOVERY: llms.txt → llms-full.txt → mcp-discovery-index.json
   SIGNATURE: This system was not given. It was forged.
@@ -60,7 +60,7 @@
     <meta name="apple-mobile-web-app-title" content="AAA Cockpit" />
     
     <!-- Agent Discovery — MCP endpoint advertisement -->
-    <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="arifOS Governance Kernel" />
+    <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="arifOS Unified MCP Gateway" />
     <link rel="agent" href="/.well-known/agent.json" type="application/json" />
 
     <!-- LLM Discovery -->
@@ -86,12 +86,73 @@
     <meta name="hta-transport" content="JSON-RPC unified · ΔS ≤ 0" />
     <meta name="hta-organs" content="6 live: arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA" />
     <meta name="hta-tools" content="42 MCP-exposed (13 canonical + 29 operational)" />
-    <script type="module" crossorigin src="/assets/index-Cv06VT6R.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DgDZhXjQ.css">
+    <script type="module" crossorigin src="/assets/index-ST3LWXla.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DL_C9EwE.css">
   </head>
   <body>
-    <!-- Trinity Navigation — shared across all arifOS Federation sites -->
-    <script src="/_shared/trinity-nav.js" defer></script>
+    <!-- ═══ AGENT DOCKING EXPERIENCE — Static HTML, agent-readable ═══ -->
+    <noscript>
+      <style>
+        body{margin:0;background:#0d0c0b;color:#d4d2ce;font-family:'Satoshi','Inter',sans-serif;line-height:1.6;padding:2rem}
+        h1{font-family:'Cabinet Grotesk',sans-serif;font-size:1.75rem;font-weight:800;margin:0 0 1rem}
+        h2{font-family:'Cabinet Grotesk',sans-serif;font-size:1.25rem;font-weight:700;margin:1.5rem 0 0.5rem}
+        a{color:#3a9ea8;text-decoration:none}a:hover{text-decoration:underline}
+        .card{background:#121110;border:1px solid #2a2826;border-radius:0.5rem;padding:1rem;margin-bottom:1rem;font-size:0.875rem}
+        .badge{display:inline-block;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600}
+        .ok{background:rgba(90,158,56,0.15);color:#5a9e38}
+        .hold{background:rgba(224,146,42,0.15);color:#e0922a}
+        .err{background:rgba(184,48,96,0.15);color:#b83060}
+        table{width:100%;border-collapse:collapse;font-size:0.8125rem}
+        th{text-align:left;padding:0.5rem;font-weight:600;color:#9b9995;border-bottom:1px solid #2a2826}
+        td{padding:0.5rem;border-bottom:1px solid #2a2826}
+        code{background:#1e1c1a;padding:1px 4px;border-radius:2px;font-size:0.8125rem}
+      </style>
+      <h1>🖥️ AAA Cockpit — Agent Docking</h1>
+      <p style="color:#9b9995">You are docking into the arifOS federation. This is a governed doorway, not raw SSH.</p>
+
+      <h2>🚪 Docking Protocol</h2>
+      <div class="card">
+        <ol style="padding-left:1.5rem;margin:0">
+          <li><strong>Identity:</strong> Call <code>arif_init</code> to bind your session</li>
+          <li><strong>Authority:</strong> Your lease scope determines what's allowed</li>
+          <li><strong>State:</strong> Read health, floors, organs — what IS</li>
+          <li><strong>Law:</strong> F1-F13 floors gate every action</li>
+          <li><strong>Execution:</strong> Mutations go through A-FORGE with approval</li>
+          <li><strong>Receipt:</strong> VAULT999 records every consequential action</li>
+        </ol>
+      </div>
+
+      <h2>🔑 What You Can Do</h2>
+      <table>
+        <tr><th>Action</th><th>Authority</th><th>Gate</th></tr>
+        <tr><td><span class="badge ok">OBSERVE</span></td><td>Any agent</td><td>None</td></tr>
+        <tr><td><span class="badge ok">SUGGEST</span></td><td>Any agent</td><td>None</td></tr>
+        <tr><td><span class="badge hold">DRAFT</span></td><td>Lease required</td><td>Lease</td></tr>
+        <tr><td><span class="badge hold">EXECUTE</span></td><td>Lease + SEAL</td><td>Judge</td></tr>
+        <tr><td><span class="badge err">IRREVERSIBLE</span></td><td>F13 SOVEREIGN</td><td>888_HOLD</td></tr>
+      </table>
+
+      <h2>🌐 Federation Organs</h2>
+      <table>
+        <tr><th>Organ</th><th>Port</th><th>Role</th></tr>
+        <tr><td>arifOS</td><td>8088</td><td>Constitutional kernel — F1-F13, judge, vault</td></tr>
+        <tr><td>A-FORGE</td><td>7071</td><td>Execution shell — build, deploy, verify</td></tr>
+        <tr><td>GEOX</td><td>8081</td><td>Earth intelligence — seismic, petrophysics</td></tr>
+        <tr><td>WEALTH</td><td>18082</td><td>Capital intelligence — NPV, risk, flow</td></tr>
+        <tr><td>WELL</td><td>18083</td><td>Human readiness — vitality, fatigue</td></tr>
+        <tr><td>AAA</td><td>3001</td><td>Control plane — A2A, cockpit</td></tr>
+      </table>
+
+      <h2>🔗 MCP Gateway</h2>
+      <div class="card">
+        <p>All public MCP traffic: <a href="https://mcp.arif-fazil.com/mcp">mcp.arif-fazil.com/mcp</a></p>
+        <p>Protocol: streamable-http · 17 canonical tools · 45 MCP-exposed</p>
+        <p>Agent Card: <a href="/.well-known/agent.json">/.well-known/agent.json</a></p>
+      </div>
+
+      <p style="color:#807e7b;font-size:0.75rem;margin-top:2rem;font-family:monospace">DITEMPA BUKAN DIBERI · arifOS Federation · <a href="https://arifos.arif-fazil.com/">Observatory</a> · <a href="https://arif-fazil.com/canon/">Canon</a></p>
+    </noscript>
+
     <div id="root"></div>
     <!-- Domain guard: arif.fazil → arif-fazil.com. DNS may not resolve arif.fazil; this is a safety net if the wrong domain is ever mapped. -->
     <script>
