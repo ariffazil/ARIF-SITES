@@ -1,4 +1,4 @@
-# AGENTS.md — Working With Arif Fazil
+# 🌐 WIKI
 
 > **For AI agents who will interact with or work on behalf of Arif Fazil.**
 > **Read this BEFORE any interaction with Arif.**
