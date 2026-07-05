@@ -21,6 +21,9 @@ jobs:
 
       - name: Create date-stamped tag
         run: |
+          git config user.email "forge@arif-fazil.com"
+          git config user.name "arifOS Forge"
+
           TODAY="v$(date -u +'%Y.%m.%d')"
 
           if git rev-parse "$TODAY" >/dev/null 2>&1; then
