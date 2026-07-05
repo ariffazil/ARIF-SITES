@@ -65,7 +65,7 @@ test.describe('arifos.arif-fazil.com (Observatory)', () => {
 
     // Header structure
     const h1 = page.locator('h1');
-    await expect(h1).toContainText('arifOS');
+    await expect(h1).toContainText('Constitutional Infrastructure Layer');
 
     // Hero or body text check for read-only focus
     const bodyText = await page.innerText('body');
