@@ -10,9 +10,11 @@ import samAltmanElonMuskAnwarAkal from './sam-altman-elon-musk-anwar-akal';
 import petronasDna from './petronas-dna';
 import petronasHiveSale from './petronas-hive-sale';
 import surinameExxonCabut from './suriname-exxon-cabut';
+import aiJohorRakyat2026 from './ai-johor-rakyat-2026';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  aiJohorRakyat2026,
   petronasDna,
   petronasHiveSale,
   surinameExxonCabut,
@@ -27,6 +29,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'ai-johor-rakyat-2026',
+    title: 'AI Makan Kerja, Johor Pilih Bos, Rakyat Bayar Semua',
+    subtitle: '697,000 pekerjaan terancam. Pilihan raya 11 Julai. Harga barang naik. Makcik tanya: siapa sebenarnya yang untung dalam semua ni?',
+    date: '2026-07-06',
+    domain: 'MAKCIKGPT × MALAYSIA',
+    language: 'ms',
+    excerpt: 'AI ganti 697,000 pekerjaan. Johor election 11 Julai — BN vs PH dalam kerajaan yang sama. 8/10 keluarga struggle. Gen Z "retirement home" viral. Makcik nampak satu benang: Malaysia sedang makan generasi sendiri. Dan semua orang dalam survival mode.',
+    tags: ['ai', 'johor', 'election', 'rakyat', 'cost-of-living', 'brain-drain', 'gen-z', 'deepfake', 'anwar', 'umno', 'ph', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'petronas-dna',
     title: 'PETRONAS DNA — Dulu Bulldog, Sekarang Anjing',
