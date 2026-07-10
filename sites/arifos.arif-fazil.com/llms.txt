@@ -11,6 +11,29 @@ arifOS is a constitutional AI governance framework. This observatory provides re
 - **VAULT999**: Immutable audit chain with hash-chained seals
 - **888 JUDGE**: Constitutional verdict engine
 
+## MCP Primitives (v2025-11-25)
+
+The arifOS MCP server exposes three primitives per spec:
+
+| Primitive | Count | Description |
+|-----------|-------|-------------|
+| **Tools** | 12 public (+ 5 internal) | Governed actions: init, observe, think, route, bridge, critique, memory, judge, forge, compose, seal, triage |
+| **Resources** | 183 direct + 12 templates | 16 core constitutional resources (arifos://) + 167 skill resources (skill://). Templates for witness logs, vault entries, source retrieval. |
+| **Prompts** | 8 | Golden-path stages: loop_engineer, 000_init, 111_sense, 333_reason, 555_critique, 666_judge, 777_forge, 999_seal |
+
+### Resource Schemes
+
+- `arifos://doctrine` — Constitutional doctrine
+- `arifos://trinity` — AAA Trinity lanes
+- `arifos://schema` — Canonical schema
+- `arifos://identity` — Sovereign identity manifest
+- `arifos://memory` — Memory architecture (L1-L6)
+- `arifos://vitals` — Constitutional vitals
+- `arifos://vault/{vault_type}` — VAULT999 entry reader (template)
+- `arifos://witness/log/{filter}` — Witness log (template)
+- `skill://{name}/SKILL.md` — Skill documents
+- `source://{hash}` — Source retrieval by hash (template)
+
 ## Canonical MCP Gateway
 
 All public MCP traffic routes through one canonical gateway:
@@ -31,6 +54,7 @@ All public MCP traffic routes through one canonical gateway:
 
 ## Agent Discovery
 
+- Server Card: `https://arifos.arif-fazil.com/.well-known/mcp/server.json`
 - Agent Card: `https://arifos.arif-fazil.com/.well-known/agent-card.json`
 - MCP Manifest: `https://arifos.arif-fazil.com/.well-known/mcp.json`
 - AI Plugin: `https://arifos.arif-fazil.com/.well-known/ai-plugin.json`
