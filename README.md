@@ -1,6 +1,6 @@
 ﻿<!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-07-01
+last_verified: 2026-07-10
 valid_from: 2026-07-01
 valid_until: 2026-07-31
 confidence: high
@@ -79,7 +79,7 @@ scripts/deploy-site.sh <site-dir>
 
 ## 🔗 Federation Loop
 
-- [arifOS](https://github.com/ariffazil/arifOS) — Kernel (docs hosted at arifos.arif-fazil.com)
+- [arifOS](https://github.com/ariffazil/arifos) — Kernel (docs hosted at arifos.arif-fazil.com)
 - [GEOX](https://github.com/ariffazil/geox) — Field (lab/field GUI at geox.arif-fazil.com)
 - [AAA](https://github.com/ariffazil/AAA) — Body (session at aaa.arif-fazil.com)
 
@@ -92,7 +92,7 @@ scripts/deploy-site.sh <site-dir>
 
 | Organ | Repository | Role | Port |
 |-------|-----------|------|------|
-| **arifOS** | [ariffazil/arifOS](https://github.com/ariffazil/arifOS) | Constitutional Kernel · F1-F13 | 8088 |
+| **arifOS** | [ariffazil/arifos](https://github.com/ariffazil/arifos) | Constitutional Kernel · F1-F13 | 8088 |
 | **AAA** | [ariffazil/AAA](https://github.com/ariffazil/AAA) | Reality Console · A2A Gateway | 3001 |
 | **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | Execution Shell | 7071 |
 | **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | Earth Intelligence | 8081 |
@@ -100,8 +100,8 @@ scripts/deploy-site.sh <site-dir>
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | Human Readiness | 18083 |
 | **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | Public Surfaces | 443 |
 
-> **Constitutional authority:** F1-F13 floors, 888_JUDGE, and VAULT999 live in `ariffazil/arifOS`.  
-> **Live federation status:** See `ariffazil/arifOS/FEDERATION_STATUS.md`.
+> **Constitutional authority:** F1-F13 floors, 888_JUDGE, and VAULT999 live in `ariffazil/arifos`.  
+> **Live federation status:** See `ariffazil/arifos/FEDERATION_STATUS.md`.
 ## 📄 Contributing
 
 This repository operates under the arifOS Federation constitution (F1–F13).  
