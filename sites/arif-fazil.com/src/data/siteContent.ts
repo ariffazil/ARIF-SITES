@@ -31,13 +31,16 @@ export type SystemProject = {
 
 export const primaryLinks: LinkItem[] = [
   { label: 'Wells', href: '/#wells' },
-  { label: 'Systems', href: '/#systems' },
+  { label: 'Systems', href: '/#what-i-built' },
   { label: 'Practice', href: '/#practice' },
   { label: 'Contact', href: '/#contact' },
   { label: '/000', href: '/000/' },
   { label: '/999', href: '/999/' },
+  { label: '/canon', href: '/canon/' },
+  { label: '/constellation', href: '/constellation/' },
   { label: '/wealth', href: '/wealth/' },
   { label: 'Writing', href: '/essays/' },
+  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
 ];
 
 // Plain — no scores, no stats, no framing

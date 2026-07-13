@@ -2,30 +2,29 @@
   "@context": "https://identity.foundation/well-known/did-configuration/v1",
   "linked_dids": [
     {
-      "subject": "did:web:arif-fazil.com",
+      "@context": [
+        "https://www.w3.org/2018/credentials/v1",
+        "https://w3id.org/security/multikey/v1"
+      ],
+      "type": [
+        "VerifiableCredential",
+        "DomainLinkageCredential"
+      ],
       "issuer": "did:web:arif-fazil.com",
-      "issuance_date": "2026-04-30T00:00:00Z",
-      "expiration_date": "2027-04-30T00:00:00Z",
-      "credentials": [
-        {
-          "@context": [
-            "https://www.w3.org/2018/credentials/v1",
-            "https://w3id.org/security/multikey/v1"
-          ],
-          "type": ["VerifiableCredential", "DomainLinkageCredential"],
-          "credentialSubject": {
-            "id": "did:web:arif-fazil.com",
-            "domain": "arif-fazil.com"
-          },
-          "proof": {
-            "type": "Multikey",
-            "created": "2026-04-30T00:00:00Z",
-            "verificationMethod": "did:web:arif-fazil.com#genesis-2026",
-            "proofPurpose": "assertionMethod",
-            "proofValue": "PLACEHOLDER_SIGNATURE_BASE58"
-          }
-        }
-      ]
+      "issuanceDate": "2026-04-30T00:00:00Z",
+      "expirationDate": "2027-04-30T00:00:00Z",
+      "credentialSubject": {
+        "id": "did:web:arif-fazil.com",
+        "origin": "https://arif-fazil.com"
+      },
+      "proof": {
+        "type": "DataIntegrityProof",
+        "cryptosuite": "eddsa-jcs-2022",
+        "created": "2026-07-13T01:35:46Z",
+        "verificationMethod": "did:web:arif-fazil.com#arif-fazil",
+        "proofPurpose": "assertionMethod",
+        "proofValue": "zNzzvnvzNZvxUiyTzH8wWjN94E21nyzU2MqffmzWt2zhtCQEbMFNuhEXhGFf9vdrbsro3s6fy6aE5XYjhU1uuZ2g"
+      }
     }
   ]
 }
