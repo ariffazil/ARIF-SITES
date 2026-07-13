@@ -50,7 +50,7 @@ fi
 TEMP_DIR="${WEBROOT}.tmp.${TIMESTAMP}"
 mkdir -p "$TEMP_DIR"
 log "Copying build to temp: $TEMP_DIR"
-cp -a "$BUILD_DIR/"* "$TEMP_DIR/" 2>/dev/null || cp -a "$BUILD_DIR" "$TEMP_DIR/"
+cp -a "$BUILD_DIR/." "$TEMP_DIR/"
 
 log "Atomic swap to webroot..."
 BACKUP_DIR="${WEBROOT}.bak.${TIMESTAMP}"
