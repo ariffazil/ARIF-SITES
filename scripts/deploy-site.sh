@@ -5,7 +5,7 @@
 set -euo pipefail
 
 SITE_NAME="${1:-arif-fazil.com}"
-SOURCE_DIR="/root/arif-sites/sites/${SITE_NAME}"
+SOURCE_DIR="/root/ARIF-SITES/sites/${SITE_NAME}"
 TIMESTAMP=$(date +%Y%m%d%H%M%S)
 LOG_PREFIX="[deploy:${SITE_NAME}]"
 
@@ -40,7 +40,7 @@ fi
 if [[ -f "$SOURCE_DIR/package.json" ]]; then
     log "Installing dependencies..."
     cd "$SOURCE_DIR"
-    npm ci --quiet || fail "npm ci failed"
+    npm ci --quiet --legacy-peer-deps || fail "npm ci failed"
 
     log "Building..."
     npm run build 2>&1 || fail "build failed"
