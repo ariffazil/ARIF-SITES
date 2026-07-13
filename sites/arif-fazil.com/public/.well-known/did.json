@@ -41,12 +41,16 @@
     {
       "id": "did:web:arif-fazil.com#arif-fazil",
       "controller": "did:web:arif-fazil.com",
-      "type": "Ed25519VerificationKey2020",
+      "type": "Multikey",
       "publicKeyMultibase": "z6MkncqhqV2Zr5h3LWeWPjsTvn3L5A6YAsDZcjwz7iDht1xh"
     }
   ],
-  "authentication": ["did:web:arif-fazil.com#arif-fazil"],
-  "assertionMethod": ["did:web:arif-fazil.com#arif-fazil"],
+  "authentication": [
+    "did:web:arif-fazil.com#arif-fazil"
+  ],
+  "assertionMethod": [
+    "did:web:arif-fazil.com#arif-fazil"
+  ],
   "created": "2026-01-01T00:00:00Z",
   "updated": "2026-05-02T21:05:00Z",
   "relinkMetadata": {
