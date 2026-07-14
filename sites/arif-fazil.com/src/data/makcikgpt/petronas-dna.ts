@@ -48,16 +48,18 @@ const content: ArticleContent = {
 <p>Maksudnya: CEO PETRONAS dulu <strong>berani cakap tidak</strong> kat kerajaan kalau benda tu tak betul. Bukan degil. Tapi sebab dia tahu — kalau integrity syarikat ni pecah, habis semuanya.</p>
 
 <div class="fact-box">
-<div class="fact-box-title">▲ 4 Nilai DNA PETRONAS (dilancarkan 1988)</div>
+<div class="fact-box-title">▲ 4 Shared Values PETRONAS (CoBE — Code of Conduct and Business Ethics)</div>
 <div class="fact-box-content">
-<span class="label">Kesetiaan</span> Kepada negara dan syarikat<br>
-<span class="label">Profesionalisme</span> Komited, inovatif, proaktif, cemerlang<br>
-<span class="label">Integriti</span> Jujur dan berprinsip<br>
-<span class="label">Kekompakan</span> Bersatu dalam matlamat dan persefahaman<br>
+<span class="label">Loyalty (Kesetiaan)</span> Loyal to corporation<br>
+<span class="label">Integrity (Integriti)</span> Honest and upright<br>
+<span class="label">Professionalism (Profesionalisme)</span> Strive for excellence<br>
+<span class="label">Cohesiveness (Kekompakan)</span> United, trust and respect for each other<br>
+<br>
+<em>Source: PETRONAS Code of Conduct and Business Ethics (CoBE), PETRONAS Gas Berhad Governance, PETRONAS Global — Shared Values.</em>
 </div>
 </div>
 
-<p>Empat nilai. Empat saja. Dan dengan empat tu, PETRONAS pergi dari syarikat kecil kat Jalan Pudu jadi multinational gergasi operasi dalam <strong>30+ negara</strong>.</p>
+<p>Empat nilai. Empat saja. Dan dengan empat tu — serta satu misi yang jelas — PETRONAS pergi dari syarikat kecil kat Dayabumi jadi multinational gergasi operasi dalam <strong>30+ negara</strong>. Dari modal <strong>RM10 juta</strong> kepada aset <strong>RM775 bilion</strong>. Satu sen pun tak minta tambah dari kerajaan.</p>
 
 <hr />
 
