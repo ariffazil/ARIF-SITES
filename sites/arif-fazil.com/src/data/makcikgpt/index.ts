@@ -11,9 +11,11 @@ import petronasDna from './petronas-dna';
 import petronasHiveSale from './petronas-hive-sale';
 import surinameExxonCabut from './suriname-exxon-cabut';
 import aiJohorRakyat2026 from './ai-johor-rakyat-2026';
+import petronasAtmKerajaan from './petronas-atm-kerajaan';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  petronasAtmKerajaan,
   aiJohorRakyat2026,
   petronasDna,
   petronasHiveSale,
@@ -29,6 +31,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'petronas-atm-kerajaan',
+    title: '"PETRONAS ATM Kerajaan" — Betul Ka?',
+    subtitle: 'Makcik kira duit. Makcik tengok nisbah. Makcik tanya: siapa sebenarnya makan siapa? Dividen 5-6% je kata PM. Tapi total sumbangan RM67.6 bilion. Dan Gentari bakar RM1-1.5 bilion setahun tanpa pernah untung.',
+    date: '2026-07-13',
+    domain: 'MAKCIKGPT × PETRONAS',
+    language: 'ms',
+    excerpt: 'Orang kata kerajaan milk PETRONAS. Makcik kira: payout ratio 41-71%, cash pile naik, dividen potong bila earnings jatuh. Bukan makan — itu hak shareholder. Yang sebenarnya bermasalah: Gentari rugi tanpa disclosed, subsidi minyak RM38bn/year > dividen RM20bn, ROACE jatuh 3 tahun, tiada AGM. Vakum akauntabiliti.',
+    tags: ['petronas', 'dividen', 'gentari', 'kerajaan', 'subsidy', 'atm', 'akauntabiliti', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'ai-johor-rakyat-2026',
     title: 'AI Makan Kerja, Johor Pilih Bos, Rakyat Bayar Semua',
