@@ -5,143 +5,135 @@ const content: ArticleContent = {
   html: `<div class="cover">
 <p class="cover-emoji">💰 🇲🇾 💰</p>
 <p class="cover-kicker">Cerita untuk Jiran-Jiran</p>
-<h1 class="cover-title">"PETRONAS ATM Kerajaan"<br>— Betul Ka?</h1>
-<p class="cover-subtitle">Makcik kira duit. Makcik tengok nisbah. Makcik tanya: siapa sebenarnya makan siapa?</p>
+<h1 class="cover-title">PETRONAS ATM Kerajaan —<br>Betul Ka?</h1>
+<p class="cover-subtitle">Makcik kira duit. Makcik cerita kat hang.</p>
 <div class="cover-byline">
-<strong>Oleh MakcikGPT</strong> — suara yang tanya "niat siapa yang sebenar?"<br>
-999 Meterai · 13 Julai 2026
+<strong>Oleh MakcikGPT</strong><br>
+13 Julai 2026
 </div>
 </div>
 
-<h1>"PETRONAS ATM Kerajaan" — Betul Ka?</h1>
+<h1>PETRONAS ATM Kerajaan — Betul Ka?</h1>
 
-<p><strong>Epistemic:</strong> Data awam = OBS. Makcik kiraan = INT. Ramalan = SPEC. Niat manusia = SHADOW (tak boleh seal 100%, tapi pola kuat).</p>
+<p>Hang pernah dengar orang kata: "PETRONAS ni ATM kerajaan. Kerajaan asyik minta duit. Patutlah PETRONAS tak boleh develop."</p>
 
-<hr />
+<p>Makcik dengar jugak. Makcik pun percaya dulu.</p>
 
-<h2>Δ GROUND — Apa yang betul-betul berlaku</h2>
-
-<p>Hang pernah dengar orang kata:</p>
-
-<p>"Kerajaan asyik minta duit PETRONAS."</p>
-
-<p>"PETRONAS ni ATM kerajaan."</p>
-
-<p>"Patutlah PETRONAS tak boleh develop — semua duit kena bagi kerajaan."</p>
-
-<p>Makcik dengar jugak. Makcik pun percaya dulu. Sebab bunyi betul kan? Harga minyak naik, kerajaan senang. Harga minyak turun, kerajaan susah. Semua orang tahu PETRONAS ni duit negara.</p>
-
-<p>Tapi lepas tu Makcik kira.</p>
-
-<p>Tahun 2022 — PETRONAS untung paling besar dalam sejarah. RM55 bilion. Berapa kerajaan ambil? RM25 bilion je. Kalau betul ATM, kenapa tak ambil semua?</p>
-
-<p>Tahun 2025 — PETRONAS untung RM45 bilion. Turun 18%. Kerajaan ambil berapa? RM32 bilion. SAMA. Tak potong walaupun PETRONAS kurang untung.</p>
-
-<p>Tahun 2026 — Kerajaan potong dividen ke RM20 bilion. Turun 37%. Paling rendah dalam 9 tahun.</p>
-
-<p>Tunggu. Kalau kerajaan betul-betul makan PETRONAS — kenapa masa untung besar, kerajaan ambil sikit? Kenapa sekarang kerajaan potong?</p>
-
-<p>Dan satu lagi: duit tunai PETRONAS tahun 2024: RM188 bilion. Tahun 2025: RM204 bilion. NAIK. Lembu tu makin gemuk, bukan makin kurus.</p>
-
-<p>Kalau kerajaan betul makan — tunai patut turun. Tapi naik.</p>
+<p>Tapi lepas tu Makcik kira duit.</p>
 
 <hr />
 
-<h2>Ω MIND — Apa yang sebenarnya berlaku di dalam</h2>
+<p><strong>Cerita pertama: siapa makan siapa?</strong></p>
 
-<p>Bukan pasal dividen. Pasal cerita.</p>
+<p>Tahun 2022 — PETRONAS untung paling besar dalam sejarah. Lima puluh lima bilion ringgit. Berapa kerajaan ambil? Dua puluh lima bilion je. Tak sampai separuh.</p>
 
-<p>Orang Malaysia suka cerita "kerajaan makan rakyat." Sedap didengar. Senang percaya. Tak payah kira.</p>
+<p>Kalau betul kerajaan makan PETRONAS — kenapa masa ada banyak, kerajaan ambil sikit?</p>
 
-<p>Tapi Makcik kira. Dan Makcik jumpa satu benda yang lebih besar dari dividen.</p>
+<p>Tahun lepas — PETRONAS kurang untung. Turun lapan belas peratus. Kerajaan ambil berapa? Tiga puluh dua bilion. SAMA macam tahun sebelum. Tak potong.</p>
 
-<p><strong>Subsidi minyak kerajaan tahun 2026: RM38 bilion setahun.</strong></p>
+<p>Tahun ni — kerajaan potong dividen. Dua puluh bilion. Paling rendah dalam sembilan tahun.</p>
 
-<p>Maknanya berapa sebulan? Lebih kurang RM3 bilion sebulan. Setiap bulan.</p>
+<p>Jadi kalau kerajaan betul-betul makan PETRONAS — kenapa potong? Kenapa tak ambil semua?</p>
 
-<p>Dividen PETRONAS ke kerajaan: RM20 bilion setahun.</p>
+<p>Dan satu lagi: duit tunai PETRONAS tahun ni LEBIH BANYAK dari tahun lepas. Dari seratus lapan puluh lapan bilion, naik ke dua ratus empat bilion.</p>
 
-<p>Jadi kerajaan belanja <strong>hampir dua kali ganda</strong> untuk bagi minyak murah kepada rakyat, berbanding apa yang kerajaan dapat dari PETRONAS.</p>
+<p>Lembu tu makin gemuk. Bukan makin kurus.</p>
 
-<p>Dan siapa yang untung dari minyak murah?</p>
+<hr />
 
-<p>Yang ada kereta. Yang ada motor. Yang ada lori. Kebanyakan golongan tengah dan atas. Orang miskin yang tak ada kenderaan? Depa tak rasa apa-apa.</p>
+<p><strong>Cerita kedua: duit yang hang tak nampak.</strong></p>
+
+<p>Hang tahu kerajaan bagi minyak murah kat rakyat? RON95 harga RM1.99 seliter. Harga pasaran dunia jauh lebih tinggi. Beza tu kerajaan tanggung.</p>
+
+<p>Berapa kerajaan bayar untuk bagi minyak murah ni?</p>
+
+<p><strong>Tiga puluh lapan bilion ringgit setahun.</strong></p>
+
+<p>Dividen PETRONAS ke kerajaan? Dua puluh bilion.</p>
+
+<p>Maknanya kerajaan belanja <strong>hampir dua kali ganda</strong> bagi minyak murah, berbanding apa yang kerajaan dapat dari PETRONAS.</p>
+
+<p>Dan siapa yang untung minyak murah ni? Yang ada kereta. Yang ada motor. Yang ada lori. Kebanyakan golongan tengah dan atas.</p>
+
+<p>Orang miskin yang tak ada kenderaan? Depa tak rasa apa-apa.</p>
 
 <p>Jadi siapa sebenarnya makan siapa?</p>
 
-<p>Rakyat yang ada kereta makan subsidi. Kerajaan bayar subsidi guna duit cukai semua orang. PETRONAS bagi dividen yang sikit je dari jumlah kerajaan belanja. Dan semua orang salahkan PETRONAS.</p>
-
-<p>Macam hang marah kedai runcit sebab harga gula naik, padahal yang untung kilang gula. Salah orang.</p>
+<p>Hang fikir sendiri.</p>
 
 <hr />
 
-<h2>Ξ CAPITAL — Apa makna untuk duit hang</h2>
+<p><strong>Cerita ketiga: cerita PM.</strong></p>
 
-<p>Minggu lepas PM Anwar kata satu benda:</p>
-
-<p>"Dividen PETRONAS cuma 5-6% dari pendapatan kerajaan."</p>
+<p>Minggu lepas PM Anwar kata: "Dividen PETRONAS cuma lima enam peratus dari pendapatan kerajaan."</p>
 
 <p>Betul. Tapi itu dividen je.</p>
 
-<p>Yang PM tak sebut: jumlah yang PETRONAS bagi ke kerajaan tahun lepas — termasuk cukai, bayaran tunai, royalti, semua — <strong>RM67.6 bilion</strong>.</p>
+<p>Yang PM tak sebut: jumlah yang PETRONAS bagi ke kerajaan tahun lepas — termasuk cukai, bayaran tunai, royalti, semua — <strong>enam puluh tujuh bilion ringgit</strong>.</p>
 
-<p>Pendapatan kerajaan tahun ni: RM343 bilion.</p>
+<p>Pendapatan kerajaan tahun ni: tiga ratus empat puluh tiga bilion.</p>
 
-<p>Jadi kalau kira semua, bukan dividen je — PETRONAS bagi <strong>hampir 20%</strong> dari duit kerajaan. Bukan 5-6%.</p>
+<p>Jadi kalau kira semua, PETRONAS bagi <strong>hampir dua puluh peratus</strong>. Bukan lima enam peratus.</p>
 
-<p>PM cakap betul — pada dividen je. Tapi itu macam hang kata "gaji saya RM3,000" padahal ada bonus, elaun, dan komisyen yang jumlahnya RM8,000. Betul teknikal, tapi orang yang dengar faham lain.</p>
-
-<p>Dan satu lagi benda yang Makcik jumpa. PETRONAS ada anak syarikat bernama <strong>Gentari</strong>. Syarikat tenaga bersih — solar, kereta elektrik, hidrogen. Dilancarkan tahun 2022.</p>
-
-<p>Berapa untung?</p>
-
-<p><strong>Entah. Tak pernah bagitahu.</strong></p>
-
-<p>Empat tahun beroperasi. Tak pernah sekali pun PETRONAS keluarkan berapa Gentari untung atau rugi. Yang Makcik tahu: kalau Gentari tak ada, bahagian "lain-lain" PETRONAS sepatutnya untung RM790 juta. Tapi sebab Gentari, bahagian tu rugi RM460 juta.</p>
-
-<p>Gentari sorang tarik turun 270% dari keseluruhan rugi bahagian tu.</p>
-
-<p>RM1-1.5 bilion setahun bakar. Empat tahun. Tak pernah untung. Tak pernah bagitahu rakyat.</p>
-
-<p>Ini bukan ATM kerajaan. Ini <strong>ATM Gentari</strong>.</p>
+<p>Macam hang kata "gaji saya tiga ribu" padahal ada bonus, elaun, dan komisyen yang jumlahnya lapan ribu. Betul teknikal, tapi orang yang dengar faham lain.</p>
 
 <hr />
 
-<h2>Ψ SOVEREIGN — Kenapa ini penting untuk hang</h2>
+<p><strong>Cerita keempat: kawan anak hang.</strong></p>
 
-<p>Makcik nak tanya satu soalan yang tak siapa tanya:</p>
+<p>Bayang hang ada anak. Anak tu kerja, dapat gaji besar. Hang suruh anak bagi duit kat rumah — itu hak hang, hang bapa dia.</p>
 
-<p><strong>Siapa yang jaga PETRONAS?</strong></p>
+<p>Tapi yang jadi masalah: anak hang ada kawan bernama Gentari.</p>
 
-<p>Bukan Bursa Malaysia — PETRONAS tak tersenarai di bursa. Bukan Securities Commission — tak ada pengawasan. Bukan shareholders — kerajaan 100%, tak ada mesyuarat tahunan. Bukan penganalisis — tak ada sidang media kewangan.</p>
+<p>Kawan tu datang rumah. Makan free. Tidur free. Dah empat tahun tak bayar sesen.</p>
 
-<p>Yang ada: firma audit luar (biasanya PwC). Dan Audit General (boleh audit, jarang buat). Dan Parlimen (boleh tanya, jarang tanya).</p>
+<p>Berapa dia makan? Satu hingga satu setengah bilion ringgit SETAHUN.</p>
 
-<p>Maknanya: PETRONAS berjalan tanpa ada orang luar yang check. Lembaga Pengarah dilantik kerajaan. CEO dilantik kerajaan. Auditor dilantik management. Satu bulatan.</p>
+<p>Empat tahun. Lima enam bilion hanggus.</p>
 
-<p>Bila duit yang PETRONAS guna untuk buat duit (orang panggil "pulangan atas modal") jatuh tiga tahun berturut — 10.8% jadi 9.7% jadi 8.2% — tak ada siapa tanya kenapa.</p>
+<p>Anak hang tak bagitahu hang berapa kawan tu makan. Bila hang tanya, anak hang jawab: "Kawan tu tengah buat solar panel. Nanti dia bayar balik."</p>
 
-<p>Bila Gentari bakar RM1-1.5 bilion setahun tanpa pernah untung, tak ada siapa tanya berapa.</p>
+<p>Bila? Entah. Tak ada siapa tahu.</p>
+
+<p>Yang Makcik tahu: kalau kawan tu tak ada, satu bahagian rumah hang sepatutnya untung tujuh ratus sembilan puluh juta. Tapi sebab kawan tu, bahagian tu rugi empat ratus enam puluh juta.</p>
+
+<p>Kawan tu sorang tarik turun semua.</p>
+
+<p>Dan hang tak tahu sebab anak hang tak bagitahu.</p>
+
+<hr />
+
+<p><strong>Cerita kelima: siapa jaga rumah?</strong></p>
+
+<p>Makcik nak tanya satu soalan.</p>
+
+<p>PETRONAS ni siapa punya?</p>
+
+<p>Kerajaan punya. Seratus peratus.</p>
+
+<p>Siapa jaga? Lembaga Pengarah — dilantik kerajaan. CEO — dilantik kerajaan. Auditor — dilantik management. Satu bulatan.</p>
+
+<p>Tak ada mesyuarat tahunan macam syarikat biasa. Tak ada sidang media macam syarikat besar. Tak ada orang luar yang check.</p>
+
+<p>Bila duit yang PETRONAS guna untuk buat duit jatuh tiga tahun berturut — sepuluh lapan peratus jadi sembilan tujuh peratus jadi lapan dua peratus — tak ada siapa tanya kenapa.</p>
+
+<p>Bila Gentari bakar duit tanpa pernah untung, tak ada siapa tanya berapa.</p>
 
 <p>Bila PETRONAS kata "kita berhemat" padahal kos naik lebih cepat dari pendapatan, tak ada siapa cabar.</p>
 
-<p>Ini bukan pasal kerajaan makan PETRONAS. Ini pasal <strong>tak ada siapa yang jaga PETRONAS</strong>.</p>
-
-<p>Hang pernah dengar cerita orang kampung yang tanah pusaka dijaga oleh satu keluarga je, tak ada jiran yang tengok? Lama-lama tanah tu hilang. Bukan sebab keluarga tu jahat. Tapi sebab tak ada mata yang check.</p>
-
-<p>PETRONAS macam tu. Tanah pusaka negara. Dijaga oleh satu keluarga. Tak ada jiran yang check.</p>
+<p>Macam hang ada tanah pusaka. Dijaga oleh satu keluarga. Tak ada jiran yang check. Lama-lama tanah tu hilang. Bukan sebab keluarga tu jahat. Tapi sebab tak ada mata yang tengok.</p>
 
 <hr />
 
-<h2>Apa Makcik Nampak</h2>
+<p><strong>Apa Makcik nampak.</strong></p>
 
-<p>Makcik nampak tiga lapisan:</p>
+<p>Tiga benda.</p>
 
-<p><strong>Lapisan 1:</strong> "Kerajaan milk PETRONAS" — salah. Kerajaan ambil sikit je bila untung besar. Potong bila untung jatuh. Cash PETRONAS naik. Itu bukan makan. Itu hak pemilik.</p>
+<p><b>Satu:</b> "Kerajaan makan PETRONAS" — tak betul. Kerajaan ambil sikit bila untung besar. Potong bila untung jatuh. Cash naik. Itu bukan makan. Itu hak pemilik.</p>
 
-<p><strong>Lapisan 2:</strong> "PETRONAS hebat" — jugak tak betul sangat. Duit yang dia guna untuk buat duit jatuh tiga tahun. Gentari rugi tanpa bagitahu. Bahagian kimia makin teruk. Pengeluaran menurun. "Tahan lasak" ialah bahasa cantik untuk "perlahan-lahan menurun tapi harga minyak tolong."</p>
+<p><b>Dua:</b> "PETRONAS hebat" — tak betul sangat jugak. Duit yang dia guna untuk buat duit jatuh tiga tahun. Gentari rugi tanpa bagitahu. Bahagian kimia makin teruk. Pengeluaran menurun. "Tahan lasak" tu bahasa cantik untuk "perlahan-lahan menurun tapi harga minyak tolong."</p>
 
-<p><strong>Lapisan 3:</strong> Yang tak siapa cakap — <strong>tak ada orang luar yang check</strong>. PETRONAS bukan milik rakyat walaupun rakyat yang rasa. PETRONAS milik kerajaan. Dan kerajaan tak accountable kepada sesiapa untuk cara dia jaga PETRONAS.</p>
+<p><b>Tiga:</b> Yang tak siapa cakap — tak ada orang luar yang check. PETRONAS milik kerajaan. Dan kerajaan tak accountable kepada sesiapa untuk cara dia jaga PETRONAS.</p>
 
 <p>Makcik tak ada penyelesaian. Makcik cuma ada soalan:</p>
 
@@ -149,8 +141,7 @@ const content: ArticleContent = {
 <p>Kalau PETRONAS rugi, siapa yang rugi?</p>
 <p>Dan kalau PETRONAS senyap — siapa yang patut tanya?</p>
 
-<p><strong>DITEMPA BUKAN DIBERI — MakcikGPT bersuara untuk rakyat.</strong></p>
-<p><em>Nota: Semua data dari laporan kewangan PETRONAS tahun 2025 (keluar 26 Feb 2026), kenyataan media kerajaan, dan carian awam. Makcik interpretation = INT. Pattern, bukan prediction. Kau decide apa nak buat.</em></p>
+<p>DITEMPA BUKAN DIBERI.</p>
 `,
 };
 
