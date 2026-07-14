@@ -228,6 +228,12 @@ td{padding:var(--space-2) var(--space-3);border-bottom:1px solid var(--divider)}
     <div class="skeleton skeleton-block"></div>
   </div>
 
+  <!-- Tier-1 Active Response -->
+  <div class="card" data-panel="tier1" data-state="loading">
+    <div class="card-title">🤖 Tier-1 Active Response (Autonomous)</div>
+    <div id="tier1Body" class="skeleton skeleton-block"></div>
+  </div>
+
   <!-- Infra Services -->
   <div class="card" data-panel="infra" data-state="loading">
     <div class="card-title">🗄️ Infrastructure Services</div>
@@ -562,7 +568,8 @@ var panels = {
   topology: new PanelBoundary('topology', null, 8000).arm(),
   conformance: new PanelBoundary('conformance', null, 5000).arm(),
   vaultStatus: new PanelBoundary('vaultStatus', null, 5000).arm(),
-  recentSeals: new PanelBoundary('recentSeals', null, 5000).arm()
+  recentSeals: new PanelBoundary('recentSeals', null, 5000).arm(),
+  tier1: new PanelBoundary('tier1', '<p style="color:var(--text-faint)">Tier-1 state unavailable.</p>', 5000).arm()
 };
 
 // ═══ MAIN DATA FETCH ═══
@@ -772,6 +779,28 @@ var panels = {
     }
   } catch (err) {
     panels.recentSeals.resolve('<p style="color:var(--text-faint);font-size:var(--text-xs)">Vault query unavailable. VAULT999 is healthy but the query endpoint is not exposed publicly.</p>');
+  }
+
+  // ── TIER-1 ACTIVE RESPONSE STATE ──
+  try {
+    var t1Res = await fetch('/api/tier1-state', {cache:'no-store'});
+    var t1 = await t1Res.json();
+    var st = t1.state || 'UNKNOWN';
+    var lu = t1.last_update || '?';
+    var svc = (t1.services && t1.services['1mcp.service']) || {};
+    var stClass = st === 'IDLE' ? 'badge-ok' : (st === 'OBSERVING' || st === 'HEALTHY') ? 'badge-ok' : 'badge-err';
+    var mode = (t1.mode || 'IDLE');
+    var modeClass = mode === 'LOCKED' ? 'badge-err' : 'badge-ok';
+    var t1HTML = '<div style="display:flex;flex-direction:column;gap:var(--space-2);font-family:var(--font-mono);font-size:var(--text-sm)">';
+    t1HTML += '<div><strong>State:</strong> <span class="badge ' + stClass + '">' + st + '</span></div>';
+    t1HTML += '<div><strong>Last check:</strong> ' + lu + '</div>';
+    t1HTML += '<div><strong>AGI mode:</strong> <span class="badge ' + modeClass + '">' + mode + '</span></div>';
+    t1HTML += '<div><strong>Retries:</strong> ' + (svc.retries||0) + ' / 3 &nbsp; <strong>Rollbacks (hour):</strong> ' + (svc.hour_rollbacks||0) + ' / 5 &nbsp; <strong>Total rollbacks:</strong> ' + (svc.rollbacks||0) + '</div>';
+    t1HTML += '<div style="color:var(--text-faint);font-size:var(--text-xs);margin-top:var(--space-2)">Source: <code>/var/lib/arifos/vps-health-state.json</code> · Timer: <code>vps-t1-check.timer</code> every 60s</div>';
+    t1HTML += '</div>';
+    panels.tier1.resolve(t1HTML);
+  } catch (err) {
+    panels.tier1.resolve('<p style="color:var(--text-faint);font-size:var(--text-xs)">Tier-1 state unavailable: ' + err.message + '</p>');
   }
 })();
 </script>

@@ -1,7 +1,7 @@
 # arifOS Observatory — Constitutional Governance Dashboard
 # https://arifos.arif-fazil.com
 
-> Constitutional governance observatory for the arifOS federation. Real-time organ health, floor scores, vault status, and federation topology.
+> SOT hash 2056a0c5102dfa0b · pin kanon-32f9ce9 · public wire **18** tools · status healthy
 
 ## What This Is
 
@@ -13,73 +13,45 @@ arifOS is a constitutional AI governance framework. This observatory provides re
 
 ## MCP Primitives (v2025-11-25)
 
-The arifOS MCP server exposes three primitives per spec:
-
 | Primitive | Count | Description |
 |-----------|-------|-------------|
-| **Tools** | 12 public (+ 5 internal) | Governed actions: init, observe, think, route, bridge, critique, memory, judge, forge, compose, seal, triage |
-| **Resources** | 183 direct + 12 templates | 16 core constitutional resources (arifos://) + 167 skill resources (skill://). Templates for witness logs, vault entries, source retrieval. |
-| **Prompts** | 8 | Golden-path stages: loop_engineer, 000_init, 111_sense, 333_reason, 555_critique, 666_judge, 777_forge, 999_seal |
+| **Tools** | **18 public** (+ 6 internal) | Public wire = metabolic 12 + entropy mesh 6 |
+| **Service** | ARIFOS MCP | `kanon-32f9ce9` |
+| **Declared** | 58 | public + diagnostic |
 
-### Resource Schemes
+### Public Wire Tools (18)
 
-- `arifos://doctrine` — Constitutional doctrine
-- `arifos://trinity` — AAA Trinity lanes
-- `arifos://schema` — Canonical schema
-- `arifos://identity` — Sovereign identity manifest
-- `arifos://memory` — Memory architecture (L1-L6)
-- `arifos://vitals` — Constitutional vitals
-- `arifos://vault/{vault_type}` — VAULT999 entry reader (template)
-- `arifos://witness/log/{filter}` — Witness log (template)
-- `skill://{name}/SKILL.md` — Skill documents
-- `source://{hash}` — Source retrieval by hash (template)
+- `arif_init`
+- `arif_observe`
+- `arif_think`
+- `arif_route`
+- `arif_bridge_connect`
+- `arif_critique`
+- `arif_memory`
+- `arif_judge`
+- `arif_forge`
+- `arif_compose`
+- `arif_seal`
+- `arif_verify`
+- `arif_entropy_observe`
+- `arif_j_state_assess`
+- `arif_correction_probe`
+- `arif_consequence_trace`
+- `arif_entropy_route`
+- `arif_j_gate`
 
-## Canonical MCP Gateway
-
-All public MCP traffic routes through one canonical gateway:
+### Canonical MCP Gateway
 
 | Endpoint | Method | Domain | Description |
 |----------|--------|--------|-------------|
 | `/mcp` | POST | `mcp.arif-fazil.com` | MCP JSON-RPC 2.0 (streamable-http) |
-| `/tools.json` | GET | `mcp.arif-fazil.com` | Available MCP tools |
-| `/sse` | GET | `mcp.arif-fazil.com` | Server-sent events |
+| `/mcp` | GET | `arifos.arif-fazil.com` | Discovery card (same counts as health) |
+| `/tools` | GET | both | Public tool list |
+| `/tools.json` | GET | both | Machine manifest (public == tools/list) |
+| `/health` | GET | both | Runtime health + surface_consistency |
 
-## Observatory Read-Only Endpoints
+## SOT Invariant
 
-| Endpoint | Method | Domain | Description |
-|----------|--------|--------|-------------|
-| `/health` | GET | `arifos.arif-fazil.com` | Observatory health |
-| `/api/status` | GET | `arifos.arif-fazil.com` | Federation status |
-| `/federation-manifest.json` | GET | `arifos.arif-fazil.com` | Federation topology manifest |
+`tool_count == tools_loaded == tools_exposed_via_mcp == /tools.count == tools/list == /tools.json.count == 18`
 
-## Agent Discovery
-
-- Server Card: `https://arifos.arif-fazil.com/.well-known/mcp/server.json`
-- Agent Card: `https://arifos.arif-fazil.com/.well-known/agent-card.json`
-- MCP Manifest: `https://arifos.arif-fazil.com/.well-known/mcp.json`
-- AI Plugin: `https://arifos.arif-fazil.com/.well-known/ai-plugin.json`
-- Federation Manifest: `https://arifos.arif-fazil.com/federation-manifest.json`
-
-## Federation Organs
-
-| Organ | Port | Domain | Role |
-|-------|------|--------|------|
-| arifOS | 8088 | arifos.arif-fazil.com | Constitutional kernel |
-| GEOX | 8081 | geox.arif-fazil.com | Earth intelligence |
-| WEALTH | 18082 | wealth.arif-fazil.com | Capital intelligence |
-| WELL | 18083 | well.arif-fazil.com | Vitality engine |
-| AAA | 3001 | aaa.arif-fazil.com | A2A hub |
-| A-FORGE | 7071 | forge.arif-fazil.com | Execution shell |
-
-## Links
-
-- Main site: https://arif-fazil.com
-- AAA Cockpit: https://aaa.arif-fazil.com
-- MCP Gateway: https://mcp.arif-fazil.com
-- GEOX: https://geox.arif-fazil.com
-- WEALTH: https://wealth.arif-fazil.com
-- GitHub: https://github.com/ariffazil/arifos
-
-## Governance
-
-All operations governed by 13 constitutional floors (F1-F13). Irreversible actions require human sovereign approval (F13). DITEMPA BUKAN DIBERI — Forged, Not Given.
+DITEMPA BUKAN DIBERI — Forged, Not Given.

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>/proof — MCP Gateway Verification | arifOS</title>
+<meta name="description" content="Live verification surface for the arifOS MCP gateway. Tools, health, floors, vault status, and constitutional governance — machine-readable and human-auditable.">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mcp.arif-fazil.com/proof/">
+<link rel="alternate" type="application/json" href="/proof/index.json" title="Machine-readable proof data">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0A0A0A;--surface:#141414;--border:#2A2A2A;--gold:#D4A853;--gold-dim:#8B6914;--green:#2ECC71;--red:#E74C3C;--amber:#F39C12;--text:#E8E8E8;--text-dim:#888;--text-muted:#555;--font-body:'Satoshi',sans-serif;--font-display:'Cabinet Grotesk',sans-serif;--font-mono:'JetBrains Mono',monospace;--max-width:780px;--radius:6px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.container{max-width:var(--max-width);margin:0 auto;padding:2rem 1.5rem 6rem}
+header{padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem}
+.ring{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--font-display);font-size:2.8rem;font-weight:800;color:var(--gold);line-height:1.05;margin:0.4rem 0}
+.subtitle{font-family:var(--font-display);font-size:1.15rem;color:var(--text-dim)}
+.meta{display:flex;gap:1.5rem;margin-top:1rem;font-family:var(--font-mono);font-size:0.65rem;color:var(--text-muted)}
+section{margin-bottom:2.5rem}
+.section-id{font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.3rem}
+h2{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:0.75rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;margin:1rem 0}
+.stat{background:var(--surface);border:1px solid var(--border);padding:1rem;border-radius:var(--radius)}
+.stat-value{font-family:var(--font-display);font-size:1.5rem;font-weight:800}
+.stat-label{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.08em;color:var(--text-muted);text-transform:uppercase;margin-top:0.15rem}
+.green{color:var(--green)}.red{color:var(--red)}.amber{color:var(--amber)}.gold{color:var(--gold)}
+table{width:100%;border-collapse:collapse;margin:0.75rem 0;font-size:0.85rem}
+th{font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);text-align:left;padding:0.5rem 0.6rem;border-bottom:1px solid var(--border)}
+td{padding:0.5rem 0.6rem;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top}
+td:first-child{font-family:var(--font-mono);font-size:0.72rem;white-space:nowrap}
+.badge{display:inline-block;font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.08em;padding:0.15em 0.55em;border-radius:3px;text-transform:uppercase}
+.badge-green{border:1px solid var(--green);color:var(--green)}
+.badge-amber{border:1px solid var(--amber);color:var(--amber)}
+.badge-gold{border:1px solid var(--gold);color:var(--gold)}
+.floor-bar{height:6px;border-radius:3px;background:var(--border);overflow:hidden;margin-top:0.3rem}
+.floor-fill{height:100%;border-radius:3px}
+footer{margin-top:4rem;padding-top:1.5rem;border-top:1px solid var(--border);font-family:var(--font-mono);font-size:0.62rem;color:var(--text-muted);line-height:1.8}
+footer a{color:var(--gold-dim);text-decoration:none}footer a:hover{color:var(--gold)}
+.seal{color:var(--gold);margin-top:0.75rem;letter-spacing:0.08em}
+#live-status{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-muted)}
+@media(max-width:600px){h1{font-size:2rem}.container{padding:1.25rem 1rem 4rem}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="ring">MCP GATEWAY · VERIFICATION SURFACE</div>
+  <h1>/proof</h1>
+  <div class="subtitle">Live operational proof — tools, floors, vault, governance</div>
+  <div class="meta">
+    <span>mcp.arif-fazil.com</span>
+    <span id="timestamp">loading…</span>
+    <span id="live-status">◉ checking…</span>
+  </div>
+</header>
+
+<section>
+  <div class="section-id">§1 · Server Identity</div>
+  <h2>What is running</h2>
+  <div class="grid" id="server-grid">
+    <div class="stat"><div class="stat-value gold" id="s-release">—</div><div class="stat-label">Release</div></div>
+    <div class="stat"><div class="stat-value" id="s-version">—</div><div class="stat-label">Version</div></div>
+    <div class="stat"><div class="stat-value" id="s-commit">—</div><div class="stat-label">Commit</div></div>
+    <div class="stat"><div class="stat-value" id="s-transport">—</div><div class="stat-label">Transport</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-id">§2 · Tool Surface</div>
+  <h2>What agents can call</h2>
+  <div class="grid">
+    <div class="stat"><div class="stat-value gold" id="t-count">—</div><div class="stat-label">Public Tools</div></div>
+    <div class="stat"><div class="stat-value" id="t-verdict">—</div><div class="stat-label">Surface Verdict</div></div>
+    <div class="stat"><div class="stat-value" id="t-drift">—</div><div class="stat-label">Contract Drift</div></div>
+    <div class="stat"><div class="stat-value" id="t-hash">—</div><div class="stat-label">Surface Hash</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Stage</th><th>Tool</th><th>Access</th><th>Description</th></tr></thead>
+    <tbody id="tools-table"></tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-id">§3 · Constitutional Floors</div>
+  <h2>F1–F13 enforcement</h2>
+  <div class="grid">
+    <div class="stat"><div class="stat-value gold" id="f-active">—</div><div class="stat-label">Floors Active</div></div>
+    <div class="stat"><div class="stat-value" id="f-enforcement">—</div><div class="stat-label">Enforcement</div></div>
+  </div>
+  <table>
+    <thead><tr><th>Floor</th><th>Type</th><th>Runtime Value</th><th></th></tr></thead>
+    <tbody id="floors-table"></tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-id">§4 · Vault & Governance</div>
+  <h2>Sealed state</h2>
+  <div class="grid">
+    <div class="stat"><div class="stat-value" id="v-health">—</div><div class="stat-label">Vault Health</div></div>
+    <div class="stat"><div class="stat-value" id="v-owner">—</div><div class="stat-label">Owner Status</div></div>
+    <div class="stat"><div class="stat-value" id="v-authority">—</div><div class="stat-label">Final Authority</div></div>
+    <div class="stat"><div class="stat-value" id="v-last-seal">—</div><div class="stat-label">Last Seal</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-id">§5 · Verification Links</div>
+  <h2>External proof chain</h2>
+  <table>
+    <tbody id="verify-links"></tbody>
+  </table>
+</section>
+
+<footer>
+  <div><strong>arifOS Federation</strong> · MCP Gateway Proof Surface</div>
+  <div>Machine-readable: <a href="/proof/index.json">/proof/index.json</a></div>
+  <div>Companion: <a href="https://arif-fazil.com/999/">/999 — Sealed Vault</a> · <a href="https://arif-fazil.com/000/">/000 — Human Root</a></div>
+  <div class="seal">DITEMPA BUKAN DIBERI — 999 SEAL ALIVE</div>
+</footer>
+
+</div>
+
+<script>
+(async function() {
+  try {
+    const res = await fetch('/proof/index.json');
+    if (!res.ok) throw new Error('proof fetch failed');
+    const p = await res.json();
+
+    // Timestamp
+    document.getElementById('timestamp').textContent = p.generated_at;
+    document.getElementById('live-status').innerHTML = '<span style="color:#2ECC71">◉ live snapshot</span>';
+
+    // Server
+    const s = p.server;
+    document.getElementById('s-release').textContent = s.release || '—';
+    document.getElementById('s-version').textContent = s.version || '—';
+    document.getElementById('s-commit').textContent = s.commit || '—';
+    document.getElementById('s-transport').textContent = s.transport || '—';
+
+    // Tools
+    document.getElementById('t-count').textContent = p.tools.count;
+    const tv = p.tools.surface_verdict;
+    const tvEl = document.getElementById('t-verdict');
+    tvEl.textContent = tv;
+    tvEl.className = 'stat-value ' + (tv === 'CONSISTENT' ? 'green' : 'red');
+    const td = p.tools.contract_drift;
+    const tdEl = document.getElementById('t-drift');
+    tdEl.textContent = td ? 'YES' : 'NONE';
+    tdEl.className = 'stat-value ' + (td ? 'red' : 'green');
+    document.getElementById('t-hash').textContent = (p.tools.surface_hash || '—').slice(0, 12);
+
+    const tb = document.getElementById('tools-table');
+    for (const t of p.tools.surface) {
+      const tr = document.createElement('tr');
+      const accessClass = t.access === 'public' ? 'badge-green' : t.access === 'authenticated' ? 'badge-amber' : 'badge-gold';
+      tr.innerHTML = `<td>${t.stage}</td><td>${t.name}</td><td><span class="badge ${accessClass}">${t.access}</span></td><td style="color:var(--text-dim);font-size:0.78rem">${t.description}</td>`;
+      tb.appendChild(tr);
+    }
+
+    // Floors
+    document.getElementById('f-active').textContent = p.floors.active;
+    document.getElementById('f-enforcement').textContent = p.floors.enforcement;
+    const fb = document.getElementById('floors-table');
+    const classification = p.floors.classification || {};
+    const runtime = p.floors.runtime_values || {};
+    const floorNames = {F1:'AMANAH',F2:'TRUTH',F3:'TRI-WITNESS',F4:'CLARITY',F5:'PEACE',F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',L10:'ONTOLOGY',L11:'AUDITABILITY',L12:'RESILIENCE',L13:'SOVEREIGN'};
+    for (const [fid, fname] of Object.entries(floorNames)) {
+      const ftype = classification[fid] || '—';
+      const rval = runtime[fid] !== undefined ? runtime[fid] : '—';
+      const tr = document.createElement('tr');
+      const pct = typeof rval === 'number' ? Math.min(rval * 100, 100) : 0;
+      const barColor = ftype === 'hard' ? 'var(--gold)' : ftype === 'soft' ? 'var(--amber)' : 'var(--text-muted)';
+      tr.innerHTML = `<td>${fid}</td><td><span class="badge badge-${ftype === 'hard' ? 'gold' : ftype === 'soft' ? 'amber' : 'gold'}">${ftype}</span></td><td>${typeof rval === 'number' ? rval.toFixed(2) : rval}</td><td style="width:120px"><div class="floor-bar"><div class="floor-fill" style="width:${pct}%;background:${barColor}"></div></div></td>`;
+      fb.appendChild(tr);
+    }
+
+    // Vault & Governance
+    const vhealth = p.vault.health;
+    const vhEl = document.getElementById('v-health');
+    vhEl.textContent = vhealth;
+    vhEl.className = 'stat-value ' + (vhealth === 'healthy' ? 'green' : 'red');
+    const owner = p.governance.owner_summary;
+    const oEl = document.getElementById('v-owner');
+    oEl.textContent = owner ? owner.color : '—';
+    oEl.className = 'stat-value ' + (owner && owner.color === 'GREEN' ? 'green' : 'amber');
+    document.getElementById('v-authority').textContent = p.governance.final_authority || '—';
+    document.getElementById('v-last-seal').textContent = p.vault.last_seal || 'none yet';
+
+    // Verification links
+    const vl = document.getElementById('verify-links');
+    for (const [label, url] of Object.entries(p.verification)) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${label.replace(/_/g, ' ')}</td><td><a href="${url}" style="color:var(--gold);text-decoration:none;font-size:0.78rem">${url}</a></td>`;
+      vl.appendChild(tr);
+    }
+  } catch(e) {
+    document.getElementById('live-status').innerHTML = '<span style="color:#E74C3C">◉ static fallback — live data unavailable</span>';
+  }
+})();
+</script>
+</body>
+</html>

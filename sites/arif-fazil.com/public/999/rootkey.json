@@ -2,8 +2,8 @@
   "key_id": "did-web-arif-fazil-com-arif-fazil",
   "algorithm": "Ed25519",
   "type": "Multikey",
-  "public_key_multibase": "z6MkncqhqV2Zr5h3LWeWPjsTvn3L5A6YAsDZcjwz7iDht1xh",
-  "public_key_fingerprint": "sha256:a0d34d5a388df23a1a3a923c1706124a710f88dce3796a61b3e88c909f8c466b",
+  "public_key_multibase": "z9AafFEn8WYCaE1ooiAud5gVLFapgkyyCvj34HSFgxoBK",
+  "public_key_fingerprint": "sha256:compute-it",  // TODO: recompute fingerprint for new key",
   "verification_method": "did:web:arif-fazil.com#arif-fazil",
   "usage": [
     "assertionMethod",

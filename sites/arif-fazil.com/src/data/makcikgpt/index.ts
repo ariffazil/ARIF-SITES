@@ -33,8 +33,8 @@ export const makcikArticleModules: ArticleContent[] = [
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
   {
     slug: 'petronas-atm-kerajaan',
-    title: '"PETRONAS ATM Kerajaan" — Betul Ka?',
-    subtitle: 'Makcik kira duit. Makcik tengok nisbah. Makcik tanya: siapa sebenarnya makan siapa? Dividen 5-6% je kata PM. Tapi total sumbangan RM67.6 bilion. Dan Gentari bakar RM1-1.5 bilion setahun tanpa pernah untung.',
+    title: 'PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?',
+    subtitle: 'Kerajaan ambil separuh. Gentari bakar satu per empat. Dan tak ada siapa periksa.',
     date: '2026-07-13',
     domain: 'MAKCIKGPT × PETRONAS',
     language: 'ms',
