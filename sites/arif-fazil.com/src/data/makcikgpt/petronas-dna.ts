@@ -23,7 +23,7 @@ const content: ArticleContent = {
 
 <p>Bukan DNA dalam makmal. DNA sebuah syarikat. DNA yang buat PETRONAS jadi PETRONAS.</p>
 
-<p>Makcik, hang tau tak PETRONAS mula dengan <strong>RM10 juta</strong> modal? Tahun 1974. Satu sen pun tak minta tambah dari kerajaan selepas tu. Sampai sekarang. Aset dah <strong>RM403 bilion</strong>.</p>
+<p>Makcik, hang tau tak PETRONAS mula dengan <strong>RM10 juta</strong> modal? Tahun 1974. Satu sen pun tak minta tambah dari kerajaan selepas tu. Sampai sekarang. Aset dah <strong>RM775 bilion</strong>.</p>
 
 <p>Macam mana boleh jadi macam tu?</p>
 
