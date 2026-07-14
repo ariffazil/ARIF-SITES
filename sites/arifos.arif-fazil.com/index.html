@@ -552,9 +552,9 @@ setInterval(function() {
 }, 1000);
 
 // ═══ FLOOR DEFINITIONS ═══
-// Kernel uses F1-F9 + L10-L13 naming. Map all to canonical F1-F13 for display.
-var FLOOR_NAMES = {F1:'AMANAH',F2:'TRUTH',F3:'TRI-WITNESS',F4:'CLARITY (ΔS)',F5:'PEACE²',F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',L10:'ONTOLOGY',L11:'AUDITABILITY',L12:'INJECTION',L13:'SOVEREIGN'};
-var FLOOR_TYPES = {F1:'hard',F2:'hard',F3:'derived',F4:'hard',F5:'soft',F6:'soft',F7:'hard',F8:'derived',F9:'hard',L10:'hard',L11:'hard',L12:'hard',L13:'hard'};
+// Floor definitions — canonical F1-F13 naming.
+var FLOOR_NAMES = {F1:'AMANAH',F2:'TRUTH',F3:'TRI-WITNESS',F4:'CLARITY (ΔS)',F5:'PEACE²',F6:'EMPATHY',F7:'HUMILITY',F8:'GENIUS',F9:'ANTIHANTU',F10:'ONTOLOGY',F11:'AUDITABILITY',F12:'INJECTION',F13:'SOVEREIGN'};
+var FLOOR_TYPES = {F1:'hard',F2:'hard',F3:'derived',F4:'hard',F5:'soft',F6:'soft',F7:'hard',F8:'derived',F9:'hard',F10:'hard',F11:'hard',F12:'hard',F13:'hard'};
 
 // ═══ ARM ALL PANELS ═══
 var panels = {
@@ -603,10 +603,9 @@ var panels = {
     document.getElementById('toolsCount').textContent = h.tools_loaded || '—';
     document.getElementById('toolsCount').className = 'val ok';
 
-    // Floor count — kernel uses F1-F9 + L10-L13; normalize to canonical keys
+    // Floor count — normalize to canonical F1-F13 keys
     function getFloorScore(rf, i) {
-      if (i <= 9) return rf['F' + i];
-      return rf['L' + i] !== undefined ? rf['L' + i] : rf['F' + i];
+      return rf['F' + i];
     }
     var floorPass = 0;
     for (var i = 1; i <= 13; i++) { var v = getFloorScore(rf, i); if (typeof v === 'number' && v >= 0.8) floorPass++; }
@@ -667,7 +666,7 @@ var panels = {
 
     // ── FLOOR GRID ──
     var floorHTML = '<div class="floor-grid">';
-    var floorIds = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','L10','L11','L12','L13'];
+    var floorIds = ['F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11','F12','F13'];
     for (var fi = 0; fi < floorIds.length; fi++) {
       var fid = floorIds[fi];
       var displayId = fid.charAt(0) === 'L' ? 'F' + fid.substring(1) : fid;
