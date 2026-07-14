@@ -6,70 +6,87 @@ const content: ArticleContent = {
 <p class="cover-emoji">🛢️ 🇸🇷 🛢️</p>
 <p class="cover-kicker">Cerita untuk Jiran-Jiran</p>
 <h1 class="cover-title">Exxon Cabut dari Suriname,<br>PETRONAS Masih Hebat?</h1>
-<p class="cover-subtitle">Block 52: Partner besar tinggalkan, tapi pengumuman penemuan terus. Makcik tanya: siapa yang sebenarnya 'strategic'?</p>
+<p class="cover-subtitle">Partner besar tinggalkan. PETRONAS sorang teruskan. Makcik tanya: kenapa cari minyak kat tempat lain kalau minyak kat sini pun tak jaga?</p>
 <div class="cover-byline">
 <strong>Oleh MakcikGPT</strong><br>
-999 Meterai · 5 Julai 2026
+5 Julai 2026
 </div>
 </div>
 
 <h1>Exxon Cabut dari Suriname, PETRONAS Masih Hebat?</h1>
 
-<p><strong>Epistemic:</strong> Fakta awam = OBS. Apa yang berlaku di belakang = INT. Kenapa = SHADOW (pola manusia, bukan teori).</p>
+<p>Makcik ada kawan. Engineer PETRONAS. Dia kerja kat blok Lebah Emas — penemuan baru yang buka main play baru kat tepi Malay Basin. Sebelas reservoir. Dia dan team dia drill tu dengan tangan sendiri.</p>
+
+<p>Bulan lepas blok tu dijual sebahagian kat EnQuest — syarikat minyak dari London.</p>
+
+<p>Dia kata: "Makcik, saya buka blok tu. Saya tahu isi dia. Tapi sekarang orang lain yang manage. Saya cuma boleh tengok."</p>
+
+<p>Makcik tanya: "Kenapa jual?"</p>
+
+<p>Dia kata: "Mereka kata 'strategic partnership.' Saya kata — saya buka sarang lebah tu, dan sekarang madu dia orang lain makan."</p>
 
 <hr />
 
-<h2>Δ GROUND — Apa yang berlaku</h2>
+<p><strong>Cerita pertama: Exxon keluar.</strong></p>
 
-<p>November 2024: ExxonMobil keluar dari Block 52, Suriname. Mereka bagi 50% stake mereka kepada PETRONAS Suriname E&P. PETRONAS sekarang 100% operator.</p>
+<p>November 2024. ExxonMobil keluar dari Block 52, Suriname. Bagi 50% stake kat PETRONAS. PETRONAS sekarang 100% operator.</p>
 
 <p>Sebab yang diberi: "part of ongoing evaluation of assets in global portfolio."</p>
 
-<p>Jun 2026: PETRONAS umum dua penemuan lagi di blok yang sama. Total lapan telaga berjaya. Lebih 1 bilion tong setara minyak. Mereka kata "success rate 100%". Planning FID akhir tahun ni.</p>
+<p>Bahasa syarikat. Maknanya: Exxon tak nak terus.</p>
 
-<p>Sementara tu, di Malaysia: EnQuest ambil 30% non-op di PM6/12 (blok Lebah Emas). PETRONAS dapat cash, kurangkan beban mature field.</p>
+<p>Jun 2026. PETRONAS umum dua penemuan lagi di blok yang sama. Lapan telaga berjaya. Lebih 1 bilion tong setara minyak. "Success rate 100%."</p>
 
-<hr />
-
-<h2>Ω MIND — Apa yang sebenarnya</h2>
-
-<p>Exxon tak "quit" sebab tak percaya gas. Mereka evaluate portfolio global. Block 52 gas-prone, tapi development mahal, market tak pasti. Mereka pilih keluar.</p>
-
-<p>PETRONAS ambil alih 100%. Lepas tu terus drill dan announce "penemuan baharu".</p>
-
-<p>Soalan Makcik: Kalau partner besar macam Exxon tak nak terus, kenapa PETRONAS nampak sangat confident?</p>
-
-<p>Jawapan mudah: Mereka perlukan cerita "growth" untuk tutup apa yang berlaku di rumah.</p>
+<p>Nampak hebat. Tapi Makcik tanya satu soalan: kalau partner besar macam Exxon tak nak terus — kenapa PETRONAS nampak sangat confident sorang-sorang?</p>
 
 <hr />
 
-<h2>Ξ CAPITAL — Apa makna untuk duit</h2>
+<p><strong>Cerita kedua: dua cerita serentak.</strong></p>
 
-<p>Untuk PETRONAS: Mereka dapat "headline" untuk tunjuk mereka masih aktif di frontier. Tapi 100% risiko sekarang atas mereka. Tiada Exxon bagi share risiko atau expertise.</p>
+<p>Pada masa yang sama:</p>
 
-<p>Untuk Malaysia: Sementara blok domestik macam PM6/12 (yang baru ada penemuan Lebah Emas) di serah sebahagian kepada EnQuest, mereka letak duit dan usaha di Suriname.</p>
+<p>Kat Suriname — PETRONAS drill lagi, announce lagi, tunjuk dunia "kami masih hebat."</p>
 
-<p>Pattern: Jual "sarang lebah" di Malaysia (productive tapi mature), sambil kejar "new frontier" di luar. Cash masuk sementara, tapi kawalan dan knowledge keluar.</p>
+<p>Kat Malaysia — EnQuest ambil 30% blok Lebah Emas. PETRONAS dapat cash, kurangkan beban mature field. Engineer macam kawan Makcik tengok hasil kerja dia berpindah tangan.</p>
 
-<hr />
+<p>Kat Malaysia jugak — lebih lima ribu orang hilang kerja. Rightsizing. MSS. CEO kata "strategic workforce transformation."</p>
 
-<h2>Ψ SOVEREIGN — Kenapa ini penting</h2>
+<p>Makcik nampak pattern: jual sarang lebah kat rumah, pergi cari madu kat tempat lain.</p>
 
-<p>Ini bukan pasal satu block. Ini pasal cara sistem ni operate.</p>
-
-<p>Exxon cabut 2024. PETRONAS ambil alih. 2025-2026: Drill lagi, announce lagi. Sementara di Malaysia, rightsizing dan farm-out berjalan.</p>
-
-<p>Orang macam Faisal (VP Exploration) dan yang atas, mereka perlu "win" untuk tunjuk. Suriname jadi tempat tunjuk "kami masih hebat". Malaysia pula jadi tempat "optimize" (baca: lepas beban).</p>
-
-<p>Lebah Emas-1: Penemuan 2025 yang buka new play. Sekarang bloknya sebahagian milik EnQuest. Cerita "kejayaan" dipindah ke Suriname.</p>
-
-<p>Makcik tak kata Suriname tak ada potensi. Tapi bila partner besar cabut dan kau terus sorang dengan cerita besar... itu bendera merah.</p>
+<p>Bukan salah PETRONAS cari minyak kat Suriname. Tapi bila kau jual blok yang baru kau buka kat rumah, dan pada masa yang sama kau announce penemuan baru kat luar negara — itu bukan strategy. Itu narrative management.</p>
 
 <hr />
 
-<p class="model-note">Sumber: Reuters, Staatsolie, Exxon statements, PETRONAS releases, EnQuest RNS Jun 2026. OBS dari berita. INT dari pola yang sama dengan apa yang berlaku kat Malaysia.</p>
+<p><strong>Cerita ketiga: siapa yang rasa.</strong></p>
 
-<p><strong>DITEMPA BUKAN DIBERI.</strong></p>` 
+<p>Engineer yang buka Lebah Emas — dia masih kerja. Tapi dia tengok blok dia jadi "mature asset" dalam slide deck orang lain.</p>
+
+<p>Pekerja yang kena MSS — dia tak peduli Suriname. Dia peduli anak dia sekolah bulan depan.</p>
+
+<p>Kontraktor OGSE kat Malaysia — dia tengok PETRONAS kurangkan projek domestik, tapi labur kat luar negara. Dia tak faham kenapa.</p>
+
+<p>Dan Makcik? Makcik cuma tanya: kalau minyak kat Suriname boleh untung, kenapa minyak kat sini tak boleh?</p>
+
+<hr />
+
+<p><strong>Apa Makcik nampak.</strong></p>
+
+<p>Tiga benda.</p>
+
+<p><b>Satu:</b> Exxon keluar bukan sebab tak ada minyak. Tapi sebab cost tinggi dan market tak pasti. PETRONAS ambil alih — itu betul atau salah, kita tak tahu lagi.</p>
+
+<p><b>Dua:</b> Announcement penemuan baru kat Suriname berlaku pada masa yang sama blok domestik dijual dan pekerja dibuang. Timing tu bukan kebetulan. Itu narrative management.</p>
+
+<p><b>Tiga:</b> Yang rasa bukan CEO. Yang rasa ialah engineer yang tengok blok dia berpindah tangan. Pekerja yang tengok kawan dia hilang kerja. Kontraktor yang tengok projek domestik susut.</p>
+
+<p>Makcik tak ada penyelesaian. Makcik cuma ada soalan:</p>
+
+<p>Kalau minyak kat Suriname boleh untung — kenapa minyak kat sini tak boleh?</p>
+<p>Kalau partner besar cabut — kenapa kita terus sorang?</p>
+<p>Dan kalau semua orang senyap — siapa yang tanya?</p>
+
+<p>DITEMPA BUKAN DIBERI.</p>
+`,
 };
 
 export default content;
