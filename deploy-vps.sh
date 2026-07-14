@@ -30,6 +30,12 @@ echo "[3/5] Syncing sites..."
 
 # arif-fazil.com (Ψ SOUL) — built React app
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $HTML_ROOT/arif/
+
+# Agentic Web Optimization: copy raw markdown for bot bypass (survives rsync --delete)
+echo "  ⚡ Copying MakcikGPT markdown for AI bot bypass..."
+mkdir -p $HTML_ROOT/arif/wealth/makcikgpt/
+cp $SITES_ROOT/arif-fazil.com/public/makcikgpt-md/*.md $HTML_ROOT/arif/wealth/makcikgpt/ 2>/dev/null || true
+
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
 
