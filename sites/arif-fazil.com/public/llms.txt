@@ -42,14 +42,21 @@ MakcikGPT is a public-facing civic intelligence series written in Bahasa Malaysi
 Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.
 All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 
-- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/wealth/makcikgpt/petronas-dna) — Contrasts PETRONAS institutional DNA (1988–2010: integrity, teamwork, "fight like bulldogs") against current leadership reality (LinkedIn disclaimers, rightsizing, London JV with Eni). Asks whether the DNA that built RM403 billion from RM10 million is still alive.
-- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal) — Questions whether three powerful leaders possess "akal budi" (wisdom) or merely power, slogans, and applause. Compares OpenAI's nonprofit-to-profit drift, Musk's truth-seeking persona, and Anwar's MADANI reformasi claims.
-- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/wealth/makcikgpt/searah-followup) — SEARAH (50% PETRONAS + 50% Eni Italy) starts operations 1 Julai 2026. The next day, court hears a former PETRONAS manager leaked upstream data to PETROS CEO and CFO.
-- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/wealth/makcikgpt/cerita-makcik) — Original SEARAH exposé: USD 2 shell company in London, 19 oilfields (14 Indonesia, 5 Malaysia), no BIT protection, PETROS excluded, Parliament uninformed.
-- [Persoalan RM70 Bilion](https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah) — Deeper investigation into SEARAH's RM70 billion deal structure, VSS/MSS of ~5,000 workers, and OSA silence on whistleblowers.
+**High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
+
+### Latest articles (July 2026)
+- [Ada Apa Pada Visi dan Misi Hang?](https://arif-fazil.com/wealth/makcikgpt/petronas-visi-misi) — 50-year evolution of PETRONAS vision/mission statements (1974-2025). Maps 7 vision eras from "fight like bulldogs" to "progressive energy partner." Contrasts 1988 Shared Values (Loyalty, Integrity, Professionalism, Cohesiveness) with 2020 Statement of Purpose. Demonstrates inverse relationship between vision complexity and accountability. Anti-Calhoun "beautiful ones" analysis.
+- [PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?](https://arif-fazil.com/wealth/makcikgpt/petronas-atm-kerajaan) — Fiscal analysis of PETRONAS dividend extraction (FY2022 PAT RM101.6bn, dividend RM50bn = 49% payout). Exposes Gentari opacity (never disclosed standalone PAT since 2022 launch), fuel subsidy distortion (RM38bn/year vs RM20bn dividend), and accountability vacuum (no AGM, no analyst call, no public scrutiny).
+
+### Earlier articles
+- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/wealth/makcikgpt/petronas-dna) — Contrasts PETRONAS institutional DNA (1988–2010: integrity, teamwork, "fight like bulldogs") against current leadership reality (LinkedIn disclaimers, rightsizing, London JV with Eni). Includes real CLIP Shared Values from CoBE 2022.
+- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal) — Questions whether three powerful leaders possess "akal budi" (wisdom) or merely power, slogans, and applause.
+- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/wealth/makcikgpt/searah-followup) — SEARAH (50% PETRONAS + 50% Eni Italy) starts operations 1 Julai 2026. Court hears former PETRONAS manager leaked upstream data to PETROS.
+- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/wealth/makcikgpt/cerita-makcik) — Original SEARAH exposé: USD 2 shell company in London, 19 oilfields, no BIT protection, PETROS excluded.
+- [Persoalan RM70 Bilion](https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah) — Deeper investigation into SEARAH's RM70 billion deal structure, USD 6bn JP Morgan revolver, VSS/MSS of ~5,000 workers.
 - [Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis](https://arif-fazil.com/wealth/makcikgpt/iran-hormuz) — Hormuz shipping disruption, PETRONAS repeated rightsizing, and Malaysia's 600,000 barrel/day import gap.
-- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb) — Red-team audit of YTL's ILMU AI platform: 108 API calls, 3.45/10 score, MalayMMLU self-grading, model protection for YTL over nation.
-- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli) — YTL's vertical monopoly: electricity (YTL Power), water (Ranhill Johor monopoly), telco (YTL Comms), land (1,640 acres Kulai), AI (ILMU). MACC investigating 1BestariNet RM2.7B.
+- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb) — Red-team audit of YTL's ILMU AI platform: 108 API calls, 3.45/10 score, MalayMMLU self-grading.
+- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli) — YTL's vertical monopoly: electricity, water, telco, land, AI. MACC investigating 1BestariNet RM2.7B.
 
 ## Key Pages
 - `/` — Human-first professional homepage
