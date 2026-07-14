@@ -130,8 +130,8 @@ arif-fazil.com {
 	@makcikgpt path /wealth/makcikgpt/*
 	@ai_bot header_regexp User-Agent (?i)(GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|Google-Extended|anthropic-ai|Bytespider)
 	handle @makcikgpt @ai_bot {
-		# Bot bypass: serve raw markdown for RAG ingestion
-		try_files /makcikgpt-md{path}.md /makcikgpt-md/{path}.md
+		# Bot bypass: serve raw markdown for zero-entropy RAG ingestion
+		try_files {path}.md {path}/index.md
 		file_server
 	}
 	handle @makcikgpt {
