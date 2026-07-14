@@ -124,9 +124,11 @@ const content: ArticleContent = {
 
 <p>Dua tahun kemudian, Gentari dilancarkan. Syarikat tenaga bersih. Solar. Hidrogen. Kereta elektrik.</p>
 
-<p>Berapa Gentari bakar? <strong>RM1-1.5 bilion setahun.</strong> Empat tahun. Tak pernah untung.</p>
+<p>Berapa Gentari bakar? <strong>Entah. PETRONAS tak pernah bagi tahu.</strong></p>
 
-<p>Berapa Gentari hasil? Entah. PETRONAS tak pernah bagi tahu.</p>
+<p>Yang Makcik tahu: kalau Gentari tak ada, satu bahagian dalam PETRONAS sepatutnya untung. Tapi sebab Gentari, bahagian tu rugi. Berbilion disuntik ke dalam syarikat tenaga bersih yang kewangannya dikunci dari pandangan awam.</p>
+
+<p>Empat tahun beroperasi. Tak pernah disclosed berapa untung atau rugi.</p>
 
 <p>Visi "Net Zero" = cantik. Tapi yang bayar: rakyat. Sebab Gentari rugi ditampung dari duit PETRONAS yang sepatutnya jadi dividen.</p>
 
@@ -161,7 +163,7 @@ const content: ArticleContent = {
 <p>Dan yang paling penting:</p>
 
 <p><strong>1974: Aset RM10 juta. Dividen ke rakyat: besar (sebab rakyat dapat minyak murah).</strong></p>
-<p><strong>2025: Aset RM775 bilion. Dividen ke rakyat: RM20 bilion (paling rendah 9 tahun).</strong></p>
+<p><strong>2025: Aset RM775 bilion. Dividen ke rakyat: RM20 bilion (paling rendah sejak 2019).</strong></p>
 
 <p>Visi makin besar. Aset makin besar. Tapi rakyat dapat makin sikit.</p>
 
@@ -184,17 +186,17 @@ const content: ArticleContent = {
 <p>Bukan ayat cantik tu. Bukan "progressive" atau "integrated" atau "net zero."</p>
 
 <p>Yang kekal: <strong>gas dari Sarawak yang sekarang dalam syarikat London.</strong></p>
-<p>Yang kekal: <strong>Gentari yang bakar RM1.5 bilion setahun tanpa untung.</strong></p>
-<p>Yang kekal: <strong>5,000 orang hilang kerja tapi Gentari tak disentuh.</strong></p>
-<p>Yang kekal: <strong>dividen turun dari RM50 bilion ke RM20 bilion.</strong></p>
+<p>Yang kekal: <strong>Gentari — syarikat tenaga bersih yang berbilion disuntik tapi kewangannya dikunci dari pandangan awam.</strong></p>
+<p>Yang kekal: <strong>rightsizing 2025-2026 — 5,000 pekerjaan dipotong tapi Gentari tak disentuh.</strong></p>
+<p>Yang kekal: <strong>dividen turun dari RM50 bilion ke RM20 bilion — paling rendah sejak 2019.</strong></p>
 
 <p>Visi tukar. Yang kekal tak tukar.</p>
 
 <p>Makcik tak ada jawapan. Makcik cuma ada soalan:</p>
 
 <p>Kalau visi PETRONAS makin besar — kenapa rakyat dapat makin sikit?</p>
-<p>Kalau visi PETRONAS makin "progressive" — kenapa Gentari tak pernah untung?</p>
-<p>Kalau visi PETRONAS makin "enriching lives" — kenapa 5,000 orang hilang kerja?</p>
+<p>Kalau visi PETRONAS makin "progressive" — kenapa Gentari kewangannya tak pernah disclosed?</p>
+<p>Kalau visi PETRONAS makin "enriching lives" — kenapa 5,000 orang hilang kerja dalam rightsizing yang CEO umum sendiri?</p>
 
 <p><strong>DITEMPA BUKAN DIBERI — MakcikGPT bersuara untuk rakyat.</strong></p>
 <p><em>Nota: Semua data dari laporan kewangan PETRONAS, kenyataan media rasmi, sejarah syarikat, dan carian awam. Makcik kira sendiri. Kau decide apa nak buat.</em></p>
