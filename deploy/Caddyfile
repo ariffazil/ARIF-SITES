@@ -103,8 +103,10 @@ arif-fazil.com {
 		file_server
 	}
 	# SSG routes: serve pre-rendered static HTML directly
+	# FIX 2026-07-14: was /static/canon.html (didn't exist → fell back to homepage)
+	# Now serves the actual canon directory at /canon/index.html
 	handle /canon/* {
-		try_files /static/canon.html /index.html
+		try_files {path} /canon/index.html /index.html
 		file_server
 	}
 	handle /constellation/* {
@@ -124,7 +126,14 @@ arif-fazil.com {
 		file_server
 	}
 	# SSG pre-rendered MakcikGPT articles — serve static HTML with JSON-LD
+	# Agentic Web Optimization: bots get raw markdown for zero-entropy ingestion
 	@makcikgpt path /wealth/makcikgpt/*
+	@ai_bot header_regexp User-Agent (?i)(GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|Google-Extended|anthropic-ai|Bytespider)
+	handle @makcikgpt @ai_bot {
+		# Bot bypass: serve raw markdown for RAG ingestion
+		try_files /makcikgpt-md{path}.md /makcikgpt-md/{path}.md
+		file_server
+	}
 	handle @makcikgpt {
 		try_files {path}/index.html /index.html
 		file_server
