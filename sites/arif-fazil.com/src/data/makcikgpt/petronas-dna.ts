@@ -48,18 +48,32 @@ const content: ArticleContent = {
 <p>Maksudnya: CEO PETRONAS dulu <strong>berani cakap tidak</strong> kat kerajaan kalau benda tu tak betul. Bukan degil. Tapi sebab dia tahu — kalau integrity syarikat ni pecah, habis semuanya.</p>
 
 <div class="fact-box">
-<div class="fact-box-title">▲ 4 Shared Values PETRONAS (CoBE — Code of Conduct and Business Ethics)</div>
+<div class="fact-box-title">▲ 4 Shared Values PETRONAS — dilancarkan 1988, masih hidup dalam CoBE 2022</div>
 <div class="fact-box-content">
-<span class="label">Loyalty (Kesetiaan)</span> Loyal to corporation<br>
-<span class="label">Integrity (Integriti)</span> Honest and upright<br>
-<span class="label">Professionalism (Profesionalisme)</span> Strive for excellence<br>
-<span class="label">Cohesiveness (Kekompakan)</span> United, trust and respect for each other<br>
+<strong>Loyalty</strong> — Loyal to corporation<br>
+<strong>Integrity</strong> — Honest and upright<br>
+<strong>Professionalism</strong> — Strive for excellence<br>
+<strong>Cohesiveness</strong> — United, trust and respect for each other<br>
 <br>
-<em>Source: PETRONAS Code of Conduct and Business Ethics (CoBE), PETRONAS Gas Berhad Governance, PETRONAS Global — Shared Values.</em>
+<em>Source: PETRONAS Code of Conduct and Business Ethics (CoBE 2022), foreword by Tengku Muhammad Taufik.</em>
+<br><br>
+<strong>Mission (1988 original, Azizan era):</strong> "A business entity whose main objective is to add value to the country's oil and gas resources and contribute to the well-being of the nation."
+<br><br>
+<strong>Statement of Purpose (2022, Tengku Taufik era):</strong> "A progressive energy and solutions partner enriching lives for a sustainable future."
 </div>
 </div>
 
 <p>Empat nilai. Empat saja. Dan dengan empat tu — serta satu misi yang jelas — PETRONAS pergi dari syarikat kecil kat Dayabumi jadi multinational gergasi operasi dalam <strong>30+ negara</strong>. Dari modal <strong>RM10 juta</strong> kepada aset <strong>RM775 bilion</strong>. Satu sen pun tak minta tambah dari kerajaan.</p>
+
+<p>Tapi Makcik nak tanya: <strong>hang nampak perbezaan antara dua misi tu?</strong></p>
+
+<p>Misi 1988: <strong>"add value to the country's oil and gas resources and contribute to the well-being of the nation."</strong> — pasal rakyat. Pasal negara. Pasal bumi.</p>
+
+<p>Purpose 2022: <strong>"A progressive energy and solutions partner enriching lives for a sustainable future."</strong> — pasal partnership. Pasal solutions. Pasal sustainability.</p>
+
+<p>Satu bunyi macam sumpah. Satu bunyi macam slide deck.</p>
+
+<p>Makcik tak kata salah. Tapi Makcik tanya: <strong>yang mana satu hati PETRONAS masih ikut?</strong></p>
 
 <hr />
 
