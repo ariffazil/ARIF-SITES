@@ -12,9 +12,11 @@ import petronasHiveSale from './petronas-hive-sale';
 import surinameExxonCabut from './suriname-exxon-cabut';
 import aiJohorRakyat2026 from './ai-johor-rakyat-2026';
 import petronasAtmKerajaan from './petronas-atm-kerajaan';
+import petronasVisiMisi from './petronas-visi-misi';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  petronasVisiMisi,
   petronasAtmKerajaan,
   aiJohorRakyat2026,
   petronasDna,
@@ -31,6 +33,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'petronas-visi-misi',
+    title: 'Ada Apa Pada Visi dan Misi Hang?',
+    subtitle: 'Dari RM10 juta sampai RM775 bilion. Dari tujuh prinsip sampai satu slide deck. Makcik tanya: makin cantik, tapi hati masih sama ke?',
+    date: '2026-07-14',
+    domain: 'MAKCIKGPT × PETRONAS',
+    language: 'ms',
+    excerpt: '50 tahun PETRONAS visi dan misi: dari tujuh prinsip 1974, empat nilai 1988, sampai Statement of Purpose 2020 dan Cultural Beliefs 2021. Makcik banding: dulu sedikit kata banyak buat, sekarang banyak kata kurang buat. ROACE jatuh tiga tahun. Gentari rugi tanpa disclosed. Visi makin cantik, realiti berbeza.',
+    tags: ['petronas', 'visi', 'misi', 'dna', 'values', 'cultural-beliefs', 'beautiful-ones', 'calhoun', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'petronas-atm-kerajaan',
     title: 'PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?',
