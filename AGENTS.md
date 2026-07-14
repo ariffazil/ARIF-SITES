@@ -4,7 +4,7 @@ last_verified: 2026-05-22
 valid_from: 2026-05-22
 valid_until: 2026-06-22
 confidence: high
-scope: /root/arif-sites
+scope: /root/ARIF-SITES
 -->
 
 # AGENTS.md — arif-sites | Website Estate & Deployment Discipline
@@ -58,7 +58,7 @@ The canonical web estate. Hosts subsites under `arif-fazil.com` and related doma
 ## Build & Test
 
 ```bash
-cd /root/arif-sites
+cd /root/ARIF-SITES
 
 # Only the flagship site requires a build:
 cd sites/arif-fazil.com && npm install && npm run build

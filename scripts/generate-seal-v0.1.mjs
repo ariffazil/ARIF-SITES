@@ -546,7 +546,7 @@ Do not run these unless you are Arif in the operator-controlled signing environm
 SSH signature flow using the DID Ed25519 key:
 
 \`\`\`bash
-cd /root/arif-sites/sites/arif-fazil.com/public
+cd /root/ARIF-SITES/sites/arif-fazil.com/public
 ssh-keygen -Y sign -f /path/to/operator_did_ed25519 -n arifos-constitution arifos/AGENTS.md
 mv arifos/AGENTS.md.sig arifos/AGENTS.md.sig
 
@@ -557,7 +557,7 @@ mv 999/vault999-seal-v0.1.json.sig 999/vault999-seal-v0.1.json.sig
 After signing:
 
 \`\`\`bash
-cd /root/arif-sites
+cd /root/ARIF-SITES
 node scripts/verify-arifos.mjs
 \`\`\`
 `;

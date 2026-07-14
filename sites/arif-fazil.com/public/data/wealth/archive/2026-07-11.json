@@ -1,7 +1,7 @@
 {
   "meta": {
-    "date": "2026-07-12",
-    "generated_at": "2026-07-12T06:00:02Z",
+    "date": "2026-07-11",
+    "generated_at": "2026-07-11T06:00:01Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
@@ -14,14 +14,14 @@
   "bursa": {
     "search_results": [
       {
-        "title": "Calendar",
-        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
-        "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing Date · 09 Jul 2026 IPO for SRKK AI BERHAD ·"
-      },
-      {
         "title": "Bursa ends marginally lower on mild profit taking | FMT",
         "url": "https://www.freemalaysiatoday.com/category/business/2026/07/07/bursa-ends-marginally-lower-on-mild-profit-taking",
         "desc": "KUALA LUMPUR: Bursa Malaysia ended <strong>marginally lower on Tuesday</strong> as investors took profits after the recent market rebound, tracking weaker regional markets. At 5pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) eased 0.60 of a point to 1,682.93 from ..."
+      },
+      {
+        "title": "Calendar",
+        "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
+        "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing Date · 09 Jul 2026 IPO for SRKK AI BERHAD ·"
       },
       {
         "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
@@ -54,17 +54,17 @@
         "desc": "FTSE Bursa Malaysia KLCI · 1,691.49 +0.83% Kuala Lumpur - Delayed Quote • MYR · 1,691.49 +13.85 (+0.83%) At close: July 10 at 4:59:45 PM GMT+8 · Get L"
       },
       {
-        "title": "BERNAMA - Bursa Malaysia Stays Higher At Midday On Improved Risk Appetite",
-        "desc": "At 12.30 pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) inched up 1.44 points to 1,680.97, from Thursday&#x27;s close of 1,679.53. The key index opened 5"
+        "title": "BERNAMA - Attractive Valuations Drive Buying, Bursa Malaysia Ends Higher",
+        "desc": "At 5 pm, the FTSE Bursa Malaysia KLCI (FBM KLCI) rose by 4.10 points or 0.24 per cent to 1,683.63 compared with Thursday&#x27;s close of 1,679.53. The"
       }
     ],
     "klci_close": null,
     "klci_change_points": null,
     "klci_change_pct": null,
     "source_urls": [
-      "https://www.freemalaysiatoday.com/category/business/2026/07/07/bursa-ends-marginally-lower-on-mild-profit-taking",
+      "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
       "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
-      "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107"
+      "https://www.freemalaysiatoday.com/category/business/2026/07/07/bursa-ends-marginally-lower-on-mild-profit-taking"
     ]
   },
   "ringgit": {
@@ -85,8 +85,8 @@
       }
     ],
     "sources": [
-      "https://tradingeconomics.com/malaysia/currency",
-      "https://www.xe.com/currencycharts/?from=USD&to=MYR"
+      "https://www.xe.com/currencycharts/?from=USD&to=MYR",
+      "https://tradingeconomics.com/malaysia/currency"
     ]
   },
   "economy": {
@@ -133,24 +133,24 @@
   "politics": {
     "narratives": [
       {
-        "title": "Malaysians in Johor State Go to the Polls in Test of Unity for PM Anwar's Coalition",
-        "desc": "... KUALA LUMPUR, July 11 (Reuters) ... Anwar Ibrahim&#x27;s coalition government, as <strong>frictions over reforms, ethnic issues and the economy fuel ‌talk of an early national poll</strong>....",
-        "source": "https://www.usnews.com/news/world/articles/2026-07-10/malaysians-in-johor-state-go-to-the-polls-in-test-of-unity-for-pm-anwars-coalition"
-      },
-      {
-        "title": "Malaysia’s Barisan Nasional Secures Johor Victory as Anwar’s Coalition Falters - Bloomberg",
-        "desc": "July 11, 2026 at 3:02 PM UTC · ... on Saturday, delivering another setback to Prime Minister Anwar Ibrahim’s <strong>Pakatan Harapan coalition</strong> following its poor local election showing in Sab",
-        "source": "https://www.bloomberg.com/news/articles/2026-07-11/malaysia-s-ex-ruling-party-barisan-nasional-set-to-win-johor-in-blow-to-anwar"
-      },
-      {
         "title": "Malaysia’s Upcoming State Elections: Allies Are Rivals Again",
         "desc": "Despite being partners at the federal level, the <strong>Pakatan Harapan and Barisan Nasional coalitions are competing to become the dominant force of tomorrow</strong>. ... Malaysia’s Prime Minister ",
         "source": "https://thediplomat.com/2026/07/malaysias-upcoming-state-elections-allies-are-rivals-again/"
       },
       {
-        "title": "Johor Elections: A Litmus Test for Malaysia's Unity Government",
-        "desc": "johor-elections-a-litmus-test-... · <strong>Johor&#x27;s elections test the Unity Government&#x27;s PH-BN alliance and Anwar Ibrahim&#x27;s leadership against the opposition to ensure Malaysia&#x27;s ",
-        "source": "https://politics-government.news-articles.net/content/2026/07/11/johor-elections-a-litmus-test-for-malaysia-s-unity-government.html"
+        "title": "As Johor votes, all eyes on what results mean for political blocs and PM Anwar - CNA",
+        "desc": "<strong>Malaysian Prime Minister and Pakatan Harapan (PH) chairman Anwar Ibrahim delivers a speech during the coalition&#x27;s &quot;Grand Finale&quot; rally in Johor Bahru on Jul 9, 2026</strong>.",
+        "source": "https://www.channelnewsasia.com/asia/malaysia-johor-election-polling-day-who-will-win-onn-hafiz-6246156"
+      },
+      {
+        "title": "Johor and Negeri Sembilan state elections are double trouble for Anwar | East Asia Forum",
+        "desc": "... <strong>Two southern Malaysian multi-ethnic states — Johor and Negeri Sembilan — are set to hold elections in quick succession</strong>. Held on 11 July and 1 August 2026 respectively, these elect",
+        "source": "https://eastasiaforum.org/2026/06/29/johor-and-negeri-sembilan-state-elections-are-double-trouble-for-anwar/"
+      },
+      {
+        "title": "Johor Election Puts Anwar’s Coalition to the Test as Voter Turnout Lags - Bloomberg",
+        "desc": "Malaysian Prime Minister Anwar Ibrahim’s ruling coalition looks set to face renewed pressure in this weekend’s Johor state election, with concerns a low voter turnout may hurt its performance.",
+        "source": "https://www.bloomberg.com/news/articles/2026-07-10/johor-election-tests-ties-within-anwar-s-ruling-alliance"
       }
     ],
     "economy_policy": [
@@ -214,12 +214,12 @@
     "brent_price": null,
     "malaysia_oil": [
       {
-        "title": "PETRONAS Activity Outlook 2024-2026 In The Spotlight",
-        "desc": "PETRONAS Activity Outlook 2024-2026 · 15 · PETRONAS plays a pivotal role in overseeing · petroleum operations in Malaysia, primarily to · maximise production eﬃciency and · sustainability of oil and g"
-      },
-      {
         "title": "Production | Malaysia Petroleum Management",
         "desc": "Since 1974, Malaysia has produced <strong>9 billion barrels of oil and 50 trillion cubic feet of gas</strong>. Currently, Malaysia produces 660,000 barrels of liquids and approximately 7.0 billion cub"
+      },
+      {
+        "title": "PETRONAS Activity Outlook 2024-2026 In The Spotlight",
+        "desc": "PETRONAS Activity Outlook 2024-2026 · 15 · PETRONAS plays a pivotal role in overseeing · petroleum operations in Malaysia, primarily to · maximise production eﬃciency and · sustainability of oil and g"
       }
     ],
     "energy_transition": [
@@ -265,8 +265,8 @@
           "desc": "Indonesia’s economy expanded by <strong>5.61 percent</strong> in the first quarter of 2026, its fastest growth in more than three years, boosted by a surge in government spending and strong household "
         },
         {
-          "title": "IMF upgrades Thailand, ADB trims Asia-Pacific growth amid energy crisis",
-          "desc": "In its latest World Economic Outlook Update, the IMF forecast that the ASEAN-5 economies — Indonesia, Malaysia, the Philippines, Singapore and Thailand — would expand <strong>4.1%</strong> in 2026, sl"
+          "title": "List of ASEAN countries by GDP - Wikipedia",
+          "desc": "This is a list of <strong>ASEAN</strong> countries by GDP. GDP Nominal is the total value of the market products and services that an <strong>economy</strong> produces in the current market prices. In"
         }
       ]
     }
@@ -283,7 +283,7 @@
     },
     {
       "domain": "POLITICS",
-      "signal": "Malaysians in Johor State Go to the Polls in Test of Unity for PM Anwar's Coalition",
+      "signal": "Malaysia’s Upcoming State Elections: Allies Are Rivals Again",
       "for_aia": "Anwar government stability vs PN ascendancy — this isn't abstract. It determines FDI confidence, ringgit direction, and ultimately: your investment returns.",
       "for_izzu": "Political uncertainty = premium on safe haven assets (USD, gold). Portfolio hedge thought: what's your political risk premium?",
       "for_aliff": "PROPA management alignment with government = career risk. When political winds shift, the 'loyalty' calculus changes fast.",

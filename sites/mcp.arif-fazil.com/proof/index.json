@@ -1,0 +1,163 @@
+{
+  "@context": "https://arif-fazil.com/proof/v1",
+  "type": "MCPProof",
+  "generated_at": "2026-07-12T16:55:33Z",
+  "server": {
+    "identity": "did:web:arif-fazil.com",
+    "endpoint": "https://mcp.arif-fazil.com/mcp",
+    "service": "ARIFOS MCP",
+    "release": "v2026.07.09-SPINE-P0",
+    "version": "kanon-082adfa",
+    "commit": "082adfa",
+    "branch": "main",
+    "build_time": "2026-07-12T16:25:07.743949+00:00",
+    "transport": "streamable-http",
+    "protocol_version": "2025-11-25"
+  },
+  "tools": {
+    "count": 8,
+    "surface": [
+      {
+        "name": "arif_init",
+        "stage": "000",
+        "access": "public",
+        "description": "KERNEL 000 \u00b7 Session ignition \u2014 not a helper app. Binds actor, floors, and audit before any other arif_* verb can govern"
+      },
+      {
+        "name": "arif_observe",
+        "stage": "111",
+        "access": "public",
+        "description": "KERNEL 111 \u00b7 Sense reality into evidence (not reasoning, not judgment). Web/URL/vitals/repo/entropy with epistemic tags."
+      },
+      {
+        "name": "arif_think",
+        "stage": "333",
+        "access": "public",
+        "description": "KERNEL 333 \u00b7 Mind \u2014 structure reasoning under F2/F7 (not a chat model, not a verdict). Plan, reflect, verify, synthesize"
+      },
+      {
+        "name": "arif_route",
+        "stage": "555",
+        "access": "public",
+        "description": "KERNEL 444 \u00b7 Intent\u2192organ router (default path to GEOX/WEALTH/WELL/A-FORGE). Select when you know the goal but not which"
+      },
+      {
+        "name": "arif_judge",
+        "stage": "888",
+        "access": "authenticated",
+        "description": "KERNEL 888 \u00b7 Constitutional verdict \u2014 only organ that SEAL/HOLD/SABAR/VOIDs. Not advice; binding arbitration of floors +"
+      },
+      {
+        "name": "arif_forge",
+        "stage": "010",
+        "access": "internal_only",
+        "description": "KERNEL 777 \u00b7 Execution gate via A-FORGE (hands, not law). Mutates only after arif_judge SEAL + lease/chain IDs \u2014 no self"
+      },
+      {
+        "name": "arif_seal",
+        "stage": "999",
+        "access": "authenticated",
+        "description": "KERNEL 999 \u00b7 VAULT999 immutable append \u2014 civilizational memory, irreversible. Authority: 888_HOLD / SOVEREIGN + ack_irre"
+      },
+      {
+        "name": "arif_memory",
+        "stage": "555m",
+        "access": "internal_only",
+        "description": "KERNEL memory governor \u00b7 L1\u2013L6 stack under F1/F2/F4/F11 (not a free notepad). Recall/inspect free-ish; remember/promote/"
+      }
+    ],
+    "surface_hash": "d00212fccf333c20",
+    "surface_verdict": "CONSISTENT",
+    "contract_drift": false,
+    "runtime_drift": false
+  },
+  "floors": {
+    "active": 13,
+    "enforcement": "active",
+    "classification": {
+      "L01": "hard",
+      "L02": "hard",
+      "L03": "derived",
+      "L04": "hard",
+      "L05": "soft",
+      "L06": "soft",
+      "L07": "hard",
+      "L08": "derived",
+      "L09": "hard",
+      "L10": "hard",
+      "L11": "hard",
+      "L12": "hard",
+      "L13": "hard"
+    },
+    "runtime_values": {
+      "F1": 0.5,
+      "F2": 0.99,
+      "F3": 0.75,
+      "F4": -0.0,
+      "F5": 1.0,
+      "F6": 0.7,
+      "F7": 0.04,
+      "F8": 0.8,
+      "F9": 0.0,
+      "L10": 1.0,
+      "L11": 1.0,
+      "L12": 0.425,
+      "L13": 1.0
+    }
+  },
+  "vault": {
+    "health": "healthy",
+    "last_seal": null
+  },
+  "governance": {
+    "final_authority": "ARIF",
+    "owner_summary": {
+      "color": "GREEN",
+      "reasons": [
+        "vault_healthy",
+        "no_runtime_drift",
+        "no_contract_drift"
+      ]
+    },
+    "thermodynamic": {
+      "entropy_delta": -0.0,
+      "peace_squared": 0.5,
+      "vitality_index": 0.5946,
+      "echo_debt": 0.0,
+      "shadow": 0.0,
+      "confidence": 0.5,
+      "verdict": "HOLD",
+      "service_health": "PASS",
+      "metabolic_stage": 333,
+      "witness": {
+        "human": 0.42,
+        "ai": 0.32,
+        "earth": 0.26
+      }
+    },
+    "seal_readiness": {
+      "vault999_health": "healthy",
+      "ack_irreversible_gate": "passable",
+      "hold_reasons_schema": "returns top-level reasons[] + next_safe_action",
+      "runtime_drift": false,
+      "contract_drift": false,
+      "graphiti_read": "healthy",
+      "semantic_floor": "enabled",
+      "langfuse_traces": "ACTIVE"
+    }
+  },
+  "identity": {
+    "hash_algorithm": "blake3",
+    "hash": "afb9c0a4adcabc6d68ec7c573ff38d6b7126aafe78ea6e23f72b6c0b80d2de22",
+    "boot_attestation": true
+  },
+  "verification": {
+    "did_document": "https://arif-fazil.com/.well-known/did.json",
+    "did_configuration": "https://arif-fazil.com/.well-known/did-configuration.json",
+    "constitution": "https://arifos.arif-fazil.com/constitution.json",
+    "federation_manifest": "https://arif-fazil.com/.well-known/arifos-federation.json",
+    "vault_attestation": "https://arif-fazil.com/999/",
+    "human_identity": "https://arif-fazil.com/000/"
+  },
+  "seal": "DITEMPA BUKAN DIBERI \u2014 999 SEAL ALIVE"
+}

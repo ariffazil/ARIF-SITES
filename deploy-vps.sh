@@ -5,7 +5,7 @@
 
 set -e
 
-SITES_ROOT="/root/arif-sites/sites"
+SITES_ROOT="/root/ARIF-SITES/sites"
 HTML_ROOT="/var/www/html"
 
 echo "Starting VPS Deployment..."

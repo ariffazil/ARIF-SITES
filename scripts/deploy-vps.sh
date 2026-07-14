@@ -23,7 +23,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SITES_DIR="/root/arif-sites/sites"
+SITES_DIR="/root/ARIF-SITES/sites"
 LOG_PREFIX="[arif-sites-deploy]"
 
 # Colors
@@ -54,7 +54,7 @@ declare -A SITE_MAP=(
 REACT_SITES=("arif-fazil.com" "travel.arif-fazil.com")
 
 # ── 1. Get current commit SHA ────────────────────────────────────────────────
-cd /root/arif-sites
+cd /root/ARIF-SITES
 SHORT_SHA=$(git rev-parse --short HEAD)
 log_info "Deploying arif-sites commit: $SHORT_SHA"
 
