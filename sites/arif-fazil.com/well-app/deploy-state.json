@@ -1,0 +1,11 @@
+{
+  "app": "well-biological-clock",
+  "version": "1.0.0",
+  "deployed_at": "2026-07-15T10:52:22Z",
+  "commit": "no-git",
+  "route": "/well/",
+  "tools": ["get_vitality_snapshot", "get_biological_clock", "get_readiness_score"],
+  "tool_count": 3,
+  "pattern": "symlink-swap",
+  "status": "LIVE"
+}

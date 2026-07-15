@@ -1,98 +1,72 @@
 {
   "name": "arif-fazil.com WebMCP Surface",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Browser-native agent tool surface for arif-fazil.com, governed by arifOS constitutional floors F1-F13.",
   "sovereign": "did:web:arif-fazil.com",
   "constitutional_kernel": "https://arifos.arif-fazil.com",
   "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "adapter_script": "/_shared/webmcp/arifos-webmcp-adapter.js",
+  "generated_at": "2026-07-15T11:16:58.033Z",
   "tools": [
     {
-      "name": "get_federation_status",
-      "description": "Returns live health status of all arifOS federation organs (arifOS, GEOX, WEALTH, WELL, AAA)",
-      "endpoint": "https://arif-fazil.com/api/organs",
-      "method": "GET",
-      "floor": "F2"
-    },
-    {
-      "name": "get_wealth_briefing",
-      "description": "Returns live AI-generated daily market briefing with sentiment, observations, risk events across 7 assets",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/briefing",
-      "method": "GET",
-      "floor": "F2"
-    },
-    {
       "name": "verify_did",
-      "description": "Returns the W3C DID document for did:web:arif-fazil.com — sovereign identity chain",
+      "description": "W3C DID document for did:web:arif-fazil.com",
       "endpoint": "https://arif-fazil.com/.well-known/did.json",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_constitution",
-      "description": "Returns the arifOS constitutional floor definitions (F1-F13)",
+      "description": "arifOS constitutional floor definitions (F1-F13)",
       "endpoint": "https://arifos.arif-fazil.com/constitution.json",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_gold_price",
-      "description": "Returns the latest XAUUSD gold price, change, RSI, signal, and EMA values",
+      "description": "Latest XAUUSD gold price, RSI, signal, EMA values",
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/ticker",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_gold_history",
-      "description": "Returns XAUUSD OHLCV candlestick data with EMA and RSI indicators for charting",
-      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/history?interval=1h&period=30d",
+      "description": "XAUUSD OHLCV candlestick data with EMA and RSI indicators",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/history",
       "method": "GET",
-      "floor": "F2"
+      "params": {
+        "interval": "1h",
+        "period": "30d"
+      },
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_gold_signals",
-      "description": "Returns the latest XAUUSD trading signal with entry, stop-loss, take-profit, and confluence analysis",
+      "description": "Latest XAUUSD trading signal with confluence analysis",
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/signals",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_gold_levels",
-      "description": "Returns XAUUSD support and resistance levels from multiple timeframes",
+      "description": "XAUUSD support and resistance levels from multiple timeframes",
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/levels",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     },
     {
       "name": "get_gold_macro",
-      "description": "Returns macro context for gold: DXY, VIX, US 10Y yield, silver, gold/silver ratio",
+      "description": "Macro context for gold: DXY, VIX, US10Y, silver, gold/silver ratio",
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/macro",
       "method": "GET",
-      "floor": "F2"
-    },
-    {
-      "name": "get_market_overview",
-      "description": "Live multi-asset market overview — prices, signals, RSI, EMA for Gold, S&P 500, Nasdaq, Bitcoin, DXY, Oil, US 10Y",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/overview",
-      "method": "GET",
-      "floor": "F2"
-    },
-    {
-      "name": "get_market_ticker",
-      "description": "Quick price ticker for all 7 assets — prices, change%, signals only",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/ticker",
-      "method": "GET",
-      "floor": "F2"
-    },
-    {
-      "name": "get_asset_detail",
-      "description": "Detailed analysis for a specific asset — full indicators, S/R levels, signal reasons",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/{asset}",
-      "method": "GET",
-      "params": {
-        "asset": "gold|sp500|nasdaq|bitcoin|dxy|oil|us10y"
-      },
-      "floor": "F2"
+      "floor": "F2",
+      "last_verified": "2026-07-15T11:16:58.033Z"
     }
   ],
   "constraints": {
@@ -106,5 +80,32 @@
       "F12",
       "F13"
     ]
-  }
+  },
+  "dropped": [
+    {
+      "name": "get_federation_status",
+      "endpoint": "https://arif-fazil.com/api/organs",
+      "status": 404
+    },
+    {
+      "name": "get_wealth_briefing",
+      "endpoint": "https://arif-fazil.com/wealth/api/wealth/briefing",
+      "status": 404
+    },
+    {
+      "name": "get_market_overview",
+      "endpoint": "https://arif-fazil.com/wealth/api/wealth/overview",
+      "status": 404
+    },
+    {
+      "name": "get_market_ticker",
+      "endpoint": "https://arif-fazil.com/wealth/api/wealth/ticker",
+      "status": 404
+    },
+    {
+      "name": "get_asset_detail",
+      "endpoint": "https://arif-fazil.com/wealth/api/wealth/{asset}",
+      "status": 404
+    }
+  ]
 }

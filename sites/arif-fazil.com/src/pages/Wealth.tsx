@@ -363,7 +363,17 @@ export function Wealth() {
       {/* ── HERO HEADER ─────────────────────────────────── */}
       <section className="py-20 border-b-2 border-forge-iron">
         <div className="site-frame">
-          <div className="section-label">Ξ WEALTH · Capital Intelligence</div>
+          <div className="flex justify-between items-center mb-4 flex-wrap gap-4">
+            <div className="section-label">Ξ WEALTH · Capital Intelligence</div>
+            <a 
+              href="https://wealth.arif-fazil.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-forge-orange/10 border border-forge-orange/30 text-forge-orange hover:bg-forge-orange/20 font-mono text-[0.65rem] uppercase tracking-wider transition-all"
+            >
+              Open the live WEALTH cockpit → wealth.arif-fazil.com
+            </a>
+          </div>
           <h1 className="text-5xl md:text-7xl font-black italic uppercase leading-none tracking-tighter mb-4">
             Daily Briefing
           </h1>

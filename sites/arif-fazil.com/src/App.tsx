@@ -6,6 +6,7 @@ import { Home } from '@/pages/Home';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
 import { WealthArticle } from '@/pages/WealthArticle';
+import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGPT } from '@/pages/MakcikGPT';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
 import { Discoveries } from '@/pages/Discoveries';
@@ -25,11 +26,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/000" element={<Genesis />} />
             <Route path="/000/" element={<Genesis />} />
+            <Route path="/genesis" element={<Genesis />} />
+            <Route path="/genesis/" element={<Genesis />} />
             <Route path="/wealth" element={<Wealth />} />
             <Route path="/wealth/" element={<Wealth />} />
             <Route path="/wealth/article/:slug" element={<WealthArticle />} />
-            <Route path="/wealth/makcikgpt" element={<MakcikGPT />} />
-            <Route path="/wealth/makcikgpt/" element={<MakcikGPT />} />
+            <Route path="/wealth/makcikgpt" element={<MakcikGPTAlias />} />
+            <Route path="/wealth/makcikgpt/" element={<MakcikGPTAlias />} />
+            <Route path="/wealth/makcikgpt/index" element={<MakcikGPT />} />
             <Route path="/wealth/makcikgpt/:slug" element={<MakcikGptArticle />} />
             <Route path="/discoveries" element={<Discoveries />} />
             <Route path="/discoveries/" element={<Discoveries />} />

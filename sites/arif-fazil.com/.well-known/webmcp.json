@@ -1,0 +1,158 @@
+{
+  "name": "arif-fazil.com WebMCP Surface",
+  "version": "2.0.0",
+  "description": "Browser-native agent tool surface for arif-fazil.com — WEALTH, GEOX, WELL, MakcikGPT. Governed by arifOS constitutional floors F1-F13.",
+  "sovereign": "did:web:arif-fazil.com",
+  "constitutional_kernel": "https://arifos.arif-fazil.com",
+  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+  "adapter_script": "/_shared/webmcp/arifos-webmcp-adapter.js",
+  "apps": {
+    "wealth": { "route": "/wealth/", "description": "Multi-asset market intelligence dashboard" },
+    "gold": { "route": "/wealth/gold/", "description": "Live XAUUSD candlestick chart with TradingView Lightweight Charts" },
+    "makcikgpt": { "route": "/makcikgpt/", "description": "BM Petronas AI persona — DNA, governance, dividen" },
+    "well": { "route": "/well/", "description": "Biological clock, circadian rhythm, vitality snapshot" },
+    "geox": { "route": "/geox/", "description": "Earth intelligence — Macrostrat geological map, formations, basins" }
+  },
+  "tools": [
+    {
+      "name": "get_federation_status",
+      "description": "Returns live health status of all arifOS federation organs (arifos, geox, wealth, well, aaa)",
+      "endpoint": "https://arifos.arif-fazil.com/api/federation-probe",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_market_overview",
+      "description": "Live multi-asset market overview — prices, signals, RSI, EMA for Gold, S&P 500, Nasdaq, Bitcoin, DXY, Oil, US 10Y",
+      "endpoint": "https://arif-fazil.com/wealth/api/overview",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_market_ticker",
+      "description": "Quick price ticker for all 7 assets — prices, change%, signals only",
+      "endpoint": "https://arif-fazil.com/wealth/api/ticker",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_wealth_briefing",
+      "description": "AI-generated daily market briefing with sentiment, observations, risk events across 7 assets",
+      "endpoint": "https://arif-fazil.com/wealth/api/briefing",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_gold_price",
+      "description": "Returns the latest XAUUSD gold price, change, RSI, signal, and EMA values",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/ticker",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_gold_history",
+      "description": "Returns XAUUSD OHLCV candlestick data with EMA and RSI indicators for charting",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/history?interval=1h&period=30d",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_gold_signals",
+      "description": "Returns the latest XAUUSD trading signal with entry, stop-loss, take-profit, and confluence analysis",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/signals",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_gold_levels",
+      "description": "Returns XAUUSD support and resistance levels from multiple timeframes",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/levels",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_gold_macro",
+      "description": "Returns macro context for gold: DXY, VIX, US 10Y yield, silver, gold/silver ratio",
+      "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/macro",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "ask_makcikgpt",
+      "description": "Ask MakcikGPT about PETRONAS — DNA, governance, dividen, Gentari, rightsizing. BM Petronas AI persona with 999 SEAL citations.",
+      "endpoint": "client-side",
+      "method": "WebMCP",
+      "floor": "F2",
+      "app": "/makcikgpt/"
+    },
+    {
+      "name": "get_vitality_snapshot",
+      "description": "Current vitality metrics from WELL organ — well_score, cognitive clarity, peace, amanah, rasa",
+      "endpoint": "https://well.arif-fazil.com/health",
+      "method": "GET",
+      "floor": "F2",
+      "app": "/well/"
+    },
+    {
+      "name": "get_biological_clock",
+      "description": "Circadian phase and energy level — sleep/wake cycle, peak/dip/wind-down phases",
+      "endpoint": "client-side",
+      "method": "WebMCP",
+      "floor": "F2",
+      "app": "/well/"
+    },
+    {
+      "name": "get_readiness_score",
+      "description": "WELL readiness score from state.json biometric data",
+      "endpoint": "https://well.arif-fazil.com/health",
+      "method": "GET",
+      "floor": "F2",
+      "app": "/well/"
+    },
+    {
+      "name": "get_basin_info",
+      "description": "Get geological basin information at coordinates via Macrostrat API",
+      "endpoint": "https://api.macrostrat.org/api/v2/columns",
+      "method": "GET",
+      "params": { "lat": "number", "lng": "number" },
+      "floor": "F2",
+      "app": "/geox/"
+    },
+    {
+      "name": "get_formation_detail",
+      "description": "Get geological formation details at coordinates — name, age, lithology, strat name, source",
+      "endpoint": "https://api.macrostrat.org/api/v2/geologic_units/map",
+      "method": "GET",
+      "params": { "lat": "number", "lng": "number" },
+      "floor": "F2",
+      "app": "/geox/"
+    },
+    {
+      "name": "get_earth_globe_state",
+      "description": "Current map viewport state — lat, lng, zoom level",
+      "endpoint": "client-side",
+      "method": "WebMCP",
+      "floor": "F2",
+      "app": "/geox/"
+    },
+    {
+      "name": "verify_did",
+      "description": "Returns the W3C DID document for did:web:arif-fazil.com — sovereign identity chain",
+      "endpoint": "https://arif-fazil.com/.well-known/did.json",
+      "method": "GET",
+      "floor": "F2"
+    },
+    {
+      "name": "get_constitution",
+      "description": "Returns the arifOS constitutional floor definitions (F1-F13)",
+      "endpoint": "https://arifos.arif-fazil.com/constitution.json",
+      "method": "GET",
+      "floor": "F2"
+    }
+  ],
+  "constraints": {
+    "read_only": true,
+    "requires_sovereign_confirm": false,
+    "floor_guards": ["F1", "F2", "F8", "F9", "F12", "F13"]
+  }
+}
