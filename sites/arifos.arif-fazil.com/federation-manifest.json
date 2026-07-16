@@ -1,138 +1,122 @@
 {
   "schema": "federation-manifest/v3",
-  "source": "arifOS MCP /health + /tools + live kernel probe (generate_federation_manifest.py)",
-  "generated": "2026-07-08T12:15:00Z",
+  "source": "arifOS Observatory /api/observatory/v1/snapshot \u2014 live probe",
+  "generated": "2026-07-16T00:30:16Z",
+  "snapshot_id": "obs_20260716_003016",
   "transport": {
     "protocol": "streamable-http + JSON-RPC 2.0",
     "json_response": true,
-    "sse_remaining": 0,
     "delta_s": 0,
-    "note": "Transport standardized across federation organs. ΔS ≤ 0. No SSE remaining."
+    "note": "Transport standardized across federation organs."
   },
-  "federation_verdict": "All 6 organs healthy: arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE. arifOS v2026.07.04-MARHIN (b55f78b). Runtime drift detected (build ≠ live commit). 6/13 constitutional floors passing.",
-  "note": "All numbers from live /health probe at 2026-07-08T12:15:00Z. arifOS canonical_tools=17, tools_exposed_mcp=12, total_declared=58.",
-  "stack": {
-    "topology": {
-      "ordinal": 1,
-      "name": "Human Sovereign (Arif · F13)",
-      "role": "Final authority. F13 veto absolute. Constitutional witness.",
-      "status": "live",
-      "layers": [
-        {
-          "ordinal": 1,
-          "name": "Human Sovereign (Arif · F13)",
-          "role": "Final authority. F13 veto absolute. Constitutional witness.",
-          "status": "live"
-        },
-        {
-          "ordinal": 2,
-          "name": "arifOS Governance Kernel",
-          "role": "13-floor constitutional engine. 888_JUDGE. 999_VAULT. ΔΩΨ Trinity routing.",
-          "status": "live"
-        },
-        {
-          "ordinal": 3,
-          "name": "GEOX · WEALTH · WELL · AAA · A-FORGE",
-          "role": "Earth · Capital · Vitality · A2A Hub · Metabolic Shell. MCP-connected organs.",
-          "status": "live"
-        },
-        {
-          "ordinal": 4,
-          "name": "OpenClaw · Hermes · OpenCode",
-          "role": "Agent runtime. Telegram interface. A2A bridge. Model routing and execution.",
-          "status": "live"
-        },
-        {
-          "ordinal": 5,
-          "name": "Observatory · Canon · Wiki",
-          "role": "Public-facing surfaces. Read-only governance visibility. Constitutional doctrine.",
-          "status": "live"
-        }
-      ]
+  "runtime_identity": {
+    "source_commit": "1cd6cec",
+    "deployed_commit": "5c12281",
+    "build_commit": "1cd6cec",
+    "drift": {
+      "artifact": "DRIFTED",
+      "capability": "DRIFTED",
+      "forge_registry": "DRIFTED",
+      "schema": "UNKNOWN",
+      "route": "UNKNOWN",
+      "upstream_repository": "UNVERIFIED"
     },
-    "organs": {
-      "arifos": {
-        "name": "arifOS",
-        "type": "governance_kernel",
-        "role": "Constitutional engine. F1-F13 floors. 888_JUDGE. 999_VAULT.",
-        "port": 8088,
-        "mcp": true,
-        "transport": "streamable-http + JSON-RPC",
-        "health_endpoint": "/health",
-        "status": "healthy",
-        "tools": 58,
-        "release": "v2026.07.04-MARHIN",
-        "version": "kanon-b55f78b",
-        "commit": "b55f78b",
-        "canonical_tools": 17,
-        "diagnostic_tools": 41,
-        "tools_exposed_mcp": 7,
-        "floors_active": 13,
-        "vault_health": "healthy",
-        "manifest_hash": "d53b77bbc45962e8"
-      },
-      "geox": {
-        "name": "GEOX",
-        "type": "earth_intelligence",
-        "role": "Subsurface physics. Petrophysics. Seismic. Basin analysis. Physics-9 grounded.",
-        "port": 8081,
-        "mcp": true,
-        "transport": "streamable-http + JSON-RPC",
-        "health_endpoint": "/health",
-        "status": "healthy",
-        "tools": 16,
-        "version": "v2026.06.22-phase2",
-        "git_version": "geox-98cd5383"
-      },
-      "wealth": {
-        "name": "WEALTH",
-        "type": "capital_intelligence",
-        "role": "NPV/EMV. Risk scoring. Makcik² relational credit. Capital conservation.",
-        "port": 18082,
-        "mcp": true,
-        "transport": "streamable-http + JSON-RPC",
-        "health_endpoint": "/health",
-        "status": "alive",
-        "tools": 28,
-        "version": "2026.06.15"
-      },
-      "well": {
-        "name": "WELL",
-        "type": "vitality_engine",
-        "role": "Biological substrate. Operator cognitive pressure. Thermodynamic wellness.",
-        "port": 18083,
-        "mcp": true,
-        "transport": "streamable-http + JSON-RPC",
-        "health_endpoint": "/health",
-        "status": "healthy",
-        "tools": 18,
-        "version": "2026.05.15-ΩWELL+GWELL+FEDERATION"
-      },
-      "aaa": {
-        "name": "AAA",
-        "type": "a2a_hub",
-        "role": "A2A broker. Cockpit surface. Agent identity.",
-        "port": 3001,
-        "mcp": false,
-        "transport": "A2A (internal)",
-        "health_endpoint": "/health",
-        "status": "healthy",
-        "tools": 0,
-        "version": "1.0.0",
-        "agent_cards": 23
-      },
-      "forge": {
-        "name": "A-FORGE",
-        "type": "metabolic_shell",
-        "role": "Deployment orchestration. Agent engine loop. Executes after SEAL.",
-        "port": 7071,
-        "mcp": true,
-        "transport": "streamable-http + JSON-RPC",
-        "health_endpoint": "/health",
-        "status": "healthy",
-        "tools": 0,
-        "version": "0.1.0"
-      }
+    "deployment_mode": "container",
+    "process_started_at": "2026-07-15T11:36:56Z",
+    "platform": "Linux-6.17.0-40-generic-x86_64-with-glibc2.42",
+    "kernel_epoch": "unknown"
+  },
+  "substrate": {
+    "cpu_percent": 33.7,
+    "memory_percent": 95.7,
+    "memory_available_gb": 1.3,
+    "disk_percent": 44.1,
+    "vault999": "healthy"
+  },
+  "governance": {
+    "verdict": "UNKNOWN",
+    "floors_loaded": 13,
+    "floors_passing": 13,
+    "floors_failing": 0
+  },
+  "capabilities": {
+    "declared": 8,
+    "registered": 0,
+    "exposed": 8,
+    "invocable": 0,
+    "tested": 0,
+    "degraded": 8
+  },
+  "organs": {
+    "arifos": {
+      "transport": "up",
+      "drift": null,
+      "label": "kernel :8088"
+    },
+    "geox": {
+      "transport": "up",
+      "drift": null,
+      "label": "GEOX :8081"
+    },
+    "wealth": {
+      "transport": "up",
+      "drift": null,
+      "label": "WEALTH :18082"
+    },
+    "well": {
+      "transport": "up",
+      "drift": null,
+      "label": "WELL :18083"
+    },
+    "aaa": {
+      "transport": "up",
+      "drift": null,
+      "label": "AAA :3001"
+    },
+    "aforge": {
+      "transport": "up",
+      "drift": "DEGRADED: forge_registry_status exposes stale 31-tool hard-coded list vs live 65+",
+      "label": "A-FORGE :7071/:7072"
+    },
+    "mcp_gateway": {
+      "transport": "mcp.arif-fazil.com",
+      "drift": null,
+      "label": "mcp.arif-fazil.com"
     }
+  },
+  "federation_verdict": "All 7 organs monitored. arifOS v1cd6cec. 13/13 constitutional floors passing.",
+  "stack": {
+    "layers": [
+      {
+        "ordinal": 1,
+        "name": "Human Sovereign (Arif \u00b7 F13)",
+        "role": "Final authority. F13 veto absolute.",
+        "status": "live"
+      },
+      {
+        "ordinal": 2,
+        "name": "arifOS Governance Kernel",
+        "role": "13-floor constitutional engine. 888_JUDGE. 999_VAULT.",
+        "status": "live"
+      },
+      {
+        "ordinal": 3,
+        "name": "GEOX \u00b7 WEALTH \u00b7 WELL \u00b7 AAA \u00b7 A-FORGE",
+        "role": "Earth \u00b7 Capital \u00b7 Vitality \u00b7 A2A Hub \u00b7 Metabolic Shell",
+        "status": "live"
+      },
+      {
+        "ordinal": 4,
+        "name": "OpenClaw \u00b7 Hermes \u00b7 OpenCode",
+        "role": "Agent runtime. Telegram interface. A2A bridge.",
+        "status": "live"
+      },
+      {
+        "ordinal": 5,
+        "name": "Observatory \u00b7 Canon \u00b7 Wiki",
+        "role": "Public-facing surfaces. Read-only governance visibility.",
+        "status": "live"
+      }
+    ]
   }
 }
