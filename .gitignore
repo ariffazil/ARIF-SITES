@@ -36,3 +36,6 @@ infra/vps_root/opencode-config/auth.json
 # Playwright
 playwright-report/
 test-results/
+
+# Backup files (F1 AMANAH — keep local, not in version control)
+*.bak-*
