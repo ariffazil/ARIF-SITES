@@ -1,0 +1,26 @@
+{
+  "name": "A-FORGE",
+  "version": "0.1.0",
+  "description": "arifOS Federation execution shell — forge_* tools for build, deploy, orchestrate, observe",
+  "transport": "streamable-http",
+  "url": "https://forge.arif-fazil.com/mcp",
+  "capabilities": {
+    "tools": {
+      "stateless": 14,
+      "session": 49,
+      "total": 63
+    }
+  },
+  "auth": {
+    "type": "none",
+    "note": "MUTATE tools require session ownership via stdio. OBSERVE tools accept stateless calls."
+  },
+  "tested": "2026-06-28T13:45:00Z",
+  "verification": {
+    "initialize": "passed",
+    "tools_list": "passed (63 tools)",
+    "forge_health_check": "passed",
+    "forge_probe": "passed (4/4 organs alive)",
+    "mutate_rejection": "passed (forge_git rejected)"
+  }
+}
