@@ -1,32 +1,120 @@
 {
   "name": "arifOS Observatory WebMCP Surface",
-  "version": "1.0",
-  "description": "Browser-native agent tool surface for arifos.arif-fazil.com, governed by arifOS constitutional floors F1-F13.",
+  "version": "2.0",
+  "description": "Browser-native agent tool surface for arifos.arif-fazil.com — constitutional witness, federation observatory, and live reality snapshot. Governed by arifOS constitutional floors F1-F13.",
   "sovereign": "did:web:arif-fazil.com",
   "constitutional_kernel": "https://arifos.arif-fazil.com",
   "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "adapter_script": "/_shared/webmcp/arifos-webmcp-adapter.js",
+  "last_updated": "2026-07-16T00:30:00Z",
   "tools": [
     {
-      "name": "get_floor_scores",
-      "description": "Get live F1-F13 constitutional floor scores, verdict posture, and thermodynamic metrics (ΔS, Ψ, Peace²) from the arifOS governance kernel",
-      "endpoint": "https://arifos.arif-fazil.com/api/status",
+      "name": "get_observatory_snapshot",
+      "description": "Get the complete signed observatory snapshot — runtime identity, substrate, governance state, capability matrix, organ status, federation edges, intelligence metabolism, evidence chain, and authority gates. Single source of truth for the entire federation state.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
       "method": "GET",
-      "floor": "F2"
+      "floor": "F2",
+      "response_schema": "observatory.v1"
+    },
+    {
+      "name": "get_floor_scores",
+      "description": "Get live F1-F13 constitutional floor scores, verdict posture, verdict decomposition, and governance summary from the arifOS kernel.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.governance"
     },
     {
       "name": "get_organ_census",
-      "description": "Get live status of all federation organs: arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE, VAULT999, Redis, Postgres, Qdrant, Ollama",
-      "endpoint": "https://arifos.arif-fazil.com/health",
+      "description": "Get live status of all 7 federation organs: arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE, MCP Gateway. Each organ includes transport state, identity, capability, governance, drift, and dependency info.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.organs"
+    },
+    {
+      "name": "get_federation_edges",
+      "description": "Get directed federation edge probes — transport, identity_match, schema_match, session_propagated, actor_propagated, trace_propagated, receipt_produced, and overall health per edge.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F13",
+      "response_query": "$.federation_edges"
+    },
+    {
+      "name": "get_vault_health",
+      "description": "Get VAULT999 immutable ledger status: seal chain sequence, sources used, source diversity, contradictions, direct vs inferred evidence, and last receipt tier.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.evidence"
+    },
+    {
+      "name": "get_substrate_metrics",
+      "description": "Get live VPS substrate metrics: CPU percent, memory percent and available bytes, disk percent and free bytes, network I/O, and VAULT999 health.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.substrate"
+    },
+    {
+      "name": "get_capability_matrix",
+      "description": "Get capability drift matrix — per-tool declared/registered/exposed/invocable/tested status with in/out match and truth verification.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.capabilities"
+    },
+    {
+      "name": "get_intelligence_metabolism",
+      "description": "Get intelligence metabolism stages — each metabolic stage name, value, and confidence from the observation→reasoning→judgment pipeline.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.metabolism"
+    },
+    {
+      "name": "get_runtime_identity",
+      "description": "Get arifOS kernel runtime identity: source commit, deployed commit, build commit, drift state, deployment mode, process started at, platform, kernel epoch.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.runtime_identity"
+    },
+    {
+      "name": "get_constitution",
+      "description": "Get the arifOS constitution JSON-LD — 13 constitutional floors (F1-F13), ontology terms, governance structure, and sovereign identity. Canonical source for all constitutional queries.",
+      "endpoint": "https://arifos.arif-fazil.com/.well-known/governance.jsonld",
+      "method": "GET",
+      "floor": "F1"
+    },
+    {
+      "name": "get_federation_manifest",
+      "description": "Get the canonical federation manifest JSON — 8 nodes, 11 edges, transport protocol, stack topology, and live organ health summary.",
+      "endpoint": "https://arifos.arif-fazil.com/.well-known/arifos-federation.json",
       "method": "GET",
       "floor": "F2"
     },
     {
-      "name": "get_vault_health",
-      "description": "Get VAULT999 immutable ledger status: chain integrity, entry count, last seal timestamp, Merkle chain verification",
-      "endpoint": "https://arifos.arif-fazil.com/api/status",
+      "name": "get_llms_txt",
+      "description": "Get the llms.txt context file — plain text summary of all federation endpoints, MCP surfaces, and constitutional doctrine for LLM consumption.",
+      "endpoint": "https://arifos.arif-fazil.com/llms.txt",
       "method": "GET",
       "floor": "F2"
+    },
+    {
+      "name": "verify_did",
+      "description": "Verify the arifOS root DID (did:web:arif-fazil.com) — returns the DID document with verification methods, key agreement, and service endpoints.",
+      "endpoint": "https://arifos.arif-fazil.com/.well-known/did.json",
+      "method": "GET",
+      "floor": "F1"
+    },
+    {
+      "name": "get_federation_status",
+      "description": "Alias for get_organ_census. Returns live status of arifOS, GEOX, WEALTH, WELL, AAA, A-FORGE organs with transport and drift.",
+      "endpoint": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+      "method": "GET",
+      "floor": "F2",
+      "response_query": "$.organs"
     }
   ],
   "constraints": {
