@@ -1,0 +1,150 @@
+<!-- Unified Header — arifOS Federation · All Sites -->
+<!-- One header. Every site. Status bar + CANON counter + AF identity + full navigation. -->
+<!-- Usage: fetch('/_shared/unified-header.html').then(r=>r.text()).then(h=>{document.body.insertAdjacentHTML('afterbegin',h)}) -->
+<style>
+  :root {
+    --uh-bg: #0a0a0a;
+    --uh-border: #1a1a1a;
+    --uh-text: #888;
+    --uh-text-dim: #555;
+    --uh-text-bright: #fff;
+    --uh-soul: #FF3333;
+    --uh-mind: #00D4AA;
+    --uh-body: #D4A853;
+    --uh-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+  .uh { font-family: var(--uh-mono); background: var(--uh-bg); color: var(--uh-text); }
+  .uh a { color: var(--uh-text); text-decoration: none; transition: color 0.15s; }
+  .uh a:hover { color: var(--uh-text-bright); }
+
+  /* Status bar */
+  .uh-status { display: flex; gap: 1.5rem; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.08em; border-bottom: 1px solid var(--uh-border); color: var(--uh-text-dim); }
+  .uh-status .live { color: var(--uh-mind); }
+
+  /* CANON bar */
+  .uh-canon { display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.06em; border-bottom: 1px solid var(--uh-border); }
+  .uh-canon .day { color: var(--uh-body); font-weight: 600; }
+  .uh-canon .quote { color: var(--uh-text-dim); font-style: italic; }
+
+  /* Identity */
+  .uh-identity { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--uh-border); }
+  .uh-logo { width: 48px; height: 48px; border: 1.5px solid var(--uh-text); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; flex-shrink: 0; }
+  .uh-name { font-size: 1.5rem; font-weight: 700; color: var(--uh-text-bright); letter-spacing: 0.05em; line-height: 1.2; }
+  .uh-role { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--uh-text-dim); }
+
+  /* Navigation */
+  .uh-nav { display: flex; flex-wrap: wrap; gap: 0; padding: 0.6rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.06em; border-bottom: 2px solid var(--uh-border); }
+  .uh-nav a { padding: 0.3rem 0.85rem; border-radius: 3px; }
+  .uh-nav a:hover { background: rgba(255,255,255,0.05); }
+  .uh-nav .sep { color: #333; margin: 0 0.15rem; user-select: none; display: flex; align-items: center; }
+  .uh-nav .section-label { color: var(--uh-text-dim); font-size: 0.6rem; letter-spacing: 0.15em; padding: 0.3rem 0.5rem; text-transform: uppercase; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .uh-status { gap: 0.8rem; font-size: 0.55rem; padding: 0.3rem 0.75rem; }
+    .uh-canon { padding: 0.3rem 0.75rem; flex-direction: column; gap: 0.2rem; }
+    .uh-identity { padding: 0.75rem; gap: 0.75rem; }
+    .uh-logo { width: 36px; height: 36px; font-size: 0.85rem; }
+    .uh-name { font-size: 1.1rem; }
+    .uh-nav { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
+    .uh-nav a { padding: 0.25rem 0.5rem; }
+  }
+</style>
+
+<header class="uh">
+  <!-- Status bar -->
+  <div class="uh-status">
+    <span class="live">●</span>
+    <span id="uh-utc">UTC --:--:--</span>
+    <span id="uh-myt">MYT --:--:--</span>
+    <span id="uh-date">DATE ----/--/--</span>
+    <span id="uh-epoch">EPOCH ----------</span>
+    <span style="margin-left:auto" id="uh-timer">t ———————— --.--%</span>
+  </div>
+
+  <!-- CANON bar -->
+  <div class="uh-canon">
+    <div><span id="uh-day-label" class="day">CANON Day --</span> <span id="uh-y1">--% Y1</span></div>
+    <div class="quote">"Intelligence is what time looks like"</div>
+    <div id="uh-fdate" style="color:#666">---- --th ------ ---- --:-- -- MYT</div>
+  </div>
+
+  <!-- Identity -->
+  <div class="uh-identity">
+    <div class="uh-logo">AF</div>
+    <div>
+      <div class="uh-name">ARIF FAZIL</div>
+      <div class="uh-role">GEOSCIENTIST · ARCHITECT</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="uh-nav">
+    <a href="https://arif-fazil.com">HOME</a>
+    <span class="sep">|</span>
+    <a href="https://arif-fazil.com/discoveries/">WELLS</a>
+    <span class="sep">|</span>
+    <span class="section-label">SYSTEMS</span>
+    <a href="https://arifos.arif-fazil.com" style="color:var(--uh-mind)">OBSERVATORY</a>
+    <a href="https://geox.arif-fazil.com" style="color:var(--uh-body)">GEOX</a>
+    <a href="https://wealth.arif-fazil.com" style="color:var(--uh-body)">WEALTH</a>
+    <a href="https://well.arif-fazil.com" style="color:var(--uh-body)">WELL</a>
+    <a href="https://arif-fazil.com/wealth/makcikgpt/">MAKCIKGPT</a>
+    <span class="sep">|</span>
+    <span class="section-label">GOVERN</span>
+    <a href="https://aaa.arif-fazil.com" style="color:var(--uh-soul)">AAA</a>
+    <a href="https://mcp.arif-fazil.com" style="color:var(--uh-mind)">MCP</a>
+    <a href="https://forge.arif-fazil.com" style="color:var(--uh-soul)">A-FORGE</a>
+    <span class="sep">|</span>
+    <a href="https://arif-fazil.com/000/">/000</a>
+    <a href="https://arif-fazil.com/999/">/999</a>
+    <a href="https://arif-fazil.com/canon/">CANON</a>
+    <a href="https://arif-fazil.com/constellation/">CONSTELLATION</a>
+    <span class="sep">|</span>
+    <a href="https://arif-fazil.com/essays/">WRITING</a>
+    <a href="https://arif-fazil.com/contact/">CONTACT</a>
+  </nav>
+</header>
+
+<script>
+(function(){
+  // CANON epoch: 2026-06-09 00:00 MYT (UTC+8) = 2026-06-08 16:00 UTC
+  const CANON_EPOCH = new Date('2026-06-08T16:00:00Z').getTime();
+  const Y1_END = new Date('2027-06-08T16:00:00Z').getTime();
+
+  function pad(n,d){return String(n).padStart(d||2,'0')}
+
+  function update(){
+    const now = new Date();
+    const utc = now.toISOString().replace('T',' ').slice(0,19);
+    const myt = new Date(now.getTime()+8*3600000);
+    const h=myt.getUTCHours(), m=myt.getUTCMinutes(), s=myt.getUTCSeconds();
+    const mytStr = pad(h)+':'+pad(m)+':'+pad(s);
+    const epoch = Math.floor(now.getTime()/1000);
+    const dayMs = now.getTime()-CANON_EPOCH;
+    const day = Math.max(1,Math.floor(dayMs/86400000));
+    const y1Pct = Math.min(100,Math.max(0,((now.getTime()-CANON_EPOCH)/(Y1_END-CANON_EPOCH)*100)));
+    const yearMs = now.getTime()-CANON_EPOCH;
+    const yearPct = Math.min(100,Math.max(0,(yearMs/(Y1_END-CANON_EPOCH)*100)));
+    // Timer: day progress
+    const dayStart = new Date(myt); dayStart.setUTCHours(0,0,0,0);
+    const dayPct = ((myt.getTime()-dayStart.getTime())/86400000*100).toFixed(1);
+
+    document.getElementById('uh-utc').textContent='UTC '+utc.slice(11);
+    document.getElementById('uh-myt').textContent='MYT '+mytStr;
+    document.getElementById('uh-date').textContent='DATE '+utc.slice(0,10);
+    document.getElementById('uh-epoch').textContent='EPOCH '+epoch;
+    document.getElementById('uh-timer').textContent='t ———————— '+dayPct+'%';
+    document.getElementById('uh-day-label').textContent='CANON Day '+day;
+    document.getElementById('uh-y1').textContent=y1Pct.toFixed(0)+'% Y1';
+
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const d = myt.getUTCDate();
+    const suffix = d%10===1&&d!==11?'st':d%10===2&&d!==12?'nd':d%10===3&&d!==13?'rd':'th';
+    document.getElementById('uh-fdate').textContent=
+      days[myt.getUTCDay()]+' '+d+suffix+' '+months[myt.getUTCMonth()]+' '+myt.getUTCFullYear()+' '+mytStr+' MYT';
+  }
+  update(); setInterval(update,1000);
+})();
+</script>

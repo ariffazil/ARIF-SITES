@@ -189,26 +189,30 @@ export const systemProjects: SystemProject[] = [
 ];
 
 export const ecosystemLinks: LinkItem[] = [
-  { label: '/ — home', href: '/' },
+  // KNOWLEDGE — what you read, write, and discover
+  { label: 'writing', href: '/essays/' },
+  { label: 'discoveries', href: '/discoveries/' },
+  { label: 'makcikgpt', href: '/wealth/makcikgpt/' },
+  { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
+  // FOUNDATION — the immutable bedrock
   { label: '/000 — genesis', href: '/000/' },
   { label: '/999 — proof', href: '/999/' },
-  { label: '/discoveries', href: '/discoveries/' },
+  { label: '/canon', href: '/canon/' },
+  // MAP — orientation and context
   { label: '/constellation', href: '/constellation/' },
   { label: '/wealth', href: '/wealth/' },
-  { label: '/canon', href: '/canon/' },
-  { label: '/essays', href: '/essays/' },
-  { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
 ];
 
 export const arifosLinks: LinkItem[] = [
-  { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
-  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
-  { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
-  { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
-  { label: 'WEALTH Briefing', href: '/wealth/' },
-  { label: 'MakcikGPT', href: '/wealth/makcikgpt/' },
-  { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
-  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
+  // GOVERN — the infrastructure that makes everything honest
+  { label: 'mcp gateway', href: 'https://mcp.arif-fazil.com', external: true },
+  { label: 'observatory', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'aaa cockpit', href: 'https://aaa.arif-fazil.com', external: true },
+  { label: 'a-forge', href: 'https://forge.arif-fazil.com', external: true },
+  // EVIDENCE — the domain intelligence that reads reality
+  { label: 'geox', href: 'https://geox.arif-fazil.com', external: true },
+  { label: 'wealth', href: 'https://wealth.arif-fazil.com', external: true },
+  { label: 'well', href: 'https://well.arif-fazil.com', external: true },
 ];
 
 export const contactLinks: LinkItem[] = [
