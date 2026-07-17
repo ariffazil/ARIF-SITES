@@ -39,7 +39,7 @@
  <div class="logo">
   <div class="logo-mark">&#937;</div>
   <div>
-   <div class="logo-text">arifOS Observatory</div>
+   <h1 class="logo-text">arifOS Observatory</h1>
    <div class="logo-sub">Reality Witness · F13 2026-07-15</div>
   </div>
  </div>
@@ -69,7 +69,7 @@
 <main id="main">
  <section id="sec-identity">
   <h2><span class="marker">F2</span> Runtime identity</h2>
-  <div class="card">
+  <div class="card table-scroll">
    <div class="identity-grid" id="identity-grid">
     <div class="identity-cell"><span class="k">source commit</span><div class="v" id="id-source">…</div></div>
     <div class="identity-cell"><span class="k">deployed commit</span><div class="v" id="id-deployed">…</div></div>
@@ -85,7 +85,7 @@
 
  <section id="sec-surface">
   <h2><span class="marker">F2</span> Surface consistency <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(multi-surface canon — do not collapse)</span></h2>
-  <div class="card">
+  <div class="card table-scroll">
    <p style="margin:0 0 .75rem;font-size:.78rem;color:var(--text-muted)">
     Each count is a <b>distinct, named surface</b>. Public wire (8) is what agents see.
     Full internal superset (25) is a legitimate audit-only surface — it is <b>not</b> exposed via <code>/tools</code> or <code>tools/list</code>.
@@ -125,7 +125,7 @@
 
  <section id="sec-drift">
   <h2><span class="marker">F2</span> Capability drift</h2>
-  <div class="card">
+  <div class="card table-scroll">
    <table class="drift" id="drift-table">
     <thead><tr><th>name</th><th>declared</th><th>registered</th><th>exposed</th><th>invocable</th><th>tested</th><th>in/out match</th><th>last test</th><th>truth</th></tr></thead>
     <tbody></tbody>
@@ -175,20 +175,14 @@
  </section>
 
  <section id="sec-authority">
-  <h2><span class="marker">F13</span> Authority gate <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(each layer, no false-green — verdict = live probe outcome)</span></h2>
-  <div class="card">
+  <h2><span class="marker">F13</span> Authority gate <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(live probe outcome)</span></h2>
+  <div class="card table-scroll">
    <p style="margin:0 0 .75rem;font-size:.78rem;color:var(--text-muted)">
-    Every row below is populated by a live <code>fetch()</code> probe from the page at hydrate time.
-    No static "reachable/ready" claims — each cell shows the actual HTTP verdict returned right now.
-    Snapshot-derived rows (capability matrix · signature · floors) are computed from the same <code>/.well-known/observatory-snapshot-latest.json</code> the rest of this page binds.
+    Every row is populated by a live browser probe. Snapshot-derived rows use the same signed snapshot as this page.
    </p>
    <table class="drift" style="font-size:.78rem">
     <thead><tr><th>surface</th><th>source</th><th>layer</th><th>verdict</th><th>notes</th></tr></thead>
-    <tbody id="authority-tbody">
-     <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:1.5rem">
-      probes running… (live HTTP fetch per row, ~4 s timeout each, parallel)
-     </td></tr>
-    </tbody>
+    <tbody id="authority-tbody"><tr><td colspan="5">probes running…</td></tr></tbody>
    </table>
   </div>
  </section>
@@ -196,10 +190,11 @@
  <section id="sec-pulse">
   <h2><span class="marker">F13</span> Daily Reality Pulse</h2>
   <div class="card" id="pulse-card">
-   <p style="margin:0;font-size:.85rem">Pulses bound to existing 7 organs × 9 signals × 13 floors. The audit's EARTH/ENERGY/CAPITAL/INSTITUTION/HUMAN/SOCIAL/INFORMATION/MACHINE taxonomy was <strong>not adopted</strong> — those axes are not defined anywhere in the federation. We expose 7 organs + 1 cross-cutting machine axis (MACHINE · substrate(ALIGNED) | intelligence(RETAK)).</p>
+   <p style="margin:0;font-size:.85rem">Seven organs plus one cross-cutting machine axis. Unknown signals remain unknown.</p>
    <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem" id="pulse-grid"></div>
   </div>
  </section>
+
 </main>
 
 <footer>

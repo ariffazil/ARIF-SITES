@@ -101,11 +101,6 @@ for row in "${SITE_ROWS[@]}"; do
       "$webroot/.well-known/observatory_signing_key.pub.pem"
   fi
 
-  if [[ "$host" == "aaa.arif-fazil.com" && -f /root/VAULT999/seal_chain_head.json ]]; then
-    install -d -m 0755 "$webroot/_state"
-    install -m 0644 /root/VAULT999/seal_chain_head.json "$webroot/_state/seal_chain_head.json"
-  fi
-
   chown -R www-data:www-data "$webroot"
 done
 

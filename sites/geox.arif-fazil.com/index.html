@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GEOX | Sovereign Decision Cockpits</title>
-    <link rel="stylesheet" href="https://arifosmcp.arif-fazil.com/arifos-theme.css">
+    <meta name="description" content="GEOX Earth-intelligence surfaces for governed wells, seismic, petrophysics, and basin evidence.">
+    <link rel="canonical" href="https://geox.arif-fazil.com/">
+    <link rel="alternate" type="application/json" href="/.well-known/mcp.json" title="GEOX MCP discovery">
     <link rel="stylesheet" href="css/geox-platform.css">
     <style>
         :root {
@@ -12,6 +14,8 @@
             --accent-cyan: #00d4aa;
             --bg-dark: #0a0a0f;
             --border-dim: #1a1a25;
+            --text-primary: #f2efe8;
+            --text-secondary: #aaa7a0;
         }
 
         body {
@@ -23,7 +27,7 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-        header {
+        .container > header {
             padding: 2rem 0;
             display: flex;
             justify-content: space-between;
@@ -205,7 +209,12 @@
         .rasa-card .desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
 
         @media (max-width: 768px) {
+            .container { padding: 0 1rem; }
+            .container > header { align-items: flex-start; flex-direction: column; gap: 1rem; }
+            .nav-links { display: flex; width: 100%; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem; }
+            .nav-links a { margin-left: 0; white-space: nowrap; }
             .cockpit-grid { grid-template-columns: 1fr; }
+            .rasa-grid { grid-template-columns: 1fr; }
             .bridge-visual { flex-direction: column; gap: 2rem; }
             .bridge-visual::after { display: none; }
         }
@@ -213,7 +222,7 @@
   <script src="/_shared/unified-header-loader.js"></script>
 </head>
 <body>
-    <div class="container">
+    <main class="container">
         <header>
             <div style="font-family: monospace; font-size: 0.9rem; color: var(--accent-gold);">GEOX // AF-FORGE</div>
             <nav class="nav-links">
@@ -236,7 +245,7 @@
 
         <div class="status-bar">
             <div><span class="status-pulse"></span> SYSTEM_LIVE: <span id="server-version">v0.1.0-AAA</span></div>
-            <div style="font-family: monospace; color: var(--accent-gold);">VAULT_999_CONNECTED</div>
+            <div style="font-family: monospace; color: var(--accent-gold);">VAULT_LINK: UNVERIFIED</div>
             <div id="last-updated">2026.04.15 // 10:00:00</div>
         </div>
 
@@ -331,7 +340,7 @@
                 <a href="https://github.com/ariffazil/GEOX" style="color: var(--text-secondary); text-decoration: none;">Source</a>
             </div>
         </footer>
-    </div>
+    </main>
 
     <script>
         async function fetchStatus() {

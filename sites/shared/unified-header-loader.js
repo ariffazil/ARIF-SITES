@@ -6,6 +6,7 @@
   if(!base) base = {src:'/_shared/'};
   var src = base.src.replace(/[^\/]*$/, 'unified-header.html');
   fetch(src).then(function(r){return r.text()}).then(function(html){
+    document.body.classList.add('has-federation-header');
     document.body.insertAdjacentHTML('afterbegin', html);
   }).catch(function(){});
 })();

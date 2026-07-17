@@ -18,6 +18,7 @@
       "role": "MIND",
       "kind": "governance-observatory",
       "source": "sites/arifos.arif-fazil.com",
+      "snapshot_generator": "/root/.arifos/observatory/observatory_emit.py",
       "webroot": "/var/www/html/arifos",
       "deployable": true
     },
@@ -25,9 +26,10 @@
       "host": "aaa.arif-fazil.com",
       "role": "BODY",
       "kind": "agentic-cockpit",
-      "source": "sites/aaa.arif-fazil.com",
+      "source_owner": "/root/AAA",
+      "snapshot_reference": "sites/aaa.arif-fazil.com",
       "webroot": "/var/www/html/aaa",
-      "deployable": true
+      "deployable": false
     },
     {
       "host": "geox.arif-fazil.com",

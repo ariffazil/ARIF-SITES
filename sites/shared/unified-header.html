@@ -13,12 +13,13 @@
     --uh-body: #D4A853;
     --uh-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
   }
-  .uh { font-family: var(--uh-mono); background: var(--uh-bg); color: var(--uh-text); }
+  .uh { box-sizing: border-box; width: 100%; max-width: 100vw; overflow: hidden; flex: 0 0 auto; font-family: var(--uh-mono); background: var(--uh-bg); color: var(--uh-text); }
+  body.has-federation-header { flex-direction: column; }
   .uh a { color: var(--uh-text); text-decoration: none; transition: color 0.15s; }
   .uh a:hover { color: var(--uh-text-bright); }
 
   /* Status bar */
-  .uh-status { display: flex; gap: 1.5rem; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.08em; border-bottom: 1px solid var(--uh-border); color: var(--uh-text-dim); }
+  .uh-status { display: flex; flex-wrap: wrap; gap: 0.35rem 1.5rem; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.08em; border-bottom: 1px solid var(--uh-border); color: var(--uh-text-dim); }
   .uh-status .live { color: var(--uh-mind); }
 
   /* CANON bar */
@@ -48,6 +49,7 @@
     .uh-name { font-size: 1.1rem; }
     .uh-nav { padding: 0.4rem 0.75rem; font-size: 0.65rem; }
     .uh-nav a { padding: 0.25rem 0.5rem; }
+    .uh-status #uh-epoch, .uh-status #uh-timer { display: none; }
   }
 </style>
 

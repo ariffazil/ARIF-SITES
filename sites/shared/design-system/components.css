@@ -12,6 +12,12 @@
  * ================================================================================
  */
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* ─── Skip Link (accessibility) ────────────────────────────────────── */
 .skip-link {
   position: absolute;
@@ -322,10 +328,17 @@ section h2 code {
 /* ─── Drift Table ──────────────────────────────────────────────────── */
 table.drift {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
   font-size: var(--size-micro);
   line-height: 1.5;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 table.drift thead th {
