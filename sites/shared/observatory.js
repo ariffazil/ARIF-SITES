@@ -199,10 +199,13 @@
     const sig = d.signature || {};
     const sigEl = $('#footer-signature');
     if (sigEl) {
+      const algorithm = sig.algorithm || sig.key_algorithm;
+      const payloadHash = sig.payload_hash || sig.payload_hash_sha256;
+      const signedAt = sig.signed_at || sig.observed_at;
       sigEl.textContent =
-        `algorithm=${sig.algorithm || 'null'} · key_id=${sig.key_id || 'null'} · ` +
-        `payload_hash=${shortHash(sig.payload_hash) || 'null'} · ` +
-        `signed_at=${sig.signed_at || 'null'} · ` +
+        `algorithm=${algorithm || 'null'} · key_id=${sig.key_id || 'null'} · ` +
+        `payload_hash=${payloadHash ? shortHash(payloadHash) : 'null'} · ` +
+        `signed_at=${signedAt || 'null'} · ` +
         `state=${st(sig) || 'unknown'}`;
     }
     const snapIdEl = $('#footer-snap-id');
