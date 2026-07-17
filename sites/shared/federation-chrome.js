@@ -70,7 +70,7 @@
       '.fed-foot-grid a{color:#9b9995;text-decoration:none}',
       '.fed-foot-grid a:hover{color:#fff}',
       '.fed-foot-grid .d{color:#555;display:block;font-size:0.6rem;letter-spacing:0.08em;margin-bottom:0.15rem}',
-      '.fed-foot-line{color:#555;max-width:52ch;line-height:1.5}'
+      '.fed-foot-line{color:#555;max-width:52ch;line-height:1.5},.fed-subnav{box-sizing:border-box;width:100%;background:#0d0d0d;border-bottom:1px solid #1a1a1a;font-family:system-ui,sans-serif;font-size:0.78rem},.fed-subnav-inner{max-width:1100px;margin:0 auto;padding:0.4rem 1rem;display:flex;flex-wrap:wrap;gap:0.25rem 0.5rem;align-items:center},.fed-subnav a{color:#888;text-decoration:none;padding:0.35rem 0.65rem;border-radius:4px},.fed-subnav a:hover{color:#fff;background:rgba(255,255,255,0.05)},.fed-subnav a.active{color:#d4a853;background:rgba(212,168,83,0.1)},.fed-subnav .crumb{color:#555;font-size:0.7rem;margin-right:0.5rem},.fed-badge-prov{display:inline-flex;flex-direction:column;gap:0.15rem;padding:0.35rem 0.55rem;border:1px solid #2a2826;border-radius:6px;background:#141312;color:#9b9995;font-size:0.72rem;text-decoration:none;max-width:22rem},.fed-badge-prov:hover{border-color:#3a9ea8},.fed-badge-prov strong{color:#e6e4e0;font-size:0.8rem},.fed-badge-prov .meta{font-family:ui-monospace,monospace;font-size:0.62rem;color:#706e6b}'
     ].join('');
     document.head.appendChild(css);
   }
@@ -141,14 +141,90 @@
           String(m.getUTCHours()).padStart(2,'0') + ':' + String(m.getUTCMinutes()).padStart(2,'0') + ' MYT';
       } catch (e) { myt = observed; }
     }
+    var hash = (state.mcp && state.mcp.tool_surface_hash) || (row && row.surface_hash) || '';
+    var hashShort = hash ? String(hash).slice(0, 12) + (String(hash).length > 12 ? '…' : '') : '—';
+    var snapSrc = (state.snapshot && state.snapshot.id) ? ('snapshot ' + state.snapshot.id) : 'Observatory public-state';
     inner.innerHTML =
-      '<span><strong>Observed by arifOS Observatory</strong></span>' +
-      '<span>' + label + ': <strong>' + (tools != null ? tools + ' public tools' : '—') + '</strong> · transport ' + transport + '</span>' +
-      (myt ? '<span>Last verified ' + myt + '</span>' : '') +
-      '<span>Release ' + rel + '</span>' +
-      '<a href="' + evidence + '">Inspect evidence</a>';
+      '<a class="fed-badge-prov" href="' + evidence + '">' +
+        '<strong>' + (tools != null ? tools + ' public tools' : '—') + '</strong>' +
+        '<span>' + label + ' · transport ' + transport + '</span>' +
+        '<span class="meta">Observed ' + (myt || '—') + '</span>' +
+        '<span class="meta">Source: ' + snapSrc + '</span>' +
+        '<span class="meta">Surface hash: ' + hashShort + '</span>' +
+        '<span class="meta">Release ' + rel + ' · Inspect organ evidence →</span>' +
+      '</a>';
     bar.appendChild(inner);
     return bar;
+  }
+
+  function buildSecondaryNav(manifest, active) {
+    var organs = (manifest && manifest.organs) || [];
+    var organ = null;
+    for (var i = 0; i < organs.length; i++) {
+      if (String(organs[i].id).toLowerCase() === active) { organ = organs[i]; break; }
+    }
+    if (!organ || !organ.secondary_nav || !organ.secondary_nav.length) return null;
+    var nav = document.createElement('nav');
+    nav.className = 'fed-subnav';
+    nav.setAttribute('aria-label', organ.label + ' secondary');
+    var inner = document.createElement('div');
+    inner.className = 'fed-subnav-inner';
+    var crumb = document.createElement('span');
+    crumb.className = 'crumb';
+    crumb.textContent = 'You are in ' + organ.label + ' · ' + (organ.domain || '') + ' · return:';
+    inner.appendChild(crumb);
+    var root = document.createElement('a');
+    root.href = 'https://arif-fazil.com/';
+    root.textContent = 'Arif root';
+    inner.appendChild(root);
+    organ.secondary_nav.forEach(function (item) {
+      var a = document.createElement('a');
+      a.href = item.href;
+      a.textContent = item.label;
+      // active if same path loosely
+      try {
+        var u = new URL(item.href, location.href);
+        if (u.pathname.replace(/\/$/, '') === location.pathname.replace(/\/$/, '') && !u.hash) a.className = 'active';
+        if (u.hash && location.hash === u.hash) a.className = 'active';
+      } catch (e) {}
+      inner.appendChild(a);
+    });
+    nav.appendChild(inner);
+    return nav;
+  }
+
+  function injectJsonLd(manifest, active) {
+    if (document.getElementById('fed-jsonld')) return;
+    var organs = (manifest && manifest.organs) || [];
+    var organ = null;
+    for (var i = 0; i < organs.length; i++) {
+      if (String(organs[i].id).toLowerCase() === active) { organ = organs[i]; break; }
+    }
+    if (!organ) return;
+    var data = {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      'name': organ.label || organ.organ_id,
+      'url': organ.website,
+      'isPartOf': {
+        '@type': 'SoftwareApplication',
+        'name': 'arifOS Federation',
+        'url': 'https://arif-fazil.com/federation/'
+      },
+      'creator': {
+        '@type': 'Person',
+        'name': 'Arif Fazil',
+        'url': 'https://arif-fazil.com/'
+      },
+      'applicationCategory': organ.domain || 'Intelligence',
+      'operatingSystem': 'Web',
+      'description': (organ.doctrine || '') + ' Role: ' + (organ.role || '') + '. Authority: ' + (organ.authority || '')
+    };
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = 'fed-jsonld';
+    s.textContent = JSON.stringify(data);
+    document.head.appendChild(s);
   }
 
   function buildFooter(manifest) {
@@ -181,6 +257,7 @@
   function mount(manifest, state) {
     injectStyles();
     var active = activeOrgan();
+    injectJsonLd(manifest, active);
     if (!document.querySelector('.fed-nav')) {
       document.body.insertBefore(buildNav(manifest, active), document.body.firstChild);
     }
@@ -190,6 +267,15 @@
       var status = buildStatus(state, active === 'observatory' || active === 'arifos' ? 'arifos' : active === 'mcp' ? 'arifos' : active);
       if (nav && nav.nextSibling) nav.parentNode.insertBefore(status, nav.nextSibling);
       else document.body.insertBefore(status, document.body.children[1] || null);
+    }
+    // secondary organ navigation (P1)
+    if (!document.querySelector('.fed-subnav') && ['geox','wealth','well'].indexOf(active) !== -1) {
+      var sub = buildSecondaryNav(manifest, active);
+      if (sub) {
+        var anchor = document.querySelector('.fed-status') || document.querySelector('.fed-nav');
+        if (anchor && anchor.nextSibling) anchor.parentNode.insertBefore(sub, anchor.nextSibling);
+        else if (anchor) anchor.parentNode.appendChild(sub);
+      }
     }
     if (!document.querySelector('.fed-foot')) {
       document.body.appendChild(buildFooter(manifest));

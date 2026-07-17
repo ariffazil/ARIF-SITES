@@ -1,7 +1,17 @@
 {
   "schema": "arifos.federation.v1",
-  "generated_at": "2026-07-17T21:00:00Z",
+  "generated_at": "2026-07-18T00:00:00Z",
+  "note": "One federation identity, distinct organ identities. Federation binds; it does not collapse.",
+  "federation_identity": {
+    "name": "arifOS Federation",
+    "url": "https://arif-fazil.com/federation/"
+  },
+  "sovereign_identity": {
+    "name": "Arif Fazil",
+    "url": "https://arif-fazil.com/"
+  },
   "sovereign_root": "https://arif-fazil.com/",
+  "handoff_schema": "arifos.handoff.v1",
   "governance": {
     "name": "arifOS",
     "website": "https://arifos.arif-fazil.com/",
@@ -12,6 +22,7 @@
   "organs": [
     {
       "id": "geox",
+      "organ_id": "GEOX",
       "domain": "earth",
       "label": "GEOX",
       "nav_label": "Earth",
@@ -20,10 +31,22 @@
       "mcp": "https://geox.arif-fazil.com/mcp",
       "authority": "advisory",
       "doctrine": "Is it real?",
-      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+      "ownership": ["geology", "earth_measurement", "prospect_physics", "well_evidence"],
+      "non_ownership": ["capital_allocation", "human_diagnosis", "execution"],
+      "schema_version": "geox.public.v1",
+      "evidence_url": "https://arifos.arif-fazil.com/organs/geox/",
+      "secondary_nav": [
+        { "label": "Overview", "href": "https://geox.arif-fazil.com/" },
+        { "label": "Basins", "href": "https://geox.arif-fazil.com/map/" },
+        { "label": "Wells", "href": "https://arif-fazil.com/wells" },
+        { "label": "Evidence", "href": "https://arifos.arif-fazil.com/organs/geox/" },
+        { "label": "Methods", "href": "https://geox.arif-fazil.com/theory/" },
+        { "label": "MCP", "href": "https://geox.arif-fazil.com/mcp" }
+      ]
     },
     {
       "id": "wealth",
+      "organ_id": "WEALTH",
       "domain": "capital",
       "label": "WEALTH",
       "nav_label": "Capital",
@@ -32,10 +55,23 @@
       "mcp": "https://wealth.arif-fazil.com/mcp",
       "authority": "advisory",
       "doctrine": "Is it worth it?",
-      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+      "ownership": ["capital_computation", "npv", "risk_scenario", "fiscal_model"],
+      "non_ownership": ["geology", "execution", "human_diagnosis"],
+      "schema_version": "wealth.public.v1",
+      "evidence_url": "https://arifos.arif-fazil.com/organs/wealth/",
+      "secondary_nav": [
+        { "label": "Overview", "href": "https://wealth.arif-fazil.com/" },
+        { "label": "Markets", "href": "https://arif-fazil.com/wealth" },
+        { "label": "Gold", "href": "https://arif-fazil.com/gold" },
+        { "label": "Oil & Gas", "href": "https://arif-fazil.com/oil" },
+        { "label": "Scenarios", "href": "https://wealth.arif-fazil.com/" },
+        { "label": "Methods", "href": "https://wealth.arif-fazil.com/" },
+        { "label": "MCP", "href": "https://wealth.arif-fazil.com/mcp" }
+      ]
     },
     {
       "id": "well",
+      "organ_id": "WELL",
       "domain": "human-substrate",
       "label": "WELL",
       "nav_label": "Human",
@@ -44,22 +80,38 @@
       "mcp": "https://well.arif-fazil.com/mcp",
       "authority": "reflect-only",
       "doctrine": "Is the human steady?",
-      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+      "ownership": ["human_readiness", "vitality_reflection", "dignity_boundary"],
+      "non_ownership": ["diagnosis", "capital_allocation", "execution", "geology"],
+      "schema_version": "well.public.v1",
+      "evidence_url": "https://arifos.arif-fazil.com/organs/well/",
+      "secondary_nav": [
+        { "label": "Overview", "href": "https://well.arif-fazil.com/" },
+        { "label": "Human", "href": "https://well.arif-fazil.com/#human" },
+        { "label": "Machine", "href": "https://well.arif-fazil.com/#machine" },
+        { "label": "Coupled State", "href": "https://well.arif-fazil.com/#coupled-state" },
+        { "label": "Privacy", "href": "https://well.arif-fazil.com/#privacy" },
+        { "label": "Methods", "href": "https://well.arif-fazil.com/" },
+        { "label": "MCP", "href": "https://well.arif-fazil.com/mcp" }
+      ]
     }
   ],
   "control_plane": {
     "id": "aaa",
+    "organ_id": "AAA",
     "label": "AAA",
     "role": "operator control plane",
     "website": "https://aaa.arif-fazil.com/",
-    "public_nav": false
+    "public_nav": false,
+    "non_ownership": ["public_knowledge_domain"]
   },
   "execution": {
     "id": "aforge",
+    "organ_id": "A-FORGE",
     "label": "A-FORGE",
     "role": "execution surface",
     "website": "https://forge.arif-fazil.com/",
-    "public_nav": false
+    "public_nav": false,
+    "requires": ["judgment_evidence", "lease"]
   },
   "verification": "https://arif-fazil.com/999/",
   "genesis": "https://arif-fazil.com/000/",
@@ -84,5 +136,5 @@
     { "domain": "EXECUTION", "name": "A-FORGE", "href": "https://forge.arif-fazil.com/" },
     { "domain": "PROOF", "name": "Observatory · /999", "href": "https://arif-fazil.com/999/" }
   ],
-  "authority_line": "Governed by arifOS. Domain organs advise or witness. The human remains the final authority."
+  "authority_line": "One federation identity, distinct organ identities. Domain organs advise or witness. The human remains the final authority."
 }
