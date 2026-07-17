@@ -11,7 +11,7 @@ export function ConstellationNav() {
           </div>
           <div className="hidden sm:block">
             <div className="font-display font-black text-xl leading-none uppercase tracking-tighter">Arif Fazil</div>
-            <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-[0.2em] mt-1">Geoscientist · ΔΩΨ Architect</div>
+            <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-[0.2em] mt-1">Geoscientist · Architect</div>
           </div>
         </Link>
 
@@ -19,12 +19,21 @@ export function ConstellationNav() {
           <ul className="ml-auto flex w-max min-w-full items-center justify-end gap-4 lg:gap-6">
             {primaryLinks.map((item) => (
               <li key={item.label}>
-                <Link 
-                  to={item.href} 
-                  className="font-technical text-[0.7rem] uppercase tracking-widest text-forge-dim hover:text-forge-orange transition-colors"
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    className="font-technical text-[0.7rem] uppercase tracking-widest text-forge-dim hover:text-forge-orange transition-colors"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="font-technical text-[0.7rem] uppercase tracking-widest text-forge-dim hover:text-forge-orange transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

@@ -31,11 +31,46 @@ export type SystemProject = {
 
 export const primaryLinks: LinkItem[] = [
   { label: 'Arif', href: '/' },
-  { label: 'Work', href: '/discoveries/' },
-  { label: 'arifOS', href: 'https://mcp.arif-fazil.com/', external: true },
+  { label: 'Earth', href: 'https://geox.arif-fazil.com/', external: true },
+  { label: 'Capital', href: 'https://wealth.arif-fazil.com/', external: true },
+  { label: 'Human', href: 'https://well.arif-fazil.com/', external: true },
+  { label: 'arifOS', href: '/arifos/' },
   { label: 'Writing', href: '/essays/' },
-  { label: 'Contact', href: '/contact/' },
 ];
+
+/** Three public knowledge domains — AAA/A-FORGE stay under Systems, not main nav. */
+export const organDoors = [
+  {
+    id: 'geox',
+    domain: 'EARTH',
+    name: 'GEOX',
+    title: 'Earth',
+    summary: 'Read physical reality before forming a decision.',
+    detail: 'Subsurface evidence, prospect reasoning, uncertainty and geological consequence.',
+    href: 'https://geox.arif-fazil.com/',
+    explainHref: '/organs/geox/',
+  },
+  {
+    id: 'wealth',
+    domain: 'CAPITAL',
+    name: 'WEALTH',
+    title: 'Capital',
+    summary: 'Judge value, risk and survival before committing capital.',
+    detail: 'NPV, uncertainty, debt resilience, cash flow and stewardship. Computation — not allocation authority.',
+    href: 'https://wealth.arif-fazil.com/',
+    explainHref: '/organs/wealth/',
+  },
+  {
+    id: 'well',
+    domain: 'HUMAN',
+    name: 'WELL',
+    title: 'Human substrate',
+    summary: 'Count the operator’s capacity and dignity as real evidence.',
+    detail: 'Vitality, cognitive pressure, readiness and human boundary. Reflect-only.',
+    href: 'https://well.arif-fazil.com/',
+    explainHref: '/organs/well/',
+  },
+] as const;
 
 // Plain — no scores, no stats, no framing
 export const trustStrip = [

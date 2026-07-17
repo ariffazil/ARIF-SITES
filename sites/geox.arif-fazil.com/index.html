@@ -220,6 +220,7 @@
         }
     </style>
   <script src="/_shared/unified-header-loader.js?v=20260717b"></script>
+<script src="/_shared/federation-chrome.js?v=20260718" data-active="geox"></script>
 </head>
 <body>
     <main class="container">
@@ -244,9 +245,9 @@
         </section>
 
         <div class="status-bar">
-            <div><span class="status-pulse"></span> SYSTEM_LIVE: <span id="server-version">v0.1.0-AAA</span></div>
-            <div style="font-family: monospace; color: var(--accent-gold);">VAULT_LINK: UNVERIFIED</div>
-            <div id="last-updated">2026.04.15 // 10:00:00</div>
+            <div><span class="status-pulse"></span> SYSTEM_LIVE: <span id="server-version" data-organ-release="geox">live</span></div>
+            <div style="font-family: monospace; color: var(--accent-gold);">PUBLIC_TOOLS: <span data-public-tools="geox">24</span></div>
+            <div id="last-updated">probing…</div>
         </div>
 
         <section class="cockpit-grid">
@@ -315,9 +316,9 @@
                     <div class="desc">GEOX never claims perfect context fit. 10% epistemic room is mandatory.</div>
                 </div>
                 <div class="rasa-card">
-                    <div class="value">30</div>
-                    <div class="label">Canonical Tools</div>
-                    <div class="desc">Every tool output can carry a RASA score when <code>rasa_present=True</code>.</div>
+                    <div class="value" data-public-tools="geox">24</div>
+                    <div class="label">Public Tools</div>
+                    <div class="desc">Live count from arifOS public-state — not a hand-maintained badge.</div>
                 </div>
                 <div class="rasa-card">
                     <div class="value">AAA</div>
@@ -348,12 +349,24 @@
                 const res = await fetch('/health');
                 if (res.ok) {
                     const data = await res.json();
-                    document.getElementById('server-version').textContent = data.version || 'v2.0.0-UNIFIED-SPEC';
+                    const ver = data.release_name || data.version || data.git_commit || 'live';
+                    document.getElementById('server-version').textContent = ver;
                 }
             } catch (e) {
                 console.log('Status fetch offline.');
             }
-            document.getElementById('last-updated').textContent = new Date().toISOString().replace('T', ' ').split('.')[0];
+            // Prefer Observatory public-state for tool count (single truth)
+            try {
+                const ps = await fetch('https://arifos.arif-fazil.com/api/public-state', { cache: 'no-store' }).then(r => r.json());
+                const n = ps && ps.organs && ps.organs.geox && ps.organs.geox.public_tools;
+                if (n != null) {
+                    document.querySelectorAll('[data-public-tools="geox"]').forEach(el => { el.textContent = String(n); });
+                }
+                if (ps && ps.organs && ps.organs.geox && ps.organs.geox.release) {
+                    document.getElementById('server-version').textContent = ps.organs.geox.release;
+                }
+            } catch (e) { /* chrome script may still fill */ }
+            document.getElementById('last-updated').textContent = new Date().toISOString().replace('T', ' ').split('.')[0] + ' UTC';
         }
         fetchStatus();
         setInterval(fetchStatus, 60000);

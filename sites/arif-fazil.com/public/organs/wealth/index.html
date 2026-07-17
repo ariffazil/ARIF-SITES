@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEALTH — Capital judgment · Arif Fazil</title>
+<meta name="description" content="Judge value, risk and survival before committing capital. Part of the arifOS federation. Canonical app at https://wealth.arif-fazil.com/">
+<link rel="canonical" href="https://arif-fazil.com/organs/wealth/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WEALTH","url":"https://wealth.arif-fazil.com/","isPartOf":{"@type":"SoftwareApplication","name":"arifOS Federation","url":"https://arif-fazil.com/arifos/"},"creator":{"@type":"Person","name":"Muhammad Arif Fazil","url":"https://arif-fazil.com/"}}
+</script>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
+main{max-width:640px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.8rem}.lead{color:#9b9995;margin:0.75rem 0 1.25rem}
+a.btn{display:inline-flex;padding:.65rem 1.1rem;border-radius:8px;background:#3a9ea8;color:#0d0c0b;font-weight:700;text-decoration:none;margin-right:.5rem}
+a.ghost{background:transparent;border:1px solid #2a2826;color:#e6e4e0}
+.card{border:1px solid #2a2826;border-radius:10px;padding:1rem;margin:1rem 0;background:#141312;font-family:ui-monospace,monospace;font-size:.82rem;color:#9b9995}
+</style>
+<script src="/_shared/federation-chrome.js?v=20260718" data-active="wealth"></script>
+</head>
+<body>
+<main>
+  <p style="font-size:.75rem;color:#706e6b;font-family:ui-monospace,monospace">Capital · human explanation page</p>
+  <h1>WEALTH — Capital judgment</h1>
+  <p class="lead">Judge value, risk and survival before committing capital.</p>
+  <p>
+    <a class="btn" href="https://wealth.arif-fazil.com/">Enter WEALTH</a>
+    <a class="btn ghost" href="https://arifos.arif-fazil.com/">Observatory evidence</a>
+    <a class="btn ghost" href="/federation/">Federation</a>
+  </p>
+  <div class="card" id="live">Loading live organ row…</div>
+</main>
+<script>
+fetch('https://arifos.arif-fazil.com/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
+  var o=(ps.organs&&ps.organs['wealth'])||{};
+  document.getElementById('live').textContent =
+    'Observed by arifOS Observatory\n' +
+    (o.public_tools!=null?o.public_tools+' public tools':'tools ?') +
+    ' · transport ' + (o.transport||'?') + '\n' +
+    'Release ' + (o.release||(ps.release&&ps.release.release_id)||'?') + '\n' +
+    'Last observed ' + (o.last_observed||ps.generated_at||'?');
+}).catch(()=>{document.getElementById('live').textContent='public-state unavailable';});
+</script>
+</body>
+</html>

@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import {
   contactLinks,
+  organDoors,
   wellsPortfolio,
 } from '@/data/siteContent';
 
@@ -22,6 +24,36 @@ const itemVariants: Variants = {
 };
 
 export function Home() {
+  useEffect(() => {
+    let cancelled = false;
+    fetch('https://arifos.arif-fazil.com/api/public-state', { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((ps) => {
+        if (cancelled) return;
+        const el = document.getElementById('federation-state-body');
+        if (!el || !ps || ps.schema !== 'arifos.public-state.v1') return;
+        const tools = ps.mcp?.public_tools ?? '—';
+        const findings = ps.findings?.open_count ?? 0;
+        const release = ps.release?.release_id ?? '—';
+        const headline = ps.headline ?? 'Gateway status unknown';
+        el.textContent =
+          `MCP gateway          ${ps.planes?.transport === 'REACHABLE' ? 'Operational' : ps.planes?.transport || '—'}\n` +
+          `Public arifOS tools  ${tools}\n` +
+          `Release              ${release}\n` +
+          `Open findings        ${findings}\n` +
+          `Authority            Human final\n` +
+          `\n${headline}`;
+        el.style.whiteSpace = 'pre-wrap';
+      })
+      .catch(() => {
+        const el = document.getElementById('federation-state-body');
+        if (el) el.textContent = 'public-state unavailable — see Observatory for evidence.';
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <motion.div
       initial="hidden"
@@ -40,7 +72,7 @@ export function Home() {
 
         <div className="site-frame relative z-10">
           <motion.div variants={itemVariants}>
-            <div className="section-label">Geoscientist · Kuala Lumpur</div>
+            <div className="section-label">Exploration geoscientist · Capital systems · Governed AI</div>
             <h1 className="font-display font-black text-[clamp(2.5rem,10vw,6rem)] leading-[0.9] uppercase tracking-tighter mb-8 italic">
               Arif<br />Fazil
             </h1>
@@ -51,27 +83,33 @@ export function Home() {
               <p className="font-technical text-forge-orange uppercase tracking-widest mb-4">
                 PETRONAS Carigali · Basin Analysis · Offshore Malaysia
               </p>
-              <p className="font-body text-xl text-forge-dim leading-relaxed mb-8">
-                I find oil and gas in places people said were finished.
-                I also build the systems that keep AI honest.
-                Both are the same kind of work: reading what the ground actually says, not what the model wants it to say.
+              <p className="font-body text-xl text-forge-dim leading-relaxed mb-6">
+                I work across three realities:
+              </p>
+              <ul className="font-body text-forge-dim leading-relaxed mb-8 space-y-2 list-none">
+                <li><span className="text-forge-white font-semibold">Earth</span> determines what is physically possible.</li>
+                <li><span className="text-forge-white font-semibold">Capital</span> determines what can survive.</li>
+                <li><span className="text-forge-white font-semibold">Human dignity</span> determines what should be done.</li>
+              </ul>
+              <p className="font-body text-forge-dim leading-relaxed mb-8">
+                arifOS governs how intelligence moves between them.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a href="#wells" className="button-forge">See the Wells</a>
-                <a href="#what-i-built" className="button-forge button-forge--accent">What I Built</a>
+                <a href="#organs" className="button-forge">Three domains</a>
+                <a href="/arifos/" className="button-forge button-forge--accent">Understand arifOS</a>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="hidden lg:block">
               <div className="border-l-2 border-forge-iron pl-8 space-y-4">
-                <div className="font-technical text-[0.7rem] text-forge-dim uppercase tracking-widest">What I Believe</div>
+                <div className="font-technical text-[0.7rem] text-forge-dim uppercase tracking-widest">Authority</div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
                   <span className="font-technical text-sm uppercase">Evidence before narrative</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
-                  <span className="font-technical text-sm uppercase">Reversibility before irreversibility</span>
+                  <span className="font-technical text-sm uppercase">Organs advise · human decides</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
@@ -83,73 +121,75 @@ export function Home() {
         </div>
       </section>
 
-      {/* ── WHAT I BUILT ──────────────────────────────────── */}
+      {/* ── THREE ORGAN DOORS ─────────────────────────────── */}
+      <section className="py-24 bg-forge-steel border-b-2 border-forge-iron" id="organs">
+        <div className="site-frame">
+          <div className="section-label">Three organ doors</div>
+          <p className="font-body text-forge-dim max-w-2xl mb-12 leading-relaxed">
+            Domain organs deepen expertise. They do not hold final authority.
+            AAA and A-FORGE stay under systems — not beside these three in human navigation.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {organDoors.map((organ) => (
+              <motion.div key={organ.id} variants={itemVariants} className="brutalist-card group">
+                <div className="font-technical text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">{organ.domain}</div>
+                <h3 className="text-xl font-black uppercase mb-1">{organ.name}</h3>
+                <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">{organ.title}</p>
+                <p className="text-sm text-forge-white leading-relaxed mb-2">{organ.summary}</p>
+                <p className="text-sm text-forge-dim leading-relaxed">{organ.detail}</p>
+                <div className="mt-4 pt-4 border-t border-forge-iron flex flex-wrap gap-4">
+                  <a href={organ.href} target="_blank" rel="noreferrer" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                    Enter {organ.name} →
+                  </a>
+                  <a href={organ.explainHref} className="font-technical text-xs text-forge-dim hover:text-forge-orange uppercase tracking-widest">
+                    Explain
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GOVERNANCE BRIDGE ─────────────────────────────── */}
+      <section className="py-24 border-b-2 border-forge-iron" id="arifos-bridge">
+        <div className="site-frame">
+          <div className="section-label">Governance</div>
+          <h2 className="text-3xl md:text-4xl font-black uppercase italic mb-6 tracking-tight">arifOS</h2>
+          <p className="font-body text-forge-dim max-w-2xl mb-8 leading-relaxed">
+            GEOX observes. WEALTH computes. WELL reflects.
+            arifOS judges authority and reversibility. The human decides.
+          </p>
+          <div className="flex flex-wrap gap-4 mb-12">
+            <a href="/arifos/" className="button-forge">Understand arifOS</a>
+            <a href="https://mcp.arif-fazil.com/" className="button-forge button-forge--accent">Connect MCP</a>
+            <a href="https://arifos.arif-fazil.com/" className="button-forge">Inspect Observatory</a>
+          </div>
+          <div className="brutalist-card max-w-xl" id="federation-state-card">
+            <div className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-3">Federation state · compact</div>
+            <p className="font-technical text-sm text-forge-dim" id="federation-state-body">Loading public-state…</p>
+            <div className="mt-4 pt-4 border-t border-forge-iron">
+              <a href="https://arifos.arif-fazil.com/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                View evidence →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT I BUILT (secondary systems) ──────────────── */}
       <section className="py-24 bg-forge-steel border-b-2 border-forge-iron" id="what-i-built">
         <div className="site-frame">
-          <div className="section-label">The Systems</div>
+          <div className="section-label">Also running</div>
           <p className="font-body text-forge-dim max-w-2xl mb-12 leading-relaxed">
-            Four systems running under one rule: AI executes, humans decide.
-            No black boxes. Every consequential action is logged and reversible.
+            Control and execution surfaces stay under Systems — not equal public knowledge domains.
           </p>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* arifOS */}
             <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">⚖️</div>
-              <h3 className="text-xl font-black uppercase mb-1">arifOS</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">The Law Layer · arifos.arif-fazil.com</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
-                The rule book for AI systems. 13 floors that every tool call must pass.
-                Nothing gets executed without a human-verifiable trail.
-                Think of it as the immune system that keeps autonomous agents from going off-road.
-              </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Open Observatory →
-                </a>
-              </div>
-            </motion.div>
-
-            {/* WEALTH */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">📊</div>
-              <h3 className="text-xl font-black uppercase mb-1">WEALTH</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Capital Intelligence · arif-fazil.com/wealth</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
-                Daily briefings on what Malaysia's money is doing — Bursa, ringgit, oil prices, political economy.
-                Evidence-gated. No vibes. Written in plain signal, not analyst-speak.
-              </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/wealth/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Read Today's Briefing →
-                </a>
-              </div>
-            </motion.div>
-
-            {/* GEOX */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">🗺️</div>
-              <h3 className="text-xl font-black uppercase mb-1">GEOX</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Earth Intelligence · geox.arif-fazil.com</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
-                Subsurface physics. Basin analysis, seismic, well logs.
-                Physics-grounded — what the ground says, not what the model predicts.
-              </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Open GEOX →
-                </a>
-              </div>
-            </motion.div>
-
-            {/* MakcikGPT */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">📰</div>
               <h3 className="text-xl font-black uppercase mb-1">MakcikGPT</h3>
               <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Civic Journalism · Bahasa Malaysia</p>
               <p className="text-sm text-forge-dim leading-relaxed">
-                Civic journalism in Bahasa Makcik. When RM70 billion moves and nobody asks questions,
-                MakcikGPT asks. Published directly, no gatekeepers.
+                Civic journalism in Bahasa Makcik. Evidence-gated briefings and public writing.
               </p>
               <div className="mt-4 pt-4 border-t border-forge-iron">
                 <a href="/wealth/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
@@ -157,18 +197,18 @@ export function Home() {
                 </a>
               </div>
             </motion.div>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-forge-iron">
-            <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
-              <p className="font-body text-forge-dim max-w-2xl text-sm italic">
-                "Every tool here was built because the work demanded it — not because AI is fashionable."
+            <motion.div variants={itemVariants} className="brutalist-card group">
+              <h3 className="text-xl font-black uppercase mb-1">Proof &amp; agents</h3>
+              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">/000 · /999 · Canon</p>
+              <p className="text-sm text-forge-dim leading-relaxed">
+                Machine-facing notes, receipt verification, and constitutional canon.
               </p>
-              <div className="flex gap-4 flex-shrink-0">
-                <a href="/000/" className="button-forge text-xs py-2">/000 — For Agents</a>
-                <a href="/999/" className="button-forge button-forge--accent text-xs py-2">/999 — Proof</a>
+              <div className="mt-4 pt-4 border-t border-forge-iron flex flex-wrap gap-4">
+                <a href="/000/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">/000</a>
+                <a href="/999/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">/999</a>
+                <a href="/canon/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">Canon</a>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
