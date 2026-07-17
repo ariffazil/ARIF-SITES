@@ -91,7 +91,13 @@ for row in "${SITE_ROWS[@]}"; do
   fi
 
   if [[ "$host" == "arifos.arif-fazil.com" ]]; then
-    python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"
+    if ! python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"; then
+      echo "[sites] WARNING: Observatory emit failed; deploying last valid signed snapshot" >&2
+    fi
+    [[ -f "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" ]] || {
+      echo "[sites] No Observatory snapshot available; refusing incomplete deployment" >&2
+      exit 1
+    }
     install -d -m 0755 "$webroot/.well-known"
     install -m 0644 "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" \
       "$webroot/.well-known/observatory-snapshot-latest.json"
