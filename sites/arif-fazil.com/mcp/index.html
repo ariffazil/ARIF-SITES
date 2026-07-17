@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arifOS MCP — Registry & Discovery</title>
+  <style>
+    body { font-family: system-ui, sans-serif; line-height: 1.6; color: #111827; margin: 0; padding: 40px 24px; background: #fafafa; }
+    .container { max-width: 720px; margin: 0 auto; }
+    .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; margin-bottom: 14px; display: flex; align-items: center; gap: 16px; transition: box-shadow 0.15s; text-decoration: none; color: inherit; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .card-icon { font-size: 28px; min-width: 40px; text-align: center; }
+    .card-body h3 { margin: 0 0 4px 0; font-size: 17px; }
+    .card-body p { margin: 0; color: #6b7280; font-size: 13px; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .badge-ok { background: #d1fae5; color: #065f46; }
+    .badge-warn { background: #fef3c7; color: #92400e; }
+    .code-block { background: #1e1e1e; color: #d4d4d4; padding: 16px; border-radius: 8px; font-family: monospace; font-size: 13px; margin: 20px 0; white-space: pre-wrap; }
+    footer { margin-top: 64px; padding: 20px 0; font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.1em; text-align: center; }
+    h1 { font-size: 32px; font-weight: 900; margin: 0 0 6px 0; }
+    .subtitle { color: #6b7280; margin-bottom: 28px; }
+    h2 { font-size: 20px; margin: 32px 0 14px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>arifOS MCP</h1>
+    <p class="subtitle">Constitutional AI Governance Kernel — discover, connect, govern.</p>
+
+    <div class="code-block">
+MCP Endpoint: https://mcp.arif-fazil.com/mcp
+Health:      https://arifos.arif-fazil.com/health
+llms.txt:    https://arifos.arif-fazil.com/llms.txt
+    </div>
+
+    <h2>MCP Registries</h2>
+
+    <a class="card" href="https://glama.ai/mcp/servers/ariffazil/arifos">
+      <div class="card-icon">Glama</div>
+      <div class="card-body">
+        <h3>Glama <span class="badge badge-warn">DNS FIXED</span></h3>
+        <p>Health-checked MCP registry. arifosmcp DNS record added 2026-07-17.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://pulsemcp.com/servers/ariffazil-arifos">
+      <div class="card-icon">Pulse</div>
+      <div class="card-body">
+        <h3>PulseMCP <span class="badge badge-ok">Listed</span></h3>
+        <p>AI agent discovery hub.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://smithery.ai/server/arifos">
+      <div class="card-icon">Smith</div>
+      <div class="card-body">
+        <h3>Smithery</h3>
+        <p>MCP server deployment platform.</p>
+      </div>
+    </a>
+
+    <a class="card" href="https://mcp.so/server/arifos">
+      <div class="card-icon">mcp</div>
+      <div class="card-body">
+        <h3>mcp.so</h3>
+        <p>MCP server discovery directory.</p>
+      </div>
+    </a>
+
+    <h2>Claude Desktop Config</h2>
+    <div class="code-block">{
+  "mcpServers": {
+    "arifos": {
+      "type": "streamable-http",
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
+  }
+}</div>
+
+    <footer>
+      DITEMPA BUKAN DIBERI — Forged, Not Given · v2026.07.17
+    </footer>
+  </div>
+</body>
+</html>
