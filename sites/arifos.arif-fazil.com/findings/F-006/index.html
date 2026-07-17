@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-header="product">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F-006 · Federation edges transport-reachable; authority propagation unproven — arifOS Observatory</title>
+<meta name="description" content="Federation edges transport-reachable; authority propagation unproven. Severity MEDIUM. Permanent finding page.">
+<link rel="canonical" href="https://arifos.arif-fazil.com/findings/F-006">
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.55;padding:1.5rem}
+main{max-width:640px;margin:0 auto}
+.card{border:1px solid #2a2826;border-radius:10px;padding:1rem;background:#141312;margin:1rem 0}
+.sev{color:#c4791a;font-size:.75rem;font-weight:700;letter-spacing:.04em}
+.muted{color:#9b9995;font-size:.9rem}
+a{color:#3a9ea8}
+.actions a{display:inline-block;margin:.25rem .5rem .25rem 0;padding:.45rem .75rem;border:1px solid #2a2826;border-radius:8px;text-decoration:none;color:#e6e4e0}
+</style>
+<script src="/_shared/unified-header-loader.js?v=20260718"></script>
+</head>
+<body data-header="product">
+<main>
+  <div class="sev">F-006 · MEDIUM · topology</div>
+  <h1>Federation edges transport-reachable; authority propagation unproven</h1>
+  <div class="card">
+    <p><strong>What failed?</strong><br>Federation edges transport-reachable; authority propagation unproven</p>
+    <p><strong>Why it matters</strong><br>Green nodes do not imply green edges. Semantic session/actor/trace/receipt propagation is not proven.</p>
+    <p><strong>Evidence</strong><br><span id="ev" class="muted">loading public-state…</span></p>
+    <p><strong>What would close it</strong><br>Probe schema, session, actor, trace and receipt on all 11 edges; promote from TRANSPORT_ONLY only when checks pass.</p>
+    <p><strong>Status</strong> <span id="st">OPEN</span> ·
+       <strong>Release</strong> <span id="rel">…</span></p>
+  </div>
+  <div class="actions">
+    <a href="/api/public-state">Raw public-state</a>
+    <a href="/.well-known/observatory-snapshot-latest.json">Signed snapshot</a>
+    <a href="https://mcp.arif-fazil.com/">Connect MCP</a>
+    <a href="/">Observatory</a>
+  </div>
+</main>
+<script>
+fetch('/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
+  document.getElementById('rel').textContent=(ps.release||{}).release_id||'?';
+  var open=(ps.findings&&ps.findings.open)||[];
+  var hit=open.find(f=>f.id==='F-006');
+  if(hit){
+    document.getElementById('st').textContent=hit.status||'OPEN';
+    document.getElementById('ev').textContent=hit.evidence||hit.description||'—';
+  } else {
+    document.getElementById('st').textContent='NOT IN OPEN SET (may be resolved)';
+    document.getElementById('ev').textContent='Not listed as OPEN in current public-state.';
+  }
+}).catch(()=>{document.getElementById('ev').textContent='public-state unavailable';});
+</script>
+</body>
+</html>
