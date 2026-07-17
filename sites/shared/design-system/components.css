@@ -825,11 +825,319 @@ table tr:hover td {
 }
 
 /* ================================================================================
- * END — TRINITY DESIGN SEAM components.css
+ * OBSERVATORY v2 ADDITIONS — 2026-07-17
+ * UNSIGNED banner · Findings grid · Badge states · Floor status
  * ================================================================================
- *
- * Sealed under 999_SEAL
- * Version: 2026.07.15
- *
- * Ditempa Bukan Diberi — Forged, Not Given
  */
+
+/* UNSIGNED banner — visible while snapshot.signature.value is null */
+.unsigned-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: linear-gradient(90deg,
+    rgba(249, 125, 61, 0.10) 0%,
+    rgba(229, 72, 77, 0.06) 100%);
+  border-bottom: 1px solid var(--color-verdict-hold);
+  border-top: 1px solid var(--color-verdict-hold);
+  color: var(--color-ink-primary);
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  line-height: 1.5;
+}
+.unsigned-banner strong {
+  color: var(--color-verdict-hold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.unsigned-banner a { color: var(--color-brand-sovereign); }
+.unsigned-banner code {
+  background: rgba(255,255,255,0.05);
+  padding: 0 var(--space-1);
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Visual honesty palette — badge states */
+.badge {
+  display: inline-block;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+.badge--green {
+  background: rgba(61, 220, 151, 0.12);
+  color: var(--color-verdict-seal);
+  border: 1px solid rgba(61, 220, 151, 0.3);
+}
+.badge--amber {
+  background: rgba(244, 183, 64, 0.12);
+  color: var(--color-verdict-partial);
+  border: 1px solid rgba(244, 183, 64, 0.3);
+}
+.badge--red {
+  background: rgba(229, 72, 77, 0.12);
+  color: var(--color-verdict-void);
+  border: 1px solid rgba(229, 72, 77, 0.3);
+}
+.badge--grey {
+  background: rgba(136, 146, 166, 0.10);
+  color: var(--color-verdict-sabar);
+  border: 1px solid rgba(136, 146, 166, 0.3);
+}
+
+/* Val inline states (vocab cells etc) */
+.val--green { color: var(--color-verdict-seal); }
+.val--amber { color: var(--color-verdict-partial); }
+.val--red   { color: var(--color-verdict-void); }
+.val--grey  { color: var(--color-verdict-sabar); }
+
+/* NOW-strip pill states */
+.now-pill--green { border-color: rgba(61, 220, 151, 0.4); }
+.now-pill--green .val { color: var(--color-verdict-seal); }
+.now-pill--amber { border-color: rgba(244, 183, 64, 0.4); }
+.now-pill--amber .val { color: var(--color-verdict-partial); }
+.now-pill--red   { border-color: rgba(229, 72, 77, 0.4); }
+.now-pill--red   .val { color: var(--color-verdict-void); }
+.now-pill--grey  { border-color: rgba(136, 146, 166, 0.3); }
+.now-pill--grey  .val { color: var(--color-verdict-sabar); }
+
+/* Floor cell — status text below score */
+.floor-cell { display: flex; flex-direction: column; gap: var(--space-1); }
+.floor-cell .floor-header { display: flex; justify-content: space-between; align-items: center; }
+.floor-cell .floor-score {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-chip);
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: var(--space-1);
+  align-self: flex-start;
+}
+.floor-cell .floor-status {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  color: var(--color-ink-secondary);
+  margin-top: var(--space-1);
+  text-transform: lowercase;
+}
+.floor-cell .floor-meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-ink-muted);
+  word-break: break-all;
+  margin-top: auto;
+}
+.floor-cell--green  .floor-score { color: var(--color-verdict-seal); }
+.floor-cell--amber  .floor-score { color: var(--color-verdict-partial); }
+.floor-cell--red    .floor-score { color: var(--color-verdict-void); }
+.floor-cell--grey   .floor-score { color: var(--color-verdict-sabar); }
+.floor-cell--green  { border-color: rgba(61, 220, 151, 0.3); }
+.floor-cell--amber  { border-color: rgba(244, 183, 64, 0.3); }
+.floor-cell--red    { border-color: rgba(229, 72, 77, 0.3); }
+
+/* Organ card */
+.organ-card {
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.organ-card--green  { border-color: rgba(61, 220, 151, 0.3); }
+.organ-card--amber  { border-color: rgba(244, 183, 64, 0.3); }
+.organ-card--red    { border-color: rgba(229, 72, 77, 0.3); }
+.organ-head { display: flex; justify-content: space-between; align-items: center; }
+.organ-name { font-weight: 700; color: var(--color-ink-primary); font-size: var(--text-xs); }
+.organ-port { color: var(--color-ink-muted); font-size: 0.7rem; }
+.organ-role { color: var(--color-ink-secondary); font-size: 0.7rem; }
+.organ-meta { display: flex; flex-direction: column; gap: var(--space-1); margin-top: var(--space-2); }
+.organ-meta span { display: flex; justify-content: space-between; gap: var(--space-2); align-items: center; }
+
+/* Findings grid */
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-3);
+}
+.finding-card {
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.finding-card--red   { border-color: rgba(229, 72, 77, 0.4); background: rgba(229, 72, 77, 0.04); }
+.finding-card--amber { border-color: rgba(244, 183, 64, 0.4); background: rgba(244, 183, 64, 0.04); }
+.finding-card--grey  { border-color: rgba(136, 146, 166, 0.3); }
+.finding-head { display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap; }
+.finding-id { font-family: var(--font-mono); font-weight: 700; color: var(--color-ink-primary); font-size: 0.8rem; }
+.finding-cat { color: var(--color-ink-muted); font-family: var(--font-mono); font-size: 0.7rem; }
+.finding-status {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+}
+.finding-desc {
+  color: var(--color-ink-secondary);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.finding-evidence {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-ink-muted);
+  word-break: break-word;
+}
+.finding-evidence code { background: rgba(255,255,255,0.05); padding: 0 var(--space-1); border-radius: 3px; }
+
+/* Metabolism cell */
+.metab-cell {
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.metab-cell--green { border-color: rgba(61, 220, 151, 0.3); }
+.metab-cell--amber { border-color: rgba(244, 183, 64, 0.3); }
+.metab-cell--red   { border-color: rgba(229, 72, 77, 0.3); }
+.metab-cell--grey  { border-color: rgba(136, 146, 166, 0.3); }
+.metab-name { font-weight: 700; color: var(--color-ink-primary); font-size: var(--text-xs); }
+.metab-val {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-ink-secondary);
+}
+.metab-cell--green .metab-val { color: var(--color-verdict-seal); }
+.metab-cell--amber .metab-val { color: var(--color-verdict-partial); }
+.metab-cell--grey  .metab-val { color: var(--color-verdict-sabar); }
+.metab-meta { font-size: 0.7rem; color: var(--color-ink-muted); }
+
+/* Pulse cell */
+.pulse-cell {
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line-hairline);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+}
+.pulse-cell--green { border-color: rgba(61, 220, 151, 0.3); }
+.pulse-cell--amber { border-color: rgba(244, 183, 64, 0.3); }
+.pulse-cell--red   { border-color: rgba(229, 72, 77, 0.3); }
+.pulse-cell--grey  { border-color: rgba(136, 146, 166, 0.3); }
+.pulse-name { font-weight: 700; color: var(--color-ink-primary); }
+.pulse-signal { color: var(--color-ink-muted); font-size: 0.7rem; word-break: break-word; }
+.pulse-status { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; }
+.pulse-cell--green .pulse-status { color: var(--color-verdict-seal); }
+.pulse-cell--amber .pulse-status { color: var(--color-verdict-partial); }
+.pulse-cell--red   .pulse-status { color: var(--color-verdict-void); }
+.pulse-cell--grey  .pulse-status { color: var(--color-verdict-sabar); }
+
+/* Surface consistency card (multi-surface canon) */
+.surface-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-3);
+}
+.surface-card {
+  padding: var(--space-3);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-chip);
+  border: 1px solid var(--color-line-hairline);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.surface-card--green { border-color: rgba(61, 220, 151, 0.35); background: rgba(61, 220, 151, 0.03); }
+.surface-card--red   { border-color: rgba(229, 72, 77, 0.4);   background: rgba(229, 72, 77, 0.04); }
+.surface-card--amber { border-color: rgba(244, 183, 64, 0.4);  background: rgba(244, 183, 64, 0.04); }
+.surface-card--grey  { border-color: rgba(136, 146, 166, 0.3); }
+.surface-section-head {
+  grid-column: 1 / -1;
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  font-weight: 700;
+  color: var(--color-brand-sovereign);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.surface-summary {
+  grid-column: 1 / -1;
+  border-color: var(--color-line-border);
+  background: rgba(232, 184, 75, 0.04);
+}
+.surface-label {
+  color: var(--color-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+}
+.surface-val {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-chip);
+  background: rgba(255, 255, 255, 0.03);
+  margin-top: var(--space-1);
+  align-self: flex-start;
+}
+.surface-val--green { color: var(--color-verdict-seal); }
+.surface-val--red   { color: var(--color-verdict-void); }
+.surface-val--amber { color: var(--color-verdict-partial); }
+.surface-val--grey  { color: var(--color-verdict-sabar); }
+.surface-meta {
+  color: var(--color-ink-secondary);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  word-break: break-word;
+}
+.surface-meta code {
+  background: rgba(255,255,255,0.05);
+  padding: 0 var(--space-1);
+  border-radius: 3px;
+}
+.surface-note {
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+/* ================================================================================
+ * END — Observatory v2 additions 2026-07-17
+ * ================================================================================ */

@@ -8,22 +8,31 @@
 <link rel="canonical" href="https://arifos.arif-fazil.com/">
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
 <link rel="alternate" type="application/ld+json" href="/.well-known/governance.jsonld" title="Governance JSON-LD">
-<link rel="alternate" type="application/json" href="/api/observatory/v1/snapshot" title="Live arifOS Observatory Snapshot">
+<link rel="alternate" type="application/json" href="/.well-known/observatory-snapshot-latest.json" title="Signed arifOS Observatory Snapshot">
 <link rel="stylesheet" href="/_shared/design-system/tokens.css">
 <link rel="stylesheet" href="/_shared/design-system/components.css">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
- {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Read-only constitutional witness of the arifOS federation."},
- {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-snapshot","name":"observatory-snapshot","url":"https://arifos.arif-fazil.com/api/observatory/v1/snapshot","description":"Single signed snapshot of runtime identity, substrate, governance, capabilities, organs, metabolism, evidence, receipts, incidents."}
+ {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Read-only constitutional witness of the arifOS federation. Snapshot schema observatory.v1."},
+ {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-snapshot","name":"observatory-snapshot","url":"https://arifos.arif-fazil.com/.well-known/observatory-snapshot-latest.json","description":"Single source-of-truth snapshot: runtime_identity, substrate, governance, capabilities, organs, metabolism, evidence, receipts, incidents, findings, federation_edges, conformance, tier."},
+ {"@type":"Observatory","name":"arifOS Observatory","release":"v2026.07.17-ZEN-SURVIVAL","version":"kanon-663ae01","tools_exposed_via_mcp":8,"floors_loaded":13,"floors_passing":13,"federation_organs":7,"signature_state":"unsigned-pending-key-bootstrap"}
 ]}
 </script>
   <script src="/_shared/unified-header-loader.js"></script>
+  <script src="/_shared/observatory.js" defer></script>
 </head>
-<body data-state="loading" data-source="GET /api/observatory/v1/snapshot" data-observed-at="2026-07-14T00:00:00Z" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.95" data-namespace="arifos" data-freshness-state="fresh">
+<body data-state="loading" data-source="GET /.well-known/observatory-snapshot-latest.json" data-observed-at="" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.0" data-namespace="arifos" data-freshness-state="unknown">
 <noscript><p>Read-only observers without JavaScript should consult
-  <a href="/api/observatory/v1/snapshot">/api/observatory/v1/snapshot</a>
+  <a href="/.well-known/observatory-snapshot-latest.json">/.well-known/observatory-snapshot-latest.json</a>
   for the live JSON state. This page renders the same data client-side.</p></noscript>
+
+<div id="unsigned-banner" class="unsigned-banner" role="status" aria-live="polite" style="display:none">
+ <strong>UNSIGNED SNAPSHOT.</strong>
+ <span>ed25519 key bootstrap pending · signature.state = unknown · verification_url = null.
+ Live JSON still serves at <a href="/.well-known/observatory-snapshot-latest.json">/.well-known/observatory-snapshot-latest.json</a>,
+ but no cryptographic witness until key wired. <code>snapshot.value = null</code></span>
+</div>
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <header class="header">
@@ -70,6 +79,21 @@
     <div class="identity-cell"><span class="k">started at</span><div class="v" id="id-started">…</div></div>
     <div class="identity-cell"><span class="k">platform</span><div class="v" id="id-platform" style="font-size:.65rem">…</div></div>
     <div class="identity-cell"><span class="k">kernel epoch</span><div class="v" id="id-epoch">…</div></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="sec-surface">
+  <h2><span class="marker">F2</span> Surface consistency <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(multi-surface canon — do not collapse)</span></h2>
+  <div class="card">
+   <p style="margin:0 0 .75rem;font-size:.78rem;color:var(--text-muted)">
+    Each count is a <b>distinct, named surface</b>. Public wire (8) is what agents see.
+    Full internal superset (25) is a legitimate audit-only surface — it is <b>not</b> exposed via <code>/tools</code> or <code>tools/list</code>.
+    Diagnostic (40) and registry (61) are declared/internal; they cannot be reached through the public facade.
+    All vantages derive from <code>GET /health</code> → <code>surface_consistency</code>.
+   </p>
+   <div class="surface-grid" id="surface-grid">
+    <div class="surface-card surface-card--grey" style="grid-column:1/-1;text-align:center;padding:1.5rem">fetching /health surface_consistency…</div>
    </div>
   </div>
  </section>
@@ -139,23 +163,31 @@
   </div>
  </section>
 
- <section id="sec-authority">
-  <h2><span class="marker">F13</span> Authority gate <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(each layer, no false-green)</span></h2>
+ <section id="sec-findings">
+  <h2><span class="marker">F-001…F-008</span> Open findings <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(first-class witness — no false-green)</span></h2>
   <div class="card">
+   <div class="findings-grid" id="findings-grid"></div>
+   <p style="margin-top:.75rem;font-size:.78rem;color:var(--text-muted)">
+    Sorted by severity. Each card carries ID · category · severity · status · evidence link.
+    Findings are emitted by the observatory probe matrix and re-derived on every snapshot (≥30 s).
+   </p>
+  </div>
+ </section>
+
+ <section id="sec-authority">
+  <h2><span class="marker">F13</span> Authority gate <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(each layer, no false-green — verdict = live probe outcome)</span></h2>
+  <div class="card">
+   <p style="margin:0 0 .75rem;font-size:.78rem;color:var(--text-muted)">
+    Every row below is populated by a live <code>fetch()</code> probe from the page at hydrate time.
+    No static "reachable/ready" claims — each cell shows the actual HTTP verdict returned right now.
+    Snapshot-derived rows (capability matrix · signature · floors) are computed from the same <code>/.well-known/observatory-snapshot-latest.json</code> the rest of this page binds.
+   </p>
    <table class="drift" style="font-size:.78rem">
     <thead><tr><th>surface</th><th>source</th><th>layer</th><th>verdict</th><th>notes</th></tr></thead>
     <tbody id="authority-tbody">
-     <tr><td><code>/api/observatory/v1/health-public</code></td><td>un-auth TCP</td><td>transport</td><td>reachable</td><td>no session, no interiority</td></tr>
-     <tr><td><code>/api/observatory/v1/ready</code></td><td>internal-network</td><td>dependencies</td><td>ready</td><td>postgres · redis · qdrant · vault_writer</td></tr>
-     <tr><td><code>/api/observatory/v1/capabilities</code></td><td>un-auth</td><td>sanitized public</td><td>declared 18 / registered 8</td><td>drift: 10 declared-not-registered (audit-2 finding)</td></tr>
-     <tr><td><code>/api/observatory/v1/capabilities/full</code></td><td>X-Op-Token</td><td>operator-only</td><td>requires tier=operator</td><td>rejects with SESSION_REQUIRED without token</td></tr>
-     <tr><td><code>/api/observatory/v1/seal/*</code></td><td>X-Op-Token</td><td>operator-only (MEMORY operator tier)</td><td>token-validated</td><td>verify · replay · test — internal ledger mutation requires operator</td></tr>
-     <tr><td><code>/999/ (MEMORY public-proof)</code></td><td>un-auth</td><td>public verification</td><td>read-only selected proofs</td><td>VAULT999 head seq + sampled receipt hashes (no private contents)</td></tr>
-     <tr><td><code>Capital Judge state machine</code></td><td>audit-4 PR5</td><td>workflow</td><td>RECEIVED → EXECUTED (8 states)</td><td>WEALTH QUALIFY never auto-executes</td></tr>
-     <tr><td><code>Conformance (PR7)</code></td><td>audit-4 PR7</td><td>3-level honest</td><td>FAST / LIVE / FULL</td><td>skip-state ⇒ AMBER (no false GREEN)</td></tr>
-     <tr><td><code>/.well-known/arifos-federation.json</code></td><td>un-auth</td><td>federation manifest</td><td>static, on disk</td><td>SOT — 8 nodes, 11 edges, schema v1</td></tr>
-     <tr><td><code>/.well-known/did.json</code></td><td>un-auth</td><td>root DID</td><td>did:web:arif-fazil.com</td><td>resolver at .well-known/did.json</td></tr>
-     <tr><td><code>/.well-known/governance.jsonld</code></td><td>un-auth</td><td>constitutional JSON-LD</td><td>13 floors + 5 ontology terms</td><td>application/ld+json</td></tr>
+     <tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:1.5rem">
+      probes running… (live HTTP fetch per row, ~4 s timeout each, parallel)
+     </td></tr>
     </tbody>
    </table>
   </div>

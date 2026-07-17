@@ -24,6 +24,7 @@ echo "[2/5] Syncing shared assets..."
 mkdir -p $HTML_ROOT/_shared/design-system $HTML_ROOT/_shared/webmcp
 rsync -avz --delete $SITES_ROOT/shared/design-system/ $HTML_ROOT/_shared/design-system/
 rsync -avz --delete $SITES_ROOT/shared/webmcp/ $HTML_ROOT/_shared/webmcp/
+rsync -avz $SITES_ROOT/shared/observatory.js $HTML_ROOT/_shared/observatory.js
 
 # 3. Sync sites to Caddy-served directories
 echo "[3/5] Syncing sites..."
@@ -43,6 +44,19 @@ rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
 
 # arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
 rsync -avz --delete $SITES_ROOT/arifos.arif-fazil.com/ $HTML_ROOT/arifos/
+
+# Generate and install the signed Observatory snapshot after rsync --delete.
+# The emitter is runtime-owned because the signing key must never enter this repo.
+echo "  ⚡ Generating signed Observatory snapshot..."
+OBSERVATORY_RUNTIME="/root/.arifos/observatory"
+python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"
+install -d -m 0755 "$HTML_ROOT/arifos/.well-known"
+install -m 0644 "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" \
+  "$HTML_ROOT/arifos/.well-known/observatory-snapshot-latest.json"
+install -m 0644 "$OBSERVATORY_RUNTIME/did.json" \
+  "$HTML_ROOT/arifos/.well-known/did-arifos-observatory.json"
+install -m 0644 "$OBSERVATORY_RUNTIME/keys/observatory_signing_key.pub.pem" \
+  "$HTML_ROOT/arifos/.well-known/observatory_signing_key.pub.pem"
 
 # aaa.arif-fazil.com (Δ BODY) — built React cockpit
 rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $HTML_ROOT/aaa/
