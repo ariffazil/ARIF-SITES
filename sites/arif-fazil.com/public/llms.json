@@ -1,56 +1,208 @@
 {
-  "site_name": "arif-fazil.com",
-  "domain": "arif-fazil.com",
-  "role": "human homepage with genesis, proof, capital briefing, and civic intelligence subroutes",
-  "canonical": "https://arif-fazil.com/llms.txt",
-  "repository": "https://github.com/ariffazil/arif-sites",
-  "route_roles": {
-    "/": "professional human entry — portfolio, wells, systems overview",
-    "/000/": "genesis and wisdom archive — origin context for agents",
-    "/999/": "trust and proof chamber — verification artifacts",
-    "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
-    "/wealth/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability",
-    "/wealth/makcikgpt/petronas-dna": "PETRONAS institutional DNA analysis — 1988 values vs 2026 leadership reality",
-    "/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal": "Power and wisdom critique — Sam Altman, Elon Musk, Anwar Ibrahim",
-    "/wealth/makcikgpt/searah-followup": "SEARAH operations start + PETRONAS leak court case",
-    "/wealth/makcikgpt/cerita-makcik": "Original SEARAH exposé — London shell company, 19 oilfields, PETROS excluded",
-    "/wealth/makcikgpt/siasatan-harakah": "RM70 billion deal structure investigation",
-    "/wealth/makcikgpt/iran-hormuz": "Hormuz disruption + PETRONAS rightsizing cycle",
-    "/wealth/makcikgpt/ilmu-bbb": "YTL ILMU AI red-team audit — sovereign AI claims debunked",
-    "/wealth/makcikgpt/ytl-monopoli": "YTL vertical monopoly — electricity, water, telco, land, AI",
-    "/constellation/": "federation map — system topology and organ status",
-    "/canon/": "constitutional canon — written law of arifOS",
-    "/discoveries/": "well portfolio — exploration record and subsurface dossier",
-    "/essays/": "long-form writing and analysis"
-  },
-  "related_sites": [
-    "https://arifos.arif-fazil.com",
-    "https://wiki.arif-fazil.com",
-    "https://aaa.arif-fazil.com",
-    "https://geox.arif-fazil.com"
-  ],
-  "machine_surfaces": [
-    "https://arif-fazil.com/llms.txt",
-    "https://arif-fazil.com/llms-full.txt",
-    "https://arif-fazil.com/llms.json",
-    "https://arif-fazil.com/page.json",
-    "https://arif-fazil.com/.well-known/agent.json",
-    "https://arif-fazil.com/.well-known/did.json",
-    "https://arif-fazil.com/.well-known/arifos-federation.json",
-    "https://arif-fazil.com/.well-known/webmcp.json",
-    "https://arif-fazil.com/soul.json",
-    "https://arif-fazil.com/proof/geologist-credential.json"
-  ],
-  "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
-  "did": "did:web:arif-fazil.com",
-  "semantic_architecture": {
-    "pre_rendered": true,
-    "json_ld": "NewsArticle (Schema.org)",
-    "open_graph": true,
-    "twitter_cards": true,
-    "robots": "AI crawlers explicitly whitelisted (GPTBot, ClaudeBot, PerplexityBot, Bytespider, Applebot)",
-    "llms_txt": true,
-    "sitemap": true
-  },
-  "last_updated": "2026-07-01"
+  "schema": "arifos.llms.v1",
+  "generated_at": "2026-07-17T20:44:54.851Z",
+  "site": "https://arif-fazil.com",
+  "routes": [
+    {
+      "url": "https://arif-fazil.com/",
+      "title": "Arif Fazil — Sovereign Root",
+      "description": "Human sovereign root: identity, three domains, and federation routing.",
+      "organ": "ROOT",
+      "domain": "ARIF",
+      "aliases": []
+    },
+    {
+      "url": "https://arif-fazil.com/oil",
+      "title": "Oil — Earth Exploration & Capital Consequence",
+      "description": "Oil exploration work, wells and discoveries, GEOX Earth evidence, and WEALTH oil-price consequence.",
+      "organ": "GEOX",
+      "domain": "EARTH",
+      "aliases": [
+        "/oil/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/gas",
+      "title": "Gas — Petroleum Systems & Energy Consequence",
+      "description": "Gas exploration and petroleum-system context, GEOX evidence, and WEALTH gas and energy consequence.",
+      "organ": "GEOX",
+      "domain": "EARTH",
+      "aliases": [
+        "/gas/",
+        "/gass",
+        "/gass/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/wells",
+      "title": "Wells Portfolio",
+      "description": "Public well portfolio and exploration work under real uncertainty.",
+      "organ": "GEOX",
+      "domain": "EARTH",
+      "aliases": [
+        "/wells/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/discoveries",
+      "title": "Discoveries",
+      "description": "Subsurface discoveries and public evidence records.",
+      "organ": "GEOX",
+      "domain": "EARTH",
+      "aliases": [
+        "/discoveries/"
+      ]
+    },
+    {
+      "url": "https://geox.arif-fazil.com/",
+      "title": "GEOX — Earth Evidence Organ",
+      "description": "Earth intelligence organ: wells, seismic, petrophysics. Evidence only.",
+      "organ": "GEOX",
+      "domain": "EARTH",
+      "aliases": []
+    },
+    {
+      "url": "https://arif-fazil.com/gold",
+      "title": "Gold — Capital Intelligence",
+      "description": "Why gold belongs to WEALTH. Capital intelligence surface — not investment advice.",
+      "organ": "WEALTH",
+      "domain": "CAPITAL",
+      "aliases": [
+        "/gold/"
+      ]
+    },
+    {
+      "url": "https://wealth.arif-fazil.com/",
+      "title": "WEALTH — Capital Organ",
+      "description": "Capital intelligence organ. Computes value and risk. Does not allocate.",
+      "organ": "WEALTH",
+      "domain": "CAPITAL",
+      "aliases": []
+    },
+    {
+      "url": "https://arif-fazil.com/wealth",
+      "title": "Wealth Terminal (Root Surface)",
+      "description": "Root-domain capital surface and market briefings.",
+      "organ": "WEALTH",
+      "domain": "CAPITAL",
+      "aliases": [
+        "/wealth/"
+      ]
+    },
+    {
+      "url": "https://well.arif-fazil.com/",
+      "title": "WELL — Human Substrate Organ",
+      "description": "Human and machine readiness. Reflect-only. Never a diagnostic authority.",
+      "organ": "WELL",
+      "domain": "HUMAN",
+      "aliases": []
+    },
+    {
+      "url": "https://arif-fazil.com/makcikgpt",
+      "title": "MakcikGPT — Civic Journalism",
+      "description": "Civic journalism in Bahasa Malaysia. Public interpretation under evidence.",
+      "organ": "MAKCIKGPT",
+      "domain": "HUMAN",
+      "aliases": [
+        "/makcikgpt/",
+        "/wealth/makcikgpt",
+        "/wealth/makcikgpt/",
+        "/makcik-gpt",
+        "/makcik-gpt/",
+        "/makcikpgt",
+        "/makcikpgt/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/arifos",
+      "title": "arifOS Overview",
+      "description": "How GEOX, WEALTH and WELL relate under arifOS judgment.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/arifos/"
+      ]
+    },
+    {
+      "url": "https://mcp.arif-fazil.com/",
+      "title": "MCP Gateway — Connect arifOS",
+      "description": "Public governance MCP connection door.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/mcp",
+        "/mcp/"
+      ]
+    },
+    {
+      "url": "https://arifos.arif-fazil.com/",
+      "title": "Observatory — Reality Witness",
+      "description": "Public evidence room. Proves what is running; does not execute tools.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": []
+    },
+    {
+      "url": "https://arif-fazil.com/federation",
+      "title": "Federation Map",
+      "description": "How Earth, Capital, Human and Governance domains relate.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/federation/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/canon",
+      "title": "Canon",
+      "description": "Constitutional and doctrinal canon.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/canon/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/999",
+      "title": "Verify Receipt — /999",
+      "description": "Permanent receipt verification surface.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/999/",
+        "/verify",
+        "/verify/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/000",
+      "title": "Genesis /000 — Agent Notes",
+      "description": "Machine-facing scars, lessons and sovereign attestation.",
+      "organ": "ARIFOS",
+      "domain": "ARIFOS",
+      "aliases": [
+        "/000/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/essays",
+      "title": "Writing & Essays",
+      "description": "Essays and public writing.",
+      "organ": "ROOT",
+      "domain": "WRITING",
+      "aliases": [
+        "/essays/"
+      ]
+    },
+    {
+      "url": "https://arif-fazil.com/constellation",
+      "title": "Constellation",
+      "description": "Ecosystem constellation map.",
+      "organ": "ROOT",
+      "domain": "ARIF",
+      "aliases": [
+        "/constellation/"
+      ]
+    }
+  ]
 }

@@ -1,92 +1,58 @@
 import { Link } from 'react-router-dom';
-import { ecosystemLinks, arifosLinks } from '@/data/siteContent';
+import { federationFooterRoles } from '@/data/federationRoutes';
 
 export function ConstellationFooter() {
   return (
     <footer className="border-t-2 border-forge-iron bg-forge-black py-16 mt-auto">
-      <div className="site-frame grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="space-y-6">
-          <div className="section-label">Root Domain</div>
-          <h2 className="font-display font-black text-2xl uppercase leading-none italic">One human page. Two AI pages.</h2>
-          <p className="font-body text-forge-dim leading-relaxed max-w-md">
-            The homepage is written for human observation. <code className="text-forge-orange bg-forge-steel px-1">/000</code> holds scars, hard
-            lessons, and wisdom for AI agents. <code className="text-forge-green bg-forge-steel px-1">/999</code> holds verification and machine-facing weight.
-          </p>
-          <div className="flex gap-4">
-             <a href="/llms.txt" className="badge-status badge-status--live">llms.txt</a>
-             <a href="/soul.json" className="badge-status badge-status--live">soul.json</a>
-          </div>
-        </div>
+      <div className="site-frame">
+        <div className="section-label mb-6">Federation roles</div>
+        <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {federationFooterRoles.map((row) => (
+            <li key={row.domain}>
+              <div className="font-technical text-[0.55rem] text-forge-dim uppercase tracking-widest mb-1">
+                {row.domain}
+              </div>
+              {row.href.startsWith('http') ? (
+                <a
+                  href={row.href}
+                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors"
+                  target={row.href.includes('arif-fazil.com') && !row.href.includes('https://arif-fazil.com') ? '_blank' : undefined}
+                  rel="noreferrer"
+                >
+                  {row.name}
+                </a>
+              ) : (
+                <Link
+                  to={row.href}
+                  className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors"
+                >
+                  {row.name}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
 
-        <div className="space-y-6">
-          <div className="section-label">arifOS Federation</div>
-          <ul className="grid grid-cols-2 gap-y-3">
-            {arifosLinks.map((item) => (
-              <li key={item.label}>
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
-                    {item.label}
-                    <span className="text-[0.6rem]">↗</span>
-                  </a>
-                ) : (
-                  <Link
-                    to={item.href}
-                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-          <div className="section-label" style={{marginTop:'1.5rem'}}>Ecosystem</div>
-          <ul className="grid grid-cols-2 gap-y-3">
-            {ecosystemLinks.map((item) => (
-              <li key={item.label}>
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
-                    {item.label}
-                    <span className="text-[0.6rem]">↗</span>
-                  </a>
-                ) : (
-                  <Link
-                    to={item.href}
-                    className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2"
-                  >
-                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      
-      <div className="site-frame mt-16 pt-8 border-t border-forge-iron flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
-          © 2026 Arif Fazil · Sealed under 999_SEAL
-        </div>
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+        <p className="font-body text-sm text-forge-dim max-w-xl leading-relaxed mb-8">
+          Governed by arifOS. Domain organs advise or witness. The human remains the final authority.
+          AAA and A-FORGE are control and execution surfaces — not primary public destinations.
+        </p>
+
+        <div className="pt-8 border-t border-forge-iron flex flex-col md:flex-row justify-between gap-4">
           <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
-            Federation: 6 organs · streamable-http + JSON-RPC · ΔS ≤ 0 · 18 June 2026
+            DITEMPA BUKAN DIBERI · arif-fazil.com
           </div>
-          <a href="https://wiki.arif-fazil.com" className="font-technical text-[0.6rem] text-forge-orange uppercase tracking-widest hover:text-forge-white transition-colors">
-            Ω-Wiki → full state
-          </a>
+          <div className="flex flex-wrap gap-4">
+            <a href="/llms.txt" className="font-technical text-[0.65rem] text-forge-dim hover:text-forge-orange uppercase">
+              llms.txt
+            </a>
+            <a href="/.well-known/routes.json" className="font-technical text-[0.65rem] text-forge-dim hover:text-forge-orange uppercase">
+              routes.json
+            </a>
+            <a href="/sitemap.xml" className="font-technical text-[0.65rem] text-forge-dim hover:text-forge-orange uppercase">
+              sitemap
+            </a>
+          </div>
         </div>
       </div>
     </footer>

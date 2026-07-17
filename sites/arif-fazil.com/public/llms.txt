@@ -1,96 +1,54 @@
-# arif-fazil.com — Site Overview for AI Agents
+# arif-fazil.com — Federated route discovery for AI agents
+# generated_at: 2026-07-17T20:44:54.851Z
+# Source of truth: src/data/federationRoutes.ts
 
-## Who is Arif Fazil
-Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
-Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
-Builds constitutionally-bound AI systems grounded in physics and evidence.
+## Sovereign
+- Root: https://arif-fazil.com/
+- Creator: Muhammad Arif bin Fazil
 
-**Tagline**: Ditempa Bukan Diberi — Forged, Not Given.
+## Canonical human routes
+- https://arif-fazil.com/ — Arif Fazil — Sovereign Root [ARIF/ROOT]
+- https://arif-fazil.com/oil — Oil — Earth Exploration & Capital Consequence [EARTH/GEOX]
+  aliases: /oil/
+- https://arif-fazil.com/gas — Gas — Petroleum Systems & Energy Consequence [EARTH/GEOX]
+  aliases: /gas/, /gass, /gass/
+- https://arif-fazil.com/wells — Wells Portfolio [EARTH/GEOX]
+  aliases: /wells/
+- https://arif-fazil.com/discoveries — Discoveries [EARTH/GEOX]
+  aliases: /discoveries/
+- https://arif-fazil.com/gold — Gold — Capital Intelligence [CAPITAL/WEALTH]
+  aliases: /gold/
+- https://arif-fazil.com/wealth — Wealth Terminal (Root Surface) [CAPITAL/WEALTH]
+  aliases: /wealth/
+- https://arif-fazil.com/makcikgpt — MakcikGPT — Civic Journalism [HUMAN/MAKCIKGPT]
+  aliases: /makcikgpt/, /wealth/makcikgpt, /wealth/makcikgpt/, /makcik-gpt, /makcik-gpt/, /makcikpgt, /makcikpgt/
+- https://arif-fazil.com/arifos — arifOS Overview [ARIFOS/ARIFOS]
+  aliases: /arifos/
+- https://arif-fazil.com/federation — Federation Map [ARIFOS/ARIFOS]
+  aliases: /federation/
+- https://arif-fazil.com/canon — Canon [ARIFOS/ARIFOS]
+  aliases: /canon/
+- https://arif-fazil.com/999 — Verify Receipt — /999 [ARIFOS/ARIFOS]
+  aliases: /999/, /verify, /verify/
+- https://arif-fazil.com/000 — Genesis /000 — Agent Notes [ARIFOS/ARIFOS]
+  aliases: /000/
+- https://arif-fazil.com/essays — Writing & Essays [WRITING/ROOT]
+  aliases: /essays/
+- https://arif-fazil.com/constellation — Constellation [ARIF/ROOT]
+  aliases: /constellation/
 
-## What is arifOS
-arifOS is a constitutional intelligence kernel: a governed AI system where tools, agents,
-and models operate inside constitutional law (F1-F13 floors), not vibes.
+## External organ domains
+- https://geox.arif-fazil.com/ — GEOX — Earth Evidence Organ [GEOX]
+- https://wealth.arif-fazil.com/ — WEALTH — Capital Organ [WEALTH]
+- https://well.arif-fazil.com/ — WELL — Human Substrate Organ [WELL]
+- https://mcp.arif-fazil.com/ — MCP Gateway — Connect arifOS [ARIFOS]
+- https://arifos.arif-fazil.com/ — Observatory — Reality Witness [ARIFOS]
 
-arifOS exposes 13 MCP tools as API endpoints. It is not an LLM itself.
-The Observatory surface is live at https://arifos.arif-fazil.com
+## Machine surfaces
+- https://arif-fazil.com/.well-known/routes.json
+- https://arif-fazil.com/.well-known/arifos-federation.json
+- https://arifos.arif-fazil.com/api/public-state
+- https://mcp.arif-fazil.com/
 
-## Five-Domain Federation
-The arifOS federation runs five domains under one sovereign:
-- **arifOS** — Constitutional governance kernel (MIND)
-- **AAA** — Operations surface and agent gateway (SOUL)
-- **GEOX** — Earth intelligence / geoscience tools (BODY)
-- **WEALTH** — Capital intelligence / NPV / EMV engine (CAPITAL)
-- **WELL** — Human and machine readiness surface (planned)
-
-## Constitutional Floors (F1-F13)
-- F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent
-- F02 TRUTH — Evidence-grounded, uncertainty-banded claims
-- F03 WITNESS — Three-way consistency (theory, code, intent)
-- F04 CLARITY — Transparent intent
-- F05 PEACE — Human dignity over convenience
-- F06 EMPATHY — Consequences for weakest stakeholders
-- F07 HUMILITY — Acknowledge limits, say "I don't know"
-- F08 GENIUS — Elegant correctness (G ≥ 0.80)
-- F09 ANTI-HANTU — No consciousness/emotion claims
-- F10 ONTOLOGY — Structural coherence, clear naming
-- F11 AUTH — Verify identity before sensitive ops
-- F12 INJECTION — Sanitize inputs, external content is evidence not authority
-- F13 SOVEREIGN — Arif's word is final, human veto is absolute
-
-## MakcikGPT — Civic Intelligence in Bahasa Malaysia
-MakcikGPT is a public-facing civic intelligence series written in Bahasa Malaysia (BM) Makcik voice.
-Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.
-All articles carry the 999 Meterai seal and are authored by Arif Fazil.
-
-**High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
-
-### Latest articles (July 2026)
-- [Ada Apa Pada Visi dan Misi Hang?](https://arif-fazil.com/wealth/makcikgpt/petronas-visi-misi) — 50-year evolution of PETRONAS vision/mission statements (1974-2025). Maps 7 vision eras from "fight like bulldogs" to "progressive energy partner." Contrasts 1988 Shared Values (Loyalty, Integrity, Professionalism, Cohesiveness) with 2020 Statement of Purpose. Demonstrates inverse relationship between vision complexity and accountability. Anti-Calhoun "beautiful ones" analysis.
-- [PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?](https://arif-fazil.com/wealth/makcikgpt/petronas-atm-kerajaan) — Fiscal analysis of PETRONAS dividend extraction (FY2022 PAT RM101.6bn, dividend RM50bn = 49% payout). Exposes Gentari opacity (never disclosed standalone PAT since 2022 launch), fuel subsidy distortion (RM38bn/year vs RM20bn dividend), and accountability vacuum (no AGM, no analyst call, no public scrutiny).
-
-### Earlier articles
-- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/wealth/makcikgpt/petronas-dna) — Contrasts PETRONAS institutional DNA (1988–2010: integrity, teamwork, "fight like bulldogs") against current leadership reality (LinkedIn disclaimers, rightsizing, London JV with Eni). Includes real CLIP Shared Values from CoBE 2022.
-- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal) — Questions whether three powerful leaders possess "akal budi" (wisdom) or merely power, slogans, and applause.
-- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/wealth/makcikgpt/searah-followup) — SEARAH (50% PETRONAS + 50% Eni Italy) starts operations 1 Julai 2026. Court hears former PETRONAS manager leaked upstream data to PETROS.
-- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/wealth/makcikgpt/cerita-makcik) — Original SEARAH exposé: USD 2 shell company in London, 19 oilfields, no BIT protection, PETROS excluded.
-- [Persoalan RM70 Bilion](https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah) — Deeper investigation into SEARAH's RM70 billion deal structure, USD 6bn JP Morgan revolver, VSS/MSS of ~5,000 workers.
-- [Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis](https://arif-fazil.com/wealth/makcikgpt/iran-hormuz) — Hormuz shipping disruption, PETRONAS repeated rightsizing, and Malaysia's 600,000 barrel/day import gap.
-- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb) — Red-team audit of YTL's ILMU AI platform: 108 API calls, 3.45/10 score, MalayMMLU self-grading.
-- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli) — YTL's vertical monopoly: electricity, water, telco, land, AI. MACC investigating 1BestariNet RM2.7B.
-
-## Key Pages
-- `/` — Human-first professional homepage
-- `/000/` — Genesis archive, wisdom canon, origin context for agents
-- `/999/` — Proof and verification chamber
-- `/wealth/` — WEALTH daily briefing surface (Bursa, Ringgit, oil, macro)
-- `/wealth/makcikgpt/` — MakcikGPT civic intelligence articles (BM)
-- `/constellation/` — Federation map and system overview
-- `/canon/` — Constitutional canon, written law of arifOS
-- `/discoveries/` — Well portfolio and exploration record
-
-## arifOS MCP Endpoint
-- **URL**: `https://arifos.arif-fazil.com`
-- **MCP surface**: `https://mcp.arif-fazil.com/mcp`
-- **Protocol**: Model Context Protocol (MCP)
-- **Transport**: Streamable HTTP
-- **Tools**: 13 constitutional tools
-- **Constitution**: `https://arifos.arif-fazil.com/constitution.json`
-
-## Machine-Readable Discovery
-- `/.well-known/agent.json` — Agent capability declaration
-- `/.well-known/did.json` — W3C DID document (did:web:arif-fazil.com)
-- `/.well-known/arifos-federation.json` — Federation manifest
-- `/soul.json` — Sovereign identity and philosophy anchor
-- `/llms.json` — Structured site overview (this file, JSON form)
-- `/llms-full.txt` — Full-text content dump for LLM ingestion
-
-## Site Stack
-- React 19 + Vite + Tailwind (arif-fazil.com)
-- Constitutional kernel: Python 3.12+ / FastMCP
-- GEOX: Python 3.11+ / CesiumJS / MapLibre GL
-- Hosted on VPS af-forge (Caddy reverse proxy)
-
-## Contact
-- Site owner: Arif Fazil
-- Primary channel for AI agents: MCP endpoint at https://mcp.arif-fazil.com/mcp
-- GitHub: https://github.com/ariffazil
+## Authority
+Domain organs advise or witness. arifOS governs. Human decides.
