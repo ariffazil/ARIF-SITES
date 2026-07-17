@@ -8,6 +8,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REGISTRY="$REPO_ROOT/config/sites.json"
 HTML_ROOT="/var/www/html"
 OBSERVATORY_RUNTIME="/root/.arifos/observatory"
+OBSERVATORY_EMITTER="/root/arifOS/scripts/emit_observatory_snapshot.py"
 ONLY_SITE=""
 RELOAD_CADDY=false
 
@@ -68,6 +69,19 @@ echo "[sites] Canonical registry: $REGISTRY"
 install -d -m 0755 "$HTML_ROOT/_shared"
 rsync -a --delete "$REPO_ROOT/sites/shared/" "$HTML_ROOT/_shared/"
 
+# MCP gateway human landing + proof (runtime owns /.well-known proxies; do not --delete).
+MCP_LANDING_SRC="$REPO_ROOT/sites/mcp.arif-fazil.com"
+MCP_LANDING_DST="$HTML_ROOT/mcp"
+if [[ -d "$MCP_LANDING_SRC" ]]; then
+  echo "[sites] Syncing mcp.arif-fazil.com landing -> $MCP_LANDING_DST"
+  install -d -m 0755 "$MCP_LANDING_DST" "$MCP_LANDING_DST/proof"
+  install -m 0644 "$MCP_LANDING_SRC/index.html" "$MCP_LANDING_DST/index.html"
+  if [[ -d "$MCP_LANDING_SRC/proof" ]]; then
+    rsync -a "$MCP_LANDING_SRC/proof/" "$MCP_LANDING_DST/proof/"
+  fi
+  chown -R www-data:www-data "$MCP_LANDING_DST"
+fi
+
 for row in "${SITE_ROWS[@]}"; do
   IFS=$'\t' read -r host source_rel webroot build_cmd <<<"$row"
   source_dir="$REPO_ROOT/$source_rel"
@@ -91,7 +105,7 @@ for row in "${SITE_ROWS[@]}"; do
   fi
 
   if [[ "$host" == "arifos.arif-fazil.com" ]]; then
-    if ! python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"; then
+    if ! python3 "$OBSERVATORY_EMITTER"; then
       echo "[sites] WARNING: Observatory emit failed; deploying last valid signed snapshot" >&2
     fi
     [[ -f "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" ]] || {

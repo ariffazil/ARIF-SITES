@@ -6,6 +6,9 @@
 
 User-agent: *
 Allow: /
+Disallow: /mcp-gui
+Disallow: /mcp/
+# Diagnostic MCP explorers are noindex; canonical door is https://mcp.arif-fazil.com/
 
 # AI Crawlers — explicitly welcomed and directed
 User-agent: ClaudeBot

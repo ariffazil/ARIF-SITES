@@ -60,7 +60,8 @@
       "landing_source": "sites/mcp.arif-fazil.com/index.html",
       "runtime_file": "/var/www/html/mcp/index.html",
       "artifact_source": "sites/mcp.arif-fazil.com/proof",
-      "deployable": false
+      "deployable": false,
+      "note": "Landing HTML + proof are synced by deploy-vps.sh without --delete so runtime .well-known stays intact"
     },
     {
       "host": "forge.arif-fazil.com",

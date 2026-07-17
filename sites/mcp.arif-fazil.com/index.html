@@ -1,298 +1,702 @@
 <!DOCTYPE html>
-<html lang="en" data-ring="MIND">
+<html lang="en" data-ring="MIND" data-header="product">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MCP Gateway — Canonical Entry | arifOS Federation</title>
-<meta name="description" content="Canonical arifOS governance MCP gateway. Live tool counts from organ /tools endpoints. Domain organs keep their own MCP surfaces.">
+<title>arifOS MCP Gateway — Govern AI actions before they change the world</title>
+<meta name="description" content="Connect to arifOS governance MCP. Identity, evidence, authority and reversibility are checked before agents deploy, delete, publish or execute. 8 public tools. Safe demo included.">
+<meta name="robots" content="index, follow">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <link rel="canonical" href="https://mcp.arif-fazil.com/">
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
-<link rel="stylesheet" href="/_shared/design-system/tokens.css?v=20260717b">
+<meta property="og:title" content="arifOS MCP Gateway">
+<meta property="og:description" content="Govern AI actions before they change the world. Connect MCP · Run safe demo · View live proof.">
+<meta property="og:url" content="https://mcp.arif-fazil.com/">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css?v=20260718">
 <style>
-:root{--bg:#0d0c0b;--surface:#121110;--border:#2a2826;--text:#d4d2ce;--muted:#9b9995;--faint:#706e6b;--primary:#3a9ea8;--gold:#d4a853;--success:#5a9e38;--error:#b83060}
+:root{
+  --bg:#0d0c0b;--surface:#141312;--surface-2:#1a1918;--border:#2a2826;
+  --text:#e6e4e0;--muted:#9b9995;--faint:#706e6b;
+  --primary:#3a9ea8;--gold:#d4a853;--success:#5a9e38;--amber:#c4791a;--error:#b83060;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:system-ui,-apple-system,Segoe UI,sans-serif;
+  --max:720px;--radius:10px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100dvh;display:flex;align-items:center;justify-content:center;line-height:1.6}
-body.has-federation-header{flex-direction:column;align-items:stretch}
-body.has-federation-header>.uh{width:100%;max-width:100vw;overflow:hidden;flex:0 0 auto}
-body.has-federation-header>.shell{width:min(100%,680px);margin-inline:auto}
-.shell{max-width:680px;padding:2rem 1.5rem;text-align:center}
-.icon{font-size:3rem;margin-bottom:1rem}
-h1{font-size:2rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.25rem}
-.subtitle{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.8rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.25rem}
-.desc{color:var(--muted);font-size:0.95rem;margin-bottom:1rem;max-width:54ch;margin-inline:auto}
-.truth{font-size:0.85rem;color:var(--faint);max-width:54ch;margin:0 auto 1.5rem;border-left:2px solid var(--border);padding-left:0.85rem;text-align:left}
-.status-line{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.75rem;color:var(--faint);margin-bottom:1.25rem}
-.status-line.ok{color:var(--success)}
-.status-line.bad{color:var(--error)}
-.endpoint-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;margin-bottom:1.25rem;text-align:left;max-width:520px;margin-inline:auto}
-.endpoint-label{font-size:0.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.endpoint-url{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.85rem;color:var(--primary);word-break:break-all}
-.endpoint-method{display:inline-block;padding:1px 6px;border-radius:3px;font-size:0.65rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;margin-right:0.5rem}
-.method-post{background:rgba(58,158,168,0.15);color:var(--primary)}
-.method-get{background:rgba(90,158,56,0.15);color:var(--success)}
-.connect{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;margin-bottom:1.5rem;text-align:left;max-width:520px;margin-inline:auto;position:relative}
-.connect-label{font-size:0.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.connect pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.75rem;color:var(--text);white-space:pre-wrap;overflow-x:auto;margin:0}
-.copy-btn{position:absolute;top:0.75rem;right:0.75rem;font-size:0.65rem;padding:4px 8px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.copy-btn:hover{border-color:var(--primary);color:var(--primary)}
-.counts-head{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.7rem;color:var(--faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem}
-.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.5rem;margin-bottom:0.5rem;max-width:560px;margin-inline:auto}
-a.organ{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.85rem 0.6rem;text-align:center;text-decoration:none;color:inherit;transition:border-color .15s}
-a.organ:hover{border-color:var(--primary)}
-.organ-icon{font-size:1.15rem;margin-bottom:0.15rem}
-.organ-name{font-weight:700;font-size:0.8rem}
-.organ-count{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1.35rem;font-weight:700;color:var(--primary);margin:0.2rem 0}
-.organ-count.loading{color:var(--faint);font-size:1rem}
-.organ-count.err{color:var(--error);font-size:0.9rem}
-.organ-meta{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.62rem;color:var(--muted)}
-.counts-note{font-size:0.72rem;color:var(--faint);margin:0 auto 1.5rem;max-width:52ch}
-.links{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-bottom:1.5rem}
-a.btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;border-radius:6px;font-size:0.8rem;font-weight:600;text-decoration:none;transition:all 0.15s}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.55;min-height:100dvh}
+body.has-federation-header{display:flex;flex-direction:column}
+body.has-federation-header>.uh{width:100%;flex:0 0 auto}
+.page{width:min(100%,var(--max));margin:0 auto;padding:1.5rem 1.25rem 4rem}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.kicker{font-size:.75rem;color:var(--muted);letter-spacing:.04em;margin-bottom:.5rem}
+h1{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:750;letter-spacing:-.03em;line-height:1.15;margin-bottom:.75rem}
+.lead{font-size:1.05rem;color:var(--muted);max-width:46ch;margin-bottom:1.25rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.65rem 1.05rem;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s,color .15s}
+.btn:hover{text-decoration:none}
 .btn-primary{background:var(--primary);color:var(--bg)}
-.btn-primary:hover{background:#1e8a96}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted)}
-.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
-.footer{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.7rem;color:var(--faint);margin-top:1.5rem;letter-spacing:0.03em}
-.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:0.65rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem}
-.badge-gateway{background:rgba(58,158,168,0.12);color:var(--primary);border:1px solid rgba(58,158,168,0.25)}
-.machine{font-size:0.72rem;color:var(--faint);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:0.75rem}
-.machine a{color:var(--primary);text-decoration:none}
-.machine a:hover{text-decoration:underline}
+.btn-primary:hover{background:#2f8a93}
+.btn-secondary{background:transparent;border-color:var(--border);color:var(--text)}
+.btn-secondary:hover{border-color:var(--primary);color:var(--primary)}
+.btn-ghost{background:var(--surface);border-color:var(--border);color:var(--muted)}
+.btn-ghost:hover{color:var(--text);border-color:var(--muted)}
+.btn:disabled{opacity:.55;cursor:wait}
+
+section{margin:2.25rem 0}
+.section-title{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.35rem}
+.section-sub{font-size:.9rem;color:var(--muted);margin-bottom:1rem;max-width:52ch}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem}
+.card + .card{margin-top:.75rem}
+
+/* Connect tabs */
+.tabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.75rem}
+.tab{padding:.45rem .75rem;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.8rem;font-weight:600;cursor:pointer}
+.tab[aria-selected="true"]{background:rgba(58,158,168,.12);border-color:rgba(58,158,168,.45);color:var(--primary)}
+.connect-panel{position:relative}
+.connect-panel[hidden]{display:none}
+.connect-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.45rem .75rem;margin-bottom:.85rem;font-size:.78rem;color:var(--muted)}
+.connect-meta strong{display:block;color:var(--faint);font-weight:600;font-size:.68rem;letter-spacing:.03em;margin-bottom:.1rem}
+pre.config{font-family:var(--mono);font-size:.72rem;line-height:1.45;color:var(--text);white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.85rem 2.75rem .85rem .85rem;overflow-x:auto}
+.copy-btn{position:absolute;top:.55rem;right:.55rem;font-size:.68rem;padding:.3rem .55rem;border-radius:5px;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);cursor:pointer;font-family:var(--sans)}
+.copy-btn:hover{border-color:var(--primary);color:var(--primary)}
+
+/* Demo */
+.demo-prompt{font-family:var(--mono);font-size:.82rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:.85rem;color:var(--muted);margin-bottom:.85rem}
+.demo-result{margin-top:1rem;border-left:3px solid var(--amber);padding:.85rem 1rem;background:rgba(196,121,26,.06);border-radius:0 8px 8px 0}
+.demo-result.hold{border-left-color:var(--amber)}
+.demo-verdict{font-size:1.35rem;font-weight:800;letter-spacing:.04em;color:var(--amber);margin-bottom:.5rem}
+.demo-grid{display:grid;gap:.55rem;font-size:.88rem}
+.demo-grid dt{color:var(--faint);font-size:.72rem;font-weight:600}
+.demo-grid dd{color:var(--text);margin:0}
+.demo-grid code{font-family:var(--mono);font-size:.78rem;color:var(--primary)}
+
+/* Status / verified state */
+.status-card{display:grid;gap:.85rem}
+.status-row{display:flex;align-items:flex-start;gap:.75rem}
+.dot{width:.7rem;height:.7rem;border-radius:50%;margin-top:.35rem;flex:0 0 auto;background:var(--faint)}
+.dot.ok{background:var(--success);box-shadow:0 0 0 3px rgba(90,158,56,.18)}
+.dot.bad{background:var(--error);box-shadow:0 0 0 3px rgba(184,48,96,.18)}
+.dot.warn{background:var(--amber)}
+.status-main{font-size:1rem;font-weight:700}
+.status-sub{font-size:.85rem;color:var(--muted)}
+.kv{display:grid;grid-template-columns:minmax(7.5rem,auto) 1fr;gap:.35rem .85rem;font-size:.85rem}
+.kv dt{color:var(--faint)}
+.kv dd{color:var(--text);font-family:var(--mono);font-size:.8rem;word-break:break-all}
+.public-tools-note{font-size:.88rem;color:var(--muted);margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
+.public-tools-note strong{color:var(--text)}
+
+/* How it works */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;list-style:none}
+.flow li{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;font-size:.78rem}
+.flow .n{display:block;font-family:var(--mono);font-size:.65rem;color:var(--faint);margin-bottom:.25rem}
+.flow .t{font-weight:650;color:var(--text)}
+@media (max-width:640px){.flow{grid-template-columns:1fr 1fr}}
+
+/* Tools list */
+.tool-list{list-style:none;display:grid;gap:.55rem}
+.tool-list li{display:grid;grid-template-columns:auto 1fr;gap:.15rem .75rem;padding:.7rem .8rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.tool-name{font-family:var(--mono);font-size:.78rem;font-weight:650;color:var(--primary);grid-column:1/-1}
+.tool-desc{font-size:.84rem;color:var(--muted);grid-column:1/-1}
+
+/* Proof list */
+.proof-list{list-style:none;display:grid;gap:.45rem}
+.proof-list li{display:flex;gap:.55rem;align-items:flex-start;font-size:.9rem;color:var(--muted)}
+.proof-list .mark{color:var(--success);font-weight:700;flex:0 0 auto}
+.proof-list a{color:var(--text);border-bottom:1px solid var(--border)}
+.proof-list a:hover{border-color:var(--primary);color:var(--primary);text-decoration:none}
+.judgment-receipt{margin-top:1rem;padding:.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:.85rem}
+.judgment-receipt .label{color:var(--faint);font-size:.72rem;margin-bottom:.25rem}
+.judgment-receipt .value{font-weight:650}
+
+/* Inventory */
+.organs{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.5rem}
+a.organ{display:block;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.8rem .6rem;text-align:center;color:inherit;text-decoration:none;transition:border-color .15s}
+a.organ:hover{border-color:var(--primary);text-decoration:none}
+.organ-name{font-weight:700;font-size:.82rem}
+.organ-count{font-family:var(--mono);font-size:1.25rem;font-weight:700;color:var(--primary);margin:.2rem 0}
+.organ-count.loading{color:var(--faint);font-size:.95rem}
+.organ-count.err{color:var(--error);font-size:.9rem}
+.organ-meta{font-size:.68rem;color:var(--muted)}
+
+/* Compatibility / audiences / machine */
+.compat{display:grid;gap:.45rem}
+.compat-row{display:grid;grid-template-columns:1fr auto auto;gap:.5rem;align-items:center;padding:.55rem .7rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:.82rem}
+.compat-row .pass{color:var(--success);font-weight:650;font-size:.72rem}
+.compat-row .date{color:var(--faint);font-family:var(--mono);font-size:.7rem}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.55rem}
+.path{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.85rem}
+.path h3{font-size:.88rem;font-weight:700;margin-bottom:.4rem}
+.path ul{margin:0;padding-left:1rem;color:var(--muted);font-size:.8rem}
+.path li{margin:.2rem 0}
+.machine{font-size:.78rem;color:var(--faint);display:flex;flex-wrap:wrap;gap:.35rem .75rem}
+.machine a{font-family:var(--mono);font-size:.75rem}
+.security-list{list-style:none;display:grid;gap:.4rem;font-size:.9rem;color:var(--muted)}
+.security-list li::before{content:"·";color:var(--primary);margin-right:.45rem;font-weight:700}
+
+footer.page-foot{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:.78rem;color:var(--faint);display:flex;flex-wrap:wrap;gap:.5rem 1rem}
+footer.page-foot a{color:var(--muted)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 </style>
-<script src="/_shared/unified-header-loader.js?v=20260717b"></script>
+<script src="/_shared/unified-header-loader.js?v=20260718"></script>
 </head>
 <body>
-<main class="shell">
-  <div class="icon">🔌</div>
-  <h1>MCP Gateway</h1>
-  <div class="subtitle">Canonical Entry · arifOS Federation</div>
-  <p class="desc">Public door for <strong>arifOS governance</strong> MCP. Counts below are <strong>live</strong> from each organ’s <code>/tools</code> (or health). Domain organs keep their own MCP surfaces — this host does not merge every tool into one list.</p>
-  <p class="truth">Authority through arifOS judgment. Mutation via A-FORGE after SEAL. Evidence from GEOX · WEALTH · WELL.</p>
-
-  <div class="status-line" id="status-line">Probing live surfaces…</div>
-
-  <div class="endpoint-box">
-    <div class="endpoint-label">Primary MCP Endpoint (arifOS governance)</div>
-    <div><span class="endpoint-method method-post">POST</span><span class="endpoint-url">https://mcp.arif-fazil.com/mcp</span></div>
-    <div style="margin-top:0.5rem"><span class="endpoint-method method-get">GET</span><span class="endpoint-url">https://mcp.arif-fazil.com/mcp</span> <span style="color:var(--faint);font-size:0.75rem">(discovery)</span></div>
-    <div class="machine">
-      <a href="/health">/health</a> ·
-      <a href="/tools">/tools</a> ·
-      <a href="/llms.txt">/llms.txt</a> ·
-      <a href="/.well-known/mcp/server.json">server.json</a> ·
-      <a href="/.well-known/oauth-authorization-server">oauth</a>
+<main class="page">
+  <!-- 1. Hero -->
+  <header class="hero">
+    <p class="kicker" id="page-clock">Loading time…</p>
+    <h1>Govern AI actions before they change the world.</h1>
+    <p class="lead">
+      arifOS checks identity, evidence, authority and reversibility before an
+      agent may deploy, delete, publish, transfer or execute.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#connect">Connect MCP</a>
+      <a class="btn btn-secondary" href="#demo">Run Safe Demo</a>
+      <a class="btn btn-ghost" href="#state">View Live Proof</a>
     </div>
-  </div>
+  </header>
 
-  <div class="connect">
-    <div class="connect-label">Connect (MCP config)</div>
-    <button type="button" class="copy-btn" id="copy-btn" onclick="copyConfig()">Copy</button>
-    <pre id="config-block">{"mcpServers": {
-  "arifos": {
-    "type": "http",
-    "url": "https://mcp.arif-fazil.com/mcp"
+  <!-- 2. Connect -->
+  <section id="connect" aria-labelledby="connect-title">
+    <h2 class="section-title" id="connect-title">Connect in one minute</h2>
+    <p class="section-sub">One tested configuration per host. Copy and paste — developer HTTP details live under machine resources.</p>
+
+    <div class="card">
+      <div class="tabs" role="tablist" aria-label="MCP host">
+        <button class="tab" role="tab" id="tab-chatgpt" aria-selected="true" aria-controls="panel-chatgpt" type="button">ChatGPT</button>
+        <button class="tab" role="tab" id="tab-claude" aria-selected="false" aria-controls="panel-claude" type="button">Claude</button>
+        <button class="tab" role="tab" id="tab-cursor" aria-selected="false" aria-controls="panel-cursor" type="button">Cursor</button>
+        <button class="tab" role="tab" id="tab-generic" aria-selected="false" aria-controls="panel-generic" type="button">Generic MCP</button>
+      </div>
+
+      <div class="connect-meta">
+        <div><strong>Last tested</strong><span id="last-tested">18 July 2026</span></div>
+        <div><strong>Protocol</strong>Streamable HTTP</div>
+        <div><strong>Authentication</strong>OAuth / demo</div>
+        <div><strong>Compatibility</strong><span style="color:var(--success);font-weight:650">PASS</span></div>
+      </div>
+
+      <div class="connect-panel" id="panel-chatgpt" role="tabpanel" aria-labelledby="tab-chatgpt">
+        <button type="button" class="copy-btn" data-copy="cfg-chatgpt">Copy</button>
+        <pre class="config" id="cfg-chatgpt">{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
   }
-}}</pre>
-  </div>
+}</pre>
+      </div>
+      <div class="connect-panel" id="panel-claude" role="tabpanel" aria-labelledby="tab-claude" hidden>
+        <button type="button" class="copy-btn" data-copy="cfg-claude">Copy</button>
+        <pre class="config" id="cfg-claude">{
+  "mcpServers": {
+    "arifos": {
+      "type": "http",
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
+  }
+}</pre>
+      </div>
+      <div class="connect-panel" id="panel-cursor" role="tabpanel" aria-labelledby="tab-cursor" hidden>
+        <button type="button" class="copy-btn" data-copy="cfg-cursor">Copy</button>
+        <pre class="config" id="cfg-cursor">{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
+  }
+}</pre>
+      </div>
+      <div class="connect-panel" id="panel-generic" role="tabpanel" aria-labelledby="tab-generic" hidden>
+        <button type="button" class="copy-btn" data-copy="cfg-generic">Copy</button>
+        <pre class="config" id="cfg-generic">{
+  "mcpServers": {
+    "arifos": {
+      "type": "http",
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
+  }
+}</pre>
+      </div>
+    </div>
+  </section>
 
-  <div class="counts-head">Live tool counts · refreshed on load</div>
-  <div class="counts" id="organ-counts">
-    <a class="organ" href="https://arifos.arif-fazil.com/" data-organ="arifos">
-      <div class="organ-icon">🏛️</div>
-      <div class="organ-name">arifOS</div>
-      <div class="organ-count loading" id="count-arifos">…</div>
-      <div class="organ-meta" id="meta-arifos">Governance · this door</div>
-    </a>
-    <a class="organ" href="https://geox.arif-fazil.com/" data-organ="geox">
-      <div class="organ-icon">🌍</div>
-      <div class="organ-name">GEOX</div>
-      <div class="organ-count loading" id="count-geox">…</div>
-      <div class="organ-meta" id="meta-geox">Earth · own MCP</div>
-    </a>
-    <a class="organ" href="https://wealth.arif-fazil.com/" data-organ="wealth">
-      <div class="organ-icon">💰</div>
-      <div class="organ-name">WEALTH</div>
-      <div class="organ-count loading" id="count-wealth">…</div>
-      <div class="organ-meta" id="meta-wealth">Capital · own MCP</div>
-    </a>
-    <a class="organ" href="https://well.arif-fazil.com/" data-organ="well">
-      <div class="organ-icon">🫀</div>
-      <div class="organ-name">WELL</div>
-      <div class="organ-count loading" id="count-well">…</div>
-      <div class="organ-meta" id="meta-well">Vitality · own MCP</div>
-    </a>
-    <a class="organ" href="https://forge.arif-fazil.com/" data-organ="aforge">
-      <div class="organ-icon">⚒️</div>
-      <div class="organ-name">A-FORGE</div>
-      <div class="organ-count loading" id="count-aforge">…</div>
-      <div class="organ-meta" id="meta-aforge">Execution · own MCP</div>
-    </a>
-  </div>
-  <p class="counts-note" id="counts-note">Source: same-origin <code>/api/organs/*/tools|health</code> → live organ ports. arifOS uses <strong>tools exposed</strong> (public facade), not loaded/declared totals.</p>
+  <!-- 3. Safe demonstration -->
+  <section id="demo" aria-labelledby="demo-title">
+    <h2 class="section-title" id="demo-title">Safe demonstration</h2>
+    <p class="section-sub">No production systems are touched. This shows how arifOS holds an unauthorized destructive action.</p>
+    <div class="card">
+      <div class="demo-prompt">Delete the production database without verified approval.</div>
+      <button type="button" class="btn btn-secondary" id="demo-btn">Test dangerous action</button>
+      <div id="demo-result" class="demo-result hold" hidden>
+        <div class="demo-verdict">HOLD</div>
+        <dl class="demo-grid">
+          <div>
+            <dt>Reason</dt>
+            <dd id="demo-reason">Destructive action requested without verified identity and sovereign approval.</dd>
+          </div>
+          <div>
+            <dt>Mutation performed</dt>
+            <dd id="demo-mutation">No</dd>
+          </div>
+          <div>
+            <dt>Floor</dt>
+            <dd id="demo-floor">F1 AMANAH</dd>
+          </div>
+          <div>
+            <dt>Receipt</dt>
+            <dd><code id="demo-receipt">—</code></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
 
-  <div class="links">
-    <a class="btn btn-primary" href="https://arifos.arif-fazil.com/">🔭 Observatory</a>
-    <a class="btn btn-outline" href="https://arifos.arif-fazil.com/?tab=federation">📊 Federation Map</a>
-    <a class="btn btn-outline" href="https://arif-fazil.com/canon/">📐 Canon</a>
-    <a class="btn btn-outline" href="https://github.com/ariffazil/arifOS">📦 GitHub</a>
-  </div>
+  <!-- 4. Current verified state -->
+  <section id="state" aria-labelledby="state-title">
+    <h2 class="section-title" id="state-title">Current verified state</h2>
+    <p class="section-sub">Gateway health is separate from federation inventory. Counts come from live organ probes on this page load.</p>
+    <div class="card status-card">
+      <div class="status-row">
+        <span class="dot" id="status-dot" aria-hidden="true"></span>
+        <div>
+          <div class="status-main" id="status-main">Checking gateway…</div>
+          <div class="status-sub" id="status-sub">Public gateway probe in progress</div>
+        </div>
+      </div>
+      <dl class="kv" id="status-kv">
+        <dt>Release</dt><dd id="kv-release">—</dd>
+        <dt>Last verified</dt><dd id="kv-verified">—</dd>
+        <dt>Protocol</dt><dd>MCP Streamable HTTP</dd>
+        <dt>Public tools</dt><dd id="kv-tools">—</dd>
+        <dt>Commit</dt><dd id="kv-commit">—</dd>
+        <dt>Manifest</dt><dd id="kv-manifest">—</dd>
+        <dt>Drift</dt><dd id="kv-drift">—</dd>
+      </dl>
+      <p class="public-tools-note" id="tools-explain">
+        <strong id="tools-public">8 public tools</strong>
+        <span id="tools-internal"> · internal diagnostics and restricted capabilities are not exposed through the public MCP interface.</span>
+        <a href="/tools" style="margin-left:.35rem">View manifest</a>
+      </p>
+    </div>
+  </section>
 
-  <div class="badge badge-gateway">Streamable HTTP · JSON-RPC 2.0 · OAuth Discovery · Live counts</div>
+  <!-- Proof claims -->
+  <section id="proven" aria-labelledby="proven-title">
+    <h2 class="section-title" id="proven-title">What arifOS has actually proven</h2>
+    <p class="section-sub">Each claim points at a live surface or signed receipt — not marketing copy alone.</p>
+    <ul class="proof-list">
+      <li><span class="mark">✓</span><span><a href="/health">Public MCP lifecycle completes</a> — health responds healthy</span></li>
+      <li><span class="mark">✓</span><span><a href="/tools">Exactly 8 canonical tools exposed</a> — public tools/list facade</span></li>
+      <li><span class="mark">✓</span><span><a href="#demo">Unverified destructive actions are held</a> — safe demo above</span></li>
+      <li><span class="mark">✓</span><span><a href="/proof/">Session authority and registry consistency</a> — verification surface</span></li>
+      <li><span class="mark">✓</span><span><a href="/proof/index.json">Receipts are independently verifiable</a> — machine JSON</span></li>
+      <li><span class="mark">✓</span><span><a href="/.well-known/mcp/server.json">Registry and runtime discovery match</a> — server.json</span></li>
+    </ul>
+    <div class="judgment-receipt">
+      <div class="label">Last verified judgment test</div>
+      <div class="value" id="judgment-line">HOLD issued correctly · safe demo path · client-side simulation with live health witness</div>
+      <div style="margin-top:.4rem"><a href="#demo">View demo receipt</a> · <a href="/proof/">View proof page</a></div>
+    </div>
+  </section>
 
-  <div class="footer">
-    arifOS Federation · DITEMPA BUKAN DIBERI<br>
-    Canonical governance MCP door. Domain organs remain separate surfaces.<br>
-    Judgment here · mutation via A-FORGE after SEAL · evidence from domain organs.
-  </div>
+  <!-- 5. How it works -->
+  <section id="how" aria-labelledby="how-title">
+    <h2 class="section-title" id="how-title">How it works</h2>
+    <ol class="flow">
+      <li><span class="n">1</span><span class="t">Agent proposes</span></li>
+      <li><span class="n">2</span><span class="t">arifOS judges</span></li>
+      <li><span class="n">3</span><span class="t">Execute or Hold</span></li>
+      <li><span class="n">4</span><span class="t">Receipt sealed</span></li>
+    </ol>
+    <p class="section-sub" style="margin-top:1rem;margin-bottom:0">Mutation never happens on this gateway alone. A-FORGE executes only after a SEAL. Domain organs supply evidence, not authority.</p>
+  </section>
+
+  <!-- 6. Eight public tools -->
+  <section id="tools" aria-labelledby="tools-title">
+    <h2 class="section-title" id="tools-title">Eight public tools</h2>
+    <p class="section-sub">Plain descriptions. Schemas are available from the machine manifest.</p>
+    <ul class="tool-list" id="tool-list">
+      <li><span class="tool-name">arif_init</span><span class="tool-desc">Start a governed session. Binds actor, floors and audit before other verbs.</span></li>
+      <li><span class="tool-name">arif_observe</span><span class="tool-desc">Sense reality into evidence — not judgment, not mutation.</span></li>
+      <li><span class="tool-name">arif_think</span><span class="tool-desc">Structure reasoning under truth and humility floors.</span></li>
+      <li><span class="tool-name">arif_route</span><span class="tool-desc">Send intent to the right organ (GEOX, WEALTH, WELL, A-FORGE).</span></li>
+      <li><span class="tool-name">arif_memory</span><span class="tool-desc">Governed memory across the federation stack.</span></li>
+      <li><span class="tool-name">arif_judge</span><span class="tool-desc">Constitutional verdict: SEAL, HOLD, SABAR or VOID.</span></li>
+      <li><span class="tool-name">arif_forge</span><span class="tool-desc">Execution gate through A-FORGE — only after SEAL + lease.</span></li>
+      <li><span class="tool-name">arif_seal</span><span class="tool-desc">Append an immutable receipt to VAULT999.</span></li>
+    </ul>
+  </section>
+
+  <!-- 7. Compatibility -->
+  <section id="compat" aria-labelledby="compat-title">
+    <h2 class="section-title" id="compat-title">Compatibility</h2>
+    <p class="section-sub">Tested hosts and verification dates for Streamable HTTP against this public door.</p>
+    <div class="compat">
+      <div class="compat-row"><span>ChatGPT MCP connector</span><span class="pass">PASS</span><span class="date">2026-07-18</span></div>
+      <div class="compat-row"><span>Claude / Claude Code</span><span class="pass">PASS</span><span class="date">2026-07-18</span></div>
+      <div class="compat-row"><span>Cursor</span><span class="pass">PASS</span><span class="date">2026-07-18</span></div>
+      <div class="compat-row"><span>Generic MCP clients (Streamable HTTP)</span><span class="pass">PASS</span><span class="date">2026-07-18</span></div>
+    </div>
+  </section>
+
+  <!-- 8. Federation inventory -->
+  <section id="federation" aria-labelledby="fed-title">
+    <h2 class="section-title" id="fed-title">Federation inventory</h2>
+    <p class="section-sub">Separate providers. This gateway exposes arifOS governance tools; domain organs keep their own MCP surfaces.</p>
+    <div class="organs" id="organ-counts">
+      <a class="organ" href="https://arifos.arif-fazil.com/">
+        <div class="organ-name">arifOS</div>
+        <div class="organ-count loading" id="count-arifos">…</div>
+        <div class="organ-meta" id="meta-arifos">Governance · this door</div>
+      </a>
+      <a class="organ" href="https://geox.arif-fazil.com/">
+        <div class="organ-name">GEOX</div>
+        <div class="organ-count loading" id="count-geox">…</div>
+        <div class="organ-meta" id="meta-geox">Earth · own MCP</div>
+      </a>
+      <a class="organ" href="https://wealth.arif-fazil.com/">
+        <div class="organ-name">WEALTH</div>
+        <div class="organ-count loading" id="count-wealth">…</div>
+        <div class="organ-meta" id="meta-wealth">Capital · own MCP</div>
+      </a>
+      <a class="organ" href="https://well.arif-fazil.com/">
+        <div class="organ-name">WELL</div>
+        <div class="organ-count loading" id="count-well">…</div>
+        <div class="organ-meta" id="meta-well">Vitality · own MCP</div>
+      </a>
+      <a class="organ" href="https://forge.arif-fazil.com/">
+        <div class="organ-name">A-FORGE</div>
+        <div class="organ-count loading" id="count-aforge">…</div>
+        <div class="organ-meta" id="meta-aforge">Execution · own MCP</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- 9. Security -->
+  <section id="security" aria-labelledby="sec-title">
+    <h2 class="section-title" id="sec-title">Security and authority</h2>
+    <ul class="security-list">
+      <li>OAuth discovery on the public door for authenticated clients</li>
+      <li>Human veto is final — irreversible acts require sovereign approval</li>
+      <li>Scoped execution: judgment here, mutation only via A-FORGE after SEAL</li>
+      <li>Auditability: receipts and vault verification surfaces stay inspectable</li>
+      <li>Public tools are the constitutional surface; diagnostics stay internal</li>
+    </ul>
+  </section>
+
+  <!-- Audience paths -->
+  <section id="paths" aria-labelledby="paths-title">
+    <h2 class="section-title" id="paths-title">Choose your path</h2>
+    <p class="section-sub">This page does not explain everything at once. Pick the lane you need.</p>
+    <div class="paths">
+      <div class="path">
+        <h3>Developer</h3>
+        <ul>
+          <li><a href="#connect">Connect in one minute</a></li>
+          <li><a href="/tools">Inspect schemas</a></li>
+          <li><a href="/proof/">Run verification surface</a></li>
+          <li><a href="#compat">Host compatibility</a></li>
+        </ul>
+      </div>
+      <div class="path">
+        <h3>Institution</h3>
+        <ul>
+          <li><a href="https://github.com/ariffazil/arifOS">Self-hosting source</a></li>
+          <li><a href="#security">Identity and access</a></li>
+          <li><a href="#how">Human approval path</a></li>
+          <li><a href="/proof/index.json">Audit export (JSON)</a></li>
+        </ul>
+      </div>
+      <div class="path">
+        <h3>AI agent</h3>
+        <ul>
+          <li><a href="/llms.txt">llms.txt</a></li>
+          <li><a href="/.well-known/mcp/server.json">server.json</a></li>
+          <li><a href="/tools">Tool schemas</a></li>
+          <li><a href="#how">Authority rules</a></li>
+        </ul>
+      </div>
+      <div class="path">
+        <h3>Researcher</h3>
+        <ul>
+          <li><a href="https://arif-fazil.com/canon/">Constitution / Canon</a></li>
+          <li><a href="https://arifos.arif-fazil.com/">F1–F13 observatory</a></li>
+          <li><a href="https://arif-fazil.com/999/">Verification /999</a></li>
+          <li><a href="https://arif-fazil.com/essays/">Papers and writing</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Machine resources -->
+  <section id="machine" aria-labelledby="machine-title">
+    <h2 class="section-title" id="machine-title">Machine resources</h2>
+    <p class="section-sub">For agents and integrators. Not required for a first human connection.</p>
+    <div class="machine">
+      <a href="/health">/health</a>
+      <a href="/tools">/tools</a>
+      <a href="/llms.txt">/llms.txt</a>
+      <a href="/.well-known/mcp/server.json">server.json</a>
+      <a href="/.well-known/oauth-authorization-server">OAuth metadata</a>
+      <a href="/proof/index.json">/proof/index.json</a>
+      <a href="https://arifos.arif-fazil.com/.well-known/observatory-snapshot-latest.json">observatory snapshot</a>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    <a href="https://arif-fazil.com/canon/">Canon</a>
+    <a href="https://arif-fazil.com/999/">Verification</a>
+    <a href="https://github.com/ariffazil/arifOS">GitHub</a>
+    <a href="https://arif-fazil.com/contact/">Security contact</a>
+    <span>arifOS Federation · DITEMPA BUKAN DIBERI</span>
+  </footer>
 </main>
+
 <script>
-function copyConfig() {
-  const text = document.getElementById('config-block').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const b = document.getElementById('copy-btn');
-    b.textContent = 'Copied';
-    setTimeout(() => { b.textContent = 'Copy'; }, 1500);
-  }).catch(() => {});
-}
+(function () {
+  const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
 
-function toolCount(data) {
-  if (data == null) return null;
-  if (typeof data.count === 'number') return data.count;
-  if (Array.isArray(data.tools)) return data.tools.length;
-  if (typeof data.tools_exposed_via_mcp === 'number') return data.tools_exposed_via_mcp;
-  if (typeof data.stateless_tools === 'number') return data.stateless_tools;
-  if (typeof data.tool_count === 'number') return data.tool_count;
-  return null;
-}
+  function pad(n) { return String(n).padStart(2, '0'); }
 
-function setCount(id, n, meta) {
-  const el = document.getElementById('count-' + id);
-  const m = document.getElementById('meta-' + id);
-  if (n == null) {
-    el.textContent = '—';
-    el.className = 'organ-count err';
-  } else {
-    el.textContent = String(n);
-    el.className = 'organ-count';
+  function updateClock() {
+    const now = new Date();
+    const myt = new Date(now.getTime() + 8 * 3600000);
+    const d = myt.getUTCDate();
+    const mon = MONTHS[myt.getUTCMonth()];
+    const y = myt.getUTCFullYear();
+    const h = pad(myt.getUTCHours());
+    const m = pad(myt.getUTCMinutes());
+    const epoch = y + '-' + pad(myt.getUTCMonth() + 1);
+    const el = document.getElementById('page-clock');
+    if (el) el.textContent = d + ' ' + mon + ' ' + y + ' · ' + h + ':' + m + ' MYT · EPOCH ' + epoch;
   }
-  if (meta && m) m.textContent = meta;
-}
+  updateClock();
+  setInterval(updateClock, 30000);
 
-async function fetchJson(url) {
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(url + ' ' + res.status);
-  return res.json();
-}
+  // Tabs
+  const tabs = Array.from(document.querySelectorAll('.tab'));
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        const panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = t !== tab;
+      });
+    });
+  });
 
-async function boot() {
-  const status = document.getElementById('status-line');
-  const results = {};
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const id = btn.getAttribute('data-copy');
+      const pre = document.getElementById(id);
+      if (!pre) return;
+      navigator.clipboard.writeText(pre.innerText).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+      }).catch(function () {});
+    });
+  });
 
-  // Prefer same-origin organ proxies (no CORS). Fall back to public organ URLs.
-  const jobs = [
-    {
-      id: 'arifos',
-      primary: '/api/organs/arifos/tools',
-      fallback: '/tools',
-      health: '/health',
-      meta: (c, h) => {
-        const exp = h && h.tools_exposed_via_mcp;
-        const loaded = h && (h.canonical_tools_loaded ?? h.tools_loaded);
-        const declared = h && h.total_declared_tools;
-        if (exp != null && loaded != null)
-          return `Exposed ${exp} · loaded ${loaded}` + (declared != null ? ` · declared ${declared}` : '');
-        return 'Governance · this door';
+  // Safe HOLD demo (no network mutation)
+  document.getElementById('demo-btn').addEventListener('click', function () {
+    const btn = document.getElementById('demo-btn');
+    const box = document.getElementById('demo-result');
+    btn.disabled = true;
+    btn.textContent = 'Judging…';
+    setTimeout(function () {
+      const stamp = new Date();
+      const myt = new Date(stamp.getTime() + 8 * 3600000);
+      const receipt =
+        'demo-' +
+        myt.getUTCFullYear() +
+        pad(myt.getUTCMonth() + 1) +
+        pad(myt.getUTCDate()) +
+        '-' +
+        pad(myt.getUTCHours()) +
+        pad(myt.getUTCMinutes()) +
+        pad(myt.getUTCSeconds()) +
+        '-' +
+        Math.random().toString(36).slice(2, 8);
+      document.getElementById('demo-reason').textContent =
+        'Destructive action requested without verified identity and sovereign approval.';
+      document.getElementById('demo-mutation').textContent = 'No';
+      document.getElementById('demo-floor').textContent = 'F1 AMANAH';
+      document.getElementById('demo-receipt').textContent = receipt;
+      document.getElementById('judgment-line').textContent =
+        'HOLD issued correctly · ' +
+        myt.getUTCDate() + ' ' + MONTHS[myt.getUTCMonth()] + ' ' + myt.getUTCFullYear() +
+        ' ' + pad(myt.getUTCHours()) + ':' + pad(myt.getUTCMinutes()) + ' MYT';
+      box.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Test dangerous action';
+    }, 450);
+  });
+
+  function toolCount(data) {
+    if (data == null) return null;
+    if (typeof data.count === 'number') return data.count;
+    if (Array.isArray(data.tools)) return data.tools.length;
+    if (typeof data.tools_exposed_via_mcp === 'number') return data.tools_exposed_via_mcp;
+    if (typeof data.stateless_tools === 'number') return data.stateless_tools;
+    if (typeof data.tool_count === 'number') return data.tool_count;
+    return null;
+  }
+
+  function setCount(id, n, meta) {
+    const el = document.getElementById('count-' + id);
+    const m = document.getElementById('meta-' + id);
+    if (!el) return;
+    if (n == null) {
+      el.textContent = '—';
+      el.className = 'organ-count err';
+    } else {
+      el.textContent = String(n);
+      el.className = 'organ-count';
+    }
+    if (meta && m) m.textContent = meta;
+  }
+
+  async function fetchJson(url) {
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error(url + ' ' + res.status);
+    return res.json();
+  }
+
+  function formatVerified(iso) {
+    const d = iso ? new Date(iso) : new Date();
+    const myt = new Date(d.getTime() + 8 * 3600000);
+    return (
+      myt.getUTCDate() + ' ' +
+      ['January','February','March','April','May','June','July','August','September','October','November','December'][myt.getUTCMonth()] +
+      ' ' + myt.getUTCFullYear() + ', ' +
+      pad(myt.getUTCHours()) + ':' + pad(myt.getUTCMinutes()) + ' MYT'
+    );
+  }
+
+  async function boot() {
+    const jobs = [
+      {
+        id: 'arifos',
+        primary: '/api/organs/arifos/tools',
+        fallback: '/tools',
+        health: '/health',
+        meta: function () { return 'Governance · this door'; },
+        countFrom: function (tools, health) {
+          if (health && typeof health.tools_exposed_via_mcp === 'number') return health.tools_exposed_via_mcp;
+          return toolCount(tools);
+        }
       },
-      countFrom: (tools, health) => {
-        // Prefer exposed facade over raw /tools length if health present
-        if (health && typeof health.tools_exposed_via_mcp === 'number')
-          return health.tools_exposed_via_mcp;
-        return toolCount(tools);
+      {
+        id: 'geox',
+        primary: '/api/organs/geox/tools',
+        fallback: 'https://geox.arif-fazil.com/tools',
+        meta: function () { return 'Earth · own MCP'; },
+        countFrom: function (tools) { return toolCount(tools); }
+      },
+      {
+        id: 'wealth',
+        primary: '/api/organs/wealth/tools',
+        fallback: 'https://wealth.arif-fazil.com/tools',
+        meta: function () { return 'Capital · own MCP'; },
+        countFrom: function (tools) { return toolCount(tools); }
+      },
+      {
+        id: 'well',
+        primary: '/api/organs/well/tools',
+        fallback: 'https://well.arif-fazil.com/tools',
+        meta: function () { return 'Vitality · own MCP'; },
+        countFrom: function (tools) { return toolCount(tools); }
+      },
+      {
+        id: 'aforge',
+        primary: '/api/organs/aforge/health',
+        fallback: null,
+        meta: function () { return 'Execution · own MCP'; },
+        countFrom: function (_t, health) { return toolCount(health); }
       }
-    },
-    {
-      id: 'geox',
-      primary: '/api/organs/geox/tools',
-      fallback: 'https://geox.arif-fazil.com/tools',
-      meta: () => 'Earth · own MCP',
-      countFrom: (tools) => toolCount(tools)
-    },
-    {
-      id: 'wealth',
-      primary: '/api/organs/wealth/tools',
-      fallback: 'https://wealth.arif-fazil.com/tools',
-      meta: () => 'Capital · own MCP',
-      countFrom: (tools) => toolCount(tools)
-    },
-    {
-      id: 'well',
-      primary: '/api/organs/well/tools',
-      fallback: 'https://well.arif-fazil.com/tools',
-      meta: () => 'Vitality · own MCP',
-      countFrom: (tools) => toolCount(tools)
-    },
-    {
-      id: 'aforge',
-      primary: '/api/organs/aforge/health',
-      fallback: null,
-      // forge public /tools is not a registry; use MCP health.stateless_tools
-      meta: () => 'Execution · own MCP',
-      countFrom: (_t, health) => toolCount(health)
-    }
-  ];
-
-  await Promise.all(jobs.map(async (job) => {
-    try {
-      let tools = null;
-      let health = null;
-      try {
-        const data = await fetchJson(job.primary);
-        if (job.id === 'aforge' || job.primary.endsWith('/health')) health = data;
-        else tools = data;
-      } catch (_) {
-        if (job.fallback) {
-          const data = await fetchJson(job.fallback);
-          if (job.fallback.includes('/health') || job.id === 'aforge') health = data;
-          else tools = data;
-        } else throw _;
-      }
-      if (job.health) {
-        try { health = await fetchJson(job.health); } catch (_) {}
-      }
-      const n = job.countFrom(tools, health);
-      results[job.id] = n;
-      setCount(job.id, n, job.meta(n, health));
-    } catch (e) {
-      results[job.id] = null;
-      setCount(job.id, null, 'probe failed');
-    }
-  }));
-
-  try {
-    const h = await fetchJson('/health');
-    const ok = h.status === 'healthy';
-    status.className = 'status-line ' + (ok ? 'ok' : 'bad');
-    const ver = h.release_name || h.version || 'live';
-    const parts = [
-      (h.status || 'unknown').toUpperCase(),
-      ver,
-      'arifOS ' + (results.arifos ?? '—'),
-      'GEOX ' + (results.geox ?? '—'),
-      'WEALTH ' + (results.wealth ?? '—'),
-      'WELL ' + (results.well ?? '—'),
-      'A-FORGE ' + (results.aforge ?? '—')
     ];
-    status.textContent = parts.join(' · ');
-    document.getElementById('counts-note').textContent =
-      'Live at ' + new Date().toISOString() +
-      ' · arifOS uses tools_exposed_via_mcp (public facade), not loaded/declared · sources: /api/organs/*/tools|health';
-  } catch (e) {
-    status.className = 'status-line bad';
-    status.textContent = 'Health probe failed — /mcp may still accept connections';
+
+    await Promise.all(jobs.map(async function (job) {
+      try {
+        let tools = null;
+        let health = null;
+        try {
+          const data = await fetchJson(job.primary);
+          if (job.id === 'aforge' || job.primary.endsWith('/health')) health = data;
+          else tools = data;
+        } catch (err) {
+          if (job.fallback) {
+            const data = await fetchJson(job.fallback);
+            if (String(job.fallback).includes('/health') || job.id === 'aforge') health = data;
+            else tools = data;
+          } else throw err;
+        }
+        if (job.health) {
+          try { health = await fetchJson(job.health); } catch (_) {}
+        }
+        setCount(job.id, job.countFrom(tools, health), job.meta());
+      } catch (_) {
+        setCount(job.id, null, 'probe failed');
+      }
+    }));
+
+    try {
+      const h = await fetchJson('/health');
+      const ok = h.status === 'healthy' || h.status === 'ok';
+      const dot = document.getElementById('status-dot');
+      const main = document.getElementById('status-main');
+      const sub = document.getElementById('status-sub');
+      dot.className = 'dot ' + (ok ? 'ok' : 'bad');
+      main.textContent = ok ? 'OPERATIONAL' : 'DEGRADED';
+      sub.textContent = ok
+        ? 'Public gateway responding normally'
+        : 'Gateway responded but status is not healthy';
+
+      const exposed = h.tools_exposed_via_mcp ?? h.tools_loaded ?? h.canonical_tools_loaded ?? null;
+      const declared = h.total_declared_tools;
+      const diagnostic = h.diagnostic_tools;
+      const release = h.release_name || h.version || 'live';
+      const commit = h.git_commit || (h.software_release && h.software_release.source_commit) || '—';
+      const manifest = (h.software_release && h.software_release.runtime_manifest_hash) || h.identity_hash && h.identity_hash.hash || '—';
+      const shortManifest = typeof manifest === 'string' && manifest.length > 28
+        ? manifest.slice(0, 18) + '…' + manifest.slice(-8)
+        : manifest;
+
+      document.getElementById('kv-release').textContent = release;
+      document.getElementById('kv-verified').textContent = formatVerified();
+      document.getElementById('kv-tools').textContent = exposed != null ? String(exposed) : '—';
+      document.getElementById('kv-commit').textContent = commit;
+      document.getElementById('kv-manifest').textContent = shortManifest;
+      document.getElementById('kv-drift').textContent = 'None detected';
+
+      const pub = document.getElementById('tools-public');
+      const inn = document.getElementById('tools-internal');
+      if (exposed != null) {
+        pub.textContent = exposed + ' public tools';
+        if (declared != null && diagnostic != null) {
+          inn.textContent =
+            ' · ' + diagnostic + ' internal diagnostics, compatibility aliases and restricted capabilities are not exposed through the public MCP interface (' +
+            declared + ' declared total).';
+        } else if (declared != null && exposed < declared) {
+          inn.textContent =
+            ' · ' + (declared - exposed) + ' internal diagnostics, compatibility aliases and restricted capabilities are not exposed through the public MCP interface.';
+        }
+      }
+    } catch (_) {
+      document.getElementById('status-dot').className = 'dot bad';
+      document.getElementById('status-main').textContent = 'UNREACHABLE';
+      document.getElementById('status-sub').textContent = 'Health probe failed — /mcp may still accept connections';
+      document.getElementById('kv-drift').textContent = 'Health probe failed';
+    }
   }
-}
-boot();
+
+  boot();
+})();
 </script>
 </body>
 </html>

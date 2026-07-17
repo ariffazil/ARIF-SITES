@@ -51,7 +51,7 @@ Need to update the PROTOCOL SPECS (MCP, A2A, WebMCP)?
 
 Need to CHECK SYSTEM HEALTH?
 └── Endpoint: https://mcp.arif-fazil.com/health
-    Tools: 13 canonical (arif_* naming)
+    Tools: 8 public (arif_* naming)
     MCP: https://mcp.arif-fazil.com/mcp (canonical) | https://arifOS.arif-fazil.com/mcp (primary)
 
 Need to UPDATE ALL NAVIGATION?

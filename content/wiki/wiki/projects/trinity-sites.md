@@ -121,7 +121,7 @@ This ensures users can instantly identify which ring they're in by visual cues a
 ### MCP Gateway — `mcp.arif-fazil.com`
 - **Type**: Dynamic API-driven MCP gateway (live)
 - **Data Source**: `/health` endpoint at `mcp.arif-fazil.com`
-- **Features**: 13 canonical tools (arif_*), F1-F13 floors, thermodynamic metrics
+- **Features**: 8 public tools (arif_*), F1-F13 floors, thermodynamic metrics
 - **MCP Endpoints**: `https://mcp.arif-fazil.com/mcp` (canonical) | `https://arifOS.arif-fazil.com/mcp` (primary)
 - **Note**: `arifosmcp.arif-fazil.com` is a legacy redirect — do not use directly
 

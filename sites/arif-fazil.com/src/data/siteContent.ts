@@ -30,17 +30,11 @@ export type SystemProject = {
 };
 
 export const primaryLinks: LinkItem[] = [
-  { label: 'Wells', href: '/#wells' },
-  { label: 'Systems', href: '/#what-i-built' },
-  { label: 'Practice', href: '/#practice' },
-  { label: 'Contact', href: '/#contact' },
-  { label: '/000', href: '/000/' },
-  { label: '/999', href: '/999/' },
-  { label: '/canon', href: '/canon/' },
-  { label: '/constellation', href: '/constellation/' },
-  { label: '/wealth', href: '/wealth/' },
+  { label: 'Arif', href: '/' },
+  { label: 'Work', href: '/discoveries/' },
+  { label: 'arifOS', href: 'https://mcp.arif-fazil.com/', external: true },
   { label: 'Writing', href: '/essays/' },
-  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'Contact', href: '/contact/' },
 ];
 
 // Plain — no scores, no stats, no framing
