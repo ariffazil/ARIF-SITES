@@ -76,7 +76,7 @@ for row in "${SITE_ROWS[@]}"; do
   [[ -d "$source_dir" ]] || { echo "Missing source for $host: $source_dir" >&2; exit 1; }
   if [[ -n "$build_cmd" ]]; then
     echo "[sites] Building $host"
-    (cd "$source_dir" && npm ci --quiet && npm run build)
+    (cd "$source_dir" && npm ci --quiet --legacy-peer-deps && npm run build)
     deploy_dir="$source_dir/dist"
   fi
 
