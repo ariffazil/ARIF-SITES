@@ -36,7 +36,15 @@
   /* ── helpers ───────────────────────────────────────────── */
   const $  = (s, p) => (p || document).querySelector(s);
   const $$ = (s, p) => [...(p || document).querySelectorAll(s)];
-  const val = (o) => (o && typeof o === 'object' && 'value' in o ? o.value : o);
+  /** Unwrap per-field envelopes; never return raw objects to textContent (avoids [object Object]). */
+  const val = (o) => {
+    if (o && typeof o === 'object' && 'value' in o) o = o.value;
+    if (o == null) return o;
+    if (typeof o === 'object') {
+      try { return JSON.stringify(o); } catch (_) { return String(o); }
+    }
+    return o;
+  };
   const st  = (o) => (o && typeof o === 'object' && 'state' in o ? o.state : null);
   const conf = (o) => (o && typeof o === 'object' && 'confidence' in o ? o.confidence : null);
 
