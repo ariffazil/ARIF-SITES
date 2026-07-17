@@ -4,7 +4,7 @@
 (function(){
   var base = document.querySelector('script[src*="unified-header-loader"]');
   if(!base) base = {src:'/_shared/'};
-  var src = base.src.replace(/[^\/]*$/, 'unified-header.html');
+  var src = base.src.replace(/[^\/]*$/, 'unified-header.html?v=20260717b');
   fetch(src).then(function(r){return r.text()}).then(function(html){
     document.body.classList.add('has-federation-header');
     document.body.insertAdjacentHTML('afterbegin', html);
