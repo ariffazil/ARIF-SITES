@@ -236,7 +236,7 @@ footer.page-foot a{color:var(--muted)}
         <dl class="demo-grid">
           <div>
             <dt>Reason</dt>
-            <dd id="demo-reason">Destructive action requested without verified identity and sovereign approval.</dd>
+            <dd id="demo-reason">Destructive action lacks verified authority and reversible execution plan.</dd>
           </div>
           <div>
             <dt>Mutation performed</dt>
@@ -251,36 +251,44 @@ footer.page-foot a{color:var(--muted)}
             <dd><code id="demo-receipt">—</code></dd>
           </div>
         </dl>
+        <div class="hero-actions" style="margin-top:0.85rem">
+          <a class="btn btn-secondary" id="link-verify-receipt" href="https://arif-fazil.com/999/">Verify receipt in Observatory /999</a>
+          <a class="btn btn-ghost" href="https://arifos.arif-fazil.com/">Inspect current release</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Current verified state -->
+  <!-- 4. Current verified state — from arifos.public-state.v1 -->
   <section id="state" aria-labelledby="state-title">
     <h2 class="section-title" id="state-title">Current verified state</h2>
-    <p class="section-sub">Gateway health is separate from federation inventory. Counts come from live organ probes on this page load.</p>
+    <p class="section-sub">Action door claims only. Full evidence lives in the Observatory. Numbers come from <code>arifos.public-state.v1</code> — not hand-edited HTML.</p>
     <div class="card status-card">
       <div class="status-row">
         <span class="dot" id="status-dot" aria-hidden="true"></span>
         <div>
-          <div class="status-main" id="status-main">Checking gateway…</div>
-          <div class="status-sub" id="status-sub">Public gateway probe in progress</div>
+          <div class="status-main" id="status-main">Checking public-state…</div>
+          <div class="status-sub" id="status-sub">Shared contract with Observatory</div>
         </div>
       </div>
       <dl class="kv" id="status-kv">
-        <dt>Release</dt><dd id="kv-release">—</dd>
-        <dt>Last verified</dt><dd id="kv-verified">—</dd>
-        <dt>Protocol</dt><dd>MCP Streamable HTTP</dd>
+        <dt>Transport</dt><dd id="kv-transport">—</dd>
         <dt>Public tools</dt><dd id="kv-tools">—</dd>
-        <dt>Commit</dt><dd id="kv-commit">—</dd>
-        <dt>Manifest</dt><dd id="kv-manifest">—</dd>
-        <dt>Drift</dt><dd id="kv-drift">—</dd>
+        <dt>Release</dt><dd id="kv-release">—</dd>
+        <dt>Deployment</dt><dd id="kv-drift">—</dd>
+        <dt>Governance</dt><dd id="kv-gov">—</dd>
+        <dt>Federation</dt><dd id="kv-fed">—</dd>
+        <dt>Receipt</dt><dd id="kv-receipt">—</dd>
+        <dt>Snapshot</dt><dd id="kv-snap">—</dd>
       </dl>
       <p class="public-tools-note" id="tools-explain">
-        <strong id="tools-public">8 public tools</strong>
-        <span id="tools-internal"> · internal diagnostics and restricted capabilities are not exposed through the public MCP interface.</span>
-        <a href="/tools" style="margin-left:.35rem">View manifest</a>
+        <strong id="tools-public">Gateway claims capability only</strong>
+        <span id="tools-internal"> — not full constitutional health.</span>
       </p>
+      <div class="hero-actions" style="margin:0.75rem 0 0">
+        <a class="btn btn-secondary" id="link-verify-release" href="https://arifos.arif-fazil.com/">View full evidence</a>
+        <a class="btn btn-ghost" href="https://arifos.arif-fazil.com/api/public-state">public-state JSON</a>
+      </div>
     </div>
   </section>
 
@@ -645,53 +653,87 @@ footer.page-foot a{color:var(--muted)}
       }
     }));
 
+    // Shared truth contract — never collapse to unqualified HEALTHY
+    async function loadPublicState() {
+      const urls = [
+        'https://arifos.arif-fazil.com/api/public-state',
+        'https://arifos.arif-fazil.com/public-state.json'
+      ];
+      for (let i = 0; i < urls.length; i++) {
+        try { return await fetchJson(urls[i]); } catch (_) {}
+      }
+      return null;
+    }
+
     try {
-      const h = await fetchJson('/health');
-      const ok = h.status === 'healthy' || h.status === 'ok';
+      const ps = await loadPublicState();
+      const h = await fetchJson('/health').catch(function () { return null; });
       const dot = document.getElementById('status-dot');
       const main = document.getElementById('status-main');
       const sub = document.getElementById('status-sub');
-      dot.className = 'dot ' + (ok ? 'ok' : 'bad');
-      main.textContent = ok ? 'OPERATIONAL' : 'DEGRADED';
-      sub.textContent = ok
-        ? 'Public gateway responding normally'
-        : 'Gateway responded but status is not healthy';
 
-      const exposed = h.tools_exposed_via_mcp ?? h.tools_loaded ?? h.canonical_tools_loaded ?? null;
-      const declared = h.total_declared_tools;
-      const diagnostic = h.diagnostic_tools;
-      const release = h.release_name || h.version || 'live';
-      const commit = h.git_commit || (h.software_release && h.software_release.source_commit) || '—';
-      const manifest = (h.software_release && h.software_release.runtime_manifest_hash) || h.identity_hash && h.identity_hash.hash || '—';
-      const shortManifest = typeof manifest === 'string' && manifest.length > 28
-        ? manifest.slice(0, 18) + '…' + manifest.slice(-8)
-        : manifest;
+      if (ps && ps.schema === 'arifos.public-state.v1') {
+        const planes = ps.planes || {};
+        const hold = (ps.findings && ps.findings.highest_hold) || 'NONE';
+        const drifted = (ps.release && ps.release.deployment_alignment) === 'DRIFTED';
+        const transportOk = planes.transport === 'REACHABLE';
+        dot.className = 'dot ' + (!transportOk ? 'bad' : (hold === 'HIGH' || drifted ? 'warn' : 'ok'));
+        main.textContent = ps.headline || 'GATEWAY OPERATIONAL · PROOF PARTIAL';
+        sub.textContent = 'Action door · evidence in Observatory · not full constitutional health';
 
-      document.getElementById('kv-release').textContent = release;
-      document.getElementById('kv-verified').textContent = formatVerified();
-      document.getElementById('kv-tools').textContent = exposed != null ? String(exposed) : '—';
-      document.getElementById('kv-commit').textContent = commit;
-      document.getElementById('kv-manifest').textContent = shortManifest;
-      document.getElementById('kv-drift').textContent = 'None detected';
+        const tools = ps.mcp || {};
+        const rel = ps.release || {};
+        document.getElementById('kv-transport').textContent = planes.transport || '—';
+        document.getElementById('kv-tools').textContent =
+          (tools.public_tools != null ? tools.public_tools + '/8' : '—') +
+          (tools.tools_list ? ' · list ' + tools.tools_list : '');
+        document.getElementById('kv-release').textContent = rel.release_id || rel.release_name || '—';
+        document.getElementById('kv-drift').textContent = rel.deployment_alignment || '—';
+        document.getElementById('kv-gov').textContent = planes.governance || (ps.governance && ps.governance.state) || '—';
+        document.getElementById('kv-fed').textContent =
+          (ps.federation && ps.federation.state) || '—' +
+          (ps.federation ? ' · ' + ps.federation.transport_edges + ' transport' : '');
+        document.getElementById('kv-receipt').textContent = planes.receipt || (ps.receipt && ps.receipt.verify) || '—';
+        document.getElementById('kv-snap').textContent =
+          (ps.snapshot && ps.snapshot.id ? ps.snapshot.id : '—') +
+          (ps.snapshot && ps.snapshot.signature_state ? ' · ' + ps.snapshot.signature_state : '');
 
-      const pub = document.getElementById('tools-public');
-      const inn = document.getElementById('tools-internal');
-      if (exposed != null) {
-        pub.textContent = exposed + ' public tools';
-        if (declared != null && diagnostic != null) {
-          inn.textContent =
-            ' · ' + diagnostic + ' internal diagnostics, compatibility aliases and restricted capabilities are not exposed through the public MCP interface (' +
-            declared + ' declared total).';
-        } else if (declared != null && exposed < declared) {
-          inn.textContent =
-            ' · ' + (declared - exposed) + ' internal diagnostics, compatibility aliases and restricted capabilities are not exposed through the public MCP interface.';
+        const pub = document.getElementById('tools-public');
+        const inn = document.getElementById('tools-internal');
+        pub.textContent = (tools.public_tools != null ? tools.public_tools : 8) + ' public tools available';
+        inn.textContent =
+          ' · Gateway operational for connect/test. Does not mean arifOS is fully healthy and governed.';
+
+        const vlink = document.getElementById('link-verify-release');
+        if (vlink && rel.verify_url) {
+          vlink.href = rel.verify_url;
+          vlink.textContent = 'Verify release ' + (rel.release_id || '') + ' in Observatory';
         }
+      } else if (h) {
+        // Fallback: local health only — still refuse unqualified HEALTHY
+        const ok = h.status === 'healthy' || h.status === 'ok';
+        const exposed = h.tools_exposed_via_mcp ?? h.tools_loaded ?? null;
+        dot.className = 'dot ' + (ok ? 'warn' : 'bad');
+        main.textContent = ok
+          ? 'MCP TRANSPORT HEALTHY · EVIDENCE CONTRACT UNAVAILABLE'
+          : 'GATEWAY DEGRADED';
+        sub.textContent = 'public-state unreachable — showing transport only';
+        document.getElementById('kv-transport').textContent = ok ? 'REACHABLE' : 'UNREACHABLE';
+        document.getElementById('kv-tools').textContent = exposed != null ? exposed + '/8' : '—';
+        document.getElementById('kv-release').textContent = h.release_name || '—';
+        document.getElementById('kv-drift').textContent = 'UNKNOWN';
+        document.getElementById('kv-gov').textContent = 'UNKNOWN';
+        document.getElementById('kv-fed').textContent = 'UNKNOWN';
+        document.getElementById('kv-receipt').textContent = 'UNKNOWN';
+        document.getElementById('kv-snap').textContent = '—';
+      } else {
+        throw new Error('no state');
       }
     } catch (_) {
       document.getElementById('status-dot').className = 'dot bad';
-      document.getElementById('status-main').textContent = 'UNREACHABLE';
-      document.getElementById('status-sub').textContent = 'Health probe failed — /mcp may still accept connections';
-      document.getElementById('kv-drift').textContent = 'Health probe failed';
+      document.getElementById('status-main').textContent = 'GATEWAY UNREACHABLE';
+      document.getElementById('status-sub').textContent = 'Health and public-state probes failed — /mcp may still accept connections';
+      document.getElementById('kv-transport').textContent = 'UNREACHABLE';
     }
   }
 

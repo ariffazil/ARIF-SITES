@@ -119,6 +119,14 @@ for row in "${SITE_ROWS[@]}"; do
       "$webroot/.well-known/did-arifos-observatory.json"
     install -m 0644 "$OBSERVATORY_RUNTIME/keys/observatory_signing_key.pub.pem" \
       "$webroot/.well-known/observatory_signing_key.pub.pem"
+    # Bridge contract: arifos.public-state.v1 for MCP Gateway + Observatory
+    if python3 /root/arifOS/scripts/build_public_state.py; then
+      if [[ -f "$OBSERVATORY_RUNTIME/public-state.json" ]]; then
+        install -m 0644 "$OBSERVATORY_RUNTIME/public-state.json" "$webroot/public-state.json"
+      fi
+    else
+      echo "[sites] WARNING: public-state projection failed" >&2
+    fi
   fi
 
   chown -R www-data:www-data "$webroot"

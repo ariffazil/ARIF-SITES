@@ -3,29 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arifOS Observatory — Reality Witness</title>
-<meta name="description" content="Read-only constitutional witness. One signed server-side snapshot drives every visible status. Every status carries source, timestamp, freshness, evidence class, confidence, namespace, drill-down, trace, receipt.">
+<title>arifOS Observatory — Public evidence for governed AI</title>
+<meta name="description" content="Evidence room for arifOS. See what the federation can prove, what is degraded, and what remains unknown. Does not execute tools. Bridges to MCP Gateway via arifos.public-state.v1.">
 <link rel="canonical" href="https://arifos.arif-fazil.com/">
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
+<link rel="alternate" type="application/json" href="/api/public-state" title="arifos.public-state.v1">
+<link rel="alternate" type="application/json" href="/public-state.json" title="public-state static">
 <link rel="alternate" type="application/ld+json" href="/.well-known/governance.jsonld" title="Governance JSON-LD">
 <link rel="alternate" type="application/json" href="/.well-known/observatory-snapshot-latest.json" title="Signed arifOS Observatory Snapshot">
-<link rel="stylesheet" href="/_shared/design-system/tokens.css?v=20260717b">
-<link rel="stylesheet" href="/_shared/design-system/components.css?v=20260717b">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css?v=20260718">
+<link rel="stylesheet" href="/_shared/design-system/components.css?v=20260718">
+<style>
+.pub-hero{max-width:920px;margin:0 auto;padding:1.5rem 1.25rem 0}
+.pub-hero h1{font-size:clamp(1.6rem,3.5vw,2.1rem);font-weight:800;letter-spacing:-.03em;margin:.25rem 0 .5rem}
+.pub-hero .lead{color:var(--text-muted,#9b9995);max-width:48ch;margin-bottom:1rem}
+.pub-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.pub-actions a{display:inline-flex;padding:.55rem .9rem;border-radius:8px;font-size:.85rem;font-weight:600;text-decoration:none;border:1px solid var(--border,#2a2826)}
+.pub-actions .primary{background:#3a9ea8;color:#0d0c0b;border-color:transparent}
+.pub-actions .secondary{color:var(--text,#e6e4e0)}
+.truth-table{width:100%;border-collapse:collapse;font-size:.88rem;margin-bottom:1rem}
+.truth-table th,.truth-table td{text-align:left;padding:.45rem .55rem;border-bottom:1px solid var(--border,#2a2826)}
+.truth-table th{color:var(--text-muted,#9b9995);font-weight:600;width:42%}
+.truth-table td{font-weight:650}
+.truth-table .bad{color:#b83060}.truth-table .warn{color:#c4791a}.truth-table .ok{color:#5a9e38}
+.findings-top{margin:0 0 1.25rem;padding:1rem;border:1px solid var(--border,#2a2826);border-radius:10px;background:var(--surface,#141312)}
+.findings-top h2{font-size:1rem;margin:0 0 .5rem}
+.findings-top .counts{font-size:.85rem;color:var(--text-muted,#9b9995);margin-bottom:.65rem}
+.findings-top .fc{display:grid;gap:.5rem}
+.findings-top .fc a{display:block;padding:.65rem .75rem;border-radius:8px;border:1px solid var(--border,#2a2826);text-decoration:none;color:inherit}
+.findings-top .fc a:hover{border-color:#3a9ea8}
+.findings-top .sev{font-size:.68rem;font-weight:700;letter-spacing:.04em;color:#c4791a}
+.bridge-note{font-size:.8rem;color:var(--text-muted,#9b9995);margin:0 0 1.5rem;padding:.75rem;border-left:3px solid #3a9ea8}
+.deep-label{max-width:920px;margin:0 auto;padding:0 1.25rem;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted,#706e6b)}
+</style>
 
-<script type="application/ld+json">
+<script type="application/ld+json" id="ld-public-state">
 {"@context":"https://schema.org","@graph":[
- {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Read-only constitutional witness of the arifOS federation. Snapshot schema observatory.v1."},
- {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-snapshot","name":"observatory-snapshot","url":"https://arifos.arif-fazil.com/.well-known/observatory-snapshot-latest.json","description":"Single source-of-truth snapshot: runtime_identity, substrate, governance, capabilities, organs, metabolism, evidence, receipts, incidents, findings, federation_edges, conformance, tier."},
- {"@type":"Observatory","name":"arifOS Observatory","release":"v2026.07.17-ZEN-SURVIVAL","version":"kanon-663ae01","tools_exposed_via_mcp":8,"floors_loaded":13,"floors_passing":13,"federation_organs":7,"signature_state":"unsigned-pending-key-bootstrap"}
+ {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Public evidence room for governed AI. Observes; does not execute."},
+ {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-public-state","name":"arifos.public-state.v1","url":"https://arifos.arif-fazil.com/api/public-state","description":"Shared public-state contract for MCP Gateway and Observatory."},
+ {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-snapshot","name":"observatory-snapshot","url":"https://arifos.arif-fazil.com/.well-known/observatory-snapshot-latest.json"}
 ]}
 </script>
-  <script src="/_shared/unified-header-loader.js?v=20260717b"></script>
-  <script src="/_shared/observatory.js?v=20260717b" defer></script>
+  <script src="/_shared/unified-header-loader.js?v=20260718"></script>
+  <script src="/_shared/observatory.js?v=20260718" defer></script>
 </head>
-<body data-state="loading" data-source="GET /.well-known/observatory-snapshot-latest.json" data-observed-at="" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.0" data-namespace="arifos" data-freshness-state="unknown">
+<body data-header="product" data-state="loading" data-source="GET /api/public-state + /.well-known/observatory-snapshot-latest.json" data-observed-at="" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.0" data-namespace="arifos" data-freshness-state="unknown">
 <noscript><p>Read-only observers without JavaScript should consult
-  <a href="/.well-known/observatory-snapshot-latest.json">/.well-known/observatory-snapshot-latest.json</a>
-  for the live JSON state. This page renders the same data client-side.</p></noscript>
+  <a href="/api/public-state">/api/public-state</a> and
+  <a href="/.well-known/observatory-snapshot-latest.json">/.well-known/observatory-snapshot-latest.json</a>.
+  This page is the evidence room — it does not execute tools.</p></noscript>
 
 <div id="unsigned-banner" class="unsigned-banner" role="status" aria-live="polite" style="display:none">
  <strong>UNSIGNED SNAPSHOT.</strong>
@@ -35,12 +61,47 @@
 </div>
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<header class="header">
+<section class="pub-hero" id="public-hero" aria-label="Public evidence summary">
+  <div class="logo-sub" id="hero-kicker" style="font-size:.75rem;color:var(--text-muted,#9b9995)">Evidence room · not the action door</div>
+  <h1>arifOS Observatory</h1>
+  <p class="lead">Public evidence for governed AI. See what the federation can prove, what is degraded, and what remains unknown.</p>
+  <div class="pub-actions">
+    <a class="primary" href="https://arif-fazil.com/999/">Verify a receipt</a>
+    <a class="secondary" id="btn-inspect-release" href="#truth-table">Inspect current release</a>
+    <a class="secondary" id="btn-connect-mcp" href="https://mcp.arif-fazil.com/">Connect MCP</a>
+  </div>
+
+  <table class="truth-table" id="truth-table">
+    <tbody>
+      <tr><th>Transport</th><td id="t-transport">…</td></tr>
+      <tr><th>Public capability</th><td id="t-capability">…</td></tr>
+      <tr><th>Deployment alignment</th><td id="t-alignment">…</td></tr>
+      <tr><th>Governance measurement</th><td id="t-governance">…</td></tr>
+      <tr><th>Federation semantics</th><td id="t-federation">…</td></tr>
+      <tr><th>Receipt replay</th><td id="t-receipt">…</td></tr>
+      <tr><th>Public authority</th><td id="t-authority">…</td></tr>
+    </tbody>
+  </table>
+
+  <div class="findings-top" id="findings-top">
+    <h2 id="findings-heading">Open findings</h2>
+    <div class="counts" id="findings-counts">Loading public-state…</div>
+    <div class="fc" id="findings-cards"></div>
+  </div>
+
+  <p class="bridge-note" id="bridge-note">
+    <strong>Bridge:</strong> MCP Gateway is the action door (connect · test). This Observatory is the evidence room (prove · hold · unknown).
+    Shared contract: <a href="/api/public-state"><code>arifos.public-state.v1</code></a>.
+    Release-specific connect: <a id="bridge-connect" href="https://mcp.arif-fazil.com/">Connect to this release</a>.
+  </p>
+</section>
+
+<header class="header" style="max-width:920px;margin:0 auto">
  <div class="logo">
   <div class="logo-mark">&#937;</div>
   <div>
-   <h1 class="logo-text">arifOS Observatory</h1>
-   <div class="logo-sub">Reality Witness · F13 2026-07-15</div>
+   <div class="logo-text" style="font-size:1rem">Deep witness</div>
+   <div class="logo-sub" id="logo-sub">Loading signed snapshot…</div>
   </div>
  </div>
  <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
@@ -65,6 +126,8 @@
  <span>highest HOLD: <span class="badge" id="meta-hold">—</span></span>
  <span>last tool test: <span id="meta-test">…</span></span>
 </div>
+
+<p class="deep-label">Detailed planes (snapshot-driven) — below the seven-second truth table</p>
 
 <main id="main">
  <section id="sec-identity">
@@ -201,6 +264,103 @@
  snapshot id: <span class="hash" id="footer-snap-id" data-source="snapshot.snapshot_id" data-evidence-class="derived">…</span> · observed at: <span id="footer-obs-at" data-source="snapshot.observed_at">…</span><br>
  schema: observatory.v1 · <span id="footer-generated-by" data-source="snapshot.generated_by">generated by arifOS</span> · every status carries source/timestamp/freshness/evidence-class/confidence/namespace/trace/receipt<br>
  signature: <span id="footer-signature" data-source="snapshot.signature">algorithm=null (no signing key wired yet) · key_id=null · payload_hash=null · signature_value=null · signed_at=null · verification_url=null · revocation_status=null</span>
+ · <a href="/api/public-state">public-state</a>
 </footer>
+<script>
+(function () {
+  function cls(text) {
+    var t = String(text || '').toUpperCase();
+    if (/UNREACHABLE|NOT_PROVEN|HIGH|FAIL|DRIFTED/.test(t)) return 'bad';
+    if (/PARTIAL|UNMEASURED|UNKNOWN|TRANSPORT|HOLD|MEDIUM/.test(t)) return 'warn';
+    if (/REACHABLE|PROVEN|ALIGNED|CLEAR|READY|PASS/.test(t)) return 'ok';
+    return '';
+  }
+  function setCell(id, text, forceClass) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = text;
+    el.className = forceClass || cls(text);
+  }
+  function load() {
+    return fetch('/api/public-state', { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(function () {
+        return fetch('/public-state.json', { cache: 'no-store' }).then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.json();
+        });
+      });
+  }
+  load().then(function (ps) {
+    if (!ps || ps.schema !== 'arifos.public-state.v1') return;
+    var planes = ps.planes || {};
+    var rel = ps.release || {};
+    var mcp = ps.mcp || {};
+    var fed = ps.federation || {};
+    var rec = ps.receipt || {};
+    var find = ps.findings || {};
+    var snap = ps.snapshot || {};
+
+    setCell('t-transport', planes.transport || 'UNKNOWN');
+    setCell(
+      't-capability',
+      (mcp.public_tools != null ? mcp.public_tools + '/8 proven' : planes.capability || 'UNKNOWN'),
+      mcp.public_tools === 8 ? 'ok' : 'warn'
+    );
+    setCell('t-alignment', rel.deployment_alignment || 'UNKNOWN');
+    setCell('t-governance', planes.governance || (ps.governance && ps.governance.state) || 'UNKNOWN');
+    setCell(
+      't-federation',
+      (fed.state || 'UNKNOWN') + (fed.semantic_edges ? ' · semantic ' + fed.semantic_edges : '')
+    );
+    setCell('t-receipt', planes.receipt || rec.replay || 'UNKNOWN');
+    setCell('t-authority', planes.authorization || 'PUBLIC / OBSERVE_ONLY');
+
+    var open = find.open || [];
+    var by = find.by_severity || {};
+    document.getElementById('findings-heading').textContent =
+      (find.open_count != null ? find.open_count : open.length) + ' open findings';
+    document.getElementById('findings-counts').textContent =
+      (by.HIGH || 0) + ' HIGH · ' + (by.MEDIUM || 0) + ' MEDIUM · ' + (by.LOW || 0) + ' LOW' +
+      (find.highest_hold ? ' · highest HOLD: ' + find.highest_hold : '');
+
+    var cards = document.getElementById('findings-cards');
+    cards.innerHTML = '';
+    open.forEach(function (f) {
+      var a = document.createElement('a');
+      a.href = f.url || ('/findings/' + f.id);
+      a.innerHTML =
+        '<div class="sev">' + (f.id || '') + ' · ' + (f.severity || '') + ' · ' + (f.category || '') + '</div>' +
+        '<div style="font-weight:650;margin:.2rem 0">' + (f.description || '') + '</div>' +
+        '<div style="font-size:.78rem;color:var(--text-muted,#9b9995)">' + (f.evidence || '') + '</div>';
+      cards.appendChild(a);
+    });
+
+    var connect = document.getElementById('bridge-connect');
+    if (connect) {
+      connect.href = rel.connect_url || 'https://mcp.arif-fazil.com/';
+      connect.textContent = 'Connect to release ' + (rel.release_id || 'current');
+    }
+    var btn = document.getElementById('btn-connect-mcp');
+    if (btn) btn.href = rel.connect_url || 'https://mcp.arif-fazil.com/';
+    var insp = document.getElementById('btn-inspect-release');
+    if (insp && rel.verify_url) insp.href = rel.verify_url;
+
+    var sub = document.getElementById('logo-sub');
+    if (sub) {
+      sub.textContent =
+        'Snapshot ' + (snap.id || '…') +
+        (snap.observed_at ? ' · ' + snap.observed_at : '') +
+        (snap.signature_state ? ' · ' + snap.signature_state : '') +
+        (rel.release_id ? ' · ' + rel.release_id : '');
+    }
+    var kick = document.getElementById('hero-kicker');
+    if (kick && ps.headline) kick.textContent = ps.headline + ' · evidence room';
+  }).catch(function () {
+    document.getElementById('findings-counts').textContent =
+      'public-state unavailable — deep snapshot may still load below';
+  });
+})();
+</script>
 </body>
 </html>
