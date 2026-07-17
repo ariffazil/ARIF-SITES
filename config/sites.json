@@ -57,6 +57,8 @@
       "host": "mcp.arif-fazil.com",
       "role": "CAPABILITY-GATEWAY",
       "kind": "runtime-owned-gateway",
+      "landing_source": "sites/mcp.arif-fazil.com/index.html",
+      "runtime_file": "/var/www/html/mcp/index.html",
       "artifact_source": "sites/mcp.arif-fazil.com/proof",
       "deployable": false
     },
