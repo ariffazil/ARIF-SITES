@@ -336,6 +336,9 @@ table.drift {
 }
 
 .table-scroll {
+  display: block;
+  width: 100%;
+  min-width: 0;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -875,6 +878,8 @@ table tr:hover td {
 
 /* Visual honesty palette — badge states */
 .badge {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   display: inline-block;
   padding: 2px var(--space-2);
   border-radius: var(--radius-chip);
