@@ -11,7 +11,7 @@ epistemic_status: CLAIM
 # arif-sites — Static Surfaces & Domain Hosts
 
 > **Status:** OPERATIONAL | **Organ:** SURFACE | **Authority:** arifOS
-> **Domains:** `arif-fazil.com`, `arifos.arif-fazil.com`, `wiki.arif-fazil.com`, etc.
+> **Registry:** `config/sites.json` | **Shared assets:** `sites/shared/`
 
 [![Site Integrity](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml)
 [![Build — Trinity Sites](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml)
@@ -20,14 +20,14 @@ epistemic_status: CLAIM
 
 ## 🏛️ What this repo is
 
-The static site hosting layer for the arifOS federation. Each subsite is aligned to a domain name and hosted via Cloudflare Pages (auto-deploy on `git push main`). VPS-hosted dynamic services use Caddy as a reverse proxy.
+The public surface layer for the arifOS federation. Static sites are deployed to the VPS and served by Caddy; runtime-owned organ and gateway domains are reverse-proxied by Caddy.
 
 **arif-sites owns the SURFACE — the observable face of every federation domain.**
 
 ## ⚡ Quick Start
 
 ```bash
-cd /root/arif-sites
+cd /root/ARIF-SITES
 # Build React subsites
 cd sites/arif-fazil.com && npm install && npm run build
 # Caddy routes: see deploy/Caddyfile
@@ -36,7 +36,7 @@ cd sites/arif-fazil.com && npm install && npm run build
 
 ## 📦 Ownership
 
-- **Owns**: All static site content, React subsite builds, Cloudflare Pages deployment, VPS Caddy routing.
+- **Owns**: Static site content, React builds, shared browser assets, and the registry-backed VPS deployment path.
 - **Does NOT own**: Application logic (AAA, GEOX), Kernel logic (arifOS).
 
 ## 🏗️ Current Structure
@@ -47,12 +47,11 @@ arif-sites/
 │   ├── arif-fazil.com/       # React 19 + Vite (builds to dist/)
 │   ├── aaa.arif-fazil.com/   # Static HTML
 │   ├── arifos.arif-fazil.com/ # Static docs
-│   ├── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
 │   ├── geox.arif-fazil.com/  # Static lab/field GUI
-│   ├── makcikgpt.arif-fazil.com/ # Static MakcikGPT surface
 │   ├── wealth.arif-fazil.com/ # Static WEALTH surface
-│   ├── wiki.arif-fazil.com/  # Static constitutional wiki
 │   └── shared/               # Shared design system assets
+├── content/wiki/             # Retained legacy knowledge; not a deployable hostname
+├── config/sites.json         # Canonical hostname/source/role registry
 ├── apps/                   # Dynamic product UIs (VPS Docker)
 ├── services/              # Backend MCP kernel surfaces
 ├── infra/                # Constitutional manifests, domains map
@@ -66,15 +65,14 @@ arif-sites/
 ## 🚀 Verified Commands
 
 ```bash
-# Static sites: no build step required
-
-# React subsites:
+# React human surface:
 cd sites/arif-fazil.com && npm install && npm run build
 
-# Deploy: git push main → Cloudflare Pages auto-deploy
-# VPS deploy (Caddy):
+# Deploy all registry-approved static surfaces to VPS:
 ./deploy-vps.sh
-scripts/deploy-site.sh <site-dir>
+
+# Deploy one surface; Caddy routing is unchanged by default:
+./deploy-vps.sh --site arifos.arif-fazil.com
 ```
 
 ## 🔗 Federation Loop

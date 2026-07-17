@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "registry": "arifos-federated-sites.v1",
+  "observed_at": "2026-07-17",
+  "rule": "One hostname, one role, one canonical source. Shared assets live only in sites/shared.",
+  "surfaces": [
+    {
+      "host": "arif-fazil.com",
+      "role": "SOUL",
+      "kind": "human-surface",
+      "source": "sites/arif-fazil.com",
+      "webroot": "/var/www/html/arif",
+      "build": "npm run build",
+      "deployable": true
+    },
+    {
+      "host": "arifos.arif-fazil.com",
+      "role": "MIND",
+      "kind": "governance-observatory",
+      "source": "sites/arifos.arif-fazil.com",
+      "webroot": "/var/www/html/arifos",
+      "deployable": true
+    },
+    {
+      "host": "aaa.arif-fazil.com",
+      "role": "BODY",
+      "kind": "agentic-cockpit",
+      "source": "sites/aaa.arif-fazil.com",
+      "webroot": "/var/www/html/aaa",
+      "deployable": true
+    },
+    {
+      "host": "geox.arif-fazil.com",
+      "role": "EARTH",
+      "kind": "federated-organ",
+      "source": "sites/geox.arif-fazil.com",
+      "webroot": "/var/www/html/geox",
+      "deployable": true
+    },
+    {
+      "host": "wealth.arif-fazil.com",
+      "role": "CAPITAL",
+      "kind": "federated-organ",
+      "source": "sites/wealth.arif-fazil.com",
+      "webroot": "/var/www/html/wealth",
+      "deployable": true
+    },
+    {
+      "host": "well.arif-fazil.com",
+      "role": "READINESS",
+      "kind": "runtime-owned-organ",
+      "deployable": false
+    },
+    {
+      "host": "mcp.arif-fazil.com",
+      "role": "CAPABILITY-GATEWAY",
+      "kind": "runtime-owned-gateway",
+      "artifact_source": "sites/mcp.arif-fazil.com/proof",
+      "deployable": false
+    },
+    {
+      "host": "forge.arif-fazil.com",
+      "role": "EXECUTION",
+      "kind": "runtime-owned-gateway",
+      "deployable": false
+    }
+  ],
+  "redirects": [
+    {
+      "host": "www.arif-fazil.com",
+      "target": "https://arif-fazil.com"
+    },
+    {
+      "host": "wiki.arif-fazil.com",
+      "target": "https://arifos.arif-fazil.com/wiki/",
+      "content_source": "content/wiki"
+    }
+  ],
+  "retired": [
+    {
+      "host": "arifosmcp.arif-fazil.com",
+      "reason": "No DNS; mcp.arif-fazil.com is canonical"
+    },
+    {
+      "host": "makcikgpt.arif-fazil.com",
+      "reason": "Content merged under arif-fazil.com/wealth/makcikgpt"
+    },
+    {
+      "host": "apex.arif-fazil.com",
+      "reason": "APEX runtime decommissioned; public route retirement still requires Caddy approval"
+    }
+  ]
+}

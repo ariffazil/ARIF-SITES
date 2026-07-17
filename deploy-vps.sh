@@ -1,83 +1,126 @@
-#!/bin/bash
-# arif-fazil.com Constellation — VPS Deployment Script
-# Automates build, sync, and canonicalization
-# Caddy web root: /var/www/html/<site> (NOT /var/www/<domain>)
+#!/usr/bin/env bash
+# Canonical static-surface deployer for the arifOS federation.
+# Domain inventory: config/sites.json. Caddy/DNS changes are deliberately out of scope.
 
-set -e
+set -euo pipefail
 
-SITES_ROOT="/root/ARIF-SITES/sites"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REGISTRY="$REPO_ROOT/config/sites.json"
 HTML_ROOT="/var/www/html"
-
-echo "Starting VPS Deployment..."
-
-# 1. Build React Site (arif-fazil.com — Ψ SOUL)
-echo "[1/6] Building arif-fazil.com (React/Vite)..."
-cd $SITES_ROOT/arif-fazil.com
-npm run build
-
-# 1b. Pre-render MakcikGPT articles for LLM/SEO extraction (SSR via Puppeteer)
-echo "[1.5/6] Pre-rendering MakcikGPT articles (JSON-LD + semantic HTML)..."
-node /tmp/prerender-articles.cjs 2>/dev/null || echo "  ⚠ Pre-render skipped (Puppeteer not available)"
-
-# 2. Sync Shared Design System + WebMCP (served via /_shared/* on all domains)
-echo "[2/5] Syncing shared assets..."
-mkdir -p $HTML_ROOT/_shared/design-system $HTML_ROOT/_shared/webmcp
-rsync -avz --delete $SITES_ROOT/shared/design-system/ $HTML_ROOT/_shared/design-system/
-rsync -avz --delete $SITES_ROOT/shared/webmcp/ $HTML_ROOT/_shared/webmcp/
-rsync -avz $SITES_ROOT/shared/observatory.js $HTML_ROOT/_shared/observatory.js
-
-# 3. Sync sites to Caddy-served directories
-echo "[3/5] Syncing sites..."
-
-# arif-fazil.com (Ψ SOUL) — built React app
-rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $HTML_ROOT/arif/
-
-# Agentic Web Optimization: copy raw markdown for bot bypass (survives rsync --delete)
-echo "  ⚡ Copying MakcikGPT markdown for AI bot bypass..."
-mkdir -p $HTML_ROOT/arif/wealth/makcikgpt/
-cp $SITES_ROOT/arif-fazil.com/public/makcikgpt-md/*.md $HTML_ROOT/arif/wealth/makcikgpt/ 2>/dev/null || true
-
-rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
-rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
-
-# /000/ serves static Genesis page, do not overwrite with root index.html
-
-# arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
-rsync -avz --delete $SITES_ROOT/arifos.arif-fazil.com/ $HTML_ROOT/arifos/
-
-# Generate and install the signed Observatory snapshot after rsync --delete.
-# The emitter is runtime-owned because the signing key must never enter this repo.
-echo "  ⚡ Generating signed Observatory snapshot..."
 OBSERVATORY_RUNTIME="/root/.arifos/observatory"
-python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"
-install -d -m 0755 "$HTML_ROOT/arifos/.well-known"
-install -m 0644 "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" \
-  "$HTML_ROOT/arifos/.well-known/observatory-snapshot-latest.json"
-install -m 0644 "$OBSERVATORY_RUNTIME/did.json" \
-  "$HTML_ROOT/arifos/.well-known/did-arifos-observatory.json"
-install -m 0644 "$OBSERVATORY_RUNTIME/keys/observatory_signing_key.pub.pem" \
-  "$HTML_ROOT/arifos/.well-known/observatory_signing_key.pub.pem"
+ONLY_SITE=""
+RELOAD_CADDY=false
 
-# aaa.arif-fazil.com (Δ BODY) — built React cockpit
-rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $HTML_ROOT/aaa/
+usage() {
+  echo "Usage: $0 [--site HOST] [--reload-caddy]" >&2
+}
 
-# Other sites
-rsync -avz --delete $SITES_ROOT/geox.arif-fazil.com/   $HTML_ROOT/geox/     2>/dev/null || true
-rsync -avz --delete $SITES_ROOT/wealth.arif-fazil.com/ $HTML_ROOT/wealth/   2>/dev/null || true
-rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
-rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
+while (($#)); do
+  case "$1" in
+    --site)
+      [[ $# -ge 2 ]] || { usage; exit 2; }
+      ONLY_SITE="$2"
+      shift 2
+      ;;
+    --reload-caddy)
+      RELOAD_CADDY=true
+      shift
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage
+      exit 2
+      ;;
+  esac
+done
 
-# 4. Sync runtime state (seal chain heartbeat for Δ BODY clock)
-echo "[3.6/5] Syncing seal chain head..."
-mkdir -p $HTML_ROOT/aaa/_state
-cp /root/VAULT999/seal_chain_head.json $HTML_ROOT/aaa/_state/seal_chain_head.json 2>/dev/null || true
+[[ -f "$REGISTRY" ]] || { echo "Missing registry: $REGISTRY" >&2; exit 1; }
 
-# 5. Permissions
-echo "[4/5] Setting permissions..."
-chown -R www-data:www-data $HTML_ROOT
+mapfile -t SITE_ROWS < <(
+  python3 - "$REGISTRY" "$ONLY_SITE" <<'PY'
+import json
+import sys
 
-# 5. Reload Caddy
-echo "[5/5] Reloading Caddy..."
-caddy reload --config /etc/caddy/Caddyfile
+registry, selected = sys.argv[1:]
+with open(registry, encoding="utf-8") as handle:
+    data = json.load(handle)
 
-echo "DEPLOYMENT COMPLETE. Constellation is Live."
+rows = [site for site in data["surfaces"] if site.get("deployable")]
+if selected:
+    rows = [site for site in rows if site["host"] == selected]
+    if not rows:
+        raise SystemExit(f"Unknown or non-deployable site: {selected}")
+
+for site in rows:
+    print("\t".join([
+        site["host"], site["source"], site["webroot"], site.get("build", "")
+    ]))
+PY
+)
+
+echo "[sites] Canonical registry: $REGISTRY"
+
+# One global asset tree serves every hostname through Caddy's /_shared/* route.
+install -d -m 0755 "$HTML_ROOT/_shared"
+rsync -a --delete "$REPO_ROOT/sites/shared/" "$HTML_ROOT/_shared/"
+
+for row in "${SITE_ROWS[@]}"; do
+  IFS=$'\t' read -r host source_rel webroot build_cmd <<<"$row"
+  source_dir="$REPO_ROOT/$source_rel"
+  deploy_dir="$source_dir"
+
+  [[ -d "$source_dir" ]] || { echo "Missing source for $host: $source_dir" >&2; exit 1; }
+  if [[ -n "$build_cmd" ]]; then
+    echo "[sites] Building $host"
+    (cd "$source_dir" && npm ci --quiet && npm run build)
+    deploy_dir="$source_dir/dist"
+  fi
+
+  echo "[sites] Syncing $host -> $webroot"
+  install -d -m 0755 "$webroot"
+  rsync -a --delete "$deploy_dir/" "$webroot/"
+
+  if [[ "$host" == "arif-fazil.com" ]]; then
+    # Caddy serves these files directly to AI crawlers at /wealth/makcikgpt/*.
+    install -d -m 0755 "$webroot/wealth/makcikgpt"
+    install -m 0644 "$source_dir"/public/makcikgpt-md/*.md "$webroot/wealth/makcikgpt/"
+  fi
+
+  if [[ "$host" == "arifos.arif-fazil.com" ]]; then
+    python3 "$OBSERVATORY_RUNTIME/observatory_emit.py"
+    install -d -m 0755 "$webroot/.well-known"
+    install -m 0644 "$OBSERVATORY_RUNTIME/snapshots/snapshot_latest.json" \
+      "$webroot/.well-known/observatory-snapshot-latest.json"
+    install -m 0644 "$OBSERVATORY_RUNTIME/did.json" \
+      "$webroot/.well-known/did-arifos-observatory.json"
+    install -m 0644 "$OBSERVATORY_RUNTIME/keys/observatory_signing_key.pub.pem" \
+      "$webroot/.well-known/observatory_signing_key.pub.pem"
+  fi
+
+  if [[ "$host" == "aaa.arif-fazil.com" && -f /root/VAULT999/seal_chain_head.json ]]; then
+    install -d -m 0755 "$webroot/_state"
+    install -m 0644 /root/VAULT999/seal_chain_head.json "$webroot/_state/seal_chain_head.json"
+  fi
+
+  chown -R www-data:www-data "$webroot"
+done
+
+if $RELOAD_CADDY; then
+  caddy validate --config /etc/caddy/Caddyfile
+  caddy reload --config /etc/caddy/Caddyfile
+else
+  echo "[sites] Caddy unchanged (use --reload-caddy only for an approved routing change)"
+fi
+
+for row in "${SITE_ROWS[@]}"; do
+  IFS=$'\t' read -r host _ <<<"$row"
+  code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 10 "https://$host/")"
+  [[ "$code" == "200" ]] || { echo "Verification failed: $host returned $code" >&2; exit 1; }
+  echo "[sites] $host $code"
+done
+
+echo "[sites] Deployment complete"

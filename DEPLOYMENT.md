@@ -1,3 +1,6 @@
+# ⛔ SUPERSEDED by SITES.md and config/sites.json — 2026-07-17.
+# Historical design only; do not use these commands for production.
+
 # arif-sites — Deployment Doctrine
 **Static-First | Constitutional | Observable**
 
