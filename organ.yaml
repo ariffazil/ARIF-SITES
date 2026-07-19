@@ -1,0 +1,36 @@
+schema_version: 1
+organ: arif-sites
+repo: ariffazil/arif-sites
+role: public_projection
+authority_ceiling: DISPLAY_ONLY
+default_branch: main
+
+interfaces:
+  sites:
+    - arif-fazil.com
+    - arifos.arif-fazil.com
+    - geox.arif-fazil.com
+    - wealth.arif-fazil.com
+    - well.arif-fazil.com
+    - aaa.arif-fazil.com
+
+owned_domains:
+  - public_websites
+  - federation_projection
+  - static_content
+
+forbidden_domains:
+  - constitutional_truth
+  - engineering_execution
+  - vault999_write
+  - capital_allocation
+
+build:
+  runtime: node-22
+  install: npm ci
+  command: npm run build
+  test: npm run build
+  artifact: dist/
+
+rollback:
+  strategy: previous_verified_digest

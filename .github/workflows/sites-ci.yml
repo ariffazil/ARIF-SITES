@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  merge_group:
   workflow_dispatch:
 
 permissions:
@@ -27,6 +28,19 @@ jobs:
           grep -q "role: PUBLIC_SURFACE" FEDERATION.md
           grep -q "layer: L4" FEDERATION.md
           echo "✅ arif-sites FEDERATION.md valid — L4 PUBLIC"
+      - name: Validate organ.yaml
+        run: |
+          if [ -f organ.yaml ]; then
+            pip install pyyaml 2>/dev/null
+            python3 -c "
+            import yaml, sys
+            with open('organ.yaml') as f:
+                doc = yaml.safe_load(f)
+            assert doc['authority_ceiling'] == 'DISPLAY_ONLY', 'arif-sites must be DISPLAY_ONLY'
+            assert 'constitutional_truth' in doc.get('forbidden_domains', []), 'Must forbid constitutional_truth'
+            print('✅ organ.yaml valid — DISPLAY_ONLY')
+            "
+          fi
 
   build:
     name: "🏗️ Build"
