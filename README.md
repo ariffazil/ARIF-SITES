@@ -1,11 +1,12 @@
-﻿<!-- SOT-MANIFEST
+<!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-07-10
-valid_from: 2026-07-01
-valid_until: 2026-07-31
+last_verified: 2026-07-19
+valid_from: 2026-07-19
+valid_until: 2026-08-19
 confidence: high
 scope: /root/arif-sites
 epistemic_status: CLAIM
+truth_rule: live git push + Cloudflare deploy beat any static count in prose
 -->
 
 # arif-sites — Static Surfaces & Domain Hosts
@@ -44,7 +45,7 @@ cd sites/arif-fazil.com && npm install && npm run build
 ```
 arif-sites/
 ├── sites/                    # Static frontends (hostname-aligned)
-│   ├── arif-fazil.com/       # React 19 + Vite (builds to dist/)
+│   ├── arif-fazil.com/       # React 19 + Vite 8 (builds to dist/)
 │   ├── aaa.arif-fazil.com/   # Static HTML
 │   ├── arifos.arif-fazil.com/ # Static docs
 │   ├── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
@@ -100,8 +101,9 @@ scripts/deploy-site.sh <site-dir>
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | Human Readiness | 18083 |
 | **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | Public Surfaces | 443 |
 
-> **Constitutional authority:** F1-F13 floors, 888_JUDGE, and VAULT999 live in `ariffazil/arifos`.  
-> **Live federation status:** See `ariffazil/arifos/FEDERATION_STATUS.md`.
+> **SOT:** 2026-07-19 — live surfaces match README claims
+> **F13 authority:** F1-F13 floors, 888_JUDGE, and VAULT999 in `ariffazil/arifos`.
+
 ## 📄 Contributing
 
 This repository operates under the arifOS Federation constitution (F1–F13).  
