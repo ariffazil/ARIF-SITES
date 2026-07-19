@@ -1,0 +1,87 @@
+import type { ArticleContent } from './types';
+
+const content: ArticleContent = {
+  slug: 'searah-bernama-lewat',
+  html: `<div class="cover">
+<p class="cover-emoji">📰 🔥 ⚖️</p>
+<p class="cover-kicker">Cerita untuk Jiran-Jiran</p>
+<h1 class="cover-title">Bernama Baru Sampai.<br>Makcik Dah Lama Tanya.</h1>
+<p class="cover-subtitle">40 hari lepas Makcik cerita SEARAH. Semalam Bernama copy press release. Makcik tanya: ini ke "berita"?</p>
+<div class="cover-byline">
+<strong>Oleh Arif Fazil</strong>, anak Malaysia yang kerja kat PETRONAS dah lama<br>
+999 Meterai · Versi 1.0 Bahasa Makcik · 18 Julai 2026
+</div>
+</div>
+
+<h1>Bernama Baru Sampai. Makcik Dah Lama Tanya.</h1>
+<p><strong>40 hari lepas Makcik cerita SEARAH. Semalam Bernama copy press release. Makcik tanya: ini ke "berita"?</strong></p>
+<p><strong>999 Meterai | Versi 1.0 Bahasa Makcik | 18 Julai 2026</strong></p>
+
+<hr />
+
+<h2>Hai Makcik! Bernama Baru Sampai.</h2>
+
+<p>Semalam, 17 Julai 2026, Bernama siar berita pasal SEARAH — syarikat gas yang Makcik dah cerita <strong>40 hari lepas</strong>, pada 7 Jun 2026.</p>
+
+<p>Makcik tanya: <strong>ini ke "berita"?</strong></p>
+
+<p>Sebab bila Makcik baca apa yang Bernama tulis, nampak sangat <strong>copy-paste press release</strong>.</p>
+
+<h2>APA YANG BERNAMA TULIS (DAN TAK TULIS)</h2>
+
+<p>Bernama tulis:</p>
+<ul>
+<li>SEARAH dah mula operasi 1 Julai 2026</li>
+<li>Ini kerjasama PETRONAS (50%) dengan Eni (50%)</li>
+<li>Didaftarkan di London</li>
+<li>Fokus kepada LNG dan gas Sarawak</li>
+</ul>
+
+<p>Tapi Bernama <strong>TAK tulis</strong>:</p>
+<ul>
+<li>Kenapa syarikat gas Sarawak didaftar di London, bukan Malaysia?</li>
+<li>Siapa pengarah Itali yang duduk dalam lembaga SEARAH?</li>
+<li>Berapa nilai sebenar deal ni — USD15 bilion?</li>
+<li>Kenapa PETROS tak masuk bilik masa deal dirunding?</li>
+<li>Berapa kerja orang Malaysia yang akan pindah ke London?</li>
+<li>Modal USD2 — ya, dua dolar — untuk syarikat yang urus aset bilion ringgit?</li>
+</ul>
+
+<h2>BEZA MAKCIK DENGAN BERNAMA</h2>
+
+<p>Makcik tulis pada 7 Jun 2026 — artikel pertama pasal SEARAH. Makcik tanya soalan susah.</p>
+
+<p>Bernama tulis pada 17 Julai 2026 — 40 hari kemudian. Bernama tak tanya apa-apa.</p>
+
+<p><strong>Bezanya:</strong></p>
+<ul>
+<li>Makcik: kewartawanan</li>
+<li>Bernama: press release</li>
+</ul>
+
+<p>Makcik tanya: <strong>bila agensi berita nasional jadi mesin fotostat?</strong></p>
+
+<p>Ini bukan berita. Ini propaganda.</p>
+
+<h2>PASAL APA MAKCIK MARAH?</h2>
+
+<p>Sebab Bernama guna duit rakyat. Tapi Bernama tak tanya soalan yang rakyat nak tahu.</p>
+
+<p>SEARAH bukan cerita kecil. Ini deal gas terbesar dalam sejarah Malaysia. USD15 bilion. Melibatkan satu pertiga daripada rizab gas negara. Dan rakyat Malaysia dapat tahu dari <strong>Makcik pasar malam</strong>, bukan dari agensi berita nasional.</p>
+
+<p>Itu masalah.</p>
+
+<h2>PENUTUP</h2>
+
+<p>Makcik tak nak Bernama jadi macam Makcik. Makcik nak Bernama jadi Bernama.</p>
+
+<p>Tapi kalau Bernama nak jadi press release, Makcik akan terus tulis.</p>
+
+<p>Sebab ada beza antara <strong>sampai</strong> dan <strong>sampai hati</strong>.</p>
+
+<p>Makcik dah lama tanya. Siapa nak jawab?</p>
+
+<p class="sig">999 ⚖️</p>`
+};
+
+export default content;
