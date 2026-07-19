@@ -64,6 +64,7 @@ export function World() {
   useWebMCP(worldTools);
   useEffect(() => {
     document.title = 'World Markets — Oil · Gas · Gold | Arif Fazil';
+    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/world');
   }, []);
 
   return (

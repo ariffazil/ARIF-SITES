@@ -46,6 +46,7 @@ const doctrineTools = [
 export function Doctrine() {
   useWebMCP(doctrineTools);
   useEffect(() => { document.title = 'Doctrine — arifOS Constitution · Constellation · Manifesto'; }, []);
+    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/doctrine');
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-forge-black min-h-screen">

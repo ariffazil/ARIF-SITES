@@ -5,128 +5,99 @@
     <loc>https://arif-fazil.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/discoveries/</loc>
+    <loc>https://arif-fazil.com/earth</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/essays/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/</loc>
-    <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
-
-  <!-- MakcikGPT — Civic Intelligence -->
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/</loc>
+    <loc>https://arif-fazil.com/economics</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/world</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/writing</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/petronas-dna</loc>
+    <loc>https://arif-fazil.com/doctrine</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
+  <!-- MakcikGPT Articles -->
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/searah-followup</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/cerita-makcik</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-06-07</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-06-07</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/iran-hormuz</loc>
+    <loc>https://arif-fazil.com/economics/makcikgpt/petronas-visi-misi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-06-30</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-
-  <!-- System Surface -->
-  <url>
-    <loc>https://arif-fazil.com/constellation/</loc>
+    <loc>https://arif-fazil.com/economics/makcikgpt/petronas-atm-kerajaan</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/canon/</loc>
+    <loc>https://arif-fazil.com/economics/makcikgpt/petronas-dna</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
-
-  <!-- Verification Architecture -->
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/sam-altman-elon-musk-anwar-akal</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/searah-followup</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/cerita-makcik</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/siasatan-harakah</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/iran-hormuz</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/ilmu-bbb</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/economics/makcikgpt/ytl-monopoli</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Machine Surface -->
   <url>
     <loc>https://arif-fazil.com/000/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/999/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
-
-  <!-- Agent Discovery -->
+  <!-- LLM Discovery -->
   <url>
     <loc>https://arif-fazil.com/llms.txt</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/llms.json</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/llms-full.txt</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
   </url>
 </urlset>

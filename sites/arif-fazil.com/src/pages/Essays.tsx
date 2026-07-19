@@ -31,6 +31,7 @@ export function Essays() {
   useWebMCP(essaysTools);
   useEffect(() => {
     document.title = 'Essays — Arif Fazil | arifOS';
+    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/writing');
   }, []);
 
   // Group by domain

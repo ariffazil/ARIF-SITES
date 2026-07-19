@@ -22,6 +22,7 @@ export function Discoveries() {
   useWebMCP(discoveriesTools);
   useEffect(() => {
     document.title = 'Subsurface Discoveries — Arif Fazil | arifOS';
+    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/earth');
   }, []);
   return (
     <motion.div 

@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
 import { motion } from "framer-motion";
 import { useWebMCP } from '@/hooks/useWebMCP';
 
@@ -183,6 +184,7 @@ export function Wealth() {
   useWebMCP(wealthTools);
 
   useEffect(() => {
+    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
     async function load() {
       try {
         const bRes = await fetch("https://mcp.arif-fazil.com/briefing");
@@ -221,6 +223,7 @@ export function Wealth() {
 
   // Hydrate constitutional acknowledgment from localStorage.
   useEffect(() => {
+    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
     if (!briefing) return;
     try {
       const dates: string[] = JSON.parse(localStorage.getItem("arifos_wealth_ack") || "[]");
