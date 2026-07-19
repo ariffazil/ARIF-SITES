@@ -6,6 +6,7 @@ import iranHormuz from './iran-hormuz';
 import ilmuBbb from './ilmu-bbb';
 import ytlMonopoli from './ytl-monopoli';
 import searahFollowup from './searah-followup';
+import searahBernamaLewat from './searah-bernama-lewat';
 import samAltmanElonMuskAnwarAkal from './sam-altman-elon-musk-anwar-akal';
 import petronasDna from './petronas-dna';
 import petronasHiveSale from './petronas-hive-sale';
@@ -16,6 +17,7 @@ import petronasVisiMisi from './petronas-visi-misi';
 
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  searahBernamaLewat,
   petronasVisiMisi,
   petronasAtmKerajaan,
   aiJohorRakyat2026,
@@ -33,6 +35,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'searah-bernama-lewat',
+    title: 'Bernama Baru Sampai. Makcik Dah Lama Tanya.',
+    subtitle: '40 hari lepas Makcik cerita SEARAH. Semalam Bernama copy press release. Makcik tanya: ini ke "berita"?',
+    date: '2026-07-18',
+    domain: 'MAKCIKGPT × MEDIA',
+    language: 'ms',
+    excerpt: 'Bernama siar cerita SEARAH pada 17 Julai. Makcik tulis cerita sama pada 7 Jun — 40 hari lebih awal. Bezanya: Bernama copy press release, Makcik tanya soalan. USD2 modal, USD15B deal, pengarah Itali, PETROS tak masuk bilik — semua Bernama tak tanya.',
+    tags: ['searah', 'bernama', 'media', 'petronas', 'gas-sarawak', 'press-release', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'petronas-visi-misi',
     title: 'Ada Apa Pada Visi dan Misi Hang?',
