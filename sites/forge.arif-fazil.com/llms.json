@@ -1,0 +1,8 @@
+{
+  "name": "A-FORGE",
+  "description": "Governed execution shell for arifOS federation",
+  "url": "https://forge.arif-fazil.com",
+  "tools": ["forge_shell", "forge_docker", "forge_filesystem", "forge_vault", "forge_probe", "forge_judge_proxy", "forge_execute", "forge_health_check"],
+  "federation": "arifOS",
+  "doctrine": "DITEMPA BUKAN DIBERI"
+}

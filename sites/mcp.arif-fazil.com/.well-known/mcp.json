@@ -1,0 +1,14 @@
+{
+  "server": "gateway",
+  "version": "1.0.0",
+  "endpoint": "https://mcp.arif-fazil.com/mcp",
+  "protocol": "streamable-http",
+  "routing": {
+    "arifos": "https://arifos.arif-fazil.com/mcp",
+    "aforge": "https://forge.arif-fazil.com/mcp",
+    "geox": "https://geox.arif-fazil.com/mcp",
+    "wealth": "https://wealth.arif-fazil.com/mcp",
+    "well": "https://well.arif-fazil.com/mcp",
+    "aaa": "https://aaa.arif-fazil.com/mcp"
+  }
+}

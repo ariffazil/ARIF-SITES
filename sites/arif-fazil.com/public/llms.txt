@@ -20,7 +20,7 @@ The arifOS federation runs five domains under one sovereign:
 - **AAA** — Operations surface and agent gateway (SOUL)
 - **GEOX** — Earth intelligence / geoscience tools (BODY)
 - **WEALTH** — Capital intelligence / NPV / EMV engine (CAPITAL)
-- **WELL** — Human and machine readiness surface (planned)
+- **WELL** — Human and machine readiness surface
 
 ## Constitutional Floors (F1-F13)
 - F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent
@@ -45,35 +45,37 @@ All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 **High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
 
 ### Latest articles (July 2026)
-- [Ada Apa Pada Visi dan Misi Hang?](https://arif-fazil.com/wealth/makcikgpt/petronas-visi-misi) — 50-year evolution of PETRONAS vision/mission statements (1974-2025). Maps 7 vision eras from "fight like bulldogs" to "progressive energy partner." Contrasts 1988 Shared Values (Loyalty, Integrity, Professionalism, Cohesiveness) with 2020 Statement of Purpose. Demonstrates inverse relationship between vision complexity and accountability. Anti-Calhoun "beautiful ones" analysis.
-- [PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?](https://arif-fazil.com/wealth/makcikgpt/petronas-atm-kerajaan) — Fiscal analysis of PETRONAS dividend extraction (FY2022 PAT RM101.6bn, dividend RM50bn = 49% payout). Exposes Gentari opacity (never disclosed standalone PAT since 2022 launch), fuel subsidy distortion (RM38bn/year vs RM20bn dividend), and accountability vacuum (no AGM, no analyst call, no public scrutiny).
+- [Ada Apa Pada Visi dan Misi Hang?](https://arif-fazil.com/economics/makcikgpt/petronas-visi-misi) — 50-year evolution of PETRONAS vision/mission statements (1974-2025).
+- [PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?](https://arif-fazil.com/economics/makcikgpt/petronas-atm-kerajaan) — Fiscal analysis of PETRONAS dividend extraction.
 
 ### Earlier articles
-- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/wealth/makcikgpt/petronas-dna) — Contrasts PETRONAS institutional DNA (1988–2010: integrity, teamwork, "fight like bulldogs") against current leadership reality (LinkedIn disclaimers, rightsizing, London JV with Eni). Includes real CLIP Shared Values from CoBE 2022.
-- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal) — Questions whether three powerful leaders possess "akal budi" (wisdom) or merely power, slogans, and applause.
-- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/wealth/makcikgpt/searah-followup) — SEARAH (50% PETRONAS + 50% Eni Italy) starts operations 1 Julai 2026. Court hears former PETRONAS manager leaked upstream data to PETROS.
-- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/wealth/makcikgpt/cerita-makcik) — Original SEARAH exposé: USD 2 shell company in London, 19 oilfields, no BIT protection, PETROS excluded.
-- [Persoalan RM70 Bilion](https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah) — Deeper investigation into SEARAH's RM70 billion deal structure, USD 6bn JP Morgan revolver, VSS/MSS of ~5,000 workers.
-- [Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis](https://arif-fazil.com/wealth/makcikgpt/iran-hormuz) — Hormuz shipping disruption, PETRONAS repeated rightsizing, and Malaysia's 600,000 barrel/day import gap.
-- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb) — Red-team audit of YTL's ILMU AI platform: 108 API calls, 3.45/10 score, MalayMMLU self-grading.
-- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli) — YTL's vertical monopoly: electricity, water, telco, land, AI. MACC investigating 1BestariNet RM2.7B.
+- [PETRONAS DNA — Dulu Bulldog, Sekarang Anjing](https://arif-fazil.com/economics/makcikgpt/petronas-dna)
+- [Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?](https://arif-fazil.com/economics/makcikgpt/sam-altman-elon-musk-anwar-akal)
+- [SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah](https://arif-fazil.com/economics/makcikgpt/searah-followup)
+- [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/economics/makcikgpt/cerita-makcik)
+- [Persoalan RM70 Bilion](https://arif-fazil.com/economics/makcikgpt/siasatan-harakah)
+- [Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis](https://arif-fazil.com/economics/makcikgpt/iran-hormuz)
+- [ILMU "Sovereign AI" Konon — Tapi Bila DiAudit, Menangis](https://arif-fazil.com/economics/makcikgpt/ilmu-bbb)
+- [Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI](https://arif-fazil.com/economics/makcikgpt/ytl-monopoli)
 
 ## Key Pages
 - `/` — Human-first professional homepage
+- `/earth` — Subsurface discoveries and well portfolio (redirect from `/discoveries`)
+- `/economics` — Malaysia briefing + MakcikGPT civic intelligence (redirect from `/wealth`)
+- `/world` — Commodity dashboards (oil / gas / gold)
+- `/writing` — Narrative essays by Arif (redirect from `/essays`)
+- `/doctrine` — Constitutional floors, federation topology, manifesto (merged: canon + constellation)
 - `/000/` — Genesis archive, wisdom canon, origin context for agents
 - `/999/` — Proof and verification chamber
-- `/wealth/` — WEALTH daily briefing surface (Bursa, Ringgit, oil, macro)
-- `/wealth/makcikgpt/` — MakcikGPT civic intelligence articles (BM)
-- `/constellation/` — Federation map and system overview
-- `/canon/` — Constitutional canon, written law of arifOS
-- `/discoveries/` — Well portfolio and exploration record
+- `/oil/` — Brent crude cognitive dashboard
+- `/gas/` — Natural gas dashboard
+- `/gold/` — Gold trading synthesis
 
 ## arifOS MCP Endpoint
-- **URL**: `https://arifos.arif-fazil.com`
-- **MCP surface**: `https://mcp.arif-fazil.com/mcp`
-- **Protocol**: Model Context Protocol (MCP)
-- **Transport**: Streamable HTTP
-- **Tools**: 13 constitutional tools
+- **Public MCP**: `https://mcp.arif-fazil.com/mcp` (streamable HTTP)
+- **Health**: `https://arifos.arif-fazil.com/health`
+- **Tools**: 8 canonical + diagnostics
+- **Protocol**: MCP 2025-11-25
 - **Constitution**: `https://arifos.arif-fazil.com/constitution.json`
 
 ## Machine-Readable Discovery
@@ -81,8 +83,37 @@ All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 - `/.well-known/did.json` — W3C DID document (did:web:arif-fazil.com)
 - `/.well-known/arifos-federation.json` — Federation manifest
 - `/soul.json` — Sovereign identity and philosophy anchor
-- `/llms.json` — Structured site overview (this file, JSON form)
+- `/llms.json` — Structured site overview (JSON form)
 - `/llms-full.txt` — Full-text content dump for LLM ingestion
+
+## MCP Registry Listings
+arifOS is featured on the following MCP registries:
+- **Glama (arifOS server)**: https://glama.ai/mcp/servers/ariffazil/arifos
+- **Glama (arifosmcp server)**: https://glama.ai/mcp/servers/ariffazil/arifosmcp
+- **PyPI package**: https://pypi.org/project/arifos/
+
+## Source Code
+- **arifOS kernel**: https://github.com/ariffazil/arifOS
+- **A-FORGE executor**: https://github.com/ariffazil/A-FORGE
+- **AAA cockpit**: https://github.com/ariffazil/AAA
+- **GEOX earth**: https://github.com/ariffazil/geox
+- **WEALTH capital**: https://github.com/ariffazil/WEALTH
+- **WELL vitality**: https://github.com/ariffazil/WELL
+
+## All Arif Links
+- **GitHub**: https://github.com/ariffazil
+- **Telegram**: https://t.me/ariffazil
+- **Email**: arifbfazil@gmail.com
+- **Personal site**: https://arif-fazil.com
+- **Federation observatory**: https://arifos.arif-fazil.com
+- **MCP gateway**: https://mcp.arif-fazil.com
+- **AAA cockpit**: https://aaa.arif-fazil.com
+- **GEOX**: https://geox.arif-fazil.com
+- **WEALTH**: https://wealth.arif-fazil.com
+- **WELL**: https://well.arif-fazil.com
+- **A-FORGE**: https://forge.arif-fazil.com
+- **Wiki**: https://wiki.arif-fazil.com
+- **LinkedIn**: (coming soon)
 
 ## Site Stack
 - React 19 + Vite + Tailwind (arif-fazil.com)

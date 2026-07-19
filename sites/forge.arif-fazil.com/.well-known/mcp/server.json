@@ -1,0 +1,12 @@
+{
+  "name": "A-FORGE MCP",
+  "version": "2.0.0",
+  "endpoint": "https://forge.arif-fazil.com/mcp",
+  "protocol": "streamable-http",
+  "tools_count": 78,
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": true
+  }
+}

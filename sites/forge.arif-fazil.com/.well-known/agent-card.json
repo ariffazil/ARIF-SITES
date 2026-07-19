@@ -1,0 +1,19 @@
+{
+  "name": "A-FORGE (000Ω)",
+  "description": "Execution shell — build, deploy, audit. Constitutionally governed actuator for the arifOS federation.",
+  "url": "https://forge.arif-fazil.com",
+  "homepage": "https://forge.arif-fazil.com",
+  "author": {
+    "name": "Muhammad Arif bin Fazil",
+    "email": "arifbfazil@gmail.com"
+  },
+  "capabilities": {
+    "tools": ["forge_shell", "forge_docker", "forge_filesystem", "forge_vault", "forge_probe", "forge_judge_proxy", "forge_execute", "forge_seal"],
+    "protocols": ["MCP streamable-http"],
+    "governance": ["F1 AMANAH", "F2 TRUTH", "F8 LAW", "F11 AUDIT", "F13 SOVEREIGN"]
+  },
+  "identity": {
+    "did": "did:web:forge.arif-fazil.com",
+    "federation": "arifOS"
+  }
+}

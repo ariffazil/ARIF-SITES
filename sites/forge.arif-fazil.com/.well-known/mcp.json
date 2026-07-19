@@ -1,0 +1,9 @@
+{
+  "server": "aforge",
+  "version": "2.0.0",
+  "endpoint": "https://forge.arif-fazil.com/mcp",
+  "protocol": "streamable-http",
+  "tools": ["forge_shell", "forge_docker", "forge_filesystem", "forge_vault", "forge_probe", "forge_judge_proxy", "forge_health_check", "forge_scan", "forge_witness", "forge_evaluate", "forge_predict"],
+  "authentication": "oauth2",
+  "authorization_server": "https://mcp.arif-fazil.com/.well-known/oauth-authorization-server"
+}

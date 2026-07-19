@@ -1,0 +1,19 @@
+{
+  "name": "arifOS MCP Gateway",
+  "description": "Connection gate to arifOS federation kernel",
+  "url": "https://mcp.arif-fazil.com",
+  "endpoints": {
+    "mcp": "https://mcp.arif-fazil.com/mcp",
+    "health": "https://mcp.arif-fazil.com/health"
+  },
+  "routing": {
+    "arifos": "https://arifos.arif-fazil.com/mcp",
+    "aaa": "https://aaa.arif-fazil.com/a2a",
+    "geox": "https://geox.arif-fazil.com/mcp",
+    "wealth": "https://wealth.arif-fazil.com/mcp",
+    "well": "https://well.arif-fazil.com/mcp",
+    "aforge": "https://forge.arif-fazil.com/mcp"
+  },
+  "federation": "arifOS",
+  "doctrine": "DITEMPA BUKAN DIBERI"
+}

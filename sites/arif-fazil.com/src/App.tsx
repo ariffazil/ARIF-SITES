@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import { ConstellationNav } from '@/components/ConstellationNav';
 import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
@@ -11,10 +11,9 @@ import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGPT } from '@/pages/MakcikGPT';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
 import { Discoveries } from '@/pages/Discoveries';
-import { Constellation } from '@/pages/Constellation';
-import { Canon } from '@/pages/Canon';
 import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
+import { Doctrine } from '@/pages/Doctrine';
 
 function App() {
   return (
@@ -40,26 +39,30 @@ function App() {
             <Route path="/economics/makcikgpt/index" element={<MakcikGPT />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptArticle />} />
 
-            {/* World — commodity dashboards (oil / gas / gold static HTML in public/) */}
+            {/* World — commodity dashboards */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
 
-            {/* Writing — essays + canon */}
+            {/* Writing — narrative essays */}
             <Route path="/writing" element={<Essays />} />
             <Route path="/writing/" element={<Essays />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
-            {/* Machine-facing — genesis, proof, canon, constellation */}
+            {/* Doctrine — constitution + constellation + manifesto (merged) */}
+            <Route path="/doctrine" element={<Doctrine />} />
+            <Route path="/doctrine/" element={<Doctrine />} />
+
+            {/* Machine-facing — genesis, proof */}
             <Route path="/000" element={<Genesis />} />
             <Route path="/000/" element={<Genesis />} />
             <Route path="/genesis" element={<Genesis />} />
             <Route path="/genesis/" element={<Genesis />} />
-            <Route path="/canon" element={<Canon />} />
-            <Route path="/canon/" element={<Canon />} />
-            <Route path="/constellation" element={<Constellation />} />
-            <Route path="/constellation/" element={<Constellation />} />
 
             {/* Backward-compat redirects — zero broken links */}
+            <Route path="/canon" element={<Navigate to="/doctrine" replace />} />
+            <Route path="/canon/" element={<Navigate to="/doctrine" replace />} />
+            <Route path="/constellation" element={<Navigate to="/doctrine" replace />} />
+            <Route path="/constellation/" element={<Navigate to="/doctrine" replace />} />
             <Route path="/discoveries" element={<Navigate to="/earth" replace />} />
             <Route path="/discoveries/" element={<Navigate to="/earth" replace />} />
             <Route path="/wealth" element={<Navigate to="/economics" replace />} />
@@ -80,8 +83,6 @@ function App() {
   );
 }
 
-// Redirect old /essays/:slug → /writing/:slug preserving the slug
-import { useParams } from 'react-router-dom';
 function EssayRedirect() {
   const { slug } = useParams();
   return <Navigate to={`/writing/${slug ?? ''}`} replace />;

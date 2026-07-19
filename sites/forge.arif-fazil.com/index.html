@@ -2,9 +2,12 @@
 <html lang="en" data-ring="BODY">
 <head>
   <meta charset="UTF-8">
+<meta name="description" content="A-FORGE — constitutionally governed execution for the arifOS federation. Build, deploy, audit. Every action reversible, evidence-labeled, hash-chained to VAULT999." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A-FORGE — Execution Shell | arifOS Federation</title>
-  <link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<meta property="og:image" content="https://a-forge/og-image.jpg" />
+<meta property="og:title" content="A-FORGE — Execution Shell | arifOS Federation" />
+  
   <style>
     body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans); margin: 0; padding: 0; }
     .container { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
@@ -22,10 +25,32 @@
     .tools-list li:last-child { border-bottom: none; }
     .motto { color: var(--text-muted); font-style: italic; font-size: var(--text-sm); margin-top: 3rem; text-align: center; }
   </style>
-  <script src="/_shared/unified-header-loader.js"></script>
+  
+<style>
+  :root{--bg-deep:#0d0c0b;--text-primary:#e6e4e0;--text-secondary:#9b9995;--text-muted:#706e6b;
+  --body-primary:#D4A853;--body-accent:#E3B341;
+  --bg-surface:#141312;--border-subtle:#2a2826;
+  --font-sans:'Inter',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;
+  --text-4xl:2.5rem;--text-xl:1.25rem;--text-lg:1.125rem;--text-sm:0.875rem;--text-xs:0.75rem;
+  --state-operational:#00C853;}
+  body{margin:0;padding:0;background:var(--bg-deep);color:var(--text-primary);font-family:var(--font-sans);}
+  .container{max-width:800px;margin:0 auto;padding:4rem 2rem;}
+  h1{color:var(--body-primary);font-size:var(--text-4xl);margin-bottom:0.5rem;}
+  .subtitle{color:var(--text-secondary);font-size:var(--text-lg);margin-bottom:2rem;}
+  .status{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;}
+  .status h2{color:var(--body-accent);font-size:var(--text-xl);margin-top:0;}
+  .endpoint{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);}
+  .endpoint a{color:#00D4AA;text-decoration:none;}
+  .badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:var(--text-xs);font-weight:600;}
+  .badge-live{background:rgba(0,200,83,0.15);color:var(--state-operational);}
+  .tools-list{list-style:none;padding:0;}
+  .tools-list li{padding:0.4rem 0;border-bottom:1px solid var(--border-subtle);font-size:var(--text-sm);}
+  .tools-list li:last-child{border-bottom:none;}
+  .motto{color:var(--text-muted);font-style:italic;font-size:var(--text-sm);margin-top:3rem;text-align:center;}
+</style>
 </head>
 <body>
-  <script src="/_shared/trinity-nav.js"></script>
+  
   <div class="container">
     <h1>⚒️ A-FORGE</h1>
     <p class="subtitle">Execution Shell — Build, Deploy, Audit</p>

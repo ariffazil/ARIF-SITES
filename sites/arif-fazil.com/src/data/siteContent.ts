@@ -29,23 +29,22 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
-// Primary nav — clean 6-section IA. Human reality only.
-// Earth (subsurface) · Economics (Malaysia briefing) · World (commodities) · Writing · Federation
+// Primary nav — clean IA. Human reality + doctrine.
+// Earth (geoscience) · Economics (Malaysia briefing) · World (commodities) · Writing · Doctrine · Federation
 export const primaryLinks: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Earth', href: '/earth' },
   { label: 'Economics', href: '/economics' },
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
+  { label: 'Doctrine', href: '/doctrine' },
   { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
 ];
 
-// Genesis strip — machine-facing surfaces, shown separately in footer / secondary nav.
+// Genesis strip — machine-facing surfaces.
 export const machineLinks: LinkItem[] = [
   { label: '/000 — genesis', href: '/000/' },
   { label: '/999 — proof', href: '/999/' },
-  { label: '/canon', href: '/canon/' },
-  { label: '/constellation', href: '/constellation/' },
 ];
 
 // Plain — no scores, no stats, no framing
@@ -199,21 +198,29 @@ export const ecosystemLinks: LinkItem[] = [
   { label: 'Economics', href: '/economics' },
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
+  { label: 'Doctrine', href: '/doctrine' },
   { label: '/000 — genesis', href: '/000/' },
   { label: '/999 — proof', href: '/999/' },
-  { label: '/canon', href: '/canon/' },
-  { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
 ];
 
 export const arifosLinks: LinkItem[] = [
-  { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'arifOS — Observatory', href: 'https://arifos.arif-fazil.com', external: true },
   { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
-  { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
-  { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
-  { label: 'Economics Briefing', href: '/economics' },
-  { label: 'MakcikGPT', href: '/economics/makcikgpt/' },
-  { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
-  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
+  { label: 'A-FORGE — Execution', href: 'https://forge.arif-fazil.com', external: true },
+  { label: 'AAA — Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
+  { label: 'GEOX — Earth Intelligence', href: 'https://geox.arif-fazil.com', external: true },
+  { label: 'WEALTH — Capital', href: 'https://wealth.arif-fazil.com', external: true },
+  { label: 'WELL — Vitality', href: 'https://well.arif-fazil.com', external: true },
+  { label: 'Wiki', href: 'https://wiki.arif-fazil.com', external: true },
+];
+
+export const mcpRegistryLinks: LinkItem[] = [
+  { label: 'Glama — arifOS server', href: 'https://glama.ai/mcp/servers/ariffazil/arifos', external: true },
+  { label: 'Glama — arifosmcp server', href: 'https://glama.ai/mcp/servers/ariffazil/arifosmcp', external: true },
+  { label: 'GitHub — ariffazil/arifOS', href: 'https://github.com/ariffazil/arifOS', external: true },
+  { label: 'GitHub — ariffazil/A-FORGE', href: 'https://github.com/ariffazil/A-FORGE', external: true },
+  { label: 'GitHub — ariffazil/AAA', href: 'https://github.com/ariffazil/AAA', external: true },
+  { label: 'PyPI — arifOS package', href: 'https://pypi.org/project/arifos/', external: true },
 ];
 
 export const contactLinks: LinkItem[] = [

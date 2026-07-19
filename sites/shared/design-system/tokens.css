@@ -646,3 +646,30 @@ body {
  * Ditempa Bukan Diberi — Forged, Not Given
  * 
  */
+/* ═══════════════════════════════════════════════════════════════════════
+ * VII. RING VISUAL INDICATOR — visible theming per site role
+ *      Thin colored top border + accent glow on .trinity-nav
+ *      Makes data-ring visible to humans, not just machines
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+/* Base: thin border on body that colors per data-ring */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 3px;
+  background: var(--ring-primary, #333);
+  box-shadow: 0 0 8px var(--ring-glow, transparent);
+}
+
+/* Each ring gets its glow */
+[data-ring="SOUL"]   { --ring-glow: 0 0 12px rgba(139, 26, 26, 0.5); }
+[data-ring="MIND"]   { --ring-glow: 0 0 12px rgba(0, 212, 170, 0.5); }
+[data-ring="BODY"]   { --ring-glow: 0 0 12px rgba(212, 168, 83, 0.5); }
+[data-ring="ORGAN"]  { --ring-glow: 0 0 12px rgba(124, 111, 212, 0.5); }
+
+/* Override trinity-nav background to subtly reflect ring color */
+.trinity-nav { border-top: none !important; }
