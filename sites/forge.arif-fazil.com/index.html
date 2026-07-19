@@ -50,7 +50,24 @@
 </style>
 </head>
 <body>
-  
+  <script src="/_shared/trinity-nav.js"></script>
+  <script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+  <script>
+  (function() {
+    if (typeof arifosWebMCP === 'undefined') return;
+    arifosWebMCP.registerReadonly('get_forge_health', 'Get A-FORGE execution shell health', {}, async function() {
+      try { var r = await fetch('/health'); return await r.json(); }
+      catch(e) { return {status: 'unreachable', error: e.message}; }
+    });
+    arifosWebMCP.registerReadonly('get_forge_tools', 'List A-FORGE MCP tools', {}, async function() {
+      try {
+        var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
+        return await r.json();
+      } catch(e) { return {status: 'unreachable', error: e.message}; }
+    });
+  })();
+  </script>
   <div class="container">
     <h1>⚒️ A-FORGE</h1>
     <p class="subtitle">Execution Shell — Build, Deploy, Audit</p>

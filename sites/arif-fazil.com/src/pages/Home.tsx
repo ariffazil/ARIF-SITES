@@ -152,7 +152,7 @@ export function Home() {
                 MakcikGPT asks. Published directly, no gatekeepers.
               </p>
               <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/wealth/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                <a href="/economics/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
                   Read MakcikGPT →
                 </a>
               </div>
