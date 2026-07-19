@@ -52,6 +52,18 @@
   --body-bg: #1A1612;
   --body-text: #F5F0E8;
 
+  /* ORGAN — Domain organs (GEOX · WEALTH · WELL). Slate-violet base with
+   * per-organ accents. data-ring="ORGAN" + data-organ="geox|wealth|well". ── */
+  --organ-primary: #7C6FD4;      /* Slate-violet — domain evidence */
+  --organ-secondary: #5A4FB0;
+  --organ-accent: #9B8FE8;
+  --organ-bg: #12121A;
+  --organ-text: #ECEAF5;
+  /* Per-organ accents (cascade over --organ-* via [data-organ]) */
+  --geox-accent: #C4791A;         /* Earth amber — GEOX */
+  --wealth-accent: #2EA96A;       /* Capital green — WEALTH */
+  --well-accent: #38BEC9;         /* Vitality cyan — WELL */
+
   /* ─── NEUTRAL PALETTE (F11 — Low Resource, High Clarity) ─────────────── */
   --bg-deep: #0A0A0B;
   --bg-surface: #141416;
@@ -198,6 +210,32 @@
   --color-secondary: var(--body-secondary);
   --color-accent: var(--body-accent);
 }
+
+/* ORGAN ring — domain organs (GEOX · WEALTH · WELL) */
+[data-ring="ORGAN"] {
+  --ring-primary: var(--organ-primary);
+  --ring-secondary: var(--organ-secondary);
+  --ring-accent: var(--organ-accent);
+  --ring-bg: var(--organ-bg);
+  --ring-text: var(--organ-text);
+  --ring-glow: 0 0 24px rgba(124, 111, 212, 0.35);
+  --ring-radius: var(--radius-lg);
+  --ring-font-display: var(--font-sans);
+
+  --color-primary: var(--organ-primary);
+  --color-secondary: var(--organ-secondary);
+  --color-accent: var(--organ-accent);
+}
+/* Per-organ accent override — set data-organ alongside data-ring="ORGAN" */
+[data-organ="geox"]   { --ring-accent: var(--geox-accent);   --color-accent: var(--geox-accent); }
+[data-organ="wealth"] { --ring-accent: var(--wealth-accent); --color-accent: var(--wealth-accent); }
+[data-organ="well"]   { --ring-accent: var(--well-accent);   --color-accent: var(--well-accent); }
+
+/* Organ utility text colors */
+.text-organ  { color: var(--organ-primary); }
+.text-geox   { color: var(--geox-accent); }
+.text-wealth { color: var(--wealth-accent); }
+.text-well   { color: var(--well-accent); }
 
 /* ================================================================================
  * III. BASE STYLES

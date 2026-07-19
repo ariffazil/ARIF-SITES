@@ -111,7 +111,7 @@ export function MakcikGPT() {
           </div>
 
           <div className="mt-12 flex gap-4">
-            <Link to="/wealth/" className="button-forge text-xs py-2">
+            <Link to="/economics" className="button-forge text-xs py-2">
               ← Back to WEALTH
             </Link>
             <a

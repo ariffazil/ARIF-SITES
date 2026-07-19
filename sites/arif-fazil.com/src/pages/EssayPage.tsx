@@ -23,7 +23,7 @@ export function EssayPage() {
         <section className="py-24">
           <div className="site-frame text-center">
             <h1 className="text-4xl font-black uppercase mb-4">Essay Not Found</h1>
-            <Link to="/essays/" className="text-forge-gold hover:underline font-mono">
+            <Link to="/writing" className="text-forge-gold hover:underline font-mono">
               ← Back to Essays
             </Link>
           </div>
@@ -42,7 +42,7 @@ export function EssayPage() {
       <section className="py-16 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <Link
-            to="/essays/"
+            to="/writing"
             className="font-mono text-xs text-forge-dim hover:text-forge-gold transition-colors mb-6 inline-block"
           >
             ← Essays
@@ -107,7 +107,7 @@ export function EssayPage() {
             )}
 
             <Link
-              to="/essays/"
+              to="/writing"
               className="font-mono text-sm text-forge-dim hover:text-forge-gold transition-colors"
             >
               ← All Essays

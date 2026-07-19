@@ -114,13 +114,13 @@ export function Home() {
             <motion.div variants={itemVariants} className="brutalist-card group">
               <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">📊</div>
               <h3 className="text-xl font-black uppercase mb-1">WEALTH</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Capital Intelligence · arif-fazil.com/wealth</p>
+              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Capital Intelligence · arif-fazil.com/economics</p>
               <p className="text-sm text-forge-dim leading-relaxed">
                 Daily briefings on what Malaysia's money is doing — Bursa, ringgit, oil prices, political economy.
                 Evidence-gated. No vibes. Written in plain signal, not analyst-speak.
               </p>
               <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/wealth/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
                   Read Today's Briefing →
                 </a>
               </div>

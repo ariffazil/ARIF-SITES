@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ring="ORGAN" data-organ="wealth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WEALTH — Sovereign Valuation Kernel · arifOS</title>
 <meta name="description" content="Physics over narrative. High-precision capital evaluation mapped to fundamental physical dimensions. Part of the arifOS constellation.">
 <link rel="canonical" href="https://wealth.arif-fazil.com/">
+<!-- Federation design system (SSOT) -->
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -949,5 +951,23 @@
   if (mockDims) observer.observe(mockDims);
 </script>
 
+<script src="/_shared/trinity-nav.js"></script>
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+<script>
+(function() {
+  if (typeof arifosWebMCP === 'undefined') return;
+  arifosWebMCP.registerReadonly('get_organ_health', 'Get organ service health status', {}, async function() {
+    try { var r = await fetch('/health'); return await r.json(); }
+    catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+  arifosWebMCP.registerReadonly('get_registry', 'List this organ available tools', {}, async function() {
+    try {
+      var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
+      return await r.json();
+    } catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+})();
+</script>
 </body>
 </html>

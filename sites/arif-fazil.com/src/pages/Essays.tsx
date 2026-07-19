@@ -89,7 +89,7 @@ export function Essays() {
                 {domainEssays.map((essay) => (
                   <Link
                     key={essay.slug}
-                    to={`/essays/${essay.slug}`}
+                    to={`/writing/${essay.slug}`}
                     className="brutalist-card border border-forge-iron hover:border-forge-gold/40 px-8 py-6 transition-all group block"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-3">

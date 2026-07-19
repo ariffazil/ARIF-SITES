@@ -84,7 +84,7 @@ export function Constellation() {
                 The value layer. Decision-quality intelligence for capital allocation 
                 under extreme uncertainty. NPV/EMV risk engines.
               </p>
-              <a href="/wealth/" className="button-forge w-full">
+              <a href="/economics" className="button-forge w-full">
                 Daily Briefing ↗
               </a>
             </motion.div>

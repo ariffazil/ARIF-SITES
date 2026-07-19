@@ -29,18 +29,23 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
+// Primary nav — clean 6-section IA. Human reality only.
+// Earth (subsurface) · Economics (Malaysia briefing) · World (commodities) · Writing · Federation
 export const primaryLinks: LinkItem[] = [
-  { label: 'Wells', href: '/#wells' },
-  { label: 'Systems', href: '/#what-i-built' },
-  { label: 'Practice', href: '/#practice' },
-  { label: 'Contact', href: '/#contact' },
-  { label: '/000', href: '/000/' },
-  { label: '/999', href: '/999/' },
+  { label: 'Home', href: '/' },
+  { label: 'Earth', href: '/earth' },
+  { label: 'Economics', href: '/economics' },
+  { label: 'World', href: '/world' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
+];
+
+// Genesis strip — machine-facing surfaces, shown separately in footer / secondary nav.
+export const machineLinks: LinkItem[] = [
+  { label: '/000 — genesis', href: '/000/' },
+  { label: '/999 — proof', href: '/999/' },
   { label: '/canon', href: '/canon/' },
   { label: '/constellation', href: '/constellation/' },
-  { label: '/wealth', href: '/wealth/' },
-  { label: 'Writing', href: '/essays/' },
-  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
 ];
 
 // Plain — no scores, no stats, no framing
@@ -189,14 +194,14 @@ export const systemProjects: SystemProject[] = [
 ];
 
 export const ecosystemLinks: LinkItem[] = [
-  { label: '/ — home', href: '/' },
+  { label: 'Home', href: '/' },
+  { label: 'Earth', href: '/earth' },
+  { label: 'Economics', href: '/economics' },
+  { label: 'World', href: '/world' },
+  { label: 'Writing', href: '/writing' },
   { label: '/000 — genesis', href: '/000/' },
   { label: '/999 — proof', href: '/999/' },
-  { label: '/discoveries', href: '/discoveries/' },
-  { label: '/constellation', href: '/constellation/' },
-  { label: '/wealth', href: '/wealth/' },
   { label: '/canon', href: '/canon/' },
-  { label: '/essays', href: '/essays/' },
   { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
 ];
 
@@ -205,8 +210,8 @@ export const arifosLinks: LinkItem[] = [
   { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
   { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
-  { label: 'WEALTH Briefing', href: '/wealth/' },
-  { label: 'MakcikGPT', href: '/wealth/makcikgpt/' },
+  { label: 'Economics Briefing', href: '/economics' },
+  { label: 'MakcikGPT', href: '/economics/makcikgpt/' },
   { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
   { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
 ];

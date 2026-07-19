@@ -1,28 +1,36 @@
-// Trinity Navigation Loader — injects shared nav into all arifOS Federation sites
-// Served from /_shared/trinity-nav.js — included by all Trinity sites
+// Trinity Navigation Loader — injects shared federation nav into all arifOS sites
+// Served from /_shared/trinity-nav.js — auto-included by every static site
 // DITEMPA BUKAN DIBERI — Forged, Not Given
-// Pattern 6: Freshness check added 2026-07-15 — detects stale deployments
 
 (function() {
+  'use strict';
   if (document.querySelector('.trinity-nav')) return;
+
+  // Federation topology: Trinity (SOUL·MIND·BODY) + Organs (GEOX·WEALTH·WELL) + Actuator (FORGE) + Gate (MCP)
+  var links = [
+    { href: 'https://arif-fazil.com',      label: 'SOUL',    cls: 'soul',   emoji: '&#936;' },
+    { href: 'https://arifos.arif-fazil.com', label: 'MIND',    cls: 'mind',   emoji: '&#937;' },
+    { href: 'https://aaa.arif-fazil.com',   label: 'BODY',    cls: 'body',   emoji: '&#916;' },
+    { href: 'https://geox.arif-fazil.com',  label: 'GEOX',    cls: 'geox',   emoji: '&#934;' },
+    { href: 'https://wealth.arif-fazil.com', label: 'WEALTH',  cls: 'wealth', emoji: '&#926;' },
+    { href: 'https://well.arif-fazil.com',  label: 'WELL',    cls: 'well',   emoji: '&#937;&#9733;' },
+    { href: 'https://forge.arif-fazil.com', label: 'FORGE',   cls: 'forge',  emoji: '&#9878;' },
+    { href: 'https://mcp.arif-fazil.com',   label: 'MCP',     cls: 'gate',   emoji: '&#9675;' },
+  ];
+
+  var html = '';
+  for (var i = 0; i < links.length; i++) {
+    if (i > 0) html += '<span class="sep">|</span>';
+    html += '<a href="' + links[i].href + '" class="' + links[i].cls + '">' +
+            links[i].emoji + ' ' + links[i].label + '</a>';
+  }
+  html += '<span class="motto">DITEMPA BUKAN DIBERI</span>';
 
   var nav = document.createElement('nav');
   nav.className = 'trinity-nav';
   nav.setAttribute('role', 'navigation');
-  nav.setAttribute('aria-label', 'Trinity Navigation');
-  nav.innerHTML =
-    '<a href="https://arif-fazil.com" class="soul">&Psi; SOUL</a>' +
-    '<span class="sep">|</span>' +
-    '<a href="https://arifos.arif-fazil.com" class="mind">&Omega; MIND</a>' +
-    '<span class="sep">|</span>' +
-    '<a href="https://aaa.arif-fazil.com" class="body">&Delta; BODY</a>' +
-    '<span class="sep">|</span>' +
-    '<a href="https://geox.arif-fazil.com" class="geox">&Phi; GEOX</a>' +
-    '<span class="sep">|</span>' +
-    '<a href="https://wealth.arif-fazil.com" class="wealth">&Xi; WEALTH</a>' +
-    '<span class="sep">|</span>' +
-    '<a href="https://well.arif-fazil.com" class="well">&Omega;&#9733; WELL</a>' +
-    '<span class="motto">DITEMPA BUKAN DIBERI</span>';
+  nav.setAttribute('aria-label', 'Federation Navigation');
+  nav.innerHTML = html;
 
   if (document.body) {
     document.body.insertBefore(nav, document.body.firstChild);
@@ -35,10 +43,10 @@
   var style = document.createElement('style');
   style.textContent =
     '.trinity-nav{display:flex;gap:0;justify-content:center;align-items:center;' +
-    'padding:0.6rem 1rem;background:#0a0a0a;border-bottom:2px solid #1a1a1a;' +
-    'font-family:"JetBrains Mono","SF Mono",monospace;font-size:0.78rem;' +
+    'padding:0.5rem 1rem;background:#0a0a0a;border-bottom:2px solid #1a1a1a;' +
+    'font-family:"JetBrains Mono","SF Mono",monospace;font-size:0.75rem;' +
     'letter-spacing:0.05em;flex-wrap:wrap}' +
-    '.trinity-nav a{color:#888;text-decoration:none;padding:0.3rem 0.8rem;' +
+    '.trinity-nav a{color:#888;text-decoration:none;padding:0.25rem 0.6rem;' +
     'border-radius:3px;transition:all 0.15s ease}' +
     '.trinity-nav a:hover{color:#fff;background:rgba(255,255,255,0.05)}' +
     '.trinity-nav a.soul{color:#FF3333}' +
@@ -47,50 +55,17 @@
     '.trinity-nav a.mind:hover{background:rgba(0,212,170,0.1)}' +
     '.trinity-nav a.body{color:#D4A853}' +
     '.trinity-nav a.body:hover{background:rgba(212,168,83,0.1)}' +
-    '.trinity-nav a.geox{color:#5a9e38}' +
-    '.trinity-nav a.geox:hover{background:rgba(90,158,56,0.1)}' +
-    '.trinity-nav a.wealth{color:#D4A853}' +
-    '.trinity-nav a.wealth:hover{background:rgba(212,168,83,0.1)}' +
-    '.trinity-nav a.well{color:#ff4444}' +
-    '.trinity-nav a.well:hover{background:rgba(255,68,68,0.1)}' +
-    '.trinity-nav .sep{color:#333;margin:0 0.15rem;user-select:none}' +
-    '.trinity-nav .motto{color:#444;font-size:0.65rem;margin-left:auto;font-style:italic}' +
-    '.freshness-warning{display:none;padding:0.5rem 1rem;text-align:center;' +
-    'font-family:"JetBrains Mono","SF Mono",monospace;font-size:0.75rem;' +
-    'background:#1a1612;color:#FF9500;border-bottom:1px solid #332200}' +
-    '.freshness-warning.visible{display:block}';
+    '.trinity-nav a.geox{color:#C4791A}' +
+    '.trinity-nav a.geox:hover{background:rgba(196,121,26,0.1)}' +
+    '.trinity-nav a.wealth{color:#2EA96A}' +
+    '.trinity-nav a.wealth:hover{background:rgba(46,169,106,0.1)}' +
+    '.trinity-nav a.well{color:#38BEC9}' +
+    '.trinity-nav a.well:hover{background:rgba(56,190,201,0.1)}' +
+    '.trinity-nav a.forge{color:#E3B341}' +
+    '.trinity-nav a.forge:hover{background:rgba(227,179,65,0.1)}' +
+    '.trinity-nav a.gate{color:#7C6FD4}' +
+    '.trinity-nav a.gate:hover{background:rgba(124,111,212,0.1)}' +
+    '.trinity-nav .sep{color:#333;margin:0 0.1rem;user-select:none}' +
+    '.trinity-nav .motto{color:#444;font-size:0.6rem;margin-left:auto;font-style:italic;padding-left:0.5rem}';
   document.head.appendChild(style);
-
-  // ── Pattern 6: Freshness Check ──────────────────────────────────
-  // Fetches /build-info.json, shows warning if deployment is > 7 days old
-  // Read-only, no state change, F2 TRUTH mechanism
-  function checkFreshness() {
-    try {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', '/build-info.json', true);
-      xhr.timeout = 5000;
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          try {
-            var info = JSON.parse(xhr.responseText);
-            if (!info.built_at) return;
-            var built = new Date(info.built_at);
-            var now = new Date();
-            var ageMs = now - built;
-            var ageDays = Math.floor(ageMs / 86400000);
-            if (ageDays > 7) {
-              var banner = document.createElement('div');
-              banner.className = 'freshness-warning visible';
-              banner.textContent = '\u26A0\uFE0F This surface was last deployed ' + ageDays + ' days ago (' + info.built_at.split('T')[0] + '). Data may be stale.';
-              if (document.body) {
-                document.body.insertBefore(banner, document.body.firstChild);
-              }
-            }
-          } catch (e) { /* parse error — silent */ }
-        }
-      };
-      xhr.send();
-    } catch (e) { /* network error — silent */ }
-  }
-  checkFreshness();
 })();

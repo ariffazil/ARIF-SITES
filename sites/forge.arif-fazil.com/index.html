@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="BODY">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A-FORGE — Execution Shell | arifOS Federation</title>
+  <link rel="stylesheet" href="/_shared/design-system/tokens.css">
+  <style>
+    body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans); margin: 0; padding: 0; }
+    .container { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
+    h1 { color: var(--body-primary); font-size: var(--text-4xl); margin-bottom: 0.5rem; }
+    .subtitle { color: var(--text-secondary); font-size: var(--text-lg); margin-bottom: 2rem; }
+    .status { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .status h2 { color: var(--body-accent); font-size: var(--text-xl); margin-top: 0; }
+    .endpoint { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-muted); }
+    .endpoint a { color: var(--mind-primary); text-decoration: none; }
+    .endpoint a:hover { text-decoration: underline; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: var(--text-xs); font-weight: 600; }
+    .badge-live { background: rgba(0,200,83,0.15); color: var(--state-operational); }
+    .tools-list { list-style: none; padding: 0; }
+    .tools-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border-subtle); font-size: var(--text-sm); }
+    .tools-list li:last-child { border-bottom: none; }
+    .motto { color: var(--text-muted); font-style: italic; font-size: var(--text-sm); margin-top: 3rem; text-align: center; }
+  </style>
+  <script src="/_shared/unified-header-loader.js"></script>
+</head>
+<body>
+  <script src="/_shared/trinity-nav.js"></script>
+  <div class="container">
+    <h1>⚒️ A-FORGE</h1>
+    <p class="subtitle">Execution Shell — Build, Deploy, Audit</p>
+    
+    <div class="status">
+      <h2>MCP Gateway <span class="badge badge-live">LIVE</span></h2>
+      <p class="endpoint"><a href="/mcp">POST /mcp</a> — Streamable-HTTP (78 tools)</p>
+      <p class="endpoint"><a href="/health">GET /health</a> — Service health</p>
+      <p class="endpoint"><a href="/.well-known/mcp/server.json">/.well-known/mcp/server.json</a> — Server card</p>
+    </div>
+
+    <div class="status">
+      <h2>OpenCode IDE</h2>
+      <p class="endpoint"><a href="/opencode/">/opencode/</a> — Web-based coding environment</p>
+    </div>
+
+    <div class="status">
+      <h2>Capabilities</h2>
+      <ul class="tools-list">
+        <li>🔨 forge_shell — Governed shell execution with audit trail</li>
+        <li>📦 forge_docker — Container lifecycle management</li>
+        <li>🔧 forge_filesystem — Read/write/patch files with F1 AMANAH</li>
+        <li>🔍 forge_probe — Federation organ liveness checks</li>
+        <li>📊 forge_health_check — Service health and constitutional genome</li>
+        <li>🏗️ forge_execute — Full execution pipeline with governance</li>
+        <li>🔐 forge_vault — VAULT999 immutable ledger access</li>
+        <li>⚖️ forge_judge_proxy — Constitutional verdict routing</li>
+      </ul>
+    </div>
+
+    <p class="motto">DITEMPA BUKAN DIBERI — Forged, Not Given</p>
+  </div>
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+<script>
+(function() {
+  if (typeof arifosWebMCP === 'undefined') return;
+  arifosWebMCP.registerReadonly('get_organ_health', 'Get organ service health status', {}, async function() {
+    try { var r = await fetch('/health'); return await r.json(); }
+    catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+  arifosWebMCP.registerReadonly('get_registry', 'List this organ available tools', {}, async function() {
+    try {
+      var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
+      return await r.json();
+    } catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+})();
+</script>
+</body>
+</html>

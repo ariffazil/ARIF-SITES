@@ -615,7 +615,7 @@ export function Wealth() {
               doctrine to capital: every metric is grounded in a physical dimension. No narratives. No projections without evidence.
             </p>
             <a
-              href="/essays/"
+              href="/writing"
               className="inline-flex items-center gap-2 font-mono text-[0.7rem] text-forge-gold uppercase tracking-wider hover:text-forge-orange transition-colors"
             >
               Read the EUREKA trilogy →

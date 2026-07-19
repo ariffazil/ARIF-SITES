@@ -5,7 +5,7 @@ export function MakcikGPTAlias() {
   // /wealth/makcikgpt prefix for backwards compatibility, so this is just
   // an alias wrapper that routes to the same page. The MakcikGPT URL is
   // the public one.
-  return <Navigate to="/wealth/makcikgpt/index" replace />;
+  return <Navigate to="/economics/makcikgpt/index" replace />;
 }
 
 export default MakcikGPTAlias;
