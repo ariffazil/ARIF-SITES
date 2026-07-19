@@ -291,16 +291,18 @@ When building Phase 1 script, follow the **Step 1–2 of adding MakcikGPT articl
 
 ## 10. OTHER SUBSITES
 
-`config/sites.json` is the site inventory. The arif-sites repo also hosts these deployable static surfaces:
+The arif-sites repo also hosts static subsites (NOT part of the React site):
 
 | Subsite | Path | Type | Update method |
 |---------|------|------|---------------|
 | `aaa.arif-fazil.com` | `sites/aaa.arif-fazil.com/` | Static HTML | Edit HTML directly |
 | `arifos.arif-fazil.com` | `sites/arifos.arif-fazil.com/` | Static docs | Edit HTML directly |
+| `arifosmcp.arif-fazil.com` | `sites/arifosmcp.arif-fazil.com/` | Static docs | Edit HTML directly |
 | `geox.arif-fazil.com` | `sites/geox.arif-fazil.com/` | Static lab GUI | Edit HTML directly |
-| `wealth.arif-fazil.com` | `sites/wealth.arif-fazil.com/` | Static organ surface | Edit HTML directly |
+| `wiki.arif-fazil.com` | `sites/wiki.arif-fazil.com/` | Static wiki | Edit HTML directly |
+| `makcikgpt.arif-fazil.com` | `sites/makcikgpt.arif-fazil.com/` | Static HTML | Edit HTML directly |
 
-These are synced by `./deploy-vps.sh` — no build step required. Shared files must be edited only in `sites/shared/`.
+These are synced by `./deploy-vps.sh` — no build step required.
 
 ---
 

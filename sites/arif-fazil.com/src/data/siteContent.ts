@@ -30,47 +30,18 @@ export type SystemProject = {
 };
 
 export const primaryLinks: LinkItem[] = [
-  { label: 'Arif', href: '/' },
-  { label: 'Earth', href: 'https://geox.arif-fazil.com/', external: true },
-  { label: 'Capital', href: 'https://wealth.arif-fazil.com/', external: true },
-  { label: 'Human', href: 'https://well.arif-fazil.com/', external: true },
-  { label: 'arifOS', href: '/arifos/' },
+  { label: 'Wells', href: '/#wells' },
+  { label: 'Systems', href: '/#what-i-built' },
+  { label: 'Practice', href: '/#practice' },
+  { label: 'Contact', href: '/#contact' },
+  { label: '/000', href: '/000/' },
+  { label: '/999', href: '/999/' },
+  { label: '/canon', href: '/canon/' },
+  { label: '/constellation', href: '/constellation/' },
+  { label: '/wealth', href: '/wealth/' },
   { label: 'Writing', href: '/essays/' },
+  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
 ];
-
-/** Three public knowledge domains — AAA/A-FORGE stay under Systems, not main nav. */
-export const organDoors = [
-  {
-    id: 'geox',
-    domain: 'EARTH',
-    name: 'GEOX',
-    title: 'Earth',
-    summary: 'Read physical reality before forming a decision.',
-    detail: 'Subsurface evidence, prospect reasoning, uncertainty and geological consequence.',
-    href: 'https://geox.arif-fazil.com/',
-    explainHref: '/organs/geox/',
-  },
-  {
-    id: 'wealth',
-    domain: 'CAPITAL',
-    name: 'WEALTH',
-    title: 'Capital',
-    summary: 'Judge value, risk and survival before committing capital.',
-    detail: 'NPV, uncertainty, debt resilience, cash flow and stewardship. Computation — not allocation authority.',
-    href: 'https://wealth.arif-fazil.com/',
-    explainHref: '/organs/wealth/',
-  },
-  {
-    id: 'well',
-    domain: 'HUMAN',
-    name: 'WELL',
-    title: 'Human substrate',
-    summary: 'Count the operator’s capacity and dignity as real evidence.',
-    detail: 'Vitality, cognitive pressure, readiness and human boundary. Reflect-only.',
-    href: 'https://well.arif-fazil.com/',
-    explainHref: '/organs/well/',
-  },
-] as const;
 
 // Plain — no scores, no stats, no framing
 export const trustStrip = [
@@ -218,30 +189,26 @@ export const systemProjects: SystemProject[] = [
 ];
 
 export const ecosystemLinks: LinkItem[] = [
-  // KNOWLEDGE — what you read, write, and discover
-  { label: 'writing', href: '/essays/' },
-  { label: 'discoveries', href: '/discoveries/' },
-  { label: 'makcikgpt', href: '/wealth/makcikgpt/' },
-  { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
-  // FOUNDATION — the immutable bedrock
+  { label: '/ — home', href: '/' },
   { label: '/000 — genesis', href: '/000/' },
   { label: '/999 — proof', href: '/999/' },
-  { label: '/canon', href: '/canon/' },
-  // MAP — orientation and context
+  { label: '/discoveries', href: '/discoveries/' },
   { label: '/constellation', href: '/constellation/' },
   { label: '/wealth', href: '/wealth/' },
+  { label: '/canon', href: '/canon/' },
+  { label: '/essays', href: '/essays/' },
+  { label: 'wiki', href: 'https://wiki.arif-fazil.com', external: true },
 ];
 
 export const arifosLinks: LinkItem[] = [
-  // GOVERN — the infrastructure that makes everything honest
-  { label: 'mcp gateway', href: 'https://mcp.arif-fazil.com', external: true },
-  { label: 'observatory', href: 'https://arifos.arif-fazil.com', external: true },
-  { label: 'aaa cockpit', href: 'https://aaa.arif-fazil.com', external: true },
-  { label: 'a-forge', href: 'https://forge.arif-fazil.com', external: true },
-  // EVIDENCE — the domain intelligence that reads reality
-  { label: 'geox', href: 'https://geox.arif-fazil.com', external: true },
-  { label: 'wealth', href: 'https://wealth.arif-fazil.com', external: true },
-  { label: 'well', href: 'https://well.arif-fazil.com', external: true },
+  { label: 'Observatory', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', external: true },
+  { label: 'GEOX', href: 'https://geox.arif-fazil.com', external: true },
+  { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com', external: true },
+  { label: 'WEALTH Briefing', href: '/wealth/' },
+  { label: 'MakcikGPT', href: '/wealth/makcikgpt/' },
+  { label: 'WELL Vitality', href: 'https://well.arif-fazil.com', external: true },
+  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', external: true },
 ];
 
 export const contactLinks: LinkItem[] = [

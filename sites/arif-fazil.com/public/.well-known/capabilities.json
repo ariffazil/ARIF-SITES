@@ -1,0 +1,211 @@
+{
+  "$schema": "https://arif-fazil.com/.well-known/capabilities.json",
+  "version": "1.0.0",
+  "generated_at": "2026-07-15T11:10:00Z",
+  "sovereign": "Muhammad Arif bin Fazil (F13)",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "surfaces": {
+    "arif-fazil.com": {
+      "ring": "SOUL",
+      "role": "Human identity + federation hub",
+      "capabilities": [
+        {
+          "name": "federation_status",
+          "description": "Live health status of all arifOS federation organs",
+          "protocol": "webmcp",
+          "tool": "get_federation_status",
+          "path": "/api/organs"
+        },
+        {
+          "name": "market_overview",
+          "description": "Multi-asset market overview with prices, signals, RSI, EMA",
+          "protocol": "webmcp",
+          "tool": "get_market_overview",
+          "path": "/wealth/api/overview"
+        },
+        {
+          "name": "market_ticker",
+          "description": "Quick price ticker for all 7 assets",
+          "protocol": "webmcp",
+          "tool": "get_market_ticker",
+          "path": "/wealth/api/ticker"
+        },
+        {
+          "name": "wealth_briefing",
+          "description": "AI-generated daily market briefing with sentiment",
+          "protocol": "webmcp",
+          "tool": "get_wealth_briefing",
+          "path": "/wealth/api/briefing"
+        },
+        {
+          "name": "gold_price",
+          "description": "Latest XAUUSD gold price, change, RSI, signal",
+          "protocol": "webmcp",
+          "tool": "get_gold_price",
+          "path": "/wealth/gold/api/gold/ticker"
+        },
+        {
+          "name": "gold_history",
+          "description": "XAUUSD OHLCV candlestick data with EMA and RSI",
+          "protocol": "webmcp",
+          "tool": "get_gold_history",
+          "path": "/wealth/gold/api/gold/history"
+        },
+        {
+          "name": "gold_signals",
+          "description": "Latest XAUUSD trading signal with entry, stop-loss, take-profit",
+          "protocol": "webmcp",
+          "tool": "get_gold_signals",
+          "path": "/wealth/gold/api/gold/signals"
+        },
+        {
+          "name": "gold_levels",
+          "description": "XAUUSD support and resistance levels",
+          "protocol": "webmcp",
+          "tool": "get_gold_levels",
+          "path": "/wealth/gold/api/gold/levels"
+        },
+        {
+          "name": "gold_macro",
+          "description": "Macro context for gold: DXY, VIX, US 10Y yield, silver",
+          "protocol": "webmcp",
+          "tool": "get_gold_macro",
+          "path": "/wealth/gold/api/gold/macro"
+        },
+        {
+          "name": "makcikgpt",
+          "description": "Ask MakcikGPT about PETRONAS — DNA, governance, dividends",
+          "protocol": "webmcp",
+          "tool": "ask_makcikgpt",
+          "path": "/makcikgpt/"
+        },
+        {
+          "name": "vitality_snapshot",
+          "description": "Current vitality metrics from WELL organ",
+          "protocol": "webmcp",
+          "tool": "get_vitality_snapshot",
+          "path": "https://well.arif-fazil.com/health"
+        },
+        {
+          "name": "biological_clock",
+          "description": "Circadian phase and energy level",
+          "protocol": "webmcp",
+          "tool": "get_biological_clock",
+          "path": "https://well.arif-fazil.com/health"
+        },
+        {
+          "name": "readiness_score",
+          "description": "WELL readiness score from biometric data",
+          "protocol": "webmcp",
+          "tool": "get_readiness_score",
+          "path": "https://well.arif-fazil.com/health"
+        },
+        {
+          "name": "basin_info",
+          "description": "Geological basin information at coordinates via Macrostrat",
+          "protocol": "webmcp",
+          "tool": "get_basin_info",
+          "path": "https://geox.arif-fazil.com/health"
+        },
+        {
+          "name": "formation_detail",
+          "description": "Geological formation details at coordinates",
+          "protocol": "webmcp",
+          "tool": "get_formation_detail",
+          "path": "https://geox.arif-fazil.com/health"
+        },
+        {
+          "name": "earth_globe_state",
+          "description": "Current map viewport state",
+          "protocol": "webmcp",
+          "tool": "get_earth_globe_state",
+          "path": "/geox/"
+        },
+        {
+          "name": "verify_did",
+          "description": "W3C DID document for did:web:arif-fazil.com",
+          "protocol": "webmcp",
+          "tool": "verify_did",
+          "path": "/.well-known/did.json"
+        },
+        {
+          "name": "get_constitution",
+          "description": "arifOS constitutional floor definitions (F1-F13)",
+          "protocol": "webmcp",
+          "tool": "get_constitution",
+          "path": "/canon/constitution.json"
+        }
+      ]
+    },
+    "arifos.arif-fazil.com": {
+      "ring": "MIND",
+      "role": "Constitutional kernel — governance, floors, seals",
+      "mcp_endpoint": "https://arifos.arif-fazil.com/mcp",
+      "capabilities": [
+        {
+          "name": "observatory_snapshot",
+          "description": "Full federation observatory state (110KB JSON)",
+          "protocol": "mcp",
+          "path": "/api/observatory/v1/snapshot"
+        },
+        {
+          "name": "kernel_health",
+          "description": "Kernel health with identity, floors, vault status",
+          "protocol": "http",
+          "path": "/health"
+        }
+      ]
+    },
+    "geox.arif-fazil.com": {
+      "ring": "EARTH",
+      "role": "Earth intelligence — seismic, petrophysics, basin analysis",
+      "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "capabilities": [
+        {
+          "name": "geox_health",
+          "description": "GEOX organ health and tool count",
+          "protocol": "http",
+          "path": "/health"
+        }
+      ]
+    },
+    "wealth.arif-fazil.com": {
+      "ring": "CAPITAL",
+      "role": "Capital intelligence — NPV, risk, conservation, flow",
+      "mcp_endpoint": "https://wealth.arif-fazil.com/mcp",
+      "capabilities": [
+        {
+          "name": "wealth_health",
+          "description": "WEALTH organ health and cache status",
+          "protocol": "http",
+          "path": "/health"
+        }
+      ]
+    },
+    "well.arif-fazil.com": {
+      "ring": "VITALITY",
+      "role": "Human readiness — vitality, fatigue, dignity (REFLECT_ONLY)",
+      "mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "capabilities": [
+        {
+          "name": "well_health",
+          "description": "WELL organ health and biometric freshness",
+          "protocol": "http",
+          "path": "/health"
+        }
+      ]
+    }
+  },
+  "protocols": {
+    "webmcp": "Browser-native tool registration via navigator.modelContext",
+    "mcp": "Streamable-HTTP MCP server at /mcp endpoint",
+    "a2a": "Agent-to-Agent protocol via AAA gateway",
+    "http": "Standard HTTP health/info endpoint"
+  },
+  "governance": {
+    "floors": "F1-F13 constitutional floors enforced",
+    "verdicts": ["SEAL", "HOLD", "SABAR", "VOID"],
+    "vault": "VAULT999 append-only hash-chained audit ledger",
+    "sovereign": "Muhammad Arif bin Fazil — F13 veto holder"
+  }
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WELL — Biological Clock & Vitality | arif-fazil.com</title>
+<meta name="description" content="WELL biological clock — circadian rhythm, cognitive clarity, energy levels, vitality snapshot. REFLECT_ONLY — not diagnostic.">
+<link rel="canonical" href="https://arif-fazil.com/well/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💚</text></svg>">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #060a08; --surface: #0c1210; --surface2: #111a16; --surface3: #162018;
+    --border: #1a2a20; --border2: #243a2c;
+    --green: #00d4aa; --green-dim: #008866; --green-bright: #00ffaa; --green-bg: rgba(0,212,170,0.08);
+    --text: #e0f0e8; --text-dim: #607068; --text-mid: #90a898;
+    --gold: #d4a853; --amber: #f59e0b; --red: #ef4444; --cyan: #00d4ff;
+    --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-display: 'DM Serif Display', serif;
+  }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--font-sans);
+    display: flex; flex-direction: column;
+    background-image: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,212,170,0.03) 0%, transparent 60%);
+  }
+  .shell { max-width: 1100px; margin: 0 auto; padding: 0 2rem; width: 100%; }
+
+  /* ── HEADER ── */
+  .header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+  .logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--green); text-decoration: none; }
+  .logo sup { font-family: var(--font-mono); font-size: 0.5rem; color: var(--green-dim); vertical-align: super; }
+  .nav { display: flex; gap: 2rem; align-items: center; }
+  .nav a { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.12em; transition: color 0.2s; }
+  .nav a:hover { color: var(--green); }
+  .badge { font-family: var(--font-mono); font-size: 0.55rem; color: var(--green-dim); padding: 3px 8px; border: 1px solid var(--border); background: var(--surface); }
+
+  /* ── MAIN GRID ── */
+  .main { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; padding: 2rem 0; }
+  .card { border: 1px solid var(--border); background: var(--surface); padding: 1.5rem; }
+  .card-label { font-family: var(--font-mono); font-size: 0.55rem; color: var(--green-dim); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+  .card-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* ── CIRCADIAN CLOCK ── */
+  .clock-container { display: flex; justify-content: center; padding: 1rem 0; }
+  .clock-svg { width: 280px; height: 280px; }
+
+  /* ── VITALITY BARS ── */
+  .vitality-grid { display: flex; flex-direction: column; gap: 12px; }
+  .v-bar { display: flex; align-items: center; gap: 12px; }
+  .v-bar-label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); width: 100px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .v-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .v-bar-fill { height: 100%; border-radius: 4px; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); }
+  .v-bar-fill.green { background: linear-gradient(90deg, var(--green-dim), var(--green)); }
+  .v-bar-fill.amber { background: linear-gradient(90deg, #8a6a00, var(--amber)); }
+  .v-bar-fill.red { background: linear-gradient(90deg, #8a2020, var(--red)); }
+  .v-bar-value { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; width: 50px; text-align: right; }
+
+  /* ── GAUGE ── */
+  .gauge-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .gauge { text-align: center; }
+  .gauge-circle { width: 80px; height: 80px; margin: 0 auto 8px; }
+  .gauge-label { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+  .gauge-value { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; margin-top: 2px; }
+
+  /* ── STATE JSON DISPLAY ── */
+  .state-display { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-dim); line-height: 1.8; max-height: 200px; overflow-y: auto; }
+  .state-display::-webkit-scrollbar { width: 3px; }
+  .state-display::-webkit-scrollbar-thumb { background: var(--border); }
+  .state-key { color: var(--green-dim); }
+  .state-val { color: var(--text); }
+  .state-str { color: var(--gold); }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer { border-top: 1px solid var(--border); padding: 1.5rem 0; margin-top: 1rem; text-align: center; }
+  .disclaimer-text { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); letter-spacing: 0.1em; line-height: 1.8; }
+  .disclaimer-tag { display: inline-block; font-family: var(--font-mono); font-size: 0.55rem; color: var(--green-dim); padding: 2px 8px; border: 1px solid var(--border); margin-top: 8px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; }
+    .gauge-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="header">
+    <a class="logo" href="/well/">WELL<sup>LIFE</sup></a>
+    <nav class="nav">
+      <a href="/wealth/">Wealth</a>
+      <a href="/well/" style="color:var(--green)">Well</a>
+      <a href="/geox/">GEOX</a>
+      <a href="/makcikgpt/">MakcikGPT</a>
+      <a href="https://arifos.arif-fazil.com">Constitution</a>
+    </nav>
+    <span class="badge" id="freshnessBadge">LOADING</span>
+  </header>
+
+  <div class="main">
+
+    <!-- CIRCADIAN CLOCK -->
+    <div class="card">
+      <div class="card-label">Circadian Clock</div>
+      <div class="clock-container">
+        <svg class="clock-svg" viewBox="0 0 280 280" id="clockSvg"></svg>
+      </div>
+      <div style="text-align:center;margin-top:8px;">
+        <span style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text-dim);" id="clockTime">—</span>
+      </div>
+    </div>
+
+    <!-- VITALITY BARS -->
+    <div class="card">
+      <div class="card-label">Vitality Metrics</div>
+      <div class="vitality-grid" id="vitalityGrid">
+        <div class="v-bar">
+          <span class="v-bar-label">Well Score</span>
+          <div class="v-bar-track"><div class="v-bar-fill green" id="bar-well" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-well">—</span>
+        </div>
+        <div class="v-bar">
+          <span class="v-bar-label">Cognitive</span>
+          <div class="v-bar-track"><div class="v-bar-fill green" id="bar-cognitive" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-cognitive">—</span>
+        </div>
+        <div class="v-bar">
+          <span class="v-bar-label">Peace²</span>
+          <div class="v-bar-track"><div class="v-bar-fill green" id="bar-peace" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-peace">—</span>
+        </div>
+        <div class="v-bar">
+          <span class="v-bar-label">Amanah</span>
+          <div class="v-bar-track"><div class="v-bar-fill green" id="bar-amanah" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-amanah">—</span>
+        </div>
+        <div class="v-bar">
+          <span class="v-bar-label">Kappa R</span>
+          <div class="v-bar-track"><div class="v-bar-fill green" id="bar-kappa" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-kappa">—</span>
+        </div>
+        <div class="v-bar">
+          <span class="v-bar-label">Delta S</span>
+          <div class="v-bar-track"><div class="v-bar-fill amber" id="bar-delta" style="width:0%"></div></div>
+          <span class="v-bar-value" id="val-delta">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAUGES -->
+    <div class="card">
+      <div class="card-label">Cognitive State</div>
+      <div class="gauge-row">
+        <div class="gauge">
+          <svg class="gauge-circle" viewBox="0 0 80 80" id="gauge-clarity"></svg>
+          <div class="gauge-label">Clarity</div>
+          <div class="gauge-value" id="gval-clarity" style="color:var(--green)">—</div>
+        </div>
+        <div class="gauge">
+          <svg class="gauge-circle" viewBox="0 0 80 80" id="gauge-fatigue"></svg>
+          <div class="gauge-label">Decision Fatigue</div>
+          <div class="gauge-value" id="gval-fatigue" style="color:var(--amber)">—</div>
+        </div>
+        <div class="gauge">
+          <svg class="gauge-circle" viewBox="0 0 80 80" id="gauge-rasa"></svg>
+          <div class="gauge-label">Rasa</div>
+          <div class="gauge-value" id="gval-rasa" style="color:var(--cyan)">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATE JSON -->
+    <div class="card">
+      <div class="card-label">Raw State (state.json)</div>
+      <div class="state-display" id="stateDisplay">Loading...</div>
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <div class="disclaimer-text">
+      WELL is a <strong>REFLECT_ONLY</strong> organ. It measures and reflects — never diagnoses, never prescribes.<br>
+      All data is operator self-reported (SOVEREIGN_SELF_REPORT). Not wearable telemetry.<br>
+      For health concerns, consult a medical professional.
+    </div>
+    <span class="disclaimer-tag">REFLECT_ONLY · F6 MARUAH · F9 ANTI-HANTU</span>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// WELL Biological Clock — Live State Mirror
+// ═══════════════════════════════════════════════════════════════
+
+const STATE_URL = 'https://well.arif-fazil.com/health';
+
+// Circadian rhythm model (simplified)
+function getCircadianPhase(hour) {
+  // Sleep: 23:00-07:00, Peak: 10:00-14:00, Dip: 13:00-15:00, Decline: 18:00+
+  if (hour >= 23 || hour < 7) return { phase: 'SLEEP', energy: 0.1, color: '#1a2a40' };
+  if (hour >= 7 && hour < 9) return { phase: 'WAKE', energy: 0.4 + (hour - 7) * 0.2, color: '#2a4a30' };
+  if (hour >= 9 && hour < 12) return { phase: 'PEAK', energy: 0.85 + (hour - 9) * 0.05, color: '#00d4aa' };
+  if (hour >= 12 && hour < 14) return { phase: 'DIP', energy: 0.7, color: '#d4a853' };
+  if (hour >= 14 && hour < 17) return { phase: 'AFTERNOON', energy: 0.75 + (hour - 14) * 0.05, color: '#00d4aa' };
+  if (hour >= 17 && hour < 20) return { phase: 'EVENING', energy: 0.6 - (hour - 17) * 0.15, color: '#d4952b' };
+  return { phase: 'WIND_DOWN', energy: 0.3 - (hour - 20) * 0.07, color: '#8a6a30' };
+}
+
+function drawClock(state) {
+  const svg = document.getElementById('clockSvg');
+  const now = new Date();
+  const hour = now.getHours() + now.getMinutes() / 60;
+  const phase = getCircadianPhase(Math.floor(hour));
+  
+  // Energy curve (24h)
+  let pathD = '';
+  const points = [];
+  for (let h = 0; h <= 24; h += 0.5) {
+    const p = getCircadianPhase(h % 24);
+    const angle = (h / 24) * 2 * Math.PI - Math.PI / 2;
+    const r = 100 + p.energy * 20;
+    const x = 140 + r * Math.cos(angle);
+    const y = 140 + r * Math.sin(angle);
+    points.push({ x, y, h, energy: p.energy, phase: p.phase });
+    pathD += (h === 0 ? 'M' : 'L') + x.toFixed(1) + ',' + y.toFixed(1);
+  }
+  
+  // Current position
+  const currentAngle = (hour / 24) * 2 * Math.PI - Math.PI / 2;
+  const currentR = 100 + phase.energy * 20;
+  const cx = 140 + currentR * Math.cos(currentAngle);
+  const cy = 140 + currentR * Math.sin(currentAngle);
+  
+  // Hour markers
+  let markers = '';
+  for (let h = 0; h < 24; h += 3) {
+    const a = (h / 24) * 2 * Math.PI - Math.PI / 2;
+    const x1 = 140 + 95 * Math.cos(a);
+    const y1 = 140 + 95 * Math.sin(a);
+    const x2 = 140 + 105 * Math.cos(a);
+    const y2 = 140 + 105 * Math.sin(a);
+    const tx = 140 + 88 * Math.cos(a);
+    const ty = 140 + 88 * Math.sin(a);
+    markers += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#2a3a30" stroke-width="1"/>`;
+    markers += `<text x="${tx}" y="${ty}" text-anchor="middle" dominant-baseline="middle" fill="#607068" font-family="IBM Plex Mono" font-size="8">${h}</text>`;
+  }
+  
+  svg.innerHTML = `
+    <!-- Energy curve -->
+    <path d="${pathD} Z" fill="rgba(0,212,170,0.06)" stroke="rgba(0,212,170,0.3)" stroke-width="1.5"/>
+    <!-- Hour markers -->
+    ${markers}
+    <!-- Sleep zone -->
+    <path d="${describeArc(140, 140, 110, (23/24)*360-90, (31/24)*360-90)}" fill="none" stroke="rgba(26,42,64,0.5)" stroke-width="8" stroke-linecap="round"/>
+    <!-- Peak zone -->
+    <path d="${describeArc(140, 140, 110, (9/24)*360-90, (12/24)*360-90)}" fill="none" stroke="rgba(0,212,170,0.4)" stroke-width="8" stroke-linecap="round"/>
+    <!-- Current position -->
+    <circle cx="${cx}" cy="${cy}" r="6" fill="${phase.color}" stroke="#fff" stroke-width="2"/>
+    <circle cx="${cx}" cy="${cy}" r="12" fill="none" stroke="${phase.color}" stroke-width="1" opacity="0.4"/>
+    <!-- Center -->
+    <text x="140" y="136" text-anchor="middle" fill="#e0f0e8" font-family="DM Serif Display" font-size="16">${phase.phase}</text>
+    <text x="140" y="152" text-anchor="middle" fill="#607068" font-family="IBM Plex Mono" font-size="9">${(phase.energy * 100).toFixed(0)}% energy</text>
+  `;
+  
+  document.getElementById('clockTime').textContent = 
+    `${now.toLocaleTimeString('en-US', { hour12: false })} MYT · ${phase.phase} phase`;
+}
+
+function describeArc(cx, cy, r, startAngle, endAngle) {
+  const start = polarToCartesian(cx, cy, r, endAngle);
+  const end = polarToCartesian(cx, cy, r, startAngle);
+  const largeArc = endAngle - startAngle > 180 ? 1 : 0;
+  return `M ${start.x} ${start.y} A ${r} ${r} 0 ${largeArc} 0 ${end.x} ${end.y}`;
+}
+
+function polarToCartesian(cx, cy, r, angleDeg) {
+  const rad = (angleDeg - 90) * Math.PI / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function drawGauge(id, value, max, color) {
+  const svg = document.getElementById(id);
+  if (!svg) return;
+  const pct = Math.min(value / max, 1);
+  const r = 32;
+  const circ = 2 * Math.PI * r;
+  const offset = circ * (1 - pct * 0.75); // 270 degree arc
+  svg.innerHTML = `
+    <circle cx="40" cy="40" r="${r}" fill="none" stroke="#1a2a20" stroke-width="6" 
+      stroke-dasharray="${circ * 0.75} ${circ * 0.25}" transform="rotate(135 40 40)"/>
+    <circle cx="40" cy="40" r="${r}" fill="none" stroke="${color}" stroke-width="6"
+      stroke-dasharray="${circ * 0.75 * pct} ${circ}" transform="rotate(135 40 40)"
+      stroke-linecap="round" style="transition: stroke-dasharray 1.5s cubic-bezier(0.4,0,0.2,1)"/>
+  `;
+}
+
+function formatState(state) {
+  const lines = [];
+  lines.push(`<span class="state-key">schema:</span> <span class="state-str">${state.schema || '—'}</span>`);
+  lines.push(`<span class="state-key">timestamp:</span> <span class="state-val">${state.timestamp || '—'}</span>`);
+  lines.push(`<span class="state-key">operator:</span> <span class="state-val">${state.operator_id || '—'}</span>`);
+  if (state.biometric) {
+    lines.push(`<span class="state-key">biometric:</span>`);
+    for (const [k, v] of Object.entries(state.biometric)) {
+      lines.push(`  <span class="state-key">${k}:</span> <span class="state-val">${v}</span>`);
+    }
+  }
+  if (state.metrics?.cognitive) {
+    lines.push(`<span class="state-key">cognitive:</span>`);
+    for (const [k, v] of Object.entries(state.metrics.cognitive)) {
+      lines.push(`  <span class="state-key">${k}:</span> <span class="state-val">${typeof v === 'number' ? v.toFixed(1) : v}</span>`);
+    }
+  }
+  lines.push(`<span class="state-key">well_score:</span> <span class="state-val">${state.well_score?.toFixed(1) || '—'}</span>`);
+  lines.push(`<span class="state-key">freshness:</span> <span class="state-str">${state.freshness || '—'}</span>`);
+  lines.push(`<span class="state-key">truth:</span> <span class="state-str">${state.truth_status || '—'}</span>`);
+  lines.push(`<span class="state-key">honesty:</span> <span class="state-str">${state.honesty_banner || '—'}</span>`);
+  return lines.join('<br>');
+}
+
+async function fetchState() {
+  try {
+    const r = await fetch(STATE_URL);
+    const data = await r.json();
+    // The /health endpoint returns state directly or nested
+    const state = data.state || data;
+    
+    // Update vitality bars
+    if (state.well_score != null) {
+      document.getElementById('bar-well').style.width = state.well_score + '%';
+      document.getElementById('val-well').textContent = state.well_score.toFixed(1);
+    }
+    if (state.metrics?.cognitive?.clarity != null) {
+      const c = state.metrics.cognitive.clarity;
+      document.getElementById('bar-cognitive').style.width = (c * 10) + '%';
+      document.getElementById('val-cognitive').textContent = c.toFixed(1);
+      drawGauge('gauge-clarity', c, 10, '#00d4aa');
+      document.getElementById('gval-clarity').textContent = c.toFixed(1);
+    }
+    if (state.biometric?.peace2 != null) {
+      const p = state.biometric.peace2 * 100;
+      document.getElementById('bar-peace').style.width = p + '%';
+      document.getElementById('val-peace').textContent = (p).toFixed(0) + '%';
+    }
+    if (state.biometric?.amanah != null) {
+      const a = state.biometric.amanah * 100;
+      document.getElementById('bar-amanah').style.width = a + '%';
+      document.getElementById('val-amanah').textContent = (a).toFixed(0) + '%';
+    }
+    if (state.biometric?.kappa_r != null) {
+      const k = state.biometric.kappa_r * 100;
+      document.getElementById('bar-kappa').style.width = k + '%';
+      document.getElementById('val-kappa').textContent = (k).toFixed(0) + '%';
+    }
+    if (state.biometric?.delta_s != null) {
+      const d = state.biometric.delta_s * 100;
+      document.getElementById('bar-delta').style.width = d + '%';
+      document.getElementById('val-delta').textContent = d.toFixed(0) + '%';
+    }
+    if (state.metrics?.cognitive?.decision_fatigue != null) {
+      const f = state.metrics.cognitive.decision_fatigue;
+      drawGauge('gauge-fatigue', f, 10, '#f59e0b');
+      document.getElementById('gval-fatigue').textContent = f.toFixed(1);
+    }
+    if (state.biometric?.rasa) {
+      drawGauge('gauge-rasa', 80, 100, '#00d4ff'); // symbolic
+      document.getElementById('gval-rasa').textContent = state.biometric.rasa;
+    }
+    
+    // Update freshness badge
+    const badge = document.getElementById('freshnessBadge');
+    badge.textContent = state.freshness || 'UNKNOWN';
+    badge.style.color = state.freshness === 'FRESH' ? 'var(--green)' : 'var(--amber)';
+    
+    // Update state display
+    document.getElementById('stateDisplay').innerHTML = formatState(state);
+    
+    drawClock(state);
+  } catch (e) {
+    console.error('WELL fetch error:', e);
+    document.getElementById('freshnessBadge').textContent = 'OFFLINE';
+    document.getElementById('freshnessBadge').style.color = 'var(--red)';
+    drawClock({});
+  }
+}
+
+// ═══ WebMCP ═══
+if (typeof arifosWebMCP !== 'undefined') {
+  arifosWebMCP.registerReadonly('get_vitality_snapshot', 'Current vitality metrics from WELL organ', {},
+    async () => { const r = await fetch(STATE_URL); return r.json(); });
+  arifosWebMCP.registerReadonly('get_biological_clock', 'Circadian phase and energy level', {},
+    async () => { const h = new Date().getHours(); return getCircadianPhase(h); });
+  arifosWebMCP.registerReadonly('get_readiness_score', 'WELL readiness score', {},
+    async () => { const r = await fetch(STATE_URL); const d = await r.json(); return { well_score: d.well_score || d.state?.well_score }; });
+}
+
+// Init
+fetchState();
+drawClock({});
+setInterval(fetchState, 30000);
+setInterval(() => drawClock({}), 60000);
+</script>
+</body>
+</html>

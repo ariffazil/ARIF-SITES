@@ -24,6 +24,9 @@
 <link rel="alternate" type="application/json" href="/federation-manifest.json" title="Federation Manifest JSON">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context">
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<script src="/_shared/trinity-nav.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,6 +52,7 @@
 }
 </script>
 
+<script src="/_shared/trinity-nav.js" defer></script>
 <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
 <style>
 :root{
@@ -108,6 +112,7 @@ pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.7
 </head>
 <body>
 
+<trinity-nav></trinity-nav>
 <!-- ============ HEADER ============ -->
 <header>
   <h1>arifOS <span class="omega-color">Federation</span></h1>
@@ -353,6 +358,7 @@ pre{background:#000;padding:1rem;border-radius:4px;overflow-x:auto;font-size:0.7
 
 </main>
 
+<trinity-footer></trinity-footer>
 <footer>
   <p>
     Source: <a href="/api/status">/api/status</a> + <a href="/api/federation-probe">/api/federation-probe</a> ·

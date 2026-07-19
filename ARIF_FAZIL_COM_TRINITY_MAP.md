@@ -81,12 +81,12 @@
 ### arifOS MCP Gateway — `mcp.arif-fazil.com`
 | Attribute | Value |
 |-----------|-------|
-| **Purpose** | Live MCP server — 8 public governance tools |
+| **Purpose** | Live MCP server — 13 canonical governance tools |
 | **Type** | Dynamic (API-driven) |
 | **Health Endpoint** | `https://mcp.arif-fazil.com/health` |
 | **MCP Endpoint** | `https://mcp.arif-fazil.com/mcp` (canonical) |
 | **Primary Endpoint** | `https://arifOS.arif-fazil.com/mcp` (primary) |
-| **Tools Count** | 8 public tools (arif_* naming); diagnostics not public |
+| **Tools Count** | 13 canonical tools (arif_* naming) |
 | **Tech Stack** | FastMCP + FastAPI + Uvicorn (Docker: arifosmcp:8080) |
 | **Deployment** | Docker container via compose; Caddy reverse proxy |
 | **Key Features** | Trinity grid, thermodynamic metrics, F1-F13 floor enforcement |
@@ -205,8 +205,8 @@ fazil.com  arif-fazil.com arif-fazil.com arif-fazil.com
 ### MCP Server (`mcp.arif-fazil.com`)
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
-| `/health` | GET | Health status, tools_exposed_via_mcp, thermodynamic metrics |
-| `/tools` | GET | Public tool inventory (8 tools) |
+| `/health` | GET | Health status, 13 canonical tools, thermodynamic metrics |
+| `/tools` | GET | Tool inventory (13 tools) |
 | `/mcp` | POST | MCP protocol endpoint (canonical) |
 | `https://arifOS.arif-fazil.com/mcp` | POST | MCP primary endpoint |
 

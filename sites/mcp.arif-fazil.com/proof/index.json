@@ -1,16 +1,16 @@
 {
   "@context": "https://arif-fazil.com/proof/v1",
   "type": "MCPProof",
-  "generated_at": "2026-07-17T20:29:32Z",
+  "generated_at": "2026-07-12T16:55:33Z",
   "server": {
     "identity": "did:web:arif-fazil.com",
     "endpoint": "https://mcp.arif-fazil.com/mcp",
     "service": "ARIFOS MCP",
-    "release": "v2026.07.17-ZEN-SURVIVAL",
-    "version": "kanon-c62a6f1",
-    "commit": "c62a6f1",
+    "release": "v2026.07.09-SPINE-P0",
+    "version": "kanon-082adfa",
+    "commit": "082adfa",
     "branch": "main",
-    "build_time": "2026-07-17T19:43:37.019047+00:00",
+    "build_time": "2026-07-12T16:25:07.743949+00:00",
     "transport": "streamable-http",
     "protocol_version": "2025-11-25"
   },

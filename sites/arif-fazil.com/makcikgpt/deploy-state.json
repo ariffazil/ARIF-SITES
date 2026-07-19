@@ -1,0 +1,17 @@
+{
+  "app": "makcikgpt",
+  "version": "1.1.0",
+  "deployed_at": "2026-07-15T11:49:00Z",
+  "commit": "no-git",
+  "route": "/makcikgpt/",
+  "tools": ["ask_makcikgpt"],
+  "tool_count": 1,
+  "pattern": "symlink-swap",
+  "status": "LIVE",
+  "changes": "F4 refactor: RESPONSES extracted from HTML to responses.json. Same behavior, zero blast radius. Edit responses.json to extend corpus. WebMCP tool now registered after corpus load (idempotent).",
+  "files": ["index.html", "responses.json", "deploy-state.json"],
+  "shas": {
+    "index.html": "9948b1870b3c62da38e228198337542a427c2cfd798364e22eac9c4cc1a2a4d8",
+    "responses.json": "c49cc0955f2fd46c1344d8d2087f36eb7f07bf67445b8694f6c24c764ba4a3c2"
+  }
+}

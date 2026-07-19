@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-07-15T11:36:00Z",
+  "source_app": "makcikgpt",
+  "source_version": "1.0.0",
+  "sealed_by": "999",
+  "voice": "Pasar malam Makcik · F2 TRUTH verified",
+  "notes": "Pure refactor: identical behavior to inline RESPONSES. Edit this file to extend corpus, no HTML redeploy needed. Public-safe framing only — no named PETRONAS staff evaluation, no MSS operational details.",
+  "responses": [
+    {
+      "id": "dna-petronas",
+      "keywords": ["dna", "shared values", "cobe", "loyalty", "integrity"],
+      "answer": "**DNA PETRONAS** bermula dengan **4 Shared Values** (CoBE 2022): Loyalty, Integrity, Professionalism, Cohesiveness.\n\nDiusahakan oleh Azizan Zainul Abidin (CEO 1988) dengan falsafah **\"We, not me.\"**\n\nMission asal 1988: menambah nilai sumber minyak untuk kesejahteraan negara. Purpose 2020 (Tengku Taufik): \"progressive energy partner enriching lives sustainably.\"\n\nPerubahan dari \"bulldog\" (Rastam Hadi) ke \"global partner\" — evolusi identiti berdekad-dekad.",
+      "source": "petronas-dna.md",
+      "confidence": 0.92,
+      "epistemic_label": "OBS_DER",
+      "doctrine_guard": "public-safe, no named individual evaluation"
+    },
+    {
+      "id": "ceo-current",
+      "keywords": ["ceo", "ketua", "tengku", "taufik"],
+      "answer": "**CEO PETRONAS sekarang:** Tengku Muhammad Taufik (sejak 2020).\n\nBeliau yang umumkan **rightsizing 5,000** pekerjaan (Jun 2025), luncurkan **Gentari** (Jun 2022), dan commit kepada **NZCE 2050**.\n\nROACE di bawah kepimpinan beliau: 10.8% → 9.7% → 8.2% (jatuh 3 tahun berturut). Dividen ke kerajaan turun dari RM50B (FY2022) ke RM20B (FY2026).",
+      "source": "petronas-atm-kerajaan.md",
+      "confidence": 0.95,
+      "epistemic_label": "OBS",
+      "doctrine_guard": "factual public record"
+    },
+    {
+      "id": "dividend-kerajaan",
+      "keywords": ["dividen", "dividend", "kerajaan", "bayar"],
+      "answer": "**Dividen PETRONAS ke kerajaan:**\n\n- FY2022: **RM50 bilion** (49% payout, sejarah tertinggi)\n- FY2023-2025: **RM32 bilion** setiap tahun\n- FY2026: **RM20 bilion** (paling rendah dalam 9 tahun)\n\nJumlah sumbangan FY2025: **RM67.6 bilion** (~20% pendapatan persekutuan). PETRONAS adalah **ATM** (Anak Tun Mahathir) — mesin wang kerajaan.\n\nTapi FY2026 dividen jatuh ke RM20B. Kerajaan masih perlukan RM38B/tahun untuk subsidi minyak. Ada mismatch.",
+      "source": "petronas-atm-kerajaan.md",
+      "confidence": 0.94,
+      "epistemic_label": "OBS_DER",
+      "doctrine_guard": "public financials"
+    },
+    {
+      "id": "gentari",
+      "keywords": ["gentari", "solar", "ev", "hidrogen", "renewable"],
+      "answer": "**Gentari** — anak syarikat tenaga bersih PETRONAS, dilancarkan **Jun 2022**.\n\nFokus: solar, EV charging, hidrogen.\n\n**Masalah:** P&L mandiri **TIDAK PERNAH didedahkan** selama 4 tahun beroperasi. Kewangan disatukan dalam segmen \"Corporate & Others\" laporan tahunan.\n\nDalam rightsizing 2025 (5,000 pekerjaan dipotong), Gentari **tidak disentuh**. Ini ada yang tak kena — 5,000 orang kena potong, tapi syarikat yang tak disclose P&L kekal selamat.",
+      "source": "petronas-atm-kerajaan.md",
+      "confidence": 0.88,
+      "epistemic_label": "OBS_INT",
+      "doctrine_guard": "structural pattern, no individual blame"
+    },
+    {
+      "id": "rightsizing-2025",
+      "keywords": ["rightsizing", "potong", "kerja", "layoff", "5000"],
+      "answer": "**Rightsizing 2025:**\n\n5,000 pekerjaan dipotong — diumumkan sendiri oleh CEO Tengku Muhammad Taufik.\n\nSumber: Bloomberg 5 Jun 2025, PETRONAS press release 10 Jun 2025.\n\nYang menarik: **Gentari tidak disentuh** dalam rightsizing. Syarikat yang tak pernah disclose P&L tetap kekal, tapi 5,000 pekerja kena potong. ada vakum akauntabiliti di sini.",
+      "source": "petronas-atm-kerajaan.md",
+      "confidence": 0.90,
+      "epistemic_label": "OBS",
+      "doctrine_guard": "public announcement only"
+    },
+    {
+      "id": "roace-trend",
+      "keywords": ["roace", "return", "profit", "untung", "jatuh"],
+      "answer": "**ROACE PETRONAS jatuh 3 tahun berturut:**\n\n- FY2023: **10.8%**\n- FY2024: **9.7%**\n- FY2025: **8.2%**\n\nTunai bertambah (RM188.5bn → RM204.4bn), tapi pulangan atas modal jatuh. Ini bermakna PETRONAS menyimpan wang tapi **tak berjaya menambah nilai** dari modal yang dilaburkan.\n\nPattern ini tipikal untuk syarikat yang terlalu konservatif — simpan tunai tak guna untuk grow.",
+      "source": "petronas-atm-kerajaan.md",
+      "confidence": 0.91,
+      "epistemic_label": "OBS_DER",
+      "doctrine_guard": "public financials"
+    },
+    {
+      "id": "visi-misi",
+      "keywords": ["visi", "misi", "mission", "vision", "nzce", "2050"],
+      "answer": "**Visi PETRONAS:** To be a leading global energy partner enriching lives sustainably.\n\n**Misi:** Growing value through safe operations, anchoring Malaysia's energy security, leading energy transition, nurturing talent.\n\n**NZCE 2050:** Net Zero Carbon Emissions by 2050 — komitmi era Tengku Taufik.\n\n**Strategic Pillars:** Upstream (O&G), Downstream (refining), Gas (LNG), New Energy (Gentari), Digital.\n\nPerubahan dari Mission 1988 (\"tambah nilai minyak untuk negara\") ke Purpose 2020 (\"progressive energy partner\") — shift dari national utility ke global partner.",
+      "source": "petronas-visi-misi.md",
+      "confidence": 0.93,
+      "epistemic_label": "OBS",
+      "doctrine_guard": "public corporate statement"
+    },
+    {
+      "id": "ceo-history",
+      "keywords": ["azizan", "hassan", "marican", "ceo lama", "sejarah"],
+      "answer": "**Sejarah Kepimpinan PETRONAS:**\n\n1. **Rastam Hadi** (1974) — Founding ED. \"Fight like bulldogs.\" Bank Negara deputy governor.\n2. **Azizan Zainul Abidin** (1988) — Institutionalised 4 Shared Values. \"We, not me.\"\n3. **Shamsul Azhar Abbas** (2010) — \"He dared to face his political masters.\"\n4. **Hassan Marican** (1995-2010) — Globalisation era. \"It is not about Hassan Marican.\"\n5. **Wan Zulkiflee** (2015-2020) — Transition era.\n6. **Tengku Muhammad Taufik** (2020-present) — NZCE 2050, Gentari, Rightsizing.\n\nEvolusi dari \"bulldog\" ke \"global partner\" — setiap CEO ada signature tersendiri.",
+      "source": "petronas-dna.md",
+      "confidence": 0.94,
+      "epistemic_label": "OBS",
+      "doctrine_guard": "public historical record, no evaluation of individuals"
+    }
+  ]
+}

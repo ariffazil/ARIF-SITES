@@ -1,0 +1,610 @@
+/**
+ * ================================================================================
+ * TRINITY DESIGN SYSTEM — tokens.css
+ * ================================================================================
+ * 
+ * Single Source of Truth for arif-fazil.com ecosystem
+ * Version: 2026.04.11-SEAL
+ * 
+ * Philosophy: Ditempa Bukan Diberi — Forged, Not Given
+ * Governance: Canon-13 Regime (F1-F13 Constitutional Floors)
+ * 
+ * Theory: Anomalous Contrast — Ψ SOUL, Ω MIND, Δ BODY
+ * 
+ * Usage: 
+ *   1. Add <link rel="stylesheet" href="/shared/design-system/tokens.css"> to <head>
+ *   2. Add data-ring="SOUL|MIND|BODY" to <html> or section element
+ *   3. Use CSS classes: .trinity-card, .badge-verdict, .text-trinity-*, etc.
+ * 
+ * ================================================================================
+ */
+
+/* ================================================================================
+ * I. CSS CUSTOM PROPERTIES (Design Constitution)
+ * ================================================================================ */
+
+:root {
+  /* ─── TRINITY RING TOKENS ─────────────────────────────────────────────── */
+  /* These cascade based on [data-ring] attribute on ancestor element */
+
+  /* SOUL (Ψ) — Red Blood + Earth Tones: Human Life, Ground, F13 Sovereign ─── */
+  --soul-primary: #8B1A1A;     /* Blood red — life, igneous, earth core */
+  --soul-secondary: #B33030;   /* Arterial red — vitality */
+  --soul-accent: #D4AF37;     /* Gold — sovereignty, F13 */
+  --soul-earth: #6B4423;      /* Earth brown — grounding, strata */
+  --soul-terracotta: #C4703D; /* Terracotta — clay, human craft */
+  --soul-ochre: #CC9544;      /* Ochre — discovery, fossil */
+  --soul-bg: #1A0A0A;         /* Deep blood black */
+  --soul-bg-secondary: #2A1414; /* Blood-infused dark */
+  --soul-text: #F5E8E8;       /* Warm white with blood tint */
+
+  /* MIND (Ω) — Cyan: Logic, Constitutional Governance, F4 ───────────────── */
+  --mind-primary: #00D4AA;
+  --mind-secondary: #008866;
+  --mind-accent: #00FFAA;
+  --mind-bg: #0A1412;
+  --mind-text: #E1F5F0;
+
+  /* BODY (Δ) — Amber: Action, Protocol Execution ─────────────────────────── */
+  --body-primary: #D4A853;
+  --body-secondary: #C4791A;
+  --body-accent: #E3B341;
+  --body-bg: #1A1612;
+  --body-text: #F5F0E8;
+
+  /* ─── NEUTRAL PALETTE (F11 — Low Resource, High Clarity) ─────────────── */
+  --bg-deep: #0A0A0B;
+  --bg-surface: #141416;
+  --bg-elevated: #1C1C1E;
+  --bg-glass: rgba(22, 27, 34, 0.85);
+  
+  --text-primary: #F5F5F7;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  
+  --border-subtle: #27272A;
+  --border-default: #30363D;
+  --border-focus: #58A6FF;
+
+  /* ─── SYSTEM STATE TOKENS (F2 Truth — τ ≥ 0.99) ─────────────────────── */
+  --state-operational: #00C853;  /* SEAL verdict — green */
+  --state-pending: #FFD600;      /* SABAR — amber, processing */
+  --state-hold: #FF9500;         /* 888_HOLD — orange, awaiting human */
+  --state-void: #616161;         /* VOID — grey, fail-closed */
+  --state-danger: #D50000;       /* BREACH — red, critical */
+  --state-info: #58A6FF;         /* INFO — blue, neutral */
+
+  /* ─── TYPOGRAPHY (F4 Clarity — ΔS ≤ 0) ─────────────────────────────── */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  
+  /* Type Scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+
+  /* ─── SPACING (F10 Ontology — 4px base unit) ───────────────────────── */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+
+  /* ─── DEPTH & SHADOWS (F8 Anti-Dark Cleverness) ─────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-glow-soul: 0 0 30px rgba(212, 175, 55, 0.15);
+  --shadow-glow-mind: 0 0 30px rgba(0, 212, 170, 0.15);
+  --shadow-glow-body: 0 0 30px rgba(212, 168, 83, 0.15);
+
+  /* ─── BORDER RADIUS (Ring Personality) ─────────────────────────────── */
+  --radius-none: 0;         /* MIND — sharp, grid, precise */
+  --radius-sm: 4px;        /* subtle */
+  --radius-md: 8px;        /* default */
+  --radius-lg: 12px;      /* SOUL — jagged (using rounded to simulate organic) */
+  --radius-xl: 16px;       /* BODY — rounded, organic */
+
+  /* ─── MOTION (F5 Peace — Non-Escalatory) ───────────────────────────── */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ─── Z-INDEX SCALE ─────────────────────────────────────────────── */
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-modal: 1000;
+  --z-toast: 2000;
+}
+
+/* ================================================================================
+ * II. RING-SPECIFIC OVERRIDES
+ * ================================================================================ */
+
+/* ─── SOUL (Ψ) — Human Life, Blood Red + Earth Tones ──────────────────── */
+[data-ring="SOUL"] {
+  --ring-primary: var(--soul-primary);
+  --ring-secondary: var(--soul-secondary);
+  --ring-accent: var(--soul-accent);
+  --ring-bg: var(--soul-bg);
+  --ring-text: var(--soul-text);
+  --ring-glow: var(--shadow-glow-soul);
+  --ring-radius: var(--radius-lg);
+  --ring-font-display: 'Space Grotesk', var(--font-sans);
+  
+  /* Full earth-tone palette */
+  --color-blood: var(--soul-primary);
+  --color-arterial: var(--soul-secondary);
+  --color-gold: var(--soul-accent);
+  --color-earth: var(--soul-earth);
+  --color-terracotta: var(--soul-terracotta);
+  --color-ochre: var(--soul-ochre);
+  
+  /* Override glow for gold effect */
+  --shadow-glow-soul: 0 0 40px rgba(212, 175, 55, 0.25), 0 0 80px rgba(212, 175, 55, 0.1);
+  
+  /* Earth tones as accent palette */
+  --color-primary: var(--soul-primary);   /* Blood red */
+  --color-secondary: var(--soul-earth);   /* Earth brown */
+  --color-accent: var(--soul-accent);      /* Gold sovereign */
+}
+
+/* ─── MIND (Ω) — Constitutional Doctrine, Cyan Grid ─────────────────── */
+[data-ring="MIND"] {
+  --ring-primary: var(--mind-primary);
+  --ring-secondary: var(--mind-secondary);
+  --ring-accent: var(--mind-accent);
+  --ring-bg: var(--mind-bg);
+  --ring-text: var(--mind-text);
+  --ring-glow: var(--shadow-glow-mind);
+  --ring-radius: var(--radius-none);
+  --ring-font-display: var(--font-mono);
+  
+  --color-primary: var(--mind-primary);
+  --color-secondary: var(--mind-secondary);
+  --color-accent: var(--mind-accent);
+}
+
+/* ─── BODY (Δ) — Protocols, Amber Rounded ───────────────────────────── */
+[data-ring="BODY"] {
+  --ring-primary: var(--body-primary);
+  --ring-secondary: var(--body-secondary);
+  --ring-accent: var(--body-accent);
+  --ring-bg: var(--body-bg);
+  --ring-text: var(--body-text);
+  --ring-glow: var(--shadow-glow-body);
+  --ring-radius: var(--radius-xl);
+  --ring-font-display: var(--font-sans);
+  
+  --color-primary: var(--body-primary);
+  --color-secondary: var(--body-secondary);
+  --color-accent: var(--body-accent);
+}
+
+/* ================================================================================
+ * III. BASE STYLES
+ * ================================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================================================================================
+ * IV. SHARED UTILITY CLASSES
+ * ================================================================================ */
+
+/* ─── Typography Utilities ─────────────────────────────────────────── */
+.font-sans { font-family: var(--font-sans); }
+.font-mono { font-family: var(--font-mono); }
+
+.text-xs { font-size: var(--text-xs); }
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+.text-2xl { font-size: var(--text-2xl); }
+.text-3xl { font-size: var(--text-3xl); }
+.text-4xl { font-size: var(--text-4xl); }
+.text-5xl { font-size: var(--text-5xl); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+/* Trinity ring colors */
+.text-soul { color: var(--soul-primary); }
+.text-mind { color: var(--mind-primary); }
+.text-body { color: var(--body-primary); }
+
+/* ─── Trinity Card ────────────────────────────────────────────────── */
+.trinity-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--ring-radius, var(--radius-md));
+  padding: var(--space-6);
+  transition: border-color var(--duration-fast) var(--ease-default),
+              box-shadow var(--duration-fast) var(--ease-default);
+}
+
+.trinity-card:hover {
+  border-color: var(--ring-primary, var(--color-primary));
+  box-shadow: var(--ring-glow, var(--shadow-md));
+}
+
+/* ─── Trinity Badge ────────────────────────────────────────────────── */
+.trinity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.trinity-badge--soul {
+  background: rgba(139, 26, 26, 0.3);
+  color: var(--soul-accent);
+  border: 1px solid var(--soul-accent);
+}
+
+/* Earth tone utilities for SOUL */
+.text-blood { color: var(--soul-primary); }
+.text-arterial { color: var(--soul-secondary); }
+.text-earth { color: var(--soul-earth); }
+.text-terracotta { color: var(--soul-terracotta); }
+.text-ochre { color: var(--soul-ochre); }
+.text-gold-sovereign { color: var(--soul-accent); }
+
+.bg-blood { background-color: var(--soul-primary); }
+.bg-earth { background-color: var(--soul-earth); }
+.bg-terracotta { background-color: var(--soul-terracotta); }
+.bg-ochre { background-color: var(--soul-ochre); }
+.bg-gold-sovereign { background-color: var(--soul-accent); }
+
+/* Strata effect for SOUL — layered earth tones */
+.bg-strata {
+  background: linear-gradient(
+    180deg,
+    var(--soul-bg) 0%,
+    rgba(107, 68, 35, 0.3) 30%,
+    rgba(196, 112, 61, 0.2) 60%,
+    var(--soul-bg) 100%
+  );
+}
+
+/* Blood pulse animation for SOUL */
+@keyframes blood-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(139, 26, 26, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.3), 0 0 60px rgba(139, 26, 26, 0.2);
+  }
+}
+
+.animate-blood-pulse {
+  animation: blood-pulse 3s ease-in-out infinite;
+}
+
+.trinity-badge--mind {
+  background: rgba(0, 212, 170, 0.15);
+  color: var(--mind-primary);
+  border: 1px solid var(--mind-primary);
+}
+
+.trinity-badge--body {
+  background: rgba(212, 168, 83, 0.15);
+  color: var(--body-primary);
+  border: 1px solid var(--body-primary);
+}
+
+/* ─── Verdict Badges (System States) ─────────────────────────────── */
+.badge-verdict {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-seal {
+  background: var(--state-operational);
+  color: #000;
+}
+
+.badge-sabar {
+  background: var(--state-pending);
+  color: #000;
+}
+
+.badge-hold {
+  background: var(--state-hold);
+  color: #000;
+}
+
+.badge-void {
+  background: var(--state-void);
+  color: var(--text-primary);
+}
+
+.badge-breach {
+  background: var(--state-danger);
+  color: #fff;
+}
+
+/* ─── Glass Card Effect ───────────────────────────────────────────── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-default);
+  border-radius: var(--ring-radius, var(--radius-md));
+}
+
+/* ─── Trinity Ring Icons ───────────────────────────────────────────── */
+.ring-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--ring-radius, var(--radius-md));
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.ring-icon--soul {
+  background: linear-gradient(135deg, rgba(139, 26, 26, 0.4) 0%, rgba(212, 175, 55, 0.2) 100%);
+  color: var(--soul-accent);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.ring-icon--mind {
+  background: rgba(0, 212, 170, 0.15);
+  color: var(--mind-primary);
+}
+
+.ring-icon--body {
+  background: rgba(212, 168, 83, 0.15);
+  color: var(--body-primary);
+}
+
+/* ─── Navigation Pill (Trinity Nav) ──────────────────────────────── */
+.trinity-nav-item {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.trinity-nav-item:hover {
+  border-color: var(--ring-primary, var(--color-primary));
+  color: var(--ring-primary, var(--color-primary));
+}
+
+.trinity-nav-item--active {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: var(--soul-primary);
+  color: var(--soul-primary);
+}
+
+.trinity-nav-item--soul:hover { border-color: var(--soul-primary); color: var(--soul-primary); }
+.trinity-nav-item--mind:hover { border-color: var(--mind-primary); color: var(--mind-primary); }
+.trinity-nav-item--body:hover { border-color: var(--body-primary); color: var(--body-primary); }
+
+/* ─── Button Styles ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-default);
+}
+
+.btn--primary {
+  background: var(--ring-primary, var(--color-primary));
+  color: #000;
+}
+
+.btn--primary:hover {
+  filter: brightness(1.1);
+  box-shadow: var(--ring-glow, var(--shadow-md));
+}
+
+.btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+}
+
+.btn--ghost:hover {
+  border-color: var(--ring-primary, var(--color-primary));
+  color: var(--ring-primary, var(--color-primary));
+}
+
+/* ─── Code Block ─────────────────────────────────────────────────── */
+.code-block {
+  background: var(--bg-deep);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  overflow-x: auto;
+}
+
+.code-block code {
+  color: #00C853; /* verdigris green for code */
+}
+
+/* ─── Section Spacing ─────────────────────────────────────────────── */
+.section {
+  padding: var(--space-16) var(--space-4);
+}
+
+.section--compact {
+  padding: var(--space-10) var(--space-4);
+}
+
+/* ─── Container ───────────────────────────────────────────────────── */
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.container--narrow {
+  max-width: 48rem;
+}
+
+/* ─── Grid Utilities ──────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid--2, .grid--3, .grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Flex Utilities ───────────────────────────────────────────────── */
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+
+/* ─── Status Dot ──────────────────────────────────────────────────── */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.status-dot--operational { background: var(--state-operational); }
+.status-dot--pending { background: var(--state-pending); }
+.status-dot--hold { background: var(--state-hold); }
+.status-dot--void { background: var(--state-void); }
+.status-dot--danger { background: var(--state-danger); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ─── Divider ─────────────────────────────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-8) 0;
+}
+
+/* ─── Screen Reader Only ─────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================================================================
+ * V. TRINITY NAVIGATION (Shared across all sites)
+ * ================================================================================ */
+
+.trinity-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+}
+
+.trinity-nav__label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ================================================================================
+ * END — TRINITY DESIGN SYSTEM
+ * ================================================================================
+ * 
+ * Sealed under 999_SEAL
+ * Version: 2026.04.11
+ * 
+ * Ditempa Bukan Diberi — Forged, Not Given
+ * 
+ */

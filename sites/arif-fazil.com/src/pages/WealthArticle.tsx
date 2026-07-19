@@ -48,8 +48,18 @@ export function WealthArticle() {
           >
             ← WEALTH
           </Link>
-          <div className="section-label text-forge-gold">
-            Capital Intelligence · Ξ WEALTH · {meta.domain}
+          <div className="flex justify-between items-start flex-wrap gap-4 mt-2">
+            <div className="section-label text-forge-gold">
+              Capital Intelligence · Ξ WEALTH · {meta.domain}
+            </div>
+            <a 
+              href="https://wealth.arif-fazil.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-forge-orange/10 border border-forge-orange/30 text-forge-orange hover:bg-forge-orange/20 font-mono text-[0.65rem] uppercase tracking-wider transition-all"
+            >
+              Open the live WEALTH cockpit → wealth.arif-fazil.com
+            </a>
           </div>
           <h1 className="text-3xl md:text-5xl font-black italic uppercase leading-[0.9] tracking-tighter mb-4 mt-2">
             {meta.title}

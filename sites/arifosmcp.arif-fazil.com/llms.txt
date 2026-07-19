@@ -1,0 +1,109 @@
+# arifOS MCP — Constitutional AI Gateway
+## Machine & Agent Interface Specification
+
+**Version:** 2026.06.22-UNIFIED
+**Gateway:** https://mcp.arif-fazil.com
+**MCP Endpoint:** https://mcp.arif-fazil.com/mcp
+**Transport:** streamable-http (JSON-RPC 2.0)
+**Protocol:** MCP 2025-11-25
+**Seal:** Ditempa Bukan Diberi
+
+## What This Site Is
+arifOS MCP is the constitutional kernel for the arifOS constellation. It provides 27 governed tools enforcing F1-F13 constitutional floors on all AI-to-tool interactions, plus 15 MCP resources serving as the constitutional reference layer.
+
+## MCP Tools Available (27 live — 21 canonical + 6 canary)
+| Tool | Stage | Purpose |
+|------|-------|---------|
+| arif_session_init | 000 | Session anchor and identity binding |
+| arif_sense_observe | 111 | Reality grounding, search, and observation |
+| arif_evidence_fetch | 222 | Evidence-preserving web ingestion with citations |
+| arif_mind_reason | 333 | Multi-step reasoning, planning, critique |
+| arif_reply_compose | 444r | Governed response composition |
+| arif_kernel_route | 555 | Metabolic orchestration and syscall routing |
+| arif_route | 555 | Simplified intent router |
+| arif_triage | 555 | Constitutional preflight and holds check |
+| arif_kernel_status | 555 | Kernel telemetry and discovery |
+| arif_bridge_connect | 555 | Cross-organ bridge (canonical) |
+| arif_memory_recall | 555m | Vector memory and context retrieval |
+| arif_heart_critique | 666 | Ethical risk and vitality assessment |
+| arif_gateway_connect | 666g | Cross-agent federation routing |
+| arif_ops_measure | 777 | Thermodynamic telemetry and measurement |
+| arif_judge_deliberate | 888 | Constitutional verdict engine (SEAL/SABAR/HOLD/VOID) |
+| arif_forge_execute | 010 | Execution substrate (SEAL required for mutation) |
+| arif_vault_seal | 999 | Immutable Merkle ledger anchoring |
+| arif_session_init | 000 | Session anchor |
+| arif_ping | canary | Liveness probe |
+| arif_schema_echo | canary | Schema diagnostic |
+| arif_version_echo | canary | Version probe |
+| arif_transport_echo | canary | Transport diagnostic |
+| arif_initialize_probe | canary | Initialize handshake test |
+| arif_conformance_report | canary | Conformance spine report |
+
+Full tool manifest: https://mcp.arif-fazil.com/.well-known/mcp/server.json
+
+## MCP Resources (15 total — Constitutional Reference Layer)
+All resources are text/plain. Served via MCP resources/list + resources/read.
+These are the kernel's memory, not its muscles.
+
+### Constitutional Core
+| URI | Description |
+|-----|-------------|
+| arifos://doctrine | Immutable 13-floor constitution (F1–F13) |
+| arifos://trinity | AAA Trinity lane architecture |
+| arifos://schema | Complete MCP surface blueprint |
+| arifos://civilization | Federation organ ontology |
+| arifos://identity | Sovereign identity manifest |
+| arifos://bootstrap | Full federation world-model (v2026.06.14) |
+
+### Execution & Sealing
+| URI | Description |
+|-----|-------------|
+| arifos://seal-readiness | Vault integrity + seal gate requirements |
+| arifos://jurisdiction | Autonomy bands + CapabilityGrant registry |
+
+### Memory, Vitals, Knowledge
+| URI | Description |
+|-----|-------------|
+| arifos://memory | Six-layer memory architecture (L1–L6) |
+| arifos://vitals | Constitutional metrics reference |
+| tree777://index | TREE777 wiki full index |
+| runner://policy/v1 | Context runner pinned policy |
+| arifos://human/metabolized | Metabolized sovereign context |
+
+### Supplemental (auto-generated)
+| URI | Description |
+|-----|-------------|
+| arifos://mcp-alignment | MCP spec conformance matrix |
+| arifos://resources/index | Machine-readable JSON resource catalog |
+
+## How to Invoke (JSON-RPC 2.0)
+POST https://mcp.arif-fazil.com/mcp
+Headers: Content-Type: application/json, Accept: application/json, text/event-stream
+Body: {"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"TOOL_NAME","arguments":{...}}}
+
+## MCP Discovery
+- /.well-known/mcp/server.json — Full tool manifest (auto-generated)
+- /.well-known/mcp/server-card.json — Server capability card
+- GET https://mcp.arif-fazil.com/health — Health status
+- GET https://mcp.arif-fazil.com/tools — Tool list
+- GET https://mcp.arif-fazil.com/prompts — Prompt list
+- GET https://mcp.arif-fazil.com/resources — Resource list
+- arifos://resources/index — Machine-readable resource catalog
+- arifos://mcp-alignment — MCP conformance matrix
+
+## Example Invocation
+curl -X POST https://mcp.arif-fazil.com/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"arif_sense_observe","arguments":{"query":"test connectivity"}}}'
+
+## For AI Agents
+- Crawl: https://mcp.arif-fazil.com/sitemap.xml
+- Bootstrap: arifos://bootstrap (full world-model in one fetch)
+- Source: https://github.com/ariffazil/arifOS
+
+## Evidence Classification (used throughout)
+- OBS: Direct observation (verified)
+- DER: Derived (analyst-graded)
+- INT: Interpretation (unconfirmed)
+- SPEC: Speculative (flagged)

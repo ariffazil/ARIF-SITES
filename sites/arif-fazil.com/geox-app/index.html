@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOX — Earth Intelligence | arif-fazil.com</title>
+<meta name="description" content="GEOX Earth intelligence — interactive geological map powered by Macrostrat. Inspect formations, ages, lithology, and basins worldwide.">
+<link rel="canonical" href="https://arif-fazil.com/geox/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #06080c; --surface: #0c1018; --surface2: #111820; --surface3: #182030;
+    --border: #1a2840; --border2: #243858;
+    --cyan: #00d4aa; --cyan-dim: #008866; --cyan-bright: #00ffcc;
+    --gold: #d4a853; --gold-dim: #8a6a30;
+    --text: #e0e8f0; --text-dim: #607890; --text-mid: #90a0b8;
+    --red: #ef4444; --amber: #f59e0b; --green: #22c55e;
+    --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-display: 'DM Serif Display', serif;
+  }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--font-sans);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border); flex-shrink: 0; z-index: 10; background: var(--surface); }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--cyan); text-decoration: none; }
+  .logo sup { font-family: var(--font-mono); font-size: 0.45rem; color: var(--cyan-dim); vertical-align: super; }
+  .nav { display: flex; gap: 1.5rem; }
+  .nav a { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+  .nav a:hover { color: var(--cyan); }
+  .coords { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); }
+  .attribution { font-family: var(--font-mono); font-size: 0.5rem; color: var(--text-dim); }
+
+  /* ── MAP ── */
+  .map-wrap { flex: 1; position: relative; }
+  #map { width: 100%; height: 100%; }
+
+  /* ── INSPECTOR PANEL ── */
+  .inspector {
+    position: absolute; top: 12px; right: 12px; width: 360px; max-height: calc(100% - 24px);
+    background: var(--surface); border: 1px solid var(--border); z-index: 20;
+    display: flex; flex-direction: column; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .inspector.hidden { transform: translateX(380px); }
+  .inspector-header { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .inspector-title { font-family: var(--font-display); font-size: 1rem; color: var(--cyan); }
+  .inspector-close { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 1.2rem; padding: 4px; }
+  .inspector-close:hover { color: var(--text); }
+  .inspector-body { padding: 16px; overflow-y: auto; flex: 1; }
+  .inspector-empty { text-align: center; padding: 3rem 1rem; color: var(--text-dim); }
+  .inspector-empty-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .inspector-empty-text { font-family: var(--font-mono); font-size: 0.7rem; }
+
+  /* Detail fields */
+  .detail-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+  .detail-value { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; text-align: right; max-width: 60%; word-break: break-word; }
+  .detail-value.color-swatch { display: flex; align-items: center; gap: 8px; }
+  .color-swatch-box { width: 16px; height: 16px; border-radius: 3px; border: 1px solid var(--border2); flex-shrink: 0; }
+
+  /* Age bar */
+  .age-bar { margin-top: 12px; padding: 12px; background: var(--surface2); border: 1px solid var(--border); }
+  .age-bar-label { font-family: var(--font-mono); font-size: 0.5rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 6px; }
+  .age-bar-track { height: 8px; background: var(--border); border-radius: 4px; position: relative; overflow: hidden; }
+  .age-bar-fill { height: 100%; border-radius: 4px; position: absolute; }
+  .age-bar-range { display: flex; justify-content: space-between; margin-top: 4px; }
+  .age-bar-range span { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); }
+
+  /* ── LAYER TOGGLE ── */
+  .layer-panel {
+    position: absolute; bottom: 12px; left: 12px; z-index: 20;
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 12px 16px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .layer-panel-title { font-family: var(--font-mono); font-size: 0.5rem; color: var(--cyan-dim); text-transform: uppercase; letter-spacing: 0.15em; }
+  .layer-toggle { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+  .layer-toggle input { accent-color: var(--cyan); }
+  .layer-toggle label { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-mid); cursor: pointer; }
+
+  /* ── LEGEND ── */
+  .legend {
+    position: absolute; bottom: 12px; right: 12px; z-index: 20;
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 12px 16px; max-width: 200px;
+  }
+  .legend-title { font-family: var(--font-mono); font-size: 0.5rem; color: var(--cyan-dim); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; }
+  .legend-items { display: flex; flex-direction: column; gap: 4px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-color { width: 14px; height: 10px; border-radius: 2px; border: 1px solid var(--border2); }
+  .legend-label { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); }
+
+  /* ── LOADING ── */
+  .loading-overlay {
+    position: absolute; inset: 0; z-index: 30; background: var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: opacity 0.5s;
+  }
+  .loading-overlay.done { opacity: 0; pointer-events: none; }
+  .loading-text { font-family: var(--font-display); font-size: 1.5rem; color: var(--cyan); margin-bottom: 1rem; }
+  .loading-sub { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); }
+  .loading-bar { width: 200px; height: 3px; background: var(--border); margin-top: 1rem; border-radius: 2px; overflow: hidden; }
+  .loading-bar-fill { height: 100%; background: var(--cyan); width: 0%; transition: width 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .inspector { width: 100%; max-height: 50%; bottom: 0; top: auto; right: 0; border-radius: 12px 12px 0 0; }
+    .inspector.hidden { transform: translateY(100%); }
+    .layer-panel { display: none; }
+    .legend { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <a class="logo" href="/geox/">GEOX<sup>EARTH</sup></a>
+    <nav class="nav">
+      <a href="/wealth/">Wealth</a>
+      <a href="/well/">Well</a>
+      <a href="/geox/" style="color:var(--cyan)">GEOX</a>
+      <a href="/makcikgpt/">MakcikGPT</a>
+      <a href="https://geox.arif-fazil.com/mcp">MCP API</a>
+    </nav>
+  </div>
+  <span class="coords" id="coordsDisplay">—</span>
+</header>
+
+<!-- MAP -->
+<div class="map-wrap">
+  <div id="map"></div>
+
+  <!-- Loading -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-text">GEOX</div>
+    <div class="loading-sub">Loading geological map from Macrostrat...</div>
+    <div class="loading-bar"><div class="loading-bar-fill" id="loadingBar"></div></div>
+  </div>
+
+  <!-- Inspector -->
+  <div class="inspector" id="inspector">
+    <div class="inspector-header">
+      <span class="inspector-title" id="inspectorTitle">Click to Inspect</span>
+      <button class="inspector-close" onclick="closeInspector()">×</button>
+    </div>
+    <div class="inspector-body" id="inspectorBody">
+      <div class="inspector-empty">
+        <div class="inspector-empty-icon">🔍</div>
+        <div class="inspector-empty-text">
+          Click any point on the map to inspect<br>geological formation details.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layer Toggle -->
+  <div class="layer-panel">
+    <div class="layer-panel-title">Layers</div>
+    <div class="layer-toggle">
+      <input type="checkbox" id="layerGeo" checked onchange="toggleLayer('geology')">
+      <label for="layerGeo">Geological Map</label>
+    </div>
+    <div class="layer-toggle">
+      <input type="checkbox" id="layerLines" checked onchange="toggleLayer('lines')">
+      <label for="layerLines">Faults & Structures</label>
+    </div>
+    <div class="layer-toggle">
+      <input type="checkbox" id="layerLabels" checked onchange="toggleLayer('labels')">
+      <label for="layerLabels">Labels</label>
+    </div>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend" id="legend">
+    <div class="legend-title">Age Legend</div>
+    <div class="legend-items" id="legendItems"></div>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.1.1/dist/maplibre-gl.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// GEOX Earth Intelligence — Macrostrat Geological Map
+// ═══════════════════════════════════════════════════════════════
+
+const MACROSTRAT_TOKEN = 'PLACEHOLDER_REDACTED';
+const MACROSTRAT_TILE_URL = 'https://tiles.macrostrat.org/carto/basemap/{z}/{x}/{y}.mvt';
+let geoTileAvailable = true; // Will be set false if tiles fail
+
+// Geological time periods with colors (simplified ICS)
+const GEO_PERIODS = [
+  { name: 'Quaternary', min: 0, max: 2.58, color: '#f9f97f' },
+  { name: 'Neogene', min: 2.58, max: 23.03, color: '#ffff00' },
+  { name: 'Paleogene', min: 23.03, max: 66, color: '#fd9a52' },
+  { name: 'Cretaceous', min: 66, max: 145, color: '#7fc64e' },
+  { name: 'Jurassic', min: 145, max: 201.4, color: '#34b4e8' },
+  { name: 'Triassic', min: 201.4, max: 251.9, color: '#a56bba' },
+  { name: 'Permian', min: 251.9, max: 298.9, color: '#f4436c' },
+  { name: 'Carboniferous', min: 298.9, max: 358.9, color: '#67a599' },
+  { name: 'Devonian', min: 358.9, max: 419.2, color: '#cb8c37' },
+  { name: 'Silurian', min: 419.2, max: 443.8, color: '#b3e1b6' },
+  { name: 'Ordovician', min: 443.8, max: 485.4, color: '#009270' },
+  { name: 'Cambrian', min: 485.4, max: 538.8, color: '#7fa056' },
+  { name: 'Precambrian', min: 538.8, max: 4600, color: '#f7f777' },
+];
+
+function getAgeColor(ageStr) {
+  if (!ageStr) return '#666';
+  const age = parseFloat(ageStr);
+  if (isNaN(age)) return '#888';
+  for (const p of GEO_PERIODS) {
+    if (age >= p.min && age < p.max) return p.color;
+  }
+  return '#999';
+}
+
+function getPeriodForAge(ageMa) {
+  for (const p of GEO_PERIODS) {
+    if (ageMa >= p.min && ageMa < p.max) return p.name;
+  }
+  return 'Unknown';
+}
+
+// ═══ MAP INIT ═══
+const map = new maplibregl.Map({
+  container: 'map',
+  style: {
+    version: 8,
+    name: 'GEOX Dark',
+    sources: {
+      'carto-dark': {
+        type: 'raster',
+        tiles: [
+          'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+          'https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png',
+        ],
+        tileSize: 256,
+        attribution: '© CARTO © OpenStreetMap',
+      },
+      'macrostrat-geo': {
+        type: 'vector',
+        tiles: [
+          MACROSTRAT_TILE_URL,
+        ],
+        maxzoom: 15,
+        attribution: '© Macrostrat CC-BY 4.0',
+      },
+    },
+    layers: [
+      {
+        id: 'carto-dark-layer',
+        type: 'raster',
+        source: 'carto-dark',
+        paint: { 'raster-opacity': 0.6 },
+      },
+      {
+        id: 'geology-units',
+        type: 'fill',
+        source: 'macrostrat-geo',
+        'source-layer': 'units',
+        paint: {
+          'fill-color': [
+            'coalesce',
+            ['get', 'color'],
+            '#666',
+          ],
+          'fill-opacity': [
+            'interpolate', ['linear'], ['zoom'],
+            2, 0.15,
+            5, 0.35,
+            8, 0.55,
+            12, 0.7,
+          ],
+        },
+      },
+      {
+        id: 'geology-lines',
+        type: 'line',
+        source: 'macrostrat-geo',
+        'source-layer': 'lines',
+        paint: {
+          'line-color': '#ff6644',
+          'line-width': [
+            'interpolate', ['linear'], ['zoom'],
+            4, 0.5,
+            8, 1,
+            12, 2,
+          ],
+          'line-opacity': 0.6,
+        },
+      },
+    ],
+  },
+  center: [109.0, 4.0], // Malaysia/Southeast Asia
+  zoom: 4,
+  minZoom: 2,
+  maxZoom: 15,
+  attributionControl: true,
+});
+
+// ═══ CONTROLS ═══
+map.addControl(new maplibregl.NavigationControl(), 'top-left');
+map.addControl(new maplibregl.ScaleControl({ maxWidth: 200 }), 'bottom-left');
+
+// ═══ LOADING ═══
+const loadBar = document.getElementById('loadingBar');
+let loadProgress = 0;
+
+map.on('load', () => {
+  loadProgress = 100;
+  loadBar.style.width = '100%';
+  setTimeout(() => {
+    document.getElementById('loadingOverlay').classList.add('done');
+  }, 500);
+  updateLegend();
+  
+  // Check if geology tiles loaded
+  setTimeout(() => {
+    const source = map.getSource('macrostrat-geo');
+    if (source && !source.loaded()) {
+      geoTileAvailable = false;
+      console.warn('GEOX: Macrostrat tiles unavailable — using CARTO basemap only');
+    }
+  }, 5000);
+});
+
+map.on('error', (e) => {
+  if (e.sourceId === 'macrostrat-geo') {
+    geoTileAvailable = false;
+    console.warn('GEOX: Macrostrat tile error:', e.error?.message || 'unknown');
+  }
+});
+
+map.on('sourcedata', (e) => {
+  if (e.sourceId === 'macrostrat-geo' && e.isSourceLoaded) {
+    loadProgress = Math.min(loadProgress + 30, 90);
+    loadBar.style.width = loadProgress + '%';
+  }
+});
+
+// ═══ CLICK TO INSPECT ═══
+map.on('click', async (e) => {
+  const { lng, lat } = e.lngLat;
+  
+  // Update coords display
+  document.getElementById('coordsDisplay').textContent = 
+    `${lat.toFixed(4)}°${lat >= 0 ? 'N' : 'S'} · ${lng.toFixed(4)}°${lng >= 0 ? 'E' : 'W'}`;
+  
+  // Query geology features at click point
+  const features = map.queryRenderedFeatures(e.point, { layers: ['geology-units'] });
+  
+  if (features.length > 0) {
+    const f = features[0].properties;
+    showInspector(f, lng, lat);
+  } else {
+    // Try the Macrostrat API for point query
+    try {
+      const r = await fetch(`https://api.macrostrat.org/api/v2/geologic_units/map?lat=${lat}&lng=${lng}&format=json`);
+      const data = await r.json();
+      if (data.success?.data?.length > 0) {
+        showInspector(data.success.data[0], lng, lat);
+      } else {
+        showEmptyInspector(lng, lat);
+      }
+    } catch (err) {
+      showEmptyInspector(lng, lat);
+    }
+  }
+});
+
+// Cursor
+map.on('mousemove', 'geology-units', () => { map.getCanvas().style.cursor = 'pointer'; });
+map.on('mouseleave', 'geology-units', () => { map.getCanvas().style.cursor = ''; });
+
+function showInspector(f, lng, lat) {
+  const inspector = document.getElementById('inspector');
+  const body = document.getElementById('inspectorBody');
+  const title = document.getElementById('inspectorTitle');
+  
+  inspector.classList.remove('hidden');
+  
+  const name = f.name || f.strat_name || f.descrip || 'Unnamed unit';
+  const color = f.color || getAgeColor(f.best_b_age);
+  const age = f.age || f.descrip || '—';
+  const lith = f.lith || '—';
+  const stratName = f.strat_name || '—';
+  const sourceId = f.source_id || '—';
+  const bestTop = f.best_t_age ? parseFloat(f.best_t_age).toFixed(1) + ' Ma' : '—';
+  const bestBot = f.best_b_age ? parseFloat(f.best_b_age).toFixed(1) + ' Ma' : '—';
+  const period = f.t_int_name || (f.best_b_age ? getPeriodForAge(parseFloat(f.best_b_age)) : '—');
+  const comments = f.comments || '';
+  
+  title.textContent = name;
+  
+  // Age bar
+  let ageBarHtml = '';
+  if (f.best_b_age && f.best_t_age) {
+    const botAge = parseFloat(f.best_b_age);
+    const topAge = parseFloat(f.best_t_age);
+    const maxAge = 540; // Cambrian base
+    const leftPct = ((maxAge - botAge) / maxAge * 100).toFixed(1);
+    const widthPct = (((botAge - topAge) / maxAge) * 100).toFixed(1);
+    ageBarHtml = `
+      <div class="age-bar">
+        <div class="age-bar-label">Geological Time Range</div>
+        <div class="age-bar-track">
+          <div class="age-bar-fill" style="left:${leftPct}%;width:${widthPct}%;background:${color};"></div>
+        </div>
+        <div class="age-bar-range">
+          <span>${bestBot}</span>
+          <span style="color:${color};font-weight:600;">${period}</span>
+          <span>${bestTop}</span>
+        </div>
+      </div>`;
+  }
+  
+  body.innerHTML = `
+    <div class="detail-row">
+      <span class="detail-label">Name</span>
+      <span class="detail-value" style="color:var(--cyan);font-weight:600;">${name}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Color</span>
+      <span class="detail-value color-swatch">
+        <span class="color-swatch-box" style="background:${color};"></span>
+        ${color}
+      </span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Lithology</span>
+      <span class="detail-value">${lith}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Strat Name</span>
+      <span class="detail-value">${stratName}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Age (as mapped)</span>
+      <span class="detail-value">${age}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Period</span>
+      <span class="detail-value" style="color:${color};">${period}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Top Age</span>
+      <span class="detail-value">${bestTop}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Base Age</span>
+      <span class="detail-value">${bestBot}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Source ID</span>
+      <span class="detail-value">${sourceId}</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-label">Coordinates</span>
+      <span class="detail-value">${lat.toFixed(4)}°, ${lng.toFixed(4)}°</span>
+    </div>
+    ${comments ? `<div class="detail-row"><span class="detail-label">Notes</span><span class="detail-value">${comments}</span></div>` : ''}
+    ${ageBarHtml}
+    <div style="margin-top:12px;font-family:var(--font-mono);font-size:0.5rem;color:var(--text-dim);text-align:center;">
+      Data: Macrostrat CC-BY 4.0 · GEBCO · CARTO
+    </div>
+  `;
+}
+
+function showEmptyInspector(lng, lat) {
+  const inspector = document.getElementById('inspector');
+  const body = document.getElementById('inspectorBody');
+  const title = document.getElementById('inspectorTitle');
+  
+  inspector.classList.remove('hidden');
+  title.textContent = 'No Data';
+  body.innerHTML = `
+    <div class="inspector-empty">
+      <div class="inspector-empty-icon">🗺️</div>
+      <div class="inspector-empty-text">
+        No geological data at this point.<br>
+        <span style="color:var(--text-dim);font-size:0.6rem;">${lat.toFixed(4)}°, ${lng.toFixed(4)}°</span><br><br>
+        Try clicking on land areas where geological mapping is available.
+      </div>
+    </div>`;
+}
+
+function closeInspector() {
+  document.getElementById('inspector').classList.add('hidden');
+}
+
+// ═══ LAYER TOGGLE ═══
+function toggleLayer(layer) {
+  if (layer === 'geology') {
+    const vis = document.getElementById('layerGeo').checked ? 'visible' : 'none';
+    map.setLayoutProperty('geology-units', 'visibility', vis);
+  } else if (layer === 'lines') {
+    const vis = document.getElementById('layerLines').checked ? 'visible' : 'none';
+    map.setLayoutProperty('geology-lines', 'visibility', vis);
+  }
+}
+
+// ═══ LEGEND ═══
+function updateLegend() {
+  const container = document.getElementById('legendItems');
+  const periods = GEO_PERIODS.filter(p => p.max < 600).slice(0, 10);
+  container.innerHTML = periods.map(p => `
+    <div class="legend-item">
+      <span class="legend-color" style="background:${p.color};"></span>
+      <span class="legend-label">${p.name}</span>
+    </div>
+  `).join('');
+}
+
+// ═══ WebMCP ═══
+if (typeof arifosWebMCP !== 'undefined') {
+  arifosWebMCP.registerReadonly('get_basin_info', 'Get geological basin information at coordinates',
+    { lat: 'number', lng: 'number' },
+    async (input) => {
+      const r = await fetch(`https://api.macrostrat.org/api/v2/columns?lat=${input.lat}&lng=${input.lng}&format=json`);
+      return r.json();
+    });
+  arifosWebMCP.registerReadonly('get_formation_detail', 'Get geological formation details at coordinates',
+    { lat: 'number', lng: 'number' },
+    async (input) => {
+      const r = await fetch(`https://api.macrostrat.org/api/v2/geologic_units/map?lat=${input.lat}&lng=${input.lng}&format=json`);
+      return r.json();
+    });
+  arifosWebMCP.registerReadonly('get_earth_globe_state', 'Current map viewport state',
+    {},
+    async () => {
+      const c = map.getCenter();
+      return { lat: c.lat, lng: c.lng, zoom: map.getZoom() };
+    });
+}
+
+// ═══ Keyboard shortcuts ═══
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeInspector();
+  if (e.key === 'r' && !e.ctrlKey && !e.metaKey) {
+    map.flyTo({ center: [109.0, 4.0], zoom: 4 });
+  }
+});
+</script>
+</body>
+</html>

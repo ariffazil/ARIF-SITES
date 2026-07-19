@@ -1,0 +1,11 @@
+{
+  "app": "geox-earth-globe",
+  "version": "1.0.0",
+  "deployed_at": "2026-07-15T10:52:22Z",
+  "commit": "no-git",
+  "route": "/geox/",
+  "tools": ["get_basin_info", "get_formation_detail", "get_earth_globe_state"],
+  "tool_count": 3,
+  "pattern": "symlink-swap",
+  "status": "LIVE"
+}

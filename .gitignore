@@ -39,4 +39,3 @@ test-results/
 
 # Backup files (F1 AMANAH — keep local, not in version control)
 *.bak-*
-sites/
