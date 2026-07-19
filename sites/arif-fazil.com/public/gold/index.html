@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold — Cognitive Clarity Dashboard · WEALTH</title>
+<meta name="description" content="Sovereign gold trading synthesis. Technical + world context in one scan. Evidence-gated, human-decided.">
+<link rel="canonical" href="https://wealth.arif-fazil.com/gold/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- TradingView Lightweight Charts -->
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+
+<!-- Unified Federation Header -->
+<script src="/_shared/unified-header-loader.js" defer></script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   GOLD COGNITIVE CLARITY DASHBOARD
+   Design: "Buka pagi, tengok chart, decide trade" — 60 seconds
+   Stack: Pure HTML/CSS/JS, TradingView Lightweight Charts
+   Theme: Dark sovereign, inherited from wealth.arif-fazil.com
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Core palette (inherited from wealth site) ── */
+  --bg:          #07070d;
+  --surface:     #0d0d1a;
+  --surface2:    #111120;
+  --surface3:    #161628;
+  --border:      #1e1e32;
+  --border2:     #2c2c4a;
+
+  /* ── Accent spectrum ── */
+  --accent:        #c9a84c;
+  --accent-dim:    #7a6028;
+  --accent-bright: #f0c840;
+  --accent-bg:     rgba(201,168,76,0.06);
+  --accent-glow:   rgba(201,168,76,0.15);
+
+  /* ── Text hierarchy ── */
+  --text:        #e2d8c8;
+  --text-dim:    #6a6050;
+  --text-mid:    #9a9080;
+  --text-bright: #f5f0e8;
+
+  /* ── Signal colors ── */
+  --green:       #22c55e;
+  --green-dim:   rgba(34,197,94,0.12);
+  --red:         #ef4444;
+  --red-dim:     rgba(239,68,68,0.12);
+  --amber:       #f59e0b;
+  --amber-dim:   rgba(245,158,11,0.12);
+  --cyan:        #00d4aa;
+  --cyan-dim:    rgba(0,212,170,0.12);
+  --blue:        #3b82f6;
+  --blue-dim:    rgba(59,130,246,0.12);
+
+  /* ── Spacing ── */
+  --gap-xs: 0.25rem;
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --gap-lg: 1.5rem;
+  --gap-xl: 2rem;
+  --gap-2xl: 3rem;
+
+  /* ── Typography ── */
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── Atmospheric background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, rgba(201,168,76,0.04) 0%, transparent 60%) 0%, transparent 60%) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(0,212,170,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Shell ── */
+/* ── APEX Panel ── */
+.apex-panel { position: relative; z-index: 1; padding: 0 var(--gap-xl); margin-top: var(--gap-md); }
+.apex-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: var(--gap-lg) var(--gap-xl); }
+.apex-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--gap-md); }
+.apex-title { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; }
+.apex-verdict { font-family: var(--font-mono); font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 6px; }
+.apex-verdict.seal { background: var(--green-dim); color: var(--green); }
+.apex-verdict.proceed { background: rgba(34,197,94,0.08); color: #4ade80; }
+.apex-verdict.sabar { background: var(--amber-dim); color: var(--amber); }
+.apex-verdict.hold { background: var(--red-dim); color: var(--red); }
+.apex-verdict-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); margin-left: auto; }
+.apex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); margin-bottom: var(--gap-md); }
+.apex-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: var(--gap-md); text-align: center; }
+.apex-card-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.apex-card-value { font-family: var(--font-mono); font-size: 28px; font-weight: 600; color: var(--text-bright); line-height: 1.2; }
+.apex-card-sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.apex-state-card .apex-card-value.clarity { color: var(--green); }
+.apex-state-card .apex-card-value.stable { color: var(--cyan); }
+.apex-state-card .apex-card-value.chaos { color: var(--red); }
+.apex-primitives { display: flex; gap: var(--gap-lg); flex-wrap: wrap; }
+.apex-prim { font-family: var(--font-mono); font-size: 12px; color: var(--text-mid); padding: 3px 10px; background: var(--surface3); border-radius: 4px; }
+.apex-high { color: var(--green); }
+.apex-low { color: var(--red); }
+/* ── Events Panel ── */
+.events-panel { position: relative; z-index: 1; padding: 0 var(--gap-xl); margin-top: var(--gap-md); }
+.events-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: var(--gap-lg) var(--gap-xl); }
+.events-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--gap-md); }
+.events-title { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; }
+.events-source { font-size: 11px; color: var(--text-dim); }
+.events-list { display: flex; flex-direction: column; gap: var(--gap-xs); }
+.events-loading { color: var(--text-dim); font-size: 13px; }
+.event-row { display: grid; grid-template-columns: 100px 80px 1fr 80px 80px 80px; gap: var(--gap-sm); align-items: center; padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 12px; }
+.event-row.high { background: rgba(239,68,68,0.06); border-left: 3px solid var(--red); }
+.event-row.medium { background: rgba(245,158,11,0.04); border-left: 3px solid var(--amber); }
+.event-date { color: var(--text-dim); }
+.event-time { color: var(--text-mid); }
+.event-name { color: var(--text-bright); font-weight: 500; }
+.event-actual { color: var(--text-bright); font-weight: 600; }
+.event-forecast { color: var(--text-mid); }
+.event-previous { color: var(--text-dim); }
+.event-actual.positive { color: var(--green); }
+.event-actual.negative { color: var(--red); }
+.events-empty { color: var(--text-dim); font-size: 13px; font-style: italic; }
+.event-alert { padding: 12px 16px; border-radius: 8px; font-family: var(--font-mono); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.event-alert.critical { background: rgba(239,68,68,0.15); border: 2px solid var(--red); color: var(--red); animation: pulse-alert 1s ease-in-out infinite; }
+.event-alert.warning { background: rgba(245,158,11,0.1); border: 1px solid var(--amber); color: var(--amber); }
+.event-alert.notice { background: rgba(59,130,246,0.08); border: 1px solid var(--blue); color: var(--blue); }
+@keyframes pulse-alert { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+@media (max-width: 768px) {
+  .apex-grid { grid-template-columns: repeat(2, 1fr); }
+  .apex-primitives { gap: var(--gap-sm); }
+  .event-row { grid-template-columns: 80px 60px 1fr 60px; font-size: 11px; }
+  .event-forecast, .event-previous { display: none; }
+}
+
+.shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   1. TOP PULSE BAR — Sticky header for instant scan
+   ═══════════════════════════════════════════════════════════════ */
+.pulse-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,7,13,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+
+.pulse-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-lg);
+  flex-wrap: wrap;
+}
+
+/* Price cluster */
+.pulse-price-cluster {
+  display: flex;
+  align-items: baseline;
+  gap: var(--gap-md);
+}
+
+.pulse-price {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--accent-bright);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pulse-delta {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.pulse-delta.up {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+.pulse-delta.down {
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+.pulse-pct {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* Bias pill */
+.pulse-bias {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.bias-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid;
+}
+
+.bias-pill.bullish {
+  color: var(--green);
+  border-color: rgba(34,197,94,0.3);
+  background: var(--green-dim);
+}
+
+.bias-pill.bearish {
+  color: var(--red);
+  border-color: rgba(239,68,68,0.3);
+  background: var(--red-dim);
+}
+
+.bias-pill.neutral {
+  color: var(--amber);
+  border-color: rgba(245,158,11,0.3);
+  background: var(--amber-dim);
+}
+
+.bias-confluence {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+/* World driver */
+.pulse-driver {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  max-width: 280px;
+  line-height: 1.4;
+}
+
+.pulse-driver strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Key levels */
+.pulse-levels {
+  display: flex;
+  gap: var(--gap-md);
+}
+
+.level-chip {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.level-chip .val {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.level-chip.support { border-color: rgba(34,197,94,0.25); }
+.level-chip.support .val { color: var(--green); }
+.level-chip.resistance { border-color: rgba(239,68,68,0.25); }
+.level-chip.resistance .val { color: var(--red); }
+
+/* Risk thermometer */
+.pulse-risk {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.risk-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.risk-bars {
+  display: flex;
+  gap: 3px;
+}
+
+.risk-bar {
+  width: 6px;
+  height: 16px;
+  border-radius: 2px;
+  background: var(--border2);
+  transition: background 0.3s;
+}
+
+.risk-bar.active.low { background: var(--green); }
+.risk-bar.active.med { background: var(--amber); }
+.risk-bar.active.high { background: var(--red); }
+
+/* Timestamp + refresh */
+.pulse-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.pulse-meta .live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. MAIN CHART SECTION — Clean, central, scannable
+   ═══════════════════════════════════════════════════════════════ */
+.chart-section {
+  margin-top: var(--gap-lg);
+  margin-bottom: var(--gap-lg);
+}
+
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-md);
+}
+
+.chart-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* Timeframe pills */
+.tf-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.tf-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tf-pill:hover {
+  border-color: var(--accent-dim);
+  color: var(--text-mid);
+}
+
+.tf-pill.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+/* EMA toggles */
+.ema-toggles {
+  display: flex;
+  gap: var(--gap-sm);
+  align-items: center;
+}
+
+.ema-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ema-toggle.active {
+  border-color: var(--amber);
+  color: var(--amber);
+  background: var(--amber-dim);
+}
+
+/* Chart container */
+.chart-container {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+#mainChart {
+  width: 100%;
+  height: 420px;
+}
+
+/* S/R zone overlays (positioned via JS) */
+.sr-zone {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px dashed;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.sr-zone .sr-label {
+  position: absolute;
+  right: 8px;
+  top: -14px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.sr-zone.support {
+  border-color: rgba(34,197,94,0.4);
+}
+.sr-zone.support .sr-label {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+.sr-zone.resistance {
+  border-color: rgba(239,68,68,0.4);
+}
+.sr-zone.resistance .sr-label {
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. DUAL SIGNAL COLUMNS — Technical Forge + World Context
+   ═══════════════════════════════════════════════════════════════ */
+.signals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-lg);
+  margin-bottom: var(--gap-lg);
+}
+
+.signal-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.column-header {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.column-header .icon {
+  font-size: 0.8rem;
+}
+
+/* Signal cards */
+.signal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: var(--gap-md);
+  transition: border-color 0.2s;
+}
+
+.signal-card:hover {
+  border-color: var(--border2);
+}
+
+.signal-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-sm);
+}
+
+.signal-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.signal-score {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+.signal-score.bullish {
+  color: var(--green);
+  background: var(--green-dim);
+}
+
+.signal-score.bearish {
+  color: var(--red);
+  background: var(--red-dim);
+}
+
+.signal-score.neutral {
+  color: var(--amber);
+  background: var(--amber-dim);
+}
+
+.signal-card-body {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin-bottom: var(--gap-sm);
+}
+
+.signal-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signal-confidence {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+}
+
+.confidence-tier {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 2px;
+  border: 1px solid var(--border2);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.confidence-tier.t1 { color: var(--red); border-color: rgba(239,68,68,0.3); }
+.confidence-tier.t2 { color: var(--amber); border-color: rgba(245,158,11,0.3); }
+.confidence-tier.t3 { color: var(--green); border-color: rgba(34,197,94,0.3); }
+
+/* Trade quality card */
+.trade-quality {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: var(--gap-md);
+}
+
+.trade-quality-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-md);
+}
+
+.trade-quality-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.trade-quality-verdict {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.trade-quality-verdict.good {
+  color: var(--green);
+  background: var(--green-dim);
+  border: 1px solid rgba(34,197,94,0.3);
+}
+
+.trade-quality-verdict.poor {
+  color: var(--red);
+  background: var(--red-dim);
+  border: 1px solid rgba(239,68,68,0.3);
+}
+
+.trade-quality-verdict.marginal {
+  color: var(--amber);
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.3);
+}
+
+.trade-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+}
+
+.trade-metric {
+  text-align: center;
+}
+
+.trade-metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.2rem;
+}
+
+.trade-metric-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.trade-metric-value.good { color: var(--green); }
+.trade-metric-value.poor { color: var(--red); }
+.trade-metric-value.marginal { color: var(--amber); }
+
+/* World driver card */
+.world-driver-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-dim);
+  border-radius: 6px;
+  padding: var(--gap-md);
+  transition: border-left-color 0.2s;
+}
+
+.world-driver-card:hover {
+  border-left-color: var(--accent);
+}
+
+.world-driver-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-xs);
+}
+
+.world-driver-category {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--accent-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.world-driver-arrow {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.world-driver-arrow.up { color: var(--green); }
+.world-driver-arrow.down { color: var(--red); }
+.world-driver-arrow.flat { color: var(--amber); }
+
+.world-driver-impact {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.5;
+}
+
+.world-driver-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--gap-sm);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. BOTTOM SYNTHESIS & GATE BAND — Human sovereignty gate
+   ═══════════════════════════════════════════════════════════════ */
+.synthesis-band {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: var(--gap-xl);
+  margin-bottom: var(--gap-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.synthesis-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-dim));
+}
+
+.synthesis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--gap-lg);
+}
+
+.synthesis-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text);
+}
+
+.synthesis-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Confluence meter */
+.confluence-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.confluence-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.confluence-bar-track {
+  width: 120px;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.confluence-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+}
+
+.confluence-bar-fill.low { background: var(--red); }
+.confluence-bar-fill.med { background: var(--amber); }
+.confluence-bar-fill.high { background: var(--green); }
+
+.confluence-score {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Verdict paragraph */
+.synthesis-verdict {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 80ch;
+  margin-bottom: var(--gap-lg);
+}
+
+.synthesis-verdict strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Action stance buttons */
+.action-stance {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+  margin-bottom: var(--gap-lg);
+}
+
+.stance-btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.15s;
+}
+
+.stance-btn:hover {
+  border-color: var(--accent-dim);
+  color: var(--text-mid);
+}
+
+.stance-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.stance-btn .stance-icon {
+  margin-right: 0.4rem;
+}
+
+.stance-note {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* F13 Sovereign gate */
+.sovereign-gate {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 6px;
+  padding: var(--gap-md);
+  text-align: center;
+}
+
+.sovereign-gate-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--gap-sm);
+}
+
+.sovereign-gate-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: var(--gap-xs);
+}
+
+.sovereign-gate-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  max-width: 50ch;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. FOOTER — Compact federation nav + seal
+   ═══════════════════════════════════════════════════════════════ */
+.dash-footer {
+  border-top: 1px solid var(--border);
+  padding: var(--gap-lg) 0;
+  margin-bottom: var(--gap-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+}
+
+.footer-brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-brand:hover { color: var(--accent-bright); }
+
+.footer-sep {
+  color: var(--border2);
+}
+
+.footer-page {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.footer-federation {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.footer-fed-link {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+
+.footer-fed-link:hover { color: var(--accent); }
+
+.footer-seal {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--accent-dim);
+  letter-spacing: 0.15em;
+}
+
+.footer-ditempa {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — Desktop-first, graceful collapse
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .signals-grid {
+    grid-template-columns: 1fr;
+  }
+  .pulse-levels { display: none; }
+}
+
+@media (max-width: 860px) {
+  .pulse-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+  }
+  .pulse-price { font-size: 1.6rem; }
+  .pulse-driver { max-width: 100%; }
+  #mainChart { height: 320px; }
+  .trade-metrics { grid-template-columns: 1fr; gap: var(--gap-sm); }
+  .action-stance { flex-wrap: wrap; }
+  .dash-footer { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+  .shell { padding: 0 1rem; }
+  .pulse-price { font-size: 1.4rem; }
+  #mainChart { height: 260px; }
+  .synthesis-band { padding: var(--gap-md); }
+  .tf-pills { flex-wrap: wrap; }
+}
+
+/* ── Utility ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Loading skeleton ── */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+  <!-- Asset Nav — Cross-dashboard navigation -->
+  .asset-nav {
+    display: flex; align-items: center; gap: var(--gap-md);
+    padding: var(--gap-sm) 0; margin-bottom: var(--gap-sm);
+    font-family: var(--font-mono); font-size: 0.65rem;
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .asset-nav a { color: var(--text-dim); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 3px; border: 1px solid var(--border); transition: all 0.15s; }
+  .asset-nav a:hover { border-color: var(--gold-dim, #c9a84c44); color: var(--text-mid, #aaa); }
+  .asset-nav a.active { border-color: var(--gold, #c9a84c); color: var(--gold, #c9a84c); background: rgba(201,168,76,0.08); }
+  .asset-nav .sep { color: var(--text-dim); opacity: 0.3; }
+
+  /* Macro Ticker Bar — DXY/US10Y/VIX live strip */
+  .macro-ticker {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0.4rem 0; margin-bottom: 0.5rem;
+    font-family: var(--font-mono); font-size: 0.7rem;
+    letter-spacing: 0.08em; color: var(--text-dim);
+    border-bottom: 1px solid var(--border, #1e1e32);
+    overflow-x: auto; white-space: nowrap;
+  }
+  .macro-ticker .macro-item { display: flex; align-items: center; gap: 0.4rem; }
+  .macro-ticker .macro-label { text-transform: uppercase; opacity: 0.6; }
+  .macro-ticker .macro-value { color: var(--text-mid, #aaa); font-weight: 600; }
+  .macro-ticker .macro-change { font-size: 0.65rem; }
+  .macro-ticker .macro-change.up { color: var(--state-operational, #00C853); }
+  .macro-ticker .macro-change.down { color: var(--state-danger, #D50000); }
+  .macro-ticker .macro-change.flat { color: var(--text-dim); }
+  @media (max-width: 600px) { .macro-ticker { gap: 1rem; font-size: 0.6rem; } }
+
+  /* ── Constellation Bridge ── */
+  .bridge-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--gap-md);
+  }
+  .bridge-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--text-bright);
+  }
+  .bridge-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    margin-bottom: 2.5rem;
+  }
+  .bridge-nodes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .bridge-node {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    min-width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .bridge-node:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+  .bridge-node-tag {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  .bridge-node-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .bridge-node-name.geox  { color: var(--cyan); }
+  .bridge-node-name.arifos { color: var(--text); }
+  .bridge-node-name.wealth { color: var(--accent); }
+  
+  .bridge-node-desc {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+  .bridge-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-dim);
+    padding: 0 1rem;
+    z-index: 0;
+  }
+  .bridge-causal {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-dim);
+    margin-top: 2rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+
+  /* ── Constellation Bridge ── */
+  .bridge-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--gap-md);
+  }
+  .bridge-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--text-bright);
+  }
+  .bridge-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    margin-bottom: 2.5rem;
+  }
+  .bridge-nodes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .bridge-node {
+    flex: 1;
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    min-width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .bridge-node:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+  .bridge-node-tag {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+  .bridge-node-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .bridge-node-name.geox  { color: var(--cyan); }
+  .bridge-node-name.arifos { color: var(--text); }
+  .bridge-node-name.wealth { color: var(--accent); }
+  
+  .bridge-node-desc {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 0.35rem;
+    line-height: 1.4;
+  }
+  .bridge-arrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-dim);
+    padding: 0 1rem;
+    z-index: 0;
+  }
+  .bridge-causal {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-dim);
+    margin-top: 2rem;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+</style>
+<script src="/_shared/rasa-dunia-widget.js" defer></script>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- Asset Nav — Cross-dashboard navigation -->
+  <nav class="asset-nav" aria-label="Asset selector">
+    <a href="/wealth/">WEALTH Hub</a>
+    <span class="sep">/</span>
+    <a href="/gold/" class="active">Gold</a>
+    <a href="/oil/">Brent Crude</a>
+      <a href="/gas/">Natural Gas</a>
+  </nav>
+
+  <!-- Macro Ticker — DXY/US10Y/VIX live from /api/macro -->
+  <div class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
+    <div class="macro-item"><span class="macro-label">DXY</span><span class="macro-value" id="mcr-dxy">—</span></div>
+    <div class="macro-item"><span class="macro-label">US10Y</span><span class="macro-value" id="mcr-us10y">—</span></div>
+    <div class="macro-item"><span class="macro-label">VIX</span><span class="macro-value" id="mcr-vix">—</span></div>
+    <div class="macro-item"><span class="macro-label">Silver</span><span class="macro-value" id="mcr-silver">—</span></div>
+    <div class="macro-item"><span class="macro-label">GSR</span><span class="macro-value" id="mcr-gsr">—</span></div>
+    <div class="macro-item" style="margin-left:auto"><span class="macro-label" id="mcr-time">—</span></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       1. TOP PULSE BAR — "Buka pagi, tengok sekali, faham"
+       ═══════════════════════════════════════════════════════════ -->
+  <header class="pulse-bar" role="banner" aria-label="Gold price pulse">
+    <div class="pulse-inner shell">
+
+      <!-- Price cluster -->
+      <div class="pulse-price-cluster">
+        <span class="pulse-price" id="pulsePrice">—</span>
+        <span class="pulse-delta" id="pulseDelta">—</span>
+        <span class="pulse-pct" id="pulsePct">—</span>
+      </div>
+
+      <!-- Bias pill -->
+      <div class="pulse-bias">
+        <span class="bias-pill" id="biasPill">—</span>
+        <span class="bias-confluence" id="biasConfluence">—</span>
+      </div>
+
+      <!-- Primary world driver -->
+      <div class="pulse-driver" id="pulseDriver">
+        <strong>USD weakening</strong> on soft CPI print — safe-haven flows intact amid Middle East escalation
+      </div>
+
+      <!-- Key levels -->
+      <div class="pulse-levels" id="pulseLevels">
+        <span class="level-chip support">S1 <span class="val">—</span></span>
+        <span class="level-chip support">S2 <span class="val">—</span></span>
+        <span class="level-chip resistance">R1 <span class="val">—</span></span>
+        <span class="level-chip resistance">R2 <span class="val">—</span></span>
+      </div>
+
+      <!-- Risk thermometer -->
+      <div class="pulse-risk">
+        <span class="risk-label">Risk</span>
+        <div class="risk-bars" id="riskBars">
+          <div class="risk-bar active med"></div>
+          <div class="risk-bar active med"></div>
+          <div class="risk-bar active med"></div>
+          <div class="risk-bar"></div>
+          <div class="risk-bar"></div>
+        </div>
+      </div>
+
+      <!-- Timestamp -->
+      <div class="pulse-meta">
+        <span class="live-dot"></span>
+        <span id="pulseTimestamp">Loading live data...</span>
+      </div>
+
+    </div>
+  </header>
+  <!-- ═══════════════════════════════════════════════════════════
+       1b. MARKET INTELLIGENCE — human-readable market state
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="apex-panel" aria-label="Market intelligence">
+    <div class="apex-inner">
+      <div class="apex-header">
+        <span class="apex-title">🧭 Market Pulse</span>
+        <span class="apex-verdict" id="apexVerdict">—</span>
+        <span class="apex-verdict-meta" id="signalLastUpdated" title="Last signal update">—</span>
+      </div>
+      <div class="apex-grid">
+        <div class="apex-card">
+          <div class="apex-card-label">Clarity</div>
+          <div class="apex-card-value" id="apexG">—</div>
+          <div class="apex-card-sub">How clear is the direction</div>
+        </div>
+        <div class="apex-card">
+          <div class="apex-card-label">Risk</div>
+          <div class="apex-card-value" id="apexCdark">—</div>
+          <div class="apex-card-sub">Unpredictability level</div>
+        </div>
+        <div class="apex-card">
+          <div class="apex-card-label">Trend Energy</div>
+          <div class="apex-card-value" id="apexDS">—</div>
+          <div class="apex-card-sub">Is the trend building or fading</div>
+        </div>
+        <div class="apex-card apex-state-card">
+          <div class="apex-card-label">Condition</div>
+          <div class="apex-card-value apex-state" id="apexState">—</div>
+          <div class="apex-card-sub" id="apexDirection">—</div>
+        </div>
+      </div>
+      <div class="apex-primitives">
+        <span class="apex-prim" id="apexA">Structure: —</span>
+        <span class="apex-prim" id="apexP">Strength: —</span>
+        <span class="apex-prim" id="apexE">Signal: —</span>
+        <span class="apex-prim" id="apexX">Stability: —</span>
+        <span class="apex-prim" id="apexPhi">Agreement: —</span>
+        <span class="apex-prim" id="apexMom">Momentum: —</span>
+        <span class="apex-prim" id="apexVolTrend">Volume: —</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2. MAIN CHART — Clean candlesticks, minimal overlays
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="events-panel" aria-label="Upcoming economic events">
+    <div class="events-inner">
+      <div class="events-header">
+        <span class="events-title">📅 This Week — High Impact Events</span>
+        <span class="events-source">forexfactory.com</span>
+      </div>
+      <div class="events-list" id="eventsList">
+        <div class="events-loading">Loading events...</div>
+      </div>
+    </div>
+  </section>
+  <section class="chart-section" aria-label="Gold price chart">
+    <div class="chart-header">
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span class="chart-title">XAU/USD — Price Action</span>
+        <div class="ema-toggles">
+          <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
+          <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
+          <button class="ema-toggle" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
+        </div>
+      </div>
+      <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
+        <button class="tf-pill" data-tf="1H" onclick="selectTF(this)">1H</button>
+        <button class="tf-pill active" data-tf="4H" onclick="selectTF(this)">4H</button>
+        <button class="tf-pill" data-tf="1D" onclick="selectTF(this)">1D</button>
+        <button class="tf-pill" data-tf="1W" onclick="selectTF(this)">1W</button>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div id="mainChart"></div>
+      <!-- S/R zones rendered by JS -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       3. DUAL SIGNAL COLUMNS
+       Left: Technical Forge | Right: World Context
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="signals-grid" aria-label="Trading signals">
+
+    <!-- ── LEFT: Technical Forge ── -->
+    <div class="signal-column">
+      <div class="column-header">
+        <span class="icon">⚒️</span> Technical Forge
+      </div>
+
+      <!-- Trend card -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-card-title">TREND</span>
+          <span class="signal-score" id="tfTrendScore">—</span>
+        </div>
+        <div class="signal-card-body" id="tfTrendBody">
+          Loading live analysis...
+        </div>
+        <div class="signal-card-footer">
+          <span class="signal-confidence" id="tfTrendConf">—</span>
+          <span class="confidence-tier" id="tfTrendTier">—</span>
+        </div>
+      </div>
+
+      <!-- Momentum card -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-card-title">MOMENTUM</span>
+          <span class="signal-score" id="tfMomScore">—</span>
+        </div>
+        <div class="signal-card-body" id="tfMomBody">
+          Loading live analysis...
+        </div>
+        <div class="signal-card-footer">
+          <span class="signal-confidence" id="tfMomConf">—</span>
+          <span class="confidence-tier" id="tfMomTier">—</span>
+        </div>
+      </div>
+
+      <!-- Structure card -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-card-title">STRUCTURE</span>
+          <span class="signal-score" id="tfStructScore">—</span>
+        </div>
+        <div class="signal-card-body" id="tfStructBody">
+          Loading live analysis...
+        </div>
+        <div class="signal-card-footer">
+          <span class="signal-confidence" id="tfStructConf">—</span>
+          <span class="confidence-tier" id="tfStructTier">—</span>
+        </div>
+      </div>
+
+      <!-- Volume card -->
+      <div class="signal-card">
+        <div class="signal-card-header">
+          <span class="signal-card-title">VOLUME</span>
+          <span class="signal-score" id="tfVolScore">—</span>
+        </div>
+        <div class="signal-card-body" id="tfVolBody">
+          Loading live analysis...
+        </div>
+        <div class="signal-card-footer">
+          <span class="signal-confidence" id="tfVolConf">—</span>
+          <span class="confidence-tier" id="tfVolTier">—</span>
+        </div>
+      </div>
+
+      <!-- Trade quality -->
+      <div class="trade-quality">
+        <div class="trade-quality-header">
+          <span class="trade-quality-title">Trade Quality</span>
+          <span class="trade-quality-verdict marginal">Marginal R:R</span>
+        </div>
+        <div class="trade-metrics">
+          <div class="trade-metric">
+            <div class="trade-metric-label">R:R Ratio</div>
+            <div class="trade-metric-value marginal">1:1.4</div>
+          </div>
+          <div class="trade-metric">
+            <div class="trade-metric-label">Confluence</div>
+            <div class="trade-metric-value">72%</div>
+          </div>
+          <div class="trade-metric">
+            <div class="trade-metric-label">Confidence</div>
+            <div class="trade-metric-value">Medium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- ── RIGHT: USD / Monetary Context ── -->
+    <div class="signal-column">
+      <div class="column-header">
+        <span class="icon">🌍</span> World Context
+      </div>
+
+      <!-- Real Yields (primary gold driver) -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">Real Yields / Opportunity Cost</span>
+          <span class="world-driver-arrow up">▲</span>
+        </div>
+        <div class="world-driver-impact">
+          10Y TIPS yield at 1.82%, declining. CPI m/m 0.2% vs 0.3% expected. Lower real yields reduce the opportunity cost of holding gold. <strong>Bullish XAU/USD</strong> — primary macro tailwind active.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
+        </div>
+      </div>
+
+      <!-- DXY / USD -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">DXY / USD Direction</span>
+          <span class="world-driver-arrow up">▲</span>
+        </div>
+        <div class="world-driver-impact">
+          DXY softening to 103.2 on cooler CPI. Market pricing 2 rate cuts by Dec. Weaker USD supports gold priced in dollars. <strong>Bullish</strong> — but MYR strengthening may reduce local gold return.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
+        </div>
+      </div>
+
+      <!-- Central Bank Demand -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">Central Bank / Sovereign Demand</span>
+          <span class="world-driver-arrow up">▲</span>
+        </div>
+        <div class="world-driver-impact">
+          Central bank buying continues (China, India, Poland). De-dollarisation trend adds structural floor. <strong>Bullish gold</strong> — sovereign demand is price-insensitive.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
+        </div>
+      </div>
+
+      <!-- ETF / Physical Flow -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">ETF / Physical Flow</span>
+          <span class="world-driver-arrow flat">●</span>
+        </div>
+        <div class="world-driver-impact">
+          GLD holdings flat this week. Asian physical demand steady. No major inflow/outflow catalyst. <strong>Neutral</strong> — lacking momentum for directional move.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: Moderate</span>
+          <span class="confidence-tier t2">Tier 2</span>
+        </div>
+      </div>
+
+      <!-- MYR Translation -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">MYR / Local Currency Effect</span>
+          <span class="world-driver-arrow up">▲</span>
+        </div>
+        <div class="world-driver-impact">
+          MYR strengthening with USD weakness. Malaysian holders see gold in two currencies: XAU/USD (bullish) and XAU/MYR (moderated by ringgit strength). Need to track both.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: Moderate</span>
+          <span class="confidence-tier t2">Tier 2</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       4. SYNTHESIS & GATE BAND — Human decides
+       ═══════════════════════════════════════════════════════════ -->
+  
+  <!-- ═══════════════════════════════════════════════════════════
+       RASA DUNIA — Physical World Substrate
+       F2/F9/F10 governed · no qualia inferred
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="shell" aria-label="Physical substrate" style="padding:0 var(--gap-md,1rem);">
+    <div id="rasaDuniaMount"></div>
+  </section>
+<section class="synthesis-band" aria-label="Synthesis and decision gate">
+    <div class="synthesis-header">
+      <h2 class="synthesis-title">Synthesis & <em>Decision Gate</em></h2>
+      <div class="confluence-meter">
+        <span class="confluence-label">Confluence</span>
+        <div class="confluence-bar-track">
+          <div class="confluence-bar-fill high" id="confluenceBar" style="width:72%"></div>
+        </div>
+        <span class="confluence-score" id="confluenceScore">72%</span>
+      </div>
+    </div>
+
+    <div class="synthesis-verdict" id="synthesisVerdict">
+      <strong>Loading signal analysis...</strong>
+    </div>
+
+    <!-- Action stance (non-binding) -->
+    <div class="action-stance">
+      <button class="stance-btn active" id="stanceObserve">
+        <span class="stance-icon">◉</span> Observe
+      </button>
+      <button class="stance-btn" id="stancePrepare">
+        <span class="stance-icon">◈</span> Prepare
+      </button>
+      <button class="stance-btn" id="stanceAwait">
+        <span class="stance-icon">◯</span> Await
+      </button>
+      <span class="stance-note">Non-binding stance indicators — human decides</span>
+    </div>
+
+    <!-- F13 Sovereign gate -->
+    <div class="sovereign-gate">
+      <div class="sovereign-gate-icon">⚖️</div>
+      <div class="sovereign-gate-text">Human Sovereign Veto Active — F13</div>
+      <div class="sovereign-gate-sub">
+        This is evidence-gated synthesis from the WEALTH organ. All signals are probabilistic, not deterministic.
+        No trade is executed without human confirmation. Your judgment is the final floor.
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- CONSTELLATION BRIDGE -->
+  <section id="constellation" style="margin-top: 4rem; margin-bottom: 6rem;">
+    <div class="section-label" data-n="03">Constellation</div>
+    <div class="bridge-section">
+      <h2 class="bridge-title">One federation. Five truths.</h2>
+      <p class="bridge-subtitle">WEALTH computes · GEOX witnesses · WELL protects · arifOS governs · ARIF decides</p>
+
+      <div class="bridge-nodes">
+        <div class="bridge-node" style="border-color: var(--accent-dim);">
+          <div class="bridge-node-tag">Capital Intelligence</div>
+          <div class="bridge-node-name wealth">WEALTH</div>
+          <div class="bridge-node-desc">Macro · Markets · Diagnosis · Scenario</div>
+        </div>
+
+        <div class="bridge-arrow">→</div>
+
+        <a href="https://geox.arif-fazil.com" class="bridge-node" target="_blank" rel="noopener">
+          <div class="bridge-node-tag">Earth Intelligence</div>
+          <div class="bridge-node-name geox">GEOX</div>
+          <div class="bridge-node-desc">Physical supply · Basins · Energy evidence</div>
+        </a>
+
+        <div class="bridge-arrow">→</div>
+
+        <div class="bridge-node" style="border-color: var(--amber);">
+          <div class="bridge-node-tag">Human &amp; System Vitality</div>
+          <div class="bridge-node-name" style="color: var(--amber);">WELL</div>
+          <div class="bridge-node-desc">Readiness · Consequence · Dignity</div>
+        </div>
+
+        <div class="bridge-arrow">→</div>
+
+        <a href="https://mcp.arif-fazil.com" class="bridge-node" target="_blank" rel="noopener">
+          <div class="bridge-node-tag">Constitutional Governance</div>
+          <div class="bridge-node-name arifos">arifOS</div>
+          <div class="bridge-node-desc">F1–F13 · 888_HOLD · 999_VAULT</div>
+        </a>
+
+        <div class="bridge-arrow">→</div>
+
+        <div class="bridge-node" style="border-color: var(--gold-bright); background: rgba(240,200,64,0.06);">
+          <div class="bridge-node-tag">Sovereign Decision</div>
+          <div class="bridge-node-name" style="color: var(--gold-bright);">ARIF</div>
+          <div class="bridge-node-desc">F13 · Final veto · Human judgment</div>
+        </div>
+      </div>
+
+      <div class="bridge-causal">
+        WEALTH computes &amp; diagnoses · GEOX witnesses physical reality · WELL protects human capacity · arifOS governs admissibility · ARIF decides
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       5. FOOTER — Compact federation nav + seal
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="dash-footer">
+    <div class="footer-brand-cluster">
+      <a href="/" class="footer-brand">WEALTH</a>
+      <span class="footer-sep">/</span>
+      <span class="footer-page">Gold Dashboard</span>
+    </div>
+
+    <div class="footer-federation">
+      <a href="https://arif-fazil.com" class="footer-fed-link">Sovereign Root</a>
+      <a href="https://arifos.arif-fazil.com" class="footer-fed-link">arifOS</a>
+      <a href="https://geox.arif-fazil.com" class="footer-fed-link">GEOX</a>
+      <a href="https://well.arif-fazil.com" class="footer-fed-link">WELL</a>
+      <a href="https://aaa.arif-fazil.com" class="footer-fed-link">AAA</a>
+    </div>
+
+    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.2rem;">
+      <span class="footer-seal">999 SEAL ALIVE</span>
+      <span class="footer-ditempa">Ditempa Bukan Diberi</span>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — Live chart, dynamic signals, interactive controls
+     All data sourced from gold-api :3456 (yfinance → Python → Node.js)
+     DITEMPA BUKAN DIBERI — Forged, Not Given.
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+
+  // ── Configuration ──
+  const CONFIG = {
+    API_BASE: window.location.origin + '/wealth/gold/api',
+    REFRESH_INTERVAL: 300000, // 5 minutes
+    TIMEZONE: 'Asia/Kuala_Lumpur',
+    ASSET: 'gold',
+    TF_INTERVALS: { '1H': '1h', '4H': '1h', '1D': '1d', '1W': '1wk' },
+    TF_PERIODS:   { '1H': '7d', '4H': '30d', '1D': '3mo', '1W': '6mo' },
+  };
+
+  let currentTF = '4H';
+  let activeEMAs = { '20': true, '50': true, '200': false };
+  let chartDataCache = {};
+
+  // ── Plain-language translator for arifOS judge reasons ──
+  function translateJudge(reason) {
+    if (!reason) return 'Tunggu isyarat lebih jelas sebelum masuk.';
+    let txt = reason
+      .replace(/F1:[^;]*;?/g, '')
+      .replace(/F2:[^;]*;?/g, '')
+      .replace(/F7:[^;]*;?/g, '')
+      .replace(/F\d+:[^;]*;?/g, '')
+      .replace(/RR ratio [\d.]+ < 1\.5[^;]*;?/g, '')
+      .replace(/Confluence score [\d.]* too low;?/g, '')
+      .replace(/Signal strength NONE[^;]*;?/g, '')
+      .replace(/No clear direction[^;]*;?/g, '')
+      .replace(/\s+/g, ' ').trim();
+    
+    // If everything was stripped, provide plain summary
+    if (!txt || txt.length < 10) {
+      // Extract key meaning from verdict
+      if (reason.includes('SABAR')) return 'Market belum jelas. Tunggu trend + isyarat aligned sebelum masuk.';
+      if (reason.includes('HOLD')) return 'Ada risiko yang perlu diselesaikan dulu. Jangan masuk lagi.';
+      return 'Semak syarat entry sebelum buat keputusan.';
+    }
+    
+    // Translate remaining technical terms
+    txt = txt
+      .replace(/insufficient reward/g, 'potensi untung tak berbaloi')
+      .replace(/irreversible risk/g, 'risiko tak boleh undur')
+      .replace(/no evidence basis/g, 'tiada bukti cukup')
+      .replace(/no confluence factors/g, 'isyarat tak sehala')
+      .replace(/Confidence capped/g, 'keyakinan terhad')
+      .replace(/not enough confluence/g, 'isyarat bercampur');
+    
+    return txt;
+  }
+  const $ = id => document.getElementById(id);
+  const fmt = (n, d=2) => Number(n||0).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+  // ── API fetch with error handling ──
+  async function apiFetch(endpoint) {
+    try {
+      const resp = await fetch(CONFIG.API_BASE + endpoint);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      return await resp.json();
+    } catch (err) {
+      console.warn(`[Gold] ${endpoint} failed:`, err.message);
+      return null;
+    }
+  }
+
+  // ── Chart initialization ──
+  const chartContainer = $('mainChart');
+  const chart = LightweightCharts.createChart(chartContainer, {
+    layout: {
+      background: { type: 'solid', color: '#0d0d1a' },
+      textColor: '#6a6050',
+      fontFamily: "'IBM Plex Mono', monospace",
+      fontSize: 11,
+    },
+    grid: {
+      vertLines: { color: 'rgba(30,30,50,0.5)' },
+      horzLines: { color: 'rgba(30,30,50,0.5)' },
+    },
+    crosshair: {
+      mode: LightweightCharts.CrosshairMode.Normal,
+      vertLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
+      horzLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
+    },
+    rightPriceScale: { borderColor: '#1e1e32', scaleMargins: { top: 0.1, bottom: 0.1 } },
+    timeScale: { borderColor: '#1e1e32', timeVisible: true, secondsVisible: false },
+    handleScroll: { vertTouchDrag: false },
+  });
+
+  const candleSeries = chart.addCandlestickSeries({
+    upColor: '#22c55e', downColor: '#ef4444',
+    borderUpColor: '#22c55e', borderDownColor: '#ef4444',
+    wickUpColor: '#22c55e', wickDownColor: '#ef4444',
+  });
+
+  // EMA series registry
+  const emaSeries = {
+    '20':  chart.addLineSeries({ color: '#f59e0b', lineWidth: 1, visible: activeEMAs['20'] }),
+    '50':  chart.addLineSeries({ color: '#3b82f6', lineWidth: 1, visible: activeEMAs['50'] }),
+    '200': chart.addLineSeries({ color: '#888888', lineWidth: 1, visible: activeEMAs['200'] }),
+  };
+
+  // ── Position markers (Entry, SL, TP) ──
+  let positionLines = [];
+
+  function clearPositionLines() {
+    positionLines.forEach(pl => {
+      try { candleSeries.removePriceLine(pl); } catch(e) {}
+    });
+    positionLines = [];
+  }
+
+  function plotPositionMarkers(sig) {
+    clearPositionLines();
+    if (!sig.entry_price || !sig.stop_loss || sig.direction === 'FLAT') return;
+
+    const rr = sig.rr_ratio || 0;
+    const rrLabel = rr > 0 ? 'ENTRY · R:R 1:' + rr.toFixed(1) : 'ENTRY';
+
+    // Entry line (gold, solid) with R:R label
+    const entryLine = candleSeries.createPriceLine({
+      price: sig.entry_price, color: '#c9a84c', lineWidth: 2,
+      lineStyle: LightweightCharts.LineStyle.Solid,
+      axisLabelVisible: true, title: rrLabel,
+    });
+    positionLines.push(entryLine);
+
+    // Stop Loss (red, dashed) — risk side
+    if (sig.stop_loss > 0) {
+      const riskDist = Math.abs(sig.entry_price - sig.stop_loss);
+      const slLine = candleSeries.createPriceLine({
+        price: sig.stop_loss, color: '#ef4444', lineWidth: 1.5,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true, title: 'SL · Risk $' + riskDist.toFixed(1),
+      });
+      positionLines.push(slLine);
+    }
+
+    // Take Profit 1 (green, dashed) — reward side
+    if (sig.take_profit_1 > 0) {
+      const rewardDist = Math.abs(sig.take_profit_1 - sig.entry_price);
+      const tp1Line = candleSeries.createPriceLine({
+        price: sig.take_profit_1, color: '#22c55e', lineWidth: 1.5,
+        lineStyle: LightweightCharts.LineStyle.Dashed,
+        axisLabelVisible: true, title: 'TP1 · Reward $' + rewardDist.toFixed(1),
+      });
+      positionLines.push(tp1Line);
+    }
+
+    // Take Profit 2 (green, dotted)
+    if (sig.take_profit_2 > 0) {
+      const tp2Line = candleSeries.createPriceLine({
+        price: sig.take_profit_2, color: '#22c55e', lineWidth: 1,
+        lineStyle: LightweightCharts.LineStyle.Dotted,
+        axisLabelVisible: true, title: 'TP2',
+      });
+      positionLines.push(tp2Line);
+    }
+  }
+
+  // ── Compute EMA from candles ──
+  function computeEMA(candles, period) {
+    const k = 2 / (period + 1);
+    const result = [];
+    let ema = candles[0]?.close || 0;
+    for (let i = 0; i < candles.length; i++) {
+      if (i === 0) { ema = candles[i].close; }
+      else if (i < period - 1) {
+        ema = candles.slice(0, i + 1).reduce((s, c) => s + c.close, 0) / (i + 1);
+      } else {
+        ema = candles[i].close * k + ema * (1 - k);
+      }
+      result.push({ time: candles[i].time, value: +ema.toFixed(2) });
+    }
+    return result;
+  }
+
+  // ── Load chart from live API ──
+  async function loadChartData(tf) {
+    const interval = CONFIG.TF_INTERVALS[tf] || '1h';
+    const period = CONFIG.TF_PERIODS[tf] || '30d';
+
+    if (chartDataCache[tf]) {
+      return chartDataCache[tf];
+    }
+
+    const data = await apiFetch(`/history?interval=${interval}&period=${period}`);
+    if (data && data.candles && data.candles.length > 0) {
+      const candles = data.candles.map(c => ({
+        time: typeof c.time === 'number' ? c.time : Math.floor(new Date(c.time + 'Z').getTime() / 1000),
+        open: +c.open, high: +c.high, low: +c.low, close: +c.close,
+      }));
+      chartDataCache[tf] = candles;
+      return candles;
+    }
+    return null;
+  }
+
+  async function renderChart(tf) {
+    currentTF = tf;
+    const candles = await loadChartData(tf);
+    if (!candles || candles.length === 0) {
+      console.warn('[Gold] No chart data for TF:', tf);
+      return;
+    }
+
+    candleSeries.setData(candles);
+
+    // Recompute and set EMAs
+    for (const [period, series] of Object.entries(emaSeries)) {
+      const emaData = computeEMA(candles, parseInt(period));
+      series.setData(emaData);
+    }
+
+    chart.timeScale().fitContent();
+
+    // Update TF pills
+    document.querySelectorAll('.tf-pill').forEach(b => {
+      b.classList.toggle('active', b.dataset.tf === tf);
+    });
+  }
+
+  // ── Timeframe selector ──
+  window.selectTF = function(btn) {
+    const tf = btn.dataset.tf;
+    if (tf === currentTF) return;
+    document.querySelectorAll('.tf-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderChart(tf);
+  };
+
+  // ── EMA toggle ──
+  window.toggleEMA = function(btn) {
+    const period = btn.dataset.ema;
+    activeEMAs[period] = !activeEMAs[period];
+    btn.classList.toggle('active', activeEMAs[period]);
+    if (emaSeries[period]) {
+      emaSeries[period].applyOptions({ visible: activeEMAs[period] });
+    }
+  };
+
+  // ── Ticker + Pulse Bar ──
+  async function refreshTicker() {
+    const data = await apiFetch('/ticker');
+    if (!data) return;
+
+    $('pulsePrice').textContent = '$' + fmt(data.price);
+    const delta = data.change || 0;
+    const pct = data.changePct || 0;
+    const isUp = delta >= 0;
+
+    const dEl = $('pulseDelta');
+    dEl.textContent = (isUp ? '+' : '') + fmt(delta);
+    dEl.className = 'pulse-delta ' + (isUp ? 'up' : 'down');
+
+    const pEl = $('pulsePct');
+    pEl.textContent = '(' + (isUp ? '+' : '') + fmt(pct) + '%)';
+
+    // Bias pill
+    const bias = $('biasPill');
+    const emaTrend = data.emaTrend || 'NEUTRAL';
+    if (emaTrend === 'BULLISH') { bias.textContent = 'Bullish'; bias.className = 'bias-pill bullish'; }
+    else if (emaTrend === 'BEARISH') { bias.textContent = 'Bearish'; bias.className = 'bias-pill bearish'; }
+    else { bias.textContent = 'Neutral'; bias.className = 'bias-pill neutral'; }
+
+    // Key levels — with timeframe label
+    if (data.support && data.resistance) {
+      const s1 = data.support[0], s2 = data.support[1], r1 = data.resistance[0], r2 = data.resistance[1];
+      $('pulseLevels').innerHTML =
+        `<span class="level-chip support">S1 <span class="val">$${fmt(s1)}</span></span>
+         <span class="level-chip support">S2 <span class="val">$${fmt(s2)}</span></span>
+         <span class="level-chip resistance">R1 <span class="val">$${fmt(r1)}</span></span>
+         <span class="level-chip resistance">R2 <span class="val">$${fmt(r2)}</span></span>
+         <span style="font-size:0.65rem;color:var(--text-dim);margin-left:0.25rem;">1H</span>`;
+    }
+
+    // Regime display — append to bias pill
+    const regime = data.emaTrend || 'NEUTRAL';
+    const rsi = data.rsi || 50;
+    const rsiState = data.rsiState || 'NEUTRAL';
+    let regimeLabel = '';
+    if (regime === 'BULLISH') regimeLabel = '📈 UPTREND';
+    else if (regime === 'BEARISH') regimeLabel = '📉 DOWNTREND';
+    else regimeLabel = '📊 SIDEWAYS';
+    bias.textContent += ' · ' + regimeLabel;
+
+    // Risk bars
+    const bars = $('riskBars').children;
+    const riskLevel = data.signal === 'SELL' ? 5 : data.signal === 'NEUTRAL' ? 3 : 1;
+    for (let i = 0; i < bars.length; i++) {
+      bars[i].className = 'risk-bar' + (i < riskLevel ? ' active ' + (i < 2 ? 'low' : i < 4 ? 'med' : 'high') : '');
+    }
+
+    // Timestamp — LIVE marker
+    const now = new Date();
+    $('pulseTimestamp').innerHTML = '<span style="color:var(--green);">● LIVE</span> ' + now.toLocaleString('en-MY', {
+      timeZone: CONFIG.TIMEZONE, year: 'numeric', month: '2-digit',
+      day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
+    }) + ' MYT';
+
+    // RSI in driver — with regime context
+    $('pulseDriver').innerHTML = '<strong>RSI ' + fmt(rsi, 1) + '</strong> — ' + rsiState +
+      ' · XAU/MYR: RM ' + fmt((data.price || 0) * 4.35 / 31.1035) + '/gram' +
+      ' · TF: 1H levels, 4H regime';
+  }
+
+  // ── Market Pulse (APEX) ──
+  async function refreshApex() {
+    const d = await apiFetch('/apex');
+    if (!d) return;
+
+    const g = d.G || 0;
+    const gEl = $('apexG');
+    if (gEl) {
+      gEl.textContent = g >= 0.5 ? 'Clear' : g >= 0.3 ? 'Mixed' : 'Murky';
+      gEl.style.color = g >= 0.5 ? 'var(--green)' : g >= 0.3 ? 'var(--amber)' : 'var(--red)';
+    }
+
+    const c = d.C_dark || 0;
+    const cEl = $('apexCdark');
+    if (cEl) {
+      cEl.textContent = c < 0.15 ? 'Low' : c < 0.3 ? 'Medium' : 'High';
+      cEl.style.color = c < 0.15 ? 'var(--green)' : c < 0.3 ? 'var(--amber)' : 'var(--red)';
+    }
+
+    const ds = d.dS || 0;
+    const dsEl = $('apexDS');
+    if (dsEl) {
+      dsEl.textContent = ds > 0.05 ? 'Building' : ds < -0.05 ? 'Fading' : 'Steady';
+      dsEl.style.color = ds > 0.05 ? 'var(--amber)' : ds < -0.05 ? 'var(--text-mid)' : 'var(--cyan)';
+    }
+
+    const stateEl = $('apexState');
+    if (stateEl) {
+      const stateMap = { 'CLARITY': 'Clear Trend', 'STABLE': 'Ranging', 'CHAOS': 'Choppy' };
+      stateEl.textContent = stateMap[d.state] || d.state || '—';
+    }
+
+    if (d.direction) $('apexDirection').textContent = d.direction;
+
+    const vEl = $('apexVerdict');
+    if (vEl) {
+      const verdictMap = { 'SEAL': 'Strong Signal', 'PROCEED': 'Good Setup', 'SABAR': 'Wait', 'HOLD': 'Hold Off' };
+      vEl.textContent = verdictMap[d.verdict] || d.verdict || '—';
+      vEl.className = 'apex-verdict ' + (d.verdict || '').toLowerCase();
+    }
+
+    // Update last signal timestamp
+    const sigEl = $('signalLastUpdated');
+    if (sigEl) sigEl.textContent = new Date().toLocaleTimeString('en-MY', { timeZone: CONFIG.TIMEZONE });
+
+    const ap = d.apex || {};
+    const setPrim = (id, val, label) => {
+      const e = $(id);
+      if (e) {
+        e.textContent = label + ': ' + Math.round((val || 0) * 100) + '%';
+        e.style.color = val >= 0.6 ? 'var(--green)' : val >= 0.3 ? 'var(--text-mid)' : 'var(--red)';
+      }
+    };
+    if (ap.A !== undefined) setPrim('apexA', ap.A, 'Structure');
+    if (ap.P !== undefined) setPrim('apexP', ap.P, 'Strength');
+    if (ap.E !== undefined) setPrim('apexE', ap.E, 'Signal');
+    if (ap.X !== undefined) setPrim('apexX', ap.X, 'Stability');
+    if (ap.Phi !== undefined) setPrim('apexPhi', ap.Phi, 'Agreement');
+
+    // Momentum + Volume from APEX
+    if (d.momentum !== undefined) {
+      const momEl = $('apexMom');
+      if (momEl) { momEl.textContent = 'Momentum: ' + (d.momentum >= 0 ? '+' : '') + fmt(d.momentum, 3); momEl.style.color = d.momentum >= 0 ? 'var(--green)' : 'var(--red)'; }
+    }
+    if (d.volume_trend) {
+      const volEl = $('apexVolTrend');
+      if (volEl) { volEl.textContent = 'Volume: ' + d.volume_trend; volEl.style.color = d.volume_trend === 'rising' ? 'var(--green)' : 'var(--amber)'; }
+    }
+
+    // Update confluence
+    const confPct = Math.round((d.confidence || 0.5) * 100);
+    $('confluenceScore').textContent = confPct + '%';
+    $('confluenceBar').style.width = confPct + '%';
+    $('confluenceBar').className = 'confluence-bar-fill ' + (confPct >= 65 ? 'high' : confPct >= 40 ? 'med' : 'low');
+    $('biasConfluence').textContent = confPct + '% Confluence · ' + (d.verdict || 'MODERATE').toUpperCase();
+  }
+
+  // ── Macro ticker (DXY, US10Y, VIX, Silver, GSR) ──
+  async function refreshMacro() {
+    const data = await apiFetch('/macro');
+    if (!data) return;
+
+    const setMacro = (id, value, change) => {
+      const el = $(id);
+      if (!el) return;
+      el.textContent = value || '—';
+      if (change !== undefined) {
+        const isUp = change >= 0;
+        el.innerHTML += ' <span class="macro-change ' + (isUp ? 'up' : 'down') + '">' + (isUp ? '▲' : '▼') + Math.abs(change).toFixed(2) + '%</span>';
+      }
+    };
+
+    setMacro('mcr-dxy', data.dxy ? data.dxy.toFixed(2) : null, data.dxy_change);
+    setMacro('mcr-us10y', data.us10y ? data.us10y.toFixed(2) + '%' : null, data.us10y_change);
+    setMacro('mcr-vix', data.vix ? data.vix.toFixed(2) : null, data.vix_change);
+    setMacro('mcr-silver', data.silver ? '$' + data.silver.toFixed(2) : null, data.silver_change);
+    setMacro('mcr-gsr', data.gsr ? data.gsr.toFixed(1) : null, data.gsr_change);
+
+    const timeEl = $('mcr-time');
+    if (timeEl) {
+      timeEl.textContent = new Date().toLocaleString('en-MY', {
+        timeZone: CONFIG.TIMEZONE, month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
+      }) + ' MYT';
+    }
+  }
+
+  // ── Signal V2 (technical signals) ──
+  async function refreshSignals() {
+    const d = await apiFetch('/signal_v2');
+    if (!d || !d.signal) return;
+
+    const sig = d.signal;
+    const regime = d.regime || {};
+
+    // Update synthesis text — PLAIN LANGUAGE
+    const plainVerdict = translateJudge(sig.judge_reason);
+    $('synthesisVerdict').innerHTML = '<strong>' + (sig.verdict || 'SABAR') + ' — ' +
+      (sig.direction || 'FLAT') + '</strong><br><br>' + plainVerdict +
+      '<br><br><strong>📊 Angka:</strong> Nisbah Untung/Risiko: ' + fmt(sig.rr_ratio || 0, 1) + ':1' +
+      ' | Isyarat sehala: ' + Math.round((sig.confluence_score || 0) * 100) + '%' +
+      ' | Trend: ' + (regime.regime || 'TIADA') + ' (' + Math.round((regime.confidence || 0) * 100) + '% yakin)';
+
+    // Update trade quality — DYNAMIC
+    const rrEl = document.querySelectorAll('.trade-metric-value')[0];
+    if (rrEl) {
+      rrEl.textContent = '1:' + fmt(sig.rr_ratio || 0, 1);
+      rrEl.className = 'trade-metric-value ' + ((sig.rr_ratio || 0) >= 2 ? 'good' : (sig.rr_ratio || 0) >= 1.2 ? 'marginal' : 'poor');
+    }
+    const confEl = document.querySelectorAll('.trade-metric-value')[1];
+    if (confEl) {
+      confEl.textContent = Math.round((sig.confluence_score || 0) * 100) + '%';
+    }
+    const conf2El = document.querySelectorAll('.trade-metric-value')[2];
+    if (conf2El) {
+      const confMap = { 'HIGH': 'Tinggi', 'MEDIUM': 'Sederhana', 'LOW': 'Rendah' };
+      conf2El.textContent = confMap[(sig.confidence_level || 'MEDIUM').toUpperCase()] || 'Sederhana';
+    }
+
+    // Update verdict pill
+    const vEl = document.querySelector('.trade-quality-verdict');
+    if (vEl) {
+      const rr = sig.rr_ratio || 0;
+      vEl.textContent = rr >= 2 ? 'Good R:R' : rr >= 1.2 ? 'Marginal R:R' : 'Poor R:R';
+      vEl.className = 'trade-quality-verdict ' + (rr >= 2 ? 'good' : rr >= 1.2 ? 'marginal' : 'poor');
+    }
+
+    // Plot entry/SL/TP markers on chart
+    plotPositionMarkers(sig);
+  }
+
+  // ── Technical Forge — LIVE analysis from ticker + signal_v2 ──
+  async function refreshTechnicalForge() {
+    const [ticker, sigData, apexData] = await Promise.all([
+      apiFetch('/ticker'),
+      apiFetch('/signal_v2'),
+      apiFetch('/apex'),
+    ]);
+    if (!ticker) return;
+
+    const emaTrend = ticker.emaTrend || 'NEUTRAL';
+    const price = ticker.price || 0;
+    const ema20 = ticker.ema20 || 0;
+    const ema50 = ticker.ema50 || 0;
+    const ema200 = ticker.ema200 || 0;
+    const rsi = ticker.rsi || 50;
+    const rsiState = ticker.rsiState || 'NEUTRAL';
+    const regime = (sigData && sigData.regime) || {};
+    const sig = (sigData && sigData.signal) || {};
+    const apexG = (apexData && apexData.G) || 0;
+
+    // ── TREND ──
+    const trendBull = emaTrend === 'BULLISH';
+    const trendClass = trendBull ? 'bullish' : (emaTrend === 'BEARISH' ? 'bearish' : 'neutral');
+    const trendScore = trendBull ? 65 : (emaTrend === 'BEARISH' ? 35 : 50);
+    $('tfTrendScore').textContent = emaTrend;
+    $('tfTrendScore').className = 'signal-score ' + trendClass;
+    $('tfTrendBody').innerHTML = 
+      'EMA20 ($' + fmt(ema20) + ') <strong>' + (ema20 > ema50 ? 'above' : 'below') + '</strong> EMA50 ($' + fmt(ema50) + '). ' +
+      '200 EMA at $' + fmt(ema200) + ' — ' + (price > ema200 ? 'price above = macro support' : 'price below = macro resistance') + '. ' +
+      'Regime: ' + (regime.regime || emaTrend) + ' (' + Math.round((regime.confidence || 0.8) * 100) + '% conf).';
+    $('tfTrendConf').textContent = 'Score: ' + trendScore + '/100';
+    $('tfTrendTier').textContent = trendScore >= 70 ? 'Tier 3 — High' : trendScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
+    $('tfTrendTier').className = 'confidence-tier ' + (trendScore >= 70 ? 't3' : trendScore >= 40 ? 't2' : 't1');
+
+    // ── MOMENTUM ──
+    const momBull = rsi > 50 && rsi < 70;
+    const momClass = rsi > 70 ? 'bearish' : rsi < 30 ? 'bullish' : 'neutral';
+    const momScore = Math.round(rsi);
+    $('tfMomScore').textContent = rsiState;
+    $('tfMomScore').className = 'signal-score ' + momClass;
+    $('tfMomBody').innerHTML = 
+      'RSI <strong>' + fmt(rsi, 1) + '</strong> — ' + rsiState.toLowerCase() + '. ' +
+      (rsi > 70 ? 'Overbought — potential pullback.' : rsi < 30 ? 'Oversold — potential bounce.' : 'Mid-range — no extreme signal.') +
+      ' Confluence: ' + Math.round((sig.confluence_score || 0) * 100) + '%. Direction: ' + (sig.direction || 'FLAT') + '.';
+    $('tfMomConf').textContent = 'Score: ' + momScore + '/100';
+    $('tfMomTier').textContent = momScore >= 70 ? 'Tier 3 — High' : momScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
+    $('tfMomTier').className = 'confidence-tier ' + (momScore >= 70 ? 't3' : momScore >= 40 ? 't2' : 't1');
+
+    // ── STRUCTURE ──
+    const structScore = Math.round((regime.confidence || 0) * 100);
+    const s1 = ticker.support ? ticker.support[0] : 0;
+    const r1 = ticker.resistance ? ticker.resistance[0] : 0;
+    const structClass = regime.regime === 'UPTREND' ? 'bullish' : regime.regime === 'DOWNTREND' ? 'bearish' : 'neutral';
+    $('tfStructScore').textContent = (regime.regime || 'SIDEWAYS');
+    $('tfStructScore').className = 'signal-score ' + structClass;
+    $('tfStructBody').innerHTML = 
+      '<strong>' + (regime.regime || 'SIDEWAYS') + '</strong> regime (' + Math.round((regime.confidence || 0.8) * 100) + '% confidence). ' +
+      'S1: $' + fmt(s1) + ' | R1: $' + fmt(r1) + '. ' +
+      'Keputusan: <strong>' + (sig.verdict || 'SABAR') + '</strong> — ' + translateJudge(sig.judge_reason) + '.';
+    $('tfStructConf').textContent = 'Score: ' + structScore + '/100';
+    $('tfStructTier').textContent = structScore >= 70 ? 'Tier 3 — High' : structScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
+    $('tfStructTier').className = 'confidence-tier ' + (structScore >= 70 ? 't3' : structScore >= 40 ? 't2' : 't1');
+
+    // ── VOLUME ──
+    const volClass = apexG >= 0.5 ? 'bullish' : apexG >= 0.3 ? 'neutral' : 'bearish';
+    const volScore = Math.round(apexG * 100);
+    $('tfVolScore').textContent = apexG >= 0.5 ? 'Mencukupi' : apexG >= 0.3 ? 'Sederhana' : 'Lemah';
+    $('tfVolScore').className = 'signal-score ' + volClass;
+    $('tfVolBody').innerHTML = 
+      'Kualiti isyarat: <strong>' + (apexG >= 0.5 ? 'BAIK — boleh entry' : apexG >= 0.3 ? 'SEDERHANA — tunggu kepastian' : 'LEMAH — jangan masuk') + '</strong>. ' +
+      'Kekuatan: ' + (sig.strength || 'TIADA') + '. Nisbah U/R: ' + fmt(sig.rr_ratio || 0, 1) + ':1. ' +
+      '★ Data pasaran dari yfinance — anggaran sahaja, bukan data broker.';
+    $('tfVolConf').textContent = 'Score: ' + volScore + '/100';
+    $('tfVolTier').textContent = volScore >= 70 ? 'Tier 3 — High' : volScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
+    $('tfVolTier').className = 'confidence-tier ' + (volScore >= 70 ? 't3' : volScore >= 40 ? 't2' : 't1');
+  }
+
+  // ── Calendar events ──
+  async function refreshCalendar() {
+    const d = await apiFetch('/calendar');
+    const listEl = $('eventsList');
+    if (!listEl) return;
+    if (!d || !d.events || d.events.length === 0) {
+      listEl.innerHTML = '<div class="events-empty">No high-impact USD events this week</div>';
+      return;
+    }
+    const now = new Date();
+    let warningHtml = '';
+    for (const ev of d.events) {
+      if (ev.impact !== 'high' || !ev.datetime) continue;
+      try {
+        const diffMs = new Date(ev.datetime) - now;
+        const diffMins = diffMs / 60000;
+        if (diffMins > 0 && diffMins <= 15) {
+          warningHtml = `<div class="event-alert critical">🚨 ${ev.event} IN ${Math.round(diffMins)} MINS — CLOSE POSITIONS</div>`;
+          break;
+        } else if (diffMins > 0 && diffMins <= 120) {
+          warningHtml = `<div class="event-alert warning">⚠️ ${ev.event} in ${Math.round(diffMins)} mins — Avoid new openings</div>`;
+        }
+      } catch(e) {}
+    }
+
+    listEl.innerHTML = warningHtml + d.events.map(ev => {
+      const cls = ev.impact === 'high' ? 'high' : 'medium';
+      return `<div class="event-row ${cls}">
+        <span class="event-date">${ev.date || ''}</span>
+        <span class="event-time">${ev.time || ''}</span>
+        <span class="event-name">${ev.event}</span>
+        <span class="event-actual">${ev.actual || '—'}</span>
+        <span class="event-forecast">${ev.forecast || '—'}</span>
+        <span class="event-previous">${ev.previous || '—'}</span>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Stance buttons ──
+  function initStanceButtons() {
+    const saved = localStorage.getItem('gold_stance') || 'observe';
+    const stances = { observe: 'stanceObserve', prepare: 'stancePrepare', await: 'stanceAwait' };
+
+    Object.entries(stances).forEach(([key, id]) => {
+      const btn = $(id);
+      if (!btn) return;
+      btn.classList.toggle('active', saved === key);
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.stance-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        localStorage.setItem('gold_stance', key);
+      });
+    });
+  }
+
+  // ── Full refresh cycle ──
+  async function refreshAll() {
+    const liveDot = document.querySelector('.pulse-meta .live-dot');
+    if (liveDot) liveDot.style.background = 'var(--amber)';
+
+    await Promise.all([
+      refreshTicker(),
+      refreshApex(),
+      refreshMacro(),
+      refreshSignals(),
+      refreshTechnicalForge(),
+      refreshCalendar(),
+      renderChart(currentTF),
+    ]);
+
+    if (liveDot) liveDot.style.background = 'var(--green)';
+  }
+
+  // ── Boot sequence ──
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 💉 LIVE DATA FIRST — truth before beauty
+    await Promise.all([
+      refreshTicker(),
+      refreshMacro(),
+    ]);
+    
+    // Then chart + heavy stuff in background
+    renderChart('4H');
+    refreshApex();
+    refreshSignals();
+    refreshTechnicalForge();
+    refreshCalendar();
+
+    initStanceButtons();
+
+    // Periodic refresh
+    setInterval(refreshAll, CONFIG.REFRESH_INTERVAL);
+    // Faster ticker refresh (every 2 min)
+    setInterval(refreshTicker, 120000);
+  });
+
+</script>
+
+</body>
+</html>

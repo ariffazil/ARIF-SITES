@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-header="product">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify snapshot — arifOS Observatory</title>
+<link rel="canonical" href="https://arifos.arif-fazil.com/verify/snapshot/">
+<meta name="robots" content="index,follow">
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;padding:1.5rem;line-height:1.55}
+main{max-width:640px;margin:0 auto}
+a{color:#3a9ea8}.card{border:1px solid #2a2826;border-radius:10px;padding:1rem;background:#141312;margin:1rem 0}
+.mono{font-family:ui-monospace,monospace;font-size:.8rem;word-break:break-all}
+</style>
+<script src="/_shared/unified-header-loader.js?v=20260718"></script>
+</head>
+<body data-header="product">
+<main>
+  <h1>Snapshot verification</h1>
+  <p>Points at the current signed Observatory snapshot. Historical snapshot archive is P1.</p>
+  <div class="card mono" id="out">Loading…</div>
+  <p><a href="/.well-known/observatory-snapshot-latest.json">Download signed snapshot JSON</a> ·
+     <a href="/api/public-state">public-state</a> ·
+     <a href="https://mcp.arif-fazil.com/">Connect MCP</a></p>
+</main>
+<script>
+fetch('/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
+  var s=ps.snapshot||{};
+  document.getElementById('out').textContent =
+    'id: '+(s.id||'?')+'\n'+
+    'observed_at: '+(s.observed_at||'?')+'\n'+
+    'signature_state: '+(s.signature_state||'?')+'\n'+
+    'payload_hash: '+(s.payload_hash||'?')+'\n'+
+    'key_id: '+(s.key_id||'?')+'\n'+
+    'release: '+((ps.release||{}).release_id||'?');
+}).catch(e=>{document.getElementById('out').textContent=String(e)});
+</script>
+</body>
+</html>

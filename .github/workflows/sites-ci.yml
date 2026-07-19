@@ -1,0 +1,79 @@
+name: "🌐 Sites CI — L4 PUBLIC"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sites-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  federation-check:
+    name: 🗺️ Federation Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate FEDERATION.md
+        run: |
+          test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
+          grep -q "role: PUBLIC_SURFACE" FEDERATION.md
+          grep -q "layer: L4" FEDERATION.md
+          echo "✅ arif-sites FEDERATION.md valid — L4 PUBLIC"
+      - name: Validate organ.yaml
+        run: |
+          if [ -f organ.yaml ]; then
+            pip install pyyaml 2>/dev/null
+            python3 -c "
+            import yaml, sys
+            with open('organ.yaml') as f:
+                doc = yaml.safe_load(f)
+            assert doc['authority_ceiling'] == 'DISPLAY_ONLY', 'arif-sites must be DISPLAY_ONLY'
+            assert 'constitutional_truth' in doc.get('forbidden_domains', []), 'Must forbid constitutional_truth'
+            print('✅ organ.yaml valid — DISPLAY_ONLY')
+            "
+          fi
+
+  build:
+    name: "🏗️ Build"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Install
+        run: npm install --legacy-peer-deps
+      - name: Build
+        run: npm run build
+
+  verify:
+    name: "🔍 Public Surface Verify"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - name: No live MCP calls in build
+        run: |
+          ! grep -r "localhost:808[0-9]\|localhost:1808[0-9]\|localhost:707[0-9]" \
+            src/ sites/ --include="*.ts" --include="*.js" --include="*.tsx" 2>/dev/null || \
+            (echo "⚠️ WARNING: Live MCP calls found in static build" && true)
+          echo "✅ MCP isolation check complete"
+      - name: Federation map accessible
+        run: |
+          test -f docs/FEDERATION_MAP.md 2>/dev/null || test -f ../AAA/docs/FEDERATION_MAP.md 2>/dev/null || \
+            echo "⚠️ FEDERATION_MAP.md not found locally (referenced from AAA)"
+          echo "✅ Federation reference check complete"
+      - name: llms.txt exists
+        run: |
+          test -f llms.txt || echo "⚠️ llms.txt not found (recommended for AI discovery)"
+          echo "✅ Discovery check complete"

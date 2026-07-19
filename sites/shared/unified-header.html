@@ -1,0 +1,172 @@
+<!-- Unified Header — sovereign human chrome (root + product pages) -->
+<style>
+  :root {
+    --uh-bg: #0a0a0a;
+    --uh-border: #1a1a1a;
+    --uh-text: #888;
+    --uh-text-dim: #555;
+    --uh-text-bright: #fff;
+    --uh-mind: #00D4AA;
+    --uh-body: #D4A853;
+    --uh-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  }
+  .uh { box-sizing: border-box; width: 100%; max-width: 100vw; overflow: visible; flex: 0 0 auto; font-family: var(--uh-mono); background: var(--uh-bg); color: var(--uh-text); position: relative; z-index: 100; }
+  body.has-federation-header { flex-direction: column; }
+  .uh a { color: var(--uh-text); text-decoration: none; transition: color 0.15s; }
+  .uh a:hover { color: var(--uh-text-bright); }
+
+  .uh-status { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.06em; border-bottom: 1px solid var(--uh-border); color: var(--uh-text-dim); }
+  .uh-status .live { color: var(--uh-mind); }
+  .uh-status-full { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; }
+  .uh-status-compact { display: none; }
+
+  html[data-header="product"] .uh-status-full,
+  body[data-header="product"] .uh-status-full { display: none; }
+  html[data-header="product"] .uh-status-compact,
+  body[data-header="product"] .uh-status-compact { display: inline; color: var(--uh-text); }
+  html[data-header="product"] .uh-canon,
+  body[data-header="product"] .uh-canon { display: none; }
+  html[data-header="product"] .uh-identity,
+  body[data-header="product"] .uh-identity { padding: 0.65rem 1.5rem; }
+
+  .uh-canon { display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 1.5rem; font-size: 0.65rem; letter-spacing: 0.06em; border-bottom: 1px solid var(--uh-border); }
+  .uh-canon .day { color: var(--uh-body); font-weight: 600; }
+  .uh-canon .quote { color: var(--uh-text-dim); font-style: italic; }
+
+  .uh-identity { display: flex; align-items: center; gap: 1.25rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--uh-border); }
+  .uh-logo { width: 48px; height: 48px; border: 1.5px solid var(--uh-text); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; flex-shrink: 0; }
+  .uh-name { font-size: 1.5rem; font-weight: 700; color: var(--uh-text-bright); letter-spacing: 0.05em; line-height: 1.2; }
+  .uh-role { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--uh-text-dim); }
+
+  .uh-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.15rem; padding: 0.55rem 1.5rem; font-size: 0.75rem; letter-spacing: 0.05em; border-bottom: 2px solid var(--uh-border); }
+  .uh-nav > a, .uh-drop > summary {
+    padding: 0.35rem 0.75rem; border-radius: 3px; list-style: none; cursor: pointer; color: var(--uh-text);
+  }
+  .uh-nav > a:hover, .uh-drop > summary:hover { background: rgba(255,255,255,0.05); color: var(--uh-text-bright); }
+  .uh-drop > summary::-webkit-details-marker { display: none; }
+  .uh-drop > summary::after { content: " ▾"; font-size: 0.65em; opacity: 0.7; }
+  .uh-drop { position: relative; }
+  .uh-drop[open] > summary { color: var(--uh-mind); background: rgba(0,212,170,0.08); }
+  .uh-submenu {
+    position: absolute; top: calc(100% + 0.25rem); left: 0; min-width: 12rem;
+    background: #111; border: 1px solid var(--uh-border); border-radius: 6px; padding: 0.35rem; z-index: 200;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  }
+  .uh-submenu a { display: block; padding: 0.45rem 0.7rem; border-radius: 4px; font-size: 0.72rem; color: var(--uh-text); }
+  .uh-submenu a:hover { background: rgba(255,255,255,0.06); color: var(--uh-text-bright); }
+  .uh-submenu a.mind { color: var(--uh-mind); }
+  .uh-nav .sep { color: #333; margin: 0 0.2rem; user-select: none; }
+
+  @media (max-width: 768px) {
+    .uh-status { gap: 0.6rem; font-size: 0.58rem; padding: 0.3rem 0.75rem; }
+    .uh-canon { padding: 0.3rem 0.75rem; flex-direction: column; gap: 0.2rem; align-items: flex-start; }
+    .uh-identity { padding: 0.75rem; gap: 0.75rem; }
+    .uh-logo { width: 36px; height: 36px; font-size: 0.85rem; }
+    .uh-name { font-size: 1.1rem; }
+    .uh-nav { padding: 0.4rem 0.75rem; font-size: 0.68rem; }
+    .uh-nav > a, .uh-drop > summary { padding: 0.3rem 0.5rem; }
+    .uh-submenu { position: static; min-width: 100%; margin-top: 0.25rem; box-shadow: none; }
+  }
+</style>
+
+<header class="uh">
+  <div class="uh-status">
+    <span class="live" aria-hidden="true">●</span>
+    <span class="uh-status-compact" id="uh-compact">—</span>
+    <span class="uh-status-full">
+      <span id="uh-utc">UTC --:--:--</span>
+      <span id="uh-myt">MYT --:--:--</span>
+      <span id="uh-date">DATE ----/--/--</span>
+      <span id="uh-epoch">EPOCH ----------</span>
+      <span style="margin-left:auto" id="uh-timer">t ———————— --.--%</span>
+    </span>
+  </div>
+
+  <div class="uh-canon">
+    <div><span id="uh-day-label" class="day">CANON Day --</span> <span id="uh-y1">--% Y1</span></div>
+    <div class="quote">"Intelligence is what time looks like"</div>
+    <div id="uh-fdate" style="color:#666">---- --th ------ ---- --:-- -- MYT</div>
+  </div>
+
+  <div class="uh-identity">
+    <a href="https://arif-fazil.com/" class="uh-logo" style="color:inherit">AF</a>
+    <div>
+      <div class="uh-name">ARIF FAZIL</div>
+      <div class="uh-role">GEOSCIENTIST · ARCHITECT</div>
+    </div>
+  </div>
+
+  <nav class="uh-nav" aria-label="Primary">
+    <a href="https://arif-fazil.com/">Arif</a>
+    <span class="sep">|</span>
+    <a href="https://geox.arif-fazil.com/">Earth</a>
+    <span class="sep">|</span>
+    <a href="https://wealth.arif-fazil.com/">Capital</a>
+    <span class="sep">|</span>
+    <a href="https://well.arif-fazil.com/">Human</a>
+    <span class="sep">|</span>
+    <details class="uh-drop">
+      <summary>arifOS</summary>
+      <div class="uh-submenu">
+        <a class="mind" href="https://arif-fazil.com/arifos/">Overview</a>
+        <a class="mind" href="https://mcp.arif-fazil.com/">Connect MCP</a>
+        <a href="https://arifos.arif-fazil.com/">Observatory</a>
+        <a href="https://arif-fazil.com/federation/">Federation</a>
+        <a href="https://arif-fazil.com/canon/">Canon</a>
+        <a href="https://arif-fazil.com/999/">Verification /999</a>
+        <a href="https://github.com/ariffazil/arifOS">Source</a>
+      </div>
+    </details>
+    <span class="sep">|</span>
+    <a href="https://arif-fazil.com/essays/">Writing</a>
+  </nav>
+</header>
+
+<script>
+(function(){
+  const CANON_EPOCH = new Date('2026-06-08T16:00:00Z').getTime();
+  const Y1_END = new Date('2027-06-08T16:00:00Z').getTime();
+  const MONTHS_SHORT = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  function pad(n,d){return String(n).padStart(d||2,'0')}
+  function update(){
+    const now = new Date();
+    const utc = now.toISOString().replace('T',' ').slice(0,19);
+    const myt = new Date(now.getTime()+8*3600000);
+    const h=myt.getUTCHours(), m=myt.getUTCMinutes(), s=myt.getUTCSeconds();
+    const mytStr = pad(h)+':'+pad(m)+':'+pad(s);
+    const epoch = Math.floor(now.getTime()/1000);
+    const day = Math.max(1,Math.floor((now.getTime()-CANON_EPOCH)/86400000));
+    const y1Pct = Math.min(100,Math.max(0,((now.getTime()-CANON_EPOCH)/(Y1_END-CANON_EPOCH)*100)));
+    const dayStart = new Date(myt); dayStart.setUTCHours(0,0,0,0);
+    const dayPct = ((myt.getTime()-dayStart.getTime())/86400000*100).toFixed(1);
+    const utcEl = document.getElementById('uh-utc');
+    if (utcEl) {
+      utcEl.textContent='UTC '+utc.slice(11);
+      document.getElementById('uh-myt').textContent='MYT '+mytStr;
+      document.getElementById('uh-date').textContent='DATE '+utc.slice(0,10);
+      document.getElementById('uh-epoch').textContent='EPOCH '+epoch;
+      document.getElementById('uh-timer').textContent='t ———————— '+dayPct+'%';
+      document.getElementById('uh-day-label').textContent='CANON Day '+day;
+      document.getElementById('uh-y1').textContent=y1Pct.toFixed(0)+'% Y1';
+      const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+      const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      const d = myt.getUTCDate();
+      const suffix = d%10===1&&d!==11?'st':d%10===2&&d!==12?'nd':d%10===3&&d!==13?'rd':'th';
+      document.getElementById('uh-fdate').textContent=
+        days[myt.getUTCDay()]+' '+d+suffix+' '+months[myt.getUTCMonth()]+' '+myt.getUTCFullYear()+' '+mytStr+' MYT';
+    }
+    const compact = document.getElementById('uh-compact');
+    if (compact) {
+      compact.textContent =
+        pad(myt.getUTCDate()) + ' ' + MONTHS_SHORT[myt.getUTCMonth()] + ' ' + myt.getUTCFullYear() +
+        ' · ' + mytStr.slice(0,5) + ' MYT · EPOCH ' + myt.getUTCFullYear() + '-' + pad(myt.getUTCMonth()+1);
+    }
+  }
+  update(); setInterval(update,1000);
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.uh-drop[open]').forEach(function(d){
+      if (!d.contains(e.target)) d.removeAttribute('open');
+    });
+  });
+})();
+</script>

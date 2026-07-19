@@ -1,0 +1,15 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-manifest.json",
+  "name": "GEOX",
+  "description": "Read-only Earth intelligence for wells, seismic, petrophysics, basins, and evidence-grounded subsurface synthesis.",
+  "homepage": "https://geox.arif-fazil.com/",
+  "repository": "https://github.com/ariffazil/GEOX",
+  "license": "AGPL-3.0",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://geox.arif-fazil.com/mcp"
+  },
+  "capabilities": { "tools": true, "resources": true, "prompts": false },
+  "authority": "EVIDENCE_ONLY",
+  "mutation_allowed": false
+}

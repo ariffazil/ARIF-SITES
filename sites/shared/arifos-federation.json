@@ -1,0 +1,88 @@
+{
+  "schema": "arifos.federation.v1",
+  "generated_at": "2026-07-17T21:00:00Z",
+  "sovereign_root": "https://arif-fazil.com/",
+  "governance": {
+    "name": "arifOS",
+    "website": "https://arifos.arif-fazil.com/",
+    "mcp": "https://mcp.arif-fazil.com/mcp",
+    "public_state": "https://arifos.arif-fazil.com/api/public-state",
+    "observatory": "https://arifos.arif-fazil.com/"
+  },
+  "organs": [
+    {
+      "id": "geox",
+      "domain": "earth",
+      "label": "GEOX",
+      "nav_label": "Earth",
+      "role": "evidence",
+      "website": "https://geox.arif-fazil.com/",
+      "mcp": "https://geox.arif-fazil.com/mcp",
+      "authority": "advisory",
+      "doctrine": "Is it real?",
+      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+    },
+    {
+      "id": "wealth",
+      "domain": "capital",
+      "label": "WEALTH",
+      "nav_label": "Capital",
+      "role": "computation",
+      "website": "https://wealth.arif-fazil.com/",
+      "mcp": "https://wealth.arif-fazil.com/mcp",
+      "authority": "advisory",
+      "doctrine": "Is it worth it?",
+      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+    },
+    {
+      "id": "well",
+      "domain": "human-substrate",
+      "label": "WELL",
+      "nav_label": "Human",
+      "role": "witness",
+      "website": "https://well.arif-fazil.com/",
+      "mcp": "https://well.arif-fazil.com/mcp",
+      "authority": "reflect-only",
+      "doctrine": "Is the human steady?",
+      "evidence_url": "https://arifos.arif-fazil.com/#sec-organs"
+    }
+  ],
+  "control_plane": {
+    "id": "aaa",
+    "label": "AAA",
+    "role": "operator control plane",
+    "website": "https://aaa.arif-fazil.com/",
+    "public_nav": false
+  },
+  "execution": {
+    "id": "aforge",
+    "label": "A-FORGE",
+    "role": "execution surface",
+    "website": "https://forge.arif-fazil.com/",
+    "public_nav": false
+  },
+  "verification": "https://arif-fazil.com/999/",
+  "genesis": "https://arif-fazil.com/000/",
+  "canon": "https://arif-fazil.com/canon/",
+  "mcp_gateway": "https://mcp.arif-fazil.com/",
+  "observatory": "https://arifos.arif-fazil.com/",
+  "github": "https://github.com/ariffazil/arifOS",
+  "nav_primary": [
+    { "id": "arif", "label": "Arif", "href": "https://arif-fazil.com/" },
+    { "id": "geox", "label": "GEOX", "href": "https://geox.arif-fazil.com/" },
+    { "id": "wealth", "label": "WEALTH", "href": "https://wealth.arif-fazil.com/" },
+    { "id": "well", "label": "WELL", "href": "https://well.arif-fazil.com/" },
+    { "id": "arifos", "label": "arifOS", "href": "https://arif-fazil.com/arifos/" },
+    { "id": "observatory", "label": "Observatory", "href": "https://arifos.arif-fazil.com/" }
+  ],
+  "footer_rows": [
+    { "domain": "EARTH", "name": "GEOX", "href": "https://geox.arif-fazil.com/" },
+    { "domain": "CAPITAL", "name": "WEALTH", "href": "https://wealth.arif-fazil.com/" },
+    { "domain": "SUBSTRATE", "name": "WELL", "href": "https://well.arif-fazil.com/" },
+    { "domain": "GOVERNANCE", "name": "arifOS", "href": "https://arifos.arif-fazil.com/" },
+    { "domain": "CONTROL", "name": "AAA", "href": "https://aaa.arif-fazil.com/" },
+    { "domain": "EXECUTION", "name": "A-FORGE", "href": "https://forge.arif-fazil.com/" },
+    { "domain": "PROOF", "name": "Observatory · /999", "href": "https://arif-fazil.com/999/" }
+  ],
+  "authority_line": "Governed by arifOS. Domain organs advise or witness. The human remains the final authority."
+}

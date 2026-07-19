@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arifOS — Governed intelligence · Arif Fazil</title>
+<meta name="description" content="arifOS judges authority and reversibility. GEOX observes Earth. WEALTH computes capital. WELL reflects the human substrate. The human decides.">
+<link rel="canonical" href="https://arif-fazil.com/arifos/">
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
+main{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:2rem;letter-spacing:-.03em;margin:.25rem 0 1rem}
+.lead{color:#9b9995;font-size:1.1rem;max-width:40ch;margin-bottom:1.5rem}
+.card{border:1px solid #2a2826;border-radius:10px;padding:1rem 1.1rem;background:#141312;margin:1rem 0}
+.actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
+a.btn{display:inline-flex;padding:.6rem 1rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.9rem}
+.primary{background:#3a9ea8;color:#0d0c0b}.ghost{border:1px solid #2a2826;color:#e6e4e0}
+ul{color:#9b9995;padding-left:1.2rem} li{margin:.35rem 0}
+.kv{font-family:ui-monospace,monospace;font-size:.8rem;color:#9b9995}
+</style>
+<script src="/_shared/federation-chrome.js?v=20260718" data-active="arifos"></script>
+</head>
+<body>
+<main>
+  <p class="kv">arif-fazil.com/arifos · human explanation · not the live cockpit</p>
+  <h1>arifOS</h1>
+  <p class="lead">GEOX observes. WEALTH computes. WELL reflects. arifOS judges authority and reversibility. The human decides.</p>
+
+  <div class="card">
+    <p>arifOS is the governance kernel of the federation. It does not replace geoscience, capital math or human readiness — it bounds how machine intelligence may act between them.</p>
+    <ul>
+      <li><strong>Connect</strong> — public MCP door for agents and tools</li>
+      <li><strong>Witness</strong> — Observatory proves what is running</li>
+      <li><strong>Verify</strong> — /999 preserves receipts</li>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <a class="btn primary" href="https://mcp.arif-fazil.com/">Connect MCP</a>
+    <a class="btn ghost" href="https://arifos.arif-fazil.com/">Inspect Observatory</a>
+    <a class="btn ghost" href="/federation/">Federation map</a>
+    <a class="btn ghost" href="/999/">Verification /999</a>
+  </div>
+
+  <div class="card kv" id="state">Loading public-state…</div>
+</main>
+<script>
+fetch('https://arifos.arif-fazil.com/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
+  document.getElementById('state').textContent =
+    (ps.headline||'') + '\n' +
+    'Public tools: ' + ((ps.mcp&&ps.mcp.public_tools)||'?') + '\n' +
+    'Release: ' + ((ps.release&&ps.release.release_id)||'?') + '\n' +
+    'Open findings: ' + ((ps.findings&&ps.findings.open_count)||0) + '\n' +
+    'Authority: Human final';
+}).catch(()=>{document.getElementById('state').textContent='public-state unavailable';});
+</script>
+</body>
+</html>
