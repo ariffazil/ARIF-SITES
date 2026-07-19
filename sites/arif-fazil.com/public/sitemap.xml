@@ -5,81 +5,81 @@
     <loc>https://arif-fazil.com/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/discoveries/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/essays/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/wealth/</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
 
   <!-- MakcikGPT — Civic Intelligence -->
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/</loc>
+    <loc>https://arif-fazil.com/makcikgpt/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/petronas-dna</loc>
+    <loc>https://arif-fazil.com/makcikgpt/petronas-dna</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/sam-altman-elon-musk-anwar-akal</loc>
+    <loc>https://arif-fazil.com/makcikgpt/sam-altman-elon-musk-anwar-akal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/searah-followup</loc>
+    <loc>https://arif-fazil.com/makcikgpt/searah-followup</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/cerita-makcik</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2026-06-07</lastmod>
-  </url>
-  <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/siasatan-harakah</loc>
+    <loc>https://arif-fazil.com/makcikgpt/cerita-makcik</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/iran-hormuz</loc>
+    <loc>https://arif-fazil.com/makcikgpt/siasatan-harakah</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/makcikgpt/iran-hormuz</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <lastmod>2026-06-30</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/ilmu-bbb</loc>
+    <loc>https://arif-fazil.com/makcikgpt/ilmu-bbb</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://arif-fazil.com/wealth/makcikgpt/ytl-monopoli</loc>
+    <loc>https://arif-fazil.com/makcikgpt/ytl-monopoli</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
 
   <!-- System Surface -->
@@ -87,13 +87,13 @@
     <loc>https://arif-fazil.com/constellation/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/canon/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
 
   <!-- Verification Architecture -->
@@ -101,13 +101,13 @@
     <loc>https://arif-fazil.com/000/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/999/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
 
   <!-- Agent Discovery -->
@@ -115,18 +115,18 @@
     <loc>https://arif-fazil.com/llms.txt</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/llms.json</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
   <url>
     <loc>https://arif-fazil.com/llms-full.txt</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-19</lastmod>
   </url>
 </urlset>
