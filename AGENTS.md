@@ -95,4 +95,4 @@ NEXT_ACTION: [proceed | escalate_to_arifos | hold_for_human]
 
 ---
 
-*DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
+*DITEMPA BUKAN DIBERI — Forged, Not Given. Verify at /999*
