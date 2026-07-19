@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-header="product">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEALTH evidence — arifOS Observatory</title>
+<meta name="description" content="Public evidence row for WEALTH organ. Live tools, transport, release and provenance from arifos.public-state.v1.">
+<link rel="canonical" href="https://arifos.arif-fazil.com/organs/wealth/">
+<script src="/_shared/federation-chrome.js?v=20260718p1" data-active="observatory"></script>
+<style>
+body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.55;margin:0}
+main{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
+.card{border:1px solid #2a2826;border-radius:10px;padding:1rem;background:#141312;margin:1rem 0}
+.mono{font-family:ui-monospace,monospace;font-size:.8rem;word-break:break-all}
+a{color:#3a9ea8}
+.note{color:#9b9995;font-size:.9rem}
+</style>
+</head>
+<body data-header="product">
+<main>
+  <p class="note">Observatory organ evidence · distinct organ identity · federation binds, does not collapse</p>
+  <h1 id="title">WEALTH</h1>
+  <div class="card mono" id="out">Loading public-state…</div>
+  <p class="note">Semantic edges remain TRANSPORT_ONLY until handoff spine is proven live. Contract: arifos.handoff.v1</p>
+  <p>
+    <a href="https://arifos.arif-fazil.com/">Observatory home</a> ·
+    <a href="https://arif-fazil.com/999/">Verify receipt /999</a> ·
+    <a href="https://arif-fazil.com/">Sovereign root</a> ·
+    <a href="/api/public-state">public-state</a>
+  </p>
+</main>
+<script>
+fetch('/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
+  var o=(ps.organs&&ps.organs['wealth'])||{};
+  document.getElementById('title').textContent = o.organ || o.label || 'wealth'.toUpperCase();
+  document.getElementById('out').textContent =
+    'public_tools: ' + (o.public_tools!=null?o.public_tools:'—') + '\n' +
+    'transport: ' + (o.transport||'—') + '\n' +
+    'release: ' + (o.release||(ps.release&&ps.release.release_id)||'—') + '\n' +
+    'identity_state: ' + (o.identity_state||'—') + '\n' +
+    'last_observed: ' + (o.last_observed||ps.generated_at||'—') + '\n' +
+    'mcp: ' + (o.mcp||'—') + '\n' +
+    'website: ' + (o.website||'—') + '\n' +
+    'federation_headline: ' + (ps.headline||'—') + '\n' +
+    'tool_surface_hash: ' + ((ps.mcp&&ps.mcp.tool_surface_hash)||'—') + '\n' +
+    'snapshot: ' + ((ps.snapshot&&ps.snapshot.id)||'—') + '\n' +
+    'note: One federation identity, distinct organ identities.';
+}).catch(e=>{document.getElementById('out').textContent=String(e)});
+</script>
+</body>
+</html>
