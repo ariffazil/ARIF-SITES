@@ -24,6 +24,10 @@ echo "[2/5] Syncing shared assets..."
 mkdir -p $HTML_ROOT/_shared/design-system $HTML_ROOT/_shared/webmcp
 rsync -avz --delete $SITES_ROOT/shared/design-system/ $HTML_ROOT/_shared/design-system/
 rsync -avz --delete $SITES_ROOT/shared/webmcp/ $HTML_ROOT/_shared/webmcp/
+# Also sync root-level shared files (observatory.js, federation-chrome.js, etc.)
+rsync -avz $SITES_ROOT/shared/*.js $HTML_ROOT/_shared/
+rsync -avz $SITES_ROOT/shared/*.json $HTML_ROOT/_shared/
+rsync -avz $SITES_ROOT/shared/*.html $HTML_ROOT/_shared/ 2>/dev/null || true
 
 # 3. Sync sites to Caddy-served directories
 echo "[3/5] Syncing sites..."
