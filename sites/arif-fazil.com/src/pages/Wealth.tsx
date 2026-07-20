@@ -589,7 +589,7 @@ export function Wealth() {
               <span className="font-mono text-[0.65rem] text-forge-gold uppercase tracking-[0.25em]">
                 ◆ WAW · Wealth-as-Wisdom
               </span>
-              <span className="font-mono text-[0.6rem] text-forge-dim">EUEREKA — what WAW discovered</span>
+              <span className="font-mono text-[0.6rem] text-forge-dim">EUREKA — what WAW discovered</span>
             </div>
             <h2 className="text-3xl font-black italic uppercase mb-6">
               Capital has <span className="text-forge-gold">physics</span>. Not narrative.

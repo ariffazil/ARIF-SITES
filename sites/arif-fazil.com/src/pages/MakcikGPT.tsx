@@ -28,7 +28,7 @@ export function MakcikGPT() {
           </p>
           <div className="mt-8 flex gap-4">
             <span className="badge-status badge-status--live">999 SEALED</span>
-            <span className="badge-status badge-status--live">3 ARTICLES</span>
+            <span className="badge-status badge-status--live">16 ARTICLES</span>
             <span className="badge-status badge-status--live">v2.3</span>
           </div>
         </div>
