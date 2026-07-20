@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useWebMCP } from '@/hooks/useWebMCP';
+import { QuoteCard } from '@/components/QuoteCard';
 import essaysData from '@/data/essays.json';
 
 type Essay = typeof essaysData[number];
@@ -134,10 +135,22 @@ export function Essays() {
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <div className="section-label">{envTotal + bmTotal} pieces · {envTotal} EN + {bmTotal} BM</div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-6">The<br />Writing</h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed">
-            Essays, technical writing, civic journalism. One data file, three doors in.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-6">The<br />Writing</h1>
+              <p className="font-body text-xl text-forge-dim leading-relaxed">
+                Essays, technical writing, civic journalism. One data file, three doors in.
+              </p>
+            </div>
+            <div>
+              <QuoteCard
+                topic="On Discovery"
+                quote="I write because I don't know what I think until I read what I say."
+                author="Flannery O'Connor"
+                source="attributed to Flannery O'Connor"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

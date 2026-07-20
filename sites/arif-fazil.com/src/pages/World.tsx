@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useWebMCP } from '@/hooks/useWebMCP';
+import { QuoteCard } from '@/components/QuoteCard';
 
 const commodityMarkets = [
   { slug: 'oil', name: 'Oil (Brent)', accent: 'text-forge-orange' },
@@ -31,14 +32,26 @@ export function World() {
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <div className="section-label">Civic Journalism · Commodity Markets · World Context</div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
-            The<br />World
-          </h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed mb-8">
-            What's actually happening. MakcikGPT civic journalism in Bahasa Malaysia — covering
-            sovereignty, resources, and power. Plus the commodity dashboards that track what the
-            ground is doing.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mb-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
+                The<br />World
+              </h1>
+              <p className="font-body text-xl text-forge-dim leading-relaxed">
+                What's actually happening. MakcikGPT civic journalism in Bahasa Malaysia — covering
+                sovereignty, resources, and power. Plus the commodity dashboards that track what the
+                ground is doing.
+              </p>
+            </div>
+            <div>
+              <QuoteCard
+                topic="On Understanding"
+                quote="The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking."
+                author="Albert Einstein"
+                source="attributed to Albert Einstein"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

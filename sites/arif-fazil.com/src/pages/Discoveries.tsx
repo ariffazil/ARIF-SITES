@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { discoveries } from '@/data/discoveries';
 import { useWebMCP } from '@/hooks/useWebMCP';
+import { QuoteCard } from '@/components/QuoteCard';
 
 const discoveriesTools = [
   {
@@ -34,13 +35,24 @@ export function Discoveries() {
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <div className="section-label">Subsurface · Φ GEOX · Evidence</div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
-            The<br />Discoveries
-          </h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed">
-            Wells I signed off on. Each one material, each one irreversible. 
-            In the subsurface, truth is not consensus; it is what the bit finds.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
+                The<br />Discoveries
+              </h1>
+              <p className="font-body text-xl text-forge-dim leading-relaxed">
+                Wells I signed off on. Each one material, each one irreversible.
+              </p>
+            </div>
+            <div>
+              <QuoteCard
+                topic="A Pale Blue Dot"
+                quote="Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives... on a mote of dust suspended in a sunbeam."
+                author="Carl Sagan"
+                source="Pale Blue Dot (1994)"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

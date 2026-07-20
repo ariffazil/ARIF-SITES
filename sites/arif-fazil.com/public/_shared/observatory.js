@@ -1,13 +1,20 @@
 /**
  * arifOS Observatory — Client-Side Renderer
- * Fetches /api/observatory/v1/snapshot and populates all sections.
+ * Fetches /.well-known/observatory-snapshot-latest.json (fast static mirror)
+ * first; falls back to /api/observatory/v1/snapshot (live, slower).
+ * The static mirror is rebuilt periodically by emit_observatory_snapshot.py;
+ * the live endpoint rebuilds the snapshot on every request and can take 30-60s.
  * DITEMPA BUKAN DIBERI — Forged, Not Given.
  */
 (function () {
   'use strict';
 
-  const SNAPSHOT_URL = '/api/observatory/v1/snapshot';
+  const SNAPSHOT_MIRROR = '/.well-known/observatory-snapshot-latest.json';
+  const SNAPSHOT_LIVE = '/api/observatory/v1/snapshot';
   const REFRESH_MS = 30000; // 30s auto-refresh
+
+  // Mirror preferred (CDN-cached, <50ms); live API is fallback when mirror is stale/missing.
+  let SNAPSHOT_URL = SNAPSHOT_MIRROR;
 
   /* ── helpers ──────────────────────────────────────────── */
   const $ = (s, p) => (p || document).querySelector(s);
@@ -86,12 +93,13 @@
     const sig = d.signature || {};
     $('#footer-signature').textContent = `algorithm=${sig.algorithm || 'null'} · key_id=${sig.key_id || 'null'} · payload_hash=${shortHash(sig.payload_hash) || 'null'} · signed_at=${sig.signed_at || 'null'}`;
 
-    // tier
+    // tier (snapshot envelope: {value, state, source, ...}; page reads .current or .value)
     const tier = d.tier || {};
+    const tierValue = tier.current ?? tier.value;
     const tierEl = $('#tier-pill');
-    if (tierEl && tier.current) {
-      tierEl.textContent = 'tier: ' + tier.current;
-      tierEl.dataset.tierActive = tier.current !== 'public' ? 'true' : 'false';
+    if (tierEl && tierValue) {
+      tierEl.textContent = 'tier: ' + tierValue;
+      tierEl.dataset.tierActive = tierValue !== 'public' ? 'true' : 'false';
     }
   }
 
@@ -398,9 +406,17 @@
 
   /* ── main fetch + render ──────────────────────────────── */
   async function loadSnapshot() {
+    // Try the fast static mirror first; if it 404s or fails, fall back to the live API.
+    let resp;
     try {
-      const resp = await fetch(SNAPSHOT_URL);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      resp = await fetch(SNAPSHOT_URL, { cache: 'no-store' });
+      if (!resp.ok) throw new Error(`mirror HTTP ${resp.status}`);
+    } catch (mirrorErr) {
+      console.warn('Observatory mirror unavailable, falling back to live:', mirrorErr.message);
+      resp = await fetch(SNAPSHOT_LIVE, { cache: 'no-store' });
+      if (!resp.ok) throw new Error(`live HTTP ${resp.status}`);
+    }
+    try {
       const d = await resp.json();
 
       // mark loading done

@@ -14,7 +14,6 @@ import { Discoveries } from '@/pages/Discoveries';
 import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
-import { Federation } from '@/pages/Federation';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { NotFound } from '@/pages/NotFound';
 
@@ -60,13 +59,11 @@ function App() {
             <Route path="/writing/" element={<Essays />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
-            {/* Doctrine — arifOS constitution */}
+            {/* Doctrine & Federation — unified governance */}
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/doctrine/" element={<Doctrine />} />
-
-            {/* Federation — AAA portal + MCP gateway */}
-            <Route path="/federation" element={<Federation />} />
-            <Route path="/federation/" element={<Federation />} />
+            <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
+            <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
             {/* Machine-facing */}
             <Route path="/000" element={<Genesis />} />

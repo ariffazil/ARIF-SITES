@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 type CommodityDef = {
@@ -37,13 +37,21 @@ const COMMODITIES: Record<string, CommodityDef> = {
 
 export function CommodityPage({ slug }: { slug: string }) {
   const commodity = COMMODITIES[slug];
+  const [ticker, setTicker] = useState<{ price: number; change: number; changePct: number } | null>(null);
 
-  // Server-side / Δ-only fetch — no AI, no narrative
   useEffect(() => {
     if (commodity) {
       document.title = `${commodity.name} · Commodity Dashboard | Arif Fazil`;
+      fetch(`/wealth/${slug}/api/ticker`)
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.price) {
+            setTicker({ price: data.price, change: data.change || 0, changePct: data.changePct || 0 });
+          }
+        })
+        .catch(() => {});
     }
-  }, [commodity]);
+  }, [commodity, slug]);
 
   if (!commodity) {
     return <div className="py-24 text-center text-forge-dim">Commodity not found.</div>;
@@ -65,6 +73,16 @@ export function CommodityPage({ slug }: { slug: string }) {
           <p className="font-mono text-[0.6rem] text-forge-dim uppercase tracking-widest">
             Source: <span className="text-forge-orange">{commodity.source}</span>
           </p>
+
+          {ticker && (
+            <div className="mt-6 p-4 bg-forge-black/80 border border-forge-iron rounded inline-flex items-center gap-4">
+              <span className="font-mono text-xs text-forge-dim uppercase tracking-widest">Live yfinance Pipe:</span>
+              <span className="font-mono text-2xl font-bold text-forge-white">${ticker.price.toFixed(2)}</span>
+              <span className={`font-mono text-sm font-semibold ${ticker.change >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                {ticker.change >= 0 ? '+' : ''}{ticker.change.toFixed(2)} ({ticker.changePct >= 0 ? '+' : ''}{ticker.changePct.toFixed(2)}%)
+              </span>
+            </div>
+          )}
         </div>
       </section>
 

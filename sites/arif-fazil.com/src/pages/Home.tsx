@@ -1,4 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
+import { QuoteCard } from '@/components/QuoteCard';
 import {
   contactLinks,
   wellsPortfolio,
@@ -62,20 +63,26 @@ export function Home() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="hidden lg:block">
-              <div className="border-l-2 border-forge-iron pl-8 space-y-4">
+            <motion.div variants={itemVariants}>
+              <QuoteCard
+                topic="Personal Philosophy"
+                quote="Accept everything about yourself – I mean everything. You are you and that is the beginning and the end – no apologies, no regrets."
+                author="Henry Kissinger"
+                source="attributed to Henry Kissinger"
+              />
+              <div className="border-l-2 border-forge-iron pl-8 space-y-4 mt-6">
                 <div className="font-technical text-[0.7rem] text-forge-dim uppercase tracking-widest">What I Believe</div>
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
                   <span className="font-technical text-sm uppercase">Evidence before narrative</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
-                  <span className="font-technical text-sm uppercase">Reversibility before irreversibility</span>
+                  <span className="w-2 h-2 bg-forge-orange shadow-glow-orange"></span>
+                  <span className="font-technical text-sm uppercase">F1–F13 Constitutional law</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
-                  <span className="font-technical text-sm uppercase">Human veto is always final</span>
+                  <span className="w-2 h-2 bg-forge-[#00D4AA] shadow-glow-[#00D4AA]"></span>
+                  <span className="font-technical text-sm uppercase">Ditempa bukan diberi</span>
                 </div>
               </div>
             </motion.div>

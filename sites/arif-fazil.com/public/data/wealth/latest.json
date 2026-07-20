@@ -1,179 +1,116 @@
 {
   "meta": {
     "date": "2026-07-20",
-    "generated_at": "2026-07-20T08:24:08.242421+08:00",
-    "source": "arifOS WEALTH \u2014 yfinance + TokenRouter deepseek",
-    "model_note": "Synth via deepseek/deepseek-v4-flash. Market data from yfinance."
+    "generated_at": "2026-07-20T22:09:36.086229+08:00",
+    "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
+    "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
   },
   "bursa": {
-    "klci_close": 1731.449951171875,
-    "klci_change_pct": 0.54,
+    "klci_close": 1722.2900390625,
+    "klci_change_pct": -0.53,
     "most_active": null,
     "top_gainers_search": [],
-    "source_urls": [
-      "https://www.bursamalaysia.com/market"
-    ]
+    "source_urls": []
   },
   "ringgit": {
-    "usd_myr": 4.085000038146973,
-    "trend": "1 USD = 4.0850 MYR",
-    "sources": [
-      "https://www.bnm.gov.my"
-    ]
+    "usd_myr": 4.090000152587891,
+    "trend": "1 USD = 4.0900 MYR",
+    "sources": []
   },
   "economy": {
     "items": [
       {
-        "title": "Q2 2026 GDP advance estimate 5.8%",
-        "desc": "DOSM released Q2 2026 advance GDP growth at 5.8%, above Q1's 5.6%. Driven by domestic demand and exports.",
+        "title": "Q2 2026 GDP growth at 5.8%",
+        "desc": "The Department of Statistics Malaysia (DOSM) released the Q2 2026 advance estimate of 5.8% GDP growth.",
         "category": "GDP",
         "source_id": "DOSM"
-      },
-      {
-        "title": "June CPI unchanged at 2.1%",
-        "desc": "Headline inflation held at 2.1% YoY; core at 2.0%. Stable food and energy prices.",
-        "category": "INFLATION",
-        "source_id": "DOSM"
-      },
-      {
-        "title": "OPR held at 3.00% since May 2023",
-        "desc": "BNM last changed OPR in May 2023. Next MPC meeting scheduled for September 4, 2026.",
-        "category": "SNAPSHOT",
-        "source_id": "BNM"
-      },
-      {
-        "title": "KLCI at 1731.45 (+0.54%)",
-        "desc": "Local equities positive on improved GDP outlook and stable ringgit.",
-        "category": "SNAPSHOT",
-        "source_id": "BURSA"
       }
     ]
   },
   "politics": {
     "narratives": [
       {
-        "title": "Anwar approval at 52%; direction 42%",
-        "desc": "Merdeka Center June poll: PM Anwar's approval rating 52%. Separate metric for 'country moving in right direction' at 42%.",
+        "title": "Anwar's approval rating at 52%",
+        "desc": "According to the Merdeka Center's June 2026 survey, Anwar's approval rating is 52%. The 42% figure is a separate 'country moving in right direction' metric.",
         "source_id": "MERDEKA"
       }
     ],
     "economy_policy": [
       {
-        "title": "BUDI95 fuel subsidy reform",
-        "desc": "RON95 subsidy rationalised via BUDI95 since Sept 2025. Subsidised price RM1.99/L for eligible households; unsubsidised at RM3.72/L.",
+        "title": "BUDI95 subsidy reform",
+        "desc": "The BUDI95 subsidy reform was launched in September 2025, replacing the RON95 subsidy. Unsubsidised price is RM3.72.",
         "source_id": "KPDN"
-      },
-      {
-        "title": "Diesel subsidy rationalised in Peninsula",
-        "desc": "Peninsula Malaysia diesel subsidy removed June 2024; float price RM4.37/L. Sabah and Sarawak still subsidised at RM2.15/L.",
-        "source_id": "MOF"
       }
     ],
-    "regional": [
-      {
-        "title": "Sabah/Sarawak diesel subsidy intact",
-        "desc": "East Malaysia retains diesel subsidy at RM2.15/L, reducing cost pressure on logistics and consumers there.",
-        "source_id": "MOF"
-      }
-    ]
+    "regional": []
   },
   "social": {
     "cost_of_living": [
       {
-        "title": "BUDI95 and diesel subsidy status",
-        "desc": "RON95 subsidy reform and diesel rationalisation in Peninsula provide fiscal savings but leave unsubsidised prices high for non-eligible users.",
+        "title": "Fuel price impact on consumers",
+        "desc": "Malaysian consumers may be affected by the subsidy reform and diesel price changes.",
         "source_id": "KPDN"
       }
     ],
-    "labor": [
-      {
-        "title": "No new labour data",
-        "desc": "No major labour market releases today. Latest DOSM data (May) showed unemployment at 3.3%.",
-        "source_id": "NONE"
-      }
-    ],
-    "youth_career": [
-      {
-        "title": "No specific youth career updates",
-        "desc": "No new announcements or data on youth employment or skills programmes today.",
-        "source_id": "NONE"
-      }
-    ]
+    "labor": [],
+    "youth_career": []
   },
   "oil_energy": {
-    "brent_price": 90.5199966430664,
+    "brent_price": 88.12999725341797,
     "malaysia_oil": [],
     "energy_transition": []
   },
   "global": {
     "fed": {
-      "items": [
-        {
-          "title": "FOMC meeting July 28-29 upcoming",
-          "desc": "The next FOMC meeting is scheduled for July 28-29, 2026. No decision has been made yet; markets expect a potential rate cut.",
-          "source_id": "FOMC"
-        }
-      ]
+      "items": []
     },
     "china": {
-      "items": [
-        {
-          "title": "No new China data today",
-          "desc": "No significant China economic releases or policy moves reported for July 20.",
-          "source_id": "NONE"
-        }
-      ]
+      "items": []
     },
     "asean": {
-      "items": [
-        {
-          "title": "No major ASEAN developments",
-          "desc": "No significant ASEAN-related economic or political events reported today.",
-          "source_id": "NONE"
-        }
-      ]
+      "items": []
     }
   },
   "so_what": [
     {
       "domain": "MARKET",
-      "signal": "KLCI edges up 0.54%",
-      "delta": "The KLCI closed at 1731.45, up 0.54% on the day.",
-      "omega": "Positive sentiment persists, driven by domestic resilience and global oil price support.",
-      "xi": "Monitor for profit-taking ahead of US Fed meeting (July 28-29). Consider defensive positions.",
-      "psi": "Retail investors may see this as a buying signal, but near-term volatility remains.",
-      "tone": "neutral",
-      "source_id": "BURSA"
-    },
-    {
-      "domain": "FX / RINGGIT",
-      "signal": "Ringgit steady at 4.0850",
-      "delta": "USD/MYR traded at 4.0850, unchanged from recent close.",
-      "omega": "Ringgit stability reflects cautious optimism ahead of Fed meeting and sustained commodity prices.",
-      "xi": "Exporters should lock in rates if ringgit strengthens past 4.05; importers can wait for dips.",
-      "psi": "A stable ringgit helps contain imported inflation for households.",
+      "signal": "KLCI falls 0.53%",
+      "delta": "KLCI closed at 1722.29, down 0.53% from yesterday. USD/MYR exchange rate is 4.0900.",
+      "omega": "This decline may be a response to global market fluctuations.",
+      "xi": "Consider diversifying your portfolio to minimize risk.",
+      "psi": "Malaysian investors may be affected by this market shift.",
       "tone": "neutral",
       "source_id": "BURSA"
     },
     {
       "domain": "OIL & GAS",
-      "signal": "Brent futures rise to $90.52",
-      "delta": "Brent crude futures screen at $90.52, up from last settle of $88.10 on July 17. [UNVERIFIED]",
-      "omega": "Oil price rally pressures subsidy costs and may widen fiscal gap if sustained. [UNVERIFIED]",
-      "xi": "Hedge fuel exposure; watch for potential subsidy adjustment if Brent stays above $90.",
-      "psi": "Higher global oil prices could eventually flow through to domestic pump prices despite subsidies.",
+      "signal": "Brent crude at $88.13",
+      "delta": "Brent crude oil price settled at $88.13 on July 17, according to verified market data. [UNVERIFIED PROVENANCE]",
+      "omega": "This price may impact Malaysia's fuel prices.",
+      "xi": "Monitor fuel prices for potential changes.",
+      "psi": "Malaysian consumers may be affected by rising oil prices.",
       "tone": "caution",
-      "source_id": "NONE"
+      "source_id": "UNVERIFIED"
     },
     {
       "domain": "COST OF LIVING",
-      "signal": "BUDI95 subsidy active since Sept 2025",
-      "delta": "Unsubsidised RON95 at RM3.72/L; eligible households get 300L/month at RM1.99/L via BUDI Individu/Keluarga.",
-      "omega": "Subsidy reform is fully in place, containing fiscal exposure but requiring ongoing eligibility checks.",
-      "xi": "Ensure client awareness of BUDI eligibility; no further subsidy removal expected soon.",
-      "psi": "Lower-income households still benefit from subsidised fuel, easing cost-of-living pressure.",
-      "tone": "positive",
+      "signal": "RON95 subsidy reformed",
+      "delta": "The RON95 subsidy was reformed via BUDI95 in September 2025. Unsubsidised price is RM3.72.",
+      "omega": "This change may impact Malaysian consumers' fuel costs.",
+      "xi": "Monitor fuel prices for potential changes.",
+      "psi": "Malaysian consumers may be affected by the subsidy reform.",
+      "tone": "neutral",
       "source_id": "KPDN"
+    },
+    {
+      "domain": "COST OF LIVING",
+      "signal": "Diesel price at RM4.37",
+      "delta": "Diesel fuel price in Peninsula Malaysia is RM4.37, as rationalised in June 2024.",
+      "omega": "This price may impact Malaysian consumers' fuel costs.",
+      "xi": "Monitor fuel prices for potential changes.",
+      "psi": "Malaysian consumers may be affected by the diesel price.",
+      "tone": "neutral",
+      "source_id": "MOF"
     }
   ]
 }

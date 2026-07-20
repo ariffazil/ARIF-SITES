@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useWebMCP } from '@/hooks/useWebMCP';
+import { QuoteCard } from '@/components/QuoteCard';
 
 const FLOOR_DEFS = [
   { id: 'F1', name: 'AMANAH', desc: 'Every action reversible or backed up. Irreversible → 888_HOLD.' },
@@ -19,12 +20,22 @@ const FLOOR_DEFS = [
 ];
 
 const ORGANS = [
-  { name: 'arifOS', role: 'Constitutional kernel', port: '8088', must_never: 'Self-authorize', ring: 'MIND' },
-  { name: 'GEOX', role: 'Earth intelligence', port: '8081', must_never: 'Authorize drilling', ring: 'ORGAN' },
-  { name: 'WEALTH', role: 'Capital intelligence', port: '18082', must_never: 'Allocate capital', ring: 'ORGAN' },
-  { name: 'WELL', role: 'Human readiness', port: '18083', must_never: 'Diagnose', ring: 'ORGAN' },
-  { name: 'AAA', role: 'Control plane / A2A', port: '3001', must_never: 'Issue verdicts', ring: 'BODY' },
-  { name: 'A-FORGE', role: 'Execution shell', port: '7071/7072', must_never: 'Self-authorize', ring: 'BODY' },
+  { name: 'arifOS', role: 'Constitutional kernel', port: '8088', domain: 'arifos.arif-fazil.com', must_never: 'Self-authorize', ring: 'MIND' },
+  { name: 'AAA', role: 'Control plane & A2A gateway (Instrument: A-FORGE execution shell)', port: '3001', domain: 'aaa.arif-fazil.com', must_never: 'Issue verdicts', ring: 'BODY' },
+  { name: 'GEOX', role: 'Earth intelligence', port: '8081', domain: 'geox.arif-fazil.com', must_never: 'Authorize drilling', ring: 'ORGAN' },
+  { name: 'WEALTH', role: 'Capital intelligence', port: '18082', domain: 'wealth.arif-fazil.com', must_never: 'Allocate capital', ring: 'ORGAN' },
+  { name: 'WELL', role: 'Human & machine vitality reflection', port: '18083', domain: 'well.arif-fazil.com', must_never: 'Diagnose', ring: 'ORGAN' },
+];
+
+const FEDERATION_LINKS = [
+  { label: 'arifOS Observatory', href: 'https://arifos.arif-fazil.com', desc: 'Reality witness — constitutional health, live state' },
+  { label: 'GEOX', href: 'https://geox.arif-fazil.com', desc: 'Earth intelligence — basin, seismic, wells' },
+  { label: 'WEALTH', href: 'https://wealth.arif-fazil.com', desc: 'Capital intelligence — NPV, EMV, markets' },
+  { label: 'WELL', href: 'https://well.arif-fazil.com', desc: 'Human & machine vitality reflection' },
+  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', desc: 'Agent connection — protocol endpoint, registry' },
+  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', desc: 'Governed execution — build, deploy, audit' },
+  { label: 'AAA', href: 'https://aaa.arif-fazil.com', desc: 'Control plane — agent identity, cockpit' },
+  { label: 'Wiki', href: 'https://arifos.arif-fazil.com/wiki/', desc: 'Deep doctrine canon — federated knowledge base' },
 ];
 
 const doctrineTools = [
@@ -54,14 +65,26 @@ export function Doctrine() {
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <div className="section-label">Constitutional Law · Federation Topology · Sovereign Manifesto</div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
-            The<br />Doctrine
-          </h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed mb-8">
-            The immutable bedrock of arifOS. Not philosophy, not prose — fixed law:
-            physics axioms, constitutional floors, federation topology, and the sovereign compact
-            that every organ, agent, and workflow must obey.
-          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
+                Doctrine &amp;<br />Federation
+              </h1>
+              <p className="font-body text-xl text-forge-dim leading-relaxed">
+                The immutable bedrock of arifOS. Not philosophy, not prose — fixed law:
+                physics axioms, constitutional floors, federation topology, and the sovereign compact
+                that every organ, agent, and workflow must obey.
+              </p>
+            </div>
+            <div>
+              <QuoteCard
+                topic="On Constitutional Governance"
+                quote="A constitution is not the act of a government, but of a people constituting a government."
+                author="Thomas Paine"
+                source="Rights of Man (1791)"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -91,16 +114,37 @@ export function Doctrine() {
           <h2 className="text-4xl font-black uppercase italic mb-12 tracking-tight">The Organs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ORGANS.map((o) => (
-              <div key={o.name} className="brutalist-card">
-                <div className={`font-mono text-xs uppercase tracking-widest mb-2 ${
-                  o.ring === 'MIND' ? 'text-[#00D4AA]' : o.ring === 'BODY' ? 'text-[#D4A853]' : 'text-[#7C6FD4]'
-                }`}>{o.ring}</div>
-                <h3 className="text-2xl font-black uppercase mb-2">{o.name}</h3>
+              <a key={o.name} href={`https://${o.domain}`} target="_blank" rel="noreferrer"
+                 className="brutalist-card block hover:border-forge-orange/60 transition-colors group">
+                <div className="flex items-center justify-between mb-2">
+                  <div className={`font-mono text-xs uppercase tracking-widest ${
+                    o.ring === 'MIND' ? 'text-[#00D4AA]' : o.ring === 'BODY' ? 'text-[#D4A853]' : 'text-[#7C6FD4]'
+                  }`}>{o.ring}</div>
+                  <span className="font-mono text-xs text-forge-orange opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                </div>
+                <h3 className="text-2xl font-black uppercase mb-2 group-hover:text-forge-orange transition-colors">{o.name}</h3>
                 <p className="font-body text-sm text-forge-dim mb-2">{o.role}</p>
                 <p className="font-mono text-xs text-forge-dim">:{o.port}</p>
+                <p className="font-mono text-xs text-forge-dim mt-1 break-all">{o.domain}</p>
                 <p className="font-mono text-xs text-forge-orange mt-1">Never: {o.must_never}</p>
-              </div>
+              </a>
             ))}
+          </div>
+
+          {/* LIVE PORTALS */}
+          <div className="mt-12 pt-8 border-t border-forge-iron/40">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-forge-dim mb-6">Live Federation Subdomain Portals</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {FEDERATION_LINKS.map(link => (
+                <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="p-4 bg-forge-steel border border-forge-iron/60 hover:border-forge-orange/60 transition-colors group">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-forge-white group-hover:text-forge-orange transition-colors">{link.label}</span>
+                    <span className="font-mono text-xs text-forge-orange">↗</span>
+                  </div>
+                  <p className="font-body text-xs text-forge-dim mt-1">{link.desc}</p>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -4,14 +4,69 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Brent Crude (Oil) — Cognitive Clarity Dashboard · WEALTH</title>
-<meta name="description" content="Sovereign gold trading synthesis. Technical + world context in one scan. Evidence-gated, human-decided.">
-<link rel="canonical" href="https://wealth.arif-fazil.com/gold/">
+<meta name="description" content="Sovereign Brent Crude oil market synthesis. Physical state, fiscal breakevens, and energy market intelligence.">
+<link rel="canonical" href="https://arif-fazil.com/oil/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- TradingView Lightweight Charts -->
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+
+<!-- Embedded Agentic Reality Packet — Dual-mode Substrate (Plan WEALTH-TRINITY-HARDENING-20260719-003) -->
+<script id="wealth-reality-packet" type="application/ld+json">
+{
+  "@context": "https://arif-fazil.com/schemas/v1/CapitalContext.jsonld",
+  "@type": "CapitalContext",
+  "organ": "WEALTH",
+  "asset": "BRENT_CRUDE_OIL",
+  "timestamp": "2026-07-19T18:00:00+08:00",
+  "epistemic_tier": "OBS",
+  "confidence": 0.85,
+  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "governance": {
+    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
+    "decision_floor": "888_HOLD",
+    "vault999_witness": "0x999_TRINITY_SEALED_20260719"
+  },
+  "market_state": {
+    "symbol": "BZ=F",
+    "price_usd": 88.16,
+    "change_pct": 0.45,
+    "regime": "BULLISH_GEOPOLITICAL_RISK_PREMIUM",
+    "key_levels": {
+      "support": [76.50, 75.00],
+      "resistance": [80.20, 82.50]
+    }
+  },
+  "economic_trinity": {
+    "fx": {
+      "global": "DXY 103.2 / Fed Rate 5.25%-5.50%",
+      "malaysia": "USD/MYR 4.42 / BNM OPR 3.00%",
+      "transmission": "PETRONAS USD crude export revenues convert into strong MYR domestic liquidity",
+      "epistemic": "OBS"
+    },
+    "inflation": {
+      "global": "US CPI 2.9% YoY",
+      "malaysia": "Malaysia CPI 1.9% YoY",
+      "transmission": "Budi MADANI targeted diesel subsidy rationalization prevents fiscal leakage without fuel price shock",
+      "epistemic": "OBS"
+    },
+    "unemployment": {
+      "global": "US Unemployment 4.1%",
+      "malaysia": "Malaysia Unemployment 3.3% (LFPR 70.3%)",
+      "transmission": "High-wage employment in Pengerang Integrated Petroleum Complex (PIPC) and Kerteh supports industrial labor",
+      "epistemic": "OBS"
+    }
+  },
+  "dimensions": {
+    "reward": "Fiscal breakeven support $75/bbl",
+    "energy": "Global oil demand 103.2 mb/d",
+    "entropy": "Middle East transit friction delta +0.12",
+    "survival": "888-HOLD gate active"
+  }
+}
+</script>
 
 <!-- Unified Federation Header -->
 <script src="/_shared/unified-header-loader.js" defer></script>
@@ -20,25 +75,24 @@
 /* ═══════════════════════════════════════════════════════════════
    BRENT CRUDE (OIL) COGNITIVE CLARITY DASHBOARD
    Design: "Buka pagi, tengok chart, decide trade" — 60 seconds
-   Stack: Pure HTML/CSS/JS, TradingView Lightweight Charts
-   Theme: Dark sovereign, inherited from wealth.arif-fazil.com
+   Theme: Dark petroleum flame, vertical stratigraphy geometry
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Core palette (inherited from wealth site) ── */
-  --bg:          #07070d;
-  --surface:     #0d0d1a;
-  --surface2:    #111120;
-  --surface3:    #161628;
-  --border:      #1e1e32;
-  --border2:     #2c2c4a;
+  /* ── Core palette ── */
+  --bg:          #0b0707;
+  --surface:     #140c0a;
+  --surface2:    #1e120f;
+  --surface3:    #281814;
+  --border:      #331d17;
+  --border2:     #4a2920;
 
-  /* ── Accent spectrum ── */
-  --accent:        #c9a84c;
-  --accent-dim:    #7a6028;
-  --accent-bright: #f0c840;
-  --accent-bg:     rgba(201,168,76,0.06);
-  --accent-glow:   rgba(201,168,76,0.15);
+  /* ── Petroleum Flame Orange Accent spectrum ── */
+  --accent:        #ff6b00;
+  --accent-dim:    #993d00;
+  --accent-bright: #ff8c00;
+  --accent-bg:     rgba(255,107,0,0.08);
+  --accent-glow:   rgba(255,107,0,0.25);
 
   /* ── Text hierarchy ── */
   --text:        #e2d8c8;
@@ -85,14 +139,16 @@ body {
   min-height: 100vh;
 }
 
-/* ── Atmospheric background ── */
+/* ── Vertical Stratigraphy Reservoir Grid Background ── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, rgba(201,168,76,0.04) 0%, transparent 60%) 0%, transparent 60%) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(0,212,170,0.02) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 0, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(239, 68, 68, 0.05) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255, 107, 0, 0.03) 0px, rgba(255, 107, 0, 0.03) 1px, transparent 1px, transparent 24px),
+    repeating-linear-gradient(90deg, rgba(255, 107, 0, 0.015) 0px, rgba(255, 107, 0, 0.015) 1px, transparent 1px, transparent 48px);
   pointer-events: none;
   z-index: 0;
 }
@@ -1226,26 +1282,196 @@ body::before {
     font-size: 0.7rem;
     color: var(--accent-dim);
     margin-top: 2rem;
-    letter-spacing: 0.1em;
-    text-align: center;
+  /* ── Sovereign Market Navigation Map Bar ── */
+  .market-map-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #0b0707;
+    border-bottom: 2px solid #331d17;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    width: 100%;
   }
 
+  .market-map-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .market-map-home {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .home-icon {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid #ff6b00;
+    color: #ff6b00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(255,107,0,0.1);
+  }
+
+  .home-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f5f0e8;
+    text-transform: uppercase;
+  }
+
+  .market-map-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .market-map-links::-webkit-scrollbar { display: none; }
+
+  .market-map-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8a8070;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #2a1814;
+    background: #140c0a;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .market-map-link:hover {
+    color: #fff;
+    border-color: #4a2920;
+    background: #1e120f;
+  }
+
+  .market-map-link.gold.active {
+    color: #ffd700;
+    border-color: #e2b714;
+    background: rgba(226,183,20,0.15);
+    box-shadow: 0 0 10px rgba(226,183,20,0.25);
+  }
+
+  .market-map-link.oil.active {
+    color: #ff8c00;
+    border-color: #ff6b00;
+    background: rgba(255,107,0,0.15);
+    box-shadow: 0 0 10px rgba(255,107,0,0.25);
+  }
+
+  .market-map-link.gas.active {
+    color: #38bdf8;
+    border-color: #00f0ff;
+    background: rgba(0,240,255,0.15);
+    box-shadow: 0 0 10px rgba(0,240,255,0.25);
+  }
+
+  .market-map-link.wealth.active {
+    color: #4ade80;
+    border-color: #22c55e;
+    background: rgba(34,197,94,0.15);
+    box-shadow: 0 0 10px rgba(34,197,94,0.25);
+  }
+
+  .market-map-sep {
+    color: #331d17;
+    font-size: 0.8rem;
+    user-select: none;
+    margin: 0 0.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .market-map-inner { padding: 0.4rem 0.75rem; gap: 0.5rem; }
+    .home-text { display: none; }
+    .market-map-link { font-size: 0.62rem; padding: 0.25rem 0.5rem; }
+  }
 </style>
 <script src="/_shared/rasa-dunia-widget.js" defer></script>
-<script defer src="/_shared/trinity-nav.js"></script>
 </head>
 <body>
 
-<div class="shell">
+<nav class="market-map-bar" aria-label="Sovereign Navigation Map">
+  <div class="market-map-inner">
+    <a href="https://arif-fazil.com/" class="market-map-home">
+      <span class="home-icon">AF</span>
+      <span class="home-text">ARIF FAZIL</span>
+    </a>
+    
+    <div class="market-map-links">
+      <a href="/gold/" class="market-map-link gold">🟡 GOLD (XAU)</a>
+      <a href="/oil/" class="market-map-link oil active">🛢️ BRENT OIL</a>
+      <a href="/gas/" class="market-map-link gas">⛽ NATURAL GAS</a>
+      <a href="/wealth/" class="market-map-link wealth">📊 WEALTH TERMINAL</a>
+      <span class="market-map-sep">|</span>
+      <a href="/geox/" class="market-map-link geox">🌍 EARTH</a>
+      <a href="/well/" class="market-map-link well">❤️ HUMAN</a>
+      <a href="https://arif-fazil.com/writings" class="market-map-link writings">✍️ WRITINGS</a>
+      <button class="market-map-link agent-digest-btn" onclick="toggleMachineDigest()" title="View Machine-Readable JSON-LD Context Packet">⚡ MACHINE DIGEST</button>
+    </div>
+  </div>
+</nav>
 
-  <!-- Asset Nav — Cross-dashboard navigation -->
-  <nav class="asset-nav" aria-label="Asset selector">
-    <a href="/wealth/">WEALTH Hub</a>
-    <span class="sep">/</span>
-    <a href="/gold/" class="active">Gold</a>
-    <a href="/oil/">Brent Crude</a>
-      <a href="/gas/">Natural Gas</a>
-  </nav>
+<!-- Agentic Machine Digest Drawer Overlay -->
+<div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:#140c0a; border:2px solid #ff6b00; border-radius:8px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.8); font-family:'IBM Plex Mono',monospace; overflow:hidden;">
+  <div style="background:#1e120f; padding:10px 14px; border-bottom:1px solid #331d17; display:flex; align-items:center; justify-space-between;">
+    <span style="font-size:11px; font-weight:700; color:#ff8c00; letter-spacing:0.08em;">⚡ AGENTIC REALITY PACKET · BRENT OIL</span>
+    <button onclick="toggleMachineDigest()" style="background:none; border:none; color:#8a8070; font-size:14px; cursor:pointer; font-weight:700;">✕</button>
+  </div>
+  <pre id="machineDigestCode" style="padding:14px; font-size:11px; color:#e2d8c8; overflow-y:auto; max-height:65vh; white-space:pre-wrap; margin:0;"></pre>
+</div>
+
+<script>
+function toggleMachineDigest() {
+  const drawer = document.getElementById('machineDigestDrawer');
+  const code = document.getElementById('machineDigestCode');
+  if (!drawer) return;
+  if (drawer.style.display === 'none' || !drawer.style.display) {
+    const packet = document.getElementById('wealth-reality-packet');
+    if (packet && code) {
+      try {
+        const parsed = JSON.parse(packet.textContent);
+        code.textContent = JSON.stringify(parsed, null, 2);
+      } catch(e) {
+        code.textContent = packet.textContent;
+      }
+    }
+    drawer.style.display = 'block';
+  } else {
+    drawer.style.display = 'none';
+  }
+}
+if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
+  window.addEventListener('DOMContentLoaded', toggleMachineDigest);
+}
+</script>
+
+<div class="shell">
 
   <!-- Macro Ticker — DXY/US10Y/VIX live from /api/macro -->
   <div class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
@@ -1490,32 +1716,19 @@ body::before {
     <!-- ── RIGHT: USD / Monetary Context ── -->
     <div class="signal-column">
       <div class="column-header">
-        <span class="icon">🌍</span> World Context
+        <span class="icon">🌍</span> World Context · Economic Trinity
       </div>
 
-      <!-- Global Demand / China -->
+      <!-- Economic Trinity Pillar 1: FX -->
       <div class="world-driver-card">
         <div class="world-driver-header">
-          <span class="world-driver-category">Global Demand / China</span>
-          <span class="world-driver-arrow flat">●</span>
-        </div>
-        <div class="world-driver-impact">
-          China manufacturing PMI flat, European growth sluggish. US gasoline demand seasonally stable. IEA forecasts moderate demand growth. <strong>Neutral to bearish</strong> — no demand-side catalyst for Brent breakout.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Moderate</span>
-          <span class="confidence-tier t2">Tier 2</span>
-        </div>
-      </div>
-
-      <!-- OPEC+ Supply -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">OPEC+ Supply Discipline</span>
+          <span class="world-driver-category">💱 FX & Rates (Pillar I)</span>
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
-          OPEC+ extended voluntary cuts through Q3 2026. Saudi signalling price floor near $75. Compliance mixed (Iraq, Kazakhstan). <strong>Bullish near-term</strong> — supply constraint supports $78 level.
+          <strong>Global:</strong> DXY 103.2 / Fed Rate 5.25%-5.50%.<br>
+          <strong>Malaysia:</strong> USD/MYR 4.42 / BNM OPR 3.00%.<br>
+          <span style="color:var(--accent);">Transmission:</span> PETRONAS USD crude export revenues convert into strong MYR domestic liquidity & sovereign dividend capacity.
         </div>
         <div class="world-driver-meta">
           <span class="signal-confidence">Confidence: High</span>
@@ -1523,33 +1736,52 @@ body::before {
         </div>
       </div>
 
-      <!-- Inventories -->
+      <!-- Economic Trinity Pillar 2: Inflation -->
       <div class="world-driver-card">
         <div class="world-driver-header">
-          <span class="world-driver-category">Inventories / Storage</span>
-          <span class="world-driver-arrow down">▼</span>
-        </div>
-        <div class="world-driver-impact">
-          US crude inventories declining seasonally. SPR refilling paused. OECD commercial stocks near 5-year average. <strong>Neutral</strong> — no storage stress or shortage signal.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Moderate</span>
-          <span class="confidence-tier t2">Tier 2</span>
-        </div>
-      </div>
-
-      <!-- Geopolitical Risk -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">Geopolitical Risk Premium</span>
+          <span class="world-driver-category">📈 Inflation & Purchasing Power (Pillar II)</span>
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
-          Middle East tensions persistent (Red Sea, Iran). Russia-Ukraine energy infrastructure risk. <strong>Mild bullish</strong> — risk premium embedded but not spiking.
+          <strong>Global:</strong> US CPI 2.9% YoY.<br>
+          <strong>Malaysia:</strong> Headline CPI 1.9% YoY.<br>
+          <span style="color:var(--accent);">Transmission:</span> Targeted Budi MADANI diesel subsidy rationalization manages fiscal balances without triggering general price inflation.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Moderate</span>
-          <span class="confidence-tier t2">Tier 2</span>
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
+        </div>
+      </div>
+
+      <!-- Economic Trinity Pillar 3: Unemployment -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">👷 Unemployment & Labor (Pillar III)</span>
+          <span class="world-driver-arrow flat">●</span>
+        </div>
+        <div class="world-driver-impact">
+          <strong>Global:</strong> US Unemployment 4.1%.<br>
+          <strong>Malaysia:</strong> Unemployment 3.3% (LFPR 70.3%).<br>
+          <span style="color:var(--accent);">Transmission:</span> High-wage skilled jobs in PIPC Pengerang and Kerteh energy complexes support industrial workforce vitality.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
+        </div>
+      </div>
+
+      <!-- OPEC+ & Geopolitics -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">🛢️ OPEC+ Supply & Geopolitics</span>
+          <span class="world-driver-arrow up">▲</span>
+        </div>
+        <div class="world-driver-impact">
+          OPEC+ extended voluntary cuts through Q3 2026. Middle East transit friction persistent. <strong>Bullish crude floor</strong> — supports $78/bbl Brent baseline.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: High</span>
+          <span class="confidence-tier t3">Tier 3</span>
         </div>
       </div>
 
@@ -1968,6 +2200,18 @@ body::before {
     const data = await apiFetch('/ticker');
     if (!data) return;
 
+    try {
+      const pktEl = document.getElementById('wealth-reality-packet');
+      if (pktEl) {
+        const pkt = JSON.parse(pktEl.textContent);
+        if (pkt && pkt.market_state) {
+          pkt.market_state.price_usd = data.price;
+          pkt.timestamp = new Date().toISOString();
+          pktEl.textContent = JSON.stringify(pkt, null, 2);
+        }
+      }
+    } catch(e) {}
+
     $('pulsePrice').textContent = '$' + fmt(data.price);
     const delta = data.change || 0;
     const pct = data.changePct || 0;
@@ -2353,6 +2597,5 @@ body::before {
 
 </script>
 
-<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
 </body>
 </html>

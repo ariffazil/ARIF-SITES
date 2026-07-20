@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useWebMCP } from '@/hooks/useWebMCP';
+import { QuoteCard } from '@/components/QuoteCard';
 
 type BriefingMeta = {
   date: string;
@@ -382,6 +383,12 @@ export function Wealth() {
           <p className="font-body text-xl text-forge-dim mb-8">
             {briefing.meta.date} · BURSA Malaysia + Ekonomi + Politik + Social
           </p>
+
+          <QuoteCard
+            topic="On Scarcity"
+            quote="The first lesson of economics is scarcity: there is never enough of anything to fully satisfy all those who want it. The first lesson of politics is to disregard the first lesson of economics."
+            author="Thomas Sowell"
+          />
 
           {isOffline && (
             <div className="mb-6 brutalist-card border-yellow-500/50 bg-yellow-500/5 p-4 flex items-center gap-3 flex-wrap">

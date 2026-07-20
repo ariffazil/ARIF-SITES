@@ -422,7 +422,8 @@ async function interpret(file) {
     formData.append('file', file);
 
     try {
-        const resp = await fetch('http://localhost:8765/interpret', {
+        const endpoint = window.location.hostname === 'localhost' ? 'http://localhost:8765/interpret' : '/api/interpret';
+        const resp = await fetch(endpoint, {
             method: 'POST',
             body: formData,
         });

@@ -5,7 +5,7 @@
 
 set -e
 
-SITES_ROOT="/root/ARIF-SITES/sites"
+SITES_ROOT="/root/arif-sites/sites"
 HTML_ROOT="/var/www/html"
 
 echo "Starting VPS Deployment..."
@@ -53,10 +53,15 @@ rsync -avz --delete $SITES_ROOT/wealth.arif-fazil.com/ $HTML_ROOT/wealth/   2>/d
 rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
 rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
 
-# 4. Sync runtime state (seal chain heartbeat for Δ BODY clock)
-echo "[3.6/5] Syncing seal chain head..."
+# 4. Sync runtime state and discovery files
+echo "[3.6/5] Syncing seal chain head & discovery assets..."
 mkdir -p $HTML_ROOT/aaa/_state
 cp /root/VAULT999/seal_chain_head.json $HTML_ROOT/aaa/_state/seal_chain_head.json 2>/dev/null || true
+
+mkdir -p $HTML_ROOT/arifos/.well-known
+cp $HTML_ROOT/.well-known/governance.jsonld $HTML_ROOT/arifos/.well-known/governance.jsonld 2>/dev/null || true
+cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arif/manifest.txt 2>/dev/null || true
+cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arifos/manifest.txt 2>/dev/null || true
 
 # 5. Permissions
 echo "[4/5] Setting permissions..."
@@ -65,5 +70,9 @@ chown -R www-data:www-data $HTML_ROOT
 # 5. Reload Caddy
 echo "[5/5] Reloading Caddy..."
 caddy reload --config /etc/caddy/Caddyfile
+
+# 6. Truth Verification Gate
+echo "[6/6] Running Truth Verification Suite..."
+python3 /root/scripts/check_constellation_truth.py
 
 echo "DEPLOYMENT COMPLETE. Constellation is Live."

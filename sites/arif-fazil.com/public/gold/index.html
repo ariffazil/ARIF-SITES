@@ -5,13 +5,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gold — Cognitive Clarity Dashboard · WEALTH</title>
 <meta name="description" content="Sovereign gold trading synthesis. Technical + world context in one scan. Evidence-gated, human-decided.">
-<link rel="canonical" href="https://wealth.arif-fazil.com/gold/">
+<link rel="canonical" href="https://arif-fazil.com/gold/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- TradingView Lightweight Charts -->
-<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<script src="/wealth/gold/vendor/lightweight-charts.standalone.production.js"></script>
+
+<!-- Embedded Agentic Reality Packet — Dual-mode Substrate (Plan WEALTH-TRINITY-HARDENING-20260719-003) -->
+<script id="wealth-reality-packet" type="application/ld+json">
+{
+  "@context": "https://arif-fazil.com/schemas/v1/CapitalContext.jsonld",
+  "@type": "CapitalContext",
+  "organ": "WEALTH",
+  "asset": "GOLD_XAUUSD",
+  "timestamp": "2026-07-19T18:00:00+08:00",
+  "epistemic_tier": "OBS",
+  "confidence": 0.88,
+  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "governance": {
+    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
+    "decision_floor": "888_HOLD",
+    "vault999_witness": "0x999_TRINITY_SEALED_20260719"
+  },
+  "market_state": {
+    "symbol": "XAUUSD",
+    "price_usd": 4014.50,
+    "change_pct": -0.03,
+    "regime": "NEUTRAL_CONSOLIDATION",
+    "rsi_14": 60.3,
+    "ema_trend": "BEARISH_CORRECTION",
+    "key_levels": {
+      "support": [4018.33, 4013.67, 4008.53],
+      "resistance": [4021.80, 4023.47, 4028.13]
+    }
+  },
+  "economic_trinity": {
+    "fx": {
+      "global": "DXY 103.2 / Fed Rate 5.25%-5.50%",
+      "malaysia": "USD/MYR 4.42 / BNM OPR 3.00%",
+      "transmission": "Stronger MYR moderates local MYR gold price spikes while preserved reserves support BNM stability",
+      "epistemic": "OBS"
+    },
+    "inflation": {
+      "global": "US CPI 2.9% YoY",
+      "malaysia": "Malaysia CPI 1.9% YoY",
+      "transmission": "High XAU/MYR serves as household purchasing power hedge during global core inflation stickiness",
+      "epistemic": "OBS"
+    },
+    "unemployment": {
+      "global": "US Unemployment 4.1%",
+      "malaysia": "Malaysia Unemployment 3.3% (LFPR 70.3%)",
+      "transmission": "Low unemployment and stable labor participation fuel physical gold retail accumulation",
+      "epistemic": "OBS"
+    }
+  },
+  "dimensions": {
+    "reward": "High monetary premium demand",
+    "energy": "Physical gold extraction breakeven $1,450/oz",
+    "entropy": "Low delta — structural central bank buying",
+    "survival": "888-HOLD gate active"
+  }
+}
+</script>
 
 <!-- Unified Federation Header -->
 <script src="/_shared/unified-header-loader.js" defer></script>
@@ -20,25 +77,24 @@
 /* ═══════════════════════════════════════════════════════════════
    GOLD COGNITIVE CLARITY DASHBOARD
    Design: "Buka pagi, tengok chart, decide trade" — 60 seconds
-   Stack: Pure HTML/CSS/JS, TradingView Lightweight Charts
-   Theme: Dark sovereign, inherited from wealth.arif-fazil.com
+   Theme: Dark sovereign gold lattice, aligned with arif-fazil.com
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Core palette (inherited from wealth site) ── */
+  /* ── Core palette ── */
   --bg:          #07070d;
-  --surface:     #0d0d1a;
-  --surface2:    #111120;
-  --surface3:    #161628;
-  --border:      #1e1e32;
-  --border2:     #2c2c4a;
+  --surface:     #0c0d18;
+  --surface2:    #121424;
+  --surface3:    #181a2e;
+  --border:      #1e2238;
+  --border2:     #2c3254;
 
-  /* ── Accent spectrum ── */
-  --accent:        #c9a84c;
-  --accent-dim:    #7a6028;
-  --accent-bright: #f0c840;
-  --accent-bg:     rgba(201,168,76,0.06);
-  --accent-glow:   rgba(201,168,76,0.15);
+  /* ── Gold Accent spectrum ── */
+  --accent:        #e2b714;
+  --accent-dim:    #7a6018;
+  --accent-bright: #ffd700;
+  --accent-bg:     rgba(226,183,20,0.08);
+  --accent-glow:   rgba(226,183,20,0.25);
 
   /* ── Text hierarchy ── */
   --text:        #e2d8c8;
@@ -85,14 +141,16 @@ body {
   min-height: 100vh;
 }
 
-/* ── Atmospheric background ── */
+/* ── Golden Lattice Geometry Background ── */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, radial-gradient(ellipse 80% 40% at 50% -5%, rgba(201,168,76,0.04) 0%, transparent 60%) 0%, transparent 60%) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(0,212,170,0.02) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(226, 183, 20, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, rgba(226, 183, 20, 0.02) 0px, rgba(226, 183, 20, 0.02) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(-45deg, rgba(226, 183, 20, 0.02) 0px, rgba(226, 183, 20, 0.02) 1px, transparent 1px, transparent 32px);
   pointer-events: none;
   z-index: 0;
 }
@@ -1226,26 +1284,196 @@ body::before {
     font-size: 0.7rem;
     color: var(--accent-dim);
     margin-top: 2rem;
-    letter-spacing: 0.1em;
-    text-align: center;
+  /* ── Sovereign Market Navigation Map Bar ── */
+  .market-map-bar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #07070d;
+    border-bottom: 2px solid #1e2238;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    width: 100%;
   }
 
+  .market-map-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .market-map-home {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .home-icon {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid #e2b714;
+    color: #e2b714;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(226,183,20,0.1);
+  }
+
+  .home-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #f5f0e8;
+    text-transform: uppercase;
+  }
+
+  .market-map-links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .market-map-links::-webkit-scrollbar { display: none; }
+
+  .market-map-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8a8070;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #1c1c30;
+    background: #0d0d1a;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .market-map-link:hover {
+    color: #fff;
+    border-color: #3a3a5c;
+    background: #141428;
+  }
+
+  .market-map-link.gold.active {
+    color: #ffd700;
+    border-color: #e2b714;
+    background: rgba(226,183,20,0.15);
+    box-shadow: 0 0 10px rgba(226,183,20,0.25);
+  }
+
+  .market-map-link.oil.active {
+    color: #ff8c00;
+    border-color: #ff6b00;
+    background: rgba(255,107,0,0.15);
+    box-shadow: 0 0 10px rgba(255,107,0,0.25);
+  }
+
+  .market-map-link.gas.active {
+    color: #38bdf8;
+    border-color: #00f0ff;
+    background: rgba(0,240,255,0.15);
+    box-shadow: 0 0 10px rgba(0,240,255,0.25);
+  }
+
+  .market-map-link.wealth.active {
+    color: #4ade80;
+    border-color: #22c55e;
+    background: rgba(34,197,94,0.15);
+    box-shadow: 0 0 10px rgba(34,197,94,0.25);
+  }
+
+  .market-map-sep {
+    color: #2a2a44;
+    font-size: 0.8rem;
+    user-select: none;
+    margin: 0 0.2rem;
+  }
+
+  @media (max-width: 768px) {
+    .market-map-inner { padding: 0.4rem 0.75rem; gap: 0.5rem; }
+    .home-text { display: none; }
+    .market-map-link { font-size: 0.62rem; padding: 0.25rem 0.5rem; }
+  }
 </style>
 <script src="/_shared/rasa-dunia-widget.js" defer></script>
-<script defer src="/_shared/trinity-nav.js"></script>
 </head>
 <body>
 
-<div class="shell">
+<nav class="market-map-bar" aria-label="Sovereign Navigation Map">
+  <div class="market-map-inner">
+    <a href="https://arif-fazil.com/" class="market-map-home">
+      <span class="home-icon">AF</span>
+      <span class="home-text">ARIF FAZIL</span>
+    </a>
+    
+    <div class="market-map-links">
+      <a href="/gold/" class="market-map-link gold active">🟡 GOLD (XAU)</a>
+      <a href="/oil/" class="market-map-link oil">🛢️ BRENT OIL</a>
+      <a href="/gas/" class="market-map-link gas">⛽ NATURAL GAS</a>
+      <a href="/wealth/" class="market-map-link wealth">📊 WEALTH TERMINAL</a>
+      <span class="market-map-sep">|</span>
+      <a href="/geox/" class="market-map-link geox">🌍 EARTH</a>
+      <a href="/well/" class="market-map-link well">❤️ HUMAN</a>
+      <a href="https://arif-fazil.com/writings" class="market-map-link writings">✍️ WRITINGS</a>
+      <button class="market-map-link agent-digest-btn" onclick="toggleMachineDigest()" title="View Machine-Readable JSON-LD Context Packet">⚡ MACHINE DIGEST</button>
+    </div>
+  </div>
+</nav>
 
-  <!-- Asset Nav — Cross-dashboard navigation -->
-  <nav class="asset-nav" aria-label="Asset selector">
-    <a href="/wealth/">WEALTH Hub</a>
-    <span class="sep">/</span>
-    <a href="/gold/" class="active">Gold</a>
-    <a href="/oil/">Brent Crude</a>
-      <a href="/gas/">Natural Gas</a>
-  </nav>
+<!-- Agentic Machine Digest Drawer Overlay -->
+<div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:#0c0d18; border:2px solid #e2b714; border-radius:8px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.8); font-family:'IBM Plex Mono',monospace; overflow:hidden;">
+  <div style="background:#121424; padding:10px 14px; border-bottom:1px solid #1e2238; display:flex; align-items:center; justify-space-between;">
+    <span style="font-size:11px; font-weight:700; color:#ffd700; letter-spacing:0.08em;">⚡ AGENTIC REALITY PACKET · GOLD (XAU)</span>
+    <button onclick="toggleMachineDigest()" style="background:none; border:none; color:#8a8070; font-size:14px; cursor:pointer; font-weight:700;">✕</button>
+  </div>
+  <pre id="machineDigestCode" style="padding:14px; font-size:11px; color:#e2d8c8; overflow-y:auto; max-height:65vh; white-space:pre-wrap; margin:0;"></pre>
+</div>
+
+<script>
+function toggleMachineDigest() {
+  const drawer = document.getElementById('machineDigestDrawer');
+  const code = document.getElementById('machineDigestCode');
+  if (!drawer) return;
+  if (drawer.style.display === 'none' || !drawer.style.display) {
+    const packet = document.getElementById('wealth-reality-packet');
+    if (packet && code) {
+      try {
+        const parsed = JSON.parse(packet.textContent);
+        code.textContent = JSON.stringify(parsed, null, 2);
+      } catch(e) {
+        code.textContent = packet.textContent;
+      }
+    }
+    drawer.style.display = 'block';
+  } else {
+    drawer.style.display = 'none';
+  }
+}
+if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
+  window.addEventListener('DOMContentLoaded', toggleMachineDigest);
+}
+</script>
+
+<div class="shell">
 
   <!-- Macro Ticker — DXY/US10Y/VIX live from /api/macro -->
   <div class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
@@ -1490,17 +1718,19 @@ body::before {
     <!-- ── RIGHT: USD / Monetary Context ── -->
     <div class="signal-column">
       <div class="column-header">
-        <span class="icon">🌍</span> World Context
+        <span class="icon">🌍</span> World Context · Economic Trinity
       </div>
 
-      <!-- Real Yields (primary gold driver) -->
+      <!-- Economic Trinity Pillar 1: FX -->
       <div class="world-driver-card">
         <div class="world-driver-header">
-          <span class="world-driver-category">Real Yields / Opportunity Cost</span>
+          <span class="world-driver-category">💱 FX & Rates (Pillar I)</span>
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
-          10Y TIPS yield at 1.82%, declining. CPI m/m 0.2% vs 0.3% expected. Lower real yields reduce the opportunity cost of holding gold. <strong>Bullish XAU/USD</strong> — primary macro tailwind active.
+          <strong>Global:</strong> DXY 103.2 / Fed Rate 5.25%-5.50%.<br>
+          <strong>Malaysia:</strong> USD/MYR 4.42 / BNM OPR 3.00%.<br>
+          <span style="color:var(--accent);">Transmission:</span> Stronger MYR moderates local MYR gold price spikes while global Fed rate cut pricing supports bullion USD floor.
         </div>
         <div class="world-driver-meta">
           <span class="signal-confidence">Confidence: High</span>
@@ -1508,14 +1738,16 @@ body::before {
         </div>
       </div>
 
-      <!-- DXY / USD -->
+      <!-- Economic Trinity Pillar 2: Inflation -->
       <div class="world-driver-card">
         <div class="world-driver-header">
-          <span class="world-driver-category">DXY / USD Direction</span>
+          <span class="world-driver-category">📈 Inflation & Purchasing Power (Pillar II)</span>
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
-          DXY softening to 103.2 on cooler CPI. Market pricing 2 rate cuts by Dec. Weaker USD supports gold priced in dollars. <strong>Bullish</strong> — but MYR strengthening may reduce local gold return.
+          <strong>Global:</strong> US CPI 2.9% YoY.<br>
+          <strong>Malaysia:</strong> Headline CPI 1.9% YoY.<br>
+          <span style="color:var(--accent);">Transmission:</span> Sticky global core inflation drives monetary gold allocation while XAU/MYR serves as household purchasing power hedge.
         </div>
         <div class="world-driver-meta">
           <span class="signal-confidence">Confidence: High</span>
@@ -1523,10 +1755,27 @@ body::before {
         </div>
       </div>
 
-      <!-- Central Bank Demand -->
+      <!-- Economic Trinity Pillar 3: Unemployment -->
       <div class="world-driver-card">
         <div class="world-driver-header">
-          <span class="world-driver-category">Central Bank / Sovereign Demand</span>
+          <span class="world-driver-category">👷 Unemployment & Labor (Pillar III)</span>
+          <span class="world-driver-arrow flat">●</span>
+        </div>
+        <div class="world-driver-impact">
+          <strong>Global:</strong> US Unemployment 4.1%.<br>
+          <strong>Malaysia:</strong> Unemployment 3.3% (LFPR 70.3%).<br>
+          <span style="color:var(--accent);">Transmission:</span> Low domestic unemployment and stable labor participation fuel physical gold retail accumulation.
+        </div>
+        <div class="world-driver-meta">
+          <span class="signal-confidence">Confidence: Moderate</span>
+          <span class="confidence-tier t2">Tier 2</span>
+        </div>
+      </div>
+
+      <!-- Sovereign Demand -->
+      <div class="world-driver-card">
+        <div class="world-driver-header">
+          <span class="world-driver-category">🏛️ Sovereign & Central Bank Demand</span>
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
@@ -1535,21 +1784,6 @@ body::before {
         <div class="world-driver-meta">
           <span class="signal-confidence">Confidence: High</span>
           <span class="confidence-tier t3">Tier 3</span>
-        </div>
-      </div>
-
-      <!-- ETF / Physical Flow -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">ETF / Physical Flow</span>
-          <span class="world-driver-arrow flat">●</span>
-        </div>
-        <div class="world-driver-impact">
-          GLD holdings flat this week. Asian physical demand steady. No major inflow/outflow catalyst. <strong>Neutral</strong> — lacking momentum for directional move.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Moderate</span>
-          <span class="confidence-tier t2">Tier 2</span>
         </div>
       </div>
 
@@ -1953,6 +2187,18 @@ body::before {
     const data = await apiFetch('/ticker');
     if (!data) return;
 
+    try {
+      const pktEl = document.getElementById('wealth-reality-packet');
+      if (pktEl) {
+        const pkt = JSON.parse(pktEl.textContent);
+        if (pkt && pkt.market_state) {
+          pkt.market_state.price_usd = data.price;
+          pkt.timestamp = new Date().toISOString();
+          pktEl.textContent = JSON.stringify(pkt, null, 2);
+        }
+      }
+    } catch(e) {}
+
     $('pulsePrice').textContent = '$' + fmt(data.price);
     const delta = data.change || 0;
     const pct = data.changePct || 0;
@@ -2338,6 +2584,5 @@ body::before {
 
 </script>
 
-<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
 </body>
 </html>

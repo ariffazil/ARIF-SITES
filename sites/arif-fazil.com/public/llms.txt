@@ -11,7 +11,7 @@ Builds constitutionally-bound AI systems grounded in physics and evidence.
 arifOS is a constitutional intelligence kernel: a governed AI system where tools, agents,
 and models operate inside constitutional law (F1-F13 floors), not vibes.
 
-arifOS exposes 13 MCP tools as API endpoints. It is not an LLM itself.
+arifOS exposes 8 canonical MCP tools as API endpoints (Canonical 8: arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal). It is not an LLM itself.
 The Observatory surface is live at https://arifos.arif-fazil.com
 
 ## The arifOS Federation — 5 Organs Under One Sovereign

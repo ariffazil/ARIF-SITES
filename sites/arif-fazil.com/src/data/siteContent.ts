@@ -37,8 +37,7 @@ export const primaryLinks: LinkItem[] = [
   { label: 'Economics', href: '/economics' },
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
-  { label: 'Doctrine', href: '/doctrine' },
-  { label: 'Federation', href: '/federation' },
+  { label: 'Doctrine & Federation', href: '/doctrine' },
 ];
 
 // Genesis strip — machine-facing surfaces.
