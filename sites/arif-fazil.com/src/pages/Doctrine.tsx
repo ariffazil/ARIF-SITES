@@ -122,6 +122,16 @@ export function Doctrine() {
             </ul>
             <p className="italic mt-8">Three rings. One sovereign. F13 is final.</p>
           </div>
+
+          {/* Doorway to arifOS kernel */}
+          <div className="mt-16 text-center border-t border-forge-iron pt-12">
+            <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-4">Run the Kernel</p>
+            <h3 className="text-2xl font-black uppercase italic mb-6">Observe the Constitution in Action</h3>
+            <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer"
+               className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-[#00D4AA] text-[#00D4AA] hover:bg-[#00D4AA] hover:text-forge-black transition-colors">
+              Open arifOS Observatory ↗
+            </a>
+          </div>
         </div>
       </section>
     </motion.div>
