@@ -1,5 +1,4 @@
 import { useEffect, useState, useMemo } from "react";
-    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
 import { motion } from "framer-motion";
 import { useWebMCP } from '@/hooks/useWebMCP';
 
@@ -184,7 +183,8 @@ export function Wealth() {
   useWebMCP(wealthTools);
 
   useEffect(() => {
-    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
+    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil';
+    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
     async function load() {
       try {
         const bRes = await fetch("https://mcp.arif-fazil.com/briefing");
@@ -223,7 +223,6 @@ export function Wealth() {
 
   // Hydrate constitutional acknowledgment from localStorage.
   useEffect(() => {
-    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil'; document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
     if (!briefing) return;
     try {
       const dates: string[] = JSON.parse(localStorage.getItem("arifos_wealth_ack") || "[]");
@@ -335,7 +334,7 @@ export function Wealth() {
                   ✓ I acknowledge — proceed
                 </button>
                 <a
-                  href="/canon/"
+                  href="/doctrine"
                   className="font-mono text-sm font-bold uppercase tracking-wider px-5 py-3 bg-transparent text-forge-dim border-2 border-forge-iron hover:text-forge-white hover:border-forge-white transition-colors"
                 >
                   Read the full canon →
