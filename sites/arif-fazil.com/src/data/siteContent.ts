@@ -29,8 +29,8 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
-// Primary nav — clean IA. Human reality + doctrine.
-// Earth (geoscience) · Economics (Malaysia briefing) · World (commodities) · Writing · Doctrine · Federation
+// Primary nav — clean IA. Portal to 5 organs + civic shelf.
+// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
 export const primaryLinks: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Earth', href: '/earth' },
@@ -38,7 +38,7 @@ export const primaryLinks: LinkItem[] = [
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
   { label: 'Doctrine', href: '/doctrine' },
-  { label: 'Federation', href: 'https://arifos.arif-fazil.com', external: true },
+  { label: 'Federation', href: '/federation' },
 ];
 
 // Genesis strip — machine-facing surfaces.

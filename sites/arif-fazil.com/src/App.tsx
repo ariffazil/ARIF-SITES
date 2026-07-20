@@ -14,6 +14,7 @@ import { Discoveries } from '@/pages/Discoveries';
 import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
+import { Federation } from '@/pages/Federation';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { NotFound } from '@/pages/NotFound';
 
@@ -63,6 +64,10 @@ function App() {
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/doctrine/" element={<Doctrine />} />
 
+            {/* Federation — AAA portal + MCP gateway */}
+            <Route path="/federation" element={<Federation />} />
+            <Route path="/federation/" element={<Federation />} />
+
             {/* Machine-facing */}
             <Route path="/000" element={<Genesis />} />
             <Route path="/000/" element={<Genesis />} />
@@ -74,8 +79,8 @@ function App() {
             <Route path="/rss/" element={<Navigate to="/feed.xml" replace />} />
             <Route path="/canon" element={<Navigate to="/doctrine" replace />} />
             <Route path="/canon/" element={<Navigate to="/doctrine" replace />} />
-            <Route path="/constellation" element={<Navigate to="/doctrine" replace />} />
-            <Route path="/constellation/" element={<Navigate to="/doctrine" replace />} />
+            <Route path="/constellation" element={<Navigate to="/federation" replace />} />
+            <Route path="/constellation/" element={<Navigate to="/federation" replace />} />
             <Route path="/discoveries" element={<Navigate to="/earth" replace />} />
             <Route path="/discoveries/" element={<Navigate to="/earth" replace />} />
             <Route path="/wealth" element={<Navigate to="/economics" replace />} />
