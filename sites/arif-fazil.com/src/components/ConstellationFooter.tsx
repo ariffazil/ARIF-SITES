@@ -1,120 +1,82 @@
-import { Link } from 'react-router-dom';
-import { ecosystemLinks, arifosLinks, mcpRegistryLinks, contactLinks } from '@/data/siteContent';
+import { contactLinks } from '@/data/siteContent';
 
 export function ConstellationFooter() {
   return (
     <footer className="border-t-2 border-forge-iron bg-forge-black py-16 mt-auto">
-      <div className="site-frame grid grid-cols-1 md:grid-cols-3 gap-12">
-        {/* ROOT DOMAIN */}
-        <div className="space-y-6">
-          <div className="section-label">Root Domain</div>
-          <h2 className="font-display font-black text-2xl uppercase leading-none italic">One human page. Two AI pages.</h2>
-          <p className="font-body text-forge-dim leading-relaxed max-w-md">
-            The homepage is written for human observation. <code className="text-forge-orange bg-forge-steel px-1">/000</code> holds scars, hard
-            lessons, and wisdom for AI agents. <code className="text-forge-green bg-forge-steel px-1">/999</code> holds verification and machine-facing weight.
+      <div className="site-frame max-w-4xl mx-auto">
+        {/* Philosophy line */}
+        <div className="text-center mb-12">
+          <h2 className="font-display font-black text-2xl uppercase leading-none italic text-forge-white mb-3">
+            One human page. Two AI pages.
+          </h2>
+          <p className="font-body text-forge-dim text-sm max-w-lg mx-auto leading-relaxed">
+            The homepage is written for human observation. 
+            <code className="text-forge-orange bg-forge-steel px-1 mx-1">/000</code> 
+            holds scars and wisdom for AI agents. 
+            <code className="text-forge-green bg-forge-steel px-1 mx-1">/999</code> 
+            holds verification and machine-facing weight.
           </p>
-          <div className="pt-3 mt-1 border-t border-forge-iron/50">
-            <span className="font-technical text-[0.55rem] text-forge-dim/60 uppercase tracking-widest block mb-2">Machine surface</span>
-            <div className="flex gap-4">
-              <a href="/llms.txt" className="badge-status badge-status--live">llms.txt</a>
-              <a href="/soul.json" className="badge-status badge-status--live">soul.json</a>
-            </div>
-          </div>
+        </div>
 
-          <div className="section-label">Contact</div>
-          <ul className="space-y-2">
+        {/* Divider */}
+        <div className="border-t border-forge-iron/30 mb-8" />
+
+        {/* Minimal links row */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-center">
+          {/* Contact */}
+          <div className="flex items-center gap-4">
             {contactLinks.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} target="_blank" rel="noreferrer"
-                   className="font-technical text-[0.75rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-forge-orange"></span>
-                  {item.label} <span className="text-[0.6rem]">↗</span>
-                </a>
-              </li>
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-white transition-colors tracking-widest"
+              >
+                {item.label} ↗
+              </a>
             ))}
-          </ul>
-        </div>
+          </div>
 
-        {/* FEDERATION */}
-        <div className="space-y-6">
-          <div className="section-label">arifOS Federation</div>
-          <ul className="space-y-3">
-            {arifosLinks.map((item) => (
-              <li key={item.label}>
-                {item.external ? (
-                  <a href={item.href} target="_blank" rel="noreferrer"
-                     className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
-                    {item.label} <span className="text-[0.6rem]">↗</span>
-                  </a>
-                ) : (
-                  <Link to={item.href}
-                     className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-forge-gold"></span>
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+          {/* Divider dot */}
+          <span className="hidden md:block text-forge-iron select-none">·</span>
 
-          <div className="section-label" style={{marginTop:'1.5rem'}}>Ecosystem</div>
-          <ul className="space-y-3">
-            {ecosystemLinks.map((item) => (
-              <li key={item.label}>
-                {item.external ? (
-                  <a href={item.href} target="_blank" rel="noreferrer"
-                     className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
-                    {item.label} <span className="text-[0.6rem]">↗</span>
-                  </a>
-                ) : (
-                  <Link to={item.href}
-                     className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 bg-forge-iron"></span>
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* MCP REGISTRIES + LINKS */}
-        <div className="space-y-6">
-          <div className="section-label">MCP Registry Listings</div>
-          <p className="font-body text-sm text-forge-dim leading-relaxed">
-            arifOS is featured on the following MCP registries. Connect directly or browse the source.
-          </p>
-          <ul className="space-y-3">
-            {mcpRegistryLinks.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} target="_blank" rel="noreferrer"
-                   className="font-technical text-[0.8rem] uppercase text-forge-dim hover:text-forge-white transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#7C6FD4]"></span>
-                  {item.label} <span className="text-[0.6rem]">↗</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <div className="pt-3 border-t border-forge-iron/50">
-            <p className="font-body text-sm text-forge-dim leading-relaxed mb-3">
-              Connect any MCP client to:
-            </p>
-            <div className="bg-forge-steel p-3 rounded font-mono text-xs text-forge-dim break-all">
-              mcpServers: &#123; arifOS: &#123; url: "https://mcp.arif-fazil.com/mcp" &#125; &#125;
-            </div>
+          {/* Federation entry points — only the two gates */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://arifos.arif-fazil.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-white transition-colors tracking-widest"
+            >
+              Observatory ↗
+            </a>
+            <a
+              href="https://mcp.arif-fazil.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-orange transition-colors tracking-widest"
+            >
+              MCP Gateway ↗
+            </a>
           </div>
         </div>
-      </div>
-      
-      <div className="site-frame mt-16 pt-8 border-t border-forge-iron flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
-          © 2026 Arif Fazil · Canon mark · <a href="/999/" className="text-forge-orange hover:text-forge-white transition-colors">verify at /999</a>
+
+        {/* Machine surface badges */}
+        <div className="flex justify-center gap-4 mt-8 mb-8">
+          <a href="/llms.txt" className="badge-status badge-status--live text-[0.55rem]">llms.txt</a>
+          <a href="/soul.json" className="badge-status badge-status--live text-[0.55rem]">soul.json</a>
+          <a href="/feed.xml" className="badge-status badge-status--live text-[0.55rem]">rss</a>
         </div>
-        <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
-          Live state: <a href="https://arifos.arif-fazil.com" className="text-forge-orange hover:text-forge-white transition-colors">Observatory</a>
+
+        {/* Footer */}
+        <div className="border-t border-forge-iron/30 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
+          <span className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
+            Arif Fazil · Ditempa Bukan Diberi
+          </span>
+          <a href="/999/" className="font-technical text-[0.6rem] text-forge-orange hover:text-forge-white transition-colors uppercase tracking-widest">
+            verify at /999
+          </a>
         </div>
       </div>
     </footer>
