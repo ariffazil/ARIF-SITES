@@ -384,9 +384,9 @@ export function Wealth() {
           </p>
 
           {isOffline && (
-            <div className="mb-6 brutalist-card border-yellow-500/50 bg-yellow-500/5 p-4 flex items-center gap-3">
+            <div className="mb-6 brutalist-card border-yellow-500/50 bg-yellow-500/5 p-4 flex items-center gap-3 flex-wrap">
               <span className="text-yellow-500 font-mono text-xs">⚠ OFFLINE MODE</span>
-              <span className="text-forge-dim text-xs">Live engine unreachable — showing last cached briefing ({briefing?.meta?.date}). Briefing updates daily at 09:00 UTC.</span>
+              <span className="text-forge-dim text-xs">Showing cached briefing from <span className="text-forge-orange font-bold">{briefing?.meta?.date}</span>. Briefings refresh daily at 00:00 UTC.</span>
             </div>
           )}
 
