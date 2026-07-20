@@ -1,0 +1,90 @@
+{
+  "schema": "geox-wells/v1",
+  "generated_from": "sovereign handover 2026-07-20 (DATA GATE answered in writing)",
+  "epistemic": "All four wells tier=existence by sovereign ruling 2026-07-20. Existence tier carries NO coordinates, depths, or results. Markers are rendered at jittered basin-level positions client-side; basin anchors are coarse public geography, not well locations.",
+  "basin_anchors": {
+    "Malay Basin": { "lat": 4.0, "lng": 103.8, "note": "basin-level anchor from sealed /earth v1 waypoint · NOT a well coordinate" }
+  },
+  "wells": [
+    {
+      "name": "BEKANTAN-1",
+      "lat": null,
+      "lng": null,
+      "water_depth_m": null,
+      "td_m": null,
+      "spud_year": 2018,
+      "operator": "PETRONAS",
+      "role": null,
+      "status": "discovery",
+      "play": null,
+      "significance": "Shallowest flowing oil in Malay Basin",
+      "tier": "existence",
+      "location_note": "Malay Basin, offshore Peninsular Malaysia",
+      "basin": "Malay Basin"
+    },
+    {
+      "name": "PUTERI BASEMENT-1",
+      "lat": null,
+      "lng": null,
+      "water_depth_m": null,
+      "td_m": null,
+      "spud_year": 2020,
+      "operator": "PETRONAS",
+      "role": null,
+      "status": "discovery",
+      "play": "fractured basement",
+      "significance": "Fractured basement test — hydrocarbons in fractured granite beneath the main basin fill",
+      "tier": "existence",
+      "location_note": "Malay Basin, offshore Peninsular Malaysia",
+      "basin": "Malay Basin"
+    },
+    {
+      "name": "LEBAH EMAS-1",
+      "lat": null,
+      "lng": null,
+      "water_depth_m": null,
+      "td_m": null,
+      "spud_year": 2025,
+      "operator": "PETRONAS",
+      "role": null,
+      "status": "discovery",
+      "play": "new play wildcat",
+      "significance": "New play wildcat — opened a new play fairway along the western hinge fault zone, Malay Basin margin",
+      "tier": "existence",
+      "location_note": "Western hinge fault zone, Malay Basin margin",
+      "basin": "Malay Basin"
+    },
+    {
+      "name": "BUNGA TASBIH-1",
+      "lat": null,
+      "lng": null,
+      "water_depth_m": null,
+      "td_m": null,
+      "spud_year": 2024,
+      "operator": "PETRONAS",
+      "role": null,
+      "status": "discovery",
+      "play": "structural/stratigraphic",
+      "significance": "Small Field Asset PSC award — Malaysia Bid Round Plus (MBR+) Round I",
+      "tier": "existence",
+      "location_note": "Malaysia Bid Round Plus, offshore Malaysia",
+      "basin": "Malay Basin"
+    }
+  ],
+  "regions": [
+    {
+      "name": "Kinabalu Basin",
+      "lat": 6.0,
+      "lng": 115.5,
+      "approximate": true,
+      "note": "Deepwater fold-thrust belt, offshore NW Sabah · regional anchor APPROXIMATE — sovereign correction pending"
+    },
+    {
+      "name": "Layang-Layang Basin",
+      "lat": 7.4,
+      "lng": 113.8,
+      "approximate": true,
+      "note": "Deepwater frontier, NW Borneo margin · regional anchor APPROXIMATE — sovereign correction pending"
+    }
+  ]
+}
