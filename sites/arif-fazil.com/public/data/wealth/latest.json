@@ -1,7 +1,7 @@
 {
   "meta": {
     "date": "2026-07-20",
-    "generated_at": "2026-07-20T08:11:12.105044+08:00",
+    "generated_at": "2026-07-20T08:24:08.242421+08:00",
     "source": "arifOS WEALTH \u2014 yfinance + TokenRouter deepseek",
     "model_note": "Synth via deepseek/deepseek-v4-flash. Market data from yfinance."
   },
@@ -24,100 +24,84 @@
   "economy": {
     "items": [
       {
-        "title": "GDP growth steady at 4.8% in Q2",
-        "desc": "Bank Negara's advance estimates show Q2 2026 GDP expanded 4.8% YoY, driven by domestic demand and tourism recovery. No upward revision yet.",
-        "category": "GDP"
+        "title": "Q2 2026 GDP advance estimate 5.8%",
+        "desc": "DOSM released Q2 2026 advance GDP growth at 5.8%, above Q1's 5.6%. Driven by domestic demand and exports.",
+        "category": "GDP",
+        "source_id": "DOSM"
       },
       {
-        "title": "Trade surplus narrows in June",
-        "desc": "Exports rose 3.2% YoY but imports surged 5.1% due to higher capital goods imports for data centres. Trade surplus shrank to RM9.8 billion.",
-        "category": "TRADE"
+        "title": "June CPI unchanged at 2.1%",
+        "desc": "Headline inflation held at 2.1% YoY; core at 2.0%. Stable food and energy prices.",
+        "category": "INFLATION",
+        "source_id": "DOSM"
       },
       {
-        "title": "Fiscal deficit on track for 4.3%",
-        "desc": "Budget 2026 implementation is on track; January-June fiscal deficit stood at RM45 billion. Subsidy savings target of RM10 billion may be missed.",
-        "category": "FISCAL"
+        "title": "OPR held at 3.00% since May 2023",
+        "desc": "BNM last changed OPR in May 2023. Next MPC meeting scheduled for September 4, 2026.",
+        "category": "SNAPSHOT",
+        "source_id": "BNM"
       },
       {
-        "title": "Inflation remains contained at 2.1%",
-        "desc": "June CPI rose 2.1% YoY, unchanged from May. Core inflation eased to 2.0% as food price pressures moderated.",
-        "category": "INFLATION"
-      },
-      {
-        "title": "Bursa daily liquidity at RM2.5 billion",
-        "desc": "Average daily trading value on the local bourse fell to RM2.5 billion in July, down from RM3.1 billion in June. Retail participation dropped.",
-        "category": "SNAPSHOT"
+        "title": "KLCI at 1731.45 (+0.54%)",
+        "desc": "Local equities positive on improved GDP outlook and stable ringgit.",
+        "category": "SNAPSHOT",
+        "source_id": "BURSA"
       }
     ]
   },
   "politics": {
     "narratives": [
       {
-        "title": "PM Anwar to launch National Semiconductor Strategy",
-        "desc": "Prime Minister Anwar Ibrahim is expected to unveil the 'Malaysia Silicon Valley' initiative in Penang next week, targeting RM50 billion in chip investments by 2030.",
-        "source": "Bernama"
-      },
-      {
-        "title": "MACC probes RM1.5 billion flood mitigation project",
-        "desc": "The Malaysian Anti-Corruption Commission has opened investigations into alleged irregularities in a federal flood mitigation contract in Johor.",
-        "source": "The Star"
+        "title": "Anwar approval at 52%; direction 42%",
+        "desc": "Merdeka Center June poll: PM Anwar's approval rating 52%. Separate metric for 'country moving in right direction' at 42%.",
+        "source_id": "MERDEKA"
       }
     ],
     "economy_policy": [
       {
-        "title": "Progressive Wage Policy phase 2",
-        "desc": "The government plans to expand the Progressive Wage Policy to cover 500,000 workers in the wholesale and retail sectors by end-2026. Firms will receive tax incentives for participation."
+        "title": "BUDI95 fuel subsidy reform",
+        "desc": "RON95 subsidy rationalised via BUDI95 since Sept 2025. Subsidised price RM1.99/L for eligible households; unsubsidised at RM3.72/L.",
+        "source_id": "KPDN"
       },
       {
-        "title": "National Energy Transition Roadmap: Solar target raised",
-        "desc": "The NETR target for solar capacity has been revised to 12 GW by 2030 from 8 GW, driven by corporate green power purchase agreements."
+        "title": "Diesel subsidy rationalised in Peninsula",
+        "desc": "Peninsula Malaysia diesel subsidy removed June 2024; float price RM4.37/L. Sabah and Sarawak still subsidised at RM2.15/L.",
+        "source_id": "MOF"
       }
     ],
     "regional": [
       {
-        "title": "Malaysia-Indonesia sea border dispute resolution",
-        "desc": "Both nations signed a Memorandum of Understanding to resolve overlapping maritime claims in the Sulawesi Sea. Joint oil exploration talks to begin in August."
-      },
-      {
-        "title": "ASEAN chairmanship - Myanmar deadlock persists",
-        "desc": "Malaysia's ASEAN chairmanship continues to face challenges with the junta's refusal to implement the Five-Point Consensus. No progress on humanitarian access."
+        "title": "Sabah/Sarawak diesel subsidy intact",
+        "desc": "East Malaysia retains diesel subsidy at RM2.15/L, reducing cost pressure on logistics and consumers there.",
+        "source_id": "MOF"
       }
     ]
   },
   "social": {
     "cost_of_living": [
       {
-        "title": "Chicken price ceiling extended",
-        "desc": "The government has extended the standard chicken price ceiling at RM9.40/kg for another month, but wholesalers report thinning margins and potential supply disruptions."
-      },
-      {
-        "title": "Electric tariff hike for high-income households",
-        "desc": "Tenaga Nasional's new tariff adjustment will raise electricity costs by 5% for households consuming above 600 kWh per month, effective August 1."
+        "title": "BUDI95 and diesel subsidy status",
+        "desc": "RON95 subsidy reform and diesel rationalisation in Peninsula provide fiscal savings but leave unsubsidised prices high for non-eligible users.",
+        "source_id": "KPDN"
       }
     ],
     "labor": [
       {
-        "title": "Minimum wage review due in Q4 2026",
-        "desc": "The National Wages Consultative Council has begun stakeholder sessions to review the current RM1,700/month minimum wage, with employers opposing any increase above RM1,800."
-      },
-      {
-        "title": "Foreign worker levy raised for manufacturing",
-        "desc": "The government increased the foreign worker levy for the manufacturing sector from RM1,850 to RM2,100 per worker annually, effective July 2026, to encourage automation."
+        "title": "No new labour data",
+        "desc": "No major labour market releases today. Latest DOSM data (May) showed unemployment at 3.3%.",
+        "source_id": "NONE"
       }
     ],
     "youth_career": [
       {
-        "title": "Graduate unemployment rate edges up to 4.1%",
-        "desc": "Data from the Department of Statistics shows the unemployment rate among graduates aged 20-24 rose to 4.1% in Q2 2026, driven by a mismatch between skills and industry needs."
-      },
-      {
-        "title": "Gig workers' social security scheme launched",
-        "desc": "SOCSO's wage-loss coverage for gig workers has been expanded to include accident and disability benefits. So far, 120,000 e-hailing drivers have registered, well below the 400,000 target."
+        "title": "No specific youth career updates",
+        "desc": "No new announcements or data on youth employment or skills programmes today.",
+        "source_id": "NONE"
       }
     ]
   },
   "oil_energy": {
-    "brent_price": 90.66999816894531,
+    "brent_price": 90.5199966430664,
     "malaysia_oil": [],
     "energy_transition": []
   },
@@ -125,24 +109,27 @@
     "fed": {
       "items": [
         {
-          "title": "Fed holds rates at 5.25-5.50%",
-          "desc": "The US Federal Reserve kept the federal funds rate unchanged at its July meeting. Chair Powell signalled a possible rate cut in September if inflation continues to ease."
+          "title": "FOMC meeting July 28-29 upcoming",
+          "desc": "The next FOMC meeting is scheduled for July 28-29, 2026. No decision has been made yet; markets expect a potential rate cut.",
+          "source_id": "FOMC"
         }
       ]
     },
     "china": {
       "items": [
         {
-          "title": "China GDP growth slows to 4.6% in Q2",
-          "desc": "China's economy grew 4.6% YoY in Q2 2026, missing the 5% target. Property sector woes persist, but manufacturing PMI edged up to 50.2 in June."
+          "title": "No new China data today",
+          "desc": "No significant China economic releases or policy moves reported for July 20.",
+          "source_id": "NONE"
         }
       ]
     },
     "asean": {
       "items": [
         {
-          "title": "ASEAN digital economy framework agreed",
-          "desc": "ASEAN ministers finalised a cross-border data flow agreement aimed at boosting digital trade. Malaysia's digital trade with ASEAN is expected to grow 15% annually."
+          "title": "No major ASEAN developments",
+          "desc": "No significant ASEAN-related economic or political events reported today.",
+          "source_id": "NONE"
         }
       ]
     }
@@ -150,48 +137,43 @@
   "so_what": [
     {
       "domain": "MARKET",
-      "signal": "KLCI edges higher, volume thin",
-      "delta": "FBM KLCI closed at 1,731.45, up 0.54% for the day. Trading volume was below the 20-day average, indicating cautious participation.",
-      "omega": "The modest gain lacks conviction; institutional flows remain tepid. Without a catalyst, the index may struggle to hold above 1,730.",
-      "xi": "For portfolio managers: reduce exposure to speculative small caps; focus on blue chips with strong dividend yields. Hedging via put options on FBMKLCI is advisable.",
-      "psi": "Retail investors chasing momentum risk buying at the top \u2014 the market's narrow breadth does not reflect broad economic health.",
-      "tone": "caution"
+      "signal": "KLCI edges up 0.54%",
+      "delta": "The KLCI closed at 1731.45, up 0.54% on the day.",
+      "omega": "Positive sentiment persists, driven by domestic resilience and global oil price support.",
+      "xi": "Monitor for profit-taking ahead of US Fed meeting (July 28-29). Consider defensive positions.",
+      "psi": "Retail investors may see this as a buying signal, but near-term volatility remains.",
+      "tone": "neutral",
+      "source_id": "BURSA"
     },
     {
       "domain": "FX / RINGGIT",
-      "signal": "Ringgit holds firm at 4.085",
-      "delta": "USD/MYR traded at 4.0850, unchanged from the previous close. The ringgit has strengthened 2.3% year-to-date against the US dollar.",
-      "omega": "Sustained BNM intervention and a narrowing US-Malaysia rate differential support the currency. However, any dovish Fed pivot could trigger ringgit appreciation, hurting export competitiveness.",
-      "xi": "Corporates with USD receivables should consider increasing hedge ratios to 70% for 3-6 month forwards. Importers need no rush to cover.",
-      "psi": "A stronger ringgit eases import costs for everyday goods but squeezes palm oil and electronics exporters \u2014 a trade-off felt by millions of workers.",
-      "tone": "neutral"
+      "signal": "Ringgit steady at 4.0850",
+      "delta": "USD/MYR traded at 4.0850, unchanged from recent close.",
+      "omega": "Ringgit stability reflects cautious optimism ahead of Fed meeting and sustained commodity prices.",
+      "xi": "Exporters should lock in rates if ringgit strengthens past 4.05; importers can wait for dips.",
+      "psi": "A stable ringgit helps contain imported inflation for households.",
+      "tone": "neutral",
+      "source_id": "BURSA"
     },
     {
       "domain": "OIL & GAS",
-      "signal": "Brent crude stable above $90",
-      "delta": "Brent crude oil settled at $90.67/barrel, flat on the day. OPEC+ compliance remains high, and US crude inventories fell by 1.2 million barrels.",
-      "omega": "The $90 level acts as both psychological support and resistance. Geopolitical risk premiums are fading, but supply tightness keeps prices elevated. Malaysian oil and gas firms will see sustained cash flows.",
-      "xi": "Energy sector investors: overweight upstream stocks (e.g., Hibiscus, Dialog) but take profits on downstream players facing refining margin compression. Consider tactical short on upstream if Brent breaks below $88.",
-      "psi": "Every RM1/bbl change in oil price shifts government oil-related revenue by roughly RM300 million \u2014 a reminder that Malaysia's fiscal health is tied to global energy markets.",
-      "tone": "neutral"
+      "signal": "Brent futures rise to $90.52",
+      "delta": "Brent crude futures screen at $90.52, up from last settle of $88.10 on July 17. [UNVERIFIED]",
+      "omega": "Oil price rally pressures subsidy costs and may widen fiscal gap if sustained. [UNVERIFIED]",
+      "xi": "Hedge fuel exposure; watch for potential subsidy adjustment if Brent stays above $90.",
+      "psi": "Higher global oil prices could eventually flow through to domestic pump prices despite subsidies.",
+      "tone": "caution",
+      "source_id": "NONE"
     },
     {
       "domain": "COST OF LIVING",
-      "signal": "Fuel subsidy rationalisation still looming",
-      "delta": "RON95 subsidy reform is on the government's agenda but no timeline announced. Diesel subsidy removal in June 2025 caused a 12% spike in transport costs.",
-      "omega": "Any move to rationalise RON95 subsidies will directly impact the B40 and M40 groups. Inflation expectations may rise, prompting BNM to hold OPR steady at 3.00%.",
-      "xi": "Consumer staple stocks (e.g., Nestle, F&N) may face margin pressure if demand shifts to cheaper alternatives. Investors should rotate into defensive sectors like healthcare and utilities.",
-      "psi": "Delaying the subsidy decision is politically safer but fiscally unsustainable \u2014 the burden of inflation disproportionately falls on the lowest-income households.",
-      "tone": "critical"
-    },
-    {
-      "domain": "POLITICS",
-      "signal": "No major political drama this week",
-      "delta": "The unity government continues to function with no by-elections or cabinet reshuffles pending. Approval ratings for PM Anwar are steady at 42%.",
-      "omega": "Political stability supports foreign investor confidence and enables policy continuity. However, lingering factional tensions within Pakatan could resurface ahead of the 2028 general election.",
-      "xi": "Institutional investors should maintain Malaysia overweight relative to ASEAN peers. Political risk premium remains low for now but hedge against a sudden collapse in coalition cohesion.",
-      "psi": "Stable governance buys time for structural reforms but does not automatically translate into better livelihoods \u2014 trust must be earned through delivery, not just absence of chaos.",
-      "tone": "neutral"
+      "signal": "BUDI95 subsidy active since Sept 2025",
+      "delta": "Unsubsidised RON95 at RM3.72/L; eligible households get 300L/month at RM1.99/L via BUDI Individu/Keluarga.",
+      "omega": "Subsidy reform is fully in place, containing fiscal exposure but requiring ongoing eligibility checks.",
+      "xi": "Ensure client awareness of BUDI eligibility; no further subsidy removal expected soon.",
+      "psi": "Lower-income households still benefit from subsidised fuel, easing cost-of-living pressure.",
+      "tone": "positive",
+      "source_id": "KPDN"
     }
   ]
 }
