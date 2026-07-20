@@ -67,7 +67,7 @@ export function World() {
           <h2 className="text-4xl font-black uppercase italic mb-8 tracking-tight">Commodities</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {commodityMarkets.map((m) => (
-              <a key={m.slug} href={`/${m.slug}/`}
+              <a key={m.slug} href={`/world/${m.slug}`}
                  className="brutalist-card group block hover:border-forge-orange transition-colors">
                 <h3 className={`text-3xl font-black uppercase italic mb-4 tracking-tight group-hover:text-forge-orange transition-colors ${m.accent}`}>
                   {m.name}
