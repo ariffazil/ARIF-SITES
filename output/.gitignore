@@ -1,9 +1,0 @@
-# output/ directory — canonical abstractions only
-# Keep .md artifacts; ignore generated detail formats
-*.html
-*.pdf
-*.png
-*.jpg
-*.jpeg
-*.txt
-*.json
