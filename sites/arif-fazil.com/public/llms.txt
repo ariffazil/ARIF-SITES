@@ -14,13 +14,18 @@ and models operate inside constitutional law (F1-F13 floors), not vibes.
 arifOS exposes 13 MCP tools as API endpoints. It is not an LLM itself.
 The Observatory surface is live at https://arifos.arif-fazil.com
 
-## Five-Domain Federation
-The arifOS federation runs five domains under one sovereign:
-- **arifOS** — Constitutional governance kernel (MIND)
-- **AAA** — Operations surface and agent gateway (SOUL)
-- **GEOX** — Earth intelligence / geoscience tools (BODY)
-- **WEALTH** — Capital intelligence / NPV / EMV engine (CAPITAL)
-- **WELL** — Human and machine readiness surface
+## The arifOS Federation — 5 Organs Under One Sovereign
+The federation runs five constitutional organs:
+- **arifOS** — Constitutional governance kernel, 888 JUDGE (MIND)
+- **AAA** — Control plane, A2A gateway, agent identity (BODY)
+- **GEOX** — Earth intelligence, physics-gated geoscience (ORGAN)
+- **WEALTH** — Capital intelligence, NPV/EMV/capital thermodynamics (ORGAN)
+- **WELL** — Human and machine vitality reflection (ORGAN)
+
+Public-facing surfaces accessible via:
+- **arif-fazil.com** — Human portfolio (SOUL — this site)
+- **mcp.arif-fazil.com** — MCP gateway for agent connection
+- **forge.arif-fazil.com** — A-FORGE governed execution shell
 
 ## Constitutional Floors (F1-F13)
 - F01 AMANAH — Reversibility, no irreversible deletion without sovereign consent

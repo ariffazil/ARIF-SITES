@@ -1,124 +1,86 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useWebMCP } from '@/hooks/useWebMCP';
 
-type Market = {
-  slug: string;
-  name: string;
-  ticker: string;
-  desc: string;
-  accent: string;
-};
-
-const markets: Market[] = [
-  {
-    slug: 'oil',
-    name: 'Oil',
-    ticker: 'Brent Crude',
-    desc: 'Brent crude cognitive-clarity dashboard. Technical levels plus world context in one scan. Evidence-gated, human-decided.',
-    accent: 'text-forge-orange',
-  },
-  {
-    slug: 'gas',
-    name: 'Gas',
-    ticker: 'Natural Gas',
-    desc: 'Natural gas synthesis — price structure and macro drivers. The energy leg of the commodity read.',
-    accent: 'text-[#00D4AA]',
-  },
-  {
-    slug: 'gold',
-    name: 'Gold',
-    ticker: 'XAU / USD',
-    desc: 'Sovereign gold trading synthesis. Technical + macro in one view. Risk-off barometer for the whole board.',
-    accent: 'text-[#D4A853]',
-  },
+const commodityMarkets = [
+  { slug: 'oil', name: 'Oil (Brent)', accent: 'text-forge-orange' },
+  { slug: 'gas', name: 'Natural Gas', accent: 'text-[#00D4AA]' },
+  { slug: 'gold', name: 'Gold (XAU/USD)', accent: 'text-[#D4A853]' },
 ];
 
 const worldTools = [
   {
-    name: 'get_world_markets',
-    description:
-      'List the commodity market dashboards published on arif-fazil.com/world (oil/Brent, gas/natural gas, gold/XAUUSD) with their live dashboard URLs.',
+    name: 'get_world_surface',
+    description: 'List MakcikGPT civic journalism articles and commodity dashboards on arif-fazil.com/world.',
     execute() {
       return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(
-              markets.map((m) => ({
-                market: m.name,
-                ticker: m.ticker,
-                dashboard: `https://arif-fazil.com/${m.slug}/`,
-              })),
-              null,
-              2
-            ),
-          },
-        ],
+        content: [{ type: 'text', text: 'World hub: MakcikGPT civic journalism + Oil/Gas/Gold dashboards. Route: /world/makcikgpt/ for articles, /oil/ /gas/ /gold/ for market dashboards.' }]
       };
-    },
+    }
   },
 ];
 
 export function World() {
   useWebMCP(worldTools);
-  useEffect(() => {
-    document.title = 'World Markets — Oil · Gas · Gold | Arif Fazil';
-    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/world');
-  }, []);
+  useEffect(() => { document.title = 'World — MakcikGPT · Commodities | Arif Fazil'; }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-forge-black min-h-screen"
-    >
-      {/* ── HERO ─────────────────────────────────────────── */}
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-forge-black min-h-screen">
+      {/* HERO */}
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
-          <div className="section-label">Commodities · World Context · Evidence-Gated</div>
+          <div className="section-label">Civic Journalism · Commodity Markets · World Context</div>
           <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
             The<br />World
           </h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed">
-            Oil, gas, and gold — read in one scan. Technical structure plus the
-            macro story behind the number. Dashboards inform; the human decides.
+          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed mb-8">
+            What's actually happening. MakcikGPT civic journalism in Bahasa Malaysia — covering
+            sovereignty, resources, and power. Plus the commodity dashboards that track what the
+            ground is doing.
           </p>
         </div>
       </section>
 
-      {/* ── MARKETS ──────────────────────────────────────── */}
-      <section className="py-24">
+      {/* MAKCIKGPT — primary content */}
+      <section className="py-24 border-b-2 border-forge-iron">
         <div className="site-frame">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {markets.map((m) => (
-              <motion.a
-                key={m.slug}
-                href={`/${m.slug}/`}
-                whileInView={{ y: [20, 0], opacity: [0, 1] }}
-                viewport={{ once: true }}
-                className="brutalist-card group block hover:border-forge-orange transition-colors"
-              >
-                <div className="section-label !mb-4">{m.ticker}</div>
-                <h2
-                  className={`text-5xl font-black uppercase italic mb-6 tracking-tight group-hover:text-forge-orange transition-colors ${m.accent}`}
-                >
+          <div className="section-label">📰 Civic Journalism · Bahasa Makcik</div>
+          <h2 className="text-4xl font-black uppercase italic mb-4 tracking-tight">MakcikGPT</h2>
+          <p className="font-body text-forge-dim max-w-2xl leading-relaxed mb-8">
+            When RM70 billion moves and nobody asks questions, MakcikGPT asks. Published directly,
+            no gatekeepers. Every article carries the 999 Meterai seal.
+          </p>
+          <Link
+            to="/world/makcikgpt/"
+            className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider px-6 py-3 bg-forge-orange text-forge-black border-2 border-forge-orange hover:opacity-80 transition-opacity"
+          >
+            Browse All Articles →
+          </Link>
+        </div>
+      </section>
+
+      {/* COMMODITY DASHBOARDS — secondary */}
+      <section className="py-24 border-b-2 border-forge-iron">
+        <div className="site-frame">
+          <div className="section-label">📊 Market Dashboards</div>
+          <h2 className="text-4xl font-black uppercase italic mb-8 tracking-tight">Commodities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {commodityMarkets.map((m) => (
+              <a key={m.slug} href={`/${m.slug}/`}
+                 className="brutalist-card group block hover:border-forge-orange transition-colors">
+                <h3 className={`text-3xl font-black uppercase italic mb-4 tracking-tight group-hover:text-forge-orange transition-colors ${m.accent}`}>
                   {m.name}
-                </h2>
-                <p className="font-body text-forge-dim leading-relaxed mb-8">
-                  {m.desc}
-                </p>
-                <span className="button-forge text-[0.7rem] py-2 px-4 inline-block">
+                </h3>
+                <span className="font-technical text-[0.7rem] uppercase tracking-widest text-forge-dim">
                   Open Dashboard →
                 </span>
-              </motion.a>
+              </a>
             ))}
           </div>
-
-          <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mt-16 max-w-2xl leading-relaxed">
-            Dashboards are cognitive aids, not signals. Data is evidence-labeled;
-            no dashboard issues a buy or sell. Sovereignty over the decision stays
-            with the human.
+          <p className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest mt-12 max-w-xl leading-relaxed">
+            Dashboards are cognitive aids, not signals. Every number carries an epistemic label.
+            Sovereignty over decisions stays with the human.
           </p>
         </div>
       </section>
