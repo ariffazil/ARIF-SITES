@@ -13,57 +13,61 @@
 <!-- TradingView Lightweight Charts -->
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
 
-<!-- Embedded Agentic Reality Packet — Dual-mode Substrate (Plan WEALTH-TRINITY-HARDENING-20260719-003) -->
+<!-- Embedded Agentic Reality Packet — live snapshot contract -->
 <script id="wealth-reality-packet" type="application/ld+json">
 {
   "@context": "https://arif-fazil.com/schemas/v1/CapitalContext.jsonld",
   "@type": "CapitalContext",
+  "schema": "wealth.snapshot.v1",
   "organ": "WEALTH",
   "asset": "BRENT_CRUDE_OIL",
-  "timestamp": "2026-07-19T18:00:00+08:00",
+  "timestamp": null,
+  "observed_at": null,
+  "coherence_id": null,
   "epistemic_tier": "OBS",
   "confidence": 0.85,
   "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
   "governance": {
     "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
-    "decision_floor": "888_HOLD",
-    "vault999_witness": "0x999_TRINITY_SEALED_20260719"
+    "decision_floor": "888_HOLD"
   },
   "market_state": {
     "symbol": "BZ=F",
-    "price_usd": 88.16,
-    "change_pct": 0.45,
-    "regime": "BULLISH_GEOPOLITICAL_RISK_PREMIUM",
+    "price_usd": null,
+    "change_pct": null,
+    "regime": null,
+    "rsi_14": null,
+    "ema_trend": null,
     "key_levels": {
-      "support": [76.50, 75.00],
-      "resistance": [80.20, 82.50]
+      "support": [],
+      "resistance": []
     }
   },
   "economic_trinity": {
     "fx": {
-      "global": "DXY 103.2 / Fed Rate 5.25%-5.50%",
-      "malaysia": "USD/MYR 4.42 / BNM OPR 3.00%",
+      "global": "Live DXY and rates from snapshot",
+      "malaysia": "Live USD/MYR and BNM OPR from snapshot",
       "transmission": "PETRONAS USD crude export revenues convert into strong MYR domestic liquidity",
       "epistemic": "OBS"
     },
     "inflation": {
-      "global": "US CPI 2.9% YoY",
-      "malaysia": "Malaysia CPI 1.9% YoY",
+      "global": "Live US CPI from snapshot",
+      "malaysia": "Live Malaysia CPI from snapshot",
       "transmission": "Budi MADANI targeted diesel subsidy rationalization prevents fiscal leakage without fuel price shock",
       "epistemic": "OBS"
     },
     "unemployment": {
-      "global": "US Unemployment 4.1%",
-      "malaysia": "Malaysia Unemployment 3.3% (LFPR 70.3%)",
+      "global": "Live US labour data from snapshot",
+      "malaysia": "Live Malaysia labour data from snapshot",
       "transmission": "High-wage employment in Pengerang Integrated Petroleum Complex (PIPC) and Kerteh supports industrial labor",
       "epistemic": "OBS"
     }
   },
   "dimensions": {
-    "reward": "Fiscal breakeven support $75/bbl",
-    "energy": "Global oil demand 103.2 mb/d",
-    "entropy": "Middle East transit friction delta +0.12",
-    "survival": "888-HOLD gate active"
+    "reward": "Live market snapshot",
+    "energy": "Live market snapshot",
+    "entropy": "Live market snapshot",
+    "survival": "Human decision required; no commodity seal claimed"
   }
 }
 </script>
@@ -1726,7 +1730,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <span class="world-driver-arrow up">▲</span>
         </div>
         <div class="world-driver-impact">
-          <strong>Global:</strong> DXY 103.2 / Fed Rate 5.25%-5.50%.<br>
+          <strong>Global:</strong> Live DXY and rates from snapshot.<br>
           <strong>Malaysia:</strong> USD/MYR 4.42 / BNM OPR 3.00%.<br>
           <span style="color:var(--accent);">Transmission:</span> PETRONAS USD crude export revenues convert into strong MYR domestic liquidity & sovereign dividend capacity.
         </div>
@@ -1944,7 +1948,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     </div>
 
     <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.2rem;">
-      <span class="footer-seal">999 SEAL ALIVE</span>
+      <span class="footer-seal">SNAPSHOT COHERENCE</span>
       <span class="footer-ditempa">Ditempa Bukan Diberi</span>
     </div>
   </footer>
@@ -1971,6 +1975,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   let currentTF = '4H';
   let activeEMAs = { '20': true, '50': true, '200': false };
   let chartDataCache = {};
+  let latestSnapshot = null;
 
   // ── Plain-language translator for arifOS judge reasons ──
   function translateJudge(reason) {
@@ -2195,22 +2200,60 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     }
   };
 
-  // ── Ticker + Pulse Bar ──
-  async function refreshTicker() {
-    const data = await apiFetch('/ticker');
-    if (!data) return;
-
+  function updateRealityPacket(snapshot) {
+    const pktEl = document.getElementById('wealth-reality-packet');
+    if (!pktEl) return;
     try {
-      const pktEl = document.getElementById('wealth-reality-packet');
-      if (pktEl) {
-        const pkt = JSON.parse(pktEl.textContent);
-        if (pkt && pkt.market_state) {
-          pkt.market_state.price_usd = data.price;
-          pkt.timestamp = new Date().toISOString();
-          pktEl.textContent = JSON.stringify(pkt, null, 2);
-        }
+      const pkt = JSON.parse(pktEl.textContent);
+      const ticker = snapshot.ticker || {};
+      const levels = snapshot.levels || {};
+      const macro = snapshot.macro || {};
+      pkt.schema = snapshot.schema;
+      pkt.observed_at = snapshot.observed_at;
+      pkt.timestamp = snapshot.observed_at;
+      pkt.coherence_id = snapshot.coherence_id;
+      if (pkt.market_state) {
+        pkt.market_state.symbol = ticker.symbol || pkt.market_state.symbol;
+        pkt.market_state.price_usd = ticker.price;
+        pkt.market_state.change_pct = ticker.changePct;
+        pkt.market_state.regime = ticker.emaTrend || null;
+        pkt.market_state.rsi_14 = ticker.rsi;
+        pkt.market_state.ema_trend = ticker.emaTrend || null;
+        pkt.market_state.key_levels = {
+          support: levels.support || [],
+          resistance: levels.resistance || [],
+        };
       }
-    } catch(e) {}
+      if (pkt.economic_trinity && pkt.economic_trinity.fx) {
+        pkt.economic_trinity.fx.global = macro.dxy == null
+          ? 'Live DXY and rates unavailable'
+          : 'DXY ' + macro.dxy + ' · live rates unavailable';
+      }
+      pktEl.textContent = JSON.stringify(pkt, null, 2);
+    } catch (err) {
+      console.warn('[Snapshot] packet update failed:', err.message);
+    }
+  }
+
+  async function refreshSnapshot() {
+    const snapshot = await apiFetch('/snapshot');
+    if (!snapshot || snapshot.schema !== 'wealth.snapshot.v1' || snapshot.asset !== CONFIG.ASSET ||
+        !snapshot.observed_at || !snapshot.ticker || !snapshot.levels || !snapshot.macro ||
+        !snapshot.coherence_id) return null;
+    latestSnapshot = snapshot;
+    updateRealityPacket(snapshot);
+    return snapshot;
+  }
+
+  // ── Ticker + Pulse Bar ──
+  async function refreshTicker(force = false) {
+    const snapshot = force || !latestSnapshot ? await refreshSnapshot() : latestSnapshot;
+    if (!snapshot) return;
+    const levels = snapshot.levels || {};
+    const data = Object.assign({}, snapshot.ticker || {}, {
+      support: levels.support || [],
+      resistance: levels.resistance || [],
+    });
 
     $('pulsePrice').textContent = '$' + fmt(data.price);
     const delta = data.change || 0;
@@ -2260,7 +2303,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     }
 
     // Timestamp — LIVE marker
-    const now = new Date();
+    const now = new Date(snapshot.observed_at);
     $('pulseTimestamp').innerHTML = '<span style="color:var(--green);">● LIVE</span> ' + now.toLocaleString('en-MY', {
       timeZone: CONFIG.TIMEZONE, year: 'numeric', month: '2-digit',
       day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
@@ -2351,7 +2394,8 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   // ── Macro ticker (DXY, US10Y, VIX, Silver, GSR) ──
   async function refreshMacro() {
-    const data = await apiFetch('/macro');
+    const snapshot = latestSnapshot || await refreshSnapshot();
+    const data = snapshot && snapshot.macro;
     if (!data) return;
 
     const setMacro = (id, value, change) => {
@@ -2372,7 +2416,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
     const timeEl = $('mcr-time');
     if (timeEl) {
-      timeEl.textContent = new Date().toLocaleString('en-MY', {
+      timeEl.textContent = new Date(snapshot.observed_at).toLocaleString('en-MY', {
         timeZone: CONFIG.TIMEZONE, month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
       }) + ' MYT';
     }
@@ -2424,11 +2468,16 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   // ── Technical Forge — LIVE analysis from ticker + signal_v2 ──
   async function refreshTechnicalForge() {
-    const [ticker, sigData, apexData] = await Promise.all([
-      apiFetch('/ticker'),
+    const snapshot = latestSnapshot || await refreshSnapshot();
+    const [sigData, apexData] = await Promise.all([
       apiFetch('/signal_v2'),
       apiFetch('/apex'),
     ]);
+    const levels = (snapshot && snapshot.levels) || {};
+    const ticker = snapshot && snapshot.ticker ? Object.assign({}, snapshot.ticker, {
+      support: levels.support || [],
+      resistance: levels.resistance || [],
+    }) : null;
     if (!ticker) return;
 
     const emaTrend = ticker.emaTrend || 'NEUTRAL';
@@ -2559,6 +2608,12 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     const liveDot = document.querySelector('.pulse-meta .live-dot');
     if (liveDot) liveDot.style.background = 'var(--amber)';
 
+    const snapshot = await refreshSnapshot();
+    if (!snapshot) {
+      if (liveDot) liveDot.style.background = 'var(--red)';
+      return;
+    }
+
     await Promise.all([
       refreshTicker(),
       refreshApex(),
@@ -2575,10 +2630,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   // ── Boot sequence ──
   document.addEventListener('DOMContentLoaded', async () => {
     // 💉 LIVE DATA FIRST — truth before beauty
-    await Promise.all([
-      refreshTicker(),
-      refreshMacro(),
-    ]);
+    await refreshSnapshot();
     
     // Then chart + heavy stuff in background
     renderChart('4H');
@@ -2592,7 +2644,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     // Periodic refresh
     setInterval(refreshAll, CONFIG.REFRESH_INTERVAL);
     // Faster ticker refresh (every 2 min)
-    setInterval(refreshTicker, 120000);
+    setInterval(() => refreshTicker(true), 120000);
   });
 
 </script>

@@ -1,11 +1,19 @@
-import { Navigate } from 'react-router-dom';
+import { MakcikGPT } from './MakcikGPT';
 
+/**
+ * Canonical alias wrapper for the MakcikGPT landing.
+ *
+ * Canonical URL: /world/makcikgpt/   (renders MakcikGPT directly)
+ * Bare alias:   /world/makcikgpt    (renders MakcikGPT directly)
+ * /index suffix: /world/makcikgpt/index → redirected to /world/makcikgpt/
+ *   (handled by the App router — see <Route path="/world/makcikgpt/index" />)
+ *
+ * The legacy /wealth/makcikgpt/ and /economics/makcikgpt/ paths are routed
+ * by the App router with <Navigate replace> — they never enter this component.
+ * They were the old canonical home before the 2026-07-21 world/migration.
+ */
 export function MakcikGPTAlias() {
-  // The MakcikGPT landing is its own content surface; the URL kept the
-  // /wealth/makcikgpt prefix for backwards compatibility, so this is just
-  // an alias wrapper that routes to the same page. The MakcikGPT URL is
-  // the public one.
-  return <Navigate to="/economics/makcikgpt/index" replace />;
+  return <MakcikGPT />;
 }
 
 export default MakcikGPTAlias;

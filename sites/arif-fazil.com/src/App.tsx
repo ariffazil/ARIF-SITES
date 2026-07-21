@@ -8,7 +8,6 @@ import { Wealth } from '@/pages/Wealth';
 import { WealthArticle } from '@/pages/WealthArticle';
 import { World } from '@/pages/World';
 import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
-import { MakcikGPT } from '@/pages/MakcikGPT';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
 import { Discoveries } from '@/pages/Discoveries';
 import { Essays } from '@/pages/Essays';
@@ -44,10 +43,13 @@ function App() {
             {/* World — civic journalism + commodities */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
-            {/* MakcikGPT — canonical path (was /economics/makcikgpt/) */}
+            {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
+                the bare /world/makcikgpt and the legacy /index suffix both
+                resolve to the same canonical page (no extra redirect). */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
             <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
-            <Route path="/world/makcikgpt/index" element={<MakcikGPT />} />
+            {/* /world/makcikgpt/index → /world/makcikgpt/ (301-style client redirect) */}
+            <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
             {/* Commodities — Δ-only, under world */}
             <Route path="/world/oil" element={<CommodityPageOil />} />
@@ -90,11 +92,13 @@ function App() {
             {/* MakcikGPT triplication fix — /world/makcikgpt/ is canonical */}
             <Route path="/wealth/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/index" replace />} />
+            {/* Skip the /index hop — go straight to canonical trailing slash */}
+            <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/wealth/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/economics/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/economics/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/index" replace />} />
+            {/* Skip the /index hop — go straight to canonical trailing slash */}
+            <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/essays" element={<Navigate to="/writing" replace />} />
             <Route path="/essays/" element={<Navigate to="/writing" replace />} />

@@ -30,11 +30,14 @@ function loadEssays() {
 }
 
 function pickMakcikPieces(essays) {
-  // MakcikGPT feed = all BM essays (Bahasa Makcik voice), in publish-date order.
-  // Covers M-series civic journalism (onsite) + S7-BM philosophy (Medium) — both
-  // are BM-authored by Arif and belong on the Bahasa Makcik subscription surface.
+  // MakcikGPT feed = ONLY BM essays with onsite destinations (per the
+  // 2026-07-21 source-of-truth rule). Medium-only BM pieces (e.g. S7-BM
+  // philosophy essays) are BM-authored but NOT part of the /world/makcikgpt/
+  // canonical surface — they live on Medium and are out of scope here.
+  // As of 2026-07-21 this yields exactly 14 entries (M1#1-6, M2#1-3, M3#1-2,
+  // M4#1-2, M5#1) — all with dest.type === "onsite" and lang === "bm".
   return essays
-    .filter((e) => e.lang === "bm" && e.dest)
+    .filter((e) => e.lang === "bm" && e.dest && e.dest.type === "onsite")
     .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }
 

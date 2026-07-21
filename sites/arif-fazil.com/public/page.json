@@ -1,28 +1,48 @@
 {
   "name": "arif-fazil.com",
-  "purpose": "Professional homepage for Arif Fazil, with canonical deeper layers for genesis and proof.",
-  "audience": ["humans", "collaborators", "agents", "verifiers"],
+  "purpose": "Professional homepage for Arif Fazil, with canonical deeper layers for genesis, proof, and civic intelligence.",
+  "audience": [
+    "humans",
+    "collaborators",
+    "agents",
+    "verifiers"
+  ],
   "canonical_url": "https://arif-fazil.com/",
   "route_model": {
     "/": "present human homepage",
     "/000/": "genesis and wisdom archive",
-    "/999/": "trust and proof chamber"
+    "/999/": "trust and proof chamber",
+    "/world/makcikgpt/": "MakcikGPT civic intelligence canonical landing"
   },
   "content_scope": {
-    "includes": ["identity", "selected work", "working style", "collaboration", "proof discovery"],
-    "excludes": ["runtime internals", "placeholder routes", "retired hostnames"]
+    "includes": [
+      "identity",
+      "selected work",
+      "working style",
+      "collaboration",
+      "proof discovery",
+      "civic intelligence (MakcikGPT)"
+    ],
+    "excludes": [
+      "runtime internals",
+      "placeholder routes",
+      "retired hostnames"
+    ]
   },
   "machine_surfaces": {
     "llms_path": "/llms.txt",
     "llms_json_path": "/llms.json",
+    "page_json_path": "/page.json",
+    "sitemap_path": "/sitemap.xml",
+    "feed_path": "/feed.xml",
     "agent_card_path": "/.well-known/agent.json",
     "did_path": "/.well-known/did.json"
   },
   "related_sites": [
     {
       "name": "wiki",
-      "url": "https://wiki.arif-fazil.com",
-      "relationship": "documentation shell"
+      "url": "https://arifos.arif-fazil.com/wiki",
+      "relationship": "canonical wiki destination; legacy alias wiki.arif-fazil.com permanently redirects here"
     },
     {
       "name": "aaa",
@@ -40,5 +60,5 @@
       "relationship": "earth intelligence apps"
     }
   ],
-  "last_updated": "2026-04-23"
+  "last_updated": "2026-07-21"
 }

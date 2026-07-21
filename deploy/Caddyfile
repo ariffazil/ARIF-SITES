@@ -225,6 +225,20 @@ arif-fazil.com {
 	handle @em {
 		redir https://arif-fazil.com/world/makcikgpt/{http.regexp.em.1} 301
 	}
+	@wealth_makcik_landing path /wealth/makcikgpt /wealth/makcikgpt/
+	handle @wealth_makcik_landing {
+		redir https://arif-fazil.com/world/makcikgpt/ 301
+	}
+	@economics_makcik_landing path /economics/makcikgpt /economics/makcikgpt/
+	handle @economics_makcik_landing {
+		redir https://arif-fazil.com/world/makcikgpt/ 301
+	}
+	# 2026-07-21 — Bare-root canonical aliases for /world/makcikgpt/.
+	# The trailing-slash form is the canonical landing (F4 CLARITY); the bare
+	# /world/makcikgpt and the legacy /world/makcikgpt/index both resolve to it.
+	# These MUST sit before the SPA catch-all below so they don't get swallowed.
+	redir /world/makcikgpt /world/makcikgpt/ 308
+	redir /world/makcikgpt/index /world/makcikgpt/ 301
 	# WEALTH Terminal home (2026-07-18) — unified product surface for gold/oil/gas
 	# More-specific /wealth/{gold,oil,gas}/* handles below outrank this by path length.
 	handle /wealth/* {
