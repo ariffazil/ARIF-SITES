@@ -218,6 +218,7 @@ footer a:hover{color:var(--accent-cyan)}
     <h4>Layers</h4>
     <label><input type="checkbox" id="lyrWells" checked> My wells</label>
     <label><input type="checkbox" id="lyrPlates" checked> Plate boundaries</label>
+    <label><input type="checkbox" id="lyrMotion"> Plate motion (schematic)</label>
     <label><input type="checkbox" id="lyrQuakes" checked> Earthquakes · 24 h</label>
     <div class="seg">
       <button id="baseGeo" class="on">GEOLOGY</button>
@@ -508,20 +509,122 @@ $("lyrQuakes").addEventListener("change",e=>{
   world.ringsData(e.target.checked?quakeRings:[]);
 });
 
-/* ── plate boundaries (PB2002) ── */
-let platePaths=[];
-fetch("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json")
- .then(r=>r.json()).then(j=>{
-   (j.features||[]).forEach(f=>{
-     const g=f.geometry||{};
-     if(g.type==="LineString")platePaths.push({coords:g.coordinates});
-     else if(g.type==="MultiLineString")g.coordinates.forEach(c=>platePaths.push({coords:c}));
-   });
-   if($("lyrPlates").checked)world.pathsData(platePaths);
-   pipe("pipePlates","ok","PLATES · PB2002 OK");
- }).catch(()=>pipe("pipePlates","bad","PLATES · FAIL"));
+/* ── plate boundaries (PB2002) — local pipe, type-coloured, no remote fetch ── */
+const PLATE_BOUNDARIES_URL="/earth/data/plates/PB2002_boundaries.geojson";
+const PLATE_PLATES_URL="/earth/data/plates/PB2002_plates.geojson";
+
+/* PB2002 honest classifier: source data has Type="subduction" or empty.
+   No fence-sitting. Grey = labelled by absence in source, not invented. */
+function plateColor(kind=""){
+  const k=String(kind||"").toLowerCase();
+  if(k.includes("subduction")||k.includes("convergent"))return ["#ff4d4d","rgba(255,77,77,0.55)"];
+  return ["#9ca3af","rgba(156,163,175,0.55)"]; // UNCLASSIFIED but visible — boundaries that PB2002 does not tag
+}
+function plateLabelOf(kind=""){
+  const k=String(kind||"").toLowerCase();
+  if(k.includes("subduction")||k.includes("convergent"))return "Subduction zone — oceanic crust descends beneath overriding plate";
+  return "Unclassified boundary — PB2002 source has no Type tag (ridge/transform/inferred-class not represented in this dataset)";
+}
+
+let platePaths=[],platePolygons=[],motionArcs=[];
+let plateStats={subduction:0,unclass:0};
+
+async function loadPlates(){
+  try{
+    const[r1,r2]=await Promise.all([
+      fetch(PLATE_BOUNDARIES_URL).then(r=>{if(!r.ok)throw new Error("plates_http_"+r.status);return r.json();}),
+      fetch(PLATE_PLATES_URL).then(r=>r.ok?r.json():{features:[]}).catch(()=>({features:[]}))
+    ]);
+    (r1.features||[]).forEach(f=>{
+      const g=f.geometry||{},p=f.properties||{};
+      const t=String(p.Type||"").toLowerCase();
+      if(t.includes("subduction"))plateStats.subduction++;else plateStats.unclass++;
+      const meta={kind:t,tag:t==="subduction"?"subduction":"unclassified",
+                  name:p.Name||"PB2002 boundary",
+                  source:p.Source||"PB2002 (Bird 2003)",
+                  plateA:p.PlateA||"?",plateB:p.PlateB||""};
+      const line=coords=>({coords:coords.map(([lng,lat])=>[lat,lng]),...meta});
+      if(g.type==="LineString")platePaths.push(line(g.coordinates));
+      else if(g.type==="MultiLineString")g.coordinates.forEach(c=>platePaths.push(line(c)));
+    });
+    (r2.features||[]).forEach(f=>{
+      const g=f.geometry||{},p=f.properties||{};
+      const ring=coords=>({coords:coords.map(([lng,lat])=>[lat,lng]),
+        name:p.PlateName||p.Code||"plate"});
+      if(g.type==="Polygon")platePolygons.push(ring(g.coordinates[0]));
+      else if(g.type==="MultiPolygon")g.coordinates.forEach(poly=>platePolygons.push(ring(poly[0])));
+    });
+
+    /* Plate boundaries — globe.gl pathsData, type-coloured */
+    world.pathsData([])
+      .pathPoints("coords").pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
+      .pathColor(d=>plateColor(d.tag)[1])
+      .pathStroke(1.7).pathAltitude(0.006).pathWrapLongitude()
+      .pathTransitionDuration(900)
+      .onPathClick(d=>{
+        if(!d)return;pauseSpin();
+        const[col,colGlow]=plateColor(d.tag);
+        panel.className="show";
+        panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+          <div class="src">Φ GEOX · plate boundary witness</div>
+          <h3><span class="swatch" style="background:${col}"></span>${esc(d.name)}</h3>
+          <p class="lith">${plateLabelOf(d.tag)}</p>
+          <div class="kv"><b>PLATE A</b><span>${esc(d.plateA)}</span></div>
+          <div class="kv"><b>PLATE B</b><span>${esc(d.plateB||"")}</span></div>
+          <div class="kv"><b>SOURCE</b><span>${esc(d.source)}</span></div>
+          <div class="kv"><b>VERDICT</b><span>PIPE-READ · BIRD 2003</span></div>
+          <div class="coords">PB2002_boundaries.geojson · arif-fazil.com/earth/data/plates · boundary attributes from source, not inferred</div>`;
+        wireClose();
+      });
+
+    /* Plate outlines — thin skeleton overlay (defaults on at low alpha) */
+    try{
+      world.polygonsData(platePolygons)
+        .polygonGeoJson(d=>3)
+        .polygonCapColor(()=>"rgba(255,255,255,0.04)")
+        .polygonSideColor(()=>"rgba(255,255,255,0.05)")
+        .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
+        .polygonAltitude(0.003);
+    }catch(e){ /* globe.gl v2.46 polygon API drift guard */ }
+
+    /* Plate motion — schematic arcs derived from boundary segments */
+    motionArcs=platePaths.filter(p=>p.coords.length>=4).map(p=>{
+      const mid=Math.floor(p.coords.length/2);
+      const nxt=Math.min(p.coords.length-1,mid+2);
+      return {
+        startLat:p.coords[mid][0],startLng:p.coords[mid][1],
+        endLat:p.coords[nxt][0],endLng:p.coords[nxt][1],
+        tag:p.tag
+      };
+    });
+    world.arcsData([])
+      .arcStartLat("startLat").arcStartLng("startLng")
+      .arcEndLat("endLat").arcEndLng("endLng")
+      .arcColor(d=>plateColor(d.tag)[1])
+      .arcStroke(0.45)
+      .arcAltitude(0.012)
+      .arcDashLength(0.14)
+      .arcDashGap(0.7)
+      .arcDashAnimateTime(2000)
+      .arcsTransitionDuration(1200);
+
+    /* Apply current toggle state */
+    if($("lyrPlates").checked)world.pathsData(platePaths);
+    if($("lyrMotion").checked)world.arcsData(motionArcs);
+
+    pipe("pipePlates","ok",`PLATES · PB2002 OK · ${plateStats.subduction} SUBDUCT · ${plateStats.unclass} UNCLASS · ${platePaths.length} SEG`);
+  }catch(err){
+    console.error("Plate pipe failed",err);
+    pipe("pipePlates","bad","PLATES · FAIL");
+  }
+}
+loadPlates();
+
 $("lyrPlates").addEventListener("change",e=>{
   world.pathsData(e.target.checked?platePaths:[]);
+});
+$("lyrMotion").addEventListener("change",e=>{
+  world.arcsData(e.target.checked?motionArcs:[]);
 });
 
 /* ── macrostrat live stats ── */
