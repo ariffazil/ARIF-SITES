@@ -529,6 +529,10 @@ function plateLabelOf(kind=""){
 let platePaths=[],platePolygons=[],motionArcs=[];
 let plateStats={subduction:0,unclass:0};
 
+/* Click coordination: clicking a plate boundary fires BOTH onPathClick and onGlobeClick
+   in globe.gl — without this flag, the globe's macrostrat-query overwrites the witness panel. */
+let lastPlateClickAt=0;
+
 async function loadPlates(){
   try{
     const[r1,r2]=await Promise.all([
@@ -563,6 +567,7 @@ async function loadPlates(){
       .pathTransitionDuration(900)
       .onPathClick(d=>{
         if(!d)return;pauseSpin();
+        lastPlateClickAt=Date.now();
         const[col,colGlow]=plateColor(d.tag);
         panel.className="show";
         panel.innerHTML=`<button class="close" aria-label="close">✕</button>
@@ -744,6 +749,9 @@ const panel=$("unitPanel");
 let lock=false;
 async function onRockClick({lat,lng}){
   if(lock)return;lock=true;pauseSpin();
+  // Honor plate-boundary click — globe.gl fires onGlobeClick after onPathClick; back off
+  // so the plate witness stays on screen instead of being overwritten by a macrostrat query.
+  if(Date.now()-lastPlateClickAt<800){lock=false;return;}
   panel.className="show";
   panel.innerHTML=`<button class="close" aria-label="close">✕</button>
     <div class="src">geox.macrostrat · querying pipe…</div>
