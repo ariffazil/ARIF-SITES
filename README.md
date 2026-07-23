@@ -1,9 +1,7 @@
 <!-- SOT-MANIFEST
-owner: Arif
-last_verified: 2026-07-19
-valid_from: 2026-07-19
-valid_until: 2026-08-19
-confidence: high
+federation_release: v2026.07.23
+last_verified: 2026-07-23T22:00Z
+live_commit: 58b0d77
 scope: /root/arif-sites
 epistemic_status: CLAIM
 truth_rule: live git push + Cloudflare deploy beat any static count in prose
