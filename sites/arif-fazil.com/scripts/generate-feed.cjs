@@ -34,7 +34,7 @@ function pickMakcikPieces(essays) {
   // 2026-07-21 source-of-truth rule). Medium-only BM pieces (e.g. S7-BM
   // philosophy essays) are BM-authored but NOT part of the /world/makcikgpt/
   // canonical surface — they live on Medium and are out of scope here.
-  // As of 2026-07-21 this yields exactly 14 entries (M1#1-6, M2#1-3, M3#1-2,
+  // As of 2026-07-23 this yields exactly 16 entries (M1#1-6, M2#1-5, M3#1-2,
   // M4#1-2, M5#1) — all with dest.type === "onsite" and lang === "bm".
   return essays
     .filter((e) => e.lang === "bm" && e.dest && e.dest.type === "onsite")

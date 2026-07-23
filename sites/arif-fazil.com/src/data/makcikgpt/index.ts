@@ -14,8 +14,12 @@ import aiJohorRakyat2026 from './ai-johor-rakyat-2026';
 import petronasAtmKerajaan from './petronas-atm-kerajaan';
 import petronasVisiMisi from './petronas-visi-misi';
 
+import searahKekalMilikPenuh from './searah-kekal-milik-penuh';
+import searahSenyumMediaSuap from './searah-senyum-media-suap';
 import daily_2026_07_01 from './daily-2026-07-01';
 export const makcikArticleModules: ArticleContent[] = [
+  searahSenyumMediaSuap,
+  searahKekalMilikPenuh,
   petronasVisiMisi,
   petronasAtmKerajaan,
   aiJohorRakyat2026,
@@ -33,6 +37,28 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'searah-senyum-media-suap',
+    title: 'Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy',
+    subtitle: 'ATMA Studio dibayar explain deal. Bernama copy press release. Tapi badan CEO PETRONAS cerita benda lain. Makcik tanya: siapa sebenarnya yang senyum — dan siapa yang bayar?',
+    date: '2026-07-22',
+    domain: 'MAKCIKGPT × SEARAH × MEDIA',
+    language: 'ms',
+    excerpt: 'Body language forensik: Taufik senyum Duchenne genuine — lebih gembira dari Descalzi. Folder kuning digenggam macam trofi. ATMA Studio buat 15-slide explainer — tapi bio depa bendera "Collaboration/Sponsorship." Empat outlet Malaysia senyap pasal London jurisdiction, PETROS dispute, Federal Court. Siapa bayar semua ni?',
+    tags: ['searah', 'petronas', 'eni', 'body-language', 'taufik', 'descalzi', 'atma-studio', 'paid-media', 'threads', 'influencer', 'rightsizing', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
+  {
+    slug: 'searah-kekal-milik-penuh',
+    title: '"Kekal Milik Penuh Malaysia" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy',
+    subtitle: 'PETRONAS kata SEARAH tak ubah pemilikan. Tapi 5 PSC dah pindah ke syarikat London. Staff kena rightsizing. ATMA Studio publish 15 slide Threads — siapa suruh? Eni sendiri kata ini "satellite model" — exit strategy untuk IPO.',
+    date: '2026-07-22',
+    domain: 'MAKCIKGPT × SEARAH',
+    language: 'ms',
+    excerpt: 'PETRONAS keluar kenyataan "kekal milik penuh Malaysia." Tapi realiti: 5 PSC dipindah ke syarikat London, 50% Eni, model satelit = exit strategy IPO. Staff kena rightsizing sementara 15 slide PR keluar di Threads. WoodMac: SEARAH akan atasi PETRONAS menjelang 2030. Makcik bongkar: siapa bayar PR ni?',
+    tags: ['searah', 'petronas', 'eni', 'rightsizing', 'london', 'satellite-model', 'pr', 'threads', 'atmastudio', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'petronas-visi-misi',
     title: 'Ada Apa Pada Visi dan Misi Hang?',

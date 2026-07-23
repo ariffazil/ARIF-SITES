@@ -14,7 +14,7 @@
  *   - essays.json → page (React) + feed.xml + sitemap.xml + llms.{txt,json} + page.json
  *
  * Filter rule (canonical, 2026-07-21):
- *   exactly 14 entries where lang === "bm" && dest.type === "onsite"
+ *   exactly 16 entries where lang === "bm" && dest.type === "onsite"
  *
  * Run from site root:  node scripts/generate-discovery.cjs
  * Output:              public/{sitemap.xml, llms.txt, llms.json, page.json}
@@ -359,9 +359,9 @@ function writeIfChanged(filePath, content) {
 function main() {
   const essays = loadEssays();
   const pieces = pickMakcikPieces(essays);
-  if (pieces.length !== 14) {
+  if (pieces.length !== 16) {
     console.error(
-      `ERROR: expected 14 bm+onsite entries, found ${pieces.length}. Source of truth drifted.`,
+      `ERROR: expected 16 bm+onsite entries, found ${pieces.length}. Source of truth drifted.`,
     );
     process.exit(1);
   }

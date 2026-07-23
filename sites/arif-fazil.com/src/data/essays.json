@@ -950,6 +950,52 @@
     "seal": "999"
   },
   {
+    "id": "m2-4",
+    "title": "\"Kekal Milik Penuh Malaysia\" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy",
+    "date": "2026-07-22",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 4
+    },
+    "tags": [
+      "searah",
+      "petronas",
+      "eni",
+      "rightsizing",
+      "london",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/searah-kekal-milik-penuh"
+    },
+    "seal": "999"
+  },
+  {
+    "id": "m2-5",
+    "title": "Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy",
+    "date": "2026-07-22",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 5
+    },
+    "tags": [
+      "searah",
+      "petronas",
+      "eni",
+      "media",
+      "atma-studio",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/searah-senyum-media-suap"
+    },
+    "seal": "999"
+  },
+  {
     "id": "m3-1",
     "title": "ILMU 'Sovereign AI' Konon — Tapi Bila DiAudit, Menangis",
     "date": "2026-07-01",
