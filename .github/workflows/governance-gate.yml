@@ -1,0 +1,45 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# arifOS Federation — Governance Gate (arif-sites)
+# Constitutional audit on every push to main
+# DITEMPA BUKAN DIBERI
+# ═══════════════════════════════════════════════════════════════════════════
+
+name: "🛡️ Federation Governance Gate"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: governance-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  governance-audit:
+    name: "Constitutional Audit"
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v7
+      - name: RSI Scorecard
+        run: |
+          echo "=== arif-sites RSI SCORECARD ==="
+          SCORE=0
+          for f in README.md AGENTS.md FEDERATION.md LICENSE; do
+            if [ -f "$f" ]; then SCORE=$((SCORE+2)); echo "  ✅ $f (+2)"; else echo "  ❌ $f missing (0)"; fi
+          done
+          if grep -q "role: PUBLIC_SURFACE" FEDERATION.md 2>/dev/null; then
+            SCORE=$((SCORE+4)); echo "  ✅ role: PUBLIC_SURFACE (+4)"
+          fi
+          if grep -q "layer: L4" FEDERATION.md 2>/dev/null; then
+            SCORE=$((SCORE+4)); echo "  ✅ layer: L4 (+4)"
+          fi
+          MAX=16
+          echo "  RSI Score: $SCORE / $MAX"
+          if [ "$SCORE" -ge 12 ]; then echo "  VERDICT: GOVERNED"; else echo "  VERDICT: DEGRADED"; exit 1; fi
