@@ -33,9 +33,10 @@ jobs:
         run: |
           HITS=$(git diff origin/main...HEAD | grep '^+' | grep -E "localhost:808[0-9]|localhost:1808[0-9]|localhost:707[0-9]|localhost:300[0-9]" | grep -v "^++\|#\|//" || true)
           if [[ -n "$HITS" ]]; then
-            echo "::warning::Live MCP references in static build — review required"
+            echo "::error::BLOCKED: Live MCP references in static build — arif-sites is DISPLAY_ONLY"
+            exit 1
           fi
-          echo "✅ Q1 PASS — MCP isolation checked"
+          echo "✅ Q1 PASS — MCP isolation clean"
 
   q2-federation:
     name: "Q2 — Federation Map"
