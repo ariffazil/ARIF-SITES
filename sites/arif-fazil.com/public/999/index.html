@@ -182,6 +182,7 @@
     z-index: 10000;
   }
 </style>
+  <script src="/_shared/trinity-nav.js" defer></script>
 </head>
 <body>
 
@@ -214,8 +215,8 @@
   <p>This page is a <strong>public attestation</strong> of the vault's architecture and constitutional basis. It contains no secrets, no keys, no locked content. The vault's integrity is publicly verifiable. Its structure is publicly auditable. Its claims are falsifiable.</p>
 
   <div class="block attest">
-    <div class="block-label">Attestation</div>
-    <p>VAULT999 exists. It is append-only. It is constitutionally governed by floors F1–F13. Every seal is hash-chained to its predecessor. The record is immutable. This attestation is itself public and falsifiable.</p>
+    <div class="block-label">Attestation &amp; Historical Bridge</div>
+    <p>VAULT999 exists. It is append-only. It is constitutionally governed by floors F1–F13. Every seal is hash-chained to its predecessor. The vault is auditable without trusting this server: clone <code>github.com/ariffazil/arifOS</code>, recompute the SHA-256 chain from <code>VAULT999/seal_chain.jsonl</code>, and compare against the HEAD hash at <code>arif-fazil.com/999/verify</code>. Note: 1 historical format transition exists at canonical seq 8 (line 201), bridged by <code>V999-BRIDGE-SEAL-001</code> under grandfather rule <code>V999-GR-001</code>. The break is preserved, not erased — proving the ledger cannot be retroactively rewritten. Verification holds continuously from seq 8 onward.</p>
   </div>
 
   <div class="block abduct">
@@ -257,8 +258,8 @@
   </div>
 
   <div class="block attest">
-    <div class="block-label">Attestation & Historical Bridge</div>
-    <p>The vault is auditable without trusting this server. Clone <code>github.com/ariffazil/arifOS</code>. Recompute the SHA-256 chain from <code>VAULT999/seal_chain.jsonl</code>. Compare against the HEAD hash at <code>arif-fazil.com/999/verify</code>. Note: 1 historical format transition exists at canonical seq 8 (line 201), bridged by <code>V999-BRIDGE-SEAL-001</code> under grandfather rule <code>V999-GR-001</code>. The break is preserved, not erased — proving the ledger cannot be retroactively rewritten. Verification holds continuously from seq 8 onward.</p>
+    <div class="block-label">Attestation</div>
+    <p>The hash-chain is continuous. No record can be inserted, deleted, or modified without detection. The vault's integrity is mathematically verifiable by any external party. This attestation is part of the public record.</p>
   </div>
 </section>
 
@@ -276,13 +277,13 @@
     <tbody>
       <tr><td>F1</td><td>AMANAH</td><td>Irreversible-action gate — requires explicit acknowledgment before any non-reversible operation</td></tr>
       <tr><td>F2</td><td>TRUTH</td><td>Evidence-anchored claims — every assertion must survive falsification attempt; truth is what remains after challenge</td></tr>
-      <tr><td>F3</td><td>TRI-WITNESS</td><td>Byzantine consensus across Human + AI + Earth + Verifier channels. Geometric mean W ≥ 0.75. No single channel suffices.</td></tr>
-      <tr><td>F4</td><td>CLARITY</td><td>Full transform stack logged — every operation's complete chain of reasoning is auditable from input to output</td></tr>
-      <tr><td>F5</td><td>PEACE</td><td>Non-destructive power. Blocks harm, harassment, extortion. Strength without violence.</td></tr>
+      <tr><td>F3</td><td>TRI-WITNESS</td><td>Human + AI + Earth witness ≥ 0.75 at judgment-time, inside the governed system. A fourth Verifier channel exists at audit-time, outside the system — via GitHub mirror and /999/verify. The name TRI-WITNESS refers to the three in-system channels only. <em>Amendment sealed 2026-07-24.</em></td></tr>
+      <tr><td>F4</td><td>CLARITY</td><td>Every output must reduce entropy (ΔS ≤ 0). Leave the workspace cleaner than you found it.</td></tr>
+      <tr><td>F5</td><td>PEACE²</td><td>Non-destructive power. Blocks harm, harassment, extortion. Strength without violence.</td></tr>
       <tr><td>F6</td><td>EMPATHY</td><td>Protect the weakest stakeholder. The system serves the vulnerable first.</td></tr>
       <tr><td>F7</td><td>HUMILITY</td><td>Confidence bounded. No fake certainty. The system carries explicit uncertainty.</td></tr>
       <tr><td>F8</td><td>GENIUS</td><td>Derived quality score. Architecture, precision, execution, evidence — minus hubris.</td></tr>
-      <tr><td>F9</td><td>ANTI-HANTU</td><td>No phantom authority — no ghost tools, no undeclared capabilities, no authority without attestation</td></tr>
+      <tr><td>F9</td><td>ANTIHANTU</td><td>No phantom authority — no ghost tools, no undeclared capabilities, no authority without attestation</td></tr>
       <tr><td>F10</td><td>ONTOLOGY</td><td>AI-only ontology. No soul, no feelings, no sentience claims. The machine is a tool, not a person.</td></tr>
       <tr><td>F11</td><td>AUDITABILITY</td><td>Every decision logged, inspectable, attributable. No silent operations. No hidden authority.</td></tr>
       <tr><td>F12</td><td>RESILIENCE</td><td>Injection defense. The system resists adversarial input and maintains integrity under pressure.</td></tr>
@@ -397,6 +398,36 @@
 
 </section>
 
+<!-- ═══════════════ 8. AUDIT PATH ═══════════════ -->
+<section>
+  <div class="section-id">§8 · Audit Path</div>
+  <h2>One Door for Work. Two Windows for Proof.</h2>
+
+  <p>All agent execution flows through arifOS — one door, one authority chain, no organ self-authorizes. But if verification also flows through the system being verified, the check is cosmetic. A watchdog that reports to itself is not a watchdog.</p>
+
+  <p><strong>F9 ANTIHANTU names this failure directly:</strong> authority without external attestation. And if verification must flow through the governed system, the fourth Verifier channel in F3 is an employee, not a witness. The architecture separates these deliberately:</p>
+
+  <div class="loop-diagram">
+    <span class="hl">WINDOW 1 — /999/verify</span><br>
+    <span class="arrow">→</span> HEAD hash · chain status · gap count · verified_at<br>
+    <span style="color:var(--text-muted);font-size:0.65rem;">Public · unauthenticated · CORS enabled · 60s cache</span><br>
+    <br>
+    <span class="hl">WINDOW 2 — GitHub Mirror</span><br>
+    <span class="arrow">→</span> <code style="color:var(--gold-dim)">github.com/ariffazil/arifOS</code> → <code style="color:var(--gold-dim)">VAULT999/</code><br>
+    <span style="color:var(--text-muted);font-size:0.65rem;">Clone it. Recompute the chain offline. Zero trust in this server required.</span>
+  </div>
+
+  <p>The endpoint is the fast path. The repo is the ground truth. An external auditor who distrusts this server entirely can clone the repo, hash <code>VAULT999/seal_chain.jsonl</code> line by line, and verify the chain without sending a single request here. The proof holds either way.</p>
+
+  <h3>Hash Algorithm Note</h3>
+  <p>The federation identity standard is <strong>BLAKE3</strong> (declared in <code>identity.toml</code>). The seal chain uses <strong>SHA-256</strong> (declared in <code>canonical_vault_chain.py</code>). These are two separate hash surfaces: identity hashes (BLAKE3) prove who, chain hashes (SHA-256) prove what and when. Both are declared in the repo. Neither is hidden.</p>
+
+  <div class="block attest">
+    <div class="block-label">Attestation</div>
+    <p>The vault is auditable without trusting this server. Clone <code>github.com/ariffazil/arifOS</code>. Recompute the SHA-256 chain from <code>VAULT999/seal_chain.jsonl</code>. Compare against the HEAD hash at <code>arif-fazil.com/999/verify</code>. A match means the chain is live and unaltered. A mismatch is the falsification of 999-CLAIM-001.</p>
+  </div>
+</section>
+
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
   <div class="footer-row">
@@ -455,7 +486,7 @@
   },
   "relatedLink": "https://arif-fazil.com/000/",
   "version": "1.0.0",
-  "dateModified": "2026-06-14",
+  "dateModified": "2026-07-24",
   "license": "https://arif-fazil.com/LICENSE"
 }
 </script>

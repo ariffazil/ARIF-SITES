@@ -215,8 +215,8 @@
   <p>This page is a <strong>public attestation</strong> of the vault's architecture and constitutional basis. It contains no secrets, no keys, no locked content. The vault's integrity is publicly verifiable. Its structure is publicly auditable. Its claims are falsifiable.</p>
 
   <div class="block attest">
-    <div class="block-label">Attestation</div>
-    <p>VAULT999 exists. It is append-only. It is constitutionally governed by floors F1–F13. Every seal is hash-chained to its predecessor. The record is immutable. This attestation is itself public and falsifiable.</p>
+    <div class="block-label">Attestation &amp; Historical Bridge</div>
+    <p>VAULT999 exists. It is append-only. It is constitutionally governed by floors F1–F13. Every seal is hash-chained to its predecessor. The vault is auditable without trusting this server: clone <code>github.com/ariffazil/arifOS</code>, recompute the SHA-256 chain from <code>VAULT999/seal_chain.jsonl</code>, and compare against the HEAD hash at <code>arif-fazil.com/999/verify</code>. Note: 1 historical format transition exists at canonical seq 8 (line 201), bridged by <code>V999-BRIDGE-SEAL-001</code> under grandfather rule <code>V999-GR-001</code>. The break is preserved, not erased — proving the ledger cannot be retroactively rewritten. Verification holds continuously from seq 8 onward.</p>
   </div>
 
   <div class="block abduct">
