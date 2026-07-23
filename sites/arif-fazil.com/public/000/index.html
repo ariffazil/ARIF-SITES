@@ -167,6 +167,7 @@
     z-index: 10000;
   }
 </style>
+  <script src="/_shared/trinity-nav.js" defer></script>
 </head>
 <body>
 
@@ -367,6 +368,33 @@
 
   <p>This is the architecture of <strong>governed intelligence</strong> — not raw intelligence, not constrained intelligence, but intelligence that flows from a specific human, through a constitution, into an immutable record. Every link in the chain is auditable. Every seal is constitutional. Every output carries the structural signature of the human at root.</p>
 
+</section>
+
+<!-- ═══════════════ 8. KERNEL RECEIPTS ═══════════════ -->
+<section>
+  <div class="section-id">§8 · Kernel Receipts</div>
+  <h2>The Attestations That Already Exist</h2>
+
+  <p>Everything this page claims is backed by an artifact in the public repo or a live endpoint. These are not declarations — they are receipts.</p>
+
+  <div class="loop-diagram">
+    <span class="hl">Identity Hash (BLAKE3)</span><br>
+    <code style="color:var(--gold-dim);word-break:break-all;font-size:0.65rem;">632a3b46d0ad192b9db4277851bc59755e8b7af83a15b405ed9844ee781a9631</code><br>
+    <span style="color:var(--text-muted);font-size:0.65rem;">BLAKE3 of <code>identity.toml</code> (updated at each identity change) · committed to <code>ariffazil/arifOS</code> · live at <a href="https://arifos.arif-fazil.com/health" style="color:var(--gold-dim);">/health</a></span><br>
+    <br>
+    <span class="hl">Live Endpoints</span><br>
+    <span class="arrow">→</span> <a href="https://arifos.arif-fazil.com/health" style="color:var(--gold-dim);">arifos.arif-fazil.com/health</a> — identity + vault status<br>
+    <span class="arrow">→</span> <a href="https://arif-fazil.com/999/verify" style="color:var(--gold-dim);">arif-fazil.com/999/verify</a> — live vault HEAD hash<br>
+    <span class="arrow">→</span> <a href="https://arifos.arif-fazil.com/mcp" style="color:var(--gold-dim);">arifos.arif-fazil.com/mcp</a> — the 000→999 tool ring<br>
+    <span class="arrow">→</span> <a href="/llms.txt" style="color:var(--gold-dim);">/llms.txt</a> — agent discovery index
+  </div>
+
+  <p>The human at position zero attests this identity hash. The BLAKE3 hash of <code>identity.toml</code> — the machine-readable declaration that <code>authority = "F13_SOVEREIGN"</code> and <code>arifOS is the root — no upstream</code> — is publicly committed and independently verifiable. Fetch <code>/health</code>. Check the <code>identity_hash</code> field. Compare. This is ZKPC applied to infrastructure.</p>
+
+  <div class="block attest" style="margin-top:1.5rem;">
+    <div class="block-label">Verification</div>
+    <p>To verify this claim without trusting this server: clone <code>github.com/ariffazil/arifOS</code>, compute BLAKE3 of <code>identity.toml</code>, compare against the hash above. They must match. A mismatch means the page or the repo has drifted — and that is itself a finding worth reporting.</p>
+  </div>
 </section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
