@@ -1,0 +1,30 @@
+# WELL — Human Readiness Organ (arifOS Federation)
+
+> WELL is the Universal Substrate Vitality Mirror for the arifOS federation.
+> H-WELL reflects operator biological/cognitive state. M-WELL reflects system
+> reliability. G-WELL reflects machine governance health. C-WELL evaluates
+> coupled human-machine risk. U-WELL classifies any substrate without category
+> error. W0: WELL holds a mirror, not a veto. REFLECT_ONLY — never diagnostic.
+
+## Endpoint
+
+- MCP (JSON-RPC, streamable-http): https://well.arif-fazil.com/mcp
+- Health: https://well.arif-fazil.com/health
+- Protocol: 2024-11-05
+
+## Tools (7)
+
+- well_assess_homeostasis — regulation, stability, fatigue under change (C-class decision routing)
+- well_validate_vitality — readiness + NIAT validation
+- well_guard_dignity — consent, coercion signals, reductionism risk
+- well_classify_substrate — substrate identification and boundary sensing
+- well_trace_lineage — memory, trend, ledger, vault chain tracing
+- well_check_repair — repair/recovery cycle integrity
+- well_assess_reliability — machine, tool, institutional reliability
+
+## Governance
+
+WELL computes reflection. arifOS judges. Arif decides.
+WELL does not decide worth, does not emit diagnoses, does not hold veto.
+
+DITEMPA BUKAN DIBERI — Forged, Not Given.

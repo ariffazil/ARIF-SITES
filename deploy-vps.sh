@@ -43,6 +43,13 @@ cp $SITES_ROOT/arif-fazil.com/public/makcikgpt-md/*.md $HTML_ROOT/arif/wealth/ma
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
 rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
 
+# mcp.arif-fazil.com — gateway landing + proof surface (no --delete: .well-known live assets preserved)
+rsync -avz $SITES_ROOT/mcp.arif-fazil.com/ $HTML_ROOT/mcp/
+
+# well.arif-fazil.com — llms.txt discovery file
+mkdir -p $HTML_ROOT/well
+rsync -avz $SITES_ROOT/well.arif-fazil.com/ $HTML_ROOT/well/
+
 # /000/ serves static Genesis page, do not overwrite with root index.html
 
 # arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
