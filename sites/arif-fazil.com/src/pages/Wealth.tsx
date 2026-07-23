@@ -321,8 +321,8 @@ export function Wealth() {
               </p>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
                 <AckFloor id="F1"  name="AMANAH"      color="#FF4500" desc="Reversible first. No sealed action without an escape path." />
-                <AckFloor id="F2"  name="TRUTH"       color="#00FF41" desc="Evidence-gated. Every claim has a band — CLAIM, PLAUSIBLE, ESTIMATE, UNKNOWN." />
-                <AckFloor id="F7"  name="STEWARDSHIP" color="#A855F7" desc="HARAM patterns blocked. We do not act on what the sovereign would not endorse." />
+                <AckFloor id="F2"  name="TRUTH"       color="#00FF41" desc="Evidence-gated. Every claim has a band — OBS · DER · INT · SPEC → CLAIM · PLAUSIBLE · ESTIMATE · UNKNOWN." />
+                <AckFloor id="F7"  name="HUMILITY"    color="#A855F7" desc="No fake certainty. Ω₀ ∈ [0.03, 0.05]. Confidence cap = 1 − Ω₀ ∈ [0.95, 0.97]." />
                 <AckFloor id="F9"  name="ANTI-CASCADE" color="#3B82F6" desc="No runaway loops. The system halts and surfaces when its own confidence drops." />
                 <AckFloor id="F13" name="SOVEREIGN"   color="#D4A853" desc="Human veto is final. You can SEAL, HOLD, or VOID any output of this system." />
               </ul>
