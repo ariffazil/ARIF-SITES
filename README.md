@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.23
-last_verified: 2026-07-23T22:00Z
+federation_release: v2026.07.24
+last_verified: 2026-07-24T08:00Z
 live_commit: 58b0d77
 scope: /root/arif-sites
 epistemic_status: CLAIM
@@ -99,7 +99,21 @@ scripts/deploy-site.sh <site-dir>
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | Human Readiness | 18083 |
 | **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | Public Surfaces | 443 |
 
-> **SOT:** 2026-07-19 — live surfaces match README claims
+## Federation Separation of Powers
+
+| Layer | Role | Can | Cannot |
+|-------|------|-----|--------|
+| **ARIF** | Sovereign | Veto, approve, decide | Be overridden |
+| **AAA** | State / Cockpit | Display, route, queue, register | Judge, execute, seal |
+| **arifOS** | Judge | Issue SEAL/HOLD/VOID/SABAR | Execute mutations |
+| **Domain Organs** | Witnesses | Compute and reflect evidence | Decide alone |
+| **A-FORGE** | Executor | Build, deploy, mutate | Self-authorize |
+| **arif-sites** | Public Surface | Host static surfaces, route domains | Adjudicate, compute |
+| **VAULT999** | Ledger | Record immutable seals | Edit or delete history |
+
+> AAA routes and displays. arifOS judges. Domain organs witness. A-FORGE executes. arif-sites hosts the surface. VAULT999 records. ARIF decides.
+
+> **SOT:** 2026-07-24 — live surfaces match README claims
 > **F13 authority:** F1-F13 floors, 888_JUDGE, and VAULT999 in `ariffazil/arifos`.
 
 ## 📄 Contributing
