@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="ORGAN" data-organ="wealth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX Markets — Currency Intelligence · WEALTH</title>
+<meta name="description" content="Sovereign FX market intelligence. MYR/USD, SGD, GBP crosses. Evidence-gated, human-decided. Part of the arifOS constellation.">
+<meta property="og:title" content="FX Markets — Currency Intelligence · WEALTH">
+<meta property="og:description" content="MYR crosses, DXY, ASEAN basket. Physics over narrative.">
+<link rel="canonical" href="https://wealth.arif-fazil.com/fx/">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="../wealth.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  .fx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .fx-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .fx-card h3 { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+  .fx-card .rate { font-size: 2rem; font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; }
+  .fx-card .change { font-size: 0.85rem; margin-top: 0.25rem; }
+  .up { color: var(--green); } .down { color: var(--red); }
+  .context-panel { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+  .context-panel h3 { color: var(--cyan); font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: none; }
+  .label { color: var(--text-dim); font-size: 0.85rem; }
+  .value { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+  .nav-tabs { display: flex; gap: 1.5rem; margin: 2rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+  .nav-tabs a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .nav-tabs a.active, .nav-tabs a:hover { color: var(--gold); }
+  table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  th { text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); }
+  td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+  tr:hover td { background: var(--surface); }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="site-header">
+    <a href="/" class="logo">WEALTH<sup>FX</sup></a>
+    <nav class="header-nav">
+      <a href="/">Overview</a>
+      <a href="/gold/">Gold</a>
+      <a href="/oil/">Oil</a>
+      <a href="/fx/" style="color:var(--gold)">FX</a>
+      <a href="/health/">Health</a>
+    </nav>
+  </header>
+
+  <section style="margin: 2rem 0;">
+    <h1 class="hero-headline" style="font-size:2.8rem">FX Markets</h1>
+    <p style="color:var(--text-dim);font-size:1.1rem;max-width:600px;margin-top:0.5rem">
+      Malaysian Ringgit crosses, DXY, and ASEAN basket. Evidence from WEALTH organ capital_market(mode=fx).
+    </p>
+  </section>
+
+  <div class="nav-tabs">
+    <a href="#" class="active">MYR Crosses</a>
+    <a href="#">DXY</a>
+    <a href="#">ASEAN</a>
+    <a href="#">G10</a>
+  </div>
+
+  <div class="fx-grid">
+    <div class="fx-card">
+      <h3>USD / MYR</h3>
+      <div class="rate">4.6720</div>
+      <div class="change down">▼ -0.0085 (-0.18%)</div>
+    </div>
+    <div class="fx-card">
+      <h3>SGD / MYR</h3>
+      <div class="rate">3.4890</div>
+      <div class="change up">▲ +0.0042 (+0.12%)</div>
+    </div>
+    <div class="fx-card">
+      <h3>GBP / MYR</h3>
+      <div class="rate">5.9340</div>
+      <div class="change down">▼ -0.0120 (-0.20%)</div>
+    </div>
+    <div class="fx-card">
+      <h3>DXY Index</h3>
+      <div class="rate">104.82</div>
+      <div class="change up">▲ +0.15 (+0.14%)</div>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th>Pair</th><th>Rate</th><th>Change</th><th>30D Range</th><th>Signal</th></tr></thead>
+    <tbody>
+      <tr><td>USD/MYR</td><td>4.6720</td><td style="color:var(--green)">-0.18%</td><td>4.65–4.72</td><td style="color:var(--amber)">WATCH</td></tr>
+      <tr><td>SGD/MYR</td><td>3.4890</td><td style="color:var(--red)">+0.12%</td><td>3.47–3.50</td><td>STABLE</td></tr>
+      <tr><td>GBP/MYR</td><td>5.9340</td><td style="color:var(--green)">-0.20%</td><td>5.90–5.98</td><td>STABLE</td></tr>
+      <tr><td>EUR/MYR</td><td>5.0820</td><td style="color:var(--green)">-0.08%</td><td>5.05–5.12</td><td>STABLE</td></tr>
+      <tr><td>JPY/MYR (100)</td><td>3.1040</td><td style="color:var(--green)">-0.32%</td><td>3.08–3.15</td><td style="color:var(--green)">BUY</td></tr>
+      <tr><td>AUD/MYR</td><td>3.0580</td><td style="color:var(--red)">+0.25%</td><td>3.02–3.08</td><td>STABLE</td></tr>
+    </tbody>
+  </table>
+
+  <div class="context-panel">
+    <h3>🔍 BNM / Macro Context</h3>
+    <div class="row"><span class="label">OPR (Overnight Policy Rate)</span><span class="value">3.00%</span></div>
+    <div class="row"><span class="label">BNM Next Meeting</span><span class="value">10 Sep 2026</span></div>
+    <div class="row"><span class="label">Fed Funds Rate</span><span class="value">4.25–4.50%</span></div>
+    <div class="row"><span class="label">MY Inflation (CPI)</span><span class="value">1.9% YoY</span></div>
+    <div class="row"><span class="label">Foreign Reserves</span><span class="value">$115.2B</span></div>
+    <div class="row"><span class="label">Ringgit Outlook</span><span class="value" style="color:var(--green)">SUPPORTIVE — narrow rate differential</span></div>
+  </div>
+
+  <footer style="margin:4rem 0 2rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--text-dim);font-size:0.8rem">
+    <span>WEALTH · arifOS Federation</span>
+    <span>DITEMPA BUKAN DIBERI</span>
+  </footer>
+
+</div>
+<script src="/_shared/trinity-nav.js" defer></script>
+</body>
+</html>

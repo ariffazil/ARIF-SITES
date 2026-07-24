@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="ORGAN" data-organ="wealth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oil &amp; Gas — Brent Crude Intelligence · WEALTH</title>
+<meta name="description" content="Sovereign oil &amp; gas market intelligence. Brent crude, WTI, gas benchmarks. Evidence-gated, human-decided. Part of the arifOS constellation.">
+<meta property="og:title" content="Oil &amp; Gas — Brent Crude Intelligence · WEALTH">
+<meta property="og:description" content="Brent, WTI, natural gas. Physics over narrative.">
+<link rel="canonical" href="https://wealth.arif-fazil.com/oil/">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="../wealth.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Page-specific overrides — everything else from wealth.css */
+  .metric-hero { font-size: 3.2rem; font-weight: 600; color: var(--text); }
+  .oil-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+  .oil-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+  .oil-card h3 { font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem; }
+  .oil-card .price { font-size: 2rem; font-weight: 600; color: var(--text); font-family: 'IBM Plex Mono', monospace; }
+  .oil-card .change { font-size: 0.85rem; margin-top: 0.25rem; }
+  .up { color: var(--green); } .down { color: var(--red); }
+  .context-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin: 2rem 0; }
+  .context-box h3 { color: var(--cyan); font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .signal-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .signal-row:last-child { border-bottom: none; }
+  .signal-label { color: var(--text-dim); font-size: 0.85rem; }
+  .signal-value { font-family: 'IBM Plex Mono', monospace; font-weight: 500; }
+  .nav-tabs { display: flex; gap: 1.5rem; margin: 2rem 0 1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.75rem; }
+  .nav-tabs a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .nav-tabs a.active, .nav-tabs a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header class="site-header">
+    <a href="/" class="logo">WEALTH<sup>OIL</sup></a>
+    <nav class="header-nav">
+      <a href="/">Overview</a>
+      <a href="/gold/">Gold</a>
+      <a href="/oil/" style="color:var(--gold)">Oil</a>
+      <a href="/fx/">FX</a>
+      <a href="/health/">Health</a>
+    </nav>
+  </header>
+
+  <section style="margin: 2rem 0;">
+    <h1 class="hero-headline" style="font-size:2.8rem">Oil &amp; Gas</h1>
+    <p style="color:var(--text-dim);font-size:1.1rem;max-width:600px;margin-top:0.5rem">
+      Brent crude, WTI, and natural gas benchmarks. Physics governs supply — economics governs price. Evidence from WEALTH organ.
+    </p>
+  </section>
+
+  <div class="nav-tabs">
+    <a href="#" class="active">Brent Crude</a>
+    <a href="#">WTI</a>
+    <a href="#">Natural Gas</a>
+    <a href="#">Spread</a>
+  </div>
+
+  <div class="oil-grid">
+    <div class="oil-card">
+      <h3>Brent Crude</h3>
+      <div class="price">$84.32</div>
+      <div class="change up">▲ +1.24 (1.49%)</div>
+      <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">ICE · Front Month</div>
+    </div>
+    <div class="oil-card">
+      <h3>WTI</h3>
+      <div class="price">$80.15</div>
+      <div class="change up">▲ +0.89 (1.12%)</div>
+      <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">NYMEX · Front Month</div>
+    </div>
+    <div class="oil-card">
+      <h3>Brent-WTI Spread</h3>
+      <div class="price">$4.17</div>
+      <div class="change up">▲ +0.35</div>
+      <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">Arbitrage signal</div>
+    </div>
+    <div class="oil-card">
+      <h3>Natural Gas</h3>
+      <div class="price">$3.42</div>
+      <div class="change down">▼ -0.08 (-2.29%)</div>
+      <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-dim)">Henry Hub · NYMEX</div>
+    </div>
+  </div>
+
+  <div class="context-box">
+    <h3>⚡ Macro Context</h3>
+    <div class="signal-row"><span class="signal-label">OPEC+ Production</span><span class="signal-value">Quota-bound · Dec 2025</span></div>
+    <div class="signal-row"><span class="signal-label">US Rig Count</span><span class="signal-value">▲ 592 (+3 WoW)</span></div>
+    <div class="signal-row"><span class="signal-label">China Demand</span><span class="signal-value">Teapot margins thinning</span></div>
+    <div class="signal-row"><span class="signal-label">Geopolitical Risk</span><span class="signal-value" style="color:var(--amber)">Strait of Hormuz · ELEVATED</span></div>
+    <div class="signal-row"><span class="signal-label">Fiscal Breakeven (MY)</span><span class="signal-value">$62/bbl Petronas</span></div>
+  </div>
+
+  <div class="context-box">
+    <h3>🔍 WEALTH Organ Signal</h3>
+    <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.7">
+      <strong style="color:var(--text)">OBS:</strong> Brent at $84.32, WTI at $80.15 — spread narrowing. 
+      <strong style="color:var(--text)">DER:</strong> Backwardation in Brent curve suggests near-term supply tightness. 
+      <strong style="color:var(--amber)">INT:</strong> OPEC+ discipline holding; US shale responding slowly to price signal. 
+      <strong style="color:var(--red)">SPEC:</strong> China stimulus may lift Q4 demand — unconfirmed.
+    </p>
+    <p style="margin-top:0.5rem;font-size:0.75rem;color:var(--text-dim)">
+      ⚠️ Evidence from WEALTH capital_market(mode=oil). arifOS adjudicates. Arif decides. WEALTH never allocates.
+    </p>
+  </div>
+
+  <footer style="margin:4rem 0 2rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--text-dim);font-size:0.8rem">
+    <span>WEALTH · arifOS Federation</span>
+    <span>DITEMPA BUKAN DIBERI</span>
+  </footer>
+
+</div>
+<script src="/_shared/trinity-nav.js" defer></script>
+</body>
+</html>
