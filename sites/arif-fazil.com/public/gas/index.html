@@ -21,6 +21,12 @@
 .market-map-link:hover{color:var(--ink);background:var(--surface2)}
 .market-map-link.active{color:var(--accent);font-weight:600}
 .market-map-sep{color:var(--line);margin:0 2px}
+#mainChart{width:100%;height:420px;position:relative}
+.chart-container{width:100%}
+.cone-toggle{font-family:var(--mono);font-size:10px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--dim);cursor:pointer}
+.cone-toggle.active{color:var(--accent);border-color:var(--accent);font-weight:600}
+.scenario-row{display:flex;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--dim);padding:6px 0;border-top:1px solid var(--line)}
+.scenario-row b{color:var(--ink)}
 .macro-ticker{display:flex;gap:1rem;padding:0.35rem 1rem;background:var(--surface2);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--dim);overflow-x:auto}
 .macro-item{display:flex;gap:0.4rem;align-items:center}
 .macro-label{color:var(--faint)}
@@ -229,6 +235,10 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
           <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
           <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
+          <span style="color:var(--line);margin:0 4px">|</span>
+          <button class="cone-toggle active" data-horizon="30" onclick="selectHorizon(this)">30d▸</button>
+          <button class="cone-toggle" data-horizon="60" onclick="selectHorizon(this)">60d▸</button>
+          <button class="cone-toggle" data-horizon="90" onclick="selectHorizon(this)">90d▸</button>
         </div>
       </div>
       <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
@@ -258,27 +268,29 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     <div class="apex-grid">
       <div class="apex-card">
         <div class="apex-card-label">Current</div>
-        <div class="apex-card-value" style="font-size:22px">$2.90</div>
-        <div class="apex-card-sub">last tick</div>
+        <div class="apex-card-value" style="font-size:22px" id="predCurrent">—</div>
+        <div class="apex-card-sub" id="predCurrentSub">live</div>
       </div>
       <div class="apex-card">
-        <div class="apex-card-label">7-Day Range</div>
-        <div class="apex-card-value" style="font-size:22px">$2.65 – $3.15</div>
-        <div class="apex-card-sub">next week projection</div>
+        <div class="apex-card-label">30-Day Cone</div>
+        <div class="apex-card-value" style="font-size:22px" id="predRange">—</div>
+        <div class="apex-card-sub" id="predRangeSub">p25 – p75 projection</div>
       </div>
       <div class="apex-card">
         <div class="apex-card-label">Bias</div>
-        <div class="apex-card-value" style="font-size:22px">NEUTRAL →</div>
-        <div class="apex-card-sub">58% confidence</div>
+        <div class="apex-card-value" style="font-size:22px" id="predBias">—</div>
+        <div class="apex-card-sub" id="predBiasSub">confluence</div>
       </div>
       <div class="apex-card">
         <div class="apex-card-label">Key Level</div>
-        <div class="apex-card-value" style="font-size:22px">$2.82</div>
-        <div class="apex-card-sub">Support 1</div>
+        <div class="apex-card-value" style="font-size:22px" id="predKey">—</div>
+        <div class="apex-card-sub" id="predKeySub">Support 1 · daily</div>
       </div>
     </div>
+    <div id="predScenarios" style="margin-top:10px"></div>
+    <div class="apex-card-sub" id="predRead" style="margin-top:8px;line-height:1.5"></div>
     <div class="macro-ticker" style="margin-top:0;border-radius:8px">
-      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value">$2.82</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value">$2.68</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value">$3.05</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value">$3.22</span></div><div class="macro-item"><span class="macro-label">50-day MA</span><span class="macro-value">$2.94</span></div><div class="macro-item"><span class="macro-label">200-day MA</span><span class="macro-value">$2.78</span></div>
+      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value" id="mt-s1">—</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value" id="mt-s2">—</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value" id="mt-r1">—</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value" id="mt-r2">—</span></div><div class="macro-item"><span class="macro-label">50-day MA</span><span class="macro-value" id="mt-ma50">—</span></div><div class="macro-item"><span class="macro-label">200-day MA</span><span class="macro-value" id="mt-ma200">—</span></div>
     </div>
   </div>
 </div>
@@ -389,7 +401,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         </div>
         <div class="world-driver-impact">
           <strong>Global:</strong> Live DXY and rates from snapshot.<br>
-          <strong>Malaysia:</strong> USD/MYR 4.42 / BNM OPR 3.00%.<br>
+          <strong>Malaysia:</strong> USD/MYR <span id="mcr-usmyr">—</span> (live) / BNM OPR 3.00% (sealed).<br>
           <span style="color:var(--accent);">Transmission:</span> Bintulu LNG export cargoes billed in USD provide continuous trade surplus & foreign exchange inflows.
         </div>
         <div class="world-driver-meta">
@@ -695,6 +707,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     }
     try {
       chart = LightweightCharts.createChart(chartContainer, {
+        autoSize: true,
         layout: {
           background: { type: 'solid', color: '#0d0d1a' },
           textColor: '#6a6050',
@@ -809,6 +822,107 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     return result;
   }
 
+  // ── Forecast cone (wealth.forecast.v1 — WEALTH engine computes, page renders) ──
+  let coneSeries = null;
+  let forecastCache = {};
+  let currentHorizon = 30;
+  let latestForecast = null;
+
+  async function loadForecast(horizon) {
+    const hit = forecastCache[horizon];
+    if (hit && (Date.now() - hit._ts) < 300000) return hit;
+    const d = await apiFetch(`/forecast?horizon=${horizon}`);
+    if (d && d.schema === 'wealth.forecast.v1' && d.cone && d.cone.t) {
+      d._ts = Date.now();
+      forecastCache[horizon] = d;
+      return d;
+    }
+    return null;
+  }
+
+  function ensureConeSeries() {
+    if (coneSeries || !chart) return;
+    const mk = (color, width, style) => chart.addLineSeries({
+      color, lineWidth: width, lineStyle: style,
+      priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false,
+    });
+    const D = LightweightCharts.LineStyle.Dashed, T = LightweightCharts.LineStyle.Dotted;
+    coneSeries = {
+      p10: mk('rgba(201,168,76,0.22)', 1, T),
+      p25: mk('rgba(201,168,76,0.45)', 1, D),
+      p50: mk('#e2b714', 2, D),
+      p75: mk('rgba(201,168,76,0.45)', 1, D),
+      p90: mk('rgba(201,168,76,0.22)', 1, T),
+    };
+  }
+
+  function renderCone(candles) {
+    loadForecast(currentHorizon).then(fc => {
+      if (!fc || !chart || !candleSeries || !candles || !candles.length) return;
+      latestForecast = fc;
+      ensureConeSeries();
+      const lastT = candles[candles.length - 1].time;
+      const toPts = arr => arr.map((v, i) => ({
+        time: Math.floor(new Date(fc.cone.t[i] + 'T00:00:00Z').getTime() / 1000), value: v,
+      })).filter(p => p.time > lastT);
+      for (const k of ['p10', 'p25', 'p50', 'p75', 'p90']) {
+        coneSeries[k].setData(toPts(fc.cone[k]));
+      }
+      updatePredictionCard(fc);
+    });
+  }
+
+  window.selectHorizon = function(btn) {
+    const h = parseInt(btn.dataset.horizon);
+    if (h === currentHorizon) return;
+    currentHorizon = h;
+    document.querySelectorAll('.cone-toggle').forEach(b => b.classList.toggle('active', b === btn));
+    const payload = chartDataCache[currentTF];
+    if (payload && payload.candles) renderCone(payload.candles);
+  };
+
+  function updatePredictionCard(fc) {
+    const b = fc.basis || {};
+    const end = (fc.cone.p50 || []).length - 1;
+    if (end < 0) return;
+    const arrows = { BULLISH: '↑', BEARISH: '↓', NEUTRAL: '→' };
+    const L = (fc.scenarios || []).find(s => s.side === 'LONG');
+    const S = (fc.scenarios || []).find(s => s.side === 'SHORT');
+
+    if ($('predCurrent')) {
+      $('predCurrent').textContent = '$' + fmt(b.close);
+      $('predCurrentSub').textContent = fc.generated_at
+        ? 'engine · ' + fc.generated_at.slice(11, 16) + ' MYT' : 'engine';
+      $('predRange').textContent = '$' + fmt(fc.cone.p25[end]) + ' – $' + fmt(fc.cone.p75[end]);
+      $('predRangeSub').textContent = currentHorizon + '-day cone · p25–p75';
+      $('predBias').textContent = (fc.bias || '—') + ' ' + (arrows[fc.bias] || '');
+      $('predBias').style.color = fc.bias === 'BULLISH' ? '#22c55e' : (fc.bias === 'BEARISH' ? '#ef4444' : '#c9a84c');
+      $('predBiasSub').textContent = 'confluence L' + (L ? L.confluence : '–') + '/5 · S' + (S ? S.confluence : '–') + '/5';
+      if (L) {
+        $('predKey').textContent = '$' + fmt(L.invalidation);
+        $('predKeySub').textContent = 'Support 1 · daily';
+      }
+    }
+    // Scenario ladder — falsification levels on its face
+    if ($('predScenarios') && L && S) {
+      $('predScenarios').innerHTML =
+        '<div class="scenario-row"><b>▲ LONG</b><span>' + L.trigger + '</span><span>→ <b>$' + fmt(L.objective) + '</b></span><span>invalid $' + fmt(L.invalidation) + '</span><span>ETA ' + L.eta_days + 'd</span><span>conf ' + L.confluence + '/5</span></div>' +
+        '<div class="scenario-row"><b>▼ SHORT</b><span>' + S.trigger + '</span><span>→ <b>$' + fmt(S.objective) + '</b></span><span>invalid $' + fmt(S.invalidation) + '</span><span>ETA ' + S.eta_days + 'd</span><span>conf ' + S.confluence + '/5</span></div>';
+    }
+    if ($('predRead')) {
+      $('predRead').textContent = '⚖ ' + (fc.institutional_read || '') + ' — ' + (fc.epistemic || '');
+    }
+    // S/R + MA strip from the same engine output
+    if ($('mt-s1') && L && S) {
+      $('mt-s1').textContent = '$' + fmt(L.invalidation);
+      $('mt-s2').textContent = '$' + fmt(S.objective);
+      $('mt-r1').textContent = '$' + fmt(S.invalidation);
+      $('mt-r2').textContent = '$' + fmt(L.objective);
+      $('mt-ma50').textContent = '$' + fmt(b.ema50);
+      $('mt-ma200').textContent = '$' + fmt(b.ema200);
+    }
+  }
+
   // ── Load chart from live API ──
   async function loadChartData(tf) {
     const interval = CONFIG.TF_INTERVALS[tf] || '1h';
@@ -820,12 +934,20 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
     const data = await apiFetch(`/history?interval=${interval}&period=${period}`);
     if (data && data.candles && data.candles.length > 0) {
-      const candles = data.candles.map(c => ({
-        time: typeof c.time === 'number' ? c.time : Math.floor(new Date(c.time + 'Z').getTime() / 1000),
-        open: +c.open, high: +c.high, low: +c.low, close: +c.close,
+      const norm = arr => (arr || []).map(p => ({
+        time: typeof p.time === 'number' ? p.time : Math.floor(new Date(p.time + 'Z').getTime() / 1000),
+        value: p.value,
       }));
-      chartDataCache[tf] = candles;
-      return candles;
+      const payload = {
+        candles: data.candles.map(c => ({
+          time: typeof c.time === 'number' ? c.time : Math.floor(new Date(c.time + 'Z').getTime() / 1000),
+          open: +c.open, high: +c.high, low: +c.low, close: +c.close,
+        })),
+        // Server-computed EMAs carry full-history warmup — prefer over client recompute
+        ema: { '20': norm(data.ema20), '50': norm(data.ema50), '200': norm(data.ema200) },
+      };
+      chartDataCache[tf] = payload;
+      return payload;
     }
     return null;
   }
@@ -833,19 +955,25 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   async function renderChart(tf) {
     currentTF = tf;
     if (!initChart()) return;
-    const candles = await loadChartData(tf);
-    if (!candles || candles.length === 0) {
+    const payload = await loadChartData(tf);
+    if (!payload || !payload.candles || payload.candles.length === 0) {
       console.warn('[Gas] No chart data for TF:', tf);
       return;
     }
+    const candles = payload.candles;
 
     candleSeries.setData(candles);
 
-    // Recompute and set EMAs
+    // Server EMAs (full warmup); fall back to client recompute if absent
     for (const [period, series] of Object.entries(emaSeries)) {
-      const emaData = computeEMA(candles, parseInt(period));
+      const server = payload.ema && payload.ema[period];
+      const emaData = (server && server.length === candles.length)
+        ? server
+        : computeEMA(candles, parseInt(period));
       series.setData(emaData);
     }
+
+    renderCone(candles);
 
     chart.timeScale().fitContent();
 
@@ -1091,6 +1219,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     setMacro('mcr-vix', data.vix ? data.vix.toFixed(2) : null, data.vix_change);
     setMacro('mcr-silver', data.silver ? '$' + data.silver.toFixed(2) : null, data.silver_change);
     setMacro('mcr-gsr', data.gsr ? data.gsr.toFixed(1) : null, data.gsr_change);
+    setMacro('mcr-usmyr', data.usmyr ? data.usmyr.toFixed(4) : null, data.usmyr_change);
 
     const timeEl = $('mcr-time');
     if (timeEl) {

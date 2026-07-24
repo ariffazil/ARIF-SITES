@@ -32,6 +32,8 @@ CACHE_TTL = 300  # 5 minutes
 
 MYT = timezone(timedelta(hours=8))
 
+ASSET_KEY = "gas"
+
 
 def _cache_key(endpoint: str, **kwargs) -> Path:
     raw = f"{endpoint}_{json.dumps(kwargs, sort_keys=True)}"
@@ -484,6 +486,7 @@ def cmd_macro(args):
         ("^VIX", "vix"),
         ("^TNX", "us10y"),
         ("SI=F", "silver"),
+        ("MYR=X", "usmyr"),
     ]:
         try:
             t = yf.Ticker(sym)
@@ -847,6 +850,173 @@ def cmd_snapshot(args):
     return cmd_ticker(args)
 
 
+# ── Forecast Engine (wealth.forecast.v1) ─────────────────────────
+# The organ does not prophesy. It publishes an ATR-scaled drift cone,
+# a scenario ladder with falsification levels, and an epistemic tag.
+# Every fresh forecast is appended to a local hash-chained log for
+# T+N outcome scoring. Sealing to VAULT999 is arifOS's lane, not ours.
+FORECAST_LOG = Path("/root/WEALTH/data/forecast_log.jsonl")
+
+_INSTITUTIONAL_CONTEXT = {
+    "gold": "Gold bid + soft DXY = monetary-hedge demand; XAU/MYR moderated by ringgit. Pressures no sovereign tripwire directly.",
+    "oil": "Brent feeds the PETRONAS fiscal chain (CFFO, dividend, O&G revenue share). Sustained drift toward TRIP 70 pressures the sovereign BODY score.",
+    "gas": "LNG/JKM complex feeds PETRONAS gas revenue and Bintulu utilization. Volatility here propagates to the same fiscal chain as Brent.",
+}
+
+
+def _lin_slope(values) -> float:
+    """Least-squares slope of a 1-D series, in units-per-step."""
+    ys = np.asarray(values, dtype=float)
+    n = len(ys)
+    if n < 2:
+        return 0.0
+    xs = np.arange(n, dtype=float)
+    denom = float(((xs - xs.mean()) ** 2).sum())
+    if denom == 0.0:
+        return 0.0
+    return float(((xs - xs.mean()) * (ys - ys.mean())).sum() / denom)
+
+
+def _forecast_log_append(record: dict) -> None:
+    """Append forecast to local hash-chained log. Never breaks the endpoint."""
+    try:
+        FORECAST_LOG.parent.mkdir(parents=True, exist_ok=True)
+        prev_hash = ""
+        if FORECAST_LOG.exists():
+            with FORECAST_LOG.open("r") as f:
+                lines = [l for l in f.read().strip().splitlines() if l.strip()]
+            if lines:
+                prev_hash = json.loads(lines[-1]).get("hash", "")
+        body = dict(record)
+        body["prev_hash"] = prev_hash
+        digest = hashlib.sha256(
+            json.dumps(body, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
+        ).hexdigest()
+        body["hash"] = digest
+        with FORECAST_LOG.open("a") as f:
+            f.write(json.dumps(body, sort_keys=True, default=str) + "\n")
+    except Exception:
+        pass
+
+
+def cmd_forecast(args):
+    horizon = int(args.get("horizon", 30))
+    if horizon not in (30, 60, 90):
+        horizon = 30
+    cache = _cache_key("forecast", horizon=horizon)
+    cached = _read_cache(cache)
+    if cached:
+        return cached
+
+    df = fetch_ohlcv(interval="1d", period="1y")
+    close = df["close"]
+    atr_val = round(float(compute_atr(df, 14).iloc[-1]), 2)
+    ema20_val = round(float(compute_ema(close, 20).iloc[-1]), 2)
+    ema50_val = round(float(compute_ema(close, 50).iloc[-1]), 2)
+    ema200_val = round(float(compute_ema(close, 200).iloc[-1]), 2)
+    rsi_val = round(float(compute_rsi(close, 14).iloc[-1]), 1)
+    price = round(float(close.iloc[-1]), 2)
+
+    # 1. Drift — regression slope of last 20 daily closes, ATR-clamped
+    slope = _lin_slope(close.tail(20).values)
+    slope = max(-atr_val, min(atr_val, slope))
+    slope = round(slope, 4)
+
+    # 2. Regime — matches the Technical Forge definition
+    trending = abs(ema20_val - ema50_val) > 0.5 * atr_val
+    if trending:
+        regime = "TRENDING_UP" if ema20_val > ema50_val else "TRENDING_DOWN"
+    else:
+        regime = "SIDEWAYS"
+
+    # 3. Cone — p50 drifts, blends toward EMA200; bands are ATR·√t
+    blend_w = 0.2 if trending else 0.5
+    last_date = df.index[-1].date()
+    t_dates, p10, p25, p50, p75, p90 = [], [], [], [], [], []
+    for t in range(1, horizon + 1):
+        mid = price + slope * t
+        mid += (ema200_val - mid) * (1 - np.exp(-t / 20)) * blend_w
+        sigma = atr_val * np.sqrt(t)
+        t_dates.append((last_date + timedelta(days=t)).isoformat())
+        p10.append(round(mid - 1.282 * sigma, 2))
+        p25.append(round(mid - 0.674 * sigma, 2))
+        p50.append(round(mid, 2))
+        p75.append(round(mid + 0.674 * sigma, 2))
+        p90.append(round(mid + 1.282 * sigma, 2))
+
+    # 4. Scenario ladder from daily swing S/R — falsification on its face
+    sr = find_support_resistance(df)
+    r1 = sr["resistance"][0] if sr["resistance"] else round(price + atr_val, 2)
+    r2 = sr["resistance"][1] if len(sr["resistance"]) > 1 else round(r1 + 2 * atr_val, 2)
+    s1 = sr["support"][0] if sr["support"] else round(price - atr_val, 2)
+    s2 = sr["support"][1] if len(sr["support"]) > 1 else round(s1 - 2 * atr_val, 2)
+    rate = max(abs(slope), 0.25 * atr_val)
+
+    def _eta(target):
+        d = abs(target - price) / rate
+        return f"{max(1, int(d * 0.6))}–{max(2, int(d * 1.4))}"
+
+    long_conf = sum([
+        ema20_val > ema50_val,
+        rsi_val > 55,
+        regime == "TRENDING_UP",
+        slope > 0,
+        price > ema200_val,
+    ])
+    short_conf = sum([
+        ema20_val < ema50_val,
+        rsi_val < 45,
+        regime == "TRENDING_DOWN",
+        slope < 0,
+        price < ema200_val,
+    ])
+    scenarios = [
+        {"side": "LONG", "trigger": f"daily close > {r1} (R1)", "objective": r2,
+         "invalidation": s1, "confluence": long_conf, "of": 5, "eta_days": _eta(r2)},
+        {"side": "SHORT", "trigger": f"daily close < {s1} (S1)", "objective": s2,
+         "invalidation": r1, "confluence": short_conf, "of": 5, "eta_days": _eta(s2)},
+    ]
+
+    # 5. Bias — one engine, one voice. Derived, never hardcoded.
+    if long_conf >= 3 and long_conf > short_conf:
+        bias = "BULLISH"
+    elif short_conf >= 3 and short_conf > long_conf:
+        bias = "BEARISH"
+    else:
+        bias = "NEUTRAL"
+
+    side200 = "above" if price > ema200_val else "below"
+    institutional_read = (
+        f"{regime} regime · price {side200} EMA200 ({ema200_val}) · RSI {rsi_val} · ATR {atr_val}. "
+        + _INSTITUTIONAL_CONTEXT.get(ASSET_KEY, "")
+    ).strip()
+
+    generated_at = datetime.now(MYT).isoformat()
+    result = {
+        "schema": "wealth.forecast.v1",
+        "asset": ASSET_KEY,
+        "generated_at": generated_at,
+        "horizon_days": horizon,
+        "basis": {"close": price, "atr14": atr_val, "slope_per_day": slope,
+                  "regime": regime, "rsi": rsi_val,
+                  "ema20": ema20_val, "ema50": ema50_val, "ema200": ema200_val},
+        "bias": bias,
+        "cone": {"t": t_dates, "p10": p10, "p25": p25, "p50": p50, "p75": p75, "p90": p90},
+        "scenarios": scenarios,
+        "institutional_read": institutional_read,
+        "epistemic": "INTERPRET — ATR-scaled drift cone, not prophecy. Falsification levels stated. Human decides.",
+    }
+    _write_cache(cache, result)
+    _forecast_log_append({
+        "schema": "wealth.forecastlog.v1", "asset": ASSET_KEY,
+        "generated_at": generated_at, "horizon_days": horizon, "close": price,
+        "bias": bias, "p50_end": p50[-1], "p10_end": p10[-1], "p90_end": p90[-1],
+        "long_objective": r2, "short_objective": s2,
+        "long_confluence": long_conf, "short_confluence": short_conf,
+    })
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description="XNATGAS Natural Gas Data Fetcher")
     parser.add_argument(
@@ -861,10 +1031,12 @@ def main():
             "signal_v2",
             "calendar",
             "snapshot",
+        "forecast",
         ],
     )
     parser.add_argument("--interval", default="1h")
     parser.add_argument("--period", default="30d")
+    parser.add_argument("--horizon", type=int, default=30)
     args = parser.parse_args()
 
     handlers = {
@@ -877,11 +1049,16 @@ def main():
         "signal_v2": cmd_signal_v2,
         "calendar": cmd_calendar,
         "snapshot": cmd_snapshot,
+          "forecast": cmd_forecast,
     }
 
     try:
         result = handlers[args.command](
-            {"interval": args.interval, "period": args.period}
+            {
+            "interval": args.interval,
+            "period": args.period,
+            "horizon": args.horizon,
+        }
         )
         print(json.dumps(result, default=str, indent=2))
     except Exception as e:

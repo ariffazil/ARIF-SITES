@@ -141,6 +141,29 @@
   <div class="tripgrid" id="grid9"></div>
 </div>
 
+<!-- DISTANCE-TO-TRIP MAP -->
+<div class="sec" id="charts">
+  <div class="sec-title">Distance-to-trip map · one glance</div>
+  <canvas id="twchart" width="1040" height="380" style="width:100%;max-width:1040px;height:auto;display:block"></canvas>
+  <div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:6px">score 100 = at safe anchor · 0 = at trip · bands: VOID &lt;40 · HOLD 40–59 · SABAR 60–79 · SEAL ≥80</div>
+</div>
+
+<!-- PULSE TRAJECTORY -->
+<div class="sec" id="projection">
+  <div class="sec-title">PULSE trajectory · proxy-implied scenario fan <span class="epi-tag-small INTERPRET">INTERPRET</span></div>
+  <p style="font-size:12px;color:var(--dim);max-width:76ch;line-height:1.6">Drag the proxies. The engine recomputes the tripwire <code>now</code> values they pressure — Brent drives debt (#1), deficit (#2) and current account (#5); USD/MYR drives deficit (#2) and reserves (#3) — and projects the composite 4 quarters forward as the shock transmits. <b>Sealed anchors never change.</b> This is a sensitivity simulation with stated transmission rules, not a forecast.</p>
+  <div style="display:flex;gap:2rem;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--dim);margin:10px 0">
+    <label>Brent <b id="myBrentV" style="color:var(--accent)">85</b> $/bbl<br><input type="range" id="myBrent" min="50" max="120" value="85" step="1" style="width:220px"></label>
+    <label>USD/MYR <b id="myMyrV" style="color:var(--accent)">4.20</b><br><input type="range" id="myMyr" min="3.80" max="5.20" value="4.20" step="0.01" style="width:220px"></label>
+    <div style="margin-left:auto;text-align:right">
+      <div>implied Q+4: <b id="myImplied" style="color:var(--accent)">—</b></div>
+      <div>stress (Brent 65 · MYR 4.60): <b id="myStress" style="color:var(--void)">—</b></div>
+    </div>
+  </div>
+  <canvas id="pulsefan" width="1040" height="380" style="width:100%;max-width:1040px;height:auto;display:block"></canvas>
+  <div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:6px">transmission: Δdebt +0.03/$, Δdeficit +0.02/$ +0.5/sen above 4.20, Δreserves −0.3mo/sen, ΔCA +0.02/$ · INTERPRET — proxy-implied, sealed values unchanged · human decides</div>
+</div>
+
 <!-- DATA SOURCES -->
 <div class="sec" id="sources">
   <div class="sec-title">Data sources · as of July 2026</div>
@@ -181,7 +204,7 @@
 
 <div class="page-foot">
   Data: Bank Negara · MoF Budget 2026 · DOSM · IMF Article IV · World Bank WGI · Transparency International.<br>
-  Projections are not provided — this organ is a snapshot, not a forecast. Re-sealable: edit the TRIPWIRES array only.<br>
+  Projections on this page are proxy-implied INTERPRET simulations with stated transmission rules — sealed tripwire anchors are unchanged. Re-sealable: edit the TRIPWIRES array only.<br>
   <b>MALAYSIA·φ VITALS v1.0</b> · zen-pulse · config-driven · unified economics spine · F13 sovereign: ARIF<br>
   <b>v1.0:</b> inaugural seal · 9 federal tripwires · 5 pillars · sibling-linked to PETRONAS VITALS
 </div>
@@ -357,6 +380,130 @@ TRIPWIRES.forEach(t=>{
     }
   }
   load(); setInterval(load, 300000);
+})();
+</script>
+
+<script>
+/* ============================================================
+   CHARTS — distance-to-trip map + proxy-implied PULSE fan
+   The organ senses; the sliders only re-weight sensitivity.
+   Sealed TRIPWIRES anchors are never mutated.
+   ============================================================ */
+(function(){
+  /* ── A. distance-to-trip map ── */
+  const tc=document.getElementById("twchart"),tx=tc.getContext("2d");
+  (function drawTW(){
+    const W=tc.width,H=tc.height,left=240,right=60,top=18,rows=TRIPWIRES.length;
+    const bh=(H-top-10)/rows;
+    tx.clearRect(0,0,W,H);
+    // verdict bands
+    const bands=[[0,40,"rgba(240,80,110,.07)"],[40,60,"rgba(227,179,65,.06)"],[60,80,"rgba(74,168,255,.05)"],[80,100,"rgba(49,196,141,.06)"]];
+    const X=v=>left+(W-left-right)*v/100;
+    bands.forEach(([a,b,c])=>{tx.fillStyle=c;tx.fillRect(X(a),top,X(b)-X(a),H-top-10);});
+    [40,60,80].forEach(v=>{tx.strokeStyle="rgba(120,120,140,.35)";tx.setLineDash([4,4]);tx.beginPath();tx.moveTo(X(v),top);tx.lineTo(X(v),H-10);tx.stroke();tx.setLineDash([]);});
+    tx.font="10px monospace";tx.fillStyle="#5a6675";
+    [0,40,60,80,100].forEach(v=>tx.fillText(v,X(v)-6,H-0));
+    TRIPWIRES.forEach((t,i)=>{
+      const sc=score(t),v=verdict(sc),yy=top+bh*i+bh*0.5;
+      tx.fillStyle="#9aa7ba";tx.font="11px monospace";
+      tx.fillText("#"+t.id+" "+t.name,8,yy+4);
+      tx.fillStyle=v.c;
+      tx.fillRect(X(0),yy-bh*0.28,Math.max(2,X(sc)-X(0)),bh*0.56);
+      tx.font="bold 11px monospace";
+      tx.fillText(sc.toFixed(0),X(sc)+6,yy+4);
+      tx.fillStyle="#5a6675";tx.font="9px monospace";
+      tx.fillText(t.now+t.unit+" → trip "+t.trip+t.unit,8,yy+13);
+    });
+  })();
+
+  /* ── B. proxy-implied PULSE fan ── */
+  const fc=document.getElementById("pulsefan"),fx=fc.getContext("2d");
+  const bEl=document.getElementById("myBrent"),mEl=document.getElementById("myMyr");
+  const QN=4; // quarters forward
+
+  function pulseWith(mods){
+    const adj=TRIPWIRES.map(t=>mods[t.id]?Object.assign({},t,{now:mods[t.id](t.now)}):t);
+    const ls=L=>{const m=adj.filter(t=>t.layer===L);return m.reduce((a,t)=>a+score(t),0)/m.length;};
+    return Math.round((0.40*ls("BODY")+0.35*ls("ENGINE")+0.25*ls("SOUL"))*10)/10;
+  }
+  // Transmission rules — stated on the page, INTERPRET
+  function modsFor(B,M){
+    return {
+      1:v=>Math.round((v+Math.max(0,(85-B)*0.03))*100)/100,
+      2:v=>Math.round((v+Math.max(0,(85-B)*0.02)+Math.max(0,(M-4.2)*0.5))*100)/100,
+      3:v=>Math.round((v-Math.max(0,(M-4.2)*0.3))*100)/100,
+      5:v=>Math.round((v+(B-85)*0.02)*100)/100,
+    };
+  }
+  function pathTo(target){ // linear transmission over QN quarters
+    const pts=[PULSE];
+    for(let q=1;q<=QN;q++) pts.push(Math.round((PULSE+(target-PULSE)*q/QN)*10)/10);
+    return pts;
+  }
+
+  function drawFan(){
+    const B=+bEl.value,M=+mEl.value;
+    document.getElementById("myBrentV").textContent=B;
+    document.getElementById("myMyrV").textContent=M.toFixed(2);
+    const implied=pulseWith(modsFor(B,M));
+    const stress=pulseWith(modsFor(65,4.60));
+    const upside=pulseWith(modsFor(100,3.95));
+    const pBase=pathTo(PULSE),pImpl=pathTo(implied),pStress=pathTo(stress),pUp=pathTo(upside);
+
+    const iv=verdict(implied),sv=verdict(stress);
+    document.getElementById("myImplied").textContent=implied.toFixed(0)+" "+iv.w;
+    document.getElementById("myImplied").style.color=iv.c;
+    document.getElementById("myStress").textContent=stress.toFixed(0)+" "+sv.w+(stress<40?" · VOID breached":"");
+    document.getElementById("myStress").style.color=sv.c;
+
+    const W=fc.width,H=fc.height,pad=54;
+    fx.clearRect(0,0,W,H);
+    const lo=Math.min(PULSE,implied,stress,upside,35),hi=Math.max(PULSE,implied,stress,upside,85);
+    const X=i=>pad+(W-pad*1.5)*i/QN;
+    const Y=v=>pad/2+(H-pad*1.4)*(hi-v)/(hi-lo);
+    // grid + axes
+    fx.font="11px monospace";
+    for(let v=Math.ceil(lo/10)*10;v<=hi;v+=10){
+      fx.strokeStyle="#161d28";fx.beginPath();fx.moveTo(pad,Y(v));fx.lineTo(W-pad*0.5,Y(v));fx.stroke();
+      fx.fillStyle="#5a6675";fx.fillText(v,14,Y(v)+4);
+    }
+    ["now","Q+1","Q+2","Q+3","Q+4"].forEach((q,i)=>{fx.fillStyle="#5a6675";fx.fillText(q,X(i)-10,H-pad+18);});
+    fx.fillStyle="#7a8698";fx.fillText("PULSE",pad,pad/2-8);
+    // verdict threshold lines
+    [[40,"VOID","#f0506e"],[60,"SABAR","#e3b341"],[80,"SEAL","#31c48d"]].forEach(([v,lab,c])=>{
+      fx.strokeStyle=c+"88";fx.setLineDash([6,4]);fx.lineWidth=1.2;
+      fx.beginPath();fx.moveTo(pad,Y(v));fx.lineTo(W-pad*0.5,Y(v));fx.stroke();fx.setLineDash([]);
+      fx.fillStyle=c;fx.fillText(lab+" "+v,W-pad*0.75,Y(v)+4);
+    });
+    // envelope: upside → stress
+    fx.beginPath();
+    pUp.forEach((v,i)=>{i?fx.lineTo(X(i),Y(v)):fx.moveTo(X(i),Y(v));});
+    for(let i=QN;i>=0;i--)fx.lineTo(X(i),Y(pStress[i]));
+    fx.closePath();fx.fillStyle="rgba(220,38,38,.06)";fx.fill();
+    function line(arr,c,w,dash){
+      fx.strokeStyle=c;fx.lineWidth=w;if(dash)fx.setLineDash(dash);
+      fx.beginPath();arr.forEach((v,i)=>{i?fx.lineTo(X(i),Y(v)):fx.moveTo(X(i),Y(v));});fx.stroke();fx.setLineDash([]);
+      arr.forEach((v,i)=>{fx.fillStyle=c;fx.beginPath();fx.arc(X(i),Y(v),2.5,0,7);fx.fill();});
+    }
+    line(pUp,"#31c48d",1.5,[2,3]);
+    line(pBase,"#5a6675",1.5,[4,4]);
+    line(pImpl,"#dc2626",2.5);
+    line(pStress,"#f0506e",1.5,[6,3]);
+    // now marker
+    fx.fillStyle="#dc2626";fx.beginPath();fx.arc(X(0),Y(PULSE),5,0,7);fx.fill();
+    fx.fillStyle="#9fb4cc";fx.fillText("sealed "+PULSE.toFixed(0)+" "+verdict(PULSE).w,X(0)+12,Y(PULSE)-8);
+    fx.fillText("implied "+implied.toFixed(0),X(QN)-70,Y(implied)-10);
+  }
+  bEl.addEventListener("input",drawFan);
+  mEl.addEventListener("input",drawFan);
+
+  // prefill sliders from live proxies (same feed as the strip above)
+  fetch(window.location.origin + '/wealth/gold/api/proxies').then(r=>r.json()).then(p=>{
+    if(p.brent!=null) bEl.value=Math.min(120,Math.max(50,Math.round(p.brent)));
+    if(p.usdmyr!=null) mEl.value=Math.min(5.2,Math.max(3.8,p.usdmyr));
+    drawFan();
+  }).catch(()=>drawFan());
+  drawFan();
 })();
 </script>
 </body>

@@ -379,21 +379,43 @@ function draw(live){
   const max=Math.max(...all,90),min=Math.min(...all,-90);
   const x=i=>pad+(W-pad*1.4)*i/(YEARS.length-1);
   const y=v=>pad/2+(H-pad*1.5)*(max-v)/(max-min);
-  ctx.strokeStyle="#1f2733";ctx.lineWidth=1;ctx.fillStyle="#5a6675";ctx.font="11px monospace";
-  YEARS.forEach((yr,i)=>{ctx.beginPath();ctx.moveTo(x(i),pad/2);ctx.lineTo(x(i),H-pad);ctx.stroke();ctx.fillText(yr,x(i)-14,H-pad+16);});
+  // horizontal gridlines + value labels (proper axis)
+  ctx.strokeStyle="#161d28";ctx.lineWidth=1;ctx.fillStyle="#5a6675";ctx.font="11px monospace";
+  const steps=5;
+  for(let s=0;s<=steps;s++){
+    const v=max-(max-min)*s/steps,yy=y(v);
+    ctx.beginPath();ctx.moveTo(pad,yy);ctx.lineTo(W-pad*0.4,yy);ctx.stroke();
+    ctx.fillText(Math.round(v)+"B",4,yy+4);
+  }
+  ctx.fillStyle="#7a8698";ctx.fillText("RM B · net cash",pad,pad/2-8);
+  // vertical year grid
+  ctx.strokeStyle="#1f2733";
+  YEARS.forEach((yr,i)=>{ctx.beginPath();ctx.moveTo(x(i),pad/2);ctx.lineTo(x(i),H-pad);ctx.stroke();ctx.fillStyle="#5a6675";ctx.fillText(yr,x(i)-14,H-pad+16);});
+  // scenario band fill (bull→bear envelope) — the "fan"
+  ctx.beginPath();
+  nBull.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});
+  for(let i=nBear.length-1;i>=0;i--)ctx.lineTo(x(i),y(nBear[i]));
+  ctx.closePath();ctx.fillStyle="rgba(74,168,255,.09)";ctx.fill();
+  // net-debt tripwire
   ctx.strokeStyle="rgba(240,80,110,.5)";ctx.setLineDash([6,4]);ctx.lineWidth=1.5;
   ctx.beginPath();ctx.moveTo(pad,y(0));ctx.lineTo(W-pad*0.4,y(0));ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle="#f0506e";ctx.fillText("NET-DEBT TRIPWIRE (0)",pad+4,y(0)-6);
-  ctx.fillStyle="#5a6675";[max,0,min].forEach(v=>{ctx.fillText(Math.round(v)+"B",4,y(v)+4);});
   function line(arr,color,w){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();arr.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});ctx.stroke();
     arr.forEach((v,i)=>{ctx.fillStyle=color;ctx.beginPath();ctx.arc(x(i),y(v),2.5,0,7);ctx.fill();});}
   line(nBull,"#31c48d",2);
   line(nBase,"#4aa8ff",2.5);
   line(nBear,"#f0506e",2);
   if(live)line(live,"#e3b341",2.5);
+  // current-position marker (2026 = index 1) on base path
+  ctx.fillStyle="#4aa8ff";ctx.beginPath();ctx.arc(x(1),y(nBase[1]),5,0,7);ctx.fill();
+  ctx.strokeStyle="rgba(74,168,255,.4)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(x(1),y(nBase[1]),9,0,7);ctx.stroke();
+  ctx.fillStyle="#9fb4cc";ctx.fillText("now · "+nBase[1]+"B",x(1)+14,y(nBase[1])+4);
 }
 
 const brent=document.getElementById("brent"),jkm=document.getElementById("jkm");
+// hyphenated ids don't create JS globals — resolve explicitly (was silently killing live())
+const brentv=document.getElementById("brentv"),jkmv=document.getElementById("jkmv");
+const ro_cffo=document.getElementById("ro-cffo"),ro_fcf=document.getElementById("ro-fcf"),ro_cross=document.getElementById("ro-cross");
 function live(){
   const B=+brent.value,J=+jkm.value;
   brentv.textContent=B;jkmv.textContent=J;
@@ -405,7 +427,7 @@ function live(){
   const lv=[START];let n=Math.round((START-PREF_DEBT)*10)/10;
   for(let i=1;i<YEARS.length;i++){n=Math.round((n+fcf)*10)/10;lv.push(n);}
   const cross=firstCross(lv);
-  ro_cross.textContent=cross?cross:"none &lt;2031";
+  ro_cross.textContent=cross?cross:"none <2031";
   ro_cross.style.color=cross?"var(--void)":"var(--seal)";
   draw(lv);
 }

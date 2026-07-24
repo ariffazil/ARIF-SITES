@@ -93,6 +93,7 @@ const handlers = {
       macro: macro && !macro.error ? {
         dxy: macro.dxy, us10y: macro.us10y, vix: macro.vix,
         silver: macro.silver, gsr: macro.gold_silver_ratio,
+        usmyr: macro.usmyr,
       } : {},
     };
     const canonical = JSON.stringify(unsigned, Object.keys(unsigned).sort());
@@ -109,6 +110,14 @@ const handlers = {
   '/api/history': async (req, res, params) => handlers['/api/oil/history'](req, res, params),
   '/api/signals': async () => handlers['/api/oil/signals'](),
   '/api/levels': async () => handlers['/api/oil/levels'](),
+  '/api/oil/forecast': async (req, res, params) => {
+    const horizon = params.get('horizon') || '30';
+    const key = `forecast_${horizon}`;
+    const c = getCache(key); if (c) return c;
+    const d = await runPython('forecast', ['--horizon', horizon]);
+    setCache(key, d); return d;
+  },
+  '/api/forecast': async (req, res, params) => handlers['/api/oil/forecast'](req, res, params),
   '/api/oil/ticker': async () => {
     const c = getCache('ticker'); if (c) return c;
     const d = await runPython('ticker'); setCache('ticker', d); return d;

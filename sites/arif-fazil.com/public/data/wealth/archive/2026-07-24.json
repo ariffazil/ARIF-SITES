@@ -1,14 +1,14 @@
 {
   "meta": {
     "date": "2026-07-24",
-    "generated_at": "2026-07-24T00:08:48Z",
+    "generated_at": "2026-07-24T06:00:02Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
     "delta_vs_yesterday": {
-      "klci_change": 0.0,
-      "ringgit_change": 0.007000000000000561,
-      "brent_change": 0.37000000000000455
+      "klci_change": -9.179999999999836,
+      "ringgit_change": 0.00649999999999995,
+      "brent_change": -0.23000000000000398
     }
   },
   "bursa": {
@@ -24,19 +24,19 @@
         "desc": "20 Jul 2026, 17:41 · Bernama · Share · KUALA LUMPUR: Bursa Malaysia’s key index <strong>closed lower today as profit-taking in banking heavyweights weighed on the benchmark</strong>, although sentiment across the broader market remained steady."
       },
       {
-        "title": "Bursa Malaysia ends higher at mid-day amid firmer crude oil prices | The Star",
-        "url": "https://www.thestar.com.my/business/business-news/2026/07/23/bursa-malaysia-ends-higher-at-mid-day-amid-firmer-crude-oil-prices",
-        "desc": "Thursday, 23 Jul 2026 | 1:44 PM MYT · share bookmark · Banking 6h ago · Markets 3h ago · Myanmar 11h ago · KUALA LUMPUR: Bursa Malaysia closed <strong>marginally higher at mid-day in subdued market sentiment</strong>, with buying interspersed with selling ..."
-      },
-      {
         "title": "Calendar",
         "url": "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
         "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day · 16 Sep 2026 Malaysia Day · IPO Listing Date · 09 Jul 2026 IPO for SRKK AI BERHAD ·"
       },
       {
-        "title": "BERNAMA - Bursa Malaysia Ends Marginally Lower On Mild Profit-Taking",
-        "url": "https://www.bernama.com/en/market/news.php?id=2577853",
-        "desc": "KUALA LUMPUR, July 7 (Bernama) -- Bursa Malaysia ended <strong>marginally lower on Tuesday</strong> as investors engaged in mild profit-taking following the recent rebound in the local market, in line with softer performances across regional markets."
+        "title": "Bursa Malaysia ends higher at mid-day amid firmer crude oil prices | The Star",
+        "url": "https://www.thestar.com.my/business/business-news/2026/07/23/bursa-malaysia-ends-higher-at-mid-day-amid-firmer-crude-oil-prices",
+        "desc": "Thursday, 23 Jul 2026 | 1:44 PM MYT · share bookmark · Banking 6h ago · Markets 3h ago · Myanmar 11h ago · KUALA LUMPUR: Bursa Malaysia closed <strong>marginally higher at mid-day in subdued market sentiment</strong>, with buying interspersed with selling ..."
+      },
+      {
+        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
+        "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
       }
     ],
     "most_active": {
@@ -46,24 +46,24 @@
     },
     "top_gainers_search": [
       {
+        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
+        "desc": "Bursa Malaysia’s KLCI extended gains into Friday afternoon, <strong>hovering near 1,729</strong> and edging toward a two-month high. Sentiment was buo"
+      },
+      {
         "title": "Bursa Malaysia Opens Higher As Energy Stocks Lift FBM KLCI",
         "desc": "Among gainers, <strong>Heineken Malaysia</strong> rose 16 sen to RM19.22, Hong Leong Industries gained 16 sen to RM18.16, while KESM Industries and Pe"
       },
       {
         "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
-        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,720.37 -0.11%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,720.37 -1.92 (-0.11%) At close: 4:59:45 PM GMT+8 · "
-      },
-      {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Bursa Malaysia’s KLCI extended gains into Friday afternoon, <strong>hovering near 1,729</strong> and edging toward a two-month high. Sentiment was buo"
+        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,704.93 -0.56%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,704.93 -9.66 (-0.56%) As of 12:23:15 PM GMT+8. Mark"
       }
     ],
-    "klci_close": 1714.59,
+    "klci_close": 1705.41,
     "klci_change_points": null,
     "klci_change_pct": null,
     "klci_quote": {
-      "value": 1714.59,
-      "as_of_utc": "2026-07-23T08:59:45+00:00",
+      "value": 1705.41,
+      "as_of_utc": "2026-07-24T05:45:00+00:00",
       "source": "Yahoo Finance (Bursa gate-limited)",
       "source_url": "https://finance.yahoo.com/quote/%5EKLSE",
       "band": "ESTIMATE",
@@ -73,16 +73,16 @@
     },
     "source_urls": [
       "https://www.malaymail.com/news/money/2026/07/20/bursa-malaysia-closes-lower-as-profit-taking-weighs-on-key-banking-counters/228377",
-      "https://www.thestar.com.my/business/business-news/2026/07/23/bursa-malaysia-ends-higher-at-mid-day-amid-firmer-crude-oil-prices",
+      "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
       "https://www.freemalaysiatoday.com/category/business/2026/07/20/bursa-closes-lower-on-profit-taking-in-banking-stocks"
     ]
   },
   "ringgit": {
-    "usd_myr": 4.094,
+    "usd_myr": 4.0935,
     "trend": "RINGGIT STRONG — export competitiveness squeeze for PETRONAS foreign revenue",
     "usd_myr_quote": {
-      "value": 4.094,
-      "as_of_utc": "2026-07-24T00:04:18+00:00",
+      "value": 4.0935,
+      "as_of_utc": "2026-07-24T05:28:02+00:00",
       "source": "Yahoo Finance (BNM unreachable from VPS)",
       "source_url": "https://finance.yahoo.com/quote/MYR=X",
       "band": "ESTIMATE",
@@ -124,15 +124,15 @@
         "category": "inflation"
       },
       {
-        "title": "Malaysia Balance of Trade",
-        "url": "https://tradingeconomics.com/malaysia/balance-of-trade",
-        "desc": "<strong>Exports jumped 36.9% yoy to a record high of MYR 182.7 billion</strong>, mainly driven by the manufacturing sector, which soared 40.1%, particularly in electrical and electronic products (46.4%) and petroleum products (70.2%). By destination, exports grew sharply to the US (39.0%), Singapore",
-        "category": "trade"
-      },
-      {
         "title": "Malaysia's trade surges 22.4% to record RM1.796 trillion in 1H26 | The Star",
         "url": "https://www.thestar.com.my/business/business-news/2026/07/20/malaysia039s-trade-surges-224-to-record-rm1796-trillion-in-1h26",
         "desc": "In a statement today, the Ministry of Investment, Trade and Industry (MITI) said <strong>exports increased 27.5% to RM971.59bil, while imports rose 16.9% to RM824.44bil</strong>, resulting in a trade surplus of RM147.15bil.",
+        "category": "trade"
+      },
+      {
+        "title": "Malaysia Balance of Trade",
+        "url": "https://tradingeconomics.com/malaysia/balance-of-trade",
+        "desc": "<strong>Exports jumped 36.9% yoy to a record high of MYR 182.7 billion</strong>, mainly driven by the manufacturing sector, which soared 40.1%, particularly in electrical and electronic products (46.4%) and petroleum products (70.2%). By destination, exports grew sharply to the US (39.0%), Singapore",
         "category": "trade"
       },
       {
@@ -201,12 +201,12 @@
         "desc": "The minimum wage in Malaysia is <strong>RM8.72/hr ($2.13 USD)</strong> as of 2026. The average gross monthly salary is RM4,000 ($977.04 USD)."
       },
       {
-        "title": "Average Salary Malaysia 2026: MYR 3,650 ($770 USD/Month)",
-        "desc": "Average salary in Malaysia 2026: <strong>MYR 3,650/month</strong> national (~$770 USD). Sector and role benchmarks, EPF/SOCSO costs, tax brackets."
+        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
+        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are $1,931.9 (RM7,898.8), excluding rent</strong>. The estimated monthly costs for a single person are $5"
       },
       {
-        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
-        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are $1,931.6 (RM7,899.3), excluding rent</strong>. The estimated monthly costs for a single person are $5"
+        "title": "Average Salary Malaysia 2026: MYR 3,650 ($770 USD/Month)",
+        "desc": "Average salary in Malaysia 2026: <strong>MYR 3,650/month</strong> national (~$770 USD). Sector and role benchmarks, EPF/SOCSO costs, tax brackets."
       }
     ],
     "labor": [
@@ -231,10 +231,10 @@
     ]
   },
   "oil_energy": {
-    "brent_price": 100.56,
+    "brent_price": 99.96,
     "brent_quote": {
-      "value": 100.56,
-      "as_of_utc": "2026-07-23T23:54:02+00:00",
+      "value": 99.96,
+      "as_of_utc": "2026-07-24T05:49:05+00:00",
       "source": "Yahoo Finance (Brent futures)",
       "source_url": "https://finance.yahoo.com/quote/BZ=F",
       "band": "ESTIMATE",
@@ -248,8 +248,8 @@
         "desc": "PETRONAS Activity Outlook 2024-2026 · 15 · PETRONAS plays a pivotal role in overseeing · petroleum operations in Malaysia, primarily to · maximise production eﬃciency and · sustainability of oil and g"
       },
       {
-        "title": "Upstream petroleum activities to rebound, PETRONAS’ outlook report shows",
-        "desc": "Tuesday 14 Jul 2026 · BURSASGX · OIL &amp; GAS · Make The Edge Malaysia your preferred source on Google · KUALA LUMPUR (Jan 29): Malaysia’s national oil and gas company PETRONAS is aiming to ramp up i"
+        "title": "Production | Malaysia Petroleum Management",
+        "desc": "Since 1974, Malaysia has produced <strong>9 billion barrels of oil and 50 trillion cubic feet of gas</strong>. Currently, Malaysia produces 660,000 barrels of liquids and approximately 7.0 billion cub"
       }
     ],
     "energy_transition": [
@@ -271,8 +271,8 @@
           "desc": "The Federal Open Market Committee approved the following statement for release by a 12 – 0 vote: The Committee decided to maintain the target range for"
         },
         {
-          "title": "A July rate hike from the Fed? The odds are rising",
-          "desc": "The Federal Reserve is still expected by futures traders and prediction markets to maintain the status quo at its July meeting, leaving <strong>interest rates unchanged once again</strong>."
+          "title": "Federal Reserve Interest Rate Decision July 2026",
+          "desc": "As of June 2026, the Federal Reserve ... Warsh&#x27;s leadership. According to the CME FedWatch tool, markets currently assign approximately <strong>25% probability to a 25-basis-point rate hike</stro"
         }
       ]
     },
@@ -295,8 +295,8 @@
           "desc": "Indonesia’s economy expanded by <strong>5.61 percent</strong> in the first quarter of 2026, its fastest growth in more than three years, boosted by a surge in government spending and strong household "
         },
         {
-          "title": "A ASEAN+3 Regional Economic Outlook 2026 ASEAN+3 REGIONAL ECONOMIC OUTLOOK 2026",
-          "desc": "Figure 1.8. Growth in Exports of Services for ASEAN+3, ... Source: World Semiconductor Trade Statistics; AMRO staff calculations. Note: The semiconductor cycle is measured as six-month moving average "
+          "title": "ASEAN+3 Regional Economic Outlook 2026 - ASEAN+3 Macroeconomic Research Office - AMRO ASIA",
+          "desc": "<strong>Growth outperformed expectations in 2025</strong>, inflation remained low, and most economies retain meaningful fiscal and monetary space. Preserving policy flexibility remains the central nea"
         }
       ]
     }
@@ -304,7 +304,7 @@
   "so_what": [
     {
       "domain": "MARKET",
-      "signal": "FBM KLCI at 1,714.59 — % change VOID (Yahoo chart endpoint has no daily delta)",
+      "signal": "FBM KLCI at 1,705.41 — % change VOID (Yahoo chart endpoint has no daily delta)",
       "for_aia": "If you hold unit trusts or stocks — rebalance checklist. If you're cash-heavy, DCA in vs timing the market? Know your time horizon.",
       "for_izzu": "Trading desk risk: watch leverage ratio. Market down days = margin calls on leveraged accounts. What's your position size?",
       "for_aliff": "PETRONAS PROPA bonus tied to company performance. When market is shaky, corporate KPI narrative intensifies — distinguish signal from spin.",
@@ -313,7 +313,7 @@
     },
     {
       "domain": "FX / RINGGIT",
-      "signal": "USD/MYR: 4.0940 — RINGGIT STRONG",
+      "signal": "USD/MYR: 4.0935 — RINGGIT STRONG",
       "for_aia": "Ringgit strong = cheaper imports, softer imported inflation. Flip side: PETRONAS USD revenue converts into fewer ringgit — the export-competitiveness squeeze is real for O&G exporters.",
       "for_izzu": "If you earn in USD or hold US assets, a strong ringgit erodes MYR-converted returns. If you spend in MYR, this is relief at the checkout.",
       "for_aliff": "PETRONAS foreign revenue in USD — ringgit direction cuts both ways for company accounts. Watch how they frame 'strong revenue' in MYR terms.",
@@ -322,7 +322,7 @@
     },
     {
       "domain": "OIL & GAS",
-      "signal": "Brent crude: $100.56/bbl",
+      "signal": "Brent crude: $99.96/bbl",
       "for_aia": "This is the pulse of the Malaysia government budget. PETRONAS dividends = Putrajaya's fiscal buffer. When oil drops below $70, expect budget pressure.",
       "for_izzu": "O&G sector stocks (Dayang, Dialog, Sapura Energy, etc.) correlate with Brent. Down day in Brent = red day in O&G heavy indices.",
       "for_aliff": "PETRONAS PROPA internal narrative around 'volatility management' will get louder. Ask: is this genuine risk management or career hedging?",
