@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBS Kinabalu — Tectostratigraphic Framework (Phase 1) · GEOX</title>
+<meta name="description" content="Kinabalu Basin tectostratigraphic hypothesis — PSCS subduction model, 4 basement hypotheses, 8 kill tests, 4 prospect verdicts. NSPW-corrected DRU reclassification.">
+<meta property="og:title" content="IBS Kinabalu — Tectostratigraphic Framework · GEOX">
+<meta property="og:description" content="PSCS subduction model, 4 basement hypotheses at Bayesian HOLD, 6 tectonic episodes, 4 prospect verdicts. F2 TRUTH.">
+<link rel="canonical" href="https://geox.arif-fazil.com/basins/kinabalu/proposal.html">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<style>
+/* ═══════════ KINABALU PROPOSAL — GEOX Design Language ═══════════ */
+:root {
+  --bg:     #F0EAE0; --bg2:    #E5DDD0; --bg3:    #D8CFC0;
+  --text:   #28200C; --text2:  #6A5839; --text3:  #9A8768;
+  --border: #C4B494; --oc:     #C5881E; --oc-l:   #DDA840;
+  --sg:     #4D7050; --sg-l:   #79A87C; --ft:      #B44A34;
+  --ft-l:   #DE7060; --mn:     #486A88; --mn-l:    #6890B0;
+  --pu:     #6B548A; --pu-l:   #9070B4; --cr:      #8A3A3A;
+  --wl:     #4A7060; --card:   rgba(255,255,255,0.52);
+  --sha:    0 1px 5px rgba(0,0,0,0.10),0 4px 18px rgba(0,0,0,0.07);
+  --font:   'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:   'JetBrains Mono', 'Courier New', monospace;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#19150C;--bg2:#201C12;--bg3:#2A2518;--text:#EBE2CC;--text2:#B5A47E;
+  --text3:#786C56;--border:#3A3024;--oc:#C8902A;--oc-l:#E0AC46;
+  --sg:#68996C;--sg-l:#4E7252;--ft:#D05848;--ft-l:#B04038;
+  --mn:#6090B4;--mn-l:#486A88;--pu:#9070B4;--pu-l:#6B548A;
+  --cr:#C06060;--wl:#5A8870;--card:rgba(255,255,255,0.05);
+  --sha:0 1px 5px rgba(0,0,0,0.45),0 4px 22px rgba(0,0,0,0.32);
+}}
+[data-theme="dark"]{
+  --bg:#19150C;--bg2:#201C12;--bg3:#2A2518;--text:#EBE2CC;--text2:#B5A47E;
+  --text3:#786C56;--border:#3A3024;--oc:#C8902A;--oc-l:#E0AC46;
+  --sg:#68996C;--sg-l:#4E7252;--ft:#D05848;--ft-l:#B04038;
+  --mn:#6090B4;--mn-l:#486A88;--pu:#9070B4;--pu-l:#6B548A;
+  --cr:#C06060;--wl:#5A8870;--card:rgba(255,255,255,0.05);
+  --sha:0 1px 5px rgba(0,0,0,0.45),0 4px 22px rgba(0,0,0,0.32);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 1.5rem}
+
+/* ── COVER ── */
+.proposal-cover{text-align:center;padding:5rem 0 3rem;border-bottom:2px solid var(--oc)}
+.proposal-cover .org{font-family:var(--mono);font-size:.75rem;color:var(--text3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem}
+.proposal-cover h1{font-size:2.2rem;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:.75rem;max-width:700px;margin-left:auto;margin-right:auto}
+.proposal-cover .sub{font-size:1rem;color:var(--text2);margin-bottom:.5rem}
+.proposal-cover .meta{font-family:var(--mono);font-size:.7rem;color:var(--text3);letter-spacing:.08em;margin-top:1.5rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.proposal-cover .meta span{display:flex;align-items:center;gap:.35rem}
+.correction-badge{display:inline-block;background:var(--ft);color:#fff;font-family:var(--mono);font-size:.65rem;padding:.2rem .6rem;border-radius:4px;margin-top:.75rem;letter-spacing:.06em}
+
+/* ── SECTION HEADERS ── */
+.section{margin:3.5rem 0}
+.section-num{font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--oc);line-height:1;margin-bottom:.25rem}
+.section h2{font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.75rem}
+.section>p{color:var(--text2);font-size:.95rem;line-height:1.75;margin-bottom:1.5rem}
+
+/* ── STRATIGRAPHIC STAGES ── */
+.stage{display:grid;grid-template-columns:100px 1fr;gap:1.25rem;padding:1.25rem 0;border-bottom:1px solid var(--border);align-items:start}
+.stage:last-child{border-bottom:none}
+.stage-age{font-family:var(--mono);font-size:.7rem;color:var(--text3);line-height:1.5}
+.stage-age .ma{font-size:1rem;font-weight:600;color:var(--oc);display:block}
+.stage-body h3{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.stage-body .epoch{font-family:var(--mono);font-size:.7rem;color:var(--oc);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.stage-body p{font-size:.85rem;color:var(--text2);line-height:1.65}
+.stage-body .corr{font-family:var(--mono);font-size:.7rem;color:var(--ft);margin-top:.35rem;padding:.15rem .5rem;background:rgba(180,74,52,0.1);display:inline-block;border-radius:3px}
+
+/* ── KILL TEST CARDS ── */
+.kill-grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:1.5rem 0}
+.kill-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;box-shadow:var(--sha)}
+.kill-card .verdict{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
+.validated{color:var(--sg)} .interpreted{color:var(--oc)} .pending{color:var(--mn)} .resolved{color:var(--pu)}
+.kill-card h4{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.kill-card p{font-size:.85rem;color:var(--text2);line-height:1.65}
+.kill-card .kill{font-family:var(--mono);font-size:.7rem;color:var(--ft);margin-top:.5rem;padding:.3rem .6rem;background:rgba(180,74,52,0.08);border-radius:4px;display:inline-block}
+
+/* ── BASEMENT HYPOTHESES ── */
+.hypo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.25rem;margin:1.5rem 0}
+.hypo-card{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:1.5rem;box-shadow:var(--sha)}
+.hypo-card h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.hypo-card .prob{font-family:var(--mono);font-size:1.8rem;font-weight:700;color:var(--oc);margin:.5rem 0}
+.hypo-card .status{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.12em;color:var(--oc);margin-bottom:.75rem;text-transform:uppercase}
+.hypo-card p{font-size:.85rem;color:var(--text2);line-height:1.65;margin-bottom:.75rem}
+.hypo-card .killer{font-size:.75rem;color:var(--ft);font-family:var(--mono);line-height:1.6;padding-top:.75rem;border-top:1px solid var(--border)}
+
+/* ── VERIFICATION TABLE ── */
+.verify-table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.85rem}
+.verify-table th{text-align:left;font-family:var(--mono);font-size:.7rem;color:var(--oc);text-transform:uppercase;letter-spacing:.1em;padding:.75rem .75rem;border-bottom:2px solid var(--border)}
+.verify-table td{padding:.75rem;border-bottom:1px solid var(--border);color:var(--text2);line-height:1.6;vertical-align:top}
+.verify-table td:first-child{font-family:var(--mono);font-weight:600;color:var(--text);white-space:nowrap}
+.verify-table .cost{font-family:var(--mono);font-size:.7rem;font-weight:600;white-space:nowrap}
+.cost-free{color:var(--sg)} .cost-low{color:var(--sg-l)} .cost-high{color:var(--ft)}
+
+/* ── PROSPECT CARDS ── */
+.prospect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:1.25rem;margin:1.5rem 0}
+.prospect-card{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:1.5rem;box-shadow:var(--sha)}
+.prospect-card.confirmed{border-color:var(--sg)} .prospect-card.killed{border-color:var(--ft)} .prospect-card.uncertain{border-color:var(--oc)}
+.prospect-card h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.prospect-card .verdict-tag{font-family:var(--mono);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:inline-block;padding:.2rem .6rem;border-radius:4px;margin-bottom:.75rem}
+.tag-confirmed{background:rgba(77,112,80,0.15);color:var(--sg)} .tag-killed{background:rgba(180,74,52,0.12);color:var(--ft)} .tag-uncertain{background:rgba(197,136,30,0.12);color:var(--oc)}
+.prospect-card p{font-size:.85rem;color:var(--text2);line-height:1.65}
+.prospect-card .judge-notice{font-family:var(--mono);font-size:.7rem;color:var(--ft);margin-top:.75rem;padding:.4rem .6rem;background:rgba(180,74,52,0.08);border-radius:4px}
+
+/* ── RECOMMENDATION ── */
+.rec-list{counter-reset:rec;list-style:none;margin:1.5rem 0}
+.rec-list li{counter-increment:rec;padding:1rem 1rem 1rem 3rem;position:relative;border-bottom:1px solid var(--border)}
+.rec-list li:last-child{border-bottom:none}
+.rec-list li::before{content:"R" counter(rec);position:absolute;left:0;top:1rem;font-family:var(--mono);font-size:.75rem;font-weight:700;color:var(--oc);background:rgba(197,136,30,0.1);padding:.2rem .5rem;border-radius:4px}
+.rec-list li strong{color:var(--text);display:block;margin-bottom:.25rem}
+.rec-list li p{font-size:.85rem;color:var(--text2);line-height:1.6}
+
+/* ── FOOTER ── */
+.doc-footer{margin:4rem 0 2rem;padding-top:2rem;border-top:2px solid var(--oc);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;color:var(--text3);font-size:.75rem;font-family:var(--mono)}
+.doc-footer a{color:var(--oc);text-decoration:none}
+.doc-footer a:hover{text-decoration:underline}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .proposal-cover h1{font-size:1.5rem}
+  .stage{grid-template-columns:70px 1fr;gap:.75rem}
+  .hypo-grid,.prospect-grid{grid-template-columns:1fr}
+  .proposal-cover .meta{flex-direction:column;gap:.5rem;align-items:center}
+  .section-num{font-size:2rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════ COVER ═══════════ -->
+<header class="proposal-cover">
+  <div class="org">GEOX · arifOS Federation · Kinabalu Basin</div>
+  <h1>Tectostratigraphic Hypothesis, Inference &amp; Way Forward</h1>
+  <div class="sub">IBS Kinabalu–Tectostratigraphic Framework (Phase 1) · 2026-07-24</div>
+  <div class="correction-badge">NSPW correction applied 2026-07-16</div>
+  <div class="meta">
+    <span>◐ theme</span>
+    <span>F2 TRUTH · all claims epistemic-ranked</span>
+    <span>Confidence cap: 0.90 (F7 HUMILITY)</span>
+  </div>
+</header>
+
+<!-- ═══════════ 01 EXECUTIVE ARGUMENT ═══════════ -->
+<section class="section" id="s1">
+  <div class="section-num">01</div>
+  <h2>Executive Argument</h2>
+  <p>
+    Kinabalu Basin is not a simple post-rift sag or a collision product. It is the <strong>compressional and sediment-routing expression of a Proto South China Sea subduction system</strong> that drove carbonate platform development, fold-thrust architecture, and deepwater fairways — all from the same machine, in sequence.
+  </p>
+  <p>
+    The basin records six distinct tectonic episodes spanning ~180 Ma to present. The Miocene carbonate play — the primary exploration target — is defined not by when carbonates grew fastest, but by <strong>when they survived</strong>: a geomechanical stack of serpentinite, carbonate, and fold-thrust-belt clastics decoupled the reservoir from tectonic destruction. That survival window closes at the Middle Miocene Unconformity (~16 Ma), driven by the earlier collision at ~23 Ma (BMU/TCU), not by the Deep Regional Unconformity.
+  </p>
+  <p style="background:rgba(180,74,52,0.06);padding:1rem 1.25rem;border-left:3px solid var(--ft);border-radius:0 8px 8px 0;font-size:.9rem">
+    <strong style="color:var(--ft)">Material correction (NSPW Synthesis 2026-07-16):</strong> DRU (~15 Ma) is the slab breakoff and wedge-top response — <em>not</em> the collision unconformity. BMU/TCU at ~23 Ma is collision onset. This shifts the causal interpretation of carbonate drowning: the window closes because collision (BMU/TCU) propagated into the shelf over ~7 Ma. DRU is a second-order response 8 Ma later. <strong>Any timing argument built on DRU as the collision marker is structurally wrong.</strong>
+  </p>
+  <p style="background:rgba(72,104,136,0.06);padding:1rem 1.25rem;border-left:3px solid var(--mn);border-radius:0 8px 8px 0;font-size:.9rem">
+    <strong style="color:var(--mn)">Basement status:</strong> The basement nature beneath the basin remains unresolved. Four competing hypotheses are alive with roughly equal prior probability. None can be promoted to diagnostic without targeted acquisition. The cheapest discriminating test — depth conversion of the KT-7 reflector — is available today using existing data.
+  </p>
+</section>
+
+<!-- ═══════════ 02 STRATIGRAPHIC INFERENCE ═══════════ -->
+<section class="section" id="s2">
+  <div class="section-num">02</div>
+  <h2>Stratigraphic Inference</h2>
+  <p>Eight tectono-stratigraphic stages. Three are well-constrained. Two require verification. <strong style="color:var(--ft)">One has been formally corrected.</strong></p>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">180–60</span>Jur–Cret</div>
+    <div class="stage-body">
+      <div class="epoch">Pre-Rift Basement</div>
+      <p>Lahad Datu ophiolites: N-MORB basalt, gabbro, serpentinite, radiolarian cherts (125–115 Ma, K-Ar 131 ± 6 Ma). Basement nature beneath Kinabalu unresolved — 4 hypotheses at HOLD. Largely masked by later shortening and uplift.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">45–35</span>Mid-Eocene</div>
+    <div class="stage-body">
+      <div class="epoch">Syn-Rift / IRU Package</div>
+      <p>PSCS subduction onset ~45–42 Ma. Half-graben syn-sedimentary faulting. Local rift inheritance exists but is overprinted by later compressional inversion — not the dominant visible signal in Kinabalu.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">28–23</span>Late Oligocene</div>
+    <div class="stage-body">
+      <div class="epoch">Carbonate Window Opens · BMU/TCU Collision Onset</div>
+      <p>Carbonate platforms nucleate on PSCS flexural margin highs. BMU/TCU at ~23 Ma marks collision onset — the tectono-stratigraphic hinge between rift-drift and convergent-margin phases. Tepat and Solisip buildups initiate here.</p>
+      <div class="corr">★ BMU/TCU (~23 Ma) = collision unconformity. Previously misattributed to DRU.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">23–16</span>Early–Mid Miocene</div>
+    <div class="stage-body">
+      <div class="epoch">Miocene Carbonate Peak — Survival Window</div>
+      <p>Tepat-1: 80 m carbonate buildup, 11 m gas, 37.5 m oil, ~1882 bopd. Zenith ~15–16 Ma. Success is <em>survival-driven</em>, not abundance-driven — the geomechanical stack (serpentinite → carbonate → FTB clastics) decouples the reservoir from tectonic destruction. Byerlee friction coefficient on serpentinite: μ = 0.20–0.30.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">~16</span>MMU</div>
+    <div class="stage-body">
+      <div class="epoch">Carbonate Drowning</div>
+      <p>Middle Miocene Unconformity. Carbonate platforms drown. Clastic infill begins. This is the end of the main exploration window. Caused by propagation of BMU/TCU collision effects into the shelf over ~7 Ma — not by slab breakoff.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">~15</span>DRU</div>
+    <div class="stage-body">
+      <div class="epoch">Slab Breakoff &amp; Wedge-Top Response</div>
+      <p>Deep Regional Unconformity. Slab breakoff + wedge-top response to the earlier BMU/TCU collision. Kinabalu I-type granite intrusion 13.7–10 Ma (calc-alkaline, subduction arc magmatism confirms subduction was active). NW-SE shortening. Fold-thrust belts activated.</p>
+      <div class="corr">★ Formally corrected: DRU is NOT the collision unconformity. It is the slab breakoff response, 8 Ma after collision onset.</div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">15–8</span>Late Miocene</div>
+    <div class="stage-body">
+      <div class="epoch">Clastic Interval — Toe-Thrust Dominance</div>
+      <p>Strong clastic progradation. Deepwater slope deposition. Sediment routing becomes the dominant basin control. Toe-thrust structural style defines the Kinabalu Basin expression. Sabah Orogeny ~15–7 Ma.</p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-age"><span class="ma">&lt;8</span>Present</div>
+    <div class="stage-body">
+      <div class="epoch">Post-Orogeny Deepwater</div>
+      <p>Gravity-driven fold-thrust geometry. Sabah Trough is a sediment-filled foredeep — not an active trench. KL2 dataset: 8 wells, TVDSS 0–4000 m, V<sub>avg</sub> 1800–3500 m/s, compaction Vo-K (V₀=1800, k=0.0006). Hinge-zone and deepwater-to-shelf structural complexity persist.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 03 TECTONIC HYPOTHESIS ═══════════ -->
+<section class="section" id="s3">
+  <div class="section-num">03</div>
+  <h2>Tectonic Hypothesis</h2>
+  <p>The Proto South China Sea subduction model is <strong>physics-consistent and falsifiable</strong>. It survives 5 of 8 kill tests with 3 direct validations and 0 contradictions. Three tests remain pending due to data availability, not due to contradiction.</p>
+  <p style="background:rgba(197,136,30,0.06);padding:.75rem 1rem;border-radius:8px;font-size:.9rem;text-align:center;font-weight:600;color:var(--oc)">
+    The key insight is not that the PSCS model is proven — it is that <em>no available evidence has killed it</em>. Working hypothesis, not established fact.
+  </p>
+
+  <div class="kill-grid">
+    <div class="kill-card">
+      <div class="verdict validated">✅ VALIDATED · OBS</div>
+      <h4>C1 — PSCS oceanic crust existed</h4>
+      <p>Lahad Datu N-MORB ophiolites: pillow basalt, gabbro, serpentinite, cherts. K-Ar: 131 ± 6 Ma. Radiolarian cherts: Barremian–Aptian (125–115 Ma). Low-K tholeiitic, flat REE at 10–20× chondritic = MORB signature.</p>
+    </div>
+    <div class="kill-card">
+      <div class="verdict validated">✅ VALIDATED · OBS</div>
+      <h4>C2 — Subduction occurred beneath NW Borneo</h4>
+      <p>Kinabalu I-type granite: calc-alkaline, 13.7–10 Ma, hornblende + biotite. I-type = subduction required. S-type would falsify. Subducted slab imaged at 45–55 km depth by seismic tomography (Wu &amp; Suppe 2018, Zhu et al. 2022, Pilia et al. 2023).</p>
+    </div>
+    <div class="kill-card">
+      <div class="verdict validated">✅ VALIDATED · OBS</div>
+      <h4>C3 — Positive free-air gravity offshore Sabah</h4>
+      <p>Darvel Bay: 60–140 mGal. Dangerous Grounds: +50–80 mGal. Consistent with dense body (oceanic crust) beneath. No contradicting gravity signal found.</p>
+    </div>
+    <div class="kill-card">
+      <div class="verdict interpreted">🔶 INTERPRETED</div>
+      <h4>C4 — Carbonate platforms on PSCS flexural margin highs</h4>
+      <p>Tepat/Solisip buildups on structural highs. Tepat-1: 80 m buildup, oil + gas producer. Badali archetype framework consistent. Platform geometry: mounded external, chaotic internal seismic facies. Alternative: volcanic seamount or attenuated continental high.</p>
+    </div>
+    <div class="kill-card">
+      <div class="verdict interpreted">🔶 INTERPRETED · PHYSICS-DERIVED</div>
+      <h4>C5 — Serpentinite as master detachment</h4>
+      <p>Byerlee friction μ = 0.20–0.30 (vs 0.60–0.70 for surrounding rocks). Decouples carbonate reservoir from tectonic destruction. Carbonate Rigid Backstop AI contrast: 8,359 (g/cc · m/s). No direct serpentinite sampling from interface.</p>
+    </div>
+    <div class="kill-card">
+      <div class="verdict pending">🔷 PENDING</div>
+      <h4>KT-6 — Moho beneath Dangerous Grounds</h4>
+      <p>NW Sabah Moho at 22–30 km (measured) is continental orogen, not PSCS domain. Dangerous Grounds Moho data must be extracted separately.</p>
+      <div class="kill">KILL: Moho ≥ 20 km → continental, not oceanic PSCS</div>
+    </div>
+    <div class="kill-card">
+      <div class="verdict resolved">◆ RESOLVED</div>
+      <h4>KT-8 — 6–8 km reflector is thrust detachment</h4>
+      <p>Not top of PSCS oceanic crust (Franke et al. 2008). Triangle zone structure. Structural boundary, not oceanic basement interface. Marginally boosts H2 (Continental Detachment).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 04 BASEMENT HYPOTHESES ═══════════ -->
+<section class="section" id="s4">
+  <div class="section-num">04</div>
+  <h2>Basement Hypotheses</h2>
+  <p>Four competing hypotheses for the deep basement beneath the Kinabalu–Layang-Layang transition. All four remain alive. <strong style="color:var(--oc)">No hypothesis reaches the 0.70 posterior required for diagnostic promotion.</strong></p>
+
+  <div class="hypo-grid">
+    <div class="hypo-card">
+      <h4>H1 — Oceanic Crust · PSCS Remnant</h4>
+      <div class="prob">P = 0.30</div>
+      <div class="status">HOLD</div>
+      <p>True oceanic lithosphere subducted and accreted under the Sabah margin. Supported by Lahad Datu ophiolites (MORB) and slab tomography. KT-8 resolution (décollement, not oceanic top) slightly weakens this path. Magnetic quiet zone is consistent but non-unique.</p>
+      <div class="killer">KILL: Basement Vp &lt; 6.0 km/s · Granitic/metamorphic basement in well · No magnetic stripes + no oceanic Vp</div>
+    </div>
+    <div class="hypo-card">
+      <h4>H2 — Thrust Detachment over Continental Margin</h4>
+      <div class="prob">P = 0.30⁺</div>
+      <div class="status">HOLD</div>
+      <p>Deep reflector = décollement; basement is stretched continental crust. Marginally boosted by KT-8 resolution. NW Sabah Moho at 22–30 km supports continental thickness in the orogen.</p>
+      <div class="killer">KILL: Basement Vp 6.8–7.2 km/s · Magnetic isochron stripes · Sheeted dyke / pillow basalt in well</div>
+    </div>
+    <div class="hypo-card">
+      <h4>H3 — Rifted / Volcanic Continental Basement</h4>
+      <div class="prob">P = 0.20</div>
+      <div class="status">HOLD</div>
+      <p>Stretched continental crust with volcanic overprint. Requires confirmed magnetic highs (volcanic) that are not yet confirmed. No magnetic isochron stripes.</p>
+      <div class="killer">KILL: Absence of magnetic highs · Basement Vp 6.8–7.2 km/s · Pure granite/metamorphic without volcanics</div>
+    </div>
+    <div class="hypo-card">
+      <h4>H4 — Shale-Tectonic / Gravity-Driven Collapse</h4>
+      <div class="prob">P = 0.20</div>
+      <div class="status">HOLD</div>
+      <p>Deep deformation is sediment-driven, not basement-driven. Partially consistent with Kinabalu's deepwater toe-thrust architecture. Shallow structural style consistent; deep mechanism unconfirmed.</p>
+      <div class="killer">KILL: Basement Vp &gt; 5.0 km/s at deep reflector · Reflector &gt; 15 km · Crystalline basement in well</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 05 VERIFICATION PLAN ═══════════ -->
+<section class="section" id="s5">
+  <div class="section-num">05</div>
+  <h2>Verification &amp; Falsification Plan</h2>
+  <p>Five tests. Two are free or low-cost and should be executed immediately. One is the definitive 5-star discriminator but requires investment justification. <strong>Ordered by cost-to-discriminating-power ratio.</strong></p>
+
+  <table class="verify-table">
+    <thead><tr><th>Test</th><th>Method</th><th>Discriminates</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>KT-7<br>Depth Conversion</td>
+        <td>Depth-convert KT-7 reflector using KL2 T-D dataset (8 wells, Vo-K). If depth &lt; 10 km → H4. If depth &gt; 15 km → H1/H2. Tool already built: <code>kinabalu_depth_convert.py</code>.</td>
+        <td>Eliminates H4<br>Weakens H1</td>
+        <td class="cost cost-free">FREE</td>
+      </tr>
+      <tr>
+        <td>Magnetic +<br>Gravity</td>
+        <td>Reprocess existing aeromagnetic survey. Target: magnetic isochrons → H1, magnetic highs → H3, quiet zone + gravity high → H1/H2.</td>
+        <td>Eliminates H3<br>Discriminates H1 vs H2</td>
+        <td class="cost cost-low">LOW</td>
+      </tr>
+      <tr>
+        <td>Seismic<br>Geometry</td>
+        <td>Ramp-flat vs listric reinterpretation. H2 → ramp-flat (thrust duplex). H4 → listric growth faults in shale. On existing data.</td>
+        <td>Eliminates H4<br>Weakens H2</td>
+        <td class="cost cost-low">LOW</td>
+      </tr>
+      <tr>
+        <td>OBS Vp<br>Profile ★★★★★</td>
+        <td>Ocean Bottom Seismometer wide-angle refraction. Direct crustal Vp. Oceanic: 6.8–7.2 km/s, Moho &lt; 15 km. Continental: 5.8–6.3 km/s, Moho 20–35 km.</td>
+        <td>Kills all 4<br>simultaneously</td>
+        <td class="cost cost-high">HIGH</td>
+      </tr>
+      <tr>
+        <td>Basement<br>Well</td>
+        <td>Deep exploration well penetrating basement. Direct lithology: sheeted dyke → H1, granite → H2, volcaniclastic → H3, overpressured shale → H4.</td>
+        <td>Definitive for<br>all 4 hypotheses</td>
+        <td class="cost cost-high">HIGHEST</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:.85rem;color:var(--text2);margin-top:1.5rem">
+    <strong style="color:var(--mn)">Internal GEOX toolchain targets:</strong>
+    <span style="display:inline-block;margin:.5rem 1rem 0 0;font-family:var(--mono);font-size:.75rem">ANISO · EUREKA E5</span> Thomsen anisotropy (ε, δ, γ) — VTI/TTI velocity modelling for shale vs sandstone distinction.
+    <span style="display:inline-block;margin:.5rem 1rem 0 0;font-family:var(--mono);font-size:.75rem">BAYES · EUREKA E3</span> Bayesian prior from 8-well V<sub>int</sub> distribution — converts KL2 from reference set into live learning instrument.
+  </p>
+</section>
+
+<!-- ═══════════ 06 PROSPECT VERDICTS ═══════════ -->
+<section class="section" id="s6">
+  <div class="section-num">06</div>
+  <h2>Prospect Verdicts</h2>
+  <p>GEOX 6-Domain Discriminator (2026-06-29). Four prospects assessed. <strong style="color:var(--sg)">Two confirmed.</strong> <strong style="color:var(--ft)">One killed.</strong> One requires more data.</p>
+
+  <div class="prospect-grid">
+    <div class="prospect-card confirmed">
+      <h4>Tepat</h4>
+      <div class="verdict-tag tag-confirmed">CARBONATE CONFIRMED</div>
+      <p>Tepat-1 produces. 80 m carbonate buildup, 11 m gas, 37.5 m oil, ~1882 bopd. Strong 6-domain validation. Kill matrix: REVIEW (not KILL). PSCS model: NEUTRAL. <strong>The lead carbonate play in this basin.</strong></p>
+    </div>
+    <div class="prospect-card confirmed">
+      <h4>Solisip</h4>
+      <div class="verdict-tag tag-confirmed">CARBONATE CONFIRMED</div>
+      <p>Strong carbonate buildup validated by 6-domain differentiator. Kill matrix: REVIEW. PSCS model: NEUTRAL. SOLISIP-1 (TVDSS 0–3300 m, TWT 2900 ms) provides T-D control. Supports survival-driven Miocene carbonate model.</p>
+    </div>
+    <div class="prospect-card killed">
+      <h4>Layang</h4>
+      <div class="verdict-tag tag-killed">KILL — 888_JUDGE REQUIRED</div>
+      <p>Kill matrix flags structural geometry inconsistency. PSCS subduction model does not explain the Layang trap geometry. The distinction between Layang-Layang (rift-drift / carbonate-high archive) and Kinabalu (compression / toe-thrust archive) is relevant.</p>
+      <div class="judge-notice">⚑ 888_JUDGE review required before any drill recommendation. No drill decision without constitutional verdict.</div>
+    </div>
+    <div class="prospect-card uncertain">
+      <h4>Megah</h4>
+      <div class="verdict-tag tag-uncertain">MIXED UNCERTAIN</div>
+      <p>Insufficient domain validation. 6-domain score: 0.54 (below threshold). PSCS model: NEUTRAL. Additional seismic attribute data or Vp depth model required. <strong>Do not commit capital on current evidence.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 07 RECOMMENDATION ═══════════ -->
+<section class="section" id="s7">
+  <div class="section-num">07</div>
+  <h2>Recommendation</h2>
+  <p>The Kinabalu Basin carbonate play is <strong>technically defensible, geomechanically grounded, and anchored in two producing wells.</strong> The basement nature is unresolved but is not a blocker for the confirmed carbonate prospects — it is a blocker for any decision requiring knowledge of the deeper structural architecture. Execute the cheap tests first.</p>
+
+  <ol class="rec-list">
+    <li><strong>Run KT-7 depth conversion immediately.</strong><p>The tool exists. The data exists. This is the cheapest Bayesian update available to the project. Partially discriminates H1 from H4. Costs nothing beyond analyst time.</p></li>
+    <li><strong>Reprocess magnetic and gravity over the transition zone.</strong><p>Low cost, kills H3 quickly, provides the gravity-magnetic pairing to distinguish H1 (magnetic quiet + gravity high) from H2 (Bouguer low).</p></li>
+    <li><strong>Reinterpret seismic geometry for ramp-flat vs listric structure.</strong><p>KT-8 resolution (décollement) already in hand. Extend to wider structural framework. This is the correct technical response to the fault-plane vs sequence-boundary confusion from KL2 workstation review.</p></li>
+    <li><strong>Advance Tepat and Solisip.</strong><p>Both CARBONATE CONFIRMED by multi-domain assessment. Tepat-1 is a producer. The geomechanical survival argument explains both. These should be the capital priority.</p></li>
+    <li><strong>Hold Layang pending 888_JUDGE review.</strong><p>The kill verdict is based on structural geometry inconsistency with the PSCS model. Resolvable with additional seismic. No resource commitment without constitutional review.</p></li>
+    <li><strong>Do not use DRU as the collision unconformity in any further stratigraphic analysis.</strong><p>BMU/TCU (~23 Ma) is the collision onset. DRU (~15 Ma) is the slab breakoff response. All carbonate window timing arguments must use the corrected framework.</p></li>
+  </ol>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="doc-footer">
+  <span>GEOX · arifOS Federation · F2 TRUTH · all claims epistemic-ranked</span>
+  <span><a href="index.html">← Kinabalu Synthesis</a></span>
+  <span>2026-07-24 · LC-001 · PSCS Brief · KL2 Eureka</span>
+  <span>DITEMPA BUKAN DIBERI</span>
+</footer>
+
+</div>
+
+<script src="/_shared/trinity-nav.js" defer></script>
+</body>
+</html>
