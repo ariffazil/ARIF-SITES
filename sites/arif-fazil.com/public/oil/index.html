@@ -1,1445 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brent Crude (Oil) — Cognitive Clarity Dashboard · WEALTH</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oil — Cognitive Clarity Dashboard · WEALTH</title>
 <meta name="description" content="Sovereign Brent Crude oil market synthesis. Physical state, fiscal breakevens, and energy market intelligence.">
 <link rel="canonical" href="https://arif-fazil.com/oil/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- TradingView Lightweight Charts -->
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
-
-<!-- Embedded Agentic Reality Packet — live snapshot contract -->
-<script id="wealth-reality-packet" type="application/ld+json">
-{
-  "@context": "https://arif-fazil.com/schemas/v1/CapitalContext.jsonld",
-  "@type": "CapitalContext",
-  "schema": "wealth.snapshot.v1",
-  "organ": "WEALTH",
-  "asset": "BRENT_CRUDE_OIL",
-  "timestamp": null,
-  "observed_at": null,
-  "coherence_id": null,
-  "epistemic_tier": "OBS",
-  "confidence": 0.85,
-  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
-  "governance": {
-    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
-    "decision_floor": "888_HOLD"
-  },
-  "market_state": {
-    "symbol": "BZ=F",
-    "price_usd": null,
-    "change_pct": null,
-    "regime": null,
-    "rsi_14": null,
-    "ema_trend": null,
-    "key_levels": {
-      "support": [],
-      "resistance": []
-    }
-  },
-  "economic_trinity": {
-    "fx": {
-      "global": "Live DXY and rates from snapshot",
-      "malaysia": "Live USD/MYR and BNM OPR from snapshot",
-      "transmission": "PETRONAS USD crude export revenues convert into strong MYR domestic liquidity",
-      "epistemic": "OBS"
-    },
-    "inflation": {
-      "global": "Live US CPI from snapshot",
-      "malaysia": "Live Malaysia CPI from snapshot",
-      "transmission": "Budi MADANI targeted diesel subsidy rationalization prevents fiscal leakage without fuel price shock",
-      "epistemic": "OBS"
-    },
-    "unemployment": {
-      "global": "Live US labour data from snapshot",
-      "malaysia": "Live Malaysia labour data from snapshot",
-      "transmission": "High-wage employment in Pengerang Integrated Petroleum Complex (PIPC) and Kerteh supports industrial labor",
-      "epistemic": "OBS"
-    }
-  },
-  "dimensions": {
-    "reward": "Live market snapshot",
-    "energy": "Live market snapshot",
-    "entropy": "Live market snapshot",
-    "survival": "Human decision required; no commodity seal claimed"
-  }
-}
-</script>
-
-<!-- Unified Federation Header -->
-<script src="/_shared/unified-header-loader.js" defer></script>
-
+<link rel="stylesheet" href="/_shared/economics.css">
 <style>
-/* ═══════════════════════════════════════════════════════════════
-   BRENT CRUDE (OIL) COGNITIVE CLARITY DASHBOARD
-   Design: "Buka pagi, tengok chart, decide trade" — 60 seconds
-   Theme: Dark petroleum flame, vertical stratigraphy geometry
-   ═══════════════════════════════════════════════════════════════ */
+:root{--accent:#ff6b00;--accent-dim:#993d00;--accent-bg:rgba(255,107,0,0.08);--bg:#0b0707;--surface:#140c0a;--surface2:#1e120f}
+.market-map-bar{background:var(--surface);border-bottom:1px solid var(--line)}
+.market-map-inner{display:flex;align-items:center;gap:1rem;padding:0.4rem 1.5rem;overflow-x:auto}
+.market-map-home{font-family:var(--mono);font-weight:700;color:var(--accent);text-decoration:none;font-size:12px;white-space:nowrap}
+.market-map-links{display:flex;gap:6px;flex-wrap:nowrap;margin-left:auto}
+.market-map-link{font-size:10px;color:var(--dim);text-decoration:none;padding:2px 6px;border-radius:3px;white-space:nowrap;font-family:var(--mono)}
+.market-map-link:hover{color:var(--ink);background:var(--surface2)}
+.market-map-link.active{color:var(--accent);font-weight:600}
+.market-map-sep{color:var(--line);margin:0 2px}
+.macro-ticker{display:flex;gap:1rem;padding:0.35rem 1rem;background:var(--surface2);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--dim);overflow-x:auto}
+.macro-item{display:flex;gap:0.4rem;align-items:center}
+.macro-label{color:var(--faint)}
+.macro-value{color:var(--accent);font-weight:600}
+#machineDigestDrawer pre{font-family:var(--mono);font-size:10px}
+.pulse-price-cluster{display:flex;align-items:baseline;gap:12px}
+.pulse-price{font-family:var(--mono);font-size:42px;font-weight:700;line-height:1}
+.pulse-delta{font-family:var(--mono);font-size:16px;font-weight:600}
+canvas{width:100%!important}
+.shell{position:relative;z-index:1;padding:0 var(--gap-xl);margin-top:var(--gap-md)}
+.pulse-bar{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--gap-lg) var(--gap-xl);margin-bottom:var(--gap-md)}
+.pulse-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gap-md)}
 
-:root {
-  /* ── Core palette ── */
-  --bg:          #0b0707;
-  --surface:     #140c0a;
-  --surface2:    #1e120f;
-  --surface3:    #281814;
-  --border:      #331d17;
-  --border2:     #4a2920;
-
-  /* ── Petroleum Flame Orange Accent spectrum ── */
-  --accent:        #ff6b00;
-  --accent-dim:    #993d00;
-  --accent-bright: #ff8c00;
-  --accent-bg:     rgba(255,107,0,0.08);
-  --accent-glow:   rgba(255,107,0,0.25);
-
-  /* ── Text hierarchy ── */
-  --text:        #e2d8c8;
-  --text-dim:    #6a6050;
-  --text-mid:    #9a9080;
-  --text-bright: #f5f0e8;
-
-  /* ── Signal colors ── */
-  --green:       #22c55e;
-  --green-dim:   rgba(34,197,94,0.12);
-  --red:         #ef4444;
-  --red-dim:     rgba(239,68,68,0.12);
-  --amber:       #f59e0b;
-  --amber-dim:   rgba(245,158,11,0.12);
-  --cyan:        #00d4aa;
-  --cyan-dim:    rgba(0,212,170,0.12);
-  --blue:        #3b82f6;
-  --blue-dim:    rgba(59,130,246,0.12);
-
-  /* ── Spacing ── */
-  --gap-xs: 0.25rem;
-  --gap-sm: 0.5rem;
-  --gap-md: 1rem;
-  --gap-lg: 1.5rem;
-  --gap-xl: 2rem;
-  --gap-2xl: 3rem;
-
-  /* ── Typography ── */
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-sans: 'IBM Plex Sans', sans-serif;
-  --font-display: 'DM Serif Display', serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-/* ── Vertical Stratigraphy Reservoir Grid Background ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 107, 0, 0.1) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 50% at 95% 80%, rgba(239, 68, 68, 0.05) 0%, transparent 60%),
-    repeating-linear-gradient(0deg, rgba(255, 107, 0, 0.03) 0px, rgba(255, 107, 0, 0.03) 1px, transparent 1px, transparent 24px),
-    repeating-linear-gradient(90deg, rgba(255, 107, 0, 0.015) 0px, rgba(255, 107, 0, 0.015) 1px, transparent 1px, transparent 48px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── Shell ── */
-/* ── APEX Panel ── */
-.apex-panel { position: relative; z-index: 1; padding: 0 var(--gap-xl); margin-top: var(--gap-md); }
-.apex-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: var(--gap-lg) var(--gap-xl); }
-.apex-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--gap-md); }
-.apex-title { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; text-transform: uppercase; }
-.apex-verdict { font-family: var(--font-mono); font-size: 13px; font-weight: 600; padding: 4px 12px; border-radius: 6px; }
-.apex-verdict.seal { background: var(--green-dim); color: var(--green); }
-.apex-verdict.proceed { background: rgba(34,197,94,0.08); color: #4ade80; }
-.apex-verdict.sabar { background: var(--amber-dim); color: var(--amber); }
-.apex-verdict.hold { background: var(--red-dim); color: var(--red); }
-.apex-verdict-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); margin-left: auto; }
-.apex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-md); margin-bottom: var(--gap-md); }
-.apex-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: var(--gap-md); text-align: center; }
-.apex-card-label { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-.apex-card-value { font-family: var(--font-mono); font-size: 28px; font-weight: 600; color: var(--text-bright); line-height: 1.2; }
-.apex-card-sub { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
-.apex-state-card .apex-card-value.clarity { color: var(--green); }
-.apex-state-card .apex-card-value.stable { color: var(--cyan); }
-.apex-state-card .apex-card-value.chaos { color: var(--red); }
-.apex-primitives { display: flex; gap: var(--gap-lg); flex-wrap: wrap; }
-.apex-prim { font-family: var(--font-mono); font-size: 12px; color: var(--text-mid); padding: 3px 10px; background: var(--surface3); border-radius: 4px; }
-.apex-high { color: var(--green); }
-.apex-low { color: var(--red); }
-/* ── Events Panel ── */
-.events-panel { position: relative; z-index: 1; padding: 0 var(--gap-xl); margin-top: var(--gap-md); }
-.events-inner { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: var(--gap-lg) var(--gap-xl); }
-.events-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--gap-md); }
-.events-title { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.05em; }
-.events-source { font-size: 11px; color: var(--text-dim); }
-.events-list { display: flex; flex-direction: column; gap: var(--gap-xs); }
-.events-loading { color: var(--text-dim); font-size: 13px; }
-.event-row { display: grid; grid-template-columns: 100px 80px 1fr 80px 80px 80px; gap: var(--gap-sm); align-items: center; padding: 8px 12px; border-radius: 6px; font-family: var(--font-mono); font-size: 12px; }
-.event-row.high { background: rgba(239,68,68,0.06); border-left: 3px solid var(--red); }
-.event-row.medium { background: rgba(245,158,11,0.04); border-left: 3px solid var(--amber); }
-.event-date { color: var(--text-dim); }
-.event-time { color: var(--text-mid); }
-.event-name { color: var(--text-bright); font-weight: 500; }
-.event-actual { color: var(--text-bright); font-weight: 600; }
-.event-forecast { color: var(--text-mid); }
-.event-previous { color: var(--text-dim); }
-.event-actual.positive { color: var(--green); }
-.event-actual.negative { color: var(--red); }
-.events-empty { color: var(--text-dim); font-size: 13px; font-style: italic; }
-.event-alert { padding: 12px 16px; border-radius: 8px; font-family: var(--font-mono); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
-.event-alert.critical { background: rgba(239,68,68,0.15); border: 2px solid var(--red); color: var(--red); animation: pulse-alert 1s ease-in-out infinite; }
-.event-alert.warning { background: rgba(245,158,11,0.1); border: 1px solid var(--amber); color: var(--amber); }
-.event-alert.notice { background: rgba(59,130,246,0.08); border: 1px solid var(--blue); color: var(--blue); }
-@keyframes pulse-alert { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
-@media (max-width: 768px) {
-  .apex-grid { grid-template-columns: repeat(2, 1fr); }
-  .apex-primitives { gap: var(--gap-sm); }
-  .event-row { grid-template-columns: 80px 60px 1fr 60px; font-size: 11px; }
-  .event-forecast, .event-previous { display: none; }
-}
-
-.shell {
-  position: relative;
-  z-index: 1;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   1. TOP PULSE BAR — Sticky header for instant scan
-   ═══════════════════════════════════════════════════════════════ */
-.pulse-bar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(7,7,13,0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 0;
-}
-
-.pulse-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gap-lg);
-  flex-wrap: wrap;
-}
-
-/* Price cluster */
-.pulse-price-cluster {
-  display: flex;
-  align-items: baseline;
-  gap: var(--gap-md);
-}
-
-.pulse-price {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--accent-bright);
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.pulse-delta {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-}
-
-.pulse-delta.up {
-  color: var(--green);
-  background: var(--green-dim);
-}
-
-.pulse-delta.down {
-  color: var(--red);
-  background: var(--red-dim);
-}
-
-.pulse-pct {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-dim);
-}
-
-/* Bias pill */
-.pulse-bias {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-sm);
-}
-
-.bias-pill {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.35rem 0.8rem;
-  border-radius: 4px;
-  border: 1px solid;
-}
-
-.bias-pill.bullish {
-  color: var(--green);
-  border-color: rgba(34,197,94,0.3);
-  background: var(--green-dim);
-}
-
-.bias-pill.bearish {
-  color: var(--red);
-  border-color: rgba(239,68,68,0.3);
-  background: var(--red-dim);
-}
-
-.bias-pill.neutral {
-  color: var(--amber);
-  border-color: rgba(245,158,11,0.3);
-  background: var(--amber-dim);
-}
-
-.bias-confluence {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-}
-
-/* World driver */
-.pulse-driver {
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  color: var(--text-mid);
-  max-width: 280px;
-  line-height: 1.4;
-}
-
-.pulse-driver strong {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* Key levels */
-.pulse-levels {
-  display: flex;
-  gap: var(--gap-md);
-}
-
-.level-chip {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  border: 1px solid var(--border2);
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-
-.level-chip .val {
-  color: var(--text);
-  font-weight: 500;
-}
-
-.level-chip.support { border-color: rgba(34,197,94,0.25); }
-.level-chip.support .val { color: var(--green); }
-.level-chip.resistance { border-color: rgba(239,68,68,0.25); }
-.level-chip.resistance .val { color: var(--red); }
-
-/* Risk thermometer */
-.pulse-risk {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-sm);
-}
-
-.risk-label {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.risk-bars {
-  display: flex;
-  gap: 3px;
-}
-
-.risk-bar {
-  width: 6px;
-  height: 16px;
-  border-radius: 2px;
-  background: var(--border2);
-  transition: background 0.3s;
-}
-
-.risk-bar.active.low { background: var(--green); }
-.risk-bar.active.med { background: var(--amber); }
-.risk-bar.active.high { background: var(--red); }
-
-/* Timestamp + refresh */
-.pulse-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-sm);
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-}
-
-.pulse-meta .live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse-live 2s ease-in-out infinite;
-}
-
-@keyframes pulse-live {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   2. MAIN CHART SECTION — Clean, central, scannable
-   ═══════════════════════════════════════════════════════════════ */
-.chart-section {
-  margin-top: var(--gap-lg);
-  margin-bottom: var(--gap-lg);
-}
-
-.chart-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--gap-md);
-}
-
-.chart-title {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--accent-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-
-/* Timeframe pills */
-.tf-pills {
-  display: flex;
-  gap: 4px;
-}
-
-.tf-pill {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: all 0.15s;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.tf-pill:hover {
-  border-color: var(--accent-dim);
-  color: var(--text-mid);
-}
-
-.tf-pill.active {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-bg);
-}
-
-/* EMA toggles */
-.ema-toggles {
-  display: flex;
-  gap: var(--gap-sm);
-  align-items: center;
-}
-
-.ema-toggle {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  transition: all 0.15s;
-}
-
-.ema-toggle.active {
-  border-color: var(--amber);
-  color: var(--amber);
-  background: var(--amber-dim);
-}
-
-/* Chart container */
-.chart-container {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-#mainChart {
-  width: 100%;
-  height: 420px;
-}
-
-/* S/R zone overlays (positioned via JS) */
-.sr-zone {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  border-top: 1px dashed;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.sr-zone .sr-label {
-  position: absolute;
-  right: 8px;
-  top: -14px;
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  padding: 1px 4px;
-  border-radius: 2px;
-}
-
-.sr-zone.support {
-  border-color: rgba(34,197,94,0.4);
-}
-.sr-zone.support .sr-label {
-  color: var(--green);
-  background: var(--green-dim);
-}
-
-.sr-zone.resistance {
-  border-color: rgba(239,68,68,0.4);
-}
-.sr-zone.resistance .sr-label {
-  color: var(--red);
-  background: var(--red-dim);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   3. DUAL SIGNAL COLUMNS — Technical Forge + World Context
-   ═══════════════════════════════════════════════════════════════ */
-.signals-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap-lg);
-  margin-bottom: var(--gap-lg);
-}
-
-.signal-column {
-  display: flex;
-  flex-direction: column;
-  gap: var(--gap-md);
-}
-
-.column-header {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--accent-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  padding-bottom: var(--gap-sm);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: var(--gap-sm);
-}
-
-.column-header .icon {
-  font-size: 0.8rem;
-}
-
-/* Signal cards */
-.signal-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: var(--gap-md);
-  transition: border-color 0.2s;
-}
-
-.signal-card:hover {
-  border-color: var(--border2);
-}
-
-.signal-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--gap-sm);
-}
-
-.signal-card-title {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-mid);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.signal-score {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
-}
-
-.signal-score.bullish {
-  color: var(--green);
-  background: var(--green-dim);
-}
-
-.signal-score.bearish {
-  color: var(--red);
-  background: var(--red-dim);
-}
-
-.signal-score.neutral {
-  color: var(--amber);
-  background: var(--amber-dim);
-}
-
-.signal-card-body {
-  font-size: 0.82rem;
-  color: var(--text-mid);
-  line-height: 1.6;
-  margin-bottom: var(--gap-sm);
-}
-
-.signal-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.signal-confidence {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-}
-
-.confidence-tier {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 2px;
-  border: 1px solid var(--border2);
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.confidence-tier.t1 { color: var(--red); border-color: rgba(239,68,68,0.3); }
-.confidence-tier.t2 { color: var(--amber); border-color: rgba(245,158,11,0.3); }
-.confidence-tier.t3 { color: var(--green); border-color: rgba(34,197,94,0.3); }
-
-/* Trade quality card */
-.trade-quality {
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: 6px;
-  padding: var(--gap-md);
-}
-
-.trade-quality-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--gap-md);
-}
-
-.trade-quality-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--text);
-}
-
-.trade-quality-verdict {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.trade-quality-verdict.good {
-  color: var(--green);
-  background: var(--green-dim);
-  border: 1px solid rgba(34,197,94,0.3);
-}
-
-.trade-quality-verdict.poor {
-  color: var(--red);
-  background: var(--red-dim);
-  border: 1px solid rgba(239,68,68,0.3);
-}
-
-.trade-quality-verdict.marginal {
-  color: var(--amber);
-  background: var(--amber-dim);
-  border: 1px solid rgba(245,158,11,0.3);
-}
-
-.trade-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap-md);
-}
-
-.trade-metric {
-  text-align: center;
-}
-
-.trade-metric-label {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.2rem;
-}
-
-.trade-metric-value {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--text);
-}
-
-.trade-metric-value.good { color: var(--green); }
-.trade-metric-value.poor { color: var(--red); }
-.trade-metric-value.marginal { color: var(--amber); }
-
-/* World driver card */
-.world-driver-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent-dim);
-  border-radius: 6px;
-  padding: var(--gap-md);
-  transition: border-left-color 0.2s;
-}
-
-.world-driver-card:hover {
-  border-left-color: var(--accent);
-}
-
-.world-driver-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--gap-xs);
-}
-
-.world-driver-category {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--accent-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.world-driver-arrow {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.world-driver-arrow.up { color: var(--green); }
-.world-driver-arrow.down { color: var(--red); }
-.world-driver-arrow.flat { color: var(--amber); }
-
-.world-driver-impact {
-  font-size: 0.82rem;
-  color: var(--text-mid);
-  line-height: 1.5;
-}
-
-.world-driver-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: var(--gap-sm);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   4. BOTTOM SYNTHESIS & GATE BAND — Human sovereignty gate
-   ═══════════════════════════════════════════════════════════════ */
-.synthesis-band {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: var(--gap-xl);
-  margin-bottom: var(--gap-lg);
-  position: relative;
-  overflow: hidden;
-}
-
-.synthesis-band::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-dim));
-}
-
-.synthesis-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--gap-lg);
-}
-
-.synthesis-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--text);
-}
-
-.synthesis-title em {
-  font-style: italic;
-  color: var(--accent);
-}
-
-/* Confluence meter */
-.confluence-meter {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-md);
-}
-
-.confluence-label {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.confluence-bar-track {
-  width: 120px;
-  height: 6px;
-  background: var(--border);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.confluence-bar-fill {
-  height: 100%;
-  border-radius: 3px;
-  transition: width 1s cubic-bezier(0.4,0,0.2,1);
-}
-
-.confluence-bar-fill.low { background: var(--red); }
-.confluence-bar-fill.med { background: var(--amber); }
-.confluence-bar-fill.high { background: var(--green); }
-
-.confluence-score {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* Verdict paragraph */
-.synthesis-verdict {
-  font-size: 0.9rem;
-  color: var(--text-mid);
-  line-height: 1.8;
-  max-width: 80ch;
-  margin-bottom: var(--gap-lg);
-}
-
-.synthesis-verdict strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-/* Action stance buttons */
-.action-stance {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-md);
-  margin-bottom: var(--gap-lg);
-}
-
-.stance-btn {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 4px;
-  border: 1px solid var(--border2);
-  background: transparent;
-  color: var(--text-dim);
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: all 0.15s;
-}
-
-.stance-btn:hover {
-  border-color: var(--accent-dim);
-  color: var(--text-mid);
-}
-
-.stance-btn.active {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-bg);
-}
-
-.stance-btn .stance-icon {
-  margin-right: 0.4rem;
-}
-
-.stance-note {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  font-style: italic;
-}
-
-/* F13 Sovereign gate */
-.sovereign-gate {
-  background: var(--surface2);
-  border: 1px solid var(--border2);
-  border-radius: 6px;
-  padding: var(--gap-md);
-  text-align: center;
-}
-
-.sovereign-gate-icon {
-  font-size: 1.5rem;
-  margin-bottom: var(--gap-sm);
-}
-
-.sovereign-gate-text {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: var(--gap-xs);
-}
-
-.sovereign-gate-sub {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  max-width: 50ch;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   5. FOOTER — Compact federation nav + seal
-   ═══════════════════════════════════════════════════════════════ */
-.dash-footer {
-  border-top: 1px solid var(--border);
-  padding: var(--gap-lg) 0;
-  margin-bottom: var(--gap-xl);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: var(--gap-md);
-}
-
-.footer-brand-cluster {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-md);
-}
-
-.footer-brand {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.footer-brand:hover { color: var(--accent-bright); }
-
-.footer-sep {
-  color: var(--border2);
-}
-
-.footer-page {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.footer-federation {
-  display: flex;
-  align-items: center;
-  gap: var(--gap-md);
-}
-
-.footer-fed-link {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: color 0.2s;
-}
-
-.footer-fed-link:hover { color: var(--accent); }
-
-.footer-seal {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  color: var(--accent-dim);
-  letter-spacing: 0.15em;
-}
-
-.footer-ditempa {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  color: var(--text-dim);
-  font-style: italic;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   RESPONSIVE — Desktop-first, graceful collapse
-   ═══════════════════════════════════════════════════════════════ */
-@media (max-width: 1100px) {
-  .signals-grid {
-    grid-template-columns: 1fr;
-  }
-  .pulse-levels { display: none; }
-}
-
-@media (max-width: 860px) {
-  .pulse-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--gap-sm);
-  }
-  .pulse-price { font-size: 1.6rem; }
-  .pulse-driver { max-width: 100%; }
-  #mainChart { height: 320px; }
-  .trade-metrics { grid-template-columns: 1fr; gap: var(--gap-sm); }
-  .action-stance { flex-wrap: wrap; }
-  .dash-footer { flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 600px) {
-  .shell { padding: 0 1rem; }
-  .pulse-price { font-size: 1.4rem; }
-  #mainChart { height: 260px; }
-  .synthesis-band { padding: var(--gap-md); }
-  .tf-pills { flex-wrap: wrap; }
-}
-
-/* ── Utility ── */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ── Loading skeleton ── */
-.skeleton {
-  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
-  background-size: 200% 100%;
-  animation: skeleton-shimmer 1.5s ease-in-out infinite;
-  border-radius: 4px;
-}
-
-@keyframes skeleton-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-  <!-- Asset Nav — Cross-dashboard navigation -->
-  .asset-nav {
-    display: flex; align-items: center; gap: var(--gap-md);
-    padding: var(--gap-sm) 0; margin-bottom: var(--gap-sm);
-    font-family: var(--font-mono); font-size: 0.65rem;
-    text-transform: uppercase; letter-spacing: 0.12em;
-  }
-  .asset-nav a { color: var(--text-dim); text-decoration: none; padding: 0.25rem 0.6rem; border-radius: 3px; border: 1px solid var(--border); transition: all 0.15s; }
-  .asset-nav a:hover { border-color: var(--gold-dim, #c9a84c44); color: var(--text-mid, #aaa); }
-  .asset-nav a.active { border-color: var(--gold, #c9a84c); color: var(--gold, #c9a84c); background: rgba(201,168,76,0.08); }
-  .asset-nav .sep { color: var(--text-dim); opacity: 0.3; }
-
-  /* Macro Ticker Bar — DXY/US10Y/VIX live strip */
-  .macro-ticker {
-    display: flex; align-items: center; gap: 1.5rem;
-    padding: 0.4rem 0; margin-bottom: 0.5rem;
-    font-family: var(--font-mono); font-size: 0.7rem;
-    letter-spacing: 0.08em; color: var(--text-dim);
-    border-bottom: 1px solid var(--border, #1e1e32);
-    overflow-x: auto; white-space: nowrap;
-  }
-  .macro-ticker .macro-item { display: flex; align-items: center; gap: 0.4rem; }
-  .macro-ticker .macro-label { text-transform: uppercase; opacity: 0.6; }
-  .macro-ticker .macro-value { color: var(--text-mid, #aaa); font-weight: 600; }
-  .macro-ticker .macro-change { font-size: 0.65rem; }
-  .macro-ticker .macro-change.up { color: var(--state-operational, #00C853); }
-  .macro-ticker .macro-change.down { color: var(--state-danger, #D50000); }
-  .macro-ticker .macro-change.flat { color: var(--text-dim); }
-  @media (max-width: 600px) { .macro-ticker { gap: 1rem; font-size: 0.6rem; } }
-
-  /* ── Constellation Bridge ── */
-  .bridge-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--gap-md);
-  }
-  .bridge-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    color: var(--text-bright);
-  }
-  .bridge-subtitle {
-    font-size: 0.85rem;
-    color: var(--text-mid);
-    margin-bottom: 2.5rem;
-  }
-  .bridge-nodes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .bridge-node {
-    flex: 1;
-    padding: 2rem 2.5rem;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    min-width: 200px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-    position: relative;
-    z-index: 1;
-  }
-  .bridge-node:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px var(--accent-glow);
-  }
-  .bridge-node-tag {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
-  }
-  .bridge-node-name {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-  .bridge-node-name.geox  { color: var(--cyan); }
-  .bridge-node-name.arifos { color: var(--text); }
-  .bridge-node-name.wealth { color: var(--accent); }
-  
-  .bridge-node-desc {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-top: 0.35rem;
-    line-height: 1.4;
-  }
-  .bridge-arrow {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent-dim);
-    padding: 0 1rem;
-    z-index: 0;
-  }
-  .bridge-causal {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--accent-dim);
-    margin-top: 2rem;
-    letter-spacing: 0.1em;
-    text-align: center;
-  }
-
-
-  /* ── Constellation Bridge ── */
-  .bridge-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--gap-md);
-  }
-  .bridge-title {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    color: var(--text-bright);
-  }
-  .bridge-subtitle {
-    font-size: 0.85rem;
-    color: var(--text-mid);
-    margin-bottom: 2.5rem;
-  }
-  .bridge-nodes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .bridge-node {
-    flex: 1;
-    padding: 2rem 2.5rem;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    min-width: 200px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.2s ease;
-    position: relative;
-    z-index: 1;
-  }
-  .bridge-node:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 15px var(--accent-glow);
-  }
-  .bridge-node-tag {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
-  }
-  .bridge-node-name {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-  .bridge-node-name.geox  { color: var(--cyan); }
-  .bridge-node-name.arifos { color: var(--text); }
-  .bridge-node-name.wealth { color: var(--accent); }
-  
-  .bridge-node-desc {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-top: 0.35rem;
-    line-height: 1.4;
-  }
-  .bridge-arrow {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--accent-dim);
-    padding: 0 1rem;
-    z-index: 0;
-  }
-  .bridge-causal {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--accent-dim);
-    margin-top: 2rem;
-  /* ── Sovereign Market Navigation Map Bar ── */
-  .market-map-bar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #0b0707;
-    border-bottom: 2px solid #331d17;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    width: 100%;
-  }
-
-  .market-map-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0.5rem 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .market-map-home {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: #fff;
-    flex-shrink: 0;
-  }
-
-  .home-icon {
-    width: 28px;
-    height: 28px;
-    border: 1.5px solid #ff6b00;
-    color: #ff6b00;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.75rem;
-    font-weight: 700;
-    background: rgba(255,107,0,0.1);
-  }
-
-  .home-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #f5f0e8;
-    text-transform: uppercase;
-  }
-
-  .market-map-links {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .market-map-links::-webkit-scrollbar { display: none; }
-
-  .market-map-link {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #8a8070;
-    text-decoration: none;
-    padding: 0.35rem 0.75rem;
-    border-radius: 4px;
-    border: 1px solid #2a1814;
-    background: #140c0a;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  .market-map-link:hover {
-    color: #fff;
-    border-color: #4a2920;
-    background: #1e120f;
-  }
-
-  .market-map-link.gold.active {
-    color: #ffd700;
-    border-color: #e2b714;
-    background: rgba(226,183,20,0.15);
-    box-shadow: 0 0 10px rgba(226,183,20,0.25);
-  }
-
-  .market-map-link.oil.active {
-    color: #ff8c00;
-    border-color: #ff6b00;
-    background: rgba(255,107,0,0.15);
-    box-shadow: 0 0 10px rgba(255,107,0,0.25);
-  }
-
-  .market-map-link.gas.active {
-    color: #38bdf8;
-    border-color: #00f0ff;
-    background: rgba(0,240,255,0.15);
-    box-shadow: 0 0 10px rgba(0,240,255,0.25);
-  }
-
-  .market-map-link.wealth.active {
-    color: #4ade80;
-    border-color: #22c55e;
-    background: rgba(34,197,94,0.15);
-    box-shadow: 0 0 10px rgba(34,197,94,0.25);
-  }
-
-  .market-map-sep {
-    color: #331d17;
-    font-size: 0.8rem;
-    user-select: none;
-    margin: 0 0.2rem;
-  }
-
-  @media (max-width: 768px) {
-    .market-map-inner { padding: 0.4rem 0.75rem; gap: 0.5rem; }
-    .home-text { display: none; }
-    .market-map-link { font-size: 0.62rem; padding: 0.25rem 0.5rem; }
-  }
 </style>
-<script src="/_shared/rasa-dunia-widget.js" defer></script>
 </head>
-<body>
-
-<nav class="market-map-bar" aria-label="Sovereign Navigation Map">
-  <div class="market-map-inner">
-    <a href="https://arif-fazil.com/" class="market-map-home">
-      <span class="home-icon">AF</span>
-      <span class="home-text">ARIF FAZIL</span>
-    </a>
-    
-    <div class="market-map-links">
-      <a href="/gold/" class="market-map-link gold">🟡 GOLD (XAU)</a>
-      <a href="/oil/" class="market-map-link oil active">🛢️ BRENT OIL</a>
-      <a href="/gas/" class="market-map-link gas">⛽ NATURAL GAS</a>
-      <a href="/wealth/" class="market-map-link wealth">📊 WEALTH TERMINAL</a>
-      <span class="market-map-sep">|</span>
-      <a href="/geox/" class="market-map-link geox">🌍 EARTH</a>
-      <a href="/well/" class="market-map-link well">❤️ HUMAN</a>
-      <a href="https://arif-fazil.com/writings" class="market-map-link writings">✍️ WRITINGS</a>
-      <button class="market-map-link agent-digest-btn" onclick="toggleMachineDigest()" title="View Machine-Readable JSON-LD Context Packet">⚡ MACHINE DIGEST</button>
-    </div>
+<body class="fam-oil">
+<!-- ZEN PULSE -->
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">OIL · WEALTH</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">Live market intelligence. Evidence-gated, human-decided.</span></div>
+  <div class="zp-nav">
+    <a href="/vitals/"><span class="badge" style="background:var(--hold)"></span>PETRONAS</a>
+    <a href="/malaysia/"><span class="badge" style="background:var(--sabar)"></span>MALAYSIA</a>
+    <a href="/oil/" class='here'><span class="badge" style="background:var(--sabar)"></span>OIL</a>
+    <a href="/gas/"><span class="badge" style="background:var(--sabar)"></span>GAS</a>
+    <a href="/gold/"><span class="badge" style="background:var(--seal)"></span>GOLD</a>
   </div>
-</nav>
+</div>
+<div class="cmd-bar">
+  <span class="cmd-organ">PETRONAS-OIL-SENSE</span><span class="cmd-sep">·</span>
+  <span class="cmd-tier">TIER: READ-ONLY</span><span class="cmd-sep">·</span>
+  <span>REPORTS-TO: SENSE111</span><span class="cmd-sep">·</span>
+  <span>CEILING: 777_FORGE</span>
+  <span style="margin-left:auto"></span>
+  <span class="cmd-fresh"><span class="dot"></span>FRESH · sealed 2026-07-24 · next audit 2026-10-24</span>
+  <span class="cmd-sep">·</span>
+  <span class="cmd-chain"><span>←</span> SENSE111 <span>→</span> A-FORGE 777 <span>→</span> 888_JUDGE</span>
+</div>
+
+
+
+
+<!-- original nav replaced by zen-pulse -->
 
 <!-- Agentic Machine Digest Drawer Overlay -->
 <div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:#140c0a; border:2px solid #ff6b00; border-radius:8px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.8); font-family:'IBM Plex Mono',monospace; overflow:hidden;">
@@ -1604,7 +228,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         <div class="ema-toggles">
           <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
           <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
-          <button class="ema-toggle" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
+          <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
         </div>
       </div>
       <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
@@ -1625,7 +249,41 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
        3. DUAL SIGNAL COLUMNS
        Left: Technical Forge | Right: World Context
        ═══════════════════════════════════════════════════════════ -->
-  <section class="signals-grid" aria-label="Trading signals">
+  <div class="apex-panel" style="margin-top:var(--gap-md)">
+  <div class="apex-inner">
+    <div class="apex-header">
+      <span class="apex-title">🔮 PREDICTION ENGINE · BRENT CRUDE</span>
+      <span class="apex-verdict-meta">INTERPRET · model-generated · not trading advice</span>
+    </div>
+    <div class="apex-grid">
+      <div class="apex-card">
+        <div class="apex-card-label">Current</div>
+        <div class="apex-card-value" style="font-size:22px">$85.00</div>
+        <div class="apex-card-sub">last tick</div>
+      </div>
+      <div class="apex-card">
+        <div class="apex-card-label">7-Day Range</div>
+        <div class="apex-card-value" style="font-size:22px">$81.50 – $88.50</div>
+        <div class="apex-card-sub">next week projection</div>
+      </div>
+      <div class="apex-card">
+        <div class="apex-card-label">Bias</div>
+        <div class="apex-card-value" style="font-size:22px">BULLISH ↑</div>
+        <div class="apex-card-sub">72% confidence</div>
+      </div>
+      <div class="apex-card">
+        <div class="apex-card-label">Key Level</div>
+        <div class="apex-card-value" style="font-size:22px">$82.80</div>
+        <div class="apex-card-sub">Support 1</div>
+      </div>
+    </div>
+    <div class="macro-ticker" style="margin-top:0;border-radius:8px">
+      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value">$82.80</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value">$80.20</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value">$87.30</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value">$89.50</span></div><div class="macro-item"><span class="macro-label">50-day MA</span><span class="macro-value">$83.40</span></div><div class="macro-item"><span class="macro-label">200-day MA</span><span class="macro-value">$79.80</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="signals-grid" aria-label="Trading signals">
 
     <!-- ── LEFT: Technical Forge ── -->
     <div class="signal-column">
@@ -1973,7 +631,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   };
 
   let currentTF = '4H';
-  let activeEMAs = { '20': true, '50': true, '200': false };
+  let activeEMAs = { '20': true, '50': true, '200': true };
   let chartDataCache = {};
   let latestSnapshot = null;
 
@@ -2020,46 +678,60 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       return await resp.json();
     } catch (err) {
-      console.warn(`[Gold] ${endpoint} failed:`, err.message);
+      console.warn(`[Oil] ${endpoint} failed:`, err.message);
       return null;
     }
   }
 
-  // ── Chart initialization ──
-  const chartContainer = $('mainChart');
-  const chart = LightweightCharts.createChart(chartContainer, {
-    layout: {
-      background: { type: 'solid', color: '#0d0d1a' },
-      textColor: '#6a6050',
-      fontFamily: "'IBM Plex Mono', monospace",
-      fontSize: 11,
-    },
-    grid: {
-      vertLines: { color: 'rgba(30,30,50,0.5)' },
-      horzLines: { color: 'rgba(30,30,50,0.5)' },
-    },
-    crosshair: {
-      mode: LightweightCharts.CrosshairMode.Normal,
-      vertLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
-      horzLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
-    },
-    rightPriceScale: { borderColor: '#1e1e32', scaleMargins: { top: 0.1, bottom: 0.1 } },
-    timeScale: { borderColor: '#1e1e32', timeVisible: true, secondsVisible: false },
-    handleScroll: { vertTouchDrag: false },
-  });
-
-  const candleSeries = chart.addCandlestickSeries({
-    upColor: '#22c55e', downColor: '#ef4444',
-    borderUpColor: '#22c55e', borderDownColor: '#ef4444',
-    wickUpColor: '#22c55e', wickDownColor: '#ef4444',
-  });
-
-  // EMA series registry
-  const emaSeries = {
-    '20':  chart.addLineSeries({ color: '#f59e0b', lineWidth: 1, visible: activeEMAs['20'] }),
-    '50':  chart.addLineSeries({ color: '#3b82f6', lineWidth: 1, visible: activeEMAs['50'] }),
-    '200': chart.addLineSeries({ color: '#888888', lineWidth: 1, visible: activeEMAs['200'] }),
-  };
+  // ── Chart initialization (guarded — chart failure must never kill data panels) ──
+  let chart = null, candleSeries = null, emaSeries = {};
+  function initChart() {
+    if (chart) return true;
+    const chartContainer = $('mainChart');
+    if (!chartContainer) return false;
+    if (typeof LightweightCharts === 'undefined') {
+      chartContainer.innerHTML = '<div style="padding:3rem 1rem;text-align:center;color:#8a8378;font-family:monospace;">&#9888; CHART OFFLINE &mdash; data panels live</div>';
+      return false;
+    }
+    try {
+      chart = LightweightCharts.createChart(chartContainer, {
+        layout: {
+          background: { type: 'solid', color: '#0d0d1a' },
+          textColor: '#6a6050',
+          fontFamily: "'IBM Plex Mono', monospace",
+          fontSize: 11,
+        },
+        grid: {
+          vertLines: { color: 'rgba(30,30,50,0.5)' },
+          horzLines: { color: 'rgba(30,30,50,0.5)' },
+        },
+        crosshair: {
+          mode: LightweightCharts.CrosshairMode.Normal,
+          vertLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
+          horzLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
+        },
+        rightPriceScale: { borderColor: '#1e1e32', scaleMargins: { top: 0.1, bottom: 0.1 } },
+        timeScale: { borderColor: '#1e1e32', timeVisible: true, secondsVisible: false },
+        handleScroll: { vertTouchDrag: false },
+      });
+      candleSeries = chart.addCandlestickSeries({
+        upColor: '#22c55e', downColor: '#ef4444',
+        borderUpColor: '#22c55e', borderDownColor: '#ef4444',
+        wickUpColor: '#22c55e', wickDownColor: '#ef4444',
+      });
+      emaSeries = {
+        '20':  chart.addLineSeries({ color: '#f59e0b', lineWidth: 1, visible: activeEMAs['20'] }),
+        '50':  chart.addLineSeries({ color: '#3b82f6', lineWidth: 1, visible: activeEMAs['50'] }),
+        '200': chart.addLineSeries({ color: '#888888', lineWidth: 1, visible: activeEMAs['200'] }),
+      };
+      return true;
+    } catch (err) {
+      console.warn('[Oil] chart init failed:', err.message);
+      chartContainer.innerHTML = '<div style="padding:3rem 1rem;text-align:center;color:#8a8378;font-family:monospace;">&#9888; CHART OFFLINE &mdash; data panels live</div>';
+      chart = null; candleSeries = null; emaSeries = {};
+      return false;
+    }
+  }
 
   // ── Position markers (Entry, SL, TP) ──
   let positionLines = [];
@@ -2072,6 +744,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   }
 
   function plotPositionMarkers(sig) {
+    if (!candleSeries) return;
     clearPositionLines();
     if (!sig.entry_price || !sig.stop_loss || sig.direction === 'FLAT') return;
 
@@ -2159,9 +832,10 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   async function renderChart(tf) {
     currentTF = tf;
+    if (!initChart()) return;
     const candles = await loadChartData(tf);
     if (!candles || candles.length === 0) {
-      console.warn('[Gold] No chart data for TF:', tf);
+      console.warn('[Oil] No chart data for TF:', tf);
       return;
     }
 
@@ -2304,7 +978,11 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
     // Timestamp — LIVE marker
     const now = new Date(snapshot.observed_at);
-    $('pulseTimestamp').innerHTML = '<span style="color:var(--green);">● LIVE</span> ' + now.toLocaleString('en-MY', {
+    const isStale = (data.stale === true) || (Date.now() - now.getTime() > 10 * 60 * 1000);
+    const freshBadge = isStale
+      ? '<span style="color:var(--amber);">⚠ STALE</span> '
+      : '<span style="color:var(--green);">● LIVE</span> ';
+    $('pulseTimestamp').innerHTML = freshBadge + now.toLocaleString('en-MY', {
       timeZone: CONFIG.TIMEZONE, year: 'numeric', month: '2-digit',
       day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
     }) + ' MYT';
@@ -2631,6 +1309,8 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   document.addEventListener('DOMContentLoaded', async () => {
     // 💉 LIVE DATA FIRST — truth before beauty
     await refreshSnapshot();
+    refreshTicker();
+    refreshMacro();
     
     // Then chart + heavy stuff in background
     renderChart('4H');
@@ -2648,6 +1328,83 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   });
 
 </script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a202176a6ce26039',t:'MTc4NDg4NzM2OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script id="wealth-reality-packet" type="application/ld+json">
+{
+  "@context": "https://arif-fazil.com/schemas/v1/CapitalContext.jsonld",
+  "@type": "CapitalContext",
+  "schema": "wealth.snapshot.v1",
+  "organ": "WEALTH",
+  "asset": "BRENT_CRUDE_OIL",
+  "timestamp": "2026-07-24T19:43:29.599795+08:00",
+  "observed_at": "2026-07-24T11:45:04.110631+00:00",
+  "coherence_id": null,
+  "epistemic_tier": "OBS",
+  "confidence": 0.88,
+  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "governance": {
+    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
+    "decision_floor": "888_HOLD"
+  },
+  "market_state": {
+    "symbol": "BZ=F",
+    "price_usd": 92.04,
+    "change_pct": -0.07,
+    "regime": "OVERSOLD",
+    "rsi_14": 26,
+    "ema_trend": "BULLISH",
+    "key_levels": {
+      "support": [
+        92.02,
+        91.91,
+        91.79
+      ],
+      "resistance": [
+        92.14,
+        92.25,
+        93.62
+      ]
+    }
+  }
+}
+</script> <script src="/_shared/rasa-dunia-widget.js" defer></script>
+function toggleMachineDigest() {
+  const drawer = document.getElementById('machineDigestDrawer');
+  const code = document.getElementById('machineDigestCode');
+  if (!drawer) return;
+  if (drawer.style.display === 'none' || !drawer.style.display) {
+    const packet = document.getElementById('wealth-reality-packet');
+    if (packet && code) {
+      try {
+        const parsed = JSON.parse(packet.textContent);
+        code.textContent = JSON.stringify(parsed, null, 2);
+      } catch(e) {
+        code.textContent = packet.textContent;
+      }
+    }
+    drawer.style.display = 'block';
+  } else {
+    drawer.style.display = 'none';
+  }
+}
+if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
+  window.addEventListener('DOMContentLoaded', toggleMachineDigest);
+}
+</script>
+<div class="agent-id" style="margin:var(--sp-4) var(--gap-xl) 0">
+  <h4>⚙️ AGENT IDENTITY — PETRONAS·φ Crude Oil</h4>
+  <div class="row"><span class="k">Tier</span><span class="v">OBSERVE — senses, never actuates</span></div>
+  <div class="row"><span class="k">Reports to</span><span class="v">SENSE111 → arifOS kernel → F13 SOVEREIGN</span></div>
+  <div class="row"><span class="k">Cannot</span><span class="v cannot">Buy crude · Sell crude · Recommend positions · Allocate capital · Signal trades</span></div>
+  <div class="row"><span class="k">Data</span><span class="v">PETRONAS FY2025 IFR · DOSM · Moody's A3 stable</span></div>
+  <div class="row"><span class="k">Sovereign</span><span class="v">Muhammad Arif bin Fazil (F13 SOVEREIGN)</span></div>
+</div>
+
+<div class="refusal" style="margin:var(--sp-4) var(--gap-xl) var(--sp-5)">
+  <h3>⛔ REFUSAL SURFACE · CAPABILITY BOUNDARY</h3>
+  <p><b>This organ senses; it does not act.</b> No buy, sell, hold, or allocation signals. No position recommendations. It reports institutional and market distance-to-break only. Actuation stays behind the A-FORGE governance gate. Every metric carries its epistemic tag on its face. The organ cannot be more objective than the judgments encoded in its <code>safe</code> and <code>trip</code> anchors.</p>
+</div>
 
 </body>
 </html>

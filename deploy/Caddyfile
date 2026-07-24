@@ -218,6 +218,12 @@ arif-fazil.com {
 		try_files {path} {path}/index.html /verify/index.html
 		file_server
 	}
+	# SyedOS Dashboard — Abang Sado nasi lemak + trading monitor (2026-07-24)
+	handle /sado/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /sado/index.html
+		file_server
+	}
 	# Static data snapshots — machine-readable JSON for federation surface fallback (2026-07-20)
 	handle /data/* {
 		root * /var/www/html/arif
@@ -366,6 +372,13 @@ arif-fazil.com {
 		file_server
 	}
 	# GEOX earth globe (2026-07-15) — Macrostrat geological map + MapLibre
+	# VITALS + Malaysia → consolidated under wealth.arif-fazil.com (2026-07-24)
+	# VITALS + Malaysia → wealth.arif-fazil.com (2026-07-24)
+	@vitals_path path /vitals /vitals/*
+	redir @vitals_path https://wealth.arif-fazil.com{uri} 301
+	@malaysia_path path /malaysia /malaysia/*
+	redir @malaysia_path https://wealth.arif-fazil.com{uri} 301
+
 	handle /geox/* {
 		root * /var/www/html/geox-app
 		try_files {path} {path}/index.html /index.html
@@ -1511,6 +1524,27 @@ ollama.arif-fazil.com {
 # ═══════════════════════════════════════════════════════════════════════
 # OPENCLAW WEBHOOK PROXY
 # ═══════════════════════════════════════════════════════════════════════
+# ═══════════════════════════════════════════════════════════════════════
+# SyedOS — Abang Sado personal portal (2026-07-24)
+# ═══════════════════════════════════════════════════════════════════════
+syedos.arif-fazil.com {
+	import tls_origin
+	encode zstd gzip
+	root * /var/www/html/syedos
+
+	# Dashboard — full interactive page
+	redir /dashboard /dashboard/ 308
+	handle /dashboard/* {
+		try_files /dashboard.html /index.html
+		file_server
+	}
+
+	handle {
+		try_files {path} {path}/index.html /index.html
+		file_server
+	}
+}
+
 claw.arif-fazil.com {
 	import tls_origin
 	# Proxy /telegram webhook calls to OpenClaw gateway

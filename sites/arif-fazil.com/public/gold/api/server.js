@@ -6,6 +6,7 @@
 
 const http = require('http');
 const { execFile } = require('child_process');
+const crypto = require('crypto');
 const path = require('path');
 const url = require('url');
 
@@ -63,10 +64,52 @@ const handlers = {
     const c = getCache('calendar'); if (c) return c;
     const d = await runPython('calendar'); setCache('calendar', d); return d;
   },
+  '/api/gold/snapshot': async () => {
+    const c = getCache('snapshot'); if (c) return c;
+    const [ticker, levels, macro] = await Promise.all([
+      runPython('ticker').catch(() => null),
+      runPython('levels').catch(() => null),
+      runPython('macro').catch(() => null),
+    ]);
+    if (!ticker || ticker.error) throw new Error('snapshot: ticker unavailable');
+    const observed_at = new Date().toISOString();
+    const unsigned = {
+      schema: 'wealth.snapshot.v1',
+      asset: 'gold',
+      observed_at,
+      source: 'yfinance + technical analysis (WEALTH commodity engine)',
+      ticker: {
+        symbol: ticker.symbol, price: ticker.price, change: ticker.change,
+        changePct: ticker.changePct, rsi: ticker.rsi, rsiState: ticker.rsiState,
+        signal: ticker.signal, confidence: ticker.confidence,
+        ema20: ticker.ema20, ema50: ticker.ema50, ema200: ticker.ema200,
+        emaTrend: ticker.emaTrend, pivot: ticker.pivot,
+        stale: ticker.stale || false, stale_age_s: ticker.stale_age_s || 0,
+      },
+      levels: levels && !levels.error ? {
+        support: levels.support_1h || [], resistance: levels.resistance_1h || [],
+        support_daily: levels.support_daily || [], resistance_daily: levels.resistance_daily || [],
+        pivot: levels.pivot,
+      } : { support: ticker.support || [], resistance: ticker.resistance || [] },
+      macro: macro && !macro.error ? {
+        dxy: macro.dxy, us10y: macro.us10y, vix: macro.vix,
+        silver: macro.silver, gsr: macro.gold_silver_ratio,
+      } : {},
+    };
+    const canonical = JSON.stringify(unsigned, Object.keys(unsigned).sort());
+    unsigned.coherence_id = crypto.createHash('sha256').update(canonical).digest('hex');
+    setCache('snapshot', unsigned); return unsigned;
+  },
   // Short aliases (for Caddy strip_prefix: /wealth/gold/api/* → /api/*)
   '/api/apex': async () => handlers['/api/gold/apex'](),
   '/api/signal_v2': async () => handlers['/api/gold/signal_v2'](),
   '/api/calendar': async () => handlers['/api/gold/calendar'](),
+  '/api/gold/proxies': async () => {
+    const c = getCache('proxies'); if (c) return c;
+    const d = await runPython('proxies'); setCache('proxies', d); return d;
+  },
+  '/api/proxies': async () => handlers['/api/gold/proxies'](),
+  '/api/snapshot': async () => handlers['/api/gold/snapshot'](),
   '/api/macro': async () => handlers['/api/gold/macro'](),
   '/api/ticker': async () => handlers['/api/gold/ticker'](),
   '/api/history': async (req, res, params) => handlers['/api/gold/history'](req, res, params),

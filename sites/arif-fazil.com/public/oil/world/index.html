@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PETRONAS Financial Modeling Toolkit — Oil & Energy Intelligence · WORLD</title>
+<meta name="description" content="PETRONAS forward financial modeling toolkit. Earnings sensitivity to Brent, LNG, and refinery margins. Segment-level estimates with scenario analysis.">
+<link rel="canonical" href="https://arif-fazil.com/oil/world/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --border: #2a2a3a;
+  --text: #d0d0d8;
+  --text-muted: #808090;
+  --text-dim: #585868;
+  --gold: #c9a84c;
+  --gold-dim: #8a7030;
+  --green: #3cb878;
+  --green-dim: #1a6a3a;
+  --red: #d94a4a;
+  --red-dim: #6a1a1a;
+  --blue: #4a8ad9;
+  --orange: #e8943a;
+  --purple: #8a6ad9;
+  --accent: #c9a84c;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --w-max: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+.zen-pulse {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; gap: 2rem; padding: 0.55rem 2rem;
+  font-size: 0.78rem; font-family: var(--font-mono);
+  overflow-x: auto; white-space: nowrap;
+}
+.zp-item { display: flex; gap: 0.5rem; align-items: center; }
+.zp-ask { color: var(--text-dim); }
+.zp-val { color: var(--gold); font-weight: 500; }
+.container { max-width: var(--w-max); margin: 0 auto; padding: 2rem; }
+h1 { font-family: var(--font-display); font-size: 2.6rem; color: #fff; line-height: 1.2; margin-bottom: 0.5rem; }
+h2 { font-family: var(--font-display); font-size: 1.7rem; color: var(--gold); margin: 2.5rem 0 1rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+h3 { font-size: 1.1rem; color: #f0f0f4; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.subtitle { color: var(--text-muted); font-size: 1rem; font-family: var(--font-mono); margin-bottom: 2rem; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
+.card:hover { border-color: var(--gold-dim); }
+.card h4 { font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+.card .metric { font-family: var(--font-display); font-size: 2rem; color: #fff; }
+.card .metric-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono); margin: 1rem 0; }
+th { text-align: left; padding: 0.6rem 0.8rem; color: var(--text-dim); font-weight: 500; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--border); }
+td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.green { color: var(--green); }
+td.red { color: var(--red); }
+td.gold { color: var(--gold); }
+tr:hover td { background: var(--surface2); }
+.delta-up { color: var(--green); }
+.delta-down { color: var(--red); }
+.badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--font-mono); }
+.badge-green { background: var(--green-dim); color: var(--green); }
+.badge-red { background: var(--red-dim); color: var(--red); }
+.badge-gold { background: rgba(201,168,76,0.15); color: var(--gold); }
+.badge-blue { background: rgba(74,138,217,0.15); color: var(--blue); }
+.scenario { margin: 0.75rem 0; }
+.scenario-label { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.2rem; }
+.scenario-name { font-weight: 500; }
+.scenario-value { font-family: var(--font-mono); color: var(--gold); }
+.scenario-bar { height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.scenario-fill { height: 100%; border-radius: 4px; }
+.disclaimer { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; margin: 3rem 0 1rem; font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono); }
+.disclaimer strong { color: var(--gold); }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--gold); }
+details { margin: 1rem 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+details summary { padding: 0.8rem 1.2rem; cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold); user-select: none; }
+details .reveal-body { padding: 0 1.2rem 1.2rem; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.78rem; }
+.footer-nav a { color: var(--text-muted); }
+.footer-nav a:hover { color: var(--gold); }
+pre.code-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); overflow-x: auto; white-space: pre-wrap; }
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+@media (max-width: 768px) {
+  .container { padding: 1rem; }
+  h1 { font-size: 1.8rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .zen-pulse { padding: 0.5rem 1rem; font-size: 0.7rem; gap: 1rem; }
+  table { font-size: 0.72rem; }
+  td, th { padding: 0.4rem 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">Oil · WORLD · PETRONAS Toolkit</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">Forward financial modeling of Malaysia's NOC — sovereign balance sheet exposed</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a scenario ↓</span></div>
+</div>
+
+<div class="container">
+
+<h1>PETRONAS Financial Modeling Toolkit</h1>
+<p class="subtitle">WORLD Edition · Forward Estimates &amp; Price Sensitivities · Last Updated: 24 July 2026<br>
+<span style="color:var(--text-dim)">Modeled after <a href="https://investor.exxonmobil.com/modeling-toolkit" target="_blank" rel="noopener">ExxonMobil Investor Modeling Toolkit</a> · Adapted for PETRONAS Group structure and Malaysian fiscal regime</span></p>
+
+<!-- ═══════════ 1. OVERVIEW ═══════════ -->
+<h2 id="overview">1. Overview of Modeling Toolkit</h2>
+
+<p>This toolkit provides key public information to assist with financial modeling of <strong>Petroliam Nasional Berhad (PETRONAS)</strong> — Malaysia's national oil company, wholly owned by the Government of Malaysia. PETRONAS is an integrated energy group spanning upstream exploration &amp; production, LNG and gas infrastructure, downstream refining &amp; petrochemicals, and clean energy transition via Gentari.</p>
+
+<div class="card-grid">
+  <div class="card"><h4>TOTAL ASSETS (FY2025)</h4><div class="metric">RM 775.0B</div><div class="metric-label">+1.1% YoY · USD ~178B at 4.35</div></div>
+  <div class="card"><h4>REVENUE (FY2025)</h4><div class="metric">RM 266.1B</div><div class="metric-label delta-down">−17% YoY · Third year of decline</div></div>
+  <div class="card"><h4>PAT (FY2025)</h4><div class="metric">RM 45.4B</div><div class="metric-label delta-down">−18% YoY · RM55.1B→45.4B</div></div>
+  <div class="card"><h4>CASH FROM OPS (FY2025)</h4><div class="metric">RM 85.2B</div><div class="metric-label delta-down">−17% YoY · CAPEX RM41.6B</div></div>
+  <div class="card"><h4>NET CASH POSITION</h4><div class="metric">+RM 82.8B</div><div class="metric-label">Cash RM204.4B − Debt RM121.6B · FY2025 FCF: +RM7.0B (corrected)</div></div>
+  <div class="card"><h4>DIVIDEND (2026)</h4><div class="metric">RM 20.0B</div><div class="metric-label delta-down">−37.5% vs RM32B FY2025 · Lowest in 9yr</div></div>
+</div>
+
+<!-- ═══════════ 2. BUSINESS SEGMENTS ═══════════ -->
+<h2 id="segments">2. Modeling Basics — Business Segments</h2>
+
+<table>
+  <tr><th>Segment</th><th>FY2025 Revenue</th><th>FY2025 PAT</th><th>Key Driver</th><th>Disclosure Source</th></tr>
+  <tr><td style="color:var(--blue);font-weight:600">Upstream</td><td class="num">RM 111.9B</td><td class="num green">RM 26.2B</td><td>Brent crude, production volume, PSC terms</td><td>PETRONAS FRA, Activity Outlook</td></tr>
+  <tr><td style="color:var(--gold);font-weight:600">Gas &amp; Maritime</td><td class="num">RM 119.9B</td><td class="num green">RM 20.9B</td><td>JKM spot LNG, oil-indexed contracts (3-6mo lag), PGU throughput</td><td>PETRONAS FRA, PETGAS filings</td></tr>
+  <tr><td style="color:var(--orange);font-weight:600">Downstream</td><td class="num">RM 120.0B</td><td class="num red">−RM 1.9B</td><td>Naphtha-PE spread, Singapore complex margin, PRefChem utilisation</td><td>PETRONAS FRA, PCHEM/PETDAG filings</td></tr>
+  <tr><td style="color:var(--purple);font-weight:600">Gentari (Clean Energy)</td><td class="num">Incl. in Corp.</td><td class="num">Pre-profit</td><td>RE capacity (GW installed), hydrogen, EV charging</td><td>Gentari, PETRONAS IR</td></tr>
+  <tr><td style="color:var(--text-muted);font-weight:600">Corporate &amp; Others</td><td class="num">RM 5.2B</td><td class="num">—</td><td>Financing costs, tax, eliminations</td><td>PETRONAS FRA segment notes</td></tr>
+</table>
+
+<h3>Earnings Model Framework</h3>
+<pre class="code-block">
+Projected Revenue  = Σ (Segment Volume × Benchmark Price × Realisation Discount/Premium)
+Projected EBITDA   = Revenue × EBITDA Margin (segment-specific, cycle-adjusted)
+Projected PAT      = EBITDA − D&amp;A − Financing Costs − Tax (PITA ~38% marginal)
+Projected CFFO     = PAT + D&amp;A ± Working Capital ± Other
+Free Cash Flow     = CFFO − CAPEX − Dividends − Minority Interests
+Net Cash/(Debt)    = Prior Net Cash + FCF + Net Borrowings − Debt Repayments
+</pre>
+
+<!-- ═══════════ 3. SENSITIVITIES ═══════════ -->
+<h2 id="sensitivities">3. Sensitivities and Key Assumptions</h2>
+
+<h3>Annual PAT Sensitivities (FY2025 basis, indicative)</h3>
+
+<table>
+  <tr><th>Segment</th><th>Marker</th><th>Annual Sensitivity (RM)</th><th>Note</th></tr>
+  <tr><td style="color:var(--blue);font-weight:600">Upstream</td><td>Brent crude (+$1/bbl)</td><td class="num green">+RM 1.4 – 1.8B</td><td>Net of PSC cost recovery; ~550K boe/d Malaysian production</td></tr>
+  <tr><td style="color:var(--blue);font-weight:600">Upstream</td><td>Malaysian gas reference (+$0.10/MMBtu)</td><td class="num green">+RM 0.3 – 0.5B</td><td>Domestic gas: regulated prices; limited pass-through</td></tr>
+  <tr><td style="color:var(--gold);font-weight:600">Gas &amp; LNG</td><td>JKM spot LNG (+$1.00/MMBtu)</td><td class="num green">+RM 0.8 – 1.2B</td><td>~30% LNG on spot/short-term; 70% oil-indexed (3-6mo lag)</td></tr>
+  <tr><td style="color:var(--gold);font-weight:600">Gas &amp; LNG</td><td>Brent (+$1/bbl, lagged 3-6mo on LNG)</td><td class="num green">+RM 0.5 – 0.8B</td><td>Oil-indexed LNG contracts; ~70% of LNG book</td></tr>
+  <tr><td style="color:var(--orange);font-weight:600">Downstream</td><td>Singapore complex margin (+$1/bbl)</td><td class="num green">+RM 0.15 – 0.3B</td><td>PRefChem refinery (300K bpd nameplate, ~50% util)</td></tr>
+  <tr><td style="color:var(--orange);font-weight:600">Downstream</td><td>Naphtha-PE spread (+$100/T)</td><td class="num green">+RM 0.3 – 0.5B</td><td>PCHEM cracker + polyolefin; excludes Perstorp</td></tr>
+  <tr><td style="color:var(--text-muted);font-weight:600">Corporate</td><td>USD/MYR (+0.10)</td><td class="num green">+RM 1.5 – 2.5B</td><td>~75% revenue USD; MYR weakness = PAT tailwind</td></tr>
+  <tr><td style="color:var(--text-muted);font-weight:600">Corporate</td><td>Effective tax rate (+1 ppt)</td><td class="num red">−RM 0.5 – 0.7B</td><td>PITA ~38% marginal; Group effective ~25-29%</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>ESTIMATE</strong> — Sensitivities are analyst estimates derived from PETRONAS segment disclosures, not official guidance. PETRONAS does not publish earnings sensitivities. Do not double-count overlapping markers. All estimates based on FY2025 production and cost structure.
+</div>
+
+<h3>Price Deck and Key Assumptions</h3>
+
+<table>
+  <tr><th>Marker</th><th>FY2024</th><th>FY2025</th><th>1H 2026E</th><th>FY2026E</th></tr>
+  <tr><td>Brent crude ($/bbl)</td><td class="num">$80.76</td><td class="num">$69.10</td><td class="num green">$91.74</td><td class="num">$78–98</td></tr>
+  <tr><td>JKM spot LNG ($/MMBtu)</td><td class="num">$11.84</td><td class="num">$12.70</td><td class="num green">$16.50</td><td class="num">$14–18</td></tr>
+  <tr><td>Singapore complex margin ($/bbl)</td><td class="num">$8.50</td><td class="num">$12.20</td><td class="num green">$18.00</td><td class="num">$10–22</td></tr>
+  <tr><td>USD/MYR</td><td class="num">4.59</td><td class="num">4.35</td><td class="num">4.25–4.45</td><td class="num">4.20–4.50</td></tr>
+  <tr><td>PETRONAS realised crude ($/bbl)</td><td class="num">$75.50</td><td class="num">$65.00</td><td class="num green">$86.00</td><td class="num">$74–92</td></tr>
+  <tr><td>PETRONAS realised LNG ($/MMBtu)</td><td class="num">$11.20</td><td class="num">$11.90</td><td class="num green">$14.00</td><td class="num">$13–16</td></tr>
+</table>
+
+<!-- ═══════════ 4. FORWARD ESTIMATES ═══════════ -->
+<h2 id="forward">4. Forward Financial Estimates</h2>
+
+<h3>Scenario Analysis — FY2026E Full Year PAT</h3>
+
+<div class="scenario">
+  <div class="scenario-label"><span class="scenario-name">BEAR — Brent $65, JKM $12, Strait reopens Q3, PETROS escalation, PRefChem impairment</span><span class="scenario-value">RM 38–44B</span></div>
+  <div class="scenario-bar"><div class="scenario-fill" style="width:38%;background:var(--red);"></div></div>
+</div>
+<div class="scenario">
+  <div class="scenario-label"><span class="scenario-name">BASE — Brent $80, JKM $15, Strait partially open Q4, PETROS settlement, PRefChem drag</span><span class="scenario-value">RM 48–56B</span></div>
+  <div class="scenario-bar"><div class="scenario-fill" style="width:52%;background:var(--gold);"></div></div>
+</div>
+<div class="scenario">
+  <div class="scenario-label"><span class="scenario-name">BULL — Brent $95, JKM $18, Strait remains disrupted, LNG spot windfall, downstream tight</span><span class="scenario-value">RM 58–68B</span></div>
+  <div class="scenario-bar"><div class="scenario-fill" style="width:68%;background:var(--green);"></div></div>
+</div>
+
+<h3>Quarterly and Forward Estimates</h3>
+
+<table>
+  <tr><th>Metric (RM Bn)</th><th>1H 2025</th><th>2H 2025</th><th>FY2025</th><th>1H 2026E</th><th>FY2026E</th><th>FY2027E</th></tr>
+  <tr><td>Revenue</td><td class="num">132.6</td><td class="num">133.6</td><td class="num">266.1</td><td class="num green">150–162</td><td class="num">300–330</td><td class="num">290–320</td></tr>
+  <tr><td>EBITDA</td><td class="num">54.4</td><td class="num">48.6</td><td class="num">103.0</td><td class="num green">58–65</td><td class="num">105–120</td><td class="num">95–110</td></tr>
+  <tr><td>PAT</td><td class="num">26.2</td><td class="num">19.2</td><td class="num">45.4</td><td class="num green">28–32</td><td class="num">48–56</td><td class="num">38–48</td></tr>
+  <tr><td>CFFO</td><td class="num">48.1</td><td class="num">37.1</td><td class="num">85.2</td><td class="num green">50–58</td><td class="num">95–110</td><td class="num">80–95</td></tr>
+  <tr><td>CAPEX</td><td class="num">17.7</td><td class="num">23.9</td><td class="num">41.6</td><td class="num">21–24</td><td class="num">45–50</td><td class="num">47–52</td></tr>
+  <tr><td>Dividend to Govt</td><td class="num">—</td><td class="num">32.0</td><td class="num">32.0</td><td class="num">—</td><td class="num">20.0</td><td class="num">20–25</td></tr>
+  <tr><td>Gearing (%)</td><td class="num">21.3</td><td class="num">20.7</td><td class="num">20.7</td><td class="num">22–25</td><td class="num">25–28</td><td class="num">28–32</td></tr>
+  <tr><td>Net Cash/(Debt)</td><td class="num gold">+92.5</td><td class="num gold">+82.8</td><td class="num gold">+82.8</td><td class="num gold">+70–78</td><td class="num gold">+48–60</td><td class="num gold">+35–50</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>FORWARD ESTIMATES ARE NOT AUDITED.</strong> Analyst estimates based on public information, production trends, and price scenarios. PETRONAS 1H 2026 Group results have not been published (~late Aug 2026). All forward figures subject to material revision. PRefChem consolidation impacts H2 2026 balance sheet. PETROS dispute introduces binary risk.
+</div>
+
+<!-- ═══════════ 5. CASH FLOW & TRAJECTORY ═══════════ -->
+<h2 id="debt">5. Cash Flow, Debt &amp; Trajectory</h2>
+
+<h3>FY2025 Free Cash Flow — Corrected Bridge (RM Bn)</h3>
+
+<div class="disclaimer" style="margin-bottom:1rem">
+<strong>CORRECTION (24 Jul 2026).</strong> Prior version double-counted tax (RM22.7B) and financing costs — CFFO is <em>already after tax</em> under IFRS. The corrected FCF is <strong>+RM7.0B positive</strong>, not −RM20.9B. PETRONAS did not burn RM6.6B in FY2025 — it funded RM41.6B CAPEX and a RM32B dividend and remained cash-positive.
+</div>
+
+<table>
+  <tr><th>Line</th><th>Prior (Errored)</th><th>Corrected</th></tr>
+  <tr><td>CFFO (already after tax)</td><td class="num">85.2</td><td class="num">85.2</td></tr>
+  <tr><td>Less: CAPEX</td><td class="num red">−41.6</td><td class="num red">−41.6</td></tr>
+  <tr><td>Less: Dividends (govt RM32B + NCI RM4.6B)</td><td class="num red">−36.9</td><td class="num red">−36.6</td></tr>
+  <tr><td>Less: Interest paid</td><td class="num red">−4.9</td><td class="num" style="color:var(--text-dim)">— (below CFFO line)</td></tr>
+  <tr><td>Less: Tax paid</td><td class="num red">−22.7</td><td class="num" style="color:var(--text-dim)">— (already in CFFO)</td></tr>
+  <tr style="border-top:2px solid var(--gold)"><td><strong>Free Cash Flow</strong></td><td class="num" style="color:var(--red);font-weight:600">−20.9 (artifact)</td><td class="num" style="color:var(--green);font-weight:600">+7.0 (positive)</td></tr>
+</table>
+
+<h3>Forward Trajectory — Three Scenarios (RM Bn, FCF = CFFO − CAPEX − Div − PRefChem drag)</h3>
+
+<p>All scenarios assume dividend RM24.5B (RM20B govt + ~RM4.5B NCI), CAPEX RM47.5B midpoint of RM45-50B guidance. PRefChem drag layered in from H2 2026. Cumulative FCF starts from +RM7.0B base.</p>
+
+<table>
+  <tr><th>Year</th><th colspan="3">BASE — Brent avg $75, moderate PRefChem</th><th colspan="3">BEAR — Brent avg $60, heavy PRefChem</th></tr>
+  <tr><th></th><th>CFFO</th><th>FCF</th><th>Cum FCF</th><th>CFFO</th><th>FCF</th><th>Cum FCF</th></tr>
+  <tr><td>FY2025 (actual)</td><td class="num">85.2</td><td class="num green">+7.0</td><td class="num gold">+7.0</td><td class="num">85.2</td><td class="num green">+7.0</td><td class="num">+7.0</td></tr>
+  <tr><td>FY2026E</td><td class="num">92</td><td class="num green">+19.0</td><td class="num gold">+26.0</td><td class="num">85</td><td class="num green">+11.5</td><td class="num">+18.5</td></tr>
+  <tr><td>FY2027E</td><td class="num">82</td><td class="num green">+7.0</td><td class="num gold">+33.0</td><td class="num">70</td><td class="num red">−6.0</td><td class="num">+12.5</td></tr>
+  <tr><td>FY2028E</td><td class="num">76</td><td class="num green">+1.0</td><td class="num gold">+34.0</td><td class="num">62</td><td class="num red">−14.0</td><td class="num red">−1.5</td></tr>
+  <tr><td>FY2029E</td><td class="num">72</td><td class="num red">−2.5</td><td class="num gold">+31.5</td><td class="num">56</td><td class="num red">−19.5</td><td class="num red">−21.0</td></tr>
+  <tr><td>FY2030E</td><td class="num">68</td><td class="num red">−6.5</td><td class="num gold">+25.0</td><td class="num">52</td><td class="num red">−23.5</td><td class="num red">−44.5</td></tr>
+  <tr><td>FY2031E</td><td class="num">65</td><td class="num red">−9.0</td><td class="num gold">+16.0</td><td class="num">48</td><td class="num red">−27.0</td><td class="num red">−71.5</td></tr>
+</table>
+
+<h3>Net Debt Cross-Over Summary</h3>
+
+<table>
+  <tr><th>Scenario</th><th>Brent</th><th>Net-Debt Crossover</th><th>Verdict</th></tr>
+  <tr><td style="color:var(--green);font-weight:600">BASE</td><td>~$75</td><td class="num">None before 2031</td><td>Manageable — stays net cash ~+RM55B in 2031</td></tr>
+  <tr><td style="color:var(--red);font-weight:600">BEAR</td><td>~$60</td><td class="num">~2029–2030</td><td>Real risk — requires CFFO halving + heavy PRefChem</td></tr>
+  <tr><td style="color:var(--gold);font-weight:600">BULL</td><td>~$90</td><td class="num">Never in window</td><td>Comfortable — war premium persists, LNG term-lag lifts</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>SCENARIO ANALYSIS, NOT FORECAST.</strong> Net-debt is a bear-case scenario contingent on three conditions converging: fast price fall + weak volumes + unfixed cracker. It is not a locked trajectory. The prior version's "net debt ~2030" conclusion was an artifact of double-counting tax (RM22.7B/yr) in the FCF bridge. Remove the double-count and the base case stays net-cash-positive throughout the window.
+</div>
+
+<!-- ═══════════ 6. OFF-BALANCE ═══════════ -->
+<h2 id="offbalance">6. Debt, Commitments &amp; Contingencies</h2>
+
+<p>These are three different categories and should not be summed into a single "liability stack."</p>
+
+<table>
+  <tr><th colspan="4" style="color:var(--gold)">A. ON-BALANCE SHEET DEBT</th></tr>
+  <tr><td>Total borrowings (FY2025 audited)</td><td class="num">121.6</td><td>27.4% current, 72.6% non-current</td><td><span class="badge badge-gold">AUDITED</span></td></tr>
+  <tr><th colspan="4" style="color:var(--orange)">B. IMMINENT CONSOLIDATION</th></tr>
+  <tr><td>PRefChem — debt on closing (H2 2026)</td><td class="num red">~35.0</td><td>MEES estimate; not disaggregated publicly</td><td><span class="badge badge-red">ESTIMATE</span></td></tr>
+  <tr><th colspan="4" style="color:var(--blue)">C. COMMITTED CAPEX (not debt)</th></tr>
+  <tr><td>SEARAH — PETRONAS 50% of $20B 5yr investment pipeline</td><td class="num">~43.0</td><td>Future capex, self-funded via SEARAH cash flows + RCF</td><td><span class="badge badge-blue">COMMITTED</span></td></tr>
+  <tr><th colspan="4" style="color:var(--text-dim)">D. OFF-BALANCE SHEET / CONTINGENT</th></tr>
+  <tr><td>SEARAH — 50% of $6B RCF (project-level)</td><td class="num">~13.0</td><td>Guarantee scope unconfirmed</td><td><span class="badge badge-gold">UNKNOWN</span></td></tr>
+  <tr><td>Petrofac / Kingtime</td><td class="num">~1.0</td><td>CoA ruling Sep 2025; indemnity not enforced; quantum unverified</td><td><span class="badge badge-red">CONTINGENT</span></td></tr>
+  <tr style="border-top:2px solid var(--gold)"><td><strong>Memo: Net Cash Position</strong></td><td class="num gold"><strong>+82.8</strong></td><td colspan="2">Cash RM204.4B − Debt RM121.6B (FY2025 audited)</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>CATEGORY DISCIPLINE.</strong> Committed future capex (Row C) is not debt and should not be netted against current cash. The prior version's "total exposure RM92B+" summed incommensurable items — on-BS debt, committed capex, off-BS RCF, and contingent liabilities — into a single misleading stack. Solvency analysis requires treating these separately.
+</div>
+
+<!-- ═══════════ 7. CATALYSTS ═══════════ -->
+<h2 id="catalysts">7. Key Catalysts and Transaction Tracker</h2>
+
+<table>
+  <tr><th>Catalyst</th><th>Date / Window</th><th>Impact</th></tr>
+  <tr><td>PETRONAS 1H 2026 Results</td><td>~Late Aug 2026</td><td>First H1 PAT increase since 2022</td></tr>
+  <tr><td>PRefChem deal close</td><td>H2 2026</td><td>Full consolidation; >$8B liabilities</td></tr>
+  <tr><td>PETROS Federal Court hearing</td><td>2026-2027</td><td>~60% of Malaysia's gas reserves at stake</td></tr>
+  <tr><td>Gentari minority stake sale</td><td>2026-2027</td><td>US$300-500M; transition valuation benchmark</td></tr>
+  <tr><td>EnQuest $833M deal close</td><td>31 Dec 2026</td><td>$554M cash; 96% ops to EnQuest</td></tr>
+  <tr><td>SEARAH operations</td><td>1 Jul 2026</td><td>5 PSCs transferred; 300K→500K boe/d target</td></tr>
+  <tr><td>Rightsizing completion</td><td>1 Aug 2026</td><td>~5,200 roles; hiring freeze → Dec 2026</td></tr>
+  <tr><td>Strait of Hormuz status</td><td>Ongoing</td><td>Brent $96+; Bab el-Mandeb blockaded</td></tr>
+</table>
+
+<!-- ═══════════ 8. RESOURCES ═══════════ -->
+<h2 id="resources">8. Disclosure Library &amp; Resources</h2>
+
+<div class="card-grid">
+  <div class="card"><h4>PETRONAS Financial Reports</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Group FRA, segment notes, cash flow, balance sheet</p><a href="https://www.petronas.com/investor-relations/financial-results" target="_blank" rel="noopener">PETRONAS IR →</a></div>
+  <div class="card"><h4>Integrated Report 2025</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Strategy, sustainability, Gentari, energy transition</p><a href="https://www.petronas.com/integrated-report-2025/" target="_blank" rel="noopener">Integrated Report →</a></div>
+  <div class="card"><h4>PCHEM / PETDAG / PETGAS (Bursa)</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">5183.KL · 5681.KL · 6033.KL — listed subsidiaries</p><a href="https://www.bursamalaysia.com/market_information/announcements/company_announcement" target="_blank" rel="noopener">Bursa Malaysia →</a></div>
+  <div class="card"><h4>PETRONAS Activity Outlook</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Upstream drilling, development, decommissioning forecast</p><a href="https://www.petronas.com/media/activity-outlook" target="_blank" rel="noopener">Activity Outlook →</a></div>
+  <div class="card"><h4>Gentari</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Renewables, hydrogen, green mobility</p><a href="https://www.gentari.com/" target="_blank" rel="noopener">Gentari →</a></div>
+  <div class="card"><h4>MOF Fiscal Outlook 2026</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Federal budget, petroleum revenue, debt trajectory</p><a href="https://belanjawan.mof.gov.my/pdf/belanjawan2026/revenue/section4.pdf" target="_blank" rel="noopener">MOF Fiscal →</a></div>
+</div>
+
+<h3>Frequently Used Terms</h3>
+
+<details>
+  <summary>PETRONAS Modeling Glossary · click to expand</summary>
+  <div class="reveal-body">
+    <table>
+      <tr><th>Term</th><th>Definition</th></tr>
+      <tr><td>PSC (Production Sharing Contract)</td><td>Contractual framework governing upstream operations in Malaysia.</td></tr>
+      <tr><td>PITA (Petroleum Income Tax Act)</td><td>Malaysia's petroleum tax regime. Marginal rate ~38%. Upstream income.</td></tr>
+      <tr><td>CFFO (Cash Flow From Operations)</td><td>Operating cash before CAPEX, dividends, and financing. Key dividend capacity metric.</td></tr>
+      <tr><td>Gearing Ratio</td><td>Total borrowings ÷ (Borrowings + Total equity). FY2025: 20.7%.</td></tr>
+      <tr><td>ROACE</td><td>EBIT ÷ Average (Total Assets − Current Liabilities). FY2025: 8.2%.</td></tr>
+      <tr><td>JKM (Japan Korea Marker)</td><td>Benchmark spot LNG price for Northeast Asia. PETRONAS un-contracted LNG marker.</td></tr>
+      <tr><td>PGU (Peninsular Gas Utilisation)</td><td>Malaysia's >2,600km gas pipeline network. Operated by PETGAS.</td></tr>
+      <tr><td>RAPID</td><td>Refinery and Petrochemical Integrated Development at Pengerang, Johor.</td></tr>
+      <tr><td>PRefChem</td><td>Pengerang Refining and Petrochemical — previously 50:50 with Aramco, now 100% PETRONAS.</td></tr>
+      <tr><td>SEARAH</td><td>50:50 upstream JV with Eni. 19 assets across Malaysia and Indonesia.</td></tr>
+    </table>
+  </div>
+</details>
+
+<!-- ═══════════ 9. SOVEREIGN CONTEXT ═══════════ -->
+<h2 id="sovereign">9. Sovereign Extraction Model — The Fiscal Trap</h2>
+
+<p>PETRONAS is <strong>Malaysia's shadow sovereign balance sheet</strong>. The government extracts via annual dividend + petroleum income tax — combined RM42B/year. This exceeds free cash flow after maintenance CAPEX.</p>
+
+<table>
+  <tr><th>Year</th><th>Federal Revenue</th><th>Petroleum Revenue</th><th>Petroleum Share</th><th>PETRONAS Dividend</th></tr>
+  <tr><td>FY2022</td><td class="num">RM 294B</td><td class="num">RM 82B</td><td class="num gold">28.0%</td><td class="num">RM 40B</td></tr>
+  <tr><td>FY2023</td><td class="num">RM 315B</td><td class="num">RM 72B</td><td class="num gold">22.9%</td><td class="num">RM 40B</td></tr>
+  <tr><td>FY2024</td><td class="num">RM 322B</td><td class="num">RM 55B</td><td class="num gold">17.1%</td><td class="num">RM 32B</td></tr>
+  <tr><td>FY2025</td><td class="num">RM 334B</td><td class="num">RM 52B</td><td class="num gold">15.6%</td><td class="num">RM 32B</td></tr>
+  <tr><td>FY2026E</td><td class="num">RM 343B</td><td class="num">RM 43B</td><td class="num gold">12.5%</td><td class="num">RM 20B</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>SOVEREIGN CONTEXT.</strong> The declining petroleum revenue share (28%→12.5%) masks absolute dependency. RM43B is 12.5% of federal revenue. Federal debt: RM1.3T (63.1% GDP in Q1 2026, down from 65.2%). Statutory debt ceiling: 65%. FRA Act 850 mandates deficit below 3% and debt below 60% medium-term. Sovereign rating: <strong>Moody's A3 stable</strong> (affirmed 14 Jul 2026) — "fastest-growing among A-rated peers." Risks are balanced, not negative watch. <strong>There is no fiscal space for a PETRONAS bailout,</strong> but the sovereign backdrop is stable, not deteriorating. PETRONAS's dividend is the government's fiscal oxygen — and the oxygen supply is compressing, not collapsing.
+</div>
+
+<hr>
+
+<div class="footer-nav">
+  <a href="/oil/">← Brent Crude Dashboard</a>
+  <a href="/oil/world/">PETRONAS Toolkit (Oil)</a>
+  <a href="/gas/">Natural Gas Dashboard</a>
+  <a href="/gas/world/">→ PETRONAS Toolkit (Gas &amp; LNG)</a>
+  <a href="/">Home</a>
+</div>
+
+<div class="disclaimer" style="margin-top:2rem;">
+<strong>DITEMPA BUKAN DIBERI — Forged, Not Given.</strong> This toolkit is an independent analytical resource prepared for sovereign intelligence purposes. It is not investment advice. PETRONAS does not endorse, verify, or contribute to this analysis. All financial data sourced from public PETRONAS Group FRA filings, Bursa Malaysia, Bloomberg, Reuters, FRED, EIA, IEA, Statista. Forward estimates are analytical projections, not management guidance. All claims tagged per F2 TRUTH: OBS (observed), DER (derived), INT (interpreted), HYP (hypothetical).<br><br>
+<strong>Owner:</strong> Muhammad Arif bin Fazil (F13 SOVEREIGN) — <a href="/">arif-fazil.com</a>
+</div>
+
+</div>
+</body>
+</html>

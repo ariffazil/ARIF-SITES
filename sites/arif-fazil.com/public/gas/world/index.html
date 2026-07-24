@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PETRONAS Financial Modeling Toolkit — Gas &amp; LNG Intelligence · WORLD</title>
+<meta name="description" content="PETRONAS LNG and gas financial modeling toolkit. JKM sensitivity, LNG contract mix, PGU infrastructure, gas production trajectory.">
+<link rel="canonical" href="https://arif-fazil.com/gas/world/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #12121a;
+  --surface2: #1a1a26;
+  --border: #2a2a3a;
+  --text: #d0d0d8;
+  --text-muted: #808090;
+  --text-dim: #585868;
+  --gold: #c9a84c;
+  --gold-dim: #8a7030;
+  --green: #3cb878;
+  --green-dim: #1a6a3a;
+  --red: #d94a4a;
+  --red-dim: #6a1a1a;
+  --blue: #4a8ad9;
+  --orange: #e8943a;
+  --purple: #8a6ad9;
+  --accent: #c9a84c;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --w-max: 1200px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+.zen-pulse {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  display: flex; gap: 2rem; padding: 0.55rem 2rem;
+  font-size: 0.78rem; font-family: var(--font-mono);
+  overflow-x: auto; white-space: nowrap;
+}
+.zp-item { display: flex; gap: 0.5rem; align-items: center; }
+.zp-ask { color: var(--text-dim); }
+.zp-val { color: var(--gold); font-weight: 500; }
+.container { max-width: var(--w-max); margin: 0 auto; padding: 2rem; }
+h1 { font-family: var(--font-display); font-size: 2.6rem; color: #fff; line-height: 1.2; margin-bottom: 0.5rem; }
+h2 { font-family: var(--font-display); font-size: 1.7rem; color: var(--gold); margin: 2.5rem 0 1rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+h3 { font-size: 1.1rem; color: #f0f0f4; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.subtitle { color: var(--text-muted); font-size: 1rem; font-family: var(--font-mono); margin-bottom: 2rem; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s; }
+.card:hover { border-color: var(--gold-dim); }
+.card h4 { font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+.card .metric { font-family: var(--font-display); font-size: 2rem; color: #fff; }
+.card .metric-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; font-family: var(--font-mono); margin: 1rem 0; }
+th { text-align: left; padding: 0.6rem 0.8rem; color: var(--text-dim); font-weight: 500; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--border); }
+td { padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--border); color: var(--text); }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.green { color: var(--green); }
+td.red { color: var(--red); }
+td.gold { color: var(--gold); }
+tr:hover td { background: var(--surface2); }
+.delta-up { color: var(--green); }
+.delta-down { color: var(--red); }
+.badge { display: inline-block; padding: 0.18rem 0.55rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; font-family: var(--font-mono); }
+.badge-green { background: var(--green-dim); color: var(--green); }
+.badge-red { background: var(--red-dim); color: var(--red); }
+.badge-gold { background: rgba(201,168,76,0.15); color: var(--gold); }
+.badge-blue { background: rgba(74,138,217,0.15); color: var(--blue); }
+.scenario { margin: 0.75rem 0; }
+.scenario-label { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.2rem; }
+.scenario-name { font-weight: 500; }
+.scenario-value { font-family: var(--font-mono); color: var(--gold); }
+.scenario-bar { height: 8px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+.scenario-fill { height: 100%; border-radius: 4px; }
+.disclaimer { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.5rem; margin: 3rem 0 1rem; font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono); }
+.disclaimer strong { color: var(--gold); }
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; color: var(--gold); }
+details { margin: 1rem 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+details summary { padding: 0.8rem 1.2rem; cursor: pointer; font-family: var(--font-mono); font-size: 0.82rem; color: var(--gold); user-select: none; }
+details .reveal-body { padding: 0 1.2rem 1.2rem; }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.78rem; }
+.footer-nav a { color: var(--text-muted); }
+.footer-nav a:hover { color: var(--gold); }
+pre.code-block { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted); overflow-x: auto; white-space: pre-wrap; }
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+@media (max-width: 768px) {
+  .container { padding: 1rem; }
+  h1 { font-size: 1.8rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .zen-pulse { padding: 0.5rem 1rem; font-size: 0.7rem; gap: 1rem; }
+  table { font-size: 0.72rem; }
+  td, th { padding: 0.4rem 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">Gas · WORLD · PETRONAS LNG Toolkit</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">LNG is 27% of PETRONAS revenue — the Strait of Hormuz makes gas the sovereign weapon</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a price scenario ↓</span></div>
+</div>
+
+<div class="container">
+
+<h1>PETRONAS Gas &amp; LNG Modeling Toolkit</h1>
+<p class="subtitle">WORLD Edition · Gas &amp; LNG Forward Estimates · Last Updated: 24 July 2026<br>
+<span style="color:var(--text-dim)">Companion to <a href="/oil/world/">PETRONAS Oil Modeling Toolkit</a> · Focus: LNG portfolio, gas infrastructure, PETROS, SEARAH</span></p>
+
+<!-- ═══════════ 1. GAS OVERVIEW ═══════════ -->
+<h2 id="overview">1. Gas &amp; LNG — The Crown Jewel</h2>
+
+<div class="card-grid">
+  <div class="card"><h4>GAS &amp; MARITIME REVENUE (FY2025)</h4><div class="metric">RM 119.9B</div><div class="metric-label">27% of PETRONAS Group · −9% YoY</div></div>
+  <div class="card"><h4>GAS &amp; MARITIME PAT (FY2025)</h4><div class="metric">RM 20.9B</div><div class="metric-label">Most profitable segment · Stable margins</div></div>
+  <div class="card"><h4>LNG SPOT PRICE (JKM, JUL 2026)</h4><div class="metric">~$14-16</div><div class="metric-label">Down from $25.30 Mar peak · +50% vs pre-war</div></div>
+  <div class="card"><h4>SARAWAK GAS RESERVES</h4><div class="metric">~60%</div><div class="metric-label">Of Malaysia's total · PETROS under dispute</div></div>
+  <div class="card"><h4>SEARAH PRODUCTION TARGET</h4><div class="metric">500K boe/d</div><div class="metric-label">Within 3 years · 19 assets MY+ID</div></div>
+  <div class="card"><h4>PGU PIPELINE NETWORK</h4><div class="metric">>2,600km</div><div class="metric-label">Peninsular Gas Utilisation · PETGAS operated</div></div>
+</div>
+
+<!-- ═══════════ 2. LNG CONTRACT STRUCTURE ═══════════ -->
+<h2 id="contracts">2. LNG Contract Mix — The Biggest Unknown Variable</h2>
+
+<p>PETRONAS's LNG portfolio is the single largest swing factor in group profitability. The mix between <strong>oil-indexed long-term contracts</strong> and <strong>spot/short-term sales</strong> determines how much of the Brent surge flows through to earnings — and with what lag.</p>
+
+<table>
+  <tr><th>Contract Type</th><th>Est. Share of LNG Book</th><th>Pricing Mechanism</th><th>Lag to Brent</th><th>1H 2026 Impact</th></tr>
+  <tr><td style="font-weight:600">Oil-indexed (JCC)</td><td class="num">~65-70%</td><td>Linked to Japan Crude Cocktail (JCC) — a basket of crude prices</td><td class="num gold">3-6 months</td><td><span class="badge badge-gold">H2 BENEFIT</span></td></tr>
+  <tr><td style="font-weight:600">Spot / Short-term (JKM)</td><td class="num">~20-25%</td><td>Japan Korea Marker (JKM) — Asian spot LNG benchmark</td><td class="num green">Immediate</td><td><span class="badge badge-green">1H CAPTURED</span></td></tr>
+  <tr><td style="font-weight:600">Henry Hub-linked</td><td class="num">~5-10%</td><td>US Henry Hub + liquefaction fee · LNG Canada exposure</td><td class="num">1 month</td><td>Minimal</td></tr>
+  <tr><td style="font-weight:600">Fixed / Other</td><td class="num">~5%</td><td>Fixed price contracts, domestic regulated</td><td class="num">N/A</td><td>Flat</td></tr>
+</table>
+
+<div class="disclaimer">
+<strong>ESTIMATE.</strong> PETRONAS does not publicly disclose the exact split between oil-indexed and spot LNG. These estimates are derived from PETRONAS IR disclosures, industry comparables (ExxonMobil ~80% oil-linked LNG), and analyst approximations. The 3-6 month oil-indexed lag means the March-May 2026 Brent spike ($103-117/bbl) flows through to LNG contract prices approximately <strong>June-November 2026</strong>.
+</div>
+
+<h3>LNG Revenue Sensitivity Model</h3>
+
+<table>
+  <tr><th>Scenario</th><th>JKM Spot ($/MMBtu)</th><th>Oil-Indexed ($/MMBtu)</th><th>Blended Realised ($/MMBtu)</th><th>Annual LNG Revenue (RM Bn)</th></tr>
+  <tr><td>Pre-war (Jan-Feb 2026)</td><td class="num">$10.60</td><td class="num">$10-12</td><td class="num">$11.00</td><td class="num">~60-65</td></tr>
+  <tr><td style="font-weight:600">War surge (Mar 2026)</td><td class="num green">$20.70</td><td class="num">$10-12</td><td class="num green">$14.00</td><td class="num green">~75-80</td></tr>
+  <tr><td>Ceasefire period (Apr-May 2026)</td><td class="num">$16-18</td><td class="num">$12-14</td><td class="num green">$15.00</td><td class="num green">~80-85</td></tr>
+  <tr><td style="font-weight:600">H2 2026E (oil-indexed lag kicks in)</td><td class="num">$14-18</td><td class="num green">$16-20</td><td class="num green">$16-18</td><td class="num green">~85-95</td></tr>
+</table>
+
+<!-- ═══════════ 3. PETROS ═══════════ -->
+<h2 id="petros">3. PETROS — The Existential Gas Variable</h2>
+
+<p>The single largest <strong>non-price risk</strong> to PETRONAS's gas business is the constitutional dispute with <strong>Petroleum Sarawak Berhad (PETROS)</strong>. Sarawak holds approximately 60% of Malaysia's natural gas reserves and accounts for 90% of the nation's LNG exports. PETROS was established under Sarawak's Oil Mining Ordinance 1958, and the state government asserts regulatory authority over oil and gas within its territorial boundaries.</p>
+
+<table>
+  <tr><th>Dimension</th><th>PETRONAS Position</th><th>PETROS / Sarawak Position</th></tr>
+  <tr><td>Legal basis</td><td>Petroleum Development Act 1974 (PDA) — exclusive nationwide rights</td><td>MA63, Sarawak Oil Mining Ordinance 1958, Federal Constitution Art. 150(7)</td></tr>
+  <tr><td>Gas reserves affected</td><td>PDA applies uniformly to all Malaysian territory</td><td>~60% of Malaysia's gas lies within Sarawak boundaries</td></tr>
+  <tr><td>Revenue sharing</td><td>5% royalty + annual dividend to federal govt</td><td>Demand 20% royalty; PETROS as sole gas aggregator in Sarawak</td></tr>
+  <tr><td>Current status</td><td>Federal Court petition filed 12 Jan 2026</td><td>Counter-petition filed 23 Feb 2026 challenging PDA validity</td></tr>
+  <tr><td>Settlement signal</td><td colspan="2">PM Anwar (21 Jun 2026): "Positive developments." The Edge (20 Jul 2026): "Feud to be resolved soon." Likely commercial settlement — higher royalty, PETROS operational role, PDA preserved.</td></tr>
+</table>
+
+<h3>LNG Revenue at Risk — PETROS Scenario</h3>
+
+<table>
+  <tr><th>Scenario</th><th>Sarawak Gas Access</th><th>LNG Revenue Impact</th><th>Group PAT Impact</th></tr>
+  <tr><td style="font-weight:600;color:var(--green)">Settlement — higher royalty</td><td>Full access, 15-20% royalty</td><td class="num">−RM 3-5B/yr</td><td class="num red">−RM 2-3B/yr</td></tr>
+  <tr><td style="font-weight:600;color:var(--gold)">PETROS as aggregator</td><td>PETRONAS retains operatorship; PETROS markets</td><td class="num red">−RM 8-15B/yr</td><td class="num red">−RM 5-10B/yr</td></tr>
+  <tr><td style="font-weight:600;color:var(--red)">Constitutional loss — PDA invalid in Sarawak</td><td>PETRONAS excluded; PETROS sovereign</td><td class="num red">−RM 30-40B/yr</td><td class="num red">−RM 15-25B/yr</td></tr>
+</table>
+
+<!-- ═══════════ 4. STRAIT OF HORMUZ ═══════════ -->
+<h2 id="hormuz">4. Strait of Hormuz — The LNG Supply Shock</h2>
+
+<p>The closure of the Strait of Hormuz since 28 February 2026 has removed approximately <strong>20% of global LNG supply</strong> (Qatar + UAE). PETRONAS, as a non-Gulf LNG exporter, benefits from the resulting price spike — its Bintulu LNG complex is not transiting the Strait.</p>
+
+<table>
+  <tr><th>Impact Channel</th><th>Direction</th><th>Magnitude</th></tr>
+  <tr><td>Spot LNG price (JKM)</td><td class="num green">↑ +50-100%</td><td>From ~$10 → $14-21/MMBtu</td></tr>
+  <tr><td>Oil-indexed LNG (lagged)</td><td class="num green">↑ +30-50%</td><td>Flowing through Jun-Nov 2026</td></tr>
+  <tr><td>Asian demand destruction</td><td class="num red">↓ −5 Mt through Q3</td><td>Pakistan LNG → zero; China curtailing</td></tr>
+  <tr><td>Europe-Asia cargo competition</td><td class="num gold">Mixed</td><td>Asia premium drawing Atlantic cargoes</td></tr>
+  <tr><td>Shipping costs</td><td class="num red">↑ +40-600%</td><td>Spot LNG charter rates spiked to $300K/day in March</td></tr>
+</table>
+
+<!-- ═══════════ 5. GAS PRODUCTION TRAJECTORY ═══════════ -->
+<h2 id="production">5. Malaysian Gas Production Trajectory</h2>
+
+<table>
+  <tr><th>Year</th><th>Gas Production (bcfd)</th><th>LNG Export (mtpa)</th><th>Key Event</th></tr>
+  <tr><td>FY2020</td><td class="num">~7.0</td><td class="num">~25</td><td>Pre-COVID baseline</td></tr>
+  <tr><td>FY2023</td><td class="num">~6.8</td><td class="num">~26</td><td>Bintulu at capacity</td></tr>
+  <tr><td>FY2024</td><td class="num">~6.5</td><td class="num">~27</td><td>PETROS dispute begins affecting capex</td></tr>
+  <tr><td>FY2025</td><td class="num">~6.3</td><td class="num">~26</td><td>Capex holding back in Sarawak</td></tr>
+  <tr><td>FY2026E</td><td class="num gold">~6.0-6.3</td><td class="num gold">~25-27</td><td>PETROS uncertainty; SEARAH go-live Jul 2026</td></tr>
+  <tr><td>FY2028E</td><td class="num">~5.8-6.5</td><td class="num">~28-32</td><td>SEARAH ramp + Geliga-1 discovery (5 Tcf)</td></tr>
+</table>
+
+<details>
+  <summary>SEARAH — The Gas Growth Engine · click to expand</summary>
+  <div class="reveal-body">
+    <p><strong>SEARAH Ltd</strong> is a 50:50 PETRONAS-Eni JV combining 19 gas-producing and development assets across Malaysia (5) and Indonesia (14). Established 8 June 2026. Key metrics:</p>
+    <table>
+      <tr><td>Initial production</td><td class="num">~300K boe/d</td></tr>
+      <tr><td>3-year target</td><td class="num green">500K boe/d</td></tr>
+      <tr><td>Credit facility</td><td class="num">$6B RCF</td></tr>
+      <tr><td>5-year investment pipeline</td><td class="num">$20B</td></tr>
+      <tr><td>Discovered resources</td><td class="num">>3 Bboe</td></tr>
+      <tr><td>Geliga-1 discovery (Mar 2026)</td><td class="num">~5 Tcf gas + 300M bbl condensate</td></tr>
+      <tr><td>Gendalo-Gehem FID (Mar 2026)</td><td class="num">~2 Tcf gas + 550M bbl condensate; plateau 2029</td></tr>
+    </table>
+    <p>SEARAH is structured as an independent entity with its own financing — reducing PETRONAS's direct capex burden. The "satellite model" (Eni's strategy) allows the JV to raise project-level debt without loading PETRONAS's balance sheet. PETRONAS retains 50% of the upside while sharing the capital burden.</p>
+  </div>
+</details>
+
+<!-- ═══════════ 6. GAS INFRASTRUCTURE ═══════════ -->
+<h2 id="infra">6. Gas Infrastructure — PETGAS &amp; PGU</h2>
+
+<p><strong>PETRONAS Gas Berhad (PETGAS, 6033.KL)</strong> is the listed gas infrastructure arm. It operates the Peninsular Gas Utilisation (PGU) pipeline network, gas processing plants, and regasification terminals. PETGAS is the most stable earnings contributor in the PETRONAS group — fee-based, quasi-regulated, with flat dividends.</p>
+
+<table>
+  <tr><th>Metric</th><th>FY2025 Value</th></tr>
+  <tr><td>PAT</td><td class="num green">+RM 1.73B</td></tr>
+  <tr><td>Dividend per share</td><td class="num">RM 0.64 (flat)</td></tr>
+  <tr><td>Parent stake</td><td class="num">~60.66%</td></tr>
+  <tr><td>Key risk</td><td>Gas processing fees — private contract with PETRONAS parent (opaque)</td></tr>
+  <tr><td>PETROS exposure</td><td>Sarawak gas supplied to PGU — any disruption affects throughput</td></tr>
+</table>
+
+<!-- ═══════════ 7. RESOURCES ═══════════ -->
+<h2 id="resources">7. Gas &amp; LNG Disclosure Library</h2>
+
+<div class="card-grid">
+  <div class="card"><h4>PETRONAS Gas (PETGAS) — Bursa</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">6033.KL filings, quarterly results</p><a href="https://www.bursamalaysia.com/market_information/announcements/company_announcement" target="_blank" rel="noopener">Bursa →</a></div>
+  <div class="card"><h4>IEA Gas Market Report Q2 2026</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Strait of Hormuz impact on global LNG</p><a href="https://www.iea.org/reports/gas-market-report-q2-2026" target="_blank" rel="noopener">IEA →</a></div>
+  <div class="card"><h4>Wood Mackenzie LNG</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Hormuz closure pressures Asian LNG demand</p><a href="https://www.woodmac.com/press-releases/me-conflicts-impact-on-nea-gas-market/" target="_blank" rel="noopener">WoodMac →</a></div>
+  <div class="card"><h4>PETRONAS Activity Outlook</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Upstream gas drilling and development forecast</p><a href="https://www.petronas.com/media/activity-outlook" target="_blank" rel="noopener">Activity Outlook →</a></div>
+  <div class="card"><h4>SEARAH Press Release (Eni)</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">8 Jun 2026 — JV establishment details</p><a href="https://www.eni.com/en-IT/media/press-release/2026/06/pr-eni-petronas-establish-searah.html" target="_blank" rel="noopener">Eni →</a></div>
+  <div class="card"><h4>EIA Short-Term Energy Outlook</h4><p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Quarterly Brent, HH, LNG price forecasts</p><a href="https://www.eia.gov/outlooks/steo/" target="_blank" rel="noopener">EIA →</a></div>
+</div>
+
+<hr>
+
+<div class="footer-nav">
+  <a href="/gas/">← Natural Gas Dashboard</a>
+  <a href="/oil/">Brent Crude Dashboard</a>
+  <a href="/oil/world/">→ PETRONAS Toolkit (Oil)</a>
+  <a href="/gas/world/">PETRONAS Toolkit (Gas &amp; LNG)</a>
+  <a href="/">Home</a>
+</div>
+
+<div class="disclaimer" style="margin-top:2rem;">
+<strong>DITEMPA BUKAN DIBERI — Forged, Not Given.</strong> This toolkit is an independent analytical resource prepared for sovereign intelligence purposes. It is not investment advice. PETRONAS does not endorse, verify, or contribute to this analysis. Gas production data sourced from PETRONAS FRA filings, PETRONAS Activity Outlook, Eni press releases, IEA Gas Market Report Q2 2026, EIA STEO, Wood Mackenzie. All claims tagged per F2 TRUTH: OBS (observed), DER (derived), INT (interpreted), HYP (hypothetical).<br><br>
+<strong>Owner:</strong> Muhammad Arif bin Fazil (F13 SOVEREIGN) — <a href="/">arif-fazil.com</a>
+</div>
+
+</div>
+</body>
+</html>
