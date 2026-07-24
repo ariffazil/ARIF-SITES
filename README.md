@@ -23,6 +23,26 @@ The static site hosting layer for the arifOS federation. Each subsite is aligned
 
 **arif-sites owns the SURFACE — the observable face of every federation domain.**
 
+```mermaid
+graph TB
+    subgraph EDGE [☁️ Cloudflare Edge]
+        CF[Cloudflare Pages<br/>Auto-deploy on git push]
+    end
+    CF -->|routes| CADDY[🔄 Caddy :443<br/>Reverse Proxy]
+    subgraph VPS [🖥️ VPS af-forge]
+        CADDY --> MAIN[arif-fazil.com<br/>React 19 + Vite]
+        CADDY --> AAA[aaa.arif-fazil.com<br/>Static Cockpit]
+        CADDY --> WIKI[wiki.arif-fazil.com<br/>Constitutional Wiki]
+        CADDY --> GEOX_S[geox.arif-fazil.com<br/>Lab GUI]
+        CADDY --> MCP[mcp.arif-fazil.com<br/>MCP Gateway]
+        CADDY --> WEALTH_S[wealth.arif-fazil.com]
+        CADDY --> MAKCIK[makcikgpt.arif-fazil.com]
+    end
+    MCP -->|proxy| ARIFOS[⚖️ arifOS :8088]
+    MCP -->|proxy| AFORGE[🔥 A-FORGE :7071]
+    MCP -->|proxy| GEOX[🌍 GEOX :8081]
+```
+
 ## ⚡ Quick Start
 
 ```bash
