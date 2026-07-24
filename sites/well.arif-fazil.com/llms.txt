@@ -1,30 +1,99 @@
-# WELL — Human Readiness Organ (arifOS Federation)
+# WELL — Human Readiness (arifOS Federation)
+## Machine & Agent Interface Specification
 
-> WELL is the Universal Substrate Vitality Mirror for the arifOS federation.
-> H-WELL reflects operator biological/cognitive state. M-WELL reflects system
-> reliability. G-WELL reflects machine governance health. C-WELL evaluates
-> coupled human-machine risk. U-WELL classifies any substrate without category
-> error. W0: WELL holds a mirror, not a veto. REFLECT_ONLY — never diagnostic.
+**Version:** 2026.07.24  
+**URL:** https://well.arif-fazil.com  
+**MCP:** https://well.arif-fazil.com/mcp  
+**Source:** https://github.com/ariffazil/well  
+**Port (local):** 18083 · **Tools:** 8 public · **License:** BSL  
 
-## Endpoint
+> **WELL reflects. arifOS judges. Arif decides.**  
+> Authority ceiling: **REFLECT_ONLY** — holds a mirror, not a veto. Never diagnoses.
 
-- MCP (JSON-RPC, streamable-http): https://well.arif-fazil.com/mcp
-- Health: https://well.arif-fazil.com/health
-- Protocol: 2024-11-05
+---
 
-## Tools (7)
+## What WELL Is
 
-- well_assess_homeostasis — regulation, stability, fatigue under change (C-class decision routing)
-- well_validate_vitality — readiness + NIAT validation
-- well_guard_dignity — consent, coercion signals, reductionism risk
-- well_classify_substrate — substrate identification and boundary sensing
-- well_trace_lineage — memory, trend, ledger, vault chain tracing
-- well_check_repair — repair/recovery cycle integrity
-- well_assess_reliability — machine, tool, institutional reliability
+Vitality / human-readiness organ of the arifOS federation. Mirrors operator state
+(H-WELL), machine reliability (M-WELL), governance health (G-WELL), and coupled
+risk (C-WELL). Outputs are readiness signals — not clinical verdicts.
 
-## Governance
+## Federation Organs
 
-WELL computes reflection. arifOS judges. Arif decides.
-WELL does not decide worth, does not emit diagnoses, does not hold veto.
+| Organ | Role | Port | Link |
+|-------|------|------|------|
+| arifOS | Constitutional kernel — judge, seal | 8088 | https://arifos.arif-fazil.com |
+| AAA | Cockpit + A2A | 3001 | https://aaa.arif-fazil.com |
+| A-FORGE | Execution shell | 7071 | https://mcp.arif-fazil.com |
+| GEOX | Earth intelligence | 8081 | https://geox.arif-fazil.com |
+| WEALTH | Capital intelligence | 18082 | https://wealth.arif-fazil.com |
+| **WELL** | Vitality guard | 18083 | ← you are here |
+| HERMES | Multi-modal / Telegram bridge | — | https://t.me/arifos |
+
+Contract: https://arifos.arif-fazil.com · `/root/FEDERATION_CONTRACT.md`
+
+---
+
+## Discovery Endpoints
+
+| Path | Purpose |
+|------|---------|
+| `/health` | Runtime health + well_score + freshness |
+| `/ready` | Alias for /health |
+| `/mcp` | MCP streamable-http |
+| `/llms.txt` | This file — agent map |
+
+**Truth rule:** live `/health` beats narrative. `status=degraded` with HTTP 200 is valid when biometrics are OPERATOR_REPORTED without verified telemetry.
+
+---
+
+## Substrate Taxonomy
+
+| Class | Meaning |
+|-------|---------|
+| **H-WELL** | Human biological / cognitive state |
+| **M-WELL** | Machine reliability, tool health, context integrity |
+| **G-WELL** | Machine governance health — floor coherence |
+| **C-WELL** | Coupled human–machine risk |
+| **U-WELL** | Universal substrate vitality (no category error) |
+
+## Public MCP Surface (8)
+
+Tools are reflection / report primitives only. Exact names: live `tools/list` on `/mcp`.
+Typical surface: vitality report, readiness band, substrate classify, forge intensity advice (advisory to A-FORGE — never a veto).
+
+## Boundaries (hard)
+
+- NEVER diagnose medical conditions or prescribe treatment  
+- NEVER issue SEAL/VOID/HOLD as constitutional authority  
+- NEVER invent biometrics — missing sensors → degraded / UNKNOWN  
+- NEVER claim consciousness, feelings, or personhood (F9/F10)  
+- F5 PEACE² + F6 MARUAH: dignity-first, de-escalate  
+
+## Epistemic Tags
+
+OPERATOR_REPORTED · MEASURED · DERIVED · UNKNOWN. Prefer weaker tag when mixed.
+
+## Runtime Layout
+
+- `server` / FastMCP on :18083  
+- systemd: `well.service`  
+- State age / freshness_band on `/health`  
+
+## Build & Test
+
+```bash
+pip install -e ".[dev]"
+pytest tests/ -q --tb=short
+curl -s http://127.0.0.1:18083/health
+```
+
+## For Agents
+
+1. Read this file + `/health`  
+2. Connect MCP: `https://well.arif-fazil.com/mcp`  
+3. Treat degraded+OPERATOR_REPORTED as honest, not outage  
+4. Route decisions through arifOS; WELL never vetoes Arif  
+5. Crawl federation: https://arifos.arif-fazil.com/llms.txt  
 
 DITEMPA BUKAN DIBERI — Forged, Not Given.

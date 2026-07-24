@@ -66,6 +66,8 @@
     '.trinity-nav a.forge:hover{background:rgba(227,179,65,0.1)}' +
     '.trinity-nav a.gate{color:#7C6FD4}' +
     '.trinity-nav a.gate:hover{background:rgba(124,111,212,0.1)}' +
+    '.trinity-nav a.hermes{color:#E879F9}' +
+    '.trinity-nav a.hermes:hover{background:rgba(232,121,249,0.12)}' +
     '.trinity-nav .sep{color:#333;margin:0 0.1rem;user-select:none}' +
     '.trinity-nav .motto{color:#444;font-size:0.6rem;margin-left:auto;font-style:italic;padding-left:0.5rem}';
   document.head.appendChild(style);

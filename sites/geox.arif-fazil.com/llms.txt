@@ -1,64 +1,116 @@
-# GEOX — Earth Intelligence Layer for arifOS
+# GEOX — Earth Intelligence (arifOS Federation)
 ## Machine & Agent Interface Specification
 
-**Version:** 0.1.0
-**URL:** https://geox.arif-fazil.com
-**Source:** https://github.com/ariffazil/GEOX
+**Version:** 2026.07.24  
+**URL:** https://geox.arif-fazil.com  
+**MCP:** https://geox.arif-fazil.com/mcp  
+**Source:** https://github.com/ariffazil/GEOX  
+**Port (local):** 8081 · **Tools:** 32 public · **License:** BSL-1.1  
+
+> **Physics before narrative. Evidence only — never adjudicates.**  
+> Authority ceiling: **COMPUTE_ONLY** — DEMO ≠ earth truth · Volve = North Sea.
+
+---
 
 ## What GEOX Is
-GEOX is the Earth intelligence layer of the arifOS constellation. It provides sovereign decision cockpits for subsurface evaluation — bridging geological evidence to capital consequence.
 
-## Three Cockpits
+Earth intelligence organ of the arifOS federation. Wells, seismic, petrophysics,
+basin analysis, prospect screening, falsification, and map/visual MCP Apps.
+Outputs are governed evidence envelopes — not SEAL/VOID judgments.
 
-### GEOX Cockpit (AAA-Grade Prospect Forge)
-- URL: https://geox.arif-fazil.com/cockpit
-- Purpose: Prospect maturation, georeferencing, B_cog bias referee, governed verdicts
-- Input: Geological evidence → Output: AAA-grade prospect verdict
+## Federation Organs
 
-### WELL Cockpit (AAA-Grade Well Witness)
-- URL: https://geox.arif-fazil.com/cockpit
-- Purpose: Well correlation with petrophysical ToAC audit
-- Input: Well log data → Output: Trust-graded interpretation
+| Organ | Role | Port | Link |
+|-------|------|------|------|
+| arifOS | Constitutional kernel — judge, seal | 8088 | https://arifos.arif-fazil.com |
+| AAA | Cockpit + A2A | 3001 | https://aaa.arif-fazil.com |
+| A-FORGE | Execution shell | 7071 | https://mcp.arif-fazil.com |
+| **GEOX** | Earth intelligence | 8081 | ← you are here |
+| WEALTH | Capital intelligence | 18082 | https://wealth.arif-fazil.com |
+| WELL | Vitality guard (REFLECT_ONLY) | 18083 | https://well.arif-fazil.com |
+| HERMES | Multi-modal / Telegram bridge | — | https://t.me/arifos |
 
-### WEALTH Cockpit (Capital Judge)
-- URL: https://geox.arif-fazil.com/prospect
-- Purpose: Sovereign capital allocation engine, CapitalX valuation, NPV reward signal
-- Input: Geological truth → Output: Financial consequence (NPV)
+Contract: https://arifos.arif-fazil.com · `/root/FEDERATION_CONTRACT.md`
 
-## Architecture
-One causal chain from sediment to capital:
-1. Earth Evidence (sediment, seismic, well logs)
-2. Govern Layer (ToAC audit, B_cog Referee, 888_HOLD constitutional review)
-3. Capital Layer (CapitalX valuation, NPV, decision closure)
+---
 
-geox.evaluate_prospect() → arifos.bridge_contract() → wealth.npv_reward()
+## Discovery Endpoints
 
-## Navigation
-- / — GEOX home
-- /cockpit — Decision cockpits
-- /prospect — WEALTH capital judge
-- /map — Spatial commons (Leaflet geospatial)
-- /viewer — Petrophysics + RATLAS data viewer
-- /docs — Theory, MCP tools, integration guides
-- /health — Runtime SOT, container health, constitutional floors
+| Path | Purpose |
+|------|---------|
+| `/health` | Runtime health + tool count + git identity |
+| `/mcp` | MCP streamable-http (POST tools; GET discovery) |
+| `/llms.txt` | This file — agent map |
+| `/apps/well-desk/p0-viz.html` | MCP host WellDesk shell |
+| `/apps/well-desk/index.html` | Full browser WellDesk |
+| Agent card | `/.well-known/agent-card.json` |
+| Surface | `GEOX_MCP_APPS_SURFACE.json` (repo) |
 
-## MCP Tool: arifos_111_sense (Visual Mode)
-- Purpose: Image understanding via MiniMax VLM
-- Required parameter: image_url (public HTTPS URL)
-- mode: visual
+**Truth rule:** live `tools/list` and `/health` beat static prose. Identity: `geox-<gitsha>`.
 
-## MCP Tool: arifos_222_witness (Web Search Mode)
-- Purpose: External evidence via MiniMax web search bridge
-- mode: web_search
-- search_query: override query
+---
 
-## Evidence Classification
-- OBS: Direct geological observation (publicly verified)
-- DER: Derived from primary data (analyst-graded)
-- INT: Interpretation (not confirmed)
-- SPEC: Speculative (explicitly flagged)
+## Public MCP Tools (32)
+
+### Well / petrophysics
+- `geox_well_ingest` · `geox_well_desk` · `geox_well_qc` · `geox_petrophysics` · `geox_lem_predict`
+
+### Seismic / subsurface
+- `geox_seismic_ingest` · `geox_seismic_compute` · `geox_seismic_interpret` · `geox_subsurface_model` · `geox_geomechanics` · `geox_gravmag_studio`
+
+### Basin / sequence / deep time
+- `geox_basin` · `geox_basin_backstrip` · `geox_sediment_mass_balance` · `geox_thermal_maturity_history` · `geox_sequence` · `geox_deep_time_state`
+
+### Claims / evidence / falsify
+- `geox_claim` · `geox_claim_graph_evaluate` · `geox_evidence` · `geox_falsify` · `geox_contradiction_scan` · `geox_prospect`
+
+### Map / visual / workspace
+- `geox_map_layers_list` · `geox_map_scene_plan` · `geox_map_render_preview` · `geox_map_export_package`
+- `geox_visual_understand` · `geox_visual_generate_hypotheses` · `geox_workspace` · `geox_surface_status`
+- `geox_to_wealth_bridge`
+
+### MCP Apps (host iframes)
+Primary: `ui://geox/well-desk` (p0-viz host shell). Also basin-explorer, judge-console, seismic-vision, visual-hub, earth-map, prospect-studio, catalog.
+
+### Demo wells (fixture, not MEASURED earth)
+`DEMO-KINABALU` · `DEMO_WELL_A` · `DEMO_WELL_B` · `DEMO-VOLVE` (OPEN_OSS North Sea)
+
+---
+
+## Boundaries (hard)
+
+- NEVER issue SEAL/VOID/SABAR — route judgment to arifOS  
+- NEVER treat DEMO LAS as field MEASURED truth  
+- NEVER claim Malay Basin for Volve / North Sea fixtures  
+- NEVER self-authorize capital via to_wealth_bridge (evidence only)  
+- preferred_hypothesis from seismic interpret is always null from GEOX  
+
+## Epistemic Tags
+
+OBS / DER / INT / SPEC. Demo paths badge SYNTHETIC or DEMO. Petro on demo = ADVISORY · NOT_SEALED.
+
+## Runtime Layout
+
+- `src/geox_mcp/` — FastMCP server, tools, MCP Apps bridge  
+- `apps/well-desk/p0-viz.html` — host-usable WellDesk  
+- `scripts/generate_mcp_apps_surface.py` — surface SOT (fail-closed zero-bound)  
+- systemd: `geox-mcp.service` → :8081  
+
+## Build & Test
+
+```bash
+pip install -e ".[dev]"
+make readiness-test          # ship gate
+make generate-mcp-apps-surface
+curl -s http://127.0.0.1:8081/health
+```
 
 ## For Agents
-- Crawl: https://geox.arif-fazil.com/sitemap.xml
-- MCP health: https://geox.arif-fazil.com/health
-- Source: https://github.com/ariffazil/GEOX
+
+1. Read this file + `/health`  
+2. Connect MCP: `https://geox.arif-fazil.com/mcp`  
+3. Open wells via `geox_well_desk` mode=open; bind UI `ui://geox/well-desk`  
+4. Route SEAL-grade claims through arifOS  
+5. Crawl federation: https://arifos.arif-fazil.com/llms.txt  
+
+DITEMPA BUKAN DIBERI — Forged, Not Given.

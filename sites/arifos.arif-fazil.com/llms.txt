@@ -1,57 +1,89 @@
 # arifOS Observatory — Constitutional Governance Dashboard
-# https://arifos.arif-fazil.com
+## Machine & Agent Interface Specification
 
-> SOT hash 2056a0c5102dfa0b · pin kanon-32f9ce9 · public wire **18** tools · status healthy
+**Version:** 2026.07.24  
+**URL:** https://arifos.arif-fazil.com  
+**MCP (this host):** https://arifos.arif-fazil.com/mcp  
+**Canonical MCP door:** https://mcp.arif-fazil.com/mcp  
+**Source:** https://github.com/ariffazil/arifos  
+**Port (local):** 8088 · **Tools (live gateway):** 8 kernel verbs · **Floors:** F1–F13  
 
-## What This Is
+> **arifOS judges. Organs compute. Arif (F13) is final.**  
+> Probe before act: `/health` and `tools/list` beat every static claim.
 
-arifOS is a constitutional AI governance framework. This observatory provides read-only visibility into the federation:
-- **6 Federation Organs**: arifOS (kernel), GEOX (earth), WEALTH (capital), WELL (vitality), AAA (A2A hub), A-FORGE (execution)
-- **13 Constitutional Floors**: F1 AMANAH through F13 SOVEREIGN
-- **VAULT999**: Immutable audit chain with hash-chained seals
-- **888 JUDGE**: Constitutional verdict engine
+---
 
-## MCP Primitives (v2025-11-25)
+## What This Host Is
 
-| Primitive | Count | Description |
-|-----------|-------|-------------|
-| **Tools** | **18 public** (+ 6 internal) | Public wire = metabolic 12 + entropy mesh 6 |
-| **Service** | ARIFOS MCP | `kanon-32f9ce9` |
-| **Declared** | 58 | public + diagnostic |
+Public observatory + kernel MCP ingress for the arifOS federation. Constitutional
+floors F1–F13, session capability tokens (SCT), routing to GEOX/WEALTH/WELL/A-FORGE,
+and VAULT999 seal path.
 
-### Public Wire Tools (18)
+## Federation Organs
 
-- `arif_init`
-- `arif_observe`
-- `arif_think`
-- `arif_route`
-- `arif_bridge_connect`
-- `arif_critique`
-- `arif_memory`
-- `arif_judge`
-- `arif_forge`
-- `arif_compose`
-- `arif_seal`
-- `arif_verify`
-- `arif_entropy_observe`
-- `arif_j_state_assess`
-- `arif_correction_probe`
-- `arif_consequence_trace`
-- `arif_entropy_route`
-- `arif_j_gate`
+| Organ | Role | Port | Link |
+|-------|------|------|------|
+| **arifOS** | Constitutional kernel | 8088 | ← you are here |
+| AAA | Cockpit + A2A | 3001 | https://aaa.arif-fazil.com |
+| A-FORGE | Execution shell | 7071 | https://mcp.arif-fazil.com |
+| GEOX | Earth intelligence | 8081 | https://geox.arif-fazil.com |
+| WEALTH | Capital intelligence | 18082 | https://wealth.arif-fazil.com |
+| WELL | Vitality guard | 18083 | https://well.arif-fazil.com |
+| HERMES | Telegram / multi-modal | — | https://t.me/arifos |
 
-### Canonical MCP Gateway
+## Discovery Endpoints
 
-| Endpoint | Method | Domain | Description |
-|----------|--------|--------|-------------|
-| `/mcp` | POST | `mcp.arif-fazil.com` | MCP JSON-RPC 2.0 (streamable-http) |
-| `/mcp` | GET | `arifos.arif-fazil.com` | Discovery card (same counts as health) |
-| `/tools` | GET | both | Public tool list |
-| `/tools.json` | GET | both | Machine manifest (public == tools/list) |
-| `/health` | GET | both | Runtime health + surface_consistency |
+| Path | Purpose |
+|------|---------|
+| `/health` | Kernel health + floors_active + tools_loaded |
+| `/mcp` | Kernel MCP (proxied to :8088) |
+| `/llms.txt` | This file |
+| Deep tool surface | https://mcp.arif-fazil.com/llms.txt |
+| Federation map | `/.well-known/arifos-federation.json` |
+| Agent card | `/.well-known/agent-card.json` |
 
-## SOT Invariant
+## Canonical Kernel Verbs (8)
 
-`tool_count == tools_loaded == tools_exposed_via_mcp == /tools.count == tools/list == /tools.json.count == 18`
+| Verb | Stage | Role |
+|------|-------|------|
+| `arif_init` | 000 | Session ignition |
+| `arif_observe` | 111 | Sense reality (OBS/DER/INT/SPEC) |
+| `arif_think` | 333 | Structured reasoning |
+| `arif_route` | 444 | Intent → organ dispatch |
+| `arif_memory` | mem | L1–L6 governed memory |
+| `arif_judge` | 888 | SEAL / HOLD / SABAR / VOID |
+| `arif_forge` | 777 | Execution gate → A-FORGE |
+| `arif_seal` | 999 | VAULT999 append |
+
+**Truth:** `POST …/mcp` `tools/list` is SOT for counts. `tools_loaded` on `/health` is single-witness.
+
+## Authority Chain
+
+```
+arif_init → arif_observe/think → arif_route → arif_judge → arif_forge → arif_seal
+   111            222/333            444          888          777         999
+```
+
+Do not skip links. Mutation requires SEAL-grade authority + lease.
+
+## Boundaries (hard)
+
+- NEVER claim organ compute is constitutional judgment  
+- NEVER seal without VAULT999 path  
+- NEVER bypass F13 human veto  
+- NEVER treat OBSERVE_ONLY SCT as FULL mutate  
+
+## Floors (summary)
+
+Hard: F1 AMANAH · F2 TRUTH · F4 CLARITY · F7 HUMILITY · F9 ANTIHANTU · F10 ONTOLOGY · F11 AUDIT · F12 INJECTION · F13 SOVEREIGN  
+Soft: F5 PEACE² · F6 EMPATHY · Derived: F3 TRI-WITNESS · F8 GENIUS  
+
+## For Agents
+
+1. `GET /health` then `tools/list`  
+2. Prefer `https://mcp.arif-fazil.com/mcp` as federation door  
+3. Domain work → route to GEOX / WEALTH / WELL  
+4. Engineering mutate → A-FORGE after SEAL  
+5. Full kernel surface: https://mcp.arif-fazil.com/llms.txt  
 
 DITEMPA BUKAN DIBERI — Forged, Not Given.

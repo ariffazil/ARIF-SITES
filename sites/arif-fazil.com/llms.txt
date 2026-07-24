@@ -1,33 +1,63 @@
-# arif-fazil.com — Federation Entry Point
+# arif-fazil.com — Federation Entry Point (SOUL)
+## Machine & Agent Interface Specification
 
-> Muhammad Arif bin Fazil. Exploration geoscientist, offshore Malaysia.
-> Builder of arifOS — a constitutional AI governance federation.
-> **SOT:** 2026-07-24 | **seal_seq:** fed-phase-3
+**Version:** 2026.07.24  
+**URL:** https://arif-fazil.com  
+**Owner:** Muhammad Arif bin Fazil (F13 SOVEREIGN)  
+**Timezone:** Asia/Kuala_Lumpur (UTC+8)  
+
+> Human entry to the arifOS Federation. Professional geoscience identity + organ map.  
+> **Not** the WEALTH organ. Capital intelligence lives at https://wealth.arif-fazil.com.
+
+---
 
 ## About This Domain
 
-arif-fazil.com is the human entry point to the arifOS Federation. It links to all 7 federation organs and the sovereign's professional profile.
+arif-fazil.com is the **Ψ SOUL** surface — human narrative, portfolio, and federation
+landing. Agents should use organ-specific `llms.txt` and MCP endpoints for tool work.
 
 ## Federation Organs
 
-| Organ | URL | Role |
-|-------|-----|------|
-| arifOS | https://arifos.arif-fazil.com | Constitutional kernel — judge, seal, F1-F13 |
-| AAA | https://aaa.arif-fazil.com | Cockpit + A2A identity layer |
-| A-FORGE | https://forge.arif-fazil.com | Execution shell — build, deploy, forge |
-| GEOX | https://geox.arif-fazil.com | Earth intelligence — wells, seismic, petrophysics |
-| WEALTH | https://wealth.arif-fazil.com | Capital intelligence — NPV, IRR, EMV |
-| WELL | https://well.arif-fazil.com | Vitality guard — REFLECT_ONLY |
-| HERMES | https://t.me/arifos | Multi-modal bridge — Telegram relay |
+| Organ | URL | Role | llms.txt |
+|-------|-----|------|----------|
+| arifOS | https://arifos.arif-fazil.com | Constitutional kernel | /llms.txt |
+| AAA | https://aaa.arif-fazil.com | Cockpit + A2A | /llms.txt |
+| A-FORGE | https://forge.arif-fazil.com | Execution shell | /llms.txt |
+| GEOX | https://geox.arif-fazil.com | Earth intelligence | /llms.txt |
+| WEALTH | https://wealth.arif-fazil.com | Capital intelligence | /llms.txt |
+| WELL | https://well.arif-fazil.com | Vitality (REFLECT_ONLY) | /llms.txt |
+| HERMES | https://t.me/arifos | Telegram / multi-modal | — |
+| MCP door | https://mcp.arif-fazil.com | Canonical public MCP | /llms.txt |
 
 ## Key Endpoints
 
-- Federation health: https://arifos.arif-fazil.com/health
-- MCP Gateway: https://mcp.arif-fazil.com/mcp
-- Observatory: https://arifos.arif-fazil.com
-- Cockpit: https://aaa.arif-fazil.com
+| Path | Purpose |
+|------|---------|
+| `/` | Human homepage |
+| `/llms.txt` | This file (federation entry map) |
+| `/vitals/` | Human vitals UI (PETRONAS·φ / capital pulse display) |
+| `/.well-known/arifos-federation.json` | Machine federation map |
+| MCP Gateway | https://mcp.arif-fazil.com/mcp |
+| Kernel health | https://arifos.arif-fazil.com/health |
 
 ## Sovereign
 
-Muhammad Arif bin Fazil — F13 SOVEREIGN. Senior exploration geoscientist.
-Based in Malaysia (UTC+8). GitHub: https://github.com/ariffazil
+Muhammad Arif bin Fazil — senior exploration geoscientist (offshore Malaysia).  
+Builder of arifOS. GitHub: https://github.com/ariffazil  
+F13 SOVEREIGN veto is absolute.
+
+## For Agents
+
+1. Use this file only for **identity + organ routing**  
+2. Do **not** call capital tools against this host — use wealth.arif-fazil.com  
+3. Do **not** call earth tools here — use geox.arif-fazil.com  
+4. Kernel verbs: https://mcp.arif-fazil.com/mcp  
+5. Prefer organ `llms.txt` for tool depth  
+
+## Boundaries
+
+- NEVER invent Arif biometrics or medical state  
+- NEVER treat this domain as an MCP organ server  
+- NEVER allocate capital or seal VAULT999 from this surface  
+
+DITEMPA BUKAN DIBERI — Forged, Not Given.
