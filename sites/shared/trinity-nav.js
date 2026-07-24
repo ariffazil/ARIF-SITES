@@ -16,6 +16,7 @@
     { href: 'https://well.arif-fazil.com',  label: 'WELL',    cls: 'well',   emoji: '&#937;&#9733;' },
     { href: 'https://forge.arif-fazil.com', label: 'FORGE',   cls: 'forge',  emoji: '&#9878;' },
     { href: 'https://mcp.arif-fazil.com',   label: 'MCP',     cls: 'gate',   emoji: '&#9675;' },
+    { href: 'https://t.me/arifos',          label: 'HERMES',  cls: 'hermes', emoji: '&#9883;' },
   ];
 
   var html = '';

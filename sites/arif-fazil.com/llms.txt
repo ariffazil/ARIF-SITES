@@ -1,0 +1,33 @@
+# arif-fazil.com — Federation Entry Point
+
+> Muhammad Arif bin Fazil. Exploration geoscientist, offshore Malaysia.
+> Builder of arifOS — a constitutional AI governance federation.
+> **SOT:** 2026-07-24 | **seal_seq:** fed-phase-3
+
+## About This Domain
+
+arif-fazil.com is the human entry point to the arifOS Federation. It links to all 7 federation organs and the sovereign's professional profile.
+
+## Federation Organs
+
+| Organ | URL | Role |
+|-------|-----|------|
+| arifOS | https://arifos.arif-fazil.com | Constitutional kernel — judge, seal, F1-F13 |
+| AAA | https://aaa.arif-fazil.com | Cockpit + A2A identity layer |
+| A-FORGE | https://forge.arif-fazil.com | Execution shell — build, deploy, forge |
+| GEOX | https://geox.arif-fazil.com | Earth intelligence — wells, seismic, petrophysics |
+| WEALTH | https://wealth.arif-fazil.com | Capital intelligence — NPV, IRR, EMV |
+| WELL | https://well.arif-fazil.com | Vitality guard — REFLECT_ONLY |
+| HERMES | https://t.me/arifos | Multi-modal bridge — Telegram relay |
+
+## Key Endpoints
+
+- Federation health: https://arifos.arif-fazil.com/health
+- MCP Gateway: https://mcp.arif-fazil.com/mcp
+- Observatory: https://arifos.arif-fazil.com
+- Cockpit: https://aaa.arif-fazil.com
+
+## Sovereign
+
+Muhammad Arif bin Fazil — F13 SOVEREIGN. Senior exploration geoscientist.
+Based in Malaysia (UTC+8). GitHub: https://github.com/ariffazil
