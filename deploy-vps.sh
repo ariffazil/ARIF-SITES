@@ -64,6 +64,13 @@ rsync -avz --delete $SITES_ROOT/wealth.arif-fazil.com/ $HTML_ROOT/wealth/   2>/d
 rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
 rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
 
+# Commodity dashboards (oil/gas/gold) — static pages only.
+# NO --delete: live api/ (systemd services) and vendor/ must survive.
+for asset in oil gas gold; do
+  rsync -avz --exclude 'api/' --exclude 'vendor/' \
+    $SITES_ROOT/arif-fazil.com/public/$asset/ $HTML_ROOT/$asset/ 2>/dev/null || true
+done
+
 # 4. Sync runtime state and discovery files
 echo "[3.6/5] Syncing seal chain head & discovery assets..."
 mkdir -p $HTML_ROOT/aaa/_state
