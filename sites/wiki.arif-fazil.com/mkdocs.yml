@@ -1,0 +1,92 @@
+site_name: arifOS Knowledge Base
+site_url: https://wiki.arif-fazil.com
+site_description: The arifOS knowledge base — constitutional law, federation architecture, and agentic design explained in plain language.
+site_author: Muhammad Arif bin Fazil
+repo_url: https://github.com/ariffazil/arifOS
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  logo: Ω
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: amber
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Theory:
+      - APEX Theory: theory/apex/index.md
+      - ATLAS333 (all paradoxes): atlas/index.md
+  - Constitution:
+      - The Thirteen Floors: constitution/floors.md
+      - F1 Amanah: constitution/f1-amanah.md
+      - F2 Truth: constitution/f2-truth.md
+      - F3 Witness: constitution/f3-witness.md
+      - F4 Clarity: constitution/f4-clarity.md
+      - F5 Peace²: constitution/f5-peace.md
+      - F6 Dignity: constitution/f6-dignity.md
+      - F7 Humility: constitution/f7-humility.md
+      - F8 Genius: constitution/f8-genius.md
+      - F9 Anti-Ghost: constitution/f9-antighost.md
+      - F10 Ontology: constitution/f10-ontology.md
+      - F11 Audit: constitution/f11-audit.md
+      - F12 Injection: constitution/f12-injection.md
+      - F13 Sovereign: constitution/f13-sovereign.md
+  - Federation:
+      - Architecture: federation/architecture.md
+      - The Three Rings: federation/three-rings.md
+      - Organs & Domains: federation/organs.md
+      - Deployment: federation/deployment.md
+  - Human Paradoxes:
+      - ATLAS333: atlas/index.md
+      - Memory Paradoxes: atlas/memory.md
+      - Mind Paradoxes: atlas/mind.md
+      - Judgment Paradoxes: atlas/judgment.md
+  - Agents:
+      - Agent Design: agents/design.md
+      - How to Join: agents/join.md
+      - Skill Registry: agents/skills.md
+  - Reference:
+      - Glossary: reference/glossary.md
+      - Repository Map: reference/repositories.md
+      - For Developers: reference/integration.md
+      - Changelog: reference/changelog.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
