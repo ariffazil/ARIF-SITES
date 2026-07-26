@@ -1,45 +1,62 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-05-22
-valid_from: 2026-05-22
-valid_until: 2026-06-22
+last_verified: 2026-07-26
+valid_from: 2026-07-26
+valid_until: 2026-08-26
 confidence: high
-scope: /root/ARIF-SITES
+scope: /root/arif-sites → ariffazil/arif-fazil.com
+doctrine: One domain. One web surface. Many organs, tetap bersempadan.
 -->
 
-# AGENTS.md — arif-sites | Website Estate & Deployment Discipline
+# AGENTS.md — arif-fazil.com | Unified Federation Web Surface
 
 > **DITEMPA BUKAN DIBERI** — The web surface is forged, not given.
 
 ## Who You Serve
 
-Arif. This is the **arif-sites** repository — static site estate, React frontends, and deployment infrastructure for the arifOS federation web surface.
+Arif. This is the **arif-fazil.com** repository (formerly `arif-sites`) — the unified web surface for the arifOS federation.
 
 ## What This Repo Is
 
-The canonical web estate. Hosts subsites under `arif-fazil.com` and related domains.
+The canonical web estate. All organs are exposed as paths under `https://arif-fazil.com/`. Legacy subdomains are preserved as 301 redirects.
 
 | Attribute | Value |
 |-----------|-------|
 | **Deployment** | Cloudflare Pages (auto-deploy) + VPS (Caddy) |
-| **Build tool** | Vite 7 (React subsites only) |
+| **Build tool** | Vite 7 (React cockpit only) |
 | **Reverse proxy** | Caddy 2 (ports 80/443, TLS via Cloudflare Origin CA) |
-| **Dynamic services** | VPS Docker + Caddy reverse proxy |
+| **Dynamic services** | VPS systemd + Caddy reverse proxy |
 
-### Live Subsites
+### Live Paths (Unified)
 
-| Site | Path | Type | Build Required |
-|------|------|------|----------------|
-| `arif-fazil.com/` | `sites/arif-fazil.com/` | React 19 + Vite | ✅ Yes |
-| `aaa.arif-fazil.com/` | `sites/aaa.arif-fazil.com/` | Static HTML | No |
-| `arifos.arif-fazil.com/` | `sites/arifos.arif-fazil.com/` | Static docs | No |
-| `arifosmcp.arif-fazil.com/` | `sites/arifosmcp.arif-fazil.com/` | Static docs | No |
-| `geox.arif-fazil.com/` | `sites/geox.arif-fazil.com/` | Static lab GUI | No |
-| `wiki.arif-fazil.com/` | `sites/wiki.arif-fazil.com/` | Static wiki | No |
-| `wealth/` | `sites/wealth/` | Static HTML | No |
-| `makcikgpt.arif-fazil.com/` | `sites/makcikgpt.arif-fazil.com/` | Static HTML | No |
+| Path | Source | Type | Build Required |
+|------|--------|------|----------------|
+| `/` | `sites/arif-fazil.com/` | React 19 Cockpit | ✅ Yes |
+| `/arifos/` | `sites/arif-fazil.com/public/arifos/` | Static | No |
+| `/aaa/` | `sites/arif-fazil.com/public/aaa/` | Static | No |
+| `/geox/` | `sites/arif-fazil.com/public/geox/` | Static | No |
+| `/wealth/` | `sites/arif-fazil.com/public/wealth/` | Static | No |
+| `/well/` | `sites/arif-fazil.com/public/well/` | Static | No |
+| `/forge/` | `sites/arif-fazil.com/public/forge/` | Static | No |
+| `/mcp/` | `sites/arif-fazil.com/public/mcp/` | Static | No |
+| `/wiki/` | `sites/arif-fazil.com/public/wiki/` | Static | No |
+| `/000/` `/999/` | `sites/arif-fazil.com/public/000/` `999/` | Static | No |
+| `/_shared/` | `sites/shared/` | Design System | No |
 
-> **Claimed but NOT on disk:** `travel`, `forge`, `apex`, `waw`, `wawa` — do not reference these.
+### Legacy Subdomain → Path Redirects (NEVER DELETE)
+
+| Legacy Subdomain | → | Unified Path |
+|------------------|---|-------------|
+| `arifos.arif-fazil.com` | → | `/arifos/` |
+| `aaa.arif-fazil.com` | → | `/aaa/` |
+| `geox.arif-fazil.com` | → | `/geox/` |
+| `wealth.arif-fazil.com` | → | `/wealth/` |
+| `well.arif-fazil.com` | → | `/well/` |
+| `forge.arif-fazil.com` | → | `/forge/` |
+| `mcp.arif-fazil.com` | → | `/mcp/` |
+| `wiki.arif-fazil.com` | → | `/wiki/` |
+| `makcikgpt.arif-fazil.com` | → | `/wealth/makcikgpt/` |
+| `arifosmcp.arif-fazil.com` | → | `/mcp/` |
 
 ## Authority & Autonomy
 

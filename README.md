@@ -1,16 +1,18 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.24
-last_verified: 2026-07-24T08:00Z
-live_commit: 58b0d77
-scope: /root/arif-sites
+federation_release: v2026.07.26
+last_verified: 2026-07-26T08:00Z
+live_commit: pending
+scope: /root/arif-sites → ariffazil/arif-fazil.com
 epistemic_status: CLAIM
 truth_rule: live git push + Cloudflare deploy beat any static count in prose
+doctrine: Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 -->
 
-# arif-sites — Static Surfaces & Domain Hosts
+# arif-fazil.com — Unified Federation Web Surface
 
-> **Status:** OPERATIONAL | **Organ:** SURFACE | **Authority:** arifOS
-> **Domains:** `arif-fazil.com`, `arifos.arif-fazil.com`, `wiki.arif-fazil.com`, etc.
+> **Status:** UNIFYING | **Organ:** SURFACE | **Authority:** arifOS / F13 SOVEREIGN
+> **Domain:** `https://arif-fazil.com/` — single sovereign public surface
+> **Legacy repo:** `ariffazil/arif-sites` (archived as `v2026.07.26-legacy`)
 
 [![Site Integrity](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml)
 [![Build — Trinity Sites](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml)
@@ -19,9 +21,9 @@ truth_rule: live git push + Cloudflare deploy beat any static count in prose
 
 ## 🏛️ What this repo is
 
-The static site hosting layer for the arifOS federation. Each subsite is aligned to a domain name and hosted via Cloudflare Pages (auto-deploy on `git push main`). VPS-hosted dynamic services use Caddy as a reverse proxy.
+**One domain. One web surface.** All federation organs are exposed as paths under `arif-fazil.com`. Legacy subdomains are preserved as 301 redirects — never deleted, never broken.
 
-**arif-sites owns the SURFACE — the observable face of every federation domain.**
+**This repo owns the SURFACE — the observable face of every federation organ.**
 
 ```mermaid
 graph TB
@@ -30,33 +32,75 @@ graph TB
     end
     CF -->|routes| CADDY[🔄 Caddy :443<br/>Reverse Proxy]
     subgraph VPS [🖥️ VPS af-forge]
-        CADDY --> MAIN[arif-fazil.com<br/>React 19 + Vite]
-        CADDY --> AAA[aaa.arif-fazil.com<br/>Static Cockpit]
-        CADDY --> WIKI[wiki.arif-fazil.com<br/>Constitutional Wiki]
-        CADDY --> GEOX_S[geox.arif-fazil.com<br/>Lab GUI]
-        CADDY --> MCP[mcp.arif-fazil.com<br/>MCP Gateway]
-        CADDY --> WEALTH_S[wealth.arif-fazil.com]
-        CADDY --> MAKCIK[makcikgpt.arif-fazil.com]
+        CADDY --> ROOT[arif-fazil.com/<br/>React 19 Cockpit]
+        CADDY --> ARIFOS[/arifos/ — Observatory]
+        CADDY --> AAA[/aaa/ — Control Plane]
+        CADDY --> GEOX[/geox/ — Earth Lab]
+        CADDY --> WEALTH[/wealth/ — Capital]
+        CADDY --> WELL[/well/ — Readiness]
+        CADDY --> FORGE[/forge/ — Execution]
+        CADDY --> MCP[/mcp/ — Gateway]
+        CADDY --> WIKI[/wiki/ — Knowledge]
     end
-    MCP -->|proxy| ARIFOS[⚖️ arifOS :8088]
+    MCP -->|proxy| ARIFOS_K[⚖️ arifOS :8088]
     MCP -->|proxy| AFORGE[🔥 A-FORGE :7071]
-    MCP -->|proxy| GEOX[🌍 GEOX :8081]
+    MCP -->|proxy| GEOX_K[🌍 GEOX :8081]
+```
+
+## 🌐 Unified Path Structure
+
+```
+https://arif-fazil.com/
+├── /               ← React 19 Cockpit (SPA)
+├── /000/           ← Genesis / Identity
+├── /999/           ← Seal Verification
+├── /arifos/        ← Observatory & Proof
+├── /aaa/           ← Control Plane Cockpit
+├── /geox/          ← Earth Intelligence Lab
+├── /wealth/        ← Capital Intelligence
+├── /well/          ← Human Readiness
+├── /forge/         ← Execution Surface
+├── /mcp/           ← MCP Connection Guide
+├── /wiki/          ← Constitutional Wiki
+├── /oil/ /gas/ /gold/ ← Commodity Dashboards
+├── /earth/         ← Earth Evidence
+├── /essays/        ← Sovereign Essays
+├── /federation/    ← Federation State
+├── /proof/         ← Proof Pack
+└── /_shared/       ← Design System & Assets
 ```
 
 ## ⚡ Quick Start
 
 ```bash
 cd /root/arif-sites
-# Build React subsites
-cd sites/arif-fazil.com && npm install && npm run build
-# Caddy routes: see deploy/Caddyfile
-# Sites: https://arif-fazil.com, https://aaa.arif-fazil.com
+# Build flagship React cockpit
+cd sites/arif-fazil.com && npm install --legacy-peer-deps && npm run build
+# Deploy (see deploy-vps.sh)
+./deploy-vps.sh --dry-run
 ```
+
+## 🔄 Legacy Subdomain Redirects
+
+Old subdomains redirect to unified paths (301 — never deleted):
+
+| Legacy | → | Unified |
+|--------|---|---------|
+| `arifos.arif-fazil.com` | → | `/arifos/` |
+| `aaa.arif-fazil.com` | → | `/aaa/` |
+| `geox.arif-fazil.com` | → | `/geox/` |
+| `wealth.arif-fazil.com` | → | `/wealth/` |
+| `well.arif-fazil.com` | → | `/well/` |
+| `forge.arif-fazil.com` | → | `/forge/` |
+| `mcp.arif-fazil.com` | → | `/mcp/` |
+| `wiki.arif-fazil.com` | → | `/wiki/` |
+| `makcikgpt.arif-fazil.com` | → | `/wealth/makcikgpt/` |
 
 ## 📦 Ownership
 
-- **Owns**: All static site content, React subsite builds, Cloudflare Pages deployment, VPS Caddy routing.
-- **Does NOT own**: Application logic (AAA, GEOX), Kernel logic (arifOS).
+- **Owns**: All static site content, React cockpit build, Cloudflare Pages deployment, VPS Caddy routing.
+- **Does NOT own**: Application logic (AAA, GEOX), Kernel logic (arifOS) — those are separate runtime repos.
+- **Canon**: `ariffazil/web-canon` — single source of truth for registries and navigation.
 
 ## 🏗️ Current Structure
 

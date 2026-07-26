@@ -1,58 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ring="MIND" data-plane="organ" data-organ="arifos">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arifOS — Governed intelligence · Arif Fazil</title>
-<meta name="description" content="arifOS judges authority and reversibility. GEOX observes Earth. WEALTH computes capital. WELL reflects the human substrate. The human decides.">
-<link rel="canonical" href="https://arif-fazil.com/arifos/">
-<style>
-body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
-main{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
-h1{font-size:2rem;letter-spacing:-.03em;margin:.25rem 0 1rem}
-.lead{color:#9b9995;font-size:1.1rem;max-width:40ch;margin-bottom:1.5rem}
-.card{border:1px solid #2a2826;border-radius:10px;padding:1rem 1.1rem;background:#141312;margin:1rem 0}
-.actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.25rem 0}
-a.btn{display:inline-flex;padding:.6rem 1rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.9rem}
-.primary{background:#3a9ea8;color:#0d0c0b}.ghost{border:1px solid #2a2826;color:#e6e4e0}
-ul{color:#9b9995;padding-left:1.2rem} li{margin:.35rem 0}
-.kv{font-family:ui-monospace,monospace;font-size:.8rem;color:#9b9995}
-</style>
-<script src="/_shared/federation-chrome.js?v=20260718" data-active="arifos"></script>
+<title>arifOS Observatory — Reality Witness</title>
+<meta property="og:image" content="https://arifos observatory/og-image.jpg" />
+<meta property="og:description" content="Read-only constitutional witness. One signed server-side snapshot drives every visible status. Every status carries source, timestamp, freshness, evidence class, confidence, namespace, drill-down, trace, receipt." />
+<meta property="og:title" content="arifOS Observatory — Public evidence for governed AI" />
+<meta name="description" content="Read-only constitutional witness. One signed server-side snapshot drives every visible status. Every status carries source, timestamp, freshness, evidence class, confidence, namespace, drill-down, trace, receipt.">
+<meta name="plane" content="organ">
+<meta name="organ" content="arifos">
+<link rel="canonical" href="https://arifos.arif-fazil.com/">
+<link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
+<link rel="alternate" type="application/ld+json" href="/.well-known/governance.jsonld" title="Governance JSON-LD">
+<link rel="alternate" type="application/json" href="/api/observatory/v1/snapshot" title="Live arifOS Observatory Snapshot">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<script src="/_shared/trinity-nav.js" defer></script>
+<script src="/_shared/observatory.js" defer></script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","@id":"https://arifos.arif-fazil.com/#website","name":"arifOS Observatory","url":"https://arifos.arif-fazil.com","description":"Read-only constitutional witness of the arifOS federation."},
+ {"@type":"WebAPI","@id":"https://arifos.arif-fazil.com/#api-snapshot","name":"observatory-snapshot","url":"https://arifos.arif-fazil.com/api/observatory/v1/snapshot","description":"Single signed snapshot of runtime identity, substrate, governance, capabilities, organs, metabolism, evidence, receipts, incidents."}
+]}
+</script>
 </head>
-<body>
-<main>
-  <p class="kv">arif-fazil.com/arifos · human explanation · not the live cockpit</p>
-  <h1>arifOS</h1>
-  <p class="lead">GEOX observes. WEALTH computes. WELL reflects. arifOS judges authority and reversibility. The human decides.</p>
+<body data-state="loading" data-source="GET /api/observatory/v1/snapshot" data-observed-at="" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.85" data-namespace="arifos" data-freshness-state="loading">
+<noscript>
+ <style>
+  /* ZEN PULSE — Sacred Navigation Law */
+  .zen-pulse{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:.85rem 0;margin:0 0 1rem 0;font-family:monospace;font-size:.78rem}
+  .zp-item{display:flex;flex-direction:column;gap:.2rem;padding:0 1.25rem;border-left:1px solid var(--border)}
+  .zp-item:first-child{border-left:none}
+  .zp-ask{color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;font-size:.6rem}
+  .zp-val{color:var(--text);font-weight:600;font-size:.85rem}
+  .zp-val.gold{color:var(--gold)}
 
+  /* INTENT CARDS — verbs first */
+  .intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin:1rem 0}
+  .intent-card{background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.2rem;text-decoration:none;color:inherit;transition:border-color .15s}
+  .intent-card:hover{border-color:var(--primary)}
+  .verb{font-family:'Cabinet Grotesk',sans-serif;font-size:1.15rem;font-weight:800;color:var(--gold);letter-spacing:-.02em}
+  .object{color:var(--text);font-size:.85rem;font-weight:600}
+  .you-get{color:var(--text-muted);font-size:.72rem;font-family:monospace}
+  .arrow{color:var(--text-faint);font-size:.65rem;font-family:monospace;margin-top:.2rem}
+ </style>
+
+ <!-- ZEN PULSE -->
+ <div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arifOS · Observatory</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">You want to <em>verify</em> the federation is governed and alive.</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a verb below ↓</span></div>
+ </div>
+
+ <!-- INTENT CARDS — verbs first -->
+ <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:800;margin:1.5rem 0 .5rem">What do you want to <span style="color:var(--gold)">verify</span>?</h1>
+ <div class="intent-grid">
+  <a class="intent-card" href="#sec-identity"><span class="verb">Witness</span><span class="object">live federation state</span><span class="you-get">→ substrate · governance · intelligence</span><span class="arrow">↓ runtime identity</span></a>
+  <a class="intent-card" href="#sec-governance"><span class="verb">Audit</span><span class="object">F1-F13 floors</span><span class="you-get">→ per-floor score · drift</span><span class="arrow">↓ governance state</span></a>
+  <a class="intent-card" href="#sec-drift"><span class="verb">Verify</span><span class="object">capability drift</span><span class="you-get">→ declared vs registered vs tested</span><span class="arrow">↓ capability drift</span></a>
+  <a class="intent-card" href="#sec-vault"><span class="verb">Trace</span><span class="object">a vault receipt</span><span class="you-get">→ VAULT999 witness · round-trip test</span><span class="arrow">↓ vault witness</span></a>
+  <a class="intent-card" href="#sec-organs"><span class="verb">Find</span><span class="object">a tool or organ</span><span class="you-get">→ 7 organs · MCP tools</span><span class="arrow">↓ federation organs</span></a>
+  <a class="intent-card" href="/api/observatory/v1/snapshot"><span class="verb">Probe</span><span class="object">live JSON snapshot</span><span class="you-get">→ signed server-side state</span><span class="arrow">→ /api/observatory/v1/snapshot</span></a>
+ </div>
+
+ <p style="padding:1rem;text-align:center;color:var(--text-muted);font-size:.85rem">Read-only observers without JavaScript should consult
+  <a href="/api/observatory/v1/snapshot">/api/observatory/v1/snapshot</a>
+  for the live JSON state. The cards above route to the same sections the JS app renders.</p>
+</noscript>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="header">
+ <div class="logo">
+  <div class="logo-mark">Ω</div>
+  <div>
+   <div class="logo-text">arifOS Observatory</div>
+   <div class="logo-sub">Reality Witness · F13 2026-07-16</div>
+  </div>
+ </div>
+ <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+  <span id="tier-pill" class="tier-pill" data-tier-active="false">tier: public</span>
+  <button id="tier-btn" type="button" style="background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.75rem;padding:4px 10px;border-radius:1rem;cursor:pointer">elevate tier</button>
+ </div>
+</header>
+
+<trinity-nav></trinity-nav>
+
+<nav class="now-strip" id="now-strip" aria-label="Machine reality NOW bar">
+ <div class="now-pill" id="now-substrate"><span class="lbl">substrate</span><span class="val">…</span></div>
+ <div class="now-pill" id="now-governance"><span class="lbl">governance</span><span class="val">…</span></div>
+ <div class="now-pill" id="now-intelligence"><span class="lbl">intelligence</span><span class="val">…</span></div>
+ <div class="now-pill" id="now-evidence"><span class="lbl">evidence</span><span class="val">…</span></div>
+ <div class="now-pill" id="now-authority"><span class="lbl">authority</span><span class="val">…</span></div>
+</nav>
+<div class="now-meta">
+ <span>age: <span id="meta-age">…</span></span>
+ <span>incidents: <span id="meta-incidents">0</span></span>
+ <span>findings: <span id="meta-findings">0</span></span>
+ <span>stage: <span id="meta-stage" data-evidence-class="self_reported">…</span></span>
+ <span>drift: <span class="badge" id="meta-drift">…</span></span>
+ <span>highest HOLD: <span class="badge" id="meta-hold">—</span></span>
+ <span>last tool test: <span id="meta-test">…</span></span>
+</div>
+
+<main id="main">
+
+ <section id="sec-identity">
+  <h2><span class="marker">F2</span> Runtime identity</h2>
   <div class="card">
-    <p>arifOS is the governance kernel of the federation. It does not replace geoscience, capital math or human readiness — it bounds how machine intelligence may act between them.</p>
-    <ul>
-      <li><strong>Connect</strong> — public MCP door for agents and tools</li>
-      <li><strong>Witness</strong> — Observatory proves what is running</li>
-      <li><strong>Verify</strong> — /999 preserves receipts</li>
-    </ul>
+   <div class="identity-grid" id="identity-grid">
+    <div class="identity-cell"><span class="k">source commit</span><div class="v" id="id-source">…</div></div>
+    <div class="identity-cell"><span class="k">deployed commit</span><div class="v" id="id-deployed">…</div></div>
+    <div class="identity-cell"><span class="k">build commit</span><div class="v" id="id-build">…</div></div>
+    <div class="identity-cell"><span class="k">drift</span><div class="v" id="id-drift">…</div></div>
+    <div class="identity-cell"><span class="k">deployment</span><div class="v" id="id-mode">…</div></div>
+    <div class="identity-cell"><span class="k">started at</span><div class="v" id="id-started">…</div></div>
+    <div class="identity-cell"><span class="k">platform</span><div class="v" id="id-platform" style="font-size:.65rem">…</div></div>
+    <div class="identity-cell"><span class="k">kernel epoch</span><div class="v" id="id-epoch">…</div></div>
+   </div>
   </div>
+ </section>
 
-  <div class="actions">
-    <a class="btn primary" href="https://mcp.arif-fazil.com/">Connect MCP</a>
-    <a class="btn ghost" href="https://arifos.arif-fazil.com/">Inspect Observatory</a>
-    <a class="btn ghost" href="/federation/">Federation map</a>
-    <a class="btn ghost" href="/999/">Verification /999</a>
+ <section id="sec-vocab">
+  <h2><span class="marker">F2 / F8</span> 7-state vocabulary <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(never collapsed)</span></h2>
+  <div class="vocab" id="vocab-grid">
+   <div class="vocab-cell" id="vocab-LIVENESS"><div class="name">LIVENESS</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-READINESS"><div class="name">READINESS</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-CAPABILITY"><div class="name">CAPABILITY</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-GOVERNANCE"><div class="name">GOVERNANCE</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-AUTHORIZATION"><div class="name">AUTHORIZATION</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-RECEIPT"><div class="name">RECEIPT</div><div class="val">…</div></div>
+   <div class="vocab-cell" id="vocab-CONSTITUTIONAL"><div class="name">CONSTITUTIONAL</div><div class="val">…</div></div>
   </div>
+ </section>
 
-  <div class="card kv" id="state">Loading public-state…</div>
+ <section id="sec-governance">
+  <h2><span class="marker">F1-F13</span> Governance state</h2>
+  <p style="margin:-.5rem 0 1rem;font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono)">Floor numbering: F1-F9 are operational (kernel sovereignty, evidence, witness, clarity, peace², maruah, humility, genius, anti-hantu); L10-L13 are legacy labels retained for backward compat (ontology, audit, injection, sovereign).<br>Per-floor scale direction varies — see <code>scale:</code> in the per-floor cell; LOWER_IS_BETTER, HIGHER_IS_BETTER, or ABSENT means "no measurement".</p>
+  <div class="card">
+   <div class="floor-grid" id="floor-grid">
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F1</span><span class="floor-name">AMANAH</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F2</span><span class="floor-name">TRUTH</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F3</span><span class="floor-name">WITNESS</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F4</span><span class="floor-name">CLARITY</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F5</span><span class="floor-name">PEACE²</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F6</span><span class="floor-name">MARUAH</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F7</span><span class="floor-name">HUMILITY</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F8</span><span class="floor-name">GENIUS</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">F9</span><span class="floor-name">ANTI-HANTU</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">L10</span><span class="floor-name">ONTOLOGY</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">L11</span><span class="floor-name">AUDIT</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">L12</span><span class="floor-name">INJECTION</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+    <div class="floor-cell"><div class="floor-header"><span class="floor-num">L13</span><span class="floor-name">SOVEREIGN</span></div><div class="floor-score">—</div><div class="floor-meta">awaiting data</div></div>
+   </div>
+   <div style="margin-top:1rem">
+    <h3>Verdict decomposition</h3>
+    <div class="vocab" id="verdict-decomp"></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="sec-drift">
+  <h2><span class="marker">F2</span> Capability drift</h2>
+  <div class="card">
+   <table class="drift" id="drift-table">
+    <thead><tr><th>name</th><th>declared</th><th>registered</th><th>exposed</th><th>invocable</th><th>tested</th><th>in/out match</th><th>last test</th><th>truth</th></tr></thead>
+    <tbody><tr><td colspan="9" style="text-align:center;color:var(--text-muted);padding:2rem">Loading capability data…</td></tr></tbody>
+   </table>
+  </div>
+ </section>
+
+ <section id="sec-organs">
+  <h2><span class="marker">ΔΨΩ</span> Federation organs</h2>
+  <div class="organs" id="organs-grid"></div>
+ </section>
+
+ <section id="sec-edges">
+  <h2><span class="marker">F13</span> Federation edges <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(11 directed)</span></h2>
+  <div class="card">
+   <p style="font-size:.78rem;color:var(--text-muted);margin:0 0 .75rem">Six green nodes can still hide a broken federation. Edges carry <code>transport</code>, <code>identity_match</code>, <code>schema_match</code>, <code>session_propagated</code>, <code>actor_propagated</code>, <code>trace_propagated</code>, <code>receipt_produced</code>, and a derived <code>overall</code>.</p>
+   <div id="edge-graph-wrap" style="overflow:auto;background:var(--surface-2);border-radius:.5rem;padding:.5rem;min-height:200px"></div>
+   <div id="edge-table-wrap" style="margin-top:1rem"></div>
+  </div>
+ </section>
+
+ <section id="sec-metabolism">
+  <h2><span class="marker">000-010</span> Intelligence metabolism</h2>
+  <div class="metab" id="metab-grid"></div>
+ </section>
+
+ <section id="sec-vault">
+  <h2><span class="marker">999</span> VAULT999 witness</h2>
+  <div class="card">
+   <div class="vocab" id="vault-states"></div>
+   <p style="margin-top:.75rem;font-size:.8rem;color:var(--text-muted)">
+    <span data-state="unknown">Operator tier required for write/read/verify/replay</span> ·
+    <a href="#" id="vault-test-btn">run round-trip test</a>
+   </p>
+  </div>
+ </section>
+
+ <section id="sec-authority">
+  <h2><span class="marker">F13</span> Authority gate <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">(each layer, no false-green)</span></h2>
+  <div class="card">
+   <table class="drift" style="font-size:.78rem">
+    <thead><tr><th>surface</th><th>source</th><th>layer</th><th>verdict</th><th>notes</th></tr></thead>
+    <tbody id="authority-tbody">
+     <tr><td><code>/api/observatory/v1/health-public</code></td><td>un-auth TCP</td><td>transport</td><td><span class="status status--healthy">reachable</span></td><td>no session, no interiority</td></tr>
+     <tr><td><code>/api/observatory/v1/ready</code></td><td>internal-network</td><td>dependencies</td><td><span class="status status--healthy">ready</span></td><td>postgres · redis · qdrant · vault_writer</td></tr>
+     <tr><td><code>/api/observatory/v1/capabilities</code></td><td>un-auth</td><td>sanitized public</td><td><span class="status status--degraded">declared 8 / registered 0</span></td><td>drift: registered pending</td></tr>
+     <tr><td><code>/api/observatory/v1/capabilities/full</code></td><td>X-Op-Token</td><td>operator-only</td><td><span class="status status--healthy">requires tier=operator</span></td><td>rejects with SESSION_REQUIRED without token</td></tr>
+     <tr><td><code>/api/observatory/v1/seal/*</code></td><td>X-Op-Token</td><td>operator-only</td><td><span class="status status--healthy">token-validated</span></td><td>verify · replay · test</td></tr>
+     <tr><td><code>/999/ (MEMORY public-proof)</code></td><td>un-auth</td><td>public verification</td><td><span class="status status--healthy">read-only proofs</span></td><td>VAULT999 head seq + sampled receipt hashes</td></tr>
+     <tr><td><code>Capital Judge state machine</code></td><td>audit-4 PR5</td><td>workflow</td><td><span class="status status--healthy">RECEIVED→EXECUTED</span></td><td>WEALTH QUALIFY never auto-executes</td></tr>
+     <tr><td><code>Conformance (PR7)</code></td><td>audit-4 PR7</td><td>3-level honest</td><td><span class="status status--degraded">FAST / LIVE / FULL</span></td><td>skip-state ⇒ AMBER</td></tr>
+     <tr><td><code>/.well-known/arifos-federation.json</code></td><td>un-auth</td><td>federation manifest</td><td><span class="status status--healthy">static, on disk</span></td><td>SOT — 8 nodes, 11 edges, schema v1</td></tr>
+     <tr><td><code>/.well-known/did.json</code></td><td>un-auth</td><td>root DID</td><td><span class="status status--healthy">did:web:arif-fazil.com</span></td><td>resolver at .well-known/did.json</td></tr>
+     <tr><td><code>/.well-known/governance.jsonld</code></td><td>un-auth</td><td>constitutional JSON-LD</td><td><span class="status status--healthy">13 floors + 5 ontology</span></td><td>application/ld+json</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </section>
+
+ <section id="sec-pulse">
+  <h2><span class="marker">F13</span> Daily Reality Pulse</h2>
+  <div class="card" id="pulse-card">
+   <p style="margin:0;font-size:.85rem">Pulses bound to existing 7 organs × 9 signals × 13 floors. The audit's EARTH/ENERGY/CAPITAL/INSTITUTION/HUMAN/SOCIAL/INFORMATION/MACHINE taxonomy was <strong>not adopted</strong> — those axes are not defined anywhere in the federation. We expose 7 organs + 1 cross-cutting machine axis (MACHINE · substrate(ALIGNED) | intelligence(RETAK)).</p>
+   <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.5rem" id="pulse-grid"></div>
+  </div>
+ </section>
 </main>
+
+<trinity-footer></trinity-footer>
+
+<footer>
+ snapshot id: <span class="hash" id="footer-snap-id" data-source="snapshot.snapshot_id">…</span> · observed at: <span id="footer-obs-at">…</span><br>
+ schema: observatory.v1 · generated by arifOS · every status carries source/timestamp/freshness/evidence-class/confidence/namespace/trace/receipt<br>
+ signature: <span id="footer-signature">…</span>
+</footer>
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
 <script>
-fetch('https://arifos.arif-fazil.com/api/public-state',{cache:'no-store'}).then(r=>r.json()).then(ps=>{
-  document.getElementById('state').textContent =
-    (ps.headline||'') + '\n' +
-    'Public tools: ' + ((ps.mcp&&ps.mcp.public_tools)||'?') + '\n' +
-    'Release: ' + ((ps.release&&ps.release.release_id)||'?') + '\n' +
-    'Open findings: ' + ((ps.findings&&ps.findings.open_count)||0) + '\n' +
-    'Authority: Human final';
-}).catch(()=>{document.getElementById('state').textContent='public-state unavailable';});
+(function() {
+  if (typeof arifosWebMCP === 'undefined') return;
+  arifosWebMCP.registerReadonly('get_kernel_health', 'Get arifOS kernel health', {}, async function() {
+    try { var r = await fetch('/health'); return await r.json(); }
+    catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+  arifosWebMCP.registerReadonly('get_kernel_tools', 'List kernel MCP tools', {}, async function() {
+    try {
+      var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
+      return await r.json();
+    } catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+})();
 </script>
 </body>
 </html>

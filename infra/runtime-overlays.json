@@ -1,8 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "schema_version": 1,
-  "registry": "arif-sites.runtime-overlays.v1",
+  "schema_version": 2,
+  "registry": "arif-fazil.com.runtime-overlays.v2",
   "canonical_repo_root": "/root/arif-sites",
+  "doctrine": "One domain. One web surface. Many organs, tetap bersempadan. Subdomain lama jangan dibuang — jadikan saksi dan redirect.",
   "defaults": {
     "probe_attempts": 3,
     "caddy_attempts": 3,
@@ -48,15 +49,17 @@
       "overlays": []
     },
     {
-      "site": "arifos.arif-fazil.com",
-      "source": "sites/arifos.arif-fazil.com",
+      "site": "arifos",
+      "source": "sites/arif-fazil.com/public/arifos",
       "webroot": "arifos",
       "owner": "arif-sites",
+      "unified_path": "/arifos/",
+      "legacy_subdomain": "arifos.arif-fazil.com",
       "batch": true,
       "batch_order": 30,
       "required_artifacts": ["index.html", "llms.txt"],
       "probe": {
-        "url": "https://arifos.arif-fazil.com/",
+        "url": "https://arif-fazil.com/arifos/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -103,15 +106,17 @@
       ]
     },
     {
-      "site": "aaa.arif-fazil.com",
-      "source": "sites/aaa.arif-fazil.com",
+      "site": "aaa",
+      "source": "sites/arif-fazil.com/public/aaa",
       "webroot": "aaa",
       "owner": "arif-sites",
+      "unified_path": "/aaa/",
+      "legacy_subdomain": "aaa.arif-fazil.com",
       "batch": true,
       "batch_order": 40,
       "required_artifacts": ["index.html", "manifest.txt"],
       "probe": {
-        "url": "https://aaa.arif-fazil.com/",
+        "url": "https://arif-fazil.com/aaa/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -123,15 +128,17 @@
       ]
     },
     {
-      "site": "geox.arif-fazil.com",
-      "source": "sites/geox.arif-fazil.com",
+      "site": "geox",
+      "source": "sites/arif-fazil.com/public/geox",
       "webroot": "geox",
       "owner": "arif-sites",
+      "unified_path": "/geox/",
+      "legacy_subdomain": "geox.arif-fazil.com",
       "batch": true,
       "batch_order": 50,
       "required_artifacts": ["index.html", "llms.txt"],
       "probe": {
-        "url": "https://geox.arif-fazil.com/",
+        "url": "https://arif-fazil.com/geox/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -193,15 +200,17 @@
       ]
     },
     {
-      "site": "wealth.arif-fazil.com",
-      "source": "sites/wealth.arif-fazil.com",
+      "site": "wealth",
+      "source": "sites/arif-fazil.com/public/wealth",
       "webroot": "wealth",
       "owner": "arif-sites",
+      "unified_path": "/wealth/",
+      "legacy_subdomain": "wealth.arif-fazil.com",
       "batch": true,
       "batch_order": 60,
       "required_artifacts": ["index.html", "llms.txt"],
       "probe": {
-        "url": "https://wealth.arif-fazil.com/",
+        "url": "https://arif-fazil.com/wealth/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -213,15 +222,17 @@
       ]
     },
     {
-      "site": "well.arif-fazil.com",
-      "source": "sites/well.arif-fazil.com",
+      "site": "well",
+      "source": "sites/arif-fazil.com/public/well",
       "webroot": "well",
       "owner": "arif-sites",
+      "unified_path": "/well/",
+      "legacy_subdomain": "well.arif-fazil.com",
       "batch": true,
       "batch_order": 70,
       "required_artifacts": ["llms.txt"],
       "probe": {
-        "url": "https://well.arif-fazil.com/",
+        "url": "https://arif-fazil.com/well/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -233,15 +244,17 @@
       ]
     },
     {
-      "site": "mcp.arif-fazil.com",
-      "source": "sites/mcp.arif-fazil.com",
+      "site": "mcp",
+      "source": "sites/arif-fazil.com/public/mcp",
       "webroot": "mcp",
       "owner": "arif-sites",
+      "unified_path": "/mcp/",
+      "legacy_subdomain": "mcp.arif-fazil.com",
       "batch": true,
       "batch_order": 80,
       "required_artifacts": ["index.html", "llms.json"],
       "probe": {
-        "url": "https://mcp.arif-fazil.com/",
+        "url": "https://arif-fazil.com/mcp/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -253,15 +266,17 @@
       ]
     },
     {
-      "site": "forge.arif-fazil.com",
-      "source": "sites/forge.arif-fazil.com",
+      "site": "forge",
+      "source": "sites/arif-fazil.com/public/forge",
       "webroot": "forge",
       "owner": "arif-sites",
+      "unified_path": "/forge/",
+      "legacy_subdomain": "forge.arif-fazil.com",
       "batch": true,
       "batch_order": 90,
       "required_artifacts": ["index.html", "llms.txt"],
       "probe": {
-        "url": "https://forge.arif-fazil.com/",
+        "url": "https://arif-fazil.com/forge/",
         "accepted_codes": [200]
       },
       "overlays": [
@@ -273,10 +288,12 @@
       ]
     },
     {
-      "site": "wiki.arif-fazil.com",
-      "source": "sites/wiki.arif-fazil.com",
+      "site": "wiki",
+      "source": "sites/arif-fazil.com/public/wiki",
       "webroot": "wiki",
       "owner": "arif-sites",
+      "unified_path": "/wiki/",
+      "legacy_subdomain": "wiki.arif-fazil.com",
       "batch": true,
       "batch_order": 100,
       "build": {
@@ -295,7 +312,7 @@
       },
       "required_artifacts": ["index.html", "sitemap.xml"],
       "probe": {
-        "url": "https://wiki.arif-fazil.com/",
+        "url": "https://arif-fazil.com/wiki/",
         "accepted_codes": [200]
       },
       "overlays": []
@@ -305,6 +322,7 @@
       "source": "sites/arif-fazil.com/public/oil",
       "webroot": "oil",
       "owner": "arif-sites",
+      "unified_path": "/oil/",
       "batch": true,
       "batch_order": 110,
       "required_artifacts": ["index.html"],
@@ -330,6 +348,7 @@
       "source": "sites/arif-fazil.com/public/gas",
       "webroot": "gas",
       "owner": "arif-sites",
+      "unified_path": "/gas/",
       "batch": true,
       "batch_order": 120,
       "required_artifacts": ["index.html"],
@@ -355,6 +374,7 @@
       "source": "sites/arif-fazil.com/public/gold",
       "webroot": "gold",
       "owner": "arif-sites",
+      "unified_path": "/gold/",
       "batch": true,
       "batch_order": 130,
       "required_artifacts": ["index.html"],
