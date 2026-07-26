@@ -1,0 +1,43 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "1.0.0",
+  "description": "Global navigation structure shared across all arifOS federation sites.",
+  "rule": "Every site must include the Trinity nav bar. No site-specific copies of common navigation.",
+
+  "trinity_nav": {
+    "items": [
+      { "label": "Ψ SOUL", "href": "https://arif-fazil.com", "symbol": "Ψ", "role": "human-sovereign-root" },
+      { "label": "Ω MIND", "href": "https://arif-fazil.com/arifos/", "symbol": "Ω", "role": "observatory-and-proof" },
+      { "label": "Δ BODY", "href": "https://arif-fazil.com/aaa/", "symbol": "Δ", "role": "operator-cockpit" }
+    ]
+  },
+
+  "domain_nav": [
+    { "label": "🌊 Earth", "href": "https://arif-fazil.com/geox/", "organ": "GEOX" },
+    { "label": "💰 Capital", "href": "https://arif-fazil.com/wealth/", "organ": "WEALTH" },
+    { "label": "🫀 Readiness", "href": "https://arif-fazil.com/well/", "organ": "WELL" },
+    { "label": "🔮 Bridge", "href": "https://t.me/arifos", "organ": "HERMES" }
+  ],
+
+  "infra_nav": [
+    { "label": "MCP Gateway", "href": "https://arif-fazil.com/mcp/", "audience": "developers" },
+    { "label": "Forge", "href": "https://arif-fazil.com/forge/", "audience": "internal-agents" }
+  ],
+
+  "special_routes": [
+    { "label": "/000 Genesis", "href": "https://arif-fazil.com/000", "audience": "researchers" },
+    { "label": "/999 Verify", "href": "https://arif-fazil.com/999", "audience": "auditors" },
+    { "label": "/mcp Connect", "href": "https://arif-fazil.com/mcp", "audience": "developers" }
+  ],
+
+  "footer": {
+    "copyright": "Muhammad Arif bin Fazil",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "links": [
+      { "label": "Observatory", "href": "https://arif-fazil.com/arifos/" },
+      { "label": "GitHub", "href": "https://github.com/ariffazil" },
+      { "label": "MCP", "href": "https://arif-fazil.com/mcp/" },
+      { "label": "HERMES", "href": "https://t.me/arifos" }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "v2026.07.24",
+  "seal_seq": "fed-phase-3",
+  "organs": [
+    {"organ": "arifOS", "role": "constitutional_kernel", "domain": "arifos.arif-fazil.com", "port": 8088, "github": "ariffazil/arifos", "canonical_tools": 8},
+    {"organ": "A-FORGE", "role": "execution_shell", "domain": "forge.arif-fazil.com", "port": 7071, "github": "ariffazil/A-FORGE", "mcp_endpoint": "https://mcp.arif-fazil.com/mcp"},
+    {"organ": "AAA", "role": "cockpit_a2a", "domain": "aaa.arif-fazil.com", "port": 3001, "github": "ariffazil/AAA"},
+    {"organ": "GEOX", "role": "earth_intelligence", "domain": "geox.arif-fazil.com", "port": 8081, "github": "ariffazil/GEOX", "mcp_endpoint": "https://geox.arif-fazil.com/mcp"},
+    {"organ": "WEALTH", "role": "capital_intelligence", "domain": "wealth.arif-fazil.com", "port": 18082, "github": "ariffazil/WEALTH", "mcp_endpoint": "https://wealth.arif-fazil.com/mcp"},
+    {"organ": "WELL", "role": "vitality_guard", "domain": "well.arif-fazil.com", "port": 18083, "github": "ariffazil/WELL", "mcp_endpoint": "https://well.arif-fazil.com/mcp"},
+    {"organ": "HERMES", "role": "multi_modal_bridge", "domain": "t.me/arifos", "port": 8644, "github": "ariffazil/HERMES"}
+  ]
+}
