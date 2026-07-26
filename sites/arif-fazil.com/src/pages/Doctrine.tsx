@@ -21,8 +21,8 @@ const FLOOR_DEFS = [
 
 const CONSTELLATION = [
   { symbol: 'Ω', name: 'arifOS', ring: 'MIND', role: 'Constitutional kernel — judges, seals, never executes', port: ':8088', domain: 'arifos.arif-fazil.com', never: 'Self-authorize' },
-  { symbol: 'Ψ', name: 'A-FORGE', ring: 'SOUL', role: 'Execution shell — build, deploy, forge (lease-bound)', port: ':7071', domain: 'forge.arif-fazil.com', never: 'Judge or seal' },
-  { symbol: 'Δ', name: 'AAA', ring: 'BODY', role: 'Control plane & A2A gateway — identity, routing, cockpit', port: ':3001', domain: 'aaa.arif-fazil.com', never: 'Override kernel judgment' },
+  { symbol: 'Ψ', name: 'A-FORGE', ring: 'BODY', role: 'Execution shell — build, deploy, forge (lease-bound)', port: ':7071', domain: 'forge.arif-fazil.com', never: 'Judge or seal' },
+  { symbol: '◈', name: 'AAA', ring: 'CONTROL', role: 'Control plane & A2A gateway — identity, routing, cockpit', port: ':3001', domain: 'aaa.arif-fazil.com', never: 'Override kernel judgment' },
   { symbol: 'Φ', name: 'GEOX', ring: 'ORGAN', role: 'Earth intelligence — wells, seismic, basin, prospect', port: ':8081', domain: 'geox.arif-fazil.com', never: 'Authorize drilling' },
   { symbol: 'Ξ', name: 'WEALTH', ring: 'ORGAN', role: 'Capital intelligence — NPV, EMV, risk, markets', port: ':18082', domain: 'wealth.arif-fazil.com', never: 'Allocate capital' },
   { symbol: 'Ω★', name: 'WELL', ring: 'ORGAN', role: 'Human & machine vitality — reflect, never diagnose', port: ':18083', domain: 'well.arif-fazil.com', never: 'Diagnose or adjudicate' },
@@ -50,13 +50,11 @@ const MARKET_CHAIN = [
   { name: 'GOLD', desc: 'XAUUSD · physical · mining equities', href: '/world/gold' },
 ];
 
-const SIX_DIALS = [
-  { symbol: 'A', name: 'AKAL', desc: 'Reasoning lawfulness — truth, clarity, humility, ontology' },
-  { symbol: 'P', name: 'PRESENT', desc: 'State truth — reversibility, peace, command' },
-  { symbol: 'H', name: 'AUTHORITY', desc: 'Legitimacy — who may mutate state' },
-  { symbol: 'S', name: 'ENTROPY', desc: 'Uncertainty integrity — honesty about unknowns' },
-  { symbol: 'U', name: 'EXPLORATION×AMANAH', desc: 'Risk under custody — witness, empathy, genius, anti-hantu' },
-  { symbol: 'E', name: 'ENERGY', desc: 'Thermodynamic adequacy — cost of changing information' },
+const APEX_LETTERS = [
+  { symbol: 'A', name: 'AKAL', desc: 'Reasoning lawfulness — truth, humility, ontology (F2 · F7 · F10)' },
+  { symbol: 'P', name: 'PRESENT×AUTHORITY', desc: 'State truth + legitimacy — what the world is, who may mutate it (F1 · F5 · F11 · F13)' },
+  { symbol: 'E', name: 'ENTROPY×ENERGY', desc: 'Landauer conjugate pair ΔE ≥ kT·ln2·ΔS — honesty about unknowns + cost of changing information (F4 · F12)' },
+  { symbol: 'X', name: 'EXPLORATION×AMANAH', desc: 'Risk under custody — witness, empathy, genius, anti-hantu (F3 · F6 · F8 · F9)' },
 ];
 
 const ringColor = (ring: string) => {
@@ -64,6 +62,7 @@ const ringColor = (ring: string) => {
     case 'MIND': return 'text-[#00D4AA] border-[#00D4AA]/30';
     case 'SOUL': return 'text-[#D4A853] border-[#D4A853]/30';
     case 'BODY': return 'text-[#7C6FD4] border-[#7C6FD4]/30';
+    case 'CONTROL': return 'text-[#E2E8F0] border-[#E2E8F0]/30';
     case 'ORGAN': return 'text-[#3B82F6] border-[#3B82F6]/30';
     case 'RELAY': return 'text-[#A855F7] border-[#A855F7]/30';
     case 'GATE': return 'text-[#22C55E] border-[#22C55E]/30';
@@ -86,12 +85,14 @@ const doctrineTools = [
       return {
         content: [{ type: 'text', text: JSON.stringify({
           bundle: 'CANON_APEX_V2',
-          version: 'v2026.07.APEX',
+          version: 'v2026.07.APEX.2',
           apex_theory: 'T-000',
           floors: FLOOR_DEFS,
           constellation: CONSTELLATION,
           market_chain: MARKET_CHAIN,
-          six_dials: SIX_DIALS,
+          apex_letters: APEX_LETTERS,
+          grand_equation: 'G = (A·P·E²·X)^(1/5) — hard floors veto before scoring',
+          epistemic_status: 'Scientific theory: HOLD · Governance research programme: SEAL · Unifies all knowledge: VOID',
           sovereign_compact: 'DITEMPA BUKAN DIBERI — Forged, Not Given. AI executes, humans decide. The constitution is law, not advice. Three rings. One sovereign. F13 is final.'
         }, null, 2) }]
       };
@@ -111,7 +112,7 @@ export function Doctrine() {
       {/* HERO — APEX Bijaksana Canon */}
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
-          <div className="section-label">CANON_APEX_V2 · v2026.07.APEX · APEX Theory T-000</div>
+          <div className="section-label">CANON_APEX_V2 · v2026.07.APEX.2 · APEX Theory T-000</div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
             <div>
               <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-4">
@@ -146,7 +147,7 @@ export function Doctrine() {
         <div className="site-frame">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { letter: 'A', label: 'APEX Theory', sub: '6 Dials · Grand Equation · Verdict Lattice' },
+              { letter: 'A', label: 'APEX Theory', sub: '4 Letters · Grand Equation · Verdict Lattice' },
               { letter: 'B', label: 'Body', sub: '9 Organs · FLAME · 3 Laws' },
               { letter: 'C', label: 'Constitution', sub: 'F1–F13 · Hard/Soft/Derived' },
               { letter: 'D', label: 'DITEMPA', sub: 'Sovereign Compact · 000→999' },
@@ -161,22 +162,27 @@ export function Doctrine() {
         </div>
       </section>
 
-      {/* SIX DIALS — APEX Theory */}
+      {/* APEX LETTERS — APEX Theory */}
       <section className="py-20 border-b-2 border-forge-iron">
         <div className="site-frame">
           <div className="section-label">A · APEX Theory T-000</div>
-          <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">The Six Dials</h2>
-          <p className="font-body text-sm text-forge-dim mb-8">
-            Geometric-mean clusters from 13 floor scores. The Grand Equation:{' '}
-            <code className="font-mono text-forge-orange">g(t) = A·P·H·S·U·E²</code>.
+          <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">The Four Letters</h2>
+          <p className="font-body text-sm text-forge-dim mb-4">
+            Hard floors veto first (F13 · F9 · F10 · F12 → VOID), then the letters score what remains.
+            The Grand Equation:{' '}
+            <code className="font-mono text-forge-orange">G = (A·P·E²·X)^⅕</code> —{' '}
+            E enters twice; entropy and energy are one Landauer conjugate pair.
             G ≥ 0.80 → SEAL candidate.{' '}
             <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
                className="text-forge-orange underline hover:text-forge-white transition-colors">
               Full APEX Canon on Wiki ↗
             </a>
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SIX_DIALS.map(d => (
+          <p className="font-mono text-[10px] uppercase tracking-widest text-forge-dim mb-8">
+            Epistemic status — scientific theory: HOLD · governance programme: SEAL · "unifies all knowledge": VOID
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {APEX_LETTERS.map(d => (
               <div key={d.symbol} className="brutalist-card flex items-start gap-4">
                 <span className="font-mono text-3xl font-black text-forge-orange shrink-0 w-10">{d.symbol}</span>
                 <div>
@@ -224,7 +230,8 @@ export function Doctrine() {
           <div className="section-label">B · Federation Constellation</div>
           <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">The Organs</h2>
           <p className="font-body text-sm text-forge-dim mb-8">
-            Ψ SOUL · Ω MIND · Δ BODY · Φ GEOX · Ξ WEALTH · Ω★ WELL · ⚖ FORGE · ○ MCP · ⚛ HERMES · φ MARKETS.{' '}
+            Δ SOUL = the sovereign (Arif) — human values, purpose, telos. Not an organ.{' '}
+            Ω MIND arifOS · Ψ BODY A-FORGE · ◈ AAA · Φ GEOX · Ξ WEALTH · Ω★ WELL · ⚛ HERMES · ○ MCP · φ MARKETS.{' '}
             <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
                className="text-forge-orange underline hover:text-forge-white transition-colors">
               Deep-dives on Wiki ↗
