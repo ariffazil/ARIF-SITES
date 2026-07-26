@@ -1,0 +1,45 @@
+# ═══════════════════════════════════════════════════════════════════════
+# LEGACY SUBDOMAIN → PATH REDIRECTS (v2026.07.26 web unification)
+# DO NOT DELETE — old subdomains are saksi (witnesses), not sampah (trash).
+# Each redirect is 301 (permanent). History preserved.
+# ═══════════════════════════════════════════════════════════════════════
+
+arifos.arif-fazil.com {
+	redir https://arif-fazil.com/arifos/{uri} 301
+}
+
+aaa.arif-fazil.com {
+	redir https://arif-fazil.com/aaa/{uri} 301
+}
+
+geox.arif-fazil.com {
+	redir https://arif-fazil.com/geox/{uri} 301
+}
+
+wealth.arif-fazil.com {
+	redir https://arif-fazil.com/wealth/{uri} 301
+}
+
+well.arif-fazil.com {
+	redir https://arif-fazil.com/well/{uri} 301
+}
+
+forge.arif-fazil.com {
+	redir https://arif-fazil.com/forge/{uri} 301
+}
+
+mcp.arif-fazil.com {
+	redir https://arif-fazil.com/mcp/{uri} 301
+}
+
+wiki.arif-fazil.com {
+	redir https://arif-fazil.com/wiki/{uri} 301
+}
+
+makcikgpt.arif-fazil.com {
+	redir https://arif-fazil.com/wealth/makcikgpt/{uri} 301
+}
+
+arifosmcp.arif-fazil.com {
+	redir https://arif-fazil.com/mcp/{uri} 301
+}

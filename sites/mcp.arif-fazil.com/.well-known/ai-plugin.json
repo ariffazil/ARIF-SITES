@@ -1,9 +1,0 @@
-{
-  "name": "arifOS MCP Gateway",
-  "description": "Connection gate to the arifOS federation kernel. All actions pass through constitutional governance before execution.",
-  "url": "https://mcp.arif-fazil.com",
-  "api": {
-    "type": "mcp",
-    "url": "https://mcp.arif-fazil.com/mcp"
-  }
-}

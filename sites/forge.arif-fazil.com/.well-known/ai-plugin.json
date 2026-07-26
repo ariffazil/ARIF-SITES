@@ -1,9 +1,0 @@
-{
-  "name": "A-FORGE Execution Shell",
-  "description": "Governed execution for the arifOS federation — build, deploy, audit with constitutional safeguards.",
-  "url": "https://forge.arif-fazil.com",
-  "api": {
-    "type": "mcp",
-    "url": "https://forge.arif-fazil.com/mcp"
-  }
-}

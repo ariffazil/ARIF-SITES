@@ -1,11 +1,10 @@
 # arifOS Sovereign Caddyfile
 # DITEMPA BUKAN DIBERI
-# Trinity: Ψ arif-fazil.com | Ω arifos.arif-fazil.com | Δ aaa.arif-fazil.com
-# Organ MCP (API-only): geox | wealth | well | forge
-# Infra (internal): ollama | openclaw | claw | deploy | prometheus | grafana | temporal | nats | monitor | vault999
-# Legacy redirects: mcp | arifosmcp | wiki
+# UNIFIED: arif-fazil.com — single sovereign surface (v2026.07.26)
+# All organs as paths under root domain. Legacy subdomains → 301 redirects.
+# Infra (internal): ollama | openclaw | deploy | prometheus | grafana | temporal | nats | monitor | vault999
 # Dead nginx configs: disabled 2026-07-16 (Caddy-only from now on)
-# Last reconcile: 2026-07-16 — cleanup epoch: removed 21MB AAA backups, 13MB pre-swap artifacts, disabled 12 nginx configs, cleared 9 nginx dead roots
+# Last reconcile: 2026-07-26 — web unification: 10 subdomains collapsed to paths
 {
 	admin unix//var/run/caddy-admin.sock
 	email arif@arif-fazil.com
