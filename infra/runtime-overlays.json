@@ -1,0 +1,379 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": 1,
+  "registry": "arif-sites.runtime-overlays.v1",
+  "canonical_repo_root": "/root/arif-sites",
+  "defaults": {
+    "probe_attempts": 3,
+    "caddy_attempts": 3,
+    "retry_delay_seconds": 2
+  },
+  "sites": [
+    {
+      "site": "_shared",
+      "source": "sites/shared",
+      "webroot": "_shared",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 10,
+      "required_artifacts": [
+        "design-system/tokens.css",
+        "trinity-nav.js",
+        "webmcp/arifos-webmcp-adapter.js"
+      ],
+      "probe": {
+        "url": "https://arif-fazil.com/_shared/trinity-nav.js",
+        "accepted_codes": [200]
+      },
+      "overlays": []
+    },
+    {
+      "site": "arif-fazil.com",
+      "source": "sites/arif-fazil.com",
+      "webroot": "arif",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 20,
+      "build": {
+        "kind": "npm",
+        "install": ["npm", "ci", "--quiet", "--legacy-peer-deps"],
+        "command": ["npm", "run", "build"],
+        "output": "dist"
+      },
+      "required_artifacts": ["index.html", "000/index.html", "999/index.html"],
+      "probe": {
+        "url": "https://arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": []
+    },
+    {
+      "site": "arifos.arif-fazil.com",
+      "source": "sites/arifos.arif-fazil.com",
+      "webroot": "arifos",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 30,
+      "required_artifacts": ["index.html", "llms.txt"],
+      "probe": {
+        "url": "https://arifos.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": ".well-known/observatory-snapshot-latest.json",
+          "owner": "arifos-observatory-publisher",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": ".well-known/observatory_signing_key.pub.pem",
+          "owner": "arifos-observatory-publisher",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": ".well-known/did-arifos-observatory.json",
+          "owner": "arifos-observatory-publisher",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": ".well-known/did.json",
+          "owner": "arifos-observatory-publisher",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": ".well-known/governance.jsonld",
+          "owner": "arifos-governance-runtime",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "manifest.txt",
+          "owner": "aaa-manifest-publisher",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "federation-manifest.json",
+          "owner": "arif-sites",
+          "strategy": "merge-source-wins"
+        },
+        {
+          "path": "zen",
+          "owner": "arifos-zen-publisher",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "aaa.arif-fazil.com",
+      "source": "sites/aaa.arif-fazil.com",
+      "webroot": "aaa",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 40,
+      "required_artifacts": ["index.html", "manifest.txt"],
+      "probe": {
+        "url": "https://aaa.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": "_state",
+          "owner": "aaa-runtime-state",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "geox.arif-fazil.com",
+      "source": "sites/geox.arif-fazil.com",
+      "webroot": "geox",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 50,
+      "required_artifacts": ["index.html", "llms.txt"],
+      "probe": {
+        "url": "https://geox.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": ".well-known/agent-card.json",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "ac_risk_console",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "apps",
+          "owner": "geox-organ",
+          "strategy": "merge-source-wins"
+        },
+        {
+          "path": "assets",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "basin_explorer",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "cockpit.html",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "malay_basin_workflow.html",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "manifesto.html",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "seismic_viewer",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "webmcp",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "well_context_desk",
+          "owner": "geox-organ",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "wealth.arif-fazil.com",
+      "source": "sites/wealth.arif-fazil.com",
+      "webroot": "wealth",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 60,
+      "required_artifacts": ["index.html", "llms.txt"],
+      "probe": {
+        "url": "https://wealth.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": ".well-known/agent.json",
+          "owner": "wealth-organ-identity",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "well.arif-fazil.com",
+      "source": "sites/well.arif-fazil.com",
+      "webroot": "well",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 70,
+      "required_artifacts": ["llms.txt"],
+      "probe": {
+        "url": "https://well.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": "index.html",
+          "owner": "well-organ-discovery",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "mcp.arif-fazil.com",
+      "source": "sites/mcp.arif-fazil.com",
+      "webroot": "mcp",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 80,
+      "required_artifacts": ["index.html", "llms.json"],
+      "probe": {
+        "url": "https://mcp.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": ".well-known",
+          "owner": "mcp-gateway-discovery",
+          "strategy": "merge-source-wins"
+        }
+      ]
+    },
+    {
+      "site": "forge.arif-fazil.com",
+      "source": "sites/forge.arif-fazil.com",
+      "webroot": "forge",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 90,
+      "required_artifacts": ["index.html", "llms.txt"],
+      "probe": {
+        "url": "https://forge.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": ".well-known",
+          "owner": "a-forge-discovery",
+          "strategy": "merge-source-wins"
+        }
+      ]
+    },
+    {
+      "site": "wiki.arif-fazil.com",
+      "source": "sites/wiki.arif-fazil.com",
+      "webroot": "wiki",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 100,
+      "build": {
+        "kind": "mkdocs",
+        "command": ["mkdocs", "build", "--strict", "--config-file", "mkdocs.yml", "--site-dir", "site"],
+        "output": "site",
+        "pinned": true,
+        "version_command": ["mkdocs", "--version"],
+        "version_contains": "1.6.1",
+        "output_markers": [
+          {
+            "path": "index.html",
+            "contains": "mkdocs-1.6.1, mkdocs-material-9.7.7"
+          }
+        ]
+      },
+      "required_artifacts": ["index.html", "sitemap.xml"],
+      "probe": {
+        "url": "https://wiki.arif-fazil.com/",
+        "accepted_codes": [200]
+      },
+      "overlays": []
+    },
+    {
+      "site": "oil",
+      "source": "sites/arif-fazil.com/public/oil",
+      "webroot": "oil",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 110,
+      "required_artifacts": ["index.html"],
+      "probe": {
+        "url": "https://arif-fazil.com/oil/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": "api",
+          "owner": "commodity-oil-runtime",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "vendor",
+          "owner": "commodity-oil-runtime",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "gas",
+      "source": "sites/arif-fazil.com/public/gas",
+      "webroot": "gas",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 120,
+      "required_artifacts": ["index.html"],
+      "probe": {
+        "url": "https://arif-fazil.com/gas/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": "api",
+          "owner": "commodity-gas-runtime",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "vendor",
+          "owner": "commodity-gas-runtime",
+          "strategy": "preserve-live"
+        }
+      ]
+    },
+    {
+      "site": "gold",
+      "source": "sites/arif-fazil.com/public/gold",
+      "webroot": "gold",
+      "owner": "arif-sites",
+      "batch": true,
+      "batch_order": 130,
+      "required_artifacts": ["index.html"],
+      "probe": {
+        "url": "https://arif-fazil.com/gold/",
+        "accepted_codes": [200]
+      },
+      "overlays": [
+        {
+          "path": "api",
+          "owner": "commodity-gold-runtime",
+          "strategy": "preserve-live"
+        },
+        {
+          "path": "vendor",
+          "owner": "commodity-gold-runtime",
+          "strategy": "preserve-live"
+        }
+      ]
+    }
+  ]
+}

@@ -661,6 +661,38 @@
     letter-spacing: 0.15em;
   }
 
+  /* ── LIVE INTELLIGENCE NAV ── */
+  .phi-surfaces {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    overflow-x: auto;
+    flex-wrap: wrap;
+  }
+  .phi-surfaces .phi-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+  }
+  .phi-surfaces a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .phi-surfaces a:hover {
+    color: var(--gold);
+    border-color: var(--gold-dim);
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
     .hero-stats { position: static; flex-direction: row; border-left: none; border-top: 1px solid var(--border); padding: 2rem 0 0; margin-top: 3rem; }
@@ -731,17 +763,15 @@
     </div>
   </section>
 
-  <!-- φ SURFACES — live commodity & institutional dashboards -->
-  <section class="phi-surfaces" style="position:relative;z-index:1;padding:1rem 0;border-bottom:1px solid var(--border);margin-bottom:2rem;">
-    <div style="display:flex;align-items:center;gap:1.2rem;overflow-x:auto;flex-wrap:wrap;">
-      <span style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.6rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:0.2em;white-space:nowrap;">φ Surfaces</span>
-      <a href="/vitals/" style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.7rem;color:var(--text-dim);text-decoration:none;padding:0.35rem 0.7rem;border:1px solid var(--border);border-radius:4px;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)';">PETRONAS φ</a>
-      <a href="/malaysia/" style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.7rem;color:var(--text-dim);text-decoration:none;padding:0.35rem 0.7rem;border:1px solid var(--border);border-radius:4px;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)';">MALAYSIA φ</a>
-      <a href="https://arif-fazil.com/oil/" style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.7rem;color:var(--text-dim);text-decoration:none;padding:0.35rem 0.7rem;border:1px solid var(--border);border-radius:4px;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)';">🛢️ OIL</a>
-      <a href="https://arif-fazil.com/gas/" style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.7rem;color:var(--text-dim);text-decoration:none;padding:0.35rem 0.7rem;border:1px solid var(--border);border-radius:4px;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)';">🔥 GAS</a>
-      <a href="https://arif-fazil.com/gold/" style="font-family:var(--font-mono, 'IBM Plex Mono', monospace);font-size:0.7rem;color:var(--text-dim);text-decoration:none;padding:0.35rem 0.7rem;border:1px solid var(--border);border-radius:4px;white-space:nowrap;transition:all 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold-dim)';" onmouseout="this.style.color='var(--text-dim)';this.style.borderColor='var(--border)';">🥇 GOLD</a>
-    </div>
-  </section>
+  <!-- LIVE INTELLIGENCE — direct commodity & institutional dashboards -->
+  <nav class="phi-surfaces" aria-label="WEALTH live intelligence" style="position:relative;z-index:1;padding:1rem 0;border-bottom:1px solid var(--border);margin-bottom:2rem;">
+    <span class="phi-label">Live intelligence</span>
+    <a href="/vitals/">PETRONAS health</a>
+    <a href="/malaysia/">Malaysia position</a>
+    <a href="https://arif-fazil.com/gold/">Gold</a>
+    <a href="https://arif-fazil.com/oil/">Oil</a>
+    <a href="https://arif-fazil.com/gas/">Gas</a>
+  </nav>
 
   <!-- VERDICT STRIP -->
   <div class="verdict-strip">

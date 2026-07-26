@@ -90,15 +90,16 @@ arif-fazil.com {
 	handle /.well-known/openid-configuration {
 		redir https://mcp.arif-fazil.com/.well-known/openid-configuration permanent
 	}
-	# Bot markdown bypass — serve raw .md to AI crawlers
-	@ai-bot {
-		header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot
-		path /wealth/makcikgpt/*
+	# Legacy MakcikGPT bot lane — serve generated HTML without redirecting.
+	# Browser traffic is canonicalized to /world/makcikgpt/ below.
+	@legacy_makcik_bot {
+		header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot|ChatGPT|curl|python-requests|node-fetch|Go-http-client
+		path /wealth/makcikgpt /wealth/makcikgpt/ /wealth/makcikgpt/*
 	}
-	handle @ai-bot {
-		rewrite * {path}.md
-		root * /var/www/html/arif
-		try_files {path} /wealth/makcikgpt/{path}.md
+	handle @legacy_makcik_bot {
+		uri strip_prefix /wealth/makcikgpt
+		root * /var/www/html/arif/makcikgpt-md
+		try_files {path} {path}.html /index.html
 		file_server
 	}
 	# API routes → arifOS kernel (same as arifos.arif-fazil.com)
@@ -218,10 +219,9 @@ arif-fazil.com {
 		try_files {path} {path}/index.html /verify/index.html
 		file_server
 	}
-	# SyedOS Dashboard — Abang Sado nasi lemak + trading monitor (2026-07-24)
+	# SyedOS Dashboard — source may be added under /sado; missing files stay real 404s.
 	handle /sado/* {
 		root * /var/www/html/arif
-		try_files {path} {path}/index.html /sado/index.html
 		file_server
 	}
 	# Static data snapshots — machine-readable JSON for federation surface fallback (2026-07-20)
@@ -231,56 +231,50 @@ arif-fazil.com {
 		header Cache-Control "public, max-age=3600"
 		file_server
 	}
-	# Built assets have content-hashed names — serve directly, never SPA fallback
-	# Static images and media — serve directly, never SPA fallback
+	# Static images and media — serve directly, never SPA fallback.
 	handle /images/* {
 		header Cache-Control "public, max-age=86400"
 		file_server
 	}
+	# Built assets have content-hashed names — serve directly, never SPA fallback.
 	handle /assets/* {
-		# Static images and media — serve directly, never SPA fallback
-		handle /images/* {
-			header Cache-Control "public, max-age=86400"
-			file_server
-		}
 		header Cache-Control "public, max-age=31536000, immutable"
 		file_server
 	}
-	# SSG pre-rendered pages — serve static HTML instead of SPA shell
 	# Homepage
 	handle / {
-		try_files {path} /static/home.html {path} /index.html
+		try_files {path} /index.html
 		file_server
 	}
-	# SSG routes: serve pre-rendered static HTML directly
-	# FIX 2026-07-14: /canon/ now serves /canon/index.html (was falling back to homepage)
+	# Client-side routes without a generated static page use the SPA shell.
 	handle /canon/* {
-		try_files {path} /canon/index.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
 	handle /constellation/* {
-		try_files /static/constellation.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
 	handle /discoveries/* {
-		try_files /static/discoveries.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
 	handle /essays/* {
-		try_files /static/essays.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
 	handle /genesis/* {
-		try_files /static/genesis.html /index.html
+		try_files {path} /index.html
 		file_server
 	}
-	# MakcikGPT 301 redirects (must be before /wealth/* handler)
-	# Caddy v2.11: redir with relative path /X compiles as path matcher, not redirect target.
-	# Fix: use full URL prefix so Caddy treats it as redirect target.
-	# 2026-07-21 — Bare-root canonical aliases for MakcikGPT.
-	# Sit BEFORE the /wealth/* handlers below so they outrank the path catch-all.
-	redir /wealth/makcikgpt /world/makcikgpt/ 301
-	redir /wealth/makcikgpt/ /world/makcikgpt/ 301
+	# Browser legacy aliases canonicalize after bot traffic has been excluded.
+	# Caddy sorts bare `redir` directives before `handle`, so the negative UA
+	# condition is required for the generated bot HTML lane to remain reachable.
+	@wealth_makcik_browser_root {
+		path /wealth/makcikgpt /wealth/makcikgpt/
+		not header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot|ChatGPT|curl|python-requests|node-fetch|Go-http-client
+	}
+	redir @wealth_makcik_browser_root /world/makcikgpt/ 301
 	redir /economics/makcikgpt /world/makcikgpt/ 301
 	redir /economics/makcikgpt/ /world/makcikgpt/ 301
 
@@ -384,22 +378,35 @@ arif-fazil.com {
 		try_files {path} {path}/index.html /index.html
 		file_server
 	}
-	# Oil (Brent Crude) dashboard (2026-07-16) — direct route
+	# Direct commodity routes. API handlers must precede static SPA handlers.
 	redir /oil /oil/ 308
+	@oil_api path /oil/api/*
+	handle @oil_api {
+		uri strip_prefix /oil
+		reverse_proxy localhost:3457
+	}
 	handle /oil/* {
 		root * /var/www/html/oil
 		try_files {path} /index.html
 		file_server
 	}
-	# Gold dashboard (2026-07-16) — direct route
 	redir /gold /gold/ 308
+	@gold_api path /gold/api/*
+	handle @gold_api {
+		uri strip_prefix /gold
+		reverse_proxy localhost:3456
+	}
 	handle /gold/* {
 		root * /var/www/html/gold
 		try_files {path} /index.html
 		file_server
 	}
-	# Natural Gas dashboard (2026-07-16) — direct route
 	redir /gas /gas/ 308
+	@gas_api path /gas/api/*
+	handle @gas_api {
+		uri strip_prefix /gas
+		reverse_proxy localhost:3458
+	}
 	handle /gas/* {
 		root * /var/www/html/gas
 		try_files {path} /index.html
@@ -423,9 +430,8 @@ arif-fazil.com {
 		file_server
 	}
 	# /999/verify — live vault proof endpoint (proxied to arifOS kernel)
-	# This is what makes /999 §2 operationally honest: a public, unauthenticated,
-	# machine-readable HEAD hash that any agent can fetch and cross-verify.
-	# CORS enabled — external agents must be able to call this.
+	# Canonical URL has no trailing slash; preserve method semantics with 308.
+	redir /999/verify/ /999/verify 308
 	handle /999/verify {
 		import cors_public
 		rewrite * /999/verify
@@ -460,8 +466,8 @@ arif-fazil.com {
 		file_server
 	}
 
-	# Root static discovery, meta & media files — serve directly from disk
-	@root_static path /llms.txt /llms.json /sitemap.xml /feed.xml /soul.json /page.json /scar.json /manifest.txt /manifest.json /humans.txt /floors.json /robots.txt /agents.md /human.md /CLAUDE.md /*.jpg /*.png /*.svg /*.pdf /*.ico
+	# Root static discovery, meta & media files — only source-backed tokens.
+	@root_static path /llms.txt /llms.json /sitemap.xml /feed.xml /soul.json /page.json /scar.json /manifest.json /humans.txt /floors.json /robots.txt /AGENTS.md /human.md /CLAUDE.md /*.jpg /*.pdf
 	handle @root_static {
 		root * /var/www/html/arif
 		file_server
@@ -469,13 +475,9 @@ arif-fazil.com {
 
 	# SPA catch-all — serves index.html for known client-side routes
 	# Unknown paths get a real 404 for agent/curl access
-	# 2026-07-21 — Bare-root canonical aliases for /world/makcikgpt/.
 	redir /world/makcikgpt /world/makcikgpt/ 308
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
-	# 2026-07-22 FIX — Bot-readable MakcikGPT articles for /world/makcikgpt/*
-	# The @ai-bot handler at line 94 only fires for /wealth/makcikgpt/* which gets
-	# 301-redirected to /world/makcikgpt/* before the bot handler can fire.
-	# This handler serves .html static renders for AI crawlers, RSS readers, and curl.
+	# Bot-readable MakcikGPT articles from the generated HTML source surface.
 	@ai-bot-world {
 		header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot|ChatGPT|curl|python-requests|node-fetch|Go-http-client
 		path /world/makcikgpt/*
@@ -545,9 +547,8 @@ arifos.arif-fazil.com {
 	handle /.well-known/mcp/server.json* {
 		redir https://arifos.arif-fazil.com/.well-known/mcp/server.json{uri} permanent
 	}
-	# Observatory-specific discovery files (served from static root, not kernel)
-	@observatory_discovery path /.well-known/openapi.json /.well-known/ai-plugin.json /.well-known/agent-card.json /.well-known/did.json /.well-known/mcp.json /.well-known/mcp/server.json /.well-known/webmcp.json /.well-known/observatory.json /.well-known/governance.jsonld /.well-known/arifos-federation.json /.well-known/did-arifos-observatory.json /.well-known/observatory-snapshot-latest.json /.well-known/observatory_signing_key.pub.pem
-	# 2026-07-19: added /.well-known/mcp/server.json — file exists but was missing from matcher list
+	# Source-backed discovery files served from the observatory static root.
+	@observatory_discovery path /.well-known/openapi.json /.well-known/ai-plugin.json /.well-known/agent-card.json /.well-known/mcp.json /.well-known/mcp/server.json /.well-known/webmcp.json /.well-known/governance.jsonld /.well-known/observatory-snapshot-latest.json /.well-known/observatory_signing_key.pub.pem /.well-known/did-arifos-observatory.json /.well-known/did.json
 	handle @observatory_discovery {
 		root * /var/www/html/arifos
 		file_server
@@ -712,6 +713,19 @@ arifos.arif-fazil.com {
 		reverse_proxy 127.0.0.1:8088
 	}
 
+	handle /zen/* {
+		root * /var/www/html/arifos
+		file_server
+	}
+
+	# Canonical wiki path. Prefix stripping maps /wiki/* to the standalone
+	# wiki root without producing /wiki/wiki/* paths.
+	redir /wiki /wiki/ 308
+	handle_path /wiki/* {
+		root * /var/www/html/wiki
+		file_server
+	}
+
 	handle /api/* {
 		reverse_proxy 127.0.0.1:8088
 	}
@@ -750,21 +764,6 @@ arifos.arif-fazil.com {
 	}
 }
 
-ai.arif-fazil.com {
-	import tls_origin
-	encode zstd gzip
-	import cors_public
-	# Collapse: public MCP surface → canonical mcp.arif-fazil.com
-	handle /mcp* {
-		redir https://mcp.arif-fazil.com{uri} permanent
-	}
-	handle /api/* {
-		reverse_proxy 127.0.0.1:8091
-	}
-	handle {
-		reverse_proxy 127.0.0.1:8091
-	}
-}
 # ═══════════════════════════════════════════════════════════════════════
 # THEORY / APEX
 # ═══════════════════════════════════════════════════════════════════════
@@ -1013,7 +1012,12 @@ wealth.arif-fazil.com {
 		try_files {path} /index.html
 		file_server
 	}
-	# Oil direct route (clean URL)
+	# Direct commodity routes (clean URLs). API handlers precede SPA files.
+	@wealth_direct_oil_api path /oil/api/*
+	handle @wealth_direct_oil_api {
+		uri strip_prefix /oil
+		reverse_proxy localhost:3457
+	}
 	handle /oil/* {
 		root * /var/www/html/oil
 		try_files {path} /index.html
@@ -1031,13 +1035,21 @@ wealth.arif-fazil.com {
 		try_files {path} /index.html
 		file_server
 	}
-	# Gas direct route (clean URL)
+	@wealth_direct_gas_api path /gas/api/*
+	handle @wealth_direct_gas_api {
+		uri strip_prefix /gas
+		reverse_proxy localhost:3458
+	}
 	handle /gas/* {
 		root * /var/www/html/gas
 		try_files {path} /index.html
 		file_server
 	}
-	# Gold direct route (clean URL)
+	@wealth_direct_gold_api path /gold/api/*
+	handle @wealth_direct_gold_api {
+		uri strip_prefix /gold
+		reverse_proxy localhost:3456
+	}
 	handle /gold/* {
 		root * /var/www/html/gold
 		try_files {path} /index.html
@@ -1169,39 +1181,6 @@ well.arif-fazil.com {
 	# 2026-06-30 — Serve WELL landing page instead of blind redirect
 	handle {
 		root * /var/www/html/well
-		try_files {path} /index.html
-		file_server
-	}
-}
-# ═══════════════════════════════════════════════════════════════════════
-# TELEGRAM MINI APP — arifOS Federation Gateway
-# Serves the React Mini App + proxies API to MCP servers
-# Forged: 2026-07-08
-# ═══════════════════════════════════════════════════════════════════════
-app.arif-fazil.com {
-	import tls_origin
-	encode zstd gzip
-
-	# API gateway — proxies to MCP servers
-	handle /api/* {
-		import cors_public
-		reverse_proxy 127.0.0.1:3100
-	}
-
-	# Health check
-	handle /health {
-		import cors_public
-		reverse_proxy 127.0.0.1:3100
-	}
-
-	# Telegram Mini App needs to load in WebView
-	header {
-		Content-Security-Policy "frame-ancestors https://web.telegram.org https://*.telegram.org https://t.me"
-	}
-
-	# Static files (built React app)
-	handle {
-		root * /var/www/html/miniapp
 		try_files {path} /index.html
 		file_server
 	}
@@ -1437,10 +1416,13 @@ a-forge.arif-fazil.com {
 	redir https://forge.arif-fazil.com{uri} permanent
 }
 # ═══════════════════════════════════════════════════════════════════════
-# WIKI → arifos.arif-fazil.com/wiki (Trinity consolidation 2026-06-20)
+# WIKI legacy host → canonical /wiki path on arifOS.
+# Already-prefixed requests retain one /wiki segment; all other paths gain one.
 # ═══════════════════════════════════════════════════════════════════════
 wiki.arif-fazil.com {
 	import tls_origin
+	@wiki_prefixed path /wiki /wiki/*
+	redir @wiki_prefixed https://arifos.arif-fazil.com{uri} permanent
 	redir https://arifos.arif-fazil.com/wiki{uri} permanent
 }
 # MAIN SITE 3 — Δ AAA COCKPIT
@@ -1485,10 +1467,8 @@ aaa.arif-fazil.com {
 		rewrite * /health
 		reverse_proxy 127.0.0.1:3001
 	}
-	# Static .well-known files — serve from disk BEFORE proxy catch-all
-	# 2026-07-17 — extended to serve the federation-wide constitutional + topology
-	# files from disk instead of round-tripping through the AAA backend.
-	@well_known_static path /.well-known/mcp.json /.well-known/webmcp.json /.well-known/arifos.json /.well-known/ai-plugin.json /.well-known/agent.json /.well-known/agent-card.json /.well-known/did.json /.well-known/doctrine-node3.json /.well-known/governance.jsonld /.well-known/arifos-federation.json
+	# Source-backed .well-known files; missing names fall through to the backend.
+	@well_known_static path /.well-known/mcp.json /.well-known/webmcp.json /.well-known/arifos.json /.well-known/ai-plugin.json /.well-known/agent.json /.well-known/agent-card.json
 	handle @well_known_static {
 		file_server
 	}

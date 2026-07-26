@@ -106,19 +106,54 @@
         th{text-align:left;padding:0.5rem;font-weight:600;color:#9b9995;border-bottom:1px solid #2a2826}
         td{padding:0.5rem;border-bottom:1px solid #2a2826}
         code{background:#1e1c1a;padding:1px 4px;border-radius:2px;font-size:0.8125rem}
+
+        /* ZEN PULSE — Sacred Navigation Law (3-second answer) */
+        .zen-pulse{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:#121110;border:1px solid #2a2826;border-radius:0.5rem;padding:0.85rem 0;margin:0 0 1.5rem 0;font-family:monospace;font-size:0.78rem}
+        .zp-item{display:flex;flex-direction:column;gap:0.2rem;padding:0 1.25rem;border-left:1px solid #2a2826}
+        .zp-item:first-child{border-left:none}
+        .zp-ask{color:#484644;text-transform:uppercase;letter-spacing:0.06em;font-size:0.6rem}
+        .zp-val{color:#d4d2ce;font-weight:600;font-size:0.85rem}
+        .zp-val.gold{color:#d4a853}
+
+        /* INTENT CARDS — verbs, not nouns */
+        .intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.6rem;margin:1rem 0 1.5rem}
+        .intent-card{background:#121110;border:1px solid #2a2826;border-radius:0.5rem;padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.25rem;text-decoration:none;color:inherit;transition:border-color 0.15s}
+        .intent-card:hover{border-color:#3a9ea8}
+        .verb{font-family:'Cabinet Grotesk',sans-serif;font-size:1.15rem;font-weight:800;color:#d4a853;letter-spacing:-0.02em}
+        .object{color:#d4d2ce;font-size:0.85rem;font-weight:600}
+        .you-get{color:#706e6b;font-size:0.72rem;font-family:monospace}
+        .arrow{color:#484644;font-size:0.65rem;font-family:monospace;margin-top:0.2rem}
       </style>
-      <h1>🖥️ AAA Cockpit — Agent Docking</h1>
+
+      <!-- ZEN PULSE: where am I / why care / what next -->
+      <div class="zen-pulse">
+        <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">AAA · Cockpit</span></div>
+        <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">You want to govern AI execution.</span></div>
+        <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a verb below ↓</span></div>
+      </div>
+
+      <h1>🖥️ What do you want to <span style="color:#d4a853">govern</span>?</h1>
       <p style="color:#9b9995">You are docking into the arifOS federation. This is a governed doorway, not raw SSH.</p>
+
+      <!-- INTENT CARDS — verbs first -->
+      <div class="intent-grid">
+        <a class="intent-card" href="/health"><span class="verb">Monitor</span><span class="object">federation health</span><span class="you-get">→ 6 organs · floors · drift</span><span class="arrow">→ /health</span></a>
+        <a class="intent-card" href="/999/"><span class="verb">Investigate</span><span class="object">incidents & HOLDs</span><span class="you-get">→ VAULT999 witness · receipts</span><span class="arrow">→ /999</span></a>
+        <a class="intent-card" href="https://arifos.arif-fazil.com/"><span class="verb">Audit</span><span class="object">F1-F13 floors</span><span class="you-get">→ per-floor score · drift · provenance</span><span class="arrow">→ Observatory</span></a>
+        <a class="intent-card" href="https://mcp.arif-fazil.com/mcp"><span class="verb">Forge</span><span class="object">a governed action</span><span class="you-get">→ A-FORGE lease + judge + seal</span><span class="arrow">→ MCP gateway</span></a>
+        <a class="intent-card" href="/llms.txt"><span class="verb">Find</span><span class="object">a tool or agent</span><span class="you-get">→ 45 MCP tools · 17 canonical</span><span class="arrow">→ /llms.txt</span></a>
+        <a class="intent-card" href="/.well-known/agent.json"><span class="verb">Route</span><span class="object">intent to organ</span><span class="you-get">→ 6 organs · capability registry</span><span class="arrow">→ agent.json</span></a>
+      </div>
 
       <h2>🚪 Docking Protocol</h2>
       <div class="card">
         <ol style="padding-left:1.5rem;margin:0">
-          <li><strong>Identity:</strong> Call <code>arif_init</code> to bind your session</li>
-          <li><strong>Authority:</strong> Your lease scope determines what's allowed</li>
-          <li><strong>State:</strong> Read health, floors, organs — what IS</li>
-          <li><strong>Law:</strong> F1-F13 floors gate every action</li>
-          <li><strong>Execution:</strong> Mutations go through A-FORGE with approval</li>
-          <li><strong>Receipt:</strong> VAULT999 records every consequential action</li>
+          <li><strong>Bind:</strong> Call <code>arif_init</code> to bind your session</li>
+          <li><strong>Scope:</strong> Your lease scope determines what's allowed</li>
+          <li><strong>Read:</strong> Read health, floors, organs — what IS</li>
+          <li><strong>Gate:</strong> F1-F13 floors gate every action</li>
+          <li><strong>Execute:</strong> Mutations go through A-FORGE with approval</li>
+          <li><strong>Seal:</strong> VAULT999 records every consequential action</li>
         </ol>
       </div>
 

@@ -12,9 +12,15 @@
   },
   "message_ingress": {
     "path": "/a2a/message",
-    "status": "888_HOLD",
-    "reason": "Static AAA deployment does not implement POST message handling in this repo.",
-    "runtime_bridge_ref": "openclaw/a2a/bridge.yaml"
+    "status": "LIVE",
+    "protocol": "A2A v1.0.0",
+    "transport": "JSON-RPC 2.0 over HTTP",
+    "gateway": "aaa.a2a-server:3001",
+    "guards": ["membrane (F1-F13)", "nonce", "replay", "envelope", "lineage", "vault-seal"],
+    "message_flow_verified": "2026-07-25T19:13:00Z",
+    "p34_guard": "Membrane middleware — every message routed through F1-F13 floor check",
+    "p30_guard": "VAULT999 seal written on every message — hash-chain receipt generated",
+    "flows_active": ["333→555", "555→888", "888→FORGE", "FORGE→openclaw", "openclaw→hermes", "FI→organ", "organ→FI"]
   },
   "trust_tiers": [
     {

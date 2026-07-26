@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "endpoint": "https://mcp.arif-fazil.com/mcp",
   "protocol": "streamable-http",
+  "discovery": {
+    "registry": "self-hosted",
+    "auto_register": false,
+    "note": "All federation MCP servers are self-hosted on sovereign infrastructure. External registration via Manufacturing Cloud or similar platforms is not required and may produce broken deployments (especially Python-based servers)."
+  },
   "routing": {
     "arifos": "https://arifos.arif-fazil.com/mcp",
     "aforge": "https://forge.arif-fazil.com/mcp",

@@ -28,9 +28,46 @@
 </head>
 <body data-state="loading" data-source="GET /api/observatory/v1/snapshot" data-observed-at="" data-age-seconds="0" data-evidence-class="reported" data-confidence="0.85" data-namespace="arifos" data-freshness-state="loading">
 <noscript>
- <p style="padding:2rem;text-align:center">Read-only observers without JavaScript should consult
+ <style>
+  /* ZEN PULSE — Sacred Navigation Law */
+  .zen-pulse{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:.85rem 0;margin:0 0 1rem 0;font-family:monospace;font-size:.78rem}
+  .zp-item{display:flex;flex-direction:column;gap:.2rem;padding:0 1.25rem;border-left:1px solid var(--border)}
+  .zp-item:first-child{border-left:none}
+  .zp-ask{color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em;font-size:.6rem}
+  .zp-val{color:var(--text);font-weight:600;font-size:.85rem}
+  .zp-val.gold{color:var(--gold)}
+
+  /* INTENT CARDS — verbs first */
+  .intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;margin:1rem 0}
+  .intent-card{background:var(--surface);border:1px solid var(--border);border-radius:.5rem;padding:.85rem 1rem;display:flex;flex-direction:column;gap:.2rem;text-decoration:none;color:inherit;transition:border-color .15s}
+  .intent-card:hover{border-color:var(--primary)}
+  .verb{font-family:'Cabinet Grotesk',sans-serif;font-size:1.15rem;font-weight:800;color:var(--gold);letter-spacing:-.02em}
+  .object{color:var(--text);font-size:.85rem;font-weight:600}
+  .you-get{color:var(--text-muted);font-size:.72rem;font-family:monospace}
+  .arrow{color:var(--text-faint);font-size:.65rem;font-family:monospace;margin-top:.2rem}
+ </style>
+
+ <!-- ZEN PULSE -->
+ <div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arifOS · Observatory</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">You want to <em>verify</em> the federation is governed and alive.</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a verb below ↓</span></div>
+ </div>
+
+ <!-- INTENT CARDS — verbs first -->
+ <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.6rem;font-weight:800;margin:1.5rem 0 .5rem">What do you want to <span style="color:var(--gold)">verify</span>?</h1>
+ <div class="intent-grid">
+  <a class="intent-card" href="#sec-identity"><span class="verb">Witness</span><span class="object">live federation state</span><span class="you-get">→ substrate · governance · intelligence</span><span class="arrow">↓ runtime identity</span></a>
+  <a class="intent-card" href="#sec-governance"><span class="verb">Audit</span><span class="object">F1-F13 floors</span><span class="you-get">→ per-floor score · drift</span><span class="arrow">↓ governance state</span></a>
+  <a class="intent-card" href="#sec-drift"><span class="verb">Verify</span><span class="object">capability drift</span><span class="you-get">→ declared vs registered vs tested</span><span class="arrow">↓ capability drift</span></a>
+  <a class="intent-card" href="#sec-vault"><span class="verb">Trace</span><span class="object">a vault receipt</span><span class="you-get">→ VAULT999 witness · round-trip test</span><span class="arrow">↓ vault witness</span></a>
+  <a class="intent-card" href="#sec-organs"><span class="verb">Find</span><span class="object">a tool or organ</span><span class="you-get">→ 7 organs · MCP tools</span><span class="arrow">↓ federation organs</span></a>
+  <a class="intent-card" href="/api/observatory/v1/snapshot"><span class="verb">Probe</span><span class="object">live JSON snapshot</span><span class="you-get">→ signed server-side state</span><span class="arrow">→ /api/observatory/v1/snapshot</span></a>
+ </div>
+
+ <p style="padding:1rem;text-align:center;color:var(--text-muted);font-size:.85rem">Read-only observers without JavaScript should consult
   <a href="/api/observatory/v1/snapshot">/api/observatory/v1/snapshot</a>
-  for the live JSON state. This page renders the same data client-side.</p>
+  for the live JSON state. The cards above route to the same sections the JS app renders.</p>
 </noscript>
 <a href="#main" class="skip-link">Skip to main content</a>
 

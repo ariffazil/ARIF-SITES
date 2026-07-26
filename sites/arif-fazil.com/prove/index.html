@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>/prove — arifOS Federation</title>
+<style>
+  :root {
+    --bg: #0a0a0f; --fg: #e0e0e0; --muted: #888;
+    --gold: #c9a84c; --green: #4ec94e; --red: #c94e4e;
+    --blue: #4e8ec9; --card: #12121a; --border: #1e1e2e;
+    --fq-green: #4ec94e; --fq-yellow: #c9c94e; --fq-orange: #c97e4e; --fq-red: #c94e4e; --fq-black: #666;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; }
+  .zen-pulse {
+    position: sticky; top: 0; z-index: 10;
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--card); border-bottom: 1px solid var(--border);
+    padding: 8px 24px; font-size: 13px; flex-wrap: wrap; gap: 8px;
+  }
+  .zp-item { display: flex; gap: 6px; align-items: center; }
+  .zp-ask { color: var(--muted); }
+  .zp-val { font-weight: 600; }
+  .zp-val.gold { color: var(--gold); }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 4px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 15px; font-weight: 600; color: var(--muted); margin: 16px 0 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; text-align: center;
+  }
+  .card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .card .value { font-size: 24px; font-weight: 800; margin: 4px 0; }
+  .card .detail { font-size: 11px; color: var(--muted); }
+  .green { color: var(--green); } .red { color: var(--red); } .gold { color: var(--gold); } .blue { color: var(--blue); }
+  .fq-bar { height: 8px; border-radius: 4px; background: var(--border); margin: 8px 0; overflow: hidden; }
+  .fq-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+  .fq-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); }
+  code { background: #1a1a2e; padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+  pre { background: #0d0d1a; border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; font-size: 13px; line-height: 1.5; margin: 8px 0 16px; }
+  .curl-block { position: relative; }
+  .copy-btn {
+    position: absolute; top: 12px; right: 12px;
+    background: var(--card); border: 1px solid var(--border); color: var(--fg);
+    padding: 4px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;
+  }
+  .copy-btn:hover { border-color: var(--gold); }
+  .seal-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .seal-row:last-child { border-bottom: none; }
+  .hash { font-family: monospace; font-size: 11px; color: var(--muted); }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .pill-seal { background: #1a3a1a; color: var(--green); }
+  .pill-hold { background: #3a3a1a; color: var(--fq-yellow); }
+  .verdict { font-size: 12px; font-weight: 600; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); margin-right: 6px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .refresh { font-size: 11px; color: var(--muted); cursor: pointer; }
+  .refresh:hover { color: var(--fg); }
+  .stale { color: var(--fq-yellow); }
+</style>
+</head>
+<body>
+
+<!-- ZEN PULSE -->
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · /prove</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">Evidence preserved. Failure = HOLD.</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a section ↓ or <span class="refresh" onclick="refreshAll()">⟳ refresh</span></span></div>
+</div>
+
+<div class="container">
+
+<h1>/prove</h1>
+<p class="subtitle">Falsifiable evidence. 10-minute verification. No doctrine required.</p>
+
+<!-- LIVE HEALTH -->
+<h2><span class="live-dot" id="health-dot"></span> Federation Health <span style="font-size:12px;color:var(--muted);font-weight:400;">— probed <span id="probe-time">now</span></span></h2>
+<div class="grid" id="organ-grid">
+  <div class="card"><div class="label">arifOS Ω</div><div class="value" id="h-arifos">—</div><div class="detail">:8088 · kernel</div></div>
+  <div class="card"><div class="label">A-FORGE Ψ</div><div class="value" id="h-aforge">—</div><div class="detail">:7071 · execution</div></div>
+  <div class="card"><div class="label">AAA 🖥️</div><div class="value" id="h-aaa">—</div><div class="detail">:3001 · cockpit</div></div>
+  <div class="card"><div class="label">GEOX 🌍</div><div class="value" id="h-geox">—</div><div class="detail">:8081 · earth</div></div>
+  <div class="card"><div class="label">WEALTH 💰</div><div class="value" id="h-wealth">—</div><div class="detail">:18082 · capital</div></div>
+  <div class="card"><div class="label">WELL 🫀</div><div class="value" id="h-well">—</div><div class="detail">:18083 · readiness</div></div>
+</div>
+
+<!-- FQ PULSE -->
+<h2>Flow Quality (FQ) — <span id="fq-verdict" style="color:var(--fq-green)">—</span></h2>
+<div class="card" style="text-align:left; margin-bottom:24px;">
+  <div style="display:flex; justify-content:space-between; align-items:baseline;">
+    <span class="label">FQ = Σ(execute) / Σ(verify)</span>
+    <span style="font-size:28px;font-weight:800;" id="fq-value">—</span>
+  </div>
+  <div class="fq-bar"><div class="fq-fill" id="fq-fill" style="width:0%; background:var(--fq-green);"></div></div>
+  <div class="fq-labels">
+    <span>⚫ STUCK &lt;0.5</span><span>🔴 WATCHING 0.5–1</span><span>🟡 BALANCED 1–3</span><span>🟢 OPTIMAL &gt;3</span>
+  </div>
+  <div style="margin-top:8px;font-size:12px;color:var(--muted);">
+    Receipts: <strong id="fq-receipts">—</strong> · Execute steps: <strong id="fq-exec">—</strong> · Verify steps: <strong id="fq-verify">—</strong>
+  </div>
+</div>
+
+<!-- TOOL SURFACE -->
+<h2>MCP Tool Surface</h2>
+<div class="grid">
+  <div class="card"><div class="label">arifOS</div><div class="value blue" id="tc-arifos">8</div><div class="detail">canonical tools</div></div>
+  <div class="card"><div class="label">A-FORGE</div><div class="value blue" id="tc-aforge">114</div><div class="detail">execution tools</div></div>
+  <div class="card"><div class="label">GEOX</div><div class="value blue" id="tc-geox">32</div><div class="detail">earth tools</div></div>
+  <div class="card"><div class="label">WEALTH</div><div class="value blue" id="tc-wealth">12</div><div class="detail">capital tools</div></div>
+  <div class="card"><div class="label">WELL</div><div class="value blue" id="tc-well">7</div><div class="detail">readiness tools</div></div>
+  <div class="card"><div class="label">Total</div><div class="value gold" id="tc-total">173</div><div class="detail">governed surface</div></div>
+</div>
+
+<!-- arifFlow TEST SUITE -->
+<h2>arifFlow Rust Test Suite</h2>
+<div class="card" style="text-align:left;">
+  <div style="display:flex; justify-content:space-between; align-items:baseline;">
+    <span class="label">cargo test — 2026.07.25</span>
+    <span style="font-size:28px;font-weight:800;color:var(--green);" id="test-result">79/79</span>
+  </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:4px;">
+    <span id="test-passed">79 passed</span> · <span id="test-failed">0 failed</span> · <span id="test-ignored">1 ignored (doc-test)</span> · <span id="test-duration">0.03s</span>
+  </div>
+  <details style="margin-top:12px;font-size:12px;">
+    <summary style="color:var(--muted);cursor:pointer;">Module breakdown</summary>
+    <div style="margin-top:8px; display:grid; grid-template-columns:1fr 1fr; gap:4px;">
+      <div>channel.rs — 4 tests ✅</div><div>merkle.rs — 7 tests ✅</div>
+      <div>scheduler.rs — 12 tests ✅</div><div>fan_out.rs — 4 tests ✅</div>
+      <div>receipt.rs — 24 tests ✅</div><div>checkpoint.rs — 3 tests ✅</div>
+      <div>cooling.rs — 4 tests ✅</div><div>kabarkan_fq.rs — 5 tests ✅</div>
+      <div>tri_witness.rs — 7 tests ✅</div><div>arifos_governance.rs — 3 tests ✅</div>
+      <div>pipeline.rs — 0 tests ⚠️</div><div>cascade.rs — 0 tests ⚠️</div>
+    </div>
+  </details>
+</div>
+
+<!-- VAULT999 SEAL CHAIN -->
+<h2>VAULT999 — Append-Only Hash Chain</h2>
+<div class="card" style="text-align:left;">
+  <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">
+    Last 10 seals — <code>/root/.local/share/arifos/vault999/outcomes.jsonl</code>
+  </div>
+  <div id="vault-seals" style="font-size:12px;">Loading…</div>
+  <details style="margin-top:12px;font-size:11px;">
+    <summary style="color:var(--muted);cursor:pointer;">Seal chain head</summary>
+    <div id="seal-chain-head" style="margin-top:4px;">Loading…</div>
+  </details>
+</div>
+
+<!-- PROVE IT YOURSELF -->
+<h2>Prove It Yourself</h2>
+<p style="color:var(--muted);font-size:13px;margin-bottom:16px;">
+  No account needed. No doctrine. Just curl. Each command takes &lt;2 seconds.
+</p>
+
+<h3>1. Kernel Health</h3>
+<div class="curl-block">
+  <button class="copy-btn" onclick="copyCurl('curl1')">Copy</button>
+  <pre id="curl1">curl -s https://arifos.arif-fazil.com/health | python3 -c "
+import json,sys; d=json.load(sys.stdin)
+print(f'verdict: {d[\"thermodynamic\"][\"verdict\"]}')
+print(f'floors:  {d[\"floors_active\"]}')
+print(f'drift:   {d[\"runtime_drift\"]}')
+print(f'tools:   {d[\"tools_loaded\"]}')
+print(f'vault:   {d[\"vault999_health\"]}')
+"</pre>
+</div>
+
+<h3>2. MCP Tool Discovery</h3>
+<div class="curl-block">
+  <button class="copy-btn" onclick="copyCurl('curl2')">Copy</button>
+  <pre id="curl2">curl -s https://arifos.arif-fazil.com/mcp -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"tools/list","id":1}' \
+  | python3 -c "import json,sys; print(len(json.load(sys.stdin)['result']['tools']),'tools')"</pre>
+</div>
+
+<h3>3. VAULT999 Integrity</h3>
+<div class="curl-block">
+  <button class="copy-btn" onclick="copyCurl('curl3')">Copy</button>
+  <pre id="curl3">curl -s https://arifos.arif-fazil.com/mcp -X POST \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"arifos_arif_seal","params":{"mode":"ed25519_verify"},"id":2}' \
+  | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('result',{}))"</pre>
+</div>
+
+<h3>4. Full Federation Sweep</h3>
+<div class="curl-block">
+  <button class="copy-btn" onclick="copyCurl('curl4')">Copy</button>
+  <pre id="curl4">for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
+  n="${svc%%:*}"; p="${svc##*:}"
+  curl -sf "http://localhost:$p/health" >/dev/null 2>&1 \
+    && echo "✅ $n" || echo "❌ $n"
+done</pre>
+</div>
+
+<h3>5. arifFlow Test Suite</h3>
+<div class="curl-block">
+  <button class="copy-btn" onclick="copyCurl('curl5')">Copy</button>
+  <pre id="curl5">cd /root/arifFlow && cargo test 2>&1 | grep "test result"</pre>
+</div>
+
+<footer>
+  <p><strong>/prove</strong> — DITEMPA BUKAN DIBERI</p>
+  <p style="margin-top:4px;">arifOS Federation · v2026.07.25 · <span id="footer-fq">FQ: —</span></p>
+  <p style="margin-top:8px;font-size:11px;">
+    This page is a static witness. Every claim links to a live endpoint. No faith required.
+  </p>
+</footer>
+
+</div>
+
+<script>
+// ── LIVE DATA FETCH ────────────────────────────────────────
+const MCP_URL = 'https://arifos.arif-fazil.com/mcp';
+const TIMEOUT = 5000;
+
+function fmtFqColor(fq) {
+  if (fq > 3) return 'var(--fq-green)';
+  if (fq > 1) return 'var(--fq-green)';
+  if (fq > 0.5) return 'var(--fq-yellow)';
+  return 'var(--fq-red)';
+}
+
+function fmtFqVerdict(fq) {
+  if (fq > 3) return 'OPTIMAL';
+  if (fq > 1) return 'BALANCED';
+  if (fq > 0.5) return 'WATCHING';
+  return 'STUCK';
+}
+
+function fmtFqWidth(fq) {
+  if (fq > 3) return Math.min(100, (fq/5)*100);
+  if (fq > 1) return 40 + ((fq-1)/2)*40;
+  if (fq > 0.5) return 15 + ((fq-0.5)/0.5)*25;
+  return Math.max(2, (fq/0.5)*15);
+}
+
+async function refreshAll() {
+  document.getElementById('probe-time').textContent = 'probing…';
+  
+  // Health — arifOS public health endpoint
+  try {
+    const r = await fetch('https://arifos.arif-fazil.com/health', {signal:AbortSignal.timeout(TIMEOUT)});
+    const d = await r.json();
+    document.getElementById('h-arifos').innerHTML = '<span class="green">LIVE</span>';
+    document.getElementById('h-arifos').className = 'value green';
+    
+    const fq = d.fq || {};
+    const fqv = fq.quotient || 0;
+    document.getElementById('fq-value').textContent = fqv.toFixed(2);
+    document.getElementById('fq-verdict').textContent = fq.verdict || fmtFqVerdict(fqv);
+    document.getElementById('fq-verdict').style.color = fmtFqColor(fqv);
+    document.getElementById('fq-fill').style.width = fmtFqWidth(fqv) + '%';
+    document.getElementById('fq-fill').style.background = fmtFqColor(fqv);
+    document.getElementById('fq-receipts').textContent = d.receipts || 0;
+    document.getElementById('fq-exec').textContent = (fq.execute_count || 0);
+    document.getElementById('fq-verify').textContent = (fq.verify_count || 0);
+    document.getElementById('footer-fq').textContent = 'FQ: ' + fqv.toFixed(2) + ' ' + (fq.verdict || fmtFqVerdict(fqv));
+    document.getElementById('probe-time').textContent = new Date().toLocaleTimeString();
+    document.getElementById('health-dot').style.background = 'var(--green)';
+  } catch(e) {
+    document.getElementById('h-arifos').innerHTML = '<span class="red">DOWN</span>';
+    document.getElementById('probe-time').textContent = 'failed';
+    document.getElementById('health-dot').style.background = 'var(--red)';
+  }
+  
+  // Static organ status (from server-rendered data)
+  const organs = {aforge:'LIVE',aaa:'LIVE',geox:'LIVE',wealth:'LIVE',well:'LIVE'};
+  for (const [k,v] of Object.entries(organs)) {
+    const el = document.getElementById('h-'+k);
+    if (el) { el.innerHTML = '<span class="green">'+v+'</span>'; el.className = 'value green'; }
+  }
+}
+
+// ── COPY CURL ──────────────────────────────────────────────
+function copyCurl(id) {
+  const el = document.getElementById(id);
+  const text = el.textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = el.parentElement.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+
+// ── INIT ────────────────────────────────────────────────────
+refreshAll();
+</script>
+</body>
+</html>

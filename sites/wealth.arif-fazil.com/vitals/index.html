@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>PETRONAS · φ VITALS — Exteroception Organ</title>
-<meta name="description" content="Unified PETRONAS institutional health organ. Composite pulse index, 9 tripwires with dated seals, sensitivity coefficients, forward trajectory fan chart.">
+<title>PETRONAS · VITALS — Financial capacity and resilience</title>
+<meta name="description" content="PETRONAS financial capacity, operating resilience, and governance balance. Sealed tripwire scores, live market proxies, and net-cash scenarios.">
+<meta name="agent-identity" content="WEALTH · PETRONAS institution health">
 <link rel="canonical" href="https://arif-fazil.com/vitals/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +18,15 @@
 .hero .subtitle{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
 /* VITALS keeps its own fan chart canvas sizing */
 #fan{width:100%;max-width:1040px;height:auto;display:block;margin-top:8px}
+.pulse-label{font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
+.attention{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.attention-title{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.attention-list{display:grid;gap:6px;margin:8px 0 0;padding:0;list-style:none}
+.attention-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 9px;background:var(--surface3);border:1px solid var(--line);border-radius:6px;font-size:11px;color:var(--ink)}
+.attention-layer{color:var(--faint);font-family:var(--mono);font-size:9px}
+.attention-score{font-family:var(--mono);font-size:11px;color:var(--hold);white-space:nowrap}
+.scope-note{margin:14px 0 0;padding:10px 12px;border-left:2px solid var(--accent);font-size:11px;color:var(--dim);line-height:1.6}
+.scope-note strong{color:var(--ink)}
 </style>
 
 <style>
@@ -35,73 +45,77 @@
 <!-- ═══ ZEN PULSE — unified cross-nav with live verdict badges ═══ -->
 <div class="zen-pulse">
   <div class="zp-item"><span class="pulsedot" id="navdot"></span><span class="zp-ask">Where am I?</span><span class="zp-val">VITALS · PETRONAS φ</span></div>
-  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">One body. Two lungs. Nine tripwires. Malaysia's shadow sovereign balance sheet, live.</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">The current answer comes first: financial capacity, operating resilience, and stakeholder balance.</span></div>
   <div class="zp-nav">
-    <a href="/vitals/" class="here"><span class="badge" style="background:var(--hold)" id="vitals-dot"></span>VITALS</a>
+    <a href="/vitals/" class="here"><span class="badge" style="background:var(--hold)" id="vitals-dot"></span>PETRONAS</a>
     <a href="/malaysia/"><span class="badge" style="background:var(--sabar)"></span>MALAYSIA</a>
     <a href="/oil/"><span class="badge" style="background:var(--sabar)"></span>OIL</a>
     <a href="/gas/"><span class="badge" style="background:var(--sabar)"></span>GAS</a>
     <a href="/gold/"><span class="badge" style="background:var(--seal)"></span>GOLD</a>
   </div>
 </div>
-<div class="cmd-bar">
-  <span class="cmd-organ">PETRONAS-VITALS-SENSE</span><span class="cmd-sep">·</span>
-  <span class="cmd-tier">TIER: READ-ONLY</span><span class="cmd-sep">·</span>
-  <span>REPORTS-TO: SENSE111</span><span class="cmd-sep">·</span>
-  <span>CEILING: 777_FORGE</span>
-  <span style="margin-left:auto"></span>
-  <span class="cmd-fresh"><span class="dot"></span>FRESH · sealed 2026-07-24 · next audit 2026-10-24</span>
-  <span class="cmd-sep">·</span>
-  <span class="cmd-chain"><span>←</span> SENSE111 <span>→</span> A-FORGE 777 <span>→</span> 888_JUDGE</span>
+
+<main class="wrap">
+
+<!-- HERO / PULSE ANSWER -->
+<div class="hero" id="score">
+  <div class="hero-tag">PETRONAS financial health · current answer</div>
+  <h1>Financial capacity. Operating resilience. <span>Stakeholder balance.</span><span class="epi-tag">INTERPRET</span></h1>
+  <div class="pulse-wrap" aria-labelledby="pulse-answer-label" data-agent-role="institution-answer">
+    <div class="pulse-head">
+      <div>
+        <div class="pulse-label" id="pulse-answer-label">Current pulse</div>
+        <span class="pulse-val mono" id="pulseval">48</span>
+        <span class="verdict-badge HOLD" id="pulseverdict">HOLD</span>
+      </div>
+      <div class="pulse-desc"><strong>Derived from sealed inputs.</strong><br><span style="color:var(--faint)">BODY 0.40 + SPINE 0.35 + SOUL 0.25 · computed, never asserted</span></div>
+    </div>
+    <div class="pulse-bar"><div class="pulse-fill" id="pulsefill" style="width:48%;background:var(--hold)"></div></div>
+    <div class="pulse-bands"><span>0 VOID</span><span>40 HOLD</span><span>60 SABAR</span><span>80 SEAL</span><span>100</span></div>
+    <div class="pulse-meta"><span class="stale-tag fresh" id="sealbadge" aria-live="polite">FRESH</span> · sealed <b id="sealdate">2026-07-24</b> · next audit 2026-10-24</div>
+    <div class="subscores">
+      <div class="sub-card"><div class="lab">Financial capacity</div><div class="val mono" id="sb-body">76</div><div class="wt">0.40 · FCF·gearing·CFFO</div><span class="epi-tag-small EVIDENCE">EVIDENCE</span></div>
+      <div class="sub-card"><div class="lab">Operating resilience</div><div class="val mono" id="sb-spine">34</div><div class="wt">0.35 · production·recycling·payout</div><span class="epi-tag-small MIXED">MIXED</span></div>
+      <div class="sub-card"><div class="lab">Governance &amp; stakeholder balance</div><div class="val mono" id="sb-soul">22</div><div class="wt">0.25 · enabler mix·governance·extraction</div><span class="epi-tag-small INTERPRET">INTERPRET</span></div>
+    </div>
+    <section class="attention" aria-labelledby="attention-heading">
+      <div class="attention-title" id="attention-heading">Start here · three lowest tripwire scores</div>
+      <ol class="attention-list" id="attention-list" aria-label="Three lowest tripwire scores">
+        <li><span>Sovereign extraction gauge</span><b class="attention-score">0/100</b></li>
+        <li><span>Capital Recycling Ratio</span><b class="attention-score">20/100</b></li>
+        <li><span>Production / reserve replacement</span><b class="attention-score">28/100</b></li>
+      </ol>
+    </section>
+  </div>
+  <div class="verb-row">
+    <a href="#tripwires">See ranked scores</a>
+    <a href="#liveStrip">Check live proxies</a>
+    <a href="#basics">Read methods</a>
+    <a href="#fan-sec">Run net-cash scenarios</a>
+  </div>
 </div>
 
+<!-- RANKED TRIPWIRE SCORES -->
+<div class="sec" id="tripwires" data-agent-role="evidence">
+  <div class="sec-title">Tripwire scores · lowest first</div>
+  <div class="tripgrid" id="grid9" aria-label="Nine tripwire scores ranked from lowest to highest"></div>
+</div>
 
-<div class="wrap">
+<!-- LIVE MARKET PROXIES -->
 <div class="live-strip" id="liveStrip">
-  <div class="ls-head"><span class="ls-badge" id="lsBadge">◌ CONNECTING</span><span>LIVE MARKET PROXIES</span><span style="margin-left:auto" id="lsTime">—</span></div>
-  <div class="ls-chips" id="lsChips"><span class="ls-chip">connecting to WEALTH commodity engine…</span></div>
+  <div class="ls-head"><span class="ls-badge" id="lsBadge">UNAVAILABLE</span><span>LIVE MARKET PROXIES</span><span style="margin-left:auto" id="lsTime">—</span></div>
+  <div class="ls-chips" id="lsChips" aria-live="polite"><span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative</span></div>
   <div class="ls-note">Transmission: ±$10 Brent ≈ ±RM6B CFFO. Brent &lt; $70 for 2 quarters → CFFO approaches RM60B tripwire. JKM–HH premium supports LNG margin. Proxies are live market readings, NOT sealed tripwire values. Anchors remain sovereign-sealed. Source: WEALTH commodity engine (yfinance) · 5-min cache.</div>
 </div>
 
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">Exteroception Organ · senses, never actuates · reports to SENSE111</div>
-  <h1>One body. Two lungs. <span>Nine tripwires.</span><span class="epi-tag">INTERPRET</span></h1>
-  <div class="pulse-wrap">
-    <div class="pulse-head">
-      <div>
-        <span class="pulse-val mono" id="pulseval">–</span>
-        <span class="verdict-badge" id="pulseverdict">–</span>
-      </div>
-      <div class="pulse-desc">composite pulse · weighted blend of EVIDENCE + INTERPRET metrics<br><span style="color:var(--faint)">BODY 0.40 + SPINE 0.35 + SOUL 0.25 · computed, never asserted</span></div>
-    </div>
-    <div class="pulse-bar"><div class="pulse-fill" id="pulsefill"></div></div>
-    <div class="pulse-bands"><span>0 VOID</span><span>40 HOLD</span><span>60 SABAR</span><span>80 SEAL</span><span>100</span></div>
-    <div class="pulse-meta">last re-sealed: <b id="sealdate">24 July 2026</b> <span class="stale-tag fresh" id="sealbadge">FRESH</span> · next audit due: 24 Oct 2026</div>
-    <div class="subscores">
-      <div class="sub-card"><div class="lab">🫀 BODY · solvency</div><div class="val mono" id="sb-body">–</div><div class="wt">0.40 · FCF·gearing·CFFO</div><span class="epi-tag-small EVIDENCE">EVIDENCE</span></div>
-      <div class="sub-card"><div class="lab">🦴 SPINE · franchise</div><div class="val mono" id="sb-spine">–</div><div class="wt">0.35 · production·recycling·payout</div><span class="epi-tag-small MIXED">MIXED</span></div>
-      <div class="sub-card"><div class="lab">🕊️ SOUL · DNA</div><div class="val mono" id="sb-soul">–</div><div class="wt">0.25 · enabler mix·governance·extraction</div><span class="epi-tag-small INTERPRET">INTERPRET</span></div>
-    </div>
-  </div>
-  <div class="verb-row">
-    <a href="#tripwires">Examine tripwires</a>
-    <a href="#sensitivities">Sensitivity coefficients</a>
-    <a href="#lungs">Inspect systems</a>
-    <a href="#fan">Simulate trajectory</a>
-    <a href="#basics">Modeling basics</a>
-  </div>
-</div>
-
-<!-- MODELING BASICS -->
+<!-- METHODS -->
 <div class="sec" id="basics">
-  <div class="sec-title">Modeling basics · how to read this organ</div>
-  <details class="zen-reveal" open>
-    <summary>Pulse computation methodology</summary>
+  <div class="sec-title">Methods and context</div>
+  <details class="zen-reveal" id="methodology" data-agent-role="machine-context">
+    <summary>Methodology</summary>
     <div class="reveal-body">
       <h5>What the pulse measures</h5>
-      <p>The composite PULSE (0–100) is a weighted blend of three sub-scores, each computed from three tripwires measuring their distance from a breaking threshold. It does not predict collapse. It measures the gap between current readings and the <code>safe</code>/<code>trip</code> anchors encoded in the data constitution.</p>
+      <p>The composite PULSE (0–100) is a weighted blend of three sub-scores, each computed from three tripwires measuring their distance from a breaking threshold. It measures the gap between current readings and the <code>safe</code>/<code>trip</code> anchors encoded in the sealed inputs.</p>
       <h5>How sub-scores are computed</h5>
       <p>Each tripwire <em>t</em> has three anchors: <code>now</code> (current reading), <code>trip</code> (breaking threshold), and <code>safe</code> (healthy anchor). The score is distance-to-trip normalized to 0–100:</p>
       <table><tr><th>Direction</th><th>Formula</th><th>Example</th></tr>
@@ -110,101 +124,86 @@
       <p>The layer score is the mean of its three tripwire scores. The composite is: <code>PULSE = 0.40·BODY + 0.35·SPINE + 0.25·SOUL</code>.</p>
       <h5>Verdict bands</h5>
       <table><tr><th>Score</th><th>Verdict</th><th>Meaning</th></tr>
-      <tr><td>80–100</td><td style="color:var(--seal)">SEAL</td><td>Body + soul intact</td></tr>
-      <tr><td>60–79</td><td style="color:var(--sabar)">SABAR</td><td>Solvent, franchise fraying</td></tr>
-      <tr><td>40–59</td><td style="color:var(--hold)">HOLD</td><td>Structural decay outrunning cash</td></tr>
-      <tr><td>&lt;40</td><td style="color:var(--void)">VOID</td><td>Hollow shell, technically solvent</td></tr></table>
-      <h5>How to re-seal (quarterly update)</h5>
-      <p>Edit the 9 <code>now:</code> fields in the <code>TRIPWIRES[]</code> array. Everything else — scores, colors, verdicts, animations — derives from those 9 values. The <code>safe</code> and <code>trip</code> anchors are constitutional; changing them is a sovereign act.</p>
-      <h5>Epistemic honesty</h5>
-      <p>BODY tripwires (#1–3) are <span class="epi-tag-small EVIDENCE">EVIDENCE</span> — grounded in audited FY2025 IFR. SPINE and SOUL tripwires (#4–9) carry <span class="epi-tag-small INTERPRET">INTERPRET</span> tags — they're inferences from judgment-anchors. The composite PULSE inherits the weaker tag: <b>INTERPRET, given chosen anchors</b>. The organ cannot be more objective than the <code>safe</code> values encoded in it. That exposure is the honesty.</p>
+      <tr><td>80–100</td><td style="color:var(--seal)">SEAL</td><td>Buffer intact</td></tr>
+      <tr><td>60–79</td><td style="color:var(--sabar)">SABAR</td><td>Solvent, pressures accumulating</td></tr>
+      <tr><td>40–59</td><td style="color:var(--hold)">HOLD</td><td>Structural pressure is visible</td></tr>
+      <tr><td>&lt;40</td><td style="color:var(--void)">VOID</td><td>Buffer exhausted</td></tr></table>
+      <h5>Evidence classes</h5>
+      <p>BODY tripwires (#1–3) are <span class="epi-tag-small EVIDENCE">EVIDENCE</span> from audited FY2025 IFR data. SPINE and SOUL tripwires (#4–9) include <span class="epi-tag-small INTERPRET">INTERPRET</span> judgment anchors. The composite carries the weaker class.</p>
     </div>
   </details>
-  <details class="zen-reveal">
-    <summary>Theoretical spine · Acemoglu (analogy) + simulative institution + Calhoun (contested metaphor)</summary>
-    <div class="reveal-body">
-      <p><b>Acemoglu &amp; Robinson (analogy, not direct application):</b> Institutions hollow before they run out of money. Extraction can rise while the surface stays inclusive. This is a productive analogy — <em>not</em> the theory operating in its original domain (nation-state political economy). Tag: INTERPRET.</p>
-      <p style="margin-top:8px"><b>Simulative institution (Arif's forensic frame):</b> Reform can be performed to absorb pressure without touching the extractive core. Tripwires #5 (Capital Recycling), #8 (Governance Separation), and #9 (Sovereign Extraction) are the structural detectors. Tag: INTERPRET.</p>
-      <p style="margin-top:8px"><b>Calhoun's Universe 25 (contested metaphor, not predictive):</b> Abundance ≠ health; behaviors that built value can erode while resources remain. The science is contested (non-replication, enclosure confounds). Used as narrative frame only. Tag: INTERPRET-LOW.</p>
-    </div>
-  </details>
-  <!-- AGENT IDENTITY CARD -->
-  <div class="agent-card">
-    <div class="agent-head">⚙️ AGENT IDENTITY</div>
-    <div class="agent-row"><span>Organ</span><span>PETRONAS·φ VITALS — Exteroception Organ</span></div>
-    <div class="agent-row"><span>Tier</span><span>OBSERVE — senses, never actuates</span></div>
-    <div class="agent-row"><span>Reports to</span><span>SENSE111 → arifOS kernel → F13 SOVEREIGN</span></div>
-    <div class="agent-row"><span>Cannot</span><span>Buy · Sell · Hold · Allocate · Predict · Recommend</span></div>
-    <div class="agent-row"><span>Data Constitution</span><span>9 TRIPWIRES[] · 3 layers · 1 composite PULSE</span></div>
-    <div class="agent-row"><span>Sovereign</span><span>Muhammad Arif bin Fazil (F13 SOVEREIGN)</span></div>
-  </div>
-</div>
-
-<!-- LUNGS -->
-<div class="sec" id="lungs">
-  <div class="sec-title">Three systems · tap to expand</div>
-  <div class="lungs" id="lungs-el"></div>
-</div>
-
-<!-- 9 TRIPWIRES -->
-<div class="sec" id="tripwires">
-  <div class="sec-title">The 9 tripwires · distance-to-trip</div>
-  <div class="tripgrid" id="grid9"></div>
+  <p class="scope-note"><strong>Scope &amp; limits.</strong> This page reports distance to sealed tripwires. Live proxies and scenario bands add context; they do not change sealed readings or forecast outcomes.</p>
 </div>
 
 <!-- SENSITIVITY COEFFICIENTS -->
 <div class="sec" id="sensitivities">
-  <div class="sec-title">Sensitivity coefficients · published model inputs</div>
-  <div class="ref-panel">
-    <h4>Earnings sensitivity to key variables · FY2025 baseline</h4>
-    <table class="data-table">
-      <thead><tr><th>Variable</th><th>Δ Change</th><th>PAT Impact (RM B)</th><th>CFFO Impact (RM B)</th><th>FCF Impact (RM B)</th><th>Source</th></tr></thead>
-      <tbody>
-        <tr class="section-row"><td colspan="6">PRICE SENSITIVITIES</td></tr>
-        <tr><td>Brent crude</td><td class="num">+$10 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+5.5 to +7.5</td><td class="num">+6.0</td><td class="num">+6.0</td><td>FY2025 IFR sensitivity disclosure</td></tr>
-        <tr><td>JKM LNG spot</td><td class="num">+$1 /MMBtu</td><td class="num" style="color:var(--seal);font-weight:600">+1.2</td><td class="num">+1.2</td><td class="num">+1.2</td><td>MoF / contract mix estimate</td></tr>
-        <tr><td>Singapore GRM</td><td class="num">+$1 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+0.15 to +0.30</td><td class="num">+0.25</td><td class="num">+0.25</td><td>FY2025 downstream disclosure</td></tr>
-        <tr><td>Naphtha-PE spread</td><td class="num">+$100 /T</td><td class="num" style="color:var(--seal);font-weight:600">+0.30 to +0.50</td><td class="num">+0.40</td><td class="num">+0.40</td><td>PRefChem commissioning sensitivity</td></tr>
-        <tr class="section-row"><td colspan="6">PRODUCTION SENSITIVITIES</td></tr>
-        <tr><td>Crude production</td><td class="num">+10 kbpd</td><td class="num" style="color:var(--seal);font-weight:600">+0.8 to +1.2</td><td class="num">+1.0</td><td class="num">+1.0</td><td>DOSM / IFR production data</td></tr>
-        <tr><td>LNG production</td><td class="num">+1 mtpa</td><td class="num" style="color:var(--seal);font-weight:600">+2.5 to +3.5</td><td class="num">+3.0</td><td class="num">+3.0</td><td>MLNG / Petronas LNG complex</td></tr>
-        <tr class="section-row"><td colspan="6">FISCAL SENSITIVITIES</td></tr>
-        <tr><td>Corporate tax rate</td><td class="num">+1 ppt</td><td class="num" style="color:var(--void);font-weight:600">−1.4 to −1.6</td><td class="num">−1.5</td><td class="num">−1.5</td><td>MoF / CITA 1967</td></tr>
-        <tr><td>Govt dividend floor</td><td class="num">+RM5 B</td><td class="num" style="color:var(--void);font-weight:600">0 (PAT-neutral)</td><td class="num">−5.0</td><td class="num">−5.0</td><td>MoF Budget 2026; cash flow impact only</td></tr>
-        <tr class="section-row"><td colspan="6">BALANCE SHEET SENSITIVITIES</td></tr>
-        <tr><td>MYR/USD</td><td class="num">+0.10 RM/$</td><td class="num" style="color:var(--void);font-weight:600">−0.5 to +0.3</td><td class="num">mixed</td><td class="num">mixed</td><td>natural hedge; net exporter position</td></tr>
-        <tr><td>Interest rate (base)</td><td class="num">+100 bps</td><td class="num" style="color:var(--void);font-weight:600">−0.25 to −0.40</td><td class="num">−0.35</td><td class="num">−0.35</td><td>RM82.8B net cash; low rate sensitivity</td></tr>
-      </tbody>
-    </table>
-    <div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:10px">
-      All coefficients are INTERPRET — derived from FY2025 IFR disclosures, cross-checked against Moody's A3 stable assumptions. Not audited by PETRONAS. Published as modeling inputs per ExxonMobil toolkit convention.
+  <details class="zen-reveal">
+    <summary>Sensitivity coefficients</summary>
+    <div class="reveal-body">
+      <div class="ref-panel">
+        <h4>Earnings sensitivity to key variables · FY2025 baseline</h4>
+        <table class="data-table">
+          <thead><tr><th>Variable</th><th>Δ Change</th><th>PAT Impact (RM B)</th><th>CFFO Impact (RM B)</th><th>FCF Impact (RM B)</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="section-row"><td colspan="6">PRICE SENSITIVITIES</td></tr>
+            <tr><td>Brent crude</td><td class="num">+$10 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+5.5 to +7.5</td><td class="num">+6.0</td><td class="num">+6.0</td><td>FY2025 IFR sensitivity disclosure</td></tr>
+            <tr><td>JKM LNG spot</td><td class="num">+$1 /MMBtu</td><td class="num" style="color:var(--seal);font-weight:600">+1.2</td><td class="num">+1.2</td><td class="num">+1.2</td><td>MoF / contract mix estimate</td></tr>
+            <tr><td>Singapore GRM</td><td class="num">+$1 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+0.15 to +0.30</td><td class="num">+0.25</td><td class="num">+0.25</td><td>FY2025 downstream disclosure</td></tr>
+            <tr><td>Naphtha-PE spread</td><td class="num">+$100 /T</td><td class="num" style="color:var(--seal);font-weight:600">+0.30 to +0.50</td><td class="num">+0.40</td><td class="num">+0.40</td><td>PRefChem commissioning sensitivity</td></tr>
+            <tr class="section-row"><td colspan="6">PRODUCTION SENSITIVITIES</td></tr>
+            <tr><td>Crude production</td><td class="num">+10 kbpd</td><td class="num" style="color:var(--seal);font-weight:600">+0.8 to +1.2</td><td class="num">+1.0</td><td class="num">+1.0</td><td>DOSM / IFR production data</td></tr>
+            <tr><td>LNG production</td><td class="num">+1 mtpa</td><td class="num" style="color:var(--seal);font-weight:600">+2.5 to +3.5</td><td class="num">+3.0</td><td class="num">+3.0</td><td>MLNG / Petronas LNG complex</td></tr>
+            <tr class="section-row"><td colspan="6">FISCAL SENSITIVITIES</td></tr>
+            <tr><td>Corporate tax rate</td><td class="num">+1 ppt</td><td class="num" style="color:var(--void);font-weight:600">−1.4 to −1.6</td><td class="num">−1.5</td><td class="num">−1.5</td><td>MoF / CITA 1967</td></tr>
+            <tr><td>Govt dividend floor</td><td class="num">+RM5 B</td><td class="num" style="color:var(--void);font-weight:600">0 (PAT-neutral)</td><td class="num">−5.0</td><td class="num">−5.0</td><td>MoF Budget 2026; cash flow impact only</td></tr>
+            <tr class="section-row"><td colspan="6">BALANCE SHEET SENSITIVITIES</td></tr>
+            <tr><td>MYR/USD</td><td class="num">+0.10 RM/$</td><td class="num" style="color:var(--void);font-weight:600">−0.5 to +0.3</td><td class="num">mixed</td><td class="num">mixed</td><td>natural hedge; net exporter position</td></tr>
+            <tr><td>Interest rate (base)</td><td class="num">+100 bps</td><td class="num" style="color:var(--void);font-weight:600">−0.25 to −0.40</td><td class="num">−0.35</td><td class="num">−0.35</td><td>RM82.8B net cash; low rate sensitivity</td></tr>
+          </tbody>
+        </table>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:10px">All coefficients are INTERPRET — derived from FY2025 IFR disclosures, cross-checked against Moody's A3 stable assumptions. Not audited by PETRONAS. Published as modeling inputs per ExxonMobil toolkit convention.</div>
+      </div>
     </div>
-  </div>
+  </details>
 </div>
 
 <!-- REFERENCE INPUTS -->
 <div class="sec" id="refs">
-  <div class="sec-title">Modeling inputs · FY2025 audited anchors</div>
-  <div class="ref-panel">
-    <h4>Scenario assumptions</h4>
-    <table class="data-table">
-      <thead><tr><th>Parameter</th><th>Base</th><th>Bear</th><th>Bull</th><th>Source</th></tr></thead>
-      <tbody>
-        <tr><td>Brent crude (USD/bbl)</td><td class="num">85</td><td class="num">65</td><td class="num">105</td><td>Moody's / forward curve</td></tr>
-        <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">14</td><td class="num">10</td><td class="num">18</td><td>MoF / global LNG balance</td></tr>
-        <tr><td>Crude production (kbpd)</td><td class="num">355</td><td class="num" style="color:var(--void)">300</td><td class="num">400</td><td>FY2025 IFR / DOSM</td></tr>
-        <tr><td>Govt dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
-        <tr><td>Capex (RM B)</td><td class="num">47.5</td><td class="num">40.0</td><td class="num">55.0</td><td>FY2025 IFR</td></tr>
-        <tr><td>PRefChem debt gross-up (RM B)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY2025 audited (one-time)</td></tr>
-        <tr><td>PETROS gas transfer impact</td><td class="num">marginal</td><td class="num">moderate</td><td class="num">none</td><td>INTERPRET — ruling pending</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <details class="zen-reveal">
+    <summary>Assumptions</summary>
+    <div class="reveal-body">
+      <div class="ref-panel">
+        <h4>Scenario assumptions</h4>
+        <table class="data-table">
+          <thead><tr><th>Parameter</th><th>Base</th><th>Bear</th><th>Bull</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Brent crude (USD/bbl)</td><td class="num">85</td><td class="num">65</td><td class="num">105</td><td>Moody's / forward curve</td></tr>
+            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">14</td><td class="num">10</td><td class="num">18</td><td>MoF / global LNG balance</td></tr>
+            <tr><td>Crude production (kbpd)</td><td class="num">355</td><td class="num" style="color:var(--void)">300</td><td class="num">400</td><td>FY2025 IFR / DOSM</td></tr>
+            <tr><td>Govt dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
+            <tr><td>Capex (RM B)</td><td class="num">47.5</td><td class="num">40.0</td><td class="num">55.0</td><td>FY2025 IFR</td></tr>
+            <tr><td>PRefChem debt gross-up (RM B)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY2025 audited (one-time)</td></tr>
+            <tr><td>PETROS gas transfer impact</td><td class="num">marginal</td><td class="num">moderate</td><td class="num">none</td><td>INTERPRET — ruling pending</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- SOURCES -->
+<div class="sec" id="sources">
+  <details class="zen-reveal">
+    <summary>Sources</summary>
+    <div class="reveal-body">
+      <p>Primary inputs: PETRONAS audited FY2025 Integrated Report, MoF Budget 2026, DOSM production data, and published market assumptions. The live proxy feed is supplied by the WEALTH commodity engine.</p>
+    </div>
+  </details>
 </div>
 
 <!-- FAN CHART -->
 <div class="sec" id="fan-sec">
-  <div class="sec-title">Quantum path · net-cash trajectory 2025 → 2031</div>
+  <div class="sec-title">Net-cash scenarios · 2025 → 2031</div>
   <div class="fan-wrap">
     <div class="fan-sliders">
       <div class="slider"><label>Brent (USD/bbl) <b id="brentv">85</b></label>
@@ -228,27 +227,17 @@
   </div>
 </div>
 
-<!-- REFUSAL -->
-<div class="refusal">
-  <h3>⛔ REFUSAL SURFACE</h3>
-  <p><b>This organ senses; it does not act.</b> No buy, sell, hold, or allocation signals. It reports institutional distance-to-break only. Actuation stays behind the A-FORGE governance gate. Every metric carries its epistemic tag (EVIDENCE / INTERPRET) on its face. The composite pulse is INTERPRET because SPINE and SOUL sub-scores are built on inference anchors. The organ cannot be more objective than the judgments encoded in its <code>safe</code> values. That exposure is the honesty.</p>
-</div>
+<!-- CONCISE FOOTER -->
+<div class="page-foot">PETRONAS VITALS · sealed-input view</div>
 
-<div class="page-foot">
-  All financial numbers: PETRONAS audited FY2025 IFR · MoF Budget 2026 · Moody's (A3 stable) · DOSM.<br>
-  Projections are scenario bands (INTERPRET), not forecasts. Re-sealable: edit the TRIPWIRES array only.<br>
-  <b>PETRONAS·φ VITALS v1.3</b> · zen-pulse · config-driven · XOM-disciplined · unified economics spine · F13 sovereign: ARIF<br>
-  <b>v1.3:</b> unified CSS spine (/_shared/economics.css) · cross-nav verdict badges · agent identity card · shared economics family
-</div>
-
-</div>
+</main>
 
 <script>
 /* ============================================================
    LAYER 0 — DATA AS CONSTITUTION
    sealed: ISO date of last now-value update (XOM discipline)
    ============================================================ */
-const SEAL_BASE="2026-07-24"; // global last-sealed date (F2 re-seal)
+const SEAL_BASE="2026-07-24"; // global last-sealed date
 const STALE_DAYS=90;
 
 const TRIPWIRES=[
@@ -293,6 +282,8 @@ function layerScore(L){
 }
 const S={BODY:layerScore("BODY"),SPINE:layerScore("SPINE"),SOUL:layerScore("SOUL")};
 const PULSE=Math.round((0.40*S.BODY+0.35*S.SPINE+0.25*S.SOUL)*10)/10;
+const HUMAN_LABELS={BODY:"Financial capacity",SPINE:"Operating resilience",SOUL:"Governance & stakeholder balance"};
+const RANKED_TRIPWIRES=TRIPWIRES.slice().sort((a,b)=>score(a)-score(b)||a.id-b.id);
 
 function daysSince(d){return Math.floor((Date.now()-new Date(d).getTime())/86400000);}
 const sealAge=daysSince(SEAL_BASE);
@@ -311,47 +302,27 @@ document.getElementById("vitals-dot").style.background=pv.c;
 function setSub(id,val){const v=verdict(val);const e=document.getElementById(id);e.textContent=val.toFixed(0);e.style.color=v.c;}
 setSub("sb-body",S.BODY);setSub("sb-spine",S.SPINE);setSub("sb-soul",S.SOUL);
 
-/* render lungs */
-const lungMeta={
-  BODY:{icon:"🫀",sub:"can it pay its bills · EVIDENCE-grounded"},
-  SPINE:{icon:"🦴",sub:"is the franchise intact · mixed"},
-  SOUL:{icon:"🕊️",sub:"is the DNA being hollowed · INTERPRET-grounded"}
-};
-const lungsEl=document.getElementById("lungs-el");
-["BODY","SPINE","SOUL"].forEach(L=>{
-  const ls=S[L],lv=verdict(ls);
-  const rows=TRIPWIRES.filter(t=>t.layer===L).map(t=>{
-    const sc=score(t),v=verdict(sc),sd=daysSince(t.sealed);
-    const staleHtml=sd>STALE_DAYS?`<span class="stale-tag stale">STALE ${sd}d</span>`:`<span class="stale-tag fresh">sealed ${t.sealed}</span>`;
-    return `<div class="lung-row">
-      <div class="name">${t.id}. ${t.name} <span class="epi-tag-small ${t.tag}">${t.tag}</span></div>
-      <div class="nums">now <b>${t.now}${t.unit}</b> · trip ${t.dir==="below"?"&lt;":">"}${t.trip}${t.unit} · safe ${t.safe}${t.unit}</div>
-      <div class="mini-bar"><div class="mini-fill" style="width:${sc}%;background:${v.c}"></div></div>
-      <div class="mini-labels"><span style="color:${v.c}">${v.w} · ${sc.toFixed(0)}/100</span><span>${t.note}</span></div>
-      <div class="seal">${staleHtml}</div>
-    </div>`;
-  }).join("");
-  const el=document.createElement("div");
-  el.className="lung";
-  el.innerHTML=`<div class="lung-head">
-      <div class="lung-name">${lungMeta[L].icon} ${L}<small>${lungMeta[L].sub}</small></div>
-      <div class="lung-light" style="background:${lv.c}22;color:${lv.c}">${ls.toFixed(0)}</div>
-    </div><div class="lung-body">${rows}</div>`;
-  el.querySelector(".lung-head").onclick=()=>el.classList.toggle("open");
-  lungsEl.appendChild(el);
+/* render attention list from the three lowest scores */
+const attentionList=document.getElementById("attention-list");
+attentionList.replaceChildren();
+RANKED_TRIPWIRES.slice(0,3).forEach(t=>{
+  const sc=score(t),li=document.createElement("li");
+  li.innerHTML=`<span><span class="attention-layer">${HUMAN_LABELS[t.layer]}</span> · ${t.name}</span><b class="attention-score">${sc.toFixed(0)}/100</b>`;
+  attentionList.appendChild(li);
 });
 
-/* render 9 tripwire grid */
+/* render one ranked 9-tripwire grid */
 const g=document.getElementById("grid9");
-TRIPWIRES.forEach(t=>{
+RANKED_TRIPWIRES.forEach(t=>{
   const sc=score(t),v=verdict(sc),sd=daysSince(t.sealed);
   const tense=sc<=25?"tense":"";
   const staleCls=sd>STALE_DAYS?" stale-cell":"";
   const c=document.createElement("div");
   c.className="tripcell "+tense+staleCls;
   const staleTag=sd>STALE_DAYS?`<span style="color:var(--hold);font-size:8px"> ⚠ STALE ${sd}d</span>`:"";
+  c.dataset.layer=t.layer;
   c.innerHTML=`<div class="idx mono">#${t.id}</div>
-    <div class="title">${t.name}</div><div class="layer">${t.layer} · ${t.tag}${staleTag}</div>
+    <div class="title">${t.name}</div><div class="layer">${HUMAN_LABELS[t.layer]} · ${t.tag}${staleTag}</div>
     <div class="gauge"><div class="gauge-fill" style="width:${sc}%;background:${v.c}"></div><div class="gauge-trip" style="left:2%"></div></div>
     <div class="metrics"><span>${t.now}${t.unit}</span><span>trip ${t.dir==="below"?"&lt;":">"}${t.trip}${t.unit}</span></div>
     <div class="verdict" style="color:${v.c}">${v.w} · ${sc<=25?"⚠ near trip":sc.toFixed(0)+"/100"}</div>
@@ -360,7 +331,7 @@ TRIPWIRES.forEach(t=>{
 });
 
 /* ============================================================
-   QUANTUM PATH (fan chart)
+   NET-CASH SCENARIOS (fan chart)
    ============================================================ */
 const YEARS=[2025,2026,2027,2028,2029,2030,2031];
 const START=82.8, PREF_DEBT=35;
@@ -435,17 +406,35 @@ brent.oninput=live;jkm.oninput=live;
 live();
 </script>
 
-<!-- Agentic reality packet (JSON-LD) -->
+<!-- Structured reality packet -->
 <script type="application/ld+json">
 {
   "@context":"https://arif-fazil.com/schemas/v1/EconomicsContext.jsonld",
   "@type":"InstitutionalVitals",
-  "organ":"PETRONAS·φ VITALS v1.3",
+  "organ":"PETRONAS·φ VITALS",
   "timestamp":"2026-07-24T00:00:00+08:00",
+  "url":"https://arif-fazil.com/vitals/",
+  "canonical_source_url":"https://arif-fazil.com/vitals/",
+  "as_of":"2026-07-24",
+  "seal_date":"2026-07-24",
+  "next_audit":"2026-10-24",
   "epistemic_tier":"INTERPRET",
-  "composite_pulse": PULSE,
-  "sovereign_owner":"Muhammad Arif bin Fazil (F13 SOVEREIGN)",
-  "governance":{"constitutional_gate":"F13_SOVEREIGN_VETO","decision_floor":"888_HOLD"}
+  "composite_pulse":47.5,
+  "display_pulse":48,
+  "verdict":"HOLD",
+  "weights":{"BODY":0.40,"SPINE":0.35,"SOUL":0.25},
+  "indicators":[
+    {"id":1,"name":"FCF after capex & dividend","value":11.6,"unit":"RM B","class":"BODY","epistemic_class":"EVIDENCE","score":77.3,"sealed":"2026-07-24"},
+    {"id":2,"name":"Gearing ratio","value":20.7,"unit":"%","class":"BODY","epistemic_class":"EVIDENCE","score":77.2,"sealed":"2026-07-24"},
+    {"id":3,"name":"CFFO — master variable","value":85.2,"unit":"RM B","class":"BODY","epistemic_class":"EVIDENCE","score":72,"sealed":"2026-07-24"},
+    {"id":4,"name":"Production / reserve replacement","value":355,"unit":"kbpd","class":"SPINE","epistemic_class":"EVIDENCE","score":27.5,"sealed":"2026-07-24"},
+    {"id":5,"name":"Capital Recycling Ratio","value":1.2,"unit":"×","class":"SPINE","epistemic_class":"INTERPRET","score":20,"sealed":"2026-07-24"},
+    {"id":6,"name":"Dividend-to-FCF payout","value":73.4,"unit":"%","class":"SPINE","epistemic_class":"EVIDENCE","score":53.2,"sealed":"2026-07-24"},
+    {"id":7,"name":"Enabler ratio (rightsizing gauge)","value":30,"unit":"%","class":"SOUL","epistemic_class":"INTERPRET","score":33.3,"sealed":"2026-07-24"},
+    {"id":8,"name":"Governance separation index","value":1,"unit":"idx","class":"SOUL","epistemic_class":"INTERPRET","score":33.3,"sealed":"2026-07-24"},
+    {"id":9,"name":"Sovereign extraction gauge","value":70.5,"unit":"% of PAT","class":"SOUL","epistemic_class":"EVIDENCE","score":0,"sealed":"2026-07-24"}
+  ],
+  "source":"sealed tripwire inputs"
 }
 </script>
 
@@ -453,6 +442,8 @@ live();
 <script>
 (function(){
   const API = window.location.origin + '/wealth/gold/api/proxies';
+  const PROXY_TIMEOUT_MS = 8000;
+  let lastVerified = '';
   const fmt = (n,d) => n==null ? '—' : Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
   function chip(label, val, prev, digits, unit, invert){
     if (val == null) return '<span class="ls-chip">'+label+' <b>—</b></span>';
@@ -461,25 +452,35 @@ live();
     const arrow = d>0?'▲':d<0?'▼':'·';
     return '<span class="ls-chip">'+label+' <b>'+fmt(val,digits)+'</b> <span class="'+dir+'">'+arrow+'</span>'+(unit?' <span style="opacity:.6">'+unit+'</span>':'')+'</span>';
   }
+  function markUnavailable(badge, chips){
+    badge.textContent = 'UNAVAILABLE';
+    badge.style.color = '#ef4444';
+    const verified = lastVerified ? ' · last verified ' + lastVerified : '';
+    chips.innerHTML = '<span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative' + verified + '</span>';
+  }
   async function load(){
     const badge = document.getElementById('lsBadge'), chips = document.getElementById('lsChips'), time = document.getElementById('lsTime');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), PROXY_TIMEOUT_MS);
     try {
-      const r = await fetch(API);
+      const r = await fetch(API, {signal: controller.signal});
       if (!r.ok) throw new Error('HTTP '+r.status);
       const p = await r.json();
       const ts = new Date(p.timestamp);
       const stale = (Date.now() - ts.getTime()) > 15*60*1000;
       badge.textContent = stale ? '⚠ STALE' : '● LIVE';
       badge.style.color = stale ? '#f59e0b' : '#22c55e';
-      time.textContent = ts.toLocaleString('en-MY',{timeZone:'Asia/Kuala_Lumpur',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' MYT';
+      lastVerified = ts.toLocaleString('en-MY',{timeZone:'Asia/Kuala_Lumpur',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' MYT';
+      time.textContent = lastVerified;
       chips.innerHTML = chip('Brent · CFFO driver', p.brent, p.brent_prev, 2, '$/bbl')
         + chip('NatGas · LNG proxy', p.natgas, p.natgas_prev, 3, '$/MMBtu')
         + chip('USD/MYR', p.usdmyr, p.usdmyr_prev, 4, 'RM', true)
         + chip('DXY', p.dxy, p.dxy_prev, 2, '')
         + chip('KLCI', p.klci, p.klci_prev, 2, 'pts');
     } catch(e) {
-      badge.textContent = '∅ OFFLINE'; badge.style.color = '#ef4444';
-      chips.innerHTML = '<span class="ls-chip">proxy feed unreachable — sealed readings below remain authoritative</span>';
+      markUnavailable(badge, chips);
+    } finally {
+      clearTimeout(timeoutId);
     }
   }
   load(); setInterval(load, 300000);

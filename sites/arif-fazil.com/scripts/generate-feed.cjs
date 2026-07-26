@@ -3,11 +3,15 @@
  * generate-feed.cjs — MakcikGPT RSS feed generator
  *
  * Renders /feed.xml from the single source of truth: src/data/essays.json.
- * Filters to BM (Bahasa Makcik) makcikgpt pieces (M-series, dest.type=onsite),
- * sorts by date desc, and emits RSS 2.0 with canonical /world/makcikgpt/ URLs.
+ * Filtering and validation are delegated to scripts/lib/makcik-source.cjs
+ * (the shared canonical-subset helper), so this script only knows how to
+ * shape RSS 2.0.
  *
  * Single Source of Truth rule (F4 CLARITY):
- *   - essays.json  → page (React) + feed.xml + llms.txt listings
+ *   - essays.json  → makcik-source.cjs  →  page (React) + feed.xml
+ *                                            + llms.{txt,json}
+ *                                            + sitemap.xml
+ *                                            + makcikgpt-md/index.html
  *
  * Run from site root:  node scripts/generate-feed.cjs
  * Output:              public/feed.xml  (vite copies → dist/ on build)
@@ -15,31 +19,16 @@
 
 const fs = require("fs");
 const path = require("path");
+const {
+  getMakcikSource,
+  SITE_ROOT,
+} = require("./lib/makcik-source.cjs");
 
-const SITE_ROOT = path.resolve(__dirname, "..");
-const ESSAYS_JSON = path.join(SITE_ROOT, "src/data/essays.json");
 const FEED_OUT = path.join(SITE_ROOT, "public/feed.xml");
 
 const SITE_BASE = "https://arif-fazil.com";
 const CANONICAL_LANDING = `${SITE_BASE}/world/makcikgpt/`;
 const SELF_URL = `${SITE_BASE}/feed.xml`;
-
-function loadEssays() {
-  const raw = fs.readFileSync(ESSAYS_JSON, "utf8");
-  return JSON.parse(raw);
-}
-
-function pickMakcikPieces(essays) {
-  // MakcikGPT feed = ONLY BM essays with onsite destinations (per the
-  // 2026-07-21 source-of-truth rule). Medium-only BM pieces (e.g. S7-BM
-  // philosophy essays) are BM-authored but NOT part of the /world/makcikgpt/
-  // canonical surface — they live on Medium and are out of scope here.
-  // As of 2026-07-23 this yields exactly 16 entries (M1#1-6, M2#1-5, M3#1-2,
-  // M4#1-2, M5#1) — all with dest.type === "onsite" and lang === "bm".
-  return essays
-    .filter((e) => e.lang === "bm" && e.dest && e.dest.type === "onsite")
-    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
-}
 
 function toRfc822(dateStr) {
   // YYYY-MM-DD → RFC 822 representing 00:00 MYT on that date.
@@ -108,12 +97,7 @@ ${items.map(buildItem).join("\n")}
 }
 
 function main() {
-  const essays = loadEssays();
-  const pieces = pickMakcikPieces(essays);
-  if (pieces.length === 0) {
-    console.error("ERROR: No BM makcikgpt pieces found in essays.json");
-    process.exit(1);
-  }
+  const { pieces } = getMakcikSource();
   const xml = buildRss(pieces);
   fs.mkdirSync(path.dirname(FEED_OUT), { recursive: true });
   fs.writeFileSync(FEED_OUT, xml, "utf8");

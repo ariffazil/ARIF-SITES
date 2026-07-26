@@ -1,14 +1,14 @@
 {
   "meta": {
-    "date": "2026-07-26",
-    "generated_at": "2026-07-26T06:00:02Z",
+    "date": "2026-07-25",
+    "generated_at": "2026-07-25T06:00:03Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
     "delta_vs_yesterday": {
-      "klci_change": 0.0,
-      "ringgit_change": 0.0,
-      "brent_change": 0.0
+      "klci_change": -4.3900000000001,
+      "ringgit_change": -0.0039999999999995595,
+      "brent_change": -3.1799999999999926
     }
   },
   "bursa": {
@@ -19,9 +19,9 @@
         "desc": "KUALA LUMPUR, <strong>July 20 — Bursa Malaysia’s key index closed lower today as profit-taking in banking heavyweights weighed on the benchmark</strong>, although sentiment across the broader..."
       },
       {
-        "title": "Bursa Malaysia retreats as market digests latest US tariffs | New Straits Times",
-        "url": "https://www.nst.com.my/amp/business/corporate/2026/07/1496350/bursa-malaysia-retreats-market-digests-latest-us-tariffs",
-        "desc": "<strong>Bursa Malaysia closed lower across the board on Friday</strong>, as investors assessed the impact of the United States’ latest tariffs on imports from 60 economies."
+        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
+        "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
       },
       {
         "title": "Calendar",
@@ -29,14 +29,14 @@
         "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. IPO Listing Date · <strong>24 Jul 2026</strong> IPO for ESYS HOLDINGS BERHAD · Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day ·"
       },
       {
-        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
-        "url": "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
-        "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
+        "title": "BERNAMA - Bursa Malaysia Ends Marginally Lower On Mild Profit-Taking",
+        "url": "https://www.bernama.com/en/market/news.php?id=2577853",
+        "desc": "KUALA LUMPUR, July 7 (Bernama) -- Bursa Malaysia ended <strong>marginally lower on Tuesday</strong> as investors engaged in mild profit-taking following the recent rebound in the local market, in line with softer performances across regional markets."
       },
       {
-        "title": "Bursa Malaysia closes lower on profit-taking in banking stocks",
-        "url": "https://focusmalaysia.my/bursa-malaysia-closes-lower-on-profit-taking-in-banking-stocks/",
-        "desc": "BURSA Malaysia’s key index closed lower on Monday as profit-taking in banking heavyweights weighed on the benchmark, although sentiment across the broader market remained steady."
+        "title": "Bursa Malaysia (BURSA) Trading Hours 2026 - Market Status: Open - World Market Hours - MarketHours.io",
+        "url": "https://markethours.io/market/bursa",
+        "desc": "Kuala Lumpur, Malaysia · ... Break12:30 – 14:30 · Afternoon Session14:30 – 16:45 · Next Close · 16:45 · <strong>Wednesday, July 8, 2026</strong> · GMT+8 · Market Overview · Bursa Malaysia is a major stock exchange serving the ..."
       }
     ],
     "most_active": {
@@ -46,16 +46,16 @@
     },
     "top_gainers_search": [
       {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Bursa Malaysia’s KLCI extended gains into Friday afternoon, <strong>hovering near 1,729</strong> and edging toward a two-month high. Sentiment was buo"
+        "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
+        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,704.93 -0.56%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,704.93 -9.66 (-0.56%) As of 12:23:15 PM GMT+8. Mark"
       },
       {
         "title": "Bursa Malaysia Opens Higher As Energy Stocks Lift FBM KLCI",
         "desc": "Among gainers, <strong>Heineken Malaysia</strong> rose 16 sen to RM19.22, Hong Leong Industries gained 16 sen to RM18.16, while KESM Industries and Pe"
       },
       {
-        "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
-        "desc": "FTSE Bursa Malaysia KLCI · <strong>1,704.93 -0.56%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,704.93 -9.66 (-0.56%) As of 12:23:15 PM GMT+8. Mark"
+        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
+        "desc": "Bursa Malaysia’s KLCI extended gains into Friday afternoon, <strong>hovering near 1,729</strong> and edging toward a two-month high. Sentiment was buo"
       }
     ],
     "klci_close": 1701.02,
@@ -63,7 +63,7 @@
     "klci_change_pct": null,
     "klci_quote": {
       "value": 1701.02,
-      "as_of_utc": "2026-07-24T08:59:45+00:00",
+      "as_of_utc": "2026-07-24T08:59:44+00:00",
       "source": "Yahoo Finance (Bursa gate-limited)",
       "source_url": "https://finance.yahoo.com/quote/%5EKLSE",
       "band": "ESTIMATE",
@@ -72,9 +72,9 @@
       "error": null
     },
     "source_urls": [
+      "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
       "https://www.bursamalaysia.com/about_bursa/about_us/calendar",
-      "https://www.malaymail.com/news/money/2026/07/20/bursa-malaysia-closes-lower-as-profit-taking-weighs-on-key-banking-counters/228377",
-      "https://www.nst.com.my/amp/business/corporate/2026/07/1496350/bursa-malaysia-retreats-market-digests-latest-us-tariffs"
+      "https://www.malaymail.com/news/money/2026/07/20/bursa-malaysia-closes-lower-as-profit-taking-weighs-on-key-banking-counters/228377"
     ]
   },
   "ringgit": {
@@ -82,7 +82,7 @@
     "trend": "RINGGIT STRONG — export competitiveness squeeze for PETRONAS foreign revenue",
     "usd_myr_quote": {
       "value": 4.0895,
-      "as_of_utc": "2026-07-26T03:30:30+00:00",
+      "as_of_utc": "2026-07-25T03:30:31+00:00",
       "source": "Yahoo Finance (BNM unreachable from VPS)",
       "source_url": "https://finance.yahoo.com/quote/MYR=X",
       "band": "ESTIMATE",
@@ -118,15 +118,15 @@
         "category": "inflation"
       },
       {
-        "title": "Inflation, consumer prices (annual %) - Malaysia | Data",
-        "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=MY",
-        "desc": "Inflation, consumer prices (annual %) - Malaysia from The World Bank: Data",
+        "title": "Consumer Prices | OpenDOSM",
+        "url": "https://open.dosm.gov.my/dashboard/consumer-prices",
+        "desc": "The Consumer Price Index (CPI) tracks the cost of 13 main groups of goods and services purchased by Malaysians, updated weekly (perishables), monthly (non-perishables), or quarterly (rents). The CPI is used to measure how living costs are changing, making it one of the most important indicators ...",
         "category": "inflation"
       },
       {
-        "title": "Malaysia (MYS) Exports, Imports, and Trade Partners",
-        "url": "https://oec.world/en/profile/country/mys",
-        "desc": "The world&#x27;s leading data visualization tool for international trade data.",
+        "title": "Malaysia Balance of Trade",
+        "url": "https://tradingeconomics.com/malaysia/balance-of-trade",
+        "desc": "<strong>Exports jumped 36.9% yoy to a record high of MYR 182.7 billion</strong>, mainly driven by the manufacturing sector, which soared 40.1%, particularly in electrical and electronic products (46.4%) and petroleum products (70.2%). By destination, exports grew sharply to the US (39.0%), Singapore",
         "category": "trade"
       },
       {
@@ -168,9 +168,9 @@
         "source": "https://eastasiaforum.org/2026/06/29/johor-and-negeri-sembilan-state-elections-are-double-trouble-for-anwar/"
       },
       {
-        "title": "Malaysia’s Upcoming State Elections: Allies Are Rivals Again",
-        "desc": "<strong>The PH coalition argues that its dual role – as a partner in the federal government and a check on the BN-led state government – can provide both accountability and stability</strong>.",
-        "source": "https://thediplomat.com/2026/07/malaysias-upcoming-state-elections-allies-are-rivals-again/"
+        "title": "Malaysia PM's Coalition Routed by Key Partner in Johor State Poll, Testing Federal Ties",
+        "desc": "KUALA LUMPUR, July 12 (Reuters) - <strong>Malaysian Prime Minister ⁠Anwar ⁠Ibrahim&#x27;s coalition suffered a crushing defeat ⁠to a key partner in a regional poll on Saturday</strong>, raising questi",
+        "source": "https://www.usnews.com/news/world/articles/2026-07-11/malaysia-pms-coalition-routed-by-key-partner-in-johor-state-poll-testing-federal-ties"
       }
     ],
     "economy_policy": [
@@ -201,12 +201,12 @@
         "desc": "The minimum wage in Malaysia is <strong>RM8.72/hr ($2.13 USD)</strong> as of 2026. The average gross monthly salary is RM4,000 ($977.04 USD)."
       },
       {
-        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
-        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are $1,931.9 (RM7,898.8), excluding rent</strong>. The estimated monthly costs for a single person are $5"
-      },
-      {
         "title": "Average Salary Malaysia 2026: MYR 3,650 ($770 USD/Month)",
         "desc": "Average salary in Malaysia 2026: <strong>MYR 3,650/month</strong> national (~$770 USD). Sector and role benchmarks, EPF/SOCSO costs, tax brackets."
+      },
+      {
+        "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
+        "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are $1,931.9 (RM7,898.8), excluding rent</strong>. The estimated monthly costs for a single person are $5"
       }
     ],
     "labor": [
@@ -271,8 +271,8 @@
           "desc": "The Federal Open Market Committee approved the following statement for release by a 12 – 0 vote: The Committee decided to maintain the target range for"
         },
         {
-          "title": "REPORT TO CONGRESS Monetary Policy Report July 2026 For use at 11:00 a.m. EDT",
-          "desc": "The Federal Reserve Board of Governors in Washington DC."
+          "title": "A July rate hike from the Fed? The odds are rising",
+          "desc": "The Federal Reserve is still expected by futures traders and prediction markets to maintain the status quo at its July meeting, leaving <strong>interest rates unchanged once again</strong>."
         }
       ]
     },
@@ -295,8 +295,8 @@
           "desc": "Indonesia’s economy expanded by <strong>5.61 percent</strong> in the first quarter of 2026, its fastest growth in more than three years, boosted by a surge in government spending and strong household "
         },
         {
-          "title": "Southeast Asia GDP Growth 2026: Vietnam, Indonesia & the ASEAN Economy | Statistics of the World",
-          "desc": "ASEAN is projected to grow at 4.2-4.5% in 2026 (ADB, World Bank), roughly triple the eurozone&#x27;s 1.1%. <strong>Vietnam leads at 6.3-7.6%, followed by the Philippines at 4.4-5.1% and Indonesia at 5"
+          "title": "A ASEAN+3 Regional Economic Outlook 2026 ASEAN+3 REGIONAL ECONOMIC OUTLOOK 2026",
+          "desc": "Figure 1.8. Growth in Exports of Services for ASEAN+3, ... Source: World Semiconductor Trade Statistics; AMRO staff calculations. Note: The semiconductor cycle is measured as six-month moving average "
         }
       ]
     }

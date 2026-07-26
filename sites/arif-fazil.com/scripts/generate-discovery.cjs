@@ -8,39 +8,31 @@
  *   - public/llms.txt     (links list under "MakcikGPT — Civic Intelligence")
  *   - public/llms.json    (route_roles + related_sites + machine_surfaces)
  *   - public/page.json    (machine-readable site overview)
- *   - public/llms.txt     (also written to root llms.txt for build parity)
  *
  * Single Source of Truth rule (F4 CLARITY):
- *   - essays.json → page (React) + feed.xml + sitemap.xml + llms.{txt,json} + page.json
+ *   - essays.json → scripts/lib/makcik-source.cjs → page (React) + feed.xml
+ *                    + sitemap.xml + llms.{txt,json} + page.json
+ *                    + makcikgpt-md/index.html
  *
- * Filter rule (canonical, 2026-07-21):
- *   exactly 16 entries where lang === "bm" && dest.type === "onsite"
+ * The canonical subset (BM + onsite under /world/makcikgpt/) is owned
+ * exclusively by makcik-source.cjs. This script is a renderer only.
  *
  * Run from site root:  node scripts/generate-discovery.cjs
  * Output:              public/{sitemap.xml, llms.txt, llms.json, page.json}
- *                      (also copies llms.txt → llms.txt, llms.json → llms.json,
- *                       page.json → page.json for vite root-served parity)
+ *                      (also copies llms.json + page.json to the site root
+ *                       for vite root-served parity)
  */
 
 const fs = require("fs");
 const path = require("path");
-
-const SITE_ROOT = path.resolve(__dirname, "..");
-const ESSAYS_JSON = path.join(SITE_ROOT, "src/data/essays.json");
+const {
+  getMakcikSource,
+  SITE_ROOT,
+} = require("./lib/makcik-source.cjs");
 
 const SITE_BASE = "https://arif-fazil.com";
 const CANONICAL_LANDING = `${SITE_BASE}/world/makcikgpt/`;
 const LLMS_TXT_PATH = `${SITE_BASE}/llms.txt`;
-
-function loadEssays() {
-  return JSON.parse(fs.readFileSync(ESSAYS_JSON, "utf8"));
-}
-
-function pickMakcikPieces(essays) {
-  return essays
-    .filter((e) => e.lang === "bm" && e.dest && e.dest.type === "onsite")
-    .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
-}
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
@@ -357,14 +349,7 @@ function writeIfChanged(filePath, content) {
 }
 
 function main() {
-  const essays = loadEssays();
-  const pieces = pickMakcikPieces(essays);
-  if (pieces.length !== 16) {
-    console.error(
-      `ERROR: expected 16 bm+onsite entries, found ${pieces.length}. Source of truth drifted.`,
-    );
-    process.exit(1);
-  }
+  const { pieces } = getMakcikSource();
   console.log(`✓ ${pieces.length} canonical MakcikGPT pieces (bm + onsite)`);
 
   // Write all four files

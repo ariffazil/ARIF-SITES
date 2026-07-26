@@ -63,7 +63,7 @@
         /* The Cockpits */
         .cockpit-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-bottom: 5rem;
         }
@@ -214,6 +214,9 @@
             .bridge-visual { flex-direction: column; gap: 2rem; }
             .bridge-visual::after { display: none; }
         }
+        @media (max-width: 1100px) {
+            .cockpit-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body>
@@ -262,6 +265,12 @@
                 <h3>Capital Judge</h3>
                 <p>Sovereign capital allocation engine. Bridges geological truth to financial consequence via CapitalX.</p>
                 <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="/basins/kinabalu/index.html" class="cockpit-card">
+                <span class="tag">GEOX // LC-001 // NSPW-Corrected</span>
+                <h3>Kinabalu Basin Synthesis</h3>
+                <p>8-stage tectonostratigraphic column · PSCS subduction model (5/8 kill tests) · 4 basement hypotheses · 8-well KL2 dataset · Layang-Tepat-Solisip-Megah prospect verdicts.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Analyze Basin Intelligence</div>
             </a>
         </section>
 

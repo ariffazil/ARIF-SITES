@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Gas — Cognitive Clarity Dashboard · WEALTH</title>
 <meta name="description" content="Sovereign Natural Gas & LNG market synthesis. Thermal equivalence, European storage, and Henry Hub intelligence.">
+<meta name="agent-identity" content="WEALTH · market-answer · decision-synthesis · machine-context">
 <link rel="canonical" href="https://arif-fazil.com/gas/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +14,6 @@
 <link rel="stylesheet" href="/_shared/economics.css">
 <style>
 :root{--accent:#00f0ff;--accent-dim:#006680;--accent-bg:rgba(0,240,255,0.08);--bg:#050b10;--surface:#0a131c;--surface2:#0f1c29}
-.market-map-bar{background:var(--surface);border-bottom:1px solid var(--line)}
-.market-map-inner{display:flex;align-items:center;gap:1rem;padding:0.4rem 1.5rem;overflow-x:auto}
-.market-map-home{font-family:var(--mono);font-weight:700;color:var(--accent);text-decoration:none;font-size:12px;white-space:nowrap}
-.market-map-links{display:flex;gap:6px;flex-wrap:nowrap;margin-left:auto}
-.market-map-link{font-size:10px;color:var(--dim);text-decoration:none;padding:2px 6px;border-radius:3px;white-space:nowrap;font-family:var(--mono)}
-.market-map-link:hover{color:var(--ink);background:var(--surface2)}
-.market-map-link.active{color:var(--accent);font-weight:600}
-.market-map-sep{color:var(--line);margin:0 2px}
 #mainChart{width:100%;height:420px;position:relative}
 .chart-container{width:100%}
 .cone-toggle{font-family:var(--mono);font-size:10px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--dim);cursor:pointer}
@@ -40,6 +33,58 @@ canvas{width:100%!important}
 .pulse-bar{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--gap-lg) var(--gap-xl);margin-bottom:var(--gap-md)}
 .pulse-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gap-md)}
 
+/* Market Answer — consolidated levels/outlook/synthesis-read */
+.market-answer{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--gap-lg) var(--gap-xl);margin-top:var(--gap-md);position:relative;z-index:1}
+.market-answer-header{display:flex;align-items:center;gap:1rem;margin-bottom:var(--gap-md);flex-wrap:wrap}
+.market-answer-label{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
+.market-answer-verdict{font-family:var(--mono);font-size:13px;font-weight:700;padding:3px 10px;border-radius:12px;background:var(--surface2);color:var(--ink);letter-spacing:.5px}
+.market-answer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-md);margin-bottom:var(--gap-md)}
+@media(max-width:900px){.market-answer-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.market-answer-grid{grid-template-columns:1fr}}
+.market-answer-card{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:var(--gap-md);text-align:center}
+.market-answer-card .mac-label{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.market-answer-card .mac-value{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--ink);line-height:1.2}
+.market-answer-card .mac-sub{font-size:10px;color:var(--dim);margin-top:3px;font-family:var(--mono)}
+.market-answer-read{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:var(--gap-sm);line-height:1.5}
+.market-answer-no-setup{margin-top:var(--gap-md);padding:var(--gap-md);background:var(--surface2);border:1px dashed var(--line);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--dim);text-align:center}
+
+/* Signal details — closed-by-default deep detail */
+details.signal-details{margin-top:var(--gap-md);background:var(--surface);border:1px solid var(--line);border-radius:10px;position:relative;z-index:1}
+details.signal-details>summary{padding:var(--gap-md) var(--gap-xl);cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.05em;text-transform:uppercase;user-select:none;list-style:none;display:flex;align-items:center;gap:.5rem}
+details.signal-details>summary::-webkit-details-marker{display:none}
+details.signal-details>summary::before{content:"▸";color:var(--dim);font-size:10px;transition:transform .2s}
+details.signal-details[open]>summary::before{transform:rotate(90deg)}
+details.signal-details .signal-details-body{padding:0 var(--gap-xl) var(--gap-lg)}
+
+/* Scope note — single concise replacement for constellation + agent-id + refusal */
+.scope-note{margin-top:var(--gap-lg);margin-bottom:var(--gap-md);padding:var(--gap-md) var(--gap-xl);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;position:relative;z-index:1}
+.scope-note b{color:var(--ink)}
+.scope-note code{background:var(--surface2);padding:1px 5px;border-radius:3px;color:var(--accent);font-size:10px}
+
+/* Freshness/seal line — first viewport inside market-answer */
+.market-answer-freshness{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:var(--gap-sm);display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.market-answer-freshness .ma-as-of{color:var(--dim)}
+.market-answer-freshness .ma-seal{color:var(--accent);font-weight:600;letter-spacing:.04em}
+
+/* "What is driving it" — one asset-specific institutional transmission row (max 3) */
+.market-answer-driver{margin-top:var(--gap-md);padding:var(--gap-sm) var(--gap-md);background:var(--surface2);border:1px solid var(--line);border-radius:8px}
+.market-answer-driver-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.market-answer-driver-row{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;color:var(--ink);flex-wrap:wrap}
+.market-answer-driver-row .driver-key{color:var(--faint)}
+.market-answer-driver-row .driver-arrow{color:var(--accent);font-weight:700}
+.market-answer-driver-row .driver-target{color:var(--ink);font-weight:600}
+.market-answer-driver-row .driver-note{color:var(--faint);font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin-left:auto}
+
+/* Direction stamp — every direction label must carry a timeframe */
+.direction-stamp{font-weight:600;font-family:var(--mono);letter-spacing:.04em}
+.direction-stamp.tf-conflict{color:var(--sabar)}
+
+/* Reconciliation line — appears only when 1H/4H/1D disagree */
+.market-answer-reconcile{font-family:var(--mono);font-size:11px;color:var(--sabar);margin-top:var(--gap-xs);padding:6px 10px;background:rgba(227,179,65,.08);border-left:2px solid var(--sabar);border-radius:4px}
+
+/* Data unavailable strip — visible when no snapshot within 10s */
+.market-answer-unavailable{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:var(--gap-sm);padding:6px 10px;background:var(--surface2);border:1px dashed var(--line);border-radius:4px;text-align:center}
+
 </style>
 </head>
 <body class="fam-gas">
@@ -55,19 +100,6 @@ canvas{width:100%!important}
     <a href="/gold/"><span class="badge" style="background:var(--seal)"></span>GOLD</a>
   </div>
 </div>
-<div class="cmd-bar">
-  <span class="cmd-organ">PETRONAS-GAS-SENSE</span><span class="cmd-sep">·</span>
-  <span class="cmd-tier">TIER: READ-ONLY</span><span class="cmd-sep">·</span>
-  <span>REPORTS-TO: SENSE111</span><span class="cmd-sep">·</span>
-  <span>CEILING: 777_FORGE</span>
-  <span style="margin-left:auto"></span>
-  <span class="cmd-fresh"><span class="dot"></span>FRESH · sealed 2026-07-24 · next audit 2026-10-24</span>
-  <span class="cmd-sep">·</span>
-  <span class="cmd-chain"><span>←</span> SENSE111 <span>→</span> A-FORGE 777 <span>→</span> 888_JUDGE</span>
-</div>
-
-
-
 
 <!-- original nav replaced by zen-pulse -->
 
@@ -105,15 +137,13 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 }
 </script>
 
-<div class="shell">
+<main class="shell">
 
   <!-- Macro Ticker — DXY/US10Y/VIX live from /api/macro -->
   <div class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
     <div class="macro-item"><span class="macro-label">DXY</span><span class="macro-value" id="mcr-dxy">—</span></div>
     <div class="macro-item"><span class="macro-label">US10Y</span><span class="macro-value" id="mcr-us10y">—</span></div>
     <div class="macro-item"><span class="macro-label">VIX</span><span class="macro-value" id="mcr-vix">—</span></div>
-    <div class="macro-item"><span class="macro-label">Silver</span><span class="macro-value" id="mcr-silver">—</span></div>
-    <div class="macro-item"><span class="macro-label">GSR</span><span class="macro-value" id="mcr-gsr">—</span></div>
     <div class="macro-item" style="margin-left:auto"><span class="macro-label" id="mcr-time">—</span></div>
   </div>
 
@@ -137,9 +167,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       </div>
 
       <!-- Primary world driver -->
-      <div class="pulse-driver" id="pulseDriver">
-        <strong>USD weakening</strong> on soft CPI print — safe-haven flows intact amid Middle East escalation
-      </div>
+      <div class="pulse-driver" id="pulseDriver">—</div>
 
       <!-- Key levels -->
       <div class="pulse-levels" id="pulseLevels">
@@ -164,7 +192,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <!-- Timestamp -->
       <div class="pulse-meta">
         <span class="live-dot"></span>
-        <span id="pulseTimestamp">Loading live data...</span>
+        <span id="pulseTimestamp">Data unavailable</span>
       </div>
 
     </div>
@@ -201,32 +229,120 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <div class="apex-card-sub" id="apexDirection">—</div>
         </div>
       </div>
-      <div class="apex-primitives">
-        <span class="apex-prim" id="apexA">Structure: —</span>
-        <span class="apex-prim" id="apexP">Strength: —</span>
-        <span class="apex-prim" id="apexE">Signal: —</span>
-        <span class="apex-prim" id="apexX">Stability: —</span>
-        <span class="apex-prim" id="apexPhi">Agreement: —</span>
-        <span class="apex-prim" id="apexMom">Momentum: —</span>
-        <span class="apex-prim" id="apexVolTrend">Volume: —</span>
-      </div>
+      <details class="signal-details" style="margin-top:0;background:transparent;border:0">
+        <summary>APEX Primitives</summary>
+        <div class="signal-details-body">
+          <div class="apex-primitives">
+            <span class="apex-prim" id="apexA">Structure: —</span>
+            <span class="apex-prim" id="apexP">Strength: —</span>
+            <span class="apex-prim" id="apexE">Signal: —</span>
+            <span class="apex-prim" id="apexX">Stability: —</span>
+            <span class="apex-prim" id="apexPhi">Agreement: —</span>
+            <span class="apex-prim" id="apexMom">Momentum: —</span>
+            <span class="apex-prim" id="apexVolTrend">Volume: —</span>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
        2. MAIN CHART — Clean candlesticks, minimal overlays
        ═══════════════════════════════════════════════════════════ -->
-  <section class="events-panel" aria-label="Upcoming economic events">
-    <div class="events-inner">
-      <div class="events-header">
-        <span class="events-title">📅 This Week — High Impact Events</span>
-        <span class="events-source">forexfactory.com</span>
+  <details class="signal-details">
+    <summary>📅 This Week — High Impact Events</summary>
+    <div class="signal-details-body">
+      <section class="events-panel" aria-label="Upcoming economic events" style="background:transparent;border:0;padding:0">
+        <div class="events-inner">
+          <div class="events-header">
+            <span class="events-source">forexfactory.com</span>
+          </div>
+          <div class="events-list" id="eventsList">
+            <div class="events-empty">—</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </details>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2a. MARKET ANSWER — the answer before the chart
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="market-answer" aria-label="Market answer" data-agent-role="market-answer">
+    <div class="market-answer-header">
+      <span class="market-answer-label">🧭 MARKET ANSWER · NATURAL GAS</span>
+      <span class="market-answer-verdict" id="maVerdict">—</span>
+      <span class="apex-verdict-meta" style="font-family:var(--mono);font-size:10px;color:var(--faint)">INTERPRETATION · model-generated · not trading advice</span>
+    </div>
+    <div class="market-answer-freshness">
+      <span class="ma-as-of">as of <span id="maAsOf">—</span></span>
+      <span class="ma-seal">sealed 2026-07-24 · next audit 2026-10-24</span>
+    </div>
+    <div class="market-answer-grid">
+      <div class="market-answer-card">
+        <div class="mac-label">Current</div>
+        <div class="mac-value" id="predCurrent">—</div>
+        <div class="mac-sub" id="predCurrentSub">—</div>
       </div>
-      <div class="events-list" id="eventsList">
-        <div class="events-loading">Loading events...</div>
+      <div class="market-answer-card">
+        <div class="mac-label">30-Day Cone</div>
+        <div class="mac-value" id="predRange">—</div>
+        <div class="mac-sub" id="predRangeSub">p25 – p75 projection</div>
+      </div>
+      <div class="market-answer-card">
+        <div class="mac-label">Bias</div>
+        <div class="mac-value direction-stamp" id="predBias">—</div>
+        <div class="mac-sub" id="predBiasSub">—</div>
+      </div>
+      <div class="market-answer-card">
+        <div class="mac-label">Key Level</div>
+        <div class="mac-value" id="predKey">—</div>
+        <div class="mac-sub" id="predKeySub">—</div>
       </div>
     </div>
+    <div id="predScenarios" style="margin-top:10px"></div>
+    <div class="market-answer-read" id="predRead">—</div>
+    <!-- Reconciliation line — appears only when 1H/4H/1D disagree -->
+    <div class="market-answer-reconcile" id="maReconcile" hidden></div>
+    <!-- Data unavailable strip — visible when no snapshot within 10s -->
+    <div class="market-answer-unavailable" id="maUnavailable" hidden>Data unavailable · last verified <span id="maLastVerified">—</span></div>
+    <div class="macro-ticker" style="margin-top:var(--gap-sm);border-radius:8px;border-left:0;border-right:0;padding:0.35rem 0">
+      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value" id="mt-s1">—</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value" id="mt-s2">—</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value" id="mt-r1">—</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value" id="mt-r2">—</span></div><div class="macro-item"><span class="macro-label">MA50</span><span class="macro-value" id="mt-ma50">—</span></div><div class="macro-item"><span class="macro-label">MA200</span><span class="macro-value" id="mt-ma200">—</span></div>
+    </div>
+    <!-- "What is driving it" — one asset-specific institutional transmission row (INTERPRETATION) -->
+    <div class="market-answer-driver">
+      <div class="market-answer-driver-label">What is driving it</div>
+      <div class="market-answer-driver-row">
+        <span class="driver-key">JKM / LNG spread</span>
+        <span class="driver-arrow">→</span>
+        <span class="driver-target">PETRONAS LNG margin</span>
+        <span class="driver-note">INTERPRETATION</span>
+      </div>
+    </div>
+    <!-- Trade ladder — shown only when direction is non-FLAT AND R:R ≥ 1.0 -->
+    <div id="tradeLadder" class="trade-quality" style="margin-top:var(--gap-md);background:var(--surface2);border:1px solid var(--line);border-radius:8px" hidden>
+      <div class="trade-quality-header">
+        <span class="trade-quality-title">Trade Ladder</span>
+        <span class="trade-quality-verdict" id="tradeVerdict">—</span>
+      </div>
+      <div class="trade-metrics">
+        <div class="trade-metric">
+          <div class="trade-metric-label">R:R Ratio</div>
+          <div class="trade-metric-value" id="tradeRR">—</div>
+        </div>
+        <div class="trade-metric">
+          <div class="trade-metric-label">Confluence</div>
+          <div class="trade-metric-value" id="tradeConf">—</div>
+        </div>
+        <div class="trade-metric">
+          <div class="trade-metric-label">Confidence</div>
+          <div class="trade-metric-value" id="tradeConfLvl">—</div>
+        </div>
+      </div>
+    </div>
+    <div id="tradeNoSetup" class="market-answer-no-setup">SABAR · No active setup</div>
   </section>
+
   <section class="chart-section" aria-label="Natural Gas chart">
     <div class="chart-header">
       <div style="display:flex; align-items:center; gap:1.5rem;">
@@ -259,43 +375,10 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
        3. DUAL SIGNAL COLUMNS
        Left: Technical Forge | Right: World Context
        ═══════════════════════════════════════════════════════════ -->
-  <div class="apex-panel" style="margin-top:var(--gap-md)">
-  <div class="apex-inner">
-    <div class="apex-header">
-      <span class="apex-title">🔮 PREDICTION ENGINE · NATURAL GAS</span>
-      <span class="apex-verdict-meta">INTERPRET · model-generated · not trading advice</span>
-    </div>
-    <div class="apex-grid">
-      <div class="apex-card">
-        <div class="apex-card-label">Current</div>
-        <div class="apex-card-value" style="font-size:22px" id="predCurrent">—</div>
-        <div class="apex-card-sub" id="predCurrentSub">live</div>
-      </div>
-      <div class="apex-card">
-        <div class="apex-card-label">30-Day Cone</div>
-        <div class="apex-card-value" style="font-size:22px" id="predRange">—</div>
-        <div class="apex-card-sub" id="predRangeSub">p25 – p75 projection</div>
-      </div>
-      <div class="apex-card">
-        <div class="apex-card-label">Bias</div>
-        <div class="apex-card-value" style="font-size:22px" id="predBias">—</div>
-        <div class="apex-card-sub" id="predBiasSub">confluence</div>
-      </div>
-      <div class="apex-card">
-        <div class="apex-card-label">Key Level</div>
-        <div class="apex-card-value" style="font-size:22px" id="predKey">—</div>
-        <div class="apex-card-sub" id="predKeySub">Support 1 · daily</div>
-      </div>
-    </div>
-    <div id="predScenarios" style="margin-top:10px"></div>
-    <div class="apex-card-sub" id="predRead" style="margin-top:8px;line-height:1.5"></div>
-    <div class="macro-ticker" style="margin-top:0;border-radius:8px">
-      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value" id="mt-s1">—</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value" id="mt-s2">—</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value" id="mt-r1">—</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value" id="mt-r2">—</span></div><div class="macro-item"><span class="macro-label">50-day MA</span><span class="macro-value" id="mt-ma50">—</span></div><div class="macro-item"><span class="macro-label">200-day MA</span><span class="macro-value" id="mt-ma200">—</span></div>
-    </div>
-  </div>
-</div>
-
-<section class="signals-grid" aria-label="Trading signals">
+  <details class="signal-details">
+    <summary>⚒️ Technical Forge · 🌍 World Context</summary>
+    <div class="signal-details-body">
+      <section class="signals-grid" aria-label="Trading signals">
 
     <!-- ── LEFT: Technical Forge ── -->
     <div class="signal-column">
@@ -310,7 +393,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <span class="signal-score" id="tfTrendScore">—</span>
         </div>
         <div class="signal-card-body" id="tfTrendBody">
-          Loading live analysis...
+          —
         </div>
         <div class="signal-card-footer">
           <span class="signal-confidence" id="tfTrendConf">—</span>
@@ -325,7 +408,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <span class="signal-score" id="tfMomScore">—</span>
         </div>
         <div class="signal-card-body" id="tfMomBody">
-          Loading live analysis...
+          —
         </div>
         <div class="signal-card-footer">
           <span class="signal-confidence" id="tfMomConf">—</span>
@@ -340,7 +423,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <span class="signal-score" id="tfStructScore">—</span>
         </div>
         <div class="signal-card-body" id="tfStructBody">
-          Loading live analysis...
+          —
         </div>
         <div class="signal-card-footer">
           <span class="signal-confidence" id="tfStructConf">—</span>
@@ -355,33 +438,11 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
           <span class="signal-score" id="tfVolScore">—</span>
         </div>
         <div class="signal-card-body" id="tfVolBody">
-          Loading live analysis...
+          —
         </div>
         <div class="signal-card-footer">
           <span class="signal-confidence" id="tfVolConf">—</span>
           <span class="confidence-tier" id="tfVolTier">—</span>
-        </div>
-      </div>
-
-      <!-- Trade quality -->
-      <div class="trade-quality">
-        <div class="trade-quality-header">
-          <span class="trade-quality-title">Trade Quality</span>
-          <span class="trade-quality-verdict marginal">Marginal R:R</span>
-        </div>
-        <div class="trade-metrics">
-          <div class="trade-metric">
-            <div class="trade-metric-label">R:R Ratio</div>
-            <div class="trade-metric-value marginal">1:1.4</div>
-          </div>
-          <div class="trade-metric">
-            <div class="trade-metric-label">Confluence</div>
-            <div class="trade-metric-value">72%</div>
-          </div>
-          <div class="trade-metric">
-            <div class="trade-metric-label">Confidence</div>
-            <div class="trade-metric-value">Medium</div>
-          </div>
         </div>
       </div>
     </div>
@@ -397,16 +458,16 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">💱 FX & Rates (Pillar I)</span>
-          <span class="world-driver-arrow up">▲</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          <strong>Global:</strong> Live DXY and rates from snapshot.<br>
-          <strong>Malaysia:</strong> USD/MYR <span id="mcr-usmyr">—</span> (live) / BNM OPR 3.00% (sealed).<br>
-          <span style="color:var(--accent);">Transmission:</span> Bintulu LNG export cargoes billed in USD provide continuous trade surplus & foreign exchange inflows.
+          <strong>Global:</strong> DXY <span id="wf-dxy">—</span> · US10Y <span id="wf-us10y">—</span> (live).<br>
+          <strong>Malaysia:</strong> USD/MYR <span id="mcr-usmyr">—</span> (live).<br>
+          <span style="color:var(--accent);">Transmission:</span> LNG export cargoes billed in USD provide continuous trade surplus & foreign exchange inflows.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: High</span>
-          <span class="confidence-tier t3">Tier 3</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-1">—</span></span>
+          <span class="confidence-tier" id="wf-tier-1">—</span>
         </div>
       </div>
 
@@ -414,16 +475,16 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">📈 Inflation & Purchasing Power (Pillar II)</span>
-          <span class="world-driver-arrow up">▲</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          <strong>Global:</strong> US CPI 2.9% YoY.<br>
-          <strong>Malaysia:</strong> Headline CPI 1.9% YoY.<br>
-          <span style="color:var(--accent);">Transmission:</span> Regulated domestic natural gas tariffs buffer domestic electricity & manufacturing costs against international spot volatility.
+          <strong>Global:</strong> US CPI YoY <span id="wf-cpi-us">—</span>.<br>
+          <strong>Malaysia:</strong> Headline CPI YoY <span id="wf-cpi-my">—</span>.<br>
+          <span style="color:var(--accent);">Transmission:</span> Regulated domestic gas tariffs buffer domestic electricity & manufacturing costs against international spot volatility.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: High</span>
-          <span class="confidence-tier t3">Tier 3</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-2">—</span></span>
+          <span class="confidence-tier" id="wf-tier-2">—</span>
         </div>
       </div>
 
@@ -431,16 +492,16 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">👷 Unemployment & Labor (Pillar III)</span>
-          <span class="world-driver-arrow flat">●</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          <strong>Global:</strong> US Unemployment 4.1%.<br>
-          <strong>Malaysia:</strong> Unemployment 3.3% (LFPR 70.3%).<br>
-          <span style="color:var(--accent);">Transmission:</span> Reliable gas-fired power grid sustains high-tech manufacturing and data center labor growth in Penang and Johor.
+          <strong>Global:</strong> US Unemployment <span id="wf-unemp-us">—</span>.<br>
+          <strong>Malaysia:</strong> Unemployment <span id="wf-unemp-my">—</span>.<br>
+          <span style="color:var(--accent);">Transmission:</span> Gas-fired power grid sustains manufacturing and data center labor growth.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: High</span>
-          <span class="confidence-tier t3">Tier 3</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-3">—</span></span>
+          <span class="confidence-tier" id="wf-tier-3">—</span>
         </div>
       </div>
 
@@ -448,14 +509,15 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">⚡ JKM & Asian LNG Premium</span>
-          <span class="world-driver-arrow up">▲</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          JKM elevated vs Henry Hub — Asia spot LNG premium persists. <strong>Bullish for Malaysian LNG</strong> — positive PETRONAS export revenue effect.
+          JKM <span id="wf-jkm">—</span> vs Henry Hub — Asia spot LNG premium trajectory.<br>
+          <span style="color:var(--accent);">Transmission:</span> Spread governs Malaysian LNG export realised pricing.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Moderate</span>
-          <span class="confidence-tier t2">Tier 2</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-4">—</span></span>
+          <span class="confidence-tier" id="wf-tier-4">—</span>
         </div>
       </div>
 
@@ -463,14 +525,15 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">Malaysia / PETRONAS Exposure</span>
-          <span class="world-driver-arrow up">▲</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          Malaysia LNG exports benefit from Asia premium over Henry Hub. Bintulu LNG capacity stable. Domestic gas subsidy exposure manageable at current prices. <strong>Positive for fiscal position</strong>.
+          Malaysia LNG export trajectory <span id="wf-lng">—</span>. Bintulu capacity <span id="wf-bintulu">—</span>. Domestic gas subsidy exposure <span id="wf-subsidy">—</span>.<br>
+          <span style="color:var(--accent);">Transmission:</span> Posture shapes sovereign fiscal contribution.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Low</span>
-          <span class="confidence-tier t1">Tier 1</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-5">—</span></span>
+          <span class="confidence-tier" id="wf-tier-5">—</span>
         </div>
       </div>
 
@@ -478,19 +541,22 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <div class="world-driver-card">
         <div class="world-driver-header">
           <span class="world-driver-category">Physical Supply / GEOX</span>
-          <span class="world-driver-arrow flat">●</span>
+          <span class="world-driver-arrow">—</span>
         </div>
         <div class="world-driver-impact">
-          No major LNG facility outage. Malaysia production stable. Global LNG capacity additions on track. <strong>Neutral</strong> — GEOX monitors upstream constraints and infrastructure risk.
+          LNG facility status <span id="wf-facility">—</span>. Malaysia production <span id="wf-myprod">—</span>. Global capacity additions <span id="wf-add">—</span>.<br>
+          <span style="color:var(--accent);">Transmission:</span> GEOX monitors upstream constraints and infrastructure risk.
         </div>
         <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: Low</span>
-          <span class="confidence-tier t1">Tier 1</span>
+          <span class="signal-confidence">Confidence: <span id="wf-conf-6">—</span></span>
+          <span class="confidence-tier" id="wf-tier-6">—</span>
         </div>
       </div>
     </div>
 
-  </section>
+    </section>
+    </div>
+  </details>
 
   <!-- ═══════════════════════════════════════════════════════════
        4. SYNTHESIS & GATE BAND — Human decides
@@ -500,23 +566,28 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
        RASA DUNIA — Physical World Substrate
        F2/F9/F10 governed · no qualia inferred
        ═══════════════════════════════════════════════════════════ -->
-  <section class="shell" aria-label="Physical substrate" style="padding:0 var(--gap-md,1rem);">
-    <div id="rasaDuniaMount"></div>
-  </section>
-<section class="synthesis-band" aria-label="Synthesis and decision gate">
+  <details class="signal-details">
+    <summary>🌍 Physical Substrate · Rasa Dunia</summary>
+    <div class="signal-details-body">
+      <section class="shell" aria-label="Physical substrate" style="padding:0">
+        <div id="rasaDuniaMount"></div>
+      </section>
+    </div>
+  </details>
+<section class="synthesis-band" aria-label="Synthesis and decision gate" data-agent-role="decision-synthesis">
     <div class="synthesis-header">
       <h2 class="synthesis-title">Synthesis & <em>Decision Gate</em></h2>
       <div class="confluence-meter">
         <span class="confluence-label">Confluence</span>
         <div class="confluence-bar-track">
-          <div class="confluence-bar-fill high" id="confluenceBar" style="width:72%"></div>
+          <div class="confluence-bar-fill" id="confluenceBar" style="width:0%"></div>
         </div>
-        <span class="confluence-score" id="confluenceScore">72%</span>
+        <span class="confluence-score" id="confluenceScore">—</span>
       </div>
     </div>
 
     <div class="synthesis-verdict" id="synthesisVerdict">
-      <strong>Loading signal analysis...</strong>
+      <strong>—</strong>
     </div>
 
     <!-- Action stance (non-binding) -->
@@ -533,10 +604,10 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       <span class="stance-note">Non-binding stance indicators — human decides</span>
     </div>
 
-    <!-- F13 Sovereign gate -->
+    <!-- Sovereign gate -->
     <div class="sovereign-gate">
       <div class="sovereign-gate-icon">⚖️</div>
-      <div class="sovereign-gate-text">Human Sovereign Veto Active — F13</div>
+      <div class="sovereign-gate-text">Human Sovereign Veto Active</div>
       <div class="sovereign-gate-sub">
         This is evidence-gated synthesis from the WEALTH organ. All signals are probabilistic, not deterministic.
         No trade is executed without human confirmation. Your judgment is the final floor.
@@ -545,59 +616,13 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   </section>
 
   
-  <!-- CONSTELLATION BRIDGE -->
-  <section id="constellation" style="margin-top: 4rem; margin-bottom: 6rem;">
-    <div class="section-label" data-n="03">Constellation</div>
-    <div class="bridge-section">
-      <h2 class="bridge-title">One federation. Five truths.</h2>
-      <p class="bridge-subtitle">WEALTH computes · GEOX witnesses · WELL protects · arifOS governs · ARIF decides</p>
+  <!-- CONSTELLATION REMOVED — replaced by single scope note below (between synthesis and footer) -->
 
-      <div class="bridge-nodes">
-        <div class="bridge-node" style="border-color: var(--accent-dim);">
-          <div class="bridge-node-tag">Capital Intelligence</div>
-          <div class="bridge-node-name wealth">WEALTH</div>
-          <div class="bridge-node-desc">Macro · Markets · Diagnosis · Scenario</div>
-        </div>
 
-        <div class="bridge-arrow">→</div>
-
-        <a href="https://geox.arif-fazil.com" class="bridge-node" target="_blank" rel="noopener">
-          <div class="bridge-node-tag">Earth Intelligence</div>
-          <div class="bridge-node-name geox">GEOX</div>
-          <div class="bridge-node-desc">Physical supply · Basins · Energy evidence</div>
-        </a>
-
-        <div class="bridge-arrow">→</div>
-
-        <div class="bridge-node" style="border-color: var(--amber);">
-          <div class="bridge-node-tag">Human &amp; System Vitality</div>
-          <div class="bridge-node-name" style="color: var(--amber);">WELL</div>
-          <div class="bridge-node-desc">Readiness · Consequence · Dignity</div>
-        </div>
-
-        <div class="bridge-arrow">→</div>
-
-        <a href="https://mcp.arif-fazil.com" class="bridge-node" target="_blank" rel="noopener">
-          <div class="bridge-node-tag">Constitutional Governance</div>
-          <div class="bridge-node-name arifos">arifOS</div>
-          <div class="bridge-node-desc">F1–F13 · 888_HOLD · 999_VAULT</div>
-        </a>
-
-        <div class="bridge-arrow">→</div>
-
-        <div class="bridge-node" style="border-color: var(--gold-bright); background: rgba(240,200,64,0.06);">
-          <div class="bridge-node-tag">Sovereign Decision</div>
-          <div class="bridge-node-name" style="color: var(--gold-bright);">ARIF</div>
-          <div class="bridge-node-desc">F13 · Final veto · Human judgment</div>
-        </div>
-      </div>
-
-      <div class="bridge-causal">
-        WEALTH computes &amp; diagnoses · GEOX witnesses physical reality · WELL protects human capacity · arifOS governs admissibility · ARIF decides
-      </div>
-    </div>
-  </section>
-
+  <!-- SCOPE NOTE — replaces constellation + agent-id + refusal surface; one concise block -->
+  <div class="scope-note" data-agent-role="machine-context">
+    <p><b>SCOPE</b> · This page reads market data only. It does not trade, allocate, or signal. All metrics carry epistemic tags (<code>OBS</code> · <code>DER</code> · <code>INT</code>) and reflect the asset's snapshot at observation time. Human decides. The constitutional floors govern admissibility via <code>arifOS</code>; physical reality via <code>GEOX</code>; human capacity via <code>WELL</code>. The default verdict is HOLD — no SEAL means no action.</p>
+  </div>
 
   <!-- ═══════════════════════════════════════════════════════════
        5. FOOTER — Compact federation nav + seal
@@ -606,7 +631,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     <div class="footer-brand-cluster">
       <a href="/" class="footer-brand">WEALTH</a>
       <span class="footer-sep">/</span>
-      <span class="footer-page">Gold Dashboard</span>
+      <span class="footer-page">Gas Dashboard</span>
     </div>
 
     <div class="footer-federation">
@@ -623,7 +648,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     </div>
   </footer>
 
-</div>
+</main>
 
 <!-- ═══════════════════════════════════════════════════════════════
      JAVASCRIPT — Live chart, dynamic signals, interactive controls
@@ -649,7 +674,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   // ── Plain-language translator for arifOS judge reasons ──
   function translateJudge(reason) {
-    if (!reason) return 'Tunggu isyarat lebih jelas sebelum masuk.';
+    if (!reason) return 'Wait for clearer signal before entry.';
     let txt = reason
       .replace(/F1:[^;]*;?/g, '')
       .replace(/F2:[^;]*;?/g, '')
@@ -664,32 +689,85 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     // If everything was stripped, provide plain summary
     if (!txt || txt.length < 10) {
       // Extract key meaning from verdict
-      if (reason.includes('SABAR')) return 'Market belum jelas. Tunggu trend + isyarat aligned sebelum masuk.';
-      if (reason.includes('HOLD')) return 'Ada risiko yang perlu diselesaikan dulu. Jangan masuk lagi.';
-      return 'Semak syarat entry sebelum buat keputusan.';
+      if (reason.includes('SABAR')) return 'Market not yet clear. Wait for trend + signal to align before entry.';
+      if (reason.includes('HOLD')) return 'Risk unresolved. Do not enter yet.';
+      return 'Check entry conditions before deciding.';
     }
     
     // Translate remaining technical terms
     txt = txt
-      .replace(/insufficient reward/g, 'potensi untung tak berbaloi')
-      .replace(/irreversible risk/g, 'risiko tak boleh undur')
-      .replace(/no evidence basis/g, 'tiada bukti cukup')
-      .replace(/no confluence factors/g, 'isyarat tak sehala')
-      .replace(/Confidence capped/g, 'keyakinan terhad')
-      .replace(/not enough confluence/g, 'isyarat bercampur');
+      .replace(/insufficient reward/g, 'reward does not justify risk')
+      .replace(/irreversible risk/g, 'irreversible risk')
+      .replace(/no evidence basis/g, 'insufficient evidence')
+      .replace(/no confluence factors/g, 'signals not aligned')
+      .replace(/Confidence capped/g, 'confidence capped')
+      .replace(/not enough confluence/g, 'mixed signals');
     
     return txt;
   }
   const $ = id => document.getElementById(id);
   const fmt = (n, d=2) => Number(n||0).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
 
-  // ── API fetch with error handling ──
+  // ── Update freshness line + data-unavailable strip + reconciliation line ──
+  let firstViewportRendered = false;
+  function updateFreshness(snapshot) {
+    if (!snapshot || !snapshot.observed_at) return;
+    const ts = new Date(snapshot.observed_at);
+    const hhmm = ts.toLocaleTimeString('en-MY', { timeZone: CONFIG.TIMEZONE, hour: '2-digit', minute: '2-digit', hour12: false });
+    const asOfEl = $('maAsOf');
+    if (asOfEl) asOfEl.textContent = hhmm + ' MYT';
+    const lastEl = $('maLastVerified');
+    if (lastEl) lastEl.textContent = hhmm + ' MYT';
+    const unavail = $('maUnavailable');
+    if (unavail) unavail.hidden = true;
+    firstViewportRendered = true;
+  }
+
+  // ── Reconciliation: when 1H/4H/1D disagree, surface the conflict ──
+  function updateReconciliation(snapshot) {
+    const el = $('maReconcile');
+    if (!el) return;
+    el.hidden = true;
+    if (!snapshot || !snapshot.levels) return;
+    const levels = snapshot.levels;
+    const emaTrend = (snapshot.ticker && snapshot.ticker.emaTrend) || 'NEUTRAL';
+    const s1 = (levels.support || [])[0];
+    const r1 = (levels.resistance || [])[0];
+    const price = (snapshot.ticker && snapshot.ticker.price) || 0;
+    if (emaTrend === 'BEARISH' && price && s1 && r1 && price > r1) {
+      el.textContent = 'Intraday bounce inside daily downtrend · direction may flip on retest of S1';
+      el.hidden = false;
+    } else if (emaTrend === 'BULLISH' && price && s1 && r1 && price < s1) {
+      el.textContent = 'Intraday dip inside daily uptrend · direction may flip on retest of R1';
+      el.hidden = false;
+    }
+  }
+
+  // ── 10s first-viewport watchdog ──
+  let firstViewportWatchdog = null;
+  function armFirstViewportWatchdog() {
+    if (firstViewportWatchdog) clearTimeout(firstViewportWatchdog);
+    firstViewportWatchdog = setTimeout(() => {
+      if (!firstViewportRendered) {
+        const ts = $('pulseTimestamp');
+        if (ts) ts.textContent = 'Data unavailable';
+        const unavail = $('maUnavailable');
+        if (unavail) unavail.hidden = false;
+      }
+    }, 10000);
+  }
+
+  // ── API fetch with 8s timeout + error handling ──
   async function apiFetch(endpoint) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
     try {
-      const resp = await fetch(CONFIG.API_BASE + endpoint);
+      const resp = await fetch(CONFIG.API_BASE + endpoint, { signal: controller.signal });
+      clearTimeout(timeout);
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       return await resp.json();
     } catch (err) {
+      clearTimeout(timeout);
       console.warn(`[Gas] ${endpoint} failed:`, err.message);
       return null;
     }
@@ -888,6 +966,9 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     const arrows = { BULLISH: '↑', BEARISH: '↓', NEUTRAL: '→' };
     const L = (fc.scenarios || []).find(s => s.side === 'LONG');
     const S = (fc.scenarios || []).find(s => s.side === 'SHORT');
+    // Forecast evidence is daily (/forecast engine math) — always stamp 1D,
+    // independent of the chart timeframe (currentTF).
+    const tf = '1D';
 
     if ($('predCurrent')) {
       $('predCurrent').textContent = '$' + fmt(b.close);
@@ -895,19 +976,40 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         ? 'engine · ' + fc.generated_at.slice(11, 16) + ' MYT' : 'engine';
       $('predRange').textContent = '$' + fmt(fc.cone.p25[end]) + ' – $' + fmt(fc.cone.p75[end]);
       $('predRangeSub').textContent = currentHorizon + '-day cone · p25–p75';
-      $('predBias').textContent = (fc.bias || '—') + ' ' + (arrows[fc.bias] || '');
+      $('predBias').textContent = (fc.bias || '—') + ' · ' + tf;
       $('predBias').style.color = fc.bias === 'BULLISH' ? '#22c55e' : (fc.bias === 'BEARISH' ? '#ef4444' : '#c9a84c');
       $('predBiasSub').textContent = 'confluence L' + (L ? L.confluence : '–') + '/5 · S' + (S ? S.confluence : '–') + '/5';
       if (L) {
         $('predKey').textContent = '$' + fmt(L.invalidation);
-        $('predKeySub').textContent = 'Support 1 · daily';
+        $('predKeySub').textContent = 'Support 1 · ' + tf;
       }
     }
-    // Scenario ladder — falsification levels on its face
+    // Scenario ladder — falsification levels on its face, gated per rung by R:R.
+    // Trigger levels derive from nearby levels consistent with the mt-* strip:
+    // LONG triggers at R1 (= S.invalidation, mt-r1), SHORT at S1 (= L.invalidation, mt-s1).
+    // LONG risk = |trigger − invalidation|, reward = |objective − trigger| (SHORT analogous).
+    // A rung renders only when its R:R is finite and ≥ 1.0 — no fake arithmetic.
     if ($('predScenarios') && L && S) {
-      $('predScenarios').innerHTML =
-        '<div class="scenario-row"><b>▲ LONG</b><span>' + L.trigger + '</span><span>→ <b>$' + fmt(L.objective) + '</b></span><span>invalid $' + fmt(L.invalidation) + '</span><span>ETA ' + L.eta_days + 'd</span><span>conf ' + L.confluence + '/5</span></div>' +
-        '<div class="scenario-row"><b>▼ SHORT</b><span>' + S.trigger + '</span><span>→ <b>$' + fmt(S.objective) + '</b></span><span>invalid $' + fmt(S.invalidation) + '</span><span>ETA ' + S.eta_days + 'd</span><span>conf ' + S.confluence + '/5</span></div>';
+      const rungRR = (trigger, invalidation, objective) => {
+        if (![trigger, invalidation, objective].every(v => typeof v === 'number' && isFinite(v))) return null;
+        const risk = Math.abs(trigger - invalidation);
+        const reward = Math.abs(objective - trigger);
+        if (risk <= 0) return null;
+        const rr = reward / risk;
+        return rr >= 1.0 ? rr : null;
+      };
+      const longRR = rungRR(+S.invalidation, +L.invalidation, +L.objective);
+      const shortRR = rungRR(+L.invalidation, +S.invalidation, +S.objective);
+      const rows = [];
+      if (longRR !== null) {
+        rows.push('<div class="scenario-row"><b>▲ LONG</b><span>' + L.trigger + '</span><span>→ <b>$' + fmt(L.objective) + '</b></span><span>invalid $' + fmt(L.invalidation) + '</span><span>R:R 1:' + fmt(longRR, 1) + '</span><span>ETA ' + L.eta_days + 'd</span><span>conf ' + L.confluence + '/5</span></div>');
+      }
+      if (shortRR !== null) {
+        rows.push('<div class="scenario-row"><b>▼ SHORT</b><span>' + S.trigger + '</span><span>→ <b>$' + fmt(S.objective) + '</b></span><span>invalid $' + fmt(S.invalidation) + '</span><span>R:R 1:' + fmt(shortRR, 1) + '</span><span>ETA ' + S.eta_days + 'd</span><span>conf ' + S.confluence + '/5</span></div>');
+      }
+      $('predScenarios').innerHTML = rows.length
+        ? rows.join('')
+        : '<div class="market-answer-no-setup">SABAR · No active setup</div>';
     }
     if ($('predRead')) {
       $('predRead').textContent = '⚖ ' + (fc.institutional_read || '') + ' — ' + (fc.epistemic || '');
@@ -1044,6 +1146,8 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         !snapshot.coherence_id) return null;
     latestSnapshot = snapshot;
     updateRealityPacket(snapshot);
+    updateFreshness(snapshot);
+    updateReconciliation(snapshot);
     return snapshot;
   }
 
@@ -1069,12 +1173,13 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     const pEl = $('pulsePct');
     pEl.textContent = '(' + (isUp ? '+' : '') + fmt(pct) + '%)';
 
-    // Bias pill
+    // Bias pill — timeframe-stamped to avoid unlabeled direction
     const bias = $('biasPill');
     const emaTrend = data.emaTrend || 'NEUTRAL';
-    if (emaTrend === 'BULLISH') { bias.textContent = 'Bullish'; bias.className = 'bias-pill bullish'; }
-    else if (emaTrend === 'BEARISH') { bias.textContent = 'Bearish'; bias.className = 'bias-pill bearish'; }
-    else { bias.textContent = 'Neutral'; bias.className = 'bias-pill neutral'; }
+    const biasTf = currentTF || '4H';
+    if (emaTrend === 'BULLISH') { bias.textContent = 'Bullish · ' + biasTf; bias.className = 'bias-pill bullish'; }
+    else if (emaTrend === 'BEARISH') { bias.textContent = 'Bearish · ' + biasTf; bias.className = 'bias-pill bearish'; }
+    else { bias.textContent = 'Neutral · ' + biasTf; bias.className = 'bias-pill neutral'; }
 
     // Key levels — with timeframe label
     if (data.support && data.resistance) {
@@ -1115,9 +1220,8 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
     }) + ' MYT';
 
-    // RSI in driver — with regime context
+    // RSI in driver — with regime context and gas-local unit metadata
     $('pulseDriver').innerHTML = '<strong>RSI ' + fmt(rsi, 1) + '</strong> — ' + rsiState +
-      ' · NATGAS/MYR: RM ' + fmt((data.price || 0) * 4.35 / 31.1035) + '/gram' +
       ' · TF: 1H levels, 4H regime';
   }
 
@@ -1153,13 +1257,25 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       stateEl.textContent = stateMap[d.state] || d.state || '—';
     }
 
-    if (d.direction) $('apexDirection').textContent = d.direction;
+    if (d.direction) {
+      const tf = currentTF || '4H';
+      $('apexDirection').textContent = (d.direction || '—') + ' · ' + tf;
+    }
 
     const vEl = $('apexVerdict');
     if (vEl) {
-      const verdictMap = { 'SEAL': 'Strong Signal', 'PROCEED': 'Good Setup', 'SABAR': 'Wait', 'HOLD': 'Hold Off' };
-      vEl.textContent = verdictMap[d.verdict] || d.verdict || '—';
-      vEl.className = 'apex-verdict ' + (d.verdict || '').toLowerCase();
+      const verdictMap = { 'SEAL': 'Strong Signal', 'SABAR': 'Wait', 'HOLD': 'Hold', 'VOID': 'Refused' };
+      vEl.textContent = verdictMap[d.verdict] || d.verdict || 'SABAR';
+      vEl.className = 'apex-verdict ' + (d.verdict || 'sabar').toLowerCase();
+    }
+
+    // Sync market-answer verdict badge — constitutional vocabulary only (no PROCEED)
+    const maEl = $('maVerdict');
+    if (maEl) {
+      const v = ({'SEAL':'SEAL','PROCEED':'SEAL','SABAR':'SABAR','HOLD':'HOLD','VOID':'VOID'})[d.verdict] || 'SABAR';
+      maEl.textContent = v;
+      maEl.style.background = ({'SEAL':'rgba(49,196,141,.15)','SABAR':'rgba(227,179,65,.15)','HOLD':'rgba(232,131,58,.15)','VOID':'rgba(240,80,110,.15)'})[v] || 'var(--surface2)';
+      maEl.style.color = ({'SEAL':'var(--seal)','SABAR':'var(--sabar)','HOLD':'var(--hold)','VOID':'var(--void)'})[v] || 'var(--ink)';
     }
 
     // Update last signal timestamp
@@ -1198,7 +1314,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     $('biasConfluence').textContent = confPct + '% Confluence · ' + (d.verdict || 'MODERATE').toUpperCase();
   }
 
-  // ── Macro ticker (DXY, US10Y, VIX, Silver, GSR) ──
+  // ── Macro ticker (DXY, US10Y, VIX, USD/MYR) ──
   async function refreshMacro() {
     const snapshot = latestSnapshot || await refreshSnapshot();
     const data = snapshot && snapshot.macro;
@@ -1217,8 +1333,6 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     setMacro('mcr-dxy', data.dxy ? data.dxy.toFixed(2) : null, data.dxy_change);
     setMacro('mcr-us10y', data.us10y ? data.us10y.toFixed(2) + '%' : null, data.us10y_change);
     setMacro('mcr-vix', data.vix ? data.vix.toFixed(2) : null, data.vix_change);
-    setMacro('mcr-silver', data.silver ? '$' + data.silver.toFixed(2) : null, data.silver_change);
-    setMacro('mcr-gsr', data.gsr ? data.gsr.toFixed(1) : null, data.gsr_change);
     setMacro('mcr-usmyr', data.usmyr ? data.usmyr.toFixed(4) : null, data.usmyr_change);
 
     const timeEl = $('mcr-time');
@@ -1236,37 +1350,44 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
     const sig = d.signal;
     const regime = d.regime || {};
+    const rr = sig.rr_ratio || 0;
+    const dir = (sig.direction || 'FLAT').toUpperCase();
+    const rrMissing = (sig.rr_ratio === null || sig.rr_ratio === undefined);
+    const rrGated = rrMissing || rr < 1.0;
+    const isFlat = dir === 'FLAT' || rrGated;
 
-    // Update synthesis text — PLAIN LANGUAGE
     const plainVerdict = translateJudge(sig.judge_reason);
-    $('synthesisVerdict').innerHTML = '<strong>' + (sig.verdict || 'SABAR') + ' — ' +
-      (sig.direction || 'FLAT') + '</strong><br><br>' + plainVerdict +
-      '<br><br><strong>📊 Angka:</strong> Nisbah Untung/Risiko: ' + fmt(sig.rr_ratio || 0, 1) + ':1' +
-      ' | Isyarat sehala: ' + Math.round((sig.confluence_score || 0) * 100) + '%' +
-      ' | Trend: ' + (regime.regime || 'TIADA') + ' (' + Math.round((regime.confidence || 0) * 100) + '% yakin)';
+    const tf = currentTF || '4H';
+    $('synthesisVerdict').innerHTML = '<strong>' + (sig.verdict || 'SABAR') + ' · ' + dir + ' · ' + tf + '</strong><br><br>' + plainVerdict +
+      '<br><br><strong>📊 Numbers:</strong> R:R Ratio: ' + (rrMissing ? '—' : fmt(rr, 1) + ':1') +
+      ' | Confluence: ' + Math.round((sig.confluence_score || 0) * 100) + '%' +
+      ' | Trend: ' + (regime.regime || 'NONE') + ' (' + Math.round((regime.confidence || 0) * 100) + '% conf)';
 
-    // Update trade quality — DYNAMIC
-    const rrEl = document.querySelectorAll('.trade-metric-value')[0];
-    if (rrEl) {
-      rrEl.textContent = '1:' + fmt(sig.rr_ratio || 0, 1);
-      rrEl.className = 'trade-metric-value ' + ((sig.rr_ratio || 0) >= 2 ? 'good' : (sig.rr_ratio || 0) >= 1.2 ? 'marginal' : 'poor');
-    }
-    const confEl = document.querySelectorAll('.trade-metric-value')[1];
-    if (confEl) {
-      confEl.textContent = Math.round((sig.confluence_score || 0) * 100) + '%';
-    }
-    const conf2El = document.querySelectorAll('.trade-metric-value')[2];
-    if (conf2El) {
-      const confMap = { 'HIGH': 'Tinggi', 'MEDIUM': 'Sederhana', 'LOW': 'Rendah' };
-      conf2El.textContent = confMap[(sig.confidence_level || 'MEDIUM').toUpperCase()] || 'Sederhana';
-    }
+    const ladder = $('tradeLadder');
+    const noSetup = $('tradeNoSetup');
+    if (ladder) ladder.hidden = isFlat;
+    if (noSetup) noSetup.hidden = !isFlat;
 
-    // Update verdict pill
-    const vEl = document.querySelector('.trade-quality-verdict');
-    if (vEl) {
-      const rr = sig.rr_ratio || 0;
-      vEl.textContent = rr >= 2 ? 'Good R:R' : rr >= 1.2 ? 'Marginal R:R' : 'Poor R:R';
-      vEl.className = 'trade-quality-verdict ' + (rr >= 2 ? 'good' : rr >= 1.2 ? 'marginal' : 'poor');
+    if (!isFlat) {
+      const rrEl = $('tradeRR');
+      if (rrEl) {
+        rrEl.textContent = '1:' + fmt(rr, 1);
+        rrEl.className = 'trade-metric-value ' + (rr >= 2 ? 'good' : rr >= 1.5 ? 'marginal' : 'poor');
+      }
+      const confEl = $('tradeConf');
+      if (confEl) {
+        confEl.textContent = Math.round((sig.confluence_score || 0) * 100) + '%';
+      }
+      const confLvlEl = $('tradeConfLvl');
+      if (confLvlEl) {
+        const confMap = { 'HIGH': 'High', 'MEDIUM': 'Medium', 'LOW': 'Low' };
+        confLvlEl.textContent = confMap[(sig.confidence_level || 'MEDIUM').toUpperCase()] || 'Medium';
+      }
+      const vEl = $('tradeVerdict');
+      if (vEl) {
+        vEl.textContent = rr >= 2 ? 'SEAL · Strong R:R' : rr >= 1.5 ? 'SEAL · Acceptable R:R' : 'SABAR · Minimum R:R';
+        vEl.className = 'trade-quality-verdict ' + (rr >= 1.5 ? 'good' : 'marginal');
+      }
     }
 
     // Plot entry/SL/TP markers on chart
@@ -1336,7 +1457,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     $('tfStructBody').innerHTML = 
       '<strong>' + (regime.regime || 'SIDEWAYS') + '</strong> regime (' + Math.round((regime.confidence || 0.8) * 100) + '% confidence). ' +
       'S1: $' + fmt(s1) + ' | R1: $' + fmt(r1) + '. ' +
-      'Keputusan: <strong>' + (sig.verdict || 'SABAR') + '</strong> — ' + translateJudge(sig.judge_reason) + '.';
+      'Verdict: <strong>' + (sig.verdict || 'SABAR') + '</strong> — ' + translateJudge(sig.judge_reason) + '.';
     $('tfStructConf').textContent = 'Score: ' + structScore + '/100';
     $('tfStructTier').textContent = structScore >= 70 ? 'Tier 3 — High' : structScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
     $('tfStructTier').className = 'confidence-tier ' + (structScore >= 70 ? 't3' : structScore >= 40 ? 't2' : 't1');
@@ -1344,12 +1465,12 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     // ── VOLUME ──
     const volClass = apexG >= 0.5 ? 'bullish' : apexG >= 0.3 ? 'neutral' : 'bearish';
     const volScore = Math.round(apexG * 100);
-    $('tfVolScore').textContent = apexG >= 0.5 ? 'Mencukupi' : apexG >= 0.3 ? 'Sederhana' : 'Lemah';
+    $('tfVolScore').textContent = apexG >= 0.5 ? 'Sufficient' : apexG >= 0.3 ? 'Moderate' : 'Weak';
     $('tfVolScore').className = 'signal-score ' + volClass;
-    $('tfVolBody').innerHTML = 
-      'Kualiti isyarat: <strong>' + (apexG >= 0.5 ? 'BAIK — boleh entry' : apexG >= 0.3 ? 'SEDERHANA — tunggu kepastian' : 'LEMAH — jangan masuk') + '</strong>. ' +
-      'Kekuatan: ' + (sig.strength || 'TIADA') + '. Nisbah U/R: ' + fmt(sig.rr_ratio || 0, 1) + ':1. ' +
-      '★ Data pasaran dari yfinance — anggaran sahaja, bukan data broker.';
+    $('tfVolBody').innerHTML =
+      'Signal quality: <strong>' + (apexG >= 0.5 ? 'GOOD — entry candidate' : apexG >= 0.3 ? 'MODERATE — wait for confirmation' : 'WEAK — do not enter') + '</strong>. ' +
+      'Strength: ' + (sig.strength || 'NONE') + '. R:R Ratio: ' + fmt(sig.rr_ratio || 0, 1) + ':1. ' +
+      '★ Market data from yfinance — estimate only, not broker data.';
     $('tfVolConf').textContent = 'Score: ' + volScore + '/100';
     $('tfVolTier').textContent = volScore >= 70 ? 'Tier 3 — High' : volScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
     $('tfVolTier').className = 'confidence-tier ' + (volScore >= 70 ? 't3' : volScore >= 40 ? 't2' : 't1');
@@ -1395,7 +1516,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   // ── Stance buttons ──
   function initStanceButtons() {
-    const saved = localStorage.getItem('gold_stance') || 'observe';
+    const saved = localStorage.getItem('gas_stance') || 'observe';
     const stances = { observe: 'stanceObserve', prepare: 'stancePrepare', await: 'stanceAwait' };
 
     Object.entries(stances).forEach(([key, id]) => {
@@ -1405,7 +1526,7 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.stance-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        localStorage.setItem('gold_stance', key);
+        localStorage.setItem('gas_stance', key);
       });
     });
   }
@@ -1436,6 +1557,8 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
 
   // ── Boot sequence ──
   document.addEventListener('DOMContentLoaded', async () => {
+    // Arm 10s first-viewport watchdog before any fetch
+    armFirstViewportWatchdog();
     // 💉 LIVE DATA FIRST — truth before beauty
     await refreshSnapshot();
     refreshTicker();
@@ -1466,74 +1589,31 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   "schema": "wealth.snapshot.v1",
   "organ": "WEALTH",
   "asset": "NATURAL_GAS_HENRY_HUB",
-  "timestamp": "2026-07-24T19:43:20.250581+08:00",
-  "observed_at": "2026-07-24T11:45:04.870604+00:00",
+  "observed_at": null,
   "coherence_id": null,
   "epistemic_tier": "OBS",
-  "confidence": 0.88,
-  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
-  "governance": {
-    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
-    "decision_floor": "888_HOLD"
+  "endpoints": {
+    "snapshot": "/wealth/gas/api/snapshot",
+    "signal": "/wealth/gas/api/signal_v2",
+    "apex": "/wealth/gas/api/apex",
+    "forecast": "/wealth/gas/api/forecast",
+    "history": "/wealth/gas/api/history",
+    "calendar": "/wealth/gas/api/calendar"
   },
   "market_state": {
     "symbol": "NG=F",
-    "price_usd": 2.91,
-    "change_pct": 0,
-    "regime": "NEUTRAL",
-    "rsi_14": 51.2,
-    "ema_trend": "BEARISH",
+    "price_usd": null,
+    "change_pct": null,
+    "regime": null,
+    "rsi_14": null,
+    "ema_trend": null,
     "key_levels": {
-      "support": [
-        2.91,
-        2.9,
-        2.89
-      ],
-      "resistance": [
-        2.92,
-        2.93,
-        2.94
-      ]
+      "support": [],
+      "resistance": []
     }
   }
 }
 </script> <script src="/_shared/rasa-dunia-widget.js" defer></script>
-function toggleMachineDigest() {
-  const drawer = document.getElementById('machineDigestDrawer');
-  const code = document.getElementById('machineDigestCode');
-  if (!drawer) return;
-  if (drawer.style.display === 'none' || !drawer.style.display) {
-    const packet = document.getElementById('wealth-reality-packet');
-    if (packet && code) {
-      try {
-        const parsed = JSON.parse(packet.textContent);
-        code.textContent = JSON.stringify(parsed, null, 2);
-      } catch(e) {
-        code.textContent = packet.textContent;
-      }
-    }
-    drawer.style.display = 'block';
-  } else {
-    drawer.style.display = 'none';
-  }
-}
-if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
-  window.addEventListener('DOMContentLoaded', toggleMachineDigest);
-}
-</script>
-<div class="agent-id" style="margin:var(--sp-4) var(--gap-xl) 0">
-  <h4>⚙️ AGENT IDENTITY — PETRONAS·φ Gas & LNG</h4>
-  <div class="row"><span class="k">Tier</span><span class="v">OBSERVE — senses, never actuates</span></div>
-  <div class="row"><span class="k">Reports to</span><span class="v">SENSE111 → arifOS kernel → F13 SOVEREIGN</span></div>
-  <div class="row"><span class="k">Cannot</span><span class="v cannot">Trade LNG · Allocate contracts · Recommend positions · Allocate capital · Signal trades</span></div>
-  <div class="row"><span class="k">Data</span><span class="v">PETRONAS FY2025 IFR · DOSM · Moody's A3 stable</span></div>
-  <div class="row"><span class="k">Sovereign</span><span class="v">Muhammad Arif bin Fazil (F13 SOVEREIGN)</span></div>
-</div>
-
-<div class="refusal" style="margin:var(--sp-4) var(--gap-xl) var(--sp-5)">
-  <h3>⛔ REFUSAL SURFACE · CAPABILITY BOUNDARY</h3>
-  <p><b>This organ senses; it does not act.</b> No buy, sell, hold, or allocation signals. No position recommendations. It reports institutional and market distance-to-break only. Actuation stays behind the A-FORGE governance gate. Every metric carries its epistemic tag on its face. The organ cannot be more objective than the judgments encoded in its <code>safe</code> and <code>trip</code> anchors.</p>
-</div>
 
 </body>
 </html>
