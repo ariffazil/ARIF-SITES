@@ -58,11 +58,31 @@
     set('authority', d.authority?.effective_action_authority?.authorized ? 'AUTHORIZED' : '…', d.authority?.effective_action_authority?.authorized ? 'healthy' : 'unknown');
   }
 
+  // The signed Observatory snapshot reports `findings` as the schema
+  // `{count, by_severity, findings: [...]}`. The page also tolerates a
+  // legacy plain-array shape. Returning the array keeps the downstream
+  // `.filter` call safe and lets the meta strip count OPEN vs total.
+  const findingsList = (d) => {
+    const f = d && d.findings;
+    if (Array.isArray(f)) return f;
+    if (f && Array.isArray(f.findings)) return f.findings;
+    if (f && Array.isArray(f.items)) return f.items;
+    if (f && Array.isArray(f.list)) return f.list;
+    return [];
+  };
+
   /* ── meta strip ────────────────────────────────────────── */
   function renderMeta(d) {
     $('#meta-age').textContent = d.observed_at ? ago(d.observed_at) + ' ago' : '…';
     $('#meta-incidents').textContent = d.incidents?.length || 0;
-    $('#meta-findings').textContent = d.findings?.length || (typeof d.findings === 'object' && d.findings !== null ? Object.keys(d.findings).length : 0);
+    const findings = findingsList(d);
+    let openCount = 0;
+    if (findings.length > 0) {
+      openCount = findings.filter((f) => (val(f && f.status) || '').toUpperCase() === 'OPEN').length;
+    } else if (d && d.findings && typeof d.findings === 'object') {
+      openCount = d.findings.count ?? d.findings.open ?? d.findings.total ?? 0;
+    }
+    $('#meta-findings').textContent = openCount;
     $('#meta-stage').textContent = d.stage_evidence?.stage || d.conformance?.stage || '…';
     const drift = d.runtime_identity?.drift?.value;
     const driftEl = $('#meta-drift');
@@ -76,7 +96,7 @@
       driftEl.className = 'badge';
     }
     // highest HOLD
-    const holds = (d.findings || []).filter(f => /hold/i.test(f.severity || f.verdict || ''));
+    const holds = findings.filter((f) => /hold/i.test(val(f && f.severity) || val(f && f.verdict) || ''));
     const holdEl = $('#meta-hold');
     if (holds.length) {
       holdEl.textContent = holds.length + ' holds';

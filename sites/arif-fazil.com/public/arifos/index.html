@@ -185,6 +185,24 @@
   </div>
  </section>
 
+ <section id="sec-receipt-federation">
+  <h2><span class="marker">P1</span> Receipt Federation</h2>
+  <div class="card">
+   <table class="drift" style="font-size:.78rem">
+    <thead><tr><th>component</th><th>layer</th><th>verdict</th><th>notes</th></tr></thead>
+    <tbody>
+     <tr><td><code>P1-1 Ownership Ledger</code></td><td>ledger</td><td><span class="status status--healthy">SEALED</span></td><td>deterministic ownership mapping</td></tr>
+     <tr><td><code>P1-2 Python Client</code></td><td>sdk</td><td><span class="status status--healthy">SEALED</span></td><td>arifFLOW emit &amp; receipt client</td></tr>
+     <tr><td><code>P1-3 TypeScript Client</code></td><td>sdk</td><td><span class="status status--healthy">SEALED</span></td><td>arifFLOW web &amp; node client</td></tr>
+     <tr><td><code>P1-B PAI ↔ Flow Bridge</code></td><td>bridge</td><td><span class="status status--healthy">SEALED</span></td><td>inter-agent receipt gravity</td></tr>
+     <tr><td><code>P1-4 AAA emitReceipt Wiring</code></td><td>mind</td><td><span class="status status--healthy">SEALED LIVE</span></td><td>AAA telemetry &amp; session receipts active</td></tr>
+     <tr><td><code>P1-5 A-FORGE Receipt Wiring</code></td><td>actuator</td><td><span class="status status--degraded">HOLD / PLANNED</span></td><td>planned AF-1 executor receipt canary</td></tr>
+     <tr><td><code>P1-6 Telemetry Wiring</code></td><td>canary</td><td><span class="status status--degraded">NEXT / AF-1</span></td><td>telemetry logEvent canary</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </section>
+
  <section id="sec-metabolism">
   <h2><span class="marker">000-010</span> Intelligence metabolism</h2>
   <div class="metab" id="metab-grid"></div>
@@ -220,6 +238,32 @@
      <tr><td><code>/.well-known/governance.jsonld</code></td><td>un-auth</td><td>constitutional JSON-LD</td><td><span class="status status--healthy">13 floors + 5 ontology</span></td><td>application/ld+json</td></tr>
     </tbody>
    </table>
+  </div>
+ </section>
+
+ <section id="sec-mutation-gate">
+  <h2><span class="marker">F13</span> Next Mutation Gate &amp; Self-Witness</h2>
+  <div class="card" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem">
+   <div style="background:var(--surface-2);padding:1rem;border-radius:.5rem">
+    <h3 style="margin-top:0;font-size:.9rem;color:var(--text-muted)">NEXT MUTATION GATE</h3>
+    <div style="font-size:1.1rem;font-weight:bold;margin-bottom:.5rem"><span class="status status--degraded">HOLD UNTIL ARIF GO</span></div>
+    <ul style="font-size:.8rem;padding-left:1.2rem;margin:0;color:var(--text-muted)">
+     <li><strong>Current Canary:</strong> P1-6 AF-1 telemetry <code>logEvent()</code></li>
+     <li><strong>Posture:</strong> SABAR_PATCH_PLAN_ONLY</li>
+     <li><strong>Reversibility:</strong> Local fallback preserved</li>
+     <li><strong>Rule:</strong> No delete. No silent drop.</li>
+    </ul>
+   </div>
+   <div style="background:var(--surface-2);padding:1rem;border-radius:.5rem">
+    <h3 style="margin-top:0;font-size:.9rem;color:var(--text-muted)">OBSERVATORY SELF-WITNESS</h3>
+    <div style="font-size:1.1rem;font-weight:bold;margin-bottom:.5rem"><span class="status status--healthy">EYESIGHT VALID</span></div>
+    <ul style="font-size:.8rem;padding-left:1.2rem;margin:0;color:var(--text-muted)">
+     <li><strong>Findings Parser:</strong> PASS (Defensive Envelope Handler)</li>
+     <li><strong>Capabilities Parser:</strong> PASS</li>
+     <li><strong>Snapshot Mode:</strong> Static Mirror (.well-known)</li>
+     <li><strong>Freshness Contract:</strong> Periodic &amp; Live Fallback</li>
+    </ul>
+   </div>
   </div>
  </section>
 
