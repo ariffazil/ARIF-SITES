@@ -29,15 +29,16 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
-// Primary nav — clean IA. Portal to 5 organs + civic shelf.
-// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
+// Primary nav — clean IA. Portal to 5 organs + civic shelf + institution door.
+// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA) · Institution (counterparty)
 export const primaryLinks: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Earth', href: '/earth' },
   { label: 'Economics', href: '/economics' },
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
-  { label: 'Doctrine & Federation', href: '/doctrine' },
+  { label: 'Doctrine', href: '/doctrine' },
+  { label: 'Institution', href: '/institution' },
 ];
 
 // Genesis strip — machine-facing surfaces.

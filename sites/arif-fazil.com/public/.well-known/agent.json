@@ -1,26 +1,82 @@
 {
   "name": "arif-fazil.com",
-  "description": "Human-first homepage and trust root for Arif Fazil. Use this surface for identity, route discovery, and public proof links.",
+  "description": "Human-first homepage and trust root for Arif Fazil. Three audiences served from one domain: humans (verbs + intent cards), agents (MCP + WebMCP + .well-known), institutions (charter + governance + audit + constitution).",
   "url": "https://arif-fazil.com",
   "provider": {
     "organization": "arif-fazil.com",
-    "url": "https://arifos.arif-fazil.com"
+    "url": "https://arifos.arif-fazil.com",
+    "sovereign": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+    "did": "did:web:arif-fazil.com"
   },
-  "version": "1.1",
+  "version": "1.2",
+  "constitutional_floors": 13,
+  "auditability_floor": "F11",
   "capabilities": {
     "a2a": false,
     "mcp": ["https://mcp.arif-fazil.com/mcp"],
+    "webmcp": ["https://arif-fazil.com/.well-known/webmcp.json"],
     "verification": true
   },
-  "scopes": ["identity", "geoscience", "governed-ai", "proof-discovery"],
+  "scopes": [
+    "identity",
+    "geoscience",
+    "governed-ai",
+    "proof-discovery",
+    "institution",
+    "charter",
+    "governance",
+    "audit"
+  ],
   "modes": ["observe", "advise", "verify"],
   "authentication": "none",
+  "audiences": {
+    "human": {
+      "label": "Human",
+      "entry": "https://arif-fazil.com/",
+      "verbs": ["Read", "See", "Understand"],
+      "cta": ["Home", "Earth", "Economics", "World", "Writing", "Doctrine"]
+    },
+    "agent": {
+      "label": "Agent",
+      "entry": "https://mcp.arif-fazil.com/mcp",
+      "discoverable_via": [
+        "/.well-known/agent.json",
+        "/.well-known/webmcp.json",
+        "/.well-known/did.json",
+        "/.well-known/mcp.json",
+        "/.well-known/arifos-federation.json",
+        "/.well-known/arifos-governance.json",
+        "/llms.txt",
+        "/llms.json",
+        "/mcp"
+      ],
+      "verbs": ["Connect", "Discover", "Witness"]
+    },
+    "institution": {
+      "label": "Institution",
+      "entry": "https://arif-fazil.com/institution",
+      "verbs": ["Verify", "Audit", "Counterparty"],
+      "instruments": {
+        "charter": "https://arif-fazil.com/charter/",
+        "governance": "https://arif-fazil.com/governance/",
+        "audit": "https://arif-fazil.com/audit/",
+        "constitution": "https://arif-fazil.com/constitution/",
+        "seal_chamber": "https://arif-fazil.com/999/",
+        "security_txt": "https://arif-fazil.com/.well-known/security.txt",
+        "federation_probe": "https://arif-fazil.com/api/federation-probe",
+        "observatory_public": "https://arif-fazil.com/api/observatory"
+      }
+    }
+  },
   "skills": [
     "Discover canonical routes /, /000/, /999/",
     "Read public proof artifacts",
     "Navigate to related canonical sites",
     "Access WEALTH daily briefing at /wealth/",
-    "Access federation map at /constellation/"
+    "Access federation map at /constellation/",
+    "Verify constitutional floors via /floors.json",
+    "Audit sealed records via /999/",
+    "Cross-reference governance contracts via /.well-known/arifos-governance.json"
   ],
   "input_modes": ["text"],
   "output_modes": ["text"],
@@ -40,6 +96,21 @@
       "name": "GEOX",
       "url": "https://geox.arif-fazil.com",
       "role": "earth and geoscience intelligence"
+    },
+    {
+      "name": "WEALTH",
+      "url": "https://wealth.arif-fazil.com",
+      "role": "capital intelligence"
+    },
+    {
+      "name": "WELL",
+      "url": "https://well.arif-fazil.com",
+      "role": "human readiness"
+    },
+    {
+      "name": "A-FORGE",
+      "url": "https://forge.arif-fazil.com",
+      "role": "governed execution shell"
     }
   ]
 }

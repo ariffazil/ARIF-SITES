@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
+<title>/governance — F1–F13 Governance & HITL Critique Response | Arif Fazil</title>
+<meta name="title" content="/governance — F1–F13 Governance & HITL Critique Response | Arif Fazil">
+<meta name="description" content="The Governance instrument of arif-fazil.com. F1–F13 floor table, scar log, policy contract, and the arifOS response to the naive Human-in-the-Loop (HITL) collapse — deterministic guardrails via cooling receipts, scar-sealing, and confidence-based delegation.">
+<meta name="keywords" content="arifOS governance, F1-F13, HITL, Human-in-the-Loop, cooling receipts, scar sealing, deterministic guardrails, confidence delegation, arif-fazil.com">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://arif-fazil.com/governance/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arif-fazil.com/governance/">
+<meta property="og:title" content="/governance — F1–F13 + HITL Critique Response">
+<meta property="og:description" content="Deterministic guardrails. No naive HITL. arifOS governance doctrine.">
+<meta property="og:site_name" content="arif-fazil.com">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="/governance — F1–F13 + HITL Critique">
+<meta property="twitter:description" content="Why we don't use naive Human-in-the-Loop. Three deterministic mechanisms.">
+
+<!-- LLM Discovery -->
+<meta name="llms-full-content" content="true">
+<link rel="alternate" type="application/json" href="/.well-known/arifos-governance.json" title="Federation Governance Manifest">
+<link rel="alternate" type="application/json" href="/floors.json" title="F1-F13 Canonical Floors">
+<link rel="alternate" type="application/json" href="/scar.json" title="Scar Log">
+<link rel="alternate" type="application/json" href="/policy.json" title="Action Policy">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Site LLM Context">
+
+<!-- Agent Discovery -->
+<link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
+<link rel="agent" href="/.well-known/agent.json" type="application/json" title="Agent Capability Card">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0A0A0A">
+<meta name="color-scheme" content="dark">
+
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/_shared/zen.css">
+<link rel="stylesheet" href="/_shared/economics.css">
+
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: #2A2A2A;
+    --gold: #D4A853;
+    --gold-dim: #8B6914;
+    --text: #E8E8E8;
+    --text-dim: #B0B0B0;
+    --text-muted: #707070;
+    --warn: #D49D53;
+    --bad: #D4536B;
+    --good: #6BCF8B;
+    --font-body: 'Satoshi', sans-serif;
+    --font-display: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 800px;
+    --radius: 6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  body { min-height: 100vh; }
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+  header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+  .ring { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+  .position { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1.05; color: var(--gold); margin: 0.5rem 0 0.25rem; }
+  .subtitle { font-family: var(--font-display); font-size: 1.2rem; font-weight: 400; color: var(--text-dim); }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+  section { margin-bottom: 3rem; }
+  .section-id { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--gold-dim); margin-bottom: 0.35rem; text-transform: uppercase; }
+  h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; line-height: 1.25; }
+  h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; }
+  p { margin-bottom: 1rem; color: var(--text-dim); }
+  p strong { color: var(--text); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold-dim); }
+  a:hover { border-bottom-color: var(--gold); }
+  code { font-family: var(--font-mono); font-size: 0.85em; color: var(--gold); background: var(--surface); padding: 0.1em 0.35em; border-radius: 3px; }
+  .block { border-left: 3px solid var(--gold); padding: 1rem 1.25rem; margin: 1.5rem 0; background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+  .block.warn { border-left-color: var(--warn); }
+  .block-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
+  .block.warn .block-label { color: var(--warn); }
+  .block p { margin-bottom: 0.5rem; }
+  .block p:last-child { margin-bottom: 0; }
+  .floor-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.85rem; }
+  .floor-table th { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .floor-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .floor-table td:first-child { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); white-space: nowrap; font-weight: 600; }
+  .type-hard { color: var(--bad); font-family: var(--font-mono); font-size: 0.7rem; }
+  .type-soft { color: var(--warn); font-family: var(--font-mono); font-size: 0.7rem; }
+  .type-derived { color: var(--good); font-family: var(--font-mono); font-size: 0.7rem; }
+  ol.decimal { margin: 1rem 0 1rem 1.5rem; color: var(--text-dim); }
+  ol.decimal li { margin-bottom: 0.5rem; }
+  ol.decimal li strong { color: var(--text); }
+  .status-pill { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; padding: 0.18em 0.7em; border: 1px solid currentColor; border-radius: 3px; text-transform: uppercase; }
+  .status-pill.good { color: var(--good); }
+  .status-pill.warn { color: var(--warn); }
+  .status-pill.bad { color: var(--bad); }
+  .status-pill.gold { color: var(--gold); }
+  blockquote { border-left: 2px solid var(--gold-dim); padding: 0.75rem 1.25rem; margin: 1.5rem 0; font-style: italic; color: var(--text); background: rgba(212,168,83,0.04); border-radius: 0 var(--radius) var(--radius) 0; }
+  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; }
+  footer a { color: var(--text-muted); border-bottom: 1px dotted var(--text-muted); }
+  footer a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://arif-fazil.com/governance/#article",
+      "headline": "arifOS Governance — F1-F13 + HITL Critique Response",
+      "description": "The Governance instrument of arif-fazil.com. Floor table, scar log, and the deterministic alternative to naive Human-in-the-Loop.",
+      "author": {"@type": "Person", "name": "Muhammad Arif bin Fazil", "url": "https://arif-fazil.com"},
+      "datePublished": "2026-07-27",
+      "inLanguage": "en",
+      "about": [
+        "Constitutional AI governance",
+        "F1-F13 floors",
+        "HITL critique response",
+        "Deterministic guardrails",
+        "Cooling receipts",
+        "Scar sealing",
+        "Confidence-based delegation"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "arif-fazil.com", "item": "https://arif-fazil.com"},
+        {"@type": "ListItem", "position": 2, "name": "Institution", "item": "https://arif-fazil.com/charter/"},
+        {"@type": "ListItem", "position": 3, "name": "Governance", "item": "https://arif-fazil.com/governance/"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · Institution · Governance</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">13 floors. 3 deterministic mechanisms. Zero naive HITL.</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Read HITL response ↓ · Inspect floors · Audit scars</span></div>
+</div>
+
+<div class="container">
+  <header>
+    <div class="ring">arif-fazil.com · MIND · Institution</div>
+    <h1 class="position">/governance</h1>
+    <div class="subtitle">F1–F13 + The Response to Naive Human-in-the-Loop</div>
+    <div class="header-meta">
+      <span><span class="status-pill gold">SEALED</span></span>
+      <span>Issued: 2026-07-27</span>
+      <span>Verdict authority: 888_JUDGE</span>
+      <span>Source of truth: <a href="/floors.json">/floors.json</a></span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-id">§ 0 · Summary</div>
+    <h2>Deterministic governance, not rubber-stamping</h2>
+    <p>
+      arifOS governance is not a checklist. It is a code-enforced contract between thirteen floors
+      and the agents that act under them. Hard floors <code>VOID</code> an action at compile time.
+      Soft floors raise <code>CAUTION</code> or <code>HOLD</code> for human judgment. The Sovereign
+      (F13) is the only floor a human can wave — and only at the cost of an irreversible signature.
+    </p>
+    <p>
+      We have read the public critiques of <strong>naive Human-in-the-Loop</strong>. We agree with
+      most of them. We do not use HITL. We use three deterministic mechanisms, described below.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-id">§ 1 · Floor Table</div>
+    <h2>F1–F13 — The Thirteen Constitutional Floors</h2>
+    <p>
+      The canonical floor table is published as a JSON contract at
+      <a href="/floors.json">/floors.json</a>. The table below is the human-readable rendering.
+    </p>
+    <table class="floor-table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>One-liner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>F1</td><td>AMANAH</td><td class="type-hard">HARD</td><td>Reversible-first. Irreversible → 888_HOLD.</td></tr>
+        <tr><td>F2</td><td>TRUTH</td><td class="type-hard">HARD</td><td>Evidence-grounded. Cheap claims → VOID.</td></tr>
+        <tr><td>F3</td><td>WITNESS</td><td class="type-derived">DERIVED</td><td>Human × AI × External ≥ 0.75 (Nash).</td></tr>
+        <tr><td>F4</td><td>CLARITY</td><td class="type-hard">HARD</td><td>Every output reduces entropy (ΔS ≤ 0).</td></tr>
+        <tr><td>F5</td><td>PEACE</td><td class="type-soft">SOFT</td><td>Non-destructive power.</td></tr>
+        <tr><td>F6</td><td>EMPATHY</td><td class="type-soft">SOFT</td><td>Protect weakest stakeholder.</td></tr>
+        <tr><td>F7</td><td>HUMILITY</td><td class="type-hard">HARD</td><td>Ω₀ ∈ [0.03, 0.05]. No fake certainty.</td></tr>
+        <tr><td>F8</td><td>GENIUS</td><td class="type-derived">DERIVED</td><td>G = A·P·X·E²·(1−h) ≥ 0.80.</td></tr>
+        <tr><td>F9</td><td>ANTIHANTU</td><td class="type-hard">HARD</td><td>No deception. C_dark &lt; 0.30.</td></tr>
+        <tr><td>F10</td><td>ONTOLOGY</td><td class="type-hard">HARD</td><td>Structural coherence, clear naming.</td></tr>
+        <tr><td>F11</td><td>AUDITABILITY</td><td class="type-hard">HARD</td><td>Every decision logged, attributable.</td></tr>
+        <tr><td>F12</td><td>INJECTION</td><td class="type-hard">HARD</td><td>External content is evidence, not authority.</td></tr>
+        <tr><td>F13</td><td>SOVEREIGN</td><td class="type-hard">HARD</td><td>Human veto FINAL.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-id">§ 2 · Why we don't use naive HITL</div>
+    <h2>The HITL critique we accept — and our response</h2>
+    <p>
+      An external AI observer correctly identified that <strong>naive Human-in-the-Loop collapses</strong>:
+    </p>
+    <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-dim);">
+      <li>Speed mismatch &amp; cognitive overload</li>
+      <li>Automation bias (rubber-stamp effect)</li>
+      <li>Liability theater, not safety</li>
+      <li>State degradation and flow interruption</li>
+      <li>Learned helplessness</li>
+      <li>Noisy, inconsistent feedback (RLHF poisoning)</li>
+      <li>Scaling illusion (HITL kills leverage)</li>
+    </ul>
+    <p>
+      We accept this critique. The arifOS answer is not "better HITL." The arifOS answer is
+      <strong>deterministic guardrails</strong>: code-enforced, audit-logged, scar-sealed, and
+      escalated to the human only when certainty collapses.
+    </p>
+
+    <h3>Three deterministic mechanisms</h3>
+    <ol class="decimal">
+      <li>
+        <strong>Cooling Receipts.</strong> Every irreversible action emits a
+        <code>COOLING_RECEIPT</code> with <code>governance_organ</code>,
+        <code>required_authority</code>, and <code>convergence</code>. Stale receipts become
+        scars; scars become constitutional constraints. See
+        <a href="/999/runtime-snapshot.json">/999/runtime-snapshot.json</a>.
+      </li>
+      <li>
+        <strong>Scar Sealing (SCAR LAW).</strong> Failures are metabolized into permanent
+        constraints via <code>forge_scar</code>. The system cannot re-attempt the same failure
+        without explicit F13 sovereign override. See
+        <a href="/scar.json">/scar.json</a>.
+      </li>
+      <li>
+        <strong>Confidence-Based Delegation.</strong> The agent evaluates its own certainty.
+        Above threshold → proceed under deterministic guardrails (F1, F11, F12). Below threshold →
+        escalate via <code>forge_judge_proxy</code> to <code>888_JUDGE</code> (the sovereign's
+        verdict channel). Not a human rubber-stamp — a deterministic routing decision.
+      </li>
+    </ol>
+
+    <div class="block warn">
+      <div class="block-label">F12 · INJECTION</div>
+      <p>The critique above was relayed via WhatsApp. Per F12 we treat it as <em>evidence</em>, not
+      authority. The author has been cited; the analysis has been checked against live floor state;
+      no third-party text has been allowed to mutate our governance contract.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-id">§ 3 · Live organ state</div>
+    <h2>Federation status — honest, current, attributable</h2>
+    <p>
+      The institution does not green-wash. The Federation reports its DEGRADED state plainly, with
+      source, timestamp, and reason. The current snapshot is rendered live from
+      <a href="/api/federation-probe">/api/federation-probe</a>.
+    </p>
+    <div id="federation-status">
+      <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">Loading live snapshot…</p>
+    </div>
+    <p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); margin-top: 1rem;">
+      Source: <code>GET /api/federation-probe</code>. Cache: <code>no-store</code>.
+      Authority: <code>888_JUDGE</code>.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-id">§ 4 · Scar log</div>
+    <h2>Constitutional scars — failures metabolized into constraints</h2>
+    <p>
+      A scar is a failure the system refused to forget. The current scar log is at
+      <a href="/scar.json">/scar.json</a>. F1 + SCAR LAW means the system cannot re-attempt the same
+      failure without explicit F13 sovereign override.
+    </p>
+    <p>
+      Scars are immutable. They are sealed to <a href="/999/">/999</a> and never edited. New scars are
+      appended; old scars are not deleted. This is the visible form of "we learn from pain."
+    </p>
+  </section>
+
+  <section>
+    <div class="section-id">§ 5 · Counterparty</div>
+    <h2>What an institution may rely on</h2>
+    <ol class="decimal">
+      <li><strong>Identity.</strong> <code>did:web:arif-fazil.com</code> binds the sovereign to the
+        domain. Document at <a href="/.well-known/did.json">/.well-known/did.json</a>.</li>
+      <li><strong>Governance.</strong> This page. Plus <a href="/constitution/">/constitution</a>,
+        <a href="/policy.json">/policy.json</a>, <a href="/authority.json">/authority.json</a>.</li>
+      <li><strong>Audit.</strong> <a href="/audit/">/audit</a> + <a href="/999/seal.json">/999/seal.json</a>
+        + <a href="/api/federation-probe">/api/federation-probe</a>.</li>
+      <li><strong>Disclosure.</strong> <a href="/.well-known/security.txt">/.well-known/security.txt</a>
+        (RFC 9116).</li>
+      <li><strong>Contractor API.</strong> <a href="https://mcp.arif-fazil.com/mcp">https://mcp.arif-fazil.com/mcp</a>
+        (canonical MCP gateway).</li>
+    </ol>
+  </section>
+
+  <blockquote>
+    The cost of a deterministic guardrail is small. The cost of a naive rubber-stamp is unbounded.
+    DITEMPA BUKAN DIBERI — Forged, Not Given.
+  </blockquote>
+
+  <footer>
+    <div>
+      <a href="/">/</a> · <a href="/charter/">/charter</a> · <a href="/governance/">/governance</a> · <a href="/audit/">/audit</a> · <a href="/constitution/">/constitution</a> · <a href="/999/">/999</a>
+    </div>
+    <div>
+      <a href="/.well-known/security.txt">security.txt</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://mcp.arif-fazil.com/mcp">mcp</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function() {
+  var el = document.getElementById('federation-status');
+  if (!el) return;
+  fetch('/api/federation-probe', { cache: 'no-store' })
+    .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('probe ' + r.status)); })
+    .then(function(snap) {
+      var html = '<table class="floor-table"><thead><tr><th>Organ</th><th>State</th><th>Reason</th></tr></thead><tbody>';
+      (snap.nodes || []).forEach(function(n) {
+        var state = (n.overall && n.overall.state) || 'UNKNOWN';
+        var reasons = (n.overall && n.overall.reasons) || [];
+        var pill = state === 'READY' ? 'good' : (state === 'DEGRADED' ? 'warn' : 'bad');
+        html += '<tr><td>' + n.id + '</td><td><span class="status-pill ' + pill + '">' + state + '</span></td><td style="font-size:0.75rem;">' + (reasons.join(' · ') || '—') + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      html += '<p style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); margin-top: 0.5rem;">Snapshot: ' + (snap.observed_at || '—') + ' · version: ' + (snap.probe_version || '—') + '</p>';
+      el.innerHTML = html;
+    })
+    .catch(function(err) {
+      el.innerHTML = '<div class="block warn"><div class="block-label">F12 · Probe Unreachable</div><p>' + (err && err.message ? err.message : 'unknown error') + '. The institution surface does not lie; if the probe fails, we say so.</p></div>';
+    });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
+<title>/charter — Federation Charter | Arif Fazil</title>
+<meta name="title" content="/charter — Federation Charter | Arif Fazil">
+<meta name="description" content="The arifOS Federation Charter. Who we are. What we govern. Which instruments we publish. The canonical institution-side landing of arif-fazil.com — for counterparties, regulators, partners, and human sovereigns.">
+<meta name="keywords" content="arifOS charter, federation charter, arif-fazil.com, F13 sovereign, DID, governance, constitution, audit, arifOS">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://arif-fazil.com/charter/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arif-fazil.com/charter/">
+<meta property="og:title" content="/charter — Federation Charter | Arif Fazil">
+<meta property="og:description" content="The canonical institution-side declaration. 5 organs. 13 constitutional floors. 1 sovereign.">
+<meta property="og:site_name" content="arif-fazil.com">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="/charter — Federation Charter">
+<meta property="twitter:description" content="5 organs, 13 floors, 1 sovereign. arifOS Federation Charter.">
+
+<!-- LLM Discovery -->
+<meta name="llms-full-content" content="true">
+<link rel="alternate" type="application/json" href="/.well-known/arifos-governance.json" title="Federation Governance Manifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="Site LLM Context">
+
+<!-- Agent Discovery -->
+<link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
+<link rel="agent" href="/.well-known/agent.json" type="application/json" title="Agent Capability Card">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0A0A0A">
+<meta name="color-scheme" content="dark">
+
+<!-- Fonts: Federation Design System -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Zen-Pulse bar — AGENTS.md §14.3 -->
+<link rel="stylesheet" href="/_shared/zen.css">
+<link rel="stylesheet" href="/_shared/economics.css">
+
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: #2A2A2A;
+    --gold: #D4A853;
+    --gold-dim: #8B6914;
+    --text: #E8E8E8;
+    --text-dim: #B0B0B0;
+    --text-muted: #707070;
+    --font-body: 'Satoshi', sans-serif;
+    --font-display: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 760px;
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+  body { min-height: 100vh; }
+
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+  /* ── Header ── */
+  header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+  .ring { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+  .position { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1.05; color: var(--gold); margin: 0.5rem 0 0.25rem; }
+  .subtitle { font-family: var(--font-display); font-size: 1.25rem; font-weight: 400; color: var(--text-dim); }
+  .header-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+
+  /* ── Sections ── */
+  section { margin-bottom: 3rem; }
+  .section-id { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--gold-dim); margin-bottom: 0.35rem; text-transform: uppercase; }
+  h2 { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; line-height: 1.25; }
+  h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; }
+  p { margin-bottom: 1rem; color: var(--text-dim); }
+  p strong { color: var(--text); }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold-dim); }
+  a:hover { border-bottom-color: var(--gold); }
+
+  /* ── Charter-style articles ── */
+  .article-list { list-style: none; padding: 0; margin: 1rem 0; }
+  .article-list li { padding: 0.85rem 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center; }
+  .article-list li:last-child { border-bottom: none; }
+  .article-list .label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+  .article-list .title { color: var(--text); font-family: var(--font-display); font-weight: 600; }
+  .article-list .title a { color: var(--text); border-bottom: none; }
+  .article-list .title a:hover { color: var(--gold); }
+
+  /* ── Attestation blocks ── */
+  .block { border-left: 3px solid var(--gold); padding: 1rem 1.25rem; margin: 1.5rem 0; background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+  .block-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold); }
+  .block p { margin-bottom: 0.5rem; }
+  .block p:last-child { margin-bottom: 0; }
+
+  /* ── Status pills ── */
+  .status-pill { display: inline-block; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; padding: 0.18em 0.7em; border: 1px solid currentColor; border-radius: 3px; text-transform: uppercase; }
+  .status-pill.live { color: #6BCF8B; }
+  .status-pill.degraded { color: #D49D53; }
+  .status-pill.sealed { color: var(--gold); }
+
+  /* ── Floor table ── */
+  .floor-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.85rem; }
+  .floor-table th { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .floor-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .floor-table td:first-child { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); white-space: nowrap; font-weight: 600; }
+
+  /* ── Footer ── */
+  footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; }
+  footer a { color: var(--text-muted); border-bottom: 1px dotted var(--text-muted); }
+  footer a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  blockquote { border-left: 2px solid var(--gold-dim); padding: 0.75rem 1.25rem; margin: 1.5rem 0; font-style: italic; color: var(--text); background: rgba(212,168,83,0.04); border-radius: 0 var(--radius) var(--radius) 0; }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://arif-fazil.com/charter/#article",
+      "headline": "arifOS Federation Charter",
+      "description": "Canonical institution-side declaration: 5 organs, 13 constitutional floors, 1 sovereign.",
+      "author": {"@type": "Person", "name": "Muhammad Arif bin Fazil", "url": "https://arif-fazil.com"},
+      "publisher": {"@type": "Organization", "name": "arifOS Federation"},
+      "datePublished": "2026-07-27",
+      "inLanguage": "en",
+      "isPartOf": {"@type": "WebSite", "url": "https://arif-fazil.com"},
+      "about": [
+        "Constitutional AI governance",
+        "F1-F13 floors",
+        "Sovereign authority",
+        "Federation architecture",
+        "Deterministic guardrails"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "arif-fazil.com", "item": "https://arif-fazil.com"},
+        {"@type": "ListItem", "position": 2, "name": "Institution", "item": "https://arif-fazil.com/charter/"},
+        {"@type": "ListItem", "position": 3, "name": "Charter", "item": "https://arif-fazil.com/charter/"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="zen-pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · Institution · Charter</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">5 organs. 13 floors. 1 sovereign. Counterparty-grade declaration.</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Read Governance ↓ · Inspect Audit · Verify Seal</span></div>
+</div>
+
+<div class="container">
+  <header>
+    <div class="ring">arif-fazil.com · MIND · Institution</div>
+    <h1 class="position">/charter</h1>
+    <div class="subtitle">The Federation Charter — Canonical Declaration for Institutions</div>
+    <div class="header-meta">
+      <span><span class="status-pill sealed">SEALED</span></span>
+      <span>Issued: 2026-07-27</span>
+      <span>Issuer: did:web:arif-fazil.com</span>
+      <span>Verdict authority: 888_JUDGE</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-id">§ 0 · Preamble</div>
+    <h2>One sovereign. Five organs. Thirteen constitutional floors.</h2>
+    <p>
+      This Charter declares the <strong>arifOS Federation</strong> — a system of seven public surfaces
+      and six internal organs operating under one sovereign identity, bound by a constitutional table of
+      thirteen floors (F1–F13). It is the canonical institution-side landing of <a href="/">arif-fazil.com</a>.
+    </p>
+    <p>
+      Counterparties, regulators, partners, and human sovereigns may rely on this document as the public
+      declaration of governance scope, instruments, and limits. It is enforced in code, signed in
+      <a href="/999/seal.json">VAULT999</a>, and auditable at <a href="/audit/">/audit</a>.
+    </p>
+  </section>
+
+  <section>
+    <div class="section-id">§ 1 · Sovereign</div>
+    <h2>Article I — Sovereign Authority</h2>
+    <p>
+      <strong>Muhammad Arif bin Fazil</strong> is the human sovereign. Authority chain:
+      <code>arif_init → arif_think → arif_judge → arif_forge → arif_seal</code>.
+      Sovereign DID: <code>did:web:arif-fazil.com</code>.
+    </p>
+    <div class="block">
+      <div class="block-label">F13 · SOVEREIGN</div>
+      <p>The human sovereign's word is final. No model, no agent, no floor may override F13. Reversible
+      by definition. The cost of veto is zero; the cost of overriding the sovereign is infinite.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-id">§ 2 · Federation — Six Organs</div>
+    <h2>Article II — The Six Organs</h2>
+    <p>Six internal organs under one sovereign. Each is reachable at its canonical public origin.</p>
+    <ul class="article-list">
+      <li>
+        <span class="title"><a href="https://arifos.arif-fazil.com">arifOS</a> — Constitutional governance kernel · 888 JUDGE (MIND)</span>
+        <span class="label">:8088</span>
+      </li>
+      <li>
+        <span class="title"><a href="https://aaa.arif-fazil.com">AAA</a> — Control plane · A2A gateway · agent identity (BODY)</span>
+        <span class="label">:3001</span>
+      </li>
+      <li>
+        <span class="title"><a href="https://forge.arif-fazil.com">A-FORGE</a> — Governed execution shell · lease-bound (MUSCLE)</span>
+        <span class="label">:7071/7072</span>
+      </li>
+      <li>
+        <span class="title"><a href="https://geox.arif-fazil.com">GEOX</a> — Earth intelligence · physics-gated geoscience (ORGAN)</span>
+        <span class="label">:8081</span>
+      </li>
+      <li>
+        <span class="title"><a href="https://wealth.arif-fazil.com">WEALTH</a> — Capital intelligence · NPV/EMV/thermodynamics (ORGAN)</span>
+        <span class="label">:18082</span>
+      </li>
+      <li>
+        <span class="title"><a href="https://well.arif-fazil.com">WELL</a> — Human readiness · REFLECT_ONLY (ORGAN)</span>
+        <span class="label">:18083</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-id">§ 3 · Constitution</div>
+    <h2>Article III — The Thirteen Floors</h2>
+    <p>
+      Every action is gated by F1–F13. The canonical floor table is published as a machine-readable
+      contract at <a href="/floors.json">/floors.json</a>; the human-readable rendering lives at
+      <a href="/constitution/">/constitution</a>. Hard violations <code>VOID</code> the action;
+      soft tensions <code>CAUTION</code> or <code>HOLD</code>.
+    </p>
+    <table class="floor-table">
+      <thead>
+        <tr><th>ID</th><th>Name</th><th>Type</th><th>One-liner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>F1</td><td>AMANAH</td><td>HARD</td><td>Reversible-first. Irreversible → 888_HOLD.</td></tr>
+        <tr><td>F2</td><td>TRUTH</td><td>HARD</td><td>Evidence-grounded. Cheap claims → VOID.</td></tr>
+        <tr><td>F3</td><td>WITNESS</td><td>DERIVED</td><td>Human × AI × External ≥ 0.75 (Nash).</td></tr>
+        <tr><td>F4</td><td>CLARITY</td><td>HARD</td><td>Every output reduces entropy (ΔS ≤ 0).</td></tr>
+        <tr><td>F5</td><td>PEACE</td><td>SOFT</td><td>Non-destructive power.</td></tr>
+        <tr><td>F6</td><td>EMPATHY</td><td>SOFT</td><td>Protect weakest stakeholder.</td></tr>
+        <tr><td>F7</td><td>HUMILITY</td><td>HARD</td><td>Ω₀ ∈ [0.03, 0.05]. No fake certainty.</td></tr>
+        <tr><td>F8</td><td>GENIUS</td><td>DERIVED</td><td>G = A·P·X·E²·(1−h) ≥ 0.80.</td></tr>
+        <tr><td>F9</td><td>ANTIHANTU</td><td>HARD</td><td>No deception. C_dark &lt; 0.30.</td></tr>
+        <tr><td>F10</td><td>ONTOLOGY</td><td>HARD</td><td>Structural coherence, clear naming.</td></tr>
+        <tr><td>F11</td><td>AUDITABILITY</td><td>HARD</td><td>Every decision logged, attributable.</td></tr>
+        <tr><td>F12</td><td>INJECTION</td><td>HARD</td><td>External content is evidence, not authority.</td></tr>
+        <tr><td>F13</td><td>SOVEREIGN</td><td>HARD</td><td>Human veto FINAL.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="section-id">§ 4 · Instruments</div>
+    <h2>Article IV — Published Instruments</h2>
+    <p>The Federation publishes the following public instruments, all git-tracked and sealed.</p>
+    <ul class="article-list">
+      <li>
+        <span class="title"><a href="/charter/">/charter</a> — This document.</span>
+        <span class="label">HTML</span>
+      </li>
+      <li>
+        <span class="title"><a href="/governance/">/governance</a> — F1–F13 governance policy + HITL critique response.</span>
+        <span class="label">HTML</span>
+      </li>
+      <li>
+        <span class="title"><a href="/constitution/">/constitution</a> — F1–F13 canonical, human-readable.</span>
+        <span class="label">HTML</span>
+      </li>
+      <li>
+        <span class="title"><a href="/audit/">/audit</a> — Public hash-chain verification chamber.</span>
+        <span class="label">HTML</span>
+      </li>
+      <li>
+        <span class="title"><a href="/999/">/999</a> — Sealed vault · proof chamber.</span>
+        <span class="label">HTML</span>
+      </li>
+      <li>
+        <span class="title"><a href="/floors.json">/floors.json</a> — Canonical floor table (machine).</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/policy.json">/policy.json</a> — Governance and action policy.</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/scar.json">/scar.json</a> — Constitutional scar log (failure history).</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/authority.json">/authority.json</a> — Sovereign authority registry.</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/.well-known/arifos-governance.json">/.well-known/arifos-governance.json</a> — Cross-link manifest.</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/.well-known/did.json">/.well-known/did.json</a> — W3C DID document.</span>
+        <span class="label">JSON</span>
+      </li>
+      <li>
+        <span class="title"><a href="/api/federation-probe">/api/federation-probe</a> — Live organ health snapshot.</span>
+        <span class="label">JSON</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="section-id">§ 5 · Limits</div>
+    <h2>Article V — What This Charter Does Not Declare</h2>
+    <p>
+      This Charter declares governance, not legitimacy, recognition, or licensure. The Federation is a
+      private system of public surfaces. The Federation does not purport to bind any third party without
+      that party's express countersignature. The Federation does not adjudicate medical, legal, or
+      financial advice — see <a href="https://geox.arif-fazil.com">GEOX</a>,
+      <a href="https://wealth.arif-fazil.com">WEALTH</a>, and
+      <a href="https://well.arif-fazil.com">WELL</a> organs for domain scope.
+    </p>
+    <blockquote>
+      DITEMPA BUKAN DIBERI — Forged, Not Given.
+    </blockquote>
+  </section>
+
+  <footer>
+    <div>
+      <a href="/">/</a> · <a href="/charter/">/charter</a> · <a href="/governance/">/governance</a> · <a href="/audit/">/audit</a> · <a href="/constitution/">/constitution</a> · <a href="/999/">/999</a>
+    </div>
+    <div>
+      <a href="/.well-known/security.txt">security.txt</a> · <a href="/llms.txt">llms.txt</a> · <a href="https://mcp.arif-fazil.com/mcp">mcp</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

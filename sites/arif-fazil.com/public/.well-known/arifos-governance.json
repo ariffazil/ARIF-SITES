@@ -1,0 +1,49 @@
+{
+  "schema": "arifos-governance-manifest/v1",
+  "domain": "arif-fazil.com",
+  "title": "arifOS Federation Governance Manifest",
+  "issued_at": "2026-07-27T00:00:00Z",
+  "issuer": "Muhammad Arif bin Fazil",
+  "sovereign_did": "did:web:arif-fazil.com",
+  "auditability_floor": "F11",
+  "governance_root": "https://arif-fazil.com/governance/",
+  "charter": "https://arif-fazil.com/charter/",
+  "audit": "https://arif-fazil.com/audit/",
+  "constitution": "https://arif-fazil.com/constitution/",
+  "institution_door": "https://arif-fazil.com/institution",
+  "floors_json": "https://arif-fazil.com/floors.json",
+  "scar_log": "https://arif-fazil.com/scar.json",
+  "policy_json": "https://arif-fazil.com/policy.json",
+  "authority_json": "https://arif-fazil.com/authority.json",
+  "seal_chamber": "https://arif-fazil.com/999/",
+  "seal_json": "https://arif-fazil.com/999/seal.json",
+  "vault_anchor": "https://arifos.arif-fazil.com/api/observatory/v1/snapshot",
+  "federation_probe": "https://arif-fazil.com/api/federation-probe",
+  "observatory_public": "https://arif-fazil.com/api/observatory",
+  "security_txt": "https://arif-fazil.com/.well-known/security.txt",
+  "did_document": "https://arif-fazil.com/.well-known/did.json",
+  "did_configuration": "https://arif-fazil.com/.well-known/did-configuration.json",
+  "mcp_gateway": "https://mcp.arif-fazil.com/mcp",
+  "federation_organs": [
+    { "id": "arifOS",  "role": "constitutional governance kernel", "url": "https://arifos.arif-fazil.com", "port": 8088 },
+    { "id": "AAA",     "role": "control plane + A2A gateway",     "url": "https://aaa.arif-fazil.com",   "port": 3001 },
+    { "id": "A-FORGE", "role": "governed execution shell",        "url": "https://forge.arif-fazil.com", "port": 7071 },
+    { "id": "GEOX",    "role": "earth intelligence",              "url": "https://geox.arif-fazil.com",  "port": 8081 },
+    { "id": "WEALTH",  "role": "capital intelligence",            "url": "https://wealth.arif-fazil.com","port": 18082 },
+    { "id": "WELL",    "role": "human readiness",                 "url": "https://well.arif-fazil.com",  "port": 18083 }
+  ],
+  "institution_acceptance": {
+    "identity_anchored_to": "did:web:arif-fazil.com",
+    "audit_trail_published": true,
+    "degraded_state_visible": true,
+    "naive_hitl_used": false,
+    "deterministic_guardrails": ["cooling_receipts", "scar_sealing", "confidence_based_delegation"],
+    "constitution_amendment_procedure": "F13 procedure: draft → sovereign review → SEAL → single commit"
+  },
+  "linked_manifests": {
+    "agent_card": "https://arif-fazil.com/.well-known/agent.json",
+    "webmcp": "https://arif-fazil.com/.well-known/webmcp.json",
+    "arifos_federation": "https://arif-fazil.com/.well-known/arifos-federation.json",
+    "llms_txt": "https://arif-fazil.com/llms.txt"
+  }
+}

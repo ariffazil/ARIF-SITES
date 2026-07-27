@@ -6,5 +6,13 @@
 /data/*   /data/:splat   200
 
 # Fix clean URLs for subdirectory index.html pages (SPA mode fallback fix)
-/canon    /canon/index.html    200
-/999      /999/index.html      200
+/canon         /canon/index.html         200
+/999           /999/index.html           200
+/000           /000/index.html           200
+/charter       /charter/index.html       200
+/governance    /governance/index.html    200
+/audit         /audit/index.html         200
+/constitution  /constitution/index.html  200
+
+# /institution is SPA route — handled by React Router via fallback
+# (no static rewrite needed; Cloudflare Pages fallback to /index.html)

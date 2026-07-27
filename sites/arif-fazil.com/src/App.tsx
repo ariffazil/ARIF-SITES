@@ -14,6 +14,7 @@ import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
 import { CommodityPage } from '@/pages/CommodityPage';
+import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
@@ -66,6 +67,14 @@ function App() {
             <Route path="/doctrine/" element={<Doctrine />} />
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
+
+            {/* Institution — three-audience surface door (human/agent/institution) */}
+            <Route path="/institution" element={<InstitutionPage />} />
+            <Route path="/institution/" element={<InstitutionPage />} />
+            <Route path="/verify" element={<Navigate to="/institution" replace />} />
+            <Route path="/verify/" element={<Navigate to="/institution" replace />} />
+            <Route path="/compliance" element={<Navigate to="/institution" replace />} />
+            <Route path="/compliance/" element={<Navigate to="/institution" replace />} />
 
             {/* Machine-facing */}
             <Route path="/000" element={<Genesis />} />
