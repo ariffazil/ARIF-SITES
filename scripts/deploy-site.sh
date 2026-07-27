@@ -107,7 +107,7 @@ command -v rsync >/dev/null 2>&1 || die "rsync is required"
 
 validate_registry() {
   jq -e '
-    .schema_version == 1 and
+    (.schema_version == 1 or .schema_version == 2) and
     .canonical_repo_root == "/root/arif-sites" and
     (.sites | type == "array" and length > 0) and
     (all(.sites[];
@@ -595,6 +595,22 @@ fi
 
 if ! retry_command "site probe" "$PROBE_ATTEMPTS" "$RETRY_DELAY" probe_once; then
   rollback_after_failure "probe failed after retries (last code $LAST_PROBE_CODE)" "rolled_back" "$BUILD_HASH" "$SOURCE_COMMIT" true false || exit 1
+fi
+
+# Post-deploy hook (2026-07-27, 888 auth): re-render the WEALTH briefing.
+# /wealth is served from $WEBROOT/static/wealth.html, cron-rendered daily at
+# 06:00 UTC from data/wealth/latest.json. Both are preserve-live overlays, so
+# they survive the swap — but a deploy must still leave the page freshly
+# rendered, never a stale bake. Non-fatal: a renderer failure must not roll
+# back an otherwise healthy site deploy; the 06:00 UTC cron self-repairs.
+if [[ "$WEBROOT_NAME" == "arif" && -f "$WEBROOT/data/wealth/latest.json" ]]; then
+  mkdir -p "$WEBROOT/static"
+  if python3 /root/scripts/wealth-static-render.py \
+      "$WEBROOT/data/wealth/latest.json" "$WEBROOT/static/wealth.html"; then
+    log "post-deploy: re-rendered static/wealth.html from latest.json"
+  else
+    log "WARN post-deploy: wealth re-render failed (non-fatal); cron repairs at 06:00 UTC"
+  fi
 fi
 
 BACKUP_PREVIOUS="$DEPLOY_DIR/previous"
