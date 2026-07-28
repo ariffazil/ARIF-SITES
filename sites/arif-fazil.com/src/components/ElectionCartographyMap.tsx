@@ -106,6 +106,11 @@ export const ElectionCartographyMap: React.FC<ElectionCartographyMapProps> = ({
 
     mapInstanceRef.current = map;
 
+    // Trigger invalidateSize after initial layout render
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 250);
+
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
@@ -113,6 +118,15 @@ export const ElectionCartographyMap: React.FC<ElectionCartographyMapProps> = ({
       }
     };
   }, []);
+
+  // Handle map resize on viewMode change
+  useEffect(() => {
+    if (viewMode === 'MAP' && mapInstanceRef.current) {
+      setTimeout(() => {
+        mapInstanceRef.current?.invalidateSize();
+      }, 100);
+    }
+  }, [viewMode]);
 
   // Update Leaflet Markers when filter or selected seat changes
   useEffect(() => {
