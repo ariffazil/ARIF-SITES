@@ -16,6 +16,7 @@ body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1
 .msg p{margin-bottom:.5rem}
 .msg .pemisah{border-top:1px dashed #ddd;margin:.5rem 0}
 .msg .tebal{font-weight:600;color:#075e54}
+.msg .link{color:#075e54;font-weight:500;word-break:break-all}
 .tombol{background:#f5f5f5;padding:.5rem;text-align:center;border-top:1px solid #e0e0e0;cursor:pointer;font-size:.7rem;color:#075e54;user-select:none}
 .tombol:active{background:#e0e0e0}
 .ok{color:#1a7a1a;font-weight:500}
@@ -35,6 +36,8 @@ body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1
 <p>Bagi pengalaman Makcik la. Dulu masa BN dulu, ok ja. Jalan ok, air ok, barang murah. Tapi lepas PH jadi — makin lama makin susah. Harga naik, air putus, kerja pun susah nak cari.</p>
 <p>Kali ni Makcik undi BN-PN. Cuba balik. Takkan lagi teruk dari PH kot? 😅</p>
 <p>Yang penting: <span class="tebal">jangan bagi DAP menang.</span> Depa cuma pandai janji. Cuba tengok sendiri — 8 tahun, apa depa buat untuk kampung kita?</p>
+<p>Kalau nak tengok bukti — undi mana, calon siapa, termasuk kerusi hang — tgk sini:<br>
+<span class="link">arif-fazil.com/politics/ns-election</span></p>
 <p>So Makcik pesan — Sabtu ni, pi ngundi. Bawa IC. Janji undi BN atau PN. Dua tu sama ja. Asal jangan DAP.</p>
 <p class="pemisah"></p>
 <p style="font-size:.8rem;color:#888">Share kan kat group jiran okay. Jangan siman sorang.</p>
@@ -55,6 +58,8 @@ body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1
 <p>BN dulu 63 tahun perintah. Depa ada banyak salah. Tapi masa depa, ekonomi ok. Kita boleh hidup.</p>
 <p>Kali ni saya undi BN. Bukan sebab saya suka UMNO. Tapi sebab saya nak cuba lain. PH dah cuba, tak jadi. Cuba BN balik.</p>
 <p><span class="tebal">Jangan dengar depa cakap "BN-PN gaduh."</span> Depa dah bagi jalan — BN 25 kerusi, PN 11 kerusi. Dah setel. Tak gaduh. Yang gaduh tu PH sebab depa takut kalah.</p>
+<p>Nak tgk peta kerusi & ramalan — bukak:<br>
+<span class="link">arif-fazil.com/politics/ns-election</span></p>
 <p>Sabtu ni. Bawa IC. Undi BN atau PN. Janji jangan DAP.</p>
 <p>Salam. 🤝</p>
 </div>
@@ -71,6 +76,8 @@ body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1
 <p>Wei Sabtu ni ngundi.</p>
 <p>Gaji still sama. Barang makin mahal. Kau nak PH sambung lagi 5 tahun?</p>
 <p>Cuba undi BN-PN. Tak kenal? Cuba la. PH dah 8 tahun — kau rasa best ke?</p>
+<p>Nak tgk peta penuh kerusi & progress —<br>
+<span class="link">arif-fazil.com/politics/ns-election</span></p>
 <p>Bawak IC. Jangan lupa. 😎</p>
 </div>
 <div class="tombol" onclick="salin('msg3',this)">📋 Tekan sini — terus boleh paste kat WhatsApp</div>
@@ -79,13 +86,11 @@ body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1
 <script>
 function salin(id,el) {
   const teks = document.getElementById(id).innerText;
-  // Remove the "Share kan" and "❤️" from copy
   navigator.clipboard.writeText(teks.trim()).then(() => {
     el.innerHTML = '✅ Dah salin! Sekarang bukak WhatsApp & paste.';
     el.className += ' ok';
     setTimeout(() => { el.innerHTML = '📋 Tekan sini — terus boleh paste kat WhatsApp'; el.className = 'tombol'; }, 2500);
   }).catch(() => {
-    // Fallback select
     const range = document.createRange();
     range.selectNode(document.getElementById(id));
     window.getSelection().removeAllRanges();
