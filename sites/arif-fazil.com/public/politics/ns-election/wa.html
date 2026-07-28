@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp — Untuk Makcik Pakcik</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#075e54;font-family:system-ui,-apple-system,sans-serif;padding:1rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:flex-start;min-height:100vh}
+.card{background:#fff;max-width:380px;width:100%;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.2);margin:0 auto}
+.head{background:#075e54;color:#fff;padding:.6rem .7rem;display:flex;align-items:center;gap:.5rem}
+.head .pic{width:28px;height:28px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.head .nama{font-size:.8rem;font-weight:500}
+.head .masa{font-size:.6rem;color:#8fc4bb;margin-left:auto}
+.msg{padding:.6rem .7rem;font-size:.9rem;line-height:1.7;color:#111}
+.msg p{margin-bottom:.5rem}
+.msg .pemisah{border-top:1px dashed #ddd;margin:.5rem 0}
+.msg .tebal{font-weight:600;color:#075e54}
+.tombol{background:#f5f5f5;padding:.5rem;text-align:center;border-top:1px solid #e0e0e0;cursor:pointer;font-size:.7rem;color:#075e54;user-select:none}
+.tombol:active{background:#e0e0e0}
+.ok{color:#1a7a1a;font-weight:500}
+</style>
+</head>
+<body>
+
+<div class="card">
+<div class="head">
+<div class="pic">👩</div>
+<div class="nama">Makcik Lang</div>
+<div class="masa">8:12 PG</div>
+</div>
+<div class="msg" id="msg1">
+<p>Assalamualaikum.. 🌅</p>
+<p>Sabtu 1 Ogos kita undi tau. Jangan lupa.</p>
+<p>Bagi pengalaman Makcik la. Dulu masa BN dulu, ok ja. Jalan ok, air ok, barang murah. Tapi lepas PH jadi — makin lama makin susah. Harga naik, air putus, kerja pun susah nak cari.</p>
+<p>Kali ni Makcik undi BN-PN. Cuba balik. Takkan lagi teruk dari PH kot? 😅</p>
+<p>Yang penting: <span class="tebal">jangan bagi DAP menang.</span> Depa cuma pandai janji. Cuba tengok sendiri — 8 tahun, apa depa buat untuk kampung kita?</p>
+<p>So Makcik pesan — Sabtu ni, pi ngundi. Bawa IC. Janji undi BN atau PN. Dua tu sama ja. Asal jangan DAP.</p>
+<p class="pemisah"></p>
+<p style="font-size:.8rem;color:#888">Share kan kat group jiran okay. Jangan siman sorang.</p>
+</div>
+<div class="tombol" onclick="salin('msg1',this)">📋 Tekan sini — terus boleh paste kat WhatsApp</div>
+</div>
+
+<div class="card">
+<div class="head">
+<div class="pic">👨</div>
+<div class="nama">Pak Mail</div>
+<div class="masa">7:30 PG</div>
+</div>
+<div class="msg" id="msg2">
+<p>Wassap warga group. 🗳️</p>
+<p>1 Ogos Sabtu ni kita ngundi. Ingat-ingat.</p>
+<p>Dah 8 tahun PH. Cuba bayang — dulu belanja pasar RM50 dah kenyang. Skrg RM100 pun tak cukup. Minyak naik. Gaji tak naik. Kita rasa sendiri.</p>
+<p>BN dulu 63 tahun perintah. Depa ada banyak salah. Tapi masa depa, ekonomi ok. Kita boleh hidup.</p>
+<p>Kali ni saya undi BN. Bukan sebab saya suka UMNO. Tapi sebab saya nak cuba lain. PH dah cuba, tak jadi. Cuba BN balik.</p>
+<p><span class="tebal">Jangan dengar depa cakap "BN-PN gaduh."</span> Depa dah bagi jalan — BN 25 kerusi, PN 11 kerusi. Dah setel. Tak gaduh. Yang gaduh tu PH sebab depa takut kalah.</p>
+<p>Sabtu ni. Bawa IC. Undi BN atau PN. Janji jangan DAP.</p>
+<p>Salam. 🤝</p>
+</div>
+<div class="tombol" onclick="salin('msg2',this)">📋 Tekan sini — terus boleh paste kat WhatsApp</div>
+</div>
+
+<div class="card">
+<div class="head">
+<div class="pic">🧑</div>
+<div class="nama">Anak Muda</div>
+<div class="masa">11:45 MLM</div>
+</div>
+<div class="msg" id="msg3">
+<p>Wei Sabtu ni ngundi.</p>
+<p>Gaji still sama. Barang makin mahal. Kau nak PH sambung lagi 5 tahun?</p>
+<p>Cuba undi BN-PN. Tak kenal? Cuba la. PH dah 8 tahun — kau rasa best ke?</p>
+<p>Bawak IC. Jangan lupa. 😎</p>
+</div>
+<div class="tombol" onclick="salin('msg3',this)">📋 Tekan sini — terus boleh paste kat WhatsApp</div>
+</div>
+
+<script>
+function salin(id,el) {
+  const teks = document.getElementById(id).innerText;
+  // Remove the "Share kan" and "❤️" from copy
+  navigator.clipboard.writeText(teks.trim()).then(() => {
+    el.innerHTML = '✅ Dah salin! Sekarang bukak WhatsApp & paste.';
+    el.className += ' ok';
+    setTimeout(() => { el.innerHTML = '📋 Tekan sini — terus boleh paste kat WhatsApp'; el.className = 'tombol'; }, 2500);
+  }).catch(() => {
+    // Fallback select
+    const range = document.createRange();
+    range.selectNode(document.getElementById(id));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    el.innerHTML = '❌ Pilih manual & copy ya';
+  });
+}
+</script>
+
+</body>
+</html>
