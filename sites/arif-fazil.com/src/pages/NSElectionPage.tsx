@@ -477,12 +477,45 @@ export function NSElectionPage() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded border border-amber-500/30 bg-amber-950/20">
-                  <h4 className="font-bold text-amber-300 text-sm mb-2">Hung Assembly (18-18)</h4>
-                  <p className="text-slate-300 text-[11px] leading-relaxed">
-                    Deadlock scenario. Bersatu holds kingmaker leverage. Prolonged negotiations or palace intervention required for MB appointment.
-                  </p>
-                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* INTEL DAP VS SOVEREIGN FEDERATION DIGITAL WARFARE MATRIX */}
+          <div className="mt-8 p-6 rounded-lg border border-amber-500/40 bg-slate-950">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+              <div>
+                <h3 className="text-xl font-black italic uppercase text-amber-400">
+                  🕵️ Digital Warfare Matrix: Red Bean Army / DAP Intel vs arifOS Federation
+                </h3>
+                <p className="font-mono text-xs text-slate-400 mt-0.5">
+                  Comparative contrast audit: Defensive Traditional Campaign vs Offensive Agentic GIS Operations
+                </p>
+              </div>
+              <span className="px-2.5 py-1 rounded bg-amber-950 text-amber-300 border border-amber-500/50 font-mono text-[10px] font-bold">
+                AUDIT VERDICT: 2 GENERATIONS AHEAD
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+              <div className="p-4 rounded border border-red-500/30 bg-red-950/10">
+                <h4 className="font-bold text-red-400 text-sm mb-2 uppercase">🔴 DAP / PH Stack (Defensive Traditional)</h4>
+                <ul className="space-y-2 text-slate-300 text-[11px]">
+                  <li>• <strong>Surface:</strong> WordPress blogs & static HTML brosurs (dapmalaysia.org).</li>
+                  <li>• <strong>Manifesto:</strong> Static Flipbook HTML5 PDF ("Kekal Harapan").</li>
+                  <li>• <strong>AI Claims:</strong> PKR "Teras" AI claims without public GIS or seat tools.</li>
+                  <li>• <strong>Strategy:</strong> Defensive stance relying on 85-90% fixed Chinese base.</li>
+                </ul>
+              </div>
+
+              <div className="p-4 rounded border border-emerald-500/30 bg-emerald-950/10">
+                <h4 className="font-bold text-emerald-400 text-sm mb-2 uppercase">🟢 arifOS Sovereign Stack (Offensive Agentic)</h4>
+                <ul className="space-y-2 text-slate-300 text-[11px]">
+                  <li>• <strong>Surface:</strong> Interactive Leaflet GIS OpenStreetMap Engine with exact lat/lng.</li>
+                  <li>• <strong>Telemetry:</strong> Live Sensory Stream (`ns_live_telemetry.json`) with volatility scores.</li>
+                  <li>• <strong>Playbook:</strong> 8-Swing seat microtargeting, counter-narratives & GOTV checklist.</li>
+                  <li>• <strong>Strategy:</strong> Offensive stance capturing high-entropy marginal seats.</li>
+                </ul>
               </div>
             </div>
           </div>
