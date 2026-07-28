@@ -17,7 +17,9 @@ import petronasVisiMisi from './petronas-visi-misi';
 import searahKekalMilikPenuh from './searah-kekal-milik-penuh';
 import searahSenyumMediaSuap from './searah-senyum-media-suap';
 import daily_2026_07_01 from './daily-2026-07-01';
+import dap8TahunBangang from './dap-8-tahun-bangang';
 export const makcikArticleModules: ArticleContent[] = [
+  dap8TahunBangang,
   searahSenyumMediaSuap,
   searahKekalMilikPenuh,
   petronasVisiMisi,
@@ -37,6 +39,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'dap-8-tahun-bangang',
+    title: '8 Benda BANGANG DAP Dalam Kerajaan',
+    subtitle: 'DAP dah 8 tahun dalam kerajaan. Bukan pembangkang lagi. Tapi buat apa? Makcik senaraikan 8 benda bangang.',
+    date: '2026-07-28',
+    domain: 'MAKCIKGPT x MALAYSIA',
+    language: 'ms',
+    excerpt: 'DAP 8 tahun dalam kerajaan: Janji tak jadi, air still putus, harga barang naik, Loke hilang suara, reformasi lesap.',
+    tags: ['dap', 'prn-2026', 'negeri-sembilan', 'reformasi', 'makcikgpt'],
+    seal: '999',
+  },
   {
     slug: 'searah-senyum-media-suap',
     title: 'Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy',

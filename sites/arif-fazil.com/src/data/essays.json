@@ -1105,5 +1105,27 @@
       "path": "/world/makcikgpt/sam-altman-elon-musk-anwar-akal"
     },
     "seal": "999"
+  },
+  {
+    "id": "m5-3",
+    "title": "8 Benda BANGANG DAP Dalam Kerajaan",
+    "date": "2026-07-28",
+    "lang": "bm",
+    "series": {
+      "id": "M5",
+      "n": 3
+    },
+    "tags": [
+      "dap",
+      "prn-2026",
+      "negeri-sembilan",
+      "reformasi",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/dap-8-tahun-bangang"
+    },
+    "seal": "999"
   }
 ]
