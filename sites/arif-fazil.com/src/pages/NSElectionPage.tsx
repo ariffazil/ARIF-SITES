@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ElectionCartographyMap, NS_SEATS, type SeatData, PARTY_COLORS } from '@/components/ElectionCartographyMap';
 import { QuoteCard } from '@/components/QuoteCard';
 import { useWebMCP } from '@/hooks/useWebMCP';
@@ -169,6 +170,12 @@ export function NSElectionPage() {
           <span className="text-slate-300">arifOS · Federation Intelligence · Quantum Political Dynamics</span>
         </div>
         <div className="flex items-center gap-4 text-[11px]">
+          <Link
+            to="/politics/ns-election/playbook"
+            className="px-2.5 py-1 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition-colors uppercase tracking-wider font-mono text-[10px]"
+          >
+            📋 OPERATIONAL PLAYBOOK →
+          </Link>
           <span>Sealed Ledger: <code className="text-amber-400">VAULT999-PRN16-NS</code></span>
           <span>Hermes Model Status: <strong className="text-emerald-400">VALIDATED (±2 SEATS)</strong></span>
         </div>
