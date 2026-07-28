@@ -450,8 +450,12 @@ arif-fazil.com {
 	redir /genesis /000/ 301
 	redir /canon /doctrine 301
 	redir /constellation /doctrine 301
-	redir /federation /doctrine 301
-	redir /federation/* /doctrine 301
+	# 2026-07-28 — federation/doctrine merger routing: doctrine lives at /federation/
+	# /federation/* is served as real HTML by the explicit handle above this block.
+	# Bare /federation 308s to /federation/; /doctrine 308s to /federation/ (legacy alias).
+	# External witness (F2 TRUTH): real content > SPA shell; the merger must be visible to agents.
+	redir /federation /federation/ 308
+	redir /doctrine /federation/ 308
 	redir /discoveries /earth 301
 	redir /essays /writing 301
 	redir /essays/* /writing{uri} 301
