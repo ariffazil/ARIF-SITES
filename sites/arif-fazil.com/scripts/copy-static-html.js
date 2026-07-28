@@ -10,6 +10,7 @@ const root = path.resolve(__dirname, "..");
 const staticCopies = [
   ["canon/index.html", "dist/canon/index.html"],
   ["999/index.html", "dist/999/index.html"],
+  ["politics/ns-election/index.html", "dist/politics/ns-election/index.html"],
 ];
 
 staticCopies.forEach(([src, dest]) => {

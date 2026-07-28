@@ -77,27 +77,11 @@ Canonical landing: https://arif-fazil.com/world/makcikgpt/
 - `/world/makcikgpt/` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)
 - `/writing` — Narrative essays by Arif (redirect from `/essays`)
 - `/doctrine` — Constitutional floors, federation topology, manifesto (merged: canon + constellation)
-- `/institution` — Three-audience surface door (Human / Agent / Institution)
-- `/charter/` — Federation charter — institution-side declaration (Article I–V)
-- `/governance/` — F1–F13 governance + response to naive Human-in-the-Loop
-- `/audit/` — Public hash-chain verification chamber
-- `/constitution/` — F1–F13 constitutional floors, human-readable
 - `/000/` — Genesis archive, wisdom canon, origin context for agents
 - `/999/` — Proof and verification chamber
 - `/oil/` — Brent crude cognitive dashboard
 - `/gas/` — Natural gas dashboard
 - `/gold/` — Gold trading synthesis
-
-## Institution-Facing Surfaces (counterparty / regulator / partner)
-- `/charter/` — Federation declaration
-- `/governance/` — F1–F13 + HITL critique response (deterministic guardrails)
-- `/audit/` — Public hash-chain verification
-- `/constitution/` — F1–F13 canonical
-- `/institution` — Audience switcher (Human / Agent / Institution)
-- `/api/observatory` — Live constitutional witness (public mirror)
-- `/api/federation-probe` — Live organ health snapshot
-- `/.well-known/security.txt` — RFC 9116 disclosure
-- `/.well-known/arifos-governance.json` — Governance manifest
 
 ## arifOS MCP Endpoint
 - **Public MCP**: `https://mcp.arif-fazil.com/mcp` (streamable HTTP)
