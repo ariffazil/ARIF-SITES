@@ -47,6 +47,12 @@ function App() {
             {/* World — civic journalism + commodities + spatial politics */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
+            <Route path="/politics" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/politics/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/malaysia" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/malaysia/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
