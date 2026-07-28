@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs",
+    "prebuild": "node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs && node scripts/generate-ns-telemetry.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",

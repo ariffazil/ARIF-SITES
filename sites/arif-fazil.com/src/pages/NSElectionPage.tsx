@@ -205,7 +205,34 @@ export function NSElectionPage() {
               </p>
             </div>
 
-            <div>
+            <div className="space-y-4">
+              <div className="p-4 rounded-lg border border-emerald-500/50 bg-slate-950 font-mono text-xs shadow-xl">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+                    <strong className="text-emerald-400 font-bold uppercase tracking-wider">LIVE SENSORY STREAM</strong>
+                  </div>
+                  <span className="text-[10px] text-slate-500">1,482 SIGNALS</span>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center text-slate-300">
+                    <span>Highest Volatility:</span>
+                    <strong className="text-amber-400">N32 Linggi (-4.2 Shift)</strong>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-300">
+                    <span>Malay Turnout Rate:</span>
+                    <strong className="text-slate-100">76.5% Projecting</strong>
+                  </div>
+                  <div className="flex justify-between items-center text-slate-300">
+                    <span>Non-Malay Floor:</span>
+                    <strong className="text-slate-100">61.2% Active</strong>
+                  </div>
+                  <div className="pt-2 border-t border-slate-900 text-[10px] text-slate-400 italic">
+                    "Felda Sendayan voters express water pressure concerns; Youth swing vector shifting toward BN/PN."
+                  </div>
+                </div>
+              </div>
+
               <QuoteCard
                 topic="On Political Geometry"
                 quote="Politics is not an art of the possible; it is the science of spatial calculation under scarcity, cultural inertia, and quantum split alignment."
