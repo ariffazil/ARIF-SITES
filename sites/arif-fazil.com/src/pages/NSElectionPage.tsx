@@ -244,6 +244,74 @@ export function NSElectionPage() {
         </div>
       </section>
 
+      {/* LIVE COUNTDOWN & CURRENT STATE VS PREDICTION FORWARD SECTION */}
+      <section className="py-8 border-b border-forge-iron bg-slate-950">
+        <div className="site-frame">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+            {/* LIVE COUNTDOWN TIMER */}
+            <div className="p-5 rounded-lg border border-amber-500/50 bg-[#07090E] shadow-2xl flex flex-col justify-between">
+              <div className="flex items-center justify-between font-mono text-xs mb-3">
+                <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping"></span>
+                  ⏳ LIVE COUNTDOWN TO POLLING
+                </span>
+                <span className="text-slate-500 font-mono text-[10px]">SABTU 1 OGOS 2026</span>
+              </div>
+              <div className="grid grid-cols-4 gap-2 font-mono text-center my-2">
+                <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                  <div className="text-2xl font-black text-amber-400">03</div>
+                  <div className="text-[10px] text-slate-500 uppercase">HARI</div>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                  <div className="text-2xl font-black text-slate-200">12</div>
+                  <div className="text-[10px] text-slate-500 uppercase">JAM</div>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                  <div className="text-2xl font-black text-slate-200">45</div>
+                  <div className="text-[10px] text-slate-500 uppercase">MINIT</div>
+                </div>
+                <div className="p-2 rounded bg-slate-900 border border-slate-800">
+                  <div className="text-2xl font-black text-emerald-400">30</div>
+                  <div className="text-[10px] text-slate-500 uppercase">SAAT</div>
+                </div>
+              </div>
+              <p className="text-[11px] font-mono text-slate-400 mt-2 text-center">
+                Early Voting: <strong className="text-slate-200">Rabu 29 Julai (Polis/Tentera)</strong>
+              </p>
+            </div>
+
+            {/* CURRENT STATE VS PREDICTION MOVING FORWARD */}
+            <div className="lg:col-span-2 p-5 rounded-lg border border-slate-800 bg-[#07090E] grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
+              <div className="p-4 rounded bg-slate-950 border border-red-500/30">
+                <div className="flex items-center justify-between mb-2">
+                  <strong className="text-red-400 font-bold uppercase tracking-wider text-xs">📌 CURRENT STATE (STATUS QUO 2023)</strong>
+                  <span className="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[10px]">36 SEATS</span>
+                </div>
+                <div className="space-y-1.5 text-slate-300 text-[11px]">
+                  <p>• <strong>PH-BN Coalition:</strong> 31 Seats (PH 17 + BN 14)</p>
+                  <p>• <strong>Perikatan Nasional:</strong> 5 Seats (PAS 3 + Bersatu 2)</p>
+                  <p>• <strong>Marginal Baseline:</strong> 4 Seats under 600-vote majority</p>
+                  <p className="text-slate-400 italic pt-1 border-t border-slate-900">"Comfortable 31-5 supermajority in 2023 under formal PH-BN electoral pact."</p>
+                </div>
+              </div>
+
+              <div className="p-4 rounded bg-slate-950 border border-emerald-500/30">
+                <div className="flex items-center justify-between mb-2">
+                  <strong className="text-emerald-400 font-bold uppercase tracking-wider text-xs">🚀 PREDICTION MOVING FORWARD (PRN16)</strong>
+                  <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 text-[10px] font-bold">18-16-2 HUNG</span>
+                </div>
+                <div className="space-y-1.5 text-slate-300 text-[11px]">
+                  <p>• <strong>PH Lead:</strong> 18 Seats (Slight plurality, 1 seat short of majority)</p>
+                  <p>• <strong>BN Resurgence:</strong> 16 Seats (Retaining Malay heartland)</p>
+                  <p>• <strong>PN / Kingmaker:</strong> 2 Seats + 2 Ultra-Marginal Toss-ups</p>
+                  <p className="text-emerald-400/90 italic pt-1 border-t border-slate-900">"High probability hung assembly (18-18). Bersatu independent split creates kingmaker leverage."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 9 TOP CONTRAST QUANTUM-MEANINGFUL INVARIANTS */}
       <section className="py-12 border-b border-forge-iron bg-slate-950/80">
         <div className="site-frame">
