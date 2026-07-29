@@ -17,6 +17,9 @@ import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
 
+import { NSElectionPage } from '@/pages/NSElectionPage';
+import { PlaybookPage } from '@/pages/PlaybookPage';
+
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
 function CommodityPageGold() { return <CommodityPage slug="gold" />; }
@@ -41,9 +44,19 @@ function App() {
             <Route path="/economics/" element={<Wealth />} />
             <Route path="/economics/article/:slug" element={<WealthArticle />} />
 
-            {/* World — civic journalism + commodities */}
+            {/* World — civic journalism + commodities + spatial politics */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
+            <Route path="/politics" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/politics/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/malaysia" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/malaysia/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/politics/ns-election" element={<NSElectionPage />} />
+            <Route path="/politics/ns-election/" element={<NSElectionPage />} />
+            <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
+            <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
             {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
                 the bare /world/makcikgpt and the legacy /index suffix both
                 resolve to the same canonical page (no extra redirect). */}

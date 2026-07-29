@@ -78,7 +78,7 @@ export function World() {
         <div className="site-frame">
           <div className="section-label">📊 Market Dashboards</div>
           <h2 className="text-4xl font-black uppercase italic mb-8 tracking-tight">Commodities</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {commodityMarkets.map((m) => (
               <a key={m.slug} href={`/world/${m.slug}`}
                  className="brutalist-card group block hover:border-forge-orange transition-colors">
@@ -90,6 +90,14 @@ export function World() {
                 </span>
               </a>
             ))}
+            <Link to="/politics/ns-election" className="brutalist-card group block hover:border-amber-400 transition-colors border-amber-500/40 bg-amber-500/5">
+              <h3 className="text-3xl font-black uppercase italic mb-4 tracking-tight text-amber-400 group-hover:text-amber-300 transition-colors">
+                NS PRN '26
+              </h3>
+              <span className="font-technical text-[0.7rem] uppercase tracking-widest text-amber-400/80">
+                Spatial Election Matrix →
+              </span>
+            </Link>
           </div>
           <p className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest mt-12 max-w-xl leading-relaxed">
             Dashboards are cognitive aids, not signals. Every number carries an epistemic label.

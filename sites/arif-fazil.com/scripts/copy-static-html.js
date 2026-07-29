@@ -6,10 +6,15 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
+const dirsToCopy = ['canon', '999', 'politics', 'malaysia', 'vitals'];
 
 const staticCopies = [
   ["canon/index.html", "dist/canon/index.html"],
   ["999/index.html", "dist/999/index.html"],
+  ["politics/ns-election/index.html", "dist/politics/ns-election/index.html"],
+  ["politics/index.html", "dist/politics/index.html"],
+  ["malaysia/index.html", "dist/malaysia/index.html"],
+  ["vitals/index.html", "dist/vitals/index.html"],
 ];
 
 staticCopies.forEach(([src, dest]) => {

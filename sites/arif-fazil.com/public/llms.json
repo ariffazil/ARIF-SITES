@@ -10,6 +10,7 @@
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/world/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/world/makcikgpt/dap-8-tahun-bangang": "MakcikGPT article — 8 Benda BANGANG DAP Dalam Kerajaan",
     "/world/makcikgpt/searah-senyum-media-suap": "MakcikGPT article — Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy",
     "/world/makcikgpt/searah-kekal-milik-penuh": "MakcikGPT article — \"Kekal Milik Penuh Malaysia\" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy",
     "/world/makcikgpt/petronas-visi-misi": "MakcikGPT article — Ada Apa Pada Visi dan Misi Hang?",
@@ -60,5 +61,5 @@
     "llms_txt": true,
     "sitemap": true
   },
-  "last_updated": "2026-07-25"
+  "last_updated": "2026-07-28"
 }

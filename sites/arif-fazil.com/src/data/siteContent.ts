@@ -35,6 +35,7 @@ export const primaryLinks: LinkItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Earth', href: '/earth' },
   { label: 'Economics', href: '/economics' },
+  { label: 'Politics', href: '/politics/ns-election' },
   { label: 'World', href: '/world' },
   { label: 'Writing', href: '/writing' },
   { label: 'Doctrine', href: '/doctrine' },
