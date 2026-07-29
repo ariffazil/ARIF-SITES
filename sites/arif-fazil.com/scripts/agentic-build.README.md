@@ -94,6 +94,35 @@ The script does NOT auto-rollback. If a surface 404s after the build:
 4. If a `set -e` failure broke the script before the mirror, the live site is
    unchanged from the last successful build
 
+## Common failures
+
+### "Surface 404s but the static file is on disk"
+
+Likely cause: a Caddy `@spa_routes` block in `/etc/caddy/Caddyfile` matches
+the path before `try_files {path} /index.html` falls through to find the file.
+Caddy's `try_files` only checks `{path}` as a literal file — NOT `{path}/index.html` —
+so directory-style URLs (`/constitution/`) are skipped and the Vite SPA shell
+at `/var/www/html/arif/dist/index.html` is served instead. The React app then
+shows its own 404 page (HTTP 200) because the route isn't in the SPA.
+
+**Fix:** add a specific `handle` block for the path BEFORE `@spa_routes`. Example
+for `/constitution/`:
+
+```caddyfile
+@constitution_static path /constitution /constitution/
+handle @constitution_static {
+    root * /var/www/html/arif
+    file_server
+}
+```
+
+Then `caddy validate --config /etc/caddy/Caddyfile` and
+`systemctl reload caddy`. Verify with `curl -sI https://arif-fazil.com/constitution/`.
+
+This pattern applies to any path with a real static file that's being shadowed
+by the SPA fallback. As of 2026-07-29, the four pages that need(ed) this
+treatment are `/constitution/`, `/charter/`, `/audit/`, `/aaa/`.
+
 ## Commit pattern
 
 After a successful build:
