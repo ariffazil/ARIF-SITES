@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "KnowledgeGraph",
+  "id": "https://arif-fazil.com/graph.json",
+  "canonical_site": "https://arif-fazil.com/",
+  "nodes": [
+    {"id":"https://arif-fazil.com/","type":"site","role":"human_surface"},
+    {"id":"https://arifos.arif-fazil.com/","type":"organ","name":"arifOS","role":"constitutional_kernel"},
+    {"id":"https://aaa.arif-fazil.com/","type":"organ","name":"AAA","role":"control_plane"},
+    {"id":"https://geox.arif-fazil.com/","type":"organ","name":"GEOX","role":"earth_intelligence"},
+    {"id":"https://wealth.arif-fazil.com/","type":"organ","name":"WEALTH","role":"capital_intelligence"},
+    {"id":"https://well.arif-fazil.com/","type":"organ","name":"WELL","role":"human_readiness"},
+    {"id":"https://forge.arif-fazil.com/","type":"organ","name":"A-FORGE","role":"governed_execution"}
+  ],
+  "edges": [
+    {"from":"https://arif-fazil.com/","relation":"owned_by","to":"https://arif-fazil.com/.well-known/identity.json"},
+    {"from":"https://arifos.arif-fazil.com/","relation":"governs","to":"https://aaa.arif-fazil.com/"},
+    {"from":"https://arifos.arif-fazil.com/","relation":"governs","to":"https://forge.arif-fazil.com/"},
+    {"from":"https://arif-fazil.com/","relation":"coordinates","to":"https://arifos.arif-fazil.com/"}
+  ],
+  "proof": "https://arif-fazil.com/proof/index.json",
+  "last_updated": "2026-07-27"
+}

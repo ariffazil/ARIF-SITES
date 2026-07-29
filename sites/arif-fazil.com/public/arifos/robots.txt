@@ -7,6 +7,12 @@ Disallow: /mcp
 Disallow: /health
 Disallow: /tools.json
 Disallow: /sse
+# Read-only machine surfaces remain reachable for headless clients.
+Allow: /api/public-state
+Allow: /api/observatory/v1/snapshot
+Allow: /api/observatory/v1/health
+Allow: /.well-known/public-state.json
+Allow: /.well-known/observatory-snapshot-latest.json
 Disallow: /api/
 
 # Agent discovery (allowed)

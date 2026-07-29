@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "KnowledgeCorpus",
+  "id": "https://arif-fazil.com/knowledge/corpus.json",
+  "canonical_site": "https://arif-fazil.com/",
+  "sources": [
+    {"path":"/llms.txt","format":"text","role":"site_overview"},
+    {"path":"/llms.json","format":"json","role":"structured_overview"},
+    {"path":"/graph.json","format":"json","role":"federation_graph"},
+    {"path":"/proof/index.json","format":"json","role":"public_proof_index"},
+    {"path":"/sitemap.xml","format":"xml","role":"canonical_route_index"}
+  ],
+  "scope": ["identity", "geoscience", "governed_ai", "civic_intelligence", "public_proof"],
+  "access": "PUBLIC_READ_ONLY",
+  "last_updated": "2026-07-27"
+}

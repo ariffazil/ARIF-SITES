@@ -5,54 +5,57 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        border: "#222222",
-        input: "#111111",
-        ring: "#00FF41",
-        background: "#050505",
-        foreground: "#F0F0F0",
-        
-        // FORGE Palette (Industrial Brutalist)
+        border: "#1f2733",
+        input: "#11151c",
+        ring: "#31c48d",
+        background: "#0a0c10",
+        foreground: "#e6edf3",
+
+        // FORGE Palette (Zen Sovereign — graphite base, muted bronze accent)
+        // Token NAMES unchanged; values aligned to /_shared/tokens.css canon.
         forge: {
-          black: "#050505",
-          steel: "#111111",
-          iron: "#222222",
-          dim: "#8A8D91",
-          white: "#F0F0F0",
-          orange: "#FF4500", // Forge Orange
-          green: "#00FF41",  // Phosphor Green
-          red: "#FF003C",    // Hazard Red
+          black: "#0a0c10",  // graphite base
+          steel: "#11151c",  // surface
+          iron: "#1f2733",   // hairline
+          dim: "#8b98a8",    // warm-gray ink, secondary
+          white: "#e6edf3",  // warm-gray ink, primary
+          orange: "#b08d57", // editorial bronze (world family accent — was #FF4500)
+          gold: "#c9a84c",   // muted gold (quotes / gold family)
+          green: "#31c48d",  // STATUS ONLY — seal/live (was phosphor #00FF41)
+          red: "#f0506e",    // STATUS ONLY — void/hazard (was #FF003C)
         },
 
         primary: {
-          DEFAULT: "#F0F0F0",
-          foreground: "#050505",
+          DEFAULT: "#e6edf3",
+          foreground: "#0a0c10",
         },
         secondary: {
-          DEFAULT: "#111111",
-          foreground: "#F0F0F0",
+          DEFAULT: "#11151c",
+          foreground: "#e6edf3",
         },
         muted: {
-          DEFAULT: "#111111",
-          foreground: "#8A8D91",
+          DEFAULT: "#11151c",
+          foreground: "#8b98a8",
         },
         accent: {
-          DEFAULT: "#FF4500",
-          foreground: "#F0F0F0",
+          DEFAULT: "#b08d57",
+          foreground: "#0a0c10",
         },
       },
       fontFamily: {
         display: ['"Cabinet Grotesk"', '"Space Grotesk"', 'sans-serif'],
         header: ['"Cabinet Grotesk"', 'sans-serif'],
-        body: ['"Satoshi"', '"Space Grotesk"', 'sans-serif'],
+        body: ['"Satoshi"', '"IBM Plex Sans"', '"Space Grotesk"', 'sans-serif'],
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
-        technical: ['"JetBrains Mono"', 'monospace'],
+        technical: ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
       },
       borderRadius: {
         none: "0px",
-        sm: "0px",
-        md: "0px",
-        lg: "0px",
-        xl: "0px",
+        sm: "4px",
+        md: "8px",
+        lg: "12px",
+        xl: "16px",
       },
       borderWidth: {
         DEFAULT: '1px',
@@ -60,40 +63,13 @@ module.exports = {
         '3': '3px',
       },
       boxShadow: {
-        'brutalist': '4px 4px 0px 0px #222222',
-        'brutalist-hover': '2px 2px 0px 0px #222222',
-        'glow-green': '0 0 15px rgba(0, 255, 65, 0.3)',
-        'glow-orange': '0 0 15px rgba(255, 69, 0, 0.3)',
+        'brutalist': '0 1px 2px rgba(0, 0, 0, 0.4)',
+        'brutalist-hover': '0 8px 24px rgba(0, 0, 0, 0.35)',
+        'glow-green': '0 0 6px rgba(49, 196, 141, 0.25)',
+        'glow-orange': '0 0 6px rgba(176, 141, 87, 0.25)',
       },
-      keyframes: {
-        "scanline": {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" },
-        },
-        "flicker": {
-          "0%": { opacity: "0.97" },
-          "5%": { opacity: "0.9" },
-          "10%": { opacity: "0.97" },
-          "15%": { opacity: "1" },
-          "70%": { opacity: "0.98" },
-          "80%": { opacity: "0.9" },
-          "90%": { opacity: "0.99" },
-          "100%": { opacity: "1" },
-        },
-        "glitch": {
-          "0%": { transform: "translate(0)" },
-          "20%": { transform: "translate(-2px, 2px)" },
-          "40%": { transform: "translate(-2px, -2px)" },
-          "60%": { transform: "translate(2px, 2px)" },
-          "80%": { transform: "translate(2px, -2px)" },
-          "100%": { transform: "translate(0)" },
-        }
-      },
-      animation: {
-        "scanline": "scanline 8s linear infinite",
-        "flicker": "flicker 0.15s infinite",
-        "glitch": "glitch 0.5s infinite",
-      },
+      // scanline / flicker / glitch keyframes retired (Zen Sovereign, 2026-07-26) —
+      // no component referenced them; the CRT overlay on .site-shell was removed.
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -4,18 +4,17 @@
 
 @layer base {
   :root {
-    --background: #050505;
-    --foreground: #F0F0F0;
-    --border: #222222;
-    --muted: #A0A0A0;
-    --accent: #FF4500;
-    --radius: 0px;
+    --background: #0a0c10;
+    --foreground: #e6edf3;
+    --border: #1f2733;
+    --muted: #8b98a8;
+    --accent: #b08d57;
+    --radius: 8px;
   }
 
   * {
     box-sizing: border-box;
     border-color: var(--border);
-    border-radius: var(--radius) !important;
   }
 
   html {
@@ -52,7 +51,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid #FF4500;
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 
@@ -74,22 +73,6 @@
     position: relative;
   }
 
-  /* Scanline Overlay */
-  .site-shell::after {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 999;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-    opacity: 0.15;
-  }
-
   .site-frame {
     width: 100%;
     max-width: 1400px;
@@ -98,11 +81,11 @@
   }
 
   .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: #A0A0A0;
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: #5a6675;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.12em;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -113,21 +96,22 @@
     content: "";
     flex: 1;
     height: 1px;
-    background: #222;
+    background: var(--border);
   }
 
   .brutalist-card {
-    background: #111;
-    border: 2px solid #222;
+    background: #11151c;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
     padding: 2rem;
     position: relative;
-    transition: all 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
   .brutalist-card:hover {
     border-color: var(--accent);
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0px 0px var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 
   .badge-status {
@@ -135,11 +119,12 @@
     font-size: 0.65rem;
     padding: 0.25rem 0.5rem;
     border: 1px solid currentColor;
+    border-radius: 999px;
     text-transform: uppercase;
   }
 
-  .badge-status--live { color: #00FF41; border-color: rgba(0, 255, 65, 0.3); background: rgba(0, 255, 65, 0.05); }
-  .badge-status--hold { color: #FF4500; border-color: rgba(255, 69, 0, 0.3); background: rgba(255, 69, 0, 0.05); }
+  .badge-status--live { color: #31c48d; border-color: rgba(49, 196, 141, 0.35); background: rgba(49, 196, 141, 0.08); }
+  .badge-status--hold { color: #e8833a; border-color: rgba(232, 131, 58, 0.35); background: rgba(232, 131, 58, 0.08); }
 
   .button-forge {
     display: inline-flex;
@@ -147,8 +132,9 @@
     justify-content: center;
     padding: 0.75rem 1.5rem;
     background: transparent;
-    border: 2px solid #F0F0F0;
-    color: #F0F0F0;
+    border: 1px solid #e6edf3;
+    border-radius: var(--radius);
+    color: #e6edf3;
     font-family: 'Cabinet Grotesk', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
@@ -158,8 +144,8 @@
   }
 
   .button-forge:hover {
-    background: #F0F0F0;
-    color: #050505;
+    background: #e6edf3;
+    color: #0a0c10;
   }
 
   .button-forge--accent {
@@ -169,14 +155,11 @@
 
   .button-forge--accent:hover {
     background: var(--accent);
-    color: #050505;
+    color: #0a0c10;
   }
 }
 
 @layer utilities {
-  .text-glow-green { text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
-  .text-glow-orange { text-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
-
   /* Screen reader only — visible on focus for skip link */
   .sr-only {
     position: absolute;
@@ -198,25 +181,26 @@
     padding: 0.75rem 1.25rem;
     clip: auto;
     white-space: normal;
-    background: #F0F0F0;
-    color: #050505;
+    background: #e6edf3;
+    color: #0a0c10;
     font-family: 'Cabinet Grotesk', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
     z-index: 10000;
-    border: 2px solid #FF4500;
+    border: 2px solid var(--accent);
+    border-radius: var(--radius);
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #050505; }
-::-webkit-scrollbar-thumb { background: #222; border: 2px solid #050505; }
-::-webkit-scrollbar-thumb:hover { background: #FF4500; }
+::-webkit-scrollbar-track { background: #0a0c10; }
+::-webkit-scrollbar-thumb { background: #1f2733; border: 2px solid #0a0c10; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #b08d57; }
 
 ::selection {
-  background: #FF4500;
-  color: #050505;
+  background: #b08d57;
+  color: #0a0c10;
 }
 
 /* Essay Content Typography */
@@ -251,26 +235,27 @@
   line-height: 1.75; 
   font-size: 1.05rem;
 }
-.essay-content a { 
-  color: #FF4500; 
-  text-decoration: underline; 
+.essay-content a {
+  color: #b08d57;
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
-.essay-content a:hover { 
-  color: #FF8C00; 
+.essay-content a:hover {
+  color: #c9a87a;
 }
-.essay-content strong { 
-  font-weight: 700; 
-  color: #FFFFFF; 
+.essay-content strong {
+  font-weight: 700;
+  color: #e6edf3;
 }
-.essay-content em { 
-  font-style: italic; 
+.essay-content em {
+  font-style: italic;
 }
 .essay-content blockquote {
-  border-left: 3px solid #FF4500;
+  border-left: 2px solid #b08d57;
   padding: 1rem 1.5rem;
   margin: 1.5rem 0;
-  background: rgba(255,69,0,0.05);
+  background: rgba(176,141,87,0.06);
+  border-radius: 0 var(--radius) var(--radius) 0;
   font-style: italic;
 }
 .essay-content blockquote p { 
@@ -283,27 +268,29 @@
   margin-bottom: 0.5rem; 
   line-height: 1.6;
 }
-.essay-content pre { 
-  background: #0D0D0D; 
-  border: 1px solid #222; 
-  padding: 1.25rem; 
-  overflow-x: auto; 
-  margin: 1.25rem 0; 
-  font-size: 0.875rem; 
+.essay-content pre {
+  background: #11151c;
+  border: 1px solid #1f2733;
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
-.essay-content code { 
-  font-family: 'JetBrains Mono', monospace; 
-  font-size: 0.875em; 
+.essay-content code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
 }
-.essay-content p code { 
-  background: rgba(255,255,255,0.06); 
-  padding: 0.15em 0.4em; 
-  border: 1px solid #222;
+.essay-content p code {
+  background: rgba(255,255,255,0.05);
+  padding: 0.15em 0.4em;
+  border: 1px solid #1f2733;
+  border-radius: 4px;
 }
 .essay-content hr {
   border: none;
-  border-top: 1px solid #222;
+  border-top: 1px solid #1f2733;
   margin: 2rem 0;
 }
 .essay-content img {

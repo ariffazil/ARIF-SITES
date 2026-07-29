@@ -42,24 +42,8 @@
     <div class="zs-status">
       <span class="live-dot" aria-hidden="true"></span>
       <span id="pulseTimestamp">connecting…</span>
-          </div>
-          <div class="signal-column">
-            <div class="signal-card signal-card--seasonality" title="EUREKA-GAS-001">
-              <div class="signal-card-header">
-                <span class="signal-card-title">⚡ Seasonality</span>
-                <span class="signal-score" id="tfSeasScore">—</span>
-              </div>
-              <div class="signal-card-body" id="tfSeasBody">Loading seasonal baseline…</div>
-              <div class="signal-card-footer">
-                <span id="tfSeasLabel">5yr baseline</span>
-                <span class="confidence-tier" id="tfSeasTier">—</span>
-              </div>
-              <div style="margin-top:6px; height:4px; background:var(--line); border-radius:2px; overflow:hidden;">
-                <div id="tfSeasBar" style="height:100%; width:50%; background:var(--accent); border-radius:2px; transition:width .6s ease,background .6s ease;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+  </div>
   <nav class="zs-local" aria-label="Markets">
     <a href="/wealth/vitals/">PETRONAS</a>
     <a href="/wealth/malaysia/">MALAYSIA</a>
@@ -478,67 +462,7 @@
     stanceKey: 'gas_stance',
     rrMarginal: 1.5,
     chartAccent: '#4aa89e',
-    seasonality: true,
   };
-</script>
-<script>
-// ── EUREKA-GAS-001: Seasonality Card ──
-(async function refreshSeasonality() {
-  try {
-    const res = await fetch('/wealth/gas/api/seasonality');
-    if (!res.ok) return;
-    const d = await res.json();
-
-    // Score
-    const elScore = document.getElementById('tfSeasScore');
-    if (elScore) {
-      const verdicts = { 'CHEAP': '🟢 BUY', 'WEAK_CHEAP': '🟡 WEAK BUY', 'NORMAL': '⚪ FAIR', 'WEAK_EXPENSIVE': '🟠 WEAK SELL', 'EXPENSIVE': '🔴 SELL' };
-      elScore.textContent = verdicts[d.seasonal_verdict] || d.seasonal_verdict;
-    }
-
-    // Body
-    const elBody = document.getElementById('tfSeasBody');
-    if (elBody) {
-      elBody.innerHTML = `
-        <div style="font-size:11px;line-height:1.5;">
-          ${d.current_month_label} gas at <strong>\$${d.current_price}</strong><br>
-          vs 5yr ${d.current_month_label} avg <strong>\$${d.seasonal_avg}</strong><br>
-          Deviation: <strong>${d.deviation_sigma > 0 ? '+' : ''}${d.deviation_sigma}σ</strong> (${d.deviation_pct > 0 ? '+' : ''}${d.deviation_pct}%)<br>
-          <span style="color:var(--dim);">5yr range: \$${d.seasonal_min} – \$${d.seasonal_max}</span>
-        </div>`;
-    }
-
-    // Confidence tier
-    const elTier = document.getElementById('tfSeasTier');
-    if (elTier) {
-      const absDev = Math.abs(d.deviation_sigma);
-      elTier.textContent = absDev > 1.5 ? 'HIGH CONFIDENCE' : absDev > 0.8 ? 'MODERATE' : 'LOW';
-      elTier.style.color = absDev > 1.5 ? 'var(--accent)' : 'var(--dim)';
-    }
-
-    // Bar — position on the seasonal range
-    const elBar = document.getElementById('tfSeasBar');
-    if (elBar && d.seasonal_min != null && d.seasonal_max != null) {
-      const range = d.seasonal_max - d.seasonal_min;
-      const pct = range > 0 ? ((d.current_price - d.seasonal_min) / range * 100) : 50;
-      elBar.style.width = Math.max(2, Math.min(98, pct)) + '%';
-      // Color: green if cheap (left side), red if expensive (right)
-      if (pct < 30) elBar.style.background = '#4aa89e';       // cheap = teal
-      else if (pct > 70) elBar.style.background = '#e05555';   // expensive = red
-      else elBar.style.background = '#b0a060';                  // mid = amber
-    }
-
-    // Label
-    const elLabel = document.getElementById('tfSeasLabel');
-    if (elLabel) {
-      elLabel.textContent = `${d.deviation_sigma > 0 ? '+' : ''}${d.deviation_sigma}σ vs 5yr ${d.current_month_label}`;
-    }
-  } catch (e) {
-    console.warn('Seasonality card:', e.message);
-  }
-  // Refresh every 5 min
-  setTimeout(refreshSeasonality, 300_000);
-})();
 </script>
 <script src="/_shared/zen-market.js" defer></script>
 
@@ -550,8 +474,8 @@
   "schema": "wealth.snapshot.v1",
   "organ": "WEALTH",
   "asset": "NATURAL_GAS_HENRY_HUB",
-  "timestamp": "2026-07-29T02:30:08.043793+08:00",
-  "observed_at": "2026-07-28T18:30:08.357809+00:00",
+  "timestamp": "2026-07-26T21:30:09.337168+08:00",
+  "observed_at": "2026-07-26T13:30:09.580496+00:00",
   "coherence_id": null,
   "epistemic_tier": "OBS",
   "confidence": 0.88,
@@ -562,21 +486,20 @@
   },
   "market_state": {
     "symbol": "NG=F",
-    "price_usd": 2.71,
+    "price_usd": 2.89,
     "change_pct": 0,
     "regime": "NEUTRAL",
-    "rsi_14": 38.3,
+    "rsi_14": 37.9,
     "ema_trend": "BEARISH",
     "key_levels": {
       "support": [
-        2.7,
-        2.69,
-        2.67
+        2.88,
+        2.87
       ],
       "resistance": [
-        2.71,
-        2.72,
-        2.73
+        2.9,
+        2.92,
+        2.93
       ]
     }
   }

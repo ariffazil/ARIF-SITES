@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schema.org/Person",
+  "type": "Person",
+  "id": "https://arif-fazil.com/.well-known/identity.json",
+  "name": "Muhammad Arif bin Fazil",
+  "alternate_name": "Arif Fazil",
+  "role": "Sovereign architect and founder of arifOS",
+  "authority": "F13_SOVEREIGN",
+  "canonical_site": "https://arif-fazil.com/",
+  "did": "did:web:arif-fazil.com",
+  "same_as": [
+    "https://github.com/ariffazil",
+    "https://arifos.arif-fazil.com/",
+    "https://aaa.arif-fazil.com/"
+  ],
+  "verification": {
+    "did_document": "https://arif-fazil.com/.well-known/did.json",
+    "proof_index": "https://arif-fazil.com/proof/index.json"
+  },
+  "epistemic_status": "PUBLIC_IDENTITY_RECORD",
+  "last_updated": "2026-07-27"
+}
