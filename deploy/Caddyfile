@@ -493,11 +493,19 @@ arif-fazil.com {
 	# Unknown paths get a real 404 for agent/curl access
 	redir /world/makcikgpt /world/makcikgpt/ 308
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
-	# MakcikGPT landing page — served directly for all UAs (2026-07-29: P17 fix)
-	handle /world/makcikgpt/ {
-		uri strip_prefix /world/makcikgpt
+	# MakcikGPT landing — bot lane serves the canonical static index; browser
+	# traffic falls through to the SPA catch-all which renders the React
+	# World hub. (2026-07-29: P17 — file_server root inheritance fails
+	# inside the vhost subroute, so a static landing file_server would 404.
+	# The catch-all @spa_routes below serves /var/www/html/arif/index.html
+	# for browser UAs hitting /world/makcikgpt/.)
+	@ai-bot-landing {
+		header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot|ChatGPT|curl|python-requests|node-fetch|Go-http-client
+		path /world/makcikgpt/
+	}
+	handle @ai-bot-landing {
 		root * /var/www/html/arif/makcikgpt-md
-		try_files /index.html =404
+		try_files {http.request.uri.path}index.html /var/www/html/arif/makcikgpt-md/index.html =404
 		file_server
 	}
 	# Bot-readable MakcikGPT articles from the generated HTML source surface.
@@ -542,6 +550,7 @@ arif-fazil.com {
 	}
 	@spa_routes path / /economics* /writing* /world* /doctrine* /earth* /federation* /connect* /verify* /wealth* /well* /geox* /oil* /gas* /gold* /canon* /arifos*
 	handle @spa_routes {
+		root * /var/www/html/arif
 		try_files {path} /index.html
 		file_server
 	}
