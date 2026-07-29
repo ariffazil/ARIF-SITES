@@ -1175,5 +1175,52 @@
       "path": "/world/makcikgpt/chennah-bangang"
     },
     "seal": "999"
+  },
+  {
+    "id": "m5-2",
+    "title": "Anwar Ibrahim: Dulu Reformis, Sekarang Mangkuk Ayun",
+    "date": "2026-07-28",
+    "lang": "bm",
+    "series": {
+      "id": "M5",
+      "n": 2
+    },
+    "tags": [
+      "anwar-ibrahim",
+      "reformasi",
+      "jung",
+      "shadow",
+      "psikologi",
+      "makcikgpt",
+      "negeri-sembilan"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/anwar-jung-shadow"
+    },
+    "seal": "999"
+  },
+  {
+    "id": "m2-7",
+    "title": "Bernama Baru Sampai. Makcik Dah Lama Tanya.",
+    "date": "2026-07-18",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 7
+    },
+    "tags": [
+      "searah",
+      "petronas",
+      "bernama",
+      "media",
+      "press-release",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/searah-bernama-lewat"
+    },
+    "seal": "999"
   }
 ]

@@ -19,7 +19,11 @@ import searahSenyumMediaSuap from './searah-senyum-media-suap';
 import daily_2026_07_01 from './daily-2026-07-01';
 import dap8TahunBangang from './dap-8-tahun-bangang';
 import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-bangla-telefon';
+import anwarJungShadow from './anwar-jung-shadow';
+import searahBernamaLewat from './searah-bernama-lewat';
 export const makcikArticleModules: ArticleContent[] = [
+  searahBernamaLewat,
+  anwarJungShadow,
   anakSarawakBayarPdaAnakBanglaTelefon,
   dap8TahunBangang,
   searahSenyumMediaSuap,
@@ -41,6 +45,28 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'searah-bernama-lewat',
+    title: 'Bernama Baru Sampai. Makcik Dah Lama Tanya.',
+    subtitle: '40 hari lepas Makcik cerita SEARAH. Semalam Bernama copy press release. Makcik tanya: ini ke "berita"?',
+    date: '2026-07-18',
+    domain: 'MAKCIKGPT × SEARAH × MEDIA',
+    language: 'ms',
+    excerpt: 'Bernama siar SEARAH — 40 hari lepas Makcik dah tulis. Bila agensi berita nasional jadi mesin fotostat press release? Makcik dedah 10 soalan Bernama tak tanya.',
+    tags: ['searah', 'petronas', 'bernama', 'media', 'press-release', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
+  {
+    slug: 'anwar-jung-shadow',
+    title: 'Anwar Ibrahim: Dulu Reformis, Sekarang Mangkuk Ayun',
+    subtitle: 'Makcik, aku nak cerita pasal satu lelaki — dulu lawan zalim, masuk penjara kena pukul, sekarang duduk atas kerusi yang dulu dia lawan. Kenapa? Psikologi kata: bayang.',
+    date: '2026-07-28',
+    domain: 'MAKCIKGPT × MALAYSIA × PSYCHOLOGY',
+    language: 'ms',
+    excerpt: 'Anwar Ibrahim — dulu reformis, sekarang mangkuk ayun. Makcik analisa guna psikologi bayang Jung: persona besar, bayang pun besar. Bila dapat kuasa, bayang yang pimpin. Jangan tipu diri sendiri — pemilih pun ada bayang.',
+    tags: ['anwar-ibrahim', 'reformasi', 'jung', 'shadow', 'psikologi', 'makcikgpt', 'malaysia', 'negeri-sembilan'],
+    seal: '999',
+  },
   {
     slug: 'anak-sarawak-bayar-pda-anak-bangla-telefon',
     title: 'Anak Sarawak Bayar PDA, Anak Bangla Telefon Je Dapat',
