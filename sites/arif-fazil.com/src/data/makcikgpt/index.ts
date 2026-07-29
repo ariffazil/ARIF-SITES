@@ -18,7 +18,9 @@ import searahKekalMilikPenuh from './searah-kekal-milik-penuh';
 import searahSenyumMediaSuap from './searah-senyum-media-suap';
 import daily_2026_07_01 from './daily-2026-07-01';
 import dap8TahunBangang from './dap-8-tahun-bangang';
+import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-bangla-telefon';
 export const makcikArticleModules: ArticleContent[] = [
+  anakSarawakBayarPdaAnakBanglaTelefon,
   dap8TahunBangang,
   searahSenyumMediaSuap,
   searahKekalMilikPenuh,
@@ -39,6 +41,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'anak-sarawak-bayar-pda-anak-bangla-telefon',
+    title: 'Anak Sarawak Bayar PDA, Anak Bangla Telefon Je Dapat',
+    subtitle: 'Bangladesh call Anwar semalam — minta LNG. Anwar kata boleh. Tapi Sarawak yang keluar 90% LNG Malaysia — depa kena lawan PETRONAS bertahun. Makcik, hang nampak tak double standard ni?',
+    date: '2026-07-29',
+    domain: 'MAKCIKGPT × SARAWAK × PETRONAS',
+    language: 'ms',
+    excerpt: 'Bangladesh PM Tarique Rahman telefon Anwar semalam minta LNG — Anwar setuju. Tapi Sarawak yang hasilkan 90% LNG Malaysia — LNG dikecualikan dari hak Petros, kena mahkamah sejak 2016. Dua piawai: satu telefon vs 10 tahun. Makcik tanya: siapa sebenarnya second-class resource citizens?',
+    tags: ['sarawak', 'petronas', 'bangladesh', 'lng', 'petros', 'anwar', 'double-standard', 'pda', 'asimetri', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'dap-8-tahun-bangang',
     title: '8 Benda BANGANG DAP Dalam Kerajaan',

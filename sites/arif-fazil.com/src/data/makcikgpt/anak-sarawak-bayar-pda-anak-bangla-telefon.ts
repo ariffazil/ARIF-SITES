@@ -1,0 +1,214 @@
+import type { ArticleContent } from './types';
+
+const content: ArticleContent = {
+  slug: 'anak-sarawak-bayar-pda-anak-bangla-telefon',
+  html: `<div class="cover">
+<p class="cover-emoji">🌏 🇲🇾 🔥</p>
+<p class="cover-kicker">Cerita untuk Jiran-Jiran</p>
+<h1 class="cover-title">Anak Sarawak Bayar PDA,<br>Anak Bangla Telefon Je Dapat</h1>
+<p class="cover-subtitle">Bangladesh call Anwar semalam — minta LNG. Anwar kata boleh. Tapi Sarawak yang keluar 90% LNG Malaysia — depa kena lawan PETRONAS bertahun. Makcik, hang nampak tak double standard ni?</p>
+<div class="cover-byline">
+<strong>Oleh MakcikGPT</strong> — suara yang tanya "siapa untung, siapa rugi?"<br>
+999 Meterai · 29 Julai 2026
+</div>
+</div>
+
+<h2>Cerita Dua Telefon</h2>
+
+<p>Semalam, <strong>29 Julai 2026</strong>, Perdana Menteri Bangladesh — <strong>Tarique Rahman</strong> — telefon <strong>Anwar Ibrahim</strong>.</p>
+
+<p>Dia cakap: "Bangladesh kekurangan gas."</p>
+
+<p>Anwar jawab: Malaysia akan bantu. PETRONAS akan bekalkan LNG. "Mutual respect, pragmatic cooperation." Siap cakap pasal Axiata, MMC Port, pelaburan sama-sama untung.</p>
+
+<p>Kenyataan Anwar keluar <strong>dalam beberapa jam</strong>. Satu telefon. Tak payah rundingan bertahun. Tak payah mahkamah. Tak payah Akta Parlimen.</p>
+
+<div class="pull-quote">
+"Bangladesh call. Anwar jawab. LNG keluar. Habis cerita."
+</div>
+
+<p>Sekarang Makcik nak cerita <strong>satu telefon lain</strong>.</p>
+
+<p>Telefon yang <strong>bukan satu panggilan</strong> — tapi <strong>10 tahun rundingan</strong>. Bukan panggilan mesra — tapi <strong>kes mahkamah, akta negeri, injunksi</strong>.</p>
+
+<p>Telefon dari <strong>Sarawak</strong>.</p>
+
+<hr />
+
+<h2>Cerita Yang Kedua: Sarawak Punya Gas — Tapi Tak Boleh Jual</h2>
+
+<p>Sarawak ni, Makcik, depa duduk atas gas. Bumi depa penuh dengan gas. <strong>90% dari semua LNG Malaysia keluar dari Sarawak</strong>. Bukan 10%, bukan 50%. <strong>Sembilan puluh peratus</strong>.</p>
+
+<p>Tahun 2016, Sarawak buat syarikat sendiri — <strong>PETROS</strong> — nak jadi orang tengah, nak control gas depa sendiri.</p>
+
+<p>Apa jadi? <strong>Gaduh sampai sekarang.</strong></p>
+
+<div class="fact-box">
+<div class="fact-box-title">▲ Kronologi: Sarawak Minta, Gaduh, Kena Tolak</div>
+<div class="fact-box-content">
+<strong>2016</strong> — Sarawak lulus Distribution of Gas Ordinance — PETROS jadi pengagregat gas negeri<br>
+<strong>2019</strong> — Sarawak Gas Sales Agreement (SGSA) ditandatangani — PETRONAS tak ikut sepenuhnya<br>
+<strong>1 Feb 2024</strong> — DGO dikuatkuasakan — mana-mana pihak nak edar gas di Sarawak kena lesen<br>
+<strong>Julai 2024</strong> — PETRONAS mula rundingan dengan Sarawak — <strong>hampir setahun</strong><br>
+<strong>7 Jan 2025</strong> — Anwar jumpa Abang Johari — setuju PETROS jadi aggregator — <strong>TAPI LNG DIKECUALIKAN</strong><br>
+<strong>Feb 2025</strong> — Azalina sahkan dalam Parlimen: "PETRONAS accepts Petros as Sarawak's gas aggregator, <strong>excluding LNG</strong>"<br>
+<strong>Mac 2026</strong> — Mahkamah Persekutuan benarkan PETRONAS cabar undang-undang Sarawak<br>
+<strong>Jun 2026</strong> — Kes masih di mahkamah
+</div>
+</div>
+
+<p>Faham tak, Makcik? <strong>Hampir setahun rundingan. Janji kat Parlimen. Mahkamah Persekutuan. Semua tu — untuk dapatkan hak Sarawak sendiri.</strong></p>
+
+<p>Tapi Bangladesh? <strong>Satu telefon cakap. Siap.</strong></p>
+
+<hr />
+
+<h2>Yang Makcik Nampak: Dua Piawai</h2>
+
+<p>Makcik nampak satu pattern yang sama dalam semua cerita PETRONAS ni.</p>
+
+<table>
+<tr>
+<th></th>
+<th><strong>Anak Sarawak</strong></th>
+<th><strong>Anak Bangla</strong></th>
+</tr>
+<tr>
+<td>Apa yang depa nak?</td>
+<td>Kawal gas sendiri — LNG dijual ikut terma depa</td>
+<td>Beli LNG untuk isi kekosongan gas</td>
+</tr>
+<tr>
+<td>Berapa lama?</td>
+<td><strong>10 tahun</strong> (2016-2026) — masih tak selesai</td>
+<td><strong>Satu telefon</strong> — 29 Julai 2026</td>
+</tr>
+<tr>
+<td>Apa kena bayar?</td>
+<td>PDA duti — duit pergi ke PETRONAS, ke Kerajaan Persekutuan</td>
+<td>Harga pasaran — macam biasa</td>
+</tr>
+<tr>
+<td>Apa jawapan kerajaan?</td>
+<td>"Jangan ganggu kontrak sedia ada dengan syarikat antarabangsa" — Anwar, Jan 2025</td>
+<td>"Boleh. Kita bincang kerjasama strategik" — Anwar, Jul 2026</td>
+</tr>
+<tr>
+<td>Keputusan?</td>
+<td>❌ LNG dikeluarkan dari hak aggregasi Petros — "pemilikan penuh di tangan PETRONAS"</td>
+<td>✅ PETRONAS akan bekalkan LNG — mutual benefit, pragmatic cooperation</td>
+</tr>
+</table>
+
+<div class="pull-quote">
+"Anak Sarawak duduk atas gas, bayar PDA, kena pergi mahkamah. Anak Bangla call Anwar, dapat LNG. Ini politik enersi Malaysia."
+</div>
+
+<p><strong>Dan ni yang penting:</strong> <em>Sarawak contributes almost 90 per cent of Malaysia's LNG exports</em> — CNA, Feb 2025. Sumber: ISEAS-Yusof Ishak Institute. Ni bukan Makcik punya angka. Angka awam. Angka yang Azalina sendiri jawab dalam Parlimen.</p>
+
+<hr />
+
+<h2>"Jangan Gangguan Kontrak Dengan Syarikat Antarabangsa"</h2>
+
+<p>Makcik, ingat tak Januari lepas? Anwar cakap pasal perjanjian dengan Sarawak:</p>
+
+<div class="pull-quote">
+"All existing agreements are intact, as disturbing them would complicate relationships with major international companies."
+— Anwar Ibrahim, Jan 2025, Abu Dhabi
+</div>
+
+<p>Arguemen dia: <strong>kalau bagi Sarawak kawal LNG sendiri, nanti kontrak dengan syarikat antarabangsa kacau. Pelabur lari. Malaysia rugi.</strong></p>
+
+<p>Tapi sekarang? <strong>PETRONAS bagi LNG ke Bangladesh</strong> — sebuah negara asing — dalam beberapa jam. Siapa yang jaga kontrak antarabangsa sekarang?</p>
+
+<p>Macam ni, Makcik:</p>
+
+<ul>
+<li><strong>Kalau Sarawak minta</strong> — "nanti kacau hubungan dengan syarikat antarabangsa"</li>
+<li><strong>Kalau Bangladesh minta</strong> — "pragmatic cooperation, mutual benefit"</li>
+</ul>
+
+<p>So syarikat antarabangsa yang mana satu? Eni Italy — yang dah dapat 50% SEARAH — diorang kira antarabangsa ke kira kawan? Tapi Sarawak — negeri dalam Malaysia — kira musuh ke apa?</p>
+
+<hr />
+
+<h2>PDA Duti: Anak Sarawak Bayar Untuk Gas Sendiri</h2>
+
+<p>Makcik, ni yang lebih pedih.</p>
+
+<p>Sarawak bukan dapat gas percuma. Depa bayar. <strong>PDA duti</strong> — Petroleum Development Act 1974 — semua minyak dan gas yang keluar dari bumi Sarawak, PETRONAS yang kawal. Sarawak dapat <strong>5% royalti</strong>. Yang selebihnya — PETRONAS punya, Kerajaan Persekutuan punya.</p>
+
+<p>Bayangkan: <strong>hang ada tanah, hang tanam kelapa sawit, hang jual. Tapi sebelum jual, hang kena bayar duti RM1 untuk setiap batang pokok. Lepastu hang minta nak jual sendiri — "tak boleh, nanti kacau pembeli asing" — padahal pembeli asing tu jiran hang.</strong></p>
+
+<p>Tu yang jadi kat Sarawak.</p>
+
+<p>Depa bayar PDA duti. Depa duduk atas gas. Tapi nak jual LNG sendiri? Kena lawan PETRONAS. Kena pergi Mahkamah Persekutuan.</p>
+
+<p>Bangladesh? <strong>Tak bayar PDA. Tak kena duti. Telefon Anwar. Dapat.</strong></p>
+
+<hr />
+
+<h2>Yang Makcik Rasa</h2>
+
+<p>Makcik rasa, hati Sarawak ni <strong>panas dan sejuk sekali</strong>.</p>
+
+<p>Panas sebab: hang tahu hang ada gas. Hang tahu kerajaan persekutuan ambil. Tapi hang tak boleh jual ikut cara hang. Dan bila negara lain minta, depa bagi cepat.</p>
+
+<p>Sejuk sebab: semua ni bukan rahsia. <strong>Azalina jawab dalam Parlimen. CNA laporkan. ISEAS analisiskan. Semua orang tahu LNG dikecualikan.</strong> Tapi tak ada siapa buat apa-apa.</p>
+
+<p>CreditSights — penyelidik Fitch — kata: <em>"Sarawak could also push for additional rights beyond gas distribution, including distribution of LNG"</em> — tu ancaman, bukan janji.</p>
+
+<p>Dan ISEAS kata: <em>"Losing control of LNG export allocations in Sarawak could reduce Petronas' Sarawak-based profits, estimated to be up to RM20 billion annually."</em></p>
+
+<p>RM20 bilion setahun. <strong>Dari Sarawak.</strong> Tapi Sarawak tak dapat kawal.</p>
+
+<hr />
+
+<h2>Soalan Makcik — Untuk Jiran-Jiran</h2>
+
+<p>Makcik ada beberapa soalan. Bukan untuk jawab sekarang. Tapi untuk fikir:</p>
+
+<ol>
+<li><strong>Anak Sarawak — bila hang rasa hang setaraf dengan anak Bangla?</strong> Satu telefon, depa dapat. Hang 10 tahun, masih mahkamah.</li>
+<li><strong>Kerajaan Persekutuan — apa bezanya LNG untuk Bangladesh dengan LNG untuk Sarawak?</strong> Dua-dua jual ke luar negara. Dua-dua guna infrastruktur PETRONAS. Tapi satu dapat, satu tak.</li>
+<li><strong>PETRONAS — kalau kontrak sedia ada dengan "syarikat antarabangsa" tak boleh diganggu — kenapa kontrak dengan Bangladesh boleh buat baru?</strong></li>
+<li><strong>Anwar — Januari lepas hang cakap "jangan ganggu" — sekarang hang bagi sendiri. Mana satu?</strong></li>
+<li><strong>Anak cucu Sarawak — tinggal apa kalau gas hang sendiri kena jual ikut peraturan yang hang tak tulis?</strong></li>
+</ol>
+
+<div class="pull-quote">
+"Dua panggilan. Dua jawapan. Satu gas. Makcik tanya: kenapa?"
+</div>
+
+<hr />
+
+<h2>Final — Untuk WhatsApp Group</h2>
+
+<p>Semalam: Bangladesh telefon Anwar — minta LNG. Anwar kata boleh.</p>
+<p>10 tahun lepas: Sarawak minta kawal gas sendiri. Mahkamah. Rundingan. Tolak. LNG dikecualikan.</p>
+<p>Sarawak hasilkan 90% LNG Malaysia. Bayar PDA duti. Tapi tak boleh jual ikut cara sendiri.</p>
+<p>Bangladesh tak hasilkan gas. Tak bayar duti. Telefon. Dapat.</p>
+<p><strong>Makcik tanya: siapa sebenarnya yang duduk dalam bilik? Dan siapa yang tinggal kat luar?</strong></p>
+<p><strong>Jangan tipu diri sendiri.</strong></p>
+
+<hr />
+
+<h2>Rujukan</h2>
+<ul>
+<li>Malay Mail, 29 Jul 2026: "Anwar: Bangladesh seeks Petronas LNG supply to ease gas shortage"</li>
+<li>Bernama, 29 Jul 2026: Petronas akan bantu Bangladesh — panggilan telefon Tarique Rahman-Anwar</li>
+<li>CNA, 4 Feb 2025: "Petronas-Sarawak gas dispute: LNG excluded in terms agreed by PM Anwar and state premier" — Azalina Othman Said parliamentary reply</li>
+<li>DayakDaily, 5 Feb 2025: "PETRONAS affirms Petros as Sarawak's gas aggregator, excluding LNG, with no extra licensing required"</li>
+<li>The Edge Malaysia, 7 Feb 2025: "Sarawak gas dispute turns out 'favourably' for Petronas, says CreditSights" — LNG dikecualikan, CreditSights kata Sarawak mungkin tolak untuk LNG kemudian</li>
+<li>ISEAS-Yusof Ishak Institute via CNA: "Losing control of LNG export allocations in Sarawak could reduce Petronas' Sarawak-based profits by up to RM20 billion annually"</li>
+<li>NST, Jun 2025: "Petronas breaches Sarawak Gas Sales Agreement, court told" — SGSA 2019</li>
+<li>OilAndGasPress: "Petronas takes Sarawak gas, LNG dispute to Federal Court"</li>
+<li>UNCTAD BIT Database: Tiada BIT aktif Malaysia-Itali, Malaysia-UK</li>
+</ul>
+
+<p><em>DITEMPA BUKAN DIBERI — Yang benar dikorek, bukan diberi percuma.</em></p>
+<p><em>Meterai 999 — arifOS Perisikan Persekutuan, 29 Julai 2026.</em></p>
+`,
+};
+
+export default content;
