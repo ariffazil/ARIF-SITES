@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "AuthorityRecord",
+  "id": "https://arif-fazil.com/authority.json",
+  "authority": "ARIF",
+  "legal_name": "Muhammad Arif bin Fazil",
+  "role": "F13_SOVEREIGN",
+  "kernel": "arifOS",
+  "status": "ACTIVE",
+  "human_veto": true,
+  "governance": "https://arif-fazil.com/policy.json",
+  "identity": "https://arif-fazil.com/.well-known/identity.json",
+  "proof": "https://arif-fazil.com/proof/index.json",
+  "last_updated": "2026-07-27"
+}

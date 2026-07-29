@@ -17,6 +17,25 @@ class RuntimeOverlayRegistryTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.registry = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
         cls.sites = {entry["site"]: entry for entry in cls.registry["sites"]}
+        # Build an alias-resolver so legacy-subdomain names like
+        # arifos.arif-fazil.com collapse onto their owning site entry. The
+        # registry's `aliases` per entry is the single source of truth — the
+        # short `site` key plus legacy subdomain plus unified_path segment.
+        cls.by_alias: dict[str, str] = {}
+        for entry in cls.registry["sites"]:
+            for alias in entry.get("aliases", []):
+                if alias in cls.by_alias and cls.by_alias[alias] != entry["site"]:
+                    raise AssertionError(
+                        f"alias {alias!r} is owned by both "
+                        f"{cls.by_alias[alias]!r} and {entry['site']!r}"
+                    )
+                cls.by_alias[alias] = entry["site"]
+
+    def resolve(self, name: str) -> dict:
+        canonical = self.by_alias.get(name)
+        if canonical is None:
+            self.fail(f"unknown site alias: {name!r}")
+        return self.sites[canonical] if canonical in self.sites else self.sites[self.by_alias[name]]
 
     def test_registry_has_unique_explicit_owners(self) -> None:
         entries = self.registry["sites"]
@@ -40,7 +59,7 @@ class RuntimeOverlayRegistryTests(unittest.TestCase):
                     )
 
     def assert_overlay_paths(self, site: str, expected: set[str]) -> None:
-        actual = {item["path"] for item in self.sites[site]["overlays"]}
+        actual = {item["path"] for item in self.resolve(site)["overlays"]}
         self.assertTrue(expected <= actual, f"{site} missing {sorted(expected - actual)}")
 
     def test_required_runtime_boundaries_are_registered(self) -> None:
@@ -79,13 +98,27 @@ class RuntimeOverlayRegistryTests(unittest.TestCase):
             self.assert_overlay_paths(commodity, {"api", "vendor"})
 
     def test_wiki_requires_strict_pinned_build(self) -> None:
-        build = self.sites["wiki.arif-fazil.com"]["build"]
+        build = self.resolve("wiki.arif-fazil.com")["build"]
         self.assertTrue(build["pinned"])
         self.assertIn("--strict", build["command"])
         self.assertEqual(build["version_contains"], "1.6.1")
         markers = {marker["contains"] for marker in build["output_markers"]}
         self.assertIn("mkdocs-1.6.1, mkdocs-material-9.7.7", markers)
         self.assertNotEqual(build["output"], ".")
+
+    def test_aliases_resolve_to_exactly_one_owner(self) -> None:
+        # One source owner: every alias resolves to exactly one site entry.
+        # If two sites ever claim the same alias, fail closed.
+        counts: dict[str, list[str]] = {}
+        for site_name, entry in self.sites.items():
+            for alias in entry.get("aliases", []):
+                counts.setdefault(alias, []).append(site_name)
+        for alias, owners in counts.items():
+            self.assertEqual(
+                len(owners),
+                1,
+                f"alias {alias!r} resolves to multiple owners: {owners}",
+            )
 
     def test_both_deploy_paths_consume_registry_and_fail_closed(self) -> None:
         per_site = PER_SITE_SCRIPT.read_text(encoding="utf-8")

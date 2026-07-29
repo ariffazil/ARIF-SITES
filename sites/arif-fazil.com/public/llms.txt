@@ -91,10 +91,14 @@ Canonical landing: https://arif-fazil.com/world/makcikgpt/
 - **Constitution**: `https://arifos.arif-fazil.com/constitution.json`
 
 ## Machine-Readable Discovery
+- `/.well-known/identity.json` — Public identity record and DID linkage
+- `/.well-known/capability.json` — Agent-operable capability manifest
 - `/.well-known/agent.json` — Agent capability declaration
 - `/.well-known/did.json` — W3C DID document (did:web:arif-fazil.com)
-- `/.well-known/arifos-federation.json` — Federation manifest
-- `/soul.json` — Sovereign identity and philosophy anchor
+- `/authority.json` — Sovereign authority registry
+- `/policy.json` — Public governance and action policy
+- `/graph.json` — Federation knowledge graph
+- `/knowledge/corpus.json` — Public knowledge corpus index
 - `/llms.json` — Structured site overview (JSON form)
 - `/page.json` — Machine-readable site overview (purpose, route_model)
 - `/llms-full.txt` — Full-text content dump for LLM ingestion

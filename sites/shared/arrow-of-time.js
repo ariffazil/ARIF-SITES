@@ -9,6 +9,16 @@
 
   var style = document.createElement('style');
   style.textContent =
+    '.aot-machine{background:#080808;border-bottom:1px solid #1a1a1a;' +
+    'font-family:"JetBrains Mono","SF Mono","Fira Code",monospace;' +
+    'position:relative;z-index:9999}' +
+    '.aot-machine>summary{cursor:pointer;list-style:none;padding:0.25rem 1rem;' +
+    'color:#555;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;' +
+    'user-select:none}' +
+    '.aot-machine>summary::-webkit-details-marker{display:none}' +
+    '.aot-machine>summary::before{content:"\\25B8\\0020";color:#333}' +
+    '.aot-machine[open]>summary::before{content:"\\25BE\\0020"}' +
+    '.aot-machine>summary:hover{color:#999}' +
     '#arrow-of-time{' +
       'display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;' +
       'padding:0.35rem 1rem;background:#080808;border-bottom:1px solid #1a1a1a;' +
@@ -70,13 +80,26 @@
       '<span class="aot-arrow-label" id="aot-day-pct">--%</span>' +
     '</span>';
 
+  // 2026-07-26 (P1-HOME/S4): telemetry demoted behind a collapsed <details>.
+  // bar keeps id="arrow-of-time" so overlays (soul/mind/body) still find it.
+  var details = document.createElement('details');
+  details.className = 'aot-machine';
+  var summary = document.createElement('summary');
+  summary.textContent = 'Machine time & canon telemetry';
+  details.appendChild(summary);
+  details.appendChild(bar);
+
   // Insert after trinity-nav if present, otherwise as first child of body
   function insert() {
     var trinityNav = document.querySelector('.trinity-nav');
-    if (trinityNav && trinityNav.nextSibling) {
-      trinityNav.parentNode.insertBefore(bar, trinityNav.nextSibling);
+    if (trinityNav) {
+      if (trinityNav.nextSibling) {
+        trinityNav.parentNode.insertBefore(details, trinityNav.nextSibling);
+      } else {
+        trinityNav.parentNode.appendChild(details);
+      }
     } else if (document.body) {
-      document.body.insertBefore(bar, document.body.firstChild);
+      document.body.insertBefore(details, document.body.firstChild);
     }
   }
 

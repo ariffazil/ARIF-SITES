@@ -28,7 +28,10 @@
           200
         ]
       },
-      "overlays": []
+      "overlays": [],
+      "aliases": [
+        "_shared"
+      ]
     },
     {
       "site": "arif-fazil.com",
@@ -76,6 +79,9 @@
           "strategy": "preserve-live",
           "note": "2026-07-27: latest.json + 50-day archive are cron-maintained; deploy must never clobber (888 auth)"
         }
+      ],
+      "aliases": [
+        "arif-fazil.com"
       ]
     },
     {
@@ -138,6 +144,10 @@
           "owner": "arifos-zen-publisher",
           "strategy": "preserve-live"
         }
+      ],
+      "aliases": [
+        "arifos",
+        "arifos.arif-fazil.com"
       ]
     },
     {
@@ -165,6 +175,10 @@
           "owner": "aaa-runtime-state",
           "strategy": "preserve-live"
         }
+      ],
+      "aliases": [
+        "aaa",
+        "aaa.arif-fazil.com"
       ]
     },
     {
@@ -242,6 +256,10 @@
           "owner": "geox-organ",
           "strategy": "preserve-live"
         }
+      ],
+      "aliases": [
+        "geox",
+        "geox.arif-fazil.com"
       ]
     },
     {
@@ -269,6 +287,10 @@
           "owner": "wealth-organ-identity",
           "strategy": "preserve-live"
         }
+      ],
+      "aliases": [
+        "wealth",
+        "wealth.arif-fazil.com"
       ]
     },
     {
@@ -295,6 +317,10 @@
           "owner": "well-organ-discovery",
           "strategy": "preserve-live"
         }
+      ],
+      "aliases": [
+        "well",
+        "well.arif-fazil.com"
       ]
     },
     {
@@ -322,6 +348,10 @@
           "owner": "mcp-gateway-discovery",
           "strategy": "merge-source-wins"
         }
+      ],
+      "aliases": [
+        "mcp",
+        "mcp.arif-fazil.com"
       ]
     },
     {
@@ -349,6 +379,10 @@
           "owner": "a-forge-discovery",
           "strategy": "merge-source-wins"
         }
+      ],
+      "aliases": [
+        "forge",
+        "forge.arif-fazil.com"
       ]
     },
     {
@@ -395,7 +429,11 @@
           200
         ]
       },
-      "overlays": []
+      "overlays": [],
+      "aliases": [
+        "wiki",
+        "wiki.arif-fazil.com"
+      ]
     },
     {
       "site": "oil",
@@ -431,6 +469,9 @@
           "strategy": "preserve-live",
           "note": "2026-07-26: live dashboard is cron-managed (update_market_jsonld.sh rewrites reality packet every 15min); deploy must never clobber"
         }
+      ],
+      "aliases": [
+        "oil"
       ]
     },
     {
@@ -467,6 +508,9 @@
           "strategy": "preserve-live",
           "note": "2026-07-26: live dashboard is cron-managed (update_market_jsonld.sh rewrites reality packet every 15min); deploy must never clobber"
         }
+      ],
+      "aliases": [
+        "gas"
       ]
     },
     {
@@ -503,6 +547,9 @@
           "strategy": "preserve-live",
           "note": "2026-07-26: live dashboard is cron-managed (update_market_jsonld.sh rewrites reality packet every 15min); deploy must never clobber"
         }
+      ],
+      "aliases": [
+        "gold"
       ]
     }
   ]

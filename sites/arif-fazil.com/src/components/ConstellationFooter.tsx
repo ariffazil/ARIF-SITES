@@ -1,80 +1,48 @@
 import { contactLinks } from '@/data/siteContent';
 
+const quietLink =
+  'font-mono text-[0.7rem] text-forge-dim hover:text-forge-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange';
+
 export function ConstellationFooter() {
   return (
-    <footer className="border-t-2 border-forge-iron bg-forge-black py-16 mt-auto">
-      <div className="site-frame max-w-4xl mx-auto">
-        {/* Philosophy line */}
-        <div className="text-center mb-12">
-          <h2 className="font-display font-black text-2xl uppercase leading-none italic text-forge-white mb-3">
-            One human page. Two AI pages.
-          </h2>
-          <p className="font-body text-forge-dim text-sm max-w-lg mx-auto leading-relaxed">
-            The homepage is written for human observation. 
-            <code className="text-forge-orange bg-forge-steel px-1 mx-1">/000</code> 
-            holds scars and wisdom for AI agents. 
-            <code className="text-forge-green bg-forge-steel px-1 mx-1">/999</code> 
-            holds verification and machine-facing weight.
-          </p>
-        </div>
+    <footer className="border-t border-forge-iron bg-forge-black py-12 mt-auto">
+      <div className="site-frame max-w-3xl mx-auto text-center">
+        {/* Canon line */}
+        <p className="font-body text-sm text-forge-dim leading-relaxed">
+          WEALTH computes · arifOS frames · Human decides.
+        </p>
+        <p className="font-body text-sm text-forge-dim/70 leading-relaxed mt-2 mb-8">
+          This page is for humans.{' '}
+          <a href="/000/" className="text-forge-orange/90 hover:text-forge-white transition-colors">/000</a>
+          {' '}is for agents — scars and context.{' '}
+          <a href="/999/" className="text-forge-orange/90 hover:text-forge-white transition-colors">/999</a>
+          {' '}is verification.
+        </p>
 
-        {/* Divider */}
-        <div className="border-t border-forge-iron/30 mb-8" />
-
-        {/* Minimal links row */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 text-center">
-          {/* Contact */}
-          <div className="flex items-center gap-4">
-            {contactLinks.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noreferrer"
-                className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-white transition-colors tracking-widest"
-              >
-                {item.label} ↗
-              </a>
-            ))}
-          </div>
-
-          {/* Divider dot */}
-          <span className="hidden md:block text-forge-iron select-none">·</span>
-
-          {/* Federation entry points — only the two gates */}
-          <div className="flex items-center gap-4">
+        {/* Contact */}
+        <nav aria-label="Contact" className="flex justify-center items-center gap-6 mb-10">
+          {contactLinks.map((item) => (
             <a
-              href="https://arifos.arif-fazil.com"
+              key={item.label}
+              href={item.href}
               target="_blank"
               rel="noreferrer"
-              className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-white transition-colors tracking-widest"
+              className={quietLink}
             >
-              Observatory ↗
+              {item.label} ↗
             </a>
-            <a
-              href="https://mcp.arif-fazil.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-technical text-[0.7rem] uppercase text-forge-dim hover:text-forge-orange transition-colors tracking-widest"
-            >
-              MCP Gateway ↗
-            </a>
-          </div>
-        </div>
+          ))}
+        </nav>
 
-        {/* Machine surface badges */}
-        <div className="flex justify-center gap-4 mt-8 mb-8">
-          <a href="/llms.txt" className="badge-status badge-status--live text-[0.55rem]">llms.txt</a>
-          <a href="/soul.json" className="badge-status badge-status--live text-[0.55rem]">soul.json</a>
-          <a href="/feed.xml" className="badge-status badge-status--live text-[0.55rem]">rss</a>
-        </div>
-
-        {/* Footer */}
-        <div className="border-t border-forge-iron/30 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
-          <span className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest">
+        {/* Colophon */}
+        <div className="border-t border-forge-iron/40 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
+          <span className="font-mono text-[0.62rem] text-forge-dim/70 uppercase tracking-[0.14em]">
             Arif Fazil · Ditempa Bukan Diberi
           </span>
-          <a href="/999/" className="font-technical text-[0.6rem] text-forge-orange hover:text-forge-white transition-colors uppercase tracking-widest">
+          <a
+            href="/999/"
+            className="font-mono text-[0.62rem] text-forge-orange/90 hover:text-forge-white transition-colors uppercase tracking-[0.14em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange"
+          >
             verify at /999
           </a>
         </div>

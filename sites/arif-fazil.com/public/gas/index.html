@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Gas — Cognitive Clarity Dashboard · WEALTH</title>
+<title>Natural Gas — Cognitive Clarity · WEALTH</title>
 <meta name="description" content="Sovereign Natural Gas & LNG market synthesis. Thermal equivalence, European storage, and Henry Hub intelligence.">
 <meta name="agent-identity" content="WEALTH · market-answer · decision-synthesis · machine-context">
 <link rel="canonical" href="https://arif-fazil.com/gas/">
@@ -11,273 +11,117 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
-<link rel="stylesheet" href="/_shared/economics.css">
-<style>
-:root{--accent:#00f0ff;--accent-dim:#006680;--accent-bg:rgba(0,240,255,0.08);--bg:#050b10;--surface:#0a131c;--surface2:#0f1c29}
-#mainChart{width:100%;height:420px;position:relative}
-.chart-container{width:100%}
-.cone-toggle{font-family:var(--mono);font-size:10px;padding:2px 8px;border:1px solid var(--line);border-radius:3px;background:transparent;color:var(--dim);cursor:pointer}
-.cone-toggle.active{color:var(--accent);border-color:var(--accent);font-weight:600}
-.scenario-row{display:flex;gap:1rem;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--dim);padding:6px 0;border-top:1px solid var(--line)}
-.scenario-row b{color:var(--ink)}
-.macro-ticker{display:flex;gap:1rem;padding:0.35rem 1rem;background:var(--surface2);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--dim);overflow-x:auto}
-.macro-item{display:flex;gap:0.4rem;align-items:center}
-.macro-label{color:var(--faint)}
-.macro-value{color:var(--accent);font-weight:600}
-#machineDigestDrawer pre{font-family:var(--mono);font-size:10px}
-.pulse-price-cluster{display:flex;align-items:baseline;gap:12px}
-.pulse-price{font-family:var(--mono);font-size:42px;font-weight:700;line-height:1}
-.pulse-delta{font-family:var(--mono);font-size:16px;font-weight:600}
-canvas{width:100%!important}
-.shell{position:relative;z-index:1;padding:0 var(--gap-xl);margin-top:var(--gap-md)}
-.pulse-bar{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--gap-lg) var(--gap-xl);margin-bottom:var(--gap-md)}
-.pulse-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--gap-md)}
-
-/* Market Answer — consolidated levels/outlook/synthesis-read */
-.market-answer{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:var(--gap-lg) var(--gap-xl);margin-top:var(--gap-md);position:relative;z-index:1}
-.market-answer-header{display:flex;align-items:center;gap:1rem;margin-bottom:var(--gap-md);flex-wrap:wrap}
-.market-answer-label{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.05em;text-transform:uppercase}
-.market-answer-verdict{font-family:var(--mono);font-size:13px;font-weight:700;padding:3px 10px;border-radius:12px;background:var(--surface2);color:var(--ink);letter-spacing:.5px}
-.market-answer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-md);margin-bottom:var(--gap-md)}
-@media(max-width:900px){.market-answer-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.market-answer-grid{grid-template-columns:1fr}}
-.market-answer-card{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:var(--gap-md);text-align:center}
-.market-answer-card .mac-label{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-.market-answer-card .mac-value{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--ink);line-height:1.2}
-.market-answer-card .mac-sub{font-size:10px;color:var(--dim);margin-top:3px;font-family:var(--mono)}
-.market-answer-read{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:var(--gap-sm);line-height:1.5}
-.market-answer-no-setup{margin-top:var(--gap-md);padding:var(--gap-md);background:var(--surface2);border:1px dashed var(--line);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--dim);text-align:center}
-
-/* Signal details — closed-by-default deep detail */
-details.signal-details{margin-top:var(--gap-md);background:var(--surface);border:1px solid var(--line);border-radius:10px;position:relative;z-index:1}
-details.signal-details>summary{padding:var(--gap-md) var(--gap-xl);cursor:pointer;font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.05em;text-transform:uppercase;user-select:none;list-style:none;display:flex;align-items:center;gap:.5rem}
-details.signal-details>summary::-webkit-details-marker{display:none}
-details.signal-details>summary::before{content:"▸";color:var(--dim);font-size:10px;transition:transform .2s}
-details.signal-details[open]>summary::before{transform:rotate(90deg)}
-details.signal-details .signal-details-body{padding:0 var(--gap-xl) var(--gap-lg)}
-
-/* Scope note — single concise replacement for constellation + agent-id + refusal */
-.scope-note{margin-top:var(--gap-lg);margin-bottom:var(--gap-md);padding:var(--gap-md) var(--gap-xl);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;font-family:var(--mono);font-size:11px;color:var(--dim);line-height:1.6;position:relative;z-index:1}
-.scope-note b{color:var(--ink)}
-.scope-note code{background:var(--surface2);padding:1px 5px;border-radius:3px;color:var(--accent);font-size:10px}
-
-/* Freshness/seal line — first viewport inside market-answer */
-.market-answer-freshness{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:var(--gap-sm);display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-.market-answer-freshness .ma-as-of{color:var(--dim)}
-.market-answer-freshness .ma-seal{color:var(--accent);font-weight:600;letter-spacing:.04em}
-
-/* "What is driving it" — one asset-specific institutional transmission row (max 3) */
-.market-answer-driver{margin-top:var(--gap-md);padding:var(--gap-sm) var(--gap-md);background:var(--surface2);border:1px solid var(--line);border-radius:8px}
-.market-answer-driver-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-.market-answer-driver-row{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;color:var(--ink);flex-wrap:wrap}
-.market-answer-driver-row .driver-key{color:var(--faint)}
-.market-answer-driver-row .driver-arrow{color:var(--accent);font-weight:700}
-.market-answer-driver-row .driver-target{color:var(--ink);font-weight:600}
-.market-answer-driver-row .driver-note{color:var(--faint);font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin-left:auto}
-
-/* Direction stamp — every direction label must carry a timeframe */
-.direction-stamp{font-weight:600;font-family:var(--mono);letter-spacing:.04em}
-.direction-stamp.tf-conflict{color:var(--sabar)}
-
-/* Reconciliation line — appears only when 1H/4H/1D disagree */
-.market-answer-reconcile{font-family:var(--mono);font-size:11px;color:var(--sabar);margin-top:var(--gap-xs);padding:6px 10px;background:rgba(227,179,65,.08);border-left:2px solid var(--sabar);border-radius:4px}
-
-/* Data unavailable strip — visible when no snapshot within 10s */
-.market-answer-unavailable{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:var(--gap-sm);padding:6px 10px;background:var(--surface2);border:1px dashed var(--line);border-radius:4px;text-align:center}
-
-</style>
+<link rel="stylesheet" href="/_shared/zen.css">
+<script src="/_shared/zen-head.js" defer></script>
 </head>
 <body class="fam-gas">
-<!-- ZEN PULSE -->
-<div class="zen-pulse">
-  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">GAS · WEALTH</span></div>
-  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">Live market intelligence. Evidence-gated, human-decided.</span></div>
-  <div class="zp-nav">
-    <a href="/vitals/"><span class="badge" style="background:var(--hold)"></span>PETRONAS</a>
-    <a href="/malaysia/"><span class="badge" style="background:var(--sabar)"></span>MALAYSIA</a>
-    <a href="/oil/"><span class="badge" style="background:var(--sabar)"></span>OIL</a>
-    <a href="/gas/" class='here'><span class="badge" style="background:var(--sabar)"></span>GAS</a>
-    <a href="/gold/"><span class="badge" style="background:var(--seal)"></span>GOLD</a>
-  </div>
+<div class="zen-pulse" aria-label="Orientation">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · Gas</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val zp-accent">Evidence-gated Henry Hub signal — verdict, levels, invalidation</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Current verdict below</span></div>
 </div>
 
-<!-- original nav replaced by zen-pulse -->
-
-<!-- Agentic Machine Digest Drawer Overlay -->
-<div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:#0a131c; border:2px solid #00f0ff; border-radius:8px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,0.8); font-family:'IBM Plex Mono',monospace; overflow:hidden;">
-  <div style="background:#0f1c29; padding:10px 14px; border-bottom:1px solid #182c40; display:flex; align-items:center; justify-space-between;">
-    <span style="font-size:11px; font-weight:700; color:#38bdf8; letter-spacing:0.08em;">⚡ AGENTIC REALITY PACKET · NATURAL GAS</span>
-    <button onclick="toggleMachineDigest()" style="background:none; border:none; color:#8a8070; font-size:14px; cursor:pointer; font-weight:700;">✕</button>
+<!-- ═══ CHROME — one disciplined header: federation / identity / local ═══ -->
+<header class="zs-head">
+  <nav class="zs-fed" aria-label="Federation">
+    <a href="https://arif-fazil.com">AF</a><span class="zs-fed-sep">·</span>
+    <a href="https://arifos.arif-fazil.com">arifOS</a><span class="zs-fed-sep">·</span>
+    <a href="https://aaa.arif-fazil.com">AAA</a><span class="zs-fed-sep">·</span>
+    <a href="https://geox.arif-fazil.com">GEOX</a><span class="zs-fed-sep">·</span>
+    <a href="https://arif-fazil.com/wealth/" class="on">WEALTH</a><span class="zs-fed-sep">·</span>
+    <a href="https://well.arif-fazil.com">WELL</a><span class="zs-fed-sep">·</span>
+    <a href="https://mcp.arif-fazil.com">FORGE</a><span class="zs-fed-sep">·</span>
+    <a href="https://mcp.arif-fazil.com">MCP</a>
+    <span class="zs-fed-right" data-zs-clock>— MYT</span>
+  </nav>
+  <div class="zs-id">
+    <div class="zs-id-title">
+      <h1>Natural Gas <span class="fam-mark">·</span> NATGAS</h1>
+      <span class="zs-purpose">Henry Hub, TTF, LNG — thermal equivalence and Asian premium, live.</span>
+    </div>
+    <div class="zs-status">
+      <span class="live-dot" aria-hidden="true"></span>
+      <span id="pulseTimestamp">connecting…</span>
+    </div>
   </div>
-  <pre id="machineDigestCode" style="padding:14px; font-size:11px; color:#e2d8c8; overflow-y:auto; max-height:65vh; white-space:pre-wrap; margin:0;"></pre>
-</div>
+  <nav class="zs-local" aria-label="Markets">
+    <a href="/wealth/vitals/">PETRONAS</a>
+    <a href="/wealth/malaysia/">MALAYSIA</a>
+    <a href="/oil/">OIL</a>
+    <a href="/gas/" class="here" aria-current="page">GAS</a>
+    <a href="/gold/">GOLD</a>
+  </nav>
+</header>
 
-<script>
-function toggleMachineDigest() {
-  const drawer = document.getElementById('machineDigestDrawer');
-  const code = document.getElementById('machineDigestCode');
-  if (!drawer) return;
-  if (drawer.style.display === 'none' || !drawer.style.display) {
-    const packet = document.getElementById('wealth-reality-packet');
-    if (packet && code) {
-      try {
-        const parsed = JSON.parse(packet.textContent);
-        code.textContent = JSON.stringify(parsed, null, 2);
-      } catch(e) {
-        code.textContent = packet.textContent;
-      }
-    }
-    drawer.style.display = 'block';
-  } else {
-    drawer.style.display = 'none';
-  }
-}
-if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
-  window.addEventListener('DOMContentLoaded', toggleMachineDigest);
-}
-</script>
+<!-- Agentic machine digest drawer (?mode=agent) -->
+<div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:var(--surface); border:1px solid var(--accent-dim); border-radius:10px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,.6); font-family:var(--mono); overflow:hidden;">
+  <div style="padding:10px 14px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.08em;">REALITY PACKET · NATGAS</span>
+    <button onclick="toggleMachineDigest()" style="background:none; border:none; color:var(--dim); font-size:14px; cursor:pointer;">✕</button>
+  </div>
+  <pre id="machineDigestCode" style="padding:14px; font-size:11px; color:var(--dim); overflow-y:auto; max-height:65vh; white-space:pre-wrap; margin:0;"></pre>
+</div>
 
 <main class="shell">
 
-  <!-- Macro Ticker — DXY/US10Y/VIX live from /api/macro -->
-  <div class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
-    <div class="macro-item"><span class="macro-label">DXY</span><span class="macro-value" id="mcr-dxy">—</span></div>
-    <div class="macro-item"><span class="macro-label">US10Y</span><span class="macro-value" id="mcr-us10y">—</span></div>
-    <div class="macro-item"><span class="macro-label">VIX</span><span class="macro-value" id="mcr-vix">—</span></div>
-    <div class="macro-item" style="margin-left:auto"><span class="macro-label" id="mcr-time">—</span></div>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       1. TOP PULSE BAR — "Buka pagi, tengok sekali, faham"
-       ═══════════════════════════════════════════════════════════ -->
-  <header class="pulse-bar" role="banner" aria-label="Natural Gas price pulse">
-    <div class="pulse-inner shell">
-
-      <!-- Price cluster -->
-      <div class="pulse-price-cluster">
-        <span class="pulse-price" id="pulsePrice">—</span>
-        <span class="pulse-delta" id="pulseDelta">—</span>
-        <span class="pulse-pct" id="pulsePct">—</span>
-      </div>
-
-      <!-- Bias pill -->
-      <div class="pulse-bias">
-        <span class="bias-pill" id="biasPill">—</span>
-        <span class="bias-confluence" id="biasConfluence">—</span>
-      </div>
-
-      <!-- Primary world driver -->
-      <div class="pulse-driver" id="pulseDriver">—</div>
-
-      <!-- Key levels -->
-      <div class="pulse-levels" id="pulseLevels">
-        <span class="level-chip support">S1 <span class="val">—</span></span>
-        <span class="level-chip support">S2 <span class="val">—</span></span>
-        <span class="level-chip resistance">R1 <span class="val">—</span></span>
-        <span class="level-chip resistance">R2 <span class="val">—</span></span>
-      </div>
-
-      <!-- Risk thermometer -->
-      <div class="pulse-risk">
-        <span class="risk-label">Risk</span>
-        <div class="risk-bars" id="riskBars">
-          <div class="risk-bar active med"></div>
-          <div class="risk-bar active med"></div>
-          <div class="risk-bar active med"></div>
-          <div class="risk-bar"></div>
-          <div class="risk-bar"></div>
-        </div>
-      </div>
-
-      <!-- Timestamp -->
-      <div class="pulse-meta">
-        <span class="live-dot"></span>
-        <span id="pulseTimestamp">Data unavailable</span>
-      </div>
-
+  <!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->
+  <section class="zs-hero" aria-label="Market answer" data-agent-role="market-answer">
+    <div class="zs-eyebrow">
+      <span>Market answer · NATURAL GAS</span>
+      <span class="tag INTERPRET">INTERPRET</span>
+      <span>model-generated · not trading advice</span>
     </div>
-  </header>
-  <!-- ═══════════════════════════════════════════════════════════
-       1b. MARKET INTELLIGENCE — human-readable market state
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="apex-panel" aria-label="Market intelligence">
-    <div class="apex-inner">
-      <div class="apex-header">
-        <span class="apex-title">🧭 Market Pulse</span>
-        <span class="apex-verdict" id="apexVerdict">—</span>
-        <span class="apex-verdict-meta" id="signalLastUpdated" title="Last signal update">—</span>
-      </div>
-      <div class="apex-grid">
-        <div class="apex-card">
-          <div class="apex-card-label">Clarity</div>
-          <div class="apex-card-value" id="apexG">—</div>
-          <div class="apex-card-sub">How clear is the direction</div>
-        </div>
-        <div class="apex-card">
-          <div class="apex-card-label">Risk</div>
-          <div class="apex-card-value" id="apexCdark">—</div>
-          <div class="apex-card-sub">Unpredictability level</div>
-        </div>
-        <div class="apex-card">
-          <div class="apex-card-label">Trend Energy</div>
-          <div class="apex-card-value" id="apexDS">—</div>
-          <div class="apex-card-sub">Is the trend building or fading</div>
-        </div>
-        <div class="apex-card apex-state-card">
-          <div class="apex-card-label">Condition</div>
-          <div class="apex-card-value apex-state" id="apexState">—</div>
-          <div class="apex-card-sub" id="apexDirection">—</div>
-        </div>
-      </div>
-      <details class="signal-details" style="margin-top:0;background:transparent;border:0">
-        <summary>APEX Primitives</summary>
-        <div class="signal-details-body">
-          <div class="apex-primitives">
-            <span class="apex-prim" id="apexA">Structure: —</span>
-            <span class="apex-prim" id="apexP">Strength: —</span>
-            <span class="apex-prim" id="apexE">Signal: —</span>
-            <span class="apex-prim" id="apexX">Stability: —</span>
-            <span class="apex-prim" id="apexPhi">Agreement: —</span>
-            <span class="apex-prim" id="apexMom">Momentum: —</span>
-            <span class="apex-prim" id="apexVolTrend">Volume: —</span>
+    <div class="zs-verdict">
+      <div class="zs-verdict-top">
+        <div>
+          <div class="zs-price-row">
+            <span class="zs-price" id="pulsePrice">—</span>
+            <span class="zs-delta" id="pulseDelta">—</span>
+            <span class="pulse-pct" id="pulsePct">—</span>
+          </div>
+          <div style="margin-top:10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="bias-pill" id="biasPill">—</span>
+            <span class="bias-confluence" id="biasConfluence">—</span>
+            <span class="pulse-risk">
+              <span class="risk-label">Risk</span>
+              <span class="risk-bars" id="riskBars">
+                <span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span>
+              </span>
+            </span>
           </div>
         </div>
-      </details>
+        <span class="zs-badge SABAR" id="maVerdict">—</span>
+      </div>
+
+      <p class="zs-why" id="predRead">Reading the market…</p>
+      <div class="pulse-driver" id="pulseDriver" style="margin-top:8px">—</div>
+
+      <div class="zs-levels" id="pulseLevels" style="margin-top:14px">
+        <span class="level-chip support">S1<span class="val">—</span></span>
+        <span class="level-chip support">S2<span class="val">—</span></span>
+        <span class="level-chip resistance">R1<span class="val">—</span></span>
+        <span class="level-chip resistance">R2<span class="val">—</span></span>
+      </div>
+
+      <div class="zs-hero-meta">
+        <span><span class="k">as of</span> <span class="v" id="maAsOf">—</span></span>
+        <span class="sep">·</span>
+        <span class="ma-seal">sealed 2026-07-24 · next audit 2026-10-24</span>
+        <span class="sep">·</span>
+        <span class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
+          <span class="macro-item"><span class="macro-label">DXY</span><span class="macro-value" id="mcr-dxy">—</span></span>
+          <span class="macro-item"><span class="macro-label">US10Y</span><span class="macro-value" id="mcr-us10y">—</span></span>
+          <span class="macro-item"><span class="macro-label">VIX</span><span class="macro-value" id="mcr-vix">—</span></span>
+          <span class="macro-item"><span class="macro-label">USD/MYR</span><span class="macro-value" id="mcr-usmyr">—</span></span>
+        </span>
+      </div>
+      <div class="market-answer-unavailable" id="maUnavailable" hidden>Data unavailable · last verified <span id="maLastVerified">—</span></div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       2. MAIN CHART — Clean candlesticks, minimal overlays
-       ═══════════════════════════════════════════════════════════ -->
-  <details class="signal-details">
-    <summary>📅 This Week — High Impact Events</summary>
-    <div class="signal-details-body">
-      <section class="events-panel" aria-label="Upcoming economic events" style="background:transparent;border:0;padding:0">
-        <div class="events-inner">
-          <div class="events-header">
-            <span class="events-source">forexfactory.com</span>
-          </div>
-          <div class="events-list" id="eventsList">
-            <div class="events-empty">—</div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </details>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       2a. MARKET ANSWER — the answer before the chart
-       ═══════════════════════════════════════════════════════════ -->
-  <section class="market-answer" aria-label="Market answer" data-agent-role="market-answer">
-    <div class="market-answer-header">
-      <span class="market-answer-label">🧭 MARKET ANSWER · NATURAL GAS</span>
-      <span class="market-answer-verdict" id="maVerdict">—</span>
-      <span class="apex-verdict-meta" style="font-family:var(--mono);font-size:10px;color:var(--faint)">INTERPRETATION · model-generated · not trading advice</span>
-    </div>
-    <div class="market-answer-freshness">
-      <span class="ma-as-of">as of <span id="maAsOf">—</span></span>
-      <span class="ma-seal">sealed 2026-07-24 · next audit 2026-10-24</span>
-    </div>
+  <!-- ═══ 2. THE VIEW — cone, bias, key level, scenarios, invalidation ═══ -->
+  <section class="sec" aria-label="The view">
+    <h2 class="sec-title">The view · 30-day horizon</h2>
     <div class="market-answer-grid">
       <div class="market-answer-card">
         <div class="mac-label">Current</div>
@@ -300,27 +144,21 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         <div class="mac-sub" id="predKeySub">—</div>
       </div>
     </div>
+
     <div id="predScenarios" style="margin-top:10px"></div>
-    <div class="market-answer-read" id="predRead">—</div>
-    <!-- Reconciliation line — appears only when 1H/4H/1D disagree -->
     <div class="market-answer-reconcile" id="maReconcile" hidden></div>
-    <!-- Data unavailable strip — visible when no snapshot within 10s -->
-    <div class="market-answer-unavailable" id="maUnavailable" hidden>Data unavailable · last verified <span id="maLastVerified">—</span></div>
-    <div class="macro-ticker" style="margin-top:var(--gap-sm);border-radius:8px;border-left:0;border-right:0;padding:0.35rem 0">
-      <div class="macro-item"><span class="macro-label">Support 1</span><span class="macro-value" id="mt-s1">—</span></div><div class="macro-item"><span class="macro-label">Support 2</span><span class="macro-value" id="mt-s2">—</span></div><div class="macro-item"><span class="macro-label">Resistance 1</span><span class="macro-value" id="mt-r1">—</span></div><div class="macro-item"><span class="macro-label">Resistance 2</span><span class="macro-value" id="mt-r2">—</span></div><div class="macro-item"><span class="macro-label">MA50</span><span class="macro-value" id="mt-ma50">—</span></div><div class="macro-item"><span class="macro-label">MA200</span><span class="macro-value" id="mt-ma200">—</span></div>
+
+    <div class="zs-levels" style="margin-top:14px">
+      <span class="level-chip support">S1<span class="val" id="mt-s1">—</span></span>
+      <span class="level-chip support">S2<span class="val" id="mt-s2">—</span></span>
+      <span class="level-chip resistance">R1<span class="val" id="mt-r1">—</span></span>
+      <span class="level-chip resistance">R2<span class="val" id="mt-r2">—</span></span>
+      <span class="level-chip">MA50<span class="val" id="mt-ma50">—</span></span>
+      <span class="level-chip">MA200<span class="val" id="mt-ma200">—</span></span>
     </div>
-    <!-- "What is driving it" — one asset-specific institutional transmission row (INTERPRETATION) -->
-    <div class="market-answer-driver">
-      <div class="market-answer-driver-label">What is driving it</div>
-      <div class="market-answer-driver-row">
-        <span class="driver-key">JKM / LNG spread</span>
-        <span class="driver-arrow">→</span>
-        <span class="driver-target">PETRONAS LNG margin</span>
-        <span class="driver-note">INTERPRETATION</span>
-      </div>
-    </div>
-    <!-- Trade ladder — shown only when direction is non-FLAT AND R:R ≥ 1.0 -->
-    <div id="tradeLadder" class="trade-quality" style="margin-top:var(--gap-md);background:var(--surface2);border:1px solid var(--line);border-radius:8px" hidden>
+
+    <!-- Trade ladder — only when direction is non-FLAT AND R:R ≥ 1.0 -->
+    <div id="tradeLadder" class="trade-quality" hidden>
       <div class="trade-quality-header">
         <span class="trade-quality-title">Trade Ladder</span>
         <span class="trade-quality-verdict" id="tradeVerdict">—</span>
@@ -343,15 +181,52 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
     <div id="tradeNoSetup" class="market-answer-no-setup">SABAR · No active setup</div>
   </section>
 
-  <section class="chart-section" aria-label="Natural Gas chart">
+  <!-- ═══ 3. WHY THIS VIEW — condition + transmission ═══ -->
+  <section class="sec" aria-label="Why this view">
+    <h2 class="sec-title">Why this view <span class="apex-verdict" id="apexVerdict">—</span></h2>
+    <div class="zs-metrics">
+      <div class="zs-metric">
+        <div class="lab">Clarity</div>
+        <div class="val" id="apexG">—</div>
+        <div class="sub">How clear is the direction</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Risk</div>
+        <div class="val" id="apexCdark">—</div>
+        <div class="sub">Unpredictability level</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Trend Energy</div>
+        <div class="val" id="apexDS">—</div>
+        <div class="sub">Building or fading</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Condition</div>
+        <div class="val" id="apexState">—</div>
+        <div class="sub" id="apexDirection">—</div>
+      </div>
+    </div>
+
+    <div class="market-answer-driver">
+      <div class="market-answer-driver-label">What is driving it</div>
+      <div class="market-answer-driver-row">
+        <span class="driver-key">JKM / LNG spread</span>
+        <span class="driver-arrow">→</span>
+        <span class="driver-target">PETRONAS LNG margin</span>
+        <span class="driver-note">INTERPRETATION</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. CHART — secondary, after the answer is understood ═══ -->
+  <section class="sec chart-section" aria-label="Natural Gas price chart">
     <div class="chart-header">
-      <div style="display:flex; align-items:center; gap:1.5rem;">
-        <span class="chart-title">NATGAS/USD — Price Action</span>
+      <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
+        <span class="chart-title">NATGAS — Price Action</span>
         <div class="ema-toggles">
           <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
           <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
           <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
-          <span style="color:var(--line);margin:0 4px">|</span>
           <button class="cone-toggle active" data-horizon="30" onclick="selectHorizon(this)">30d▸</button>
           <button class="cone-toggle" data-horizon="60" onclick="selectHorizon(this)">60d▸</button>
           <button class="cone-toggle" data-horizon="90" onclick="selectHorizon(this)">90d▸</button>
@@ -364,1222 +239,232 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
         <button class="tf-pill" data-tf="1W" onclick="selectTF(this)">1W</button>
       </div>
     </div>
-
     <div class="chart-container">
       <div id="mainChart"></div>
-      <!-- S/R zones rendered by JS -->
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       3. DUAL SIGNAL COLUMNS
-       Left: Technical Forge | Right: World Context
-       ═══════════════════════════════════════════════════════════ -->
-  <details class="signal-details">
-    <summary>⚒️ Technical Forge · 🌍 World Context</summary>
-    <div class="signal-details-body">
-      <section class="signals-grid" aria-label="Trading signals">
+  <!-- ═══ 5. DEEP CONTEXT — disclosures ═══ -->
+  <section class="sec" aria-label="Deep context">
+    <h2 class="sec-title">Deep context</h2>
 
-    <!-- ── LEFT: Technical Forge ── -->
-    <div class="signal-column">
-      <div class="column-header">
-        <span class="icon">⚒️</span> Technical Forge
-      </div>
-
-      <!-- Trend card -->
-      <div class="signal-card">
-        <div class="signal-card-header">
-          <span class="signal-card-title">TREND</span>
-          <span class="signal-score" id="tfTrendScore">—</span>
-        </div>
-        <div class="signal-card-body" id="tfTrendBody">
-          —
-        </div>
-        <div class="signal-card-footer">
-          <span class="signal-confidence" id="tfTrendConf">—</span>
-          <span class="confidence-tier" id="tfTrendTier">—</span>
-        </div>
-      </div>
-
-      <!-- Momentum card -->
-      <div class="signal-card">
-        <div class="signal-card-header">
-          <span class="signal-card-title">MOMENTUM</span>
-          <span class="signal-score" id="tfMomScore">—</span>
-        </div>
-        <div class="signal-card-body" id="tfMomBody">
-          —
-        </div>
-        <div class="signal-card-footer">
-          <span class="signal-confidence" id="tfMomConf">—</span>
-          <span class="confidence-tier" id="tfMomTier">—</span>
-        </div>
-      </div>
-
-      <!-- Structure card -->
-      <div class="signal-card">
-        <div class="signal-card-header">
-          <span class="signal-card-title">STRUCTURE</span>
-          <span class="signal-score" id="tfStructScore">—</span>
-        </div>
-        <div class="signal-card-body" id="tfStructBody">
-          —
-        </div>
-        <div class="signal-card-footer">
-          <span class="signal-confidence" id="tfStructConf">—</span>
-          <span class="confidence-tier" id="tfStructTier">—</span>
-        </div>
-      </div>
-
-      <!-- Volume card -->
-      <div class="signal-card">
-        <div class="signal-card-header">
-          <span class="signal-card-title">VOLUME</span>
-          <span class="signal-score" id="tfVolScore">—</span>
-        </div>
-        <div class="signal-card-body" id="tfVolBody">
-          —
-        </div>
-        <div class="signal-card-footer">
-          <span class="signal-confidence" id="tfVolConf">—</span>
-          <span class="confidence-tier" id="tfVolTier">—</span>
+    <details class="zs-disclosure">
+      <summary>Technical Forge — trend · momentum · structure · quality</summary>
+      <div class="zs-disclosure-body">
+        <div class="signals-grid">
+          <div class="signal-column">
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Trend</span>
+                <span class="signal-score" id="tfTrendScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfTrendBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfTrendConf">—</span>
+                <span class="confidence-tier" id="tfTrendTier">—</span>
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Momentum</span>
+                <span class="signal-score" id="tfMomScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfMomBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfMomConf">—</span>
+                <span class="confidence-tier" id="tfMomTier">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="signal-column">
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Structure</span>
+                <span class="signal-score" id="tfStructScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfStructBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfStructConf">—</span>
+                <span class="confidence-tier" id="tfStructTier">—</span>
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Signal Quality</span>
+                <span class="signal-score" id="tfVolScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfVolBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfVolConf">—</span>
+                <span class="confidence-tier" id="tfVolTier">—</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </details>
 
-    
-    <!-- ── RIGHT: USD / Monetary Context ── -->
-    <div class="signal-column">
-      <div class="column-header">
-        <span class="icon">🌍</span> World Context · Economic Trinity
-      </div>
-
-      <!-- Economic Trinity Pillar 1: FX -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">💱 FX & Rates (Pillar I)</span>
-          <span class="world-driver-arrow">—</span>
+    <details class="zs-disclosure">
+      <summary>World context — economic trinity and Asian LNG premium</summary>
+      <div class="zs-disclosure-body">
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">FX &amp; Rates — Pillar I</span>
+          </div>
+          <div class="world-driver-impact">
+            <strong>Malaysia:</strong> USD/MYR <span id="wf-usmyr">—</span> (live).<br>
+            <span style="color:var(--accent);">Transmission:</span> LNG export cargoes billed in USD provide continuous trade surplus &amp; foreign exchange inflows.
+          </div>
         </div>
-        <div class="world-driver-impact">
-          <strong>Global:</strong> DXY <span id="wf-dxy">—</span> · US10Y <span id="wf-us10y">—</span> (live).<br>
-          <strong>Malaysia:</strong> USD/MYR <span id="mcr-usmyr">—</span> (live).<br>
-          <span style="color:var(--accent);">Transmission:</span> LNG export cargoes billed in USD provide continuous trade surplus & foreign exchange inflows.
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Inflation &amp; Purchasing Power — Pillar II</span>
+          </div>
+          <div class="world-driver-impact">
+            <span style="color:var(--accent);">Transmission:</span> Regulated domestic gas tariffs buffer domestic electricity &amp; manufacturing costs against international spot volatility.
+          </div>
         </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-1">—</span></span>
-          <span class="confidence-tier" id="wf-tier-1">—</span>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Unemployment &amp; Labor — Pillar III</span>
+          </div>
+          <div class="world-driver-impact">
+            <span style="color:var(--accent);">Transmission:</span> Gas-fired power grid sustains manufacturing and data center labor growth.
+          </div>
         </div>
-      </div>
-
-      <!-- Economic Trinity Pillar 2: Inflation -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">📈 Inflation & Purchasing Power (Pillar II)</span>
-          <span class="world-driver-arrow">—</span>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">JKM &amp; Asian LNG Premium</span>
+          </div>
+          <div class="world-driver-impact">
+            JKM vs Henry Hub — Asia spot LNG premium trajectory.<br>
+            <span style="color:var(--accent);">Transmission:</span> Spread governs Malaysian LNG export realised pricing.
+          </div>
         </div>
-        <div class="world-driver-impact">
-          <strong>Global:</strong> US CPI YoY <span id="wf-cpi-us">—</span>.<br>
-          <strong>Malaysia:</strong> Headline CPI YoY <span id="wf-cpi-my">—</span>.<br>
-          <span style="color:var(--accent);">Transmission:</span> Regulated domestic gas tariffs buffer domestic electricity & manufacturing costs against international spot volatility.
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Malaysia / PETRONAS Exposure</span>
+          </div>
+          <div class="world-driver-impact">
+            Malaysia LNG export trajectory, Bintulu capacity, and domestic gas subsidy exposure.<br>
+            <span style="color:var(--accent);">Transmission:</span> Posture shapes sovereign fiscal contribution.
+          </div>
         </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-2">—</span></span>
-          <span class="confidence-tier" id="wf-tier-2">—</span>
-        </div>
-      </div>
-
-      <!-- Economic Trinity Pillar 3: Unemployment -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">👷 Unemployment & Labor (Pillar III)</span>
-          <span class="world-driver-arrow">—</span>
-        </div>
-        <div class="world-driver-impact">
-          <strong>Global:</strong> US Unemployment <span id="wf-unemp-us">—</span>.<br>
-          <strong>Malaysia:</strong> Unemployment <span id="wf-unemp-my">—</span>.<br>
-          <span style="color:var(--accent);">Transmission:</span> Gas-fired power grid sustains manufacturing and data center labor growth.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-3">—</span></span>
-          <span class="confidence-tier" id="wf-tier-3">—</span>
-        </div>
-      </div>
-
-      <!-- JKM & Asian LNG -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">⚡ JKM & Asian LNG Premium</span>
-          <span class="world-driver-arrow">—</span>
-        </div>
-        <div class="world-driver-impact">
-          JKM <span id="wf-jkm">—</span> vs Henry Hub — Asia spot LNG premium trajectory.<br>
-          <span style="color:var(--accent);">Transmission:</span> Spread governs Malaysian LNG export realised pricing.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-4">—</span></span>
-          <span class="confidence-tier" id="wf-tier-4">—</span>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Physical Supply / GEOX</span>
+          </div>
+          <div class="world-driver-impact">
+            LNG facility status, Malaysia production, and global capacity additions.<br>
+            <span style="color:var(--accent);">Transmission:</span> GEOX monitors upstream constraints and infrastructure risk.
+          </div>
         </div>
       </div>
+    </details>
 
-      <!-- Malaysia / PETRONAS -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">Malaysia / PETRONAS Exposure</span>
-          <span class="world-driver-arrow">—</span>
+    <details class="zs-disclosure">
+      <summary>This week — high-impact events</summary>
+      <div class="zs-disclosure-body">
+        <div class="events-list" id="eventsList">
+          <div class="events-empty">—</div>
         </div>
-        <div class="world-driver-impact">
-          Malaysia LNG export trajectory <span id="wf-lng">—</span>. Bintulu capacity <span id="wf-bintulu">—</span>. Domestic gas subsidy exposure <span id="wf-subsidy">—</span>.<br>
-          <span style="color:var(--accent);">Transmission:</span> Posture shapes sovereign fiscal contribution.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-5">—</span></span>
-          <span class="confidence-tier" id="wf-tier-5">—</span>
-        </div>
+        <div class="signal-meta" style="margin-top:10px">source: forexfactory.com</div>
       </div>
-
-      <!-- GeoX supply evidence -->
-      <div class="world-driver-card">
-        <div class="world-driver-header">
-          <span class="world-driver-category">Physical Supply / GEOX</span>
-          <span class="world-driver-arrow">—</span>
-        </div>
-        <div class="world-driver-impact">
-          LNG facility status <span id="wf-facility">—</span>. Malaysia production <span id="wf-myprod">—</span>. Global capacity additions <span id="wf-add">—</span>.<br>
-          <span style="color:var(--accent);">Transmission:</span> GEOX monitors upstream constraints and infrastructure risk.
-        </div>
-        <div class="world-driver-meta">
-          <span class="signal-confidence">Confidence: <span id="wf-conf-6">—</span></span>
-          <span class="confidence-tier" id="wf-tier-6">—</span>
-        </div>
-      </div>
-    </div>
-
-    </section>
-    </div>
-  </details>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       4. SYNTHESIS & GATE BAND — Human decides
-       ═══════════════════════════════════════════════════════════ -->
-  
-  <!-- ═══════════════════════════════════════════════════════════
-       RASA DUNIA — Physical World Substrate
-       F2/F9/F10 governed · no qualia inferred
-       ═══════════════════════════════════════════════════════════ -->
-  <details class="signal-details">
-    <summary>🌍 Physical Substrate · Rasa Dunia</summary>
-    <div class="signal-details-body">
-      <section class="shell" aria-label="Physical substrate" style="padding:0">
-        <div id="rasaDuniaMount"></div>
-      </section>
-    </div>
-  </details>
-<section class="synthesis-band" aria-label="Synthesis and decision gate" data-agent-role="decision-synthesis">
-    <div class="synthesis-header">
-      <h2 class="synthesis-title">Synthesis & <em>Decision Gate</em></h2>
-      <div class="confluence-meter">
-        <span class="confluence-label">Confluence</span>
-        <div class="confluence-bar-track">
-          <div class="confluence-bar-fill" id="confluenceBar" style="width:0%"></div>
-        </div>
-        <span class="confluence-score" id="confluenceScore">—</span>
-      </div>
-    </div>
-
-    <div class="synthesis-verdict" id="synthesisVerdict">
-      <strong>—</strong>
-    </div>
-
-    <!-- Action stance (non-binding) -->
-    <div class="action-stance">
-      <button class="stance-btn active" id="stanceObserve">
-        <span class="stance-icon">◉</span> Observe
-      </button>
-      <button class="stance-btn" id="stancePrepare">
-        <span class="stance-icon">◈</span> Prepare
-      </button>
-      <button class="stance-btn" id="stanceAwait">
-        <span class="stance-icon">◯</span> Await
-      </button>
-      <span class="stance-note">Non-binding stance indicators — human decides</span>
-    </div>
-
-    <!-- Sovereign gate -->
-    <div class="sovereign-gate">
-      <div class="sovereign-gate-icon">⚖️</div>
-      <div class="sovereign-gate-text">Human Sovereign Veto Active</div>
-      <div class="sovereign-gate-sub">
-        This is evidence-gated synthesis from the WEALTH organ. All signals are probabilistic, not deterministic.
-        No trade is executed without human confirmation. Your judgment is the final floor.
-      </div>
-    </div>
+    </details>
   </section>
 
-  
-  <!-- CONSTELLATION REMOVED — replaced by single scope note below (between synthesis and footer) -->
+  <!-- ═══ 6. METHOD / EPISTEMICS — disclosures, quiet ═══ -->
+  <section class="sec" aria-label="Method and epistemics">
+    <h2 class="sec-title">Method · scope · epistemics</h2>
 
+    <details class="zs-disclosure">
+      <summary>Synthesis &amp; decision gate — confluence, stance, sovereign veto</summary>
+      <div class="zs-disclosure-body">
+        <div class="synthesis-band" data-agent-role="decision-synthesis">
+          <div class="synthesis-header">
+            <div class="confluence-meter">
+              <span class="confluence-label">Confluence</span>
+              <div class="confluence-bar-track"><div class="confluence-bar-fill" id="confluenceBar" style="width:0%"></div></div>
+              <span class="confluence-score" id="confluenceScore">—</span>
+            </div>
+            <span class="apex-verdict-meta" id="signalLastUpdated" title="Last signal update">—</span>
+          </div>
+          <div class="synthesis-verdict" id="synthesisVerdict"><strong>—</strong></div>
+          <div class="action-stance">
+            <button class="stance-btn active" id="stanceObserve">◉ Observe</button>
+            <button class="stance-btn" id="stancePrepare">◈ Prepare</button>
+            <button class="stance-btn" id="stanceAwait">◯ Await</button>
+            <span class="stance-note">Non-binding stance indicators — human decides</span>
+          </div>
+          <div class="sovereign-gate">
+            <div class="sovereign-gate-text">Human Sovereign Veto Active</div>
+            <div class="sovereign-gate-sub">
+              Evidence-gated synthesis from the WEALTH organ. All signals are probabilistic, not deterministic.
+              No trade is executed without human confirmation. Your judgment is the final floor.
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
 
-  <!-- SCOPE NOTE — replaces constellation + agent-id + refusal surface; one concise block -->
-  <div class="scope-note" data-agent-role="machine-context">
-    <p><b>SCOPE</b> · This page reads market data only. It does not trade, allocate, or signal. All metrics carry epistemic tags (<code>OBS</code> · <code>DER</code> · <code>INT</code>) and reflect the asset's snapshot at observation time. Human decides. The constitutional floors govern admissibility via <code>arifOS</code>; physical reality via <code>GEOX</code>; human capacity via <code>WELL</code>. The default verdict is HOLD — no SEAL means no action.</p>
-  </div>
+    <details class="zs-disclosure">
+      <summary>APEX primitives — structure · strength · signal · stability</summary>
+      <div class="zs-disclosure-body">
+        <div class="apex-primitives">
+          <span class="apex-prim" id="apexA">Structure: —</span>
+          <span class="apex-prim" id="apexP">Strength: —</span>
+          <span class="apex-prim" id="apexE">Signal: —</span>
+          <span class="apex-prim" id="apexX">Stability: —</span>
+          <span class="apex-prim" id="apexPhi">Agreement: —</span>
+          <span class="apex-prim" id="apexMom">Momentum: —</span>
+          <span class="apex-prim" id="apexVolTrend">Volume: —</span>
+        </div>
+      </div>
+    </details>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       5. FOOTER — Compact federation nav + seal
-       ═══════════════════════════════════════════════════════════ -->
-  <footer class="dash-footer">
-    <div class="footer-brand-cluster">
-      <a href="/" class="footer-brand">WEALTH</a>
-      <span class="footer-sep">/</span>
-      <span class="footer-page">Gas Dashboard</span>
-    </div>
+    <details class="zs-disclosure">
+      <summary>Scope — what this page is and is not</summary>
+      <div class="zs-disclosure-body">
+        <div class="scope-note" data-agent-role="machine-context" style="margin:0">
+          <p><b>SCOPE</b> · This page reads market data only. It does not trade, allocate, or signal. All metrics carry epistemic tags (<code>OBS</code> · <code>DER</code> · <code>INT</code>) and reflect the asset's snapshot at observation time. Human decides. Constitutional floors govern admissibility via <code>arifOS</code>; physical reality via <code>GEOX</code>; human capacity via <code>WELL</code>. The default verdict is HOLD — no SEAL means no action.</p>
+        </div>
+      </div>
+    </details>
+  </section>
 
-    <div class="footer-federation">
-      <a href="https://arif-fazil.com" class="footer-fed-link">Sovereign Root</a>
-      <a href="https://arifos.arif-fazil.com" class="footer-fed-link">arifOS</a>
-      <a href="https://geox.arif-fazil.com" class="footer-fed-link">GEOX</a>
-      <a href="https://well.arif-fazil.com" class="footer-fed-link">WELL</a>
-      <a href="https://aaa.arif-fazil.com" class="footer-fed-link">AAA</a>
-    </div>
-
-    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:0.2rem;">
-      <span class="footer-seal">SNAPSHOT COHERENCE</span>
-      <span class="footer-ditempa">Ditempa Bukan Diberi</span>
+  <!-- ═══ FOOTER CONSTELLATION ═══ -->
+  <footer class="zs-foot">
+    <p class="zs-foot-canon">
+      <b>WEALTH computes · arifOS frames · Human decides.</b><br>
+      Organs produce reality · arifFLOW moves it · AAA routes it · arifOS governs it · A-FORGE executes it · VAULT999 remembers it.
+    </p>
+    <nav class="zs-foot-links" aria-label="Federation links">
+      <a href="https://arif-fazil.com">Sovereign Root</a><span class="zs-fed-sep">·</span>
+      <a href="https://arifos.arif-fazil.com">arifOS</a><span class="zs-fed-sep">·</span>
+      <a href="https://geox.arif-fazil.com">GEOX</a><span class="zs-fed-sep">·</span>
+      <a href="https://well.arif-fazil.com">WELL</a><span class="zs-fed-sep">·</span>
+      <a href="https://aaa.arif-fazil.com">AAA</a><span class="zs-fed-sep">·</span>
+      <a href="https://mcp.arif-fazil.com">MCP</a>
+    </nav>
+    <div class="zs-foot-seal">
+      <span>SNAPSHOT COHERENCE · WEALTH/GAS</span>
+      <span class="ditempa">DITEMPA BUKAN DIBERI</span>
     </div>
   </footer>
 
 </main>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     JAVASCRIPT — Live chart, dynamic signals, interactive controls
-     All data sourced from gold-api :3456 (yfinance → Python → Node.js)
-     DITEMPA BUKAN DIBERI — Forged, Not Given.
-     ═══════════════════════════════════════════════════════════════ -->
 <script>
-
-  // ── Configuration ──
-  const CONFIG = {
-    API_BASE: window.location.origin + '/wealth/gas/api',
-    REFRESH_INTERVAL: 300000, // 5 minutes
-    TIMEZONE: 'Asia/Kuala_Lumpur',
-    ASSET: 'gas',
-    TF_INTERVALS: { '1H': '1h', '4H': '1h', '1D': '1d', '1W': '1wk' },
-    TF_PERIODS:   { '1H': '7d', '4H': '30d', '1D': '3mo', '1W': '6mo' },
+  window.ZEN_MARKET = {
+    asset: 'gas',
+    label: 'NATURAL GAS',
+    apiBase: '/wealth/gas/api',
+    stanceKey: 'gas_stance',
+    rrMarginal: 1.5,
+    chartAccent: '#4aa89e',
   };
-
-  let currentTF = '4H';
-  let activeEMAs = { '20': true, '50': true, '200': true };
-  let chartDataCache = {};
-  let latestSnapshot = null;
-
-  // ── Plain-language translator for arifOS judge reasons ──
-  function translateJudge(reason) {
-    if (!reason) return 'Wait for clearer signal before entry.';
-    let txt = reason
-      .replace(/F1:[^;]*;?/g, '')
-      .replace(/F2:[^;]*;?/g, '')
-      .replace(/F7:[^;]*;?/g, '')
-      .replace(/F\d+:[^;]*;?/g, '')
-      .replace(/RR ratio [\d.]+ < 1\.5[^;]*;?/g, '')
-      .replace(/Confluence score [\d.]* too low;?/g, '')
-      .replace(/Signal strength NONE[^;]*;?/g, '')
-      .replace(/No clear direction[^;]*;?/g, '')
-      .replace(/\s+/g, ' ').trim();
-    
-    // If everything was stripped, provide plain summary
-    if (!txt || txt.length < 10) {
-      // Extract key meaning from verdict
-      if (reason.includes('SABAR')) return 'Market not yet clear. Wait for trend + signal to align before entry.';
-      if (reason.includes('HOLD')) return 'Risk unresolved. Do not enter yet.';
-      return 'Check entry conditions before deciding.';
-    }
-    
-    // Translate remaining technical terms
-    txt = txt
-      .replace(/insufficient reward/g, 'reward does not justify risk')
-      .replace(/irreversible risk/g, 'irreversible risk')
-      .replace(/no evidence basis/g, 'insufficient evidence')
-      .replace(/no confluence factors/g, 'signals not aligned')
-      .replace(/Confidence capped/g, 'confidence capped')
-      .replace(/not enough confluence/g, 'mixed signals');
-    
-    return txt;
-  }
-  const $ = id => document.getElementById(id);
-  const fmt = (n, d=2) => Number(n||0).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
-
-  // ── Update freshness line + data-unavailable strip + reconciliation line ──
-  let firstViewportRendered = false;
-  function updateFreshness(snapshot) {
-    if (!snapshot || !snapshot.observed_at) return;
-    const ts = new Date(snapshot.observed_at);
-    const hhmm = ts.toLocaleTimeString('en-MY', { timeZone: CONFIG.TIMEZONE, hour: '2-digit', minute: '2-digit', hour12: false });
-    const asOfEl = $('maAsOf');
-    if (asOfEl) asOfEl.textContent = hhmm + ' MYT';
-    const lastEl = $('maLastVerified');
-    if (lastEl) lastEl.textContent = hhmm + ' MYT';
-    const unavail = $('maUnavailable');
-    if (unavail) unavail.hidden = true;
-    firstViewportRendered = true;
-  }
-
-  // ── Reconciliation: when 1H/4H/1D disagree, surface the conflict ──
-  function updateReconciliation(snapshot) {
-    const el = $('maReconcile');
-    if (!el) return;
-    el.hidden = true;
-    if (!snapshot || !snapshot.levels) return;
-    const levels = snapshot.levels;
-    const emaTrend = (snapshot.ticker && snapshot.ticker.emaTrend) || 'NEUTRAL';
-    const s1 = (levels.support || [])[0];
-    const r1 = (levels.resistance || [])[0];
-    const price = (snapshot.ticker && snapshot.ticker.price) || 0;
-    if (emaTrend === 'BEARISH' && price && s1 && r1 && price > r1) {
-      el.textContent = 'Intraday bounce inside daily downtrend · direction may flip on retest of S1';
-      el.hidden = false;
-    } else if (emaTrend === 'BULLISH' && price && s1 && r1 && price < s1) {
-      el.textContent = 'Intraday dip inside daily uptrend · direction may flip on retest of R1';
-      el.hidden = false;
-    }
-  }
-
-  // ── 10s first-viewport watchdog ──
-  let firstViewportWatchdog = null;
-  function armFirstViewportWatchdog() {
-    if (firstViewportWatchdog) clearTimeout(firstViewportWatchdog);
-    firstViewportWatchdog = setTimeout(() => {
-      if (!firstViewportRendered) {
-        const ts = $('pulseTimestamp');
-        if (ts) ts.textContent = 'Data unavailable';
-        const unavail = $('maUnavailable');
-        if (unavail) unavail.hidden = false;
-      }
-    }, 10000);
-  }
-
-  // ── API fetch with 8s timeout + error handling ──
-  async function apiFetch(endpoint) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
-    try {
-      const resp = await fetch(CONFIG.API_BASE + endpoint, { signal: controller.signal });
-      clearTimeout(timeout);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      return await resp.json();
-    } catch (err) {
-      clearTimeout(timeout);
-      console.warn(`[Gas] ${endpoint} failed:`, err.message);
-      return null;
-    }
-  }
-
-  // ── Chart initialization (guarded — chart failure must never kill data panels) ──
-  let chart = null, candleSeries = null, emaSeries = {};
-  function initChart() {
-    if (chart) return true;
-    const chartContainer = $('mainChart');
-    if (!chartContainer) return false;
-    if (typeof LightweightCharts === 'undefined') {
-      chartContainer.innerHTML = '<div style="padding:3rem 1rem;text-align:center;color:#8a8378;font-family:monospace;">&#9888; CHART OFFLINE &mdash; data panels live</div>';
-      return false;
-    }
-    try {
-      chart = LightweightCharts.createChart(chartContainer, {
-        autoSize: true,
-        layout: {
-          background: { type: 'solid', color: '#0d0d1a' },
-          textColor: '#6a6050',
-          fontFamily: "'IBM Plex Mono', monospace",
-          fontSize: 11,
-        },
-        grid: {
-          vertLines: { color: 'rgba(30,30,50,0.5)' },
-          horzLines: { color: 'rgba(30,30,50,0.5)' },
-        },
-        crosshair: {
-          mode: LightweightCharts.CrosshairMode.Normal,
-          vertLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
-          horzLine: { color: 'rgba(201,168,76,0.25)', width: 1, style: LightweightCharts.LineStyle.Dashed },
-        },
-        rightPriceScale: { borderColor: '#1e1e32', scaleMargins: { top: 0.1, bottom: 0.1 } },
-        timeScale: { borderColor: '#1e1e32', timeVisible: true, secondsVisible: false },
-        handleScroll: { vertTouchDrag: false },
-      });
-      candleSeries = chart.addCandlestickSeries({
-        upColor: '#22c55e', downColor: '#ef4444',
-        borderUpColor: '#22c55e', borderDownColor: '#ef4444',
-        wickUpColor: '#22c55e', wickDownColor: '#ef4444',
-      });
-      emaSeries = {
-        '20':  chart.addLineSeries({ color: '#f59e0b', lineWidth: 1, visible: activeEMAs['20'] }),
-        '50':  chart.addLineSeries({ color: '#3b82f6', lineWidth: 1, visible: activeEMAs['50'] }),
-        '200': chart.addLineSeries({ color: '#888888', lineWidth: 1, visible: activeEMAs['200'] }),
-      };
-      return true;
-    } catch (err) {
-      console.warn('[Gas] chart init failed:', err.message);
-      chartContainer.innerHTML = '<div style="padding:3rem 1rem;text-align:center;color:#8a8378;font-family:monospace;">&#9888; CHART OFFLINE &mdash; data panels live</div>';
-      chart = null; candleSeries = null; emaSeries = {};
-      return false;
-    }
-  }
-
-  // ── Position markers (Entry, SL, TP) ──
-  let positionLines = [];
-
-  function clearPositionLines() {
-    positionLines.forEach(pl => {
-      try { candleSeries.removePriceLine(pl); } catch(e) {}
-    });
-    positionLines = [];
-  }
-
-  function plotPositionMarkers(sig) {
-    if (!candleSeries) return;
-    clearPositionLines();
-    if (!sig.entry_price || !sig.stop_loss || sig.direction === 'FLAT') return;
-
-    const rr = sig.rr_ratio || 0;
-    const rrLabel = rr > 0 ? 'ENTRY · R:R 1:' + rr.toFixed(1) : 'ENTRY';
-
-    // Entry line (gold, solid) with R:R label
-    const entryLine = candleSeries.createPriceLine({
-      price: sig.entry_price, color: '#c9a84c', lineWidth: 2,
-      lineStyle: LightweightCharts.LineStyle.Solid,
-      axisLabelVisible: true, title: rrLabel,
-    });
-    positionLines.push(entryLine);
-
-    // Stop Loss (red, dashed) — risk side
-    if (sig.stop_loss > 0) {
-      const riskDist = Math.abs(sig.entry_price - sig.stop_loss);
-      const slLine = candleSeries.createPriceLine({
-        price: sig.stop_loss, color: '#ef4444', lineWidth: 1.5,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true, title: 'SL · Risk $' + riskDist.toFixed(1),
-      });
-      positionLines.push(slLine);
-    }
-
-    // Take Profit 1 (green, dashed) — reward side
-    if (sig.take_profit_1 > 0) {
-      const rewardDist = Math.abs(sig.take_profit_1 - sig.entry_price);
-      const tp1Line = candleSeries.createPriceLine({
-        price: sig.take_profit_1, color: '#22c55e', lineWidth: 1.5,
-        lineStyle: LightweightCharts.LineStyle.Dashed,
-        axisLabelVisible: true, title: 'TP1 · Reward $' + rewardDist.toFixed(1),
-      });
-      positionLines.push(tp1Line);
-    }
-
-    // Take Profit 2 (green, dotted)
-    if (sig.take_profit_2 > 0) {
-      const tp2Line = candleSeries.createPriceLine({
-        price: sig.take_profit_2, color: '#22c55e', lineWidth: 1,
-        lineStyle: LightweightCharts.LineStyle.Dotted,
-        axisLabelVisible: true, title: 'TP2',
-      });
-      positionLines.push(tp2Line);
-    }
-  }
-
-  // ── Compute EMA from candles ──
-  function computeEMA(candles, period) {
-    const k = 2 / (period + 1);
-    const result = [];
-    let ema = candles[0]?.close || 0;
-    for (let i = 0; i < candles.length; i++) {
-      if (i === 0) { ema = candles[i].close; }
-      else if (i < period - 1) {
-        ema = candles.slice(0, i + 1).reduce((s, c) => s + c.close, 0) / (i + 1);
-      } else {
-        ema = candles[i].close * k + ema * (1 - k);
-      }
-      result.push({ time: candles[i].time, value: +ema.toFixed(2) });
-    }
-    return result;
-  }
-
-  // ── Forecast cone (wealth.forecast.v1 — WEALTH engine computes, page renders) ──
-  let coneSeries = null;
-  let forecastCache = {};
-  let currentHorizon = 30;
-  let latestForecast = null;
-
-  async function loadForecast(horizon) {
-    const hit = forecastCache[horizon];
-    if (hit && (Date.now() - hit._ts) < 300000) return hit;
-    const d = await apiFetch(`/forecast?horizon=${horizon}`);
-    if (d && d.schema === 'wealth.forecast.v1' && d.cone && d.cone.t) {
-      d._ts = Date.now();
-      forecastCache[horizon] = d;
-      return d;
-    }
-    return null;
-  }
-
-  function ensureConeSeries() {
-    if (coneSeries || !chart) return;
-    const mk = (color, width, style) => chart.addLineSeries({
-      color, lineWidth: width, lineStyle: style,
-      priceLineVisible: false, lastValueVisible: false, crosshairMarkerVisible: false,
-    });
-    const D = LightweightCharts.LineStyle.Dashed, T = LightweightCharts.LineStyle.Dotted;
-    coneSeries = {
-      p10: mk('rgba(201,168,76,0.22)', 1, T),
-      p25: mk('rgba(201,168,76,0.45)', 1, D),
-      p50: mk('#e2b714', 2, D),
-      p75: mk('rgba(201,168,76,0.45)', 1, D),
-      p90: mk('rgba(201,168,76,0.22)', 1, T),
-    };
-  }
-
-  function renderCone(candles) {
-    loadForecast(currentHorizon).then(fc => {
-      if (!fc || !chart || !candleSeries || !candles || !candles.length) return;
-      latestForecast = fc;
-      ensureConeSeries();
-      const lastT = candles[candles.length - 1].time;
-      const toPts = arr => arr.map((v, i) => ({
-        time: Math.floor(new Date(fc.cone.t[i] + 'T00:00:00Z').getTime() / 1000), value: v,
-      })).filter(p => p.time > lastT);
-      for (const k of ['p10', 'p25', 'p50', 'p75', 'p90']) {
-        coneSeries[k].setData(toPts(fc.cone[k]));
-      }
-      updatePredictionCard(fc);
-    });
-  }
-
-  window.selectHorizon = function(btn) {
-    const h = parseInt(btn.dataset.horizon);
-    if (h === currentHorizon) return;
-    currentHorizon = h;
-    document.querySelectorAll('.cone-toggle').forEach(b => b.classList.toggle('active', b === btn));
-    const payload = chartDataCache[currentTF];
-    if (payload && payload.candles) renderCone(payload.candles);
-  };
-
-  function updatePredictionCard(fc) {
-    const b = fc.basis || {};
-    const end = (fc.cone.p50 || []).length - 1;
-    if (end < 0) return;
-    const arrows = { BULLISH: '↑', BEARISH: '↓', NEUTRAL: '→' };
-    const L = (fc.scenarios || []).find(s => s.side === 'LONG');
-    const S = (fc.scenarios || []).find(s => s.side === 'SHORT');
-    // Forecast evidence is daily (/forecast engine math) — always stamp 1D,
-    // independent of the chart timeframe (currentTF).
-    const tf = '1D';
-
-    if ($('predCurrent')) {
-      $('predCurrent').textContent = '$' + fmt(b.close);
-      $('predCurrentSub').textContent = fc.generated_at
-        ? 'engine · ' + fc.generated_at.slice(11, 16) + ' MYT' : 'engine';
-      $('predRange').textContent = '$' + fmt(fc.cone.p25[end]) + ' – $' + fmt(fc.cone.p75[end]);
-      $('predRangeSub').textContent = currentHorizon + '-day cone · p25–p75';
-      $('predBias').textContent = (fc.bias || '—') + ' · ' + tf;
-      $('predBias').style.color = fc.bias === 'BULLISH' ? '#22c55e' : (fc.bias === 'BEARISH' ? '#ef4444' : '#c9a84c');
-      $('predBiasSub').textContent = 'confluence L' + (L ? L.confluence : '–') + '/5 · S' + (S ? S.confluence : '–') + '/5';
-      if (L) {
-        $('predKey').textContent = '$' + fmt(L.invalidation);
-        $('predKeySub').textContent = 'Support 1 · ' + tf;
-      }
-    }
-    // Scenario ladder — falsification levels on its face, gated per rung by R:R.
-    // Trigger levels derive from nearby levels consistent with the mt-* strip:
-    // LONG triggers at R1 (= S.invalidation, mt-r1), SHORT at S1 (= L.invalidation, mt-s1).
-    // LONG risk = |trigger − invalidation|, reward = |objective − trigger| (SHORT analogous).
-    // A rung renders only when its R:R is finite and ≥ 1.0 — no fake arithmetic.
-    if ($('predScenarios') && L && S) {
-      const rungRR = (trigger, invalidation, objective) => {
-        if (![trigger, invalidation, objective].every(v => typeof v === 'number' && isFinite(v))) return null;
-        const risk = Math.abs(trigger - invalidation);
-        const reward = Math.abs(objective - trigger);
-        if (risk <= 0) return null;
-        const rr = reward / risk;
-        return rr >= 1.0 ? rr : null;
-      };
-      const longRR = rungRR(+S.invalidation, +L.invalidation, +L.objective);
-      const shortRR = rungRR(+L.invalidation, +S.invalidation, +S.objective);
-      const rows = [];
-      if (longRR !== null) {
-        rows.push('<div class="scenario-row"><b>▲ LONG</b><span>' + L.trigger + '</span><span>→ <b>$' + fmt(L.objective) + '</b></span><span>invalid $' + fmt(L.invalidation) + '</span><span>R:R 1:' + fmt(longRR, 1) + '</span><span>ETA ' + L.eta_days + 'd</span><span>conf ' + L.confluence + '/5</span></div>');
-      }
-      if (shortRR !== null) {
-        rows.push('<div class="scenario-row"><b>▼ SHORT</b><span>' + S.trigger + '</span><span>→ <b>$' + fmt(S.objective) + '</b></span><span>invalid $' + fmt(S.invalidation) + '</span><span>R:R 1:' + fmt(shortRR, 1) + '</span><span>ETA ' + S.eta_days + 'd</span><span>conf ' + S.confluence + '/5</span></div>');
-      }
-      $('predScenarios').innerHTML = rows.length
-        ? rows.join('')
-        : '<div class="market-answer-no-setup">SABAR · No active setup</div>';
-    }
-    if ($('predRead')) {
-      $('predRead').textContent = '⚖ ' + (fc.institutional_read || '') + ' — ' + (fc.epistemic || '');
-    }
-    // S/R + MA strip from the same engine output
-    if ($('mt-s1') && L && S) {
-      $('mt-s1').textContent = '$' + fmt(L.invalidation);
-      $('mt-s2').textContent = '$' + fmt(S.objective);
-      $('mt-r1').textContent = '$' + fmt(S.invalidation);
-      $('mt-r2').textContent = '$' + fmt(L.objective);
-      $('mt-ma50').textContent = '$' + fmt(b.ema50);
-      $('mt-ma200').textContent = '$' + fmt(b.ema200);
-    }
-  }
-
-  // ── Load chart from live API ──
-  async function loadChartData(tf) {
-    const interval = CONFIG.TF_INTERVALS[tf] || '1h';
-    const period = CONFIG.TF_PERIODS[tf] || '30d';
-
-    if (chartDataCache[tf]) {
-      return chartDataCache[tf];
-    }
-
-    const data = await apiFetch(`/history?interval=${interval}&period=${period}`);
-    if (data && data.candles && data.candles.length > 0) {
-      const norm = arr => (arr || []).map(p => ({
-        time: typeof p.time === 'number' ? p.time : Math.floor(new Date(p.time + 'Z').getTime() / 1000),
-        value: p.value,
-      }));
-      const payload = {
-        candles: data.candles.map(c => ({
-          time: typeof c.time === 'number' ? c.time : Math.floor(new Date(c.time + 'Z').getTime() / 1000),
-          open: +c.open, high: +c.high, low: +c.low, close: +c.close,
-        })),
-        // Server-computed EMAs carry full-history warmup — prefer over client recompute
-        ema: { '20': norm(data.ema20), '50': norm(data.ema50), '200': norm(data.ema200) },
-      };
-      chartDataCache[tf] = payload;
-      return payload;
-    }
-    return null;
-  }
-
-  async function renderChart(tf) {
-    currentTF = tf;
-    if (!initChart()) return;
-    const payload = await loadChartData(tf);
-    if (!payload || !payload.candles || payload.candles.length === 0) {
-      console.warn('[Gas] No chart data for TF:', tf);
-      return;
-    }
-    const candles = payload.candles;
-
-    candleSeries.setData(candles);
-
-    // Server EMAs (full warmup); fall back to client recompute if absent
-    for (const [period, series] of Object.entries(emaSeries)) {
-      const server = payload.ema && payload.ema[period];
-      const emaData = (server && server.length === candles.length)
-        ? server
-        : computeEMA(candles, parseInt(period));
-      series.setData(emaData);
-    }
-
-    renderCone(candles);
-
-    chart.timeScale().fitContent();
-
-    // Update TF pills
-    document.querySelectorAll('.tf-pill').forEach(b => {
-      b.classList.toggle('active', b.dataset.tf === tf);
-    });
-  }
-
-  // ── Timeframe selector ──
-  window.selectTF = function(btn) {
-    const tf = btn.dataset.tf;
-    if (tf === currentTF) return;
-    document.querySelectorAll('.tf-pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderChart(tf);
-  };
-
-  // ── EMA toggle ──
-  window.toggleEMA = function(btn) {
-    const period = btn.dataset.ema;
-    activeEMAs[period] = !activeEMAs[period];
-    btn.classList.toggle('active', activeEMAs[period]);
-    if (emaSeries[period]) {
-      emaSeries[period].applyOptions({ visible: activeEMAs[period] });
-    }
-  };
-
-  function updateRealityPacket(snapshot) {
-    const pktEl = document.getElementById('wealth-reality-packet');
-    if (!pktEl) return;
-    try {
-      const pkt = JSON.parse(pktEl.textContent);
-      const ticker = snapshot.ticker || {};
-      const levels = snapshot.levels || {};
-      const macro = snapshot.macro || {};
-      pkt.schema = snapshot.schema;
-      pkt.observed_at = snapshot.observed_at;
-      pkt.timestamp = snapshot.observed_at;
-      pkt.coherence_id = snapshot.coherence_id;
-      if (pkt.market_state) {
-        pkt.market_state.symbol = ticker.symbol || pkt.market_state.symbol;
-        pkt.market_state.price_usd = ticker.price;
-        pkt.market_state.change_pct = ticker.changePct;
-        pkt.market_state.regime = ticker.emaTrend || null;
-        pkt.market_state.rsi_14 = ticker.rsi;
-        pkt.market_state.ema_trend = ticker.emaTrend || null;
-        pkt.market_state.key_levels = {
-          support: levels.support || [],
-          resistance: levels.resistance || [],
-        };
-      }
-      if (pkt.economic_trinity && pkt.economic_trinity.fx) {
-        pkt.economic_trinity.fx.global = macro.dxy == null
-          ? 'Live DXY and rates unavailable'
-          : 'DXY ' + macro.dxy + ' · live rates unavailable';
-      }
-      pktEl.textContent = JSON.stringify(pkt, null, 2);
-    } catch (err) {
-      console.warn('[Snapshot] packet update failed:', err.message);
-    }
-  }
-
-  async function refreshSnapshot() {
-    const snapshot = await apiFetch('/snapshot');
-    if (!snapshot || snapshot.schema !== 'wealth.snapshot.v1' || snapshot.asset !== CONFIG.ASSET ||
-        !snapshot.observed_at || !snapshot.ticker || !snapshot.levels || !snapshot.macro ||
-        !snapshot.coherence_id) return null;
-    latestSnapshot = snapshot;
-    updateRealityPacket(snapshot);
-    updateFreshness(snapshot);
-    updateReconciliation(snapshot);
-    return snapshot;
-  }
-
-  // ── Ticker + Pulse Bar ──
-  async function refreshTicker(force = false) {
-    const snapshot = force || !latestSnapshot ? await refreshSnapshot() : latestSnapshot;
-    if (!snapshot) return;
-    const levels = snapshot.levels || {};
-    const data = Object.assign({}, snapshot.ticker || {}, {
-      support: levels.support || [],
-      resistance: levels.resistance || [],
-    });
-
-    $('pulsePrice').textContent = '$' + fmt(data.price);
-    const delta = data.change || 0;
-    const pct = data.changePct || 0;
-    const isUp = delta >= 0;
-
-    const dEl = $('pulseDelta');
-    dEl.textContent = (isUp ? '+' : '') + fmt(delta);
-    dEl.className = 'pulse-delta ' + (isUp ? 'up' : 'down');
-
-    const pEl = $('pulsePct');
-    pEl.textContent = '(' + (isUp ? '+' : '') + fmt(pct) + '%)';
-
-    // Bias pill — timeframe-stamped to avoid unlabeled direction
-    const bias = $('biasPill');
-    const emaTrend = data.emaTrend || 'NEUTRAL';
-    const biasTf = currentTF || '4H';
-    if (emaTrend === 'BULLISH') { bias.textContent = 'Bullish · ' + biasTf; bias.className = 'bias-pill bullish'; }
-    else if (emaTrend === 'BEARISH') { bias.textContent = 'Bearish · ' + biasTf; bias.className = 'bias-pill bearish'; }
-    else { bias.textContent = 'Neutral · ' + biasTf; bias.className = 'bias-pill neutral'; }
-
-    // Key levels — with timeframe label
-    if (data.support && data.resistance) {
-      const s1 = data.support[0], s2 = data.support[1], r1 = data.resistance[0], r2 = data.resistance[1];
-      $('pulseLevels').innerHTML =
-        `<span class="level-chip support">S1 <span class="val">$${fmt(s1)}</span></span>
-         <span class="level-chip support">S2 <span class="val">$${fmt(s2)}</span></span>
-         <span class="level-chip resistance">R1 <span class="val">$${fmt(r1)}</span></span>
-         <span class="level-chip resistance">R2 <span class="val">$${fmt(r2)}</span></span>
-         <span style="font-size:0.65rem;color:var(--text-dim);margin-left:0.25rem;">1H</span>`;
-    }
-
-    // Regime display — append to bias pill
-    const regime = data.emaTrend || 'NEUTRAL';
-    const rsi = data.rsi || 50;
-    const rsiState = data.rsiState || 'NEUTRAL';
-    let regimeLabel = '';
-    if (regime === 'BULLISH') regimeLabel = '📈 UPTREND';
-    else if (regime === 'BEARISH') regimeLabel = '📉 DOWNTREND';
-    else regimeLabel = '📊 SIDEWAYS';
-    bias.textContent += ' · ' + regimeLabel;
-
-    // Risk bars
-    const bars = $('riskBars').children;
-    const riskLevel = data.signal === 'SELL' ? 5 : data.signal === 'NEUTRAL' ? 3 : 1;
-    for (let i = 0; i < bars.length; i++) {
-      bars[i].className = 'risk-bar' + (i < riskLevel ? ' active ' + (i < 2 ? 'low' : i < 4 ? 'med' : 'high') : '');
-    }
-
-    // Timestamp — LIVE marker
-    const now = new Date(snapshot.observed_at);
-    const isStale = (data.stale === true) || (Date.now() - now.getTime() > 10 * 60 * 1000);
-    const freshBadge = isStale
-      ? '<span style="color:var(--amber);">⚠ STALE</span> '
-      : '<span style="color:var(--green);">● LIVE</span> ';
-    $('pulseTimestamp').innerHTML = freshBadge + now.toLocaleString('en-MY', {
-      timeZone: CONFIG.TIMEZONE, year: 'numeric', month: '2-digit',
-      day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
-    }) + ' MYT';
-
-    // RSI in driver — with regime context and gas-local unit metadata
-    $('pulseDriver').innerHTML = '<strong>RSI ' + fmt(rsi, 1) + '</strong> — ' + rsiState +
-      ' · TF: 1H levels, 4H regime';
-  }
-
-  // ── Market Pulse (APEX) ──
-  async function refreshApex() {
-    const d = await apiFetch('/apex');
-    if (!d) return;
-
-    const g = d.G || 0;
-    const gEl = $('apexG');
-    if (gEl) {
-      gEl.textContent = g >= 0.5 ? 'Clear' : g >= 0.3 ? 'Mixed' : 'Murky';
-      gEl.style.color = g >= 0.5 ? 'var(--green)' : g >= 0.3 ? 'var(--amber)' : 'var(--red)';
-    }
-
-    const c = d.C_dark || 0;
-    const cEl = $('apexCdark');
-    if (cEl) {
-      cEl.textContent = c < 0.15 ? 'Low' : c < 0.3 ? 'Medium' : 'High';
-      cEl.style.color = c < 0.15 ? 'var(--green)' : c < 0.3 ? 'var(--amber)' : 'var(--red)';
-    }
-
-    const ds = d.dS || 0;
-    const dsEl = $('apexDS');
-    if (dsEl) {
-      dsEl.textContent = ds > 0.05 ? 'Building' : ds < -0.05 ? 'Fading' : 'Steady';
-      dsEl.style.color = ds > 0.05 ? 'var(--amber)' : ds < -0.05 ? 'var(--text-mid)' : 'var(--cyan)';
-    }
-
-    const stateEl = $('apexState');
-    if (stateEl) {
-      const stateMap = { 'CLARITY': 'Clear Trend', 'STABLE': 'Ranging', 'CHAOS': 'Choppy' };
-      stateEl.textContent = stateMap[d.state] || d.state || '—';
-    }
-
-    if (d.direction) {
-      const tf = currentTF || '4H';
-      $('apexDirection').textContent = (d.direction || '—') + ' · ' + tf;
-    }
-
-    const vEl = $('apexVerdict');
-    if (vEl) {
-      const verdictMap = { 'SEAL': 'Strong Signal', 'SABAR': 'Wait', 'HOLD': 'Hold', 'VOID': 'Refused' };
-      vEl.textContent = verdictMap[d.verdict] || d.verdict || 'SABAR';
-      vEl.className = 'apex-verdict ' + (d.verdict || 'sabar').toLowerCase();
-    }
-
-    // Sync market-answer verdict badge — constitutional vocabulary only (no PROCEED)
-    const maEl = $('maVerdict');
-    if (maEl) {
-      const v = ({'SEAL':'SEAL','PROCEED':'SEAL','SABAR':'SABAR','HOLD':'HOLD','VOID':'VOID'})[d.verdict] || 'SABAR';
-      maEl.textContent = v;
-      maEl.style.background = ({'SEAL':'rgba(49,196,141,.15)','SABAR':'rgba(227,179,65,.15)','HOLD':'rgba(232,131,58,.15)','VOID':'rgba(240,80,110,.15)'})[v] || 'var(--surface2)';
-      maEl.style.color = ({'SEAL':'var(--seal)','SABAR':'var(--sabar)','HOLD':'var(--hold)','VOID':'var(--void)'})[v] || 'var(--ink)';
-    }
-
-    // Update last signal timestamp
-    const sigEl = $('signalLastUpdated');
-    if (sigEl) sigEl.textContent = new Date().toLocaleTimeString('en-MY', { timeZone: CONFIG.TIMEZONE });
-
-    const ap = d.apex || {};
-    const setPrim = (id, val, label) => {
-      const e = $(id);
-      if (e) {
-        e.textContent = label + ': ' + Math.round((val || 0) * 100) + '%';
-        e.style.color = val >= 0.6 ? 'var(--green)' : val >= 0.3 ? 'var(--text-mid)' : 'var(--red)';
-      }
-    };
-    if (ap.A !== undefined) setPrim('apexA', ap.A, 'Structure');
-    if (ap.P !== undefined) setPrim('apexP', ap.P, 'Strength');
-    if (ap.E !== undefined) setPrim('apexE', ap.E, 'Signal');
-    if (ap.X !== undefined) setPrim('apexX', ap.X, 'Stability');
-    if (ap.Phi !== undefined) setPrim('apexPhi', ap.Phi, 'Agreement');
-
-    // Momentum + Volume from APEX
-    if (d.momentum !== undefined) {
-      const momEl = $('apexMom');
-      if (momEl) { momEl.textContent = 'Momentum: ' + (d.momentum >= 0 ? '+' : '') + fmt(d.momentum, 3); momEl.style.color = d.momentum >= 0 ? 'var(--green)' : 'var(--red)'; }
-    }
-    if (d.volume_trend) {
-      const volEl = $('apexVolTrend');
-      if (volEl) { volEl.textContent = 'Volume: ' + d.volume_trend; volEl.style.color = d.volume_trend === 'rising' ? 'var(--green)' : 'var(--amber)'; }
-    }
-
-    // Update confluence
-    const confPct = Math.round((d.confidence || 0.5) * 100);
-    $('confluenceScore').textContent = confPct + '%';
-    $('confluenceBar').style.width = confPct + '%';
-    $('confluenceBar').className = 'confluence-bar-fill ' + (confPct >= 65 ? 'high' : confPct >= 40 ? 'med' : 'low');
-    $('biasConfluence').textContent = confPct + '% Confluence · ' + (d.verdict || 'MODERATE').toUpperCase();
-  }
-
-  // ── Macro ticker (DXY, US10Y, VIX, USD/MYR) ──
-  async function refreshMacro() {
-    const snapshot = latestSnapshot || await refreshSnapshot();
-    const data = snapshot && snapshot.macro;
-    if (!data) return;
-
-    const setMacro = (id, value, change) => {
-      const el = $(id);
-      if (!el) return;
-      el.textContent = value || '—';
-      if (change !== undefined) {
-        const isUp = change >= 0;
-        el.innerHTML += ' <span class="macro-change ' + (isUp ? 'up' : 'down') + '">' + (isUp ? '▲' : '▼') + Math.abs(change).toFixed(2) + '%</span>';
-      }
-    };
-
-    setMacro('mcr-dxy', data.dxy ? data.dxy.toFixed(2) : null, data.dxy_change);
-    setMacro('mcr-us10y', data.us10y ? data.us10y.toFixed(2) + '%' : null, data.us10y_change);
-    setMacro('mcr-vix', data.vix ? data.vix.toFixed(2) : null, data.vix_change);
-    setMacro('mcr-usmyr', data.usmyr ? data.usmyr.toFixed(4) : null, data.usmyr_change);
-
-    const timeEl = $('mcr-time');
-    if (timeEl) {
-      timeEl.textContent = new Date(snapshot.observed_at).toLocaleString('en-MY', {
-        timeZone: CONFIG.TIMEZONE, month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
-      }) + ' MYT';
-    }
-  }
-
-  // ── Signal V2 (technical signals) ──
-  async function refreshSignals() {
-    const d = await apiFetch('/signal_v2');
-    if (!d || !d.signal) return;
-
-    const sig = d.signal;
-    const regime = d.regime || {};
-    const rr = sig.rr_ratio || 0;
-    const dir = (sig.direction || 'FLAT').toUpperCase();
-    const rrMissing = (sig.rr_ratio === null || sig.rr_ratio === undefined);
-    const rrGated = rrMissing || rr < 1.0;
-    const isFlat = dir === 'FLAT' || rrGated;
-
-    const plainVerdict = translateJudge(sig.judge_reason);
-    const tf = currentTF || '4H';
-    $('synthesisVerdict').innerHTML = '<strong>' + (sig.verdict || 'SABAR') + ' · ' + dir + ' · ' + tf + '</strong><br><br>' + plainVerdict +
-      '<br><br><strong>📊 Numbers:</strong> R:R Ratio: ' + (rrMissing ? '—' : fmt(rr, 1) + ':1') +
-      ' | Confluence: ' + Math.round((sig.confluence_score || 0) * 100) + '%' +
-      ' | Trend: ' + (regime.regime || 'NONE') + ' (' + Math.round((regime.confidence || 0) * 100) + '% conf)';
-
-    const ladder = $('tradeLadder');
-    const noSetup = $('tradeNoSetup');
-    if (ladder) ladder.hidden = isFlat;
-    if (noSetup) noSetup.hidden = !isFlat;
-
-    if (!isFlat) {
-      const rrEl = $('tradeRR');
-      if (rrEl) {
-        rrEl.textContent = '1:' + fmt(rr, 1);
-        rrEl.className = 'trade-metric-value ' + (rr >= 2 ? 'good' : rr >= 1.5 ? 'marginal' : 'poor');
-      }
-      const confEl = $('tradeConf');
-      if (confEl) {
-        confEl.textContent = Math.round((sig.confluence_score || 0) * 100) + '%';
-      }
-      const confLvlEl = $('tradeConfLvl');
-      if (confLvlEl) {
-        const confMap = { 'HIGH': 'High', 'MEDIUM': 'Medium', 'LOW': 'Low' };
-        confLvlEl.textContent = confMap[(sig.confidence_level || 'MEDIUM').toUpperCase()] || 'Medium';
-      }
-      const vEl = $('tradeVerdict');
-      if (vEl) {
-        vEl.textContent = rr >= 2 ? 'SEAL · Strong R:R' : rr >= 1.5 ? 'SEAL · Acceptable R:R' : 'SABAR · Minimum R:R';
-        vEl.className = 'trade-quality-verdict ' + (rr >= 1.5 ? 'good' : 'marginal');
-      }
-    }
-
-    // Plot entry/SL/TP markers on chart
-    plotPositionMarkers(sig);
-  }
-
-  // ── Technical Forge — LIVE analysis from ticker + signal_v2 ──
-  async function refreshTechnicalForge() {
-    const snapshot = latestSnapshot || await refreshSnapshot();
-    const [sigData, apexData] = await Promise.all([
-      apiFetch('/signal_v2'),
-      apiFetch('/apex'),
-    ]);
-    const levels = (snapshot && snapshot.levels) || {};
-    const ticker = snapshot && snapshot.ticker ? Object.assign({}, snapshot.ticker, {
-      support: levels.support || [],
-      resistance: levels.resistance || [],
-    }) : null;
-    if (!ticker) return;
-
-    const emaTrend = ticker.emaTrend || 'NEUTRAL';
-    const price = ticker.price || 0;
-    const ema20 = ticker.ema20 || 0;
-    const ema50 = ticker.ema50 || 0;
-    const ema200 = ticker.ema200 || 0;
-    const rsi = ticker.rsi || 50;
-    const rsiState = ticker.rsiState || 'NEUTRAL';
-    const regime = (sigData && sigData.regime) || {};
-    const sig = (sigData && sigData.signal) || {};
-    const apexG = (apexData && apexData.G) || 0;
-
-    // ── TREND ──
-    const trendBull = emaTrend === 'BULLISH';
-    const trendClass = trendBull ? 'bullish' : (emaTrend === 'BEARISH' ? 'bearish' : 'neutral');
-    const trendScore = trendBull ? 65 : (emaTrend === 'BEARISH' ? 35 : 50);
-    $('tfTrendScore').textContent = emaTrend;
-    $('tfTrendScore').className = 'signal-score ' + trendClass;
-    $('tfTrendBody').innerHTML = 
-      'EMA20 ($' + fmt(ema20) + ') <strong>' + (ema20 > ema50 ? 'above' : 'below') + '</strong> EMA50 ($' + fmt(ema50) + '). ' +
-      '200 EMA at $' + fmt(ema200) + ' — ' + (price > ema200 ? 'price above = macro support' : 'price below = macro resistance') + '. ' +
-      'Regime: ' + (regime.regime || emaTrend) + ' (' + Math.round((regime.confidence || 0.8) * 100) + '% conf).';
-    $('tfTrendConf').textContent = 'Score: ' + trendScore + '/100';
-    $('tfTrendTier').textContent = trendScore >= 70 ? 'Tier 3 — High' : trendScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
-    $('tfTrendTier').className = 'confidence-tier ' + (trendScore >= 70 ? 't3' : trendScore >= 40 ? 't2' : 't1');
-
-    // ── MOMENTUM ──
-    const momBull = rsi > 50 && rsi < 70;
-    const momClass = rsi > 70 ? 'bearish' : rsi < 30 ? 'bullish' : 'neutral';
-    const momScore = Math.round(rsi);
-    $('tfMomScore').textContent = rsiState;
-    $('tfMomScore').className = 'signal-score ' + momClass;
-    $('tfMomBody').innerHTML = 
-      'RSI <strong>' + fmt(rsi, 1) + '</strong> — ' + rsiState.toLowerCase() + '. ' +
-      (rsi > 70 ? 'Overbought — potential pullback.' : rsi < 30 ? 'Oversold — potential bounce.' : 'Mid-range — no extreme signal.') +
-      ' Confluence: ' + Math.round((sig.confluence_score || 0) * 100) + '%. Direction: ' + (sig.direction || 'FLAT') + '.';
-    $('tfMomConf').textContent = 'Score: ' + momScore + '/100';
-    $('tfMomTier').textContent = momScore >= 70 ? 'Tier 3 — High' : momScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
-    $('tfMomTier').className = 'confidence-tier ' + (momScore >= 70 ? 't3' : momScore >= 40 ? 't2' : 't1');
-
-    // ── STRUCTURE ──
-    const structScore = Math.round((regime.confidence || 0) * 100);
-    const s1 = ticker.support ? ticker.support[0] : 0;
-    const r1 = ticker.resistance ? ticker.resistance[0] : 0;
-    const structClass = regime.regime === 'UPTREND' ? 'bullish' : regime.regime === 'DOWNTREND' ? 'bearish' : 'neutral';
-    $('tfStructScore').textContent = (regime.regime || 'SIDEWAYS');
-    $('tfStructScore').className = 'signal-score ' + structClass;
-    $('tfStructBody').innerHTML = 
-      '<strong>' + (regime.regime || 'SIDEWAYS') + '</strong> regime (' + Math.round((regime.confidence || 0.8) * 100) + '% confidence). ' +
-      'S1: $' + fmt(s1) + ' | R1: $' + fmt(r1) + '. ' +
-      'Verdict: <strong>' + (sig.verdict || 'SABAR') + '</strong> — ' + translateJudge(sig.judge_reason) + '.';
-    $('tfStructConf').textContent = 'Score: ' + structScore + '/100';
-    $('tfStructTier').textContent = structScore >= 70 ? 'Tier 3 — High' : structScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
-    $('tfStructTier').className = 'confidence-tier ' + (structScore >= 70 ? 't3' : structScore >= 40 ? 't2' : 't1');
-
-    // ── VOLUME ──
-    const volClass = apexG >= 0.5 ? 'bullish' : apexG >= 0.3 ? 'neutral' : 'bearish';
-    const volScore = Math.round(apexG * 100);
-    $('tfVolScore').textContent = apexG >= 0.5 ? 'Sufficient' : apexG >= 0.3 ? 'Moderate' : 'Weak';
-    $('tfVolScore').className = 'signal-score ' + volClass;
-    $('tfVolBody').innerHTML =
-      'Signal quality: <strong>' + (apexG >= 0.5 ? 'GOOD — entry candidate' : apexG >= 0.3 ? 'MODERATE — wait for confirmation' : 'WEAK — do not enter') + '</strong>. ' +
-      'Strength: ' + (sig.strength || 'NONE') + '. R:R Ratio: ' + fmt(sig.rr_ratio || 0, 1) + ':1. ' +
-      '★ Market data from yfinance — estimate only, not broker data.';
-    $('tfVolConf').textContent = 'Score: ' + volScore + '/100';
-    $('tfVolTier').textContent = volScore >= 70 ? 'Tier 3 — High' : volScore >= 40 ? 'Tier 2 — Moderate' : 'Tier 1 — Low';
-    $('tfVolTier').className = 'confidence-tier ' + (volScore >= 70 ? 't3' : volScore >= 40 ? 't2' : 't1');
-  }
-
-  // ── Calendar events ──
-  async function refreshCalendar() {
-    const d = await apiFetch('/calendar');
-    const listEl = $('eventsList');
-    if (!listEl) return;
-    if (!d || !d.events || d.events.length === 0) {
-      listEl.innerHTML = '<div class="events-empty">No high-impact USD events this week</div>';
-      return;
-    }
-    const now = new Date();
-    let warningHtml = '';
-    for (const ev of d.events) {
-      if (ev.impact !== 'high' || !ev.datetime) continue;
-      try {
-        const diffMs = new Date(ev.datetime) - now;
-        const diffMins = diffMs / 60000;
-        if (diffMins > 0 && diffMins <= 15) {
-          warningHtml = `<div class="event-alert critical">🚨 ${ev.event} IN ${Math.round(diffMins)} MINS — CLOSE POSITIONS</div>`;
-          break;
-        } else if (diffMins > 0 && diffMins <= 120) {
-          warningHtml = `<div class="event-alert warning">⚠️ ${ev.event} in ${Math.round(diffMins)} mins — Avoid new openings</div>`;
-        }
-      } catch(e) {}
-    }
-
-    listEl.innerHTML = warningHtml + d.events.map(ev => {
-      const cls = ev.impact === 'high' ? 'high' : 'medium';
-      return `<div class="event-row ${cls}">
-        <span class="event-date">${ev.date || ''}</span>
-        <span class="event-time">${ev.time || ''}</span>
-        <span class="event-name">${ev.event}</span>
-        <span class="event-actual">${ev.actual || '—'}</span>
-        <span class="event-forecast">${ev.forecast || '—'}</span>
-        <span class="event-previous">${ev.previous || '—'}</span>
-      </div>`;
-    }).join('');
-  }
-
-  // ── Stance buttons ──
-  function initStanceButtons() {
-    const saved = localStorage.getItem('gas_stance') || 'observe';
-    const stances = { observe: 'stanceObserve', prepare: 'stancePrepare', await: 'stanceAwait' };
-
-    Object.entries(stances).forEach(([key, id]) => {
-      const btn = $(id);
-      if (!btn) return;
-      btn.classList.toggle('active', saved === key);
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.stance-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        localStorage.setItem('gas_stance', key);
-      });
-    });
-  }
-
-  // ── Full refresh cycle ──
-  async function refreshAll() {
-    const liveDot = document.querySelector('.pulse-meta .live-dot');
-    if (liveDot) liveDot.style.background = 'var(--amber)';
-
-    const snapshot = await refreshSnapshot();
-    if (!snapshot) {
-      if (liveDot) liveDot.style.background = 'var(--red)';
-      return;
-    }
-
-    await Promise.all([
-      refreshTicker(),
-      refreshApex(),
-      refreshMacro(),
-      refreshSignals(),
-      refreshTechnicalForge(),
-      refreshCalendar(),
-      renderChart(currentTF),
-    ]);
-
-    if (liveDot) liveDot.style.background = 'var(--green)';
-  }
-
-  // ── Boot sequence ──
-  document.addEventListener('DOMContentLoaded', async () => {
-    // Arm 10s first-viewport watchdog before any fetch
-    armFirstViewportWatchdog();
-    // 💉 LIVE DATA FIRST — truth before beauty
-    await refreshSnapshot();
-    refreshTicker();
-    refreshMacro();
-    
-    // Then chart + heavy stuff in background
-    renderChart('4H');
-    refreshApex();
-    refreshSignals();
-    refreshTechnicalForge();
-    refreshCalendar();
-
-    initStanceButtons();
-
-    // Periodic refresh
-    setInterval(refreshAll, CONFIG.REFRESH_INTERVAL);
-    // Faster ticker refresh (every 2 min)
-    setInterval(() => refreshTicker(true), 120000);
-  });
-
 </script>
+<script src="/_shared/zen-market.js" defer></script>
 
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a202176affa3633f',t:'MTc4NDg4NzM2OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 <script id="wealth-reality-packet" type="application/ld+json">
@@ -1589,31 +474,37 @@ if (new URLSearchParams(window.location.search).get('mode') === 'agent') {
   "schema": "wealth.snapshot.v1",
   "organ": "WEALTH",
   "asset": "NATURAL_GAS_HENRY_HUB",
-  "observed_at": null,
+  "timestamp": "2026-07-26T21:30:09.337168+08:00",
+  "observed_at": "2026-07-26T13:30:09.580496+00:00",
   "coherence_id": null,
   "epistemic_tier": "OBS",
-  "endpoints": {
-    "snapshot": "/wealth/gas/api/snapshot",
-    "signal": "/wealth/gas/api/signal_v2",
-    "apex": "/wealth/gas/api/apex",
-    "forecast": "/wealth/gas/api/forecast",
-    "history": "/wealth/gas/api/history",
-    "calendar": "/wealth/gas/api/calendar"
+  "confidence": 0.88,
+  "sovereign_owner": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "governance": {
+    "constitutional_gate": "F13_SOVEREIGN_VETO_REQUIRED",
+    "decision_floor": "888_HOLD"
   },
   "market_state": {
     "symbol": "NG=F",
-    "price_usd": null,
-    "change_pct": null,
-    "regime": null,
-    "rsi_14": null,
-    "ema_trend": null,
+    "price_usd": 2.89,
+    "change_pct": 0,
+    "regime": "NEUTRAL",
+    "rsi_14": 37.9,
+    "ema_trend": "BEARISH",
     "key_levels": {
-      "support": [],
-      "resistance": []
+      "support": [
+        2.88,
+        2.87
+      ],
+      "resistance": [
+        2.9,
+        2.92,
+        2.93
+      ]
     }
   }
 }
-</script> <script src="/_shared/rasa-dunia-widget.js" defer></script>
+</script>
 
 </body>
 </html>

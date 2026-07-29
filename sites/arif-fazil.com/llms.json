@@ -42,6 +42,12 @@
     "https://arif-fazil.com/llms-full.txt",
     "https://arif-fazil.com/llms.json",
     "https://arif-fazil.com/page.json",
+    "https://arif-fazil.com/authority.json",
+    "https://arif-fazil.com/policy.json",
+    "https://arif-fazil.com/graph.json",
+    "https://arif-fazil.com/knowledge/corpus.json",
+    "https://arif-fazil.com/.well-known/identity.json",
+    "https://arif-fazil.com/.well-known/capability.json",
     "https://arif-fazil.com/.well-known/agent.json",
     "https://arif-fazil.com/.well-known/did.json",
     "https://arif-fazil.com/.well-known/arifos-federation.json",
@@ -60,5 +66,5 @@
     "llms_txt": true,
     "sitemap": true
   },
-  "last_updated": "2026-07-25"
+  "last_updated": "2026-07-27"
 }

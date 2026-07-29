@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "CapabilityManifest",
+  "id": "https://arif-fazil.com/.well-known/capability.json",
+  "version": "1.0.0",
+  "canonical_site": "https://arif-fazil.com/",
+  "protocols": {
+    "webmcp_manifest": "https://arif-fazil.com/.well-known/webmcp.json",
+    "mcp_gateway": "https://mcp.arif-fazil.com/mcp",
+    "a2a_gateway": "https://aaa.arif-fazil.com/a2a/",
+    "http": "https"
+  },
+  "capabilities": [
+    {
+      "name": "discover_identity",
+      "mode": "observe",
+      "endpoint": "https://arif-fazil.com/.well-known/identity.json"
+    },
+    {
+      "name": "read_public_knowledge",
+      "mode": "observe",
+      "endpoint": "https://arif-fazil.com/knowledge/corpus.json"
+    },
+    {
+      "name": "inspect_public_proof",
+      "mode": "observe",
+      "endpoint": "https://arif-fazil.com/proof/index.json"
+    },
+    {
+      "name": "connect_governed_tools",
+      "mode": "observe_or_human_approved_mutation",
+      "endpoint": "https://mcp.arif-fazil.com/mcp"
+    }
+  ],
+  "governance": "https://arif-fazil.com/policy.json",
+  "authority": "https://arif-fazil.com/authority.json",
+  "proof": "https://arif-fazil.com/proof/index.json",
+  "last_updated": "2026-07-27"
+}

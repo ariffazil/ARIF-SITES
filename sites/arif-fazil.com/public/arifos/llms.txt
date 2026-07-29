@@ -41,6 +41,34 @@ and VAULT999 seal path.
 | Deep tool surface | https://mcp.arif-fazil.com/llms.txt |
 | Federation map | `/.well-known/arifos-federation.json` |
 | Agent card | `/.well-known/agent-card.json` |
+| `/api/public-state` | **Preferred** — arifos.public-state.v1 sanitized JSON for the renderer and the no-JS path. Stable `organ_id`, normalized findings, links to graph / floors / authority / policy / proof. |
+| `/.well-known/public-state.json` | Static mirror of the public-state.v1 payload. |
+| `/api/observatory/v1/snapshot` | Legacy observatory.v1 signed snapshot. Kept for backward compatibility. |
+| `/.well-known/observatory-snapshot-latest.json` | Legacy observatory.v1 mirror. |
+| `/api/observatory/v1/health` | Legacy observatory.v1 seven-state vocabulary endpoint. |
+| `/.well-known/governance.jsonld` | Governance JSON-LD. |
+
+## Public-State.v1 Contract
+
+The renderer (and any headless client) prefers `/api/public-state`. The
+payload declares `schema: "arifos.public-state.v1"` with `schema_aliases`
+listing `observatory.v1` for backward compatibility.
+
+Stable keys: `organs` is exactly six entries — `arifos | geox | wealth | well |
+aforge | aaa`. Each finding carries `id`, `organ_id`, `category`, `severity`,
+`status`, `state`, `evidence`, `timestamp`, `confidence`, `source`, `trace`,
+`receipt`, and a `links` map with `graph`, `floors`, `authority`, `policy`,
+`proof`. Items whose upstream shape could not be parsed are surfaced as
+`category: "SCHEMA_MISMATCH"` — never silently dropped.
+
+Top-level `links` exposes the same surface endpoints plus canonical
+references to graph / floors / authority / policy / proof.
+
+## Observatory.v1 (legacy)
+
+Still emitted by `/api/observatory/v1/snapshot`. The signed payload remains
+the federation-wide source of cryptographic witness; public-state.v1 is
+additive and never replaces it.
 
 ## Canonical Kernel Verbs (8)
 

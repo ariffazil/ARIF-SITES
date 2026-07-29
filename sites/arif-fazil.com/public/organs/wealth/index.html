@@ -1,34 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ring="ORGAN" data-organ="wealth" data-plane="organ-node">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WEALTH — Capital judgment · Arif Fazil</title>
-<meta name="description" content="Judge value, risk and survival before committing capital. Part of the arifOS federation. Canonical app at https://wealth.arif-fazil.com/">
+<title>WEALTH · Capital intelligence — arifOS Federation</title>
+<meta name="description" content="Node identity card for WEALTH — Capital intelligence organ. NPV, IRR, EMV, market signals, institutional diagnostics under arifOS constitutional governance.">
 <link rel="canonical" href="https://arif-fazil.com/organs/wealth/">
+<link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<script src="/_shared/federation-chrome.js?v=20260726" data-active="wealth"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WEALTH","url":"https://wealth.arif-fazil.com/","isPartOf":{"@type":"SoftwareApplication","name":"arifOS Federation","url":"https://arif-fazil.com/arifos/"},"creator":{"@type":"Person","name":"Muhammad Arif Fazil","url":"https://arif-fazil.com/"}}
+{"@context":"https://***@type":"SoftwareApplication","name":"WEALTH","url":"https://wealth.arif-fazil.com/","isPartOf":{"@type":"SoftwareApplication","name":"arifOS Federation","url":"https://arif-fazil.com/doctrine"},"applicationCategory":"CapitalIntelligence","creator":{"@type":"Person","name":"Muhammad Arif bin Fazil","url":"https://arif-fazil.com/"},"description":"Capital intelligence organ — NPV, EMV, risk, commodity markets. Computes, never allocates."}
 </script>
 <style>
 body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
 main{max-width:640px;margin:0 auto;padding:2rem 1.25rem 4rem}
-h1{font-size:1.8rem}.lead{color:#9b9995;margin:0.75rem 0 1.25rem}
-a.btn{display:inline-flex;padding:.65rem 1.1rem;border-radius:8px;background:#3a9ea8;color:#0d0c0b;font-weight:700;text-decoration:none;margin-right:.5rem}
+.node-id{border-left:3px solid #d4af37;padding-left:1rem;margin-bottom:2rem}
+.node-id .type{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:#9b9995;font-family:ui-monospace,monospace}
+.node-id h1{font-size:1.8rem;margin:0.25rem 0}
+.node-id .meta{font-size:0.8rem;color:#706e6b;font-family:ui-monospace,monospace}
+.node-id .meta span{margin-right:1.5rem}
+.node-mention{display:inline-flex;gap:0.4rem;padding:.3rem .7rem;border-radius:4px;background:#141312;border:1px solid #2a2826;font-size:0.75rem;font-family:ui-monospace,monospace;color:#9b9995;text-decoration:none}
+.node-mention:hover{border-color:#d4af37;color:#e6e4e0}
+.lead{color:#9b9995;margin:0.75rem 0 1.25rem}
+a.btn{display:inline-flex;padding:.65rem 1.1rem;border-radius:8px;background:#3a9ea8;color:#0d0c0b;font-weight:700;text-decoration:none;margin-right:.5rem;margin-bottom:.5rem}
 a.ghost{background:transparent;border:1px solid #2a2826;color:#e6e4e0}
+.edge-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0;padding:1rem 0;border-top:1px solid #1a1a25;border-bottom:1px solid #1a1a25}
 .card{border:1px solid #2a2826;border-radius:10px;padding:1rem;margin:1rem 0;background:#141312;font-family:ui-monospace,monospace;font-size:.82rem;color:#9b9995}
 </style>
-<script src="/_shared/federation-chrome.js?v=20260718" data-active="wealth"></script>
 </head>
 <body>
 <main>
-  <p style="font-size:.75rem;color:#706e6b;font-family:ui-monospace,monospace">Capital · human explanation page</p>
-  <h1>WEALTH — Capital judgment</h1>
-  <p class="lead">Judge value, risk and survival before committing capital.</p>
+  <!-- NODE IDENTITY CARD -->
+  <div class="node-id">
+    <div class="type">B · Body · Constellation · ORGAN NODE</div>
+    <h1>💰 WEALTH <span style="font-size:1rem;color:#9b9995;font-weight:400">— Capital intelligence</span></h1>
+    <div class="meta">
+      <span>Status: 🟢 OPERATIONAL</span>
+      <span>Ring: CAPITAL · Ξ</span>
+      <span>Port: :18082</span>
+      <span>Canon: <a href="/doctrine" style="color:#d4af37">/doctrine (B)</a></span>
+    </div>
+  </div>
+
+  <!-- GRAPH EDGES -->
+  <div class="edge-row">
+    <a href="/doctrine" class="node-mention">← Doctrine (parent)</a>
+    <a href="https://wealth.arif-fazil.com" class="node-mention">→ WEALTH App</a>
+    <a href="https://arifos.arif-fazil.com" class="node-mention">→ Observatory</a>
+    <a href="/999/" class="node-mention">→ VAULT999</a>
+  </div>
+
+  <p class="lead">Capital flows through sovereign energy. NPV, IRR, EMV — computed by machine, never allocated by machine. Evidence before allocation.</p>
   <p>
-    <a class="btn" href="https://wealth.arif-fazil.com/">Enter WEALTH</a>
-    <a class="btn ghost" href="https://arifos.arif-fazil.com/">Observatory evidence</a>
-    <a class="btn ghost" href="/federation/">Federation</a>
+    <a class="btn" href="https://wealth.arif-fazil.com">Enter WEALTH</a>
+    <a class="btn ghost" href="https://arifos.arif-fazil.com">Observatory</a>
+    <a class="btn ghost" href="/doctrine">Doctrine · ABCD</a>
   </p>
+
   <div class="card" id="live">Loading live organ row…</div>
 </main>
 <script>
@@ -40,7 +70,7 @@ fetch('https://arifos.arif-fazil.com/api/public-state',{cache:'no-store'}).then(
     ' · transport ' + (o.transport||'?') + '\n' +
     'Release ' + (o.release||(ps.release&&ps.release.release_id)||'?') + '\n' +
     'Last observed ' + (o.last_observed||ps.generated_at||'?');
-}).catch(()=>{document.getElementById('live').textContent='public-state unavailable';});
+}).catch(()=>{document.getElementById('live').textContent='public-state unavailable — federation probe pending';});
 </script>
 </body>
 </html>

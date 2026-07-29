@@ -29,15 +29,17 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
-// Primary nav — clean IA. Portal to 5 organs + civic shelf.
+// Primary nav — verbs over nouns. Portal to 5 organs + civic shelf.
+// Hrefs are the nouns; labels are the verbs. Title attr on each link keeps
+// the noun→verb mapping discoverable (see ConstellationNav).
 // Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
 export const primaryLinks: LinkItem[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Earth', href: '/earth' },
-  { label: 'Economics', href: '/economics' },
-  { label: 'World', href: '/world' },
-  { label: 'Writing', href: '/writing' },
-  { label: 'Doctrine & Federation', href: '/doctrine' },
+  { label: 'Start', href: '/' },
+  { label: 'Explore', href: '/earth' },
+  { label: 'Analyze', href: '/economics' },
+  { label: 'Track', href: '/world' },
+  { label: 'Read', href: '/writing' },
+  { label: 'Challenge', href: '/doctrine' },
 ];
 
 // Genesis strip — machine-facing surfaces.

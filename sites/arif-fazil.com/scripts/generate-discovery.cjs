@@ -164,10 +164,14 @@ ${linkLines}
 - **Constitution**: \`https://arifos.arif-fazil.com/constitution.json\`
 
 ## Machine-Readable Discovery
+- \`/.well-known/identity.json\` — Public identity record and DID linkage
+- \`/.well-known/capability.json\` — Agent-operable capability manifest
 - \`/.well-known/agent.json\` — Agent capability declaration
 - \`/.well-known/did.json\` — W3C DID document (did:web:arif-fazil.com)
-- \`/.well-known/arifos-federation.json\` — Federation manifest
-- \`/soul.json\` — Sovereign identity and philosophy anchor
+- \`/authority.json\` — Sovereign authority registry
+- \`/policy.json\` — Public governance and action policy
+- \`/graph.json\` — Federation knowledge graph
+- \`/knowledge/corpus.json\` — Public knowledge corpus index
 - \`/llms.json\` — Structured site overview (JSON form)
 - \`/page.json\` — Machine-readable site overview (purpose, route_model)
 - \`/llms-full.txt\` — Full-text content dump for LLM ingestion
@@ -254,6 +258,12 @@ function buildLlmsJson(pieces) {
       "https://arif-fazil.com/llms-full.txt",
       "https://arif-fazil.com/llms.json",
       "https://arif-fazil.com/page.json",
+      "https://arif-fazil.com/authority.json",
+      "https://arif-fazil.com/policy.json",
+      "https://arif-fazil.com/graph.json",
+      "https://arif-fazil.com/knowledge/corpus.json",
+      "https://arif-fazil.com/.well-known/identity.json",
+      "https://arif-fazil.com/.well-known/capability.json",
       "https://arif-fazil.com/.well-known/agent.json",
       "https://arif-fazil.com/.well-known/did.json",
       "https://arif-fazil.com/.well-known/arifos-federation.json",
@@ -307,6 +317,12 @@ function buildPageJson() {
       page_json_path: "/page.json",
       sitemap_path: "/sitemap.xml",
       feed_path: "/feed.xml",
+      authority_path: "/authority.json",
+      policy_path: "/policy.json",
+      graph_path: "/graph.json",
+      knowledge_corpus_path: "/knowledge/corpus.json",
+      capability_path: "/.well-known/capability.json",
+      identity_path: "/.well-known/identity.json",
       agent_card_path: "/.well-known/agent.json",
       did_path: "/.well-known/did.json",
     },

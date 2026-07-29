@@ -14,6 +14,9 @@
 <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json" title="Canonical MCP Gateway">
 <link rel="alternate" type="application/ld+json" href="/.well-known/governance.jsonld" title="Governance JSON-LD">
 <link rel="alternate" type="application/json" href="/api/observatory/v1/snapshot" title="Live arifOS Observatory Snapshot">
+<link rel="alternate" type="application/json" href="/api/public-state" title="Live arifOS public-state.v1 (sanitized)">
+<link rel="alternate" type="application/json" href="/.well-known/public-state.json" title="Live arifOS public-state.v1 mirror">
+<link rel="canonical-machine" type="application/json+schema-version" href="/api/public-state" title="arifos.public-state.v1 (preferred) and observatory.v1 (compat)">
 <link rel="stylesheet" href="/_shared/design-system/tokens.css">
 <link rel="stylesheet" href="/_shared/design-system/components.css">
 <script src="/_shared/trinity-nav.js" defer></script>
@@ -95,8 +98,17 @@ html[data-organ="arifos"] .mutation-value,html[data-organ="arifos"] .selfcheck-v
  </div>
 
  <p style="padding:1rem;text-align:center;color:var(--text-muted);font-size:.85rem">Read-only observers without JavaScript should consult
-  <a href="/api/observatory/v1/snapshot">/api/observatory/v1/snapshot</a>
-  for the live JSON state. The cards above route to the same sections the JS app renders.</p>
+  <a href="/api/public-state">/api/public-state</a> (arifos.public-state.v1, sanitized) or the legacy
+  <a href="/api/observatory/v1/snapshot">/api/observatory/v1/snapshot</a> (observatory.v1, signed).
+  The cards above route to the same sections the JS app renders. Direct machine links:</p>
+ <ul class="machine-links" style="list-style:none;padding:.6rem 1rem;margin:0 auto 1rem;max-width:680px;display:flex;flex-wrap:wrap;gap:.4rem .6rem;justify-content:center;font:600 .72rem/1 var(--font-mono)">
+  <li><a href="/api/public-state">public-state.v1 live</a></li>
+  <li><a href="/.well-known/public-state.json">public-state.v1 mirror</a></li>
+  <li><a href="/api/observatory/v1/snapshot">observatory.v1 signed</a></li>
+  <li><a href="/.well-known/observatory-snapshot-latest.json">observatory.v1 mirror</a></li>
+  <li><a href="/api/observatory/v1/health">observatory.v1 /health</a></li>
+  <li><a href="/.well-known/governance.jsonld">governance JSON-LD</a></li>
+ </ul>
 </noscript>
 <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -143,10 +155,10 @@ html[data-organ="arifos"] .mutation-value,html[data-organ="arifos"] .selfcheck-v
     <div class="observatory-field" id="flow-receipts"><span class="k">receipts</span><div class="v" id="flow-receipts-value">unavailable</div><div class="observatory-meta" id="flow-receipts-meta">source: missing · confidence: unknown · freshness: unavailable</div></div>
     <div class="observatory-field" id="flow-chain"><span class="k">chain</span><div class="v" id="flow-chain-value">unavailable</div><div class="observatory-meta" id="flow-chain-meta">source: missing · confidence: unknown · freshness: unavailable</div></div>
     <div class="observatory-field" id="flow-fq"><span class="k">fq</span><div class="v" id="flow-fq-value">unavailable</div><div class="observatory-meta" id="flow-fq-meta">source: missing · confidence: unknown · freshness: unavailable</div></div>
-    <div class="observatory-field" id="flow-endpoints"><span class="k">endpoints</span><div class="v" id="flow-endpoints-value">unavailable — no same-origin public route reported</div><div class="observatory-meta" id="flow-endpoints-meta">source: missing · confidence: unknown · freshness: unavailable</div></div>
+    <div class="observatory-field" id="flow-endpoints"><span class="k">endpoints</span><div class="v" id="flow-endpoints-value">/receipt/emit · /receipt/verify · /receipt/query · /telemetry/log · /cooling/emit · /transition/emit · /state/*</div><div class="observatory-meta" id="flow-endpoints-meta">source: declared arifFLOW contract · confidence: unknown · freshness: unavailable</div></div>
     <div class="observatory-field" id="flow-provenance"><span class="k">source / freshness</span><div class="v" id="flow-source-value">source: missing</div><div class="observatory-meta">freshness: <span id="flow-freshness-value">unavailable</span></div></div>
    </div>
-   <p id="flow-authority">Authority unavailable in the snapshot. Mutation remains HOLD until ARIF GO.</p>
+   <p id="flow-authority">arifFLOW observes and anchors receipts. It does not judge. Authority measurement unavailable in the snapshot. Mutation remains HOLD until ARIF GO.</p>
   </div>
  </section>
 
@@ -235,24 +247,23 @@ html[data-organ="arifos"] .mutation-value,html[data-organ="arifos"] .selfcheck-v
   </div>
  </section>
 
- <section id="sec-receipt-federation" class="observatory-upgrade" data-section-id="sec-p1-receipt-federation">
-  <span id="sec-p1-receipt-federation" aria-hidden="true"></span>
+ <section id="sec-p1-receipt-federation" class="observatory-upgrade">
   <h2><span class="marker">P1</span> P1 Receipt Federation <span style="font-size:.7rem;color:var(--text-muted);text-transform:none">snapshot overrides declared migration fallback</span></h2>
   <div class="card">
    <div class="table-scroll"><table class="drift" id="p1-receipt-matrix">
     <thead><tr><th>phase</th><th>scope</th><th>status</th><th>truth/source</th></tr></thead>
     <tbody>
-     <tr data-phase="P1-1" data-source="declared-fallback"><td><code>P1-1</code></td><td>Receipt event schema</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-2" data-source="declared-fallback"><td><code>P1-2</code></td><td>Receipt persistence boundary</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-3" data-source="declared-fallback"><td><code>P1-3</code></td><td>Receipt chain verification</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-B" data-source="declared-fallback"><td><code>P1-B</code></td><td>Local fallback boundary</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-4" data-source="declared-fallback"><td><code>P1-4</code></td><td>AAA → arifFLOW telemetry</td><td><span class="status status--healthy">SEALED LIVE</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-5" data-source="declared-fallback"><td><code>P1-5</code></td><td>A-FORGE → arifFLOW logEvent</td><td><span class="status status--down">HOLD / planned</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-6" data-source="declared-fallback"><td><code>P1-6</code></td><td>AF-1 canary</td><td><span class="status status--degraded">NEXT / AF-1 canary</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
-     <tr data-phase="P1-7" data-source="declared-fallback"><td><code>P1-7</code></td><td>Federation completion</td><td><span class="status status--degraded">pending</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-1" data-source="declared-fallback"><td><code>P1-1</code></td><td>Ownership ledger</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-2" data-source="declared-fallback"><td><code>P1-2</code></td><td>Python client</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-3" data-source="declared-fallback"><td><code>P1-3</code></td><td>TypeScript client</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-B" data-source="declared-fallback"><td><code>P1-B</code></td><td>PAI ↔ arifFLOW bridge</td><td><span class="status status--healthy">SEALED</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-4" data-source="declared-fallback"><td><code>P1-4</code></td><td>AAA emitReceipt wiring</td><td><span class="status status--healthy">SEALED LIVE</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-5" data-source="declared-fallback"><td><code>P1-5</code></td><td>A-FORGE receipt wiring</td><td><span class="status status--down">HOLD / planned</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-6" data-source="declared-fallback"><td><code>P1-6</code></td><td>telemetry wiring · AF-1 canary</td><td><span class="status status--degraded">NEXT / AF-1 canary</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
+     <tr data-phase="P1-7" data-source="declared-fallback"><td><code>P1-7</code></td><td>deprecation flags</td><td><span class="status status--degraded">pending</span></td><td>source: declared migration fallback · confidence: unknown</td></tr>
     </tbody>
    </table></div>
-   <p class="observatory-doctrine"><strong>Doctrine:</strong> receipts are evidence, not authority · observed snapshot values win over declared migration fallback · local fallback remains preserved · migration is additive-only.</p>
+   <p class="observatory-doctrine"><strong>Doctrine:</strong> no delete · no silent drop · local fallback preserved · old receipt functions become callers of arifFLOW · arifFLOW is receipt authority, not judge.</p>
   </div>
  </section>
 
@@ -294,17 +305,16 @@ html[data-organ="arifos"] .mutation-value,html[data-organ="arifos"] .selfcheck-v
   </div>
  </section>
 
- <section id="sec-mutation-gate" class="observatory-upgrade" data-section-id="sec-next-mutation-gate">
-  <span id="sec-next-mutation-gate" aria-hidden="true"></span>
+ <section id="sec-next-mutation-gate" class="observatory-upgrade">
   <h2><span class="marker">F13</span> NEXT MUTATION GATE</h2>
   <div class="card" id="next-mutation-gate">
    <div class="mutation-grid">
     <div class="mutation-item"><span class="observatory-label">gate</span><span class="mutation-value" id="mutation-status"><span class="status status--down">HOLD</span></span></div>
     <div class="mutation-item"><span class="observatory-label">authority</span><span class="mutation-value" id="mutation-authority">ARIF GO required</span></div>
-    <div class="mutation-item"><span class="observatory-label">canary</span><span class="mutation-value" id="mutation-canary">AF-1 logEvent canary</span></div>
-    <div class="mutation-item"><span class="observatory-label">follow-up</span><span class="mutation-value" id="mutation-follow-up">P1-5 follow-up</span></div>
+    <div class="mutation-item"><span class="observatory-label">canary</span><span class="mutation-value" id="mutation-canary">P1-6 AF-1 telemetry.ts logEvent() canary</span></div>
+    <div class="mutation-item"><span class="observatory-label">follow-up</span><span class="mutation-value" id="mutation-follow-up">P1-5f Executor receipt canary</span></div>
     <div class="mutation-item"><span class="observatory-label">fallback</span><span class="mutation-value" id="mutation-fallback">local fallback preserved</span></div>
-    <div class="mutation-item"><span class="observatory-label">risk</span><span class="mutation-value" id="mutation-risk">additive-only / low-risk</span></div>
+    <div class="mutation-item"><span class="observatory-label">risk</span><span class="mutation-value" id="mutation-risk">low, additive-only</span></div>
    </div>
    <p class="observatory-doctrine"><strong>Boundary:</strong> HOLD until ARIF GO. No delete, no silent drop, and no authority inferred from transport or receipts.</p>
   </div>

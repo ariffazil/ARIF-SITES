@@ -1,14 +1,14 @@
 {
   "meta": {
-    "date": "2026-07-26",
-    "generated_at": "2026-07-26T06:00:02Z",
+    "date": "2026-07-27",
+    "generated_at": "2026-07-27T06:00:02Z",
     "version": "1.0.0",
     "source": "arifOS WEALTH — Brave Search live research",
     "model_note": "Data sourced from Bernama, Reuters, BURSA Malaysia, and news APIs via Brave Search. AI synthesis for context. Verify critical figures independently.",
     "delta_vs_yesterday": {
-      "klci_change": 0.0,
-      "ringgit_change": 0.0,
-      "brent_change": 0.0
+      "klci_change": 16.170000000000073,
+      "ringgit_change": -0.007000000000000561,
+      "brent_change": -5.019999999999996
     }
   },
   "bursa": {
@@ -29,14 +29,14 @@
         "desc": "Bursa Malaysia will issue final announcements on public holiday and trading closure prior to the holidays. IPO Listing Date · <strong>24 Jul 2026</strong> IPO for ESYS HOLDINGS BERHAD · Upcoming · Holidays · 25 Aug 2026 Birthday of Prophet Muhammad · 31 Aug 2026 National Day ·"
       },
       {
-        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
-        "url": "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
-        "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
-      },
-      {
         "title": "Bursa Malaysia closes lower on profit-taking in banking stocks",
         "url": "https://focusmalaysia.my/bursa-malaysia-closes-lower-on-profit-taking-in-banking-stocks/",
         "desc": "BURSA Malaysia’s key index closed lower on Monday as profit-taking in banking heavyweights weighed on the benchmark, although sentiment across the broader market remained steady."
+      },
+      {
+        "title": "Bursa Malaysia closes higher on strength in banking and telecom stocks | Malay Mail",
+        "url": "https://www.malaymail.com/amp/news/money/2026/07/02/bursa-malaysia-closes-higher-on-strength-in-banking-and-telecom-stocks/226107",
+        "desc": "Thursday, 02 Jul 2026 6:38 PM MYT · KUALA LUMPUR, July 2 — <strong>Bursa Malaysia extended its gains to close higher today</strong>, supported by strength in telecommunications stocks and a rebound in heavyweight banking counters, which kept the benchmark ..."
       }
     ],
     "most_active": {
@@ -46,24 +46,27 @@
     },
     "top_gainers_search": [
       {
-        "title": "Malaysia Stock Market (FBM KLCI) - Quote - Chart - Historical Data - News | Trading Economics",
-        "desc": "Bursa Malaysia’s KLCI extended gains into Friday afternoon, <strong>hovering near 1,729</strong> and edging toward a two-month high. Sentiment was buo"
+        "title": "Bursa Malaysia Opens Higher As FBM KLCI Climbs Above 1,704",
+        "url": "https://www.businesstoday.com.my/2026/07/27/bursa-malaysia-opens-higher-as-fbm-klci-climbs-above-1704/",
+        "desc": "Among blue-chip gainers, <strong>Malaysian Pacific Industries</strong> rose 30 sen to RM45.38, Petronas Gas added 20 sen to RM17.60, Nestlé Malaysia g"
       },
       {
         "title": "Bursa Malaysia Opens Higher As Energy Stocks Lift FBM KLCI",
+        "url": "https://www.businesstoday.com.my/2026/07/23/bursa-malaysia-opens-higher-as-energy-stocks-lift-fbm-klci/",
         "desc": "Among gainers, <strong>Heineken Malaysia</strong> rose 16 sen to RM19.22, Hong Leong Industries gained 16 sen to RM18.16, while KESM Industries and Pe"
       },
       {
         "title": "FTSE Bursa Malaysia KLCI (^KLSE) Charts, Data & News - Yahoo Finance",
+        "url": "https://finance.yahoo.com/quote/%5EKLSE/",
         "desc": "FTSE Bursa Malaysia KLCI · <strong>1,704.93 -0.56%</strong> Kuala Lumpur - Delayed Quote • MYR · 1,704.93 -9.66 (-0.56%) As of 12:23:15 PM GMT+8. Mark"
       }
     ],
-    "klci_close": 1701.02,
+    "klci_close": 1717.19,
     "klci_change_points": null,
     "klci_change_pct": null,
     "klci_quote": {
-      "value": 1701.02,
-      "as_of_utc": "2026-07-24T08:59:45+00:00",
+      "value": 1717.19,
+      "as_of_utc": "2026-07-27T05:45:00+00:00",
       "source": "Yahoo Finance (Bursa gate-limited)",
       "source_url": "https://finance.yahoo.com/quote/%5EKLSE",
       "band": "ESTIMATE",
@@ -78,11 +81,11 @@
     ]
   },
   "ringgit": {
-    "usd_myr": 4.0895,
-    "trend": "RINGGIT STRONG — export competitiveness squeeze for PETRONAS foreign revenue",
+    "usd_myr": 4.0825,
+    "trend": "RINGGIT WEAK — importing inflation pressure, FX translation losses for USD earners (vs 90d mean 4.0135; still below the 4.50 stress band)",
     "usd_myr_quote": {
-      "value": 4.0895,
-      "as_of_utc": "2026-07-26T03:30:30+00:00",
+      "value": 4.0825,
+      "as_of_utc": "2026-07-27T05:51:05+00:00",
       "source": "Yahoo Finance (BNM unreachable from VPS)",
       "source_url": "https://finance.yahoo.com/quote/MYR=X",
       "band": "ESTIMATE",
@@ -92,21 +95,21 @@
     },
     "policy_search": [
       {
-        "title": "Bank Negara Malaysia Maintains OPR At 2.75%. Here’s What It Means For You",
-        "desc": "For everyday consumers and households, BNM&#x27;s decision to <strong>maintain the OPR at 2.75%</strong> brings welcome predictability to monthly financial commitments. Because the benchmark rate rema"
-      },
-      {
         "title": "Bank Negara Malaysia holds rates in July",
         "desc": "BNM stands pat for the sixth straight meeting: At its meeting on 9 July, Bank Negara Malaysia (BNM) decided to maintain the overnight policy rate at <strong>2.75%</strong>, where it has stood since Ju"
       },
       {
-        "title": "OPR Decisions - Bank Negara Malaysia",
-        "desc": "Overnight Policy Rate Decisions · Select Year All 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2015 2014 2013 2012 2011 2010 2009 2008 2007 2006 2005 2004"
+        "title": "Bank Negara Malaysia Maintains OPR At 2.75%. Here’s What It Means For You",
+        "desc": "For everyday consumers and households, BNM&#x27;s decision to <strong>maintain the OPR at 2.75%</strong> brings welcome predictability to monthly financial commitments. Because the benchmark rate rema"
+      },
+      {
+        "title": "BNM Holds OPR at 2.75%: Malaysia's Bet | Model Diplomat",
+        "desc": "Bank Negara Malaysia (BNM) will keep the Overnight Policy Rate (OPR) at <strong>2.75%</strong> at its Monetary Policy Committee meeting on July 9, 2026 — the fifth consecutive hold since the July 2025"
       }
     ],
     "sources": [
-      "https://tradingeconomics.com/malaysia/currency",
-      "https://www.xe.com/currencycharts/?from=USD&to=MYR"
+      "https://www.xe.com/currencycharts/?from=USD&to=MYR",
+      "https://tradingeconomics.com/malaysia/currency"
     ]
   },
   "economy": {
@@ -118,21 +121,21 @@
         "category": "inflation"
       },
       {
-        "title": "Inflation, consumer prices (annual %) - Malaysia | Data",
-        "url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG?locations=MY",
-        "desc": "Inflation, consumer prices (annual %) - Malaysia from The World Bank: Data",
+        "title": "Consumer Prices | OpenDOSM",
+        "url": "https://open.dosm.gov.my/dashboard/consumer-prices",
+        "desc": "The Consumer Price Index (CPI) tracks the cost of 13 main groups of goods and services purchased by Malaysians, updated weekly (perishables), monthly (non-perishables), or quarterly (rents). The CPI is used to measure how living costs are changing, making it one of the most important indicators ...",
         "category": "inflation"
       },
       {
-        "title": "Malaysia (MYS) Exports, Imports, and Trade Partners",
-        "url": "https://oec.world/en/profile/country/mys",
-        "desc": "The world&#x27;s leading data visualization tool for international trade data.",
+        "title": "Malaysia Trade | WITS",
+        "url": "https://wits.worldbank.org/CountrySnapshot/en/MYS",
+        "desc": "Access Malaysia’s trade profile. Data includes annual and monthly exports and imports, tariffs, foreign direct investment (FDI), global value chain (GVC) participation, and the Services Policy Restrictiveness Database.",
         "category": "trade"
       },
       {
-        "title": "Malaysia Trade Balance [Up-to-date Chart & Data] | 1990 - 2026 | CEIC Data",
-        "url": "https://www.ceicdata.com/en/indicator/malaysia/trade-balance",
-        "desc": "Federal Reserve Board average market exchange rate is used for currency conversions. Further information about Malaysia&#x27;s Trade Balance · In the latest reports, Malaysia&#x27;s Total Exports reached <strong>48.0 USD bn</strong> in May 2026, an increase of 10.0% ...",
+        "title": "Malaysia Trade Balance | Historical Chart & Data",
+        "url": "https://www.macrotrends.net/global-metrics/countries/mys/malaysia/trade-balance-deficit",
+        "desc": "Malaysia trade balance for 2022 was <strong>29.33 billion US dollars</strong>, a 8.52% increase from 2021. External balance on goods and services (formerly resource balance) equals exports of goods and services minus imports of goods and services (previously nonfactor services).",
         "category": "trade"
       },
       {
@@ -189,8 +192,8 @@
         "desc": "<strong>GPS</strong> was formed on 12 June 2018, ... Peoples&#x27; Party (SUPP), and Parti Rakyat <strong>Sarawak</strong> (PRS). The four parties wer"
       },
       {
-        "title": "GPS has succeeded, now add another ‘S’: Kitingan proposes Sabah-Sarawak alliance | DayakDaily",
-        "desc": "... KUCHING, July 22: <strong>Borneo Dayak Forum International president Datuk Seri Panglima Dr Jeffrey Gapari Kitingan has proposed expanding Gabunga"
+        "title": "Next Malaysian general election - Wikipedia",
+        "desc": "MUDA defected into opposition in ... to <strong>Sabah</strong>. Further rupture of ties were seen in first half of <strong>2026</strong>, both in gove"
       }
     ]
   },
@@ -198,43 +201,50 @@
     "cost_of_living": [
       {
         "title": "Average Salary in Malaysia: $977/mo + Min Wage (2026) | wage.is",
+        "url": "https://wage.is/malaysia/",
         "desc": "The minimum wage in Malaysia is <strong>RM8.72/hr ($2.13 USD)</strong> as of 2026. The average gross monthly salary is RM4,000 ($977.04 USD)."
       },
       {
         "title": "Cost of Living in Malaysia. Prices in Malaysia. Updated Jul 2026",
+        "url": "https://www.numbeo.com/cost-of-living/country_result.jsp?country=Malaysia",
         "desc": "Tell us some prices for your city ... <strong>The estimated monthly costs for a family of four are $1,931.9 (RM7,898.8), excluding rent</strong>. The estimated monthly costs for a single person are $5"
       },
       {
         "title": "Average Salary Malaysia 2026: MYR 3,650 ($770 USD/Month)",
+        "url": "https://employsome.com/hire/malaysia/average-salary-malaysia/",
         "desc": "Average salary in Malaysia 2026: <strong>MYR 3,650/month</strong> national (~$770 USD). Sector and role benchmarks, EPF/SOCSO costs, tax brackets."
       }
     ],
     "labor": [
       {
         "title": "Malaysia’s Migrant Recruitment Is Lucrative Business, But Not For Workers",
+        "url": "https://www.bloomberg.com/features/2026-bangladesh-malaysia-migrants/",
         "desc": "The migrant workers “are victims of a big network that’s managed by elites and government operatives,” he said. He predicted Malaysia will suffer the consequences once global companies take notice. “T"
       },
       {
         "title": "Malaysia: 800 migrant workers at plank factory strike over wage theft; incl. co. comments - Business and Human Rights Centre",
+        "url": "https://www.business-humanrights.org/en/latest-news/malaysia-800-migrant-workers-at-plank-factory-strike-over-wage-theft-incl-co-comments/",
         "desc": "Home Latest news Malaysia: <strong>800 migrant workers</strong> …"
       }
     ],
     "youth_career": [
       {
         "title": "Students & Graduates | PETRONAS Global",
+        "url": "https://www.petronas.com/careers/students-graduates",
         "desc": "Malaysian citizen not more than 26 years old (based on year of birth). Minimum Bachelor’s Degree holder with minimum CGPA of 3.00 or equivalent. Unemployed or under-employed in non-relevant areas of g"
       },
       {
         "title": "Discover Your Potential with Us | PETRONAS Global",
+        "url": "https://www.petronas.com/careers/career-opportunities",
         "desc": "Passion is what makes progress possible. You’ll find every opportunity to learn, experience and achieve what matters to you here at PETRONAS · Apply for Careers Here"
       }
     ]
   },
   "oil_energy": {
-    "brent_price": 96.78,
+    "brent_price": 91.76,
     "brent_quote": {
-      "value": 96.78,
-      "as_of_utc": "2026-07-24T20:59:55+00:00",
+      "value": 91.76,
+      "as_of_utc": "2026-07-27T05:50:12+00:00",
       "source": "Yahoo Finance (Brent futures)",
       "source_url": "https://finance.yahoo.com/quote/BZ=F",
       "band": "ESTIMATE",
@@ -245,20 +255,24 @@
     "malaysia_oil": [
       {
         "title": "PETRONAS Activity Outlook 2024-2026 In The Spotlight",
+        "url": "https://www.petronas.com/activity-outlook-2024-2026/assets/pdf/PETRONAS-Activity-Outlook-2024-2026-in-the-spotlight.pdf",
         "desc": "PETRONAS Activity Outlook 2024-2026 · 15 · PETRONAS plays a pivotal role in overseeing · petroleum operations in Malaysia, primarily to · maximise production eﬃciency and · sustainability of oil and g"
       },
       {
         "title": "Upstream petroleum activities to rebound, PETRONAS’ outlook report shows",
+        "url": "https://theedgemalaysia.com/node/791114",
         "desc": "Tuesday 14 Jul 2026 · BURSASGX · OIL &amp; GAS · Make The Edge Malaysia your preferred source on Google · KUALA LUMPUR (Jan 29): Malaysia’s national oil and gas company PETRONAS is aiming to ramp up i"
       }
     ],
     "energy_transition": [
       {
         "title": "Malaysia's energy transition to accelerate into 2026 on solar, carbon policies-Xinhua",
+        "url": "https://english.news.cn/20251223/8bbff50edb5c4bcb8696124af0b839ff/c.html",
         "desc": "23 (Xinhua) -- Malaysia&#x27;s energy transition is set to gather pace into 2026, underpinned by <strong>aggressive renewable energy (RE) targets, expanding solar capacity and new carbon-related polic"
       },
       {
         "title": "Malaysia Targets 32% Renewable Energy Capacity As Energy Transition Accelerates",
+        "url": "https://www.businesstoday.com.my/2026/04/21/malaysia-targets-32-renewable-energy-capacity-as-energy-transition-accelerates/",
         "desc": "April 21, 2026 · Share · Facebook ... Seri Fadillah Yusof said. He said the country had already reached <strong>31% installed RE capacity as of December 2025</strong>, reflecting steady progress under"
       }
     ]
@@ -268,10 +282,12 @@
       "items": [
         {
           "title": "Federal Reserve Board - Federal Reserve issues FOMC statement",
+          "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm",
           "desc": "The Federal Open Market Committee approved the following statement for release by a 12 – 0 vote: The Committee decided to maintain the target range for"
         },
         {
           "title": "REPORT TO CONGRESS Monetary Policy Report July 2026 For use at 11:00 a.m. EDT",
+          "url": "https://www.federalreserve.gov/monetarypolicy/files/20260710_mprfullreport.pdf",
           "desc": "The Federal Reserve Board of Governors in Washington DC."
         }
       ]
@@ -280,10 +296,12 @@
       "items": [
         {
           "title": "China posts slowest quarterly growth since 2022 as investment slumps, fanning stimulus calls",
+          "url": "https://www.cnbc.com/2026/07/15/china-gdp-retail-sales-investment-june-.html",
           "desc": "Given the disappointing growth, Tianchen Xu, senior economist at Economist Intelligence Unit, expects stimulus measures to be ramped up in the third quarter, including a policy rate cut to stimulate i"
         },
         {
           "title": "China’s 2026 economic blueprint – navigating a path of stability and strategic growth",
+          "url": "https://www.db.com/news/detail/20260331-china-s-2026-economic-blueprint-navigating-a-path-of-stability-and-strategic-growth?language_id=1",
           "desc": "<strong>Advanced manufacturing &amp; industrials</strong>: Upgrades in smart infrastructure, logistics, and the &quot;low-altitude economy&quot; (drones and eVTOL vehicles) are underway through target"
         }
       ]
@@ -292,11 +310,13 @@
       "items": [
         {
           "title": "Southeast Asia quarterly economic review Q1 2026 | McKinsey",
+          "url": "https://www.mckinsey.com/featured-insights/future-of-asia/southeast-asia-quarterly-economic-review",
           "desc": "Indonesia’s economy expanded by <strong>5.61 percent</strong> in the first quarter of 2026, its fastest growth in more than three years, boosted by a surge in government spending and strong household "
         },
         {
-          "title": "Southeast Asia GDP Growth 2026: Vietnam, Indonesia & the ASEAN Economy | Statistics of the World",
-          "desc": "ASEAN is projected to grow at 4.2-4.5% in 2026 (ADB, World Bank), roughly triple the eurozone&#x27;s 1.1%. <strong>Vietnam leads at 6.3-7.6%, followed by the Philippines at 4.4-5.1% and Indonesia at 5"
+          "title": "Quarterly Update of the ASEAN+3 Regional Economic Outlook (AREO) – July 2026 - ASEAN+3 Macroeconomic Research Office - AMRO ASIA",
+          "url": "https://amro-asia.org/quarterly-update-of-the-asean3-regional-economic-outlook-areo-july-2026",
+          "desc": "In the July 2026 quarterly update of the AREO, AMRO projects the ASEAN+3 region to grow by <strong>4.1 percent</strong> in 2026, up from its June forecast of 4.0 percent, before moderating slightly to"
         }
       ]
     }
@@ -304,7 +324,7 @@
   "so_what": [
     {
       "domain": "MARKET",
-      "signal": "FBM KLCI at 1,701.02 — % change VOID (Yahoo chart endpoint has no daily delta)",
+      "signal": "FBM KLCI at 1,717.19 — % change VOID (Yahoo chart endpoint has no daily delta)",
       "for_aia": "If you hold unit trusts or stocks — rebalance checklist. If you're cash-heavy, DCA in vs timing the market? Know your time horizon.",
       "for_izzu": "Trading desk risk: watch leverage ratio. Market down days = margin calls on leveraged accounts. What's your position size?",
       "for_aliff": "PETRONAS PROPA bonus tied to company performance. When market is shaky, corporate KPI narrative intensifies — distinguish signal from spin.",
@@ -313,16 +333,16 @@
     },
     {
       "domain": "FX / RINGGIT",
-      "signal": "USD/MYR: 4.0895 — RINGGIT STRONG",
-      "for_aia": "Ringgit strong = cheaper imports, softer imported inflation. Flip side: PETRONAS USD revenue converts into fewer ringgit — the export-competitiveness squeeze is real for O&G exporters.",
-      "for_izzu": "If you earn in USD or hold US assets, a strong ringgit erodes MYR-converted returns. If you spend in MYR, this is relief at the checkout.",
+      "signal": "USD/MYR: 4.0825 — RINGGIT WEAK",
+      "for_aia": "Ringgit weakness = imported inflation. Every time USD/MYR goes up 0.10, the cost of imported goods rises. Groceries, electronics, travel — semua kena.",
+      "for_izzu": "If you trade in USD or hold US assets, currency hedge matters. Ringgit weakness hits your effective returns.",
       "for_aliff": "PETRONAS foreign revenue in USD — ringgit direction cuts both ways for company accounts. Watch how they frame 'strong revenue' in MYR terms.",
-      "for_arif": "Offshore income in USD? Strong ringgit means each dollar buys less at home. Know your effective FX exposure in both directions.",
+      "for_arif": "Offshore Malaysia income in USD? Ringgit weakness erodes real purchasing power. Know your effective FX exposure.",
       "tone": "direct"
     },
     {
       "domain": "OIL & GAS",
-      "signal": "Brent crude: $96.78/bbl",
+      "signal": "Brent crude: $91.76/bbl",
       "for_aia": "This is the pulse of the Malaysia government budget. PETRONAS dividends = Putrajaya's fiscal buffer. When oil drops below $70, expect budget pressure.",
       "for_izzu": "O&G sector stocks (Dayang, Dialog, Sapura Energy, etc.) correlate with Brent. Down day in Brent = red day in O&G heavy indices.",
       "for_aliff": "PETRONAS PROPA internal narrative around 'volatility management' will get louder. Ask: is this genuine risk management or career hedging?",

@@ -1,9 +1,102 @@
+import { useEffect, useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { QuoteCard } from '@/components/QuoteCard';
+import { ZenPulse } from '@/components/ZenPulse';
 import {
   contactLinks,
   wellsPortfolio,
 } from '@/data/siteContent';
+
+// Shape of /data/wealth/latest.json (fields actually rendered — no invention).
+type WealthBriefing = {
+  meta?: { date?: string };
+  bursa?: { klci_quote?: { value?: number } };
+  ringgit?: { usd_myr?: number; trend?: string };
+  oil_energy?: { brent_price?: number };
+};
+
+// Dominant above-the-fold answer block. Fetches the WEALTH daily briefing
+// client-side; falls back to curated copy when the snapshot is unreachable.
+function CurrentAnswer() {
+  const [briefing, setBriefing] = useState<WealthBriefing | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/data/wealth/latest.json')
+      .then((res) => {
+        if (!res.ok) throw new Error('briefing snapshot unavailable');
+        return res.json();
+      })
+      .then((data: WealthBriefing) => {
+        if (!cancelled) setBriefing(data);
+      })
+      .catch(() => {
+        if (!cancelled) setBriefing(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const signals: string[] = [];
+  const klci = briefing?.bursa?.klci_quote?.value;
+  const myr = briefing?.ringgit?.usd_myr;
+  const brent = briefing?.oil_energy?.brent_price;
+  if (klci != null) signals.push(`KLCI ${klci.toLocaleString()}`);
+  if (myr != null) signals.push(`USD/MYR ${myr}`);
+  if (brent != null) signals.push(`Brent $${brent}`);
+
+  return (
+    <section className="border-b-2 border-forge-iron bg-forge-steel">
+      <div className="site-frame py-10">
+        <div className="section-label">What matters now</div>
+        {briefing ? (
+          <>
+            <p className="font-body text-lg md:text-xl text-forge-white leading-relaxed mb-3">
+              WEALTH daily briefing · {briefing.meta?.date ?? 'latest'}
+            </p>
+            {signals.length > 0 && (
+              <p className="font-technical text-sm text-forge-dim uppercase tracking-widest mb-3">
+                {signals.join(' · ')}
+              </p>
+            )}
+            {briefing.ringgit?.trend && (
+              <p className="font-body text-sm text-forge-dim leading-relaxed mb-6 max-w-2xl">
+                {briefing.ringgit.trend}
+              </p>
+            )}
+            <div className="flex flex-wrap gap-6">
+              <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Read today's briefing →
+              </a>
+              <a href="/world/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+                Read the latest MakcikGPT →
+              </a>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="font-body text-lg md:text-xl text-forge-white leading-relaxed mb-6 max-w-2xl">
+              The WEALTH briefing tracks Malaysia's money — Bursa, ringgit, oil.
+              MakcikGPT asks the questions nobody else asks. The wells are the proof of work.
+            </p>
+            <div className="flex flex-wrap gap-6">
+              <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Analyze the economy →
+              </a>
+              <a href="/world/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+                Read the latest MakcikGPT →
+              </a>
+              <a href="#wells" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+                See the wells →
+              </a>
+            </div>
+          </>
+        )}
+      </div>
+    </section>
+  );
+}
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -29,6 +122,16 @@ export function Home() {
       animate="visible"
       variants={containerVariants}
     >
+      {/* ── ZEN PULSE — orientation in 3 seconds ─────────── */}
+      <ZenPulse
+        whereAmI="arif-fazil.com · Home — one human page"
+        whyCare="Evidence before narrative. Every claim here is verifiable."
+        whatNext="Pick a verb in the nav, or read the current answer below."
+      />
+
+      {/* ── WHAT MATTERS NOW — dominant answer ───────────── */}
+      <CurrentAnswer />
+
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b-2 border-forge-iron py-24 md:py-32 bg-forge-black">
         <div
