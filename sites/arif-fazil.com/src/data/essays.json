@@ -1127,5 +1127,28 @@
       "path": "/world/makcikgpt/dap-8-tahun-bangang"
     },
     "seal": "999"
+  },
+  {
+    "id": "m5-4",
+    "title": "8 BANGANG Anthony Loke — Chennah Version",
+    "date": "2026-07-29",
+    "lang": "bm",
+    "series": {
+      "id": "M5",
+      "n": 4
+    },
+    "tags": [
+      "dap",
+      "anthony-loke",
+      "prn-2026",
+      "negeri-sembilan",
+      "chennah",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/chennah-bangang"
+    },
+    "seal": "999"
   }
 ]

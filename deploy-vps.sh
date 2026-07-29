@@ -86,8 +86,8 @@ command -v jq >/dev/null 2>&1 || { echo "ERROR: jq is required" >&2; exit 1; }
 [[ -f "$REGISTRY" ]] || { echo "ERROR: missing runtime overlay registry: $REGISTRY" >&2; exit 1; }
 
 jq -e '
-  .schema_version == 1 and
-  .canonical_repo_root == "/root/arif-sites" and
+  (.schema_version == 1 or .schema_version == 2) and
+  (.canonical_repo_root == "/root/arif-sites" or .canonical_repo_root == "/root/arif-fazil.com") and
   (.sites | type == "array" and length > 0) and
   (([.sites[].site] | length) == ([.sites[].site] | unique | length)) and
   (([.sites[].webroot] | length) == ([.sites[].webroot] | unique | length)) and

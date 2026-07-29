@@ -35,6 +35,12 @@
     "page_json_path": "/page.json",
     "sitemap_path": "/sitemap.xml",
     "feed_path": "/feed.xml",
+    "authority_path": "/authority.json",
+    "policy_path": "/policy.json",
+    "graph_path": "/graph.json",
+    "knowledge_corpus_path": "/knowledge/corpus.json",
+    "capability_path": "/.well-known/capability.json",
+    "identity_path": "/.well-known/identity.json",
     "agent_card_path": "/.well-known/agent.json",
     "did_path": "/.well-known/did.json"
   },
@@ -60,5 +66,5 @@
       "relationship": "earth intelligence apps"
     }
   ],
-  "last_updated": "2026-07-28"
+  "last_updated": "2026-07-29"
 }

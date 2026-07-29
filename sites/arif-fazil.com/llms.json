@@ -10,6 +10,7 @@
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/world/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/world/makcikgpt/chennah-bangang": "MakcikGPT article — 8 BANGANG Anthony Loke — Chennah Version",
     "/world/makcikgpt/dap-8-tahun-bangang": "MakcikGPT article — 8 Benda BANGANG DAP Dalam Kerajaan",
     "/world/makcikgpt/searah-senyum-media-suap": "MakcikGPT article — Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy",
     "/world/makcikgpt/searah-kekal-milik-penuh": "MakcikGPT article — \"Kekal Milik Penuh Malaysia\" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy",
@@ -43,6 +44,12 @@
     "https://arif-fazil.com/llms-full.txt",
     "https://arif-fazil.com/llms.json",
     "https://arif-fazil.com/page.json",
+    "https://arif-fazil.com/authority.json",
+    "https://arif-fazil.com/policy.json",
+    "https://arif-fazil.com/graph.json",
+    "https://arif-fazil.com/knowledge/corpus.json",
+    "https://arif-fazil.com/.well-known/identity.json",
+    "https://arif-fazil.com/.well-known/capability.json",
     "https://arif-fazil.com/.well-known/agent.json",
     "https://arif-fazil.com/.well-known/did.json",
     "https://arif-fazil.com/.well-known/arifos-federation.json",
@@ -61,5 +68,5 @@
     "llms_txt": true,
     "sitemap": true
   },
-  "last_updated": "2026-07-28"
+  "last_updated": "2026-07-29"
 }

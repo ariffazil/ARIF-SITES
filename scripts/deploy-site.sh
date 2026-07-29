@@ -6,8 +6,12 @@ set -euo pipefail
 
 CANONICAL_REPO_ROOT="/root/arif-fazil.com"
 RAW_SCRIPT_PATH="${BASH_SOURCE[0]}"
+if [[ "$RAW_SCRIPT_PATH" == *"/ARIF-SITES/"* || "${PWD:-}" == *"/ARIF-SITES"* ]]; then
+  echo "ERROR: uppercase /root/ARIF-SITES is retired; use $CANONICAL_REPO_ROOT" >&2
+  exit 2
+fi
 if [[ "$RAW_SCRIPT_PATH" == *"/arif-sites/"* && "$RAW_SCRIPT_PATH" != *"/arif-fazil.com/"* ]] || [[ "${PWD:-}" == *"/arif-sites" && "${PWD:-}" != *"/arif-fazil.com"* ]]; then
-  echo "WARNING: lowercase /root/arif-fazil.com is deprecated — canonical repo is $CANONICAL_REPO_ROOT" >&2
+  echo "WARNING: lowercase /root/arif-sites is deprecated — canonical repo is $CANONICAL_REPO_ROOT" >&2
   echo "Continuing with lowercase path for backward compat…" >&2
 fi
 
