@@ -235,6 +235,38 @@ footer a:hover{color:var(--accent-cyan)}
 .example-panel .result .coords{font-family:var(--mono);font-size:.6rem;color:#55555f}
 .example-panel .result .seal{margin-top:.7rem;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;color:var(--accent-cyan);padding:.32rem .55rem;border:1px solid rgba(0,212,170,.35);border-radius:6px;display:inline-block}
 
+/* ── BASIN DOSSIERS · featured cards ── */
+.dossier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;margin-top:2.4rem}
+.dossier-card{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;padding:1.7rem 1.8rem;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column;text-decoration:none;color:inherit;border-top:3px solid var(--accent-gold)}
+.dossier-card:hover{transform:translateY(-5px);border-color:var(--accent-gold);border-top-color:var(--accent-gold);box-shadow:0 12px 32px rgba(212,175,55,.12)}
+.dossier-card.muted{border-top-color:var(--accent-cyan);opacity:.92}
+.dossier-card.muted:hover{opacity:1;border-color:var(--accent-cyan);box-shadow:0 12px 32px rgba(0,212,170,.10)}
+.dossier-card.coming{border-top-color:var(--border-dim);opacity:.75}
+.dossier-card.coming:hover{opacity:1;border-color:var(--text-secondary);transform:translateY(-2px);box-shadow:none}
+.dossier-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
+.dossier-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--border-dim);color:var(--text-secondary);text-transform:uppercase}
+.dossier-tag.gold{color:var(--accent-gold);border-color:rgba(212,175,55,.5);background:rgba(212,175,55,.05)}
+.dossier-tag.dim{color:var(--text-secondary);border-color:var(--border-dim);background:rgba(0,0,0,.2)}
+.dossier-status{font-family:var(--mono);font-size:.6rem;color:var(--accent-cyan);letter-spacing:.5px}
+.dossier-card.coming .dossier-status{color:var(--text-secondary)}
+.dossier-card h3{font-size:1.35rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.dossier-card.muted h3{background:linear-gradient(135deg,#fff 30%,var(--accent-cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.dossier-card.coming h3{background:linear-gradient(135deg,#9a9aa8 30%,#55555f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.dossier-subtitle{font-size:.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;flex:0 0 auto}
+.dossier-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem;padding:.9rem 0;border-top:1px dashed var(--border-dim);border-bottom:1px dashed var(--border-dim)}
+.dossier-stats div{text-align:center}
+.dossier-stats b{display:block;font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--accent-cyan);line-height:1.1}
+.dossier-stats span{display:block;font-size:.6rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem}
+.dossier-card.coming .dossier-stats b{color:var(--text-secondary)}
+.dossier-points{list-style:none;font-size:.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.2rem;flex:1}
+.dossier-points li{padding:.25rem 0;padding-left:1rem;position:relative}
+.dossier-points li::before{content:"▸";position:absolute;left:0;color:var(--accent-cyan);font-size:.7rem}
+.dossier-card.coming .dossier-points li::before{content:"○";color:var(--text-secondary)}
+.dossier-cta{margin-top:auto;padding-top:.8rem;border-top:1px solid var(--border-dim)}
+.dossier-cta .arrow{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;display:block;margin-bottom:.3rem}
+.dossier-card.coming .dossier-cta .arrow{color:var(--text-secondary)}
+.dossier-cta .more{font-size:.7rem;color:var(--text-secondary);font-style:italic;letter-spacing:.2px}
+
 /* ── BREADCRUMB · cognitive ladder ── */
 .crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:1.2rem 1.4rem;margin-top:2rem;background:rgba(16,16,24,.5);border:1px dashed var(--border-dim);border-radius:10px}
 .crumbs .crumb{font-family:var(--mono);font-size:.7rem;letter-spacing:.5px;color:var(--text-secondary);padding:.32rem .7rem;border-radius:99px;background:rgba(0,0,0,.3);border:1px solid transparent}
@@ -254,9 +286,12 @@ footer a:hover{color:var(--accent-cyan)}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content" style="position:absolute;left:-9999px">Skip to main content</a>
+
 <header>
   <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
-  <nav class="nav-links">
+  <nav class="nav-links" aria-label="Primary navigation">
     <a href="https://arif-fazil.com">Home</a>
     <a href="https://geox.arif-fazil.com">GEOX</a>
     <a href="https://aaa.arif-fazil.com">AAA</a>
@@ -264,6 +299,8 @@ footer a:hover{color:var(--accent-cyan)}
     <a href="https://mcp.arif-fazil.com">MCP</a>
   </nav>
 </header>
+
+<main id="main-content">
 
 <!-- ══ HERO · LIVING GLOBE ══ -->
 <div class="hero" id="top">
@@ -480,6 +517,86 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
+<!-- ══ SECTION · BASIN DOSSIERS · content-marker: earth-dossiers-Φ ══ -->
+<section id="dossiers" aria-label="Basin dossiers">
+  <div class="container">
+    <div class="kicker">Φ GEOX · DEEPER THAN THE GLOBE</div>
+    <h2>Basin dossiers</h2>
+    <p class="lede">The globe shows you a continent. The dossiers show you <b>one basin at a time</b> — tectonic evolution, stratigraphy, petroleum system, and the cross-section that ties them together. Every dossier is sourced, dated, and honest about what is not known.</p>
+
+    <div class="dossier-grid">
+      <a class="dossier-card" href="/earth/kinabalu-basin/" aria-label="Open Kinabalu Basin dossier">
+        <div class="dossier-head">
+          <span class="dossier-tag gold">FEATURED · NW SABAH</span>
+          <span class="dossier-status">● LIVE</span>
+        </div>
+        <h3>◈ Kinabalu Basin</h3>
+        <p class="dossier-subtitle">One of three producing basins in Malaysia. Offshore NW Sabah, fold-thrust belt, post-MMU clastic play. SRTM-draped cross-section with USGS-standard lithology patterns.</p>
+        <div class="dossier-stats">
+          <div><b>4,095 m</b><span>Kinabalu peak</span></div>
+          <div><b>~2,900 m</b><span>Sabah Trough</span></div>
+          <div><b>5</b><span>tectonic events</span></div>
+          <div><b>12</b><span>provinces</span></div>
+        </div>
+        <ul class="dossier-points">
+          <li>Five tectonic events from Sarawak Orogeny to Meliau Orogeny</li>
+          <li>Stratigraphic column: 9 named units, ophiolite basement</li>
+          <li>Petroleum system: source → reservoir → seal → trap → migration</li>
+          <li>Recent discoveries: Zoisit Deep-1 · Well A oil beneath gas · Megah-1 frontier</li>
+        </ul>
+        <div class="dossier-cta">
+          <span class="arrow">▸ READ THE DOSSIER</span>
+          <span class="more">+ 10-section PDF · geological-grade cross-section · GEOX launch</span>
+        </div>
+      </a>
+
+      <a class="dossier-card muted" href="https://geox.arif-fazil.com/basins/kinabalu/" aria-label="Open GEOX Kinabalu prospect cockpit">
+        <div class="dossier-head">
+          <span class="dossier-tag">GEOX COCKPIT</span>
+          <span class="dossier-status">● EXTERNAL</span>
+        </div>
+        <h3>◇ Kinabalu — GEOX Prospect</h3>
+        <p class="dossier-subtitle">The prospect-maturation pipeline for the same basin. Hypothesis space, four basement models, verification plan, prospect verdicts. Sibling to the human-readable dossier.</p>
+        <ul class="dossier-points">
+          <li>PSCS subduction working hypothesis</li>
+          <li>NSPW-corrected BMU/TCU vs DRU</li>
+          <li>Four basement hypotheses, scored</li>
+          <li>Prospect verdicts + acquisition plan</li>
+        </ul>
+        <div class="dossier-cta">
+          <span class="arrow">▸ OPEN GEOX COCKPIT ↗</span>
+          <span class="more">geox.arif-fazil.com · opens in new surface</span>
+        </div>
+      </a>
+
+      <a class="dossier-card" href="/earth/malay-basin/" aria-label="Open Malay Basin dossier">
+        <div class="dossier-head">
+          <span class="dossier-tag gold">FEATURED · OFFSHORE PENINSULAR MALAYSIA</span>
+          <span class="dossier-status">● LIVE</span>
+        </div>
+        <h3>◈ Malay Basin</h3>
+        <p class="dossier-subtitle">The founder's home waters. 13+ years reading rocks offshore Malaysia. Cenozoic failed rift + Miocene inversion. Mature gas province, 4 founder wells, 1 new play fairway (2025).</p>
+        <div class="dossier-stats">
+          <div><b>~500 km</b><span>length</span></div>
+          <div><b>8</b><span>groups (A–M)</span></div>
+          <div><b>4</b><span>founder wells</span></div>
+          <div><b>2025</b><span>new hinge play</span></div>
+        </div>
+        <ul class="dossier-points">
+          <li>Group L/M lacustrine source + Group E/H/I deltaic reservoirs</li>
+          <li>Middle Miocene anticline play (Dulang, Angsi) — proven</li>
+          <li>Western Hinge Fault — opened by LEBAH EMAS-1 (2025)</li>
+          <li>Founder wells: BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</li>
+        </ul>
+        <div class="dossier-cta">
+          <span class="arrow">▸ READ THE DOSSIER</span>
+          <span class="more">+ 6 sections · geological-grade cross-section · GEOX launch</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ══ SECTION · GEOX MCP COCKPITS ══ -->
 <section id="geox">
   <div class="container">
@@ -560,6 +677,9 @@ footer a:hover{color:var(--accent-cyan)}
     <div id="studyMount"></div>
   </div>
 </section>
+
+</main>
+<!-- /#main-content -->
 
 <footer>
   <div class="doctrine">DITEMPA BUKAN DIBERI</div>
@@ -964,5 +1084,6 @@ window.addEventListener("load",()=>setTimeout(()=>$("veil").classList.add("gone"
 setTimeout(()=>$("veil").classList.add("gone"),6000); // fail-safe
 })();
 </script>
+<script src="/_shared/zen-all.js" defer></script>
 </body>
 </html>

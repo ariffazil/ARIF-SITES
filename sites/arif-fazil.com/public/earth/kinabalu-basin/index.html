@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!-- page: earth/kinabalu-basin v1 · Φ GEOX · arif-fazil.com/earth/kinabalu-basin · content-marker: kinabalu-dossier-Φ -->
+<html lang="en" data-ring="ORGAN" data-organ="geox" data-content-marker="kinabalu-dossier-Φ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinabalu Basin — Geological Dossier · Φ GEOX | Arif Fazil</title>
+<meta name="description" content="Kinabalu Basin offshore NW Sabah — a 6-section geological dossier covering tectonic evolution, stratigraphy, petroleum system, cross-section, recent discoveries, and open questions. Sourced from Balaguru & Hall 2009, PETRONAS MPM 2025, EAGE 2026.">
+<meta name="author" content="GEOX · arifOS Federation">
+<link rel="canonical" href="https://arif-fazil.com/earth/kinabalu-basin/">
+<meta property="og:title" content="Kinabalu Basin — Geological Dossier">
+<meta property="og:description" content="Tectonic evolution, stratigraphy, petroleum system, cross-section, recent discoveries. NW Sabah, offshore Malaysia.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-dark:#0a0a0f;
+  --bg-panel:#101018;
+  --border-dim:#1a1a25;
+  --accent-gold:#d4af37;
+  --accent-cyan:#00d4aa;
+  --text-primary:#e8e8ef;
+  --text-secondary:#9a9aa8;
+  --mono:'Fira Code',monospace;
+  --sans:'Inter',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg-dark);color:var(--text-primary);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:fixed;top:.5rem;left:.5rem;width:auto;height:auto;padding:.5rem 1rem;background:var(--accent-gold);color:var(--bg-dark);border-radius:4px;z-index:9999;font-family:var(--mono);font-size:.8rem;font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:var(--accent-gold)}
+::selection{background:rgba(212,175,55,.25)}
+
+/* ── header ── */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 2rem;background:rgba(10,10,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dim)}
+.brand{font-family:var(--mono);font-size:.8rem;letter-spacing:2px;color:var(--text-secondary)}
+.brand b{color:var(--accent-gold);font-weight:600}
+.nav-links{display:flex;gap:1.6rem;align-items:center}
+.nav-links a{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-secondary);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent-gold)}
+.back-btn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;color:var(--accent-cyan);border:1px solid var(--accent-cyan);padding:.3rem .7rem;border-radius:6px;transition:all .2s}
+.back-btn:hover{color:var(--accent-gold);border-color:var(--accent-gold)}
+@media(max-width:720px){.nav-links{gap:.9rem}.nav-links a{font-size:.62rem}}
+
+/* ── zen pulse · 3-second orientation ── */
+.zen-pulse{display:flex;flex-wrap:wrap;gap:.55rem;padding:.8rem 1rem;background:rgba(10,10,15,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-dim);position:relative;z-index:5;margin-top:53px}
+.zen-pulse .zp{display:flex;align-items:baseline;gap:.5rem;font-size:.74rem;color:var(--text-secondary);padding:.25rem .7rem;border:1px solid var(--border-dim);border-radius:99px;background:rgba(16,16,24,.55)}
+.zen-pulse .zp b{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;font-weight:600}
+.zen-pulse .zp.gold b{color:var(--accent-gold)}
+@media(max-width:720px){.zen-pulse{gap:.35rem;padding:.6rem .8rem;margin-top:48px}.zen-pulse .zp{font-size:.68rem;padding:.2rem .55rem}}
+
+/* ── hero ── */
+.hero{padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border-dim);background:radial-gradient(ellipse at 20% 0%,rgba(0,212,170,.07),transparent 50%)}
+.hero .container{max-width:1100px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:3px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.8rem}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lede{color:var(--text-secondary);max-width:760px;font-size:1.05rem;margin-bottom:1.4rem}
+.hero p.lede b{color:var(--text-primary)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.hero-meta .chip{font-family:var(--mono);font-size:.62rem;letter-spacing:1.2px;padding:.32rem .7rem;border:1px solid var(--border-dim);border-radius:99px;color:var(--text-secondary);background:rgba(16,16,24,.5)}
+.hero-meta .chip.gold{color:var(--accent-gold);border-color:rgba(212,175,55,.5)}
+.hero-meta .chip.cyan{color:var(--accent-cyan);border-color:rgba(0,212,170,.5)}
+
+/* ── sections ── */
+section{padding:4.5rem 2rem;border-top:1px solid var(--border-dim)}
+.container{max-width:1100px;margin:0 auto}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,#fff 40%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-right:.4rem;vertical-align:middle}
+.lede{color:var(--text-secondary);max-width:760px;font-size:1.02rem;margin-bottom:1.6rem}
+.lede b{color:var(--text-primary)}
+
+/* ── section content ── */
+.prose{max-width:760px;font-size:.96rem;color:var(--text-primary);line-height:1.75;margin-bottom:1.4rem}
+.prose b{color:var(--accent-gold)}
+.prose code{font-family:var(--mono);font-size:.85em;background:rgba(0,212,170,.08);color:var(--accent-cyan);padding:.1rem .35rem;border-radius:4px}
+.prose ul{margin:.8rem 0 .8rem 1.2rem;color:var(--text-secondary)}
+.prose li{margin-bottom:.45rem}
+.prose li b{color:var(--text-primary)}
+
+/* ── stat strip ── */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
+.stat{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.1rem 1.2rem;transition:border-color .25s}
+.stat:hover{border-color:var(--accent-gold)}
+.stat .num{font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-cyan)}
+.stat .num.gold{color:var(--accent-gold)}
+.stat .lbl{font-size:.72rem;color:var(--text-secondary);letter-spacing:.5px;text-transform:uppercase;margin-top:.25rem}
+.stat .src{font-family:var(--mono);font-size:.55rem;color:#55555f;margin-top:.5rem}
+
+/* ── tectonic events timeline ── */
+.timeline{margin:2rem 0;border-left:2px solid var(--border-dim);padding-left:1.5rem}
+.event{position:relative;padding:1rem 0 1.2rem;border-bottom:1px dashed var(--border-dim)}
+.event:last-child{border-bottom:none}
+.event::before{content:"";position:absolute;left:-1.85rem;top:1.3rem;width:11px;height:11px;border-radius:50%;background:var(--accent-cyan);border:2px solid var(--bg-dark);box-shadow:0 0 0 2px var(--accent-cyan)}
+.event.gold::before{background:var(--accent-gold);box-shadow:0 0 0 2px var(--accent-gold)}
+.event h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.event .age{font-family:var(--mono);font-size:.7rem;color:var(--accent-gold);letter-spacing:.5px;margin-bottom:.35rem}
+.event p{font-size:.88rem;color:var(--text-secondary)}
+.event p b{color:var(--text-primary)}
+
+/* ── stratigraphic table ── */
+.strat-tbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.84rem}
+.strat-tbl th{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-secondary);text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border-dim);font-weight:600}
+.strat-tbl td{padding:.7rem .8rem;border-bottom:1px solid var(--border-dim);color:var(--text-secondary);vertical-align:top;line-height:1.5}
+.strat-tbl td b{color:var(--text-primary)}
+.strat-tbl tr:hover td{background:rgba(0,212,170,.03)}
+.lith-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.5rem;vertical-align:middle}
+
+/* ── petroleum system grid ── */
+.psys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
+.psys{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.2rem 1.3rem;border-top:3px solid var(--accent-cyan)}
+.psys.src{border-top-color:#a78bfa}
+.psys.res{border-top-color:var(--accent-gold)}
+.psys.seal{border-top-color:#64748b}
+.psys.trap{border-top-color:#f43f5e}
+.psys.mig{border-top-color:#10b981}
+.psys .role{font-family:var(--mono);font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:.35rem}
+.psys.src .role{color:#a78bfa}
+.psys.res .role{color:var(--accent-gold)}
+.psys.seal .role{color:#94a3b8}
+.psys.trap .role{color:#f87171}
+.psys.mig .role{color:#34d399}
+.psys h4{font-size:96rem;font-weight:700;margin-bottom:.4rem}
+.psys h4{font-size:1rem}
+.psys p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+
+/* ── cross-section embed ── */
+.xs-embed{margin:2rem 0;background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;overflow:hidden}
+.xs-embed .head{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border-dim);background:rgba(0,0,0,.2)}
+.xs-embed .head h3{font-size:1rem;font-weight:700;color:var(--accent-gold)}
+.xs-embed .head .src{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;color:var(--accent-cyan);text-transform:uppercase}
+.xs-embed iframe{width:100%;height:1100px;border:none;display:block;background:#0a0e17}
+.xs-embed .foot{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.4rem;border-top:1px solid var(--border-dim);background:rgba(0,0,0,.2);font-family:var(--mono);font-size:.62rem;color:#55555f}
+.xs-embed .foot a{color:var(--accent-cyan)}
+.xs-embed .foot a:hover{color:var(--accent-gold)}
+
+/* ── discoveries cards ── */
+.disc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.disc{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.4rem 1.5rem;border-left:3px solid var(--accent-gold);transition:transform .2s,border-color .2s}
+.disc:hover{transform:translateY(-3px);border-color:var(--accent-gold)}
+.disc .tag{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--accent-cyan);color:var(--accent-cyan);display:inline-block;margin-bottom:.5rem}
+.disc h3{font-size:1.02rem;font-weight:700;margin-bottom:.35rem}
+.disc .meta{font-family:var(--mono);font-size:.62rem;color:var(--accent-gold);letter-spacing:.5px;margin-bottom:.55rem}
+.disc p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+
+/* ── questions callout ── */
+.unknowns{background:linear-gradient(135deg,rgba(212,175,55,.05),rgba(239,68,68,.05));border:1px dashed var(--accent-gold);border-radius:14px;padding:1.6rem 1.8rem;margin:1.8rem 0}
+.unknowns h3{font-family:var(--mono);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-gold);margin-bottom:.8rem}
+.unknowns ul{list-style:none}
+.unknowns li{padding:.55rem 0;border-bottom:1px dashed rgba(212,175,55,.18);font-size:.88rem;color:var(--text-secondary);line-height:1.5}
+.unknowns li:last-child{border-bottom:none}
+.unknowns li b{color:var(--text-primary)}
+.unknowns li::before{content:"○ ";color:var(--accent-gold);font-family:var(--mono);margin-right:.4rem}
+
+/* ── intent cards ── */
+.intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.6rem}
+.intent-card{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.4rem 1.5rem;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.intent-card:hover{transform:translateY(-4px);border-color:var(--accent-cyan);box-shadow:0 8px 28px rgba(0,212,170,.12)}
+.intent-card .verb{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:.6rem}
+.intent-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.55rem;color:var(--text-primary)}
+.intent-card p{font-size:.84rem;color:var(--text-secondary);flex:1;line-height:1.55}
+.intent-card .arrow{margin-top:.9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:1px;color:var(--accent-cyan)}
+.intent-card .arrow::before{content:"▸ "}
+
+/* ── breadcrumbs (in-flow) ── */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:1rem 1.2rem;margin:1.5rem 0;background:rgba(16,16,24,.5);border:1px dashed var(--border-dim);border-radius:10px}
+.crumbs .crumb{font-family:var(--mono);font-size:.7rem;letter-spacing:.5px;color:var(--text-secondary);padding:.32rem .7rem;border-radius:99px;background:rgba(0,0,0,.3);border:1px solid transparent;text-decoration:none}
+.crumbs .crumb.now{color:var(--accent-gold);border-color:var(--accent-gold);background:rgba(212,175,55,.06);font-weight:600}
+.crumbs .crumb.next{color:var(--accent-cyan);border-color:rgba(0,212,170,.4);background:rgba(0,212,170,.06)}
+.crumbs .sep{color:#55555f;font-size:.7rem}
+
+/* ── collapsible ── */
+.collapsible{margin-top:1rem}
+.collapsible > summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-cyan);text-transform:uppercase;padding:.6rem 0;display:flex;align-items:center;gap:.5rem;user-select:none}
+.collapsible > summary::-webkit-details-marker{display:none}
+.collapsible > summary::before{content:"▸";transition:transform .2s;display:inline-block;color:var(--accent-cyan)}
+.collapsible[open] > summary::before{transform:rotate(90deg)}
+.collapsible > summary:hover{color:var(--accent-gold)}
+.collapsible[open] > summary::before{color:var(--accent-gold)}
+.collapsible .body{margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--border-dim)}
+
+/* ── callout ── */
+.callout{border-left:3px solid var(--accent-gold);padding:.9rem 1.2rem;background:rgba(212,175,55,.05);border-radius:0 8px 8px 0;margin:1.2rem 0;font-size:.92rem;color:var(--text-secondary);line-height:1.6}
+.callout b{color:var(--accent-gold)}
+
+/* ── footer ── */
+footer{border-top:1px solid var(--border-dim);padding:3rem 2rem 2.4rem;text-align:center}
+footer .doctrine{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;color:var(--accent-gold);margin-bottom:1rem}
+footer p{font-size:.74rem;color:#55555f;max-width:820px;margin:0 auto .4rem}
+footer a{color:var(--text-secondary)}
+footer a:hover{color:var(--accent-cyan)}
+
+/* ── table of contents (sticky on desktop) ── */
+@media(min-width:1200px){
+  .toc{position:fixed;top:9rem;right:1.5rem;width:180px;z-index:30;background:rgba(16,16,24,.7);border:1px solid var(--border-dim);border-radius:10px;padding:.9rem 1rem;backdrop-filter:blur(8px);font-size:.7rem}
+  .toc h4{font-family:var(--mono);font-size:.55rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.6rem}
+  .toc a{display:block;padding:.32rem 0;color:var(--text-secondary);text-decoration:none;font-family:var(--mono);font-size:.66rem;letter-spacing:.4px}
+  .toc a:hover{color:var(--accent-gold)}
+  .toc a .num{color:var(--accent-cyan);margin-right:.4rem}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content" style="position:absolute;left:-9999px">Skip to main content</a>
+
+<header>
+  <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="https://arif-fazil.com/earth/" class="back-btn">← BACK TO EARTH</a>
+    <a href="https://geox.arif-fazil.com">GEOX</a>
+    <a href="https://aaa.arif-fazil.com">AAA</a>
+    <a href="https://mcp.arif-fazil.com">MCP</a>
+  </nav>
+</header>
+
+<!-- ══ ZEN PULSE · 3-second orientation ══ -->
+<div class="zen-pulse" aria-label="3-second orientation">
+  <span class="zp"><b>WHERE</b> arif-fazil.com / earth / kinabalu-basin</span>
+  <span class="zp gold"><b>WHY CARE</b> one of 3 producing basins in Malaysia</span>
+  <span class="zp"><b>WHAT NEXT</b> read the tape recorder ↓</span>
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<main id="main-content">
+
+<aside class="toc" aria-label="Table of contents">
+  <h4>IN THIS DOSSIER</h4>
+  <a href="#tectonic"><span class="num">01</span>TECTONIC EVOLUTION</a>
+  <a href="#stratigraphy"><span class="num">02</span>STRATIGRAPHY</a>
+  <a href="#petroleum"><span class="num">03</span>PETROLEUM SYSTEM</a>
+  <a href="#crosssection"><span class="num">04</span>CROSS-SECTION</a>
+  <a href="#discoveries"><span class="num">05</span>RECENT DISCOVERIES</a>
+  <a href="#questions"><span class="num">06</span>OPEN QUESTIONS</a>
+</aside>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="container">
+    <div class="kicker">Φ GEOX · KINABALU BASIN DOSSIER · NW SABAH, OFFSHORE MALAYSIA</div>
+    <h1>Kinabalu Basin.<br>One of three.</h1>
+    <p class="lede">Malaysia has <b>three producing basins</b> — Malay, Sarawak, and this one. The Kinabalu Basin sits on the NW Sabah shelf, a fold-thrust belt that took <b>~55 million years</b> to fold, fault, fill, and forget. This dossier reads the tape recorder: tectonic evolution, stratigraphy, petroleum system, and the discoveries that just changed the gas-dominant story.</p>
+    <div class="hero-meta">
+      <span class="chip gold">SABAH TROUGH · ~2,900 m</span>
+      <span class="chip gold">KINABALU PEAK · 4,095 m</span>
+      <span class="chip cyan">SRTM-DRAPED CROSS-SECTION</span>
+      <span class="chip">12 PROVINCES</span>
+      <span class="chip">5 TECTONIC EVENTS</span>
+      <span class="chip">5 RECENT DISCOVERIES</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BREADCRUMB · cognitive ladder ══ -->
+<nav class="container crumbs" aria-label="Where you are">
+  <a class="crumb" href="https://arif-fazil.com/earth/">① Earth / Globe</a>
+  <span class="sep">→</span>
+  <span class="crumb now">② Kinabalu Basin Dossier · you are here</span>
+  <span class="sep">→</span>
+  <a class="crumb next" href="#crosssection">③ Cross-section ↓</a>
+  <span class="sep">→</span>
+  <a class="crumb next" href="https://geox.arif-fazil.com/basins/kinabalu/">④ GEOX Prospect ↗</a>
+</nav>
+
+<!-- ══ SECTION 01 · TECTONIC EVOLUTION ══ -->
+<section id="tectonic">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · 5 EVENTS, 5 PROVINCES</div>
+    <h2><span class="num">01</span>How the basin got here</h2>
+    <p class="lede">NW Sabah did not begin as a basin. It began as a <b>subduction margin</b> — oceanic crust of the Proto-South China Sea diving under Sundaland, sweeping deep-marine sediment into an accretionary prism. The basin we now call Kinabalu is the sediment that survived being scraped, folded, and re-sedimented five separate times.</p>
+
+    <div class="timeline">
+      <div class="event">
+        <div class="age">~40 Ma · LATE EOCENE</div>
+        <h3>Sarawak Orogeny — the prism is born</h3>
+        <p>The Rajang Group (deep-marine mudstones and turbidites) is folded and thrusted as the Proto-South China Sea subducts. The <b>West Crocker Formation</b> — turbiditic sandstones — is scraped off into the accretionary complex. <i>Unconformity within Paleogene turbidites.</i></p>
+      </div>
+      <div class="event gold">
+        <div class="age">22–20 Ma · EARLY MIOCENE</div>
+        <h3>Sabah Orogeny — the continent arrives</h3>
+        <p>The <b>Dangerous Grounds</b> continental block collides with Sabah. Mélanges form. The <b>Base Miocene Unconformity (BMU)</b> is cut. Deep marine gives way to shallow deltaic sedimentation. This is the moment the basin starts to look like a basin.</p>
+      </div>
+      <div class="event">
+        <div class="age">15.5 Ma · MID-MIOCENE</div>
+        <h3>Cagayan Arc collision — rifting ends</h3>
+        <p>Arc-continent collision cuts the <b>Mid-Miocene Unconformity (MMU = Deep Regional Unconformity (DRU))</b>. Extension halts. Inversion begins. The fold-thrust belt starts growing westward into the present-day shelf.</p>
+      </div>
+      <div class="event gold">
+        <div class="age">10–8 Ma · LATE MIOCENE</div>
+        <h3>Mount Kinabalu — the mountain arrives</h3>
+        <p>Granodiorite pluton intrudes the Crocker prism. Today it stands at <b>4,095 m</b> — the highest peak between the Himalayas and Papua. The <b>Shallow Regional Unconformity (SRU, 8.6 Ma)</b> marks a sediment-supply surge: the Baram and Kinabatangan deltas prograde across the shelf.</p>
+      </div>
+      <div class="event">
+        <div class="age">L. PLIOCENE – RECENT</div>
+        <h3>Meliau Orogeny — strike-slip, ongoing</h3>
+        <p>NW-SE transpression dissects the older "circular basins" into their present geometry. Final structural configuration. <b>The deformation has not stopped.</b> Today the basin is still folding, still faulting, still leaking.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Reading the tape:</b> Each event writes a new chapter, then erases a bit of the old one. Five events, five unconformities (or thereabouts), and the rocks you can walk on at the surface are mostly <i>younger</i> than the rocks a drilling bit will hit at 3,000 m. That's why cross-sections are not optional — the surface is a censored version of the story.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 02 · STRATIGRAPHY ══ -->
+<section id="stratigraphy">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · YOUNGEST → OLDEST, FROM SURFACE TO BASEMENT</div>
+    <h2><span class="num">02</span>What's in the section</h2>
+    <p class="lede">Nine named units, plus the ophiolite basement. Lithologies from the Macrostrat pipe and the published Sabah geologic map. Thicknesses from seismic and well ties. Where the data are absent, the cells are empty — not invented.</p>
+
+    <table class="strat-tbl" aria-label="Stratigraphic column">
+      <thead>
+        <tr>
+          <th>UNIT</th>
+          <th>AGE</th>
+          <th>LITHOLOGY</th>
+          <th>ENVIRONMENT</th>
+          <th>THICKNESS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Baram / Kinabatangan Delta</b></td>
+          <td>Pliocene – Recent</td>
+          <td><span class="lith-dot" style="background:#ea580c"></span>Deltaic clastics</td>
+          <td>Deltaic → shallow marine</td>
+          <td>Variable</td>
+        </tr>
+        <tr>
+          <td><b>Champion / Kapilit Fm</b></td>
+          <td>Late Miocene</td>
+          <td><span class="lith-dot" style="background:#b45309"></span>Deltaic clastics</td>
+          <td>Champion Delta → NW · Kinabatangan Delta → NE</td>
+          <td>Part of &gt;6 km</td>
+        </tr>
+        <tr>
+          <td><b>Tanjong / Meligan / Kudat Fm</b></td>
+          <td>E–M Miocene (18–10 Ma)</td>
+          <td><span class="lith-dot" style="background:#a16207"></span>Deltaic clastics</td>
+          <td>Deltaic → shallow marine, prograded NE</td>
+          <td>&gt;6,000 m cumulative</td>
+        </tr>
+        <tr>
+          <td><b>Gomantong Limestone</b></td>
+          <td>E. Miocene (Burdigalian)</td>
+          <td><span class="lith-dot" style="background:#7dd3fc"></span>Carbonate platform</td>
+          <td>Shallow marine, isolated highs</td>
+          <td>200 km belt</td>
+        </tr>
+        <tr>
+          <td><b>Labang / Kulapis Fm</b></td>
+          <td>L. Eocene – Oligocene</td>
+          <td><span class="lith-dot" style="background:#65a30d"></span>Deep-water clastics</td>
+          <td>Forearc basin</td>
+          <td>Thick</td>
+        </tr>
+        <tr>
+          <td><b>West Crocker Fm</b></td>
+          <td>L. Eocene – Oligocene</td>
+          <td><span class="lith-dot" style="background:#4d7c0f"></span>Turbiditic sandstones</td>
+          <td>Accretionary complex</td>
+          <td>Thick</td>
+        </tr>
+        <tr>
+          <td><b>Rajang Group (Sapulut, Trusmadi, E. Crocker)</b></td>
+          <td>L. Cretaceous – Eocene</td>
+          <td><span class="lith-dot" style="background:#365314"></span>Deep-marine mudstones, turbidites</td>
+          <td>Accretionary prism (highly deformed)</td>
+          <td>Highly deformed</td>
+        </tr>
+        <tr>
+          <td><b>Ophiolite Basement</b></td>
+          <td>Cretaceous</td>
+          <td><span class="lith-dot" style="background:#1c1917;border:1px solid #44403c"></span>Peridotite · gabbro · basalt · chert</td>
+          <td>Oceanic crust, emplaced</td>
+          <td>Basement</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details class="collapsible">
+      <summary>For the curious — the Crocker Fan and the largest Paleogene deposit in SE Asia</summary>
+      <div class="body">
+        <div class="prose">
+          <p>The <b>Crocker Fan</b> is the largest Paleogene deep-marine sediment accumulation in Southeast Asia. It is not one formation; it is a system — West Crocker, East Crocker, Trusmadi, Sapulut — each a slice of the same fan, deformed differently depending on where it sat on the accretionary wedge.</p>
+          <p>When you walk up Mount Kinabalu, you are walking up <b>intrusive granodiorite</b> that punched through the Crocker Fan in the Late Miocene. The mountain is not an old mountain; it is a young one sitting on an old one. The 7 km of vertical relief between the Sabah Trough and the summit is, in geological terms, almost entirely the result of <b>one intrusion event</b>.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ SECTION 03 · PETROLEUM SYSTEM ══ -->
+<section id="petroleum">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · SOURCE → RESERVOIR → SEAL → TRAP → MIGRATION</div>
+    <h2><span class="num">03</span>Why there is oil here</h2>
+    <p class="lede">A working petroleum system is five elements that line up in space and time. The Kinabalu system is <b>proven</b> (one of three producing basins in Malaysia), with one element — charge — currently being re-examined after a recent oil discovery beneath known gas.</p>
+
+    <div class="psys-grid">
+      <div class="psys src">
+        <div class="role">SOURCE</div>
+        <h4>Oligocene–L. Miocene shales</h4>
+        <p>Deep-marine Type II/III. Moderate-to-good quality. Multiple kitchens suspected beneath the fold-thrust belt.</p>
+      </div>
+      <div class="psys res">
+        <div class="role">RESERVOIR</div>
+        <h4>Post-MMU turbidite sandstones</h4>
+        <p>Proven good. Stage IV clastic play (Kinabalu Field: 500 MMbbl OOIP). Deeper Oligocene syn-rift clastics emerging.</p>
+      </div>
+      <div class="psys seal">
+        <div class="role">SEAL</div>
+        <h4>Intraformational shales + MMU</h4>
+        <p>Good. The MMU acts as a regional seal across the basin — a single horizontal line that keeps the gas down.</p>
+      </div>
+      <div class="psys trap">
+        <div class="role">TRAP</div>
+        <h4>Anticlinal closures + pinchouts</h4>
+        <p>Proven. The fold-thrust belt builds the closures; stratigraphic pinchouts add upside in the Stage IV delta.</p>
+      </div>
+      <div class="psys mig">
+        <div class="role">MIGRATION</div>
+        <h4>Vertical along faults, lateral along carriers</h4>
+        <p>Efficient. Faults from inversion provide vertical pathways; deltaic carrier beds move charge laterally into closures.</p>
+      </div>
+      <div class="psys src" style="border-top-color:#f43f5e">
+        <div class="role" style="color:#f43f5e">KEY RISK · DEEPER CHARGE</div>
+        <h4>Oil beneath gas — paradigm in flux</h4>
+        <p>Recent Well A shows oil in deeper intervals below known gas. Either a separate kitchen, phase segregation, or multi-episode charge. The model is being re-run.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Note on the F8 rule:</b> "Proven" is reserved for what is on production or has a flow test. "Emerging" is reserved for what is on seismic + an analog well, not yet tested. The deeper-oil story is <b>emerging</b>, not proven — the recent discovery is one well, not a play.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 04 · CROSS-SECTION (EMBEDDED) ══ -->
+<section id="crosssection">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · SRTM TOPOGRAPHY + PUBLISHED GEOLOGY · VERTICAL ~32× · STRUCTURES INTERPRETIVE</div>
+    <h2><span class="num">04</span>See it from the side</h2>
+    <p class="lede">A 600-km transect from the Dangerous Grounds in the NW, across the Sabah Trough, up the Crocker Range, and into the Sandakan Basin in the SE. The surface is real SRTM (Kinabalu peak: <b>3,951 m</b> via Open-Meteo API · Crocker Range: <b>~1,025 m</b>). The bathymetry comes from published values (Sabah Trough: <b>~2,900 m</b>). The bodies below the surface come from Balaguru & Hall (2009), Madon & Jong (2022), and the TGS / EAGE 2026 papers.</p>
+
+    <div class="xs-embed">
+      <div class="head">
+        <h3>◈ NW–SE Regional Cross-Section</h3>
+        <span class="src">SRTM + PUBLISHED GEOLOGY · 12 PROVINCES · UNCONFORMITIES TRACED</span>
+      </div>
+      <iframe src="/earth/kinabalu-cross-section.html" title="Kinabalu Basin Regional Cross-Section" loading="lazy"></iframe>
+      <div class="foot">
+        <span>SRTM via Open-Meteo · Bathymetry from published values · Geology from Balaguru & Hall 2009, Madon & Jong 2022, PETRONAS MPM 2025</span>
+        <a href="/earth/kinabalu-cross-section.html" target="_blank" rel="noopener">↗ OPEN FULLSCREEN</a>
+      </div>
+    </div>
+
+    <details class="collapsible">
+      <summary>How to read the cross-section</summary>
+      <div class="body">
+        <div class="prose">
+          <p>The <b>top line</b> is real topography. Below sea level, the line is real bathymetry. Below that, the colored bodies are the interpretation — and interpretations are honest only when they are dated, sourced, and falsifiable.</p>
+          <p>Look for three things:</p>
+          <ul>
+            <li><b>The granite pluton under Kinabalu</b> — pink, sitting in the Crocker prism. It is the engine that lifted the mountain.</li>
+            <li><b>The two unconformity lines</b> — the dashed gold (DRU/BMU, ~15.5–22 Ma) and red (SRU, ~8.6 Ma). They are the only two horizontal lines in the section. Everything else dips, folds, or is cut by a fault.</li>
+            <li><b>The oil and gas symbols</b> — the gold and red dots in the offshore Stage IV clastics (Kinabalu Field) and in the deeper Sandakan delta. Where you see red, there is oil; gold, gas.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ SECTION 05 · RECENT DISCOVERIES ══ -->
+<section id="discoveries">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · PETRONAS MPM 2025 · EAGE 2026 · JGR 2025</div>
+    <h2><span class="num">05</span>What just changed</h2>
+    <p class="lede">A gas-dominant perception held for a decade. Three pieces of new evidence have started to overturn it — a deep oil test, a deeper pool in a known field, and a frontier discovery next door that proves the play works in a different facies.</p>
+
+    <div class="disc-grid">
+      <div class="disc">
+        <span class="tag">PARADIGM SHIFT</span>
+        <h3>Well A — oil beneath gas</h3>
+        <div class="meta">KINABALU FIELD · 2025</div>
+        <p>Oil column found in deeper intervals beneath the known gas reservoir. Either a separate deeper kitchen, phase segregation in the existing kitchen, or multi-episode charge. The model is being re-run.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">DEEPER POOL</span>
+        <h3>Zoisit Deep-1</h3>
+        <div class="meta">KINABALU BASIN · PETRONAS MPM 2025</div>
+        <p>Gas and oil in a deeper pool, tested by a 2025 exploration well. Extends the proven play downward. Reprocessed seismic on Well B (Ab Ghani et al. EAGE 2026) shows the play continues laterally.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">FRONTIER</span>
+        <h3>Megah-1 — Layang-Layang</h3>
+        <div class="meta">OLIGOCENE CARBONATE · ADJACENT BASIN</div>
+        <p>Malaysia's largest recent oil find, in the Oligocene carbonate play of the Layang-Layang Basin next door. Proves the Oligo-Miocene carbonate fairway works at scale. Tepat-1 was the earlier discovery.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">CRUSTAL</span>
+        <h3>Slab remnant at 45–55 km</h3>
+        <div class="meta">CORNWELL ET AL. JGR 2025</div>
+        <p>Teleseismic receiver functions image a slab remnant under Sabah at 45–55 km depth. The subduction has stopped, but the slab is still there — and the post-subduction tectonics is still active.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">PRODUCTION</span>
+        <h3>One of three producing basins</h3>
+        <div class="meta">MALAY · SARAWAK · KINABALU</div>
+        <p>Kinabalu is one of three basins in Malaysia currently producing hydrocarbons (PETRONAS MPM 2025). The other two are the Malay Basin (the founder's home waters) and the Sarawak Basin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 06 · OPEN QUESTIONS ══ -->
+<section id="questions">
+  <div class="container">
+    <div class="kicker">F7 HUMILITY · UNKNOWN IS A FEATURE, NOT A BUG</div>
+    <h2><span class="num">06</span>What we don't know</h2>
+    <p class="lede">The dossier is honest about what is settled and what is not. Four questions are open as of mid-2026. None of them are blocking, but all of them shape where the next drill bit should go.</p>
+
+    <div class="unknowns">
+      <h3>○ OPEN QUESTIONS · KINABALU BASIN · 2026-07</h3>
+      <ul>
+        <li><b>Three competing models</b> for NE Borneo Cenozoic extension remain unresolved. The right one changes the trap-volume estimate by an order of magnitude.</li>
+        <li><b>The deeper-charge mechanism</b> — is the deeper oil at Well A from a separate kitchen, phase segregation, or multi-episode charge? Each model has a different sweet spot.</li>
+        <li><b>Oligocene syn-rift play extent</b> beneath the post-MMU fold belt. Seismic sees it; wells do not yet penetrate it. The upside is large if the play is continuous.</li>
+        <li><b>Exact PSC block boundaries</b> are confidential until the next data room. Until then, prospect locations in this dossier are approximate, not proprietary.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <b>For agents reading this:</b> The unknowns are not weakness — they are the input. A prospect-maturation pipeline (geox.prospect) takes an open question, attaches evidence, and returns a falsifiable plan. The Kinabalu dossier ends here; the next work starts here.
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHERE TO NEXT? · intent cards ══ -->
+<section id="next" style="background:linear-gradient(135deg,rgba(0,212,170,.04),rgba(212,175,55,.04))">
+  <div class="container">
+    <div class="kicker">FIRST 30 SECONDS · PICK A VERB</div>
+    <h2>Where to next?</h2>
+    <p class="lede">Three doors out of the dossier. Pick one — the rest stays out of your way until you ask for it.</p>
+
+    <div class="intent-grid">
+      <a class="intent-card" href="/earth/kinabalu-cross-section.html" target="_blank" rel="noopener" aria-label="Open the cross-section fullscreen">
+        <span class="verb">SEE THE SECTION</span>
+        <h3>Open the cross-section fullscreen.</h3>
+        <p>The SRTM-draped regional section at full width, with the legend, structural symbols, and oil/gas shows visible. The same figure the GEOX cockpit pulls when you ask "show me Kinabalu from the side."</p>
+        <span class="arrow">OPEN FULLSCREEN ↗</span>
+      </a>
+
+      <a class="intent-card" href="/earth/kinabalu-basin.pdf" aria-label="Download the PDF dossier">
+        <span class="verb">DOWNLOAD PDF</span>
+        <h3>Take the dossier offline.</h3>
+        <p>10 sections · 21 KB · single PDF. The reference copy for fieldwork, regulatory submissions, or a meeting where you need a piece of paper in your hand, not a browser tab.</p>
+        <span class="arrow">DOWNLOAD PDF ↓</span>
+      </a>
+
+      <a class="intent-card" href="https://geox.arif-fazil.com/basins/kinabalu/" aria-label="Launch GEOX prospect pipeline">
+        <span class="verb">LAUNCH GEOX</span>
+        <h3>Open the GEOX cockpit.</h3>
+        <p>The prospect-maturation pipeline takes the open questions above, attaches evidence, and returns a falsifiable plan. Source-cited, human-ratified, sealed to VAULT-999.</p>
+        <span class="arrow">OPEN GEOX COCKPIT ↗</span>
+      </a>
+    </div>
+
+    <nav class="crumbs" aria-label="Where to next">
+      <a class="crumb" href="https://arif-fazil.com/earth/">① Earth / Globe</a>
+      <span class="sep">→</span>
+      <span class="crumb now">② Kinabalu Basin Dossier</span>
+      <span class="sep">→</span>
+      <a class="crumb next" href="/earth/kinabalu-cross-section.html">③ Cross-section ↗</a>
+      <span class="sep">→</span>
+      <a class="crumb next" href="https://geox.arif-fazil.com/basins/kinabalu/">④ GEOX ↗</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<!-- /#main-content -->
+
+<footer>
+  <div class="doctrine">DITEMPA BUKAN DIBERI</div>
+  <p><b>Provenance:</b> PETRONAS MPM (2025) · Balaguru &amp; Hall (2009) · Balaguru et al. (2003) · Bait (2003) · Madon &amp; Jong (2022) · Choi, Tad et al. EAGE 2026 · Ab Ghani et al. EAGE 2026 · Cornwell et al. JGR 2025 · Geological Survey of Malaysia Memoir 19.</p>
+  <p>SRTM topography via <a href="https://open-meteo.com">open-meteo.com</a> · Bathymetry from published values · Cross-section is interpretive, not measured — <b>F7 humility: vertical exaggeration ~4×, body shapes are schematics not picks.</b></p>
+  <p>Φ GEOX · an organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
+</footer>
+
+<script>
+/* ── Smooth-scroll offset for header ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');
+    if(id.length<2)return;
+    const t=document.querySelector(id);
+    if(!t)return;
+    e.preventDefault();
+    window.scrollTo({top:t.offsetTop-90,behavior:'smooth'});
+  });
+});
+
+/* ── Live pipe status · data attribution ── */
+(function(){
+  const pipeFetch=fetch('https://macrostrat.org/api/v2/stats?all').then(r=>r.ok?r.json():null).catch(()=>null);
+  pipeFetch.then(j=>{
+    if(!j)return;
+    const rows=(j.success&&j.success.data)||[];
+    const sum=k=>rows.reduce((a,r)=>a+(Number(r[k])||0),0);
+    const cols=sum('columns').toLocaleString();
+    /* Could surface this as a tiny "live" badge if needed — kept silent for now per F2 */
+  });
+})();
+</script>
+<script src="/_shared/zen-all.js" defer></script>
+</body>
+</html>
