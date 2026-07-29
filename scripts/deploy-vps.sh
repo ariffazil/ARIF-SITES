@@ -110,6 +110,15 @@ fi
 
 # ── 4. Reload Caddy ──────────────────────────────────────────────────────────
 log_info "Reloading Caddy..."
+# F1 AMANAH — snapshot current Caddyfile before each reload. Idempotent (overwrite
+# is harmless when content is unchanged; fresh timestamp gives us a forensic
+# chain for free). Closes the 2026-07-29 audit gap where today's edit had no
+# local rollback file.
+if [[ -f /etc/caddy/Caddyfile ]]; then
+    _caddy_reload_ts="$(date -u +%Y%m%dT%H%M%SZ)"
+    cp -p /etc/caddy/Caddyfile "/etc/caddy/Caddyfile.bak.${_caddy_reload_ts}-reload" 2>/dev/null || \
+        log_warn "  ⚠️  could not snapshot /etc/caddy/Caddyfile (continuing reload)"
+fi
 caddy reload --config /etc/caddy/Caddyfile 2>/dev/null || systemctl reload caddy 2>/dev/null || true
 
 # ── 5. Verify key sites ──────────────────────────────────────────────────────
