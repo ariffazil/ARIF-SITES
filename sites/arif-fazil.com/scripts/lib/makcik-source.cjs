@@ -1,7 +1,7 @@
 /**
  * makcik-source.cjs — Single source of truth (F4 CLARITY) for MakcikGPT.
  *
- * All generators that emit any /world/makcikgpt/* surface (feed.xml,
+ * All generators that emit any /makcikgpt/* surface (feed.xml,
  * sitemap.xml, llms.{txt,json}, page.json, makcikgpt-md/index.html) MUST
  * go through this helper so they cannot drift out of parity.
  *
@@ -9,11 +9,11 @@
  *   the subset of essays.json where
  *     - lang === "bm"
  *     - dest.type === "onsite"
- *     - dest.path starts with the canonical "/world/makcikgpt/" prefix
+ *     - dest.path starts with the canonical "/makcikgpt/" prefix
  *
  * The helper enforces:
  *   1. non-empty canonical subset (any count ≥ 1 is accepted — no magic count)
- *   2. canonical-path discipline (every dest.path lives under /world/makcikgpt/)
+ *   2. canonical-path discipline (every dest.path lives under /makcikgpt/)
  *   3. unique IDs and unique paths across the subset
  *   4. required metadata on every entry
  *   5. deterministic ordering: date desc, then id desc as a stable tiebreaker
@@ -30,7 +30,9 @@ const path = require("path");
 // this module resolves the canonical essays.json the same way.
 const SITE_ROOT = path.resolve(__dirname, "..", "..");
 const ESSAYS_JSON = path.join(SITE_ROOT, "src/data/essays.json");
-const CANONICAL_PREFIX = "/world/makcikgpt/";
+// 2026-07-29: FLATTEN — articles live at /makcikgpt/<slug> (2 layers max from home).
+// Old /makcikgpt/<slug> redirects to /makcikgpt/<slug> in Caddy.
+const CANONICAL_PREFIX = "/makcikgpt/";
 
 class MakcikSourceError extends Error {
   constructor(message, violations) {
@@ -47,7 +49,7 @@ function loadEssays() {
 
 /**
  * Returns the canonical MakcikGPT subset: BM-authored, onsite-destined,
- * under the canonical /world/makcikgpt/ prefix.
+ * under the canonical /makcikgpt/ prefix.
  *
  * Order is deterministic: newest date first; ties (same date) are broken
  * by id descending so the output is byte-stable across runs.
@@ -112,7 +114,7 @@ function validateMakcikPieces(pieces, opts = {}) {
 
   if (pieces.length === 0) {
     violations.push(
-      "MakcikGPT canonical subset is empty — essays.json must contain at least one BM + onsite entry under /world/makcikgpt/",
+      "MakcikGPT canonical subset is empty — essays.json must contain at least one BM + onsite entry under /makcikgpt/",
     );
   }
 

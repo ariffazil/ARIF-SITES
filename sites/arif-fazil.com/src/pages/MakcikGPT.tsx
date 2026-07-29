@@ -42,7 +42,7 @@ export function MakcikGPT() {
           {makcikArticlesMeta.map((article) => (
             <Link
               key={article.slug}
-              to={`/world/makcikgpt/${article.slug}`}
+              to={`/makcikgpt/${article.slug}`}
               className="brutalist-card border border-forge-iron px-8 py-8 block hover:border-forge-gold transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">

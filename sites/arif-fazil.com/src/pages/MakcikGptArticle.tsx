@@ -24,7 +24,7 @@ export function MakcikGptArticle() {
         <section className="py-24">
           <div className="site-frame text-center">
             <h1 className="text-4xl font-black uppercase mb-4">Article Not Found</h1>
-            <Link to="/world/makcikgpt/" className="text-forge-gold hover:underline font-mono">
+            <Link to="/makcikgpt/" className="text-forge-gold hover:underline font-mono">
               ← Back to MakcikGPT
             </Link>
           </div>
@@ -43,7 +43,7 @@ export function MakcikGptArticle() {
       <section className="py-16 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
           <Link
-            to="/world/makcikgpt/"
+            to="/makcikgpt/"
             className="font-mono text-xs text-forge-dim hover:text-forge-gold transition-colors mb-6 inline-block"
           >
             ← MakcikGPT
@@ -101,7 +101,7 @@ export function MakcikGptArticle() {
             </span>
 
             <Link
-              to="/world/makcikgpt/"
+              to="/makcikgpt/"
               className="font-mono text-sm text-forge-dim hover:text-forge-gold transition-colors"
             >
               ← All MakcikGPT Articles

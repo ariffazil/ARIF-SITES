@@ -8,7 +8,7 @@
  * The /makcikgpt-md/ directory is the "agentic web optimization" surface
  * — its .md siblings are bot-bypass payloads for AI crawlers, and this
  * index.html is the canonical entry that lists every piece in the order
- * they appear in /world/makcikgpt/.
+ * they appear in /makcikgpt/.
  *
  * Single Source of Truth rule (F4 CLARITY):
  *   - essays.json → scripts/lib/makcik-source.cjs → makcikgpt-md/index.html
@@ -102,7 +102,7 @@ ${items}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MakcikGPT — Civic Intelligence in Bahasa Makcik | arif-fazil.com</title>
 <meta name="description" content="Civic journalism in Bahasa Makcik. ${pieces.length} canonical articles on Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.">
-<link rel="canonical" href="${SITE_BASE}/world/makcikgpt/">
+<link rel="canonical" href="${SITE_BASE}/makcikgpt/">
 <style>
   body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; line-height: 1.6; background: #0d1117; color: #c9d1d9; }
   h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 0.5rem; }
@@ -147,7 +147,7 @@ ${items}
 
 <h1>🌍 MakcikGPT — Civic Intelligence</h1>
 <p>Civic journalism in Bahasa Makcik. Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.</p>
-<p>Canonical landing: <a href="/world/makcikgpt/">/world/makcikgpt/</a> · ${pieces.length} articles · updated ${escapeHtml(today)}</p>
+<p>Canonical landing: <a href="/makcikgpt/">/makcikgpt/</a> · ${pieces.length} articles · updated ${escapeHtml(today)}</p>
 
 <!-- ZEN PULSE — answers 3 questions in 3 seconds. Required by AGENTS.md §14.3. -->
 <aside class="zen-pulse" aria-label="Sacred navigation">

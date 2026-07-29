@@ -3,10 +3,10 @@ import { MakcikGPT } from './MakcikGPT';
 /**
  * Canonical alias wrapper for the MakcikGPT landing.
  *
- * Canonical URL: /world/makcikgpt/   (renders MakcikGPT directly)
+ * Canonical URL: /makcikgpt/   (renders MakcikGPT directly)
  * Bare alias:   /world/makcikgpt    (renders MakcikGPT directly)
- * /index suffix: /world/makcikgpt/index → redirected to /world/makcikgpt/
- *   (handled by the App router — see <Route path="/world/makcikgpt/index" />)
+ * /index suffix: /makcikgpt/index → redirected to /makcikgpt/
+ *   (handled by the App router — see <Route path="/makcikgpt/index" />)
  *
  * The legacy /wealth/makcikgpt/ and /economics/makcikgpt/ paths are routed
  * by the App router with <Navigate replace> — they never enter this component.

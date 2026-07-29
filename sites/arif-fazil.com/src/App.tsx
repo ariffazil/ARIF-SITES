@@ -19,6 +19,7 @@ import { NotFound } from '@/pages/NotFound';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
+import { KinabaluBasin } from '@/pages/KinabaluBasin';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
@@ -38,6 +39,9 @@ function App() {
             {/* Earth — pure geoscience, no civic/commodity */}
             <Route path="/earth" element={<Discoveries />} />
             <Route path="/earth/" element={<Discoveries />} />
+            <Route path="/earth/kinabalu-basin" element={<KinabaluBasin />} />
+            <Route path="/earth/kinabalu-basin/" element={<KinabaluBasin />} />
+            <Route path="/earth/kinabalu_basin" element={<KinabaluBasin />} />
 
             {/* Economics — WEALTH capital briefing */}
             <Route path="/economics" element={<Wealth />} />
@@ -57,14 +61,14 @@ function App() {
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
-            {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
+            {/* MakcikGPT — canonical path. /makcikgpt/ is the landing;
                 the bare /world/makcikgpt and the legacy /index suffix both
                 resolve to the same canonical page (no extra redirect). */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
-            <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
-            {/* /world/makcikgpt/index → /world/makcikgpt/ (301-style client redirect) */}
-            <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
-            <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
+            <Route path="/makcikgpt/" element={<MakcikGPTAlias />} />
+            {/* /makcikgpt/index → /makcikgpt/ (301-style client redirect) */}
+            <Route path="/makcikgpt/index" element={<Navigate to="/makcikgpt/" replace />} />
+            <Route path="/makcikgpt/:slug" element={<MakcikGptArticle />} />
             {/* Commodities — Δ-only, under world */}
             <Route path="/world/oil" element={<CommodityPageOil />} />
             <Route path="/world/gas" element={<CommodityPageGas />} />
@@ -111,16 +115,16 @@ function App() {
             <Route path="/oil/" element={<Navigate to="/world/oil" replace />} />
             <Route path="/gas/" element={<Navigate to="/world/gas" replace />} />
             <Route path="/gold/" element={<Navigate to="/world/gold" replace />} />
-            {/* MakcikGPT triplication fix — /world/makcikgpt/ is canonical */}
+            {/* MakcikGPT triplication fix — /makcikgpt/ is canonical */}
             <Route path="/wealth/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
             {/* Skip the /index hop — go straight to canonical trailing slash */}
-            <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
+            <Route path="/wealth/makcikgpt/index" element={<Navigate to="/makcikgpt/" replace />} />
             <Route path="/wealth/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/economics/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/economics/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
             {/* Skip the /index hop — go straight to canonical trailing slash */}
-            <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
+            <Route path="/economics/makcikgpt/index" element={<Navigate to="/makcikgpt/" replace />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/essays" element={<Navigate to="/writing" replace />} />
             <Route path="/essays/" element={<Navigate to="/writing" replace />} />
@@ -138,7 +142,7 @@ function App() {
 
 function MakcikGptRedirect() {
   const { slug } = useParams();
-  return <Navigate to={`/world/makcikgpt/${slug ?? ''}`} replace />;
+  return <Navigate to={`/makcikgpt/${slug ?? ''}`} replace />;
 }
 
 function EssayRedirect() {

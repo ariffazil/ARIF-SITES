@@ -764,7 +764,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/iran-hormuz"
+      "path": "/makcikgpt/iran-hormuz"
     },
     "seal": "999"
   },
@@ -786,7 +786,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/petronas-dna"
+      "path": "/makcikgpt/petronas-dna"
     },
     "seal": "999"
   },
@@ -808,7 +808,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/suriname-exxon-cabut"
+      "path": "/makcikgpt/suriname-exxon-cabut"
     },
     "seal": "999"
   },
@@ -831,7 +831,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/petronas-hive-sale"
+      "path": "/makcikgpt/petronas-hive-sale"
     },
     "seal": "999"
   },
@@ -854,7 +854,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/petronas-atm-kerajaan"
+      "path": "/makcikgpt/petronas-atm-kerajaan"
     },
     "seal": "999"
   },
@@ -877,7 +877,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/petronas-visi-misi"
+      "path": "/makcikgpt/petronas-visi-misi"
     },
     "seal": "999"
   },
@@ -899,7 +899,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/siasatan-harakah"
+      "path": "/makcikgpt/siasatan-harakah"
     },
     "seal": "999"
   },
@@ -922,7 +922,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/cerita-makcik"
+      "path": "/makcikgpt/cerita-makcik"
     },
     "seal": "999"
   },
@@ -945,7 +945,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/searah-followup"
+      "path": "/makcikgpt/searah-followup"
     },
     "seal": "999"
   },
@@ -968,7 +968,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/searah-kekal-milik-penuh"
+      "path": "/makcikgpt/searah-kekal-milik-penuh"
     },
     "seal": "999"
   },
@@ -991,7 +991,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/searah-senyum-media-suap"
+      "path": "/makcikgpt/searah-senyum-media-suap"
     },
     "seal": "999"
   },
@@ -1016,7 +1016,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon"
+      "path": "/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon"
     },
     "seal": "999"
   },
@@ -1039,7 +1039,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/ilmu-bbb"
+      "path": "/makcikgpt/ilmu-bbb"
     },
     "seal": "999"
   },
@@ -1061,7 +1061,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/ytl-monopoli"
+      "path": "/makcikgpt/ytl-monopoli"
     },
     "seal": "999"
   },
@@ -1082,7 +1082,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/daily-2026-07-01"
+      "path": "/makcikgpt/daily-2026-07-01"
     },
     "seal": "999"
   },
@@ -1105,7 +1105,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/ai-johor-rakyat-2026"
+      "path": "/makcikgpt/ai-johor-rakyat-2026"
     },
     "seal": "999"
   },
@@ -1127,7 +1127,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/sam-altman-elon-musk-anwar-akal"
+      "path": "/makcikgpt/sam-altman-elon-musk-anwar-akal"
     },
     "seal": "999"
   },
@@ -1149,7 +1149,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/dap-8-tahun-bangang"
+      "path": "/makcikgpt/dap-8-tahun-bangang"
     },
     "seal": "999"
   },
@@ -1172,7 +1172,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/chennah-bangang"
+      "path": "/makcikgpt/chennah-bangang"
     },
     "seal": "999"
   },
@@ -1196,7 +1196,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/anwar-jung-shadow"
+      "path": "/makcikgpt/anwar-jung-shadow"
     },
     "seal": "999"
   },
@@ -1219,7 +1219,7 @@
     ],
     "dest": {
       "type": "onsite",
-      "path": "/world/makcikgpt/searah-bernama-lewat"
+      "path": "/makcikgpt/searah-bernama-lewat"
     },
     "seal": "999"
   }

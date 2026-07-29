@@ -29,14 +29,14 @@ const {
 } = require("../scripts/lib/makcik-source.cjs");
 
 const PUBLIC_DIR = path.join(SITE_ROOT, "public");
-const CANONICAL_PREFIX_RE = /^\/world\/makcikgpt\/(.+)$/;
+const CANONICAL_PREFIX_RE = /^\/makcikgpt\/(.+)$/;
 
 function readUtf8(p) {
   return fs.readFileSync(p, "utf8");
 }
 
 /**
- * Extract slugs under /world/makcikgpt/ from arbitrary text by matching
+ * Extract slugs under /makcikgpt/ from arbitrary text by matching
  * every occurrence of the canonical prefix and capturing what follows.
  * The matcher is intentionally simple — it tolerates any surrounding URL
  * scheme or attribute delimiter because the canonical prefix is unique.
@@ -44,13 +44,13 @@ function readUtf8(p) {
 function extractSlugs(text) {
   const slugs = new Set();
   // Build a regex that finds the prefix with optional URL scheme/host in front.
-  // We match either "/world/makcikgpt/<slug>" (path form, slug = non-/" or whitespace)
-  // or "https://arif-fazil.com/world/makcikgpt/<slug>" (absolute form).
-  const re = /(?:https:\/\/arif-fazil\.com)?\/world\/makcikgpt\/([A-Za-z0-9._\-/]+)/g;
+  // We match either "/makcikgpt/<slug>" (path form, slug = non-/" or whitespace)
+  // or "https://arif-fazil.com/makcikgpt/<slug>" (absolute form).
+  const re = /(?:https:\/\/arif-fazil\.com)?\/makcikgpt\/([A-Za-z0-9._\-/]+)/g;
   let m;
   while ((m = re.exec(text)) !== null) {
     const slugish = m[1];
-    // The canonical landing has an empty slug ("/world/makcikgpt/" → captures ""),
+    // The canonical landing has an empty slug ("/makcikgpt/" → captures ""),
     // which we exclude — landing is never a piece.
     if (!slugish || slugish.endsWith("/")) continue;
     slugs.add(slugish);
@@ -73,7 +73,7 @@ function extractSlugsFromJsonRouteRoles(jsonText) {
   for (const key of Object.keys(routeRoles)) {
     const m = key.match(CANONICAL_PREFIX_RE);
     if (!m) continue;
-    if (!m[1]) continue; // skip the canonical landing "/world/makcikgpt/"
+    if (!m[1]) continue; // skip the canonical landing "/makcikgpt/"
     slugs.add(m[1]);
   }
   return slugs;
@@ -136,7 +136,7 @@ test("Helper rejects duplicates and missing metadata", () => {
       lang: "bm",
       series: { id: "Z", n: 1 },
       tags: ["x"],
-      dest: { type: "onsite", path: "/world/makcikgpt/foo" },
+      dest: { type: "onsite", path: "/makcikgpt/foo" },
       seal: null,
     },
     {
@@ -146,7 +146,7 @@ test("Helper rejects duplicates and missing metadata", () => {
       lang: "bm",
       series: { id: "Z", n: 2 },
       tags: ["y"],
-      dest: { type: "onsite", path: "/world/makcikgpt/foo" },
+      dest: { type: "onsite", path: "/makcikgpt/foo" },
       seal: null,
     },
   ];
@@ -155,7 +155,7 @@ test("Helper rejects duplicates and missing metadata", () => {
   assert.equal(result.ok, false);
   const joined = result.violations.join("\n");
   assert.match(joined, /duplicate id "dup-1"/);
-  assert.match(joined, /duplicate dest\.path "\/world\/makcikgpt\/foo"/);
+  assert.match(joined, /duplicate dest\.path "\/makcikgpt\/foo"/);
 });
 
 test("Generated makcikgpt-md/index.html contains every canonical slug", () => {

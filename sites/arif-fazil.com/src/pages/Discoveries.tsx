@@ -122,6 +122,47 @@ export function Discoveries() {
         </div>
       </section>
 
+      {/* ── BASIN DOSSIER ──────────────────────────────────── */}
+      <section className="py-16 border-b border-forge-iron">
+        <div className="site-frame">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="section-label !mb-4">Basin Intelligence · Kinabalu</div>
+              <h2 className="text-4xl font-black uppercase italic mb-6 leading-[0.9]">
+                Kinabalu<br />Basin Dossier
+              </h2>
+              <p className="font-body text-forge-dim leading-relaxed mb-6">
+                Full geological dossier on the Kinabalu Basin — offshore NW Sabah's 
+                producing hydrocarbon province. Tectonic evolution, stratigraphy, 
+                the Kinabalu Field (500 MMbbl), petroleum systems, and a regional 
+                cross-section from the Dangerous Grounds to the Sulu Sea.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="/earth/kinabalu-basin/" className="button-forge">
+                  Read the Dossier →
+                </a>
+                <a href="/earth/kinabalu-basin.pdf" className="button-forge text-[0.7rem] py-2 px-4">
+                  Download PDF ↓
+                </a>
+              </div>
+            </div>
+            <div className="bg-forge-steel p-6 rounded border border-forge-iron">
+              <div className="font-technical text-[0.6rem] text-forge-dim uppercase tracking-widest mb-3">Cross-Section</div>
+              <p className="font-technical text-[0.7rem] leading-relaxed text-forge-white">
+                NW–SE transect: Dangerous Grounds → Layang-Layang Basin → Sabah Trough → 
+                Kinabalu Basin → Crocker Range → Mt Kinabalu → Central Sabah → 
+                Sandakan Basin → Sulu Sea
+              </p>
+              <div className="mt-3 flex gap-2 text-[0.55rem] text-forge-dim">
+                <span className="bg-forge-black px-2 py-1 rounded">SRTM Topography</span>
+                <span className="bg-forge-black px-2 py-1 rounded">Published Geology</span>
+                <span className="bg-forge-black px-2 py-1 rounded">8 Sources</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ─────────────────────────────────────────── */}
       <section className="py-24 bg-forge-steel border-y-2 border-forge-iron">
         <div className="site-frame text-center">

@@ -69,7 +69,7 @@ function CurrentAnswer() {
               <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
                 Read today's briefing →
               </a>
-              <a href="/world/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+              <a href="/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
                 Read the latest MakcikGPT →
               </a>
             </div>
@@ -84,7 +84,7 @@ function CurrentAnswer() {
               <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
                 Analyze the economy →
               </a>
-              <a href="/world/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+              <a href="/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
                 Read the latest MakcikGPT →
               </a>
               <a href="#wells" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
@@ -262,7 +262,7 @@ export function Home() {
                 MakcikGPT asks. Published directly, no gatekeepers.
               </p>
               <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/world/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                <a href="/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
                   Read MakcikGPT →
                 </a>
               </div>

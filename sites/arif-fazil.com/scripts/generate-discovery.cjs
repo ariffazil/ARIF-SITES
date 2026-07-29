@@ -4,7 +4,7 @@
  *
  * Reads src/data/essays.json and regenerates the four discovery surfaces
  * so they all carry the same canonical MakcikGPT article set:
- *   - public/sitemap.xml  (under /world/makcikgpt/, NOT /wealth/makcikgpt/)
+ *   - public/sitemap.xml  (under /makcikgpt/, NOT /wealth/makcikgpt/)
  *   - public/llms.txt     (links list under "MakcikGPT — Civic Intelligence")
  *   - public/llms.json    (route_roles + related_sites + machine_surfaces)
  *   - public/page.json    (machine-readable site overview)
@@ -14,7 +14,7 @@
  *                    + sitemap.xml + llms.{txt,json} + page.json
  *                    + makcikgpt-md/index.html
  *
- * The canonical subset (BM + onsite under /world/makcikgpt/) is owned
+ * The canonical subset (BM + onsite under /makcikgpt/) is owned
  * exclusively by makcik-source.cjs. This script is a renderer only.
  *
  * Run from site root:  node scripts/generate-discovery.cjs
@@ -31,7 +31,7 @@ const {
 } = require("./lib/makcik-source.cjs");
 
 const SITE_BASE = "https://arif-fazil.com";
-const CANONICAL_LANDING = `${SITE_BASE}/world/makcikgpt/`;
+const CANONICAL_LANDING = `${SITE_BASE}/makcikgpt/`;
 const LLMS_TXT_PATH = `${SITE_BASE}/llms.txt`;
 
 function todayISO() {
@@ -82,7 +82,7 @@ ${urls
 // ── llms.txt (append/refresh the MakcikGPT section + sitemap link) ─────
 function buildLlmsTxt(pieces) {
   // Section: "MakcikGPT — Civic Intelligence" with link list under
-  // /world/makcikgpt/<slug> (the canonical landing path).
+  // /makcikgpt/<slug> (the canonical landing path).
   const linkLines = pieces
     .map((p) => `- [${p.title}](${SITE_BASE}${p.dest.path})`)
     .join("\n");
@@ -147,7 +147,7 @@ ${linkLines}
 - \`/earth\` — Subsurface discoveries and well portfolio (redirect from \`/discoveries\`)
 - \`/economics\` — Malaysia briefing + MakcikGPT civic intelligence (redirect from \`/wealth\`)
 - \`/world\` — Civic journalism (MakcikGPT) + commodity dashboards (oil / gas / gold)
-- \`/world/makcikgpt/\` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)
+- \`/makcikgpt/\` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)
 - \`/writing\` — Narrative essays by Arif (redirect from \`/essays\`)
 - \`/doctrine\` — Constitutional floors, federation topology, manifesto (merged: canon + constellation)
 - \`/000/\` — Genesis archive, wisdom canon, origin context for agents
@@ -229,7 +229,7 @@ function buildLlmsJson(pieces) {
     "/000/": "genesis and wisdom archive — origin context for agents",
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
-    "/world/makcikgpt/":
+    "/makcikgpt/":
       "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
   };
   for (const p of pieces) {
@@ -298,7 +298,7 @@ function buildPageJson() {
       "/": "present human homepage",
       "/000/": "genesis and wisdom archive",
       "/999/": "trust and proof chamber",
-      "/world/makcikgpt/": "MakcikGPT civic intelligence canonical landing",
+      "/makcikgpt/": "MakcikGPT civic intelligence canonical landing",
     },
     content_scope: {
       includes: [

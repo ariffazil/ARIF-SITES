@@ -11,7 +11,7 @@ const worldTools = [
     description: 'List MakcikGPT civic journalism articles and commodity dashboards on arif-fazil.com/world.',
     execute() {
       return {
-        content: [{ type: 'text', text: 'World hub: MakcikGPT civic journalism + Oil/Gas/Gold dashboards. Route: /world/makcikgpt/ for articles, /oil/ /gas/ /gold/ for market dashboards.' }]
+        content: [{ type: 'text', text: 'World hub: MakcikGPT civic journalism + Oil/Gas/Gold dashboards. Route: /makcikgpt/ for articles, /oil/ /gas/ /gold/ for market dashboards.' }]
       };
     }
   },
@@ -54,7 +54,7 @@ export function World() {
         <div className="site-frame grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* MakcikGPT */}
           <Link
-            to="/world/makcikgpt/"
+            to="/makcikgpt/"
             className={`group block border border-forge-iron rounded-lg p-8 md:p-10 transition-colors hover:border-forge-orange/60 ${linkFocus}`}
           >
             <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-forge-dim mb-4">

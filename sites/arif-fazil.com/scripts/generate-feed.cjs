@@ -27,7 +27,7 @@ const {
 const FEED_OUT = path.join(SITE_ROOT, "public/feed.xml");
 
 const SITE_BASE = "https://arif-fazil.com";
-const CANONICAL_LANDING = `${SITE_BASE}/world/makcikgpt/`;
+const CANONICAL_LANDING = `${SITE_BASE}/makcikgpt/`;
 const SELF_URL = `${SITE_BASE}/feed.xml`;
 
 function toRfc822(dateStr) {
@@ -57,7 +57,7 @@ function escapeXml(s) {
 }
 
 function buildItem(e) {
-  // onsite → canonical /world/makcikgpt/<slug> (or the path as-is);
+  // onsite → canonical /makcikgpt/<slug> (or the path as-is);
   // medium → external Medium URL.
   let url;
   if (e.dest.type === "onsite") {
