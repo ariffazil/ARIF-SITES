@@ -157,4 +157,47 @@
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
+<!--
+  dossier-sitemap-additions.xml
+
+  Post-build fragment appended to /sitemap.xml by agentic-build.sh.
+  These are human-curated basin-dossier + zen-bootstrap URLs that the
+  build pipeline does not auto-generate from src/data/essays.json.
+-->
+  <url>
+    <loc>https://arif-fazil.com/earth/kinabalu-basin/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/earth/kinabalu-cross-section.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/earth/kinabalu-basin.pdf</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/earth/malay-basin/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/earth/malay-basin-cross-section.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
+  <url>
+    <loc>https://arif-fazil.com/_shared/zen-all.js</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <lastmod>2026-07-29</lastmod>
+  </url>
 </urlset>
