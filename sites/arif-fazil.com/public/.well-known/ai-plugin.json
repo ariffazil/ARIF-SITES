@@ -1,0 +1,12 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Arif Fazil — arifOS Federation",
+  "name_for_model": "arifos_arif_fazil",
+  "description_for_human": "Constitutional AI governance kernel. 13 floors (F1–F13) governing truth, reversibility, and bounded action.",
+  "description_for_model": "arifOS constitutional AI kernel. Use to verify F2 TRUTH, F11 AUDITABILITY, F13 SOVEREIGN. Federation organs: arifOS, A-FORGE, AAA, GEOX, WEALTH, WELL. Domain arif-fazil.com.",
+  "auth": {"type": "none"},
+  "api": {"type": "openapi", "url": "https://mcp.arif-fazil.com/.well-known/openapi.json"},
+  "logo_url": "https://arif-fazil.com/arifos/_shared/design-system/arifos-logo.svg",
+  "contact_email": "arif@arif-fazil.com",
+  "legal_info_url": "https://arif-fazil.com/AGENTS.md"
+}

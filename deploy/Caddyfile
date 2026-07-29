@@ -371,8 +371,13 @@ arif-fazil.com {
 		file_server
 	}
 	# WELL biological clock (2026-07-15) — circadian + vitality dashboard
-	# NOTE: /var/www/html/well is a symlink to /root/WELL (MCP server)
-	# Route /well/* on main domain to well-app/ (human-facing SPA)
+	# Route /well/ landing to the SPA shell, /well/* to the well-app
+	handle /well/ {
+		uri strip_prefix /well
+		root * /var/www/html/well
+		rewrite * /index.html
+		file_server
+	}
 	handle /well/* {
 		root * /var/www/html/well-app
 		try_files {path} /index.html
@@ -386,6 +391,15 @@ arif-fazil.com {
 	@malaysia_path path /malaysia /malaysia/*
 	redir @malaysia_path https://wealth.arif-fazil.com{uri} 301
 
+	# GEOX landing — uses the GEOX SPA shell at /var/www/html/geox/index.html
+	# (the /geox-app/ subpath is a cockpit asset bundle; the canonical
+	# landing lives at the /geox/ root.)
+	handle /geox/ {
+		uri strip_prefix /geox
+		root * /var/www/html/geox
+		rewrite * /index.html
+		file_server
+	}
 	handle /geox/* {
 		root * /var/www/html/geox-app
 		try_files {path} {path}/index.html /index.html
@@ -483,7 +497,7 @@ arif-fazil.com {
 	}
 
 	# Root static discovery, meta & media files — only source-backed tokens.
-	@root_static path /llms.txt /llms.json /sitemap.xml /feed.xml /soul.json /page.json /scar.json /manifest.json /humans.txt /floors.json /robots.txt /AGENTS.md /human.md /CLAUDE.md /*.jpg /*.pdf
+	@root_static path /favicon.ico /favicon.svg /llms.txt /llms.json /sitemap.xml /feed.xml /soul.json /page.json /scar.json /manifest.json /humans.txt /floors.json /robots.txt /AGENTS.md /human.md /CLAUDE.md /*.jpg /*.pdf
 	handle @root_static {
 		root * /var/www/html/arif
 		file_server
