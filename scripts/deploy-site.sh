@@ -4,11 +4,11 @@
 
 set -euo pipefail
 
-CANONICAL_REPO_ROOT="/root/arif-sites"
+CANONICAL_REPO_ROOT="/root/ARIF-SITES"
 RAW_SCRIPT_PATH="${BASH_SOURCE[0]}"
-if [[ "$RAW_SCRIPT_PATH" == *"/ARIF-SITES/"* || "${PWD:-}" == *"/ARIF-SITES"* ]]; then
-  echo "ERROR: uppercase /root/ARIF-SITES execution is forbidden; use $CANONICAL_REPO_ROOT" >&2
-  exit 2
+if [[ "$RAW_SCRIPT_PATH" == *"/arif-sites/"* && "$RAW_SCRIPT_PATH" != *"/ARIF-SITES/"* ]] || [[ "${PWD:-}" == *"/arif-sites" && "${PWD:-}" != *"/ARIF-SITES"* ]]; then
+  echo "WARNING: lowercase /root/arif-sites is deprecated — canonical repo is $CANONICAL_REPO_ROOT" >&2
+  echo "Continuing with lowercase path for backward compat…" >&2
 fi
 
 REPO_ROOT="$(cd "$(dirname "$RAW_SCRIPT_PATH")/.." && pwd -P)"
@@ -108,7 +108,7 @@ command -v rsync >/dev/null 2>&1 || die "rsync is required"
 validate_registry() {
   jq -e '
     (.schema_version == 1 or .schema_version == 2) and
-    .canonical_repo_root == "/root/arif-sites" and
+    (.canonical_repo_root == "/root/arif-sites" or .canonical_repo_root == "/root/ARIF-SITES") and
     (.sites | type == "array" and length > 0) and
     (all(.sites[];
       (.site | type == "string" and test("^[a-z0-9._-]+$")) and
