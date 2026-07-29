@@ -60,7 +60,6 @@ def _write_cache(path: Path, data: dict):
         pass
 
 
-
 def _read_stale(path: Path) -> dict | None:
     """Rate-limit fallback: serve expired cache rather than fail (F2: marked stale)."""
     if not path.exists():
@@ -73,6 +72,7 @@ def _read_stale(path: Path) -> dict | None:
         return data
     except Exception:
         return None
+
 
 # ── Data Fetch ───────────────────────────────────────────────────
 def fetch_ohlcv(interval: str = "1h", period: str = "30d") -> pd.DataFrame:
@@ -353,6 +353,7 @@ def cmd_ticker(args):
         "changePct": change_pct,
         "rsi": sig["rsi"],
         "rsiState": sig["rsi_state"],
+        "skewness_20d": compute_skewness(df["close"], 20),
         "signal": sig["signal"],
         "confidence": sig["confidence"],
         "ema20": sig["ema_fast"],
@@ -372,7 +373,9 @@ def cmd_history(args):
     interval = args.get("interval", "1h")
     period = args.get("period", "30d")
     # Normalize shorthand to yfinance-valid periods (F2: fail loud otherwise)
-    period = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "2Y": "2y"}.get(period, period)
+    period = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "2Y": "2y"}.get(
+        period, period
+    )
     cache = _cache_key("history", interval=interval, period=period)
     cached = _read_cache(cache)
     if cached:
@@ -845,7 +848,6 @@ def cmd_calendar(args):
     return result
 
 
-
 def cmd_proxies(args):
     """Live sovereign proxy gauges: MYR, KLCI, Brent, NatGas, EWM, DXY.
     Feeds the malaysia/vitals pages — proxies, NOT sealed readings."""
@@ -881,6 +883,7 @@ def cmd_proxies(args):
         )
     _write_cache(cache, result)
     return result
+
 
 def cmd_snapshot(args):
     """Return raw ticker data — server wraps with schema/asset/coherence_id."""
@@ -927,7 +930,9 @@ def _forecast_log_append(record: dict) -> None:
         body = dict(record)
         body["prev_hash"] = prev_hash
         digest = hashlib.sha256(
-            json.dumps(body, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
+            json.dumps(body, sort_keys=True, separators=(",", ":"), default=str).encode(
+                "utf-8"
+            )
         ).hexdigest()
         body["hash"] = digest
         with FORECAST_LOG.open("a") as f:
@@ -984,7 +989,9 @@ def cmd_forecast(args):
     # 4. Scenario ladder from daily swing S/R — falsification on its face
     sr = find_support_resistance(df)
     r1 = sr["resistance"][0] if sr["resistance"] else round(price + atr_val, 2)
-    r2 = sr["resistance"][1] if len(sr["resistance"]) > 1 else round(r1 + 2 * atr_val, 2)
+    r2 = (
+        sr["resistance"][1] if len(sr["resistance"]) > 1 else round(r1 + 2 * atr_val, 2)
+    )
     s1 = sr["support"][0] if sr["support"] else round(price - atr_val, 2)
     s2 = sr["support"][1] if len(sr["support"]) > 1 else round(s1 - 2 * atr_val, 2)
     rate = max(abs(slope), 0.25 * atr_val)
@@ -993,25 +1000,43 @@ def cmd_forecast(args):
         d = abs(target - price) / rate
         return f"{max(1, int(d * 0.6))}–{max(2, int(d * 1.4))}"
 
-    long_conf = sum([
-        ema20_val > ema50_val,
-        rsi_val > 55,
-        regime == "TRENDING_UP",
-        slope > 0,
-        price > ema200_val,
-    ])
-    short_conf = sum([
-        ema20_val < ema50_val,
-        rsi_val < 45,
-        regime == "TRENDING_DOWN",
-        slope < 0,
-        price < ema200_val,
-    ])
+    long_conf = sum(
+        [
+            ema20_val > ema50_val,
+            rsi_val > 55,
+            regime == "TRENDING_UP",
+            slope > 0,
+            price > ema200_val,
+        ]
+    )
+    short_conf = sum(
+        [
+            ema20_val < ema50_val,
+            rsi_val < 45,
+            regime == "TRENDING_DOWN",
+            slope < 0,
+            price < ema200_val,
+        ]
+    )
     scenarios = [
-        {"side": "LONG", "trigger": f"daily close > {r1} (R1)", "objective": r2,
-         "invalidation": s1, "confluence": long_conf, "of": 5, "eta_days": _eta(r2)},
-        {"side": "SHORT", "trigger": f"daily close < {s1} (S1)", "objective": s2,
-         "invalidation": r1, "confluence": short_conf, "of": 5, "eta_days": _eta(s2)},
+        {
+            "side": "LONG",
+            "trigger": f"daily close > {r1} (R1)",
+            "objective": r2,
+            "invalidation": s1,
+            "confluence": long_conf,
+            "of": 5,
+            "eta_days": _eta(r2),
+        },
+        {
+            "side": "SHORT",
+            "trigger": f"daily close < {s1} (S1)",
+            "objective": s2,
+            "invalidation": r1,
+            "confluence": short_conf,
+            "of": 5,
+            "eta_days": _eta(s2),
+        },
     ]
 
     # 5. Bias — one engine, one voice. Derived, never hardcoded.
@@ -1034,24 +1059,144 @@ def cmd_forecast(args):
         "asset": ASSET_KEY,
         "generated_at": generated_at,
         "horizon_days": horizon,
-        "basis": {"close": price, "atr14": atr_val, "slope_per_day": slope,
-                  "regime": regime, "rsi": rsi_val,
-                  "ema20": ema20_val, "ema50": ema50_val, "ema200": ema200_val},
+        "basis": {
+            "close": price,
+            "atr14": atr_val,
+            "slope_per_day": slope,
+            "regime": regime,
+            "rsi": rsi_val,
+            "ema20": ema20_val,
+            "ema50": ema50_val,
+            "ema200": ema200_val,
+        },
         "bias": bias,
-        "cone": {"t": t_dates, "p10": p10, "p25": p25, "p50": p50, "p75": p75, "p90": p90},
+        "cone": {
+            "t": t_dates,
+            "p10": p10,
+            "p25": p25,
+            "p50": p50,
+            "p75": p75,
+            "p90": p90,
+        },
         "scenarios": scenarios,
         "institutional_read": institutional_read,
         "epistemic": "INTERPRET — ATR-scaled drift cone, not prophecy. Falsification levels stated. Human decides.",
     }
     _write_cache(cache, result)
-    _forecast_log_append({
-        "schema": "wealth.forecastlog.v1", "asset": ASSET_KEY,
-        "generated_at": generated_at, "horizon_days": horizon, "close": price,
-        "bias": bias, "p50_end": p50[-1], "p10_end": p10[-1], "p90_end": p90[-1],
-        "long_objective": r2, "short_objective": s2,
-        "long_confluence": long_conf, "short_confluence": short_conf,
-    })
+    _forecast_log_append(
+        {
+            "schema": "wealth.forecastlog.v1",
+            "asset": ASSET_KEY,
+            "generated_at": generated_at,
+            "horizon_days": horizon,
+            "close": price,
+            "bias": bias,
+            "p50_end": p50[-1],
+            "p10_end": p10[-1],
+            "p90_end": p90[-1],
+            "long_objective": r2,
+            "short_objective": s2,
+            "long_confluence": long_conf,
+            "short_confluence": short_conf,
+        }
+    )
     return result
+
+
+# ── EUREKA Signal: Multi-Timeframe Momentum ─────────────────────
+# Gold physics: trends persist due to central bank flows + macro regime.
+# Simple EMA cross misses the full momentum spectrum.
+# TS Momentum (Moskowitz-Pedersen 2012): test 1M/3M/6M/12M lookbacks.
+def cmd_momentum(args):
+    """EUREKA-GOLD-MOM: multi-timeframe momentum across 4 lookback windows."""
+    cache = _cache_key("momentum")
+    cached = _read_cache(cache)
+    if cached:
+        return cached
+
+    # Fetch enough data for 12M lookback + 1M signal window
+    df = fetch_ohlcv(interval="1d", period="2y")
+    if df.empty:
+        return {"error": "No gold data", "timestamp": datetime.now(MYT).isoformat()}
+
+    close = df["close"]
+    price = round(float(close.iloc[-1]), 2)
+
+    # Multi-timeframe momentum: returns over 1M, 3M, 6M, 12M windows
+    windows = {"1M": 21, "3M": 63, "6M": 126, "12M": 252}
+    momentum_signals = {}
+    total_signal = 0.0
+    total_weight = 0.0
+
+    for label, days in windows.items():
+        if len(close) < days + 1:
+            momentum_signals[label] = {
+                "return_pct": 0,
+                "signal": "INSUFFICIENT_DATA",
+                "z_score": 0,
+            }
+            continue
+        ret = round(float((close.iloc[-1] / close.iloc[-days] - 1) * 100), 2)
+        # Z-score: how extreme is this return relative to rolling windows of same length?
+        rolling_rets = close.pct_change(days).dropna() * 100
+        mean_ret = float(rolling_rets.mean())
+        std_ret = float(rolling_rets.std()) if float(rolling_rets.std()) > 0 else 1.0
+        z = round((ret - mean_ret) / std_ret, 2)
+
+        if z > 0.5:
+            sig = "BULLISH"
+        elif z < -0.5:
+            sig = "BEARISH"
+        else:
+            sig = "NEUTRAL"
+
+        momentum_signals[label] = {"return_pct": ret, "signal": sig, "z_score": z}
+        # Weight shorter lookbacks more for trade timing, longer for regime
+        w = {"1M": 0.35, "3M": 0.30, "6M": 0.20, "12M": 0.15}[label]
+        total_signal += z * w
+        total_weight += w
+
+    weighted_z = round(total_signal / total_weight, 2) if total_weight > 0 else 0
+
+    if weighted_z > 0.7:
+        regime = "STRONG_BULL"
+    elif weighted_z > 0.2:
+        regime = "BULL"
+    elif weighted_z < -0.7:
+        regime = "STRONG_BEAR"
+    elif weighted_z < -0.2:
+        regime = "BEAR"
+    else:
+        regime = "NEUTRAL"
+
+    result = {
+        "schema": "wealth.momentum.v1",
+        "asset": ASSET_KEY,
+        "price": price,
+        "weighted_z": weighted_z,
+        "regime": regime,
+        "windows": momentum_signals,
+        "read": (
+            f"Gold ${price} momentum regime: {regime} (z={weighted_z:+.1f}). "
+            + " | ".join(
+                f"{l}: {m['signal']} ({m['z_score']:+.1f}σ)"
+                for l, m in momentum_signals.items()
+            )
+        ),
+        "epistemic": "DERIVED — TS momentum across 4 lookbacks. Shorter windows weight more for timing, longer for regime.",
+        "timestamp": datetime.now(MYT).isoformat(),
+    }
+    _write_cache(cache, result)
+    return result
+
+
+# ── EUREKA Signal: Skewness Risk Thermometer (shared across all assets) ──
+def compute_skewness(series: pd.Series, window: int = 20) -> float:
+    """Rolling return skewness — measures tail risk asymmetry."""
+    returns = series.pct_change().dropna()
+    if len(returns) < window:
+        return 0.0
+    return round(float(returns.tail(window).skew()), 3)
 
 
 def main():
@@ -1069,7 +1214,8 @@ def main():
             "calendar",
             "snapshot",
             "proxies",
-        "forecast",
+            "forecast",
+            "momentum",
         ],
     )
     parser.add_argument("--interval", default="1h")
@@ -1088,22 +1234,25 @@ def main():
         "calendar": cmd_calendar,
         "snapshot": cmd_snapshot,
         "proxies": cmd_proxies,
-          "forecast": cmd_forecast,
+        "forecast": cmd_forecast,
+        "momentum": cmd_momentum,
     }
 
     try:
         result = handlers[args.command](
             {
-            "interval": args.interval,
-            "period": args.period,
-            "horizon": args.horizon,
-        }
+                "interval": args.interval,
+                "period": args.period,
+                "horizon": args.horizon,
+            }
         )
         print(json.dumps(result, default=str, indent=2))
     except Exception as e:
         # Stale fallback: serve expired cache rather than VOID the panel
         if args.command == "history":
-            stale_key = _cache_key("history", interval=args.interval, period=args.period)
+            stale_key = _cache_key(
+                "history", interval=args.interval, period=args.period
+            )
         elif args.command in ("ticker", "snapshot"):
             stale_key = _cache_key("ticker")
         else:

@@ -96,7 +96,17 @@ const handlers = {
         usmyr: macro.usmyr,
       } : {},
     };
-    const canonical = JSON.stringify(unsigned, Object.keys(unsigned).sort());
+    // Deep-sort for deterministic hash matching Python json.dumps(sort_keys=True)
+    const deepSort = (obj) => {
+      if (Array.isArray(obj)) return obj.map(deepSort);
+      if (obj !== null && typeof obj === 'object') {
+        const s = {};
+        Object.keys(obj).sort().forEach(k => { s[k] = deepSort(obj[k]); });
+        return s;
+      }
+      return obj;
+    };
+    const canonical = JSON.stringify(deepSort(unsigned));
     unsigned.coherence_id = crypto.createHash('sha256').update(canonical).digest('hex');
     setCache('snapshot', unsigned); return unsigned;
   },
@@ -110,6 +120,7 @@ const handlers = {
   '/api/history': async (req, res, params) => handlers['/api/oil/history'](req, res, params),
   '/api/signals': async () => handlers['/api/oil/signals'](),
   '/api/levels': async () => handlers['/api/oil/levels'](),
+  '/api/term_structure': async () => handlers['/api/oil/term_structure'](),
   '/api/oil/forecast': async (req, res, params) => {
     const horizon = params.get('horizon') || '30';
     const key = `forecast_${horizon}`;
@@ -141,6 +152,10 @@ const handlers = {
   '/api/oil/macro': async () => {
     const c = getCache('macro'); if (c) return c;
     const d = await runPython('macro'); setCache('macro', d); return d;
+  },
+  '/api/oil/term_structure': async () => {
+    const c = getCache('term_structure'); if (c) return c;
+    const d = await runPython('term_structure'); setCache('term_structure', d); return d;
   },
 };
 

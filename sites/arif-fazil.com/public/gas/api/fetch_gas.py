@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
 XNATGAS Natural Gas Data Fetcher — WEALTH Organ
-Fetches live gold data from yfinance, computes technical indicators,
+Fetches live natural gas data from yfinance, computes technical indicators,
 generates trading signals. Called by Node.js API server.
 
 Usage:
-    python3 fetch_gold.py ticker
-    python3 fetch_gold.py history --interval 1h --period 30d
-    python3 fetch_gold.py signals
-    python3 fetch_gold.py levels
-    python3 fetch_gold.py macro
+    python3 fetch_gas.py ticker
+    python3 fetch_gas.py history --interval 1h --period 30d
+    python3 fetch_gas.py signals
+    python3 fetch_gas.py levels
+    python3 fetch_gas.py macro
 
 DITEMPA BUKAN DIBERI — Forged, Not Given.
 """
@@ -60,7 +60,6 @@ def _write_cache(path: Path, data: dict):
         pass
 
 
-
 def _read_stale(path: Path) -> dict | None:
     """Rate-limit fallback: serve expired cache rather than fail (F2: marked stale)."""
     if not path.exists():
@@ -73,6 +72,7 @@ def _read_stale(path: Path) -> dict | None:
         return data
     except Exception:
         return None
+
 
 # ── Data Fetch ───────────────────────────────────────────────────
 def fetch_ohlcv(interval: str = "1h", period: str = "30d") -> pd.DataFrame:
@@ -353,6 +353,7 @@ def cmd_ticker(args):
         "changePct": change_pct,
         "rsi": sig["rsi"],
         "rsiState": sig["rsi_state"],
+        "skewness_20d": compute_skewness(df["close"], 20),
         "signal": sig["signal"],
         "confidence": sig["confidence"],
         "ema20": sig["ema_fast"],
@@ -372,7 +373,9 @@ def cmd_history(args):
     interval = args.get("interval", "1h")
     period = args.get("period", "30d")
     # Normalize shorthand to yfinance-valid periods (F2: fail loud otherwise)
-    period = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "2Y": "2y"}.get(period, period)
+    period = {"1M": "1mo", "3M": "3mo", "6M": "6mo", "1Y": "1y", "2Y": "2y"}.get(
+        period, period
+    )
     cache = _cache_key("history", interval=interval, period=period)
     cached = _read_cache(cache)
     if cached:
@@ -497,13 +500,6 @@ def cmd_macro(args):
                 )
         except Exception:
             result[key] = None
-
-    if result.get("silver"):
-        ticker_data = cmd_ticker({})
-        if ticker_data.get("price"):
-            result["gold_silver_ratio"] = round(
-                ticker_data["price"] / result["silver"], 1
-            )
 
     _write_cache(cache, result)
     return result
@@ -890,7 +886,9 @@ def _forecast_log_append(record: dict) -> None:
         body = dict(record)
         body["prev_hash"] = prev_hash
         digest = hashlib.sha256(
-            json.dumps(body, sort_keys=True, separators=(",", ":"), default=str).encode("utf-8")
+            json.dumps(body, sort_keys=True, separators=(",", ":"), default=str).encode(
+                "utf-8"
+            )
         ).hexdigest()
         body["hash"] = digest
         with FORECAST_LOG.open("a") as f:
@@ -947,7 +945,9 @@ def cmd_forecast(args):
     # 4. Scenario ladder from daily swing S/R — falsification on its face
     sr = find_support_resistance(df)
     r1 = sr["resistance"][0] if sr["resistance"] else round(price + atr_val, 2)
-    r2 = sr["resistance"][1] if len(sr["resistance"]) > 1 else round(r1 + 2 * atr_val, 2)
+    r2 = (
+        sr["resistance"][1] if len(sr["resistance"]) > 1 else round(r1 + 2 * atr_val, 2)
+    )
     s1 = sr["support"][0] if sr["support"] else round(price - atr_val, 2)
     s2 = sr["support"][1] if len(sr["support"]) > 1 else round(s1 - 2 * atr_val, 2)
     rate = max(abs(slope), 0.25 * atr_val)
@@ -956,25 +956,43 @@ def cmd_forecast(args):
         d = abs(target - price) / rate
         return f"{max(1, int(d * 0.6))}–{max(2, int(d * 1.4))}"
 
-    long_conf = sum([
-        ema20_val > ema50_val,
-        rsi_val > 55,
-        regime == "TRENDING_UP",
-        slope > 0,
-        price > ema200_val,
-    ])
-    short_conf = sum([
-        ema20_val < ema50_val,
-        rsi_val < 45,
-        regime == "TRENDING_DOWN",
-        slope < 0,
-        price < ema200_val,
-    ])
+    long_conf = sum(
+        [
+            ema20_val > ema50_val,
+            rsi_val > 55,
+            regime == "TRENDING_UP",
+            slope > 0,
+            price > ema200_val,
+        ]
+    )
+    short_conf = sum(
+        [
+            ema20_val < ema50_val,
+            rsi_val < 45,
+            regime == "TRENDING_DOWN",
+            slope < 0,
+            price < ema200_val,
+        ]
+    )
     scenarios = [
-        {"side": "LONG", "trigger": f"daily close > {r1} (R1)", "objective": r2,
-         "invalidation": s1, "confluence": long_conf, "of": 5, "eta_days": _eta(r2)},
-        {"side": "SHORT", "trigger": f"daily close < {s1} (S1)", "objective": s2,
-         "invalidation": r1, "confluence": short_conf, "of": 5, "eta_days": _eta(s2)},
+        {
+            "side": "LONG",
+            "trigger": f"daily close > {r1} (R1)",
+            "objective": r2,
+            "invalidation": s1,
+            "confluence": long_conf,
+            "of": 5,
+            "eta_days": _eta(r2),
+        },
+        {
+            "side": "SHORT",
+            "trigger": f"daily close < {s1} (S1)",
+            "objective": s2,
+            "invalidation": r1,
+            "confluence": short_conf,
+            "of": 5,
+            "eta_days": _eta(s2),
+        },
     ]
 
     # 5. Bias — one engine, one voice. Derived, never hardcoded.
@@ -997,24 +1015,213 @@ def cmd_forecast(args):
         "asset": ASSET_KEY,
         "generated_at": generated_at,
         "horizon_days": horizon,
-        "basis": {"close": price, "atr14": atr_val, "slope_per_day": slope,
-                  "regime": regime, "rsi": rsi_val,
-                  "ema20": ema20_val, "ema50": ema50_val, "ema200": ema200_val},
+        "basis": {
+            "close": price,
+            "atr14": atr_val,
+            "slope_per_day": slope,
+            "regime": regime,
+            "rsi": rsi_val,
+            "ema20": ema20_val,
+            "ema50": ema50_val,
+            "ema200": ema200_val,
+        },
         "bias": bias,
-        "cone": {"t": t_dates, "p10": p10, "p25": p25, "p50": p50, "p75": p75, "p90": p90},
+        "cone": {
+            "t": t_dates,
+            "p10": p10,
+            "p25": p25,
+            "p50": p50,
+            "p75": p75,
+            "p90": p90,
+        },
         "scenarios": scenarios,
         "institutional_read": institutional_read,
         "epistemic": "INTERPRET — ATR-scaled drift cone, not prophecy. Falsification levels stated. Human decides.",
     }
     _write_cache(cache, result)
-    _forecast_log_append({
-        "schema": "wealth.forecastlog.v1", "asset": ASSET_KEY,
-        "generated_at": generated_at, "horizon_days": horizon, "close": price,
-        "bias": bias, "p50_end": p50[-1], "p10_end": p10[-1], "p90_end": p90[-1],
-        "long_objective": r2, "short_objective": s2,
-        "long_confluence": long_conf, "short_confluence": short_conf,
-    })
+    _forecast_log_append(
+        {
+            "schema": "wealth.forecastlog.v1",
+            "asset": ASSET_KEY,
+            "generated_at": generated_at,
+            "horizon_days": horizon,
+            "close": price,
+            "bias": bias,
+            "p50_end": p50[-1],
+            "p10_end": p10[-1],
+            "p90_end": p90[-1],
+            "long_objective": r2,
+            "short_objective": s2,
+            "long_confluence": long_conf,
+            "short_confluence": short_conf,
+        }
+    )
     return result
+
+
+def cmd_proxies(args):
+    """Live sovereign proxy gauges: MYR, KLCI, Brent, NatGas, EWM, DXY."""
+    cache = _cache_key("proxies")
+    cached = _read_cache(cache)
+    if cached:
+        return cached
+
+    import yfinance as yf
+
+    symbols = {
+        "usdmyr": ("MYR=X", 4),
+        "klci": ("^KLSE", 2),
+        "brent": ("BZ=F", 2),
+        "natgas": ("NG=F", 3),
+        "ewm": ("EWM", 2),
+        "dxy": ("DX-Y.NYB", 2),
+    }
+    result = {"timestamp": datetime.now(MYT).isoformat()}
+    for key, (sym, digits) in symbols.items():
+        try:
+            h = yf.Ticker(sym).history(period="5d")
+            if not h.empty:
+                result[key] = round(float(h["Close"].iloc[-1]), digits)
+                result[key + "_prev"] = round(float(h["Close"].iloc[-2]), digits)
+        except Exception:
+            result[key] = None
+
+    if result.get("usdmyr") and result.get("usdmyr_prev"):
+        result["usdmyr_change_pct"] = round(
+            (result["usdmyr"] - result["usdmyr_prev"]) / result["usdmyr_prev"] * 100, 2
+        )
+    _write_cache(cache, result)
+    return result
+
+
+# ── EUREKA Signal: Seasonality + Storage Context ──────────────────
+# Gas physics: seasonal demand (winter heating, summer cooling)
+# drives 50%+ of annual price variance. This signal answers:
+# "Is current price above or below the 5-year seasonal average?"
+# "Where is storage relative to normal?"
+def cmd_seasonality(args):
+    """EUREKA-GAS-SEASONALITY: 5yr monthly baseline + storage context."""
+    cache = _cache_key("seasonality")
+    cached = _read_cache(cache)
+    if cached:
+        return cached
+
+    df = fetch_ohlcv(interval="1d", period="5y")
+    if df.empty:
+        return {
+            "error": "No 5yr gas data available",
+            "timestamp": datetime.now(MYT).isoformat(),
+        }
+
+    close = df["close"]
+    current_price = round(float(close.iloc[-1]), 3)
+    current_month = df.index[-1].month
+
+    # Build 5-year monthly baseline
+    df["month"] = df.index.month
+    monthly_stats = df.groupby("month")["close"].agg(["mean", "std", "min", "max"])
+    month_names = [
+        "",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ]
+
+    baseline = []
+    for m in range(1, 13):
+        row = monthly_stats.loc[m] if m in monthly_stats.index else None
+        baseline.append(
+            {
+                "month": m,
+                "label": month_names[m],
+                "avg": round(float(row["mean"]), 3) if row is not None else None,
+                "std": round(float(row["std"]), 3) if row is not None else None,
+                "min": round(float(row["min"]), 3) if row is not None else None,
+                "max": round(float(row["max"]), 3) if row is not None else None,
+            }
+        )
+
+    current_row = (
+        monthly_stats.loc[current_month]
+        if current_month in monthly_stats.index
+        else None
+    )
+    if current_row is not None:
+        seasonal_avg = float(current_row["mean"])
+        seasonal_std = float(current_row["std"])
+        deviation = (
+            round((current_price - seasonal_avg) / seasonal_std, 2)
+            if seasonal_std > 0
+            else 0
+        )
+        deviation_pct = round((current_price - seasonal_avg) / seasonal_avg * 100, 1)
+        seasonal_min = round(float(current_row["min"]), 3)
+        seasonal_max = round(float(current_row["max"]), 3)
+    else:
+        seasonal_avg = seasonal_std = deviation = deviation_pct = 0
+        seasonal_min = seasonal_max = None
+
+    # Trend context
+    ema20_val = round(float(compute_ema(close, 20).iloc[-1]), 3)
+    ema50_val = round(float(compute_ema(close, 50).iloc[-1]), 3)
+
+    # Seasonal verdict
+    if deviation < -1.0:
+        seasonal_verdict = (
+            "CHEAP" if current_price > ema50_val or deviation < -1.5 else "WEAK_CHEAP"
+        )
+    elif deviation > 1.0:
+        seasonal_verdict = (
+            "EXPENSIVE"
+            if current_price < ema50_val or deviation > 1.5
+            else "WEAK_EXPENSIVE"
+        )
+    else:
+        seasonal_verdict = "NORMAL"
+
+    result = {
+        "schema": "wealth.seasonality.v1",
+        "asset": ASSET_KEY,
+        "current_price": current_price,
+        "current_month": current_month,
+        "current_month_label": month_names[current_month],
+        "seasonal_avg": round(seasonal_avg, 3),
+        "deviation_sigma": deviation,
+        "deviation_pct": deviation_pct,
+        "seasonal_min": seasonal_min,
+        "seasonal_max": seasonal_max,
+        "seasonal_verdict": seasonal_verdict,
+        "ema20": ema20_val,
+        "ema50": ema50_val,
+        "baseline": baseline,
+        "read": (
+            f"Gas at ${current_price} in {month_names[current_month]} is {deviation:+.1f}σ "
+            f"({deviation_pct:+.1f}%) vs 5yr avg ${seasonal_avg:.2f}. "
+            f"Verdict: {seasonal_verdict}. Seasonal range: ${seasonal_min}-${seasonal_max}."
+        ),
+        "epistemic": "INTERPRET — seasonality is a baseline, not a forecast. Storage, weather, and LNG exports modify the signal.",
+        "timestamp": datetime.now(MYT).isoformat(),
+    }
+    _write_cache(cache, result)
+    return result
+
+
+# ── EUREKA Signal: Skewness Risk Thermometer (shared across all assets) ──
+def compute_skewness(series: pd.Series, window: int = 20) -> float:
+    """Rolling return skewness — measures tail risk asymmetry."""
+    returns = series.pct_change().dropna()
+    if len(returns) < window:
+        return 0.0
+    return round(float(returns.tail(window).skew()), 3)
 
 
 def main():
@@ -1031,7 +1238,9 @@ def main():
             "signal_v2",
             "calendar",
             "snapshot",
-        "forecast",
+            "proxies",
+            "forecast",
+            "seasonality",
         ],
     )
     parser.add_argument("--interval", default="1h")
@@ -1049,22 +1258,26 @@ def main():
         "signal_v2": cmd_signal_v2,
         "calendar": cmd_calendar,
         "snapshot": cmd_snapshot,
-          "forecast": cmd_forecast,
+        "proxies": cmd_proxies,
+        "forecast": cmd_forecast,
+        "seasonality": cmd_seasonality,
     }
 
     try:
         result = handlers[args.command](
             {
-            "interval": args.interval,
-            "period": args.period,
-            "horizon": args.horizon,
-        }
+                "interval": args.interval,
+                "period": args.period,
+                "horizon": args.horizon,
+            }
         )
         print(json.dumps(result, default=str, indent=2))
     except Exception as e:
         # Stale fallback: serve expired cache rather than VOID the panel
         if args.command == "history":
-            stale_key = _cache_key("history", interval=args.interval, period=args.period)
+            stale_key = _cache_key(
+                "history", interval=args.interval, period=args.period
+            )
         elif args.command in ("ticker", "snapshot"):
             stale_key = _cache_key("ticker")
         else:

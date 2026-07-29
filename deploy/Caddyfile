@@ -2,9 +2,11 @@
 # DITEMPA BUKAN DIBERI
 # UNIFIED: arif-fazil.com — single sovereign surface (v2026.07.26)
 # All organs as paths under root domain. Legacy subdomains → 301 redirects.
-# Infra (internal): ollama | openclaw | deploy | prometheus | grafana | temporal | nats | monitor | vault999
+# Infra (INTERNAL-ONLY — NOT public DNS): ollama | openclaw | deploy | prometheus | grafana | temporal | nats | monitor | vault999
+# These are internal backends or LAN-only services. They do NOT resolve in public DNS by design.
+# ollama.arif-fazil.com has a Caddy vhost for LAN routing only — not publicly accessible.
 # Dead nginx configs: disabled 2026-07-16 (Caddy-only from now on)
-# Last reconcile: 2026-07-26 — web unification: 10 subdomains collapsed to paths
+# Last reconcile: 2026-07-28 — clarified internal-only subdomain documentation (external audit fix)
 {
 	admin unix//var/run/caddy-admin.sock
 	email arif@arif-fazil.com
@@ -24,6 +26,11 @@
 		X-Frame-Options "SAMEORIGIN"
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+		# NOTE: CSP uses 'unsafe-inline' + 'unsafe-eval' — REQUIRED for React SPA bundles
+		# (Vite, shadcn/ui, MapLibre GL JS). This is NOT a "strict" CSP. Do not claim it is.
+		# Edge TLS termination: Cloudflare Universal SSL (Google Trust Services, 90-day).
+		# Caddy is the origin server behind Cloudflare — NOT the edge TLS terminator.
+		# "Caddy ACME" is NOT used for public-facing certs. Cloudflare manages edge certs.
 		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.fontshare.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://arifos.arif-fazil.com https://mcp.arif-fazil.com https://geox.arif-fazil.com https://wealth.arif-fazil.com https://well.arif-fazil.com https://aaa.arif-fazil.com https://api.macrostrat.org https://tiles.macrostrat.org https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://*.basemaps.cartocdn.com; frame-ancestors 'self'"
 	}
 }
@@ -221,6 +228,13 @@ arif-fazil.com {
 	# SyedOS Dashboard — source may be added under /sado; missing files stay real 404s.
 	handle /sado/* {
 		root * /var/www/html/arif
+		file_server
+	}
+	# Negeri Sembilan PRN16 live seat dynamics page (2026-07-28)
+	redir /politics /politics/ 301
+	handle /politics/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /index.html
 		file_server
 	}
 	# Static data snapshots — machine-readable JSON for federation surface fallback (2026-07-20)
@@ -450,8 +464,11 @@ arif-fazil.com {
 	redir /genesis /000/ 301
 	redir /canon /doctrine 301
 	redir /constellation /doctrine 301
+	# 2026-07-29 — Reverted federation→doctrine merger. Doctrine is canonical.
+	# /federation redirects to /doctrine; /doctrine serves the constitutional page.
+	# The doctrine page is the human-readable constitution (F1-F13, authority chain, organs).
 	redir /federation /doctrine 301
-	redir /federation/* /doctrine 301
+	redir /federation/ /doctrine 301
 	redir /discoveries /earth 301
 	redir /essays /writing 301
 	redir /essays/* /writing{uri} 301
@@ -476,6 +493,12 @@ arif-fazil.com {
 	# Unknown paths get a real 404 for agent/curl access
 	redir /world/makcikgpt /world/makcikgpt/ 308
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
+	# MakcikGPT landing page — served directly for all UAs (2026-07-29: P17 fix)
+	handle /world/makcikgpt/ {
+		root * /var/www/html/arif/makcikgpt-md
+		try_files /index.html =404
+		file_server
+	}
 	# Bot-readable MakcikGPT articles from the generated HTML source surface.
 	@ai-bot-world {
 		header_regexp User-Agent (?i)GPTBot|ClaudeBot|PerplexityBot|OAI-SearchBot|anthropic-ai|Google-Extended|Bytespider|Amazonbot|ChatGPT|curl|python-requests|node-fetch|Go-http-client
@@ -484,7 +507,7 @@ arif-fazil.com {
 	handle @ai-bot-world {
 		uri strip_prefix /world/makcikgpt
 		root * /var/www/html/arif/makcikgpt-md
-		try_files {path} {path}.html
+		try_files {path} {path}.html {path}/index.html /index.html
 		file_server
 	}
 	# Also serve static machine-readable article pages for non-JS clients
@@ -497,6 +520,14 @@ arif-fazil.com {
 		uri strip_prefix /world/makcikgpt
 		root * /var/www/html/arif/makcikgpt-md
 		try_files {path}.html {path}.md =404
+		file_server
+	}
+	# Regular browser traffic for MakcikGPT articles — SPA index shell
+	# (2026-07-29: Fixes P17 /world/makcikgpt/ 404 for non-bot, text/html requests)
+	handle /world/makcikgpt/* {
+		uri strip_prefix /world/makcikgpt
+		root * /var/www/html/arif/makcikgpt
+		try_files {path} /index.html
 		file_server
 	}
 	# /economics and /wealth → static briefing HTML (F2 bands, VOID tiles, fixed renderer)
