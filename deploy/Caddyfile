@@ -495,6 +495,7 @@ arif-fazil.com {
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
 	# MakcikGPT landing page — served directly for all UAs (2026-07-29: P17 fix)
 	handle /world/makcikgpt/ {
+		uri strip_prefix /world/makcikgpt
 		root * /var/www/html/arif/makcikgpt-md
 		try_files /index.html =404
 		file_server
