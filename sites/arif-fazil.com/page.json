@@ -12,7 +12,7 @@
     "/": "present human homepage",
     "/000/": "genesis and wisdom archive",
     "/999/": "trust and proof chamber",
-    "/world/makcikgpt/": "MakcikGPT civic intelligence canonical landing"
+    "/makcikgpt/": "MakcikGPT civic intelligence canonical landing"
   },
   "content_scope": {
     "includes": [
