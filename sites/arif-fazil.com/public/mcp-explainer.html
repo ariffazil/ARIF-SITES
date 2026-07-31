@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="SOUL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Gateway · Machine Endpoint · arifOS</title>
+<meta name="description" content="The /mcp endpoint is a machine-only JSON-RPC gateway. Humans use /missions or /mcp/explorer.html instead.">
+<link rel="canonical" href="https://arif-fazil.com/mcp-explainer">
+<style>
+:root { --bg: #0a0a0f; --surface: #12121a; --border: #1a1a25; --text: #d4d2ce; --muted: #a0a0a8; --gold: #d4af37; --cyan: #00d4aa; --yellow: #facc15; }
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem; }
+h1 { color: var(--gold); margin: 0 0 0.5rem; font-size: 1.8rem; }
+.kicker { font-family: monospace; font-size: 0.75rem; color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 2rem; }
+.callout { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin: 1.25rem 0; }
+.callout h2 { font-size: 0.95rem; color: var(--cyan); margin: 0 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.callout p, .callout li { color: var(--muted); font-size: 0.92rem; }
+pre { background: #050507; border: 1px solid var(--border); border-radius: 6px; padding: 0.85rem 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text); overflow-x: auto; }
+code { font-family: 'JetBrains Mono', monospace; color: var(--gold); }
+a { color: var(--cyan); }
+.btn { display: inline-block; padding: 0.65rem 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text); text-decoration: none; font-size: 0.9rem; margin-right: 0.5rem; margin-top: 0.5rem; }
+.btn:hover { border-color: var(--gold); color: var(--gold); }
+.seal { margin-top: 2.5rem; font-family: monospace; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker">arifOS · MCP gateway explainer</div>
+  <h1>The /mcp endpoint is a machine — not a page</h1>
+  <p class="lede">If you reached this page, you clicked something labelled "MCP Gateway" expecting to read a webpage. The <code>/mcp</code> endpoint speaks <strong>JSON-RPC 2.0</strong> to AI agents and MCP-aware tools — it does not render HTML for browsers, by design.</p>
+
+  <div class="callout">
+    <h2>Why a browser gets a JSON error</h2>
+    <p>The /mcp endpoint accepts only POST requests with <code>Content-Type: application/json</code> and a valid JSON-RPC envelope. A plain browser GET (which is what you did) violates the MCP transport spec and is rejected. This is correct behavior — it's the same reason <code>/api/send-mail</code> shouldn't render as a web page.</p>
+    <p>Per F9 ANTI-HANTU: we don't want to render a fake "200 OK with HTML" page just to satisfy browsers. That would be a false epistemic claim.</p>
+  </div>
+
+  <div class="callout">
+    <h2>How humans actually use arifOS</h2>
+    <ul>
+      <li><a href="https://arif-fazil.com/missions">/missions</a> — the 6-verb human cockpit: Investigate, Interpret, Decide, Build, Monitor, Remember.</li>
+      <li><a href="https://arif-fazil.com/doctrine">/doctrine</a> — the constitutional kernel doctrine (13 floors, F1–F13).</li>
+      <li><a href="https://arif-fazil.com/geox">/geox</a> — GEOX earth-intelligence cockpit (when reached directly; the audit-stale /geox on main site now 301s here).</li>
+      <li><a href="https://arif-fazil.com/wealth">/wealth</a> — WEALTH capital-cognition cockpit.</li>
+      <li><a href="https://arif-fazil.com/well">/well</a> — WELL readiness cockpit.</li>
+      <li><a href="https://arif-fazil.com/forge">/forge</a> — A-FORGE execution cockpit.</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <h2>How AI agents connect</h2>
+    <p>An MCP client sends a JSON-RPC envelope. Example <code>tools/list</code> call:</p>
+<pre>curl -X POST https://mcp.arif-fazil.com/mcp \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'</pre>
+    <p>For a full machine-readable surface listing, see <a href="/llms.txt">/llms.txt</a>, <a href="/.well-known/agent.json">/.well-known/agent.json</a>, and <a href="https://arif-fazil.com/mcp/explorer">/mcp/explorer</a> (the developer/audit catalog — engine room, not cockpit).</p>
+  </div>
+
+  <div class="callout">
+    <h2>What this explainer is NOT</h2>
+    <ul>
+      <li>Not the gateway itself — the gateway still rejects browser GETs.</li>
+      <li>Not a permanent redirect — you can keep clicking "MCP Gateway" links; we'll keep pointing you here for the human explanation.</li>
+      <li>Not a tool surface — for the 33 governed MCP tools, see the explorer linked above.</li>
+    </ul>
+  </div>
+
+  <a class="btn" href="/missions">→ /missions (human cockpit)</a>
+  <a class="btn" href="/doctrine">→ /doctrine (13 floors)</a>
+  <a class="btn" href="/llms.txt">→ /llms.txt (agent manifest)</a>
+
+  <div class="seal">DITEMPA BUKAN DIBERI · F9 ANTI-HANTU · honest state 2026-07-31</div>
+</div>
+</body>
+</html>
