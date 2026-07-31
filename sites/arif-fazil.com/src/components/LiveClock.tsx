@@ -9,6 +9,11 @@ function formatMYT(): string {
   return myt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
 }
 
+function formatUTC(): string {
+  const now = new Date();
+  return now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'UTC' });
+}
+
 function formatDate(): string {
   const now = new Date();
   const myt = new Date(now.getTime() + (MYT_OFFSET - now.getTimezoneOffset() / 60) * 3600000);
@@ -24,10 +29,13 @@ export function LiveClock() {
   }, []);
 
   return (
-    <div className="flex items-center gap-3 font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest">
-      <span className="text-forge-orange">{time}</span>
-      <span>MYT</span>
-      <span className="hidden sm:inline text-forge-dim/50">· {formatDate()}</span>
+    <div className="flex items-baseline gap-3 font-mono leading-none">
+      <div className="flex items-baseline gap-2">
+        <span className="text-forge-orange font-bold text-2xl md:text-3xl tabular-nums tracking-tight">{time}</span>
+        <span className="text-[0.6rem] text-forge-orange uppercase tracking-widest font-semibold">MYT</span>
+      </div>
+      <span className="hidden sm:inline text-[0.55rem] text-forge-dim/60 uppercase tracking-widest">· UTC {formatUTC()}</span>
+      <span className="hidden md:inline text-[0.55rem] text-forge-dim/60 uppercase tracking-widest ml-2">· {formatDate()}</span>
     </div>
   );
 }
