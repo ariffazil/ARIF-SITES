@@ -1,0 +1,364 @@
+{
+  "schema": "arifos.n9.ground-truth.v3",
+  "as_of": "2026-07-31",
+  "sealed_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "seal_id": "VAULT999-PRN16-NS-GT-003",
+  "predecessor_seal_id": "VAULT999-PRN16-NS-GT-002",
+  "doctrine": "Numbers below are SEALED snapshots. The telemetry script MUST surface provenance + epistemic_class + as_of per field. Updating this file is a F13 sovereign action; script MUST NOT mutate. epistemic_class: OBS = observation (measured/surveyed), DER = derivation (computed from OBS), INT = interpretation (judgment, not measured). All sources carry epistemic_class tagging.",
+  "changelog_v3": "Added Ilham Centre OBS (n=1,002, 3.1% MoE, Jul 18-30), Ong Kian Ming INT structural model (Jul 27), early voting OBS turnout data (91.06%), Ilham 7-reason qualitative framework, post-poll audit protocol, and expanded battleground seat signals (7 seats from 3). Sovereign confidence raised from 65%→72% on converging multi-source evidence.",
+  "sources": {
+    "VODUS_N9_N437": {
+      "epistemic_class": "OBS",
+      "kind": "survey",
+      "polling_firm": "Vodus Research",
+      "sample_size": 437,
+      "field_dates": "2026-07-09 to 2026-07-21",
+      "url": "https://vodus.my/n9-2026",
+      "methodology_ref": "Vodus OMTOS online survey, weighted to NS ethnic/age/gender demographics",
+      "as_of": "2026-07-21",
+      "confidence_tier": "DIRECTIONAL",
+      "note": "n=437 is below conventional 1,000 margin-of-error threshold; treat as directional proxy, not definitive estimate."
+    },
+    "ILHAM_N9_N1002": {
+      "epistemic_class": "OBS",
+      "kind": "fieldwork_survey",
+      "polling_firm": "Ilham Centre",
+      "sample_size": 1002,
+      "margin_of_error_pct": 3.1,
+      "confidence_level": 95,
+      "field_dates": "2026-07-18 to 2026-07-30",
+      "url": "https://www.astroawani.com/berita-politik/prn-negeri-sembilan-bn-pn-potensi-kuasai-22-kerusi-dun-ilham-centre",
+      "methodology_ref": "Stratified random sampling across all 36 DUN, covering ethnicity/gender/age/education/income/occupation/locality. Quantitative statistical + qualitative thematic analysis. Includes SPR 2022/2023 scoresheet cross-referencing.",
+      "as_of": "2026-07-31T14:40:00+08:00",
+      "confidence_tier": "HIGH",
+      "note": "Most rigorous publicly available dataset for N9 PRN16. n=1,002 with 3.1% MoE at 95% confidence. Fieldwork through final campaign week."
+    },
+    "ONG_KIAM_MING_STRUCTURAL_2026_07_27": {
+      "epistemic_class": "INT",
+      "kind": "structural_seat_model",
+      "analyst": "Dr Ong Kian Ming (former Bangi MP, political economist)",
+      "published": "2026-07-27",
+      "url": "https://theedgemalaysia.com/node/812097",
+      "as_of": "2026-07-27",
+      "methodology_ref": "Seat-level ethnic composition model: Malay turnout 80%, Chinese 65%, Indian 60%, Others 65%. Vote transfer estimates between BN-PN pact partners. 2022 GE15 state-seat results as baseline. 10 battleground seats identified.",
+      "confidence_tier": "HIGH_STRUCTURAL",
+      "note": "Most detailed published seat-level model. Structural rather than polling-based. Ong predicted Johor outcome correctly (BN landslide). His N9 model projects BN-PN 23-25 seats."
+    },
+    "EARLY_VOTING_SPR_2026_07_28": {
+      "epistemic_class": "OBS",
+      "kind": "official_election_data",
+      "source": "Suruhanjaya Pilihan Raya Malaysia (SPR)",
+      "as_of": "2026-07-28",
+      "url": "https://bernama.com/en/news.php?id=2587104",
+      "turnout_pct": 91.06,
+      "total_early_voters": 22339,
+      "in_person_voters": 16467,
+      "military_and_spouses": 11293,
+      "police_and_spouses": 5174,
+      "postal_voters": 5872,
+      "note": "Early voting exceeded SPR's 90% target. High security-force turnout historically correlates with higher overall turnout and traditionally favors BN (discipline vote)."
+    },
+    "SOVEREIGN_PROJECTION_2026_07_31_FINAL": {
+      "epistemic_class": "INT",
+      "kind": "sovereign_agentic_synthesis",
+      "predictor": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "as_of": "2026-07-31T23:59:00+08:00",
+      "rationale_ref": "Seven-source convergence: Ilham Centre (n=1,002) + Ong Kian Ming structural model + Vodus (n=437) + Ilham 7-reason qual framework + Johor momentum spillover + early voting 91% turnout + Bersatu structural spoiler effect. PH's mixed-seat dependency collapsing. Non-Malay turnout is single largest uncertainty.",
+      "note": "F13 sovereign agentic synthesis. Confidence upgraded from 65% to 72% on converging multi-source evidence. Ilham Centre n=1,002 is the strongest signal."
+    },
+    "ILHAM_SEVEN_REASONS": {
+      "epistemic_class": "INT",
+      "kind": "qualitative_thematic_analysis",
+      "source": "Ilham Centre via Sinar Harian / Astro Awani",
+      "url": "https://www.sinarharian.com.my/article/790227/berita/politik/prn-negeri-sembilan-dapatan-kajian-ilham-centre-gariskan-tujuh-sebab-bn-pn-dijangka-kuasai-keputusan-pengundian-esok",
+      "as_of": "2026-07-31",
+      "seven_reasons": [
+        "Kombinasi BN-PN mencipta gelombang Melayu-Islam lebih besar berbanding Johor — identity politics driving turnout",
+        "Perpindahan undi lebih berkesan antara penyokong BN dan PN — vote transfer efficiency exceeding 70%",
+        "Kempen PH hilang punca — mesej tidak sampai ke pengundi Melayu luar bandar",
+        "Pengundi Cina tidak lagi memberi sokongan automatik kepada PH — cooling enthusiasm, driven by absence of alternatives rather than confidence",
+        "MB Aminuddin Harun tenggelam — 32% favourability vs Johor MB Onn Hafiz 58%; leadership vacuum at campaign peak",
+        "Perubahan sikap pengundi muda daripada personaliti calon kepada parti — candidate-centric → party-centric loyalty",
+        "Pengundi India menjauhi PH — former strongholds showing erosion; Seremban Jaya (27.9% Indian) is key monitor"
+      ],
+      "note": "Qualitative framework explaining the mechanism behind quantitative projections. Each reason maps to specific seat dynamics."
+    }
+  },
+  "observations": {
+    "popular_vote_pct_vodus_n437": {
+      "epistemic_class": "OBS",
+      "source": "VODUS_N9_N437",
+      "PH": 42.0,
+      "BN": 35.0,
+      "PN": 7.0,
+      "undecided_pct": 14.0,
+      "others_pct": 2.0
+    },
+    "constituency_forecast_vodus": {
+      "epistemic_class": "OBS",
+      "source": "VODUS_N9_N437",
+      "PH_leads": 17,
+      "BN_leads": 15,
+      "PN_leads": 2,
+      "toss_up": 2,
+      "straight_fights": 11,
+      "multi_cornered": 25,
+      "note": "Vodus: BN has 15 CLEAR leads vs PH 9, but PH ahead in 8 of 10 closely contested seats, raising PH projected total to 17."
+    },
+    "constituency_forecast_ilham_n1002": {
+      "epistemic_class": "OBS",
+      "source": "ILHAM_N9_N1002",
+      "BN_PN_combined_seats": 22,
+      "PH_seats_minimum": 9,
+      "tossup_seats": 5,
+      "tossup_names": ["Chennah (N1)", "Linggi (N32)", "Nilai (N10)", "Repah (N36)", "Temiang (N12)"],
+      "note": "Ilham Centre final projection. If BN captures some tossups, BN-PN reaches 2/3 majority. All 5 tossups are DAP-held seats being challenged by BN (MCA)."
+    },
+    "ong_kian_ming_seat_projection": {
+      "epistemic_class": "OBS",
+      "source": "ONG_KIAM_MING_STRUCTURAL_2026_07_27",
+      "BN_plus_PN_projected": "23-25 seats",
+      "PH_projected": "11-13 seats",
+      "pk_seats_projected": 1,
+      "dap_seats_projected": "10-12 (rest of PH total)",
+      "battleground_seats": ["Chennah", "Klawang", "Serting", "Jeram Padang", "Temiang", "Sikamat", "Ampangan", "Linggi", "Sri Tanjung", "Repah"],
+      "ong_calls": {
+        "Jeram_Padang_N7": "BN wins",
+        "Linggi_N32": "BN wins",
+        "Klawang_N4": "PN wins",
+        "Serting_N5": "PN wins",
+        "Sikamat_N13": "PN wins",
+        "Ampangan_N14": "PN wins",
+        "Chennah_N1": "too close to call"
+      }
+    },
+    "early_voting_turnout": {
+      "epistemic_class": "OBS",
+      "source": "EARLY_VOTING_SPR_2026_07_28",
+      "turnout_pct": 91.06,
+      "total_voters": 22339,
+      "in_person_voters": 16467,
+      "military_spouses": 11293,
+      "police_spouses": 5174,
+      "postal_voters": 5872,
+      "spr_target_pct": 90.0,
+      "exceeded_target": true
+    },
+    "margin_observations": {
+      "epistemic_class": "OBS",
+      "source": "SPR 2023 official results + sovereign brief",
+      "seats_decided_by_under_1000_votes_in_2023": "~12 of 36 seats",
+      "closest_2023_margin": "78 votes (Juasseh N15)",
+      "second_closest": "135 votes (Kota N28)",
+      "third_closest": "329 votes (Ampangan N14)"
+    },
+    "bersatu_seats_independent": {
+      "epistemic_class": "OBS",
+      "source": "SPR candidate list 2026-07-22",
+      "value": 24,
+      "clashes_with_pas": ["Serting (N5)", "Ampangan (N14)", "Paroi (N25)", "Bagan Pinang (N31)"],
+      "clashes_with_wawasan": ["Klawang (N4)", "Sikamat (N13)", "Mambau (N23)", "Gemas (N34)"],
+      "note": "Bersatu contesting under own logo, excluded from BN-PN seat pact. Clashes with former PN allies in 8 constituencies. Structural split benefits PH in marginals. Analysts expect Bersatu to lose all seats but could win Labu (N20)."
+    },
+    "governance_trust_gap": {
+      "epistemic_class": "OBS",
+      "source": "Merdeka Center trust tracker (normalized, multi-quarter)",
+      "current_government_trust_pct": 45,
+      "opposition_trust_pct": 19
+    },
+    "mb_favourability_gap": {
+      "epistemic_class": "OBS",
+      "source": "Vodus Research favourability survey (referenced in multiple reports)",
+      "aminuddin_harun_n9_mb_pct": 32,
+      "onn_hafiz_johor_mb_pct": 58,
+      "note": "Johor comparison: Onn Hafiz 58% favourability → BN won 48/56. Aminuddin 32% → significant leadership perception gap."
+    }
+  },
+  "interpretations": {
+    "sovereign_coalition_forecast": {
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31_FINAL",
+      "BN_range": [17, 20],
+      "PN_range": [4, 5],
+      "PH_range": [12, 15],
+      "BERSATU_range": [0, 1],
+      "expected_coalition": "BN-PN forms next government (21-24 seats)",
+      "bn_pn_coalition_forecast_pct": 74.5,
+      "bn_pn_coalition_forecast_label": "sovereign_projection",
+      "sovereign_confidence_pct": 72,
+      "prior_confidence_pct": 65,
+      "confidence_upgrade_rationale": "Ilham Centre n=1,002 (3.1% MoE) provides strongest single OBS signal. Converging with Ong's structural model, Vodus directional survey, early voting data, and Ilham's 7-reason qualitative framework. Seven independent sources point BN-PN 19-24 seats.",
+      "confidence_delta_note": "Remaining 28% uncertainty allocated to: non-Malay turnout variance (12%), Bersatu spoiler magnitude in marginals (8%), PH ground machinery last-mile (5%), adat/royal dampening effect (3%).",
+      "post_poll_audit_protocol": {
+        "trigger_time": "After 10pm MYT 2026-08-01 when SPR announces first batch",
+        "validation_criteria": "BN-PN ≥ 19 seats = model validated. PH ≥ 16 seats = model failed.",
+        "battleground_watchlist_seats": [
+          {"code": "N32", "name": "Linggi", "signal": "MB gamble — Aminuddin wins = leadership vindication; loses = PH crisis"},
+          {"code": "N13", "name": "Sikamat", "signal": "Post-Aminuddin vacuum — flip to PN validates personal-vote hypothesis"},
+          {"code": "N14", "name": "Ampangan", "signal": "329-vote 2023 margin — PN flip validates BN-PN consolidation thesis"},
+          {"code": "N4", "name": "Klawang", "signal": "AMANAH's last stand — if lost, Amanah wiped from N9 assembly"},
+          {"code": "N5", "name": "Serting", "signal": "Bersatu spoiler magnitude — split determines if PH or PN wins"},
+          {"code": "N31", "name": "Bagan Pinang", "signal": "Military postal vote indicator — BN retention validates discipline vote"},
+          {"code": "N27", "name": "Rantau", "signal": "Tok Mat margin — if margin shrinks >20% from 2023, BN brand softening detected"}
+        ],
+        "audit_dimensions": ["rural-efficiency vs urban-lock assumption", "BN-PN vote transfer efficiency", "non-Malay turnout estimate accuracy", "Bersatu spoiler magnitude"],
+        "auto_actions": [
+          "SEAL outcome hash to VAULT999 on result confirmation",
+          "if model_failed: audit rural-efficiency assumption vs urban-lock resilience",
+          "if model_validated: seal prediction→outcome delta as training signal"
+        ]
+      }
+    },
+    "hotseat_signals": {
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31_FINAL",
+      "seats": [
+        {
+          "code": "N32",
+          "name": "Linggi",
+          "status": "HOT_EPICENTER",
+          "live_sentiment": "BN_LEAN",
+          "predicted_winner": "BN",
+          "note": "MB Aminuddin (PH-PKR) moved from Sikamat vs BN incumbent Mohd Faizal + Bersatu Zamri. 3-cornered. 61.8% Malay. 50-year UMNO fortress. Aminuddin self-assessed 50-50. Ilham Centre: too close BN-lean. Ong: BN wins. Bersatu candidate may eat 5-8% anti-establishment vote, helping BN retain."
+        },
+        {
+          "code": "N13",
+          "name": "Sikamat",
+          "status": "POST_MB_VACUUM",
+          "live_sentiment": "PN_LEAN",
+          "predicted_winner": "PN",
+          "note": "Aminuddin vacated after 4 terms (since 2008). PKR's Nor Azman (political secretary) vs BN Shahrul Nizam vs Bersatu Tun Faisal. 71.6% Malay. Without Aminuddin personal vote, structural Malay consolidation dominates. Ong: PN wins. PKR machine untested without MB brand."
+        },
+        {
+          "code": "N14",
+          "name": "Ampangan",
+          "status": "ULTRA_MARGINAL",
+          "live_sentiment": "PN_LEAN",
+          "predicted_winner": "PN",
+          "note": "329-vote PKR majority in 2023 (2.2%). 72.8% Malay. 3-cornered: PH(PKR) vs PN(PAS-Mohamad Rafie, comeback bid) vs Bersatu. B40 cost-of-living at peak. Ong: PN wins. Ilham: BN-PN advantage. Anti-incumbency + PAS grassroots in Seremban periphery."
+        },
+        {
+          "code": "N4",
+          "name": "Klawang",
+          "status": "AMANAH_LAST_STAND",
+          "live_sentiment": "TOSSUP",
+          "predicted_winner": "TOSSUP",
+          "note": "AMANAH's Bakri Sawir defending. Margin shrunk from 11.7% (2018) to 6.4% (2023). 3-cornered vs PN(Wawasan-Danni Rais, cousin) vs Bersatu. Former Bersatu candidate now on Wawasan ticket creates voter confusion. Ilham: too close. Ong: PN wins. If AMANAH loses all 7 contests, party wiped from N9."
+        },
+        {
+          "code": "N5",
+          "name": "Serting",
+          "status": "BERSATU_SPOILER",
+          "live_sentiment": "TOSSUP",
+          "predicted_winner": "TOSSUP",
+          "note": "PAS incumbent vs PH vs Bersatu. Bersatu fielding Affendy Salleh against PAS candidate. Split opposition vote magnitude uncertain. Ilham: too close. Ong: PN retains. If Bersatu eats >8% of PAS vote, PH wins with <40%. Complex 3-body problem."
+        },
+        {
+          "code": "N31",
+          "name": "Bagan Pinang",
+          "status": "MILITARY_VOTE_INDICATOR",
+          "live_sentiment": "BN_LEAN",
+          "predicted_winner": "BN",
+          "note": "PAS incumbent (3,426 majority). Army camp seat + resort tourism. 3-cornered: PAS vs PH vs Bersatu. Military postal vote + BN-PN consolidation favors BN reclaiming. If BN wins, validates discipline-vote hypothesis. Moderate Bersatu spoiler effect expected."
+        },
+        {
+          "code": "N1",
+          "name": "Chennah",
+          "status": "CHINESE_TURNOUT_MONITOR",
+          "live_sentiment": "PH_LEAN",
+          "predicted_winner": "PH",
+          "note": "Loke (DAP SG) vs MCA's Siow Kong Choon. 48% Malay, 7% Orang Asli. Ilham: too close. Loke holds if non-Malay turnout >65% and OA don't swing heavily BN. Ong: too close, slight BN advantage if MCA announces exco offer for Siow. DAP machine strongest here."
+        },
+        {
+          "code": "N10",
+          "name": "Nilai",
+          "status": "URBAN_SWING_MONITOR",
+          "live_sentiment": "PH_LEAN",
+          "predicted_winner": "PH",
+          "note": "DAP held since 2008 (10,889 majority). 5-cornered fight. Ilham: too close. Losing grip due to Chinese voter cooling and Indian community swing. MCA mounting strongest challenge in decade. Young urban voters focused on jobs/housing."
+        },
+        {
+          "code": "N12",
+          "name": "Temiang",
+          "status": "MCA_BREAKTHROUGH_TEST",
+          "live_sentiment": "PH_LEAN",
+          "predicted_winner": "PH",
+          "note": "DAP held 4 terms since 2008 (34.1% margin in 2023). Ilham: too close. MCA chief Leaw Kok Chan challenging. After MCA won 8 seats in Johor (surpassing DAP's 6), Temiang tests whether MCA resurgence reaches N9. DAP newcomer Ho Weng Wah (Loke's political sec) defending."
+        },
+        {
+          "code": "N36",
+          "name": "Repah",
+          "status": "CHINESE_TURNOUT_MONITOR",
+          "live_sentiment": "PH_LEAN",
+          "predicted_winner": "PH",
+          "note": "DAP held since 2013 (5,950 majority). Ilham: too close. BN fielding MCA's Koh Kim Swee. Tampin town mixed seat. Chinese turnout critical — if below 60%, seat becomes vulnerable."
+        },
+        {
+          "code": "N20",
+          "name": "Labu",
+          "status": "BERSATU_KINGMAKER",
+          "live_sentiment": "TOSSUP",
+          "predicted_winner": "TOSSUP",
+          "note": "3-cornered: Bersatu(incumbent Hanifah, N9 Bersatu chief) vs PH(PKR) vs BN(UMNO). Bersatu's best individual chance to win a seat. Won with 1,640 majority in 2023. If Bersatu wins Labu + 1 more, becomes kingmaker in hung assembly scenario."
+        },
+        {
+          "code": "N27",
+          "name": "Rantau",
+          "status": "TOK_MAT_MARGIN_INDICATOR",
+          "live_sentiment": "BN_SAFE",
+          "predicted_winner": "BN",
+          "note": "Tok Mat (BN deputy chairman) defending 7th term. Straight fight vs young doctor Azizul Hakim (PH). 10,280 majority in 2023 (72% vote share). Margin shrinkage is the signal — if <60%, BN brand softening in traditional heartlands. If >70%, BN momentum confirmed."
+        }
+      ]
+    },
+    "site_projection_cartography": {
+      "epistemic_class": "DER",
+      "derived_from": ["ILHAM_N9_N1002", "ONG_KIAM_MING_STRUCTURAL_2026_07_27", "VODUS_N9_N437", "SOVEREIGN_PROJECTION_2026_07_31_FINAL"],
+      "as_of": "2026-07-31",
+      "seat_projection_summary": {
+        "PH": 14,
+        "BN": 15,
+        "PN": 4,
+        "TOSSUP": 3,
+        "BN_PN_combined": 19,
+        "majority_threshold": 19,
+        "scenario_probabilities": {
+          "BN_PN_government": {"pct": 72, "seats": "19-24"},
+          "hung_assembly": {"pct": 18, "seats": "18-18 with Bersatu kingmaker"},
+          "PH_government": {"pct": 10, "seats": "19+ via Bersatu post-poll alignment"}
+        }
+      },
+      "seat_by_seat": {
+        "PH": {
+          "safe": ["N8 Bahau", "N11 Lobak", "N21 Bukit Kepayang", "N22 Rahang", "N30 Lukut"],
+          "lean": ["N1 Chennah", "N10 Nilai", "N12 Temiang", "N18 Pilah", "N23 Mambau", "N24 Seremban Jaya", "N29 Chuah", "N33 Sri Tanjung", "N36 Repah"]
+        },
+        "BN": {
+          "safe": ["N2 Pertang", "N19 Johol", "N20 Labu?", "N26 Chembong", "N27 Rantau", "N35 Gemencheh"],
+          "lean": ["N3 Sungai Lui", "N6 Palong", "N7 Jeram Padang", "N9 Lenggeng", "N15 Juasseh", "N16 Seri Menanti", "N17 Senaling", "N28 Kota", "N31 Bagan Pinang", "N32 Linggi"]
+        },
+        "PN": {
+          "safe": ["N25 Paroi"],
+          "lean": ["N13 Sikamat", "N14 Ampangan", "N34 Gemas"]
+        },
+        "TOSSUP": {
+          "too_close": ["N4 Klawang", "N5 Serting", "N20 Labu"]
+        }
+      }
+    }
+  },
+  "render_hints": {
+    "voter_turnout_projection_pct": 74.1,
+    "voter_turnout_projection_source": "Historical N9 turnout ~74% + Merdeka Center trackers + Johor 2026 comparison (69.6% Johor, N9 expected higher due to Klang Valley commuter proximity)",
+    "early_voting_turnout_pct": 91.06,
+    "early_voting_date": "2026-07-28",
+    "polling_day": "2026-08-01",
+    "results_expected": "First results ~10pm MYT; full results before midnight per SPR chairman",
+    "total_registered_voters": 867151,
+    "polling_centres": 401,
+    "voting_channels": 1668,
+    "election_personnel": 15344,
+    "candidates_total": 103,
+    "ilham_seven_reasons_url": "https://www.sinarharian.com.my/article/790227/berita/politik/prn-negeri-sembilan-dapatan-kajian-ilham-centre-gariskan-tujuh-sebab-bn-pn-dijangka-kuasai-keputusan-pengundian-esok"
+  }
+}
