@@ -64,6 +64,13 @@ www.arif-fazil.com {
 arif-fazil.com {
 	import tls_origin
 	import shared_assets
+	# F12 — deny public access to backup files (2026-07-31)
+	@bak_files {
+		path_regexp bak \.bak
+	}
+	handle @bak_files {
+		respond "403 Forbidden — backup files are not public" 403
+	}
 	encode zstd gzip
 	root * /var/www/html/arif
 	@well-known path /.well-known/*
@@ -331,16 +338,20 @@ arif-fazil.com {
 		file_server
 	}
 	# Natural Gas dashboard (2026-07-16) — cognitive clarity cockpit
-	@wealth_gas_api path /wealth/gas/api/*
-	handle @wealth_gas_api {
-		uri strip_prefix /wealth/gas
-		reverse_proxy localhost:3458
-	}
-	handle /wealth/gas/* {
-		uri strip_prefix /wealth/gas
-		root * /var/www/html/gas
-		try_files {path} /index.html
-		file_server
+	# F1 — route block enforces source-order evaluation: API handler before SPA
+	# catch-all. Without the route block, Caddy v2 sorts /wealth/gas/* ahead of
+	# /wealth/gas/api/* and the reverse_proxy is never reached (2026-07-31 drift fix).
+	route /wealth/gas/* {
+		handle /wealth/gas/api/* {
+			uri strip_prefix /wealth/gas
+			reverse_proxy localhost:3458
+		}
+		handle {
+			uri strip_prefix /wealth/gas
+			root * /var/www/html/gas
+			try_files {path} /index.html
+			file_server
+		}
 	}
 	# WEALTH Terminal home (2026-07-18) — unified product surface for gold/oil/gas
 	# Generic catch-all for non-API wealth paths. Uses path_regexp so the pattern is
@@ -507,6 +518,10 @@ arif-fazil.com {
 	# Unknown paths get a real 404 for agent/curl access
 	redir /world/makcikgpt /world/makcikgpt/ 308
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
+	# Canonicalize bare /makcikgpt paths to the /world/ prefix (2026-07-31 P17 fix)
+	redir /makcikgpt /world/makcikgpt/ 301
+	redir /makcikgpt/ /world/makcikgpt/ 301
+	redir /makcikgpt/* /world/makcikgpt/ 301
 	# MakcikGPT landing — browser gets the React shell; bot gets the canonical
 	# static index from /makcikgpt-md/.
 	@ai-bot-landing {
@@ -515,14 +530,17 @@ arif-fazil.com {
 	}
 	handle @ai-bot-landing {
 		root * /var/www/html/arif/makcikgpt-md
-		try_files {http.request.uri.path}index.html /var/www/html/arif/makcikgpt-md/index.html =404
+		try_files /index.html =404
 		file_server
 	}
 	# Browser landing — React shell from /var/www/html/arif/makcikgpt-md/
 	# index.html. The Caddy vhost subroute root-inheritance quirk prevents
 	# direct file_server on the path, so we strip the prefix and rewrite
 	# the URI to a path the file_server can resolve.
+	# F1 — cache-bust: no Caddy stale serve (2026-07-31)
 	handle /world/makcikgpt/ {
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		header CDN-Cache-Control "no-cache"
 		uri strip_prefix /world/makcikgpt
 		root * /var/www/html/arif/makcikgpt-md
 		rewrite * /index.html
@@ -553,7 +571,10 @@ arif-fazil.com {
 	}
 	# Regular browser traffic for MakcikGPT articles — SPA index shell
 	# (2026-07-29: Fixes P17 /world/makcikgpt/ 404 for non-bot, text/html requests)
+	# F1 — cache-bust: no Caddy stale serve (2026-07-31)
 	handle /world/makcikgpt/* {
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		header CDN-Cache-Control "no-cache"
 		uri strip_prefix /world/makcikgpt
 		root * /var/www/html/arif/makcikgpt
 		try_files {path} /index.html
