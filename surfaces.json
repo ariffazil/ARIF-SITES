@@ -314,27 +314,33 @@
     },
     {
       "path": "/oil/",
-      "redirects_to": "/world/oil",
-      "status": "redirect",
-      "code": 308,
-      "type": "redirect",
-      "description": "Legacy oil path — canonical is /world/oil"
+      "title": "Oil Dashboard — Brent Crude Live",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Standalone Brent crude oil dashboard with live API data. Served from /var/www/html/oil/."
     },
     {
       "path": "/gas/",
-      "redirects_to": "/world/gas",
-      "status": "redirect",
-      "code": 308,
-      "type": "redirect",
-      "description": "Legacy gas path — canonical is /world/gas"
+      "title": "Gas Dashboard — Natural Gas Live",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Standalone natural gas dashboard with live API data. Served from /var/www/html/gas/."
     },
     {
       "path": "/gold/",
-      "redirects_to": "/world/gold",
-      "status": "redirect",
-      "code": 308,
-      "type": "redirect",
-      "description": "Legacy gold path — canonical is /world/gold"
+      "title": "Gold Dashboard — XAUUSD Live",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Standalone gold trading dashboard with live API data. Served from /var/www/html/gold/."
     },
     {
       "path": "/makcikgpt/",
@@ -490,13 +496,13 @@
     },
     {
       "path": "/.well-known/agent-card.json",
-      "title": "Agent Card — A2A Discovery (alternate)",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "monthly",
-      "description": "Agent card — A2A discovery (redirects to AAA gateway)"
+      "title": "Agent Card — A2A Discovery",
+      "redirects_to": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Canonical agent card lives on arifos.arif-fazil.com subdomain. Caddy server-side redirect."
+    },
     },
     {
       "path": "/.well-known/did.json",
