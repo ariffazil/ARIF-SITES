@@ -49,7 +49,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
       ts: new Date().toISOString(),
       surface: typeof window !== 'undefined' ? window.location.pathname : 'ssr',
     });
-    this.setState({ componentStack: errorInfo?.componentStack });
+    this.setState({ componentStack: errorInfo?.componentStack ?? undefined });
   }
 
   private readonly handleReset = (): void => {
