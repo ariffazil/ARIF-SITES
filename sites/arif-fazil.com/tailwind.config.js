@@ -25,6 +25,19 @@ module.exports = {
           red: "#f0506e",    // STATUS ONLY — void/hazard (was #FF003C)
         },
 
+        // PRIMER Palette — MakcikGPT zen black (2026-07-31)
+        // Red, blue, yellow as primary accents on pure black
+        primer: {
+          red: "#e0301e",
+          blue: "#1f3fd4",
+          yellow: "#f2b705",
+          black: "#000000",
+          white: "#f0f0f0",
+          dim: "#888888",
+          line: "#1a1a1a",
+          surface: "#0a0a0a",
+        },
+
         primary: {
           DEFAULT: "#e6edf3",
           foreground: "#0a0c10",

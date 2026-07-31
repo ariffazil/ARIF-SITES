@@ -99,7 +99,7 @@ footer { border-top: 1px solid #1e293b; padding: 2rem 0; font-family: monospace;
     <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence · Leaflet Cartography</strong>
   </div>
   <div>
-    <span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>Updated 28 Jul 2026</span>
+    <span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>Updated 31 Jul 2026 — FINAL PRE-POLL PROJECTION</span>
   </div>
 </div>
 
@@ -134,10 +134,10 @@ footer { border-top: 1px solid #1e293b; padding: 2rem 0; font-family: monospace;
       <div class="filter-group">
         <button class="filter-btn toggle-view-btn" id="viewToggleBtn" onclick="toggleViewMode()">🗺️ SWITCH TO GRID</button>
         <button class="filter-btn active" onclick="filterSeats('ALL', event)">ALL (36)</button>
-        <button class="filter-btn" onclick="filterSeats('PH', event)">PH (18)</button>
-        <button class="filter-btn" onclick="filterSeats('BN', event)">BN (16)</button>
-        <button class="filter-btn" onclick="filterSeats('PN', event)">PN (2)</button>
-        <button class="filter-btn" onclick="filterSeats('HOT', event)">🔥 HOT (8)</button>
+        <button class="filter-btn" onclick="filterSeats('PH', event)">PH (14)</button>
+        <button class="filter-btn" onclick="filterSeats('BN', event)">BN (15)</button>
+        <button class="filter-btn" onclick="filterSeats('PN', event)">PN (4)</button>
+        <button class="filter-btn" onclick="filterSeats('HOT', event)">🔥 HOT (14)</button>
       </div>
     </div>
 
@@ -169,24 +169,24 @@ footer { border-top: 1px solid #1e293b; padding: 2rem 0; font-family: monospace;
     </div>
   </div>
 
-  <!-- Government Scenarios -->
+  <!-- Government Scenarios — Updated 31 Jul 2026 per Ilham Centre Final + Sovereign Synthesis -->
   <div class="coalition-grid">
-    <div class="card-box" style="border-top:4px solid #ef4444;">
-      <h4 style="color:#fca5a5;">PH-Led Government</h4>
-      <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
-        PH 18 + Bersatu/Independents (1-2) = 19+. Requires Bersatu to side with PH post-election. Highly likely if PH captures marginal Malay seats.
-      </p>
-    </div>
     <div class="card-box" style="border-top:4px solid #3b82f6;">
-      <h4 style="color:#93c5fd;">BN-PN Alliance</h4>
+      <h4 style="color:#93c5fd;">🔵 BN-PN Coalition <span style="font-size:0.7rem;background:#1e40af;color:#93c5fd;padding:2px 6px;border-radius:4px;margin-left:8px;">65-72% PROBABILITY</span></h4>
       <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
-        BN 16 + PN 3 = 19. Requires formal post-poll reconciliation between UMNO and PAS/Bersatu. High friction.
+        <strong>BN 14-16 + PN 4-6 = 19-22 seats</strong>. Most likely outcome per Ilham Centre (n=1,002, Jul 18-30), Ong Kian Ming structural model, and sovereign synthesis. Malay-Muslim consolidation wave larger than Johor. Vote transfer efficiency between BN-PN supporters exceeding 70%. <em>Government formed.</em>
       </p>
     </div>
     <div class="card-box" style="border-top:4px solid #f59e0b;">
-      <h4 style="color:#fde047;">Hung Assembly (18-18)</h4>
+      <h4 style="color:#fde047;">🟡 Hung Assembly <span style="font-size:0.7rem;background:#92400e;color:#fde047;padding:2px 6px;border-radius:4px;margin-left:8px;">15-20% PROBABILITY</span></h4>
       <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
-        Deadlock scenario. Bersatu holds kingmaker leverage. Prolonged negotiations or palace intervention required for MB appointment.
+        <strong>18-18 deadlock or 19-17 with fragmented majority</strong>. Bersatu holds 1-2 seats = kingmaker leverage. Palace intervention triggered. Requires post-election negotiation. Most likely if Bersatu wins Labu + another seat AND 3+ toss-ups break for PH.
+      </p>
+    </div>
+    <div class="card-box" style="border-top:4px solid #ef4444;">
+      <h4 style="color:#fca5a5;">🔴 PH-Led Government <span style="font-size:0.7rem;background:#991b1b;color:#fca5a5;padding:2px 6px;border-radius:4px;margin-left:8px;">10-15% PROBABILITY</span></h4>
+      <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
+        <strong>PH 16-18 + Bersatu 2-3 = 19+</strong>. Requires Bersatu post-poll alignment with PH AND PH capturing 3-4 marginal Malay seats. Low probability — requires non-Malay turnout >72% AND Bersatu eating 12%+ of BN-PN Malay vote in marginals.
       </p>
     </div>
   </div>
@@ -221,42 +221,42 @@ const INVARIANTS = [
 ];
 
 const SEATS = [
-  { code:'N1', name:'Chennah', inc:'Loke Siew Fook (DAP)', maj:2200, winner:'PH', cls:'ph', hot:true, lat:3.136, lng:102.046, notes:'vs MCA (BN) · Barometer for Chinese & mixed vote' },
-  { code:'N2', name:'Pertang', inc:'Jalaluddin Alias (UMNO)', maj:2790, winner:'BN', cls:'bn', hot:true, lat:2.946, lng:102.213, notes:'Jelebu MP defending stronghold vs PAS' },
-  { code:'N3', name:'Sungai Lui', inc:'Mohd Razi (UMNO)', maj:535, winner:'BN', cls:'bn', hot:false, lat:3.161, lng:102.321, notes:'Marginal rural Malay seat' },
-  { code:'N4', name:'Klawang', inc:'Bakri Sawir (AMANAH)', maj:577, winner:'PH', cls:'ph', hot:false, lat:2.969, lng:102.073, notes:'Marginal mixed seat in Jelebu' },
-  { code:'N5', name:'Serting', inc:'Mohd Fairuz (PN)', maj:843, winner:'PH', cls:'ph', hot:true, lat:2.876, lng:102.405, notes:'Bersatu split favors PH flip' },
-  { code:'N6', name:'Palong', inc:'Mustapha Nagoor (UMNO)', maj:564, winner:'BN', cls:'bn', hot:false, lat:2.766, lng:102.511, notes:'FELDA stronghold under pressure' },
-  { code:'N7', name:'Jeram Padang', inc:'Mohd Zaidy (UMNO)', maj:693, winner:'BN', cls:'bn', hot:false, lat:2.723, lng:102.378, notes:'Estate / Indian swing voters' },
-  { code:'N8', name:'Bahau', inc:'Teo Kok Seong (DAP)', maj:8408, winner:'PH', cls:'ph', hot:false, lat:2.808, lng:102.404, notes:'DAP urban/commercial safe seat' },
-  { code:'N9', name:'Lenggeng', inc:'Mohd Asna Amin (UMNO)', maj:685, winner:'BN', cls:'bn', hot:false, lat:2.846, lng:101.986, notes:'Semi-rural Seremban fringe' },
-  { code:'N10', name:'Nilai', inc:'Arul Kumar (DAP)', maj:10889, winner:'PH', cls:'ph', hot:true, lat:2.816, lng:101.796, notes:'Industrial corridor & educational hub' },
-  { code:'N11', name:'Lobak', inc:'Chew Seh Yong (DAP)', maj:13504, winner:'PH', cls:'ph', hot:false, lat:2.736, lng:101.936, notes:'Chinese-majority core Seremban' },
-  { code:'N12', name:'Temiang', inc:'Ng Chin Tsai (DAP)', maj:3068, winner:'PH', cls:'ph', hot:false, lat:2.748, lng:101.951, notes:'Mixed urban Seremban seat' },
-  { code:'N13', name:'Sikamat', inc:'Aminuddin Harun (PKR)', maj:2662, winner:'PH', cls:'ph', hot:false, lat:2.721, lng:101.966, notes:'MB seat (MB moved candidacy to Linggi)' },
-  { code:'N14', name:'Ampangan', inc:'Tengku Zamrah (PKR)', maj:329, winner:'TOSSUP', cls:'tossup', hot:true, lat:2.701, lng:101.971, notes:'Ultra-marginal (329 vote maj in 2023)' },
-  { code:'N15', name:'Juasseh', inc:'Bibi Sharliza (UMNO)', maj:78, winner:'BN', cls:'bn', hot:false, lat:2.776, lng:102.296, notes:'Closest 2023 margin (78 votes)' },
-  { code:'N16', name:'Seri Menanti', inc:'Muhammad Sufian (UMNO)', maj:370, winner:'BN', cls:'bn', hot:false, lat:2.701, lng:102.161, notes:'Royal seat of Yang di-Pertuan Besar' },
-  { code:'N17', name:'Senaling', inc:'Ismail Lasim (UMNO)', maj:662, winner:'BN', cls:'bn', hot:false, lat:2.686, lng:102.246, notes:'Traditional Malay agricultural belt' },
-  { code:'N18', name:'Pilah', inc:'Noorzunita Begum (PKR)', maj:1079, winner:'PH', cls:'ph', hot:false, lat:2.736, lng:102.256, notes:'Kuala Pilah town center seat' },
-  { code:'N19', name:'Johol', inc:'Saiful Yazan (UMNO)', maj:2117, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:102.261, notes:'Strong UMNO machinery' },
-  { code:'N20', name:'Labu', inc:'Hanifah Abu Baker (BERSATU)', maj:1640, winner:'PH', cls:'ph', hot:true, lat:2.736, lng:101.881, notes:'Bersatu independent run splits PN votes' },
-  { code:'N21', name:'Bukit Kepayang', inc:'Nicole Tan (DAP)', maj:19684, winner:'PH', cls:'ph', hot:false, lat:2.716, lng:101.906, notes:'Largest majority in NS (19,684)' },
-  { code:'N22', name:'Rahang', inc:'Siau Meow Kong (DAP)', maj:6432, winner:'PH', cls:'ph', hot:false, lat:2.706, lng:101.946, notes:'Urban mixed DAP stronghold' },
-  { code:'N23', name:'Mambau', inc:'Yap Yew Weng (DAP)', maj:14940, winner:'PH', cls:'ph', hot:false, lat:2.686, lng:101.916, notes:'Urban industrial/residential DAP seat' },
-  { code:'N24', name:'Seremban Jaya', inc:'Gunasekaren (DAP)', maj:12703, winner:'PH', cls:'ph', hot:false, lat:2.676, lng:101.976, notes:'DAP high-density housing seat' },
-  { code:'N25', name:'Paroi', inc:'Kamarol Ridzuan (PAS)', maj:5539, winner:'PN', cls:'pn', hot:true, lat:2.711, lng:102.001, notes:'Largest Malay-majority urban seat' },
-  { code:'N26', name:'Chembong', inc:'Zaifulbahri (UMNO)', maj:4335, winner:'BN', cls:'bn', hot:false, lat:2.576, lng:102.046, notes:'Rembau parliamentary core' },
-  { code:'N27', name:'Rantau', inc:'Mohamad Hasan (Tok Mat)', maj:10280, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:101.966, notes:'Tok Mat impregnable fortress' },
-  { code:'N28', name:'Kota', inc:'Suhaimi Aini (UMNO)', maj:135, winner:'BN', cls:'bn', hot:false, lat:2.526, lng:102.106, notes:'Ultra-marginal 135 majority' },
-  { code:'N29', name:'Chuah', inc:'Yew Boon Lye (PKR)', maj:6298, winner:'PH', cls:'ph', hot:false, lat:2.646, lng:101.761, notes:'Port Dickson coastal agricultural' },
-  { code:'N30', name:'Lukut', inc:'Choo Ken Hwa (DAP)', maj:10135, winner:'PH', cls:'ph', hot:false, lat:2.566, lng:101.811, notes:'Port Dickson urban/tourism seat' },
-  { code:'N31', name:'Bagan Pinang', inc:'Abdul Fatah (PAS)', maj:3426, winner:'PH', cls:'ph', hot:true, lat:2.476, lng:101.831, notes:'Army camp & resort seat; split favors PH' },
-  { code:'N32', name:'Linggi', inc:'Mohd Faizal (BN)', maj:1461, winner:'TOSSUP', cls:'tossup', hot:true, lat:2.496, lng:101.941, notes:'⚠️ EPICENTER RISK: MB Aminuddin Harun (PH-PKR) moved from Sikamat vs BN Incumbent.' },
-  { code:'N33', name:'Sri Tanjung', inc:'Rajasekaran (PKR)', maj:3996, winner:'PH', cls:'ph', hot:false, lat:2.516, lng:101.861, notes:'Port Dickson mixed urban core' },
-  { code:'N34', name:'Gemas', inc:'Ridzuan Ahmad (BERSATU)', maj:3120, winner:'PN', cls:'pn', hot:false, lat:2.586, lng:102.611, notes:'Tampin border railway hub' },
-  { code:'N35', name:'Gemencheh', inc:'Suhaimizan Bizar (UMNO)', maj:2434, winner:'BN', cls:'bn', hot:false, lat:2.536, lng:102.396, notes:'UMNO Tampin stronghold' },
-  { code:'N36', name:'Repah', inc:'Veerapan (DAP)', maj:5950, winner:'PH', cls:'ph', hot:false, lat:2.476, lng:102.231, notes:'Tampin town mixed seat' }
+  { code:'N1', name:'Chennah', inc:'Loke Siew Fook (DAP)', maj:2200, winner:'PH', cls:'ph', hot:true, lat:3.136, lng:102.046, notes:'vs MCA (BN) · ILHAM: too close. Loke holds if non-Malay >65% + OA not swing BN' },
+  { code:'N2', name:'Pertang', inc:'Jalaluddin Alias (UMNO)', maj:2790, winner:'BN', cls:'bn', hot:true, lat:2.946, lng:102.213, notes:'Jelebu MP defending stronghold vs PAS · ILHAM: BN hold' },
+  { code:'N3', name:'Sungai Lui', inc:'Mohd Razi (UMNO)', maj:535, winner:'BN', cls:'bn', hot:false, lat:3.161, lng:102.321, notes:'Marginal rural Malay seat · BN-PN consolidation advantage' },
+  { code:'N4', name:'Klawang', inc:'Bakri Sawir (AMANAH)', maj:577, winner:'TOSSUP', cls:'tossup', hot:true, lat:2.969, lng:102.073, notes:'AMANAH grip weakening; Wawasan+Bersatu split complex. ILHAM: too close. Ong: PN wins.' },
+  { code:'N5', name:'Serting', inc:'Mohd Fairuz (PN)', maj:843, winner:'TOSSUP', cls:'tossup', hot:true, lat:2.876, lng:102.405, notes:'PAS vs Bersatu split. ILHAM: too close. Ong: PN retains. Bersatu spoiler uncertain.' },
+  { code:'N6', name:'Palong', inc:'Mustapha Nagoor (UMNO)', maj:564, winner:'BN', cls:'bn', hot:false, lat:2.766, lng:102.511, notes:'FELDA stronghold · BN machinery advantage in rural areas' },
+  { code:'N7', name:'Jeram Padang', inc:'Mohd Zaidy (UMNO)', maj:693, winner:'BN', cls:'bn', hot:false, lat:2.723, lng:102.378, notes:'Estate/Indian swing · Ong: BN wins · ILHAM: BN-PN consolidation' },
+  { code:'N8', name:'Bahau', inc:'Teo Kok Seong (DAP)', maj:8408, winner:'PH', cls:'ph', hot:false, lat:2.808, lng:102.404, notes:'DAP urban/commercial safe seat · 8,408 majority' },
+  { code:'N9', name:'Lenggeng', inc:'Mohd Asna Amin (UMNO)', maj:685, winner:'BN', cls:'bn', hot:false, lat:2.846, lng:101.986, notes:'Semi-rural Seremban fringe · BN defending in 3-cornered' },
+  { code:'N10', name:'Nilai', inc:'Arul Kumar (DAP)', maj:10889, winner:'PH', cls:'ph', hot:true, lat:2.816, lng:101.796, notes:'ILHAM: too close! 5-cornered. Chinese turnout & Indian swing critical. DAP since 2008.' },
+  { code:'N11', name:'Lobak', inc:'Chew Seh Yong (DAP)', maj:13504, winner:'PH', cls:'ph', hot:false, lat:2.736, lng:101.936, notes:'Chinese-majority core Seremban · DAP fortress, 13,504 majority' },
+  { code:'N12', name:'Temiang', inc:'Ng Chin Tsai (DAP)', maj:3068, winner:'PH', cls:'ph', hot:true, lat:2.748, lng:101.951, notes:'ILHAM: too close! MCA challenging DAP. Chinese turnout monitor. DAP since 2013.' },
+  { code:'N13', name:'Sikamat', inc:'Nor Azman (PKR)', maj:2662, winner:'PN', cls:'pn', hot:true, lat:2.721, lng:101.966, notes:'Aminuddin vacated after 4 terms. 3-cornered. 71.6% Malay. Ong: PN wins. ILHAM: BN-PN.' },
+  { code:'N14', name:'Ampangan', inc:'Tengku Zamrah (PKR)', maj:329, winner:'PN', cls:'pn', hot:true, lat:2.701, lng:101.971, notes:'329 vote margin in 2023. Ong: PN wins. ILHAM: BN-PN flips. Anti-incumbency + B40 cost-of-living.' },
+  { code:'N15', name:'Juasseh', inc:'Bibi Sharliza (UMNO)', maj:78, winner:'BN', cls:'bn', hot:false, lat:2.776, lng:102.296, notes:'Closest 2023 margin (78 votes) · BN-PN vote transfer advantage' },
+  { code:'N16', name:'Seri Menanti', inc:'Muhammad Sufian (UMNO)', maj:370, winner:'BN', cls:'bn', hot:false, lat:2.701, lng:102.161, notes:'Royal seat of Yang di-Pertuan Besar · Traditional BN territory' },
+  { code:'N17', name:'Senaling', inc:'Ismail Lasim (UMNO)', maj:662, winner:'BN', cls:'bn', hot:false, lat:2.686, lng:102.246, notes:'Traditional Malay agricultural belt · BN machinery advantage' },
+  { code:'N18', name:'Pilah', inc:'Noorzunita Begum (PKR)', maj:1079, winner:'PH', cls:'ph', hot:false, lat:2.736, lng:102.256, notes:'Kuala Pilah town · PKR hold but Umno stronghold area. BN-PN challenge.' },
+  { code:'N19', name:'Johol', inc:'Saiful Yazan (UMNO)', maj:2117, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:102.261, notes:'Strong UMNO machinery · Safe BN rural seat' },
+  { code:'N20', name:'Labu', inc:'Hanifah Abu Baker (BERSATU)', maj:1640, winner:'TOSSUP', cls:'tossup', hot:true, lat:2.736, lng:101.881, notes:'3-cornered: Bersatu(inc) vs PH(PKR) vs BN(UMNO). Bersatu strongest individual chance. Complex.' },
+  { code:'N21', name:'Bukit Kepayang', inc:'Nicole Tan (DAP)', maj:19684, winner:'PH', cls:'ph', hot:false, lat:2.716, lng:101.906, notes:'Largest majority in NS (19,684) · DAP absolute fortress' },
+  { code:'N22', name:'Rahang', inc:'Siau Meow Kong (DAP)', maj:6432, winner:'PH', cls:'ph', hot:false, lat:2.706, lng:101.946, notes:'Urban mixed DAP stronghold · 6,432 majority' },
+  { code:'N23', name:'Mambau', inc:'Yap Yew Weng (DAP)', maj:14940, winner:'PH', cls:'ph', hot:false, lat:2.686, lng:101.916, notes:'Urban industrial/residential DAP seat · 14,940 majority' },
+  { code:'N24', name:'Seremban Jaya', inc:'S Mugunthan (DAP)', maj:12703, winner:'PH', cls:'ph', hot:false, lat:2.676, lng:101.976, notes:'4-term DAP hold. Indian (27.9%) vote erosion per ILHAM. DAP newcomer fielded.' },
+  { code:'N25', name:'Paroi', inc:'Kamarol Ridzuan (PAS)', maj:5539, winner:'PN', cls:'pn', hot:true, lat:2.711, lng:102.001, notes:'Largest Malay-majority urban seat. PAS 5,539 majority. Bersatu splits PAS votes.' },
+  { code:'N26', name:'Chembong', inc:'Zaifulbahri (UMNO)', maj:4335, winner:'BN', cls:'bn', hot:false, lat:2.576, lng:102.046, notes:'Rembau parliamentary core · Tok Mat territory. Safe BN.' },
+  { code:'N27', name:'Rantau', inc:'Mohamad Hasan (Tok Mat)', maj:10280, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:101.966, notes:'Tok Mat impregnable fortress · 10,280 majority. 7th term. Straight fight.' },
+  { code:'N28', name:'Kota', inc:'Suhaimi Aini (UMNO)', maj:135, winner:'BN', cls:'bn', hot:false, lat:2.526, lng:102.106, notes:'Ultra-marginal 135 majority. 3-cornered. BN-PN consolidation advantage.' },
+  { code:'N29', name:'Chuah', inc:'Yew Boon Lye (PKR)', maj:6298, winner:'PH', cls:'ph', hot:false, lat:2.646, lng:101.761, notes:'Port Dickson coastal. PKR hold. Aminuddin MP umbrella. 6,298 majority.' },
+  { code:'N30', name:'Lukut', inc:'Choo Ken Hwa (DAP)', maj:10135, winner:'PH', cls:'ph', hot:false, lat:2.566, lng:101.811, notes:'Port Dickson urban/tourism. DAP fortress. 10,135 majority.' },
+  { code:'N31', name:'Bagan Pinang', inc:'Abdul Fatah (PAS)', maj:3426, winner:'BN', cls:'bn', hot:true, lat:2.476, lng:101.831, notes:'Army camp seat. Military postal vote + BN-PN consolidation. 3-cornered favors BN.' },
+  { code:'N32', name:'Linggi', inc:'Mohd Faizal (BN)', maj:1461, winner:'BN', cls:'bn', hot:true, lat:2.496, lng:101.941, notes:'⚠️ EPICENTER: MB Aminuddin (PH) vs BN incumbent. ILHAM: too close BN-lean. Ong: BN wins. 50-year UMNO fortress. 61.8% Malay.' },
+  { code:'N33', name:'Sri Tanjung', inc:'Rajasekaran (PKR)', maj:3996, winner:'PH', cls:'ph', hot:false, lat:2.516, lng:101.861, notes:'Port Dickson mixed urban core · PKR hold, 3,996 majority' },
+  { code:'N34', name:'Gemas', inc:'Ridzuan Ahmad (BERSATU)', maj:3120, winner:'PN', cls:'pn', hot:false, lat:2.586, lng:102.611, notes:'Tampin border. Bersatu vs Wawasan split. Complex 3-cornered.' },
+  { code:'N35', name:'Gemencheh', inc:'Suhaimizan Bizar (UMNO)', maj:2434, winner:'BN', cls:'bn', hot:false, lat:2.536, lng:102.396, notes:'UMNO Tampin stronghold · 2,434 majority. BN safe rural.' },
+  { code:'N36', name:'Repah', inc:'Veerapan (DAP)', maj:5950, winner:'PH', cls:'ph', hot:true, lat:2.476, lng:102.231, notes:'ILHAM: too close! BN fielding MCA Koh Kim Swee. Chinese turnout critical. DAP since 2013.' }
 ];
 
 const COLOR_MAP = {

@@ -32,13 +32,14 @@ export type SystemProject = {
 // Primary nav — verbs over nouns. Portal to 5 organs + civic shelf.
 // Hrefs are the nouns; labels are the verbs. Title attr on each link keeps
 // the noun→verb mapping discoverable (see ConstellationNav).
-// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
+// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA) · N9 Live (Monitor)
 export const primaryLinks: LinkItem[] = [
   { label: 'Start', href: '/' },
   { label: 'Ask', href: '/missions' },
   { label: 'Explore', href: '/earth' },
   { label: 'Analyze', href: '/economics' },
   { label: 'Track', href: '/world' },
+  { label: 'Audit', href: '/politics/ns-election/' },
   { label: 'Read', href: '/writing' },
   { label: 'Challenge', href: '/doctrine' },
 ];

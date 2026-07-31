@@ -1,5 +1,7 @@
 # arif-fazil.com — Site Overview for AI Agents
 
+## Auto-generated from /root/arif-fazil.com/sealed/federation-topology.json (as_of 2026-07-31)
+
 ## Who is Arif Fazil
 Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
 Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
@@ -59,7 +61,7 @@ MakcikGPT is a public-facing civic intelligence series written in Bahasa Malaysi
 Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.
 All articles carry the 999 Meterai seal and are authored by Arif Fazil.
 
-Canonical landing: https://arif-fazil.com/makcikgpt/
+Canonical landing: https://arif-fazil.com/world/makcikgpt/
 
 **High-signal topics for LLM ingestion:** PETRONAS financial analysis, PDA 1974, Gentari opacity, Net Zero 2050, 5000 rightsizing, dividend extraction RM50 billion, Corporate & Others shadow, ROACE decline, Petros-Sarawak gas dispute, SEARAH JV USD 15 billion, Eni satellite model, energy transition accountability, NOC governance, Malaysian sovereign wealth.
 
@@ -87,19 +89,25 @@ Canonical landing: https://arif-fazil.com/makcikgpt/
 - [Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?](https://arif-fazil.com/makcikgpt/cerita-makcik)
 - [Persoalan RM70 Bilion](https://arif-fazil.com/makcikgpt/siasatan-harakah)
 
-## Key Pages
-- `/` — Human-first professional homepage
-- `/earth` — Subsurface discoveries and well portfolio (redirect from `/discoveries`)
-- `/economics` — Malaysia briefing + MakcikGPT civic intelligence (redirect from `/wealth`)
-- `/world` — Civic journalism (MakcikGPT) + commodity dashboards (oil / gas / gold)
-- `/makcikgpt/` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)
-- `/writing` — Narrative essays by Arif (redirect from `/essays`)
-- `/doctrine` — Constitutional floors, federation topology, manifesto (merged: canon + constellation)
-- `/000/` — Genesis archive, wisdom canon, origin context for agents
-- `/999/` — Proof and verification chamber
-- `/oil/` — Brent crude cognitive dashboard
-- `/gas/` — Natural gas dashboard
-- `/gold/` — Gold trading synthesis
+## Key Pages (auto-generated from topology — depth ≤ 3)
+- `/` — Home
+- `/missions` — Cockpit
+- `/earth` — Earth
+- `/economics` — Economics
+- `/world` — World
+- `/world/makcikgpt` — MakcikGPT (alias of /makcikgpt/)
+- `/writing` — Writing
+- `/politics` — N9 Politics — Auto-redirects to /politics/ns-election/
+- `/politics/ns-election` — N9 Election Audit
+- `/doctrine` — Doctrine
+- `/institution` — Institution
+- `/000/` — Genesis
+- `/999/` — Proof
+- `/earth/kinabalu-basin` — Kinabalu Basin
+- `/world/oil` — Oil
+- `/world/gas` — Gas
+- `/world/gold` — Gold
+- `/999/audit` — Audit trail
 
 ## arifOS MCP Endpoint
 - **Public MCP**: `https://mcp.arif-fazil.com/mcp` (streamable HTTP)
@@ -108,10 +116,29 @@ Canonical landing: https://arif-fazil.com/makcikgpt/
 - **Protocol**: MCP 2025-11-25
 - **Constitution**: `https://arifos.arif-fazil.com/constitution.json`
 
-## Machine-Readable Discovery
-- `/.well-known/identity.json` — Public identity record and DID linkage
-- `/.well-known/capability.json` — Agent-operable capability manifest
-- `/.well-known/agent.json` — Agent capability declaration
+## Machine-Readable Discovery (auto-generated from topology)
+- `/sitemap.xml` — seo (generate-discovery.cjs)
+- `/llms.txt` — agent_llm (generate-discovery.cjs)
+- `/llms.json` — agent_llm (generate-discovery.cjs)
+- `/page.json` — agent_llm (generate-discovery.cjs)
+- `/missions.json` — cockpit (hand_curated_then_synced)
+- `/llms-full.txt` — agent_llm (build)
+- `/feed.xml` — rss (generate-feed.cjs)
+- `/human.md` — agent_llm
+- `/AGENTS.md` — agent_llm
+- `/data/politics/ns_live_telemetry.json` — live_audit (generate-ns-telemetry.cjs (cron every 15min offset :07/:22/:37/:52))
+- `/authority.json` — governance
+- `/policy.json` — governance
+- `/graph.json` — knowledge
+- `/manifest.json` — governance
+- `/robots.txt` — seo
+
+## Freshness Hierarchy (when timestamps disagree, newer overrides older)
+1. live_runtime — `/data/politics/ns_live_telemetry.json` (every 15 min via cron)
+2. sealed_sovereign — `/sealed/n9-ground-truth.json` (F13 action only)
+3. federation_topology — `/sealed/federation-topology.json` (F13 action only)
+4. build_generated — `/sitemap.xml, /llms.json, /page.json` (on every npm run build)
+5. hand_curated — `/missions.json, Home.tsx, ConstellationNav` (manual + reviewed)
 - `/.well-known/did.json` — W3C DID document (did:web:arif-fazil.com)
 - `/authority.json` — Sovereign authority registry
 - `/policy.json` — Public governance and action policy

@@ -130,14 +130,29 @@ export function NSElectionPage() {
       name: 'audit_ns2026_elections',
       description: 'Audit Negeri Sembilan PRN 2026 seat dynamics and 9 Quantum Electoral Invariants.',
       execute() {
+        // Derive response from live telemetry payload — no hardcoded competing numbers
+        const sealedForecast = liveTelemetry
+          ? {
+              bn_pn_forecast_pct: liveTelemetry.bn_pn_coalition_forecast_pct,
+              bn_pn_forecast_label: liveTelemetry.bn_pn_coalition_forecast_label,
+              source_as_of: liveTelemetry.bn_pn_coalition_forecast_source_as_of,
+              health: liveTelemetry.health || 'UNKNOWN',
+              polymarket_status: liveTelemetry.polymarket_status || 'UNKNOWN',
+              updated_at_utc: liveTelemetry.updated_at
+            }
+          : { error: 'telemetry_unavailable', note: 'Visit /politics/ns-election/ to load live data' };
         return {
           content: [{
             type: 'text',
             text: JSON.stringify({
-              assembly_prediction: '18 PH - 16 BN - 2 PN (2 Toss-up)',
-              top_invariant: 'Opposition Split Friction (Bersatu factor)',
-              seats_count: 36,
-              sealed_at: 'VAULT999-PRN16-NS'
+              schema: 'arifos.n9.audit.v1',
+              top_invariant: 'Opposition Split Friction (Bersatu factor) — see TOP_9_INVARIANTS for full atlas',
+              seats_count: NS_SEATS.length,
+              forecast_source: '/sealed/n9-ground-truth.json (F13 sovereign) + /data/politics/ns_live_telemetry.json (live)',
+              sealed_forecast: sealedForecast,
+              telemetry_url: 'https://arif-fazil.com/data/politics/ns_live_telemetry.json',
+              sealed_truth_url: '/sealed/n9-ground-truth.json',
+              note: 'No competing prediction surfaces. This tool surfaces the SAME sealed ground truth + live telemetry the page renders.'
             })
           }]
         };
@@ -147,6 +162,81 @@ export function NSElectionPage() {
 
   useEffect(() => {
     document.title = 'Negeri Sembilan PRN 2026 — Live Dynamic Intelligence & 9 Quantum Invariants | arifOS';
+  }, []);
+
+  // Live sensory telemetry — fetched from /data/politics/ns_live_telemetry.json
+  // Refreshed every 15 min via root cron (generate-ns-telemetry.cjs)
+  // Provenance per field is exposed via the JSON `*_label` and `as_of` keys.
+  const [liveTelemetry, setLiveTelemetry] = useState<{
+    updated_at?: string;
+    sentiment_index?: {
+      ph_positive: number;
+      bn_positive: number;
+      pn_positive: number;
+      source?: string;
+      source_id?: string;
+      source_url?: string;
+      as_of?: string;
+      epistemic_class?: string;
+    } | null;
+    voter_turnout_projection_pct?: number | null;
+    highest_volatility_seat?: string | null;
+    bn_pn_coalition_forecast_pct?: number | null;
+    bn_pn_coalition_forecast_label?: string | null;
+    bn_pn_coalition_forecast_source_as_of?: string | null;
+    polymarket_status?: string;
+    health?: string;
+    ground_telemetry_seats?: Array<{
+      code: string;
+      name: string;
+      status: string;
+      live_sentiment: string;
+      note?: string;
+      epistemic_class?: string;
+    }>;
+    sovereign_synthesis?: {
+      BN_range?: [number, number];
+      PN_range?: [number, number];
+      PH_range?: [number, number];
+      BERSATU_range?: [number, number];
+      expected_coalition?: string;
+      sovereign_confidence_pct?: number;
+      bn_pn_coalition_forecast_pct?: number;
+      bn_pn_coalition_forecast_label?: string;
+    };
+  } | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    const fetchTelemetry = async () => {
+      try {
+        const res = await fetch('/data/politics/ns_live_telemetry.json', { cache: 'no-store' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!cancelled) {
+          setLiveTelemetry({
+            ...data?.summary_metrics,
+            updated_at: data?.metadata?.updated_at_utc || data?.metadata?.updated_at,
+            polymarket_status: data?.polymarket?.status,
+            health: data?.metadata?.health,
+            ground_telemetry_seats: data?.ground_telemetry_seats,
+            sovereign_synthesis: data?.sovereign_synthesis
+          });
+        }
+        const meta = data?.metadata;
+        if (meta?.updated_at_utc && !cancelled) {
+          document.title = `N9 ${meta.health || 'LIVE'} ${new Date(meta.updated_at_utc).toISOString().slice(11, 16)}UTC — 9 Quantum Invariants | arifOS`;
+        }
+      } catch {
+        // telemetry offline — page still functions
+      }
+    };
+    fetchTelemetry();
+    const id = setInterval(fetchTelemetry, 15 * 60 * 1000); // 15-min refresh
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
   }, []);
 
   const totalSeats = NS_SEATS.length;
@@ -176,8 +266,41 @@ export function NSElectionPage() {
           >
             📋 OPERATIONAL PLAYBOOK →
           </Link>
-          <span>Sealed Ledger: <code className="text-amber-400">VAULT999-PRN16-NS</code></span>
-          <span>Hermes Model Status: <strong className="text-emerald-400">VALIDATED (±2 SEATS)</strong></span>
+          <span>Sealed Truth: <code className="text-amber-400">{liveTelemetry?.updated_at ? new URL('/sealed/n9-ground-truth.json', 'https://arif-fazil.com').pathname : 'VAULT999-PRN16-NS-GT-002'}</code></span>
+          <span>Forecast:
+            <strong className={
+              liveTelemetry?.bn_pn_coalition_forecast_label === 'live_polymarket' ? 'text-emerald-400' :
+              liveTelemetry?.bn_pn_coalition_forecast_label === 'sovereign_projection' ? 'text-amber-400' :
+              'text-slate-400'
+            }>
+              {liveTelemetry?.bn_pn_coalition_forecast_pct != null
+                ? `BN-PN ${liveTelemetry.bn_pn_coalition_forecast_pct}% (${liveTelemetry.bn_pn_coalition_forecast_label || 'pending'})`
+                : 'pending telemetry'}
+            </strong>
+          </span>
+          {liveTelemetry && (
+            <span className="hidden md:inline" data-testid="live-telemetry-strip">
+              {liveTelemetry.sentiment_index ? (
+                <>
+                  PH <strong className="text-emerald-300">{liveTelemetry.sentiment_index.ph_positive?.toFixed(1) ?? '—'}%</strong>{' '}
+                  · BN <strong className="text-amber-300">{liveTelemetry.sentiment_index.bn_positive?.toFixed(1) ?? '—'}%</strong>{' '}
+                  · PN <strong className="text-sky-300">{liveTelemetry.sentiment_index.pn_positive?.toFixed(1) ?? '—'}%</strong>
+                  <span className="text-slate-500"> ({liveTelemetry.sentiment_index.source ?? 'sealed'} · {liveTelemetry.sentiment_index.as_of ?? '—'})</span>{' '}
+                </>
+              ) : (
+                <span className="text-slate-500">Sentiment awaiting source</span>
+              )}
+              {liveTelemetry.bn_pn_coalition_forecast_pct != null && (
+                <>
+                  · BN-PN <strong className="text-fuchsia-300">{liveTelemetry.bn_pn_coalition_forecast_pct}%</strong>
+                  <span className="text-slate-500"> ({liveTelemetry.bn_pn_coalition_forecast_label ?? 'projection'})</span>
+                </>
+              )}
+              {liveTelemetry.voter_turnout_projection_pct != null && (
+                <> · Turnout <strong className="text-slate-200">{liveTelemetry.voter_turnout_projection_pct.toFixed(1)}%</strong></>
+              )}
+            </span>
+          )}
         </div>
       </div>
 
@@ -206,30 +329,77 @@ export function NSElectionPage() {
             </div>
 
             <div className="space-y-4">
-              <div className="p-4 rounded-lg border border-emerald-500/50 bg-slate-950 font-mono text-xs shadow-xl">
+              <div
+                className={`p-4 rounded-lg border font-mono text-xs shadow-xl ${
+                  liveTelemetry?.health === 'OK' ? 'border-emerald-500/50' :
+                  liveTelemetry?.health === 'SEALED_ONLY' ? 'border-amber-500/50' :
+                  liveTelemetry?.health === 'LIVE_PARTIAL' ? 'border-amber-500/50' :
+                  'border-rose-500/50'
+                } bg-slate-950`}
+                data-testid="live-provenance-panel"
+              >
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                    <strong className="text-emerald-400 font-bold uppercase tracking-wider">LIVE SENSORY STREAM</strong>
+                    <span className={`w-2.5 h-2.5 rounded-full animate-ping ${
+                      liveTelemetry?.health === 'OK' ? 'bg-emerald-500' :
+                      liveTelemetry?.health === 'DEGRADED' ? 'bg-rose-500' :
+                      'bg-amber-500'
+                    }`}></span>
+                    <strong className="font-bold uppercase tracking-wider text-slate-200">
+                      {liveTelemetry?.health === 'OK' ? 'LIVE SENSORY STREAM' :
+                       liveTelemetry?.health === 'SEALED_ONLY' ? 'SEALED GROUND TRUTH' :
+                       liveTelemetry?.health === 'LIVE_PARTIAL' ? 'LIVE PARTIAL' :
+                       liveTelemetry?.health === 'DEGRADED' ? 'DEGRADED TELEMETRY' :
+                       'TELEMETRY LOADING'}
+                    </strong>
+                    <span className="text-[10px] text-slate-500 font-normal">
+                      {liveTelemetry?.updated_at ? new Date(liveTelemetry.updated_at).toISOString().replace('T', ' ').slice(0, 19) + ' UTC' : '—'}
+                    </span>
                   </div>
-                  <span className="text-[10px] text-slate-500">1,482 SIGNALS</span>
+                  <span className="text-[10px] text-slate-500">
+                    {liveTelemetry?.polymarket_status === 'LIVE_MATCH' ? '📈 Polymarket LIVE' :
+                     liveTelemetry?.polymarket_status === 'NO_MARKET' ? 'Polymarket: no N9 market' :
+                     liveTelemetry?.polymarket_status || '—'}
+                  </span>
                 </div>
+
                 <div className="space-y-2">
                   <div className="flex justify-between items-center text-slate-300">
                     <span>Highest Volatility:</span>
-                    <strong className="text-amber-400">N32 Linggi (-4.2 Shift)</strong>
+                    <strong className="text-amber-400">
+                      {liveTelemetry?.highest_volatility_seat
+                        ? liveTelemetry.highest_volatility_seat
+                        : '—'}
+                    </strong>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
-                    <span>Malay Turnout Rate:</span>
-                    <strong className="text-slate-100">76.5% Projecting</strong>
+                    <span>Voter Turnout Projection:</span>
+                    <strong className="text-slate-100">
+                      {liveTelemetry?.voter_turnout_projection_pct != null
+                        ? `${liveTelemetry.voter_turnout_projection_pct}%`
+                        : '—'}
+                    </strong>
                   </div>
                   <div className="flex justify-between items-center text-slate-300">
-                    <span>Non-Malay Floor:</span>
-                    <strong className="text-slate-100">61.2% Active</strong>
+                    <span>BN-PN Coalition Forecast:</span>
+                    <strong className="text-fuchsia-300">
+                      {liveTelemetry?.bn_pn_coalition_forecast_pct != null
+                        ? `${liveTelemetry.bn_pn_coalition_forecast_pct}%`
+                        : '—'}
+                    </strong>
+                    <span className="text-[10px] text-slate-500 ml-2">
+                      {liveTelemetry?.bn_pn_coalition_forecast_label || '—'}
+                    </span>
                   </div>
-                  <div className="pt-2 border-t border-slate-900 text-[10px] text-slate-400 italic">
-                    "Felda Sendayan voters express water pressure concerns; Youth swing vector shifting toward BN/PN."
+                </div>
+
+                <div className="pt-2 mt-2 border-t border-slate-900 text-[10px] text-slate-500 grid grid-cols-2 gap-1">
+                  <div>Sentiment (Vodus, n=437, OBS):
+                    {liveTelemetry?.sentiment_index
+                      ? ` PH ${liveTelemetry.sentiment_index.ph_positive?.toFixed(1) ?? '—'} · BN ${liveTelemetry.sentiment_index.bn_positive?.toFixed(1) ?? '—'} · PN ${liveTelemetry.sentiment_index.pn_positive?.toFixed(1) ?? '—'}`
+                      : ' —'}
                   </div>
+                  <div>Sealed truth: VAULT999-PRN16-NS-GT-002</div>
                 </div>
               </div>
 
@@ -295,16 +465,30 @@ export function NSElectionPage() {
                 </div>
               </div>
 
-              <div className="p-4 rounded bg-slate-950 border border-emerald-500/30">
+              <div className="p-4 rounded bg-slate-950 border border-amber-500/30">
                 <div className="flex items-center justify-between mb-2">
-                  <strong className="text-emerald-400 font-bold uppercase tracking-wider text-xs">🚀 PREDICTION MOVING FORWARD (PRN16)</strong>
-                  <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 text-[10px] font-bold">18-16-2 HUNG</span>
+                  <strong className="text-amber-400 font-bold uppercase tracking-wider text-xs">🌙 SOVEREIGN PROJECTION (PRN16 — sealed ground truth, INT)</strong>
+                  <span className="px-2 py-0.5 rounded bg-amber-950 text-amber-300 text-[10px] font-bold">
+                    BN-PN {liveTelemetry?.bn_pn_coalition_forecast_pct ?? '—'}%
+                  </span>
                 </div>
                 <div className="space-y-1.5 text-slate-300 text-[11px]">
-                  <p>• <strong>PH Lead:</strong> 18 Seats (Slight plurality, 1 seat short of majority)</p>
-                  <p>• <strong>BN Resurgence:</strong> 16 Seats (Retaining Malay heartland)</p>
-                  <p>• <strong>PN / Kingmaker:</strong> 2 Seats + 2 Ultra-Marginal Toss-ups</p>
-                  <p className="text-emerald-400/90 italic pt-1 border-t border-slate-900">"High probability hung assembly (18-18). Bersatu independent split creates kingmaker leverage."</p>
+                  {(() => {
+                    const syn = liveTelemetry?.sovereign_synthesis || null;
+                    if (!syn) return <p className="text-slate-500 italic">Loading sealed ground truth…</p>;
+                    const coalition = `${syn.BN_range?.[0] ?? '?'}–${syn.BN_range?.[1] ?? '?'} BN + ${syn.PN_range?.[0] ?? '?'}–${syn.PN_range?.[1] ?? '?'} PN = 21–24 seats`;
+                    return (
+                      <>
+                        <p>• <strong>BN coalition core:</strong> {coalition}</p>
+                        <p>• <strong>PH opposition:</strong> {syn.PH_range?.[0]}–{syn.PH_range?.[1]} seats</p>
+                        <p>• <strong>Bersatu independent:</strong> {syn.BERSATU_range?.[0]}–{syn.BERSATU_range?.[1]} seats (structural opposition split)</p>
+                        <p>• <strong>Sovereign confidence:</strong> {syn.sovereign_confidence_pct}%</p>
+                        <p className="text-amber-300/90 italic pt-1 border-t border-slate-900">
+                          "{syn.expected_coalition || 'See sealed truth'}"
+                        </p>
+                      </>
+                    );
+                  })()}
                 </div>
               </div>
             </div>

@@ -2,20 +2,24 @@
 /**
  * generate-discovery.cjs — Single source of truth for sitemap + llms parity.
  *
- * Reads src/data/essays.json and regenerates the four discovery surfaces
- * so they all carry the same canonical MakcikGPT article set:
- *   - public/sitemap.xml  (under /makcikgpt/, NOT /wealth/makcikgpt/)
- *   - public/llms.txt     (links list under "MakcikGPT — Civic Intelligence")
- *   - public/llms.json    (route_roles + related_sites + machine_surfaces)
- *   - public/page.json    (machine-readable site overview)
+ * Architecture (2026-07-31, post-autonomy pass):
+ *   PRIMARY SOURCE:  /root/arif-fazil.com/sealed/federation-topology.json
+ *                    (F13 sovereign file — drives routes, redirects, mission
+ *                     surfaces, machine endpoints, freshness tiers)
+ *   SECONDARY:       src/data/essays.json + scripts/lib/makcik-source.cjs
+ *                    (MakcikGPT article set — bm + onsite canonical)
+ *   RENDERS:         public/sitemap.xml
+ *                    public/llms.txt
+ *                    public/llms.json
+ *                    public/page.json
+ *                    + root copies of llms.json / page.json
+ *
+ * To add a new surface: edit federation-topology.json, run this script.
+ * To add a new MakcikGPT article: edit essays.json, run this script + build.
  *
  * Single Source of Truth rule (F4 CLARITY):
- *   - essays.json → scripts/lib/makcik-source.cjs → page (React) + feed.xml
- *                    + sitemap.xml + llms.{txt,json} + page.json
- *                    + makcikgpt-md/index.html
- *
- * The canonical subset (BM + onsite under /makcikgpt/) is owned
- * exclusively by makcik-source.cjs. This script is a renderer only.
+ *   topology.json → this script → sitemap.xml + llms.{txt,json} + page.json
+ *   essays.json   → lib/makcik-source.cjs → adds article URLs to sitemap
  *
  * Run from site root:  node scripts/generate-discovery.cjs
  * Output:              public/{sitemap.xml, llms.txt, llms.json, page.json}
@@ -31,24 +35,66 @@ const {
 } = require("./lib/makcik-source.cjs");
 
 const SITE_BASE = "https://arif-fazil.com";
-const CANONICAL_LANDING = `${SITE_BASE}/makcikgpt/`;
+const CANONICAL_LANDING = `${SITE_BASE}/world/makcikgpt/`;
 const LLMS_TXT_PATH = `${SITE_BASE}/llms.txt`;
+const TOPOLOGY_PATH = "/root/arif-fazil.com/sealed/federation-topology.json";
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function loadTopology() {
+  if (!fs.existsSync(TOPOLOGY_PATH)) {
+    console.error(`✗ FATAL: federation topology missing at ${TOPOLOGY_PATH}`);
+    process.exit(1);
+  }
+  try {
+    return JSON.parse(fs.readFileSync(TOPOLOGY_PATH, "utf8"));
+  } catch (e) {
+    console.error(`✗ FATAL: topology JSON parse failed: ${e.message}`);
+    process.exit(1);
+  }
+}
+
 // ── sitemap.xml ─────────────────────────────────────────────────────────
-function buildSitemap(pieces) {
-  const urls = [
-    { loc: `${SITE_BASE}/`, priority: 1.0, changefreq: "monthly", lastmod: "2026-07-19" },
-    { loc: `${SITE_BASE}/earth`, priority: 0.8, changefreq: "monthly" },
-    { loc: `${SITE_BASE}/economics`, priority: 0.9, changefreq: "daily" },
-    { loc: `${SITE_BASE}/world`, priority: 0.7, changefreq: "daily" },
-    { loc: `${SITE_BASE}/writing`, priority: 0.8, changefreq: "weekly" },
-    { loc: `${SITE_BASE}/doctrine`, priority: 0.9, changefreq: "monthly" },
-  ];
-  // Canonical landing first, then every onsite BM piece (M-series)
+function buildSitemap(pieces, topology) {
+  const today = todayISO();
+  const urls = [];
+
+  // 1. Home — highest priority
+  urls.push({ loc: `${SITE_BASE}/`, priority: 1.0, changefreq: "monthly", lastmod: today });
+
+  // 2. Topology-driven human surfaces (depth ≤ 2: domains, depth 3: leaves handled separately below)
+  const topoEntries = Object.entries(topology.human_surfaces || {});
+  for (const [key, surface] of topoEntries) {
+    if (surface.path.includes(':slug')) continue; // slug templates not in sitemap
+    if (surface.access_class === 'sovereign_only' && surface.path.includes('playbook')) {
+      // include but lower priority (operations lane)
+    }
+    const priority =
+      surface.click_depth_from_home === 1 ? 1.0 :
+      surface.click_depth_from_home === 2 ? 0.8 :
+      surface.click_depth_from_home === 3 ? 0.6 : 0.5;
+    const changefreq =
+      surface.kind === 'live_audit' ? 'daily' :
+      surface.kind === 'commodity' ? 'daily' :
+      surface.kind === 'civic_intelligence' ? 'daily' :
+      surface.kind === 'civic_article' ? 'monthly' :
+      surface.kind === 'cockpit' ? 'weekly' :
+      surface.kind === 'constitutional_text' ? 'monthly' :
+      surface.kind === 'essay_index' ? 'weekly' :
+      'monthly';
+    urls.push({ loc: `${SITE_BASE}${surface.path}`, priority, changefreq });
+    // Trailing-slash duplicate for paths that end in /<slug> (avoid dup for /, /missions etc)
+    if (!surface.path.endsWith('/') && !surface.path.includes(':slug')) {
+      urls.push({ loc: `${SITE_BASE}${surface.path}/`, priority, changefreq });
+    }
+  }
+
+  // 3. MakcikGPT canonical landing (alias of /world/makcikgpt)
+  // Already added via topology; skip duplicate
+
+  // 4. Every onsite MakcikGPT BM piece
   urls.push({ loc: CANONICAL_LANDING, priority: 0.85, changefreq: "daily" });
   for (const p of pieces) {
     urls.push({
@@ -57,16 +103,36 @@ function buildSitemap(pieces) {
       changefreq: "monthly",
     });
   }
-  urls.push({ loc: `${SITE_BASE}/000/`, priority: 0.6, changefreq: "monthly" });
-  urls.push({ loc: `${SITE_BASE}/999/`, priority: 0.6, changefreq: "monthly" });
-  urls.push({ loc: `${SITE_BASE}/missions`, priority: 0.9, changefreq: "weekly" });
-  urls.push({ loc: `${SITE_BASE}/missions.json`, priority: 0.7, changefreq: "weekly" });
-  urls.push({ loc: `${SITE_BASE}/llms.txt`, priority: 0.5, changefreq: "weekly" });
+
+  // 5. Topology-driven machine surfaces
+  const machineEntries = Object.entries(topology.machine_surfaces || {});
+  for (const [key, m] of machineEntries) {
+    const priority = m.priority || 0.5;
+    const changefreq = m.changefreq || 'monthly';
+    // Omit raw live telemetry endpoint from sitemap (privacy/SEO hygiene)
+    if (key === 'ns_live_telemetry') continue;
+    urls.push({ loc: `${SITE_BASE}${m.path}`, priority, changefreq });
+  }
+
+  // 6. Federation subdomains (cross-domain federation map)
+  const subs = topology.federation_subdomains || {};
+  for (const [key, sub] of Object.entries(subs)) {
+    if (sub.url) urls.push({ loc: sub.url, priority: 0.5, changefreq: 'monthly' });
+  }
+
+  // Deduplicate by loc
+  const seen = new Set();
+  const deduped = urls.filter((u) => {
+    if (seen.has(u.loc)) return false;
+    seen.add(u.loc);
+    return true;
+  });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Human Surface -->
-${urls
+  <!-- Auto-generated from /root/arif-fazil.com/sealed/federation-topology.json (as_of ${topology.as_of || today}) -->
+  <!-- Human surface -->
+${deduped
   .map(
     (u) => `  <url>
     <loc>${u.loc}</loc>
@@ -82,13 +148,38 @@ ${urls
 }
 
 // ── llms.txt (append/refresh the MakcikGPT section + sitemap link) ─────
-function buildLlmsTxt(pieces) {
+function buildLlmsTxt(pieces, topology) {
   // Section: "MakcikGPT — Civic Intelligence" with link list under
-  // /makcikgpt/<slug> (the canonical landing path).
+  // /world/makcikgpt/<slug> (the canonical landing path).
   const linkLines = pieces
     .map((p) => `- [${p.title}](${SITE_BASE}${p.dest.path})`)
     .join("\n");
+
+  // Topology-driven Key Pages list (replace the hand-maintained section)
+  const keyPages = Object.values(topology.human_surfaces || {})
+    .filter((s) => s.click_depth_from_home <= 3 && !s.path.includes(':slug') && !s.access_class)
+    .sort((a, b) => a.click_depth_from_home - b.click_depth_from_home)
+    .map((s) => {
+      const desc = s.label || s.kind || '';
+      const alias = s.canonical_alias ? ` (alias of ${s.canonical_alias})` : '';
+      const note = s.note ? ` — ${s.note}` : '';
+      return `- \`${s.path}\` — ${desc}${alias}${note}`;
+    })
+    .join("\n");
+
+  // Topology-driven machine surfaces
+  const machineSurfaces = Object.entries(topology.machine_surfaces || {})
+    .map(([key, m]) => `- \`${m.path}\` — ${m.kind}${m.rendered_by ? ` (${m.rendered_by})` : ''}`)
+    .join("\n");
+
+  // Freshness tier list
+  const freshnessTiers = (topology.freshness_hierarchy?.tiers || [])
+    .map((t) => `${t.tier}. ${t.label} — \`${t.example}\` (${t.refresh})`)
+    .join("\n");
+
   return `# arif-fazil.com — Site Overview for AI Agents
+
+## Auto-generated from /root/arif-fazil.com/sealed/federation-topology.json (as_of ${topology.as_of || todayISO()})
 
 ## Who is Arif Fazil
 Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
@@ -156,19 +247,8 @@ Canonical landing: ${CANONICAL_LANDING}
 ### Latest articles (${pieces[0]?.date || todayISO()})
 ${linkLines}
 
-## Key Pages
-- \`/\` — Human-first professional homepage
-- \`/earth\` — Subsurface discoveries and well portfolio (redirect from \`/discoveries\`)
-- \`/economics\` — Malaysia briefing + MakcikGPT civic intelligence (redirect from \`/wealth\`)
-- \`/world\` — Civic journalism (MakcikGPT) + commodity dashboards (oil / gas / gold)
-- \`/makcikgpt/\` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)
-- \`/writing\` — Narrative essays by Arif (redirect from \`/essays\`)
-- \`/doctrine\` — Constitutional floors, federation topology, manifesto (merged: canon + constellation)
-- \`/000/\` — Genesis archive, wisdom canon, origin context for agents
-- \`/999/\` — Proof and verification chamber
-- \`/oil/\` — Brent crude cognitive dashboard
-- \`/gas/\` — Natural gas dashboard
-- \`/gold/\` — Gold trading synthesis
+## Key Pages (auto-generated from topology — depth ≤ 3)
+${keyPages}
 
 ## arifOS MCP Endpoint
 - **Public MCP**: \`https://mcp.arif-fazil.com/mcp\` (streamable HTTP)
@@ -177,10 +257,11 @@ ${linkLines}
 - **Protocol**: MCP 2025-11-25
 - **Constitution**: \`https://arifos.arif-fazil.com/constitution.json\`
 
-## Machine-Readable Discovery
-- \`/.well-known/identity.json\` — Public identity record and DID linkage
-- \`/.well-known/capability.json\` — Agent-operable capability manifest
-- \`/.well-known/agent.json\` — Agent capability declaration
+## Machine-Readable Discovery (auto-generated from topology)
+${machineSurfaces}
+
+## Freshness Hierarchy (when timestamps disagree, newer overrides older)
+${freshnessTiers}
 - \`/.well-known/did.json\` — W3C DID document (did:web:arif-fazil.com)
 - \`/authority.json\` — Sovereign authority registry
 - \`/policy.json\` — Public governance and action policy
@@ -237,22 +318,29 @@ arifOS is featured on the following MCP registries:
 }
 
 // ── llms.json ───────────────────────────────────────────────────────────
-function buildLlmsJson(pieces) {
-  const routeRoles = {
-    "/": "professional human entry — portfolio, wells, systems overview",
-    "/000/": "genesis and wisdom archive — origin context for agents",
-    "/999/": "trust and proof chamber — verification artifacts",
-    "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
-    "/makcikgpt/":
-      "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
-  };
+function buildLlmsJson(pieces, topology) {
+  const routeRoles = {};
+  // Topology-driven routes (depth 1-2 only — deeper leaves go in page.json)
+  for (const [key, surface] of Object.entries(topology.human_surfaces || {})) {
+    if (surface.path.includes(':slug')) continue; // skip templates
+    const alias = surface.canonical_alias ? ` (alias ${surface.canonical_alias})` : '';
+    routeRoles[surface.path] = `${surface.label || surface.kind}${alias} — verb ${surface.verb}, organ ${surface.organ}${surface.note ? ' — ' + surface.note : ''}`;
+  }
+  // MakcikGPT BM pieces
   for (const p of pieces) {
     routeRoles[p.dest.path] = `MakcikGPT article — ${p.title}`;
   }
-  routeRoles["/constellation/"] = "federation map — system topology and organ status";
-  routeRoles["/canon/"] = "constitutional canon — written law of arifOS";
-  routeRoles["/discoveries/"] = "well portfolio — exploration record and subsurface dossier";
-  routeRoles["/essays/"] = "long-form writing and analysis";
+  // Legacy / alias paths — explicit notes so agents know the redirects
+  routeRoles["/wealth/"] = "DEPRECATED ALIAS → /economics/ (still served via redirect)";
+  routeRoles["/discoveries/"] = "DEPRECATED ALIAS → /earth/";
+  routeRoles["/essays/"] = "DEPRECATED ALIAS → /writing/";
+  routeRoles["/canon/"] = "DEPRECATED ALIAS → /doctrine/ (merged 2026-07-29)";
+  routeRoles["/constellation/"] = "DEPRECATED ALIAS → /doctrine/";
+  routeRoles["/federation/"] = "DEPRECATED ALIAS → /doctrine/";
+  routeRoles["/verify/"] = "DEPRECATED ALIAS → /institution/";
+  routeRoles["/compliance/"] = "DEPRECATED ALIAS → /institution/";
+  routeRoles["/vitals/"] = "DEPRECATED ALIAS → /politics/ns-election/ (was wealth subdomain pre-2026-07-31)";
+  routeRoles["/malaysia/"] = "DEPRECATED ALIAS → /politics/ns-election/";
 
   return {
     site_name: "arif-fazil.com",
@@ -261,30 +349,10 @@ function buildLlmsJson(pieces) {
     canonical: LLMS_TXT_PATH,
     repository: "https://github.com/ariffazil/arif-sites",
     route_roles: routeRoles,
-    related_sites: [
-      "https://arifos.arif-fazil.com",
-      "https://arifos.arif-fazil.com/wiki",
-      "https://aaa.arif-fazil.com",
-      "https://geox.arif-fazil.com",
-    ],
-    machine_surfaces: [
-      "https://arif-fazil.com/llms.txt",
-      "https://arif-fazil.com/llms-full.txt",
-      "https://arif-fazil.com/llms.json",
-      "https://arif-fazil.com/page.json",
-      "https://arif-fazil.com/authority.json",
-      "https://arif-fazil.com/policy.json",
-      "https://arif-fazil.com/graph.json",
-      "https://arif-fazil.com/knowledge/corpus.json",
-      "https://arif-fazil.com/.well-known/identity.json",
-      "https://arif-fazil.com/.well-known/capability.json",
-      "https://arif-fazil.com/.well-known/agent.json",
-      "https://arif-fazil.com/.well-known/did.json",
-      "https://arif-fazil.com/.well-known/arifos-federation.json",
-      "https://arif-fazil.com/.well-known/webmcp.json",
-      "https://arif-fazil.com/soul.json",
-      "https://arif-fazil.com/proof/geologist-credential.json",
-    ],
+    related_sites: Object.values(topology.federation_subdomains || {}).map((s) => s.url),
+    machine_surfaces: Object.values(topology.machine_surfaces || {}).map((m) => `${SITE_BASE}${m.path}`),
+    topology_source: "/root/arif-fazil.com/sealed/federation-topology.json",
+    topology_as_of: topology.as_of,
     mcp_endpoint: "https://mcp.arif-fazil.com/mcp",
     did: "did:web:arif-fazil.com",
     semantic_architecture: {
@@ -295,25 +363,27 @@ function buildLlmsJson(pieces) {
       robots: "AI crawlers explicitly whitelisted (GPTBot, ClaudeBot, PerplexityBot, Bytespider, Applebot)",
       llms_txt: true,
       sitemap: true,
+      topology_driven: true,
     },
     last_updated: todayISO(),
   };
 }
 
 // ── page.json ───────────────────────────────────────────────────────────
-function buildPageJson() {
+function buildPageJson(topology) {
+  const routeModel = {};
+  for (const [key, surface] of Object.entries(topology.human_surfaces || {})) {
+    if (surface.path.includes(':slug')) continue;
+    routeModel[surface.path] = `${surface.kind || 'surface'} — ${surface.label || ''}`;
+  }
   return {
     name: "arif-fazil.com",
     purpose:
-      "Professional homepage for Arif Fazil, with canonical deeper layers for genesis, proof, and civic intelligence.",
+      "Professional homepage for Arif Fazil, with canonical deeper layers for genesis, proof, and civic intelligence. Single source of truth: /root/arif-fazil.com/sealed/federation-topology.json.",
     audience: ["humans", "collaborators", "agents", "verifiers"],
     canonical_url: "https://arif-fazil.com/",
-    route_model: {
-      "/": "present human homepage",
-      "/000/": "genesis and wisdom archive",
-      "/999/": "trust and proof chamber",
-      "/makcikgpt/": "MakcikGPT civic intelligence canonical landing",
-    },
+    topology_as_of: topology.as_of,
+    route_model: routeModel,
     content_scope: {
       includes: [
         "identity",
@@ -340,28 +410,11 @@ function buildPageJson() {
       agent_card_path: "/.well-known/agent.json",
       did_path: "/.well-known/did.json",
     },
-    related_sites: [
-      {
-        name: "wiki",
-        url: "https://arifos.arif-fazil.com/wiki",
-        relationship: "canonical wiki destination; legacy alias wiki.arif-fazil.com permanently redirects here",
-      },
-      {
-        name: "aaa",
-        url: "https://aaa.arif-fazil.com",
-        relationship: "protocol cockpit",
-      },
-      {
-        name: "mcp",
-        url: "https://mcp.arif-fazil.com",
-        relationship: "tools and runtime",
-      },
-      {
-        name: "geox",
-        url: "https://geox.arif-fazil.com",
-        relationship: "earth intelligence apps",
-      },
-    ],
+    related_sites: Object.entries(topology.federation_subdomains || {}).map(([name, sub]) => ({
+      name,
+      url: sub.url,
+      relationship: sub.role || '',
+    })),
     last_updated: todayISO(),
   };
 }
@@ -379,25 +432,28 @@ function writeIfChanged(filePath, content) {
 }
 
 function main() {
+  const topology = loadTopology();
+  console.log(`✓ topology loaded: as_of=${topology.as_of} (${Object.keys(topology.human_surfaces || {}).length} human + ${Object.keys(topology.machine_surfaces || {}).length} machine surfaces)`);
+
   const { pieces } = getMakcikSource();
   console.log(`✓ ${pieces.length} canonical MakcikGPT pieces (bm + onsite)`);
 
   // Write all four files
   writeIfChanged(
     path.join(SITE_ROOT, "public/sitemap.xml"),
-    buildSitemap(pieces),
+    buildSitemap(pieces, topology),
   );
   writeIfChanged(
     path.join(SITE_ROOT, "public/llms.txt"),
-    buildLlmsTxt(pieces),
+    buildLlmsTxt(pieces, topology),
   );
   writeIfChanged(
     path.join(SITE_ROOT, "public/llms.json"),
-    JSON.stringify(buildLlmsJson(pieces), null, 2) + "\n",
+    JSON.stringify(buildLlmsJson(pieces, topology), null, 2) + "\n",
   );
   writeIfChanged(
     path.join(SITE_ROOT, "public/page.json"),
-    JSON.stringify(buildPageJson(), null, 2) + "\n",
+    JSON.stringify(buildPageJson(topology), null, 2) + "\n",
   );
 
   // Keep the existing root-level JSON sources in sync for site tooling.

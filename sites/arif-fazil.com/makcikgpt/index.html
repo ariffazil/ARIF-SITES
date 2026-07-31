@@ -1,402 +1,363 @@
 <!DOCTYPE html>
-<html lang="ms" data-ring="SOUL">
+<html lang="ms">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MakcikGPT — AI Petronas | arif-fazil.com</title>
-<meta name="description" content="MakcikGPT — AI Petronas. Bahasa Malaysia. Mature feminine wisdom. Ask about PETRONAS DNA, governance, and energy transition.">
+<title>MakcikGPT — Civic Intelligence in Bahasa Makcik | arif-fazil.com</title>
+<meta name="description" content="Civic journalism in Bahasa Makcik. Malaysian sovereignty, resource governance, institutional integrity, technology accountability. 22 articles, 5 series, seal 999.">
 <link rel="canonical" href="https://arif-fazil.com/makcikgpt/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Sans+Malay:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/_shared/design-system/tokens.css">
-<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👵</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"MakcikGPT — Civic Intelligence","url":"https://arif-fazil.com/makcikgpt/","inLanguage":"ms","author":{"@type":"Person","name":"Muhammad Arif bin Fazil","url":"https://arif-fazil.com/"}}
+</script>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #0d0806; --surface: #1a1210; --surface2: #231a16; --surface3: #2c2018;
-    --border: #3a2a20; --border2: #4a3828;
-    --gold: #d4a853; --gold-dim: #8a6a30; --gold-bright: #f0c840; --gold-bg: rgba(212,168,83,0.08);
-    --text: #f0e6d6; --text-dim: #8a7a6a; --text-mid: #b0a090;
-    --green: #22c55e; --red: #ef4444; --cyan: #00d4aa;
-    --makcik-bg: #2a1a10; --makcik-border: #4a3020;
-    --user-bg: #1a2a20; --user-border: #2a4a38;
-    --font-sans: 'Noto Sans Malay', 'IBM Plex Sans', system-ui, sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-    --font-display: 'DM Serif Display', serif;
-  }
-  html, body { height: 100%; }
-  body {
-    background: var(--bg); color: var(--text); font-family: var(--font-sans);
-    display: flex; flex-direction: column;
-    background-image: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(212,168,83,0.04) 0%, transparent 60%);
-  }
+/* ═══ PRIMER DARK TOKENS — Red, Blue, Yellow ═══ */
+:root{
+  --bg:#0a0a0a; --bg-alt:#111111; --bg-card:#1a1a1a; --bg-hover:#242424;
+  --border:#2a2a2a; --border-light:#1e1e1e;
+  --fg:#f0f0f0; --fg-muted:#9a9a9a; --fg-subtle:#666666;
+  --red:#e0301e; --blue:#1f3fd4; --yellow:#f2b705;
+  --body:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--yellow);color:var(--bg)}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
 
-  /* ── HEADER ── */
-  .header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); flex-shrink: 0; }
-  .header-left { display: flex; align-items: center; gap: 12px; }
-  .back-link { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim); text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em; }
-  .back-link:hover { color: var(--gold); }
-  .title { display: flex; align-items: center; gap: 10px; }
-  .title-icon { font-size: 1.4rem; }
-  .title-text { font-family: var(--font-display); font-size: 1.2rem; color: var(--gold); }
-  .title-sub { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
-  .persona-badge { font-family: var(--font-mono); font-size: 0.55rem; color: var(--gold-dim); padding: 3px 8px; border: 1px solid var(--border); background: var(--surface); }
-  .corpus-status { font-family: var(--font-mono); font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.05em; }
+/* ── TOPBAR ── */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:12px}
+.topbar-links{display:flex;gap:4px}
+.topbar-links a{padding:6px 12px;border-radius:6px;color:var(--fg-muted);transition:all .15s}
+.topbar-links a:hover{color:var(--fg);background:var(--bg-hover)}
+.topbar-sig{display:flex;align-items:center;gap:8px;color:var(--fg-subtle)}
+.topbar-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.topbar-dot.r{background:var(--red)}.topbar-dot.b{background:var(--blue)}.topbar-dot.y{background:var(--yellow)}
 
-  /* ── CHAT AREA ── */
-  .chat-area { flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-  .chat-area::-webkit-scrollbar { width: 4px; }
-  .chat-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+/* ── HERO ── */
+.hero{position:relative;padding:80px 0 64px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(30,63,212,.06),transparent);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.03em}
+.hero h1 .c-b{color:var(--blue)}.hero h1 .c-r{color:var(--red)}.hero h1 .c-y{color:var(--yellow)}
+.hero-sub{font-size:14px;color:var(--fg-muted);margin-top:16px;font-family:var(--mono);letter-spacing:.02em}
+.hero-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.hero-tags span{padding:4px 10px;border-radius:20px;font-size:11px;font-family:var(--mono);font-weight:500;border:1px solid var(--border);color:var(--fg-muted);background:var(--bg-alt)}
+.hero-visual{position:relative;height:320px;border-radius:12px;border:1px solid var(--border);background:var(--bg-alt);overflow:hidden}
+#hero-canvas{width:100%;height:100%;display:block}
 
-  .msg { display: flex; gap: 12px; max-width: 85%; animation: fadeIn 0.3s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-  .msg.makcik { align-self: flex-start; }
-  .msg.user { align-self: flex-end; flex-direction: row-reverse; }
-  .msg-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-  .msg.makcik .msg-avatar { background: var(--makcik-bg); border: 1px solid var(--makcik-border); }
-  .msg.user .msg-avatar { background: var(--user-bg); border: 1px solid var(--user-border); }
-  .msg-bubble { padding: 1rem 1.25rem; border-radius: 12px; line-height: 1.7; font-size: 0.9rem; }
-  .msg.makcik .msg-bubble { background: var(--makcik-bg); border: 1px solid var(--makcik-border); border-top-left-radius: 4px; }
-  .msg.user .msg-bubble { background: var(--user-bg); border: 1px solid var(--user-border); border-top-right-radius: 4px; }
-  .msg-name { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
-  .msg-text { color: var(--text); }
-  .msg-text strong { color: var(--gold); }
-  .msg-text code { font-family: var(--font-mono); font-size: 0.8rem; background: var(--surface3); padding: 1px 5px; border-radius: 3px; }
-  .msg-cite { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
-  .msg-cite .seal { color: var(--gold-dim); }
+/* ── STATS ROW ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:8px;border:1px solid var(--border)}
+.stat{background:var(--bg-card);padding:24px 20px;text-align:center}
+.stat b{display:block;font-size:32px;font-weight:800;letter-spacing:-.02em}
+.stat b.c-r{color:var(--red)}.stat b.c-b{color:var(--blue)}.stat b.c-y{color:var(--yellow)}
+.stat span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--fg-muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px;display:block}
 
-  /* Typing indicator */
-  .typing { display: flex; gap: 4px; padding: 4px 0; }
-  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-dim); animation: typeBounce 1.2s infinite; }
-  .typing span:nth-child(2) { animation-delay: 0.2s; }
-  .typing span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes typeBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+/* ── MAKCIK QUOTE ── */
+.quote-wrap{margin-top:48px}
+.quote{position:relative;padding:28px 32px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--yellow)}
+.quote p{font-size:clamp(17px,2.2vw,21px);font-weight:600;line-height:1.5;color:var(--fg)}
+.quote p u{text-decoration-color:var(--yellow);text-underline-offset:4px}
+.quote span{display:block;margin-top:14px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--fg-subtle);letter-spacing:.06em}
 
-  /* ── INPUT BAR ── */
-  .input-bar { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 10px; flex-shrink: 0; background: var(--surface); }
-  .input-bar input {
-    flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
-    padding: 0.75rem 1rem; color: var(--text); font-family: var(--font-sans); font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s;
-  }
-  .input-bar input:focus { border-color: var(--gold-dim); }
-  .input-bar input::placeholder { color: var(--text-dim); }
-  .input-bar button {
-    background: var(--gold); color: #000; border: none; border-radius: 8px;
-    padding: 0.75rem 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;
-    font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
-    cursor: pointer; transition: background 0.2s; white-space: nowrap;
-  }
-  .input-bar button:hover { background: var(--gold-bright); }
-  .input-bar button:disabled { opacity: 0.5; cursor: not-allowed; }
+/* ── SECTION HEADERS ── */
+.sec{margin-top:56px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sec-head .badge{font-family:var(--mono);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.08em}
+.sec-head .badge.r{background:rgba(224,48,30,.15);color:var(--red)}
+.sec-head .badge.b{background:rgba(31,63,212,.15);color:var(--blue)}
+.sec-head .badge.y{background:rgba(242,183,5,.15);color:var(--yellow)}
+.sec-head h2{font-size:clamp(20px,3vw,28px);font-weight:800;letter-spacing:-.02em}
+.sec-head .line{flex:1;height:1px;background:var(--border)}
 
-  /* ── SUGGESTIONS ── */
-  .suggestions { display: flex; gap: 8px; padding: 0 1.5rem 1rem; flex-wrap: wrap; }
-  .suggestion {
-    font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-dim);
-    padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px;
-    background: transparent; cursor: pointer; transition: all 0.2s;
-  }
-  .suggestion:hover { color: var(--gold); border-color: var(--gold-dim); background: var(--gold-bg); }
+/* ── LATEST ARTICLES ── */
+.latest{list-style:none;border-radius:10px;border:1px solid var(--border);overflow:hidden;background:var(--bg-card)}
+.latest li{display:flex;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border-light);transition:background .15s}
+.latest li:last-child{border-bottom:none}
+.latest li:hover{background:var(--bg-hover)}
+.latest .num{font-family:var(--mono);font-size:14px;font-weight:700;min-width:32px;color:var(--fg-subtle)}
+.latest a{flex:1;font-weight:600;font-size:15px;color:var(--fg);transition:color .15s}
+.latest a:hover{color:var(--blue)}
+.latest time{font-family:var(--mono);font-size:11px;color:var(--fg-subtle);white-space:nowrap}
+.chip{font-family:var(--mono);font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap;letter-spacing:.04em}
+.chip.M1{background:rgba(224,48,30,.15);color:var(--red)}
+.chip.M2{background:rgba(31,63,212,.15);color:var(--blue)}
+.chip.M3{background:rgba(242,183,5,.15);color:var(--yellow)}
+.chip.M4{color:var(--fg-muted);background:var(--bg-hover)}
+.chip.M5{color:var(--fg);background:var(--bg-hover)}
 
-  /* ── DISCLAIMER ── */
-  .disclaimer { text-align: center; padding: 0.5rem; font-family: var(--font-mono); font-size: 0.5rem; color: var(--text-dim); letter-spacing: 0.1em; flex-shrink: 0; }
+/* ── SERIES CARDS ── */
+.series{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.scard{padding:20px 16px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;transition:all .2s;display:flex;flex-direction:column;position:relative}
+.scard:hover{transform:translateY(-3px);border-color:var(--fg-muted);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.scard.active{outline:2px solid var(--yellow);outline-offset:2px;border-color:var(--yellow)}
+.scard .fk{font-family:var(--mono);font-size:24px;font-weight:700;margin-bottom:8px}
+.scard[data-s=M1] .fk{color:var(--red)}.scard[data-s=M2] .fk{color:var(--blue)}
+.scard[data-s=M3] .fk{color:var(--yellow)}.scard[data-s=M4] .fk{color:var(--fg-muted)}
+.scard[data-s=M5] .fk{color:var(--fg)}
+.scard h3{font-size:13px;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.scard p{font-size:12px;color:var(--fg-muted);line-height:1.4;flex:1}
+.scard .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--fg-subtle);margin-top:12px;display:flex;align-items:center;gap:4px}
+.scard.active::after{content:'';position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--yellow)}
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .msg { max-width: 95%; }
-    .input-bar { padding: 0.75rem 1rem; }
-    .suggestions { padding: 0 1rem 0.75rem; }
-  }
+/* ── SEARCH ── */
+.search{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg-card);margin-bottom:16px}
+.search input{flex:1;border:none;padding:14px 18px;font-family:var(--mono);font-size:13px;font-weight:500;background:transparent;color:var(--fg);outline:none}
+.search input::placeholder{color:var(--fg-subtle)}
+.search .go{padding:14px 20px;background:var(--bg-hover);color:var(--fg-muted);font-family:var(--mono);font-size:11px;font-weight:600;display:flex;align-items:center;letter-spacing:.06em;border-left:1px solid var(--border);cursor:pointer;transition:all .15s}
+.search .go:hover{color:var(--fg);background:var(--border)}
+
+/* ── INDEX ── */
+.idx{list-style:none;border:1px solid var(--border);border-radius:0 0 10px 10px;border-top:none;overflow:hidden;background:var(--bg-card)}
+.idx li{display:flex;gap:12px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--border-light);transition:background .1s}
+.idx li:last-child{border-bottom:none}
+.idx li:hover{background:var(--bg-hover)}
+.idx a{flex:1;font-size:14px;font-weight:500;color:var(--fg);transition:color .15s}
+.idx a:hover{color:var(--blue)}
+.idx time{font-family:var(--mono);font-size:11px;color:var(--fg-subtle);white-space:nowrap}
+.idx-filter-top{border-radius:10px 10px 0 0}
+.empty{display:none;border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;background:var(--bg-card);padding:40px;text-align:center;font-family:var(--mono);font-size:13px;color:var(--fg-muted)}
+.empty.show{display:block}
+
+/* ── FOOTER ── */
+footer{margin-top:72px;border-top:1px solid var(--border);padding:28px 0 36px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:11px;color:var(--fg-subtle)}
+footer a{color:var(--fg-muted);transition:color .15s}
+footer a:hover{color:var(--blue)}
+footer .fdots{display:flex;align-items:center;gap:6px}
+footer .fdots .dot{width:6px;height:6px;border-radius:50%;display:inline-block}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-visual{height:200px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .series{grid-template-columns:repeat(2,1fr)}
+  .series .scard:nth-child(5){grid-column:span 2}
+}
+@media(max-width:480px){
+  .hero{padding:48px 0 40px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:16px}
+  .series{grid-template-columns:1fr 1fr}
+  .latest li{flex-wrap:wrap}
+  .topbar-sig{display:none}
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-left">
-    <a href="/wealth/" class="back-link">← WEALTH</a>
+<!-- ═══ TOPBAR ═══ -->
+<nav class="topbar wrap">
+  <div class="topbar-links">
+    <a href="https://arif-fazil.com/">← HOME</a>
+    <a href="https://arif-fazil.com/world/">/WORLD/</a>
   </div>
-  <div class="title">
-    <span class="title-icon">👵</span>
-    <div>
-      <div class="title-text">MakcikGPT</div>
-      <div class="title-sub">AI Petronas · Bahasa Malaysia</div>
+  <div class="topbar-sig">
+    <span class="topbar-dot r"></span>
+    <span class="topbar-dot b"></span>
+    <span class="topbar-dot y"></span>
+    SEAL 999 · 2026-07-30
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>
+          Makcik<br>
+          <span class="c-b">Tanya.</span>
+          <span class="c-r">Kuasa</span>
+          <span class="c-y">Jawab.</span>
+        </h1>
+        <div class="hero-sub">CIVIC JOURNALISM IN BAHASA MAKCIK — TAKDE SPIN, TAKDE CORPORATE SPEAK</div>
+        <div class="hero-tags">
+          <span>SOVEREIGNTY</span>
+          <span>RESOURCES</span>
+          <span>INSTITUTIONS</span>
+          <span>TECH ACCOUNTABILITY</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="hero-canvas"></canvas>
+      </div>
     </div>
-  </div>
-  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
-    <span class="persona-badge">Makcik — 999 Seal</span>
-    <span class="corpus-status" id="corpus-status">⟳ loading corpus…</span>
   </div>
 </header>
 
-<!-- CHAT -->
-<div class="chat-area" id="chatArea">
-  <div class="msg makcik">
-    <div class="msg-avatar">👵</div>
-    <div class="msg-bubble">
-      <div class="msg-name">MakcikGPT</div>
-      <div class="msg-text">
-        Assalamualaikum! Akak Makcik di sini. 👋<br><br>
-        Makcik tahu pasal <strong>PETRONAS</strong> — DNA, governance, visi misi, semua ada. Tanya Makcik apa-apa, nanti Makcik jawab dengan fakta dan <strong>999 SEAL</strong>.<br><br>
-        <em>"Ditempa Bukan Diberi"</em> — Makcik bukan main-main, makcik serius. 🫡
-      </div>
-      <div class="msg-cite"><span class="seal">💎</span> Source: PETRONAS DNA · Visi Misi · ATM Kerajaan · 3 verified articles</div>
+<div class="wrap">
+
+<!-- ═══ STATS ═══ -->
+<div class="stats">
+  <div class="stat"><b class="c-r">22</b><span>Artikel</span></div>
+  <div class="stat"><b class="c-b">5</b><span>Siri</span></div>
+  <div class="stat"><b class="c-y">999</b><span>Seal Standard</span></div>
+  <div class="stat"><b class="c-r">BM</b><span>Bahasa Makcik</span></div>
+</div>
+
+<!-- ═══ MAKCIK QUOTE ═══ -->
+<section class="quote-wrap">
+  <div class="quote">
+    <p>"Depa kata <u>strategic partnership</u>. Makcik tanya satu je — siapa untung, siapa bayar, dan kenapa kita yang terakhir tahu?"</p>
+    <span>— MAKCIK · SETIAP ARTIKEL DISEAL 999 · DITEMPA BUKAN DIBERI</span>
+  </div>
+</section>
+
+<!-- ═══ LATEST ═══ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="badge r">●</span>
+    <h2>Terbaru</h2>
+    <div class="line"></div>
+  </div>
+  <ul class="latest" id="latest"></ul>
+</section>
+
+<!-- ═══ SERIES ═══ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="badge b">◆</span>
+    <h2>Siri</h2>
+    <div class="line"></div>
+  </div>
+  <div class="series" id="series"></div>
+</section>
+
+<!-- ═══ ALL ARTICLES ═══ -->
+<section class="sec">
+  <div class="sec-head">
+    <span class="badge y">■</span>
+    <h2>Semua</h2>
+    <div class="line"></div>
+    <span class="badge" id="count" style="background:var(--bg-hover);color:var(--fg-muted)"></span>
+  </div>
+  <div class="search">
+    <input id="q" type="text" placeholder="Cari… (PETRONAS · SARAWAK · BANGANG)" aria-label="Cari artikel">
+    <div class="go">TAPIS ▸</div>
+  </div>
+  <ul class="idx idx-filter-top" id="idx"></ul>
+  <div class="empty" id="empty">TAKDE HASIL — CUBA KATA KUNCI LAIN.</div>
+</section>
+
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="wrap">
+    <div class="fdots">
+      <span class="dot" style="background:var(--red)"></span>
+      <span class="dot" style="background:var(--blue)"></span>
+      <span class="dot" style="background:var(--yellow)"></span>
+      MAKCIKGPT · ARIF-FAZIL.COM · DITEMPA BUKAN DIBERI 🇲🇾
+    </div>
+    <div>
+      <a href="https://arif-fazil.com/llms.txt">LLMS.TXT</a> ·
+      <a href="https://arif-fazil.com/world/">/WORLD/</a> ·
+      <a href="https://arif-fazil.com/">HOME</a>
     </div>
   </div>
-</div>
-
-<!-- SUGGESTIONS -->
-<div class="suggestions" id="suggestions">
-  <button class="suggestion" onclick="askMakcik('Apa DNA PETRONAS?')">Apa DNA PETRONAS?</button>
-  <button class="suggestion" onclick="askMakcik('Siapa CEO PETRONAS sekarang?')">Siapa CEO?</button>
-  <button class="suggestion" onclick="askMakcik('Berapa dividen PETRONAS ke kerajaan?')">Dividen PETRONAS</button>
-  <button class="suggestion" onclick="askMakcik('Apa itu Gentari?')">Gentari?</button>
-  <button class="suggestion" onclick="askMakcik('Rightsizing 2025 macam mana?')">Rightsizing 2025</button>
-  <button class="suggestion" onclick="askMakcik('Kenapa ROACE jatuh?')">ROACE jatuh?</button>
-</div>
-
-<!-- INPUT -->
-<div class="input-bar">
-  <input type="text" id="chatInput" placeholder="Tanya Makcik pasal PETRONAS..." onkeydown="if(event.key==='Enter')sendMsg()">
-  <button id="sendBtn" onclick="sendMsg()">Tanya →</button>
-</div>
-<div class="disclaimer">MakcikGPT adalah AI persona. Bukan penasihat kewangan. Data dari sumber awam — F2 TRUTH verified.</div>
+</footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// MakcikGPT — Knowledge Base + Chat Engine
-// F4 refactor: corpus separated from presentation.
-// Edit responses.json to extend corpus. No HTML redeploy needed.
-// ═══════════════════════════════════════════════════════════════
-
-// Legacy KNOWLEDGE object kept for backwards compat (unused by findAnswer; can be retired).
-const KNOWLEDGE = {
-  dna: {
-    title: 'PETRONAS DNA',
-    source: 'petronas-dna.md',
-    content: `**4 Shared Values PETRONAS (CoBE 2022):**
-- Loyalty — Loyal to corporation
-- Integrity — Honest and upright
-- Professionalism — Strive for excellence
-- Cohesiveness — United, trust and respect
-
-**Mission 1988 vs Purpose 2020:**
-- Mission 1988 (Azizan era): "A business entity whose main objective is to add value to the country's oil and gas resources and contribute to the well-being of the nation."
-- Purpose 2020 (Tengku Taufik era): "A progressive energy and solutions partner enriching lives for a sustainable future."
-
-**Sejarah Kepimpinan:**
-1. Rastam Hadi — Founding executive director (1974). "Fight like bulldogs."
-2. Azizan Zainul Abidin — CEO 1988. Institutionalised 4 Shared Values. "We, not me."
-3. Shamsul Azhar Abbas — CEO 2010. "He dared to go and face his political masters."
-4. Hassan Marican — CEO 1995-2010. Globalisation era.
-5. Wan Zulkiflee — CEO 2015-2020.
-6. Tengku Muhammad Taufik — CEO 2020-present. NZCE 2050. Gentari. Rightsizing.`
-  },
-  atm: {
-    title: 'PETRONAS ATM Kerajaan',
-    source: 'petronas-atm-kerajaan.md',
-    content: `**Fakta Kewangan PETRONAS (F2 Verified):**
-- FY2022 PAT: RM101.6 bilion (sejarah tertinggi)
-- FY2022 dividen ke kerajaan: RM50 bilion (49% payout)
-- FY2023-2025: dividen RM32 bilion setiap tahun
-- FY2026 dividen: RM20 bilion (paling rendah dalam 9 tahun)
-- Sumbangan PETRONAS ke kerajaan FY2025: RM67.6 bilion (~20% pendapatan persekutuan)
-- Tunai PETRONAS: RM188.5bn (FY2024) → RM204.4bn (FY2025)
-- ROACE: 10.8% (FY2023) → 9.7% (FY2024) → 8.2% (FY2025) — jatuh 3 tahun berturut
-
-**Gentari:**
-Dilancarkan Jun 2022. Tenaga bersih (solar, EV, hidrogen). P&L mandiri TIDAK PERNAH didedahkan.
-
-**Rightsizing 2025:**
-5,000 pekerjaan dipotong — diumumkan CEO (Bloomberg 5 Jun 2025). Gentari tidak disentuh.`
-  },
-  visi: {
-    title: 'PETRONAS Visi Misi',
-    source: 'petronas-visi-misi.md',
-    content: `**Visi PETRONAS:**
-To be a leading global energy partner enriching lives sustainably.
-
-**Misi:**
-- Growing value through safe, reliable operations
-- Anchoring Malaysia's energy security
-- Leading the energy transition
-- Nurturing talent and fostering innovation
-
-**NZCE 2050:**
-Net Zero Carbon Emissions by 2050 — Tengku Taufik era commitment.
-
-**Key Strategic Pillars:**
-- Upstream: maximising value from O&G reserves
-- Downstream: refining, marketing, lubricants
-- Gas: LNG, petrochemicals
-- New Energy: Gentari (solar, EV, hydrogen)
-- Digital: data-driven operations`
+/* ═══ HERO CANVAS — subtle animated particles in Primer colors ═══ */
+(function(){
+  const cv=document.getElementById('hero-canvas'),ctx=cv.getContext('2d');
+  let W,H,pts=[];
+  function size(){
+    W=cv.width=cv.clientWidth;H=cv.height=cv.clientHeight;
+    pts=Array.from({length:50},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.5+1}));
   }
-};
-
-// ═══ F4: Corpus loaded from responses.json on init ═══
-// RESPONSES stays [] until loadCorpus() succeeds. findAnswer still works
-// either way (returns default response if corpus empty / fetch failed).
-let RESPONSES = [];
-let corpusLoaded = false;
-const CORPUS_URL = 'responses.json';
-
-async function loadCorpus() {
-  const statusEl = document.getElementById('corpus-status');
-  try {
-    const res = await fetch(CORPUS_URL, { cache: 'no-cache' });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    RESPONSES = Array.isArray(data.responses) ? data.responses : [];
-    corpusLoaded = true;
-    const schema = data.schema_version || 'unknown';
-    const sealed = data.sealed_by || 'unknown';
-    console.info('[makcikgpt] corpus loaded: ' + RESPONSES.length + ' topics · schema ' + schema + ' · sealed ' + sealed);
-    if (statusEl) {
-      statusEl.textContent = '✓ ' + RESPONSES.length + ' topik · 999 sealed';
-      statusEl.style.color = 'var(--gold-dim)';
-    }
-  } catch (err) {
-    console.error('[makcikgpt] corpus fetch failed:', err);
-    if (statusEl) {
-      statusEl.textContent = '⚠ corpus offline — default replies only';
-      statusEl.style.color = 'var(--text-dim)';
-    }
-  } finally {
-    // Always register WebMCP, even if fetch failed (default response still useful)
-    registerWebMCP();
-  }
-}
-
-// Fuzzy match
-function findAnswer(query) {
-  const q = query.toLowerCase();
-  let best = null;
-  let bestScore = 0;
-
-  for (const r of RESPONSES) {
-    let score = 0;
-    for (const kw of (r.keywords || [])) {
-      if (q.includes(kw)) score += kw.length;
-    }
-    if (score > bestScore) {
-      bestScore = score;
-      best = r;
-    }
-  }
-
-  if (bestScore >= 3) return best;
-
-  // Default response
-  return {
-    answer: `Hmmm... Makcik tak pasti sangat pasal tu. 🤔\n\nTapi Makcik boleh cerita pasal:\n- **DNA PETRONAS** (4 Shared Values)\n- **Dividen ke kerajaan** (RM20B-50B/tahun)\n- **Gentari** (tenaga bersih, P&L tak disclose)\n- **Rightsizing 2025** (5,000 pekerja)\n- **ROACE jatuh** (10.8% → 8.2%)\n- **Sejarah CEO** (dari Rastam Hadi hingga Tengku Taufik)\n\nTanya lagi, insyaAllah Makcik jawab! 😊`,
-    source: 'general',
-    confidence: 0.5
-  };
-}
-
-function addMessage(role, text, source, confidence) {
-  const area = document.getElementById('chatArea');
-  const div = document.createElement('div');
-  div.className = 'msg ' + role;
-
-  const avatar = role === 'makcik' ? '👵' : '👤';
-  const name = role === 'makcik' ? 'MakcikGPT' : 'You';
-
-  // Convert markdown-ish to HTML
-  let html = text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`(.+?)`/g, '<code>$1</code>')
-    .replace(/^- (.+)$/gm, '• $1<br>')
-    .replace(/\n\n/g, '<br><br>')
-    .replace(/\n/g, '<br>');
-
-  let cite = '';
-  if (source && role === 'makcik') {
-    cite = `<div class="msg-cite"><span class="seal">💎</span> Source: ${source} · F2 TRUTH verified · Confidence: ${confidence ? (confidence * 100).toFixed(0) + '%' : 'N/A'}</div>`;
-  }
-
-  div.innerHTML = `
-    <div class="msg-avatar">${avatar}</div>
-    <div class="msg-bubble">
-      <div class="msg-name">${name}</div>
-      <div class="msg-text">${html}</div>
-      ${cite}
-    </div>
-  `;
-
-  area.appendChild(div);
-  area.scrollTop = area.scrollHeight;
-}
-
-function addTyping() {
-  const area = document.getElementById('chatArea');
-  const div = document.createElement('div');
-  div.className = 'msg makcik';
-  div.id = 'typing-indicator';
-  div.innerHTML = `
-    <div class="msg-avatar">👵</div>
-    <div class="msg-bubble">
-      <div class="typing"><span></span><span></span><span></span></div>
-    </div>
-  `;
-  area.appendChild(div);
-  area.scrollTop = area.scrollHeight;
-}
-
-function removeTyping() {
-  const el = document.getElementById('typing-indicator');
-  if (el) el.remove();
-}
-
-function askMakcik(query) {
-  document.getElementById('chatInput').value = '';
-  addMessage('user', query);
-  document.getElementById('suggestions').style.display = 'none';
-
-  addTyping();
-
-  setTimeout(() => {
-    removeTyping();
-    const result = findAnswer(query);
-    addMessage('makcik', result.answer, result.source, result.confidence);
-  }, 800 + Math.random() * 600);
-}
-
-function sendMsg() {
-  const input = document.getElementById('chatInput');
-  const msg = input.value.trim();
-  if (!msg) return;
-  askMakcik(msg);
-}
-
-// ═══ WebMCP Tool Registration (registered after corpus load) ═══
-function registerWebMCP() {
-  if (typeof arifosWebMCP === 'undefined') return;
-  if (window.__makcikWebMCPRegistered) return; // idempotent
-  window.__makcikWebMCPRegistered = true;
-  arifosWebMCP.registerReadonly('ask_makcikgpt',
-    'Ask MakcikGPT about PETRONAS — DNA, governance, dividen, Gentari, rightsizing. Corpus loaded from responses.json on init.',
-    { query: 'string — question in BM or English' },
-    async (input) => {
-      const result = findAnswer(input.query || '');
-      return {
-        answer: result.answer,
-        source: result.source,
-        confidence: result.confidence,
-        seal: 'F2_TRUTH_VERIFIED'
-      };
+  size();addEventListener('resize',size);
+  const COLORS=['#e0301e','#1f3fd4','#f2b705'];
+  function draw(){
+    ctx.fillStyle='#111111';ctx.fillRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=COLORS[Math.floor(Math.random()*COLORS.length)];ctx.globalAlpha=.4;
+      ctx.fill();
     });
-}
+    ctx.globalAlpha=.08;
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='#1f3fd4';ctx.lineWidth=.5;ctx.stroke();}
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
 
-// ═══ INIT ═══
-document.addEventListener('DOMContentLoaded', loadCorpus);
-// Fallback if DOMContentLoaded already fired
-if (document.readyState !== 'loading') loadCorpus();
+/* ═══ DATA ═══ */
+const SERIES={
+  M1:{name:"Energy",desc:"PETRONAS, oil, gas, rightsizing"},
+  M2:{name:"Governance",desc:"Sarawak gas, SEARAH, Bernama, sovereignty"},
+  M3:{name:"Tech & Sovereignty",desc:"YTL, ILMU, AI, monopoli"},
+  M4:{name:"Economy",desc:"Johor, harga harian, rakyat"},
+  M5:{name:"Politics",desc:"BANGANG files — no one spared"}
+};
+const ARTICLES=[
+  {s:"M1",d:"2026-07-14",u:"/makcikgpt/petronas-visi-misi",t:"Ada Apa Pada Visi dan Misi Hang?"},
+  {s:"M1",d:"2026-07-13",u:"/makcikgpt/petronas-atm-kerajaan",t:"PETRONAS Memang ATM. Tapi Siapa Jaga Mesin Tu?"},
+  {s:"M1",d:"2026-07-05",u:"/makcikgpt/petronas-hive-sale",t:"Bila Petronas Kata 'Strategic Partnership', Makcik Kata 'Mereka Nak Lepas Beban'"},
+  {s:"M1",d:"2026-07-05",u:"/makcikgpt/suriname-exxon-cabut",t:"Exxon Cabut dari Suriname, PETRONAS Masih Hebat?"},
+  {s:"M1",d:"2026-07-01",u:"/makcikgpt/petronas-dna",t:"PETRONAS DNA — Dulu Bulldog, Sekarang Anjing"},
+  {s:"M1",d:"2026-06-30",u:"/makcikgpt/iran-hormuz",t:"Iran Hormuz dan Malaysia: Rightsizing Tak Habis-Habis"},
+  {s:"M2",d:"2026-07-29",u:"/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon",t:"Anak Sarawak Bayar PDA, Anak Bangla Telefon Je Dapat"},
+  {s:"M2",d:"2026-07-22",u:"/makcikgpt/searah-senyum-media-suap",t:"Bila Senyum CEO PETRONAS Lebih Manis Dari Senyum Orang Italy"},
+  {s:"M2",d:"2026-07-22",u:"/makcikgpt/searah-kekal-milik-penuh",t:"\"Kekal Milik Penuh Malaysia\" — Tapi Pejabat di London, Kongsi 50-50 Dengan Orang Italy"},
+  {s:"M2",d:"2026-07-18",u:"/makcikgpt/searah-bernama-lewat",t:"Bernama Baru Sampai. Makcik Dah Lama Tanya."},
+  {s:"M2",d:"2026-07-01",u:"/makcikgpt/searah-followup",t:"SEARAH Dah Beroperasi — Tapi Bocor Pun Dah Sampai Mahkamah"},
+  {s:"M2",d:"2026-06-07",u:"/makcikgpt/cerita-makcik",t:"Kenapa Gas Sarawak Punya Dah Masuk Tangan Orang Italy?"},
+  {s:"M2",d:"2026-06-07",u:"/makcikgpt/siasatan-harakah",t:"Persoalan RM70 Bilion"},
+  {s:"M3",d:"2026-07-01",u:"/makcikgpt/ytl-monopoli",t:"Satu Tangan Kuasa Semua — Air, Api, Rangkaian, AI"},
+  {s:"M3",d:"2026-07-01",u:"/makcikgpt/ilmu-bbb",t:"ILMU 'Sovereign AI' Konon — Tapi Bila DiAudit, Menangis"},
+  {s:"M4",d:"2026-07-06",u:"/makcikgpt/ai-johor-rakyat-2026",t:"AI Makan Kerja, Johor Pilih Bos, Rakyat Bayar Semua"},
+  {s:"M4",d:"2026-07-01",u:"/makcikgpt/daily-2026-07-01",t:"Duit Raya dan Tekanan Harga — Dua Cerita, Satu Hari"},
+  {s:"M5",d:"2026-07-10",u:"/makcikgpt/bangang-ruslan-hr",t:"VP HR Petronas: Engineer Jadi Bos Manusia — Tak Ada Jiwa, Ada Apa?"},
+  {s:"M5",d:"2026-07-08",u:"/makcikgpt/chennah-bangang",t:"8 BANGANG Anthony Loke — Chennah Version"},
+  {s:"M5",d:"2026-07-03",u:"/makcikgpt/dap-8-tahun-bangang",t:"8 Benda BANGANG DAP Dalam Kerajaan"},
+  {s:"M5",d:"2026-07-02",u:"/makcikgpt/anwar-jung-shadow",t:"Anwar Ibrahim: Dulu Reformis, Sekarang Mangkuk Ayun"},
+  {s:"M5",d:"2026-07-01",u:"/makcikgpt/sam-altman-elon-musk-anwar-akal",t:"Sam Altman, Elon Musk, Anwar Ibrahim — Depa Ada Akal Ka?"}
+];
+
+const sorted=[...ARTICLES].sort((a,b)=>b.d.localeCompare(a.d)),BASE="https://arif-fazil.com";
+
+/* ═══ LATEST ═══ */
+document.getElementById('latest').innerHTML=sorted.slice(0,5).map((a,i)=>
+  `<li><span class="num">0${i+1}</span><a href="${BASE}${a.u}">${a.t}</a><span class="chip ${a.s}">${a.s}</span><time>${a.d}</time></li>`
+).join('');
+
+/* ═══ SERIES ═══ */
+let active=null;
+const sEl=document.getElementById('series');
+sEl.innerHTML=Object.entries(SERIES).map(([k,v])=>{
+  const n=ARTICLES.filter(a=>a.s===k).length;
+  return `<div class="scard" data-s="${k}" role="button" tabindex="0"><div class="fk">${k}</div><h3>${v.name}</h3><p>${v.desc}</p><span class="n">${n} ARTIKEL ▸</span></div>`;
+}).join('');
+sEl.addEventListener('click',e=>{
+  const c=e.target.closest('.scard');if(!c)return;
+  active=(active===c.dataset.s)?null:c.dataset.s;
+  document.querySelectorAll('.scard').forEach(x=>x.classList.toggle('active',x.dataset.s===active));
+  render();
+});
+
+/* ═══ SEARCH / INDEX ═══ */
+const idxEl=document.getElementById('idx'),qEl=document.getElementById('q'),emptyEl=document.getElementById('empty'),countEl=document.getElementById('count');
+function render(){
+  const q=qEl.value.toLowerCase().trim();
+  const rows=sorted.filter(a=>(!active||a.s===active)&&(!q||a.t.toLowerCase().includes(q)||SERIES[a.s].desc.toLowerCase().includes(q)));
+  idxEl.innerHTML=rows.map(a=>`<li><span class="chip ${a.s}">${a.s}</span><a href="${BASE}${a.u}">${a.t}</a><time>${a.d}</time></li>`).join('');
+  emptyEl.classList.toggle('show',!rows.length);
+  countEl.textContent=rows.length+' / '+ARTICLES.length+' ARTIKEL';
+}
+qEl.addEventListener('input',render);
+render();
 </script>
 </body>
 </html>

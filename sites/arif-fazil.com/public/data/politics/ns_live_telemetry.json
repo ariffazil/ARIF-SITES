@@ -1,63 +1,249 @@
 {
   "metadata": {
     "title": "Negeri Sembilan PRN 2026 Live Sensory Telemetry",
-    "updated_at": "2026-07-30T15:49:30.005Z",
+    "updated_at_utc": "2026-07-31T17:22:01.997Z",
+    "generated_at_utc": "2026-07-31T17:22:01.997Z",
     "sealed_by": "arifOS VAULT999 SENSORY HUB",
-    "status": "ACTIVE_STREAMING_FLOW",
-    "version": "2.1.0"
+    "seal_id": "VAULT999-PRN16-NS-GT-003",
+    "status": "SEALED_STREAMING",
+    "health": "SEALED_ONLY",
+    "version": "2.3.0",
+    "schema": "arifos.n9.telemetry.v3",
+    "health_legend": {
+      "OK": "all upstreams healthy",
+      "SEALED_ONLY": "no live market exists; sealed ground truth is authoritative",
+      "LIVE_PARTIAL": "live market probed but degraded; sealed fallback engaged",
+      "DEGRADED": "sealed file invalid or write failed; emit incomplete payload"
+    }
   },
   "summary_metrics": {
-    "total_signals_ingested": 1645,
     "sentiment_index": {
-      "ph_positive": 39.8,
-      "bn_positive": 39.2,
-      "pn_positive": 21
+      "ph_positive": 42,
+      "bn_positive": 35,
+      "pn_positive": 7,
+      "epistemic_class": "OBS",
+      "source": "survey",
+      "source_id": "VODUS_N9_N437",
+      "source_url": "https://vodus.my/n9-2026",
+      "as_of": "2026-07-21",
+      "note": "n=437 is below conventional 1,000 margin-of-error threshold; treat as directional proxy, not definitive estimate."
     },
-    "voter_turnout_projection": 74.1,
-    "highest_volatility_seat": "N32 Linggi"
+    "voter_turnout_projection_pct": 74.1,
+    "voter_turnout_projection_source": "Historical N9 turnout ~74% + Merdeka Center trackers + Johor 2026 comparison (69.6% Johor, N9 expected higher due to Klang Valley commuter proximity)",
+    "highest_volatility_seat": "Linggi",
+    "bn_pn_coalition_forecast_pct": 74.5,
+    "bn_pn_coalition_forecast_label": "sovereign_projection",
+    "bn_pn_coalition_forecast_source_as_of": "2026-07-31T23:59:00+08:00"
+  },
+  "polymarket": {
+    "probed_at_utc": "2026-07-31T17:22:01.998Z",
+    "status": "NO_MARKET",
+    "markets_scanned": 100,
+    "matches_found": 0,
+    "n9_market": null,
+    "note": "No active N9 election market exists on Polymarket at probe time. Falling back to sealed ground truth.",
+    "error": null
   },
   "ground_telemetry_seats": [
     {
       "code": "N32",
       "name": "Linggi",
       "status": "HOT_EPICENTER",
-      "live_sentiment": "HIGH_VOLATILITY_CONTRAST",
-      "malay_turnout_rate": 78.2,
-      "non_malay_turnout_rate": 63.5,
-      "net_sentiment_score": -5.8,
-      "key_ground_signals": [
-        "🔥 CONTRAST SIGNAL: Felda Sendayan & Linggi voters express acute dissatisfaction over local water disruption",
-        "Youth voter swing vector shifting anti-incumbent (+4.2% shift toward BN/PN)"
-      ],
-      "last_signal_time": "2026-07-30T15:49:30.005Z"
+      "live_sentiment": "BN_LEAN",
+      "note": "MB Aminuddin (PH-PKR) moved from Sikamat vs BN incumbent Mohd Faizal + Bersatu Zamri. 3-cornered. 61.8% Malay. 50-year UMNO fortress. Aminuddin self-assessed 50-50. Ilham Centre: too close BN-lean. Ong: BN wins. Bersatu candidate may eat 5-8% anti-establishment vote, helping BN retain.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N13",
+      "name": "Sikamat",
+      "status": "POST_MB_VACUUM",
+      "live_sentiment": "PN_LEAN",
+      "note": "Aminuddin vacated after 4 terms (since 2008). PKR's Nor Azman (political secretary) vs BN Shahrul Nizam vs Bersatu Tun Faisal. 71.6% Malay. Without Aminuddin personal vote, structural Malay consolidation dominates. Ong: PN wins. PKR machine untested without MB brand.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
     },
     {
       "code": "N14",
       "name": "Ampangan",
       "status": "ULTRA_MARGINAL",
-      "live_sentiment": "BN_PN_LEAN",
-      "malay_turnout_rate": 82.4,
-      "non_malay_turnout_rate": 59.1,
-      "net_sentiment_score": -9.1,
-      "key_ground_signals": [
-        "⚡ REALITY TEST: Independent vote consolidation favoring opposition anti-establishment block",
-        "B40 cost-of-living sentiment index at peak thermal noise"
-      ],
-      "last_signal_time": "2026-07-30T15:49:30.005Z"
+      "live_sentiment": "PN_LEAN",
+      "note": "329-vote PKR majority in 2023 (2.2%). 72.8% Malay. 3-cornered: PH(PKR) vs PN(PAS-Mohamad Rafie, comeback bid) vs Bersatu. B40 cost-of-living at peak. Ong: PN wins. Ilham: BN-PN advantage. Anti-incumbency + PAS grassroots in Seremban periphery.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N4",
+      "name": "Klawang",
+      "status": "AMANAH_LAST_STAND",
+      "live_sentiment": "TOSSUP",
+      "note": "AMANAH's Bakri Sawir defending. Margin shrunk from 11.7% (2018) to 6.4% (2023). 3-cornered vs PN(Wawasan-Danni Rais, cousin) vs Bersatu. Former Bersatu candidate now on Wawasan ticket creates voter confusion. Ilham: too close. Ong: PN wins. If AMANAH loses all 7 contests, party wiped from N9.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N5",
+      "name": "Serting",
+      "status": "BERSATU_SPOILER",
+      "live_sentiment": "TOSSUP",
+      "note": "PAS incumbent vs PH vs Bersatu. Bersatu fielding Affendy Salleh against PAS candidate. Split opposition vote magnitude uncertain. Ilham: too close. Ong: PN retains. If Bersatu eats >8% of PAS vote, PH wins with <40%. Complex 3-body problem.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N31",
+      "name": "Bagan Pinang",
+      "status": "MILITARY_VOTE_INDICATOR",
+      "live_sentiment": "BN_LEAN",
+      "note": "PAS incumbent (3,426 majority). Army camp seat + resort tourism. 3-cornered: PAS vs PH vs Bersatu. Military postal vote + BN-PN consolidation favors BN reclaiming. If BN wins, validates discipline-vote hypothesis. Moderate Bersatu spoiler effect expected.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
     },
     {
       "code": "N1",
       "name": "Chennah",
       "status": "CHINESE_TURNOUT_MONITOR",
-      "live_sentiment": "PH_FAVORED",
-      "malay_turnout_rate": 69.5,
-      "non_malay_turnout_rate": 75.3,
-      "net_sentiment_score": 11.8,
-      "key_ground_signals": [
-        "Anthony Loke non-Malay base floor solid at 75%",
-        "MCA machinery active in Kampong Chennah but faces steep uphill traction"
-      ],
-      "last_signal_time": "2026-07-30T15:49:30.005Z"
+      "live_sentiment": "PH_LEAN",
+      "note": "Loke (DAP SG) vs MCA's Siow Kong Choon. 48% Malay, 7% Orang Asli. Ilham: too close. Loke holds if non-Malay turnout >65% and OA don't swing heavily BN. Ong: too close, slight BN advantage if MCA announces exco offer for Siow. DAP machine strongest here.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N10",
+      "name": "Nilai",
+      "status": "URBAN_SWING_MONITOR",
+      "live_sentiment": "PH_LEAN",
+      "note": "DAP held since 2008 (10,889 majority). 5-cornered fight. Ilham: too close. Losing grip due to Chinese voter cooling and Indian community swing. MCA mounting strongest challenge in decade. Young urban voters focused on jobs/housing.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N12",
+      "name": "Temiang",
+      "status": "MCA_BREAKTHROUGH_TEST",
+      "live_sentiment": "PH_LEAN",
+      "note": "DAP held 4 terms since 2008 (34.1% margin in 2023). Ilham: too close. MCA chief Leaw Kok Chan challenging. After MCA won 8 seats in Johor (surpassing DAP's 6), Temiang tests whether MCA resurgence reaches N9. DAP newcomer Ho Weng Wah (Loke's political sec) defending.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N36",
+      "name": "Repah",
+      "status": "CHINESE_TURNOUT_MONITOR",
+      "live_sentiment": "PH_LEAN",
+      "note": "DAP held since 2013 (5,950 majority). Ilham: too close. BN fielding MCA's Koh Kim Swee. Tampin town mixed seat. Chinese turnout critical — if below 60%, seat becomes vulnerable.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N20",
+      "name": "Labu",
+      "status": "BERSATU_KINGMAKER",
+      "live_sentiment": "TOSSUP",
+      "note": "3-cornered: Bersatu(incumbent Hanifah, N9 Bersatu chief) vs PH(PKR) vs BN(UMNO). Bersatu's best individual chance to win a seat. Won with 1,640 majority in 2023. If Bersatu wins Labu + 1 more, becomes kingmaker in hung assembly scenario.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
+    },
+    {
+      "code": "N27",
+      "name": "Rantau",
+      "status": "TOK_MAT_MARGIN_INDICATOR",
+      "live_sentiment": "BN_SAFE",
+      "note": "Tok Mat (BN deputy chairman) defending 7th term. Straight fight vs young doctor Azizul Hakim (PH). 10,280 majority in 2023 (72% vote share). Margin shrinkage is the signal — if <60%, BN brand softening in traditional heartlands. If >70%, BN momentum confirmed.",
+      "epistemic_class": "INT",
+      "source": "SOVEREIGN_PROJECTION_2026_07_31",
+      "as_of": "2026-07-31"
     }
-  ]
+  ],
+  "sovereign_synthesis": {
+    "epistemic_class": "INT",
+    "source": "SOVEREIGN_PROJECTION_2026_07_31_FINAL",
+    "BN_range": [
+      17,
+      20
+    ],
+    "PN_range": [
+      4,
+      5
+    ],
+    "PH_range": [
+      12,
+      15
+    ],
+    "BERSATU_range": [
+      0,
+      1
+    ],
+    "expected_coalition": "BN-PN forms next government (21-24 seats)",
+    "bn_pn_coalition_forecast_pct": 74.5,
+    "bn_pn_coalition_forecast_label": "sovereign_projection",
+    "sovereign_confidence_pct": 72,
+    "prior_confidence_pct": 65,
+    "confidence_upgrade_rationale": "Ilham Centre n=1,002 (3.1% MoE) provides strongest single OBS signal. Converging with Ong's structural model, Vodus directional survey, early voting data, and Ilham's 7-reason qualitative framework. Seven independent sources point BN-PN 19-24 seats.",
+    "confidence_delta_note": "Remaining 28% uncertainty allocated to: non-Malay turnout variance (12%), Bersatu spoiler magnitude in marginals (8%), PH ground machinery last-mile (5%), adat/royal dampening effect (3%).",
+    "post_poll_audit_protocol": {
+      "trigger_time": "After 10pm MYT 2026-08-01 when SPR announces first batch",
+      "validation_criteria": "BN-PN ≥ 19 seats = model validated. PH ≥ 16 seats = model failed.",
+      "battleground_watchlist_seats": [
+        {
+          "code": "N32",
+          "name": "Linggi",
+          "signal": "MB gamble — Aminuddin wins = leadership vindication; loses = PH crisis"
+        },
+        {
+          "code": "N13",
+          "name": "Sikamat",
+          "signal": "Post-Aminuddin vacuum — flip to PN validates personal-vote hypothesis"
+        },
+        {
+          "code": "N14",
+          "name": "Ampangan",
+          "signal": "329-vote 2023 margin — PN flip validates BN-PN consolidation thesis"
+        },
+        {
+          "code": "N4",
+          "name": "Klawang",
+          "signal": "AMANAH's last stand — if lost, Amanah wiped from N9 assembly"
+        },
+        {
+          "code": "N5",
+          "name": "Serting",
+          "signal": "Bersatu spoiler magnitude — split determines if PH or PN wins"
+        },
+        {
+          "code": "N31",
+          "name": "Bagan Pinang",
+          "signal": "Military postal vote indicator — BN retention validates discipline vote"
+        },
+        {
+          "code": "N27",
+          "name": "Rantau",
+          "signal": "Tok Mat margin — if margin shrinks >20% from 2023, BN brand softening detected"
+        }
+      ],
+      "audit_dimensions": [
+        "rural-efficiency vs urban-lock assumption",
+        "BN-PN vote transfer efficiency",
+        "non-Malay turnout estimate accuracy",
+        "Bersatu spoiler magnitude"
+      ],
+      "auto_actions": [
+        "SEAL outcome hash to VAULT999 on result confirmation",
+        "if model_failed: audit rural-efficiency assumption vs urban-lock resilience",
+        "if model_validated: seal prediction→outcome delta as training signal"
+      ]
+    }
+  },
+  "warnings": null
 }

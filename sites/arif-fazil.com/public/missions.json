@@ -38,6 +38,12 @@
         "GEOX",
         "WEALTH",
         "arifOS"
+      ],
+      "surfaces": [
+        { "label": "Earth wells", "href": "/earth" },
+        { "label": "PETRONAS VITALS", "href": "/wealth/vitals/" },
+        { "label": "Observatory", "href": "https://arifos.arif-fazil.com" },
+        { "label": "N9 Election Telemetry", "href": "/politics/ns-election/" }
       ]
     },
     {
@@ -49,6 +55,11 @@
         "GEOX",
         "WEALTH",
         "WELL"
+      ],
+      "surfaces": [
+        { "label": "Basin dossiers", "href": "/earth" },
+        { "label": "MakcikGPT", "href": "/makcikgpt/" },
+        { "label": "Economics", "href": "/economics" }
       ]
     },
     {
@@ -60,6 +71,12 @@
         "arifOS",
         "WEALTH",
         "AAA"
+      ],
+      "surfaces": [
+        { "label": "Doctrine", "href": "/doctrine" },
+        { "label": "Institution", "href": "/institution" },
+        { "label": "999 proof", "href": "/999/" },
+        { "label": "N9 Operational Playbook", "href": "/politics/ns-election/playbook/" }
       ]
     },
     {
@@ -81,6 +98,12 @@
         "WELL",
         "WEALTH",
         "arifOS"
+      ],
+      "surfaces": [
+        { "label": "VITALS", "href": "/wealth/vitals/" },
+        { "label": "Pulse", "href": "/pulse/" },
+        { "label": "WELL", "href": "https://well.arif-fazil.com" },
+        { "label": "N9 Live Election Audit", "href": "/politics/ns-election/" }
       ]
     },
     {
@@ -92,6 +115,11 @@
         "VAULT999",
         "arifOS",
         "AAA"
+      ],
+      "surfaces": [
+        { "label": "999 ledger", "href": "/999/" },
+        { "label": "Writing", "href": "/writing" },
+        { "label": "MCP (agents)", "href": "https://mcp.arif-fazil.com" }
       ]
     }
   ],

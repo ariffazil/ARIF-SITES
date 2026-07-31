@@ -43,6 +43,8 @@ graph TB
         FORGE[/forge/ — Execution Surface]
         MCP[/mcp/ — MCP Connection & Apps]
         WIKI[/wiki/ — Constitutional Wiki]
+        POLITICS[/politics/ns-election/ — N9 PRN 2026 Live Audit (9 invariants + seat telemetry, 15-min cron refresh)]
+        PLAYBOOK[/politics/ns-election/playbook/ — N9 Operational Playbook (8 swing-seat field guide)]
     end
 
     CF --> CADDY
@@ -67,6 +69,9 @@ graph TB
 - `/well/` — Human Readiness & Vitality Interface
 - `/forge/` — Governed Execution & Build Surface
 - `/mcp/` — Federation MCP Endpoint Discovery & App Canvas
+- `/politics/ns-election/` — N9 PRN 2026 Live Audit (9 ATLAS333 invariants + seat-level sentiment telemetry, 15-min cron refresh)
+- `/politics/ns-election/playbook/` — N9 Operational Playbook (8 swing-seat field operations guide)
+- `/data/politics/ns_live_telemetry.json` — N9 sensory telemetry machine feed
 
 ---
 

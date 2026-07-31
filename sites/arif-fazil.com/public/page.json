@@ -1,6 +1,6 @@
 {
   "name": "arif-fazil.com",
-  "purpose": "Professional homepage for Arif Fazil, with canonical deeper layers for genesis, proof, and civic intelligence.",
+  "purpose": "Professional homepage for Arif Fazil, with canonical deeper layers for genesis, proof, and civic intelligence. Single source of truth: /root/arif-fazil.com/sealed/federation-topology.json.",
   "audience": [
     "humans",
     "collaborators",
@@ -8,11 +8,27 @@
     "verifiers"
   ],
   "canonical_url": "https://arif-fazil.com/",
+  "topology_as_of": "2026-07-31",
   "route_model": {
-    "/": "present human homepage",
-    "/000/": "genesis and wisdom archive",
-    "/999/": "trust and proof chamber",
-    "/makcikgpt/": "MakcikGPT civic intelligence canonical landing"
+    "/": "surface — Home",
+    "/missions": "cockpit — Cockpit",
+    "/earth": "subsurface — Earth",
+    "/earth/kinabalu-basin": "subsurface_dossier — Kinabalu Basin",
+    "/economics": "capital_briefing — Economics",
+    "/world": "civic_shelf — World",
+    "/world/oil": "commodity — Oil",
+    "/world/gas": "commodity — Gas",
+    "/world/gold": "commodity — Gold",
+    "/world/makcikgpt": "civic_intelligence — MakcikGPT",
+    "/writing": "essay_index — Writing",
+    "/politics": "live_audit — N9 Politics",
+    "/politics/ns-election": "live_audit — N9 Election Audit",
+    "/politics/ns-election/playbook": "operations — N9 Playbook",
+    "/doctrine": "constitutional_text — Doctrine",
+    "/institution": "governance_surface — Institution",
+    "/000/": "machine_wisdom — Genesis",
+    "/999/": "trust_proof — Proof",
+    "/999/audit": "trust_proof_detail — Audit trail"
   },
   "content_scope": {
     "includes": [
@@ -46,25 +62,40 @@
   },
   "related_sites": [
     {
-      "name": "wiki",
-      "url": "https://arifos.arif-fazil.com/wiki",
-      "relationship": "canonical wiki destination; legacy alias wiki.arif-fazil.com permanently redirects here"
+      "name": "arifos",
+      "url": "https://arifos.arif-fazil.com",
+      "relationship": "Constitutional Kernel & Observatory"
+    },
+    {
+      "name": "forge",
+      "url": "https://forge.arif-fazil.com",
+      "relationship": "Governed Execution Engine"
     },
     {
       "name": "aaa",
       "url": "https://aaa.arif-fazil.com",
-      "relationship": "protocol cockpit"
-    },
-    {
-      "name": "mcp",
-      "url": "https://mcp.arif-fazil.com",
-      "relationship": "tools and runtime"
+      "relationship": "Institution, Control Plane & A2A"
     },
     {
       "name": "geox",
       "url": "https://geox.arif-fazil.com",
-      "relationship": "earth intelligence apps"
+      "relationship": "Earth Intelligence (Subsurface)"
+    },
+    {
+      "name": "wealth",
+      "url": "https://wealth.arif-fazil.com",
+      "relationship": "Capital Intelligence (Compute)"
+    },
+    {
+      "name": "well",
+      "url": "https://well.arif-fazil.com",
+      "relationship": "Vitality & Readiness Guard"
+    },
+    {
+      "name": "mcp",
+      "url": "https://mcp.arif-fazil.com",
+      "relationship": "MCP Gateway"
     }
   ],
-  "last_updated": "2026-07-30"
+  "last_updated": "2026-07-31"
 }

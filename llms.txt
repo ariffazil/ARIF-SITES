@@ -35,6 +35,9 @@ L4  1AGI · AGI_bot · ...      Archives (memory, not death)
 | `/wiki/` | Wiki | Constitutional knowledge |
 | `/earth/` | Evidence | Earth evidence |
 | `/essays/` | Writing | Sovereign essays |
+| `/politics/ns-election/` | Live Audit | N9 PRN 2026 — 9 invariants + seat telemetry |
+| `/politics/ns-election/playbook/` | Operations | N9 swing-seat field guide (8 seats) |
+| `/data/politics/ns_live_telemetry.json` | Machine | Live sensory telemetry feed (15-min cron) |
 
 ## GITHUB
 
