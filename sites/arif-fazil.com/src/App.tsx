@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-
 import { ConstellationNav } from '@/components/ConstellationNav';
 import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { Home } from '@/pages/Home';
 import { Missions } from '@/pages/Missions';
 import { Genesis } from '@/pages/Genesis';
@@ -33,6 +34,7 @@ function App() {
       <div className="site-shell">
         <ConstellationNav />
         <main className="site-main" id="main-content">
+          <ErrorBoundary>
           <Routes>
             {/* Home — sovereign identity */}
             <Route path="/" element={<Home />} />
@@ -70,6 +72,7 @@ function App() {
                 the bare /world/makcikgpt and the legacy /index suffix both
                 resolve to the same canonical page (no extra redirect). */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
+            <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
             <Route path="/makcikgpt/" element={<MakcikGPTAlias />} />
             {/* /makcikgpt/index → /makcikgpt/ (301-style client redirect) */}
             <Route path="/makcikgpt/index" element={<Navigate to="/makcikgpt/" replace />} />
@@ -138,6 +141,7 @@ function App() {
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </ErrorBoundary>
         </main>
         <ConstellationFooter />
       </div>
