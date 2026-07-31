@@ -1222,5 +1222,29 @@
       "path": "/makcikgpt/searah-bernama-lewat"
     },
     "seal": "999"
+  },
+  {
+    "id": "m5-5",
+    "title": "VP HR Petronas: Engineer Jadi Bos Manusia — Tak Ada Jiwa, Ada Apa?",
+    "date": "2026-07-30",
+    "lang": "bm",
+    "series": {
+      "id": "M5",
+      "n": 5
+    },
+    "tags": [
+      "ruslan",
+      "petronas",
+      "hr",
+      "just-transition",
+      "layoff",
+      "engineer",
+      "makcikgpt"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/makcikgpt/bangang-ruslan-hr"
+    },
+    "seal": "999"
   }
 ]

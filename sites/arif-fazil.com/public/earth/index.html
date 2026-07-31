@@ -1,44 +1,22 @@
 <!DOCTYPE html>
-<!-- page: earth v2 · Φ GEOX · arif-fazil.com/earth · content-marker: dynamic-earth-Φ wells-Φ studies-Φ -->
+<!-- page: earth v3 · Φ GEOX · arif-fazil.com/earth · zen-clarity-audit 2026-07-30
+     content-marker: dynamic-earth-Φ wells-Φ studies-Φ · unhidden deep-time · sticky-toc -->
 <html lang="en" data-ring="ORGAN" data-organ="geox">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
 <title>EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil</title>
 <meta name="description" content="The living Earth, rendered live: Macrostrat global geologic map on an interactive globe, plate boundaries, today's earthquakes, and the GEOX MCP cockpits that turn the planet into evidence-gated decisions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/earth/_shared/earth.css">
 <style>
-:root{
-  --bg-dark:#0a0a0f;
-  --bg-panel:#101018;
-  --border-dim:#1a1a25;
-  --accent-gold:#d4af37;
-  --accent-cyan:#00d4aa;
-  --text-primary:#e8e8ef;
-  --text-secondary:#9a9aa8;
-  --mono:'Fira Code',monospace;
-  --sans:'Inter',-apple-system,sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg-dark);color:var(--text-primary);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
-a{color:var(--accent-cyan);text-decoration:none}
-a:hover{color:var(--accent-gold)}
-::selection{background:rgba(212,175,55,.25)}
+/* ── PAGE-SPECIFIC: Globe, Hero, Deck, Veil, Pipes, Unit Panel ── */
 
-/* ── header ─────────────────────────────── */
-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-  padding:.9rem 2rem;background:rgba(10,10,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dim)}
-.brand{font-family:var(--mono);font-size:.8rem;letter-spacing:2px;color:var(--text-secondary)}
-.brand b{color:var(--accent-gold);font-weight:600}
-.nav-links{display:flex;gap:1.6rem}
-.nav-links a{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-secondary);transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--accent-gold)}
-@media(max-width:720px){.nav-links{gap:.9rem}.nav-links a{font-size:.62rem}}
-
-/* ── hero / globe ───────────────────────── */
+/* hero / globe */
 .hero{position:relative;height:100vh;min-height:640px}
 #globeViz{position:absolute;inset:0;cursor:crosshair}
 .hero-title{position:absolute;top:5.2rem;left:2rem;z-index:10;max-width:520px;pointer-events:none}
@@ -50,31 +28,29 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-conte
 
 /* control deck */
 .deck{position:absolute;top:5.2rem;right:2rem;z-index:10;width:230px;background:rgba(16,16,24,.88);border:1px solid var(--border-dim);
-  border-radius:10px;padding:1rem 1.1rem;backdrop-filter:blur(10px)}
+  border-radius:var(--radius-md);padding:1rem 1.1rem;backdrop-filter:blur(10px)}
 .deck h4{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--text-secondary);margin-bottom:.7rem;text-transform:uppercase}
 .deck label{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--text-primary);padding:.28rem 0;cursor:pointer;user-select:none}
 .deck input[type=checkbox]{accent-color:var(--accent-cyan);width:14px;height:14px;cursor:pointer}
 .deck .seg{display:flex;gap:.4rem;margin:.7rem 0 .2rem}
-.deck .seg button{flex:1;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;padding:.4rem 0;border-radius:6px;cursor:pointer;
+.deck .seg button{flex:1;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;padding:.4rem 0;border-radius:var(--radius-sm);cursor:pointer;
   background:transparent;border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
 .deck .seg button.on{border-color:var(--accent-cyan);color:var(--accent-cyan)}
 .deck .waypoints{margin-top:.7rem;display:flex;flex-direction:column;gap:.35rem}
-.deck .waypoints button{font-family:var(--mono);font-size:.62rem;text-align:left;letter-spacing:.5px;padding:.42rem .6rem;border-radius:6px;cursor:pointer;
+.deck .waypoints button{font-family:var(--mono);font-size:.62rem;text-align:left;letter-spacing:.5px;padding:.42rem .6rem;border-radius:var(--radius-sm);cursor:pointer;
   background:transparent;border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
 .deck .waypoints button:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
-@media(max-width:720px){.deck{top:auto;bottom:1rem;right:1rem;width:200px}.hero-title{left:1rem;right:1rem}}
 
 /* pipe status strip */
 .pipes{position:absolute;left:2rem;bottom:1.2rem;z-index:10;font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;
   color:var(--text-secondary);background:rgba(16,16,24,.85);border:1px solid var(--border-dim);border-radius:8px;padding:.5rem .8rem;display:flex;gap:1.1rem;flex-wrap:wrap}
 .pipes .ok{color:var(--accent-cyan)}
-.pipes .bad{color:#e05a5a}
+.pipes .bad{color:var(--accent-rust)}
 .pipes .wait{color:var(--accent-gold)}
-@media(max-width:720px){.pipes{left:1rem;bottom:auto;top:5.2rem;max-width:46vw;font-size:.55rem}}
 
-/* unit panel */
+/* unit panel (click-to-query popup) */
 #unitPanel{position:absolute;right:2rem;bottom:1.2rem;z-index:11;width:320px;background:rgba(16,16,24,.92);border:1px solid var(--border-dim);
-  border-radius:10px;padding:1rem 1.2rem;backdrop-filter:blur(10px);display:none}
+  border-radius:var(--radius-md);padding:1rem 1.2rem;backdrop-filter:blur(10px);display:none}
 #unitPanel.show{display:block;animation:rise .35s ease}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 #unitPanel .close{position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1rem}
@@ -85,220 +61,64 @@ header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-conte
 #unitPanel .age{font-family:var(--mono);font-size:.74rem;color:var(--accent-gold);margin:.2rem 0 .5rem}
 #unitPanel .lith{font-size:.8rem;color:var(--text-secondary)}
 #unitPanel .ref{margin-top:.6rem;font-size:.64rem;color:#666672;font-style:italic;line-height:1.4}
-#unitPanel .coords{font-family:var(--mono);font-size:.6rem;color:#55555f;margin-top:.5rem}
+#unitPanel .coords{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);margin-top:.5rem}
 #unitPanel .ocean h3{color:var(--accent-cyan)}
 #unitPanel .kv{display:flex;gap:.5rem;font-size:.76rem;padding:.12rem 0}
-#unitPanel .kv b{font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:#55555f;text-transform:uppercase;min-width:74px;padding-top:.15rem}
-#unitPanel .withheld{margin-top:.55rem;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--accent-gold);border:1px dashed rgba(212,175,55,.45);border-radius:6px;padding:.35rem .5rem}
-@media(max-width:720px){#unitPanel{left:1rem;right:1rem;width:auto}}
+#unitPanel .kv b{font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;min-width:74px;padding-top:.15rem}
+#unitPanel .withheld{margin-top:.55rem;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--accent-gold);border:1px dashed rgba(212,175,55,.45);border-radius:var(--radius-sm);padding:.35rem .5rem}
 
 /* loading veil */
-#veil{position:absolute;inset:0;z-index:40;background:var(--bg-dark);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;transition:opacity .6s}
+#veil{position:absolute;inset:0;z-index:40;background:var(--bg-deep);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;transition:opacity .6s}
 #veil.gone{opacity:0;pointer-events:none}
 #veil .spin{width:38px;height:38px;border:2px solid var(--border-dim);border-top-color:var(--accent-gold);border-radius:50%;animation:sp 1s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 #veil p{font-family:var(--mono);font-size:.68rem;letter-spacing:2px;color:var(--text-secondary)}
 
-/* ── sections ───────────────────────────── */
-section{padding:5.5rem 2rem;border-top:1px solid var(--border-dim)}
-.container{max-width:1100px;margin:0 auto}
-.kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:3px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.8rem}
-h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;
-  background:linear-gradient(135deg,#fff 40%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.lede{color:var(--text-secondary);max-width:760px;font-size:1.02rem}
-.lede b{color:var(--text-primary)}
-
-/* stats strip */
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2.4rem}
-.stat{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.3rem 1.4rem;transition:border-color .25s}
-.stat:hover{border-color:var(--accent-gold)}
-.stat .num{font-family:var(--mono);font-size:1.9rem;font-weight:600;color:var(--accent-cyan)}
-.stat .num.gold{color:var(--accent-gold)}
-.stat .lbl{font-size:.74rem;color:var(--text-secondary);letter-spacing:.6px;text-transform:uppercase;margin-top:.2rem}
-.stat .src{font-family:var(--mono);font-size:.56rem;color:#55555f;margin-top:.5rem}
-
-/* three acts */
-.acts{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem;margin-top:2.6rem}
-.act{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.6rem;transition:transform .25s,border-color .25s}
-.act:hover{transform:translateY(-4px);border-color:var(--accent-cyan)}
-.act .no{font-family:var(--mono);font-size:.62rem;color:var(--accent-gold);letter-spacing:2px}
-.act h3{font-size:1.15rem;font-weight:700;margin:.5rem 0 .7rem}
-.act p{font-size:.88rem;color:var(--text-secondary)}
-.act p b{color:var(--text-primary)}
-
-/* deep time bar */
-.deeptime{margin-top:3rem}
-.deeptime .bar{display:flex;height:54px;border-radius:8px;overflow:hidden;border:1px solid var(--border-dim)}
-.deeptime .e{position:relative;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.6rem;letter-spacing:.5px;color:#0a0a0f;font-weight:600}
-.deeptime .e small{position:absolute;bottom:-1.45rem;left:50%;transform:translateX(-50%);color:var(--text-secondary);font-size:.56rem;white-space:nowrap;letter-spacing:0}
-.deeptime .scale{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;color:#55555f;margin-top:2rem}
-.eon-note{margin-top:.9rem;font-size:.8rem;color:var(--text-secondary)}
-.eon-note b{color:var(--accent-gold)}
-
-/* malay basin callout */
-.basin{margin-top:3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;background:linear-gradient(135deg,rgba(0,212,170,.05),rgba(212,175,55,.05));
-  border:1px solid var(--border-dim);border-radius:14px;padding:2.2rem}
-@media(max-width:820px){.basin{grid-template-columns:1fr}}
-.basin h3{font-size:1.3rem;font-weight:800;margin-bottom:.8rem;color:var(--accent-gold)}
-.basin p{font-size:.9rem;color:var(--text-secondary);margin-bottom:.7rem}
-.basin p b{color:var(--text-primary)}
-.basin .facts{font-family:var(--mono);font-size:.7rem;color:var(--text-secondary);border-left:2px solid var(--accent-cyan);padding-left:1.2rem;line-height:2}
-.basin .facts span{color:var(--accent-cyan)}
-
-/* cockpit cards */
-.cockpit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:1.4rem;margin-top:2.6rem}
-.cockpit{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
-.cockpit:hover{transform:translateY(-4px);border-color:var(--accent-gold)}
-.cockpit .term{background:#0d0d14;border-bottom:1px solid var(--border-dim);padding:.9rem 1rem;font-family:var(--mono);font-size:.66rem;line-height:1.7;min-height:118px}
-.cockpit .term .dots{display:flex;gap:5px;margin-bottom:.55rem}
-.cockpit .term .dots i{width:8px;height:8px;border-radius:50%;background:#2a2a38}
-.cockpit .term .dots i:first-child{background:#e05a5a}.cockpit .term .dots i:nth-child(2){background:var(--accent-gold)}.cockpit .term .dots i:nth-child(3){background:var(--accent-cyan)}
-.cockpit .term .c-cyan{color:var(--accent-cyan)}
-.cockpit .term .c-gold{color:var(--accent-gold)}
-.cockpit .term .c-dim{color:#55555f}
-.cockpit .body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column}
-.cockpit .tag{font-family:var(--mono);font-size:.56rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--accent-cyan);color:var(--accent-cyan);align-self:flex-start;margin-bottom:.6rem}
-.cockpit .tag.gold{border-color:var(--accent-gold);color:var(--accent-gold)}
-.cockpit h3{font-size:1.08rem;font-weight:700;margin-bottom:.5rem}
-.cockpit p{font-size:.84rem;color:var(--text-secondary);flex:1}
-.cockpit a.go{font-family:var(--mono);font-size:.68rem;letter-spacing:1px;margin-top:1rem;color:var(--accent-gold)}
-.cockpit a.go:hover{color:var(--accent-cyan)}
-
-/* studies */
-.study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;margin-top:2.6rem}
-.study{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.5rem 1.6rem;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
-.study:hover{transform:translateY(-4px);border-color:var(--accent-cyan)}
-.study .tag{font-family:var(--mono);font-size:.56rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--accent-cyan);color:var(--accent-cyan);align-self:flex-start;margin-bottom:.6rem}
-.study .tag.gold{border-color:var(--accent-gold);color:var(--accent-gold)}
-.study h3{font-size:1.02rem;font-weight:700;margin-bottom:.35rem}
-.study .meta{font-family:var(--mono);font-size:.62rem;color:var(--accent-gold);letter-spacing:.5px;margin-bottom:.6rem}
-.study p{font-size:.84rem;color:var(--text-secondary);flex:1}
-.study a.go{font-family:var(--mono);font-size:.68rem;letter-spacing:1px;margin-top:1rem;color:var(--accent-gold)}
-.study a.go:hover{color:var(--accent-cyan)}
-.study-empty{margin-top:2.4rem;background:var(--bg-panel);border:1px dashed var(--border-dim);border-radius:12px;padding:2rem;text-align:center}
-.study-empty .n{font-family:var(--mono);font-size:1.6rem;color:var(--accent-cyan)}
-.study-empty p{margin-top:.5rem;font-size:.84rem;color:var(--text-secondary)}
-
-/* footer */
-footer{border-top:1px solid var(--border-dim);padding:3rem 2rem 2.4rem;text-align:center}
-footer .doctrine{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;color:var(--accent-gold);margin-bottom:1rem}
-footer p{font-size:.74rem;color:#55555f;max-width:820px;margin:0 auto .4rem}
-footer a{color:var(--text-secondary)}
-footer a:hover{color:var(--accent-cyan)}
-
-/* ── ZEN PULSE · 3-second orientation ── */
-.zen-pulse{display:flex;flex-wrap:wrap;gap:.55rem;padding:.8rem 1rem;background:rgba(10,10,15,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-dim);position:relative;z-index:5}
-.zen-pulse .zp{display:flex;align-items:baseline;gap:.5rem;font-size:.74rem;color:var(--text-secondary);padding:.25rem .7rem;border:1px solid var(--border-dim);border-radius:99px;background:rgba(16,16,24,.55)}
-.zen-pulse .zp b{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;font-weight:600}
-.zen-pulse .zp.gold b{color:var(--accent-gold)}
-@media(max-width:720px){.zen-pulse{gap:.35rem;padding:.6rem .8rem}.zen-pulse .zp{font-size:.68rem;padding:.2rem .55rem}}
-
-/* ── ONE-LINE GEOX ── */
-.geox-oneliner{margin:2.4rem auto 0;padding:1rem 1.3rem;max-width:780px;background:linear-gradient(135deg,rgba(0,212,170,.06),rgba(212,175,55,.06));border:1px solid rgba(0,212,170,.25);border-radius:10px;display:flex;gap:.9rem;align-items:flex-start}
-.geox-oneliner .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:2px;color:var(--accent-gold);text-transform:uppercase;padding-top:.18rem;white-space:nowrap}
-.geox-oneliner .txt{font-size:.96rem;line-height:1.55;color:var(--text-primary)}
-.geox-oneliner .txt b{color:var(--accent-cyan);font-weight:600}
-
-/* ── WHAT CAN I DO HERE? · 3 intent cards ── */
-.intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.6rem}
-.intent-card{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.4rem 1.5rem;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.intent-card:hover{transform:translateY(-4px);border-color:var(--accent-cyan);box-shadow:0 8px 28px rgba(0,212,170,.12)}
-.intent-card .verb{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:.6rem}
-.intent-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.55rem;color:var(--text-primary)}
-.intent-card p{font-size:.84rem;color:var(--text-secondary);flex:1;line-height:1.55}
-.intent-card .arrow{margin-top:.9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:1px;color:var(--accent-cyan)}
-.intent-card .arrow::before{content:"▸ "}
-
-/* ── LIVE EXAMPLE · click-to-query sample ── */
-.example-panel{margin-top:2.4rem;background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1.1fr;gap:0}
-@media(max-width:820px){.example-panel{grid-template-columns:1fr}}
-.example-panel .term{background:#0d0d14;padding:1.4rem 1.5rem;border-right:1px solid var(--border-dim);font-family:var(--mono);font-size:.78rem;line-height:1.9;color:var(--text-secondary)}
-@media(max-width:820px){.example-panel .term{border-right:none;border-bottom:1px solid var(--border-dim)}}
-.example-panel .term .dots{display:flex;gap:5px;margin-bottom:.7rem}
-.example-panel .term .dots i{width:9px;height:9px;border-radius:50%;background:#2a2a38}
-.example-panel .term .dots i:nth-child(1){background:#e05a5a}
-.example-panel .term .dots i:nth-child(2){background:var(--accent-gold)}
-.example-panel .term .dots i:nth-child(3){background:var(--accent-cyan)}
-.example-panel .term .label{font-family:var(--mono);font-size:.6rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.7rem;display:block}
-.example-panel .term .query{color:var(--text-primary)}
-.example-panel .term .query .c-cyan{color:var(--accent-cyan)}
-.example-panel .term .query .c-dim{color:#55555f}
-.example-panel .term .cursor{display:inline-block;width:7px;height:1em;background:var(--accent-cyan);vertical-align:text-bottom;animation:blink 1s steps(1) infinite;margin-left:2px}
-@keyframes blink{50%{opacity:0}}
-.example-panel .result{padding:1.4rem 1.5rem}
-.example-panel .result .src{font-family:var(--mono);font-size:.6rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.7rem;display:block}
-.example-panel .result h3{font-size:1.05rem;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:.5rem;margin-bottom:.45rem}
-.example-panel .result h3 .swatch{display:inline-block;width:13px;height:13px;border-radius:3px;background:#c8923a;flex-shrink:0}
-.example-panel .result .age{font-family:var(--mono);font-size:.78rem;color:var(--accent-gold);margin-bottom:.55rem}
-.example-panel .result .lith{font-size:.86rem;color:var(--text-secondary);margin-bottom:.55rem}
-.example-panel .result .ref{font-size:.7rem;color:#666672;font-style:italic;line-height:1.5;margin-bottom:.55rem;padding:.55rem .7rem;border-left:2px solid var(--border-dim);background:rgba(0,0,0,.2)}
-.example-panel .result .coords{font-family:var(--mono);font-size:.6rem;color:#55555f}
-.example-panel .result .seal{margin-top:.7rem;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;color:var(--accent-cyan);padding:.32rem .55rem;border:1px solid rgba(0,212,170,.35);border-radius:6px;display:inline-block}
-
-/* ── BASIN DOSSIERS · featured cards ── */
-.dossier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;margin-top:2.4rem}
-.dossier-card{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;padding:1.7rem 1.8rem;transition:transform .25s,border-color .25s,box-shadow .25s;display:flex;flex-direction:column;text-decoration:none;color:inherit;border-top:3px solid var(--accent-gold)}
-.dossier-card:hover{transform:translateY(-5px);border-color:var(--accent-gold);border-top-color:var(--accent-gold);box-shadow:0 12px 32px rgba(212,175,55,.12)}
-.dossier-card.muted{border-top-color:var(--accent-cyan);opacity:.92}
-.dossier-card.muted:hover{opacity:1;border-color:var(--accent-cyan);box-shadow:0 12px 32px rgba(0,212,170,.10)}
-.dossier-card.coming{border-top-color:var(--border-dim);opacity:.75}
-.dossier-card.coming:hover{opacity:1;border-color:var(--text-secondary);transform:translateY(-2px);box-shadow:none}
-.dossier-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.7rem}
-.dossier-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--border-dim);color:var(--text-secondary);text-transform:uppercase}
-.dossier-tag.gold{color:var(--accent-gold);border-color:rgba(212,175,55,.5);background:rgba(212,175,55,.05)}
-.dossier-tag.dim{color:var(--text-secondary);border-color:var(--border-dim);background:rgba(0,0,0,.2)}
-.dossier-status{font-family:var(--mono);font-size:.6rem;color:var(--accent-cyan);letter-spacing:.5px}
-.dossier-card.coming .dossier-status{color:var(--text-secondary)}
-.dossier-card h3{font-size:1.35rem;font-weight:800;margin-bottom:.5rem;background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.dossier-card.muted h3{background:linear-gradient(135deg,#fff 30%,var(--accent-cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.dossier-card.coming h3{background:linear-gradient(135deg,#9a9aa8 30%,#55555f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.dossier-subtitle{font-size:.88rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1rem;flex:0 0 auto}
-.dossier-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem;padding:.9rem 0;border-top:1px dashed var(--border-dim);border-bottom:1px dashed var(--border-dim)}
-.dossier-stats div{text-align:center}
-.dossier-stats b{display:block;font-family:var(--mono);font-size:1.05rem;font-weight:600;color:var(--accent-cyan);line-height:1.1}
-.dossier-stats span{display:block;font-size:.6rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.5px;margin-top:.2rem}
-.dossier-card.coming .dossier-stats b{color:var(--text-secondary)}
-.dossier-points{list-style:none;font-size:.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:1.2rem;flex:1}
-.dossier-points li{padding:.25rem 0;padding-left:1rem;position:relative}
-.dossier-points li::before{content:"▸";position:absolute;left:0;color:var(--accent-cyan);font-size:.7rem}
-.dossier-card.coming .dossier-points li::before{content:"○";color:var(--text-secondary)}
-.dossier-cta{margin-top:auto;padding-top:.8rem;border-top:1px solid var(--border-dim)}
-.dossier-cta .arrow{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;display:block;margin-bottom:.3rem}
-.dossier-card.coming .dossier-cta .arrow{color:var(--text-secondary)}
-.dossier-cta .more{font-size:.7rem;color:var(--text-secondary);font-style:italic;letter-spacing:.2px}
-
-/* ── BREADCRUMB · cognitive ladder ── */
-.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:1.2rem 1.4rem;margin-top:2rem;background:rgba(16,16,24,.5);border:1px dashed var(--border-dim);border-radius:10px}
-.crumbs .crumb{font-family:var(--mono);font-size:.7rem;letter-spacing:.5px;color:var(--text-secondary);padding:.32rem .7rem;border-radius:99px;background:rgba(0,0,0,.3);border:1px solid transparent}
-.crumbs .crumb.now{color:var(--accent-gold);border-color:var(--accent-gold);background:rgba(212,175,55,.06);font-weight:600}
-.crumbs .crumb.next{color:var(--accent-cyan);border-color:rgba(0,212,170,.4);background:rgba(0,212,170,.06)}
-.crumbs .sep{color:#55555f;font-size:.7rem}
-
-/* ── COMPACT MODE · reduce expert density on first read ── */
-.collapsible{margin-top:1rem}
-.collapsible > summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-cyan);text-transform:uppercase;padding:.6rem 0;display:flex;align-items:center;gap:.5rem;user-select:none}
-.collapsible > summary::-webkit-details-marker{display:none}
-.collapsible > summary::before{content:"▸";transition:transform .2s;display:inline-block;color:var(--accent-cyan)}
-.collapsible[open] > summary::before{transform:rotate(90deg)}
-.collapsible > summary:hover{color:var(--accent-gold)}
-.collapsible[open] > summary::before{color:var(--accent-gold)}
-.collapsible .body{margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--border-dim)}
+/* ── Mobile ── */
+@media(max-width:720px){
+  .deck{top:auto;bottom:1rem;right:1rem;width:200px}.hero-title{left:1rem;right:1rem}
+  .pipes{left:1rem;bottom:auto;top:5.2rem;max-width:46vw;font-size:.55rem}
+  #unitPanel{left:1rem;right:1rem;width:auto}
+}
+/* ── Nav separator + organ links (human-first design) ── */
+.nav-sep{width:1px;height:18px;background:var(--border-dim);margin:0 .2rem;flex-shrink:0}
+.nav-organ{font-size:.62rem !important;opacity:.6;letter-spacing:.8px !important}
+.nav-organ:hover{opacity:1}
+@media(max-width:720px){.nav-sep{display:none}.nav-organ{display:none}}
 </style>
 </head>
 <body>
 
-<a class="skip-link" href="#main-content" style="position:absolute;left:-9999px">Skip to main content</a>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
-<header>
-  <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
-  <nav class="nav-links" aria-label="Primary navigation">
-    <a href="https://arif-fazil.com">Home</a>
-    <a href="https://geox.arif-fazil.com">GEOX</a>
-    <a href="https://aaa.arif-fazil.com">AAA</a>
-    <a href="https://arifos.arif-fazil.com">arifOS</a>
-    <a href="https://mcp.arif-fazil.com">MCP</a>
+<!-- ══ HEADER · human verbs first, organ links secondary ══ -->
+<header class="earth-header">
+  <div class="earth-brand">arif-fazil.com<b>/ EARTH</b></div>
+  <nav class="earth-nav" aria-label="Earth navigation">
+    <a href="#top" class="active">◈ Globe</a>
+    <a href="#dossiers">Read</a>
+    <a href="#deeptime">See</a>
+    <a href="#geox">Tools</a>
+    <a href="/earth/map/">Map</a>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <a href="https://geox.arif-fazil.com" class="nav-organ" title="GEOX organ — agent tools">GEOX</a>
+    <a href="https://arif-fazil.com" class="nav-organ" title="arif-fazil.com home">Home</a>
   </nav>
 </header>
+
+<!-- ══ STICKY EARTH TOC · mirrors header verbs ══ -->
+<nav class="earth-toc" aria-label="On this page" id="earthToc">
+  <a href="#top" class="nav-globe active">◈ Globe</a>
+  <a href="#what">What Can I Do</a>
+  <a href="#real">Why Real</a>
+  <a href="#dynamic">Dynamic Earth</a>
+  <a href="#deeptime">Deep Time</a>
+  <a href="#malay">Malay Basin</a>
+  <a href="#dossiers">Dossiers</a>
+  <a href="#geox">Cockpits</a>
+  <a href="#studies">Studies</a>
+  <a href="/earth/map/">Map</a>
+</nav>
 
 <main id="main-content">
 
@@ -348,7 +168,6 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 
   <div id="unitPanel"></div>
-
   <div id="veil"><div class="spin"></div><p>FORGING GLOBE · PULLING PIPES</p></div>
 </div>
 
@@ -357,9 +176,10 @@ footer a:hover{color:var(--accent-cyan)}
   <span class="zp"><b>WHERE</b> arif-fazil.com / earth</span>
   <span class="zp gold"><b>WHY CARE</b> live globe · evidence-gated rocks</span>
   <span class="zp"><b>WHAT NEXT</b> click the planet · ask the rocks</span>
+  <span class="zp"><b>F2 TRUTH</b> numbers from pipes, not invented</span>
 </div>
 
-<!-- ══ WHAT CAN I DO HERE? · intent cards (Must Have #1) ══ -->
+<!-- ══ WHAT CAN I DO HERE? · intent cards · ABOVE the fold for cognitive onboarding ══ -->
 <section id="what" aria-label="What can I do here">
   <div class="container">
     <div class="kicker">FIRST 30 SECONDS · PICK A VERB</div>
@@ -374,11 +194,11 @@ footer a:hover{color:var(--accent-cyan)}
         <span class="arrow">SCROLL UP · CLICK THE GLOBE</span>
       </a>
 
-      <a class="intent-card" href="#dynamic" aria-label="Explore Basins - read geology history">
+      <a class="intent-card" href="#dossiers" aria-label="Explore Basins - read geology history">
         <span class="verb">EXPLORE BASINS</span>
         <h3>Read the tape recorder.</h3>
-        <p>The crust sags. The sag fills. Dead plankton becomes oil. Walk the Malay, Kinabalu, and Layang-Layang basins through the lens of wells this founder actually signed off on.</p>
-        <span class="arrow">OPEN DYNAMIC EARTH ↓</span>
+        <p>The crust sags. The sag fills. Dead plankton becomes oil. Walk the Malay and Kinabalu basins through the lens of wells this founder actually signed off on.</p>
+        <span class="arrow">OPEN BASIN DOSSIERS ↓</span>
       </a>
 
       <a class="intent-card" href="#geox" aria-label="Ask GEOX - question to evidence">
@@ -389,7 +209,6 @@ footer a:hover{color:var(--accent-cyan)}
       </a>
     </div>
 
-    <!-- ONE-LINE GEOX DEFINITION (Must Have #4) -->
     <div class="geox-oneliner" aria-label="GEOX in one sentence">
       <span class="lbl">GEOX · ONE LINE</span>
       <p class="txt"><b>GEOX</b> is an Earth Intelligence system that turns rocks, maps, wells, and geologic history into <b>evidence-based answers</b> — sealed, source-cited, human-ratified.</p>
@@ -397,12 +216,12 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ LIVE EXAMPLE · click-to-query sample (Must Have #2) ══ -->
+<!-- ══ LIVE EXAMPLE ══ -->
 <section id="example" aria-label="Live example - what clicking the Earth returns">
   <div class="container">
     <div class="kicker">SHOW ME WHAT HAPPENS · A REAL QUERY</div>
     <h2>Click Sabah. Here is what comes back.</h2>
-    <p class="lede">No marketing copy. This is a live query against the Macrostrat pipe at <b>6.08°N, 116.72°E</b> — the NW Sabah continental shelf, the same coordinates the founder drilled on. The page below is the exact JSON the GEOX cockpit returns.</p>
+    <p class="lede">No marketing copy. This is a live query against the Macrostrat pipe at <b>6.08°N, 116.72°E</b> — the NW Sabah continental shelf, the same coordinates the founder drilled on.</p>
 
     <div class="example-panel">
       <div class="term">
@@ -427,7 +246,6 @@ footer a:hover{color:var(--accent-cyan)}
       </div>
     </div>
 
-    <!-- COGNITIVE BREADCRUMB (Must Have #3) -->
     <nav class="crumbs" aria-label="Where you are in GEOX">
       <span class="crumb now">① Planet · you are here</span>
       <span class="sep">→</span>
@@ -442,7 +260,7 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ SECTION · WHY THIS IS THE REAL EARTH ══ -->
+<!-- ══ WHY THIS IS THE REAL EARTH ══ -->
 <section id="real">
   <div class="container">
     <div class="kicker">F2 · TRUTH — NUMBERS FROM PIPES, NOT WEIGHTS</div>
@@ -457,7 +275,7 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ SECTION · DYNAMIC EARTH ══ -->
+<!-- ══ DYNAMIC EARTH · three readings ══ -->
 <section id="dynamic">
   <div class="container">
     <div class="kicker">THE PLANET IS A MACHINE, NOT A MONUMENT</div>
@@ -481,43 +299,72 @@ footer a:hover{color:var(--accent-cyan)}
         <p>Where the crust stretches, it sags, and the sag fills with sediment — layer on layer, a tape recorder of climate, sea level, and life. Buried deep enough, dead plankton becomes <b>oil and gas</b>. Every basin on this globe is a chapter; the <b>Malay Basin</b>, where this federation's founder spent 13+ years reading rocks offshore Malaysia, is one of them.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- DEEP TIME + CASE STUDY · collapsed by default (Must Have #6) -->
-    <details class="collapsible">
-      <summary>For the curious · 4-billion-year tape recorder + case study</summary>
+<!-- ══ DEEP TIME · UNHIDDEN — this IS the point of geology ══ -->
+<section id="deeptime">
+  <div class="container">
+    <div class="kicker">4.567 BILLION YEARS · THE PLANET IS A TIME MACHINE</div>
+    <h2>Deep time — the 4-billion-year tape recorder</h2>
+    <p class="lede">Geology is the only science whose laboratory is a planet and whose stopwatch is a billion years. Every rock on that globe is <b>mid-journey</b> between being made, being buried, and being destroyed. The bar below is the entire history of Earth, linear scale. All of written human history fits in the last <b>0.0001%</b> — thinner than the line that ends it.</p>
+
+    <div class="deeptime">
+      <div class="bar" title="Linear scale, Ma before present">
+        <div class="e" style="width:12.4%;background:#8a4b8f">HADEAN<small>4567–4000 Ma</small></div>
+        <div class="e" style="width:32.8%;background:#c23b6e">ARCHEAN<small>4000–2500 Ma</small></div>
+        <div class="e" style="width:42.8%;background:#d4af37">PROTEROZOIC<small>2500–539 Ma</small></div>
+        <div class="e" style="width:12%;background:#00d4aa">PHANEROZOIC<small>539–0 Ma · us</small></div>
+      </div>
+      <div class="scale"><span>4567 Ma · accretion</span><span>linear scale</span><span>0 · today</span></div>
+      <p class="eon-note">All of written human history fits in the last <b>0.0001%</b> of that bar — thinner than the line that ends it. Humility is not a posture here; it is a measurement. <b>Ω₀ ≈ 0.04.</b></p>
+    </div>
+
+    <details class="collapsible" style="margin-top:2rem">
+      <summary>For the extra curious · how we know these ages</summary>
       <div class="body">
-        <div class="deeptime">
-          <div class="bar" title="Linear scale, Ma before present">
-            <div class="e" style="width:12.4%;background:#8a4b8f">HADEAN<small>4567–4000 Ma</small></div>
-            <div class="e" style="width:32.8%;background:#c23b6e">ARCHEAN<small>4000–2500 Ma</small></div>
-            <div class="e" style="width:42.8%;background:#d4af37">PROTEROZOIC<small>2500–539 Ma</small></div>
-            <div class="e" style="width:12%;background:#00d4aa">PHANEROZOIC<small>539–0 Ma · us</small></div>
-          </div>
-          <div class="scale"><span>4567 Ma · accretion</span><span>linear scale</span><span>0 · today</span></div>
-          <p class="eon-note">All of written human history fits in the last <b>0.0001%</b> of that bar — thinner than the line that ends it. Geology is the only science whose laboratory is a planet and whose stopwatch is a billion years. Humility is not a posture here; it is a measurement. <b>Ω₀ ≈ 0.04.</b></p>
-        </div>
-
-        <div class="basin">
-          <div>
-            <h3>◈ Case study — the Malay Basin, off the hero's port bow</h3>
-            <p>The globe opens looking at the <b>Malay Basin</b> for a reason. In the Oligo–Miocene, the Sundaland crust stretched in a back-arc setting, faults dropped the basement into half-grabens, and ~30 million years of sediment poured in — lacustrine source rocks at the base, fluvio-deltaic reservoirs above, all sealed by marine mudstones as the sea returned.</p>
-            <p>Heat did the rest. The tape-recorder became a <b>petroleum system</b>: one of Southeast Asia's great gas provinces. Reading that record — seismic, well logs, geochemistry — is what an exploration geoscientist does, and it is the human craft the Φ GEOX cockpits below are built to govern: <b>evidence-gated, human-decided.</b></p>
-          </div>
-          <div class="facts">
-            <div><span>setting</span> · back-arc extension, Sundaland</div>
-            <div><span>age</span> · Oligocene–Recent fill</div>
-            <div><span>fill</span> · &gt;12 km in deep centres</div>
-            <div><span>system</span> · lacustrine source → deltaic reservoir</div>
-            <div><span>today</span> · gas province, offshore MY/TH/VN margin</div>
-            <div><span>founder wells</span> · BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</div>
-          </div>
-        </div>
+        <p class="prose">The Hadean–Archean boundary (~4,000 Ma) is marked by the oldest known rocks on Earth: the Acasta Gneiss in Canada's Slave Craton (4.03 Ga). The Archean–Proterozoic boundary (~2,500 Ma) coincides with the Great Oxidation Event — free oxygen first appearing in the atmosphere, a signature of cyanobacterial photosynthesis. The Proterozoic–Phanerozoic boundary (539 Ma) is the Cambrian Explosion: within ~20 million years, almost every animal body plan we know appears in the fossil record. We are 539 million years into the Phanerozoic and about 300,000 years into <i>Homo sapiens</i>. The bar is not fair — and that is the lesson.</p>
       </div>
     </details>
   </div>
 </section>
 
-<!-- ══ SECTION · BASIN DOSSIERS · content-marker: earth-dossiers-Φ ══ -->
+<!-- ══ MALAY BASIN CASE STUDY · UNHIDDEN — the founder's expertise ══ -->
+<section id="malay">
+  <div class="container">
+    <div class="kicker">CASE STUDY · THE FOUNDER'S HOME WATERS</div>
+    <h2>◈ The Malay Basin — a tape recorder that became a gas province</h2>
+    <p class="lede">The globe opens looking at the <b>Malay Basin</b> for a reason. This is where the founder spent 13+ years reading rocks offshore Peninsular Malaysia. What follows is the basin's story — from tectonic birth to petroleum system to the wells that proved it.</p>
+
+    <div class="basin-callout">
+      <div>
+        <h3>How a sag becomes a province</h3>
+        <p>In the Oligo–Miocene, the Sundaland crust stretched in a back-arc setting, faults dropped the basement into half-grabens, and ~30 million years of sediment poured in — lacustrine source rocks at the base, fluvio-deltaic reservoirs above, all sealed by marine mudstones as the sea returned.</p>
+        <p>Heat did the rest. The tape-recorder became a <b>petroleum system</b>: one of Southeast Asia's great gas provinces. Reading that record — seismic, well logs, geochemistry — is what an exploration geoscientist does, and it is the human craft the Φ GEOX cockpits below are built to govern: <b>evidence-gated, human-decided.</b></p>
+        <p>In 2025, the LEBAH EMAS-1 wildcat opened a <b>new play fairway</b> along the Western Hinge Fault — proof that even a mature basin can surprise you. The four founder wells below are the ones the sovereign actually signed off on. Their coordinates are withheld; their existence is witness enough.</p>
+      </div>
+      <div class="facts">
+        <div><span>setting</span> · back-arc extension, Sundaland</div>
+        <div><span>age</span> · Oligocene–Recent fill</div>
+        <div><span>dimensions</span> · ~500 km × ~200 km, NW-SE trend</div>
+        <div><span>fill</span> · &gt;12 km in deep centres</div>
+        <div><span>stratigraphy</span> · Groups A→M (lacustrine → deltaic → marine)</div>
+        <div><span>system</span> · lacustrine source → deltaic reservoir → marine seal</div>
+        <div><span>trap</span> · Middle Miocene anticlines + Western Hinge Fault</div>
+        <div><span>today</span> · mature gas province, offshore MY/TH/VN margin</div>
+        <div><span>founder wells</span> · BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</div>
+      </div>
+    </div>
+
+    <nav class="crumbs" style="margin-top:2rem" aria-label="Basin navigation">
+      <a class="crumb now" href="/earth/malay-basin/">◈ Malay Basin Dossier — full 6-section report</a>
+      <span class="sep">|</span>
+      <a class="crumb next" href="/earth/malay-basin-cross-section.html">Cross-Section — NW-SE transect, 4 founder wells</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ BASIN DOSSIERS ══ -->
 <section id="dossiers" aria-label="Basin dossiers">
   <div class="container">
     <div class="kicker">Φ GEOX · DEEPER THAN THE GLOBE</div>
@@ -525,12 +372,13 @@ footer a:hover{color:var(--accent-cyan)}
     <p class="lede">The globe shows you a continent. The dossiers show you <b>one basin at a time</b> — tectonic evolution, stratigraphy, petroleum system, and the cross-section that ties them together. Every dossier is sourced, dated, and honest about what is not known.</p>
 
     <div class="dossier-grid">
-      <a class="dossier-card" href="/earth/kinabalu-basin/" aria-label="Open Kinabalu Basin dossier">
+      <!-- KINABALU BASIN -->
+      <div class="dossier-card">
         <div class="dossier-head">
           <span class="dossier-tag gold">FEATURED · NW SABAH</span>
           <span class="dossier-status">● LIVE</span>
         </div>
-        <h3>◈ Kinabalu Basin</h3>
+        <a href="/earth/kinabalu-basin/" style="text-decoration:none;color:inherit"><h3>◈ Kinabalu Basin</h3></a>
         <p class="dossier-subtitle">One of three producing basins in Malaysia. Offshore NW Sabah, fold-thrust belt, post-MMU clastic play. SRTM-draped cross-section with USGS-standard lithology patterns.</p>
         <div class="dossier-stats">
           <div><b>4,095 m</b><span>Kinabalu peak</span></div>
@@ -545,17 +393,19 @@ footer a:hover{color:var(--accent-cyan)}
           <li>Recent discoveries: Zoisit Deep-1 · Well A oil beneath gas · Megah-1 frontier</li>
         </ul>
         <div class="dossier-cta">
-          <span class="arrow">▸ READ THE DOSSIER</span>
-          <span class="more">+ 10-section PDF · geological-grade cross-section · GEOX launch</span>
+          <a class="arrow" href="/earth/kinabalu-basin/">▸ READ THE DOSSIER</a>
+          <a class="arrow xs" href="/earth/kinabalu-cross-section.html">▸ CROSS-SECTION</a>
+          <span class="more">+ PDF · geological-grade</span>
         </div>
-      </a>
+      </div>
 
-      <a class="dossier-card muted" href="https://geox.arif-fazil.com/basins/kinabalu/" aria-label="Open GEOX Kinabalu prospect cockpit">
+      <!-- KINABALU GEOX COCKPIT -->
+      <div class="dossier-card muted">
         <div class="dossier-head">
           <span class="dossier-tag">GEOX COCKPIT</span>
           <span class="dossier-status">● EXTERNAL</span>
         </div>
-        <h3>◇ Kinabalu — GEOX Prospect</h3>
+        <a href="https://geox.arif-fazil.com/basins/kinabalu/" style="text-decoration:none;color:inherit"><h3>◇ Kinabalu — GEOX Prospect</h3></a>
         <p class="dossier-subtitle">The prospect-maturation pipeline for the same basin. Hypothesis space, four basement models, verification plan, prospect verdicts. Sibling to the human-readable dossier.</p>
         <ul class="dossier-points">
           <li>PSCS subduction working hypothesis</li>
@@ -564,17 +414,18 @@ footer a:hover{color:var(--accent-cyan)}
           <li>Prospect verdicts + acquisition plan</li>
         </ul>
         <div class="dossier-cta">
-          <span class="arrow">▸ OPEN GEOX COCKPIT ↗</span>
+          <a class="arrow" href="https://geox.arif-fazil.com/basins/kinabalu/">▸ OPEN GEOX COCKPIT ↗</a>
           <span class="more">geox.arif-fazil.com · opens in new surface</span>
         </div>
-      </a>
+      </div>
 
-      <a class="dossier-card" href="/earth/malay-basin/" aria-label="Open Malay Basin dossier">
+      <!-- MALAY BASIN -->
+      <div class="dossier-card">
         <div class="dossier-head">
           <span class="dossier-tag gold">FEATURED · OFFSHORE PENINSULAR MALAYSIA</span>
           <span class="dossier-status">● LIVE</span>
         </div>
-        <h3>◈ Malay Basin</h3>
+        <a href="/earth/malay-basin/" style="text-decoration:none;color:inherit"><h3>◈ Malay Basin</h3></a>
         <p class="dossier-subtitle">The founder's home waters. 13+ years reading rocks offshore Malaysia. Cenozoic failed rift + Miocene inversion. Mature gas province, 4 founder wells, 1 new play fairway (2025).</p>
         <div class="dossier-stats">
           <div><b>~500 km</b><span>length</span></div>
@@ -589,20 +440,27 @@ footer a:hover{color:var(--accent-cyan)}
           <li>Founder wells: BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</li>
         </ul>
         <div class="dossier-cta">
-          <span class="arrow">▸ READ THE DOSSIER</span>
-          <span class="more">+ 6 sections · geological-grade cross-section · GEOX launch</span>
+          <a class="arrow" href="/earth/malay-basin/">▸ READ THE DOSSIER</a>
+          <a class="arrow xs" href="/earth/malay-basin-cross-section.html">▸ CROSS-SECTION</a>
+          <span class="more">+ 6 sections · geological-grade</span>
         </div>
-      </a>
+      </div>
     </div>
+
+    <nav class="crumbs" style="margin-top:2rem" aria-label="Earth surfaces directory">
+      <span class="crumb now">All earth surfaces</span>
+      <span class="sep">→</span>
+      <a class="crumb next" href="/earth/map/">▸ FULL EARTH SITE MAP — every page, no hidden doors</a>
+    </nav>
   </div>
 </section>
 
-<!-- ══ SECTION · GEOX MCP COCKPITS ══ -->
+<!-- ══ GEOX MCP COCKPITS ══ -->
 <section id="geox">
   <div class="container">
     <div class="kicker">Φ GEOX · MODEL CONTEXT PROTOCOL</div>
     <h2>The GEOX MCP cockpits</h2>
-    <p class="lede">GEOX is the Earth organ of the arifOS federation. Its MCP interface exposes the geoscience workflow as <b>governed tools</b> — the same pipe discipline as this page: every claim evidence-gated, every verdict human-ratified, every step sealed to VAULT-999. Four surfaces, three of them live cockpits, one of them running above you.</p>
+    <p class="lede">GEOX is the Earth organ of the arifOS federation. Its MCP interface exposes the geoscience workflow as <b>governed tools</b> — the same pipe discipline as this page: every claim evidence-gated, every verdict human-ratified, every step sealed to VAULT-999.</p>
 
     <div class="cockpit-grid">
       <div class="cockpit">
@@ -615,7 +473,7 @@ footer a:hover{color:var(--accent-cyan)}
         <div class="body">
           <span class="tag">LIVE · THIS PAGE</span>
           <h3>geox.macrostrat</h3>
-          <p>The click-to-query console on the globe above. Any coordinate on land returns the mapped bedrock unit, its age and lithology, and its published source — straight from the Macrostrat pipe, sealed in the page footer status line.</p>
+          <p>The click-to-query console on the globe above. Any coordinate on land returns the mapped bedrock unit, its age and lithology, and its published source — straight from the Macrostrat pipe.</p>
           <a class="go" href="#top">▸ SCROLL UP AND CLICK THE EARTH</a>
         </div>
       </div>
@@ -630,7 +488,7 @@ footer a:hover{color:var(--accent-cyan)}
         <div class="body">
           <span class="tag gold">COCKPIT</span>
           <h3>Prospect Forge</h3>
-          <p>The prospect maturation cockpit. Georeferencing, charge and seal reasoning, play-segment logic — a lead goes in, a defensible prospect comes out, and no volume is booked without a human signature. No authority → no execution.</p>
+          <p>The prospect maturation cockpit. Georeferencing, charge and seal reasoning, play-segment logic — a lead goes in, a defensible prospect comes out, and no volume is booked without a human signature.</p>
           <a class="go" href="https://geox.arif-fazil.com/apps/prospect-ui/">▸ OPEN PROSPECT FORGE</a>
         </div>
       </div>
@@ -668,7 +526,7 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ SECTION · STUDIES · content-marker: earth-studies-Φ ══ -->
+<!-- ══ STUDIES · evidence register ══ -->
 <section id="studies">
   <div class="container">
     <div class="kicker">Φ GEOX · EVIDENCE REGISTER</div>
@@ -681,13 +539,15 @@ footer a:hover{color:var(--accent-cyan)}
 </main>
 <!-- /#main-content -->
 
-<footer>
+<footer class="earth-footer">
   <div class="doctrine">DITEMPA BUKAN DIBERI</div>
   <p>Data pipes: geologic tiles &amp; API — <a href="https://macrostrat.org">Macrostrat</a> (CC-BY 4.0) · earthquakes — <a href="https://earthquake.usgs.gov">USGS</a> real-time feed · plate boundaries — PB2002 (Bird, 2003) · globe engine — globe.gl. Satellite base — Esri World Imagery (for reference).</p>
-  <p>Wells &amp; studies — sovereign canon from <a href="https://arif-fazil.com/earth/data/wells.json">wells.json</a> · existence-tier wells carry no coordinates, depths, or results; markers are jittered basin-level positions, labeled approximate.</p>
+  <p>Wells &amp; studies — sovereign canon from <a href="/earth/data/wells.json">wells.json</a> · existence-tier wells carry no coordinates, depths, or results; markers are jittered basin-level positions, labeled approximate.</p>
   <p>Numbers on this page are read from live pipes at load time and withheld if a pipe fails. Nothing here is claimed unobserved. Ω₀ ≈ 0.04.</p>
-  <p>Φ GEOX · an organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
+  <p>Φ GEOX · an organ of the arifOS federation · <a href="/earth/map/">earth site map</a> · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
 </footer>
+
+<!-- ══ GLOBE ENGINE + ALL LIVE PIPES (unchanged — this is the living heart) ══ -->
 <script src="https://unpkg.com/globe.gl@2.46.1/dist/globe.gl.min.js"></script>
 <script>
 (function(){
@@ -699,7 +559,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 function pipe(id,state,text){const e=$(id);if(!e)return;e.className=state;e.textContent=text;}
 setInterval(()=>{const d=new Date();$("pipeClock").textContent=d.toISOString().slice(11,19)+" UTC";},1000);
 
-/* ── tile engines (Macrostrat via CORS-clean image proxy; Esri fallback) ── */
+/* ── tile engines ── */
 const TILE_GEO=(x,y,z)=>`https://images.weserv.nl/?url=tiles.macrostrat.org/carto/${z}/${x}/${y}.png`;
 const TILE_SAT=(x,y,z)=>`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`;
 let base="geo";
@@ -710,21 +570,19 @@ const world=Globe({rendererConfig:{antialias:true}})(el)
   .globeTileEngineUrl((x,y,z)=>TILE_GEO(x,y,z))
   .showAtmosphere(true).atmosphereColor("#00d4aa").atmosphereAltitude(0.16)
   .backgroundColor("#0a0a0f")
-  // earthquakes
   .pointsData([]).pointLat("lat").pointLng("lng")
   .pointAltitude("alt").pointRadius("r").pointColor("c").pointLabel("label")
   .ringsData([]).ringLat("lat").ringLng("lng").ringColor("c")
   .ringMaxRadius("maxR").ringPropagationSpeed("speed").ringRepeatPeriod("period")
-  // plates
   .pathsData([]).pathPoints("coords")
   .pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
   .pathColor(()=>"rgba(0,212,170,0.5)").pathStroke(0.55)
-  // wells & regions (labels layer)
   .labelsData([]).labelLat("lat").labelLng("lng")
   .labelText("text").labelColor("color").labelSize("size")
   .labelAltitude("alt").labelDotRadius("dot")
   .onLabelClick(onMarkerClick)
   .onGlobeClick(onRockClick);
+
 function size(){world.width(el.clientWidth).height(el.clientHeight);}
 window.addEventListener("resize",size);size();
 world.pointOfView({lat:8,lng:104,altitude:2.3});
@@ -736,11 +594,9 @@ function pauseSpin(){ctrl.autoRotate=false;clearTimeout(idleT);idleT=setTimeout(
 el.addEventListener("pointerdown",pauseSpin);
 el.addEventListener("wheel",pauseSpin,{passive:true});
 
-/* tiles pipe status: the tile engine itself is canvas-internal; verify proxy reachability once */
 fetch(TILE_GEO(3,1,2),{method:"HEAD"}).then(r=>pipe("pipeTiles",r.ok?"ok":"bad",r.ok?"TILES · MACROSTRAT OK":"TILES · FAIL"))
   .catch(()=>pipe("pipeTiles","bad","TILES · FAIL"));
 
-/* ── base switch ── */
 function setBase(b){
   base=b;
   $("baseGeo").classList.toggle("on",b==="geo");
@@ -752,7 +608,6 @@ function setBase(b){
 $("baseGeo").addEventListener("click",()=>setBase("geo"));
 $("baseSat").addEventListener("click",()=>setBase("sat"));
 
-/* ── waypoints ── */
 document.querySelectorAll(".waypoints button").forEach(btn=>{
   btn.addEventListener("click",()=>{
     if(btn.id==="wpWells"){
@@ -791,16 +646,14 @@ $("lyrQuakes").addEventListener("change",e=>{
   world.ringsData(e.target.checked?quakeRings:[]);
 });
 
-/* ── plate boundaries (PB2002) — local pipe, type-coloured, no remote fetch ── */
+/* ── plate boundaries (PB2002) ── */
 const PLATE_BOUNDARIES_URL="/earth/data/plates/PB2002_boundaries.geojson";
 const PLATE_PLATES_URL="/earth/data/plates/PB2002_plates.geojson";
 
-/* PB2002 honest classifier: source data has Type="subduction" or empty.
-   No fence-sitting. Grey = labelled by absence in source, not invented. */
 function plateColor(kind=""){
   const k=String(kind||"").toLowerCase();
   if(k.includes("subduction")||k.includes("convergent"))return ["#ff4d4d","rgba(255,77,77,0.55)"];
-  return ["#9ca3af","rgba(156,163,175,0.55)"]; // UNCLASSIFIED but visible — boundaries that PB2002 does not tag
+  return ["#9ca3af","rgba(156,163,175,0.55)"];
 }
 function plateLabelOf(kind=""){
   const k=String(kind||"").toLowerCase();
@@ -810,9 +663,6 @@ function plateLabelOf(kind=""){
 
 let platePaths=[],platePolygons=[],motionArcs=[];
 let plateStats={subduction:0,unclass:0};
-
-/* Click coordination: clicking a plate boundary fires BOTH onPathClick and onGlobeClick
-   in globe.gl — without this flag, the globe's macrostrat-query overwrites the witness panel. */
 let lastPlateClickAt=0;
 
 async function loadPlates(){
@@ -841,11 +691,6 @@ async function loadPlates(){
       else if(g.type==="MultiPolygon")g.coordinates.forEach(poly=>platePolygons.push(ring(poly[0])));
     });
 
-    /* Plate boundaries — globe.gl pathsData, type-coloured.
-       NOTE: globe.gl v2.46.1 exposes pathStroke but not pathAltitude /
-       pathWrapLongitude. Stay with the supported surface to avoid silent
-       TypeErrors that abort the entire loadPlates pipeline (root cause of
-       the historical "PLATES FAIL" symptom). */
     world.pathsData([])
       .pathPoints("coords").pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
       .pathColor(d=>plateColor(d.tag)[1])
@@ -871,7 +716,6 @@ async function loadPlates(){
         wireClose();
       });
 
-    /* Plate outlines — thin skeleton overlay (defaults on at low alpha) */
     try{
       world.polygonsData(platePolygons)
         .polygonGeoJson(d=>3)
@@ -879,9 +723,8 @@ async function loadPlates(){
         .polygonSideColor(()=>"rgba(255,255,255,0.05)")
         .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
         .polygonAltitude(0.003);
-    }catch(e){ /* globe.gl v2.46 polygon API drift guard */ }
+    }catch(e){}
 
-    /* Plate motion — schematic arcs derived from boundary segments */
     motionArcs=platePaths.filter(p=>p.coords.length>=4).map(p=>{
       const mid=Math.floor(p.coords.length/2);
       const nxt=Math.min(p.coords.length-1,mid+2);
@@ -902,7 +745,6 @@ async function loadPlates(){
       .arcDashAnimateTime(2000)
       .arcsTransitionDuration(1200);
 
-    /* Apply current toggle state */
     if($("lyrPlates").checked)world.pathsData(platePaths);
     if($("lyrMotion").checked)world.arcsData(motionArcs);
 
@@ -935,9 +777,8 @@ fetch("https://macrostrat.org/api/v2/stats?all")
    ["stCols","stPkgs","stMeas"].forEach(i=>$(i).textContent="UNVERIFIED");
  });
 
-/* ══ WELLS & REGIONS — sovereign canon from data/wells.json (F10) ══ */
+/* ══ WELLS & REGIONS — sovereign canon ══ */
 let wellLabels=[],wellCentroid=null;
-/* deterministic jitter: same well lands in the same spot on every load */
 function hashStr(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
 function jittered(name,anchor,spread){
   const h=hashStr(name);
@@ -949,7 +790,7 @@ fetch("/earth/data/wells.json")
    const wells=j.wells||[], anchors=j.basin_anchors||{}, regions=j.regions||[];
    const pts=[];
    wells.forEach(w=>{
-     if(w.tier==="proprietary")return; // never rendered — belt-and-braces over the jq gate
+     if(w.tier==="proprietary")return;
      let pos=null;
      if(w.lat!=null&&w.lng!=null)pos={lat:w.lat,lng:w.lng};
      else{
@@ -1010,7 +851,7 @@ function onMarkerClick(d){
   wireClose();
 }
 
-/* ══ STUDIES — rendered from data/studies.json, counts computed (F10) ══ */
+/* ══ STUDIES ══ */
 fetch("/earth/data/studies.json")
  .then(r=>r.json()).then(j=>{
    const list=(j.studies||[]).filter(s=>s.tier!=="proprietary");
@@ -1038,8 +879,6 @@ const panel=$("unitPanel");
 let lock=false;
 async function onRockClick({lat,lng}){
   if(lock)return;lock=true;pauseSpin();
-  // Honor plate-boundary click — globe.gl fires onGlobeClick after onPathClick; back off
-  // so the plate witness stays on screen instead of being overwritten by a macrostrat query.
   if(Date.now()-lastPlateClickAt<800){lock=false;return;}
   panel.className="show";
   panel.innerHTML=`<button class="close" aria-label="close">✕</button>
@@ -1081,7 +920,34 @@ function wireClose(){const b=panel.querySelector(".close");if(b)b.addEventListen
 
 /* ── veil ── */
 window.addEventListener("load",()=>setTimeout(()=>$("veil").classList.add("gone"),700));
-setTimeout(()=>$("veil").classList.add("gone"),6000); // fail-safe
+setTimeout(()=>$("veil").classList.add("gone"),6000);
+
+/* ── sticky TOC active state ── */
+(function(){
+  const toc=$("earthToc");
+  if(!toc)return;
+  const links=toc.querySelectorAll("a");
+  const sections=[];
+  links.forEach(a=>{
+    const href=a.getAttribute("href");
+    if(!href||!href.startsWith("#"))return;
+    const el=document.getElementById(href.slice(1));
+    if(el)sections.push({el,link:a});
+  });
+  if(!sections.length)return;
+  function update(){
+    const scrollY=window.scrollY+120;
+    let active=null;
+    for(let i=sections.length-1;i>=0;i--){
+      if(sections[i].el.offsetTop<=scrollY){active=sections[i];break;}
+    }
+    if(!active)active=sections[0];
+    links.forEach(a=>a.classList.remove("active"));
+    if(active)active.link.classList.add("active");
+  }
+  window.addEventListener("scroll",update,{passive:true});
+  update();
+})();
 })();
 </script>
 <script src="/_shared/zen-all.js" defer></script>

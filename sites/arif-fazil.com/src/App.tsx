@@ -3,6 +3,7 @@ import { ConstellationNav } from '@/components/ConstellationNav';
 import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
 import { Home } from '@/pages/Home';
+import { Missions } from '@/pages/Missions';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
 import { WealthArticle } from '@/pages/WealthArticle';
@@ -35,6 +36,10 @@ function App() {
           <Routes>
             {/* Home — sovereign identity */}
             <Route path="/" element={<Home />} />
+
+            {/* Six human missions — cockpit (not tool inventory) */}
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/missions/" element={<Missions />} />
 
             {/* Earth — pure geoscience, no civic/commodity */}
             <Route path="/earth" element={<Discoveries />} />

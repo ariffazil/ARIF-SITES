@@ -35,6 +35,7 @@ export type SystemProject = {
 // Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
 export const primaryLinks: LinkItem[] = [
   { label: 'Start', href: '/' },
+  { label: 'Ask', href: '/missions' },
   { label: 'Explore', href: '/earth' },
   { label: 'Analyze', href: '/economics' },
   { label: 'Track', href: '/world' },

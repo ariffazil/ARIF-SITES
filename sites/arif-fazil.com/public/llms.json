@@ -10,6 +10,7 @@
     "/999/": "trust and proof chamber — verification artifacts",
     "/wealth/": "WEALTH daily briefing — Bursa, Ringgit, oil, macro intelligence",
     "/makcikgpt/": "MakcikGPT civic intelligence — BM articles on sovereignty, governance, technology accountability (canonical landing)",
+    "/makcikgpt/bangang-ruslan-hr": "MakcikGPT article — VP HR Petronas: Engineer Jadi Bos Manusia — Tak Ada Jiwa, Ada Apa?",
     "/makcikgpt/chennah-bangang": "MakcikGPT article — 8 BANGANG Anthony Loke — Chennah Version",
     "/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon": "MakcikGPT article — Anak Sarawak Bayar PDA, Anak Bangla Telefon Je Dapat",
     "/makcikgpt/dap-8-tahun-bangang": "MakcikGPT article — 8 Benda BANGANG DAP Dalam Kerajaan",
@@ -71,5 +72,5 @@
     "llms_txt": true,
     "sitemap": true
   },
-  "last_updated": "2026-07-29"
+  "last_updated": "2026-07-30"
 }

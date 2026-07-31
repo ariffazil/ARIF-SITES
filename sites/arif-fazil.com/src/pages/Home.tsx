@@ -6,6 +6,8 @@ import {
   contactLinks,
   wellsPortfolio,
 } from '@/data/siteContent';
+import { MISSIONS, MISSION_DOCTRINE } from '@/data/missions';
+import { Link } from 'react-router-dom';
 
 // Shape of /data/wealth/latest.json (fields actually rendered — no invention).
 type WealthBriefing = {
@@ -124,9 +126,9 @@ export function Home() {
     >
       {/* ── ZEN PULSE — orientation in 3 seconds ─────────── */}
       <ZenPulse
-        whereAmI="arif-fazil.com · Home — one human page"
-        whyCare="Evidence before narrative. Every claim here is verifiable."
-        whatNext="Pick a verb in the nav, or read the current answer below."
+        whereAmI="arif-fazil.com · Home — human cockpit"
+        whyCare="State the mission. Agents pick tools. You judge the answer."
+        whatNext="Ask · Explore · Analyze — or open Six Missions"
       />
 
       {/* ── WHAT MATTERS NOW — dominant answer ───────────── */}
@@ -161,8 +163,9 @@ export function Home() {
                 Both are the same kind of work: reading what the ground actually says, not what the model wants it to say.
               </p>
               <div className="flex flex-wrap gap-4">
+                <Link to="/missions" className="button-forge button-forge--accent">Six Missions</Link>
                 <a href="#wells" className="button-forge">See the Wells</a>
-                <a href="#what-i-built" className="button-forge button-forge--accent">What I Built</a>
+                <a href="#what-i-built" className="button-forge">What I Built</a>
               </div>
             </motion.div>
 
@@ -193,13 +196,52 @@ export function Home() {
         </div>
       </section>
 
+      {/* ── SIX MISSIONS — cockpit before inventory ───────── */}
+      <section className="py-20 bg-forge-black border-b-2 border-forge-iron" id="missions">
+        <div className="site-frame">
+          <div className="section-label">How to work with this system</div>
+          <h2 className="font-display font-black text-3xl md:text-4xl uppercase italic tracking-tight mb-3">
+            {MISSION_DOCTRINE.title}
+          </h2>
+          <p className="font-body text-forge-dim max-w-2xl mb-8 leading-relaxed">
+            {MISSION_DOCTRINE.thesis} Value is not tool count. Value is one hard mission completed without dragging you into the engine room.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            {MISSIONS.map((m) => (
+              <Link
+                key={m.id}
+                to={`/missions#${m.id}`}
+                className="brutalist-card p-5 group hover:border-forge-orange/50 transition-colors"
+              >
+                <div className="font-display font-black text-lg uppercase italic text-forge-orange group-hover:underline">
+                  {m.verb}
+                </div>
+                <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1 mb-2">
+                  {m.oneLine}
+                </p>
+                <p className="font-body text-sm text-forge-dim leading-relaxed">{m.humanSays}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-4 items-center">
+            <Link to="/missions" className="button-forge button-forge--accent text-xs py-2">
+              Open mission cockpit →
+            </Link>
+            <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest max-w-xl">
+              Metric · {MISSION_DOCTRINE.metric}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── WHAT I BUILT ──────────────────────────────────── */}
       <section className="py-24 bg-forge-steel border-b-2 border-forge-iron" id="what-i-built">
         <div className="site-frame">
-          <div className="section-label">The Systems</div>
+          <div className="section-label">Organs · plumbing under the missions</div>
           <p className="font-body text-forge-dim max-w-2xl mb-12 leading-relaxed">
-            Four systems running under one rule: AI executes, humans decide.
-            No black boxes. Every consequential action is logged and reversible.
+            Organs are not a menu of 128 tools. They are specialist systems the federation
+            routes to after you state a mission. AI executes. You decide. Every consequential
+            action is logged and reversible.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -272,11 +314,12 @@ export function Home() {
           <div className="mt-12 pt-8 border-t border-forge-iron">
             <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
               <p className="font-body text-forge-dim max-w-2xl text-sm italic">
-                "Every tool here was built because the work demanded it — not because AI is fashionable."
+                &ldquo;Stop forging instruments. Forge reflexes. The Tool Explorer is the engine room — not the cockpit.&rdquo;
               </p>
-              <div className="flex gap-4 flex-shrink-0">
+              <div className="flex gap-4 flex-shrink-0 flex-wrap">
+                <Link to="/missions" className="button-forge button-forge--accent text-xs py-2">Missions</Link>
                 <a href="/000/" className="button-forge text-xs py-2">/000 — For Agents</a>
-                <a href="/999/" className="button-forge button-forge--accent text-xs py-2">/999 — Proof</a>
+                <a href="/999/" className="button-forge text-xs py-2">/999 — Proof</a>
               </div>
             </div>
           </div>
@@ -329,7 +372,7 @@ export function Home() {
             </li>
             <li className="flex gap-4">
               <span className="font-technical text-forge-orange">03</span>
-              <p className="text-forge-dim">Building tools only when the work actually needs them. No technology for technology's sake.</p>
+              <p className="text-forge-dim">Building reflexes, not instrument menus — tools exist only when a mission requires them.</p>
             </li>
           </ul>
         </div>

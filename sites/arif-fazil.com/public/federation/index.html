@@ -1,59 +1,343 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-ring="MIND">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Federation — Earth · Capital · Human · Governance</title>
-<meta name="description" content="How GEOX, WEALTH, WELL and arifOS relate. Domain organs advise or witness. The human remains final authority.">
+<title>Federation · arifOS · Ψ Ω Δ</title>
+<meta name="description" content="Six organs. One constitution. Human final authority. Live status across the arifOS federation.">
 <link rel="canonical" href="https://arif-fazil.com/federation/">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<meta property="og:title" content="Federation · arifOS">
+<meta property="og:description" content="Six organs. One constitution. Human final authority.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arif-fazil.com/federation/">
+
+<!-- Trinity Design System · SSOT -->
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<link rel="stylesheet" href="/_shared/zen-chrome.css">
+
 <style>
-body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
-main{max-width:720px;margin:0 auto;padding:2rem 1.25rem 4rem}
-h1{font-size:2rem;margin-bottom:.5rem}
-.lead{color:#9b9995;margin-bottom:1.5rem}
-.grid{display:grid;gap:.75rem}
-.card{border:1px solid #2a2826;border-radius:10px;padding:1rem;background:#141312}
-.card h2{font-size:1rem;margin:0 0 .35rem}
-.card p{color:#9b9995;font-size:.92rem;margin:0 0 .5rem}
-.card a{color:#3a9ea8}
-.kv{font-family:ui-monospace,monospace;font-size:.75rem;color:#706e6b;margin-bottom:1rem}
+/* ── Federation HUD · page-specific ──────────────────────────── */
+:root {
+  --pulse-bar: rgba(0, 212, 170, .12);
+  --pulse-border: rgba(0, 212, 170, .35);
+  --card-bg: #0a0e0d;
+  --card-bg-elev: #0f1413;
+  --dot-green: #00d4aa;
+  --dot-amber: #d4a853;
+  --dot-red: #c44545;
+  --dot-grey: #555;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #060809;
+  color: #e1f5f0;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0;
+}
+main { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; }
+
+/* zen-pulse · sticky 3-question bar */
+.zen-pulse {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  background: var(--pulse-bar);
+  border: 1px solid var(--pulse-border);
+  border-radius: 8px;
+  padding: .65rem 1rem;
+  font-size: .82rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
+}
+.zen-pulse .zp-item { display: flex; gap: .4rem; }
+.zen-pulse .zp-ask { color: #9b9995; font-family: ui-monospace, monospace; font-size: .72rem; text-transform: uppercase; letter-spacing: .5px; }
+.zen-pulse .zp-val { color: #e1f5f0; }
+.zen-pulse .zp-val.gold { color: #d4af37; }
+
+/* header */
+header { padding: 1rem 0 1.5rem; border-bottom: 1px solid #1a1a25; margin-bottom: 1.5rem; }
+header h1 {
+  font-size: 1.9rem; font-weight: 800; margin: 0 0 .35rem;
+  background: linear-gradient(135deg, #fff 30%, #00d4aa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+header .kicker { font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: 2px; color: #00d4aa; text-transform: uppercase; }
+header p { color: #9b9995; margin: .4rem 0 0; max-width: 600px; font-size: .95rem; }
+
+/* organ grid */
+.organ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.organ-card {
+  background: var(--card-bg);
+  border: 1px solid #1a1a25;
+  border-radius: 10px;
+  padding: 1.1rem 1.2rem;
+  position: relative;
+  transition: border-color .2s, transform .2s;
+  text-decoration: none; color: inherit; display: block;
+}
+.organ-card:hover { border-color: #00d4aa; transform: translateY(-2px); }
+.organ-card .dot {
+  position: absolute; top: 1.1rem; right: 1.2rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--dot-grey);
+  box-shadow: 0 0 8px transparent;
+  transition: background .3s, box-shadow .3s;
+}
+.organ-card .dot.green { background: var(--dot-green); box-shadow: 0 0 10px var(--dot-green); }
+.organ-card .dot.amber { background: var(--dot-amber); box-shadow: 0 0 10px var(--dot-amber); }
+.organ-card .dot.red   { background: var(--dot-red);   box-shadow: 0 0 10px var(--dot-red); }
+.organ-card h2 { font-size: 1.05rem; margin: 0 0 .25rem; font-weight: 700; }
+.organ-card .ring { font-family: ui-monospace, monospace; font-size: .65rem; color: #00d4aa; letter-spacing: 1.5px; margin-bottom: .3rem; }
+.organ-card .role { color: #9b9995; font-size: .85rem; margin: 0 0 .7rem; }
+.organ-card .meta { font-family: ui-monospace, monospace; font-size: .72rem; color: #706e6b; line-height: 1.5; }
+.organ-card .meta .k { color: #555; }
+.organ-card .cta {
+  display: inline-block; margin-top: .75rem; font-size: .8rem;
+  color: #00d4aa; text-decoration: none; font-family: ui-monospace, monospace;
+}
+.organ-card .cta:hover { color: #00ffaa; }
+
+/* six-missions strip */
+.mission-strip {
+  margin: 0 0 1.5rem; padding: .85rem 1rem;
+  border: 1px solid rgba(201, 168, 76, .35);
+  border-radius: 8px;
+  font-size: .85rem; line-height: 1.5;
+  background: rgba(201, 168, 76, .04);
+}
+.mission-strip a { color: #d4af37; text-decoration: none; }
+.mission-strip a:hover { text-decoration: underline; }
+.mission-strip strong { color: #d4af37; }
+
+/* footer · sovereign bridge */
+footer.sovereign {
+  margin-top: 3rem; padding-top: 1.5rem;
+  border-top: 1px solid #1a1a25;
+  font-size: .82rem; color: #9b9995;
+}
+footer.sovereign details { margin-top: .6rem; }
+footer.sovereign summary {
+  cursor: pointer; color: #d4af37; font-family: ui-monospace, monospace;
+  font-size: .72rem; letter-spacing: 1px; text-transform: uppercase;
+  padding: .35rem 0;
+}
+footer.sovereign p { margin: .4rem 0; }
+footer.sovereign a { color: #3a9ea8; text-decoration: none; }
+footer.sovereign a:hover { text-decoration: underline; }
+
+/* meta line */
+.kv { font-family: ui-monospace, monospace; font-size: .72rem; color: #555; margin: .4rem 0 0; }
 </style>
-<script src="/_shared/federation-chrome.js?v=20260718" data-active="root"></script>
 </head>
 <body>
 <main>
-  <p class="kv">arif-fazil.com/federation</p>
+
+<!-- zen-pulse · 3 questions in 3 seconds -->
+<nav class="zen-pulse" aria-label="federation pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com/federation</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">Six organs · one constitution · human final authority</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick an organ ↓</span></div>
+</nav>
+
+<header>
+  <div class="kicker">Ψ SOUL · Ω MIND · Δ BODY</div>
   <h1>Federation</h1>
-  <p class="lead">Three realities. One governance layer. Human final authority.</p>
-  <div class="grid">
-    <div class="card">
-      <h2>GEOX — Earth</h2>
-      <p>Physical evidence before decision. Subsurface truth, uncertainty, geological consequence.</p>
-      <a href="https://geox.arif-fazil.com/">Enter GEOX</a> ·
-      <a href="/organs/geox/">Explain GEOX</a>
+  <p>Six organs. One constitution. Human final authority. Live status across the arifOS federation. Domain organs advise or witness. <strong>Arif remains the judge.</strong></p>
+  <p class="kv">arif-fazil.com/federation · live: <span id="last-probe">—</span></p>
+</header>
+
+<div class="mission-strip">
+  <strong>Mission, not menu.</strong>
+  Humans land on <a href="/missions">six missions</a>.
+  Agents pick tools at <a href="https://mcp.arif-fazil.com/">mcp.arif-fazil.com</a>.
+  Explorer is engine room only.
+</div>
+
+<!-- 6-organ constellation grid · live status -->
+<div class="organ-grid" id="organ-grid">
+
+  <a class="organ-card" href="/arifos/" data-organ="arifos">
+    <span class="dot" id="dot-arifos"></span>
+    <div class="ring">Ω MIND · KERNEL</div>
+    <h2>arifOS</h2>
+    <p class="role">Constitutional judge. F1–F13. Identity, evidence, authority, reversibility.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-arifos">—</span></div>
+      <div><span class="k">tools</span> <span id="tools-arifos">—</span> · <span class="k">floors</span> 13</div>
+      <div><span class="k">verdict</span> <span id="verdict-arifos">—</span></div>
     </div>
-    <div class="card">
-      <h2>WEALTH — Capital</h2>
-      <p>Value, risk and survival before committing capital. Computation — not allocation authority.</p>
-      <a href="https://wealth.arif-fazil.com/">Enter WEALTH</a> ·
-      <a href="/organs/wealth/">Explain WEALTH</a>
+    <span class="cta">→ /arifos/</span>
+  </a>
+
+  <a class="organ-card" href="/aaa/" data-organ="aaa">
+    <span class="dot" id="dot-aaa"></span>
+    <div class="ring">Ω MIND · CONTROL</div>
+    <h2>AAA</h2>
+    <p class="role">Cockpit. A2A. Federation routing. Receipts. W³ witness orchestration.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-aaa">—</span></div>
+      <div><span class="k">drift</span> <span id="drift-aaa">—</span></div>
+      <div><span class="k">chain seq</span> <span id="chain-aaa">—</span></div>
     </div>
-    <div class="card">
-      <h2>WELL — Human substrate</h2>
-      <p>Operator capacity and dignity as real evidence. Reflect-only — never a diagnostic authority.</p>
-      <a href="https://well.arif-fazil.com/">Enter WELL</a> ·
-      <a href="/organs/well/">Explain WELL</a>
+    <span class="cta">→ /aaa/</span>
+  </a>
+
+  <a class="organ-card" href="https://forge.arif-fazil.com/" data-organ="a-forge" target="_blank" rel="noopener">
+    <span class="dot" id="dot-a-forge"></span>
+    <div class="ring">Δ BODY · EXECUTION</div>
+    <h2>A-FORGE</h2>
+    <p class="role">Execution shell. Stage 777 FORGE. Stages, sands, governs, seals.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-a-forge">—</span></div>
+      <div><span class="k">tools</span> <span id="tools-a-forge">—</span></div>
+      <div><span class="k">stage</span> <span id="stage-a-forge">—</span></div>
     </div>
-    <div class="card">
-      <h2>arifOS — Governance</h2>
-      <p>Judges identity, evidence, authority and reversibility. Connect at the MCP door; prove at the Observatory.</p>
-      <a href="/arifos/">Understand</a> ·
-      <a href="https://mcp.arif-fazil.com/">Connect MCP</a> ·
-      <a href="https://arifos.arif-fazil.com/">Observatory</a>
+    <span class="cta">→ forge.arif-fazil.com</span>
+  </a>
+
+  <a class="organ-card" href="/earth/" data-organ="geox">
+    <span class="dot" id="dot-geox"></span>
+    <div class="ring">Ψ SOUL · EARTH</div>
+    <h2>GEOX</h2>
+    <p class="role">Earth intelligence. Basins, seismic, petrophysics, prospect evaluation.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-geox">—</span></div>
+      <div><span class="k">tools</span> <span id="tools-geox">—</span></div>
+      <div><span class="k">profile</span> <span id="profile-geox">—</span></div>
     </div>
-  </div>
-  <p style="margin-top:1.5rem;color:#706e6b;font-size:.85rem">AAA operates the federation. A-FORGE executes after authority. Neither is a public knowledge domain equal to GEOX, WEALTH or WELL.</p>
-  <p><a href="https://arif-fazil.com/.well-known/arifos-federation.json" style="color:#3a9ea8">Machine federation manifest</a></p>
+    <span class="cta">→ /earth/</span>
+  </a>
+
+  <a class="organ-card" href="/wealth/" data-organ="wealth">
+    <span class="dot" id="dot-wealth"></span>
+    <div class="ring">Δ BODY · CAPITAL</div>
+    <h2>WEALTH</h2>
+    <p class="role">Capital intelligence. Conservation, stress, EMV, wisdom. Computes, never allocates.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-wealth">—</span></div>
+      <div><span class="k">tools</span> <span id="tools-wealth">—</span></div>
+      <div><span class="k">provenance</span> <span id="prov-wealth">—</span></div>
+    </div>
+    <span class="cta">→ /wealth/</span>
+  </a>
+
+  <a class="organ-card" href="/well/" data-organ="well">
+    <span class="dot" id="dot-well"></span>
+    <div class="ring">Ψ SOUL · HUMAN</div>
+    <h2>WELL</h2>
+    <p class="role">Human readiness. Vitality, homeostasis, dignity. REFLECT_ONLY — never diagnoses.</p>
+    <div class="meta">
+      <div><span class="k">commit</span> <span id="commit-well">—</span></div>
+      <div><span class="k">tools</span> <span id="tools-well">—</span></div>
+      <div><span class="k">signal</span> <span id="signal-well">—</span></div>
+    </div>
+    <span class="cta">→ /well/</span>
+  </a>
+
+</div>
+
+<!-- sovereign bridge · collapsed details -->
+<footer class="sovereign">
+  <p><strong style="color:#d4af37">DITEMPA BUKAN DIBERI</strong> · Forged, not given. Federation sealed <span id="seal-ts">—</span>.</p>
+
+  <details>
+    <summary>sovereign bridge · authority chain</summary>
+    <p>Authority chain: <code>arif_init</code> → <code>arif_observe</code> → <code>arif_think</code> → <code>arif_route</code> → <code>arif_judge</code> → <code>arif_forge</code> → <code>arif_seal</code>. Do not skip links.</p>
+    <p>W³ witness: Human × AI × Earth. arifOS seals only. <a href="/arifos/">Constitution</a> · <a href="/constitution/">13 Floors</a> · <a href="/charter/">Charter</a>.</p>
+  </details>
+
+  <details>
+    <summary>machine surface · agent discovery</summary>
+    <p>Agents: <a href="https://mcp.arif-fazil.com/mcp">MCP door</a> · <a href="/.well-known/agent.json">agent.json</a> · <a href="/llms.txt">llms.txt</a> · <a href="/llms.json">llms.json</a> · <a href="/.well-known/mcp/server.json">mcp/server.json</a></p>
+  </details>
+
+  <details>
+    <summary>status legend</summary>
+    <p><span style="color:#00d4aa">● green</span> · live + aligned · <span style="color:#d4a853">● amber</span> · degraded but serving · <span style="color:#c44545">● red</span> · held · <span style="color:#555">● grey</span> · probe failed</p>
+    <p>Last probe: <span id="last-probe-foot">—</span> · Refreshing every 30s. Caddy health proxy: <code>/api/organs/&lt;name&gt;/health</code>.</p>
+  </details>
+
+  <p class="kv">v2026.07.30 · refactor/zen-distill · DITEMPA BUKAN DIBERI</p>
+</footer>
+
 </main>
+
+<script>
+/* ── live status fetch (Caddy /api/organs proxy already wired) ── */
+const ORGANS = ['arifos','aaa','a-forge','geox','wealth','well'];
+const DOT = { green: 'green', amber: 'amber', red: 'red', grey: 'grey' };
+const $ = (id) => document.getElementById(id);
+const setText = (id, val) => { const el = $(id); if (el) el.textContent = val; };
+const setDot = (organ, color) => { const el = $('dot-' + organ); if (el) el.className = 'dot ' + (color || 'grey'); };
+
+function colorFromStatus(ok, degraded) {
+  if (ok === true)  return 'green';
+  if (ok === false && degraded) return 'amber';
+  if (ok === false) return 'red';
+  return 'grey';
+}
+
+async function probeOne(organ) {
+  try {
+    const r = await fetch('/api/organs/' + organ + '/health', { cache: 'no-store' });
+    if (!r.ok) { setDot(organ, 'red'); return; }
+    const j = await r.json();
+    const status = (j.status || '').toLowerCase();
+    const ok = j.status === 'healthy' || j.status === 'ready' || j.deployment_drift_status === 'aligned';
+    const degraded = j.status === 'degraded';
+    setDot(organ, colorFromStatus(ok, degraded));
+
+    /* per-organ field extraction */
+    if (organ === 'arifos') {
+      setText('commit-arifos', (j.git_commit || '—').slice(0,7));
+      setText('tools-arifos', j.tools_loaded || '—');
+      setText('verdict-arifos', (j.service_health || j.status || '—').toUpperCase());
+      setText('seal-ts', j.last_seal_timestamp ? new Date(j.last_seal_timestamp).toISOString().slice(0,19) + 'Z' : '—');
+    } else if (organ === 'aaa') {
+      setText('commit-aaa', (j.deployed_commit || j.source_commit || '—').slice(0,7));
+      setText('drift-aaa', j.deployment_drift ? '⚠ ' + (j.deployed_commit||'?') + ' ≠ src ' + (j.source_commit||'?') : 'aligned');
+      setText('chain-aaa', (j.chain && j.chain.seq) || '—');
+    } else if (organ === 'a-forge') {
+      setText('commit-a-forge', (j.git_commit || '—').slice(0,7));
+      setText('tools-a-forge', j.tools_loaded || '—');
+      setText('stage-a-forge', (j.se_stage && j.se_stage.se_stage) || '—');
+    } else if (organ === 'geox') {
+      setText('commit-geox', (j.git_commit || '—').slice(0,7));
+      setText('tools-geox', j.tools_loaded || j.tools_count || '—');
+      setText('profile-geox', j.profile || '—');
+    } else if (organ === 'wealth') {
+      setText('commit-wealth', (j.git_commit && j.git_commit !== 'UNAVAILABLE') ? j.git_commit.slice(0,7) : '⚠ unavail');
+      setText('tools-wealth', j.tools_loaded || '—');
+      setText('prov-wealth', j.identity ? j.identity.slice(0,7) + '…' : '—');
+    } else if (organ === 'well') {
+      setText('commit-well', (j.source_commit || '—').slice(0,7));
+      setText('tools-well', j.tool_count || '—');
+      setText('signal-well', (j.well_signal || j.service_health || '—').toUpperCase());
+      if (j.freshness && j.freshness.status === 'expired') setDot('well', 'red');
+    }
+  } catch (e) {
+    setDot(organ, 'red');
+    console.error('probe failed', organ, e);
+  }
+}
+
+async function probeAll() {
+  const ts = new Date().toISOString().slice(11,19) + 'Z';
+  setText('last-probe', ts);
+  setText('last-probe-foot', ts);
+  await Promise.allSettled(ORGANS.map(probeOne));
+}
+
+probeAll();
+setInterval(probeAll, 30000);
+</script>
 </body>
 </html>

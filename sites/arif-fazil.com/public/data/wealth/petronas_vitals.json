@@ -202,7 +202,23 @@
     ],
     "unchanged_constitutional_anchors": "safe/trip thresholds unchanged (sovereign act to alter)"
   },
-  "public_url": "https://arif-fazil.com/vitals/",
+  "public_url": "https://arif-fazil.com/wealth/vitals/",
+  "baseline": {
+    "kind": "FY2025_IFR_SEALED",
+    "sealed": "2026-07-24",
+    "version": "1.2.1-f2",
+    "note": "Tripwire anchors frozen. Crisis price paths are INTERPRET overlays only."
+  },
+  "crisis_overlay": {
+    "status": "INTERPRET_ONLY",
+    "does_not_unseal": true,
+    "brent_stress_usd": "120+",
+    "jkm_stress_usd_mmbtu": "20-22",
+    "pat_lift_rm_b": "19-35",
+    "formula": "+$10 Brent → +RM5.5-7.5B PAT / +RM6.0B CFFO",
+    "thesis": "War premia are anaesthetic not healing — BODY cash rises; SPINE/SOUL VOID tripwires remain",
+    "as_of": "2026-07-30"
+  },
   "mcp": {
     "tool": "capital_diagnose",
     "mode": "petronas_vitals",

@@ -20,8 +20,10 @@ import daily_2026_07_01 from './daily-2026-07-01';
 import dap8TahunBangang from './dap-8-tahun-bangang';
 import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-bangla-telefon';
 import anwarJungShadow from './anwar-jung-shadow';
+import bangangRuslanHr from './bangang-ruslan-hr';
 import searahBernamaLewat from './searah-bernama-lewat';
 export const makcikArticleModules: ArticleContent[] = [
+  bangangRuslanHr,
   searahBernamaLewat,
   anwarJungShadow,
   anakSarawakBayarPdaAnakBanglaTelefon,
@@ -65,6 +67,17 @@ export const makcikArticlesMeta: MakcikArticleMeta[] = [
     language: 'ms',
     excerpt: 'Anwar Ibrahim — dulu reformis, sekarang mangkuk ayun. Makcik analisa guna psikologi bayang Jung: persona besar, bayang pun besar. Bila dapat kuasa, bayang yang pimpin. Jangan tipu diri sendiri — pemilih pun ada bayang.',
     tags: ['anwar-ibrahim', 'reformasi', 'jung', 'shadow', 'psikologi', 'makcikgpt', 'malaysia', 'negeri-sembilan'],
+    seal: '999',
+  },
+  {
+    slug: 'bangang-ruslan-hr',
+    title: 'VP HR Petronas: Engineer Jadi Bos Manusia — Tak Ada Jiwa, Ada Apa?',
+    subtitle: 'Ruslan Halim Islahudin — engineer Imperial College jadi VP HR Petronas. 5,000 orang kena buang, dia cakap "just transition." Makcik tanya: jadi VP HR kena ada jiwa ke tak?',
+    date: '2026-07-30',
+    domain: 'MAKCIKGPT × PETRONAS × HR',
+    language: 'ms',
+    excerpt: 'Ruslan Halim Islahudin — bekas engineer Imperial College London, tak pernah study HR, tak pernah handle pekerja bawahan. Tapi dia VP HR Petronas. 5,000 pekerja kena buang, dia cakap "just transition on three fronts." Makcik dedah kenapa jadi VP HR kena ada jiwa makcik penyayang, bukan bom nuclear.',
+    tags: ['ruslan', 'petronas', 'hr', 'just-transition', 'layoff', 'engineer', 'makcikgpt', 'malaysia'],
     seal: '999',
   },
   {

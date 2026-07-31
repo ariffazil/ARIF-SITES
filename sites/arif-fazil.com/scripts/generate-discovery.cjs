@@ -59,6 +59,8 @@ function buildSitemap(pieces) {
   }
   urls.push({ loc: `${SITE_BASE}/000/`, priority: 0.6, changefreq: "monthly" });
   urls.push({ loc: `${SITE_BASE}/999/`, priority: 0.6, changefreq: "monthly" });
+  urls.push({ loc: `${SITE_BASE}/missions`, priority: 0.9, changefreq: "weekly" });
+  urls.push({ loc: `${SITE_BASE}/missions.json`, priority: 0.7, changefreq: "weekly" });
   urls.push({ loc: `${SITE_BASE}/llms.txt`, priority: 0.5, changefreq: "weekly" });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -94,6 +96,18 @@ Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
 Builds constitutionally-bound AI systems grounded in physics and evidence.
 
 **Tagline**: Ditempa Bukan Diberi — Forged, Not Given.
+
+## Human interface — Six Missions (not tool count)
+
+Humans do not pick among 128 tools. Humans state missions. Agents select instruments.
+
+Six missions: Investigate · Interpret · Decide · Build · Monitor · Remember
+- Cockpit: https://arif-fazil.com/missions
+- Machine map: https://arif-fazil.com/missions.json
+- Engine room (dev/audit only): https://mcp.arif-fazil.com/explorer.html
+
+Public arifOS kernel surface is the Canonical 8 (arif_init → … → arif_seal), not the full federation inventory.
+Metric to minimize: how often the sovereign needed to know which tool was used.
 
 ## What is arifOS
 arifOS is a constitutional intelligence kernel: a governed AI system where tools, agents,

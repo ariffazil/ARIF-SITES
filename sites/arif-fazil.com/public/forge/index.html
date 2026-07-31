@@ -1,121 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-ring="BODY">
 <head>
-  <meta charset="UTF-8">
-<meta name="description" content="A-FORGE — constitutionally governed execution for the arifOS federation. Build, deploy, audit. Every action reversible, evidence-labeled, hash-chained to VAULT999." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A-FORGE — Execution Shell | arifOS Federation</title>
-<meta property="og:image" content="https://a-forge/og-image.jpg" />
-<meta property="og:title" content="A-FORGE — Execution Shell | arifOS Federation" />
-  
-  <style>
-    body { background: var(--bg-deep); color: var(--text-primary); font-family: var(--font-sans); margin: 0; padding: 0; }
-    .container { max-width: 800px; margin: 0 auto; padding: 4rem 2rem; }
-    h1 { color: var(--body-primary); font-size: var(--text-4xl); margin-bottom: 0.5rem; }
-    .subtitle { color: var(--text-secondary); font-size: var(--text-lg); margin-bottom: 2rem; }
-    .status { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
-    .status h2 { color: var(--body-accent); font-size: var(--text-xl); margin-top: 0; }
-    .endpoint { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--text-muted); }
-    .endpoint a { color: var(--mind-primary); text-decoration: none; }
-    .endpoint a:hover { text-decoration: underline; }
-    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: var(--text-xs); font-weight: 600; }
-    .badge-live { background: rgba(0,200,83,0.15); color: var(--state-operational); }
-    .tools-list { list-style: none; padding: 0; }
-    .tools-list li { padding: 0.4rem 0; border-bottom: 1px solid var(--border-subtle); font-size: var(--text-sm); }
-    .tools-list li:last-child { border-bottom: none; }
-    .motto { color: var(--text-muted); font-style: italic; font-size: var(--text-sm); margin-top: 3rem; text-align: center; }
-  </style>
-  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-FORGE · Δ Execution Shell · arifOS Federation</title>
+<meta name="description content="A-FORGE — Constitutionally governed execution. Stage 777 FORGE. Stages, sands, governs, seals. Reversible-first. arifOS judges, Arif decides.">
+<link rel="canonical" href="https://arif-fazil.com/forge/">
+<meta name="author" content="Muhammad Arif bin Fazil">
+
+<!-- Trinity Design System · SSOT -->
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<link rel="stylesheet" href="/_shared/zen-chrome.css">
+
 <style>
-  :root{--bg-deep:#0d0c0b;--text-primary:#e6e4e0;--text-secondary:#9b9995;--text-muted:#706e6b;
-  --body-primary:#D4A853;--body-accent:#E3B341;
-  --bg-surface:#141312;--border-subtle:#2a2826;
-  --font-sans:'Inter',-apple-system,sans-serif;--font-mono:'JetBrains Mono',monospace;
-  --text-4xl:2.5rem;--text-xl:1.25rem;--text-lg:1.125rem;--text-sm:0.875rem;--text-xs:0.75rem;
-  --state-operational:#00C853;}
-  body{margin:0;padding:0;background:var(--bg-deep);color:var(--text-primary);font-family:var(--font-sans);}
-  .container{max-width:800px;margin:0 auto;padding:4rem 2rem;}
-  h1{color:var(--body-primary);font-size:var(--text-4xl);margin-bottom:0.5rem;}
-  .subtitle{color:var(--text-secondary);font-size:var(--text-lg);margin-bottom:2rem;}
-  .status{background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem;}
-  .status h2{color:var(--body-accent);font-size:var(--text-xl);margin-top:0;}
-  .endpoint{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--text-muted);}
-  .endpoint a{color:#00D4AA;text-decoration:none;}
-  .badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:var(--text-xs);font-weight:600;}
-  .badge-live{background:rgba(0,200,83,0.15);color:var(--state-operational);}
-  .tools-list{list-style:none;padding:0;}
-  .tools-list li{padding:0.4rem 0;border-bottom:1px solid var(--border-subtle);font-size:var(--text-sm);}
-  .tools-list li:last-child{border-bottom:none;}
-  .motto{color:var(--text-muted);font-style:italic;font-size:var(--text-sm);margin-top:3rem;text-align:center;}
+:root {
+  --forge-bg: #0a0805;
+  --forge-card: #14100a;
+  --forge-border: #2a1f10;
+  --forge-text: #f5ecd8;
+  --forge-mute: #a8957a;
+  --accent: #D4A853;
+  --accent-2: #C4791A;
+  --accent-3: #6B4423;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--forge-bg); color: var(--forge-text);
+  line-height: 1.6; margin: 0; padding: 0;
+}
+main { max-width: 920px; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; }
+
+.zen-pulse {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  background: rgba(212, 168, 83, .12);
+  border: 1px solid rgba(212, 168, 83, .35);
+  border-radius: 8px; padding: .65rem 1rem; font-size: .82rem;
+  margin-bottom: 1.5rem; backdrop-filter: blur(8px);
+}
+.zp-item { display: flex; gap: .4rem; }
+.zp-ask { color: var(--forge-mute); font-family: ui-monospace, monospace; font-size: .72rem; text-transform: uppercase; letter-spacing: .5px; }
+.zp-val { color: var(--forge-text); }
+.zp-val.gold { color: var(--accent); }
+
+header { padding: 1rem 0 1.5rem; border-bottom: 1px solid var(--forge-border); margin-bottom: 1.5rem; }
+header h1 {
+  font-size: 2.1rem; font-weight: 800; margin: 0 0 .3rem;
+  background: linear-gradient(135deg, #fff 30%, var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+header .kicker { font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+header p { color: var(--forge-mute); margin: .4rem 0 0; max-width: 640px; font-size: .95rem; }
+
+.verbs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .85rem; margin: 1.5rem 0 2rem; }
+.verb {
+  background: var(--forge-card); border: 1px solid var(--forge-border);
+  border-radius: 10px; padding: 1.1rem 1.2rem; text-decoration: none; color: inherit; display: block;
+  transition: border-color .2s, transform .2s;
+}
+.verb:hover { border-color: var(--accent); transform: translateY(-2px); }
+.verb .icon { font-family: ui-monospace, monospace; font-size: .65rem; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .35rem; }
+.verb h3 { margin: 0 0 .3rem; font-size: 1rem; color: var(--forge-text); }
+.verb p { margin: 0; font-size: .85rem; color: var(--forge-mute); line-height: 1.5; }
+.verb .tool { display: block; margin-top: .6rem; font-family: ui-monospace, monospace; font-size: .68rem; color: var(--accent-3); }
+
+details.sov {
+  margin-top: 1.5rem; padding: 1rem 1.2rem;
+  background: var(--forge-card); border: 1px solid var(--forge-border);
+  border-radius: 8px;
+}
+details.sov summary {
+  cursor: pointer; color: var(--accent);
+  font-family: ui-monospace, monospace; font-size: .72rem;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: .4rem;
+}
+details.sov p { margin: .3rem 0; color: var(--forge-mute); font-size: .88rem; }
+details.sov code { background: rgba(212,168,83,.08); padding: 1px 4px; border-radius: 3px; font-size: .82rem; }
+details.sov a { color: var(--accent-2); }
+
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--forge-border); font-size: .82rem; color: var(--forge-mute); }
+.kv { font-family: ui-monospace, monospace; font-size: .72rem; color: #555; margin: .4rem 0 0; }
 </style>
 </head>
 <body>
-  <script src="/_shared/trinity-nav.js"></script>
-  <script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
-  <script>
-  (function() {
-    if (typeof arifosWebMCP === 'undefined') return;
-    arifosWebMCP.registerReadonly('get_forge_health', 'Get A-FORGE execution shell health', {}, async function() {
-      try { var r = await fetch('/health'); return await r.json(); }
-      catch(e) { return {status: 'unreachable', error: e.message}; }
-    });
-    arifosWebMCP.registerReadonly('get_forge_tools', 'List A-FORGE MCP tools', {}, async function() {
-      try {
-        var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
-        return await r.json();
-      } catch(e) { return {status: 'unreachable', error: e.message}; }
-    });
-  })();
-  </script>
-  <div class="container">
-    <h1>⚒️ A-FORGE</h1>
-    <p class="subtitle">Execution Shell — Build, Deploy, Audit</p>
-    
-    <div class="status">
-      <h2>MCP Gateway <span class="badge badge-live">LIVE</span></h2>
-      <p class="endpoint"><a href="/mcp">POST /mcp</a> — Streamable-HTTP (78 tools)</p>
-      <p class="endpoint"><a href="/health">GET /health</a> — Service health</p>
-      <p class="endpoint"><a href="/.well-known/mcp/server.json">/.well-known/mcp/server.json</a> — Server card</p>
-    </div>
+<main>
 
-    <div class="status">
-      <h2>OpenCode IDE</h2>
-      <p class="endpoint"><a href="/opencode/">/opencode/</a> — Web-based coding environment</p>
-    </div>
+<nav class="zen-pulse" aria-label="A-FORGE pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">A-FORGE · Δ BODY · Execution</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">Stage 777 · reversible-first · sealed</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a verb ↓</span></div>
+</nav>
 
-    <div class="status">
-      <h2>Capabilities</h2>
-      <ul class="tools-list">
-        <li>🔨 forge_shell — Governed shell execution with audit trail</li>
-        <li>📦 forge_docker — Container lifecycle management</li>
-        <li>🔧 forge_filesystem — Read/write/patch files with F1 AMANAH</li>
-        <li>🔍 forge_probe — Federation organ liveness checks</li>
-        <li>📊 forge_health_check — Service health and constitutional genome</li>
-        <li>🏗️ forge_execute — Full execution pipeline with governance</li>
-        <li>🔐 forge_vault — VAULT999 immutable ledger access</li>
-        <li>⚖️ forge_judge_proxy — Constitutional verdict routing</li>
-      </ul>
-    </div>
+<header>
+  <div class="kicker">Δ BODY · EXECUTION SHELL · STAGE 777</div>
+  <h1>A-FORGE</h1>
+  <p>Constitutionally governed execution. Stages, sands, governs, seals. Every action reversible, evidence-labeled, hash-chained to VAULT999. <strong>A-FORGE executes. arifOS judges. Arif decides.</strong></p>
+  <p class="kv">arif-fazil.com/forge · ring Δ BODY · tools 78 · port 7071/7072</p>
+</header>
 
-    <p class="motto">DITEMPA BUKAN DIBERI — Forged, Not Given</p>
-  </div>
-<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
-<script>
-(function() {
-  if (typeof arifosWebMCP === 'undefined') return;
-  arifosWebMCP.registerReadonly('get_organ_health', 'Get organ service health status', {}, async function() {
-    try { var r = await fetch('/health'); return await r.json(); }
-    catch(e) { return {status: 'unreachable', error: e.message}; }
-  });
-  arifosWebMCP.registerReadonly('get_registry', 'List this organ available tools', {}, async function() {
-    try {
-      var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
-      return await r.json();
-    } catch(e) { return {status: 'unreachable', error: e.message}; }
-  });
-})();
-</script>
+<!-- 5 verb-led intent cards -->
+<section class="verbs">
+
+  <a class="verb" href="https://forge.arif-fazil.com/mcp" target="_blank" rel="noopener">
+    <div class="icon">verb 01</div>
+    <h3>Stage</h3>
+    <p>Stage artifacts. Spec becomes immutable. Quarantine, network isolation, resource limits, ttl_seconds.</p>
+    <span class="tool">→ forge_stage</span>
+  </a>
+
+  <a class="verb" href="https://forge.arif-fazil.com/mcp" target="_blank" rel="noopener">
+    <div class="icon">verb 02</div>
+    <h3>Sandbox-run</h3>
+    <p>Execute in isolated sandbox. Absolute timeout. CPU/memory/disk limits. Cannot escape.</p>
+    <span class="tool">→ forge_sandbox_run</span>
+  </a>
+
+  <a class="verb" href="https://forge.arif-fazil.com/mcp" target="_blank" rel="noopener">
+    <div class="icon">verb 03</div>
+    <h3>Scar</h3>
+    <p>Metabolize failure. Sealed failure becomes constitutional constraint. Pain = ΔS spike. Learning = cooling.</p>
+    <span class="tool">→ forge_scar</span>
+  </a>
+
+  <a class="verb" href="https://forge.arif-fazil.com/mcp" target="_blank" rel="noopener">
+    <div class="icon">verb 04</div>
+    <h3>Cool</h3>
+    <p>Emit COOLING_RECEIPT. CONVERGING / DIVERGING / STABLE. Drift dimension, severity, hypothesis. Routes to arifOS judge.</p>
+    <span class="tool">→ forge_cool_drift / forge_cool_pattern</span>
+  </a>
+
+  <a class="verb" href="https://forge.arif-fazil.com/mcp" target="_blank" rel="noopener">
+    <div class="icon">verb 05</div>
+    <h3>Seal</h3>
+    <p>Seal Tri-Witness validated skill into permanent VAULT999 memory. Irreversible. F13 SOVEREIGN token required.</p>
+    <span class="tool">→ forge_seal</span>
+  </a>
+
+</section>
+
+<!-- sovereign bridge -->
+<details class="sov">
+  <summary>sovereign bridge · what A-FORGE is and is not</summary>
+  <p><strong>IS:</strong> an execution shell. Stages, sands, governs. Bounded by F1 AMANAH (reversible-first), F11 AUDITABILITY (every action logged), F13 SOVEREIGN (human veto FINAL). Fails hard without valid seal — no self-authorization possible.</p>
+  <p><strong>IS NOT:</strong> autonomous, self-authorizing, or sovereign. A-FORGE proposes; arifOS judges; Arif decides.</p>
+  <p>Authority chain: <code>forge_stage</code> → <code>forge_sandbox_run</code> → <code>forge_scar_scan</code> → <code>forge_cool_*</code> → <code>arif_judge</code> → <code>arif_seal</code>. Do not skip links.</p>
+  <p>Source: <a href="https://github.com/ariffazil/a-forge">github.com/ariffazil/a-forge</a> · Maturity: 78 tools, streamable-http transport, port 7071/7072.</p>
+</details>
+
+<details class="sov">
+  <summary>machine surface · agent discovery</summary>
+  <p>Agents: <a href="https://forge.arif-fazil.com/mcp">MCP door</a> · <a href="https://forge.arif-fazil.com/health">/health</a> · <a href="https://forge.arif-fazil.com/tools">/tools</a> · <a href="/llms.txt">llms.txt</a></p>
+  <p>Reverse proxy: <a href="https://forge.arif-fazil.com">forge.arif-fazil.com</a> · <a href="https://mcp.arif-fazil.com">mcp.arif-fazil.com</a></p>
+</details>
+
+<footer>
+  <p><strong style="color:var(--accent)">DITEMPA BUKAN DIBERI</strong> · Forged, not given. A-FORGE stages, sands, governs. Human final authority lives with Arif.</p>
+  <p class="kv">v2026.07.30 · refactor/zen-distill · Δ BODY · Stage 777 · No CAPTCHA · Ed25519 identity · SEAL on proof only</p>
+</footer>
+
+</main>
 </body>
 </html>

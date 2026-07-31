@@ -6,7 +6,7 @@
 <title>PETRONAS · VITALS — Financial capacity and resilience</title>
 <meta name="description" content="PETRONAS financial capacity, operating resilience, and governance balance. Sealed tripwire scores, live market proxies, and net-cash scenarios.">
 <meta name="agent-identity" content="WEALTH · PETRONAS institution health">
-<link rel="canonical" href="https://arif-fazil.com/vitals/">
+<link rel="canonical" href="https://arif-fazil.com/wealth/vitals/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -92,6 +92,7 @@
     <a href="#tripwires">See ranked scores</a>
     <a href="#liveStrip">Check live proxies</a>
     <a href="#basics">Read methods</a>
+    <a href="#crisis-overlay">Crisis overlay</a>
     <a href="#fan-sec">Run net-cash scenarios</a>
   </div>
 </div>
@@ -168,6 +169,46 @@
   <div class="ls-note">Transmission: ±$10 Brent ≈ ±RM6.0B FCF/CFFO. FCF (#1) crosses zero at Brent ≈ $71.60/bbl (-$12.50/bbl from $84.10). CFFO tripwire (RM60B) requires Brent &lt; $47.40. JKM–HH premium supports LNG margin. Proxies are live market readings, NOT sealed tripwire values. Anchors remain sovereign-sealed. Source: WEALTH commodity engine (yfinance) · 5-min cache.</div>
 </div>
 
+
+<!-- CRISIS OVERLAY · INTERPRET only — does NOT unseal tripwires -->
+<div class="sec" id="crisis-overlay" data-agent-role="interpret">
+  <div class="sec-title">Crisis overlay · Iran-war sensitivity <span style="font-size:.65rem;letter-spacing:.08em;color:var(--dim);font-weight:600;margin-left:.5rem">INTERPRET · NOT A RE-SEAL</span></div>
+  <div class="ref-panel" style="border-left:2px solid #f0506e;background:rgba(240,80,110,.04);padding:1.1rem 1.3rem;border-radius:8px;font-family:var(--sans);line-height:1.65;color:var(--ink)">
+    <p style="margin-top:0"><strong style="color:#f0506e">Architecture rule.</strong> Sealed tripwires (FY2025 IFR, sealed 2026-07-24) stay frozen. This panel applies the page’s own sensitivity coefficients to a <em>stress price path</em>. It is a forward INTERPRET lens — not a forecast seal, not a change to BODY/SPINE/SOUL scores.</p>
+
+    <h4 style="font-family:var(--serif);font-size:1rem;color:#c9a84c;margin:1.1rem 0 .45rem">1. Price-path math (same coefficients as Methods)</h4>
+    <table class="data-table" style="margin:.4rem 0 0.8rem">
+      <thead><tr><th>Path</th><th>Brent</th><th>Δ vs base $85</th><th>PAT lift (RM B)</th><th>CFFO lift (RM B)</th><th>Tag</th></tr></thead>
+      <tbody>
+        <tr><td>Base (sealed scenario)</td><td class="num">85</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td>EVIDENCE anchors</td></tr>
+        <tr><td>Bull (pre-war table)</td><td class="num">105</td><td class="num">+$20</td><td class="num" style="color:var(--seal)">+11 to +15</td><td class="num">+12</td><td>INTERPRET</td></tr>
+        <tr><td><strong>Crisis · Iran-war stress</strong></td><td class="num" style="color:#f0506e;font-weight:700">120+</td><td class="num" style="color:#f0506e">+$35 to +$47</td><td class="num" style="color:#f0506e;font-weight:700">+19 to +35</td><td class="num" style="color:#f0506e">+21 to +28</td><td>INTERPRET stress</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;color:var(--dim);margin:.3rem 0 0">Coefficient: <code>+$10 Brent → +RM5.5–7.5B PAT / +RM6.0B CFFO</code> (FY2025 IFR sensitivity). Example: base $85 → $120 = +$35 ≈ <strong>+RM19–26B PAT</strong>. Hermes-style $73 → $120 = +$47 ≈ <strong>+RM26–35B PAT</strong> — formula-identical, base-point differs.</p>
+
+    <h4 style="font-family:var(--serif);font-size:1rem;color:#c9a84c;margin:1.2rem 0 .45rem">2. Anaesthetic, not healing</h4>
+    <p style="margin:.3rem 0">War premia inflate <strong>BODY</strong> cash (CFFO/FCF/gearing look better). They do <strong>not</strong> repair the three VOID tripwires:</p>
+    <ul style="padding-left:1.15rem;margin:.45rem 0">
+      <li><b>Sovereign extraction 0/100</b> — div/PAT already 70.5% (IFR). Higher PAT invites higher dividend claims, not lower extraction pressure.</li>
+      <li><b>Capital recycling 20/100</b> — reinvestment thin; price spike ≠ replacement capacity.</li>
+      <li><b>Production / reserve replacement 28/100</b> — Malaysia liquids ~355 kbpd physics floor (not group 2.4 Mboe/d). Fewer barrels still fewer barrels at any price.</li>
+    </ul>
+    <p style="font-size:.85rem;color:var(--dim)">If Brent reverts to $70–80, structural VOIDs remain. Cash numbs the pain; the fracture stays.</p>
+
+    <h4 style="font-family:var(--serif);font-size:1rem;color:#c9a84c;margin:1.2rem 0 .45rem">3. What this page still refuses (by design)</h4>
+    <ul style="padding-left:1.15rem;margin:.45rem 0;font-size:.9rem">
+      <li><b>No FY2026 PAT forecast seal</b> — tripwires constrain distance-to-break, they do not forecast. Hermes INT band RM55–70B is a peer narrative, not a page output.</li>
+      <li><b>No Shell peer tripwire</b> — Shell Q2 trading upside is INTERPRET context only; PETRONAS is long-contract cash, not trading book.</li>
+      <li><b>No SEARAH / Gentari / LNG-deal line items as sealed scores</b> — dilution, undisclosed burn, and contract wins need IFR line items before they enter tripwire math.</li>
+    </ul>
+
+    <h4 style="font-family:var(--serif);font-size:1rem;color:#c9a84c;margin:1.2rem 0 .45rem">4. Fan chart — run the stress yourself</h4>
+    <p style="margin:.3rem 0">Sliders already accept Brent up to <b>$125</b> and JKM up to <b>$26</b>. Set Brent ≈ 120, JKM ≈ 20–22 to see LIVE CFFO/FCF est. under crisis prices. Sealed tripwire cards above do not move.</p>
+    <p style="border-top:1px solid var(--line);padding-top:.85rem;margin-top:1rem;font-size:.8rem;color:var(--dim)"><strong style="color:var(--ink)">Epistemic:</strong> Overlay = INTERPRET. Sealed scores = EVIDENCE/INTERPRET as tagged on each tripwire. Live Brent/JKM labels are market proxies when the feed is up; if UNAVAILABLE, sealed inputs remain authority. DITEMPA BUKAN DIBERI.</p>
+  </div>
+</div>
+
 <!-- METHODS -->
 <div class="sec" id="basics">
   <div class="sec-title">Methods and context</div>
@@ -192,7 +233,7 @@
       <p>BODY tripwires (#1–3) are <span class="epi-tag-small EVIDENCE">EVIDENCE</span> from audited FY2025 IFR data. SPINE and SOUL tripwires (#4–9) include <span class="epi-tag-small INTERPRET">INTERPRET</span> judgment anchors. The composite carries the weaker class.</p>
     </div>
   </details>
-  <p class="scope-note"><strong>Scope &amp; limits.</strong> This page reports distance to sealed tripwires. Live proxies and scenario bands add context; they do not change sealed readings or forecast outcomes.</p>
+  <p class="scope-note"><strong>Scope &amp; limits.</strong> This page reports distance to sealed tripwires (FY2025 baseline). Live proxies, scenario bands, and the <a href="#crisis-overlay">Crisis overlay</a> add context; they do not change sealed readings or forecast outcomes. Production tripwire uses Malaysia crude liquids (~kbpd), not group total kboed.</p>
 </div>
 
 <!-- SENSITIVITY COEFFICIENTS -->
@@ -235,15 +276,15 @@
       <div class="ref-panel">
         <h4>Scenario assumptions</h4>
         <table class="data-table">
-          <thead><tr><th>Parameter</th><th>Base</th><th>Bear</th><th>Bull</th><th>Source</th></tr></thead>
+          <thead><tr><th>Parameter</th><th>Base</th><th>Bear</th><th>Bull</th><th>Crisis</th><th>Source</th></tr></thead>
           <tbody>
-            <tr><td>Brent crude (USD/bbl)</td><td class="num">85</td><td class="num">65</td><td class="num">105</td><td>Moody's / forward curve</td></tr>
-            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">14</td><td class="num">10</td><td class="num">18</td><td>MoF / global LNG balance</td></tr>
-            <tr><td>Crude production (kbpd)</td><td class="num">355</td><td class="num" style="color:var(--void)">300</td><td class="num">400</td><td>FY2025 IFR / DOSM</td></tr>
-            <tr><td>Govt dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
-            <tr><td>Capex (RM B)</td><td class="num">47.5</td><td class="num">40.0</td><td class="num">55.0</td><td>FY2025 IFR</td></tr>
-            <tr><td>PRefChem debt gross-up (RM B)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY2025 audited (one-time)</td></tr>
-            <tr><td>PETROS gas transfer impact</td><td class="num">marginal</td><td class="num">moderate</td><td class="num">none</td><td>INTERPRET — ruling pending</td></tr>
+            <tr><td>Brent crude (USD/bbl)</td><td class="num">85</td><td class="num">65</td><td class="num">105</td><td class="num" style="color:#f0506e;font-weight:700">120+</td><td>Base–Bull: Moody's; Crisis: INTERPRET stress</td></tr>
+            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">14</td><td class="num">10</td><td class="num">18</td><td class="num" style="color:#f0506e;font-weight:700">20–22</td><td>Base–Bull: MoF; Crisis: tight-supply INTERPRET</td></tr>
+            <tr><td>Crude production (kbpd)</td><td class="num">355</td><td class="num" style="color:var(--void)">300</td><td class="num">400</td><td class="num">355</td><td>FY2025 IFR / DOSM · Malaysia liquids (not group Mboe/d)</td></tr>
+            <tr><td>Govt dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20–25</td><td>MoF Budget 2026; Crisis: pressure INTERPRET</td></tr>
+            <tr><td>Capex (RM B)</td><td class="num">47.5</td><td class="num">40.0</td><td class="num">55.0</td><td class="num">47.5</td><td>FY2025 IFR</td></tr>
+            <tr><td>PRefChem debt gross-up (RM B)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY2025 audited (one-time)</td></tr>
+            <tr><td>PETROS gas transfer impact</td><td class="num">marginal</td><td class="num">moderate</td><td class="num">none</td><td class="num">moderate</td><td>INTERPRET — ruling pending</td></tr>
           </tbody>
         </table>
       </div>
@@ -546,8 +587,8 @@ live();
   "@type":"InstitutionalVitals",
   "organ":"PETRONAS·φ VITALS",
   "timestamp":"2026-07-28T00:00:00+08:00",
-  "url":"https://arif-fazil.com/vitals/",
-  "canonical_source_url":"https://arif-fazil.com/vitals/",
+  "url":"https://arif-fazil.com/wealth/vitals/",
+  "canonical_source_url":"https://arif-fazil.com/wealth/vitals/",
   "as_of":"2026-07-28",
   "seal_date":"2026-07-28",
   "next_audit":"2026-10-28",
