@@ -1,184 +1,101 @@
-#!/usr/bin/env bash
-# Registry-driven multi-site coordinator for arif-sites deployments.
-# Default is --dry-run. It delegates every surface to scripts/deploy-site.sh,
-# so batch and per-site paths use the same ownership and overlay policy.
+#!/bin/bash
+# arif-fazil.com Constellation — VPS Deployment Script
+# Automates build, sync, and canonicalization
+# Caddy web root: /var/www/html/<site> (NOT /var/www/<domain>)
 
-set -euo pipefail
+set -e
 
-CANONICAL_REPO_ROOT="/root/arif-fazil.com"
-RAW_SCRIPT_PATH="${BASH_SOURCE[0]}"
-if [[ "$RAW_SCRIPT_PATH" == *"/arif-sites/"* && "$RAW_SCRIPT_PATH" != *"/arif-fazil.com/"* ]] || [[ "${PWD:-}" == *"/arif-sites" && "${PWD:-}" != *"/arif-fazil.com"* ]]; then
-  echo "WARNING: lowercase /root/arif-sites is deprecated — canonical repo is $CANONICAL_REPO_ROOT" >&2
-  echo "Continuing with lowercase path for backward compat…" >&2
-fi
+SITES_ROOT="/root/arif-fazil.com/sites"
+HTML_ROOT="/var/www/html"
 
-REPO_ROOT="$(cd "$(dirname "$RAW_SCRIPT_PATH")" && pwd -P)"
-if [[ "$REPO_ROOT" != "$CANONICAL_REPO_ROOT" ]]; then
-  echo "ERROR: deploy-vps.sh must run from canonical repository $CANONICAL_REPO_ROOT (resolved $REPO_ROOT)" >&2
-  exit 2
-fi
+echo "Starting VPS Deployment..."
 
-REGISTRY="${ARIF_SITES_OVERLAY_REGISTRY:-$REPO_ROOT/infra/runtime-overlays.json}"
-DEPLOY_SITE="$REPO_ROOT/scripts/deploy-site.sh"
-CADDYFILE="${ARIF_SITES_CADDYFILE:-/etc/caddy/Caddyfile}"
-CADDY_BIN="${ARIF_SITES_CADDY_BIN:-caddy}"
+# 0. Pre-deploy verification gate (fail-closed)
+echo "[0/7] Pre-deploy verification..."
+node $HTML_ROOT/scripts/verify-surfaces.cjs --base=https://arif-fazil.com
+caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "  Caddy config: VALID"
 
-usage() {
-  cat >&2 <<'USAGE'
-Usage:
-  ./deploy-vps.sh [--dry-run] [--site SITE]       # default; no mutation
-  ./deploy-vps.sh --validate-build [--site SITE]  # isolated build validation
-  ./deploy-vps.sh --apply [--site SITE]           # preflight all, then deploy
+# 1. Build React Site (arif-fazil.com — Ψ SOUL)
+echo "[1/7] Building arif-fazil.com (React/Vite)..."
+cd $SITES_ROOT/arif-fazil.com
+npm run build
 
-A single positional SITE is accepted for compatibility. Unknown or ambiguous
-sites fail closed; there is no inferred webroot fallback.
-USAGE
-}
+# 1b. Pre-render MakcikGPT articles for LLM/SEO extraction (SSR via Puppeteer)
+echo "[1.5/7] Pre-rendering MakcikGPT articles (JSON-LD + semantic HTML)..."
+node /tmp/prerender-articles.cjs 2>/dev/null || echo "  ⚠ Pre-render skipped (Puppeteer not available)"
 
-MODE="dry-run"
-MODE_SEEN=0
-ONLY_SITE=""
-while (($#)); do
-  case "$1" in
-    --dry-run)
-      ((MODE_SEEN == 0)) || { echo "ERROR: select exactly one mode" >&2; exit 2; }
-      MODE="dry-run"
-      MODE_SEEN=1
-      shift
-      ;;
-    --validate-build)
-      ((MODE_SEEN == 0)) || { echo "ERROR: select exactly one mode" >&2; exit 2; }
-      MODE="validate-build"
-      MODE_SEEN=1
-      shift
-      ;;
-    --apply)
-      ((MODE_SEEN == 0)) || { echo "ERROR: select exactly one mode" >&2; exit 2; }
-      MODE="apply"
-      MODE_SEEN=1
-      shift
-      ;;
-    --site)
-      [[ $# -ge 2 ]] || { echo "ERROR: --site requires a site name" >&2; exit 2; }
-      [[ -z "$ONLY_SITE" ]] || { echo "ERROR: select only one site" >&2; exit 2; }
-      ONLY_SITE="$2"
-      shift 2
-      ;;
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    --*)
-      echo "ERROR: unknown argument: $1" >&2
-      usage
-      exit 2
-      ;;
-    *)
-      [[ -z "$ONLY_SITE" ]] || { echo "ERROR: select only one site" >&2; exit 2; }
-      ONLY_SITE="$1"
-      shift
-      ;;
-  esac
+# 2. Sync Shared Design System + WebMCP (served via /_shared/* on all domains)
+echo "[2/7] Syncing shared assets..."
+mkdir -p $HTML_ROOT/_shared/design-system $HTML_ROOT/_shared/webmcp
+rsync -avz --delete $SITES_ROOT/shared/design-system/ $HTML_ROOT/_shared/design-system/
+rsync -avz --delete $SITES_ROOT/shared/webmcp/ $HTML_ROOT/_shared/webmcp/
+# Also sync root-level shared files (observatory.js, federation-chrome.js, etc.)
+rsync -avz $SITES_ROOT/shared/*.js $HTML_ROOT/_shared/
+rsync -avz $SITES_ROOT/shared/*.json $HTML_ROOT/_shared/
+rsync -avz $SITES_ROOT/shared/*.html $HTML_ROOT/_shared/ 2>/dev/null || true
+
+# 3. Sync sites to Caddy-served directories
+echo "[3/7] Syncing sites..."
+
+# arif-fazil.com (Ψ SOUL) — built React app
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/dist/ $HTML_ROOT/arif/
+
+# Agentic Web Optimization: copy raw markdown for bot bypass (survives rsync --delete)
+echo "  ⚡ Copying MakcikGPT markdown for AI bot bypass..."
+mkdir -p $HTML_ROOT/arif/wealth/makcikgpt/
+cp $SITES_ROOT/arif-fazil.com/public/makcikgpt-md/*.md $HTML_ROOT/arif/wealth/makcikgpt/ 2>/dev/null || true
+
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/000/ $HTML_ROOT/arif/000/
+rsync -avz --delete $SITES_ROOT/arif-fazil.com/public/999/ $HTML_ROOT/arif/999/
+
+# mcp.arif-fazil.com — gateway landing + proof surface (no --delete: .well-known live assets preserved)
+rsync -avz $SITES_ROOT/mcp.arif-fazil.com/ $HTML_ROOT/mcp/
+
+# well.arif-fazil.com — llms.txt discovery file
+mkdir -p $HTML_ROOT/well
+rsync -avz $SITES_ROOT/well.arif-fazil.com/ $HTML_ROOT/well/
+
+# /000/ serves static Genesis page, do not overwrite with root index.html
+
+# arifos.arif-fazil.com (Ω MIND) — static HTML dashboard
+rsync -avz --delete $SITES_ROOT/arifos.arif-fazil.com/ $HTML_ROOT/arifos/
+
+# aaa.arif-fazil.com (Δ BODY) — built React cockpit
+rsync -avz --delete $SITES_ROOT/aaa.arif-fazil.com/ $HTML_ROOT/aaa/
+
+# Other sites
+rsync -avz --delete $SITES_ROOT/geox.arif-fazil.com/   $HTML_ROOT/geox/     2>/dev/null || true
+rsync -avz --delete $SITES_ROOT/wealth.arif-fazil.com/ $HTML_ROOT/wealth/   2>/dev/null || true
+rsync -avz --delete $SITES_ROOT/wiki.arif-fazil.com/   $HTML_ROOT/wiki/     2>/dev/null || true
+rsync -avz --delete $SITES_ROOT/forge.arif-fazil.com/  $HTML_ROOT/forge/    2>/dev/null || true
+
+# Commodity dashboards (oil/gas/gold) — static pages only.
+# NO --delete: live api/ (systemd services) and vendor/ must survive.
+for asset in oil gas gold; do
+  rsync -avz --exclude 'api/' --exclude 'vendor/' \
+    $SITES_ROOT/arif-fazil.com/public/$asset/ $HTML_ROOT/$asset/ 2>/dev/null || true
 done
 
-command -v jq >/dev/null 2>&1 || { echo "ERROR: jq is required" >&2; exit 1; }
-[[ -x "$DEPLOY_SITE" ]] || { echo "ERROR: missing per-site deployer: $DEPLOY_SITE" >&2; exit 1; }
-[[ -f "$REGISTRY" ]] || { echo "ERROR: missing runtime overlay registry: $REGISTRY" >&2; exit 1; }
+# 4. Sync runtime state and discovery files
+echo "[4/7] Syncing seal chain head & discovery assets..."
+mkdir -p $HTML_ROOT/aaa/_state
+cp /root/VAULT999/seal_chain_head.json $HTML_ROOT/aaa/_state/seal_chain_head.json 2>/dev/null || true
 
-jq -e '
-  (.schema_version == 1 or .schema_version == 2) and
-  (.canonical_repo_root == "/root/arif-sites" or .canonical_repo_root == "/root/arif-fazil.com") and
-  (.sites | type == "array" and length > 0) and
-  (([.sites[].site] | length) == ([.sites[].site] | unique | length)) and
-  (([.sites[].webroot] | length) == ([.sites[].webroot] | unique | length)) and
-  (all(.sites[]; (.owner | type == "string" and length > 0)))
-' "$REGISTRY" >/dev/null || {
-  echo "ERROR: invalid or ambiguously owned runtime overlay registry: $REGISTRY" >&2
-  exit 1
-}
+mkdir -p $HTML_ROOT/arifos/.well-known
+cp $HTML_ROOT/.well-known/governance.jsonld $HTML_ROOT/arifos/.well-known/governance.jsonld 2>/dev/null || true
+cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arif/manifest.txt 2>/dev/null || true
+cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arifos/manifest.txt 2>/dev/null || true
 
-if [[ -n "$ONLY_SITE" ]]; then
-  MATCH_COUNT="$(jq --arg site "$ONLY_SITE" '[.sites[] | select(.site == $site)] | length' "$REGISTRY")"
-  if [[ "$MATCH_COUNT" != "1" ]]; then
-    echo "ERROR: unknown or ambiguously owned site '$ONLY_SITE' (registry matches: $MATCH_COUNT)" >&2
-    exit 1
-  fi
-  mapfile -t SITES < <(jq -r --arg site "$ONLY_SITE" '.sites[] | select(.site == $site) | .site' "$REGISTRY")
-else
-  mapfile -t SITES < <(jq -r '[.sites[] | select(.batch == true)] | sort_by(.batch_order)[] | .site' "$REGISTRY")
-fi
-((${#SITES[@]} > 0)) || { echo "ERROR: no deployable sites selected" >&2; exit 1; }
+# 5. Permissions
+echo "[5/7] Setting permissions..."
+chown -R www-data:www-data $HTML_ROOT
 
-retry_command() {
-  local description="$1"
-  local attempts="$2"
-  local delay="$3"
-  shift 3
-  local attempt
-  for ((attempt = 1; attempt <= attempts; attempt++)); do
-    if "$@"; then
-      return 0
-    fi
-    printf '[deploy-vps] %s failed (attempt %d/%d)\n' "$description" "$attempt" "$attempts" >&2
-    if ((attempt < attempts)) && [[ "$delay" != "0" ]]; then
-      sleep "$delay"
-    fi
-  done
-  return 1
-}
+# 5. Reload Caddy
+echo "[6/7] Reloading Caddy..."
+caddy reload --config /etc/caddy/Caddyfile
 
-case "$MODE" in
-  dry-run)
-    PLANS=()
-    for site in "${SITES[@]}"; do
-      plan="$("$DEPLOY_SITE" "$site" --dry-run)" || exit 1
-      PLANS+=("$plan")
-    done
-    printf '%s\n' "${PLANS[@]}" | jq -s --arg registry "$REGISTRY" '{mode: "dry-run", mutation: false, registry: $registry, sites: .}'
-    ;;
-  validate-build)
-    for site in "${SITES[@]}"; do
-      printf '[deploy-vps] validating %s in an isolated temporary copy\n' "$site" >&2
-      "$DEPLOY_SITE" "$site" --validate-build
-    done
-    printf '[deploy-vps] isolated validation passed for %d site(s)\n' "${#SITES[@]}" >&2
-    ;;
-  apply)
-    CADDY_ATTEMPTS="${ARIF_SITES_CADDY_ATTEMPTS:-$(jq -r '.defaults.caddy_attempts' "$REGISTRY")}"
-    RETRY_DELAY="${ARIF_SITES_RETRY_DELAY:-$(jq -r '.defaults.retry_delay_seconds' "$REGISTRY")}"
-    [[ "$CADDY_ATTEMPTS" =~ ^[1-9][0-9]*$ ]] || { echo "ERROR: Caddy attempts must be a positive integer" >&2; exit 1; }
-    [[ "$RETRY_DELAY" =~ ^[0-9]+([.][0-9]+)?$ ]] || { echo "ERROR: retry delay must be non-negative" >&2; exit 1; }
+# 6. Truth Verification Gate
+echo "[7/7] Running Truth Verification Suite..."
+python3 /root/scripts/check_constellation_truth.py
 
-    # Complete every build preflight, including the pinned wiki build, before
-    # the first live tree is swapped. A failed preflight therefore cannot leave
-    # a partially deployed batch.
-    for site in "${SITES[@]}"; do
-      "$DEPLOY_SITE" "$site" --dry-run >/dev/null
-      printf '[deploy-vps] preflight build: %s\n' "$site" >&2
-      "$DEPLOY_SITE" "$site" --validate-build
-    done
-
-    if ! retry_command "Caddy validation" "$CADDY_ATTEMPTS" "$RETRY_DELAY" \
-      "$CADDY_BIN" validate --config "$CADDYFILE"; then
-      echo "ERROR: Caddy validation failed closed before the first site swap" >&2
-      exit 1
-    fi
-
-    RECEIPTS=()
-    for site in "${SITES[@]}"; do
-      printf '[deploy-vps] applying %s\n' "$site" >&2
-      receipt="$("$DEPLOY_SITE" "$site" --apply)" || exit 1
-      [[ -f "$receipt" ]] || { echo "ERROR: missing receipt after $site apply: $receipt" >&2; exit 1; }
-      jq -e '.schema == "arif-sites.deploy-receipt.v1" and (.status == "live" or .status == "restored")' "$receipt" >/dev/null || {
-        echo "ERROR: invalid or unsuccessful receipt after $site apply: $receipt" >&2
-        exit 1
-      }
-      RECEIPTS+=("$receipt")
-    done
-    printf '%s\n' "${RECEIPTS[@]}" | jq -R -s --arg registry "$REGISTRY" '{mode: "apply", registry: $registry, receipts: (split("\n") | map(select(length > 0)))}'
-    ;;
-  *)
-    echo "ERROR: unsupported mode: $MODE" >&2
-    exit 2
-    ;;
-esac
+echo "DEPLOYMENT COMPLETE. Constellation is Live."

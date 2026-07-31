@@ -1,0 +1,509 @@
+{
+  "version": "2026-07-31",
+  "domain": "arif-fazil.com",
+  "doctrine": {
+    "title": "Single canonical surface catalog. All machine catalogs are generated views of this file.",
+    "rule": "If it is not in surfaces.json, it does not get served to a machine.",
+    "generated_views": ["sitemap.xml", "llms.txt", "llms.json", "page.json", "missions.json"],
+    "verify_command": "node scripts/verify-surfaces.cjs",
+    "fail_closed": "Any status:live surface returning non-200 fails the build."
+  },
+  "missions": {
+    "investigate": { "verb": "Investigate", "one_line": "Gather and test reality" },
+    "interpret": { "verb": "Interpret", "one_line": "Build competing explanations" },
+    "decide": { "verb": "Decide", "one_line": "Compare consequences and uncertainty" },
+    "build": { "verb": "Build", "one_line": "Prepare and execute approved changes" },
+    "monitor": { "verb": "Monitor", "one_line": "Detect change, degradation, or danger" },
+    "remember": { "verb": "Remember", "one_line": "Retrieve and preserve governed knowledge" }
+  },
+  "surfaces": [
+    {
+      "path": "/",
+      "title": "Home — Sovereign Identity & Portfolio",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 1.0,
+      "changefreq": "monthly",
+      "description": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect"
+    },
+    {
+      "path": "/earth/",
+      "title": "Earth — Discoveries & Well Portfolio",
+      "mission": "investigate",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Subsurface discoveries, well portfolio, exploration record"
+    },
+    {
+      "path": "/economics/",
+      "title": "Economics — WEALTH Capital Briefing",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.9,
+      "changefreq": "daily",
+      "description": "Bursa, Ringgit, oil macro intelligence, Malaysia economic briefing"
+    },
+    {
+      "path": "/economics/article/:slug",
+      "title": "WEALTH Article",
+      "mission": "interpret",
+      "status": "live",
+      "type": "dynamic_page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Individual WEALTH capital intelligence article"
+    },
+    {
+      "path": "/world/",
+      "title": "World — Civic Journalism & Commodities",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Civic journalism (MakcikGPT) + commodity dashboards (oil/gas/gold)"
+    },
+    {
+      "path": "/world/makcikgpt/",
+      "title": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.85,
+      "changefreq": "daily",
+      "description": "Canonical landing for MakcikGPT civic intelligence series. Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability."
+    },
+    {
+      "path": "/world/makcikgpt/:slug",
+      "title": "MakcikGPT Article",
+      "mission": "interpret",
+      "status": "live",
+      "type": "dynamic_page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Individual MakcikGPT article in Bahasa Malaysia. Generated from essays.json."
+    },
+    {
+      "path": "/world/oil/",
+      "title": "Oil Dashboard — Brent Crude Cognitive View",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Brent crude oil cognitive dashboard with live data"
+    },
+    {
+      "path": "/world/gas/",
+      "title": "Gas Dashboard — Natural Gas Intelligence",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Natural gas dashboard with live data"
+    },
+    {
+      "path": "/world/gold/",
+      "title": "Gold Dashboard — XAUUSD Trading Synthesis",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Gold trading synthesis and technical analysis dashboard"
+    },
+    {
+      "path": "/writing/",
+      "title": "Writing — Essays & Analysis",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "weekly",
+      "description": "Narrative essays by Arif on AI governance, thermodynamics, geological reasoning"
+    },
+    {
+      "path": "/writing/:slug",
+      "title": "Essay",
+      "mission": "interpret",
+      "status": "live",
+      "type": "dynamic_page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Individual essay page"
+    },
+    {
+      "path": "/doctrine/",
+      "title": "Doctrine — Constitution, Federation Topology, Manifesto",
+      "mission": "decide",
+      "status": "live",
+      "type": "page",
+      "priority": 0.9,
+      "changefreq": "monthly",
+      "description": "Constitutional floors (F1-F13), authority chain, organ topology, federation manifesto"
+    },
+    {
+      "path": "/000/",
+      "title": "000 — Genesis Archive & Wisdom Canon",
+      "mission": "remember",
+      "status": "live",
+      "type": "page",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Genesis archive, wisdom canon, origin context for agents and verifiers"
+    },
+    {
+      "path": "/999/",
+      "title": "999 — Proof & Verification Chamber",
+      "mission": "remember",
+      "status": "live",
+      "type": "page",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Trust and proof chamber — verification artifacts, hash commitments, audit records"
+    },
+    {
+      "path": "/999/verify",
+      "title": "999 Verify — Live Vault Proof Endpoint",
+      "mission": "remember",
+      "status": "live",
+      "type": "api",
+      "priority": 0.5,
+      "changefreq": "monthly",
+      "description": "Live vault proof endpoint proxied to arifOS kernel — cryptographic verification"
+    },
+
+    {
+      "path": "/rss/",
+      "redirects_to": "/feed.xml",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "RSS feed redirect"
+    },
+    {
+      "path": "/canon/",
+      "redirects_to": "/doctrine",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy canon path — merged into doctrine"
+    },
+    {
+      "path": "/constellation/",
+      "redirects_to": "/doctrine",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy constellation path — merged into doctrine"
+    },
+    {
+      "path": "/federation/",
+      "redirects_to": "/doctrine",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy federation path — merged into doctrine"
+    },
+    {
+      "path": "/discoveries/",
+      "redirects_to": "/earth",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy discoveries path — canonical is /earth"
+    },
+    {
+      "path": "/wealth/",
+      "redirects_to": "/economics",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy wealth path — canonical is /economics"
+    },
+    {
+      "path": "/wealth/article/:slug",
+      "redirects_to": "/economics/article/:slug",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy wealth article — canonical is /economics/article/:slug"
+    },
+    {
+      "path": "/essays/",
+      "redirects_to": "/writing",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy essays path — canonical is /writing"
+    },
+    {
+      "path": "/essays/:slug",
+      "redirects_to": "/writing/:slug",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy essay — canonical is /writing/:slug"
+    },
+    {
+      "path": "/wealth/makcikgpt/",
+      "redirects_to": "/world/makcikgpt",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt"
+    },
+    {
+      "path": "/wealth/makcikgpt/:slug",
+      "redirects_to": "/world/makcikgpt/:slug",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug"
+    },
+    {
+      "path": "/economics/makcikgpt/",
+      "redirects_to": "/world/makcikgpt",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt"
+    },
+    {
+      "path": "/economics/makcikgpt/:slug",
+      "redirects_to": "/world/makcikgpt/:slug",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug"
+    },
+    {
+      "path": "/genesis/",
+      "redirects_to": "/000/",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Legacy genesis path — canonical is /000/"
+    },
+    {
+      "path": "/oil/",
+      "redirects_to": "/world/oil",
+      "status": "redirect",
+      "code": 308,
+      "type": "redirect",
+      "description": "Legacy oil path — canonical is /world/oil"
+    },
+    {
+      "path": "/gas/",
+      "redirects_to": "/world/gas",
+      "status": "redirect",
+      "code": 308,
+      "type": "redirect",
+      "description": "Legacy gas path — canonical is /world/gas"
+    },
+    {
+      "path": "/gold/",
+      "redirects_to": "/world/gold",
+      "status": "redirect",
+      "code": 308,
+      "type": "redirect",
+      "description": "Legacy gold path — canonical is /world/gold"
+    },
+    {
+      "path": "/makcikgpt/",
+      "redirects_to": "/world/makcikgpt/",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Bare MakcikGPT path — canonical is /world/makcikgpt/"
+    },
+    {
+      "path": "/makcikgpt/:slug",
+      "redirects_to": "/world/makcikgpt/:slug",
+      "status": "redirect",
+      "code": 301,
+      "type": "redirect",
+      "description": "Bare MakcikGPT article — canonical is /world/makcikgpt/:slug"
+    },
+
+    {
+      "path": "/vitals/",
+      "status": "gone",
+      "type": "gone",
+      "description": "REMOVED 2026-07-31 — consolidated under wealth.arif-fazil.com. Do not list in machine catalogs."
+    },
+    {
+      "path": "/malaysia/",
+      "status": "gone",
+      "type": "gone",
+      "description": "REMOVED 2026-07-31 — consolidated under wealth.arif-fazil.com."
+    },
+    {
+      "path": "/pulse/",
+      "status": "gone",
+      "type": "gone",
+      "description": "REMOVED 2026-07-31 — never existed as a route. Was listed in Monitor mission catalog by error."
+    },
+    {
+      "path": "/forge/",
+      "status": "gone",
+      "type": "gone",
+      "description": "REMOVED 2026-07-31 — never existed on apex domain. A-FORGE lives at forge.arif-fazil.com subdomain."
+    },
+
+    {
+      "path": "/llms.txt",
+      "title": "llms.txt — AI Site Overview",
+      "status": "live",
+      "type": "machine",
+      "format": "text/markdown",
+      "priority": 0.5,
+      "changefreq": "weekly",
+      "description": "Curated link index for AI agents (Jeremy Howard convention, Sept 2024). Generated from surfaces.json."
+    },
+    {
+      "path": "/llms.json",
+      "title": "llms.json — Structured Site Overview",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "weekly",
+      "description": "Structured JSON site overview with route roles, related sites, and machine surfaces"
+    },
+    {
+      "path": "/page.json",
+      "title": "page.json — Machine Site Overview",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "weekly",
+      "description": "Machine-readable site overview — purpose, route model, content scope"
+    },
+    {
+      "path": "/missions.json",
+      "title": "missions.json — Six-Mission Federation Catalog",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "monthly",
+      "description": "Six-mission classification of federation intent. Does not authorize tool calls."
+    },
+    {
+      "path": "/sitemap.xml",
+      "title": "sitemap.xml — XML Sitemap",
+      "status": "live",
+      "type": "machine",
+      "format": "application/xml",
+      "priority": 0.5,
+      "changefreq": "weekly",
+      "description": "XML sitemap for search engines and crawlers"
+    },
+    {
+      "path": "/feed.xml",
+      "title": "RSS Feed — MakcikGPT Articles",
+      "status": "live",
+      "type": "machine",
+      "format": "application/rss+xml",
+      "priority": 0.5,
+      "changefreq": "daily",
+      "description": "RSS feed of MakcikGPT civic intelligence articles"
+    },
+    {
+      "path": "/robots.txt",
+      "title": "robots.txt — Crawler Policy with AI Directives",
+      "status": "live",
+      "type": "machine",
+      "format": "text/plain",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Crawler policy with explicit AI bot directives and RSL License line"
+    },
+    {
+      "path": "/rsl.xml",
+      "title": "rsl.xml — Really Simple Licensing 1.0",
+      "status": "live",
+      "type": "machine",
+      "format": "application/rsl+xml",
+      "priority": 0.5,
+      "changefreq": "monthly",
+      "description": "RSL 1.0 license declaring permits/prohibits for ai-train, ai-input, search"
+    },
+    {
+      "path": "/soul.json",
+      "title": "soul.json — Sovereign Identity Anchor",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "monthly",
+      "description": "Sovereign identity and philosophy anchor"
+    },
+    {
+      "path": "/.well-known/mcp.json",
+      "title": "MCP Server Card (SEP-1649/1960 draft)",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.5,
+      "changefreq": "monthly",
+      "description": "MCP server discovery card — draft SEP, future-proofing. Served with nosniff + CORS."
+    },
+    {
+      "path": "/.well-known/agent.json",
+      "title": "Agent Card — A2A Discovery",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "monthly",
+      "description": "Agent capability declaration"
+    },
+    {
+      "path": "/.well-known/agent-card.json",
+      "title": "Agent Card — A2A Discovery (alternate)",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "monthly",
+      "description": "Agent card — A2A discovery (redirects to AAA gateway)"
+    },
+    {
+      "path": "/.well-known/did.json",
+      "title": "DID Document — did:web:arif-fazil.com",
+      "status": "live",
+      "type": "machine",
+      "format": "application/json",
+      "priority": 0.4,
+      "changefreq": "monthly",
+      "description": "W3C DID document for decentralized identity"
+    }
+  ],
+
+  "federation_subdomains": [
+    { "domain": "arifos.arif-fazil.com", "role": "Constitutional governance kernel & observatory", "organ": "arifOS" },
+    { "domain": "aaa.arif-fazil.com", "role": "Control plane, A2A gateway, agent identity", "organ": "AAA" },
+    { "domain": "mcp.arif-fazil.com", "role": "MCP gateway for agent connection", "organ": "arifOS" },
+    { "domain": "geox.arif-fazil.com", "role": "Earth intelligence, physics-gated geoscience", "organ": "GEOX" },
+    { "domain": "wealth.arif-fazil.com", "role": "Capital intelligence, NPV/EMV/capital thermodynamics", "organ": "WEALTH" },
+    { "domain": "well.arif-fazil.com", "role": "Human and machine vitality reflection", "organ": "WELL" },
+    { "domain": "forge.arif-fazil.com", "role": "A-FORGE governed execution shell", "organ": "A-FORGE" }
+  ],
+
+  "external_refs": {
+    "github": "https://github.com/ariffazil",
+    "mcp_registry_glama_arifos": "https://glama.ai/mcp/servers/ariffazil/arifos",
+    "mcp_registry_glama_arifosmcp": "https://glama.ai/mcp/servers/ariffazil/arifosmcp",
+    "pypi": "https://pypi.org/project/arifos/",
+    "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "did": "did:web:arif-fazil.com"
+  }
+}

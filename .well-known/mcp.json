@@ -1,0 +1,79 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/mcp-manifest.json",
+  "serverInfo": {
+    "name": "arif-fazil-federation",
+    "version": "2026.07.31",
+    "description": "MCP gateway for the arifOS federation — governed AI tools under F1-F13 constitutional floors. Read-only public tools; mutation requires SCT."
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://mcp.arif-fazil.com/mcp",
+    "protocol": "json-rpc-2.0"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false
+  },
+  "tools": [
+    {
+      "name": "search_federation",
+      "description": "Search the arifOS federation for content matching a query. Returns ranked list of surfaces with title, URL, and snippet.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Search query" }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "fetch_article",
+      "description": "Fetch the full text of a published article by path.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "description": "Article path, e.g. /world/makcikgpt/petronas-dna" }
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "list_missions",
+      "description": "List the six federation missions (Investigate, Interpret, Decide, Build, Monitor, Remember) and their associated surfaces.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "list_domains",
+      "description": "List all federation subdomains and their roles in the arifOS organ topology.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "authentication": {
+    "type": "none",
+    "note": "Public read-only tools require no auth. Mutation tools require SCT (Session Capability Token). OAuth 2.1 + PKCE available for gated access. See RFC 9728/8414/8707 well-knowns."
+  },
+  "discovery": {
+    "well_known": "https://arif-fazil.com/.well-known/mcp.json",
+    "registry": "https://registry.modelcontextprotocol.io",
+    "status": "draft-sep-1649-1960",
+    "note": "SEP-1649/1960 server card — draft, not yet in core MCP spec. Future-proofing. Clients that don't support discovery skip this probe."
+  },
+  "author": {
+    "name": "Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com",
+    "email": "arifbfazil@gmail.com"
+  },
+  "homepage": "https://arif-fazil.com",
+  "repository": "https://github.com/ariffazil/arif-sites",
+  "license": {
+    "type": "RSL-1.0",
+    "url": "https://arif-fazil.com/rsl.xml"
+  }
+}
