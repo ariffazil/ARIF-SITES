@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" data-ring="MIND">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Six Missions · arifOS Federation</title>
+<meta name="description content="Six missions, not 128 tools. State the problem, federation chooses instruments, challenges the result, returns what matters. Human final authority.">
+<link rel="canonical" href="https://arif-fazil.com/missions/">
+<meta name="author" content="Muhammad Arif bin Fazil">
+
+<!-- Trinity Design System · SSOT -->
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<link rel="stylesheet" href="/_shared/zen-chrome.css">
+
+<style>
+:root {
+  --missions-bg: #060809;
+  --missions-card: #0f1211;
+  --missions-border: #1a2825;
+  --missions-text: #e1f5f0;
+  --missions-mute: #95a8a3;
+  --accent: #00D4AA;
+  --accent-2: #00FFAA;
+  --accent-3: #008866;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--missions-bg); color: var(--missions-text);
+  line-height: 1.6; margin: 0; padding: 0;
+}
+main { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1.25rem 5rem; }
+
+.zen-pulse {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  background: rgba(0, 212, 170, .10);
+  border: 1px solid rgba(0, 212, 170, .30);
+  border-radius: 8px; padding: .65rem 1rem; font-size: .82rem;
+  margin-bottom: 1.5rem; backdrop-filter: blur(8px);
+}
+.zp-item { display: flex; gap: .4rem; }
+.zp-ask { color: var(--missions-mute); font-family: ui-monospace, monospace; font-size: .72rem; text-transform: uppercase; letter-spacing: .5px; }
+.zp-val { color: var(--missions-text); }
+.zp-val.gold { color: var(--accent); }
+
+header { padding: 1rem 0 1.5rem; border-bottom: 1px solid var(--missions-border); margin-bottom: 1.5rem; }
+header h1 {
+  font-size: 2.1rem; font-weight: 800; margin: 0 0 .3rem;
+  background: linear-gradient(135deg, #fff 30%, var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+header .kicker { font-family: ui-monospace, monospace; font-size: .68rem; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; }
+header .lead { color: var(--missions-mute); margin: .5rem 0 0; max-width: 720px; font-size: 1rem; }
+header .lead strong { color: var(--missions-text); }
+header .metric { margin-top: .8rem; padding: .5rem .8rem; background: rgba(0,212,170,.06); border: 1px solid rgba(0,212,170,.25); border-radius: 4px; font-family: ui-monospace, monospace; font-size: .75rem; color: var(--accent); display: inline-block; }
+
+/* missions grid */
+.missions { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+.mission {
+  background: var(--missions-card); border: 1px solid var(--missions-border);
+  border-radius: 12px; padding: 1.3rem 1.4rem;
+  transition: border-color .2s, transform .2s;
+  text-decoration: none; color: inherit; display: block;
+}
+.mission:hover { border-color: var(--accent); transform: translateY(-2px); }
+.mission .num {
+  font-family: ui-monospace, monospace; font-size: .65rem;
+  color: var(--accent); letter-spacing: 2px; text-transform: uppercase;
+}
+.mission h2 { margin: .2rem 0 .35rem; font-size: 1.2rem; font-weight: 700; }
+.mission .one-line { color: var(--missions-mute); font-size: .9rem; margin: 0 0 .8rem; }
+.mission .quote { color: var(--missions-text); font-size: .88rem; font-style: italic; padding-left: .6rem; border-left: 2px solid var(--accent); margin: .6rem 0; }
+.mission .organs { display: flex; gap: .35rem; flex-wrap: wrap; margin-top: .8rem; }
+.mission .organ { font-family: ui-monospace, monospace; font-size: .68rem; padding: .15rem .5rem; background: rgba(0,212,170,.08); border: 1px solid rgba(0,212,170,.25); border-radius: 3px; color: var(--accent); }
+
+/* human-only strip */
+.human-strip {
+  margin: 1.5rem 0; padding: 1rem 1.2rem;
+  background: rgba(212,175,55,.05); border: 1px solid rgba(212,175,55,.30);
+  border-radius: 8px;
+}
+.human-strip strong { color: #d4af37; font-family: ui-monospace, monospace; font-size: .72rem; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: .5rem; }
+.human-strip ul { margin: 0; padding-left: 1.2rem; color: var(--missions-mute); font-size: .9rem; }
+.human-strip li { margin: .2rem 0; }
+
+details.sov {
+  margin-top: 1.5rem; padding: 1rem 1.2rem;
+  background: var(--missions-card); border: 1px solid var(--missions-border);
+  border-radius: 8px;
+}
+details.sov summary {
+  cursor: pointer; color: var(--accent);
+  font-family: ui-monospace, monospace; font-size: .72rem;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: .4rem;
+}
+details.sov p { margin: .3rem 0; color: var(--missions-mute); font-size: .88rem; }
+details.sov code { background: rgba(0,212,170,.08); padding: 1px 4px; border-radius: 3px; font-size: .82rem; }
+details.sov a { color: var(--accent-2); }
+
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--missions-border); font-size: .82rem; color: var(--missions-mute); }
+.kv { font-family: ui-monospace, monospace; font-size: .72rem; color: #555; margin: .4rem 0 0; }
+</style>
+</head>
+<body>
+<main>
+
+<nav class="zen-pulse" aria-label="missions pulse">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">Six missions · not 128 tools</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val gold">State the problem · federation solves it</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Pick a mission ↓</span></div>
+</nav>
+
+<header>
+  <div class="kicker">DOCTRINE · HUMAN-AUTHORED</div>
+  <h1>Six Missions</h1>
+  <p class="lead">You state the problem. The federation chooses the instruments, challenges the result, and returns only what matters. <strong>Not 128 tools. Six missions.</strong></p>
+  <div class="metric">How often did Arif need to know which tool was used? · target: zero</div>
+  <p class="kv">arif-fazil.com/missions · doctrine: <a href="/doctrine/">/doctrine/</a> · <a href="/missions.json">missions.json</a></p>
+</header>
+
+<!-- human-only strip -->
+<div class="human-strip">
+  <strong>YOUR FOUR LEVERS · HUMAN-ONLY</strong>
+  <ul>
+    <li>State what you want</li>
+    <li>Supply evidence or data</li>
+    <li>Examine the conclusion and uncertainty</li>
+    <li>Approve or reject consequential action</li>
+  </ul>
+</div>
+
+<!-- 6 missions grid -->
+<section class="missions">
+
+  <a class="mission" href="/federation/">
+    <div class="num">mission 01</div>
+    <h2>Investigate</h2>
+    <p class="one-line">Gather and test reality</p>
+    <p class="quote">"What is actually true here — and what would falsify it?"</p>
+    <div class="organs"><span class="organ">GEOX</span><span class="organ">WEALTH</span><span class="organ">arifOS</span></div>
+  </a>
+
+  <a class="mission" href="/well/">
+    <div class="num">mission 02</div>
+    <h2>Interpret</h2>
+    <p class="one-line">Build competing explanations</p>
+    <p class="quote">"What could this mean — and what is the kill case?"</p>
+    <div class="organs"><span class="organ">GEOX</span><span class="organ">WEALTH</span><span class="organ">WELL</span></div>
+  </a>
+
+  <a class="mission" href="/arifos/">
+    <div class="num">mission 03</div>
+    <h2>Decide</h2>
+    <p class="one-line">Compare consequences and uncertainty</p>
+    <p class="quote">"Should we advance, hold, or kill — and why?"</p>
+    <div class="organs"><span class="organ">arifOS</span><span class="organ">WEALTH</span><span class="organ">AAA</span></div>
+  </a>
+
+  <a class="mission" href="https://forge.arif-fazil.com/" target="_blank" rel="noopener">
+    <div class="num">mission 04</div>
+    <h2>Build</h2>
+    <p class="one-line">Prepare and execute approved changes</p>
+    <p class="quote">"Make this real — reversibly first."</p>
+    <div class="organs"><span class="organ">A-FORGE</span><span class="organ">arifOS</span></div>
+  </a>
+
+  <a class="mission" href="/well/">
+    <div class="num">mission 05</div>
+    <h2>Monitor</h2>
+    <p class="one-line">Detect change, degradation, or danger</p>
+    <p class="quote">"Is the system or the human still fit to act?"</p>
+    <div class="organs"><span class="organ">WELL</span><span class="organ">WEALTH</span><span class="organ">arifOS</span></div>
+  </a>
+
+  <a class="mission" href="/999/">
+    <div class="num">mission 06</div>
+    <h2>Remember</h2>
+    <p class="one-line">Retrieve and preserve governed knowledge</p>
+    <p class="quote">"What did we seal, and what is still lore?"</p>
+    <div class="organs"><span class="organ">VAULT999</span><span class="organ">arifOS</span><span class="organ">AAA</span></div>
+  </a>
+
+</section>
+
+<!-- sovereign bridge -->
+<details class="sov">
+  <summary>sovereign bridge · survival rule for tools</summary>
+  <p>Used in a tested workflow → <strong>KEEP</strong></p>
+  <p>Overlapping → <strong>MERGE AS MODE</strong></p>
+  <p>Internal compute → <strong>HIDE</strong></p>
+  <p>Alias → <strong>SDK ONLY</strong></p>
+  <p>No workflow → <strong>REMOVE</strong></p>
+  <p>Engine room (Tool Explorer, registries, raw MCP catalogs) is for developers, audits, and debugging — not daily sovereign work.</p>
+</details>
+
+<details class="sov">
+  <summary>canonical kernel public · 8 tools</summary>
+  <p>Public arifOS surface is the Canonical 8 — not the full federation inventory:</p>
+  <p><code>arif_init</code> · <code>arif_observe</code> · <code>arif_think</code> · <code>arif_route</code> · <code>arif_memory</code> · <code>arif_judge</code> · <code>arif_forge</code> · <code>arif_seal</code></p>
+  <p>Full list (97+ tools across all organs) lives at <a href="https://mcp.arif-fazil.com/tools.json">mcp.arif-fazil.com/tools.json</a> — for developers, not sovereigns.</p>
+</details>
+
+<footer>
+  <p><strong style="color:var(--accent)">DITEMPA BUKAN DIBERI</strong> · Forged, not given. Six missions, not 128 tools. Human final authority lives with Arif.</p>
+  <p class="kv">v2026.07.30 · refactor/zen-distill · Ω MIND · doctrine: <a href="/doctrine/">/doctrine/</a> · <a href="/missions.json">missions.json</a></p>
+</footer>
+
+</main>
+</body>
+</html>

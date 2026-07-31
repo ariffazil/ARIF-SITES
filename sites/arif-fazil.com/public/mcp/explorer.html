@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCP Tool Explorer · Engine Room (not cockpit) — arifOS</title>
+<meta name="description" content="ENGINE ROOM — developer/audit catalog of federation MCP tools. Humans use six missions at arif-fazil.com/missions, not this list.">
+<link rel="canonical" href="https://mcp.arif-fazil.com/explorer">
+<style>
+:root {
+  --bg: #0a0a0f; --fg: #e0e0e0; --muted: #706e6b;
+  --card-bg: #141312; --border: #2a2826; --accent: #3a9ea8;
+  --green: #4ade80; --yellow: #facc15; --red: #ef4444;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg); min-height: 100vh; }
+header { padding: 1.5rem 1.5rem 0; max-width: 960px; margin: 0 auto; }
+h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+.subtitle { color: var(--muted); font-size: 0.88rem; margin-bottom: 1rem; }
+
+/* Search */
+.search-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.search-bar input {
+  flex: 1; min-width: 200px; padding: 0.6rem 0.9rem;
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--fg); font-size: 0.9rem; outline: none;
+}
+.search-bar input:focus { border-color: var(--accent); }
+.search-bar select {
+  padding: 0.6rem 0.9rem; background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--fg); font-size: 0.85rem;
+}
+
+/* Organ filter pills */
+.filters { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.pill {
+  padding: 0.3rem 0.7rem; border-radius: 20px; font-size: 0.75rem;
+  border: 1px solid var(--border); cursor: pointer; background: var(--card-bg);
+  color: var(--muted); transition: all 0.15s;
+}
+.pill:hover { border-color: var(--accent); color: var(--fg); }
+.pill.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Stats */
+.stats { color: var(--muted); font-size: 0.78rem; margin-bottom: 0.75rem; }
+
+/* Tool grid */
+.grid { display: grid; gap: 0.6rem; padding: 0 1.5rem 2rem; max-width: 960px; margin: 0 auto; }
+.tool-card {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+  padding: 0.8rem 1rem; cursor: pointer; transition: border-color 0.15s;
+}
+.tool-card:hover { border-color: var(--accent); }
+.tool-card .name { font-family: ui-monospace, monospace; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+.tool-card .desc { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.4; }
+.tool-card .meta { display: flex; gap: 0.6rem; margin-top: 0.4rem; font-size: 0.7rem; color: #555; }
+.tool-card .organ-tag {
+  padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.7rem;
+  font-weight: 500; text-transform: uppercase;
+}
+.tag-arifos { background: rgba(58,158,168,0.15); color: var(--accent); }
+.tag-aforge { background: rgba(168,130,58,0.15); color: #d4a843; }
+.tag-geox { background: rgba(58,168,100,0.15); color: #4ade80; }
+.tag-wealth { background: rgba(168,158,58,0.15); color: #facc15; }
+.tag-well { background: rgba(168,58,100,0.15); color: #f472b6; }
+
+/* Loading */
+.loading { text-align: center; padding: 3rem; color: var(--muted); }
+.error { color: var(--red); text-align: center; padding: 2rem; }
+
+/* Schema modal */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+  z-index: 100; align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.5rem; max-width: 580px; width: 90%; max-height: 80vh; overflow-y: auto;
+}
+.modal h3 { font-family: ui-monospace, monospace; color: var(--accent); margin-bottom: 0.5rem; }
+.modal .close { float: right; background: none; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer; }
+.modal pre { background: #0a0a0f; padding: 1rem; border-radius: 8px; font-size: 0.75rem; overflow-x: auto; color: #ccc; margin-top: 0.8rem; }
+.modal .prop-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; font-size: 0.8rem; }
+.modal .prop-table th { text-align: left; color: var(--muted); font-weight: 500; padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); }
+.modal .prop-table td { padding: 0.3rem 0.5rem; border-bottom: 1px solid var(--border); color: var(--fg); }
+</style>
+</head>
+<body>
+
+<header>
+<div id="engine-room-banner" style="max-width:960px;margin:0 auto 1rem;padding:0.9rem 1rem;border:1px solid #c9a84c;border-radius:8px;background:rgba(201,168,76,.08);font-size:0.88rem;line-height:1.5">
+  <strong style="color:#c9a84c">Engine room · not cockpit.</strong>
+  You should not pick among 128 tools. State a mission at
+  <a href="https://arif-fazil.com/missions" style="color:#c9a84c">arif-fazil.com/missions</a>
+  (Investigate · Interpret · Decide · Build · Monitor · Remember).
+  Agents select instruments. This page is for developers, audits, and registry verification only.
+  Machine map: <a href="https://arif-fazil.com/missions.json" style="color:#c9a84c">missions.json</a>.
+</div>
+
+  <h1>🔧 MCP Tool Explorer</h1>
+  <p class="subtitle">Live catalog of all MCP tools across the arifOS federation — 6 organs, 128+ tools</p>
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="Search tools… (e.g. 'seismic', 'judge', 'vault')" autofocus>
+    <select id="organ-filter">
+      <option value="">All Organs</option>
+      <option value="arifos">arifOS</option>
+      <option value="aforge">A-FORGE</option>
+      <option value="geox">GEOX</option>
+      <option value="wealth">WEALTH</option>
+      <option value="well">WELL</option>
+    </select>
+  </div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="grid" id="grid">
+  <div class="loading">Probing federation organs…</div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<script>
+const ORGANS = [
+  { name: "arifos", port: 8088, role: "Governance Kernel", tagClass: "tag-arifos" },
+  { name: "aforge", port: 7072, role: "Execution Shell", tagClass: "tag-aforge" },
+  { name: "geox", port: 8081, role: "Earth Intelligence", tagClass: "tag-geox" },
+  { name: "wealth", port: 18082, role: "Capital Intelligence", tagClass: "tag-wealth" },
+  { name: "well", port: 18083, role: "Human Readiness", tagClass: "tag-well" },
+];
+
+let allTools = [];
+
+async function fetchOrganTools(organ) {
+  try {
+    const url = `/api/organs/${organ.name}/tools`;
+    const r = await fetch(url, { headers: { Accept: "application/json" } });
+    if (!r.ok) return [];
+    const data = await r.json();
+    const tools = data.tools || data.result?.tools || [];
+    return tools.map(t => ({
+      name: t.name || "unknown",
+      description: t.description || "",
+      schema: t.inputSchema || t.parameters || {},
+      organ: organ.name,
+      organRole: organ.role,
+      tagClass: organ.tagClass
+    }));
+  } catch (e) {
+    // Try health endpoint for tool count
+    try {
+      const hr = await fetch(`/api/organs/${organ.name}/health`);
+      if (hr.ok) {
+        const hd = await hr.json();
+        const count = hd.tools_loaded || hd.tool_count || 0;
+        if (count > 0) {
+          return [{ name: `[${organ.name}] ${count} session-gated tools`, description: `Requires authenticated session. Health reports ${count} tools loaded.`, organ: organ.name, organRole: organ.role, tagClass: organ.tagClass, schema: { _note: "Session-gated — full schema unavailable" } }];
+        }
+      }
+    } catch (_) {}
+    return [];
+  }
+}
+
+async function loadTools() {
+  const grid = document.getElementById("grid");
+  grid.innerHTML = '<div class="loading">Probing all 6 federation organs…</div>';
+
+  const results = await Promise.all(ORGANS.map(fetchOrganTools));
+  allTools = results.flat();
+
+  if (allTools.length === 0) {
+    grid.innerHTML = '<div class="error">⚠️ Could not reach any organ. Federation may be offline.</div>';
+    return;
+  }
+
+  renderTools(allTools);
+}
+
+function renderTools(tools) {
+  const grid = document.getElementById("grid");
+  const stats = document.getElementById("stats");
+  stats.textContent = `${tools.length} tools shown`;
+
+  if (tools.length === 0) {
+    grid.innerHTML = '<div class="loading">No tools match your filter.</div>';
+    return;
+  }
+
+  grid.innerHTML = tools.map(t => `
+    <div class="tool-card" onclick="showTool('${encodeURIComponent(JSON.stringify(t))}')">
+      <div class="name">${esc(t.name)}</div>
+      <div class="desc">${esc(t.description || 'No description')}</div>
+      <div class="meta">
+        <span class="organ-tag ${t.tagClass}">${t.organ}</span>
+        <span>${t.organRole}</span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]); }
+
+function showTool(encoded) {
+  const t = JSON.parse(decodeURIComponent(encoded));
+  const modal = document.getElementById("modal");
+  const content = document.getElementById("modal-content");
+
+  const schema = t.schema || {};
+  const props = schema.properties || {};
+  const required = schema.required || [];
+  const propRows = Object.entries(props).map(([k,v]) => {
+    const req = required.includes(k) ? " ✅" : "";
+    const type = v.type || (v.anyOf ? "union" : "?");
+    const desc = v.description || "";
+    return `<tr><td>${esc(k)}${req}</td><td>${esc(type)}</td><td>${esc(desc)}</td></tr>`;
+  }).join("");
+
+  content.innerHTML = `
+    <button class="close" onclick="closeModal()">✕</button>
+    <h3>${esc(t.name)}</h3>
+    <p style="color:var(--muted);margin-bottom:0.5rem">${esc(t.description || 'No description')}</p>
+    <div class="meta" style="margin-bottom:1rem">
+      <span class="organ-tag ${t.tagClass}">${t.organ}</span>
+      <span>${t.organRole}</span>
+    </div>
+    ${propRows ? `
+      <h4 style="font-size:0.82rem;color:var(--muted);margin-bottom:0.4rem">Parameters</h4>
+      <table class="prop-table">
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+        ${propRows}
+      </table>
+    ` : '<p style="color:var(--muted)">No parameter schema available.</p>'}
+    <details style="margin-top:1rem">
+      <summary style="color:var(--muted);font-size:0.8rem;cursor:pointer">Raw schema</summary>
+      <pre>${esc(JSON.stringify(schema, null, 2))}</pre>
+    </details>
+  `;
+
+  modal.classList.add("open");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("open");
+}
+document.getElementById("modal").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
+});
+
+// Search + filter
+document.getElementById("search").addEventListener("input", filterTools);
+document.getElementById("organ-filter").addEventListener("change", filterTools);
+
+function filterTools() {
+  const q = document.getElementById("search").value.toLowerCase();
+  const organ = document.getElementById("organ-filter").value;
+
+  let filtered = allTools;
+  if (organ) filtered = filtered.filter(t => t.organ === organ);
+  if (q) filtered = filtered.filter(t =>
+    t.name.toLowerCase().includes(q) ||
+    (t.description || "").toLowerCase().includes(q)
+  );
+  renderTools(filtered);
+}
+
+// Keyboard shortcut
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+  if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); document.getElementById("search").focus(); }
+});
+
+loadTools();
+</script>
+</body>
+</html>
