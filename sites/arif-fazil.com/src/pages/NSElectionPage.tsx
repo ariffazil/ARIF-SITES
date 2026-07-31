@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ElectionCartographyMap, NS_SEATS, type SeatData, PARTY_COLORS } from '@/components/ElectionCartographyMap';
-import { QuoteCard } from '@/components/QuoteCard';
 import { useWebMCP } from '@/hooks/useWebMCP';
 
 // 9 Top Contrast Quantum-Meaningful Electoral Invariant Indicators (ATLAS333 Lens)
@@ -304,111 +303,101 @@ export function NSElectionPage() {
         </div>
       </div>
 
-      {/* HERO SECTION */}
-      <section className="py-12 md:py-16 border-b border-forge-iron bg-gradient-to-b from-slate-950 via-[#07090E] to-[#050608]">
-        <div className="site-frame">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-2">
-              <div className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-                <span>PRN 2026 State Election Briefing</span>
-                <span>•</span>
-                <span>36 DUN Seats</span>
-                <span>•</span>
-                <span className="text-emerald-400 font-bold">19 Needed For Majority</span>
-              </div>
-              <h1 className="text-4xl md:text-6xl font-black italic uppercase leading-none tracking-tight mb-4 text-white">
-                Negeri Sembilan <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-red-500">
-                  Live Dynamic Seat Matrix & 9 Invariants
+      {/* HEADER (zen) + live telemetry panel */}
+      <section className="py-32 border-b border-forge-iron">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-amber-400 mb-6 flex items-center gap-2">
+            <span>PRN 2026 State Election Briefing</span>
+            <span>·</span>
+            <span>36 DUN Seats</span>
+            <span>·</span>
+            <span className="text-emerald-400">19 Needed For Majority</span>
+          </div>
+          <h1 className="text-4xl font-light text-white mb-3">Negeri Sembilan</h1>
+          <p className="text-amber-400 text-xl font-light mb-6">
+            Live Dynamic Seat Matrix &amp; 9 Invariants
+          </p>
+          <p className="text-slate-300 text-base leading-relaxed mb-3">
+            Polling Day: <strong className="text-amber-300">Sabtu, 1 Ogos 2026</strong> · Early Voting: <strong>Rabu, 29 Julai 2026</strong>
+          </p>
+          <p className="text-slate-300 text-base leading-relaxed mb-8">
+            Multi-lens analysis combining Demographics, Economic Thermodynamics, Adat Perpatih Culture, and Bersatu 3-way Split Mechanics.
+          </p>
+        </div>
+
+        {/* Live telemetry panel — functional, kept */}
+        <div className="max-w-[960px] mx-auto px-6 mt-8">
+          <div
+            className={`p-6 border font-mono text-xs ${
+              liveTelemetry?.health === 'OK' ? 'border-emerald-500/50' :
+              liveTelemetry?.health === 'SEALED_ONLY' ? 'border-amber-500/50' :
+              liveTelemetry?.health === 'LIVE_PARTIAL' ? 'border-amber-500/50' :
+              'border-rose-500/50'
+            } bg-slate-950`}
+            data-testid="live-provenance-panel"
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+              <div className="flex items-center gap-3">
+                <span className={`w-2.5 h-2.5 rounded-full animate-ping ${
+                  liveTelemetry?.health === 'OK' ? 'bg-emerald-500' :
+                  liveTelemetry?.health === 'DEGRADED' ? 'bg-rose-500' :
+                  'bg-amber-500'
+                }`}></span>
+                <strong className="font-bold uppercase tracking-wider text-slate-200">
+                  {liveTelemetry?.health === 'OK' ? 'LIVE SENSORY STREAM' :
+                   liveTelemetry?.health === 'SEALED_ONLY' ? 'SEALED GROUND TRUTH' :
+                   liveTelemetry?.health === 'LIVE_PARTIAL' ? 'LIVE PARTIAL' :
+                   liveTelemetry?.health === 'DEGRADED' ? 'DEGRADED TELEMETRY' :
+                   'TELEMETRY LOADING'}
+                </strong>
+                <span className="text-[10px] text-slate-500 font-normal">
+                  {liveTelemetry?.updated_at ? new Date(liveTelemetry.updated_at).toISOString().replace('T', ' ').slice(0, 19) + ' UTC' : '—'}
                 </span>
-              </h1>
-              <p className="text-slate-300 font-body text-lg leading-relaxed max-w-2xl">
-                Polling Day: <strong className="text-amber-300">Sabtu, 1 Ogos 2026</strong> · Early Voting: <strong>Rabu, 29 Julai 2026</strong>.<br />
-                Multi-lens analysis combining Demographics, Economic Thermodynamics, Adat Perpatih Culture, and Bersatu 3-way Split Mechanics.
-              </p>
+              </div>
+              <span className="text-[10px] text-slate-500">
+                {liveTelemetry?.polymarket_status === 'LIVE_MATCH' ? '📈 Polymarket LIVE' :
+                 liveTelemetry?.polymarket_status === 'NO_MARKET' ? 'Polymarket: no N9 market' :
+                 liveTelemetry?.polymarket_status || '—'}
+              </span>
             </div>
 
-            <div className="space-y-4">
-              <div
-                className={`p-4 rounded-lg border font-mono text-xs shadow-xl ${
-                  liveTelemetry?.health === 'OK' ? 'border-emerald-500/50' :
-                  liveTelemetry?.health === 'SEALED_ONLY' ? 'border-amber-500/50' :
-                  liveTelemetry?.health === 'LIVE_PARTIAL' ? 'border-amber-500/50' :
-                  'border-rose-500/50'
-                } bg-slate-950`}
-                data-testid="live-provenance-panel"
-              >
-                <div className="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className={`w-2.5 h-2.5 rounded-full animate-ping ${
-                      liveTelemetry?.health === 'OK' ? 'bg-emerald-500' :
-                      liveTelemetry?.health === 'DEGRADED' ? 'bg-rose-500' :
-                      'bg-amber-500'
-                    }`}></span>
-                    <strong className="font-bold uppercase tracking-wider text-slate-200">
-                      {liveTelemetry?.health === 'OK' ? 'LIVE SENSORY STREAM' :
-                       liveTelemetry?.health === 'SEALED_ONLY' ? 'SEALED GROUND TRUTH' :
-                       liveTelemetry?.health === 'LIVE_PARTIAL' ? 'LIVE PARTIAL' :
-                       liveTelemetry?.health === 'DEGRADED' ? 'DEGRADED TELEMETRY' :
-                       'TELEMETRY LOADING'}
-                    </strong>
-                    <span className="text-[10px] text-slate-500 font-normal">
-                      {liveTelemetry?.updated_at ? new Date(liveTelemetry.updated_at).toISOString().replace('T', ' ').slice(0, 19) + ' UTC' : '—'}
-                    </span>
-                  </div>
-                  <span className="text-[10px] text-slate-500">
-                    {liveTelemetry?.polymarket_status === 'LIVE_MATCH' ? '📈 Polymarket LIVE' :
-                     liveTelemetry?.polymarket_status === 'NO_MARKET' ? 'Polymarket: no N9 market' :
-                     liveTelemetry?.polymarket_status || '—'}
-                  </span>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-slate-300">
-                    <span>Highest Volatility:</span>
-                    <strong className="text-amber-400">
-                      {liveTelemetry?.highest_volatility_seat
-                        ? liveTelemetry.highest_volatility_seat
-                        : '—'}
-                    </strong>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-300">
-                    <span>Voter Turnout Projection:</span>
-                    <strong className="text-slate-100">
-                      {liveTelemetry?.voter_turnout_projection_pct != null
-                        ? `${liveTelemetry.voter_turnout_projection_pct}%`
-                        : '—'}
-                    </strong>
-                  </div>
-                  <div className="flex justify-between items-center text-slate-300">
-                    <span>BN-PN Coalition Forecast:</span>
-                    <strong className="text-fuchsia-300">
-                      {liveTelemetry?.bn_pn_coalition_forecast_pct != null
-                        ? `${liveTelemetry.bn_pn_coalition_forecast_pct}%`
-                        : '—'}
-                    </strong>
-                    <span className="text-[10px] text-slate-500 ml-2">
-                      {liveTelemetry?.bn_pn_coalition_forecast_label || '—'}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="pt-2 mt-2 border-t border-slate-900 text-[10px] text-slate-500 grid grid-cols-2 gap-1">
-                  <div>Sentiment (Vodus, n=437, OBS):
-                    {liveTelemetry?.sentiment_index
-                      ? ` PH ${liveTelemetry.sentiment_index.ph_positive?.toFixed(1) ?? '—'} · BN ${liveTelemetry.sentiment_index.bn_positive?.toFixed(1) ?? '—'} · PN ${liveTelemetry.sentiment_index.pn_positive?.toFixed(1) ?? '—'}`
-                      : ' —'}
-                  </div>
-                  <div>Sealed truth: VAULT999-PRN16-NS-GT-002</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Highest Volatility</div>
+                <div className="text-amber-400 font-bold">
+                  {liveTelemetry?.highest_volatility_seat
+                    ? liveTelemetry.highest_volatility_seat
+                    : '—'}
                 </div>
               </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Voter Turnout Projection</div>
+                <div className="text-slate-100 font-bold">
+                  {liveTelemetry?.voter_turnout_projection_pct != null
+                    ? `${liveTelemetry.voter_turnout_projection_pct}%`
+                    : '—'}
+                </div>
+              </div>
+              <div>
+                <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">BN-PN Coalition Forecast</div>
+                <div className="text-fuchsia-300 font-bold">
+                  {liveTelemetry?.bn_pn_coalition_forecast_pct != null
+                    ? `${liveTelemetry.bn_pn_coalition_forecast_pct}%`
+                    : '—'}
+                  <span className="text-[10px] text-slate-500 ml-2 font-normal">
+                    {liveTelemetry?.bn_pn_coalition_forecast_label || '—'}
+                  </span>
+                </div>
+              </div>
+            </div>
 
-              <QuoteCard
-                topic="On Political Geometry"
-                quote="Politics is not an art of the possible; it is the science of spatial calculation under scarcity, cultural inertia, and quantum split alignment."
-                author="ATLAS333 Spatial & Political Codex"
-                source="arifOS Governance Protocol"
-              />
+            <div className="pt-3 mt-4 border-t border-slate-900 text-[10px] text-slate-500 grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div>Sentiment (Vodus, n=437, OBS):
+                {liveTelemetry?.sentiment_index
+                  ? ` PH ${liveTelemetry.sentiment_index.ph_positive?.toFixed(1) ?? '—'} · BN ${liveTelemetry.sentiment_index.bn_positive?.toFixed(1) ?? '—'} · PN ${liveTelemetry.sentiment_index.pn_positive?.toFixed(1) ?? '—'}`
+                  : ' —'}
+              </div>
+              <div>Sealed truth: VAULT999-PRN16-NS-GT-002</div>
             </div>
           </div>
         </div>
@@ -503,7 +492,7 @@ export function NSElectionPage() {
             <div className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-1">
               Deep Intelligence Lens · Quantum Meaning Audit
             </div>
-            <h2 className="text-3xl font-black italic uppercase text-white">
+            <h2 className="text-2xl font-light text-white mb-8">
               🏛️ 9 Top Contrast Invariant Factors Moving Malaysian Elections
             </h2>
             <p className="text-sm font-mono text-slate-400 mt-1 max-w-3xl">
@@ -555,7 +544,7 @@ export function NSElectionPage() {
                 <div className="font-mono text-xs text-amber-400 font-bold mb-1">
                   INVARIANT DETAIL · {selectedInvariant.code} ({selectedInvariant.domain})
                 </div>
-                <h4 className="text-2xl font-black italic uppercase text-white mb-2">
+                <h4 className="text-xl font-light text-white mb-2">
                   {selectedInvariant.name}
                 </h4>
                 <div className="inline-block px-3 py-1 rounded text-xs font-mono font-bold" style={{ backgroundColor: `${selectedInvariant.color}20`, color: selectedInvariant.color, border: `1px solid ${selectedInvariant.color}` }}>
@@ -587,7 +576,7 @@ export function NSElectionPage() {
         <div className="site-frame">
           <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-black italic uppercase tracking-tight text-slate-100">
+              <h2 className="text-xl font-light text-slate-100 mb-6">
                 🗺️ Interactive 36-DUN Spatial Cartogram
               </h2>
               <p className="text-sm font-mono text-slate-400 mt-1">
@@ -614,7 +603,7 @@ export function NSElectionPage() {
                   <span>DUN {selectedSeat.code}</span>
                   {selectedSeat.isHot && <span className="px-2 py-0.5 rounded bg-red-950 text-red-300 border border-red-500/40 font-bold">🔥 BATTLEGROUND</span>}
                 </div>
-                <h3 className="text-3xl font-black italic uppercase text-white">
+                <h3 className="text-2xl font-light text-white mb-3">
                   {selectedSeat.name}
                 </h3>
                 <p className="text-sm font-mono text-slate-300 mt-1">
@@ -660,7 +649,7 @@ export function NSElectionPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Assembly Balance Breakdown */}
             <div className="p-6 rounded border border-forge-iron bg-slate-950">
-              <h3 className="text-lg font-black italic uppercase text-amber-400 mb-4 flex items-center gap-2">
+              <h3 className="text-base font-light text-amber-400 mb-3 flex items-center gap-2">
                 📊 Assembly Balance ({totalSeats} Total)
               </h3>
               <div className="space-y-4 font-mono text-xs">
@@ -711,7 +700,7 @@ export function NSElectionPage() {
 
             {/* Government Formation Scenarios */}
             <div className="lg:col-span-2 p-6 rounded border border-forge-iron bg-slate-950">
-              <h3 className="text-lg font-black italic uppercase text-slate-100 mb-4 flex items-center gap-2">
+              <h3 className="text-base font-light text-slate-100 mb-3 flex items-center gap-2">
                 🏛️ Post-Election Government Scenarios & Hermes Prediction Audit
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
@@ -737,7 +726,7 @@ export function NSElectionPage() {
           <div className="mt-8 p-6 rounded-lg border border-amber-500/40 bg-slate-950">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
               <div>
-                <h3 className="text-xl font-black italic uppercase text-amber-400">
+                <h3 className="text-lg font-light text-amber-400 mb-2">
                   🕵️ Digital Warfare Matrix: Red Bean Army / DAP Intel vs arifOS Federation
                 </h3>
                 <p className="font-mono text-xs text-slate-400 mt-0.5">

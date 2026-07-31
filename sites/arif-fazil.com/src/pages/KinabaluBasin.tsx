@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { QuoteCard } from '@/components/QuoteCard';
 
 const sections = [
   {
@@ -87,112 +86,85 @@ export function KinabaluBasin() {
       animate={{ opacity: 1 }}
       className="bg-forge-black min-h-screen"
     >
-      {/* ── HERO ── */}
-      <section className="py-24 border-b-2 border-forge-iron bg-[#060d1a] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" 
-             style={{backgroundImage: 'radial-gradient(circle at 20% 50%, #fbbf24 0%, transparent 50%), radial-gradient(circle at 80% 30%, #0369a1 0%, transparent 50%)'}} />
-        <div className="site-frame relative z-10">
-          <div className="section-label">Subsurface · Φ GEOX · Basin Intelligence</div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end mt-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-4">
-                Kinabalu<br />Basin
-              </h1>
-              <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-4">
-                Offshore NW Sabah, Malaysia · Producing Hydrocarbon Basin
-              </p>
-              <p className="font-body text-xl text-forge-dim leading-relaxed">
-                A comprehensive geological dossier spanning tectonic evolution, 
-                stratigraphy, petroleum systems, and field-scale reservoir geology.
-              </p>
-            </div>
-            <div className="hidden lg:block">
-              <QuoteCard
-                topic="The Sabah Margin"
-                quote="The diverse structural trends and depositional framework of Sabah were developed by several regional tectonic events since the early Tertiary. At least three major episodes were linked to NW-SE compression coinciding with ongoing subduction of the proto-South China Sea."
-                author="Balaguru & Hall"
-                source="Search and Discovery #30084 (2009)"
-              />
-            </div>
+      {/* Header — zen */}
+      <section className="py-32">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-forge-gold mb-6">
+            Subsurface · Φ GEOX · Basin Intelligence
           </div>
+          <h1 className="text-4xl font-light text-forge-white mb-3">Kinabalu Basin</h1>
+          <p className="font-mono text-xs text-forge-dim uppercase tracking-wider mb-6">
+            Offshore NW Sabah, Malaysia · Producing Hydrocarbon Basin
+          </p>
+          <p className="text-forge-dim text-base leading-relaxed">
+            A geological dossier spanning tectonic evolution, stratigraphy,
+            petroleum systems, and field-scale reservoir geology.
+          </p>
         </div>
       </section>
 
-      {/* ── CROSS-SECTION ── */}
-      <section className="py-16 bg-forge-steel border-b-2 border-forge-iron">
-        <div className="site-frame">
-          <div className="section-label">Regional Geology · NW–SE Transect</div>
-          <h2 className="text-3xl font-black uppercase italic mb-8">Cross-Section: Dangerous Grounds → Sulu Sea</h2>
-          <div className="brutalist-card overflow-hidden">
-            <iframe 
-              src="/earth/kinabalu-cross-section.html" 
-              className="w-full" 
-              style={{ height: '780px', border: 'none' }}
-              title="Kinabalu Basin Regional Cross-Section"
-              loading="lazy"
-            />
+      {/* Cross-section — preserved (functional) */}
+      <section className="py-16 border-b border-forge-iron">
+        <div className="max-w-[960px] mx-auto px-6">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-forge-dim mb-6">
+            Regional Geology · NW–SE Transect
           </div>
-          <p className="font-technical text-[0.6rem] text-forge-dim mt-4">
-            Schematic geological cross-section. Vertical exaggeration ~5×. 
+          <h2 className="text-xl font-light text-forge-white mb-8">
+            Cross-Section: Dangerous Grounds → Sulu Sea
+          </h2>
+          <iframe
+            src="/earth/kinabalu-cross-section.html"
+            className="w-full bg-forge-steel"
+            style={{ height: '780px', border: '1px solid var(--border)' }}
+            title="Kinabalu Basin Regional Cross-Section"
+            loading="lazy"
+          />
+          <p className="font-mono text-[11px] text-forge-dim mt-4">
+            Schematic geological cross-section. Vertical exaggeration ~5×.
             Sources: Balaguru & Hall (2009), Balaguru et al. (2003), Bait (2003), Madon & Jong (2022), PETRONAS MPM (2025).
           </p>
         </div>
       </section>
 
-      {/* ── DOSSIER CONTENT ── */}
+      {/* Dossier content — zen reading column */}
       {sections.map((section) => (
         <section key={section.id} id={section.id} className="py-16 border-b border-forge-iron">
-          <div className="site-frame">
-            <div className="section-label">{section.id === 'tectonic' ? 'Basin Dossier' : ''}</div>
-            <h2 className="text-4xl font-black uppercase italic mb-12">{section.title}</h2>
+          <div className="max-w-[640px] mx-auto px-6">
+            <div className="font-mono text-[11px] uppercase tracking-widest text-forge-dim mb-3">
+              {section.id === 'tectonic' ? 'Basin Dossier' : section.id}
+            </div>
+            <h2 className="text-2xl font-light text-forge-white mb-12">{section.title}</h2>
             <div className="space-y-8">
               {section.content.map((item, i) => (
-                <motion.div
-                  key={i}
-                  whileInView={{ x: [10, 0], opacity: [0, 1] }}
-                  viewport={{ once: true }}
-                  className="grid grid-cols-1 lg:grid-cols-4 gap-6"
-                >
-                  <div className="lg:col-span-1">
-                    <span className="w-2 h-2 bg-forge-orange block mb-2"></span>
-                    <h3 className="font-technical text-sm uppercase tracking-wider text-forge-white">{item.heading}</h3>
-                  </div>
-                  <div className="lg:col-span-3">
-                    <p className="font-body text-forge-dim leading-relaxed whitespace-pre-line text-sm">{item.text}</p>
-                  </div>
-                </motion.div>
+                <div key={i}>
+                  <h3 className="font-mono text-xs uppercase tracking-wider text-forge-gold mb-2">{item.heading}</h3>
+                  <p className="text-forge-white/90 text-sm leading-relaxed whitespace-pre-line">{item.text}</p>
+                </div>
               ))}
             </div>
           </div>
         </section>
       ))}
 
-      {/* ── PDF DOWNLOAD ── */}
-      <section className="py-16 bg-forge-steel border-t-2 border-forge-iron">
-        <div className="site-frame text-center">
-          <p className="font-technical text-forge-dim uppercase tracking-widest mb-4">Download the Full Dossier</p>
-          <h2 className="text-3xl font-black uppercase italic mb-8">Kinabalu Basin — Complete Reference</h2>
-          <p className="font-body text-forge-dim text-sm max-w-2xl mx-auto mb-8">
-            A 10-section geological dossier covering tectonic evolution, stratigraphy, 
-            the Kinabalu Field, petroleum systems, cross-section, and exploration outlook.
+      {/* PDF download — preserved (functional) */}
+      <section className="py-16">
+        <div className="max-w-[640px] mx-auto px-6 text-center">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-forge-dim mb-4">
+            Download the Full Dossier
+          </div>
+          <h2 className="text-xl font-light text-forge-white mb-6">
+            Kinabalu Basin — Complete Reference
+          </h2>
+          <p className="text-forge-dim text-sm leading-relaxed mb-8">
+            A 6-section geological dossier covering tectonic evolution, stratigraphy,
+            the Kinabalu Field, petroleum systems, and basin comparison.
           </p>
-          <a href="/earth/kinabalu-basin.pdf" className="button-forge button-forge--accent inline-block">
+          <a href="/earth/kinabalu-basin.pdf" className="inline-block font-mono text-sm text-forge-orange border border-forge-orange/40 px-6 py-3 hover:bg-forge-orange/10 transition-colors">
             Download PDF Dossier →
           </a>
-          <p className="font-technical text-[0.6rem] text-forge-dim mt-4">
+          <p className="font-mono text-[11px] text-forge-dim mt-4">
             PDF includes full stratigraphic chart, field data tables, and references · 20pp
           </p>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="py-24 bg-forge-black border-t-2 border-forge-iron">
-        <div className="site-frame text-center">
-          <p className="font-technical text-forge-dim uppercase tracking-widest mb-4">Earth Intelligence at Scale</p>
-          <h2 className="text-4xl font-black uppercase italic mb-8">Explore the GEOX Surface.</h2>
-          <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" className="button-forge button-forge--accent">
-            Launch GEOX Surface ↗
-          </a>
         </div>
       </section>
     </motion.div>

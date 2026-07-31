@@ -14,116 +14,72 @@ export function MakcikGPT() {
       animate={{ opacity: 1 }}
       className="bg-forge-black min-h-screen"
     >
-      {/* Hero */}
-      <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
-        <div className="site-frame">
-          <div className="section-label">Civilization Intelligence · Ξ WEALTH · MakcikGPT</div>
-          <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
-            Makcik<br />GPT
-          </h1>
-          <p className="font-body text-xl text-forge-dim max-w-2xl leading-relaxed">
-            Investigative journalism for jiran-jiran. When RM70 billion moves
-            and nobody asks questions, MakcikGPT asks in Bahasa Makcik.
-            Published directly. No Medium gate.
-          </p>
-          <div className="mt-8 flex gap-4">
-            <span className="badge-status badge-status--live">999 SEALED</span>
-            <span className="badge-status badge-status--live">
-              {makcikArticlesMeta.length} ARTICLES
-            </span>
-            <span className="badge-status badge-status--live">v2.3</span>
+      {/* Header — zen */}
+      <section className="py-32">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="font-mono text-[11px] uppercase tracking-widest text-forge-gold mb-6">
+            Civilization Intelligence · 999 SEALED · v2.3
           </div>
+          <h1 className="text-4xl font-light text-forge-white mb-4">MakcikGPT</h1>
+          <p className="text-forge-dim text-base leading-relaxed mb-2">
+            Investigative journalism for jiran-jiran.
+          </p>
+          <p className="text-forge-dim text-base leading-relaxed">
+            When RM70 billion moves and nobody asks questions,
+            MakcikGPT asks in Bahasa Makcik. Published directly. No Medium gate.
+          </p>
+          <p className="font-mono text-xs text-forge-dim mt-6">
+            {makcikArticlesMeta.length} articles
+          </p>
         </div>
       </section>
 
-      {/* Articles */}
-      <section className="py-16">
-        <div className="site-frame space-y-8">
-          {makcikArticlesMeta.map((article) => (
+      {/* Articles — zen single spine */}
+      <section className="pb-32">
+        <div className="max-w-[640px] mx-auto px-6">
+          {makcikArticlesMeta.map((article, i) => (
             <Link
               key={article.slug}
               to={`/makcikgpt/${article.slug}`}
-              className="brutalist-card border border-forge-iron px-8 py-8 block hover:border-forge-gold transition-colors"
+              className={`grid grid-cols-[5rem_1fr_auto] gap-6 py-5 items-baseline hover:opacity-80 transition-opacity ${i === makcikArticlesMeta.length - 1 ? '' : 'border-b border-forge-iron/15'}`}
             >
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">
-                <div>
-                  <div className="font-technical text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">
-                    {article.domain} · {article.language === 'ms' ? 'Bahasa Makcik' : 'English'} · Sealed {article.seal}
-                  </div>
-                  <h2 className="text-2xl font-black uppercase tracking-tight text-forge-white leading-tight">
-                    {article.title}
-                  </h2>
-                </div>
-                <time
-                  dateTime={article.date}
-                  className="font-mono text-xs text-forge-dim whitespace-nowrap"
-                >
-                  {new Date(article.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
-                  })}
-                </time>
-              </div>
-
-              <p className="font-technical text-sm text-forge-orange mb-3">
-                {article.subtitle}
-              </p>
-
-              <p className="font-body text-forge-dim text-sm leading-relaxed mb-6">
-                {article.excerpt}
-              </p>
-
-              <div className="flex flex-wrap items-center gap-2">
-                {article.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-xs uppercase tracking-wider px-2 py-0.5 border border-forge-iron text-forge-dim"
-                  >
-                    {tag}
-                  </span>
-                ))}
-                <span className="font-mono text-xs text-forge-gold ml-auto">
-                  Read article →
-                </span>
-              </div>
+              <time
+                dateTime={article.date}
+                className="font-mono text-[0.7rem] text-forge-dim tabular-nums"
+              >
+                {new Date(article.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              <span>
+                <span className="text-base leading-snug text-forge-white/90 block">{article.title}</span>
+                <span className="text-xs text-forge-dim italic block mt-1">{article.subtitle}</span>
+              </span>
+              <span className="font-mono text-xs text-forge-orange shrink-0">Read →</span>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Context */}
-      <section className="py-16 border-t-2 border-forge-iron">
-        <div className="site-frame max-w-2xl">
-          <div className="section-label mb-6">Constitutional Floor</div>
-          <div className="space-y-4 text-forge-dim text-sm leading-relaxed">
+      {/* Context — zen */}
+      <section className="pb-32">
+        <div className="max-w-[640px] mx-auto px-6">
+          <p className="font-mono text-[11px] uppercase tracking-widest text-forge-dim mb-6">
+            Constitutional Floor
+          </p>
+          <div className="space-y-3 text-forge-dim text-sm leading-relaxed">
             <p>
               Every MakcikGPT article is sealed under <strong className="text-forge-white">999_SEAL</strong>.
               Evidence chains trace to primary sources. No claims without receipts.
             </p>
             <p>
-              <strong className="text-forge-white">F1 AMANAH:</strong> Reversible-first. All sources documented.
-              <br />
-              <strong className="text-forge-white">F2 TRUTH:</strong> Evidence-labeled OBS/DER/INT/SPEC.
-              <br />
-              <strong className="text-forge-white">F6 MARUAH:</strong> Names named only with public-record evidence.
-              <br />
-              <strong className="text-forge-white">F11 AUDIT:</strong> Full provenance chain in SEARAH-TRUTH-DB.md.
+              <strong className="text-forge-white">F1 AMANAH</strong> — Reversible-first. All sources documented.<br />
+              <strong className="text-forge-white">F2 TRUTH</strong> — Evidence-labeled OBS/DER/INT/SPEC.<br />
+              <strong className="text-forge-white">F6 MARUAH</strong> — Names named only with public-record evidence.<br />
+              <strong className="text-forge-white">F11 AUDIT</strong> — Full provenance chain.
             </p>
-          </div>
-
-          <div className="mt-12 flex gap-4">
-            <Link to="/economics" className="button-forge text-xs py-2">
-              ← Back to WEALTH
-            </Link>
-            <a
-              href="https://medium.com/@arifbfazil"
-              target="_blank"
-              rel="noreferrer"
-              className="button-forge button-forge--accent text-xs py-2"
-            >
-              Medium ↗
-            </a>
           </div>
         </div>
       </section>
