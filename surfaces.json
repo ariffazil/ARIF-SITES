@@ -177,6 +177,28 @@
       "changefreq": "monthly",
       "description": "Live vault proof endpoint proxied to arifOS kernel — cryptographic verification"
     },
+    {
+      "path": "/map/",
+      "title": "Map — Human-Readable Route Tree",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "format": "text/html",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Human-readable route map generated from surfaces.json. Every surface with status badge, click-depth chip, and federation subdomain listing. Deprecated routes shown as non-clickable wound cards."
+    },
+    {
+      "path": "/machine/",
+      "title": "Machine — Agent Surfaces Dashboard",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "format": "text/html",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Zen-pulse dashboard unifying all machine-readable surfaces. Cross-navigable. Four tiers: Discovery & Identity, Content for AI Agents, Policy & License, External Endpoints."
+    },
 
     {
       "path": "/rss/",

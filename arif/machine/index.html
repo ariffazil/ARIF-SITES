@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" data-surface="machine">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine — arif-fazil.com Agent Surfaces</title>
+<meta name="description" content="Zen dashboard unifying all machine-readable surfaces of arif-fazil.com. llms.txt, MCP, sitemap, robots, RSL — one view, cross-navigable.">
+<link rel="canonical" href="https://arif-fazil.com/machine/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Machine Surfaces — arif-fazil.com","description":"Unified dashboard of all machine-readable surfaces: llms.txt, MCP server card, sitemap, robots.txt, RSL license, JSON catalogs. Cross-navigable zen-pulse design.","url":"https://arif-fazil.com/machine/","author":{"@type":"Person","name":"Muhammad Arif bin Fazil","url":"https://arif-fazil.com"}}
+</script>
+<style>
+:root {
+  --bg: #0a0a0a; --bg-alt: #111; --bg-card: #1a1a1a; --bg-hover: #242424;
+  --border: #2a2a2a; --border-light: #1e1e1e;
+  --fg: #f0f0f0; --fg-muted: #9a9a9a; --fg-subtle: #666;
+  --red: #e0301e; --blue: #1f3fd4; --yellow: #f2b705;
+  --green: #1a8a3f;
+  --body: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+::selection{background:var(--yellow);color:var(--bg)}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.6}
+a{color:var(--blue);text-decoration:none}a:hover{color:var(--yellow)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* Orthogonal geometry */
+body::before {
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.03;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+
+.topbar{
+  position:sticky;top:0;z-index:10;background:var(--bg);
+  border-bottom:2px solid var(--red);padding:12px 0;
+}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center}
+.topbar h1{font-size:18px;font-weight:700}
+.topbar h1 span{color:var(--yellow)}
+.topbar nav a{font-size:13px;margin-left:20px;color:var(--fg-muted)}
+.topbar nav a:hover{color:var(--yellow)}
+.topbar nav a.active{color:var(--yellow);border-bottom:1px solid var(--yellow)}
+
+.hero{padding:48px 0 32px;text-align:center;position:relative;z-index:1}
+.hero h2{font-size:28px;font-weight:800;color:var(--yellow)}
+.hero p{color:var(--fg-muted);font-size:14px;margin-top:8px;max-width:650px;margin-left:auto;margin-right:auto}
+
+/* Zen-pulse bar */
+.zen-pulse{
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;padding:0 0 32px;
+  border-bottom:1px solid var(--border);margin-bottom:32px;position:relative;z-index:1;
+}
+.zen-pulse a{
+  font-family:var(--mono);font-size:11px;padding:6px 14px;color:var(--fg-muted);
+  border:1px solid var(--border);margin-left:-1px;transition:all .15s;
+}
+.zen-pulse a:first-child{border-radius:3px 0 0 3px}
+.zen-pulse a:last-child{border-radius:0 3px 3px 0}
+.zen-pulse a:hover{background:var(--bg-hover);color:var(--yellow);border-color:var(--yellow);z-index:1}
+.zen-pulse a.active{background:var(--blue);color:#fff;border-color:var(--blue);z-index:1}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;position:relative;z-index:1}
+
+.card{padding:18px;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;transition:border-color .15s}
+.card:hover{border-color:var(--blue)}
+.card .type{font-size:10px;font-family:var(--mono);text-transform:uppercase;color:var(--fg-subtle);margin-bottom:6px}
+.card h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.card h3 a{color:var(--fg)}
+.card h3 a:hover{color:var(--yellow)}
+.card .path{font-family:var(--mono);font-size:12px;color:var(--blue);margin-bottom:8px}
+.card .desc{font-size:13px;color:var(--fg-muted);line-height:1.5}
+.card .meta{display:flex;gap:8px;margin-top:12px;font-size:10px;font-family:var(--mono);color:var(--fg-subtle)}
+.card .meta span{padding:2px 8px;background:var(--bg);border-radius:2px}
+
+.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px}
+.status-live{background:var(--green)}
+.status-draft{background:var(--yellow)}
+
+.section-title{font-size:14px;font-weight:700;color:var(--fg);margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);position:relative;z-index:1}
+.section-title .count{color:var(--fg-subtle);font-weight:400}
+
+.footer{padding:32px 0;border-top:2px solid var(--red);margin-top:48px;font-size:12px;color:var(--fg-subtle);position:relative;z-index:1}
+.footer .machine-strip{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.footer .machine-strip a{font-family:var(--mono);font-size:11px;color:var(--fg-subtle)}
+.footer .machine-strip a:hover{color:var(--yellow)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <h1><span>█</span> arif-fazil.com /machine</h1>
+  <nav>
+    <a href="/">home</a><a href="/machine/" class="active">machine</a><a href="/map/">map</a><a href="/missions/">missions</a>
+  </nav>
+</div></div>
+
+<div class="hero">
+  <h2>Machine Surfaces</h2>
+  <p>Every machine-readable surface on arif-fazil.com — one dashboard, cross-navigable. These are the surfaces AI agents, crawlers, and verifiers consume. If it's here, it's live. If it's not here, it doesn't exist.</p>
+</div>
+
+<div class="wrap">
+
+<!-- Zen-pulse cross-nav -->
+<div class="zen-pulse" id="zen-pulse"></div>
+
+<!-- Tier 1: Discovery -->
+<div class="section-title">▸ Discovery & Identity <span class="count">(5 surfaces)</span></div>
+<div class="grid" id="tier-discovery"></div>
+
+<!-- Tier 2: Content -->
+<div class="section-title">▸ Content for AI Agents <span class="count">(4 surfaces)</span></div>
+<div class="grid" id="tier-content"></div>
+
+<!-- Tier 3: Policy & License -->
+<div class="section-title">▸ Policy, License & Verification <span class="count">(4 surfaces)</span></div>
+<div class="grid" id="tier-policy"></div>
+
+<!-- Tier 4: External -->
+<div class="section-title">▸ External Endpoints <span class="count">(2 surfaces)</span></div>
+<div class="grid" id="tier-external"></div>
+
+<div class="footer">
+  <div class="machine-strip">
+    <a href="/sitemap.xml">sitemap.xml</a> ·
+    <a href="/llms.txt">llms.txt</a> ·
+    <a href="/llms-full.txt">llms-full.txt</a> ·
+    <a href="/llms.json">llms.json</a> ·
+    <a href="/page.json">page.json</a> ·
+    <a href="/missions.json">missions.json</a> ·
+    <a href="/surfaces.json">surfaces.json</a> ·
+    <a href="/robots.txt">robots.txt</a> ·
+    <a href="/rsl.xml">rsl.xml</a> ·
+    <a href="/.well-known/mcp.json">mcp.json</a>
+  </div>
+  <div style="margin-top:8px"> DITEMPA BUKAN DIBERI · Machine surfaces dashboard · 2026-07-31</div>
+</div>
+
+</div>
+
+<script>
+const SURFACES = [
+  // Tier 1: Discovery & Identity
+  {path:"/surfaces.json",title:"Canonical Route Catalog",desc:"Single source of truth for every route on arif-fazil.com. All other catalogs are generated views of this file. 53 surfaces, 4 statuses, 7 subdomains.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/llms.txt",title:"AI Site Overview",desc:"Curated link index for AI agents — site map, federation overview, MakcikGPT article list. Jeremy Howard convention (Sept 2024). Fetched by OpenAI/Microsoft crawlers.",format:"text/markdown",tier:"discovery",status:"live"},
+  {path:"/llms.json",title:"Structured Site Overview",desc:"JSON site overview with route roles, related sites, and machine surfaces inventory. Machine-readable companion to llms.txt.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/page.json",title:"Machine Site Overview",desc:"Purpose, route model, content scope, and machine surface inventory in structured JSON.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/missions.json",title:"Six-Mission Federation Catalog",desc:"Classifies all surfaces into 6 missions: Investigate, Interpret, Decide, Build, Monitor, Remember. Does not authorize tool calls.",format:"application/json",tier:"discovery",status:"live"},
+
+  // Tier 2: Content
+  {path:"/llms-full.txt",title:"Full Content for AI Agents",desc:"105KB concatenated Markdown of all 21 published MakcikGPT articles. Fetched 2× more than llms.txt by AI crawlers (Profound, 2026). Generated from makcikgpt-md sources.",format:"text/plain",tier:"content",status:"live"},
+  {path:"/sitemap.xml",title:"XML Sitemap",desc:"Standard XML sitemap for search engines and crawlers. Covers all live pages with priorities and change frequencies.",format:"application/xml",tier:"content",status:"live"},
+  {path:"/feed.xml",title:"RSS Feed — MakcikGPT",desc:"RSS feed of MakcikGPT civic intelligence articles. Updated with each new article published.",format:"application/rss+xml",tier:"content",status:"live"},
+  {path:"/soul.json",title:"Sovereign Identity Anchor",desc:"Sovereign identity and philosophy anchor — human context for AI systems interacting with Arif Fazil.",format:"application/json",tier:"content",status:"live"},
+
+  // Tier 3: Policy
+  {path:"/robots.txt",title:"Crawler Policy with AI Directives",desc:"Explicit allow/deny rules for GPTBot, ClaudeBot, OAI-SearchBot, PerplexityBot, Google-Extended, CCBot, meta-externalagent. Includes RSL License line. Highest-certainty agentic-web lever.",format:"text/plain",tier:"policy",status:"live"},
+  {path:"/rsl.xml",title:"Really Simple Licensing 1.0",desc:"RSL 1.0 license (rslstandard.org, Dec 2025). Permits ai-train, ai-input (with attribution), search. Prohibits resale and misattribution. Backed by Cloudflare, Akamai, Fastly, Creative Commons.",format:"application/rsl+xml",tier:"policy",status:"live"},
+  {path:"/.well-known/mcp.json",title:"MCP Server Card",desc:"SEP-1649/1960 server discovery card. Declares transport (Streamable HTTP), capabilities (4 tools), authentication (none for public read). Draft spec — future-proofing.",format:"application/json",tier:"policy",status:"live"},
+  {path:"/.well-known/agent.json",title:"Agent Card — A2A Discovery",desc:"Agent capability declaration for A2A protocol discovery. Declares skills and endpoints for agent-to-agent communication.",format:"application/json",tier:"policy",status:"live"},
+
+  // Tier 4: External
+  {path:"https://mcp.arif-fazil.com/mcp",title:"MCP Gateway Endpoint",desc:"Streamable HTTP MCP server. Single endpoint, JSON-RPC 2.0. Tools: search_federation, fetch_article, list_missions, list_domains. Read-only public access; mutation requires SCT.",format:"application/json",tier:"external",status:"live"},
+  {path:"https://mcp.arif-fazil.com/.well-known/mcp.json",title:"MCP Gateway Server Card",desc:"Server card on the MCP subdomain itself. Primary discovery endpoint for MCP clients connecting to the federation.",format:"application/json",tier:"external",status:"live"}
+];
+
+function card(s){
+  const isExt=s.path.startsWith('http');
+  return `<div class="card">
+    <div class="type"><span class="status-dot ${s.status==='live'?'status-live':'status-draft'}"></span>${s.format} · ${s.tier}</div>
+    <h3>${isExt?`<a href="${s.path}">${s.title} ↗</a>`:`<a href="${s.path}">${s.title}</a>`}</h3>
+    <div class="path">${s.path}</div>
+    <div class="desc">${s.desc}</div>
+    <div class="meta"><span>${s.format}</span><span>${s.status}</span></div>
+  </div>`;
+}
+
+function pulseLink(s){
+  const isExt=s.path.startsWith('http');
+  return `<a href="${s.path}"${isExt?' target="_blank"':''}>${s.path.replace('https://arif-fazil.com','').replace('https://','')}</a>`;
+}
+
+document.getElementById('zen-pulse').innerHTML=SURFACES.map(pulseLink).join('');
+document.getElementById('tier-discovery').innerHTML=SURFACES.filter(s=>s.tier==='discovery').map(card).join('');
+document.getElementById('tier-content').innerHTML=SURFACES.filter(s=>s.tier==='content').map(card).join('');
+document.getElementById('tier-policy').innerHTML=SURFACES.filter(s=>s.tier==='policy').map(card).join('');
+document.getElementById('tier-external').innerHTML=SURFACES.filter(s=>s.tier==='external').map(card).join('');
+</script>
+</body>
+</html>
