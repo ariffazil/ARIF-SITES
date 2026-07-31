@@ -1,0 +1,156 @@
+{
+  "name": "arif-fazil.com",
+  "purpose": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect. Federation hub for arifOS constitutional intelligence.",
+  "audience": [
+    "humans",
+    "collaborators",
+    "agents",
+    "verifiers",
+    "crawlers"
+  ],
+  "canonical_url": "https://arif-fazil.com",
+  "source_of_truth": "https://arif-fazil.com/surfaces.json",
+  "route_model": {
+    "/": "Home — Sovereign Identity & Portfolio",
+    "/earth/": "Earth — Discoveries & Well Portfolio",
+    "/economics/": "Economics — WEALTH Capital Briefing",
+    "/world/": "World — Civic Journalism & Commodities",
+    "/world/makcikgpt/": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
+    "/world/oil/": "Oil Dashboard — Brent Crude Cognitive View",
+    "/world/gas/": "Gas Dashboard — Natural Gas Intelligence",
+    "/world/gold/": "Gold Dashboard — XAUUSD Trading Synthesis",
+    "/writing/": "Writing — Essays & Analysis",
+    "/doctrine/": "Doctrine — Constitution, Federation Topology, Manifesto",
+    "/000/": "000 — Genesis Archive & Wisdom Canon",
+    "/999/": "999 — Proof & Verification Chamber",
+    "/oil/": "Oil Dashboard — Brent Crude Live",
+    "/gas/": "Gas Dashboard — Natural Gas Live",
+    "/gold/": "Gold Dashboard — XAUUSD Live",
+    "/rss/": "redirect → /feed.xml (301)",
+    "/canon/": "redirect → /doctrine (301)",
+    "/constellation/": "redirect → /doctrine (301)",
+    "/federation/": "redirect → /doctrine (301)",
+    "/discoveries/": "redirect → /earth (301)",
+    "/wealth/": "redirect → /economics (301)",
+    "/wealth/article/:slug": "redirect → /economics/article/:slug (301)",
+    "/essays/": "redirect → /writing (301)",
+    "/essays/:slug": "redirect → /writing/:slug (301)",
+    "/wealth/makcikgpt/": "redirect → /world/makcikgpt (301)",
+    "/wealth/makcikgpt/:slug": "redirect → /world/makcikgpt/:slug (301)",
+    "/economics/makcikgpt/": "redirect → /world/makcikgpt (301)",
+    "/economics/makcikgpt/:slug": "redirect → /world/makcikgpt/:slug (301)",
+    "/genesis/": "redirect → /000/ (301)",
+    "/makcikgpt/": "redirect → /world/makcikgpt/ (301)",
+    "/makcikgpt/:slug": "redirect → /world/makcikgpt/:slug (301)",
+    "/.well-known/agent-card.json": "redirect → https://arifos.arif-fazil.com/.well-known/agent-card.json (301)"
+  },
+  "content_scope": {
+    "includes": [
+      "identity",
+      "geoscience portfolio",
+      "civic intelligence (MakcikGPT)",
+      "federation topology",
+      "constitutional doctrine",
+      "genesis archive",
+      "proof chamber",
+      "commodity dashboards",
+      "machine-readable discovery"
+    ],
+    "excludes": [
+      "runtime internals",
+      "placeholder routes",
+      "retired hostnames"
+    ]
+  },
+  "machine_surfaces": {
+    "map_": "https://arif-fazil.com/map/",
+    "machine_": "https://arif-fazil.com/machine/",
+    "llms.txt": "https://arif-fazil.com/llms.txt",
+    "llms.json": "https://arif-fazil.com/llms.json",
+    "page.json": "https://arif-fazil.com/page.json",
+    "missions.json": "https://arif-fazil.com/missions.json",
+    "sitemap.xml": "https://arif-fazil.com/sitemap.xml",
+    "feed.xml": "https://arif-fazil.com/feed.xml",
+    "robots.txt": "https://arif-fazil.com/robots.txt",
+    "rsl.xml": "https://arif-fazil.com/rsl.xml",
+    "soul.json": "https://arif-fazil.com/soul.json",
+    "mcp.json": "https://arif-fazil.com/.well-known/mcp.json",
+    "agent.json": "https://arif-fazil.com/.well-known/agent.json",
+    "did.json": "https://arif-fazil.com/.well-known/did.json"
+  },
+  "federation_subdomains": [
+    {
+      "domain": "arifos.arif-fazil.com",
+      "role": "Constitutional governance kernel & observatory",
+      "organ": "arifOS"
+    },
+    {
+      "domain": "aaa.arif-fazil.com",
+      "role": "Control plane, A2A gateway, agent identity",
+      "organ": "AAA"
+    },
+    {
+      "domain": "mcp.arif-fazil.com",
+      "role": "MCP gateway for agent connection",
+      "organ": "arifOS"
+    },
+    {
+      "domain": "geox.arif-fazil.com",
+      "role": "Earth intelligence, physics-gated geoscience",
+      "organ": "GEOX"
+    },
+    {
+      "domain": "wealth.arif-fazil.com",
+      "role": "Capital intelligence, NPV/EMV/capital thermodynamics",
+      "organ": "WEALTH"
+    },
+    {
+      "domain": "well.arif-fazil.com",
+      "role": "Human and machine vitality reflection",
+      "organ": "WELL"
+    },
+    {
+      "domain": "forge.arif-fazil.com",
+      "role": "A-FORGE governed execution shell",
+      "organ": "A-FORGE"
+    }
+  ],
+  "related_sites": [
+    {
+      "name": "arifOS",
+      "url": "https://arifos.arif-fazil.com",
+      "relationship": "Constitutional governance kernel & observatory"
+    },
+    {
+      "name": "AAA",
+      "url": "https://aaa.arif-fazil.com",
+      "relationship": "Control plane, A2A gateway, agent identity"
+    },
+    {
+      "name": "arifOS",
+      "url": "https://mcp.arif-fazil.com",
+      "relationship": "MCP gateway for agent connection"
+    },
+    {
+      "name": "GEOX",
+      "url": "https://geox.arif-fazil.com",
+      "relationship": "Earth intelligence, physics-gated geoscience"
+    },
+    {
+      "name": "WEALTH",
+      "url": "https://wealth.arif-fazil.com",
+      "relationship": "Capital intelligence, NPV/EMV/capital thermodynamics"
+    },
+    {
+      "name": "WELL",
+      "url": "https://well.arif-fazil.com",
+      "relationship": "Human and machine vitality reflection"
+    },
+    {
+      "name": "A-FORGE",
+      "url": "https://forge.arif-fazil.com",
+      "relationship": "A-FORGE governed execution shell"
+    }
+  ],
+  "last_updated": "2026-07-31"
+}

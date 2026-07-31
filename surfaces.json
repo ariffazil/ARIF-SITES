@@ -503,7 +503,6 @@
       "type": "redirect",
       "description": "Canonical agent card lives on arifos.arif-fazil.com subdomain. Caddy server-side redirect."
     },
-    },
     {
       "path": "/.well-known/did.json",
       "title": "DID Document — did:web:arif-fazil.com",
