@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { QuoteCard } from '@/components/QuoteCard';
 import { ZenPulse } from '@/components/ZenPulse';
 import {
   contactLinks,
@@ -9,7 +8,6 @@ import {
 import { MISSIONS, MISSION_DOCTRINE } from '@/data/missions';
 import { Link } from 'react-router-dom';
 
-// Shape of /data/wealth/latest.json (fields actually rendered — no invention).
 type WealthBriefing = {
   meta?: { date?: string };
   bursa?: { klci_quote?: { value?: number } };
@@ -17,8 +15,6 @@ type WealthBriefing = {
   oil_energy?: { brent_price?: number };
 };
 
-// Dominant above-the-fold answer block. Fetches the WEALTH daily briefing
-// client-side; falls back to curated copy when the snapshot is unreachable.
 function CurrentAnswer() {
   const [briefing, setBriefing] = useState<WealthBriefing | null>(null);
 
@@ -49,47 +45,47 @@ function CurrentAnswer() {
   if (brent != null) signals.push(`Brent $${brent}`);
 
   return (
-    <section className="border-b-2 border-forge-iron bg-forge-steel">
-      <div className="site-frame py-10">
-        <div className="section-label">What matters now</div>
+    <section className="border-b border-forge-iron bg-forge-steel">
+      <div className="max-w-[640px] mx-auto px-6 py-8">
+        <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">What matters now</div>
         {briefing ? (
           <>
-            <p className="font-body text-lg md:text-xl text-forge-white leading-relaxed mb-3">
+            <p className="text-lg text-forge-white leading-relaxed mb-2">
               WEALTH daily briefing · {briefing.meta?.date ?? 'latest'}
             </p>
             {signals.length > 0 && (
-              <p className="font-technical text-sm text-forge-dim uppercase tracking-widest mb-3">
+              <p className="text-sm text-forge-dim uppercase tracking-widest mb-2">
                 {signals.join(' · ')}
               </p>
             )}
             {briefing.ringgit?.trend && (
-              <p className="font-body text-sm text-forge-dim leading-relaxed mb-6 max-w-2xl">
+              <p className="text-sm text-forge-dim leading-relaxed mb-5 max-w-xl">
                 {briefing.ringgit.trend}
               </p>
             )}
-            <div className="flex flex-wrap gap-6">
-              <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+            <div className="flex flex-wrap gap-5">
+              <a href="/economics" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
                 Read today's briefing →
               </a>
-              <a href="/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+              <a href="/makcikgpt/" className="text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
                 Read the latest MakcikGPT →
               </a>
             </div>
           </>
         ) : (
           <>
-            <p className="font-body text-lg md:text-xl text-forge-white leading-relaxed mb-6 max-w-2xl">
+            <p className="text-lg text-forge-white leading-relaxed mb-5 max-w-xl">
               The WEALTH briefing tracks Malaysia's money — Bursa, ringgit, oil.
-              MakcikGPT asks the questions nobody else asks. The wells are the proof of work.
+              MakcikGPT asks the questions nobody else asks.
             </p>
-            <div className="flex flex-wrap gap-6">
-              <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
+            <div className="flex flex-wrap gap-5">
+              <a href="/economics" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
                 Analyze the economy →
               </a>
-              <a href="/makcikgpt/" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
-                Read the latest MakcikGPT →
+              <a href="/makcikgpt/" className="text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+                Read MakcikGPT →
               </a>
-              <a href="#wells" className="font-technical text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
+              <a href="#wells" className="text-xs text-forge-dim hover:text-forge-orange transition-colors uppercase tracking-widest">
                 See the wells →
               </a>
             </div>
@@ -124,231 +120,171 @@ export function Home() {
       animate="visible"
       variants={containerVariants}
     >
-      {/* ── ZEN PULSE — orientation in 3 seconds ─────────── */}
-      <ZenPulse
-        whereAmI="arif-fazil.com · Home — human cockpit"
-        whyCare="State the mission. Agents pick tools. You judge the answer."
-        whatNext="Ask · Explore · Analyze — or open Six Missions"
-      />
+      {/* ── STATUS BAR — orientation + live clock ─────────── */}
+      <ZenPulse />
 
-      {/* ── WHAT MATTERS NOW — dominant answer ───────────── */}
+      {/* ── WHAT MATTERS NOW ─────────────────────────────── */}
       <CurrentAnswer />
 
-      {/* ── HERO ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b-2 border-forge-iron py-24 md:py-32 bg-forge-black">
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #F0F0F0 1px, transparent 0)`,
-            backgroundSize: '40px 40px',
-          }}
-        />
-
-        <div className="site-frame relative z-10">
+      {/* ── HERO — clean, no foreign quotes ───────────────── */}
+      <section className="py-24 md:py-32 bg-forge-black border-b border-forge-iron">
+        <div className="max-w-[640px] mx-auto px-6">
           <motion.div variants={itemVariants}>
-            <div className="section-label">Geoscientist · Kuala Lumpur</div>
-            <h1 className="font-display font-black text-[clamp(2.5rem,10vw,6rem)] leading-[0.9] uppercase tracking-tighter mb-8 italic">
+            <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">Geoscientist · Kuala Lumpur</div>
+            <h1 className="text-[clamp(2.5rem,10vw,6rem)] font-black leading-[0.9] uppercase tracking-tighter mb-8">
               Arif<br />Fazil
             </h1>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-            <motion.div variants={itemVariants} className="max-w-xl">
-              <p className="font-technical text-forge-orange uppercase tracking-widest mb-4">
-                PETRONAS Carigali · Basin Analysis · Offshore Malaysia
-              </p>
-              <p className="font-body text-xl text-forge-dim leading-relaxed mb-8">
-                I find oil and gas in places people said were finished.
-                I also build the systems that keep AI honest.
-                Both are the same kind of work: reading what the ground actually says, not what the model wants it to say.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/missions" className="button-forge button-forge--accent">Six Missions</Link>
-                <a href="#wells" className="button-forge">See the Wells</a>
-                <a href="#what-i-built" className="button-forge">What I Built</a>
-              </div>
-            </motion.div>
+          <motion.div variants={itemVariants}>
+            <p className="text-sm text-forge-orange uppercase tracking-widest mb-4">
+              PETRONAS Carigali · Basin Analysis · Offshore Malaysia
+            </p>
+            <p className="text-lg text-forge-dim leading-relaxed mb-8 max-w-xl">
+              I find oil and gas in places people said were finished.
+              I also build the systems that keep AI honest.
+              Both are the same kind of work: reading what the ground actually says, not what the model wants it to say.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/missions" className="button-forge button-forge--accent">Six Missions</Link>
+              <a href="#wells" className="button-forge">See the Wells</a>
+              <Link to="/writing" className="button-forge">Read Essays</Link>
+            </div>
 
-            <motion.div variants={itemVariants}>
-              <QuoteCard
-                topic="Personal Philosophy"
-                quote="Accept everything about yourself – I mean everything. You are you and that is the beginning and the end – no apologies, no regrets."
-                author="Henry Kissinger"
-                source="attributed to Henry Kissinger"
-              />
-              <div className="border-l-2 border-forge-iron pl-8 space-y-4 mt-6">
-                <div className="font-technical text-[0.7rem] text-forge-dim uppercase tracking-widest">What I Believe</div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-forge-green shadow-glow-green"></span>
-                  <span className="font-technical text-sm uppercase">Evidence before narrative</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-forge-orange shadow-glow-orange"></span>
-                  <span className="font-technical text-sm uppercase">F1–F13 Constitutional law</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-forge-[#00D4AA] shadow-glow-[#00D4AA]"></span>
-                  <span className="font-technical text-sm uppercase">Ditempa bukan diberi</span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            <div className="mt-10 pt-8 border-t border-forge-iron/50 space-y-2">
+              <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">What I Believe</div>
+              <div className="text-sm text-forge-dim">Evidence before narrative</div>
+              <div className="text-sm text-forge-dim">F1–F13 Constitutional law</div>
+              <div className="text-sm text-forge-dim">Ditempa bukan diberi</div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* ── SIX MISSIONS — cockpit before inventory ───────── */}
-      <section className="py-20 bg-forge-black border-b-2 border-forge-iron" id="missions">
-        <div className="site-frame">
-          <div className="section-label">How to work with this system</div>
-          <h2 className="font-display font-black text-3xl md:text-4xl uppercase italic tracking-tight mb-3">
+      {/* ── SIX MISSIONS — cockpit ────────────────────────── */}
+      <section className="py-20 bg-forge-black border-b border-forge-iron" id="missions">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">How to work with this system</div>
+          <h2 className="text-3xl font-black uppercase tracking-tight mb-2">
             {MISSION_DOCTRINE.title}
           </h2>
-          <p className="font-body text-forge-dim max-w-2xl mb-8 leading-relaxed">
+          <p className="text-sm text-forge-dim mb-8 leading-relaxed">
             {MISSION_DOCTRINE.thesis} Value is not tool count. Value is one hard mission completed without dragging you into the engine room.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
             {MISSIONS.map((m) => (
               <Link
                 key={m.id}
                 to={`/missions#${m.id}`}
-                className="brutalist-card p-5 group hover:border-forge-orange/50 transition-colors"
+                className="block p-4 border border-forge-iron hover:border-forge-orange/50 transition-colors group"
               >
-                <div className="font-display font-black text-lg uppercase italic text-forge-orange group-hover:underline">
+                <div className="text-base font-black uppercase text-forge-orange group-hover:underline">
                   {m.verb}
                 </div>
-                <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1 mb-2">
-                  {m.oneLine}
-                </p>
-                <p className="font-body text-sm text-forge-dim leading-relaxed">{m.humanSays}</p>
+                <p className="text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1">{m.oneLine}</p>
               </Link>
             ))}
           </div>
-          <div className="flex flex-wrap gap-4 items-center">
-            <Link to="/missions" className="button-forge button-forge--accent text-xs py-2">
-              Open mission cockpit →
-            </Link>
-            <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest max-w-xl">
-              Metric · {MISSION_DOCTRINE.metric}
-            </p>
-          </div>
+          <Link to="/missions" className="button-forge button-forge--accent text-sm">
+            Open mission cockpit →
+          </Link>
         </div>
       </section>
 
-      {/* ── WHAT I BUILT ──────────────────────────────────── */}
-      <section className="py-24 bg-forge-steel border-b-2 border-forge-iron" id="what-i-built">
-        <div className="site-frame">
-          <div className="section-label">Organs · plumbing under the missions</div>
-          <p className="font-body text-forge-dim max-w-2xl mb-12 leading-relaxed">
+      {/* ── WHAT I BUILT — organs ─────────────────────────── */}
+      <section className="py-20 bg-forge-steel border-b border-forge-iron" id="what-i-built">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">Organs · plumbing under the missions</div>
+          <p className="text-sm text-forge-dim mb-10 leading-relaxed">
             Organs are not a menu of 128 tools. They are specialist systems the federation
-            routes to after you state a mission. AI executes. You decide. Every consequential
-            action is logged and reversible.
+            routes to after you state a mission. AI executes. You decide.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-4">
             {/* arifOS */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">⚖️</div>
-              <h3 className="text-xl font-black uppercase mb-1">arifOS</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">The Law Layer · arifos.arif-fazil.com</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
+            <motion.div variants={itemVariants} className="border border-forge-iron p-5 group hover:border-forge-orange/30 transition-colors">
+              <h3 className="text-lg font-black uppercase mb-1">arifOS</h3>
+              <p className="text-[0.65rem] text-forge-dim mb-3 uppercase tracking-widest">The Law Layer · arifos.arif-fazil.com</p>
+              <p className="text-sm text-forge-dim leading-relaxed mb-3">
                 The rule book for AI systems. 13 floors that every tool call must pass.
                 Nothing gets executed without a human-verifiable trail.
-                Think of it as the immune system that keeps autonomous agents from going off-road.
               </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Open Observatory →
-                </a>
-              </div>
+              <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Open Observatory →
+              </a>
             </motion.div>
 
             {/* WEALTH */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">📊</div>
-              <h3 className="text-xl font-black uppercase mb-1">WEALTH</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Capital Intelligence · arif-fazil.com/economics</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
+            <motion.div variants={itemVariants} className="border border-forge-iron p-5 group hover:border-forge-orange/30 transition-colors">
+              <h3 className="text-lg font-black uppercase mb-1">WEALTH</h3>
+              <p className="text-[0.65rem] text-forge-dim mb-3 uppercase tracking-widest">Capital Intelligence · arif-fazil.com/economics</p>
+              <p className="text-sm text-forge-dim leading-relaxed mb-3">
                 Daily briefings on what Malaysia's money is doing — Bursa, ringgit, oil prices, political economy.
-                Evidence-gated. No vibes. Written in plain signal, not analyst-speak.
+                Evidence-gated. No vibes.
               </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/economics" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Read Today's Briefing →
-                </a>
-              </div>
+              <a href="/economics" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Read Today's Briefing →
+              </a>
             </motion.div>
 
             {/* GEOX */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">🗺️</div>
-              <h3 className="text-xl font-black uppercase mb-1">GEOX</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Earth Intelligence · geox.arif-fazil.com</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
+            <motion.div variants={itemVariants} className="border border-forge-iron p-5 group hover:border-forge-orange/30 transition-colors">
+              <h3 className="text-lg font-black uppercase mb-1">GEOX</h3>
+              <p className="text-[0.65rem] text-forge-dim mb-3 uppercase tracking-widest">Earth Intelligence · geox.arif-fazil.com</p>
+              <p className="text-sm text-forge-dim leading-relaxed mb-3">
                 Subsurface physics. Basin analysis, seismic, well logs.
                 Physics-grounded — what the ground says, not what the model predicts.
               </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Open GEOX →
-                </a>
-              </div>
+              <a href="https://geox.arif-fazil.com" target="_blank" rel="noreferrer" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Open GEOX →
+              </a>
             </motion.div>
 
             {/* MakcikGPT */}
-            <motion.div variants={itemVariants} className="brutalist-card group">
-              <div className="text-3xl mb-3 group-hover:text-forge-orange transition-colors">📰</div>
-              <h3 className="text-xl font-black uppercase mb-1">MakcikGPT</h3>
-              <p className="font-technical text-[0.65rem] text-forge-dim mb-4 uppercase tracking-widest">Civic Journalism · Bahasa Malaysia</p>
-              <p className="text-sm text-forge-dim leading-relaxed">
+            <motion.div variants={itemVariants} className="border border-forge-iron p-5 group hover:border-forge-orange/30 transition-colors">
+              <h3 className="text-lg font-black uppercase mb-1">MakcikGPT</h3>
+              <p className="text-[0.65rem] text-forge-dim mb-3 uppercase tracking-widest">Civic Journalism · Bahasa Malaysia</p>
+              <p className="text-sm text-forge-dim leading-relaxed mb-3">
                 Civic journalism in Bahasa Makcik. When RM70 billion moves and nobody asks questions,
                 MakcikGPT asks. Published directly, no gatekeepers.
               </p>
-              <div className="mt-4 pt-4 border-t border-forge-iron">
-                <a href="/makcikgpt/" className="font-technical text-xs text-forge-orange hover:underline uppercase tracking-widest">
-                  Read MakcikGPT →
-                </a>
-              </div>
+              <a href="/makcikgpt/" className="text-xs text-forge-orange hover:underline uppercase tracking-widest">
+                Read MakcikGPT →
+              </a>
             </motion.div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-forge-iron">
-            <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
-              <p className="font-body text-forge-dim max-w-2xl text-sm italic">
-                &ldquo;Stop forging instruments. Forge reflexes. The Tool Explorer is the engine room — not the cockpit.&rdquo;
-              </p>
-              <div className="flex gap-4 flex-shrink-0 flex-wrap">
-                <Link to="/missions" className="button-forge button-forge--accent text-xs py-2">Missions</Link>
-                <a href="/000/" className="button-forge text-xs py-2">/000 — For Agents</a>
-                <a href="/999/" className="button-forge text-xs py-2">/999 — Proof</a>
-              </div>
-            </div>
+          <div className="mt-10 pt-8 border-t border-forge-iron flex flex-wrap gap-3 items-center">
+            <Link to="/missions" className="button-forge button-forge--accent text-sm">Missions</Link>
+            <a href="/000/" className="button-forge text-sm">/000 — For Agents</a>
+            <a href="/999/" className="button-forge text-sm">/999 — Proof</a>
           </div>
         </div>
       </section>
 
       {/* ── WELLS ─────────────────────────────────────────── */}
-      <section className="py-24 border-b-2 border-forge-iron" id="wells">
-        <div className="site-frame">
-          <div className="section-label">Wells Portfolio</div>
-          <h2 className="text-4xl font-black uppercase italic mb-12 tracking-tight">
+      <section className="py-20 border-b border-forge-iron" id="wells">
+        <div className="max-w-[640px] mx-auto px-6">
+          <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">Wells Portfolio</div>
+          <h2 className="text-3xl font-black uppercase mb-10 tracking-tight">
             The actual work.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-6">
             {wellsPortfolio.map((well) => (
               <motion.div
                 key={well.name}
                 variants={itemVariants}
-                whileHover={{ x: 5 }}
-                className="border-l-4 border-forge-orange pl-6 py-2"
+                whileHover={{ x: 4 }}
+                className="border-l-4 border-forge-orange pl-5 py-1"
               >
-                <div className="flex items-baseline gap-4 mb-2 flex-wrap">
-                  <h3 className="text-xl font-black italic">{well.name}</h3>
-                  <span className="font-technical text-[0.6rem] text-forge-dim uppercase">{well.playType} · {well.basin}</span>
+                <div className="flex items-baseline gap-3 mb-1 flex-wrap">
+                  <h3 className="text-lg font-black">{well.name}</h3>
+                  <span className="text-[0.65rem] text-forge-dim uppercase">{well.playType} · {well.basin}</span>
                 </div>
-                <p className="font-body text-forge-dim text-sm leading-relaxed mb-4">{well.summary}</p>
+                <p className="text-sm text-forge-dim leading-relaxed mb-3">{well.summary}</p>
                 <div className="bg-forge-steel p-3 border border-forge-iron">
-                  <span className="font-technical text-[0.6rem] text-forge-orange uppercase block mb-1">Result</span>
-                  <p className="font-technical text-[0.7rem] leading-tight text-forge-white uppercase">{well.impact}</p>
+                  <span className="text-[0.6rem] text-forge-orange uppercase block mb-1">Result</span>
+                  <p className="text-[0.7rem] leading-tight text-forge-white uppercase">{well.impact}</p>
                 </div>
               </motion.div>
             ))}
@@ -357,42 +293,46 @@ export function Home() {
       </section>
 
       {/* ── PRACTICE & CONTACT ────────────────────────────── */}
-      <section className="py-24 bg-forge-steel grid grid-cols-1 lg:grid-cols-2 gap-0 border-b-2 border-forge-iron">
-        <div id="practice" className="p-12 md:p-24 border-b-2 lg:border-b-0 lg:border-r-2 border-forge-iron">
-          <div className="section-label">What I Do</div>
-          <h2 className="text-4xl font-black uppercase mb-12 italic leading-none tracking-tighter">Decisions under noise.</h2>
-          <ul className="space-y-6">
-            <li className="flex gap-4">
-              <span className="font-technical text-forge-orange">01</span>
-              <p className="text-forge-dim">Basin analysis and prospect work under real-world uncertainty, not textbook models.</p>
-            </li>
-            <li className="flex gap-4">
-              <span className="font-technical text-forge-orange">02</span>
-              <p className="text-forge-dim">Finding signals in noisy data — the kind that don't show up in the first pass.</p>
-            </li>
-            <li className="flex gap-4">
-              <span className="font-technical text-forge-orange">03</span>
-              <p className="text-forge-dim">Building reflexes, not instrument menus — tools exist only when a mission requires them.</p>
-            </li>
-          </ul>
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-b border-forge-iron bg-forge-steel">
+        <div id="practice" className="p-12 md:p-20 border-b lg:border-b-0 lg:border-r border-forge-iron">
+          <div className="max-w-[440px]">
+            <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">What I Do</div>
+            <h2 className="text-3xl font-black uppercase mb-10 leading-none tracking-tighter">Decisions under noise.</h2>
+            <ul className="space-y-5">
+              <li className="flex gap-3">
+                <span className="text-xs text-forge-orange font-mono">01</span>
+                <p className="text-sm text-forge-dim">Basin analysis and prospect work under real-world uncertainty, not textbook models.</p>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-xs text-forge-orange font-mono">02</span>
+                <p className="text-sm text-forge-dim">Finding signals in noisy data — the kind that don't show up in the first pass.</p>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-xs text-forge-orange font-mono">03</span>
+                <p className="text-sm text-forge-dim">Building reflexes, not instrument menus — tools exist only when a mission requires them.</p>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div id="contact" className="p-12 md:p-24 bg-forge-black">
-          <div className="section-label">Get In Touch</div>
-          <h2 className="text-4xl font-black uppercase mb-12 italic leading-none tracking-tighter">Reach out.</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noreferrer' : undefined}
-                className="brutalist-card p-6 flex flex-col justify-between hover:bg-forge-white hover:text-forge-black transition-all group"
-              >
-                <div className="font-technical text-xs uppercase tracking-widest text-forge-dim group-hover:text-forge-black mb-4">Channel</div>
-                <div className="text-xl font-bold uppercase">{link.label}</div>
-              </a>
-            ))}
+        <div id="contact" className="p-12 md:p-20 bg-forge-black">
+          <div className="max-w-[440px]">
+            <div className="text-xs text-forge-dim uppercase tracking-widest mb-3">Get In Touch</div>
+            <h2 className="text-3xl font-black uppercase mb-10 leading-none tracking-tighter">Reach out.</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {contactLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noreferrer' : undefined}
+                  className="border border-forge-iron p-4 hover:border-forge-orange/50 transition-all group"
+                >
+                  <div className="text-xs uppercase tracking-widest text-forge-dim mb-2">Channel</div>
+                  <div className="text-base font-bold uppercase">{link.label}</div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
