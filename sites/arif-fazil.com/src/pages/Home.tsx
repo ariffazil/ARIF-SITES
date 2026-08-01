@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { QuoteCard } from '@/components/QuoteCard';
 import { ZenPulse } from '@/components/ZenPulse';
+import { LiveClock } from '@/components/LiveClock';
 import {
   contactLinks,
   wellsPortfolio,
@@ -144,7 +145,10 @@ export function Home() {
 
         <div className="site-frame relative z-10">
           <motion.div variants={itemVariants}>
-            <div className="section-label">Geoscientist · Kuala Lumpur</div>
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <div className="section-label">Geoscientist · Kuala Lumpur</div>
+              <LiveClock withDate withIso className="justify-end" />
+            </div>
             <h1 className="font-display font-black text-[clamp(2.5rem,10vw,6rem)] leading-[0.9] uppercase tracking-tighter mb-8 italic">
               Arif<br />Fazil
             </h1>

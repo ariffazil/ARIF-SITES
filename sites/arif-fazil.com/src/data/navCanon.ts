@@ -14,15 +14,15 @@ export const primaryNav: NavItem[] = [
     "href": "/"
   },
   {
-    "label": "Explore",
+    "label": "Earth",
     "href": "/earth"
   },
   {
-    "label": "Analyze",
+    "label": "Economics",
     "href": "/economics"
   },
   {
-    "label": "Track",
+    "label": "World",
     "href": "/world"
   },
   {
@@ -30,15 +30,7 @@ export const primaryNav: NavItem[] = [
     "href": "/politics/ns-election/"
   },
   {
-    "label": "Gold",
-    "href": "/gold/"
-  },
-  {
     "label": "Read",
     "href": "/writing"
-  },
-  {
-    "label": "Challenge",
-    "href": "/doctrine"
   }
 ];
