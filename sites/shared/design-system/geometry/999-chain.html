@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>999 — Hash Chain — GEOMETRY · arif-fazil.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#0a0a0f;display:grid;place-items:center;overflow:hidden}
+.afg-stage{position:relative;width:100vw;height:100vh;max-width:100vw}
+.afg-stage svg{width:100%;height:100%;display:block}
+.afg-cap{position:absolute;left:2rem;bottom:1.4rem;font-family:'IBM Plex Mono',monospace;
+ font-size:.68rem;letter-spacing:2.5px;color:#9a9aa8;text-transform:uppercase;z-index:5}
+.afg-cap b{color:#91B0F2;font-weight:600}
+.afg-cap .rule{display:inline-block;width:34px;height:1px;background:#91B0F2;vertical-align:middle;margin-right:.7rem;opacity:.7}
+
+.afgc-b{animation:afgcIn .7s ease-out both}
+@keyframes afgcIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.afgc-l{animation:afgcDash 1.4s linear infinite}
+@keyframes afgcDash{to{stroke-dashoffset:-20}}
+.afgc-ghost{animation:afgcGhost 4.2s ease-in-out infinite}
+@keyframes afgcGhost{0%,15%{opacity:0}55%,80%{opacity:.75}100%{opacity:0}}
+.afgc-glow{animation:afgcGlow 3s ease-in-out infinite}
+@keyframes afgcGlow{0%,100%{opacity:.12}50%{opacity:.4}}
+
+</style>
+</head>
+<body>
+<div class="afg-stage">
+<svg viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated hash chain — VAULT999 sealed ledger">
+<defs>
+ <linearGradient id="afgcBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0a0f"/><stop offset="1" stop-color="#080d1c"/></linearGradient>
+ <radialGradient id="afgcGl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#91B0F2" stop-opacity=".5"/><stop offset="1" stop-color="#91B0F2" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#afgcBg)"/>
+<text x="60" y="80" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="4" fill="#91B0F2">/999 · HASH CHAIN</text>
+<text x="60" y="102" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="2" fill="#9a9aa8">append-only · merkle-anchored · irreversible</text>
+<ellipse class="afgc-glow" cx="600" cy="316" rx="520" ry="130" fill="url(#afgcGl)"/>
+<line x1="222" y1="316.0" x2="264" y2="316.0" stroke="#1E3A8A" stroke-width="2" stroke-dasharray="5 5" class="afgc-l"/><line x1="420" y1="316.0" x2="462" y2="316.0" stroke="#1E3A8A" stroke-width="2" stroke-dasharray="5 5" class="afgc-l"/><line x1="618" y1="316.0" x2="660" y2="316.0" stroke="#1E3A8A" stroke-width="2" stroke-dasharray="5 5" class="afgc-l"/><line x1="816" y1="316.0" x2="858" y2="316.0" stroke="#1E3A8A" stroke-width="2" stroke-dasharray="5 5" class="afgc-l"/>
+<g class="afgc-b" style="animation-delay:0.00s"><rect x="70" y="268" width="148" height="96" rx="8" fill="#0C1A45" stroke="#1E3A8A" stroke-width="1.4"/><text x="86" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#D6E4FF" letter-spacing="1">SEQ 1000</text><rect x="86" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.90"/><rect x="108" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.72"/><rect x="130" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.54"/><rect x="152" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.36"/><rect x="174" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.18"/><circle cx="200" cy="292" r="4" fill="#FFCC00" opacity=".9"/></g><g class="afgc-b" style="animation-delay:0.35s"><rect x="268" y="268" width="148" height="96" rx="8" fill="#0C1A45" stroke="#1E3A8A" stroke-width="1.4"/><text x="284" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#D6E4FF" letter-spacing="1">SEQ 1001</text><rect x="284" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.90"/><rect x="306" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.72"/><rect x="328" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.54"/><rect x="350" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.36"/><rect x="372" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.18"/><circle cx="398" cy="292" r="4" fill="#FFCC00" opacity=".9"/></g><g class="afgc-b" style="animation-delay:0.70s"><rect x="466" y="268" width="148" height="96" rx="8" fill="#0C1A45" stroke="#1E3A8A" stroke-width="1.4"/><text x="482" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#D6E4FF" letter-spacing="1">SEQ 1002</text><rect x="482" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.90"/><rect x="504" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.72"/><rect x="526" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.54"/><rect x="548" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.36"/><rect x="570" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.18"/><circle cx="596" cy="292" r="4" fill="#FFCC00" opacity=".9"/></g><g class="afgc-b" style="animation-delay:1.05s"><rect x="664" y="268" width="148" height="96" rx="8" fill="#0C1A45" stroke="#1E3A8A" stroke-width="1.4"/><text x="680" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#D6E4FF" letter-spacing="1">SEQ 1003</text><rect x="680" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.90"/><rect x="702" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.72"/><rect x="724" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.54"/><rect x="746" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.36"/><rect x="768" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.18"/><circle cx="794" cy="292" r="4" fill="#FFCC00" opacity=".9"/></g><g class="afgc-b" style="animation-delay:1.40s"><rect x="862" y="268" width="148" height="96" rx="8" fill="#0C1A45" stroke="#1E3A8A" stroke-width="1.4"/><text x="878" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#D6E4FF" letter-spacing="1">SEQ 1004</text><rect x="878" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.90"/><rect x="900" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.72"/><rect x="922" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.54"/><rect x="944" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.36"/><rect x="966" y="320" width="16" height="6" rx="1" fill="#91B0F2" opacity="0.18"/><circle cx="992" cy="292" r="4" fill="#FFCC00" opacity=".9"/></g>
+<g class="afgc-ghost">
+ <rect x="1060" y="268" width="114" height="96" rx="8" fill="none" stroke="#91B0F2" stroke-width="1.4" stroke-dasharray="7 6"/>
+ <text x="1076" y="298" font-family="IBM Plex Mono,monospace" font-size="11" fill="#91B0F2" letter-spacing="1">SEALING…</text>
+</g>
+<circle r="6" fill="#FFCC00">
+ <animateMotion dur="5.5s" repeatCount="indefinite" path="M144.0,316.0 L936.0,316.0" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/>
+</circle>
+<circle r="13" fill="none" stroke="#FFCC00" stroke-width="1" opacity=".5">
+ <animateMotion dur="5.5s" repeatCount="indefinite" path="M144.0,316.0 L936.0,316.0"/>
+</circle>
+<text x="60" y="560" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="2" fill="#9a9aa8">● <tspan fill="#FFCC00">human pulse</tspan> verifies the institutional chain</text>
+</svg>
+<div class="afg-cap"><span class="rule"></span><b>/999</b>&ensp;VAULT999 · sealed past</div>
+</div>
+</body>
+</html>

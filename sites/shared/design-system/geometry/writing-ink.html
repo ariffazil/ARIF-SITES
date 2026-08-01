@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WRITING — Ink Flow — GEOMETRY · arif-fazil.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#0a0a0f;display:grid;place-items:center;overflow:hidden}
+.afg-stage{position:relative;width:100vw;height:100vh;max-width:100vw}
+.afg-stage svg{width:100%;height:100%;display:block}
+.afg-cap{position:absolute;left:2rem;bottom:1.4rem;font-family:'IBM Plex Mono',monospace;
+ font-size:.68rem;letter-spacing:2.5px;color:#9a9aa8;text-transform:uppercase;z-index:5}
+.afg-cap b{color:#e8e8ef;font-weight:600}
+.afg-cap .rule{display:inline-block;width:34px;height:1px;background:#e8e8ef;vertical-align:middle;margin-right:.7rem;opacity:.7}
+
+.afgi-s{fill:none;stroke-linecap:round;stroke-dasharray:1;pathLength:1;animation:afgiDraw 7s ease-in-out infinite}
+.afgi-s2{animation-delay:1.2s}.afgi-s3{animation-delay:2.4s}
+@keyframes afgiDraw{0%{stroke-dashoffset:1;opacity:0}8%{opacity:1}55%{stroke-dashoffset:0;opacity:1}82%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+.afgi-nib{animation:afgiNib 7s ease-in-out infinite}
+@keyframes afgiNib{0%,55%{opacity:1}70%,100%{opacity:0}}
+.afgi-dot{animation:afgiDot 7s ease-in-out infinite}
+@keyframes afgiDot{0%,50%{opacity:0}62%{opacity:.9}100%{opacity:0}}
+.afgi-line{animation:afgiRule 5s ease-in-out infinite}
+@keyframes afgiRule{0%,100%{opacity:.1}50%{opacity:.28}}
+
+</style>
+</head>
+<body>
+<div class="afg-stage">
+<svg viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowing ink strokes — writing surface">
+<defs>
+ <linearGradient id="afgiBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0a0f"/><stop offset="1" stop-color="#100e14"/></linearGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#afgiBg)"/>
+<g class="afgi-line" stroke="#9a9aa8" stroke-width=".6">
+ <line x1="90" y1="190" x2="1110" y2="190"/><line x1="90" y1="256" x2="1110" y2="256"/><line x1="90" y1="322" x2="1110" y2="322"/><line x1="90" y1="388" x2="1110" y2="388"/><line x1="90" y1="454" x2="1110" y2="454"/><line x1="90" y1="520" x2="1110" y2="520"/>
+ <line x1="140" y1="150" x2="140" y2="570" stroke="#E63946" stroke-width="1" opacity=".5"/>
+</g>
+<text x="60" y="80" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="4" fill="#e8e8ef">/writing · INK FLOW</text>
+<text x="60" y="102" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="2" fill="#9a9aa8">essays · doctrine · the long form</text>
+<path class="afgi-s" pathLength="1" d="M120,420 C260,300 340,500 470,380 S680,250 800,340 S1020,430 1100,300" stroke="#e8e8ef" stroke-width="3.2"/>
+<path class="afgi-s afgi-s2" pathLength="1" d="M150,250 C300,180 420,320 560,230 S820,150 1080,210" stroke="#FFD54F" stroke-width="2.4"/>
+<path class="afgi-s afgi-s3" pathLength="1" d="M200,520 C380,470 520,560 700,500 S950,470 1060,510" stroke="#91B0F2" stroke-width="2"/>
+<circle class="afgi-nib" r="6" fill="#FFCC00"><animateMotion dur="7s" repeatCount="indefinite" path="M120,420 C260,300 340,500 470,380 S680,250 800,340 S1020,430 1100,300"/></circle>
+<g class="afgi-dot" fill="#e8e8ef"><circle cx="470" cy="380" r="3.4"/><circle cx="800" cy="340" r="2.6"/><circle cx="1100" cy="300" r="3"/></g>
+</svg>
+<div class="afg-cap"><span class="rule"></span><b>/writing</b>&ensp;essays · long form</div>
+</div>
+</body>
+</html>

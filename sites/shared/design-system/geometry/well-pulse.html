@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WELL — Homeostasis — GEOMETRY · arif-fazil.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:#0a0a0f;display:grid;place-items:center;overflow:hidden}
+.afg-stage{position:relative;width:100vw;height:100vh;max-width:100vw}
+.afg-stage svg{width:100%;height:100%;display:block}
+.afg-cap{position:absolute;left:2rem;bottom:1.4rem;font-family:'IBM Plex Mono',monospace;
+ font-size:.68rem;letter-spacing:2.5px;color:#9a9aa8;text-transform:uppercase;z-index:5}
+.afg-cap b{color:#4FD1C5;font-weight:600}
+.afg-cap .rule{display:inline-block;width:34px;height:1px;background:#4FD1C5;vertical-align:middle;margin-right:.7rem;opacity:.7}
+
+.afgw2-ecg{fill:none;stroke:#00D4AA;stroke-width:2.6;stroke-linejoin:round;stroke-linecap:round;
+ stroke-dasharray:1;pathLength:1;animation:afgw2Draw 3.8s linear infinite}
+@keyframes afgw2Draw{0%{stroke-dashoffset:1}100%{stroke-dashoffset:-1}}
+.afgw2-ring{transform-origin:600px 315px;animation:afgw2Ring 3.8s ease-out infinite}
+.afgw2-ring2{animation-delay:1.9s}
+@keyframes afgw2Ring{0%{transform:scale(.35);opacity:.7}70%{opacity:.15}100%{transform:scale(1.5);opacity:0}}
+.afgw2-breathe{transform-origin:600px 315px;animation:afgw2B 7.6s ease-in-out infinite}
+@keyframes afgw2B{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.07);opacity:.85}}
+.afgw2-num{animation:afgw2N 3.8s ease-in-out infinite}
+@keyframes afgw2N{0%,100%{opacity:.6}50%{opacity:1}}
+
+</style>
+</head>
+<body>
+<div class="afg-stage">
+<svg viewBox="0 0 1200 630" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heartbeat and breathing rings — WELL vitality">
+<defs>
+ <radialGradient id="afgw2G" cx=".5" cy=".5" r=".65"><stop offset="0" stop-color="#071712"/><stop offset="1" stop-color="#0a0a0f"/></radialGradient>
+ <radialGradient id="afgw2Warm" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#00D4AA" stop-opacity=".3"/><stop offset="1" stop-color="#00D4AA" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="630" fill="url(#afgw2G)"/>
+<text x="60" y="80" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="4" fill="#4FD1C5">/well · HOMEOSTASIS</text>
+<text x="60" y="102" font-family="IBM Plex Mono,monospace" font-size="10" letter-spacing="2" fill="#9a9aa8">vitality mirror · readiness · dignity intact</text>
+<circle class="afgw2-breathe" cx="600" cy="315" r="180" fill="url(#afgw2Warm)"/>
+<circle class="afgw2-ring" cx="600" cy="315" r="150" fill="none" stroke="#4FD1C5" stroke-width="1.4"/>
+<circle class="afgw2-ring afgw2-ring2" cx="600" cy="315" r="150" fill="none" stroke="#FFD54F" stroke-width="1"/>
+<path class="afgw2-ecg" pathLength="1" d="M0,340 L60,340 L74,326 L84,350 L96,244 L108,472 L120,288 L134,348 L164,340 L180,318 L202,362 L236,340 L296,340 L310,326 L320,350 L332,244 L344,472 L356,288 L370,348 L400,340 L416,318 L438,362 L472,340 L532,340 L546,326 L556,350 L568,244 L580,472 L592,288 L606,348 L636,340 L652,318 L674,362 L708,340 L768,340 L782,326 L792,350 L804,244 L816,472 L828,288 L842,348 L872,340 L888,318 L910,362 L944,340 L1004,340 L1018,326 L1028,350 L1040,244 L1052,472 L1064,288 L1078,348 L1108,340 L1124,318 L1146,362 L1180,340"/>
+<g class="afgw2-num" font-family="IBM Plex Mono,monospace">
+ <text x="986" y="150" font-size="42" font-weight="600" fill="#4FD1C5">62</text>
+ <text x="986" y="172" font-size="10" letter-spacing="2" fill="#9a9aa8">BPM · HRV 94ms</text>
+ <text x="986" y="200" font-size="10" letter-spacing="2" fill="#00D4AA">STATE: OPTIMAL</text>
+</g>
+</svg>
+<div class="afg-cap"><span class="rule"></span><b>/well</b>&ensp;Ω WELL · vitality mirror</div>
+</div>
+</body>
+</html>
