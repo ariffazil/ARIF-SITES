@@ -186,10 +186,10 @@ class CronScheduleMatchesPipeline(unittest.TestCase):
 class HealSafetyConformance(unittest.TestCase):
     def test_heal_has_no_live_or_destructive_writes(self) -> None:
         body = HEAL.read_text()
-        self.assertNotRegex(body, r"(?:cp|mv|rsync|rm)\\s+[^\\n]*" + re.escape("/var/www/html/arif"))
-        self.assertNotRegex(body, r"rm\\s+-rf")
-        self.assertNotRegex(body, r"rsync(?![^\\n]*--dry-run)[^\\n]*\\s-[^-n]\\w*")
-        self.assertNotRegex(body, r"(?:>|>>|<<<)\\s*[\"']?" + re.escape("/var/www/html/arif"))
+        self.assertNotRegex(body, r"(?:cp|mv|rsync|rm)\s+[^\n]*" + re.escape("/var/www/html/arif"))
+        self.assertNotRegex(body, r"rm\s+-rf")
+        self.assertNotRegex(body, r"rsync(?![^\n]*--dry-run)[^\n]*\s-[^-n]\w*")
+        self.assertNotRegex(body, r"(?:>|>>|<<<)\s*[\"']?" + re.escape("/var/www/html/arif"))
         self.assertIn("OBSERVE_PROPOSE_ONLY", body)
         self.assertNotIn("SNAP_DIR", body)
 
