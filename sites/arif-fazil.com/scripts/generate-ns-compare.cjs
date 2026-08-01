@@ -1,4 +1,58 @@
-<!DOCTYPE html>
+#!/usr/bin/env node
+/**
+ * generate-ns-compare.cjs — PRN16 NS seat-to-seat compare page generator.
+ * Reads public/data/politics/ns_results.json (SOT) → regenerates
+ * public/politics/ns-election/compare/index.html (data-driven, timestamped).
+ * Runs in prebuild chain: npm run build → auto-refresh after every result update.
+ *
+ * Usage: node scripts/generate-ns-compare.cjs
+ */
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = path.join(__dirname, '..');
+const SRC = path.join(ROOT, 'public/data/politics/ns_results.json');
+const OUT_DIR = path.join(ROOT, 'public/politics/ns-election/compare');
+const OUT = path.join(OUT_DIR, 'index.html');
+
+if (!fs.existsSync(SRC)) {
+  console.error('✗ ns_results.json not found — skipping compare generation');
+  process.exit(0);
+}
+
+const data = JSON.parse(fs.readFileSync(SRC, 'utf8'));
+const { seats, coalition_names: NAMES, coalition_colors: COLORS, metadata } = data;
+const updated = metadata.updated_at || new Date().toISOString();
+const flips = seats.filter((s) => s.y2023 !== s.y2026);
+const tally2023 = {};
+const tally2026 = {};
+for (const s of seats) {
+  tally2023[s.y2023] = (tally2023[s.y2023] || 0) + 1;
+  tally2026[s.y2026] = (tally2026[s.y2026] || 0) + 1;
+}
+const parties = Object.keys(NAMES);
+
+// Build SEATS array literal for JS
+const seatRows = seats
+  .map((s) => `  ["${s.code}","${s.name}","${s.y2023}","${s.y2026}",${s.maj2023}]`)
+  .join(',\n');
+
+// Tally cards HTML
+const tallyCards = parties
+  .map((k) => {
+    const c23 = tally2023[k] || 0;
+    const c26 = tally2026[k] || 0;
+    const d = c26 - c23;
+    const arrow = d > 0 ? `▲ +${d}` : d < 0 ? `▼ ${d}` : '▬ 0';
+    return `    <div class="t" style="border-top:4px solid ${COLORS[k]}">
+      <div class="coal" style="color:${COLORS[k]}">${NAMES[k]}</div>
+      <div class="n">${c23} → ${c26}</div>
+      <div class="delta">${arrow} kerusi</div>
+    </div>`;
+  })
+  .join('\n');
+
+const html = `<!DOCTYPE html>
 <html lang="ms">
 <head>
 <meta charset="utf-8">
@@ -42,15 +96,15 @@ a { color:#60a5fa; }
 <body>
 
 <div class="top-bar">
-  <div><span class="live-pill">● FINAL RESULT</span> <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence</strong></div>
-  <div><span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>2026 08 01</span> · auto-sync</div>
+  <div><span class="live-pill">● ${metadata.status === 'FINAL_RESULT' ? 'FINAL RESULT' : 'RESULTS STREAMING'}</span> <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence</strong></div>
+  <div><span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>${updated.slice(0, 10).replace(/-/g, ' ')}</span> · auto-sync</div>
 </div>
 
 <div class="hero">
   <div class="sub-label">PRN16 Negeri Sembilan · Seat-to-Seat Comparison · SPR rasmi 2023 → Keputusan 1 Ogos 2026</div>
   <h1>Seat-by-Seat: <span>2023 vs 2026</span></h1>
   <p style="color:#cbd5e1;max-width:760px;line-height:1.6;margin-top:0.8rem;">
-    36 DUN, satu-satu perbandingan. Siapa pegang, siapa jatuh, siapa flip. Data 2023 = keputusan rasmi SPR; data 2026 = keputusan tidak rasmi malam pengundian. 7 flip.
+    36 DUN, satu-satu perbandingan. Siapa pegang, siapa jatuh, siapa flip. Data 2023 = keputusan rasmi SPR; data 2026 = keputusan tidak rasmi malam pengundian. ${flips.length} flip.
   </p>
 </div>
 
@@ -58,21 +112,7 @@ a { color:#60a5fa; }
 
   <!-- TALLY -->
   <div class="tally" id="tally">
-    <div class="t" style="border-top:4px solid #ef4444">
-      <div class="coal" style="color:#ef4444">PAKATAN HARAPAN</div>
-      <div class="n">17 → 11</div>
-      <div class="delta">▼ -6 kerusi</div>
-    </div>
-    <div class="t" style="border-top:4px solid #3b82f6">
-      <div class="coal" style="color:#3b82f6">BARISAN NASIONAL</div>
-      <div class="n">14 → 18</div>
-      <div class="delta">▲ +4 kerusi</div>
-    </div>
-    <div class="t" style="border-top:4px solid #10b981">
-      <div class="coal" style="color:#10b981">PERIKATAN NASIONAL</div>
-      <div class="n">5 → 7</div>
-      <div class="delta">▲ +2 kerusi</div>
-    </div>
+${tallyCards}
   </div>
 
   <!-- CHARTS -->
@@ -103,42 +143,7 @@ a { color:#60a5fa; }
 
 <script>
 const SEATS = [
-  ["N1","Chennah","PH","BN",2200],
-  ["N2","Pertang","BN","BN",2790],
-  ["N3","Sungai Lui","BN","BN",535],
-  ["N4","Klawang","PH","PN",577],
-  ["N5","Serting","PN","PN",843],
-  ["N6","Palong","BN","BN",564],
-  ["N7","Jeram Padang","BN","BN",693],
-  ["N8","Bahau","PH","PH",8408],
-  ["N9","Lenggeng","BN","BN",685],
-  ["N10","Nilai","PH","PH",10889],
-  ["N11","Lobak","PH","PH",13504],
-  ["N12","Temiang","PH","PH",3068],
-  ["N13","Sikamat","PH","PN",2662],
-  ["N14","Ampangan","PH","PN",329],
-  ["N15","Juasseh","BN","BN",78],
-  ["N16","Seri Menanti","BN","BN",370],
-  ["N17","Senaling","BN","BN",662],
-  ["N18","Pilah","PH","BN",1079],
-  ["N19","Johol","BN","BN",2117],
-  ["N20","Labu","PN","BN",1640],
-  ["N21","Bukit Kepayang","PH","PH",19684],
-  ["N22","Rahang","PH","PH",6432],
-  ["N23","Mambau","PH","PH",14940],
-  ["N24","Seremban Jaya","PH","PH",12703],
-  ["N25","Paroi","PN","PN",5539],
-  ["N26","Chembong","BN","BN",4335],
-  ["N27","Rantau","BN","BN",10280],
-  ["N28","Kota","BN","BN",135],
-  ["N29","Chuah","PH","PH",6298],
-  ["N30","Lukut","PH","PH",10135],
-  ["N31","Bagan Pinang","PN","PN",3426],
-  ["N32","Linggi","BN","BN",1461],
-  ["N33","Sri Tanjung","PH","PH",3996],
-  ["N34","Gemas","PN","PN",3120],
-  ["N35","Gemencheh","BN","BN",2434],
-  ["N36","Repah","PH","BN",5950]
+${seatRows}
 ];
 const C = {"PH":["PH","#ef4444"],"BN":["BN","#3b82f6"],"PN":["PN","#10b981"]};
 const COUNT = {"PH":[0,0],"BN":[0,0],"PN":[0,0]};
@@ -162,3 +167,8 @@ for (const [c,n,a,b,m] of SEATS) {
 </script>
 </body>
 </html>
+`;
+
+fs.mkdirSync(OUT_DIR, { recursive: true });
+fs.writeFileSync(OUT, html);
+console.log(`✓ compare/index.html regenerated (${flips.length} flips · ${updated})`);

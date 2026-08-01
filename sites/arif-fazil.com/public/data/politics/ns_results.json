@@ -1,0 +1,287 @@
+{
+  "metadata": {
+    "title": "PRN16 Negeri Sembilan — Seat-to-Seat 2023→2026",
+    "election": "PRN16 Negeri Sembilan 2026",
+    "seats_total": 36,
+    "updated_at": "2026-08-01T13:05:00Z",
+    "source": "SPR rasmi 2023 + keputusan tidak rasmi malam pengundian 1 Ogos 2026",
+    "status": "FINAL_RESULT",
+    "generator": "scripts/generate-ns-compare.cjs",
+    "schema_version": "1.0.0"
+  },
+  "tally_2023": {
+    "PH": 19,
+    "BN": 13,
+    "PN": 2,
+    "TOSSUP": 2
+  },
+  "tally_2026": {
+    "PH": 11,
+    "BN": 18,
+    "PN": 7
+  },
+  "coalition_names": {
+    "PH": "PAKATAN HARAPAN",
+    "BN": "BARISAN NASIONAL",
+    "PN": "PERIKATAN NASIONAL"
+  },
+  "coalition_colors": {
+    "PH": "#ef4444",
+    "BN": "#3b82f6",
+    "PN": "#10b981"
+  },
+  "seats": [
+    {
+      "code": "N1",
+      "name": "Chennah",
+      "y2023": "PH",
+      "y2026": "BN",
+      "maj2023": 2200
+    },
+    {
+      "code": "N2",
+      "name": "Pertang",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 2790
+    },
+    {
+      "code": "N3",
+      "name": "Sungai Lui",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 535
+    },
+    {
+      "code": "N4",
+      "name": "Klawang",
+      "y2023": "PH",
+      "y2026": "PN",
+      "maj2023": 577
+    },
+    {
+      "code": "N5",
+      "name": "Serting",
+      "y2023": "PN",
+      "y2026": "PN",
+      "maj2023": 843
+    },
+    {
+      "code": "N6",
+      "name": "Palong",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 564
+    },
+    {
+      "code": "N7",
+      "name": "Jeram Padang",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 693
+    },
+    {
+      "code": "N8",
+      "name": "Bahau",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 8408
+    },
+    {
+      "code": "N9",
+      "name": "Lenggeng",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 685
+    },
+    {
+      "code": "N10",
+      "name": "Nilai",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 10889
+    },
+    {
+      "code": "N11",
+      "name": "Lobak",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 13504
+    },
+    {
+      "code": "N12",
+      "name": "Temiang",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 3068
+    },
+    {
+      "code": "N13",
+      "name": "Sikamat",
+      "y2023": "PH",
+      "y2026": "PN",
+      "maj2023": 2662
+    },
+    {
+      "code": "N14",
+      "name": "Ampangan",
+      "y2023": "PH",
+      "y2026": "PN",
+      "maj2023": 329
+    },
+    {
+      "code": "N15",
+      "name": "Juasseh",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 78
+    },
+    {
+      "code": "N16",
+      "name": "Seri Menanti",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 370
+    },
+    {
+      "code": "N17",
+      "name": "Senaling",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 662
+    },
+    {
+      "code": "N18",
+      "name": "Pilah",
+      "y2023": "PH",
+      "y2026": "BN",
+      "maj2023": 1079
+    },
+    {
+      "code": "N19",
+      "name": "Johol",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 2117
+    },
+    {
+      "code": "N20",
+      "name": "Labu",
+      "y2023": "PN",
+      "y2026": "BN",
+      "maj2023": 1640
+    },
+    {
+      "code": "N21",
+      "name": "Bukit Kepayang",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 19684
+    },
+    {
+      "code": "N22",
+      "name": "Rahang",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 6432
+    },
+    {
+      "code": "N23",
+      "name": "Mambau",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 14940
+    },
+    {
+      "code": "N24",
+      "name": "Seremban Jaya",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 12703
+    },
+    {
+      "code": "N25",
+      "name": "Paroi",
+      "y2023": "PN",
+      "y2026": "PN",
+      "maj2023": 5539
+    },
+    {
+      "code": "N26",
+      "name": "Chembong",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 4335
+    },
+    {
+      "code": "N27",
+      "name": "Rantau",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 10280
+    },
+    {
+      "code": "N28",
+      "name": "Kota",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 135
+    },
+    {
+      "code": "N29",
+      "name": "Chuah",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 6298
+    },
+    {
+      "code": "N30",
+      "name": "Lukut",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 10135
+    },
+    {
+      "code": "N31",
+      "name": "Bagan Pinang",
+      "y2023": "PN",
+      "y2026": "PN",
+      "maj2023": 3426
+    },
+    {
+      "code": "N32",
+      "name": "Linggi",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 1461
+    },
+    {
+      "code": "N33",
+      "name": "Sri Tanjung",
+      "y2023": "PH",
+      "y2026": "PH",
+      "maj2023": 3996
+    },
+    {
+      "code": "N34",
+      "name": "Gemas",
+      "y2023": "PN",
+      "y2026": "PN",
+      "maj2023": 3120
+    },
+    {
+      "code": "N35",
+      "name": "Gemencheh",
+      "y2023": "BN",
+      "y2026": "BN",
+      "maj2023": 2434
+    },
+    {
+      "code": "N36",
+      "name": "Repah",
+      "y2023": "PH",
+      "y2026": "BN",
+      "maj2023": 5950
+    }
+  ]
+}
