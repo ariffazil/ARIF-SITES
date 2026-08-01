@@ -1,0 +1,462 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "PRIMER-1.0-DRAFT",
+  "doctrine": "DITEMPA BUKAN DIBERI — A page cannot choose its own hero. The route registry chooses the hero. If agents choose heroes, they will make posters. You want instruments.",
+  "ratified_by": "sovereign (F13) — pending 999_SEAL (U2 OPEN)",
+  "ratified_at": null,
+  "tenant": "ATLAS-1.1 prime-1 ratification",
+  "proposal_id": "PRIMER-1",
+  "proposal_path": "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md",
+  "routes_count": 26,
+  "instruments_count": 10,
+
+  "doctrine_invocation": "Hero as instrument. The route registry declares the hero. Pages render the declared hero. Local override is forbidden (I2, I3, I11).",
+
+  "instrument_definitions": {
+    "seismic-descent": {
+      "description": "A scroll-driven vertical descent through geological strata. Visualizes the federation as layers below the surface. Static fallback: SVG cross-section.",
+      "data_source": "primitives/cross-section-static + optional live geo_synthesis",
+      "fallback": "static-canon",
+      "interactive": "scroll-parallax",
+      "render_mode": "agent_canvas_optional",
+      "where": ["earth-only", "root", "sovereign"]
+    },
+    "basin-cross-section": {
+      "description": "A horizontal cross-section of a basin. Plate-edged, geological, depth-true.",
+      "data_source": "geox-snapshot OR static SVG",
+      "fallback": "static-canon",
+      "interactive": "hover-radiometric",
+      "render_mode": "agent_canvas_required",
+      "where": ["earth"]
+    },
+    "commodity-chart": {
+      "description": "Price ticker + chart + stress-band visualization. Must respect WEALTH epoch boundary.",
+      "data_source": "wealth-daily-snapshot",
+      "fallback": "static-canon",
+      "interactive": "hover-cross-section",
+      "render_mode": "agent_canvas_required",
+      "where": ["institution"]
+    },
+    "vault-chain": {
+      "description": "Append-only ledger visualization. Each block is a sealed decision. The chain is the truth.",
+      "data_source": "vault999-receipts",
+      "fallback": "static-canon",
+      "interactive": "scroll-march",
+      "render_mode": "agent_canvas_required",
+      "where": ["sovereign", "human"]
+    },
+    "trinity-tile": {
+      "description": "Three tiles + AAA bridge center. The canonical territory selector.",
+      "data_source": "navigation.json",
+      "fallback": "static-html",
+      "interactive": "hover",
+      "render_mode": "human_canvas",
+      "where": ["root", "all-territory-pages"]
+    },
+    "vas-or-mission-wheel": {
+      "description": "Six missions on a torus. Investigate · Interpret · Decide · Build · Monitor · Remember.",
+      "data_source": "missions.json",
+      "fallback": "static-canvas",
+      "interactive": "rotate",
+      "render_mode": "human_canvas",
+      "where": ["missions"]
+    },
+    "prime-narrative": {
+      "description": "Long-form doctrine content. Serif voice. Markdown-rendered.",
+      "data_source": "page-instruments.json::narrative",
+      "fallback": "static-canon",
+      "interactive": "scroll",
+      "render_mode": "static-html",
+      "where": ["arif", "laws", "writings"]
+    },
+    "surface-card": {
+      "description": "Flatter, no domain tint. Content surface, not navigation.",
+      "data_source": "registry",
+      "fallback": "static-canon",
+      "interactive": "hover",
+      "render_mode": "static-html",
+      "where": ["institution/petronas", "institution/makcikgpt", "institution/pmshadows", "institution/malaysia"]
+    },
+    "home-skeleton": {
+      "description": "The root page hero. trinity-tile + sovereign-anchor + toroidal ring.",
+      "data_source": "navigation.json + atlas.json",
+      "fallback": "static-canon",
+      "interactive": "hover",
+      "render_mode": "agent_canvas_required",
+      "where": ["root"]
+    },
+    "status-dial": {
+      "description": "Radial status — 6 sectors showing organ health. Agent-side rendering.",
+      "data_source": "federation.json::organs[].health",
+      "fallback": "static-canon",
+      "interactive": "hover",
+      "render_mode": "agent_canvas_required",
+      "where": ["institution/aaa", "observatory"]
+    }
+  },
+
+  "routes": {
+    "/": {
+      "territory": "arif",
+      "palette": "sovereign",
+      "instrument": "home-skeleton",
+      "motion": "scroll-parallax",
+      "data": "static-canon",
+      "torus_count": 1,
+      "torus_type": "trinity_ring",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "Home. Sovereign anchor. Bare border. trinity-tile below."
+    },
+    "/arif": {
+      "territory": "arif",
+      "palette": "sovereign",
+      "instrument": "prime-narrative",
+      "motion": "scroll",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "Sovereign anchor. Bare. No fractal. doctrine voice (Seal)."
+    },
+    "/human": {
+      "territory": "human",
+      "palette": "human",
+      "instrument": "trinity-tile",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 1,
+      "torus_type": "trinity_ring",
+      "channel": "human",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Human territory. Yellow primary. EMPATHY voice."
+    },
+    "/human/well": {
+      "territory": "human",
+      "palette": "human",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "well-mcp",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "human",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "WELL organ. Human substrate. REFLECT_ONLY posture."
+    },
+    "/institution": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "trinity-tile",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 1,
+      "torus_type": "trinity_ring",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Institution territory. Blue primary. Old + new institutions."
+    },
+    "/institution/aaa": {
+      "territory": "institution",
+      "palette": "agentic",
+      "instrument": "status-dial",
+      "motion": "hover",
+      "data": "federation.json",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "AAA cockpit. Amber accent (only exception). 6-sector status dial."
+    },
+    "/institution/wealth": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "wealth-mcp",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "WEALTH organ. Capital. COMPUTE_ONLY posture."
+    },
+    "/institution/makcikgpt": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "MAKCIKGPT — Malaysia editorial voice."
+    },
+    "/institution/petronas": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "PETRONAS — institutional analysis."
+    },
+    "/institution/pmshadows": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "PM shadows — institutional analysis."
+    },
+    "/institution/malaysia": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Malaysia — institutional voice."
+    },
+    "/earth": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "trinity-tile",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 1,
+      "torus_type": "trinity_ring",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Earth territory. Teal primary. REFERENCE PAGE — first instrument to build."
+    },
+    "/earth/geox": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "basin-cross-section",
+      "motion": "hover-radiometric",
+      "data": "geox-snapshot",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "GEOX organ. Earth intelligence. basin-cross-section hero."
+    },
+    "/earth/mcp": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "status-dial",
+      "motion": "hover",
+      "data": "mcp-mesh",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "MCP gateway. The membrane. agent canvas."
+    },
+    "/earth/hermes": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "surface-card",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "HERMES — the edge. REFLECT_ONLY posture."
+    },
+    "/earth/void": {
+      "territory": "earth",
+      "palette": "void",
+      "instrument": "basin-cross-section",
+      "motion": "hover-radiometric",
+      "data": "void-snapshot",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Beyond-the-edge. The void's edge. Rare."
+    },
+    "/world/oil": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "commodity-chart",
+      "motion": "hover-cross-section",
+      "data": "wealth-daily-snapshot",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "DEFER",
+      "notes": "DEFERRED until data truth + stale-state rules + chart rendering + ticker policy + stress-band policy are documented. NOT first reference page."
+    },
+    "/999": {
+      "territory": "sovereign",
+      "palette": "sovereign",
+      "instrument": "vault-chain",
+      "motion": "scroll-march",
+      "data": "vault999-receipts",
+      "torus_count": 1,
+      "torus_type": "mission_wheel",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "Verification surface. VAULT999 chain. Audit-grade."
+    },
+    "/laws": {
+      "territory": "cross_cutting",
+      "palette": "doctrine",
+      "instrument": "prime-narrative",
+      "motion": "scroll",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "doctrine",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "F1-F13 floors. The laws. Quietest pattern. Doctrine voice."
+    },
+    "/missions": {
+      "territory": "cross_cutting",
+      "palette": "doctrine",
+      "instrument": "vas-or-mission-wheel",
+      "motion": "rotate",
+      "data": "missions.json",
+      "torus_count": 1,
+      "torus_type": "mission_wheel",
+      "channel": "doctrine",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Six missions. Investigate · Interpret · Decide · Build · Monitor · Remember."
+    },
+    "/atlas": {
+      "territory": "sovereign",
+      "palette": "sovereign",
+      "instrument": "trinity-tile",
+      "motion": "hover",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Atlas landing page. The constitutional map. Reserved for sovereign."
+    },
+    "/mcp": {
+      "territory": "earth",
+      "palette": "earth",
+      "instrument": "status-dial",
+      "motion": "hover",
+      "data": "mcp-mesh",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "earth",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "MCP gateway canonical. Membrane."
+    },
+    "/.well-known/agent-card.json": {
+      "territory": "sovereign",
+      "palette": "neutral",
+      "instrument": "surface-card",
+      "motion": "none",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "A2A agent card. Machine-readable. Proves atlas compliance."
+    },
+    "/llms.txt": {
+      "territory": "sovereign",
+      "palette": "neutral",
+      "instrument": "surface-card",
+      "motion": "none",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Agent manifest. Static. Must not be SPA fallback."
+    },
+    "/sitemap.xml": {
+      "territory": "sovereign",
+      "palette": "neutral",
+      "instrument": "surface-card",
+      "motion": "none",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "SEAL",
+      "notes": "Sitemap. Static. I7 invariant."
+    },
+    "/canon": {
+      "territory": "sovereign",
+      "palette": "neutral",
+      "instrument": "surface-card",
+      "motion": "none",
+      "data": "atlas.json",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "sovereign",
+      "state": "rest",
+      "seal_status": "999_SEAL",
+      "notes": "Atlas canon directory. Static markdown. The SOT."
+    }
+  },
+
+  "the_hard_invariant": "A page cannot choose its own hero. The route registry chooses the hero. If agents choose heroes, they will make posters. You want instruments.",
+
+  "agent_mission_statement": "Implement PRIMER-1 without creating parallel canon. HARD RULES: 1. Only author canon: design-primer.md, design-tokens.json, design-rules.json, page-instruments.json. 2. Do NOT create: DESIGN_V2.md, design-final.md, tokens-new.json, theme-v2.css, hero-system.md. 3. Do NOT hand-edit generated CSS. Source: design-tokens.json. Output: public/_shared/design-system/tokens.css. 4. Every route hero must be declared in page-instruments.json. 5. Every page must load shared tokens and declare: territory, channel, state, seal_status. 6. If a needed field is missing, update the canon schema or produce a proposal. Do not invent local fields. 7. Before mutation: output files touched, file authority, generated outputs, verification commands, rollback plan.",
+
+  "build_order": {
+    "1_design_primer": "canon/design-primer.md — narrative home (DRAFT pending)",
+    "2_design_tokens": "canon/design-tokens.json — JSON machine law (ratified PRIMER-1.0)",
+    "3_design_rules": "canon/design-rules.json — lintable invariants (DRAFT pending)",
+    "4_page_instruments": "canon/page-instruments.json — route hero registry (DRAFT pending)",
+    "5_verify_design_canon": "scripts/verify-design-canon.cjs — CI lint",
+    "6_one_reference_page": "/earth — first instrument page to validate the contract"
+  },
+
+  "maintenance": {
+    "page-instruments.json": "Updated when a route hero changes or a new route is added. Owner: sovereign (F13) + operator.",
+    "back_compatibility": "Additive. New routes added. Existing routes never removed without sovereign ack + 999_SEAL.",
+    "promotion_path": "OPEN proposal → sovereign 999_SEAL → version bump → CI lint"
+  },
+
+  "tenant_contract": {
+    "ratified_by": "sovereign (F13) — pending 999_SEAL (U2)",
+    "signature": "DITEMPA BUKAN DIBERI — A page cannot choose its own hero. The route registry chooses the hero."
+  }
+}

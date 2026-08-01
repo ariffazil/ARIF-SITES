@@ -90,7 +90,33 @@
       "version": "PRIMER-1.0-DRAFT",
       "owner": "sovereign (F13)",
       "depends_on": ["design-tokens.json", "atlas.json"],
-      "doctrine": "The narrative home for the design canon. The JSON twin is design-tokens.json. Both required. PRIMER-1 introduces 19 hex value changes vs existing canon — surfaced for sovereign ratification per I8 (diff before mutation)."
+      "doctrine": "The narrative home for the design canon. The JSON twin is design-tokens.json. Both required. PRIMER-1 introduces 19 hex value changes vs existing canon — surfaced for sovereign ratification per I8 (diff before mutation).",
+      "status": "PROPOSAL",
+      "proposal_path": "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md",
+      "ratification_protocol": "Phase 1: save as proposal. Phase 2: promote to canon only after sovereign 999_SEAL. Phase 3: add design-rules.json. Phase 4: add page-instruments.json."
+    },
+    "design_rules_json": {
+      "file": "design-rules.json",
+      "role": "PRIMER-1 lintable invariants · machine-enforceable design law",
+      "version": "PRIMER-1.0-DRAFT",
+      "owner": "sovereign (F13)",
+      "depends_on": ["design-tokens.json", "atlas.json"],
+      "doctrine": "15 rules. CI lint blocks builds where design rules fail. The rules are the machine-enforceable envelope of PRIMER-1.",
+      "rules_count": 15,
+      "status": "PROPOSAL",
+      "ratification_protocol": "Phase 3 of PRIMER-1 ratification. Promoted to canon as part of the 4-file bundle."
+    },
+    "page_instruments_json": {
+      "file": "page-instruments.json",
+      "role": "PRIMER-1 route hero registry · instruments per route",
+      "version": "PRIMER-1.0-DRAFT",
+      "owner": "sovereign (F13)",
+      "depends_on": ["design-tokens.json", "atlas.json"],
+      "doctrine": "A page cannot choose its own hero. The route registry chooses the hero. 25 routes, 10 instruments. Reference page to build first: /earth.",
+      "routes_count": 25,
+      "instruments_count": 10,
+      "status": "PROPOSAL",
+      "ratification_protocol": "Phase 4 of PRIMER-1 ratification. Promoted to canon as part of the 4-file bundle."
     },
     "typography_json": {
       "file": "typography.json",
@@ -426,27 +452,46 @@
   "unknowns_registry": {
     "version": "1.0.0",
     "doctrine": "Unknowns declared, not hidden. I10.",
-    "last_updated": "2026-08-01T13:55:00Z",
+    "last_updated": "2026-08-01T14:05:00Z",
     "session_id": "SEAL-2026-08-01-f13-batch-ack",
     "unknowns": [
       {
         "id": "U1",
-        "question": "Should PRIMER-1 (design-primer.md) hex values replace the existing design-tokens.json values? PRIMER-1 introduces 19 hex changes (yellow/blue/teal/red scales) vs existing canon.",
-        "risk": "If accepted, the federation rebrand flows to all organs. If rejected, designer-facing primer documents obsolete values. If deferred, both must coexist with annotation. F1 (reversible) constraint token. F9 (no deception) — both must be honest about which is canonical.",
+        "question": "Should PRIMER-1 hex values replace existing design-tokens.json values? PRIMER-1 introduces 19 hex changes (yellow/blue/teal/red scales).",
+        "risk": "If accepted, the federation rebrand flows to all organs. If rejected, designer-facing primer documents obsolete values. F1 (reversible) constraint token. F9 (no deception) — both must be honest about which is canonical.",
         "test": "sovereign 999_SEAL on: (A) ACCEPT primer's hex values, (B) KEEP existing, (C) HYBRID (specify which), or (D) DEFER.",
         "owner": "sovereign (F13)",
         "verdict": "OPEN",
         "floor_impact": ["F1", "F2", "F9", "F11"],
         "invariants_at_risk": ["I3", "I8", "I11"],
         "references": [
-          "canon/design-primer.md (Appendix A — Diff)",
+          "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md (Appendix A — Diff)",
           "canon/design-tokens.json (existing ratified PRIMER-1.0)",
-          "canon/atlas.json (this file)",
-          "atlas.ledger seal: 06436cc1-3a82-49fb-b8f3-3bc585243b84"
+          "atlas.ledger seal: 42d5c7bf-0df1-47a4-a96f-f6b279e6861f"
         ]
       },
       {
         "id": "U2",
+        "question": "Should PRIMER-1 be ratified as the 4-file canon structure (design-primer.md + design-tokens.json + design-rules.json + page-instruments.json)?",
+        "risk": "Without ratification, agents may create parallel design files (DESIGN_V2.md, tokens-new.json, theme-v2.css, hero-system.md). F1 chaos. The 4-file structure is the lattice that prevents drift.",
+        "test": "sovereign 999_SEAL on: (A) RATIFY all 4 files, (B) HOLD (need fixes), (C) DEFER.",
+        "owner": "sovereign (F13)",
+        "verdict": "OPEN",
+        "floor_impact": ["F1", "F4", "F9", "F11"],
+        "invariants_at_risk": ["I2", "I3", "I5", "I11"],
+        "references": [
+          "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md",
+          "canon/design-rules.json",
+          "canon/page-instruments.json",
+          "atlas.json (this file)",
+          "Phase 1: save as proposal (DONE)",
+          "Phase 2: promote design-primer.md + design-tokens.json (PENDING 999_SEAL)",
+          "Phase 3: add design-rules.json (DRAFT pending)",
+          "Phase 4: add page-instruments.json (DRAFT pending)"
+        ]
+      },
+      {
+        "id": "U3",
         "question": "Does /canon/*.md serve static markdown or SPA fallback shell?",
         "risk": "I7 violated. AI agents cannot retrieve authoritative Atlas.",
         "test": "curl -s https://arif-fazil.com/canon/WEB_ATLAS.md | head -3",
@@ -456,7 +501,7 @@
         "invariants_at_risk": ["I7", "I9"]
       },
       {
-        "id": "U3",
+        "id": "U4",
         "question": "Which routes are shadowed by SPA fallback?",
         "risk": "Static evidence routes (/canon/*, /999/*, .well-known/*, llms.txt) might be swallowed by SPA shell. I7 violated.",
         "test": "for p in /canon/WEB_ATLAS.md /999 /llms.txt /sitemap.xml /.well-known/agent-card.json; do curl -s -o /dev/null -w \"$p = %{http_code}\\n\" \"https://arif-fazil.com$p\"; done",
@@ -464,6 +509,19 @@
         "verdict": "OPEN",
         "floor_impact": ["F2", "F11", "F12"],
         "invariants_at_risk": ["I7", "I9"]
+      },
+      {
+        "id": "U5",
+        "question": "Should /earth be the FIRST reference instrument page built under the PRIMER-1 contract?",
+        "risk": "Building /world/oil first (commodity charts) requires data truth, stale-state rules, chart rendering, ticker policy, stress-band policy — all undefined. /earth is less risky: palette zoning, instrument hero, graceful SVG fallback.",
+        "test": "sovereign 999_SEAL on: (A) BUILD /earth first, (B) BUILD /world/oil first, (C) DIFFERENT page.",
+        "owner": "sovereign (F13)",
+        "verdict": "RESOLVED",
+        "resolved_at": "2026-08-01T14:05:00Z",
+        "resolved_by": "sovereign (F13)",
+        "resolution_evidence": "Sovereign endorsed /earth as reference page in EOD instruction. Atlas registers it as the first instrument to build.",
+        "floor_impact": ["F1"],
+        "invariants_at_risk": ["I3", "I11"]
       }
     ]
   }

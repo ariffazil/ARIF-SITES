@@ -77,7 +77,9 @@ If you are an AI agent and want to make a change, read in this order:
 12. **`verification-checklist.yaml`** — Run before any deploy.
 13. **`invariants.json`** — The 13 Core Invariants. The explicit constitutional law.
 14. **`unknowns.schema.json`** — Unknowns-as-objects schema. Every unknown has id, question, risk, test, owner, verdict.
-15. **`design-primer.md`** — PRIMER-1 documentary form. Long-form narrative home for the design canon. JSON twin is design-tokens.json.
+15. **`design-primer.md`** — PRIMER-1 documentary form. Long-form narrative home for the design canon. JSON twin is design-tokens.json. (Currently PROPOSAL — see `forge_work/proposals/design/2026-08-01-primer-1/`.)
+16. **`design-rules.json`** — PRIMER-1 lintable invariants. 15 machine-enforceable rules. CI lint blocks builds where design rules fail.
+17. **`page-instruments.json`** — PRIMER-1 route hero registry. 25 routes × 10 instruments. A page cannot choose its own hero.
 
 You do not need to read other docs. The Atlas references them.
 
@@ -173,5 +175,8 @@ If parity fails, the build halts. There is no graceful degradation.
 | verification-checklist.yaml | New gate, new rule | sovereign (F13) |
 | invariants.json | New invariant or refinement | sovereign (F13) |
 | unknowns.schema.json | New field | sovereign (F13) |
+| design-primer.md | PRIMER-1 ratified (currently PROPOSAL) | sovereign (F13) |
+| design-rules.json | New rule added | sovereign (F13) |
+| page-instruments.json | New route or instrument | sovereign (F13) + operator |
 
 — DITEMPA BUKAN DIBERI
