@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human · Leadership Evaluation Framework · arif-fazil.com</title>
+<meta name="description" content="A consent-gated framework for evaluating leadership in national oil companies. Methodology, dimensions, ethical boundaries. No individuals named without consent.">
+<link rel="canonical" href="https://arif-fazil.com/human/">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<style>
+:root {
+  --human-bg: #080a0d;
+  --human-card: #10131a;
+  --human-border: #1c2230;
+  --human-text: #e4e9f0;
+  --human-mute: #7d8a9c;
+  --accent: #8b5cf6;
+  --accent-2: #a78bfa;
+  --danger: #ef4444;
+  --warn: #f59e0b;
+  --ok: #22c55e;
+  --gold: #d4a853;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--human-bg); color: var(--human-text); line-height: 1.7; margin: 0; }
+main { max-width: 880px; margin: 0 auto; padding: 2rem 1.25rem 5rem; }
+h1 { font-size: 2rem; font-weight: 800; margin-bottom: .25rem; }
+h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2.5rem; border-bottom: 1px solid var(--human-border); padding-bottom: .5rem; }
+h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; }
+.subtitle { color: var(--human-mute); font-size: .95rem; margin-bottom: 2rem; }
+.card { background: var(--human-card); border: 1px solid var(--human-border); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+.card h3 { margin-top: 0; }
+table { width: 100%; border-collapse: collapse; font-size: .88rem; margin: 1rem 0; }
+th, td { padding: .5rem .6rem; text-align: left; border-bottom: 1px solid var(--human-border); }
+th { color: var(--human-mute); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: .75rem; font-weight: 600; }
+.tag-danger { background: rgba(239,68,68,.15); color: var(--danger); }
+.tag-warn { background: rgba(245,158,11,.15); color: var(--warn); }
+.tag-ok { background: rgba(34,197,94,.15); color: var(--ok); }
+.tag-info { background: rgba(139,92,246,.15); color: var(--accent-2); }
+.tag-gold { background: rgba(212,168,83,.15); color: var(--gold); }
+.dimension { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0; }
+.dimension .name { font-weight: 700; color: var(--accent-2); font-size: 1.05rem; }
+.dimension .desc { color: var(--human-mute); font-size: .9rem; margin-top: .25rem; }
+.protocol { background: rgba(139,92,246,.08); border: 1px solid rgba(139,92,246,.25); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+.protocol h3 { color: var(--accent-2); margin-top: 0; }
+.epistemic { font-size: .75rem; color: var(--human-mute); font-style: italic; margin-top: .5rem; }
+.footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--human-border); font-size: .82rem; color: var(--human-mute); }
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.boundary { background: rgba(239,68,68,.06); border: 1px solid rgba(239,68,68,.2); border-radius: 10px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+.boundary h3 { color: var(--danger); margin-top: 0; }
+.scale { display: flex; gap: 4px; margin: .5rem 0; }
+.scale .seg { flex: 1; height: 6px; border-radius: 3px; background: var(--human-border); }
+.scale .seg.active { background: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+
+<h1>👤 Leadership Evaluation Framework</h1>
+<p class="subtitle">A Methodology for Assessing Leadership in National Oil Companies<br>
+<span class="tag tag-info">FRAMEWORK ONLY</span> <span class="tag tag-gold">CONSENT-GATED</span> <span class="tag tag-danger">NO INDIVIDUALS NAMED</span></p>
+
+<div class="boundary">
+<h3>⚠️ Constitutional Boundary (F6 MARUAH)</h3>
+<p>This page publishes the <strong>evaluation methodology only</strong>. No living individual is named, scored, or ranked without their explicit written consent. This is not a limitation of capability — it is a constitutional floor.</p>
+<p><strong>Why:</strong> Dignity (maruah) is inviolable. An institution can be critiqued; a person cannot be reduced to a score without their participation. The framework exists so that when consent is given, the evaluation is rigorous, reproducible, and fair.</p>
+<p><strong>What this means:</strong> The institutional analysis at <a href="/institution/">/institution</a> names structures, decisions, and outcomes. This page names the <em>method</em> by which leadership quality would be assessed — the ruler, not the measured.</p>
+</div>
+
+<h2>1. Why a Framework?</h2>
+<p>National oil companies (NOCs) operate under a unique governance paradox: they are simultaneously commercial enterprises and instruments of state policy. Their leaders navigate:</p>
+<ul>
+<li><strong>Dual accountability:</strong> to shareholders (the state) AND to commercial viability</li>
+<li><strong>Extraction pressure:</strong> the state's fiscal needs vs. the company's reinvestment requirements</li>
+<li><strong>Political cycles:</strong> leadership tenure tied to electoral timelines, not performance metrics</li>
+<li><strong>Workforce covenant:</strong> implicit social contract (meritocracy, security, national mission) vs. austerity realities</li>
+</ul>
+<p>Standard corporate governance frameworks (OECD, IFC) do not adequately capture these tensions. This framework is purpose-built for the NOC context.</p>
+
+<h2>2. Evaluation Dimensions</h2>
+<p>Six orthogonal dimensions. Each scored 0–10. Composite = geometric mean (Nash product — zero in any dimension collapses the whole).</p>
+
+<div class="dimension">
+<div class="name">D1 · Capital Stewardship</div>
+<div class="desc">Does leadership preserve and grow the capital base, or does it facilitate extraction?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Dividend policy</td><td>Sustainable payout ratio (&lt;50% of PAT)</td><td>Extraction exceeds earnings; debt issued to fund dividends</td></tr>
+<tr><td>Capex discipline</td><td>Counter-cyclical investment; exploration maintained</td><td>Pro-cyclical cuts; exploration sacrificed for short-term cash</td></tr>
+<tr><td>Balance sheet</td><td>Net cash position preserved; investment-grade maintained</td><td>Deteriorating leverage; bond issuance to cover operational gaps</td></tr>
+</table>
+</div>
+
+<div class="dimension">
+<div class="name">D2 · Governance Independence</div>
+<div class="desc">Can the board resist sole-shareholder extraction demands? Is there structural defence?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Board composition</td><td>Independent directors with commercial expertise; diverse backgrounds</td><td>Political appointees; homogeneous; no commercial NOC experience</td></tr>
+<tr><td>Dividend negotiation</td><td>Board sets sustainable ceiling; publishes rationale</td><td>Board rubber-stamps government demand; no published framework</td></tr>
+<tr><td>Transparency</td><td>Annual governance report; related-party disclosure</td><td>Opaque decision-making; no public accountability mechanism</td></tr>
+</table>
+</div>
+
+<div class="dimension">
+<div class="name">D3 · Workforce Covenant</div>
+<div class="desc">Does leadership honour the implicit social contract with employees?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Restructuring method</td><td>Fast, transparent, generous severance, retraining</td><td>Slow (18+ months), opaque, inverse selection (best leave first)</td></tr>
+<tr><td>Talent retention</td><td>Technical career ladder; competitive compensation; autonomy</td><td>Title suppression; promotion freeze; knowledge extraction then disposal</td></tr>
+<tr><td>Safety culture</td><td>Investment in HSE during austerity; psychological safety</td><td>HSE rhetoric + operational destabilisation; fatalities during upheaval</td></tr>
+</table>
+</div>
+
+<div class="dimension">
+<div class="name">D4 · Strategic Coherence</div>
+<div class="desc">Is there a coherent long-term strategy, or reactive lurching between crises?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Portfolio logic</td><td>Clear rationale for retain/divest; value-accretive JVs</td><td>Asset giveaways framed as "partnerships"; borrowing after divesting</td></tr>
+<tr><td>Energy transition</td><td>Credible pathway; investment proportional to ambition</td><td>Greenwashing; renewables subsidiary underfunded vs. LNG expansion</td></tr>
+<tr><td>Crisis response</td><td>Pre-emptive; scenario-planned; communicated early</td><td>Reactive; surprise announcements; narrative management over substance</td></tr>
+</table>
+</div>
+
+<div class="dimension">
+<div class="name">D5 · Institutional Regeneration</div>
+<div class="desc">Is the institution rebuilding inclusive DNA, or consuming it faster than replacement?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Reform design</td><td>Broad participation; external challenge; pluralism</td><td>Designed by same layer that created the problem; zero external input</td></tr>
+<tr><td>Knowledge transfer</td><td>Mentorship; documentation; succession planning</td><td>Musical chairs; retain the chair, discard the person</td></tr>
+<tr><td>Culture</td><td>Psychological safety; dissent welcomed; learning from failure</td><td>Fear; compliance; "Beautiful Ones" self-grooming while organism atrophies</td></tr>
+</table>
+</div>
+
+<div class="dimension">
+<div class="name">D6 · Sovereign Boundary Management</div>
+<div class="desc">How does leadership manage the state-company boundary? Is the NOC's mandate defended or surrendered?</div>
+<table>
+<tr><th>Signal</th><th>Positive (8-10)</th><th>Negative (0-3)</th></tr>
+<tr><td>Mandate defence</td><td>Clear public articulation of NOC's constitutional role</td><td>Silent acceptance of mandate erosion; no public defence</td></tr>
+<tr><td>State relationship</td><td>Arm's-length commercial relationship; published MOU</td><td>Fused identity; NOC as government piggy bank</td></tr>
+<tr><td>Regional relations</td><td>Constructive engagement with state governments (Sarawak, Sabah)</td><td>Adversarial; court battles; zero negotiation flexibility</td></tr>
+</table>
+</div>
+
+<h2>3. The Consent Protocol</h2>
+
+<div class="protocol">
+<h3>How Individual Evaluation Works (When Consent Is Given)</h3>
+<ol>
+<li><strong>Invitation:</strong> The individual (or their authorised representative) is invited to participate.</li>
+<li><strong>Scope agreement:</strong> Dimensions, evidence sources, and publication rights are agreed in writing.</li>
+<li><strong>Evidence gathering:</strong> Public statements, annual reports, board decisions, and (if offered) interviews.</li>
+<li><strong>Draft review:</strong> The individual reviews the draft evaluation before publication. Right of response included.</li>
+<li><strong>Publication:</strong> Only with explicit written consent. Individual may withdraw consent at any time before publication.</li>
+<li><strong>Versioning:</strong> Published evaluations are immutable once live. Corrections via appendendum, never deletion.</li>
+</ol>
+<p class="epistemic">This protocol exists because F6 MARUAH (dignity) is a constitutional floor. The machine can compute; it cannot reduce a human to a number without their participation. This is not weakness — it is the boundary that separates governance from surveillance.</p>
+</div>
+
+<h2>4. Institutional Stress → Leadership Response Patterns</h2>
+<p>From the WEALTH organ's institutional stress model, four archetypal leadership responses emerge under stress:</p>
+
+<table>
+<tr><th>Pattern</th><th>Stress Level</th><th>Response</th><th>Outcome</th></tr>
+<tr><td><span class="tag tag-ok">ADAPTIVE</span></td><td>0.3–0.5</td><td>Early restructuring, transparent communication, counter-cyclical investment</td><td>Institution regenerates; trust preserved</td></tr>
+<tr><td><span class="tag tag-warn">REACTIVE</span></td><td>0.5–0.7</td><td>Delayed action, narrative management, partial reform</td><td>Stress accumulates; talent leaves; reform window narrows</td></tr>
+<tr><td><span class="tag tag-danger">EXTRACTIVE</span></td><td>0.7–0.9</td><td>Cost-cutting as primary lever, dividend prioritisation, workforce as variable</td><td>Spiral: cuts → capability loss → more cuts</td></tr>
+<tr><td><span class="tag tag-danger">SIMULATIVE</span></td><td>Any</td><td>Reform theatre: new org charts, same power structure, inclusive language masking extractive practice</td><td>Most dangerous: workers believe the promise, stay too long, then discover the extraction</td></tr>
+</table>
+
+<h2>5. The "Simulative Neutral" Detection Framework</h2>
+<p>Borrowed from the WEALTH organ's external exploitation detection: a pattern where each individual action is defensible, but the aggregate reveals systematic extraction.</p>
+
+<div class="card">
+<h3>Detection Criteria</h3>
+<ol>
+<li><strong>Individually rational:</strong> Each decision (dividend, JV, restructuring) has a standalone justification</li>
+<li><strong>Aggregate pattern:</strong> The sum of decisions transfers value from institution to extractor</li>
+<li><strong>Asymmetric risk:</strong> The institution bears downside; the extractor captures upside</li>
+<li><strong>Narrative cover:</strong> Each action is framed in inclusive language ("partnership", "transformation", "efficiency")</li>
+<li><strong>No reversal mechanism:</strong> Once value is transferred, no contractual path returns it</li>
+</ol>
+<p class="epistemic">When all five criteria are present simultaneously, the pattern is classified as simulative neutral — rational exploitation of institutional weakness. This is not conspiracy; it is the predictable outcome of unchecked sole-shareholder power.</p>
+</div>
+
+<h2>6. Application to PETRONAS (Structural, Not Personal)</h2>
+<p>Applying this framework to PETRONAS as an institution (see <a href="/institution/">/institution</a> for full analysis):</p>
+
+<table>
+<tr><th>Dimension</th><th>Institutional Score</th><th>Key Evidence</th></tr>
+<tr><td>D1 · Capital Stewardship</td><td style="color:var(--warn)">4/10</td><td>PAT -55% in 3yr; US$5B bond; 70% payout during decline</td></tr>
+<tr><td>D2 · Governance Independence</td><td style="color:var(--danger)">3/10</td><td>No structural defence against extraction; board cannot resist sole shareholder</td></tr>
+<tr><td>D3 · Workforce Covenant</td><td style="color:var(--warn)">4/10</td><td>18-month slow cut; inverse selection; HSE fatality during upheaval</td></tr>
+<tr><td>D4 · Strategic Coherence</td><td style="color:var(--warn)">5/10</td><td>SEARAH logic questionable; LNG Canada overruns; Gentari underfunded</td></tr>
+<tr><td>D5 · Institutional Regeneration</td><td style="color:var(--danger)">3/10</td><td>Reform designed by same layer; zero external challenge; Beautiful Ones pattern</td></tr>
+<tr><td>D6 · Sovereign Boundary</td><td style="color:var(--warn)">4/10</td><td>PETROS challenge unaddressed; no public mandate defence; adversarial posture</td></tr>
+</table>
+
+<p><strong>Composite (geometric mean):</strong> 3.7/10 — <span class="tag tag-danger">GOVERNANCE STRESS</span></p>
+<p class="epistemic">These are institutional scores — they reflect structural outcomes, not individual blame. The same individuals might score differently at a different institution with different constraints. The framework measures the system, not the person.</p>
+
+<h2>7. Theoretical Foundations</h2>
+<div class="card">
+<ul>
+<li><strong>Acemoglu & Robinson (2012):</strong> Inclusive vs. extractive institutions. Nobel Prize 2024. The simulative institution = gray zone.</li>
+<li><strong>Calhoun's Universe 25 (1973):</strong> Behavioural sink under resource abundance + social compression. The "Beautiful Ones" withdraw.</li>
+<li><strong>Nash Bargaining (1950):</strong> Geometric mean for composite scoring. Zero in any dimension collapses the product.</li>
+<li><strong>Sen's Capability Approach (1999):</strong> Development as freedom. Institutional health = expansion of capabilities, not just GDP.</li>
+<li><strong>arifOS Constitutional Floors (2026):</strong> F1 AMANAH (reversibility), F2 TRUTH (evidence), F6 MARUAH (dignity), F7 HUMILITY (uncertainty).</li>
+</ul>
+</div>
+
+<div class="footer">
+<p><strong>arif-fazil.com/human</strong> · Leadership Evaluation Framework · Consent-Gated Protocol</p>
+<p>Author: Muhammad Arif bin Fazil · Framework version: 1.0 · Forged: 2026-08-01</p>
+<p>Constitutional basis: F6 MARUAH (dignity inviolable) · F2 TRUTH (evidence-sourced) · F7 HUMILITY (confidence-capped)</p>
+<p><a href="/">← arif-fazil.com</a> · <a href="/institution/">Institutional Analysis →</a> · <a href="/999/">VAULT999 →</a></p>
+</div>
+
+</main>
+</body>
+</html>
