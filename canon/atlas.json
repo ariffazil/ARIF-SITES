@@ -84,6 +84,14 @@
       "depends_on": ["atlas.json"],
       "doctrine": "Color = cognition, not taste. Red is rationed. CONVERT-tested contrast."
     },
+    "design_primer_md": {
+      "file": "design-primer.md",
+      "role": "PRIMER-1 documentary form · long-form narrative home",
+      "version": "PRIMER-1.0-DRAFT",
+      "owner": "sovereign (F13)",
+      "depends_on": ["design-tokens.json", "atlas.json"],
+      "doctrine": "The narrative home for the design canon. The JSON twin is design-tokens.json. Both required. PRIMER-1 introduces 19 hex value changes vs existing canon — surfaced for sovereign ratification per I8 (diff before mutation)."
+    },
     "typography_json": {
       "file": "typography.json",
       "role": "IBM Plex superfamily · √2 scale · 3 voices",
@@ -411,8 +419,52 @@
 
   "tenant_contract": {
     "ratified_by": "sovereign (F13) — 999_SEAL",
-    "ratified_at": "2026-08-01T13:50:00Z",
+    "ratified_at": "2026-08-01T13:55:00Z",
     "signature": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. 13 invariants. Forgery is detectable.",
     "supersedes": "ATLAS-1.0 (2026-08-01T13:30:00Z) — added invariants.json + unknowns.schema.json + 13 invariants encoded"
+  },
+  "unknowns_registry": {
+    "version": "1.0.0",
+    "doctrine": "Unknowns declared, not hidden. I10.",
+    "last_updated": "2026-08-01T13:55:00Z",
+    "session_id": "SEAL-2026-08-01-f13-batch-ack",
+    "unknowns": [
+      {
+        "id": "U1",
+        "question": "Should PRIMER-1 (design-primer.md) hex values replace the existing design-tokens.json values? PRIMER-1 introduces 19 hex changes (yellow/blue/teal/red scales) vs existing canon.",
+        "risk": "If accepted, the federation rebrand flows to all organs. If rejected, designer-facing primer documents obsolete values. If deferred, both must coexist with annotation. F1 (reversible) constraint token. F9 (no deception) — both must be honest about which is canonical.",
+        "test": "sovereign 999_SEAL on: (A) ACCEPT primer's hex values, (B) KEEP existing, (C) HYBRID (specify which), or (D) DEFER.",
+        "owner": "sovereign (F13)",
+        "verdict": "OPEN",
+        "floor_impact": ["F1", "F2", "F9", "F11"],
+        "invariants_at_risk": ["I3", "I8", "I11"],
+        "references": [
+          "canon/design-primer.md (Appendix A — Diff)",
+          "canon/design-tokens.json (existing ratified PRIMER-1.0)",
+          "canon/atlas.json (this file)",
+          "atlas.ledger seal: 06436cc1-3a82-49fb-b8f3-3bc585243b84"
+        ]
+      },
+      {
+        "id": "U2",
+        "question": "Does /canon/*.md serve static markdown or SPA fallback shell?",
+        "risk": "I7 violated. AI agents cannot retrieve authoritative Atlas.",
+        "test": "curl -s https://arif-fazil.com/canon/WEB_ATLAS.md | head -3",
+        "owner": "operator",
+        "verdict": "OPEN",
+        "floor_impact": ["F2", "F11", "F12"],
+        "invariants_at_risk": ["I7", "I9"]
+      },
+      {
+        "id": "U3",
+        "question": "Which routes are shadowed by SPA fallback?",
+        "risk": "Static evidence routes (/canon/*, /999/*, .well-known/*, llms.txt) might be swallowed by SPA shell. I7 violated.",
+        "test": "for p in /canon/WEB_ATLAS.md /999 /llms.txt /sitemap.xml /.well-known/agent-card.json; do curl -s -o /dev/null -w \"$p = %{http_code}\\n\" \"https://arif-fazil.com$p\"; done",
+        "owner": "agent",
+        "verdict": "OPEN",
+        "floor_impact": ["F2", "F11", "F12"],
+        "invariants_at_risk": ["I7", "I9"]
+      }
+    ]
   }
 }
