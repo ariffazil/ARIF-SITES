@@ -1,10 +1,11 @@
 {
   "metadata": {
-    "title": "Negeri Sembilan PRN 2026 Live Sensory Telemetry",
-    "updated_at": "2026-08-01T11:54:04.490Z",
+    "title": "Negeri Sembilan PRN 2026 — Final Result Telemetry",
+    "updated_at": "2026-08-01T12:55:56.000Z",
     "sealed_by": "arifOS VAULT999 SENSORY HUB",
-    "status": "ACTIVE_STREAMING_FLOW",
-    "version": "2.1.0"
+    "status": "RESULT_DECLARED",
+    "version": "3.0.0",
+    "note": "Keputusan tidak rasmi setakat pengisytiharan SPR 1 Ogos 2026 (FMT/Buletin TV3/UndiTracker); pengesahan rasmi SPR menyusul."
   },
   "summary_metrics": {
     "total_signals_ingested": 1645,
@@ -14,13 +15,18 @@
       "pn_positive": 21
     },
     "voter_turnout_projection": 74.1,
-    "highest_volatility_seat": "N32 Linggi"
+    "highest_volatility_seat": "N32 Linggi",
+    "voter_turnout_actual": 68.35,
+    "bn_seats": 18,
+    "pn_seats": 7,
+    "ph_seats": 11,
+    "bersatu_seats": 0
   },
   "ground_telemetry_seats": [
     {
       "code": "N32",
       "name": "Linggi",
-      "status": "HOT_EPICENTER",
+      "status": "RESULT_BN_WIN — MB kalah (BN 6,061 vs PH 4,300+); projection TOSSUP disahkan penentu",
       "live_sentiment": "HIGH_VOLATILITY_CONTRAST",
       "malay_turnout_rate": 78.2,
       "non_malay_turnout_rate": 63.5,
@@ -29,12 +35,12 @@
         "🔥 CONTRAST SIGNAL: Felda Sendayan & Linggi voters express acute dissatisfaction over local water disruption",
         "Youth voter swing vector shifting anti-incumbent (+4.2% shift toward BN/PN)"
       ],
-      "last_signal_time": "2026-08-01T11:54:04.490Z"
+      "last_signal_time": "2026-08-01T12:55:36.173Z"
     },
     {
       "code": "N14",
       "name": "Ampangan",
-      "status": "ULTRA_MARGINAL",
+      "status": "RESULT_PN_WIN — PN rampas (PH 2023); projection TOSSUP → PN",
       "live_sentiment": "BN_PN_LEAN",
       "malay_turnout_rate": 82.4,
       "non_malay_turnout_rate": 59.1,
@@ -43,12 +49,12 @@
         "⚡ REALITY TEST: Independent vote consolidation favoring opposition anti-establishment block",
         "B40 cost-of-living sentiment index at peak thermal noise"
       ],
-      "last_signal_time": "2026-08-01T11:54:04.490Z"
+      "last_signal_time": "2026-08-01T12:55:36.173Z"
     },
     {
       "code": "N1",
       "name": "Chennah",
-      "status": "CHINESE_TURNOUT_MONITOR",
+      "status": "RESULT_BN_WIN — BN rampas, Loke kalah; projection PH_FAVORED salah",
       "live_sentiment": "PH_FAVORED",
       "malay_turnout_rate": 69.5,
       "non_malay_turnout_rate": 75.3,
@@ -57,7 +63,43 @@
         "Anthony Loke non-Malay base floor solid at 75%",
         "MCA machinery active in Kampong Chennah but faces steep uphill traction"
       ],
-      "last_signal_time": "2026-08-01T11:54:04.490Z"
+      "last_signal_time": "2026-08-01T12:55:36.173Z"
     }
-  ]
+  ],
+  "result_summary": {
+    "total_seats": 36,
+    "simple_majority": 19,
+    "two_thirds_majority": 24,
+    "bn_seats": 18,
+    "pn_seats": 7,
+    "ph_seats": 11,
+    "bersatu_seats": 0,
+    "coalition": "BN-PN 25 — 2/3 majoriti, kerajaan baru ditubuhkan",
+    "turnout_actual_pct": 68.35,
+    "turnout_2023_pct": 62.0,
+    "scalps": [
+      "N32 Linggi — MB Aminuddin Harun (PH-PKR) kalah kepada BN incumbent Mohd Faizal (BN 6,061 vs PH 4,300+)",
+      "N1 Chennah — Anthony Loke (DAP Sec-Gen) kalah kepada MCA; BN rampas",
+      "N36 Repah — kubu DAP jatuh ke BN",
+      "PN rampas 4 kerusi PH 2023: N14 Ampangan, N13 Sikamat, N5 Serting, N4 Klawang",
+      "N31 Bagan Pinang — PN kekal (PAS)",
+      "BN rampas: N1 Chennah, N18 Pilah, N20 Labu, N36 Repah"
+    ],
+    "bersatu_note": "BERSATU solo 24 kerusi — 0 menang, gagal mendahului mana-mana kerusi"
+  },
+  "model_scorecard": {
+    "invariants_direction_correct": 7,
+    "invariants_total": 9,
+    "seat_projection_verdict": "MELESET — projeksi PH 18/BN 16/PN 2 jauh dari realiti (BN-PN 25); arah invariant 7/9 betul",
+    "validated_invariants": [
+      "MB-MOBILITY — Linggi epicenter: MB kalah di kerusi relokasi",
+      "TOK-MAT-FORTRESS — Rantau kekal BN",
+      "ROYAL-SUBSTRATE — Seri Menanti kekal BN",
+      "POSTAL-MILITARY — undi awal keselamatan dominasi BN"
+    ],
+    "failed_invariants": [
+      "DEM-MIX (semua kerusi Melayu jatuh BN-PN)",
+      "SPLIT-FRICTION (Bersatu mati, tapi tak selamatkan PH)"
+    ]
+  }
 }
