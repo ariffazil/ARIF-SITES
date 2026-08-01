@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-nav-canon.cjs && node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs && node scripts/generate-ns-telemetry.cjs && node scripts/generate-ns-compare.cjs",
+    "prebuild": "node scripts/generate-nav-canon.cjs && node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs && node scripts/generate-ns-telemetry.cjs && node scripts/generate-ns-compare.cjs && node /root/web-canon/scripts/verify-design-canon.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
