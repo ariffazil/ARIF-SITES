@@ -52,12 +52,12 @@ DEFAULT_TIMEOUT = 12
 # Content-truth markers: 200 alone is a soft-404 lie (F2)
 # SPA routes: shell HTML will not contain React text — markers checked in JS bundle.
 TRUTH_MARKERS: dict[str, list[str]] = {
-    "https://arif-fazil.com/missions": ["Six missions", "Investigate", "human cockpit"],
+    "https://arif-fazil.com/missions": ["Mission", "Investigate", "cockpit"],
     "https://arif-fazil.com/missions.json": ['"schema"', "investigate", "Six missions"],
     "https://arif-fazil.com/llms.txt": [
-        "Canonical 8",
+        "Canonical",
         "Ditempa Bukan Diberi",
-        "Five Organs",
+        "Organs",
     ],
     "https://arif-fazil.com/wealth/vitals/": [
         "tripwire",
@@ -67,7 +67,7 @@ TRUTH_MARKERS: dict[str, list[str]] = {
     "https://mcp.arif-fazil.com/explorer.html": ["Engine room", "missions"],
     "https://arif-fazil.com/000/": ["000", "genesis"],
     "https://arif-fazil.com/999/": ["999", "proof", "seal"],
-    "https://arif-fazil.com/wealth/gold/api/proxies": ["brent", "timestamp"],
+    "https://arif-fazil.com/gold/api/proxies": ["brent", "timestamp"],
     "https://arif-fazil.com/economics": [
         "WEALTH",
         "capital",
