@@ -2,6 +2,17 @@
 
 > Actions AI agents can take on this site (Part of `SEAL_SESSION_arif-2026-06-27-001`)
 
+## FILE GOVERNANCE MODE: FAIL-CLOSED (2026-08-01 · F13)
+
+**Before any write, read:** `https://arif-fazil.com/canon/file-authority.yaml`
+
+- You may not create files outside `forge_work/proposals/<agent-id>/<mission>/` or `receipts/<agent-id>/`.
+- You may not modify CANON files unless a lease is explicitly granted by ARIF.
+- Every target file must declare authority: **CANON / DERIVED / SCRATCH / PROPOSAL / RECEIPT / RETIRED / UNKNOWN**.
+- `UNKNOWN` → stop. `DERIVED` → find upstream SOT. `CANON` → request lease.
+- Do not create alternate Atlas, design, routing, or README files. Patch existing authority or propose promotion.
+- No execution without receipt. No automation without reversibility.
+
 ## Site Identity
 
 - **Name:** arif-fazil.com — Ψ SOUL (Human Surface)

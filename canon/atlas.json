@@ -1,0 +1,391 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "ATLAS-1.0",
+  "atlas_id": "arif-fazil.com-federation-atlas",
+  "ratified_by": "sovereign (F13) — 999_SEAL",
+  "ratified_at": "2026-08-01T13:30:00Z",
+  "doctrine": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas.",
+  "purpose": "Single source of truth for the arif-fazil.com federation. Every page, route, design, content, and verification decision defers to this index. Machine-readable pointer to all canon documents.",
+  "operator_model": "ATLAS before AGENT. CANON before CODE. DIFF before DEPLOY. VERIFY before SEAL.",
+
+  "specifications": {
+    "one_law": "No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas.",
+    "agent_workflow": [
+      "Read atlas.json",
+      "Identify affected routes (sites.yaml)",
+      "Identify affected components (components.json)",
+      "Identify affected tokens (design-tokens.json, geometry.json)",
+      "Propose change using content-model.schema.json",
+      "Show diff (single page review)",
+      "Run build (npm run build, caddy validate)",
+      "Run route checks (every canonical URL 200; retired 301)",
+      "Run visual checks (Playwright + atlas lints)",
+      "Produce receipt (forge_vault mode=receipt)",
+      "WAIT for ARIF SEAL"
+    ]
+  },
+
+  "documents": {
+    "atlas_self": {
+      "file": "atlas.json",
+      "role": "MACHINE-READABLE POINTER · supreme index for agents",
+      "version": "ATLAS-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["public-state.schema.json"],
+      "doctrine": "Single source of truth pointer. This file references the other canon docs; the other docs do not reference this one. Update this when the canon structure changes."
+    },
+    "web_atlas_md": {
+      "file": "WEB_ATLAS.md",
+      "role": "HUMAN-READABLE CONSTITUTION · supreme doc for sovereign and coders",
+      "version": "ATLAS-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json"],
+      "doctrine": "The Atlas in narrative form. Read this for the SOUL of the federation. Then read atlas.json for the machine-checkable structure."
+    },
+    "web_canon_readme": {
+      "file": "WEB_CANON_README.md",
+      "role": "ENTRY POINT · index for the canon folder",
+      "version": "ATLAS-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json", "WEB_ATLAS.md"],
+      "doctrine": "Start here. The README points to every other canon file and explains the read order."
+    },
+    "sites_yaml": {
+      "file": "sites.yaml",
+      "role": "Trinity IA · paths · organs · redirects · tombstones · canary",
+      "version": "3.0.0",
+      "owner": "operator + sovereign",
+      "depends_on": ["public-state.schema.json"],
+      "doctrine": "Every route, every organ, every redirect, every tombstone. ONE source of truth."
+    },
+    "navigation_json": {
+      "file": "navigation.json",
+      "role": "Universal frame · sovereign strip · trinity tiles · breadcrumb · footer",
+      "version": "3.0.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["public-state.schema.json", "design-tokens.json"],
+      "doctrine": "The frame every page must include. No site-specific deviations."
+    },
+    "redirects_yaml": {
+      "file": "redirects.yaml",
+      "role": "301 redirects · aliases · tombstones · canary gate",
+      "version": "2026.08.01",
+      "owner": "operator",
+      "depends_on": ["sites.yaml"],
+      "doctrine": "One-hop (D3). MCP exempt (D1). Tombstones (D7). Canary (D6)."
+    },
+    "design-tokens_json": {
+      "file": "design-tokens.json",
+      "role": "PRIMER-1 colors · semantic · contrast",
+      "version": "PRIMER-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json"],
+      "doctrine": "Color = cognition, not taste. Red is rationed. CONVERT-tested contrast."
+    },
+    "typography_json": {
+      "file": "typography.json",
+      "role": "IBM Plex superfamily · √2 scale · 3 voices",
+      "version": "PRIMER-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json"],
+      "doctrine": "Three voices (human, doctrine, machine). Self-hosted. No Google Fonts."
+    },
+    "geometry_json": {
+      "file": "geometry.json",
+      "role": "16x16 unit cell · chordials · ONE torus per page",
+      "version": "PRIMER-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json"],
+      "doctrine": "Every decorative element derived from the unit cell. One torus per page (trinity_ring OR mission_wheel, never both)."
+    },
+    "components_json": {
+      "file": "components.json",
+      "role": "BOP panel physics · SEAL/HOLD/VOID button grades · cards · input · badges",
+      "version": "PRIMER-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["design-tokens.json", "geometry.json"],
+      "doctrine": "Three button grades. Red rationed. Hold-to-confirm for VOID. BOP tactile physics."
+    },
+    "templates_json": {
+      "file": "templates.json",
+      "role": "3 templates · agent override · build pipeline · CI lints",
+      "version": "PRIMER-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["navigation.json", "components.json"],
+      "doctrine": "Three templates (trinity-tile, organ, surface). Agent override for /mcp/ surfaces. Build pipeline + CI lints."
+    },
+    "federation_json": {
+      "file": "federation.json",
+      "role": "Trinity scopes · organs · postures · F1-F13 alignment",
+      "version": "v2026.08.01",
+      "owner": "sovereign (F13)",
+      "depends_on": ["sites.yaml"],
+      "doctrine": "Eight organs. Six postures. F1-F13 floor alignment."
+    },
+    "tool-surfaces_json": {
+      "file": "tool-surfaces.json",
+      "role": "MCP surface per organ",
+      "version": "v2026.08.01",
+      "owner": "operator",
+      "depends_on": ["sites.yaml", "federation.json"],
+      "doctrine": "Each organ has one canonical MCP endpoint. Dual-served on subdomain + path."
+    },
+    "releases_json": {
+      "file": "releases.json",
+      "role": "Version history (sealed)",
+      "version": "v2026.08.01",
+      "owner": "operator",
+      "doctrine": "Append-only. Released versions are sealed; never rewrite."
+    },
+    "public-state_schema_json": {
+      "file": "public-state.schema.json",
+      "role": "JSON Schema for the public state",
+      "version": "v2026.08.01",
+      "owner": "operator",
+      "depends_on": [],
+      "doctrine": "Validates all canon JSON. Block build on violation."
+    },
+    "web_federation_map_md": {
+      "file": "WEB-FEDERATION-MAP.md",
+      "role": "Repo-to-territory map · 12 files sync",
+      "version": "2026-08-01",
+      "owner": "operator",
+      "depends_on": ["atlas.json"],
+      "doctrine": "The map of the map. Shows repo → webroot → live mirror triple."
+    },
+    "content_model_schema_json": {
+      "file": "content-model.schema.json",
+      "role": "Content model schema · every page has title, audience, intent, ring, primary_action, proof_action",
+      "version": "ATLAS-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["public-state.schema.json"],
+      "doctrine": "Pages render from content models. Agents edit content models, not random HTML."
+    },
+    "verification_checklist_yaml": {
+      "file": "verification-checklist.yaml",
+      "role": "17 deploy gates · G1-G17",
+      "version": "ATLAS-1.0",
+      "owner": "sovereign (F13)",
+      "depends_on": ["public-state.schema.json"],
+      "doctrine": "Build script reads this. Every gate must pass before deploy. Block on failure."
+    }
+  },
+
+  "scopes": {
+    "SOVEREIGN": {
+      "path": "/arif",
+      "accent": "void-dark",
+      "pattern": "bare",
+      "audience": ["public", "sovereign-only-F13"],
+      "primary_organ": "arifOS-kernel",
+      "doctrine": "F13 anchor. Bare background. The absence of pattern IS the marker."
+    },
+    "HUMAN": {
+      "path": "/human",
+      "accent": "yellow",
+      "pattern": "chordial-light",
+      "audience": ["public", "health-workers", "sociologists"],
+      "primary_organ": "WELL",
+      "posture": "REFLECT_ONLY",
+      "doctrine": "Substrate, dignity, witness. The people-side of the federation. Sovereignty is preserved."
+    },
+    "INSTITUTION": {
+      "path": "/institution",
+      "accent": "yellow",
+      "accent_exception": "amber (AAA bridge only)",
+      "pattern": "orthogonal-fractal",
+      "audience": ["public", "regulators", "executives"],
+      "primary_organ": "AAA",
+      "posture": "DISPLAY_ONLY",
+      "doctrine": "Old + new institutions live here. Transformation visible: old beside new."
+    },
+    "EARTH": {
+      "path": "/earth",
+      "accent": "teal",
+      "pattern": "chordial-dense",
+      "audience": ["public", "geoscientists", "energy-professionals", "philosophers"],
+      "primary_organ": "GEOX",
+      "posture": "COMPUTE_ONLY",
+      "doctrine": "Known earth + the void. GEOX computes physical evidence. HERMES at the edge."
+    },
+    "LAWS": {
+      "path": "/laws",
+      "accent": "void-blue",
+      "pattern": "orthogonal-fractal-faintest",
+      "audience": ["researchers", "auditors", "sovereign"],
+      "primary_organ": "arifOS-kernel",
+      "doctrine": "F1-F13 constitutional floors. The laws that govern. Quieter than scopes."
+    }
+  },
+
+  "organs": [
+    {"organ": "arifOS",   "port": 8088, "path": "/institution/arifos", "posture": "JUDGE_ONLY",         "mcp": "arifos.arif-fazil.com/mcp"},
+    {"organ": "A-FORGE",  "port": 7071, "path": "/institution/aforge", "posture": "EXECUTE_AFTER_SEAL", "mcp": "forge.arif-fazil.com/mcp"},
+    {"organ": "AAA",      "port": 3001, "path": "/institution/aaa",    "posture": "DISPLAY_ONLY",        "mcp": "aaa.arif-fazil.com/mcp"},
+    {"organ": "arifFLOW", "port": 7073, "path": "(tombstoned)",        "posture": "METABOLIZE_ONLY",     "mcp": "(internal)"},
+    {"organ": "GEOX",     "port": 8081, "path": "/earth/geox",         "posture": "COMPUTE_ONLY",        "mcp": "geox.arif-fazil.com/mcp"},
+    {"organ": "WEALTH",   "port": 18082,"path": "/institution/wealth", "posture": "COMPUTE_ONLY",        "mcp": "wealth.arif-fazil.com/mcp"},
+    {"organ": "WELL",     "port": 18083,"path": "/human/well",         "posture": "REFLECT_ONLY",        "mcp": "well.arif-fazil.com/mcp"},
+    {"organ": "HERMES",   "port": 8644, "path": "/earth/hermes",       "posture": "REFLECT_ONLY",        "mcp": "(RFC 2119 silent)"}
+  ],
+
+  "redirect_rules": {
+    "D1_mcp_exempt": "MCP endpoints dual-serve on subdomain AND canonical path. Never redirect.",
+    "D3_one_hop": "Every redirect lands directly on the canonical path. No chains.",
+    "D6_canary": "WELL is the canary. 15-min cadence × 72h. 0 unexpected 5xx → green → Phase 4b.",
+    "D7_tombstones": "Internal-only services return 410 Gone publicly. Tailscale mesh only."
+  },
+
+  "navigation_rules": {
+    "universal_frame": "Every page must include: sovereign_strip · breadcrumb · page_content · prev_next_nav · mission_footer.",
+    "epistemic_registers": {
+      "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
+      "agent_side_voice": "MARUAH — audit-grade, kernel-first phrasing",
+      "rule": "F6 dual-register: kernel/audit surfaces emit MARUAH; UI chips/prose emit EMPATHY."
+    }
+  },
+
+  "design_rules": {
+    "red_rationed": "ONLY three surfaces: sovereign strip, verdict chips (888/HOLD/VOID), seals. Red elsewhere = design VOID.",
+    "amber_exception": "AMBER (--amber-500 #D4A853) is reserved for the AAA cockpit bridge. ONLY non-primer exception.",
+    "one_torus_per_page": "Page renders at most one toroidal anchor (trinity_ring OR mission_wheel, never both).",
+    "sovereign_bare": "/arif background-image must be 'none'. No fractal on sovereign.",
+    "single_skeleton": "Only IBM Plex superfamily may be referenced in compiled CSS.",
+    "self_hosted_only": "No @import or font URL pointing to Google Fonts, fonts.com, etc.",
+    "hol_blocks_build": [
+      "red_ration_buttons",
+      "hold_to_confirm_required_for_void",
+      "bop_travel_required",
+      "contrast_minimum",
+      "red_ration",
+      "one_torus_per_page",
+      "single_skeleton",
+      "one_hop_redirects",
+      "sovereign_bare"
+    ]
+  },
+
+  "content_model_fields": {
+    "title": "string (required)",
+    "audience": "enum [human, agent, sovereign, auditor, public] (required)",
+    "intent": "string (required) — what is this page for?",
+    "ring": "enum [SOVEREIGN, HUMAN, INSTITUTION, EARTH, LAWS] (required)",
+    "primary_action": {
+      "label": "string",
+      "href": "string (canonical path or subdomain)",
+      "grade": "enum [SEAL, HOLD, VOID]"
+    },
+    "proof_action": {
+      "label": "string",
+      "href": "string (canonical path or subdomain)",
+      "grade": "enum [SEAL, HOLD, VOID]"
+    },
+    "epistemic_register": "enum [EMPATHY, MARUAH] (required)",
+    "ring_accents": "array of var(--color-N) tokens",
+    "epistemic_labels": "array of [OBS, DER, INT, SPEC, CLAIM, PLAUSIBLE, ESTIMATE, UNKNOWN]",
+    "template": "enum [trinity-tile-page, organ-page, surface-page, agent-surface] (required) — from templates.json",
+    "toroidal": "enum [trinity_ring, mission_wheel, none] (required)",
+    "toroidal_rationale": "string (why this torus choice)",
+    "primary_organ": "string or null",
+    "mcp_endpoint": "string (canonical MCP URL)",
+    "human_voice_prose": "string (EMPATHY narrative)",
+    "agent_voice_prose": "string (MARUAH audit-grade)",
+    "ring_geometry": "string (visual rule for this page)",
+    "proof_actions": "array of additional proof actions for /999/seal entries"
+  },
+
+  "verification_gates": [
+    {"G1": "JSON Schema validation — every canon JSON"}, 
+    {"G2": "Schema parity — all 3 canon copies md5 match"},
+    {"G3": "Build — npm run build exits 0"},
+    {"G4": "Caddy — caddy validate exits 0"},
+    {"G5": "Routes — canonical 200, retired 301"},
+    {"G6": "Links — no broken internal links"},
+    {"G7": "Navigation — universal frame on every page"},
+    {"G8": "Tokens — design tokens loaded, no hard-coded colors"},
+    {"G9": "Layout — templates.json lint passes"},
+    {"G10": "Geometry — one torus per page (lint blocks)"},
+    {"G11": "Typography — IBM Plex only (lint blocks)"},
+    {"G12": "Components — button grades honored; red rationed"},
+    {"G13": "Visual — Playwright screenshots match baseline"},
+    {"G14": "Epistemic — each claim has evidence label"},
+    {"G15": "Floor — F1-F13 held (no VIOIDs from agent lane)"},
+    {"G16": "F6 — dual register (EMPATHY human, MARUAH kernel)"},
+    {"G17": "Receipt — VAULT999 receipt sealed"}
+  ],
+
+  "floor_alignment": {
+    "F1_AMANAH": "Reversibility. Every canon change is in git.",
+    "F2_TRUTH": "P(truth)≥0.99. Every claim has evidence (OBS · DER · INT · SPEC).",
+    "F3_TRI_WITNESS": "Human × AI × Verifier ≥ 0.75 — build + lint + Playwright.",
+    "F4_CLARITY": "ΔS ≤ 0 — Atlas lowers entropy by being THE source.",
+    "F5_PEACE_SQUARED": "Non-destructive — Atlas never mutates an organ without sovereign ack.",
+    "F6_EMPATHY_MARUAH": "MARUAH on kernel, EMPATHY on human — dual register.",
+    "F7_HUMILITY": "Ω₀ ∈ [0.03, 0.05] — Atlas admits its own gaps in WEB_ATLAS.md.",
+    "F8_GENIUS": "G = (A·P·E·X)^(¼) ≥ 0.80 — components.json lint rules.",
+    "F9_ANTIHANTU": "No deception — Red rationed, three surfaces only.",
+    "F10_ONTOLOGY": "AI ≠ being — Federation.json postures never claim sentience.",
+    "F11_AUDITABILITY": "Every change is in git — F11 WAJIB gate in canon-sync.sh.",
+    "F12_RESILIENCE": "Injection defense — One-hop redirect, schema validation.",
+    "F13_SOVEREIGN": "Human veto final — SOVEREIGN_BARE / SOVEREIGN_BLANK invariants."
+  },
+
+  "agent_workflow": [
+    "1. Read atlas.json — pointer to all documents",
+    "2. Identify affected routes from sites.yaml",
+    "3. Identify affected components from components.json",
+    "4. Identify affected tokens from design-tokens.json and geometry.json",
+    "5. Propose change using content-model.schema.json (no raw HTML)",
+    "6. Show diff (single page review)",
+    "7. Run build (npm run build, caddy validate)",
+    "8. Run route checks (every canonical URL 200; retired 301)",
+    "9. Run visual checks (Playwright + atlas lints)",
+    "10. Produce receipt (forge_vault mode=receipt)",
+    "11. WAIT for ARIF SEAL"
+  ],
+
+  "forbidden_patterns": [
+    "Hard-coded colors (use design-tokens.json)",
+    "Self-invented navigation (use navigation.json)",
+    "One-off page templates (use templates.json)",
+    "Magic numbers (use --var(--token-…) from design-tokens.json)",
+    "Two torus on one page (geometry.json says one)",
+    "New red surface (design-tokens.json says rationed)",
+    "Chained redirects (redirects.yaml says one-hop)",
+    "Inline content not in content model",
+    "Invented layout (templates.json defines three)",
+    "Invented component (components.json defines the library)"
+  ],
+
+  "topology": {
+    "source": "/root/arif-fazil.com/canon/ (this folder)",
+    "live_mirror": "/var/www/html/canon/ (served by Caddy)",
+    "github_source": "https://github.com/ariffazil/web-canon (GitHub)",
+    "local_clone": "/root/web-canon/canon/",
+    "sync_script": "scripts/canon-sync.sh",
+    "validation": "JSON Schema via canon/public-state.schema.json (block build on violation)"
+  },
+
+  "maintenance": {
+    "atlas.json": "Updated when canon structure changes (new file/layer). Owner: sovereign (F13).",
+    "WEB_ATLAS.md": "Updated when major scope changes. Owner: sovereign (F13).",
+    "WEB_CANON_README.md": "Updated when read order changes. Owner: sovereign (F13).",
+    "sites.yaml": "Updated for new organ, new route, redirect change. Owner: operator + sovereign.",
+    "navigation.json": "Updated for frame component add/change. Owner: sovereign (F13).",
+    "redirects.yaml": "Updated for new redirect, alias, tombstone. Owner: operator.",
+    "design-tokens.json": "Updated for new color, contrast verified. Owner: sovereign (F13).",
+    "typography.json": "Updated for new font, new scale, new voice. Owner: sovereign (F13).",
+    "geometry.json": "Updated for new pattern, new torus. Owner: sovereign (F13).",
+    "components.json": "Updated for new component, new grade. Owner: sovereign (F13).",
+    "templates.json": "Updated for new template, new agent override. Owner: sovereign (F13).",
+    "federation.json": "Updated for organ posture change. Owner: sovereign (F13).",
+    "content-model.schema.json": "Updated for new content field. Owner: sovereign (F13).",
+    "verification-checklist.yaml": "Updated for new gate, new rule. Owner: sovereign (F13)."
+  },
+
+  "tenant_contract": {
+    "ratified_by": "sovereign (F13) — 999_SEAL",
+    "ratified_at": "2026-08-01T13:30:00Z",
+    "signature": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. Forgery is detectable."
+  }
+}

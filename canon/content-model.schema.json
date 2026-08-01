@@ -1,0 +1,289 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.arif-fazil.com/.well-known/content-model.schema.json",
+  "title": "arifOS Federation Content Model Schema",
+  "description": "Every page in the arif-fazil.com federation must declare a content model conforming to this schema. Pages render from the content model. Agents edit the content model, not random HTML.",
+  "version": "ATLAS-1.0",
+  "ratified_by": "sovereign (F13) — 999_SEAL",
+  "ratified_at": "2026-08-01T13:30:00Z",
+  "doctrine": "DITEMPA BUKAN DIBERI — If the content model is missing or invalid, the page is BANGANG. The page is the rendering of the model, not the source.",
+
+  "type": "object",
+  "required": ["title", "audience", "intent", "ring", "primary_action", "proof_action", "epistemic_register", "template", "toroidal"],
+  "additionalProperties": false,
+
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Page title. One per page. The h1."
+    },
+    "audience": {
+      "type": "string",
+      "enum": ["human", "agent", "sovereign", "auditor", "public"],
+      "description": "Primary audience. Determines register and bridge to agent surface."
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "What is this page for? What does the reader walk away with?"
+    },
+    "ring": {
+      "type": "string",
+      "enum": ["SOVEREIGN", "HUMAN", "INSTITUTION", "EARTH", "LAWS"],
+      "description": "Which scope does this page belong to? Determines accent, pattern, and templates."
+    },
+    "primary_action": {
+      "type": "object",
+      "required": ["label", "href", "grade"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 60,
+          "description": "Button label. Active voice."
+        },
+        "href": {
+          "type": "string",
+          "pattern": "^(/|https?://)",
+          "description": "Canonical path or subdomain URL. NEVER a chain."
+        },
+        "grade": {
+          "type": "string",
+          "enum": ["SEAL", "HOLD", "VOID"],
+          "description": "Button grade from components.json. SEAL=solid, HOLD=dashed, VOID=red hold-to-confirm."
+        }
+      }
+    },
+    "proof_action": {
+      "type": "object",
+      "required": ["label", "href", "grade"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {"type": "string", "minLength": 1, "maxLength": 60},
+        "href": {"type": "string", "pattern": "^(/|https?://)"},
+        "grade": {"type": "string", "enum": ["SEAL", "HOLD", "VOID"]}
+      }
+    },
+    "proof_actions": {
+      "type": "array",
+      "description": "Additional proof actions (e.g. /999 seal entries, audit trails)",
+      "items": {
+        "type": "object",
+        "required": ["label", "href", "grade"],
+        "properties": {
+          "label": {"type": "string"},
+          "href": {"type": "string", "pattern": "^(/|https?://)"},
+          "grade": {"type": "string", "enum": ["SEAL", "HOLD", "VOID"]}
+        }
+      }
+    },
+    "epistemic_register": {
+      "type": "string",
+      "enum": ["EMPATHY", "MARUAH"],
+      "description": "Voice. EMPATHY for human-side prose; MARUAH for kernel/audit surfaces. F6 dual-register."
+    },
+    "epistemic_labels": {
+      "type": "array",
+      "description": "Evidence labels for the claims on this page. F2 TRUTH.",
+      "items": {
+        "type": "string",
+        "enum": ["OBS", "DER", "INT", "SPEC", "CLAIM", "PLAUSIBLE", "ESTIMATE", "UNKNOWN"]
+      }
+    },
+    "ring_accents": {
+      "type": "array",
+      "description": "Color tokens used on this page. Must come from design-tokens.json domain_accents.",
+      "items": {
+        "type": "string",
+        "pattern": "^var\\(--[a-z]+-[0-9]+\\)$"
+      },
+      "minItems": 1
+    },
+    "template": {
+      "type": "string",
+      "enum": ["trinity-tile-page", "organ-page", "surface-page", "agent-surface"],
+      "description": "Template from templates.json. Three templates for human; agent override for agent surface."
+    },
+    "toroidal": {
+      "type": "string",
+      "enum": ["trinity_ring", "mission_wheel", "none"],
+      "description": "ONE toroidal anchor per page. NE-BOTH rule from geometry.json."
+    },
+    "toroidal_rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "description": "Why this torus choice. E.g. 'trinity-tile page with AAA bridge emphasis' or 'flat-surface mission-driven'."
+    },
+    "primary_organ": {
+      "type": ["string", "null"],
+      "enum": ["arifOS", "A-FORGE", "AAA", "arifFLOW", "GEOX", "WEALTH", "WELL", "HERMES", "ledger", null],
+      "description": "Which organ this page belongs to. null for cross-cutting pages like /laws."
+    },
+    "mcp_endpoint": {
+      "type": "string",
+      "pattern": "^https?://",
+      "description": "Canonical MCP endpoint for this page's organ. From tool-surfaces.json."
+    },
+    "human_voice_prose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 5000,
+      "description": "Page body in EMPATHY voice (human-side narrative)."
+    },
+    "agent_voice_prose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 5000,
+      "description": "Page body in MARUAH voice (audit-grade). Used for /mcp/ JSON."
+    },
+    "ring_geometry": {
+      "type": "string",
+      "enum": ["trinity_ring", "mission_wheel", "none"],
+      "description": "Visual rule for this page. Must match toroidal."
+    },
+    "breadcrumbs": {
+      "type": "array",
+      "description": "Optional. If absent, derived from URL path by navigation.json.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "parent_route": {
+      "type": "string",
+      "pattern": "^/",
+
+      "description": "Canonical parent path. Used for prev_next_nav."
+    },
+    "prev_route": {
+      "type": ["string", "null"],
+      "pattern": "^/",
+      "description": "Previous page in the linear narrative. null if no prev."
+    },
+    "next_route": {
+      "type": ["string", "null"],
+      "pattern": "^/",
+      "description": "Next page in the linear narrative. null if no next."
+    },
+    "ring_layout": {
+      "type": "string",
+      "description": "Optional human-readable layout description for the page."
+    },
+    "primary_organ_endpoint": {
+      "type": "string",
+      "pattern": "^(/mcp/|https?://)",
+      "description": "MCP affordance button href. Should be the organ's MCP endpoint."
+    },
+
+    "torus_geometry": {
+      "type": "object",
+      "description": "Three-arcs geometry for trinity_ring torus. Future schemas.",
+      "additionalProperties": true
+    },
+    "ground_truth_provenance": {
+      "type": "object",
+      "description": "Where does the truth on this page come from?",
+      "properties": {
+        "source": {"type": "string", "description": "Source URI/path"},
+        "fetched_at": {"type": "string", "format": "date-time"},
+        "verified_by": {"type": "string"},
+        "merkle_receipt": {"type": "string"}
+      }
+    },
+
+    "ratification": {
+      "type": "object",
+      "description": "Sovereign ratification metadata.",
+      "properties": {
+        "ratified_by": {"type": "string"},
+        "ratified_at": {"type": "string", "format": "date-time"},
+        "seal_verdict": {"type": "string", "enum": ["SEAL", "HOLD", "VOID", "SABAR"]},
+        "floor_alignment": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+
+  "examples": [
+    {
+      "title": "WELL — Human Vitality",
+      "audience": "human",
+      "intent": "Show the human-readiness surface of the federation. Substrate, dignity, witness.",
+      "ring": "HUMAN",
+      "primary_action": {
+        "label": "Read /human/well",
+        "href": "/human/well",
+        "grade": "SEAL"
+      },
+      "proof_action": {
+        "label": "Verify on /999",
+        "href": "/999/well",
+        "grade": "VOID"
+      },
+      "epistemic_register": "EMPATHY",
+      "epistemic_labels": ["OBS", "DER"],
+      "ring_accents": ["var(--yellow-500)", "var(--yellow-700)", "var(--yellow-50)"],
+      "template": "organ-page",
+      "toroidal": "trinity_ring",
+      "toroidal_rationale": "Organ page with constellation emphasis; trinity ring at top of organ card grid.",
+      "primary_organ": "WELL",
+      "mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "human_voice_prose": "WELL observes human and machine readiness. It does not diagnose. It does not prescribe. It holds the substrate.",
+      "agent_voice_prose": "WELL: REFLECT_ONLY posture. L2 readiness. Observes human substrate. No diagnoses, no prescriptions.",
+      "ring_geometry": "trinity_ring",
+      "breadcrumbs": ["arif", "human", "well"],
+      "parent_route": "/human",
+      "prev_route": "/human",
+      "next_route": "/institution/aaa",
+      "primary_organ_endpoint": "/mcp/",
+      "ratification": {
+        "ratified_by": "sovereign (F13)",
+        "ratified_at": "2026-08-01T13:30:00Z",
+        "seal_verdict": "SEAL",
+        "floor_alignment": ["F1", "F2", "F4", "F6", "F8", "F11"]
+      }
+    }
+  ],
+
+  "validation_rules": [
+    {
+      "name": "ring_matches_template",
+      "rule": "ring and template must be consistent (e.g. organ-page must have a primary_organ)",
+      "fail_action": "block build"
+    },
+    {
+      "name": "epistemic_register_matches_audience",
+      "rule": "audience=human → register=EMPATHY; audience=agent → register=MARUAH; audience=auditor → register=MARUAH",
+      "fail_action": "block build"
+    },
+    {
+      "name": "primary_action_grade_consistent",
+      "rule": "primary_action.grade must be from components.json. No HOLD buttons in organ-page primary_action.",
+      "fail_action": "block build"
+    },
+    {
+      "name": "toroidal_rationale_required",
+      "rule": "toroidal_rationale must be present if toroidal is not 'none'",
+      "fail_action": "block build"
+    },
+    {
+      "name": "ring_accents_only_from_canon",
+      "rule": "ring_accents must be valid var(--color-N) tokens from design-tokens.json",
+      "fail_action": "block build"
+    },
+    {
+      "name": "mcp_endpoint_in_tool_surfaces",
+      "rule": "mcp_endpoint must be present in tool-surfaces.json",
+      "fail_action": "block build"
+    },
+    {
+      "name": "primary_organ_endpoint_matches_mcp",
+      "rule": "primary_organ_endpoint must equal mcp_endpoint or its canonical path",
+      "fail_action": "block build"
+    }
+  ]
+}
