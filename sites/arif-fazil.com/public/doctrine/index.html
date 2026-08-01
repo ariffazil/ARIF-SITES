@@ -151,7 +151,7 @@
       <span class="badge badge-hard">HARD</span>
       <span class="floor-id">F7</span>
       <span class="floor-name">HUMILITY</span>
-      <p class="floor-rule">Ω₀ ∈ [0.03, 0.05]. Confidence capped at 0.90. No fake certainty.</p>
+      <p class="floor-rule">Ω₀ ∈ [0.03, 0.05]. Derived confidence cap ∈ [0.95, 0.97]. No fake certainty. (Amended 2026-07-23: the 0.90 hard cap was abolished; the bridge derives cap from evidence.)</p>
     </div>
     <div class="floor derived">
       <span class="badge badge-derived">DERIVED</span>
@@ -192,16 +192,88 @@
   </div>
 
   <h2>Authority Chain</h2>
-  <p>Every governed action traces this chain. Skipping a link voids the result.</p>
+  <p>Every governed action traces this chain. Skipping a link voids the result. The canonical 8 verbs are the public MCP surface; the bridge runs as a load-bearing layer over the 5th verb (arif_judge).</p>
   <div class="chain">
     <span>arif_init</span><span class="chain-arrow">→</span>
+    <span>arif_observe</span><span class="chain-arrow">→</span>
     <span>arif_think</span><span class="chain-arrow">→</span>
+    <span>arif_route</span><span class="chain-arrow">→</span>
+    <span>arif_memory</span><span class="chain-arrow">→</span>
     <span>arif_judge</span><span class="chain-arrow">→</span>
     <span>arif_forge</span><span class="chain-arrow">→</span>
     <span>arif_seal</span>
   </div>
   <p style="margin-top:.5rem; color:var(--muted); font-size:.85rem;">
-    <strong>Init</strong> binds the session. <strong>Think</strong> reasons and plans. <strong>Judge</strong> delivers constitutional verdict (SEAL/HOLD/SABAR/VOID). <strong>Forge</strong> executes after SEAL. <strong>Seal</strong> commits to immutable VAULT999.
+    <strong>Init</strong> binds the session. <strong>Observe</strong> reads substrate. <strong>Think</strong> reasons and plans. <strong>Route</strong> dispatches across organs. <strong>Memory</strong> indexes governed knowledge. <strong>Judge</strong> delivers constitutional verdict (SEAL/HOLD/SABAR/VOID) — now guarded by the BIJAKSANA four-dial lens. <strong>Forge</strong> executes after SEAL. <strong>Seal</strong> commits to immutable VAULT999.
+  </p>
+
+  <h2>BIJAKSANA Four-Dial Lens — 888 SEAL 2026-08-01</h2>
+  <p>No judgment is complete without all four dials. The lens judges on physics, not intention. The SABAR doctrine upgrade closes the loophole where "good intent" could masquerade as transformation.</p>
+
+  <div class="floor-grid">
+    <div class="floor hard">
+      <span class="badge badge-hard">D1</span>
+      <span class="floor-name">AKAL</span>
+      <p class="floor-rule">actor's identity-mass coherence ∈ [0,1]. Below 0.5 → BRIDGE_BLOCKED.</p>
+    </div>
+    <div class="floor hard">
+      <span class="badge badge-hard">D2</span>
+      <span class="floor-name">PRESENT</span>
+      <p class="floor-rule">Cognitive buffer state (charged, omega). Uncharged → BRIDGE_RESTRAIN (restraint, not failure).</p>
+    </div>
+    <div class="floor hard">
+      <span class="badge badge-hard">D3</span>
+      <span class="floor-name">ENERGY-ENTROPY</span>
+      <p class="floor-rule">ΔS pathway ∈ {open, sealed, spiraling}. Sealed → BRIDGE_BLOCKED (terminal extract). Spiraling → BRIDGE_RESTRAIN (restructurable extract).</p>
+    </div>
+    <div class="floor hard">
+      <span class="badge badge-hard">D4</span>
+      <span class="floor-name">EXPLORATION-AMANAH</span>
+      <p class="floor-rule">F1 AMANAH + reversibility (perimeter-intact). Hard-veto on irreversible without sovereign receipt.</p>
+    </div>
+  </div>
+
+  <h3>SABAR Doctrine Upgrade</h3>
+  <p>The bridge distinguishes four kinds of SABAR — the prior binary (restraint vs. failure) was insufficient:</p>
+  <div class="floor-grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));">
+    <div class="floor">
+      <span class="floor-id">S1</span>
+      <span class="floor-name">restraint</span>
+      <p class="floor-rule">D2 buffer uncharged. Hold without verdict. The system is present but not yet capable.</p>
+    </div>
+    <div class="floor">
+      <span class="floor-id">S2</span>
+      <span class="floor-name">investment</span>
+      <p class="floor-rule">Long-horizon seal-required actions. Cooldown before SEAL. (v1.1 — wiring advisory into apply path.)</p>
+    </div>
+    <div class="floor">
+      <span class="floor-id">S3</span>
+      <span class="floor-name">terminal_extract</span>
+      <p class="floor-rule">D3 pathway sealed. The system is fully extracted. No further mutation permitted.</p>
+    </div>
+    <div class="floor">
+      <span class="floor-id">S4</span>
+      <span class="floor-name">restructurable_extract</span>
+      <p class="floor-rule">D3 spiraling + D2 ready. Observe, hold, do not SEAL. The system is mid-collapse but recoverable.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:.5rem; color:var(--muted); font-size:.85rem;">
+    <strong>Constitutional hash:</strong> SHA-256 over {actor_B, actor_Phi, entropy_pathway, entropy_receipt, bridge_verdict, sabar_kind, version}. Hash anchors every bridge decision in the audit chain. Live verification: <code>arif_judge(actor_B=0.3, …)</code> → <code>verdict=HOLD, gate=bijaksana_bridge, bridge_verdict=BRIDGE_BLOCKED, constitutional_hash=a96a1bc38c8f586e…</code>
+  </p>
+
+  <h3>Mission Vocabulary</h3>
+  <p>The federation exposes six mission verbs to sovereign users (<a href="/missions">/missions</a>). Internal tools are hidden; missions are surfaced.</p>
+  <div class="chain" style="justify-content:flex-start;">
+    <span><strong>Investigate</strong></span><span class="chain-arrow">·</span>
+    <span><strong>Interpret</strong></span><span class="chain-arrow">·</span>
+    <span><strong>Decide</strong></span><span class="chain-arrow">·</span>
+    <span><strong>Build</strong></span><span class="chain-arrow">·</span>
+    <span><strong>Monitor</strong></span><span class="chain-arrow">·</span>
+    <span><strong>Remember</strong></span>
+  </div>
+  <p style="margin-top:.4rem; color:var(--muted); font-size:.85rem;">
+    State the problem in one of these verbs. The federation chooses the instruments, challenges the result, and returns only what matters. The <a href="/missions">/missions</a> page is the human cockpit; tool explorers and raw MCP catalogs are engine room only.
   </p>
 
   <h2>The Proof Architecture — /000 ↔ /999</h2>
@@ -271,6 +343,10 @@
 
   <h2>Autonomy Tiers</h2>
   <div class="card">
+    <h3>T0 — READ-ONLY</h3>
+    <p>Curl, git status, port probes, file reads. No mutation, no announcement. Cite F2 evidence in any output.</p>
+  </div>
+  <div class="card">
     <h3>T1 — AUTO-DO</h3>
     <p>Read, search, observe, plan, edit, build, test, lint, format. Zero friction. No announcement needed.</p>
   </div>
@@ -280,7 +356,7 @@
   </div>
   <div class="card">
     <h3>T3 — 888_HOLD</h3>
-    <p>rm -rf, DROP TABLE, force-push to main, production deploy without test pass, constitutional changes, secret rotation. Sovereign (F13) must approve.</p>
+    <p>rm -rf, DROP TABLE, force-push to main, production deploy without test pass, <strong>constitutional changes (F1–F13)</strong>, secret rotation. Sovereign (F13) must approve. The BIJAKSANA bridge activation followed this protocol on 2026-08-01.</p>
   </div>
 
   <h2>Evidence Discipline</h2>
@@ -292,7 +368,7 @@
     <span style="color:var(--red);">SPEC</span>
   </div>
   <p style="margin-top:.4rem; color:var(--muted); font-size:.85rem;">
-    <strong>OBS</strong> — directly observed or measured. <strong>DER</strong> — derived from OBS through computation. <strong>INT</strong> — interpreted with human judgment. <strong>SPEC</strong> — speculative, beyond current evidence. Confidence capped at 0.90 (F7).
+    <strong>OBS</strong> — directly observed or measured. <strong>DER</strong> — derived from OBS through computation. <strong>INT</strong> — interpreted with human judgment. <strong>SPEC</strong> — speculative, beyond current evidence. Confidence cap derived in [0.95, 0.97] (F7).
   </p>
 
   <h2>Key Principles</h2>
@@ -326,12 +402,14 @@
     <a href="/federation/">Federation map</a> ·
     <a href="/000/">Proof of Human</a> ·
     <a href="/999/">Sealed Vault</a> ·
+    <a href="/institution/">Institution chamber</a> ·
+    <a href="/missions">/missions</a> ·
     <a href="https://mcp.arif-fazil.com/">MCP door</a>
   </p>
 
   <footer>
     <strong>DITEMPA BUKAN DIBERI</strong> — Forged, Not Given.<br>
-    Sovereign: Muhammad Arif bin Fazil (F13) · Kernel: arifOS v2026.7.28 · Federation: 7 organs, 13 floors, 1 human.
+    Sovereign: Muhammad Arif bin Fazil (F13) · Kernel: arifOS v2026.08.01-bijaksana · Federation: 7 organs, 13 floors, 8 verbs, 4 dials, 1 human.
   </footer>
 </main>
 </body>
