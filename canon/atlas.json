@@ -522,6 +522,27 @@
         "resolution_evidence": "Sovereign endorsed /earth as reference page in EOD instruction. Atlas registers it as the first instrument to build.",
         "floor_impact": ["F1"],
         "invariants_at_risk": ["I3", "I11"]
+      },
+      {
+        "id": "U6",
+        "question": "design-tokens.json SOURCE vs LIVE mirror DRIFT detected. Source md5 049f6eec2d78a72df3a1a89b1cac1aab (16.8 KB, original PRIMER-1.0). Live md5 75bd386afb7b39ad50a3c4689787d8d7 (14.7 KB, drifted). Also design-primer.md exists in BOTH canon/ and forge_work/proposals/. The ratification protocol required the proposal to be in proposal/ only, not canon/. Who modified what, and which version is canonical?",
+        "risk": "G2_PARITY FAILS. F12 RESILIENCE violation. F11 AUDITABILITY violated. If sovereign ratifies U1 (PRIMER-1 hex values), the source should change. If sovereign doesn't, the live mirror should revert. Right now NEITHER is the authoritative canonical state.",
+        "test": "diff /root/arif-fazil.com/canon/design-tokens.json /var/www/html/canon/design-tokens.json | head -20 → already shows drift. Sovereign ratification on what the canonical design-tokens.json should be.",
+        "owner": "sovereign (F13)",
+        "verdict": "OPEN",
+        "floor_impact": ["F1", "F2", "F11", "F12"],
+        "invariants_at_risk": ["I3", "I8", "I9", "I11"],
+        "evidence": [
+          "/root/arif-fazil.com/canon/design-tokens.json md5=049f6eec2d78a72df3a1a89b1cac1aab",
+          "/var/www/html/canon/design-tokens.json md5=75bd386afb7b39ad50a3c4689787d8d7",
+          "/root/arif-fazil.com/canon/design-primer.md (14714B, locked 14:03)",
+          "/root/arif-fazil.com/forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md (18813B, 13:58)",
+          "git log commit 5750b57: 'Phase 1 proposal freeze (forge_work) + Phase 2 canon promotion (canon/) both recorded' — sovereign 999_SEAL applied to PRIMER-1?",
+          "git log commit 515de81: 'hook PRIMER-1 design-canon lint into prebuild (F4 gate) + remove fake-live oil mock (F9)'"
+        ],
+        "remediation_options": [
+          "(A) SYNC live-from-source — copy /root/arif-fazil.com/canon/design-tokens.json to live. The 'live' is a stale snapshot. (B) SYNC source-from-live — copy /var/www/html/canon/design-tokens.json to source. Someone promoted PRIMER-1 hex values via a different path. (C) ACCEPT-PRIMER-1 — sovereign ratifies U1 (ACCEPT), source updates to PRIMER-1 values, both reconcile. (D) HOLD — keep both, surface ambiguity until session close, document as drift."
+        ]
       }
     ]
   }
