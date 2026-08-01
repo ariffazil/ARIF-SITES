@@ -29,6 +29,14 @@ verify:
 	node scripts/verify-surfaces.cjs --base=https://arif-fazil.com
 	@echo "[verify] Checking Caddy config..."
 	caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "[verify] Caddy config: VALID"
+	@echo "[verify] M3 fix 2026-08-01: scanning source HTML for dev-only entry points..."
+	@if grep -rE 'src="/src/[^"]*"|src="/@vite/|src="/@id/' sites/ public/ 2>/dev/null; then \
+		echo "✗ [verify] DEV-ONLY ENTRY FOUND — refuse to deploy."; \
+		echo "  These paths only exist in Vite dev mode. Run 'make build' first to bundle."; \
+		exit 1; \
+	else \
+		echo "[verify] No dev-only entry points — safe to deploy."; \
+	fi
 	@echo "✓ All gates passed."
 
 # ── Build the React SPA ───────────────────────────────────────────────
