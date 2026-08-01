@@ -485,6 +485,8 @@ arif-fazil.com {
 	# MCP discovery index (canonical at aaa.arif-fazil.com)
 	redir /mcp-discovery-index.json https://aaa.arif-fazil.com/mcp-discovery-index.json 301
 
+	# Shadow Decoder — civic audit shortcut (2026-07-31)
+	redir /shadow /politics/shadow/ 301
 	# Phantom route redirects (canonical addresses)
 	redir /genesis /000/ 301
 	redir /canon /doctrine 301

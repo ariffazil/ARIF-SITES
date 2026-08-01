@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "Negeri Sembilan PRN 2026 Live Sensory Telemetry",
-    "updated_at_utc": "2026-07-31T23:25:20.527Z",
-    "generated_at_utc": "2026-07-31T23:25:20.527Z",
+    "updated_at_utc": "2026-08-01T00:07:01.197Z",
+    "generated_at_utc": "2026-08-01T00:07:01.197Z",
     "sealed_by": "arifOS VAULT999 SENSORY HUB",
     "seal_id": "VAULT999-PRN16-NS-GT-003",
     "status": "SEALED_STREAMING",
@@ -36,7 +36,7 @@
     "bn_pn_coalition_forecast_source_as_of": "2026-07-31T23:59:00+08:00"
   },
   "polymarket": {
-    "probed_at_utc": "2026-07-31T23:25:20.527Z",
+    "probed_at_utc": "2026-08-01T00:07:01.198Z",
     "status": "NO_MARKET",
     "markets_scanned": 100,
     "matches_found": 0,
