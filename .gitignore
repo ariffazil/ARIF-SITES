@@ -44,3 +44,4 @@ test-results/
 # Backup files (F1 AMANAH — keep local, not in version control)
 *.bak-*
 .releases/
+sites/arif-fazil.com/public/data/politics/ns_live_telemetry.json
