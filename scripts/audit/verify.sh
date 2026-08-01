@@ -51,16 +51,21 @@ emit() {
 # ── 1. web_zen doctor (full audit) ───────────────────────────────────
 echo "## 1. web_zen doctor" >> "$REPORT"
 if [ -x "$WEBZEN" ]; then
-  doctor_json=$(python3 "$WEBZEN" doctor --json 2>/dev/null || echo "{}")
-  doctor_ok=$(echo "$doctor_json" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('ok',False))" 2>/dev/null || echo "False")
-  doctor_checks=$(echo "$doctor_json" | python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('checks',[])))" 2>/dev/null || echo "0")
-  doctor_band=$(echo "$doctor_json" | python3 -c "
+  # Stream doctor JSON directly into a temp file (bypass bash `$(...)`
+  # capture which corrupts multi-line JSON). If python exits non-zero
+  # the file is empty; subsequent `|| echo` fallbacks handle that.
+  doctor_tmp=$(mktemp)
+  python3 "$WEBZEN" doctor --json > "$doctor_tmp" 2>/dev/null
+  doctor_ok=$(python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('ok',False))" < "$doctor_tmp" 2>/dev/null || echo "False")
+  doctor_checks=$(python3 -c "import sys,json; d=json.load(sys.stdin); print(len(d.get('checks',[])))" < "$doctor_tmp" 2>/dev/null || echo "0")
+  doctor_band=$(python3 -c "
 import sys,json
+from collections import Counter
 d=json.load(sys.stdin)
 bands=[c.get('band','UNKNOWN') for c in d.get('checks',[])]
-from collections import Counter
 print(dict(Counter(bands)))
-" 2>/dev/null || echo "{}")
+" < "$doctor_tmp" 2>/dev/null || echo "{}")
+  rm -f "$doctor_tmp"
   echo "- doctor.ok: **$doctor_ok**" >> "$REPORT"
   echo "- doctor.checks: **$doctor_checks**" >> "$REPORT"
   echo "- doctor.bands: \`$doctor_band\`" >> "$REPORT"
