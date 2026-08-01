@@ -1,6 +1,6 @@
 ---
 title: WEB_ATLAS
-version: ATLAS-1.0
+version: ATLAS-1.1
 epoch: SEAL-2026-08-01-f13-batch-ack
 actor: kimi-code/FI-008
 sovereign: ARIF (Muhammad Arif bin Fazil, F13)
@@ -453,7 +453,7 @@ If you skip a step, the result is BANGANG.
 
 ---
 
-## 16. The Atlas Itself
+## 17. The Atlas Itself
 
 The Atlas is a living document. It changes when:
 
@@ -470,7 +470,85 @@ The Atlas is a living document. It changes when:
 
 ---
 
-## 17. The Atlas Doctrine
+## 18. The 13 Core Invariants (The Doctrine)
+
+The 13 Core Invariants are the explicit constitutional law of the arif-fazil.com federation. Every page, every agent, every coder, every build, every receipt must satisfy these.
+
+> **Prime invariant:** An agentic site is not a website. It is a public execution surface for human meaning, machine reading, and future agent behavior. Every mutation is not just design. It is **reality editing**.
+
+| ID | Name | Statement |
+|---|---|---|
+| **I1** | ATLAS before action | Every agent action begins with reading atlas.json. The Atlas is the supreme map. No mutation without consulting it. |
+| **I2** | Canon before code | Site code is generated from canon, not written from scratch. Canon defines; code reflects. |
+| **I3** | SOT before rendered page | Never edit the rendered surface if a canonical source exists upstream. SOT → generator → page. Never page → hand patch → drift. |
+| **I4** | Shared shell before subpage freedom | Every page inherits the universal frame: HeadCanon · TrinityNav · PageHero · MainContent · Proof/Status · RelatedRoutes · CanonFooter. No page gets to invent its own body. |
+| **I5** | Tokens before local CSS | The page may declare data-ring and data-plane. It may not declare random colors. Agent must use tokens.css / components.css / approved classes. Not improvisation. |
+| **I6** | Navigation before content | Every page must answer: Where am I? What is this page for? Where can I go next? What is the proof route? No page-specific navigation copies. |
+| **I7** | Static evidence before SPA fallback | For /canon/*, /999/*, .well-known/*, llms.txt, page.json, sitemap.xml — static evidence must not be swallowed by SPA fallback. Evidence routes before app routes. |
+| **I8** | Diff before mutation | Agent must produce a diff proposal before any mutation: What will change? Why? Affected routes? Affected canon? Affected generated files? Rollback path? |
+| **I9** | Verification before SEAL | No agentic site change is complete until: build passes, routes pass, canon routes serve actual files, tokens loaded, nav present, ring/plane declared, visual diff checked, machine surfaces valid, receipt emitted. |
+| **I10** | Unknowns declared, not hidden | Never leave unknowns as vibes. Use the unknowns-as-objects pattern. Unknowns are not shame. Unknowns are control points. |
+| **I11** | Human owns meaning | The sovereign decides: purpose, authority, tone, risk, truth boundary, release acceptance. Agent does not invent meaning. Agent surfaces technical consequence and risk. |
+| **I12** | Agent owns operational clarity | Agent surfaces: technical consequence, hidden dependency, route conflict, cache issue, static/dynamic mismatch, unknown state, drift risk. ARIF owns meaning; agent owns operational clarity. |
+| **I13** | No automation without reversibility | Every mutation has a git revert path. Bots do not push to main. No magic cron jobs. No hidden state. No irreversible side effects without sovereign ack. |
+
+### The Human-Agent Contract
+
+**The human wants:** clarity, alignment, truthfulness, low chaos, controlled change, reversible mutation, beautiful but governed design.
+
+**The agent wants:** reduce entropy, preserve canon, never surprise ARIF, never invent authority, never mutate without diff, never deploy without verification.
+
+**The system wants:** one Atlas, one nav, one design language, one route registry, one verification gate, many generated pages, zero hidden drift.
+
+**The short doctrine:** Agentic site forging is not web design. It is governed mutation of a public truth surface.
+
+> **Final verdict:** ARIF decides meaning. ATLAS defines structure. Agent mutates only inside declared boundaries. Verification turns change into truth.
+
+Machine-readable: `invariants.json`.
+
+---
+
+## 19. Unknowns as Objects (I10)
+
+Never leave unknowns as vibes. Every unknown is a control point.
+
+```yaml
+- id: U1
+  question: "Does /canon/*.md serve static markdown or SPA fallback shell?"
+  risk: "AI agents cannot retrieve authoritative Atlas. I7 violated."
+  test: "curl -s https://arif-fazil.com/canon/WEB_ATLAS.md | head -3"
+  owner: operator
+  verdict: OPEN
+  floor_impact: [F2, F11, F12]
+  invariants_at_risk: [I7, I9]
+```
+
+**Lifecycle:**
+- `OPEN` — not yet addressed
+- `RESOLVED` — test passed, evidence captured
+- `ACCEPTED` — owner has decided to live with it, documented
+- `HOLD` — blocked until something else happens
+
+**Rules:**
+- Every unknown has id, question, risk, test, owner, verdict (R1-R4)
+- `RESOLVED` requires `resolution_evidence` (R5)
+- `ACCEPTED` requires `acceptance_rationale` + `accepted_by` (R6)
+- Every unknown has at least one floor_impact (R7)
+- Every unknown has at least one invariants_at_risk (R8)
+- `OPEN` > 90 days → ESCALATE to sovereign
+
+Schema: `unknowns.schema.json`.
+
+**Agent workflow for unknowns:**
+1. Before any change: scan for unknowns affecting affected routes
+2. After each gate: update the unknowns registry
+3. Never publish with `OPEN` unknowns that have floor_impact [F2, F11, F12]
+
+> **The agent surfaces the unknown first. The sovereign decides what to do with it.**
+
+---
+
+## 20. The Atlas Doctrine
 
 > **The Atlas is the map. The territory is `/root/*` repos, `/var/www/html/` webroots, and the Caddy/Cloudflare membrane.**
 >

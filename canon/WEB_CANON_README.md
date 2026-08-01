@@ -1,6 +1,6 @@
 ---
 title: WEB_CANON_README
-version: ATLAS-1.0
+version: ATLAS-1.1
 epoch: SEAL-2026-08-01-f13-batch-ack
 actor: kimi-code/FI-008
 sovereign: ARIF (F13)
@@ -54,7 +54,9 @@ copy variant — STOP. The Atlas already has an answer. Find it. Use it.
         ├── /canon/WEB_CANON_README.md      ← THIS FILE (entry point)
         │
         ├── /canon/content-model.schema.json   ← Content model for every page (NEW)
-        └── /canon/verification-checklist.yaml  ← Deploy gates (NEW)
+        ├── /canon/verification-checklist.yaml  ← Deploy gates (NEW)
+        ├── /canon/invariants.json             ← 13 Core Invariants (NEW ATLAS-1.1)
+        └── /canon/unknowns.schema.json         ← Unknowns-as-objects schema (NEW ATLAS-1.1)
 ```
 
 ## 3. The Read Order for an Agent
@@ -73,6 +75,8 @@ If you are an AI agent and want to make a change, read in this order:
 10. **`federation.json`** — Organ postures: JUDGE_ONLY, EXECUTE_AFTER_SEAL, DISPLAY_ONLY, METABOLIZE_ONLY, COMPUTE_ONLY, REFLECT_ONLY.
 11. **`content-model.schema.json`** — Every page has an `audience`, `intent`, `ring`, `primaryAction`, `proofAction`.
 12. **`verification-checklist.yaml`** — Run before any deploy.
+13. **`invariants.json`** — The 13 Core Invariants. The explicit constitutional law.
+14. **`unknowns.schema.json`** — Unknowns-as-objects schema. Every unknown has id, question, risk, test, owner, verdict.
 
 You do not need to read other docs. The Atlas references them.
 
@@ -166,5 +170,7 @@ If parity fails, the build halts. There is no graceful degradation.
 | federation.json | Organ posture change | sovereign (F13) |
 | content-model.schema.json | New content field | sovereign (F13) |
 | verification-checklist.yaml | New gate, new rule | sovereign (F13) |
+| invariants.json | New invariant or refinement | sovereign (F13) |
+| unknowns.schema.json | New field | sovereign (F13) |
 
 — DITEMPA BUKAN DIBERI

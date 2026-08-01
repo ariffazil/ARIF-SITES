@@ -1,12 +1,14 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "ATLAS-1.0",
+  "version": "ATLAS-1.1",
   "atlas_id": "arif-fazil.com-federation-atlas",
   "ratified_by": "sovereign (F13) — 999_SEAL",
-  "ratified_at": "2026-08-01T13:30:00Z",
-  "doctrine": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas.",
+  "ratified_at": "2026-08-01T13:50:00Z",
+  "doctrine": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas. The 13 Core Invariants are the explicit constitutional law.",
   "purpose": "Single source of truth for the arif-fazil.com federation. Every page, route, design, content, and verification decision defers to this index. Machine-readable pointer to all canon documents.",
   "operator_model": "ATLAS before AGENT. CANON before CODE. DIFF before DEPLOY. VERIFY before SEAL.",
+  "the_thirteen_invariants": ["I1 ATLAS before action", "I2 Canon before code", "I3 SOT before rendered page", "I4 Shared shell before subpage freedom", "I5 Tokens before local CSS", "I6 Navigation before content", "I7 Static evidence before SPA fallback", "I8 Diff before mutation", "I9 Verification before SEAL", "I10 Unknowns declared, not hidden", "I11 Human owns meaning", "I12 Agent owns operational clarity", "I13 No automation without reversibility"],
+  "the_human_agent_contract": "ARIF decides meaning. ATLAS defines structure. Agent mutates only inside declared boundaries. Verification turns change into truth.",
 
   "specifications": {
     "one_law": "No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas.",
@@ -168,6 +170,22 @@
       "owner": "sovereign (F13)",
       "depends_on": ["public-state.schema.json"],
       "doctrine": "Build script reads this. Every gate must pass before deploy. Block on failure."
+    },
+    "invariants_json": {
+      "file": "invariants.json",
+      "role": "13 Core Invariants · the explicit constitutional law",
+      "version": "ATLAS-1.1",
+      "owner": "sovereign (F13)",
+      "depends_on": ["atlas.json"],
+      "doctrine": "The 13 invariants are the law. Every agent action checks them. New invariants require 999_SEAL."
+    },
+    "unknowns_schema_json": {
+      "file": "unknowns.schema.json",
+      "role": "Unknowns-as-objects schema (I10)",
+      "version": "ATLAS-1.1",
+      "owner": "sovereign (F13)",
+      "depends_on": ["public-state.schema.json"],
+      "doctrine": "Unknowns have id, question, risk, test, owner, verdict. OPEN/RESOLVED/ACCEPTED/HOLD. Never hidden."
     }
   },
 
@@ -354,7 +372,13 @@
     "Chained redirects (redirects.yaml says one-hop)",
     "Inline content not in content model",
     "Invented layout (templates.json defines three)",
-    "Invented component (components.json defines the library)"
+    "Invented component (components.json defines the library)",
+    "Mutation without I8 diff (I8)",
+    "Deploy without I9 verification (I9)",
+    "Hidden unknowns (I10)",
+    "Agent inventing meaning (I11)",
+    "Agent hiding risk (I12)",
+    "Irreversible automation (I13)"
   ],
 
   "topology": {
@@ -380,12 +404,15 @@
     "templates.json": "Updated for new template, new agent override. Owner: sovereign (F13).",
     "federation.json": "Updated for organ posture change. Owner: sovereign (F13).",
     "content-model.schema.json": "Updated for new content field. Owner: sovereign (F13).",
-    "verification-checklist.yaml": "Updated for new gate, new rule. Owner: sovereign (F13)."
+    "verification-checklist.yaml": "Updated for new gate, new rule. Owner: sovereign (F13).",
+    "invariants.json": "Updated for new invariant or refinement. Owner: sovereign (F13).",
+    "unknowns.schema.json": "Updated for new field. Owner: sovereign (F13)."
   },
 
   "tenant_contract": {
     "ratified_by": "sovereign (F13) — 999_SEAL",
-    "ratified_at": "2026-08-01T13:30:00Z",
-    "signature": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. Forgery is detectable."
+    "ratified_at": "2026-08-01T13:50:00Z",
+    "signature": "DITEMPA BUKAN DIBERI — The Atlas is the supreme map. 13 invariants. Forgery is detectable.",
+    "supersedes": "ATLAS-1.0 (2026-08-01T13:30:00Z) — added invariants.json + unknowns.schema.json + 13 invariants encoded"
   }
 }
