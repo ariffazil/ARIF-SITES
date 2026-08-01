@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { primaryLinks } from '@/data/siteContent';
+import { primaryNav } from '@/data/navCanon';
 
 const linkBase =
   'font-mono text-[0.7rem] uppercase tracking-[0.12em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange';
@@ -42,7 +42,7 @@ export function ConstellationNav() {
         {/* Desktop nav */}
         <nav aria-label="Primary navigation" className="hidden md:block">
           <ul className="flex items-center gap-6">
-            {primaryLinks.map((item) => (
+            {primaryNav.map((item) => (
               <li key={item.label}>
                 {item.external ? (
                   <a
@@ -81,7 +81,7 @@ export function ConstellationNav() {
       {open && (
         <nav aria-label="Mobile navigation" className="md:hidden border-t border-forge-iron mt-3">
           <ul className="site-frame flex flex-col py-4">
-            {primaryLinks.map((item) => (
+            {primaryNav.map((item) => (
               <li key={item.label} className="py-2 border-b border-forge-iron/40 last:border-0">
                 {item.external ? (
                   <a
