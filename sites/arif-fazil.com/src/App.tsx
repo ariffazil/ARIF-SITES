@@ -81,6 +81,10 @@ function App() {
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
+            {/* Missions — cockpit surface, redirects to home (missions.json at /missions.json) */}
+            <Route path="/missions" element={<Navigate to="/" replace />} />
+            <Route path="/missions/" element={<Navigate to="/" replace />} />
+
             {/* Institution — three-audience surface door (human/agent/institution) */}
             <Route path="/institution" element={<InstitutionPage />} />
             <Route path="/institution/" element={<InstitutionPage />} />

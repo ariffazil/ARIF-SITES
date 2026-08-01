@@ -134,7 +134,7 @@ export function Essays() {
       {/* HERO */}
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
-          <div className="section-label">{envTotal + bmTotal} pieces · {envTotal} EN + {bmTotal} BM</div>
+          <div className="section-label">WRITING · {envTotal + bmTotal} pieces · {envTotal} EN + {bmTotal} BM</div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
             <div>
               <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-6">The<br />Writing</h1>

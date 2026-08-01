@@ -54,12 +54,32 @@ DEFAULT_TIMEOUT = 12
 TRUTH_MARKERS: dict[str, list[str]] = {
     "https://arif-fazil.com/missions": ["Six missions", "Investigate", "human cockpit"],
     "https://arif-fazil.com/missions.json": ['"schema"', "investigate", "Six missions"],
-    "https://arif-fazil.com/llms.txt": ["Six Missions", "Canonical 8", "missions.json"],
-    "https://arif-fazil.com/wealth/vitals/": ["tripwire", "Sovereign extraction", "PETRONAS"],
+    "https://arif-fazil.com/llms.txt": [
+        "Canonical 8",
+        "Ditempa Bukan Diberi",
+        "Five Organs",
+    ],
+    "https://arif-fazil.com/wealth/vitals/": [
+        "tripwire",
+        "Sovereign extraction",
+        "PETRONAS",
+    ],
     "https://mcp.arif-fazil.com/explorer.html": ["Engine room", "missions"],
     "https://arif-fazil.com/000/": ["000", "genesis"],
     "https://arif-fazil.com/999/": ["999", "proof", "seal"],
     "https://arif-fazil.com/wealth/gold/api/proxies": ["brent", "timestamp"],
+    "https://arif-fazil.com/economics": [
+        "WEALTH",
+        "capital",
+        "KLCI",
+        "Ringgit",
+    ],
+    "https://arif-fazil.com/writing": [
+        "essay",
+        "writing",
+        "SERIES",
+        "collection",
+    ],
 }
 
 # Paths served as SPA shell (try_files → index.html). Markers live in assets.
@@ -197,7 +217,9 @@ def cmd_sense(args: argparse.Namespace) -> Report:
         r.add(
             f"commodity.{name}:{port}",
             ok,
-            f"HTTP {code}" if ok else f"DOWN {err or code} — systemctl start {name}-api",
+            f"HTTP {code}"
+            if ok
+            else f"DOWN {err or code} — systemctl start {name}-api",
             "YELLOW" if not ok else "GREEN",
         )
 
@@ -252,7 +274,7 @@ def cmd_verify(args: argparse.Namespace) -> Report:
         if url.rstrip("/") in {u.rstrip("/") for u in SPA_SHELL_URLS} or (
             code == 200 and "assets/index-" in body and markers
         ):
-            m = re.search(r'(/assets/index-[A-Za-z0-9_-]+\.js)', body)
+            m = re.search(r"(/assets/index-[A-Za-z0-9_-]+\.js)", body)
             if m:
                 asset_url = "https://arif-fazil.com" + m.group(1)
                 ac, ab, _ = fetch(asset_url, timeout=args.timeout, max_bytes=3_000_000)
@@ -284,7 +306,9 @@ def cmd_verify(args: argparse.Namespace) -> Report:
 
 def cmd_orphan(args: argparse.Namespace) -> Report:
     """YELLOW — dry-run only. Never applies rsync --delete."""
-    r = Report(mode="orphan", ts=utc_now(), ok=True, meta={"band": "YELLOW", "mutates": False})
+    r = Report(
+        mode="orphan", ts=utc_now(), ok=True, meta={"band": "YELLOW", "mutates": False}
+    )
     src = Path(args.src)
     dest = Path(args.dest)
     if not src.is_dir() or not dest.is_dir():
@@ -324,7 +348,12 @@ def cmd_orphan(args: argparse.Namespace) -> Report:
 
 def cmd_ephemeral(args: argparse.Namespace) -> Report:
     """GREEN sandbox: write temp script, run, destroy. No secrets, no production paths."""
-    r = Report(mode="ephemeral", ts=utc_now(), ok=True, meta={"band": "GREEN", "authority": "NONE"})
+    r = Report(
+        mode="ephemeral",
+        ts=utc_now(),
+        ok=True,
+        meta={"band": "GREEN", "authority": "NONE"},
+    )
     EPHEMERAL_ROOT.mkdir(parents=True, exist_ok=True)
     eid = hashlib.sha256(f"{time.time()}:{args.task}".encode()).hexdigest()[:12]
     work = EPHEMERAL_ROOT / f"ephem-{eid}"
@@ -393,7 +422,9 @@ except Exception as e:
                 **{
                     k: v
                     for k, v in os.environ.items()
-                    if not re.search(r"(API_KEY|SECRET|PASSWORD|PRIVATE_KEY|KUNCI|Bearer)", k, re.I)
+                    if not re.search(
+                        r"(API_KEY|SECRET|PASSWORD|PRIVATE_KEY|KUNCI|Bearer)", k, re.I
+                    )
                 },
                 "HOME": str(work),
                 "PYTHONDONTWRITEBYTECODE": "1",
@@ -420,10 +451,16 @@ except Exception as e:
     else:
         shutil.rmtree(work, ignore_errors=True)
         gone = not work.exists()
-        r.add("ephemeral.destroy", gone, "destroyed" if gone else f"FAILED to remove {work}")
+        r.add(
+            "ephemeral.destroy",
+            gone,
+            "destroyed" if gone else f"FAILED to remove {work}",
+        )
         r.meta["destroyed"] = gone
 
-    r.meta["promotion"] = "NOT_PROPOSED — run repeatedly + human approve before permanent skill"
+    r.meta["promotion"] = (
+        "NOT_PROPOSED — run repeatedly + human approve before permanent skill"
+    )
     return r
 
 
@@ -483,7 +520,9 @@ def cmd_caddy_hint(_args: argparse.Namespace) -> Report:
         "YELLOW",
     )
     r.meta["mutates"] = False
-    r.meta["authority"] = "Caddy reload is authority-adjacent — T3 if production blast radius unclear"
+    r.meta["authority"] = (
+        "Caddy reload is authority-adjacent — T3 if production blast radius unclear"
+    )
     return r
 
 
@@ -506,20 +545,26 @@ def main(argv: list[str] | None = None) -> int:
     common.add_argument("--json", action="store_true", help="machine output only")
     common.add_argument(
         "--receipt-dir",
-        default=str(FORGE_WORK / datetime.now(timezone.utc).strftime("%Y-%m-%d") / "web-zen"),
+        default=str(
+            FORGE_WORK / datetime.now(timezone.utc).strftime("%Y-%m-%d") / "web-zen"
+        ),
         help="write JSON receipt",
     )
     common.add_argument("--no-receipt", action="store_true")
     p.add_argument("--json", action="store_true", help="machine output only")
     p.add_argument(
         "--receipt-dir",
-        default=str(FORGE_WORK / datetime.now(timezone.utc).strftime("%Y-%m-%d") / "web-zen"),
+        default=str(
+            FORGE_WORK / datetime.now(timezone.utc).strftime("%Y-%m-%d") / "web-zen"
+        ),
         help="write JSON receipt",
     )
     p.add_argument("--no-receipt", action="store_true")
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    s = sub.add_parser("sense", parents=[common], help="Map substrate + APIs + missions contract")
+    s = sub.add_parser(
+        "sense", parents=[common], help="Map substrate + APIs + missions contract"
+    )
     s.set_defaults(func=cmd_sense)
 
     v = sub.add_parser("verify", parents=[common], help="Content-truth crawl")
@@ -545,14 +590,18 @@ def main(argv: list[str] | None = None) -> int:
     e = sub.add_parser(
         "ephemeral", parents=[common], help="Generate → test → destroy disposable tool"
     )
-    e.add_argument("--task", required=True, help="why this tool is needed (mission gap)")
+    e.add_argument(
+        "--task", required=True, help="why this tool is needed (mission gap)"
+    )
     e.add_argument("--code-file", help="path to python tool source")
     e.add_argument("--code", help="inline python (avoid secrets)")
     e.add_argument("--keep", action="store_true", help="do not destroy workdir (debug)")
     e.add_argument("--timeout", type=int, default=30)
     e.set_defaults(func=cmd_ephemeral)
 
-    d = sub.add_parser("doctor", parents=[common], help="sense + verify + ephemeral smoke")
+    d = sub.add_parser(
+        "doctor", parents=[common], help="sense + verify + ephemeral smoke"
+    )
     d.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
     d.set_defaults(func=cmd_doctor)
 
