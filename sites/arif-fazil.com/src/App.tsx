@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-
 import { ConstellationNav } from '@/components/ConstellationNav';
 import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
+import AtlasGate from '@/components/AtlasGate';
 import { Home } from '@/pages/Home';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
@@ -27,6 +28,7 @@ function CommodityPageGold() { return <CommodityPage slug="gold" />; }
 function App() {
   return (
     <BrowserRouter>
+      <AtlasGate />
       <ScrollToHashElement />
       <div className="site-shell">
         <ConstellationNav />
