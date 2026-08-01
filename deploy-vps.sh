@@ -87,15 +87,23 @@ cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arif/manifest.txt 2>/dev/null || true
 cp $HTML_ROOT/aaa/manifest.txt $HTML_ROOT/arifos/manifest.txt 2>/dev/null || true
 
 # 5. Permissions
-echo "[5/7] Setting permissions..."
+echo "[5/8] Setting permissions..."
 chown -R www-data:www-data $HTML_ROOT
 
-# 5. Reload Caddy
-echo "[6/7] Reloading Caddy..."
+# 5b. Canon sync — web-canon registries → live site (gated: validation + drift)
+echo "[6/8] Syncing web-canon registries..."
+if [ -x /root/web-canon/scripts/canon-sync.sh ]; then
+  CANON_SYNC_LIVE=1 CANON_SYNC_SITE=1 /root/web-canon/scripts/canon-sync.sh || echo "  ⚠ canon-sync failed — review /var/www/html/canon/"
+else
+  echo "  ⚠ canon-sync.sh not found — skipping"
+fi
+
+# 6. Reload Caddy
+echo "[7/8] Reloading Caddy..."
 caddy reload --config /etc/caddy/Caddyfile
 
-# 6. Truth Verification Gate
-echo "[7/7] Running Truth Verification Suite..."
+# 7. Truth Verification Gate
+echo "[8/8] Running Truth Verification Suite..."
 python3 /root/scripts/check_constellation_truth.py
 
 echo "DEPLOYMENT COMPLETE. Constellation is Live."
