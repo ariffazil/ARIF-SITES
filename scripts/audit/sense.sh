@@ -27,13 +27,15 @@ LOG="${RECEIPT_DIR}/sense.log"
 
 probe() {
   local label="$1" url="$2" ua="${3:-Mozilla/5.0}"
-  local t0 t1 dt code bytes
-  t0=$(date +%s%3N)
-  code=$(curl -s -o /dev/null -w "%{http_code}" -A "$ua" --max-time 10 "$url" 2>/dev/null || echo "000")
-  bytes=$(curl -s -o /dev/null -w "%{size_download}" -A "$ua" --max-time 10 "$url" 2>/dev/null || echo "0")
-  t1=$(date +%s%3N)
-  dt=$((t1 - t0))
-  printf '{"ts":"%s","label":"%s","url":"%s","code":%s,"bytes":%s,"latency_ms":%d,"ua":"%s"}\n' \
+  local result code bytes dt
+  # Single curl call — avoids double-fallback (000000) and halves network load.
+  # Format: http_code size_download time_total (space-separated, one line).
+  result=$(curl -s -o /dev/null -w "%{http_code} %{size_download} %{time_total}" \
+    -A "$ua" --max-time 10 "$url" 2>/dev/null || echo "000 0 0")
+  code=$(echo "$result" | awk '{print $1}')
+  bytes=$(echo "$result" | awk '{print $2}')
+  dt=$(echo "$result" | awk '{printf "%.0f", $3 * 1000}')
+  printf '{"ts":"%s","label":"%s","url":"%s","code":%s,"bytes":%s,"latency_ms":%s,"ua":"%s"}\n' \
     "$TS" "$label" "$url" "$code" "$bytes" "$dt" "$ua" >> "$RECEIPT"
   echo "  $code $bytes $dt ms  $label  $url" >> "$LOG"
 }

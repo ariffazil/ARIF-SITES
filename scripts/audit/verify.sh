@@ -84,17 +84,17 @@ echo "## 2. dist/ vs src/ route drift (F2 class)" >> "$REPORT"
 if [ -d "$DIST/assets" ]; then
   bundle=$(ls "$DIST/assets"/index-*.js 2>/dev/null | head -1)
   if [ -n "$bundle" ]; then
-    src_routes=$(grep -oE 'path:"/[a-z][a-z0-9_*-]*"' "${SRC}/src/App.tsx" 2>/dev/null | sort -u | wc -l)
-    dist_paths=$(grep -oE 'path:"/[a-z*_-]+"' "$bundle" 2>/dev/null | sort -u | wc -l)
+    src_routes=$(grep -oE 'path="\/[a-z][a-z0-9_*-]*"' "${SRC}/src/App.tsx" 2>/dev/null | sort -u | wc -l)
+    dist_paths=$(grep -oE 'path="\/[a-z*_-]+"' "$bundle" 2>/dev/null | sort -u | wc -l)
     echo "- src/App.tsx declared routes: **$src_routes**" >> "$REPORT"
     echo "- dist/assets compiled paths:  **$dist_paths**" >> "$REPORT"
 
     # Check each src route is in dist
     missing_routes=""
-    for r in $(grep -oE 'path:"/[a-z][a-z0-9_*-]*"' "${SRC}/src/App.tsx" | sort -u | head -50); do
-      r_clean=$(echo "$r" | sed 's/path:"\(.*\)"/\1/')
+    for r in $(grep -oE 'path="\/[a-z][a-z0-9_*-]*"' "${SRC}/src/App.tsx" | sort -u | head -50); do
+      r_clean=$(echo "$r" | sed 's/path="\(.*\)"/\1/')
       # only flag simple /foo paths (not /foo/:slug since route can be /foo)
-      if [[ "$r_clean" != *"*"* ]] && ! grep -q "path:\"${r_clean}\"" "$bundle" 2>/dev/null; then
+      if [[ "$r_clean" != *"*"* ]] && ! grep -q "path=\"${r_clean}\"" "$bundle" 2>/dev/null; then
         missing_routes="${missing_routes} ${r_clean}"
       fi
     done
