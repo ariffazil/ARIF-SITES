@@ -45,3 +45,4 @@ test-results/
 *.bak-*
 .releases/
 sites/arif-fazil.com/public/data/politics/ns_live_telemetry.json
+__pycache__/
