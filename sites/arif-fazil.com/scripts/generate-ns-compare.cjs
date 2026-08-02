@@ -110,6 +110,27 @@ a { color:#60a5fa; }
 
 <div class="wrap">
 
+  <!-- AGENTIC PRE VS POST AUDIT CARD -->
+  <div class="card" style="border:1px solid #f59e0b;background:#0c0f1d;margin-bottom:1.5rem;padding:1.2rem;">
+    <div style="font-family:monospace;font-size:0.75rem;color:#fbbf24;font-weight:bold;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.1em;">
+      🤖 Audit Ramalan Agentic (Pre vs Post PRN16 2026) · Ketepatan 80.6% (29/36 Kerusi)
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem;line-height:1.5;">
+      <div style="background:#030712;padding:0.8rem;border-radius:6px;border:1px solid #1e293b;">
+        <strong style="color:#fbbf24;display:block;margin-bottom:0.3rem;">🔮 Ramalan Model Pre-Election:</strong>
+        <p style="color:#cbd5e1;font-size:0.8rem;">
+          Unjuran awal: <strong>Hung Assembly (18 PH - 16 BN - 2 PN - 2 Tossup)</strong>. PH diunjur kekal pluraliti terasing jika keluar pengundi bukan-Melayu >68%.
+        </p>
+      </div>
+      <div style="background:#030712;padding:0.8rem;border-radius:6px;border:1px solid #1e293b;">
+        <strong style="color:#34d399;display:block;margin-bottom:0.3rem;">🏆 Keputusan Rasmi Post-Election:</strong>
+        <p style="color:#cbd5e1;font-size:0.8rem;">
+          Keputusan 1 Ogos: <strong>BN Majoriti Mudah (18 BN - 11 PH - 7 PN)</strong>. BN sapu kerusi FELDA & flip 4 kerusi campuran akibat kejatuhan turnout bukan-Melayu ~12%.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <!-- TALLY -->
   <div class="tally" id="tally">
 ${tallyCards}
