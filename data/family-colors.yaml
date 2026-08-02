@@ -1,0 +1,87 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# Family Colors Registry — Komda Color Law §04.2
+# ═══════════════════════════════════════════════════════════════════════════
+# Canonical:    /root/arif-fazil.com/data/family-colors.yaml
+# Doctrine:     /root/docs/design-rules/SOVEREIGN_DECREES.md §04
+# Ratified:     2026-08-01 (F13 SOVEREIGN)
+# Forged by:    kimi-code/FI-008
+#
+# Reversibility:
+#   - This file is F1 AMANAH reversible (delete + recreate)
+#   - DOCTRINE in SOVEREIGN_DECREES.md is F13 SOVEREIGN-gated (append-only)
+#   - Drift fix: update both this file AND the lint script's ALLOWED map
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: 1
+doctrine: SOVEREIGN_DECREES §04 · Komda Color Law
+ratified_by: Arif (F13 SOVEREIGN)
+ratified_at: 2026-08-01
+forged_by: kimi-code/FI-008
+
+# Territory → closed color family (primary + accent + universal field + bridges)
+territories:
+  arifos:
+    name: arifOS — constitutional kernel
+    primary: '#A82733'
+    accent:  '#6F2DBD'
+    field:   '#0A0A0F'
+    notes:   crimson + royal-purple arifOS signature
+
+  geox:
+    name: GEOX — Earth intelligence
+    primary: '#2D5F8B'
+    accent:  '#8B4513'
+    field:   '#0A0A0F'
+    notes:   deep blue + sedimentary brown
+
+  wealth:
+    name: WEALTH — capital intelligence
+    primary: '#FFCC00'
+    accent:  '#1E3A8A'
+    field:   '#0A0A0F'
+    notes:   gold + deep blue (XAU macro frame)
+
+  well:
+    name: WELL — human readiness
+    primary: '#5FB84A'
+    accent:  '#E07A5F'
+    field:   '#0A0A0F'
+    notes:   vital green + life coral
+
+  aaa:
+    name: AAA — cockpit
+    primary: '#9A9AA8'
+    accent:  '#FFD54F'
+    field:   '#0A0A0F'
+    notes:   silver + certified gold
+
+# Universal — base layer accessible to ALL territories
+universal:
+  field: '#0A0A0F'
+  notes: 'PRIMER-1 dark field — base for every territory'
+
+# Permitted cross-family color escapes (EUREKA bridges only)
+bridges:
+  - from: arifos
+    to:   geox
+    token: '#FFD54F'
+    use: 'eureka-overlay'
+  - from: wealth
+    to:   aaa
+    token: '#FFD54F'
+    use: 'certified-mark'
+
+# Lint configuration
+lint:
+  case_insensitive: true
+  normalize_3_digit_hex: true   # #RGB → #RRGGBB
+  strictness: warn-only          # sovereign can promote to gate via FORCE_KOMDA_GATE=1
+  scan_paths:
+    - '_shared/design-system/'
+  exclude_paths:
+    - '_shared/design-system/**/*.bak.*'
+    - 'node_modules/**'
+    - '.git/**'
+
+# Source of truth = this YAML; canonical alongside SOVEREIGN_DECREES §04
+# Lint script (lint-komda-colors.sh) embeds same data; manual sync required.

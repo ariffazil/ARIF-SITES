@@ -184,7 +184,7 @@ export function Wealth() {
   useWebMCP(wealthTools);
 
   useEffect(() => {
-    document.title = 'Daily Briefing — Malaysia Economics | Arif Fazil';
+    document.title = 'Ξ WEALTH · Daily Briefing — Malaysia Economics | Arif Fazil';
     document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/economics');
     async function load() {
       try {

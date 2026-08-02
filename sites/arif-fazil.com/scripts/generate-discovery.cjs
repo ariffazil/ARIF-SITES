@@ -386,11 +386,22 @@ function main() {
     JSON.stringify(buildPageJson(), null, 2) + "\n",
   );
 
+  // Sync canonical surfaces.json to public for vite build and machine serving
+  const canonicalSurfacesPath = path.resolve(SITE_ROOT, "../../surfaces.json");
+  if (fs.existsSync(canonicalSurfacesPath)) {
+    writeIfChanged(
+      path.join(SITE_ROOT, "public/surfaces.json"),
+      fs.readFileSync(canonicalSurfacesPath, "utf8")
+    );
+  }
+
   // Keep the existing root-level JSON sources in sync for site tooling.
-  for (const name of ["llms.json", "page.json"]) {
+  for (const name of ["llms.json", "page.json", "surfaces.json"]) {
     const src = path.join(SITE_ROOT, `public/${name}`);
     const dst = path.join(SITE_ROOT, name);
-    writeIfChanged(dst, fs.readFileSync(src, "utf8"));
+    if (fs.existsSync(src)) {
+      writeIfChanged(dst, fs.readFileSync(src, "utf8"));
+    }
   }
 }
 

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRN16 NS — Projection vs Actual</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0a;
+  color: #f8fafc;
+  padding: 2rem;
+  line-height: 1.5;
+}
+.container { max-width: 1400px; margin: 0 auto; }
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #3b82f6, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.subtitle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-family: monospace;
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.summary-card {
+  background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.summary-card h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  margin-bottom: 0.75rem;
+}
+.summary-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.stat {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  padding: 0.75rem;
+  background: #0a0a0a;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+}
+.stat-label {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-bottom: 0.25rem;
+}
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+.stat-value.bn { color: #3b82f6; }
+.stat-value.pn { color: #10b981; }
+.stat-value.ph { color: #ef4444; }
+.stat-value.tossup { color: #f59e0b; }
+.accuracy-card {
+  background: linear-gradient(135deg, #1e1b4b, #0f0f0f);
+  border: 1px solid #312e81;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.accuracy-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fbbf24;
+  margin: 0.5rem 0;
+}
+.accuracy-label {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+.seats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.seat-card {
+  background: #0f0f0f;
+  border: 2px solid #1e293b;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+.seat-card.flip {
+  border-color: #fbbf24;
+  background: linear-gradient(135deg, #1a1a0a, #0f0f0f);
+}
+.seat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.seat-code {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: bold;
+}
+.seat-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.seat-comparison {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+.seat-proj, .seat-actual {
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.seat-proj { background: #1e293b; }
+.seat-actual { background: #0a0a0a; border: 1px solid #2a2a2a; }
+.arrow {
+  font-size: 1.5rem;
+  color: #64748b;
+}
+.seat-card.flip .arrow { color: #fbbf24; }
+.flip-badge {
+  display: inline-block;
+  background: #fbbf24;
+  color: #0a0a0a;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+}
+.tag-bn { background: #1e3a8a; color: #93c5fd; border: 1px solid #3b82f6; }
+.tag-pn { background: #064e3b; color: #86efac; border: 1px solid #10b981; }
+.tag-ph { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+.tag-tossup { background: #78350f; color: #fde047; border: 1px solid #f59e0b; }
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>PRN16 Negeri Sembilan</h1>
+  <div class="subtitle">Projection vs Actual · 36 Kerusi DUN · 1 Ogos 2026</div>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <h3>Projection (Pre-Poll Model)</h3>
+      <div class="summary-stats">
+        <div class="stat"><div class="stat-label">PH</div><div class="stat-value ph">19</div></div>
+        <div class="stat"><div class="stat-label">BN</div><div class="stat-value bn">13</div></div>
+        <div class="stat"><div class="stat-label">PN</div><div class="stat-value pn">2</div></div>
+        <div class="stat"><div class="stat-label">TOSSUP</div><div class="stat-value tossup">2</div></div>
+      </div>
+    </div>
+    <div class="summary-card">
+      <h3>Actual (Final Result)</h3>
+      <div class="summary-stats">
+        <div class="stat"><div class="stat-label">BN</div><div class="stat-value bn">18</div></div>
+        <div class="stat"><div class="stat-label">PN</div><div class="stat-value pn">7</div></div>
+        <div class="stat"><div class="stat-label">PH</div><div class="stat-value ph">11</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="accuracy-card">
+    <div class="accuracy-label">Projection Accuracy</div>
+    <div class="accuracy-value">72%</div>
+    <div class="accuracy-label">26/36 kerusi betul · 10 flips</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#3b82f6;"></div>BN</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#10b981;"></div>PN</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef4444;"></div>PH</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f59e0b;"></div>TOSSUP</div>
+  </div>
+
+  <div class="seats-grid" id="seats"></div>
+</div>
+
+<script>
+const SEATS = [
+  {code:'N1', name:'Chennah', proj:'PH', actual:'BN', flip:true},
+  {code:'N2', name:'Pertang', proj:'BN', actual:'BN', flip:false},
+  {code:'N3', name:'Sungai Lui', proj:'BN', actual:'BN', flip:false},
+  {code:'N4', name:'Klawang', proj:'PH', actual:'PN', flip:true},
+  {code:'N5', name:'Serting', proj:'PH', actual:'PN', flip:true},
+  {code:'N6', name:'Palong', proj:'BN', actual:'BN', flip:false},
+  {code:'N7', name:'Jeram Padang', proj:'BN', actual:'BN', flip:false},
+  {code:'N8', name:'Bahau', proj:'PH', actual:'PH', flip:false},
+  {code:'N9', name:'Lenggeng', proj:'BN', actual:'BN', flip:false},
+  {code:'N10', name:'Nilai', proj:'PH', actual:'PH', flip:false},
+  {code:'N11', name:'Lobak', proj:'PH', actual:'PH', flip:false},
+  {code:'N12', name:'Temiang', proj:'PH', actual:'PH', flip:false},
+  {code:'N13', name:'Sikamat', proj:'PH', actual:'PN', flip:true},
+  {code:'N14', name:'Ampangan', proj:'TOSSUP', actual:'PN', flip:true},
+  {code:'N15', name:'Juasseh', proj:'BN', actual:'BN', flip:false},
+  {code:'N16', name:'Seri Menanti', proj:'BN', actual:'BN', flip:false},
+  {code:'N17', name:'Senaling', proj:'BN', actual:'BN', flip:false},
+  {code:'N18', name:'Pilah', proj:'PH', actual:'BN', flip:true},
+  {code:'N19', name:'Johol', proj:'BN', actual:'BN', flip:false},
+  {code:'N20', name:'Labu', proj:'PH', actual:'BN', flip:true},
+  {code:'N21', name:'Bukit Kepayang', proj:'PH', actual:'PH', flip:false},
+  {code:'N22', name:'Rahang', proj:'PH', actual:'PH', flip:false},
+  {code:'N23', name:'Mambau', proj:'PH', actual:'PH', flip:false},
+  {code:'N24', name:'Seremban Jaya', proj:'PH', actual:'PH', flip:false},
+  {code:'N25', name:'Paroi', proj:'PN', actual:'PN', flip:false},
+  {code:'N26', name:'Chembong', proj:'BN', actual:'BN', flip:false},
+  {code:'N27', name:'Rantau', proj:'BN', actual:'BN', flip:false},
+  {code:'N28', name:'Kota', proj:'BN', actual:'BN', flip:false},
+  {code:'N29', name:'Chuah', proj:'PH', actual:'PH', flip:false},
+  {code:'N30', name:'Lukut', proj:'PH', actual:'PH', flip:false},
+  {code:'N31', name:'Bagan Pinang', proj:'PH', actual:'PN', flip:true},
+  {code:'N32', name:'Linggi', proj:'TOSSUP', actual:'BN', flip:true},
+  {code:'N33', name:'Sri Tanjung', proj:'PH', actual:'PH', flip:false},
+  {code:'N34', name:'Gemas', proj:'PN', actual:'PN', flip:false},
+  {code:'N35', name:'Gemencheh', proj:'BN', actual:'BN', flip:false},
+  {code:'N36', name:'Repah', proj:'PH', actual:'BN', flip:true}
+];
+
+const TAG_CLASS = {BN:'tag-bn', PN:'tag-pn', PH:'tag-ph', TOSSUP:'tag-tossup'};
+
+function renderSeats() {
+  const grid = document.getElementById('seats');
+  SEATS.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'seat-card' + (s.flip ? ' flip' : '');
+    card.innerHTML = `
+      <div class="seat-header">
+        <span class="seat-code">${s.code}</span>
+        <span class="seat-name">${s.name}${s.flip ? '<span class="flip-badge">FLIP</span>' : ''}</span>
+      </div>
+      <div class="seat-comparison">
+        <div class="seat-proj ${TAG_CLASS[s.proj]}">${s.proj}</div>
+        <div class="arrow">→</div>
+        <div class="seat-actual ${TAG_CLASS[s.actual]}">${s.actual}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+renderSeats();
+</script>
+</body>
+</html>

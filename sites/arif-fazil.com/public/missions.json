@@ -1,0 +1,125 @@
+{
+  "schema": "arifos.missions.v1",
+  "as_of": "2026-07-30",
+  "doctrine": {
+    "title": "Six missions. Not 128 tools.",
+    "thesis": "You state the problem. The federation chooses the instruments, challenges the result, and returns only what matters.",
+    "human_only": [
+      "State what you want",
+      "Supply evidence or data",
+      "Examine the conclusion and uncertainty",
+      "Approve or reject consequential action"
+    ],
+    "engine_room": "Tool Explorer, registries, and raw MCP catalogs are for developers, audits, and debugging \u2014 not daily sovereign work.",
+    "metric": "How often did Arif need to know which tool was used? Target: zero.",
+    "survival_rule": "Used in a tested workflow \u2192 KEEP \u00b7 Overlapping \u2192 MERGE AS MODE \u00b7 Internal compute \u2192 HIDE \u00b7 Alias \u2192 SDK ONLY \u00b7 No workflow \u2192 REMOVE"
+  },
+  "public_url": "https://arif-fazil.com/missions",
+  "canonical_kernel_public": {
+    "note": "Public arifOS surface is the Canonical 8 \u2014 not the full federation inventory",
+    "tools": [
+      "arif_init",
+      "arif_observe",
+      "arif_think",
+      "arif_route",
+      "arif_memory",
+      "arif_judge",
+      "arif_forge",
+      "arif_seal"
+    ]
+  },
+  "missions": [
+    {
+      "id": "investigate",
+      "verb": "Investigate",
+      "one_line": "Gather and test reality",
+      "human_says": "What is actually true here \u2014 and what would falsify it?",
+      "organs": [
+        "GEOX",
+        "WEALTH",
+        "arifOS"
+      ]
+    },
+    {
+      "id": "interpret",
+      "verb": "Interpret",
+      "one_line": "Build competing explanations",
+      "human_says": "What could this mean \u2014 and what is the kill case?",
+      "organs": [
+        "GEOX",
+        "WEALTH",
+        "WELL"
+      ]
+    },
+    {
+      "id": "decide",
+      "verb": "Decide",
+      "one_line": "Compare consequences and uncertainty",
+      "human_says": "Should we advance, hold, or kill \u2014 and why?",
+      "organs": [
+        "arifOS",
+        "WEALTH",
+        "AAA"
+      ]
+    },
+    {
+      "id": "build",
+      "verb": "Build",
+      "one_line": "Prepare and execute approved changes",
+      "human_says": "Make this real \u2014 reversibly first.",
+      "organs": [
+        "A-FORGE",
+        "arifOS"
+      ]
+    },
+    {
+      "id": "monitor",
+      "verb": "Monitor",
+      "one_line": "Detect change, degradation, or danger",
+      "human_says": "Is the system or the human still fit to act?",
+      "organs": [
+        "WELL",
+        "WEALTH",
+        "arifOS"
+      ]
+    },
+    {
+      "id": "remember",
+      "verb": "Remember",
+      "one_line": "Retrieve and preserve governed knowledge",
+      "human_says": "What did we seal, and what is still lore?",
+      "organs": [
+        "VAULT999",
+        "arifOS",
+        "AAA"
+      ]
+    }
+  ],
+  "refusal": "This file does not authorize tool calls. It classifies human intent. Agents route. arifOS judges. Arif decides.",
+  "web_zen": {
+    "cli": "/root/arif-fazil.com/scripts/web-zen/web_zen.py",
+    "doctor": "python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor",
+    "modes": [
+      "sense",
+      "verify",
+      "orphan",
+      "ephemeral",
+      "doctor",
+      "caddy-reload-hint"
+    ],
+    "skill": "FORGE-agentic-web-builder",
+    "doctrine": "capability\u2260authority \u00b7 ephemeral first \u00b7 missions not tool menus",
+    "as_of": "2026-07-30",
+    "mcp_tool": "forge_web_zen",
+    "arif_route": "arif_route(mission_id=investigate|interpret|decide|build|monitor|remember)"
+  },
+  "forge_modes_under_arif_forge": [
+    "inspect_gap",
+    "generate_ephemeral",
+    "sandbox_test",
+    "invoke_ephemeral",
+    "verify_output",
+    "propose_promotion",
+    "retire"
+  ]
+}

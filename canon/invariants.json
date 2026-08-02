@@ -1,0 +1,236 @@
+{
+  "$schema": "./public-state.schema.json",
+  "version": "ATLAS-1.1",
+  "doctrine": "DITEMPA BUKAN DIBERI — The 13 Core Invariants are the explicit constitutional law of the arif-fazil.com federation. Every page, every agent, every coder, every build, every receipt must satisfy these.",
+  "ratified_by": "sovereign (F13) — 999_SEAL",
+  "ratified_at": "2026-08-01T13:50:00Z",
+  "epoch": "SEAL-2026-08-01-f13-batch-ack",
+  "tenancy": "ATLAS-1.1 supersedes ATLAS-1.0 by adding the 13 invariants + unknowns-as-objects pattern. Existing canon unchanged; new files added.",
+
+  "prime_invariant": {
+    "id": "P0",
+    "statement": "An agentic site is not a website. It is a public execution surface for human meaning, machine reading, and future agent behavior. Every mutation is not just design. It is reality editing.",
+    "enforcement": "F1 AMANAH + F9 ANTIHANTU + F11 AUDITABILITY",
+    "owner": "sovereign (F13)"
+  },
+
+  "the_one_law": "No page may define its own identity, navigation, route, color, or proof status. It must inherit from Atlas.",
+
+  "the_thirteen_core_invariants": [
+    {
+      "id": "I1",
+      "name": "ATLAS before action",
+      "statement": "Every agent action begins with reading atlas.json. The Atlas is the supreme map. No mutation without consulting it.",
+      "category": "DOCTRINAL",
+      "enforcement": "F1 AMANAH (reversible), F4 CLARITY (ΔS ≤ 0)",
+      "owner": "agent",
+      "checks": ["agent reads atlas.json before any edit", "agent lists affected routes/tokens/components"]
+    },
+    {
+      "id": "I2",
+      "name": "Canon before code",
+      "statement": "Site code is generated from canon, not written from scratch. Canon defines; code reflects.",
+      "category": "DOCTRINAL",
+      "enforcement": "F4 CLARITY",
+      "owner": "agent + coder",
+      "checks": ["canon JSON consumed by build pipeline", "no page edits bypass canon"]
+    },
+    {
+      "id": "I3",
+      "name": "SOT before rendered page",
+      "statement": "Never edit the rendered surface if a canonical source exists upstream. SOT → generator → page. Never page → hand patch → drift.",
+      "category": "TRUTH",
+      "enforcement": "F2 TRUTH, F11 AUDITABILITY",
+      "owner": "agent + coder",
+      "checks": ["page element traceable to a canon file", "no in-place HTML edit when canon exists", "build regenerates from SOT"]
+    },
+    {
+      "id": "I4",
+      "name": "Shared shell before subpage freedom",
+      "statement": "Every page inherits the universal frame: HeadCanon · TrinityNav · PageHero · MainContent · Proof/Status · RelatedRoutes · CanonFooter. No page gets to invent its own body.",
+      "category": "DESIGN",
+      "enforcement": "F9 ANTIHANTU, F4 CLARITY",
+      "owner": "agent + coder",
+      "checks": ["navigation.json universal_frame applied to every page", "no page-specific frame forks"]
+    },
+    {
+      "id": "I5",
+      "name": "Tokens before local CSS",
+      "statement": "The page may declare data-ring and data-plane. It may not declare random colors. Agent must use tokens.css / components.css / approved classes. Not improvisation.",
+      "category": "DESIGN",
+      "enforcement": "F9 ANTIHANTU, F12 RESILIENCE",
+      "owner": "agent + coder",
+      "checks": ["no hard-coded colors in compiled CSS (G8)", "all colors are var(--color-N) tokens", "tokens loaded at build"]
+    },
+    {
+      "id": "I6",
+      "name": "Navigation before content",
+      "statement": "Every page must answer: Where am I? What is this page for? Where can I go next? What is the proof route? No page-specific navigation copies.",
+      "category": "DESIGN",
+      "enforcement": "F4 CLARITY",
+      "owner": "agent + coder",
+      "checks": ["G7 navigation present on every page", "breadcrumb matches URL", "prev_next_nav present"]
+    },
+    {
+      "id": "I7",
+      "name": "Static evidence before SPA fallback",
+      "statement": "For /canon/*, /999/*, .well-known/*, llms.txt, page.json, sitemap.xml — static evidence must not be swallowed by SPA fallback. Evidence routes before app routes.",
+      "category": "ROUTING",
+      "enforcement": "F12 RESILIENCE, F2 TRUTH",
+      "owner": "operator",
+      "checks": ["G5 routes pass", "static paths return real content not SPA shell", "robots.txt + sitemap.xml + llms.txt reachable"]
+    },
+    {
+      "id": "I8",
+      "name": "Diff before mutation",
+      "statement": "Agent must produce a diff proposal before any mutation: What will change? Why? Affected routes? Affected canon? Affected generated files? Rollback path?",
+      "category": "AGENT_BEHAVIOR",
+      "enforcement": "F11 AUDITABILITY, F1 AMANAH",
+      "owner": "agent",
+      "checks": ["diff shown before commit", "rollback path identified", "canon files affected listed"]
+    },
+    {
+      "id": "I9",
+      "name": "Verification before SEAL",
+      "statement": "No agentic site change is complete until: build passes, routes pass, canon routes serve actual files, tokens loaded, nav present, ring/plane declared, visual diff checked, machine surfaces valid, receipt emitted.",
+      "category": "AGENT_BEHAVIOR",
+      "enforcement": "F1-F13 floors, F11 AUDITABILITY",
+      "owner": "agent",
+      "checks": ["17 gates G1-G17 pass", "VAULT999 receipt sealed"]
+    },
+    {
+      "id": "I10",
+      "name": "Unknowns declared, not hidden",
+      "statement": "Never leave unknowns as vibes. Use the unknowns-as-objects pattern: each unknown has id, question, risk, test, owner, verdict. Unknowns are not shame. Unknowns are control points.",
+      "category": "TRUTH",
+      "enforcement": "F2 TRUTH, F7 HUMILITY",
+      "owner": "agent + sovereign",
+      "checks": ["unknowns.schema.json pattern used", "no hidden unknown state", "unknowns updated each gate"]
+    },
+    {
+      "id": "I11",
+      "name": "Human owns meaning",
+      "statement": "The human (sovereign) decides: purpose, authority, tone, risk, truth boundary, release acceptance. Agent does not invent meaning. Agent surfaces technical consequence and risk.",
+      "category": "HUMAN_AGENT_CONTRACT",
+      "enforcement": "F13 SOVEREIGN",
+      "owner": "sovereign (F13)",
+      "checks": ["sovereign has final veto on every change", "agent does not over-explain obvious doctrine"]
+    },
+    {
+      "id": "I12",
+      "name": "Agent owns operational clarity",
+      "statement": "Agent surfaces: technical consequence, hidden dependency, route conflict, cache issue, static/dynamic mismatch, unknown state, drift risk. ARIF owns meaning; agent owns operational clarity.",
+      "category": "HUMAN_AGENT_CONTRACT",
+      "enforcement": "F4 CLARITY, F2 TRUTH",
+      "owner": "agent",
+      "checks": ["agent surfaces technical consequence", "agent maintains unknowns registry", "agent reports drift risk"]
+    },
+    {
+      "id": "I13",
+      "name": "No automation without reversibility",
+      "statement": "Every mutation has a git revert path. Bots do not push to main. No magic cron jobs. No hidden state. No irreversible side effects without sovereign ack.",
+      "category": "AUTOMATION",
+      "enforcement": "F1 AMANAH, F11 AUDITABILITY",
+      "owner": "agent + operator",
+      "checks": ["git revert path exists for every change", "no bot pushes to main", "all cron jobs in federation registry"]
+    }
+  ],
+
+  "checks_per_invariant": [
+    {"invariant": "I1", "check_name": "atlas_consulted_first",  "fail_action": "block_proposal"},
+    {"invariant": "I2", "check_name": "canon_consumed_by_build", "fail_action": "block_build"},
+    {"invariant": "I3", "check_name": "sot_chain_intact",          "fail_action": "block_publish"},
+    {"invariant": "I4", "check_name": "universal_frame_present", "fail_action": "block_build"},
+    {"invariant": "I5", "check_name": "no_hardcoded_colors",      "fail_action": "block_build"},
+    {"invariant": "I6", "check_name": "navigation_inherited",     "fail_action": "block_build"},
+    {"invariant": "I7", "check_name": "static_paths_real",        "fail_action": "block_build"},
+    {"invariant": "I8", "check_name": "diff_produced",            "fail_action": "block_proposal"},
+    {"invariant": "I9", "check_name": "gates_17_pass",            "fail_action": "block_deploy"},
+    {"invariant": "I10","check_name": "unknowns_declared",        "fail_action": "block_deploy"},
+    {"invariant": "I11","check_name": "sovereign_has_veto",       "fail_action": "block_proposal"},
+    {"invariant": "I12","check_name": "agent_surfaces_risk",      "fail_action": "block_proposal"},
+    {"invariant": "I13","check_name": "revert_path_exists",       "fail_action": "block_deploy"}
+  ],
+
+  "human_agent_contract": {
+    "human_wants": [
+      "clarity",
+      "alignment",
+      "truthfulness",
+      "low chaos",
+      "controlled change",
+      "reversible mutation",
+      "beautiful but governed design"
+    ],
+    "agent_wants": [
+      "reduce entropy",
+      "preserve canon",
+      "never surprise ARIF",
+      "never invent authority",
+      "never mutate without diff",
+      "never deploy without verification"
+    ],
+    "system_wants": [
+      "one Atlas",
+      "one nav",
+      "one design language",
+      "one route registry",
+      "one verification gate",
+      "many generated pages",
+      "zero hidden drift"
+    ],
+    "the_short_doctrine": "Agentic site forging is not web design. It is governed mutation of a public truth surface. If the agent does not know the Atlas, it is blind. If the human does not know the risk, authority is fake. If unknowns are not declared, automation becomes BANGANG.",
+    "the_final_verdict": "ARIF decides meaning. ATLAS defines structure. Agent mutates only inside declared boundaries. Verification turns change into truth."
+  },
+
+  "the_atlas_responds": {
+    "agentic_site_is": "a public execution surface for human meaning, machine reading, and future agent behavior",
+    "every_mutation_is": "reality editing",
+    "the_agent_should_want": "preserve truth, alignment, reversibility, human authority"
+  },
+
+  "operator_workflow": [
+    "ATLAS before action — read atlas.json, identify affected routes/components/tokens",
+    "Canon before code — verify code is generated from canon, not improvised",
+    "SOT before rendered page — edit SOT, not rendered HTML",
+    "Shared shell before subpage freedom — apply universal_frame",
+    "Tokens before local CSS — use tokens.css, no random colors",
+    "Navigation before content — inherit nav, no page-specific copies",
+    "Static evidence before SPA fallback — ensure /canon/* /999/* .well-known/* serve real content",
+    "Diff before mutation — show what will change, why, affected files, rollback",
+    "Verification before SEAL — 17 gates pass, VAULT999 receipt sealed",
+    "Unknowns declared, not hidden — every unknown has id, question, risk, test, owner, verdict",
+    "Human owns meaning — sovereign has final veto on every change",
+    "Agent owns operational clarity — surface technical consequence, hidden deps, drift risk",
+    "No automation without reversibility — every change has git revert path"
+  ],
+
+  "alignment_to_floors": {
+    "F1_AMANAH": "I1, I3, I8, I9, I13",
+    "F2_TRUTH": "I3, I7, I10, I12",
+    "F3_TRI_WITNESS": "I9 (gates)",
+    "F4_CLARITY": "I1, I2, I4, I6, I12",
+    "F5_PEACE_SQUARED": "I13",
+    "F6_EMPATHY_MARUAH": "I11, I12",
+    "F7_HUMILITY": "I10",
+    "F8_GENIUS": "I4, I5, I6",
+    "F9_ANTIHANTU": "I4, I5",
+    "F10_ONTOLOGY": "I11 (agent does not invent authority)",
+    "F11_AUDITABILITY": "I3, I8, I9, I13",
+    "F12_RESILIENCE": "I5, I7",
+    "F13_SOVEREIGN": "I11"
+  },
+
+  "maintenance": {
+    "invariants.json": "Updated when a new invariant is ratified or an existing one is refined. Owner: sovereign (F13).",
+    "ATLAS version bump": "Major (1.x → 2.x) when primitives change. Minor (1.0 → 1.1) when new files are added. Bug-fix (1.1.0 → 1.1.1) when invariants are tightened.",
+    "back_compatibility": "ATLAS is additive. Existing canon refs continue to work. New files are referenced from atlas.json."
+  },
+
+  "tenant_contract": {
+    "ratified_by": "sovereign (F13) — 999_SEAL",
+    "ratified_at": "2026-08-01T13:50:00Z",
+    "signature": "DITEMPA BUKAN DIBERI — 13 invariants. One Atlas. Zero hidden drift.",
+    "supersedes": "ATLAS-1.0 (2026-08-01T13:30:00Z) — added invariants.json + unknowns.schema.json + 13 invariants encoded"
+  }
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html data-ring="SOUL" data-plane="narrative" lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PM Bayang — Shadow Prime Ministers of Malaysia</title>
+<meta name="description" content="Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, bayang, tragedi, dan legasi — dari Tunku ke Anwar.">
+<link rel="canonical" href="https://arif-fazil.com/politics/shadow/">
+<style>
+:root {
+  --bg:#07070d; --surface:#0d0d1a; --surface2:#111120; --border:#1e1e32;
+  --gold:#c9a84c; --gold-dim:#7a6028; --text:#e2d8c8; --text-dim:#6a6050;
+  --red:#ef4444; --amber:#f59e0b; --emerald:#22c55e; --cyan:#00d4aa;
+  --font-mono:'IBM Plex Mono',monospace; --font-sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);line-height:1.6}
+.site-frame{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.section-label{font-family:var(--font-mono);font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:.15em;margin-bottom:1rem}
+h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:900;font-style:italic;text-transform:uppercase;line-height:.85;letter-spacing:-.02em;color:#f5f0e8}
+.hero-sub{font-size:1.1rem;color:var(--text-dim);max-width:650px;line-height:1.7;margin-top:.75rem}
+.mono-dim{font-family:var(--font-mono);font-size:.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em}
+
+/* Nav */
+nav{background:#0a0a0a;border-bottom:1px solid var(--border);padding:8px 16px;font-family:var(--font-mono);font-size:12px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+nav a{color:#94a3b8;text-decoration:none} nav a.active,nav a:hover{color:var(--gold)}
+
+/* Hero */
+.hero{padding:4rem 0 3rem;border-bottom:2px solid var(--border);background:var(--surface)}
+
+/* Legend */
+.legend-bar{padding:1rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;flex-wrap:wrap}
+.legend-badge{display:flex;align-items:center;gap:.4rem;padding:.3rem .8rem;border-radius:4px;font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.08em}
+.legend-badge.tersedar{background:rgba(34,197,94,.1);color:var(--emerald)}
+.legend-badge.samar{background:rgba(245,158,11,.1);color:var(--amber)}
+.legend-badge.tenggelam{background:rgba(239,68,68,.1);color:var(--red)}
+.legend-dot{width:6px;height:6px;border-radius:50%}
+
+/* Grid */
+.pm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;padding:2.5rem 0 4rem}
+
+/* Card */
+.pm-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color .2s}
+.pm-card:hover{border-color:var(--gold-dim)}
+.pm-portrait{position:relative;width:100%;aspect-ratio:3/4;background:var(--surface2);overflow:hidden;border-bottom:1px solid var(--border)}
+.pm-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .5s}
+.pm-card:hover .pm-portrait img{filter:grayscale(0)}
+.pm-portrait .placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--text-dim);font-family:var(--font-mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em}
+.pm-portrait .placeholder span{font-size:3rem;opacity:.15;margin-bottom:.5rem}
+.order-badge{position:absolute;top:.6rem;left:.6rem;width:1.8rem;height:1.8rem;border-radius:50%;background:rgba(0,0,0,.7);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.7rem;font-weight:700;color:var(--gold)}
+.verdict-badge{position:absolute;top:.6rem;right:.6rem;padding:.15rem .5rem;border-radius:3px;font-family:var(--font-mono);font-size:.45rem;text-transform:uppercase;letter-spacing:.08em}
+.verdict-badge.tersedar{background:rgba(34,197,94,.15);color:var(--emerald)}
+.verdict-badge.samar{background:rgba(245,158,11,.15);color:var(--amber)}
+.verdict-badge.tenggelam{background:rgba(239,68,68,.15);color:var(--red)}
+
+.pm-body{padding:1.25rem}
+.pm-title{font-family:var(--font-mono);font-size:.5rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em}
+.pm-name{font-size:1.3rem;font-weight:900;font-style:italic;text-transform:uppercase;margin:.15rem 0 0;color:#f5f0e8;line-height:1.15}
+.pm-tenure{font-family:var(--font-mono);font-size:.55rem;color:var(--text-dim);margin-bottom:1rem}
+.pm-section{border-top:1px solid var(--border);padding-top:.75rem;margin-top:.75rem}
+.pm-section-label{font-family:var(--font-mono);font-size:.45rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.3rem}
+.pm-section-label.persona{color:var(--cyan)}
+.pm-section-label.bayang{color:var(--red)}
+.pm-section-label.tragedi{color:var(--amber)}
+.pm-section p{font-size:.82rem;color:var(--text-dim);line-height:1.65}
+.pm-section.tragedi p{font-style:italic;color:rgba(154,144,128,.6);font-size:.75rem}
+
+.legacy-box{padding:.75rem;border-radius:4px;margin-top:.75rem;font-size:.75rem;color:var(--text-dim);line-height:1.6}
+.legacy-box.tersedar{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.15)}
+.legacy-box.samar{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15)}
+.legacy-box.tenggelam{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)}
+.legacy-box .legacy-label{font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
+.legacy-box.tersedar .legacy-label{color:var(--emerald)}
+.legacy-box.samar .legacy-label{color:var(--amber)}
+.legacy-box.tenggelam .legacy-label{color:var(--red)}
+
+/* Footer */
+footer{padding:3rem 0 2rem;border-top:2px solid var(--border);text-align:center}
+footer p{color:var(--text-dim);font-size:.82rem;max-width:650px;margin:0 auto;line-height:1.7}
+footer .foot-mono{font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-top:.75rem}
+
+@media(max-width:768px){.pm-grid{grid-template-columns:1fr}}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="/">🏠 HOME</a>
+  <a href="/earth">EARTH</a>
+  <a href="/economics">ECONOMICS</a>
+  <a href="/world">WORLD</a>
+  <a href="/politics/ns-election">PRN16 N9</a>
+  <a href="/politics/shadow/" class="active" style="color:var(--gold);font-weight:bold">SHADOW</a>
+  <a href="/writing">WRITING</a>
+  <a href="/doctrine">DOCTRINE</a>
+  <a href="/map/">MAP</a>
+</nav>
+
+<section class="hero">
+  <div class="site-frame">
+    <div class="section-label">JUNG SHADOW · PSIKOLOGI BAYANG · 9 PERDANA MENTERI</div>
+    <h1>PM Bayang</h1>
+    <p class="hero-sub">Setiap Perdana Menteri ada persona — topeng yang ditunjukkan pada dunia. Tapi Carl Jung kata: makin cantik topeng kau, makin gelap bayang kau. Ini analisis bayang 9 Perdana Menteri Malaysia — dari Tunku ke Anwar.</p>
+    <p class="mono-dim" style="margin-top:.75rem">Δ-ONLY · Bayang = Nyata · Dari Rekod Umum</p>
+  </div>
+</section>
+
+<section>
+  <div class="site-frame">
+    <div class="legend-bar">
+      <div class="legend-badge tersedar"><span class="legend-dot" style="background:var(--emerald)"></span> TERSEDAR — Jumpa Bayang</div>
+      <div class="legend-badge samar"><span class="legend-dot" style="background:var(--amber)"></span> SAMAR — Separuh Gelap</div>
+      <div class="legend-badge tenggelam"><span class="legend-dot" style="background:var(--red)"></span> TENGGELAM — Bayang Menang</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="site-frame">
+    <div class="pm-grid">
+      <!-- PM 1: Tunku Abdul Rahman -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg" alt="Tunku Abdul Rahman" loading="lazy"><div class="order-badge">1</div><div class="verdict-badge samar">SAMAR</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tunku</div><h2 class="pm-name">Tunku Abdul Rahman</h2><div class="pm-tenure">1957–1970</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Kemerdekaan — putera raja Kedah yang lembut, merdeka tanpa darah, suka kuda dan bola.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Terlalu percaya pada British model. Merdeka politik tapi ekonomi kekal di tangan asing. Tak pernah benar-benar pimpin Melayu luar bandar — dia pimpin elit bandar yang cakap Inggeris.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>13 Mei 1969 — rusuhan kaum yang dia tak nampak datang. Sistem yang dia bina retak atas race line yang dia anggap dah settle.</p></div>
+          <div class="legacy-box samar"><div class="legacy-label">Legasi</div>Dia bagi kita merdeka. Tapi bayang dia: satu negara yang merdeka di atas kertas, hamba di segi ekonomi.</div>
+        </div>
+      </div>
+
+      <!-- PM 2: Tun Abdul Razak -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Tun_Abdul_Razak_1968.jpg" alt="Tun Abdul Razak" loading="lazy"><div class="order-badge">2</div><div class="verdict-badge samar">SAMAR</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tun</div><h2 class="pm-name">Tun Abdul Razak</h2><div class="pm-tenure">1970–1976</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Pembangunan — teknokrat bisu, bina FELDA, DEB, sekolah asrama. Workaholic yang tak cakap banyak.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>DEB yang dia bina bukan sekadar ekonomi — ia jadi senjata politik kaum. Yang dia tak jangka: sistem kuota melahirkan budaya bergantung, bukan budaya bersaing. Dan bila UMNO guna DEB untuk kroni, Razak dah takde nak jawab.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>Dia meninggal 1976 di London — leukemia. Cepat sangat. DEB tinggal setengah siap dan akhirnya jadi alat pembahagian, bukan pembangunan.</p></div>
+          <div class="legacy-box samar"><div class="legacy-label">Legasi</div>Visi dia besar. Tapi pelaksanaan — lepas dia mati — jadi najis. Bukan salah dia. Tapi bayang dia hidup 50 tahun.</div>
+        </div>
+      </div>
+
+      <!-- PM 3: Tun Hussein Onn -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/en/1/12/Tun_Hussein_Onn.jpg" alt="Tun Hussein Onn" loading="lazy"><div class="order-badge">3</div><div class="verdict-badge tersedar">TERSEDAR</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tun</div><h2 class="pm-name">Tun Hussein Onn</h2><div class="pm-tenure">1976–1981</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Perpaduan — askar jujur, bersih, tak tahan rasuah. PM paling pendek tapi paling bersih rekod.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia PM yang tak nak jadi PM. Ditolak ke atas sebab Razak mati. Kesepian dalam kuasa — dia lawan rasuah tapi kena tikam dari dalam UMNO sendiri. Dia tahu permainan kotor tapi tak cukup kuat nak bersihkan.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>Sakit jantung. Letak jawatan 1981. Lepas dia pergi — Mahathir ambil alih. Dan Mahathir buat apa yang Hussein tak boleh: main kotor untuk kekal.</p></div>
+          <div class="legacy-box tersedar"><div class="legacy-label">Legasi</div>Dia contoh pemimpin bersih. Tapi bayang dia: yang bersih tak bertahan. Yang kotor kekal.</div>
+        </div>
+      </div>
+
+      <!-- PM 4: Tun Dr. Mahathir Mohamad -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Mahathir_Mohamad_13112018_%28cropped%29.jpg" alt="Tun Dr. Mahathir Mohamad" loading="lazy"><div class="order-badge">4</div><div class="verdict-badge tenggelam">TENGGELAM</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tun Dr.</div><h2 class="pm-name">Tun Dr. Mahathir Mohamad</h2><div class="pm-tenure">1981–2003 · 2018–2020</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Pemodenan — doktor kampung jadi arkitek negara. Ubah Malaysia dari sawah ke pencakar langit. 22 tahun kuasa.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia percaya dia saja yang betul. Semua orang lain bodoh. Bila sistem tak ikut dia, dia ubah sistem. Bila hakim lawan, dia buang hakim. Bila parti lawan, dia kunci. Semua atas nama "pembangunan." Bayang Mahathir: megalomania bersalut nasionalisme.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>Dua kali dia pilih pengganti — dua kali dia jatuhkan mereka (Anwar 1998, Najib 2015). Setiap pengganti dia anggap tak layak. Sebab dalam kepala dia: hanya Mahathir yang layak pimpin Malaysia.</p></div>
+          <div class="legacy-box tenggelam"><div class="legacy-label">Legasi</div>Dia bina Menara. Tapi robohkan institusi. Doktor yang menyembuh, kemudian memotong. PM paling lama, PM paling banyak parut.</div>
+        </div>
+      </div>
+
+      <!-- PM 5: Tun Abdullah Ahmad Badawi -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Abdullah_Ahmad_Badawi_at_the_XIVth_Non-Aligned_Movement_Summit_at_Havana%2C_Cuba_on_September_16%2C_2006.jpg" alt="Tun Abdullah Ahmad Badawi" loading="lazy"><div class="order-badge">5</div><div class="verdict-badge samar">SAMAR</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tun</div><h2 class="pm-name">Tun Abdullah Ahmad Badawi</h2><div class="pm-tenure">2003–2009</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Islam Hadhari — Pak Lah yang lembut, bersih, soleh, dengan misi membaiki kerosakan Mahathir.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia mahu bersih tapi tak mampu lawan UMNO. Dia lepaskan ISA, buka ruang — tapi UMNO dan keluarganya sendiri (Khairy, menantu) dan kroni (Patrick Badawi) guna kuasa dia. Dia jadi PM tapi tak pernah benar-benar pegang stereng.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>PRU 2008. BN kalah 5 negeri, kehilangan 2/3 majoriti Parlimen. Tsunami politik yang dia tak jangka — sebab tersepit antara reformasi dan UMNO.</p></div>
+          <div class="legacy-box samar"><div class="legacy-label">Legasi</div>Orang baik. Tapi jadi PM bukan kerja orang baik. Bayang dia: kau boleh niat baik, tapi kalau kau tak kuat, kau jadi alat orang kuat.</div>
+        </div>
+      </div>
+
+      <!-- PM 6: Dato' Sri Mohd Najib Razak -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Najib_Razak_2008-08-21.jpg" alt="Dato' Sri Mohd Najib Razak" loading="lazy"><div class="order-badge">6</div><div class="verdict-badge tenggelam">TENGGELAM</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Dato' Sri</div><h2 class="pm-name">Dato' Sri Mohd Najib Razak</h2><div class="pm-tenure">2009–2018</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Bapa Transformasi — anak Razak, Oxford-educated, transformasi digital, 1MDB sebelum gelap.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>1MDB — USD 4.5 billion. Skandal terbesar dalam sejarah Malaysia. Bukan sekadar curi duit — ia pendedahan bahawa sistem Malaysia dibina atas lubang. Dan Najib adalah result logik sistem tu: anak PM, dibesarkan dalam kuasa, tak pernah kena "tidak."</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>2018 — BN kalah. Pertama kali dalam sejarah Malaysia. Najib dari PM ke banduan. Isteri, Rosmah, sama. Bayang dia: bila kau tak boleh membezakan duit negara dengan duit sendiri.</p></div>
+          <div class="legacy-box tenggelam"><div class="legacy-label">Legasi</div>Dia buktikan: sistem yang Mahathir bina boleh ditumbangkan. Tapi dia juga buktikan: bila anak sistem dapat kuasa, dia akan minum sistem tu sampai habis.</div>
+        </div>
+      </div>
+
+      <!-- PM 7: Tan Sri Muhyiddin Yassin -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Muhyiddin_Yassin_%2851087589446%29_%28cropped%29.jpg" alt="Tan Sri Muhyiddin Yassin" loading="lazy"><div class="order-badge">7</div><div class="verdict-badge tenggelam">TENGGELAM</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Tan Sri</div><h2 class="pm-name">Tan Sri Muhyiddin Yassin</h2><div class="pm-tenure">2020–2021</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Abah — PM waktu COVID, bersih, muhibah, bukan pilihan raya.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia ambil kuasa bukan melalui pilihan raya — tapi melalui langkah Sheraton. Lompat parti. Pintu belakang. Dia tahu. Semua orang tahu. Tapi dia pura-pura "mandat." Bayang Muhyiddin: kuasa tanpa legitimacy.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>17 bulan je. Ditolak oleh UMNO sendiri — parti yang dia membantu rompak kerajaan PH. Mati di tangan kawan.</p></div>
+          <div class="legacy-box tenggelam"><div class="legacy-label">Legasi</div>PM paling singkat. Tapi paling penting: dia buktikan sesiapa pun boleh jadi PM — tanpa pilihan raya. Bayang dia: Malaysia selepas Muhyiddin, PM tak perlu menang.</div>
+        </div>
+      </div>
+
+      <!-- PM 8: Dato' Sri Ismail Sabri Yaakob -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Ismail_Sabri_Yaakob_01042022_%28cropped%29.jpg" alt="Dato' Sri Ismail Sabri Yaakob" loading="lazy"><div class="order-badge">8</div><div class="verdict-badge samar">SAMAR</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Dato' Sri</div><h2 class="pm-name">Dato' Sri Ismail Sabri Yaakob</h2><div class="pm-tenure">2021–2022</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Keluarga Malaysia — PM kejutan, budak Temerloh yang naik, cuba damaikan politik.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia tak sepatutnya jadi PM. Dia naik sebab semua orang lain penat gaduh. Muhyiddin tumbang, Ismail jadi ganti — bukan sebab hebat, tapi sebab dia pilihan paling tak controversial. PM default. Bayang Ismail: kau boleh jadi PM Malaysia bukan kerana kau layak, tapi kerana semua orang lain terlalu letih untuk terus bergaduh.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>14 bulan je. PH + BN + PN semua tunggu dia jatuh. Dan dia tahu. Setiap hari dia PM, dia tahu dia dipinjamkan kuasa.</p></div>
+          <div class="legacy-box samar"><div class="legacy-label">Legasi</div>Dia buktikan sistem dah rosak teruk — PM boleh jadi sesiapa, tak perlu menang pilihan raya. Bayang dia: "Keluarga Malaysia" tapi keluarganya sendiri — UMNO — yang bunuh dia.</div>
+        </div>
+      </div>
+
+      <!-- PM 9: Dato' Seri Anwar Ibrahim -->
+      <div class="pm-card">
+        <div class="pm-portrait"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Anwar_Ibrahim_in_June_2026.jpg" alt="Dato' Seri Anwar Ibrahim" loading="lazy"><div class="order-badge">9</div><div class="verdict-badge tenggelam">TENGGELAM</div></div>
+        <div class="pm-body">
+          <div class="pm-title">Dato' Seri</div><h2 class="pm-name">Dato' Seri Anwar Ibrahim</h2><div class="pm-tenure">2022–sekarang</div>
+          <div class="pm-section"><div class="pm-section-label persona">Persona</div><p>Reformis yang akhirnya jadi PM — pejuang demokrasi yang masuk penjara, bangkit, dan naik takhta.</p></div>
+          <div class="pm-section"><div class="pm-section-label bayang">Bayang</div><p>Dia lawan zalim 20 tahun tapi bila dapat kuasa, dia tak ubah sistem — dia pakai sistem yang sama. UMNO yang dia lawan, sekarang jadi kawan sekantor. Bayang Anwar: persona reformis terlalu cantik sampai bayang dia tak pernah dihadapi. Dia tak pernah cakap "saya silap." Semua konspirasi. Semua orang lain salah.</p></div>
+          <div class="pm-section tragedi"><div class="pm-section-label tragedi">Tragedi</div><p>30 tahun tunggu PM. Bila dapat — dah terlambat. Negara dah retak, lawan dah banyak, ekonomi dah parah. Dan yang paling perit: orang yang dia lawan dulu (Mahathir, UMNO) adalah orang yang dia perlukan sekarang.</p></div>
+          <div class="legacy-box tenggelam"><div class="legacy-label">Legasi</div>Masih menulis. Tapi bayang dia: pemimpin yang tak jumpa bayang sendiri. Dulu lawan sistem — sekarang sistem tu jadi dia.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="site-frame">
+    <p>Psikologi bayang bukan tuduhan. Ia cermin. Setiap PM adalah produk sistem yang lebih besar dari mereka. Tapi yang tak pernah jumpa bayang sendiri — akan diulangi oleh bayang itu berkali-kali.</p>
+    <div class="foot-mono">Sumber: Rekod Awam · Hansard Parlimen · Arkib Negara · Berita Semasa</div>
+    <div class="foot-mono">DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi</div>
+    <div class="foot-mono" style="margin-top:1rem"><a href="/politics/ns-election/" style="color:var(--gold);text-decoration:none;">← PRN16 N9</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

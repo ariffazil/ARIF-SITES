@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="ORGAN" data-organ="geox">
+<head>
+    <meta charset="UTF-8">
+<meta name="description" content="GEOX — Earth intelligence for the arifOS federation. Basin analysis, seismic interpretation, petrophysics, prospect evaluation. Evidence-gated, human-decided." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOX | Sovereign Decision Cockpits</title>
+<meta property="og:image" content="https://geox | sovereign decision cockpits/og-image.jpg" />
+<meta property="og:title" content="GEOX | Sovereign Decision Cockpits" />
+    <!-- Federation design system (SSOT) -->
+    <link rel="stylesheet" href="/_shared/design-system/tokens.css">
+    <link rel="stylesheet" href="https://arifosmcp.arif-fazil.com/arifos-theme.css">
+    <link rel="stylesheet" href="css/geox-platform.css">
+    <style>
+        :root {
+            --accent-gold: #d4af37;
+            --accent-cyan: #00d4aa;
+            --bg-dark: #0a0a0f;
+            --border-dim: #1a1a25;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+
+        /* Hero */
+        .hero { padding: 5rem 0; text-align: center; }
+        .hero h1 { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            background: linear-gradient(135deg, #fff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero p { color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem; font-size: 1.1rem; }
+
+        /* The Cockpits */
+        .cockpit-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .cockpit-card {
+            background: #12121a;
+            border: 1px solid var(--border-dim);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: border-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cockpit-card:hover { border-color: var(--accent-gold); }
+        .cockpit-card .tag { 
+            font-family: monospace; 
+            font-size: 0.7rem; 
+            color: var(--accent-cyan); 
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .cockpit-card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: #fff; }
+        .cockpit-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+
+        /* The Bridge */
+        .bridge-section {
+            background: #0f0f15;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            text-align: center;
+            border: 1px solid var(--border-dim);
+        }
+
+        .bridge-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .bridge-visual::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            z-index: 0;
+        }
+
+        .bridge-node {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-dim);
+            padding: 1.5rem;
+            border-radius: 12px;
+            width: 200px;
+            z-index: 1;
+        }
+
+        .bridge-node .icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .bridge-node .label { font-size: 0.7rem; color: var(--accent-gold); text-transform: uppercase; font-weight: 700; }
+        .bridge-node .desc { font-size: 0.8rem; color: var(--text-secondary); }
+
+        /* Status Bar */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50px;
+            margin-bottom: 5rem;
+            font-size: 0.85rem;
+        }
+
+        .status-pulse {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #2ed573;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #2ed573;
+        }
+
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-dim);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .governance-seal {
+            font-family: monospace;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        /* RASA Panel */
+        .rasa-section {
+            background: linear-gradient(135deg, #0f0f15 0%, #12121a 100%);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+            border: 1px solid var(--border-dim);
+        }
+
+        .rasa-formula {
+            font-family: 'Fira Code', monospace;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            background: rgba(0, 212, 170, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .rasa-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .rasa-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-dim);
+        }
+
+        .rasa-card .value { font-size: 2rem; font-weight: 800; color: var(--accent-cyan); }
+        .rasa-card .label { font-size: 0.75rem; color: var(--accent-gold); text-transform: uppercase; margin-top: 0.5rem; }
+        .rasa-card .desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; }
+
+        @media (max-width: 768px) {
+            .cockpit-grid { grid-template-columns: 1fr; }
+            .bridge-visual { flex-direction: column; gap: 2rem; }
+            .bridge-visual::after { display: none; }
+        }
+        @media (max-width: 1100px) {
+            .cockpit-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="font-family: monospace; font-size: 0.9rem; color: var(--accent-gold);">GEOX // AF-FORGE</div>
+            <nav class="nav-links">
+                <a href="/" class="active">Overview</a>
+                <a href="/apps/">Cockpits</a>
+                <a href="/docs/">Protocol</a>
+                <a href="#rasa">RASA</a>
+                <a href="/status/">Status</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-kicker" style="color: var(--accent-cyan); font-family: monospace; font-size: 0.8rem; margin-bottom: 1rem;">BRINGING CLARITY TO A CHAOTIC EARTH</div>
+            <h1>Sovereign Decision Cockpits</h1>
+            <p>Moving from a toolbox to an enterprise subsurface co-processor. Governed intelligence for Earth Truth and Capital Consequence.</p>
+            <div class="cta-group">
+                <a href="/apps/" class="btn" style="background: var(--accent-gold); color: #000; font-weight: 700;">Enter the Cockpits</a>
+            </div>
+        </section>
+
+        <div class="status-bar">
+            <div><span class="status-pulse"></span> SYSTEM_LIVE: <span id="server-version">v0.1.0-AAA</span></div>
+            <div style="font-family: monospace; color: var(--accent-gold);">VAULT_999_CONNECTED</div>
+            <div id="last-updated">2026.04.15 // 10:00:00</div>
+        </div>
+
+        <section class="cockpit-grid">
+            <a href="/apps/prospect-ui/" class="cockpit-card">
+                <span class="tag">GEOX // AAA-Grade</span>
+                <h3>Prospect Forge</h3>
+                <p>The definitive cockpit for prospect maturation. Integrates Georeferencing, B_cog Bias Referee, and Governed Verdicts.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="/apps/well-desk/" class="cockpit-card">
+                <span class="tag">GEOX // AAA-Grade</span>
+                <h3>Well Witness</h3>
+                <p>Integrated well correlation with petrophysical ToAC audit. Trust-graded interpretation for high-stakes targets.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="https://wealth.arif-fazil.com/apps/capital_judge/" class="cockpit-card" target="_blank" rel="noopener">
+                <span class="tag">WEALTH // v1.3.1</span>
+                <h3>Capital Judge</h3>
+                <p>Sovereign capital allocation engine. Bridges geological truth to financial consequence via CapitalX.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Open Decision Surface</div>
+            </a>
+            <a href="/basins/kinabalu/index.html" class="cockpit-card">
+                <span class="tag">GEOX // LC-001 // NSPW-Corrected</span>
+                <h3>Kinabalu Basin Synthesis</h3>
+                <p>8-stage tectonostratigraphic column · PSCS subduction model (5/8 kill tests) · 4 basement hypotheses · 8-well KL2 dataset · Layang-Tepat-Solisip-Megah prospect verdicts.</p>
+                <div style="font-size: 0.75rem; color: var(--accent-cyan);">→ Analyze Basin Intelligence</div>
+            </a>
+        </section>
+
+        <section class="bridge-section">
+            <h2 style="margin-bottom: 1rem;">The Sovereign Bridge</h2>
+            <p style="color: var(--text-secondary);">One continuous causal chain from Sediment to Sovereignty.</p>
+            
+            <div class="bridge-visual">
+                <div class="bridge-node">
+                    <div class="icon">🌍</div>
+                    <div class="label">Sediment</div>
+                    <div class="desc">Raw Earth Evidence & Geodetic Anchors</div>
+                </div>
+                <div class="bridge-node" style="border-color: var(--accent-gold);">
+                    <div class="icon">🏛️</div>
+                    <div class="label">Governance</div>
+                    <div class="desc">ToAC Audit, B_cog Referee & 888_HOLD</div>
+                </div>
+                <div class="bridge-node">
+                    <div class="icon">💰</div>
+                    <div class="label">Sovereignty</div>
+                    <div class="desc">CapitalX Valuation & Decision Closure</div>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: var(--accent-gold); font-family: monospace;">
+                geox.evaluate_prospect() → arifos.bridge_contract() → wealth.npv_reward()
+            </p>
+        </section>
+
+        <section class="rasa-section" id="rasa">
+            <h2 style="text-align: center; margin-bottom: 1rem;">RASA — Context-Fit Score</h2>
+            <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">
+                Every GEOX claim carries a <strong>Relevance-Aware Substrate Alignment</strong> score.
+                RASA measures whether an interpretation is anchored to its evidence context or floating in abstraction.
+            </p>
+
+            <div class="rasa-formula">
+                RASA = evidence_credit × (1 − u_ambiguity)
+            </div>
+
+            <div class="rasa-grid">
+                <div class="rasa-card">
+                    <div class="value">0.90</div>
+                    <div class="label">F7 Humility Cap</div>
+                    <div class="desc">GEOX never claims perfect context fit. 10% epistemic room is mandatory.</div>
+                </div>
+                <div class="rasa-card">
+                    <div class="value">30</div>
+                    <div class="label">Canonical Tools</div>
+                    <div class="desc">Every tool output can carry a RASA score when <code>rasa_present=True</code>.</div>
+                </div>
+                <div class="rasa-card">
+                    <div class="value">AAA</div>
+                    <div class="label">Evidence Grade</div>
+                    <div class="desc">RASA feeds the CLAIM / PLAUSIBLE / HYPOTHESIS epistemic ladder.</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.85rem; color: var(--text-secondary); font-family: monospace;">
+                geox.compute_ac_risk_governed(...) → rasa_context_fit ∈ [0.0, 0.90]
+            </p>
+        </section>
+
+        <footer>
+            <div class="governance-seal">DITEMPA BUKAN DIBERI</div>
+            <p>&copy; 2026 Muhammad Arif Fazil // arifOS Constellation</p>
+            <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 2rem;">
+                <a href="https://arif-fazil.com" style="color: var(--text-secondary); text-decoration: none;">Sovereign Root</a>
+                <a href="https://arifos.arif-fazil.com" style="color: var(--text-secondary); text-decoration: none;">Observatory</a>
+                <a href="https://aaa.arif-fazil.com" style="color: var(--text-secondary); text-decoration: none;">Protocol Layer</a>
+                <a href="https://github.com/ariffazil/GEOX" style="color: var(--text-secondary); text-decoration: none;">Source</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/health');
+                if (res.ok) {
+                    const data = await res.json();
+                    document.getElementById('server-version').textContent = data.version || 'v2.0.0-UNIFIED-SPEC';
+                }
+            } catch (e) {
+                console.log('Status fetch offline.');
+            }
+            document.getElementById('last-updated').textContent = new Date().toISOString().replace('T', ' ').split('.')[0];
+        }
+        fetchStatus();
+        setInterval(fetchStatus, 60000);
+    </script>
+<script src="/_shared/trinity-nav.js"></script>
+<script src="/_shared/webmcp/arifos-webmcp-adapter.js"></script>
+<script>
+(function() {
+  if (typeof arifosWebMCP === 'undefined') return;
+  arifosWebMCP.registerReadonly('get_organ_health', 'Get organ service health status', {}, async function() {
+    try { var r = await fetch('/health'); return await r.json(); }
+    catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+  arifosWebMCP.registerReadonly('get_registry', 'List this organ available tools', {}, async function() {
+    try {
+      var r = await fetch('/mcp', {method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({jsonrpc: '2.0', id: 1, method: 'tools/list'})});
+      return await r.json();
+    } catch(e) { return {status: 'unreachable', error: e.message}; }
+  });
+})();
+</script>
+</body>
+</html>

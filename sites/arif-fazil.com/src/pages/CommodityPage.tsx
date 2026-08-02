@@ -42,7 +42,7 @@ export function CommodityPage({ slug }: { slug: string }) {
   useEffect(() => {
     if (commodity) {
       document.title = `${commodity.name} · Commodity Dashboard | Arif Fazil`;
-      fetch(`/wealth/${slug}/api/ticker`)
+      fetch(`/${slug}/api/ticker`)
         .then(res => res.ok ? res.json() : null)
         .then(data => {
           if (data && data.price) {

@@ -1222,5 +1222,33 @@
       "path": "/world/makcikgpt/searah-bernama-lewat"
     },
     "seal": "999"
+  },
+  {
+    "id": "m2-8",
+    "title": "Suara Yang Tak Letak Dalam Mulut Manusia",
+    "date": "2026-08-02",
+    "lang": "bm",
+    "series": {
+      "id": "M2",
+      "n": 8
+    },
+    "tags": [
+      "petronas",
+      "rightsizing",
+      "taufik",
+      "bakke-salleh",
+      "anwar",
+      "ai",
+      "bahasa",
+      "bayang",
+      "bangang",
+      "makcikgpt",
+      "malaysia"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/world/makcikgpt/suara-terlalu-siap"
+    },
+    "seal": "999"
   }
 ]

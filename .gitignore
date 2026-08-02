@@ -45,3 +45,13 @@ test-results/
 *.bak-*
 .releases/
 sites/arif-fazil.com/public/data/politics/ns_live_telemetry.json
+__pycache__/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Web-zen runtime
+.eslintcache
+.web_zen_state/

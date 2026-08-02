@@ -17,7 +17,7 @@ export function MakcikGPT() {
       {/* Hero */}
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">
-          <div className="section-label">Civilization Intelligence · Ξ WEALTH · MakcikGPT</div>
+          <div className="section-label text-forge-red">Civilization Intelligence · Ξ WEALTH · MakcikGPT</div>
           <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-8">
             Makcik<br />GPT
           </h1>
@@ -43,11 +43,11 @@ export function MakcikGPT() {
             <Link
               key={article.slug}
               to={`/world/makcikgpt/${article.slug}`}
-              className="brutalist-card border border-forge-iron px-8 py-8 block hover:border-forge-gold transition-colors"
+              className="brutalist-card border border-forge-iron px-8 py-8 block hover:border-forge-red transition-colors"
             >
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-4">
                 <div>
-                  <div className="font-technical text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">
+                  <div className="font-technical text-[0.6rem] text-forge-red uppercase tracking-widest mb-2">
                     {article.domain} · {article.language === 'ms' ? 'Bahasa Makcik' : 'English'} · Sealed {article.seal}
                   </div>
                   <h2 className="text-2xl font-black uppercase tracking-tight text-forge-white leading-tight">
@@ -83,7 +83,7 @@ export function MakcikGPT() {
                     {tag}
                   </span>
                 ))}
-                <span className="font-mono text-xs text-forge-gold ml-auto">
+                <span className="font-mono text-xs text-forge-red ml-auto">
                   Read article →
                 </span>
               </div>

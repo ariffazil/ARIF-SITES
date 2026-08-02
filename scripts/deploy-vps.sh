@@ -108,6 +108,22 @@ else
     done
 fi
 
+# ── 3.5. Sync web-canon registry (source → live + site copy) ─────────────────
+#         F1 AMANAH: rsync --delete only after JSON/YAML validation passes (gate)
+#         F2 TRUTH: drift test post-sync (fail loud on divergence)
+#         F11 AUDITABILITY: arifflow receipt emitted by canon-sync.sh
+#         Closes audit gap WEB-03/04 (was: 3 repos, 0 integration)
+#         Atlas333 P26: gate prevents harm; we honor it as a hard fail.
+log_info "Syncing web-canon registry (source → live + site)..."
+if [[ -x /root/web-canon/scripts/canon-sync.sh ]]; then
+    # Exit code propagates via set -euo pipefail — drift blocks deploy.
+    CANON_SYNC_LIVE=1 CANON_SYNC_SITE=1 /root/web-canon/scripts/canon-sync.sh
+    log_info "  ✅ canon-sync complete"
+else
+    log_error "  ✗ canon-sync.sh not found at /root/web-canon/scripts/  (deploy blocked)"
+    exit 1
+fi
+
 # ── 4. Reload Caddy ──────────────────────────────────────────────────────────
 log_info "Reloading Caddy..."
 # F1 AMANAH — snapshot current Caddyfile before each reload. Idempotent (overwrite

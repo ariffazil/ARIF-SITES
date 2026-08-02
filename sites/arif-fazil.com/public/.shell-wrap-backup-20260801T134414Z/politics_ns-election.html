@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negeri Sembilan PRN 2026 — Live Interactive GIS Map & 9 Invariants | arifOS</title>
+<link rel="canonical" href="https://arif-fazil.com/politics/ns-election/">
+<!-- Leaflet GIS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #07090E; color: #f1f5f9; font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif; padding: 0; }
+.site-frame { max-width: 1280px; margin: 0 auto; padding: 1.5rem; }
+
+/* Top Header */
+.top-bar { background: #030712; border-bottom: 1px solid #1e293b; padding: 0.5rem 1.5rem; font-family: monospace; font-size: 0.75rem; color: #94a3b8; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.live-pill { background: #022c22; color: #34d399; border: 1px solid #059669; padding: 0.15rem 0.5rem; font-weight: bold; border-radius: 4px; font-size: 0.65rem; }
+
+/* Hero */
+.hero { padding: 3rem 0; border-bottom: 1px solid #1e293b; background: linear-gradient(180deg, #030712 0%, #07090E 100%); }
+.hero h1 { font-size: 3rem; font-weight: 900; font-style: italic; text-transform: uppercase; line-height: 1; letter-spacing: -0.03em; margin-bottom: 1rem; color: #ffffff; }
+.hero h1 span { background: linear-gradient(90deg, #fbbf24, #f97316, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.sub-label { font-family: monospace; font-size: 0.75rem; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+.hero p { font-size: 1.1rem; color: #cbd5e1; max-width: 750px; line-height: 1.6; }
+
+/* Section Header */
+.sec-header { margin: 2.5rem 0 1.5rem 0; border-bottom: 1px solid #1e293b; padding-bottom: 0.75rem; }
+.sec-header h2 { font-size: 1.8rem; font-weight: 900; font-style: italic; text-transform: uppercase; color: #ffffff; }
+.sec-header p { font-family: monospace; font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem; }
+
+/* 9 Invariants Grid */
+.inv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.inv-card { background: rgba(15,23,42,0.6); border: 1px solid #334155; border-radius: 6px; padding: 1rem; cursor: pointer; transition: all 0.2s; }
+.inv-card:hover { border-color: #fbbf24; transform: translateY(-2px); background: #0f172a; }
+.inv-code { font-family: monospace; font-size: 0.75rem; font-weight: bold; color: #fbbf24; }
+.inv-title { font-size: 1.1rem; font-weight: 800; color: #f8fafc; margin: 0.3rem 0; }
+.inv-domain { font-family: monospace; font-size: 0.65rem; color: #64748b; text-transform: uppercase; }
+.inv-q { font-size: 0.8rem; color: #cbd5e1; font-style: italic; margin: 0.5rem 0; line-height: 1.4; }
+.inv-dir { font-family: monospace; font-size: 0.7rem; font-weight: bold; display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; }
+
+/* Matrix Controls */
+.matrix-container { background: #030712; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; margin: 2rem 0; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); }
+.matrix-toolbar { padding: 1rem 1.5rem; border-bottom: 1px solid #1e293b; background: rgba(15,23,42,0.8); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.matrix-toolbar h3 { font-family: monospace; font-size: 0.85rem; text-transform: uppercase; color: #f8fafc; letter-spacing: 0.05em; }
+
+.filter-group { display: flex; gap: 0.4rem; font-family: monospace; font-size: 0.75rem; flex-wrap: wrap; }
+.filter-btn { background: #0f172a; border: 1px solid #334155; color: #94a3b8; padding: 0.3rem 0.8rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.filter-btn:hover, .filter-btn.active { background: #1e293b; color: #f8fafc; border-color: #fbbf24; font-weight: bold; }
+.toggle-view-btn { background: #d97706; color: #000000; font-weight: bold; border-color: #f59e0b; }
+
+/* Map View Container */
+#gisMap { width: 100%; height: 500px; z-index: 1; background: #07090E; }
+
+/* Grid */
+.seat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; padding: 1.5rem; background: radial-gradient(circle at center, #0f172a 0%, #030712 100%); }
+.seat-card { background: rgba(15,23,42,0.6); border: 1px solid #334155; border-radius: 6px; padding: 0.8rem; transition: all 0.2s; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+.seat-card:hover { transform: translateY(-2px); border-color: #fbbf24; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); }
+
+.seat-card.ph { border-left: 4px solid #ef4444; }
+.seat-card.bn { border-left: 4px solid #3b82f6; }
+.seat-card.pn { border-left: 4px solid #10b981; }
+.seat-card.tossup { border-left: 4px solid #f59e0b; }
+
+.seat-code { font-family: monospace; font-size: 0.7rem; color: #94a3b8; font-weight: bold; }
+.seat-name { font-size: 1rem; font-weight: 800; color: #f8fafc; margin: 0.2rem 0; }
+.seat-incumbent { font-family: monospace; font-size: 0.65rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.seat-meta { margin-top: 0.6rem; padding-top: 0.4rem; border-top: 1px solid rgba(51,65,85,0.5); display: flex; justify-content: space-between; font-family: monospace; font-size: 0.65rem; color: #cbd5e1; }
+.tag-winner { padding: 0.1rem 0.3rem; border-radius: 2px; font-weight: bold; font-size: 0.6rem; text-transform: uppercase; }
+
+.tag-winner.ph { background: rgba(239,68,68,0.2); color: #fca5a5; border: 1px solid #ef4444; }
+.tag-winner.bn { background: rgba(59,130,246,0.2); color: #93c5fd; border: 1px solid #3b82f6; }
+.tag-winner.pn { background: rgba(16,185,129,0.2); color: #6ee7b7; border: 1px solid #10b981; }
+.tag-winner.tossup { background: rgba(245,158,11,0.2); color: #fde047; border: 1px solid #f59e0b; }
+
+/* Selected Drawer */
+.inspector { margin-top: 1.5rem; background: #030712; border: 1px solid #f59e0b; border-radius: 8px; padding: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.inspector h4 { font-family: monospace; font-size: 0.75rem; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.1em; }
+.inspector .name { font-size: 2rem; font-weight: 900; text-transform: uppercase; color: #ffffff; margin: 0.2rem 0; }
+
+/* Coalitions */
+.coalition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+.card-box { background: #030712; border: 1px solid #1e293b; border-radius: 8px; padding: 1.5rem; }
+.card-box h4 { font-size: 1.1rem; font-weight: 800; font-style: italic; text-transform: uppercase; margin-bottom: 0.75rem; }
+
+/* Footer */
+footer { border-top: 1px solid #1e293b; padding: 2rem 0; font-family: monospace; font-size: 0.75rem; color: #64748b; background: #030712; margin-top: 3rem; }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2rem; }
+  .seat-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div>
+    <span class="live-pill">● LIVE REAL MAP (GIS)</span>
+    <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence · Leaflet Cartography</strong>
+  </div>
+  <div>
+    <span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>Updated 1 Aug 2026 — OFFICIAL RESULTS</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="site-frame">
+    <div class="sub-label">PRN 2026 State Election Spatial GIS Briefing · 36 DUN Seats · FINAL RESULT: BN-PN 25 · PH 11</div>
+    <h1>Negeri Sembilan<br><span>Live Interactive GIS Map & 9 Invariants</span></h1>
+    <p>Polling Day: <strong style="color:#fde047;">Sabtu, 1 Ogos 2026</strong> · Early Voting: <strong>Rabu, 29 Julai 2026</strong>.<br>
+    FINAL (UNOFFICIAL): <strong style="color:#3b82f6;">BN-PN 25 kerusi</strong> membentuk kerajaan · <strong style="color:#ef4444;">PH 11</strong> · Real OpenStreetMap Leaflet GIS Engine displaying spatial seat boundaries and candidate relocation vectors across Negeri Sembilan.</p>
+  </div>
+</div>
+
+<div class="site-frame">
+
+  <!-- 9 Top Contrast Invariants Section -->
+  <div class="sec-header">
+    <h2>🏛️ 9 Top Contrast Invariant Factors Moving Malaysian Elections</h2>
+    <p>Cross-disciplinary synthesis mapping Demographics, Economic Thermodynamics, Adat Perpatih Substrate, and Agentic Split Friction to Negeri Sembilan.</p>
+  </div>
+
+  <div class="inv-grid" id="invGrid">
+    <!-- Injected via JS -->
+  </div>
+
+  <!-- Interactive Matrix Toolbar -->
+  <div class="matrix-container">
+    <div class="matrix-toolbar">
+      <div>
+        <h3>Interactive GIS Spatial Map · 36 DUN Negeri Sembilan</h3>
+        <p style="font-family:monospace;font-size:0.7rem;color:#64748b;margin-top:0.2rem;">Click any map marker or grid tile below to inspect seat data</p>
+      </div>
+      <div class="filter-group">
+        <button class="filter-btn toggle-view-btn" id="viewToggleBtn" onclick="toggleViewMode()">🗺️ SWITCH TO GRID</button>
+        <button class="filter-btn active" onclick="filterSeats('ALL', event)">ALL (36)</button>
+        <button class="filter-btn" onclick="filterSeats('BN', event)">BN (18)</button>
+        <button class="filter-btn" onclick="filterSeats('PH', event)">PH (11)</button>
+        <button class="filter-btn" onclick="filterSeats('PN', event)">PN (7)</button>
+        <button class="filter-btn" onclick="filterSeats('HOT', event)">🔥 HOT (8)</button>
+      </div>
+    </div>
+
+    <!-- REAL GIS LEAFLET MAP VIEW -->
+    <div id="gisMap"></div>
+
+    <!-- CARTOGRAM GRID VIEW (HIDDEN BY DEFAULT) -->
+    <div class="seat-grid" id="seatGrid" style="display: none;">
+      <!-- Injected via JS -->
+    </div>
+  </div>
+
+  <!-- Inspector Box -->
+  <div class="inspector" id="inspectorBox">
+    <div>
+      <h4 id="inspCode">DUN N32 · 🔥 BATTLEGROUND</h4>
+      <div class="name" id="inspName">Linggi</div>
+      <p style="font-family:monospace;font-size:0.8rem;color:#cbd5e1;" id="inspInc">Incumbent: Mohd Faizal (BN)</p>
+    </div>
+    <div style="font-family:monospace;font-size:0.75rem;border-left:1px solid #1e293b;padding-left:1.5rem;" id="inspMeta">
+      <p style="margin-bottom:0.4rem;">2023 Majority: <strong style="color:#fbbf24;">1,461 votes</strong></p>
+      <p>PRN16 Result: <span class="tag-winner bn">BN WINS</span></p>
+    </div>
+    <div>
+      <h4 style="margin-bottom:0.4rem;">Agentic Spatial Field Analysis</h4>
+      <p style="font-size:0.85rem;color:#e2e8f0;font-style:italic;line-height:1.5;" id="inspNotes">
+        "⚠️ EPICENTER RESOLVED: BN incumbent Mohd Faizal holds Linggi — MB Aminuddin Harun (PH-PKR) DEFEATED at relocation seat. MB-MOBILITY vector validated: executive prestige energy could not overcome structural Malay majority (~64%)."
+      </p>
+    </div>
+  </div>
+
+  <!-- FINAL RESULT BANNER -->
+  <div class="card-box" style="border-top:4px solid #3b82f6;margin-bottom:1.5rem;background:linear-gradient(180deg,#0b1120 0%,#07090E 100%);">
+    <h3 style="color:#93c5fd;font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.5rem;">🏁 FINAL RESULT (UNOFFICIAL) — BN-PN FORMS GOVERNMENT</h3>
+    <p style="font-family:monospace;font-size:0.8rem;color:#94a3b8;line-height:1.8;">
+      <strong style="color:#3b82f6;">BN 18</strong> + <strong style="color:#10b981;">PN 7</strong> = <strong style="color:#fbbf24;">25 seats</strong> · Two-thirds majority (2/3 = 24; simple majority = 19) · Polling Day 1 Aug 2026<br>
+      <strong style="color:#ef4444;">PH 11</strong> — loses Negeri Sembilan after 8 years.<br><br>
+      <strong style="color:#fbbf24;">KEY EVENTS:</strong><br>
+      ⚡ <strong>ANTHONY LOKE (DAP Sec-Gen) DEFEATED</strong> in Chennah by MCA — first DAP secretary-general to lose a state seat<br>
+      ⚡ <strong>MB AMINUDDIN HARUN DEFEATED</strong> in Linggi (epicenter relocation seat) by BN incumbent Mohd Faizal — MB-MOBILITY vector validated<br>
+      🔒 <strong>TOK MAT</strong> holds Rantau — TOK-MAT-FORTRESS validated<br>
+      🔄 BN flips: Chennah, Pilah, Labu, Repah · PN flips: Klawang, Sikamat, Ampangan (Serting & Bagan Pinang kekal PN)<br>
+      👑 Royal-substrate dampening holds in Seri Menanti (BN)
+    </p>
+  </div>
+
+  <!-- Government Scenarios -->
+  <div class="coalition-grid">
+    <div class="card-box" style="border-top:4px solid #3b82f6;">
+      <h4 style="color:#93c5fd;">✅ REALISED: BN-PN Alliance</h4>
+      <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
+        BN 18 + PN 7 = 25. The UMNO-PAS state pact delivered — 'Malay unity' coalition forms government with two-thirds majority. BN-PN momentum from Johor confirmed.
+      </p>
+    </div>
+    <div class="card-box" style="border-top:4px solid #64748b;">
+      <h4 style="color:#94a3b8;">✗ DID NOT MATERIALISE: PH-Led Government</h4>
+      <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
+        PH fell to 11 seats — 8 short of majority. The Bersatu-independent split failed to deliver marginal Malay seats; urban/Chinese belt held but was insufficient.
+      </p>
+    </div>
+    <div class="card-box" style="border-top:4px solid #64748b;">
+      <h4 style="color:#94a3b8;">✗ DID NOT MATERIALISE: Hung Assembly (18-18)</h4>
+      <p style="font-family:monospace;font-size:0.75rem;color:#94a3b8;line-height:1.6;">
+        No deadlock. Bersatu kingmaker leverage never activated — coalition crossed the line decisively at 25 seats.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="site-frame" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <div>
+      <strong>arifOS · Federation Intelligence</strong> — GIS Leaflet Cartography Engine<br>
+      Published directly on <code>arif-fazil.com/politics/ns-election/</code> · Sealed 999<br>
+      <a href="/politics/ns-election/compare/" style="color:#fbbf24;">🪜 SEAT-TO-SEAT 2023→2026 →</a>
+    </div>
+    <div style="font-style:italic;">
+      DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi.
+    </div>
+  </div>
+</footer>
+
+<!-- Leaflet JS CDN -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+const INVARIANTS = [
+  { code:'DEM-MIX', title:'Ethnic Superposition Threshold', domain:'Demographics', q:'Seats with 55-65% Malay density act as superposition states shifted by non-Malay turnout.', dir:'PH Favored', col:'#ef4444' },
+  { code:'SPLIT-FRICTION', title:'Opposition Wave Split (Bersatu)', domain:'Agentic Dynamic', q:'Independent Bersatu runs split anti-establishment votes, causing destructive interference for PN.', dir:'PH Favored', col:'#f59e0b' },
+  { code:'ROYAL-SUBSTRATE', title:'Adat Perpatih & Royal Gravitas', domain:'Cultural Substrate', q:'Matriarchal clan structure & royal dignity dampen extreme national ideological swings.', dir:'BN Favored', col:'#3b82f6' },
+  { code:'ECON-THERMO', title:'Cost-of-Living Entropy', domain:'Thermodynamics', q:'Food/housing inflation creates anti-incumbent thermal noise among B40 youth.', dir:'PN Favored', col:'#10b981' },
+  { code:'MB-MOBILITY', title:'MB Relocation Vector', domain:'Machinery', q:'MB Aminuddin moving to Linggi shifts executive prestige energy into a high-entropy seat.', dir:'Volatility', col:'#f59e0b' },
+  { code:'NON-MALAY-LOCK', title:'Non-Malay Cohesion Invariant', domain:'Demographics', q:'Chinese/Indian turnout >68% acts as an absolute vote floor for DAP/PKR in 8 urban seats.', dir:'PH Favored', col:'#ef4444' },
+  { code:'TOK-MAT-FORTRESS', title:'Tok Mat Patronage Machine', domain:'Machinery', q:'Grassroots welfare machinery generates stable electoral potential wells in Rembau luak.', dir:'BN Favored', col:'#3b82f6' },
+  { code:'FELDA-POLARIZATION', title:'FELDA Generational Split', domain:'Cultural Substrate', q:'Gen-1 settlers vote UMNO; Gen-2/3 vote PAS/PN due to digital media & economic discontent.', dir:'PN Favored', col:'#10b981' },
+  { code:'POSTAL-MILITARY', title:'Discipline Security Vote', domain:'Machinery', q:'Polis & Tentera postal vote blocks act as predictable non-volatile vectors.', dir:'BN Favored', col:'#3b82f6' }
+];
+
+const SEATS = [
+  { code:'N1', name:'Chennah', inc:'Loke Siew Fook (DAP)', maj:2200, winner:'BN', cls:'bn', hot:true, lat:3.136, lng:102.046, notes:'⚠️ UPSET: Anthony Loke (DAP SG) defeated by MCA · Barometer for Chinese & mixed vote' },
+  { code:'N2', name:'Pertang', inc:'Jalaluddin Alias (UMNO)', maj:2790, winner:'BN', cls:'bn', hot:true, lat:2.946, lng:102.213, notes:'Jelebu MP defended stronghold vs PAS' },
+  { code:'N3', name:'Sungai Lui', inc:'Mohd Razi (UMNO)', maj:535, winner:'BN', cls:'bn', hot:false, lat:3.161, lng:102.321, notes:'Marginal rural Malay seat held' },
+  { code:'N4', name:'Klawang', inc:'Bakri Sawir (AMANAH)', maj:577, winner:'PN', cls:'pn', hot:false, lat:2.969, lng:102.073, notes:'FLIP: PN captures marginal mixed seat in Jelebu' },
+  { code:'N5', name:'Serting', inc:'Mohd Fairuz (PN)', maj:843, winner:'PN', cls:'pn', hot:true, lat:2.876, lng:102.405, notes:'PN holds despite Bersatu split' },
+  { code:'N6', name:'Palong', inc:'Mustapha Nagoor (UMNO)', maj:564, winner:'BN', cls:'bn', hot:false, lat:2.766, lng:102.511, notes:'FELDA stronghold held (11,869 votes)' },
+  { code:'N7', name:'Jeram Padang', inc:'Mohd Zaidy (UMNO)', maj:693, winner:'BN', cls:'bn', hot:false, lat:2.723, lng:102.378, notes:'Estate / Indian swing voters held' },
+  { code:'N8', name:'Bahau', inc:'Teo Kok Seong (DAP)', maj:8408, winner:'PH', cls:'ph', hot:false, lat:2.808, lng:102.404, notes:'DAP urban/commercial safe seat held' },
+  { code:'N9', name:'Lenggeng', inc:'Mohd Asna Amin (UMNO)', maj:685, winner:'BN', cls:'bn', hot:false, lat:2.846, lng:101.986, notes:'Semi-rural Seremban fringe held by BN' },
+  { code:'N10', name:'Nilai', inc:'Arul Kumar (DAP)', maj:10889, winner:'PH', cls:'ph', hot:true, lat:2.816, lng:101.796, notes:'Industrial corridor & educational hub held' },
+  { code:'N11', name:'Lobak', inc:'Chew Seh Yong (DAP)', maj:13504, winner:'PH', cls:'ph', hot:false, lat:2.736, lng:101.936, notes:'Chinese-majority core Seremban held' },
+  { code:'N12', name:'Temiang', inc:'Ng Chin Tsai (DAP)', maj:3068, winner:'PH', cls:'ph', hot:false, lat:2.748, lng:101.951, notes:'Mixed urban Seremban seat held' },
+  { code:'N13', name:'Sikamat', inc:'Aminuddin Harun (PKR)', maj:2662, winner:'PN', cls:'pn', hot:false, lat:2.721, lng:101.966, notes:'FLIP: PN wins former MB seat (MB moved to Linggi)' },
+  { code:'N14', name:'Ampangan', inc:'Tengku Zamrah (PKR)', maj:329, winner:'PN', cls:'pn', hot:true, lat:2.701, lng:101.971, notes:'FLIP: ultra-marginal (329 in 2023) goes PN' },
+  { code:'N15', name:'Juasseh', inc:'Bibi Sharliza (UMNO)', maj:78, winner:'BN', cls:'bn', hot:false, lat:2.776, lng:102.296, notes:'Closest 2023 margin (78 votes) held by BN' },
+  { code:'N16', name:'Seri Menanti', inc:'Muhammad Sufian (UMNO)', maj:370, winner:'BN', cls:'bn', hot:false, lat:2.701, lng:102.161, notes:'Royal seat of Yang di-Pertuan Besar held' },
+  { code:'N17', name:'Senaling', inc:'Ismail Lasim (UMNO)', maj:662, winner:'BN', cls:'bn', hot:false, lat:2.686, lng:102.246, notes:'Traditional Malay agricultural belt held' },
+  { code:'N18', name:'Pilah', inc:'Noorzunita Begum (PKR)', maj:1079, winner:'BN', cls:'bn', hot:false, lat:2.736, lng:102.256, notes:'FLIP: BN captures Kuala Pilah town seat (728 majority)' },
+  { code:'N19', name:'Johol', inc:'Saiful Yazan (UMNO)', maj:2117, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:102.261, notes:'Strong UMNO machinery held' },
+  { code:'N20', name:'Labu', inc:'Hanifah Abu Baker (BERSATU)', maj:1640, winner:'BN', cls:'bn', hot:true, lat:2.736, lng:101.881, notes:'FLIP: BN captures Labu' },
+  { code:'N21', name:'Bukit Kepayang', inc:'Nicole Tan (DAP)', maj:19684, winner:'PH', cls:'ph', hot:false, lat:2.716, lng:101.906, notes:'Largest majority in NS (19,684) held' },
+  { code:'N22', name:'Rahang', inc:'Siau Meow Kong (DAP)', maj:6432, winner:'PH', cls:'ph', hot:false, lat:2.706, lng:101.946, notes:'Urban mixed DAP stronghold held' },
+  { code:'N23', name:'Mambau', inc:'Yap Yew Weng (DAP)', maj:14940, winner:'PH', cls:'ph', hot:false, lat:2.686, lng:101.916, notes:'Urban industrial/residential DAP seat held' },
+  { code:'N24', name:'Seremban Jaya', inc:'Gunasekaren (DAP)', maj:12703, winner:'PH', cls:'ph', hot:false, lat:2.676, lng:101.976, notes:'DAP high-density housing seat held' },
+  { code:'N25', name:'Paroi', inc:'Kamarol Ridzuan (PAS)', maj:5539, winner:'PN', cls:'pn', hot:true, lat:2.711, lng:102.001, notes:'Largest Malay-majority urban seat held by PN' },
+  { code:'N26', name:'Chembong', inc:'Zaifulbahri (UMNO)', maj:4335, winner:'BN', cls:'bn', hot:false, lat:2.576, lng:102.046, notes:'Rembau parliamentary core held' },
+  { code:'N27', name:'Rantau', inc:'Mohamad Hasan (Tok Mat)', maj:10280, winner:'BN', cls:'bn', hot:false, lat:2.596, lng:101.966, notes:'TOK-MAT-FORTRESS validated — impregnable fortress held' },
+  { code:'N28', name:'Kota', inc:'Suhaimi Aini (UMNO)', maj:135, winner:'BN', cls:'bn', hot:false, lat:2.526, lng:102.106, notes:'Ultra-marginal 135 majority held by BN' },
+  { code:'N29', name:'Chuah', inc:'Yew Boon Lye (PKR)', maj:6298, winner:'PH', cls:'ph', hot:false, lat:2.646, lng:101.761, notes:'Port Dickson coastal agricultural held' },
+  { code:'N30', name:'Lukut', inc:'Choo Ken Hwa (DAP)', maj:10135, winner:'PH', cls:'ph', hot:false, lat:2.566, lng:101.811, notes:'Port Dickson urban/tourism seat held' },
+  { code:'N31', name:'Bagan Pinang', inc:'Abdul Fatah (PAS)', maj:3426, winner:'PN', cls:'pn', hot:true, lat:2.476, lng:101.831, notes:'Army camp & resort seat held by PN' },
+  { code:'N32', name:'Linggi', inc:'Mohd Faizal (BN)', maj:1461, winner:'BN', cls:'bn', hot:true, lat:2.496, lng:101.941, notes:'⚠️ EPICENTER RESOLVED: BN incumbent holds — MB Aminuddin Harun (PH-PKR) DEFEATED at relocation seat' },
+  { code:'N33', name:'Sri Tanjung', inc:'Rajasekaran (PKR)', maj:3996, winner:'PH', cls:'ph', hot:false, lat:2.516, lng:101.861, notes:'Port Dickson mixed urban core held' },
+  { code:'N34', name:'Gemas', inc:'Ridzuan Ahmad (BERSATU)', maj:3120, winner:'PN', cls:'pn', hot:false, lat:2.586, lng:102.611, notes:'Tampin border railway hub held by PN' },
+  { code:'N35', name:'Gemencheh', inc:'Suhaimizan Bizar (UMNO)', maj:2434, winner:'BN', cls:'bn', hot:false, lat:2.536, lng:102.396, notes:'UMNO Tampin stronghold held' },
+  { code:'N36', name:'Repah', inc:'Veerapan (DAP)', maj:5950, winner:'BN', cls:'bn', hot:false, lat:2.476, lng:102.231, notes:'FLIP: MCA captures Tampin town mixed seat from DAP' }
+];
+
+const COLOR_MAP = {
+  PH: '#ef4444',
+  BN: '#3b82f6',
+  PN: '#10b981',
+  TOSSUP: '#f59e0b'
+};
+
+let map = null;
+let markers = [];
+let isMapView = true;
+
+function initLeafletMap() {
+  if (map) return;
+  map = L.map('gisMap', {
+    center: [2.72, 102.15],
+    zoom: 10
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    maxZoom: 18
+  }).addTo(map);
+
+  renderLeafletMarkers();
+}
+
+function renderLeafletMarkers(filter = 'ALL') {
+  if (!map) return;
+  markers.forEach(m => map.removeLayer(m));
+  markers = [];
+
+  const list = SEATS.filter(s => {
+    if (filter === 'ALL') return true;
+    if (filter === 'HOT') return s.hot;
+    return s.winner === filter;
+  });
+
+  list.forEach(seat => {
+    const isLinggi = seat.code === 'N32';
+    const marker = L.circleMarker([seat.lat, seat.lng], {
+      radius: isLinggi ? 12 : seat.hot ? 9 : 7,
+      fillColor: COLOR_MAP[seat.winner],
+      color: isLinggi ? '#EF4444' : '#FFFFFF',
+      weight: isLinggi ? 3 : 1,
+      opacity: 1,
+      fillOpacity: 0.85
+    }).addTo(map);
+
+    const popupHtml = `
+      <div style="font-family: monospace; font-size: 12px; color: #000; min-width: 160px;">
+        <strong style="font-size: 14px;">DUN ${seat.code} ${seat.name}</strong><br/>
+        <span>Incumbent: ${seat.inc}</span><br/>
+        <span>2023 Maj: <strong>${seat.maj.toLocaleString()}</strong></span><br/>
+        <span style="color:${COLOR_MAP[seat.winner]}; font-weight:bold;">2026: ${seat.winner}</span>
+      </div>
+    `;
+    marker.bindPopup(popupHtml);
+    marker.on('click', () => selectSeat(seat));
+    markers.push(marker);
+  });
+}
+
+function toggleViewMode() {
+  const mapDiv = document.getElementById('gisMap');
+  const gridDiv = document.getElementById('seatGrid');
+  const btn = document.getElementById('viewToggleBtn');
+
+  if (isMapView) {
+    mapDiv.style.display = 'none';
+    gridDiv.style.display = 'grid';
+    btn.textContent = '🗺️ SWITCH TO REAL MAP';
+    isMapView = false;
+  } else {
+    mapDiv.style.display = 'block';
+    gridDiv.style.display = 'none';
+    btn.textContent = '📊 SWITCH TO GRID';
+    isMapView = true;
+    if (map) setTimeout(() => map.invalidateSize(), 200);
+  }
+}
+
+function renderInvariants() {
+  const container = document.getElementById('invGrid');
+  container.innerHTML = '';
+  INVARIANTS.forEach(inv => {
+    const card = document.createElement('div');
+    card.className = 'inv-card';
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;">
+        <span class="inv-code">${inv.code}</span>
+        <span class="inv-domain">${inv.domain}</span>
+      </div>
+      <div class="inv-title">${inv.title}</div>
+      <div class="inv-q">"${inv.q}"</div>
+      <div style="margin-top:0.5rem;">
+        <span class="inv-dir" style="background:${inv.col}20;color:${inv.col};border:1px solid ${inv.col};">${inv.dir}</span>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function renderGrid(filter = 'ALL') {
+  const container = document.getElementById('seatGrid');
+  container.innerHTML = '';
+
+  const list = SEATS.filter(s => {
+    if (filter === 'ALL') return true;
+    if (filter === 'HOT') return s.hot;
+    return s.winner === filter;
+  });
+
+  list.forEach(seat => {
+    const card = document.createElement('div');
+    card.className = `seat-card ${seat.cls}`;
+    card.onclick = () => selectSeat(seat);
+
+    card.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span class="seat-code">${seat.code}</span>
+        <div>${seat.hot ? '🔥' : ''} <span class="tag-winner ${seat.cls}">${seat.winner}</span></div>
+      </div>
+      <div class="seat-name">${seat.name}</div>
+      <div class="seat-incumbent">${seat.inc}</div>
+      <div class="seat-meta">
+        <span>Maj:</span>
+        <strong style="color:#f8fafc;">${seat.maj.toLocaleString()}</strong>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  renderLeafletMarkers(filter);
+}
+
+function selectSeat(seat) {
+  document.getElementById('inspCode').textContent = `DUN ${seat.code} · ${seat.hot ? '🔥 BATTLEGROUND' : 'SEAT MATRIX'}`;
+  document.getElementById('inspName').textContent = seat.name;
+  document.getElementById('inspInc').textContent = `Incumbent: ${seat.inc}`;
+  document.getElementById('inspNotes').textContent = `"${seat.notes}"`;
+  document.getElementById('inspMeta').innerHTML = `
+    <p style="margin-bottom:0.4rem;">2023 Majority: <strong style="color:#fbbf24;">${seat.maj.toLocaleString()} votes</strong></p>
+    <p>PRN16 Result: <span class="tag-winner ${seat.cls}">${seat.winner}</span></p>
+  `;
+}
+
+function filterSeats(type, ev) {
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    if (!b.classList.contains('toggle-view-btn')) b.classList.remove('active');
+  });
+  if (ev && !ev.target.classList.contains('toggle-view-btn')) ev.target.classList.add('active');
+  renderGrid(type);
+}
+
+window.onload = function() {
+  renderInvariants();
+  renderGrid('ALL');
+  initLeafletMap();
+};
+</script>
+
+</body>
+</html>

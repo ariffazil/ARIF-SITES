@@ -38,8 +38,20 @@ export const primaryLinks: LinkItem[] = [
   { label: 'Explore', href: '/earth' },
   { label: 'Analyze', href: '/economics' },
   { label: 'Track', href: '/world' },
+  { label: 'Politics', href: '/politics/ns-election/' },
+  { label: 'Gold', href: '/gold/' },
   { label: 'Read', href: '/writing' },
   { label: 'Challenge', href: '/doctrine' },
+];
+
+// Civic shelf — live sovereign surfaces reachable from every page.
+export const civicLinks: LinkItem[] = [
+  { label: 'Gold', href: '/gold/' },
+  { label: 'Election', href: '/politics/ns-election/' },
+  { label: 'Shadow', href: '/politics/shadow/' },
+  { label: 'Doctrine', href: '/doctrine' },
+  { label: 'Pulse', href: '/pulse/' },
+  { label: 'Audit', href: '/audit/' },
 ];
 
 // Genesis strip — machine-facing surfaces.

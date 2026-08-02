@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <!-- page: earth v2 · Φ GEOX · arif-fazil.com/earth · content-marker: dynamic-earth-Φ wells-Φ studies-Φ -->
-<html lang="en" data-ring="ORGAN" data-organ="geox">
+<html lang="en" data-ring="ORGAN" data-plane="domain" data-organ="geox">
 <head>
+<link rel="stylesheet" href="/_shared/design-system/tokens.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil</title>
 <meta name="description" content="The living Earth, rendered live: Macrostrat global geologic map on an interactive globe, plate boundaries, today's earthquakes, and the GEOX MCP cockpits that turn the planet into evidence-gated decisions.">
+<!-- H4 fix 2026-08-01: add canonical + OG/Twitter metadata so SERPs and AI crawlers index /earth
+     as its own entity rather than borrowing the homepage's hero. -->
+<link rel="canonical" href="https://arif-fazil.com/earth">
+<meta property="og:title" content="EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil">
+<meta property="og:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the GEOX MCP cockpits. Click the globe — ask the rocks what they are.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arif-fazil.com/earth">
+<meta property="og:image" content="https://arif-fazil.com/earth/data/og-earth.jpg">
+<meta property="og:image:alt" content="Earth intelligence cockpit — Macrostrat-piped global geology with Arif Fazil's well portfolio.">
+<meta property="og:site_name" content="arif-fazil.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil">
+<meta name="twitter:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the GEOX MCP cockpits.">
+<meta name="twitter:image" content="https://arif-fazil.com/earth/data/og-earth.jpg">
+<meta name="twitter:image:alt" content="Earth intelligence cockpit — Macrostrat-piped global geology with Arif Fazil's well portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
@@ -257,11 +273,14 @@ footer a:hover{color:var(--accent-cyan)}
 <header>
   <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
   <nav class="nav-links">
-    <a href="https://arif-fazil.com">Home</a>
-    <a href="https://geox.arif-fazil.com">GEOX</a>
-    <a href="https://aaa.arif-fazil.com">AAA</a>
-    <a href="https://arifos.arif-fazil.com">arifOS</a>
-    <a href="https://mcp.arif-fazil.com">MCP</a>
+    <a href="/" style="color:#f59e0b;font-weight:bold;">🏠 Home</a>
+    <a href="/earth" class="active">Earth</a>
+    <a href="/economics">Economics</a>
+    <a href="/world">World</a>
+    <a href="/politics/ns-election">PRN16 N9</a>
+    <a href="/writing">Writing</a>
+    <a href="/doctrine">Doctrine</a>
+    <a href="/map/">Map</a>
   </nav>
 </header>
 
@@ -964,5 +983,11 @@ window.addEventListener("load",()=>setTimeout(()=>$("veil").classList.add("gone"
 setTimeout(()=>$("veil").classList.add("gone"),6000); // fail-safe
 })();
 </script>
+
+<!-- CanonFooter (WEB_ATLAS shell invariant I4) -->
+<footer class="canon-footer" style="margin-top:3rem;padding:1.2rem 1.5rem;border-top:1px solid #1e293b;font-size:0.8rem;color:#94a3b8;text-align:center;">
+  <div><strong>arifOS · Federation Intelligence</strong> — governed by <a href="/canon/atlas.yaml" style="color:#60a5fa">WEB_ATLAS</a> · <a href="/canon/file-authority.yaml" style="color:#60a5fa">file authority</a></div>
+  <div style="margin-top:0.3rem;font-style:italic;">DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi.</div>
+</footer>
 </body>
 </html>

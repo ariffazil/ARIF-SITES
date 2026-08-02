@@ -1,4 +1,5 @@
-import { contactLinks } from '@/data/siteContent';
+import { Link } from 'react-router-dom';
+import { contactLinks, civicLinks } from '@/data/siteContent';
 
 const quietLink =
   'font-mono text-[0.7rem] text-forge-dim hover:text-forge-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange';
@@ -18,6 +19,15 @@ export function ConstellationFooter() {
           <a href="/999/" className="text-forge-orange/90 hover:text-forge-white transition-colors">/999</a>
           {' '}is verification.
         </p>
+
+        {/* Civic shelf — live sovereign surfaces reachable from every page */}
+        <nav aria-label="Civic surfaces" className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mb-8">
+          {civicLinks.map((item) => (
+            <Link key={item.label} to={item.href} className={quietLink}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
         {/* Contact */}
         <nav aria-label="Contact" className="flex justify-center items-center gap-6 mb-10">

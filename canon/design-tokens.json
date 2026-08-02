@@ -1,51 +1,129 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "1.0.0",
-  "description": "Shared design tokens for the arifOS federation. Theory of Anomalous Contrast — no two Trinity rings look alike.",
-  "rule": "Every site consumes these tokens. No one-off colors, spacing, or typography without canon update.",
-
-  "trinity_palette": {
-    "soul": {
-      "primary": "#FF3333",
-      "secondary": "#3366FF",
-      "accent": "#FFCC00",
-      "geometry": "jagged-polygon",
-      "motion": "fractal-drift",
-      "font": "Space Grotesk",
-      "metaphor": "human-igneous"
+  "schema": "canon/design-tokens/v2026.08",
+  "version": "PRIMER-1.0",
+  "primer": "PRIMER-1",
+  "ratified_by": "sovereign (F13)",
+  "ratified_at": "2026-08-01",
+  "doctrine": "One canon, two renderings. Every human token has a machine twin. Design is the F4 Clarity floor made visible. Red is rationed - maruah is scarce by definition.",
+  "color": {
+    "human": {
+      "family": "yellow",
+      "rationale": "Warmth. Yellow is the human-body color: sun, fire, light, life. Universal human warmth signal.",
+      "100": { "hex": "#FBF3D9", "name": "paper-sand", "use": "backgrounds" },
+      "300": { "hex": "#F2D98C", "name": "soft amber", "use": "cards, fills" },
+      "500": { "hex": "#D9A62E", "name": "primary amber", "use": "actions, brand" },
+      "700": { "hex": "#8A6410", "name": "deep honey", "use": "text on light" },
+      "900": { "hex": "#4A3608", "name": "umber", "use": "headlines" }
     },
-    "mind": {
-      "primary": "#00D4AA",
-      "secondary": "#008866",
-      "accent": "#00FFAA",
-      "geometry": "rectilinear-grid",
-      "motion": "precise-snap",
-      "font": "JetBrains Mono",
-      "metaphor": "machine-governance"
+    "institution": {
+      "family": "blue",
+      "rationale": "Law. Blue is the institution color: banks, courts, constitutions, corporate trust.",
+      "100": { "hex": "#E4EBF2", "name": "mist", "use": "backgrounds" },
+      "300": { "hex": "#9DB8CE", "name": "steel", "use": "cards, borders" },
+      "500": { "hex": "#2E5F8A", "name": "marine", "use": "actions, brand" },
+      "700": { "hex": "#1B3A57", "name": "deep marine", "use": "text" },
+      "900": { "hex": "#0C1F31", "name": "abyss", "use": "headlines" }
     },
-    "body": {
-      "primary": "#D4A853",
-      "secondary": "#C4791A",
-      "accent": "#E3B341",
-      "geometry": "rounded-organic",
-      "motion": "smooth-ease",
-      "font": "Inter",
-      "metaphor": "wire-connection"
+    "earth": {
+      "family": "green-blue",
+      "rationale": "Geologic. Green-blue honestly mixed (teal to viridian to basin), not the 'Earth = green' cliche.",
+      "100": { "hex": "#DFF0EA", "name": "shallow", "use": "backgrounds" },
+      "300": { "hex": "#8CC3B2", "name": "reef", "use": "cards" },
+      "500": { "hex": "#2A705E", "name": "viridian", "use": "actions, brand" },
+      "700": { "hex": "#17584A", "name": "basin", "use": "text" },
+      "900": { "hex": "#0A2E27", "name": "trench", "use": "headlines" }
+    },
+    "sovereign": {
+      "family": "red",
+      "rationale": "Rationed. Red appears only where sovereignty or judgment is present: /arif strip, verdict chips (888_HOLD, VOID), seal marks (999). If red is everywhere, it means nothing.",
+      "300": { "hex": "#D97B6C", "name": "clay", "use": "seal backgrounds only" },
+      "500": { "hex": "#B3362B", "name": "signal", "use": "verdicts, 888, warnings" },
+      "700": { "hex": "#7A1F18", "name": "maroon", "use": "sovereign text/strip" },
+      "900": { "hex": "#3D0E0A", "name": "deep scar", "use": "VOID state" }
+    },
+    "neutral": {
+      "family": "neutral",
+      "rationale": "Bedrock. Warm paper (human side) and carbon (agent side).",
+      "paper": { "hex": "#FAF7F0", "name": "human-side canvas", "use": "warm, low saturation" },
+      "ink": { "hex": "#1A1712", "name": "human-side body text", "use": "text" },
+      "carbon": { "hex": "#101216", "name": "agent-side canvas", "use": "background" },
+      "bone": { "hex": "#E8E6DF", "name": "agent-side primary text", "use": "text" }
     }
   },
-
-  "global": {
-    "radius": { "sm": "4px", "md": "8px", "lg": "16px" },
-    "spacing": { "xs": "4px", "sm": "8px", "md": "16px", "lg": "32px", "xl": "64px" },
-    "shadow": {
-      "sm": "0 1px 3px rgba(0,0,0,0.08)",
-      "md": "0 4px 12px rgba(0,0,0,0.1)",
-      "lg": "0 8px 24px rgba(0,0,0,0.12)"
+  "font": {
+    "family": "IBM Plex",
+    "voices": { "human": "Sans", "doctrine": "Serif", "machine": "Mono" },
+    "scale_ratio": 1.414,
+    "base_px": 16.8,
+    "scale": {
+      "t--1": { "px": 11.9, "use": "captions, vault refs (mono)" },
+      "t-0": { "px": 16.8, "use": "body" },
+      "t+1": { "px": 23.8, "use": "section titles" },
+      "t+2": { "px": 33.6, "use": "page titles" },
+      "t+3": { "px": 47.6, "use": "trinity tile heroes" }
     },
-    "breakpoints": {
-      "mobile": "640px",
-      "tablet": "1024px",
-      "desktop": "1280px"
+    "line_height": { "body": 1.5, "title": 1.15 },
+    "measure_chars": 68,
+    "tnum": "font-feature-settings: tnum"
+  },
+  "geometry": {
+    "unit_px": 4,
+    "spacing": [1, 2, 4, 8, 16, 32, 64],
+    "grid": { "columns": 12, "breakpoints": [640, 1024, 1440] },
+    "radius": { "human": 12, "machine": 2, "torus": "full" },
+    "motif": {
+      "notch": "fractal-corner-8-4-2",
+      "ring": "trinity-torus",
+      "wheel": "mission-torus"
+    },
+    "border": { "width": 1, "token_level": 300, "dashed_only_for": "888_HOLD" }
+  },
+  "motion": {
+    "travel_ms": 90,
+    "easing": "cubic-bezier(.2,.9,.3,1)",
+    "press_travel_px": 2,
+    "hold_to_confirm_ms": 800,
+    "reduced_motion": "collapse all travel to opacity-only"
+  },
+  "buttons": {
+    "grades": {
+      "SEAL": { "look": "solid *-500, ink text, 2px travel shadow in *-700", "use": "one per view - committing action" },
+      "HOLD": { "look": "paper fill, 1px *-500 border, dashed on hover", "use": "pending, reversible, draft" },
+      "VOID": { "look": "r-500 fill - the only red button", "use": "irreversible; hold-to-confirm 800ms" }
+    },
+    "states": {
+      "REST": { "transform": "translateY(0)", "shadow": "0 2px 0 family-700" },
+      "HOVER": { "transform": "translateY(-1px)", "shadow": "0 3px 0 family-700" },
+      "ACTIVE": { "transform": "translateY(2px)", "shadow": "0 0 0 + inset 0 2px 4px" },
+      "DISABLED": { "opacity": 0.45, "shadow": "none", "cursor": "not-allowed" }
     }
+  },
+  "verdict_chips": {
+    "999_SEAL": { "look": "solid family-500", "font": "mono uppercase", "radius": "machine" },
+    "888_HOLD": { "look": "dashed r-500 border", "font": "mono uppercase", "radius": "machine" },
+    "VOID": { "look": "solid r-900", "font": "mono uppercase", "radius": "machine" }
+  },
+  "territory_map": {
+    "/human": "human",
+    "/institution": "institution",
+    "/earth": "earth",
+    "/arif": "sovereign",
+    "/laws": "doctrine",
+    "/world/oil": "institution",
+    "/world/gas": "institution",
+    "/world/gold": "institution",
+    "/999": "sovereign",
+    "/000": "sovereign"
+  },
+  "machine_twin": {
+    "channel_field": "channel",
+    "state_enum": ["rest", "hold", "sealed", "void"],
+    "schema_version": "canon/v2026.08"
+  },
+  "contrast_guarantees": {
+    "action_500_vs_100_bg": "WCAG AA >= 4.5:1",
+    "text_700_900_vs_bg": "WCAG AAA >= 7:1",
+    "enforced_by": "CI token lint (F4 at build time)"
   }
 }

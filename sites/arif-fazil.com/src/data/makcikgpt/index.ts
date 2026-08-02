@@ -21,7 +21,9 @@ import dap8TahunBangang from './dap-8-tahun-bangang';
 import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-bangla-telefon';
 import anwarJungShadow from './anwar-jung-shadow';
 import searahBernamaLewat from './searah-bernama-lewat';
+import suaraTerlaluSiap from './suara-terlalu-siap';
 export const makcikArticleModules: ArticleContent[] = [
+  suaraTerlaluSiap,
   searahBernamaLewat,
   anwarJungShadow,
   anakSarawakBayarPdaAnakBanglaTelefon,
@@ -45,6 +47,17 @@ export const makcikArticleModules: ArticleContent[] = [
 ];
 
 export const makcikArticlesMeta: MakcikArticleMeta[] = [
+  {
+    slug: 'suara-terlalu-siap',
+    title: 'Suara Yang Tak Letak Dalam Mulut Manusia',
+    subtitle: 'Taufik, Bakke Salleh, Anwar — bahasa terlalu siap, orang tengah sorok sesuatu. Telinga kampung dengar apa yang profesor terlepas.',
+    date: '2026-08-02',
+    domain: 'MAKCIKGPT × PETRONAS × BAHASA × BAYANG',
+    language: 'ms',
+    excerpt: 'Suara korporat yang terlalu licin — "polycrisis," "rightsizing," "AI-enabled" — bukan bahasa orang yang sedang hidup. Ia bahasa yang buang rasa untuk cerita yang menyakitkan. Tiga nama dalam satu bayang: Taufik, Bakke Salleh, Anwar. Niat siapa yang sebenar?',
+    tags: ['petronas', 'rightsizing', 'taufik', 'bakke-salleh', 'anwar', 'ai', 'bahasa', 'bayang', 'bangang', 'makcikgpt', 'malaysia'],
+    seal: '999',
+  },
   {
     slug: 'searah-bernama-lewat',
     title: 'Bernama Baru Sampai. Makcik Dah Lama Tanya.',

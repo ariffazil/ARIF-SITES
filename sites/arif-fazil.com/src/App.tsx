@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-
 import { ConstellationNav } from '@/components/ConstellationNav';
 import { ConstellationFooter } from '@/components/ConstellationFooter';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
+import AtlasGate from '@/components/AtlasGate';
 import { Home } from '@/pages/Home';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
@@ -19,6 +20,7 @@ import { NotFound } from '@/pages/NotFound';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
+import { ShadowPMs } from '@/pages/ShadowPMs';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
@@ -27,6 +29,7 @@ function CommodityPageGold() { return <CommodityPage slug="gold" />; }
 function App() {
   return (
     <BrowserRouter>
+      <AtlasGate />
       <ScrollToHashElement />
       <div className="site-shell">
         <ConstellationNav />
@@ -57,6 +60,8 @@ function App() {
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
+            <Route path="/politics/shadow" element={<ShadowPMs />} />
+            <Route path="/politics/shadow/" element={<ShadowPMs />} />
             {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
                 the bare /world/makcikgpt and the legacy /index suffix both
                 resolve to the same canonical page (no extra redirect). */}
@@ -80,6 +85,10 @@ function App() {
             <Route path="/doctrine/" element={<Doctrine />} />
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
+
+            {/* Missions — cockpit surface, redirects to home (missions.json at /missions.json) */}
+            <Route path="/missions" element={<Navigate to="/" replace />} />
+            <Route path="/missions/" element={<Navigate to="/" replace />} />
 
             {/* Institution — three-audience surface door (human/agent/institution) */}
             <Route path="/institution" element={<InstitutionPage />} />
