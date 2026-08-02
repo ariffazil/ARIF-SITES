@@ -11,27 +11,33 @@ export function PlaybookPage() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-[#050608] min-h-screen text-slate-100 font-sans selection:bg-amber-500 selection:text-black"
+      className="bg-forge-black min-h-screen text-slate-100 font-sans selection:bg-amber-500 selection:text-black"
     >
       {/* TOP UNIFIED NAVIGATION HEADER */}
-      <div className="bg-slate-950 border-b border-forge-iron py-3 px-4 font-mono text-xs text-slate-400 flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-[#080b12] border-b border-forge-iron py-3 px-4 font-mono text-xs text-slate-400 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-500/40 text-[10px] font-bold uppercase tracking-wider animate-pulse">
-            🔞 EYES ONLY · OPERASI
+          <span className="px-2 py-0.5 rounded bg-amber-950 text-amber-400 border border-amber-500/40 text-[10px] font-bold uppercase tracking-wider">
+            📋 FIELD OPERATIONAL PLAYBOOK
           </span>
-          <span className="text-slate-300 font-bold">arifOS · Federation Intelligence · Agentic Playbook</span>
+          <span className="text-slate-300 font-bold">arifOS · Federation Intelligence · PRN16 Strategy</span>
         </div>
 
         {/* UNIFIED NAV SWITCHER */}
-        <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 p-1 rounded">
+        <div className="flex items-center gap-2 bg-slate-900 border border-slate-700 p-1 rounded font-mono text-[11px]">
           <Link
             to="/politics/ns-election"
             className="px-3 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition-colors"
           >
-            🗺️ LIVE GIS MAP
+            🗺️ RESULTS MATRIX
+          </Link>
+          <Link
+            to="/politics/ns-election/compare"
+            className="px-3 py-1 rounded text-xs font-bold text-slate-400 hover:text-white transition-colors"
+          >
+            📊 SEAT COMPARE
           </Link>
           <span className="px-3 py-1 rounded text-xs font-bold bg-amber-500 text-black">
-            📋 OPERATIONAL PLAYBOOK
+            📋 PLAYBOOK
           </span>
         </div>
       </div>
