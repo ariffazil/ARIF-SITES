@@ -42,8 +42,8 @@ export const SHADOW_PMS: ShadowPM[] = [
     persona: 'Bapa Pembangunan — teknokrat bisu, bina FELDA, DEB, sekolah asrama. Workaholic yang tak cakap banyak.',
     bayang: 'DEB yang dia bina bukan sekadar ekonomi — ia jadi senjata politik kaum. Yang dia tak jangka: sistem kuota melahirkan budaya bergantung, bukan budaya bersaing. Dan bila UMNO guna DEB untuk kroni, Razak dah takde nak jawab.',
     tragedy: 'Dia meninggal 1976 di London — leukemia. Cepat sangat. DEB tinggal setengah siap dan akhirnya jadi alat pembahagian, bukan pembangunan.',
-    legacy: 'Visi dia besar. Tapi pelaksanaan — lepas dia mati — jadi najis. Bukan salah dia. Tapi bayang dia hidup 50 tahun.',
-    verdict: 'SAMAR'
+    legacy: 'Dia mati membina. Dia tak sempat tengok DEB jadi alat — dia cuma sempat bina asas. Di hujung nyawa, kerja belum siap. Tapi HANYA dia yang berani bina semula negara lepas 13 Mei. Bayang dia: apa yang dia bina, orang lain rosakkan. Tapi apa yang dia bina — masih berdiri.',
+    verdict: 'TERSEDAR'
   },
   {
     id: 'tun-hussein-onn',
