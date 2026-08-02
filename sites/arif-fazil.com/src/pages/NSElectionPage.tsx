@@ -170,16 +170,22 @@ export function NSElectionPage() {
         </div>
         <div className="flex items-center gap-3 text-[11px]">
           <Link
+            to="/"
+            className="px-2.5 py-1 rounded bg-slate-800 text-slate-200 font-bold hover:bg-slate-700 transition-colors uppercase tracking-wider font-mono text-[10px]"
+          >
+            🏠 HOME →
+          </Link>
+          <Link
             to="/politics/ns-election/compare"
             className="px-2.5 py-1 rounded bg-blue-600 text-white font-bold hover:bg-blue-500 transition-colors uppercase tracking-wider font-mono text-[10px]"
           >
-            📊 SEAT-TO-SEAT COMPARE (2023→2026) →
+            📊 SEAT COMPARE →
           </Link>
           <Link
             to="/politics/ns-election/playbook"
             className="px-2.5 py-1 rounded bg-amber-500 text-black font-bold hover:bg-amber-400 transition-colors uppercase tracking-wider font-mono text-[10px]"
           >
-            📋 OPERATIONAL PLAYBOOK →
+            📋 PLAYBOOK →
           </Link>
           <span>Sealed Ledger: <code className="text-amber-400">VAULT999-PRN16-NS</code></span>
         </div>

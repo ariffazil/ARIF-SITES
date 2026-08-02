@@ -95,6 +95,22 @@ a { color:#60a5fa; }
 </head>
 <body>
 
+<!-- UNIVERSAL SITE NAVIGATION HEADER -->
+<header style="background:#030712;border-bottom:1px solid #1e293b;padding:0.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+  <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:#fff;font-weight:900;font-size:1.1rem;letter-spacing:-0.02em;">
+    <span style="color:#f59e0b;">arif-fazil.com</span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:1.2rem;font-family:monospace;font-size:0.8rem;text-transform:uppercase;">
+    <a href="/" style="color:#94a3b8;text-decoration:none;font-weight:bold;">🏠 HOME</a>
+    <a href="/earth" style="color:#94a3b8;text-decoration:none;">EARTH</a>
+    <a href="/economics" style="color:#94a3b8;text-decoration:none;">ECONOMICS</a>
+    <a href="/world" style="color:#94a3b8;text-decoration:none;">WORLD</a>
+    <a href="/politics/ns-election" style="color:#f59e0b;font-weight:bold;text-decoration:none;">🏛️ PRN16 N9</a>
+    <a href="/writing" style="color:#94a3b8;text-decoration:none;">WRITING</a>
+    <a href="/doctrine" style="color:#94a3b8;text-decoration:none;">DOCTRINE</a>
+  </nav>
+</header>
+
 <div class="top-bar">
   <div><span class="live-pill">● ${metadata.status === 'FINAL_RESULT' ? 'FINAL RESULT' : 'RESULTS STREAMING'}</span> <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence</strong></div>
   <div><span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>${updated.slice(0, 10).replace(/-/g, ' ')}</span> · auto-sync</div>
