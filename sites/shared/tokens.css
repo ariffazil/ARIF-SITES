@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════════════════════════════════
+   tokens.css — arif-fazil.com ROOT DESIGN CONSTITUTION
+   One token layer. Two families. Zero drift.
+   ═══════════════════════════════════════════════════════════════════
+   Imported FIRST by every page, before economics.css.
+   Families override ONLY --accent-* and --font-display below.
+   Everything structural is constitutional — NEVER redefine downstream.
+   v1.0 · sealed 2026-07-24 · F13: ARIF
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root{
+  --bg:        #0a0c10;
+  --surface:   #11151c;
+  --surface2:  #151b24;
+  --surface3:  #1a1f2b;
+  --line:      #1f2733;
+  --line2:     #2a3342;
+  --ink:       #e6edf3;
+  --dim:       #8b98a8;
+  --faint:     #5a6675;
+
+  --seal:      #31c48d;
+  --sabar:     #e3b341;
+  --hold:      #e8833a;
+  --void:      #f0506e;
+
+  --seal-bg:   rgba(49,196,141,.12);
+  --sabar-bg:  rgba(227,179,65,.12);
+  --hold-bg:   rgba(232,131,58,.12);
+  --void-bg:   rgba(240,80,110,.12);
+
+  --evidence:  #31c48d;
+  --interpret: #e3b341;
+  --action:    #4aa8ff;
+  --unknown:   #8b98a8;
+
+  --evidence-bg:  rgba(49,196,141,.10);
+  --interpret-bg: rgba(227,179,65,.10);
+  --action-bg:    rgba(74,168,255,.10);
+  --unknown-bg:   rgba(139,152,168,.10);
+
+  --accent:    #4aa8ff;
+  --accent-dim:#1a4a80;
+  --accent-bg: rgba(74,168,255,.08);
+
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', ui-monospace, 'Cascadia Code', Menlo, monospace;
+
+  --fs-tag:  .65rem;
+  --ls-tag:  .08em;
+  --fs-meta: .72rem;
+  --fs-body: .88rem;
+
+  --sp-1:6px; --sp-2:12px; --sp-3:18px; --sp-4:26px; --sp-5:40px;
+  --r-sm:8px; --r:12px; --r-lg:16px; --r-pill:999px;
+  --maxw:1120px;
+  --ease:.18s cubic-bezier(.4,0,.2,1);
+}
+
+/* FAMILY SCOPES — only accent + display font change
+   2026-07-26 zen-sovereign: accents muted (no-neon doctrine).
+   Red/green reserved for status meaning; accent carries identity, not alarm. */
+.fam-wealth            { --accent:#5a9bd4; --accent-dim:#2a4a68; --accent-bg:rgba(90,155,212,.08); }
+.fam-vitals-petronas   { --accent:#3f9e97; --accent-dim:#1f5652; --accent-bg:rgba(63,158,151,.08); }
+.fam-vitals-malaysia   { --accent:#c07a52; --accent-dim:#6b4229; --accent-bg:rgba(192,122,82,.08); }
+.fam-oil               { --accent:#c9703f; --accent-dim:#6e3c1e; --accent-bg:rgba(201,112,63,.08); }
+.fam-gas               { --accent:#4aa89e; --accent-dim:#265a54; --accent-bg:rgba(74,168,158,.08); }
+.fam-gold              { --accent:#c9a84c; --accent-dim:#6e5c26; --accent-bg:rgba(201,168,76,.08); }
+.fam-world             { --accent:#b08d57; --accent-dim:#5f4c2e; --accent-bg:rgba(176,141,87,.08); }
+
+/* EPISTEMIC TAG CHIPS */
+.tag{
+  font-family:var(--font-mono);font-size:var(--fs-tag);letter-spacing:var(--ls-tag);
+  padding:2px 8px;border-radius:var(--r-pill);text-transform:uppercase;white-space:nowrap;
+  font-weight:700;
+}
+.tag.ev,.tag.EVIDENCE{color:var(--evidence);border:1px solid rgba(49,196,141,.35);background:var(--evidence-bg)}
+.tag.in,.tag.INTERPRET{color:var(--interpret);border:1px solid rgba(227,179,65,.35);background:var(--interpret-bg)}
+.tag.ac,.tag.MIXED{color:var(--action);border:1px solid rgba(74,168,255,.35);background:var(--action-bg)}
+.tag.un,.tag.UNKNOWN{color:var(--unknown);border:1px solid rgba(139,152,168,.35);background:var(--unknown-bg)}
+
+/* VERDICT HELPERS */
+.v-seal{color:var(--seal)} .v-sabar{color:var(--sabar)} .v-hold{color:var(--hold)} .v-void{color:var(--void)}
+.b-seal{background:var(--seal-bg)} .b-sabar{background:var(--sabar-bg)}
+.b-hold{background:var(--hold-bg)} .b-void{background:var(--void-bg)}
