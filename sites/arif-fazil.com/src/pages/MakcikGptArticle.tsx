@@ -44,11 +44,11 @@ export function MakcikGptArticle() {
         <div className="site-frame">
           <Link
             to="/world/makcikgpt/"
-            className="font-mono text-xs text-forge-dim hover:text-forge-gold transition-colors mb-6 inline-block"
+            className="font-mono text-xs text-forge-dim hover:text-forge-red transition-colors mb-6 inline-block"
           >
             ← MakcikGPT
           </Link>
-          <div className="section-label text-forge-gold">
+          <div className="section-label text-forge-red">
             Civilization Intelligence · Ξ WEALTH · {meta.domain}
           </div>
           <h1 className="text-3xl md:text-5xl font-black italic uppercase leading-[0.9] tracking-tighter mb-4 mt-2">
@@ -61,7 +61,7 @@ export function MakcikGptArticle() {
             <span className="px-2 py-0.5 border border-forge-iron">
               {meta.language === 'ms' ? 'Bahasa Makcik' : 'English'}
             </span>
-            <span className="px-2 py-0.5 border border-forge-gold text-forge-gold">
+            <span className="px-2 py-0.5 border border-forge-red text-forge-red">
               Sealed {meta.seal}
             </span>
             <time dateTime={meta.date}>
@@ -94,15 +94,15 @@ export function MakcikGptArticle() {
           <hr className="border-forge-iron my-12" />
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <span className="brutalist-card border border-forge-gold/50 px-5 py-3 inline-flex items-center gap-2 font-mono text-sm bg-forge-gold/5">
-              <span className="text-forge-gold">🔐</span>
+            <span className="brutalist-card border border-forge-red/50 px-5 py-3 inline-flex items-center gap-2 font-mono text-sm bg-forge-red/5">
+              <span className="text-forge-red">🔐</span>
               <span className="text-forge-dim">Published directly on</span>
               <span className="text-forge-white font-bold">arif-fazil.com</span>
             </span>
 
             <Link
               to="/world/makcikgpt/"
-              className="font-mono text-sm text-forge-dim hover:text-forge-gold transition-colors"
+              className="font-mono text-sm text-forge-dim hover:text-forge-red transition-colors"
             >
               ← All MakcikGPT Articles
             </Link>

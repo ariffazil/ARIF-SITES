@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { primaryNav } from '@/data/navCanon';
-import { LiveClock } from '@/components/LiveClock';
 
 const linkBase =
   'font-mono text-[0.7rem] uppercase tracking-[0.12em] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange';
@@ -21,25 +20,22 @@ export function ConstellationNav() {
       : `${linkBase} text-forge-dim hover:text-forge-white`;
 
   return (
-    <header className="border-b border-forge-iron bg-forge-black/85 backdrop-blur py-3 sticky top-0 z-50">
+    <header className="border-b border-forge-iron bg-forge-black/85 backdrop-blur py-1.5 sticky top-0 z-50">
       <div className="site-frame flex items-center justify-between gap-4">
         <Link
-          className="flex items-center gap-3 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange shrink-0"
+          className="flex items-center gap-2 group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forge-orange shrink-0"
           to="/"
           title="/"
           onClick={() => setOpen(false)}
         >
-          <div className="w-9 h-9 rounded-md border border-forge-iron flex items-center justify-center font-mono text-sm text-forge-white group-hover:border-forge-orange/60 group-hover:text-forge-orange transition-colors">
+          <div className="w-7 h-7 rounded border border-forge-iron flex items-center justify-center font-mono text-[0.6rem] text-forge-white group-hover:border-forge-orange/60 group-hover:text-forge-orange transition-colors">
             AF
-          </div>
-          <div className="hidden sm:block">
-            <div className="font-display font-bold text-base leading-none tracking-tight">Arif Fazil</div>
           </div>
         </Link>
 
         {/* Desktop nav — ONE LINE, no redundancy (canon/navigation.json primary_links) */}
-        <nav aria-label="Primary navigation" className="hidden lg:block flex-1">
-          <ul className="flex items-center justify-center gap-6">
+        <nav aria-label="Primary navigation" className="hidden lg:block">
+          <ul className="flex items-center justify-center gap-5">
             {primaryNav.map((item) => (
               <li key={item.label}>
                 {item.external ? (
@@ -61,11 +57,6 @@ export function ConstellationNav() {
             ))}
           </ul>
         </nav>
-
-        {/* Live clock — temporal intelligence for humans AND agents */}
-        <div className="hidden md:block shrink-0">
-          <LiveClock withDate withIso />
-        </div>
 
         {/* Mobile toggle */}
         <button
@@ -109,9 +100,6 @@ export function ConstellationNav() {
                 )}
               </li>
             ))}
-            <li className="pt-3">
-              <LiveClock withDate withIso />
-            </li>
           </ul>
         </nav>
       )}

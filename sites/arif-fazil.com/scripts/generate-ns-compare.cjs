@@ -95,6 +95,22 @@ a { color:#60a5fa; }
 </head>
 <body>
 
+<!-- UNIVERSAL SITE NAVIGATION HEADER -->
+<header style="background:#030712;border-bottom:1px solid #1e293b;padding:0.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+  <a href="/" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:#fff;font-weight:900;font-size:1.1rem;letter-spacing:-0.02em;">
+    <span style="color:#f59e0b;">arif-fazil.com</span>
+  </a>
+  <nav style="display:flex;align-items:center;gap:1.2rem;font-family:monospace;font-size:0.8rem;text-transform:uppercase;">
+    <a href="/" style="color:#94a3b8;text-decoration:none;font-weight:bold;">🏠 HOME</a>
+    <a href="/earth" style="color:#94a3b8;text-decoration:none;">EARTH</a>
+    <a href="/economics" style="color:#94a3b8;text-decoration:none;">ECONOMICS</a>
+    <a href="/world" style="color:#94a3b8;text-decoration:none;">WORLD</a>
+    <a href="/politics/ns-election" style="color:#f59e0b;font-weight:bold;text-decoration:none;">🏛️ PRN16 N9</a>
+    <a href="/writing" style="color:#94a3b8;text-decoration:none;">WRITING</a>
+    <a href="/doctrine" style="color:#94a3b8;text-decoration:none;">DOCTRINE</a>
+  </nav>
+</header>
+
 <div class="top-bar">
   <div><span class="live-pill">● ${metadata.status === 'FINAL_RESULT' ? 'FINAL RESULT' : 'RESULTS STREAMING'}</span> <strong style="color:#f8fafc;margin-left:0.5rem;">arifOS · Federation Intelligence</strong></div>
   <div><span>VAULT999 Sealed: <code>0x999_PRN16_NS</code></span> · <span>${updated.slice(0, 10).replace(/-/g, ' ')}</span> · auto-sync</div>
@@ -109,6 +125,27 @@ a { color:#60a5fa; }
 </div>
 
 <div class="wrap">
+
+  <!-- AGENTIC PRE VS POST AUDIT CARD -->
+  <div class="card" style="border:1px solid #f59e0b;background:#0c0f1d;margin-bottom:1.5rem;padding:1.2rem;">
+    <div style="font-family:monospace;font-size:0.75rem;color:#fbbf24;font-weight:bold;margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.1em;">
+      🤖 Audit Ramalan Agentic (Pre vs Post PRN16 2026) · Ketepatan 80.6% (29/36 Kerusi)
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;font-size:0.85rem;line-height:1.5;">
+      <div style="background:#030712;padding:0.8rem;border-radius:6px;border:1px solid #1e293b;">
+        <strong style="color:#fbbf24;display:block;margin-bottom:0.3rem;">🔮 Ramalan Model Pre-Election:</strong>
+        <p style="color:#cbd5e1;font-size:0.8rem;">
+          Unjuran awal: <strong>Hung Assembly (18 PH - 16 BN - 2 PN - 2 Tossup)</strong>. PH diunjur kekal pluraliti terasing jika keluar pengundi bukan-Melayu >68%.
+        </p>
+      </div>
+      <div style="background:#030712;padding:0.8rem;border-radius:6px;border:1px solid #1e293b;">
+        <strong style="color:#34d399;display:block;margin-bottom:0.3rem;">🏆 Keputusan Rasmi Post-Election:</strong>
+        <p style="color:#cbd5e1;font-size:0.8rem;">
+          Keputusan 1 Ogos: <strong>BN Majoriti Mudah (18 BN - 11 PH - 7 PN)</strong>. BN sapu kerusi FELDA & flip 4 kerusi campuran akibat kejatuhan turnout bukan-Melayu ~12%.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <!-- TALLY -->
   <div class="tally" id="tally">

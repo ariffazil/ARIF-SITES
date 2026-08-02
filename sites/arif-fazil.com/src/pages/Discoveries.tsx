@@ -31,6 +31,24 @@ export function Discoveries() {
       animate={{ opacity: 1 }}
       className="bg-forge-black min-h-screen"
     >
+      {/* ── 3D MACROSTRAT GLOBE HERO ─────────────────────── */}
+      <section className="relative border-b-2 border-forge-iron bg-black">
+        <div className="site-frame py-3 flex items-center justify-between">
+          <div className="section-label !mb-0">Φ GEOX · Live Macrostrat Geologic Map · Plate Boundaries · USGS Quakes</div>
+          <a href="/earth/index.html" target="_blank" rel="noreferrer" className="font-mono text-[0.7rem] text-forge-orange hover:text-forge-white transition-colors">
+            Open Standalone Globe ↗
+          </a>
+        </div>
+        <div className="w-full h-[640px] relative bg-black border-t border-forge-iron/60">
+          <iframe 
+            src="/earth/index.html#top" 
+            title="Dynamic Macrostrat 3D Earth Globe" 
+            className="w-full h-full border-0"
+            loading="eager"
+          />
+        </div>
+      </section>
+
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
         <div className="site-frame">

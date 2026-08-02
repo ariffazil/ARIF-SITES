@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsl xmlns="https://rslstandard.org/ns/2025/rsl"
+     version="1.0"
+     documentURL="https://arif-fazil.com/rsl.xml">
+
+  <license>
+    <issuer>
+      <name>Muhammad Arif bin Fazil</name>
+      <url>https://arif-fazil.com</url>
+      <email>arifbfazil@gmail.com</email>
+    </issuer>
+
+    <scope>
+      <domain>arif-fazil.com</domain>
+      <includesSubdomains>true</includesSubdomains>
+    </scope>
+
+    <permits>
+      <!-- AI search/indexing: allowed -->
+      <permission type="search" />
+      <!-- AI input (using content as context for responses): allowed with attribution -->
+      <permission type="ai-input">
+        <condition type="attribution" />
+      </permission>
+      <!-- AI training: allowed with attribution, non-exclusive -->
+      <permission type="ai-train">
+        <condition type="attribution" />
+        <condition type="non-exclusive" />
+      </permission>
+    </permits>
+
+    <prohibits>
+      <!-- No resale of content as standalone product -->
+      <prohibition type="resale" />
+      <!-- No claiming authorship -->
+      <prohibition type="misattribution" />
+    </prohibits>
+
+    <payment>
+      <!-- Public content: free. Premium endpoints may use x402 in future. -->
+      <type>free</type>
+    </payment>
+
+    <contact>
+      <email>arifbfazil@gmail.com</email>
+      <url>https://arif-fazil.com</url>
+    </contact>
+  </license>
+</rsl>
