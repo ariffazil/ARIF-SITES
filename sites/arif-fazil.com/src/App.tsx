@@ -20,6 +20,7 @@ import { NotFound } from '@/pages/NotFound';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
+import { ShadowPMs } from '@/pages/ShadowPMs';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
@@ -59,6 +60,8 @@ function App() {
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
+            <Route path="/politics/shadow" element={<ShadowPMs />} />
+            <Route path="/politics/shadow/" element={<ShadowPMs />} />
             {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
                 the bare /world/makcikgpt and the legacy /index suffix both
                 resolve to the same canonical page (no extra redirect). */}
