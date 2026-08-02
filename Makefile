@@ -42,7 +42,7 @@ verify:
 # ── Build the React SPA ───────────────────────────────────────────────
 build:
 	@echo "[build] Building arif-fazil.com (React/Vite)..."
-	cd sites/arif-fazil.com && npm install --silent && npm run build
+	cd sites/arif-fazil.com && npm run build
 	@echo "[build] Regenerating discovery catalogs..."
 	cd sites/arif-fazil.com && node scripts/generate-discovery.cjs
 	@echo "✓ Build complete."

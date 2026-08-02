@@ -15,6 +15,8 @@ const staticCopies = [
   ["politics/index.html", "dist/politics/index.html"],
   ["malaysia/index.html", "dist/malaysia/index.html"],
   ["vitals/index.html", "dist/vitals/index.html"],
+  ["public/map/index.html", "dist/map/index.html"],
+  ["public/machine/index.html", "dist/machine/index.html"],
 ];
 
 staticCopies.forEach(([src, dest]) => {
