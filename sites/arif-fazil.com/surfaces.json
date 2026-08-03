@@ -373,19 +373,23 @@
     },
     {
       "path": "/malaysia/",
-      "redirects_to": "https://wealth.arif-fazil.com/malaysia/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Consolidated under wealth.arif-fazil.com"
+      "title": "Malaysia — Civic & Political Hub",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Civic and political intelligence hub for Malaysia"
     },
     {
       "path": "/pulse/",
-      "redirects_to": "https://wealth.arif-fazil.com/pulse/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Consolidated under wealth.arif-fazil.com"
+      "title": "Pulse — System Vital Signs & Telemetry",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "System pulse and real-time telemetry surface"
     },
     {
       "path": "/forge/",

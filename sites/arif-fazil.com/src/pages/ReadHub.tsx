@@ -234,11 +234,21 @@ export function ReadHub() {
         </div>
       </div>
 
-      {/* HERO — 7-AXIS COMPASS */}
-      <section className="py-16 md:py-24 border-b-2 border-forge-iron bg-gradient-to-b from-forge-steel via-forge-black to-forge-black overflow-hidden">
-        <div className="site-frame">
+      {/* HERO — COMPASS OVER ARCHIPELAGO */}
+      <section className="relative py-16 md:py-24 border-b-2 border-forge-iron bg-forge-black overflow-hidden">
+        {/* Background Hero Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/reading_room_hero.jpg"
+            alt="Compass over Nusantara archipelago symbolizing language as the foundation and intelligence as orientation."
+            className="w-full h-full object-cover object-center opacity-40 mix-blend-luminosity filter brightness-90 contrast-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020408]/90 via-[#020408]/60 to-[#020408]/95" />
+        </div>
+
+        <div className="site-frame relative z-10">
           {/* Section label */}
-          <div className="font-mono text-[0.6rem] text-forge-orange uppercase tracking-[0.2em] mb-8 text-center">
+          <div className="font-mono text-[0.6rem] text-forge-orange uppercase tracking-[0.2em] mb-6 text-center">
             SOVEREIGN READING ROOM · THE COMPASS
           </div>
 
@@ -249,13 +259,31 @@ export function ReadHub() {
               Reading Room
             </span>
           </h1>
-          <p className="text-center font-body text-lg text-forge-dim max-w-2xl mx-auto mb-12 leading-relaxed">
+
+          {/* Thesis */}
+          <p className="text-center font-mono text-sm md:text-base text-cyan-400 font-bold max-w-2xl mx-auto mb-3 tracking-wide">
+            "The foundation of language and compass of intelligence."
+          </p>
+
+          <p className="text-center font-body text-base md:text-lg text-forge-dim max-w-2xl mx-auto mb-12 leading-relaxed">
             Every axis of civilization sees language differently. Nusantara sits at the crossroads — 
             not because it alone sees the bridge, but because the bridge is its mother tongue.
           </p>
+        </div>
+      </section>
+
+      {/* LINGUISTIC AXIS EXPLAINER — BELOW THE FOLD */}
+      <section className="py-12 border-b border-forge-iron bg-[#020408]">
+        <div className="site-frame">
+          <div className="font-mono text-[0.6rem] text-cyan-400 uppercase tracking-[0.2em] mb-4 text-center">
+            INTERACTIVE LINGUISTIC AXES · THE PIVOT
+          </div>
+          <h2 className="text-center text-2xl md:text-3xl font-black uppercase tracking-tight mb-8">
+            The 7-Axis Civilizational Matrix
+          </h2>
 
           {/* COMPASS SVG */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-8">
             <SevenAxisCompass />
           </div>
 
