@@ -232,6 +232,9 @@ export function ShadowBoard() {
                 Shadow Board ini adalah <strong>hipotesis</strong>: jika Malaysia membina instrumen shadow governance,
                 apakah bentuknya? Setiap kerusi adalah dossier — analisis, bukan jawatan.
               </p>
+              <p className="font-mono text-[0.55rem] text-forge-dim/60 mt-2 uppercase tracking-widest">
+                CONFIDENCE 0.40 PROVENANCE: [OBS] Malaysia has no formal Shadow Cabinet (verifiable). [OBS] UK Shadow Cabinet is constitutional convention (verifiable). [INT] Instrument design pattern proven by PRIMER-1 registry. [SPEC] Political hypothesis — untested. Net: 0.40 (conservative for mixed OBS+INT+SPEC). Ω₀ bound: 0.04 → cap 0.96 (F7).
+              </p>
             </div>
           </div>
         </div>

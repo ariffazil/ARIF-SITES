@@ -393,6 +393,37 @@
     },
 
     {
+      "path": "/politics/shadow/",
+      "title": "PM Bayang — Shadow Prime Ministers of Malaysia",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis."
+    },
+    {
+      "path": "/politics/shadow/board/",
+      "title": "Shadow Board — Org-Chart Instrument (PRIMER-1)",
+      "mission": "decide",
+      "status": "live",
+      "type": "page",
+      "priority": 0.6,
+      "changefreq": "monthly",
+      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav — instrument surface."
+    },
+    {
+      "path": "/politics/shadow/derita/",
+      "title": "RASA DERITA — 6-Cohort Generational Trauma Map",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.5,
+      "changefreq": "monthly",
+      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 → 1MDB → Sheraton → 2022 Paradox). Constitutional floors as scars. HYPOTHESIS — confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal."
+    },
+
+    {
       "path": "/surfaces.json",
       "title": "surfaces.json — Canonical Surface Catalog",
       "status": "live",

@@ -14,6 +14,13 @@ import { useWebMCP } from '@/hooks/useWebMCP';
  * 
  * Δ-ONLY · Framework analysis — bukan ramalan, bukan fakta.
  * Confidence cap: 0.90 (F7). All claims tagged [INT]/[SPEC].
+ * 
+ * CONFIDENCE 0.20 PROVENANCE:
+ *   Ω₀ = 0.04 (F7 kernel floor). Cap = 1−Ω₀ = 0.96.
+ *   0.20 reflects: (a) no kernel SEAL verdict, (b) 2 audit blockers unresolved,
+ *   (c) all 6 cohorts are historical interpretation [INT]/[SPEC], (d) floor-scars
+ *   mapping is novel framework — zero prior art, (e) single-author analysis.
+ *   Source: arif_judge RASA_DERITA · confidence 0.20 · HOLD (2026-08-03).
  */
 
 /* ── TRAUMA COHORT DATA ── */
