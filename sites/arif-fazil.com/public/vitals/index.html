@@ -464,12 +464,16 @@ document.getElementById("sealdate").textContent=SEAL_BASE;
 
 /* render hero */
 const pv=verdict(PULSE);
+// Apply extraction-crisis override: when locked, pulse 0 renders as VOID
+// not HOLD (PULSE < 60 would otherwise mis-render badge as HOLD).
+const pvVerdict = PULSE_VERDICT_OVERRIDE || pv.w;
+const pvColor = PULSE_VERDICT_OVERRIDE === "VOID" ? "var(--void)" : pv.c;
 pulseval.textContent=PULSE.toFixed(0);
-pulseverdict.textContent=pv.w;
-pulseverdict.className="verdict-badge "+pv.w;
-pulsefill.style.width=PULSE+"%";pulsefill.style.background=pv.c;
-navdot.style.background=pv.c;
-document.getElementById("vitals-dot").style.background=pv.c;
+pulseverdict.textContent=pvVerdict;
+pulseverdict.className="verdict-badge "+pvVerdict;
+pulsefill.style.width=PULSE+"%";pulsefill.style.background=pvColor;
+navdot.style.background=pvColor;
+document.getElementById("vitals-dot").style.background=pvColor;
 function setSub(id,val){const v=verdict(val);const e=document.getElementById(id);e.textContent=val.toFixed(0);e.style.color=v.c;}
 setSub("sb-body",S.BODY);setSub("sb-spine",S.SPINE);setSub("sb-soul",S.SOUL);
 
