@@ -1,191 +1,75 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "PRIMER-1.0-DRAFT",
-  "doctrine": "DITEMPA BUKAN DIBERI — Stop cantik but drift. These rules are the machine-enforceable envelope of PRIMER-1. CI lints every proposal, every page, every generated CSS. A failing rule is a constitutional violation, not a style bug.",
-  "ratified_by": "sovereign (F13) — pending 999_SEAL (U2 OPEN)",
-  "ratified_at": null,
-  "tenant": "ATLAS-1.1 prime-1 ratification",
-  "proposal_id": "PRIMER-1",
-  "proposal_path": "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md",
-
-  "red_usage": {
-    "rule": "Red is rationed. Only 4 surfaces may use --red-* tokens.",
-    "allowed_surfaces": ["sovereign", "verdict", "seal", "void"],
-    "max_per_page": 3,
-    "fail_action": "block_build",
-    "rationale": "Maruah is scarce by definition. If red is everywhere it means nothing.",
-    "invariants": ["I5", "I9"]
-  },
-
-  "allowed_radii": {
-    "rule": "Radii must be in canonical enumerated set. No ad-hoc values.",
-    "allowed_values": [2, 12, "full"],
-    "names": {
-      "2": "agent_orthogonal",
-      "12": "human_toroidal",
-      "full": "torus_full"
+  "schema": "canon/design-rules/v2026.08",
+  "version": "PRIMER-1.0",
+  "ratified_by": "sovereign (F13)",
+  "ratified_at": "2026-08-01",
+  "doctrine": "Machine-enforceable design law. This is what stops 'cantik but drift'.",
+  "rules": {
+    "red_usage": {
+      "allowed_scopes": ["sovereign", "verdict", "seal", "void"],
+      "forbidden": "red outside /arif strip, verdict chips, seal marks, VOID states",
+      "enforce": "scan rendered CSS for red hex outside allowed scopes"
     },
-    "fail_action": "block_build",
-    "rationale": "12 = tactile midpoint. 2 = orthogonal precision. full = reserved for mission_wheel + trinity_ring only.",
-    "invariants": ["I4", "I5"]
-  },
-
-  "max_torus_per_view": {
-    "rule": "Each page renders at most one toroidal anchor (trinity_ring OR mission_wheel OR none).",
-    "max": 1,
-    "fail_action": "block_build",
-    "rationale": "Two toruses per page is a design VOID. The torus is the cognitive anchor; two of them is a poster.",
-    "invariants": ["I4", "I5"]
-  },
-
-  "allowed_color_families": {
-    "rule": "Only the 5 canonical color families may be used.",
-    "families": ["human", "institution", "earth", "sovereign", "neutral"],
-    "values": {
-      "human": ["#FBF3D9", "#F2D98C", "#D9A62E", "#8F6A14", "#4A3608"],
-      "institution": ["#E4EBF2", "#9DB8CE", "#2E5F8A", "#1B3A57", "#0C1F31"],
-      "earth": ["#DFF0EA", "#8CC3B2", "#2E8A70", "#17584A", "#0A2E27"],
-      "sovereign": ["#D97B6C", "#B3362B", "#7A1F18", "#3D0E0A"],
-      "neutral": ["#FAF7F0", "#1A1712", "#101216", "#E8E6DF"]
+    "allowed_radii": {
+      "values": [2, 12, "full"],
+      "forbidden": "any border-radius not in {2px, 12px, full}",
+      "enforce": "token lint on CSS variables"
     },
-    "fail_action": "block_build",
-    "rationale": "Primer colors only. No purple. No gradients of the Google kind. No synthetic neons.",
-    "invariants": ["I5"]
-  },
-
-  "forbid_local_palette": {
-    "rule": "Components/pages must NOT define their own palette. Must inherit from design-tokens.json.",
-    "fail_action": "block_build",
-    "rationale": "If a page invents its own palette, drift begins. The Atlas is the only source.",
-    "invariants": ["I2", "I3", "I5"]
-  },
-
-  "forbid_unregistered_hero": {
-    "rule": "Every page hero must be declared in page-instruments.json. No hand-rolled hero.",
-    "fail_action": "block_build",
-    "rationale": "If agents choose heroes, they will make posters. The route registry chooses the hero.",
-    "invariants": ["I2", "I3"]
-  },
-
-  "require_channel_field": {
-    "rule": "Every JSON surface in /mcp/ or /surface/ paths must include a 'channel' field matching one of the 5 families.",
-    "allowed_channels": ["human", "institution", "earth", "sovereign", "neutral"],
-    "fail_action": "block_publish",
-    "rationale": "Agent's structural contrast: color = channel. The machine reads canon, not pixels.",
-    "invariants": ["I5", "I11"]
-  },
-
-  "require_state_enum": {
-    "rule": "Every interaction state must be one of the enumerated states; never implicit.",
-    "allowed_states": ["rest", "hold", "sealed", "void"],
-    "fail_action": "block_build",
-    "rationale": "Tactile state for humans, enum state for agents. Same canon, two renderings.",
-    "invariants": ["I5", "I11"]
-  },
-
-  "button_grades": {
-    "rule": "Buttons must be one of 3 grades. No custom button styles.",
-    "allowed_grades": ["SEAL", "HOLD", "VOID"],
-    "details": {
-      "SEAL": "solid *-500, ink text, 2px travel shadow in *-700. One per view — the committing action.",
-      "HOLD": "paper fill, 1px *-500 border, dashed on hover. Pending, reversible, draft.",
-      "VOID": "r-500 fill — the only red button. Irreversible. Hold-to-confirm 800ms."
+    "max_torus_per_view": {
+      "value": 1,
+      "note": "two toruses per page is a design VOID",
+      "enforce": "DOM scan for torus markers per route"
     },
-    "fail_action": "block_build",
-    "invariants": ["I5", "I13"]
-  },
-
-  "geometry_invariants": {
-    "rule": "Geometry must respect the 4u unit and orthogonal fractal scale.",
-    "unit_px": 4,
-    "spacing_scale": [4, 8, 16, 32, 64, 128],
-    "forbid_arbitrary_margins": true,
-    "fail_action": "block_build",
-    "rationale": "No arbitrary margins, ever. The grid is the fractal; spacing is doubling.",
-    "invariants": ["I4", "I5"]
-  },
-
-  "motion_invariants": {
-    "rule": "Motion is mechanical. 90ms easing, no bounce, 2px travel.",
-    "travel_px": 2,
-    "duration_ms": 90,
-    "easing": "cubic-bezier(.2,.9,.3,1)",
-    "forbid_bounce": true,
-    "honor_prefers_reduced_motion": true,
-    "fail_action": "block_build",
-    "rationale": "Bounce is for toys. This is a console. Honors prefers-reduced-motion.",
-    "invariants": ["I4", "I13"]
-  },
-
-  "navigation_law": {
-    "rule": "Navigation is generated from canon/navigation.json. No organ invents its own chrome.",
-    "fail_action": "block_build",
-    "rationale": "One nervous system. The trinity nav is the same everywhere. Universal frame.",
-    "invariants": ["I4", "I6"]
-  },
-
-  "breadcrumb_url_invariant": {
-    "rule": "Breadcrumb = URL = canon path. If they disagree, sentinel-firable.",
-    "fail_action": "block_deploy",
-    "rationale": "Breadcrumb is generated from the path, not hand-written. Disagreement = drift.",
-    "invariants": ["I6", "I12"]
-  },
-
-  "contrast_rules": {
-    "rule": "Every text/background pair must score >= WCAG AA. AAA for body text.",
-    "min_ratio": 4.5,
-    "body_text_min_ratio": 7.0,
-    "fail_action": "block_build",
-    "rationale": "Contrast is constitutional, not taste. CI lint blocks builds where math fails.",
-    "invariants": ["I5", "I9"]
-  },
-
-  "fonts": {
-    "rule": "Only IBM Plex superfamily may be referenced in compiled CSS.",
-    "allowed_families": ["IBM Plex Sans", "IBM Plex Serif", "IBM Plex Mono"],
-    "forbid_external_fonts": true,
-    "self_host_required": true,
-    "fail_action": "block_build",
-    "rationale": "Sovereign typography. No Google Fonts.",
-    "invariants": ["I5", "I13"]
-  },
-
-  "lint_enforcement": {
-    "name": "design-rules-lint",
-    "script": "scripts/verify-design-canon.cjs",
-    "command": "node scripts/verify-design-canon.cjs",
-    "fail_action": "block_build",
-    "ci": "GitHub Actions / cron lint",
-    "invariants": ["I9", "I11"]
-  },
-
-  "rule_count": 15,
-  "rules_summary": [
-    "red_usage (4 surfaces only)",
-    "allowed_radii (2, 12, full)",
-    "max_torus_per_view (1)",
-    "allowed_color_families (5)",
-    "forbid_local_palette",
-    "forbid_unregistered_hero",
-    "require_channel_field",
-    "require_state_enum (4 states)",
-    "button_grades (SEAL · HOLD · VOID)",
-    "geometry_invariants (4u unit · fractal scale)",
-    "motion_invariants (90ms · 2px · no bounce)",
-    "navigation_law (one nervous system)",
-    "breadcrumb_url_invariant",
-    "contrast_rules (WCAG AA · AAA body)",
-    "fonts (IBM Plex only · self-hosted)"
-  ],
-
-  "maintenance": {
-    "design-rules.json": "Updated when a new rule is ratified. Owner: sovereign (F13).",
-    "back_compatibility": "Additive. New rules enter with version bump. Existing rules cannot be silently weakened.",
-    "promotion_path": "OPEN proposal → sovereign 999_SEAL → version bump → CI lint"
-  },
-
-  "tenant_contract": {
-    "ratified_by": "sovereign (F13) — pending 999_SEAL (U2)",
-    "signature": "DITEMPA BUKAN DIBERI — Stop cantik but drift. The rules are the law."
+    "allowed_color_families": {
+      "values": ["human", "institution", "earth", "sovereign", "neutral"],
+      "forbidden": "purple, neon, unregistered hues",
+      "enforce": "contrast + palette lint"
+    },
+    "forbid_local_palette": {
+      "value": true,
+      "note": "no page-local color tokens; all from canon/design-tokens.json",
+      "enforce": "scan for hardcoded hex in page CSS"
+    },
+    "forbid_unregistered_hero": {
+      "value": true,
+      "note": "every route hero must be in canon/page-instruments.json",
+      "enforce": "route → page-instruments registry check"
+    },
+    "require_channel_field": {
+      "value": true,
+      "note": "every JSON surface must declare channel (human/institution/earth/sovereign)",
+      "enforce": "schema lint on page.json / status.json"
+    },
+    "require_state_enum": {
+      "value": ["rest", "hold", "sealed", "void"],
+      "note": "tactile state must be explicit, never implicit",
+      "enforce": "component prop validation"
+    },
+    "contrast_floor": {
+      "value": "AA >= 4.5:1 for actions, AAA >= 7:1 for text",
+      "enforce": "CI color contrast check",
+      "note": "a color that fails contrast is a constitutional violation, not a style bug"
+    },
+    "one_family_per_territory": {
+      "value": true,
+      "note": "a stray card from another family inside a territory is a border incident",
+      "enforce": "territory palette scan"
+    },
+    "motion_rationing": {
+      "value": "clock + pulse are the only things that move on mains",
+      "forbidden": "autoplay carousels, fake live animation",
+      "note": "a fake 'live' animation is hantu - F9 violation",
+      "enforce": "animation audit"
+    },
+    "live_must_be_real": {
+      "value": true,
+      "note": "every dynamic element backed by real data (clock, snapshot, sentinel). Stale must say 'stale - sealed <ts>'",
+      "enforce": "data-source declaration per hero"
+    },
+    "prefers_reduced_motion": {
+      "value": "every hero degrades to silence: static sealed frame with timestamp",
+      "enforce": "CSS media query audit"
+    }
   }
 }

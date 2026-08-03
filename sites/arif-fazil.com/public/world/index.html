@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- page: world v2 · Φ WEALTH/WORLD · arif-fazil.com/world · content-marker: dynamic-world-Φ makcikgpt-Φ commodities-Φ -->
+<html lang="ms-MY" data-ring="ORGAN" data-plane="domain" data-organ="wealth">
+<head>
+<link rel="stylesheet" href="/_shared/design-system/tokens.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORLD — The Sovereign World Desk · MakcikGPT & Commodity Intelligence | Arif Fazil</title>
+<meta name="description" content="The Sovereign World Desk: live commodity tickers (Brent, Gold, Gas, Ringgit), maritime chokepoints (Hormuz, Malacca), MakcikGPT civic journalism in Bahasa Malaysia, and F2 evidence-gated power cartography.">
+<link rel="canonical" href="https://arif-fazil.com/world">
+<meta property="og:title" content="WORLD — The Sovereign World Desk | Arif Fazil">
+<meta property="og:description" content="What's actually happening — MakcikGPT civic journalism in Bahasa Malaysia on sovereignty, resources, and power, plus live commodity dashboards.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arif-fazil.com/world">
+<meta property="og:site_name" content="arif-fazil.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="WORLD — The Sovereign World Desk | Arif Fazil">
+<meta name="twitter:description" content="Live commodity telemetry, MakcikGPT civic journalism, and F2 evidence-gated geopolitical cartography.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg-dark: #07090e;
+  --bg-panel: #0d111a;
+  --border-dim: #1a202c;
+  --border-glow: #2d3748;
+  --accent-gold: #d4af37;
+  --accent-cyan: #00d4aa;
+  --accent-orange: #f59e0b;
+  --accent-blue: #3b82f6;
+  --accent-red: #ef4444;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --mono: 'Fira Code', monospace;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --serif: 'Newsreader', serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg-dark); color: var(--text-primary); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+a { color: var(--accent-cyan); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--accent-gold); }
+::selection { background: rgba(212, 175, 55, .25); }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .9rem 2rem; background: rgba(7, 9, 14, .88); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-dim);
+}
+.brand { font-family: var(--mono); font-size: .8rem; letter-spacing: 2px; color: var(--text-secondary); }
+.brand b { color: var(--accent-gold); font-weight: 600; }
+.nav-links { display: flex; gap: 1.6rem; }
+.nav-links a { font-size: .72rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-secondary); }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+@media (max-width: 720px) { .nav-links { gap: .9rem; } .nav-links a { font-size: .62rem; } }
+
+/* ── §1 ZEN PULSE & HERO DECK ── */
+.hero-section {
+  padding: 7rem 2rem 3rem; max-width: 1200px; margin: 0 auto;
+}
+.zen-pulse {
+  background: rgba(13, 17, 26, .8); border: 1px solid var(--border-dim);
+  border-radius: 10px; padding: .8rem 1.2rem; margin-bottom: 2rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;
+  font-family: var(--mono); font-size: .72rem;
+}
+.zp-item { display: flex; align-items: center; gap: .6rem; }
+.zp-label { color: var(--accent-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+.zp-val { color: var(--text-primary); }
+
+.hero-header { margin-bottom: 2.5rem; }
+.kicker { font-family: var(--mono); font-size: .72rem; letter-spacing: 3px; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: .6rem; }
+.hero-title { font-family: var(--serif); font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 400; line-height: 1.1; color: #fff; margin-bottom: 1rem; }
+.hero-desc { color: var(--text-secondary); font-size: 1.05rem; max-width: 760px; line-height: 1.65; }
+
+/* ── §2 HERO LIVE WORLD BOARD ── */
+.world-board {
+  background: var(--bg-panel); border: 1px solid var(--border-glow);
+  border-radius: 14px; padding: 1.6rem; margin-bottom: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+.wb-title { font-family: var(--mono); font-size: .75rem; letter-spacing: 2px; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.wb-live-tag { background: rgba(34, 197, 94, .15); color: #22c55e; border: 1px solid rgba(34, 197, 94, .3); padding: 2px 8px; border-radius: 20px; font-size: .65rem; }
+
+.ticker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.tick-card { background: rgba(7, 9, 14, .6); border: 1px solid var(--border-dim); border-radius: 8px; padding: 1rem; transition: border-color .2s; }
+.tick-card:hover { border-color: var(--accent-gold); }
+.tick-name { font-family: var(--mono); font-size: .68rem; color: var(--text-secondary); text-transform: uppercase; }
+.tick-val { font-size: 1.5rem; font-weight: 700; color: #fff; margin: .2rem 0; font-family: var(--mono); }
+.tick-meta { font-size: .72rem; color: #22c55e; font-family: var(--mono); }
+.tick-meta.down { color: #ef4444; }
+
+.chokepoint-strip {
+  border-top: 1px solid var(--border-dim); padding-top: 1rem;
+  display: flex; flex-wrap: wrap; gap: 1.5rem; font-family: var(--mono); font-size: .72rem;
+}
+.cp-item { display: flex; align-items: center; gap: .5rem; background: rgba(0,0,0,.3); padding: .4rem .8rem; border-radius: 6px; border: 1px solid var(--border-dim); }
+.cp-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+.cp-dot.warn { background: var(--accent-orange); }
+
+/* ── §3 THREE VERB DOORS ── */
+.section-heading { font-family: var(--mono); font-size: .75rem; letter-spacing: 2px; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 1.5rem; }
+.verb-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+.verb-card {
+  background: var(--bg-panel); border: 1px solid var(--border-dim); border-radius: 12px;
+  padding: 1.8rem; transition: all .25s ease; position: relative; overflow: hidden;
+}
+.verb-card:hover { border-color: var(--accent-gold); transform: translateY(-3px); }
+.verb-badge { font-family: var(--mono); font-size: .65rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
+.verb-badge.baca { background: rgba(59, 130, 246, .15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, .3); }
+.verb-badge.tengok { background: rgba(245, 158, 11, .15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, .3); }
+.verb-badge.nilai { background: rgba(0, 212, 170, .15); color: var(--accent-cyan); border: 1px solid rgba(0, 212, 170, .3); }
+.verb-card h3 { font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: .6rem; }
+.verb-card p { color: var(--text-secondary); font-size: .9rem; margin-bottom: 1.2rem; line-height: 1.55; }
+.verb-card .link-act { font-family: var(--mono); font-size: .78rem; font-weight: 600; color: var(--accent-gold); }
+
+/* ── §4 LIVE F2 ANATOMY DEMO ── */
+.anatomy-box {
+  background: var(--bg-panel); border: 1px solid var(--border-glow); border-radius: 14px;
+  padding: 2rem; margin-bottom: 4rem;
+}
+.anatomy-header { border-bottom: 1px solid var(--border-dim); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.anatomy-header h3 { font-size: 1.3rem; font-weight: 600; color: #fff; }
+.f2-tags-demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.f2-tag-card { background: rgba(7,9,14,.7); border: 1px solid var(--border-dim); border-radius: 8px; padding: 1rem; }
+.f2-badge { font-family: var(--mono); font-size: .65rem; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-bottom: .5rem; display: inline-block; }
+.f2-badge.obs { background: rgba(34,197,94,.2); color: #4ade80; }
+.f2-badge.der { background: rgba(59,130,246,.2); color: #60a5fa; }
+.f2-badge.int { background: rgba(245,158,11,.2); color: #fbbf24; }
+.f2-badge.spec { background: rgba(239,68,68,.2); color: #f87171; }
+.f2-text { font-size: .85rem; color: var(--text-primary); line-height: 1.45; }
+
+/* ── §5 TRUTH & INTEGRITY SECTION ── */
+.truth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-bottom: 4rem; }
+.truth-card { background: var(--bg-panel); border: 1px solid var(--border-dim); border-radius: 10px; padding: 1.4rem; text-align: center; }
+.truth-num { font-family: var(--mono); font-size: 2.2rem; font-weight: 800; color: var(--accent-gold); }
+.truth-lbl { font-family: var(--mono); font-size: .7rem; text-transform: uppercase; color: var(--text-secondary); margin-top: .4rem; }
+
+/* ── §6 THREE DEPTH LENSES ── */
+.lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+.lens-card { background: var(--bg-panel); border: 1px solid var(--border-dim); border-radius: 12px; padding: 1.8rem; }
+.lens-num { font-family: var(--mono); font-size: .8rem; color: var(--accent-cyan); margin-bottom: .6rem; }
+.lens-card h4 { font-size: 1.2rem; color: #fff; margin-bottom: .6rem; }
+.lens-card p { font-size: .88rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── §7 FOUNDER CASE STUDY ── */
+.case-study {
+  background: linear-gradient(135deg, rgba(13,17,26,1) 0%, rgba(20,26,40,1) 100%);
+  border: 1px solid var(--border-glow); border-radius: 14px; padding: 2.2rem; margin-bottom: 4rem;
+}
+.cs-kicker { font-family: var(--mono); font-size: .7rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: .6rem; }
+.case-study h3 { font-size: 1.5rem; color: #fff; margin-bottom: 1rem; }
+.case-study p { color: var(--text-secondary); font-size: .95rem; line-height: 1.7; margin-bottom: 1.2rem; }
+
+/* ── §8 COCKPITS ── */
+.cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 4rem; }
+.cp-card { background: var(--bg-panel); border: 1px solid var(--border-dim); border-radius: 8px; padding: 1.2rem; font-family: var(--mono); font-size: .78rem; }
+.cp-card .tool-id { color: var(--accent-cyan); font-weight: 600; margin-bottom: .4rem; }
+.cp-card .tool-desc { color: var(--text-secondary); font-size: .72rem; font-family: var(--sans); }
+
+/* ── §9 EVIDENCE REGISTER & FOOTER ── */
+.register-box { background: var(--bg-panel); border: 1px solid var(--border-dim); border-radius: 10px; padding: 1.4rem; margin-bottom: 4rem; font-family: var(--mono); font-size: .75rem; color: var(--text-secondary); }
+footer { border-top: 1px solid var(--border-dim); padding: 2.5rem 2rem; text-align: center; font-family: var(--mono); font-size: .72rem; color: var(--text-secondary); }
+.footer-seal { color: var(--accent-gold); font-weight: 600; margin-top: .5rem; }
+
+</style>
+<script src="/_shared/unified-header-loader.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="brand"><b>arifOS</b> · World Desk</div>
+  <nav class="nav-links">
+    <a href="/world" class="active">WORLD</a>
+    <a href="/earth">EARTH</a>
+    <a href="/gold">GOLD</a>
+    <a href="/oil">OIL</a>
+    <a href="/gas">GAS</a>
+    <a href="/politics">POLITICS</a>
+    <a href="/writing">WRITING</a>
+  </nav>
+</header>
+
+<main class="hero-section">
+
+  <!-- §1 IDENTITY STRIP (ZEN PULSE) -->
+  <div class="zen-pulse">
+    <div class="zp-item"><span class="zp-label">WHERE:</span> <span class="zp-val">arif-fazil.com/world</span></div>
+    <div class="zp-item"><span class="zp-label">WHY CARE:</span> <span class="zp-val">Civic journalism + commodity intelligence, evidence-gated</span></div>
+    <div class="zp-item"><span class="zp-label">WHAT NEXT:</span> <span class="zp-val">Read MakcikGPT or inspect live market telemetry</span></div>
+  </div>
+
+  <div class="hero-header">
+    <div class="kicker">DOMATED & EVIDENCE-GATED · THE SOVEREIGN WORLD DESK</div>
+    <h1 class="hero-title">The Sovereign World Desk</h1>
+    <p class="hero-desc">
+      What is actually happening — MakcikGPT civic journalism in Bahasa Malaysia on national sovereignty, resources, and power, anchored by real-time commodity telemetry from the ground.
+    </p>
+  </div>
+
+  <!-- §2 HERO LIVE WORLD BOARD -->
+  <div class="world-board">
+    <div class="wb-title">
+      <span>🌐 LIVE WORLD TELEMETRY BOARD</span>
+      <span class="wb-live-tag">🟢 SYSTEM LIVE · 5-MIN PULSE</span>
+    </div>
+
+    <div class="ticker-grid">
+      <div class="tick-card">
+        <div class="tick-name">Brent Crude</div>
+        <div class="tick-val" id="tk-brent">$88.10</div>
+        <div class="tick-meta">▲ +1.2% · Live Pipe</div>
+      </div>
+      <div class="tick-card">
+        <div class="tick-name">Gold (XAU/USD)</div>
+        <div class="tick-val" id="tk-gold">$4,086.60</div>
+        <div class="tick-meta down">▼ -0.12% · Spot</div>
+      </div>
+      <div class="tick-card">
+        <div class="tick-name">Natural Gas</div>
+        <div class="tick-val" id="tk-gas">$3.29</div>
+        <div class="tick-meta">▲ +0.45% · MMBtu</div>
+      </div>
+      <div class="tick-card">
+        <div class="tick-name">USD / MYR</div>
+        <div class="tick-val" id="tk-usmyr">4.08</div>
+        <div class="tick-meta">▲ Ringgit Stable</div>
+      </div>
+      <div class="tick-card">
+        <div class="tick-name">FBM KLCI</div>
+        <div class="tick-val" id="tk-klci">1,620.4</div>
+        <div class="tick-meta">▲ Institutional</div>
+      </div>
+    </div>
+
+    <div class="chokepoint-strip">
+      <div class="cp-item"><span class="cp-dot"></span> <strong>Strait of Malacca:</strong> Normal Flow (16m bpd)</div>
+      <div class="cp-item"><span class="cp-dot warn"></span> <strong>Strait of Hormuz:</strong> Heightened Friction</div>
+      <div class="cp-item"><span class="cp-dot"></span> <strong>South China Sea:</strong> Basin Surveillance Active</div>
+    </div>
+  </div>
+
+  <!-- §3 THREE VERB DOORS -->
+  <div class="section-heading">FIRST 30 SECONDS — PICK A VERB</div>
+  <div class="verb-grid">
+    <a href="/world/makcikgpt/" class="verb-card">
+      <span class="verb-badge baca">📰 BACA · JOURNALISM</span>
+      <h3>MakcikGPT</h3>
+      <p>When RM70 billion moves and nobody asks questions, MakcikGPT asks in Bahasa Malaysia. No gatekeepers — every piece carries F2 evidence tags.</p>
+      <span class="link-act">Explore 22 Dispatches →</span>
+    </a>
+
+    <a href="/gold/" class="verb-card">
+      <span class="verb-badge tengok">📊 TENGOK · DASHBOARDS</span>
+      <h3>Commodity Telemetry</h3>
+      <p>Real-time sovereign market reads on Gold, Oil, Gas, Ringgit, and KLCI with EMA trends, forecast cones, and support/resistance levels.</p>
+      <span class="link-act">Open Live Dashboards →</span>
+    </a>
+
+    <a href="/politics/" class="verb-card">
+      <span class="verb-badge nilai">🧭 NILAI · CARTOGRAPHY</span>
+      <h3>7 Power Vectors</h3>
+      <p>Geopolitical spatial cartography mapping the 7 Geopolitical Power Vectors, maritime chokepoints, and domestic Malaysian power dynamics.</p>
+      <span class="link-act">Inspect 7-Vector Map →</span>
+    </a>
+  </div>
+
+  <!-- §4 LIVE F2 ANATOMY DEMO -->
+  <div class="anatomy-box">
+    <div class="anatomy-header">
+      <div class="kicker">F2 TRUTH ANATOMY DEMO · CASE: SEARAH & PETRONAS PDA</div>
+      <h3>How Sovereign Journalism Evaluates Claims</h3>
+    </div>
+    <div class="f2-tags-demo">
+      <div class="f2-tag-card">
+        <span class="f2-badge obs">OBS · OBSERVED</span>
+        <div class="f2-text">Court filings, Federal Gazette, and PETRONAS financial reports confirm PDA 1974 vesting status.</div>
+      </div>
+      <div class="f2-tag-card">
+        <span class="f2-badge der">DER · DERIVED</span>
+        <div class="f2-text">Calculated RM70B annual dividend transmission to Federal Treasury based on historical yield formulas.</div>
+      </div>
+      <div class="f2-tag-card">
+        <span class="f2-badge int">INT · INTERPRETED</span>
+        <div class="f2-text">Makcik's read on institutional friction between state rights and federal centralisation.</div>
+      </div>
+      <div class="f2-tag-card">
+        <span class="f2-badge spec">SPEC · SPECULATION</span>
+        <div class="f2-text">Scenario projections on potential state-level equity restructuring in East Malaysia offshore blocks.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- §5 TRUTH & INTEGRITY SECTION -->
+  <div class="section-heading">TRUTH & INTEGRITY STANDARDS</div>
+  <div class="truth-grid">
+    <div class="truth-card">
+      <div class="truth-num">22</div>
+      <div class="truth-lbl">Canonical Dispatches</div>
+    </div>
+    <div class="truth-card">
+      <div class="truth-num">100%</div>
+      <div class="truth-lbl">F2 Evidence Labeled</div>
+    </div>
+    <div class="truth-card">
+      <div class="truth-num">0</div>
+      <div class="truth-lbl">Corrections Issued (F9 Verified)</div>
+    </div>
+    <div class="truth-card">
+      <div class="truth-num">5</div>
+      <div class="truth-lbl">Pipe-Fed Dashboards</div>
+    </div>
+  </div>
+
+  <!-- §6 THREE DEPTH LENSES -->
+  <div class="section-heading">THREE DEPTH LENSES</div>
+  <div class="lens-grid">
+    <div class="lens-card">
+      <div class="lens-num">LENS 01</div>
+      <h4>GROUND</h4>
+      <p>Commodities are the world's exhaust. Prices do not lie — they report the thermodynamic state of human supply, friction, and currency degradation in real time.</p>
+    </div>
+    <div class="lens-card">
+      <div class="lens-num">LENS 02</div>
+      <h4>POWER</h4>
+      <p>3 global power oppositions circling the Nusantara maritime pivot (Strait of Malacca, Lombok, Sunda). Energy and trade routes define national sovereignty.</p>
+    </div>
+    <div class="lens-card">
+      <div class="lens-num">LENS 03</div>
+      <h4>VOICE</h4>
+      <p>Bahasa Malaysia is the maritime strait's mother tongue reading the ships. Civic journalism written in direct, uncompromised Bahasa Makcik for absolute clarity.</p>
+    </div>
+  </div>
+
+  <!-- §7 FOUNDER CASE STUDY -->
+  <div class="case-study">
+    <div class="cs-kicker">FOUNDER PROVENANCE · 13 YEARS INSIDE NATIONAL OIL COMPANY</div>
+    <h3>PETRONAS DNA & The Sovereign Desk Method</h3>
+    <p>
+      Having spent over 13 years inside Malaysia's national oil company working on offshore gas fields, Malay Basin geology, and energy fiscal contracts, the Sovereign World Desk reads PETRONAS and national resource governance with scar-weight domain authority — not journalist commentary.
+    </p>
+    <a href="/world/makcikgpt/petronas-dna" style="color:var(--accent-gold);font-weight:600;font-family:var(--mono);font-size:.8rem;">
+      Read PETRONAS DNA Case Study →
+    </a>
+  </div>
+
+  <!-- §8 COCKPITS -->
+  <div class="section-heading">WORLD MCP COCKPITS</div>
+  <div class="cockpit-grid">
+    <div class="cp-card">
+      <div class="tool-id">makcik.desk</div>
+      <div class="tool-desc">Editorial pipeline: draft $\rightarrow$ F2 label $\rightarrow$ seal $\rightarrow$ publish dispatches.</div>
+    </div>
+    <div class="cp-card">
+      <div class="tool-id">commodity.watch</div>
+      <div class="tool-desc">Governed market tools for Gold, Oil, Gas, Ringgit, and KLCI telemetry.</div>
+    </div>
+    <div class="cp-card">
+      <div class="tool-id">vector.map</div>
+      <div class="tool-desc">7-Vector spatial cartography atlas & chokepoint monitor.</div>
+    </div>
+    <div class="cp-card">
+      <div class="tool-id">world.brief</div>
+      <div class="tool-desc">Daily sealed world intelligence digest with cryptographic provenance.</div>
+    </div>
+  </div>
+
+  <!-- §9 EVIDENCE REGISTER -->
+  <div class="register-box">
+    <strong>EVIDENCE REGISTER · world.json</strong><br>
+    Registered Items: 22 Canonical Dispatches · 5 Market Telemetry Dashboards · 1 7-Vector Atlas<br>
+    Epistemic Floor: F2 TRUTH ($\ge 0.99$) · Epistemic Uncertainty Cap: $\Omega_0 \in [0.03, 0.05]$<br>
+    Sealed Hash: <code>VAULT999-WORLD-DESK-2026.08.03</code>
+  </div>
+
+</main>
+
+<footer>
+  <div>arif-fazil.com · The Sovereign World Desk</div>
+  <div class="footer-seal">DITEMPA BUKAN DIBERI · 999_SEAL</div>
+</footer>
+
+</body>
+</html>

@@ -243,6 +243,25 @@ export function NSElectionPage() {
                 </div>
               </div>
 
+              {/* MODEL HUMILITY AUDIT CARD (F7 Ω0) */}
+              <div className="p-4 rounded-lg border border-amber-500/40 bg-amber-950/20 font-mono text-xs shadow-lg">
+                <div className="flex items-center justify-between border-b border-amber-500/30 pb-2 mb-2">
+                  <span className="text-amber-400 font-bold uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                    <span>🧠</span> AGENTIC MODEL AUDIT · F7 HUMILITY (Ω₀)
+                  </span>
+                  <span className="text-[10px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded border border-amber-500/40 font-bold">
+                    ACCURACY: 80.6%
+                  </span>
+                </div>
+                <p className="text-slate-300 text-[11px] font-sans leading-relaxed mb-2">
+                  <strong>Seat-level Accuracy:</strong> 29 of 36 seats predicted correctly (80.6%).<br />
+                  <strong>Model Error Mode:</strong> Baseline model projected a <em>Hung Assembly</em> based on turnout &gt;68%. Non-Malay turnout dropped ~12% in urban/mixed corridors (Chennah, Sikamat), allowing BN's grassroots ground game to sweep 18 seats.
+                </p>
+                <div className="text-[10px] text-amber-400 font-mono font-semibold">
+                  ✓ Falsification logged to arifOS Model v2 Registry for PRU16 recalibration.
+                </div>
+              </div>
+
               <QuoteCard
                 topic="On Electoral Thermodynamics"
                 quote="Electoral outcomes are not accidents; they are thermodynamic state functions governed by split friction, demographic superposition, and localized machine gravitas."

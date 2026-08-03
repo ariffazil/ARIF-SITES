@@ -123,7 +123,33 @@
     </div>
   </section>
 
-  <!-- ═══ 2. THE VIEW — cone, bias, key level, scenarios, invalidation ═══ -->
+  <!-- ═══ 2. HERO CHART — XAU/USD price action, EMAs & forecast cone ═══ -->
+  <section class="sec chart-section" aria-label="Gold price chart" data-agent-role="hero-chart">
+    <div class="chart-header">
+      <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
+        <span class="chart-title" style="color:var(--accent); font-weight:bold;">XAU/USD — Price Action &amp; Forecast Horizon</span>
+        <div class="ema-toggles">
+          <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
+          <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
+          <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
+          <button class="cone-toggle active" data-horizon="30" onclick="selectHorizon(this)">30d▸</button>
+          <button class="cone-toggle" data-horizon="60" onclick="selectHorizon(this)">60d▸</button>
+          <button class="cone-toggle" data-horizon="90" onclick="selectHorizon(this)">90d▸</button>
+        </div>
+      </div>
+      <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
+        <button class="tf-pill" data-tf="1H" onclick="selectTF(this)">1H</button>
+        <button class="tf-pill active" data-tf="4H" onclick="selectTF(this)">4H</button>
+        <button class="tf-pill" data-tf="1D" onclick="selectTF(this)">1D</button>
+        <button class="tf-pill" data-tf="1W" onclick="selectTF(this)">1W</button>
+      </div>
+    </div>
+    <div class="chart-container" style="position:relative; min-height:450px; background:#0d1117; border:1px solid var(--accent-dim,#30363d); border-radius:8px; overflow:hidden;">
+      <div id="mainChart" style="width:100%; height:450px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 3. THE VIEW — cone, bias, key level, scenarios, invalidation ═══ -->
   <section class="sec" aria-label="The view">
     <h2 class="sec-title">The view · 30-day horizon</h2>
     <div class="market-answer-grid">
@@ -185,7 +211,7 @@
     <div id="tradeNoSetup" class="market-answer-no-setup">SABAR · No active setup</div>
   </section>
 
-  <!-- ═══ 3. WHY THIS VIEW — condition + transmission ═══ -->
+  <!-- ═══ 4. WHY THIS VIEW — condition + transmission ═══ -->
   <section class="sec" aria-label="Why this view">
     <h2 class="sec-title">Why this view <span class="apex-verdict" id="apexVerdict">—</span></h2>
     <div class="zs-metrics">
@@ -219,32 +245,6 @@
         <span class="driver-target">Ringgit transmission</span>
         <span class="driver-note">INTERPRETATION</span>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══ 4. CHART — secondary, after the answer is understood ═══ -->
-  <section class="sec chart-section" aria-label="Gold price chart">
-    <div class="chart-header">
-      <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
-        <span class="chart-title">XAU/USD — Price Action</span>
-        <div class="ema-toggles">
-          <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
-          <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
-          <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
-          <button class="cone-toggle active" data-horizon="30" onclick="selectHorizon(this)">30d▸</button>
-          <button class="cone-toggle" data-horizon="60" onclick="selectHorizon(this)">60d▸</button>
-          <button class="cone-toggle" data-horizon="90" onclick="selectHorizon(this)">90d▸</button>
-        </div>
-      </div>
-      <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
-        <button class="tf-pill" data-tf="1H" onclick="selectTF(this)">1H</button>
-        <button class="tf-pill active" data-tf="4H" onclick="selectTF(this)">4H</button>
-        <button class="tf-pill" data-tf="1D" onclick="selectTF(this)">1D</button>
-        <button class="tf-pill" data-tf="1W" onclick="selectTF(this)">1W</button>
-      </div>
-    </div>
-    <div class="chart-container">
-      <div id="mainChart"></div>
     </div>
   </section>
 
@@ -451,7 +451,7 @@
   window.ZEN_MARKET = {
     asset: 'gold',
     label: 'XAUUSD',
-    apiBase: '/wealth/gold/api',
+    apiBase: '/gold/api',
     stanceKey: 'gold_stance',
     rrMarginal: 1.2,
     chartAccent: '#c9a84c',

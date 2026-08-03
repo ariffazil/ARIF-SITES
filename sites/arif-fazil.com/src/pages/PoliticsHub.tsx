@@ -354,6 +354,36 @@ export function PoliticsHub() {
                     </ul>
                   </div>
                 </div>
+
+                {/* VECTOR DOSSIER DEEP LINKS */}
+                <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 font-mono text-xs">
+                  <span className="text-slate-400">ORGAN & DOSSIER RELEVANCE:</span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {selectedVector.id === 'V7' && (
+                      <>
+                        <Link to="/gold/" className="px-3 py-1 rounded bg-amber-950/60 border border-amber-500/40 text-amber-400 font-bold hover:bg-amber-900/80 transition-colors">
+                          🪙 XAU/USD Gold Surface →
+                        </Link>
+                        <Link to="/earth/" className="px-3 py-1 rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-400 font-bold hover:bg-emerald-900/80 transition-colors">
+                          🌏 GEOX Earth Basin →
+                        </Link>
+                      </>
+                    )}
+                    {selectedVector.id === 'V5' && (
+                      <>
+                        <Link to="/oil/" className="px-3 py-1 rounded bg-amber-950/60 border border-amber-500/40 text-amber-400 font-bold hover:bg-amber-900/80 transition-colors">
+                          🛢️ PETRONAS Crude Surface →
+                        </Link>
+                        <Link to="/gas/" className="px-3 py-1 rounded bg-cyan-950/60 border border-cyan-500/40 text-cyan-400 font-bold hover:bg-cyan-900/80 transition-colors">
+                          🔥 LNG & Gas Matrix →
+                        </Link>
+                      </>
+                    )}
+                    <Link to="/world/makcikgpt/" className="px-3 py-1 rounded bg-slate-800 border border-slate-700 text-slate-200 font-bold hover:bg-slate-700 transition-colors">
+                      📰 MakcikGPT Analysis →
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
