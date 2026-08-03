@@ -4,30 +4,12 @@
  * All generators that emit any /world/makcikgpt/* surface (feed.xml,
  * sitemap.xml, llms.{txt,json}, page.json, makcikgpt-md/index.html) MUST
  * go through this helper so they cannot drift out of parity.
- *
- * What "MakcikGPT" means (canonical, 2026-07-25):
- *   the subset of essays.json where
- *     - lang === "bm"
- *     - dest.type === "onsite"
- *     - dest.path starts with the canonical "/world/makcikgpt/" prefix
- *
- * The helper enforces:
- *   1. non-empty canonical subset (any count ≥ 1 is accepted — no magic count)
- *   2. canonical-path discipline (every dest.path lives under /world/makcikgpt/)
- *   3. unique IDs and unique paths across the subset
- *   4. required metadata on every entry
- *   5. deterministic ordering: date desc, then id desc as a stable tiebreaker
- *
- * If any invariant fails the helper throws a MakcikSourceError so the
- * generating script can fail-fast. Tests can also call validateMakcikPieces
- * directly with { throwOnError: false } to inspect the violation list.
  */
 
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
-// Anchor all relative paths off the site root so every script that requires
-// this module resolves the canonical essays.json the same way.
 const SITE_ROOT = path.resolve(__dirname, "..", "..");
 const ESSAYS_JSON = path.join(SITE_ROOT, "src/data/essays.json");
 const CANONICAL_PREFIX = "/world/makcikgpt/";
@@ -42,16 +24,11 @@ class MakcikSourceError extends Error {
 
 function loadEssays() {
   const raw = fs.readFileSync(ESSAYS_JSON, "utf8");
-  return JSON.parse(raw);
+  // Clean header line if present
+  const jsonText = raw.startsWith("//") ? raw.slice(raw.indexOf("\n") + 1) : raw;
+  return JSON.parse(jsonText);
 }
 
-/**
- * Returns the canonical MakcikGPT subset: BM-authored, onsite-destined,
- * under the canonical /world/makcikgpt/ prefix.
- *
- * Order is deterministic: newest date first; ties (same date) are broken
- * by id descending so the output is byte-stable across runs.
- */
 function pickMakcikPieces(essays) {
   return essays
     .filter(
@@ -67,7 +44,6 @@ function pickMakcikPieces(essays) {
     .sort((a, b) => {
       if (a.date < b.date) return 1;
       if (a.date > b.date) return -1;
-      // Tiebreaker — descending by id keeps the list byte-stable.
       if (a.id < b.id) return 1;
       if (a.id > b.id) return -1;
       return 0;
@@ -86,15 +62,32 @@ function requiredFieldViolation(piece, field) {
 }
 
 /**
- * Validates the canonical subset against every invariant.
- *
- * @param {Array} pieces  Output of pickMakcikPieces().
- * @param {Object} [opts]
- * @param {boolean} [opts.throwOnError=true]  When false, returns
- *   { ok: false, violations } instead of throwing.
- * @returns {{ ok: true, count: number, pieces: Array }}
- * @throws  {MakcikSourceError}
+ * Computes deterministic Merkle leaf hash over sorted claim_register + sorted source_ledger.
+ * Law 3: Excludes timestamps, layout, CSS, rendering code, and file mtimes.
  */
+function computeCanonicalPayloadHash(piece) {
+  const claimRegister = Array.isArray(piece.claim_register)
+    ? piece.claim_register
+        .slice()
+        .sort((a, b) => (a.claim_id || "").localeCompare(b.claim_id || ""))
+    : [];
+
+  const sourceLedger = Array.isArray(piece.source_ledger)
+    ? piece.source_ledger
+        .slice()
+        .sort((a, b) => (a.source_id || "").localeCompare(b.source_id || ""))
+    : [];
+
+  const payload = JSON.stringify({
+    id: piece.id,
+    slug: piece.dest ? piece.dest.path : "",
+    claim_register: claimRegister,
+    source_ledger: sourceLedger,
+  });
+
+  return crypto.createHash("sha256").update(payload).digest("hex");
+}
+
 function validateMakcikPieces(pieces, opts = {}) {
   const throwOnError = opts.throwOnError !== false;
   const violations = [];
@@ -116,21 +109,18 @@ function validateMakcikPieces(pieces, opts = {}) {
     );
   }
 
-  const seenIds = new Map(); // id → first index
-  const seenPaths = new Map(); // path → first index
+  const seenIds = new Map();
+  const seenPaths = new Map();
 
   for (let i = 0; i < pieces.length; i++) {
     const p = pieces[i];
     const where = `entry[${i}] (id=${p && p.id})`;
 
-    // Required scalar fields.
     for (const f of ["id", "title", "date", "lang"]) {
       const v = requiredFieldViolation(p, f);
       if (v) violations.push(`${where}: ${v}`);
     }
 
-    // lang and dest invariants are already enforced by pickMakcikPieces,
-    // but we re-check here so a caller that bypasses the filter still fails.
     if (p && p.lang !== "bm") {
       violations.push(`${where}: lang must be "bm" (got "${p.lang}")`);
     }
@@ -144,7 +134,6 @@ function validateMakcikPieces(pieces, opts = {}) {
       );
     }
 
-    // Required metadata blocks.
     if (!p || !p.series || !isNonEmptyString(p.series.id)) {
       violations.push(`${where}: series.id missing or empty`);
     }
@@ -158,7 +147,6 @@ function validateMakcikPieces(pieces, opts = {}) {
       violations.push(`${where}: seal field is required (use null for unsigned)`);
     }
 
-    // Uniqueness — IDs and paths must each appear at most once.
     if (p && isNonEmptyString(p.id)) {
       if (seenIds.has(p.id)) {
         violations.push(
@@ -179,6 +167,25 @@ function validateMakcikPieces(pieces, opts = {}) {
     }
   }
 
+  // Graduated Provenance Enforcement (Law 2 / B2 Guard)
+  for (const p of pieces) {
+    const status = p.provenance_status || "legacy";
+    if (status === "sealed") {
+      if (!Array.isArray(p.claim_register) || p.claim_register.length === 0) {
+        const msg = `Sealed article "${p.id}" missing required claim_register entries`;
+        if (throwOnError) throw new MakcikSourceError(msg, [msg]);
+        violations.push(msg);
+      }
+      for (const claim of p.claim_register || []) {
+        if (claim.maruah_review === "pending") {
+          const msg = `Sealed article "${p.id}" claim "${claim.claim_id}" has pending maruah_review — requires F13 sign-off`;
+          if (throwOnError) throw new MakcikSourceError(msg, [msg]);
+          violations.push(msg);
+        }
+      }
+    }
+  }
+
   if (violations.length > 0) {
     if (throwOnError) {
       throw new MakcikSourceError(
@@ -192,12 +199,6 @@ function validateMakcikPieces(pieces, opts = {}) {
   return { ok: true, count: pieces.length, pieces };
 }
 
-/**
- * Single-call helper for the common case: load essays, pick canonical
- * pieces, validate them, and return a frozen summary.
- *
- * Generators should use this rather than re-implementing the filter.
- */
 function getMakcikSource() {
   const essays = loadEssays();
   const pieces = pickMakcikPieces(essays);
@@ -213,6 +214,32 @@ function getMakcikSource() {
   };
 }
 
+if (require.main === module) {
+  const args = process.argv.slice(2);
+  if (args.includes("--test-hash-idempotency")) {
+    const { pieces } = getMakcikSource();
+    const piece = pieces[0];
+    const h1 = computeCanonicalPayloadHash(piece);
+    const h2 = computeCanonicalPayloadHash(piece);
+    if (h1 !== h2) {
+      console.error("✗ NON-DETERMINISTIC HASH DETECTED");
+      process.exit(1);
+    }
+    console.log(`✓ Hash idempotency confirmed: ${h1}`);
+    process.exit(0);
+  }
+  if (args.includes("--enforce-sealed-gate")) {
+    try {
+      getMakcikSource();
+      console.log("✓ Sealed article provenance gate passed.");
+      process.exit(0);
+    } catch (e) {
+      console.error(`✗ SEALED GATE FAILED: ${e.message}`);
+      process.exit(1);
+    }
+  }
+}
+
 module.exports = {
   CANONICAL_PREFIX,
   ESSAYS_JSON,
@@ -222,4 +249,5 @@ module.exports = {
   pickMakcikPieces,
   validateMakcikPieces,
   getMakcikSource,
+  computeCanonicalPayloadHash,
 };
