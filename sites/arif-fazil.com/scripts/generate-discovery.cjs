@@ -44,9 +44,17 @@ function buildSitemap(pieces) {
     { loc: `${SITE_BASE}/`, priority: 1.0, changefreq: "monthly", lastmod: "2026-07-19" },
     { loc: `${SITE_BASE}/earth`, priority: 0.8, changefreq: "monthly" },
     { loc: `${SITE_BASE}/economics`, priority: 0.9, changefreq: "daily" },
+    { loc: `${SITE_BASE}/klci/`, priority: 0.85, changefreq: "daily" },
+    { loc: `${SITE_BASE}/usdmyr/`, priority: 0.85, changefreq: "daily" },
+    { loc: `${SITE_BASE}/gold/`, priority: 0.85, changefreq: "daily" },
+    { loc: `${SITE_BASE}/oil/`, priority: 0.85, changefreq: "daily" },
+    { loc: `${SITE_BASE}/gas/`, priority: 0.85, changefreq: "daily" },
     { loc: `${SITE_BASE}/world`, priority: 0.7, changefreq: "daily" },
+    { loc: `${SITE_BASE}/politics/ns-election/`, priority: 0.8, changefreq: "weekly" },
+    { loc: `${SITE_BASE}/politics/shadow/`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/writing`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/doctrine`, priority: 0.9, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/map/`, priority: 0.8, changefreq: "weekly" },
   ];
   // Canonical landing first, then every onsite BM piece (M-series)
   urls.push({ loc: CANONICAL_LANDING, priority: 0.85, changefreq: "daily" });
