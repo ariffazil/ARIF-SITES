@@ -26,6 +26,11 @@ body{
   --text-mid:var(--dim);--text-dim:var(--faint);
   --head-h:118px;
 }
+body.fam-gold { --accent: #c9a84c; }
+body.fam-oil  { --accent: #c4791a; }
+body.fam-gas  { --accent: #00d4aa; }
+body.fam-klci { --accent: #3b82f6; }
+body.fam-usdmyr { --accent: #f59e0b; }
 ::selection{background:var(--accent-bg);color:var(--ink)}
 .mono{font-family:var(--mono)}
 .disp{font-family:var(--display)}
