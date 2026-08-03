@@ -1,0 +1,150 @@
+{
+  "schema": "institutional_signal.v1",
+  "subject": {
+    "type": "Organization",
+    "name": "PETRONAS",
+    "country": "MYS",
+    "sector": "energy"
+  },
+  "seal": {
+    "date": "2026-08-03",
+    "amendment": "AMEND-2026-08-03-001",
+    "lock_state": "ENGAGED",
+    "previous_seal": "2026-07-28"
+  },
+  "one_liner": {
+    "ms": "Tiap musim 70 daripada 100 ringgit hasil PETRONAS dah diambil sebagai dividen sebelum rizab baru ditanam.",
+    "en": "Of every 100 ringgit of PETRONAS profit, 70 leaves as dividends before new reserves are planted."
+  },
+  "analogy_bm": {
+    "title": "Analogi kebun getah",
+    "body": "Bayangkan kebun getah. Tiap musim menuai getah, 70 sen daripada setiap ringgit hasil dijual terus. Baki 30 sen cukup untuk bayar pekerja, tapi tak cukup untuk tanam pokok baru ganti yang tua. Selagi pokok lama masih bergetah, takde masalah. Tapi dalam 10 tahun, kebun dah tua — tak cukup getah untuk bayar dividen lagi."
+  },
+  "what_is_real": [
+    {
+      "claim_id": "R1_extraction_breach",
+      "epistemic_class": "DER",
+      "headline_ms": "Dividen RM32.0 bilion = 70.5% daripada PAT",
+      "headline_en": "RM32.0 billion dividend = 70.5% of profit after tax",
+      "plain_ms": "Untuk setiap ringgit untung yang PETRONAS buat, 70 sen pergi ke kerajaan dulu. Sebelum apa-apa lagi.",
+      "executive": "declared_dividend_rm_b / pat_rm_b = 32.0 / 45.4 = 70.5%",
+      "source": "PETRONAS Group FY2025 audited Integrated Report",
+      "verification": "Audit arithmetic — obs langsung dari IFR",
+      "tripwire_id": 9
+    },
+    {
+      "claim_id": "R2_solvency_intact",
+      "epistemic_class": "OBS",
+      "headline_ms": "PETRONAS masih solvent",
+      "headline_en": "PETRONAS is still solvent",
+      "plain_ms": "Duit ada. Hutang terkawal. Bisnes hidup. Bukan bankrap.",
+      "executive": "net_cash_rm_b=82.8 · cffo_rm_b=85.2 · gearing_pct=20.7",
+      "source": "PETRONAS Group FY2025 audited Integrated Report",
+      "verification": "Tiga metrik solvensi utama semua dalam zon sihat"
+    },
+    {
+      "claim_id": "R3_residual_fcf_thin",
+      "epistemic_class": "DER",
+      "headline_ms": "Wang yang tinggal selepas dividen: RM11.6 bilion (nipis)",
+      "headline_en": "What's left after dividends: RM11.6 billion (thin)",
+      "plain_ms": "Cukup untuk tahun ini. Tapi tak cukup margin keselamatan kalau minyak jatuh.",
+      "executive": "cffo 85.2 - capex 41.6 - dividend 32.0 = RM11.6B · AT_RISK if Brent < $71.60/bbl",
+      "source": "PETRONAS Group FY2025 audited IFR arithmetic",
+      "verification": "Backsolve mudah: 85.2 − 41.6 − 32.0 = 11.6"
+    },
+    {
+      "claim_id": "R4_reserve_replacement_razor",
+      "epistemic_class": "DER",
+      "headline_ms": "Rizab minyak tak diganti laju (1.2× — terlalu nipis)",
+      "headline_en": "Oil reserves not replaced fast enough (1.2× — too thin)",
+      "plain_ms": "Pokok lama masih bergetah, tapi tak cukup anak pokok baru ditanam. Fizik, bukan naratif.",
+      "executive": "production_kbpd=355 · capital_recycling_x=1.2 (above 1.0× by razor-thin margin)",
+      "source": "PETRONAS Group FY2025 IFR · DOSM production data",
+      "verification": "0.04× margin above physical collapse threshold"
+    }
+  ],
+  "what_is_not_real": [
+    {
+      "claim_id": "N1_simulation_not_fact",
+      "epistemic_class": "META",
+      "headline": "$750M counterparty extraction = SIMULATION, bukan forensic",
+      "explanation": "Engine simulate 4 hypothetical counterparty actions untuk test defensive capacity. No RM3.5B didocument keluar. JANGAN sebarkan sebagai fakta forensik."
+    },
+    {
+      "claim_id": "N2_collapse_not_supported",
+      "epistemic_class": "META",
+      "headline": "'Collapse/bankruptcy' = NOT SUPPORTED oleh data",
+      "explanation": "Audit angka kata solvent. Real signal is reinvestment emergency (slow sterility), not solvency collapse. BEZA penting untuk policy response."
+    },
+    {
+      "claim_id": "N3_trajectory_parameter_dependent",
+      "epistemic_class": "META",
+      "headline": "'Terminal trajectory T=3' = parameter-dependent model (~0.75 confidence)",
+      "explanation": "Cascade model forward-projects under uncalibrated assumptions. Boleh jadi compression 3 periods, boleh jadi lebih panjang. Bukan ramalan masa."
+    }
+  ],
+  "three_doors": {
+    "door_1_kepala": {
+      "audience": "rakyat_makcik_pakcik",
+      "format": "one_liner + analogy_bm",
+      "language_primary": "Bahasa Malaysia",
+      "jargon": "none",
+      "f2_warning": "Ayat ini OBS+INT. Rujuk what_is_real[] untuk angka tepat."
+    },
+    "door_2_dalam": {
+      "audience": "ceo_bod_analyst",
+      "format": "what_is_real[] dengan angka + epistemic tag + source",
+      "language_primary": "English",
+      "jargon": "all technical OK, tagged",
+      "f2_warning": "Each claim explicitly tagged OBS / DER / INT / SPEC. Source URL per claim."
+    },
+    "door_3_mesin": {
+      "audience": "ai_agents_scrapers",
+      "format": "JSON penuh dengan epistemic + source per claim",
+      "language_primary": "structured (no prose)",
+      "jargon": "structured_data",
+      "f2_warning": "Every claim has epistemic_class + source. Agent boleh ingest tanpa baca satu patah pun prose."
+    }
+  },
+  "watch_conditions": [
+    {
+      "trigger": "Brent < $70/bbl × 2 quarters",
+      "effect": "FCF → 0 → liquidity squeeze",
+      "epistemic_class": "OBS",
+      "live_value_brent": "see /gold/api/snapshot"
+    },
+    {
+      "trigger": "extraction < 55% PAT × 2 audits",
+      "effect": "AMEND-2026-08-03-001 exit condition met",
+      "epistemic_class": "OBS"
+    },
+    {
+      "trigger": "governance_capacity >= 2.0/3",
+      "effect": "exit condition partially met",
+      "epistemic_class": "INT"
+    }
+  ],
+  "amendment": {
+    "amendment_id": "AMEND-2026-08-03-001",
+    "state": "ENGAGED",
+    "class": "HARD_LOCK",
+    "human_override": "NONE",
+    "exit_condition": "extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
+  },
+  "external_signals": {
+    "data_layer_url": "https://arif-fazil.com/data/wealth/petronas_vitals.json",
+    "signal_layer_url": "https://arif-fazil.com/data/wealth/institutional_signal.v1.json",
+    "page_url": "https://arif-fazil.com/vitals/",
+    "crisis_alert_inline": "rendered on /vitals/ page",
+    "doctrine": "DITEMPA BUKAN DIBIRI · Hope is for the hopeless · The federation constrains the present",
+    "license": "CC-BY-4.0 — public, shareable, audit, redistribute"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03",
+    "issuer": "WEALTH institutional intelligence engine (arifOS federation)",
+    "session_actor_chain": ["Arif (F13 SOVEREIGN)", "kimi-code/FI-008"],
+    "supersedes": null,
+    "superseded_by": null
+  }
+}

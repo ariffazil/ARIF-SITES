@@ -329,6 +329,9 @@ arif-fazil.com {
 	}
 	# WEALTH Terminal — gold/oil/gas/api specific handlers FIRST (Caddy first-match-wins).
 	# Generic /wealth/* MUST stay below specific handlers or it captures /wealth/gold/api/* first.
+	# 2026-08-03: broad handlers converted to named matchers with explicit negation,
+	# so /wealth/<asset>/api/* and /wealth/<asset>/vendor/* are excluded and cannot
+	# be accidentally matched by the broad page handler.
 	# Gold chart app (2026-07-14) — standalone gold price tracker + API
 	@wealth_gold_api path /wealth/gold/api/*
 	handle @wealth_gold_api {
@@ -340,7 +343,12 @@ arif-fazil.com {
 		root * /var/www/html/gold
 		file_server
 	}
-	handle /wealth/gold/* {
+	@wealth_gold_page {
+		path /wealth/gold/*
+		not path /wealth/gold/api/*
+		not path /wealth/gold/vendor/*
+	}
+	handle @wealth_gold_page {
 		uri strip_prefix /wealth/gold
 		root * /var/www/html/gold
 		try_files {path} /index.html
@@ -352,7 +360,17 @@ arif-fazil.com {
 		uri strip_prefix /wealth/oil
 		reverse_proxy localhost:3457
 	}
-	handle /wealth/oil/* {
+	handle /wealth/oil/vendor/* {
+		uri strip_prefix /wealth/oil
+		root * /var/www/html/oil
+		file_server
+	}
+	@wealth_oil_page {
+		path /wealth/oil/*
+		not path /wealth/oil/api/*
+		not path /wealth/oil/vendor/*
+	}
+	handle @wealth_oil_page {
 		uri strip_prefix /wealth/oil
 		root * /var/www/html/oil
 		try_files {path} /index.html
@@ -360,9 +378,7 @@ arif-fazil.com {
 	}
 	# Natural Gas dashboard (2026-07-16) — cognitive clarity cockpit
 	# 2026-07-31: Intermediate vendor handle added to match gold's structure.
-	# Without it, Caddy v2 sorts /wealth/gas/* ahead of /wealth/gas/api/* and
-	# the reverse_proxy is never reached. The vendor handle anchors the catch-all
-	# to the correct position (after the API handler).
+	# 2026-08-03: broad handler converted to named matcher with negation (see gold above).
 	@wealth_gas_api path /wealth/gas/api/*
 	handle @wealth_gas_api {
 		uri strip_prefix /wealth/gas
@@ -373,7 +389,12 @@ arif-fazil.com {
 		root * /var/www/html/gas
 		file_server
 	}
-	handle /wealth/gas/* {
+	@wealth_gas_page {
+		path /wealth/gas/*
+		not path /wealth/gas/api/*
+		not path /wealth/gas/vendor/*
+	}
+	handle @wealth_gas_page {
 		uri strip_prefix /wealth/gas
 		root * /var/www/html/gas
 		try_files {path} /index.html
@@ -468,6 +489,10 @@ arif-fazil.com {
 		try_files {path} /index.html
 		file_server
 	}
+	# VITALS canonical singleton (2026-08-03: legacy /wealth/vitals/ → /vitals/)
+	redir /wealth/vitals /vitals/ 308
+	redir /wealth/vitals/ /vitals/ 308
+
 	# KLCI — Bursa Malaysia index terminal (2026-08-03: aligned with gold/oil/gas pattern)
 	redir /klci /klci/ 308
 	@klci_api path /klci/api/*

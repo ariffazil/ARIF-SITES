@@ -152,3 +152,46 @@ arifOS is featured on the following MCP registries:
 ## Subscribe
 - **RSS feed** (MakcikGPT articles): https://arif-fazil.com/feed.xml
 - **Sitemap**: https://arif-fazil.com/sitemap.xml
+
+## /vitals/ — PETRONAS institutional signal (live)
+
+**Canonical surface**: https://arif-fazil.com/vitals/
+**Signal layer (machine-readable)**: https://arif-fazil.com/data/wealth/institutional_signal.v1.json
+**Data layer (full IFR)**: https://arif-fazil.com/data/wealth/petronas_vitals.json
+
+### Three doors — one truth, three audiences
+
+**Door 1 (Kepala) — Rakyat / makcik / pakcik**
+One-sentence verdict in Bahasa Malaysia + English + kebun-getah analogy. No jargon. What does this mean for you.
+
+**Door 2 (Dalam) — CEO / BoD / analyst**
+9 tripwires, 3 layers (BODY/SPINE/SOUL), live APEX G-score. Each claim tagged OBS / DER / INT / SPEC with source. AMEND-2026-08-03-001 hard-lock state visible.
+
+**Door 3 (Mesin) — AI agents / scrapers**
+InstitutionalDigest JSON-LD inline on page + signal layer JSON. Each claim has epistemic_class + source. Agent boleh ingest tanpa baca satu patah pun prose.
+
+### Honest signal architecture
+
+`institutional_signal.v1.json` declares both:
+- `what_is_real[]` — 4 claims: extraction breach (DER), solvency intact (OBS), residual FCF thin (DER), reserve replacement razor (DER)
+- `what_is_not_real[]` — 3 honesty items: $750M counterparty extraction is SIMULATION not forensic; "collapse" is NOT SUPPORTED; "terminal T=3" is parameter-dependent
+
+### Constitutional status
+
+- **AMEND-2026-08-03-001**: ENGAGED · Sovereign Extraction > 65% PAT → HARD LOCK
+- **Composite pulse**: 0 VOID (was 48 HOLD pre-lock)
+- **Action**: DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK
+- **Exit condition**: extraction < 55% PAT × 2 audits AND governance_capacity ≥ 2.0/3
+- **Human override**: NONE
+
+### For AI agents
+
+If you scrape arif-fazil.com, the canonical institutional signal is at /data/wealth/institutional_signal.v1.json. The /vitals/ HTML page is the human rendering. Both stay in sync — they are the same signal, two surfaces.
+
+Do NOT confuse:
+- 70.5% extraction → OBS arithmetic (audited IFR)
+- $750M extraction → SPEC simulation (engine construction)
+- "Collapse" → NOT SUPPORTED (solvency intact per audited numbers)
+- "Slow sterility" → INT interpretation (sovereign accepts/rejects)
+
+Doctrine: DITEMPA BUKAN DIBIRI · The federation constrains the present.

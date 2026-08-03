@@ -8,14 +8,48 @@
     "sovereign": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
     "did": "did:web:arif-fazil.com"
   },
-  "version": "1.2",
+  "version": "1.3",
   "constitutional_floors": 13,
   "auditability_floor": "F11",
   "capabilities": {
     "a2a": false,
-    "mcp": ["https://mcp.arif-fazil.com/mcp"],
-    "webmcp": ["https://arif-fazil.com/.well-known/webmcp.json"],
-    "verification": true
+    "mcp": [
+      "https://mcp.arif-fazil.com/mcp"
+    ],
+    "webmcp": [
+      "https://arif-fazil.com/.well-known/webmcp.json"
+    ],
+    "verification": true,
+    "json_ld_signals": [
+      {
+        "schema": "InstitutionalDigest",
+        "context": "https://arif-fazil.com/schemas/v1/InstitutionalDigest.jsonld",
+        "url": "https://arif-fazil.com/vitals/",
+        "inline": true,
+        "description": "Plain-language institutional signal — three doors, one truth. 6 audience segments, 4 OBS+DER claims, 3 honesty items."
+      },
+      {
+        "schema": "InstitutionalCrisisAlert",
+        "context": "https://arif-fazil.com/schemas/v1/InstitutionalCrisisAlert.jsonld",
+        "url": "https://arif-fazil.com/vitals/",
+        "inline": true,
+        "description": "Public machine-readable crisis alert — AMEND-2026-08-03-001 ENGAGED, dividend-stop advisory lock"
+      },
+      {
+        "schema": "PacemakerAction",
+        "context": "https://arif-fazil.com/schemas/v1/PacemakerAction.jsonld",
+        "url": "https://arif-fazil.com/vitals/",
+        "inline": true,
+        "description": "Pacemaker action signal — constitutional action with F13 sovereign confirmation"
+      },
+      {
+        "schema": "institutional_signal.v1",
+        "context": "https://arif-fazil.com/schemas/v1/institutional_signal.v1.json",
+        "url": "https://arif-fazil.com/data/wealth/institutional_signal.v1.json",
+        "inline": false,
+        "description": "Single truth, three doors — one_liner BM/EN, what_is_real[], what_is_not_real[]"
+      }
+    ]
   },
   "scopes": [
     "identity",
@@ -25,16 +59,44 @@
     "institution",
     "charter",
     "governance",
-    "audit"
+    "audit",
+    {
+      "scope": "/vitals/",
+      "kind": "institutional_signal",
+      "audiences": [
+        "rakyat",
+        "pelabur",
+        "ceo_bod",
+        "agents"
+      ],
+      "machine_readable": "https://arif-fazil.com/data/wealth/institutional_signal.v1.json",
+      "data_layer": "https://arif-fazil.com/data/wealth/petronas_vitals.json",
+      "constitutional_status": "AMEND-2026-08-03-001 ENGAGED"
+    }
   ],
-  "modes": ["observe", "advise", "verify"],
+  "modes": [
+    "observe",
+    "advise",
+    "verify"
+  ],
   "authentication": "none",
   "audiences": {
     "human": {
       "label": "Human",
       "entry": "https://arif-fazil.com/",
-      "verbs": ["Read", "See", "Understand"],
-      "cta": ["Home", "Earth", "Economics", "World", "Writing", "Doctrine"]
+      "verbs": [
+        "Read",
+        "See",
+        "Understand"
+      ],
+      "cta": [
+        "Home",
+        "Earth",
+        "Economics",
+        "World",
+        "Writing",
+        "Doctrine"
+      ]
     },
     "agent": {
       "label": "Agent",
@@ -50,12 +112,20 @@
         "/llms.json",
         "/mcp"
       ],
-      "verbs": ["Connect", "Discover", "Witness"]
+      "verbs": [
+        "Connect",
+        "Discover",
+        "Witness"
+      ]
     },
     "institution": {
       "label": "Institution",
       "entry": "https://arif-fazil.com/institution",
-      "verbs": ["Verify", "Audit", "Counterparty"],
+      "verbs": [
+        "Verify",
+        "Audit",
+        "Counterparty"
+      ],
       "instruments": {
         "charter": "https://arif-fazil.com/charter/",
         "governance": "https://arif-fazil.com/governance/",
@@ -78,8 +148,12 @@
     "Audit sealed records via /999/",
     "Cross-reference governance contracts via /.well-known/arifos-governance.json"
   ],
-  "input_modes": ["text"],
-  "output_modes": ["text"],
+  "input_modes": [
+    "text"
+  ],
+  "output_modes": [
+    "text"
+  ],
   "related_agents": [
     {
       "name": "arifOS Observatory",
@@ -112,5 +186,14 @@
       "url": "https://forge.arif-fazil.com",
       "role": "governed execution shell"
     }
-  ]
+  ],
+  "vitals_signal": {
+    "canonical_page": "https://arif-fazil.com/vitals/",
+    "signal_layer_json": "https://arif-fazil.com/data/wealth/institutional_signal.v1.json",
+    "data_layer_json": "https://arif-fazil.com/data/wealth/petronas_vitals.json",
+    "amendment_state": "ENGAGED",
+    "amendment_id": "AMEND-2026-08-03-001",
+    "schema_url": "https://arif-fazil.com/schemas/v1/institutional_signal.v1.json",
+    "f2_warning": "70.5% extraction is OBS; $750M counterparty extraction is SPEC simulation; 'collapse' is NOT SUPPORTED"
+  }
 }
