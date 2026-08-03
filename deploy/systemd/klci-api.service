@@ -1,0 +1,27 @@
+# /etc/systemd/system/klci-api.service
+# 📈 KLCI API — Bursa Malaysia FBM KLCI index data (WEALTH organ)
+# Port 127.0.0.1:3459 → Caddy → arif-fazil.com/klci/*
+# Node.js proxy to Python fetcher at /root/venv/bin/python3
+# DITEMPA BUKAN DIBERI
+
+[Unit]
+Description=KLCI API — Bursa Malaysia FBM KLCI Data Server (WEALTH)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/www/html/arif/klci/api
+ExecStart=/usr/bin/node /var/www/html/arif/klci/api/server.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=klci-api
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

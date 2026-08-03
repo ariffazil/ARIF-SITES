@@ -1,0 +1,27 @@
+# /etc/systemd/system/usdmyr-api.service
+# 💱 USDMYR API — Ringgit FX data (WEALTH organ)
+# Port 127.0.0.1:3460 → Caddy → arif-fazil.com/usdmyr/*
+# Node.js proxy to Python fetcher at /root/venv/bin/python3
+# DITEMPA BUKAN DIBERI
+
+[Unit]
+Description=USDMYR API — Ringgit USD/MYR FX Data Server (WEALTH)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/var/www/html/arif/usdmyr/api
+ExecStart=/usr/bin/node /var/www/html/arif/usdmyr/api/server.js
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=usdmyr-api
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -42,7 +42,7 @@
 		# M1 path-forward 2026-08-01: nonce-based CSP requires Vite middleware to emit per-request
 		# nonces via a `transformIndexHtml` hook AND arifOS to mint nonces. Until then,
 		# 'unsafe-inline' + 'unsafe-eval' remain. Track in /root/arif-fazil.com/canon/csp-roadmap.md.
-		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.fontshare.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://arifos.arif-fazil.com https://mcp.arif-fazil.com https://geox.arif-fazil.com https://wealth.arif-fazil.com https://well.arif-fazil.com https://aaa.arif-fazil.com https://api.macrostrat.org https://tiles.macrostrat.org https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://*.basemaps.cartocdn.com; frame-ancestors 'self'; report-uri https://arifos.arif-fazil.com/api/csp-report; report-to csp-endpoint"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.fontshare.com https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://arif-fazil.com https://arifos.arif-fazil.com https://mcp.arif-fazil.com https://geox.arif-fazil.com https://wealth.arif-fazil.com https://well.arif-fazil.com https://aaa.arif-fazil.com https://api.gold-api.com https://fapi.binance.com https://api.binance.com https://api.macrostrat.org https://tiles.macrostrat.org https://a.basemaps.cartocdn.com https://b.basemaps.cartocdn.com https://*.basemaps.cartocdn.com; frame-ancestors 'self'; report-uri https://arifos.arif-fazil.com/api/csp-report; report-to csp-endpoint"
 	}
 }
 (shared_assets) {
@@ -204,14 +204,14 @@ arif-fazil.com {
 	handle @genesis {
 		uri strip_prefix /000
 		root * /var/www/html/arif/000
-		try_files {path} /index.html
+		try_files {path} {path}/ =404
 		file_server
 	}
 	@validation path /999/*
 	handle @validation {
 		uri strip_prefix /999
 		root * /var/www/html/arif/999
-		try_files {path} /index.html
+		try_files {path} {path}/ =404
 		file_server
 	}
 	handle /arifos {
@@ -244,9 +244,12 @@ arif-fazil.com {
 		try_files {path} {path}/index.html /verify/index.html
 		file_server
 	}
-	# System pulse — redirected to wealth.arif-fazil.com (2026-08-01)
-	redir /pulse /pulse/ 301
-	redir /pulse/* https://wealth.arif-fazil.com{uri} 301
+	# System pulse — served directly from static html dist
+	handle /pulse/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /pulse/index.html
+		file_server
+	}
 	# Audit surface — static findings page
 	handle /audit/* {
 		root * /var/www/html/arif
@@ -424,18 +427,11 @@ arif-fazil.com {
 	# /vitals and /malaysia now 404 honestly on the apex domain.
 	# Access them directly at wealth.arif-fazil.com.
 
-	# GEOX landing — uses the GEOX SPA shell at /var/www/html/geox/index.html
-	# (the /geox-app/ subpath is a cockpit asset bundle; the canonical
-	# landing lives at the /geox/ root.)
-	handle /geox/ {
-		uri strip_prefix /geox
-		root * /var/www/html/geox
-		rewrite * /index.html
-		file_server
-	}
+	# GEOX — Earth intelligence pages (2026-08-03: fixed root — was /var/www/html/geox-app,
+	# but dist deploys to /var/www/html/arif/geox/. 27 pages were 404-ing.)
 	handle /geox/* {
-		root * /var/www/html/geox-app
-		try_files {path} {path}/index.html /index.html
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /geox/index.html
 		file_server
 	}
 	# Direct commodity routes. API handlers must precede static SPA handlers.
@@ -469,6 +465,30 @@ arif-fazil.com {
 	}
 	handle /gas/* {
 		root * /var/www/html/gas
+		try_files {path} /index.html
+		file_server
+	}
+	# KLCI — Bursa Malaysia index terminal (2026-08-03: aligned with gold/oil/gas pattern)
+	redir /klci /klci/ 308
+	@klci_api path /klci/api/*
+	handle @klci_api {
+		uri strip_prefix /klci
+		reverse_proxy localhost:3459
+	}
+	handle /klci/* {
+		root * /var/www/html/arif/klci
+		try_files {path} /index.html
+		file_server
+	}
+	# USD/MYR — Ringgit FX terminal (2026-08-03: aligned with gold/oil/gas pattern)
+	redir /usdmyr /usdmyr/ 308
+	@usdmyr_api path /usdmyr/api/*
+	handle @usdmyr_api {
+		uri strip_prefix /usdmyr
+		reverse_proxy localhost:3460
+	}
+	handle /usdmyr/* {
+		root * /var/www/html/arif/usdmyr
 		try_files {path} /index.html
 		file_server
 	}
@@ -574,6 +594,13 @@ arif-fazil.com {
 
 	# SPA catch-all — serves index.html for known client-side routes
 	# Unknown paths get a real 404 for agent/curl access
+	rewrite /world/oil /oil/index.html
+	rewrite /world/oil/ /oil/index.html
+	rewrite /world/gas /gas/index.html
+	rewrite /world/gas/ /gas/index.html
+	rewrite /world/gold /gold/index.html
+	rewrite /world/gold/ /gold/index.html
+
 	redir /world/makcikgpt /world/makcikgpt/ 308
 	redir /world/makcikgpt/index /world/makcikgpt/ 301
 	# Canonicalize bare /makcikgpt paths to the /world/ prefix (2026-07-31 P17 fix).
@@ -619,7 +646,9 @@ arif-fazil.com {
 	# Also serve static machine-readable article pages for non-JS clients
 	# (RSS readers, search crawlers that don't identify as bots)
 	@makcikgpt_nojs {
-		path /world/makcikgpt/*
+		# 2026-08-03: exclude bare landing path — (.*+) requires >=1 char after prefix.
+		# Was catching /world/makcikgpt/ -> strip_prefix -> '/' -> try_files '/.html' '/.md' =404.
+		path_regexp mknoj ^/world/makcikgpt/(.+)$
 		not header_regexp Accept text/html
 	}
 	handle @makcikgpt_nojs {
@@ -644,12 +673,14 @@ arif-fazil.com {
 		try_files {path} /index.html
 		file_server
 	}
-	# /economics and /wealth → static briefing HTML (F2 bands, VOID tiles, fixed renderer)
-	# Placed BEFORE SPA fallback so humans see the patched content.
-	# 2026-07-24: Fixes the "laporan hijau, tanah merah" bug — static file existed but was never routed.
-	# 2026-07-31: /wealth → /economics server-side redirect (was SPA client-side, invisible to bots).
-	redir /wealth /economics 301
-	redir /wealth/ /economics 301
+	# /wealth → WEALTH Capital Intelligence page (2026-08-03: was redirecting to /economics,
+	# hiding the actual WEALTH terminal page at dist/wealth/index.html. Fixed.)
+	handle /wealth/ {
+		root * /var/www/html/arif
+		try_files /wealth/index.html /index.html
+		file_server
+	}
+	redir /wealth /wealth/ 308
 	# 	@economics_exact path /economics /economics/
 	# 	handle @economics_exact {
 	# 		root * /var/www/html/arif
@@ -714,15 +745,64 @@ arif-fazil.com {
 	redir /shadow/ /politics/shadow/ 301
 	handle /politics/shadow/* {
 		root * /var/www/html/arif
+		try_files {path} {path}/index.html /index.html
 		file_server
 	}
+	# AAA — Control plane cockpit (2026-08-03: 15 pages built in dist/aaa/ were 404.
+	# Added dedicated handler. Sync'd from /root/AAA/dist/ via make sync-aaa.)
+	handle /aaa/ {
+		root * /var/www/html/arif
+		try_files /aaa/index.html /index.html
+		file_server
+	}
+	handle /aaa/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /aaa/index.html
+		file_server
+	}
+	# Constitution, Charter, Governance — static pages (2026-08-03: dist exists, Caddy gap)
+	handle /constitution/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /constitution/index.html
+		file_server
+	}
+	handle /charter/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /charter/index.html
+		file_server
+	}
+	handle /governance/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /governance/index.html
+		file_server
+	}
+	# Vitals — system health dashboard (2026-08-03: dist exists, Caddy gap)
+	handle /vitals/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /vitals/index.html
+		file_server
+	}
+	redir /vitals /vitals/ 308
+
 	# ── WEB-05/06 surface fixes (2026-08-01) ───────────────────────────────
-	# Wiki: canonical path on arifos.arif-fazil.com/wiki/
-	redir /wiki https://arifos.arif-fazil.com/wiki/ 301
-	redir /wiki/* https://arifos.arif-fazil.com{uri} 301
-	# Malaysia: consolidated under wealth.arif-fazil.com (per Caddyfile note)
-	redir /malaysia /malaysia/ 301
-	redir /malaysia/* https://wealth.arif-fazil.com{uri} 301
+	# Wiki: served directly from static html dist
+	handle /wiki/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /wiki/index.html
+		file_server
+	}
+	# Malaysia: served directly from static html dist
+	handle /malaysia/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /malaysia/index.html
+		file_server
+	}
+	# Pulse: served directly from static html dist
+	handle /pulse/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /pulse/index.html
+		file_server
+	}
 	# /wealth/article/:slug → redirect to /wealth/ (2026-08-01)
 	redir /wealth/article /wealth/ 301
 	redir /wealth/article/* /wealth/ 301
@@ -733,7 +813,16 @@ arif-fazil.com {
 		header Content-Type application/json
 		file_server
 	}
-	@spa_routes path / /politics* /economics* /writing* /world* /doctrine* /earth* /federation* /connect* /verify* /wealth* /well* /geox* /oil* /gas* /gold* /canon* /arifos* /missions* /compliance* /commodity*
+	# Static directories — return true HTTP 404 for non-existent nested files (no soft-404)
+	@static_dirs path /999/* /000/* /map/* /machine/* /klci/* /usdmyr/* /gold/* /oil/* /gas/* /proof/* /world/*
+	handle @static_dirs {
+		header Cache-Control "no-cache, no-store, must-revalidate"
+		root * /var/www/html/arif
+		try_files {path} {path}/ =404
+		file_server
+	}
+
+	@spa_routes path / /read* /klci* /usdmyr* /politics* /economics* /writing* /world* /doctrine* /earth* /federation* /connect* /verify* /wealth* /well* /geox* /oil* /gas* /gold* /canon* /arifos* /missions* /compliance* /commodity* /aaa* /constitution* /charter* /governance* /vitals* /mcp*
 	handle @spa_routes {
 		header Cache-Control "no-cache, no-store, must-revalidate"
 		header CDN-Cache-Control "no-cache"
@@ -1747,10 +1836,9 @@ forge.arif-fazil.com {
 		import cors_public
 		reverse_proxy 127.0.0.1:7071
 	}
-	# Landing page — A-FORGE execution shell identity
+	# Landing page — redirect to canonical mcp.arif-fazil.com door
 	handle {
-		root * /var/www/html
-		file_server
+		redir https://mcp.arif-fazil.com{uri} 301
 	}
 }
 # ═══════════════════════════════════════════════════════════════════════
@@ -1857,6 +1945,11 @@ syedos.arif-fazil.com {
 	encode zstd gzip
 	root * /var/www/html/syedos
 
+	# Upload — proxy to Python upload server
+	handle /upload* {
+		reverse_proxy localhost:18900
+	}
+
 	# Dashboard — full interactive page
 	redir /dashboard /dashboard/ 308
 	handle /dashboard/* {
@@ -1896,6 +1989,10 @@ claw.arif-fazil.com {
 # ═══════════════════════════════════════════════════════════════════════
 openclaw.arif-fazil.com {
 	import tls_origin
+	# Telegram webhook — must accept from Telegram IPs (not just Tailscale)
+	handle /telegram-webhook* {
+		reverse_proxy 127.0.0.1:8787
+	}
 	@tailscale_only remote_ip 127.0.0.1 ::1 100.64.0.0/10
 	handle @tailscale_only {
 		reverse_proxy 127.0.0.1:18789
