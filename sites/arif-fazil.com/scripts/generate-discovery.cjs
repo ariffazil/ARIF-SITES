@@ -51,6 +51,8 @@ function buildSitemap(pieces) {
     { loc: `${SITE_BASE}/gas/`, priority: 0.85, changefreq: "daily" },
     { loc: `${SITE_BASE}/world`, priority: 0.7, changefreq: "daily" },
     { loc: `${SITE_BASE}/politics/ns-election/`, priority: 0.8, changefreq: "weekly" },
+    { loc: `${SITE_BASE}/politics/ns-election/compare/`, priority: 0.75, changefreq: "weekly" },
+    { loc: `${SITE_BASE}/politics/ns-election/playbook/`, priority: 0.75, changefreq: "weekly" },
     { loc: `${SITE_BASE}/politics/shadow/`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/writing`, priority: 0.8, changefreq: "weekly" },
     { loc: `${SITE_BASE}/doctrine`, priority: 0.9, changefreq: "monthly" },
