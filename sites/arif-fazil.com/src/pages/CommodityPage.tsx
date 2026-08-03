@@ -33,6 +33,20 @@ const COMMODITIES: Record<string, CommodityDef> = {
     color: '#D4A853',
     yahoo: 'GC=F',
   },
+  klci: {
+    slug: 'klci', name: 'Bursa Malaysia (FBM KLCI)', symbol: '^KLSE',
+    description: 'FTSE Bursa Malaysia KLCI — benchmark index of Malaysia top 30 blue-chip equities and capital market pulse.',
+    source: 'yfinance: ^KLSE',
+    color: '#3B82F6',
+    yahoo: '^KLSE',
+  },
+  usdmyr: {
+    slug: 'usdmyr', name: 'Ringgit FX (USD/MYR)', symbol: 'USDMYR=X',
+    description: 'Malaysian Ringgit exchange rate against US Dollar — imported inflation barometer, BNM OPR buffer, and trade surplus anchor.',
+    source: 'yfinance: USDMYR=X',
+    color: '#F59E0B',
+    yahoo: 'USDMYR=X',
+  },
 };
 
 export function CommodityPage({ slug }: { slug: string }) {

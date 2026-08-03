@@ -25,6 +25,8 @@ import { ShadowPMs } from '@/pages/ShadowPMs';
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
 function CommodityPageGold() { return <CommodityPage slug="gold" />; }
+function CommodityPageKlci() { return <CommodityPage slug="klci" />; }
+function CommodityPageUsdmyr() { return <CommodityPage slug="usdmyr" />; }
 
 function App() {
   return (
@@ -62,18 +64,27 @@ function App() {
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
             <Route path="/politics/shadow" element={<ShadowPMs />} />
             <Route path="/politics/shadow/" element={<ShadowPMs />} />
-            {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
-                the bare /world/makcikgpt and the legacy /index suffix both
-                resolve to the same canonical page (no extra redirect). */}
+            {/* MakcikGPT — canonical path */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
             <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
-            {/* /world/makcikgpt/index → /world/makcikgpt/ (301-style client redirect) */}
             <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
-            {/* Commodities — Δ-only, under world */}
+            {/* Commodities & Market Signal Terminals */}
             <Route path="/world/oil" element={<CommodityPageOil />} />
             <Route path="/world/gas" element={<CommodityPageGas />} />
             <Route path="/world/gold" element={<CommodityPageGold />} />
+            <Route path="/world/klci" element={<CommodityPageKlci />} />
+            <Route path="/world/usdmyr" element={<CommodityPageUsdmyr />} />
+            <Route path="/oil" element={<CommodityPageOil />} />
+            <Route path="/oil/" element={<CommodityPageOil />} />
+            <Route path="/gas" element={<CommodityPageGas />} />
+            <Route path="/gas/" element={<CommodityPageGas />} />
+            <Route path="/gold" element={<CommodityPageGold />} />
+            <Route path="/gold/" element={<CommodityPageGold />} />
+            <Route path="/klci" element={<CommodityPageKlci />} />
+            <Route path="/klci/" element={<CommodityPageKlci />} />
+            <Route path="/usdmyr" element={<CommodityPageUsdmyr />} />
+            <Route path="/usdmyr/" element={<CommodityPageUsdmyr />} />
 
             {/* Writing */}
             <Route path="/writing" element={<Essays />} />
@@ -86,11 +97,11 @@ function App() {
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
-            {/* Missions — cockpit surface, redirects to home (missions.json at /missions.json) */}
+            {/* Missions */}
             <Route path="/missions" element={<Navigate to="/" replace />} />
             <Route path="/missions/" element={<Navigate to="/" replace />} />
 
-            {/* Institution — three-audience surface door (human/agent/institution) */}
+            {/* Institution */}
             <Route path="/institution" element={<InstitutionPage />} />
             <Route path="/institution/" element={<InstitutionPage />} />
             <Route path="/verify" element={<Navigate to="/institution" replace />} />
@@ -98,13 +109,13 @@ function App() {
             <Route path="/compliance" element={<Navigate to="/institution" replace />} />
             <Route path="/compliance/" element={<Navigate to="/institution" replace />} />
 
-            {/* Machine-facing */}
+            {/* Machine & Genesis */}
             <Route path="/000" element={<Genesis />} />
             <Route path="/000/" element={<Genesis />} />
             <Route path="/genesis" element={<Genesis />} />
             <Route path="/genesis/" element={<Genesis />} />
 
-            {/* Backward-compat redirects — all point to canonical paths */}
+            {/* Backward-compat redirects */}
             <Route path="/rss" element={<Navigate to="/feed.xml" replace />} />
             <Route path="/rss/" element={<Navigate to="/feed.xml" replace />} />
             <Route path="/canon" element={<Navigate to="/doctrine" replace />} />
@@ -116,19 +127,12 @@ function App() {
             <Route path="/wealth" element={<Navigate to="/economics" replace />} />
             <Route path="/wealth/" element={<Navigate to="/economics" replace />} />
             <Route path="/wealth/article/:slug" element={<WealthArticle />} />
-            {/* Commodity redirects — legacy standalone → world path */}
-            <Route path="/oil/" element={<Navigate to="/world/oil" replace />} />
-            <Route path="/gas/" element={<Navigate to="/world/gas" replace />} />
-            <Route path="/gold/" element={<Navigate to="/world/gold" replace />} />
-            {/* MakcikGPT triplication fix — /world/makcikgpt/ is canonical */}
             <Route path="/wealth/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            {/* Skip the /index hop — go straight to canonical trailing slash */}
             <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/wealth/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/economics/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/economics/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            {/* Skip the /index hop — go straight to canonical trailing slash */}
             <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/essays" element={<Navigate to="/writing" replace />} />
