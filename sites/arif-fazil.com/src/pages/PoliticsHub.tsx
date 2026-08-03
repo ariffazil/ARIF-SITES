@@ -119,6 +119,69 @@ export function PoliticsHub() {
   useEffect(() => {
     document.title = 'Geopolitics & Spatial Power — Arif Fazil | arifOS';
     document.querySelector('link[rel=canonical]')?.setAttribute('href', 'https://arif-fazil.com/politics');
+
+    const schemaId = 'politics-jsonld';
+    let script = document.getElementById(schemaId) as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = schemaId;
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebPage',
+            '@id': 'https://arif-fazil.com/politics/#webpage',
+            'url': 'https://arif-fazil.com/politics/',
+            'name': 'Geopolitics & Spatial Power Mechanics — 7 Vectors & Nusantara Pivot',
+            'description': 'Global geopolitics hub mapping the 7 Geopolitical Power Vectors, maritime chokepoints (Malacca, Taiwan Strait, Hormuz), and domestic Malaysian power cartography.',
+            'isPartOf': {
+              '@type': 'WebSite',
+              '@id': 'https://arif-fazil.com/#website',
+              'url': 'https://arif-fazil.com/',
+              'name': 'arif-fazil.com'
+            }
+          },
+          {
+            '@type': 'Dataset',
+            '@id': 'https://arif-fazil.com/data/nusantara_atlas.geojson#dataset',
+            'name': 'NUSANTARA 7-Vector Geopolitical Atlas',
+            'description': '41-feature spatial dataset containing 7 civilizational vector zones, 7 vector centroid labels, 8 maritime chokepoints, 7 trade/energy spines, 7 shatterbelt fault lines, and 5 hinge seam nodes.',
+            'url': 'https://arif-fazil.com/data/nusantara_atlas.geojson',
+            'license': 'https://creativecommons.org/licenses/by/4.0/',
+            'dateModified': '2026-08-03',
+            'keywords': [
+              'geopolitics',
+              'Nusantara',
+              'maritime chokepoints',
+              'Strait of Malacca',
+              'spatial power',
+              'arifOS'
+            ],
+            'spatialCoverage': {
+              '@type': 'Place',
+              'geo': {
+                '@type': 'GeoShape',
+                'box': '-50 -180 75 180'
+              }
+            },
+            'distribution': [
+              {
+                '@type': 'DataDownload',
+                'encodingFormat': 'application/geo+json',
+                'contentUrl': 'https://arif-fazil.com/data/nusantara_atlas.geojson'
+              }
+            ],
+            'creator': {
+              '@type': 'Person',
+              'name': 'Muhammad Arif bin Fazil',
+              'url': 'https://arif-fazil.com/'
+            }
+          }
+        ]
+      });
+      document.head.appendChild(script);
+    }
   }, []);
 
   return (
