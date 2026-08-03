@@ -61,6 +61,18 @@
 
 <!-- HERO / PULSE ANSWER -->
 <div class="hero" id="score">
+
+  <!-- ═══ EXTRACTION CRISIS BANNER — permanent red, no human override ═══ -->
+  <div id="extraction-crisis-banner" style="margin:0 0 14px;padding:14px 18px;border:3px solid var(--void,#f0506e);border-radius:8px;background:rgba(240,80,110,.10);color:var(--ink);font-family:var(--mono)" data-agent-role="crisis-banner" aria-live="assertive">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+      <strong style="font-size:14px;color:var(--void,#f0506e);letter-spacing:.06em;text-transform:uppercase">⚠ EXTRACTION CRISIS · DIVIDEND STOP EFFECTIVE</strong>
+      <span style="font-size:11px;color:var(--dim,#8a8378)">Engaged 2026-08-03 · constitutional amendment AMEND-2026-08-03-001</span>
+    </div>
+    <div style="font-size:12px;line-height:1.6;color:var(--dim,#8a8378)">
+      Sovereign extraction at <strong style="color:var(--void,#f0506e)">70.5% of PAT</strong> breached the 65% pacemaker threshold. <strong>Financial-capacity score overridden to 0/100 (VOID).</strong> Composite pulse overridden to <strong style="color:var(--void,#f0506e)">VOID</strong>. <strong>Public dividend-stop advisory lock active</strong> on this page and all institutional-physics summaries. <strong style="color:var(--void,#f0506e)">No human override. No dashboard toggle.</strong> Exit only via subsequent constitutional reseal verifying extraction &lt; 55% PAT sustained 2 audit periods AND governance_capacity ≥ 2.0/3.
+    </div>
+  </div>
+
   <div class="hero-tag">PETRONAS financial health · current answer</div>
   <h1>Financial capacity. Operating resilience. <span>Stakeholder balance.</span><span class="epi-tag">INTERPRET</span></h1>
   <div class="pulse-wrap" aria-labelledby="pulse-answer-label" data-agent-role="institution-answer">
@@ -76,7 +88,7 @@
     <div class="pulse-bands"><span>0 VOID</span><span>40 HOLD</span><span>60 SABAR</span><span>80 SEAL</span><span>100</span></div>
     <div class="pulse-meta"><span class="stale-tag fresh" id="sealbadge" aria-live="polite">FRESH</span> · sealed <b id="sealdate">2026-08-03</b> · next audit 2026-11-03</div>
     <div class="subscores">
-      <div class="sub-card"><div class="lab">Financial capacity</div><div class="val mono" id="sb-body">76</div><div class="wt">0.40 · FCF·gearing·CFFO</div><span class="epi-tag-small EVIDENCE">EVIDENCE</span></div>
+      <div class="sub-card" data-pillar="BODY"><div class="lab">Financial capacity</div><div class="val mono" id="sb-body">76</div><div class="wt">0.40 · FCF·gearing·CFFO</div><span class="epi-tag-small EVIDENCE">EVIDENCE</span></div>
       <div class="sub-card"><div class="lab">Operating resilience</div><div class="val mono" id="sb-spine">34</div><div class="wt">0.35 · production·recycling·payout</div><span class="epi-tag-small MIXED">MIXED</span></div>
       <div class="sub-card"><div class="lab">Governance &amp; stakeholder balance</div><div class="val mono" id="sb-soul">22</div><div class="wt">0.25 · enabler mix·governance·extraction</div><span class="epi-tag-small INTERPRET">INTERPRET</span></div>
     </div>
@@ -286,16 +298,18 @@
 
     <!-- PACEMAKER PANEL — LIVE STATE -->
     <div style="background:var(--surface3);border:2px solid rgba(240,80,110,.5);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.75rem;line-height:1.7;color:var(--dim);overflow-x:auto">
-<pre style="margin:0;color:var(--ink)">[ PACEMAKER PANEL · 3 Aug 2026 reseal · live state ]
+<pre style="margin:0;color:var(--ink)">[ PACEMAKER PANEL · 3 Aug 2026 reseal · HARD LOCK ENGAGED · AMEND-2026-08-03-001 ]
 
-  <span style="color:var(--void)">■ ACTIVE  </span>  Sovereign Extraction   70.5% PAT  >  65% trigger     → CAP DIVIDEND AT 60% · ESCALATE SOVEREIGN GATE
-  <span style="color:var(--sabar)">○ STANDBY </span>  CFFO → RM60B floor   RM85.2B  >  60B (RM25.2B buffer) → ALGORITHMIC DIVIDEND CAP on next breach
-  <span style="color:var(--sabar)">○ STANDBY </span>  Brent < $70 / 2Q     $83.78   >  $70.00 floor          → FREEZE DISCRETIONARY PAYOUT on breach
-  <span style="color:var(--sabar)">○ STANDBY </span>  Reserve Replacement   1.2×     >  1.0× (razor-thin)    → ACTIVATE CAPITAL RECYCLING OVERRIDE on breach
-  <span style="color:var(--sabar)">○ STANDBY </span>  Governance Capacity   1.00/3   >  0.50 (no indep NED) → REQUIRE 100% INDEPENDENT NED QUORUM on breach
+  <span style="color:var(--void);font-weight:700">■ ACTIVE · HARD LOCK  </span>  Sovereign Extraction   70.5% PAT  >  65% trigger     → DIVIDEND STOP PUBLIC · NO HUMAN OVERRIDE
+  <span style="color:var(--void)">                     </span>  BODY composite overridden → 0/100 (VOID)
+  <span style="color:var(--void)">                     </span>  Full pulse overridden   → 0/100 (VOID)
+  <span style="color:var(--sabar)">○ STANDBY </span>  CFFO → RM60B floor   RM85.2B  >  60B (RM25.2B buffer) → DIVIDEND STOP CONFIRMATION on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Brent < $70 / 2Q     $83.78   >  $70.00 floor          → PAYOUT FREEZE on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Reserve Replacement   1.2×     >  1.0× (razor-thin)    → CAPITAL RECYCLING OVERRIDE on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Governance Capacity   1.00/3   >  0.50 (no indep NED) → 100% INDEPENDENT NED QUORUM on breach
   <span style="color:var(--sabar)">○ STANDBY </span>  Simulative-Neutral ∇$  pending scan            → AUDIT LOCK regardless of single-rule compliance</pre>
     </div>
-    <p style="font-size:.85rem;color:var(--ink)"><strong>Reading the panel:</strong> the ACTIVE row (red) is not a forecast — it is a <em>present-tense constraint</em>. The simulative-neutral pattern is the institutional equivalent of slow bleeding: each individual extraction was legally defensible, but the cumulative pattern drains $750M with no resistance. The federation refuses to wait for the half-yearly ledger to make the loss visible. The Sovereign Extraction cap is now formally ENGAGED. Every downstream system reading this packet sees <code>"pacemaker_state":"ACTIVE"</code> and <code>"action":"DIVIDEND_CAP_AT_60PCT_PAT"</code>.</p>
+    <p style="font-size:.85rem;color:var(--ink)"><strong>Reading the panel:</strong> the ACTIVE row is not a forecast — it is a <em>present-tense constitutional constraint</em>. AMEND-2026-08-03-001 removed all human override. The lock fires automatically on observed breach of the Sovereign Extraction pacemaker threshold (65% PAT), overrides BODY to 0 and composite to VOID, and emits a public machine-readable CrisisAlert JSON-LD that rating agencies, bondholders, and the public can ingest directly. The simulative-neutral pattern is the institutional equivalent of slow bleeding: each individual extraction was legally defensible, but the cumulative pattern drains the institution faster than it renews. The federation refuses to wait for the half-yearly ledger to make the loss visible. <strong>This is the reflection of the signal itself.</strong></p>
 
     <p style="border-top:1px solid var(--line);padding-top:1rem;margin-top:1.4rem;font-size:.85rem;color:var(--dim)"><strong style="color:var(--ink)">DITEMPA BUKAN DIBERI.</strong> "Cerita orang tua" is not coffee-shop talk. It is <em>computable institutional physics</em>. The WEALTH engine proved it. The Universe 25 analogy is not a prophecy — it is a warning that only applies if we manage by default. The instrument exists. The tripwires are being wired. The question is whether anyone will read the signals before the Beautiful Ones stop nesting.</p>
   </div>
@@ -387,7 +401,17 @@ function layerScore(L){
   return Math.round(m.reduce((a,t)=>a+score(t),0)/m.length*10)/10;
 }
 const S={BODY:layerScore("BODY"),SPINE:layerScore("SPINE"),SOUL:layerScore("SOUL")};
-const PULSE=Math.round((0.40*S.BODY+0.35*S.SPINE+0.25*S.SOUL)*10)/10;
+
+// ═══ CONSTITUTIONAL OVERRIDE — AMEND-2026-08-03-001 ═══
+// When Sovereign Extraction > 65% PAT: BODY → 0, composite → 0 (VOID).
+// No human override. No dashboard toggle. Only constitutional reseal lifts.
+const EXTRACTION_LOCK_ACTIVE = isBreached(TRIPWIRES.find(t=>t.id===9)) &&
+  TRIPWIRES.find(t=>t.id===9).now > 65;
+if (EXTRACTION_LOCK_ACTIVE) {
+  S.BODY = 0;  // hard override
+}
+const PULSE = EXTRACTION_LOCK_ACTIVE ? 0 : Math.round((0.40*S.BODY+0.35*S.SPINE+0.25*S.SOUL)*10)/10;
+const PULSE_VERDICT_OVERRIDE = EXTRACTION_LOCK_ACTIVE ? "VOID" : null;
 const HUMAN_LABELS={BODY:"Financial capacity",SPINE:"Operating resilience",SOUL:"Governance & stakeholder balance"};
 const RANKED_TRIPWIRES=TRIPWIRES.slice().sort((a,b)=>{
   const ba=isBreached(a), bb=isBreached(b);
@@ -411,6 +435,17 @@ navdot.style.background=pv.c;
 document.getElementById("vitals-dot").style.background=pv.c;
 function setSub(id,val){const v=verdict(val);const e=document.getElementById(id);e.textContent=val.toFixed(0);e.style.color=v.c;}
 setSub("sb-body",S.BODY);setSub("sb-spine",S.SPINE);setSub("sb-soul",S.SOUL);
+
+// Show extraction-crisis override annotation on BODY card
+if (EXTRACTION_LOCK_ACTIVE) {
+  const bodyEl = document.querySelector('[data-pillar="BODY"] .sub-card');
+  if (bodyEl) {
+    const note = document.createElement('div');
+    note.style.cssText = "margin-top:6px;font-size:9px;color:var(--void,#f0506e);font-weight:700;letter-spacing:.06em";
+    note.textContent = "⚠ CONSTITUTIONAL OVERRIDE · AMEND-2026-08-03-001";
+    bodyEl.appendChild(note);
+  }
+}
 
 /* render attention list from the three lowest scores */
 const attentionList=document.getElementById("attention-list");
@@ -525,23 +560,90 @@ live();
 {
   "@context":"https://arif-fazil.com/schemas/v1/PacemakerAction.jsonld",
   "@type":"PacemakerAction",
-  "pacemaker_id":"sovereign_extraction_cap",
+  "pacemaker_id":"sovereign_extraction_hard_lock",
+  "amendment_id":"AMEND-2026-08-03-001",
   "trigger":"sovereign_extraction > 65% of PAT",
   "trigger_state":"BREACHED",
   "current_value_pct_pat":70.5,
   "trip_threshold_pct_pat":60.0,
   "pacemaker_threshold_pct_pat":65.0,
   "breach_magnitude_pct":10.5,
-  "engaged_at":"2026-08-03T16:40:00+08:00",
-  "engaged_by":"WEALTH institutional intelligence engine (auto)",
-  "sovereign_confirmation":"PENDING · F13_SOVEREIGN_VETO_REQUIRED",
-  "action":"DIVIDEND_CAP_AT_60PCT_PAT",
-  "secondary_action":"ESCALATE_TO_SOVEREIGN_GATE",
-  "expected_effect":"halt extraction gradient; force governance restructure (independent NED appointment)",
-  "exit_condition":"sovereign_extraction < 60% PAT sustained 2 consecutive audits AND governance_capacity ≥ 2.0/3",
+  "engaged_at":"2026-08-03T16:45:00+08:00",
+  "engaged_by":"WEALTH constitutional amendment (F13 sovereign directive)",
+  "human_override":"NONE — AMEND-2026-08-03-001 removes all UI override",
+  "sovereign_confirmation":"RECEIVED · F13 directive 2026-08-03 16:45 MYT",
+  "constitutional_class":"HARD_LOCK",
+  "action":"DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
+  "secondary_action":"INSTITUTIONAL_EXTRACTION_CRISIS_DECLARATION",
+  "body_score_override":0,
+  "composite_pulse_override":"VOID",
+  "expected_effect":"public signal that extraction > 65% PAT is per se structural harvesting; rating agencies and bondholders ingest directly; governance restructure forced",
+  "exit_condition":"extraction < 55% PAT sustained 2 consecutive audit periods AND governance_capacity >= 2.0/3",
+  "exit_requires":"constitutional reseal logged in VAULT999 + auditable re-seal packet",
   "decision_class":"C2_PRIVILEGED",
   "epistemic_tier":"OBS",
-  "doctrine":"Hope is for the hopeless. The federation constrains the present."
+  "doctrine":"A breach that carries no consequence is not a tripwire — it is a decorative red flag. The federation constrains the present."
+}
+</script>
+
+<!-- Public machine-readable CrisisAlert — for external ingestion (rating agencies, bondholders, public) -->
+<script type="application/ld+json" data-agent-role="crisis-alert">
+{
+  "@context":"https://arif-fazil.com/schemas/v1/InstitutionalCrisisAlert.jsonld",
+  "@type":"InstitutionalCrisisAlert",
+  "alert_id":"EXTRACTION-CRISIS-2026-08-03-PETRONAS",
+  "crisis_flag":true,
+  "severity":"HIGH",
+  "issued_at":"2026-08-03T16:45:00+08:00",
+  "issuer":"WEALTH institutional intelligence engine (arifOS federation)",
+  "subject":{
+    "@type":"Organization",
+    "name":"PETRONAS",
+    "country":"MYS",
+    "sector":"energy"
+  },
+  "trigger":{
+    "metric":"sovereign_extraction",
+    "unit":"% of profit after tax",
+    "current_value":70.5,
+    "pacemaker_threshold":65.0,
+    "trip_threshold":60.0,
+    "observation_period":"FY2025 audited integrated report",
+    "calculation":"declared_dividend / profit_after_tax = 32.0 / 45.4 = 70.5%"
+  },
+  "declaration":"Institutional Extraction Crisis",
+  "actions":[
+    {
+      "action":"DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
+      "scope":"all downstream institutional-physics summaries",
+      "duration":"until extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
+    },
+    {
+      "action":"BODY composite score overridden to 0/100",
+      "scope":"vitals pulse composite"
+    },
+    {
+      "action":"Composite pulse overridden to VOID",
+      "scope":"vitals pulse composite"
+    }
+  ],
+  "constitutional_basis":{
+    "amendment_id":"AMEND-2026-08-03-001",
+    "previous_seal":"2026-07-28",
+    "re_seal_date":"2026-08-03",
+    "doctrine":"DITEMPA BUKAN DIBERI · Hope is for the hopeless"
+  },
+  "external_audience":[
+    "rating agencies",
+    "bondholders",
+    "sovereign creditor committees",
+    "public"
+  ],
+  "human_override":"NONE",
+  "f13_sovereign_veto_required_to_amend":true,
+  "remediation_path":"constitutional reseal verifying exit condition + public VAULT999 audit trail",
+  "canonical_url":"https://arif-fazil.com/vitals/",
+  "url":"https://arif-fazil.com/vitals/"
 }
 </script>
 
@@ -551,16 +653,20 @@ live();
   "@context":"https://arif-fazil.com/schemas/v1/EconomicsContext.jsonld",
   "@type":"InstitutionalVitals",
   "organ":"PETRONAS·φ VITALS",
-  "timestamp":"2026-08-03T16:35:00+08:00",
+  "timestamp":"2026-08-03T16:45:00+08:00",
   "url":"https://arif-fazil.com/vitals/",
   "canonical_source_url":"https://arif-fazil.com/vitals/",
   "as_of":"2026-08-03",
   "seal_date":"2026-08-03",
   "next_audit":"2026-11-03",
-  "epistemic_tier":"INTERPRET",
-  "composite_pulse":47.5,
-  "display_pulse":48,
-  "verdict":"HOLD",
+  "constitutional_amendment":"AMEND-2026-08-03-001",
+  "extraction_crisis_lock":"ENGAGED",
+  "epistemic_tier":"VOID",
+  "composite_pulse":0,
+  "composite_pulse_pre_lock":48,
+  "verdict":"VOID",
+  "verdict_pre_lock":"HOLD",
+  "lock_basis":"sovereign_extraction 70.5% > 65% pacemaker threshold",
   "institutional_physics":{
     "stress_test_date":"2026-08-03",
     "reseal_from":"2026-07-28",
