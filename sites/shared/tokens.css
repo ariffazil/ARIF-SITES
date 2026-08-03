@@ -67,6 +67,8 @@
 .fam-oil               { --accent:#c9703f; --accent-dim:#6e3c1e; --accent-bg:rgba(201,112,63,.08); }
 .fam-gas               { --accent:#4aa89e; --accent-dim:#265a54; --accent-bg:rgba(74,168,158,.08); }
 .fam-gold              { --accent:#c9a84c; --accent-dim:#6e5c26; --accent-bg:rgba(201,168,76,.08); }
+.fam-klci              { --accent:#4a9d6c; --accent-dim:#235838; --accent-bg:rgba(74,157,108,.08); }
+.fam-usdmyr            { --accent:#c95e3f; --accent-dim:#6e2f1e; --accent-bg:rgba(201,94,63,.08); }
 .fam-world             { --accent:#b08d57; --accent-dim:#5f4c2e; --accent-bg:rgba(176,141,87,.08); }
 
 /* EPISTEMIC TAG CHIPS */
