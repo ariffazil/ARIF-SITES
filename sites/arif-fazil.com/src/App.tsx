@@ -11,12 +11,12 @@ import { World } from '@/pages/World';
 import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
 import { Discoveries } from '@/pages/Discoveries';
-import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
+import { ReadHub } from '@/pages/ReadHub';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
@@ -93,9 +93,13 @@ function App() {
             <Route path="/usdmyr" element={<CommodityPageUsdmyr />} />
             <Route path="/usdmyr/" element={<CommodityPageUsdmyr />} />
 
-            {/* Writing */}
-            <Route path="/writing" element={<Essays />} />
-            <Route path="/writing/" element={<Essays />} />
+            {/* Read — sovereign reading room (all writings) */}
+            <Route path="/read" element={<ReadHub />} />
+            <Route path="/read/" element={<ReadHub />} />
+
+            {/* Writing — backward compat, now redirects to /read */}
+            <Route path="/writing" element={<ReadHub />} />
+            <Route path="/writing/" element={<ReadHub />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
             {/* Doctrine & Federation — unified governance */}
