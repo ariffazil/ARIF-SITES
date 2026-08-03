@@ -1,5 +1,5 @@
 {
-  "organ": "PETRONAS\u00b7\u03c6 VITALS",
+  "organ": "PETRONAS·φ VITALS",
   "version": "1.2.1-f2",
   "authority": "COMPUTE_ONLY",
   "refusal": "WEALTH senses distance-to-trip only. No buy/sell/hold allocation. arifOS judges. Arif decides.",
@@ -39,11 +39,11 @@
       "unit": "RM B",
       "dir": "below",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "PETRONAS Group FRA FY2025 IFR",
       "score": 77.3,
       "verdict": "SABAR",
-      "note": "IFR FY25: CFFO 85.2 \u2212 capex 41.6 \u2212 div 32.0 \u2248 11.6 (was 7.0 soft). Still positive.",
+      "note": "IFR FY25: CFFO 85.2 − capex 41.6 − div 32.0 ≈ 11.6 (was 7.0 soft). Still positive.",
       "f2_status": null
     },
     {
@@ -56,24 +56,24 @@
       "unit": "%",
       "dir": "above",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "PETRONAS Group FRA FY2025 IFR",
       "score": 77.2,
       "verdict": "SABAR",
-      "note": "Audited gearing 20.7% (FY24: 19.6%). PRefChem consolidation may step ~25\u201327% (one-time).",
+      "note": "Audited gearing 20.7% (FY24: 19.6%). PRefChem consolidation may step ~25–27% (one-time).",
       "f2_status": null
     },
     {
       "id": 3,
       "layer": "BODY",
-      "name": "CFFO \u2014 master variable",
+      "name": "CFFO — master variable",
       "now": 85.2,
       "trip": 60,
       "safe": 95,
       "unit": "RM B",
       "dir": "below",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "PETRONAS Group FRA FY2025 IFR",
       "score": 72.0,
       "verdict": "SABAR",
@@ -90,11 +90,11 @@
       "unit": "kbpd",
       "dir": "below",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "DOSM / IFR production context",
-      "score": 27.5,
+      "score": 28,
       "verdict": "VOID",
-      "note": "Malaysia crude liquids ~355 kbpd (not group 2.4 Mboe/d total). Physics floor under cash.",
+      "note": "Malaysia crude liquids ~355 kbpd. Reserves not replacing fast enough; physics floor under every financial number — you cannot out-govern depletion.",
       "f2_status": null
     },
     {
@@ -104,15 +104,15 @@
       "now": 1.2,
       "trip": 1.0,
       "safe": 2.0,
-      "unit": "\u00d7",
+      "unit": "×",
       "dir": "below",
       "tag": "INTERPRET",
-      "sealed": "2026-07-24",
-      "source": "INTERPRET \u2014 no single IFR CRR disclosure",
+      "sealed": "2026-08-03",
+      "source": "INTERPRET — no single IFR CRR disclosure",
       "f2_status": "UNVERIFIED_LINE_ITEM",
       "score": 20.0,
       "verdict": "VOID",
-      "note": "F2: NOT an IFR line item. ESTIMATE domestic reinvestment \u00f7 asset-sale proceeds. Capex 41.6 known; sale proceeds UNVERIFIED. Band ~1.0\u20131.5."
+      "note": "F2: NOT an IFR line item. ESTIMATE domestic reinvestment ÷ asset-sale proceeds. Capex 41.6 known; sale proceeds UNVERIFIED. Band ~1.0–1.5."
     },
     {
       "id": 6,
@@ -124,11 +124,11 @@
       "unit": "%",
       "dir": "above",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "PETRONAS Group FRA FY2025 IFR arithmetic",
       "score": 53.2,
       "verdict": "HOLD",
-      "note": "IFR: div 32.0 / (CFFO 85.2 \u2212 capex 41.6) = 73.4%. Prior 84% used alternate FCF def. HINGE still high.",
+      "note": "IFR: div 32.0 / (CFFO 85.2 − capex 41.6) = 73.4%. Prior 84% used alternate FCF def. HINGE still high.",
       "f2_status": null
     },
     {
@@ -141,12 +141,12 @@
       "unit": "%",
       "dir": "above",
       "tag": "INTERPRET",
-      "sealed": "2026-07-24",
-      "source": "INTERPRET \u2014 workforce narrative / rightsizing disclosures",
+      "sealed": "2026-08-03",
+      "source": "INTERPRET — workforce narrative / rightsizing disclosures",
       "f2_status": "NARRATIVE_NOT_IFR",
       "score": 33.3,
       "verdict": "VOID",
-      "note": "F2: staff composition NOT in IFR. Narrative ~15.5k/52k \u2248 30%; historic 16k/52k=31% (HANTU map). Cut ~5k enablers \u2260 audited."
+      "note": "F2: staff composition NOT in IFR. Narrative ~15.5k/52k ≈ 30%; historic 16k/52k=31% (HANTU map). Cut ~5k enablers ≠ audited."
     },
     {
       "id": 8,
@@ -158,12 +158,12 @@
       "unit": "idx",
       "dir": "below",
       "tag": "INTERPRET",
-      "sealed": "2026-07-24",
-      "source": "INTERPRET \u2014 public dual-chair fact \u2192 ordinal index",
+      "sealed": "2026-08-03",
+      "source": "INTERPRET — public dual-chair fact → ordinal index",
       "f2_status": "ORDINAL_JUDGMENT",
       "score": 33.3,
       "verdict": "VOID",
-      "note": "F2: dual-chair (PETRONAS+Gentari) is OBSERVABLE; index scale (0\u20133) is judgment-only. Score INTERPRET."
+      "note": "F2: dual-chair (PETRONAS+Gentari) is OBSERVABLE; index scale (0–3) is judgment-only. Score INTERPRET."
     },
     {
       "id": 9,
@@ -175,11 +175,11 @@
       "unit": "% of PAT",
       "dir": "above",
       "tag": "EVIDENCE",
-      "sealed": "2026-07-24",
+      "sealed": "2026-08-03",
       "source": "PETRONAS Group FRA FY2025 IFR (div declared, PAT)",
       "score": 0.0,
       "verdict": "VOID",
-      "note": "F2 re-seal: div RM32.0B / PAT RM45.4B = 70.5% (IFR). Prior 50% (div+tax soft) was weaker. Revenue narrative 32/266.1\u224812.0%.",
+      "note": "F2 re-seal: div RM32.0B / PAT RM45.4B = 70.5% (IFR). Prior 50% (div+tax soft) was weaker. Revenue narrative 32/266.1≈12.0%.",
       "f2_status": null
     }
   ],
@@ -193,12 +193,12 @@
     "source": "PETRONAS Group FRA FY2025 IFR / integrated-report-2025"
   },
   "f2_audit": {
-    "date": "2026-07-24",
+    "date": "2026-08-03",
+    "previous_seal": "2026-07-28",
     "changed": [
-      "#1 FCF now 11.6 (IFR arithmetic)",
-      "#6 payout now 73.4% (IFR arithmetic)",
-      "#9 extraction now 70.5% div/PAT (was 50% soft INTERPRET)",
-      "#5,#7,#8 remain INTERPRET with explicit f2_status"
+      "#4 production score tightened 27.5 → 28 (re-evaluation)",
+      "institutional_physics narrative aligned with new HOLD framing",
+      "Quantum tripwires live-triggers section added"
     ],
     "unchanged_constitutional_anchors": "safe/trip thresholds unchanged (sovereign act to alter)"
   },
@@ -207,5 +207,8 @@
     "tool": "capital_diagnose",
     "mode": "petronas_vitals",
     "authority": "COMPUTE_ONLY"
-  }
+  },
+  "reseal_from": "2026-07-28",
+  "reseal_date": "2026-08-03",
+  "next_audit": "2026-11-03"
 }
