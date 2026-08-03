@@ -317,27 +317,64 @@
 
 <!-- FAN CHART -->
 <div class="sec" id="fan-sec">
-  <div class="sec-title">Net-cash scenarios · 2025 → 2031</div>
+  <div class="sec-title">Net-cash scenarios · 2025 → 2031 · modeled after ExxonMobil IR cash-flow kit</div>
   <div class="fan-wrap">
-    <div class="fan-sliders">
-      <div class="slider"><label>Brent (USD/bbl) <b id="brentv">85</b></label>
-        <input type="range" min="55" max="125" value="85" id="brent"></div>
+
+    <!-- Live macro sliders (ExxonMobil IR style: Brent + JKM + Henry Hub + FX + GRM + naphtha-PE) -->
+    <div class="fan-sliders" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px,1fr));gap:.8rem">
+      <div class="slider"><label>Brent crude (USD/bbl) <b id="brentv">85</b></label>
+        <input type="range" min="40" max="125" step="1" value="85" id="brent"></div>
       <div class="slider"><label>JKM LNG (USD/MMBtu) <b id="jkmv">14</b></label>
-        <input type="range" min="7" max="26" value="14" id="jkm"></div>
+        <input type="range" min="5" max="30" step="0.5" value="14" id="jkm"></div>
+      <div class="slider"><label>Henry Hub gas (USD/MMBtu) <b id="hhv">3.00</b></label>
+        <input type="range" min="1.5" max="8" step="0.1" value="3.0" id="hh"></div>
+      <div class="slider"><label>USD/MYR <b id="fxv">4.10</b></label>
+        <input type="range" min="3.8" max="4.8" step="0.01" value="4.10" id="fx"></div>
+      <div class="slider"><label>Singapore GRM delta ($/bbl) <b id="grmv">0</b></label>
+        <input type="range" min="-6" max="8" step="0.5" value="0" id="grm"></div>
+      <div class="slider"><label>Naphtha-PE delta ($/T) <b id="naphpev">0</b></label>
+        <input type="range" min="-300" max="400" step="10" value="0" id="naphpe"></div>
     </div>
+
     <div class="fan-readout">
+      <div class="fan-ro"><div class="lbl">LIVE PAT est.</div><div class="val mono" id="ro-pat">–</div></div>
       <div class="fan-ro"><div class="lbl">LIVE CFFO est.</div><div class="val mono" id="ro-cffo">–</div></div>
       <div class="fan-ro"><div class="lbl">LIVE FCF est.</div><div class="val mono" id="ro-fcf">–</div></div>
       <div class="fan-ro"><div class="lbl">net-debt crossover</div><div class="val mono" id="ro-cross">–</div></div>
     </div>
+
     <canvas id="fan" width="1040" height="380"></canvas>
     <div class="fan-legend">
-      <span><i class="fan-dot" style="background:var(--seal)"></i>Bull</span>
-      <span><i class="fan-dot" style="background:var(--accent)"></i>Base</span>
-      <span><i class="fan-dot" style="background:var(--void)"></i>Bear</span>
-      <span><i class="fan-dot" style="background:var(--sabar)"></i>Live (slider)</span>
+      <span><i class="fan-dot" style="background:#31c48d"></i>Bull (Brent $95 / JKM $20 / HH $5)</span>
+      <span><i class="fan-dot" style="background:#4aa8ff"></i>Base (Brent $85 / JKM $14 / HH $3)</span>
+      <span><i class="fan-dot" style="background:#f0506e"></i>Bear (Brent $55 / JKM $8 / HH $2)</span>
+      <span><i class="fan-dot" style="background:#e3b341"></i>Live (slider)</span>
       <span><i class="fan-dot" style="background:#f0506e;opacity:.5"></i>Net-debt tripwire (0)</span>
     </div>
+
+    <!-- Scenario assumptions table (ExxonMobil IR format) -->
+    <details class="zen-reveal" open style="margin-top:14px">
+      <summary>Scenario macro assumptions · modeled after ExxonMobil IR</summary>
+      <div class="reveal-body">
+        <table class="data-table" style="font-size:.7rem;width:100%">
+          <thead><tr><th>Macro driver</th><th style="color:#31c48d">Bull</th><th style="color:#4aa8ff">Base</th><th style="color:#f0506e">Bear</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Brent crude (USD/bbl)</td><td class="num">95</td><td class="num">85</td><td class="num">55</td><td>Moody's / forward curve</td></tr>
+            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">20</td><td class="num">14</td><td class="num">8</td><td>Platts Asia LNG</td></tr>
+            <tr><td>Henry Hub gas (USD/MMBtu)</td><td class="num">5.00</td><td class="num">3.00</td><td class="num">2.00</td><td>NYMEX forward</td></tr>
+            <tr><td>USD/MYR</td><td class="num">4.10</td><td class="num">4.10</td><td class="num">4.30</td><td>BNM benchmark</td></tr>
+            <tr><td>Singapore GRM delta ($/bbl)</td><td class="num" style="color:#31c48d">+5</td><td class="num">0</td><td class="num" style="color:#f0506e">−3</td><td>FY25 disclosure</td></tr>
+            <tr><td>Naphtha-PE spread delta ($/T)</td><td class="num" style="color:#31c48d">+200</td><td class="num">0</td><td class="num" style="color:#f0506e">−100</td><td>PRefChem commissioning</td></tr>
+            <tr><td>Production (kbpd, MY crude liquids)</td><td class="num">400</td><td class="num">355</td><td class="num">300</td><td>DOSM / IFR</td></tr>
+            <tr><td>LNG export (mtpa)</td><td class="num">30</td><td class="num">27</td><td class="num">24</td><td>MLNG complex</td></tr>
+            <tr><td>PRefChem debt gross-up (RM B, one-time)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY25 audited</td></tr>
+            <tr><td>Dividend cap (per amendment)</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td>AMEND-2026-08-03-001</td></tr>
+            <tr><td>MoF dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
+          </tbody>
+        </table>
+        <p style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:8px">Model: PAT = (Upstream crude × Brent delta × RM1.0B per $1) + (LNG × JKM delta × RM0.6B per $1) + (Downstream × GRM delta × RM0.15B per $1) + (Chemicals × naphtha-PE delta/100 × RM0.04B) + (Gas × (HH−3) × 10 × RM0.20B) + Corporate. CFFO ≈ PAT × 1.88 (FY25 ratio). Capex escalates ±1–4% per scenario. Dividend capped at 60% PAT per AMEND-2026-08-03-001. Modeled on ExxonMobil IR "Earnings Sensitivities" + "Cash Flow from Operations" framework.</p>
+      </div>
+    </details>
   </div>
 </div>
 
@@ -480,15 +517,82 @@ RANKED_TRIPWIRES.forEach(t=>{
 });
 
 /* ============================================================
-   NET-CASH SCENARIOS (fan chart)
+   NET-CASH SCENARIOS — modeled after ExxonMobil IR cash-flow kit
+   Segments: Upstream crude + LNG + Downstream + Petrochemicals + Gas & Power + Corporate
+   Waterfall: Revenue → EBITDA → CFFO (= PAT × 1.88) → FCF (post capex) → Net Cash (post dividend)
+   Dividend capped at 60% PAT per AMEND-2026-08-03-001 (extraction-crisis lock)
    ============================================================ */
 const YEARS=[2025,2026,2027,2028,2029,2030,2031];
-const START=82.8, PREF_DEBT=35;
-const cumBase=[0,19,26,27,24.5,18,9];
-const cumBear=[0,11.5,5.5,-8.5,-28,-51.5,-78.5];
-const cumBull=[0,25.5,44,57,66.5,72.5,74.5];
-function netCash(cum){return cum.map((c,i)=> i===0? START : Math.round((START-PREF_DEBT+c)*10)/10);}
-const nBase=netCash(cumBase),nBear=netCash(cumBear),nBull=netCash(cumBull);
+const BASE = {revenue:266.1, pat:45.4, cffo:85.2, capex:41.6, dividend:32.0, net_cash_start:82.8, prefchem_debt:35.0};
+const PAT_ELASTICITY=[1.00,1.04,1.02,1.00,0.98,0.97,0.96];  // production decline + capex cycle
+const DIVIDEND_CAP_PCT=0.60;  // AMEND-2026-08-03-001
+const MOF_FLOOR=20.0;
+
+const SEG_PAT_SHARE={upstream_crude:0.55,upstream_gas:0.20,downstream:0.15,petrochemicals:0.06,gas_power:0.03,corporate:0.01};
+const SEG_SENS={  // PAT impact (RM B) per unit change
+  upstream_crude:1.00,upstream_gas:0.60,downstream:0.15,petrochemicals:0.04,gas_power:0.20,corporate:0.0
+};
+
+const SCEN={
+  BULL:{label:'Bull',brent:95,jkm:20,henry_hub:5.0,grm_delta:5,naphpe_delta:200},
+  BASE:{label:'Base',brent:85,jkm:14,henry_hub:3.0,grm_delta:0,naphpe_delta:0},
+  BEAR:{label:'Bear',brent:55,jkm:8,henry_hub:2.0,grm_delta:-3,naphpe_delta:-100}
+};
+
+function patFor(scen,idx){
+  const s=SCEN[scen];
+  const d_brent=s.brent-85, d_jkm=s.jkm-14, d_hh=(s.henry_hub-3)*10, d_grm=s.grm_delta, d_np=s.naphpe_delta/100;
+  const pat=BASE.pat*(SEG_PAT_SHARE.upstream_crude + SEG_PAT_SHARE.upstream_gas + SEG_PAT_SHARE.downstream + SEG_PAT_SHARE.petrochemicals + SEG_PAT_SHARE.gas_power + SEG_PAT_SHARE.corporate);
+  const delta=d_brent*SEG_SENS.upstream_crude + d_jkm*SEG_SENS.upstream_gas + d_grm*SEG_SENS.downstream + d_np*SEG_SENS.petrochemicals + d_hh*SEG_SENS.gas_power;
+  return Math.round((pat+delta)*PAT_ELASTICITY[idx]*10)/10;
+}
+function cffoFor(pat){return Math.round(pat*(BASE.cffo/BASE.pat)*10)/10;}
+function capexFor(idx,scen){
+  if(scen==='BULL')return Math.round(BASE.capex*(1+0.04*idx)*10)/10;
+  if(scen==='BEAR')return Math.round(BASE.capex*(1-0.03*idx)*10)/10;
+  return Math.round(BASE.capex*(1+0.01*idx)*10)/10;
+}
+function divFor(pat){
+  const capped=Math.min(pat*DIVIDEND_CAP_PCT,pat*0.705);  // amendment hard-cap
+  return Math.round(Math.max(MOF_FLOOR,capped)*10)/10;
+}
+
+function buildPath(scen){
+  const path=[BASE.net_cash_start];
+  for(let i=0;i<YEARS.length-1;i++){
+    const pat=patFor(scen,i);
+    const cffo=cffoFor(pat);
+    const cap=capexFor(i,scen);
+    const div=divFor(pat);
+    const dCFFO=(i===0)?cffo:cffo;
+    const dCapex=cap;
+    const dDiv=div;
+    let netChange=dCFFO-dCapex-dDiv;
+    if(i===0)netChange-=BASE.prefchem_debt;  // PRefChem one-time consolidation year 1
+    path.push(Math.round((path[path.length-1]+netChange)*10)/10);
+  }
+  return path;
+}
+
+function livePath(B,J,HH,GRM,NP){
+  const d_brent=B-85, d_jkm=J-14, d_hh=(HH-3)*10, d_grm=GRM, d_np=NP/100;
+  const pat0=BASE.pat + d_brent*SEG_SENS.upstream_crude + d_jkm*SEG_SENS.upstream_gas + d_grm*SEG_SENS.downstream + d_np*SEG_SENS.petrochemicals + d_hh*SEG_SENS.gas_power;
+  const path=[BASE.net_cash_start];
+  for(let i=0;i<YEARS.length-1;i++){
+    const pat=Math.round(pat0*PAT_ELASTICITY[i]*10)/10;
+    const cffo=cffoFor(pat);
+    const cap=capexFor(i,'BASE');
+    const div=divFor(pat);
+    let netChange=cffo-cap-div;
+    if(i===0)netChange-=BASE.prefchem_debt;
+    path.push(Math.round((path[path.length-1]+netChange)*10)/10);
+  }
+  return path;
+}
+
+const nBull=buildPath('BULL');
+const nBase=buildPath('BASE');
+const nBear=buildPath('BEAR');
 function firstCross(arr){for(let i=1;i<arr.length;i++){if(arr[i]<0)return YEARS[i];}return null;}
 
 const cv=document.getElementById("fan"),ctx=cv.getContext("2d");
@@ -499,19 +603,17 @@ function draw(live){
   const max=Math.max(...all,90),min=Math.min(...all,-90);
   const x=i=>pad+(W-pad*1.4)*i/(YEARS.length-1);
   const y=v=>pad/2+(H-pad*1.5)*(max-v)/(max-min);
-  // horizontal gridlines + value labels (proper axis)
+  // gridlines + axis labels
   ctx.strokeStyle="#161d28";ctx.lineWidth=1;ctx.fillStyle="#5a6675";ctx.font="11px monospace";
-  const steps=5;
-  for(let s=0;s<=steps;s++){
-    const v=max-(max-min)*s/steps,yy=y(v);
+  for(let s=0;s<=5;s++){
+    const v=max-(max-min)*s/5,yy=y(v);
     ctx.beginPath();ctx.moveTo(pad,yy);ctx.lineTo(W-pad*0.4,yy);ctx.stroke();
     ctx.fillText(Math.round(v)+"B",4,yy+4);
   }
-  ctx.fillStyle="#7a8698";ctx.fillText("RM B · net cash",pad,pad/2-8);
-  // vertical year grid
+  ctx.fillStyle="#7a8698";ctx.fillText("RM B · net cash · ExxonMobil IR cash-flow model",pad,pad/2-8);
   ctx.strokeStyle="#1f2733";
   YEARS.forEach((yr,i)=>{ctx.beginPath();ctx.moveTo(x(i),pad/2);ctx.lineTo(x(i),H-pad);ctx.stroke();ctx.fillStyle="#5a6675";ctx.fillText(yr,x(i)-14,H-pad+16);});
-  // scenario band fill (bull→bear envelope) — the "fan"
+  // scenario envelope (bull→bear fan)
   ctx.beginPath();
   nBull.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});
   for(let i=nBear.length-1;i>=0;i--)ctx.lineTo(x(i),y(nBear[i]));
@@ -526,32 +628,40 @@ function draw(live){
   line(nBase,"#4aa8ff",2.5);
   line(nBear,"#f0506e",2);
   if(live)line(live,"#e3b341",2.5);
-  // current-position marker (2026 = index 1) on base path
+  // current-position marker
   ctx.fillStyle="#4aa8ff";ctx.beginPath();ctx.arc(x(1),y(nBase[1]),5,0,7);ctx.fill();
   ctx.strokeStyle="rgba(74,168,255,.4)";ctx.lineWidth=2;ctx.beginPath();ctx.arc(x(1),y(nBase[1]),9,0,7);ctx.stroke();
   ctx.fillStyle="#9fb4cc";ctx.fillText("now · "+nBase[1]+"B",x(1)+14,y(nBase[1])+4);
 }
 
-const brent=document.getElementById("brent"),jkm=document.getElementById("jkm");
-// hyphenated ids don't create JS globals — resolve explicitly (was silently killing live())
-const brentv=document.getElementById("brentv"),jkmv=document.getElementById("jkmv");
-const ro_cffo=document.getElementById("ro-cffo"),ro_fcf=document.getElementById("ro-fcf"),ro_cross=document.getElementById("ro-cross");
+// 6-slider live engine
+const brent=document.getElementById("brent"),jkm=document.getElementById("jkm"),hh=document.getElementById("hh");
+const fx=document.getElementById("fx"),grm=document.getElementById("grm"),naphpe=document.getElementById("naphpe");
+const brentv=document.getElementById("brentv"),jkmv=document.getElementById("jkmv"),hhv=document.getElementById("hhv");
+const fxv=document.getElementById("fxv"),grmv=document.getElementById("grmv"),naphpev=document.getElementById("naphpev");
+const ro_pat=document.getElementById("ro-pat"),ro_cffo=document.getElementById("ro-cffo"),ro_fcf=document.getElementById("ro-fcf"),ro_cross=document.getElementById("ro-cross");
+
 function live(){
-  const B=+brent.value,J=+jkm.value;
-  brentv.textContent=B;jkmv.textContent=J;
-  const cffo=Math.round((82+(B-85)*0.6+(J-14)*1.2)*10)/10;
-  const fcf=Math.round((cffo-47.5-24.5-2.5)*10)/10;
-  ro_cffo.textContent="RM"+cffo.toFixed(1)+"B";
-  ro_fcf.textContent=(fcf>=0?"+":"")+"RM"+fcf.toFixed(1)+"B";
-  ro_fcf.style.color=fcf>=0?"var(--seal)":"var(--void)";
-  const lv=[START];let n=Math.round((START-PREF_DEBT)*10)/10;
-  for(let i=1;i<YEARS.length;i++){n=Math.round((n+fcf)*10)/10;lv.push(n);}
-  const cross=firstCross(lv);
+  const B=+brent.value,J=+jkm.value,H=+hh.value,G=+grm.value,N=+naphpe.value;
+  brentv.textContent=B;jkmv.textContent=J;hhv.textContent=H.toFixed(2);
+  fxv.textContent=fx.value;grmv.textContent=G;naphpev.textContent=N;
+  const path=livePath(B,J,H,G,N);
+  // Compute Year-1 metrics
+  const pat0=patFor({brent:B,jkm:J,henry_hub:H,grm_delta:G,naphpe_delta:N},0);
+  const cffo0=cffoFor(pat0);
+  const cap0=capexFor(0,'BASE');
+  const div0=divFor(pat0);
+  const fcf0=Math.round((cffo0-cap0-div0)*10)/10;
+  ro_pat.textContent="RM"+pat0.toFixed(1)+"B";
+  ro_cffo.textContent="RM"+cffo0.toFixed(1)+"B";
+  ro_fcf.textContent=(fcf0>=0?"+":"")+"RM"+fcf0.toFixed(1)+"B";
+  ro_fcf.style.color=fcf0>=0?"var(--seal)":"var(--void)";
+  const cross=firstCross(path);
   ro_cross.textContent=cross?cross:"none <2031";
   ro_cross.style.color=cross?"var(--void)":"var(--seal)";
-  draw(lv);
+  draw(path);
 }
-brent.oninput=live;jkm.oninput=live;
+brent.oninput=live;jkm.oninput=live;hh.oninput=live;grm.oninput=live;naphpe.oninput=live;
 live();
 </script>
 
