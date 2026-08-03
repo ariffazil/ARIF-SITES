@@ -1,0 +1,72 @@
+{
+  "schema": "market_digest.v1",
+  "subject": {
+    "type": "FinancialInstrument",
+    "name_ms": "USD/MYR (Ringgit)",
+    "name_en": "USD/MYR (Ringgit FX)",
+    "symbol": "MYR=X",
+    "exchange": "yfinance"
+  },
+  "seal": {
+    "observed_at": "2026-08-03T17:47:25.287Z",
+    "url": "https://arif-fazil.com/usdmyr/",
+    "data_layer_url": "https://arif-fazil.com/usdmyr/api/snapshot",
+    "coherence_id": "b9e461f6bf876dc6c45fc896985ed780be533f3cfdc771a568c92551c6d63a95",
+    "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
+  },
+  "one_liner": {
+    "ms": "USD/MYR (Ringgit) pada 4.09 · perubahan +0.54%",
+    "en": "USD/MYR (Ringgit FX) at 4.09 · +0.54% change"
+  },
+  "role": {
+    "ms": "Pasangan FX utama · Import inflasi · Rizab BNM",
+    "en": "Primary FX pair · Import inflation · BNM reserves"
+  },
+  "obs_facts": {
+    "price": 4.093,
+    "change": 0.0218,
+    "change_pct": 0.54,
+    "rsi": 58.2,
+    "rsi_state": "NEUTRAL",
+    "ema20": 4.0819,
+    "ema50": 4.0597,
+    "ema200": 3.9994,
+    "ema_trend": "BULLISH",
+    "signal": "NEUTRAL",
+    "support": [],
+    "resistance": [],
+    "macro": {
+      "dxy": 99.99,
+      "us10y": 4.69,
+      "vix": 15.67,
+      "usmyr": null
+    },
+    "epistemic_class": "OBS",
+    "source": "yfinance via /usdmyr/api/snapshot"
+  },
+  "interpretation_int": [
+    "RSI 58.2 is in NEUTRAL zone — mid-range",
+    "EMA trend is BULLISH — price above EMA50",
+    "Signal: NEUTRAL"
+  ],
+  "risk_warnings": [
+    "Price at $4.09 — mid-range between S/R levels",
+    "RSI normal — no extreme"
+  ],
+  "watch_conditions": [
+    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+  ],
+  "external_signals": {
+    "page_url": "https://arif-fazil.com/usdmyr/",
+    "data_layer_url": "https://arif-fazil.com/usdmyr/api/snapshot",
+    "history_url": "https://arif-fazil.com/usdmyr/api/history?interval=1d&period=3mo",
+    "apex_url": "https://arif-fazil.com/usdmyr/api/apex",
+    "doctrine": "DITEMPA BUKAN DIBIRI"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03T17:47:25.298725+00:00",
+    "license": "CC-BY-4.0"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "market_digest.v1",
+  "subject": {
+    "type": "FinancialInstrument",
+    "name_ms": "Emas (XAU/USD)",
+    "name_en": "Gold (XAU/USD)",
+    "symbol": "XAUUSD",
+    "exchange": "yfinance"
+  },
+  "seal": {
+    "observed_at": "2026-08-03T17:45:49.598Z",
+    "url": "https://arif-fazil.com/gold/",
+    "data_layer_url": "https://arif-fazil.com/gold/api/snapshot",
+    "coherence_id": "531070bc6f8c616a64f1cd4545514fab18764c896f7d6d86b2d5b5b5fac61761",
+    "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
+  },
+  "one_liner": {
+    "ms": "Emas (XAU/USD) pada 4035.23 · perubahan -0.03%",
+    "en": "Gold (XAU/USD) at 4035.23 · -0.03% change"
+  },
+  "role": {
+    "ms": "Pelindung nilai · Lindung inflasi · Aset rizab",
+    "en": "Store of value · Inflation hedge · Reserve asset"
+  },
+  "obs_facts": {
+    "price": 4035.23,
+    "change": -1.08,
+    "change_pct": -0.03,
+    "rsi": 33.6,
+    "rsi_state": "NEUTRAL",
+    "ema20": 4047.94,
+    "ema50": 4052.24,
+    "ema200": 4048.37,
+    "ema_trend": "BEARISH",
+    "signal": "NEUTRAL",
+    "support": [],
+    "resistance": [],
+    "macro": {
+      "dxy": 99.98,
+      "us10y": 4.688,
+      "vix": 15.63,
+      "usmyr": 4.09
+    },
+    "epistemic_class": "OBS",
+    "source": "yfinance via /gold/api/snapshot"
+  },
+  "interpretation_int": [
+    "RSI 33.6 is in NEUTRAL zone — mid-range",
+    "EMA trend is BEARISH — price below EMA50",
+    "Signal: NEUTRAL"
+  ],
+  "risk_warnings": [
+    "Price at $4035.23 — mid-range between S/R levels",
+    "RSI normal — no extreme"
+  ],
+  "watch_conditions": [
+    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+  ],
+  "external_signals": {
+    "page_url": "https://arif-fazil.com/gold/",
+    "data_layer_url": "https://arif-fazil.com/gold/api/snapshot",
+    "history_url": "https://arif-fazil.com/gold/api/history?interval=1d&period=3mo",
+    "apex_url": "https://arif-fazil.com/gold/api/apex",
+    "doctrine": "DITEMPA BUKAN DIBIRI"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03T17:47:20.252587+00:00",
+    "license": "CC-BY-4.0"
+  }
+}

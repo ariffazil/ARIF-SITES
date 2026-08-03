@@ -1,0 +1,72 @@
+{
+  "schema": "market_digest.v1",
+  "subject": {
+    "type": "FinancialInstrument",
+    "name_ms": "Gas Asli (Henry Hub)",
+    "name_en": "Natural Gas (Henry Hub)",
+    "symbol": "NG=F",
+    "exchange": "yfinance"
+  },
+  "seal": {
+    "observed_at": "2026-08-03T17:47:22.146Z",
+    "url": "https://arif-fazil.com/gas/",
+    "data_layer_url": "https://arif-fazil.com/gas/api/snapshot",
+    "coherence_id": "5955fae9d2cbfa0841b904f1ba29f4cf9629f746ea147af06f9653390388d207",
+    "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
+  },
+  "one_liner": {
+    "ms": "Gas Asli (Henry Hub) pada 2.76 · perubahan +0.00%",
+    "en": "Natural Gas (Henry Hub) at 2.76 · +0.00% change"
+  },
+  "role": {
+    "ms": "Margin LNG · Utiliti domestik",
+    "en": "LNG margin · Domestic utility"
+  },
+  "obs_facts": {
+    "price": 2.76,
+    "change": 0,
+    "change_pct": 0,
+    "rsi": 48.6,
+    "rsi_state": "NEUTRAL",
+    "ema20": 2.76,
+    "ema50": 2.75,
+    "ema200": 2.72,
+    "ema_trend": "BULLISH",
+    "signal": "LONG",
+    "support": [],
+    "resistance": [],
+    "macro": {
+      "dxy": 99.99,
+      "us10y": 4.69,
+      "vix": 15.67,
+      "usmyr": 4.09
+    },
+    "epistemic_class": "OBS",
+    "source": "yfinance via /gas/api/snapshot"
+  },
+  "interpretation_int": [
+    "RSI 48.6 is in NEUTRAL zone — mid-range",
+    "EMA trend is BULLISH — price above EMA50",
+    "Signal: LONG"
+  ],
+  "risk_warnings": [
+    "Price at $2.76 — mid-range between S/R levels",
+    "RSI normal — no extreme"
+  ],
+  "watch_conditions": [
+    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+  ],
+  "external_signals": {
+    "page_url": "https://arif-fazil.com/gas/",
+    "data_layer_url": "https://arif-fazil.com/gas/api/snapshot",
+    "history_url": "https://arif-fazil.com/gas/api/history?interval=1d&period=3mo",
+    "apex_url": "https://arif-fazil.com/gas/api/apex",
+    "doctrine": "DITEMPA BUKAN DIBIRI"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03T17:47:22.158034+00:00",
+    "license": "CC-BY-4.0"
+  }
+}

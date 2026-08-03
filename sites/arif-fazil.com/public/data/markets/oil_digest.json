@@ -1,0 +1,72 @@
+{
+  "schema": "market_digest.v1",
+  "subject": {
+    "type": "FinancialInstrument",
+    "name_ms": "Minyak Brent",
+    "name_en": "Brent Crude Oil",
+    "symbol": "BZ=F",
+    "exchange": "yfinance"
+  },
+  "seal": {
+    "observed_at": "2026-08-03T17:45:05.011Z",
+    "url": "https://arif-fazil.com/oil/",
+    "data_layer_url": "https://arif-fazil.com/oil/api/snapshot",
+    "coherence_id": "c3b8f02fa9bc333f04fafc7348a47c64555142852d33451a5a930aa2b523c533",
+    "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
+  },
+  "one_liner": {
+    "ms": "Minyak Brent pada 83.61 · perubahan +0.13%",
+    "en": "Brent Crude Oil at 83.61 · +0.13% change"
+  },
+  "role": {
+    "ms": "Hasil PETRONAS · Rantai fiscal kerajaan Malaysia",
+    "en": "PETRONAS revenue · Malaysian sovereign fiscal chain"
+  },
+  "obs_facts": {
+    "price": 83.61,
+    "change": 0.11,
+    "change_pct": 0.13,
+    "rsi": 30.9,
+    "rsi_state": "NEUTRAL",
+    "ema20": 85.53,
+    "ema50": 87.26,
+    "ema200": 87.79,
+    "ema_trend": "BEARISH",
+    "signal": "SHORT",
+    "support": [],
+    "resistance": [],
+    "macro": {
+      "dxy": 99.98,
+      "us10y": 4.688,
+      "vix": 15.63,
+      "usmyr": 4.09
+    },
+    "epistemic_class": "OBS",
+    "source": "yfinance via /oil/api/snapshot"
+  },
+  "interpretation_int": [
+    "RSI 30.9 is in NEUTRAL zone — mid-range",
+    "EMA trend is BEARISH — price below EMA50",
+    "Signal: SHORT"
+  ],
+  "risk_warnings": [
+    "Price at $83.61 — mid-range between S/R levels",
+    "RSI normal — no extreme"
+  ],
+  "watch_conditions": [
+    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+  ],
+  "external_signals": {
+    "page_url": "https://arif-fazil.com/oil/",
+    "data_layer_url": "https://arif-fazil.com/oil/api/snapshot",
+    "history_url": "https://arif-fazil.com/oil/api/history?interval=1d&period=3mo",
+    "apex_url": "https://arif-fazil.com/oil/api/apex",
+    "doctrine": "DITEMPA BUKAN DIBIRI"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03T17:47:20.305907+00:00",
+    "license": "CC-BY-4.0"
+  }
+}

@@ -15,45 +15,12 @@
 <script src="/_shared/zen-head.js" defer></script>
 </head>
 <body class="fam-klci">
+<script src="/_shared/unified-header-loader.js"></script>
 <div class="zen-pulse" aria-label="Orientation">
   <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · FBM KLCI</span></div>
   <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val zp-accent">Evidence-gated Bursa KLCI signal — verdict, levels, invalidation</span></div>
   <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Current verdict below</span></div>
 </div>
-
-<!-- ═══ CHROME — one disciplined header: federation / identity / local ═══ -->
-<header class="zs-head">
-  <nav class="zs-fed" aria-label="Federation">
-    <a href="/" style="font-weight:bold;color:#f59e0b;">🏠 HOME</a><span class="zs-fed-sep">·</span>
-    <a href="/earth">EARTH</a><span class="zs-fed-sep">·</span>
-    <a href="/economics">ECONOMICS</a><span class="zs-fed-sep">·</span>
-    <a href="/world">WORLD</a><span class="zs-fed-sep">·</span>
-    <a href="/politics/ns-election">PRN16 N9</a><span class="zs-fed-sep">·</span>
-    <a href="/writing">WRITING</a><span class="zs-fed-sep">·</span>
-    <a href="/doctrine">DOCTRINE</a><span class="zs-fed-sep">·</span>
-    <a href="/map/">MAP</a>
-    <span class="zs-fed-right" data-zs-clock>— MYT</span>
-  </nav>
-  <div class="zs-id">
-    <div class="zs-id-title">
-      <h1>FBM KLCI <span class="fam-mark">·</span> BURSA</h1>
-      <span class="zs-purpose">Malaysia's top-30 blue-chip benchmark — technicals, capital flows, and macro drivers in one calm scan.</span>
-    </div>
-    <div class="zs-status">
-      <span class="live-dot" aria-hidden="true"></span>
-      <span id="pulseTimestamp">connecting…</span>
-    </div>
-  </div>
-  <nav class="zs-local" aria-label="Markets">
-    <a href="/wealth/vitals/">PETRONAS</a>
-    <a href="/wealth/malaysia/">MALAYSIA</a>
-    <a href="/klci/" class="here" aria-current="page">KLCI</a>
-    <a href="/usdmyr/">USD/MYR</a>
-    <a href="/oil/">OIL</a>
-    <a href="/gas/">GAS</a>
-    <a href="/gold/">GOLD</a>
-  </nav>
-</header>
 
 <!-- Agentic machine digest drawer (?mode=agent) -->
 <div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:var(--surface); border:1px solid var(--accent-dim); border-radius:10px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,.6); font-family:var(--mono); overflow:hidden;">
@@ -66,7 +33,49 @@
 
 <main class="shell">
 
-  <!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->
+  
+
+<!-- ═══ PLAIN-LANGUAGE DIGEST — what this asset means ═══ -->
+<section class="sec" id="digest" data-agent-role="plain-language-digest" aria-label="Plain-language translation of ^KLSE signal">
+  <div class="sec-title">What this means — in plain language</div>
+
+  <!-- ONE-SENTENCE VERDICT -->
+  <div style="background:var(--surface2);border-left:3px solid var(--accent);padding:14px 18px;border-radius:6px;margin:0 0 18px;font-family:var(--serif)">
+    <div style="font-size:11px;color:var(--dim);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase;font-family:var(--mono)">One-sentence answer · F2 epistemic: OBS arithmetic</div>
+    <p style="margin:0 0 6px;font-size:1rem;color:var(--ink);line-height:1.5"><strong>BM:</strong> FBM KLCI pada 1724.90 · perubahan +0.26%</p>
+    <p style="margin:0;font-size:1rem;color:var(--ink);line-height:1.5"><strong>EN:</strong> FBM KLCI (Bursa Malaysia) at 1724.90 · +0.26% change</p>
+  </div>
+
+  <!-- 2-DOOR LAYOUT (BM + EN) for markets — lighter than /vitals/ -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(360px,1fr));gap:14px">
+
+    <div class="digest-card" data-audience="rakyat_ms" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Untuk Rakyat · everyday impact</div>
+      <h3 style="margin:0 0 8px;font-size:1rem;color:var(--ink)">Apa ini untuk anda</h3>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55"><strong>FBM KLCI</strong> — Indeks 30 syarikat biru Malaysia · Penanda pasaran tempatan.</p>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55">Harga terkini: <strong style="color:var(--accent)">1724.9</strong> (+0.26% perubahan). RSI 64.9 (NEUTRAL). Trend EMA: BULLISH.</p>
+      <p style="margin:0;font-size:.72rem;color:var(--sabar);font-family:var(--mono);line-height:1.5">[Price at $1724.90 — mid-range between S/R levels, RSI normal — no extreme]</p>
+    </div>
+
+    <div class="digest-card" data-audience="investors_en" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">For Investors · portfolio view</div>
+      <h3 style="margin:0 0 8px;font-size:1rem;color:var(--ink)">What this means for your portfolio</h3>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55"><strong>FBM KLCI (Bursa Malaysia)</strong> — Malaysia top-30 blue-chip index · Local market benchmark.</p>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55">Current: <strong style="color:var(--accent)">1724.9</strong> (+0.26% change). RSI 64.9 (NEUTRAL). EMA trend: BULLISH.</p>
+      <p style="margin:0;font-size:.72rem;color:var(--sabar);font-family:var(--mono);line-height:1.5">[Price at $1724.90 — mid-range between S/R levels, RSI normal — no extreme]</p>
+    </div>
+
+  </div>
+
+  <!-- MACHINE-READABLE LINK -->
+  <div style="margin-top:14px;padding:10px 14px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;font-size:.7rem;color:var(--dim);font-family:var(--mono);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+    <span><strong style="color:var(--accent)">[OBS]</strong> audit-grade snapshot · <a href="https://arif-fazil.com/klci/api/snapshot" style="color:var(--accent)">https://arif-fazil.com/klci/api/snapshot</a></span>
+    <span><a href="https://arif-fazil.com/klci/api/history?interval=1d&period=3mo" style="color:var(--dim)">history</a> · <a href="https://arif-fazil.com/klci/api/apex" style="color:var(--dim)">apex</a> · <a href="/data/markets/klci_digest.json" style="color:var(--dim)">digest</a></span>
+  </div>
+
+</section>
+
+<!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->
   <section class="zs-hero" aria-label="Market answer" data-agent-role="market-answer">
     <div class="zs-eyebrow">
       <span>Market answer · FBM KLCI</span>
@@ -444,10 +453,10 @@
     </p>
     <nav class="zs-foot-links" aria-label="Federation links">
       <a href="https://arif-fazil.com">Sovereign Root</a><span class="zs-fed-sep">·</span>
-      <a href="https://arifos.arif-fazil.com">arifOS</a><span class="zs-fed-sep">·</span>
-      <a href="https://geox.arif-fazil.com">GEOX</a><span class="zs-fed-sep">·</span>
-      <a href="https://well.arif-fazil.com">WELL</a><span class="zs-fed-sep">·</span>
-      <a href="https://aaa.arif-fazil.com">AAA</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/arifos/">arifOS</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/geox/">GEOX</a><span class="zs-fed-sep">·</span>
+      <a href="https://well.arif-fazil.com/">WELL</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/aaa/">AAA</a><span class="zs-fed-sep">·</span>
       <a href="https://mcp.arif-fazil.com">MCP</a>
     </nav>
     <div class="zs-foot-seal">

@@ -1,0 +1,72 @@
+{
+  "schema": "market_digest.v1",
+  "subject": {
+    "type": "FinancialInstrument",
+    "name_ms": "FBM KLCI",
+    "name_en": "FBM KLCI (Bursa Malaysia)",
+    "symbol": "^KLSE",
+    "exchange": "yfinance"
+  },
+  "seal": {
+    "observed_at": "2026-08-03T17:47:23.677Z",
+    "url": "https://arif-fazil.com/klci/",
+    "data_layer_url": "https://arif-fazil.com/klci/api/snapshot",
+    "coherence_id": "3d2533b86966f52b25a85ac589c2003c7221cf5815aa7825fe1170851d12b156",
+    "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
+  },
+  "one_liner": {
+    "ms": "FBM KLCI pada 1724.90 · perubahan +0.26%",
+    "en": "FBM KLCI (Bursa Malaysia) at 1724.90 · +0.26% change"
+  },
+  "role": {
+    "ms": "Indeks 30 syarikat biru Malaysia · Penanda pasaran tempatan",
+    "en": "Malaysia top-30 blue-chip index · Local market benchmark"
+  },
+  "obs_facts": {
+    "price": 1724.9,
+    "change": 4.5,
+    "change_pct": 0.26,
+    "rsi": 64.9,
+    "rsi_state": "NEUTRAL",
+    "ema20": 1708.8,
+    "ema50": 1703.43,
+    "ema200": 1718.79,
+    "ema_trend": "BULLISH",
+    "signal": "LONG",
+    "support": [],
+    "resistance": [],
+    "macro": {
+      "dxy": 99.99,
+      "us10y": 4.69,
+      "vix": 15.67,
+      "usmyr": 4.093
+    },
+    "epistemic_class": "OBS",
+    "source": "yfinance via /klci/api/snapshot"
+  },
+  "interpretation_int": [
+    "RSI 64.9 is in NEUTRAL zone — mid-range",
+    "EMA trend is BULLISH — price above EMA50",
+    "Signal: LONG"
+  ],
+  "risk_warnings": [
+    "Price at $1724.90 — mid-range between S/R levels",
+    "RSI normal — no extreme"
+  ],
+  "watch_conditions": [
+    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+  ],
+  "external_signals": {
+    "page_url": "https://arif-fazil.com/klci/",
+    "data_layer_url": "https://arif-fazil.com/klci/api/snapshot",
+    "history_url": "https://arif-fazil.com/klci/api/history?interval=1d&period=3mo",
+    "apex_url": "https://arif-fazil.com/klci/api/apex",
+    "doctrine": "DITEMPA BUKAN DIBIRI"
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "issued": "2026-08-03T17:47:23.686945+00:00",
+    "license": "CC-BY-4.0"
+  }
+}

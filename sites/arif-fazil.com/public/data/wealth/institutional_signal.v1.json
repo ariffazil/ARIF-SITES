@@ -20,6 +20,19 @@
     "title": "Analogi kebun getah",
     "body": "Bayangkan kebun getah. Tiap musim menuai getah, 70 sen daripada setiap ringgit hasil dijual terus. Baki 30 sen cukup untuk bayar pekerja, tapi tak cukup untuk tanam pokok baru ganti yang tua. Selagi pokok lama masih bergetah, takde masalah. Tapi dalam 10 tahun, kebun dah tua — tak cukup getah untuk bayar dividen lagi."
   },
+  "obs_facts": {
+    "source": "PETRONAS Group FY2025 audited Integrated Report",
+    "extraction_pct_pat": 70.5,
+    "fcf_after_capex_div_rm_b": 11.6,
+    "cffo_rm_b": 85.2,
+    "gearing_pct": 20.7,
+    "net_cash_rm_b": 82.8,
+    "production_kbpd": 355,
+    "dividend_declared_rm_b": 32.0,
+    "pat_rm_b": 45.4,
+    "revenue_rm_b": 266.1,
+    "capex_rm_b": 41.6
+  },
   "what_is_real": [
     {
       "claim_id": "R1_extraction_breach",
@@ -143,7 +156,10 @@
     "version": "1.0.0",
     "issued": "2026-08-03",
     "issuer": "WEALTH institutional intelligence engine (arifOS federation)",
-    "session_actor_chain": ["Arif (F13 SOVEREIGN)", "kimi-code/FI-008"],
+    "session_actor_chain": [
+      "Arif (F13 SOVEREIGN)",
+      "kimi-code/FI-008"
+    ],
     "supersedes": null,
     "superseded_by": null
   }

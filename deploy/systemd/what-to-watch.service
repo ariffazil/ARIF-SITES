@@ -1,0 +1,27 @@
+# /etc/systemd/system/what-to-watch.service
+# what-to-watch daemon — monitors institutional trigger conditions
+# Watches /gold/api/snapshot + /data/wealth/petronas_vitals.json +
+# institutional_signal.v1.json for state changes. On cross, writes
+# TRIGGER_FIRED entry to VAULT999 hash chain. Idempotent.
+
+[Unit]
+Description=Institutional what-to-watch trigger daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/root/arif-fazil.com/deploy/systemd
+ExecStart=/root/venv/bin/python3 /root/arif-fazil.com/deploy/systemd/what-to-watch-daemon.py
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=what-to-watch
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
