@@ -11,8 +11,9 @@
        rrMarginal: 1.2,                    // gas: 1.5
        chartAccent:'#c9a84c',              // cone/crosshair/entry line
        macro:      ['dxy','us10y','vix','silver','gsr','usmyr'],
-       driverExtra: function (t, fmt) {    // extra pulse-driver segment
-         return ' · XAU/MYR: RM ' + fmt((t.price || 0) * 4.35 / 31.1035) + '/gram';
+       driverExtra: function (t, fmt, macro) {    // extra pulse-driver segment
+         // macro.usmyr = live USD/MYR from /macro (fallback 4.35 if absent)
+         return ' · XAU/MYR: RM ' + fmt((t.price || 0) * (macro.usmyr || 4.35) / 31.1035) + '/gram';
        },
      }
 
@@ -518,7 +519,15 @@
       if ($('pulseDriver')) {
         var rsi = data.rsi || 50;
         var rsiState = data.rsiState || 'NEUTRAL';
-        var extra = (typeof ZM.driverExtra === 'function') ? ZM.driverExtra(data, fmt) : '';
+        var extra = '';
+        try {
+          extra = (typeof ZM.driverExtra === 'function')
+            ? ZM.driverExtra(data, fmt, (snapshot && snapshot.macro) || {})
+            : '';
+        } catch (driverErr) {
+          console.warn(TAG, 'driverExtra failed:', driverErr.message);
+          extra = '';
+        }
         $('pulseDriver').innerHTML = '<strong>RSI ' + fmt(rsi, 1) + '</strong> — ' + rsiState + extra + ' · TF: 1H levels, 4H regime';
       }
     });

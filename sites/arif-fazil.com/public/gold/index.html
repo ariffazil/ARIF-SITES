@@ -455,8 +455,14 @@
     stanceKey: 'gold_stance',
     rrMarginal: 1.2,
     chartAccent: '#c9a84c',
-    driverExtra: function (t, fmt) {
-      return ' · XAU/MYR: RM ' + fmt((t.price || 0) * 4.35 / 31.1035) + '/gram';
+    driverExtra: function (t, fmt, macro) {
+      // Live USDMYR from macro panel — fallback 4.10 only if macro unavailable.
+      // 1 troy ounce = 31.1035 grams → MYR/gram = (USD/oz × MYR/USD) / 31.1035
+      var usdmyr = (macro && macro.usmyr) ? macro.usmyr : 4.10;
+      var gramsPerOz = 31.1035;
+      var myPerGram = (t.price || 0) * usdmyr / gramsPerOz;
+      var myPerOz = myPerGram * gramsPerOz;
+      return ' · XAU/MYR: RM ' + fmt(myPerGram, 2) + '/g · RM ' + fmt(myPerOz, 0) + '/oz';
     },
   };
 </script>
