@@ -416,7 +416,39 @@ export function PoliticsHub() {
                   PM Bayang — Shadow Prime Ministers of Malaysia
                 </h4>
                 <p className="text-slate-300 text-sm font-body">
-                  Persona, Bayang, Tragedi, and Legasi of all 9 Malaysian Prime Ministers from Tunku Abdul Rahman to Anwar Ibrahim.
+                  Persona, Bayang, Tragedi, dan Legasi of all 9 Malaysian Prime Ministers from Tunku Abdul Rahman to Anwar Ibrahim.
+                </p>
+              </Link>
+
+              <Link
+                to="/politics/shadow/derita"
+                className="block p-6 rounded-xl bg-gradient-to-r from-cyan-950/40 to-slate-900 border border-cyan-800/50 hover:border-cyan-400 transition-all group mt-3"
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-mono text-cyan-400 uppercase font-bold">FRAMEWORK ANALYSIS · HOLD</span>
+                  <span className="text-cyan-400 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+                <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyan-300 transition-colors mb-2">
+                  RASA DERITA — 6-Cohort Generational Trauma Map
+                </h4>
+                <p className="text-slate-300 text-sm font-body">
+                  Framework analysis mapping Malaysia's institutional trauma (13 Mei → 1MDB → Sheraton) onto constitutional floors as SCARS.
+                </p>
+              </Link>
+
+              <Link
+                to="/politics/shadow/board"
+                className="block p-6 rounded-xl bg-gradient-to-r from-slate-900 to-slate-900 border border-slate-700/50 hover:border-forge-orange/60 transition-all group mt-3"
+              >
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-xs font-mono text-forge-orange uppercase font-bold">INSTRUMENT · PRIMER-1</span>
+                  <span className="text-forge-orange group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+                <h4 className="text-xl font-bold text-white font-sans group-hover:text-forge-orange transition-colors mb-2">
+                  Shadow Board — Org-Chart Instrument
+                </h4>
+                <p className="text-slate-300 text-sm font-body">
+                  Complete board of seats: 9 PM dossiers, DERITA trauma map, constitutional floors. Setiap kerusi = dossier link.
                 </p>
               </Link>
             </div>

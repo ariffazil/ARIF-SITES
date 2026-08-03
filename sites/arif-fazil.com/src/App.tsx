@@ -21,6 +21,8 @@ import { NotFound } from '@/pages/NotFound';
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
 import { ShadowPMs } from '@/pages/ShadowPMs';
+import { ShadowBoard } from '@/pages/ShadowBoard';
+import { DeritaMap } from '@/pages/DeritaMap';
 import { PoliticsHub } from '@/pages/PoliticsHub';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
@@ -65,6 +67,10 @@ function App() {
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
             <Route path="/politics/shadow" element={<ShadowPMs />} />
             <Route path="/politics/shadow/" element={<ShadowPMs />} />
+            <Route path="/politics/shadow/board" element={<ShadowBoard />} />
+            <Route path="/politics/shadow/board/" element={<ShadowBoard />} />
+            <Route path="/politics/shadow/derita" element={<DeritaMap />} />
+            <Route path="/politics/shadow/derita/" element={<DeritaMap />} />
             {/* MakcikGPT — canonical path */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
             <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />

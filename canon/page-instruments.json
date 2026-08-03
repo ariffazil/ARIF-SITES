@@ -7,8 +7,8 @@
   "tenant": "ATLAS-1.1 prime-1 ratification",
   "proposal_id": "PRIMER-1",
   "proposal_path": "forge_work/proposals/design/2026-08-01-primer-1/design-primer.proposal.md",
-  "routes_count": 26,
-  "instruments_count": 10,
+  "routes_count": 28,
+  "instruments_count": 11,
 
   "doctrine_invocation": "Hero as instrument. The route registry declares the hero. Pages render the declared hero. Local override is forbidden (I2, I3, I11).",
 
@@ -84,6 +84,14 @@
       "interactive": "hover",
       "render_mode": "agent_canvas_required",
       "where": ["root"]
+    },
+    "shadow-board": {
+      "description": "Org-chart instrument — each seat is a dossier link. Maps institutional shadows (PM Bayang, DERITA trauma cohorts, constitutional floors). Not navigation. Not a poster.",
+      "data_source": "shadowPms.ts + derita-cohorts + doctrine-floors",
+      "fallback": "static-canon",
+      "interactive": "hover-dossier",
+      "render_mode": "agent_canvas_required",
+      "where": ["politics/shadow/board", "politics/shadow/derita"]
     },
     "status-dial": {
       "description": "Radial status — 6 sectors showing organ health. Agent-side rendering.",
@@ -238,6 +246,32 @@
       "state": "rest",
       "seal_status": "SEAL",
       "notes": "Malaysia — institutional voice."
+    },
+    "/politics/shadow/board": {
+      "territory": "institution",
+      "palette": "institution",
+      "instrument": "shadow-board",
+      "motion": "hover-dossier",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "PROPOSED",
+      "notes": "Shadow Board — org-chart instrument. 9 PM seats + DERITA kerusi + Doctrine link. PRIMER-1 DRAFT."
+    },
+    "/politics/shadow/derita": {
+      "territory": "institution",
+      "palette": "doctrine",
+      "instrument": "shadow-board",
+      "motion": "scroll",
+      "data": "static-canon",
+      "torus_count": 0,
+      "torus_type": "none",
+      "channel": "institution",
+      "state": "rest",
+      "seal_status": "HOLD",
+      "notes": "RASA DERITA — 6-cohort trauma map. Framework analysis, confidence 0.20. HOLD: pending VAULT999 seal + audit blockers fix. Connects to /doctrine floors as scars."
     },
     "/earth": {
       "territory": "earth",
