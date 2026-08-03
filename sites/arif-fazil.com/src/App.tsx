@@ -21,6 +21,7 @@ import { NotFound } from '@/pages/NotFound';
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
 import { ShadowPMs } from '@/pages/ShadowPMs';
+import { PoliticsHub } from '@/pages/PoliticsHub';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
@@ -52,10 +53,10 @@ function App() {
             {/* World — civic journalism + commodities + spatial politics */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
-            <Route path="/politics" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/politics/" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/malaysia" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/malaysia/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/politics" element={<PoliticsHub />} />
+            <Route path="/politics/" element={<PoliticsHub />} />
+            <Route path="/malaysia" element={<PoliticsHub />} />
+            <Route path="/malaysia/" element={<PoliticsHub />} />
             <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
             <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />

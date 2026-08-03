@@ -1,0 +1,221 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V1",
+        "name": "WESTERN MARITIME ALLIANCE (US / NATO / G7)",
+        "vector_code": "WEST-MARITIME",
+        "color": "#3b82f6",
+        "fillOpacity": 0.25,
+        "description": "Blue-water naval dominance, USD reserve currency, international law enforcement, advanced semiconductor IP.",
+        "friction": "South China Sea navigation, Taiwan Strait, Ukraine frontier."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-165.0, 70.0], [-50.0, 70.0], [25.0, 70.0], [30.0, 35.0],
+            [-10.0, 30.0], [-125.0, 25.0], [-165.0, 70.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V2",
+        "name": "EURASIAN CONTINENTAL BLOC (Russia / Central Asia)",
+        "vector_code": "EURASIA-LAND",
+        "color": "#ef4444",
+        "fillOpacity": 0.25,
+        "description": "Vast territorial depth, hydrocarbon export, buffer state security, strategic nuclear parity.",
+        "friction": "Eastern European border, NATO expansion, Central Asian influence."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [25.0, 70.0], [170.0, 70.0], [140.0, 45.0], [80.0, 40.0],
+            [50.0, 38.0], [30.0, 45.0], [25.0, 70.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V3",
+        "name": "SINIC INDUSTRIAL CAPACITY (China / Belt & Road)",
+        "vector_code": "SINIC-CORE",
+        "color": "#eab308",
+        "fillOpacity": 0.25,
+        "description": "Manufacturing supremacy, critical rare-earth processing, infrastructure export, state-directed capitalism.",
+        "friction": "Taiwan Strait, Nine-Dash Line claim vs ASEAN, US chip export bans."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [75.0, 45.0], [135.0, 50.0], [130.0, 20.0], [105.0, 15.0],
+            [95.0, 22.0], [75.0, 35.0], [75.0, 45.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V4",
+        "name": "INDO-PACIFIC DEMOCRATIC CORE (India / Subcontinent)",
+        "vector_code": "INDIC-CORE",
+        "color": "#f97316",
+        "fillOpacity": 0.25,
+        "description": "Demographic scale, strategic non-alignment, software & pharma export, Indian Ocean security.",
+        "friction": "Himalayan border with China, Malacca Strait maritime balance."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [68.0, 37.0], [92.0, 28.0], [94.0, 18.0], [80.0, 6.0],
+            [68.0, 20.0], [68.0, 37.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V5",
+        "name": "MIDDLE EAST ENERGY & ISLAMIC HUB (GCC / Iran / MENA)",
+        "vector_code": "MENA-ENERGY",
+        "color": "#10b981",
+        "fillOpacity": 0.25,
+        "description": "Hydrocarbon reserves, sovereign wealth fund capital, global Islamic cultural leadership, maritime chokepoints.",
+        "friction": "Red Sea shipping safety, Sunni-Shia regional proxy friction."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-15.0, 35.0], [60.0, 40.0], [65.0, 22.0], [50.0, 12.0],
+            [32.0, 12.0], [-15.0, 20.0], [-15.0, 35.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V6",
+        "name": "GLOBAL SOUTH & CRITICAL MINERALS (Africa / LATAM)",
+        "vector_code": "GLOBAL-SOUTH",
+        "color": "#d97706",
+        "fillOpacity": 0.25,
+        "description": "Energy-transition raw materials (Lithium, Cobalt, Copper), massive youth demographic, post-colonial voting block.",
+        "friction": "Value-chain extraction vs local refining, BRI debt restructuring."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-82.0, 12.0], [-34.0, 12.0], [-34.0, -56.0], [-80.0, -56.0], [-82.0, 12.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "V7",
+        "name": "NUSANTARA ARCHIPELAGIC STRAIT PIVOT (Malaysia / Indonesia / SEA)",
+        "vector_code": "NUSANTARA-PIVOT",
+        "color": "#06b6d4",
+        "fillOpacity": 0.4,
+        "description": "The Crossroads: Control over Malacca, Sunda, and Lombok straits. Refracts global trade without taking military sides.",
+        "friction": "South China Sea EEZ encroachment, US-China dual dependency."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [95.0, 20.0], [141.0, 20.0], [141.0, -11.0], [95.0, -11.0], [95.0, 20.0]
+          ]
+        ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CHOKE-1",
+        "name": "Strait of Malacca (Malaysia / Indonesia / Singapore)",
+        "type": "chokepoint",
+        "significance": "~30% of global trade and 80% of China's oil imports pass through this 1.7nm narrow funnel.",
+        "coords": [101.4, 2.5]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [101.4, 2.5]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CHOKE-2",
+        "name": "Taiwan Strait",
+        "type": "chokepoint",
+        "significance": "Primary semiconductor choke and key naval corridor connecting East and South China Seas.",
+        "coords": [119.8, 24.0]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [119.8, 24.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CHOKE-3",
+        "name": "Strait of Hormuz (Oman / Iran)",
+        "type": "chokepoint",
+        "significance": "World's most critical oil transit chokepoint (~21 million barrels/day).",
+        "coords": [56.4, 26.6]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [56.4, 26.6]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CHOKE-4",
+        "name": "Bab-el-Mandeb & Red Sea (Yemen / Djibouti)",
+        "type": "chokepoint",
+        "significance": "Connects Indian Ocean to Suez Canal; critical maritime energy & container shipping lane.",
+        "coords": [43.3, 12.6]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [43.3, 12.6]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CHOKE-5",
+        "name": "Sunda & Lombok Straits (Indonesia)",
+        "type": "chokepoint",
+        "significance": "Deepwater alternative to Malacca for supertankers and military submarine transit.",
+        "coords": [115.7, -8.4]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [115.7, -8.4]
+      }
+    }
+  ]
+}
