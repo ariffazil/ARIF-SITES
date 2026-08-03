@@ -161,8 +161,8 @@ export function PoliticsHub() {
         </div>
         <div className="w-full h-[520px] md:h-[620px] relative bg-[#020408] border-t border-slate-800">
           <iframe
-            src="/earth/index.html#geopolitics"
-            title="Interactive Geopolitical Heat Atlas"
+            src="/politics/atlas.html"
+            title="NUSANTARA 7-Vector Interactive Geopolitical Atlas"
             className="w-full h-full border-0"
             loading="eager"
           />

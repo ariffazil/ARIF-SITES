@@ -22,7 +22,6 @@ const publicRoot = path.join(root, "public");
 
 const SKIP_DIRS = new Set([
   "assets",          // Vite-managed bundler output (already in dist/assets/)
-  "data",            // JSON data feeds (served via /data/ via Caddy SPA fallback)
   "node_modules",
   ".git",
 ]);
