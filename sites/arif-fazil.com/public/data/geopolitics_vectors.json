@@ -1,0 +1,378 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "NUSANTARA 7-Vector Geopolitical Atlas",
+    "author": "ARIF — GEOX / arifOS",
+    "model": "3 mirror-pairs + 1 pivot",
+    "mirror_pairs": [
+      "1<->2 Sea/Land",
+      "3<->4 Order/Plurality",
+      "5<->6 Faith/Periphery"
+    ],
+    "pivot": "7 NUSANTARA (Malacca-Sunda-Lombok)",
+    "epistemic": {
+      "vector_zone": "STYLIZED_SCHEMATIC",
+      "chokepoint": "REAL_COORDINATE",
+      "spine": "INDICATIVE",
+      "shatterbelt": "INTERPRETIVE",
+      "vector_label": "CENTROID_LABEL",
+      "hinge_node": "SEAM_STATE"
+    },
+    "palette": {
+      "1": "#2E6FB0",
+      "2": "#B0413E",
+      "3": "#D9A521",
+      "4": "#E8772E",
+      "5": "#1F9E6B",
+      "6": "#C1663B",
+      "7": "#17BEBB"
+    },
+    "legend": "The world is not blocs but three oppositions refracting through one crossroads. Whoever reads the straits, reads the world."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[-128, 25], [-60, 25], [-60, 50], [-128, 50], [-128, 25]]],
+          [[[-11, 40], [22, 40], [22, 61], [-11, 61], [-11, 40]]],
+          [[[113, -40], [154, -40], [154, -11], [113, -11], [113, -40]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 1,
+        "name": "Western Maritime Alliance",
+        "short": "WESTERN MARITIME",
+        "members": "US / NATO / G7 / Anglosphere",
+        "principle": "Rules-based maritime order; contract; open sea",
+        "power_base": "Blue-water navy, USD reserve, semiconductor IP, finance & services",
+        "ideological_pole": "Liberal market democracy",
+        "shadow": "Preaches openness, practices sanction & exclusion",
+        "friction": "South China Sea navigation; Taiwan Strait; Ukraine frontier",
+        "mirror_of": 2,
+        "fill": "#2E6FB0",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[30, 46], [180, 46], [180, 73], [30, 73], [30, 46]]],
+          [[[50, 37], [87, 37], [87, 48], [50, 48], [50, 37]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 2,
+        "name": "Eurasian Continental Bloc",
+        "short": "EURASIAN CONTINENTAL",
+        "members": "Russia / Central Asia / Belarus",
+        "principle": "Sovereign vertical; buffer; sphere-of-influence",
+        "power_base": "Territorial depth, hydrocarbons, grain, arms, nuclear parity",
+        "ideological_pole": "Eurasianism / multipolar sovereigntism",
+        "shadow": "Vast land, thin economy — strength is brittle",
+        "friction": "Eastern European border; NATO expansion; Central Asian influence",
+        "mirror_of": 1,
+        "fill": "#B0413E",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[100, 20], [123, 20], [123, 42], [100, 42], [100, 20]]],
+          [[[124, 34], [130, 34], [130, 40], [124, 40], [124, 34]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 3,
+        "name": "Sinic Industrial Capacity",
+        "short": "SINIC INDUSTRIAL",
+        "members": "China / Belt & Road / Sinic East Asia",
+        "principle": "Mandate of Heaven — order, hierarchy, harmony-by-control",
+        "power_base": "Manufacturing supremacy, rare-earth processing, infra export",
+        "ideological_pole": "State-capitalist meritocratic authoritarianism",
+        "shadow": "Order needs control; control is fragile at the edges",
+        "friction": "Taiwan Strait; Nine-Dash Line vs ASEAN; US chip bans",
+        "mirror_of": 4,
+        "fill": "#D9A521",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[68, 8], [90, 8], [90, 32], [68, 32], [68, 8]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 4,
+        "name": "Indo-Pacific Democratic Core",
+        "short": "INDO-PACIFIC DEM.",
+        "members": "India / Subcontinent / QUAD-aligned",
+        "principle": "Order emerging FROM plurality (dharmic, not imposed)",
+        "power_base": "Demographic scale, software & pharma, Indian Ocean security",
+        "ideological_pole": "Civilizational democracy / strategic autonomy",
+        "shadow": "Pluralism vs majoritarian pull — unity is perpetual negotiation",
+        "friction": "Himalayan border with China; Malacca maritime balance",
+        "mirror_of": 3,
+        "fill": "#E8772E",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[10, 15], [63, 15], [63, 40], [10, 40], [10, 15]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 5,
+        "name": "Middle East Energy & Islamic Hub",
+        "short": "MENA / UMMAH",
+        "members": "GCC / Iran / MENA / Turkic belt",
+        "principle": "Ummah sovereignty — belief as the true polity",
+        "power_base": "Hydrocarbons, sovereign wealth, Hormuz/Bab-el-Mandeb chokeholds",
+        "ideological_pole": "Islamic sovereignty (contested: Sunni/Shia, Arab/Persian/Turk)",
+        "shadow": "One ummah in ideal, fractured in fact — deepest wars are internal",
+        "friction": "Red Sea shipping; Sunni-Shia proxy; Hormuz tension",
+        "mirror_of": 6,
+        "fill": "#1F9E6B",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[9, -35], [43, -35], [43, 14], [9, 14], [9, -35]]],
+          [[[-81, -55], [-35, -55], [-35, 12], [-81, 12], [-81, -55]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 6,
+        "name": "Global South & Critical Minerals",
+        "short": "GLOBAL SOUTH",
+        "members": "Sub-Saharan Africa / Latin America",
+        "principle": "Non-alignment; sovereignty-through-resources; decolonial dignity",
+        "power_base": "Transition metals (Li/Co/Cu), youth demography, swing-vote bloc",
+        "ideological_pole": "Global-South solidarity / post-colonial pragmatism",
+        "shadow": "Owns the resources, not the value chain — extraction repeats",
+        "friction": "Value-chain extraction vs local refining; BRI debt restructuring",
+        "mirror_of": 5,
+        "fill": "#C1663B",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [[[95, -11], [128, -11], [128, 7], [95, 7], [95, -11]]],
+          [[[117, 5], [127, 5], [127, 19], [117, 19], [117, 5]]]
+        ]
+      },
+      "properties": {
+        "layer": "vector_zone",
+        "vector_id": 7,
+        "name": "Nusantara Archipelagic Strait Pivot",
+        "short": "NUSANTARA PIVOT",
+        "members": "Malaysia / Indonesia / Philippines / Brunei / Singapore / maritime SEA",
+        "principle": "Archipelagic hinge — refract, don't align; monsoon logic",
+        "power_base": "Chokepoint sovereignty: ~⅓ of global trade + LNG passes the straits",
+        "ideological_pole": "Musyawarah / non-aligned centrality (ASEAN way)",
+        "shadow": "The pivot everyone wants — risk of being divided, not deciding",
+        "friction": "South China Sea EEZ encroachment; US-China dual dependency",
+        "mirror_of": 0,
+        "fill": "#17BEBB",
+        "note": "STYLIZED_SCHEMATIC — not a legal border"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-95.0, 38.0] },
+      "properties": { "layer": "vector_label", "vector_id": 1, "label": "V1 · WESTERN MARITIME", "fill": "#2E6FB0" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [90.0, 60.0] },
+      "properties": { "layer": "vector_label", "vector_id": 2, "label": "V2 · EURASIAN CONTINENTAL", "fill": "#B0413E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [112.0, 33.0] },
+      "properties": { "layer": "vector_label", "vector_id": 3, "label": "V3 · SINIC INDUSTRIAL", "fill": "#D9A521" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [78.0, 20.0] },
+      "properties": { "layer": "vector_label", "vector_id": 4, "label": "V4 · INDO-PACIFIC DEM.", "fill": "#E8772E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [42.0, 26.0] },
+      "properties": { "layer": "vector_label", "vector_id": 5, "label": "V5 · MENA / UMMAH", "fill": "#1F9E6B" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [22.0, -10.0] },
+      "properties": { "layer": "vector_label", "vector_id": 6, "label": "V6 · GLOBAL SOUTH", "fill": "#C1663B" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [112.0, -2.0] },
+      "properties": { "layer": "vector_label", "vector_id": 7, "label": "V7 · NUSANTARA PIVOT", "fill": "#17BEBB" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[-125, 38], [-75, 40], [-10, 50], [15, 50]] },
+      "properties": { "layer": "spine", "vector_id": 1, "name": "Trans-Atlantic Naval Artery", "stroke": "#2E6FB0" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[30, 55], [60, 56], [90, 55], [130, 52]] },
+      "properties": { "layer": "spine", "vector_id": 2, "name": "Trans-Siberian Land Spine", "stroke": "#B0413E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[105, 35], [80, 30], [60, 35], [45, 35]] },
+      "properties": { "layer": "spine", "vector_id": 3, "name": "New Silk Road Belt", "stroke": "#D9A521" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[75, 15], [90, 10], [100, 5]] },
+      "properties": { "layer": "spine", "vector_id": 4, "name": "Monsoon Sea Lane", "stroke": "#E8772E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[39.8, 21.4], [45.0, 25.0], [55.0, 25.0]] },
+      "properties": { "layer": "spine", "vector_id": 5, "name": "Mecca–Cairo–Istanbul Arc", "stroke": "#1F9E6B" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[-60, -15], [15, 0], [30, -20]] },
+      "properties": { "layer": "spine", "vector_id": 6, "name": "South-South Critical Mineral Belt", "stroke": "#C1663B" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "LineString", "coordinates": [[95, 5], [105, -2], [115, -8], [125, -6]] },
+      "properties": { "layer": "spine", "vector_id": 7, "name": "Singapore–Sunda–Lombok Archipelagic Spine", "stroke": "#17BEBB" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [101.0, 2.5] },
+      "properties": { "layer": "chokepoint", "name": "Strait of Malacca", "kind": "pivot", "desc": "~⅓ of global shipping; key oil/LNG lane", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [105.9, -6.0] },
+      "properties": { "layer": "chokepoint", "name": "Sunda Strait", "kind": "pivot", "desc": "Alt. archipelagic passage; deep-draft", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [115.7, -8.7] },
+      "properties": { "layer": "chokepoint", "name": "Lombok Strait", "kind": "pivot", "desc": "Deepest passage; VLCC/military transit", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [119.5, 24.5] },
+      "properties": { "layer": "chokepoint", "name": "Taiwan Strait", "kind": "flash", "desc": "Sinic ↔ Western flashpoint", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [56.25, 26.6] },
+      "properties": { "layer": "chokepoint", "name": "Strait of Hormuz", "kind": "energy", "desc": "~⅕ of world oil; Gulf export throat", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [43.3, 12.6] },
+      "properties": { "layer": "chokepoint", "name": "Bab-el-Mandeb", "kind": "energy", "desc": "Red Sea ↔ Indian Ocean; Suez feeder", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [32.35, 30.5] },
+      "properties": { "layer": "chokepoint", "name": "Suez Canal", "kind": "energy", "desc": "Europe ↔ Asia artery", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-79.7, 9.1] },
+      "properties": { "layer": "chokepoint", "name": "Panama Canal", "kind": "energy", "desc": "Atlantic ↔ Pacific artery", "note": "REAL_COORDINATE" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[22, 44], [40, 44], [40, 52], [22, 52], [22, 44]]] },
+      "properties": { "layer": "shatterbelt", "name": "E. Europe / Ukraine", "desc": "1 ↔ 2 : Sea vs Land frontier", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[118, 22], [123, 22], [123, 27], [118, 27], [118, 22]]] },
+      "properties": { "layer": "shatterbelt", "name": "Taiwan Strait", "desc": "3 ↔ 1 ↔ 7 : Order vs Open-sea", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[72, 30], [96, 30], [96, 37], [72, 37], [72, 30]]] },
+      "properties": { "layer": "shatterbelt", "name": "Himalaya / Kashmir", "desc": "3 ↔ 4 ↔ 5 : triple civilizational edge", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[34, 24], [52, 24], [52, 37], [34, 37], [34, 24]]] },
+      "properties": { "layer": "shatterbelt", "name": "Levant / Gulf", "desc": "5 internal + 1/2 proxy", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[-5, 12], [40, 12], [40, 18], [-5, 18], [-5, 12]]] },
+      "properties": { "layer": "shatterbelt", "name": "Sahel", "desc": "5 ↔ 6 : Faith belt meets Southern commons", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[108, 4], [120, 4], [120, 21], [108, 21], [108, 4]]] },
+      "properties": { "layer": "shatterbelt", "name": "South China Sea", "desc": "3 ↔ 7 ↔ 1 : THE PIVOT'S OWN FAULT LINE", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Polygon", "coordinates": [[[60, 36], [75, 36], [75, 48], [60, 48], [60, 36]]] },
+      "properties": { "layer": "shatterbelt", "name": "Central Asia", "desc": "2 ↔ 3 ↔ 5 : Eurasian triple-point friction", "stroke": "#E1341E", "fill": "#E1341E" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [138.2, 36.2] },
+      "properties": { "layer": "hinge_node", "name": "Japan", "desc": "3 ↔ 1 : Sinic geography, Western alignment" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [134.0, -25.0] },
+      "properties": { "layer": "hinge_node", "name": "Australia", "desc": "1 ↔ 7 : Western polity, Nusantara approaches" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [35.0, 39.0] },
+      "properties": { "layer": "hinge_node", "name": "Turkey", "desc": "5 ↔ 1/2 : ummah + NATO seam" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [40.5, 9.1] },
+      "properties": { "layer": "hinge_node", "name": "Ethiopia", "desc": "5 ↔ 6 : faith belt + Southern commons" }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [69.3, 30.0] },
+      "properties": { "layer": "hinge_node", "name": "Pakistan", "desc": "4 ↔ 5 : subcontinent + ummah seam" }
+    }
+  ]
+}

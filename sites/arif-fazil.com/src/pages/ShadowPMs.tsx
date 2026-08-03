@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { SHADOW_PMS, type ShadowPM } from '@/data/shadowPms';
 
 const VERDICT_COLORS: Record<ShadowPM['verdict'], { bg: string; text: string; label: string }> = {
@@ -25,6 +26,16 @@ export function ShadowPMs() {
           <p className="font-mono text-[0.6rem] text-forge-dim uppercase tracking-widest">
             Δ-ONLY · Bayang = Nyata · Dari Rekod Umum
           </p>
+          <div className="flex flex-wrap gap-3 mt-6">
+            <Link to="/politics/shadow/board"
+              className="font-mono text-xs uppercase tracking-wider px-4 py-2 border border-forge-orange/40 text-forge-orange hover:bg-forge-orange hover:text-forge-black transition-colors">
+              🏛 Shadow Board Org-Chart ↗
+            </Link>
+            <Link to="/politics/shadow/derita"
+              className="font-mono text-xs uppercase tracking-wider px-4 py-2 border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/20 transition-colors">
+              💔 RASA DERITA Map ↗
+            </Link>
+          </div>
         </div>
       </section>
 

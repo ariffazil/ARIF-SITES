@@ -1,0 +1,1436 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "title": "NUSANTARA 7-Vector Geopolitical Atlas",
+    "author": "ARIF — GEOX / arifOS",
+    "model": "3 mirror-pairs + 1 pivot",
+    "mirror_pairs": [
+      "1<->2 specify/hold (Sea/Land)",
+      "3<->4 align/resonate (Order/Plurality)",
+      "5<->6 witness/reclaim (Faith/Periphery)"
+    ],
+    "pivot": "7 NUSANTARA (refract) — the default, not the only. Blindness on BOTH faces.",
+    "epistemic": {
+      "vector_zone": "STYLIZED_SCHEMATIC",
+      "chokepoint": "REAL_COORDINATE",
+      "spine": "INDICATIVE",
+      "shatterbelt": "INTERPRETIVE",
+      "vector_label": "CENTROID_LABEL",
+      "hinge_node": "SEAM_STATE"
+    },
+    "palette": {
+      "1": "#2E6FB0",
+      "2": "#B0413E",
+      "3": "#D9A521",
+      "4": "#E8772E",
+      "5": "#1F9E6B",
+      "6": "#C1663B",
+      "7": "#17BEBB"
+    },
+    "legend": "The world is not blocs but three oppositions refracting through one crossroads. Whoever reads the straits, reads the world.",
+    "schema_version": "2.0.0",
+    "schema_note": "Dual-namespace (power + meaning). Same 7-vector skeleton, two substrate lenses. Seven invariant verbs: specify · hold · align · resonate · witness · reclaim · refract."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                -128,
+                25
+              ],
+              [
+                -60,
+                25
+              ],
+              [
+                -60,
+                50
+              ],
+              [
+                -128,
+                50
+              ],
+              [
+                -128,
+                25
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -11,
+                40
+              ],
+              [
+                22,
+                40
+              ],
+              [
+                22,
+                61
+              ],
+              [
+                -11,
+                61
+              ],
+              [
+                -11,
+                40
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                113,
+                -40
+              ],
+              [
+                154,
+                -40
+              ],
+              [
+                154,
+                -11
+              ],
+              [
+                113,
+                -11
+              ],
+              [
+                113,
+                -40
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 1,
+        "short": "WESTERN MARITIME",
+        "fill": "#2E6FB0",
+        "verb": "specify",
+        "power": {
+          "sees": "blue-water maritime order",
+          "thesis": "Rules-based sea order: USD reserve, NATO Article 5, advanced semiconductor IP, and international contract law enforcement.",
+          "gift": "precision — builds compilers, courts, and treaties that scale globally",
+          "blindness": "reification — believes language describes reality rather than creating it",
+          "levers": [
+            "USD FX Clearing",
+            "Chip Export Bans",
+            "NATO Article 5"
+          ],
+          "frictionPoints": [
+            "South China Sea freedom of navigation",
+            "Taiwan Strait defense",
+            "Ukraine Eastern frontier"
+          ]
+        },
+        "meaning": {
+          "sees": "language as code",
+          "thesis": "Language is a formal system — syntax, semantics, rules, contracts. Frege's predicate logic, Chomsky's universal grammar, Austin's performative (Oxford 1955): 'I name this ship' IS the naming. Words that do rather than describe.",
+          "gift": "gave us programming languages, international law, the performative — the vocabulary to state that arif_init creates a session",
+          "blindness": "believes language describes reality rather than creating it — built compilers but didn't understand why arif_init creates a session until Austin",
+          "exemplars": [
+            "Frege (Begriffsschrift, 1879)",
+            "early Wittgenstein (Tractatus, 1922)",
+            "J.L. Austin (How to Do Things with Words, 1955)"
+          ]
+        },
+        "mirror_of": 2,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                30,
+                46
+              ],
+              [
+                180,
+                46
+              ],
+              [
+                180,
+                73
+              ],
+              [
+                30,
+                73
+              ],
+              [
+                30,
+                46
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                50,
+                37
+              ],
+              [
+                87,
+                37
+              ],
+              [
+                87,
+                48
+              ],
+              [
+                50,
+                48
+              ],
+              [
+                50,
+                37
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 2,
+        "short": "EURASIAN CONTINENTAL",
+        "fill": "#B0413E",
+        "verb": "hold",
+        "power": {
+          "sees": "continental territorial depth",
+          "thesis": "Vast territorial depth, energy & grain export, buffer state security, and nuclear strategic parity.",
+          "gift": "depth — the novel, the epic, the untranslatable Russian toska",
+          "blindness": "possessiveness — every word carries the weight of the soil; translation is incursion",
+          "levers": [
+            "Pipeline Hydrocarbons",
+            "Nuclear Parity",
+            "Fertilizer & Grain"
+          ],
+          "frictionPoints": [
+            "NATO Eastern expansion",
+            "Central Asian trade routes",
+            "Caucasus regional stability"
+          ]
+        },
+        "meaning": {
+          "sees": "language as territory",
+          "thesis": "Language is sovereign ground. Words are borders. Dialects are buffer zones. Bakhtin's dialogism: every utterance is a battlefield between centripetal (centralizing) and centrifugal (dispersing) forces.",
+          "gift": "dialogism — language as current, theorized from the Heartland. Bakhtin saw the bridge from axis ②.",
+          "blindness": "can't let go — translation is not discovery; it's incursion. The word is soil.",
+          "exemplars": [
+            "Bakhtin (The Dialogic Imagination, 1930s)",
+            "Dostoevsky (the untranslatable soul)",
+            "Russian toska — no English equivalent"
+          ]
+        },
+        "mirror_of": 1,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                100,
+                20
+              ],
+              [
+                123,
+                20
+              ],
+              [
+                123,
+                42
+              ],
+              [
+                100,
+                42
+              ],
+              [
+                100,
+                20
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                124,
+                34
+              ],
+              [
+                130,
+                34
+              ],
+              [
+                130,
+                40
+              ],
+              [
+                124,
+                40
+              ],
+              [
+                124,
+                34
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 3,
+        "short": "SINIC INDUSTRIAL",
+        "fill": "#D9A521",
+        "verb": "align",
+        "power": {
+          "sees": "manufacturing supremacy + state-directed capitalism",
+          "thesis": "Manufacturing supremacy, rare-earth processing monopoly, infrastructure export via Belt & Road, state-directed capitalism.",
+          "gift": "civilizational scale — language is the tool that orders society from above",
+          "blindness": "rigidity — the mandate flows down; it doesn't bubble up. The Emperor's edict rearranges the world but doesn't listen.",
+          "levers": [
+            "Rare Earth Metals",
+            "BRI Loans",
+            "Global Manufacturing Share"
+          ],
+          "frictionPoints": [
+            "Taiwan unification claim",
+            "Nine-Dash Line maritime EEZ",
+            "US tech embargoes"
+          ]
+        },
+        "meaning": {
+          "sees": "language as harmony",
+          "thesis": "Language is alignment with the cosmic order. The character IS the worldview — 和 (harmony), 道 (the Way), 正名 (zhèngmíng, the Rectification of Names). Confucius: 'If names are not correct, language is not in accord with truth.'",
+          "gift": "language as civilization — the brushstroke is not representation; it's ritual",
+          "blindness": "the hierarchy of who speaks and who listens — the mandate flows down, never bubbles up",
+          "exemplars": [
+            "Confucius (zhèngmíng — the Rectification of Names)",
+            "和 hé — harmony encoded in a single character",
+            "the brushstroke as ritual, not representation"
+          ]
+        },
+        "mirror_of": 4,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                68,
+                8
+              ],
+              [
+                90,
+                8
+              ],
+              [
+                90,
+                32
+              ],
+              [
+                68,
+                32
+              ],
+              [
+                68,
+                8
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 4,
+        "short": "INDO-PACIFIC DEM.",
+        "fill": "#E8772E",
+        "verb": "resonate",
+        "power": {
+          "sees": "demographic scale + strategic multi-alignment",
+          "thesis": "Demographic scale, strategic non-alignment (multi-alignment), IT/pharma export, Indian Ocean maritime security.",
+          "gift": "plurality — order emerges from infinite interplay, not imposed structure",
+          "blindness": "infinite plurality can become infinite ambiguity — when everything resonates, nothing anchors",
+          "levers": [
+            "IT/Services Supply",
+            "QUAD Participation",
+            "Strategic Non-Alignment"
+          ],
+          "frictionPoints": [
+            "Himalayan border friction (LAC)",
+            "Malacca Strait balance",
+            "Pakistan border tension"
+          ]
+        },
+        "meaning": {
+          "sees": "language as vibration",
+          "thesis": "Language is śabda — sound that creates reality. AUM precedes the universe. The mantra IS the deity, not a description. Pāṇini's Aṣṭādhyāyī (4th century BCE): 3,959 rules generating Sanskrit with algorithmic precision.",
+          "gift": "language as physics — meaning has layers: literal (vācyārtha), suggested (dhvani), meaning from the space between words",
+          "blindness": "infinite resonance can become infinite ambiguity — when everything vibrates, nothing grounds",
+          "exemplars": [
+            "Pāṇini (Aṣṭādhyāyī, ~350 BCE — 3,959 formal grammar rules)",
+            "AUM — sound that precedes the universe",
+            "dhvani — the suggested meaning, the space between"
+          ]
+        },
+        "mirror_of": 3,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                10,
+                15
+              ],
+              [
+                63,
+                15
+              ],
+              [
+                63,
+                40
+              ],
+              [
+                10,
+                40
+              ],
+              [
+                10,
+                15
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 5,
+        "short": "MENA / UMMAH",
+        "fill": "#1F9E6B",
+        "verb": "witness",
+        "power": {
+          "sees": "global crude & LNG reserves + Islamic cultural leadership",
+          "thesis": "Global crude & LNG reserves, sovereign wealth fund capital deployment, Islamic cultural leadership, maritime chokepoints (Hormuz, Bab-el-Mandeb).",
+          "gift": "the bridge between human and divine — language as witness, not description",
+          "blindness": "when revelation becomes the only valid language, translation becomes impossible — the gap between sacred text and lived reality widens",
+          "levers": [
+            "OPEC+ Quotas",
+            "SWF Capital ($3T+)",
+            "LNG & Crude Exports"
+          ],
+          "frictionPoints": [
+            "Red Sea / Bab-el-Mandeb threats",
+            "Strait of Hormuz transit",
+            "Israel-Palestine escalation"
+          ]
+        },
+        "meaning": {
+          "sees": "language as revelation",
+          "thesis": "The Qur'an IS the word of God — not a representation, but divine truth itself descended into Arabic. The doctrine of i'jāz (inimitability): no human can produce language equal to it. 'Kun fayakun' — 'Be, and it is.' The ultimate naming-as-creation.",
+          "gift": "language as the bridge between human and divine — recitation (tajwīd) is not reading; it's communion",
+          "blindness": "when revelation becomes the only valid language, the gap between the sacred text and lived reality widens — translation becomes heresy",
+          "exemplars": [
+            "Qur'an — i'jāz (inimitability) as the ultimate language claim",
+            "kun fayakun — 'Be, and it is' (naming as creation)",
+            "tajwīd — recitation as communion, not reading"
+          ]
+        },
+        "mirror_of": 6,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                9,
+                -35
+              ],
+              [
+                43,
+                -35
+              ],
+              [
+                43,
+                14
+              ],
+              [
+                9,
+                14
+              ],
+              [
+                9,
+                -35
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -81,
+                -55
+              ],
+              [
+                -35,
+                -55
+              ],
+              [
+                -35,
+                12
+              ],
+              [
+                -81,
+                12
+              ],
+              [
+                -81,
+                -55
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 6,
+        "short": "GLOBAL SOUTH",
+        "fill": "#C1663B",
+        "verb": "reclaim",
+        "power": {
+          "sees": "critical minerals + post-colonial voting bloc",
+          "thesis": "Energy-transition raw materials (Lithium, Cobalt, Copper, Nickel), massive youth demographic, post-colonial non-aligned voting block.",
+          "gift": "the awareness that every language choice is political — oral, communal, creole as synthesis-under-duress",
+          "blindness": "the trauma lens can obscure genuine universality — not every English sentence is colonialism",
+          "levers": [
+            "Lithium & Cobalt Reserves",
+            "UN Voting Block",
+            "Youth Labor Force"
+          ],
+          "frictionPoints": [
+            "Value-chain extraction vs local refining",
+            "Debt restructuring",
+            "Resource sovereignty"
+          ]
+        },
+        "meaning": {
+          "sees": "language as resistance",
+          "thesis": "Language is what was taken, and what must be reclaimed. Fanon: 'To speak a language is to take on a world, a culture.' Ngũgĩ wa Thiong'o wrote Decolonising the Mind in Gikuyu — then translated it himself — because the colonizer's language is a structure of power.",
+          "gift": "oral over literate, creole as synthesis-under-duress, language as the first resource extracted by colonizers",
+          "blindness": "the trauma lens can obscure universality — Glissant saw the bridge (Poétique de la Relation) from axis ⑥, not ⑦",
+          "exemplars": [
+            "Fanon (Black Skin, White Masks, 1952)",
+            "Ngũgĩ wa Thiong'o (Decolonising the Mind, 1986)",
+            "Glissant (Poétique de la Relation, 1990 — creolisation, meaning-in-passage)"
+          ]
+        },
+        "mirror_of": 5,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                95,
+                -11
+              ],
+              [
+                128,
+                -11
+              ],
+              [
+                128,
+                7
+              ],
+              [
+                95,
+                7
+              ],
+              [
+                95,
+                -11
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                117,
+                5
+              ],
+              [
+                127,
+                5
+              ],
+              [
+                127,
+                19
+              ],
+              [
+                117,
+                19
+              ],
+              [
+                117,
+                5
+              ]
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "vector_id": 7,
+        "short": "NUSANTARA PIVOT",
+        "fill": "#17BEBB",
+        "verb": "refract",
+        "power": {
+          "sees": "chokepoint sovereignty",
+          "thesis": "The Crossroads of World Trade: control over Malacca, Sunda, and Lombok straits. Refracts global trade without taking military sides. ~⅓ of global trade + LNG passes the straits. Monsoon logic, not superpower alignment.",
+          "gift": "refracts global trade without taking sides — ASEAN neutrality as architecture, not cowardice",
+          "blindness": "divided rather than deciding — the pivot everyone wants, risk of being torn apart",
+          "levers": [
+            "Strait of Malacca transit (~30% global trade)",
+            "Penang chip packaging",
+            "ASEAN neutrality"
+          ],
+          "frictionPoints": [
+            "South China Sea EEZ encroachment",
+            "US-China dual dependency",
+            "Sarawak/Sabah PDA1974 gas rights"
+          ]
+        },
+        "meaning": {
+          "sees": "language as flow",
+          "thesis": "The Crossroads of Meaning: language enters the strait from one direction and exits transformed. The pantun — four-line verse where the first couplet sets an image and the final couplet reframes it — is the purest expression: meaning is never direct, never fixed, always bending. Arif's BM-English code-switch isn't two languages — it's one strait owned.",
+          "gift": "holds Wittgenstein's 'limits of language' AND kun fayakun simultaneously without contradiction — the bridge is the mother tongue, not a dissident's breakthrough",
+          "blindness": "mistakes being passed-through for doing the seeing — the strait doesn't understand the ships, it just touches all of them. The default, not the only.",
+          "exemplars": [
+            "pantun — four-line verse: image refracted into meaning",
+            "Penang BM-English code-switch — the unmarked case",
+            "Melaka contact zone — Sanskrit, Arabic, Portuguese, Dutch, English, Tamil, Chinese"
+          ]
+        },
+        "mirror_of": 0,
+        "note": "STYLIZED_SCHEMATIC — not a legal border",
+        "layer": "vector_zone"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.0,
+          38.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 1,
+        "label": "V1 · WESTERN MARITIME",
+        "fill": "#2E6FB0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.0,
+          60.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 2,
+        "label": "V2 · EURASIAN CONTINENTAL",
+        "fill": "#B0413E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.0,
+          33.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 3,
+        "label": "V3 · SINIC INDUSTRIAL",
+        "fill": "#D9A521"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.0,
+          20.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 4,
+        "label": "V4 · INDO-PACIFIC DEM.",
+        "fill": "#E8772E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.0,
+          26.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 5,
+        "label": "V5 · MENA / UMMAH",
+        "fill": "#1F9E6B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0,
+          -10.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 6,
+        "label": "V6 · GLOBAL SOUTH",
+        "fill": "#C1663B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          112.0,
+          -2.0
+        ]
+      },
+      "properties": {
+        "layer": "vector_label",
+        "vector_id": 7,
+        "label": "V7 · NUSANTARA PIVOT",
+        "fill": "#17BEBB"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -125,
+            38
+          ],
+          [
+            -75,
+            40
+          ],
+          [
+            -10,
+            50
+          ],
+          [
+            15,
+            50
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 1,
+        "name": "Trans-Atlantic Naval Artery",
+        "stroke": "#2E6FB0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            30,
+            55
+          ],
+          [
+            60,
+            56
+          ],
+          [
+            90,
+            55
+          ],
+          [
+            130,
+            52
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 2,
+        "name": "Trans-Siberian Land Spine",
+        "stroke": "#B0413E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            105,
+            35
+          ],
+          [
+            80,
+            30
+          ],
+          [
+            60,
+            35
+          ],
+          [
+            45,
+            35
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 3,
+        "name": "New Silk Road Belt",
+        "stroke": "#D9A521"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75,
+            15
+          ],
+          [
+            90,
+            10
+          ],
+          [
+            100,
+            5
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 4,
+        "name": "Monsoon Sea Lane",
+        "stroke": "#E8772E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            39.8,
+            21.4
+          ],
+          [
+            45.0,
+            25.0
+          ],
+          [
+            55.0,
+            25.0
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 5,
+        "name": "Mecca–Cairo–Istanbul Arc",
+        "stroke": "#1F9E6B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -60,
+            -15
+          ],
+          [
+            15,
+            0
+          ],
+          [
+            30,
+            -20
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 6,
+        "name": "South-South Critical Mineral Belt",
+        "stroke": "#C1663B"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            95,
+            5
+          ],
+          [
+            105,
+            -2
+          ],
+          [
+            115,
+            -8
+          ],
+          [
+            125,
+            -6
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "spine",
+        "vector_id": 7,
+        "name": "Singapore–Sunda–Lombok Archipelagic Spine",
+        "stroke": "#17BEBB"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          101.0,
+          2.5
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Strait of Malacca",
+        "kind": "pivot",
+        "desc": "~⅓ of global shipping; key oil/LNG lane",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.9,
+          -6.0
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Sunda Strait",
+        "kind": "pivot",
+        "desc": "Alt. archipelagic passage; deep-draft",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.7,
+          -8.7
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Lombok Strait",
+        "kind": "pivot",
+        "desc": "Deepest passage; VLCC/military transit",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          119.5,
+          24.5
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Taiwan Strait",
+        "kind": "flash",
+        "desc": "Sinic ↔ Western flashpoint",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          56.25,
+          26.6
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Strait of Hormuz",
+        "kind": "energy",
+        "desc": "~⅕ of world oil; Gulf export throat",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3,
+          12.6
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Bab-el-Mandeb",
+        "kind": "energy",
+        "desc": "Red Sea ↔ Indian Ocean; Suez feeder",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.35,
+          30.5
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Suez Canal",
+        "kind": "energy",
+        "desc": "Europe ↔ Asia artery",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.7,
+          9.1
+        ]
+      },
+      "properties": {
+        "layer": "chokepoint",
+        "name": "Panama Canal",
+        "kind": "energy",
+        "desc": "Atlantic ↔ Pacific artery",
+        "note": "REAL_COORDINATE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              22,
+              44
+            ],
+            [
+              40,
+              44
+            ],
+            [
+              40,
+              52
+            ],
+            [
+              22,
+              52
+            ],
+            [
+              22,
+              44
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "E. Europe / Ukraine",
+        "desc": "1 ↔ 2 : Sea vs Land frontier",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              118,
+              22
+            ],
+            [
+              123,
+              22
+            ],
+            [
+              123,
+              27
+            ],
+            [
+              118,
+              27
+            ],
+            [
+              118,
+              22
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "Taiwan Strait",
+        "desc": "3 ↔ 1 ↔ 7 : Order vs Open-sea",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72,
+              30
+            ],
+            [
+              96,
+              30
+            ],
+            [
+              96,
+              37
+            ],
+            [
+              72,
+              37
+            ],
+            [
+              72,
+              30
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "Himalaya / Kashmir",
+        "desc": "3 ↔ 4 ↔ 5 : triple civilizational edge",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              24
+            ],
+            [
+              52,
+              24
+            ],
+            [
+              52,
+              37
+            ],
+            [
+              34,
+              37
+            ],
+            [
+              34,
+              24
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "Levant / Gulf",
+        "desc": "5 internal + 1/2 proxy",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -5,
+              12
+            ],
+            [
+              40,
+              12
+            ],
+            [
+              40,
+              18
+            ],
+            [
+              -5,
+              18
+            ],
+            [
+              -5,
+              12
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "Sahel",
+        "desc": "5 ↔ 6 : Faith belt meets Southern commons",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              108,
+              4
+            ],
+            [
+              120,
+              4
+            ],
+            [
+              120,
+              21
+            ],
+            [
+              108,
+              21
+            ],
+            [
+              108,
+              4
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "South China Sea",
+        "desc": "3 ↔ 7 ↔ 1 : THE PIVOT'S OWN FAULT LINE",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              60,
+              36
+            ],
+            [
+              75,
+              36
+            ],
+            [
+              75,
+              48
+            ],
+            [
+              60,
+              48
+            ],
+            [
+              60,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "layer": "shatterbelt",
+        "name": "Central Asia",
+        "desc": "2 ↔ 3 ↔ 5 : Eurasian triple-point friction",
+        "stroke": "#E1341E",
+        "fill": "#E1341E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.2,
+          36.2
+        ]
+      },
+      "properties": {
+        "layer": "hinge_node",
+        "name": "Japan",
+        "desc": "3 ↔ 1 : Sinic geography, Western alignment"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          134.0,
+          -25.0
+        ]
+      },
+      "properties": {
+        "layer": "hinge_node",
+        "name": "Australia",
+        "desc": "1 ↔ 7 : Western polity, Nusantara approaches"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0,
+          39.0
+        ]
+      },
+      "properties": {
+        "layer": "hinge_node",
+        "name": "Turkey",
+        "desc": "5 ↔ 1/2 : ummah + NATO seam"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.5,
+          9.1
+        ]
+      },
+      "properties": {
+        "layer": "hinge_node",
+        "name": "Ethiopia",
+        "desc": "5 ↔ 6 : faith belt + Southern commons"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.3,
+          30.0
+        ]
+      },
+      "properties": {
+        "layer": "hinge_node",
+        "name": "Pakistan",
+        "desc": "4 ↔ 5 : subcontinent + ummah seam"
+      }
+    }
+  ]
+}

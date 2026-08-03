@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NUSANTARA 7-Vector Geopolitical Map Engine</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<style>
+  html, body, #map { width: 100%; height: 100%; margin: 0; padding: 0; background: #0b1622; }
+  .leaflet-container { background: #0b1622 !important; }
+  .info-legend {
+    background: rgba(11, 22, 34, 0.9);
+    border: 1px solid #1e2d3d;
+    padding: 12px;
+    color: #e8eef4;
+    font-family: monospace;
+    font-size: 11px;
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    max-width: 280px;
+  }
+  .info-legend h4 { margin: 0 0 6px; color: #17BEBB; font-size: 13px; text-transform: uppercase; }
+  .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+  .legend-color { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+  const map = L.map('map', {
+    center: [2, 108],
+    zoom: 3,
+    minZoom: 2,
+    worldCopyJump: true
+  });
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap &copy; CARTO',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+
+  let atlasData = null;
+
+  fetch('/data/nusantara_atlas.geojson')
+    .then(r => r.json())
+    .then(data => {
+      atlasData = data;
+      renderLayers(data);
+    })
+    .catch(err => console.error("Failed to load atlas GeoJSON:", err));
+
+  function renderLayers(data) {
+    // 1. Vector Zones (MultiPolygons)
+    L.geoJSON(data, {
+      filter: f => f.properties.layer === 'vector_zone',
+      style: f => ({
+        color: f.properties.fill || '#17BEBB',
+        weight: 1,
+        fillColor: f.properties.fill || '#17BEBB',
+        fillOpacity: f.properties.vector_id === 7 ? 0.35 : 0.18
+      }),
+      onEachFeature: (f, layer) => {
+        const p = f.properties;
+        layer.bindTooltip(`
+          <div style="font-family:monospace;font-size:12px;padding:4px">
+            <strong style="color:${p.fill}">${p.short}</strong> (Vector ${p.vector_id})<br/>
+            <em>${p.principle}</em><br/>
+            <span style="color:#94a3b8;font-size:10px">Members: ${p.members}</span>
+          </div>
+        `, { sticky: true });
+      }
+    }).addTo(map);
+
+    // 2. Spines (LineStrings)
+    L.geoJSON(data, {
+      filter: f => f.properties.layer === 'spine',
+      style: f => ({
+        color: f.properties.stroke || '#ffffff',
+        weight: 2,
+        dashArray: '4, 4',
+        opacity: 0.8
+      })
+    }).addTo(map);
+
+    // 3. Shatterbelts (Polygons - Red hatching)
+    L.geoJSON(data, {
+      filter: f => f.properties.layer === 'shatterbelt',
+      style: () => ({
+        color: '#E1341E',
+        weight: 1.5,
+        fillColor: '#E1341E',
+        fillOpacity: 0.25,
+        dashArray: '2, 4'
+      }),
+      onEachFeature: (f, layer) => {
+        const p = f.properties;
+        layer.bindTooltip(`
+          <div style="font-family:monospace;font-size:11px;color:#ef4444">
+            <strong>⚡ SHATTERBELT: ${p.name}</strong><br/>
+            ${p.desc}
+          </div>
+        `, { sticky: true });
+      }
+    }).addTo(map);
+
+    // 4. Chokepoints (Points)
+    L.geoJSON(data, {
+      filter: f => f.properties.layer === 'chokepoint',
+      pointToLayer: (f, latlng) => {
+        const p = f.properties;
+        const color = p.kind === 'pivot' ? '#17BEBB' : (p.kind === 'flash' ? '#E1341E' : '#FFD34E');
+        const radius = p.kind === 'pivot' ? 8 : 6;
+        return L.circleMarker(latlng, {
+          radius: radius,
+          color: color,
+          fillColor: color,
+          fillOpacity: 0.9,
+          weight: 2
+        }).bindTooltip(`
+          <div style="font-family:monospace;font-size:11px">
+            <strong style="color:${color}">⚓ ${p.name}</strong> (${p.kind.toUpperCase()})<br/>
+            ${p.desc}
+          </div>
+        `, { sticky: true });
+      }
+    }).addTo(map);
+
+    // 5. Hinge Nodes (Points)
+    L.geoJSON(data, {
+      filter: f => f.properties.layer === 'hinge_node',
+      pointToLayer: (f, latlng) => {
+        const p = f.properties;
+        return L.circleMarker(latlng, {
+          radius: 5,
+          color: '#ffffff',
+          fillColor: '#94a3b8',
+          fillOpacity: 0.9,
+          weight: 1
+        }).bindTooltip(`
+          <div style="font-family:monospace;font-size:11px">
+            <strong>📍 ${p.name} (Seam Node)</strong><br/>
+            ${p.desc}
+          </div>
+        `, { sticky: true });
+      }
+    }).addTo(map);
+  }
+
+  // Legend control
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function() {
+    const div = L.DomUtil.create('div', 'info-legend');
+    div.innerHTML = `
+      <h4>7-Vector Geopolitical Atlas</h4>
+      <div class="legend-item"><span class="legend-color" style="background:#17BEBB"></span> 7. NUSANTARA PIVOT</div>
+      <div class="legend-item"><span class="legend-color" style="background:#2E6FB0"></span> 1. WESTERN MARITIME</div>
+      <div class="legend-item"><span class="legend-color" style="background:#B0413E"></span> 2. EURASIAN CONTINENTAL</div>
+      <div class="legend-item"><span class="legend-color" style="background:#D9A521"></span> 3. SINIC INDUSTRIAL</div>
+      <div class="legend-item"><span class="legend-color" style="background:#E8772E"></span> 4. INDO-PACIFIC DEM.</div>
+      <div class="legend-item"><span class="legend-color" style="background:#1F9E6B"></span> 5. MENA / UMMAH</div>
+      <div class="legend-item"><span class="legend-color" style="background:#C1663B"></span> 6. GLOBAL SOUTH</div>
+      <div class="legend-item"><span class="legend-color" style="background:#E1341E"></span> ⚡ Shatterbelt Friction</div>
+    `;
+    return div;
+  };
+  legend.addTo(map);
+</script>
+</body>
+</html>

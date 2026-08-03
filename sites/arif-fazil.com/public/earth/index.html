@@ -494,6 +494,135 @@ footer a:hover{color:var(--accent-cyan)}
             <div><span>founder wells</span> · BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</div>
           </div>
         </div>
+
+        <!-- 3D MALAY BASIN STRATIGRAPHY CROSS-SECTION INSTRUMENT -->
+        <div id="basinInstrument" style="background:#080b12; border:1px solid var(--border-glow); border-radius:12px; padding:1.5rem; margin-top:1.5rem; font-family:var(--sans);">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-dim); padding-bottom:.8rem; margin-bottom:1rem; flex-wrap:wrap; gap:.5rem;">
+            <div>
+              <span style="font-family:var(--mono); font-size:.65rem; color:var(--accent-cyan); letter-spacing:2px; font-weight:600;">GEOX 3D INSTRUMENT</span>
+              <h4 style="font-size:1.1rem; color:#fff; margin-top:2px;">Malay Basin Stratigraphic Cross-Section & Reservoir Profile</h4>
+            </div>
+            <div style="font-family:var(--mono); font-size:.65rem; color:var(--accent-gold); background:rgba(212,175,55,.1); padding:3px 8px; border-radius:4px; border:1px solid rgba(212,175,55,.25);">
+              EVIDENCE TIER: OBS (BEKANTAN-1 LOGS)
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.2rem; min-height:280px;" id="basinGrid">
+            <!-- Stratigraphy Visual Stack -->
+            <div style="display:flex; flex-direction:column; gap:4px; font-family:var(--mono); font-size:.7rem;" id="stratStack">
+              <div class="strat-layer" data-layer="B_D" onclick="inspectLayer(this)" style="background:rgba(59,130,246,.2); border:1px solid #3b82f6; padding:.7rem; border-radius:6px; cursor:pointer; color:#93c5fd; transition:all .2s;">
+                <strong>GROUP B & D</strong> · Post-Rift Marine Mudstone (Regional Seal) · <em>0 – 800m</em>
+              </div>
+              <div class="strat-layer active" data-layer="E_H" onclick="inspectLayer(this)" style="background:rgba(245,158,11,.25); border:1px solid #f59e0b; padding:.7rem; border-radius:6px; cursor:pointer; color:#fde047; transition:all .2s;">
+                <strong>GROUP E & H</strong> · Fluvio-Deltaic Main Reservoir Sands ★ (BEKANTAN-1) · <em>800 – 2,200m</em>
+              </div>
+              <div class="strat-layer" data-layer="I_J" onclick="inspectLayer(this)" style="background:rgba(34,197,94,.2); border:1px solid #22c55e; padding:.7rem; border-radius:6px; cursor:pointer; color:#86efac; transition:all .2s;">
+                <strong>GROUP I & J</strong> · Coal-Bearing Delta Plain & Source Rock · <em>2,200 – 3,200m</em>
+              </div>
+              <div class="strat-layer" data-layer="K_L" onclick="inspectLayer(this)" style="background:rgba(239,68,68,.2); border:1px solid #ef4444; padding:.7rem; border-radius:6px; cursor:pointer; color:#fca5a5; transition:all .2s;">
+                <strong>GROUP K & L</strong> · Pre-Rift Lacustrine Graben Fill · <em>3,200 – 4,500m</em>
+              </div>
+              <div class="strat-layer" data-layer="BASEMENT" onclick="inspectLayer(this)" style="background:rgba(148,163,184,.15); border:1px solid #64748b; padding:.7rem; border-radius:6px; cursor:pointer; color:#cbd5e1; transition:all .2s;">
+                <strong>PRE-TERTIARY BASEMENT</strong> · Fractured Granite & Metasediment · <em>&gt;4,500m</em>
+              </div>
+            </div>
+
+            <!-- Layer Properties Inspector -->
+            <div style="background:rgba(16,16,24,.9); border:1px solid var(--border-dim); border-radius:8px; padding:1rem; font-family:var(--mono); font-size:.7rem;" id="layerInspector">
+              <div style="color:var(--accent-gold); font-weight:700; margin-bottom:.5rem; text-transform:uppercase; border-bottom:1px solid var(--border-dim); padding-bottom:.3rem;" id="insTitle">
+                GROUP E & H RESERVOIR
+              </div>
+              <div style="display:flex; flex-direction:column; gap:.4rem; color:var(--text-secondary);" id="insDetails">
+                <div><span style="color:#fff;">Depth Interval:</span> 800 – 2,200m</div>
+                <div><span style="color:#fff;">Lithology:</span> Clean Stacked Deltaic Sandstones</div>
+                <div><span style="color:#fff;">Avg Porosity (∅):</span> 24% – 28%</div>
+                <div><span style="color:#fff;">Permeability (k):</span> 350 – 1,200 mD</div>
+                <div><span style="color:#fff;">Pore Pressure:</span> Hydrostatic (0.433 psi/ft)</div>
+                <div><span style="color:#fff;">Thermal Gradient:</span> 48°C/km</div>
+                <div><span style="color:#fff;">Founder Pick:</span> BEKANTAN-1 Gas Pay (48m net)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script>
+        const LAYER_DATA = {
+          B_D: {
+            title: "GROUP B & D · REGIONAL SEAL",
+            depth: "0 – 800m",
+            lithology: "Hemipelagic Marine Claystone & Mudstone",
+            porosity: "12% – 18% (Compacted)",
+            perm: "< 0.01 mD (Impermeable Seal)",
+            pressure: "Hydrostatic",
+            thermal: "35°C/km",
+            pick: "Top Regional Seal across Malay Basin Block PM-301"
+          },
+          E_H: {
+            title: "GROUP E & H · MAIN RESERVOIR ★",
+            depth: "800 – 2,200m",
+            lithology: "Clean Stacked Deltaic Sandstones",
+            porosity: "24% – 28%",
+            perm: "350 – 1,200 mD",
+            pressure: "Hydrostatic (0.433 psi/ft)",
+            thermal: "48°C/km",
+            pick: "BEKANTAN-1 Gas Pay (48m net pay, 82% Sw)"
+          },
+          I_J: {
+            title: "GROUP I & J · SOURCE & COAL",
+            depth: "2,200 – 3,200m",
+            lithology: "Interbedded Deltaic Coals & Carbonaceous Shales",
+            porosity: "14% – 19%",
+            perm: "15 – 80 mD",
+            pressure: "Mild Overpressure (0.52 psi/ft)",
+            thermal: "52°C/km (Peak Maturation)",
+            pick: "LEBAH EMAS-1 Gas Condensate (Type II/III Kerogen)"
+          },
+          K_L: {
+            title: "GROUP K & L · PRE-RIFT FILL",
+            depth: "3,200 – 4,500m",
+            lithology: "Lacustrine Shales & Syn-Rift Alluvial Fans",
+            porosity: "8% – 12%",
+            perm: "0.5 – 5 mD",
+            pressure: "Hard Overpressure (0.68 psi/ft)",
+            thermal: "55°C/km (Overmature)",
+            pick: "PUTERI BASEMENT-1 Deep Graben Charge Source"
+          },
+          BASEMENT: {
+            title: "PRE-TERTIARY BASEMENT",
+            depth: "> 4,500m",
+            lithology: "Fractured Granite & Metasedimentary Basement",
+            porosity: "2% – 5% (Fracture Dependent)",
+            perm: "Variable (0.1 – 200 mD in fracture zones)",
+            pressure: "Equilibrated Deep Fault Pressure",
+            thermal: "> 60°C/km",
+            pick: "PUTERI BASEMENT-1 Hydrocarbon-bearing Fracture Network"
+          }
+        };
+
+        function inspectLayer(el) {
+          document.querySelectorAll('.strat-layer').forEach(l => {
+            l.style.borderColor = 'var(--border-dim)';
+            l.style.transform = 'none';
+          });
+          el.style.borderColor = 'var(--accent-gold)';
+          el.style.transform = 'translateX(4px)';
+
+          const key = el.dataset.layer;
+          const data = LAYER_DATA[key];
+          if (!data) return;
+
+          document.getElementById('insTitle').textContent = data.title;
+          document.getElementById('insDetails').innerHTML = `
+            <div><span style="color:#fff;">Depth Interval:</span> ${data.depth}</div>
+            <div><span style="color:#fff;">Lithology:</span> ${data.lithology}</div>
+            <div><span style="color:#fff;">Avg Porosity (∅):</span> ${data.porosity}</div>
+            <div><span style="color:#fff;">Permeability (k):</span> ${data.perm}</div>
+            <div><span style="color:#fff;">Pore Pressure:</span> ${data.pressure}</div>
+            <div><span style="color:#fff;">Thermal Gradient:</span> ${data.thermal}</div>
+            <div><span style="color:#fff;">Founder Pick:</span> ${data.pick}</div>
+          `;
+        }
+        </script>
       </div>
     </details>
   </div>

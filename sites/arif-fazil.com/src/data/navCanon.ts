@@ -31,6 +31,6 @@ export const primaryNav: NavItem[] = [
   },
   {
     "label": "Read",
-    "href": "/writing"
+    "href": "/read"
   }
 ];

@@ -11,20 +11,25 @@ import { World } from '@/pages/World';
 import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
 import { Discoveries } from '@/pages/Discoveries';
-import { Essays } from '@/pages/Essays';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
+import { ReadHub } from '@/pages/ReadHub';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
 import { ShadowPMs } from '@/pages/ShadowPMs';
+import { ShadowBoard } from '@/pages/ShadowBoard';
+import { DeritaMap } from '@/pages/DeritaMap';
+import { PoliticsHub } from '@/pages/PoliticsHub';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
 function CommodityPageGold() { return <CommodityPage slug="gold" />; }
+function CommodityPageKlci() { return <CommodityPage slug="klci" />; }
+function CommodityPageUsdmyr() { return <CommodityPage slug="usdmyr" />; }
 
 function App() {
   return (
@@ -50,10 +55,10 @@ function App() {
             {/* World — civic journalism + commodities + spatial politics */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
-            <Route path="/politics" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/politics/" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/malaysia" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/malaysia/" element={<Navigate to="/politics/ns-election" replace />} />
+            <Route path="/politics" element={<PoliticsHub />} />
+            <Route path="/politics/" element={<PoliticsHub />} />
+            <Route path="/malaysia" element={<PoliticsHub />} />
+            <Route path="/malaysia/" element={<PoliticsHub />} />
             <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
             <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
@@ -62,22 +67,39 @@ function App() {
             <Route path="/politics/ns-election/playbook/" element={<PlaybookPage />} />
             <Route path="/politics/shadow" element={<ShadowPMs />} />
             <Route path="/politics/shadow/" element={<ShadowPMs />} />
-            {/* MakcikGPT — canonical path. /world/makcikgpt/ is the landing;
-                the bare /world/makcikgpt and the legacy /index suffix both
-                resolve to the same canonical page (no extra redirect). */}
+            <Route path="/politics/shadow/board" element={<ShadowBoard />} />
+            <Route path="/politics/shadow/board/" element={<ShadowBoard />} />
+            <Route path="/politics/shadow/derita" element={<DeritaMap />} />
+            <Route path="/politics/shadow/derita/" element={<DeritaMap />} />
+            {/* MakcikGPT — canonical path */}
             <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
             <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
-            {/* /world/makcikgpt/index → /world/makcikgpt/ (301-style client redirect) */}
             <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
-            {/* Commodities — Δ-only, under world */}
+            {/* Commodities & Market Signal Terminals */}
             <Route path="/world/oil" element={<CommodityPageOil />} />
             <Route path="/world/gas" element={<CommodityPageGas />} />
             <Route path="/world/gold" element={<CommodityPageGold />} />
+            <Route path="/world/klci" element={<CommodityPageKlci />} />
+            <Route path="/world/usdmyr" element={<CommodityPageUsdmyr />} />
+            <Route path="/oil" element={<CommodityPageOil />} />
+            <Route path="/oil/" element={<CommodityPageOil />} />
+            <Route path="/gas" element={<CommodityPageGas />} />
+            <Route path="/gas/" element={<CommodityPageGas />} />
+            <Route path="/gold" element={<CommodityPageGold />} />
+            <Route path="/gold/" element={<CommodityPageGold />} />
+            <Route path="/klci" element={<CommodityPageKlci />} />
+            <Route path="/klci/" element={<CommodityPageKlci />} />
+            <Route path="/usdmyr" element={<CommodityPageUsdmyr />} />
+            <Route path="/usdmyr/" element={<CommodityPageUsdmyr />} />
 
-            {/* Writing */}
-            <Route path="/writing" element={<Essays />} />
-            <Route path="/writing/" element={<Essays />} />
+            {/* Read — sovereign reading room (all writings) */}
+            <Route path="/read" element={<ReadHub />} />
+            <Route path="/read/" element={<ReadHub />} />
+
+            {/* Writing — backward compat, now redirects to /read */}
+            <Route path="/writing" element={<ReadHub />} />
+            <Route path="/writing/" element={<ReadHub />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
             {/* Doctrine & Federation — unified governance */}
@@ -86,11 +108,11 @@ function App() {
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
-            {/* Missions — cockpit surface, redirects to home (missions.json at /missions.json) */}
+            {/* Missions */}
             <Route path="/missions" element={<Navigate to="/" replace />} />
             <Route path="/missions/" element={<Navigate to="/" replace />} />
 
-            {/* Institution — three-audience surface door (human/agent/institution) */}
+            {/* Institution */}
             <Route path="/institution" element={<InstitutionPage />} />
             <Route path="/institution/" element={<InstitutionPage />} />
             <Route path="/verify" element={<Navigate to="/institution" replace />} />
@@ -98,13 +120,13 @@ function App() {
             <Route path="/compliance" element={<Navigate to="/institution" replace />} />
             <Route path="/compliance/" element={<Navigate to="/institution" replace />} />
 
-            {/* Machine-facing */}
+            {/* Machine & Genesis */}
             <Route path="/000" element={<Genesis />} />
             <Route path="/000/" element={<Genesis />} />
             <Route path="/genesis" element={<Genesis />} />
             <Route path="/genesis/" element={<Genesis />} />
 
-            {/* Backward-compat redirects — all point to canonical paths */}
+            {/* Backward-compat redirects */}
             <Route path="/rss" element={<Navigate to="/feed.xml" replace />} />
             <Route path="/rss/" element={<Navigate to="/feed.xml" replace />} />
             <Route path="/canon" element={<Navigate to="/doctrine" replace />} />
@@ -116,19 +138,12 @@ function App() {
             <Route path="/wealth" element={<Navigate to="/economics" replace />} />
             <Route path="/wealth/" element={<Navigate to="/economics" replace />} />
             <Route path="/wealth/article/:slug" element={<WealthArticle />} />
-            {/* Commodity redirects — legacy standalone → world path */}
-            <Route path="/oil/" element={<Navigate to="/world/oil" replace />} />
-            <Route path="/gas/" element={<Navigate to="/world/gas" replace />} />
-            <Route path="/gold/" element={<Navigate to="/world/gold" replace />} />
-            {/* MakcikGPT triplication fix — /world/makcikgpt/ is canonical */}
             <Route path="/wealth/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            {/* Skip the /index hop — go straight to canonical trailing slash */}
             <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/wealth/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/economics/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/economics/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
-            {/* Skip the /index hop — go straight to canonical trailing slash */}
             <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/essays" element={<Navigate to="/writing" replace />} />

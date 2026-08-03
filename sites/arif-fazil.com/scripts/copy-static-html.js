@@ -22,13 +22,11 @@ const publicRoot = path.join(root, "public");
 
 const SKIP_DIRS = new Set([
   "assets",          // Vite-managed bundler output (already in dist/assets/)
-  "data",            // JSON data feeds (served via /data/ via Caddy SPA fallback)
   "node_modules",
   ".git",
 ]);
 
 const SKIP_FILES = new Set([
-  "index.html",      // root index.html is the Vite-built SPA entry — DO NOT overwrite
   "feed.xml",
   "llms.json",
   "llms.txt",
@@ -44,6 +42,8 @@ const SKIP_FILES = new Set([
 function shouldSkip(relativePath, isDir) {
   const parts = relativePath.split(path.sep);
   if (isDir && parts.some(p => SKIP_DIRS.has(p))) return true;
+  // ONLY skip root index.html (the Vite-built SPA entry) — copy all subfolder index.html files!
+  if (!isDir && relativePath === "index.html") return true;
   if (!isDir && SKIP_FILES.has(parts[parts.length - 1])) return true;
   return false;
 }

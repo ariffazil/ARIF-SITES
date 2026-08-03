@@ -40,7 +40,10 @@ async function fetchStatus(url, expectedStatusFamily) {
       method: "GET",
       redirect: "manual",
       signal: controller.signal,
-      headers: { "User-Agent": "arifOS-verify-surfaces/1.0 (CI truth-check)" },
+      headers: { 
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) arifOS-verify-surfaces/1.0 (CI truth-check)",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+      },
     });
     clearTimeout(timer);
     return { status: resp.status, ok: expectedStatusFamily.includes(Math.floor(resp.status / 100)) };

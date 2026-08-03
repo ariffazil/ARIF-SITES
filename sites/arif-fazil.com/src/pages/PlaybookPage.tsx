@@ -45,6 +45,26 @@ export function PlaybookPage() {
       {/* HERO SECTION */}
       <section className="py-10 border-b border-forge-iron bg-gradient-to-b from-slate-950 to-[#07090E]">
         <div className="site-frame">
+          {/* POST-ELECTION ARCHIVE BANNER */}
+          <div className="mb-6 p-4 rounded-lg bg-amber-950/40 border border-amber-500/50 flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
+            <div className="flex items-center gap-3">
+              <span className="px-2.5 py-1 rounded bg-amber-500 text-black font-bold uppercase tracking-wider text-[10px]">
+                📌 POST-ELECTION ARCHIVE
+              </span>
+              <span className="text-slate-200">
+                Hari Mengundi: <strong>1 Ogos 2026</strong>. Keputusan Akhir: <strong>BN 18 (+4), PN 7 (+2), PH 11 (-6)</strong>.
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Link to="/politics/ns-election/compare" className="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold transition-colors">
+                📊 Audit Perbandingan DUN →
+              </Link>
+              <a href="/politics/ns-election/projection-vs-actual.html" target="_blank" rel="noreferrer" className="px-3 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors">
+                🎯 Projeksi vs Realiti →
+              </a>
+            </div>
+          </div>
+
           <div className="text-xs font-mono text-amber-400 uppercase tracking-widest mb-2">
             Strategi PRN Negeri Sembilan 2026 · Field Operations Guide
           </div>

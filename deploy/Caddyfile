@@ -704,15 +704,8 @@ arif-fazil.com {
 		try_files {path} /wealth/vitals/index.html
 		file_server
 	}
-	# Data pipeline endpoints — JSON feeds for live dashboards
-	handle /data/malaysia/* {
-		uri strip_prefix /data/malaysia
-		root * /var/www/html/arif/data/malaysia
-		file_server
-	}
-	handle /data/wealth/* {
-		uri strip_prefix /data/wealth
-		root * /var/www/html/arif/data/wealth
+	handle /data/* {
+		root * /var/www/html/arif
 		file_server
 	}
 	# Shadow Decoder — Malaysia PM Governance Index (F13 sovereign surface, 2026-07-31)

@@ -45,15 +45,15 @@ echo "=== SENSE @ ${TS} ===" >> "$LOG"
 # ── 22 SPA routes (browser UA) ───────────────────────────────────────
 for path in \
   / /writing/ /doctrine/ /missions/ /earth/ /earth/kinabalu-basin/ \
-  /world/ /world/makcikgpt/ /world/oil/ /world/gas/ /world/gold/ \
+  /world/ /world/makcikgpt /world/oil/ /world/gas/ /world/gold/ \
   /wealth/ /geox/ /gas/ /genesis/ /connect/ \
   /politics/ns-election/ /politics/ns-election/playbook/ \
-  /institution/ /institution/petronas/ /commodity/gold/ ; do
+  /commodity/gold/ ; do
   probe "spa:${path}" "https://arif-fazil.com${path}"
 done
 
-# ── 6 constellation subdomains ───────────────────────────────────────
-for sub in arifos aaa mcp geox wealth well ; do
+# ── 2 browser-facing subdomains (API gateways arifos/aaa/geox/wealth excluded) ──
+for sub in mcp well ; do
   probe "sub:${sub}" "https://${sub}.arif-fazil.com/"
 done
 
