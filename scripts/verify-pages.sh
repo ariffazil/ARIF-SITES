@@ -30,6 +30,7 @@ INTENTIONAL_EXCLUSIONS=(
     "/mcp/"
     "/mcp/proof/"
     "/makcikgpt-md/"
+    "/world/makcikgpt/"
 )
 
 FAIL_COUNT=0
@@ -86,7 +87,6 @@ while IFS= read -r -d '' html_file; do
     # Probe the URL
     http_code=$(curl -s -o /dev/null -w '%{http_code}' \
         --max-time "$TIMEOUT" \
-        -H "User-Agent: arifOS-PageGate/1.0 (verification; +https://arif-fazil.com)" \
         "$full_url" 2>/dev/null || echo "000")
     
     if [ "$http_code" = "200" ] || [ "$http_code" = "301" ] || [ "$http_code" = "308" ]; then
@@ -98,7 +98,6 @@ while IFS= read -r -d '' html_file; do
             final_code=$(curl -s -o /dev/null -w '%{http_code}' \
                 --max-time "$TIMEOUT" \
                 -L \
-                -H "User-Agent: arifOS-PageGate/1.0" \
                 "$full_url" 2>/dev/null || echo "000")
             if [ "$final_code" = "200" ]; then
                 echo -e "  ${GREEN}✓${NC} $http_code→200  $url_path"
@@ -135,7 +134,6 @@ echo ""
 for cpath in "${CRITICAL_PATHS[@]}"; do
     http_code=$(curl -s -o /dev/null -w '%{http_code}' \
         --max-time "$TIMEOUT" \
-        -H "User-Agent: arifOS-PageGate/1.0" \
         "${BASE_URL}${cpath}" 2>/dev/null || echo "000")
     
     if [ "$http_code" = "200" ]; then
