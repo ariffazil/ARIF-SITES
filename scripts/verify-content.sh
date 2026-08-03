@@ -88,7 +88,7 @@ assert_present "/vitals/"  "B8: Honesty EN"                 "None of the"
 assert_absent "/vitals/"   "B9: RM3.5B removed"             "RM3.5B"
 assert_present "/vitals/"  "B9: RM3.1B present"             "RM3.1B"
 assert_absent "/vitals/"   "B10: 12 tools removed"          "12 WEALTH tools"
-assert_present "/vitals/"  "B10: 9 canonical present"       "9 canonical WEALTH"
+assert_present "/vitals/"  "B10: 8 canonical present"       "8 canonical WEALTH"
 
 # ── JSON-LD integrity ──
 echo ""
