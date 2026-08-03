@@ -12,7 +12,7 @@ echo "Starting VPS Deployment..."
 
 # 0. Pre-deploy verification gate (fail-closed)
 echo "[0/7] Pre-deploy verification..."
-node $HTML_ROOT/scripts/verify-surfaces.cjs --base=https://arif-fazil.com
+node /root/arif-fazil.com/scripts/verify-surfaces.cjs --base=https://arif-fazil.com
 caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "  Caddy config: VALID"
 
 # 1. Build React Site (arif-fazil.com — Ψ SOUL)

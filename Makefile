@@ -24,9 +24,11 @@ dry-run: verify
 	@echo "✓ Dry-run passed. Ready for deploy."
 
 # ── Pre-deploy verification gate ──────────────────────────────────────
-verify:
+verify: sync-aaa
 	@echo "[verify] Checking surface catalog truth..."
 	node scripts/verify-surfaces.cjs --base=https://arif-fazil.com
+	@echo "[verify] Running Page Inventory Gate..."
+	bash scripts/verify-pages.sh https://arif-fazil.com /root/arif-fazil.com/sites/arif-fazil.com/dist
 	@echo "[verify] Checking Caddy config..."
 	caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "[verify] Caddy config: VALID"
 	@echo "[verify] M3 fix 2026-08-01: scanning source HTML for dev-only entry points..."
@@ -34,10 +36,17 @@ verify:
 		echo "✗ [verify] DEV-ONLY ENTRY FOUND — refuse to deploy."; \
 		echo "  These paths only exist in Vite dev mode. Run 'make build' first to bundle."; \
 		exit 1; \
-	else \
+		else \
 		echo "[verify] No dev-only entry points — safe to deploy."; \
 	fi
 	@echo "✓ All gates passed."
+
+# ── Sync AAA dist into arif-fazil.com dist ────────────────────────────
+sync-aaa:
+	@echo "[sync-aaa] Syncing AAA build into arif-fazil.com dist/aaa/..."
+	@mkdir -p sites/arif-fazil.com/dist/aaa/
+	rsync -av --delete /root/AAA/dist/ sites/arif-fazil.com/dist/aaa/
+	@echo "✓ AAA dist synced."
 
 # ── Build the React SPA ───────────────────────────────────────────────
 build:
@@ -102,20 +111,6 @@ help:
 	@echo ""
 	@echo "  Single command:   make deploy"
 	@echo "  Runbook:          cat DEPLOY.md"
-
-# ── AAA sync — pull AAA dist into arif-fazil.com dist ───────────────
-# 2026-08-03: AAA builds separately at /root/AAA/dist/. This target
-# syncs it into the site dist so /aaa/* pages are served. Without this,
-# every AAA change silently diverges from the live site.
-sync-aaa:
-	@echo "[sync-aaa] Syncing AAA dist into arif-fazil.com dist/aaa/..."
-	@if [ -d /root/AAA/dist ]; then \
-		mkdir -p sites/arif-fazil.com/dist/aaa; \
-		rsync -av --delete /root/AAA/dist/ sites/arif-fazil.com/dist/aaa/; \
-		echo "[sync-aaa] ✓ AAA synced."; \
-	else \
-		echo "[sync-aaa] ⚠ /root/AAA/dist/ not found — skipping (AAA may not be built)"; \
-	fi
 
 # ── Page inventory gate ─────────────────────────────────────────────
 # 2026-08-03: Structural fix. Scans every dist/*/index.html → curls

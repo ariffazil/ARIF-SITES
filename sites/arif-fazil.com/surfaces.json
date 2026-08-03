@@ -242,11 +242,13 @@
     },
     {
       "path": "/wealth/",
-      "redirects_to": "/economics",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy wealth path — canonical is /economics"
+      "title": "Wealth Capital — Market & Investment Terminal",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.8,
+      "changefreq": "daily",
+      "description": "Wealth capital terminal and market intelligence"
     },
     {
       "path": "/wealth/article/:slug",
@@ -274,11 +276,11 @@
     },
     {
       "path": "/wealth/makcikgpt/",
-      "redirects_to": "/world/makcikgpt",
+      "redirects_to": "/world/makcikgpt/",
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt"
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/"
     },
     {
       "path": "/wealth/makcikgpt/:slug",
@@ -290,11 +292,11 @@
     },
     {
       "path": "/economics/makcikgpt/",
-      "redirects_to": "/world/makcikgpt",
+      "redirects_to": "/world/makcikgpt/",
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt"
+      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/"
     },
     {
       "path": "/economics/makcikgpt/:slug",
@@ -361,9 +363,13 @@
 
     {
       "path": "/vitals/",
-      "status": "gone",
-      "type": "gone",
-      "description": "REMOVED 2026-07-31 — consolidated under wealth.arif-fazil.com. Do not list in machine catalogs."
+      "title": "Vitals — System Health Dashboard",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "System health and vital signs monitoring surface."
     },
     {
       "path": "/malaysia/",
@@ -534,26 +540,6 @@
       "description": "Sovereign identity and philosophy anchor"
     },
     {
-      "path": "/.well-known/mcp.json",
-      "title": "MCP Server Card (SEP-1649/1960 draft)",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "MCP server discovery card — draft SEP, future-proofing. Served with nosniff + CORS."
-    },
-    {
-      "path": "/.well-known/agent.json",
-      "title": "Agent Card — A2A Discovery",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "monthly",
-      "description": "Agent capability declaration"
-    },
-    {
       "path": "/.well-known/agent-card.json",
       "title": "Agent Card — A2A Discovery",
       "redirects_to": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
@@ -561,16 +547,6 @@
       "code": 301,
       "type": "redirect",
       "description": "Canonical agent card lives on arifos.arif-fazil.com subdomain. Caddy server-side redirect."
-    },
-    {
-      "path": "/.well-known/did.json",
-      "title": "DID Document — did:web:arif-fazil.com",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "monthly",
-      "description": "W3C DID document for decentralized identity"
     }
   ],
 
