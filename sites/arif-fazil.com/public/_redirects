@@ -14,5 +14,14 @@
 /audit         /audit/index.html         200
 /constitution  /constitution/index.html  200
 
+# 2026-08-03: AAA + Vitals + cockpit + GEOX sub-pages (49 gaps closed)
+/aaa           /aaa/index.html           200
+/aaa/*         /aaa/:splat               200
+/vitals        /vitals/index.html        200
+/vitals/*      /vitals/:splat            200
+/cockpit       /aaa/cockpit/index.html   200
+/geox          /geox/index.html          200
+/geox/*        /geox/:splat              200
+
 # /institution is SPA route — handled by React Router via fallback
 # (no static rewrite needed; Cloudflare Pages fallback to /index.html)
