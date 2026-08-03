@@ -93,6 +93,54 @@ export function MakcikGptArticle() {
 
           <hr className="border-forge-iron my-12" />
 
+          {/* APEX Evidence Drawer (Stage 4 Human UI) */}
+          {meta.claim_register && meta.claim_register.length > 0 && (
+            <details open className="border border-forge-gold/40 bg-forge-steel/30 p-6 mb-12 rounded-sm font-mono">
+              <summary className="cursor-pointer text-forge-gold font-bold uppercase tracking-wider text-sm flex items-center justify-between">
+                <span>📑 Evidence Drawer & Claim Register</span>
+                <span className="text-xs text-forge-dim">Status: {meta.provenance_status || 'sealed'}</span>
+              </summary>
+              
+              <div className="mt-6 space-y-6 text-xs text-forge-white">
+                <div>
+                  <h4 className="text-forge-orange font-bold mb-2">Claim Register ({meta.claim_register.length} claims)</h4>
+                  <div className="space-y-2">
+                    {meta.claim_register.map((c) => (
+                      <div key={c.claim_id} className="p-3 border border-forge-iron/60 bg-forge-black/40 flex flex-col gap-1">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-forge-gold">{c.claim_id}</span>
+                          <span className={`px-2 py-0.5 text-[10px] font-bold uppercase ${
+                            c.tag === 'OBS' ? 'bg-forge-gold/20 text-forge-gold border border-forge-gold/50' :
+                            c.tag === 'INT' ? 'bg-forge-orange/20 text-forge-orange border border-forge-orange/50' :
+                            'bg-forge-red/20 text-forge-red border border-forge-red/50'
+                          }`}>
+                            {c.tag === 'OBS' ? 'OBS (Observed)' : c.tag === 'INT' ? 'INT (Interpretation)' : 'SPEC (Speculation)'}
+                          </span>
+                        </div>
+                        <p className="text-forge-white/90 text-sm font-body my-1">{c.text}</p>
+                        {c.confidence_basis && <p className="text-forge-dim text-[11px]">Basis: {c.confidence_basis}</p>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {meta.source_ledger && meta.source_ledger.length > 0 && (
+                  <div>
+                    <h4 className="text-forge-orange font-bold mb-2">Source Ledger</h4>
+                    <div className="space-y-2">
+                      {meta.source_ledger.map((s) => (
+                        <div key={s.source_id} className="p-2 border border-forge-iron/40 text-forge-dim flex justify-between items-center">
+                          <span><strong>{s.source_id}</strong> — {s.title}</span>
+                          <a href={s.url} target="_blank" rel="noreferrer" className="text-forge-gold underline hover:text-white">Link</a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </details>
+          )}
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <span className="brutalist-card border border-forge-red/50 px-5 py-3 inline-flex items-center gap-2 font-mono text-sm bg-forge-red/5">
               <span className="text-forge-red">🔐</span>

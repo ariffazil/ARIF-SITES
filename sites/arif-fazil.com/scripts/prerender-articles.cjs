@@ -87,7 +87,7 @@ function makeJsonLd(a) {
     },
     datePublished: a.date,
     dateModified: a.date,
-    mainEntityOfPage: `${BASE}/wealth/makcikgpt/${a.slug}`,
+    mainEntityOfPage: `${BASE}/world/makcikgpt/${a.slug}`,
     image: 'https://arif-fazil.com/hero_portrait.jpg',
     keywords: a.keywords,
     inLanguage: 'ms',
@@ -106,7 +106,7 @@ function makeJsonLd(a) {
   });
 
   for (const a of articles) {
-    const outDir = path.join(DIST, 'wealth', 'makcikgpt', a.slug);
+    const outDir = path.join(DIST, 'world', 'makcikgpt', a.slug);
     const outFile = path.join(outDir, 'index.html');
     
     // Skip if already pre-rendered

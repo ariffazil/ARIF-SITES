@@ -1,4 +1,19 @@
+---
+article_id: m2-8
+canonical_url: https://arif-fazil.com/world/makcikgpt/suara-terlalu-siap
+seal: 999
+provenance_status: legacy
+version: 1.0
+merkle_leaf: 81764dd6d7741f7bb10a09de6ac4804be0ec9dd426ce0ca9130135f8f0fb3572
+epistemic_summary:
+  obs_count: 0
+  der_count: 0
+  int_count: 0
+  spec_count: 0
+---
+
+# Suara Yang Tak Letak Dalam Mulut Manusia
+
 > Suara Yang Tak Letak Dalam Mulut Manusia
-> MakcikGPT article: MakcikGPT article: Suara korporat yang terlalu licin — 'polycrisis,' 'rightsizing,' 'AI—enabled' — bukan bahasa orang yang sedang hidup. Taufik, Bakke Salleh, Anwar. Niat siapa yang sebenar? — 999 Meterai seal — 999 Meterai seal
->
-> Full article: https://arif-fazil.com/world/makcikgpt/suara-terlalu-siap
+> 
+> Canonical URL: https://arif-fazil.com/world/makcikgpt/suara-terlalu-siap
