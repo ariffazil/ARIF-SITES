@@ -1,12 +1,19 @@
 {
   "name": "arif-fazil.com WebMCP Surface",
-  "version": "1.1",
-  "description": "Browser-native agent tool surface for arif-fazil.com, governed by arifOS constitutional floors F1-F13.",
+  "version": "1.2",
+  "description": "Browser-native agent tool surface for arif-fazil.com. tools[] = LIVE only (F2). deferred[] = names without endpoints.",
   "sovereign": "did:web:arif-fazil.com",
   "constitutional_kernel": "https://arifos.arif-fazil.com",
   "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
   "adapter_script": "/_shared/webmcp/arifos-webmcp-adapter.js",
-  "generated_at": "2026-07-15T11:16:58.033Z",
+  "generated_at": "2026-08-04T20:51:22.015Z",
+  "doctrine": {
+    "f2": "Never advertise an endpoint that returns non-2xx",
+    "f3_witness": {
+      "vault": "https://arif-fazil.com/999/verify",
+      "independent": "https://aaa.arif-fazil.com/api/seal-chain/head"
+    }
+  },
   "tools": [
     {
       "name": "verify_did",
@@ -14,15 +21,53 @@
       "endpoint": "https://arif-fazil.com/.well-known/did.json",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
-      "name": "get_constitution",
-      "description": "arifOS constitutional floor definitions (F1-F13)",
-      "endpoint": "https://arifos.arif-fazil.com/constitution.json",
+      "name": "get_floors",
+      "description": "arifOS constitutional floor definitions (F1–F13) as floors.json",
+      "endpoint": "https://arif-fazil.com/floors.json",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
+    },
+    {
+      "name": "get_missions",
+      "description": "Six-mission human cockpit catalog (not 128 tools)",
+      "endpoint": "https://arif-fazil.com/missions.json",
+      "method": "GET",
+      "floor": "F2",
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
+    },
+    {
+      "name": "get_llms_overview",
+      "description": "Machine site overview for agents (llms.txt)",
+      "endpoint": "https://arif-fazil.com/llms.txt",
+      "method": "GET",
+      "floor": "F2",
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
+    },
+    {
+      "name": "get_vault_verify",
+      "description": "VAULT999 live chain proof (pair with AAA seal-chain head)",
+      "endpoint": "https://arif-fazil.com/999/verify",
+      "method": "GET",
+      "floor": "F11",
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
+    },
+    {
+      "name": "get_seal_chain_head",
+      "description": "Independent AAA witness of seal chain head (F3 cross-verify)",
+      "endpoint": "https://aaa.arif-fazil.com/api/seal-chain/head",
+      "method": "GET",
+      "floor": "F3",
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
       "name": "get_gold_price",
@@ -30,7 +75,8 @@
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/ticker",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
       "name": "get_gold_history",
@@ -42,7 +88,8 @@
         "period": "30d"
       },
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
       "name": "get_gold_signals",
@@ -50,7 +97,8 @@
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/signals",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
       "name": "get_gold_levels",
@@ -58,7 +106,8 @@
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/levels",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     },
     {
       "name": "get_gold_macro",
@@ -66,46 +115,55 @@
       "endpoint": "https://arif-fazil.com/wealth/gold/api/gold/macro",
       "method": "GET",
       "floor": "F2",
-      "last_verified": "2026-07-15T11:16:58.033Z"
+      "last_verified": "2026-08-04T20:51:22.015Z",
+      "status": "live"
     }
   ],
+  "deferred": [
+    {
+      "name": "get_federation_status",
+      "reason": "No public organ health matrix on apex domain yet",
+      "intended_path": "/api/organs",
+      "status": "deferred"
+    },
+    {
+      "name": "get_wealth_briefing",
+      "reason": "WEALTH briefing is MCP compute, not a public REST route",
+      "intended_path": "/wealth/api/wealth/briefing",
+      "status": "deferred"
+    },
+    {
+      "name": "get_market_overview",
+      "reason": "No multi-asset overview REST route",
+      "intended_path": "/wealth/api/wealth/overview",
+      "status": "deferred"
+    },
+    {
+      "name": "get_market_ticker",
+      "reason": "No federated ticker REST route",
+      "intended_path": "/wealth/api/wealth/ticker",
+      "status": "deferred"
+    },
+    {
+      "name": "get_asset_detail",
+      "reason": "No per-asset detail REST route",
+      "intended_path": "/wealth/api/wealth/{asset}",
+      "status": "deferred"
+    }
+  ],
+  "excluded_failed_probes": [],
   "constraints": {
     "read_only": true,
     "requires_sovereign_confirm": false,
     "floor_guards": [
       "F1",
       "F2",
+      "F3",
       "F8",
       "F9",
+      "F11",
       "F12",
       "F13"
     ]
-  },
-  "dropped": [
-    {
-      "name": "get_federation_status",
-      "endpoint": "https://arif-fazil.com/api/organs",
-      "status": 404
-    },
-    {
-      "name": "get_wealth_briefing",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/briefing",
-      "status": 404
-    },
-    {
-      "name": "get_market_overview",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/overview",
-      "status": 404
-    },
-    {
-      "name": "get_market_ticker",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/ticker",
-      "status": 404
-    },
-    {
-      "name": "get_asset_detail",
-      "endpoint": "https://arif-fazil.com/wealth/api/wealth/{asset}",
-      "status": 404
-    }
-  ]
+  }
 }
