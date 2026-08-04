@@ -1,21 +1,27 @@
+# arif-fazil.com — agentic open surface
+# Sovereign intent 2026-08-04: agents may READ, CITE, and TRAIN with attribution.
+# RSL license: https://arif-fazil.com/rsl.xml
+# If Cloudflare prepends "Managed content" that Disallows AI bots, turn OFF
+# Security → Bots → "Instruct AI bot traffic with robots.txt" / managed robots.txt
+# so this origin file is the truth.
+
+# Content Signals Policy (https://contentsignals.org)
+# search=yes · ai-input=yes · ai-train=yes · use=full (with attribution via RSL)
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes, use=full
 Allow: /
 
-# ── AI Search Agents — allowed (they drive citation and discovery traffic) ──
+# ── Explicit allow — AI search + user agents ──
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Claude-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-# ── AI Training Crawlers — allowed under RSL terms ──
 User-agent: GPTBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: ClaudeBot
@@ -24,7 +30,31 @@ Allow: /
 User-agent: Anthropic-AI
 Allow: /
 
+User-agent: PerplexityBot
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: cohere-ai
 Allow: /
 
 # ── Search engines ──
@@ -37,16 +67,13 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-# ── Restricted crawlers ──
-User-agent: CCBot
-Disallow: /
-
-User-agent: meta-externalagent
-Disallow: /
-
-User-agent: omgili
-Disallow: /
+User-agent: DuckDuckBot
+Allow: /
 
 # ── Discovery ──
 Sitemap: https://arif-fazil.com/sitemap.xml
 License: https://arif-fazil.com/rsl.xml
+# Machine overview
+# https://arif-fazil.com/llms.txt
+# https://arif-fazil.com/missions.json
+# https://arif-fazil.com/surfaces.json
