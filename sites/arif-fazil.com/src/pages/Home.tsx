@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useInView, useScroll, useTransform, animate } from 'framer-motion'
+import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import SectionHeader from '@/components/SectionHeader'
 import { useNow, formatKL, secondsSinceBirth } from '@/hooks/useNow'
 
@@ -514,45 +514,41 @@ function Domains() {
 /* Section 4 — The Record                                              */
 /* ------------------------------------------------------------------ */
 
-const stats = [
+/** Source-backed record — never animate from 0 (P0 trust section). */
+const RECORD_STATS = [
   { n: 13, label: 'YEARS AT PETRONAS', href: '/earth', note: 'Corporate exploration record' },
   { n: 4, label: 'EXPLORATION WELLS LED', href: '/earth', note: '4/4 flowed — success band OBS' },
   { n: 13, label: 'CONSTITUTIONAL FLOORS', href: '/doctrine', note: 'F1–F13 public floors' },
   { n: 8, label: 'CANONICAL MCP TOOLS', href: '/missions', note: 'Kernel Canonical 8' },
-]
+] as const
 
 function StatCell({
   n,
   label,
   href,
   note,
-  start,
 }: {
   n: number
   label: string
   href: string
   note: string
-  start: boolean
 }) {
-  const [val, setVal] = useState(n)
-  useEffect(() => {
-    if (!start) return
-    // The record is source-backed and must never expose a false zero while
-    // IntersectionObserver or the React shell is still settling.
-    const controls = animate(n, n, {
-      duration: 1.2,
-      ease: 'easeOut',
-      onUpdate: (v) => setVal(Math.round(v)),
-    })
-    return () => controls.stop()
-  }, [start, n])
+  // Static render only. Count-up / inView races previously painted false zeros
+  // on the apex trust section — HARAM for THE RECORD.
   return (
     <Link
       to={href}
       className="block border-l px-5 py-8 transition-colors hairline first:border-l-0 hover:bg-ink/[0.03] md:px-6"
       title={note}
+      data-record-stat={label}
+      data-record-value={n}
     >
-      <div className="font-mono text-5xl tabular-nums tracking-[-0.02em] md:text-6xl">{val}</div>
+      <div
+        className="font-mono text-5xl tabular-nums tracking-[-0.02em] md:text-6xl"
+        aria-label={`${n} ${label}`}
+      >
+        {n}
+      </div>
       <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.04em] text-ink-soft md:text-[12px]">
         {label}
       </div>
@@ -567,14 +563,17 @@ function StatCell({
 }
 
 function Record() {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-20% 0px' })
   return (
-    <section ref={ref} className="mx-auto max-w-[1280px] px-6 py-20 md:py-24">
+    <section
+      id="record"
+      className="mx-auto max-w-[1280px] px-6 py-20 md:py-24"
+      data-section="the-record"
+      aria-label="The Record — source-backed career and constitutional facts"
+    >
       <SectionHeader number="03" title="THE RECORD" />
       <div className="mt-12 grid grid-cols-2 border-y hairline md:grid-cols-4">
-        {stats.map((s) => (
-          <StatCell key={s.label} n={s.n} label={s.label} href={s.href} note={s.note} start={inView} />
+        {RECORD_STATS.map((s) => (
+          <StatCell key={s.label} n={s.n} label={s.label} href={s.href} note={s.note} />
         ))}
       </div>
       <p className="mt-6 max-w-[56ch] font-body text-[16px] leading-[1.6] text-ink-soft">
