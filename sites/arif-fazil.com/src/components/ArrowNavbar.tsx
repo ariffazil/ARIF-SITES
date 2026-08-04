@@ -24,12 +24,20 @@ function NavItemLink({
   onClick?: () => void
   mobile?: boolean
 }) {
+  // Territory color system (matches Home FOUR TERRITORIES underlines)
+  const territoryAccent: Record<string, string> = {
+    '/earth': 'decoration-[#E4572E]',
+    '/economics': 'decoration-[#C9A227]',
+    '/world': 'decoration-[#EDEAE2]',
+    '/doctrine': 'decoration-[#9AA0A8]',
+  }
+  const accent = territoryAccent[item.href.replace(/\/$/, '')] || 'decoration-ember'
   const base =
     className ??
     'font-mono text-[12px] uppercase tracking-[0.06em] transition-colors text-ink-soft hover:text-ink'
   const active =
     activeClassName ??
-    'text-ink underline decoration-ember decoration-2 underline-offset-8'
+    `text-ink underline ${accent} decoration-2 underline-offset-8`
 
   // Static & external: full document navigation (preserve /999/, /vitals/ reality)
   if (item.mode === 'static' || item.mode === 'external' || item.external) {

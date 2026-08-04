@@ -1,0 +1,334 @@
+{
+  "schema": "arifos.writing_index.v1",
+  "as_of": "2026-08-04",
+  "count": 25,
+  "human_index": "/writing",
+  "feed": "/feed.xml",
+  "items": [
+    {
+      "title": "01-i-stopped-writing-prompts-heres-what-replaces-them-arep",
+      "slug": "i-stopped-writing-prompts-heres-what-replaces-them-arep",
+      "href": "/writing/i-stopped-writing-prompts-heres-what-replaces-them-arep",
+      "date": "2026-06-04",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-04"
+    },
+    {
+      "title": "02-i-have-trust-issues-with-agents",
+      "slug": "i-have-trust-issues-with-agents",
+      "href": "/writing/i-have-trust-issues-with-agents",
+      "date": "2026-05-16",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-05-16"
+    },
+    {
+      "title": "03-i-didnt-plan-to-cross-the-frontier-of-digital-identity-but-last-night-i-did",
+      "slug": "i-didnt-plan-to-cross-the-frontier-of-digital-identity-but-last-night-i-did",
+      "href": "/writing/i-didnt-plan-to-cross-the-frontier-of-digital-identity-but-last-night-i-did",
+      "date": "2026-05-02",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-05-02"
+    },
+    {
+      "title": "04-arifmd-yang-arif",
+      "slug": "arifmd-yang-arif",
+      "href": "/writing/arifmd-yang-arif",
+      "date": "2026-04-23",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-04-23"
+    },
+    {
+      "title": "05-when-your-ai-cant-find-itself",
+      "slug": "when-your-ai-cant-find-itself",
+      "href": "/writing/when-your-ai-cant-find-itself",
+      "date": "2026-04-17",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-04-17"
+    },
+    {
+      "title": "06-the-first-act-of-creation-is-not-building-it-is-naming",
+      "slug": "the-first-act-of-creation-is-not-building-it-is-naming",
+      "href": "/writing/the-first-act-of-creation-is-not-building-it-is-naming",
+      "date": "2026-04-12",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-04-12"
+    },
+    {
+      "title": "07-i-accidentally-built-an-intelligence-kernel-for-ai",
+      "slug": "i-accidentally-built-an-intelligence-kernel-for-ai",
+      "href": "/writing/i-accidentally-built-an-intelligence-kernel-for-ai",
+      "date": "2026-03-24",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-03-24"
+    },
+    {
+      "title": "08-im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live",
+      "slug": "im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live",
+      "href": "/writing/im-a-geologist-i-accidentally-built-ai-os-and-today-it-went-live",
+      "date": "2026-03-14",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-03-14"
+    },
+    {
+      "title": "09-i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room",
+      "slug": "i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room",
+      "href": "/writing/i-didnt-know-what-a-kernel-was-i-just-knew-ai-needed-adult-in-the-room",
+      "date": "2026-03-12",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-03-12"
+    },
+    {
+      "title": "10-the-real-battle-in-ai-will-not-be-model-vs-model",
+      "slug": "the-real-battle-in-ai-will-not-be-model-vs-model",
+      "href": "/writing/the-real-battle-in-ai-will-not-be-model-vs-model",
+      "date": "2026-03-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-03-07"
+    },
+    {
+      "title": "11-contrast-detection-universal-computational-primitive-avo-attention",
+      "slug": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "href": "/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "12-physics-constrained-attention-zoeppritz-constitutional-floor",
+      "slug": "physics-constrained-attention-zoeppritz-constitutional-floor",
+      "href": "/writing/physics-constrained-attention-zoeppritz-constitutional-floor",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "13-derivation-avo-attention-contrast-primitive",
+      "slug": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "href": "/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "14-i-hate-ai-i-hate-dsg-and-i-built-both-anyway",
+      "slug": "i-hate-ai-i-hate-dsg-and-i-built-both-anyway",
+      "href": "/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway",
+      "date": "2026-06-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-07"
+    },
+    {
+      "title": "18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+      "slug": "the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+      "href": "/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+      "date": "2026-06-11",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-11"
+    },
+    {
+      "title": "19-the-tool-is-the-thought",
+      "slug": "the-tool-is-the-thought",
+      "href": "/writing/the-tool-is-the-thought",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "20-survival-of-the-fittest-tools",
+      "slug": "survival-of-the-fittest-tools",
+      "href": "/writing/survival-of-the-fittest-tools",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "21-three-timelines-one-boundary",
+      "slug": "three-timelines-one-boundary",
+      "href": "/writing/three-timelines-one-boundary",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "22-agentic-intelligence-big-bang",
+      "slug": "agentic-intelligence-big-bang",
+      "href": "/writing/agentic-intelligence-big-bang",
+      "date": "2026-07-04",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-07-04"
+    },
+    {
+      "title": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "slug": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "href": "/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "slug": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "href": "/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+      "slug": "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+      "href": "/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+      "date": "2026-06-09",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-09"
+    },
+    {
+      "title": "index",
+      "slug": "i-stopped-writing-prompts-heres-what-replaces-them-arep",
+      "href": "/writing/i-stopped-writing-prompts-heres-what-replaces-them-arep",
+      "date": "2026-06-04",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-04"
+    },
+    {
+      "title": "physics-constrained-attention-zoeppritz-constitutional-floor",
+      "slug": "physics-constrained-attention-zoeppritz-constitutional-floor",
+      "href": "/writing/physics-constrained-attention-zoeppritz-constitutional-floor",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "types",
+      "slug": "types",
+      "href": "/writing/types",
+      "date": null,
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay"
+      ],
+      "risk_level": "CLAIM",
+      "epoch": null
+    }
+  ]
+}
