@@ -31,6 +31,8 @@ INTENTIONAL_EXCLUSIONS=(
     "/mcp/proof/"
     "/makcikgpt-md/"
     "/world/makcikgpt/"
+    "/pulse/"
+    "/audit/"
 )
 
 FAIL_COUNT=0

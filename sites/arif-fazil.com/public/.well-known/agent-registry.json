@@ -1,0 +1,209 @@
+{
+  "schema": "arifos.agent-registry.v1",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Public Agent & Tool Registry",
+  "owner": {
+    "name": "Muhammad Arif bin Fazil",
+    "role": "F13 SOVEREIGN",
+    "did": "did:web:arif-fazil.com"
+  },
+  "policy": "https://arif-fazil.com/.well-known/agent-policy.json",
+  "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+  "review_cadence": "quarterly",
+  "kill_switch": {
+    "enabled": true,
+    "owner": "F13 SOVEREIGN",
+    "note": "Public surfaces are static/read; organ MCP kill is control-plane only (not anonymous public)"
+  },
+  "entries": [
+    {
+      "id": "surface:arif-fazil-com",
+      "kind": "site",
+      "name": "arif-fazil.com",
+      "owner": "Arif Fazil",
+      "mission": "interpret",
+      "access_scope": "public_read",
+      "risk_tier": "R0_read",
+      "url": "https://arif-fazil.com/",
+      "machine_contracts": [
+        "https://arif-fazil.com/llms.txt",
+        "https://arif-fazil.com/missions.json",
+        "https://arif-fazil.com/surfaces.json"
+      ],
+      "status": "live"
+    },
+    {
+      "id": "tool:webmcp-public",
+      "kind": "webmcp",
+      "name": "Public WebMCP tools[]",
+      "owner": "Arif Fazil",
+      "mission": "investigate",
+      "access_scope": "governed_query",
+      "risk_tier": "R1_query",
+      "url": "https://arif-fazil.com/.well-known/webmcp.json",
+      "doctrine": "F2 live-only tools[]; deferred without URLs",
+      "status": "live",
+      "review_cadence": "on_deploy"
+    },
+    {
+      "id": "tool:mcp-gateway",
+      "kind": "mcp",
+      "name": "MCP gateway",
+      "owner": "Arif Fazil / A-FORGE",
+      "mission": "build",
+      "access_scope": "governed_query",
+      "risk_tier": "R1_query",
+      "url": "https://mcp.arif-fazil.com/mcp",
+      "status": "live",
+      "auth": "session_or_sct_server_enforced"
+    },
+    {
+      "id": "organ:arifos",
+      "kind": "organ",
+      "name": "arifOS",
+      "owner": "Arif Fazil",
+      "mission": "decide",
+      "access_scope": "JUDGE_ONLY",
+      "risk_tier": "R1_query",
+      "url": "https://arifos.arif-fazil.com",
+      "public_tools": ["arif_init", "arif_observe", "arif_think", "arif_route", "arif_memory", "arif_judge", "arif_forge", "arif_seal"],
+      "status": "live"
+    },
+    {
+      "id": "organ:geox",
+      "kind": "organ",
+      "name": "GEOX",
+      "owner": "Arif Fazil",
+      "mission": "investigate",
+      "access_scope": "COMPUTE_ONLY",
+      "risk_tier": "R1_query",
+      "url": "https://geox.arif-fazil.com",
+      "human_surface": "https://arif-fazil.com/earth",
+      "status": "live"
+    },
+    {
+      "id": "organ:wealth",
+      "kind": "organ",
+      "name": "WEALTH",
+      "owner": "Arif Fazil",
+      "mission": "interpret",
+      "access_scope": "COMPUTE_ONLY",
+      "risk_tier": "R1_query",
+      "url": "https://wealth.arif-fazil.com",
+      "human_surface": "https://arif-fazil.com/economics",
+      "status": "live"
+    },
+    {
+      "id": "organ:well",
+      "kind": "organ",
+      "name": "WELL",
+      "owner": "Arif Fazil",
+      "mission": "monitor",
+      "access_scope": "REFLECT_ONLY",
+      "risk_tier": "R1_query",
+      "url": "https://well.arif-fazil.com",
+      "status": "live"
+    },
+    {
+      "id": "organ:aaa",
+      "kind": "organ",
+      "name": "AAA",
+      "owner": "Arif Fazil",
+      "mission": "remember",
+      "access_scope": "DISPLAY_ONLY_public",
+      "risk_tier": "R1_query",
+      "url": "https://aaa.arif-fazil.com",
+      "status": "live"
+    },
+    {
+      "id": "organ:a-forge",
+      "kind": "organ",
+      "name": "A-FORGE",
+      "owner": "Arif Fazil",
+      "mission": "build",
+      "access_scope": "EXECUTE_AFTER_SEAL",
+      "risk_tier": "R3_mutate",
+      "url": "https://forge.arif-fazil.com",
+      "status": "live",
+      "note": "Public marketing surface only; execution is lease-gated, not anonymous"
+    },
+    {
+      "id": "identity:did-web",
+      "kind": "identity",
+      "name": "did:web:arif-fazil.com",
+      "owner": "Arif Fazil",
+      "mission": "remember",
+      "access_scope": "public_read",
+      "risk_tier": "R0_read",
+      "url": "https://arif-fazil.com/.well-known/did.json",
+      "status": "live"
+    },
+    {
+      "id": "proof:vault999-verify",
+      "kind": "proof",
+      "name": "VAULT999 public verify",
+      "owner": "Arif Fazil",
+      "mission": "remember",
+      "access_scope": "public_read",
+      "risk_tier": "R0_read",
+      "url": "https://arif-fazil.com/999/verify",
+      "witness": "https://aaa.arif-fazil.com/api/seal-chain/head",
+      "status": "live"
+    },
+    {
+      "id": "territory:earth",
+      "kind": "territory",
+      "name": "EARTH",
+      "owner": "Arif Fazil",
+      "mission": "investigate",
+      "access_scope": "public_read + governed_query",
+      "risk_tier": "R1_query",
+      "url": "https://arif-fazil.com/earth",
+      "entity_examples": ["basin:malay", "basin:kinabalu", "tool:geox"],
+      "status": "live"
+    },
+    {
+      "id": "territory:economics",
+      "kind": "territory",
+      "name": "ECONOMICS",
+      "owner": "Arif Fazil",
+      "mission": "interpret",
+      "access_scope": "public_read + governed_query",
+      "risk_tier": "R1_query",
+      "url": "https://arif-fazil.com/economics",
+      "status": "live"
+    },
+    {
+      "id": "territory:world",
+      "kind": "territory",
+      "name": "WORLD",
+      "owner": "Arif Fazil",
+      "mission": "interpret",
+      "access_scope": "public_read",
+      "risk_tier": "R0_read",
+      "url": "https://arif-fazil.com/world",
+      "status": "live"
+    },
+    {
+      "id": "territory:doctrine",
+      "kind": "territory",
+      "name": "DOCTRINE",
+      "owner": "Arif Fazil",
+      "mission": "decide",
+      "access_scope": "public_read",
+      "risk_tier": "R0_read",
+      "url": "https://arif-fazil.com/doctrine",
+      "entity_examples": ["doctrine:f2-truth", "doctrine:f13-sovereign"],
+      "status": "live"
+    }
+  ],
+  "not_listed_here": [
+    "Private vault contents",
+    "Proprietary well details",
+    "Internal SCT secrets",
+    "Telegram bridge credentials",
+    "Any R3/R4 actuator without human lease"
+  ]
+}

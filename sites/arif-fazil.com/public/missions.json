@@ -1,6 +1,18 @@
 {
   "schema": "arifos.missions.v1",
-  "as_of": "2026-07-30",
+  "version": "1.1.0",
+  "as_of": "2026-08-04",
+  "change_control": {
+    "rule": "Bump version on mission add/remove/rename. Agents must not invent missions outside this file.",
+    "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+    "policy": "https://arif-fazil.com/.well-known/agent-policy.json",
+    "registry": "https://arif-fazil.com/.well-known/agent-registry.json"
+  },
+  "zones": {
+    "public_read": "missions classify human intent only — no tool authorization",
+    "governed_query": "organs listed per mission are compute/judge routes, not open write",
+    "restricted_action": "build/remember seal paths require F13 / 888_HOLD when irreversible"
+  },
   "doctrine": {
     "title": "Six missions. Not 128 tools.",
     "thesis": "You state the problem. The federation chooses the instruments, challenges the result, and returns only what matters.",
@@ -96,6 +108,14 @@
     }
   ],
   "refusal": "This file does not authorize tool calls. It classifies human intent. Agents route. arifOS judges. Arif decides.",
+  "risk_default": {
+    "investigate": "R1_query",
+    "interpret": "R1_query",
+    "decide": "R1_query",
+    "build": "R3_mutate",
+    "monitor": "R1_query",
+    "remember": "R2_publish"
+  },
   "web_zen": {
     "cli": "/root/arif-fazil.com/scripts/web-zen/web_zen.py",
     "doctor": "python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor",
@@ -109,7 +129,7 @@
     ],
     "skill": "FORGE-agentic-web-builder",
     "doctrine": "capability\u2260authority \u00b7 ephemeral first \u00b7 missions not tool menus",
-    "as_of": "2026-07-30",
+    "as_of": "2026-08-04",
     "mcp_tool": "forge_web_zen",
     "arif_route": "arif_route(mission_id=investigate|interpret|decide|build|monitor|remember)"
   },
