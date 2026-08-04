@@ -1,0 +1,49 @@
+{
+  "schema": "arifos.invariants-index.v1",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Invariant index — static law vs dynamic state",
+  "operating_rule": "static law · dynamic state · gated action",
+  "summary": "Doctrine stays stable. Evidence updates live. Dynamic output remains bounded by a static constitutional frame.",
+  "documents": {
+    "static_invariants": {
+      "url": "https://arif-fazil.com/.well-known/static-invariants.json",
+      "role": "identity, constitution, truth policy, ontology, interfaces, disclosure",
+      "mutability": "888_HOLD"
+    },
+    "dynamic_invariants": {
+      "url": "https://arif-fazil.com/.well-known/dynamic-invariants.json",
+      "role": "pipes, registers, world state, hypothesis space, telemetry, nav emphasis",
+      "mutability": "live from declared pipes; withhold on fail"
+    },
+    "risk_tiers": {
+      "url": "https://arif-fazil.com/.well-known/risk-tiers.json",
+      "role": "R0–R4 approval gates",
+      "mutability": "static definitions"
+    },
+    "hold_conditions": {
+      "url": "https://arif-fazil.com/.well-known/hold-conditions.json",
+      "role": "when 888_HOLD fires",
+      "mutability": "static"
+    },
+    "constitution": {
+      "url": "https://arif-fazil.com/.well-known/ai-constitution.json",
+      "role": "F1–F13 public constitution"
+    },
+    "agent_policy": {
+      "url": "https://arif-fazil.com/.well-known/agent-policy.json"
+    },
+    "agent_registry": {
+      "url": "https://arif-fazil.com/.well-known/agent-registry.json"
+    }
+  },
+  "json_schemas": {
+    "static_invariants": "https://arif-fazil.com/schemas/v1/static-invariants.schema.json",
+    "dynamic_invariants": "https://arif-fazil.com/schemas/v1/dynamic-invariants.schema.json",
+    "risk_tiers": "https://arif-fazil.com/schemas/v1/risk-tiers.schema.json",
+    "hold_conditions": "https://arif-fazil.com/schemas/v1/hold-conditions.schema.json"
+  },
+  "human_docs": "https://arif-fazil.com/machines/",
+  "motto": "DITEMPA BUKAN DIBERI"
+}

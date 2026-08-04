@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/v1/risk-tiers.schema.json",
+  "title": "arifOS risk-tiers v1",
+  "type": "object",
+  "required": ["schema", "version", "tiers", "approval_gates"],
+  "properties": {
+    "schema": { "const": "arifos.risk-tiers.v1" },
+    "version": { "type": "string" },
+    "as_of": { "type": "string" },
+    "domain": { "type": "string" },
+    "tiers": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["id", "zone", "approval", "description"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["R0_read", "R1_query", "R2_publish", "R3_mutate", "R4_irreversible"]
+          },
+          "name": { "type": "string" },
+          "zone": {
+            "type": "string",
+            "enum": ["public_read", "governed_query", "restricted_action"]
+          },
+          "approval": { "type": "string" },
+          "mutable": { "type": "boolean" },
+          "description": { "type": "string" },
+          "examples": { "type": "array", "items": { "type": "string" } },
+          "on_pipe_fail": { "type": "string" }
+        }
+      }
+    },
+    "approval_gates": {
+      "type": "object",
+      "required": ["R0_read", "R1_query", "R2_publish", "R3_mutate", "R4_irreversible"],
+      "properties": {
+        "R0_read": { "type": "string" },
+        "R1_query": { "type": "string" },
+        "R2_publish": { "type": "string" },
+        "R3_mutate": { "const": "human_required" },
+        "R4_irreversible": { "const": "888_HOLD" }
+      }
+    },
+    "haram": { "type": "array", "items": { "type": "string" } },
+    "related": { "type": "object" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/v1/static-invariants.schema.json",
+  "title": "arifOS static-invariants v1",
+  "type": "object",
+  "required": ["schema", "version", "as_of", "domain", "operating_rule", "identity", "constitution", "truth_policy", "ontology", "apex_non_negotiables"],
+  "properties": {
+    "schema": { "const": "arifos.static-invariants.v1" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "as_of": { "type": "string" },
+    "domain": { "type": "string" },
+    "title": { "type": "string" },
+    "operating_rule": { "type": "string" },
+    "change_class": { "type": "string" },
+    "identity": {
+      "type": "object",
+      "required": ["owner", "authority", "did", "canonical_domain"],
+      "properties": {
+        "owner": { "type": "string" },
+        "authority": { "type": "string" },
+        "did": { "type": "string" },
+        "canonical_domain": { "type": "string" },
+        "organs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "constitution": {
+      "type": "object",
+      "required": ["floors", "epistemic_public_bands", "hold_token", "human_veto"],
+      "properties": {
+        "floors": {
+          "type": "array",
+          "minItems": 13,
+          "maxItems": 13,
+          "items": { "type": "string", "pattern": "^F([1-9]|1[0-3])$" }
+        },
+        "epistemic_kernel_labels": { "type": "array", "items": { "type": "string" } },
+        "epistemic_public_bands": { "type": "array", "items": { "type": "string" } },
+        "hold_token": { "const": "888_HOLD" },
+        "human_veto": { "type": "string" }
+      }
+    },
+    "truth_policy": {
+      "type": "object",
+      "required": ["pipe_first", "no_invented_numbers", "withhold_on_pipe_failure"],
+      "properties": {
+        "pipe_first": { "const": true },
+        "no_invented_numbers": { "const": true },
+        "withhold_on_pipe_failure": { "const": true },
+        "nothing_claimed_unobserved": { "type": "boolean" },
+        "source_linked_outputs": { "type": "boolean" },
+        "human_overridable": { "type": "boolean" }
+      }
+    },
+    "ontology": {
+      "type": "object",
+      "properties": {
+        "territories": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["EARTH", "ECONOMICS", "WORLD", "DOCTRINE"] }
+        },
+        "missions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "interface_contracts": { "type": "object" },
+    "disclosure": { "type": "object" },
+    "apex_non_negotiables": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "haram_if_dynamic_without_hold": { "type": "array", "items": { "type": "string" } },
+    "related": { "type": "object" }
+  },
+  "additionalProperties": true
+}

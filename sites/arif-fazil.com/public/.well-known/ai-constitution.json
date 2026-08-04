@@ -1,9 +1,10 @@
 {
   "schema": "arifos.ai-constitution.v1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "as_of": "2026-08-04",
   "domain": "arif-fazil.com",
   "title": "Public AI Constitution — World-Model Surface",
+  "operating_rule": "static law · dynamic state · gated action",
   "motto": "DITEMPA BUKAN DIBERI",
   "owner": {
     "name": "Muhammad Arif bin Fazil",
@@ -108,6 +109,14 @@
   "agent_policy": "https://arif-fazil.com/.well-known/agent-policy.json",
   "agent_registry": "https://arif-fazil.com/.well-known/agent-registry.json",
   "human_docs": "https://arif-fazil.com/machines/",
+  "invariants": {
+    "index": "https://arif-fazil.com/.well-known/invariants.json",
+    "static": "https://arif-fazil.com/.well-known/static-invariants.json",
+    "dynamic": "https://arif-fazil.com/.well-known/dynamic-invariants.json",
+    "risk_tiers": "https://arif-fazil.com/.well-known/risk-tiers.json",
+    "hold_conditions": "https://arif-fazil.com/.well-known/hold-conditions.json",
+    "schemas": "https://arif-fazil.com/schemas/v1/index.json"
+  },
   "related": {
     "governance_manifest": "https://arif-fazil.com/.well-known/arifos-governance.json",
     "territories": "https://arif-fazil.com/.well-known/territories.json",

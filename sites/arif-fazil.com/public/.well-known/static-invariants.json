@@ -1,0 +1,100 @@
+{
+  "schema": "arifos.static-invariants.v1",
+  "$schema": "https://arif-fazil.com/schemas/v1/static-invariants.schema.json",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Static invariants — law that must not drift like content",
+  "operating_rule": "static law · dynamic state · gated action",
+  "motto": "Freeze the laws, let the observations move.",
+  "bedrock_metaphor": "Constitution is bedrock; telemetry is weather.",
+  "change_class": "R4_irreversible_or_888_HOLD",
+  "change_control": {
+    "rule": "Any mutation of these fields requires 888_HOLD + version bump + human F13 seal",
+    "silent_change": "HARAM",
+    "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json"
+  },
+  "identity": {
+    "owner": "Muhammad Arif bin Fazil",
+    "authority": "F13 SOVEREIGN",
+    "authority_model": "human sovereign veto",
+    "did": "did:web:arif-fazil.com",
+    "canonical_domain": "arif-fazil.com",
+    "did_document": "https://arif-fazil.com/.well-known/did.json",
+    "organs": ["arifOS", "A-FORGE", "GEOX", "WEALTH", "WELL", "AAA", "arifFLOW"],
+    "motto": "DITEMPA BUKAN DIBERI"
+  },
+  "constitution": {
+    "floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "floors_mirror": "https://arif-fazil.com/floors.json",
+    "epistemic_kernel_labels": ["OBS", "DER", "INT", "SPEC"],
+    "epistemic_public_bands": ["CLAIM", "PLAUSIBLE", "HYPOTHESIS", "ESTIMATE", "UNKNOWN"],
+    "hold_token": "888_HOLD",
+    "human_veto": "FINAL",
+    "verdicts": ["SEAL", "SABAR", "CAUTION", "HOLD", "VOID", "888_HOLD"]
+  },
+  "truth_policy": {
+    "pipe_first": true,
+    "no_invented_numbers": true,
+    "withhold_on_pipe_failure": true,
+    "nothing_claimed_unobserved": true,
+    "source_linked_outputs": true,
+    "human_overridable": true,
+    "slogan_is_law": "Numbers from pipes, not invented. Withhold when pipes fail."
+  },
+  "ontology": {
+    "territories": ["EARTH", "ECONOMICS", "WORLD", "DOCTRINE"],
+    "territories_document": "https://arif-fazil.com/.well-known/territories.json",
+    "entity_type_prefix_examples": ["basin:", "formation:", "tool:", "doctrine:", "organ:", "surface:"],
+    "missions": ["investigate", "interpret", "decide", "build", "monitor", "remember"],
+    "missions_document": "https://arif-fazil.com/missions.json"
+  },
+  "interface_contracts": {
+    "versioned_endpoints": [
+      { "path": "/llms.txt", "role": "guidance_overview", "binding": false },
+      { "path": "/missions.json", "role": "mission_catalog", "binding": true },
+      { "path": "/surfaces.json", "role": "route_catalog", "binding": true },
+      { "path": "/.well-known/webmcp.json", "role": "live_browser_tools", "binding": true, "f2": "tools[] live 2xx only" },
+      { "path": "/.well-known/did.json", "role": "machine_identity", "binding": true },
+      { "path": "/.well-known/ai-constitution.json", "role": "public_constitution", "binding": true },
+      { "path": "/.well-known/agent-policy.json", "role": "agent_policy", "binding": true },
+      { "path": "/.well-known/agent-registry.json", "role": "agent_inventory", "binding": true },
+      { "path": "/.well-known/static-invariants.json", "role": "static_law", "binding": true },
+      { "path": "/.well-known/dynamic-invariants.json", "role": "dynamic_state_rules", "binding": true },
+      { "path": "/.well-known/hold-conditions.json", "role": "hold_gates", "binding": true },
+      { "path": "/.well-known/risk-tiers.json", "role": "risk_classes", "binding": true },
+      { "path": "/machines/", "role": "human_machine_docs", "binding": false }
+    ],
+    "version_semantics": "Bump major for meaning change; keep old readable ≥30 days when practical"
+  },
+  "disclosure": {
+    "tiers": ["public", "existence_only", "proprietary", "vault_never_leaves"],
+    "public": "HTML dossiers, public JSON registers, live pipe numbers when healthy",
+    "existence_only": "Named wells/studies without full location or content",
+    "proprietary": "Detail withheld; existence may be asserted",
+    "vault_never_leaves": "VAULT999 private chain material, SCT secrets, credentials",
+    "redaction_policy_mutable_by_convenience": "HARAM"
+  },
+  "apex_non_negotiables": [
+    "canonical_domain_and_machine_identity",
+    "constitutional_floors_and_veto_logic",
+    "epistemic_tagging_system",
+    "truth_policy_no_invented_numbers",
+    "public_private_boundary_and_redaction_rules",
+    "version_semantics_for_machine_endpoints",
+    "source_linked_and_human_overridable_agent_outputs"
+  ],
+  "haram_if_dynamic_without_hold": [
+    "risk_thresholds_without_notice",
+    "redaction_policy_by_convenience",
+    "endpoint_meaning_without_version_bump",
+    "claims_policy_varying_by_page_mood",
+    "human_approval_disappearing_inside_autonomous_tools"
+  ],
+  "related": {
+    "dynamic_invariants": "https://arif-fazil.com/.well-known/dynamic-invariants.json",
+    "risk_tiers": "https://arif-fazil.com/.well-known/risk-tiers.json",
+    "hold_conditions": "https://arif-fazil.com/.well-known/hold-conditions.json",
+    "invariants_index": "https://arif-fazil.com/.well-known/invariants.json"
+  }
+}
