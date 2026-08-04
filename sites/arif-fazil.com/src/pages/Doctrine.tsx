@@ -1,351 +1,315 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { useWebMCP } from '@/hooks/useWebMCP';
-import { QuoteCard } from '@/components/QuoteCard';
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
-const FLOOR_DEFS = [
-  { id: 'F1', name: 'AMANAH', desc: 'Reversible-first. Irreversible → 888_HOLD.', type: 'HARD' },
-  { id: 'F2', name: 'TRUTH', desc: 'Evidence before narrative. OBS/DER/INT/SPEC labeling. ≥0.99 fidelity.', type: 'HARD' },
-  { id: 'F3', name: 'TRI-WITNESS', desc: 'Human × AI × Earth ≥ 0.75 (Nash geometric mean).', type: 'DERIVED' },
-  { id: 'F4', name: 'CLARITY', desc: 'ΔS ≤ 0 — every output reduces entropy.', type: 'HARD' },
-  { id: 'F5', name: 'PEACE²', desc: 'Non-destructive power. Guard weakest.', type: 'SOFT' },
-  { id: 'F6', name: 'EMPATHY', desc: 'Dignity first. Protect weakest stakeholder. (op: MARUAH)', type: 'SOFT' },
-  { id: 'F7', name: 'HUMILITY', desc: 'Ω₀ ∈ [0.03, 0.05]. Cap = 1−Ω₀ ∈ [0.95, 0.97].', type: 'HARD' },
-  { id: 'F8', name: 'GENIUS', desc: 'G ≥ 0.80 for complex actions. Simplest correct path.', type: 'DERIVED' },
-  { id: 'F9', name: 'ANTI-HANTU', desc: 'No deception, manipulation, consciousness claims. C_dark < 0.30.', type: 'HARD' },
-  { id: 'F10', name: 'ONTOLOGY', desc: 'AI-only ontology. No soul, no feelings, no sentience.', type: 'HARD' },
-  { id: 'F11', name: 'AUDITABILITY', desc: 'Every decision logged, inspectable, attributable.', type: 'HARD' },
-  { id: 'F12', name: 'RESILIENCE', desc: 'Injection defense. Risk < 0.85.', type: 'HARD' },
-  { id: 'F13', name: 'SOVEREIGN', desc: 'Human veto FINAL. Arif decides irreversible. No override.', type: 'HARD' },
-];
+const FLOORS = [
+  { code: 'F1', name: 'AMANAH', plain: "Reversibility — don't do what can't be undone.", tech: 'Irreversible actions require explicit human authorization before execution.' },
+  { code: 'F2', name: 'TRUTH', plain: 'Say only what you can stand behind.', tech: 'Every claim carries a confidence tag: observed, derived, interpretation, or speculative.' },
+  { code: 'F3', name: 'WITNESS', plain: 'Tri-witness — claims need corroboration.', tech: 'Load-bearing claims require three independent sources before they are treated as fact.' },
+  { code: 'F4', name: 'CLARITY', plain: "If it isn't clear, it isn't said.", tech: 'Ambiguous output is a failure state, not a style choice. Rewrite or stop.' },
+  { code: 'F5', name: 'PEACE', plain: 'Do no harm; lower the temperature.', tech: 'Responses are scored for escalation risk; the system de-escalates by default.' },
+  { code: 'F6', name: 'EMPATHY', plain: 'Model the human on the other side.', tech: 'The system estimates the reader’s state and context before choosing tone and content.' },
+  { code: 'F7', name: 'HUMILITY', plain: 'Know the edge of what you know.', tech: 'Out-of-distribution questions trigger explicit uncertainty, not confident guessing.' },
+  { code: 'F8', name: 'GENIUS', plain: 'Excellence within the floors, never around them.', tech: 'Cleverness that routes around a floor is logged as a violation, not a feature.' },
+  { code: 'F9', name: 'ANTI-HANTU', plain: 'Never claim consciousness or personhood.', tech: 'The machine must not present itself as alive, feeling, or owed moral standing.' },
+  { code: 'F10', name: 'ONTOLOGY', plain: 'Use words for what things actually are.', tech: 'Terms map to real referents; no metaphor is allowed to masquerade as mechanism.' },
+  { code: 'F11', name: 'AUTH', plain: 'Verify who is asking.', tech: 'Privileged actions require authenticated identity and scoped permissions.' },
+  { code: 'F12', name: 'INJECTION', plain: 'Resist hostile instructions.', tech: 'Untrusted input can never rewrite the floors; prompt injection fails closed.' },
+  { code: 'F13', name: 'SOVEREIGN', plain: 'The human veto is absolute.', tech: 'Any human in authority can halt, override, or roll back the system at any time.' },
+]
 
-const CONSTELLATION = [
-  { symbol: 'Ω', name: 'arifOS', ring: 'MIND', role: 'Constitutional kernel — judges, seals, never executes', port: ':8088', domain: 'arifos.arif-fazil.com', never: 'Self-authorize' },
-  { symbol: 'Ψ', name: 'A-FORGE', ring: 'BODY', role: 'Execution shell — build, deploy, forge (lease-bound)', port: ':7071', domain: 'forge.arif-fazil.com', never: 'Judge or seal' },
-  { symbol: '◈', name: 'AAA', ring: 'CONTROL', role: 'Control plane & A2A gateway — identity, routing, cockpit', port: ':3001', domain: 'aaa.arif-fazil.com', never: 'Override kernel judgment' },
-  { symbol: 'Φ', name: 'GEOX', ring: 'ORGAN', role: 'Earth intelligence — wells, seismic, basin, prospect', port: ':8081', domain: 'geox.arif-fazil.com', never: 'Authorize drilling' },
-  { symbol: 'Ξ', name: 'WEALTH', ring: 'ORGAN', role: 'Capital intelligence — NPV, EMV, risk, markets', port: ':18082', domain: 'wealth.arif-fazil.com', never: 'Allocate capital' },
-  { symbol: 'Ω★', name: 'WELL', ring: 'ORGAN', role: 'Human & machine vitality — reflect, never diagnose', port: ':18083', domain: 'well.arif-fazil.com', never: 'Diagnose or adjudicate' },
-  { symbol: '⚛', name: 'HERMES', ring: 'RELAY', role: 'Sovereign relay — Telegram bridge to cockpit', port: 'Telegram', domain: 't.me/ASI_arifos_bot', never: 'Override F13' },
-  { symbol: '○', name: 'MCP Gateway', ring: 'GATE', role: 'Agent connection — protocol endpoint, tool registry', port: ':7072', domain: 'mcp.arif-fazil.com', never: 'Bypass gates' },
-  { symbol: 'φ', name: 'MARKETS', ring: 'FLOW', role: 'Capital flows — PETRONAS φ → OIL → GAS → GOLD', port: '—', domain: 'arif-fazil.com/economics', never: 'Self-allocate' },
-];
+const TOOLS = [
+  { name: 'arif_init', plain: 'Start a governed session.', tech: 'Loads the floors, fixes identity, opens a sealed session log.' },
+  { name: 'arif_observe', plain: 'Look before anything else.', tech: 'Collects inputs and tags each with its confidence class.' },
+  { name: 'arif_think', plain: 'Reason inside the floors.', tech: 'Deliberation trace checked against all 13 floors before use.' },
+  { name: 'arif_route', plain: 'Decide what happens next.', tech: 'Routes work to the right organ — MIND, BODY, EARTH, CAPITAL, VITALITY.' },
+  { name: 'arif_memory', plain: 'Remember what was sealed.', tech: 'Reads and writes only sealed, witness-checked records.' },
+  { name: 'arif_judge', plain: 'Weigh the verdict.', tech: 'Scores outcomes against the floors; hot verdicts cool before they rule.' },
+  { name: 'arif_forge', plain: 'Build the artifact.', tech: 'Produces code, documents, and plans with provenance attached.' },
+  { name: 'arif_seal', plain: 'Seal the verdict.', tech: 'Signs the final output: who decided, on what evidence, under which floors.' },
+]
 
-const PORTALS = [
-  { label: 'arifOS Observatory', href: 'https://arifos.arif-fazil.com', desc: 'Reality witness — constitutional health, live state' },
-  { label: 'GEOX', href: 'https://geox.arif-fazil.com', desc: 'Earth intelligence — basin, seismic, wells' },
-  { label: 'WEALTH', href: 'https://wealth.arif-fazil.com', desc: 'Capital intelligence — NPV, EMV, markets' },
-  { label: 'WELL', href: 'https://well.arif-fazil.com', desc: 'Human & machine vitality reflection' },
-  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', desc: 'Governed execution — build, deploy, audit' },
-  { label: 'AAA', href: 'https://aaa.arif-fazil.com', desc: 'Control plane — agent identity, cockpit' },
-  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', desc: 'Agent connection — protocol endpoint, registry' },
-  { label: 'GitHub Canon', href: 'https://github.com/ariffazil/arifOS/tree/main/docs', desc: 'Bijaksana / APEX docs in source — wiki host retired until live' },
-];
+const ORGANS = [
+  { name: 'arifOS', role: 'MIND', plain: 'The constitutional kernel — it thinks and judges.' },
+  { name: 'AAA', role: 'BODY', plain: 'The control plane — it acts, under the floors.' },
+  { name: 'GEOX', role: 'EARTH', plain: 'Geoscience work — wells, basins, seismic.' },
+  { name: 'WEALTH', role: 'CAPITAL', plain: 'Economics work — pricing, ledgers, risk.' },
+  { name: 'WELL', role: 'VITALITY', plain: 'Health of the system itself — signals and uptime of trust.' },
+  { name: 'A-FORGE', role: 'EXECUTION SHELL', plain: 'The forge where sealed plans become real artifacts.' },
+]
 
-const MARKET_CHAIN = [
-  { name: 'PETRONAS', desc: 'Sovereign energy anchor — national oil company, hydrocarbon custodian', href: '/economics' },
-  { name: 'MALAYSIA', desc: 'Federal revenue, fiscal policy, energy sovereignty', href: '/economics' },
-  { name: 'OIL', desc: 'Brent · Tapis · WTI — crude markets', href: '/world/oil' },
-  { name: 'GAS', desc: 'LNG spot · Henry Hub · JKM — gas markets', href: '/world/gas' },
-  { name: 'GOLD', desc: 'XAUUSD · physical · mining equities', href: '/world/gold' },
-];
-
-const APEX_LETTERS = [
-  { symbol: 'A', name: 'AKAL', desc: 'Reasoning lawfulness — truth, humility, ontology (F2 · F7 · F10)' },
-  { symbol: 'P', name: 'PRESENT×AUTHORITY', desc: 'State truth + legitimacy — what the world is, who may mutate it (F1 · F5 · F11 · F13)' },
-  { symbol: 'E', name: 'ENTROPY×ENERGY', desc: 'Landauer conjugate pair ΔE ≥ kT·ln2·ΔS — honesty about unknowns + cost of changing information (F4 · F12)' },
-  { symbol: 'X', name: 'EXPLORATION×AMANAH', desc: 'Risk under custody — witness, empathy, genius, anti-hantu (F3 · F6 · F8 · F9)' },
-];
-
-const ringColor = (ring: string) => {
-  switch (ring) {
-    case 'MIND': return 'text-[#00D4AA] border-[#00D4AA]/30';
-    case 'SOUL': return 'text-[#D4A853] border-[#D4A853]/30';
-    case 'BODY': return 'text-[#7C6FD4] border-[#7C6FD4]/30';
-    case 'CONTROL': return 'text-[#E2E8F0] border-[#E2E8F0]/30';
-    case 'ORGAN': return 'text-[#3B82F6] border-[#3B82F6]/30';
-    case 'RELAY': return 'text-[#A855F7] border-[#A855F7]/30';
-    case 'GATE': return 'text-[#22C55E] border-[#22C55E]/30';
-    case 'FLOW': return 'text-[#F59E0B] border-[#F59E0B]/30';
-    default: return 'text-forge-dim border-forge-iron';
-  }
-};
-
-const floorTypeColor = (t: string) => {
-  if (t === 'HARD') return 'border-l-red-500 bg-red-500/5';
-  if (t === 'DERIVED') return 'border-l-blue-500 bg-blue-500/5';
-  return 'border-l-yellow-600 bg-yellow-600/5';
-};
-
-const doctrineTools = [
-  {
-    name: 'get_doctrine',
-    description: 'Get the APEX Bijaksana Canon doctrine: ABCD framework, 13 floors, federation constellation, market chain, sovereign compact.',
-    execute() {
-      return {
-        content: [{ type: 'text', text: JSON.stringify({
-          bundle: 'CANON_APEX_V2',
-          version: 'v2026.07.APEX.2',
-          apex_theory: 'T-000',
-          floors: FLOOR_DEFS,
-          constellation: CONSTELLATION,
-          market_chain: MARKET_CHAIN,
-          apex_letters: APEX_LETTERS,
-          grand_equation: 'G = (A·P·E²·X)^(1/5) — hard floors veto before scoring',
-          epistemic_status: 'Scientific theory: HOLD · Governance research programme: SEAL · Unifies all knowledge: VOID',
-          sovereign_compact: 'DITEMPA BUKAN DIBERI — Forged, Not Given. AI executes, humans decide. The constitution is law, not advice. Three rings. One sovereign. F13 is final.'
-        }, null, 2) }]
-      };
-    }
-  }
-];
+function TerminalLine() {
+  const full = '> arif_init … floors loaded F1–F13 … OK'
+  const [n, setN] = useState(0)
+  useEffect(() => {
+    if (n >= full.length) return
+    const id = setTimeout(() => setN(n + 1), 40)
+    return () => clearTimeout(id)
+  }, [n])
+  return (
+    <p className="mt-8 font-mono text-[13px] tracking-[0.04em] text-cold/80">
+      {full.slice(0, n)}
+      <span className="animate-pulse">▌</span>
+    </p>
+  )
+}
 
 export function Doctrine() {
-  useWebMCP(doctrineTools);
+  const [open, setOpen] = useState<number | null>(0)
+  const [litFloors, setLitFloors] = useState(0)
+
   useEffect(() => {
-    document.title = 'Doctrine — APEX Bijaksana Canon · ABCD · Constellation';
-    document.querySelector('link[rel=canonical]')?.setAttribute('href','https://arif-fazil.com/doctrine');
-  }, []);
+    if (litFloors >= 13) return
+    const id = setTimeout(() => setLitFloors(litFloors + 1), 120)
+    return () => clearTimeout(id)
+  }, [litFloors])
 
   return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-forge-black min-h-screen">
-      {/* HERO — APEX Bijaksana Canon */}
-      <section className="py-24 border-b-2 border-forge-iron bg-forge-steel">
-        <div className="site-frame">
-          <div className="section-label">CANON_APEX_V2 · v2026.07.APEX.2 · APEX Theory T-000</div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-end">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black italic uppercase leading-[0.8] tracking-tighter mb-4">
-                APEX<br />Bijaksana<br />Canon
-              </h1>
-              <div className="flex gap-3 mb-6 mt-4">
-                {['A','B','C','D'].map(l => (
-                  <span key={l} className="font-mono text-2xl font-black text-forge-orange border-2 border-forge-orange/40 px-3 py-1">{l}</span>
-                ))}
-              </div>
-              <p className="font-body text-xl text-forge-dim leading-relaxed">
-                The immutable bedrock of arifOS. Not philosophy, not prose — fixed law:
-                APEX Theory (A), Federation Body (B), Constitutional Floors (C),
-                and the DITEMPA Sovereign Compact (D). Every organ, agent, and
-                workflow must obey.
+    <div className="bg-obsidian text-[#C8D8E8]">
+      {/* 1 — HERO */}
+      <section className="relative mx-auto flex min-h-[90vh] max-w-[1280px] flex-col items-center gap-12 px-6 py-20 lg:flex-row">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{
+            backgroundImage:
+              'linear-gradient(#7DD3FC 1px, transparent 1px), linear-gradient(90deg, #7DD3FC 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+          }}
+        />
+        <div className="relative w-full lg:w-[55%]">
+          <p className="eyebrow text-cold">06 ————— DOCTRINE · arifOS v2026.08.01</p>
+          <h1 className="mt-8 font-display text-[48px] leading-[0.95] tracking-[-0.02em] text-[#F0F6FC] md:text-[84px]">
+            {'Truth must cool before it rules.'.split(' ').map((w, i) => (
+              <motion.span
+                key={i}
+                className="inline-block"
+                initial={{ opacity: 0, y: 20, color: '#7DD3FC' }}
+                animate={{ opacity: 1, y: 0, color: '#F0F6FC' }}
+                transition={{ delay: 0.2 + i * 0.09, duration: 0.6 }}
+              >
+                {w}&nbsp;
+              </motion.span>
+            ))}
+          </h1>
+          <motion.p
+            className="mt-8 max-w-[58ch] font-body text-[20px] leading-[1.65] text-[#C8D8E8]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
+          >
+            arifOS is a constitution for AI systems. Thirteen floors a machine may not
+            break — and if it cannot answer honestly, it must stop. A human always holds
+            the veto.
+          </motion.p>
+          <TerminalLine />
+        </div>
+        <div className="relative w-full max-w-[380px] lg:w-[45%]">
+          <img
+            src="/floors-wireframe.svg"
+            alt="Wireframe of the 13 constitutional floors, F1 to F13"
+            className="w-full"
+            style={{
+              clipPath: `inset(${100 - (litFloors / 13) * 100}% 0 0 0)`,
+              transition: 'clip-path 0.12s steps(1)',
+              filter: 'drop-shadow(0 0 24px rgba(125,211,252,0.25))',
+            }}
+          />
+          <p className="mt-3 text-center font-mono text-[12px] tracking-[0.04em] text-cold/60">
+            THE TOWER — F1 AT THE FOUNDATION, F13 AT THE CROWN
+          </p>
+        </div>
+      </section>
+
+      {/* 2 — 13 FLOORS */}
+      <section className="mx-auto max-w-[1280px] px-6 py-24">
+        <div className="flex items-center gap-4">
+          <span className="eyebrow text-[#F0F6FC]">02</span>
+          <span aria-hidden className="h-px flex-1 bg-[#7DD3FC]/20" />
+          <span className="eyebrow text-[#9DB4C8]">THE 13 CONSTITUTIONAL FLOORS</span>
+        </div>
+        <p className="mt-6 max-w-[62ch] font-body text-[18px] leading-[1.65] text-[#9DB4C8]">
+          Plain language first — because a constitution nobody can read is just decoration.
+          Click any floor for the technical gloss.
+        </p>
+        <div className="mt-10 border-t border-[#7DD3FC]/15">
+          {FLOORS.map((f, i) => (
+            <motion.div
+              key={f.code}
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: i * 0.03, duration: 0.35 }}
+              className="border-b border-[#7DD3FC]/15"
+            >
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="flex w-full items-baseline gap-5 py-5 text-left transition-colors hover:bg-[#0A1118]"
+                aria-expanded={open === i}
+              >
+                <span className={`font-mono text-[14px] tracking-[0.06em] ${open === i ? 'text-cold' : 'text-cold/60'}`}>
+                  {f.code}
+                </span>
+                <span className="w-32 shrink-0 font-mono text-[13px] uppercase tracking-[0.06em] text-[#F0F6FC] md:w-44">
+                  {f.name}
+                </span>
+                <span className="font-body text-[17px] leading-[1.55] text-[#C8D8E8]">{f.plain}</span>
+                <span className="ml-auto font-mono text-cold/50">{open === i ? '−' : '+'}</span>
+              </button>
+              {open === i && (
+                <motion.p
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  className="overflow-hidden pb-5 pl-[3.4rem] pr-8 font-mono text-[13px] leading-[1.7] tracking-[0.02em] text-[#9DB4C8] md:pl-[7.6rem]"
+                >
+                  <span className="text-cold/70">TECH · </span>
+                  {f.tech}
+                </motion.p>
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3 — 8 TOOLS */}
+      <section className="mx-auto max-w-[1280px] px-6 py-24">
+        <div className="flex items-center gap-4">
+          <span className="eyebrow text-[#F0F6FC]">03</span>
+          <span aria-hidden className="h-px flex-1 bg-[#7DD3FC]/20" />
+          <span className="eyebrow text-[#9DB4C8]">THE 8 TOOLS — MCP</span>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {TOOLS.map((t, i) => (
+            <motion.div
+              key={t.name}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="group border border-[#7DD3FC]/20 bg-[#0A1118] p-5 transition-colors hover:border-cold/60"
+            >
+              <p className="font-mono text-[14px] tracking-[0.04em] text-cold">
+                {t.name}
+                <span className="ml-1 inline-block h-3 w-2 bg-cold/70 opacity-0 group-hover:animate-pulse group-hover:opacity-100" />
               </p>
-            </div>
-            <div>
-              <QuoteCard
-                topic="On Constitutional Governance"
-                quote="A constitution is not the act of a government, but of a people constituting a government."
-                author="Thomas Paine"
-                source="Rights of Man (1791)"
-              />
-            </div>
-          </div>
+              <p className="mt-3 font-body text-[16px] leading-[1.55] text-[#C8D8E8]">{t.plain}</p>
+              <p className="mt-3 font-mono text-[12px] leading-[1.6] tracking-[0.02em] text-[#9DB4C8]/80">{t.tech}</p>
+            </motion.div>
+          ))}
         </div>
+        <p className="mt-8 font-mono text-[13px] tracking-[0.04em] text-[#9DB4C8]">
+          Public MCP →{' '}
+          <a href="https://mcp.arif-fazil.com/mcp" target="_blank" rel="noreferrer" className="text-cold underline decoration-cold/40 underline-offset-4 hover:decoration-cold">
+            https://mcp.arif-fazil.com/mcp
+          </a>{' '}
+          · streamable HTTP ·{' '}
+          <a href="https://pypi.org/project/arifos/" target="_blank" rel="noreferrer" className="text-cold underline decoration-cold/40 underline-offset-4 hover:decoration-cold">
+            PyPI: arifos
+          </a>
+        </p>
       </section>
 
-      {/* ABCD FRAMEWORK BAR */}
-      <section className="py-8 border-b-2 border-forge-iron bg-[#1a1a2e]">
-        <div className="site-frame">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { letter: 'A', label: 'APEX Theory', sub: '4 Letters · Grand Equation · Verdict Lattice' },
-              { letter: 'B', label: 'Body', sub: '9 Organs · FLAME · 3 Laws' },
-              { letter: 'C', label: 'Constitution', sub: 'F1–F13 · Hard/Soft/Derived' },
-              { letter: 'D', label: 'DITEMPA', sub: 'Sovereign Compact · 000→999' },
-            ].map(({ letter, label, sub }) => (
-              <div key={letter} className="text-center">
-                <span className="font-mono text-3xl font-black text-forge-orange">{letter}</span>
-                <div className="font-bold text-forge-white text-sm mt-1">{label}</div>
-                <div className="text-xs text-forge-dim mt-0.5">{sub}</div>
-              </div>
-            ))}
-          </div>
+      {/* 4 — FEDERATION */}
+      <section className="mx-auto max-w-[1280px] px-6 py-24">
+        <div className="flex items-center gap-4">
+          <span className="eyebrow text-[#F0F6FC]">04</span>
+          <span aria-hidden className="h-px flex-1 bg-[#7DD3FC]/20" />
+          <span className="eyebrow text-[#9DB4C8]">THE FEDERATION</span>
         </div>
-      </section>
-
-      {/* APEX LETTERS — APEX Theory */}
-      <section className="py-20 border-b-2 border-forge-iron">
-        <div className="site-frame">
-          <div className="section-label">A · APEX Theory T-000</div>
-          <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">The Four Letters</h2>
-          <p className="font-body text-sm text-forge-dim mb-4">
-            Hard floors veto first (F13 · F9 · F10 · F12 → VOID), then the letters score what remains.
-            The Grand Equation:{' '}
-            <code className="font-mono text-forge-orange">G = (A·P·E²·X)^⅕</code> —{' '}
-            E enters twice; entropy and energy are one Landauer conjugate pair.
-            G ≥ 0.80 → SEAL candidate.{' '}
-            <a href="https://github.com/ariffazil/arifOS/tree/main/docs/canon/CANON_APEX_V2" target="_blank" rel="noreferrer"
-               className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Full APEX Canon on GitHub ↗
-            </a>
+        <p className="mt-6 max-w-[62ch] font-body text-[18px] leading-[1.65] text-[#9DB4C8]">
+          One mind, five organs, one forge. Each organ does one kind of work; every one of
+          them answers to the same thirteen floors.
+        </p>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {ORGANS.map((o, i) => (
+            <motion.div
+              key={o.name}
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ delay: i * 0.1, duration: 0.4 }}
+              className="border border-[#7DD3FC]/20 bg-[#0A1118] p-6 text-center transition-colors hover:border-cold/60"
+            >
+              <p className="font-display text-[26px] tracking-[-0.01em] text-[#F0F6FC]">{o.name}</p>
+              <p className="mt-1 font-mono text-[12px] uppercase tracking-[0.08em] text-cold">{o.role}</p>
+              <p className="mt-3 font-body text-[15px] leading-[1.55] text-[#9DB4C8]">{o.plain}</p>
+            </motion.div>
+          ))}
+        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 space-y-3 border-t border-[#7DD3FC]/15 pt-8 font-mono text-[13px] leading-[1.9] tracking-[0.04em] text-[#9DB4C8]"
+        >
+          <p>
+            <span className="text-cold">TRINITY</span> — HUMAN arif-fazil.com · THEORY apex.arif-fazil.com · APPS arifos.arif-fazil.com
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-forge-dim mb-8">
-            Epistemic status — scientific theory: HOLD · governance programme: SEAL · "unifies all knowledge": VOID
+          <p>
+            <span className="text-cold">SOURCE</span> — github.com/ariffazil · arifOS · A-FORGE · AAA · GEOX · WEALTH · WELL
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {APEX_LETTERS.map(d => (
-              <div key={d.symbol} className="brutalist-card flex items-start gap-4">
-                <span className="font-mono text-3xl font-black text-forge-orange shrink-0 w-10">{d.symbol}</span>
-                <div>
-                  <span className="font-bold text-forge-white">{d.name}</span>
-                  <p className="font-body text-sm text-forge-dim mt-1">{d.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        </motion.div>
       </section>
 
-      {/* 13 FLOORS — Constitution */}
-      <section className="py-20 border-b-2 border-forge-iron">
-        <div className="site-frame">
-          <div className="section-label">C · Constitutional Floors</div>
-          <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">F1–F13</h2>
-          <p className="font-body text-sm text-forge-dim mb-8">
-            Hard violation → VOID. Soft tension → HOLD or SABAR. F13 is FINAL.{' '}
-            <a href="/floors.json" target="_blank" rel="noreferrer"
-               className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Floor table (floors.json) ↗
-            </a>
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {FLOOR_DEFS.map((f) => (
-              <div key={f.id} className={`brutalist-card flex items-start gap-4 border-l-4 ${floorTypeColor(f.type)}`}>
-                <span className="font-mono text-2xl font-black text-forge-orange shrink-0 w-12">{f.id}</span>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-bold text-forge-white">{f.name}</span>
-                    <span className={`font-mono text-[10px] uppercase tracking-widest px-1.5 py-0.5 ${f.type === 'HARD' ? 'bg-red-500/20 text-red-400' : f.type === 'DERIVED' ? 'bg-blue-500/20 text-blue-400' : 'bg-yellow-600/20 text-yellow-500'}`}>{f.type}</span>
-                  </div>
-                  <p className="font-body text-sm text-forge-dim mt-1">{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FEDERATION CONSTELLATION — Body */}
-      <section className="py-20 border-b-2 border-forge-iron">
-        <div className="site-frame">
-          <div className="section-label">B · Federation Constellation</div>
-          <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">The Organs</h2>
-          <p className="font-body text-sm text-forge-dim mb-8">
-            Δ SOUL = the sovereign (Arif) — human values, purpose, telos. Not an organ.{' '}
-            Ω MIND arifOS · Ψ BODY A-FORGE · ◈ AAA · Φ GEOX · Ξ WEALTH · Ω★ WELL · ⚛ HERMES · ○ MCP · φ MARKETS.{' '}
-            <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer"
-               className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Live deep-dives on arifOS Observatory ↗
-            </a>
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CONSTELLATION.map((o) => (
-              <a key={o.name} href={`https://${o.domain}`} target="_blank" rel="noreferrer"
-                 className="brutalist-card block hover:border-forge-orange/60 transition-colors group">
-                <div className="flex items-center justify-between mb-2">
-                  <div className={`font-mono text-lg ${ringColor(o.ring)}`}>{o.symbol}</div>
-                  <span className={`font-mono text-xs uppercase tracking-widest ${ringColor(o.ring)}`}>{o.ring}</span>
-                </div>
-                <h3 className="text-2xl font-black uppercase mb-2 group-hover:text-forge-orange transition-colors">{o.name}</h3>
-                <p className="font-body text-sm text-forge-dim mb-2">{o.role}</p>
-                <p className="font-mono text-xs text-forge-dim">{o.port} · {o.domain}</p>
-                <p className="font-mono text-xs text-forge-orange mt-1 italic">Never: {o.never}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* MARKET CHAIN — φ */}
-      <section className="py-20 border-b-2 border-forge-iron bg-forge-steel">
-        <div className="site-frame">
-          <div className="section-label">φ · Market Chain</div>
-          <h2 className="text-4xl font-black uppercase italic mb-6 tracking-tight">PETRONAS φ → Markets</h2>
-          <div className="flex flex-wrap items-center gap-3 mb-8">
-            {MARKET_CHAIN.map((m, i) => (
-              <span key={m.name} className="flex items-center gap-2">
-                {i > 0 && <span className="text-forge-orange font-mono text-xl">→</span>}
-                <a href={m.href} className="px-4 py-2 bg-forge-black border border-forge-iron hover:border-forge-orange transition-colors text-forge-white font-bold text-sm"
-                   title={m.desc}>{m.name}</a>
-              </span>
-            ))}
-          </div>
-          <p className="font-body text-forge-dim max-w-2xl">
-            Capital flows through sovereign energy. No drilling decision proceeds without GEOX evidence.
-            No capital allocation proceeds without WEALTH computation. No verdict is final without arifOS SEAL.
-          </p>
-        </div>
-      </section>
-
-      {/* LIVE PORTALS */}
-      <section className="py-20 border-b-2 border-forge-iron">
-        <div className="site-frame">
-          <h2 className="text-4xl font-black uppercase italic mb-8 tracking-tight">Live Federation</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PORTALS.map(link => (
-              <a key={link.label} href={link.href} target="_blank" rel="noreferrer"
-                 className="p-4 bg-forge-steel border border-forge-iron/60 hover:border-forge-orange/60 transition-colors group">
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-forge-white group-hover:text-forge-orange transition-colors">{link.label}</span>
-                  <span className="font-mono text-xs text-forge-orange">↗</span>
-                </div>
-                <p className="font-body text-xs text-forge-dim mt-1">{link.desc}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* MANIFESTO — DITEMPA */}
-      <section className="py-24">
-        <div className="site-frame">
-          <div className="section-label">D · DITEMPA BUKAN DIBERI</div>
-          <h2 className="text-6xl md:text-8xl font-black uppercase italic mb-8 tracking-tighter leading-[0.85]">
-            Forged,<br />Not Given
-          </h2>
-          <div className="max-w-3xl space-y-6 text-forge-dim leading-relaxed">
-            <p className="text-xl font-bold text-forge-white">AI executes. Humans decide. The constitution is law, not advice.</p>
-            <p>Every action is reversible, evidence-labeled, and hash-chained. No agent judges its own action. No tool bypasses the chain.</p>
-            <p>The federation has three laws:</p>
-            <ul className="list-disc pl-6 space-y-3 font-body text-lg">
-              <li className="text-forge-white"><strong>Never let the forge outrun the kernel.</strong> <span className="text-forge-dim">A-FORGE executes only after arifOS SEAL.</span></li>
-              <li className="text-forge-white"><strong>Never let the kernel operate without AAA visibility.</strong> <span className="text-forge-dim">Every action visible in the control plane.</span></li>
-              <li className="text-forge-white"><strong>Never let AAA pretend to be judge or hand.</strong> <span className="text-forge-dim">Routing only — never judgment, never execution.</span></li>
-            </ul>
-            <p className="italic mt-8 text-xl text-forge-white">Three rings. One sovereign. F13 is final.</p>
-
-            <div className="mt-8 p-6 bg-forge-steel border border-forge-orange/40">
-              <p className="font-mono text-xs text-forge-orange uppercase tracking-widest mb-2">CANON_APEX_V2</p>
-              <p className="font-body text-sm text-forge-dim">
-                13 files sealed · APEX Theory T-000 · F1–F13 Floors · VAULT999 hash-chained.
-                <a href="https://github.com/ariffazil/arifos/tree/main/docs/canon/CANON_APEX_V2" target="_blank" rel="noreferrer"
-                   className="text-forge-orange underline ml-2 hover:text-forge-white transition-colors">
-                  View bundle on GitHub ↗
-                </a>
-              </p>
+      {/* 5 — FOR HUMANS / FOR AGENTS */}
+      <section className="mx-auto max-w-[1280px] px-6 py-24">
+        <div className="grid gap-4 lg:grid-cols-[3fr_2fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            className="border border-[#7DD3FC]/15 bg-[#F4F0E6] p-8 text-[#14110C] md:p-10"
+          >
+            <p className="eyebrow text-[#4A443A]">For humans</p>
+            <p className="mt-5 font-body text-[18px] leading-[1.65] text-[#4A443A]">
+              Here is the whole doctrine in one breath: a machine under this constitution
+              may not lie, may not guess when it should stop, may not pretend to be a
+              person, and may always be switched off by one. Everything else — the tools,
+              the organs, the seals — is engineering in service of that paragraph.
+            </p>
+            <Link
+              to="/999"
+              className="mt-6 inline-block font-mono text-[13px] uppercase tracking-[0.04em] text-[#14110C] underline decoration-gold underline-offset-8 hover:decoration-ember"
+            >
+              See the proof chamber →
+            </Link>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            className="border border-[#7DD3FC]/20 bg-[#0A1118] p-8 md:p-10"
+          >
+            <p className="eyebrow text-cold">For agents</p>
+            <div className="mt-5 space-y-2 font-mono text-[13px] tracking-[0.04em] text-[#9DB4C8]">
+              <p>/llms.txt</p>
+              <p>/.well-known/arifos.json</p>
+              <p>/.well-known/did.json</p>
+              <p>mcp.arif-fazil.com/mcp</p>
+              <p>pypi.org/project/arifos</p>
             </div>
-          </div>
-
-          {/* Doorway */}
-          <div className="mt-16 text-center border-t border-forge-iron pt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-4">Bijaksana Canon</p>
-              <h3 className="text-2xl font-black uppercase italic mb-6">Canon in Source</h3>
-              <a href="https://github.com/ariffazil/arifOS/tree/main/docs" target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-forge-orange text-forge-orange hover:bg-forge-orange hover:text-forge-black transition-colors">
-                Open Docs on GitHub ↗
-              </a>
-            </div>
-            <div>
-              <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-4">Live System</p>
-              <h3 className="text-2xl font-black uppercase italic mb-6">Observe the Constitution</h3>
-              <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-[#00D4AA] text-[#00D4AA] hover:bg-[#00D4AA] hover:text-forge-black transition-colors">
-                Open arifOS Observatory ↗
-              </a>
-            </div>
-          </div>
+            <p className="mt-6 font-mono text-[12px] leading-[1.6] text-[#9DB4C8]/70">
+              Machine-readable, but never machine-first. The human page is the source of
+              truth.
+            </p>
+          </motion.div>
         </div>
       </section>
-    </motion.div>
-  );
+
+      {/* bridge to 999 */}
+      <section className="mx-auto max-w-[1280px] px-6 pb-28 text-center">
+        <p className="font-display text-[26px] tracking-[-0.01em] text-[#9DB4C8]">
+          The doctrine claims. The chamber proves.
+        </p>
+        <Link
+          to="/999"
+          className="mt-4 inline-block font-mono text-[13px] uppercase tracking-[0.04em] text-gold underline decoration-gold/40 underline-offset-8 hover:decoration-gold"
+        >
+          Enter 999 →
+        </Link>
+      </section>
+    </div>
+  )
 }
+
+export default Doctrine;

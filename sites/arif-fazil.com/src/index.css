@@ -2,6 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Arrow-of-Time / human-first paper system (2026-08-04) ───────── */
+@layer base {
+  :root {
+    --paper: #F4F0E6;
+    --ink: #14110C;
+    --ink-soft: #4A443A;
+    --ember: #E4572E;
+    --gold: #C9A227;
+  }
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+  }
+  @media (pointer: fine) {
+    body.custom-cursor, body.custom-cursor a, body.custom-cursor button {
+      cursor: none;
+    }
+  }
+  ::selection {
+    background: var(--ember);
+    color: var(--paper);
+  }
+}
+@layer components {
+  .hairline { border-color: rgb(20 17 12 / 0.12); }
+  .hairline-t { border-top: 1px solid rgb(20 17 12 / 0.12); }
+  .hairline-b { border-bottom: 1px solid rgb(20 17 12 / 0.12); }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .grain { position: relative; }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* Territory page shells */
+  .page-earth { background: #0A0B0D; color: #EDEAE2; }
+  .page-doctrine { background: #06090F; color: #EDEAE2; }
+  .page-proof { background: #050505; color: #EDEAE2; }
+}
+@keyframes tick-pulse {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes scroll-cue-descend {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(44px); opacity: 1; }
+  100% { transform: translateY(48px); opacity: 0; }
+}
+
+
+
 @layer base {
   :root {
     --background: #0a0c10;

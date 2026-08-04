@@ -5,23 +5,23 @@
 <link rel="stylesheet" href="/_shared/design-system/tokens.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil</title>
-<meta name="description" content="The living Earth, rendered live: Macrostrat global geologic map on an interactive globe, plate boundaries, today's earthquakes, and the GEOX MCP cockpits that turn the planet into evidence-gated decisions.">
+<title>EARTH — The Dynamic Planet | Arif Fazil</title>
+<meta name="description" content="The living Earth, rendered live: Macrostrat global geologic map on an interactive globe, plate boundaries, today's earthquakes, and the well portfolio of an exploration geoscientist who spent 13+ years reading rocks offshore Malaysia.">
 <!-- H4 fix 2026-08-01: add canonical + OG/Twitter metadata so SERPs and AI crawlers index /earth
      as its own entity rather than borrowing the homepage's hero. -->
 <link rel="canonical" href="https://arif-fazil.com/earth">
-<meta property="og:title" content="EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil">
-<meta property="og:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the GEOX MCP cockpits. Click the globe — ask the rocks what they are.">
+<meta property="og:title" content="EARTH — The Dynamic Planet | Arif Fazil">
+<meta property="og:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the well portfolio. Click the globe — ask the rocks what they are.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arif-fazil.com/earth">
 <meta property="og:image" content="https://arif-fazil.com/earth/data/og-earth.jpg">
-<meta property="og:image:alt" content="Earth intelligence cockpit — Macrostrat-piped global geology with Arif Fazil's well portfolio.">
+<meta property="og:image:alt" content="Interactive globe with Macrostrat geologic map, plate boundaries, earthquakes, and well portfolio.">
 <meta property="og:site_name" content="arif-fazil.com">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EARTH — Φ GEOX · The Dynamic Planet | Arif Fazil">
-<meta name="twitter:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the GEOX MCP cockpits.">
+<meta name="twitter:title" content="EARTH — The Dynamic Planet | Arif Fazil">
+<meta name="twitter:description" content="Macrostrat global geologic map, plate boundaries, today's earthquakes, and the well portfolio.">
 <meta name="twitter:image" content="https://arif-fazil.com/earth/data/og-earth.jpg">
-<meta name="twitter:image:alt" content="Earth intelligence cockpit — Macrostrat-piped global geology with Arif Fazil's well portfolio.">
+<meta name="twitter:image:alt" content="Interactive globe with Macrostrat geologic map, plate boundaries, earthquakes, and well portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
@@ -161,25 +161,6 @@ h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;margin-
 .basin .facts{font-family:var(--mono);font-size:.7rem;color:var(--text-secondary);border-left:2px solid var(--accent-cyan);padding-left:1.2rem;line-height:2}
 .basin .facts span{color:var(--accent-cyan)}
 
-/* cockpit cards */
-.cockpit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:1.4rem;margin-top:2.6rem}
-.cockpit{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
-.cockpit:hover{transform:translateY(-4px);border-color:var(--accent-gold)}
-.cockpit .term{background:#0d0d14;border-bottom:1px solid var(--border-dim);padding:.9rem 1rem;font-family:var(--mono);font-size:.66rem;line-height:1.7;min-height:118px}
-.cockpit .term .dots{display:flex;gap:5px;margin-bottom:.55rem}
-.cockpit .term .dots i{width:8px;height:8px;border-radius:50%;background:#2a2a38}
-.cockpit .term .dots i:first-child{background:#e05a5a}.cockpit .term .dots i:nth-child(2){background:var(--accent-gold)}.cockpit .term .dots i:nth-child(3){background:var(--accent-cyan)}
-.cockpit .term .c-cyan{color:var(--accent-cyan)}
-.cockpit .term .c-gold{color:var(--accent-gold)}
-.cockpit .term .c-dim{color:#55555f}
-.cockpit .body{padding:1.2rem 1.3rem 1.4rem;flex:1;display:flex;flex-direction:column}
-.cockpit .tag{font-family:var(--mono);font-size:.56rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--accent-cyan);color:var(--accent-cyan);align-self:flex-start;margin-bottom:.6rem}
-.cockpit .tag.gold{border-color:var(--accent-gold);color:var(--accent-gold)}
-.cockpit h3{font-size:1.08rem;font-weight:700;margin-bottom:.5rem}
-.cockpit p{font-size:.84rem;color:var(--text-secondary);flex:1}
-.cockpit a.go{font-family:var(--mono);font-size:.68rem;letter-spacing:1px;margin-top:1rem;color:var(--accent-gold)}
-.cockpit a.go:hover{color:var(--accent-cyan)}
-
 /* studies */
 .study-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;margin-top:2.6rem}
 .study{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.5rem 1.6rem;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
@@ -209,11 +190,6 @@ footer a:hover{color:var(--accent-cyan)}
 .zen-pulse .zp.gold b{color:var(--accent-gold)}
 @media(max-width:720px){.zen-pulse{gap:.35rem;padding:.6rem .8rem}.zen-pulse .zp{font-size:.68rem;padding:.2rem .55rem}}
 
-/* ── ONE-LINE GEOX ── */
-.geox-oneliner{margin:2.4rem auto 0;padding:1rem 1.3rem;max-width:780px;background:linear-gradient(135deg,rgba(0,212,170,.06),rgba(212,175,55,.06));border:1px solid rgba(0,212,170,.25);border-radius:10px;display:flex;gap:.9rem;align-items:flex-start}
-.geox-oneliner .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:2px;color:var(--accent-gold);text-transform:uppercase;padding-top:.18rem;white-space:nowrap}
-.geox-oneliner .txt{font-size:.96rem;line-height:1.55;color:var(--text-primary)}
-.geox-oneliner .txt b{color:var(--accent-cyan);font-weight:600}
 
 /* ── WHAT CAN I DO HERE? · 3 intent cards ── */
 .intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.6rem}
@@ -289,7 +265,7 @@ footer a:hover{color:var(--accent-cyan)}
   <div id="globeViz"></div>
 
   <div class="hero-title">
-    <div class="kicker">Φ GEOX · EARTH INTELLIGENCE</div>
+    <div class="kicker">EARTH INTELLIGENCE · LIVE</div>
     <h1>The Dynamic<br>Earth.</h1>
     <p>This is not a picture of the planet. It is the planet — the global geologic map streamed live from the Macrostrat pipeline, the plates that carry it, and the earthquakes it produced today.</p>
     <blockquote style="margin-top: 1rem; border-left: 2px solid #D4A853; padding-left: 0.8rem; font-style: italic; font-size: 0.82rem; color: #d0d0d8; line-height: 1.4; background: rgba(16,16,24,0.6); padding-top: 0.4rem; padding-bottom: 0.4rem; border-radius: 0 4px 4px 0;">
@@ -363,18 +339,12 @@ footer a:hover{color:var(--accent-cyan)}
         <span class="arrow">OPEN DYNAMIC EARTH ↓</span>
       </a>
 
-      <a class="intent-card" href="#geox" aria-label="Ask GEOX - question to evidence">
-        <span class="verb">ASK GEOX</span>
+      <a class="intent-card" href="https://geox.arif-fazil.com/" aria-label="Open GEOX - evidence engine">
+        <span class="verb">OPEN GEOX</span>
         <h3>Question → evidence.</h3>
-        <p>Open the GEOX cockpit: query the globe, run a prospect, witness a well, judge capital. Every answer comes from a pipe. Every step is sealed to VAULT-999.</p>
-        <span class="arrow">LAUNCH GEOX COCKPITS ↓</span>
+        <p>The agentic Earth engine. Query the bedrock, witness the wells, run the prospect, price the consequence. Every answer from a pipe. Every step sealed.</p>
+        <span class="arrow">LAUNCH GEOX ↗</span>
       </a>
-    </div>
-
-    <!-- ONE-LINE GEOX DEFINITION (Must Have #4) -->
-    <div class="geox-oneliner" aria-label="GEOX in one sentence">
-      <span class="lbl">GEOX · ONE LINE</span>
-      <p class="txt"><b>GEOX</b> is an Earth Intelligence system that turns rocks, maps, wells, and geologic history into <b>evidence-based answers</b> — sealed, source-cited, human-ratified.</p>
     </div>
   </div>
 </section>
@@ -384,7 +354,7 @@ footer a:hover{color:var(--accent-cyan)}
   <div class="container">
     <div class="kicker">SHOW ME WHAT HAPPENS · A REAL QUERY</div>
     <h2>Click Sabah. Here is what comes back.</h2>
-    <p class="lede">No marketing copy. This is a live query against the Macrostrat pipe at <b>6.08°N, 116.72°E</b> — the NW Sabah continental shelf, the same coordinates the founder drilled on. The page below is the exact JSON the GEOX cockpit returns.</p>
+    <p class="lede">No marketing copy. This is a live query against the Macrostrat pipe at <b>6.08°N, 116.72°E</b> — the NW Sabah continental shelf, the same coordinates the founder drilled on. The page below is the exact JSON the pipe returns.</p>
 
     <div class="example-panel">
       <div class="term">
@@ -410,7 +380,7 @@ footer a:hover{color:var(--accent-cyan)}
     </div>
 
     <!-- COGNITIVE BREADCRUMB (Must Have #3) -->
-    <nav class="crumbs" aria-label="Where you are in GEOX">
+    <nav class="crumbs" aria-label="Where you are on this page">
       <span class="crumb now">① Planet · you are here</span>
       <span class="sep">→</span>
       <span class="crumb">② What am I seeing? · mapped bedrock</span>
@@ -419,7 +389,7 @@ footer a:hover{color:var(--accent-cyan)}
       <span class="sep">→</span>
       <span class="crumb">④ Why does it matter? · sealed evidence</span>
       <span class="sep">→</span>
-      <a class="crumb next" href="https://geox.arif-fazil.com">⑤ Open GEOX ↗</a>
+      <span class="crumb">⑤ below · the cockpit</span>
     </nav>
   </div>
 </section>
@@ -483,7 +453,7 @@ footer a:hover{color:var(--accent-cyan)}
           <div>
             <h3>◈ Case study — the Malay Basin, off the hero's port bow</h3>
             <p>The globe opens looking at the <b>Malay Basin</b> for a reason. In the Oligo–Miocene, the Sundaland crust stretched in a back-arc setting, faults dropped the basement into half-grabens, and ~30 million years of sediment poured in — lacustrine source rocks at the base, fluvio-deltaic reservoirs above, all sealed by marine mudstones as the sea returned.</p>
-            <p>Heat did the rest. The tape-recorder became a <b>petroleum system</b>: one of Southeast Asia's great gas provinces. Reading that record — seismic, well logs, geochemistry — is what an exploration geoscientist does, and it is the human craft the Φ GEOX cockpits below are built to govern: <b>evidence-gated, human-decided.</b></p>
+            <p>Heat did the rest. The tape-recorder became a <b>petroleum system</b>: one of Southeast Asia's great gas provinces. Reading that record — seismic, well logs, geochemistry — is what an exploration geoscientist does, and it is the human craft the GEOX agentic engine: <b>evidence-gated, human-decided.</b></p>
           </div>
           <div class="facts">
             <div><span>setting</span> · back-arc extension, Sundaland</div>
@@ -628,93 +598,37 @@ footer a:hover{color:var(--accent-cyan)}
   </div>
 </section>
 
-<!-- ══ SECTION · GEOX MCP COCKPITS ══ -->
-<section id="geox">
-  <div class="container">
-    <div class="kicker">Φ GEOX · MODEL CONTEXT PROTOCOL</div>
-    <h2>The GEOX MCP cockpits</h2>
-    <p class="lede">GEOX is the Earth organ of the arifOS federation. Its MCP interface exposes the geoscience workflow as <b>governed tools</b> — the same pipe discipline as this page: every claim evidence-gated, every verdict human-ratified, every step sealed to VAULT-999. Four surfaces, three of them live cockpits, one of them running above you.</p>
-
-    <div class="cockpit-grid">
-      <div class="cockpit">
-        <div class="term"><div class="dots"><i></i><i></i><i></i></div>
-<span class="c-dim">$</span> geox.macrostrat --query <span class="c-cyan">lat,lng</span><br>
-<span class="c-cyan">▸ unit</span>   : Mesozoic intrusive rocks<br>
-<span class="c-cyan">▸ age</span>    : 201.4 – 251.9 Ma (Triassic)<br>
-<span class="c-cyan">▸ source</span> : GSC Open File 5529 · CC-BY<br>
-<span class="c-gold">✓ 999_SEAL · pipe-verified</span></div>
-        <div class="body">
-          <span class="tag">LIVE · THIS PAGE</span>
-          <h3>geox.macrostrat</h3>
-          <p>The click-to-query console on the globe above. Any coordinate on land returns the mapped bedrock unit, its age and lithology, and its published source — straight from the Macrostrat pipe, sealed in the page footer status line.</p>
-          <a class="go" href="#top">▸ SCROLL UP AND CLICK THE EARTH</a>
-        </div>
-      </div>
-
-      <div class="cockpit">
-        <div class="term"><div class="dots"><i></i><i></i><i></i></div>
-<span class="c-dim">$</span> geox.prospect --maturate <span class="c-cyan">LEAD-07</span><br>
-<span class="c-cyan">▸ georef</span> : seismic vintage aligned<br>
-<span class="c-cyan">▸ B_cog</span>  : charge model reconciled<br>
-<span class="c-cyan">▸ Pg</span>     : evidence-gated, sourced<br>
-<span class="c-gold">⧗ 888_HOLD · awaiting human ratify</span></div>
-        <div class="body">
-          <span class="tag gold">COCKPIT</span>
-          <h3>Prospect Forge</h3>
-          <p>The prospect maturation cockpit. Georeferencing, charge and seal reasoning, play-segment logic — a lead goes in, a defensible prospect comes out, and no volume is booked without a human signature. No authority → no execution.</p>
-          <a class="go" href="https://geox.arif-fazil.com/apps/prospect-ui/">▸ OPEN PROSPECT FORGE</a>
-        </div>
-      </div>
-
-      <div class="cockpit">
-        <div class="term"><div class="dots"><i></i><i></i><i></i></div>
-<span class="c-dim">$</span> geox.wells --witness <span class="c-cyan">BEKANTAN-1</span><br>
-<span class="c-cyan">▸ logs</span>   : GR · RES · NPHI/RHOB loaded<br>
-<span class="c-cyan">▸ tops</span>   : picked, provenance-tagged<br>
-<span class="c-cyan">▸ ledger</span> : VAULT-999 hash-chained<br>
-<span class="c-gold">✓ witness chain intact</span></div>
-        <div class="body">
-          <span class="tag gold">COCKPIT</span>
-          <h3>Well Witness</h3>
-          <p>The well desk. Logs, picks, and petrophysics with a witness chain — every interpretation carries its provenance, every edit leaves a hash. The well file as evidence, not folklore.</p>
-          <a class="go" href="https://geox.arif-fazil.com/apps/well-desk/">▸ OPEN WELL WITNESS</a>
-        </div>
-      </div>
-
-      <div class="cockpit">
-        <div class="term"><div class="dots"><i></i><i></i><i></i></div>
-<span class="c-dim">$</span> wealth.capital --judge <span class="c-cyan">PROSPECT-Δ</span><br>
-<span class="c-cyan">▸ EMV</span>    : risked, uncertainty-bounded<br>
-<span class="c-cyan">▸ Ξ gate</span> : Ω-layer evidence check<br>
-<span class="c-cyan">▸ verdict</span>: drill / farm-out / walk<br>
-<span class="c-gold">⧗ human decides · always</span></div>
-        <div class="body">
-          <span class="tag gold">COCKPIT · WITH Ξ WEALTH</span>
-          <h3>Capital Judge</h3>
-          <p>Where rocks meet ringgit. Risked EMV, portfolio fit, and the capital verdict — computed with thermodynamic humility, decided by a human. GEOX supplies the ground truth; WEALTH prices the consequence.</p>
-          <a class="go" href="https://wealth.arif-fazil.com/apps/capital_judge/">▸ OPEN CAPITAL JUDGE</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══ SECTION · STUDIES · content-marker: earth-studies-Φ ══ -->
 <section id="studies">
   <div class="container">
-    <div class="kicker">Φ GEOX · EVIDENCE REGISTER</div>
+    <div class="kicker">EVIDENCE REGISTER</div>
     <h2>Geological studies — the paper trail</h2>
     <p class="lede">Regional tectono-stratigraphy, play fairways, post-well analyses — every study rendered here is read from <b>studies.json</b> at load time. The count is computed, never hand-typed; entries whose tier is proprietary never leave the vault.</p>
     <div id="studyMount"></div>
   </div>
 </section>
 
+<!-- ══ PORTAL → GEOX ══ -->
+<div style="text-align:center;padding:3.5rem 2rem 1rem;border-top:1px solid var(--border-dim);">
+  <a href="https://geox.arif-fazil.com/"
+     style="display:inline-flex;align-items:center;gap:.55rem;padding:.65rem 1.8rem;
+     background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.2);border-radius:6px;
+     font-family:var(--mono);font-size:.78rem;letter-spacing:.8px;
+     color:var(--accent-cyan);text-decoration:none;transition:all .25s;"
+     onmouseover="this.style.borderColor='rgba(0,212,170,.6)';this.style.background='rgba(0,212,170,.1)'"
+     onmouseout="this.style.borderColor='rgba(0,212,170,.2)';this.style.background='rgba(0,212,170,.05)'">
+    <span style="opacity:.4">▸</span> open GEOX
+    <span style="opacity:.3;font-size:.6rem">↗</span>
+  </a>
+</div>
+
 <footer>
   <div class="doctrine">DITEMPA BUKAN DIBERI</div>
   <p>Data pipes: geologic tiles &amp; API — <a href="https://macrostrat.org">Macrostrat</a> (CC-BY 4.0) · earthquakes — <a href="https://earthquake.usgs.gov">USGS</a> real-time feed · plate boundaries — PB2002 (Bird, 2003) · globe engine — globe.gl. Satellite base — Esri World Imagery (for reference).</p>
   <p>Wells &amp; studies — sovereign canon from <a href="https://arif-fazil.com/earth/data/wells.json">wells.json</a> · existence-tier wells carry no coordinates, depths, or results; markers are jittered basin-level positions, labeled approximate.</p>
   <p>Numbers on this page are read from live pipes at load time and withheld if a pipe fails. Nothing here is claimed unobserved. Ω₀ ≈ 0.04.</p>
-  <p>Φ GEOX · an organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
+  <p>An organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a> · <a href="https://geox.arif-fazil.com/">GEOX ↗</a></p>
 </footer>
 <script src="https://unpkg.com/globe.gl@2.46.1/dist/globe.gl.min.js"></script>
 <script>

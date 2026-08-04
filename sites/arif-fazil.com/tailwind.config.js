@@ -25,6 +25,26 @@ module.exports = {
           red: "#f0506e",    // STATUS ONLY — void/hazard (was #FF003C)
         },
 
+        // Arrow-of-Time palette (Kimi 2026-08-04 — human-first paper system)
+        paper: "#F4F0E6",
+        "paper-dark": "#E9E3D4",
+        ink: "#14110C",
+        "ink-soft": "#4A443A",
+        ember: "#E4572E",
+        gold: "#C9A227",
+        earth: "#FF9F1C",
+        ledger: "#1E6F50",
+        brass: "#B08D3E",
+        civic: "#C8102E",
+        graphite: "#5C5546",
+        cold: "#7DD3FC",
+        obsidian: "#06090F",
+        basalt: { 950: "#0A0B0D", 900: "#111318", 800: "#1A1E24" },
+        strata: { 700: "#2A2F37" },
+        magma: { 500: "#E8733B", 400: "#F09A62" },
+        telemetry: { 400: "#5FD68A", 500: "#3BAF66" },
+        bone: { 100: "#EDEAE2", 400: "#9AA0A8", 600: "#5C636C" },
+
         primary: {
           DEFAULT: "#e6edf3",
           foreground: "#0a0c10",
@@ -43,12 +63,12 @@ module.exports = {
         },
       },
       fontFamily: {
-        display: ['"Cabinet Grotesk"', '"Space Grotesk"', 'sans-serif'],
-        header: ['"Cabinet Grotesk"', 'sans-serif'],
-        body: ['"Satoshi"', '"IBM Plex Sans"', '"Space Grotesk"', 'sans-serif'],
-        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
-        mono: ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
-        technical: ['"JetBrains Mono"', '"IBM Plex Mono"', 'monospace'],
+        display: ['"Fraunces"', 'Georgia', 'serif'],
+        header: ['"Fraunces"', 'Georgia', 'serif'],
+        body: ['"Newsreader"', 'Georgia', 'serif'],
+        serif: ['"Newsreader"', 'Georgia', 'serif'],
+        mono: ['"IBM Plex Mono"', '"JetBrains Mono"', 'monospace'],
+        technical: ['"IBM Plex Mono"', '"JetBrains Mono"', 'monospace'],
       },
       borderRadius: {
         none: "0px",

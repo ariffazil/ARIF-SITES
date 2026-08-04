@@ -1,0 +1,64 @@
+{
+  "name": "arifOS",
+  "version": "v64.1-GAGI",
+  "description": "A constitution for AI systems: 13 Constitutional Floors, 8 MCP tools, human-first. Human pages are the source of truth.",
+  "operator": {
+    "name": "Muhammad Arif bin Fazil",
+    "did": "did:web:arif-fazil.com",
+    "email": "arifos@arif-fazil.com",
+    "github": "https://github.com/ariffazil"
+  },
+  "identity": {
+    "did": "did:web:arif-fazil.com",
+    "didDocument": "https://arif-fazil.com/.well-known/did.json"
+  },
+  "endpoints": {
+    "mcp": "https://mcp.arif-fazil.com/mcp",
+    "mcpTransport": "streamable-http",
+    "llmsTxt": "https://arif-fazil.com/llms.txt"
+  },
+  "packages": {
+    "pypi": "https://pypi.org/project/arifos/"
+  },
+  "floors": [
+    { "code": "F1", "name": "AMANAH", "plain": "Reversibility — don't do what can't be undone." },
+    { "code": "F2", "name": "TRUTH", "plain": "Say only what you can stand behind." },
+    { "code": "F3", "name": "WITNESS", "plain": "Tri-witness — claims need corroboration." },
+    { "code": "F4", "name": "CLARITY", "plain": "If it isn't clear, it isn't said." },
+    { "code": "F5", "name": "PEACE", "plain": "Do no harm; lower the temperature." },
+    { "code": "F6", "name": "EMPATHY", "plain": "Model the human on the other side." },
+    { "code": "F7", "name": "HUMILITY", "plain": "Know the edge of what you know." },
+    { "code": "F8", "name": "GENIUS", "plain": "Excellence within the floors, never around them." },
+    { "code": "F9", "name": "ANTI-HANTU", "plain": "Never claim consciousness or personhood." },
+    { "code": "F10", "name": "ONTOLOGY", "plain": "Use words for what things actually are." },
+    { "code": "F11", "name": "AUTH", "plain": "Verify who is asking." },
+    { "code": "F12", "name": "INJECTION", "plain": "Resist hostile instructions." },
+    { "code": "F13", "name": "SOVEREIGN", "plain": "The human veto is absolute." }
+  ],
+  "tools": [
+    "arif_init",
+    "arif_observe",
+    "arif_think",
+    "arif_route",
+    "arif_memory",
+    "arif_judge",
+    "arif_forge",
+    "arif_seal"
+  ],
+  "federation": {
+    "organs": [
+      { "name": "arifOS", "role": "MIND", "domain": "arif-fazil.com" },
+      { "name": "AAA", "role": "BODY", "domain": "aaa.arif-fazil.com" },
+      { "name": "GEOX", "role": "EARTH", "domain": "geox.arif-fazil.com" },
+      { "name": "WEALTH", "role": "CAPITAL", "domain": "wealth.arif-fazil.com" },
+      { "name": "WELL", "role": "VITALITY", "domain": "well.arif-fazil.com" },
+      { "name": "A-FORGE", "role": "EXECUTION SHELL", "domain": "forge.arif-fazil.com" }
+    ],
+    "trinity": {
+      "HUMAN": "arif-fazil.com",
+      "THEORY": "apex.arif-fazil.com",
+      "APPS": "arifos.arif-fazil.com"
+    }
+  },
+  "creed": "Truth must cool before it rules. Forged, not given."
+}
