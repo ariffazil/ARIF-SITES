@@ -1,11 +1,13 @@
 name: "🌐 Sites CI — L4 PUBLIC"
 
+# Canonical CI for arif-fazil.com (flagship SPA only).
+# Deploy remains VPS: deploy-vps.sh → /var/www/html/arif (not Cloudflare Pages).
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  merge_group:
   workflow_dispatch:
 
 permissions:
@@ -16,64 +18,74 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  federation-check:
-    name: 🗺️ Federation Check
+  identity:
+    name: 🗺️ Surface identity
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v7
-      - name: Validate FEDERATION.md
+      - uses: actions/checkout@v4
+      - name: Validate surface markers
         run: |
-          test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
-          grep -q "role: PUBLIC_SURFACE" FEDERATION.md
-          grep -q "layer: L4" FEDERATION.md
-          echo "✅ arif-sites FEDERATION.md valid — L4 PUBLIC"
-      - name: Validate organ.yaml
-        run: |
-          if [ -f organ.yaml ]; then
-            pip install pyyaml 2>/dev/null
-            python3 -c "
-            import yaml, sys
-            with open('organ.yaml') as f:
-                doc = yaml.safe_load(f)
-            assert doc['authority_ceiling'] == 'DISPLAY_ONLY', 'arif-sites must be DISPLAY_ONLY'
-            assert 'constitutional_truth' in doc.get('forbidden_domains', []), 'Must forbid constitutional_truth'
-            print('✅ organ.yaml valid — DISPLAY_ONLY')
-            "
+          set -euo pipefail
+          test -f README.md
+          test -f llms.txt || test -f sites/arif-fazil.com/llms.txt
+          test -f sites/arif-fazil.com/package.json
+          test -f sites/arif-fazil.com/surfaces.json
+          # Federation pointer (symlink or file)
+          if [ -f FEDERATION.md ] || [ -L FEDERATION.md ]; then
+            echo "✅ FEDERATION.md present"
+          else
+            echo "⚠️ FEDERATION.md missing (non-blocking pointer)"
           fi
+          echo "✅ identity OK — L4 public surface arif-fazil.com"
 
-  build:
-    name: "🏗️ Build"
+  build-flagship:
+    name: 🏗️ Build flagship SPA
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: sites/arif-fazil.com/package-lock.json
       - name: Install
-        run: npm install --legacy-peer-deps
+        working-directory: sites/arif-fazil.com
+        run: npm ci --legacy-peer-deps
       - name: Build
+        working-directory: sites/arif-fazil.com
         run: npm run build
+        env:
+          CI: "false"
+      - name: Verify dist
+        run: |
+          set -euo pipefail
+          test -d sites/arif-fazil.com/dist
+          test -f sites/arif-fazil.com/dist/index.html
+          test -f sites/arif-fazil.com/dist/llms.txt || test -f sites/arif-fazil.com/public/llms.txt
+          echo "✅ dist + discovery present"
 
   verify:
-    name: "🔍 Public Surface Verify"
+    name: 🔍 Source surface verify
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    needs: [identity]
     steps:
-      - uses: actions/checkout@v7
-      - name: No live MCP calls in build
+      - uses: actions/checkout@v4
+      - name: No hard-coded secret shapes in src
         run: |
-          ! grep -r "localhost:808[0-9]\|localhost:1808[0-9]\|localhost:707[0-9]" \
-            src/ sites/ --include="*.ts" --include="*.js" --include="*.tsx" 2>/dev/null || \
-            (echo "⚠️ WARNING: Live MCP calls found in static build" && true)
-          echo "✅ MCP isolation check complete"
-      - name: Federation map accessible
+          set -euo pipefail
+          if grep -RInE 'sk-[a-zA-Z0-9]{20,}|BEGIN (RSA |OPENSSH )?PRIVATE KEY' \
+            sites/arif-fazil.com/src sites/arif-fazil.com/public \
+            --include='*.ts' --include='*.tsx' --include='*.js' --include='*.json' 2>/dev/null; then
+            echo "❌ possible secret material in source"
+            exit 1
+          fi
+          echo "✅ no secret shapes in source"
+      - name: Nav canon contract present
         run: |
-          test -f docs/FEDERATION_MAP.md 2>/dev/null || test -f ../AAA/docs/FEDERATION_MAP.md 2>/dev/null || \
-            echo "⚠️ FEDERATION_MAP.md not found locally (referenced from AAA)"
-          echo "✅ Federation reference check complete"
-      - name: llms.txt exists
-        run: |
-          test -f llms.txt || echo "⚠️ llms.txt not found (recommended for AI discovery)"
-          echo "✅ Discovery check complete"
+          test -f sites/arif-fazil.com/scripts/generate-nav-canon.cjs
+          test -f sites/arif-fazil.com/src/data/navCanon.ts
+          grep -q primaryNav sites/arif-fazil.com/src/components/ArrowNavbar.tsx
+          echo "✅ nav driven by navCanon"

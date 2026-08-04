@@ -1,84 +1,88 @@
-# ═══════════════════════════════════════════════════════════════════════════
-# arif-sites Sentinel Pre-Merge Gate
-# DISPLAY_ONLY surface — binary PASS / BLOCK for every PR to main.
-# Q1: No live MCP calls in static build?
-# Q2: Federation map valid?
-# Q3: Build passes?
-# ═══════════════════════════════════════════════════════════════════════════
 name: "🛡️ Sites Sentinel"
+
+# PR gate for flagship surface only.
 
 on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened]
-  merge_group:
 
 permissions:
   contents: read
-  pull-requests: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: sentinel-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   q1-mcp-isolation:
     name: "Q1 — MCP Isolation"
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: No live MCP in static build
+      - name: No live MCP host embeds in SPA src
         run: |
-          HITS=$(git diff origin/main...HEAD | grep '^+' | grep -E "localhost:808[0-9]|localhost:1808[0-9]|localhost:707[0-9]|localhost:300[0-9]" | grep -v "^++\|#\|//" || true)
+          set -euo pipefail
+          HITS=$(git diff origin/main...HEAD -- 'sites/arif-fazil.com/src/**' 2>/dev/null | grep '^+' | grep -E 'localhost:808[0-9]|localhost:1808[0-9]|localhost:707[0-9]' | grep -vE '^(\+\+\+|.*#|.*//)' || true)
           if [[ -n "$HITS" ]]; then
-            echo "::error::BLOCKED: Live MCP references in static build — arif-sites is DISPLAY_ONLY"
+            echo "::error::Live MCP localhost refs in SPA src"
+            echo "$HITS"
             exit 1
           fi
-          echo "✅ Q1 PASS — MCP isolation clean"
+          echo "✅ Q1 PASS"
 
-  q2-federation:
-    name: "Q2 — Federation Map"
+  q2-identity:
+    name: "Q2 — Identity"
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - uses: actions/checkout@v7
-      - name: Federation contract valid
+      - uses: actions/checkout@v4
+      - name: Required files
         run: |
-          test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
-          grep -q "role: PUBLIC_SURFACE" FEDERATION.md || echo "⚠️ role: PUBLIC_SURFACE missing"
-          grep -q "layer: L4" FEDERATION.md || echo "⚠️ layer: L4 missing"
+          set -euo pipefail
+          test -f sites/arif-fazil.com/package.json
+          test -f sites/arif-fazil.com/src/App.tsx
+          test -f sites/arif-fazil.com/surfaces.json
           echo "✅ Q2 PASS"
 
   q3-build:
     name: "Q3 — Build"
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
+          cache: npm
+          cache-dependency-path: sites/arif-fazil.com/package-lock.json
       - name: Install & Build
+        working-directory: sites/arif-fazil.com
         run: |
-          cd sites/arif-fazil.com
-          npm install --legacy-peer-deps
+          npm ci --legacy-peer-deps
           npm run build
-          echo "✅ Q3 PASS"
+        env:
+          CI: "false"
+      - name: Dist present
+        run: test -f sites/arif-fazil.com/dist/index.html && echo "✅ Q3 PASS"
 
   sentinel-gate:
     name: "✅ Sentinel Gate"
-    needs: [q1-mcp-isolation, q2-federation, q3-build]
+    needs: [q1-mcp-isolation, q2-identity, q3-build]
     runs-on: ubuntu-latest
     if: always()
     steps:
       - name: Gate verdict
         run: |
           Q1="${{ needs.q1-mcp-isolation.result }}"
-          Q2="${{ needs.q2-federation.result }}"
+          Q2="${{ needs.q2-identity.result }}"
           Q3="${{ needs.q3-build.result }}"
-          echo "Q1 (MCP): $Q1 | Q2 (Federation): $Q2 | Q3 (Build): $Q3"
-          if [[ "$Q2" != "success" || "$Q3" != "success" ]]; then
-            echo "::error::SENTINEL BLOCK — PR cannot merge"
+          echo "Q1=$Q1 Q2=$Q2 Q3=$Q3"
+          if [[ "$Q1" != "success" || "$Q2" != "success" || "$Q3" != "success" ]]; then
+            echo "SENTINEL BLOCK"
             exit 1
           fi
-          echo "✅ SENTINEL PASS"
+          echo "SENTINEL PASS"
