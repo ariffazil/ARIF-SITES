@@ -22,6 +22,16 @@
   <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Current verdict below</span></div>
 </div>
 
+<nav class="zs-local" aria-label="Markets">
+  <a href="/vitals/">PETRONAS</a>
+  <a href="/malaysia/">MALAYSIA</a>
+  <a href="/klci/" class="here" aria-current="page">KLCI</a>
+  <a href="/usdmyr/">USD/MYR</a>
+  <a href="/oil/">OIL</a>
+  <a href="/gas/">GAS</a>
+  <a href="/gold/">GOLD</a>
+</nav>
+
 <!-- Agentic machine digest drawer (?mode=agent) -->
 <div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:var(--surface); border:1px solid var(--accent-dim); border-radius:10px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,.6); font-family:var(--mono); overflow:hidden;">
   <div style="padding:10px 14px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
@@ -73,6 +83,12 @@
     <span><a href="https://arif-fazil.com/klci/api/history?interval=1d&period=3mo" style="color:var(--dim)">history</a> · <a href="https://arif-fazil.com/klci/api/apex" style="color:var(--dim)">apex</a> · <a href="/data/markets/klci_digest.json" style="color:var(--dim)">digest</a></span>
   </div>
 
+  <!-- LIVE PROXY STRIP: values remain withheld until the declared pipe responds. -->
+  <div class="live-strip" id="liveStrip" aria-label="Live market proxies">
+    <div class="ls-head"><span class="ls-badge down" id="lsBadge">UNAVAILABLE</span><span>LIVE MARKET PROXIES</span><span style="margin-left:auto" id="lsTime">—</span></div>
+    <div class="ls-chips" id="lsChips" aria-live="polite"><span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative</span></div>
+    <div class="ls-note">Proxies are live market readings, NOT sealed KLCI values. Values are withheld on pipe failure. Source: WEALTH market engine · 5-min cache.</div>
+  </div>
 </section>
 
 <!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->

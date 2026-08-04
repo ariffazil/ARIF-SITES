@@ -278,25 +278,20 @@ function Person() {
     <section id="person" ref={ref} className="mx-auto max-w-[1280px] scroll-mt-24 px-6 py-20 md:py-24">
       <SectionHeader number="01" title="THE PERSON" />
       <div className="mt-12 grid gap-12 md:grid-cols-[42%_58%]">
-        <motion.figure
+        <motion.div
           initial={{ clipPath: 'inset(100% 0 0 0)' }}
           animate={inView ? { clipPath: 'inset(0% 0 0 0)' } : {}}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
           className="border p-3 hairline"
         >
-          <img
-            src="/portrait-arif.jpg"
-            alt="Portrait of Muhammad Arif bin Fazil"
-            className="w-full object-cover"
-            width={900}
-            height={1100}
-            loading="eager"
-            decoding="async"
-          />
-          <figcaption className="mt-3 font-mono text-[12px] tracking-[0.04em] text-ink-soft">
+          <div className="flex aspect-[9/11] w-full flex-col items-center justify-center border hairline">
+            <span className="font-display text-[clamp(72px,12vw,160px)] leading-none tracking-[-0.08em] text-ember">AF</span>
+            <span className="mt-5 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft">Identity mark · text only</span>
+          </div>
+          <div className="mt-3 font-mono text-[12px] tracking-[0.04em] text-ink-soft">
             PENANG, 1990 —
-          </figcaption>
-        </motion.figure>
+          </div>
+        </motion.div>
 
         <div>
           <motion.h2
