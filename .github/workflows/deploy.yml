@@ -1,18 +1,13 @@
-name: Build — Trinity Sites
+name: Build — Flagship Site
 
-# This workflow ONLY builds. It does NOT deploy.
-# Actual deploy path: GitHub (arif-sites main) → scripts/deploy-vps.sh →
-#   rsync to /var/www/html/ on VPS (72.62.71.199) → Caddy reverse proxy →
-#   Cloudflare CDN (DNS only, NOT Pages).
-# See ../CLOUDFLARE_DEPLOY.md for full truth. This workflow just validates the build works.
+# Build validation only. Deploy path: VPS scripts/deploy-vps.sh → /var/www/html/arif
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  merge_group:
-
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,56 +17,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build ${{ matrix.name }}
+  build-arif:
+    name: Build Ring 1 — ARIF
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Ring 1 - ARIF
-            directory: sites/arif-fazil.com
-            build: true
-          - name: Ring 3 - AAA
-            directory: sites/aaa.arif-fazil.com
-            build: false
-
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
-
-      - name: Setup Node 20
-        if: ${{ matrix.build == true }}
-        uses: actions/setup-node@v7
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
-          cache-dependency-path: ${{ matrix.directory }}/package-lock.json
-
+          cache-dependency-path: sites/arif-fazil.com/package-lock.json
       - name: Install
-        if: ${{ matrix.build == true }}
-        run: cd ${{ matrix.directory }} && npm ci --legacy-peer-deps
-
+        working-directory: sites/arif-fazil.com
+        run: npm ci --legacy-peer-deps
       - name: Build
-        if: ${{ matrix.build == true }}
-        run: cd ${{ matrix.directory }} && npm run build
+        working-directory: sites/arif-fazil.com
+        run: npm run build
         env:
-          CI: false
-
+          CI: "false"
       - name: Verify output
         run: |
-          if [ "${{ matrix.build }}" = "true" ]; then
-            test -d "${{ matrix.directory }}/dist" && echo "✅ dist/ exists" || (echo "❌ dist/ missing" && exit 1)
-          else
-            test -f "${{ matrix.directory }}/index.html" && echo "✅ static index.html exists" || (echo "❌ index.html missing" && exit 1)
-          fi
-
-      - name: Audit required files
-        run: |
-          DIR="${{ matrix.directory }}"
-          if [ "${{ matrix.build }}" = "true" ]; then
-            test -f "$DIR/public/llms.txt"  && echo "✅ llms.txt"  || echo "⚠️  llms.txt missing from public/"
-            test -f "$DIR/public/robots.txt" && echo "✅ robots.txt" || echo "⚠️  robots.txt missing from public/"
-          else
-            test -f "$DIR/llms.txt"  && echo "✅ llms.txt"  || echo "⚠️  llms.txt missing"
-            test -f "$DIR/index.html" && echo "✅ index.html" || echo "⚠️  index.html missing"
-          fi
+          set -euo pipefail
+          test -d sites/arif-fazil.com/dist
+          test -f sites/arif-fazil.com/dist/index.html
+          test -f sites/arif-fazil.com/public/llms.txt || test -f sites/arif-fazil.com/dist/llms.txt
+          echo "✅ Ring 1 ARIF build OK"
