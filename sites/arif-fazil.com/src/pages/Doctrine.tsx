@@ -39,7 +39,7 @@ const PORTALS = [
   { label: 'A-FORGE', href: 'https://forge.arif-fazil.com', desc: 'Governed execution — build, deploy, audit' },
   { label: 'AAA', href: 'https://aaa.arif-fazil.com', desc: 'Control plane — agent identity, cockpit' },
   { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com', desc: 'Agent connection — protocol endpoint, registry' },
-  { label: 'Ω-Wiki', href: 'https://wiki.arif-fazil.com', desc: 'Full knowledge base — Bijaksana Canon, ATLAS333, glossary' },
+  { label: 'GitHub Canon', href: 'https://github.com/ariffazil/arifOS/tree/main/docs', desc: 'Bijaksana / APEX docs in source — wiki host retired until live' },
 ];
 
 const MARKET_CHAIN = [
@@ -173,9 +173,9 @@ export function Doctrine() {
             <code className="font-mono text-forge-orange">G = (A·P·E²·X)^⅕</code> —{' '}
             E enters twice; entropy and energy are one Landauer conjugate pair.
             G ≥ 0.80 → SEAL candidate.{' '}
-            <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
+            <a href="https://github.com/ariffazil/arifOS/tree/main/docs/canon/CANON_APEX_V2" target="_blank" rel="noreferrer"
                className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Full APEX Canon on Wiki ↗
+              Full APEX Canon on GitHub ↗
             </a>
           </p>
           <p className="font-mono text-[10px] uppercase tracking-widest text-forge-dim mb-8">
@@ -202,9 +202,9 @@ export function Doctrine() {
           <h2 className="text-4xl font-black uppercase italic mb-2 tracking-tight">F1–F13</h2>
           <p className="font-body text-sm text-forge-dim mb-8">
             Hard violation → VOID. Soft tension → HOLD or SABAR. F13 is FINAL.{' '}
-            <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
+            <a href="/floors.json" target="_blank" rel="noreferrer"
                className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Full floor explanations on the Wiki ↗
+              Floor table (floors.json) ↗
             </a>
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -232,9 +232,9 @@ export function Doctrine() {
           <p className="font-body text-sm text-forge-dim mb-8">
             Δ SOUL = the sovereign (Arif) — human values, purpose, telos. Not an organ.{' '}
             Ω MIND arifOS · Ψ BODY A-FORGE · ◈ AAA · Φ GEOX · Ξ WEALTH · Ω★ WELL · ⚛ HERMES · ○ MCP · φ MARKETS.{' '}
-            <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
+            <a href="https://arifos.arif-fazil.com" target="_blank" rel="noreferrer"
                className="text-forge-orange underline hover:text-forge-white transition-colors">
-              Deep-dives on Wiki ↗
+              Live deep-dives on arifOS Observatory ↗
             </a>
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -329,10 +329,10 @@ export function Doctrine() {
           <div className="mt-16 text-center border-t border-forge-iron pt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <p className="font-technical text-[0.65rem] text-forge-dim uppercase tracking-widest mb-4">Bijaksana Canon</p>
-              <h3 className="text-2xl font-black uppercase italic mb-6">Full Knowledge Base</h3>
-              <a href="https://wiki.arif-fazil.com" target="_blank" rel="noreferrer"
+              <h3 className="text-2xl font-black uppercase italic mb-6">Canon in Source</h3>
+              <a href="https://github.com/ariffazil/arifOS/tree/main/docs" target="_blank" rel="noreferrer"
                  className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-wider px-6 py-3 border-2 border-forge-orange text-forge-orange hover:bg-forge-orange hover:text-forge-black transition-colors">
-                Open Ω-Wiki ↗
+                Open Docs on GitHub ↗
               </a>
             </div>
             <div>

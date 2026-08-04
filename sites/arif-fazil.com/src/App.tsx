@@ -24,6 +24,7 @@ import { ShadowPMs } from '@/pages/ShadowPMs';
 import { ShadowBoard } from '@/pages/ShadowBoard';
 import { DeritaMap } from '@/pages/DeritaMap';
 import { PoliticsHub } from '@/pages/PoliticsHub';
+import { Missions } from '@/pages/Missions';
 
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
@@ -108,9 +109,9 @@ function App() {
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
-            {/* Missions */}
-            <Route path="/missions" element={<Navigate to="/" replace />} />
-            <Route path="/missions/" element={<Navigate to="/" replace />} />
+            {/* Missions — human cockpit (machines use /missions.json) */}
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/missions/" element={<Missions />} />
 
             {/* Institution */}
             <Route path="/institution" element={<InstitutionPage />} />
