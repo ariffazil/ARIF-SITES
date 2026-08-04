@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!-- page: earth/malay-basin-cross-section v1 · Φ GEOX · geological-grade SVG, 4 founder wells, Group A→M -->
+<html lang="en" data-ring="ORGAN" data-organ="geox" data-content-marker="malay-cross-section-Φ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malay Basin — Regional Cross-Section · Φ GEOX | Arif Fazil</title>
+<meta name="description" content="Malay Basin NW-SE regional cross-section. SRTM topography + Group A-M stratigraphy. Cenozoic failed rift with Miocene inversion. Anticlinal closures from inversion tectonics. 4 founder wells (BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1). Western Hinge Fault zone. Vertical exaggeration ~32x.">
+<link rel="canonical" href="https://arif-fazil.com/earth/malay-basin-cross-section.html">
+<meta property="og:title" content="Malay Basin — Regional Cross-Section">
+<meta property="og:description" content="SRTM + Group A-M. Anticlinal closures from Miocene inversion. 4 founder wells.">
+<meta property="og:type" content="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0a0e17;
+  --bg-panel:#0f172a;
+  --border-dim:#1e293b;
+  --text-primary:#e2e8f0;
+  --text-secondary:#94a3b8;
+  --text-dim:#64748b;
+  --accent-gold:#fbbf24;
+  --accent-cyan:#38bdf8;
+  --accent-rust:#f87171;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg-deep);color:var(--text-primary);font-family:'Inter',-apple-system,sans-serif;padding:1.5rem;line-height:1.6}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:fixed;top:.5rem;left:.5rem;width:auto;height:auto;padding:.5rem 1rem;background:var(--accent-gold);color:var(--bg-deep);border-radius:4px;z-index:9999;font-family:var(--mono);font-size:.8rem;font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.container{max-width:1480px;margin:0 auto}
+
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border-dim)}
+.hdr h1{font-family:var(--mono);font-size:1.4rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;color:var(--accent-gold);margin-bottom:.25rem}
+.hdr .sub{font-size:.7rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.18em;margin-bottom:1rem}
+.hdr .src{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);letter-spacing:.5px;max-width:520px;text-align:right}
+.back-btn{font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;color:var(--accent-cyan);border:1px solid var(--accent-cyan);padding:.4rem .8rem;border-radius:6px;text-decoration:none;transition:all .2s;display:inline-block;margin-top:.5rem}
+.back-btn:hover{color:var(--accent-gold);border-color:var(--accent-gold)}
+
+.zen-pulse{display:flex;flex-wrap:wrap;gap:.4rem;padding:.5rem .8rem;background:rgba(15,23,42,.7);border:1px solid var(--border-dim);border-radius:8px;margin-bottom:1rem;font-size:.7rem}
+.zen-pulse .zp{color:var(--text-secondary);padding:.18rem .55rem;border:1px solid var(--border-dim);border-radius:99px;background:rgba(0,0,0,.3)}
+.zen-pulse .zp b{font-family:var(--mono);font-size:.58rem;letter-spacing:1.2px;color:var(--accent-cyan);text-transform:uppercase;font-weight:600;margin-right:.35rem}
+.zen-pulse .zp.gold b{color:var(--accent-gold)}
+
+.frame{border:1px solid var(--border-dim);border-radius:12px;overflow:hidden;background:var(--bg-panel)}
+.frame .toolbar{display:flex;justify-content:space-between;align-items:center;padding:.5rem 1rem;background:rgba(0,0,0,.3);border-bottom:1px solid var(--border-dim);font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;color:var(--text-dim);text-transform:uppercase}
+.frame .toolbar .right{color:var(--accent-cyan)}
+.frame svg{display:block;width:100%;height:auto;background:#0a0e17}
+
+.info-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1rem;margin-top:1.5rem}
+.card{border:1px solid var(--border-dim);border-radius:8px;padding:1.25rem;background:var(--bg-panel)}
+.card h3{font-family:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-gold);margin-bottom:.7rem;border-bottom:1px solid var(--border-dim);padding-bottom:.4rem}
+.card ul{list-style:none;font-size:.74rem;line-height:1.7;color:var(--text-secondary)}
+.card ul li{padding:.25rem 0;border-bottom:1px dashed rgba(148,163,184,.1)}
+.card ul li:last-child{border-bottom:none}
+.card ul li b{color:var(--text-primary)}
+.card ul li .age{font-family:var(--mono);font-size:.65rem;color:var(--accent-gold);margin-right:.4rem}
+
+.attribution{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border-dim);font-size:.66rem;color:var(--text-dim);text-align:center;line-height:1.7;letter-spacing:.2px}
+.attribution b{color:var(--text-secondary)}
+
+@media(max-width:900px){
+  body{padding:1rem}
+  .frame{overflow-x:auto}
+  .hdr{flex-direction:column}
+  .hdr .src{text-align:left}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container">
+
+<header>
+<div class="hdr">
+  <div>
+    <div class="sub">Φ GEOX · REGIONAL CROSS-SECTION · OFFSHORE PENINSULAR MALAYSIA</div>
+    <h1>Malay Basin — NW–SE Transect</h1>
+    <a href="https://arif-fazil.com/earth/malay-basin/" class="back-btn">← BACK TO DOSSIER</a>
+  </div>
+  <div class="src">
+    SRTM topography: Open-Meteo API · Stratigraphy: PETRONAS Group A–M (Madon 2013) · Tectonics: Cenozoic failed rift + Miocene inversion · 4 founder wells (sovereign canon, F10)
+  </div>
+</div>
+</header>
+
+<main id="main-content">
+<h2 class="sr-only">Geological cross-section — Malay Basin</h2>
+
+<!-- ══ ZEN PULSE · 3-second orientation ══ -->
+<div class="zen-pulse" aria-label="3-second orientation">
+  <span class="zp"><b>WHERE</b> arif-fazil.com / earth / malay-basin / cross-section</span>
+  <span class="zp gold"><b>WHAT</b> NW–SE transect, ~500 km</span>
+  <span class="zp"><b>SCALE</b> vertical ~32× exaggerated</span>
+  <span class="zp"><b>LAYERS</b> 8 groups · 4 founder wells</span>
+</div>
+
+<div class="frame">
+<div class="toolbar">
+  <span>Geological-grade cross-section · SRTM + Group A→M stratigraphy</span>
+  <span class="right">arif-fazil.com / earth / malay-basin-cross-section</span>
+</div>
+
+<svg viewBox="0 0 1480 1180" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Malay Basin NW-SE regional cross-section. SRTM topography with USGS-standard lithology patterns. 8 stratigraphic groups (A through M). Peninsular Malaysia granite basement on the NW, Western Hinge Fault zone, central basin depocentre with anticlinal closures from Miocene inversion, eastern flank. 4 founder wells (BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1). 1 basement play (fractured granite). Vertical exaggeration ~32x.">
+  <defs>
+    <!-- ─── USGS-standard lithology patterns ─── -->
+    <!-- Sandstone (Group A) -->
+    <pattern id="pat-sand-a" patternUnits="userSpaceOnUse" width="10" height="10">
+      <rect width="10" height="10" fill="#3b82f6"/>
+      <circle cx="5" cy="5" r="0.9" fill="#dbeafe"/>
+    </pattern>
+    <!-- Sandstone (Group B-C) -->
+    <pattern id="pat-sand-bc" patternUnits="userSpaceOnUse" width="10" height="10">
+      <rect width="10" height="10" fill="#06b6d4"/>
+      <circle cx="5" cy="5" r="0.9" fill="#cffafe"/>
+    </pattern>
+    <!-- Sandstone (Group D, with coal) -->
+    <pattern id="pat-sand-d" patternUnits="userSpaceOnUse" width="11" height="10">
+      <rect width="11" height="10" fill="#10b981"/>
+      <circle cx="3" cy="3" r="0.8" fill="#d1fae5"/>
+      <circle cx="8" cy="7" r="0.7" fill="#d1fae5"/>
+      <rect x="0" y="0" width="2" height="2" fill="#0a0a0f"/>
+    </pattern>
+    <!-- Sandstone (Group E) — proven reservoir (Dulang) -->
+    <pattern id="pat-sand-e" patternUnits="userSpaceOnUse" width="9" height="9">
+      <rect width="9" height="9" fill="#22c55e"/>
+      <circle cx="2" cy="2" r="0.7" fill="#dcfce7"/>
+      <circle cx="6" cy="5" r="0.7" fill="#dcfce7"/>
+      <circle cx="3" cy="7" r="0.7" fill="#dcfce7"/>
+    </pattern>
+    <!-- Sandstone (Group F, with coal + regional seal) -->
+    <pattern id="pat-sand-f" patternUnits="userSpaceOnUse" width="12" height="10">
+      <rect width="12" height="10" fill="#84cc16"/>
+      <circle cx="3" cy="3" r="0.7" fill="#ecfccb"/>
+      <rect x="0" y="6" width="3" height="3" fill="#0a0a0f"/>
+      <rect x="6" y="6" width="3" height="3" fill="#0a0a0f"/>
+    </pattern>
+    <!-- Sandstone (Group H) — coastal plain with coal -->
+    <pattern id="pat-sand-h" patternUnits="userSpaceOnUse" width="11" height="10">
+      <rect width="11" height="10" fill="#a3e635"/>
+      <circle cx="3" cy="3" r="0.7" fill="#f7fee7"/>
+      <circle cx="7" cy="6" r="0.6" fill="#f7fee7"/>
+      <rect x="0" y="0" width="2" height="3" fill="#0a0a0f"/>
+    </pattern>
+    <!-- Siltstone (Group I) -->
+    <pattern id="pat-silt-i" patternUnits="userSpaceOnUse" width="10" height="8">
+      <rect width="10" height="8" fill="#eab308"/>
+      <line x1="0" y1="2" x2="10" y2="2" stroke="#fef9c3" stroke-width="0.4"/>
+      <line x1="0" y1="5" x2="10" y2="5" stroke="#fef9c3" stroke-width="0.4"/>
+      <circle cx="3" cy="6" r="0.5" fill="#fef9c3"/>
+    </pattern>
+    <!-- Sandstone (Group J) -->
+    <pattern id="pat-sand-j" patternUnits="userSpaceOnUse" width="10" height="10">
+      <rect width="10" height="10" fill="#d97706"/>
+      <circle cx="5" cy="5" r="0.8" fill="#fed7aa"/>
+    </pattern>
+    <!-- Coarse sandstone (Group K) — deep play -->
+    <pattern id="pat-sand-k" patternUnits="userSpaceOnUse" width="11" height="11">
+      <rect width="11" height="11" fill="#ea580c"/>
+      <circle cx="2" cy="3" r="1.1" fill="#ffedd5"/>
+      <circle cx="7" cy="6" r="0.9" fill="#ffedd5"/>
+      <circle cx="4" cy="9" r="1.0" fill="#ffedd5"/>
+    </pattern>
+    <!-- Lacustrine shale (Group L/M) — source rock -->
+    <pattern id="pat-shale-lm" patternUnits="userSpaceOnUse" width="10" height="6">
+      <rect width="10" height="6" fill="#dc2626"/>
+      <line x1="0" y1="2" x2="10" y2="2" stroke="#fecaca" stroke-width="0.4"/>
+      <line x1="0" y1="5" x2="10" y2="5" stroke="#fecaca" stroke-width="0.4"/>
+    </pattern>
+    <!-- Granite basement (Main Range) -->
+    <pattern id="pat-granite" patternUnits="userSpaceOnUse" width="10" height="10">
+      <rect width="10" height="10" fill="#9f1239"/>
+      <path d="M0 8 L5 0 L10 8 Z" fill="none" stroke="#fda4af" stroke-width="0.5"/>
+      <path d="M-5 13 L0 5 L5 13" fill="none" stroke="#fda4af" stroke-width="0.4"/>
+      <path d="M5 13 L10 5 L15 13" fill="none" stroke="#fda4af" stroke-width="0.4"/>
+    </pattern>
+    <!-- Fractured granite (basement play) -->
+    <pattern id="pat-frac-granite" patternUnits="userSpaceOnUse" width="14" height="10">
+      <rect width="14" height="10" fill="#9f1239"/>
+      <line x1="0" y1="3" x2="14" y2="3" stroke="#fda4af" stroke-width="0.5" stroke-dasharray="2,1"/>
+      <line x1="0" y1="6" x2="14" y2="6" stroke="#fda4af" stroke-width="0.5" stroke-dasharray="2,1"/>
+      <path d="M0 8 L7 0 L14 8" fill="none" stroke="#fda4af" stroke-width="0.4"/>
+    </pattern>
+
+    <!-- Water -->
+    <linearGradient id="water-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#082f49" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.05"/>
+    </linearGradient>
+
+    <!-- ─── Structural symbols ─── -->
+    <marker id="thr-teeth" markerWidth="14" markerHeight="10" refX="0" refY="5" orient="auto">
+      <path d="M0 0 L7 5 L0 10 L4 5 Z" fill="#ef4444"/>
+    </marker>
+    <marker id="norm-tick" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#fbbf24" stroke-width="1.4"/>
+      <line x1="-4" y1="0" x2="4" y2="0" stroke="#fbbf24" stroke-width="1"/>
+    </marker>
+    <marker id="ss-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <polygon points="0 0, 9 5, 0 10, 3 5" fill="#38bdf8"/>
+    </marker>
+    <marker id="anticline-arrow" markerWidth="12" markerHeight="10" refX="0" refY="5" orient="auto">
+      <path d="M0 0 Q6 0 12 0" stroke="#22c55e" stroke-width="1.0" fill="none"/>
+      <polygon points="6 0, 3 -3, 9 -3" fill="#22c55e"/>
+    </marker>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="1480" height="340" fill="url(#sky-grad)"/>
+  <rect x="2" y="2" width="1476" height="1176" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+
+  <!-- ═══ SEA LEVEL ═══ -->
+  <line x1="120" y1="340" x2="1450" y2="340" stroke="#38bdf8" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.55"/>
+  <text x="125" y="335" fill="#38bdf8" font-size="7" opacity="0.7" font-family="JetBrains Mono" letter-spacing="1.2">MSL · 0 m</text>
+
+  <!-- ═══ TOPOGRAPHIC/BATHYMETRIC SURFACE ═══
+       NW (left) = Peninsular Malaysia onshore (mountains ~600-800m)
+       Centre = offshore (water depth ~50-100m)
+       SE (right) = eastern flank (low + shallow)
+       y-scale: 80 px/km; x-scale: ~3 px/km
+       Titiwangsa peak ~700m → y=340-56=284
+       Offshore depth ~80m → y=340+6=346
+       Eastern flank ~50m → y=340+4=344  -->
+  <path id="topo" d="M120 320
+    L150 290 L180 268 L210 250 L240 240 L270 235 L300 232 L330 235 L360 240
+    L390 248 L420 256 L450 268 L480 282 L510 298 L540 315 L570 328
+    L600 340 L630 348 L660 352 L690 354 L720 354 L750 352
+    L780 350 L810 348 L840 346 L870 344 L900 344 L930 344
+    L960 344 L990 344 L1020 344 L1050 344 L1080 345 L1110 346
+    L1140 348 L1170 350 L1200 352 L1230 354 L1260 356 L1290 358
+    L1320 360 L1350 362 L1380 365 L1410 368 L1450 372"
+    fill="none" stroke="#cbd5e1" stroke-width="1.3" stroke-linejoin="round"/>
+
+  <!-- ═══ WATER LAYER ═══ -->
+  <path d="M120 340 L600 340 L630 348 L660 352 L690 354 L720 354 L750 352 L780 350 L810 348 L840 346 L870 344 L900 344 L930 344 L960 344 L990 344 L1020 344 L1050 344 L1080 345 L1110 346 L1140 348 L1170 350 L1200 352 L1230 354 L1260 356 L1290 358 L1320 360 L1350 362 L1380 365 L1410 368 L1450 372 L1450 340 Z" fill="url(#water-grad)" opacity="0.7"/>
+
+  <!-- ═══ PENINSULAR MALAYSIA GRANITE BENEATH (continues under basin) ═══
+       Granitic basement extends from onshore all the way under the basin.
+       This is the "fractured basement" play (PUTERI BASEMENT-1, 2020). -->
+  <path d="M120 1170 L1450 1170 L1450 800
+    L1380 770 L1300 750 L1200 740 L1100 745 L1000 760 L900 770
+    L800 770 L700 760 L600 750 L500 740 L400 720 L300 700
+    L200 680 L150 660 L120 640 Z" fill="url(#pat-granite)" stroke="#44403c" stroke-width="0.5"/>
+
+  <!-- ═══ GROUP L/M (oldest, lacustrine shale — source rock) ═══
+       y range: 540-720 (depth 2.5-4.75 km) -->
+  <path d="M120 720 L200 700 L300 700 L400 720 L500 740 L600 750 L700 760 L800 770 L900 770 L1000 760 L1100 745 L1200 740 L1300 750 L1380 770 L1450 800
+    L1450 700 L1380 670 L1300 650 L1200 640 L1100 640 L1000 650 L900 660
+    L800 660 L700 650 L600 640 L500 630 L400 615 L300 600 L200 590 L150 585 L120 580 Z" fill="url(#pat-shale-lm)" stroke="#dc2626" stroke-width="0.4"/>
+  <text x="780" y="700" fill="#fecaca" font-size="6.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="600">GROUP L/M · LACUSTRINE SHALE (SOURCE)</text>
+  <text x="780" y="712" fill="#fecaca" font-size="5" text-anchor="middle" font-family="JetBrains Mono" opacity="0.85">Oligocene · Type I/II kerogen · TOC 1.5-5.0%</text>
+
+  <!-- ═══ GROUP K (deep syn-rift coarse sandstone) ═══
+       y range: 470-580 (depth 1.6-3 km) -->
+  <path d="M120 580 L150 585 L200 590 L300 600 L400 615 L500 630 L600 640 L700 650 L800 660 L900 660 L1000 650 L1100 640 L1200 640 L1300 650 L1380 670 L1450 700
+    L1450 615 L1380 600 L1300 580 L1200 565 L1100 560 L1000 565 L900 570
+    L800 570 L700 560 L600 550 L500 540 L400 530 L300 520 L200 510 L150 505 L120 500 Z" fill="url(#pat-sand-k)" stroke="#ea580c" stroke-width="0.4"/>
+  <text x="780" y="560" fill="#ffedd5" font-size="6" text-anchor="middle" font-family="JetBrains Mono" font-weight="500">GROUP K · COARSE SANDSTONE (DEEP PLAY)</text>
+  <text x="780" y="572" fill="#ffedd5" font-size="4.5" text-anchor="middle" font-family="JetBrains Mono" opacity="0.85">Oligocene–E. Miocene · alluvial to lacustrine</text>
+
+  <!-- ═══ GROUP J (fluvial-deltaic) ═══
+       y range: 440-500 (depth 1.25-2 km) -->
+  <path d="M120 500 L150 505 L200 510 L300 520 L400 530 L500 540 L600 550 L700 560 L800 570 L900 570 L1000 565 L1100 560 L1200 565 L1300 580 L1380 600 L1450 615
+    L1450 550 L1380 535 L1300 520 L1200 510 L1100 505 L1000 510 L900 515
+    L800 515 L700 505 L600 495 L500 485 L400 475 L300 470 L200 465 L150 460 L120 455 Z" fill="url(#pat-sand-j)" stroke="#d97706" stroke-width="0.4"/>
+  <text x="780" y="500" fill="#fed7aa" font-size="5.5" text-anchor="middle" font-family="JetBrains Mono">GROUP J · FLUVIAL-DELTAIC</text>
+
+  <!-- ═══ GROUP I (siltstone — Angsi/Sotong) ═══
+       y range: 420-455 (depth 1-1.4 km) -->
+  <path d="M120 455 L150 460 L200 465 L300 470 L400 475 L500 485 L600 495 L700 505 L800 515 L900 515 L1000 510 L1100 505 L1200 510 L1300 520 L1380 535 L1450 550
+    L1450 480 L1380 470 L1300 460 L1200 455 L1100 450 L1000 452 L900 458
+    L800 458 L700 450 L600 442 L500 432 L400 425 L300 422 L200 420 L150 418 L120 415 Z" fill="url(#pat-silt-i)" stroke="#ca8a04" stroke-width="0.4"/>
+  <text x="780" y="450" fill="#fef9c3" font-size="5.5" text-anchor="middle" font-family="JetBrains Mono">GROUP I · COASTAL PLAIN (Angsi · Sotong)</text>
+
+  <!-- ═══ GROUP H (sandstone with coal — Angsi reservoir) ═══
+       y range: 390-415 (depth 0.6-0.9 km) -->
+  <path d="M120 415 L150 418 L200 420 L300 422 L400 425 L500 432 L600 442 L700 450 L800 458 L900 458 L1000 452 L1100 450 L1200 455 L1300 460 L1380 470 L1450 480
+    L1450 415 L1380 408 L1300 402 L1200 398 L1100 395 L1000 397 L900 400
+    L800 400 L700 395 L600 388 L500 380 L400 374 L300 372 L200 370 L150 368 L120 365 Z" fill="url(#pat-sand-h)" stroke="#65a30d" stroke-width="0.4"/>
+  <text x="780" y="402" fill="#d9f99d" font-size="5.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="600">GROUP H · LOWER COASTAL PLAIN</text>
+  <text x="780" y="414" fill="#bef264" font-size="4.5" text-anchor="middle" font-family="JetBrains Mono" opacity="0.85">Excellent reservoir · coal-bearing</text>
+
+  <!-- ═══ GROUP F (coastal plain + regional seal) ═══
+       y range: 370-380 (depth 0.4-0.5 km) — this is the regional seal -->
+  <path d="M120 380 L150 378 L200 375 L300 370 L400 370 L500 370 L600 372 L700 375 L800 378 L900 380 L1000 380 L1100 378 L1200 375 L1300 372 L1380 370 L1450 368
+    L1450 372 L1380 374 L1300 376 L1200 379 L1100 382 L1000 384 L900 384 L800 382 L700 379 L600 376 L500 374 L400 374 L300 374 L200 377 L150 380 L120 382 Z" fill="url(#pat-sand-f)" stroke="#65a30d" stroke-width="0.4"/>
+  <text x="780" y="378" fill="#ecfccb" font-size="5" text-anchor="middle" font-family="JetBrains Mono" font-weight="600">GROUP F · REGIONAL SEAL · M. MIOCENE</text>
+
+  <!-- ═══ GROUP E (sandstone — Dulang oil field) ═══
+       y range: 360-370 (depth ~0.25-0.4 km) — anticlinal closure shows proven play -->
+  <!-- Angsi-Dulang anticlinal trap -->
+  <path d="M120 376 L160 372 L200 370 L260 360 L300 350 L340 342 L380 340 L420 342 L460 348 L500 354 L540 358 L580 360 L620 360 L660 358 L700 356 L740 354 L780 352 L820 350 L860 348 L900 348 L940 350 L980 352 L1020 354 L1060 358 L1100 360 L1140 360 L1180 358 L1220 354 L1260 350 L1300 348 L1340 348 L1380 350 L1420 352 L1450 354
+    L1450 360 L1420 358 L1380 356 L1340 354 L1300 354 L1260 356 L1220 360 L1180 364 L1140 366 L1100 366 L1060 364 L1020 360 L980 358 L940 356 L900 354 L860 354 L820 356 L780 358 L740 360 L700 362 L660 364 L620 366 L580 366 L540 364 L500 360 L460 354 L420 348 L380 346 L340 348 L300 356 L260 366 L200 376 L160 380 L120 380 Z" fill="url(#pat-sand-e)" stroke="#22c55e" stroke-width="0.4"/>
+  <text x="500" y="355" fill="#dcfce7" font-size="5.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="600">GROUP E · DULANG OIL (ANTICLINE)</text>
+  <text x="900" y="355" fill="#dcfce7" font-size="5.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="600">GROUP E · ANGSI OIL+ANTICLINE</text>
+
+  <!-- ═══ GROUP D (deltaic to shallow marine — EXCELLENT reservoir) ═══
+       y range: 354-362 (shallowest anticlinal crest in some places) -->
+  <path d="M120 372 L160 370 L200 368 L260 358 L300 348 L340 340 L380 338 L420 340 L460 346 L500 352 L540 356 L580 358 L620 358 L660 356 L700 354 L740 352 L780 350 L820 348 L860 346 L900 346 L940 348 L980 350 L1020 352 L1060 356 L1100 358 L1140 358 L1180 356 L1220 352 L1260 348 L1300 346 L1340 346 L1380 348 L1420 350 L1450 352
+    L1450 358 L1420 356 L1380 354 L1340 352 L1300 352 L1260 354 L1220 358 L1180 362 L1140 364 L1100 364 L1060 362 L1020 358 L980 356 L940 354 L900 352 L860 352 L820 354 L780 356 L740 358 L700 360 L660 362 L620 364 L580 364 L540 362 L500 358 L460 352 L420 346 L380 344 L340 346 L300 354 L260 364 L200 374 L160 376 L120 378 Z" fill="url(#pat-sand-d)" stroke="#059669" stroke-width="0.4"/>
+  <text x="780" y="346" fill="#d1fae5" font-size="5" text-anchor="middle" font-family="JetBrains Mono">GROUP D · DELTAIC (EXCELLENT)</text>
+
+  <!-- ═══ GROUP C/B (Late Miocene – Pliocene) ═══
+       y range: 350-358 -->
+  <path d="M120 360 L160 358 L200 356 L260 352 L300 348 L340 344 L380 342 L420 344 L460 348 L500 352 L540 354 L580 356 L620 356 L660 354 L700 352 L740 350 L780 348 L820 346 L860 344 L900 344 L940 346 L980 348 L1020 350 L1060 354 L1100 356 L1140 356 L1180 354 L1220 350 L1260 346 L1300 344 L1340 344 L1380 346 L1420 348 L1450 350
+    L1450 354 L1420 352 L1380 350 L1340 350 L1300 350 L1260 352 L1220 354 L1180 356 L1140 358 L1100 358 L1060 356 L1020 352 L980 350 L940 348 L900 348 L860 348 L820 350 L780 352 L740 354 L700 356 L660 358 L620 360 L580 360 L540 358 L500 356 L460 352 L420 348 L380 346 L340 348 L300 352 L260 356 L200 358 L160 360 L120 362 Z" fill="url(#pat-sand-bc)" stroke="#0891b2" stroke-width="0.3" opacity="0.85"/>
+  <text x="1180" y="356" fill="#cffafe" font-size="4.5" text-anchor="middle" font-family="JetBrains Mono" opacity="0.85">Group B–C</text>
+
+  <!-- ═══ GROUP A (Pliocene – Recent) — thin cap ═══
+       y range: 340-345 — direct surface cover -->
+  <path d="M120 340 L600 340 L630 342 L660 344 L690 346 L720 346 L750 344 L780 342 L810 340 L840 340 L870 340 L900 340 L930 340 L960 340 L990 340 L1020 340 L1050 340 L1080 340 L1110 340 L1140 340 L1170 340 L1200 342 L1230 344 L1260 346 L1290 348 L1320 350 L1350 352 L1380 354 L1410 356 L1450 358
+    L1450 348 L1380 346 L1340 344 L1300 342 L1260 340 L1220 338 L1180 336 L1140 336 L1100 336 L1060 336 L1020 336 L980 336 L940 336 L900 336 L860 336 L820 336 L780 336 L740 336 L700 336 L660 336 L620 336 L580 336 L540 336 L500 336 L460 336 L420 336 L380 336 L340 336 L300 336 L260 336 L220 336 L180 336 L140 336 L120 340 Z" fill="url(#pat-sand-a)" stroke="#1d4ed8" stroke-width="0.3"/>
+  <text x="780" y="334" fill="#dbeafe" font-size="4.5" text-anchor="middle" font-family="JetBrains Mono">GROUP A · PLIO-RECENT</text>
+
+  <!-- ═══ WESTERN HINGE FAULT (the 2025 LEBAH EMAS-1 wildcat) ═══
+       Curved listric fault bounding the western edge of the basin -->
+  <path d="M520 298 Q525 380 530 460 Q535 540 545 620 Q555 700 580 770" stroke="#fbbf24" stroke-width="1.6" fill="none" marker-end="url(#norm-tick)"/>
+  <text x="498" y="510" fill="#fbbf24" font-size="6" font-family="JetBrains Mono" font-weight="600" transform="rotate(75 498 510)">WESTERN HINGE FAULT</text>
+  <text x="480" y="640" fill="#fbbf24" font-size="4.5" font-family="JetBrains Mono" opacity="0.85" transform="rotate(75 480 640)">2025 wildcat opened new fairway</text>
+
+  <!-- ═══ INVERSION FAULTS (compressional reactivation of normal faults) ═══
+       These are the older normal faults that flipped during Miocene compression.
+       They bound the anticlinal closures. -->
+  <path d="M620 360 L630 540" stroke="#ef4444" stroke-width="1.2" marker-end="url(#thr-teeth)"/>
+  <path d="M860 348 L870 540" stroke="#ef4444" stroke-width="1.2" marker-end="url(#thr-teeth)"/>
+  <path d="M1100 358 L1110 540" stroke="#ef4444" stroke-width="1.2" marker-end="url(#thr-teeth)"/>
+  <path d="M1300 346 L1310 530" stroke="#ef4444" stroke-width="1.2" marker-end="url(#thr-teeth)"/>
+
+  <!-- Anticlinal closure labels (the proven play) -->
+  <text x="450" y="394" fill="#22c55e" font-size="6" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" letter-spacing="0.5">ANTICLINE 1</text>
+  <text x="770" y="394" fill="#22c55e" font-size="6" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" letter-spacing="0.5">DULANG ANTICLINE</text>
+  <text x="1080" y="394" fill="#22c55e" font-size="6" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" letter-spacing="0.5">ANGSI ANTICLINE</text>
+  <text x="1320" y="394" fill="#22c55e" font-size="6" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" letter-spacing="0.5">ANTICLINE 4</text>
+
+  <!-- ═══ 4 FOUNDER WELLS (PETRONAS Carigali) ═══ -->
+
+  <!-- LEBAH EMAS-1 (2025) — Western Hinge — new play fairway -->
+  <g transform="translate(510, 0)">
+    <line x1="0" y1="346" x2="0" y2="850" stroke="#94a3b8" stroke-width="0.8"/>
+    <circle cx="0" cy="360" r="2.5" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="378" r="2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="396" r="1.8" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <text x="6" y="346" fill="#94a3b8" font-size="5.5" font-family="JetBrains Mono" font-weight="700">LEBAH EMAS-1</text>
+    <text x="6" y="360" fill="#f87171" font-size="5" font-family="JetBrains Mono">oil (hinge play)</text>
+    <text x="6" y="376" fill="#f87171" font-size="4.5" font-family="JetBrains Mono" opacity="0.85">2025 wildcat</text>
+  </g>
+
+  <!-- BEKANTAN-1 (2018) — central basin, shallowest oil -->
+  <g transform="translate(820, 0)">
+    <line x1="0" y1="340" x2="0" y2="700" stroke="#94a3b8" stroke-width="0.8"/>
+    <circle cx="0" cy="350" r="2.5" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="362" r="2.2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="376" r="2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="390" r="1.8" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <text x="6" y="340" fill="#94a3b8" font-size="5.5" font-family="JetBrains Mono" font-weight="700">BEKANTAN-1</text>
+    <text x="6" y="354" fill="#f87171" font-size="5" font-family="JetBrains Mono">shallowest oil</text>
+    <text x="6" y="368" fill="#f87171" font-size="4.5" font-family="JetBrains Mono" opacity="0.85">Group D–E (2018)</text>
+  </g>
+
+  <!-- BUNGA TASBIH-1 (2024) — MBR+ Small Field Asset -->
+  <g transform="translate(1110, 0)">
+    <line x1="0" y1="342" x2="0" y2="700" stroke="#94a3b8" stroke-width="0.8"/>
+    <circle cx="0" cy="352" r="2.5" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="365" r="2.2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="378" r="1.8" fill="#fbbf24" stroke="#92400e" stroke-width="0.5"/>
+    <text x="6" y="342" fill="#94a3b8" font-size="5.5" font-family="JetBrains Mono" font-weight="700">BUNGA TASBIH-1</text>
+    <text x="6" y="356" fill="#f87171" font-size="5" font-family="JetBrains Mono">oil (Group E)</text>
+    <text x="6" y="372" fill="#fbbf24" font-size="4.5" font-family="JetBrains Mono" opacity="0.85">MBR+ 2024</text>
+  </g>
+
+  <!-- PUTERI BASEMENT-1 (2020) — fractured basement (deepest) -->
+  <g transform="translate(1300, 0)">
+    <line x1="0" y1="350" x2="0" y2="900" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="3,1"/>
+    <circle cx="0" cy="360" r="2.5" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="374" r="2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.5"/>
+    <circle cx="0" cy="500" r="2.5" fill="#fda4af" stroke="#9f1239" stroke-width="0.7"/>
+    <circle cx="0" cy="540" r="2" fill="#fda4af" stroke="#9f1239" stroke-width="0.7"/>
+    <text x="6" y="350" fill="#94a3b8" font-size="5.5" font-family="JetBrains Mono" font-weight="700">PUTERI BASEMENT-1</text>
+    <text x="6" y="365" fill="#f87171" font-size="5" font-family="JetBrains Mono">oil (Group E)</text>
+    <text x="6" y="495" fill="#fda4af" font-size="5" font-family="JetBrains Mono" font-weight="600">FRACTURED</text>
+    <text x="6" y="509" fill="#fda4af" font-size="5" font-family="JetBrains Mono">GRANITE</text>
+    <text x="6" y="523" fill="#fda4af" font-size="4.5" font-family="JetBrains Mono" opacity="0.85">2020 basement play</text>
+  </g>
+
+  <!-- ═══ ELEVATION LABELS ═══ -->
+  <g font-family="JetBrains Mono">
+    <!-- Titiwangsa peak ~700m → y=284 -->
+    <line x1="300" y1="232" x2="300" y2="252" stroke="#bef264" stroke-width="0.4" stroke-dasharray="2,1"/>
+    <circle cx="300" cy="232" r="2.2" fill="#bef264"/>
+    <text x="300" y="226" fill="#bef264" font-size="8" text-anchor="middle" font-weight="700">~700 m</text>
+    <text x="300" y="214" fill="#d9f99d" font-size="6" text-anchor="middle" letter-spacing="1.5">TITIWANGSA / MAIN RANGE</text>
+
+    <!-- Coastal elevation -->
+    <text x="540" y="332" fill="#94a3b8" font-size="4.5" text-anchor="middle" opacity="0.85">coast</text>
+
+    <!-- Water depth labels -->
+    <text x="800" y="360" fill="#38bdf8" font-size="5" font-family="JetBrains Mono" opacity="0.85">~80 m</text>
+    <text x="1250" y="370" fill="#38bdf8" font-size="5" font-family="JetBrains Mono" opacity="0.85">~100 m</text>
+  </g>
+
+  <!-- ═══ ZONE LABELS ═══ -->
+  <g font-family="JetBrains Mono" text-anchor="middle">
+    <text x="220" y="32" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1">PENINSULAR MALAYSIA</text>
+    <text x="220" y="46" fill="#9f1239" font-size="7">Main Range granite · onshore</text>
+
+    <text x="490" y="32" fill="#fbbf24" font-size="11" font-weight="700" letter-spacing="1">WESTERN HINGE</text>
+    <text x="490" y="46" fill="#fbbf24" font-size="7">LEBAH EMAS-1 new play · 2025</text>
+
+    <text x="700" y="32" fill="#94a3b8" font-size="11" font-weight="700" letter-spacing="1">BASIN AXIS</text>
+    <text x="700" y="46" fill="#94a3b8" font-size="7">Deep depocentre · 10–12 km</text>
+
+    <text x="900" y="32" fill="#22c55e" font-size="11" font-weight="700" letter-spacing="1">DULANG / BEKANTAN</text>
+    <text x="900" y="46" fill="#22c55e" font-size="7">Group E oil · proven play</text>
+
+    <text x="1100" y="32" fill="#22c55e" font-size="11" font-weight="700" letter-spacing="1">ANGSI / BUNGA TASBIH</text>
+    <text x="1100" y="46" fill="#22c55e" font-size="7">Group E oil · MBR+ 2024</text>
+
+    <text x="1310" y="32" fill="#fda4af" font-size="11" font-weight="700" letter-spacing="1">PUTERI BASEMENT</text>
+    <text x="1310" y="46" fill="#fda4af" font-size="7">Fractured granite · 2020</text>
+  </g>
+
+  <!-- ═══ HORIZONTAL SCALE BAR ═══ -->
+  <g transform="translate(140, 1140)">
+    <line x1="0" y1="0" x2="1100" y2="0" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="0" y1="-3" x2="0" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="183" y1="-3" x2="183" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="367" y1="-3" x2="367" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="550" y1="-3" x2="550" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="733" y1="-3" x2="733" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="917" y1="-3" x2="917" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="1100" y1="-3" x2="1100" y2="3" stroke="#1e293b" stroke-width="0.6"/>
+    <text x="0" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">0</text>
+    <text x="183" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">75</text>
+    <text x="367" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">150</text>
+    <text x="550" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">225</text>
+    <text x="733" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">300</text>
+    <text x="917" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">400</text>
+    <text x="1100" y="-7" fill="#94a3b8" font-size="7" font-family="JetBrains Mono" text-anchor="middle">~500 km</text>
+    <text x="550" y="14" fill="#475569" font-size="6.5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="1">HORIZONTAL SCALE · KILOMETRES</text>
+  </g>
+
+  <!-- Vertical scale (depth) -->
+  <g transform="translate(85, 340)">
+    <line x1="0" y1="0" x2="0" y2="800" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="0" x2="3" y2="0" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="80" x2="3" y2="80" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="160" x2="3" y2="160" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="240" x2="3" y2="240" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="320" x2="3" y2="320" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="400" x2="3" y2="400" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="480" x2="3" y2="480" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="560" x2="3" y2="560" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="640" x2="3" y2="640" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="720" x2="3" y2="720" stroke="#1e293b" stroke-width="0.6"/>
+    <line x1="-3" y1="800" x2="3" y2="800" stroke="#1e293b" stroke-width="0.6"/>
+    <text x="-6" y="3" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">0</text>
+    <text x="-6" y="83" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−1</text>
+    <text x="-6" y="163" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−2</text>
+    <text x="-6" y="243" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−3</text>
+    <text x="-6" y="323" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−4</text>
+    <text x="-6" y="403" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−5</text>
+    <text x="-6" y="483" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−6</text>
+    <text x="-6" y="563" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−7</text>
+    <text x="-6" y="643" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−8</text>
+    <text x="-6" y="723" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−9</text>
+    <text x="-6" y="803" fill="#94a3b8" font-size="6" font-family="JetBrains Mono" text-anchor="end">−10 km</text>
+    <text x="-6" y="-12" fill="#475569" font-size="6" font-family="JetBrains Mono" text-anchor="end" letter-spacing="0.5">DEPTH (km)</text>
+  </g>
+
+  <!-- Vertical exaggeration callout -->
+  <text x="700" y="1170" fill="#475569" font-size="6.5" text-anchor="middle" font-family="JetBrains Mono" letter-spacing="1.5">VERTICAL EXAGGERATION ~32× · SRTM TOPOGRAPHY + GROUP A→M STRATIGRAPHY · STRUCTURES INTERPRETIVE</text>
+
+  <!-- ═══ LEGEND ═══ -->
+  <g transform="translate(20, 740)">
+    <rect x="0" y="0" width="58" height="400" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="0.6" fill-opacity="0.95"/>
+    <text x="29" y="14" fill="#fbbf24" font-size="6.5" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" letter-spacing="1">LEGEND</text>
+
+    <!-- Group A -->
+    <rect x="6" y="22" width="12" height="9" rx="1" fill="url(#pat-sand-a)"/><text x="22" y="29" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp A (Plio.)</text>
+    <rect x="6" y="34" width="12" height="9" rx="1" fill="url(#pat-sand-bc)"/><text x="22" y="41" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp B–C (Mio.)</text>
+    <rect x="6" y="46" width="12" height="9" rx="1" fill="url(#pat-sand-d)"/><text x="22" y="53" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp D (res.)</text>
+    <rect x="6" y="58" width="12" height="9" rx="1" fill="url(#pat-sand-e)"/><text x="22" y="65" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp E (Dulang)</text>
+    <rect x="6" y="70" width="12" height="9" rx="1" fill="url(#pat-sand-f)"/><text x="22" y="77" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp F (seal)</text>
+    <rect x="6" y="82" width="12" height="9" rx="1" fill="url(#pat-sand-h)"/><text x="22" y="89" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp H</text>
+    <rect x="6" y="94" width="12" height="9" rx="1" fill="url(#pat-silt-i)"/><text x="22" y="101" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp I (siltst.)</text>
+    <rect x="6" y="106" width="12" height="9" rx="1" fill="url(#pat-sand-j)"/><text x="22" y="113" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp J</text>
+    <rect x="6" y="118" width="12" height="9" rx="1" fill="url(#pat-sand-k)"/><text x="22" y="125" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp K (deep)</text>
+    <rect x="6" y="130" width="12" height="9" rx="1" fill="url(#pat-shale-lm)"/><text x="22" y="137" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Grp L/M (src)</text>
+    <rect x="6" y="142" width="12" height="9" rx="1" fill="url(#pat-granite)"/><text x="22" y="149" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Granite bsmt</text>
+    <rect x="6" y="154" width="12" height="9" rx="1" fill="url(#pat-frac-granite)"/><text x="22" y="161" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Fract. granite</text>
+
+    <!-- Structures -->
+    <line x1="6" y1="178" x2="18" y2="178" stroke="#ef4444" stroke-width="1.0" marker-end="url(#thr-teeth)"/><text x="22" y="180" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Inversion thrust</text>
+    <line x1="6" y1="190" x2="18" y2="190" stroke="#fbbf24" stroke-width="1.0" marker-end="url(#norm-tick)"/><text x="22" y="192" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Normal fault</text>
+
+    <!-- Plays -->
+    <line x1="6" y1="206" x2="18" y2="206" stroke="#22c55e" stroke-width="1.0"/><text x="22" y="208" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Anticline (proven)</text>
+    <line x1="6" y1="218" x2="18" y2="218" stroke="#fbbf24" stroke-width="1.0" stroke-dasharray="3,1"/><text x="22" y="220" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Hinge fault (new)</text>
+
+    <!-- Hydrocarbons -->
+    <circle cx="12" cy="234" r="2" fill="#f87171" stroke="#7f1d1d" stroke-width="0.4"/><text x="22" y="236" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Oil</text>
+    <circle cx="12" cy="246" r="2" fill="#fbbf24" stroke="#92400e" stroke-width="0.4"/><text x="22" y="248" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Gas</text>
+    <circle cx="12" cy="258" r="2" fill="#fda4af" stroke="#9f1239" stroke-width="0.4"/><text x="22" y="260" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Basement oil</text>
+    <line x1="12" y1="270" x2="12" y2="280" stroke="#94a3b8" stroke-width="0.8"/><text x="22" y="278" fill="#94a3b8" font-size="5" font-family="JetBrains Mono">Well stick</text>
+
+    <!-- Proven play -->
+    <text x="29" y="298" fill="#22c55e" font-size="5" font-family="JetBrains Mono" text-anchor="middle" font-weight="700" letter-spacing="0.5">PROVEN PLAY</text>
+    <text x="29" y="310" fill="#94a3b8" font-size="5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="0.5">Middle Miocene</text>
+    <text x="29" y="322" fill="#94a3b8" font-size="5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="0.5">Anticline (E/F/H/I)</text>
+    <text x="29" y="338" fill="#fbbf24" font-size="5" font-family="JetBrains Mono" text-anchor="middle" font-weight="700" letter-spacing="0.5">EMERGING</text>
+    <text x="29" y="350" fill="#94a3b8" font-size="5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="0.5">Western Hinge (2025)</text>
+    <text x="29" y="362" fill="#94a3b8" font-size="5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="0.5">Strat pinchout (H/I)</text>
+    <text x="29" y="378" fill="#fda4af" font-size="5" font-family="JetBrains Mono" text-anchor="middle" font-weight="700" letter-spacing="0.5">FRONTIER</text>
+    <text x="29" y="390" fill="#94a3b8" font-size="5" font-family="JetBrains Mono" text-anchor="middle" letter-spacing="0.5">Fractured granite</text>
+  </g>
+
+  <!-- ═══ COMPASS ROSE ═══ -->
+  <g transform="translate(1420, 100)">
+    <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#1e293b" stroke-width="0.6" fill-opacity="0.9"/>
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#475569" stroke-width="0.5"/>
+    <line x1="-18" y1="0" x2="18" y2="0" stroke="#475569" stroke-width="0.5"/>
+    <polygon points="0,-18 -3,-3 0,-8 3,-3" fill="#fbbf24"/>
+    <polygon points="0,18 -3,3 0,8 3,3" fill="#475569"/>
+    <text x="0" y="-25" fill="#fbbf24" font-size="9" text-anchor="middle" font-family="JetBrains Mono" font-weight="700">N</text>
+    <text x="0" y="33" fill="#475569" font-size="8" text-anchor="middle" font-family="JetBrains Mono">S</text>
+    <text x="-28" y="3" fill="#475569" font-size="8" text-anchor="middle" font-family="JetBrains Mono">W</text>
+    <text x="28" y="3" fill="#475569" font-size="8" text-anchor="middle" font-family="JetBrains Mono">E</text>
+  </g>
+
+  <!-- NW–SE transect indicator -->
+  <g transform="translate(1380, 60)">
+    <line x1="-30" y1="20" x2="30" y2="-20" stroke="#fbbf24" stroke-width="1.0" marker-end="url(#ss-arrow)" opacity="0.7"/>
+    <text x="0" y="-30" fill="#fbbf24" font-size="7" text-anchor="middle" font-family="JetBrains Mono" letter-spacing="1">SE</text>
+    <text x="-30" y="30" fill="#fbbf24" font-size="7" text-anchor="end" font-family="JetBrains Mono" letter-spacing="1">NW</text>
+  </g>
+
+  <!-- ═══ Provenance footer ═══ -->
+  <text x="740" y="1115" fill="#334155" font-size="6" text-anchor="middle" font-family="JetBrains Mono" letter-spacing="1">SOURCES · SRTM (Open-Meteo) · PETRONAS GROUP A–M (MADON 2013) · TJIA 1989 · SCHERER 2018 · ISHLAH 2015 · FOUNDER WELLS (SOVEREIGN CANON, F10)</text>
+</svg>
+</div>
+
+<!-- ═══ INFO CARDS ═══ -->
+<div class="info-panel">
+  <div class="card">
+    <h3>Tectonic Phases · 4 Acts</h3>
+    <ul>
+      <li><span class="age">L. Eoc.</span><b>Syn-rift</b> — Group L/M lacustrine fill, source rocks deposited</li>
+      <li><span class="age">E. Mio.</span><b>Transition / sag</b> — Group K, J, I fluvial-deltaic</li>
+      <li><span class="age">M–L. Mio.</span><b>Inversion</b> — normal faults reverse, anticlines form</li>
+      <li><span class="age">Plio–Rec.</span><b>Post-inversion</b> — regional subsidence, marine transgression</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Reservoir Quality · Group A→M</h3>
+    <ul>
+      <li><b>Group D:</b> Claystone, sandstone, coal · Deltaic · <b>Excellent</b></li>
+      <li><b>Group E:</b> Sandstone (Dulang field) · <b>Excellent</b></li>
+      <li><b>Group F:</b> Sandstone, claystone, coal · <b>Good + regional seal</b></li>
+      <li><b>Group H:</b> Lower coastal plain · <b>Excellent–Good</b></li>
+      <li><b>Group I:</b> Siltstone (Angsi, Sotong) · <b>Good</b></li>
+      <li><b>Group K:</b> Coarse sandstone · <b>Deep play · Fair</b></li>
+      <li><b>Porosity:</b> 12–28% · <b>Perm:</b> 10–1000 mD</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Founder Wells (4) · Plays Tested</h3>
+    <ul>
+      <li><b>LEBAH EMAS-1</b> — Western Hinge · 2025 · new play fairway</li>
+      <li><b>BEKANTAN-1</b> — Central basin · 2018 · shallowest oil</li>
+      <li><b>BUNGA TASBIH-1</b> — Angsi flank · 2024 · MBR+ field</li>
+      <li><b>PUTERI BASEMENT-1</b> — Eastern flank · 2020 · fractured granite</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Provenance · Group A→M</h3>
+    <ul>
+      <li><b>Stratigraphy:</b> Madon 2013, Ishlah 2015, PETRONAS convention</li>
+      <li><b>Tectonics:</b> Tjia 1989 (inversion), Madon 2013 (sag)</li>
+      <li><b>Plays:</b> Scherer 2018 (anticline), PETRONAS MPM 2024 (MBR+)</li>
+      <li><b>Wells:</b> /earth/data/wells.json (sovereign canon, F10)</li>
+      <li><b>F7 humility:</b> body shapes are schematics, well positions are basin-level not step-out</li>
+    </ul>
+  </div>
+</div>
+
+<div class="attribution">
+  <b>Cross-section</b> · SRTM topography via <a href="https://open-meteo.com" style="color:#64748b">open-meteo.com</a> · Stratigraphy from PETRONAS Group A–M convention · Tectonics from Cenozoic failed rift + Miocene inversion · <b>Vertical exaggeration ~32×</b>. <b>F7 humility:</b> body shapes are interpretive schematics, not seismic picks. <br>
+  <a href="https://arif-fazil.com/earth/malay-basin/" style="color:#38bdf8">◂ BACK TO DOSSIER</a> · <a href="https://arif-fazil.com/earth/kinabalu-basin/" style="color:#38bdf8">↗ KINABALU BASIN</a> · <a href="https://geox.arif-fazil.com" style="color:#38bdf8">LAUNCH GEOX COCKPIT ↗</a>
+</div>
+
+</div>
+</main>
+<!-- /#main-content -->
+</body>
+</html>

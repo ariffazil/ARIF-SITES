@@ -11,7 +11,6 @@ import { WealthArticle } from '@/pages/WealthArticle';
 import World from '@/pages/WorldArrow';
 import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
-import { Earth } from '@/pages/Earth';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
 import Economics from '@/pages/EconomicsArrow';
@@ -47,9 +46,11 @@ function App() {
             {/* Home — Arrow of Time hero */}
             <Route path="/" element={<Home />} />
 
-            {/* Earth — Malay Basin discoveries (human contrast register) */}
-            <Route path="/earth" element={<Earth />} />
-            <Route path="/earth/" element={<Earth />} />
+            {/* Earth — Macrostrat globe is static HTML at /earth/ (full document).
+                Client-side SPA must not replace it; force hard navigation. */}
+            <Route path="/earth" element={<EarthGlobeRedirect />} />
+            <Route path="/earth/" element={<EarthGlobeRedirect />} />
+            <Route path="/earth/*" element={<EarthGlobeRedirect />} />
 
             {/* Economics — human essay register; live briefing still at /wealth-live */}
             <Route path="/economics" element={<Economics />} />
@@ -163,6 +164,21 @@ function App() {
         <ArrowFooter />
       </div>
     </BrowserRouter>
+  );
+}
+
+function EarthGlobeRedirect() {
+  // Hard load static Dynamic Planet (globe.gl + Macrostrat) — not SPA Earth.tsx
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname.startsWith('/earth')
+      ? window.location.pathname + window.location.search + window.location.hash
+      : '/earth/';
+    window.location.replace(path.endsWith('/') || path.includes('.') ? path : path + '/');
+  }
+  return (
+    <div className="mx-auto max-w-[40rem] px-6 py-24 font-mono text-sm text-ink-soft">
+      Loading EARTH globe… <a className="text-ember underline" href="/earth/">Continue →</a>
+    </div>
   );
 }
 
