@@ -390,6 +390,40 @@ export function Earth() {
         </div>
       </section>
 
+      {/* ── 06 GEOX PORTAL ── */}
+      <section className="border-t border-[#EDE6D6]/10">
+        <div className="mx-auto max-w-[1280px] px-6 py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-20% 0px' }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#EDE6D6]/40">
+                06 ——— EARTH INTELLIGENCE
+              </p>
+              <h2 className="mt-4 font-display text-3xl tracking-[-0.02em] text-[#EDE6D6] md:text-4xl">
+                The surface is the map.<br />The engine is the rock.
+              </h2>
+              <p className="mt-4 max-w-[52ch] font-body text-[18px] leading-[1.65] text-[#EDE6D6]/70">
+                GEOX turns what you see on this page into evidence — query the bedrock, witness the
+                wells, run the prospect engine. Every answer from a pipe.
+              </p>
+            </div>
+            <a
+              href="https://geox.arif-fazil.com/"
+              className="group flex shrink-0 items-center gap-3 border border-[#FF9F1C]/30 bg-[#FF9F1C]/[0.04] px-7 py-4 font-mono text-[13px] uppercase tracking-[0.08em] text-[#FF9F1C] no-underline transition-all hover:border-[#FF9F1C]/60 hover:bg-[#FF9F1C]/[0.08]"
+            >
+              <span className="opacity-50 transition-opacity group-hover:opacity-100">▸</span>
+              OPEN GEOX
+              <span className="text-[10px] opacity-30 transition-opacity group-hover:opacity-60">↗</span>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Well story dialog */}
       <Dialog open={activeWell !== null} onOpenChange={(open) => !open && setActiveWell(null)}>
         <DialogContent className="border-[#EDE6D6]/15 bg-[#151310] text-[#EDE6D6] sm:max-w-[560px]">
