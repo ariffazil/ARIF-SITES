@@ -584,6 +584,14 @@ arif-fazil.com {
 	redir /federation/ /doctrine 301
 	redir /discoveries /earth 301
 	redir /discoveries/ /earth 301
+	# 2026-08-04 agentic world-model coherence — dead human paths → live IA
+	redir /proof /proof/ 308
+	redir /cockpit /missions 301
+	redir /cockpit/ /missions 301
+	redir /knowledge /wiki/ 301
+	redir /knowledge/ /wiki/ 301
+	redir /syedos /doctrine 301
+	redir /syedos/ /doctrine 301
 	redir /essays /writing 301
 	redir /essays/ /writing/ 301
 	redir /essays/* /writing{uri} 301
@@ -1878,10 +1886,11 @@ a-forge.arif-fazil.com {
 # Already-prefixed requests retain one /wiki segment; all other paths gain one.
 # ═══════════════════════════════════════════════════════════════════════
 wiki.arif-fazil.com {
+	# One human wiki home — apex /wiki/ (not arifos orphan 404)
 	import tls_origin
 	@wiki_prefixed path /wiki /wiki/*
-	redir @wiki_prefixed https://arifos.arif-fazil.com{uri} permanent
-	redir https://arifos.arif-fazil.com/wiki{uri} permanent
+	redir @wiki_prefixed https://arif-fazil.com{uri} permanent
+	redir https://arif-fazil.com/wiki{uri} permanent
 }
 # MAIN SITE 3 — Δ AAA COCKPIT
 # ═══════════════════════════════════════════════════════════════════════
