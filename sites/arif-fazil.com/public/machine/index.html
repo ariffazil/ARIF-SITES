@@ -93,7 +93,7 @@ body::before {
 <div class="topbar"><div class="wrap">
   <h1><span>█</span> arif-fazil.com /machine</h1>
   <nav>
-    <a href="/">home</a><a href="/earth">earth</a><a href="/economics">economics</a><a href="/world">world</a><a href="/politics/ns-election">prn16 ns</a><a href="/writing">writing</a><a href="/doctrine">doctrine</a><a href="/map/">map</a><a href="/machine/" class="active">machine</a>
+    <a href="/">home</a><a href="/earth">earth</a><a href="/economics">economics</a><a href="/world">world</a><a href="/writing">writing</a><a href="/doctrine">doctrine</a><a href="/missions">missions</a><a href="/999/">999</a><a href="/map/">map</a><a href="/machine/" class="active">machine</a><a href="/machines/">for-machines</a>
   </nav>
 </div></div>
 
@@ -108,63 +108,82 @@ body::before {
 <div class="zen-pulse" id="zen-pulse"></div>
 
 <!-- Tier 1: Discovery -->
-<div class="section-title">▸ Discovery & Identity <span class="count">(5 surfaces)</span></div>
+<div class="section-title">▸ Discovery & Identity <span class="count" id="c-discovery"></span></div>
 <div class="grid" id="tier-discovery"></div>
 
 <!-- Tier 2: Content -->
-<div class="section-title">▸ Content for AI Agents <span class="count">(4 surfaces)</span></div>
+<div class="section-title">▸ Content for AI Agents <span class="count" id="c-content"></span></div>
 <div class="grid" id="tier-content"></div>
 
-<!-- Tier 3: Policy & License -->
-<div class="section-title">▸ Policy, License & Verification <span class="count">(4 surfaces)</span></div>
+<!-- Tier 3: Governance -->
+<div class="section-title">▸ Governance Contracts <span class="count" id="c-governance"></span></div>
+<div class="grid" id="tier-governance"></div>
+
+<!-- Tier 4: Policy & License -->
+<div class="section-title">▸ Policy, License & Verification <span class="count" id="c-policy"></span></div>
 <div class="grid" id="tier-policy"></div>
 
-<!-- Tier 4: External -->
-<div class="section-title">▸ External Endpoints <span class="count">(2 surfaces)</span></div>
+<!-- Tier 5: External -->
+<div class="section-title">▸ External Endpoints <span class="count" id="c-external"></span></div>
 <div class="grid" id="tier-external"></div>
 
 <div class="footer">
   <div class="machine-strip">
-    <a href="/sitemap.xml">sitemap.xml</a> ·
-    <a href="/llms.txt">llms.txt</a> ·
-    <a href="/llms-full.txt">llms-full.txt</a> ·
-    <a href="/llms.json">llms.json</a> ·
-    <a href="/page.json">page.json</a> ·
-    <a href="/missions.json">missions.json</a> ·
     <a href="/surfaces.json">surfaces.json</a> ·
-    <a href="/robots.txt">robots.txt</a> ·
-    <a href="/rsl.xml">rsl.xml</a> ·
-    <a href="/.well-known/mcp.json">mcp.json</a>
+    <a href="/missions.json">missions.json</a> ·
+    <a href="/llms.txt">llms.txt</a> ·
+    <a href="/.well-known/invariants.json">invariants</a> ·
+    <a href="/.well-known/ai-constitution.json">constitution</a> ·
+    <a href="/.well-known/webmcp.json">webmcp</a> ·
+    <a href="/machines/">for-machines</a> ·
+    <a href="/map/">map</a> ·
+    <a href="https://mcp.arif-fazil.com/mcp">mcp gateway</a>
   </div>
-  <div style="margin-top:8px"> DITEMPA BUKAN DIBERI · Machine surfaces dashboard · 2026-07-31</div>
+  <div style="margin-top:8px"> DITEMPA BUKAN DIBERI · Machine surfaces dashboard · sealed 2026-08-05 · static law · dynamic state · gated action</div>
 </div>
 
 </div>
 
 <script>
 const SURFACES = [
-  // Tier 1: Discovery & Identity
-  {path:"/surfaces.json",title:"Canonical Route Catalog",desc:"Single source of truth for every route on arif-fazil.com. All other catalogs are generated views of this file. 53 surfaces, 4 statuses, 7 subdomains.",format:"application/json",tier:"discovery",status:"live"},
-  {path:"/llms.txt",title:"AI Site Overview",desc:"Curated link index for AI agents — site map, federation overview, MakcikGPT article list. Jeremy Howard convention (Sept 2024). Fetched by OpenAI/Microsoft crawlers.",format:"text/markdown",tier:"discovery",status:"live"},
-  {path:"/llms.json",title:"Structured Site Overview",desc:"JSON site overview with route roles, related sites, and machine surfaces inventory. Machine-readable companion to llms.txt.",format:"application/json",tier:"discovery",status:"live"},
-  {path:"/page.json",title:"Machine Site Overview",desc:"Purpose, route model, content scope, and machine surface inventory in structured JSON.",format:"application/json",tier:"discovery",status:"live"},
-  {path:"/missions.json",title:"Six-Mission Federation Catalog",desc:"Classifies all surfaces into 6 missions: Investigate, Interpret, Decide, Build, Monitor, Remember. Does not authorize tool calls.",format:"application/json",tier:"discovery",status:"live"},
+  // Discovery
+  {path:"/surfaces.json",title:"Canonical Route Catalog",desc:"Single SOT for every route. Live HTTP is truth. Versioned semver.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/missions.json",title:"Six-Mission Catalog",desc:"Investigate · Interpret · Decide · Build · Monitor · Remember. Intent only — not tool auth.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/llms.txt",title:"AI Site Overview",desc:"Guidance layer only — not binding law. Points at constitution/policy/registry.",format:"text/plain",tier:"discovery",status:"live"},
+  {path:"/llms.json",title:"Structured Site Overview",desc:"JSON companion to llms.txt.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/.well-known/did.json",title:"DID Document",desc:"did:web:arif-fazil.com machine identity.",format:"application/json",tier:"discovery",status:"live"},
+  {path:"/.well-known/territories.json",title:"Territories Ontology",desc:"EARTH · ECONOMICS · WORLD · DOCTRINE machine classes.",format:"application/json",tier:"discovery",status:"live"},
 
-  // Tier 2: Content
-  {path:"/llms-full.txt",title:"Full Content for AI Agents",desc:"105KB concatenated Markdown of all 21 published MakcikGPT articles. Fetched 2× more than llms.txt by AI crawlers (Profound, 2026). Generated from makcikgpt-md sources.",format:"text/plain",tier:"content",status:"live"},
-  {path:"/sitemap.xml",title:"XML Sitemap",desc:"Standard XML sitemap for search engines and crawlers. Covers all live pages with priorities and change frequencies.",format:"application/xml",tier:"content",status:"live"},
-  {path:"/feed.xml",title:"RSS Feed — MakcikGPT",desc:"RSS feed of MakcikGPT civic intelligence articles. Updated with each new article published.",format:"application/rss+xml",tier:"content",status:"live"},
-  {path:"/soul.json",title:"Sovereign Identity Anchor",desc:"Sovereign identity and philosophy anchor — human context for AI systems interacting with Arif Fazil.",format:"application/json",tier:"content",status:"live"},
+  // Content
+  {path:"/llms-full.txt",title:"Full Content Dump",desc:"Long-form agent corpus when available.",format:"text/plain",tier:"content",status:"live"},
+  {path:"/sitemap.xml",title:"XML Sitemap",desc:"Standard crawler inventory.",format:"application/xml",tier:"content",status:"live"},
+  {path:"/feed.xml",title:"RSS Feed",desc:"Public feed for articles.",format:"application/rss+xml",tier:"content",status:"live"},
+  {path:"/writing/index.json",title:"Writing Index",desc:"Agent-readable writing catalog with epistemic tags.",format:"application/json",tier:"content",status:"live"},
+  {path:"/floors.json",title:"F1–F13 Floors Mirror",desc:"Public floor definitions (kernel SOT is arifOS GENESIS).",format:"application/json",tier:"content",status:"live"},
 
-  // Tier 3: Policy
-  {path:"/robots.txt",title:"Crawler Policy with AI Directives",desc:"Explicit allow/deny rules for GPTBot, ClaudeBot, OAI-SearchBot, PerplexityBot, Google-Extended, CCBot, meta-externalagent. Includes RSL License line. Highest-certainty agentic-web lever.",format:"text/plain",tier:"policy",status:"live"},
-  {path:"/rsl.xml",title:"Really Simple Licensing 1.0",desc:"RSL 1.0 license (rslstandard.org, Dec 2025). Permits ai-train, ai-input (with attribution), search. Prohibits resale and misattribution. Backed by Cloudflare, Akamai, Fastly, Creative Commons.",format:"application/rsl+xml",tier:"policy",status:"live"},
-  {path:"/.well-known/mcp.json",title:"MCP Server Card",desc:"SEP-1649/1960 server discovery card. Declares transport (Streamable HTTP), capabilities (4 tools), authentication (none for public read). Draft spec — future-proofing.",format:"application/json",tier:"policy",status:"live"},
-  {path:"/.well-known/agent.json",title:"Agent Card — A2A Discovery",desc:"Agent capability declaration for A2A protocol discovery. Declares skills and endpoints for agent-to-agent communication.",format:"application/json",tier:"policy",status:"live"},
+  // Governance (WAJIB contracts)
+  {path:"/.well-known/invariants.json",title:"Invariant Index",desc:"static law · dynamic state · gated action.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/static-invariants.json",title:"Static Invariants",desc:"Bedrock: identity, floors, truth policy, disclosure. 888_HOLD to change.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/dynamic-invariants.json",title:"Dynamic Invariants",desc:"Pipes, registers, hypothesis, telemetry. WITHHOLD on fail.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/ai-constitution.json",title:"AI Constitution",desc:"F1–F13, epistemic tags, R0–R4, zones, escalation.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/agent-policy.json",title:"Agent Policy",desc:"Allowed classes, HARAM patterns, approval gates.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/agent-registry.json",title:"Agent Registry",desc:"Named public tools/organs with owner and risk tier.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/risk-tiers.json",title:"Risk Tiers R0–R4",desc:"Static risk classes + approval gates.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/.well-known/hold-conditions.json",title:"888_HOLD Conditions",desc:"When agents must stop; never self-clear.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/schemas/v1/index.json",title:"JSON Schema Index",desc:"Schemas for invariant contracts.",format:"application/json",tier:"governance",status:"live"},
+  {path:"/machines/",title:"For Machines (human docs)",desc:"Human-readable ops guide for all machine contracts.",format:"text/html",tier:"governance",status:"live"},
 
-  // Tier 4: External
-  {path:"https://mcp.arif-fazil.com/mcp",title:"MCP Gateway Endpoint",desc:"Streamable HTTP MCP server. Single endpoint, JSON-RPC 2.0. Tools: search_federation, fetch_article, list_missions, list_domains. Read-only public access; mutation requires SCT.",format:"application/json",tier:"external",status:"live"},
-  {path:"https://mcp.arif-fazil.com/.well-known/mcp.json",title:"MCP Gateway Server Card",desc:"Server card on the MCP subdomain itself. Primary discovery endpoint for MCP clients connecting to the federation.",format:"application/json",tier:"external",status:"live"}
+  // Policy
+  {path:"/robots.txt",title:"Crawler Policy",desc:"AI bot directives + RSL pointer.",format:"text/plain",tier:"policy",status:"live"},
+  {path:"/rsl.xml",title:"RSL 1.0 License",desc:"Training allowed with attribution.",format:"application/rsl+xml",tier:"policy",status:"live"},
+  {path:"/.well-known/webmcp.json",title:"WebMCP Live Tools",desc:"F2 live-only tools[] — never advertise non-2xx.",format:"application/json",tier:"policy",status:"live"},
+  {path:"/.well-known/mcp.json",title:"MCP Server Card",desc:"Discovery card for programmatic agents.",format:"application/json",tier:"policy",status:"live"},
+  {path:"/.well-known/agent.json",title:"Agent Card",desc:"A2A / discovery identity for this domain.",format:"application/json",tier:"policy",status:"live"},
+  {path:"/999/verify",title:"VAULT999 Verify",desc:"Public chain proof (pair with AAA seal-chain head).",format:"application/json",tier:"policy",status:"live"},
+
+  // External
+  {path:"https://mcp.arif-fazil.com/mcp",title:"MCP Gateway",desc:"Governed MCP transport. Scoped; mutation needs lease.",format:"application/json",tier:"external",status:"live"},
+  {path:"https://aaa.arif-fazil.com/api/seal-chain/head",title:"AAA Seal-Chain Head",desc:"Independent F3 witness of vault head.",format:"application/json",tier:"external",status:"live"}
 ];
 
 function card(s){
@@ -177,17 +196,20 @@ function card(s){
     <div class="meta"><span>${s.format}</span><span>${s.status}</span></div>
   </div>`;
 }
-
 function pulseLink(s){
   const isExt=s.path.startsWith('http');
-  return `<a href="${s.path}"${isExt?' target="_blank"':''}>${s.path.replace('https://arif-fazil.com','').replace('https://','')}</a>`;
+  const short=s.path.replace('https://arif-fazil.com','').replace('https://','');
+  return `<a href="${s.path}"${isExt?' target="_blank" rel="noopener"':''}>${short}</a>`;
 }
-
+function fill(tier){
+  const list=SURFACES.filter(s=>s.tier===tier);
+  const el=document.getElementById('tier-'+tier);
+  const c=document.getElementById('c-'+tier);
+  if(el) el.innerHTML=list.map(card).join('');
+  if(c) c.textContent=`(${list.length})`;
+}
 document.getElementById('zen-pulse').innerHTML=SURFACES.map(pulseLink).join('');
-document.getElementById('tier-discovery').innerHTML=SURFACES.filter(s=>s.tier==='discovery').map(card).join('');
-document.getElementById('tier-content').innerHTML=SURFACES.filter(s=>s.tier==='content').map(card).join('');
-document.getElementById('tier-policy').innerHTML=SURFACES.filter(s=>s.tier==='policy').map(card).join('');
-document.getElementById('tier-external').innerHTML=SURFACES.filter(s=>s.tier==='external').map(card).join('');
+['discovery','content','governance','policy','external'].forEach(fill);
 </script>
 </body>
 </html>
