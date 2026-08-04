@@ -1,0 +1,72 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/webmcp-manifest.json",
+  "name": "GEOX",
+  "title": "GEOX — Earth Intelligence Organ of the arifOS Federation",
+  "version": "1.0.0",
+  "description": "Governed Earth Intelligence MCP: 42 tools, 18 SEP-1865 GUI apps, epistemic contract OBS/DER/INT/SPEC, RASA cap 0.90, constitutional floors F1-F13 with sovereign human veto (888_HOLD).",
+  "homepage": "https://geox.arif-fazil.com",
+  "endpoint": "https://geox.arif-fazil.com/mcp",
+  "transport": "sse",
+  "health": "https://geox.arif-fazil.com/health",
+  "profile": "https://geox.arif-fazil.com/profile",
+  "scenarios": "https://geox.arif-fazil.com/scenarios",
+  "auth": {
+    "scheme": "none",
+    "notes": "Public discovery endpoints; governed tool calls may require federation-issued credentials via AAA control plane."
+  },
+  "capabilities": ["tools", "prompts", "resources"],
+  "tools_url": "https://geox.arif-fazil.com/mcp#tools",
+  "apps_url": "https://geox.arif-fazil.com/mcp-apps",
+  "tool_count": 42,
+  "epistemic_contract": {
+    "layers": ["OBS", "DER", "INT", "SPEC"],
+    "rasa_cap": 0.9,
+    "hold_status": "888_HOLD",
+    "humility_band": 0.04
+  },
+  "widgets": [
+    "geox.app.welldesk",
+    "geox.app.seismic_vision",
+    "geox.app.earth_volume",
+    "geox.app.basin_explorer",
+    "geox.app.map_portal",
+    "geox.app.timeline_view",
+    "geox.app.risk_console",
+    "geox.app.judge_console",
+    "geox.app.well_context_desk",
+    "geox.app.flood_surface",
+    "geox.app.route_board",
+    "geox.app.infrastructure_watch",
+    "geox.app.hazard_escalator",
+    "geox.app.strata_column",
+    "geox.app.depth_ruler",
+    "geox.app.vault999_ledger",
+    "geox.app.rasa_dial",
+    "geox.app.federation_status"
+  ],
+  "widget_spec": "SEP-1865",
+  "federation": {
+    "name": "arifOS Federation",
+    "organs": {
+      "arifOS": 8088,
+      "A-FORGE": [7071, 7072],
+      "AAA": 3001,
+      "GEOX": 8081,
+      "WEALTH": 18082,
+      "WELL": 18083,
+      "HERMES": 8644
+    },
+    "floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "sovereign_veto": "F13"
+  },
+  "agent_files": {
+    "llms": "https://geox.arif-fazil.com/llms.txt",
+    "llms_full": "https://geox.arif-fazil.com/llms-full.txt",
+    "sitemap": "https://geox.arif-fazil.com/sitemap.xml"
+  },
+  "license": {
+    "current": "BSL-1.1",
+    "converts_to": "Apache-2.0",
+    "conversion_date": "2029-06-29"
+  }
+}

@@ -1,0 +1,300 @@
+{
+  "count": 42,
+  "tools": [
+    {
+      "name": "geox.well_ingest",
+      "description": "Load well log data from LAS, SEG-Y, DST, deviation, or tops files. Auto-detects format.",
+      "domain": "earth.well",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.petrophysics",
+      "description": "Unified petrophysics: Vsh, porosity, Sw, permeability, net pay, LEM inference, QC. Modes: generate, verify, lem_inference, stoip_feed, qc.",
+      "domain": "earth.petrophysics",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.seismic_ingest",
+      "description": "SEG-Y I/O, header inspection, export.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.seismic_compute",
+      "description": "Seismic computation: forward model, well tie, attributes, wavelet extraction, inversion.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.seismic_interpret",
+      "description": "One semantic capability \u2014 propose geometry, physics-gate, compare hypotheses (NOT autonomous SEAL). Live modes: horizon_contrast, fault_sticks, volume_frame, blend, structure_validate, interpret (interpretation_bundle \u22653 hyps), interpret_section/rsi_pipeline (INT_SEISMIC), segy_slice. Gates return PASS|WARN|KILL|UNMEASURED + receipt_hash. preferred_hypothesis always null from GEOX. Local max QUALIFIED_CANDIDATE \u2014 arifOS seals only.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.subsurface_model",
+      "description": "Subsurface model building: joint inversion, gravity/magnetic forward, MT forward.",
+      "domain": "earth.model",
+      "acrisk": "HOLD",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.basin",
+      "description": "Unified basin intelligence: profile, resolve, macrostrat, backstrip, mass balance, thermal maturity, map context, deep time, tectonic reconstruction.",
+      "domain": "earth.basin",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.sequence",
+      "description": "Unified stratigraphy: sequence analysis, biostratigraphic parsing and falsification. Modes: correlation, biostrat_parse, biostrat_falsify.",
+      "domain": "earth.stratigraphy",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.geomechanics",
+      "description": "Geomechanical analysis: bulk/shear/young modulus, poisson ratio, acoustic impedance, stress polygon.",
+      "domain": "earth.structure",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.deep_time_state",
+      "description": "Earth State Vector through deep time: GPTS, CO2, sea level, temperature, paleogeography.",
+      "domain": "earth.time",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.claim",
+      "description": "Unified claim lifecycle: create, validate, challenge, seal, evidence, consequence, optionality, cascade, feedback integrity, truth challenge.",
+      "domain": "governance",
+      "acrisk": "ADVISORY",
+      "is_888_hold": true
+    },
+    {
+      "name": "geox.prospect",
+      "description": "Prospect evaluation: volumetrics, POS, EVOI, risk assessment. Modes: screen, evaluate.",
+      "domain": "earth.prospect",
+      "acrisk": "ADVISORY",
+      "is_888_hold": true
+    },
+    {
+      "name": "geox.well_desk",
+      "description": "Well desk: interactive view, publish rendered panel, render well panel. Modes: open, publish, render.",
+      "domain": "earth.well",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.well_qc",
+      "description": "Quality control for well data: depth monotonicity, null %, physical range checks.",
+      "domain": "earth.well",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.well_view",
+      "description": "Well Witness View \u2014 hydrate real LAS curves into interactive tracks for WellDesk/Well Witness widgets.",
+      "domain": "earth.well",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.surface_status",
+      "description": "Federation-standard registry probe: tool discovery and health status.",
+      "domain": "earth.meta",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.evidence",
+      "description": "Unified evidence synthesis: discover, synthesize, abduct, contradict, spatial_block, ingest_literature.",
+      "domain": "governance.evidence",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.basin_backstrip",
+      "description": "1D basin backstripping: Steckler & Watts 1978 + Sclater & Christie 1980. Reconstruct tectonic and total subsidence through time.",
+      "domain": "earth.basin",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.thermal_maturity_history",
+      "description": "Burial + heat flow + maturity modeling through time. EasyRo + TTI.",
+      "domain": "earth.basin",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.falsify",
+      "description": "Popperian falsification engine \u2014 Kill Matrix K001-K007 + contradiction scan. GENESIS/015 architecture: physics must prove the claim is right. ANY KILL \u2192 rejected. All PASS \u2192 PROCEED to 888_JUDGE.",
+      "domain": "governance",
+      "acrisk": "ADVISORY",
+      "is_888_hold": true
+    },
+    {
+      "name": "geox.contradiction_scan",
+      "description": "Scan claims for contradictions using13-type ontology. Classifies severity (FATAL/HIGH/MEDIUM/LOW) and resolution path (VOID/HOLD/DEMOTE/ESCALATE). FATAL \u2192888_HOLD.",
+      "domain": "governance",
+      "acrisk": "ADVISORY",
+      "is_888_hold": true
+    },
+    {
+      "name": "geox.lem_predict",
+      "description": "LEM inference \u2014 predict rock properties (porosity, Sw, lithology) from well log curves. Physics-prior mode (Archie, Gardner, Wyllie) until federated weights deploy.",
+      "domain": "earth.inference",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.physical_reality_interpret",
+      "description": "Multi-attribute physical reality gate plus horizon and fault extraction from seismic volumes.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.well_tie_compute",
+      "description": "Well-to-seismic tie computation: cross-correlation and wavelet extraction for time-depth calibration.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.forbidden_claims_scan",
+      "description": "Scan claims repository for forbidden or invalid geological assertions.",
+      "domain": "earth.governance",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.egs_query_uncertainty",
+      "description": "geox_egs_query_uncertainty \u2014 GEOX canonical surface tool.",
+      "domain": "earth.governance",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.egs_rock_physics",
+      "description": "geox_egs_rock_physics \u2014 GEOX canonical surface tool.",
+      "domain": "earth.petrophysics",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.egs_data_qc_bundle",
+      "description": "geox_egs_data_qc_bundle \u2014 GEOX canonical surface tool.",
+      "domain": "earth.general",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.egs_scenario_audit",
+      "description": "geox_egs_scenario_audit \u2014 GEOX canonical surface tool.",
+      "domain": "earth.governance",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.visual_understand",
+      "description": "Extract visual patterns from seismic section images using deep learning.",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.map_layers_list",
+      "description": "List available map layers and their spatial extents.",
+      "domain": "earth.map",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.map_scene_plan",
+      "description": "Plan map scene composition: layer ordering, zoom, and annotation layout.",
+      "domain": "earth.map",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.map_render_preview",
+      "description": "Render preview of map scene for quality review before export.",
+      "domain": "earth.map",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.workspace",
+      "description": "GEOX Workspace \u2014 persistent geological context across all tools. Set basin/play/well once; every tool inherits. Modes: set, view, history, evidence, relations, reset.",
+      "domain": "earth.meta",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.well_seismic_mistie_rms",
+      "description": "Well-seismic mistie analysis: compute RMS mistie between well markers and seismic horizons. [ZEN 2026-07-11 G1: use geox_seismic_compute modes]",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.wavelet_extract_least_squares",
+      "description": "Wavelet extraction: derive source wavelet from well tie using least-squares method. [ZEN 2026-07-11 G1: use geox_seismic_compute modes]",
+      "domain": "earth.seismic",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.geological_model_generate",
+      "description": "Deterministic geological model renderer. Generates 2D cross-sections from structural parameters (dip, fault throw, strata) using matplotlib. NOT an AI image generator \u2014 physics-constrained, computed output. Phase 1: 2D sections. Phase 2: 3D GemPy block models.",
+      "domain": "earth.subsurface",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.gempy_implicit_3d",
+      "description": "GemPy implicit 3D structural modeling via universal cokriging scalar potential fields. Returns 3D geological volume with uncertainty. [LEM E1]",
+      "domain": "earth.subsurface",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.h3_spatial_index",
+      "description": "H3 hexagonal spatial indexing toolkit. Convert lat/lng to H3 cells, aggregate points, query k-ring neighbours. [LEM E2]",
+      "domain": "earth.spatial",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.lancedb_embed_store",
+      "description": "LanceDB embedded vector store for earth embeddings. Store/search AlphaEarth/Clay/custom embeddings with H3 cross-reference. [LEM E3]",
+      "domain": "earth.ml",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.stac_discover",
+      "description": "STAC catalog discovery for cloud-native geospatial assets. Query COG/GeoParquet/Zarr across federated catalogs. [LEM E4]",
+      "domain": "earth.catalog",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    },
+    {
+      "name": "geox.dde_reason",
+      "description": "DDE Ontology + Macrostrat neuro-symbolic reasoner. Query knowledge graph for stratigraphic rules and physical laws. [LEM E5]",
+      "domain": "earth.knowledge",
+      "acrisk": "QUALIFY",
+      "is_888_hold": false
+    }
+  ],
+  "source": "live :8081/tools @2026-08-04"
+}
