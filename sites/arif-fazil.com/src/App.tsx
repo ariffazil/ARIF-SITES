@@ -64,8 +64,8 @@ function App() {
             <Route path="/politics/" element={<PoliticsHub />} />
             <Route path="/malaysia" element={<PoliticsHub />} />
             <Route path="/malaysia/" element={<PoliticsHub />} />
-            <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
+            {/* /vitals is PETRONAS VITALS (static singleton at /vitals/). Never steal for politics. */}
+            <Route path="/vitals" element={<Navigate to="/vitals/" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
