@@ -1,7 +1,10 @@
 {
   "schema": "arifos.territories.v1",
+  "version": "1.1.0",
   "as_of": "2026-08-04",
-  "doctrine": "Evidence before narrative. Same site for humans and agents.",
+  "doctrine": "Evidence before narrative. Same site for humans and agents. Territories are formal machine classes for world-model traversal.",
+  "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+  "agent_policy": "https://arif-fazil.com/.well-known/agent-policy.json",
   "agent_rules": {
     "crawl": "respect robots.txt and RSL; prefer JSON/llms surfaces",
     "rate": "polite; no mass email; no automated spam",
@@ -46,8 +49,18 @@
       "color": "#9AA0A8",
       "tags": ["arifos", "floors", "missions", "constitution"],
       "humans": "arifOS F1–F13: machines must tell the truth — or stop.",
-      "machines": "floors.json, missions.json, 000/999, webmcp, DID.",
-      "machine_index": ["/doctrine", "/floors.json", "/missions.json", "/999/verify", "/.well-known/webmcp.json"]
+      "machines": "floors.json, missions.json, 000/999, webmcp, DID, ai-constitution.",
+      "machine_index": [
+        "/doctrine",
+        "/floors.json",
+        "/missions.json",
+        "/999/verify",
+        "/.well-known/webmcp.json",
+        "/.well-known/ai-constitution.json",
+        "/.well-known/agent-policy.json",
+        "/.well-known/agent-registry.json",
+        "/machines/"
+      ]
     }
   ]
 }

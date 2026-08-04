@@ -1,6 +1,13 @@
 {
-  "version": "2026-07-31",
+  "schema": "arifos.surfaces.v1",
+  "version": "1.2.0",
+  "as_of": "2026-08-04",
   "domain": "arif-fazil.com",
+  "change_control": {
+    "rule": "Bump version when paths are added/removed/redirected. Live HTTP is truth.",
+    "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+    "policy": "https://arif-fazil.com/.well-known/agent-policy.json"
+  },
   "doctrine": {
     "title": "Single canonical surface catalog. All machine catalogs are generated views of this file.",
     "rule": "If it is not in surfaces.json, it does not get served to a machine.",
@@ -596,7 +603,63 @@
       "status": "live",
       "type": "page",
       "title": "For Machines \u2014 Ops guide",
-      "description": "Human-readable agent contracts, AUP, disclaimer"
+      "mission": "remember",
+      "priority": 0.85,
+      "description": "Human-readable agent contracts, zones, AUP, stability guarantees"
+    },
+    {
+      "path": "/.well-known/ai-constitution.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "AI Constitution (F1\u2013F13 public)",
+      "mission": "decide",
+      "priority": 0.9,
+      "description": "Floors, epistemic tags, risk tiers R0\u2013R4, zones, escalation, kill switch"
+    },
+    {
+      "path": "/.well-known/agent-policy.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "Agent Policy",
+      "mission": "decide",
+      "priority": 0.9,
+      "description": "Allowed agent classes, rate guidance, prohibited behaviors, approval gates"
+    },
+    {
+      "path": "/.well-known/agent-registry.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "Agent & Tool Registry",
+      "mission": "remember",
+      "priority": 0.9,
+      "description": "Named public agents/tools with owner, mission, scope, risk tier"
+    },
+    {
+      "path": "/.well-known/webmcp.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "WebMCP live tools",
+      "mission": "investigate",
+      "priority": 0.85,
+      "description": "F2 live-only browser tool endpoints"
+    },
+    {
+      "path": "/.well-known/territories.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "Territories ontology",
+      "mission": "interpret",
+      "priority": 0.8,
+      "description": "EARTH / ECONOMICS / WORLD / DOCTRINE machine classes"
+    },
+    {
+      "path": "/.well-known/did.json",
+      "status": "live",
+      "type": "machine_contract",
+      "title": "DID document",
+      "mission": "remember",
+      "priority": 0.85,
+      "description": "did:web:arif-fazil.com identity"
     }
   ],
   "federation_subdomains": [
@@ -644,5 +707,5 @@
     "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
     "did": "did:web:arif-fazil.com"
   },
-  "as_of": "2026-08-04T21:15:00Z"
+  "as_of": "2026-08-04T21:30:00Z"
 }

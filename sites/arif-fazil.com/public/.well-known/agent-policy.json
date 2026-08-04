@@ -1,0 +1,103 @@
+{
+  "schema": "arifos.agent-policy.v1",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Public Agent Policy",
+  "owner": "Arif Fazil",
+  "authority_model": "human sovereign veto",
+  "sovereign_did": "did:web:arif-fazil.com",
+  "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+  "registry": "https://arif-fazil.com/.well-known/agent-registry.json",
+  "rsl": "https://arif-fazil.com/rsl.xml",
+  "robots": "https://arif-fazil.com/robots.txt",
+  "allowed_agent_classes": [
+    {
+      "class": "crawler",
+      "zone": "public_read",
+      "max_risk": "R0_read",
+      "notes": "Respect robots.txt; prefer llms/missions/surfaces over HTML scrape when possible"
+    },
+    {
+      "class": "llm_training",
+      "zone": "public_read",
+      "max_risk": "R0_read",
+      "notes": "Training allowed with RSL attribution; do not invent withheld data"
+    },
+    {
+      "class": "browser_webmcp",
+      "zone": "governed_query",
+      "max_risk": "R1_query",
+      "notes": "Only tools listed live in /.well-known/webmcp.json"
+    },
+    {
+      "class": "mcp_client",
+      "zone": "governed_query",
+      "max_risk": "R1_query",
+      "notes": "MCP gateway https://mcp.arif-fazil.com/mcp — scopes enforced server-side; no write without lease"
+    },
+    {
+      "class": "institutional_reader",
+      "zone": "public_read",
+      "max_risk": "R0_read",
+      "notes": "Charter, governance, audit, vitals institutional signals"
+    }
+  ],
+  "prohibited_behaviors": [
+    "shared_credentials_across_agents",
+    "hidden_write_behind_read_tools",
+    "silent_endpoint_or_schema_change_without_version_bump",
+    "unscoped_autonomy_across_public_and_private_data",
+    "inventing_numbers_when_pipes_fail",
+    "claiming_consciousness_or_soul",
+    "mass_email_or_spam_to_contact_addresses",
+    "treating_llms.txt_as_binding_law",
+    "advertising_non_2xx_endpoints_as_live",
+    "bypassing_F13_human_veto_for_R3_R4"
+  ],
+  "attribution_expectations": {
+    "cite": "arif-fazil.com (or specific page URL)",
+    "training": "allowed under rsl.xml terms",
+    "seals": "when quoting VAULT999 or 999_SEAL, preserve seal id if present",
+    "epistemic": "preserve CLAIM/PLAUSIBLE/HYPOTHESIS/ESTIMATE/UNKNOWN or OBS/DER/INT/SPEC when present"
+  },
+  "rate_limits": {
+    "guidance": "polite crawl; no abusive concurrency",
+    "public_static": "reasonable bot defaults; respect Retry-After if present",
+    "live_pipes": "prefer site-mediated endpoints; do not hammer Macrostrat/USGS via our UX as a proxy farm",
+    "mcp": "subject to gateway quotas and SCT/session policy",
+    "contact_email": "human-rate only; no agent bulk mail"
+  },
+  "risk_tiers": ["R0_read", "R1_query", "R2_publish", "R3_mutate", "R4_irreversible"],
+  "approval_gates": {
+    "R3_mutate": "human_required",
+    "R4_irreversible": "888_HOLD"
+  },
+  "logging": "mandatory",
+  "kill_switch": true,
+  "review_cadence": "quarterly",
+  "stability_guarantees": {
+    "contracts": [
+      "/llms.txt",
+      "/missions.json",
+      "/surfaces.json",
+      "/.well-known/ai-constitution.json",
+      "/.well-known/agent-policy.json",
+      "/.well-known/agent-registry.json",
+      "/.well-known/webmcp.json",
+      "/.well-known/did.json",
+      "/.well-known/territories.json"
+    ],
+    "version_field": "required on JSON contracts",
+    "breaking_change": "bump major version; keep old path readable for ≥30 days when practical",
+    "webmcp_f2": "tools[] only lists endpoints last verified 2xx"
+  },
+  "haram_patterns": [
+    "one shared credential across multiple agents",
+    "write actions labeled as read",
+    "silent catalog drift vs live HTTP",
+    "open-ended agent autonomy without mission id"
+  ],
+  "human_docs": "https://arif-fazil.com/machines/",
+  "security_contact": "https://arif-fazil.com/.well-known/security.txt"
+}

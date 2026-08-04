@@ -44,6 +44,18 @@
     "agent_card": "https://arif-fazil.com/.well-known/agent.json",
     "webmcp": "https://arif-fazil.com/.well-known/webmcp.json",
     "arifos_federation": "https://arif-fazil.com/.well-known/arifos-federation.json",
-    "llms_txt": "https://arif-fazil.com/llms.txt"
+    "llms_txt": "https://arif-fazil.com/llms.txt",
+    "ai_constitution": "https://arif-fazil.com/.well-known/ai-constitution.json",
+    "agent_policy": "https://arif-fazil.com/.well-known/agent-policy.json",
+    "agent_registry": "https://arif-fazil.com/.well-known/agent-registry.json",
+    "missions": "https://arif-fazil.com/missions.json",
+    "surfaces": "https://arif-fazil.com/surfaces.json",
+    "territories": "https://arif-fazil.com/.well-known/territories.json",
+    "for_machines": "https://arif-fazil.com/machines/"
+  },
+  "zones": {
+    "public_read": "human + crawler understanding",
+    "governed_query": "safe machine interrogation with cited outputs",
+    "restricted_action": "write/mutate/publish — human gates"
   }
 }
