@@ -258,7 +258,7 @@ export function Doctrine() {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
-            className="border border-[#7DD3FC]/15 bg-[#F4F0E6] p-8 text-[#14110C] md:p-10"
+            className="border border-[#7DD3FC]/25 bg-[#111318] p-8 text-[#EDEAE2] md:p-10"
           >
             <p className="eyebrow text-[#4A443A]">For humans</p>
             <p className="mt-5 font-body text-[18px] leading-[1.65] text-[#4A443A]">

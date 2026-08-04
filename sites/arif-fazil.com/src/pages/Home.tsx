@@ -165,13 +165,13 @@ function Hero() {
             <div
               ref={hourRef}
               className="absolute bottom-1/2 left-1/2 origin-bottom"
-              style={{ width: 8, height: '24%', marginBottom: 0, background: '#14110C', borderRadius: 4 }}
+              style={{ width: 8, height: '24%', marginBottom: 0, background: '#EDEAE2', borderRadius: 4 }}
             />
             {/* minute hand */}
             <div
               ref={minuteRef}
               className="absolute bottom-1/2 left-1/2 origin-bottom"
-              style={{ width: 5, height: '36%', background: '#14110C', borderRadius: 3 }}
+              style={{ width: 5, height: '36%', background: '#EDEAE2', borderRadius: 3 }}
             />
             {/* second hand: ember, extra-long, counterweight tail */}
             <div

@@ -102,7 +102,7 @@ export function Economics() {
   const essaysInView = useInView(essaysRef, { once: true, margin: '-20% 0px' })
 
   return (
-    <div className="bg-[#F7F3E8] text-ink">
+    <div className="bg-[#0A0B0D] text-ink">
       {/* ── 01 HERO ── */}
       <section ref={heroRef} className="relative flex min-h-[70dvh] items-center overflow-hidden">
         <div
@@ -144,7 +144,7 @@ export function Economics() {
             className="mx-auto mt-8 max-w-[56ch] font-body text-[20px] leading-[1.65] text-ink-soft"
           >
             My second degree, and my second lens. Economics is how I price risk — in barrels, in
-            policies, and in machine decisions.
+            policies, and in machine decisions. From Bursa Malaysia's FBM KLCI to Brent crude, every price is a signal.
           </motion.p>
           <LedgerTally />
         </div>

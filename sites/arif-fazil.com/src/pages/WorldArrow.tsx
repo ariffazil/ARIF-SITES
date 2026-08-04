@@ -114,7 +114,7 @@ export function World() {
   return (
     <div
       className="text-ink"
-      style={{ backgroundColor: '#FBF9F4', backgroundImage: 'url(/newsprint-texture.png)' }}
+      style={{ backgroundColor: '#0A0B0D', backgroundImage: 'url(/newsprint-texture.png)' }}
     >
       {/* ── 01 MASTHEAD ── */}
       <section className="flex min-h-[80dvh] flex-col justify-center">
@@ -257,7 +257,7 @@ export function World() {
       <section ref={doorsRef} className="border-y-2 border-ink/70" style={{ backgroundColor: RED }}>
         <div className="mx-auto max-w-[1280px] px-6 py-24">
           <p className="eyebrow text-white/80">03 ————— THE PETRONAS SIGNAL</p>
-          <h2 className="mt-4 font-display text-4xl tracking-[-0.02em] text-[#FBF9F4] md:text-[40px]">
+          <h2 className="mt-4 font-display text-4xl tracking-[-0.02em] text-[#111318] md:text-[40px]">
             /vitals/ — Isyarat Institusi PETRONAS
           </h2>
           <div className="mt-12 grid gap-px border border-black/60 bg-black/60 md:grid-cols-3">
@@ -270,25 +270,25 @@ export function World() {
               >
                 <Link
                   to="/vitals/"
-                  className="group flex h-full flex-col bg-[#FBF9F4] p-8 transition-colors duration-300 hover:bg-[#C8102E]"
+                  className="group flex h-full flex-col bg-[#111318] p-8 transition-colors duration-300 hover:bg-[#C8102E]"
                 >
-                  <p className="font-mono text-2xl font-bold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-[#FBF9F4]">
+                  <p className="font-mono text-2xl font-bold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-[#111318]">
                     {d.name}
                   </p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft transition-colors group-hover:text-[#FBF9F4]/70">
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft transition-colors group-hover:text-[#111318]/70">
                     {d.gloss}
                   </p>
-                  <p className="mt-5 flex-1 font-body text-[17px] leading-[1.6] text-ink-soft transition-colors group-hover:text-[#FBF9F4]/90">
+                  <p className="mt-5 flex-1 font-body text-[17px] leading-[1.6] text-ink-soft transition-colors group-hover:text-[#111318]/90">
                     {d.desc}
                   </p>
                   <span className="mt-6 font-mono text-[16px]" style={{ color: RED }}>
-                    → <span className="text-[12px] uppercase tracking-[0.06em] group-hover:text-[#FBF9F4]">Masuk / Enter</span>
+                    → <span className="text-[12px] uppercase tracking-[0.06em] group-hover:text-[#111318]">Masuk / Enter</span>
                   </span>
                 </Link>
               </motion.div>
             ))}
           </div>
-          <p className="mt-10 border border-[#FBF9F4]/40 px-4 py-3 text-center font-mono text-[12px] uppercase tracking-[0.06em] text-[#FBF9F4]">
+          <p className="mt-10 border border-[#111318]/40 px-4 py-3 text-center font-mono text-[12px] uppercase tracking-[0.06em] text-[#111318]">
             70.5% ialah aritmetik [OBS] · $750M ialah simulasi [SPEC] · “Collapse” TIDAK DISOKONG
           </p>
         </div>
@@ -372,7 +372,7 @@ export function World() {
                 <motion.button
                   type="submit"
                   whileTap={{ scale: 0.96 }}
-                  className="shrink-0 px-6 py-3 font-mono text-[13px] font-bold uppercase tracking-[0.08em] text-[#FBF9F4] transition-opacity hover:opacity-90"
+                  className="shrink-0 px-6 py-3 font-mono text-[13px] font-bold uppercase tracking-[0.08em] text-[#111318] transition-opacity hover:opacity-90"
                   style={{ backgroundColor: RED }}
                 >
                   Langgan

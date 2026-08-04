@@ -25,11 +25,11 @@ module.exports = {
           red: "#f0506e",    // STATUS ONLY — void/hazard (was #FF003C)
         },
 
-        // Arrow-of-Time palette (Kimi 2026-08-04 — human-first paper system)
-        paper: "#F4F0E6",
-        "paper-dark": "#E9E3D4",
-        ink: "#14110C",
-        "ink-soft": "#4A443A",
+        // Arrow-of-Time palette (Kimi 2026-08-04 — DARK basalt unified with GEOX)
+        paper: "#0A0B0D",
+        "paper-dark": "#111318",
+        ink: "#EDEAE2",
+        "ink-soft": "#9AA0A8",
         ember: "#E4572E",
         gold: "#C9A227",
         earth: "#FF9F1C",

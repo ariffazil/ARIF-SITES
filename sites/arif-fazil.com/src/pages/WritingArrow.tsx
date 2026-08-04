@@ -119,7 +119,7 @@ export function Writing() {
   )
 
   return (
-    <div className="relative bg-[#FAF7EF] text-[#3E3A30]">
+    <div className="relative bg-[#0A0B0D] text-[#EDEAE2]">
       {/* Decorative pencil margin — right side, desktop only */}
       <div
         aria-hidden
@@ -179,7 +179,7 @@ export function Writing() {
               onClick={() => setFilter(f)}
               className={`border px-3 py-1.5 font-mono text-[12px] uppercase tracking-[0.04em] transition-colors ${
                 filter === f
-                  ? 'border-[#5C5546] bg-[#5C5546] text-[#FAF7EF]'
+                  ? 'border-ember bg-ember text-[#0A0B0D]'
                   : 'border-[#5C5546]/30 text-[#5C5546] hover:border-[#5C5546]'
               }`}
             >
@@ -230,7 +230,7 @@ export function Writing() {
       <section className="mx-auto max-w-[1280px] px-6 py-20">
         <motion.div
           {...fadeUp}
-          className="relative border border-[#5C5546]/30 bg-[#FAF7EF] p-8 pl-16 transition-transform duration-300 hover:-rotate-1 hover:shadow-[0_20px_50px_-20px_rgba(92,85,70,0.4)] md:p-12 md:pl-24"
+          className="relative border border-[#5C5546]/30 bg-[#111318] p-8 pl-16 transition-transform duration-300 hover:-rotate-1 hover:shadow-[0_20px_50px_-20px_rgba(92,85,70,0.4)] md:p-12 md:pl-24"
         >
           {/* punched binder holes */}
           <div aria-hidden className="absolute left-6 top-0 flex h-full flex-col justify-evenly md:left-9">
@@ -241,7 +241,7 @@ export function Writing() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + i * 0.12, type: 'spring', stiffness: 400, damping: 15 }}
-                className="block h-4 w-4 rounded-full border border-[#5C5546]/40 bg-[#EFEAE0]"
+                className="block h-4 w-4 rounded-full border border-[#5C5546]/40 bg-[#1A1E24]"
               />
             ))}
           </div>

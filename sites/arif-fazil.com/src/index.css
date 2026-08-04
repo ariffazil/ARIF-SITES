@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Arrow-of-Time / human-first paper system (2026-08-04) ───────── */
+/* ── Arrow-of-Time / human-first DARK basalt system (unified with GEOX) (2026-08-04) ───────── */
 @layer base {
   :root {
-    --paper: #F4F0E6;
-    --ink: #14110C;
-    --ink-soft: #4A443A;
+    --paper: #0A0B0D;
+    --ink: #EDEAE2;
+    --ink-soft: #9AA0A8;
     --ember: #E4572E;
     --gold: #C9A227;
   }
@@ -26,9 +26,9 @@
   }
 }
 @layer components {
-  .hairline { border-color: rgb(20 17 12 / 0.12); }
-  .hairline-t { border-top: 1px solid rgb(20 17 12 / 0.12); }
-  .hairline-b { border-bottom: 1px solid rgb(20 17 12 / 0.12); }
+  .hairline { border-color: rgb(237 234 226 / 0.12); }
+  .hairline-t { border-top: 1px solid rgb(237 234 226 / 0.12); }
+  .hairline-b { border-bottom: 1px solid rgb(237 234 226 / 0.12); }
   .eyebrow {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 13px;
