@@ -1,60 +1,25 @@
 /**
  * src/data/webmcp.ts — Canonical WebMCP tool registry for arif-fazil.com.
  *
- * Single source of truth for browser-native agent tools. Every entry
- * must reference a live endpoint that has been probed. The generated
- * manifest (`public/.well-known/webmcp.json`) is built from this list.
- *
- * Adding a tool here is a documented act: it declares a public read-only
- * surface and is not a substitute for a real backend. The `verify`
- * field is checked at build time against the live `tools/list` count.
+ * F2: Only LIVE endpoints belong in SOUL_WEB_MCP_TOOLS.
+ * Deferred ideas go in SOUL_WEB_MCP_DEFERRED (no public endpoint field) so
+ * manifests never advertise 404 doors.
  */
 export type WebMCPTool = {
-  /** Stable identifier; matches `name` in the generated manifest. */
   name: string;
-  /** Plain-language description surfaced to agents. */
   description: string;
-  /** Public endpoint that returns the payload. */
   endpoint: string;
-  /** HTTP method. Default GET. */
   method?: 'GET' | 'POST';
-  /** Optional path/header template. */
   params?: Record<string, string>;
-  /** Floor the tool answers to; informational. */
-  floor?: 'F2' | 'F4' | 'F8' | 'F11' | 'F12';
-  /** When this entry was last probed successfully. */
+  floor?: 'F2' | 'F3' | 'F4' | 'F8' | 'F11' | 'F12';
   last_verified?: string;
-  /** `true` when the endpoint was probed at build time. */
   verified?: boolean;
-  /**
-   * When set, the tool is intentionally deferred from the generated
-   * manifest. The endpoint is documented but not yet wired; treat as
-   * a placeholder rather than a live tool.
-   */
   endpoint_status?: 'live' | 'deferred' | 'removed';
-  /** Human-readable reason for non-live entries. */
   deferred_reason?: string;
 };
 
+/** Live browser tools only — probed into /.well-known/webmcp.json */
 export const SOUL_WEB_MCP_TOOLS: WebMCPTool[] = [
-  {
-    name: 'get_federation_status',
-    description: 'Live health status of all arifOS federation organs',
-    endpoint: 'https://arif-fazil.com/api/organs',
-    method: 'GET',
-    floor: 'F2',
-    endpoint_status: 'deferred',
-    deferred_reason: 'No public health proxy endpoint; remove when organ status route is wired through arifOS /api/organs/*',
-  },
-  {
-    name: 'get_wealth_briefing',
-    description: 'Live AI-generated market briefing across the federated asset set',
-    endpoint: 'https://arif-fazil.com/wealth/api/wealth/briefing',
-    method: 'GET',
-    floor: 'F2',
-    endpoint_status: 'deferred',
-    deferred_reason: 'No WEALTH briefing route yet; the WEALTH organ exposes capital_* tools over MCP instead',
-  },
   {
     name: 'verify_did',
     description: 'W3C DID document for did:web:arif-fazil.com',
@@ -64,11 +29,43 @@ export const SOUL_WEB_MCP_TOOLS: WebMCPTool[] = [
     verified: true,
   },
   {
-    name: 'get_constitution',
-    description: 'arifOS constitutional floor definitions (F1-F13)',
-    endpoint: 'https://arifos.arif-fazil.com/constitution.json',
+    name: 'get_floors',
+    description: 'arifOS constitutional floor definitions (F1–F13) as floors.json',
+    endpoint: 'https://arif-fazil.com/floors.json',
     method: 'GET',
     floor: 'F2',
+    verified: true,
+  },
+  {
+    name: 'get_missions',
+    description: 'Six-mission human cockpit catalog (not 128 tools)',
+    endpoint: 'https://arif-fazil.com/missions.json',
+    method: 'GET',
+    floor: 'F2',
+    verified: true,
+  },
+  {
+    name: 'get_llms_overview',
+    description: 'Machine site overview for agents (llms.txt)',
+    endpoint: 'https://arif-fazil.com/llms.txt',
+    method: 'GET',
+    floor: 'F2',
+    verified: true,
+  },
+  {
+    name: 'get_vault_verify',
+    description: 'VAULT999 live chain proof (pair with AAA seal-chain head)',
+    endpoint: 'https://arif-fazil.com/999/verify',
+    method: 'GET',
+    floor: 'F11',
+    verified: true,
+  },
+  {
+    name: 'get_seal_chain_head',
+    description: 'Independent AAA witness of seal chain head (F3 cross-verify)',
+    endpoint: 'https://aaa.arif-fazil.com/api/seal-chain/head',
+    method: 'GET',
+    floor: 'F3',
     verified: true,
   },
   {
@@ -112,32 +109,40 @@ export const SOUL_WEB_MCP_TOOLS: WebMCPTool[] = [
     floor: 'F2',
     verified: true,
   },
+];
+
+/**
+ * Deferred capabilities — documentation only.
+ * Must NOT appear as tools[] endpoints until wired.
+ */
+export const SOUL_WEB_MCP_DEFERRED: Array<{
+  name: string;
+  reason: string;
+  intended_path?: string;
+}> = [
+  {
+    name: 'get_federation_status',
+    reason: 'No public organ health matrix on apex domain yet',
+    intended_path: '/api/organs',
+  },
+  {
+    name: 'get_wealth_briefing',
+    reason: 'WEALTH briefing is MCP compute, not a public REST route',
+    intended_path: '/wealth/api/wealth/briefing',
+  },
   {
     name: 'get_market_overview',
-    description: 'Live multi-asset market overview across 7 federated assets',
-    endpoint: 'https://arif-fazil.com/wealth/api/wealth/overview',
-    method: 'GET',
-    floor: 'F2',
-    endpoint_status: 'deferred',
-    deferred_reason: 'No overview route yet; same path family as briefing, awaits WEALTH surface',
+    reason: 'No multi-asset overview REST route',
+    intended_path: '/wealth/api/wealth/overview',
   },
   {
     name: 'get_market_ticker',
-    description: 'Quick price ticker for all 7 federated assets',
-    endpoint: 'https://arif-fazil.com/wealth/api/wealth/ticker',
-    method: 'GET',
-    floor: 'F2',
-    endpoint_status: 'deferred',
-    deferred_reason: 'No ticker route yet',
+    reason: 'No federated ticker REST route',
+    intended_path: '/wealth/api/wealth/ticker',
   },
   {
     name: 'get_asset_detail',
-    description: 'Detailed analysis for a specific federated asset',
-    endpoint: 'https://arif-fazil.com/wealth/api/wealth/{asset}',
-    method: 'GET',
-    floor: 'F2',
-    params: { asset: 'gold|sp500|nasdaq|bitcoin|dxy|oil|us10y' },
-    endpoint_status: 'deferred',
-    deferred_reason: 'No per-asset detail route yet',
+    reason: 'No per-asset detail REST route',
+    intended_path: '/wealth/api/wealth/{asset}',
   },
 ];

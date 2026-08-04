@@ -132,6 +132,7 @@ for (const tool of tools) {
   if (probeResult.ok) tool.last_verified = verifiedAt;
   results.push({ tool, probe: probeResult });
 }
+// F2: never publish tools that probe-fail. Never list 404 URLs as active ads.
 const published = results
   .filter(({ probe }) => probe.ok)
   .map(({ tool }) => ({
@@ -142,39 +143,76 @@ const published = results
     ...(tool.params && Object.keys(tool.params).length ? { params: tool.params } : {}),
     floor: tool.floor,
     last_verified: tool.last_verified,
+    status: 'live',
   }));
-const dropped = results
+const failed = results
   .filter(({ probe }) => !probe.ok)
   .map(({ tool, probe }) => ({
     name: tool.name,
     endpoint: tool.endpoint,
-    status: probe.status,
+    status: probe.status ?? 'error',
     error: probe.error,
+    note: 'Excluded from tools[] — not advertised as live',
   }));
+
+// Deferred list (names only — no fake endpoints)
+let deferred = [];
+try {
+  const text = readFileSync(REGISTRY, 'utf8');
+  const dStart = text.indexOf('export const SOUL_WEB_MCP_DEFERRED');
+  if (dStart >= 0) {
+    const arrStart = text.indexOf('[', dStart);
+    const arrEnd = text.indexOf('];', arrStart);
+    const body = text.slice(arrStart + 1, arrEnd);
+    const tokens = tokenize(body);
+    while (tokens.length) {
+      if (tokens[0] === '{') {
+        const obj = parseObject(tokens);
+        deferred.push({
+          name: obj.name,
+          reason: obj.reason,
+          intended_path: obj.intended_path,
+          status: 'deferred',
+        });
+      } else tokens.shift();
+    }
+  }
+} catch {
+  deferred = [];
+}
 
 const manifest = {
   name: 'arif-fazil.com WebMCP Surface',
-  version: '1.1',
+  version: '1.2',
   description:
-    'Browser-native agent tool surface for arif-fazil.com, governed by arifOS constitutional floors F1-F13.',
+    'Browser-native agent tool surface for arif-fazil.com. tools[] = LIVE only (F2). deferred[] = names without endpoints.',
   sovereign: 'did:web:arif-fazil.com',
   constitutional_kernel: 'https://arifos.arif-fazil.com',
   mcp_endpoint: 'https://mcp.arif-fazil.com/mcp',
   adapter_script: '/_shared/webmcp/arifos-webmcp-adapter.js',
   generated_at: verifiedAt,
+  doctrine: {
+    f2: 'Never advertise an endpoint that returns non-2xx',
+    f3_witness: {
+      vault: 'https://arif-fazil.com/999/verify',
+      independent: 'https://aaa.arif-fazil.com/api/seal-chain/head',
+    },
+  },
   tools: published,
+  deferred,
+  // keep audit trail of probe failures without presenting them as tools
+  excluded_failed_probes: failed,
   constraints: {
     read_only: true,
     requires_sovereign_confirm: false,
-    floor_guards: ['F1', 'F2', 'F8', 'F9', 'F12', 'F13'],
+    floor_guards: ['F1', 'F2', 'F3', 'F8', 'F9', 'F11', 'F12', 'F13'],
   },
-  dropped: dropped,
 };
 
 writeFileSync(OUT, JSON.stringify(manifest, null, 2) + '\n');
 console.log(
-  `[webmcp] wrote ${OUT} (published=${published.length}, dropped=${dropped.length})`
+  `[webmcp] wrote ${OUT} (live=${published.length}, deferred=${deferred.length}, failed_probes=${failed.length})`
 );
-for (const d of dropped) {
-  console.warn(`[webmcp] DROPPED ${d.name} -> ${d.endpoint} status=${d.status ?? 'n/a'}`);
+for (const d of failed) {
+  console.warn(`[webmcp] EXCLUDED ${d.name} -> ${d.endpoint} status=${d.status ?? 'n/a'}`);
 }
