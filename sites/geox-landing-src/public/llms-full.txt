@@ -1,0 +1,122 @@
+# GEOX — Full Agent Corpus (llms-full.txt)
+
+> The complete machine-readable corpus for GEOX, Earth Intelligence organ of
+> the arifOS Federation. For the short map, see /llms.txt.
+
+## Identity
+
+- Name: GEOX
+- Role: Earth Intelligence Organ
+- Federation: arifOS Federation (arif-fazil.com · arifos.arif-fazil.com)
+- Creed: DITEMPA BUKAN DIBERI — "Forged, not given. Truth must cool before it rules."
+- Humility band: Ω₀ ≈ 0.04
+- Grade: SEALed · AAA-grade
+
+## Endpoints & Transport
+
+- MCP: https://geox.arif-fazil.com/mcp — transport: SSE (Server-Sent Events)
+- Health: GET https://geox.arif-fazil.com/health
+- Profile: GET https://geox.arif-fazil.com/profile
+- Scenarios: GET https://geox.arif-fazil.com/scenarios
+- WebMCP manifest: GET https://geox.arif-fazil.com/.well-known/mcp.json
+- Port: 8081 (bound) — stateless core, sealed ledger sidecar, horizontal scale behind gateway
+
+## Tool Catalog (42 tools, geox.* namespace)
+
+Subsurface & Basin:
+  geox.basin_screen, geox.play_chance, geox.stoiip, geox.volumetrics,
+  geox.prospect_rank, geox.well_context, geox.strata_column, geox.depth_convert
+Seismic:
+  geox.seismic_attributes, geox.seismic_falsify, geox.horizon_pick,
+  geox.fault_frame, geox.amplitude_review
+Hazard & Terrain:
+  geox.flood_triage, geox.hazard_surface, geox.terrain_constraints,
+  geox.slope_stability, geox.escalate_hazard
+Mobility & Infrastructure:
+  geox.route_viability, geox.corridor_rank, geox.infra_watch,
+  geox.asset_exposure, geox.monitor_state
+Governance & Risk:
+  geox.risk_matrix, geox.verdict, geox.kill_matrix, geox.rasa_score,
+  geox.seal_vault999, geox.audit_export, geox.hold_status,
+  geox.release_hold, geox.profile, geox.scenarios
+
+Every tool response carries: value(s), units, epistemic_layer, rasa (≤ 0.90 for
+SPEC), provenance, and — where applicable — hold status (888_HOLD under F13).
+
+## MCP App Widgets (18, SEP-1865 GUI)
+
+WellDesk, Seismic Vision, Earth Volume, Basin Explorer, Map Portal,
+Timeline View, Risk Console, Judge Console, Well Context Desk,
+Flood Surface, Route Board, Infrastructure Watch, Hazard Escalator,
+Strata Column Viewer, Depth Ruler, Vault999 Ledger, RASA Dial,
+Federation Status.
+
+Widgets are declared in /.well-known/mcp.json and render inline in capable
+clients (ChatGPT, Claude, VS Code Copilot) via SEP-1865.
+
+## Epistemic Contract (OBS / DER / INT / SPEC)
+
+- OBS (Observed): directly measured evidence. Telemetry green.
+- DER (Derived): computed from OBS with stated transforms. Amber.
+- INT (Interpreted): expert/model interpretation of DER. Ember.
+- SPEC (Speculated): hypothesis; RASA-capped at 0.90; never presented as fact. Cool blue.
+
+Rules:
+  E1 Every response includes `epistemic_layer: OBS | DER | INT | SPEC`.
+  E2 SPEC outputs are capped by RASA ≤ 0.90 and labeled hypothesis.
+  E3 Irreversible/high-risk calls return `status: 888_HOLD` until sovereign human release (F13).
+  E4 Agents may seal any result to VAULT999 via `geox.seal_vault999()`.
+  E5 Ω₀ ≈ 0.04 — the Earth keeps its humility band; your model should too.
+
+## Constitutional Floors F1–F13 (arifOS Federation)
+
+  F1 Amanah — truthfulness in representation
+  F2 Non-harm — no output may enable destruction
+  F3 Evidence — claims require OBS anchoring
+  F4 Proportionality — response scale matches stakes
+  F5 Transparency — reasoning surfaces are inspectable
+  F6 Reversibility — prefer reversible actions
+  F7 Humility — RASA capped at 0.90
+  F8 Consent — human data sovereignty
+  F9 Jurisdiction — respect legal boundaries
+  F10 Stewardship — intergenerational duty
+  F11 Auditability — ledger everything material
+  F12 Pluralism — no single voice adjudicates
+  F13 Sovereign Human Veto — 888_HOLD; a human can always stop it (LOAD-BEARING)
+
+## Federation Organs
+
+  arifOS   Constitutional Kernel   :8088
+  A-FORGE  Governed Execution      :7071/:7072
+  AAA      Control Plane / A2A     :3001
+  GEOX     Earth Intelligence      :8081
+  WEALTH   Capital Intelligence    :18082
+  WELL     Vitality Guard          :18083
+  HERMES   Bridge / Telegram       :8644
+
+## Governed Scenarios (SCN-01 … SCN-06)
+
+  SCN-01 Basin Screening — rank frontier basins from OBS up (SUBSURFACE)
+  SCN-02 Seismic Review — attribute-driven falsification of a lead (SUBSURFACE)
+  SCN-03 Flood-Risk Triage — hazard surface, rapid triage (HAZARD · TERRAIN)
+  SCN-04 Route Viability — mobility corridors under terrain constraints (MOBILITY · TERRAIN)
+  SCN-05 Infrastructure Watch — monitoring with escalation states (INFRASTRUCTURE)
+  SCN-06 Hazard Escalation — full 888_HOLD workflow demo (HAZARD · GOVERNANCE)
+
+## Four Surfaces, One Contract
+
+  SITE   — humans read.
+  WebMCP — agents discover (/.well-known/mcp.json, llms.txt).
+  MCP    — agents compute (https://geox.arif-fazil.com/mcp).
+  A2A    — organs negotiate (AAA :3001 control plane).
+
+## License
+
+Business Source License 1.1 today. Apache 2.0 on 2029-06-29.
+Built to outlive its own restrictions. Marmousi-built, Volve-validated;
+immutable decision history; federation governance.
+
+## Links
+
+  https://geox.arif-fazil.com/ · /platform · /mcp-apps · /webmcp · /federation · /deploy
+  https://geox.arif-fazil.com/llms.txt · /.well-known/mcp.json · /sitemap.xml

@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node scripts/generate-nav-canon.cjs && node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs && node scripts/generate-ns-telemetry.cjs && node scripts/generate-ns-compare.cjs && node /root/web-canon/scripts/verify-design-canon.cjs",
+    "prebuild": "node scripts/generate-agent-shells.cjs && node scripts/generate-nav-canon.cjs && node scripts/generate-feed.cjs && node scripts/generate-discovery.cjs && node scripts/generate-makcik-index.cjs && node scripts/generate-wealth-archive-index.cjs && node scripts/generate-ns-telemetry.cjs && node scripts/generate-ns-compare.cjs && node /root/web-canon/scripts/verify-design-canon.cjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "postinstall": "node patches/vite-plugin-ssg.js",
-    "postbuild": "node scripts/copy-static-html.js",
-    "test:source-parity": "node --test tests/makcik-source.test.cjs tests/wealth-archive-source.test.cjs tests/caddy-source.test.cjs",
-    "test:makcik": "node --test tests/makcik-source.test.cjs"
+    "postbuild": "node scripts/copy-static-html.js && node scripts/render-vitals.cjs",
+    "test:source-parity": "node --test tests/makcik-source.test.cjs tests/wealth-archive-source.test.cjs tests/caddy-source.test.cjs tests/vitals-parity.test.cjs",
+    "test:makcik": "node --test tests/makcik-source.test.cjs",
+    "test:vitals-parity": "node --test tests/vitals-parity.test.cjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

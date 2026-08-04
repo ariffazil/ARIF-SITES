@@ -1,83 +1,73 @@
 {
   "meta": {
-    "date": "2026-08-03",
-    "generated_at": "2026-08-03T15:00:02.701728+08:00",
-    "observed_at": "2026-08-03T07:00:23.318304+00:00",
+    "date": "2026-08-04",
+    "generated_at": "2026-08-04T15:00:01.818806+08:00",
+    "observed_at": "2026-08-04T07:01:58.446259+00:00",
     "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
     "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
   },
   "bursa": {
-    "klci_close": 1723.8599853515625,
-    "klci_change_pct": -0.06,
+    "klci_close": 1729.8399658203125,
+    "klci_change_pct": 0.0,
     "most_active": null,
     "top_gainers_search": [],
     "source_urls": []
   },
   "ringgit": {
-    "usd_myr": 4.0954999923706055,
-    "trend": "1 USD = 4.0955 MYR",
+    "usd_myr": 4.093999862670898,
+    "trend": "1 USD = 4.0940 MYR",
     "sources": []
   },
   "economy": {
     "items": [
       {
-        "title": "Q2 2026 GDP Growth",
-        "desc": "DOSM estimates Q2 2026 GDP grew 5.8% year-on-year, supported by strong domestic demand and export recovery.",
+        "title": "Q2 2026 GDP advance estimate 5.8%",
+        "desc": "DOSM released Q2 2026 advance GDP growth at 5.8% YoY on 2026-07-17. BNM does not issue advance estimates.",
         "category": "GDP",
         "source_id": "DOSM"
       },
       {
-        "title": "Inflation Outlook",
-        "desc": "June 2026 CPI stood at 2.1% YoY, with core inflation stable around 2.0%, indicating contained price pressures.",
-        "category": "INFLATION",
-        "source_id": "DOSM"
-      },
-      {
-        "title": "Overnight Policy Rate",
-        "desc": "Bank Negara Malaysia maintains OPR at 3.00%, unchanged since May 2023, with next MPC meeting scheduled September 4, 2026.",
+        "title": "OPR unchanged at 3.00%",
+        "desc": "Bank Negara Malaysia Overnight Policy Rate remains 3.00% since May 2023. Next MPC meeting scheduled 2026-09-04.",
         "category": "SNAPSHOT",
         "source_id": "BNM"
+      },
+      {
+        "title": "June 2026 CPI headline 2.1%, core 2.0%",
+        "desc": "DOSM June 2026 CPI at 2.1% YoY headline, core 2.0% (plausible but unconfirmed via official release).",
+        "category": "INFLATION",
+        "source_id": "DOSM"
       }
     ]
   },
   "politics": {
     "narratives": [
       {
-        "title": "Anwar's 52% approval rating",
-        "desc": "Merdeka Center's June 2026 poll shows 52% approval for Prime Minister Anwar Ibrahim.",
+        "title": "Anwar 52% approval, 42% right direction",
+        "desc": "Merdeka Center June 2026: 52% approve Anwar; 42% say country moving in right direction \u2014 two distinct metrics.",
         "source_id": "MERDEKA"
       }
     ],
     "economy_policy": [
       {
-        "title": "BUDI95 Fuel Subsidy Scheme",
-        "desc": "BUDI95 launched September 27, 2025, offering subsidised RON95 at RM1.99/L with 300L/month quota for eligible households.",
-        "source_id": "KPDN"
-      },
-      {
-        "title": "Diesel Rationalisation",
-        "desc": "Peninsula diesel subsidy removed June 10, 2024; current price RM4.37/L. East Malaysia retains subsidy at RM2.15/L.",
+        "title": "BUDI95 fuel subsidy reform",
+        "desc": "BUDI95 launched Sept 27-30 2025: subsidised RON95 RM1.99/L with 300L/month quota for eligible households. Unsubsidised RON95 RM3.72/L. Peninsula diesel subsidy removed June 2024, now RM4.37/L.",
         "source_id": "KPDN"
       }
     ],
     "regional": [
       {
-        "title": "East Malaysia Diesel Subsidy",
-        "desc": "Sabah and Sarawak continue diesel subsidies at RM2.15/L, creating regional price divergence.",
-        "source_id": "KPDN"
+        "title": "Diesel dual pricing: Peninsula vs East Malaysia",
+        "desc": "Peninsula diesel at market RM4.37/L; Sabah and Sarawak retain subsidised RM2.15/L per 2024 rationalisation.",
+        "source_id": "MOF"
       }
     ]
   },
   "social": {
     "cost_of_living": [
       {
-        "title": "BUDI95 RON95 Subsidy",
-        "desc": "Eligible households receive up to 300L/month at RM1.99/L; unsustituted price is RM3.72/L.",
-        "source_id": "KPDN"
-      },
-      {
-        "title": "Regional Diesel Price Gap",
-        "desc": "Peninsula diesel at RM4.37/L vs RM2.15/L in East Malaysia creates cost-of-living disparity.",
+        "title": "Fuel prices: RON95 RM3.72, diesel RM4.37 (Peninsula)",
+        "desc": "Unsubsidised RON95 at RM3.72/L; Peninsula diesel RM4.37/L. BUDI95 provides RM1.99/L for eligible with 300L monthly cap.",
         "source_id": "KPDN"
       }
     ],
@@ -85,7 +75,7 @@
     "youth_career": []
   },
   "oil_energy": {
-    "brent_price": 88.10,
+    "brent_price": 84.68000030517578,
     "malaysia_oil": [],
     "energy_transition": []
   },
@@ -93,8 +83,8 @@
     "fed": {
       "items": [
         {
-          "title": "Upcoming FOMC Meeting",
-          "desc": "Next FOMC meeting scheduled for July 28-29, 2026; no outcome reported prior to event.",
+          "title": "FOMC July 28-29 meeting upcoming",
+          "desc": "Next FOMC meeting scheduled July 28-29, 2026. No outcome yet. Subsequent meetings: Sep 16, Nov 4, Dec 16.",
           "source_id": "FOMC"
         }
       ]
@@ -109,61 +99,51 @@
   "so_what": [
     {
       "domain": "MARKET",
-      "signal": "KLCI edges lower near 1,724",
-      "delta": "FTB Bursa Malaysia KLCI closed at 1,723.86, down 0.06% on August 3, 2026.",
-      "omega": "Market sentiment remains fragile with minimal directional conviction amid muted regional cues.",
-      "xi": "Maintain defensive positioning; favour quality large caps with dividend yield as risk premium compresses.",
-      "psi": "Retail investors should watch for further erosion in sentiment-driven selloffs.",
-      "tone": "caution",
+      "signal": "KLCI holds at 1729.84",
+      "delta": "KLCI closed at 1729.84 on 2026-08-04 per Bursa Malaysia data.",
+      "omega": "Index consolidating near recent range; no major catalyst today.",
+      "xi": "Watch for Q2 earnings season momentum and foreign flow direction.",
+      "psi": "Retirees' EPF-linked portfolios track this level.",
+      "tone": "neutral",
       "source_id": "BURSA"
     },
     {
       "domain": "FX / RINGGIT",
-      "signal": "Ringgit slightly weaker at 4.0955",
-      "delta": "USD/MYR closed at 4.0955 on August 3, 2026, reflecting modest depreciation from recent levels.",
-      "omega": "Stable forex flows and lack of major external shocks keep the ringgit in a narrow trading range.",
-      "xi": "Exporters may consider hedging near-term USD exposure as volatility remains contained.",
-      "psi": "Malaysian households importing goods face marginally higher costs.",
+      "signal": "Ringgit at 4.0940 vs USD",
+      "delta": "USD/MYR at 4.0940 on 2026-08-04, reflecting modest dollar strength.",
+      "omega": "Ringgit stable within 4.08-4.12 band; BNM likely comfortable.",
+      "xi": "Importers hedge near 4.10; exporters monitor 4.08 support.",
+      "psi": "Household purchasing power for imported goods steady.",
       "tone": "neutral",
-      "source_id": "BURSA"
+      "source_id": "BNM"
     },
     {
       "domain": "OIL & GAS",
-      "signal": "Brent crude at $88.10 baseline",
-      "delta": "Brent crude last settled at $88.10 on July 17, 2026, with no newer settlement data available.",
-      "omega": "Energy-linked equities face valuation pressure if oil fails to breach $90 barrier.",
-      "xi": "Monitor futures curve for directional break above $90 as trigger for risk-on rotation in energy stocks.",
-      "psi": "Rising pump prices could reignite cost-of-living concerns if oil rallies further.",
-      "tone": "neutral",
-      "source_id": "FOMC"
+      "signal": "Brent drops to $84.68",
+      "delta": "Brent crude at $84.68 on 2026-08-04, down from $88.10 settle on 2026-07-17. [UNVERIFIED PROVENANCE]",
+      "omega": "Lower oil eases import bill but reduces Petronas revenue.",
+      "xi": "Position for potential fuel price review if trend sustains.",
+      "psi": "Lower pump prices help B40 transport costs.",
+      "tone": "caution",
+      "source_id": "UNVERIFIED"
     },
     {
       "domain": "COST OF LIVING",
-      "signal": "RON95 subsidy under BUDI95 regime",
-      "delta": "BUDI95 provides up to 300L/month at RM1.99/L for eligible households; market price is RM3.72/L as of June 2026.",
-      "omega": "Fuel cost relief remains targeted, limiting broad-based inflationary pressure from energy prices.",
-      "xi": "Households should maximise monthly quota to reduce out-of-pocket fuel expenses.",
-      "psi": "Eligible families benefit directly; others face full market price burden.",
-      "tone": "positive",
-      "source_id": "KPDN"
-    },
-    {
-      "domain": "COST OF LIVING",
-      "signal": "Diesel prices diverge by region",
-      "delta": "Peninsula diesel priced at RM4.37/L; Sabah and Sarawak still subsidised at RM2.15/L as of June 2026.",
-      "omega": "Regional price disparity creates uneven cost pressures for logistics and transport sectors.",
-      "xi": "Businesses operating in East Malaysia enjoy lower fuel input costs compared to Peninsula counterparts.",
-      "psi": "Consumers in East Malaysia benefit from cheaper transport-related goods.",
-      "tone": "positive",
+      "signal": "RON95 unsubsidised RM3.72, diesel RM4.37",
+      "delta": "BUDI95 subsidised RON95 at RM1.99/L (300L/month quota). Unsubsidised RON95 RM3.72/L. Peninsula diesel RM4.37/L; Sabah/Sarawak RM2.15/L.",
+      "omega": "Subsidy reform intact; fiscal savings continue but household burden persists for non-eligible.",
+      "xi": "Eligible households maximise BUDI95 quota; others budget for market rates.",
+      "psi": "Rural East Malaysians still benefit from diesel subsidy.",
+      "tone": "caution",
       "source_id": "KPDN"
     },
     {
       "domain": "POLITICS",
-      "signal": "Anwar approval steady at 52%",
-      "delta": "Merdeka Center's June 2026 survey shows Prime Minister Anwar Ibrahim approval rating at 52%.",
-      "omega": "Stable approval suggests political legitimacy but limited mandate expansion amid mixed public sentiment.",
-      "xi": "Opposition parties should focus on economic delivery narratives to challenge governing coalition's standing.",
-      "psi": "Citizens judge government performance largely through economic outcomes affecting daily life.",
+      "signal": "Anwar approval 52% per Merdeka",
+      "delta": "Merdeka Center June 2026 survey: Anwar approval 52%; country direction right 42% (separate question).",
+      "omega": "Majority approval but directional pessimism signals delivery gap.",
+      "xi": "Policy communication must bridge approval-action disconnect.",
+      "psi": "Voters want tangible cost-of-living relief.",
       "tone": "neutral",
       "source_id": "MERDEKA"
     }

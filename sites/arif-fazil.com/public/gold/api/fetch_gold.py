@@ -19,6 +19,7 @@ import sys
 import os
 import argparse
 import hashlib
+import math
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -28,7 +29,22 @@ import pandas as pd
 # ── Cache ────────────────────────────────────────────────────────
 CACHE_DIR = Path("/tmp/gold_cache")
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
-CACHE_TTL = 300  # 5 minutes
+CACHE_TTL = 300
+
+import math as _math
+
+def _sanitize_nan(obj):
+    """Recursively replace NaN/Inf with None for safe JSON serialization."""
+    if isinstance(obj, float):
+        if _math.isnan(obj) or _math.isinf(obj):
+            return None
+        return obj
+    elif isinstance(obj, dict):
+        return {k: _sanitize_nan(v) for k, v in obj.items()}
+    elif isinstance(obj, (list, tuple)):
+        return [_sanitize_nan(v) for v in obj]
+    return obj
+  # 5 minutes
 
 MYT = timezone(timedelta(hours=8))
 
@@ -871,8 +887,10 @@ def cmd_proxies(args):
         try:
             h = yf.Ticker(sym).history(period="5d")
             if not h.empty:
-                result[key] = round(float(h["Close"].iloc[-1]), digits)
-                result[key + "_prev"] = round(float(h["Close"].iloc[-2]), digits)
+                val = float(h["Close"].iloc[-1])
+                prev = float(h["Close"].iloc[-2])
+                result[key] = round(val, digits) if not math.isnan(val) else None
+                result[key + "_prev"] = round(prev, digits) if not math.isnan(prev) else None
         except Exception:
             result[key] = None
 
@@ -881,6 +899,9 @@ def cmd_proxies(args):
         result["usdmyr_change_pct"] = round(
             (result["usdmyr"] - result["usdmyr_prev"]) / result["usdmyr_prev"] * 100, 2
         )
+    if result.get("ewm") is None:
+        result["ewm"] = None
+        result["ewm_prev"] = None
     _write_cache(cache, result)
     return result
 
@@ -1246,7 +1267,7 @@ def main():
                 "horizon": args.horizon,
             }
         )
-        print(json.dumps(result, default=str, indent=2))
+        print(json.dumps(_sanitize_nan(result), default=str, indent=2, allow_nan=False))
     except Exception as e:
         # Stale fallback: serve expired cache rather than VOID the panel
         if args.command == "history":
@@ -1259,7 +1280,7 @@ def main():
             stale_key = _cache_key(args.command)
         stale = _read_stale(stale_key)
         if stale is not None:
-            print(json.dumps(stale, default=str, indent=2))
+            print(json.dumps(_sanitize_nan(stale), default=str, indent=2, allow_nan=False))
             sys.exit(0)
         print(json.dumps({"error": str(e)}, indent=2))
         sys.exit(1)

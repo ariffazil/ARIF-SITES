@@ -1,3 +1,5 @@
+import { machineNav, primaryNav, secondaryNav } from './navCanon';
+
 export type LinkItem = {
   label: string;
   href: string;
@@ -29,36 +31,27 @@ export type SystemProject = {
   placeholderLabel?: string;
 };
 
-// Primary nav — verbs over nouns. Portal to 5 organs + civic shelf.
-// Hrefs are the nouns; labels are the verbs. Title attr on each link keeps
-// the noun→verb mapping discoverable (see ConstellationNav).
-// Earth (GEOX) · Economics (WEALTH) · World (civic) · Writing (WELL) · Doctrine (arifOS) · Federation (AAA)
-export const primaryLinks: LinkItem[] = [
-  { label: 'Start', href: '/' },
-  { label: 'Explore', href: '/earth' },
-  { label: 'Analyze', href: '/economics' },
-  { label: 'Track', href: '/world' },
-  { label: 'Politics', href: '/politics/ns-election/' },
-  { label: 'Gold', href: '/gold/' },
-  { label: 'Read', href: '/writing' },
-  { label: 'Challenge', href: '/doctrine' },
-];
+// Primary / civic / machine nav — DERIVED from web-canon via navCanon.ts.
+// Do not diverge. Edit /root/web-canon/canon/navigation.json only.
+export const primaryLinks: LinkItem[] = primaryNav.map(({ label, href, external }) => ({
+  label,
+  href,
+  external,
+}));
 
-// Civic shelf — live sovereign surfaces reachable from every page.
-export const civicLinks: LinkItem[] = [
-  { label: 'Gold', href: '/gold/' },
-  { label: 'Election', href: '/politics/ns-election/' },
-  { label: 'Shadow', href: '/politics/shadow/' },
-  { label: 'Doctrine', href: '/doctrine' },
-  { label: 'Pulse', href: '/pulse/' },
-  { label: 'Audit', href: '/audit/' },
-];
+// Civic shelf — secondary live surfaces (politics, VITALS, map, …)
+export const civicLinks: LinkItem[] = secondaryNav.map(({ label, href, external }) => ({
+  label,
+  href,
+  external,
+}));
 
-// Genesis strip — machine-facing surfaces.
-export const machineLinks: LinkItem[] = [
-  { label: '/000 — genesis', href: '/000/' },
-  { label: '/999 — proof', href: '/999/' },
-];
+// Machine doors — footer / agent strip
+export const machineLinks: LinkItem[] = machineNav.map(({ label, href, external }) => ({
+  label,
+  href,
+  external,
+}));
 
 // Plain — no scores, no stats, no framing
 export const trustStrip = [

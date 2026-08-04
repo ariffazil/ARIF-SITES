@@ -1,29 +1,33 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.26
-last_verified: 2026-07-26T08:00Z
+federation_release: v2026.08.04
+last_verified: 2026-08-04T20:23:33Z
 live_commit: pending
-scope: /root/arif-sites → ariffazil/arif-fazil.com
-epistemic_status: CLAIM
+scope: /root/arif-fazil.com → ariffazil/arif-fazil.com
+epistemic_status: OBS
 truth_rule: live git push + Cloudflare deploy beat any static count in prose
 doctrine: Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 -->
 
-# arif-fazil.com — Unified Federation Web Surface
+# 🌐 arif-fazil.com — Unified Federation Web Surface
 
-> **Status:** UNIFYING | **Organ:** SURFACE | **Authority:** arifOS / F13 SOVEREIGN
-> **Domain:** `https://arif-fazil.com/` — single sovereign public surface
-> **Legacy repo:** `ariffazil/arif-sites` (archived as `v2026.07.26-legacy`)
+[![Site Integrity](https://github.com/ariffazil/arif-fazil.com/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-fazil.com/actions)
+[![Build](https://github.com/ariffazil/arif-fazil.com/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-fazil.com/actions)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 
-[![Site Integrity](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/audit.yml)
-[![Build — Trinity Sites](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/deploy.yml)
-[![Playwright Audit](https://github.com/ariffazil/arif-sites/actions/workflows/playwright-audit.yml/badge.svg?branch=main)](https://github.com/ariffazil/arif-sites/actions/workflows/playwright-audit.yml)
-[![License](https://img.shields.io/github/license/ariffazil/arif-sites?label=License)](LICENSE)
+> **arif-fazil.com is the surface. One domain. Many organs. One truth.**
+> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
-## 🏛️ What this repo is
+**arif-fazil.com** is the unified public web surface for the entire arifOS Federation. Every organ has a presence under one sovereign domain — one entry point for humans, agents, and AI scrapers to discover the full institution. Legacy subdomains are preserved as 301 redirects, never deleted, never broken.
 
-**One domain. One web surface.** All federation organs are exposed as paths under `arif-fazil.com`. Legacy subdomains are preserved as 301 redirects — never deleted, never broken.
+---
 
-**This repo owns the SURFACE — the observable face of every federation organ.**
+## 🏛️ What This Repo Owns
+
+This repo owns the **SURFACE** — the observable face of every federation organ:
+
+```
+One domain. One web surface. All federation organs exposed as paths.
+```
 
 ```mermaid
 graph TB
@@ -42,10 +46,9 @@ graph TB
         CADDY --> MCP[/mcp/ — Gateway]
         CADDY --> WIKI[/wiki/ — Knowledge]
     end
-    MCP -->|proxy| ARIFOS_K[⚖️ arifOS :8088]
-    MCP -->|proxy| AFORGE[🔥 A-FORGE :7071]
-    MCP -->|proxy| GEOX_K[🌍 GEOX :8081]
 ```
+
+---
 
 ## 🌐 Unified Path Structure
 
@@ -70,19 +73,9 @@ https://arif-fazil.com/
 └── /_shared/       ← Design System & Assets
 ```
 
-## ⚡ Quick Start
-
-```bash
-cd /root/arif-sites
-# Build flagship React cockpit
-cd sites/arif-fazil.com && npm install --legacy-peer-deps && npm run build
-# Deploy (see deploy-vps.sh)
-./deploy-vps.sh --dry-run
-```
+---
 
 ## 🔄 Legacy Subdomain Redirects
-
-Old subdomains redirect to unified paths (301 — never deleted):
 
 | Legacy | → | Unified |
 |--------|---|---------|
@@ -94,101 +87,65 @@ Old subdomains redirect to unified paths (301 — never deleted):
 | `forge.arif-fazil.com` | → | `/forge/` |
 | `mcp.arif-fazil.com` | → | `/mcp/` |
 | `wiki.arif-fazil.com` | → | `/wiki/` |
-| `makcikgpt.arif-fazil.com` | → | `/wealth/makcikgpt/` |
-
-## 📦 Ownership
-
-- **Owns**: All static site content, React cockpit build, Cloudflare Pages deployment, VPS Caddy routing.
-- **Does NOT own**: Application logic (AAA, GEOX), Kernel logic (arifOS) — those are separate runtime repos.
-- **Canon**: `ariffazil/web-canon` — single source of truth for registries and navigation.
-
-## 🏗️ Current Structure
-
-```
-arif-sites/
-├── sites/                    # Static frontends (hostname-aligned)
-│   ├── arif-fazil.com/       # React 19 + Vite 8 (builds to dist/)
-│   ├── aaa.arif-fazil.com/   # Static HTML
-│   ├── arifos.arif-fazil.com/ # Static docs
-│   ├── arifosmcp.arif-fazil.com/ # Legacy redirect → mcp.arif-fazil.com (do not use)
-│   ├── geox.arif-fazil.com/  # Static lab/field GUI
-│   ├── makcikgpt.arif-fazil.com/ # Static MakcikGPT surface
-│   ├── wealth.arif-fazil.com/ # Static WEALTH surface
-│   ├── wiki.arif-fazil.com/  # Static constitutional wiki
-│   └── shared/               # Shared design system assets
-├── apps/                   # Dynamic product UIs (VPS Docker)
-├── services/              # Backend MCP kernel surfaces
-├── infra/                # Constitutional manifests, domains map
-│   └── config/           # Domain and routing configuration
-├── scripts/             # Deployment and audit scripts
-├── config/
-│   └── opencode.json   # OpenCode agent configuration
-└── deploy-vps.sh       # VPS deployment script
-```
-
-## 🚀 Verified Commands
-
-```bash
-# Static sites: no build step required
-
-# React subsites:
-cd sites/arif-fazil.com && npm install && npm run build
-
-# Deploy: git push main → Cloudflare Pages auto-deploy
-# VPS deploy (Caddy):
-./deploy-vps.sh
-scripts/deploy-site.sh <site-dir>
-```
-
-## 🔗 Federation Loop
-
-- [arifOS](https://github.com/ariffazil/arifos) — Kernel (docs hosted at arifos.arif-fazil.com)
-- [GEOX](https://github.com/ariffazil/geox) — Field (lab/field GUI at geox.arif-fazil.com)
-- [AAA](https://github.com/ariffazil/AAA) — Body (session at aaa.arif-fazil.com)
 
 ---
 
+## 🏗️ Repository Structure
+
+```
+arif-fazil.com/
+├── sites/                    # Static frontends
+│   ├── arif-fazil.com/       # React 19 + Vite 8 Cockpit
+│   ├── aaa.arif-fazil.com/   # Control Plane surface
+│   ├── arifos.arif-fazil.com/ # Observatory docs
+│   ├── geox.arif-fazil.com/  # Earth Lab GUI
+│   ├── wealth.arif-fazil.com/ # Capital surface
+│   ├── wiki.arif-fazil.com/  # Constitutional wiki
+│   └── shared/               # Design system assets
+├── apps/                     # Dynamic product UIs
+├── infra/                    # Constitutional manifests, domain routing
+├── scripts/                  # Deployment & audit scripts
+├── deploy-vps.sh             # VPS deployment script
+└── verify-pages.sh           # ⛔ Deploy gate — must pass before seal
+```
 
 ---
 
-## 🏛️ Federation
+## 🏛️ Federation Navigation
 
-| Organ | Repository | Role | Port |
-|-------|-----------|------|------|
-| **arifOS** | [ariffazil/arifos](https://github.com/ariffazil/arifos) | Constitutional Kernel · F1-F13 | 8088 |
-| **AAA** | [ariffazil/AAA](https://github.com/ariffazil/AAA) | Reality Console · A2A Gateway | 3001 |
-| **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | Execution Shell | 7071 |
-| **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | Earth Intelligence | 8081 |
-| **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | Capital Intelligence | 18082 |
-| **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | Human Readiness | 18083 |
-| **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | Public Surfaces | 443 |
+| Organ | Role | Port | Repo | MCP | Health | LLMs |
+|:---|:---|:---:|:---|:---|:---|:---|
+| **⚖️ arifOS** | Constitutional Kernel — judges, seals | 8088 | [repo](https://github.com/ariffazil/arifos) | [mcp](https://mcp.arif-fazil.com/mcp) | [health](https://arifos.arif-fazil.com/health) | [llms.txt](https://arifos.arif-fazil.com/llms.txt) |
+| **⚒️ A-FORGE** | Execution Engine — builds, deploys | 7071/72 | [repo](https://github.com/ariffazil/A-FORGE) | [mcp](https://forge.arif-fazil.com/mcp) | [health](https://forge.arif-fazil.com/health) | [llms.txt](https://forge.arif-fazil.com/llms.txt) |
+| **🏛️ AAA** | Control Plane — A2A gateway, cockpit | 3001 | [repo](https://github.com/ariffazil/AAA) | — | [health](https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
+| **🌍 GEOX** | Earth Intelligence — seismic, wells | 8081 | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
+| **💰 WEALTH** | Capital Intelligence — NPV, risk | 18082 | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
+| **🫀 WELL** | Vitality Guard — human readiness | 18083 | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
+| **🔮 HERMES** | Multi-Modal Bridge — Telegram relay | 8644 | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
+| **🌐 arif-fazil.com** | Public Web Surface — one domain | 443 | [repo](https://github.com/ariffazil/arif-fazil.com) | — | [verify](https://arif-fazil.com/999/verify) | — |
 
-## Federation Separation of Powers
+---
+
+## 🏛️ Separation of Powers
 
 | Layer | Role | Can | Cannot |
 |-------|------|-----|--------|
 | **ARIF** | Sovereign | Veto, approve, decide | Be overridden |
-| **AAA** | State / Cockpit | Display, route, queue, register | Judge, execute, seal |
 | **arifOS** | Judge | Issue SEAL/HOLD/VOID/SABAR | Execute mutations |
+| **AAA** | State / Cockpit | Display, route, queue, register | Judge, execute, seal |
 | **Domain Organs** | Witnesses | Compute and reflect evidence | Decide alone |
 | **A-FORGE** | Executor | Build, deploy, mutate | Self-authorize |
-| **arif-sites** | Public Surface | Host static surfaces, route domains | Adjudicate, compute |
+| **arif-fazil.com** | Public Surface | Host surfaces, route domains | Adjudicate, compute |
 | **VAULT999** | Ledger | Record immutable seals | Edit or delete history |
 
-> AAA routes and displays. arifOS judges. Domain organs witness. A-FORGE executes. arif-sites hosts the surface. VAULT999 records. ARIF decides.
-
-> **SOT:** 2026-07-24 — live surfaces match README claims
-> **F13 authority:** F1-F13 floors, 888_JUDGE, and VAULT999 in `ariffazil/arifos`.
-
-## 📄 Contributing
-
-This repository operates under the arifOS Federation constitution (F1–F13).  
-See [AGENTS.md](AGENTS.md) for the canonical boot sequence and agent operating rules.
-
-## 📜 License
-
-AGPL-3.0. See [LICENSE](LICENSE).
+> AAA routes and displays. arifOS judges. Domain organs witness. A-FORGE executes. arif-fazil.com hosts the surface. VAULT999 records. ARIF decides.
 
 ---
 
-**DITEMPA BUKAN DIBERI** — Forged, Not Given.
+## 📜 Sovereignty & License
+
+- **License:** GNU Affero General Public License v3.0 (**AGPL-3.0**)
+- **Sovereign:** **Muhammad Arif bin Fazil** (F13 SOVEREIGN)
+
+> *DITEMPA BUKAN DIBERI — Forged, Not Given.*  
+> *Satu domain. Satu web surface. Banyak organ, tetap bersempadan. 999 SEAL ALIVE.*

@@ -1,0 +1,59 @@
+# GEOX — Earth Intelligence Organ of the arifOS Federation
+
+> GEOX is the Earth Intelligence organ of the arifOS Federation: a governed MCP
+> service for geological, geophysical, hazard, terrain, mobility and
+> infrastructure reasoning. Every surface is dual-authored — rendered for
+> humans, enumerated for agents. Creed: DITEMPA BUKAN DIBERI — "truth must cool
+> before it rules." Humility band Ω₀ ≈ 0.04.
+
+## Endpoints
+
+- MCP endpoint (SSE transport): https://geox.arif-fazil.com/mcp
+- Health: https://geox.arif-fazil.com/health
+- Agent profile: https://geox.arif-fazil.com/profile
+- Scenarios: https://geox.arif-fazil.com/scenarios
+- WebMCP manifest: https://geox.arif-fazil.com/.well-known/mcp.json
+
+## Capabilities
+
+- 42 governed MCP tools (geox.* namespace): basin screening, STOIIP/volumetrics,
+  seismic attribute review, flood-risk triage, route viability, infrastructure
+  watch, hazard escalation, risk matrix, verdict console, VAULT999 sealing.
+- 18 MCP App widgets (SEP-1865 GUI): WellDesk, Seismic Vision, Earth Volume,
+  Risk Console, Judge Console, Basin Explorer, Map Portal, Timeline View, and more.
+- A2A negotiation via AAA control plane (:3001).
+
+## Epistemic Contract (E1–E5)
+
+- E1 Every response includes `epistemic_layer: OBS | DER | INT | SPEC`.
+- E2 SPEC outputs are capped by RASA ≤ 0.90 and labeled hypothesis.
+- E3 Irreversible/high-risk calls return `status: 888_HOLD` until sovereign human release (F13).
+- E4 Agents may seal any result to VAULT999 via `geox.seal_vault999()`.
+- E5 Ω₀ ≈ 0.04 — the Earth keeps its humility band; your model should too.
+
+## Governance
+
+Constitutional floors F1–F13 of the arifOS Federation apply to every call.
+F13 — Sovereign Human Veto (888_HOLD) — is load-bearing: a human can always
+stop the machine. Federation organs: arifOS :8088, A-FORGE :7071/:7072,
+AAA :3001, GEOX :8081, WEALTH :18082, WELL :18083, HERMES :8644.
+
+## Quickstart (60 seconds)
+
+1. Point your MCP client at `https://geox.arif-fazil.com/mcp` (SSE).
+2. Call a tool, e.g. `geox.stoiip({ prospect: "KINABALU-N", p50_area_km2: 42 })`.
+3. Render an app, e.g. register `geox.app.welldesk` as an SEP-1865 inline widget.
+
+## License
+
+Business Source License 1.1; converts to Apache 2.0 on 2029-06-29.
+
+## Links
+
+- Site: https://geox.arif-fazil.com/
+- Platform (42 tools): https://geox.arif-fazil.com/platform
+- MCP Apps (18 widgets): https://geox.arif-fazil.com/mcp-apps
+- WebMCP: https://geox.arif-fazil.com/webmcp
+- Federation: https://geox.arif-fazil.com/federation
+- Deploy: https://geox.arif-fazil.com/deploy
+- Full corpus: https://geox.arif-fazil.com/llms-full.txt

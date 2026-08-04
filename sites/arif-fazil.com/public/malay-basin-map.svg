@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" width="1400" height="900">
+<defs><filter id="rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="11" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></defs>
+<g filter="url(#rough)" fill="none" stroke="#14110C">
+<path d="M 700,40 L 742,90 L 730,150 L 768,205 L 750,268 L 786,330 L 770,395 L 812,455 L 795,520 L 838,585 L 820,650 L 860,715 L 845,780 L 872,850" stroke-width="1.5" opacity="0.85"/>
+<path d="M 1180,120 L 1250,150 L 1310,210 L 1360,280 L 1390,360" stroke-width="1.25" opacity="0.6"/>
+</g>
+<ellipse cx="1040" cy="470" rx="250" ry="290" fill="none" stroke="#14110C" stroke-width="1" stroke-dasharray="6 6" opacity="0.4" transform="rotate(-12 1040 470)"/>
+<text x="1040" y="470" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#14110C" opacity="0.55" letter-spacing="3">MALAY BASIN</text>
+<line x1="800" y1="0" x2="800" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="900" y1="0" x2="900" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="1000" y1="0" x2="1000" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="1100" y1="0" x2="1100" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="1200" y1="0" x2="1200" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="1300" y1="0" x2="1300" y2="900" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="100" x2="1400" y2="100" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="200" x2="1400" y2="200" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="300" x2="1400" y2="300" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="400" x2="1400" y2="400" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="500" x2="1400" y2="500" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="600" x2="1400" y2="600" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="700" x2="1400" y2="700" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<line x1="600" y1="800" x2="1400" y2="800" stroke="#14110C" stroke-width="0.5" opacity="0.12"/>
+<text x="620" y="880" font-family="'IBM Plex Mono',monospace" font-size="14" fill="#14110C" opacity="0.5" letter-spacing="2">OFFSHORE PENINSULAR MALAYSIA — SCHEMATIC [INT]</text>
+<circle cx="960" cy="300" r="7" fill="#FF9F1C" stroke="#14110C" stroke-width="1.5"/>
+<circle cx="960" cy="300" r="14" fill="none" stroke="#14110C" stroke-width="0.75" opacity="0.5"/>
+<text x="980" y="305" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#14110C" letter-spacing="1.5">BEKANTAN-1</text>
+<circle cx="1080" cy="460" r="7" fill="#FF9F1C" stroke="#14110C" stroke-width="1.5"/>
+<circle cx="1080" cy="460" r="14" fill="none" stroke="#14110C" stroke-width="0.75" opacity="0.5"/>
+<text x="1100" y="465" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#14110C" letter-spacing="1.5">PUTERI BASEMENT-1</text>
+<circle cx="900" cy="560" r="7" fill="#FF9F1C" stroke="#14110C" stroke-width="1.5"/>
+<circle cx="900" cy="560" r="14" fill="none" stroke="#14110C" stroke-width="0.75" opacity="0.5"/>
+<text x="920" y="565" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#14110C" letter-spacing="1.5">LEBAH EMAS-1</text>
+<circle cx="1150" cy="640" r="7" fill="#FF9F1C" stroke="#14110C" stroke-width="1.5"/>
+<circle cx="1150" cy="640" r="14" fill="none" stroke="#14110C" stroke-width="0.75" opacity="0.5"/>
+<text x="1170" y="645" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#14110C" letter-spacing="1.5">BUNGA TASBIH-1</text>
+</svg>

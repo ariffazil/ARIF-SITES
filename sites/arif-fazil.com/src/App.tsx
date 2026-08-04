@@ -1,22 +1,25 @@
 import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
-import { ConstellationNav } from '@/components/ConstellationNav';
-import { ConstellationFooter } from '@/components/ConstellationFooter';
+import ArrowNavbar from '@/components/ArrowNavbar';
+import ArrowFooter from '@/components/ArrowFooter';
+import Cursor from '@/components/Cursor';
 import { ScrollToHashElement } from '@/components/ScrollToHashElement';
 import AtlasGate from '@/components/AtlasGate';
 import { Home } from '@/pages/Home';
 import { Genesis } from '@/pages/Genesis';
 import { Wealth } from '@/pages/Wealth';
 import { WealthArticle } from '@/pages/WealthArticle';
-import { World } from '@/pages/World';
+import World from '@/pages/WorldArrow';
 import { MakcikGPTAlias } from '@/pages/MakcikGptAlias';
 import { MakcikGptArticle } from '@/pages/MakcikGptArticle';
-import { Discoveries } from '@/pages/Discoveries';
+import { Earth } from '@/pages/Earth';
 import { EssayPage } from '@/pages/EssayPage';
 import { Doctrine } from '@/pages/Doctrine';
+import Economics from '@/pages/EconomicsArrow';
+import Writing from '@/pages/WritingArrow';
+import Proof from '@/pages/ProofArrow';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
-import { ReadHub } from '@/pages/ReadHub';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
@@ -24,7 +27,7 @@ import { ShadowPMs } from '@/pages/ShadowPMs';
 import { ShadowBoard } from '@/pages/ShadowBoard';
 import { DeritaMap } from '@/pages/DeritaMap';
 import { PoliticsHub } from '@/pages/PoliticsHub';
-
+import { Missions } from '@/pages/Missions';
 function CommodityPageOil() { return <CommodityPage slug="oil" />; }
 function CommodityPageGas() { return <CommodityPage slug="gas" />; }
 function CommodityPageGold() { return <CommodityPage slug="gold" />; }
@@ -36,22 +39,24 @@ function App() {
     <BrowserRouter>
       <AtlasGate />
       <ScrollToHashElement />
-      <div className="site-shell">
-        <ConstellationNav />
+      <div className="site-shell bg-paper text-ink">
+        <Cursor />
+        <ArrowNavbar />
         <main className="site-main" id="main-content">
           <Routes>
-            {/* Home — sovereign identity */}
+            {/* Home — Arrow of Time hero */}
             <Route path="/" element={<Home />} />
 
-            {/* Earth — pure geoscience, no civic/commodity */}
-            <Route path="/earth" element={<Discoveries />} />
-            <Route path="/earth/" element={<Discoveries />} />
+            {/* Earth — Malay Basin discoveries (human contrast register) */}
+            <Route path="/earth" element={<Earth />} />
+            <Route path="/earth/" element={<Earth />} />
 
-            {/* Economics — WEALTH capital briefing */}
-            <Route path="/economics" element={<Wealth />} />
-            <Route path="/economics/" element={<Wealth />} />
+            {/* Economics — human essay register; live briefing still at /wealth-live */}
+            <Route path="/economics" element={<Economics />} />
+            <Route path="/economics/" element={<Economics />} />
             <Route path="/economics/article/:slug" element={<WealthArticle />} />
-
+            <Route path="/wealth-live" element={<Wealth />} />
+            <Route path="/wealth-live/" element={<Wealth />} />
             {/* World — civic journalism + commodities + spatial politics */}
             <Route path="/world" element={<World />} />
             <Route path="/world/" element={<World />} />
@@ -59,8 +64,8 @@ function App() {
             <Route path="/politics/" element={<PoliticsHub />} />
             <Route path="/malaysia" element={<PoliticsHub />} />
             <Route path="/malaysia/" element={<PoliticsHub />} />
-            <Route path="/vitals" element={<Navigate to="/politics/ns-election" replace />} />
-            <Route path="/vitals/" element={<Navigate to="/politics/ns-election" replace />} />
+            {/* /vitals is PETRONAS VITALS (static singleton at /vitals/). Never steal for politics. */}
+            <Route path="/vitals" element={<Navigate to="/vitals/" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
@@ -93,24 +98,25 @@ function App() {
             <Route path="/usdmyr" element={<CommodityPageUsdmyr />} />
             <Route path="/usdmyr/" element={<CommodityPageUsdmyr />} />
 
-            {/* Read — sovereign reading room (all writings) */}
-            <Route path="/read" element={<ReadHub />} />
-            <Route path="/read/" element={<ReadHub />} />
-
-            {/* Writing — backward compat, now redirects to /read */}
-            <Route path="/writing" element={<ReadHub />} />
-            <Route path="/writing/" element={<ReadHub />} />
+            {/* Read / Writing — human archive register */}
+            <Route path="/read" element={<Writing />} />
+            <Route path="/read/" element={<Writing />} />
+            <Route path="/writing" element={<Writing />} />
+            <Route path="/writing/" element={<Writing />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
-            {/* Doctrine & Federation — unified governance */}
+            {/* Doctrine & Federation — constitutional register */}
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/doctrine/" element={<Doctrine />} />
             <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
             <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
 
-            {/* Missions */}
-            <Route path="/missions" element={<Navigate to="/" replace />} />
-            <Route path="/missions/" element={<Navigate to="/" replace />} />
+            {/* Proof chamber (SPA) — static /999/ artifacts remain on disk */}
+            <Route path="/proof" element={<Proof />} />
+            <Route path="/proof/" element={<Proof />} />
+            {/* Missions — human cockpit (machines use /missions.json) */}
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/missions/" element={<Missions />} />
 
             {/* Institution */}
             <Route path="/institution" element={<InstitutionPage />} />
@@ -154,7 +160,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <ConstellationFooter />
+        <ArrowFooter />
       </div>
     </BrowserRouter>
   );

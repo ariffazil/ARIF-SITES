@@ -29,6 +29,8 @@ verify: sync-aaa
 	node scripts/verify-surfaces.cjs --base=https://arif-fazil.com
 	@echo "[verify] Running Page Inventory Gate..."
 	bash scripts/verify-pages.sh https://arif-fazil.com /root/arif-fazil.com/sites/arif-fazil.com/dist
+	@echo "[verify] Running Content Assertion Gate..."
+	bash scripts/verify-content.sh https://arif-fazil.com
 	@echo "[verify] Checking Caddy config..."
 	caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "[verify] Caddy config: VALID"
 	@echo "[verify] M3 fix 2026-08-01: scanning source HTML for dev-only entry points..."

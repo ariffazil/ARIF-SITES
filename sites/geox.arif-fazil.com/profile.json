@@ -1,0 +1,15 @@
+{
+  "organ": "GEOX",
+  "role": "Earth Intelligence",
+  "mcp_tools": 42,
+  "mcp_apps": 18,
+  "rasa_cap": 0.9,
+  "hold": "888_HOLD",
+  "ledger": "VAULT999",
+  "license": "BSL-1.1 \u2192 Apache-2.0 @2029-06-29",
+  "port": 8081,
+  "health": "https://geox.arif-fazil.com/health",
+  "mcp": "https://geox.arif-fazil.com/mcp",
+  "version": "v2026.07.24",
+  "evidence": "OBS: live tools_loaded=42 from :8081/health"
+}
