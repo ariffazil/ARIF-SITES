@@ -534,10 +534,12 @@ function StatCell({
   note: string
   start: boolean
 }) {
-  const [val, setVal] = useState(0)
+  const [val, setVal] = useState(n)
   useEffect(() => {
     if (!start) return
-    const controls = animate(0, n, {
+    // The record is source-backed and must never expose a false zero while
+    // IntersectionObserver or the React shell is still settling.
+    const controls = animate(n, n, {
       duration: 1.2,
       ease: 'easeOut',
       onUpdate: (v) => setVal(Math.round(v)),
