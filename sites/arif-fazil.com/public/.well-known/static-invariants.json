@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "as_of": "2026-08-04",
   "domain": "arif-fazil.com",
-  "title": "Static invariants — law that must not drift like content",
-  "operating_rule": "static law · dynamic state · gated action",
+  "title": "Static invariants \u2014 law that must not drift like content",
+  "operating_rule": "static law \u00b7 dynamic state \u00b7 gated action",
   "motto": "Freeze the laws, let the observations move.",
   "bedrock_metaphor": "Constitution is bedrock; telemetry is weather.",
   "change_class": "R4_irreversible_or_888_HOLD",
@@ -21,17 +21,57 @@
     "did": "did:web:arif-fazil.com",
     "canonical_domain": "arif-fazil.com",
     "did_document": "https://arif-fazil.com/.well-known/did.json",
-    "organs": ["arifOS", "A-FORGE", "GEOX", "WEALTH", "WELL", "AAA", "arifFLOW"],
+    "organs": [
+      "arifOS",
+      "A-FORGE",
+      "GEOX",
+      "WEALTH",
+      "WELL",
+      "AAA",
+      "arifFLOW"
+    ],
     "motto": "DITEMPA BUKAN DIBERI"
   },
   "constitution": {
-    "floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
     "floors_mirror": "https://arif-fazil.com/floors.json",
-    "epistemic_kernel_labels": ["OBS", "DER", "INT", "SPEC"],
-    "epistemic_public_bands": ["CLAIM", "PLAUSIBLE", "HYPOTHESIS", "ESTIMATE", "UNKNOWN"],
+    "epistemic_kernel_labels": [
+      "OBS",
+      "DER",
+      "INT",
+      "SPEC"
+    ],
+    "epistemic_public_bands": [
+      "CLAIM",
+      "PLAUSIBLE",
+      "HYPOTHESIS",
+      "ESTIMATE",
+      "UNKNOWN"
+    ],
     "hold_token": "888_HOLD",
     "human_veto": "FINAL",
-    "verdicts": ["SEAL", "SABAR", "CAUTION", "HOLD", "VOID", "888_HOLD"]
+    "verdicts": [
+      "SEAL",
+      "SABAR",
+      "CAUTION",
+      "HOLD",
+      "VOID",
+      "888_HOLD"
+    ]
   },
   "truth_policy": {
     "pipe_first": true,
@@ -43,32 +83,109 @@
     "slogan_is_law": "Numbers from pipes, not invented. Withhold when pipes fail."
   },
   "ontology": {
-    "territories": ["EARTH", "ECONOMICS", "WORLD", "DOCTRINE"],
+    "territories": [
+      "EARTH",
+      "ECONOMICS",
+      "WORLD",
+      "DOCTRINE"
+    ],
     "territories_document": "https://arif-fazil.com/.well-known/territories.json",
-    "entity_type_prefix_examples": ["basin:", "formation:", "tool:", "doctrine:", "organ:", "surface:"],
-    "missions": ["investigate", "interpret", "decide", "build", "monitor", "remember"],
+    "entity_type_prefix_examples": [
+      "basin:",
+      "formation:",
+      "tool:",
+      "doctrine:",
+      "organ:",
+      "surface:"
+    ],
+    "missions": [
+      "investigate",
+      "interpret",
+      "decide",
+      "build",
+      "monitor",
+      "remember"
+    ],
     "missions_document": "https://arif-fazil.com/missions.json"
   },
   "interface_contracts": {
     "versioned_endpoints": [
-      { "path": "/llms.txt", "role": "guidance_overview", "binding": false },
-      { "path": "/missions.json", "role": "mission_catalog", "binding": true },
-      { "path": "/surfaces.json", "role": "route_catalog", "binding": true },
-      { "path": "/.well-known/webmcp.json", "role": "live_browser_tools", "binding": true, "f2": "tools[] live 2xx only" },
-      { "path": "/.well-known/did.json", "role": "machine_identity", "binding": true },
-      { "path": "/.well-known/ai-constitution.json", "role": "public_constitution", "binding": true },
-      { "path": "/.well-known/agent-policy.json", "role": "agent_policy", "binding": true },
-      { "path": "/.well-known/agent-registry.json", "role": "agent_inventory", "binding": true },
-      { "path": "/.well-known/static-invariants.json", "role": "static_law", "binding": true },
-      { "path": "/.well-known/dynamic-invariants.json", "role": "dynamic_state_rules", "binding": true },
-      { "path": "/.well-known/hold-conditions.json", "role": "hold_gates", "binding": true },
-      { "path": "/.well-known/risk-tiers.json", "role": "risk_classes", "binding": true },
-      { "path": "/machines/", "role": "human_machine_docs", "binding": false }
+      {
+        "path": "/llms.txt",
+        "role": "guidance_overview",
+        "binding": false
+      },
+      {
+        "path": "/missions.json",
+        "role": "mission_catalog",
+        "binding": true
+      },
+      {
+        "path": "/surfaces.json",
+        "role": "route_catalog",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/webmcp.json",
+        "role": "live_browser_tools",
+        "binding": true,
+        "f2": "tools[] live 2xx only"
+      },
+      {
+        "path": "/.well-known/did.json",
+        "role": "machine_identity",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/ai-constitution.json",
+        "role": "public_constitution",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/agent-policy.json",
+        "role": "agent_policy",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/agent-registry.json",
+        "role": "agent_inventory",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/static-invariants.json",
+        "role": "static_law",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/dynamic-invariants.json",
+        "role": "dynamic_state_rules",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/hold-conditions.json",
+        "role": "hold_gates",
+        "binding": true
+      },
+      {
+        "path": "/.well-known/risk-tiers.json",
+        "role": "risk_classes",
+        "binding": true
+      },
+      {
+        "path": "/machines/",
+        "role": "human_machine_docs",
+        "binding": false
+      }
     ],
-    "version_semantics": "Bump major for meaning change; keep old readable ≥30 days when practical"
+    "version_semantics": "Bump major for meaning change; keep old readable \u226530 days when practical"
   },
   "disclosure": {
-    "tiers": ["public", "existence_only", "proprietary", "vault_never_leaves"],
+    "tiers": [
+      "public",
+      "existence_only",
+      "proprietary",
+      "vault_never_leaves"
+    ],
     "public": "HTML dossiers, public JSON registers, live pipe numbers when healthy",
     "existence_only": "Named wells/studies without full location or content",
     "proprietary": "Detail withheld; existence may be asserted",
@@ -96,5 +213,19 @@
     "risk_tiers": "https://arif-fazil.com/.well-known/risk-tiers.json",
     "hold_conditions": "https://arif-fazil.com/.well-known/hold-conditions.json",
     "invariants_index": "https://arif-fazil.com/.well-known/invariants.json"
+  },
+  "identity_media": {
+    "identity_image_policy": "human_verified_only",
+    "wrong_identity_media": "immediate_remove",
+    "fallback": "text_or_monogram",
+    "publish_gate": "888_HOLD unless human approved",
+    "forbidden": [
+      "generated_human_portrait",
+      "guessed_headshot",
+      "scraped_substitute",
+      "decorative_human_placeholder_under_sovereign_name"
+    ],
+    "current_public_mark": "https://arif-fazil.com/og-identity.svg",
+    "person_section": "text monogram AF \u2014 no face until verified asset"
   }
 }
