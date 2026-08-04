@@ -27,6 +27,15 @@ function esc(s) {
     .replace(/"/g, '&quot;');
 }
 
+function fmtNum(v, digits = 2) {
+  if (v == null || v === '' || v === '—') return '—';
+  const n = Number(v);
+  if (!Number.isFinite(n)) return String(v);
+  return n.toLocaleString('en-US', { maximumFractionDigits: digits, minimumFractionDigits: 0 });
+}
+
+
+
 function shell({ title, description, canonical, body, ring = 'SOUL' }) {
   return `<!DOCTYPE html>
 <html lang="en" data-ring="${esc(ring)}" data-agent-surface="content-first">
@@ -186,10 +195,10 @@ writeRoute(
     <div class="card">
       <h2>Live snapshot</h2>
       <ul>
-        <li>KLCI: ${esc(bursa.klci_close ?? bursa.klci_quote?.value ?? '—')}
-          ${bursa.klci_change_pct != null ? `(${esc(bursa.klci_change_pct)}%)` : ''}</li>
-        <li>USD/MYR: ${esc(ringgit.usd_myr ?? '—')} · ${esc(ringgit.trend || '')}</li>
-        <li>Brent: ${oil.brent_price != null ? '$' + esc(oil.brent_price) : '—'}</li>
+        <li>KLCI: ${fmtNum(bursa.klci_close ?? bursa.klci_quote?.value)}
+          ${bursa.klci_change_pct != null ? `(${fmtNum(bursa.klci_change_pct, 2)}%)` : ''}</li>
+        <li>USD/MYR: ${fmtNum(ringgit.usd_myr, 4)} · ${esc(ringgit.trend || '')}</li>
+        <li>Brent: ${oil.brent_price != null ? '$' + fmtNum(oil.brent_price, 2) : '—'}</li>
       </ul>
     </div>
     <h2>So what</h2>
