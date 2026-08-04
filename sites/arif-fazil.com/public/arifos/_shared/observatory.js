@@ -22,6 +22,11 @@
   const SNAPSHOT_MIRROR = '/.well-known/observatory-snapshot-latest.json';
   const SNAPSHOT_LIVE = '/api/observatory/v1/snapshot';
   const REFRESH_MS = 30000;
+  // arifos.public-state.v1 can carry stale data (esp. arifFlow FQ). After
+  // this window, the renderer falls through to the signed observatory snapshot
+  // instead of displaying a stale public-state. 300 s = 5 min matches arifFlow
+  // TTL per AAA-ZEN-ALIGNMENT §E.
+  const OBSERVATORY_FRESHNESS_WINDOW_MS = 300000;
   const UNAVAILABLE = 'unavailable';
   // Stable canonical organ IDs — used to normalize any alias passed in by
   // upstream schemas or renderers, so DOM data-organ attributes never drift.
@@ -590,7 +595,17 @@
       isRecord(receiptContainer) ? firstPresent(receiptContainer.count, receiptContainer.total, receiptContainer.value) : receiptContainer,
     );
     const chain = firstPresent(flowField(record, 'chain', 'chain_status', 'receipt_chain', 'chainStatus'), record && record.ledger && record.ledger.chain);
-    const fq = flowField(record, 'fq');
+    // arifos.public-state.v1 exposes ariflow.fq_quotient (numeric) and
+    // ariflow.fq_verdict (label). The signed observatory snapshot uses fq
+    // directly. Merge both into a single display value so the field is never
+    // silently "unavailable" when the data is present under a different key.
+    const fqNum = flowField(record, 'fq', 'fq_quotient');
+    const fqLabel = flowField(record, 'fq_verdict');
+    const fq = fqNum !== undefined || fqLabel !== undefined
+      ? (fqNum !== undefined && fqLabel !== undefined
+          ? { value: `${compactValue(fqNum)} ${compactValue(fqLabel)}`, state: 'measured', source: 'arifFlow' }
+          : (fqNum !== undefined ? fqNum : fqLabel))
+      : undefined;
     const declaredEndpoints = { value: flowDeclaredEndpoints, state: 'declared', source: 'declared arifFLOW contract', confidence: null };
     const endpoints = flowField(record, 'endpoints', 'endpoint', 'routes');
     const endpointRecord = endpoints === undefined ? declaredEndpoints : endpoints;
@@ -967,6 +982,13 @@
         state: freshness,
         detail: data && data.observed_at ? data.observed_at : 'source: missing',
       },
+      mirror: {
+        value: runtime.mirrorMissing ? 'gap' : 'ok',
+        state: runtime.mirrorMissing ? 'degraded' : 'loaded',
+        detail: runtime.mirrorMissing
+          ? 'FALLBACK_GAP — /.well-known/public-state.json missing; fallback chain skips one rung. See /status.'
+          : `${PUBLIC_STATE_MIRROR} reachable`,
+      },
     };
     Object.entries(rows).forEach(([id, row]) => {
       const value = $(`#selfcheck-${id}-value`);
@@ -1046,27 +1068,49 @@
     // → legacy snapshot mirror → legacy observatory.v1 endpoint. Each fall
     // back is logged so the public-state.v1 contract can be observed in
     // production self-check diagnostics.
+    //
+    // Freshness gate (2026-08-04): public-state.v1 can be hours stale while
+    // the signed observatory snapshot is regenerated on deploy. When a
+    // public-state source is older than OBSERVATORY_FRESHNESS_WINDOW_MS,
+    // the renderer skips it and falls through to the next source.
     const sources = [
-      { url: PUBLIC_STATE_LIVE, label: 'public-state.v1 live' },
-      { url: PUBLIC_STATE_MIRROR, label: 'public-state.v1 mirror' },
+      { url: PUBLIC_STATE_LIVE, label: 'public-state.v1 live', freshnessCheck: true },
+      { url: PUBLIC_STATE_MIRROR, label: 'public-state.v1 mirror', freshnessCheck: true },
       { url: SNAPSHOT_MIRROR, label: 'observatory.v1 mirror' },
       { url: SNAPSHOT_LIVE, label: 'observatory.v1 live' },
     ];
     const errors = [];
+    let mirrorMissing = false;
     for (const source of sources) {
       try {
         const response = await fetch(source.url, { cache: 'no-store' });
         if (!response.ok) {
+          if (source.url === PUBLIC_STATE_MIRROR) mirrorMissing = true;
           errors.push(`${source.url}=HTTP ${response.status}`);
           continue;
         }
+        // Freshness gate for public-state sources only.
+        if (source.freshnessCheck) {
+          const cloned = response.clone();
+          const preview = await cloned.json();
+          const observedAt = preview && (preview.observed_at || preview.generated_at);
+          if (observedAt) {
+            const ageMs = Date.now() - new Date(observedAt).getTime();
+            if (ageMs > OBSERVATORY_FRESHNESS_WINDOW_MS) {
+              errors.push(`${source.url}=stale (${Math.floor(ageMs / 1000)}s old)`);
+              continue;
+            }
+          }
+        }
         runtime.fetchSource = source.url;
         runtime.fetchedSchema = source.label;
+        runtime.mirrorMissing = mirrorMissing;
         return response;
       } catch (error) {
-        errors.push(`${source.url}=${type(error).name}:${String(error).slice(0, 80)}`);
+        errors.push(`${source.url}=${error.constructor && error.constructor.name || 'Error'}:${String(error).slice(0, 80)}`);
       }
     }
+    runtime.mirrorMissing = mirrorMissing;
     const composed = new Error(`all observatory sources unreachable: ${errors.join(' | ')}`);
     composed.attempts = errors;
     throw composed;

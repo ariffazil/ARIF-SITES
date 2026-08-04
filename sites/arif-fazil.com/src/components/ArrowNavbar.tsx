@@ -31,7 +31,8 @@ function NavItemLink({
     '/world': 'decoration-[#EDEAE2]',
     '/doctrine': 'decoration-[#9AA0A8]',
   }
-  const accent = territoryAccent[item.href.replace(/\/$/, '')] || 'decoration-ember'
+  const hrefNorm = item.href.replace(/\/$/, '')
+  const accent = territoryAccent[hrefNorm] || 'decoration-ember'
   const base =
     className ??
     'font-mono text-[12px] uppercase tracking-[0.06em] transition-colors text-ink-soft hover:text-ink'
@@ -39,8 +40,15 @@ function NavItemLink({
     activeClassName ??
     `text-ink underline ${accent} decoration-2 underline-offset-8`
 
-  // Static & external: full document navigation (preserve /999/, /vitals/ reality)
-  if (item.mode === 'static' || item.mode === 'external' || item.external) {
+  // Static full-page surfaces: Earth globe (Macrostrat), 999, vitals, etc.
+  // Earth must NOT use client-side SPA — that replaces the real globe.
+  const forceStatic =
+    hrefNorm === '/earth' ||
+    item.mode === 'static' ||
+    item.mode === 'external' ||
+    item.external
+
+  if (forceStatic) {
     return (
       <a
         href={item.href}

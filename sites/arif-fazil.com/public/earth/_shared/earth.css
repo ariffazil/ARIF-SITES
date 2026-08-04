@@ -1,0 +1,31 @@
+/* earth.css — shared earth utilities (page keeps primary styles inline) */
+/* Aligned with Arrow basalt shell accents */
+:root {
+  --earth-ember: #E4572E;
+  --earth-gold: #C9A227;
+  --earth-paper: #0A0B0D;
+  --earth-ink: #EDEAE2;
+}
+/* sticky top offset if arrow-like nav chrome present */
+.earth-site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background: rgba(10, 11, 13, 0.92);
+  border-bottom: 1px solid rgba(237, 234, 226, 0.12);
+  backdrop-filter: blur(10px);
+  font-family: "IBM Plex Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.earth-site-nav a { color: #9AA0A8; text-decoration: none; }
+.earth-site-nav a:hover { color: #EDEAE2; }
+.earth-site-nav .brand { color: #EDEAE2; font-weight: 600; letter-spacing: -0.02em; text-transform: none; font-size: 0.95rem; }
+.earth-site-nav .accent-earth { color: #E4572E; }

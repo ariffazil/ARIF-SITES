@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<!-- page: earth/malay-basin v1 · Φ GEOX · arif-fazil.com/earth/malay-basin · content-marker: malay-dossier-Φ -->
+<html lang="en" data-ring="ORGAN" data-organ="geox" data-content-marker="malay-dossier-Φ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malay Basin — Geological Dossier · Φ GEOX | Arif Fazil</title>
+<meta name="description" content="Malay Basin — the founder's home waters. 13+ years reading rocks offshore Peninsular Malaysia. Cenozoic failed rift / pull-apart basin, ~500 km long, ~200 km wide, NW-SE trend. Group A→M stratigraphy. Mature gas province with significant oil in Groups H and I. Founder wells: BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1.">
+<meta name="author" content="GEOX · arifOS Federation">
+<link rel="canonical" href="https://arif-fazil.com/earth/malay-basin/">
+<meta property="og:title" content="Malay Basin — Geological Dossier">
+<meta property="og:description" content="The founder's home waters. 13+ years. Cenozoic failed rift, Group A→M stratigraphy, mature gas province.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-dark:#0a0a0f;
+  --bg-panel:#101018;
+  --border-dim:#1a1a25;
+  --accent-gold:#d4af37;
+  --accent-cyan:#00d4aa;
+  --text-primary:#e8e8ef;
+  --text-secondary:#9a9aa8;
+  --mono:'Fira Code',monospace;
+  --sans:'Inter',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg-dark);color:var(--text-primary);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{color:var(--accent-gold)}
+::selection{background:rgba(212,175,55,.25)}
+.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{position:fixed;top:.5rem;left:.5rem;width:auto;height:auto;padding:.5rem 1rem;background:var(--accent-gold);color:var(--bg-dark);border-radius:4px;z-index:9999;font-family:var(--mono);font-size:.8rem;font-weight:600}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 2rem;background:rgba(10,10,15,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-dim)}
+.brand{font-family:var(--mono);font-size:.8rem;letter-spacing:2px;color:var(--text-secondary)}
+.brand b{color:var(--accent-gold);font-weight:600}
+.nav-links{display:flex;gap:1.6rem;align-items:center}
+.nav-links a{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-secondary);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent-gold)}
+.back-btn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;color:var(--accent-cyan);border:1px solid var(--accent-cyan);padding:.3rem .7rem;border-radius:6px;transition:all .2s}
+.back-btn:hover{color:var(--accent-gold);border-color:var(--accent-gold)}
+@media(max-width:720px){.nav-links{gap:.9rem}.nav-links a{font-size:.62rem}}
+
+.zen-pulse{display:flex;flex-wrap:wrap;gap:.55rem;padding:.8rem 1rem;background:rgba(10,10,15,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-dim);position:relative;z-index:5;margin-top:53px}
+.zen-pulse .zp{display:flex;align-items:baseline;gap:.5rem;font-size:.74rem;color:var(--text-secondary);padding:.25rem .7rem;border:1px solid var(--border-dim);border-radius:99px;background:rgba(16,16,24,.55)}
+.zen-pulse .zp b{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;font-weight:600}
+.zen-pulse .zp.gold b{color:var(--accent-gold)}
+@media(max-width:720px){.zen-pulse{gap:.35rem;padding:.6rem .8rem;margin-top:48px}.zen-pulse .zp{font-size:.68rem;padding:.2rem .55rem}}
+
+.hero{padding:3rem 2rem 2.5rem;border-bottom:1px solid var(--border-dim);background:radial-gradient(ellipse at 80% 0%,rgba(212,175,55,.07),transparent 50%)}
+.hero .container{max-width:1100px;margin:0 auto}
+.kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:3px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.8rem}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;line-height:1.05;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p.lede{color:var(--text-secondary);max-width:760px;font-size:1.05rem;margin-bottom:1.4rem}
+.hero p.lede b{color:var(--text-primary)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.hero-meta .chip{font-family:var(--mono);font-size:.62rem;letter-spacing:1.2px;padding:.32rem .7rem;border:1px solid var(--border-dim);border-radius:99px;color:var(--text-secondary);background:rgba(16,16,24,.5)}
+.hero-meta .chip.gold{color:var(--accent-gold);border-color:rgba(212,175,55,.5)}
+.hero-meta .chip.cyan{color:var(--accent-cyan);border-color:rgba(0,212,170,.5)}
+
+section{padding:4.5rem 2rem;border-top:1px solid var(--border-dim)}
+.container{max-width:1100px;margin:0 auto}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem;
+  background:linear-gradient(135deg,#fff 40%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h2 .num{font-family:var(--mono);font-size:.6em;color:var(--accent-cyan);margin-right:.4rem;vertical-align:middle}
+.lede{color:var(--text-secondary);max-width:760px;font-size:1.02rem;margin-bottom:1.6rem}
+.lede b{color:var(--text-primary)}
+
+.prose{max-width:760px;font-size:.96rem;color:var(--text-primary);line-height:1.75;margin-bottom:1.4rem}
+.prose b{color:var(--accent-gold)}
+.prose code{font-family:var(--mono);font-size:.85em;background:rgba(0,212,170,.08);color:var(--accent-cyan);padding:.1rem .35rem;border-radius:4px}
+.prose ul{margin:.8rem 0 .8rem 1.2rem;color:var(--text-secondary)}
+.prose li{margin-bottom:.45rem}
+.prose li b{color:var(--text-primary)}
+
+.timeline{margin:2rem 0;border-left:2px solid var(--border-dim);padding-left:1.5rem}
+.event{position:relative;padding:1rem 0 1.2rem;border-bottom:1px dashed var(--border-dim)}
+.event:last-child{border-bottom:none}
+.event::before{content:"";position:absolute;left:-1.85rem;top:1.3rem;width:11px;height:11px;border-radius:50%;background:var(--accent-cyan);border:2px solid var(--bg-dark);box-shadow:0 0 0 2px var(--accent-cyan)}
+.event.gold::before{background:var(--accent-gold);box-shadow:0 0 0 2px var(--accent-gold)}
+.event h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.event .age{font-family:var(--mono);font-size:.7rem;color:var(--accent-gold);letter-spacing:.5px;margin-bottom:.35rem}
+.event p{font-size:.88rem;color:var(--text-secondary)}
+.event p b{color:var(--text-primary)}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
+.stat{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.1rem 1.2rem;transition:border-color .25s}
+.stat:hover{border-color:var(--accent-gold)}
+.stat .num{font-family:var(--mono);font-size:1.7rem;font-weight:600;color:var(--accent-cyan)}
+.stat .num.gold{color:var(--accent-gold)}
+.stat .lbl{font-size:.72rem;color:var(--text-secondary);letter-spacing:.5px;text-transform:uppercase;margin-top:.25rem}
+.stat .src{font-family:var(--mono);font-size:.55rem;color:#55555f;margin-top:.5rem}
+
+.strat-tbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.84rem}
+.strat-tbl th{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-secondary);text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--border-dim);font-weight:600}
+.strat-tbl td{padding:.7rem .8rem;border-bottom:1px solid var(--border-dim);color:var(--text-secondary);vertical-align:top;line-height:1.5}
+.strat-tbl td b{color:var(--text-primary)}
+.strat-tbl tr:hover td{background:rgba(0,212,170,.03)}
+.lith-dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:.5rem;vertical-align:middle}
+
+.psys-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin:1.8rem 0}
+.psys{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:10px;padding:1.2rem 1.3rem;border-top:3px solid var(--accent-cyan)}
+.psys.src{border-top-color:#a78bfa}
+.psys.res{border-top-color:var(--accent-gold)}
+.psys.seal{border-top-color:#64748b}
+.psys.trap{border-top-color:#f43f5e}
+.psys.mig{border-top-color:#10b981}
+.psys .role{font-family:var(--mono);font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-cyan);margin-bottom:.35rem}
+.psys.src .role{color:#a78bfa}
+.psys.res .role{color:var(--accent-gold)}
+.psys.seal .role{color:#94a3b8}
+.psys.trap .role{color:#f87171}
+.psys.mig .role{color:#34d399}
+.psys h4{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.psys p{font-size:.82rem;color:var(--text-secondary);line-height:1.55}
+
+.xs-embed{margin:2rem 0;background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:14px;overflow:hidden}
+.xs-embed .head{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border-dim);background:rgba(0,0,0,.2)}
+.xs-embed .head h3{font-size:1rem;font-weight:700;color:var(--accent-gold)}
+.xs-embed .head .src{font-family:var(--mono);font-size:.6rem;letter-spacing:1.2px;color:var(--accent-cyan);text-transform:uppercase}
+.xs-embed iframe{width:100%;height:1100px;border:none;display:block;background:#0a0e17}
+.xs-embed .foot{display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.4rem;border-top:1px solid var(--border-dim);background:rgba(0,0,0,.2);font-family:var(--mono);font-size:.62rem;color:#55555f}
+.xs-embed .foot a{color:var(--accent-cyan)}
+.xs-embed .foot a:hover{color:var(--accent-gold)}
+
+.disc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.8rem 0}
+.disc{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.4rem 1.5rem;border-left:3px solid var(--accent-gold);transition:transform .2s,border-color .2s}
+.disc:hover{transform:translateY(-3px);border-color:var(--accent-gold)}
+.disc .tag{font-family:var(--mono);font-size:.58rem;letter-spacing:1.5px;padding:.18rem .55rem;border-radius:99px;border:1px solid var(--accent-cyan);color:var(--accent-cyan);display:inline-block;margin-bottom:.5rem}
+.disc h3{font-size:1.02rem;font-weight:700;margin-bottom:.35rem}
+.disc .meta{font-family:var(--mono);font-size:.62rem;color:var(--accent-gold);letter-spacing:.5px;margin-bottom:.55rem}
+.disc p{font-size:.85rem;color:var(--text-secondary);line-height:1.6}
+
+.unknowns{background:linear-gradient(135deg,rgba(212,175,55,.05),rgba(239,68,68,.05));border:1px dashed var(--accent-gold);border-radius:14px;padding:1.6rem 1.8rem;margin:1.8rem 0}
+.unknowns h3{font-family:var(--mono);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent-gold);margin-bottom:.8rem}
+.unknowns ul{list-style:none}
+.unknowns li{padding:.55rem 0;border-bottom:1px dashed rgba(212,175,55,.18);font-size:.88rem;color:var(--text-secondary);line-height:1.5}
+.unknowns li:last-child{border-bottom:none}
+.unknowns li b{color:var(--text-primary)}
+.unknowns li::before{content:"○ ";color:var(--accent-gold);font-family:var(--mono);margin-right:.4rem}
+
+.intent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.6rem}
+.intent-card{background:var(--bg-panel);border:1px solid var(--border-dim);border-radius:12px;padding:1.4rem 1.5rem;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.intent-card:hover{transform:translateY(-4px);border-color:var(--accent-cyan);box-shadow:0 8px 28px rgba(0,212,170,.12)}
+.intent-card .verb{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-gold);text-transform:uppercase;margin-bottom:.6rem}
+.intent-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.55rem;color:var(--text-primary)}
+.intent-card p{font-size:.84rem;color:var(--text-secondary);flex:1;line-height:1.55}
+.intent-card .arrow{margin-top:.9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:1px;color:var(--accent-cyan)}
+.intent-card .arrow::before{content:"▸ "}
+
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;padding:1rem 1.2rem;margin:1.5rem 0;background:rgba(16,16,24,.5);border:1px dashed var(--border-dim);border-radius:10px}
+.crumbs .crumb{font-family:var(--mono);font-size:.7rem;letter-spacing:.5px;color:var(--text-secondary);padding:.32rem .7rem;border-radius:99px;background:rgba(0,0,0,.3);border:1px solid transparent;text-decoration:none}
+.crumbs .crumb.now{color:var(--accent-gold);border-color:var(--accent-gold);background:rgba(212,175,55,.06);font-weight:600}
+.crumbs .crumb.next{color:var(--accent-cyan);border-color:rgba(0,212,170,.4);background:rgba(0,212,170,.06)}
+.crumbs .sep{color:#55555f;font-size:.7rem}
+
+.collapsible{margin-top:1rem}
+.collapsible > summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--accent-cyan);text-transform:uppercase;padding:.6rem 0;display:flex;align-items:center;gap:.5rem;user-select:none}
+.collapsible > summary::-webkit-details-marker{display:none}
+.collapsible > summary::before{content:"▸";transition:transform .2s;display:inline-block;color:var(--accent-cyan)}
+.collapsible[open] > summary::before{transform:rotate(90deg)}
+.collapsible > summary:hover{color:var(--accent-gold)}
+.collapsible[open] > summary::before{color:var(--accent-gold)}
+.collapsible .body{margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--border-dim)}
+
+.callout{border-left:3px solid var(--accent-gold);padding:.9rem 1.2rem;background:rgba(212,175,55,.05);border-radius:0 8px 8px 0;margin:1.2rem 0;font-size:.92rem;color:var(--text-secondary);line-height:1.6}
+.callout b{color:var(--accent-gold)}
+
+footer{border-top:1px solid var(--border-dim);padding:3rem 2rem 2.4rem;text-align:center}
+footer .doctrine{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;color:var(--accent-gold);margin-bottom:1rem}
+footer p{font-size:.74rem;color:#55555f;max-width:820px;margin:0 auto .4rem}
+footer a{color:var(--text-secondary)}
+footer a:hover{color:var(--accent-cyan)}
+
+@media(min-width:1200px){
+  .toc{position:fixed;top:9rem;right:1.5rem;width:180px;z-index:30;background:rgba(16,16,24,.7);border:1px solid var(--border-dim);border-radius:10px;padding:.9rem 1rem;backdrop-filter:blur(8px);font-size:.7rem}
+  .toc h4{font-family:var(--mono);font-size:.55rem;letter-spacing:1.5px;color:var(--accent-cyan);text-transform:uppercase;margin-bottom:.6rem}
+  .toc a{display:block;padding:.32rem 0;color:var(--text-secondary);text-decoration:none;font-family:var(--mono);font-size:.66rem;letter-spacing:.4px}
+  .toc a:hover{color:var(--accent-gold)}
+  .toc a .num{color:var(--accent-cyan);margin-right:.4rem}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header>
+  <div class="brand">arif-fazil.com <b>/ EARTH</b> · Φ GEOX</div>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="https://arif-fazil.com/earth/" class="back-btn">← BACK TO EARTH</a>
+    <a href="https://geox.arif-fazil.com">GEOX</a>
+    <a href="https://aaa.arif-fazil.com">AAA</a>
+    <a href="https://mcp.arif-fazil.com">MCP</a>
+  </nav>
+</header>
+
+<!-- ══ ZEN PULSE · 3-second orientation ══ -->
+<div class="zen-pulse" aria-label="3-second orientation">
+  <span class="zp"><b>WHERE</b> arif-fazil.com / earth / malay-basin</span>
+  <span class="zp gold"><b>WHY CARE</b> founder's home waters · 13+ years</span>
+  <span class="zp"><b>WHAT NEXT</b> read the tape recorder ↓</span>
+</div>
+
+<main id="main-content">
+
+<aside class="toc" aria-label="Table of contents">
+  <h4>IN THIS DOSSIER</h4>
+  <a href="#tectonic"><span class="num">01</span>TECTONIC EVOLUTION</a>
+  <a href="#stratigraphy"><span class="num">02</span>STRATIGRAPHY</a>
+  <a href="#petroleum"><span class="num">03</span>PETROLEUM SYSTEM</a>
+  <a href="#crosssection"><span class="num">04</span>CROSS-SECTION</a>
+  <a href="#discoveries"><span class="num">05</span>FOUNDER WELLS</a>
+  <a href="#questions"><span class="num">06</span>OPEN QUESTIONS</a>
+</aside>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="container">
+    <div class="kicker">Φ GEOX · MALAY BASIN DOSSIER · OFFSHORE PENINSULAR MALAYSIA</div>
+    <h1>Malay Basin.<br>Home waters.</h1>
+    <p class="lede">A Cenozoic <b>failed rift / pull-apart basin</b> ~500 km long, ~200 km wide, NW–SE trend. The founder's home waters — <b>13+ years</b> reading rocks offshore Peninsular Malaysia. Mature gas province with significant oil in Groups H and I. Eight groups (A youngest → M oldest) tell the story of a basin that sagged, filled, inverted, and still leaks today.</p>
+    <div class="hero-meta">
+      <span class="chip gold">~500 km × ~200 km</span>
+      <span class="chip gold">80,000 km² AREA</span>
+      <span class="chip cyan">3 PRODUCING PLAY TYPES</span>
+      <span class="chip">4 FOUNDER WELLS</span>
+      <span class="chip">GROUP A → M</span>
+      <span class="chip">MATURING GAS PROVINCE</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BREADCRUMB · cognitive ladder ══ -->
+<nav class="container crumbs" aria-label="Where you are">
+  <a class="crumb" href="https://arif-fazil.com/earth/">① Earth / Globe</a>
+  <span class="sep">→</span>
+  <span class="crumb now">② Malay Basin Dossier · you are here</span>
+  <span class="sep">→</span>
+  <a class="crumb next" href="#crosssection">③ Cross-section ↓</a>
+  <span class="sep">→</span>
+  <a class="crumb next" href="/earth/kinabalu-basin/">④ Kinabalu Basin ↗</a>
+</nav>
+
+<!-- ══ SECTION 01 · TECTONIC EVOLUTION ══ -->
+<section id="tectonic">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · 4 ACTS · GROUP A → M</div>
+    <h2><span class="num">01</span>How the basin got here</h2>
+    <p class="lede">The Malay Basin is elongate — NW–SE, parallel to the Peninsular Malaysia coastline. It began as a back-arc rift in the Late Eocene, sagged through the Oligocene–Early Miocene, then <b>inverted</b> in the Middle–Late Miocene when regional compression squeezed the older normal faults into anticlinal traps. The post-inversion Pliocene–Recent phase is a quiet regional subsidence — but the basin is still structurally alive.</p>
+
+    <div class="timeline">
+      <div class="event">
+        <div class="age">L. EOCENE — OLIGOCENE · SYNRIFT</div>
+        <h3>Group L/M · the basin is born</h3>
+        <p>Extensional rift basin formation. Deposition of continental, lacustrine sediment in half-grabens. Source rocks for the entire petroleum system are laid down here. The crust stretches. The basement drops. The lake forms. Dead plankton begin their slow conversion to oil.</p>
+      </div>
+      <div class="event gold">
+        <div class="age">EARLY MIOCENE · TRANSITION</div>
+        <h3>Group K, J, I · sag phase</h3>
+        <p>The rift cools. The basin sags thermally. Fluvial-deltaic systems prograde from the uplifted margins — Group K coarse sandstones at the base, Group J shales, Group I siltstones and coastal-plain sands. This is the first major reservoir package.</p>
+      </div>
+      <div class="event">
+        <div class="age">MIDDLE–LATE MIOCENE · INVERSION</div>
+        <h3>Group H, F, E, D · the squeeze</h3>
+        <p>Regional compression inverts the older normal faults. The faults reverse, pushing the hanging wall up. Anticlinal closures form. The <b>Middle Miocene Anticline Play</b> — the proven, highly successful play of the Malay Basin — is born here. Most of the discovered gas and oil is trapped in these Miocene anticlines.</p>
+      </div>
+      <div class="event gold">
+        <div class="age">PLIOCENE — PRESENT · POST-INVERSION</div>
+        <h3>Group A, B, C · the quiet phase</h3>
+        <p>Regional subsidence. Marine transgression. The basin fills with fine-grained marine sediments. The deformation has stopped, but the basin is still settling and still leaking at the edges. The Western Hinge Fault zone — a NE–SW trending basement fault — is the active focus of the 2024–2025 wildcat campaign.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>The four-act structure</b> is the same shape as the Kinabalu Basin, but the timing is different. Where Kinabalu deformed by collision and obduction, Malay deformed by <b>intra-cratonic inversion</b> — a continent compressing its own back-arc. The result is the same: hydrocarbons trapped in fold-thrust structures, waiting for a drill bit.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 02 · STRATIGRAPHY ══ -->
+<section id="stratigraphy">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · GROUP A (YOUNGEST) → GROUP M (OLDEST)</div>
+    <h2><span class="num">02</span>What's in the section</h2>
+    <p class="lede">Eight named groups, ~6–12 km of total section, hydrocarbon-bearing from top to bottom. The Malay Basin uses a <b>letter scheme</b> (Group A through M) rather than named formations — a PETRONAS convention that organises the section by major transgressive cycles.</p>
+
+    <table class="strat-tbl" aria-label="Stratigraphic column">
+      <thead>
+        <tr>
+          <th>GROUP</th>
+          <th>AGE</th>
+          <th>LITHOLOGY</th>
+          <th>ENVIRONMENT</th>
+          <th>RESERVOIR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>Group A</b></td>
+          <td>Pliocene – Recent</td>
+          <td><span class="lith-dot" style="background:#3b82f6"></span>Marine claystone, sandstone</td>
+          <td>Shallow marine</td>
+          <td>Poor (cap rock mostly)</td>
+        </tr>
+        <tr>
+          <td><b>Group B–C</b></td>
+          <td>Late Miocene – Pliocene</td>
+          <td><span class="lith-dot" style="background:#06b6d4"></span>Claystone, siltstone, sand</td>
+          <td>Deltaic to shallow marine</td>
+          <td>Fair</td>
+        </tr>
+        <tr>
+          <td><b>Group D</b></td>
+          <td>Late Miocene</td>
+          <td><span class="lith-dot" style="background:#10b981"></span>Claystone, sandstone, coal</td>
+          <td>Deltaic to shallow marine</td>
+          <td><b>Excellent</b></td>
+        </tr>
+        <tr>
+          <td><b>Group E</b></td>
+          <td>Late Miocene</td>
+          <td><span class="lith-dot" style="background:#22c55e"></span>Sandstone, siltstone, shale</td>
+          <td>Fluvial-deltaic</td>
+          <td><b>Excellent</b> (Dulang, Angsi)</td>
+        </tr>
+        <tr>
+          <td><b>Group F</b></td>
+          <td>Middle Miocene</td>
+          <td><span class="lith-dot" style="background:#84cc16"></span>Sandstone, claystone, coal</td>
+          <td>Coastal plain to deltaic</td>
+          <td>Good + <b>regional seal</b></td>
+        </tr>
+        <tr>
+          <td><b>Group H</b></td>
+          <td>Early Miocene</td>
+          <td><span class="lith-dot" style="background:#a3e635"></span>Sandstone, shale, coal</td>
+          <td>Lower coastal plain</td>
+          <td>Excellent to Good</td>
+        </tr>
+        <tr>
+          <td><b>Group I</b></td>
+          <td>Early Miocene</td>
+          <td><span class="lith-dot" style="background:#eab308"></span>Siltstone, sandstone, shale</td>
+          <td>Coastal plain to shallow marine</td>
+          <td>Good (Angsi, Sotong)</td>
+        </tr>
+        <tr>
+          <td><b>Group J</b></td>
+          <td>Early Miocene</td>
+          <td><span class="lith-dot" style="background:#d97706"></span>Sandstone, shale</td>
+          <td>Fluvial-deltaic</td>
+          <td>Fair to Good</td>
+        </tr>
+        <tr>
+          <td><b>Group K</b></td>
+          <td>Oligocene – E. Miocene</td>
+          <td><span class="lith-dot" style="background:#ea580c"></span>Coarse sandstone, shale</td>
+          <td>Alluvial plain to lacustrine</td>
+          <td>Fair (deep play)</td>
+        </tr>
+        <tr>
+          <td><b>Group L/M</b></td>
+          <td>Oligocene</td>
+          <td><span class="lith-dot" style="background:#dc2626"></span>Siltstone, shale, conglomerate</td>
+          <td>Lacustrine, alluvial fan</td>
+          <td>Poor (source rock)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details class="collapsible">
+      <summary>For the curious — why the letter scheme?</summary>
+      <div class="body">
+        <div class="prose">
+          <p>The Malay Basin predates the global formation nomenclature. PETRONAS geologists in the 1970s–80s mapped the section from offshore wells and seismic, and assigned <b>letter labels (A through M)</b> from top to bottom, each letter representing a major transgressive cycle. The labels stuck. The advantage: every geoscientist working the basin uses the same scheme, and the letter cycles are visible in well logs as fining-upward / coarsening-upward packages bounded by regional shales.</p>
+          <p>The disadvantage: the letter scheme is opaque to outsiders. There are no formation names like "Crocker" or "Gomantong" to anchor an outsider's mental model. This is one reason the Malay Basin reads as a mature, less-frontier province to non-Malaysian eyes — the geology is well-understood but the naming convention is locally tied.</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ SECTION 03 · PETROLEUM SYSTEM ══ -->
+<section id="petroleum">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · GROUP L/M SOURCE → GROUPS D-J RESERVOIRS</div>
+    <h2><span class="num">03</span>Why there is oil here</h2>
+    <p class="lede">A working petroleum system needs five elements lined up in space and time. The Malay Basin has them all. The proven play is the <b>Middle Miocene Anticline Play</b> (Group E/F reservoirs in anticlinal closures formed by Miocene inversion). Two emerging plays are still being tested.</p>
+
+    <div class="psys-grid">
+      <div class="psys src">
+        <div class="role">SOURCE</div>
+        <h4>Group L/M lacustrine + H/I/J coal</h4>
+        <p>Dual source: Type I/II lacustrine shales (deep kitchens) + Type III/II-III coal and coaly shales (coastal-plain). TOC 1.5–5.0% in coaly shales. Generation onset: Middle Miocene for H/I/J, Early Miocene for L/M.</p>
+      </div>
+      <div class="psys res">
+        <div class="role">RESERVOIR</div>
+        <h4>Groups D, E, F, H, I, J (clastic)</h4>
+        <p>Deltaic to fluvial-deltaic sandstones. Porosity 12–28%, permeability 10–1000 mD. Best fields: Dulang (Group E), Angsi (Groups I/J), Sotong (Groups H/I). Multiple pay zones stacked in single closures.</p>
+      </div>
+      <div class="psys seal">
+        <div class="role">SEAL</div>
+        <h4>Intraformational shales + Group F regional</h4>
+        <p>Group F marine shale is a continuous regional seal, 50–150 m thick. Intraformational shales throughout the section provide local seals. Seal-to-reservoir thickness ratio averages 1.5×.</p>
+      </div>
+      <div class="psys trap">
+        <div class="role">TRAP</div>
+        <h4>Fault-bounded anticlines (inversion)</h4>
+        <p>Middle–Late Miocene compression reversed the older normal faults, pushing hanging walls up into anticlinal closures. Seal-dependence: high (SGR-controlled). Stratigraphic pinchouts provide secondary trap type in Group H/I.</p>
+      </div>
+      <div class="psys mig">
+        <div class="role">MIGRATION</div>
+        <h4>Vertical via faults, lateral via carriers</h4>
+        <p>Vertical migration along fault conduits. Lateral migration along deltaic carrier beds from deep kitchens to shallow anticlinal traps. Timing: Miocene to Present (active today).</p>
+      </div>
+      <div class="psys src" style="border-top-color:#f43f5e">
+        <div class="role" style="color:#f43f5e">KEY EMERGING PLAY</div>
+        <h4>Western Hinge Fault zone (2024–2025)</h4>
+        <p>LEBAH EMAS-1 (2025) opened a new play fairway along the western hinge fault zone. The hinge zone had been considered high-risk; the wildcat proved the play works. PSC awards via MBR+ (Malaysia Bid Round Plus) Round I continue to focus here.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Three plays at three risk levels:</b> the <b>Middle Miocene Anticline Play</b> is proven and highly successful. The <b>Early Miocene Stratigraphic Pinchout Play</b> (Group H/I fluvial sands, channel pinchouts) is emerging with high stratigraphic risk. The <b>Deep Syn-rift Play</b> (Group K/L sandstones, fault-block closures) is high-risk, underexplored — but the 2025 BEKANTAN-1 and PUTERI BASEMENT-1 campaigns are beginning to de-risk it.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 04 · CROSS-SECTION (EMBEDDED) ══ -->
+<section id="crosssection">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · SRTM TOPOGRAPHY + GROUP A→M STRATIGRAPHY · VERTICAL ~32×</div>
+    <h2><span class="num">04</span>See it from the side</h2>
+    <p class="lede">A NW–SE transect across the Malay Basin: from the Peninsular Malaysia onshore to the central basin depocentre. The surface is real SRTM; the bodies are real group assignments with reservoir/seal/source labels. The Western Hinge Fault is the structural divide; the basin axis runs through the centre; the founder wells BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, and BUNGA TASBIH-1 are placed at the positions they actually targeted.</p>
+
+    <div class="xs-embed">
+      <div class="head">
+        <h3>◈ NW–SE Regional Cross-Section</h3>
+        <span class="src">SRTM + GROUP A→M STRATIGRAPHY · 4 FOUNDER WELLS · ANTICLINES + INVERSION</span>
+      </div>
+      <iframe src="/earth/malay-basin-cross-section.html" title="Malay Basin Regional Cross-Section" loading="lazy"></iframe>
+      <div class="foot">
+        <span>Stratigraphy: PETRONAS Group A→M · Tectonics: Cenozoic failed rift + Miocene inversion</span>
+        <a href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener">↗ OPEN FULLSCREEN</a>
+      </div>
+    </div>
+
+    <details class="collapsible">
+      <summary>How to read this section</summary>
+      <div class="body">
+        <div class="prose">
+          <p>Read the section like a tape recorder. The <b>left edge</b> is onshore Peninsular Malaysia (granite basement of the Main Range). The <b>Western Hinge Fault</b> is the structural divide — the place where the basin drops off and the founder's "new play" LEBAH EMAS-1 was drilled in 2025. The <b>central depocentre</b> has the thickest section (~10–12 km). The <b>right edge</b> is the eastern flank, where BEKANTAN-1 (2018) found the shallowest flowing oil and PUTERI BASEMENT-1 (2020) found hydrocarbons in fractured granite beneath the basin fill.</p>
+          <p>Look for the anticlinal closures — the <b>Middle Miocene Anticline Play</b>. These are the proven traps. They sit in Groups D, E, F, H, I. The deeper the closure, the more chance of stratigraphic complications (the Emerging Play).</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ SECTION 05 · FOUNDER WELLS ══ -->
+<section id="discoveries">
+  <div class="container">
+    <div class="kicker">F2 TRUTH · PETRONAS 2018–2025 · MBR+ ROUND I 2024</div>
+    <h2><span class="num">05</span>Founder wells (4) — plays the founder signed off</h2>
+    <p class="lede">Four PETRONAS Carigali wildcats the founder put his name on. Each one opened something — a play, a fairway, a reservoir concept, or a frontier. Together they sketch the recent evolution of the basin.</p>
+
+    <div class="disc-grid">
+      <div class="disc">
+        <span class="tag">SHALLOWEST OIL · 2018</span>
+        <h3>BEKANTAN-1</h3>
+        <div class="meta">MALAY BASIN · PETRONAS · 2018</div>
+        <p>Shallowest flowing oil in the Malay Basin. The well proved that the upper section of the basin (Groups D–F) can deliver producible oil at shallower depths than the standard play. Important for the Small Field Asset PSC economics.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">FRACTURED BASEMENT · 2020</span>
+        <h3>PUTERI BASEMENT-1</h3>
+        <div class="meta">MALAY BASIN · PETRONAS · 2020</div>
+        <p>Fractured basement test — hydrocarbons in <b>fractured granite beneath the main basin fill</b>. This is the analog of the Cuu Long Basin (Vietnam) basement play, applied for the first time to the Malay Basin. The Deep Syn-rift Play needs deep kitchens and a working basement carrier; this well tested both.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">NEW PLAY FAIRWAY · 2025</span>
+        <h3>LEBAH EMAS-1</h3>
+        <div class="meta">MALAY BASIN · PETRONAS · 2025</div>
+        <p>New play wildcat that <b>opened a new play fairway along the western hinge fault zone</b>. The hinge zone had been high-risk; the wildcat proved the play works. PSC awards via MBR+ (Malaysia Bid Round Plus) Round I in 2024 already anticipated this — and now have a working concept to chase.</p>
+      </div>
+      <div class="disc">
+        <span class="tag">SMALL FIELD ASSET · 2024</span>
+        <h3>BUNGA TASBIH-1</h3>
+        <div class="meta">MALAY BASIN · PETRONAS · 2024</div>
+        <p>Small Field Asset PSC award — Malaysia Bid Round Plus (MBR+) Round I. Structural / stratigraphic trap, in the standard Middle Miocene play. The pattern: MBR+ awards small discovered fields to operators who can move them to production fast, lowering the cost of capital for the basin's mature fields.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <b>Reading the four together:</b> 2018 found shallow oil (BEKANTAN-1), 2020 found basement oil (PUTERI BASEMENT-1), 2024 was awarded a small field (BUNGA TASBIH-1), 2025 opened a new hinge fairway (LEBAH EMAS-1). The pattern: <b>mature basin, four different ways to grow</b>. The founder was on each of these sign-off sheets.
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 06 · OPEN QUESTIONS ══ -->
+<section id="questions">
+  <div class="container">
+    <div class="kicker">F7 HUMILITY · UNKNOWN IS A FEATURE, NOT A BUG</div>
+    <h2><span class="num">06</span>What we don't know</h2>
+    <p class="lede">The Malay Basin is mature, but not closed. Four questions are open as of mid-2026. None are blocking, but all of them shape where the next wildcat goes.</p>
+
+    <div class="unknowns">
+      <h3>○ OPEN QUESTIONS · MALAY BASIN · 2026-07</h3>
+      <ul>
+        <li><b>Fault seal risk (SGR)</b> is highly sensitive to clay-content estimates in shale gouges. The fault-bounded anticline trap depends on fault-sealing capacity; one bad gouge estimate and the closure leaks. Mitigation: high-resolution GR logs + petrophysical uncertainty ensembles.</li>
+        <li><b>Deep reservoir quality</b> degrades with depth — compaction and diagenesis reduce permeability in Group K/L below 3,000 m. The deep syn-rift play is real but the reservoir quality is the limiting factor. Mitigation: Faust/Gardner parameter checks calibrated vs core.</li>
+        <li><b>Western Hinge Fault zone</b> was just opened by LEBAH EMAS-1 in 2025. The fairway is new; the play concept is new; PSC blocks are being awarded in real time. The next 12–18 months will determine if this becomes the basin's third major play or stays a one-off.</li>
+        <li><b>Source rock distribution</b> at the deep basin axis is poorly imaged. The Group L/M lacustrine shales are the master source, but their lateral continuity and total organic carbon at depths >5 km is uncertain. Seismic + deep wells are the only path to resolution.</li>
+      </ul>
+    </div>
+
+    <div class="callout">
+      <b>For agents reading this:</b> the unknowns are not weakness — they are the input. A prospect-maturation pipeline (geox.prospect) takes an open question, attaches evidence, and returns a falsifiable plan. The Malay Basin dossier ends here; the next work starts here.
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHERE TO NEXT? · intent cards ══ -->
+<section id="next" style="background:linear-gradient(135deg,rgba(0,212,170,.04),rgba(212,175,55,.04))">
+  <div class="container">
+    <div class="kicker">FIRST 30 SECONDS · PICK A VERB</div>
+    <h2>Where to next?</h2>
+    <p class="lede">Three doors out of the dossier. Pick one — the rest stays out of your way until you ask for it.</p>
+
+    <div class="intent-grid">
+      <a class="intent-card" href="/earth/malay-basin-cross-section.html" target="_blank" rel="noopener" aria-label="Open the cross-section fullscreen">
+        <span class="verb">SEE THE SECTION</span>
+        <h3>Open the cross-section fullscreen.</h3>
+        <p>The SRTM-draped regional section at full width, with the legend, structural symbols, and the four founder wells visible. The same figure the GEOX cockpit pulls when you ask "show me the Malay Basin from the side."</p>
+        <span class="arrow">OPEN FULLSCREEN ↗</span>
+      </a>
+
+      <a class="intent-card" href="/earth/kinabalu-basin/" aria-label="Compare to the Kinabalu Basin dossier">
+        <span class="verb">COMPARE BASINS</span>
+        <h3>Read the Kinabalu dossier.</h3>
+        <p>Two basins, two stories. The Kinabalu Basin (NW Sabah) is a fold-thrust belt shaped by collision. The Malay Basin is an intra-cratonic failed rift. Same country, different tectonics, different plays. Read them side by side.</p>
+        <span class="arrow">↗ KINABALU DOSSIER</span>
+      </a>
+
+      <a class="intent-card" href="https://geox.arif-fazil.com/basins/kinabalu/" aria-label="Open GEOX cockpit">
+        <span class="verb">LAUNCH GEOX</span>
+        <h3>Open the GEOX cockpit.</h3>
+        <p>The prospect-maturation pipeline takes the open questions above, attaches evidence, and returns a falsifiable plan. Source-cited, human-ratified, sealed to VAULT-999.</p>
+        <span class="arrow">OPEN GEOX COCKPIT ↗</span>
+      </a>
+    </div>
+
+    <nav class="crumbs" aria-label="Where to next">
+      <a class="crumb" href="https://arif-fazil.com/earth/">① Earth / Globe</a>
+      <span class="sep">→</span>
+      <span class="crumb now">② Malay Basin Dossier</span>
+      <span class="sep">→</span>
+      <a class="crumb next" href="/earth/malay-basin-cross-section.html">③ Cross-section ↗</a>
+      <span class="sep">→</span>
+      <a class="crumb next" href="/earth/kinabalu-basin/">④ Kinabalu Basin ↗</a>
+    </nav>
+  </div>
+</section>
+
+</main>
+<!-- /#main-content -->
+
+<footer>
+  <div class="doctrine">DITEMPA BUKAN DIBERI</div>
+  <p><b>Provenance:</b> PETRONAS Group A–M stratigraphy (Madon 2013, Ishlah 2015) · Tectonic history (Tjia 1989, Madon 2013) · Play fairways (Scherer 2018) · Founder wells from /earth/data/wells.json (sovereign canon, F10) · <b>13+ years of the founder's own field reading</b>.</p>
+  <p>SRTM topography via <a href="https://open-meteo.com">open-meteo.com</a> · Cross-section is interpretive, not measured — <b>F7 humility: body shapes are schematics, well positions are basin-level not step-out.</b></p>
+  <p>Φ GEOX · an organ of the arifOS federation · <a href="https://arif-fazil.com">arif-fazil.com</a></p>
+</footer>
+
+<script src="/_shared/zen-all.js" defer></script>
+</body>
+</html>
