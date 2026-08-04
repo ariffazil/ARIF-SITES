@@ -1,0 +1,78 @@
+{
+  "schema": "arifos.hold-conditions.v1",
+  "$schema": "https://arif-fazil.com/schemas/v1/hold-conditions.schema.json",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Hold conditions — when action must stop for human sovereign",
+  "token": "888_HOLD",
+  "owner": "F13 SOVEREIGN",
+  "doctrine": "Static law. Agents may propose; they may not clear a HOLD.",
+  "conditions": [
+    {
+      "id": "HOLD_IRREVERSIBLE",
+      "when": "Action is irreversible or R4",
+      "examples": ["rm -rf unknown", "DROP TABLE", "force-push main", "chattr -a on VAULT999"],
+      "clearance": "explicit F13 ACK token + human presence"
+    },
+    {
+      "id": "HOLD_CONSTITUTION_EDIT",
+      "when": "Change to F1–F13 definitions, veto logic, or epistemic tag system",
+      "examples": ["edit floors meaning", "remove withhold-on-fail", "rename risk tier thresholds silently"],
+      "clearance": "888_HOLD + SEAL amendment procedure"
+    },
+    {
+      "id": "HOLD_IDENTITY",
+      "when": "Change to DID, canonical domain, or sovereign owner fields",
+      "examples": ["DID document rotation without notice", "domain transfer"],
+      "clearance": "888_HOLD"
+    },
+    {
+      "id": "HOLD_REDACTION_POLICY",
+      "when": "Public/private or proprietary disclosure boundary change",
+      "examples": ["promote proprietary well coords to public without gate", "weaken vault-never-leaves"],
+      "clearance": "888_HOLD"
+    },
+    {
+      "id": "HOLD_ENDPOINT_SEMANTICS",
+      "when": "Machine endpoint meaning changes without version bump",
+      "examples": ["missions.json missions mean tools", "webmcp tools[] include non-2xx"],
+      "clearance": "version bump minimum; 888_HOLD if binding contract meaning flips"
+    },
+    {
+      "id": "HOLD_MONEY_OR_SECRET",
+      "when": "Money movement, new paid API > $10/mo, secret rotation/exposure",
+      "clearance": "888_HOLD + ACK tokens per autonomy table"
+    },
+    {
+      "id": "HOLD_HARD_FLOOR",
+      "when": "Hard floor would be violated (F1,F2,F7,F9,F10,F11,F12,F13 as HARD)",
+      "verdict": "VOID or 888_HOLD",
+      "clearance": "cannot be cleared by agent autonomy"
+    },
+    {
+      "id": "HOLD_SOFT_TENSION",
+      "when": "Soft floor tension (F5, F6) or low FQ / WELL degradation for high-stakes work",
+      "verdict": "CAUTION or HOLD",
+      "clearance": "shrink scope or human decide"
+    }
+  ],
+  "ack_tokens_examples": [
+    "ACK_M7_ROTATE_DB_SECRET",
+    "ACK_M8_DEPLOY_CANONICAL",
+    "ACK_M10_PUSH_BRANCH",
+    "ACK_M11_VAULT_SEAL",
+    "ACK_HISTORY_REWRITE"
+  ],
+  "agent_must": [
+    "stop_mutation",
+    "surface_reason",
+    "propose_reversible_path",
+    "never_self_clear_888_HOLD"
+  ],
+  "related": {
+    "risk_tiers": "https://arif-fazil.com/.well-known/risk-tiers.json",
+    "static_invariants": "https://arif-fazil.com/.well-known/static-invariants.json",
+    "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json"
+  }
+}

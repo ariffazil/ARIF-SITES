@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/v1/dynamic-invariants.schema.json",
+  "title": "arifOS dynamic-invariants v1",
+  "type": "object",
+  "required": ["schema", "version", "as_of", "domain", "operating_rule", "bound_by", "failure_behavior", "classes"],
+  "properties": {
+    "schema": { "const": "arifos.dynamic-invariants.v1" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "as_of": { "type": "string" },
+    "domain": { "type": "string" },
+    "operating_rule": { "type": "string" },
+    "bound_by": { "type": "string", "format": "uri" },
+    "failure_behavior": {
+      "type": "object",
+      "required": ["default", "never"],
+      "properties": {
+        "default": { "const": "WITHHOLD" },
+        "never": { "const": "INVENT" },
+        "display": { "type": "string" },
+        "log": { "type": "string" }
+      }
+    },
+    "classes": {
+      "type": "object",
+      "required": ["live_pipe_outputs", "evidence_registers", "world_state", "hypothesis_space", "telemetry"],
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "examples": { "type": "array", "items": { "type": "string" } },
+          "provenance_required": { "type": "boolean" },
+          "max_risk": { "type": "string", "pattern": "^R[0-4]_" },
+          "required_epistemic_tags": { "type": "array", "items": { "type": "string" } },
+          "honest_empty_state": { "type": "boolean" }
+        }
+      }
+    },
+    "split_table": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["layer", "static", "dynamic"],
+        "properties": {
+          "layer": { "type": "string" },
+          "static": { "type": "string" },
+          "dynamic": { "type": "string" }
+        }
+      }
+    },
+    "declared_pipes_examples": { "type": "array" },
+    "related": { "type": "object" }
+  },
+  "additionalProperties": true
+}

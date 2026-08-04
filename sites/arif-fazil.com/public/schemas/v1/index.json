@@ -1,0 +1,30 @@
+{
+  "schema": "arifos.schema-index.v1",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Public JSON Schema index for agent contracts",
+  "schemas": [
+    {
+      "id": "static-invariants",
+      "url": "https://arif-fazil.com/schemas/v1/static-invariants.schema.json",
+      "instance": "https://arif-fazil.com/.well-known/static-invariants.json"
+    },
+    {
+      "id": "dynamic-invariants",
+      "url": "https://arif-fazil.com/schemas/v1/dynamic-invariants.schema.json",
+      "instance": "https://arif-fazil.com/.well-known/dynamic-invariants.json"
+    },
+    {
+      "id": "risk-tiers",
+      "url": "https://arif-fazil.com/schemas/v1/risk-tiers.schema.json",
+      "instance": "https://arif-fazil.com/.well-known/risk-tiers.json"
+    },
+    {
+      "id": "hold-conditions",
+      "url": "https://arif-fazil.com/schemas/v1/hold-conditions.schema.json",
+      "instance": "https://arif-fazil.com/.well-known/hold-conditions.json"
+    }
+  ],
+  "operating_rule": "static law · dynamic state · gated action"
+}

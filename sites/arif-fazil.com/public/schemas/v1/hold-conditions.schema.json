@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/v1/hold-conditions.schema.json",
+  "title": "arifOS hold-conditions v1",
+  "type": "object",
+  "required": ["schema", "version", "token", "owner", "conditions", "agent_must"],
+  "properties": {
+    "schema": { "const": "arifos.hold-conditions.v1" },
+    "version": { "type": "string" },
+    "as_of": { "type": "string" },
+    "domain": { "type": "string" },
+    "token": { "const": "888_HOLD" },
+    "owner": { "type": "string" },
+    "doctrine": { "type": "string" },
+    "conditions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "when", "clearance"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^HOLD_" },
+          "when": { "type": "string" },
+          "examples": { "type": "array", "items": { "type": "string" } },
+          "verdict": { "type": "string" },
+          "clearance": { "type": "string" }
+        }
+      }
+    },
+    "ack_tokens_examples": { "type": "array", "items": { "type": "string" } },
+    "agent_must": {
+      "type": "array",
+      "items": { "type": "string" },
+      "contains": { "const": "never_self_clear_888_HOLD" }
+    },
+    "related": { "type": "object" }
+  },
+  "additionalProperties": true
+}

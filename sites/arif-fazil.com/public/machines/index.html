@@ -34,14 +34,35 @@
   <p>This site is a <strong>governed public runtime</strong>, not a brochure. Humans get pages. Agents get contracts. Irreversible action stays human-gated. When a pipe fails, numbers are withheld — not invented.</p>
   <p class="muted">Sovereign: Muhammad Arif bin Fazil · DID <code>did:web:arif-fazil.com</code> · Motto: Ditempa Bukan Diberi</p>
 
+  <h2>Operating rule</h2>
+  <div class="card"><b>Static law · dynamic state · gated action</b><br/>
+  Constitution is bedrock; telemetry is weather. Freeze the laws; let observations move.
+  Index: <a href="/.well-known/invariants.json"><code>/.well-known/invariants.json</code></a></div>
+
   <h2>Five-layer stack</h2>
   <div class="grid">
     <div class="card"><b>Identity</b> — <a href="/.well-known/did.json"><code>/.well-known/did.json</code></a></div>
     <div class="card"><b>Ontology</b> — <a href="/.well-known/territories.json"><code>territories.json</code></a> (EARTH · ECONOMICS · WORLD · DOCTRINE)</div>
     <div class="card"><b>Missions</b> — <a href="/missions.json"><code>/missions.json</code></a> (six verbs, not 128 tools)</div>
-    <div class="card"><b>Permissions</b> — <a href="/.well-known/agent-policy.json"><code>agent-policy.json</code></a> · risk tiers R0–R4</div>
+    <div class="card"><b>Permissions</b> — <a href="/.well-known/agent-policy.json"><code>agent-policy.json</code></a> · <a href="/.well-known/risk-tiers.json">risk tiers R0–R4</a></div>
     <div class="card"><b>Telemetry</b> — <a href="/999/verify"><code>/999/verify</code></a> + AAA seal-chain head</div>
   </div>
+
+  <h2>Static vs dynamic</h2>
+  <table>
+    <thead><tr><th>Keep static (law)</th><th>Keep dynamic (state)</th></tr></thead>
+    <tbody>
+      <tr><td>DID, floors F1–F13, veto, epistemic tags</td><td>Pipe values, health, timestamps</td></tr>
+      <tr><td>Territory names, mission IDs, endpoint meanings</td><td>Entity instances, counts, featured nav</td></tr>
+      <tr><td>Withhold-on-fail · no invented numbers</td><td>Actual measurements when pipes healthy</td></tr>
+      <tr><td>Redaction / public–private boundary</td><td>Published register rows after gate</td></tr>
+      <tr><td>R3/R4 approval gates · 888_HOLD</td><td>Live risk of a specific action instance</td></tr>
+    </tbody>
+  </table>
+  <p class="muted">Specs: <a href="/.well-known/static-invariants.json">static-invariants</a> ·
+  <a href="/.well-known/dynamic-invariants.json">dynamic-invariants</a> ·
+  <a href="/.well-known/hold-conditions.json">hold-conditions</a> ·
+  <a href="/schemas/v1/index.json">JSON schemas</a></p>
 
   <h2>Three zones</h2>
   <div class="zone">
@@ -55,6 +76,12 @@
     <thead><tr><th>Path</th><th>Role</th><th>Stability</th></tr></thead>
     <tbody>
       <tr><td><a href="/.well-known/ai-constitution.json"><code>/.well-known/ai-constitution.json</code></a></td><td>F1–F13, epistemic tags, risk tiers, escalation</td><td>semver · as_of</td></tr>
+      <tr><td><a href="/.well-known/invariants.json"><code>/.well-known/invariants.json</code></a></td><td>Index: static vs dynamic law</td><td>semver · as_of</td></tr>
+      <tr><td><a href="/.well-known/static-invariants.json"><code>static-invariants.json</code></a></td><td>Bedrock: identity, floors, truth, ontology, disclosure</td><td>888_HOLD to change</td></tr>
+      <tr><td><a href="/.well-known/dynamic-invariants.json"><code>dynamic-invariants.json</code></a></td><td>What may move: pipes, registers, hypothesis, telemetry</td><td>WITHHOLD on fail</td></tr>
+      <tr><td><a href="/.well-known/risk-tiers.json"><code>risk-tiers.json</code></a></td><td>R0–R4 + approval gates</td><td>static defs</td></tr>
+      <tr><td><a href="/.well-known/hold-conditions.json"><code>hold-conditions.json</code></a></td><td>When 888_HOLD fires; agents never self-clear</td><td>static</td></tr>
+      <tr><td><a href="/schemas/v1/index.json"><code>/schemas/v1/*</code></a></td><td>JSON Schema for the above contracts</td><td>versioned</td></tr>
       <tr><td><a href="/.well-known/agent-policy.json"><code>/.well-known/agent-policy.json</code></a></td><td>Allowed classes, rates, HARAM patterns, AUP</td><td>semver · as_of</td></tr>
       <tr><td><a href="/.well-known/agent-registry.json"><code>/.well-known/agent-registry.json</code></a></td><td>Named tools/organs, owner, mission, risk, kill switch</td><td>semver · as_of</td></tr>
       <tr><td><a href="/missions.json"><code>/missions.json</code></a></td><td>Six missions · intent classification only</td><td>v1.1+</td></tr>

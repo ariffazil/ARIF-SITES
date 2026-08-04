@@ -1,0 +1,79 @@
+{
+  "schema": "arifos.risk-tiers.v1",
+  "$schema": "https://arif-fazil.com/schemas/v1/risk-tiers.schema.json",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Risk tiers — static classes, dynamic instances",
+  "doctrine": "Tier definitions are static law. Which action maps to which tier may be audited, but thresholds and approval gates do not move without 888_HOLD.",
+  "tiers": [
+    {
+      "id": "R0_read",
+      "name": "Public read",
+      "zone": "public_read",
+      "approval": "auto",
+      "mutable": false,
+      "description": "Static HTML/JSON catalogs and public pages",
+      "examples": ["llms.txt", "missions.json", "earth dossiers", "writing", "did.json"],
+      "invariant_class": "dynamic_payload_ok_static_path"
+    },
+    {
+      "id": "R1_query",
+      "name": "Governed query",
+      "zone": "governed_query",
+      "approval": "auto_if_read_only",
+      "mutable": false,
+      "description": "Live pipe query / compute-only organ calls with cited output",
+      "examples": ["Macrostrat unit query", "USGS feed", "GEOX compute", "gold ticker", "WebMCP GET"],
+      "invariant_class": "dynamic",
+      "on_pipe_fail": "WITHHOLD"
+    },
+    {
+      "id": "R2_publish",
+      "name": "Publish / seal emit",
+      "zone": "restricted_action",
+      "approval": "human_or_sealed_pipeline",
+      "mutable": false,
+      "description": "Emit new public content or vault receipts",
+      "examples": ["publish mission page", "advertise WebMCP tool", "SESSION_RECEIPT"],
+      "invariant_class": "gated"
+    },
+    {
+      "id": "R3_mutate",
+      "name": "Mutate production",
+      "zone": "restricted_action",
+      "approval": "human_required",
+      "mutable": false,
+      "description": "Change production state, configs, catalogs, routes",
+      "examples": ["surfaces.json path change", "Caddy route", "organ deploy restart"],
+      "invariant_class": "gated"
+    },
+    {
+      "id": "R4_irreversible",
+      "name": "Irreversible",
+      "zone": "restricted_action",
+      "approval": "888_HOLD",
+      "mutable": false,
+      "description": "Deletion, force-push, secret rotation, money, DROP",
+      "examples": ["rm -rf", "git push --force main", "DROP TABLE", "paid API > $10/mo", "constitution floor edit"],
+      "invariant_class": "hold"
+    }
+  ],
+  "approval_gates": {
+    "R0_read": "auto",
+    "R1_query": "auto_if_read_only",
+    "R2_publish": "human_or_sealed_pipeline",
+    "R3_mutate": "human_required",
+    "R4_irreversible": "888_HOLD"
+  },
+  "haram": [
+    "changing_tier_thresholds_without_notice",
+    "labeling_write_as_R0_or_R1",
+    "auto_approving_R3_or_R4"
+  ],
+  "related": {
+    "hold_conditions": "https://arif-fazil.com/.well-known/hold-conditions.json",
+    "static_invariants": "https://arif-fazil.com/.well-known/static-invariants.json",
+    "constitution": "https://arif-fazil.com/.well-known/ai-constitution.json"
+  }
+}

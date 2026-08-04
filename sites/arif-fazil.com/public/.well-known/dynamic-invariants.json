@@ -1,0 +1,114 @@
+{
+  "schema": "arifos.dynamic-invariants.v1",
+  "$schema": "https://arif-fazil.com/schemas/v1/dynamic-invariants.schema.json",
+  "version": "1.0.0",
+  "as_of": "2026-08-04",
+  "domain": "arif-fazil.com",
+  "title": "Dynamic invariants — what must move with reality",
+  "operating_rule": "static law · dynamic state · gated action",
+  "motto": "Dynamic does not mean unconstrained; it means pipe-sourced, provenance-bound, failure-defined.",
+  "change_class": "R0_read_or_R1_query",
+  "bound_by": "https://arif-fazil.com/.well-known/static-invariants.json",
+  "failure_behavior": {
+    "default": "WITHHOLD",
+    "never": "INVENT",
+    "display": "UNVERIFIED or omit field",
+    "log": "pipe status strip / telemetry"
+  },
+  "classes": {
+    "live_pipe_outputs": {
+      "description": "External system feeds at load or query time",
+      "examples": [
+        "Macrostrat geologic tiles and stats",
+        "USGS earthquake 24h feed",
+        "API health and tile HEAD checks",
+        "live counters (quakes/24h, columns, packages)",
+        "timestamps and pipe clocks"
+      ],
+      "provenance_required": true,
+      "max_risk": "R1_query"
+    },
+    "evidence_registers": {
+      "description": "Counts and lists computed from authoritative registers",
+      "examples": [
+        "studies.json public count",
+        "wells.json public well count",
+        "dossier publication status",
+        "tool live/deferred status in webmcp"
+      ],
+      "provenance_required": true,
+      "max_risk": "R1_query",
+      "honest_empty_state": true
+    },
+    "world_state": {
+      "description": "Maps, events, and publication-gated additions",
+      "examples": [
+        "globe geology render",
+        "plate activity overlays",
+        "recent earthquakes",
+        "new wells/studies after publication gate"
+      ],
+      "provenance_required": true,
+      "max_risk": "R1_query"
+    },
+    "hypothesis_space": {
+      "description": "Scenarios and provisional verdicts — never presented as OBS fact",
+      "examples": [
+        "prospect scenarios",
+        "basement models",
+        "scored alternatives",
+        "verification plans",
+        "verdict revisions"
+      ],
+      "required_epistemic_tags": ["HYPOTHESIS", "PLAUSIBLE", "ESTIMATE", "INT", "SPEC"],
+      "max_risk": "R1_query",
+      "forbidden_presentation": "as sealed OBS without source"
+    },
+    "telemetry": {
+      "description": "Runtime health and observability",
+      "examples": [
+        "epoch stamps",
+        "pipe status (ok/wait/bad)",
+        "last refresh time",
+        "organ health probes",
+        "seal-chain head witness"
+      ],
+      "max_risk": "R1_query"
+    },
+    "navigation_emphasis": {
+      "description": "Featured content without changing constitution",
+      "examples": [
+        "featured dossiers",
+        "latest writing",
+        "current focal surfaces",
+        "mission highlights"
+      ],
+      "max_risk": "R2_publish",
+      "note": "Publishing new features may require human or sealed pipeline"
+    }
+  },
+  "split_table": [
+    { "layer": "identity", "static": "domain, DID, owner, organ names", "dynamic": "availability, last-seen health, uptime" },
+    { "layer": "constitution", "static": "F1–F13, epistemic tags, 888_HOLD, veto, risk classes", "dynamic": "telemetry values, review timestamps, audit status" },
+    { "layer": "ontology", "static": "territory names, entity types, schema keys", "dynamic": "entity instances, counts, links, freshness" },
+    { "layer": "truth_policy", "static": "pipe-first, cite, withhold, no invent", "dynamic": "actual pipe values and measurements" },
+    { "layer": "public_registers", "static": "field defs, publication rules, redaction rules", "dynamic": "studies list, dossier count, new records" },
+    { "layer": "agent_interfaces", "static": "paths, contracts, version semantics", "dynamic": "payloads, active tools, live manifests" },
+    { "layer": "human_pages", "static": "narrative spine and doctrine wording", "dynamic": "latest articles, featured work, live examples" }
+  ],
+  "declared_pipes_examples": [
+    { "id": "pipe:macrostrat", "url": "https://macrostrat.org/api/v2", "surface": "/earth", "on_fail": "WITHHOLD" },
+    { "id": "pipe:usgs_quakes", "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", "surface": "/earth", "on_fail": "WITHHOLD" },
+    { "id": "pipe:pb2002", "path": "/earth/data/plates/", "surface": "/earth", "on_fail": "WITHHOLD" },
+    { "id": "pipe:wells_canon", "path": "/earth/data/wells.json", "surface": "/earth", "on_fail": "WITHHOLD" },
+    { "id": "pipe:studies", "path": "/earth/data/studies.json", "surface": "/earth", "on_fail": "honest empty / UNVERIFIED" },
+    { "id": "pipe:gold_ticker", "path": "/wealth/gold/api/gold/ticker", "surface": "economics", "on_fail": "WITHHOLD" },
+    { "id": "pipe:vault_verify", "path": "/999/verify", "surface": "doctrine", "on_fail": "report fail, do not fake SEAL" }
+  ],
+  "related": {
+    "static_invariants": "https://arif-fazil.com/.well-known/static-invariants.json",
+    "risk_tiers": "https://arif-fazil.com/.well-known/risk-tiers.json",
+    "hold_conditions": "https://arif-fazil.com/.well-known/hold-conditions.json",
+    "invariants_index": "https://arif-fazil.com/.well-known/invariants.json"
+  }
+}
