@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<!-- page: earth v3 · Φ GEOX · arif-fazil.com/earth · zen-clarity-audit 2026-07-30
+     content-marker: dynamic-earth-Φ wells-Φ studies-Φ · unhidden deep-time · sticky-toc -->
+<html lang="en" data-ring="ORGAN" data-organ="geox">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/_shared/design-system/tokens.css">
+<link rel="stylesheet" href="/_shared/design-system/components.css">
+<title>EARTH — The Dynamic Planet | Arif Fazil</title>
+<meta name="description" content="The living Earth, rendered live: Macrostrat global geologic map on an interactive globe, plate boundaries, today's earthquakes, and the well portfolio of an exploration geoscientist who spent 13+ years reading rocks offshore Malaysia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/earth/_shared/earth.css">
+<style>
+/* ── PAGE-SPECIFIC: Globe, Hero, Deck, Veil, Pipes, Unit Panel ── */
+
+/* hero / globe */
+.hero{position:relative;height:100vh;min-height:640px}
+#globeViz{position:absolute;inset:0;cursor:crosshair}
+.hero-title{position:absolute;top:5.2rem;left:2rem;z-index:10;max-width:520px;pointer-events:none}
+.hero-title .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:3px;color:var(--accent-cyan);margin-bottom:.6rem}
+.hero-title h1{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:800;line-height:1.05;
+  background:linear-gradient(135deg,#fff 30%,var(--accent-gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-title p{margin-top:.8rem;color:var(--text-secondary);font-size:.95rem;max-width:420px}
+.hero-title .hint{font-family:var(--mono);font-size:.68rem;color:var(--accent-gold);margin-top:.7rem;letter-spacing:.5px}
+
+/* control deck */
+.deck{position:absolute;top:5.2rem;right:2rem;z-index:10;width:230px;background:rgba(16,16,24,.88);border:1px solid var(--border-dim);
+  border-radius:var(--radius-md);padding:1rem 1.1rem;backdrop-filter:blur(10px)}
+.deck h4{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--text-secondary);margin-bottom:.7rem;text-transform:uppercase}
+.deck label{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--text-primary);padding:.28rem 0;cursor:pointer;user-select:none}
+.deck input[type=checkbox]{accent-color:var(--accent-cyan);width:14px;height:14px;cursor:pointer}
+.deck .seg{display:flex;gap:.4rem;margin:.7rem 0 .2rem}
+.deck .seg button{flex:1;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;padding:.4rem 0;border-radius:var(--radius-sm);cursor:pointer;
+  background:transparent;border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
+.deck .seg button.on{border-color:var(--accent-cyan);color:var(--accent-cyan)}
+.deck .waypoints{margin-top:.7rem;display:flex;flex-direction:column;gap:.35rem}
+.deck .waypoints button{font-family:var(--mono);font-size:.62rem;text-align:left;letter-spacing:.5px;padding:.42rem .6rem;border-radius:var(--radius-sm);cursor:pointer;
+  background:transparent;border:1px solid var(--border-dim);color:var(--text-secondary);transition:all .2s}
+.deck .waypoints button:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
+
+/* pipe status strip */
+.pipes{position:absolute;left:2rem;bottom:1.2rem;z-index:10;font-family:var(--mono);font-size:.62rem;letter-spacing:.5px;
+  color:var(--text-secondary);background:rgba(16,16,24,.85);border:1px solid var(--border-dim);border-radius:8px;padding:.5rem .8rem;display:flex;gap:1.1rem;flex-wrap:wrap}
+.pipes .ok{color:var(--accent-cyan)}
+.pipes .bad{color:var(--accent-rust)}
+.pipes .wait{color:var(--accent-gold)}
+
+/* unit panel (click-to-query popup) */
+#unitPanel{position:absolute;right:2rem;bottom:1.2rem;z-index:11;width:320px;background:rgba(16,16,24,.92);border:1px solid var(--border-dim);
+  border-radius:var(--radius-md);padding:1rem 1.2rem;backdrop-filter:blur(10px);display:none}
+#unitPanel.show{display:block;animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#unitPanel .close{position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1rem}
+#unitPanel .close:hover{color:var(--accent-gold)}
+#unitPanel .src{font-family:var(--mono);font-size:.58rem;letter-spacing:1px;color:var(--accent-cyan);text-transform:uppercase}
+#unitPanel h3{font-size:1.02rem;font-weight:600;margin:.35rem 0 .15rem;line-height:1.3}
+#unitPanel .swatch{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:.4rem;vertical-align:baseline}
+#unitPanel .age{font-family:var(--mono);font-size:.74rem;color:var(--accent-gold);margin:.2rem 0 .5rem}
+#unitPanel .lith{font-size:.8rem;color:var(--text-secondary)}
+#unitPanel .ref{margin-top:.6rem;font-size:.64rem;color:#666672;font-style:italic;line-height:1.4}
+#unitPanel .coords{font-family:var(--mono);font-size:.6rem;color:var(--text-dim);margin-top:.5rem}
+#unitPanel .ocean h3{color:var(--accent-cyan)}
+#unitPanel .kv{display:flex;gap:.5rem;font-size:.76rem;padding:.12rem 0}
+#unitPanel .kv b{font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;min-width:74px;padding-top:.15rem}
+#unitPanel .withheld{margin-top:.55rem;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--accent-gold);border:1px dashed rgba(212,175,55,.45);border-radius:var(--radius-sm);padding:.35rem .5rem}
+
+/* loading veil */
+#veil{position:absolute;inset:0;z-index:40;background:var(--bg-deep);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;transition:opacity .6s}
+#veil.gone{opacity:0;pointer-events:none}
+#veil .spin{width:38px;height:38px;border:2px solid var(--border-dim);border-top-color:var(--accent-gold);border-radius:50%;animation:sp 1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#veil p{font-family:var(--mono);font-size:.68rem;letter-spacing:2px;color:var(--text-secondary)}
+
+/* ── Mobile ── */
+@media(max-width:720px){
+  .deck{top:auto;bottom:1rem;right:1rem;width:200px}.hero-title{left:1rem;right:1rem}
+  .pipes{left:1rem;bottom:auto;top:5.2rem;max-width:46vw;font-size:.55rem}
+  #unitPanel{left:1rem;right:1rem;width:auto}
+}
+/* ── Nav separator + organ links (human-first design) ── */
+.nav-sep{width:1px;height:18px;background:var(--border-dim);margin:0 .2rem;flex-shrink:0}
+.nav-organ{font-size:.62rem !important;opacity:.6;letter-spacing:.8px !important}
+.nav-organ:hover{opacity:1}
+@media(max-width:720px){.nav-sep{display:none}.nav-organ{display:none}}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<!-- ══ HEADER · human verbs first, organ links secondary ══ -->
+<header class="earth-header">
+  <div class="earth-brand">arif-fazil.com<b>/ EARTH</b></div>
+  <nav class="earth-nav" aria-label="Earth navigation">
+    <a href="#top" class="active">◈ Globe</a>
+    <a href="#dossiers">Read</a>
+    <a href="#deeptime">See</a>
+    <a href="#geox">Tools</a>
+    <a href="/earth/map/">Map</a>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <a href="https://geox.arif-fazil.com" class="nav-organ" title="GEOX organ — agent tools">GEOX</a>
+    <a href="https://arif-fazil.com" class="nav-organ" title="arif-fazil.com home">Home</a>
+  </nav>
+</header>
+
+<!-- ══ STICKY EARTH TOC · mirrors header verbs ══ -->
+<nav class="earth-toc" aria-label="On this page" id="earthToc">
+  <a href="#top" class="nav-globe active">◈ Globe</a>
+  <a href="#what">What Can I Do</a>
+  <a href="#real">Why Real</a>
+  <a href="#dynamic">Dynamic Earth</a>
+  <a href="#deeptime">Deep Time</a>
+  <a href="#malay">Malay Basin</a>
+  <a href="#dossiers">Dossiers</a>
+  <a href="#geox">Cockpits</a>
+  <a href="#studies">Studies</a>
+  <a href="/earth/map/">Map</a>
+</nav>
+
+<main id="main-content">
+
+<!-- ══ HERO · LIVING GLOBE ══ -->
+<div class="hero" id="top">
+  <div id="globeViz"></div>
+
+  <div class="hero-title">
+    <div class="kicker">EARTH INTELLIGENCE · LIVE</div>
+    <h1>The Dynamic<br>Earth.</h1>
+    <p>This is not a picture of the planet. It is the planet — the global geologic map streamed live from the Macrostrat pipeline, the plates that carry it, and the earthquakes it produced today.</p>
+    <blockquote style="margin-top: 1rem; border-left: 2px solid #D4A853; padding-left: 0.8rem; font-style: italic; font-size: 0.82rem; color: #d0d0d8; line-height: 1.4; background: rgba(16,16,24,0.6); padding-top: 0.4rem; padding-bottom: 0.4rem; border-radius: 0 4px 4px 0;">
+      "Look again at that dot. That's here. That's home. That's us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives... on a mote of dust suspended in a sunbeam."
+      <div style="font-style: normal; font-size: 0.72rem; color: #D4A853; margin-top: 0.3rem; font-weight: 600;">— Carl Sagan, <em>Pale Blue Dot</em> (1994)</div>
+    </blockquote>
+    <div class="hint">▸ CLICK ANYWHERE ON LAND — ASK THE ROCKS WHAT THEY ARE · ◈ <span id="wellCount">…</span> WELLS MAPPED</div>
+  </div>
+
+  <div class="deck">
+    <h4>Layers</h4>
+    <label><input type="checkbox" id="lyrWells" checked> My wells</label>
+    <label><input type="checkbox" id="lyrPlates" checked> Plate boundaries</label>
+    <label><input type="checkbox" id="lyrMotion"> Plate motion (schematic)</label>
+    <label><input type="checkbox" id="lyrQuakes" checked> Earthquakes · 24 h</label>
+    <div class="seg">
+      <button id="baseGeo" class="on">GEOLOGY</button>
+      <button id="baseSat">SATELLITE</button>
+    </div>
+    <div class="waypoints">
+      <button id="wpWells" data-pov="">◈ My wells · Malay Basin</button>
+      <button data-pov="6.0,115.5,2.0">◈ Kinabalu Basin · NW Sabah</button>
+      <button data-pov="7.4,113.8,2.2">◈ Layang-Layang · deepwater frontier</button>
+      <button data-pov="4.0,103.8,1.6">◈ Malay Basin · home waters</button>
+      <button data-pov="12.5,45.0,2.2">◈ Afar · a rift being born</button>
+      <button data-pov="-20.0,165.0,2.4">◈ Tonga · the fastest trench</button>
+      <button data-pov="38.0,-105.0,2.6">◈ Rockies · an old orogeny</button>
+    </div>
+  </div>
+
+  <div class="pipes" id="pipes">
+    <span id="pipeTiles" class="wait">TILES …</span>
+    <span id="pipeApi" class="wait">MACROSTRAT API …</span>
+    <span id="pipeUsgs" class="wait">USGS FEED …</span>
+    <span id="pipePlates" class="wait">PLATES …</span>
+    <span id="pipeWells" class="wait">WELLS …</span>
+    <span id="pipeClock">—</span>
+  </div>
+
+  <div id="unitPanel"></div>
+  <div id="veil"><div class="spin"></div><p>FORGING GLOBE · PULLING PIPES</p></div>
+</div>
+
+<!-- ══ ZEN PULSE · 3-second orientation ══ -->
+<div class="zen-pulse" aria-label="3-second orientation">
+  <span class="zp"><b>WHERE</b> arif-fazil.com / earth</span>
+  <span class="zp gold"><b>WHY CARE</b> live globe · evidence-gated rocks</span>
+  <span class="zp"><b>WHAT NEXT</b> click the planet · ask the rocks</span>
+  <span class="zp"><b>F2 TRUTH</b> numbers from pipes, not invented</span>
+</div>
+
+<!-- ══ WHAT CAN I DO HERE? · intent cards · ABOVE the fold for cognitive onboarding ══ -->
+<section id="what" aria-label="What can I do here">
+  <div class="container">
+    <div class="kicker">FIRST 30 SECONDS · PICK A VERB</div>
+    <h2>What can I do here?</h2>
+    <p class="lede">Three doors into a living Earth. Pick one — the rest stays out of your way until you ask for it.</p>
+
+    <div class="intent-grid">
+      <a class="intent-card" href="#top" aria-label="Explore Earth - click anywhere on land">
+        <span class="verb">EXPLORE EARTH</span>
+        <h3>Click the planet.</h3>
+        <p>Drop a pin anywhere on land. Get back the mapped bedrock unit, its age, and the source it was published in. Macrostrat pipe, queried in real time, sealed on the page.</p>
+        <span class="arrow">SCROLL UP · CLICK THE GLOBE</span>
+      </a>
+
+      <a class="intent-card" href="#dossiers" aria-label="Explore Basins - read geology history">
+        <span class="verb">EXPLORE BASINS</span>
+        <h3>Read the tape recorder.</h3>
+        <p>The crust sags. The sag fills. Dead plankton becomes oil. Walk the Malay and Kinabalu basins through the lens of wells this founder actually signed off on.</p>
+        <span class="arrow">OPEN BASIN DOSSIERS ↓</span>
+      </a>
+
+      <a class="intent-card" href="https://geox.arif-fazil.com/" aria-label="Open GEOX - evidence engine">
+        <span class="verb">OPEN GEOX</span>
+        <h3>Question → evidence.</h3>
+        <p>The agentic Earth engine. Query the bedrock, witness the wells, run the prospect, price the consequence. Every answer from a pipe.</p>
+        <span class="arrow">LAUNCH GEOX ↗</span>
+      </a>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ══ LIVE EXAMPLE ══ -->
+<section id="example" aria-label="Live example - what clicking the Earth returns">
+  <div class="container">
+    <div class="kicker">SHOW ME WHAT HAPPENS · A REAL QUERY</div>
+    <h2>Click Sabah. Here is what comes back.</h2>
+    <p class="lede">No marketing copy. This is a live query against the Macrostrat pipe at <b>6.08°N, 116.72°E</b> — the NW Sabah continental shelf, the same coordinates the founder drilled on.</p>
+
+    <div class="example-panel">
+      <div class="term">
+        <div class="dots"><i></i><i></i><i></i></div>
+        <span class="label">geox.macrostrat · click-to-query</span>
+        <div class="query">
+          <span class="c-dim">$</span> geox.macrostrat --query <span class="c-cyan">6.08,116.72</span><br>
+          <span class="c-cyan">▸ lat</span>    : 6.0814°N<br>
+          <span class="c-cyan">▸ lng</span>    : 116.7241°E<br>
+          <span class="c-cyan">▸ buffer</span> : 3 km<br>
+          <span class="c-cyan">▸ pipe</span>   : macrostrat.org/api/v2<span class="cursor"></span>
+        </div>
+      </div>
+      <div class="result">
+        <span class="src">geox.macrostrat · live from pipe</span>
+        <h3><span class="swatch"></span>Crocker Formation · deep-water turbidites</h3>
+        <div class="age">23.0 – 5.3 Ma · Miocene</div>
+        <p class="lith">Sandstone interbedded with mudstone — deep-water turbidite fan, deposited along the Oligocene–Miocene margin of the South China Sea.</p>
+        <div class="ref">source: Tate (1991) · CC-BY · Geological Survey of Malaysia Memoir 19 · doi:10.13140/RG.2.2.11456.87040</div>
+        <div class="coords">6.0814°, 116.7241° · macrostrat.org/api/v2 · CC-BY 4.0</div>
+        <span class="seal">✓ 999_SEAL · pipe-verified · human-ratified</span>
+      </div>
+    </div>
+
+    <nav class="crumbs" aria-label="Where you are on this page">
+      <span class="crumb now">① Planet · you are here</span>
+      <span class="sep">→</span>
+      <span class="crumb">② What am I seeing? · mapped bedrock</span>
+      <span class="sep">→</span>
+      <span class="crumb">③ How does it work? · Macrostrat pipe</span>
+      <span class="sep">→</span>
+      <span class="crumb">④ Why does it matter? · sealed evidence</span>
+      <span class="sep">→</span>
+      <span class="crumb">⑤ below · the cockpit</span>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ WHY THIS IS THE REAL EARTH ══ -->
+<section id="real">
+  <div class="container">
+    <div class="kicker">F2 · TRUTH — NUMBERS FROM PIPES, NOT WEIGHTS</div>
+    <h2>Why this is the real Earth</h2>
+    <p class="lede">Every color on that globe is a <b>mapped rock unit</b>, not a texture. The tiles come from <b>Macrostrat</b> — a living, open geoinformatics system that harmonizes hundreds of published geologic maps into one queryable model of Earth's upper crust. When you click the globe, the answer comes back from the same API the research community uses, with the map source cited. The counters below are read from the pipes when this page loads — if a pipe dies, the number is withheld, not invented.</p>
+    <div class="stat-grid">
+      <div class="stat"><div class="num" id="stCols">—</div><div class="lbl">Geologic columns</div><div class="src">macrostrat.org/api/v2/stats · live</div></div>
+      <div class="stat"><div class="num" id="stPkgs">—</div><div class="lbl">Stratigraphic packages</div><div class="src">macrostrat.org/api/v2/stats · live</div></div>
+      <div class="stat"><div class="num" id="stMeas">—</div><div class="lbl">Measurements on record</div><div class="src">macrostrat.org/api/v2/stats · live</div></div>
+      <div class="stat"><div class="num gold" id="stQuakes">—</div><div class="lbl">Earthquakes · last 24 h</div><div class="src">earthquake.usgs.gov · live feed</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DYNAMIC EARTH · three readings ══ -->
+<section id="dynamic">
+  <div class="container">
+    <div class="kicker">THE PLANET IS A MACHINE, NOT A MONUMENT</div>
+    <h2>Dynamic Earth — three readings of the same globe</h2>
+    <p class="lede">A geologic map looks still. It is not. It is a <b>slow-motion photograph of a running engine</b> — every unit on it is mid-journey between being made, being buried, and being destroyed.</p>
+
+    <div class="acts">
+      <div class="act">
+        <div class="no">READING 01 · SPACE</div>
+        <h3>The ground moves</h3>
+        <p>The cyan lines on the globe are <b>plate boundaries</b>. The plates they bound slide past, under, and away from each other at <b>1–10 cm per year</b> — fingernail speed, continental consequence. The gold points are <b>today's earthquakes</b>: the machine's exhaust, reported by the USGS within minutes. Load this page tomorrow and the planet will have moved again.</p>
+      </div>
+      <div class="act">
+        <div class="no">READING 02 · TIME</div>
+        <h3>The map is deep time</h3>
+        <p>Click the globe and the answer carries an age — <b>millions to billions of years</b>. The oldest Macrostrat units approach <b>4,000 Ma</b>; the youngest are younger than our species. One pixel on this globe can hold a Triassic granite intruded while the first dinosaurs walked, wearing a skin of Quaternary soil laid down last ice age. The map is not what the Earth is. It is <b>what the Earth has survived</b>.</p>
+      </div>
+      <div class="act">
+        <div class="no">READING 03 · RECORD</div>
+        <h3>Basins are the memory</h3>
+        <p>Where the crust stretches, it sags, and the sag fills with sediment — layer on layer, a tape recorder of climate, sea level, and life. Buried deep enough, dead plankton becomes <b>oil and gas</b>. Every basin on this globe is a chapter; the <b>Malay Basin</b>, where this federation's founder spent 13+ years reading rocks offshore Malaysia, is one of them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEEP TIME · UNHIDDEN — this IS the point of geology ══ -->
+<section id="deeptime">
+  <div class="container">
+    <div class="kicker">4.567 BILLION YEARS · THE PLANET IS A TIME MACHINE</div>
+    <h2>Deep time — the 4-billion-year tape recorder</h2>
+    <p class="lede">Geology is the only science whose laboratory is a planet and whose stopwatch is a billion years. Every rock on that globe is <b>mid-journey</b> between being made, being buried, and being destroyed. The bar below is the entire history of Earth, linear scale. All of written human history fits in the last <b>0.0001%</b> — thinner than the line that ends it.</p>
+
+    <div class="deeptime">
+      <div class="bar" title="Linear scale, Ma before present">
+        <div class="e" style="width:12.4%;background:#8a4b8f">HADEAN<small>4567–4000 Ma</small></div>
+        <div class="e" style="width:32.8%;background:#c23b6e">ARCHEAN<small>4000–2500 Ma</small></div>
+        <div class="e" style="width:42.8%;background:#d4af37">PROTEROZOIC<small>2500–539 Ma</small></div>
+        <div class="e" style="width:12%;background:#00d4aa">PHANEROZOIC<small>539–0 Ma · us</small></div>
+      </div>
+      <div class="scale"><span>4567 Ma · accretion</span><span>linear scale</span><span>0 · today</span></div>
+      <p class="eon-note">All of written human history fits in the last <b>0.0001%</b> of that bar — thinner than the line that ends it. Humility is not a posture here; it is a measurement. <b>Ω₀ ≈ 0.04.</b></p>
+    </div>
+
+    <details class="collapsible" style="margin-top:2rem">
+      <summary>For the extra curious · how we know these ages</summary>
+      <div class="body">
+        <p class="prose">The Hadean–Archean boundary (~4,000 Ma) is marked by the oldest known rocks on Earth: the Acasta Gneiss in Canada's Slave Craton (4.03 Ga). The Archean–Proterozoic boundary (~2,500 Ma) coincides with the Great Oxidation Event — free oxygen first appearing in the atmosphere, a signature of cyanobacterial photosynthesis. The Proterozoic–Phanerozoic boundary (539 Ma) is the Cambrian Explosion: within ~20 million years, almost every animal body plan we know appears in the fossil record. We are 539 million years into the Phanerozoic and about 300,000 years into <i>Homo sapiens</i>. The bar is not fair — and that is the lesson.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══ MALAY BASIN CASE STUDY · UNHIDDEN — the founder's expertise ══ -->
+<section id="malay">
+  <div class="container">
+    <div class="kicker">CASE STUDY · THE FOUNDER'S HOME WATERS</div>
+    <h2>◈ The Malay Basin — a tape recorder that became a gas province</h2>
+    <p class="lede">The globe opens looking at the <b>Malay Basin</b> for a reason. This is where the founder spent 13+ years reading rocks offshore Peninsular Malaysia. What follows is the basin's story — from tectonic birth to petroleum system to the wells that proved it.</p>
+
+    <div class="basin-callout">
+      <div>
+        <h3>How a sag becomes a province</h3>
+        <p>In the Oligo–Miocene, the Sundaland crust stretched in a back-arc setting, faults dropped the basement into half-grabens, and ~30 million years of sediment poured in — lacustrine source rocks at the base, fluvio-deltaic reservoirs above, all sealed by marine mudstones as the sea returned.</p>
+        <p>Heat did the rest. The tape-recorder became a <b>petroleum system</b>: one of Southeast Asia's great gas provinces. Reading that record — seismic, well logs, geochemistry — is what an exploration geoscientist does, and it is the human craft the GEOX agentic engine: <b>evidence-gated, human-decided.</b></p>
+        <p>In 2025, the LEBAH EMAS-1 wildcat opened a <b>new play fairway</b> along the Western Hinge Fault — proof that even a mature basin can surprise you. The four founder wells below are the ones the sovereign actually signed off on. Their coordinates are withheld; their existence is witness enough.</p>
+      </div>
+      <div class="facts">
+        <div><span>setting</span> · back-arc extension, Sundaland</div>
+        <div><span>age</span> · Oligocene–Recent fill</div>
+        <div><span>dimensions</span> · ~500 km × ~200 km, NW-SE trend</div>
+        <div><span>fill</span> · &gt;12 km in deep centres</div>
+        <div><span>stratigraphy</span> · Groups A→M (lacustrine → deltaic → marine)</div>
+        <div><span>system</span> · lacustrine source → deltaic reservoir → marine seal</div>
+        <div><span>trap</span> · Middle Miocene anticlines + Western Hinge Fault</div>
+        <div><span>today</span> · mature gas province, offshore MY/TH/VN margin</div>
+        <div><span>founder wells</span> · BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</div>
+      </div>
+    </div>
+
+    <nav class="crumbs" style="margin-top:2rem" aria-label="Basin navigation">
+      <a class="crumb now" href="/earth/malay-basin/">◈ Malay Basin Dossier — full 6-section report</a>
+      <span class="sep">|</span>
+      <a class="crumb next" href="/earth/malay-basin-cross-section.html">Cross-Section — NW-SE transect, 4 founder wells</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ BASIN DOSSIERS ══ -->
+<section id="dossiers" aria-label="Basin dossiers">
+  <div class="container">
+    <div class="kicker">EVIDENCE REGISTER</div>
+    <h2>Basin dossiers</h2>
+    <p class="lede">The globe shows you a continent. The dossiers show you <b>one basin at a time</b> — tectonic evolution, stratigraphy, petroleum system, and the cross-section that ties them together. Every dossier is sourced, dated, and honest about what is not known.</p>
+
+    <div class="dossier-grid">
+      <!-- KINABALU BASIN -->
+      <div class="dossier-card">
+        <div class="dossier-head">
+          <span class="dossier-tag gold">FEATURED · NW SABAH</span>
+          <span class="dossier-status">● LIVE</span>
+        </div>
+        <a href="/earth/kinabalu-basin/" style="text-decoration:none;color:inherit"><h3>◈ Kinabalu Basin</h3></a>
+        <p class="dossier-subtitle">One of three producing basins in Malaysia. Offshore NW Sabah, fold-thrust belt, post-MMU clastic play. SRTM-draped cross-section with USGS-standard lithology patterns.</p>
+        <div class="dossier-stats">
+          <div><b>4,095 m</b><span>Kinabalu peak</span></div>
+          <div><b>~2,900 m</b><span>Sabah Trough</span></div>
+          <div><b>5</b><span>tectonic events</span></div>
+          <div><b>12</b><span>provinces</span></div>
+        </div>
+        <ul class="dossier-points">
+          <li>Five tectonic events from Sarawak Orogeny to Meliau Orogeny</li>
+          <li>Stratigraphic column: 9 named units, ophiolite basement</li>
+          <li>Petroleum system: source → reservoir → seal → trap → migration</li>
+          <li>Recent discoveries: Zoisit Deep-1 · Well A oil beneath gas · Megah-1 frontier</li>
+        </ul>
+        <div class="dossier-cta">
+          <a class="arrow" href="/earth/kinabalu-basin/">▸ READ THE DOSSIER</a>
+          <a class="arrow xs" href="/earth/kinabalu-cross-section.html">▸ CROSS-SECTION</a>
+          <span class="more">+ PDF · geological-grade</span>
+        </div>
+      </div>
+
+      <!-- KINABALU GEOX COCKPIT -->
+      <div class="dossier-card muted">
+        <div class="dossier-head">
+          <span class="dossier-tag">GEOX COCKPIT</span>
+          <span class="dossier-status">● EXTERNAL</span>
+        </div>
+        <a href="https://geox.arif-fazil.com/basins/kinabalu/" style="text-decoration:none;color:inherit"><h3>◇ Kinabalu — GEOX Prospect</h3></a>
+        <p class="dossier-subtitle">The prospect-maturation pipeline for the same basin. Hypothesis space, four basement models, verification plan, prospect verdicts. Sibling to the human-readable dossier.</p>
+        <ul class="dossier-points">
+          <li>PSCS subduction working hypothesis</li>
+          <li>NSPW-corrected BMU/TCU vs DRU</li>
+          <li>Four basement hypotheses, scored</li>
+          <li>Prospect verdicts + acquisition plan</li>
+        </ul>
+        <div class="dossier-cta">
+          <a class="arrow" href="https://geox.arif-fazil.com/basins/kinabalu/">▸ OPEN GEOX COCKPIT ↗</a>
+          <span class="more">geox.arif-fazil.com · opens in new surface</span>
+        </div>
+      </div>
+
+      <!-- MALAY BASIN -->
+      <div class="dossier-card">
+        <div class="dossier-head">
+          <span class="dossier-tag gold">FEATURED · OFFSHORE PENINSULAR MALAYSIA</span>
+          <span class="dossier-status">● LIVE</span>
+        </div>
+        <a href="/earth/malay-basin/" style="text-decoration:none;color:inherit"><h3>◈ Malay Basin</h3></a>
+        <p class="dossier-subtitle">The founder's home waters. 13+ years reading rocks offshore Malaysia. Cenozoic failed rift + Miocene inversion. Mature gas province, 4 founder wells, 1 new play fairway (2025).</p>
+        <div class="dossier-stats">
+          <div><b>~500 km</b><span>length</span></div>
+          <div><b>8</b><span>groups (A–M)</span></div>
+          <div><b>4</b><span>founder wells</span></div>
+          <div><b>2025</b><span>new hinge play</span></div>
+        </div>
+        <ul class="dossier-points">
+          <li>Group L/M lacustrine source + Group E/H/I deltaic reservoirs</li>
+          <li>Middle Miocene anticline play (Dulang, Angsi) — proven</li>
+          <li>Western Hinge Fault — opened by LEBAH EMAS-1 (2025)</li>
+          <li>Founder wells: BEKANTAN-1 · PUTERI BASEMENT-1 · LEBAH EMAS-1 · BUNGA TASBIH-1</li>
+        </ul>
+        <div class="dossier-cta">
+          <a class="arrow" href="/earth/malay-basin/">▸ READ THE DOSSIER</a>
+          <a class="arrow xs" href="/earth/malay-basin-cross-section.html">▸ CROSS-SECTION</a>
+          <span class="more">+ 6 sections · geological-grade</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="crumbs" style="margin-top:2rem" aria-label="Earth surfaces directory">
+      <span class="crumb now">All earth surfaces</span>
+      <span class="sep">→</span>
+      <a class="crumb next" href="/earth/map/">▸ FULL EARTH SITE MAP — every page, no hidden doors</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ STUDIES · evidence register ══ -->
+<section id="studies">
+  <div class="container">
+    <div class="kicker">EVIDENCE REGISTER</div>
+    <h2>Geological studies — the paper trail</h2>
+    <p class="lede">Regional tectono-stratigraphy, play fairways, post-well analyses — every study rendered here is read from <b>studies.json</b> at load time. The count is computed, never hand-typed; entries whose tier is proprietary never leave the vault.</p>
+    <div id="studyMount"></div>
+  </div>
+</section>
+
+</main>
+<!-- /#main-content -->
+
+
+<!-- ══ PORTAL → GEOX ══ -->
+<div style="text-align:center;padding:3.5rem 2rem 1rem;border-top:1px solid var(--border-dim);">
+  <a href="https://geox.arif-fazil.com/"
+     style="display:inline-flex;align-items:center;gap:.55rem;padding:.65rem 1.8rem;
+     background:rgba(0,212,170,.05);border:1px solid rgba(0,212,170,.2);border-radius:6px;
+     font-family:var(--mono);font-size:.78rem;letter-spacing:.8px;
+     color:var(--accent-cyan);text-decoration:none;transition:all .25s;"
+     onmouseover="this.style.borderColor='rgba(0,212,170,.6)';this.style.background='rgba(0,212,170,.1)'"
+     onmouseout="this.style.borderColor='rgba(0,212,170,.2)';this.style.background='rgba(0,212,170,.05)'">
+    <span style="opacity:.4">▸</span> open GEOX
+    <span style="opacity:.3;font-size:.6rem">↗</span>
+  </a>
+</div>
+
+<footer class="earth-footer">
+  <div class="doctrine">DITEMPA BUKAN DIBERI</div>
+  <p>Data pipes: geologic tiles &amp; API — <a href="https://macrostrat.org">Macrostrat</a> (CC-BY 4.0) · earthquakes — <a href="https://earthquake.usgs.gov">USGS</a> real-time feed · plate boundaries — PB2002 (Bird, 2003) · globe engine — globe.gl. Satellite base — Esri World Imagery (for reference).</p>
+  <p>Wells &amp; studies — sovereign canon from <a href="/earth/data/wells.json">wells.json</a> · existence-tier wells carry no coordinates, depths, or results; markers are jittered basin-level positions, labeled approximate.</p>
+  <p>Numbers on this page are read from live pipes at load time and withheld if a pipe fails. Nothing here is claimed unobserved. Ω₀ ≈ 0.04.</p>
+  <p>An organ of the arifOS federation · <a href="/earth/map/">earth site map</a> · <a href="https://arif-fazil.com">arif-fazil.com</a> · <a href="https://geox.arif-fazil.com/">GEOX ↗</a></p>
+</footer>
+
+<!-- ══ GLOBE ENGINE + ALL LIVE PIPES (unchanged — this is the living heart) ══ -->
+<script src="https://unpkg.com/globe.gl@2.46.1/dist/globe.gl.min.js"></script>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ── pipe status ── */
+function pipe(id,state,text){const e=$(id);if(!e)return;e.className=state;e.textContent=text;}
+setInterval(()=>{const d=new Date();$("pipeClock").textContent=d.toISOString().slice(11,19)+" UTC";},1000);
+
+/* ── tile engines ── */
+const TILE_GEO=(x,y,z)=>`https://images.weserv.nl/?url=tiles.macrostrat.org/carto/${z}/${x}/${y}.png`;
+const TILE_SAT=(x,y,z)=>`https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`;
+let base="geo";
+
+/* ── globe ── */
+const el=$("globeViz");
+const world=Globe({rendererConfig:{antialias:true}})(el)
+  .globeTileEngineUrl((x,y,z)=>TILE_GEO(x,y,z))
+  .showAtmosphere(true).atmosphereColor("#00d4aa").atmosphereAltitude(0.16)
+  .backgroundColor("#0a0a0f")
+  .pointsData([]).pointLat("lat").pointLng("lng")
+  .pointAltitude("alt").pointRadius("r").pointColor("c").pointLabel("label")
+  .ringsData([]).ringLat("lat").ringLng("lng").ringColor("c")
+  .ringMaxRadius("maxR").ringPropagationSpeed("speed").ringRepeatPeriod("period")
+  .pathsData([]).pathPoints("coords")
+  .pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
+  .pathColor(()=>"rgba(0,212,170,0.5)").pathStroke(0.55)
+  .labelsData([]).labelLat("lat").labelLng("lng")
+  .labelText("text").labelColor("color").labelSize("size")
+  .labelAltitude("alt").labelDotRadius("dot")
+  .onLabelClick(onMarkerClick)
+  .onGlobeClick(onRockClick);
+
+function size(){world.width(el.clientWidth).height(el.clientHeight);}
+window.addEventListener("resize",size);size();
+world.pointOfView({lat:8,lng:104,altitude:2.3});
+
+const ctrl=world.controls();
+ctrl.autoRotate=true;ctrl.autoRotateSpeed=0.32;
+let idleT=null;
+function pauseSpin(){ctrl.autoRotate=false;clearTimeout(idleT);idleT=setTimeout(()=>{ctrl.autoRotate=true;},9000);}
+el.addEventListener("pointerdown",pauseSpin);
+el.addEventListener("wheel",pauseSpin,{passive:true});
+
+fetch(TILE_GEO(3,1,2),{method:"HEAD"}).then(r=>pipe("pipeTiles",r.ok?"ok":"bad",r.ok?"TILES · MACROSTRAT OK":"TILES · FAIL"))
+  .catch(()=>pipe("pipeTiles","bad","TILES · FAIL"));
+
+function setBase(b){
+  base=b;
+  $("baseGeo").classList.toggle("on",b==="geo");
+  $("baseSat").classList.toggle("on",b==="sat");
+  world.globeTileEngineUrl((x,y,z)=>b==="geo"?TILE_GEO(x,y,z):TILE_SAT(x,y,z));
+  world.globeTileEngineClearCache();
+  const pov=world.pointOfView();world.pointOfView({lat:pov.lat,lng:pov.lng,altitude:pov.altitude},0);
+}
+$("baseGeo").addEventListener("click",()=>setBase("geo"));
+$("baseSat").addEventListener("click",()=>setBase("sat"));
+
+document.querySelectorAll(".waypoints button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    if(btn.id==="wpWells"){
+      pauseSpin();
+      const c=wellCentroid||{lat:8,lng:104};
+      world.pointOfView({lat:c.lat,lng:c.lng,altitude:1.2},1800);
+      return;
+    }
+    const [lat,lng,alt]=btn.dataset.pov.split(",").map(Number);
+    pauseSpin();
+    world.pointOfView({lat,lng,altitude:alt},1800);
+  });
+});
+
+/* ── earthquakes (USGS 24h) ── */
+let quakePts=[],quakeRings=[];
+fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson")
+ .then(r=>r.json()).then(j=>{
+   const feats=j.features||[];
+   quakePts=feats.map(f=>{
+     const m=f.properties.mag||0,c=f.geometry.coordinates;
+     return {lat:c[1],lng:c[0],alt:Math.max(0.004,m*0.008),r:Math.max(0.16,m*0.2),
+       c:m>=5?"#e05a5a":m>=4?"#d4af37":"rgba(212,175,55,0.75)",
+       label:`<b style="color:#d4af37">M${(m||0).toFixed(1)}</b> · ${esc(f.properties.place||"")}<br><span style="color:#9a9aa8;font-size:.85em">${new Date(f.properties.time).toISOString().slice(0,16).replace("T"," ")} UTC · depth ${(c[2]||0).toFixed(0)} km</span>`};
+   });
+   quakeRings=feats.filter(f=>(f.properties.mag||0)>=4.5).map(f=>{
+     const c=f.geometry.coordinates;
+     return {lat:c[1],lng:c[0],c:t=>`rgba(212,175,55,${Math.sqrt(Math.max(0,1-t))})`,maxR:(f.properties.mag||4.5)*1.3,speed:1.1,period:2200};
+   });
+   if($("lyrQuakes").checked){world.pointsData(quakePts);world.ringsData(quakeRings);}
+   pipe("pipeUsgs","ok","USGS · "+feats.length+" EVENTS/24H");
+   $("stQuakes").textContent=feats.length.toLocaleString();
+ }).catch(()=>{pipe("pipeUsgs","bad","USGS · FAIL");$("stQuakes").textContent="UNVERIFIED";});
+$("lyrQuakes").addEventListener("change",e=>{
+  world.pointsData(e.target.checked?quakePts:[]);
+  world.ringsData(e.target.checked?quakeRings:[]);
+});
+
+/* ── plate boundaries (PB2002) ── */
+const PLATE_BOUNDARIES_URL="/earth/data/plates/PB2002_boundaries.geojson";
+const PLATE_PLATES_URL="/earth/data/plates/PB2002_plates.geojson";
+
+function plateColor(kind=""){
+  const k=String(kind||"").toLowerCase();
+  if(k.includes("subduction")||k.includes("convergent"))return ["#ff4d4d","rgba(255,77,77,0.55)"];
+  return ["#9ca3af","rgba(156,163,175,0.55)"];
+}
+function plateLabelOf(kind=""){
+  const k=String(kind||"").toLowerCase();
+  if(k.includes("subduction")||k.includes("convergent"))return "Subduction zone — oceanic crust descends beneath overriding plate";
+  return "Unclassified boundary — PB2002 source has no Type tag (ridge/transform/inferred-class not represented in this dataset)";
+}
+
+let platePaths=[],platePolygons=[],motionArcs=[];
+let plateStats={subduction:0,unclass:0};
+let lastPlateClickAt=0;
+
+async function loadPlates(){
+  try{
+    const[r1,r2]=await Promise.all([
+      fetch(PLATE_BOUNDARIES_URL).then(r=>{if(!r.ok)throw new Error("plates_http_"+r.status);return r.json();}),
+      fetch(PLATE_PLATES_URL).then(r=>r.ok?r.json():{features:[]}).catch(()=>({features:[]}))
+    ]);
+    (r1.features||[]).forEach(f=>{
+      const g=f.geometry||{},p=f.properties||{};
+      const t=String(p.Type||"").toLowerCase();
+      if(t.includes("subduction"))plateStats.subduction++;else plateStats.unclass++;
+      const meta={kind:t,tag:t==="subduction"?"subduction":"unclassified",
+                  name:p.Name||"PB2002 boundary",
+                  source:p.Source||"PB2002 (Bird 2003)",
+                  plateA:p.PlateA||"?",plateB:p.PlateB||""};
+      const line=coords=>({coords:coords.map(([lng,lat])=>[lat,lng]),...meta});
+      if(g.type==="LineString")platePaths.push(line(g.coordinates));
+      else if(g.type==="MultiLineString")g.coordinates.forEach(c=>platePaths.push(line(c)));
+    });
+    (r2.features||[]).forEach(f=>{
+      const g=f.geometry||{},p=f.properties||{};
+      const ring=coords=>({coords:coords.map(([lng,lat])=>[lat,lng]),
+        name:p.PlateName||p.Code||"plate"});
+      if(g.type==="Polygon")platePolygons.push(ring(g.coordinates[0]));
+      else if(g.type==="MultiPolygon")g.coordinates.forEach(poly=>platePolygons.push(ring(poly[0])));
+    });
+
+    world.pathsData([])
+      .pathPoints("coords").pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
+      .pathColor(d=>plateColor(d.tag)[1])
+      .pathStroke(1.7)
+      .pathDashLength(d=>d.tag==="subduction"?0:0.6)
+      .pathDashGap(d=>d.tag==="subduction"?0:0.4)
+      .pathDashAnimateTime(d=>d.tag==="subduction"?0:2400)
+      .pathTransitionDuration(900)
+      .onPathClick(d=>{
+        if(!d)return;pauseSpin();
+        lastPlateClickAt=Date.now();
+        const[col,colGlow]=plateColor(d.tag);
+        panel.className="show";
+        panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+          <div class="src">Φ GEOX · plate boundary witness</div>
+          <h3><span class="swatch" style="background:${col}"></span>${esc(d.name)}</h3>
+          <p class="lith">${plateLabelOf(d.tag)}</p>
+          <div class="kv"><b>PLATE A</b><span>${esc(d.plateA)}</span></div>
+          <div class="kv"><b>PLATE B</b><span>${esc(d.plateB||"")}</span></div>
+          <div class="kv"><b>SOURCE</b><span>${esc(d.source)}</span></div>
+          <div class="kv"><b>VERDICT</b><span>PIPE-READ · BIRD 2003</span></div>
+          <div class="coords">PB2002_boundaries.geojson · arif-fazil.com/earth/data/plates · boundary attributes from source, not inferred</div>`;
+        wireClose();
+      });
+
+    try{
+      world.polygonsData(platePolygons)
+        .polygonGeoJson(d=>3)
+        .polygonCapColor(()=>"rgba(255,255,255,0.04)")
+        .polygonSideColor(()=>"rgba(255,255,255,0.05)")
+        .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
+        .polygonAltitude(0.003);
+    }catch(e){}
+
+    motionArcs=platePaths.filter(p=>p.coords.length>=4).map(p=>{
+      const mid=Math.floor(p.coords.length/2);
+      const nxt=Math.min(p.coords.length-1,mid+2);
+      return {
+        startLat:p.coords[mid][0],startLng:p.coords[mid][1],
+        endLat:p.coords[nxt][0],endLng:p.coords[nxt][1],
+        tag:p.tag
+      };
+    });
+    world.arcsData([])
+      .arcStartLat("startLat").arcStartLng("startLng")
+      .arcEndLat("endLat").arcEndLng("endLng")
+      .arcColor(d=>plateColor(d.tag)[1])
+      .arcStroke(0.45)
+      .arcAltitude(0.012)
+      .arcDashLength(0.14)
+      .arcDashGap(0.7)
+      .arcDashAnimateTime(2000)
+      .arcsTransitionDuration(1200);
+
+    if($("lyrPlates").checked)world.pathsData(platePaths);
+    if($("lyrMotion").checked)world.arcsData(motionArcs);
+
+    pipe("pipePlates","ok",`PLATES · PB2002 OK · ${plateStats.subduction} SUBDUCT · ${plateStats.unclass} UNCLASS · ${platePaths.length} SEG`);
+  }catch(err){
+    console.error("Plate pipe failed",err);
+    pipe("pipePlates","bad","PLATES · FAIL");
+  }
+}
+loadPlates();
+
+$("lyrPlates").addEventListener("change",e=>{
+  world.pathsData(e.target.checked?platePaths:[]);
+});
+$("lyrMotion").addEventListener("change",e=>{
+  world.arcsData(e.target.checked?motionArcs:[]);
+});
+
+/* ── macrostrat live stats ── */
+fetch("https://macrostrat.org/api/v2/stats?all")
+ .then(r=>r.json()).then(j=>{
+   const rows=(j.success&&j.success.data)||[];
+   const sum=k=>rows.reduce((a,r)=>a+(Number(r[k])||0),0);
+   $("stCols").textContent=sum("columns").toLocaleString();
+   $("stPkgs").textContent=sum("packages").toLocaleString();
+   $("stMeas").textContent=sum("measurements").toLocaleString();
+   pipe("pipeApi","ok","MACROSTRAT API · OK");
+ }).catch(()=>{
+   pipe("pipeApi","bad","MACROSTRAT API · FAIL");
+   ["stCols","stPkgs","stMeas"].forEach(i=>$(i).textContent="UNVERIFIED");
+ });
+
+/* ══ WELLS & REGIONS — sovereign canon ══ */
+let wellLabels=[],wellCentroid=null;
+function hashStr(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function jittered(name,anchor,spread){
+  const h=hashStr(name);
+  const ang=(h%360)*Math.PI/180, rad=0.6+((h>>8)%1000)/1000*spread;
+  return {lat:anchor.lat+Math.sin(ang)*rad*0.55,lng:anchor.lng+Math.cos(ang)*rad};
+}
+fetch("/earth/data/wells.json")
+ .then(r=>r.json()).then(j=>{
+   const wells=j.wells||[], anchors=j.basin_anchors||{}, regions=j.regions||[];
+   const pts=[];
+   wells.forEach(w=>{
+     if(w.tier==="proprietary")return;
+     let pos=null;
+     if(w.lat!=null&&w.lng!=null)pos={lat:w.lat,lng:w.lng};
+     else{
+       const a=anchors[w.basin]||anchors["Malay Basin"]||{lat:4,lng:103.8};
+       pos=jittered(w.name,a,1.4);
+     }
+     pts.push(pos);
+     wellLabels.push({lat:pos.lat,lng:pos.lng,
+       text:w.name+(w.tier==="existence"?" ~":""),
+       color:w.tier==="existence"?"rgba(0,212,170,0.95)":"#d4af37",
+       size:0.6,alt:0.01,dot:0.45,kind:"well",w});
+   });
+   regions.forEach(rg=>{
+     wellLabels.push({lat:rg.lat,lng:rg.lng,text:"◇ "+rg.name,
+       color:"rgba(154,154,168,0.9)",size:0.55,alt:0.008,dot:0.3,kind:"region",rg});
+   });
+   if(pts.length){
+     wellCentroid={lat:pts.reduce((a,p)=>a+p.lat,0)/pts.length,lng:pts.reduce((a,p)=>a+p.lng,0)/pts.length};
+   }
+   if($("lyrWells").checked)world.labelsData(wellLabels);
+   $("wellCount").textContent=wells.length;
+   pipe("pipeWells","ok","WELLS · "+wells.length+" SOVEREIGN CANON");
+ }).catch(()=>{
+   pipe("pipeWells","bad","WELLS · FAIL");
+   $("wellCount").textContent="UNVERIFIED";
+ });
+$("lyrWells").addEventListener("change",e=>{
+  world.labelsData(e.target.checked?wellLabels:[]);
+});
+
+function onMarkerClick(d){
+  if(!d)return;pauseSpin();
+  if(d.kind==="region"){
+    const rg=d.rg;
+    panel.className="show";
+    panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+    <div class="src">Φ GEOX · regional geology</div>
+    <h3>◇ ${esc(rg.name)}</h3>
+    <p class="lith">${esc(rg.note||"")}</p>
+    ${rg.approximate?`<div class="withheld">REGION ANCHOR · APPROXIMATE</div>`:""}`;
+    wireClose();return;
+  }
+  if(d.kind!=="well")return;
+  const w=d.w,rows=[];
+  if(w.status)rows.push(["status",w.status]);
+  if(w.play)rows.push(["play",w.play]);
+  if(w.significance)rows.push(["significance",w.significance]);
+  if(w.role)rows.push(["role",w.role]);
+  if(w.spud_year)rows.push(["year",w.spud_year]);
+  if(w.operator)rows.push(["operator",w.operator]);
+  if(w.location_note)rows.push(["area",w.location_note]);
+  panel.className="show";
+  panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+  <div class="src">Φ GEOX · well witness · sovereign canon</div>
+  <h3>${esc(w.name)}${w.tier==="existence"?" ~":""}</h3>
+  ${rows.map(r=>`<div class="kv"><b>${r[0]}</b><span>${esc(r[1])}</span></div>`).join("")}
+  ${w.tier==="existence"?`<div class="withheld">LOCATION APPROXIMATE · DETAILS WITHHELD</div>`:""}`;
+  wireClose();
+}
+
+/* ══ STUDIES ══ */
+fetch("/earth/data/studies.json")
+ .then(r=>r.json()).then(j=>{
+   const list=(j.studies||[]).filter(s=>s.tier!=="proprietary");
+   const mount=$("studyMount");
+   if(!list.length){
+     mount.innerHTML=`<div class="study-empty"><div class="n">${list.length} STUDIES ON THE PUBLIC REGISTER</div>
+     <p>The paper trail is being curated — sovereign canon. An empty register is an honest state: nothing here ships invented.</p></div>`;
+     return;
+   }
+   mount.innerHTML=`<div class="study-grid">${list.map(s=>`
+     <div class="study">
+       <span class="tag${s.tier==="existence"?" gold":""}">${esc((s.type||"study").toUpperCase())}</span>
+       <h3>${esc(s.title)}</h3>
+       <div class="meta">${[s.year,s.basin].filter(v=>v!=null).map(esc).join(" · ")}</div>
+       <p>${esc(s.abstract||"")}</p>
+       ${s.link?`<a class="go" href="${esc(s.link)}">▸ READ THE STUDY</a>`:`<span class="tag gold" style="margin-top:1rem">PROPRIETARY · EXISTENCE ONLY</span>`}
+     </div>`).join("")}</div>`;
+ }).catch(()=>{
+   $("studyMount").innerHTML=`<div class="study-empty"><div class="n">UNVERIFIED</div>
+   <p>studies.json unreachable — per F7, no register is shown rather than an invented one.</p></div>`;
+ });
+
+/* ── click-to-query: ask the rocks ── */
+const panel=$("unitPanel");
+let lock=false;
+async function onRockClick({lat,lng}){
+  if(lock)return;lock=true;pauseSpin();
+  if(Date.now()-lastPlateClickAt<800){lock=false;return;}
+  panel.className="show";
+  panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+    <div class="src">geox.macrostrat · querying pipe…</div>
+    <h3 style="color:#9a9aa8;font-weight:400">Asking ${lat.toFixed(2)}°, ${lng.toFixed(2)}°…</h3>`;
+  wireClose();
+  try{
+    const r=await fetch(`https://macrostrat.org/api/v2/geologic_units/map?lat=${lat.toFixed(4)}&lng=${lng.toFixed(4)}&buffer=3`);
+    const j=await r.json();
+    const data=(j.success&&j.success.data)||[];
+    const refs=(j.success&&j.success.refs)||{};
+    if(!data.length){
+      panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+      <div class="ocean"><div class="src">geox.macrostrat · honest answer</div>
+      <h3>No mapped bedrock unit here</h3>
+      <p class="lith">You're likely over ocean. Oceanic crust is young (&lt;200 Ma everywhere) and thinly mapped at this scale — Macrostrat's harmonized maps cover the continents. The blue below is the newest rock on the planet, still being poured at the mid-ocean ridges.</p>
+      <div class="coords">${lat.toFixed(4)}°, ${lng.toFixed(4)}° · macrostrat.org/api/v2 · CC-BY 4.0</div></div>`;
+    }else{
+      const u=data[0];
+      const t=(u.t_int_age!=null)?u.t_int_age:u.t_age, b=(u.b_int_age!=null)?u.b_int_age:u.b_age;
+      const ref=refs[u.source_id]?esc(refs[u.source_id]).slice(0,220):"";
+      panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+      <div class="src">geox.macrostrat · live from pipe</div>
+      <h3><span class="swatch" style="background:${esc(u.color||"#666")}"></span>${esc(u.name||"Unnamed unit")}</h3>
+      <div class="age">${t} – ${b} Ma · ${esc(u.best_int_name||u.t_int_name||"")}</div>
+      <p class="lith">${esc(u.lith||"lithology not recorded")}</p>
+      ${ref?`<div class="ref">source: ${ref}…</div>`:""}
+      <div class="coords">${lat.toFixed(4)}°, ${lng.toFixed(4)}° · macrostrat.org/api/v2 · CC-BY 4.0</div>`;
+    }
+    wireClose();
+  }catch(e){
+    panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+    <div class="src" style="color:#e05a5a">pipe unreachable</div>
+    <h3 style="font-weight:400;color:#9a9aa8">Query failed — per F7, no answer is better than an invented one.</h3>`;
+    wireClose();
+  }finally{lock=false;}
+}
+function wireClose(){const b=panel.querySelector(".close");if(b)b.addEventListener("click",()=>panel.classList.remove("show"));}
+
+/* ── veil ── */
+window.addEventListener("load",()=>setTimeout(()=>$("veil").classList.add("gone"),700));
+setTimeout(()=>$("veil").classList.add("gone"),6000);
+
+/* ── sticky TOC active state ── */
+(function(){
+  const toc=$("earthToc");
+  if(!toc)return;
+  const links=toc.querySelectorAll("a");
+  const sections=[];
+  links.forEach(a=>{
+    const href=a.getAttribute("href");
+    if(!href||!href.startsWith("#"))return;
+    const el=document.getElementById(href.slice(1));
+    if(el)sections.push({el,link:a});
+  });
+  if(!sections.length)return;
+  function update(){
+    const scrollY=window.scrollY+120;
+    let active=null;
+    for(let i=sections.length-1;i>=0;i--){
+      if(sections[i].el.offsetTop<=scrollY){active=sections[i];break;}
+    }
+    if(!active)active=sections[0];
+    links.forEach(a=>a.classList.remove("active"));
+    if(active)active.link.classList.add("active");
+  }
+  window.addEventListener("scroll",update,{passive:true});
+  update();
+})();
+})();
+</script>
+<script src="/_shared/zen-all.js" defer></script>
+</body>
+</html>

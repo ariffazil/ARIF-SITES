@@ -306,30 +306,39 @@ function Person() {
 /* Section 3 — Three Domains                                           */
 /* ------------------------------------------------------------------ */
 
+/* Live hybrid territories — match primary nav + real route graph (preserve politics/world/vitals depth) */
 const domains = [
   {
     index: '01',
     title: 'EARTH',
-    desc: 'Thirteen years reading the Malay Basin. Four wells, one record.',
+    desc: 'Thirteen years reading the Malay Basin. Wells, basins, GEOX — evidence before narrative.',
     to: '/earth',
-    bar: 'bg-earth',
-    hover: '#FF9F1C',
+    bar: 'bg-ember',
+    hover: '#E4572E',
   },
   {
     index: '02',
     title: 'ECONOMICS',
-    desc: 'Incentives, risk, and what energy is really worth.',
+    desc: 'Capital signals: markets, FX, oil, gas, gold. PETRONAS VITALS at /vitals/.',
     to: '/economics',
-    bar: 'bg-ledger',
-    hover: '#1E6F50',
+    bar: 'bg-gold',
+    hover: '#C9A227',
   },
   {
     index: '03',
-    title: 'MACHINES',
-    desc: 'arifOS: a constitution so AI must tell the truth — or stop.',
+    title: 'WORLD',
+    desc: 'MakcikGPT civic journalism in BM · commodities · politics under one roof.',
+    to: '/world',
+    bar: 'bg-ink/40',
+    hover: '#EDEAE2',
+  },
+  {
+    index: '04',
+    title: 'DOCTRINE',
+    desc: 'arifOS F1–F13: a constitution so machines must tell the truth — or stop.',
     to: '/doctrine',
-    bar: 'bg-cold',
-    hover: '#7DD3FC',
+    bar: 'bg-ink-soft/50',
+    hover: '#9AA0A8',
   },
 ]
 
@@ -341,19 +350,23 @@ function Domains() {
   return (
     <section ref={ref} className="border-y hairline">
       <div className="mx-auto max-w-[1280px] px-6 py-24">
-        <SectionHeader number="02" title="THREE DOMAINS" className="mb-12" />
+        <SectionHeader number="02" title="FOUR TERRITORIES" className="mb-12" />
+        <p className="mb-10 max-w-[52ch] font-body text-[17px] leading-[1.6] text-ink-soft">
+          Same public site humans and agents walk. Primary strip is one line; depth lives one click
+          down — VITALS, NS election, MakcikGPT, commodities.
+        </p>
         <div onMouseLeave={() => setHovered(null)}>
           {domains.map((dm, i) => (
             <motion.div
               key={dm.title}
               initial={{ opacity: 0, x: -48 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
+              transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
             >
               <Link
                 to={dm.to}
                 onMouseEnter={() => setHovered(i)}
-                className="group block border-t py-10 hairline last:border-b"
+                className="group block border-t py-9 hairline last:border-b"
               >
                 <motion.div
                   layout="position"
@@ -364,12 +377,12 @@ function Domains() {
                   <span className="eyebrow text-ink-soft">{dm.index}</span>
                   <div className="flex-1">
                     <h3
-                      className="font-display text-4xl tracking-[-0.02em] transition-colors duration-300 md:text-[56px] md:leading-none"
+                      className="font-display text-4xl tracking-[-0.02em] transition-colors duration-300 md:text-[52px] md:leading-none"
                       style={{ color: hovered === i ? dm.hover : undefined }}
                     >
                       {dm.title}
                     </h3>
-                    <p className="mt-3 font-body text-[18px] italic text-ink-soft">{dm.desc}</p>
+                    <p className="mt-3 max-w-[48ch] font-body text-[17px] italic text-ink-soft md:text-[18px]">{dm.desc}</p>
                   </div>
                   <span
                     className="font-mono text-2xl transition-transform duration-300"

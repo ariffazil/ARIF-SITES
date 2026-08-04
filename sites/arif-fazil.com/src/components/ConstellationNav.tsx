@@ -38,15 +38,17 @@ export function ConstellationNav() {
           <ul className="flex items-center justify-center gap-5">
             {primaryNav.map((item) => (
               <li key={item.label}>
-                {item.external ? (
+                {item.external || item.mode === 'external' || item.mode === 'static' ? (
                   <a
                     href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
                     title={item.href}
                     className={`${linkBase} text-forge-dim hover:text-forge-white`}
+                    {...(item.external || item.mode === 'external'
+                      ? { target: '_blank', rel: 'noreferrer' }
+                      : {})}
                   >
-                    {item.label} ↗
+                    {item.label}
+                    {(item.external || item.mode === 'external') && ' ↗'}
                   </a>
                 ) : (
                   <Link to={item.href} title={item.href} className={linkClass(item.href)}>
