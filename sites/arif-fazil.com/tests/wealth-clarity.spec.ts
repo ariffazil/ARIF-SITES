@@ -505,15 +505,26 @@ test('gold: reconciliation line appears for conflicting fixture (BEARISH trend, 
 // 2. Institutional pages — vitals / malaysia
 // ────────────────────────────────────────────────────────────────────────────
 
-test('vitals: no-JS initial HTML carries PETRONAS 48/HOLD + 76/34/22', async ({ request }) => {
+test('vitals: no-JS initial HTML carries PETRONAS 0/VOID (lock) + pre-lock 48/HOLD as separate structured facts', async ({ request }) => {
   const resp = await request.get(`${WEALTH}/vitals/`);
   expect(resp.ok()).toBeTruthy();
   const html = await resp.text();
-  expect(html).toContain('id="pulseval">48<');
-  expect(html).toContain('id="pulseverdict">HOLD<');
-  expect(html).toContain('id="sb-body">76<');
+  // B11-D: served pulse is the override (0, VOID), not the pre-lock 48/HOLD
+  expect(html).toContain('id="pulseval"');
+  expect(html).toMatch(/id="pulseval"[^>]*>0</);
+  expect(html).toMatch(/id="pulseverdict"[^>]*>VOID</);
+  // sub-scores: BODY 0 (override), SPINE 34, SOUL 22
+  expect(html).toMatch(/id="sb-body"[^>]*>0/);
   expect(html).toContain('id="sb-spine">34<');
   expect(html).toContain('id="sb-soul">22<');
+  // Pre-lock 48 + HOLD preserved as separate historical facts, never as a contiguous "48 HOLD" marker
+  expect(html).not.toContain('48 HOLD');
+  // Pre-lock pulse + verdict appear as distinct facts
+  expect(html).toMatch(/pre[-_]lock[-_ ]pulse[\s\S]{0,400}48/);
+  expect(html).toMatch(/pre[-_]lock[-_ ]verdict[\s\S]{0,400}HOLD/);
+  // FY2026 [DEC] is present but explicitly marked feeds_scoring=false
+  expect(html).toContain('[DEC]');
+  expect(html).toContain('feeds_scoring');
 });
 
 test('malaysia: no-JS initial HTML carries Malaysia 45/HOLD + 34/56/48', async ({ request }) => {
@@ -584,6 +595,20 @@ for (const slug of ['vitals', 'malaysia'] as const) {
       expect(occurrences, `tripwire "${name}" must appear exactly once in #grid9`).toBe(1);
     }
 
+    // B11-A: each static row has stable data-* attributes (id/layer/score/verdict/now/trip/safe/tag/source/sealed)
+    const firstCell = page.locator('#grid9 .tripcell').first();
+    for (const attr of ['data-id', 'data-layer', 'data-score', 'data-verdict', 'data-now', 'data-trip', 'data-safe', 'data-tag', 'data-source', 'data-sealed']) {
+      await expect(firstCell).toHaveAttribute(attr, /\S+/);
+    }
+
+    // B11-B: static SVG fan fallback present
+    await expect(page.locator('svg#fan-svg')).toBeAttached();
+    await expect(page.locator('[data-agent-role="fan-fallback-static"]')).toBeAttached();
+
+    // B11-C: static scenario summary present
+    await expect(page.locator('table[data-agent-role="scenario-summary-static"]')).toBeAttached();
+    await expect(page.locator('table[data-agent-role="scenario-summary-static"]')).toContainText('audited IFR FY2025 remains the sole scoring input');
+
     // full SEAL 80 / SABAR 60 / VOID 40 threshold text present in page or script
     const html = await page.content();
     expect(html).toContain('80–100');
@@ -592,15 +617,34 @@ for (const slug of ['vitals', 'malaysia'] as const) {
     expect(html).toContain('SABAR');
     expect(html).toContain('VOID');
 
+    // B11-D: no-JS rows present even before any client enhancement
+    const noJsCellCount = await page.locator('#grid9 .tripcell').count();
+    expect(noJsCellCount).toBe(9);
+
+    // B11-D: institutional-vitals-reality JSON-LD is present
+    const realityLd = await page.evaluate(() => {
+      const scripts = document.querySelectorAll('script[type="application/ld+json"][data-agent-role="institutional-vitals-reality"]');
+      return scripts.length === 0 ? null : JSON.parse(scripts[0].textContent || '{}');
+    });
+
     // JSON-LD parses with numeric pulse
     const ld = await getJsonLd(page, 'script[type="application/ld+json"]');
     if (slug === 'vitals') {
+      // B11-D canonical: display_pulse = 0, display_verdict = 'VOID' under HARD LOCK
       expect(typeof ld.display_pulse).toBe('number');
-      expect(ld.display_pulse).toBe(48);
-      expect(typeof ld.composite_pulse).toBe('number');
-      expect(ld.verdict).toBe('HOLD');
+      expect(ld.display_pulse).toBe(0);
+      expect(ld.display_verdict).toBe('VOID');
+      expect(ld.pre_lock_pulse).toBe(48);
+      expect(ld.pre_lock_verdict).toBe('HOLD');
+      expect(ld.fy2026_declared_state.feeds_scoring).toBe(false);
+      expect(ld.fy2026_declared_state.epistemic_class).toBe('[DEC]');
+      expect(ld.static_row_count).toBe(9);
       expect(ld.indicators).toHaveLength(9);
       for (const ind of ld.indicators) expect(typeof ind.score).toBe('number');
+      // Reality JSON-LD (B11-D) present
+      expect(realityLd).toBeTruthy();
+      expect(realityLd.display_pulse).toBe(0);
+      expect(realityLd.pre_lock_pulse).toBe(48);
     } else {
       expect(typeof ld.composite_pulse).toBe('number');
       expect(ld.composite_pulse).toBe(45);
@@ -694,7 +738,9 @@ test.describe('mobile 390x844', () => {
     await stubSharedAssets(page);
     await stubProxies(page);
     await page.goto(`${WEALTH}/vitals/`);
-    await expect(page.locator('#pulseval')).toHaveText('48');
+    // B11-D: served pulse reflects HARD LOCK override (0/VOID), not pre-lock 48/HOLD
+    await expect(page.locator('#pulseval')).toHaveText('0');
+    await expect(page.locator('#pulseverdict')).toContainText('VOID');
 
     await expectNoHorizontalOverflow(page);
 

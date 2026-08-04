@@ -277,7 +277,9 @@
 <!-- RANKED TRIPWIRE SCORES -->
 <div class="sec" id="tripwires" data-agent-role="evidence">
   <div class="sec-title">Tripwire scores · lowest first</div>
+<!--B11-A:GRID9-MARKER:BEGIN-->
   <div class="tripgrid" id="grid9" aria-label="Nine tripwire scores ranked from lowest to highest"></div>
+<!--B11-A:GRID9-MARKER:END-->
 </div>
 
 <!-- LIVE MARKET PROXIES -->
@@ -410,7 +412,7 @@
     </div>
     <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:.9rem 1.1rem;margin:.6rem 0 1rem;font-size:.82rem;color:var(--ink);line-height:1.65">
       <strong style="color:#c9a84c">What changed since the 28 July seal:</strong>
-      Production / reserve replacement score tightened from 27.5 → <strong>28/100</strong> (still VOID) — the gap is widening, not closing. The Current Pulse was <strong>48 HOLD</strong> pre-override — now overridden to <strong style="color:var(--void)">0 VOID</strong> under AMEND-2026-08-03-001 (FY2025 extraction 70.5% breached 65% pacemaker). The financial pillar alone would clear SABAR, but the governance pillar (22/100, with sovereign extraction fully breached at 0/100) drags the composite into VOID territory. Brent below <strong>$71.60/bbl</strong> pushes free cash flow to zero; below <strong>$70 for two quarters</strong> turns the deck of cards into an instant liquidity squeeze. <strong>Quantum tripwires fire before the next half-yearly audit.</strong>
+      Production / reserve replacement score tightened from 27.5 → <strong>28/100</strong> (still VOID) — the gap is widening, not closing. <strong>Pre-override pulse was 48</strong> (with verdict <strong>HOLD</strong>) — two separate historical facts, captured in the JSON-LD as <code>pre_lock_pulse</code> and <code>pre_lock_verdict</code>. The current pulse is now <strong style="color:var(--void)">0 (VOID)</strong> under AMEND-2026-08-03-001 (FY2025 extraction 70.5% breached 65% pacemaker). The financial pillar alone would clear SABAR, but the governance pillar (22/100, with sovereign extraction fully breached at 0/100) drags the composite into VOID territory. Brent below <strong>$71.60/bbl</strong> pushes free cash flow to zero; below <strong>$70 for two quarters</strong> turns the deck of cards into an instant liquidity squeeze. <strong>Quantum tripwires fire before the next half-yearly audit.</strong>
     </div>
 
     <!-- PART 1: THE BLOODLETTING -->
@@ -531,7 +533,12 @@
       <span><i class="fan-dot" style="background:#f0506e;opacity:.5"></i>Net-debt tripwire (0)</span>
     </div>
 
+<!--B11-B:FAN-SVG-MARKER:BEGIN-->
+<!--B11-B:FAN-SVG-MARKER:END-->
+
     <!-- Scenario assumptions table (ExxonMobil IR format) -->
+<!--B11-C:SUMMARY-MARKER:BEGIN-->
+<!--B11-C:SUMMARY-MARKER:END-->
     <details class="zen-reveal" open style="margin-top:14px">
       <summary>Scenario macro assumptions · modeled after ExxonMobil IR</summary>
       <div class="reveal-body">
@@ -1008,7 +1015,7 @@ live();
     "amendment_id":"AMEND-2026-08-03-001",
     "state":"ENGAGED",
     "class":"HARD_LOCK",
-    "human_override":"NONE",
+    "human_override":"F13_SOVEREIGN_VETO_FINAL",
     "exit_condition":"extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
   },
   "external_signals":{
@@ -1099,7 +1106,7 @@ live();
   "breach_magnitude_pct":10.5,
   "engaged_at":"2026-08-03T16:45:00+08:00",
   "engaged_by":"WEALTH constitutional amendment (F13 sovereign directive)",
-  "human_override":"NONE — AMEND-2026-08-03-001 removes all UI override",
+  "human_override":"F13_SOVEREIGN_VETO_FINAL — AMEND-2026-08-03-001 removes all UI override; F13 sovereign veto remains final",
   "sovereign_confirmation":"RECEIVED · F13 directive 2026-08-03 16:45 MYT",
   "constitutional_class":"HARD_LOCK",
   "action":"DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
@@ -1168,7 +1175,7 @@ live();
     "sovereign creditor committees",
     "public"
   ],
-  "human_override":"NONE",
+  "human_override":"F13_SOVEREIGN_VETO_FINAL",
   "f13_sovereign_veto_required_to_amend":true,
   "remediation_path":"constitutional reseal verifying exit condition + public VAULT999 audit trail",
   "canonical_url":"https://arif-fazil.com/vitals/",
@@ -1176,65 +1183,10 @@ live();
 }
 </script>
 
-<!-- Structured reality packet -->
-<script type="application/ld+json">
-{
-  "@context":"https://arif-fazil.com/schemas/v1/EconomicsContext.jsonld",
-  "@type":"InstitutionalVitals",
-  "organ":"PETRONAS·φ VITALS",
-  "timestamp":"2026-08-03T16:45:00+08:00",
-  "url":"https://arif-fazil.com/vitals/",
-  "canonical_source_url":"https://arif-fazil.com/vitals/",
-  "as_of":"2026-08-03",
-  "seal_date":"2026-08-03",
-  "next_audit":"2026-11-03",
-  "constitutional_amendment":"AMEND-2026-08-03-001",
-  "extraction_crisis_lock":"ENGAGED",
-  "epistemic_tier":"VOID",
-  "composite_pulse":0,
-  "composite_pulse_pre_lock":48,
-  "verdict":"VOID",
-  "verdict_pre_lock":"HOLD",
-  "lock_basis":"sovereign_extraction 70.5% > 65% pacemaker threshold",
-  "institutional_physics":{
-    "stress_test_date":"2026-08-03",
-    "reseal_from":"2026-07-28",
-    "engine":"WEALTH institutional intelligence",
-    "extraction_simulation_usd":750000000,"extraction_simulation_myr_approx":3070000000,
-    "extraction_simulation_note":"$750M (~RM3.1B at 4.10) is a COUNTERFACTUAL SIMULATION output, NOT a forensic finding. No RM3.1B is documented in any IFR as having left the institution. The simulation tests defensive capacity, not recorded losses.",
-    "structural_extraction_observed":"70.5% PAT = declared dividend RM32.0B / PAT RM45.4B — arithmetic from audited IFR FY2025",
-    "extraction_pattern":"SIMULATIVE_NEUTRAL",
-    "governance_score_numerator":1.00,
-    "governance_verdict":"INSUFFICIENT","governance_score_scale":"out_of_3","independent_neds":0,
-    "independent_neds":0,
-    "cascade_verdict":"TERMINAL_AT_T3",
-    "stress_index":0.48,
-    "stress_verdict":"YELLOW",
-    "behavioral_sink_detected":true,
-    "quantum_tripwire_arch":"state-probability probes replacing lagging accounting indicators",
-    "auto_intervention_triggers":[
-      "Sovereign Extraction > 65% PAT + Brent < $75 + Reserve Replacement < 1.0× → HOLD/FREEZE discretionary payout",
-      "Governance Capacity < 0.50 → 100% Independent NED quorum for capital authority",
-      "Simulative Neutral ∇$ gradient above threshold → audit lock regardless of single-rule compliance",
-      "CFFO approaching RM60B floor → algorithmic dividend cap"
-    ],
-    "doctrine":"Hope is for the hopeless. The federation deploys deterministic tripwires, not passive optimism."
-  },
-  "weights":{"BODY":0.40,"SPINE":0.35,"SOUL":0.25},
-  "indicators":[
-    {"id":1,"name":"FCF after capex & dividend","value":11.6,"unit":"RM B","class":"BODY","epistemic_class":"EVIDENCE","score":77.3,"sealed":"2026-08-03"},
-    {"id":2,"name":"Gearing ratio","value":20.7,"unit":"%","class":"BODY","epistemic_class":"EVIDENCE","score":77.2,"sealed":"2026-08-03"},
-    {"id":3,"name":"CFFO — master variable","value":85.2,"unit":"RM B","class":"BODY","epistemic_class":"EVIDENCE","score":72,"sealed":"2026-08-03"},
-    {"id":4,"name":"Production / reserve replacement","value":355,"unit":"kbpd","class":"SPINE","epistemic_class":"EVIDENCE","score":28,"sealed":"2026-08-03"},
-    {"id":5,"name":"Capital Recycling Ratio","value":1.2,"unit":"×","class":"SPINE","epistemic_class":"INTERPRET","score":20,"sealed":"2026-08-03"},
-    {"id":6,"name":"Dividend-to-FCF payout","value":73.4,"unit":"%","class":"SPINE","epistemic_class":"EVIDENCE","score":53.2,"sealed":"2026-08-03"},
-    {"id":7,"name":"Enabler ratio (rightsizing gauge)","value":30,"unit":"%","class":"SOUL","epistemic_class":"INTERPRET","score":33.3,"sealed":"2026-08-03"},
-    {"id":8,"name":"Governance separation index","value":1,"unit":"idx","class":"SOUL","epistemic_class":"INTERPRET","score":33.3,"sealed":"2026-08-03"},
-    {"id":9,"name":"Sovereign extraction gauge","value":70.5,"unit":"% of PAT","class":"SOUL","epistemic_class":"EVIDENCE","score":0,"sealed":"2026-08-03"}
-  ],
-  "source":"sealed tripwire inputs"
-}
-</script>
+<!-- Structured reality packet (B11-D: regenerated by render-vitals.cjs) -->
+<!--B11-D:JSONLD-MARKER:BEGIN-->
+<script type="application/ld+json" data-agent-role="institutional-vitals-reality-stub">{"regenerated_by":"render-vitals.cjs","@note":"placeholder — renderer overwrites at build time"}</script>
+<!--B11-D:JSONLD-MARKER:END-->
 
 
 <script>

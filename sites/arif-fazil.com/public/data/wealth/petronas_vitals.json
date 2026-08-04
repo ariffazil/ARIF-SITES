@@ -180,7 +180,7 @@
       "source": "PETRONAS Group FRA FY2025 IFR (div declared, PAT)",
       "score": 0,
       "verdict": "VOID",
-      "note": "BREACHED +10.5pp past 60% PAT tripwire; pacemaker threshold 65% PAT also breached at 70.5%. HARD LOCK ENGAGED 2026-08-03 — BODY composite overridden to 0, public dividend-stop advisory locked. No human override. Exit only via constitutional amendment verifying extraction < 55% PAT sustained 2 audits AND governance_capacity >= 2.0/3.",
+      "note": "BREACHED +10.5pp past 60% PAT tripwire; pacemaker threshold 65% PAT also breached at 70.5%. HARD LOCK ENGAGED 2026-08-03 — BODY composite overridden to 0, public dividend-stop advisory locked. F13 sovereign veto remains final. Exit only via constitutional amendment verifying extraction < 55% PAT sustained 2 audits AND governance_capacity >= 2.0/3.",
       "f2_status": null,
       "hard_lock_state": "ENGAGED"
     }
@@ -201,9 +201,9 @@
     "changed": [
       "CONSTITUTIONAL AMENDMENT: Sovereign Extraction > 65% PAT → HARD LOCK",
       "BODY composite overridden to 0/100 (was 75.5)",
-      "Composite pulse overridden to VOID (was 48 HOLD)",
+      "Composite pulse overridden to VOID (pre-lock pulse was 48 with verdict HOLD — recorded as separate historical facts)",
       "Action: DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
-      "No human override — only constitutional reseal can lift",
+      "F13 sovereign veto remains final; only constitutional reseal can lift the lock",
       "Exit condition: extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
     ],
     "unchanged_constitutional_anchors": "safe/trip thresholds unchanged. Lock is a new constitutional rule on top of existing tripwires."
@@ -227,7 +227,8 @@
     "pacemaker_threshold_pct_pat": 65.0,
     "breach_magnitude_pct": 10.5,
     "constitutional_class": "HARD_LOCK",
-    "human_override": "NONE",
+    "human_override": "F13_SOVEREIGN_VETO_FINAL",
+    "f13_sovereign_veto": "FINAL",
     "body_score_override": 0,
     "composite_pulse_override": "VOID",
     "action_primary": "DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
