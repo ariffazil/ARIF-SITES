@@ -83,12 +83,12 @@ function makeJsonLd(a) {
       '@type': 'Organization',
       name: 'arifOS Federation',
       url: 'https://arif-fazil.com',
-      logo: { '@type': 'ImageObject', url: 'https://arif-fazil.com/hero_portrait.jpg' },
+      logo: { '@type': 'ImageObject', url: 'https://arif-fazil.com/og-identity.svg' },
     },
     datePublished: a.date,
     dateModified: a.date,
     mainEntityOfPage: `${BASE}/world/makcikgpt/${a.slug}`,
-    image: 'https://arif-fazil.com/hero_portrait.jpg',
+    image: 'https://arif-fazil.com/og-identity.svg',
     keywords: a.keywords,
     inLanguage: 'ms',
     isAccessibleForFree: true,
@@ -163,7 +163,7 @@ function makeJsonLd(a) {
   <meta property="og:description" content="${a.desc}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${BASE}/wealth/makcikgpt/${a.slug}">
-  <meta property="og:image" content="https://arif-fazil.com/hero_portrait.jpg">
+  <meta property="og:image" content="https://arif-fazil.com/og-identity.svg">
   <meta property="og:site_name" content="MakcikGPT — arifOS Perisikan Persekutuan">
   <meta property="og:locale" content="ms_MY">
   <meta property="article:published_time" content="${a.date}">
@@ -174,7 +174,7 @@ function makeJsonLd(a) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${a.title}">
   <meta name="twitter:description" content="${a.desc}">
-  <meta name="twitter:image" content="https://arif-fazil.com/hero_portrait.jpg">
+  <meta name="twitter:image" content="https://arif-fazil.com/og-identity.svg">
 
   <!-- Agent Discovery -->
   <link rel="mcp" href="https://mcp.arif-fazil.com/mcp" type="application/json">
