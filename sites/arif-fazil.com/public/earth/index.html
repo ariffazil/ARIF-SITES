@@ -67,12 +67,44 @@
 #unitPanel .kv b{font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;min-width:74px;padding-top:.15rem}
 #unitPanel .withheld{margin-top:.55rem;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;color:var(--accent-gold);border:1px dashed rgba(212,175,55,.45);border-radius:var(--radius-sm);padding:.35rem .5rem}
 
-/* loading veil */
-#veil{position:absolute;inset:0;z-index:40;background:var(--bg-deep);display:flex;flex-direction:column;gap:1rem;align-items:center;justify-content:center;transition:opacity .6s}
-#veil.gone{opacity:0;pointer-events:none}
-#veil .spin{width:38px;height:38px;border:2px solid var(--border-dim);border-top-color:var(--accent-gold);border-radius:50%;animation:sp 1s linear infinite}
+/* loading veil — first paint must look intentional, not broken (MAKRUH load-race fix) */
+#veil{position:absolute;inset:0;z-index:40;background:var(--bg-deep);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .9s ease,visibility 0s linear 0s;
+  /* subtle grid + shimmer so blank canvas ≠ error page */
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 45%,rgba(212,175,55,.06),transparent 70%),
+    linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
+  background-size:auto,48px 48px,48px 48px}
+#veil.gone{opacity:0;pointer-events:none;visibility:hidden;transition:opacity .9s ease,visibility 0s linear .9s}
+#veil .veil-inner{display:flex;flex-direction:column;align-items:center;gap:.85rem;max-width:min(92vw,360px);padding:1.5rem;text-align:center}
+#veil .spin{width:42px;height:42px;border:2px solid var(--border-dim);border-top-color:var(--accent-gold);border-radius:50%;animation:sp .85s linear infinite;flex-shrink:0}
 @keyframes sp{to{transform:rotate(360deg)}}
-#veil p{font-family:var(--mono);font-size:.68rem;letter-spacing:2px;color:var(--text-secondary)}
+#veil #veilTitle{font-family:var(--mono);font-size:.72rem;letter-spacing:2.2px;color:var(--text-primary);margin:0}
+#veil .veil-sub{font-family:var(--mono);font-size:.62rem;letter-spacing:.8px;color:var(--text-secondary);margin:0;min-height:1.2em;line-height:1.45}
+#veil .veil-sub.warn{color:var(--accent-gold)}
+#veil .veil-sub.bad{color:var(--accent-rust)}
+#veil .veil-bar{width:100%;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+#veil .veil-bar-fill{height:100%;width:8%;background:linear-gradient(90deg,var(--accent-gold),var(--accent-cyan));
+  border-radius:2px;transition:width .45s ease;animation:veilShimmer 1.6s ease-in-out infinite}
+@keyframes veilShimmer{0%,100%{filter:brightness(1)}50%{filter:brightness(1.35)}}
+#veil .veil-steps{list-style:none;margin:.2rem 0 0;padding:0;width:100%;display:flex;flex-direction:column;gap:.28rem;text-align:left}
+#veil .veil-steps li{font-family:var(--mono);font-size:.58rem;letter-spacing:.6px;color:var(--text-dim);
+  padding:.22rem .45rem;border-left:2px solid var(--border-dim);display:flex;justify-content:space-between;gap:.5rem}
+#veil .veil-steps li.wait{color:var(--accent-gold);border-color:rgba(212,175,55,.45)}
+#veil .veil-steps li.ok{color:var(--accent-cyan);border-color:var(--accent-cyan)}
+#veil .veil-steps li.bad{color:var(--accent-rust);border-color:var(--accent-rust)}
+#veil .veil-skip{margin-top:.35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:1px;cursor:pointer;
+  background:transparent;border:1px solid var(--border-dim);color:var(--text-secondary);padding:.4rem .75rem;border-radius:var(--radius-sm)}
+#veil .veil-skip:hover{border-color:var(--accent-gold);color:var(--accent-gold)}
+#veil .veil-skip[hidden]{display:none}
+/* reduce motion: still show state, no spin thrash */
+@media(prefers-reduced-motion:reduce){
+  #veil .spin{animation:none;border-top-color:var(--accent-gold)}
+  #veil .veil-bar-fill{animation:none}
+  #veil,#veil.gone{transition-duration:.2s}
+}
 
 /* ── Mobile ── */
 @media(max-width:720px){
@@ -183,7 +215,28 @@
   </div>
 
   <div id="unitPanel"></div>
-  <div id="veil"><div class="spin"></div><p>FORGING GLOBE · PULLING PIPES</p></div>
+  <!-- First paint: intentional loading shell (not a blank error page). JS upgrades steps + dismisses when globe is ready. -->
+  <div id="veil" role="status" aria-live="polite" aria-busy="true" aria-label="Loading the live geologic globe">
+    <div class="veil-inner">
+      <div class="spin" aria-hidden="true"></div>
+      <p id="veilTitle">FORGING GLOBE · PULLING PIPES</p>
+      <p id="veilSub" class="veil-sub">Booting WebGL · streaming Macrostrat · USGS · plates…</p>
+      <div class="veil-bar" aria-hidden="true"><div id="veilBarFill" class="veil-bar-fill" style="width:8%"></div></div>
+      <ul class="veil-steps" id="veilSteps">
+        <li data-step="engine" class="wait">globe.gl engine <span>…</span></li>
+        <li data-step="tiles" class="wait">Macrostrat tiles <span>…</span></li>
+        <li data-step="usgs" class="wait">USGS 24h feed <span>…</span></li>
+        <li data-step="plates" class="wait">PB2002 plates <span>…</span></li>
+        <li data-step="wells" class="wait">wells canon <span>…</span></li>
+      </ul>
+      <button type="button" id="veilSkip" class="veil-skip" hidden>Show globe anyway</button>
+    </div>
+  </div>
+  <noscript>
+    <div style="position:absolute;inset:0;z-index:41;display:flex;align-items:center;justify-content:center;background:#0a0a0f;color:#d0d0d8;font-family:monospace;padding:2rem;text-align:center">
+      JavaScript is required for the live globe. Basin dossiers still work: <a href="/earth/kinabalu-basin/" style="color:#D4A853">Kinabalu</a> · <a href="/earth/malay-basin/" style="color:#D4A853">Malay Basin</a>.
+    </div>
+  </noscript>
 </div>
 
 <!-- ══ ZEN PULSE · 3-second orientation ══ -->
@@ -513,7 +566,81 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 
 /* ── pipe status ── */
 function pipe(id,state,text){const e=$(id);if(!e)return;e.className=state;e.textContent=text;}
-setInterval(()=>{const d=new Date();$("pipeClock").textContent=d.toISOString().slice(11,19)+" UTC";},1000);
+setInterval(()=>{const d=new Date();const c=$("pipeClock");if(c)c.textContent=d.toISOString().slice(11,19)+" UTC";},1000);
+
+/* ── boot veil: one page, staged load — never look like two random pages (MAKRUH) ── */
+const boot={
+  t0:performance.now(),
+  minMs:1400,     /* minimum perceived load so skeleton→globe is a transition, not a cut */
+  softMs:4500,    /* “pipe delayed” messaging */
+  hardMs:12000,   /* force reveal; keep strip honest about which pipes failed */
+  ready:{engine:false,tiles:false,usgs:false,plates:false,wells:false},
+  labels:{engine:"globe.gl engine",tiles:"Macrostrat tiles",usgs:"USGS 24h feed",plates:"PB2002 plates",wells:"wells canon"},
+  dismissed:false,
+  softFired:false
+};
+function setVeilStep(key,state,hint){
+  boot.ready[key]=state==="ok"||state==="bad";
+  const li=document.querySelector(`#veilSteps li[data-step="${key}"]`);
+  if(!li)return;
+  li.className=state;
+  const label=boot.labels[key]||key;
+  const mark=state==="ok"?"OK":state==="bad"?"FAIL":"…";
+  li.innerHTML=`${label} <span>${hint?esc(hint):mark}</span>`;
+  const n=Object.keys(boot.ready).length;
+  const done=Object.values(boot.ready).filter(Boolean).length;
+  const fill=$("veilBarFill");
+  if(fill)fill.style.width=Math.max(8,Math.round((done/n)*100))+"%";
+  tryDismissVeil();
+}
+function setVeilCopy(title,sub,cls){
+  const t=$("veilTitle"),s=$("veilSub");
+  if(t&&title)t.textContent=title;
+  if(s){s.textContent=sub||"";s.className="veil-sub"+(cls?" "+cls:"");}
+}
+function tryDismissVeil(){
+  if(boot.dismissed)return;
+  const elapsed=performance.now()-boot.t0;
+  const engineOk=boot.ready.engine;
+  const criticalOk=boot.ready.tiles||boot.ready.usgs; /* globe is usable with either base */
+  const allSettled=Object.values(boot.ready).every(Boolean);
+  const hard=elapsed>=boot.hardMs;
+  const soft=elapsed>=boot.softMs;
+  if(soft&&!boot.softFired&&!allSettled){
+    boot.softFired=true;
+    setVeilCopy("FORGING GLOBE · PIPE DELAYED","One or more live pipes are slow — retrying. Globe will show when WebGL is ready.", "warn");
+    const skip=$("veilSkip");if(skip)skip.hidden=false;
+  }
+  const canGo=engineOk&&elapsed>=boot.minMs&&(criticalOk||allSettled||soft||hard);
+  if(!canGo&&!hard)return;
+  if(!engineOk&&!hard)return;
+  dismissVeil(hard&&!criticalOk?"degraded":"ready");
+}
+function dismissVeil(reason){
+  if(boot.dismissed)return;
+  boot.dismissed=true;
+  const v=$("veil");
+  if(!v)return;
+  v.setAttribute("aria-busy","false");
+  if(reason==="degraded"){
+    setVeilCopy("GLOBE READY · PIPES PARTIAL","Some pipes timed out — numbers withheld where failed. Interact with what loaded.", "warn");
+  }
+  /* short beat so copy can paint, then fade */
+  setTimeout(()=>{
+    v.classList.add("gone");
+    setTimeout(()=>{if(v.parentNode)v.remove();},1000);
+  },reason==="degraded"?480:80);
+}
+/* soft + hard clocks + skip */
+setTimeout(()=>tryDismissVeil(),boot.softMs);
+setTimeout(()=>{
+  if(boot.dismissed)return;
+  setVeilCopy("REVEALING GLOBE","Load budget exceeded — showing what we have. Strip below stays honest.", "warn");
+  boot.ready.engine=boot.ready.engine||true; /* allow reveal even if globe.gl CDN hung */
+  tryDismissVeil();
+},boot.hardMs);
+const skipBtn=$("veilSkip");
+if(skipBtn)skipBtn.addEventListener("click",()=>{boot.ready.engine=true;dismissVeil("skip");});
 
 /* ── tile engines ── */
 const TILE_GEO=(x,y,z)=>`https://images.weserv.nl/?url=tiles.macrostrat.org/carto/${z}/${x}/${y}.png`;
@@ -522,38 +649,62 @@ let base="geo";
 
 /* ── globe ── */
 const el=$("globeViz");
-const world=Globe({rendererConfig:{antialias:true}})(el)
-  .globeTileEngineUrl((x,y,z)=>TILE_GEO(x,y,z))
-  .showAtmosphere(true).atmosphereColor("#00d4aa").atmosphereAltitude(0.16)
-  .backgroundColor("#0a0a0f")
-  .pointsData([]).pointLat("lat").pointLng("lng")
-  .pointAltitude("alt").pointRadius("r").pointColor("c").pointLabel("label")
-  .ringsData([]).ringLat("lat").ringLng("lng").ringColor("c")
-  .ringMaxRadius("maxR").ringPropagationSpeed("speed").ringRepeatPeriod("period")
-  .pathsData([]).pathPoints("coords")
-  .pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
-  .pathColor(()=>"rgba(0,212,170,0.5)").pathStroke(0.55)
-  .labelsData([]).labelLat("lat").labelLng("lng")
-  .labelText("text").labelColor("color").labelSize("size")
-  .labelAltitude("alt").labelDotRadius("dot")
-  .onLabelClick(onMarkerClick)
-  .onGlobeClick(onRockClick);
+let world=null;
+try{
+  if(typeof Globe!=="function")throw new Error("globe.gl not loaded");
+  world=Globe({rendererConfig:{antialias:true}})(el)
+    .globeTileEngineUrl((x,y,z)=>TILE_GEO(x,y,z))
+    .showAtmosphere(true).atmosphereColor("#00d4aa").atmosphereAltitude(0.16)
+    .backgroundColor("#0a0a0f")
+    .pointsData([]).pointLat("lat").pointLng("lng")
+    .pointAltitude("alt").pointRadius("r").pointColor("c").pointLabel("label")
+    .ringsData([]).ringLat("lat").ringLng("lng").ringColor("c")
+    .ringMaxRadius("maxR").ringPropagationSpeed("speed").ringRepeatPeriod("period")
+    .pathsData([]).pathPoints("coords")
+    .pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
+    .pathColor(()=>"rgba(0,212,170,0.5)").pathStroke(0.55)
+    .labelsData([]).labelLat("lat").labelLng("lng")
+    .labelText("text").labelColor("color").labelSize("size")
+    .labelAltitude("alt").labelDotRadius("dot")
+    .onLabelClick(onMarkerClick)
+    .onGlobeClick(onRockClick);
+  /* two rAFs ≈ first painted frame — engine step green before pipes settle */
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    setVeilStep("engine","ok","READY");
+    setVeilCopy("FORGING GLOBE · PULLING PIPES","WebGL up · waiting on live pipes…");
+  }));
+}catch(err){
+  console.error("Globe boot failed",err);
+  setVeilStep("engine","bad","FAIL");
+  setVeilCopy("GLOBE ENGINE FAILED","globe.gl did not boot — scroll for dossiers and static maps.","bad");
+  const skip=$("veilSkip");if(skip){skip.hidden=false;skip.textContent="Dismiss overlay";}
+}
 
-function size(){world.width(el.clientWidth).height(el.clientHeight);}
+function size(){if(world&&el)world.width(el.clientWidth).height(el.clientHeight);}
 window.addEventListener("resize",size);size();
-world.pointOfView({lat:8,lng:104,altitude:2.3});
+if(world)world.pointOfView({lat:8,lng:104,altitude:2.3});
 
-const ctrl=world.controls();
-ctrl.autoRotate=true;ctrl.autoRotateSpeed=0.32;
+const ctrl=world?world.controls():null;
+if(ctrl){ctrl.autoRotate=true;ctrl.autoRotateSpeed=0.32;}
 let idleT=null;
-function pauseSpin(){ctrl.autoRotate=false;clearTimeout(idleT);idleT=setTimeout(()=>{ctrl.autoRotate=true;},9000);}
-el.addEventListener("pointerdown",pauseSpin);
-el.addEventListener("wheel",pauseSpin,{passive:true});
+function pauseSpin(){if(!ctrl)return;ctrl.autoRotate=false;clearTimeout(idleT);idleT=setTimeout(()=>{ctrl.autoRotate=true;},9000);}
+if(el){
+  el.addEventListener("pointerdown",pauseSpin);
+  el.addEventListener("wheel",pauseSpin,{passive:true});
+}
 
-fetch(TILE_GEO(3,1,2),{method:"HEAD"}).then(r=>pipe("pipeTiles",r.ok?"ok":"bad",r.ok?"TILES · MACROSTRAT OK":"TILES · FAIL"))
-  .catch(()=>pipe("pipeTiles","bad","TILES · FAIL"));
+fetch(TILE_GEO(3,1,2),{method:"HEAD"})
+  .then(r=>{
+    pipe("pipeTiles",r.ok?"ok":"bad",r.ok?"TILES · MACROSTRAT OK":"TILES · FAIL");
+    setVeilStep("tiles",r.ok?"ok":"bad",r.ok?"OK":"FAIL");
+  })
+  .catch(()=>{
+    pipe("pipeTiles","bad","TILES · FAIL");
+    setVeilStep("tiles","bad","FAIL");
+  });
 
 function setBase(b){
+  if(!world)return;
   base=b;
   $("baseGeo").classList.toggle("on",b==="geo");
   $("baseSat").classList.toggle("on",b==="sat");
@@ -566,6 +717,7 @@ $("baseSat").addEventListener("click",()=>setBase("sat"));
 
 document.querySelectorAll(".waypoints button").forEach(btn=>{
   btn.addEventListener("click",()=>{
+    if(!world)return;
     if(btn.id==="wpWells"){
       pauseSpin();
       const c=wellCentroid||{lat:8,lng:104};
@@ -593,11 +745,17 @@ fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
      const c=f.geometry.coordinates;
      return {lat:c[1],lng:c[0],c:t=>`rgba(212,175,55,${Math.sqrt(Math.max(0,1-t))})`,maxR:(f.properties.mag||4.5)*1.3,speed:1.1,period:2200};
    });
-   if($("lyrQuakes").checked){world.pointsData(quakePts);world.ringsData(quakeRings);}
+   if(world&&$("lyrQuakes").checked){world.pointsData(quakePts);world.ringsData(quakeRings);}
    pipe("pipeUsgs","ok","USGS · "+feats.length+" EVENTS/24H");
-   $("stQuakes").textContent=feats.length.toLocaleString();
- }).catch(()=>{pipe("pipeUsgs","bad","USGS · FAIL");$("stQuakes").textContent="UNVERIFIED";});
+   const stq=$("stQuakes");if(stq)stq.textContent=feats.length.toLocaleString();
+   setVeilStep("usgs","ok",feats.length+" EV");
+ }).catch(()=>{
+   pipe("pipeUsgs","bad","USGS · FAIL");
+   const stq=$("stQuakes");if(stq)stq.textContent="UNVERIFIED";
+   setVeilStep("usgs","bad","FAIL");
+ });
 $("lyrQuakes").addEventListener("change",e=>{
+  if(!world)return;
   world.pointsData(e.target.checked?quakePts:[]);
   world.ringsData(e.target.checked?quakeRings:[]);
 });
@@ -647,40 +805,6 @@ async function loadPlates(){
       else if(g.type==="MultiPolygon")g.coordinates.forEach(poly=>platePolygons.push(ring(poly[0])));
     });
 
-    world.pathsData([])
-      .pathPoints("coords").pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
-      .pathColor(d=>plateColor(d.tag)[1])
-      .pathStroke(1.7)
-      .pathDashLength(d=>d.tag==="subduction"?0:0.6)
-      .pathDashGap(d=>d.tag==="subduction"?0:0.4)
-      .pathDashAnimateTime(d=>d.tag==="subduction"?0:2400)
-      .pathTransitionDuration(900)
-      .onPathClick(d=>{
-        if(!d)return;pauseSpin();
-        lastPlateClickAt=Date.now();
-        const[col,colGlow]=plateColor(d.tag);
-        panel.className="show";
-        panel.innerHTML=`<button class="close" aria-label="close">✕</button>
-          <div class="src">Φ GEOX · plate boundary witness</div>
-          <h3><span class="swatch" style="background:${col}"></span>${esc(d.name)}</h3>
-          <p class="lith">${plateLabelOf(d.tag)}</p>
-          <div class="kv"><b>PLATE A</b><span>${esc(d.plateA)}</span></div>
-          <div class="kv"><b>PLATE B</b><span>${esc(d.plateB||"")}</span></div>
-          <div class="kv"><b>SOURCE</b><span>${esc(d.source)}</span></div>
-          <div class="kv"><b>VERDICT</b><span>PIPE-READ · BIRD 2003</span></div>
-          <div class="coords">PB2002_boundaries.geojson · arif-fazil.com/earth/data/plates · boundary attributes from source, not inferred</div>`;
-        wireClose();
-      });
-
-    try{
-      world.polygonsData(platePolygons)
-        .polygonGeoJson(d=>3)
-        .polygonCapColor(()=>"rgba(255,255,255,0.04)")
-        .polygonSideColor(()=>"rgba(255,255,255,0.05)")
-        .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
-        .polygonAltitude(0.003);
-    }catch(e){}
-
     motionArcs=platePaths.filter(p=>p.coords.length>=4).map(p=>{
       const mid=Math.floor(p.coords.length/2);
       const nxt=Math.min(p.coords.length-1,mid+2);
@@ -690,33 +814,72 @@ async function loadPlates(){
         tag:p.tag
       };
     });
-    world.arcsData([])
-      .arcStartLat("startLat").arcStartLng("startLng")
-      .arcEndLat("endLat").arcEndLng("endLng")
-      .arcColor(d=>plateColor(d.tag)[1])
-      .arcStroke(0.45)
-      .arcAltitude(0.012)
-      .arcDashLength(0.14)
-      .arcDashGap(0.7)
-      .arcDashAnimateTime(2000)
-      .arcsTransitionDuration(1200);
 
-    if($("lyrPlates").checked)world.pathsData(platePaths);
-    if($("lyrMotion").checked)world.arcsData(motionArcs);
+    if(world){
+      world.pathsData([])
+        .pathPoints("coords").pathPointLat(p=>p[1]).pathPointLng(p=>p[0])
+        .pathColor(d=>plateColor(d.tag)[1])
+        .pathStroke(1.7)
+        .pathDashLength(d=>d.tag==="subduction"?0:0.6)
+        .pathDashGap(d=>d.tag==="subduction"?0:0.4)
+        .pathDashAnimateTime(d=>d.tag==="subduction"?0:2400)
+        .pathTransitionDuration(900)
+        .onPathClick(d=>{
+          if(!d)return;pauseSpin();
+          lastPlateClickAt=Date.now();
+          const[col]=plateColor(d.tag);
+          panel.className="show";
+          panel.innerHTML=`<button class="close" aria-label="close">✕</button>
+            <div class="src">Φ GEOX · plate boundary witness</div>
+            <h3><span class="swatch" style="background:${col}"></span>${esc(d.name)}</h3>
+            <p class="lith">${plateLabelOf(d.tag)}</p>
+            <div class="kv"><b>PLATE A</b><span>${esc(d.plateA)}</span></div>
+            <div class="kv"><b>PLATE B</b><span>${esc(d.plateB||"")}</span></div>
+            <div class="kv"><b>SOURCE</b><span>${esc(d.source)}</span></div>
+            <div class="kv"><b>VERDICT</b><span>PIPE-READ · BIRD 2003</span></div>
+            <div class="coords">PB2002_boundaries.geojson · arif-fazil.com/earth/data/plates · boundary attributes from source, not inferred</div>`;
+          wireClose();
+        });
+
+      try{
+        world.polygonsData(platePolygons)
+          .polygonGeoJson(d=>3)
+          .polygonCapColor(()=>"rgba(255,255,255,0.04)")
+          .polygonSideColor(()=>"rgba(255,255,255,0.05)")
+          .polygonStrokeColor(()=>"rgba(212,175,55,0.18)")
+          .polygonAltitude(0.003);
+      }catch(e){}
+
+      world.arcsData([])
+        .arcStartLat("startLat").arcStartLng("startLng")
+        .arcEndLat("endLat").arcEndLng("endLng")
+        .arcColor(d=>plateColor(d.tag)[1])
+        .arcStroke(0.45)
+        .arcAltitude(0.012)
+        .arcDashLength(0.14)
+        .arcDashGap(0.7)
+        .arcDashAnimateTime(2000)
+        .arcsTransitionDuration(1200);
+
+      if($("lyrPlates").checked)world.pathsData(platePaths);
+      if($("lyrMotion").checked)world.arcsData(motionArcs);
+    }
 
     pipe("pipePlates","ok",`PLATES · PB2002 OK · ${plateStats.subduction} SUBDUCT · ${plateStats.unclass} UNCLASS · ${platePaths.length} SEG`);
+    setVeilStep("plates","ok",platePaths.length+" SEG");
   }catch(err){
     console.error("Plate pipe failed",err);
     pipe("pipePlates","bad","PLATES · FAIL");
+    setVeilStep("plates","bad","FAIL");
   }
 }
 loadPlates();
 
 $("lyrPlates").addEventListener("change",e=>{
-  world.pathsData(e.target.checked?platePaths:[]);
+  if(world)world.pathsData(e.target.checked?platePaths:[]);
 });
 $("lyrMotion").addEventListener("change",e=>{
-  world.arcsData(e.target.checked?motionArcs:[]);
+  if(world)world.arcsData(e.target.checked?motionArcs:[]);
 });
 
 /* ── macrostrat live stats ── */
@@ -766,15 +929,17 @@ fetch("/earth/data/wells.json")
    if(pts.length){
      wellCentroid={lat:pts.reduce((a,p)=>a+p.lat,0)/pts.length,lng:pts.reduce((a,p)=>a+p.lng,0)/pts.length};
    }
-   if($("lyrWells").checked)world.labelsData(wellLabels);
-   $("wellCount").textContent=wells.length;
+   if(world&&$("lyrWells").checked)world.labelsData(wellLabels);
+   const wc=$("wellCount");if(wc)wc.textContent=wells.length;
    pipe("pipeWells","ok","WELLS · "+wells.length+" SOVEREIGN CANON");
+   setVeilStep("wells","ok",wells.length+"");
  }).catch(()=>{
    pipe("pipeWells","bad","WELLS · FAIL");
-   $("wellCount").textContent="UNVERIFIED";
+   const wc=$("wellCount");if(wc)wc.textContent="UNVERIFIED";
+   setVeilStep("wells","bad","FAIL");
  });
 $("lyrWells").addEventListener("change",e=>{
-  world.labelsData(e.target.checked?wellLabels:[]);
+  if(world)world.labelsData(e.target.checked?wellLabels:[]);
 });
 
 function onMarkerClick(d){
@@ -874,9 +1039,7 @@ async function onRockClick({lat,lng}){
 }
 function wireClose(){const b=panel.querySelector(".close");if(b)b.addEventListener("click",()=>panel.classList.remove("show"));}
 
-/* ── veil ── */
-window.addEventListener("load",()=>setTimeout(()=>$("veil").classList.add("gone"),700));
-setTimeout(()=>$("veil").classList.add("gone"),6000);
+/* veil dismiss is owned by boot tracker (setVeilStep / soft+hard timers) — no jump-cut on window.load */
 
 /* ── sticky TOC active state ── */
 (function(){

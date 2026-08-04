@@ -47,7 +47,7 @@
   </div>
   <nav class="zs-local" aria-label="Markets">
     <a href="/wealth/vitals/">PETRONAS</a>
-    <a href="/wealth/malaysia/">MALAYSIA</a>
+    <a href="/malaysia/">MALAYSIA</a>
     <a href="/klci/">KLCI</a>
     <a href="/usdmyr/" class="here" aria-current="page">USD/MYR</a>
     <a href="/oil/">OIL</a>
@@ -107,6 +107,12 @@
     <span><a href="https://arif-fazil.com/usdmyr/api/history?interval=1d&period=3mo" style="color:var(--dim)">history</a> · <a href="https://arif-fazil.com/usdmyr/api/apex" style="color:var(--dim)">apex</a> · <a href="/data/markets/usdmyr_digest.json" style="color:var(--dim)">digest</a></span>
   </div>
 
+  <!-- LIVE PROXY STRIP: values remain withheld until the declared pipe responds. -->
+  <div class="live-strip" id="liveStrip" aria-label="Live market proxies">
+    <div class="ls-head"><span class="ls-badge down" id="lsBadge">UNAVAILABLE</span><span>LIVE MARKET PROXIES</span><span style="margin-left:auto" id="lsTime">—</span></div>
+    <div class="ls-chips" id="lsChips" aria-live="polite"><span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative</span></div>
+    <div class="ls-note">Proxies are live market readings, NOT sealed USD/MYR values. Values are withheld on pipe failure. Source: WEALTH market engine · 5-min cache.</div>
+  </div>
 </section>
 
 <!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->
