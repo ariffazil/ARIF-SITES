@@ -100,7 +100,7 @@ body::before {
 <div class="topbar"><div class="wrap">
   <h1><span>█</span> arif-fazil.com /map</h1>
   <nav>
-    <a href="/">home</a><a href="/earth">earth</a><a href="/economics">economics</a><a href="/world">world</a><a href="/politics/ns-election">prn16 ns</a><a href="/writing">writing</a><a href="/doctrine">doctrine</a><a href="/map/" class="active">map</a><a href="/machine/">machine</a>
+    <a href="/">home</a><a href="/earth">earth</a><a href="/economics">economics</a><a href="/world">world</a><a href="/writing">writing</a><a href="/doctrine">doctrine</a><a href="/missions">missions</a><a href="/999/">999</a><a href="/map/" class="active">map</a><a href="/machine/">machine</a><a href="/machines/">for-machines</a>
   </nav>
 </div></div>
 
@@ -153,15 +153,12 @@ body::before {
   <div class="machine-strip">
     <a href="/sitemap.xml">sitemap.xml</a> ·
     <a href="/llms.txt">llms.txt</a> ·
-    <a href="/llms-full.txt">llms-full.txt</a> ·
-    <a href="/llms.json">llms.json</a> ·
-    <a href="/page.json">page.json</a> ·
     <a href="/missions.json">missions.json</a> ·
     <a href="/surfaces.json">surfaces.json</a> ·
-    <a href="/robots.txt">robots.txt</a> ·
-    <a href="/rsl.xml">rsl.xml</a> ·
-    <a href="/.well-known/mcp.json">mcp.json</a> ·
-    <a href="https://mcp.arif-fazil.com/mcp">mcp.arif-fazil.com</a>
+    <a href="/.well-known/invariants.json">invariants</a> ·
+    <a href="/.well-known/webmcp.json">webmcp</a> ·
+    <a href="/machines/">for-machines</a> ·
+    <a href="https://mcp.arif-fazil.com/mcp">mcp gateway</a>
   </div>
   <div class="zen"> DITEMPA BUKAN DIBERI · Generated from surfaces.json · <span id="gen-date"></span></div>
 </div>
@@ -169,7 +166,6 @@ body::before {
 </div>
 
 <script>
-
 // Load canonical catalog from surfaces.json (single SOT) — F2 no dual embedded catalog
 const FEDERATION_SUBDOMAINS = [
   {"domain":"arifos.arif-fazil.com","role":"Constitutional governance kernel & observatory","organ":"arifOS"},
@@ -180,39 +176,33 @@ const FEDERATION_SUBDOMAINS = [
   {"domain":"well.arif-fazil.com","role":"Human and machine vitality reflection","organ":"WELL"},
   {"domain":"forge.arif-fazil.com","role":"A-FORGE governed execution shell","organ":"A-FORGE"}
 ];
-let CATALOG = { surfaces: [], federation_subdomains: FEDERATION_SUBDOMAINS };
 
-
-function depth(path){return path.split('/').filter(Boolean).length}
+function depth(path){return String(path||'').split('/').filter(Boolean).length}
 function badge(s){
-  if(s.status==='live'&&s.type==='machine')return'badge-machine';
+  if(s.status==='live'&&(s.type==='machine'||s.type==='machine_contract'||s.type==='api'))return'badge-machine';
   if(s.status==='live')return'badge-live';
   if(s.status==='redirect')return'badge-redirect';
   if(s.status==='gone')return'badge-gone';
   return'badge-machine';
 }
 function badgeLabel(s){
-  if(s.status==='live'&&s.type==='machine')return'machine';
+  if(s.status==='live'&&(s.type==='machine'||s.type==='machine_contract'||s.type==='api'))return'machine';
   if(s.status==='live')return'live';
   if(s.status==='redirect')return s.code||'redirect';
   if(s.status==='gone')return'gone';
   return s.status;
 }
-
 function renderCard(s){
   const d=depth(s.path);
   if(s.status==='gone'){
-    return `<div class="wound-card"><div class="path">${s.path}</div><div class="note">${s.description||''}</div></div>`;
+    return `<div class="wound-card"><div class="path">${s.path}</div><div class="note">${s.description||s.title||''}</div></div>`;
   }
-  const url=s.redirects_to||s.path;
-  const isExt=url.startsWith('http');
-  return `<div class="surface-card${s.status==='gone'?' gone':''}">
+  return `<div class="surface-card">
     <div><span class="path">${s.status==='redirect'?'↳ ':''}<code>${s.path}</code></span>${s.title?` <span class="title">— ${s.title}</span>`:''}</div>
     <div><span class="depth-chip">depth ${d}</span></div>
     <div class="meta"><span class="badge ${badge(s)}">${badgeLabel(s)}</span>${s.redirects_to?`<br><span style="font-size:10px">→ ${s.redirects_to}</span>`:''}</div>
   </div>`;
 }
-
 function renderSubdomain(sd){
   return `<a href="https://${sd.domain}" style="text-decoration:none"><div class="subdomain-card">
     <div class="domain">${sd.domain}</div>
@@ -220,38 +210,44 @@ function renderSubdomain(sd){
     <div class="organ">organ: ${sd.organ}</div>
   </div></a>`;
 }
-
-// Render all sections
+function setCount(id, n){
+  const el=document.getElementById(id);
+  if(el) el.textContent=`(${n})`;
+}
 
 async function boot(){
+  let surfaces=[], subdomains=FEDERATION_SUBDOMAINS, version='?';
   try {
     const res = await fetch('/surfaces.json', { cache: 'no-store' });
+    if(!res.ok) throw new Error('surfaces_http_'+res.status);
     const data = await res.json();
-    CATALOG.surfaces = data.surfaces || data || [];
-    CATALOG.federation_subdomains = data.federation_subdomains || FEDERATION_SUBDOMAINS;
+    surfaces = data.surfaces || [];
+    subdomains = data.federation_subdomains || FEDERATION_SUBDOMAINS;
+    version = data.version || data.as_of || '?';
   } catch (e) {
-    document.getElementById('live-surfaces').innerHTML = '<p style="color:#f66">Failed to load surfaces.json</p>';
+    document.getElementById('live-surfaces').innerHTML = '<p style="color:#f66">Failed to load surfaces.json — map cannot lie with a second catalog.</p>';
     return;
   }
-  const live=CATALOG.surfaces.filter(s=>s.status==='live'&&s.type!=='machine'&&s.type!=='api');
-  const redirects=CATALOG.surfaces.filter(s=>s.status==='redirect');
-  const machines=CATALOG.surfaces.filter(s=>s.type==='machine'||s.type==='api');
-  const gone=CATALOG.surfaces.filter(s=>s.status==='gone');
+  const isMachine = s => s.type==='machine'||s.type==='machine_contract'||s.type==='api';
+  const live=surfaces.filter(s=>s.status==='live'&&!isMachine(s));
+  const redirects=surfaces.filter(s=>s.status==='redirect');
+  const machines=surfaces.filter(s=>isMachine(s)||(s.status==='live'&&String(s.path||'').includes('.well-known')));
+  const gone=surfaces.filter(s=>s.status==='gone');
   document.getElementById('live-surfaces').innerHTML=live.map(renderCard).join('')||'<p>None</p>';
   document.getElementById('redirect-surfaces').innerHTML=redirects.map(renderCard).join('')||'<p>None</p>';
   document.getElementById('machine-surfaces').innerHTML=machines.map(renderCard).join('')||'<p>None</p>';
   document.getElementById('gone-surfaces').innerHTML=gone.map(renderCard).join('')||'<p>None</p>';
-  const sub=document.getElementById('subdomains');
-  if(sub) sub.innerHTML=(CATALOG.federation_subdomains||[]).map(renderSubdomain).join('');
+  setCount('live-count', live.length);
+  setCount('redirect-count', redirects.length);
+  setCount('machine-count', machines.length);
+  setCount('gone-count', gone.length);
+  setCount('subdomain-count', subdomains.length);
+  const grid=document.getElementById('subdomain-grid');
+  if(grid) grid.innerHTML=subdomains.map(renderSubdomain).join('');
   const gd=document.getElementById('gen-date');
-  if(gd) gd.textContent=new Date().toISOString();
+  if(gd) gd.textContent=`v${version} · ${new Date().toISOString().slice(0,10)}`;
 }
 boot();
-
-document.getElementById('gone-count').textContent=`(${gone.length})`;
-document.getElementById('subdomain-grid').innerHTML=CATALOG.federation_subdomains.map(renderSubdomain).join('');
-document.getElementById('subdomain-count').textContent=`(${CATALOG.federation_subdomains.length})`;
-document.getElementById('gen-date').textContent=new Date().toISOString().slice(0,10);
 </script>
 </body>
 </html>
