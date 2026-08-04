@@ -75,9 +75,15 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "Read",
-    "href": "/read",
-    "mode": "spa",
+    "label": "Map",
+    "href": "/map/",
+    "mode": "static",
+    "external": false
+  },
+  {
+    "label": "Machine",
+    "href": "/machine/",
+    "mode": "static",
     "external": false
   },
   {
@@ -87,8 +93,8 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "Map",
-    "href": "/map/",
+    "label": "For machines",
+    "href": "/machines/",
     "mode": "static",
     "external": false
   },
