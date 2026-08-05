@@ -351,7 +351,7 @@ arif-fazil.com {
 	handle @wealth_gold_page {
 		uri strip_prefix /wealth/gold
 		root * /var/www/html/gold
-		try_files {path} /index.html
+		try_files {path} {path}/index.html =404
 		file_server
 	}
 	# Oil (Brent Crude) dashboard (2026-07-16) — cognitive clarity cockpit
@@ -373,7 +373,7 @@ arif-fazil.com {
 	handle @wealth_oil_page {
 		uri strip_prefix /wealth/oil
 		root * /var/www/html/oil
-		try_files {path} /index.html
+		try_files {path} {path}/index.html =404
 		file_server
 	}
 	# Natural Gas dashboard (2026-07-16) — cognitive clarity cockpit
@@ -397,7 +397,7 @@ arif-fazil.com {
 	handle @wealth_gas_page {
 		uri strip_prefix /wealth/gas
 		root * /var/www/html/gas
-		try_files {path} /index.html
+		try_files {path} {path}/index.html =404
 		file_server
 	}
 	# WEALTH Terminal home (2026-07-18) — unified product surface for gold/oil/gas
@@ -457,6 +457,12 @@ arif-fazil.com {
 	}
 	# Direct commodity routes. API handlers must precede static SPA handlers.
 	redir /oil /oil/ 308
+@oil_landing path /oil/
+handle @oil_landing {
+	root * /var/www/html/oil
+	rewrite * /index.html
+	file_server
+}
 	@oil_api path /oil/api/*
 	handle @oil_api {
 		uri strip_prefix /oil
@@ -468,6 +474,12 @@ arif-fazil.com {
 		file_server
 	}
 	redir /gold /gold/ 308
+@gold_landing path /gold/
+handle @gold_landing {
+	root * /var/www/html/gold
+	rewrite * /index.html
+	file_server
+}
 	@gold_api path /gold/api/*
 	handle @gold_api {
 		uri strip_prefix /gold
@@ -479,6 +491,12 @@ arif-fazil.com {
 		file_server
 	}
 	redir /gas /gas/ 308
+@gas_landing path /gas/
+handle @gas_landing {
+	root * /var/www/html/gas
+	rewrite * /index.html
+	file_server
+}
 	@gas_api path /gas/api/*
 	handle @gas_api {
 		uri strip_prefix /gas
@@ -862,7 +880,7 @@ arif-fazil.com {
 		header Pragma "no-cache"
 		header Expires "0"
 		root * /var/www/html/arif
-		try_files {path} /index.html
+		try_files {path} {path}/index.html =404
 		file_server {
 			index index.html
 		}
