@@ -172,7 +172,7 @@ print("PASS" if ok else "FAIL", json.dumps({
     fi
 }
 
-echo -e "${CYAN}═══ CONTENT ASSERTIONS — /vitals/${NC}"
+echo -e "${CYAN}═══ CONTENT ASSERTIONS — /propa/${NC}"
 
 # ── Workstream A — Banner ──
 assert_present "/propa/"  "A: FY2026 DECLARED panel"     "FY2026 DECLARED STATE"
@@ -212,7 +212,7 @@ assert_absent "/propa/"   "B11-E: no contiguous '48 HOLD' marker" "48 HOLD"
 assert_absent "/data/wealth/petronas_vitals.json" "B11-E: source JSON no '48 HOLD' (canonical-source URL is irrelevant; this would 404 but checks for absence via grep on dist if reachable)" "48 HOLD" || true
 
 # ── B11-A: exactly 9 static .tripcell rows in no-JS HTML ──
-assert_grid9_count "/vitals/" 9
+assert_grid9_count "/propa/" 9
 
 # ── B11-B: static SVG fan fallback present ──
 assert_present "/propa/"  "B11-B: SVG fan-svg element"   'id="fan-svg"'
@@ -225,7 +225,7 @@ assert_present "/propa/"  "B11-C: scenario-summary marker" 'data-agent-role="sce
 assert_present "/propa/"  "B11-C: IFR sole scoring input" "audited IFR FY2025 remains the sole scoring input"
 
 # ── B11-D: reality JSON-LD contract ──
-assert_reality_jsonld "/vitals/"
+assert_reality_jsonld "/propa/"
 assert_present "/propa/"  "B11-D: pre_lock_pulse 48 in JSON-LD"  '"pre_lock_pulse": 48'
 assert_present "/propa/"  "B11-D: display_pulse 0 in JSON-LD"    '"display_pulse": 0'
 assert_present "/propa/"  "B11-D: fy2026 [DEC] feeds_scoring=false" '"feeds_scoring": false'
@@ -234,7 +234,7 @@ assert_absent "/propa/"   "B11-D: '48 HOLD' must not appear in any JSON-LD" "48 
 # ── JSON-LD integrity (all blocks parse) ──
 echo ""
 echo -e "${CYAN}═══ CONTENT ASSERTIONS — JSON-LD${NC}"
-assert_jsonld_parses "/vitals/"
+assert_jsonld_parses "/propa/"
 assert_present "/propa/"  "JSON-LD: ThreeDoorsDigest"     "ThreeDoorsDigest"
 assert_present "/propa/"  "JSON-LD: PacemakerAction"       "PacemakerAction"
 assert_present "/propa/"  "JSON-LD: CrisisAlert"           "InstitutionalCrisisAlert"
@@ -245,7 +245,7 @@ assert_present "/propa/"  "JSON-LD: InstitutionalVitals"   "InstitutionalVitals"
 echo ""
 echo -e "${CYAN}═══ CONTENT ASSERTIONS — Nav completeness${NC}"
 for page in /oil/ /gas/ /gold/ /klci/ /usdmyr/; do
-    assert_present "$page" "Nav to /vitals/"  "/vitals/"
+    assert_present "$page" "Nav to /propa/"  "/propa/"$
     assert_present "$page" "Nav to /malaysia/" "/malaysia/"
 done
 

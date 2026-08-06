@@ -558,6 +558,12 @@ handle @gas_landing {
 		try_files /machine/index.html =404
 		file_server
 	}
+	# Machine surface files — manifest, map, etc. (2026-08-06)
+	handle /machine/* {
+		root * /var/www/html/arif
+		try_files {path} =404
+		file_server
+	}
 	handle /000 {
 		root * /var/www/html/arif
 		try_files /000/index.html =404

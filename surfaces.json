@@ -1,8 +1,8 @@
 {
-  "version": "2026-08-06",
+  "version": "2026-08-06-r3",
   "domain": "arif-fazil.com",
   "doctrine": {
-    "title": "Single canonical surface catalog. 9-domain world model. All machine catalogs are generated views of this file.",
+    "title": "Single canonical surface catalog. 9-domain world model. 64 surfaces. All machine catalogs are generated views of this file.",
     "rule": "If it is not in surfaces.json, it does not get served to a machine.",
     "generated_views": [
       "sitemap.xml",
@@ -461,14 +461,14 @@
       "verb": "555_interpret"
     },
     {
-      "path": "/vitals/",
-      "title": "PETRONAS · VITALS — Financial capacity and resilience",
+      "path": "/propa/",
+      "title": "PETRONAS · PROPA — Financial capacity and resilience",
       "mission": "monitor",
       "status": "live",
       "type": "page",
       "priority": 0.9,
       "changefreq": "daily",
-      "description": "Public PETRONAS VITALS on apex (not system health cosplay). Canonical soft path /vitals/; /wealth/vitals/ 308s here. Distinct organ-style chrome is intentional for capital dashboard.",
+      "description": "Public PETRONAS PROPA on apex (not system health cosplay). Canonical path /propa/; /vitals/ and /wealth/vitals/ 308 here. Distinct organ-style chrome is intentional for capital dashboard.",
       "domain": "capital",
       "verb": "444_compute"
     },
@@ -717,6 +717,138 @@
       "description": "Human-readable agent contracts, AUP, disclaimer",
       "domain": "work",
       "verb": "777_forge"
+    },
+    {
+      "path": "/syedos/",
+      "title": "SYED OS — AI Twin Persona",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.5,
+      "changefreq": "monthly",
+      "description": "SYED OS persona site — dashboard, emas, heal, nasilemak, rental-swot. AI twin. Previously orphan.",
+      "domain": "voice",
+      "verb": "555_interpret"
+    },
+    {
+      "path": "/abangsado-flex.mp4",
+      "title": "ABANG SADO — Flex Video",
+      "mission": "interpret",
+      "status": "live",
+      "type": "media",
+      "priority": 0.4,
+      "changefreq": "yearly",
+      "description": "ABANG SADO flex video. AI twin. Previously stranded with no landing page.",
+      "domain": "voice",
+      "verb": "555_interpret"
+    },
+    {
+      "path": "/machine/manifest.json",
+      "title": "Machine Manifest — Single Agent Entrypoint",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.9,
+      "changefreq": "monthly",
+      "description": "Single entrypoint for AI agents. Replaces 18 scattered .well-known files. One fetch, every door.",
+      "domain": "proof",
+      "verb": "999_seal"
+    },
+    {
+      "path": "/machine/map.json",
+      "title": "Machine Map — 9-Domain Agent View",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.8,
+      "changefreq": "monthly",
+      "description": "Agent-readable 9-domain world model map. 46 redirect rules. Generated from surfaces.json.",
+      "domain": "proof",
+      "verb": "999_seal"
+    },
+    {
+      "path": "/human/map/",
+      "title": "Human Map — 9-Domain World Model",
+      "mission": "interpret",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Visitor-facing 9-domain grid. Every domain answers one question. Generated from surfaces.json.",
+      "domain": "voice",
+      "verb": "555_interpret"
+    },
+    {
+      "path": "/world/sot/",
+      "title": "SOT Atlas — Live Situational World Map",
+      "mission": "monitor",
+      "status": "live",
+      "type": "page",
+      "priority": 0.7,
+      "changefreq": "daily",
+      "description": "Live situational world map. Source-of-truth events. GDELT + World Bank data.",
+      "domain": "voice",
+      "verb": "555_interpret"
+    },
+    {
+      "path": "/floors.json",
+      "title": "Constitutional Floors F1-F13",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "F1-F13 table. Canonical machine-readable floors. Future canonical: /law/floors.json",
+      "domain": "law",
+      "verb": "333_judge"
+    },
+    {
+      "path": "/scar.json",
+      "title": "Scar Registry",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "APEX v36Ω scar metabolization. Immutable sealed failures. Future canonical: /law/scar.json",
+      "domain": "law",
+      "verb": "333_judge"
+    },
+    {
+      "path": "/authority.json",
+      "title": "Sovereign Authority Registry",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "F13 authority chain + identity anchors. Future canonical: /law/authority.json",
+      "domain": "law",
+      "verb": "333_judge"
+    },
+    {
+      "path": "/policy.json",
+      "title": "Public Governance Policy",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Federation-wide governance policy. Future canonical: /law/policy.json",
+      "domain": "law",
+      "verb": "333_judge"
+    },
+    {
+      "path": "/manifest.json",
+      "title": "Federation Manifest",
+      "mission": "remember",
+      "status": "live",
+      "type": "machine",
+      "priority": 0.7,
+      "changefreq": "monthly",
+      "description": "Federation topology + organ registry. Future canonical: /law/manifest.json",
+      "domain": "law",
+      "verb": "333_judge"
     }
   ],
   "federation_subdomains": [
@@ -823,5 +955,25 @@
         "organ": "WELL"
       }
     }
+  },
+  "world_model": {
+    "overlay_status": "active",
+    "derives_from": "canon/world-model.yaml v1.0.0",
+    "trinity_seal": "999_SEAL 2026-08-01",
+    "fields_added": [
+      "domain",
+      "verb"
+    ],
+    "domains": [
+      "origin",
+      "proof",
+      "law",
+      "earth",
+      "capital",
+      "voice",
+      "work",
+      "signal",
+      "human"
+    ]
   }
 }
