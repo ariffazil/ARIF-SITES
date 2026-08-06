@@ -3,7 +3,6 @@
   "version": "4.1.0",
   "as_of": "2026-08-06",
   "description": "Arrow-of-Time shell with World Model 9-domain vocabulary overlay. Labels = World Model. URLs = Arrow Hybrid (unchanged). Trinity chrome intact. Path A ratified by F13.",
-  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
@@ -36,39 +35,159 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "Primary nav — World Model vocabulary overlay on Arrow Hybrid URLs. 7 domains. Labels from world-model.yaml.",
+    "description": "Primary nav — World Model vocabulary overlay on Arrow Hybrid URLs. 7 domains.",
     "rule": "Max 7. Labels = World Model domains. URLs = Arrow Hybrid (unchanged).",
     "items": [
-      { "label": "Earth", "href": "/earth", "role": "primary", "mode": "spa", "domain": "earth", "question": "What's under our feet?" },
-      { "label": "Capital", "href": "/economics", "role": "primary", "mode": "spa", "domain": "capital", "question": "What's it worth?" },
-      { "label": "Voice", "href": "/world", "role": "primary", "mode": "spa", "domain": "voice", "question": "What do I think?" },
-      { "label": "Essays", "href": "/writing", "role": "primary", "mode": "spa", "domain": "voice", "question": "What do I think?", "aliases": ["/read", "/essays"] },
-      { "label": "Law", "href": "/doctrine", "role": "primary", "mode": "spa", "domain": "law", "question": "What are the rules?", "aliases": ["/canon", "/federation"] },
-      { "label": "Work", "href": "/missions", "role": "primary", "mode": "spa", "domain": "work", "question": "What am I building?" },
-      { "label": "Proof", "href": "/999/", "role": "primary", "mode": "static", "domain": "proof", "question": "Is this true?" }
+      {
+        "label": "Earth",
+        "href": "/earth",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "earth",
+        "question": "What's under our feet?"
+      },
+      {
+        "label": "Capital",
+        "href": "/economics",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "capital",
+        "question": "What's it worth?"
+      },
+      {
+        "label": "Voice",
+        "href": "/world",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "voice",
+        "question": "What do I think?"
+      },
+      {
+        "label": "Essays",
+        "href": "/writing",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "voice",
+        "question": "What do I think?",
+        "aliases": [
+          "/read",
+          "/essays"
+        ]
+      },
+      {
+        "label": "Law",
+        "href": "/doctrine",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "law",
+        "question": "What are the rules?",
+        "aliases": [
+          "/canon",
+          "/federation"
+        ]
+      },
+      {
+        "label": "Work",
+        "href": "/missions",
+        "role": "primary",
+        "mode": "spa",
+        "domain": "work",
+        "question": "What am I building?"
+      },
+      {
+        "label": "Proof",
+        "href": "/999/",
+        "role": "primary",
+        "mode": "static",
+        "domain": "proof",
+        "question": "Is this true?"
+      }
     ]
   },
   "secondary_links": {
-    "description": "Footer secondary — World Model domains not in primary strip. Origin, Signal, Human.",
+    "description": "Footer secondary — World Model domains not in primary strip.",
     "items": [
-      { "label": "Origin", "href": "/000/", "role": "secondary", "mode": "static", "domain": "origin", "question": "Where did this start?" },
-      { "label": "Map", "href": "/map/", "role": "secondary", "mode": "static", "domain": "earth", "question": "What's under our feet?" },
-      { "label": "PETRONAS", "href": "/propa/", "role": "secondary", "mode": "static", "domain": "capital", "question": "What's it worth?" },
-      { "label": "Politics", "href": "/politics/ns-election/", "role": "secondary", "mode": "spa", "domain": "voice", "question": "What do I think?" },
-      { "label": "Signal", "href": "/connect/", "role": "secondary", "mode": "spa", "domain": "signal", "question": "How do I reach out?" },
-      { "label": "Human", "href": "/human/map/", "role": "secondary", "mode": "static", "domain": "human", "question": "Am I well?" }
+      {
+        "label": "Origin",
+        "href": "/000/",
+        "role": "secondary",
+        "mode": "static",
+        "domain": "origin",
+        "question": "Where did this start?"
+      },
+      {
+        "label": "Map",
+        "href": "/map/",
+        "role": "secondary",
+        "mode": "static",
+        "domain": "earth",
+        "question": "What's under our feet?"
+      },
+      {
+        "label": "PETRONAS",
+        "href": "/propa/",
+        "role": "secondary",
+        "mode": "static",
+        "domain": "capital",
+        "question": "What's it worth?"
+      },
+      {
+        "label": "Politics",
+        "href": "/politics/ns-election/",
+        "role": "secondary",
+        "mode": "spa",
+        "domain": "voice",
+        "question": "What do I think?"
+      },
+      {
+        "label": "Signal",
+        "href": "/connect/",
+        "role": "secondary",
+        "mode": "spa",
+        "domain": "signal",
+        "question": "How do I reach out?"
+      },
+      {
+        "label": "Human",
+        "href": "/human/map/",
+        "role": "secondary",
+        "mode": "static",
+        "domain": "human",
+        "question": "Am I well?"
+      }
     ]
   },
   "machine_links": {
     "description": "Quiet machine doors — agents and WebMCP",
     "items": [
-      { "label": "llms.txt", "href": "/llms.txt" },
-      { "label": "missions.json", "href": "/missions.json" },
-      { "label": "surfaces.json", "href": "/surfaces.json" },
-      { "label": "webmcp", "href": "/.well-known/webmcp.json" },
-      { "label": "mcp", "href": "https://mcp.arif-fazil.com/mcp" },
-      { "label": "did", "href": "/.well-known/did.json" },
-      { "label": "PyPI arifos", "href": "https://pypi.org/project/arifos/" }
+      {
+        "label": "llms.txt",
+        "href": "/llms.txt"
+      },
+      {
+        "label": "missions.json",
+        "href": "/missions.json"
+      },
+      {
+        "label": "surfaces.json",
+        "href": "/surfaces.json"
+      },
+      {
+        "label": "webmcp",
+        "href": "/.well-known/webmcp.json"
+      },
+      {
+        "label": "mcp",
+        "href": "https://mcp.arif-fazil.com/mcp"
+      },
+      {
+        "label": "did",
+        "href": "/.well-known/did.json"
+      },
+      {
+        "label": "PyPI arifos",
+        "href": "https://pypi.org/project/arifos/"
+      }
     ]
   },
   "trinity_nav": {
@@ -113,10 +232,26 @@
     "note": "Not required on public Arrow shell; reserved for organ/cockpit surfaces.",
     "background": "var(--r-700, #7A1F18)",
     "content": [
-      { "label": "Ψ", "href": "https://arif-fazil.com", "role": "logo" },
-      { "label": "arif-fazil.com", "href": "https://arif-fazil.com", "role": "site_name" },
-      { "label": "F13_OK", "value": "F13_OK", "role": "verdict_chip" },
-      { "label": "v2026.08.04", "value": "v2026.08.04", "role": "release_tag" }
+      {
+        "label": "Ψ",
+        "href": "https://arif-fazil.com",
+        "role": "logo"
+      },
+      {
+        "label": "arif-fazil.com",
+        "href": "https://arif-fazil.com",
+        "role": "site_name"
+      },
+      {
+        "label": "F13_OK",
+        "value": "F13_OK",
+        "role": "verdict_chip"
+      },
+      {
+        "label": "v2026.08.04",
+        "value": "v2026.08.04",
+        "role": "release_tag"
+      }
     ]
   },
   "breadcrumb": {
@@ -125,28 +260,85 @@
     "separator": "›",
     "rule": "disagreement between breadcrumb and URL = drift",
     "examples": [
-      { "url": "/", "breadcrumb": "home" },
-      { "url": "/earth", "breadcrumb": "home › earth" },
-      { "url": "/economics", "breadcrumb": "home › capital" },
-      { "url": "/world/makcikgpt", "breadcrumb": "home › voice › makcikgpt" },
-      { "url": "/politics/ns-election", "breadcrumb": "home › voice › politics › ns-election" },
-      { "url": "/propa/", "breadcrumb": "home › capital › petronas" },
-      { "url": "/doctrine", "breadcrumb": "home › law › doctrine" },
-      { "url": "/missions", "breadcrumb": "home › work › missions" }
+      {
+        "url": "/",
+        "breadcrumb": "home"
+      },
+      {
+        "url": "/earth",
+        "breadcrumb": "home › earth"
+      },
+      {
+        "url": "/economics",
+        "breadcrumb": "home › capital"
+      },
+      {
+        "url": "/world/makcikgpt",
+        "breadcrumb": "home › voice › makcikgpt"
+      },
+      {
+        "url": "/politics/ns-election",
+        "breadcrumb": "home › voice › politics › ns-election"
+      },
+      {
+        "url": "/propa/",
+        "breadcrumb": "home › capital › petronas"
+      },
+      {
+        "url": "/doctrine",
+        "breadcrumb": "home › law › doctrine"
+      },
+      {
+        "url": "/missions",
+        "breadcrumb": "home › work › missions"
+      }
     ]
   },
   "keyboard_shortcuts": [
-    { "combo": "g e", "action": "navigate to /earth (Earth)" },
-    { "combo": "g c", "action": "navigate to /economics (Capital)" },
-    { "combo": "g v", "action": "navigate to /world (Voice)" },
-    { "combo": "g w", "action": "navigate to /writing (Essays)" },
-    { "combo": "g l", "action": "navigate to /doctrine (Law)" },
-    { "combo": "g m", "action": "navigate to /missions (Work)" },
-    { "combo": "g 9", "action": "navigate to /999/ (Proof)" },
-    { "combo": "g p", "action": "navigate to /propa/ (PETRONAS)" },
-    { "combo": "g o", "action": "navigate to /000/ (Origin)" },
-    { "combo": "?", "action": "show shortcut overlay" },
-    { "combo": "Esc", "action": "close overlays" }
+    {
+      "combo": "g e",
+      "action": "navigate to /earth (Earth)"
+    },
+    {
+      "combo": "g c",
+      "action": "navigate to /economics (Capital)"
+    },
+    {
+      "combo": "g v",
+      "action": "navigate to /world (Voice)"
+    },
+    {
+      "combo": "g w",
+      "action": "navigate to /writing (Essays)"
+    },
+    {
+      "combo": "g l",
+      "action": "navigate to /doctrine (Law)"
+    },
+    {
+      "combo": "g m",
+      "action": "navigate to /missions (Work)"
+    },
+    {
+      "combo": "g 9",
+      "action": "navigate to /999/ (Proof)"
+    },
+    {
+      "combo": "g p",
+      "action": "navigate to /propa/ (PETRONAS)"
+    },
+    {
+      "combo": "g o",
+      "action": "navigate to /000/ (Origin)"
+    },
+    {
+      "combo": "?",
+      "action": "show shortcut overlay"
+    },
+    {
+      "combo": "Esc",
+      "action": "close overlays"
+    }
   ],
   "epistemic_registers": {
     "human_side_voice": "EMPATHY — narrative, dignity-first phrasing",
@@ -156,9 +348,19 @@
   "mission_footer": {
     "background": "var(--paper)",
     "content": [
-      { "label": "doctrine", "value": "Ditempa Bukan Diberi" },
-      { "label": "missions", "value": "six verbs" },
-      { "label": "kernel", "value": "arifOS F1–F13" }
+      {
+        "label": "doctrine",
+        "value": "Ditempa Bukan Diberi"
+      },
+      {
+        "label": "missions",
+        "value": "six verbs"
+      },
+      {
+        "label": "kernel",
+        "value": "arifOS F1–F13"
+      }
     ]
-  }
+  },
+  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)"
 }
