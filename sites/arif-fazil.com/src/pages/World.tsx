@@ -96,7 +96,7 @@ export function World() {
               </a>
             </nav>
             <nav aria-label="National dashboards" className="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[0.7rem] uppercase tracking-wider text-forge-dim">
-              <a href="/wealth/vitals/" className={`hover:text-forge-white transition-colors ${linkFocus}`}>
+              <a href="/propa/" className={`hover:text-forge-white transition-colors ${linkFocus}`}>
                 PETRONAS
               </a>
               <span aria-hidden="true" className="text-forge-iron">·</span>

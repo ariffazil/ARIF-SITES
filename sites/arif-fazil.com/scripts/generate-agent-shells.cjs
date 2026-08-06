@@ -75,7 +75,7 @@ function shell({ title, description, canonical, body, ring = 'SOUL' }) {
       <a href="/doctrine">Doctrine</a>
       <a href="/missions">Missions</a>
       <a href="/999/">999</a>
-      <a href="/vitals/">VITALS</a>
+      <a href="/propa/">VITALS</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
 ${body}
@@ -217,7 +217,7 @@ writeRoute(
     <ul>
       <li><a href="/oil/">Oil</a> · <a href="/gas/">Gas</a> · <a href="/gold/">Gold</a></li>
       <li><a href="/klci/">KLCI</a> · <a href="/usdmyr/">USD/MYR</a></li>
-      <li><a href="/vitals/">PETRONAS VITALS</a></li>
+      <li><a href="/propa/">PETRONAS VITALS</a></li>
     </ul>
     <p class="meta">Machine: <a href="/data/wealth/latest.json">latest.json</a></p>
 `,
