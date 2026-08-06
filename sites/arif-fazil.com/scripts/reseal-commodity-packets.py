@@ -4,6 +4,7 @@
 Belt for F2 TRUTH: static scrapers see ≤1h-old embed even without JS.
 Reversible: restore from *.bak-reseal or rebuild site.
 """
+
 from __future__ import annotations
 
 import json
@@ -17,8 +18,8 @@ ASSETS = ("oil", "gas", "gold")
 API = "https://arif-fazil.com/wealth/{asset}/api/snapshot"
 # Live + dist + public sources (first existing wins for each asset, all existing updated)
 ROOTS = [
-    Path("/var/www/html"),          # live commodity apps: /oil /gold /gas
-    Path("/var/www/html/arif"),      # SPA-mirrored copies
+    Path("/var/www/html"),  # live commodity apps: /oil /gold /gas
+    Path("/var/www/html/arif"),  # SPA-mirrored copies
     Path("/root/arif-fazil.com/sites/arif-fazil.com/dist"),
     Path("/root/arif-fazil.com/sites/arif-fazil.com/public"),
 ]
@@ -30,7 +31,9 @@ PACKET_RE = re.compile(
 
 def fetch_snapshot(asset: str) -> dict:
     url = API.format(asset=asset)
-    req = urllib.request.Request(url, headers={"User-Agent": "reseal-commodity-packets/1.0"})
+    req = urllib.request.Request(
+        url, headers={"User-Agent": "reseal-commodity-packets/1.0"}
+    )
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read().decode())
 
@@ -59,6 +62,22 @@ def merge_packet(old: dict, snap: dict) -> dict:
         out["levels"] = levels
     if macro:
         out["macro"] = macro
+    # 2026-08-06: refresh market_state from live snapshot
+    # Previously market_state was carried forward verbatim — fossilized inside
+    # otherwise-fresh JSON-LD. Client JS patches it in-browser but static
+    # consumers (scrapers, search engines) see the stale values.
+    ms = out.get("market_state")
+    if isinstance(ms, dict):
+        if "price" in ticker:
+            ms["price_usd"] = ticker["price"]
+        if "symbol" in ticker:
+            ms["symbol"] = ticker["symbol"]
+        if "change_pct" in ticker:
+            ms["change_pct"] = ticker["change_pct"]
+        if levels:
+            ms["key_levels"] = levels
+        out["market_state"] = ms
+
     out["resealed_at"] = datetime.now(timezone.utc).isoformat()
     out["reseal_source"] = "live_snapshot_api"
     return out
