@@ -3,27 +3,202 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verify — receipts and Observatory</title>
-<meta name="description" content="Verify federation receipts at /999 and inspect current Observatory evidence.">
+<title>/verify — Kernel Identity Proof · arifOS</title>
+<meta name="description" content="Live kernel identity attestation. Verify the federation is what it claims to be.">
 <link rel="canonical" href="https://arif-fazil.com/verify/">
 <style>
-body{font-family:system-ui,sans-serif;background:#0d0c0b;color:#e6e4e0;line-height:1.6;margin:0}
-main{max-width:640px;margin:0 auto;padding:2rem 1.25rem}
-a.btn{display:inline-flex;margin:.35rem .5rem .35rem 0;padding:.6rem 1rem;border-radius:8px;background:#3a9ea8;color:#0d0c0b;text-decoration:none;font-weight:600}
-a.ghost{background:transparent;border:1px solid #2a2826;color:#e6e4e0}
+  :root {
+    --bg: #0d0c0b;
+    --fg: #e6e4e0;
+    --dim: #9b9995;
+    --acc: #3a9ea8;
+    --green: #4caf50;
+    --red: #e53935;
+    --border: #2a2826;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+  h2 { font-size: 1.1rem; color: var(--dim); margin: 1.5rem 0 0.5rem; }
+  .subtitle { color: var(--dim); margin-bottom: 1.5rem; }
+  .card {
+    background: #141210;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .status::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .status.ok::before { background: var(--green); }
+  .status.bad::before { background: var(--red); }
+  .hash {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    word-break: break-all;
+    background: #0a0908;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    margin: 0.5rem 0;
+    color: var(--acc);
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .label { color: var(--dim); }
+  .row .value { font-weight: 500; }
+  .verify-steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+  }
+  .verify-steps li {
+    counter-increment: step;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .verify-steps li::before {
+    content: counter(step);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: var(--acc);
+    color: var(--bg);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 0.6rem;
+  }
+  a { color: var(--acc); }
+  .footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    color: var(--dim);
+    font-size: 0.8rem;
+  }
+  .loading { animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 </style>
-<script src="/_shared/federation-chrome.js?v=20260718"></script>
-  <script src="/_shared/unified-header-loader.js" defer></script>
 </head>
 <body>
-<main>
-  <h1>Verify</h1>
-  <p style="color:#9b9995">Receipts are permanent. Interpretation is not authority.</p>
-  <p>
-    <a class="btn" href="/999/">Enter receipt ID · /999</a>
-    <a class="btn ghost" href="https://arifos.arif-fazil.com/">Inspect Observatory</a>
-    <a class="btn ghost" href="https://arifos.arif-fazil.com/api/public-state">public-state JSON</a>
-  </p>
+<main id="app">
+  <h1>⚖️ /verify</h1>
+  <p class="subtitle">Kernel identity proof · Live from arifOS :8088</p>
+
+  <div class="card">
+    <div id="status-line">
+      <span class="status loading" id="status-badge">LOADING</span>
+      <span id="timestamp" style="color:var(--dim);font-size:0.85rem;margin-left:0.5rem;"></span>
+    </div>
+  </div>
+
+  <h2>Kernel Identity</h2>
+  <div class="card" id="kernel-card">
+    <div class="row"><span class="label">Identity Hash</span><span class="value hash" id="identity-hash">—</span></div>
+    <div class="row"><span class="label">Prefix</span><span class="value" id="identity-prefix">—</span></div>
+    <div class="row"><span class="label">Verdict</span><span class="value" id="verdict">—</span></div>
+    <div class="row"><span class="label">Floors Active</span><span class="value" id="floors">—</span></div>
+    <div class="row"><span class="label">VAULT999</span><span class="value" id="vault999">—</span></div>
+    <div class="row"><span class="label">Runtime Drift</span><span class="value" id="runtime-drift">—</span></div>
+    <div class="row"><span class="label">Contract Drift</span><span class="value" id="contract-drift">—</span></div>
+    <div class="row"><span class="label">Release</span><span class="value" id="release">—</span></div>
+  </div>
+
+  <h2>Vault Chain</h2>
+  <div class="card" id="vault-card">
+    <div class="row"><span class="label">Chain Status</span><span class="value" id="chain-status">—</span></div>
+    <div class="row"><span class="label">Head</span><span class="value hash" id="vault-head">—</span></div>
+    <div class="row"><span class="label">Last Seal</span><span class="value" id="last-seal">—</span></div>
+  </div>
+
+  <h2>How to Verify</h2>
+  <ol class="verify-steps" id="falsification">
+    <li>Compare the <strong>identity prefix</strong> above with the BLAKE3 hash on the <a href="/000/">/000 Genesis page</a>. They must match.</li>
+    <li>Confirm <strong>floors_active = 13</strong>. Fewer floors = degraded governance.</li>
+    <li>Confirm <strong>runtime_drift = false</strong>. True = source code ≠ deployed code.</li>
+    <li>Fetch this page again in 5 minutes. The identity hash must remain stable.</li>
+    <li>Fetch the <a href="/999/verify">/999/verify</a> endpoint — vault chain must be verified.</li>
+  </ol>
+
+  <div class="card" style="margin-top:1rem;">
+    <div class="row"><span class="label">Raw API</span><span class="value"><a href="/verify">/verify</a> (application/json)</span></div>
+    <div class="row"><span class="label">Schema</span><span class="value">arifos.verify.v1</span></div>
+    <div class="row"><span class="label">Cadence</span><span class="value">every 5 min</span></div>
+  </div>
+
+  <div class="footer">
+    DITEMPA BUKAN DIBERI · arifOS kernel · F1–F13 · <span id="generated-at"></span>
+  </div>
 </main>
+
+<script>
+(async () => {
+  const badge = document.getElementById('status-badge');
+  const tsEl = document.getElementById('timestamp');
+  try {
+    const res = await fetch('/verify', { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const d = await res.json();
+
+    // Status
+    badge.textContent = d.verified ? 'VERIFIED' : 'FAILED';
+    badge.className = 'status ' + (d.verified ? 'ok' : 'bad');
+    tsEl.textContent = d.timestamp ? new Date(d.timestamp).toLocaleString() : '';
+
+    // Kernel
+    const k = d.kernel;
+    document.getElementById('identity-hash').textContent = k.identity_hash || '—';
+    document.getElementById('identity-prefix').textContent = k.identity_prefix || '—';
+    document.getElementById('verdict').textContent = k.verdict || '—';
+    document.getElementById('floors').textContent = k.floors_active ?? '—';
+    document.getElementById('vault999').textContent = k.vault999_health || '—';
+    document.getElementById('runtime-drift').textContent = k.runtime_drift === null ? '—' : String(k.runtime_drift);
+    document.getElementById('contract-drift').textContent = k.contract_drift === null ? '—' : String(k.contract_drift);
+    document.getElementById('release').textContent = k.release_id || '—';
+
+    // Vault
+    const v = d.vault999;
+    document.getElementById('chain-status').textContent = v.chain_status || '—';
+    document.getElementById('vault-head').textContent = v.head || '—';
+    document.getElementById('last-seal').textContent = v.last_seal ? new Date(v.last_seal).toLocaleString() : '—';
+
+    document.getElementById('generated-at').textContent = 'Attested: ' + (d.timestamp ? new Date(d.timestamp).toLocaleString() : '');
+  } catch (e) {
+    badge.textContent = 'UNREACHABLE';
+    badge.className = 'status bad';
+    console.error(e);
+  }
+})();
+</script>
 </body>
 </html>
