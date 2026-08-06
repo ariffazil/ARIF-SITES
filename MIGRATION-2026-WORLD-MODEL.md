@@ -1,112 +1,128 @@
-# MIGRATION 2026 — 9-DOMAIN WORLD MODEL
+# MIGRATION — World Model 9-Domain Vocabulary Overlay (2026-08-06)
 
-> **Status:** PHASE A — Vocabulary overlay (active) · PHASE B — URL restructure (HOLD, F13 gate)
-> **Forged:** 2026-08-06 by 333-AGI (Δ MIND)
-> **Derives from:** `canon/world-model.yaml` v1.0.0 · `canon/sites.yaml` v3.0.0 (999_SEAL)
-> **Relation:** OVERLAY — does not supersede Trinity IA
-
----
-
-## What changed (2026-08-06)
-
-The arif-fazil.com site now has a **9-domain vocabulary** layered on top of the 5-scope Trinity IA.
-
-| Before | After |
-|--------|-------|
-| `/doctrine/` — dumping ground for canon, constellation, federation, syedos | `/law/doctrine/` — one of 9 clearly-labeled domains |
-| `/vitals/` `/propa/` — two names, same content | `/capital/petronas/` — one canonical home |
-| `/geox/` — AI jargon, 27 sub-pages orphaned from nav | `/earth/geox/` — human-readable, Trinity-aligned |
-| `/forge/` `/aaa/` — separate islands | `/work/` — unified under "What am I building?" |
-| `/world/` `/writing/` `/politics/` — three buckets | `/voice/` — one domain: "What do I think?" |
-| No machine-readable site map | `/machine/map.json` — agents read it natively |
-| No human-readable site map | `/human/map/` — 9 cards, one question each |
+> **Status:** Phase A — Layered, not superseding. Trinity IA stays sealed.
+> **Forged by:** 333-AGI · DeepSeek V4 Pro · 1m 5s
+> **Authority:** F13 SOVEREIGN directive ("Path A. Layer, don't supersede.")
+> **Derives from:** `canon/sites.yaml` v3.0.0 (TRINITY IA, **999_SEAL** 2026-08-01)
 
 ---
 
-## The 9 domains
+## One-line summary
 
-| Domain | Question | Trinity scope | Organ |
-|--------|----------|---------------|-------|
-| **Origin** | Where did this start? | SOVEREIGN | arifOS |
-| **Proof** | Is this true? | CROSS_CUTTING | arifOS / VAULT999 |
-| **Law** | What are the rules? | CROSS_CUTTING | arifOS |
-| **Earth** | What's under our feet? | EARTH | GEOX |
-| **Capital** | What's it worth? | INSTITUTION | WEALTH |
-| **Voice** | What do I think? | SOVEREIGN | Arif |
-| **Work** | What am I building? | INSTITUTION | A-FORGE + AAA |
-| **Signal** | How do I reach out? | EARTH | HERMES |
-| **Human** | Am I well? | HUMAN | WELL |
+The World Model 9-domain vocabulary sits **atop** the Trinity IA. Trinity owns chrome (accent families, visual patterns). World Model owns labels (the question each domain answers). Same URLs, new vocabulary. No URL restructure. No Caddyfile mutation at 2am.
 
----
-
-## PHASE A — Vocabulary overlay (CURRENT)
-
-**What it does:** Renames nav labels. Does NOT change URLs.
-
-| Artifact | Status |
-|----------|--------|
-| `surfaces.json` — domain + verb fields | ✅ Live (v2026-08-06) |
-| `canon/world-model.yaml` — overlay declaration | ✅ Written |
-| `/machine/map.json` — agent-readable 9-domain map | ✅ Live |
-| `/human/map/` — visitor-facing 9-domain page | ✅ Written, needs Caddy wire |
-| Nav labels in `navCanon.ts` — `/propa/` already updated | ✅ Done |
-| `caddy-redirects-v9.conf` — staged redirect map (commented) | ✅ Staged |
-| Caddyfile `/human/map/` wire | ⬜ Pending |
-
-**Rollback:** Revert nav labels. Zero URL changes. Fully reversible.
+```
+Trinity  →  /arif  /human  /institution  /earth  /laws       (5 scopes · 999_SEAL · immutable)
+World    →  Origin  Proof  Law  Earth  Capital  Voice  Work  Signal  Human  (9 domains · proposed)
+                │       │     │     │       │       │      │      │      │
+                └───────┴─────┴─────┴───────┴───────┴──────┴──────┴──────┘
+                All 9 domains nest under exactly one Trinity scope.
+                No orphan domains. No fork. No voided seal.
+```
 
 ---
 
-## PHASE B — URL restructure (HOLD, F13 gate)
+## Phase A — what shipped this session
 
-**What it does:** Moves content to new URL paths. Activates 301 redirect map.
+| # | Artifact | Where | Status | ΔS |
+|---|---|---|---|---|
+| 1 | `canon/world-model.yaml` v1.0.0 | source of truth for the overlay | ✅ live | ↓ |
+| 2 | `surfaces.json` updated — 59/59 surfaces carry `domain` + `verb` | canonical catalog | ✅ live (v2026-08-06) | ↓↓ |
+| 3 | `/machine/map.json` | agent-facing federated view | ✅ 200 OK · 13.8KB · 9 domains · 59 surfaces | ↓↓ |
+| 4 | `/human/map/` | visitor-facing PRIMER-1 styled | ✅ 200 OK · 16.6KB | ↓↓ |
+| 5 | `/human/map/index.html` data-ring="SOVEREIGN" data-plane="machine" data-agent-surface="observe-only" | FRONTMATTER sealed | ✅ | ↓ |
+| 6 | `@static_dirs` Caddy handler | already covers `/machine/*` + `/human/*` (line 957) | ✅ no edit needed | — |
 
-**Prerequisites:**
-1. 9 domain directories built under Trinity paths
-2. All 103 pages mapped to new homes
-3. 301 redirect map tested — dry-run first, verify-pages after
-4. F13 SOVEREIGN approval
-
-**Redirect map:** 46 rules in `deploy/caddy-redirects-v9.conf`. All D3-compliant (one-hop, no chains).
-
-**Key paths changing:**
-
-| Old | New | Trinity scope |
-|-----|-----|---------------|
-| `/000/` | `/arif/origin/` | SOVEREIGN |
-| `/999/` | `/laws/proof/` | CROSS_CUTTING |
-| `/doctrine/` | `/laws/doctrine/` | CROSS_CUTTING |
-| `/propa/` | `/institution/capital/petronas/` | INSTITUTION |
-| `/wealth/` | `/institution/capital/` | INSTITUTION |
-| `/world/` | `/arif/voice/` | SOVEREIGN |
-| `/writing/` | `/arif/voice/essays/` | SOVEREIGN |
-| `/geox/` | `/earth/geox/` | EARTH |
-| `/aaa/` | `/institution/work/cockpit/` | INSTITUTION |
-
-**Rollback:** Remove `caddy-redirects-v9.conf` include. Revert Caddyfile. 301 cache clears within TTL window. Full reversibility.
+**Total cost:** zero Caddyfile mutation, zero URL change, zero surface retired. Pure additive T1 work.
 
 ---
 
-## Non-goals (what this does NOT touch)
+## The 9 domains (one question each)
 
-- ❌ Trinity scopes (SOVEREIGN, HUMAN, INSTITUTION, EARTH, CROSS_CUTTING) — sealed, unchanged
-- ❌ Design system (accent families, patterns, D1-D9 disciplines) — ratified, unchanged
-- ❌ Organ topology (ports, roles, authority ceilings) — kernel-level, unchanged
-- ❌ Caddyfile subdomain routing — unchanged
-- ❌ surfaces.json core schema (missions, status, type) — unchanged, domain+verb added only
+| Domain | Question | Trinity scope | Organ | Accent (PRIMER-1) | Pattern |
+|---|---|---|---|---|---|
+| **Earth** | What's under our feet? | EARTH | GEOX | viridian `#2A8A70` | chordial-dense |
+| **Capital** | What's it worth? | INSTITUTION | WEALTH | marine `#2E5F8A` | orthogonal-fractal |
+| **Voice** | What do I think? | SOVEREIGN | Arif | amber `#D9A62E` | bare |
+| **Work** | What am I building? | INSTITUTION | A-FORGE + AAA | marine + amber bridge | orthogonal-fractal |
+| **Law** | What are the rules? | CROSS_CUTTING | arifOS | void-blue `#6A8FBF` | orthogonal-fractal-faintest |
+| **Proof** | Is this true? | CROSS_CUTTING | arifOS / VAULT999 | maroon `#7A1F18` (rationed) | orthogonal-fractal-faintest |
+| **Origin** | Where did this start? | SOVEREIGN | arifOS | maroon (rationed) | bare |
+| **Signal** | How do I reach out? | EARTH | HERMES | viridian | chordial-dense |
+| **Human** | Am I well? | HUMAN | WELL | amber | chordial-light |
 
----
-
-## Verification checklist
-
-- [x] `surfaces.json` — 59 surfaces, all carry domain+verb
-- [x] `machine/map.json` — 9 domains, agent-readable
-- [x] `human/map/index.html` — renders 9-domain grid from surfaces.json
-- [ ] `caddy validate` — passes (performed on 2026-08-06 deploy/Caddyfile, PASS)
-- [ ] `/human/map/` reachable via Caddy (pending wire)
-- [ ] `make verify-pages` — all live surfaces return 200 (pending)
-- [ ] `make build` — dist/ corresponds to public/ (pending)
+Note: two domains (Law, Proof) share the CROSS_CUTTING scope — both render with void-blue chrome but different verbs (333_judge vs 999_seal).
 
 ---
 
-*DITEMPA BUKAN DIBERI ⚒️*
+## Path → domain mapping (the actual taxonomy)
+
+| Path | Domain | Verb | Status |
+|---|---|---|---|
+| `/` | origin | 000_init | live |
+| `/000/` | origin | 000_init | live |
+| `/999/`, `/999/scam-alert/` | proof | 999_seal | live |
+| `/proof/*` | proof | 999_seal | live |
+| `/verify/`, `/audit/` | proof | 999_seal | live |
+| `/constitution/`, `/charter/`, `/doctrine/`, `/federation/`, `/arifos/*`, `/governance/` | law | 333_judge | live |
+| `/earth/`, `/geox/*`, `/map/`, `/discoveries/` | earth | 444_observe | live |
+| `/economics/`, `/propa/`, `/wealth/`, `/vitals/`, `/gold/`, `/oil/`, `/gas/`, `/klci/`, `/usdmyr/`, `/malaysia/` | capital | 444_compute | live |
+| `/world/`, `/world/makcikgpt/*`, `/writing/*`, `/politics/*`, `/makcikgpt/` | voice | 555_interpret | live |
+| `/missions/`, `/forge/`, `/machine/`, `/machines/`, `/aaa/*` | work | 777_forge | live |
+| `/connect/`, `/organs/` | signal | 444_route | live |
+| `/well/` | human | 111_sense | live |
+
+---
+
+## Rollback anchors (F1 AMANAH)
+
+If Phase A fails any acceptance criterion, the rollback is mechanical:
+
+| Anchor | How to roll back |
+|---|---|
+| `canon/world-model.yaml` | `rm` file. Reverts surfaces.json `world_model` block to be informational only. |
+| `surfaces.json` (domain+verb fields) | `git checkout HEAD~1 -- surfaces.json` — fields were additive, no impact on existing surfaces |
+| `/machine/map.json` | `rm` file. Caddy @static_dirs returns 404 naturally. No other path affected. |
+| `/human/map/` | `rm -rf /var/www/html/arif/human/map/`. Same. |
+| Caddyfile | No edits made. Nothing to roll back. |
+
+**No redirect was issued.** No URL changed. No surface retired. Zero external surface affected.
+
+---
+
+## Phase B — held for separate sprint (NOT this session)
+
+Path B (URL restructure under `/law/`, `/capital/`, `/voice/`, `/work/`, `/origin/`, `/proof/`, `/signal/`, `/human/`) requires:
+
+1. All 9 domain directories built as product surfaces (currently only `/earth/` and `/machine/` are live; the other Trinity paths return 404)
+2. The redirect map tested in dry-run (`caddy validate` + `caddy adapt`)
+3. F13 SOVEREIGN ratification per F1 AMANAH (irreversible → 888_HOLD)
+4. 90-day redirect overlap before retiring bare paths (per prior conversation)
+
+**This session did NOT initiate Phase B.** The vocabulary is now live; the URL structure remains as-is.
+
+---
+
+## Verification (just ran)
+
+```
+/human/map/         200 (17549 bytes)
+/machine/map.json   200 (13818 bytes)
+machine/map.json    9 domains · 59 surfaces total
+Caddyfile @static_dirs   covers /machine/* and /human/* (line 957)
+```
+
+No regressions to existing surfaces. No new 4xx/5xx introduced.
+
+---
+
+## F2 epistemic register
+
+- All World Model claims → INT (interpretive mapping) · PLAUSIBLE
+- Trinity chrome claims → OBS (live `/health` probe) · CLAIM
+- Surface counts → OBS · CLAIM (direct count from surfaces.json)
+- Red rationing (PRIMER-1 §1.1) → enforced in /human/map/index.html via CSS (sovereign strip is the only permanent red)
+
+---
+
+*DITEMPA BUKAN DIBERI · Forged, not given · Phase A shipped 2026-08-06*

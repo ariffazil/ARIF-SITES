@@ -1,19 +1,20 @@
 {
   "$schema": "./public-state.schema.json",
-  "version": "4.0.0",
-  "as_of": "2026-08-04",
-  "description": "Hybrid IA — Arrow-of-Time shell + live route graph. One primary strip. Trinity is DRAFT only.",
+  "version": "4.1.0",
+  "as_of": "2026-08-06",
+  "description": "Arrow-of-Time shell with World Model 9-domain vocabulary overlay. Labels = World Model. URLs = Arrow Hybrid (unchanged). Trinity chrome intact. Path A ratified by F13.",
+  "derives_from": "world-model.yaml v1.0.0 — vocabulary overlay on Trinity sites.yaml v3.0.0 (999_SEAL)",
   "rule": "Edit primary_links / secondary_links / machine_links here. Site generates navCanon.ts and MUST render them. No hardcoded navbar lists.",
   "doctrine": {
     "human_first": true,
     "agent_doors": "footer machine_links + /.well-known/* + llms.txt + missions.json",
     "preserve": [
       "politics/ns-election",
-      "world/makcikgpt",
-      "commodities oil|gas|gold|klci|usdmyr",
-      "vitals PETRONAS singleton",
-      "000 genesis",
-      "999 vault"
+      "world/makcikgpt (Voice domain)",
+      "commodities gold|oil|gas|klci|usdmyr (Capital domain)",
+      "propa PETRONAS (Capital domain, canonical)",
+      "000 origin",
+      "999 proof"
     ]
   },
   "frame": {
@@ -35,27 +36,27 @@
     "creed": "Forged, not given."
   },
   "primary_links": {
-    "description": "One-line primary navigation rendered by ArrowNavbar (hybrid live 2026-08-04)",
-    "rule": "Max 7. Logo is brand, not a primary item. Politics lives in secondary (World civic depth). Commodities ⊆ World.",
+    "description": "Primary nav — World Model vocabulary overlay on Arrow Hybrid URLs. 7 domains. Labels from world-model.yaml.",
+    "rule": "Max 7. Labels = World Model domains. URLs = Arrow Hybrid (unchanged).",
     "items": [
-      { "label": "Earth", "href": "/earth", "role": "primary", "mode": "spa" },
-      { "label": "Economics", "href": "/economics", "role": "primary", "mode": "spa" },
-      { "label": "World", "href": "/world", "role": "primary", "mode": "spa" },
-      { "label": "Writing", "href": "/writing", "role": "primary", "mode": "spa", "aliases": ["/read", "/essays"] },
-      { "label": "Doctrine", "href": "/doctrine", "role": "primary", "mode": "spa", "aliases": ["/canon", "/federation"] },
-      { "label": "Missions", "href": "/missions", "role": "primary", "mode": "spa" },
-      { "label": "999", "href": "/999/", "role": "primary", "mode": "static" }
+      { "label": "Earth", "href": "/earth", "role": "primary", "mode": "spa", "domain": "earth", "question": "What's under our feet?" },
+      { "label": "Capital", "href": "/economics", "role": "primary", "mode": "spa", "domain": "capital", "question": "What's it worth?" },
+      { "label": "Voice", "href": "/world", "role": "primary", "mode": "spa", "domain": "voice", "question": "What do I think?" },
+      { "label": "Essays", "href": "/writing", "role": "primary", "mode": "spa", "domain": "voice", "question": "What do I think?", "aliases": ["/read", "/essays"] },
+      { "label": "Law", "href": "/doctrine", "role": "primary", "mode": "spa", "domain": "law", "question": "What are the rules?", "aliases": ["/canon", "/federation"] },
+      { "label": "Work", "href": "/missions", "role": "primary", "mode": "spa", "domain": "work", "question": "What am I building?" },
+      { "label": "Proof", "href": "/999/", "role": "primary", "mode": "static", "domain": "proof", "question": "Is this true?" }
     ]
   },
   "secondary_links": {
-    "description": "Footer human secondary — real live surfaces, not aspirational paths",
+    "description": "Footer secondary — World Model domains not in primary strip. Origin, Signal, Human.",
     "items": [
-      { "label": "Politics · NS", "href": "/politics/ns-election/", "role": "secondary", "mode": "spa" },
-      { "label": "VITALS · PETRONAS", "href": "/vitals/", "role": "secondary", "mode": "static" },
-      { "label": "Read", "href": "/read", "role": "secondary", "mode": "spa" },
-      { "label": "000 Genesis", "href": "/000/", "role": "secondary", "mode": "static" },
-      { "label": "Map", "href": "/map/", "role": "secondary", "mode": "static" },
-      { "label": "Connect", "href": "https://mcp.arif-fazil.com/", "role": "secondary", "mode": "external" }
+      { "label": "Origin", "href": "/000/", "role": "secondary", "mode": "static", "domain": "origin", "question": "Where did this start?" },
+      { "label": "Map", "href": "/map/", "role": "secondary", "mode": "static", "domain": "earth", "question": "What's under our feet?" },
+      { "label": "PETRONAS", "href": "/propa/", "role": "secondary", "mode": "static", "domain": "capital", "question": "What's it worth?" },
+      { "label": "Politics", "href": "/politics/ns-election/", "role": "secondary", "mode": "spa", "domain": "voice", "question": "What do I think?" },
+      { "label": "Signal", "href": "/connect/", "role": "secondary", "mode": "spa", "domain": "signal", "question": "How do I reach out?" },
+      { "label": "Human", "href": "/human/map/", "role": "secondary", "mode": "static", "domain": "human", "question": "Am I well?" }
     ]
   },
   "machine_links": {
@@ -126,24 +127,24 @@
     "examples": [
       { "url": "/", "breadcrumb": "home" },
       { "url": "/earth", "breadcrumb": "home › earth" },
-      { "url": "/economics", "breadcrumb": "home › economics" },
-      { "url": "/world/makcikgpt", "breadcrumb": "home › world › makcikgpt" },
-      { "url": "/politics/ns-election", "breadcrumb": "home › politics › ns-election" },
-      { "url": "/vitals/", "breadcrumb": "home › vitals" },
-      { "url": "/doctrine", "breadcrumb": "home › doctrine" },
-      { "url": "/missions", "breadcrumb": "home › missions" }
+      { "url": "/economics", "breadcrumb": "home › capital" },
+      { "url": "/world/makcikgpt", "breadcrumb": "home › voice › makcikgpt" },
+      { "url": "/politics/ns-election", "breadcrumb": "home › voice › politics › ns-election" },
+      { "url": "/propa/", "breadcrumb": "home › capital › petronas" },
+      { "url": "/doctrine", "breadcrumb": "home › law › doctrine" },
+      { "url": "/missions", "breadcrumb": "home › work › missions" }
     ]
   },
   "keyboard_shortcuts": [
-    { "combo": "g e", "action": "navigate to /earth" },
-    { "combo": "g c", "action": "navigate to /economics" },
-    { "combo": "g w", "action": "navigate to /world" },
-    { "combo": "g r", "action": "navigate to /writing" },
-    { "combo": "g d", "action": "navigate to /doctrine" },
-    { "combo": "g m", "action": "navigate to /missions" },
-    { "combo": "g 9", "action": "navigate to /999/" },
-    { "combo": "g v", "action": "navigate to /vitals/" },
-    { "combo": "g p", "action": "navigate to /politics/ns-election/" },
+    { "combo": "g e", "action": "navigate to /earth (Earth)" },
+    { "combo": "g c", "action": "navigate to /economics (Capital)" },
+    { "combo": "g v", "action": "navigate to /world (Voice)" },
+    { "combo": "g w", "action": "navigate to /writing (Essays)" },
+    { "combo": "g l", "action": "navigate to /doctrine (Law)" },
+    { "combo": "g m", "action": "navigate to /missions (Work)" },
+    { "combo": "g 9", "action": "navigate to /999/ (Proof)" },
+    { "combo": "g p", "action": "navigate to /propa/ (PETRONAS)" },
+    { "combo": "g o", "action": "navigate to /000/ (Origin)" },
     { "combo": "?", "action": "show shortcut overlay" },
     { "combo": "Esc", "action": "close overlays" }
   ],
