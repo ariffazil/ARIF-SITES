@@ -1,7 +1,7 @@
 // AUTO-GENERATED from /root/web-canon/canon/navigation.json (generate-nav-canon.cjs)
 // DERIVED — never hand-edit. Edit canon, regenerate.
 // F2: this file must match canon exactly. Drift = entropy.
-// canon version: 4.0.0 · as_of: 2026-08-04 · trinity: DRAFT_FUTURE
+// canon version: 4.1.0 · as_of: 2026-08-06 · trinity: DRAFT_FUTURE
 
 export interface NavItem {
   label: string;
@@ -24,37 +24,37 @@ export const primaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "Economics",
+    "label": "Capital",
     "href": "/economics",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "World",
+    "label": "Voice",
     "href": "/world",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "Writing",
+    "label": "Essays",
     "href": "/writing",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "Doctrine",
+    "label": "Law",
     "href": "/doctrine",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "Missions",
+    "label": "Work",
     "href": "/missions",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "999",
+    "label": "Proof",
     "href": "/999/",
     "mode": "static",
     "external": false
@@ -63,14 +63,8 @@ export const primaryNav: NavItem[] = [
 
 export const secondaryNav: NavItem[] = [
   {
-    "label": "Politics · NS",
-    "href": "/politics/ns-election/",
-    "mode": "spa",
-    "external": false
-  },
-  {
-    "label": "PROPA · PETRONAS",
-    "href": "/propa/",
+    "label": "Origin",
+    "href": "/000/",
     "mode": "static",
     "external": false
   },
@@ -81,28 +75,28 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "Machine",
-    "href": "/machine/",
+    "label": "PETRONAS",
+    "href": "/propa/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "000 Genesis",
-    "href": "/000/",
-    "mode": "static",
+    "label": "Politics",
+    "href": "/politics/ns-election/",
+    "mode": "spa",
     "external": false
   },
   {
-    "label": "For machines",
-    "href": "/machines/",
-    "mode": "static",
+    "label": "Signal",
+    "href": "/connect/",
+    "mode": "spa",
     "external": false
   },
   {
-    "label": "Connect",
-    "href": "https://mcp.arif-fazil.com/",
-    "mode": "external",
-    "external": true
+    "label": "Human",
+    "href": "/human/map/",
+    "mode": "static",
+    "external": false
   }
 ];
 
