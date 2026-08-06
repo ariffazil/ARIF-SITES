@@ -1,93 +1,44 @@
 {
   "meta": {
-    "date": "2026-08-04",
-    "generated_at": "2026-08-04T15:00:01.818806+08:00",
-    "observed_at": "2026-08-04T07:01:58.446259+00:00",
+    "date": "2026-08-05",
+    "generated_at": "2026-08-05T15:00:01.630960+08:00",
+    "observed_at": "2026-08-05T07:00:11.914050+00:00",
     "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
     "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
   },
   "bursa": {
-    "klci_close": 1729.8399658203125,
-    "klci_change_pct": 0.0,
+    "klci_close": 1748.3800048828125,
+    "klci_change_pct": 0.91,
     "most_active": null,
     "top_gainers_search": [],
     "source_urls": []
   },
   "ringgit": {
-    "usd_myr": 4.093999862670898,
-    "trend": "1 USD = 4.0940 MYR",
+    "usd_myr": 4.090000152587891,
+    "trend": "1 USD = 4.0900 MYR",
     "sources": []
   },
   "economy": {
-    "items": [
-      {
-        "title": "Q2 2026 GDP advance estimate 5.8%",
-        "desc": "DOSM released Q2 2026 advance GDP growth at 5.8% YoY on 2026-07-17. BNM does not issue advance estimates.",
-        "category": "GDP",
-        "source_id": "DOSM"
-      },
-      {
-        "title": "OPR unchanged at 3.00%",
-        "desc": "Bank Negara Malaysia Overnight Policy Rate remains 3.00% since May 2023. Next MPC meeting scheduled 2026-09-04.",
-        "category": "SNAPSHOT",
-        "source_id": "BNM"
-      },
-      {
-        "title": "June 2026 CPI headline 2.1%, core 2.0%",
-        "desc": "DOSM June 2026 CPI at 2.1% YoY headline, core 2.0% (plausible but unconfirmed via official release).",
-        "category": "INFLATION",
-        "source_id": "DOSM"
-      }
-    ]
+    "items": []
   },
   "politics": {
-    "narratives": [
-      {
-        "title": "Anwar 52% approval, 42% right direction",
-        "desc": "Merdeka Center June 2026: 52% approve Anwar; 42% say country moving in right direction \u2014 two distinct metrics.",
-        "source_id": "MERDEKA"
-      }
-    ],
-    "economy_policy": [
-      {
-        "title": "BUDI95 fuel subsidy reform",
-        "desc": "BUDI95 launched Sept 27-30 2025: subsidised RON95 RM1.99/L with 300L/month quota for eligible households. Unsubsidised RON95 RM3.72/L. Peninsula diesel subsidy removed June 2024, now RM4.37/L.",
-        "source_id": "KPDN"
-      }
-    ],
-    "regional": [
-      {
-        "title": "Diesel dual pricing: Peninsula vs East Malaysia",
-        "desc": "Peninsula diesel at market RM4.37/L; Sabah and Sarawak retain subsidised RM2.15/L per 2024 rationalisation.",
-        "source_id": "MOF"
-      }
-    ]
+    "narratives": [],
+    "economy_policy": [],
+    "regional": []
   },
   "social": {
-    "cost_of_living": [
-      {
-        "title": "Fuel prices: RON95 RM3.72, diesel RM4.37 (Peninsula)",
-        "desc": "Unsubsidised RON95 at RM3.72/L; Peninsula diesel RM4.37/L. BUDI95 provides RM1.99/L for eligible with 300L monthly cap.",
-        "source_id": "KPDN"
-      }
-    ],
+    "cost_of_living": [],
     "labor": [],
     "youth_career": []
   },
   "oil_energy": {
-    "brent_price": 84.68000030517578,
+    "brent_price": 79.16999816894531,
     "malaysia_oil": [],
     "energy_transition": []
   },
   "global": {
     "fed": {
-      "items": [
-        {
-          "title": "FOMC July 28-29 meeting upcoming",
-          "desc": "Next FOMC meeting scheduled July 28-29, 2026. No outcome yet. Subsequent meetings: Sep 16, Nov 4, Dec 16.",
-          "source_id": "FOMC"
-        }
-      ]
+      "items": []
     },
     "china": {
       "items": []
@@ -96,56 +47,5 @@
       "items": []
     }
   },
-  "so_what": [
-    {
-      "domain": "MARKET",
-      "signal": "KLCI holds at 1729.84",
-      "delta": "KLCI closed at 1729.84 on 2026-08-04 per Bursa Malaysia data.",
-      "omega": "Index consolidating near recent range; no major catalyst today.",
-      "xi": "Watch for Q2 earnings season momentum and foreign flow direction.",
-      "psi": "Retirees' EPF-linked portfolios track this level.",
-      "tone": "neutral",
-      "source_id": "BURSA"
-    },
-    {
-      "domain": "FX / RINGGIT",
-      "signal": "Ringgit at 4.0940 vs USD",
-      "delta": "USD/MYR at 4.0940 on 2026-08-04, reflecting modest dollar strength.",
-      "omega": "Ringgit stable within 4.08-4.12 band; BNM likely comfortable.",
-      "xi": "Importers hedge near 4.10; exporters monitor 4.08 support.",
-      "psi": "Household purchasing power for imported goods steady.",
-      "tone": "neutral",
-      "source_id": "BNM"
-    },
-    {
-      "domain": "OIL & GAS",
-      "signal": "Brent drops to $84.68",
-      "delta": "Brent crude at $84.68 on 2026-08-04, down from $88.10 settle on 2026-07-17. [UNVERIFIED PROVENANCE]",
-      "omega": "Lower oil eases import bill but reduces Petronas revenue.",
-      "xi": "Position for potential fuel price review if trend sustains.",
-      "psi": "Lower pump prices help B40 transport costs.",
-      "tone": "caution",
-      "source_id": "UNVERIFIED"
-    },
-    {
-      "domain": "COST OF LIVING",
-      "signal": "RON95 unsubsidised RM3.72, diesel RM4.37",
-      "delta": "BUDI95 subsidised RON95 at RM1.99/L (300L/month quota). Unsubsidised RON95 RM3.72/L. Peninsula diesel RM4.37/L; Sabah/Sarawak RM2.15/L.",
-      "omega": "Subsidy reform intact; fiscal savings continue but household burden persists for non-eligible.",
-      "xi": "Eligible households maximise BUDI95 quota; others budget for market rates.",
-      "psi": "Rural East Malaysians still benefit from diesel subsidy.",
-      "tone": "caution",
-      "source_id": "KPDN"
-    },
-    {
-      "domain": "POLITICS",
-      "signal": "Anwar approval 52% per Merdeka",
-      "delta": "Merdeka Center June 2026 survey: Anwar approval 52%; country direction right 42% (separate question).",
-      "omega": "Majority approval but directional pessimism signals delivery gap.",
-      "xi": "Policy communication must bridge approval-action disconnect.",
-      "psi": "Voters want tangible cost-of-living relief.",
-      "tone": "neutral",
-      "source_id": "MERDEKA"
-    }
-  ]
+  "so_what": []
 }

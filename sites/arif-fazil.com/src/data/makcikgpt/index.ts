@@ -18,6 +18,7 @@ import searahKekalMilikPenuh from './searah-kekal-milik-penuh';
 import searahSenyumMediaSuap from './searah-senyum-media-suap';
 import daily_2026_07_01 from './daily-2026-07-01';
 import dap8TahunBangang from './dap-8-tahun-bangang';
+import chennahBangang from './chennah-bangang';
 import anakSarawakBayarPdaAnakBanglaTelefon from './anak-sarawak-bayar-pda-anak-bangla-telefon';
 import anwarJungShadow from './anwar-jung-shadow';
 import searahBernamaLewat from './searah-bernama-lewat';
@@ -28,6 +29,7 @@ export const makcikArticleModules: ArticleContent[] = [
   anwarJungShadow,
   anakSarawakBayarPdaAnakBanglaTelefon,
   dap8TahunBangang,
+  chennahBangang,
   searahSenyumMediaSuap,
   searahKekalMilikPenuh,
   petronasVisiMisi,
@@ -173,6 +175,17 @@ export const makcikArticlesMeta: MakcikArticleMeta[] = [
     language: 'ms',
     excerpt: 'DAP 8 tahun dalam kerajaan: Janji tak jadi, air still putus, harga barang naik, Loke hilang suara, reformasi lesap.',
     tags: ['dap', 'prn-2026', 'negeri-sembilan', 'reformasi', 'makcikgpt'],
+    seal: '999',
+  },
+  {
+    slug: 'chennah-bangang',
+    title: '8 BANGANG Anthony Loke — Chennah Version',
+    subtitle: "Loke 13 tahun ADUN Chennah tapi rumah Makcik tak pernah sampai. PRN datang, baru melambai. 8 bangang dari kerusi sendiri.",
+    date: '2026-07-29',
+    domain: 'MAKCIKGPT × DAP × CHENNAH',
+    language: 'ms',
+    excerpt: 'Anthony Loke di Chennah: 13 tahun rekod tanpa turun kampung, tamak menteri+ADUN, istana report, MyKad RON95, ceramah empty-seat. Versi Chennah untuk jiran-jiran Jelebu.',
+    tags: ['dap', 'anthony-loke', 'prn-2026', 'negeri-sembilan', 'chennah', 'makcikgpt'],
     seal: '999',
   },
   {

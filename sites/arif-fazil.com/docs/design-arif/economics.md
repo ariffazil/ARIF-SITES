@@ -4,11 +4,17 @@
 
 ---
 
+## SEAL-LINE
+
+> **An incentive is a quiet instruction. Behaviour follows instructions.**
+
+---
+
 ## Section 1 — HERO (70vh)
 
 **Layout**: Cream background with `ledger-texture.png` as a faint band across the middle. Centered:
 - Mono top-line: `03 ————— ECONOMICS`
-- Headline (Fraunces 88px, ledger green): **"Everything is an incentive."**
+- Headline (Fraunces 88px, ledger green): **"Everything is an incentive. Every incentive is an instruction."**
 - Sub (Newsreader 20px): *"My second degree, and my second lens. Economics is how I price risk — in barrels, in policies, and in machine decisions."*
 - A live ticking "ledger line" under the headline: mono figures in brass that tick upward like a running tally, echoing the home clock (e.g., global barrels consumed today, approximate, labelled `[DER]`).
 
@@ -20,9 +26,9 @@
 
 **Layout**: shadcn Accordion, three items, each with brass number + Fraunces 36px title; expanded content is plain-language prose, 65ch.
 
-1. **Incentive structures** — People and institutions do what they're paid to do. Read the incentives before you read the press release.
-2. **Risk pricing** — An exploration well is a priced option on the unknown. Expected value, probability of success, and the discipline to walk away.
-3. **Value under constraint** — PETRONAS, the Petroleum Development Act 1974, and energy sovereignty: what a national oil company is *for*.
+1. **Incentive structures** — People and institutions do what they are paid to do. Not what they say they do. Not what their mission statements say. What their incentives reward. Read the incentive before you read the press release.
+2. **Risk pricing** — An exploration well is a priced option on the unknown. Expected monetary value, probability of success, and the discipline to walk away when the numbers say no. Risk priced correctly is not fear — it is arithmetic.
+3. **Value under constraint** — PETRONAS, the Petroleum Development Act 1974, and energy sovereignty. What a national oil company is *for*. Custodianship is not extraction at any price. It is the long game: resource for the generation that is not yet born.
 
 **Animation**: accordion expands with spring height animation; the open item's number turns brass; content paragraphs stagger in 0.1s.
 
@@ -38,7 +44,7 @@
 | Simulated sovereign-wealth scenario value | $750M | `[SPEC]` |
 | "PETRONAS is collapsing" | Not supported by the evidence | — |
 
-Footer note (italic Newsreader): *"Speculation is labelled speculation. Arithmetic is labelled arithmetic. That is the whole trick."*
+Footer note (italic Newsreader): *"Speculation is labelled speculation. Arithmetic is labelled arithmetic. That is the trick."*
 
 **Animation**: table rows slide in from right with 0.08s stagger; tag chips pop; the `[SPEC]` row shimmers faintly brass to signal its softer status.
 
