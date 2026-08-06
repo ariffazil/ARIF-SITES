@@ -132,7 +132,7 @@
       "path": "/world/oil/",
       "title": "Oil Dashboard \u2014 Brent Crude Cognitive View",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "pending",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
@@ -140,13 +140,14 @@
       "domain": "capital",
       "verb": "444_compute",
       "redirect_to": "/oil/",
-      "expected_http": "3xx"
+      "expected_http": "3xx",
+      "note": " | 2026-08-06: catalog drift \u2014 pending route/redirect wiring"
     },
     {
       "path": "/world/gas/",
       "title": "Gas Dashboard \u2014 Natural Gas Intelligence",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "pending",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
@@ -154,13 +155,14 @@
       "domain": "capital",
       "verb": "444_compute",
       "redirect_to": "/gas/",
-      "expected_http": "3xx"
+      "expected_http": "3xx",
+      "note": " | 2026-08-06: catalog drift \u2014 pending route/redirect wiring"
     },
     {
       "path": "/world/gold/",
       "title": "Gold Dashboard \u2014 XAUUSD Trading Synthesis",
       "mission": "monitor",
-      "status": "redirect",
+      "status": "pending",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
@@ -168,7 +170,8 @@
       "domain": "capital",
       "verb": "444_compute",
       "redirect_to": "/gold/",
-      "expected_http": "3xx"
+      "expected_http": "3xx",
+      "note": " | 2026-08-06: catalog drift \u2014 pending route/redirect wiring"
     },
     {
       "path": "/writing/",
@@ -393,14 +396,14 @@
     {
       "path": "/economics/makcikgpt/:slug",
       "redirects_to": "/world/makcikgpt/:slug",
-      "status": "redirect",
+      "status": "pending",
       "code": 301,
       "type": "redirect",
       "description": "Legacy MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug",
       "domain": "voice",
       "verb": "555_interpret",
       "expected_http": "2xx",
-      "note": "SPA-resolved"
+      "note": "SPA-resolved | 2026-08-06: catalog drift \u2014 pending route/redirect wiring"
     },
     {
       "path": "/genesis/",
@@ -730,7 +733,7 @@
       "path": "/syedos/",
       "title": "SYED OS \u2014 AI Twin Persona",
       "mission": "interpret",
-      "status": "live",
+      "status": "pending",
       "type": "page",
       "priority": 0.5,
       "changefreq": "monthly",
@@ -738,7 +741,7 @@
       "domain": "voice",
       "verb": "555_interpret",
       "expected_http": "3xx",
-      "note": "Redirects to external"
+      "note": "Redirects to external | 2026-08-06: catalog drift \u2014 pending route/redirect wiring"
     },
     {
       "path": "/abangsado-flex.mp4",
