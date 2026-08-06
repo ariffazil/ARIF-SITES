@@ -1,6 +1,6 @@
 {
   "organ": "PETRONAS·φ VITALS",
-  "version": "1.3.0-f3-amend-001",
+  "version": "1.4.0-event-tracker-001",
   "authority": "COMPUTE_ONLY",
   "refusal": "WEALTH senses distance-to-trip only. No buy/sell/hold allocation. arifOS judges. Arif decides.",
   "pulse": 0,
@@ -208,7 +208,7 @@
     ],
     "unchanged_constitutional_anchors": "safe/trip thresholds unchanged. Lock is a new constitutional rule on top of existing tripwires."
   },
-  "public_url": "https://arif-fazil.com/vitals/",
+  "public_url": "https://arif-fazil.com/propa/",
   "mcp": {
     "tool": "capital_diagnose",
     "mode": "petronas_vitals",
@@ -240,5 +240,65 @@
     "doctrine": "A breach that carries no consequence is not a tripwire — it is a decorative red flag."
   },
   "pulse_verdict_pre_lock": "HOLD",
-  "composite_override_reason": "extraction_crisis_lock ENGAGED · BODY overridden to 0"
+  "composite_override_reason": "extraction_crisis_lock ENGAGED · BODY overridden to 0",
+  "version_history": [
+    {
+      "version": "1.4.0-event-tracker-001",
+      "date": "2026-08-06",
+      "agent": "aaa-hermes",
+      "proposal": "vitals-news-2026-08-06/Proposal A",
+      "change": "additive recent_events metadata; PULSE/layers/tripwires/AMEND unchanged",
+      "f13_lease": "granted by ARIF 2026-08-06",
+      "note": "append-only metadata; no constitutional re-seal required"
+    }
+  ],
+  "recent_events": [
+    {
+      "id": "evt-2026-08-001",
+      "date": "2026-04-09",
+      "title": "Brazil: sold Tartaruga Verde + Espadarte M-III 50% to Petrobras for US$450M",
+      "effect_class": "capital_recycling",
+      "effect_usd_m": 450,
+      "tag": "OBS",
+      "source": "Petrobras 6-K 9 April 2026",
+      "note": "Cash inflow to Petronas 2026; partial monetisation of 2019 US$1.3B acquisition."
+    },
+    {
+      "id": "evt-2026-08-002",
+      "date": "2026-08",
+      "title": "Brazil: returned C-M-661 exploration block to ANP after Mola-1 dry hole",
+      "effect_class": "exploration_writeoff",
+      "effect_usd_m": -170,
+      "tag": "OBS",
+      "source": "BNamericas / ANP Aug 2026",
+      "note": "Rounding error against $6.7B Brazil spend; preserves capital for Suriname / Sépia."
+    },
+    {
+      "id": "evt-2026-08-003",
+      "date": "2024-05-27",
+      "title": "Sépia-2 FID — P-85 FPSO (225 kbpd) sanctioned; Petronas 12.7% post-FID",
+      "effect_class": "forward_commitment",
+      "effect_usd_m": -1400,
+      "tag": "OBS",
+      "source": "TotalEnergies / Seatrium / Petrobras May 2024",
+      "note": "First oil 2029–30. Petronas NPV contribution ~US$2.1B; pre-tax IRR competitive."
+    },
+    {
+      "id": "evt-2026-08-004",
+      "date": "2026-Q1",
+      "title": "Suriname: Block 52 FLNG FID target 2026 — Petronas's most promising deepwater growth outside Malaysia",
+      "effect_class": "growth_signal",
+      "effect_usd_m": 0,
+      "tag": "OBS",
+      "source": "Staatsolie / Reuters Sept 2025 / Brazil Energy Insight 2026",
+      "note": "Forward growth signal; capital allocation away from Brazil toward Suriname + LNG."
+    }
+  ],
+  "recent_events_meta": {
+    "panel_title": "Recent Events · Q2–Q3 2026",
+    "panel_subtitle": "4 institutional events between the 3 Aug seal and 6 Aug. None change composite. Read in context, not as override.",
+    "last_updated": "2026-08-06T06:30:00Z",
+    "epistemic_zone": "OBS-metadata",
+    "constitutive": false
+  }
 }

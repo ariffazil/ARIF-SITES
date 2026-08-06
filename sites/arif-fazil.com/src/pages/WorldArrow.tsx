@@ -258,7 +258,7 @@ export function World() {
         <div className="mx-auto max-w-[1280px] px-6 py-24">
           <p className="eyebrow text-white/80">03 ————— THE PETRONAS SIGNAL</p>
           <h2 className="mt-4 font-display text-4xl tracking-[-0.02em] text-[#111318] md:text-[40px]">
-            /vitals/ — Isyarat Institusi PETRONAS
+            /propa/ — Isyarat Institusi PETRONAS
           </h2>
           <div className="mt-12 grid gap-px border border-black/60 bg-black/60 md:grid-cols-3">
             {DOORS.map((d, i) => (
@@ -269,7 +269,7 @@ export function World() {
                 transition={{ duration: 0.7, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
-                  to="/vitals/"
+                  to="/propa/"
                   className="group flex h-full flex-col bg-[#111318] p-8 transition-colors duration-300 hover:bg-[#C8102E]"
                 >
                   <p className="font-mono text-2xl font-bold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-[#111318]">

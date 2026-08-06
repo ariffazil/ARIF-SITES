@@ -1,0 +1,25 @@
+{
+  "schema": "arifos.agent.v1",
+  "name": "arifOS /world — SOT Atlas",
+  "version": "0.1.0",
+  "domain": "arif-fazil.com/world",
+  "description": "Live situational atlas — Δ geopolitics · Ω economics · Ψ social. WB tier overlay.",
+  "doctrine": "DITEMPA BUKAN DIBERI",
+  "data_sources": [
+    "https://api.gdeltproject.org/api/v2/doc/doc",
+    "https://api.worldbank.org/v2",
+    "npm:world-atlas"
+  ],
+  "endpoints": {
+    "atlas": "/",
+    "methodology": "/about",
+    "llms_txt": "/llms.txt",
+    "agent_json": "/agent.json"
+  },
+  "constitutional_alignment": {
+    "world_model_doc": "https://arif-fazil.com/docs/AGENTIC_WEB_WORLD_MODEL.md",
+    "kernel_mcp": "https://mcp.arif-fazil.com/mcp",
+    "floors": ["F1", "F2", "F4", "F11", "F13"],
+    "tier_class": "R0_read"
+  }
+}

@@ -14,6 +14,7 @@ import e10 from "./10-the-real-battle-in-ai-will-not-be-model-vs-model";
 import e11 from "./11-contrast-detection-universal-computational-primitive-avo-attention";
 import e12 from "./12-physics-constrained-attention-zoeppritz-constitutional-floor";
 import e13 from "./13-derivation-avo-attention-contrast-primitive";
+import e23 from "./23-petronas-23-years-in-brazil";
 import e15 from "./growing-intelligence-without-losing-our-soul-from-binatang-to-warga";
 import e18 from "./18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system";
 import e19 from "./19-the-tool-is-the-thought";
@@ -73,7 +74,7 @@ import g47 from "./generated/g_scar_behind_the_vision";
 import g48 from "./generated/g_manifesto_of_forged_intelligence";
 import g49 from "./generated/g_arifos_as_a_prism";
 
-export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
+export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, e23, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
 
 export const allEssays: EssayMeta[] = [
   {
@@ -585,8 +586,16 @@ export const allEssays: EssayMeta[] = [
     tags: ["arifOS", "AgenticIntelligence", "INIT", "Naming", "ConstitutionalAI", "MCP", "AIGovernance", "Kernel", "GodelLock", "DITEMPABUKANDIBERI"],
     mediumUrl: "",
     isDirectPublication: true,
-  }
-];
+  },
+  {
+    title: `23 Years in Brazil: What Petronas Bought, Spent, and Walked Away With`,
+    date: "2026-08-06",
+    slug: "petronas-23-years-in-brazil",
+    excerpt: `23 years, US$6.7 billion gross, US$2.5 billion recovered, US$4.2 billion net sunk, US$4.0 billion still on the books — Petronas's Brazil account is roughly break-even. The widely-reported Mola-1 dry hole is rounding error; the real story is TV/EM-III's quiet US$2 billion cashflow, the Sépia stake still earning NPV, and a transfer-pricing tail risk of US$85–280 million that's now the live question.`,
+    tags: ["WEALTH", "PETRONAS", "Brazil", "CapitalRecycling", "Upstream", "PreSalt", "Mola-1", "Sepia", "TartarugaVerde", "TransferPricing", "Suriname", "VitalsContext"],
+    mediumUrl: "https://arif-fazil.com/writing/petronas-23-years-in-brazil/",
+    isDirectPublication: true,
+  },];
 
 export function getEssay(slug: string) {
   return essayModules.find(e => e.slug === slug);
@@ -639,6 +648,9 @@ const CURATED_SLUGS: Record<string, string> = {
   "malaysia-will-miss-agi-siti-nurhaliza-karaoke": "Malaysia & Language",
   "rukun-agi-five-pillars": "Malaysia & Language",
 
+  // 🏛️ Institutional Vitals
+  "petronas-23-years-in-brazil": "Institutional Vitals",
+
   // 🪞 Human Reflection
   "the-first-act-of-creation-is-not-building-it-is-naming": "Human Reflection",
   "paradox-of-language": "Human Reflection",
@@ -654,6 +666,7 @@ const DOMAIN_ORDER = [
   "Geophysics × AI",
   "Malaysia & Language",
   "Human Reflection",
+  "Institutional Vitals",
 ];
 
 export const curatedEssays: EssayMeta[] = allEssays

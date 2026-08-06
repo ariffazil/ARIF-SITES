@@ -7,7 +7,7 @@
 <title>PETRONAS · VITALS — Financial capacity and resilience</title>
 <meta name="description" content="PETRONAS financial capacity, operating resilience, and governance balance. Sealed tripwire scores, live market proxies, and net-cash scenarios.">
 <meta name="agent-identity" content="WEALTH · PETRONAS institution health">
-<link rel="canonical" href="https://arif-fazil.com/vitals/">
+<link rel="canonical" href="https://arif-fazil.com/propa/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,6 +28,24 @@
 .attention-score{font-family:var(--mono);font-size:11px;color:var(--hold);white-space:nowrap}
 .scope-note{margin:14px 0 0;padding:10px 12px;border-left:2px solid var(--accent);font-size:11px;color:var(--dim);line-height:1.6}
 .scope-note strong{color:var(--ink)}
+
+.recent-events-panel{margin:0 0 1.2rem;padding:1rem 1.1rem;border:1px solid var(--line,#2a2a3a);border-radius:8px;background:rgba(212,160,23,.04)}
+.recent-events-panel .re-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:.85rem;font-size:.7rem;letter-spacing:.08em}
+.recent-events-panel .re-badge{font-family:var(--mono,monospace);font-weight:700;color:#d4a017;padding:.25rem .55rem;border:1px solid #d4a017;border-radius:4px;letter-spacing:.1em;text-transform:uppercase}
+.recent-events-panel .re-meta{color:var(--dim,#8a8378);font-size:.62rem}
+.recent-events-panel .re-time{color:var(--faint,#5a554d);font-size:.6rem;margin-left:auto}
+.recent-events-panel .re-list{display:grid;gap:.5rem;margin-bottom:.7rem}
+.recent-events-panel .evt-row{display:grid;grid-template-columns:120px 1fr;gap:.85rem;padding:.6rem .7rem;border:1px solid var(--line,#2a2a3a);border-radius:6px;background:rgba(255,255,255,.015)}
+.recent-events-panel .evt-date{color:var(--dim,#8a8378);font-size:.7rem}
+.recent-events-panel .evt-title{color:var(--ink,#d8d2c4);font-size:.85rem;font-weight:600;line-height:1.35;margin-bottom:.35rem}
+.recent-events-panel .evt-meta{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:.3rem}
+.recent-events-panel .evt-tag{font-family:var(--mono,monospace);font-size:.6rem;padding:.15rem .4rem;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.recent-events-panel .evt-tag-obs{background:#4ea77d;color:#0a0a08}
+.recent-events-panel .evt-usd{font-size:.7rem;font-weight:600}
+.recent-events-panel .evt-note{font-size:.72rem;color:var(--ink,#d8d2c4);margin:.25rem 0;line-height:1.4}
+.recent-events-panel .evt-source{font-size:.58rem;color:var(--faint,#5a554d);margin-top:.2rem}
+.recent-events-panel .re-foot{font-family:var(--mono,monospace);font-size:.62rem;color:var(--dim,#8a8378);line-height:1.5;margin:0}
+.recent-events-panel .re-foot strong{color:#d4a017}
 </style>
 
 <style>
@@ -49,7 +67,7 @@
   <div class="zp-item"><span class="pulsedot" id="navdot"></span><span class="zp-ask">Where am I?</span><span class="zp-val">VITALS · PETRONAS φ</span></div>
   <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">The current answer comes first: financial capacity, operating resilience, and stakeholder balance.</span></div>
   <div class="zp-nav">
-    <a href="/vitals/" class="here"><span class="badge" style="background:var(--hold)" id="vitals-dot"></span>PETRONAS</a>
+    <a href="/propa/" class="here"><span class="badge" style="background:var(--hold)" id="vitals-dot"></span>PETRONAS</a>
     <a href="/malaysia/"><span class="badge" style="background:var(--sabar)"></span>MALAYSIA</a>
     <a href="/oil/"><span class="badge" style="background:var(--sabar)"></span>OIL</a>
     <a href="/gas/"><span class="badge" style="background:var(--sabar)"></span>GAS</a>
@@ -213,7 +231,7 @@
       <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Untuk tindakan:</strong></p>
       <ol style="margin:0 0 8px;padding-left:20px;font-size:.82rem;color:var(--dim,#8a8378);line-height:1.55">
         <li><strong>Korporat</strong> yang modelkan dividen PETRONAS sebagai hasil kerajaan — model senario 60% cap.</li>
-        <li><strong>Agensi penarafan</strong> — CrisisAlert JSON-LD boleh dibaca mesin secara terbuka di <code>arif-fazil.com/vitals/</code>.</li>
+        <li><strong>Agensi penarafan</strong> — CrisisAlert JSON-LD boleh dibaca mesin secara terbuka di <code>arif-fazil.com/propa/</code>.</li>
         <li><strong>Juruaudit</strong> — exit condition jelas: extraction &lt; 55% × 2 audits AND governance ≥ 2.0/3.</li>
       </ol>
       <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Mesin ini bukan post-mortem. Ia memancarkan signal struktur secara terbuka.</p>
@@ -228,7 +246,7 @@
       <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Action items by role:</strong></p>
       <ol style="margin:0 0 8px;padding-left:20px;font-size:.82rem;color:var(--dim,#8a8378);line-height:1.55">
         <li><strong>Corporates</strong> modeling PETRONAS dividends into sovereign revenue forecast — model the 60% cap scenario.</li>
-        <li><strong>Rating agencies</strong> — the CrisisAlert JSON-LD is publicly machine-readable at <code>arif-fazil.com/vitals/</code>.</li>
+        <li><strong>Rating agencies</strong> — the CrisisAlert JSON-LD is publicly machine-readable at <code>arif-fazil.com/propa/</code>.</li>
         <li><strong>Auditors</strong> — exit condition is mathematically explicit: extraction &lt; 55% × 2 audits AND governance ≥ 2.0/3.</li>
       </ol>
       <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">This engine is not a post-mortem. It broadcasts structural signal publicly.</p>
@@ -274,6 +292,91 @@
 
 </section>
 
+<!-- ═══ W-007 CONTROL SET CALIBRATION — NOC Peer Comparison ═══ -->
+<section class="sec" id="controlSet" data-agent-role="w007-calibration" data-version="W-007-NOC-v1.0" data-calibrated-at="2026-08-06T07:55:00Z">
+  <div class="sec-title" style="display:flex;align-items:center;gap:8px">Control set calibration · <span style="color:var(--sabar);font-size:.75rem;font-weight:400">W-007 · NOC peer distribution</span></div>
+  <p style="color:var(--dim);font-size:.78rem;margin:0 0 14px;line-height:1.5">W-007 applies before Enron. The dashboard carried single-case verdicts without base rates — the exact defect W-007 was written to close. Below: PETRONAS scored against 6 peer NOCs (Aramco, Equinor, Ecopetrol, Pertamina, ADNOC, PTT). All figures from audited FY2025 annual reports.</p>
+
+  <!-- Three-column comparison grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:0 0 18px">
+
+    <!-- COLUMN 1: Dividend payout ratio -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">EXTRACTION RATIO · DIVIDEND ÷ PAT · FY2025</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--void)">91.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--void)">87.0%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--hold)">80.0%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC (listed)</span><span style="font-family:var(--mono);color:var(--hold)">74.2%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--hold)">72.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--sabar);font-weight:700">70.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--seal)">55.2%</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--sabar)">PETRONAS: 38th percentile, below median (76.3%).</strong><br>
+        Mean 75.8% · σ 11.6 · z=−0.46<br>
+        <span style="color:var(--sabar)">→ SABAR. Not an outlier against peers.</span>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Gearing -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">GEARING · NET DEBT ÷ CAPITAL · FY2025</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--seal)">3.8%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--hold)">17.8%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--hold);font-weight:700">20.7%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--dim)">0.6× EBITDA</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC</span><span style="font-family:var(--mono);color:var(--dim)">very low</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--dim)">≤2.0× EBITDA</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--dim)">~2.0× EBITDA</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--hold)">PETRONAS: highest among directly comparable NOCs</strong><br>
+        But 20.7% is modest by any corporate standard.<br>
+        <span style="color:var(--hold)">→ SABAR. Watch, don't alarm.</span>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Governance -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">GOVERNANCE · BOARD INDEPENDENCE · 0–3 SCALE</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--seal)">2.5/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--seal)">2.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--hold)">1.5/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--hold);font-weight:700">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--hold)">PETRONAS: at NOC median (1.0/3).</strong><br>
+        Tied with Aramco, Pertamina, ADNOC. Only 3 of 7 score higher.<br>
+        <span style="color:var(--hold)">→ This IS the structural norm for NOCs.</span><br>
+        <span style="color:var(--void)">BUT: AMEND-2026-08-03-001 exit requires ≥2.0/3.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Composite calibrated verdict -->
+  <div style="background:rgba(245,158,11,.06);border:2px solid var(--sabar);border-radius:8px;padding:16px 18px;margin:0 0 10px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+      <strong style="font-size:13px;color:var(--sabar);letter-spacing:.06em;text-transform:uppercase">■ CALIBRATED VERDICT: SABAR</strong>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--dim)">W-007-NOC-v1.0 · 6 peers · audited FY2025</span>
+    </div>
+    <p style="margin:0;font-size:.78rem;color:var(--ink);line-height:1.6">
+      <strong>None of PETRONAS's three vitals metrics are outliers against the NOC peer distribution.</strong> The extraction ratio (70.5%) is below the NOC median (76.3%). Gearing (20.7%) is the highest among directly comparable NOCs but still modest. Governance (1.0/3) is the NOC median — tied with Aramco, Pertamina, and ADNOC.<br><br>
+      <strong style="color:var(--void)">This calibration does NOT override AMEND-2026-08-03-001.</strong> The FY2026 extraction ratio remains UNMEASURED (RM20bn declared against unpublished PAT). The governance lock (≥2.0/3 required for exit, currently 1.0/3) remains binding regardless of peer calibration. <strong>The binding constraint has moved from financial to governance.</strong> The prior VOID verdict reflected an absolute threshold without peer context; the calibrated reading says: <strong style="color:var(--sabar)">watch the trend, not the level.</strong>
+    </p>
+  </div>
+
+  <p style="font-size:.62rem;color:var(--faint);font-family:var(--mono);margin:0;line-height:1.5">
+    W-007 v1.0 methodology: peer NOC distribution with z-scores and percentile ranks. Governance scores are ordinal judgments based on observable board structure (dual-chair, minister appointments, independent director quorum). Phase 2 adds Enron vs Dynegy/Williams/El Paso. Sources: Aramco FY2025 · Equinor FY2025 · Ecopetrol AGM 27 Mar 2026 · Pertamina FY2025 · ADNOC WAM 15 Feb 2026 · PTT FY2025. <a href="/data/wealth/noc_control_set.json" style="color:var(--accent)">Machine-readable JSON</a>.
+  </p>
+</section>
+
 <!-- RANKED TRIPWIRE SCORES -->
 <div class="sec" id="tripwires" data-agent-role="evidence">
   <div class="sec-title">Tripwire scores · lowest first</div>
@@ -288,6 +391,10 @@
   <div class="ls-chips" id="lsChips" aria-live="polite"><span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative</span></div>
   <div class="ls-note">Transmission: ±$10 Brent ≈ ±RM6.0B FCF/CFFO. FCF (#1) crosses zero at Brent ≈ $71.60/bbl (-$12.50/bbl from $84.10). CFFO tripwire (RM60B) requires Brent &lt; $47.40. JKM–HH premium supports LNG margin. Proxies are live market readings, NOT sealed tripwire values. Anchors remain sovereign-sealed. Source: WEALTH commodity engine (yfinance) · 5-min cache.</div>
 </div>
+
+<!-- B11-E: RECENT EVENTS PANEL (2026-08-06) — additive metadata, no tripwire mutation -->
+<!--B11-E:RECENT-EVENTS-MARKER:BEGIN-->
+<!--B11-E:RECENT-EVENTS-MARKER:END-->
 
 <!-- METHODS -->
 <div class="sec" id="basics">
@@ -1019,7 +1126,7 @@ live();
     "exit_condition":"extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
   },
   "external_signals":{
-    "crisis_alert_url":"https://arif-fazil.com/vitals/",
+    "crisis_alert_url":"https://arif-fazil.com/propa/",
     "data_file_url":"https://arif-fazil.com/data/wealth/petronas_vitals.json",
     "doctrine":"DITEMPA BUKAN DIBERI · Hope is for the hopeless · The federation constrains the present"
   }
@@ -1076,7 +1183,7 @@ live();
       "machine_actions":[
         "ingest CrisisAlert JSON-LD for rating models",
         "read petronas_vitals.json for sealed tripwire scores",
-        "watch arif-fazil.com/vitals/ for pacemaker state changes"
+        "watch arif-fazil.com/propa/ for pacemaker state changes"
       ],
       "warnings":[
         "F2: $750M is COUNTERFACTUAL SIMULATION — not forensic finding",
@@ -1087,7 +1194,7 @@ live();
   },
   "sealed":"2026-08-03",
   "amendment":"AMEND-2026-08-03-001",
-  "canonical_url":"https://arif-fazil.com/vitals/"
+  "canonical_url":"https://arif-fazil.com/propa/"
 }
 </script>
 
@@ -1178,8 +1285,8 @@ live();
   "human_override":"F13_SOVEREIGN_VETO_FINAL",
   "f13_sovereign_veto_required_to_amend":true,
   "remediation_path":"constitutional reseal verifying exit condition + public VAULT999 audit trail",
-  "canonical_url":"https://arif-fazil.com/vitals/",
-  "url":"https://arif-fazil.com/vitals/"
+  "canonical_url":"https://arif-fazil.com/propa/",
+  "url":"https://arif-fazil.com/propa/"
 }
 </script>
 

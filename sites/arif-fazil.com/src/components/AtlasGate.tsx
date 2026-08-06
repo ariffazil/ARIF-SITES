@@ -18,7 +18,7 @@ const ATLAS: Array<[string, string, string]> = [
   ['/world/makcikgpt', 'BODY', 'organ'],
   ['/world', 'BODY', 'organ'],
   ['/malaysia', 'BODY', 'organ'],
-  ['/vitals', 'BODY', 'organ'],
+  ['/propa', 'BODY', 'organ'],
   ['/economics', 'BODY', 'organ'],
   ['/wealth', 'BODY', 'organ'],
   ['/well', 'BODY', 'organ'],

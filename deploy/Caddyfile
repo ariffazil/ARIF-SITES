@@ -445,7 +445,7 @@ arif-fazil.com {
 	# VITALS + Malaysia → consolidated under wealth.arif-fazil.com (2026-07-24)
 	# 2026-07-31: Removed @vitals_path and @malaysia_path Caddy redirects.
 	# These created a non-deterministic race with the SPA catch-all.
-	# /vitals and /malaysia now 404 honestly on the apex domain.
+	# 2026-08-06: PROPA migration — /vitals → /propa. Legacy handles at L510-512, L831-836.
 	# Access them directly at wealth.arif-fazil.com.
 
 	# GEOX — Earth intelligence pages (2026-08-03: fixed root — was /var/www/html/geox-app,
@@ -835,6 +835,13 @@ handle @gas_landing {
 	}
 	redir /vitals /vitals/ 308
 
+	# Human map — 9-domain world model (2026-08-06: vocabulary overlay, Trinity-aligned)
+	handle /human/map/* {
+		root * /var/www/html/arif
+		try_files {path} {path}/index.html /human/map/index.html
+		file_server
+	}
+
 	# ── WEB-05/06 surface fixes (2026-08-01) ───────────────────────────────
 	# Wiki: served directly from static html dist
 	handle /wiki/* {
@@ -873,7 +880,7 @@ handle @gas_landing {
 		file_server
 	}
 
-	@spa_routes path / /read* /klci* /usdmyr* /politics* /economics* /writing* /world* /doctrine* /earth* /federation* /connect* /verify* /wealth* /well* /geox* /oil* /gas* /gold* /canon* /arifos* /missions* /compliance* /commodity* /aaa* /constitution* /charter* /governance* /vitals* /mcp*
+	@spa_routes path / /read* /klci* /usdmyr* /politics* /economics* /writing* /world* /doctrine* /earth* /federation* /connect* /verify* /wealth* /well* /geox* /oil* /gas* /gold* /canon* /arifos* /missions* /compliance* /commodity* /aaa* /constitution* /charter* /governance* /mcp*
 	handle @spa_routes {
 		header Cache-Control "no-cache, no-store, must-revalidate"
 		header CDN-Cache-Control "no-cache"

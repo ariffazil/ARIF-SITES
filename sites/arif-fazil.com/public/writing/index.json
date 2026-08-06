@@ -1,10 +1,27 @@
 {
   "schema": "arifos.writing_index.v1",
-  "as_of": "2026-08-04",
-  "count": 25,
+  "as_of": "2026-08-06T06:30:00Z",
+  "count": 26,
   "human_index": "/writing",
   "feed": "/feed.xml",
   "items": [
+    {
+      "title": "23-petronas-23-years-in-brazil",
+      "slug": "petronas-23-years-in-brazil",
+      "href": "/writing/petronas-23-years-in-brazil",
+      "date": "2026-08-06",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "essay",
+        "WEALTH",
+        "PETRONAS",
+        "Brazil",
+        "InstitutionalVitals"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-06"
+    },
     {
       "title": "01-i-stopped-writing-prompts-heres-what-replaces-them-arep",
       "slug": "i-stopped-writing-prompts-heres-what-replaces-them-arep",

@@ -65,8 +65,8 @@ function App() {
             <Route path="/politics/" element={<PoliticsHub />} />
             <Route path="/malaysia" element={<PoliticsHub />} />
             <Route path="/malaysia/" element={<PoliticsHub />} />
-            {/* /vitals is PETRONAS VITALS (static singleton at /vitals/). Never steal for politics. */}
-            <Route path="/vitals" element={<Navigate to="/vitals/" replace />} />
+            {/* /vitals → /propa/ via Caddy 308 redirect. SPA route is dead; redirect fires first. */}
+            <Route path="/vitals" element={<Navigate to="/propa/" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />

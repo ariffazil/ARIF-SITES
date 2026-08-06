@@ -1,0 +1,197 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# WORLD MODEL 9-DOMAIN — VOCABULARY OVERLAY
+# Forged: 2026-08-06 by 333-AGI (Δ MIND) under F13 Path A directive
+# Derives from: canon/sites.yaml v3.0.0 (TRINITY IA, 999_SEAL 2026-08-01)
+# Relation: OVERLAY — vocabulary layer atop Trinity structure
+# Doctrine: Trinity drives the chrome. World Model drives the nav.
+# ═══════════════════════════════════════════════════════════════════════════
+
+version: "1.0.0"
+forged_at: "2026-08-06T09:00:00Z"
+derives_from: "canon/sites.yaml"
+derives_from_version: "3.0.0"
+derives_from_seal: "999_SEAL 2026-08-01"
+relation: "OVERLAY — does not supersede. Trinity scopes remain canonical for chrome."
+status: "DRAFT — awaiting F13 ratification"
+
+doctrine: |
+  The Trinity IA (5 scopes) defines the STRUCTURE of arif-fazil.com — accent families,
+  visual patterns, and scope boundaries. The World Model defines the VOCABULARY —
+  human-readable domain names, questions, and navigation labels.
+
+  A visitor never needs to know what "INSTITUTION" or "CROSS_CUTTING" means. They see
+  "Work", "Law", "Capital", "Proof". The 9 domains are the public-facing layer. The 5
+  scopes are the design-engine layer. One site, two views, one source of truth.
+
+  Generated views: surfaces.json (canonical) → /machine/map.json (agent) → /human/map/ (visitor)
+
+# ─── MAPPING: 9 DOMAINS → 5 TRINITY SCOPES ────────────────────────────────
+# Each domain nests under exactly one Trinity scope. No orphan domains.
+domain_to_scope:
+  origin:
+    label: "Origin"
+    question: "Where did this start?"
+    verb: "000_init"
+    organ: "arifOS"
+    trinity_scope: "SOVEREIGN"
+    trinity_path: "/arif"
+    accent: "gold"
+    pattern: "bare"
+    nav_priority: 7  # Primary, last position
+
+  proof:
+    label: "Proof"
+    question: "Is this true?"
+    verb: "999_seal"
+    organ: "arifOS / VAULT999"
+    trinity_scope: "CROSS_CUTTING"
+    trinity_path: "/laws"
+    accent: "void-blue"
+    pattern: "orthogonal-fractal-faintest"
+    nav_priority: 6
+
+  law:
+    label: "Law"
+    question: "What are the rules?"
+    verb: "333_judge"
+    organ: "arifOS"
+    trinity_scope: "CROSS_CUTTING"
+    trinity_path: "/laws"
+    accent: "void-blue"
+    pattern: "orthogonal-fractal-faintest"
+    nav_priority: 5
+
+  earth:
+    label: "Earth"
+    question: "What's under our feet?"
+    verb: "444_observe"
+    organ: "GEOX"
+    trinity_scope: "EARTH"
+    trinity_path: "/earth"
+    accent: "teal"
+    pattern: "chordial-dense"
+    nav_priority: 1  # Primary, first position
+
+  capital:
+    label: "Capital"
+    question: "What's it worth?"
+    verb: "444_compute"
+    organ: "WEALTH"
+    trinity_scope: "INSTITUTION"
+    trinity_path: "/institution"
+    accent: "yellow"
+    pattern: "orthogonal-fractal"
+    nav_priority: 2
+
+  voice:
+    label: "Voice"
+    question: "What do I think?"
+    verb: "555_interpret"
+    organ: "Arif (sovereign)"
+    trinity_scope: "SOVEREIGN"
+    trinity_path: "/arif"
+    accent: "purple"
+    pattern: "bare"
+    nav_priority: 3  # Primary
+
+  work:
+    label: "Work"
+    question: "What am I building?"
+    verb: "777_forge"
+    organ: "A-FORGE + AAA"
+    trinity_scope: "INSTITUTION"
+    trinity_path: "/institution"
+    accent: "amber"
+    pattern: "orthogonal-fractal"
+    nav_priority: 4
+
+  signal:
+    label: "Signal"
+    question: "How do I reach out?"
+    verb: "444_route"
+    organ: "HERMES"
+    trinity_scope: "EARTH"
+    trinity_path: "/earth"
+    accent: "teal"
+    pattern: "chordial-dense"
+    nav_priority: 8  # Secondary
+
+  human:
+    label: "Human"
+    question: "Am I well?"
+    verb: "111_sense"
+    organ: "WELL"
+    trinity_scope: "HUMAN"
+    trinity_path: "/human"
+    accent: "red"
+    pattern: "chordial-light"
+    nav_priority: 9  # Secondary
+
+# ─── NAVIGATION STRUCTURE ──────────────────────────────────────────────────
+navigation:
+  primary:  # Top bar, left to right
+    - earth     # "Earth" — the planet
+    - capital   # "Capital" — the markets
+    - voice     # "Voice" — the writing
+    - work      # "Work" — the build
+    - law       # "Law" — the rules
+    - proof     # "Proof" — the vault
+    - origin    # "Origin" — genesis
+  secondary:  # Footer / utility
+    - signal    # "Signal" — contact
+    - human     # "Human" — wellness
+
+# ─── REDIRECT PLAN (D3 COMPLIANT — one-hop, no chains) ────────────────────
+# ALL redirects are direct legacy → Trinity path. No intermediate hops.
+# World Model labels are NAV VOCABULARY only — no URL change until F13 Path B.
+redirects:
+  # These activate ONLY if Path B (URL restructure) is ratified.
+  # Under Path A, legacy paths remain live; nav labels change in menus only.
+  staged: true
+  rules_file: "deploy/caddy-redirects-v9.conf"
+  d3_compliant: true  # All one-hop, no chains
+  rollback: "Remove caddy-redirects-v9.conf include + reload Caddy. Reversible."
+
+# ─── DESIGN SYSTEM INTEGRATION ─────────────────────────────────────────────
+design:
+  # Each domain inherits its Trinity scope's accent family.
+  # Voice (purple) and Work (amber) are exceptions ratified in sites.yaml.
+  accent_map:
+    origin:  "#d4a853"  # gold (sovereign)
+    proof:   "#6a8fbf"  # void-blue (cross-cutting)
+    law:     "#6a8fbf"  # void-blue (cross-cutting)
+    earth:   "#4aa8ff"  # teal
+    capital: "#f0a050"  # yellow
+    voice:   "#c084fc"  # purple (sovereign exception)
+    work:    "#fbbf24"  # amber (AAA bridge, ratified exception)
+    signal:  "#4aa8ff"  # teal (earth edge)
+    human:   "#ff5252"  # red (rationed, verdict chips only)
+    
+  accent_rule: |
+    Red is rationed. Only HUMAN scope + verdict chips + seals use red.
+    Voice uses purple (sovereign voice, not alarm). Work uses amber (bridge).
+    All other domains inherit their Trinity scope accent.
+
+# ─── GENERATED ARTIFACTS ───────────────────────────────────────────────────
+generates:
+  - path: "surfaces.json"
+    field: "domain + verb"
+    status: "live (v2026-08-06)"
+  - path: "public/machine/map.json"
+    status: "live"
+  - path: "public/human/map/index.html"
+    status: "live"
+
+# ─── MIGRATION PATH ────────────────────────────────────────────────────────
+migration:
+  current_phase: "A"  # Vocabulary overlay only
+  next_phase: "B"     # URL restructure (requires F13 ratification)
+  phase_a_complete: false  # Awaiting nav.json + navCanon.ts rewrite
+  phase_b_prerequisites:
+    - "9 domain directories built under Trinity paths"
+    - "All legacy content mapped to new homes"
+    - "301 redirect map tested (dry-run first)"
+    - "F13 SOVEREIGN approval"
+  rollback_anchors:
+    - "sites.yaml v3.0.0 (999_SEAL) — immutable"
+    - "Caddyfile.bak before any redirect block activation"

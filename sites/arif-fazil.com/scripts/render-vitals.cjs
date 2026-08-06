@@ -289,8 +289,8 @@ const jsonLd = {
   '@type': 'InstitutionalVitals',
   'organ': data.organ,
   'timestamp': `${data.reseal_date || '2026-08-03'}T16:45:00+08:00`,
-  'url': 'https://arif-fazil.com/vitals/',
-  'canonical_source_url': 'https://arif-fazil.com/vitals/',
+  'url': 'https://arif-fazil.com/propa/',
+  'canonical_source_url': 'https://arif-fazil.com/propa/',
   'as_of': data.reseal_date || '2026-08-03',
   'seal_date': data.reseal_date || '2026-08-03',
   'source_seal': sourceSeal,
@@ -330,6 +330,54 @@ const jsonLd = {
 };
 const jsonLdBlock = `<script type="application/ld+json" data-agent-role="institutional-vitals-reality">\n${JSON.stringify(jsonLd, null, 2)}\n</script>`;
 html = replaceMarker(html, 'B11-D:JSONLD-MARKER', jsonLdBlock);
+
+// ──────────────────────────── B11-E: recent events panel (additive) ────────────────────────────
+let recentEventsHtml = '';
+if (Array.isArray(data.recent_events) && data.recent_events.length > 0) {
+  const meta = data.recent_events_meta || {};
+  const title = meta.panel_title || 'Recent Events';
+  const subtitle = meta.panel_subtitle || '';
+  const updated = meta.last_updated || '';
+  const events = data.recent_events;
+  const eff_class_color = {
+    capital_recycling:    '#d4a017',
+    exploration_writeoff: '#e0483e',
+    forward_commitment:   '#4aa8ff',
+    growth_signal:        '#4ea77d',
+    default:              '#8a8378',
+  };
+  const rows = events.map((e) => {
+    const c = eff_class_color[e.effect_class] || eff_class_color.default;
+    const usd = (typeof e.effect_usd_m === 'number')
+      ? (e.effect_usd_m === 0 ? 'neutral' : (e.effect_usd_m > 0 ? '+US$' + e.effect_usd_m + 'M' : '−US$' + Math.abs(e.effect_usd_m) + 'M'))
+      : '—';
+    return '<div class="evt-row" data-effect="' + escapeAttr(e.effect_class) + '" data-id="' + escapeAttr(e.id) + '">' +
+      '<div class="evt-date mono">' + escapeText(e.date) + '</div>' +
+      '<div class="evt-body">' +
+      '<div class="evt-title">' + escapeText(e.title) + '</div>' +
+      '<div class="evt-meta mono">' +
+      '<span class="evt-tag" style="background:' + c + ';color:#0a0a08">' + escapeText(e.effect_class) + '</span>' +
+      '<span class="evt-tag evt-tag-obs">OBS</span>' +
+      '<span class="evt-usd mono" style="color:' + c + '">' + escapeText(usd) + '</span>' +
+      '</div>' +
+      (e.note ? '<div class="evt-note">' + escapeText(e.note) + '</div>' : '') +
+      '<div class="evt-source mono">source: ' + escapeText(e.source) + '</div>' +
+      '</div></div>';
+  }).join('\n');
+  recentEventsHtml = '<section class="recent-events-panel" id="recentEvents" data-agent-role="recent-events-additive" data-version="1.4.0-event-tracker-001">' +
+    '<div class="re-head">' +
+    '<span class="re-badge">' + escapeText(title) + '</span>' +
+    '<span class="re-meta mono">' + escapeText(subtitle) + '</span>' +
+    (updated ? '<span class="re-time mono">updated ' + escapeText(updated) + '</span>' : '') +
+    '</div>' +
+    '<div class="re-list">' + rows + '</div>' +
+    '<p class="re-foot mono">' +
+    '<strong>Read in context, not as override.</strong> PULSE · 9 tripwires · AMEND-2026-08-03-001 (60% dividend cap) — all unchanged. ' +
+    'Composite re-seal requires new audited inputs ([EVIDENCE]); these events are [OBS] metadata, not constitutional inputs.' +
+    '</p>' +
+    '</section>';
+}
+html = replaceMarker(html, 'B11-E:RECENT-EVENTS-MARKER', recentEventsHtml);
 
 // ──────────────────────────── write dist ────────────────────────────
 fs.mkdirSync(path.dirname(DIST_HTML), { recursive: true });

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 24" fill="none" stroke="#d4a017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Delta: triangle -->
+  <path d="M12 4 L21 20 L3 20 Z"/>
+  <!-- Omega -->
+  <path d="M29 20 H33 L31 14 A5 6 0 1 1 41 14 L39 20 H43"/>
+  <!-- Psi -->
+  <path d="M56 3 V11 A4 4 0 0 0 64 11 V3 M60 15 V21"/>
+</svg>

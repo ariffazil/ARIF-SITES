@@ -1,44 +1,75 @@
 {
   "meta": {
-    "date": "2026-08-05",
-    "generated_at": "2026-08-05T15:00:01.630960+08:00",
-    "observed_at": "2026-08-05T07:00:11.914050+00:00",
+    "date": "2026-08-06",
+    "generated_at": "2026-08-06T15:00:02.626858+08:00",
+    "observed_at": "2026-08-06T07:00:11.752891+00:00",
     "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
     "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
   },
   "bursa": {
-    "klci_close": 1748.3800048828125,
-    "klci_change_pct": 0.91,
+    "klci_close": 1736.489990234375,
+    "klci_change_pct": -0.67,
     "most_active": null,
     "top_gainers_search": [],
     "source_urls": []
   },
   "ringgit": {
-    "usd_myr": 4.090000152587891,
-    "trend": "1 USD = 4.0900 MYR",
+    "usd_myr": 4.0879998207092285,
+    "trend": "1 USD = 4.0880 MYR",
     "sources": []
   },
   "economy": {
-    "items": []
+    "items": [
+      {
+        "title": "Q2 2026 GDP Advance Estimate",
+        "desc": "DOSM released the Q2 2026 advance GDP growth estimate at 5.8%, reflecting resilient domestic economic activity.",
+        "category": "GDP",
+        "source_id": "DOSM"
+      },
+      {
+        "title": "Overnight Policy Rate Stance",
+        "desc": "Bank Negara Malaysia maintains the OPR at 3.00%, keeping monetary conditions steady.",
+        "category": "SNAPSHOT",
+        "source_id": "BNM"
+      }
+    ]
   },
   "politics": {
-    "narratives": [],
+    "narratives": [
+      {
+        "title": "Public Sentiment Tracking",
+        "desc": "Merdeka Center public opinion data notes Prime Minister Anwar Ibrahim's approval rating at 52%, with 42% indicating the country is moving in the right direction.",
+        "source_id": "MERDEKA"
+      }
+    ],
     "economy_policy": [],
     "regional": []
   },
   "social": {
-    "cost_of_living": [],
+    "cost_of_living": [
+      {
+        "title": "Subsidised Fuel Framework",
+        "desc": "Eligible households access subsidised RON95 at RM1.99/L under the BUDI95 quota system, while unsubsidised market pricing stands at RM3.72/L.",
+        "source_id": "KPDN"
+      }
+    ],
     "labor": [],
     "youth_career": []
   },
   "oil_energy": {
-    "brent_price": 79.16999816894531,
+    "brent_price": 79.93000030517578,
     "malaysia_oil": [],
     "energy_transition": []
   },
   "global": {
     "fed": {
-      "items": []
+      "items": [
+        {
+          "title": "Upcoming FOMC Deliberations",
+          "desc": "The Federal Reserve's scheduled policy meetings continue to dictate global dollar liquidity and foreign exchange flows.",
+          "source_id": "FOMC"
+        }
+      ]
     },
     "china": {
       "items": []
@@ -47,5 +78,26 @@
       "items": []
     }
   },
-  "so_what": []
+  "so_what": [
+    {
+      "domain": "MARKET",
+      "signal": "KLCI pulls back 0.67%",
+      "delta": "The benchmark index closed lower at 1,736.49 amid regional adjustments.",
+      "omega": "Equities face near-term consolidation pressure following recent gains.",
+      "xi": "Maintain disciplined entry points on blue-chip counters.",
+      "psi": "Local retail portfolios experience minor valuation compression.",
+      "tone": "caution",
+      "source_id": "BURSA"
+    },
+    {
+      "domain": "OIL & GAS",
+      "signal": "Brent crude trades at $79.93",
+      "delta": "Global benchmark crude settled below the $80 threshold.",
+      "omega": "Softer energy pricing reduces petroleum revenue inflows while easing cost pressures.",
+      "xi": "Monitor upstream services exposure and downstream margin dynamics.",
+      "psi": "Lower oil prices help contain broader inflationary momentum.",
+      "tone": "neutral",
+      "source_id": "MOF"
+    }
+  ]
 }

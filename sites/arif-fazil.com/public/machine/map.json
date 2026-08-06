@@ -1,0 +1,553 @@
+{
+  "version": "2026-08-06",
+  "doctrine": "Generated from surfaces.json — the single canonical source. Human labels on top, agent verbs underneath.",
+  "domains": {
+    "origin": {
+      "label": "Origin",
+      "question": "Where did this start?",
+      "verb": "000_init",
+      "organ": "arifOS",
+      "surfaces": [
+        {
+          "path": "/000/",
+          "title": "000 — Genesis Archive & Wisdom Canon",
+          "status": "live",
+          "type": "page",
+          "mission": "remember"
+        },
+        {
+          "path": "/genesis/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/soul.json",
+          "title": "soul.json — Sovereign Identity Anchor",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        }
+      ]
+    },
+    "proof": {
+      "label": "Proof",
+      "question": "Is this true?",
+      "verb": "999_seal",
+      "organ": "arifOS / VAULT999",
+      "surfaces": [
+        {
+          "path": "/999/",
+          "title": "999 — Proof & Verification Chamber",
+          "status": "live",
+          "type": "page",
+          "mission": "remember"
+        },
+        {
+          "path": "/999/verify",
+          "title": "999 Verify — Live Vault Proof Endpoint",
+          "status": "live",
+          "type": "api",
+          "mission": "remember"
+        },
+        {
+          "path": "/surfaces.json",
+          "title": "surfaces.json — Canonical Surface Catalog",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/llms-full.txt",
+          "title": "llms-full.txt — Full Content Dump for AI LLMs",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/llms.txt",
+          "title": "llms.txt — AI Site Overview",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/llms.json",
+          "title": "llms.json — Structured Site Overview",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/page.json",
+          "title": "page.json — Machine Site Overview",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/sitemap.xml",
+          "title": "sitemap.xml — XML Sitemap",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/robots.txt",
+          "title": "robots.txt — Crawler Policy with AI Directives",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        }
+      ]
+    },
+    "law": {
+      "label": "Law",
+      "question": "What are the rules?",
+      "verb": "333_judge",
+      "organ": "arifOS",
+      "surfaces": [
+        {
+          "path": "/doctrine/",
+          "title": "Doctrine — Constitution, Federation Topology, Manifesto",
+          "status": "live",
+          "type": "page",
+          "mission": "decide"
+        },
+        {
+          "path": "/canon/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/constellation/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/federation/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/rsl.xml",
+          "title": "rsl.xml — Really Simple Licensing 1.0",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        }
+      ]
+    },
+    "earth": {
+      "label": "Earth",
+      "question": "What's under our feet?",
+      "verb": "444_observe",
+      "organ": "GEOX",
+      "surfaces": [
+        {
+          "path": "/earth/",
+          "title": "EARTH — The Dynamic Planet (Macrostrat globe)",
+          "status": "live",
+          "type": "page",
+          "mission": "investigate"
+        },
+        {
+          "path": "/map/",
+          "title": "Map — Human-Readable Route Tree",
+          "status": "live",
+          "type": "machine",
+          "mission": "remember"
+        },
+        {
+          "path": "/discoveries/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        }
+      ]
+    },
+    "capital": {
+      "label": "Capital",
+      "question": "What's it worth?",
+      "verb": "444_compute",
+      "organ": "WEALTH",
+      "surfaces": [
+        {
+          "path": "/economics/",
+          "title": "Economics — WEALTH Capital Briefing",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/economics/article/:slug",
+          "title": "WEALTH Article",
+          "status": "live",
+          "type": "dynamic_page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/world/oil/",
+          "title": "Oil Dashboard — Brent Crude Cognitive View",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/world/gas/",
+          "title": "Gas Dashboard — Natural Gas Intelligence",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/world/gold/",
+          "title": "Gold Dashboard — XAUUSD Trading Synthesis",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/wealth/",
+          "title": "Wealth Capital — Market & Investment Terminal",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/wealth/article/:slug",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/oil/",
+          "title": "Oil Dashboard — Brent Crude Live",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/gas/",
+          "title": "Gas Dashboard — Natural Gas Live",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/gold/",
+          "title": "Gold Dashboard — XAUUSD Live",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/vitals/",
+          "title": "PETRONAS · VITALS — Financial capacity and resilience",
+          "status": "live",
+          "type": "page",
+          "mission": "monitor"
+        },
+        {
+          "path": "/malaysia/",
+          "title": "Malaysia — Civic & Political Hub",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/pulse/",
+          "title": "Pulse (gone)",
+          "status": "gone",
+          "type": "gone",
+          "mission": "monitor"
+        }
+      ]
+    },
+    "voice": {
+      "label": "Voice",
+      "question": "What do I think?",
+      "verb": "555_interpret",
+      "organ": "Arif",
+      "surfaces": [
+        {
+          "path": "/",
+          "title": "Home — Sovereign Identity & Portfolio",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/world/",
+          "title": "World — Civic Journalism & Commodities",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/world/makcikgpt/",
+          "title": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/world/makcikgpt/:slug",
+          "title": "MakcikGPT Article",
+          "status": "live",
+          "type": "dynamic_page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/writing/",
+          "title": "Writing — Essays & Analysis",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/writing/:slug",
+          "title": "Essay",
+          "status": "live",
+          "type": "dynamic_page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/rss/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/essays/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/essays/:slug",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/wealth/makcikgpt/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/wealth/makcikgpt/:slug",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/economics/makcikgpt/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/economics/makcikgpt/:slug",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/makcikgpt/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/makcikgpt/:slug",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/politics/shadow/",
+          "title": "PM Bayang — Shadow Prime Ministers of Malaysia",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/politics/shadow/board/",
+          "title": "Shadow Board — Org-Chart Instrument (PRIMER-1)",
+          "status": "live",
+          "type": "page",
+          "mission": "decide"
+        },
+        {
+          "path": "/politics/shadow/derita/",
+          "title": "RASA DERITA — 6-Cohort Generational Trauma Map",
+          "status": "live",
+          "type": "page",
+          "mission": "interpret"
+        },
+        {
+          "path": "/feed.xml",
+          "title": "RSS Feed — MakcikGPT Articles",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/read/",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        },
+        {
+          "path": "/read",
+          "title": "",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        }
+      ]
+    },
+    "work": {
+      "label": "Work",
+      "question": "What am I building?",
+      "verb": "777_forge",
+      "organ": "A-FORGE + AAA",
+      "surfaces": [
+        {
+          "path": "/machine/",
+          "title": "Machine — Agent Surfaces Dashboard",
+          "status": "live",
+          "type": "machine",
+          "mission": "remember"
+        },
+        {
+          "path": "/forge/",
+          "title": "A-FORGE → subdomain",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": "build"
+        },
+        {
+          "path": "/missions.json",
+          "title": "missions.json — Six-Mission Federation Catalog",
+          "status": "live",
+          "type": "machine",
+          "mission": ""
+        },
+        {
+          "path": "/machines/",
+          "title": "For Machines — Ops guide",
+          "status": "live",
+          "type": "page",
+          "mission": ""
+        }
+      ]
+    },
+    "signal": {
+      "label": "Signal",
+      "question": "How do I reach out?",
+      "verb": "444_route",
+      "organ": "HERMES",
+      "surfaces": [
+        {
+          "path": "/.well-known/agent-card.json",
+          "title": "Agent Card — A2A Discovery",
+          "status": "redirect",
+          "type": "redirect",
+          "mission": ""
+        }
+      ]
+    },
+    "human": {
+      "label": "Human",
+      "question": "Am I well?",
+      "verb": "111_sense",
+      "organ": "WELL",
+      "surfaces": []
+    }
+  },
+  "navigation": {
+    "primary": [
+      "earth",
+      "capital",
+      "voice",
+      "work",
+      "law",
+      "proof",
+      "origin"
+    ],
+    "secondary": [
+      "signal",
+      "human"
+    ]
+  },
+  "redirect_map": {
+    "/000/": "/origin/",
+    "/999/": "/proof/vault/",
+    "/999/verify": "/proof/vault/verify",
+    "/constitution/": "/law/constitution/",
+    "/charter/": "/law/charter/",
+    "/doctrine/": "/law/doctrine/",
+    "/federation/": "/law/federation/",
+    "/canon/": "/law/doctrine/",
+    "/constellation/": "/law/doctrine/",
+    "/genesis/": "/origin/",
+    "/vitals/": "/capital/petronas/",
+    "/propa/": "/capital/petronas/",
+    "/wealth/": "/capital/",
+    "/wealth/vitals/": "/capital/petronas/",
+    "/gold/": "/capital/gold/",
+    "/oil/": "/capital/oil/",
+    "/gas/": "/capital/gas/",
+    "/klci/": "/capital/klci/",
+    "/usdmyr/": "/capital/usdmyr/",
+    "/malaysia/": "/capital/malaysia/",
+    "/economics/": "/capital/",
+    "/world/": "/voice/",
+    "/world/makcikgpt/": "/voice/makcikgpt/",
+    "/world/sot/": "/voice/atlas/",
+    "/writing/": "/voice/essays/",
+    "/politics/": "/voice/politics/",
+    "/politics/shadow/": "/voice/politics/shadow/",
+    "/geox/": "/earth/geox/",
+    "/map/": "/earth/map/",
+    "/missions/": "/work/missions/",
+    "/forge/": "/work/forge/",
+    "/machine/": "/work/machine/",
+    "/machines/": "/work/machine/",
+    "/aaa/": "/work/cockpit/",
+    "/connect/": "/signal/",
+    "/organs/": "/signal/organs/",
+    "/well/": "/human/",
+    "/essays/": "/voice/essays/",
+    "/read/": "/voice/essays/",
+    "/discoveries/": "/earth/",
+    "/cockpit/": "/work/missions/",
+    "/knowledge/": "/law/doctrine/",
+    "/syedos/": "/voice/",
+    "/makcikgpt/": "/voice/makcikgpt/",
+    "/shadow/": "/voice/politics/shadow/",
+    "/pm-bayang/": "/voice/politics/shadow/"
+  }
+}

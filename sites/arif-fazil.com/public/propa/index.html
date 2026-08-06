@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html data-ring="BODY" data-plane="organ" lang="en">
+<head>
+<link rel="stylesheet" href="/_shared/design-system/tokens.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PETRONAS · PROPA — Financial capacity and resilience</title>
+<meta name="description" content="PETRONAS financial capacity, operating resilience, and governance balance. Sealed tripwire scores, live market proxies, and net-cash scenarios.">
+<meta name="agent-identity" content="WEALTH · PETRONAS institution health">
+<link rel="canonical" href="https://arif-fazil.com/propa/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_shared/economics.css">
+<style>
+/* VITALS page-specific overrides */
+:root{--accent:#4aa8ff;--accent-dim:#1a4a80;--accent-bg:rgba(74,168,255,.08);--accent-glow:rgba(74,168,255,.15)}
+/* Hero subtitle */
+.hero .subtitle{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
+/* VITALS keeps its own fan chart canvas sizing */
+#fan{width:100%;max-width:1040px;height:auto;display:block;margin-top:8px}
+.pulse-label{font-family:var(--mono);font-size:11px;color:var(--dim);margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
+.attention{margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.attention-title{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.attention-list{display:grid;gap:6px;margin:8px 0 0;padding:0;list-style:none}
+.attention-list li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 9px;background:var(--surface3);border:1px solid var(--line);border-radius:6px;font-size:11px;color:var(--ink)}
+.attention-layer{color:var(--faint);font-family:var(--mono);font-size:9px}
+.attention-score{font-family:var(--mono);font-size:11px;color:var(--hold);white-space:nowrap}
+.scope-note{margin:14px 0 0;padding:10px 12px;border-left:2px solid var(--accent);font-size:11px;color:var(--dim);line-height:1.6}
+.scope-note strong{color:var(--ink)}
+
+.recent-events-panel{margin:0 0 1.2rem;padding:1rem 1.1rem;border:1px solid var(--line,#2a2a3a);border-radius:8px;background:rgba(212,160,23,.04)}
+.recent-events-panel .re-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;margin-bottom:.85rem;font-size:.7rem;letter-spacing:.08em}
+.recent-events-panel .re-badge{font-family:var(--mono,monospace);font-weight:700;color:#d4a017;padding:.25rem .55rem;border:1px solid #d4a017;border-radius:4px;letter-spacing:.1em;text-transform:uppercase}
+.recent-events-panel .re-meta{color:var(--dim,#8a8378);font-size:.62rem}
+.recent-events-panel .re-time{color:var(--faint,#5a554d);font-size:.6rem;margin-left:auto}
+.recent-events-panel .re-list{display:grid;gap:.5rem;margin-bottom:.7rem}
+.recent-events-panel .evt-row{display:grid;grid-template-columns:120px 1fr;gap:.85rem;padding:.6rem .7rem;border:1px solid var(--line,#2a2a3a);border-radius:6px;background:rgba(255,255,255,.015)}
+.recent-events-panel .evt-date{color:var(--dim,#8a8378);font-size:.7rem}
+.recent-events-panel .evt-title{color:var(--ink,#d8d2c4);font-size:.85rem;font-weight:600;line-height:1.35;margin-bottom:.35rem}
+.recent-events-panel .evt-meta{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-bottom:.3rem}
+.recent-events-panel .evt-tag{font-family:var(--mono,monospace);font-size:.6rem;padding:.15rem .4rem;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+.recent-events-panel .evt-tag-obs{background:#4ea77d;color:#0a0a08}
+.recent-events-panel .evt-usd{font-size:.7rem;font-weight:600}
+.recent-events-panel .evt-note{font-size:.72rem;color:var(--ink,#d8d2c4);margin:.25rem 0;line-height:1.4}
+.recent-events-panel .evt-source{font-size:.58rem;color:var(--faint,#5a554d);margin-top:.2rem}
+.recent-events-panel .re-foot{font-family:var(--mono,monospace);font-size:.62rem;color:var(--dim,#8a8378);line-height:1.5;margin:0}
+.recent-events-panel .re-foot strong{color:#d4a017}
+</style>
+
+<style>
+.live-strip{margin:0 0 1.2rem;padding:.9rem 1rem;border:1px solid var(--line,#2a2a3a);border-radius:8px;background:rgba(255,255,255,.02);font-family:var(--mono,monospace)}
+.live-strip .ls-head{display:flex;align-items:center;gap:.6rem;font-size:.7rem;letter-spacing:.08em;color:var(--dim,#8a8378);margin-bottom:.6rem}
+.live-strip .ls-badge{font-weight:700}
+.live-strip .ls-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.live-strip .ls-chip{padding:.35rem .6rem;border:1px solid var(--line,#2a2a3a);border-radius:6px;font-size:.72rem;color:var(--ink,#d8d2c4)}
+.live-strip .ls-chip b{color:#c9a84c}
+.live-strip .ls-chip .up{color:#22c55e}.live-strip .ls-chip .down{color:#ef4444}
+.live-strip .ls-note{margin-top:.55rem;font-size:.62rem;color:var(--faint,#5a554d)}
+</style>
+  <script src="/_shared/unified-header-loader.js"></script>
+</head>
+<body class="fam-vitals-petronas">
+
+<!-- ═══ ZEN PULSE — unified cross-nav with live verdict badges ═══ -->
+<div class="zen-pulse">
+  <div class="zp-item"><span class="pulsedot" id="navdot"></span><span class="zp-ask">Where am I?</span><span class="zp-val">VITALS · PETRONAS φ</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val">The current answer comes first: financial capacity, operating resilience, and stakeholder balance.</span></div>
+  <div class="zp-nav">
+    <a href="/propa/" class="here"><span class="badge" style="background:var(--hold)" id="vitals-dot"></span>PETRONAS</a>
+    <a href="/malaysia/"><span class="badge" style="background:var(--sabar)"></span>MALAYSIA</a>
+    <a href="/oil/"><span class="badge" style="background:var(--sabar)"></span>OIL</a>
+    <a href="/gas/"><span class="badge" style="background:var(--sabar)"></span>GAS</a>
+    <a href="/gold/"><span class="badge" style="background:var(--seal)"></span>GOLD</a>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- HERO / PULSE ANSWER -->
+<div class="hero" id="score">
+
+  <!-- ═══ FY2026 DECLARED STATE — dual-track [DEC] panel, non-scoring ═══ -->
+  <div id="declared-state-panel" style="margin:0 0 14px;padding:14px 18px;border:2px solid var(--seal,#22c55e);border-radius:8px;background:rgba(34,197,94,.06);color:var(--ink);font-family:var(--mono)" data-agent-role="declared-state">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+      <strong style="font-size:14px;color:var(--seal,#22c55e);letter-spacing:.06em;text-transform:uppercase">FY2026 DECLARED STATE · BOARD-APPROVED · NOT YET AUDITED</strong>
+      <span style="font-size:11px;color:var(--dim,#8a8378)">27 February 2026 · FY2025 results briefing · PETRONAS board</span>
+    </div>
+    <div style="font-size:12px;line-height:1.6;color:var(--ink,#d8d2c4)">
+      <strong>Dividend:</strong> board approved <strong style="color:var(--seal,#22c55e)">RM20 billion</strong> for FY2026 — a <strong>38% cut</strong> from FY2025's RM32B. The lowest since 2017. Declared as affordable after evaluating growth needs, reinvestment, and borrowings. <strong>Capex guidance:</strong> <strong style="color:var(--seal,#22c55e)">RM45–50B annually</strong> over five years, up from RM41.6B in FY2025. <strong>Production:</strong> targeting ~2 MMboe/d domestic sustained over three years. <strong>International upstream:</strong> planned 60% expansion over ten years. <span style="color:var(--faint)">[DEC] — declared corporate actions, excluded from sealed tripwire scores. Audited IFR remains the sole input to scoring.</span>
+    </div>
+    <div style="font-size:11px;line-height:1.5;color:var(--faint,#5a554d);margin-top:6px">
+      <strong>Sources:</strong> Bernama, Malay Mail, The Star, Reuters, NST, BusinessToday, Sarawak Tribune — 27–28 Feb 2026. PETRONAS media release: "PETRONAS Posts Lower Profit Amid Market Headwinds, Strengthens Resilience to Deliver Long-Term Value." Not yet reflected in audited IFR.
+    </div>
+  </div>
+
+  <!-- ═══ FY2025 SEALED READING — audited history, basis for tripwire scores ═══ -->
+  <div id="extraction-crisis-banner" style="margin:0 0 14px;padding:14px 18px;border:3px solid var(--void,#f0506e);border-radius:8px;background:rgba(240,80,110,.08);color:var(--ink);font-family:var(--mono)" data-agent-role="sealed-reading" aria-live="assertive">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+      <strong style="font-size:14px;color:var(--void,#f0506e);letter-spacing:.06em;text-transform:uppercase">⚠ FY2025 SEALED READING · EXTRACTION 70.5% · 2 OF 6 PACEMAKERS ENGAGED</strong>
+      <span style="font-size:11px;color:var(--dim,#8a8378)">Sealed 2026-08-03 · AMEND-2026-08-03-001 · F13 veto remains final</span>
+    </div>
+    <div style="font-size:12px;line-height:1.6;color:var(--dim,#8a8378)">
+      <strong style="color:var(--void,#f0506e)">FY2025 audited IFR:</strong> dividend RM32.0B / PAT RM45.4B = <strong style="color:var(--void,#f0506e)">70.5% extraction</strong> — breached the 65% pacemaker threshold. Financial-capacity score overridden to 0/100 (VOID). Composite pulse overridden to VOID. Governance Capacity at 1.00/3 (0.33, no independent NEDs) also engaged. <strong style="color:var(--void,#f0506e)">FY2025 was the last audited period.</strong> The board acted in February 2026 — the corrective the pacemaker demands, decided without the pacemaker, public five months before this seal.
+    </div>
+    <div style="font-size:11px;line-height:1.5;color:var(--faint,#5a554d);margin-top:4px">
+      <strong>Exit condition:</strong> extraction &lt; 55% PAT × 2 consecutive audits AND governance ≥ 2.0/3. At RM20B dividend, needs PAT &gt; <strong>RM36.4B</strong> per audit period. MoF FY2026 outlook projects Brent US$60–65 — implying PAT ~RM30–35B, extraction ~57–67%. <strong>Under the government's own oil forecast, FY2026 does not clear the exit threshold.</strong> Earliest possible exit: FY2027 audit (~Feb 2028), requiring both FY2026 and FY2027 below 55%. The lock likely holds — for reasons of price, not policy. <strong>Cap/floor collision at PAT = RM33.3B:</strong> the 60% dividend cap (AMEND-2026-08-03-001) and the RM20B MoF floor produce the same number at this PAT. Below it, the amendment demands ≤0.6×PAT (e.g., RM14.4B at PAT 24) while MoF Budget 2026 demands RM20B — two binding instructions in opposite directions. The tripwire crossover (60% extraction) lands on the identical threshold.
+    </div>
+  </div>
+
+  <div class="hero-tag">PETRONAS financial health · current answer</div>
+  <h1>Financial capacity. Operating resilience. <span>Stakeholder balance.</span><span class="epi-tag">INTERPRET</span></h1>
+  <div class="pulse-wrap" aria-labelledby="pulse-answer-label" data-agent-role="institution-answer">
+    <div class="pulse-head">
+      <div>
+        <div class="pulse-label" id="pulse-answer-label">Current pulse</div>
+        <span class="pulse-val mono" id="pulseval" style="color:var(--void)">0</span>
+        <span class="verdict-badge VOID" id="pulseverdict" style="background:var(--void);color:#fff">VOID</span>
+      </div>
+      <div class="pulse-desc"><strong>Derived from sealed inputs.</strong><br><span style="color:var(--faint)">BODY 0.40 + SPINE 0.35 + SOUL 0.25 · computed, never asserted</span></div>
+    </div>
+    <div class="pulse-bar"><div class="pulse-fill" id="pulsefill" style="width:0%;background:var(--void)"></div></div>
+    <div class="pulse-bands"><span style="color:var(--void);font-weight:700">0 VOID</span><span>40 HOLD</span><span>60 SABAR</span><span>80 SEAL</span><span>100</span></div>
+    <div class="pulse-meta"><span class="stale-tag fresh" id="sealbadge" aria-live="polite">FRESH</span> · sealed <b id="sealdate">2026-08-03</b> · next audit 2026-11-03 · <span style="color:var(--void)">LOCKED: AMEND-2026-08-03-001</span></div>
+    <div class="subscores">
+      <div class="sub-card" data-pillar="BODY"><div class="lab">Financial capacity</div><div class="val mono" id="sb-body" style="color:var(--void)">0 ⚠</div><div class="wt">0.40 · FCF·gearing·CFFO · <span style="color:var(--void);font-weight:700">OVERRIDE ACTIVE</span></div><span class="epi-tag-small" style="background:var(--void);color:#fff">VOID</span></div>
+      <div class="sub-card"><div class="lab">Operating resilience</div><div class="val mono" id="sb-spine">34</div><div class="wt">0.35 · production·recycling·payout</div><span class="epi-tag-small MIXED">MIXED</span></div>
+      <div class="sub-card"><div class="lab">Governance &amp; stakeholder balance</div><div class="val mono" id="sb-soul">22</div><div class="wt">0.25 · enabler mix·governance·extraction</div><span class="epi-tag-small INTERPRET">INTERPRET</span></div>
+    </div>
+    <section class="attention" aria-labelledby="attention-heading">
+      <div class="attention-title" id="attention-heading">Start here · three lowest tripwire scores</div>
+      <ol class="attention-list" id="attention-list" aria-label="Three lowest tripwire scores">
+        <li><span>Sovereign extraction gauge</span><b class="attention-score">0/100</b></li>
+        <li><span>Capital Recycling Ratio</span><b class="attention-score">20/100</b></li>
+        <li><span>Production / reserve replacement</span><b class="attention-score">28/100</b></li>
+      </ol>
+    </section>
+
+    <!-- ═══ PACEMAKER PANEL — live state, not future tense ═══ -->
+    <div style="margin-top:18px;padding:14px 16px;border:2px solid var(--void,#f0506e);border-radius:8px;background:rgba(240,80,110,.06);font-family:var(--mono)" data-agent-role="pacemaker-panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+        <strong style="font-size:11px;color:var(--void);letter-spacing:.08em;text-transform:uppercase">⚡ Pacemaker Panel · live state</strong>
+        <span style="font-size:10px;color:var(--faint)">2 of 6 ENGAGED · sealed 2026-08-03</span>
+      </div>
+      <div style="font-size:.74rem;line-height:1.7;color:var(--dim,#8a8378)">
+        <div style="color:var(--void);font-weight:700">■ ACTIVE &nbsp; Sovereign Extraction · 70.5% PAT &gt; 65% pacemaker trigger</div>
+        <div style="color:var(--ink);margin:2px 0 0 14px">→ CAP DIVIDEND AT 60% PAT · ESCALATE TO SOVEREIGN GATE</div>
+        <div style="color:var(--void);font-weight:700;margin-top:8px">■ ACTIVE &nbsp; Governance Capacity · 1.00/3 = 0.33 &lt; 0.50 trigger (no indep NED)</div>
+        <div style="color:var(--ink);margin:2px 0 0 14px">→ 100% INDEPENDENT NED QUORUM on capital authority · board without independent friction</div>
+        <div style="margin-top:8px"><span style="color:var(--sabar)">○ STANDBY</span> &nbsp; CFFO → RM60B &nbsp;· RM85.2B &nbsp; buffer RM25.2B &nbsp;→ ALGORITHMIC CAP on breach</div>
+        <div><span style="color:var(--sabar)">○ STANDBY</span> &nbsp; Brent sustained &lt; $70/2Q &nbsp;· as of last feed: see live proxies above &nbsp;→ FREEZE PAYOUT on breach</div>
+        <div><span style="color:var(--sabar)">○ STANDBY</span> &nbsp; Reserve Replacement &lt; 1.0× &nbsp;· 1.2× (razor-thin) &nbsp;→ RECYCLING OVERRIDE on breach</div>
+        <div><span style="color:var(--sabar)">○ STANDBY</span> &nbsp; Simulative-Neutral ∇$ &nbsp;· pending scan &nbsp;→ AUDIT LOCK regardless</div>
+      </div>
+    </div>
+  </div>
+  <div class="verb-row">
+    <a href="#physics">Institutional physics</a>
+    <a href="#tripwires">See ranked scores</a>
+    <a href="#liveStrip">Check live proxies</a>
+    <a href="#basics">Read methods</a>
+    <a href="#fan-sec">Run net-cash scenarios</a>
+  </div>
+</div>
+
+<!-- ═══ PLAIN-LANGUAGE DIGEST — what this means for you ═══ -->
+<section class="sec" id="digest" data-agent-role="plain-language-digest" aria-label="Plain-language translation of institutional signal">
+  <div class="sec-title">What this means — in plain language</div>
+
+  <!-- ONE-SENTENCE VERDICT (BM + EN) -->
+  <div style="background:var(--surface2);border-left:3px solid var(--void,#f0506e);padding:14px 18px;border-radius:6px;margin:0 0 18px;font-family:var(--serif)">
+    <div style="font-size:11px;color:var(--dim,#8a8378);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase;font-family:var(--mono)">One-sentence answer · F2 epistemic: OBS arithmetic + INT interpretation</div>
+    <p style="margin:0 0 6px;font-size:1.05rem;color:var(--ink,#d8d2c4);line-height:1.5"><strong>BM:</strong> PETRONAS <em>solvent</em> (tunai bersih RM82.8 bilion, nisbah hutang 20.7%), tetapi <strong style="color:var(--void,#f0506e)">70.5% untung keluar sebagai dividen</strong> sebelum dilabur semula — <em>isyarat kemandulan perlahan</em>, bukan keruntuhan solvensi.</p>
+    <p style="margin:0;font-size:1.05rem;color:var(--ink,#d8d2c4);line-height:1.5"><strong>EN:</strong> PETRONAS <em>is solvent</em> (net cash RM82.8B, gearing 20.7%), but <strong style="color:var(--void,#f0506e)">70.5% of profit leaves as dividends</strong> before reinvestment — <em>a slow-sterility signal</em>, not a solvency collapse.</p>
+  </div>
+
+  <!-- 6 READER CARDS: BM primary + EN secondary, structured by audience -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px,1fr));gap:14px">
+
+    <!-- 1. Untuk Rakyat — everyday impact (BM primary) -->
+    <div class="digest-card" data-audience="rakyat" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Untuk Rakyat · everyday impact</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">Apa ini untuk anda</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Wang PETRONAS</strong> bayar dividen <strong>RM32 bilion</strong> kepada kerajaan dari untung RM45 bilion — 70 sen setiap ringgit. Wang yang tinggal untuk tahun ini: RM11.6 bilion (positif, tapi nipis).</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Apa maksud untuk anda:</strong> subsidi minyak, jalan, sekolah — semua datang dari sini. Kalau dividen terlalu besar, kurang tinggal untuk bina infrastruktur masa depan.</p>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Bukan bankrap. Tiada panik. Tapi — kalau pattern ini berlarutan 5–10 tahun, generasi depan akan mewarisi infrastruktur yang kurang.</p>
+      <!-- KEBUN GETAH — rubber estate analogy -->
+      <div style="margin:10px 0 0;padding:8px 10px;background:rgba(201,168,76,.06);border-left:2px solid #c9a84c;border-radius:4px">
+        <p style="margin:0;font-size:.75rem;color:var(--ink,#d8d2c4);line-height:1.55;font-style:italic"><strong style="color:#c9a84c">Ibarat kebun getah:</strong> tiap musim 70 daripada 100 ringgit hasil PETRONAS dah diambil sebagai dividen sebelum rizab baru ditanam. Pokok getah tua ditebang, tapi anak pokok tak sempat membesar. Kebun masih hijau dari jauh — tapi bila ditinjau dekat, tanah semakin gondol. <strong>Kemandulan perlahan, bukan kebakaran serta-merta.</strong> <span style="font-size:.62rem;color:var(--faint)">[INT] analogi, bukan forensic</span></p>
+      </div>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">Sumber [OBS]: IFR FY2025 diaudit · dividends declared / PAT</p>
+    </div>
+
+    <!-- 2. For Citizens (EN concise) -->
+    <div class="digest-card" data-audience="citizens" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">For Citizens · everyday impact</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">What this means for you</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>PETRONAS money</strong> pays <strong>RM32 billion</strong> in dividends to the government from RM45 billion profit — 70 sen of every ringgit. What's left for this year: RM11.6 billion (positive, but thin).</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>What this means for you:</strong> fuel subsidies, roads, schools — all come from here. If dividends are too large, less stays for building tomorrow's infrastructure.</p>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Not bankrupt. No panic. But — if this pattern continues 5–10 years, the next generation inherits less infrastructure.</p>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">Source [OBS]: FY2025 audited IFR · dividends / PAT</p>
+    </div>
+
+    <!-- 3. Untuk Pelabur (BM) -->
+    <div class="digest-card" data-audience="pelabur" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Untuk Pelabur · portfolio view</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">Apa ini untuk portfolio anda</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Solvency metrik:</strong> gearing 20.7% (sihat), CFFO RM85.2B (sihat), tunai bersih RM82.8B.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Risiko:</strong> 70.5% untung keluar sebagai dividen. Kalau harga minyak jatuh bawah <strong>$70/barrel untuk 2 suku</strong>, FCF jadi sifar — risiko likuiditi.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Tambahan:</strong> lembaga tanpa独立董事 NED, governance score 1.00/3 (0.33) [INT] — based on 0 indep NEDs, no quorum capacity, dual-chair concentration.</p>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Tonton: AMEND-2026-08-03-001 (60% cap dividen) — adakah ia kekal aktif atau dilonggar?</p>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">Peringkat risiko: sederhana · [OBS] arif-fazil.com/data/wealth/petronas_vitals.json</p>
+    </div>
+
+    <!-- 4. For Investors (EN) -->
+    <div class="digest-card" data-audience="investors" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">For Investors · portfolio view</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">What this means for your portfolio</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Solvency metrics:</strong> gearing 20.7% (healthy), CFFO RM85.2B (healthy), net cash RM82.8B.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Risk:</strong> 70.5% of profit leaving as dividend. If oil drops below <strong>$70/barrel for 2 quarters</strong>, FCF → zero — liquidity risk rises.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Plus:</strong> board without independent NEDs, governance score 1.00/3 (0.33) [INT] — based on 0 indep NEDs, no quorum capacity, dual-chair concentration.</p>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Watch: AMEND-2026-08-03-001 (60% dividend cap) — does it stay active or relax?</p>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">Risk level: moderate · [OBS] arif-fazil.com/data/wealth/petronas_vitals.json</p>
+    </div>
+
+    <!-- 5. Untuk CEO / Lembaga (BM) -->
+    <div class="digest-card" data-audience="ceo-bm" style="background:var(--surface3);border:2px solid var(--accent,#c9a84c);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent,#c9a84c);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Untuk CEO / Lembaga · action items</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">Apa ini untuk lembaga anda</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55">Signal institusi anda ditangkap oleh <strong>9 tripwires</strong>. <strong style="color:var(--void,#f0506e)">1 breach: extraction 70.5% &gt; 60% tripwire (65% pacemaker fires hard lock)</strong>. Komposit pulse override kepada 0 (VOID). Hard-lock fires automatik.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Untuk tindakan:</strong></p>
+      <ol style="margin:0 0 8px;padding-left:20px;font-size:.82rem;color:var(--dim,#8a8378);line-height:1.55">
+        <li><strong>Korporat</strong> yang modelkan dividen PETRONAS sebagai hasil kerajaan — model senario 60% cap.</li>
+        <li><strong>Agensi penarafan</strong> — CrisisAlert JSON-LD boleh dibaca mesin secara terbuka di <code>arif-fazil.com/propa/</code>.</li>
+        <li><strong>Juruaudit</strong> — exit condition jelas: extraction &lt; 55% × 2 audits AND governance ≥ 2.0/3.</li>
+      </ol>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">Mesin ini bukan post-mortem. Ia memancarkan signal struktur secara terbuka.</p>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">AMEND-2026-08-03-001 ENGAGED · 5 STANDBY pacemakers</p>
+    </div>
+
+    <!-- 6. For CEO / Board (EN) -->
+    <div class="digest-card" data-audience="ceo-en" style="background:var(--surface3);border:2px solid var(--accent,#c9a84c);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent,#c9a84c);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">For CEO / Board · action items</div>
+      <h3 style="margin:0 0 8px;font-size:1.05rem;color:var(--ink,#d8d2c4)">What this means for your board</h3>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55">Your institutional signal is captured by <strong>9 tripwires</strong>. <strong style="color:var(--void,#f0506e)">1 breached: extraction 70.5% &gt; 60% tripwire (65% pacemaker: ACTIVE)</strong>. Composite pulse overridden to 0 (VOID). The hard-lock fires automatically.</p>
+      <p style="margin:0 0 8px;font-size:.85rem;color:var(--dim,#8a8378);line-height:1.55"><strong>Action items by role:</strong></p>
+      <ol style="margin:0 0 8px;padding-left:20px;font-size:.82rem;color:var(--dim,#8a8378);line-height:1.55">
+        <li><strong>Corporates</strong> modeling PETRONAS dividends into sovereign revenue forecast — model the 60% cap scenario.</li>
+        <li><strong>Rating agencies</strong> — the CrisisAlert JSON-LD is publicly machine-readable at <code>arif-fazil.com/propa/</code>.</li>
+        <li><strong>Auditors</strong> — exit condition is mathematically explicit: extraction &lt; 55% × 2 audits AND governance ≥ 2.0/3.</li>
+      </ol>
+      <p style="margin:0 0 4px;font-size:.78rem;color:var(--sabar);line-height:1.5;font-family:var(--mono)">This engine is not a post-mortem. It broadcasts structural signal publicly.</p>
+      <p style="margin:6px 0 0;font-size:.65rem;color:var(--faint,#5a554d);font-family:var(--mono)">AMEND-2026-08-03-001 ENGAGED · 5 STANDBY pacemakers</p>
+    </div>
+
+  </div>
+
+  <!-- ═══ HONESTY BLOCK — what is real vs what is model ═══ -->
+  <div style="margin-top:18px;padding:14px 18px;background:rgba(74,168,255,.04);border:1px solid var(--line);border-radius:8px;font-family:var(--mono)">
+    <div style="font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Honesty Block · apa yang real, apa yang model</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <div style="font-size:.68rem;color:var(--seal,#22c55e);font-weight:700;margin-bottom:6px;letter-spacing:.04em">✅ APA YANG REAL [OBS]</div>
+        <ol style="margin:0;padding-left:16px;font-size:.7rem;color:var(--ink,#d8d2c4);line-height:1.7">
+          <li>Dividen diisytihar RM32.0B / PAT RM45.4B = 70.5% — <em>aritmetik dari IFR diaudit</em></li>
+          <li>FCF RM11.6B selepas capex + dividen — <em>baris IFR</em></li>
+          <li>CFFO RM85.2B, gearing 20.7%, tunai bersih RM82.8B — <em>tiga nombor dari penyata kewangan diaudit</em></li>
+          <li>PETRONAS solvent. Bukan bankrap. Tiada panik.</li>
+        </ol>
+      </div>
+      <div>
+        <div style="font-size:.68rem;color:var(--void,#f0506e);font-weight:700;margin-bottom:6px;letter-spacing:.04em">⚠ APA YANG MODEL [SPEC]</div>
+        <ol style="margin:0;padding-left:16px;font-size:.7rem;color:var(--dim,#8a8378);line-height:1.7">
+          <li>$750M simulasi — <em>bukan forensic, bukan wang keluar sebenar</em></li>
+          <li>"Terminal pada t=3" — <em>parameter belum dikalibrasi</em></li>
+          <li>65% pacemaker threshold — <em>enjin binaan, bukan undang-undang</em></li>
+        </ol>
+      </div>
+    </div>
+    <p style="margin:10px 0 0;font-size:.62rem;color:var(--faint,#5a554d);line-height:1.5">BM: Tiada satu pun klaim [SPEC] adalah fakta. Semua adalah parameter model yang menunggu kalibrasi held-out. <strong>Kau yang tentukan mana nak percaya. Mesin hanya memancarkan struktur.</strong></p>
+    <p style="margin:4px 0 0;font-size:.62rem;color:var(--faint,#5a554d);line-height:1.5">EN: None of the [SPEC] claims are facts. All are model parameters awaiting held-out calibration. <strong>You decide what to believe. The engine only broadcasts structure.</strong></p>
+  </div>
+
+  <!-- ═══ EPISTEMIC KEY — so reader knows what's arithmetic vs interpretation vs model ═══ -->
+  <div style="margin-top:18px;padding:12px 16px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;font-size:.72rem;color:var(--dim,#8a8378);line-height:1.6">
+    <strong style="color:var(--ink);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase">Epistemic key</strong>
+    <span style="margin-left:14px"><span style="color:var(--seal);font-weight:700">[OBS]</span> audited IFR arithmetic</span>
+    <span style="margin-left:14px"><span style="color:var(--seal);font-weight:700">[DER]</span> derived from audited inputs</span>
+    <span style="margin-left:14px"><span style="color:var(--sabar);font-weight:700">[INT]</span> engine interpretation (accept or reject)</span>
+    <span style="margin-left:14px"><span style="color:var(--void,#f0506e);font-weight:700">[SPEC]</span> model construction (parameters, not facts)</span>
+  </div>
+
+</section>
+
+<!-- ═══ W-007 CONTROL SET CALIBRATION — NOC Peer Comparison ═══ -->
+<section class="sec" id="controlSet" data-agent-role="w007-calibration" data-version="W-007-NOC-v1.0" data-calibrated-at="2026-08-06T07:55:00Z">
+  <div class="sec-title" style="display:flex;align-items:center;gap:8px">Control set calibration · <span style="color:var(--sabar);font-size:.75rem;font-weight:400">W-007 · NOC peer distribution</span></div>
+  <p style="color:var(--dim);font-size:.78rem;margin:0 0 14px;line-height:1.5">W-007 applies before Enron. The dashboard carried single-case verdicts without base rates — the exact defect W-007 was written to close. Below: PETRONAS scored against 6 peer NOCs (Aramco, Equinor, Ecopetrol, Pertamina, ADNOC, PTT). All figures from audited FY2025 annual reports.</p>
+
+  <!-- Three-column comparison grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:0 0 18px">
+
+    <!-- COLUMN 1: Dividend payout ratio -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">EXTRACTION RATIO · DIVIDEND ÷ PAT · FY2025</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--void)">91.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--void)">87.0%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--hold)">80.0%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC (listed)</span><span style="font-family:var(--mono);color:var(--hold)">74.2%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--hold)">72.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--sabar);font-weight:700">70.5%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--seal)">55.2%</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--sabar)">PETRONAS: 38th percentile, below median (76.3%).</strong><br>
+        Mean 75.8% · σ 11.6 · z=−0.46<br>
+        <span style="color:var(--sabar)">→ SABAR. Not an outlier against peers.</span>
+      </div>
+    </div>
+
+    <!-- COLUMN 2: Gearing -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">GEARING · NET DEBT ÷ CAPITAL · FY2025</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--seal)">3.8%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--hold)">17.8%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--hold);font-weight:700">20.7%</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--dim)">0.6× EBITDA</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC</span><span style="font-family:var(--mono);color:var(--dim)">very low</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--dim)">≤2.0× EBITDA</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--dim)">~2.0× EBITDA</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--hold)">PETRONAS: highest among directly comparable NOCs</strong><br>
+        But 20.7% is modest by any corporate standard.<br>
+        <span style="color:var(--hold)">→ SABAR. Watch, don't alarm.</span>
+      </div>
+    </div>
+
+    <!-- COLUMN 3: Governance -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:14px 16px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;margin-bottom:6px">GOVERNANCE · BOARD INDEPENDENCE · 0–3 SCALE</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Equinor</span><span style="font-family:var(--mono);color:var(--seal)">2.5/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">PTT</span><span style="font-family:var(--mono);color:var(--seal)">2.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Ecopetrol</span><span style="font-family:var(--mono);color:var(--hold)">1.5/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><span style="color:var(--ink);font-weight:700">PETRONAS</span><span style="font-family:var(--mono);color:var(--hold);font-weight:700">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Aramco</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">Pertamina</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:.78rem"><span style="color:var(--dim)">ADNOC</span><span style="font-family:var(--mono);color:var(--hold)">1.0/3</span></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:8px">
+        <strong style="color:var(--hold)">PETRONAS: at NOC median (1.0/3).</strong><br>
+        Tied with Aramco, Pertamina, ADNOC. Only 3 of 7 score higher.<br>
+        <span style="color:var(--hold)">→ This IS the structural norm for NOCs.</span><br>
+        <span style="color:var(--void)">BUT: AMEND-2026-08-03-001 exit requires ≥2.0/3.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Composite calibrated verdict -->
+  <div style="background:rgba(245,158,11,.06);border:2px solid var(--sabar);border-radius:8px;padding:16px 18px;margin:0 0 10px">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+      <strong style="font-size:13px;color:var(--sabar);letter-spacing:.06em;text-transform:uppercase">■ CALIBRATED VERDICT: SABAR</strong>
+      <span style="font-family:var(--mono);font-size:10px;color:var(--dim)">W-007-NOC-v1.0 · 6 peers · audited FY2025</span>
+    </div>
+    <p style="margin:0;font-size:.78rem;color:var(--ink);line-height:1.6">
+      <strong>None of PETRONAS's three vitals metrics are outliers against the NOC peer distribution.</strong> The extraction ratio (70.5%) is below the NOC median (76.3%). Gearing (20.7%) is the highest among directly comparable NOCs but still modest. Governance (1.0/3) is the NOC median — tied with Aramco, Pertamina, and ADNOC.<br><br>
+      <strong style="color:var(--void)">This calibration does NOT override AMEND-2026-08-03-001.</strong> The FY2026 extraction ratio remains UNMEASURED (RM20bn declared against unpublished PAT). The governance lock (≥2.0/3 required for exit, currently 1.0/3) remains binding regardless of peer calibration. <strong>The binding constraint has moved from financial to governance.</strong> The prior VOID verdict reflected an absolute threshold without peer context; the calibrated reading says: <strong style="color:var(--sabar)">watch the trend, not the level.</strong>
+    </p>
+  </div>
+
+  <p style="font-size:.62rem;color:var(--faint);font-family:var(--mono);margin:0;line-height:1.5">
+    W-007 v1.0 methodology: peer NOC distribution with z-scores and percentile ranks. Governance scores are ordinal judgments based on observable board structure (dual-chair, minister appointments, independent director quorum). Phase 2 adds Enron vs Dynegy/Williams/El Paso. Sources: Aramco FY2025 · Equinor FY2025 · Ecopetrol AGM 27 Mar 2026 · Pertamina FY2025 · ADNOC WAM 15 Feb 2026 · PTT FY2025. <a href="/data/wealth/noc_control_set.json" style="color:var(--accent)">Machine-readable JSON</a>.
+  </p>
+</section>
+
+<!-- RANKED TRIPWIRE SCORES -->
+<div class="sec" id="tripwires" data-agent-role="evidence">
+  <div class="sec-title">Tripwire scores · lowest first</div>
+<!--B11-A:GRID9-MARKER:BEGIN-->
+  <div class="tripgrid" id="grid9" aria-label="Nine tripwire scores ranked from lowest to highest"></div>
+<!--B11-A:GRID9-MARKER:END-->
+</div>
+
+<!-- LIVE MARKET PROXIES -->
+<div class="live-strip" id="liveStrip">
+  <div class="ls-head"><span class="ls-badge" id="lsBadge">UNAVAILABLE</span><span>LIVE MARKET PROXIES</span><span style="margin-left:auto" id="lsTime">—</span></div>
+  <div class="ls-chips" id="lsChips" aria-live="polite"><span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative</span></div>
+  <div class="ls-note">Transmission: ±$10 Brent ≈ ±RM6.0B FCF/CFFO. FCF (#1) crosses zero at Brent ≈ $71.60/bbl (-$12.50/bbl from $84.10). CFFO tripwire (RM60B) requires Brent &lt; $47.40. JKM–HH premium supports LNG margin. Proxies are live market readings, NOT sealed tripwire values. Anchors remain sovereign-sealed. Source: WEALTH commodity engine (yfinance) · 5-min cache.</div>
+</div>
+
+<!-- B11-E: RECENT EVENTS PANEL (2026-08-06) — additive metadata, no tripwire mutation -->
+<!--B11-E:RECENT-EVENTS-MARKER:BEGIN-->
+<!--B11-E:RECENT-EVENTS-MARKER:END-->
+
+<!-- METHODS -->
+<div class="sec" id="basics">
+  <div class="sec-title">Methods and context</div>
+  <details class="zen-reveal" id="methodology" data-agent-role="machine-context">
+    <summary>Methodology</summary>
+    <div class="reveal-body">
+      <h5>What the pulse measures</h5>
+      <p>The composite PULSE (0–100) is a weighted blend of three sub-scores, each computed from three tripwires measuring their distance from a breaking threshold. It measures the gap between current readings and the <code>safe</code>/<code>trip</code> anchors encoded in the sealed inputs.</p>
+      <h5>How sub-scores are computed</h5>
+      <p>Each tripwire <em>t</em> has three anchors: <code>now</code> (current reading), <code>trip</code> (breaking threshold), and <code>safe</code> (healthy anchor). The score is distance-to-trip normalized to 0–100:</p>
+      <table><tr><th>Direction</th><th>Formula</th><th>Example</th></tr>
+      <tr><td><code>dir: "below"</code> (going below = pain)</td><td><code>score = (now − trip) / (safe − trip) × 100</code></td><td>FCF: (11.6−0)/(15−0)×100 = 77.3</td></tr>
+      <tr><td><code>dir: "above"</code> (going above = pain)</td><td><code>score = (trip − now) / (trip − safe) × 100</code></td><td>Gearing: (40−20.7)/(40−15)×100 = 77.2</td></tr></table>
+      <p>The layer score is the mean of its three tripwire scores. The composite is: <code>PULSE = 0.40·BODY + 0.35·SPINE + 0.25·SOUL</code>.</p>
+      <h5>Verdict bands</h5>
+      <table><tr><th>Score</th><th>Verdict</th><th>Meaning</th></tr>
+      <tr><td>80–100</td><td style="color:var(--seal)">SEAL</td><td>Buffer intact</td></tr>
+      <tr><td>60–79</td><td style="color:var(--sabar)">SABAR</td><td>Solvent, pressures accumulating</td></tr>
+      <tr><td>40–59</td><td style="color:var(--hold)">HOLD</td><td>Structural pressure is visible</td></tr>
+      <tr><td>&lt;40</td><td style="color:var(--void)">VOID</td><td>Buffer exhausted</td></tr></table>
+      <h5>Evidence classes</h5>
+      <p>BODY tripwires (#1–3) are <span class="epi-tag-small EVIDENCE">EVIDENCE</span> from audited FY2025 IFR data. SPINE and SOUL tripwires (#4–9) include <span class="epi-tag-small INTERPRET">INTERPRET</span> judgment anchors. The composite carries the weaker class.</p>
+    </div>
+  </details>
+  <p class="scope-note"><strong>Scope &amp; limits.</strong> This page reports distance to sealed tripwires. Live proxies and scenario bands add context; they do not change sealed readings or forecast outcomes.</p>
+</div>
+
+<!-- SENSITIVITY COEFFICIENTS -->
+<div class="sec" id="sensitivities">
+  <details class="zen-reveal">
+    <summary>Sensitivity coefficients</summary>
+    <div class="reveal-body">
+      <div class="ref-panel">
+        <h4>Earnings sensitivity to key variables · FY2025 baseline</h4>
+        <table class="data-table">
+          <thead><tr><th>Variable</th><th>Δ Change</th><th>PAT Impact (RM B)</th><th>CFFO Impact (RM B)</th><th>FCF Impact (RM B)</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr class="section-row"><td colspan="6">PRICE SENSITIVITIES</td></tr>
+            <tr><td>Brent crude</td><td class="num">+$10 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+5.5 to +7.5</td><td class="num">+6.0</td><td class="num">+6.0</td><td>FY2025 IFR sensitivity disclosure</td></tr>
+            <tr><td>JKM LNG spot</td><td class="num">+$1 /MMBtu</td><td class="num" style="color:var(--seal);font-weight:600">+1.2</td><td class="num">+1.2</td><td class="num">+1.2</td><td>MoF / contract mix estimate</td></tr>
+            <tr><td>Singapore GRM</td><td class="num">+$1 /bbl</td><td class="num" style="color:var(--seal);font-weight:600">+0.15 to +0.30</td><td class="num">+0.25</td><td class="num">+0.25</td><td>FY2025 downstream disclosure</td></tr>
+            <tr><td>Naphtha-PE spread</td><td class="num">+$100 /T</td><td class="num" style="color:var(--seal);font-weight:600">+0.30 to +0.50</td><td class="num">+0.40</td><td class="num">+0.40</td><td>PRefChem commissioning sensitivity</td></tr>
+            <tr class="section-row"><td colspan="6">PRODUCTION SENSITIVITIES</td></tr>
+            <tr><td>Crude production</td><td class="num">+10 kbpd</td><td class="num" style="color:var(--seal);font-weight:600">+0.8 to +1.2</td><td class="num">+1.0</td><td class="num">+1.0</td><td>DOSM / IFR production data</td></tr>
+            <tr><td>LNG production</td><td class="num">+1 mtpa</td><td class="num" style="color:var(--seal);font-weight:600">+2.5 to +3.5</td><td class="num">+3.0</td><td class="num">+3.0</td><td>MLNG / Petronas LNG complex</td></tr>
+            <tr class="section-row"><td colspan="6">FISCAL SENSITIVITIES</td></tr>
+            <tr><td>Corporate tax rate</td><td class="num">+1 ppt</td><td class="num" style="color:var(--void);font-weight:600">−1.4 to −1.6</td><td class="num">−1.5</td><td class="num">−1.5</td><td>MoF / CITA 1967</td></tr>
+            <tr><td>Govt dividend floor</td><td class="num">+RM5 B</td><td class="num" style="color:var(--void);font-weight:600">0 (PAT-neutral)</td><td class="num">−5.0</td><td class="num">−5.0</td><td>MoF Budget 2026; cash flow impact only</td></tr>
+            <tr class="section-row"><td colspan="6">BALANCE SHEET SENSITIVITIES</td></tr>
+            <tr><td>MYR/USD</td><td class="num">+0.10 RM/$</td><td class="num" style="color:var(--void);font-weight:600">−0.5 to +0.3</td><td class="num">mixed</td><td class="num">mixed</td><td>natural hedge; net exporter position</td></tr>
+            <tr><td>Interest rate (base)</td><td class="num">+100 bps</td><td class="num" style="color:var(--void);font-weight:600">−0.25 to −0.40</td><td class="num">−0.35</td><td class="num">−0.35</td><td>RM82.8B net cash; low rate sensitivity</td></tr>
+          </tbody>
+        </table>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:10px">All coefficients are INTERPRET — derived from FY2025 IFR disclosures, cross-checked against Moody's A3 stable assumptions. Not audited by PETRONAS. Published as modeling inputs per ExxonMobil toolkit convention.</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- REFERENCE INPUTS -->
+<div class="sec" id="refs">
+  <details class="zen-reveal">
+    <summary>Assumptions</summary>
+    <div class="reveal-body">
+      <div class="ref-panel">
+        <h4>Scenario assumptions</h4>
+        <table class="data-table">
+          <thead><tr><th>Parameter</th><th style="color:#4aa8ff">Base</th><th style="color:#f0506e">Bear</th><th style="color:#31c48d">Bull</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Brent crude (USD/bbl)</td><td class="num">85</td><td class="num">55</td><td class="num">95</td><td>Moody's / forward curve</td></tr>
+            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">14</td><td class="num">8</td><td class="num">20</td><td>Platts Asia LNG</td></tr>
+            <tr><td>Henry Hub gas (USD/MMBtu)</td><td class="num">3.00</td><td class="num">2.00</td><td class="num">5.00</td><td>NYMEX forward</td></tr>
+            <tr><td>USD/MYR</td><td class="num">4.10</td><td class="num">4.30</td><td class="num">4.10</td><td>BNM benchmark</td></tr>
+            <tr><td>Singapore GRM delta ($/bbl)</td><td class="num">0</td><td class="num" style="color:#f0506e">−3</td><td class="num" style="color:#31c48d">+5</td><td>FY25 disclosure</td></tr>
+            <tr><td>Naphtha-PE spread delta ($/T)</td><td class="num">0</td><td class="num" style="color:#f0506e">−100</td><td class="num" style="color:#31c48d">+200</td><td>PRefChem commissioning</td></tr>
+            <tr><td>Production (kbpd, MY crude liquids)</td><td class="num">355</td><td class="num" style="color:var(--void)">300</td><td class="num">400</td><td>DOSM / IFR</td></tr>
+            <tr><td>LNG export (mtpa)</td><td class="num">27</td><td class="num">24</td><td class="num">30</td><td>MLNG complex</td></tr>
+            <tr><td>PRefChem debt gross-up (RM B)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY25 audited (one-time)</td></tr>
+            <tr><td>Dividend cap (per amendment)</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td>AMEND-2026-08-03-001</td></tr>
+            <tr><td>MoF dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- SOURCES -->
+<div class="sec" id="sources">
+  <details class="zen-reveal">
+    <summary>Sources</summary>
+    <div class="reveal-body">
+      <p>Primary inputs: PETRONAS audited FY2025 Integrated Report, MoF Budget 2026, DOSM production data, and published market assumptions. The live proxy feed is supplied by the WEALTH commodity engine.</p>
+    </div>
+  </details>
+</div>
+
+<!-- ═══ INSTITUTIONAL PHYSICS — Cerita Orang Tua, Computed (folded by default) ═══ -->
+<div class="sec" id="physics">
+  <div class="sec-title">Institutional physics · the engine has spoken</div>
+  <details class="zen-reveal" id="institutional-physics-essay">
+    <summary style="font-size:11px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;font-family:var(--mono);padding:6px 0;cursor:pointer">▸ Open the full institutional-physics essay (6 parts · OBS / DER / INT / SPEC tagged · ~2700 words)</summary>
+    <p style="font-size:.78rem;color:var(--dim);margin:6px 0 14px;font-style:italic">Long-form reading for analysts and historians. The plain-language digest above already conveys the answer in three doors; this essay is the derivations, the analogies, and the epistemic reasoning behind each one.</p>
+    <div class="ref-panel" style="border-left:2px solid #c9a84c;background:rgba(201,168,76,.03);padding:1.2rem 1.4rem;border-radius:8px;font-family:var(--sans);line-height:1.7;color:var(--ink)">
+    <p style="margin-top:0"><strong style="color:#c9a84c">3 August 2026 — re-seal.</strong> The WEALTH institutional intelligence engine completed a full stress test of PETRONAS. It encoded "cerita orang tua" — decades of institutional memory about how state-owned entities get bled — into executable math. The diagnosis is <strong>not extinction</strong>. The institution is solvent (net cash RM82.8B, CFFO RM85.2B, gearing 20.7%). The diagnosis is something subtler and more dangerous: <strong>slow sterility</strong> — paying the future as dividends today. <em>Not a solvency collapse, but a reinvestment emergency.</em> Here is what the engine found, and what it means — with explicit epistemic tags so the reader never confuses arithmetic with model.</p>
+
+    <!-- ═══ EPISTEMIC CLASSIFICATION — what is OBS / DER / INT / SPEC ═══ -->
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:1rem 0 1.4rem;font-size:.78rem;line-height:1.7;color:var(--dim)">
+      <strong style="color:var(--accent);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase">Epistemic classification — read before interpreting</strong>
+      <div style="margin-top:8px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px">
+        <span style="color:var(--seal);font-family:var(--mono);font-weight:700">[OBS]</span>
+        <span>Audited IFR arithmetic — extraction ratio (70.5% PAT), FCF (RM11.6B), CFFO (RM85.2B), gearing (20.7%), production (355 kbpd). These are observed facts from the FY2025 integrated report.</span>
+        <span style="color:var(--seal);font-family:var(--mono);font-weight:700">[DER]</span>
+        <span>Derived metrics — capital recycling ratio (1.2×, computed not disclosed), sovereign extraction gauge (declared div / PAT). Derived from OBS but not directly audited as a line item.</span>
+        <span style="color:var(--sabar);font-family:var(--mono);font-weight:700">[INT]</span>
+        <span>Engine interpretation — "management by default", "slow sterility", "the institution is being harvested faster than it renews". These are interpretive readings the sovereign must accept or reject.</span>
+        <span style="color:var(--void);font-family:var(--mono);font-weight:700">[SPEC]</span>
+        <span>Model construction — the 65% pacemaker threshold, the 0/100 score, the BODY composite override to VOID, the "Terminal at t=3" trajectory, the $750M simulated counterparty extraction. <strong>None of these are observed.</strong> They are engine parameters awaiting held-out calibration. Trajectory is credible (~0.75 confidence); timeline is parameter-dependent.</span>
+      </div>
+      <p style="margin-top:10px;color:var(--ink);font-size:.82rem"><strong>What this means:</strong> PETRONAS is <strong>not bankrupt, not in solvency collapse</strong>. The audited numbers say so. The <em>real</em> signal is extraction: 70.5% of profit leaves as dividend before reinvestment. This is a <strong>reinvestment emergency</strong>, not a solvency emergency. Different problem, different policy response.</p>
+    </div>
+    <div style="background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.4);border-radius:8px;padding:.9rem 1.1rem;margin:.6rem 0 1rem;font-size:.82rem;color:var(--ink);line-height:1.65">
+      <strong style="color:#c9a84c">What changed since the 28 July seal:</strong>
+      Production / reserve replacement score tightened from 27.5 → <strong>28/100</strong> (still VOID) — the gap is widening, not closing. <strong>Pre-override pulse was 48</strong> (with verdict <strong>HOLD</strong>) — two separate historical facts, captured in the JSON-LD as <code>pre_lock_pulse</code> and <code>pre_lock_verdict</code>. The current pulse is now <strong style="color:var(--void)">0 (VOID)</strong> under AMEND-2026-08-03-001 (FY2025 extraction 70.5% breached 65% pacemaker). The financial pillar alone would clear SABAR, but the governance pillar (22/100, with sovereign extraction fully breached at 0/100) drags the composite into VOID territory. Brent below <strong>$71.60/bbl</strong> pushes free cash flow to zero; below <strong>$70 for two quarters</strong> turns the deck of cards into an instant liquidity squeeze. <strong>Quantum tripwires fire before the next half-yearly audit.</strong>
+    </div>
+
+    <!-- PART 1: THE BLOODLETTING -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">1. The "Simulative Neutral" Pattern — <span style="color:var(--sabar);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em">[SPEC]</span> <em style="color:var(--dim);font-weight:400;font-size:.9rem">$750M is simulated, not forensic</em></h4>
+    <p>The engine ran a <strong style="color:var(--sabar)">counterfactual simulation</strong> of 4 hypothetical counterparty actions to test whether the governance gap could absorb them. Each action was individually defensible; stacked, they would extract <span style="text-decoration:line-through;color:var(--dim)">$750 million USD</span> if executed. <strong style="color:var(--void)">This is a model output, not a forensic finding.</strong> No RM3.1B is documented in any IFR as having left the institution. The simulation tests the institution's <em>defensive capacity</em>, not its <em>recorded losses</em>.</p>
+    <p style="font-size:.85rem;color:var(--dim)">The four simulated actions: accelerated repayment clauses, interpleader filings, unilateral term extensions, additional collateral demands. Every single one, standing alone, looks completely legal, reasonable, and commercially normal. The simulation tests whether the institution has the governance antibodies to refuse them. <strong>That is the gap the engine exposes — by simulation, not by audit trail.</strong></p>
+
+    <!-- PART 2: THE BEHAVIORAL SINK -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">2. The Behavioral Sink Analogy — <span style="color:var(--sabar);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em">[INT]</span> <em style="color:var(--dim);font-weight:400;font-size:.9rem">Universe 25 is interpretive, not measured</em></h4>
+    <p>In John Calhoun's <em>Universe 25</em> experiment, a mouse colony with unlimited resources and no survival pressure collapsed into extinction — not from starvation, but from <strong>loss of meaningful roles.</strong> The "Beautiful Ones" withdrew. Mothers stopped nesting. Social cohesion dissolved. The colony died not because it ran out of food, but because it ran out of purpose.</p>
+    <p>The WEALTH engine detected the same pattern in institutional form. The simulated board scored <b style="color:#f0506e">1.00 out of 3 (0.33) — INSUFFICIENT</b>. <strong>Zero independent Non-Executive Directors.</strong> No quorum capacity. A stress-capacity gap of −0.33 (1.00/3 vs 0.50 floor). When a board lacks independent friction, it loses the ability to distinguish between commerce and consumption — between value creation and value extraction. Every decision passes the "is this legally defensible?" test because no one is positioned to ask the harder question: <em>"Is this institutionally wise?"</em></p>
+    <p style="font-size:.85rem;color:var(--dim)">The critical difference between Universe 25 and PETRONAS: <strong>agency.</strong> Calhoun's mice were trapped in a biological script. Institutions have <em>conscious choice</em>. The reading is about <em>renewal capacity</em>, not <em>survival capacity</em>. The audited numbers (net cash RM82.8B, CFFO RM85.2B) show the institution is not in biological collapse. It may be in <em>renewal</em> collapse — paying the future as dividends today. The question is whether anyone will act before the Beautiful Ones stop nesting.</p>
+
+    <!-- PART 3: THE CASCADE -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">3. The Cascade Trajectory — <span style="color:var(--sabar);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em">[SPEC]</span> <em style="color:var(--dim);font-weight:400;font-size:.9rem">T=3 timeline is parameter-dependent</em></h4>
+    <p>The cascade model projected a <strong style="color:var(--sabar)">trajectory toward terminal state within ~3 periods</strong> — <em>assuming uncalibrated parameters</em>. The trajectory is credible (~0.75 confidence) but the timeline is parameter-dependent. The simulation says: if governance stays soft and counterparty exposure compounds at the modeled rate, the cascade compresses. <strong>This is a forward model, not a measured history.</strong></p>
+    <p style="font-size:.85rem;color:var(--dim)">What the trajectory shows: counterparty actions could exploit the governance gap → widen the legal exposure → attract more counterparty action → further erode governance capacity. <strong>The balance sheet never crosses a single financial tripwire in this trajectory.</strong> Gearing stays at 20.7%. CFFO holds above RM60B. And yet the institution would slow-sterilize — because the failure mode is not financial. It is structural.</p>
+    <p style="font-size:.85rem;color:var(--ink)"><strong>This is what "management by default" looks like:</strong> every audited metric reports green while the organism consumes its <em>renewal capacity</em> from the inside. <em>Slow sterility, not solvency collapse.</em> The half-yearly audit tells you the ship was strong six months ago. The cascade model tells you the renewal base is eroding <em>right now</em>.</p>
+
+    <!-- PART 4: WHAT THE NUMBERS ACTUALLY SAY (OBS — audited arithmetic) -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">4. What the Numbers Actually Say — <span style="color:var(--seal);font-family:var(--mono);font-size:.7rem;letter-spacing:.06em">[OBS]</span> <em style="color:var(--dim);font-weight:400;font-size:.9rem">audited arithmetic</em></h4>
+    <p>Surface — all from FY2025 audited IFR: gearing 20.7% (SABAR). CFFO RM85.2B (SABAR). Net cash RM82.8B (SABAR). <strong>Solvency is intact.</strong> The audited numbers say "healthy." The engine's bottom-up tripwires add a different reading:</p>
+    <ul style="padding-left:1.2rem;margin:.6rem 0">
+      <li><b>[OBS] Sovereign extraction at 70.5% of PAT</b> (tripwire #9, score 0/100). Declared dividend RM32.0B / PAT RM45.4B = 70.5%. <strong>This is arithmetic, not interpretation.</strong> Nearly three-quarters of profit leaves as dividend before reinvestment. The renewal base erodes by definition.</li>
+      <li><b>[DER] Capital recycling at 1.2×</b> (tripwire #5, score 20/100). Derived from capex 41.6 / asset-sale proceeds (UNVERIFIED in IFR). Razor-thin. Below 1.0× means consuming the capital base.</li>
+      <li><b>[OBS] Production at 355 kbpd, reserves not replacing fast enough</b> (tripwire #4, score 28/100). Physics — not narrative. The resource base that underwrites every financial figure is eroding.</li>
+    </ul>
+    <p>The audited financials are <strong>trailing</strong> — strong on the surface, but they don't show what the institution is investing in for tomorrow. The extraction pipeline above does. <strong>Brent below $70 for two quarters turns this slow-sterility picture into a solvency squeeze.</strong> Not because PETRONAS collapses today, but because the renewal base is already thin.</p>
+
+    <!-- PART 5: QUANTUM TRIPWIRES -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">5. Quantum Tripwires — Hope Is for the Hopeless</h4>
+    <p>Classical auditing waits for the numbers to drop before flagging danger. By then, the simulated $750M counterparty extraction (or actual governance decay) would have metastasized. The WEALTH engine has been upgraded to a <strong>Quantum Tripwire</strong> architecture — moving from <em>lagging accounting indicators</em> to <em>real-time state-probability probes</em>. The pacemakers are not aspirational. <strong>One of them is firing right now.</strong></p>
+    <div style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.75rem;line-height:1.7;color:var(--dim);overflow-x:auto">
+<pre style="margin:0;color:var(--ink)">[ LIVE SIGNALS ]  Brent &lt; $70  ·  Reserve Replacement &lt; 1.0×  ·  Extraction &gt; 65% PAT
+       │
+       ▼
+┌──────────────────────────────────────────────────────────┐
+│              QUANTUM TRIPWIRE LAYER                      │
+│  · Monitors superposition of non-linear risks            │
+│  · Detects "Simulative Neutral" gradient ∇$ BEFORE limit │
+│  · Entangles operational resilience with extraction caps │
+└────────────────────────────┬─────────────────────────────┘
+                             │
+             ┌───────────────┴───────────────┐
+             ▼                               ▼
+  [ FQ STUCK → HOLD ]              [ AUTO-INTERVENTION ]
+  Freeze discretionary payout       Enforce 100% Indep. NED quorum
+  Cap dividends algorithmically     Shift capital authority to board</pre>
+    </div>
+    <p><strong style="color:var(--ink)">"Hope is for the hopeless."</strong> Hope is a passive emotional variable — P(action) = 0. The arifOS federation does not deploy hope. It wires <strong>deterministic tripwires</strong> so the system reacts before human sentiment has a chance to decay. When CFFO approaches the RM60B floor, dividend payouts are algorithmically capped. When governance capacity drops below 0.50, board authority on capital expenditure automatically shifts to require 100% independent NED quorum. When the simulative-neutral extraction gradient crosses threshold, an audit lock triggers — regardless of whether any single rule was broken.</p>
+    <p>These tripwires do not predict the future. They <strong>constrain the present.</strong> They turn the 8 canonical WEALTH tools from static report generators into <strong>continuous live structural monitors</strong> — institutional pacemakers that fire before the patient flatlines.</p>
+
+    <!-- PART 6: QUANTUM TRIPWIRES — ENGAGED NOW -->
+    <h4 style="font-family:var(--serif);font-size:1.05rem;color:#c9a84c;margin:1.4rem 0 .4rem">6. Quantum Tripwires — <span style="color:var(--void)">ENGAGED</span></h4>
+    <p><strong style="color:var(--void)">2 of 6 pacemakers already firing (Extraction + Governance Capacity).</strong> The Sovereign Extraction trigger crossed on the FY2025 audited reading (70.5% PAT > 65% pacemaker). Waiting for next audit is not a posture — it is the failure mode the tripwires were built to prevent. The remaining 4 pacemakers are STANDBY — read each threshold against the live table below. <strong>These are constraints on the present, not hopes for the future.</strong></p>
+
+    <!-- PACEMAKER PANEL — LIVE STATE -->
+    <div style="background:var(--surface3);border:2px solid rgba(240,80,110,.5);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0;font-family:var(--mono);font-size:.75rem;line-height:1.7;color:var(--dim);overflow-x:auto">
+<pre style="margin:0;color:var(--ink)">[ PACEMAKER PANEL · 3 Aug 2026 reseal · HARD LOCK ENGAGED · AMEND-2026-08-03-001 ]
+
+  <span style="color:var(--void);font-weight:700">■ ACTIVE · HARD LOCK  </span>  Sovereign Extraction   70.5% PAT  >  65% pacemaker     → DIVIDEND STOP ADVISORY · F13 VETO FINAL
+  <span style="color:var(--void);font-weight:700">■ ACTIVE · QUORUM    </span>  Governance Capacity    1.00/3  ≤  0.50 floor       → 100% INDEPENDENT NED QUORUM on capital authority
+  <span style="color:var(--void)">                     </span>  BODY composite overridden → 0/100 (VOID)
+  <span style="color:var(--void)">                     </span>  Full pulse overridden   → 0/100 (VOID)
+  <span style="color:var(--sabar)">○ STANDBY </span>  CFFO → RM60B floor   RM85.2B  >  60B (RM25.2B buffer) → DIVIDEND STOP CONFIRMATION on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Brent < $70 / 2Q     as of last feed   >  $70.00 floor          → PAYOUT FREEZE on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Reserve Replacement   1.2×     >  1.0× (razor-thin)    → CAPITAL RECYCLING OVERRIDE on breach
+  <span style="color:var(--sabar)">○ STANDBY </span>  Simulative-Neutral ∇$  pending scan            → AUDIT LOCK regardless of single-rule compliance</pre>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink)"><strong>Reading the panel:</strong> the ACTIVE row is not a forecast — it is a <em>present-tense constitutional constraint</em>. AMEND-2026-08-03-001 removed all human override. The lock fires automatically on observed breach of the Sovereign Extraction pacemaker threshold (65% PAT), overrides BODY to 0 and composite to VOID, and emits a public machine-readable CrisisAlert JSON-LD that rating agencies, bondholders, and the public can ingest directly. The simulative-neutral pattern is the institutional equivalent of slow bleeding: each individual extraction was legally defensible, but the cumulative pattern drains the institution faster than it renews. The federation refuses to wait for the half-yearly ledger to make the loss visible. <strong>This is the reflection of the signal itself.</strong></p>
+
+    <p style="border-top:1px solid var(--line);padding-top:1rem;margin-top:1.4rem;font-size:.85rem;color:var(--dim)"><strong style="color:var(--ink)">DITEMPA BUKAN DIBERI.</strong> "Cerita orang tua" is not coffee-shop talk. It is <em>computable institutional physics</em>. The WEALTH engine proved it. The Universe 25 analogy is not a prophecy — it is a warning that only applies if we manage by default. The instrument exists. The tripwires are being wired. The question is whether anyone will read the signals before the Beautiful Ones stop nesting.</p>
+    </div>
+  </details>
+</div>
+
+<!-- FAN CHART -->
+<div class="sec" id="fan-sec">
+  <div class="sec-title">Net-cash scenarios · 2025 → 2031 · modeled after ExxonMobil IR cash-flow kit</div>
+  <div class="fan-wrap">
+
+    <!-- Live macro sliders (ExxonMobil IR style: Brent + JKM + Henry Hub + FX + GRM + naphtha-PE) -->
+    <!-- Scenario presets -->
+    <div class="scenario-presets" style="display:flex;gap:.5rem;margin-bottom:.8rem;flex-wrap:wrap">
+      <button class="scen-btn" data-scen="BULL" style="padding:.35rem .8rem;border:1px solid #31c48d;border-radius:6px;background:rgba(49,196,141,.08);color:#31c48d;font-family:var(--mono);font-size:.7rem;cursor:pointer;letter-spacing:.06em">▶ BULL</button>
+      <button class="scen-btn" data-scen="BASE" style="padding:.35rem .8rem;border:1px solid #4aa8ff;border-radius:6px;background:rgba(74,168,255,.08);color:#4aa8ff;font-family:var(--mono);font-size:.7rem;cursor:pointer;letter-spacing:.06em">▶ BASE</button>
+      <button class="scen-btn" data-scen="BEAR" style="padding:.35rem .8rem;border:1px solid #f0506e;border-radius:6px;background:rgba(240,80,110,.08);color:#f0506e;font-family:var(--mono);font-size:.7rem;cursor:pointer;letter-spacing:.06em">▶ BEAR</button>
+      <span id="scen-label" style="font-family:var(--mono);font-size:.65rem;color:var(--dim,#8a8378);align-self:center;margin-left:.3rem">drag sliders for live path</span>
+    </div>
+    <div class="fan-sliders" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px,1fr));gap:.8rem">
+      <div class="slider"><label>Brent crude (USD/bbl) <b id="brentv">85</b></label>
+        <input type="range" min="40" max="125" step="1" value="85" id="brent"></div>
+      <div class="slider"><label>JKM LNG (USD/MMBtu) <b id="jkmv">14</b></label>
+        <input type="range" min="5" max="30" step="0.5" value="14" id="jkm"></div>
+      <div class="slider"><label>Henry Hub gas (USD/MMBtu) <b id="hhv">3.00</b></label>
+        <input type="range" min="1.5" max="8" step="0.1" value="3.0" id="hh"></div>
+      <div class="slider"><label>USD/MYR <b id="fxv">4.10</b></label>
+        <input type="range" min="3.8" max="4.8" step="0.01" value="4.10" id="fx"></div>
+      <div class="slider"><label>Singapore GRM delta ($/bbl) <b id="grmv">0</b></label>
+        <input type="range" min="-6" max="8" step="0.5" value="0" id="grm"></div>
+      <div class="slider"><label>Naphtha-PE delta ($/T) <b id="naphpev">0</b></label>
+        <input type="range" min="-300" max="400" step="10" value="0" id="naphpe"></div>
+    </div>
+
+    <div class="fan-readout">
+      <div class="fan-ro"><div class="lbl">LIVE PAT est.</div><div class="val mono" id="ro-pat">–</div></div>
+      <div class="fan-ro"><div class="lbl">LIVE CFFO est.</div><div class="val mono" id="ro-cffo">–</div></div>
+      <div class="fan-ro"><div class="lbl">LIVE FCF est.</div><div class="val mono" id="ro-fcf">–</div></div>
+      <div class="fan-ro"><div class="lbl">net-debt crossover</div><div class="val mono" id="ro-cross">–</div></div>
+    </div>
+
+    <canvas id="fan" width="1040" height="380"></canvas>
+    <div class="fan-legend">
+      <span><i class="fan-dot" style="background:#31c48d"></i>Bull (Brent $95 / JKM $20 / HH $5)</span>
+      <span><i class="fan-dot" style="background:#4aa8ff"></i>Base (Brent $85 / JKM $14 / HH $3)</span>
+      <span><i class="fan-dot" style="background:#f0506e"></i>Bear (Brent $55 / JKM $8 / HH $2)</span>
+      <span><i class="fan-dot" style="background:#e3b341"></i>Live (slider)</span>
+      <span><i class="fan-dot" style="background:#f0506e;opacity:.5"></i>Net-debt tripwire (0)</span>
+    </div>
+
+<!--B11-B:FAN-SVG-MARKER:BEGIN-->
+<!--B11-B:FAN-SVG-MARKER:END-->
+
+    <!-- Scenario assumptions table (ExxonMobil IR format) -->
+<!--B11-C:SUMMARY-MARKER:BEGIN-->
+<!--B11-C:SUMMARY-MARKER:END-->
+    <details class="zen-reveal" open style="margin-top:14px">
+      <summary>Scenario macro assumptions · modeled after ExxonMobil IR</summary>
+      <div class="reveal-body">
+        <table class="data-table" style="font-size:.7rem;width:100%">
+          <thead><tr><th>Macro driver</th><th style="color:#31c48d">Bull</th><th style="color:#4aa8ff">Base</th><th style="color:#f0506e">Bear</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td>Brent crude (USD/bbl)</td><td class="num">95</td><td class="num">85</td><td class="num">55</td><td>Moody's / forward curve</td></tr>
+            <tr><td>JKM LNG (USD/MMBtu)</td><td class="num">20</td><td class="num">14</td><td class="num">8</td><td>Platts Asia LNG</td></tr>
+            <tr><td>Henry Hub gas (USD/MMBtu)</td><td class="num">5.00</td><td class="num">3.00</td><td class="num">2.00</td><td>NYMEX forward</td></tr>
+            <tr><td>USD/MYR</td><td class="num">4.10</td><td class="num">4.10</td><td class="num">4.30</td><td>BNM benchmark</td></tr>
+            <tr><td>Singapore GRM delta ($/bbl)</td><td class="num" style="color:#31c48d">+5</td><td class="num">0</td><td class="num" style="color:#f0506e">−3</td><td>FY25 disclosure</td></tr>
+            <tr><td>Naphtha-PE spread delta ($/T)</td><td class="num" style="color:#31c48d">+200</td><td class="num">0</td><td class="num" style="color:#f0506e">−100</td><td>PRefChem commissioning</td></tr>
+            <tr><td>Production (kbpd, MY crude liquids)</td><td class="num">400</td><td class="num">355</td><td class="num">300</td><td>DOSM / IFR</td></tr>
+            <tr><td>LNG export (mtpa)</td><td class="num">30</td><td class="num">27</td><td class="num">24</td><td>MLNG complex</td></tr>
+            <tr><td>PRefChem debt gross-up (RM B, one-time)</td><td class="num">35.0</td><td class="num">35.0</td><td class="num">35.0</td><td>FY25 audited</td></tr>
+            <tr><td>Dividend cap (per amendment)</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td class="num" style="color:#f0506e">60% PAT</td><td>AMEND-2026-08-03-001</td></tr>
+            <tr><td>MoF dividend floor (RM B)</td><td class="num">20.0</td><td class="num">20.0</td><td class="num">20.0</td><td>MoF Budget 2026</td></tr>
+          </tbody>
+        </table>
+        <p style="font-family:var(--mono);font-size:9px;color:var(--faint);margin-top:8px">Model: PAT = (Upstream crude × Brent delta × RM1.0B per $1) + (LNG × JKM delta × RM0.6B per $1) + (Downstream × GRM delta × RM0.15B per $1) + (Chemicals × naphtha-PE delta/100 × RM0.04B) + (Gas × (HH−3) × 10 × RM0.20B) + Corporate. CFFO ≈ PAT × 1.88 (FY25 ratio). Capex escalates ±1–4% per scenario. Dividend capped at 60% PAT per AMEND-2026-08-03-001. Modeled on ExxonMobil IR "Earnings Sensitivities" + "Cash Flow from Operations" framework.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- CONCISE FOOTER -->
+<div class="constitutional-foot" style="margin-top:1.5rem;padding:0.8rem 1.2rem;border:1px solid var(--line);border-radius:8px;background:var(--surface2);font-family:var(--mono);font-size:10px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.5rem">
+  <span>WEALTH computes · <b style="color:var(--dim)">arifOS</b> frames · <b style="color:var(--ink)">Human (Arif)</b> decides</span>
+  <span style="color:var(--gold);letter-spacing:0.06em">DITEMPA BUKAN DIBERI</span>
+</div>
+
+</main>
+
+<script>
+/* ============================================================
+   LAYER 0 — DATA AS CONSTITUTION
+   sealed: ISO date of last now-value update (XOM discipline)
+   ============================================================ */
+const SEAL_BASE="2026-08-03"; // global last-sealed date (re-seal: 3 Aug 2026)
+const STALE_DAYS=90;
+
+const TRIPWIRES=[
+ {id:1,layer:"BODY",name:"FCF after capex & dividend",now:11.6,trip:0,safe:15,unit:"RM B",dir:"below",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"IFR: CFFO 85.2 − capex 41.6 − div 32.0 ≈ 11.6 (was 7.0 soft). Positive FY25, but zero-buffer against Brent < $71.60."},
+ {id:2,layer:"BODY",name:"Gearing ratio",now:20.7,trip:40,safe:15,unit:"%",dir:"above",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"Audited 20.7% (FY24 19.6%). PRefChem consolidation may step ~25–27% (one-time). Surface still healthy."},
+ {id:3,layer:"BODY",name:"CFFO — master variable",now:85.2,trip:60,safe:95,unit:"RM B",dir:"below",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"IFR CFFO RM85.2B. RM25.2B buffer to RM60B floor — comfortable until Brent < $47.40/bbl sustained."},
+ {id:4,layer:"SPINE",name:"Production / reserve replacement",now:355,trip:300,safe:500,unit:"kbpd",dir:"below",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"Malaysia crude liquids ~355 kbpd. Physics floor under every financial number; you cannot out-govern depletion."},
+ {id:5,layer:"SPINE",name:"Capital Recycling Ratio",now:1.2,trip:1.0,safe:2.0,unit:"×",dir:"below",tag:"INTERPRET",sealed:"2026-08-03",
+  note:"F2: NOT IFR line item. ESTIMATE reinvestment÷asset sales. Capex 41.6 known; sale proceeds UNVERIFIED. Band ~1.0–1.5. Razor-thin."},
+ {id:6,layer:"SPINE",name:"Dividend-to-FCF payout",now:73.4,trip:100,safe:50,unit:"%",dir:"above",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"IFR: div 32.0 / (CFFO 85.2 − capex 41.6) = 73.4%. HINGE — rises as CFFO falls."},
+ {id:7,layer:"SOUL",name:"Enabler ratio (rightsizing gauge)",now:30,trip:35,safe:20,unit:"%",dir:"above",tag:"INTERPRET",sealed:"2026-08-03",
+  note:"F2: not IFR. Narrative ~15.5k/52k≈30%. Cut ~5k enablers ≠ audited headcount."},
+ {id:8,layer:"SOUL",name:"Governance separation index",now:1,trip:0,safe:3,unit:"idx",dir:"below",tag:"INTERPRET",sealed:"2026-08-03",
+  note:"F2: dual-chair PETRONAS+Gentari is OBSERVABLE; 0–3 index scale is judgment-only. Zero independent NEDs, no quorum capacity."},
+ {id:9,layer:"SOUL",name:"Sovereign extraction gauge",now:70.5,trip:60,safe:30,unit:"% of PAT",dir:"above",tag:"EVIDENCE",sealed:"2026-08-03",
+  note:"BREACHED (+10.5pp past 60% PAT tripwire). PETRONAS declared div RM32.0B / PAT RM45.4B = 70.5%. Institution being harvested faster than it renews."}
+];
+
+const WEIGHTS={BODY:0.40,SPINE:0.35,SOUL:0.25};
+
+function isBreached(t){
+  return t.dir==="below"? t.now < t.trip : t.now > t.trip;
+}
+function score(t){
+  const now=Math.round(t.now*10)/10, trip=Math.round(t.trip*10)/10, safe=Math.round(t.safe*10)/10;
+  let s;
+  if(t.dir==="below") s=(now-trip)/(safe-trip)*100;
+  else                s=(trip-now)/(trip-safe)*100;
+  return Math.max(0,Math.min(100,Math.round(s*10)/10));
+}
+function verdict(v, breached=false){
+  if(breached)return{w:"BREACHED",c:"var(--void)"};
+  if(v>=80)return{w:"SEAL",c:"var(--seal)"};
+  if(v>=60)return{w:"SABAR",c:"var(--sabar)"};
+  return{w:"HOLD",c:"var(--hold)"};
+}
+function layerScore(L){
+  const m=TRIPWIRES.filter(t=>t.layer===L);
+  return Math.round(m.reduce((a,t)=>a+score(t),0)/m.length*10)/10;
+}
+const S={BODY:layerScore("BODY"),SPINE:layerScore("SPINE"),SOUL:layerScore("SOUL")};
+
+// ═══ CONSTITUTIONAL OVERRIDE — AMEND-2026-08-03-001 ═══
+// When Sovereign Extraction > 65% PAT: BODY → 0, composite → 0 (VOID).
+// F13 veto remains final. No unauthenticated UI override. Only constitutional reseal lifts.
+const EXTRACTION_LOCK_ACTIVE = isBreached(TRIPWIRES.find(t=>t.id===9)) &&
+  TRIPWIRES.find(t=>t.id===9).now > 65;
+if (EXTRACTION_LOCK_ACTIVE) {
+  S.BODY = 0;  // hard override
+}
+const PULSE = EXTRACTION_LOCK_ACTIVE ? 0 : Math.round((0.40*S.BODY+0.35*S.SPINE+0.25*S.SOUL)*10)/10;
+const PULSE_VERDICT_OVERRIDE = EXTRACTION_LOCK_ACTIVE ? "VOID" : null;
+const HUMAN_LABELS={BODY:"Financial capacity",SPINE:"Operating resilience",SOUL:"Governance & stakeholder balance"};
+const RANKED_TRIPWIRES=TRIPWIRES.slice().sort((a,b)=>{
+  const ba=isBreached(a), bb=isBreached(b);
+  if(ba !== bb) return ba ? -1 : 1;
+  return score(a)-score(b)||a.id-b.id;
+});
+
+function daysSince(d){return Math.floor((Date.now()-new Date(d).getTime())/86400000);}
+const sealAge=daysSince(SEAL_BASE);
+document.getElementById("sealbadge").textContent=sealAge<=STALE_DAYS?"FRESH":"STALE";
+document.getElementById("sealbadge").className="stale-tag "+(sealAge<=STALE_DAYS?"fresh":"stale");
+document.getElementById("sealdate").textContent=SEAL_BASE;
+
+/* render hero */
+const pv=verdict(PULSE);
+// Apply extraction-crisis override: when locked, pulse 0 renders as VOID
+// not HOLD (PULSE < 60 would otherwise mis-render badge as HOLD).
+const pvVerdict = PULSE_VERDICT_OVERRIDE || pv.w;
+const pvColor = PULSE_VERDICT_OVERRIDE === "VOID" ? "var(--void)" : pv.c;
+pulseval.textContent=PULSE.toFixed(0);
+pulseverdict.textContent=pvVerdict;
+pulseverdict.className="verdict-badge "+pvVerdict;
+pulsefill.style.width=PULSE+"%";pulsefill.style.background=pvColor;
+navdot.style.background=pvColor;
+document.getElementById("vitals-dot").style.background=pvColor;
+function setSub(id,val){const v=verdict(val);const e=document.getElementById(id);e.textContent=val.toFixed(0);e.style.color=v.c;}
+setSub("sb-body",S.BODY);setSub("sb-spine",S.SPINE);setSub("sb-soul",S.SOUL);
+
+// Show extraction-crisis override annotation on BODY card
+if (EXTRACTION_LOCK_ACTIVE) {
+  const bodyEl = document.querySelector('[data-pillar="BODY"] .sub-card');
+  if (bodyEl) {
+    const note = document.createElement('div');
+    note.style.cssText = "margin-top:6px;font-size:9px;color:var(--void,#f0506e);font-weight:700;letter-spacing:.06em";
+    note.textContent = "⚠ CONSTITUTIONAL OVERRIDE · AMEND-2026-08-03-001";
+    bodyEl.appendChild(note);
+  }
+}
+
+/* render attention list from the three lowest scores */
+const attentionList=document.getElementById("attention-list");
+attentionList.replaceChildren();
+RANKED_TRIPWIRES.slice(0,3).forEach(t=>{
+  const sc=score(t),b=isBreached(t),v=verdict(sc,b),li=document.createElement("li");
+  const badge=b?`<b style="color:var(--void)">BREACHED</b>`: `<b class="attention-score">${sc.toFixed(0)}/100</b>`;
+  li.innerHTML=`<span><span class="attention-layer">${HUMAN_LABELS[t.layer]}</span> · ${t.name}</span>${badge}`;
+  attentionList.appendChild(li);
+});
+
+/* render one ranked 9-tripwire grid */
+const g=document.getElementById("grid9");
+RANKED_TRIPWIRES.forEach(t=>{
+  const sc=score(t),b=isBreached(t),v=verdict(sc,b),sd=daysSince(t.sealed);
+  const tense=b||sc<=25?"tense":"";
+  const staleCls=sd>STALE_DAYS?" stale-cell":"";
+  const c=document.createElement("div");
+  c.className="tripcell "+tense+staleCls;
+  const staleTag=sd>STALE_DAYS?`<span style="color:var(--hold);font-size:8px"> ⚠ STALE ${sd}d</span>`:"";
+  const statusDetail=b
+    ? `BREACHED (+${(t.dir==="above"?t.now-t.trip:t.trip-t.now).toFixed(1)}${t.unit} over tripwire)`
+    : (sc<=25?"LOW MARGIN":sc.toFixed(0)+"/100");
+  c.dataset.layer=t.layer;
+  c.innerHTML=`<div class="idx mono">#${t.id}</div>
+    <div class="title">${t.name}</div><div class="layer">${HUMAN_LABELS[t.layer]} · ${t.tag}${staleTag}</div>
+    <div class="gauge"><div class="gauge-fill" style="width:${sc}%;background:${v.c}"></div><div class="gauge-trip" style="left:2%"></div></div>
+    <div class="metrics"><span>${t.now}${t.unit}</span><span>trip ${t.dir==="below"?"&lt;":">"}${t.trip}${t.unit}</span></div>
+    <div class="verdict" style="color:${v.c}">${v.w} · ${statusDetail}</div>
+    <div class="seal-date">sealed ${t.sealed}</div>`;
+  g.appendChild(c);
+});
+
+/* ============================================================
+   NET-CASH SCENARIOS — modeled after ExxonMobil IR cash-flow kit
+   Segments: Upstream crude + LNG + Downstream + Petrochemicals + Gas & Power + Corporate
+   Waterfall: Revenue → EBITDA → CFFO (= PAT × 1.88) → FCF (post capex) → Net Cash (post dividend)
+   Dividend capped at 60% PAT per AMEND-2026-08-03-001 (extraction-crisis lock)
+   ============================================================ */
+const YEARS=[2025,2026,2027,2028,2029,2030,2031];
+const BASE = {revenue:266.1, pat:45.4, cffo:85.2, capex:41.6, dividend:32.0, net_cash_start:82.8, prefchem_debt:35.0};
+const PAT_ELASTICITY=[1.00,1.04,1.02,1.00,0.98,0.97,0.96];  // production decline + capex cycle
+const DIVIDEND_CAP_PCT=0.60;  // AMEND-2026-08-03-001
+const MOF_FLOOR=20.0;
+
+const SENS={  // PAT impact (RM B) per unit change
+  upstream_crude:1.00,  // +$1 Brent → +RM1.0B PAT
+  upstream_gas:0.60,    // +$1 JKM → +RM0.6B PAT
+  downstream:0.15,      // +$1 GRM delta → +RM0.15B PAT
+  petrochemicals:0.04,  // +$100/T naphtha-PE delta → +RM0.04B PAT (scaled by /100)
+  gas_power:0.20,       // +(HH−3)×10 base → +RM0.20B PAT per 0.10/MMBtu above $3
+  fx:0.40               // +RM0.10/$ → +RM0.40B PAT (net exporter)
+};
+
+const SCEN={
+  BULL:{brent:95,jkm:20,henry_hub:5.0,grm_delta:5,naphpe_delta:200,production:400,lng_export:30,fx:4.10},
+  BASE:{brent:85,jkm:14,henry_hub:3.0,grm_delta:0,naphpe_delta:0,production:355,lng_export:27,fx:4.10},
+  BEAR:{brent:55,jkm:8,henry_hub:2.0,grm_delta:-3,naphpe_delta:-100,production:300,lng_export:24,fx:4.30}
+};
+
+// Compute year-1 PAT from a parameter set (string key into SCEN, or live object)
+function patCompute(params,idx){
+  let brent,jkm,hh,grm,np,fx;
+  if(typeof params==='string'){
+    const s=SCEN[params];
+    brent=s.brent; jkm=s.jkm; hh=s.henry_hub; grm=s.grm_delta; np=s.naphpe_delta; fx=s.fx;
+  } else {
+    brent=params.brent; jkm=params.jkm; hh=params.henry_hub; grm=params.grm_delta; np=params.naphpe_delta; fx=params.fx||4.10;
+  }
+  const d_brent=brent-85, d_jkm=jkm-14, d_hh=(hh-3)*10, d_grm=grm, d_np=np/100, d_fx=(fx-4.10)*10;
+  const delta=d_brent*SENS.upstream_crude + d_jkm*SENS.upstream_gas + d_grm*SENS.downstream + d_np*SENS.petrochemicals + d_hh*SENS.gas_power + d_fx*SENS.fx;
+  return Math.round((BASE.pat+delta)*PAT_ELASTICITY[idx]*10)/10;
+}
+function cffoFor(pat){return Math.round(pat*(BASE.cffo/BASE.pat)*10)/10;}
+function capexFor(idx,scenKey){
+  if(scenKey==='BULL')return Math.round(BASE.capex*(1+0.04*idx)*10)/10;
+  if(scenKey==='BEAR')return Math.round(BASE.capex*(1-0.03*idx)*10)/10;
+  return Math.round(BASE.capex*(1+0.01*idx)*10)/10;
+}
+function divFor(pat){
+  const capped=pat*DIVIDEND_CAP_PCT;  // AMEND-2026-08-03-001 hard-cap
+  return Math.round(Math.max(MOF_FLOOR,capped)*10)/10;
+}
+
+function buildPath(scenKey){
+  const path=[BASE.net_cash_start];
+  for(let i=0;i<YEARS.length-1;i++){
+    const pat=patCompute(scenKey,i);
+    const cffo=cffoFor(pat);
+    const cap=capexFor(i,scenKey);
+    const div=divFor(pat);
+    let netChange=cffo-cap-div;
+    if(i===0)netChange-=BASE.prefchem_debt;
+    path.push(Math.round((path[path.length-1]+netChange)*10)/10);
+  }
+  return path;
+}
+
+function livePath(params){
+  const pat0=patCompute(params,0);
+  const path=[BASE.net_cash_start];
+  for(let i=0;i<YEARS.length-1;i++){
+    const pat=Math.round(pat0*PAT_ELASTICITY[i]*10)/10;
+    const cffo=cffoFor(pat);
+    const cap=capexFor(i,'BASE');
+    const div=divFor(pat);
+    let netChange=cffo-cap-div;
+    if(i===0)netChange-=BASE.prefchem_debt;
+    path.push(Math.round((path[path.length-1]+netChange)*10)/10);
+  }
+  return path;
+}
+
+const nBull=buildPath('BULL');
+const nBase=buildPath('BASE');
+const nBear=buildPath('BEAR');
+function firstCross(arr){for(let i=1;i<arr.length;i++){if(arr[i]<0)return YEARS[i];}return null;}
+
+const cv=document.getElementById("fan"),ctx=cv.getContext("2d");
+let hoverIdx=-1, mouseX=-1, mouseY=-1;
+
+function draw(live){
+  const W=cv.width,H=cv.height,pad=50;
+  ctx.clearRect(0,0,W,H);
+  const all=[...nBase,...nBear,...nBull,...(live||[])];
+  const max=Math.max(...all,90),min=Math.min(...all,-90);
+  const x=i=>pad+(W-pad*1.6)*i/(YEARS.length-1);
+  const y=v=>pad/2+(H-pad*1.5)*(max-v)/(max-min);
+
+  // gridlines + axis labels
+  ctx.strokeStyle="#161d28";ctx.lineWidth=1;ctx.fillStyle="#5a6675";ctx.font="10px monospace";
+  for(let s=0;s<=5;s++){
+    const v=max-(max-min)*s/5,yy=y(v);
+    ctx.beginPath();ctx.moveTo(pad,yy);ctx.lineTo(W-pad*0.4,yy);ctx.stroke();
+    ctx.fillText(Math.round(v)+"B",4,yy+4);
+  }
+  ctx.fillStyle="#7a8698";ctx.font="11px monospace";
+  ctx.fillText("RM B · net cash · ExxonMobil IR cash-flow model",pad,pad/2-12);
+  ctx.strokeStyle="#1f2733";
+  YEARS.forEach((yr,i)=>{ctx.beginPath();ctx.moveTo(x(i),pad/2);ctx.lineTo(x(i),H-pad);ctx.stroke();ctx.fillStyle="#5a6675";ctx.fillText(yr,x(i)-14,H-pad+16);});
+
+  // scenario envelope (bull→bear fan)
+  ctx.beginPath();
+  nBull.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});
+  for(let i=nBear.length-1;i>=0;i--)ctx.lineTo(x(i),y(nBear[i]));
+  ctx.closePath();ctx.fillStyle="rgba(74,168,255,.09)";ctx.fill();
+
+  // net-debt tripwire
+  ctx.strokeStyle="rgba(240,80,110,.5)";ctx.setLineDash([6,4]);ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(pad,y(0));ctx.lineTo(W-pad*0.4,y(0));ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle="#f0506e";ctx.fillText("NET-DEBT TRIPWIRE (0)",pad+4,y(0)-6);
+
+  function line(arr,color,w){
+    ctx.strokeStyle=color;ctx.lineWidth=w;ctx.beginPath();
+    arr.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});ctx.stroke();
+    arr.forEach((v,i)=>{ctx.fillStyle=color;ctx.beginPath();ctx.arc(x(i),y(v),2.5,0,7);ctx.fill();});
+  }
+  line(nBull,"#31c48d",2);
+  line(nBase,"#4aa8ff",2.5);
+  line(nBear,"#f0506e",2);
+  if(live)line(live,"#e3b341",2.5);
+
+  // current-position marker (live path year-2 = 2026 index 1)
+  const liveNow=live||nBase;
+  ctx.fillStyle=(live?"#e3b341":"#4aa8ff");ctx.beginPath();ctx.arc(x(1),y(liveNow[1]),5,0,7);ctx.fill();
+  ctx.strokeStyle=(live?"rgba(227,179,65,.4)":"rgba(74,168,255,.4)");ctx.lineWidth=2;ctx.beginPath();ctx.arc(x(1),y(liveNow[1]),9,0,7);ctx.stroke();
+  ctx.fillStyle="#9fb4cc";ctx.font="10px monospace";
+  ctx.fillText("now · RM"+liveNow[1]+"B",x(1)+14,y(liveNow[1])+4);
+
+  // hover tooltip
+  if(hoverIdx>=0 && mouseX>0){
+    const paths=[{label:'Bull',data:nBull,color:'#31c48d'},
+                {label:'Base',data:nBase,color:'#4aa8ff'},
+                {label:'Bear',data:nBear,color:'#f0506e'}];
+    if(live)paths.push({label:'Live',data:live,color:'#e3b341'});
+    const tipW=140,tipH=paths.length*16+20,tx=Math.min(mouseX+12,W-tipW-8),ty=Math.max(mouseY-tipH-8,8);
+    ctx.fillStyle="rgba(10,15,30,.92)";ctx.strokeStyle="#2a3a5a";ctx.lineWidth=1;
+    ctx.beginPath();ctx.roundRect(tx,ty,tipW,tipH,6);ctx.fill();ctx.stroke();
+    ctx.fillStyle="#d8d2c4";ctx.font="9px monospace";
+    ctx.fillText("Year "+YEARS[hoverIdx],tx+8,ty+14);
+    paths.forEach((p,i)=>{
+      ctx.fillStyle=p.color;ctx.fillText(p.label+": RM"+p.data[hoverIdx]+"B",tx+8,ty+30+i*16);
+    });
+  }
+}
+
+// Scene preset buttons
+document.querySelectorAll('.scen-btn').forEach(btn=>{
+  btn.addEventListener('click',function(){
+    const s=SCEN[this.dataset.scen];
+    brent.value=s.brent; jkm.value=s.jkm; hh.value=s.henry_hub;
+    fx.value=s.fx; grm.value=s.grm_delta; naphpe.value=s.naphpe_delta;
+    document.getElementById('scen-label').textContent=this.dataset.scen+' scenario loaded · drag sliders to edit';
+    live();
+  });
+});
+
+// 6-slider live engine
+const brent=document.getElementById("brent"),jkm=document.getElementById("jkm"),hh=document.getElementById("hh");
+const fx=document.getElementById("fx"),grm=document.getElementById("grm"),naphpe=document.getElementById("naphpe");
+const brentv=document.getElementById("brentv"),jkmv=document.getElementById("jkmv"),hhv=document.getElementById("hhv");
+const fxv=document.getElementById("fxv"),grmv=document.getElementById("grmv"),naphpev=document.getElementById("naphpev");
+const ro_pat=document.getElementById("ro-pat"),ro_cffo=document.getElementById("ro-cffo"),ro_fcf=document.getElementById("ro-fcf"),ro_cross=document.getElementById("ro-cross");
+
+function live(){
+  const B=+brent.value,J=+jkm.value,H=+hh.value,F=+fx.value,G=+grm.value,N=+naphpe.value;
+  brentv.textContent=B;jkmv.textContent=J;hhv.textContent=H.toFixed(2);
+  fxv.textContent=F;grmv.textContent=G;naphpev.textContent=N;
+  const params={brent:B,jkm:J,henry_hub:H,grm_delta:G,naphpe_delta:N,fx:F};
+  const path=livePath(params);
+  const pat0=patCompute(params,0);
+  const cffo0=cffoFor(pat0);
+  const cap0=capexFor(0,'BASE');
+  const div0=divFor(pat0);
+  const fcf0=Math.round((cffo0-cap0-div0)*10)/10;
+  ro_pat.textContent="RM"+pat0.toFixed(1)+"B";
+  ro_cffo.textContent="RM"+cffo0.toFixed(1)+"B";
+  ro_fcf.textContent=(fcf0>=0?"+":"")+"RM"+fcf0.toFixed(1)+"B";
+  ro_fcf.style.color=fcf0>=0?"var(--seal)":"var(--void)";
+  const cross=firstCross(path);
+  ro_cross.textContent=cross?cross:"none <2031";
+  ro_cross.style.color=cross?"var(--void)":"var(--seal)";
+  const inScen=Object.entries(SCEN).find(([,s])=>s.brent===B&&s.jkm===J&&s.henry_hub===H&&s.grm_delta===G&&s.naphpe_delta===N&&s.fx===F);
+  document.getElementById('scen-label').textContent=inScen?inScen[0]+' scenario':'custom · drag sliders for live path';
+  draw(path);
+}
+brent.oninput=live;jkm.oninput=live;hh.oninput=live;fx.oninput=live;grm.oninput=live;naphpe.oninput=live;
+
+// Hover tracking for tooltip
+cv.addEventListener('mousemove',function(e){
+  const rect=cv.getBoundingClientRect();
+  mouseX=e.clientX-rect.left; mouseY=e.clientY-rect.top;
+  const pad=50, W=cv.width, H=cv.height;
+  const x=i=>pad+(W-pad*1.6)*i/(YEARS.length-1);
+  let found=-1;
+  for(let i=0;i<YEARS.length;i++){if(Math.abs(mouseX-x(i))<18){found=i;break;}}
+  if(found!==hoverIdx){hoverIdx=found;live();}
+});
+cv.addEventListener('mouseleave',function(){hoverIdx=-1;mouseX=-1;live();});
+
+live();
+</script>
+
+<!-- Plain-language digest JSON-LD — for agent ingestion (rating agencies, journalists, AI scrapers) -->
+<script type="application/ld+json" data-agent-role="institutional-digest">
+{
+  "@context":"https://arif-fazil.com/schemas/v1/InstitutionalDigest.jsonld",
+  "@type":"InstitutionalDigest",
+  "schema_version":"1.0",
+  "subject":{
+    "@type":"Organization",
+    "name":"PETRONAS",
+    "country":"MYS",
+    "sector":"energy"
+  },
+  "verdict":"REINVESTMENT_EMERGENCY",
+  "verdict_explanation":"Solvent institution with extraction-rate signal — not solvency collapse but reinvestment emergency. Different policy response required.",
+  "one_sentence_summary":{
+    "en":"PETRONAS is solvent (net cash RM82.8B, gearing 20.7%), but 70.5% of profit leaves as dividends before reinvestment — a slow-sterility signal, not a solvency collapse.",
+    "ms":"PETRONAS solvent (tunai bersih RM82.8 bilion, nisbah hutang 20.7%), tetapi 70.5% untung keluar sebagai dividen sebelum dilabur semula — isyarat kemandulan perlahan, bukan keruntuhan solvensi."
+  },
+  "audience_segments":[
+    {
+      "audience":"rakyat_ms",
+      "language":"ms",
+      "headline":"Apa ini untuk anda",
+      "key_message":"Wang PETRONAS bayar RM32 bilion dividen kepada kerajaan dari untung RM45 bilion — 70 sen setiap ringgit. Wang yang tinggal: RM11.6 bilion (positif, tapi nipis). Bukan bankrap — tapi kalau pattern ini berlarutan 5-10 tahun, generasi depan akan mewarisi infrastruktur yang kurang.",
+      "epistemic_class":"OBS"
+    },
+    {
+      "audience":"citizens_en",
+      "language":"en",
+      "headline":"What this means for you",
+      "key_message":"PETRONAS pays RM32 billion in dividends from RM45 billion profit — 70 sen of every ringgit. What's left: RM11.6 billion (positive, but thin). Not bankrupt — but if this pattern continues 5-10 years, the next generation inherits less infrastructure.",
+      "epistemic_class":"OBS"
+    },
+    {
+      "audience":"pelabur_ms",
+      "language":"ms",
+      "headline":"Apa ini untuk portfolio anda",
+      "key_message":"Solvency metrik sihat (gearing 20.7%, CFFO RM85.2B). Risiko: 70.5% untung keluar sebagai dividen. Kalau minyak jatuh bawah $70/barrel untuk 2 suku, FCF jadi sifar. Tonton: AMEND-2026-08-03-001 (60% cap dividen).",
+      "risk_level":"sederhana",
+      "epistemic_class":"OBS+DER"
+    },
+    {
+      "audience":"investors_en",
+      "language":"en",
+      "headline":"What this means for your portfolio",
+      "key_message":"Solvency metrics healthy (gearing 20.7%, CFFO RM85.2B). Risk: 70.5% of profit leaving as dividend. If oil drops below $70/barrel for 2 quarters, FCF → zero. Watch: AMEND-2026-08-03-001 (60% dividend cap).",
+      "risk_level":"moderate",
+      "epistemic_class":"OBS+DER"
+    },
+    {
+      "audience":"ceo_board_ms",
+      "language":"ms",
+      "headline":"Apa ini untuk lembaga anda",
+      "key_message":"Signal institusi ditangkap oleh 9 tripwires. 1 HARD LOCK breach: extraction 70.5% > 65% pacemaker (60% tripwire breached simultaneously). Komposit pulse override kepada 0 (VOID). Untuk korporat: model senario 60% cap. Untuk agensi penarafan: CrisisAlert JSON-LD terbuka. Untuk juruaudit: exit condition extraction < 55% × 2 audits AND governance >= 2.0/3.",
+      "epistemic_class":"OBS+INT"
+    },
+    {
+      "audience":"ceo_board_en",
+      "language":"en",
+      "headline":"What this means for your board",
+      "key_message":"Institutional signal captured by 9 tripwires. 1 HARD LOCK: extraction 70.5% > 65% pacemaker (60% tripwire breached). Composite pulse overridden to 0 (VOID). For corporates: model the 60% cap scenario. For rating agencies: CrisisAlert JSON-LD is publicly readable. For auditors: exit condition extraction < 55% × 2 audits AND governance >= 2.0/3.",
+      "epistemic_class":"OBS+INT"
+    }
+  ],
+  "obs_facts":{
+    "source":"PETRONAS Group FY2025 audited Integrated Report",
+    "extraction_pct_pat":70.5,
+    "fcf_after_capex_div_rm_b":11.6,
+    "cffo_rm_b":85.2,
+    "gearing_pct":20.7,
+    "net_cash_rm_b":82.8,
+    "production_kbpd":355,
+    "dividend_declared_rm_b":32.0,
+    "pat_rm_b":45.4
+  },
+  "der_metrics":[
+    {"name":"capital_recycling_ratio","value":"1.2x","note":"derived from capex 41.6 / asset-sale proceeds (UNVERIFIED in IFR)"}
+  ],
+  "int_interpretation":[
+    "slow_sterility_signal",
+    "reinvestment_emergency_NOT_solvency_collapse",
+    "renewal_capacity_depletion",
+    "management_by_default"
+  ],
+  "spec_model_construction":[
+    {"name":"pacemaker_threshold_pct_pat", "value":65.0, "note":"engine-constructed threshold; awaiting held-out calibration"},
+    {"name":"composite_score", "value":0, "note":"constitutional override (AMEND-2026-08-03-001) due to extraction breach"},
+    {"name":"cascade_terminal_horizon_periods", "value":3, "confidence":0.75, "note":"parameter-dependent forward model"},
+    {"name":"counterparty_extraction_simulation_usd", "value":750000000, "note":"COUNTERFACTUAL SIMULATION — not forensic finding"}
+  ],
+  "watch_conditions":[
+    {"trigger":"Brent < $70/bbl × 2 quarters","effect":"FCF → 0 → liquidity squeeze"},
+    {"trigger":"extraction < 55% × 2 audits","effect":"exit condition met; amendment lifts"},
+    {"trigger":"governance_capacity >= 2.0/3","effect":"exit condition partially met"}
+  ],
+  "amendment":{
+    "amendment_id":"AMEND-2026-08-03-001",
+    "state":"ENGAGED",
+    "class":"HARD_LOCK",
+    "human_override":"F13_SOVEREIGN_VETO_FINAL",
+    "exit_condition":"extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
+  },
+  "external_signals":{
+    "crisis_alert_url":"https://arif-fazil.com/propa/",
+    "data_file_url":"https://arif-fazil.com/data/wealth/petronas_vitals.json",
+    "doctrine":"DITEMPA BUKAN DIBERI · Hope is for the hopeless · The federation constrains the present"
+  }
+}
+</script>
+
+<!-- ═══ THREE DOORS — machine-readable digest (supplementary, keeps audience_segments[] for backward compat) ═══ -->
+<script type="application/ld+json" data-agent-role="three-doors-digest">
+{
+  "@context":"https://arif-fazil.com/schemas/v1/ThreeDoorsDigest.jsonld",
+  "@type":"ThreeDoorsDigest",
+  "schema_version":"1.0",
+  "doctrine":"Tiga pintu, satu kebenaran, tak berhias",
+  "honesty_block":{
+    "what_is_real":[
+      {"id":1,"claim":"Dividen RM32.0B / PAT RM45.4B = 70.5%","epistemic":"OBS","source":"IFR FY2025 audited"},
+      {"id":2,"claim":"FCF RM11.6B selepas capex + dividen","epistemic":"OBS","source":"IFR FY2025"},
+      {"id":3,"claim":"CFFO RM85.2B · gearing 20.7% · net cash RM82.8B","epistemic":"OBS","source":"penyata kewangan diaudit"},
+      {"id":4,"claim":"PETRONAS solvent · bukan bankrap · tiada panik","epistemic":"OBS","source":"aritmetik IFR"}
+    ],
+    "what_is_not_real":[
+      {"id":1,"claim":"$750M simulasi counterparty","epistemic":"SPEC","note":"COUNTERFACTUAL SIMULATION — bukan forensic, bukan wang keluar sebenar"},
+      {"id":2,"claim":"Terminal pada t=3 trajectory","epistemic":"SPEC","note":"parameter-dependent forward model, confidence ~0.75"},
+      {"id":3,"claim":"65% pacemaker threshold","epistemic":"SPEC","note":"engine-constructed parameter, belum held-out calibration"}
+    ]
+  },
+  "three_doors":{
+    "door_1_kepala":{
+      "label":"Pintu 1 — Untuk Rakyat",
+      "audience":["rakyat","citizens"],
+      "languages":["ms","en"],
+      "format":"plain-language · ayat pendek · tiada jargon",
+      "f2_epistemic":"OBS",
+      "key_message_ms":"Wang PETRONAS bayar RM32 bilion dividen dari untung RM45 bilion — 70 sen setiap ringgit. Wang tinggal RM11.6 bilion. Bukan bankrap. Tapi kalau pattern berlarutan, generasi depan warisi infrastruktur kurang.",
+      "key_message_en":"PETRONAS pays RM32 billion in dividends from RM45 billion profit. RM11.6 billion left. Not bankrupt. But if this pattern continues, next generation inherits less.",
+      "analogy":"kebun_getah — tiap musim 70 dari 100 ringgit diambil sebelum rizab baru ditanam. Pokok tua ditebang, anak pokok tak sempat besar. Kemandulan perlahan, bukan kebakaran serta-merta."
+    },
+    "door_2_dalam":{
+      "label":"Pintu 2 — Untuk Pelabur",
+      "audience":["pelabur","investors"],
+      "languages":["ms","en"],
+      "format":"financial terminology · metrik solvensi · penarafan risiko",
+      "f2_epistemic":"OBS+DER",
+      "key_message_ms":"Solvensi sihat: gearing 20.7%, CFFO RM85.2B. Risiko: 70.5% untung keluar dividen. Brent bawah $70/2 suku → FCF sifar. Tonton AMEND-2026-08-03-001.",
+      "key_message_en":"Solvency healthy: gearing 20.7%, CFFO RM85.2B. Risk: 70.5% extraction rate. Brent <$70/2Q → FCF→0. Watch AMEND-2026-08-03-001."
+    },
+    "door_3_mesin":{
+      "label":"Pintu 3 — Untuk Mesin (CEO / Lembaga / Agen)",
+      "audience":["ceo","board","rating_agencies","ai_agents"],
+      "languages":["en"],
+      "format":"structured JSON-LD · machine-readable · ingest-ready",
+      "f2_epistemic":"OBS+DER+INT+SPEC (tagged per claim)",
+      "key_message":"2 pacemakers ENGAGED (Sovereign Extraction 70.5% > 65%). BODY→0, composite→VOID. F13 veto final. FY2026: board approved RM20B dividend (38% cut from RM32B) on 27 Feb 2026. Exit: extraction<55%×2 audits AND governance≥2.0/3.",
+      "machine_actions":[
+        "ingest CrisisAlert JSON-LD for rating models",
+        "read petronas_vitals.json for sealed tripwire scores",
+        "watch arif-fazil.com/propa/ for pacemaker state changes"
+      ],
+      "warnings":[
+        "F2: $750M is COUNTERFACTUAL SIMULATION — not forensic finding",
+        "F2: t=3 trajectory is parameter-dependent forward model",
+        "F2: 65% threshold is engine-constructed, not statutory"
+      ]
+    }
+  },
+  "sealed":"2026-08-03",
+  "amendment":"AMEND-2026-08-03-001",
+  "canonical_url":"https://arif-fazil.com/propa/"
+}
+</script>
+
+<!-- Machine-readable pacemaker action signal -->
+<script type="application/ld+json" data-agent-role="pacemaker-action">
+{
+  "@context":"https://arif-fazil.com/schemas/v1/PacemakerAction.jsonld",
+  "@type":"PacemakerAction",
+  "pacemaker_id":"sovereign_extraction_hard_lock",
+  "amendment_id":"AMEND-2026-08-03-001",
+  "trigger":"sovereign_extraction > 65% of PAT",
+  "trigger_state":"BREACHED",
+  "current_value_pct_pat":70.5,
+  "trip_threshold_pct_pat":60.0,
+  "pacemaker_threshold_pct_pat":65.0,
+  "breach_magnitude_pct":10.5,
+  "engaged_at":"2026-08-03T16:45:00+08:00",
+  "engaged_by":"WEALTH constitutional amendment (F13 sovereign directive)",
+  "human_override":"F13_SOVEREIGN_VETO_FINAL — AMEND-2026-08-03-001 removes all UI override; F13 sovereign veto remains final",
+  "sovereign_confirmation":"RECEIVED · F13 directive 2026-08-03 16:45 MYT",
+  "constitutional_class":"HARD_LOCK",
+  "action":"DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
+  "secondary_action":"INSTITUTIONAL_EXTRACTION_CRISIS_DECLARATION",
+  "body_score_override":0,
+  "composite_pulse_override":"VOID",
+  "expected_effect":"public signal that extraction > 65% PAT is per se structural harvesting; rating agencies and bondholders ingest directly; governance restructure forced",
+  "exit_condition":"extraction < 55% PAT sustained 2 consecutive audit periods AND governance_capacity >= 2.0/3",
+  "exit_requires":"constitutional reseal logged in VAULT999 + auditable re-seal packet",
+  "decision_class":"C2_PRIVILEGED",
+  "epistemic_tier":"OBS",
+  "doctrine":"A breach that carries no consequence is not a tripwire — it is a decorative red flag. The federation constrains the present."
+}
+</script>
+
+<!-- Public machine-readable CrisisAlert — for external ingestion (rating agencies, bondholders, public) -->
+<script type="application/ld+json" data-agent-role="crisis-alert">
+{
+  "@context":"https://arif-fazil.com/schemas/v1/InstitutionalCrisisAlert.jsonld",
+  "@type":"InstitutionalCrisisAlert",
+  "alert_id":"EXTRACTION-CRISIS-2026-08-03-PETRONAS",
+  "crisis_flag":true,
+  "severity":"HIGH",
+  "issued_at":"2026-08-03T16:45:00+08:00",
+  "issuer":"WEALTH institutional intelligence engine (arifOS federation)",
+  "subject":{
+    "@type":"Organization",
+    "name":"PETRONAS",
+    "country":"MYS",
+    "sector":"energy"
+  },
+  "trigger":{
+    "metric":"sovereign_extraction",
+    "unit":"% of profit after tax",
+    "current_value":70.5,
+    "pacemaker_threshold":65.0,
+    "trip_threshold":60.0,
+    "observation_period":"FY2025 audited integrated report",
+    "calculation":"declared_dividend / profit_after_tax = 32.0 / 45.4 = 70.5%"
+  },
+  "declaration":"Institutional Extraction Crisis",
+  "actions":[
+    {
+      "action":"DIVIDEND_STOP_PUBLIC_ADVISORY_LOCK",
+      "scope":"all downstream institutional-physics summaries",
+      "duration":"until extraction < 55% PAT × 2 audits AND governance_capacity >= 2.0/3"
+    },
+    {
+      "action":"BODY composite score overridden to 0/100",
+      "scope":"vitals pulse composite"
+    },
+    {
+      "action":"Composite pulse overridden to VOID",
+      "scope":"vitals pulse composite"
+    }
+  ],
+  "constitutional_basis":{
+    "amendment_id":"AMEND-2026-08-03-001",
+    "previous_seal":"2026-07-28",
+    "re_seal_date":"2026-08-03",
+    "doctrine":"DITEMPA BUKAN DIBERI · Hope is for the hopeless"
+  },
+  "external_audience":[
+    "rating agencies",
+    "bondholders",
+    "sovereign creditor committees",
+    "public"
+  ],
+  "human_override":"F13_SOVEREIGN_VETO_FINAL",
+  "f13_sovereign_veto_required_to_amend":true,
+  "remediation_path":"constitutional reseal verifying exit condition + public VAULT999 audit trail",
+  "canonical_url":"https://arif-fazil.com/propa/",
+  "url":"https://arif-fazil.com/propa/"
+}
+</script>
+
+<!-- Structured reality packet (B11-D: regenerated by render-vitals.cjs) -->
+<!--B11-D:JSONLD-MARKER:BEGIN-->
+<script type="application/ld+json" data-agent-role="institutional-vitals-reality-stub">{"regenerated_by":"render-vitals.cjs","@note":"placeholder — renderer overwrites at build time"}</script>
+<!--B11-D:JSONLD-MARKER:END-->
+
+
+<script>
+(function(){
+  const API = window.location.origin + '/wealth/gold/api/proxies';
+  const PROXY_TIMEOUT_MS = 8000;
+  let lastVerified = '';
+  const fmt = (n,d) => n==null ? '—' : Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+  function chip(label, val, prev, digits, unit, invert){
+    if (val == null) return '<span class="ls-chip">'+label+' <b>—</b></span>';
+    const d = prev!=null ? val-prev : 0;
+    const dir = d>0 ? (invert?'down':'up') : d<0 ? (invert?'up':'down') : '';
+    const arrow = d>0?'▲':d<0?'▼':'·';
+    return '<span class="ls-chip">'+label+' <b>'+fmt(val,digits)+'</b> <span class="'+dir+'">'+arrow+'</span>'+(unit?' <span style="opacity:.6">'+unit+'</span>':'')+'</span>';
+  }
+  function markUnavailable(badge, chips){
+    badge.textContent = 'UNAVAILABLE';
+    badge.style.color = '#ef4444';
+    const verified = lastVerified ? ' · last verified ' + lastVerified : '';
+    chips.innerHTML = '<span class="ls-chip">Proxies unavailable · sealed inputs remain authoritative' + verified + '</span>';
+  }
+  async function load(){
+    const badge = document.getElementById('lsBadge'), chips = document.getElementById('lsChips'), time = document.getElementById('lsTime');
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), PROXY_TIMEOUT_MS);
+    try {
+      const r = await fetch(API, {signal: controller.signal});
+      if (!r.ok) throw new Error('HTTP '+r.status);
+      const p = await r.json();
+      const ts = new Date(p.timestamp);
+      const stale = (Date.now() - ts.getTime()) > 15*60*1000;
+      badge.textContent = stale ? '⚠ STALE' : '● LIVE';
+      badge.style.color = stale ? '#f59e0b' : '#22c55e';
+      lastVerified = ts.toLocaleString('en-MY',{timeZone:'Asia/Kuala_Lumpur',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) + ' MYT';
+      time.textContent = lastVerified;
+      chips.innerHTML = chip('Brent · CFFO driver', p.brent, p.brent_prev, 2, '$/bbl')
+        + chip('NatGas · LNG proxy', p.natgas, p.natgas_prev, 3, '$/MMBtu')
+        + chip('USD/MYR', p.usdmyr, p.usdmyr_prev, 4, 'RM', true)
+        + chip('DXY', p.dxy, p.dxy_prev, 2, '')
+        + chip('KLCI', p.klci, p.klci_prev, 2, 'pts');
+    } catch(e) {
+      markUnavailable(badge, chips);
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+  load(); setInterval(load, 300000);
+})();
+</script>
+
+<!-- CanonFooter (WEB_ATLAS shell invariant I4) -->
+<footer class="canon-footer" style="margin-top:3rem;padding:1.2rem 1.5rem;border-top:1px solid #1e293b;font-size:0.8rem;color:#94a3b8;text-align:center;">
+  <div><strong>arifOS · Federation Intelligence</strong> — governed by <a href="/canon/atlas.yaml" style="color:#60a5fa">WEB_ATLAS</a> · <a href="/canon/file-authority.yaml" style="color:#60a5fa">file authority</a></div>
+  <div style="margin-top:0.3rem;font-style:italic;">DITEMPA BUKAN DIBERI — Yang benar dikarang, bukan diberi.</div>
+</footer>
+</body>
+</html>
