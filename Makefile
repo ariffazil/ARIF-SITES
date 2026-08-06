@@ -33,13 +33,13 @@ verify: sync-aaa
 	bash scripts/verify-content.sh https://arif-fazil.com
 	@echo "[verify] Checking Caddy config..."
 	caddy validate --config /etc/caddy/Caddyfile > /dev/null 2>&1 && echo "[verify] Caddy config: VALID"
-	@echo "[verify] M3 fix 2026-08-01: scanning source HTML for dev-only entry points..."
-	@if grep -rE 'src="/src/[^"]*"|src="/@vite/|src="/@id/' sites/ public/ 2>/dev/null; then \
-		echo "✗ [verify] DEV-ONLY ENTRY FOUND — refuse to deploy."; \
+	@echo "[verify] M3 fix 2026-08-01: scanning dist for dev-only entry points..."
+	@if grep -rE 'src="/src/[^"]*"|src="/@vite/|src="/@id/' sites/arif-fazil.com/dist/ 2>/dev/null; then \
+		echo "✗ [verify] DEV-ONLY ENTRY FOUND in dist/ — refuse to deploy."; \
 		echo "  These paths only exist in Vite dev mode. Run 'make build' first to bundle."; \
 		exit 1; \
 		else \
-		echo "[verify] No dev-only entry points — safe to deploy."; \
+		echo "[verify] No dev-only entry points in dist/ — safe to deploy."; \
 	fi
 	@echo "✓ All gates passed."
 
