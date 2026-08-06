@@ -46,31 +46,31 @@
   "surfaces": [
     {
       "path": "/",
-      "title": "Home — Sovereign Identity & Portfolio",
+      "title": "Home \u2014 Sovereign Identity & Portfolio",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 1.0,
       "changefreq": "monthly",
-      "description": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect",
+      "description": "Professional homepage for Arif Fazil \u2014 geoscientist, economist, AI governance architect",
       "domain": "voice",
       "verb": "555_interpret"
     },
     {
       "path": "/earth/",
-      "title": "EARTH — The Dynamic Planet (Macrostrat globe)",
+      "title": "EARTH \u2014 The Dynamic Planet (Macrostrat globe)",
       "mission": "investigate",
       "status": "live",
       "type": "page",
       "priority": 0.8,
       "changefreq": "monthly",
-      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary — not SPA essay.",
+      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary \u2014 not SPA essay.",
       "domain": "earth",
       "verb": "444_observe"
     },
     {
       "path": "/economics/",
-      "title": "Economics — WEALTH Capital Briefing",
+      "title": "Economics \u2014 WEALTH Capital Briefing",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -94,7 +94,7 @@
     },
     {
       "path": "/world/",
-      "title": "World — Civic Journalism & Commodities",
+      "title": "World \u2014 Civic Journalism & Commodities",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -106,7 +106,7 @@
     },
     {
       "path": "/world/makcikgpt/",
-      "title": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
+      "title": "MakcikGPT \u2014 Civic Intelligence in Bahasa Malaysia",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -130,43 +130,49 @@
     },
     {
       "path": "/world/oil/",
-      "title": "Oil Dashboard — Brent Crude Cognitive View",
+      "title": "Oil Dashboard \u2014 Brent Crude Cognitive View",
       "mission": "monitor",
-      "status": "live",
+      "status": "redirect",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
       "description": "Brent crude oil cognitive dashboard with live data",
       "domain": "capital",
-      "verb": "444_compute"
+      "verb": "444_compute",
+      "redirect_to": "/oil/",
+      "expected_http": "3xx"
     },
     {
       "path": "/world/gas/",
-      "title": "Gas Dashboard — Natural Gas Intelligence",
+      "title": "Gas Dashboard \u2014 Natural Gas Intelligence",
       "mission": "monitor",
-      "status": "live",
+      "status": "redirect",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
       "description": "Natural gas dashboard with live data",
       "domain": "capital",
-      "verb": "444_compute"
+      "verb": "444_compute",
+      "redirect_to": "/gas/",
+      "expected_http": "3xx"
     },
     {
       "path": "/world/gold/",
-      "title": "Gold Dashboard — XAUUSD Trading Synthesis",
+      "title": "Gold Dashboard \u2014 XAUUSD Trading Synthesis",
       "mission": "monitor",
-      "status": "live",
+      "status": "redirect",
       "type": "page",
       "priority": 0.7,
       "changefreq": "daily",
       "description": "Gold trading synthesis and technical analysis dashboard",
       "domain": "capital",
-      "verb": "444_compute"
+      "verb": "444_compute",
+      "redirect_to": "/gold/",
+      "expected_http": "3xx"
     },
     {
       "path": "/writing/",
-      "title": "Writing — Essays & Analysis",
+      "title": "Writing \u2014 Essays & Analysis",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -190,7 +196,7 @@
     },
     {
       "path": "/doctrine/",
-      "title": "Doctrine — Constitution, Federation Topology, Manifesto",
+      "title": "Doctrine \u2014 Constitution, Federation Topology, Manifesto",
       "mission": "decide",
       "status": "live",
       "type": "page",
@@ -202,7 +208,7 @@
     },
     {
       "path": "/000/",
-      "title": "000 — Genesis Archive & Wisdom Canon",
+      "title": "000 \u2014 Genesis Archive & Wisdom Canon",
       "mission": "remember",
       "status": "live",
       "type": "page",
@@ -214,31 +220,31 @@
     },
     {
       "path": "/999/",
-      "title": "999 — Proof & Verification Chamber",
+      "title": "999 \u2014 Proof & Verification Chamber",
       "mission": "remember",
       "status": "live",
       "type": "page",
       "priority": 0.6,
       "changefreq": "monthly",
-      "description": "Trust and proof chamber — verification artifacts, hash commitments, audit records",
+      "description": "Trust and proof chamber \u2014 verification artifacts, hash commitments, audit records",
       "domain": "proof",
       "verb": "999_seal"
     },
     {
       "path": "/999/verify",
-      "title": "999 Verify — Live Vault Proof Endpoint",
+      "title": "999 Verify \u2014 Live Vault Proof Endpoint",
       "mission": "remember",
       "status": "live",
       "type": "api",
       "priority": 0.5,
       "changefreq": "monthly",
-      "description": "Live vault proof endpoint proxied to arifOS kernel — cryptographic verification",
+      "description": "Live vault proof endpoint proxied to arifOS kernel \u2014 cryptographic verification",
       "domain": "proof",
       "verb": "999_seal"
     },
     {
       "path": "/map/",
-      "title": "Map — Human-Readable Route Tree",
+      "title": "Map \u2014 Human-Readable Route Tree",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -251,7 +257,7 @@
     },
     {
       "path": "/machine/",
-      "title": "Machine — Agent Surfaces Dashboard",
+      "title": "Machine \u2014 Agent Surfaces Dashboard",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -278,7 +284,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy canon path — merged into doctrine",
+      "description": "Legacy canon path \u2014 merged into doctrine",
       "domain": "law",
       "verb": "333_judge"
     },
@@ -288,7 +294,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy constellation path — merged into doctrine",
+      "description": "Legacy constellation path \u2014 merged into doctrine",
       "domain": "law",
       "verb": "333_judge"
     },
@@ -298,7 +304,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy federation path — merged into doctrine",
+      "description": "Legacy federation path \u2014 merged into doctrine",
       "domain": "law",
       "verb": "333_judge"
     },
@@ -308,13 +314,13 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy discoveries path — canonical is /earth",
+      "description": "Legacy discoveries path \u2014 canonical is /earth",
       "domain": "earth",
       "verb": "444_observe"
     },
     {
       "path": "/wealth/",
-      "title": "Wealth Capital — Market & Investment Terminal",
+      "title": "Wealth Capital \u2014 Market & Investment Terminal",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -330,7 +336,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy wealth article — canonical is /economics/article/:slug",
+      "description": "Legacy wealth article \u2014 canonical is /economics/article/:slug",
       "domain": "capital",
       "verb": "444_compute"
     },
@@ -340,7 +346,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy essays path — canonical is /writing",
+      "description": "Legacy essays path \u2014 canonical is /writing",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -350,7 +356,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy essay — canonical is /writing/:slug",
+      "description": "Legacy essay \u2014 canonical is /writing/:slug",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -360,7 +366,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/",
+      "description": "Legacy MakcikGPT path \u2014 canonical is /world/makcikgpt/",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -370,7 +376,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug",
+      "description": "Legacy MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -380,7 +386,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/",
+      "description": "Legacy MakcikGPT path \u2014 canonical is /world/makcikgpt/",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -390,9 +396,11 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug",
+      "description": "Legacy MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug",
       "domain": "voice",
-      "verb": "555_interpret"
+      "verb": "555_interpret",
+      "expected_http": "2xx",
+      "note": "SPA-resolved"
     },
     {
       "path": "/genesis/",
@@ -400,13 +408,13 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Legacy genesis path — canonical is /000/",
+      "description": "Legacy genesis path \u2014 canonical is /000/",
       "domain": "origin",
       "verb": "000_init"
     },
     {
       "path": "/oil/",
-      "title": "Oil Dashboard — Brent Crude Live",
+      "title": "Oil Dashboard \u2014 Brent Crude Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -418,7 +426,7 @@
     },
     {
       "path": "/gas/",
-      "title": "Gas Dashboard — Natural Gas Live",
+      "title": "Gas Dashboard \u2014 Natural Gas Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -430,7 +438,7 @@
     },
     {
       "path": "/gold/",
-      "title": "Gold Dashboard — XAUUSD Live",
+      "title": "Gold Dashboard \u2014 XAUUSD Live",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -446,7 +454,7 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Bare MakcikGPT path — canonical is /world/makcikgpt/",
+      "description": "Bare MakcikGPT path \u2014 canonical is /world/makcikgpt/",
       "domain": "voice",
       "verb": "555_interpret"
     },
@@ -456,13 +464,13 @@
       "status": "redirect",
       "code": 301,
       "type": "redirect",
-      "description": "Bare MakcikGPT article — canonical is /world/makcikgpt/:slug",
+      "description": "Bare MakcikGPT article \u2014 canonical is /world/makcikgpt/:slug",
       "domain": "voice",
       "verb": "555_interpret"
     },
     {
       "path": "/propa/",
-      "title": "PETRONAS · PROPA — Financial capacity and resilience",
+      "title": "PETRONAS \u00b7 PROPA \u2014 Financial capacity and resilience",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -474,7 +482,7 @@
     },
     {
       "path": "/malaysia/",
-      "title": "Malaysia — Civic & Political Hub",
+      "title": "Malaysia \u2014 Civic & Political Hub",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -498,7 +506,7 @@
     },
     {
       "path": "/forge/",
-      "title": "A-FORGE → subdomain",
+      "title": "A-FORGE \u2192 subdomain",
       "mission": "build",
       "status": "redirect",
       "type": "redirect",
@@ -512,7 +520,7 @@
     },
     {
       "path": "/politics/shadow/",
-      "title": "PM Bayang — Shadow Prime Ministers of Malaysia",
+      "title": "PM Bayang \u2014 Shadow Prime Ministers of Malaysia",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -524,31 +532,31 @@
     },
     {
       "path": "/politics/shadow/board/",
-      "title": "Shadow Board — Org-Chart Instrument (PRIMER-1)",
+      "title": "Shadow Board \u2014 Org-Chart Instrument (PRIMER-1)",
       "mission": "decide",
       "status": "live",
       "type": "page",
       "priority": 0.6,
       "changefreq": "monthly",
-      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav — instrument surface.",
+      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav \u2014 instrument surface.",
       "domain": "voice",
       "verb": "555_interpret"
     },
     {
       "path": "/politics/shadow/derita/",
-      "title": "RASA DERITA — 6-Cohort Generational Trauma Map",
+      "title": "RASA DERITA \u2014 6-Cohort Generational Trauma Map",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 0.5,
       "changefreq": "monthly",
-      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 → 1MDB → Sheraton → 2022 Paradox). Constitutional floors as scars. HYPOTHESIS — confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal.",
+      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 \u2192 1MDB \u2192 Sheraton \u2192 2022 Paradox). Constitutional floors as scars. HYPOTHESIS \u2014 confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal.",
       "domain": "voice",
       "verb": "555_interpret"
     },
     {
       "path": "/surfaces.json",
-      "title": "surfaces.json — Canonical Surface Catalog",
+      "title": "surfaces.json \u2014 Canonical Surface Catalog",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -560,7 +568,7 @@
     },
     {
       "path": "/llms-full.txt",
-      "title": "llms-full.txt — Full Content Dump for AI LLMs",
+      "title": "llms-full.txt \u2014 Full Content Dump for AI LLMs",
       "status": "live",
       "type": "machine",
       "format": "text/markdown",
@@ -572,7 +580,7 @@
     },
     {
       "path": "/llms.txt",
-      "title": "llms.txt — AI Site Overview",
+      "title": "llms.txt \u2014 AI Site Overview",
       "status": "live",
       "type": "machine",
       "format": "text/markdown",
@@ -584,7 +592,7 @@
     },
     {
       "path": "/llms.json",
-      "title": "llms.json — Structured Site Overview",
+      "title": "llms.json \u2014 Structured Site Overview",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -596,19 +604,19 @@
     },
     {
       "path": "/page.json",
-      "title": "page.json — Machine Site Overview",
+      "title": "page.json \u2014 Machine Site Overview",
       "status": "live",
       "type": "machine",
       "format": "application/json",
       "priority": 0.4,
       "changefreq": "weekly",
-      "description": "Machine-readable site overview — purpose, route model, content scope",
+      "description": "Machine-readable site overview \u2014 purpose, route model, content scope",
       "domain": "proof",
       "verb": "999_seal"
     },
     {
       "path": "/missions.json",
-      "title": "missions.json — Six-Mission Federation Catalog",
+      "title": "missions.json \u2014 Six-Mission Federation Catalog",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -620,7 +628,7 @@
     },
     {
       "path": "/sitemap.xml",
-      "title": "sitemap.xml — XML Sitemap",
+      "title": "sitemap.xml \u2014 XML Sitemap",
       "status": "live",
       "type": "machine",
       "format": "application/xml",
@@ -632,7 +640,7 @@
     },
     {
       "path": "/feed.xml",
-      "title": "RSS Feed — MakcikGPT Articles",
+      "title": "RSS Feed \u2014 MakcikGPT Articles",
       "status": "live",
       "type": "machine",
       "format": "application/rss+xml",
@@ -644,7 +652,7 @@
     },
     {
       "path": "/robots.txt",
-      "title": "robots.txt — Crawler Policy with AI Directives",
+      "title": "robots.txt \u2014 Crawler Policy with AI Directives",
       "status": "live",
       "type": "machine",
       "format": "text/plain",
@@ -656,7 +664,7 @@
     },
     {
       "path": "/rsl.xml",
-      "title": "rsl.xml — Really Simple Licensing 1.0",
+      "title": "rsl.xml \u2014 Really Simple Licensing 1.0",
       "status": "live",
       "type": "machine",
       "format": "application/rsl+xml",
@@ -668,7 +676,7 @@
     },
     {
       "path": "/soul.json",
-      "title": "soul.json — Sovereign Identity Anchor",
+      "title": "soul.json \u2014 Sovereign Identity Anchor",
       "status": "live",
       "type": "machine",
       "format": "application/json",
@@ -680,7 +688,7 @@
     },
     {
       "path": "/.well-known/agent-card.json",
-      "title": "Agent Card — A2A Discovery",
+      "title": "Agent Card \u2014 A2A Discovery",
       "redirects_to": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
       "status": "redirect",
       "code": 301,
@@ -713,38 +721,42 @@
       "path": "/machines/",
       "status": "live",
       "type": "page",
-      "title": "For Machines — Ops guide",
+      "title": "For Machines \u2014 Ops guide",
       "description": "Human-readable agent contracts, AUP, disclaimer",
       "domain": "work",
       "verb": "777_forge"
     },
     {
       "path": "/syedos/",
-      "title": "SYED OS — AI Twin Persona",
+      "title": "SYED OS \u2014 AI Twin Persona",
       "mission": "interpret",
       "status": "live",
       "type": "page",
       "priority": 0.5,
       "changefreq": "monthly",
-      "description": "SYED OS persona site — dashboard, emas, heal, nasilemak, rental-swot. AI twin. Previously orphan.",
+      "description": "SYED OS persona site \u2014 dashboard, emas, heal, nasilemak, rental-swot. AI twin. Previously orphan.",
       "domain": "voice",
-      "verb": "555_interpret"
+      "verb": "555_interpret",
+      "expected_http": "3xx",
+      "note": "Redirects to external"
     },
     {
       "path": "/abangsado-flex.mp4",
-      "title": "ABANG SADO — Flex Video",
+      "title": "ABANG SADO \u2014 Flex Video",
       "mission": "interpret",
-      "status": "live",
+      "status": "pending",
       "type": "media",
       "priority": 0.4,
       "changefreq": "yearly",
       "description": "ABANG SADO flex video. AI twin. Previously stranded with no landing page.",
       "domain": "voice",
-      "verb": "555_interpret"
+      "verb": "555_interpret",
+      "expected_http": "4xx",
+      "note": "Media not deployed"
     },
     {
       "path": "/machine/manifest.json",
-      "title": "Machine Manifest — Single Agent Entrypoint",
+      "title": "Machine Manifest \u2014 Single Agent Entrypoint",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -756,7 +768,7 @@
     },
     {
       "path": "/machine/map.json",
-      "title": "Machine Map — 9-Domain Agent View",
+      "title": "Machine Map \u2014 9-Domain Agent View",
       "mission": "remember",
       "status": "live",
       "type": "machine",
@@ -768,7 +780,7 @@
     },
     {
       "path": "/human/map/",
-      "title": "Human Map — 9-Domain World Model",
+      "title": "Human Map \u2014 9-Domain World Model",
       "mission": "interpret",
       "status": "live",
       "type": "page",
@@ -780,7 +792,7 @@
     },
     {
       "path": "/world/sot/",
-      "title": "SOT Atlas — Live Situational World Map",
+      "title": "SOT Atlas \u2014 Live Situational World Map",
       "mission": "monitor",
       "status": "live",
       "type": "page",
@@ -810,7 +822,7 @@
       "type": "machine",
       "priority": 0.7,
       "changefreq": "monthly",
-      "description": "APEX v36Ω scar metabolization. Immutable sealed failures. Future canonical: /law/scar.json",
+      "description": "APEX v36\u03a9 scar metabolization. Immutable sealed failures. Future canonical: /law/scar.json",
       "domain": "law",
       "verb": "333_judge"
     },
