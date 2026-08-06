@@ -69,8 +69,8 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "VITALS · PETRONAS",
-    "href": "/vitals/",
+    "label": "PROPA · PETRONAS",
+    "href": "/propa/",
     "mode": "static",
     "external": false
   },

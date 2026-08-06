@@ -54,6 +54,13 @@ sync-aaa:
 build:
 	@echo "[build] Building arif-fazil.com (React/Vite)..."
 	cd sites/arif-fazil.com && npm run build
+	@echo "[build] Building propa page (PETRONAS dashboard, canonical /propa/)..."
+	cd sites/arif-fazil.com && node scripts/render-vitals.cjs
+	@echo "[build] Injecting live market data into propa..."
+	cd sites/arif-fazil.com && bash scripts/inject-live-strip.sh dist/vitals
+	cp sites/arif-fazil.com/dist/vitals/index.html sites/arif-fazil.com/dist/propa/index.html
+	cp sites/arif-fazil.com/public/data/wealth/petronas_vitals.json sites/arif-fazil.com/dist/propa/petronas_vitals.json
+	cd sites/arif-fazil.com && bash scripts/inject-live-strip.sh dist/propa
 	@echo "[build] Regenerating discovery catalogs..."
 	cd sites/arif-fazil.com && node scripts/generate-discovery.cjs
 	@echo "✓ Build complete."
