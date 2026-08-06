@@ -59,7 +59,7 @@ build:
 	@echo "[build] Injecting live market data into propa..."
 	cp sites/arif-fazil.com/public/data/wealth/petronas_vitals.json sites/arif-fazil.com/dist/propa/petronas_vitals.json
 	@echo "[build] Injecting WEALTH institutional health panel..."
-	cd sites/arif-fazil.com && python3 -c "
+	cd sites/arif-fazil.com && python3 << 'PYEOF'
 import subprocess
 r = subprocess.run(['python3','scripts/wealth-institutional.py'],capture_output=True,text=True,timeout=25)
 inst = r.stdout.strip()
@@ -69,7 +69,7 @@ if inst:
         html = html.replace('<!-- B11-E: RECENT EVENTS PANEL', inst + '\n\n<!-- B11-E: RECENT EVENTS PANEL')
         with open('dist/propa/index.html','w') as f: f.write(html)
         print(f'  [build] Institutional panel injected ({len(html)} bytes)')
-"
+PYEOF
 	@echo "[build] Regenerating discovery catalogs..."
 	cd sites/arif-fazil.com && node scripts/generate-discovery.cjs
 	@echo "✓ Build complete."
