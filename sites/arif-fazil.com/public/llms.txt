@@ -1,9 +1,4 @@
 # arif-fazil.com — Site Overview for AI Agents
-# Guidance layer only — not binding law. Binding contracts:
-#   /.well-known/ai-constitution.json
-#   /.well-known/agent-policy.json
-#   /.well-known/agent-registry.json
-#   /missions.json  /surfaces.json  /machines/
 
 ## Who is Arif Fazil
 Muhammad Arif bin Fazil. Sovereign architect and founder of the arifOS Constitutional Intelligence Kernel.
@@ -11,27 +6,6 @@ Senior exploration geoscientist at PETRONAS Carigali, offshore Malaysia.
 Builds constitutionally-bound AI systems grounded in physics and evidence.
 
 **Tagline**: Ditempa Bukan Diberi — Forged, Not Given.
-**DID**: did:web:arif-fazil.com → https://arif-fazil.com/.well-known/did.json
-**For machines (human-readable)**: https://arif-fazil.com/machines/
-
-## Governed public runtime (start here)
-- Operating rule: **static law · dynamic state · gated action**
-- Invariants index: https://arif-fazil.com/.well-known/invariants.json
-- Static invariants (bedrock): https://arif-fazil.com/.well-known/static-invariants.json
-- Dynamic invariants (weather): https://arif-fazil.com/.well-known/dynamic-invariants.json
-- Risk tiers R0–R4: https://arif-fazil.com/.well-known/risk-tiers.json
-- Hold conditions (888_HOLD): https://arif-fazil.com/.well-known/hold-conditions.json
-- JSON schemas: https://arif-fazil.com/schemas/v1/index.json
-- Constitution: https://arif-fazil.com/.well-known/ai-constitution.json
-- Agent policy: https://arif-fazil.com/.well-known/agent-policy.json
-- Agent registry: https://arif-fazil.com/.well-known/agent-registry.json
-- Missions (six verbs): https://arif-fazil.com/missions.json
-- Surfaces catalog: https://arif-fazil.com/surfaces.json
-- Territories: https://arif-fazil.com/.well-known/territories.json
-- WebMCP (live tools only): https://arif-fazil.com/.well-known/webmcp.json
-- Zones: public_read · governed_query · restricted_action (R3 human / R4 888_HOLD)
-- Truth: numbers from pipes, not invented; withhold on pipe failure
-
 
 ## What is arifOS
 arifOS is a constitutional intelligence kernel: a governed AI system where tools, agents,
