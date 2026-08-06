@@ -245,7 +245,7 @@ assert_present "/propa/"  "JSON-LD: InstitutionalVitals"   "InstitutionalVitals"
 echo ""
 echo -e "${CYAN}═══ CONTENT ASSERTIONS — Nav completeness${NC}"
 for page in /oil/ /gas/ /gold/ /klci/ /usdmyr/; do
-    assert_present "$page" "Nav to /propa/"  "/propa/"$
+    assert_present "$page" "Nav to /propa/"  "/propa/"
     assert_present "$page" "Nav to /malaysia/" "/malaysia/"
 done
 
