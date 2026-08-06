@@ -41,17 +41,17 @@ World    →  Origin  Proof  Law  Earth  Capital  Voice  Work  Signal  Human  (9
 
 | Domain | Question | Trinity scope | Organ | Accent (PRIMER-1) | Pattern |
 |---|---|---|---|---|---|
-| **Earth** | What's under our feet? | EARTH | GEOX | viridian `#2A8A70` | chordial-dense |
-| **Capital** | What's it worth? | INSTITUTION | WEALTH | marine `#2E5F8A` | orthogonal-fractal |
-| **Voice** | What do I think? | SOVEREIGN | Arif | amber `#D9A62E` | bare |
-| **Work** | What am I building? | INSTITUTION | A-FORGE + AAA | marine + amber bridge | orthogonal-fractal |
-| **Law** | What are the rules? | CROSS_CUTTING | arifOS | void-blue `#6A8FBF` | orthogonal-fractal-faintest |
-| **Proof** | Is this true? | CROSS_CUTTING | arifOS / VAULT999 | maroon `#7A1F18` (rationed) | orthogonal-fractal-faintest |
-| **Origin** | Where did this start? | SOVEREIGN | arifOS | maroon (rationed) | bare |
-| **Signal** | How do I reach out? | EARTH | HERMES | viridian | chordial-dense |
-| **Human** | Am I well? | HUMAN | WELL | amber | chordial-light |
+| **Earth** | What's under our feet? | EARTH | GEOX | teal `#4aa8ff` | chordial-dense |
+| **Capital** | What's it worth? | INSTITUTION | WEALTH | yellow `#f0a050` | orthogonal-fractal |
+| **Voice** | What do I think? | SOVEREIGN | Arif | purple `#c084fc` | bare |
+| **Work** | What am I building? | INSTITUTION | A-FORGE + AAA | amber `#fbbf24` | orthogonal-fractal |
+| **Law** | What are the rules? | CROSS_CUTTING | arifOS | void-blue `#6a8fbf` | orthogonal-fractal-faintest |
+| **Proof** | Is this true? | CROSS_CUTTING | arifOS / VAULT999 | void-blue `#6a8fbf` | orthogonal-fractal-faintest |
+| **Origin** | Where did this start? | SOVEREIGN | arifOS | gold `#d4a853` | bare |
+| **Signal** | How do I reach out? | EARTH | HERMES | teal `#4aa8ff` | chordial-dense |
+| **Human** | Am I well? | HUMAN | WELL | red `#ff5252` (rationed) | chordial-light |
 
-Note: two domains (Law, Proof) share the CROSS_CUTTING scope — both render with void-blue chrome but different verbs (333_judge vs 999_seal).
+Note: two domains (Law, Proof) share the CROSS_CUTTING scope — both render with void-blue chrome but different verbs (333_judge vs 999_seal). Accent palette mirrors `canon/world-model.yaml` v1.0.0 (canonical machine truth).
 
 ---
 
