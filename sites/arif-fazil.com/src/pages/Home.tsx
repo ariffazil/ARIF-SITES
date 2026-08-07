@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, useScroll, useTransform } from 'framer-motion'
 import SectionHeader from '@/components/SectionHeader'
+import BucketStrip from '@/components/BucketStrip'
+import MCPGateway from '@/components/MCPGateway'
 import { useNow, formatKL, secondsSinceBirth } from '@/hooks/useNow'
 
 /* ------------------------------------------------------------------ */
@@ -383,128 +385,30 @@ function Person() {
 /* Section 3 — Three Domains                                           */
 /* ------------------------------------------------------------------ */
 
-/* Live hybrid territories — color system shared with nav accents */
-const domains = [
-  {
-    index: '01',
-    title: 'EARTH',
-    desc: 'Evidence before narrative.',
-    humans: 'Basin stories, wells, and uncertainty you can read.',
-    machines: 'Structured GEOX, wells, and stratigraphy for risk-aware agents.',
-    to: '/earth',
-    bar: 'bg-ember',
-    hover: '#E4572E',
-  },
-  {
-    index: '02',
-    title: 'ECONOMICS',
-    desc: 'Evidence before narrative.',
-    humans: 'Markets, FX, oil, gas, gold — capital signals without vibes.',
-    machines: 'VITALS, commodity APIs, WEALTH JSON under /vitals and /wealth/*.',
-    to: '/economics',
-    bar: 'bg-gold',
-    hover: '#C9A227',
-  },
-  {
-    index: '03',
-    title: 'WORLD',
-    desc: 'Evidence before narrative.',
-    humans: 'MakcikGPT civic journalism (BM) · commodities · politics.',
-    machines: 'Makcik markdown mirrors, politics telemetry, commodity dashboards.',
-    to: '/world',
-    bar: 'bg-ink/40',
-    hover: '#EDEAE2',
-  },
-  {
-    index: '04',
-    title: 'DOCTRINE',
-    desc: 'Evidence before narrative.',
-    humans: 'arifOS F1–F13: machines must tell the truth — or stop.',
-    machines: 'floors.json, missions.json, 000/999, webmcp, DID.',
-    to: '/doctrine',
-    bar: 'bg-ink-soft/50',
-    hover: '#9AA0A8',
-  },
-]
-
-function Domains() {
-  const [hovered, setHovered] = useState<number | null>(null)
+/* ── 5-BUCKET NAVIGATION STRIP ── */
+function BucketsSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-25% 0px' })
-
+  const inView = useInView(ref, { once: true, margin: '-20% 0px' })
   return (
     <section ref={ref} className="border-y hairline">
-      <div className="mx-auto max-w-[1280px] px-6 py-20 md:py-24">
-        <SectionHeader number="02" title="FOUR TERRITORIES" className="mb-8" />
-        <p className="mb-4 max-w-[52ch] font-body text-[17px] leading-[1.6] text-ink-soft">
-          Same public site humans and agents walk. Primary strip is one line; depth lives one click
-          down — VITALS, NS election, MakcikGPT, commodities.
-        </p>
-        <p className="mb-10 max-w-[52ch] font-mono text-[12px] leading-relaxed text-ink-soft/80">
-          Agents: respect crawl budgets, do no harm, cite with attribution. Machine map:{' '}
-          <a href="/.well-known/territories.json" className="underline decoration-ink/30 hover:text-ink">
-            /.well-known/territories.json
-          </a>
-          .
-        </p>
-        <div onMouseLeave={() => setHovered(null)}>
-          {domains.map((dm, i) => (
-            <motion.div
-              key={dm.title}
-              initial={{ opacity: 0, x: -48 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.7, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            >
-              <Link
-                to={dm.to}
-                onMouseEnter={() => setHovered(i)}
-                className="group block border-t py-8 hairline last:border-b md:py-9"
-              >
-                <motion.div
-                  layout="position"
-                  animate={{ scale: hovered === i ? 1.01 : 1 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 26 }}
-                  className="flex items-center gap-6 md:gap-8"
-                >
-                  <span className="eyebrow text-ink-soft">{dm.index}</span>
-                  <div className="flex-1">
-                    <h3
-                      className="font-display text-3xl tracking-[-0.02em] transition-colors duration-300 md:text-[48px] md:leading-none"
-                      style={{ color: hovered === i ? dm.hover : undefined }}
-                    >
-                      {dm.title}
-                    </h3>
-                    <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-soft/70">
-                      {dm.desc}
-                    </p>
-                    <div className="mt-3 grid max-w-[56ch] gap-1.5 font-body text-[15px] leading-[1.55] text-ink-soft md:text-[16px]">
-                      <p>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-ink/50">
-                          Humans ·{' '}
-                        </span>
-                        {dm.humans}
-                      </p>
-                      <p>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-ink/50">
-                          Machines ·{' '}
-                        </span>
-                        {dm.machines}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className="font-mono text-2xl transition-transform duration-300"
-                    style={{ transform: hovered === i ? 'translateX(8px)' : 'none' }}
-                    aria-hidden
-                  >
-                    →
-                  </span>
-                </motion.div>
-                <div className={`mt-5 h-[3px] w-24 ${dm.bar}`} />
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+      <div className="mx-auto max-w-[1280px] px-6 py-14 md:py-18">
+        <SectionHeader number="02" title="NAVIGATE" className="mb-6" />
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4 }}
+          className="mb-8 max-w-[48ch] font-body text-[16px] leading-[1.6] text-ink-soft"
+        >
+          Five doors. Every artifact on this site belongs to exactly one bucket. 
+          Click any door to enter — from anywhere on the site.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.1, duration: 0.5 }}
+        >
+          <BucketStrip current="Home" />
+        </motion.div>
       </div>
     </section>
   )
@@ -700,10 +604,11 @@ export function Home() {
     <div className="grain">
       <Hero />
       <Person />
-      <Domains />
+      <BucketsSection />
       <Record />
       <LatestWords />
       <Closing />
+      <MCPGateway />
     </div>
   )
 }

@@ -1,114 +1,129 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import BucketStrip from '@/components/BucketStrip';
+import MCPGateway from '@/components/MCPGateway';
 import { MISSIONS, MISSION_DOCTRINE } from '@/data/missions';
 
 /**
- * /missions — human cockpit for the six verbs.
- * Machines read /missions.json. Humans land here (not a redirect to home).
- * Doctrine 2026-07-30: missions, not tool menus.
+ * /work — WORK bucket. Missions cockpit + proof chamber + forge.
+ * Humans land here. Machines read /missions.json.
  */
 export function Missions() {
   useEffect(() => {
-    document.title = 'Missions — Six verbs · Arif Fazil';
+    document.title = 'WORK — Missions · Proof · Forge · Arif Fazil';
   }, []);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="bg-forge-black min-h-screen"
+      className="min-h-screen"
+      style={{ background: '#0A0A0C', color: '#EDEAE2' }}
     >
-      <section className="py-16 md:py-24 border-b border-forge-iron">
-        <div className="site-frame max-w-3xl">
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.12em] text-forge-dim mb-4">
-            Cockpit · not engine room
+      {/* ── WORK HERO ── */}
+      <section className="relative overflow-hidden border-b" style={{ borderColor: '#2A2A30' }}>
+        <div aria-hidden className="absolute inset-0 opacity-15" style={{
+          background: 'radial-gradient(ellipse at 60% 30%, rgba(212,168,83,0.2) 0%, transparent 50%), radial-gradient(ellipse at 40% 70%, rgba(228,87,46,0.1) 0%, transparent 50%)'
+        }} />
+        <div className="relative mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+          <div className="mb-12">
+            <BucketStrip current="Work" />
+          </div>
+          <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-amber-400/80">
+            COCKPIT · NOT ENGINE ROOM
           </p>
-          <h1 className="font-display font-black text-[clamp(2rem,6vw,3.5rem)] uppercase tracking-tighter italic text-forge-white mb-4">
-            {MISSION_DOCTRINE.title}
-          </h1>
-          <p className="font-body text-lg text-forge-dim leading-relaxed mb-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mt-4 font-display text-[clamp(40px,8vw,80px)] leading-[0.95] tracking-[-0.02em]"
+            style={{ color: '#D4A853' }}
+          >
+            WORK
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="mt-4 max-w-[48ch] font-body text-[19px] leading-[1.6] text-[#7A7880]"
+          >
             {MISSION_DOCTRINE.thesis}
-          </p>
-          <p className="font-mono text-xs text-forge-orange/90 uppercase tracking-widest mb-8">
-            {MISSION_DOCTRINE.metric}
-          </p>
-          <ul className="space-y-2 mb-8">
-            {MISSION_DOCTRINE.humanOnly.map((line) => (
-              <li
-                key={line}
-                className="font-body text-sm text-forge-dim flex gap-3"
-              >
-                <span className="text-forge-orange shrink-0">▸</span>
-                {line}
-              </li>
+          </motion.p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            {[
+              { label: 'Missions', to: '/work/missions/', color: '#E4572E' },
+              { label: 'Proof Chamber', to: '/work/proof/', color: '#9AA0A8' },
+              { label: 'Resume', to: '/work/resume/', color: '#D4A853' },
+              { label: 'Well Portfolio', to: '/work/wells/', color: '#D4A853' },
+              { label: 'A-FORGE', href: 'https://forge.arif-fazil.com/', color: '#E4572E', external: true },
+            ].map((b) => (
+              b.external ? (
+                <a key={b.label} href={b.href} target="_blank" rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 font-mono text-[13px] font-medium uppercase tracking-[0.04em] transition-all duration-200"
+                  style={{ borderColor: 'rgba(237,234,226,0.15)', color: '#7A7880' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = b.color; e.currentTarget.style.color = b.color }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(237,234,226,0.15)'; e.currentTarget.style.color = '#7A7880' }}
+                >
+                  {b.label} ↗
+                </a>
+              ) : (
+                <Link key={b.label} to={b.to}
+                  className="inline-flex items-center gap-2 rounded-sm border px-4 py-2.5 font-mono text-[13px] font-medium uppercase tracking-[0.04em] transition-all duration-200"
+                  style={{ borderColor: 'rgba(237,234,226,0.15)', color: '#7A7880' }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = b.color; e.currentTarget.style.color = b.color }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(237,234,226,0.15)'; e.currentTarget.style.color = '#7A7880' }}
+                >
+                  {b.label} →
+                </Link>
+              )
             ))}
-          </ul>
-          <p className="font-body text-sm text-forge-dim/80 border-l-2 border-forge-iron pl-4">
-            {MISSION_DOCTRINE.engineRoom}
-          </p>
-          <p className="mt-4 font-mono text-[0.65rem] text-forge-dim">
-            Machine catalog:{' '}
-            <a
-              href="/missions.json"
-              className="text-forge-orange hover:text-forge-white transition-colors"
-            >
-              /missions.json
-            </a>
-          </p>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 border-b border-forge-iron" aria-label="Six missions">
-        <div className="site-frame">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* ── SIX MISSIONS ── */}
+      <section className="py-16 border-b" style={{ borderColor: '#2A2A30' }} aria-label="Six missions">
+        <div className="mx-auto max-w-[1280px] px-6">
+          <p className="font-mono text-[12px] uppercase tracking-[0.08em] text-[#7A7880] mb-6">
+            SIX VERBS — INVESTIGATE · INTERPRET · DECIDE · BUILD · MONITOR · REMEMBER
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {MISSIONS.map((m) => (
               <article
                 key={m.id}
                 id={m.id}
-                className="brutalist-card border border-forge-iron p-6 md:p-8"
+                className="group rounded-md border p-6 transition-all duration-200 hover:border-amber-400/40"
+                style={{ borderColor: '#2A2A30', background: '#111116' }}
               >
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-forge-dim mb-2">
-                  {m.id}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#7A7880] mb-1">{m.id}</p>
+                    <h2 className="text-2xl font-bold uppercase tracking-[-0.01em] text-[#EDEAE2] group-hover:text-[#D4A853] transition-colors">{m.verb}</h2>
+                  </div>
+                  <span className="font-mono text-[11px] text-[#D4A853]">{m.oneLine}</span>
+                </div>
+                <p className="mt-3 font-body text-[15px] leading-[1.55] text-[#7A7880]">
+                  <span className="text-[#9AA0A8]">You ask: </span>{m.humanSays}
                 </p>
-                <h2 className="text-2xl font-black uppercase text-forge-white mb-2">
-                  {m.verb}
-                </h2>
-                <p className="font-body text-forge-orange text-sm mb-4">
-                  {m.oneLine}
+                <p className="mt-1 font-body text-[14px] leading-[1.5] text-[#7A7880]/70">
+                  <span className="text-[#9AA0A8]">Federation: </span>{m.federationDoes}
                 </p>
-                <p className="font-body text-sm text-forge-dim leading-relaxed mb-3">
-                  <span className="text-forge-white font-medium">You ask: </span>
-                  {m.humanSays}
-                </p>
-                <p className="font-body text-sm text-forge-dim leading-relaxed mb-4">
-                  <span className="text-forge-white font-medium">Federation: </span>
-                  {m.federationDoes}
-                </p>
-                <p className="font-mono text-[0.62rem] uppercase tracking-widest text-forge-dim mb-4">
-                  Organs · {m.organs.join(' · ')}
-                </p>
-                <nav
-                  aria-label={`${m.verb} surfaces`}
-                  className="flex flex-wrap gap-x-4 gap-y-2"
-                >
+                <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.06em] text-[#7A7880]/50">
+                    {m.organs.join(' · ')}
+                  </span>
+                </div>
+                <nav aria-label={`${m.verb} surfaces`} className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
                   {m.surfaces.map((s) =>
                     s.href.startsWith('http') ? (
-                      <a
-                        key={s.href}
-                        href={s.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-mono text-xs text-forge-orange hover:text-forge-white transition-colors"
-                      >
+                      <a key={s.href} href={s.href} target="_blank" rel="noreferrer"
+                        className="font-mono text-[12px] text-[#D4A853] hover:text-[#EDEAE2] transition-colors">
                         {s.label} ↗
                       </a>
                     ) : (
-                      <Link
-                        key={s.href}
-                        to={s.href}
-                        className="font-mono text-xs text-forge-orange hover:text-forge-white transition-colors"
-                      >
+                      <Link key={s.href} to={s.href}
+                        className="font-mono text-[12px] text-[#D4A853] hover:text-[#EDEAE2] transition-colors">
                         {s.label} →
                       </Link>
                     ),
@@ -120,20 +135,15 @@ export function Missions() {
         </div>
       </section>
 
+      {/* ── FOOTER ── */}
       <section className="py-12">
-        <div className="site-frame max-w-3xl">
-          <p className="font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest mb-2">
-            Survival rule
-          </p>
-          <p className="font-body text-sm text-forge-dim leading-relaxed">
-            {MISSION_DOCTRINE.survivalRule}
-          </p>
-          <p className="mt-6 font-mono text-[0.62rem] text-forge-dim/70">
-            Sealed {MISSION_DOCTRINE.sealed} · This page classifies intent. Agents
-            route. arifOS judges. Arif decides.
+        <div className="mx-auto max-w-[1280px] px-6">
+          <p className="font-mono text-[11px] text-[#7A7880]/50">
+            Sealed {MISSION_DOCTRINE.sealed} · This page classifies intent. Agents route. arifOS judges. Arif decides.
           </p>
         </div>
       </section>
+      <MCPGateway />
     </motion.div>
   );
 }

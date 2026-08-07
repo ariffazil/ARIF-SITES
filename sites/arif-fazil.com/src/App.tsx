@@ -19,6 +19,7 @@ import Proof from '@/pages/ProofArrow';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
+import EarthPage from '@/pages/EarthPage';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
@@ -47,7 +48,7 @@ function App() {
             <Route path="/" element={<Home />} />
 
             {/* ═══════════════ EARTH ═══════════════ */}
-            <Route path="/earth" element={<EarthGlobeRedirect />} />
+            <Route path="/earth" element={<EarthPage />} />
             <Route path="/earth/" element={<EarthGlobeRedirect />} />
             <Route path="/earth/*" element={<EarthGlobeRedirect />} />
 

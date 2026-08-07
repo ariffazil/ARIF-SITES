@@ -1,994 +1,132 @@
 {
-  "version": "2026-08-06-r4",
+  "version": "2026-08-07-r5",
   "domain": "arif-fazil.com",
+  "architecture": "5-BUCKET (v8.0.0)",
   "doctrine": {
-    "title": "Single canonical surface catalog. 9-domain world model. 64 surfaces. All machine catalogs are generated views of this file.",
+    "title": "HOME · EARTH · WORLD · WORDS · WORK — Five buckets. All artifacts belong to exactly one.",
     "rule": "If it is not in surfaces.json, it does not get served to a machine.",
-    "generated_views": [
-      "sitemap.xml",
-      "llms.txt",
-      "llms.json",
-      "page.json",
-      "missions.json",
-      "/human/map/",
-      "/machine/map/"
-    ],
+    "buckets": {
+      "HOME":  { "path": "/",       "question": "Who am I?",           "verb": "000_init" },
+      "EARTH": { "path": "/earth/",  "question": "What's under our feet?", "verb": "444_observe" },
+      "WORLD": { "path": "/world/",  "question": "What's happening?",      "verb": "555_interpret" },
+      "WORDS": { "path": "/words/",  "question": "What do I think?",       "verb": "555_interpret" },
+      "WORK":  { "path": "/work/",   "question": "What am I building?",    "verb": "777_forge" }
+    },
+    "generated_views": ["sitemap.xml","llms.txt","llms.json","page.json","missions.json","/human/map/","/machine/map/"],
     "verify_command": "node scripts/verify-surfaces.cjs",
     "fail_closed": "Any status:live surface returning non-200 fails the build.",
     "truth_rule": "surfaces.json must match live HTTP. Map page loads this file at runtime."
   },
   "missions": {
-    "investigate": {
-      "verb": "Investigate",
-      "one_line": "Gather and test reality"
-    },
-    "interpret": {
-      "verb": "Interpret",
-      "one_line": "Build competing explanations"
-    },
-    "decide": {
-      "verb": "Decide",
-      "one_line": "Compare consequences and uncertainty"
-    },
-    "build": {
-      "verb": "Build",
-      "one_line": "Prepare and execute approved changes"
-    },
-    "monitor": {
-      "verb": "Monitor",
-      "one_line": "Detect change, degradation, or danger"
-    },
-    "remember": {
-      "verb": "Remember",
-      "one_line": "Retrieve and preserve governed knowledge"
-    }
+    "investigate": { "verb": "Investigate", "one_line": "Gather and test reality" },
+    "interpret":   { "verb": "Interpret",   "one_line": "Build competing explanations" },
+    "decide":      { "verb": "Decide",      "one_line": "Compare consequences and uncertainty" },
+    "build":       { "verb": "Build",       "one_line": "Prepare and execute approved changes" },
+    "monitor":     { "verb": "Monitor",     "one_line": "Detect change, degradation, or danger" },
+    "remember":    { "verb": "Remember",    "one_line": "Retrieve and preserve governed knowledge" }
   },
   "surfaces": [
-    {
-      "path": "/",
-      "title": "Home — Sovereign Identity & Portfolio",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 1.0,
-      "changefreq": "monthly",
-      "description": "Professional homepage for Arif Fazil — geoscientist, economist, AI governance architect",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/earth/",
-      "title": "EARTH — The Dynamic Planet (Macrostrat globe)",
-      "mission": "investigate",
-      "status": "live",
-      "type": "page",
-      "priority": 0.8,
-      "changefreq": "monthly",
-      "description": "Interactive Macrostrat globe, plates, quakes, wells. Static HTML primary — not SPA essay.",
-      "domain": "earth",
-      "verb": "444_observe"
-    },
-    {
-      "path": "/economics/",
-      "title": "Economics — WEALTH Capital Briefing",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.9,
-      "changefreq": "daily",
-      "description": "Bursa, Ringgit, oil macro intelligence, Malaysia economic briefing",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/economics/article/:slug",
-      "title": "WEALTH Article",
-      "mission": "interpret",
-      "status": "live",
-      "type": "dynamic_page",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Individual WEALTH capital intelligence article",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/world/",
-      "title": "World — Civic Journalism & Commodities",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Civic journalism (MakcikGPT) + commodity dashboards (oil/gas/gold)",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/world/makcikgpt/",
-      "title": "MakcikGPT — Civic Intelligence in Bahasa Malaysia",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.85,
-      "changefreq": "daily",
-      "description": "Canonical landing for MakcikGPT civic intelligence series. Articles investigate Malaysian sovereignty, resource governance, institutional integrity, and technology accountability.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/world/makcikgpt/:slug",
-      "title": "MakcikGPT Article",
-      "mission": "interpret",
-      "status": "live",
-      "type": "dynamic_page",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Individual MakcikGPT article in Bahasa Malaysia. Generated from essays.json.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/world/oil/",
-      "title": "Oil Dashboard — Brent Crude Cognitive View",
-      "mission": "monitor",
-      "status": "gone",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Brent crude oil cognitive dashboard with live data",
-      "domain": "capital",
-      "verb": "444_compute",
-      "redirect_to": "/oil/",
-      "expected_http": "4xx",
-      "note": "Consolidated into /oil/ standalone. No longer at /world/oil/."
-    },
-    {
-      "path": "/world/gas/",
-      "title": "Gas Dashboard — Natural Gas Intelligence",
-      "mission": "monitor",
-      "status": "gone",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Natural gas dashboard with live data",
-      "domain": "capital",
-      "verb": "444_compute",
-      "redirect_to": "/gas/",
-      "expected_http": "4xx",
-      "note": "Consolidated into /gas/ standalone. No longer at /world/gas/."
-    },
-    {
-      "path": "/world/gold/",
-      "title": "Gold Dashboard — XAUUSD Trading Synthesis",
-      "mission": "monitor",
-      "status": "gone",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Gold trading synthesis and technical analysis dashboard",
-      "domain": "capital",
-      "verb": "444_compute",
-      "redirect_to": "/gold/",
-      "expected_http": "4xx",
-      "note": "Consolidated into /gold/ standalone. No longer at /world/gold/."
-    },
-    {
-      "path": "/writing/",
-      "title": "Writing — Essays & Analysis",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.8,
-      "changefreq": "weekly",
-      "description": "Narrative essays by Arif on AI governance, thermodynamics, geological reasoning",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/writing/:slug",
-      "title": "Essay",
-      "mission": "interpret",
-      "status": "live",
-      "type": "dynamic_page",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Individual essay page",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/doctrine/",
-      "title": "Doctrine — Constitution, Federation Topology, Manifesto",
-      "mission": "decide",
-      "status": "live",
-      "type": "page",
-      "priority": 0.9,
-      "changefreq": "monthly",
-      "description": "Constitutional floors (F1-F13), authority chain, organ topology, federation manifesto",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/000/",
-      "title": "000 — Genesis Archive & Wisdom Canon",
-      "mission": "remember",
-      "status": "live",
-      "type": "page",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Genesis archive, wisdom canon, origin context for agents and verifiers",
-      "domain": "origin",
-      "verb": "000_init"
-    },
-    {
-      "path": "/999/",
-      "title": "999 — Proof & Verification Chamber",
-      "mission": "remember",
-      "status": "live",
-      "type": "page",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Trust and proof chamber — verification artifacts, hash commitments, audit records",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/999/verify",
-      "title": "999 Verify — Live Vault Proof Endpoint",
-      "mission": "remember",
-      "status": "live",
-      "type": "api",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "Live vault proof endpoint proxied to arifOS kernel — cryptographic verification",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/map/",
-      "title": "Map — Human-Readable Route Tree",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "format": "text/html",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Route map generated from surfaces.json",
-      "domain": "earth",
-      "verb": "444_observe"
-    },
-    {
-      "path": "/machine/",
-      "title": "Machine — Agent Surfaces Dashboard",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "format": "text/html",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Agent-facing endpoint directory",
-      "domain": "work",
-      "verb": "777_forge"
-    },
-    {
-      "path": "/rss/",
-      "redirects_to": "/feed.xml",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "RSS feed redirect",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/canon/",
-      "redirects_to": "/doctrine",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy canon path — merged into doctrine",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/constellation/",
-      "redirects_to": "/doctrine",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy constellation path — merged into doctrine",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/federation/",
-      "redirects_to": "/doctrine",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy federation path — merged into doctrine",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/discoveries/",
-      "redirects_to": "/earth",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy discoveries path — canonical is /earth",
-      "domain": "earth",
-      "verb": "444_observe"
-    },
-    {
-      "path": "/wealth/",
-      "title": "Wealth Capital — Market & Investment Terminal",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.8,
-      "changefreq": "daily",
-      "description": "Wealth capital terminal and market intelligence",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/wealth/article/:slug",
-      "redirects_to": "/economics/article/:slug",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy wealth article — canonical is /economics/article/:slug",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/essays/",
-      "redirects_to": "/writing",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy essays path — canonical is /writing",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/essays/:slug",
-      "redirects_to": "/writing/:slug",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy essay — canonical is /writing/:slug",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/wealth/makcikgpt/",
-      "redirects_to": "/world/makcikgpt/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/wealth/makcikgpt/:slug",
-      "redirects_to": "/world/makcikgpt/:slug",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/economics/makcikgpt/",
-      "redirects_to": "/world/makcikgpt/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy MakcikGPT path — canonical is /world/makcikgpt/",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/economics/makcikgpt/:slug",
-      "redirects_to": "/world/makcikgpt/:slug",
-      "status": "pending",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy MakcikGPT article — canonical is /world/makcikgpt/:slug",
-      "domain": "voice",
-      "verb": "555_interpret",
-      "expected_http": "2xx",
-      "note": "SPA catch-all returns 200. Redirect only at base path, not slug."
-    },
-    {
-      "path": "/genesis/",
-      "redirects_to": "/000/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Legacy genesis path — canonical is /000/",
-      "domain": "origin",
-      "verb": "000_init"
-    },
-    {
-      "path": "/oil/",
-      "title": "Oil Dashboard — Brent Crude Live",
-      "mission": "monitor",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Standalone Brent crude oil dashboard with live API data. Served from /var/www/html/oil/.",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/gas/",
-      "title": "Gas Dashboard — Natural Gas Live",
-      "mission": "monitor",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Standalone natural gas dashboard with live API data. Served from /var/www/html/gas/.",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/gold/",
-      "title": "Gold Dashboard — XAUUSD Live",
-      "mission": "monitor",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Standalone gold trading dashboard with live API data. Served from /var/www/html/gold/.",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/makcikgpt/",
-      "redirects_to": "/world/makcikgpt/",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Bare MakcikGPT path — canonical is /world/makcikgpt/",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/makcikgpt/:slug",
-      "redirects_to": "/world/makcikgpt/:slug",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Bare MakcikGPT article — canonical is /world/makcikgpt/:slug",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/propa/",
-      "title": "PETRONAS · PROPA — Financial capacity and resilience",
-      "mission": "monitor",
-      "status": "live",
-      "type": "page",
-      "priority": 0.9,
-      "changefreq": "daily",
-      "description": "Public PETRONAS PROPA on apex (not system health cosplay). Canonical path /propa/; /vitals/ and /wealth/vitals/ 308 here. Distinct organ-style chrome is intentional for capital dashboard.",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/malaysia/",
-      "title": "Malaysia — Civic & Political Hub",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Civic and political intelligence hub for Malaysia",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/pulse/",
-      "title": "Pulse (gone)",
-      "mission": "monitor",
-      "status": "gone",
-      "type": "gone",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Never a real apex route. Live broken shell removed. Use /missions (Monitor) + organ health endpoints.",
-      "domain": "capital",
-      "verb": "444_compute"
-    },
-    {
-      "path": "/forge/",
-      "title": "A-FORGE → subdomain",
-      "mission": "build",
-      "status": "redirect",
-      "type": "redirect",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "A-FORGE lives at forge.arif-fazil.com only. Apex /forge/ redirects.",
-      "code": 301,
-      "redirects_to": "https://forge.arif-fazil.com/",
-      "domain": "work",
-      "verb": "777_forge"
-    },
-    {
-      "path": "/politics/shadow/",
-      "title": "PM Bayang — Shadow Prime Ministers of Malaysia",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Jungian shadow analysis of all 9 Malaysian Prime Ministers. Persona, Bayang, Tragedi, Legasi. Source: public records, Hansard, National Archives. Framework analysis.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/politics/shadow/board/",
-      "title": "Shadow Board — Org-Chart Instrument (PRIMER-1)",
-      "mission": "decide",
-      "status": "live",
-      "type": "page",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Org-chart instrument: 11 seats (9 PM dossiers + DERITA trauma map + Doctrine floors). Setiap kerusi = dossier link. PRIMER-1 instrument registry. Hidden from top nav — instrument surface.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/politics/shadow/derita/",
-      "title": "RASA DERITA — 6-Cohort Generational Trauma Map",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "Framework analysis: 6 Malaysian generational trauma cohorts (13 Mei 1969 → 1MDB → Sheraton → 2022 Paradox). Constitutional floors as scars. HYPOTHESIS — confidence 0.20 [SPEC]. BUKAN FAKTA. HOLD pending VAULT999 seal.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/surfaces.json",
-      "title": "surfaces.json — Canonical Surface Catalog",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "Single canonical surface catalog for arif-fazil.com. Machine readable.",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/llms-full.txt",
-      "title": "llms-full.txt — Full Content Dump for AI LLMs",
-      "status": "live",
-      "type": "machine",
-      "format": "text/markdown",
-      "priority": 0.5,
-      "changefreq": "weekly",
-      "description": "Full-text content dump for LLM ingestion. Generated from MD sources.",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/llms.txt",
-      "title": "llms.txt — AI Site Overview",
-      "status": "live",
-      "type": "machine",
-      "format": "text/markdown",
-      "priority": 0.5,
-      "changefreq": "weekly",
-      "description": "Curated link index for AI agents (Jeremy Howard convention, Sept 2024). Generated from surfaces.json.",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/llms.json",
-      "title": "llms.json — Structured Site Overview",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "weekly",
-      "description": "Structured JSON site overview with route roles, related sites, and machine surfaces",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/page.json",
-      "title": "page.json — Machine Site Overview",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "weekly",
-      "description": "Machine-readable site overview — purpose, route model, content scope",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/missions.json",
-      "title": "missions.json — Six-Mission Federation Catalog",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "monthly",
-      "description": "Six-mission classification of federation intent. Does not authorize tool calls.",
-      "domain": "work",
-      "verb": "777_forge"
-    },
-    {
-      "path": "/sitemap.xml",
-      "title": "sitemap.xml — XML Sitemap",
-      "status": "live",
-      "type": "machine",
-      "format": "application/xml",
-      "priority": 0.5,
-      "changefreq": "weekly",
-      "description": "XML sitemap for search engines and crawlers",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/feed.xml",
-      "title": "RSS Feed — MakcikGPT Articles",
-      "status": "live",
-      "type": "machine",
-      "format": "application/rss+xml",
-      "priority": 0.5,
-      "changefreq": "daily",
-      "description": "RSS feed of MakcikGPT civic intelligence articles",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/robots.txt",
-      "title": "robots.txt — Crawler Policy with AI Directives",
-      "status": "live",
-      "type": "machine",
-      "format": "text/plain",
-      "priority": 0.6,
-      "changefreq": "monthly",
-      "description": "Crawler policy with explicit AI bot directives and RSL License line",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/rsl.xml",
-      "title": "rsl.xml — Really Simple Licensing 1.0",
-      "status": "live",
-      "type": "machine",
-      "format": "application/rsl+xml",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "RSL 1.0 license declaring permits/prohibits for ai-train, ai-input, search",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/soul.json",
-      "title": "soul.json — Sovereign Identity Anchor",
-      "status": "live",
-      "type": "machine",
-      "format": "application/json",
-      "priority": 0.4,
-      "changefreq": "monthly",
-      "description": "Sovereign identity and philosophy anchor",
-      "domain": "origin",
-      "verb": "000_init"
-    },
-    {
-      "path": "/.well-known/agent-card.json",
-      "title": "Agent Card — A2A Discovery",
-      "redirects_to": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
-      "status": "redirect",
-      "code": 301,
-      "type": "redirect",
-      "description": "Canonical agent card lives on arifos.arif-fazil.com subdomain. Caddy server-side redirect.",
-      "domain": "signal",
-      "verb": "444_route"
-    },
-    {
-      "path": "/read/",
-      "status": "redirect",
-      "type": "redirect",
-      "code": 301,
-      "redirects_to": "/writing/",
-      "description": "Alias of Writing. Canonical human path is /writing/",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/read",
-      "status": "redirect",
-      "type": "redirect",
-      "code": 301,
-      "redirects_to": "/writing/",
-      "description": "Alias of Writing",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/machines/",
-      "status": "live",
-      "type": "page",
-      "title": "For Machines — Ops guide",
-      "description": "Human-readable agent contracts, AUP, disclaimer",
-      "domain": "work",
-      "verb": "777_forge"
-    },
-    {
-      "path": "/syedos/",
-      "title": "SYED OS — AI Twin Persona",
-      "mission": "interpret",
-      "status": "redirect",
-      "type": "page",
-      "priority": 0.5,
-      "changefreq": "monthly",
-      "description": "SYED OS persona site — dashboard, emas, heal, nasilemak, rental-swot. AI twin. Previously orphan.",
-      "domain": "voice",
-      "verb": "555_interpret",
-      "expected_http": "3xx",
-      "note": "301 → /doctrine (consolidated under law)"
-    },
-    {
-      "path": "/abangsado-flex.mp4",
-      "title": "ABANG SADO — Flex Video",
-      "mission": "interpret",
-      "status": "pending",
-      "type": "media",
-      "priority": 0.4,
-      "changefreq": "yearly",
-      "description": "ABANG SADO flex video. AI twin. Previously stranded with no landing page.",
-      "domain": "voice",
-      "verb": "555_interpret",
-      "expected_http": "4xx",
-      "note": "Media not deployed"
-    },
-    {
-      "path": "/machine/manifest.json",
-      "title": "Machine Manifest — Single Agent Entrypoint",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.9,
-      "changefreq": "monthly",
-      "description": "Single entrypoint for AI agents. Replaces 18 scattered .well-known files. One fetch, every door.",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/machine/map.json",
-      "title": "Machine Map — 9-Domain Agent View",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.8,
-      "changefreq": "monthly",
-      "description": "Agent-readable 9-domain world model map. 46 redirect rules. Generated from surfaces.json.",
-      "domain": "proof",
-      "verb": "999_seal"
-    },
-    {
-      "path": "/human/map/",
-      "title": "Human Map — 9-Domain World Model",
-      "mission": "interpret",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Visitor-facing 9-domain grid. Every domain answers one question. Generated from surfaces.json.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/world/sot/",
-      "title": "SOT Atlas — Live Situational World Map",
-      "mission": "monitor",
-      "status": "live",
-      "type": "page",
-      "priority": 0.7,
-      "changefreq": "daily",
-      "description": "Live situational world map. Source-of-truth events. GDELT + World Bank data.",
-      "domain": "voice",
-      "verb": "555_interpret"
-    },
-    {
-      "path": "/floors.json",
-      "title": "Constitutional Floors F1-F13",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "F1-F13 table. Canonical machine-readable floors. Future canonical: /law/floors.json",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/scar.json",
-      "title": "Scar Registry",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "APEX v36Ω scar metabolization. Immutable sealed failures. Future canonical: /law/scar.json",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/authority.json",
-      "title": "Sovereign Authority Registry",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "F13 authority chain + identity anchors. Future canonical: /law/authority.json",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/policy.json",
-      "title": "Public Governance Policy",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Federation-wide governance policy. Future canonical: /law/policy.json",
-      "domain": "law",
-      "verb": "333_judge"
-    },
-    {
-      "path": "/manifest.json",
-      "title": "Federation Manifest",
-      "mission": "remember",
-      "status": "live",
-      "type": "machine",
-      "priority": 0.7,
-      "changefreq": "monthly",
-      "description": "Federation topology + organ registry. Future canonical: /law/manifest.json",
-      "domain": "law",
-      "verb": "333_judge"
-    }
+    { "path":"/",                  "title":"HOME — Sovereign Identity & Portfolio",   "mission":"interpret","status":"live","type":"page","priority":1.0,"changefreq":"monthly","description":"Professional homepage. Arif Fazil — geoscientist, economist, AI governance architect.","domain":"origin","verb":"000_init" },
+    { "path":"/earth/",            "title":"EARTH — Dynamic Planet + GEOX Intelligence","mission":"investigate","status":"live","type":"page","priority":0.8,"changefreq":"monthly","description":"Macrostrat globe, GEOX cockpit, seismic viewer, well context desk. Physics-gated Earth intelligence.","domain":"earth","verb":"444_observe" },
+    { "path":"/world/",            "title":"WORLD — Civic Journalism & Commodities","mission":"interpret","status":"live","type":"page","priority":0.9,"changefreq":"daily","description":"MakcikGPT civic intelligence, commodity dashboards (oil/gas/gold), Malaysia politics, PROPA.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/makcikgpt/",  "title":"MakcikGPT — Civic Intelligence in BM","mission":"interpret","status":"live","type":"page","priority":0.85,"changefreq":"daily","description":"Canonical landing for MakcikGPT. Malaysian sovereignty, resource governance, institutional integrity.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/makcikgpt/:slug","title":"MakcikGPT Article","mission":"interpret","status":"live","type":"dynamic_page","priority":0.7,"changefreq":"monthly","description":"Individual MakcikGPT article. Generated from essays.json.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/economics/","title":"Economics — WEALTH Capital Briefing","mission":"interpret","status":"live","type":"page","priority":0.8,"changefreq":"daily","description":"Bursa, Ringgit, oil macro intelligence, Malaysia economic briefing. Canonical capital path.","domain":"capital","verb":"444_compute" },
+    { "path":"/world/economics/article/:slug","title":"WEALTH Article","mission":"interpret","status":"live","type":"dynamic_page","priority":0.7,"changefreq":"monthly","description":"Individual WEALTH capital intelligence article","domain":"capital","verb":"444_compute" },
+    { "path":"/world/propa/","     "title":"PROPA — PETRONAS Financial Capacity","mission":"monitor","status":"live","type":"page","priority":0.9,"changefreq":"daily","description":"Public PETRONAS PROPA dashboard. Financial resilience, subsidy paradox, hidden tax, binding collision. Canonical.","domain":"capital","verb":"444_compute" },
+    { "path":"/world/politics/","  "title":"Politics — Malaysia Civic Intelligence Hub","mission":"interpret","status":"live","type":"page","priority":0.7,"changefreq":"daily","description":"NS Election playbook, Shadow PMs, Derita generational trauma map.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/politics/shadow/","title":"PM Bayang — Shadow Prime Ministers","mission":"interpret","status":"live","type":"page","priority":0.7,"changefreq":"monthly","description":"Jungian shadow analysis of all 9 Malaysian PMs. Framework analysis.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/politics/shadow/board/","title":"Shadow Board — Org-Chart (PRIMER-1)","mission":"decide","status":"live","type":"page","priority":0.6,"changefreq":"monthly","description":"11 seats: 9 PM dossiers + DERITA trauma map + Doctrine floors. Instrument surface.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/politics/shadow/derita/","title":"RASA DERITA — 6-Cohort Generational Trauma Map","mission":"interpret","status":"live","type":"page","priority":0.5,"changefreq":"monthly","description":"6 Malaysian generational trauma cohorts. HYPOTHESIS [SPEC] — NOT FACT.","domain":"voice","verb":"555_interpret" },
+    { "path":"/world/sot/","title":"SOT Atlas — Live Situational World Map","mission":"monitor","status":"live","type":"page","priority":0.7,"changefreq":"daily","description":"Live situational world map. Source-of-truth events.","domain":"voice","verb":"555_interpret" },
+
+    { "path":"/words/","title":"WORDS — Writing, Essays & Doctrine","mission":"interpret","status":"live","type":"page","priority":0.8,"changefreq":"weekly","description":"Narrative essays, constitutional doctrine, federation topology. Arif's voice.","domain":"voice","verb":"555_interpret" },
+    { "path":"/words/writing/","title":"WORDS / Writing — Essays & Analysis","mission":"interpret","status":"live","type":"page","priority":0.8,"changefreq":"weekly","description":"Narrative essays on AI governance, thermodynamics, geological reasoning.","domain":"voice","verb":"555_interpret" },
+    { "path":"/words/writing/:slug","title":"Essay","mission":"interpret","status":"live","type":"dynamic_page","priority":0.7,"changefreq":"monthly","description":"Individual essay page","domain":"voice","verb":"555_interpret" },
+    { "path":"/words/doctrine/","title":"WORDS / Doctrine — Constitution & Federation Topology","mission":"decide","status":"live","type":"page","priority":0.9,"changefreq":"monthly","description":"F1-F13 constitutional floors, authority chain, organ topology, manifesto. Canonical law surface.","domain":"law","verb":"333_judge" },
+
+    { "path":"/work/","title":"WORK — Missions, Proof & Forge","mission":"build","status":"live","type":"page","priority":0.7,"changefreq":"monthly","description":"Six-mission cockpit, proof chamber, resume, well portfolio. Arif's body of work.","domain":"work","verb":"777_forge" },
+    { "path":"/work/missions/","title":"WORK / Missions — Six-Mission Cockpit","mission":"build","status":"live","type":"page","priority":0.8,"changefreq":"monthly","description":"Six-mission federation catalog: Investigate, Interpret, Decide, Build, Monitor, Remember.","domain":"work","verb":"777_forge" },
+    { "path":"/work/proof/","title":"WORK / Proof — Verification Chamber","mission":"remember","status":"live","type":"page","priority":0.6,"changefreq":"monthly","description":"Trust and proof artifacts: hash commitments, runtime snapshots, key rotation, audit records. Formerly /999/.","domain":"proof","verb":"999_seal" },
+
+    { "path":"/000/","title":"000 — Genesis Archive","mission":"remember","status":"live","type":"page","priority":0.6,"changefreq":"monthly","description":"Genesis archive and wisdom canon. Origin context for agents and verifiers.","domain":"origin","verb":"000_init" },
+    { "path":"/999/verify","title":"999 Verify — Live Vault Proof Endpoint","mission":"remember","status":"live","type":"api","priority":0.5,"changefreq":"monthly","description":"Live vault proof endpoint proxied to arifOS kernel. Cryptographic verification.","domain":"proof","verb":"999_seal" },
+    { "path":"/map/","title":"Map — Human-Readable Route Tree","mission":"remember","status":"live","type":"machine","format":"text/html","priority":0.6,"changefreq":"monthly","description":"Route map generated from surfaces.json. 5-bucket architecture.","domain":"origin","verb":"000_init" },
+    { "path":"/machine/","title":"Machine — Agent Surfaces Dashboard","mission":"remember","status":"live","type":"machine","format":"text/html","priority":0.6,"changefreq":"monthly","description":"Agent-facing endpoint directory. Single entrypoint for AI agents.","domain":"work","verb":"777_forge" },
+
+    { "path":"/forge/","title":"A-FORGE → subdomain","mission":"build","status":"redirect","type":"redirect","code":301,"redirects_to":"https://forge.arif-fazil.com/","description":"A-FORGE lives at forge.arif-fazil.com only.","domain":"work","verb":"777_forge" },
+    { "path":"/institution/","title":"Institution — Governance & Compliance","mission":"decide","status":"live","type":"page","priority":0.6,"changefreq":"monthly","description":"Governance attestation, compliance checkpoint, institutional verification.","domain":"law","verb":"333_judge" },
+
+    { "path":"/surfaces.json","title":"surfaces.json — Canonical Surface Catalog","status":"live","type":"machine","format":"application/json","priority":0.5,"changefreq":"monthly","description":"5-bucket canonical surface catalog.","domain":"proof","verb":"999_seal" },
+    { "path":"/llms.txt","title":"llms.txt — AI Site Overview","status":"live","type":"machine","format":"text/markdown","priority":0.5,"changefreq":"weekly","description":"Curated link index for AI agents.","domain":"proof","verb":"999_seal" },
+    { "path":"/llms.json","title":"llms.json — Structured Site Overview","status":"live","type":"machine","format":"application/json","priority":0.4,"changefreq":"weekly","description":"Structured JSON site overview with route roles.","domain":"proof","verb":"999_seal" },
+    { "path":"/page.json","title":"page.json — Machine Site Overview","status":"live","type":"machine","format":"application/json","priority":0.4,"changefreq":"weekly","description":"Machine-readable site overview.","domain":"proof","verb":"999_seal" },
+    { "path":"/missions.json","title":"missions.json — Six-Mission Federation Catalog","status":"live","type":"machine","format":"application/json","priority":0.4,"changefreq":"monthly","description":"Six-mission classification for machines.","domain":"work","verb":"777_forge" },
+    { "path":"/sitemap.xml","title":"sitemap.xml","status":"live","type":"machine","format":"application/xml","priority":0.5,"changefreq":"weekly","description":"XML sitemap","domain":"proof","verb":"999_seal" },
+    { "path":"/feed.xml","title":"RSS Feed — MakcikGPT","status":"live","type":"machine","format":"application/rss+xml","priority":0.5,"changefreq":"daily","description":"RSS feed of MakcikGPT articles","domain":"voice","verb":"555_interpret" },
+    { "path":"/robots.txt","title":"robots.txt","status":"live","type":"machine","format":"text/plain","priority":0.6,"changefreq":"monthly","description":"Crawler policy with AI directives","domain":"proof","verb":"999_seal" },
+    { "path":"/rsl.xml","title":"rsl.xml — RSL 1.0","status":"live","type":"machine","format":"application/rsl+xml","priority":0.5,"changefreq":"monthly","description":"RSL 1.0 license","domain":"law","verb":"333_judge" },
+    { "path":"/soul.json","title":"soul.json — Sovereign Identity","status":"live","type":"machine","format":"application/json","priority":0.4,"changefreq":"monthly","description":"Sovereign identity and philosophy anchor","domain":"origin","verb":"000_init" },
+    { "path":"/human/map/","title":"Human Map — 5-Bucket World Model","mission":"interpret","status":"live","type":"page","priority":0.7,"changefreq":"monthly","description":"Visitor-facing 5-bucket grid. Generated from surfaces.json.","domain":"voice","verb":"555_interpret" },
+    { "path":"/machine/manifest.json","title":"Machine Manifest — Single Agent Entrypoint","mission":"remember","status":"live","type":"machine","priority":0.9,"changefreq":"monthly","description":"Single entrypoint for AI agents. One fetch, every door.","domain":"proof","verb":"999_seal" },
+    { "path":"/machine/map.json","title":"Machine Map — 5-Domain Agent View","mission":"remember","status":"live","type":"machine","priority":0.8,"changefreq":"monthly","description":"Agent-readable 5-domain world model map.","domain":"proof","verb":"999_seal" },
+    { "path":"/floors.json","title":"Constitutional Floors F1-F13","mission":"remember","status":"live","type":"machine","priority":0.7,"changefreq":"monthly","description":"F1-F13 table. Machine-readable constitutional floors.","domain":"law","verb":"333_judge" },
+    { "path":"/scar.json","title":"Scar Registry","mission":"remember","status":"live","type":"machine","priority":0.7,"changefreq":"monthly","description":"APEX v36Ω scar metabolization registry.","domain":"law","verb":"333_judge" },
+    { "path":"/authority.json","title":"Sovereign Authority Registry","mission":"remember","status":"live","type":"machine","priority":0.7,"changefreq":"monthly","description":"F13 authority chain + identity anchors.","domain":"law","verb":"333_judge" },
+    { "path":"/policy.json","title":"Public Governance Policy","mission":"remember","status":"live","type":"machine","priority":0.7,"changefreq":"monthly","description":"Federation-wide governance policy.","domain":"law","verb":"333_judge" },
+    { "path":"/manifest.json","title":"Federation Manifest","mission":"remember","status":"live","type":"machine","priority":0.7,"changefreq":"monthly","description":"Federation topology + organ registry.","domain":"law","verb":"333_judge" },
+
+    { "path":"/oil/","title":"Oil Dashboard → /world/economics/","status":"redirect","code":301,"redirects_to":"/world/economics/","domain":"capital","verb":"444_compute" },
+    { "path":"/gas/","title":"Gas Dashboard → /world/economics/","status":"redirect","code":301,"redirects_to":"/world/economics/","domain":"capital","verb":"444_compute" },
+    { "path":"/gold/","title":"Gold Dashboard → /world/economics/","status":"redirect","code":301,"redirects_to":"/world/economics/","domain":"capital","verb":"444_compute" },
+    { "path":"/economics/","title":"Economics → /world/economics/","status":"redirect","code":301,"redirects_to":"/world/economics/","domain":"capital","verb":"444_compute" },
+    { "path":"/wealth/","title":"Wealth → /world/economics/","status":"redirect","code":301,"redirects_to":"/world/economics/","domain":"capital","verb":"444_compute" },
+    { "path":"/writing/","title":"Writing → /words/writing/","status":"redirect","code":301,"redirects_to":"/words/writing/","domain":"voice","verb":"555_interpret" },
+    { "path":"/doctrine/","title":"Doctrine → /words/doctrine/","status":"redirect","code":301,"redirects_to":"/words/doctrine/","domain":"law","verb":"333_judge" },
+    { "path":"/politics/","title":"Politics → /world/politics/","status":"redirect","code":301,"redirects_to":"/world/politics/","domain":"voice","verb":"555_interpret" },
+    { "path":"/malaysia/","title":"Malaysia → /world/politics/","status":"redirect","code":301,"redirects_to":"/world/politics/","domain":"voice","verb":"555_interpret" },
+    { "path":"/missions/","title":"Missions → /work/missions/","status":"redirect","code":301,"redirects_to":"/work/missions/","domain":"work","verb":"777_forge" },
+    { "path":"/proof/","title":"Proof → /work/proof/","status":"redirect","code":301,"redirects_to":"/work/proof/","domain":"proof","verb":"999_seal" },
+    { "path":"/propa/","title":"PROPA → /world/propa/","status":"redirect","code":301,"redirects_to":"/world/propa/","domain":"capital","verb":"444_compute" },
+    { "path":"/genesis/","title":"Genesis → /000/","status":"redirect","code":301,"redirects_to":"/000/","domain":"origin","verb":"000_init" },
+    { "path":"/read/","title":"Read → /words/","status":"redirect","code":301,"redirects_to":"/words/","domain":"voice","verb":"555_interpret" },
+    { "path":"/essays/","title":"Essays → /words/writing/","status":"redirect","code":301,"redirects_to":"/words/writing/","domain":"voice","verb":"555_interpret" },
+    { "path":"/canon/","title":"Canon → /words/doctrine/","status":"redirect","code":301,"redirects_to":"/words/doctrine/","domain":"law","verb":"333_judge" },
+    { "path":"/discoveries/","title":"Discoveries → /earth/","status":"redirect","code":301,"redirects_to":"/earth/","domain":"earth","verb":"444_observe" },
+    { "path":"/verify/","title":"Verify → /work/proof/","status":"redirect","code":301,"redirects_to":"/work/proof/","domain":"proof","verb":"999_seal" },
+    { "path":"/pulse/","title":"Pulse (gone)","status":"gone","type":"gone","description":"Removed. Use /work/missions/ (Monitor) + organ health endpoints.","domain":"capital","verb":"444_compute" },
+    { "path":"/999/","title":"999 → /work/proof/","status":"redirect","code":301,"redirects_to":"/work/proof/","domain":"proof","verb":"999_seal" }
   ],
   "federation_subdomains": [
-    {
-      "domain": "arifos.arif-fazil.com",
-      "role": "Constitutional governance kernel & observatory",
-      "organ": "arifOS"
-    },
-    {
-      "domain": "aaa.arif-fazil.com",
-      "role": "Control plane, A2A gateway, agent identity",
-      "organ": "AAA"
-    },
-    {
-      "domain": "mcp.arif-fazil.com",
-      "role": "MCP gateway for agent connection",
-      "organ": "arifOS"
-    },
-    {
-      "domain": "geox.arif-fazil.com",
-      "role": "Earth intelligence, physics-gated geoscience",
-      "organ": "GEOX"
-    },
-    {
-      "domain": "wealth.arif-fazil.com",
-      "role": "Capital intelligence, NPV/EMV/capital thermodynamics",
-      "organ": "WEALTH"
-    },
-    {
-      "domain": "well.arif-fazil.com",
-      "role": "Human and machine vitality reflection",
-      "organ": "WELL"
-    },
-    {
-      "domain": "forge.arif-fazil.com",
-      "role": "A-FORGE governed execution shell",
-      "organ": "A-FORGE"
-    }
+    {"domain":"arifos.arif-fazil.com","role":"Constitutional governance kernel & observatory","organ":"arifOS"},
+    {"domain":"aaa.arif-fazil.com","role":"Control plane, A2A gateway, agent identity","organ":"AAA"},
+    {"domain":"mcp.arif-fazil.com","role":"MCP gateway for agent connection","organ":"arifOS"},
+    {"domain":"geox.arif-fazil.com","role":"Earth intelligence, physics-gated geoscience","organ":"GEOX"},
+    {"domain":"wealth.arif-fazil.com","role":"Capital intelligence, NPV/EMV/capital thermodynamics","organ":"WEALTH"},
+    {"domain":"well.arif-fazil.com","role":"Human and machine vitality reflection","organ":"WELL"},
+    {"domain":"forge.arif-fazil.com","role":"A-FORGE governed execution shell","organ":"A-FORGE"}
   ],
   "external_refs": {
-    "github": "https://github.com/ariffazil",
-    "mcp_registry_glama_arifos": "https://glama.ai/mcp/servers/ariffazil/arifos",
-    "mcp_registry_glama_arifosmcp": "https://glama.ai/mcp/servers/ariffazil/arifosmcp",
-    "pypi": "https://pypi.org/project/arifos/",
-    "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
-    "did": "did:web:arif-fazil.com"
+    "github":"https://github.com/ariffazil",
+    "mcp_registry_glama_arifos":"https://glama.ai/mcp/servers/ariffazil/arifos",
+    "pypi":"https://pypi.org/project/arifos/",
+    "mcp_endpoint":"https://mcp.arif-fazil.com/mcp",
+    "did":"did:web:arif-fazil.com"
   },
-  "as_of": "2026-08-04T21:15:00Z",
+  "as_of":"2026-08-07T11:45:00Z",
   "domains": {
-    "doctrine": "9 human-readable domains mirroring the 9 federation organs. Each domain maps to a constitutional verb. Generated views (human/map, machine/map) derive from this single tree.",
+    "doctrine":"5-bucket architecture replaces the 9-domain world model. Each bucket answers one question. HOME → EARTH → WORLD → WORDS → WORK.",
     "list": {
-      "origin": {
-        "label": "Origin",
-        "question": "Where did this start?",
-        "verb": "000_init",
-        "organ": "arifOS"
-      },
-      "proof": {
-        "label": "Proof",
-        "question": "Is this true?",
-        "verb": "999_seal",
-        "organ": "arifOS / VAULT999"
-      },
-      "law": {
-        "label": "Law",
-        "question": "What are the rules?",
-        "verb": "333_judge",
-        "organ": "arifOS"
-      },
-      "earth": {
-        "label": "Earth",
-        "question": "What's under our feet?",
-        "verb": "444_observe",
-        "organ": "GEOX"
-      },
-      "capital": {
-        "label": "Capital",
-        "question": "What's it worth?",
-        "verb": "444_compute",
-        "organ": "WEALTH"
-      },
-      "voice": {
-        "label": "Voice",
-        "question": "What do I think?",
-        "verb": "555_interpret",
-        "organ": "Arif"
-      },
-      "work": {
-        "label": "Work",
-        "question": "What am I building?",
-        "verb": "777_forge",
-        "organ": "A-FORGE + AAA"
-      },
-      "signal": {
-        "label": "Signal",
-        "question": "How do I reach out?",
-        "verb": "444_route",
-        "organ": "HERMES"
-      },
-      "human": {
-        "label": "Human",
-        "question": "Am I well?",
-        "verb": "111_sense",
-        "organ": "WELL"
-      }
+      "origin":{"label":"Origin","question":"Who am I?","verb":"000_init","bucket":"HOME"},
+      "earth":{"label":"Earth","question":"What's under our feet?","verb":"444_observe","bucket":"EARTH"},
+      "voice":{"label":"Voice","question":"What do I think?","verb":"555_interpret","bucket":"WORDS"},
+      "capital":{"label":"Capital","question":"What's it worth?","verb":"444_compute","bucket":"WORLD"},
+      "world":{"label":"World","question":"What's happening?","verb":"555_interpret","bucket":"WORLD"},
+      "work":{"label":"Work","question":"What am I building?","verb":"777_forge","bucket":"WORK"},
+      "law":{"label":"Law","question":"What are the rules?","verb":"333_judge","bucket":"WORDS"},
+      "proof":{"label":"Proof","question":"Is this true?","verb":"999_seal","bucket":"WORK"},
+      "signal":{"label":"Signal","question":"How do I reach out?","verb":"444_route","bucket":"HOME"}
     }
   },
-  "world_model": {
-    "overlay_status": "active",
-    "derives_from": "canon/world-model.yaml v1.0.0",
-    "trinity_seal": "999_SEAL 2026-08-01",
-    "fields_added": [
-      "domain",
-      "verb"
-    ],
-    "domains": [
-      "origin",
-      "proof",
-      "law",
-      "earth",
-      "capital",
-      "voice",
-      "work",
-      "signal",
-      "human"
-    ]
-  }
+  "world_model":{"overlay_status":"active","derives_from":"5-BUCKET v8.0.0 · F13 directive 2026-08-07","trinity_seal":"999_SEAL 2026-08-07","domains":["origin","earth","voice","capital","world","work","law","proof","signal"]}
 }

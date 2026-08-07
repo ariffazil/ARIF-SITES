@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import SectionHeader from '@/components/SectionHeader'
+import BucketStrip from '@/components/BucketStrip'
+import MCPGateway from '@/components/MCPGateway'
 
 const RED = '#C8102E'
 type FactKind = 'OBS' | 'DER' | 'INT' | 'SPEC'
@@ -119,6 +121,9 @@ export function World() {
       {/* ── 01 MASTHEAD ── */}
       <section className="flex min-h-[80dvh] flex-col justify-center">
         <div className="mx-auto w-full max-w-[1280px] px-6 py-20">
+          <div className="mb-10">
+            <BucketStrip current="World" />
+          </div>
           <div className="flex items-center justify-between border-y border-ink/25 py-3">
             <Dateline />
             <span className="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-ink-soft md:block">
@@ -386,6 +391,7 @@ export function World() {
           </p>
         </div>
       </section>
+      <MCPGateway />
     </div>
   )
 }

@@ -1,7 +1,7 @@
-// arif-fazil.com — 5-Bucket Architecture (v8.0.0)
-// F13 SOVEREIGN directive: collapse all artifacts into HOME · EARTH · WORLD · WORDS · WORK
-// Forged: 2026-08-07 by 333-AGI under F13
-// canon version: 8.0.0 · as_of: 2026-08-07 · trinity: LIVE
+// AUTO-GENERATED from /root/web-canon/canon/navigation.json (generate-nav-canon.cjs)
+// DERIVED — never hand-edit. Edit canon, regenerate.
+// F2: this file must match canon exactly. Drift = entropy.
+// canon version: 7.0.0 · as_of: 2026-08-06 · trinity: DRAFT_FUTURE
 
 export interface NavItem {
   label: string;
@@ -30,20 +30,20 @@ export const primaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "World",
-    "href": "/world",
+    "label": "Words",
+    "href": "/writing",
     "mode": "spa",
     "external": false
   },
   {
-    "label": "Words",
-    "href": "/words",
-    "mode": "spa",
+    "label": "World",
+    "href": "/world",
+    "mode": "static",
     "external": false
   },
   {
     "label": "Work",
-    "href": "/work",
+    "href": "/missions",
     "mode": "spa",
     "external": false
   }
@@ -57,26 +57,26 @@ export const secondaryNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "MakcikGPT",
-    "href": "/world/makcikgpt/",
+    "label": "Map",
+    "href": "/map/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "PROPA",
-    "href": "/world/propa/",
+    "label": "PETRONAS",
+    "href": "/propa/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "Proof",
-    "href": "/work/proof/",
+    "label": "Malaysia",
+    "href": "/malaysia/",
     "mode": "static",
     "external": false
   },
   {
-    "label": "Missions",
-    "href": "/work/missions/",
+    "label": "Politics",
+    "href": "/politics/",
     "mode": "static",
     "external": false
   },
@@ -114,22 +114,22 @@ export const machineNav: NavItem[] = [
     "external": false
   },
   {
-    "label": "MCP Gateway",
+    "label": "mcp",
     "href": "https://mcp.arif-fazil.com/mcp",
     "mode": "external",
     "external": true
   },
   {
-    "label": "DID",
+    "label": "did",
     "href": "/.well-known/did.json",
     "mode": "spa",
     "external": false
   },
   {
     "label": "arifOS",
-    "href": "https://arifos.arif-fazil.com",
-    "mode": "external",
-    "external": true
+    "href": "/canon/",
+    "mode": "spa",
+    "external": false
   },
   {
     "label": "GEOX",
@@ -151,5 +151,5 @@ export const machineNav: NavItem[] = [
   }
 ];
 
-/** 5-Bucket Architecture — LIVE */
-export const trinityStatus = "LIVE" as const;
+/** Trinity is DRAFT — do not render on public shell until status === LIVE */
+export const trinityStatus = "DRAFT_FUTURE" as const;
