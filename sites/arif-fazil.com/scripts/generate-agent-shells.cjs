@@ -69,13 +69,11 @@ function shell({ title, description, canonical, body, ring = 'SOUL' }) {
     <nav class="nav" aria-label="Primary">
       <a href="/">Home</a>
       <a href="/earth">Earth</a>
-      <a href="/economics">Economics</a>
       <a href="/world">World</a>
-      <a href="/writing">Writing</a>
-      <a href="/doctrine">Doctrine</a>
-      <a href="/missions">Missions</a>
-      <a href="/999/">999</a>
-      <a href="/vitals/">VITALS</a>
+      <a href="/words">Words</a>
+      <a href="/work">Work</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/propa/">VITALS</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
 ${body}
@@ -90,10 +88,24 @@ ${body}
 `;
 }
 
+// HERO_LOCKED_ROUTES: hub pages that carry hand-authored hero blocks.
+// The hero (kicker/h1/prose/quote + CSS visual) was authored directly in
+// public/<route>/index.html and must survive `npm run build`. writeRoute
+// preserves the existing file when it already contains a hero-title marker.
+// Forged 2026-08-07 under F13 directive — Arif audits the live heroes.
+const HERO_LOCKED_ROUTES = new Set(['words', 'world', 'work']);
+
 function writeRoute(route, html) {
   const dir = path.join(PUBLIC, route);
   fs.mkdirSync(dir, { recursive: true });
   const out = path.join(dir, 'index.html');
+  if (HERO_LOCKED_ROUTES.has(route) && fs.existsSync(out)) {
+    const existing = fs.readFileSync(out, 'utf8');
+    if (existing.includes('hero-title')) {
+      console.log('preserved', out, '(hero-locked,', existing.length, 'bytes)');
+      return;
+    }
+  }
   fs.writeFileSync(out, html);
   console.log('wrote', out, html.length, 'bytes');
 }
@@ -217,7 +229,7 @@ writeRoute(
     <ul>
       <li><a href="/oil/">Oil</a> · <a href="/gas/">Gas</a> · <a href="/gold/">Gold</a></li>
       <li><a href="/klci/">KLCI</a> · <a href="/usdmyr/">USD/MYR</a></li>
-      <li><a href="/vitals/">PETRONAS VITALS</a></li>
+      <li><a href="/propa/">PETRONAS VITALS</a></li>
     </ul>
     <p class="meta">Machine: <a href="/data/wealth/latest.json">latest.json</a></p>
 `,

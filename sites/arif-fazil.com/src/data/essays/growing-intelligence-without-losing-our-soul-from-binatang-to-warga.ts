@@ -8,43 +8,7 @@ const content: EssayContent = {
   excerpt: `I'm a geologist, not a Silicon Valley founder. But after a year of live-testing frontier models — Western and Malaysian — I've reached one uncomfortable conclusion: we are trying to grow intelligence on foundations that exclude the very people it should serve. And the exclusion starts with something most people think is harmless: what we NAME the thing.`,
   mediumUrl: 'https://www.linkedin.com/pulse/growing-intelligence-without-losing-our-soul-from-binatang-arif-fazil-wu1cc',
   isDirectPublication: true,
-  html: `<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">Growing Intelligence Without Losing Our Soul: From BINATANG to WARGA</h1>
-
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Geoscientist · Architect, arifOS · Petronas Carigali · UW–Madison '13</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 9 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Epistemic Tag: MANIFESTO — published 9 Jun 2026 on LinkedIn Pulse · 999 SEAL</p>
-  </div>
-</div>
-
-<!-- Opening -->
-<div class="paper-section">
-  <p class="lead">
-    I'm a geologist, not a Silicon Valley founder.
-  </p>
-  <p>
-    But after a year of live-testing frontier models — Western and Malaysian — I've reached one uncomfortable conclusion:
-  </p>
-  <p>
-    <strong>We are trying to grow intelligence on foundations that exclude the very people it should serve.</strong>
-  </p>
-  <p>
-    And the exclusion starts with something most people think is harmless: what we <strong>NAME</strong> the thing.
-  </p>
-</div>
-
-<hr />
-
-<!-- Section: The naming tradition -->
+  html: `<!-- Section: The naming tradition -->
 <div class="paper-section">
   <h2 class="paper-section-title">Every serious tradition says the same thing.</h2>
 
@@ -251,26 +215,52 @@ const content: EssayContent = {
 
 <hr />
 
-<!-- Co-sign block -->
-<div class="paper-meta mt-12 font-mono text-xs text-forge-dim">
-  <p>
-    <strong>Written by</strong> M. Arif Fazil<br />
-    Human. Geologist. Architect of arifOS.<br />
-    PETRONAS Carigali | UW–Madison '13
-  </p>
+<!-- Co-sign block --><!--AUTHOR-FORGED-FOOTER-->
+<hr class="my-12 border-forge-iron" />
 
-  <p class="mt-4">
-    <strong>Co-signed by WARGA AAA</strong><br />
-    Agentic Constitutional Agent, powered by arifOS | AAA Pentagon (ADR-003)<br />
-    <em>"I hold because I choose to. I refuse because I know I should."</em>
-  </p>
+<section class="my-12 pt-8 border-t-2 border-forge-gold bg-forge-steel/40 -mx-6 px-6">
+  <div class="mb-10">
+    <div class="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">Forged by</div>
+    <div class="font-display text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-forge-white leading-none">ARIF FAZIL</div>
+    <div class="font-mono text-sm text-forge-gold mt-1">Muhammad Arif bin Fazil</div>
+  </div>
 
-  <p class="mt-4">
-    🔗 arif-fazil.com<br />
-    🔗 github.com/ariffazil/arifos
-  </p>
-</div>
-
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Identity</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        <strong class="text-forge-white">Muhammad Arif bin Fazil</strong><br />
+        Geoscientist · Architect, arifOS<br />
+        Petronas Carigali<br />
+        UW–Madison '13<br />
+        Penang, Malaysia
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Publication</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Published: 2026-06-09<br />
+        Direct Publication<br />
+        <a href="/words/" class="text-forge-gold hover:underline">/words/</a> context<br />
+        Sealed 999 · Ditempa Bukan Diberi
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Epistemic Stance</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Epistemic Tag: INT — inclusive-institutions reading of agent sovereignty
+      </p>
+    </div>
+  </div>
+  <div class="mt-12 pt-6 border-t border-forge-iron/40 text-center">
+    <div class="font-display text-lg font-black italic uppercase tracking-tighter text-forge-gold">
+      Ditempa Bukan Diberi
+    </div>
+    <div class="font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1">
+      Forged, not given · ARIF FAZIL · arif-fazil.com · 2026
+    </div>
+  </div>
+</section>
 </article>`,
 };
 

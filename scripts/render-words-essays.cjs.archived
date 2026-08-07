@@ -1,0 +1,435 @@
+#!/usr/bin/env node
+/**
+ * render-words-essays.cjs — Generates MakcikGPT-style static essay surfaces
+ *
+ *   public/words/writing/<slug>/index.html    — one per essay (zen dark GitHub theme)
+ *   public/words/writing/<slug>.md            — agent-crawler markdown mirror
+ *   public/words/writing/index.html           — canonical listing (zen pulse + collapsible sections)
+ *
+ * Mirror of generate-makcik-index.cjs design language but for /words/writing/.
+ * Single-source-of-truth: src/data/essays/index.ts + src/data/essays/articles.json
+ * (we read whichever is easier at build time — kept generic, not strict-typed).
+ *
+ * Run from site root:  node scripts/render-words-essays.cjs
+ */
+
+const fs = require("fs");
+const path = require("path");
+
+const SITE_ROOT = path.resolve(__dirname, "..");
+const ARTICLES_JSON = path.join(SITE_ROOT, "src/data/essays/articles.json");
+const ESSAYS_TS_DIR = path.join(SITE_ROOT, "src/data/essays");
+const OUT_DIR = path.join(SITE_ROOT, "public/words/writing");
+const SITE_BASE = "https://arif-fazil.com";
+
+const TODAY = new Date().toISOString().slice(0, 10);
+
+/* ── utilities ─────────────────────────────────────────────────────────── */
+
+function escapeHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function slugify(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function pickLeading(html) {
+  // Strip outer wrapping + first <p> as the excerpt, if it isn't already set.
+  const m = html.match(/<p[^>]*class="lead"[^>]*>([\s\S]*?)<\/p>/i);
+  if (m) return m[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  const m2 = html.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+  if (m2) return m2[1].replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  return "";
+}
+
+/* ── load essay sources ───────────────────────────────────────────────── */
+
+/**
+ * Walk `src/data/essays/` .ts files, run a *very* lightweight regex extract of
+ * the `title`, `date`, `slug`, `tags`, `excerpt`, and `html` fields from the
+ * EssayContent const. We DON'T need to fully parse TS — we only need the
+ * rendered HTML body for our static page.
+ *
+ * Restrictions:
+ *  - Skips files in ./generated/  (auto-generated thin wrappers)
+ *  - Only direct-publication essays (isDirectPublication=true)
+ */
+
+function loadEssaysFromTs() {
+  const files = fs
+    .readdirSync(ESSAYS_TS_DIR)
+    .filter((f) => f.endsWith(".ts") && !f.startsWith("generated") && f !== "types.ts" && f !== "index.ts");
+
+  // First occurrence by slug wins (prefer shortest, newest file — feels canonical)
+  const bySlug = new Map();
+
+  // Sort to prefer shorter filenames (less suffix noise)
+  files.sort((a, b) => a.length - b.length || a.localeCompare(b));
+
+  for (const f of files) {
+    const text = fs.readFileSync(path.join(ESSAYS_TS_DIR, f), "utf8");
+
+    const titleM = text.match(/title:\s*`([^`]+)`/);
+    const dateM = text.match(/date:\s*['"]([^'"]+)['"]/);
+    const slugM = text.match(/slug:\s*['"]([^'"]+)['"]/);
+    const excerptM = text.match(/excerpt:\s*`([^`]+)`/);
+
+    let html = "";
+    const htmlM = text.match(/html:\s*`([\s\S]*?)`,\s*\n\};/);
+    if (htmlM) html = htmlM[1].replace(/\\`/g, "`").replace(/\\\$/g, "$");
+
+    const isDirect = /isDirectPublication:\s*true/.test(text);
+    const companion = (text.match(/href:\s*['"]([^'"]+)['"]/g) || []).map((h) => h.match(/['"]([^'"]+)['"]/)[1]);
+
+    if (!titleM || !slugM) continue;
+
+    const slug = slugM[1];
+    if (bySlug.has(slug)) continue; // dedupe — first match wins
+
+    bySlug.set(slug, {
+      title: titleM[1],
+      date: dateM ? dateM[1] : TODAY,
+      slug,
+      excerpt: excerptM ? excerptM[1] : pickLeading(html),
+      html,
+      isDirectPublication: isDirect,
+      sourceFile: f,
+      companion,
+    });
+  }
+  return Array.from(bySlug.values());
+}
+
+function loadArticlesJson() {
+  const raw = fs.readFileSync(ARTICLES_JSON, "utf8");
+  const jsonText = raw.startsWith("[") ? raw : raw.slice(raw.indexOf("\n") + 1);
+  return JSON.parse(jsonText);
+}
+
+/* ── render per-essay index.html ──────────────────────────────────────── */
+
+function buildEssayHtml(essay) {
+  // Convert the raw <article class="scientific-paper"> body to MakcikGPT-style
+  // tags by stripping wrapper classes that depend on React/SPA tokens.
+  const body = essay.html
+    // Convert <article class="scientific-paper"> wrapper → simple container
+    .replace(/^[\s\S]*?<article[^>]*>/, "")
+    .replace(/<\/article>\s*$/, "");
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${escapeHtml(essay.title)} · arif-fazil.com</title>
+<meta name="description" content="${escapeHtml(essay.excerpt)}">
+<link rel="canonical" href="${SITE_BASE}/words/writing/${encodeURIComponent(essay.slug)}/">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; max-width: 740px; margin: 2rem auto; padding: 0 1.25rem; line-height: 1.65; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; font-size: 1.85rem; line-height: 1.25; margin-top: 0.5rem; }
+  h2 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 0.4rem; margin-top: 2.5rem; font-size: 1.3rem; }
+  h3 { color: #c9d1d9; margin-top: 1.75rem; font-size: 1.05rem; }
+  p { margin: 0.85rem 0; }
+  blockquote { margin: 1.25rem 0; padding: 0.5rem 1rem; color: #8b949e; border-left: 3px solid #30363d; background: #0d1117; font-style: italic; }
+  hr { border: none; border-top: 1px solid #21262d; margin: 2rem 0; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code { background: #161b22; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.92em; color: #f0883e; }
+
+  /* Zen pulse — 3-second pattern */
+  .zen-pulse { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0.75rem; margin: 1.25rem 0; background: #161b22; border: 1px solid #30363d; border-radius: 8px; font-size: 0.85rem; }
+  .zen-pulse .zp-item { display: flex; flex-direction: column; gap: 0.15rem; min-width: 180px; flex: 1 1 180px; }
+  .zen-pulse .zp-ask { color: #6e7681; text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
+  .zen-pulse .zp-val { color: #c9d1d9; }
+  .zen-pulse .zp-val.gold { color: #ffd700; }
+
+  /* Paper header (block from ArticleEssay .paper-header) */
+  .paper-header { margin-bottom: 2rem; padding-bottom: 1.25rem; border-bottom: 1px solid #21262d; }
+  .paper-title { color: #58a6ff; margin: 0.5rem 0; font-size: 1.85rem; line-height: 1.25; }
+  .paper-authors p, .paper-meta p { margin: 0.25rem 0; font-size: 0.9rem; }
+  .paper-authors { margin-top: 1rem; }
+  .paper-meta { color: #6e7681; font-size: 0.78rem; margin-top: 0.75rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .text-forge-dim { color: #8b949e; font-size: 0.85rem; }
+
+  /* Lead */
+  .paper-section .lead, p.lead { color: #ffd700; font-size: 1.05rem; font-weight: 500; }
+
+  /* Breadcrumb */
+  nav.breadcrumb { font-size: 0.85rem; color: #6e7681; margin-bottom: 1rem; }
+  nav.breadcrumb a { color: #58a6ff; }
+
+  /* Footer */
+  footer.meta { color: #6e7681; font-size: 0.8rem; margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid #21262d; }
+  footer.meta code { color: #f0883e; background: transparent; padding: 0; }
+
+  /* Companion / footer tags */
+  .tag { display: inline-block; padding: 0.2rem 0.55rem; margin-right: 0.35rem; border: 1px solid #30363d; border-radius: 999px; font-size: 0.72rem; color: #8b949e; background: #0d1117; }
+</style>
+</head>
+<body>
+
+<!-- Top cognitive anchor -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">← arif-fazil.com</a> · <a href="/words/">/words/</a> · <a href="/words/writing/">/writing/</a>
+</nav>
+
+<article>
+
+<header class="paper-header">
+  <h1>${escapeHtml(essay.title)}</h1>
+  <div class="paper-authors">
+    <p><strong>Muhammad Arif bin Fazil</strong></p>
+    <p class="text-forge-dim">Geoscientist · Architect, arifOS · Petronas Carigali · UW–Madison '13</p>
+    <p class="text-forge-dim">Penang, Malaysia</p>
+  </div>
+  <div class="paper-meta">
+    <p>Published: ${escapeHtml(essay.date)} · Direct Publication · <a href="/words/">/words/</a> context</p>
+    <p>Epistemic Tag: INT — interpretive synthesis · seal 999 / DITEMPA BUKAN DIBERI</p>
+  </div>
+</header>
+
+<!-- Zen pulse — the 3-second anchor -->
+<aside class="zen-pulse" aria-label="Sacred navigation">
+  <div class="zp-item">
+    <span class="zp-ask">Where am I?</span>
+    <span class="zp-val">/words/writing · long-form essay</span>
+  </div>
+  <div class="zp-item">
+    <span class="zp-ask">Why care?</span>
+    <span class="zp-val gold">${escapeHtml(essay.excerpt.slice(0, 90))}${essay.excerpt.length > 90 ? "…" : ""}</span>
+  </div>
+  <div class="zp-item">
+    <span class="zp-ask">What next?</span>
+    <span class="zp-val">Read the next essay · return to index</span>
+  </div>
+</aside>
+
+${body}
+
+</article>
+
+<footer class="meta">
+  <p><strong>Companion pieces</strong> ${(essay.companion || []).map((c) => `<span class="tag">${escapeHtml(c.replace(/^https?:\/\/arif-fazil\.com/, ""))}</span>`).join("")}</p>
+  <p>Canonical URL: <a href="${SITE_BASE}/words/writing/${escapeHtml(essay.slug)}/">${SITE_BASE}/words/writing/${escapeHtml(essay.slug)}/</a></p>
+  <p>Source of truth: <code>src/data/essays/${escapeHtml(essay.sourceFile)}</code> · <code>src/data/essays/index.ts</code> · <code>src/data/essays/articles.json</code></p>
+  <p>Rendered by <code>scripts/render-words-essays.cjs</code>. Ditempa Bukan Diberi.</p>
+</footer>
+
+</body>
+</html>
+`;
+}
+
+/* ── render markdown mirror ───────────────────────────────────────────── */
+
+function buildEssayMarkdown(essay) {
+  // Strip HTML to plain text approximation for AI crawlers
+  const plain = essay.html
+    .replace(/<style[\s\S]*?<\/style>/g, "")
+    .replace(/<script[\s\S]*?<\/script>/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const frontmatter = `---
+article_id: ${essay.slug}
+canonical_url: ${SITE_BASE}/words/writing/${essay.slug}/
+date: ${essay.date}
+author: Muhammad Arif bin Fazil
+epistemic_tag: INT
+risk_level: interpretive-synthesis
+seal: 999
+provenance_status: direct-publication
+version: 1.0
+generated_by: render-words-essays.cjs
+---
+
+`;
+  return frontmatter + "# " + essay.title + "\n\n" + essay.excerpt + "\n\n" + plain + "\n\n---\n\n*Ditempa Bukan Diberi. Source: arif-fazil.com/words/writing/" + essay.slug + "/*\n";
+}
+
+/* ── render top-level index.html ──────────────────────────────────────── */
+
+function buildIndexHtml(essays) {
+  // Newest first
+  const sorted = essays.slice().sort((a, b) => {
+    if (a.date < b.date) return 1;
+    if (a.date > b.date) return -1;
+    return a.slug.localeCompare(b.slug);
+  });
+
+  const items = sorted.map((e) => {
+    return `      <li><a href="/words/writing/${escapeHtml(e.slug)}">${escapeHtml(e.title)}</a> <span class="date">${escapeHtml(e.date)} · seal 999 · INT</span></li>`;
+  }).join("\n");
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing — Long-form Essays on AI Governance, Institutions, AGI · arif-fazil.com</title>
+<meta name="description" content="${sorted.length} long-form essays by Muhammad Arif bin Fazil on AI governance, AGI, institutions, truth, and the constitution of intelligence.">
+<link rel="canonical" href="${SITE_BASE}/words/writing/">
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; max-width: 740px; margin: 2rem auto; padding: 0 1.25rem; line-height: 1.65; background: #0d1117; color: #c9d1d9; }
+  h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 0.5rem; font-size: 1.85rem; }
+  h2 { color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 0.4rem; margin-top: 2.5rem; font-size: 1.3rem; }
+
+  /* Zen Pulse — 3-second pattern */
+  .zen-pulse { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0.75rem; margin: 1rem 0; background: #161b22; border: 1px solid #30363d; border-radius: 8px; font-size: 0.85rem; }
+  .zen-pulse .zp-item { display: flex; flex-direction: column; gap: 0.15rem; min-width: 180px; flex: 1 1 180px; }
+  .zen-pulse .zp-ask { color: #6e7681; text-transform: uppercase; letter-spacing: 1px; font-size: 0.65rem; }
+  .zen-pulse .zp-val { color: #c9d1d9; }
+  .zen-pulse .zp-val.gold { color: #ffd700; }
+
+  /* Series sections — collapsible */
+  .zen-reveal { margin: 0.75rem 0; padding: 0.5rem 0.75rem; background: #0d1117; border-left: 2px solid #30363d; border-radius: 4px; }
+  .zen-reveal summary { cursor: pointer; color: #c9d1d9; padding: 0.25rem 0; }
+  .zen-reveal summary:hover { color: #58a6ff; }
+  .series-emoji { font-size: 1.05rem; margin-right: 0.25rem; }
+  .series-count { color: #6e7681; font-size: 0.8rem; font-weight: normal; }
+  .series-topic { color: #8b949e; font-size: 0.85rem; font-style: italic; margin: 0.5rem 0 0.25rem; }
+  .essay-list { list-style: none; padding: 0; margin: 0.25rem 0 0; }
+  .essay-list li { margin: 0.4rem 0; padding: 0.25rem 0; border-bottom: 1px solid #21262d; font-size: 0.92rem; }
+
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .date { color: #8b949e; font-size: 0.85rem; }
+  .meta { color: #6e7681; font-size: 0.8rem; margin-top: 2rem; }
+
+  /* Thesis epigraph — the keystone line of the trilogy */
+  .epigraph { margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 3px solid #ffd700; background: #161b22; border-radius: 8px; }
+  .epigraph p { margin: 0 0 0.5rem; color: #e6edf3; font-size: 1.05rem; font-style: italic; line-height: 1.55; }
+  .epigraph cite { display: block; color: #8b949e; font-size: 0.78rem; font-style: normal; }
+
+  /* Flat list (legacy / feed parity) — hidden but in DOM for RSS/crawler parity */
+  .flat-list { display: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Breadcrumb" style="font-size: 0.85rem; padding: 0.5rem 0;">
+  <a href="/">← arif-fazil.com</a> · <a href="/words/">/words/</a> · <strong>Writing</strong>
+</nav>
+
+<h1>📜 Writing — Long-form Essays</h1>
+<p>Long-form essays by <a href="/"><strong>Muhammad Arif bin Fazil</strong></a> on AI governance, AGI, institutions, truth, and the constitution of intelligence.</p>
+<p>Canonical index: <a href="/words/writing/">/words/writing/</a> · ${sorted.length} essays · updated ${TODAY}</p>
+
+<!-- Thesis epigraph (keystone of the AGI Paradox trilogy, Arif Fazil) -->
+<blockquote class="epigraph">
+  <p>Humans, institutions, and AI do not become evil because they are malicious. They become evil when they get better at protecting narratives than correcting themselves with reality.</p>
+  <cite>— Arif Fazil · AGI Paradox trilogy · 2026-08-07</cite>
+</blockquote>
+
+<!-- ZEN PULSE -->
+<aside class="zen-pulse" aria-label="Sacred navigation">
+  <div class="zp-item">
+    <span class="zp-ask">Where am I?</span>
+    <span class="zp-val">Writing · /words/</span>
+  </div>
+  <div class="zp-item">
+    <span class="zp-ask">Why care?</span>
+    <span class="zp-val gold">${sorted.length} essays · constitution & intelligence · seal 999</span>
+  </div>
+  <div class="zp-item">
+    <span class="zp-ask">What next?</span>
+    <span class="zp-val">Read the latest essay · return to /words/</span>
+  </div>
+</aside>
+
+<section>
+    <details class="zen-reveal" open>
+      <summary><span class="series-emoji">📜</span> <strong>All Essays</strong> <span class="series-count">(${sorted.length} entries, newest first)</span></summary>
+      <p class="series-topic">AI Governance, AGI, institutions, truth, AGI Paradox trilogy (Aug 2026)</p>
+      <ul class="essay-list">
+${items}
+      </ul>
+    </details>
+</section>
+
+<!-- FLAT LIST — kept for feed/llms.txt parity -->
+<ul class="flat-list" aria-hidden="true">
+${sorted.map((e) => `    <li><a href="/words/writing/${escapeHtml(e.slug)}">${escapeHtml(e.title)}</a> <span class="date">— ${escapeHtml(e.date)} · seal 999 · INT</span></li>`).join("\n")}
+</ul>
+
+<p class="meta">Source of truth: <code>src/data/essays/index.ts</code> + <code>src/data/essays/articles.json</code>. Rendered by <code>scripts/render-words-essays.cjs</code>. <em>Ditempa bukan diberi.</em></p>
+</body>
+</html>
+`;
+}
+
+/* ── main ─────────────────────────────────────────────────────────────── */
+
+function ensureCleanDir(dir) {
+  if (fs.existsSync(dir)) {
+    const files = fs.readdirSync(dir);
+    for (const f of files) {
+      if (f === "index.json" || f === "index.html") continue; // we rewrite these
+      const full = path.join(dir, f);
+      const st = fs.lstatSync(full);
+      if (st.isDirectory() || st.isSymbolicLink()) {
+        fs.rmSync(full, { recursive: true, force: true });
+      } else {
+        fs.unlinkSync(full);
+      }
+    }
+  } else {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+function main() {
+  // Cleanly mirror what prerender-articles.cjs does for makecikgpt.
+  fs.mkdirSync(OUT_DIR, { recursive: true });
+
+  const articles = loadArticlesJson();
+  const articlesBySlug = new Map(articles.map((a) => [a.slug, a]));
+
+  const essays = loadEssaysFromTs().filter((e) => e.isDirectPublication);
+
+  // Also include any direct-publication essays referenced in articles.json but
+  // already shipped through the React SPA — they get the static mirror too.
+  // (not needed for the three new essays; this is the future-proof hook)
+
+  const managed = new Set();
+  let written = 0;
+  for (const essay of essays) {
+    const slug = essay.slug;
+    if (!slug) continue;
+    managed.add(slug);
+
+    const dir = path.join(OUT_DIR, slug);
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, "index.html"), buildEssayHtml(essay), "utf8");
+
+    const md = buildEssayMarkdown(essay);
+    fs.writeFileSync(path.join(OUT_DIR, `${slug}.md`), md, "utf8");
+
+    written++;
+  }
+
+  // Top-level index.html
+  fs.writeFileSync(path.join(OUT_DIR, "index.html"), buildIndexHtml(essays), "utf8");
+
+  console.log(`✓ Wrote ${written + 1} surfaces → ${path.relative(SITE_ROOT, OUT_DIR)}`);
+
+  // Reconcile articles.json slugs with what we actually render — emit a quick diff note
+  const missing = [...articlesBySlug.keys()].filter(
+    (slug) => articlesBySlug.get(slug).isDirectPublication && !managed.has(slug),
+  );
+  if (missing.length) {
+    console.warn(`⚠ articles.json lists direct-publication entries with no static TS source: ${missing.join(", ")}`);
+  }
+}
+
+main();

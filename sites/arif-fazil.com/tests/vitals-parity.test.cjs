@@ -4,9 +4,9 @@
  *
  * Verifies that the three sources of truth agree exactly:
  *   1) Source JSON     — public/data/wealth/petronas_vitals.json
- *   2) Generated HTML  — dist/vitals/index.html
+ *   2) Generated HTML  — dist/propa/index.html
  *   3) Reality JSON-LD — the institutional-vitals-reality <script> block
- *                        embedded in dist/vitals/index.html
+ *                        embedded in dist/propa/index.html
  *
  * Parity contract (B11):
  *   - source JSON tripwires[] count == 9
@@ -32,8 +32,8 @@ const assert = require('node:assert/strict');
 const HERE = __dirname;
 const ROOT = path.resolve(HERE, '..');
 const SOURCE_JSON = path.join(ROOT, 'public/data/wealth/petronas_vitals.json');
-const SOURCE_HTML = path.join(ROOT, 'public/vitals/index.html');
-const DIST_HTML = path.join(ROOT, 'dist/vitals/index.html');
+const SOURCE_HTML = path.join(ROOT, 'public/propa/index.html');
+const DIST_HTML = path.join(ROOT, 'dist/propa/index.html');
 
 function readOrFail(p) {
   if (!fs.existsSync(p)) throw new Error(`missing fixture: ${p}`);
@@ -164,10 +164,10 @@ test('B11-D: every JSON-LD in dist parses cleanly', () => {
 });
 
 // ─── Renderer is idempotent: re-running yields byte-identical dist ───
-test('render-vitals.cjs is idempotent (re-run produces byte-identical dist)', () => {
+test('render-propa.cjs is idempotent (re-run produces byte-identical dist)', () => {
   const { execSync } = require('node:child_process');
   const before = readOrFail(DIST_HTML);
-  execSync('node scripts/render-vitals.cjs', { cwd: ROOT, stdio: 'pipe' });
+  execSync('node scripts/render-propa.cjs', { cwd: ROOT, stdio: 'pipe' });
   const after = readOrFail(DIST_HTML);
   assert.equal(after, before, 'dist changed after re-running renderer (not idempotent)');
 });

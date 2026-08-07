@@ -1,151 +1,71 @@
 {
   "meta": {
-    "date": "2026-08-04",
-    "generated_at": "2026-08-04T15:00:01.818806+08:00",
-    "observed_at": "2026-08-04T07:01:58.446259+00:00",
-    "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
-    "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
+    "date": "2026-08-07",
+    "generated_at": "2026-08-07T19:00:00+08:00",
+    "observed_at": "2026-08-07T11:00:00Z",
+    "source": "arifOS WEALTH — yfinance + IMF WEO + World Bank Open Data",
+    "pulse": "WEEKLY_ORGAN_PULSE",
+    "model_note": "Weekly WEALTH Organ Pulse — w/e Fri 7 Aug 2026. Capital lane: computes evidence, never allocates."
   },
+  "weekly_pulse": {
+    "crude": {
+      "wti": { "close": 77.66, "wow_pct": -8.3, "one_month_pct": 10.3, "unit": "USD/bbl" },
+      "brent": { "close": 82.89, "wow_pct": -8.0, "one_month_pct": 11.8, "unit": "USD/bbl", "brent_wti_spread": 5.20 },
+      "note": "Both benchmarks well off late-July intramonth highs (WTI 93.50, Brent 102.01) — geopolitical risk premium deflating fast.",
+      "source": "Yahoo Finance — CL=F, BZ=F historical prices, as of 7 Aug 2026"
+    },
+    "energy_equities": {
+      "xle": { "close": 58.16, "wow_pct": -1.4, "one_month_pct": 6.4, "as_of": "2026-08-06" },
+      "note": "US energy equities holding up better than crude tape. NYSE Energy Sector Index +1.6% Thu 6 Aug after −1.8% Wed — choppy.",
+      "source": "Yahoo Finance — XLE historical prices, as of 6 Aug 2026"
+    },
+    "gas": {
+      "henry_hub": { "close": 2.65, "wow_pct": -3.6, "one_month_pct": -18.9, "unit": "USD/MMBtu" },
+      "note": "Weak US gas tape. Malaysian LNG pricing is oil-linked/JKM-driven — read-through to PETRONAS gas revenue is limited.",
+      "source": "Yahoo Finance — NG=F historical prices, as of 7 Aug 2026"
+    }
+  },
+  "malaysia_macro": {
+    "gdp": { "2025": 5.1, "2026F": 4.7, "2027F": 4.3, "unit": "pct", "usd_2025": 472.2 },
+    "cpi": { "2025": 1.4, "2026F": 1.9, "2027F": 2.0, "unit": "pct" },
+    "myr": { "end_jun_2026": 4.07, "feb_2026_strong": 3.88, "early_2025_avg": 4.42, "unit": "MYR/USD" },
+    "sources": ["World Bank Open Data", "IMF WEO", "IMF IFS"]
+  },
+  "exploration_economics": {
+    "price_deck": "Spot Brent 83 after −8% week; 1-month range 72–102 → wider P90/P50/P10 bands for EMV runs.",
+    "fx_translation": "Revenue USD-denominated, MYR opex. Ringgit sub-4.00 compresses USD cost coverage — sensitize 3.90 vs 4.30.",
+    "cost_escalation": "CPI 1.9% 2026F supports low real-terms opex/capex escalation for Malaysian offshore.",
+    "demand_risk": "Speed of unwind from July geopolitical spike is key. Premium rebuild → re-rate cash flows; further fade → breakeven focus."
+  },
+  "oil_energy": {
+    "brent_price": 82.89,
+    "wti_price": 77.66,
+    "brent_wow_pct": -8.0,
+    "wti_wow_pct": -8.3
+  },
+  "so_what": [
+    {"label": "CRUDE", "text": "Brent gives back 8% after July geopolitical spike. WTI 77.66."},
+    {"label": "RINGGIT", "text": "MYR 4.07/USD — firmer than early-2025 avg of 4.42."},
+    {"label": "CPI", "text": "Inflation benign at 1.4% — supports low cost escalation for O&G work programs."}
+  ],
   "bursa": {
-    "klci_close": 1729.8399658203125,
-    "klci_change_pct": 0.0,
-    "most_active": null,
-    "top_gainers_search": [],
-    "source_urls": []
+    "klci_close": 1733.83,
+    "klci_change_pct": -0.19,
+    "source": "Yahoo Finance"
   },
   "ringgit": {
-    "usd_myr": 4.093999862670898,
-    "trend": "1 USD = 4.0940 MYR",
-    "sources": []
+    "usd_myr": 4.07,
+    "trend": "1 USD = 4.07 MYR (end-June 2026). Off Feb high of 3.88 but firmer than early-2025 avg of 4.42.",
+    "sources": ["IMF IFS"]
   },
   "economy": {
     "items": [
-      {
-        "title": "Q2 2026 GDP advance estimate 5.8%",
-        "desc": "DOSM released Q2 2026 advance GDP growth at 5.8% YoY on 2026-07-17. BNM does not issue advance estimates.",
-        "category": "GDP",
-        "source_id": "DOSM"
-      },
-      {
-        "title": "OPR unchanged at 3.00%",
-        "desc": "Bank Negara Malaysia Overnight Policy Rate remains 3.00% since May 2023. Next MPC meeting scheduled 2026-09-04.",
-        "category": "SNAPSHOT",
-        "source_id": "BNM"
-      },
-      {
-        "title": "June 2026 CPI headline 2.1%, core 2.0%",
-        "desc": "DOSM June 2026 CPI at 2.1% YoY headline, core 2.0% (plausible but unconfirmed via official release).",
-        "category": "INFLATION",
-        "source_id": "DOSM"
-      }
+      { "title": "GDP Growth 2025", "desc": "Malaysia GDP grew 5.1% in 2025. GDP US$472.2bn.", "category": "GDP", "source_id": "World Bank" },
+      { "title": "GDP Forecast 2026F", "desc": "IMF WEO projects 4.7% growth in 2026, 4.3% in 2027.", "category": "GDP", "source_id": "IMF WEO" },
+      { "title": "CPI Inflation", "desc": "CPI 1.4% (2025). WEO forecast: 1.9% (2026F), 2.0% (2027F). Benign inflation supports low cost escalation.", "category": "CPI", "source_id": "World Bank / IMF WEO" },
+      { "title": "OPR Stability", "desc": "Bank Negara Malaysia maintains OPR at 3.00%.", "category": "SNAPSHOT", "source_id": "BNM" }
     ]
   },
-  "politics": {
-    "narratives": [
-      {
-        "title": "Anwar 52% approval, 42% right direction",
-        "desc": "Merdeka Center June 2026: 52% approve Anwar; 42% say country moving in right direction \u2014 two distinct metrics.",
-        "source_id": "MERDEKA"
-      }
-    ],
-    "economy_policy": [
-      {
-        "title": "BUDI95 fuel subsidy reform",
-        "desc": "BUDI95 launched Sept 27-30 2025: subsidised RON95 RM1.99/L with 300L/month quota for eligible households. Unsubsidised RON95 RM3.72/L. Peninsula diesel subsidy removed June 2024, now RM4.37/L.",
-        "source_id": "KPDN"
-      }
-    ],
-    "regional": [
-      {
-        "title": "Diesel dual pricing: Peninsula vs East Malaysia",
-        "desc": "Peninsula diesel at market RM4.37/L; Sabah and Sarawak retain subsidised RM2.15/L per 2024 rationalisation.",
-        "source_id": "MOF"
-      }
-    ]
-  },
-  "social": {
-    "cost_of_living": [
-      {
-        "title": "Fuel prices: RON95 RM3.72, diesel RM4.37 (Peninsula)",
-        "desc": "Unsubsidised RON95 at RM3.72/L; Peninsula diesel RM4.37/L. BUDI95 provides RM1.99/L for eligible with 300L monthly cap.",
-        "source_id": "KPDN"
-      }
-    ],
-    "labor": [],
-    "youth_career": []
-  },
-  "oil_energy": {
-    "brent_price": 84.68000030517578,
-    "malaysia_oil": [],
-    "energy_transition": []
-  },
-  "global": {
-    "fed": {
-      "items": [
-        {
-          "title": "FOMC July 28-29 meeting upcoming",
-          "desc": "Next FOMC meeting scheduled July 28-29, 2026. No outcome yet. Subsequent meetings: Sep 16, Nov 4, Dec 16.",
-          "source_id": "FOMC"
-        }
-      ]
-    },
-    "china": {
-      "items": []
-    },
-    "asean": {
-      "items": []
-    }
-  },
-  "so_what": [
-    {
-      "domain": "MARKET",
-      "signal": "KLCI holds at 1729.84",
-      "delta": "KLCI closed at 1729.84 on 2026-08-04 per Bursa Malaysia data.",
-      "omega": "Index consolidating near recent range; no major catalyst today.",
-      "xi": "Watch for Q2 earnings season momentum and foreign flow direction.",
-      "psi": "Retirees' EPF-linked portfolios track this level.",
-      "tone": "neutral",
-      "source_id": "BURSA"
-    },
-    {
-      "domain": "FX / RINGGIT",
-      "signal": "Ringgit at 4.0940 vs USD",
-      "delta": "USD/MYR at 4.0940 on 2026-08-04, reflecting modest dollar strength.",
-      "omega": "Ringgit stable within 4.08-4.12 band; BNM likely comfortable.",
-      "xi": "Importers hedge near 4.10; exporters monitor 4.08 support.",
-      "psi": "Household purchasing power for imported goods steady.",
-      "tone": "neutral",
-      "source_id": "BNM"
-    },
-    {
-      "domain": "OIL & GAS",
-      "signal": "Brent drops to $84.68",
-      "delta": "Brent crude at $84.68 on 2026-08-04, down from $88.10 settle on 2026-07-17. [UNVERIFIED PROVENANCE]",
-      "omega": "Lower oil eases import bill but reduces Petronas revenue.",
-      "xi": "Position for potential fuel price review if trend sustains.",
-      "psi": "Lower pump prices help B40 transport costs.",
-      "tone": "caution",
-      "source_id": "UNVERIFIED"
-    },
-    {
-      "domain": "COST OF LIVING",
-      "signal": "RON95 unsubsidised RM3.72, diesel RM4.37",
-      "delta": "BUDI95 subsidised RON95 at RM1.99/L (300L/month quota). Unsubsidised RON95 RM3.72/L. Peninsula diesel RM4.37/L; Sabah/Sarawak RM2.15/L.",
-      "omega": "Subsidy reform intact; fiscal savings continue but household burden persists for non-eligible.",
-      "xi": "Eligible households maximise BUDI95 quota; others budget for market rates.",
-      "psi": "Rural East Malaysians still benefit from diesel subsidy.",
-      "tone": "caution",
-      "source_id": "KPDN"
-    },
-    {
-      "domain": "POLITICS",
-      "signal": "Anwar approval 52% per Merdeka",
-      "delta": "Merdeka Center June 2026 survey: Anwar approval 52%; country direction right 42% (separate question).",
-      "omega": "Majority approval but directional pessimism signals delivery gap.",
-      "xi": "Policy communication must bridge approval-action disconnect.",
-      "psi": "Voters want tangible cost-of-living relief.",
-      "tone": "neutral",
-      "source_id": "MERDEKA"
-    }
-  ]
+  "as_of": "2026-08-07T19:00:00+08:00",
+  "seal": "WEEKLY_PULSE_v1"
 }

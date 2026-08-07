@@ -1,0 +1,29 @@
+# /earth/ — arif-fazil.com Earth Intelligence
+
+## What this is
+The Earth organ of the arifOS federation: a live Macrostrat globe, plate boundaries (PB2002), today's earthquakes (USGS), sovereign well portfolio, and geological evidence register. Every number on this page is read from a live data pipe at load time. If a pipe fails, the number is withheld — nothing is invented.
+
+## Key pages
+- Interactive globe: https://arif-fazil.com/earth/
+- Malay Basin dossier: https://arif-fazil.com/earth/malay-basin/
+- Malay Basin cross-section: https://arif-fazil.com/earth/malay-basin-cross-section.html
+- Kinabalu Basin dossier: https://arif-fazil.com/earth/kinabalu-basin/
+- Kinabalu cross-section: https://arif-fazil.com/earth/kinabalu-cross-section.html
+
+## Data pipes (live at load time)
+- Macrostrat API v2: geologic units, columns, lithology (CC-BY 4.0)
+- USGS Earthquake Hazards: real-time M2.5+ events, 24h window
+- PB2002: 241 plate boundary segments (Bird, 2003)
+- Esri World Imagery: satellite reference basemap
+
+## Sovereign canon
+- wells.json: https://arif-fazil.com/earth/data/wells.json (sovereign well portfolio)
+- studies.json: https://arif-fazil.com/earth/data/studies.json (evidence register)
+
+## Machine surfaces
+- surfaces.json: https://arif-fazil.com/surfaces.json (64 surfaces, fail-closed)
+- MCP: https://geox.arif-fazil.com/mcp (GEOX organ tools)
+- agent.json: https://arif-fazil.com/.well-known/agent.json
+
+## Epistemic
+Numbers are claimed only when pipes return data. Ω₀ ≈ 0.04. DITEMPA BUKAN DIBERI.

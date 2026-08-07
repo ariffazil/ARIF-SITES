@@ -106,7 +106,7 @@
   var host = window.location.hostname;
   if (host === 'arif-fazil.com' || host === 'wealth.arif-fazil.com' || host === 'www.arif-fazil.com') {
     var markets = [
-      { href: '/vitals/', label: 'PETRONAS φ', host: 'wealth' },
+      { href: '/propa/', label: 'PETRONAS φ', host: 'wealth' },
       { href: '/malaysia/', label: 'MALAYSIA φ', host: 'wealth' },
       { href: '/oil/', label: 'OIL', host: 'main' },
       { href: '/gas/', label: 'GAS', host: 'main' },

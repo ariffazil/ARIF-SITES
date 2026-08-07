@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Map — 9 Domains</title>
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --card: #111118;
+    --border: #1a1a28;
+    --text: #c8c8d4;
+    --muted: #6a6a7a;
+    --accent-origin: #d4a853;
+    --accent-proof: #00d4aa;
+    --accent-law: #ff5252;
+    --accent-earth: #4aa8ff;
+    --accent-capital: #f0a050;
+    --accent-voice: #c084fc;
+    --accent-work: #60a5fa;
+    --accent-signal: #34d399;
+    --accent-human: #f472b6;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,sans-serif; padding:2rem; min-height:100vh; }
+  h1 { font-size:1.5rem; font-weight:600; margin-bottom:.25rem; }
+  .subtitle { color:var(--muted); font-size:.85rem; margin-bottom:2rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1rem; }
+  .domain { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.25rem; border-left:3px solid var(--accent); }
+  .domain h2 { font-size:1.05rem; font-weight:600; margin-bottom:.25rem; }
+  .domain .question { color:var(--muted); font-size:.8rem; margin-bottom:.75rem; font-style:italic; }
+  .domain .meta { font-size:.7rem; color:var(--muted); margin-bottom:.75rem; display:flex; gap:.75rem; }
+  .domain .meta span { background:rgba(255,255,255,.04); padding:.15rem .5rem; border-radius:4px; }
+  .surfaces { list-style:none; }
+  .surfaces li { font-size:.8rem; padding:.2rem 0; border-bottom:1px solid rgba(255,255,255,.03); display:flex; justify-content:space-between; }
+  .surfaces li .path { font-family:monospace; font-size:.75rem; color:var(--muted); }
+  .surfaces li .status { font-size:.65rem; padding:1px 6px; border-radius:3px; }
+  .status-live { background:rgba(0,212,170,.12); color:#00d4aa; }
+  .status-redirect { background:rgba(240,160,80,.12); color:#f0a050; }
+  .status-gone { background:rgba(255,82,82,.12); color:#ff5252; }
+  .empty { color:var(--muted); font-size:.8rem; font-style:italic; }
+  .nav-bar { margin-bottom:2rem; padding-bottom:1rem; border-bottom:1px solid var(--border); display:flex; gap:1rem; flex-wrap:wrap; }
+  .nav-bar a { color:var(--muted); text-decoration:none; font-size:.8rem; padding:.3rem .6rem; border-radius:4px; }
+  .nav-bar a:hover, .nav-bar a.active { color:var(--text); background:rgba(255,255,255,.05); }
+  .legend { font-size:.7rem; color:var(--muted); margin-top:2rem; display:flex; gap:1.5rem; }
+  .legend span { display:flex; align-items:center; gap:.25rem; }
+  .dot { width:6px; height:6px; border-radius:50%; display:inline-block; }
+  .dot-live { background:#00d4aa; }
+  .dot-redirect { background:#f0a050; }
+  .dot-gone { background:#ff5252; }
+  footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--border); font-size:.7rem; color:var(--muted); }
+  footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+
+<nav class="nav-bar">
+  <a href="/">← Arif Fazil</a>
+  <a href="/surfaces.json">surfaces.json</a>
+  <a href="/machine/map.json" class="active">machine view</a>
+</nav>
+
+<h1>9 Domains</h1>
+<p class="subtitle">Every piece of content has one home. Generated from <code>surfaces.json</code> — the single canonical catalog.</p>
+
+<div class="grid" id="grid">
+  <div class="domain"><p class="empty">Loading from surfaces.json…</p></div>
+</div>
+
+<div class="legend">
+  <span><span class="dot dot-live"></span> live</span>
+  <span><span class="dot dot-redirect"></span> redirect</span>
+  <span><span class="dot dot-gone"></span> gone</span>
+</div>
+
+<footer>
+  Generated from <a href="/surfaces.json">surfaces.json</a> v2026-08-06 · 
+  <a href="/machine/map.json">machine/map.json</a> · 
+  <a href="/000/">/000/ origin</a> · 
+  <a href="/999/">/999/ proof</a>
+</footer>
+
+<script>
+const ACCENTS = {
+  origin:  '#d4a853',
+  proof:   '#00d4aa', 
+  law:     '#ff5252',
+  earth:   '#4aa8ff',
+  capital: '#f0a050',
+  voice:   '#c084fc',
+  work:    '#60a5fa',
+  signal:  '#34d399',
+  human:   '#f472b6'
+};
+
+const ORDER = ['origin','proof','law','earth','capital','voice','work','signal','human'];
+
+async function load() {
+  try {
+    const r = await fetch('/machine/map.json');
+    const data = await r.json();
+    render(data);
+  } catch(e) {
+    // Fallback: try surfaces.json directly
+    try {
+      const r = await fetch('/surfaces.json');
+      const data = await r.json();
+      renderFromSurfaces(data);
+    } catch(e2) {
+      document.getElementById('grid').innerHTML = '<div class="domain"><p class="empty">Could not load map data.</p></div>';
+    }
+  }
+}
+
+function render(data) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  
+  for (const key of ORDER) {
+    const d = data.domains[key];
+    if (!d) continue;
+    const surf = d.surfaces || [];
+    const liveCount = surf.filter(s => s.status === 'live').length;
+    
+    const card = document.createElement('div');
+    card.className = 'domain';
+    card.style.borderLeftColor = ACCENTS[key] || '#666';
+    
+    let html = `<h2>${d.label}</h2>`;
+    html += `<p class="question">${d.question}</p>`;
+    html += `<div class="meta"><span>${d.verb}</span><span>${d.organ}</span><span>${surf.length} pages (${liveCount} live)</span></div>`;
+    
+    if (surf.length === 0) {
+      html += '<p class="empty">No surfaces yet.</p>';
+    } else {
+      html += '<ul class="surfaces">';
+      for (const s of surf.slice(0, 8)) {
+        html += `<li><span>${s.path}</span><span class="status status-${s.status}">${s.status}</span></li>`;
+      }
+      if (surf.length > 8) html += `<li class="empty">… +${surf.length - 8} more</li>`;
+      html += '</ul>';
+    }
+    
+    card.innerHTML = html;
+    grid.appendChild(card);
+  }
+}
+
+function renderFromSurfaces(data) {
+  // Build domain map from surfaces
+  const domains = {};
+  for (const s of data.surfaces || []) {
+    const dk = s.domain || 'voice';
+    if (!domains[dk]) domains[dk] = { label: dk, question: '', verb: s.verb || '', organ: '', surfaces: [] };
+    domains[dk].surfaces.push(s);
+  }
+  
+  // Add domain definitions
+  const defs = (data.domains && data.domains.list) || {};
+  for (const [k, v] of Object.entries(defs)) {
+    if (domains[k]) {
+      domains[k].label = v.label;
+      domains[k].question = v.question;
+      domains[k].verb = v.verb;
+      domains[k].organ = v.organ;
+    }
+  }
+  
+  render({ domains });
+}
+
+load();
+</script>
+</body>
+</html>

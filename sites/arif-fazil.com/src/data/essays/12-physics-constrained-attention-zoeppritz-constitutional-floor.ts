@@ -11,28 +11,7 @@ const content: EssayContent = {
   excerpt: `Building on the AVO-attention equivalence established in Essay #11, we argue that the mapping is not merely descriptive—it is prescriptive. If transformer attention and AVO anomaly detection implement the same contrast-amplification primitive, then the physics constraints that make AVO reliable (exact Zoeppritz equations, Mudrock line calibration, fluid factor validation) can and must be ported to transformer architectures as constitutional governance floors. We formalize the Physics-Constrained Attention (PCA) framework, demonstrate that the Bayesian Physics-Informed Vision Transformer (BPI-ViT) is a partial reference implementation, and show how the arifOS F1–F13 constitutional floor architecture generalizes this principle beyond geophysics: every transformer deployed in high-stakes domains requires a calibrated baseline—a "Mudrock line for attention"—against which attention anomalies are validated before they become outputs. Without physics-constrained attention, transformer hallucination is not a bug; it is the default behavior of an ungoverned contrast amplifier.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `
-<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">Physics-Constrained Attention: Zoeppritz as Constitutional Floor</h1>
-  <h2 class="paper-subtitle text-xl text-forge-dim mt-4" style="font-style: italic;">Why the AVO-Attention Equivalence Demands Governed Transformers, and How to Build Them</h2>
-
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Senior Exploration Geoscientist · Sovereign Architect, arifOS · GEOX Earth Intelligence</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 5 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Builds on Essay #11: "Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention"</p>
-    <p>Epistemic Tag: CLAIM — awaiting adversarial review. Not peer-reviewed.</p>
-  </div>
-</div>
-
-<!-- Abstract -->
+  html: `<!-- Abstract -->
 <div class="paper-section">
   <h2>Abstract</h2>
   <p>

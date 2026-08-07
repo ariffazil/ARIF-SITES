@@ -1,5 +1,105 @@
 [
   {
+    "id": "s4-4",
+    "title": "I'm Not a Programmer. I Accidentally Invented a New Question for AI.",
+    "date": "2026-08-07",
+    "lang": "en",
+    "series": {
+      "id": "S4",
+      "n": 4
+    },
+    "tags": [
+      "ai-governance",
+      "agi",
+      "arifos",
+      "capability-token",
+      "naming",
+      "evolution-of-agents",
+      "authority",
+      "truth-provenance",
+      "constitutional-ai"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/writing/i-didnt-invent-a-token-i-invented-a-question"
+    },
+    "seal": null
+  },
+  {
+    "id": "s4-3",
+    "title": "Simulative Institutions: The Third Axis of Failure",
+    "date": "2026-08-07",
+    "lang": "en",
+    "series": {
+      "id": "S4",
+      "n": 3
+    },
+    "tags": [
+      "ai-governance",
+      "agi",
+      "institutions",
+      "acemoglu",
+      "simulation",
+      "evil",
+      "arifos"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/writing/the-third-axis-of-failure-what-acemoglu-missed"
+    },
+    "seal": null
+  },
+  {
+    "id": "s4-2",
+    "title": "Truth Is Not Cheap: Why the Path to AGI Will Consume More Tokens, More Compute, and More Patience",
+    "date": "2026-08-07",
+    "lang": "en",
+    "series": {
+      "id": "S4",
+      "n": 2
+    },
+    "tags": [
+      "ai-governance",
+      "agi",
+      "truth",
+      "verification",
+      "cost",
+      "tokens",
+      "civilization",
+      "arifos"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens"
+    },
+    "seal": null
+  },
+  {
+    "id": "s4-1",
+    "title": "The AGI Paradox: Why Bigger Models Won't Save Us, and Why the Smartest Thing in the Room Might Be an Institution",
+    "date": "2026-08-07",
+    "lang": "en",
+    "series": {
+      "id": "S4",
+      "n": 1
+    },
+    "tags": [
+      "ai-governance",
+      "agi",
+      "institutions",
+      "intelligence",
+      "governance",
+      "arifos",
+      "separation-of-powers",
+      "constitutional-ai"
+    ],
+    "dest": {
+      "type": "onsite",
+      "path": "/writing/the-agi-paradox-why-bigger-models-wont-save-us"
+    },
+    "seal": null
+  },
+  {
     "id": "s1-1",
     "title": "Accidentally Built Something I Don't Fully Understand",
     "date": "2025-12-07",

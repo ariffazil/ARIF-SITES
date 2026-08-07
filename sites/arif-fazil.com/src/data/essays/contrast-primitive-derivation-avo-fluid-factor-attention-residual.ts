@@ -8,28 +8,7 @@ const content: EssayContent = {
   excerpt: `The third and final paper in the EUREKA trilogy. We present the explicit, step-by-step mathematical derivation establishing the structural equivalence between the AVO fluid factor ΔF and the transformer attention logit residual δᵢ. Starting from the exact Zoeppritz equations through the Aki–Richards linearization and Shuey two-term approximation, and in parallel from the scaled dot-product attention mechanism through softmax normalization, we derive both contrast operators in a shared notational framework. We provide a first-order Taylor expansion proving that both systems compute a residual against a calibrated baseline, then amplify deviations. Every condition, every assumption, and every boundary of equivalence is explicitly stated. This paper is the mathematical lock-in: the skeleton, bone by bone, with every joint labeled.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">The Contrast Primitive Derivation</h1>
-  <h2 class="paper-subtitle text-xl text-forge-dim mt-4" style="font-style: italic;">A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual</h2>
-  <h3 class="text-lg text-forge-gold mt-2" style="font-weight: 600;">Completing the EUREKA Trilogy · Essay #13</h3>
-
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Senior Exploration Geoscientist · Sovereign Architect, arifOS · GEOX Earth Intelligence</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 5 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Trilogy: Essay #11 (The Bridge) → Essay #12 (The Consequences) → Essay #13 (The Derivation)</p>
-    <p>Epistemic Tag: CLAIM — awaiting adversarial review. Not peer-reviewed.</p>
-  </div>
-</div>
-
-<!-- Abstract -->
+  html: `<!-- Abstract -->
 <div class="paper-section">
   <h2>Abstract</h2>
   <p>

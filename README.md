@@ -17,7 +17,9 @@ doctrine: Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 > **arif-fazil.com is the surface. One domain. Many organs. One truth.**
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
-**arif-fazil.com** is the unified public web surface for the entire arifOS Federation. Every organ has a presence under one sovereign domain — one entry point for humans, agents, and AI scrapers to discover the full institution. Legacy subdomains are preserved as 301 redirects, never deleted, never broken.
+**arif-fazil.com** is the unified public **human world model** for the arifOS Federation — one entry point for humans, agents, and scrapers.
+
+**Organ domains** (`geox` · `wealth` · `well` · `mcp` · `arifos` …) are **agent doors and MCP edges**, not rival human home pages. Link them from machine footer / Federation / Connect; do not put them on the primary nav. Full map: [`docs/AGENTIC_WEB_WORLD_MODEL.md`](./docs/AGENTIC_WEB_WORLD_MODEL.md). Narrative organ paths stay under the apex (`/arifos/`, `/geox/`, …). Legacy subdomains redirect or serve protocol doors — never delete, never break.
 
 ---
 

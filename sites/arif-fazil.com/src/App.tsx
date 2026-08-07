@@ -19,6 +19,7 @@ import Proof from '@/pages/ProofArrow';
 import { CommodityPage } from '@/pages/CommodityPage';
 import { InstitutionPage } from '@/pages/InstitutionPage';
 import { NotFound } from '@/pages/NotFound';
+import EarthPage from '@/pages/EarthPage';
 
 import { NSElectionPage } from '@/pages/NSElectionPage';
 import { PlaybookPage } from '@/pages/PlaybookPage';
@@ -43,30 +44,83 @@ function App() {
         <ArrowNavbar />
         <main className="site-main" id="main-content">
           <Routes>
-            {/* Home — Arrow of Time hero */}
+            {/* ═══════════════ HOME ═══════════════ */}
             <Route path="/" element={<Home />} />
 
-            {/* Earth — Macrostrat globe is static HTML at /earth/ (full document).
-                Client-side SPA must not replace it; force hard navigation. */}
-            <Route path="/earth" element={<EarthGlobeRedirect />} />
+            {/* ═══════════════ EARTH ═══════════════ */}
+            <Route path="/earth" element={<EarthPage />} />
             <Route path="/earth/" element={<EarthGlobeRedirect />} />
             <Route path="/earth/*" element={<EarthGlobeRedirect />} />
 
-            {/* Economics — human essay register; live briefing still at /wealth-live */}
+            {/* ═══════════════ WORLD ═══════════════ */}
+            <Route path="/world" element={<World />} />
+            <Route path="/world/" element={<World />} />
+            {/* World → MakcikGPT */}
+            <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
+            <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
+            <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
+            <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
+            {/* World → Commodities */}
+            <Route path="/world/oil" element={<CommodityPageOil />} />
+            <Route path="/world/gas" element={<CommodityPageGas />} />
+            <Route path="/world/gold" element={<CommodityPageGold />} />
+            <Route path="/world/klci" element={<CommodityPageKlci />} />
+            <Route path="/world/usdmyr" element={<CommodityPageUsdmyr />} />
+            {/* World → Politics (legacy root-level kept for backcompat) */}
+            <Route path="/world/politics" element={<PoliticsHub />} />
+            <Route path="/world/politics/" element={<PoliticsHub />} />
+            <Route path="/world/politics/ns-election" element={<NSElectionPage />} />
+            <Route path="/world/politics/ns-election/" element={<NSElectionPage />} />
+            <Route path="/world/politics/ns-election/playbook" element={<PlaybookPage />} />
+            <Route path="/world/politics/ns-election/playbook/" element={<PlaybookPage />} />
+            <Route path="/world/politics/shadow" element={<ShadowPMs />} />
+            <Route path="/world/politics/shadow/" element={<ShadowPMs />} />
+            <Route path="/world/politics/shadow/board" element={<ShadowBoard />} />
+            <Route path="/world/politics/shadow/board/" element={<ShadowBoard />} />
+            <Route path="/world/politics/shadow/derita" element={<DeritaMap />} />
+            <Route path="/world/politics/shadow/derita/" element={<DeritaMap />} />
+            {/* World → Economics (commodity pages) */}
+            <Route path="/world/economics" element={<Economics />} />
+            <Route path="/world/economics/" element={<Economics />} />
+            <Route path="/world/economics/article/:slug" element={<WealthArticle />} />
+
+            {/* ═══════════════ WORDS ═══════════════ */}
+            <Route path="/words" element={<Writing />} />
+            <Route path="/words/" element={<Writing />} />
+            <Route path="/words/writing" element={<Writing />} />
+            <Route path="/words/writing/" element={<Writing />} />
+            <Route path="/words/writing/:slug" element={<EssayPage />} />
+            <Route path="/words/doctrine" element={<Doctrine />} />
+            <Route path="/words/doctrine/" element={<Doctrine />} />
+
+            {/* ═══════════════ WORK ═══════════════ */}
+            <Route path="/work" element={<Missions />} />
+            <Route path="/work/" element={<Missions />} />
+            <Route path="/work/missions" element={<Missions />} />
+            <Route path="/work/missions/" element={<Missions />} />
+            <Route path="/work/proof" element={<Proof />} />
+            <Route path="/work/proof/" element={<Proof />} />
+
+            {/* ═══════════════ LEGACY — BACKWARD COMPAT ═══════════════ */}
+            {/* Legacy Earth */}
+            <Route path="/discoveries" element={<Navigate to="/earth" replace />} />
+            <Route path="/discoveries/" element={<Navigate to="/earth" replace />} />
+
+            {/* Legacy World → Economics */}
             <Route path="/economics" element={<Economics />} />
             <Route path="/economics/" element={<Economics />} />
             <Route path="/economics/article/:slug" element={<WealthArticle />} />
             <Route path="/wealth-live" element={<Wealth />} />
             <Route path="/wealth-live/" element={<Wealth />} />
-            {/* World — civic journalism + commodities + spatial politics */}
-            <Route path="/world" element={<World />} />
-            <Route path="/world/" element={<World />} />
+            <Route path="/wealth" element={<Navigate to="/world/economics" replace />} />
+            <Route path="/wealth/" element={<Navigate to="/world/economics" replace />} />
+            <Route path="/wealth/article/:slug" element={<WealthArticle />} />
+
+            {/* Legacy World → Politics */}
             <Route path="/politics" element={<PoliticsHub />} />
             <Route path="/politics/" element={<PoliticsHub />} />
             <Route path="/malaysia" element={<PoliticsHub />} />
             <Route path="/malaysia/" element={<PoliticsHub />} />
-            {/* /vitals is PETRONAS VITALS (static singleton at /vitals/). Never steal for politics. */}
-            <Route path="/vitals" element={<Navigate to="/vitals/" replace />} />
             <Route path="/politics/ns-election" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/" element={<NSElectionPage />} />
             <Route path="/politics/ns-election/playbook" element={<PlaybookPage />} />
@@ -77,17 +131,13 @@ function App() {
             <Route path="/politics/shadow/board/" element={<ShadowBoard />} />
             <Route path="/politics/shadow/derita" element={<DeritaMap />} />
             <Route path="/politics/shadow/derita/" element={<DeritaMap />} />
-            {/* MakcikGPT — canonical path */}
-            <Route path="/world/makcikgpt" element={<MakcikGPTAlias />} />
-            <Route path="/world/makcikgpt/" element={<MakcikGPTAlias />} />
-            <Route path="/world/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
-            <Route path="/world/makcikgpt/:slug" element={<MakcikGptArticle />} />
-            {/* Commodities & Market Signal Terminals */}
-            <Route path="/world/oil" element={<CommodityPageOil />} />
-            <Route path="/world/gas" element={<CommodityPageGas />} />
-            <Route path="/world/gold" element={<CommodityPageGold />} />
-            <Route path="/world/klci" element={<CommodityPageKlci />} />
-            <Route path="/world/usdmyr" element={<CommodityPageUsdmyr />} />
+
+            {/* Legacy World → PROPA */}
+            <Route path="/vitals" element={<Navigate to="/world/propa/" replace />} />
+            <Route path="/propa" element={<Navigate to="/world/propa/" replace />} />
+            <Route path="/propa/" element={<Navigate to="/world/propa/" replace />} />
+
+            {/* Legacy World → Commodities */}
             <Route path="/oil" element={<CommodityPageOil />} />
             <Route path="/oil/" element={<CommodityPageOil />} />
             <Route path="/gas" element={<CommodityPageGas />} />
@@ -99,52 +149,10 @@ function App() {
             <Route path="/usdmyr" element={<CommodityPageUsdmyr />} />
             <Route path="/usdmyr/" element={<CommodityPageUsdmyr />} />
 
-            {/* Read / Writing — human archive register */}
-            <Route path="/read" element={<Writing />} />
-            <Route path="/read/" element={<Writing />} />
-            <Route path="/writing" element={<Writing />} />
-            <Route path="/writing/" element={<Writing />} />
-            <Route path="/writing/:slug" element={<EssayPage />} />
-
-            {/* Doctrine & Federation — constitutional register */}
-            <Route path="/doctrine" element={<Doctrine />} />
-            <Route path="/doctrine/" element={<Doctrine />} />
-            <Route path="/federation" element={<Navigate to="/doctrine" replace />} />
-            <Route path="/federation/" element={<Navigate to="/doctrine" replace />} />
-
-            {/* Proof chamber (SPA) — static /999/ artifacts remain on disk */}
-            <Route path="/proof" element={<Proof />} />
-            <Route path="/proof/" element={<Proof />} />
-            {/* Missions — human cockpit (machines use /missions.json) */}
-            <Route path="/missions" element={<Missions />} />
-            <Route path="/missions/" element={<Missions />} />
-
-            {/* Institution */}
-            <Route path="/institution" element={<InstitutionPage />} />
-            <Route path="/institution/" element={<InstitutionPage />} />
-            <Route path="/verify" element={<Navigate to="/institution" replace />} />
-            <Route path="/verify/" element={<Navigate to="/institution" replace />} />
-            <Route path="/compliance" element={<Navigate to="/institution" replace />} />
-            <Route path="/compliance/" element={<Navigate to="/institution" replace />} />
-
-            {/* Machine & Genesis */}
-            <Route path="/000" element={<Genesis />} />
-            <Route path="/000/" element={<Genesis />} />
-            <Route path="/genesis" element={<Genesis />} />
-            <Route path="/genesis/" element={<Genesis />} />
-
-            {/* Backward-compat redirects */}
-            <Route path="/rss" element={<Navigate to="/feed.xml" replace />} />
-            <Route path="/rss/" element={<Navigate to="/feed.xml" replace />} />
-            <Route path="/canon" element={<Navigate to="/doctrine" replace />} />
-            <Route path="/canon/" element={<Navigate to="/doctrine" replace />} />
-            <Route path="/constellation" element={<Navigate to="/federation" replace />} />
-            <Route path="/constellation/" element={<Navigate to="/federation" replace />} />
-            <Route path="/discoveries" element={<Navigate to="/earth" replace />} />
-            <Route path="/discoveries/" element={<Navigate to="/earth" replace />} />
-            <Route path="/wealth" element={<Navigate to="/economics" replace />} />
-            <Route path="/wealth/" element={<Navigate to="/economics" replace />} />
-            <Route path="/wealth/article/:slug" element={<WealthArticle />} />
+            {/* Legacy MakcikGPT redirects */}
+            <Route path="/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
+            <Route path="/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
+            <Route path="/makcikgpt/:slug" element={<MakcikGptRedirect />} />
             <Route path="/wealth/makcikgpt" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/wealth/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
@@ -153,9 +161,48 @@ function App() {
             <Route path="/economics/makcikgpt/" element={<Navigate to="/world/makcikgpt" replace />} />
             <Route path="/economics/makcikgpt/index" element={<Navigate to="/world/makcikgpt/" replace />} />
             <Route path="/economics/makcikgpt/:slug" element={<MakcikGptRedirect />} />
-            <Route path="/essays" element={<Navigate to="/writing" replace />} />
-            <Route path="/essays/" element={<Navigate to="/writing" replace />} />
+
+            {/* Legacy Words */}
+            <Route path="/writing" element={<Writing />} />
+            <Route path="/writing/" element={<Writing />} />
+            <Route path="/writing/:slug" element={<EssayPage />} />
+            <Route path="/read" element={<Navigate to="/words" replace />} />
+            <Route path="/read/" element={<Navigate to="/words" replace />} />
+            <Route path="/essays" element={<Navigate to="/words/writing" replace />} />
+            <Route path="/essays/" element={<Navigate to="/words/writing" replace />} />
             <Route path="/essays/:slug" element={<EssayRedirect />} />
+            <Route path="/doctrine" element={<Doctrine />} />
+            <Route path="/doctrine/" element={<Doctrine />} />
+            <Route path="/federation" element={<Navigate to="/words/doctrine" replace />} />
+            <Route path="/federation/" element={<Navigate to="/words/doctrine" replace />} />
+            <Route path="/canon" element={<Navigate to="/words/doctrine" replace />} />
+            <Route path="/canon/" element={<Navigate to="/words/doctrine" replace />} />
+            <Route path="/constellation" element={<Navigate to="/words/doctrine" replace />} />
+            <Route path="/constellation/" element={<Navigate to="/words/doctrine" replace />} />
+
+            {/* Legacy Work */}
+            <Route path="/missions" element={<Missions />} />
+            <Route path="/missions/" element={<Missions />} />
+            <Route path="/proof" element={<Proof />} />
+            <Route path="/proof/" element={<Proof />} />
+            <Route path="/verify" element={<Navigate to="/work/proof" replace />} />
+            <Route path="/verify/" element={<Navigate to="/work/proof" replace />} />
+
+            {/* Legacy Institution */}
+            <Route path="/institution" element={<InstitutionPage />} />
+            <Route path="/institution/" element={<InstitutionPage />} />
+            <Route path="/compliance" element={<Navigate to="/work/proof" replace />} />
+            <Route path="/compliance/" element={<Navigate to="/work/proof" replace />} />
+
+            {/* Genesis (HOME) */}
+            <Route path="/000" element={<Genesis />} />
+            <Route path="/000/" element={<Genesis />} />
+            <Route path="/genesis" element={<Genesis />} />
+            <Route path="/genesis/" element={<Genesis />} />
+
+            {/* Misc */}
+            <Route path="/rss" element={<Navigate to="/feed.xml" replace />} />
+            <Route path="/rss/" element={<Navigate to="/feed.xml" replace />} />
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
@@ -189,7 +236,7 @@ function MakcikGptRedirect() {
 
 function EssayRedirect() {
   const { slug } = useParams();
-  return <Navigate to={`/writing/${slug ?? ''}`} replace />;
+  return <Navigate to={`/words/writing/${slug ?? ''}`} replace />;
 }
 
 export default App;

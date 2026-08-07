@@ -1,0 +1,95 @@
+{
+  "schema": "arifos.federation.manifest.v1",
+  "version": "2026-08-06",
+  "doctrine": "Single entrypoint for AI agents. One fetch. Every door from here. Replaces 18 scattered .well-known files.",
+  "federation_root": "https://arif-fazil.com",
+  "sovereign": {
+    "identity": "Muhammad Arif bin Fazil",
+    "authority": "F13 SOVEREIGN",
+    "proof": "/soul.json"
+  },
+  "constitution": {
+    "floors": "/floors.json",
+    "charter": "/charter/",
+    "governance": "/governance/",
+    "doctrine": "/doctrine/",
+    "law_namespace": "/law/"
+  },
+  "domains": {
+    "origin":  { "label": "Origin",  "question": "Where did this start?",    "path": "/origin/",  "scope": "SOVEREIGN",     "organ": "arifOS" },
+    "proof":   { "label": "Proof",   "question": "Is this true?",            "path": "/proof/",   "scope": "CROSS_CUTTING", "organ": "arifOS / VAULT999" },
+    "law":     { "label": "Law",     "question": "What are the rules?",      "path": "/law/",     "scope": "CROSS_CUTTING", "organ": "arifOS" },
+    "earth":   { "label": "Earth",   "question": "What's under our feet?",   "path": "/earth/",   "scope": "EARTH",         "organ": "GEOX" },
+    "capital": { "label": "Capital", "question": "What's it worth?",         "path": "/capital/", "scope": "INSTITUTION",    "organ": "WEALTH" },
+    "voice":   { "label": "Voice",   "question": "What do I think?",         "path": "/voice/",   "scope": "SOVEREIGN",     "organ": "Arif" },
+    "work":    { "label": "Work",    "question": "What am I building?",      "path": "/work/",    "scope": "INSTITUTION",    "organ": "A-FORGE + AAA" },
+    "signal":  { "label": "Signal",  "question": "How do I reach out?",      "path": "/signal/",  "scope": "EARTH",         "organ": "HERMES" },
+    "human":   { "label": "Human",   "question": "Am I well?",               "path": "/human/",   "scope": "HUMAN",         "organ": "WELL" }
+  },
+  "agents": {
+    "start_here": "/machine/manifest.json",
+    "map": "/machine/map.json",
+    "surfaces": "/surfaces.json",
+    "llms": "/llms.txt",
+    "llms_full": "/llms-full.txt",
+    "page": "/page.json",
+    "missions": "/missions.json",
+    "sitemap": "/sitemap.xml",
+    "feed": "/feed.xml"
+  },
+  "identity": {
+    "agent_card": "/.well-known/agent-card.json",
+    "agent_json": "/.well-known/agent.json",
+    "did": "/.well-known/did.json",
+    "did_config": "/.well-known/did-configuration.json",
+    "identity": "/.well-known/identity.json",
+    "soul": "/soul.json"
+  },
+  "capabilities": {
+    "manifest": "/.well-known/capability.json",
+    "federation": "/.well-known/capabilities.json",
+    "webmcp": "/.well-known/webmcp.json",
+    "mcp_gateway": "https://mcp.arif-fazil.com/mcp",
+    "a2a_gateway": "https://aaa.arif-fazil.com/a2a"
+  },
+  "knowledge": {
+    "corpus": "/knowledge/corpus.json",
+    "observatory_snapshot": "/.well-known/observatory-snapshot-latest.json",
+    "governance": "/.well-known/governance.jsonld"
+  },
+  "ai_twins": {
+    "makcikgpt": {
+      "path": "/world/makcikgpt/",
+      "articles": 57,
+      "language": "Bahasa Malaysia",
+      "feed": "/feed.xml"
+    },
+    "syedos": {
+      "path": "/syedos/",
+      "status": "orphan — pending surface",
+      "description": "SYED OS persona site — dashboard, emas, heal, nasilemak, rental-swot"
+    },
+    "abangsado": {
+      "path": "/abangsado-flex.mp4",
+      "status": "stranded — no landing page",
+      "description": "ABANG SADO flex video, unreferenced"
+    }
+  },
+  "design_system": {
+    "canon": "PRIMER-1 (sealed 2026-08-01)",
+    "colors": "yellow (human) · blue (institution) · green-blue (earth) · red (sovereign, rationed)",
+    "type": "IBM Plex — Sans (UI) · Serif (doctrine) · Mono (machine)",
+    "patterns": "chordial-light · chordial-dense · orthogonal-fractal · bare",
+    "docs": "/canon/design-primer.md"
+  },
+  "federation_organs": {
+    "arifos":    { "port": 8088,  "role": "kernel",     "url": "https://arifos.arif-fazil.com" },
+    "aforge":    { "port": 7071,  "role": "executor",   "url": "https://forge.arif-fazil.com" },
+    "aaa":       { "port": 3001,  "role": "cockpit",    "url": "https://aaa.arif-fazil.com" },
+    "geox":      { "port": 8081,  "role": "earth",      "url": "https://geox.arif-fazil.com" },
+    "wealth":    { "port": 18082, "role": "capital",    "url": "https://wealth.arif-fazil.com" },
+    "well":      { "port": 18083, "role": "human",      "url": "https://well.arif-fazil.com" },
+    "hermes":    { "port": 18901, "role": "bridge",     "url": "https://claw.arif-fazil.com" },
+    "arifflow":  { "port": 7073,  "role": "metabolism", "url": null }
+  }
+}

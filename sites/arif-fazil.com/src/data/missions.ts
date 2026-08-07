@@ -58,7 +58,7 @@ export const MISSIONS: Mission[] = [
     organs: ['GEOX', 'WEALTH', 'arifOS'],
     surfaces: [
       { label: 'Earth wells', href: '/earth' },
-      { label: 'PETRONAS VITALS', href: '/wealth/vitals/' },
+      { label: 'PETRONAS PROPA', href: '/propa/' },
       { label: 'Observatory', href: 'https://arifos.arif-fazil.com' },
     ],
     kernelHint: 'arif_init → arif_observe → arif_think',
@@ -117,7 +117,7 @@ export const MISSIONS: Mission[] = [
       'Health, drift, vitality (WELL), tripwires, live market proxies — alarms without noise.',
     organs: ['WELL', 'WEALTH', 'arifOS'],
     surfaces: [
-      { label: 'VITALS', href: '/wealth/vitals/' },
+      { label: 'PROPA', href: '/propa/' },
       { label: 'Pulse', href: '/pulse/' },
       { label: 'WELL', href: 'https://well.arif-fazil.com' },
     ],

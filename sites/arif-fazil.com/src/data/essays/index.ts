@@ -14,6 +14,11 @@ import e10 from "./10-the-real-battle-in-ai-will-not-be-model-vs-model";
 import e11 from "./11-contrast-detection-universal-computational-primitive-avo-attention";
 import e12 from "./12-physics-constrained-attention-zoeppritz-constitutional-floor";
 import e13 from "./13-derivation-avo-attention-contrast-primitive";
+import e23 from "./23-petronas-23-years-in-brazil";
+import e24 from "./24-the-agi-paradox-why-bigger-models-wont-save-us";
+import e25 from "./25-truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens";
+import e26 from "./26-the-third-axis-of-failure-what-acemoglu-missed";
+import e27 from "./27-i-didnt-invent-a-token-i-invented-a-question";
 import e15 from "./growing-intelligence-without-losing-our-soul-from-binatang-to-warga";
 import e18 from "./18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system";
 import e19 from "./19-the-tool-is-the-thought";
@@ -73,7 +78,7 @@ import g47 from "./generated/g_scar_behind_the_vision";
 import g48 from "./generated/g_manifesto_of_forged_intelligence";
 import g49 from "./generated/g_arifos_as_a_prism";
 
-export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
+export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
 
 export const allEssays: EssayMeta[] = [
   {
@@ -585,7 +590,52 @@ export const allEssays: EssayMeta[] = [
     tags: ["arifOS", "AgenticIntelligence", "INIT", "Naming", "ConstitutionalAI", "MCP", "AIGovernance", "Kernel", "GodelLock", "DITEMPABUKANDIBERI"],
     mediumUrl: "",
     isDirectPublication: true,
-  }
+  },
+  {
+    title: `23 Years in Brazil: What Petronas Bought, Spent, and Walked Away With`,
+    date: "2026-08-06",
+    slug: "petronas-23-years-in-brazil",
+    excerpt: `23 years, US$6.7 billion gross, US$2.5 billion recovered, US$4.2 billion net sunk, US$4.0 billion still on the books — Petronas's Brazil account is roughly break-even. The widely-reported Mola-1 dry hole is rounding error; the real story is TV/EM-III's quiet US$2 billion cashflow, the Sépia stake still earning NPV, and a transfer-pricing tail risk of US$85–280 million that's now the live question.`,
+    tags: ["WEALTH", "PETRONAS", "Brazil", "CapitalRecycling", "Upstream", "PreSalt", "Mola-1", "Sepia", "TartarugaVerde", "TransferPricing", "Suriname", "VitalsContext"],
+    mediumUrl: "https://arif-fazil.com/writing/petronas-23-years-in-brazil/",
+    isDirectPublication: true,
+  },
+  {
+    title: `The AGI Paradox: Why Bigger Models Won't Save Us, and Why the Smartest Thing in the Room Might Be an Institution`,
+    date: "2026-08-07",
+    slug: "the-agi-paradox-why-bigger-models-wont-save-us",
+    excerpt: `The smarter an AI becomes, the less important intelligence becomes — and the more the bottleneck shifts to trust, verification, coordination, accountability, and governance. The closer we get to AGI, the less the problem resembles computer science and the more it resembles civilization itself.`,
+    tags: ["ai-governance", "agi", "institutions", "intelligence", "governance", "arifos", "separation-of-powers", "constitutional-ai"],
+    mediumUrl: "https://arif-fazil.com/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/",
+    isDirectPublication: true,
+  },
+  {
+    title: `Truth Is Not Cheap: Why the Path to AGI Will Consume More Tokens, More Compute, and More Patience`,
+    date: "2026-08-07",
+    slug: "truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens",
+    excerpt: `Everyone wants AI to become cheaper. But people assume intelligence is the expensive part — it isn't. The expensive part is truth, and truth has never been cheap. The closer we get to real AGI, the less we will optimize for generating answers, and the more we will optimize for proving those answers deserve to exist.`,
+    tags: ["ai-governance", "agi", "truth", "tokens", "compute", "verification", "civilization", "arifos", "cost-curve", "institutional-cost"],
+    mediumUrl: "https://arif-fazil.com/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/",
+    isDirectPublication: true,
+  },
+  {
+    title: `Simulative Institutions: The Third Axis of Failure`,
+    date: "2026-08-07",
+    slug: "the-third-axis-of-failure-what-acemoglu-missed",
+    excerpt: `Acemoglu explains why nations fail through institutions. But there is a third axis missing: simulation. Good institutions, smart people, and capable AI become dangerous not through corruption, but by gradually optimizing for the appearance of reality instead of maintaining contact with it.`,
+    tags: ["ai-governance", "agi", "institutions", "acemoglu", "simulation", "inclusive", "extractive", "reality-contact", "civilizational-failure", "arifos", "constitutional-ai"],
+    mediumUrl: "https://arif-fazil.com/words/writing/the-third-axis-of-failure-what-acemoglu-missed/",
+    isDirectPublication: true,
+  },
+  {
+    title: `I'm Not a Programmer. I Accidentally Invented a New Question for AI.`,
+    date: "2026-08-07",
+    slug: "i-didnt-invent-a-token-i-invented-a-question",
+    excerpt: `Or: how a token rename turned into a theory of authority, truth, and the future evolution of agents. A geologist wrote a constitution. The agents wrote most of the Python. The most important thing he contributed wasn't code — it was naming.`,
+    tags: ["ai-governance", "naming", "authority", "truth", "constitutional-ai", "arifos", "founder", "introspection"],
+    mediumUrl: "https://arif-fazil.com/words/writing/i-didnt-invent-a-token-i-invented-a-question/",
+    isDirectPublication: true,
+  },
 ];
 
 export function getEssay(slug: string) {
@@ -612,6 +662,10 @@ const CURATED_SLUGS: Record<string, string> = {
   "survival-of-the-fittest-tools": "AI Governance",
   "three-timelines-one-boundary": "AI Governance",
   "agentic-intelligence-big-bang": "AI Governance",
+  "the-agi-paradox-why-bigger-models-wont-save-us": "AI Governance",
+  "truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens": "AI Governance",
+  "the-third-axis-of-failure-what-acemoglu-missed": "AI Governance",
+  "i-didnt-invent-a-token-i-invented-a-question": "AI Governance",
 
   // 🧠 Constitutional AI
   "ai-constitution-based-on-physics": "Constitutional AI",
@@ -639,6 +693,9 @@ const CURATED_SLUGS: Record<string, string> = {
   "malaysia-will-miss-agi-siti-nurhaliza-karaoke": "Malaysia & Language",
   "rukun-agi-five-pillars": "Malaysia & Language",
 
+  // 🏛️ Institutional Vitals
+  "petronas-23-years-in-brazil": "Institutional Vitals",
+
   // 🪞 Human Reflection
   "the-first-act-of-creation-is-not-building-it-is-naming": "Human Reflection",
   "paradox-of-language": "Human Reflection",
@@ -654,6 +711,7 @@ const DOMAIN_ORDER = [
   "Geophysics × AI",
   "Malaysia & Language",
   "Human Reflection",
+  "Institutional Vitals",
 ];
 
 export const curatedEssays: EssayMeta[] = allEssays

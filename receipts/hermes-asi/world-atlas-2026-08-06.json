@@ -1,0 +1,108 @@
+{
+  "receipt_id": "WORLD-ATLAS-2026-08-06-T1651",
+  "agent": "hermes-asi",
+  "role": "333-AGI",
+  "mission": "arif-fazil.com/world revamp — SOT Atlas scaffold + build",
+  "timestamp_utc": "2026-08-06T05:21:00Z",
+  "authority_state": "PROPOSAL",
+  "canon_touched": false,
+  "files_created": 14,
+  "files_modified_canon": 0,
+  "build": {
+    "tool": "vite 5.4.21",
+    "tsc": "5.7.2",
+    "type": "module",
+    "duration_s": 1.57,
+    "exit_code": 0,
+    "modules_transformed": 322,
+    "errors": 0,
+    "warnings": 1
+  },
+  "bundle": {
+    "dist_index_html": {"bytes": 1214, "gzip": 646},
+    "dist_css": {"bytes": 10933, "gzip": 2492},
+    "dist_map_chunk": {"bytes": 109328, "gzip": 38180},
+    "dist_app_chunk": {"bytes": 218533, "gzip": 63570},
+    "total_bytes": 340008,
+    "total_gzip": 104888
+  },
+  "data_sources": {
+    "gdelt_doc2": {
+      "endpoint": "https://api.gdeltproject.org/api/v2/doc/doc",
+      "auth": "none",
+      "cors": true,
+      "rate_limit": "1 req / 5s",
+      "strategy": "single combined query, 60 articles/batch, post-classify by keyword",
+      "smoke_test_status": "429 from host (rate-limit); browser-side stagger OK"
+    },
+    "world_bank": {
+      "endpoint": "https://api.worldbank.org/v2",
+      "auth": "none",
+      "cors": true,
+      "indicators_used": ["NY.GDP.MKTP.CD", "NY.GDP.PCAP.CD", "SP.POP.TOTL", "SP.DYN.LE00.IN", "EN.ATM.CO2E.PC", "IT.NET.USER.ZS"],
+      "smoke_test_status": "200 OK",
+      "smoke_test_payload": {"MY_GDP_2022": "$407.8B", "WLD_pop_2022": "7.99B"}
+    },
+    "topojson_geometry": {
+      "endpoint": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+      "auth": "none",
+      "cors": true,
+      "size_bytes": 107760,
+      "smoke_test_status": "200 OK"
+    },
+    "countries_metadata": {
+      "source": "mledoze/world-countries@5.1.0",
+      "format": "static JSON embedded",
+      "raw_size_bytes": 1408911,
+      "trimmed_size_bytes": 74484,
+      "trim_ratio": "5.3%",
+      "fields_kept": ["cca3", "cca2", "name", "official", "capital", "region", "subregion", "population", "area", "latlng", "languages", "currencies", "flag", "unMember", "independent"]
+    }
+  },
+  "runtime_verification": {
+    "preview_server": "http://127.0.0.1:4173/world/",
+    "html_status": 200,
+    "js_chunk_status": 200,
+    "css_chunk_status": 200,
+    "browser_render": "OK",
+    "svg_elements_visible": 198,
+    "js_console_errors": 0,
+    "js_console_warnings": 0,
+    "sot_strip_renders": true,
+    "header_renders": true,
+    "footer_renders": true,
+    "rail_renders": true,
+    "axis_toggle_visible": true,
+    "tabs_visible": true,
+    "screenshot_quality": "clean dark theme, no overlapping text, no broken styles"
+  },
+  "sot_math": {
+    "per_axis": "0..100 — tone.mean (neg), log(count+1)*10, sources*1.5 (cap 20), title_length/2",
+    "aggregate": "harmonic_mean * 1.5, floored axis 0.5",
+    "doctrine": "F1 AMANAH — lowest axis dominates catastrophic signal"
+  },
+  "design_tokens_used": {
+    "tokens_css": "/_shared/design-system/tokens.css (CANON, referenced at runtime)",
+    "font_serif": "Fraunces",
+    "font_sans": "Inter",
+    "font_mono": "JetBrains Mono",
+    "accent_gold": "#E8B84B",
+    "axis_geo": "#E5484D",
+    "axis_econ": "#E8B84B",
+    "axis_soc": "#6BD3B4"
+  },
+  "links_preserved_in_footer": [
+    "/", "/earth", "/economics", "/writing", "/doctrine", "/missions",
+    "/world/makcikgpt/", "/oil/", "/gas/", "/gold/", "/klci/", "/usdmyr/", "/politics/"
+  ],
+  "limits": {
+    "max_new_canon_files": 0,
+    "max_canon_files_changed": 0,
+    "files_added_in_proposal_zone": 14,
+    "proposal_zone": "forge_work/proposals/hermes-asi/world-atlas/",
+    "receipt_zone": "receipts/hermes-asi/world-atlas-2026-08-06.json"
+  },
+  "deploy_gate": "BLOCKED — awaiting ARIF 'Roger'",
+  "reversibility": "100% — rm -rf forge_work/proposals/hermes-asi/world-atlas/ = full rollback",
+  "next_step": "ARIF review → if approved: copy dist/* to sites/arif-fazil.com/public/world/ → make verify-pages → reload Caddy"
+}

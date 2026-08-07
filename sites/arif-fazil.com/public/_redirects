@@ -37,11 +37,9 @@
 /usdmyr        /usdmyr/index.html        200
 /usdmyr/*      /usdmyr/:splat            200
 
-# 2026-08-03: AAA + Vitals + cockpit + GEOX sub-pages (49 gaps closed)
+# 2026-08-03: AAA + cockpit + GEOX sub-pages (49 gaps closed)
 /aaa           /aaa/index.html           200
 /aaa/*         /aaa/:splat               200
-/vitals        /vitals/index.html        200
-/vitals/*      /vitals/:splat            200
 /cockpit       /aaa/cockpit/index.html   200
 /geox          /geox/index.html          200
 /geox/*        /geox/:splat              200
@@ -49,3 +47,21 @@
 # /institution is SPA route — handled by React Router via fallback
 # (no static rewrite needed; Cloudflare Pages fallback to /index.html)
 
+
+# 2026-08-06: SOT Atlas — live situational world map (GDELT + World Bank)
+/world/sot        /world/sot/index.html  200
+/world/sot/       /world/sot/index.html  200
+
+# 2026-08-06: PM Bayang alias — uniform with /politics/shadow/ (same content)
+/pm-bayang          /politics/shadow/  301
+/pm-bayang/         /politics/shadow/  301
+
+
+# 2026-08-06: PROPA — sovereign canonical home for the institutional vitals page
+# /propa/ is the new address. /vitals/ and /wealth/vitals/ redirect to /propa/.
+/propa        /propa/index.html         200
+/propa/       /propa/index.html         200
+/propa/*      /propa/:splat             200
+/vitals       /propa/                   308
+/vitals/      /propa/                   308
+/vitals/*     /propa/:splat             308

@@ -172,80 +172,80 @@ print("PASS" if ok else "FAIL", json.dumps({
     fi
 }
 
-echo -e "${CYAN}═══ CONTENT ASSERTIONS — /vitals/${NC}"
+echo -e "${CYAN}═══ CONTENT ASSERTIONS — /propa/${NC}"
 
 # ── Workstream A — Banner ──
-assert_present "/vitals/"  "A: FY2026 DECLARED panel"     "FY2026 DECLARED STATE"
-assert_present "/vitals/"  "A: FY2025 SEALED reading"      "FY2025 SEALED READING"
-assert_present "/vitals/"  "A: RM20 billion disclosed"     "RM20 billion"
-assert_present "/vitals/"  "A: 38% cut stated"             "38% cut"
-assert_present "/vitals/"  "A: Feb 2026 date"              "27 February 2026"
-assert_present "/vitals/"  "A: Capex RM45-50B"             "RM45–50B"
-assert_present "/vitals/"  "A: F13 veto restored"          "F13 veto remains final"
-assert_present "/vitals/"  "A: Exit at RM36.4B"            "RM36.4B"
-assert_present "/vitals/"  "A: Cap/floor collision"        "RM33.3B"
-assert_present "/vitals/"  "A: [DEC] tag"                  "[DEC]"
+assert_present "/propa/"  "A: FY2026 DECLARED panel"     "FY2026 DECLARED STATE"
+assert_present "/propa/"  "A: FY2025 SEALED reading"      "FY2025 SEALED READING"
+assert_present "/propa/"  "A: RM20 billion disclosed"     "RM20 billion"
+assert_present "/propa/"  "A: 38% cut stated"             "38% cut"
+assert_present "/propa/"  "A: Feb 2026 date"              "27 February 2026"
+assert_present "/propa/"  "A: Capex RM45-50B"             "RM45–50B"
+assert_present "/propa/"  "A: F13 veto restored"          "F13 veto remains final"
+assert_present "/propa/"  "A: Exit at RM36.4B"            "RM36.4B"
+assert_present "/propa/"  "A: Cap/floor collision"        "RM33.3B"
+assert_present "/propa/"  "A: [DEC] tag"                  "[DEC]"
 
 # ── Stale phrases removed ──
-assert_absent "/vitals/"   "A: DIVIDEND STOP removed"      "DIVIDEND STOP EFFECTIVE"
-assert_absent "/vitals/"   "A: No human override removed"   "No human override"
+assert_absent "/propa/"   "A: DIVIDEND STOP removed"      "DIVIDEND STOP EFFECTIVE"
+assert_absent "/propa/"   "A: No human override removed"   "No human override"
 
 # ── Workstream B — Site render ──
-assert_present "/vitals/"  "B1: Pulse 0"                   'id="pulseval" style="color:var(--void)">0<'
-assert_present "/vitals/"  "B1: Verdict VOID"              'pulseverdict" style="background:var(--void)'
-assert_present "/vitals/"  "B2: BODY override"             "OVERRIDE ACTIVE"
-assert_present "/vitals/"  "B3: 2 of 6 ENGAGED"            "2 of 6 ENGAGED"
-assert_present "/vitals/"  "B3: Governance ACTIVE"          "Governance Capacity"
-assert_absent "/vitals/"   "B4: 0.59/1.00 removed"          "0.59/1.00"
-assert_present "/vitals/"  "B4: 1.00/3 present"             "1.00/3"
-assert_present "/vitals/"  "B5: Tripwire labelled"          "60% tripwire"
-assert_present "/vitals/"  "B5: Pacemaker labelled"         "65% pacemaker"
-assert_absent "/vitals/"   "B6: \$83.78 hardcoded removed"  "83.78"
-assert_present "/vitals/"  "B8: Honesty EN"                 "None of the"
-assert_absent "/vitals/"   "B9: RM3.5B removed"             "RM3.5B"
-assert_present "/vitals/"  "B9: RM3.1B present"             "RM3.1B"
-assert_absent "/vitals/"   "B10: 12 tools removed"          "12 WEALTH tools"
-assert_present "/vitals/"  "B10: 8 canonical present"       "8 canonical WEALTH"
+assert_present "/propa/"  "B1: Pulse 0"                   'id="pulseval" style="color:var(--void)">0<'
+assert_present "/propa/"  "B1: Verdict VOID"              'pulseverdict" style="background:var(--void)'
+assert_present "/propa/"  "B2: BODY override"             "OVERRIDE ACTIVE"
+assert_present "/propa/"  "B3: 2 of 6 ENGAGED"            "2 of 6 ENGAGED"
+assert_present "/propa/"  "B3: Governance ACTIVE"          "Governance Capacity"
+assert_absent "/propa/"   "B4: 0.59/1.00 removed"          "0.59/1.00"
+assert_present "/propa/"  "B4: 1.00/3 present"             "1.00/3"
+assert_present "/propa/"  "B5: Tripwire labelled"          "60% tripwire"
+assert_present "/propa/"  "B5: Pacemaker labelled"         "65% pacemaker"
+assert_absent "/propa/"   "B6: \$83.78 hardcoded removed"  "83.78"
+assert_present "/propa/"  "B8: Honesty EN"                 "None of the"
+assert_absent "/propa/"   "B9: RM3.5B removed"             "RM3.5B"
+assert_present "/propa/"  "B9: RM3.1B present"             "RM3.1B"
+assert_absent "/propa/"   "B10: 12 tools removed"          "12 WEALTH tools"
+assert_present "/propa/"  "B10: 8 canonical present"       "8 canonical WEALTH"
 
 # ── B11-E: forbidden contiguous marker '48 HOLD' (R1 + B11-D) ──
-assert_absent "/vitals/"   "B11-E: no contiguous '48 HOLD' marker" "48 HOLD"
+assert_absent "/propa/"   "B11-E: no contiguous '48 HOLD' marker" "48 HOLD"
 assert_absent "/data/wealth/petronas_vitals.json" "B11-E: source JSON no '48 HOLD' (canonical-source URL is irrelevant; this would 404 but checks for absence via grep on dist if reachable)" "48 HOLD" || true
 
 # ── B11-A: exactly 9 static .tripcell rows in no-JS HTML ──
-assert_grid9_count "/vitals/" 9
+assert_grid9_count "/propa/" 9
 
 # ── B11-B: static SVG fan fallback present ──
-assert_present "/vitals/"  "B11-B: SVG fan-svg element"   'id="fan-svg"'
-assert_present "/vitals/"  "B11-B: NET-DEBT TRIPWIRE label" "NET-DEBT TRIPWIRE"
-assert_present "/vitals/"  "B11-B: fan-fallback marker"    'data-agent-role="fan-fallback-static"'
-assert_present "/vitals/"  "B11-B: [SPEC] non-scoring"     "[SPEC] non-scoring"
+assert_present "/propa/"  "B11-B: SVG fan-svg element"   'id="fan-svg"'
+assert_present "/propa/"  "B11-B: NET-DEBT TRIPWIRE label" "NET-DEBT TRIPWIRE"
+assert_present "/propa/"  "B11-B: fan-fallback marker"    'data-agent-role="fan-fallback-static"'
+assert_present "/propa/"  "B11-B: [SPEC] non-scoring"     "[SPEC] non-scoring"
 
 # ── B11-C: static scenario summary present ──
-assert_present "/vitals/"  "B11-C: scenario-summary marker" 'data-agent-role="scenario-summary-static"'
-assert_present "/vitals/"  "B11-C: IFR sole scoring input" "audited IFR FY2025 remains the sole scoring input"
+assert_present "/propa/"  "B11-C: scenario-summary marker" 'data-agent-role="scenario-summary-static"'
+assert_present "/propa/"  "B11-C: IFR sole scoring input" "audited IFR FY2025 remains the sole scoring input"
 
 # ── B11-D: reality JSON-LD contract ──
-assert_reality_jsonld "/vitals/"
-assert_present "/vitals/"  "B11-D: pre_lock_pulse 48 in JSON-LD"  '"pre_lock_pulse": 48'
-assert_present "/vitals/"  "B11-D: display_pulse 0 in JSON-LD"    '"display_pulse": 0'
-assert_present "/vitals/"  "B11-D: fy2026 [DEC] feeds_scoring=false" '"feeds_scoring": false'
-assert_absent "/vitals/"   "B11-D: '48 HOLD' must not appear in any JSON-LD" "48 HOLD"
+assert_reality_jsonld "/propa/"
+assert_present "/propa/"  "B11-D: pre_lock_pulse 48 in JSON-LD"  '"pre_lock_pulse": 48'
+assert_present "/propa/"  "B11-D: display_pulse 0 in JSON-LD"    '"display_pulse": 0'
+assert_present "/propa/"  "B11-D: fy2026 [DEC] feeds_scoring=false" '"feeds_scoring": false'
+assert_absent "/propa/"   "B11-D: '48 HOLD' must not appear in any JSON-LD" "48 HOLD"
 
 # ── JSON-LD integrity (all blocks parse) ──
 echo ""
 echo -e "${CYAN}═══ CONTENT ASSERTIONS — JSON-LD${NC}"
-assert_jsonld_parses "/vitals/"
-assert_present "/vitals/"  "JSON-LD: ThreeDoorsDigest"     "ThreeDoorsDigest"
-assert_present "/vitals/"  "JSON-LD: PacemakerAction"       "PacemakerAction"
-assert_present "/vitals/"  "JSON-LD: CrisisAlert"           "InstitutionalCrisisAlert"
-assert_present "/vitals/"  "JSON-LD: 2 pacemakers"          "2 pacemakers ENGAGED"
-assert_present "/vitals/"  "JSON-LD: InstitutionalVitals"   "InstitutionalVitals"
+assert_jsonld_parses "/propa/"
+assert_present "/propa/"  "JSON-LD: ThreeDoorsDigest"     "ThreeDoorsDigest"
+assert_present "/propa/"  "JSON-LD: PacemakerAction"       "PacemakerAction"
+assert_present "/propa/"  "JSON-LD: CrisisAlert"           "InstitutionalCrisisAlert"
+assert_present "/propa/"  "JSON-LD: 2 pacemakers"          "2 pacemakers ENGAGED"
+assert_present "/propa/"  "JSON-LD: InstitutionalVitals"   "InstitutionalVitals"
 
 # ── Cross-surface nav ──
 echo ""
 echo -e "${CYAN}═══ CONTENT ASSERTIONS — Nav completeness${NC}"
 for page in /oil/ /gas/ /gold/ /klci/ /usdmyr/; do
-    assert_present "$page" "Nav to /vitals/"  "/vitals/"
+    assert_present "$page" "Nav to /propa/"  "/propa/"
     assert_present "$page" "Nav to /malaysia/" "/malaysia/"
 done
 

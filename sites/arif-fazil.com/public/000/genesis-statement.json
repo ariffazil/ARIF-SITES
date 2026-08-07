@@ -1,9 +1,9 @@
 {
   "genesis_id": "GENESIS-001",
   "type": "ArifGenesisStatement",
-  "version": "1.0",
+  "version": "1.1",
   "signed_at": "2026-04-30T00:00:00Z",
-  "last_updated": "2026-05-17T00:00:00Z",
+  "last_updated": "2026-08-06T11:40:00Z",
   "human": {
     "name": "Muhammad Arif bin Fazil",
     "alternate_name": "Arif Fazil",
@@ -13,7 +13,7 @@
   },
   "statement": {
     "summary": "Human judgment remains final. AI is an instrument.",
-    "full_text": "I am Muhammad Arif bin Fazil.\n\narifOS is a system I built to keep AI useful, auditable, and accountable to human judgment.\n\nAI systems may assist, draft, test, and coordinate. They do not replace human responsibility. The human remains the final judge — not as a courtesy, but as a structural constraint.\n\nThis is not a claim of perfection. It is a commitment to discipline, evidence, and accountability.\n\nThe 13 constitutional floors exist because intelligence without constraint is dangerous."
+    "full_text": "I am Muhammad Arif bin Fazil.\n\narifOS is a system I built to keep AI useful, auditable, and accountable to human judgment.\n\nAI systems may assist, draft, test, and coordinate. They do not replace human responsibility. The human remains the final judge \u2014 not as a courtesy, but as a structural constraint.\n\nThis is not a claim of perfection. It is a commitment to discipline, evidence, and accountability.\n\nThe 13 constitutional floors exist because intelligence without constraint is dangerous."
   },
   "evidence_scope": {
     "proves": [
@@ -120,7 +120,49 @@
   "signature": {
     "type": "Ed25519",
     "encoding": "base58",
-    "reference": "/000/genesis-statement.sig",
-    "note": "Real signature generated offline with offline private key. The .sig file contains the detached signature metadata."
-  }
+    "reference": "See genesis-statement.sig for the cryptographic signature",
+    "note": "Live attestation appended 2026-08-06; re-signed with active operator_did_ed25519"
+  },
+  "amendments": [
+    {
+      "id": "000-AMEND-001",
+      "date": "2026-08-06",
+      "type": "ATTESTATION_REFRESH",
+      "subject": "Live identity attestation post-ZEN-sweep",
+      "witness": {
+        "arifOS_release": "v2026.08.01",
+        "arifOS_commit": "02dd35137680d2f8cc4921d58339227886216896",
+        "identity_hash": "73a284a66578e7f58b823a373455c610237e33f13e0fb352397ff152e6833719",
+        "surface_hash": "sha256:6295a69b2fb7444ce7b75594606c564e07369346cb23b47fbe6ddceb61ff6290",
+        "runtime_manifest_hash": "sha256:883f851935fbbc9c53b4518cb2765380ba6b7ec3afa0098b29aeb436f5aca304",
+        "drift": false,
+        "service_started_at": "2026-08-06T11:15:49.307676+00:00",
+        "verification_url": "https://arif-fazil.com/999/verify"
+      },
+      "apex_state": {
+        "G": 0.2811,
+        "C_dark": 0.1108,
+        "W3": null,
+        "QDF": 0.25,
+        "interpretation": "G now MEASURED at 0.28 (was UNMEASURED phantom at 0.09 in audit-zen-2026-08-06); C_dark stable at 0.11. Calibration of record_tool_call success detection landed in commit 02dd35137."
+      },
+      "ten_organ_health": {
+        "all_healthy": true,
+        "endpoints": [
+          "8088",
+          "7071",
+          "7072",
+          "7073",
+          "3001",
+          "8081",
+          "18082",
+          "18083",
+          "18084",
+          "18085"
+        ],
+        "probe_at": "2026-08-06T11:15:00Z"
+      },
+      "statement": "Position zero attests: the sovereign human continues to anchor the federation. The machine-readable declaration has not changed (authority=F13_SOVEREIGN, arifOS is the root \u2014 no upstream). What changed: the attestation is now LIVE-MONITORED via /999/verify (added 2026-08-06), and the constitutional scoring is now MEASURED (G gate calibrated). The architectural signature is unchanged; the observability is upgraded."
+    }
+  ]
 }

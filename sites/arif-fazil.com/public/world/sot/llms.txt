@@ -1,0 +1,58 @@
+# arifOS /world — State of the World (SOT) Atlas
+
+> Live situational atlas · Δ geopolitics · Ω economics · Ψ social
+> DITEMPA BUKAN DIBERI — Forged, not given.
+
+## What this is
+
+A dark-mode, browser-served atlas of the world built on three civilization axes:
+
+- **Δ GEOPOLITICS** — conflict, war, sanctions, diplomacy
+- **Ω ECONOMICS** — economy, oil, markets, trade
+- **Ψ SOCIAL** — humanitarian, refugees, health, protests
+
+The composite **SOT** index is the mean of the three axes' tension values (0–100).
+Tiers map to: 0–40 STABLE, 40–70 TENSE, 70–100 CRITICAL.
+
+## Data sources (all free, no API keys)
+
+- **GDELT DOC 2 API** — `https://api.gdeltproject.org/api/v2/doc/doc` — live news, geo-tagged
+- **World Bank API** — `https://api.worldbank.org/v2` — country indicators + income tier
+- **topojson world-atlas** — npm package, 110m resolution
+
+CORS-enabled. Throttled to 1 GDELT request per 5 seconds (fair-use).
+
+## Routes
+
+- `/` — Atlas (map + news rail + gauges)
+- `/about` — Methodology (this document)
+- WB tier map: toggle **TIER** in the map header to color countries by income classification
+  (HIC high, UMC upper middle, LMC lower middle, LIC low)
+
+## Agent-readable surfaces
+
+- `/llms.txt` — this file
+- `/world/` — full atlas (this SPA)
+- `mcp.arif-fazil.com/mcp` — arifOS constitutional kernel (organ MCP)
+
+## Framed under the agentic web world model
+
+This page is a narrative surface under one human domain (arif-fazil.com).
+Organ subdomains (geox · wealth · well · mcp) are agent doors, not rival brands.
+Doctrine: https://arif-fazil.com/docs/AGENTIC_WEB_WORLD_MODEL.md
+
+## Voice
+
+Thermodynamic, sovereign, BM-English code-switch hints.
+"DITEMPA BUKAN DIBERI" — Forged, not given.
+
+## Build
+
+React 19 + Vite 7 + TypeScript 5 + Tailwind 3 + shadcn/ui.
+No backend. No tracking. No auth. Pure static SPA.
+
+## Source
+
+Sibling repo of arif-fazil.com. Built by Gemini 2.5 Pro · Code agent.
+Aligns with the World Bank income tier artifact (211 countries,
+4 tiers, 4 lending types) bundled in `src/data/wb_countries.json`.

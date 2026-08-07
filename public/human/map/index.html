@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" data-ring="SOVEREIGN" data-plane="machine" data-agent-surface="observe-only">
+<head>
+<meta charset="UTF-8">
+<title>Site Map · arif-fazil.com</title>
+<meta name="description" content="Human-readable route tree. Nine domains, one question each. Trinity (5 scopes) drives the chrome; World Model drives the labels.">
+<meta name="author" content="Muhammad Arif bin Fazil">
+<link rel="canonical" href="https://arif-fazil.com/human/map/">
+<link rel="alternate" type="application/json" href="/machine/map.json" title="Machine-readable world model">
+<link rel="agent" href="/.well-known/agent.json">
+<link rel="identity" href="/.well-known/identity.json">
+<link rel="llms-full-content" content="true">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #FAF7F0;
+  --ink: #1A1712;
+  --carbon: #101216;
+  --bone: #E8E6DF;
+  --border: 1px solid rgba(26,23,18,0.12);
+  --r-700: #7A1F18;
+  --e-700: #17584A;
+  --b-700: #1B3A57;
+  --y-700: #8F6A14;
+  --unit: 4px;
+  --radius: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--paper); color: var(--ink); font-family: 'IBM Plex Sans', sans-serif; font-size: 16.8px; line-height: 1.5; }
+body { max-width: 1080px; margin: 0 auto; padding: 32px 24px 96px; }
+
+/* Sovereign strip — the only permanent red */
+.sovereign-strip {
+  height: 32px;
+  background: var(--r-700);
+  color: var(--paper);
+  display: flex; align-items: center; gap: 16px;
+  padding: 0 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: -32px -24px 32px;
+}
+.sovereign-strip a { color: inherit; text-decoration: none; }
+.sovereign-strip .verdict { margin-left: auto; padding: 2px 8px; background: var(--ink); border-radius: 2px; }
+
+/* Hero */
+header.hero { margin-bottom: 48px; padding-bottom: 24px; border-bottom: var(--border); }
+header.hero h1 { font-family: 'IBM Plex Serif', serif; font-size: 47.6px; line-height: 1.15; color: var(--r-700); margin-bottom: 8px; }
+header.hero .subtitle { font-family: 'IBM Plex Serif', serif; font-size: 23.8px; color: var(--ink); opacity: 0.7; margin-bottom: 16px; }
+header.hero .lead { max-width: 68ch; }
+header.hero .meta { font-family: 'IBM Plex Mono', monospace; font-size: 11.9px; color: var(--ink); opacity: 0.5; margin-top: 16px; }
+
+/* Mission wheel — the one toroidal anchor on this page */
+.wheel { width: 240px; height: 240px; margin: 32px auto; position: relative; }
+.wheel svg { width: 100%; height: 100%; }
+
+/* Domain grid */
+.domains { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 32px; }
+.domain {
+  border: var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: rgba(250,247,240,0.6);
+}
+.domain header { margin-bottom: 16px; }
+.domain .accent { color: var(--accent); font-size: 11.9px; letter-spacing: 0.12em; display: block; margin-bottom: 4px; }
+.domain h2 { font-family: 'IBM Plex Serif', serif; font-size: 33.6px; line-height: 1.15; margin-bottom: 4px; }
+.domain .question { font-family: 'IBM Plex Serif', serif; font-style: italic; color: var(--ink); opacity: 0.7; margin-bottom: 8px; }
+.domain .organ { font-family: 'IBM Plex Mono', monospace; font-size: 11.9px; color: var(--ink); opacity: 0.5; }
+.domain .trinity { color: var(--accent); }
+.surface-list { list-style: none; }
+.surface-list li { padding: 6px 0; border-bottom: 1px dotted rgba(26,23,18,0.08); font-size: 14px; }
+.surface-list li:last-child { border: none; }
+.surface-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+.surface-list a:hover { border-bottom-color: var(--accent); }
+.surface-list .more { font-family: 'IBM Plex Mono', monospace; font-size: 11.9px; color: var(--ink); opacity: 0.5; font-style: italic; }
+
+/* Status chip — square radius even on human side (verdict chip doctrine) */
+.status { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding: 1px 6px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.08em; margin-left: 6px; }
+.status-live { background: var(--e-700); color: var(--paper); }
+.status-redirect, .status-gone { background: rgba(0,0,0,0.08); color: var(--ink); opacity: 0.6; }
+
+/* Mission footer */
+footer { margin-top: 64px; padding-top: 24px; border-top: var(--border); font-family: 'IBM Plex Mono', monospace; font-size: 11.9px; color: var(--ink); opacity: 0.6; }
+footer .crumb a { color: inherit; text-decoration: none; border-bottom: 1px dotted; }
+footer .doctrine { margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="sovereign-strip">
+  <a href="/arif/">ARIF</a>
+  <span>Sovereign → /arif</span>
+  <span class="verdict">World Model v1 · OVERLAY · 2026-08-06</span>
+</div>
+
+<header class="hero">
+  <h1>Site Map</h1>
+  <p class="subtitle">Nine domains. One question each.</p>
+  <p class="lead">This is the human-readable map. Trinity (5 scopes) drives the chrome. World Model (9 domains) drives the labels. Same URLs, new vocabulary.</p>
+  <p class="meta">50+ surfaces · 9 domains · 7 federated organs · 1 sovereign · 0 forks</p>
+
+  <!-- Mission wheel — the one toroidal anchor -->
+  <div class="wheel" aria-label="Mission wheel — six verbs of the federation">
+    <svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="0" cy="0" r="46" fill="none" stroke="#7A1F18" stroke-width="1" stroke-dasharray="2 4"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#2A8A70" stroke-width="1"/>
+      <circle cx="0" cy="0" r="22" fill="none" stroke="#2E5F8A" stroke-width="1"/>
+      <circle cx="0" cy="0" r="6" fill="#7A1F18"/>
+      <text x="0" y="-42" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" fill="#1A1712">INVESTIGATE</text>
+      <text x="40" y="-15" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" fill="#1A1712">INTERPRET</text>
+      <text x="25" y="35" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" fill="#1A1712">DECIDE</text>
+      <text x="-25" y="35" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" fill="#1A1712">BUILD</text>
+      <text x="-40" y="-15" text-anchor="middle" font-family="IBM Plex Mono" font-size="5" fill="#1A1712">MONITOR</text>
+      <text x="0" y="-30" text-anchor="middle" font-family="IBM Plex Mono" font-size="3" fill="#1A1712" opacity="0.5">REMEMBER</text>
+    </svg>
+  </div>
+</header>
+
+<main class="domains">
+
+    <section class="domain" data-domain="earth" data-tier="primary" style="--accent: #2A8A70;">
+      <header>
+        <span class="mono uppercase accent">444_observe</span>
+        <h2>Earth</h2>
+        <p class="question">What&#x27;s under our feet?</p>
+        <p class="organ">GEOX · <span class="trinity">Trinity scope: EARTH</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/earth/" data-domain="earth">EARTH — The Dynamic Planet (Macrostrat globe)</a> <span class="status status-live">live</span></li>
+<li><a href="/map/" data-domain="earth">Map — Human-Readable Route Tree</a> <span class="status status-live">live</span></li>
+<li><a href="/discoveries/" data-domain="earth">/discoveries/</a> <span class="status status-redirect">redirect</span></li>
+
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="capital" data-tier="primary" style="--accent: #2E5F8A;">
+      <header>
+        <span class="mono uppercase accent">444_compute</span>
+        <h2>Capital</h2>
+        <p class="question">What&#x27;s it worth?</p>
+        <p class="organ">WEALTH · <span class="trinity">Trinity scope: INSTITUTION</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/economics/" data-domain="capital">Economics — WEALTH Capital Briefing</a> <span class="status status-live">live</span></li>
+<li><a href="/propa/" data-domain="capital">PETRONAS · PROPA — Financial capacity and resilience</a> <span class="status status-live">live</span></li>
+<li><a href="/wealth/" data-domain="capital">Wealth Capital — Market &amp; Investment Terminal</a> <span class="status status-live">live</span></li>
+<li><a href="/economics/article/:slug" data-domain="capital">WEALTH Article</a> <span class="status status-live">live</span></li>
+<li><a href="/world/oil/" data-domain="capital">Oil Dashboard — Brent Crude Cognitive View</a> <span class="status status-live">live</span></li>
+<li><a href="/world/gas/" data-domain="capital">Gas Dashboard — Natural Gas Intelligence</a> <span class="status status-live">live</span></li>
+<li><a href="/world/gold/" data-domain="capital">Gold Dashboard — XAUUSD Trading Synthesis</a> <span class="status status-live">live</span></li>
+<li><a href="/oil/" data-domain="capital">Oil Dashboard — Brent Crude Live</a> <span class="status status-live">live</span></li>
+<li class="more">+ 5 more in this domain</li>
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="voice" data-tier="primary" style="--accent: #D9A62E;">
+      <header>
+        <span class="mono uppercase accent">555_interpret</span>
+        <h2>Voice</h2>
+        <p class="question">What do I think?</p>
+        <p class="organ">Arif (sovereign) · <span class="trinity">Trinity scope: SOVEREIGN</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/" data-domain="voice">Home — Sovereign Identity &amp; Portfolio</a> <span class="status status-live">live</span></li>
+<li><a href="/world/makcikgpt/" data-domain="voice">MakcikGPT — Civic Intelligence in Bahasa Malaysia</a> <span class="status status-live">live</span></li>
+<li><a href="/writing/" data-domain="voice">Writing — Essays &amp; Analysis</a> <span class="status status-live">live</span></li>
+<li><a href="/world/" data-domain="voice">World — Civic Journalism &amp; Commodities</a> <span class="status status-live">live</span></li>
+<li><a href="/world/makcikgpt/:slug" data-domain="voice">MakcikGPT Article</a> <span class="status status-live">live</span></li>
+<li><a href="/writing/:slug" data-domain="voice">Essay</a> <span class="status status-live">live</span></li>
+<li><a href="/politics/shadow/" data-domain="voice">PM Bayang — Shadow Prime Ministers of Malaysia</a> <span class="status status-live">live</span></li>
+<li><a href="/politics/shadow/board/" data-domain="voice">Shadow Board — Org-Chart Instrument (PRIMER-1)</a> <span class="status status-live">live</span></li>
+<li class="more">+ 13 more in this domain</li>
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="work" data-tier="primary" style="--accent: #2E5F8A;">
+      <header>
+        <span class="mono uppercase accent">777_forge</span>
+        <h2>Work</h2>
+        <p class="question">What am I building?</p>
+        <p class="organ">A-FORGE + AAA · <span class="trinity">Trinity scope: INSTITUTION</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/machine/" data-domain="work">Machine — Agent Surfaces Dashboard</a> <span class="status status-live">live</span></li>
+<li><a href="/forge/" data-domain="work">A-FORGE → subdomain</a> <span class="status status-redirect">redirect</span></li>
+<li><a href="/missions.json" data-domain="work">missions.json — Six-Mission Federation Catalog</a> <span class="status status-live">live</span></li>
+<li><a href="/machines/" data-domain="work">For Machines — Ops guide</a> <span class="status status-live">live</span></li>
+
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="law" data-tier="primary" style="--accent: #6A8FBF;">
+      <header>
+        <span class="mono uppercase accent">333_judge</span>
+        <h2>Law</h2>
+        <p class="question">What are the rules?</p>
+        <p class="organ">arifOS · <span class="trinity">Trinity scope: CROSS_CUTTING</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/doctrine/" data-domain="law">Doctrine — Constitution, Federation Topology, Manifesto</a> <span class="status status-live">live</span></li>
+<li><a href="/rsl.xml" data-domain="law">rsl.xml — Really Simple Licensing 1.0</a> <span class="status status-live">live</span></li>
+<li><a href="/canon/" data-domain="law">/canon/</a> <span class="status status-redirect">redirect</span></li>
+<li><a href="/constellation/" data-domain="law">/constellation/</a> <span class="status status-redirect">redirect</span></li>
+<li><a href="/federation/" data-domain="law">/federation/</a> <span class="status status-redirect">redirect</span></li>
+
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="proof" data-tier="primary" style="--accent: #7A1F18;">
+      <header>
+        <span class="mono uppercase accent">999_seal</span>
+        <h2>Proof</h2>
+        <p class="question">Is this true?</p>
+        <p class="organ">arifOS / VAULT999 · <span class="trinity">Trinity scope: CROSS_CUTTING</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/999/" data-domain="proof">999 — Proof &amp; Verification Chamber</a> <span class="status status-live">live</span></li>
+<li><a href="/robots.txt" data-domain="proof">robots.txt — Crawler Policy with AI Directives</a> <span class="status status-live">live</span></li>
+<li><a href="/999/verify" data-domain="proof">999 Verify — Live Vault Proof Endpoint</a> <span class="status status-live">live</span></li>
+<li><a href="/surfaces.json" data-domain="proof">surfaces.json — Canonical Surface Catalog</a> <span class="status status-live">live</span></li>
+<li><a href="/llms-full.txt" data-domain="proof">llms-full.txt — Full Content Dump for AI LLMs</a> <span class="status status-live">live</span></li>
+<li><a href="/llms.txt" data-domain="proof">llms.txt — AI Site Overview</a> <span class="status status-live">live</span></li>
+<li><a href="/sitemap.xml" data-domain="proof">sitemap.xml — XML Sitemap</a> <span class="status status-live">live</span></li>
+<li><a href="/llms.json" data-domain="proof">llms.json — Structured Site Overview</a> <span class="status status-live">live</span></li>
+<li class="more">+ 1 more in this domain</li>
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="origin" data-tier="primary" style="--accent: #7A1F18;">
+      <header>
+        <span class="mono uppercase accent">000_init</span>
+        <h2>Origin</h2>
+        <p class="question">Where did this start?</p>
+        <p class="organ">arifOS · <span class="trinity">Trinity scope: SOVEREIGN</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/000/" data-domain="origin">000 — Genesis Archive &amp; Wisdom Canon</a> <span class="status status-live">live</span></li>
+<li><a href="/soul.json" data-domain="origin">soul.json — Sovereign Identity Anchor</a> <span class="status status-live">live</span></li>
+<li><a href="/genesis/" data-domain="origin">/genesis/</a> <span class="status status-redirect">redirect</span></li>
+
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="signal" data-tier="secondary" style="--accent: #2A8A70;">
+      <header>
+        <span class="mono uppercase accent">444_route</span>
+        <h2>Signal</h2>
+        <p class="question">How do I reach out?</p>
+        <p class="organ">HERMES · <span class="trinity">Trinity scope: EARTH</span></p>
+      </header>
+      <ul class="surface-list">
+        <li><a href="/.well-known/agent-card.json" data-domain="signal">Agent Card — A2A Discovery</a> <span class="status status-redirect">redirect</span></li>
+
+      </ul>
+    </section>
+    
+    <section class="domain" data-domain="human" data-tier="secondary" style="--accent: #D9A62E;">
+      <header>
+        <span class="mono uppercase accent">111_sense</span>
+        <h2>Human</h2>
+        <p class="question">Am I well?</p>
+        <p class="organ">WELL · <span class="trinity">Trinity scope: HUMAN</span></p>
+      </header>
+      <ul class="surface-list">
+        
+      </ul>
+    </section>
+    
+</main>
+
+<footer>
+  <div class="crumb"><a href="/">home</a> › <a href="/machine/map.json">machine view</a> › map</div>
+  <div class="doctrine">DITEMPA BUKAN DIBERI · Trinity (999_SEAL) drives chrome · World Model drives vocabulary</div>
+</footer>
+
+</body>
+</html>

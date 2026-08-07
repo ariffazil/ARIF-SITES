@@ -3,7 +3,7 @@
   "schema_version": 2,
   "registry": "arif-fazil.com.runtime-overlays.v2",
   "canonical_repo_root": "/root/arif-sites",
-  "doctrine": "One domain. One web surface. Many organs, tetap bersempadan. Subdomain lama jangan dibuang — jadikan saksi dan redirect.",
+  "doctrine": "One domain. One web surface. Many organs, tetap bersempadan. Subdomain lama jangan dibuang \u2014 jadikan saksi dan redirect.",
   "defaults": {
     "probe_attempts": 3,
     "caddy_attempts": 3,
@@ -58,7 +58,7 @@
       "required_artifacts": [
         "index.html",
         "000/index.html",
-        "999/index.html"
+        "work/proof/index.html"
       ],
       "probe": {
         "url": "https://arif-fazil.com/",

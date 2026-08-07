@@ -1,0 +1,228 @@
+{
+  "schema": "arifos.writing_index.v1",
+  "as_of": "2026-08-07T16:45:07Z",
+  "count": 15,
+  "human_index": "/words/writing",
+  "feed": "/feed.xml",
+  "items": [
+    {
+      "title": "I'm Not a Programmer. I Accidentally Invented a New Question for AI.",
+      "slug": "i-didnt-invent-a-token-i-invented-a-question",
+      "href": "/words/writing/i-didnt-invent-a-token-i-invented-a-question",
+      "date": "2026-08-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "AI-Governance",
+        "AGI",
+        "arifos",
+        "CapabilityToken",
+        "Naming"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-07"
+    },
+    {
+      "title": "The AGI Paradox: Why Bigger Models Won't Save Us, and Why the Smartest Thing in the Room Might Be an Institution",
+      "slug": "the-agi-paradox-why-bigger-models-wont-save-us",
+      "href": "/words/writing/the-agi-paradox-why-bigger-models-wont-save-us",
+      "date": "2026-08-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "AI-Governance",
+        "AGI",
+        "Institutions",
+        "Intelligence",
+        "Governance"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-07"
+    },
+    {
+      "title": "Simulative Institutions: The Third Axis of Failure",
+      "slug": "the-third-axis-of-failure-what-acemoglu-missed",
+      "href": "/words/writing/the-third-axis-of-failure-what-acemoglu-missed",
+      "date": "2026-08-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "AI-Governance",
+        "AGI",
+        "Institutions",
+        "Acemoglu",
+        "Simulation"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-07"
+    },
+    {
+      "title": "Truth Is Not Cheap: Why the Path to AGI Will Consume More Tokens, More Compute, and More Patience",
+      "slug": "truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens",
+      "href": "/words/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens",
+      "date": "2026-08-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "AI-Governance",
+        "AGI",
+        "Truth",
+        "Tokens",
+        "Compute"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-07"
+    },
+    {
+      "title": "23 Years in Brazil: What Petronas Bought, Spent, and Walked Away With",
+      "slug": "petronas-23-years-in-brazil",
+      "href": "/words/writing/petronas-23-years-in-brazil",
+      "date": "2026-08-06",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "WEALTH",
+        "PETRONAS",
+        "Brazil",
+        "CapitalRecycling",
+        "PreSalt"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-06"
+    },
+    {
+      "title": "Agentic Intelligence Big Bang: Why Naming Is the First Act of Creation",
+      "slug": "agentic-intelligence-big-bang",
+      "href": "/words/writing/agentic-intelligence-big-bang",
+      "date": "2026-07-04",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-07-04"
+    },
+    {
+      "title": "Survival of the Fittest Tools",
+      "slug": "survival-of-the-fittest-tools",
+      "href": "/words/writing/survival-of-the-fittest-tools",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "The Tool Is the Thought",
+      "slug": "the-tool-is-the-thought",
+      "href": "/words/writing/the-tool-is-the-thought",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "Three Timelines, One Boundary",
+      "slug": "three-timelines-one-boundary",
+      "href": "/words/writing/three-timelines-one-boundary",
+      "date": "2026-07-03",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-07-03"
+    },
+    {
+      "title": "The Mind Is Not The Model: A 6-Axis Constitutional Coordinate System for Mapping LLM Value Space",
+      "slug": "the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+      "href": "/words/writing/the-mind-is-not-the-model-6-axis-constitutional-coordinate-system",
+      "date": "2026-06-11",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-06-11"
+    },
+    {
+      "title": "Growing Intelligence Without Losing Our Soul: From BINATANG to WARGA",
+      "slug": "growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+      "href": "/words/writing/growing-intelligence-without-losing-our-soul-from-binatang-to-warga",
+      "date": "2026-06-09",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "arifOS",
+        "AIGovernance",
+        "ConstitutionalAI",
+        "BINATANGParadox",
+        "HarnessEngineering"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-06-09"
+    },
+    {
+      "title": "I Hate AI. I Hate DSG. And I Built Both Anyway.",
+      "slug": "i-hate-ai-i-hate-dsg-and-i-built-both-anyway",
+      "href": "/words/writing/i-hate-ai-i-hate-dsg-and-i-built-both-anyway",
+      "date": "2026-06-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [],
+      "risk_level": "INT",
+      "epoch": "2026-06-07"
+    },
+    {
+      "title": "Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention",
+      "slug": "contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "href": "/words/writing/contrast-governed-anomaly-detection-formal-bridge-avo-attention",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "geophysics",
+        "machine-learning",
+        "attention",
+        "avo",
+        "contrast-detection"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "The Contrast Primitive Derivation: A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual — Completing the Trilogy",
+      "slug": "contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "href": "/words/writing/contrast-primitive-derivation-avo-fluid-factor-attention-residual",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "geophysics",
+        "machine-learning",
+        "attention",
+        "avo",
+        "contrast-detection"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-06-05"
+    },
+    {
+      "title": "Physics-Constrained Attention: Zoeppritz as Constitutional Floor — Why the AVO-Attention Equivalence Demands Governed Transformers, and How to Build Them",
+      "slug": "physics-constrained-attention-zoeppritz-constitutional-floor",
+      "href": "/words/writing/physics-constrained-attention-zoeppritz-constitutional-floor",
+      "date": "2026-06-05",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "geophysics",
+        "machine-learning",
+        "attention",
+        "avo",
+        "governance"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-06-05"
+    }
+  ]
+}

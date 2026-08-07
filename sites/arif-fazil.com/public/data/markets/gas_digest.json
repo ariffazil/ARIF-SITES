@@ -8,19 +8,19 @@
     "exchange": "yfinance"
   },
   "seal": {
-    "observed_at": "2026-08-03T17:47:22.146Z",
+    "observed_at": "2026-08-07T11:00:00Z",
     "url": "https://arif-fazil.com/gas/",
     "data_layer_url": "https://arif-fazil.com/gas/api/snapshot",
     "coherence_id": "5955fae9d2cbfa0841b904f1ba29f4cf9629f746ea147af06f9653390388d207",
     "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
   },
   "one_liner": {
-    "ms": "Gas Asli (Henry Hub) pada 2.76 · perubahan +0.00%",
-    "en": "Natural Gas (Henry Hub) at 2.76 · +0.00% change"
+    "ms": "Henry Hub pada 2.65/MMBtu \u00b7 -3.6% WoW",
+    "en": "Henry Hub at 2.65/MMBtu \u00b7 -3.6% WoW"
   },
   "role": {
-    "ms": "Margin LNG · Utiliti domestik",
-    "en": "LNG margin · Domestic utility"
+    "ms": "Margin LNG \u00b7 Utiliti domestik",
+    "en": "LNG margin \u00b7 Domestic utility"
   },
   "obs_facts": {
     "price": 2.76,
@@ -45,17 +45,17 @@
     "source": "yfinance via /gas/api/snapshot"
   },
   "interpretation_int": [
-    "RSI 48.6 is in NEUTRAL zone — mid-range",
-    "EMA trend is BULLISH — price above EMA50",
+    "RSI 48.6 is in NEUTRAL zone \u2014 mid-range",
+    "EMA trend is BULLISH \u2014 price above EMA50",
     "Signal: LONG"
   ],
   "risk_warnings": [
-    "Price at $2.76 — mid-range between S/R levels",
-    "RSI normal — no extreme"
+    "Price at $2.76 \u2014 mid-range between S/R levels",
+    "RSI normal \u2014 no extreme"
   ],
   "watch_conditions": [
-    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
-    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+    "Brent < $70/bbl \u00d7 2 quarters \u2192 liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band \u2192 sovereign stress alert (institutional)"
   ],
   "external_signals": {
     "page_url": "https://arif-fazil.com/gas/",

@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import SectionHeader from '@/components/SectionHeader'
+import BucketStrip from '@/components/BucketStrip'
+import MCPGateway from '@/components/MCPGateway'
 import FactTag from '@/components/FactTag'
 import type { FactKind } from '@/components/FactTag'
 
@@ -133,7 +135,10 @@ export function Writing() {
 
       {/* 1 — HERO */}
       <section className="mx-auto flex min-h-[50vh] max-w-[1280px] flex-col justify-center px-6 py-20">
-        <SectionHeader number="05" title="WRITING" />
+        <div className="mb-10">
+          <BucketStrip current="Words" />
+        </div>
+        <SectionHeader number="01" title="WORDS" />
         <h1 className="mt-10 font-display text-[52px] leading-[0.95] tracking-[-0.02em] text-[#3E3A30] md:text-[72px]">
           {'Essays, in no hurry.'.split(' ').map((w, i) => (
             <motion.span
@@ -292,7 +297,7 @@ export function Writing() {
       </section>
 
       {/* 5 — BRIDGE */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-28 pt-8 text-center">
+      <section className="mx-auto max-w-[1280px] px-6 pb-20 pt-8 text-center">
         <motion.p {...fadeUp} className="font-display text-[26px] tracking-[-0.01em] text-[#5C5546]">
           The essays end. The doctrine holds.
         </motion.p>
@@ -305,6 +310,7 @@ export function Writing() {
           </Link>
         </motion.div>
       </section>
+      <MCPGateway />
     </div>
   )
 }

@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import SectionHeader from '@/components/SectionHeader'
+import BucketStrip from '@/components/BucketStrip'
+import MCPGateway from '@/components/MCPGateway'
 
 const RED = '#C8102E'
 type FactKind = 'OBS' | 'DER' | 'INT' | 'SPEC'
@@ -119,6 +121,9 @@ export function World() {
       {/* ── 01 MASTHEAD ── */}
       <section className="flex min-h-[80dvh] flex-col justify-center">
         <div className="mx-auto w-full max-w-[1280px] px-6 py-20">
+          <div className="mb-10">
+            <BucketStrip current="World" />
+          </div>
           <div className="flex items-center justify-between border-y border-ink/25 py-3">
             <Dateline />
             <span className="hidden font-mono text-[12px] uppercase tracking-[0.06em] text-ink-soft md:block">
@@ -258,7 +263,7 @@ export function World() {
         <div className="mx-auto max-w-[1280px] px-6 py-24">
           <p className="eyebrow text-white/80">03 ————— THE PETRONAS SIGNAL</p>
           <h2 className="mt-4 font-display text-4xl tracking-[-0.02em] text-[#111318] md:text-[40px]">
-            /vitals/ — Isyarat Institusi PETRONAS
+            /propa/ — Isyarat Institusi PETRONAS
           </h2>
           <div className="mt-12 grid gap-px border border-black/60 bg-black/60 md:grid-cols-3">
             {DOORS.map((d, i) => (
@@ -269,7 +274,7 @@ export function World() {
                 transition={{ duration: 0.7, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
-                  to="/vitals/"
+                  to="/propa/"
                   className="group flex h-full flex-col bg-[#111318] p-8 transition-colors duration-300 hover:bg-[#C8102E]"
                 >
                   <p className="font-mono text-2xl font-bold uppercase tracking-[0.08em] text-ink transition-colors group-hover:text-[#111318]">
@@ -386,6 +391,7 @@ export function World() {
           </p>
         </div>
       </section>
+      <MCPGateway />
     </div>
   )
 }
