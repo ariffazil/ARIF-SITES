@@ -1,0 +1,29 @@
+{
+  "path": "/earth/",
+  "domain": "earth",
+  "organ": "geox",
+  "title": "EARTH — The Dynamic Planet",
+  "description": "Interactive Macrostrat globe, live earthquakes, plate boundaries, and sovereign well portfolio.",
+  "type": "dynamic",
+  "rendering": "static-html-with-canvas-webgl",
+  "pipes": {
+    "macrostrat": {"url": "https://macrostrat.org/api/v2", "status": "live", "license": "CC-BY 4.0"},
+    "usgs_eq": {"url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson", "status": "live"},
+    "pb2002": {"source": "Bird, 2003", "status": "static"},
+    "wells": {"url": "/earth/data/wells.json", "status": "canon", "tier": "sovereign"},
+    "studies": {"url": "/earth/data/studies.json", "status": "canon", "tier": "sovereign"}
+  },
+  "subpages": [
+    {"path": "/earth/malay-basin/", "title": "Malay Basin Dossier"},
+    {"path": "/earth/malay-basin-cross-section.html", "title": "Malay Basin Cross-Section"},
+    {"path": "/earth/kinabalu-basin/", "title": "Kinabalu Basin Dossier"},
+    {"path": "/earth/kinabalu-cross-section.html", "title": "Kinabalu Cross-Section"}
+  ],
+  "epistemic": "numbers withheld when pipes fail; nothing invented. Ω₀≈0.04.",
+  "dateModified": "2026-08-06",
+  "machine_surfaces": {
+    "llms.txt": "/earth/llms.txt",
+    "page.json": "/earth/page.json",
+    "surfaces.json": "/surfaces.json"
+  }
+}

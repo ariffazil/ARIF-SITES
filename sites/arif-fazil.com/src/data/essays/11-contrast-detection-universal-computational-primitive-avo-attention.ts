@@ -11,19 +11,7 @@ const content: EssayContent = {
   mediumUrl: '',
   isDirectPublication: true,
   html: `
-<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">Contrast-Governed Anomaly Detection: A Formal Bridge between Seismic AVO and Transformer Attention</h1>
-
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Senior Exploration Geoscientist · Sovereign Architect, arifOS · GEOX Earth Intelligence</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
+<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
     <p>Published: 5 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
     <p>Epistemic Tag: CLAIM — awaiting adversarial review. Not peer-reviewed.</p>
   </div>

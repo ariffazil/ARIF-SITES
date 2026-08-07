@@ -78,6 +78,10 @@ Canonical landing: https://arif-fazil.com/world/makcikgpt/
 ## Key Pages
 - `/` — Human-first professional homepage
 - `/earth` — Subsurface discoveries and well portfolio (redirect from `/discoveries`)
+- `/earth/malay-basin/` — Malay Basin dossier — 6-section geological report
+- `/earth/kinabalu-basin/` — Kinabalu Basin dossier — NW Sabah fold-thrust belt
+- `/earth/malay-basin-cross-section.html` — Malay Basin regional cross-section (SVG, geological-grade)
+- `/earth/kinabalu-cross-section.html` — Kinabalu Basin cross-section (SRTM-draped)
 - `/economics` — Malaysia briefing + MakcikGPT civic intelligence (redirect from `/wealth`)
 - `/world` — Civic journalism (MakcikGPT) + commodity dashboards (oil / gas / gold)
 - `/world/makcikgpt/` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Natural Gas — Cognitive Clarity · WEALTH</title>
+<meta name="description" content="Sovereign Natural Gas & LNG market synthesis. Thermal equivalence, European storage, and Henry Hub intelligence.">
+<meta name="agent-identity" content="WEALTH · market-answer · decision-synthesis · machine-context">
+<link rel="canonical" href="https://arif-fazil.com/gas/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js"></script>
+<link rel="stylesheet" href="/_shared/zen.css">
+<script src="/_shared/zen-head.js" defer></script>
+</head>
+<body class="fam-gas">
+<script src="/_shared/unified-header-loader.js"></script>
+<div class="zen-pulse" aria-label="Orientation">
+  <div class="zp-item"><span class="zp-ask">Where am I?</span><span class="zp-val">arif-fazil.com · Gas</span></div>
+  <div class="zp-item"><span class="zp-ask">Why care?</span><span class="zp-val zp-accent">Evidence-gated Henry Hub signal — verdict, levels, invalidation</span></div>
+  <div class="zp-item"><span class="zp-ask">What next?</span><span class="zp-val">Current verdict below</span></div>
+</div>
+
+<!-- Agentic machine digest drawer (?mode=agent) -->
+<div id="machineDigestDrawer" style="display:none; position:fixed; bottom:20px; right:20px; width:450px; max-width:90vw; max-height:80vh; background:var(--surface); border:1px solid var(--accent-dim); border-radius:10px; z-index:9999; box-shadow:0 10px 30px rgba(0,0,0,.6); font-family:var(--mono); overflow:hidden;">
+  <div style="padding:10px 14px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.08em;">REALITY PACKET · NATGAS</span>
+    <button onclick="toggleMachineDigest()" style="background:none; border:none; color:var(--dim); font-size:14px; cursor:pointer;">✕</button>
+  </div>
+  <pre id="machineDigestCode" style="padding:14px; font-size:11px; color:var(--dim); overflow-y:auto; max-height:65vh; white-space:pre-wrap; margin:0;"></pre>
+</div>
+
+<main class="shell">
+
+  
+
+<!-- ═══ PLAIN-LANGUAGE DIGEST — what this asset means ═══ -->
+<section class="sec" id="digest" data-agent-role="plain-language-digest" aria-label="Plain-language translation of NG=F signal">
+  <div class="sec-title">What this means — in plain language</div>
+
+  <!-- ONE-SENTENCE VERDICT -->
+  <div style="background:var(--surface2);border-left:3px solid var(--accent);padding:14px 18px;border-radius:6px;margin:0 0 18px;font-family:var(--serif)">
+    <div style="font-size:11px;color:var(--dim);letter-spacing:.06em;margin-bottom:6px;text-transform:uppercase;font-family:var(--mono)">One-sentence answer · F2 epistemic: OBS arithmetic</div>
+    <p style="margin:0 0 6px;font-size:1rem;color:var(--ink);line-height:1.5"><strong>BM:</strong> Gas Asli (Henry Hub) pada 2.76 · perubahan +0.00%</p>
+    <p style="margin:0;font-size:1rem;color:var(--ink);line-height:1.5"><strong>EN:</strong> Natural Gas (Henry Hub) at 2.76 · +0.00% change</p>
+  </div>
+
+  <!-- 2-DOOR LAYOUT (BM + EN) for markets — lighter than /vitals/ -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(360px,1fr));gap:14px">
+
+    <div class="digest-card" data-audience="rakyat_ms" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">Untuk Rakyat · everyday impact</div>
+      <h3 style="margin:0 0 8px;font-size:1rem;color:var(--ink)">Apa ini untuk anda</h3>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55"><strong>Gas Asli (Henry Hub)</strong> — Margin LNG · Utiliti domestik.</p>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55">Harga terkini: <strong style="color:var(--accent)">2.76</strong> (+0.00% perubahan). RSI 48.6 (NEUTRAL). Trend EMA: BULLISH.</p>
+      <p style="margin:0;font-size:.72rem;color:var(--sabar);font-family:var(--mono);line-height:1.5">[Price at $2.76 — mid-range between S/R levels, RSI normal — no extreme]</p>
+    </div>
+
+    <div class="digest-card" data-audience="investors_en" style="background:var(--surface3);border:1px solid var(--line);border-radius:8px;padding:16px 18px">
+      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px">For Investors · portfolio view</div>
+      <h3 style="margin:0 0 8px;font-size:1rem;color:var(--ink)">What this means for your portfolio</h3>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55"><strong>Natural Gas (Henry Hub)</strong> — LNG margin · Domestic utility.</p>
+      <p style="margin:0 0 8px;font-size:.82rem;color:var(--dim);line-height:1.55">Current: <strong style="color:var(--accent)">2.76</strong> (+0.00% change). RSI 48.6 (NEUTRAL). EMA trend: BULLISH.</p>
+      <p style="margin:0;font-size:.72rem;color:var(--sabar);font-family:var(--mono);line-height:1.5">[Price at $2.76 — mid-range between S/R levels, RSI normal — no extreme]</p>
+    </div>
+
+  </div>
+
+  <!-- MACHINE-READABLE LINK -->
+  <div style="margin-top:14px;padding:10px 14px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;font-size:.7rem;color:var(--dim);font-family:var(--mono);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px">
+    <span><strong style="color:var(--accent)">[OBS]</strong> audit-grade snapshot · <a href="https://arif-fazil.com/gas/api/snapshot" style="color:var(--accent)">https://arif-fazil.com/gas/api/snapshot</a></span>
+    <span><a href="https://arif-fazil.com/gas/api/history?interval=1d&period=3mo" style="color:var(--dim)">history</a> · <a href="https://arif-fazil.com/gas/api/apex" style="color:var(--dim)">apex</a> · <a href="/data/markets/gas_digest.json" style="color:var(--dim)">digest</a></span>
+  </div>
+
+</section>
+
+<!-- ═══ 1. THE ANSWER — verdict first, everything else later ═══ -->
+  <section class="zs-hero" aria-label="Market answer" data-agent-role="market-answer">
+    <div class="zs-eyebrow">
+      <span>Market answer · NATURAL GAS</span>
+      <span class="tag INTERPRET">INTERPRET</span>
+      <span>model-generated · not trading advice</span>
+    </div>
+    <div class="zs-verdict">
+      <div class="zs-verdict-top">
+        <div>
+          <div class="zs-price-row">
+            <span class="zs-price" id="pulsePrice">—</span>
+            <span class="zs-delta" id="pulseDelta">—</span>
+            <span class="pulse-pct" id="pulsePct">—</span>
+          </div>
+          <div style="margin-top:10px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span class="bias-pill" id="biasPill">—</span>
+            <span class="bias-confluence" id="biasConfluence">—</span>
+            <span class="pulse-risk">
+              <span class="risk-label">Risk</span>
+              <span class="risk-bars" id="riskBars">
+                <span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span><span class="risk-bar"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <span class="zs-badge SABAR" id="maVerdict">—</span>
+      </div>
+
+      <p class="zs-why" id="predRead">Reading the market…</p>
+      <div class="pulse-driver" id="pulseDriver" style="margin-top:8px">—</div>
+
+      <div class="zs-levels" id="pulseLevels" style="margin-top:14px">
+        <span class="level-chip support">S1<span class="val">—</span></span>
+        <span class="level-chip support">S2<span class="val">—</span></span>
+        <span class="level-chip resistance">R1<span class="val">—</span></span>
+        <span class="level-chip resistance">R2<span class="val">—</span></span>
+      </div>
+
+      <div class="zs-hero-meta">
+        <span><span class="k">as of</span> <span class="v" id="maAsOf">—</span></span>
+        <span class="sep">·</span>
+        <span class="ma-seal">sealed 2026-07-24 · next audit 2026-10-24</span>
+        <span class="sep">·</span>
+        <span class="macro-ticker" id="macroTicker" aria-label="Macro indicators">
+          <span class="macro-item"><span class="macro-label">DXY</span><span class="macro-value" id="mcr-dxy">—</span></span>
+          <span class="macro-item"><span class="macro-label">US10Y</span><span class="macro-value" id="mcr-us10y">—</span></span>
+          <span class="macro-item"><span class="macro-label">VIX</span><span class="macro-value" id="mcr-vix">—</span></span>
+          <span class="macro-item"><span class="macro-label">USD/MYR</span><span class="macro-value" id="mcr-usmyr">—</span></span>
+        </span>
+      </div>
+      <div class="market-answer-unavailable" id="maUnavailable" hidden>Data unavailable · last verified <span id="maLastVerified">—</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ 2. HERO CHART — Natural Gas price action, EMAs & forecast cone ═══ -->
+  <section class="sec chart-section" aria-label="Natural Gas price chart" data-agent-role="hero-chart">
+    <div class="chart-header">
+      <div style="display:flex; align-items:center; gap:1.2rem; flex-wrap:wrap;">
+        <span class="chart-title" style="color:var(--accent); font-weight:bold;">NATURAL GAS — Price Action &amp; Forecast Horizon</span>
+        <div class="ema-toggles">
+          <button class="ema-toggle active" data-ema="20" onclick="toggleEMA(this)">EMA20</button>
+          <button class="ema-toggle active" data-ema="50" onclick="toggleEMA(this)">EMA50</button>
+          <button class="ema-toggle active" data-ema="200" onclick="toggleEMA(this)">EMA200</button>
+          <button class="cone-toggle active" data-horizon="30" onclick="selectHorizon(this)">30d▸</button>
+          <button class="cone-toggle" data-horizon="60" onclick="selectHorizon(this)">60d▸</button>
+          <button class="cone-toggle" data-horizon="90" onclick="selectHorizon(this)">90d▸</button>
+        </div>
+      </div>
+      <div class="tf-pills" role="tablist" aria-label="Timeframe selector">
+        <button class="tf-pill" data-tf="1H" onclick="selectTF(this)">1H</button>
+        <button class="tf-pill active" data-tf="4H" onclick="selectTF(this)">4H</button>
+        <button class="tf-pill" data-tf="1D" onclick="selectTF(this)">1D</button>
+        <button class="tf-pill" data-tf="1W" onclick="selectTF(this)">1W</button>
+      </div>
+    </div>
+    <div class="chart-container" style="position:relative; min-height:450px; background:#0d1117; border:1px solid var(--accent-dim,#30363d); border-radius:8px; overflow:hidden;">
+      <div id="mainChart" style="width:100%; height:450px;"></div>
+    </div>
+  </section>
+
+  <!-- ═══ 3. THE VIEW — cone, bias, key level, scenarios, invalidation ═══ -->
+  <section class="sec" aria-label="The view">
+    <h2 class="sec-title">The view · 30-day horizon</h2>
+    <div class="market-answer-grid">
+      <div class="market-answer-card">
+        <div class="mac-label">Current</div>
+        <div class="mac-value" id="predCurrent">—</div>
+        <div class="mac-sub" id="predCurrentSub">—</div>
+      </div>
+      <div class="market-answer-card">
+        <div class="mac-label">30-Day Cone</div>
+        <div class="mac-value" id="predRange">—</div>
+        <div class="mac-sub" id="predRangeSub">p25 – p75 projection</div>
+      </div>
+      <div class="market-answer-card">
+        <div class="mac-label">Bias</div>
+        <div class="mac-value direction-stamp" id="predBias">—</div>
+        <div class="mac-sub" id="predBiasSub">—</div>
+      </div>
+      <div class="market-answer-card">
+        <div class="mac-label">Key Level</div>
+        <div class="mac-value" id="predKey">—</div>
+        <div class="mac-sub" id="predKeySub">—</div>
+      </div>
+    </div>
+
+    <div id="predScenarios" style="margin-top:10px"></div>
+    <div class="market-answer-reconcile" id="maReconcile" hidden></div>
+
+    <div class="zs-levels" style="margin-top:14px">
+      <span class="level-chip support">S1<span class="val" id="mt-s1">—</span></span>
+      <span class="level-chip support">S2<span class="val" id="mt-s2">—</span></span>
+      <span class="level-chip resistance">R1<span class="val" id="mt-r1">—</span></span>
+      <span class="level-chip resistance">R2<span class="val" id="mt-r2">—</span></span>
+      <span class="level-chip">MA50<span class="val" id="mt-ma50">—</span></span>
+      <span class="level-chip">MA200<span class="val" id="mt-ma200">—</span></span>
+    </div>
+
+    <!-- Trade ladder — only when direction is non-FLAT AND R:R ≥ 1.0 -->
+    <div id="tradeLadder" class="trade-quality" hidden>
+      <div class="trade-quality-header">
+        <span class="trade-quality-title">Trade Ladder</span>
+        <span class="trade-quality-verdict" id="tradeVerdict">—</span>
+      </div>
+      <div class="trade-metrics">
+        <div class="trade-metric">
+          <div class="trade-metric-label">R:R Ratio</div>
+          <div class="trade-metric-value" id="tradeRR">—</div>
+        </div>
+        <div class="trade-metric">
+          <div class="trade-metric-label">Confluence</div>
+          <div class="trade-metric-value" id="tradeConf">—</div>
+        </div>
+        <div class="trade-metric">
+          <div class="trade-metric-label">Confidence</div>
+          <div class="trade-metric-value" id="tradeConfLvl">—</div>
+        </div>
+      </div>
+    </div>
+    <div id="tradeNoSetup" class="market-answer-no-setup">SABAR · No active setup</div>
+  </section>
+
+  <!-- ═══ 4. WHY THIS VIEW — condition + transmission ═══ -->
+  <section class="sec" aria-label="Why this view">
+    <h2 class="sec-title">Why this view <span class="apex-verdict" id="apexVerdict">—</span></h2>
+    <div class="zs-metrics">
+      <div class="zs-metric">
+        <div class="lab">Clarity</div>
+        <div class="val" id="apexG">—</div>
+        <div class="sub">How clear is the direction</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Risk</div>
+        <div class="val" id="apexCdark">—</div>
+        <div class="sub">Unpredictability level</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Trend Energy</div>
+        <div class="val" id="apexDS">—</div>
+        <div class="sub">Building or fading</div>
+      </div>
+      <div class="zs-metric">
+        <div class="lab">Condition</div>
+        <div class="val" id="apexState">—</div>
+        <div class="sub" id="apexDirection">—</div>
+      </div>
+    </div>
+
+    <div class="market-answer-driver">
+      <div class="market-answer-driver-label">What is driving it</div>
+      <div class="market-answer-driver-row">
+        <span class="driver-key">JKM / LNG spread</span>
+        <span class="driver-arrow">→</span>
+        <span class="driver-target">PETRONAS LNG margin</span>
+        <span class="driver-note">INTERPRETATION</span>
+      </div>
+    </div>
+  </section>
+
+    </div>
+  </section>
+
+  <!-- ═══ 5. DEEP CONTEXT — disclosures ═══ -->
+  <section class="sec" aria-label="Deep context">
+    <h2 class="sec-title">Deep context</h2>
+
+    <details class="zs-disclosure">
+      <summary>Technical Forge — trend · momentum · structure · quality</summary>
+      <div class="zs-disclosure-body">
+        <div class="signals-grid">
+          <div class="signal-column">
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Trend</span>
+                <span class="signal-score" id="tfTrendScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfTrendBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfTrendConf">—</span>
+                <span class="confidence-tier" id="tfTrendTier">—</span>
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Momentum</span>
+                <span class="signal-score" id="tfMomScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfMomBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfMomConf">—</span>
+                <span class="confidence-tier" id="tfMomTier">—</span>
+              </div>
+            </div>
+          </div>
+          <div class="signal-column">
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Structure</span>
+                <span class="signal-score" id="tfStructScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfStructBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfStructConf">—</span>
+                <span class="confidence-tier" id="tfStructTier">—</span>
+              </div>
+            </div>
+            <div class="signal-card">
+              <div class="signal-card-header">
+                <span class="signal-card-title">Signal Quality</span>
+                <span class="signal-score" id="tfVolScore">—</span>
+              </div>
+              <div class="signal-card-body" id="tfVolBody">—</div>
+              <div class="signal-card-footer">
+                <span id="tfVolConf">—</span>
+                <span class="confidence-tier" id="tfVolTier">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="zs-disclosure">
+      <summary>World context — economic trinity and Asian LNG premium</summary>
+      <div class="zs-disclosure-body">
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">FX &amp; Rates — Pillar I</span>
+          </div>
+          <div class="world-driver-impact">
+            <strong>Malaysia:</strong> USD/MYR <span id="wf-usmyr">—</span> (live).<br>
+            <span style="color:var(--accent);">Transmission:</span> LNG export cargoes billed in USD provide continuous trade surplus &amp; foreign exchange inflows.
+          </div>
+        </div>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Inflation &amp; Purchasing Power — Pillar II</span>
+          </div>
+          <div class="world-driver-impact">
+            <span style="color:var(--accent);">Transmission:</span> Regulated domestic gas tariffs buffer domestic electricity &amp; manufacturing costs against international spot volatility.
+          </div>
+        </div>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Unemployment &amp; Labor — Pillar III</span>
+          </div>
+          <div class="world-driver-impact">
+            <span style="color:var(--accent);">Transmission:</span> Gas-fired power grid sustains manufacturing and data center labor growth.
+          </div>
+        </div>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">JKM &amp; Asian LNG Premium</span>
+          </div>
+          <div class="world-driver-impact">
+            JKM vs Henry Hub — Asia spot LNG premium trajectory.<br>
+            <span style="color:var(--accent);">Transmission:</span> Spread governs Malaysian LNG export realised pricing.
+          </div>
+        </div>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Malaysia / PETRONAS Exposure</span>
+          </div>
+          <div class="world-driver-impact">
+            Malaysia LNG export trajectory, Bintulu capacity, and domestic gas subsidy exposure.<br>
+            <span style="color:var(--accent);">Transmission:</span> Posture shapes sovereign fiscal contribution.
+          </div>
+        </div>
+        <div class="world-driver-card">
+          <div class="world-driver-header">
+            <span class="world-driver-category">Physical Supply / GEOX</span>
+          </div>
+          <div class="world-driver-impact">
+            LNG facility status, Malaysia production, and global capacity additions.<br>
+            <span style="color:var(--accent);">Transmission:</span> GEOX monitors upstream constraints and infrastructure risk.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="zs-disclosure">
+      <summary>This week — high-impact events</summary>
+      <div class="zs-disclosure-body">
+        <div class="events-list" id="eventsList">
+          <div class="events-empty">—</div>
+        </div>
+        <div class="signal-meta" style="margin-top:10px">source: forexfactory.com</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ═══ 6. METHOD / EPISTEMICS — disclosures, quiet ═══ -->
+  <section class="sec" aria-label="Method and epistemics">
+    <h2 class="sec-title">Method · scope · epistemics</h2>
+
+    <details class="zs-disclosure">
+      <summary>Synthesis &amp; decision gate — confluence, stance, sovereign veto</summary>
+      <div class="zs-disclosure-body">
+        <div class="synthesis-band" data-agent-role="decision-synthesis">
+          <div class="synthesis-header">
+            <div class="confluence-meter">
+              <span class="confluence-label">Confluence</span>
+              <div class="confluence-bar-track"><div class="confluence-bar-fill" id="confluenceBar" style="width:0%"></div></div>
+              <span class="confluence-score" id="confluenceScore">—</span>
+            </div>
+            <span class="apex-verdict-meta" id="signalLastUpdated" title="Last signal update">—</span>
+          </div>
+          <div class="synthesis-verdict" id="synthesisVerdict"><strong>—</strong></div>
+          <div class="action-stance">
+            <button class="stance-btn active" id="stanceObserve">◉ Observe</button>
+            <button class="stance-btn" id="stancePrepare">◈ Prepare</button>
+            <button class="stance-btn" id="stanceAwait">◯ Await</button>
+            <span class="stance-note">Non-binding stance indicators — human decides</span>
+          </div>
+          <div class="sovereign-gate">
+            <div class="sovereign-gate-text">Human Sovereign Veto Active</div>
+            <div class="sovereign-gate-sub">
+              Evidence-gated synthesis from the WEALTH organ. All signals are probabilistic, not deterministic.
+              No trade is executed without human confirmation. Your judgment is the final floor.
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="zs-disclosure">
+      <summary>APEX primitives — structure · strength · signal · stability</summary>
+      <div class="zs-disclosure-body">
+        <div class="apex-primitives">
+          <span class="apex-prim" id="apexA">Structure: —</span>
+          <span class="apex-prim" id="apexP">Strength: —</span>
+          <span class="apex-prim" id="apexE">Signal: —</span>
+          <span class="apex-prim" id="apexX">Stability: —</span>
+          <span class="apex-prim" id="apexPhi">Agreement: —</span>
+          <span class="apex-prim" id="apexMom">Momentum: —</span>
+          <span class="apex-prim" id="apexVolTrend">Volume: —</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="zs-disclosure">
+      <summary>Scope — what this page is and is not</summary>
+      <div class="zs-disclosure-body">
+        <div class="scope-note" data-agent-role="machine-context" style="margin:0">
+          <p><b>SCOPE</b> · This page reads market data only. It does not trade, allocate, or signal. All metrics carry epistemic tags (<code>OBS</code> · <code>DER</code> · <code>INT</code>) and reflect the asset's snapshot at observation time. Human decides. Constitutional floors govern admissibility via <code>arifOS</code>; physical reality via <code>GEOX</code>; human capacity via <code>WELL</code>. The default verdict is HOLD — no SEAL means no action.</p>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ═══ FOOTER CONSTELLATION ═══ -->
+  <footer class="zs-foot">
+    <p class="zs-foot-canon">
+      <b>WEALTH computes · arifOS frames · Human decides.</b><br>
+      Organs produce reality · arifFLOW moves it · AAA routes it · arifOS governs it · A-FORGE executes it · VAULT999 remembers it.
+    </p>
+    <nav class="zs-foot-links" aria-label="Federation links">
+      <a href="https://arif-fazil.com">Sovereign Root</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/arifos/">arifOS</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/geox/">GEOX</a><span class="zs-fed-sep">·</span>
+      <a href="https://well.arif-fazil.com/">WELL</a><span class="zs-fed-sep">·</span>
+      <a href="https://arif-fazil.com/aaa/">AAA</a><span class="zs-fed-sep">·</span>
+      <a href="https://mcp.arif-fazil.com">MCP</a>
+    </nav>
+    <div class="zs-foot-seal">
+      <span>SNAPSHOT COHERENCE · WEALTH/GAS</span>
+      <span class="ditempa">DITEMPA BUKAN DIBERI</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  window.ZEN_MARKET = {
+    asset: 'gas',
+    label: 'NATURAL GAS',
+    apiBase: '/gas/api',
+    stanceKey: 'gas_stance',
+    rrMarginal: 1.5,
+    chartAccent: '#4aa89e',
+  };
+</script>
+<script src="/_shared/zen-market.js" defer></script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a202176affa3633f',t:'MTc4NDg4NzM2OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script id="wealth-reality-packet" type="application/ld+json">{"@context":"https://arif-fazil.com/schemas/v1/CapitalContext.jsonld","@type":"CapitalContext","schema":"wealth.snapshot.v1","organ":"WEALTH","asset":"NATURAL_GAS_HENRY_HUB","timestamp":"2026-08-06T13:07:03.458Z","observed_at":"2026-08-06T13:07:03.458Z","coherence_id":"6bb43cceaa0327423f02bd79693322518617e6385e52ea2f4529f18c6f6ba78b","epistemic_tier":"OBS","confidence":0.95,"sovereign_owner":"Muhammad Arif bin Fazil (F13 SOVEREIGN)","governance":{"constitutional_gate":"F13_SOVEREIGN_VETO_REQUIRED","decision_floor":"SABAR"},"market_state":{"symbol":"XNATGAS","regime":"NEUTRAL","rsi_14":37.9,"ema_trend":"BEARISH","key_levels":{"support":[2.66,2.65,2.63],"resistance":[2.68,2.69,2.7],"support_daily":[2.64,2.62,2.61],"resistance_daily":[2.67,2.7,2.73],"pivot":2.66},"price_usd":2.66},"price_usd":2.66,"symbol":"XNATGAS","ticker":{"symbol":"XNATGAS","price":2.66,"change":0.01,"changePct":0.38,"rsi":45,"rsiState":"NEUTRAL","signal":"NEUTRAL","confidence":0.3,"ema20":2.67,"ema50":2.69,"ema200":2.73,"emaTrend":"BEARISH","pivot":2.66,"stale":false,"stale_age_s":0},"levels":{"support":[2.66,2.65,2.63],"resistance":[2.68,2.69,2.7],"support_daily":[2.64,2.62,2.61],"resistance_daily":[2.67,2.7,2.73],"pivot":2.66},"macro":{"dxy":99.78,"us10y":4.643,"vix":15.96,"silver":61.54,"usmyr":4.09},"resealed_at":"2026-08-06T13:07:03.476646+00:00","reseal_source":"live_snapshot_api"}</script>
+
+</body>
+</html>

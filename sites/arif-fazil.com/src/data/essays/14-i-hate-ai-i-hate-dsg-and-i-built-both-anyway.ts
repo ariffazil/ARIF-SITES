@@ -10,18 +10,7 @@ const content: EssayContent = {
   isDirectPublication: true,
   html: `<article>
 
-<figure class="poster-hero">
-  <img src="/essays/i-hate-ai-dsg-1.png" alt="I Hate AI. I Hate DSG. And I Built Both Anyway. — A Geologist's Manifesto · Essay on Governance · DITEMPA BUKAN DIBERI · 999 SEAL" />
-  <figcaption>
-    <span class="font-mono text-xs text-forge-dim">POSTER · ESSAY #14 · DIRECT PUBLICATION · NOT PEER-REVIEWED</span>
-  </figcaption>
-</figure>
-
 <hr />
-
-<p class="font-mono text-sm text-forge-dim">
-  MUHAMMAD ARIF BIN FAZIL · PENANG · 2026 · 999 SEAL
-</p>
 
 <p class="lead">
   <strong>Subtitle:</strong><br />
@@ -532,7 +521,52 @@ But I hate silent, untraceable failure more.</p>
   Correspondence: essays@arif-fazil.com<br />
   Awaiting adversarial review. Refutations welcome — seal the counter-claim in VAULT999.
 </p>
+<!--AUTHOR-FORGED-FOOTER-->
+<hr class="my-12 border-forge-iron" />
 
+<section class="my-12 pt-8 border-t-2 border-forge-gold bg-forge-steel/40 -mx-6 px-6">
+  <div class="mb-10">
+    <div class="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">Forged by</div>
+    <div class="font-display text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-forge-white leading-none">ARIF FAZIL</div>
+    <div class="font-mono text-sm text-forge-gold mt-1">Muhammad Arif bin Fazil</div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Identity</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        <strong class="text-forge-white">Muhammad Arif bin Fazil</strong><br />
+        Geoscientist · Architect, arifOS<br />
+        Petronas Carigali<br />
+        UW–Madison '13<br />
+        Penang, Malaysia
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Publication</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Published: 2026-06-07<br />
+        Direct Publication<br />
+        <a href="/words/" class="text-forge-gold hover:underline">/words/</a> context<br />
+        Sealed 999 · Ditempa Bukan Diberi
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Epistemic Stance</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Epistemic Tag: INT — interpretive synthesis across AI governance, constitutional AI, and AGI risk
+      </p>
+    </div>
+  </div>
+  <div class="mt-12 pt-6 border-t border-forge-iron/40 text-center">
+    <div class="font-display text-lg font-black italic uppercase tracking-tighter text-forge-gold">
+      Ditempa Bukan Diberi
+    </div>
+    <div class="font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1">
+      Forged, not given · ARIF FAZIL · arif-fazil.com · 2026
+    </div>
+  </div>
+</section>
 </article>`,
 };
 

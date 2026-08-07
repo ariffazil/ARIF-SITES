@@ -12,21 +12,7 @@ const content: EssayContent = {
   mediumUrl: '',
   isDirectPublication: true,
   html: `
-<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">The Contrast Primitive Derivation</h1>
-  <h2 class="paper-subtitle text-xl text-forge-dim mt-4" style="font-style: italic;">A Rigorous Mapping of Seismic AVO Fluid Factor onto Transformer Attention Residual</h2>
-  <h3 class="text-lg text-forge-gold mt-2" style="font-weight: 600;">Completing the EUREKA Trilogy · Essay #13</h3>
-
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Senior Exploration Geoscientist · Sovereign Architect, arifOS · GEOX Earth Intelligence</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
+<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
     <p>Published: 5 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
     <p>Trilogy: Essay #11 (The Bridge) → Essay #12 (The Consequences) → Essay #13 (The Derivation)</p>
     <p>Epistemic Tag: CLAIM — awaiting adversarial review. Not peer-reviewed.</p>

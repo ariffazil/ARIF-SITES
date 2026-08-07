@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROPOSAL PREVIEW — Subsidy Paradox · v3 Signal-Dense</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#d8d2c4;--dim:#8a8378;--faint:#5a554d;--surface3:#16181f;--line:#2a2a3a;--accent:#4aa8ff;--seal:#31c48d;--sabar:#e3b341;--hold:#f0506e;--void:#dc2626;--mono:'IBM Plex Mono',monospace;--sans:'IBM Plex Sans',sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0c0e14;font-family:var(--sans);color:var(--ink)}
+  .preview-bar{background:#c9a227;color:#0e1a2b;padding:10px 20px;font-weight:bold;font-family:var(--mono);font-size:11px;letter-spacing:.08em;position:sticky;top:0;z-index:100}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 20px}
+  h1{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);margin:0 0 6px}
+  p.sub{font-size:13px;color:var(--dim);margin:0 0 20px;line-height:1.5;max-width:80ch}
+  .panel{margin:18px 0;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:rgba(192,57,43,.025)}
+  .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .panel-title{font-size:16px;font-weight:700;color:var(--ink)}
+  .state-badge{padding:3px 10px;border-radius:4px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;display:inline-block}
+  .state-badge.A{background:rgba(39,174,96,.15);color:#27ae60;border:1px solid #27ae60}
+  .state-badge.B{background:rgba(227,179,65,.15);color:#e3b341;border:1px solid #e3b341}
+  .state-badge.C{background:rgba(192,57,43,.18);color:#c0392b;border:1px solid #c0392b}
+  .slider-row{display:grid;gap:12px;margin:12px 0}
+  .slider-row.cols-2{grid-template-columns:1fr 1fr}
+  .slider-row.cols-3{grid-template-columns:1fr 1fr 1fr}
+  .slider-row label{font-size:11px;color:var(--dim);font-family:var(--mono);display:block}
+  .slider-row b{color:var(--ink);font-weight:700}
+  .slider-row select{background:var(--surface3);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:2px 6px;font-family:var(--mono);font-size:11px;margin-left:6px}
+  .ro-grid{display:grid;gap:10px;margin:12px 0}
+  .ro-grid.c3{grid-template-columns:repeat(3,1fr)}
+  .ro{padding:11px 10px;background:var(--surface3);border:1px solid var(--line);border-radius:6px;text-align:center}
+  .ro .lbl{font-family:var(--mono);font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;line-height:1.2}
+  .ro .val{font-family:var(--mono);font-size:19px;font-weight:700;line-height:1.1}
+  .ro .val.pos{color:#27ae60}
+  .ro .val.neg{color:#c0392b}
+  .ro .val.nut{color:var(--ink)}
+  .contrast{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+  .contrast .side{padding:9px 12px;border-radius:6px;font-size:12px;font-family:var(--mono);line-height:1.5}
+  .contrast .lo{background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.35)}
+  .contrast .hi{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.35)}
+  .contrast b{font-size:13px}
+  .canvas{width:100%;max-width:1040px;height:260px;display:block;margin:12px auto 0;background:rgba(0,0,0,.04);border-radius:6px}
+  .canvas.tall{height:280px}
+  .foot{margin-top:10px;font-size:9.5px;color:var(--faint);line-height:1.5;font-family:var(--mono)}
+  .link{color:var(--accent);text-decoration:none;font-size:12px;font-family:var(--mono)}
+  @media (max-width:768px){.slider-row.cols-2,.slider-row.cols-3{grid-template-columns:1fr}.ro-grid.c3{grid-template-columns:1fr}.contrast{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="preview-bar">PROPOSAL · v3 SIGNAL-DENSE · F13 PENDING · forge_work/proposals/333-agi/propa-revamp-2026-08-06/</div>
+
+<div class="wrap">
+  <h1>Subsidy Paradox — Signal-Dense Live Engine</h1>
+  <p class="sub">v3: every element carries one signal. State badge only (no duplicate card). Crossover on canvas only (no duplicate bar). No PAT card (already in main fan). One contrast strip per panel. Same math as v2 (calibrated 17B L/yr pool).</p>
+
+  <!-- ══════════════ PANEL 1 · /propa/ · CORPORATE ══════════════ -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-title">PETRONAS × Nation</span>
+      <span class="state-badge" id="px-badge">…</span>
+    </div>
+    <div class="slider-row cols-2">
+      <div>
+        <label>Brent (USD/bbl) · <b id="px-brent-v">85</b></label>
+        <input type="range" id="px-brent" min="40" max="125" step="1" value="85" style="width:100%">
+      </div>
+      <div>
+        <label>Subsidy regime · <b id="px-reg-v">BUDI95</b>
+          <select id="px-reg">
+            <option value="BUDI95">BUDI95 (targeted)</option>
+            <option value="FULL">Full (pre-Sep 25)</option>
+            <option value="FLOAT">Float (none)</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="ro-grid c3">
+      <div class="ro"><div class="lbl">Dividend</div><div class="val" id="px-div">–</div></div>
+      <div class="ro"><div class="lbl">Subsidy</div><div class="val" id="px-sub">–</div></div>
+      <div class="ro"><div class="lbl">Net nation</div><div class="val" id="px-net">–</div></div>
+    </div>
+    <div class="contrast">
+      <div class="side lo" id="px-lo">…</div>
+      <div class="side hi" id="px-hi">…</div>
+    </div>
+    <canvas class="canvas" id="px-canvas" width="1040" height="260"></canvas>
+    <div class="foot">Dividend = max(20, 60%×PAT) · Subsidy = market gap × 17B L/yr (MoF-calibrated) · Net = div − sub · Crossover ≈ $57 Brent. <a href="/malaysia/#paradox-flow" class="link">→ sovereign side</a></div>
+  </div>
+
+  <!-- ══════════════ PANEL 2 · /malaysia/ · SOVEREIGN ══════════════ -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-title">Federal Budget × Oil</span>
+      <span class="state-badge" id="pf-badge">…</span>
+    </div>
+    <div class="slider-row cols-3">
+      <div>
+        <label>Brent (USD/bbl) · <b id="pf-brent-v">85</b></label>
+        <input type="range" id="pf-brent" min="40" max="125" step="1" value="85" style="width:100%">
+      </div>
+      <div>
+        <label>Deficit target · <b id="pf-def-v">3.5</b>% GDP</label>
+        <input type="range" id="pf-def" min="2.5" max="6.0" step="0.1" value="3.5" style="width:100%">
+      </div>
+      <div>
+        <label>Regime · <b id="pf-reg-v">BUDI95</b>
+          <select id="pf-reg">
+            <option value="BUDI95">BUDI95</option>
+            <option value="FULL">Full</option>
+            <option value="FLOAT">Float</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="ro-grid c3">
+      <div class="ro"><div class="lbl">Net nation (RM B/yr)</div><div class="val" id="pf-net">–</div></div>
+      <div class="ro"><div class="lbl">% of deficit target</div><div class="val" id="pf-defpct">–</div></div>
+      <div class="ro"><div class="lbl">State</div><div class="val" id="pf-state">–</div></div>
+    </div>
+    <div class="contrast">
+      <div class="side lo" id="pf-lo">…</div>
+      <div class="side hi" id="pf-hi">…</div>
+    </div>
+    <canvas class="canvas tall" id="pf-canvas" width="1040" height="280"></canvas>
+    <div class="foot">Same model as /propa/ · Net = dividend − subsidy · Deficit impact = net ÷ (deficit% × RM 1.8T GDP). <a href="/propa/#paradox-sec" class="link">← corporate side</a></div>
+  </div>
+</div>
+
+<script>
+// ── shared model (both engines) ─────────────────────────────
+const BASE_PAT=45.4, CAP=0.60, FLOOR=20, V_L=17e9;
+const MKT=B=>Math.max(1.5,B*0.04+0.85);
+const PAT=B=>Math.max(0,BASE_PAT+(B-85));
+const DIV=B=>Math.max(FLOOR,PAT(B)*CAP);
+const SUB=(B,cap)=>Math.round(Math.max(0,MKT(B)-cap)*V_L/1e9);
+const NET=(B,cap)=>Math.round((DIV(B)-SUB(B,cap))*10)/10;
+const STATE=(B,cap)=>{const s=SUB(B,cap),d=DIV(B);return s>d?'C':s>d*0.7?'B':'A';};
+function CROSS(cap){let lo=40,hi=125;for(let i=0;i<30;i++){const m=(lo+hi)/2;NET(m,cap)>0?lo=m:hi=m;}return Math.round(lo);}
+const REG={BUDI95:1.99,FULL:1.88,FLOAT:null};
+const REGCAP=r=>REG[r]===null?MKT(75):REG[r];
+const LAB={A:'STATE A · QUIET',B:'STATE B · SQUEEZE',C:'STATE C · PARADOX'};
+
+// ── engine 1 · /propa/ ──────────────────────────────────────
+(function(){
+  const $b=document.getElementById('px-brent'),$r=document.getElementById('px-reg');
+  const cv=document.getElementById('px-canvas'),ctx=cv.getContext('2d');
+  function upd(){
+    const B=+$b.value,cap=REGCAP($r.value),d=Math.round(DIV(B)),s=SUB(B,cap),n=NET(B,cap),st=STATE(B,cap);
+    document.getElementById('px-brent-v').textContent=B;
+    document.getElementById('px-reg-v').textContent=$r.value;
+    const el=(id,txt,cls)=>{const e=document.getElementById(id);e.textContent=txt;e.className='val '+cls;};
+    el('px-div','+RM '+d+'B',n>=0?'pos':'nut');
+    el('px-sub','−RM '+s+'B','nut');
+    el('px-net',(n>=0?'+':'−')+'RM '+Math.abs(n).toFixed(1)+'B',n>=0?'pos':'neg');
+    const bd=document.getElementById('px-badge');bd.textContent=LAB[st];bd.className='state-badge '+st;
+    const cross=CROSS(cap);
+    const loB=Math.max(40,cross-25),hiB=Math.min(125,cross+25);
+    document.getElementById('px-lo').innerHTML='<b>Low oil $'+loB+'</b><br>div +RM '+Math.round(DIV(loB))+'B · sub −RM '+SUB(loB,cap)+'B · <span style="color:#27ae60">net +RM '+Math.max(0,NET(loB,cap)).toFixed(1)+'B</span>';
+    document.getElementById('px-hi').innerHTML='<b>High oil $'+hiB+'</b><br>div +RM '+Math.round(DIV(hiB))+'B · sub −RM '+SUB(hiB,cap)+'B · <span style="color:#c0392b">net −RM '+Math.abs(Math.min(0,NET(hiB,cap))).toFixed(1)+'B</span>';
+    draw(B,cap,cross);
+  }
+  function draw(B,cap,cross){
+    const W=cv.width,H=cv.height,lo=40,hi=125;
+    const x=b=>50+(W-70)*(b-lo)/(hi-lo);
+    let yMax=0;for(let b=lo;b<=hi;b++)yMax=Math.max(yMax,DIV(b),SUB(b,cap));
+    yMax=Math.ceil(yMax/10)*10+5;
+    const y=v=>40+(H-60)*(1-v/yMax);
+    ctx.clearRect(0,0,W,H);
+    // zones
+    const cx=typeof cross==='number'?x(cross):x(57);
+    ctx.fillStyle='rgba(39,174,96,.06)';ctx.fillRect(x(lo),40,cx-x(lo),H-60);
+    ctx.fillStyle='rgba(192,57,43,.07)';ctx.fillRect(cx,40,x(hi)-cx,H-60);
+    ctx.font='bold 10px monospace';
+    ctx.fillStyle='rgba(39,174,96,.8)';ctx.fillText('A · QUIET',x(lo+1),54);
+    ctx.fillStyle='rgba(192,57,43,.8)';ctx.fillText('C · PARADOX',x(hi-19),54);
+    // grid
+    ctx.strokeStyle='#1e293b';ctx.lineWidth=.5;ctx.fillStyle='#5a6675';ctx.font='9px monospace';
+    for(let v=0;v<=yMax;v+=20){const yy=y(v);ctx.beginPath();ctx.moveTo(50,yy);ctx.lineTo(W-20,yy);ctx.stroke();ctx.fillText('RM'+v+'B',4,yy+3);}
+    [40,60,80,100,120].forEach(b=>{ctx.fillStyle='#5a6675';ctx.fillText(b,x(b)-4,H-6);});
+    ctx.fillStyle='#7a8698';ctx.font='10px monospace';ctx.fillText('Brent (USD/bbl)',W/2-30,H+4);
+    // curves
+    function curve(f,c){ctx.strokeStyle=c;ctx.lineWidth=2.5;ctx.beginPath();for(let b=lo;b<=hi;b++){const v=f(b);b===lo?ctx.moveTo(x(b),y(v)):ctx.lineTo(x(b),y(v));}ctx.stroke();}
+    curve(b=>DIV(b),'#c9a227');curve(b=>SUB(b,cap),'#c0392b');
+    // crossover
+    if(typeof cross==='number'){
+      ctx.strokeStyle='#c9a227';ctx.setLineDash([4,3]);ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(cx,40);ctx.lineTo(cx,H-20);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='#c9a227';ctx.fillText('$'+cross,cx-8,34);
+    }
+    // current
+    ctx.strokeStyle='#4aa8ff';ctx.setLineDash([2,2]);ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(x(B),40);ctx.lineTo(x(B),H-20);ctx.stroke();ctx.setLineDash([]);
+    const d=DIV(B),s=SUB(B,cap);
+    [[d,'#c9a227'],[s,'#c0392b']].forEach(([v,c])=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(x(B),y(v),5,0,7);ctx.fill();});
+    ctx.fillStyle='#d8d2c4';ctx.font='bold 10px monospace';
+    ctx.fillText('$'+B+' · net '+(d-s>=0?'+':'−')+'RM'+Math.abs(Math.round(d-s))+'B',x(B)+10,y(Math.max(d,s))-8);
+  }
+  $b.addEventListener('input',upd);$r.addEventListener('change',upd);upd();
+})();
+
+// ── engine 2 · /malaysia/ ───────────────────────────────────
+(function(){
+  const $b=document.getElementById('pf-brent'),$d=document.getElementById('pf-def'),$r=document.getElementById('pf-reg');
+  const cv=document.getElementById('pf-canvas'),ctx=cv.getContext('2d');
+  const GDP=1800;
+  function upd(){
+    const B=+$b.value,D=+$d.value,cap=REGCAP($r.value),d=Math.round(DIV(B)),s=SUB(B,cap),n=NET(B,cap),st=STATE(B,cap);
+    document.getElementById('pf-brent-v').textContent=B;
+    document.getElementById('pf-def-v').textContent=D.toFixed(1);
+    document.getElementById('pf-reg-v').textContent=$r.value;
+    const defRM=D/100*GDP;
+    const defPct=Math.round((s-d)/defRM*100);
+    const el=(id,txt,cls)=>{const e=document.getElementById(id);e.textContent=txt;e.className='val '+cls;};
+    el('pf-net',(n>=0?'+':'−')+'RM '+Math.abs(n).toFixed(1)+'B',n>=0?'pos':'neg');
+    el('pf-defpct',(defPct>=0?'+':'−')+Math.abs(defPct)+'%',defPct>=0?'neg':'pos');
+    el('pf-state',st,st==='C'?'neg':st==='A'?'pos':'nut');
+    const bd=document.getElementById('pf-badge');bd.textContent=LAB[st];bd.className='state-badge '+st;
+    const cross=CROSS(cap);
+    const loB=Math.max(40,cross-25),hiB=Math.min(125,cross+25);
+    const dLo=DIV(loB),sLo=SUB(loB,cap),nLo=NET(loB,cap),dHi=DIV(hiB),sHi=SUB(hiB,cap),nHi=NET(hiB,cap);
+    document.getElementById('pf-lo').innerHTML='<b>Low oil $'+loB+'</b><br>net '+((nLo>=0?'+':'−')+'RM '+Math.abs(nLo).toFixed(1)+'B')+' · '+(nLo>=0?'<span style="color:#27ae60">under target</span>':'<span style="color:#c0392b">adds to deficit</span>');
+    document.getElementById('pf-hi').innerHTML='<b>High oil $'+hiB+'</b><br>net '+((nHi>=0?'+':'−')+'RM '+Math.abs(nHi).toFixed(1)+'B')+' · '+(nHi>=0?'<span style="color:#27ae60">under target</span>':'<span style="color:#c0392b">adds to deficit</span>');
+    draw(B,cap,D);
+  }
+  function draw(B,cap,D){
+    const W=cv.width,H=cv.height,lo=40,hi=125;
+    const x=b=>50+(W-70)*(b-lo)/(hi-lo);
+    let yMax=0;for(let b=lo;b<=hi;b++)yMax=Math.max(yMax,Math.abs(NET(b,cap)));
+    yMax=Math.ceil(yMax/20)*20;
+    const y=v=>40+(H-60)*(yMax-v)/(2*yMax);
+    ctx.clearRect(0,0,W,H);
+    const cross=CROSS(cap);
+    const cx=typeof cross==='number'?x(cross):x(57);
+    ctx.fillStyle='rgba(39,174,96,.06)';ctx.fillRect(x(lo),40,cx-x(lo),H-60);
+    ctx.fillStyle='rgba(192,57,43,.06)';ctx.fillRect(cx,40,x(hi)-cx,H-60);
+    ctx.font='bold 10px monospace';
+    ctx.fillStyle='rgba(39,174,96,.8)';ctx.fillText('nation wins',x(lo+1),54);
+    ctx.fillStyle='rgba(192,57,43,.8)';ctx.fillText('nation bleeds',x(hi-19),54);
+    // grid
+    ctx.strokeStyle='#1e293b';ctx.lineWidth=.5;ctx.fillStyle='#5a6675';ctx.font='9px monospace';
+    [-yMax,-yMax/2,0,yMax/2,yMax].forEach(v=>{const yy=y(v);ctx.beginPath();ctx.moveTo(50,yy);ctx.lineTo(W-20,yy);ctx.stroke();ctx.fillText((v>=0?'+':'−')+'RM'+Math.abs(Math.round(v))+'B',4,yy+3);});
+    [40,60,80,100,120].forEach(b=>{ctx.fillStyle='#5a6675';ctx.fillText(b,x(b)-4,H-6);});
+    ctx.fillStyle='#7a8698';ctx.font='10px monospace';ctx.fillText('Brent (USD/bbl)',W/2-30,H+4);
+    // net curve
+    ctx.strokeStyle='#4aa8ff';ctx.lineWidth=2.5;ctx.beginPath();
+    for(let b=lo;b<=hi;b++){const v=NET(b,cap);b===lo?ctx.moveTo(x(b),y(v)):ctx.lineTo(x(b),y(v));}
+    ctx.stroke();
+    // zero line
+    ctx.strokeStyle='#3a4a5a';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(50,y(0));ctx.lineTo(W-20,y(0));ctx.stroke();
+    if(typeof cross==='number'){
+      ctx.strokeStyle='#c9a227';ctx.setLineDash([4,3]);ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(cx,40);ctx.lineTo(cx,H-20);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='#c9a227';ctx.fillText('$'+cross,cx-14,34);
+    }
+    // current
+    ctx.strokeStyle='#dc2626';ctx.setLineDash([2,2]);ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(x(B),40);ctx.lineTo(x(B),H-20);ctx.stroke();ctx.setLineDash([]);
+    const n=NET(B,cap);
+    ctx.fillStyle=n>=0?'#27ae60':'#c0392b';ctx.beginPath();ctx.arc(x(B),y(n),6,0,7);ctx.fill();
+    ctx.fillStyle='#d8d2c4';ctx.font='bold 10px monospace';
+    ctx.fillText('$'+B+' · net '+(n>=0?'+':'−')+'RM'+Math.abs(Math.round(n))+'B/yr',x(B)+10,y(n)-8);
+  }
+  $b.addEventListener('input',upd);$d.addEventListener('input',upd);$r.addEventListener('change',upd);upd();
+})();
+</script>
+</body>
+</html>

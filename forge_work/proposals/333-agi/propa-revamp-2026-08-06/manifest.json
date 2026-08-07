@@ -1,0 +1,64 @@
+{
+  "proposal_id": "propa-revamp-2026-08-06-live-paradox-engine",
+  "proposed_by": "333-AGI",
+  "date": "2026-08-06",
+  "authority_class": "PROPOSAL",
+  "f13_required": true,
+  "f13_status": "PENDING_ACK",
+  "supersedes": "propa-revamp-2026-08-06-subsidy-paradox",
+  "change_summary": "v1 had 3 static PNGs. v2 removes all static charts. Single live engine with sliders on both pages. No SOT re-seal. Same constants as existing /propa/ fan engine.",
+  "model_calibration": "v2: PAT(B) = max(0, 45.4 + (B-85) × 1.00); DIVIDEND(P) = max(20, P × 0.60); SUBSIDY(B,R) = max(0, MKT(B) - cap(R)) × 38e9/1e9. All constants sourced from /propa/ live engine and MoF Budget 2026.",
+  "critical_finding": "BUDI95 is structurally in deficit at every Brent $40-$125. Crossover at $41. Under FULL subsidy, crossover below $40. Only FLOAT gives nation a positive net at high oil.",
+  "actions": [
+    {
+      "action": "inject_html",
+      "target": "sites/arif-fazil.com/public/propa/index.html",
+      "target_class": "DERIVED",
+      "change": "add <section id='paradox-sec'> with 2 sliders + 5 readouts + 1 canvas + state badge, AFTER <section id='fan-sec'> and BEFORE <div id='basics'>",
+      "code_source": "live_preview.html (search for id=\"paradox-sec\")",
+      "hand_edit": false,
+      "size_estimate_kb": 6
+    },
+    {
+      "action": "inject_html",
+      "target": "sites/arif-fazil.com/public/malaysia/index.html",
+      "target_class": "DERIVED",
+      "change": "add <section id='paradox-flow'> with 3 sliders + 4 readouts + 1 canvas + state badge, AFTER <section id='disclosure'> and BEFORE </main>",
+      "code_source": "live_preview.html (search for id=\"paradox-flow\")",
+      "hand_edit": false,
+      "size_estimate_kb": 5
+    }
+  ],
+  "no_sot_change": true,
+  "no_canon_change": true,
+  "no_caddyfile_change": true,
+  "no_surfaces_json_change": true,
+  "deploy_command": "bash scripts/deploy-site.sh arif-fazil.com --dry-run && --apply",
+  "deploy_prerequisites": [
+    "ARIF F13 ACK (this manifest)",
+    "make verify-pages (all dist/*/index.html must be HTTP 200)"
+  ],
+  "verification": [
+    "curl -sI https://arif-fazil.com/propa/#paradox-sec",
+    "curl -sI https://arif-fazil.com/malaysia/#paradox-flow",
+    "make verify-pages",
+    "browser test: drag Brent slider, confirm readouts update; cross-link to other page"
+  ],
+  "rollback": "bash scripts/deploy-site.sh arif-fazil.com --restore <previous-tag>",
+  "time_estimate_minutes": 40,
+  "blast_radius": "two pages (DERIVED, no SOT/canon touch)",
+  "f2_evidence_paths": [
+    "PETRONAS IR2025 (BASE.pat=45.4)",
+    "AMEND-2026-08-03-001 (DIVIDEND_CAP_PCT=0.60)",
+    "MoF Budget 2026 + parliamentary reply (MOF_FLOOR=20, regime definitions)",
+    "The Star / Bloomberg / Reuters / Bernama coverage 2025-26 (subsidy bill RM 7.5B/month peak)",
+    "Existing /propa/ fan engine constants (SENS coefficients)"
+  ],
+  "do_not_touch": [
+    "canon/**",
+    "public/data/wealth/petronas_vitals.json (no re-seal needed — engine reads existing constants)",
+    "Caddyfile (no routing change)",
+    "surfaces.json (no new path)",
+    "public/_shared/** (design tokens — uses existing economics.css)"
+  ]
+}

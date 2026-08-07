@@ -43,6 +43,11 @@ function buildSitemap(pieces) {
   const urls = [
     { loc: `${SITE_BASE}/`, priority: 1.0, changefreq: "monthly", lastmod: "2026-07-19" },
     { loc: `${SITE_BASE}/earth`, priority: 0.8, changefreq: "monthly" },
+    // Φ GEOX earth subpages — geological dossiers + cross-sections
+    { loc: `${SITE_BASE}/earth/malay-basin/`, priority: 0.75, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/earth/malay-basin-cross-section.html`, priority: 0.7, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/earth/kinabalu-basin/`, priority: 0.75, changefreq: "monthly" },
+    { loc: `${SITE_BASE}/earth/kinabalu-cross-section.html`, priority: 0.7, changefreq: "monthly" },
     { loc: `${SITE_BASE}/economics`, priority: 0.9, changefreq: "daily" },
     { loc: `${SITE_BASE}/klci/`, priority: 0.85, changefreq: "daily" },
     { loc: `${SITE_BASE}/usdmyr/`, priority: 0.85, changefreq: "daily" },
@@ -155,6 +160,10 @@ ${linkLines}
 ## Key Pages
 - \`/\` — Human-first professional homepage
 - \`/earth\` — Subsurface discoveries and well portfolio (redirect from \`/discoveries\`)
+- \`/earth/malay-basin/\` — Malay Basin dossier — 6-section geological report
+- \`/earth/kinabalu-basin/\` — Kinabalu Basin dossier — NW Sabah fold-thrust belt
+- \`/earth/malay-basin-cross-section.html\` — Malay Basin regional cross-section (SVG, geological-grade)
+- \`/earth/kinabalu-cross-section.html\` — Kinabalu Basin cross-section (SRTM-draped)
 - \`/economics\` — Malaysia briefing + MakcikGPT civic intelligence (redirect from \`/wealth\`)
 - \`/world\` — Civic journalism (MakcikGPT) + commodity dashboards (oil / gas / gold)
 - \`/world/makcikgpt/\` — MakcikGPT canonical landing (civic intelligence in Bahasa Makcik)

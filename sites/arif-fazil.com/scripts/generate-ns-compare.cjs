@@ -2,7 +2,7 @@
 /**
  * generate-ns-compare.cjs — PRN16 NS seat-to-seat compare page generator.
  * Reads public/data/politics/ns_results.json (SOT) → regenerates
- * public/politics/ns-election/compare/index.html (data-driven, timestamped).
+ * public/world/politics/ns-election/compare/index.html (data-driven, timestamped).
  * Runs in prebuild chain: npm run build → auto-refresh after every result update.
  *
  * Usage: node scripts/generate-ns-compare.cjs
@@ -12,7 +12,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'public/data/politics/ns_results.json');
-const OUT_DIR = path.join(ROOT, 'public/politics/ns-election/compare');
+const OUT_DIR = path.join(ROOT, 'public/world/politics/ns-election/compare');
 const OUT = path.join(OUT_DIR, 'index.html');
 
 if (!fs.existsSync(SRC)) {

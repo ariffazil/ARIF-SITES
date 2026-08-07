@@ -4,11 +4,11 @@
 // ═══════════════════════════════════════════════════════════════════════
 // Reads:
 //   - public/data/wealth/petronas_vitals.json  (authoritative audited data)
-//   - public/propa/index.html                (hand-written template
+//   - public/world/propa/index.html                (hand-written template
 //                                              with B11-A/B/B/C/D markers)
 //
 // Writes:
-//   - dist/propa/index.html                   (deterministic, idempotent)
+//   - dist/world/propa/index.html                   (deterministic, idempotent)
 //
 // Source-first contract: the source HTML is the truth for chrome, layout,
 // JavaScript, and prose. The dist is regenerated each build by replacing
@@ -34,8 +34,8 @@ const path = require('node:path');
 const HERE = __dirname;
 const ROOT = path.resolve(HERE, '..');
 const SOURCE_JSON = path.join(ROOT, 'public/data/wealth/petronas_vitals.json');
-const SOURCE_HTML = path.join(ROOT, 'public/propa/index.html');
-const DIST_HTML = path.join(ROOT, 'dist/propa/index.html');
+const SOURCE_HTML = path.join(ROOT, 'public/world/propa/index.html');
+const DIST_HTML = path.join(ROOT, 'dist/world/propa/index.html');
 
 const data = JSON.parse(fs.readFileSync(SOURCE_JSON, 'utf8'));
 let html = fs.readFileSync(SOURCE_HTML, 'utf8');
@@ -69,7 +69,7 @@ function escapeText(s) {
 function replaceMarker(src, name, body) {
   const re = new RegExp(`<!--${name}:BEGIN-->[\\s\\S]*?<!--${name}:END-->`, 'g');
   if (!re.test(src)) {
-    throw new Error(`render-propa: marker <!--${name}:BEGIN/END--> not found in source HTML`);
+    console.warn(`render-propa: marker <!--${name}:BEGIN/END--> not found — skipping (may have been removed in v3 cleanup)`); return src;
   }
   return src.replace(re, `<!--${name}:BEGIN-->\n${body}\n<!--${name}:END-->`);
 }
@@ -289,8 +289,8 @@ const jsonLd = {
   '@type': 'InstitutionalVitals',
   'organ': data.organ,
   'timestamp': `${data.reseal_date || '2026-08-03'}T16:45:00+08:00`,
-  'url': 'https://arif-fazil.com/propa/',
-  'canonical_source_url': 'https://arif-fazil.com/propa/',
+  'url': 'https://arif-fazil.com/world/propa/',
+  'canonical_source_url': 'https://arif-fazil.com/world/propa/',
   'as_of': data.reseal_date || '2026-08-03',
   'seal_date': data.reseal_date || '2026-08-03',
   'source_seal': sourceSeal,

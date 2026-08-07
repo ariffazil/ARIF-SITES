@@ -106,6 +106,9 @@ function App() {
             <Route path="/writing/" element={<Writing />} />
             <Route path="/writing/:slug" element={<EssayPage />} />
 
+            {/* Words alias — canon v7 nav: /words/writing/<slug> → EssayPage */}
+            <Route path="/words/writing/:slug" element={<EssayPage />} />
+
             {/* Doctrine & Federation — constitutional register */}
             <Route path="/doctrine" element={<Doctrine />} />
             <Route path="/doctrine/" element={<Doctrine />} />

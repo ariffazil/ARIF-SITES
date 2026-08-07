@@ -90,10 +90,24 @@ ${body}
 `;
 }
 
+// HERO_LOCKED_ROUTES: hub pages that carry hand-authored hero blocks.
+// The hero (kicker/h1/prose/quote + CSS visual) was authored directly in
+// public/<route>/index.html and must survive `npm run build`. writeRoute
+// preserves the existing file when it already contains a hero-title marker.
+// Forged 2026-08-07 under F13 directive — Arif audits the live heroes.
+const HERO_LOCKED_ROUTES = new Set(['words', 'world', 'work']);
+
 function writeRoute(route, html) {
   const dir = path.join(PUBLIC, route);
   fs.mkdirSync(dir, { recursive: true });
   const out = path.join(dir, 'index.html');
+  if (HERO_LOCKED_ROUTES.has(route) && fs.existsSync(out)) {
+    const existing = fs.readFileSync(out, 'utf8');
+    if (existing.includes('hero-title')) {
+      console.log('preserved', out, '(hero-locked,', existing.length, 'bytes)');
+      return;
+    }
+  }
   fs.writeFileSync(out, html);
   console.log('wrote', out, html.length, 'bytes');
 }

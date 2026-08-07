@@ -10,12 +10,6 @@ const content: EssayContent = {
   isDirectPublication: true,
   html: `<article>
 
-<p class="font-mono text-sm text-forge-dim">
-  MUHAMMAD ARIF BIN FAZIL · 3 JULY 2026 · DIRECT PUBLICATION · ESSAY #21 · TRILOGY CAPSTONE
-</p>
-
-<h1>Three Timelines, One Boundary</h1>
-
 <p class="lead">
   Why MCP isn&rsquo;t a protocol &mdash; it&rsquo;s the line in the rock where one world ends and another begins.
 </p>
@@ -329,7 +323,52 @@ const content: EssayContent = {
   #21 Three Timelines, One Boundary<br />
   <code>pip install arifos</code> &middot; <a href="https://github.com/ariffazil/arifos">github.com/ariffazil/arifos</a>
 </p>
+<!--AUTHOR-FORGED-FOOTER-->
+<hr class="my-12 border-forge-iron" />
 
+<section class="my-12 pt-8 border-t-2 border-forge-gold bg-forge-steel/40 -mx-6 px-6">
+  <div class="mb-10">
+    <div class="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">Forged by</div>
+    <div class="font-display text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-forge-white leading-none">ARIF FAZIL</div>
+    <div class="font-mono text-sm text-forge-gold mt-1">Muhammad Arif bin Fazil</div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Identity</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        <strong class="text-forge-white">Muhammad Arif bin Fazil</strong><br />
+        Geoscientist · Architect, arifOS<br />
+        Petronas Carigali<br />
+        UW–Madison '13<br />
+        Penang, Malaysia
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Publication</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Published: 2026-07-03<br />
+        Direct Publication<br />
+        <a href="/words/" class="text-forge-gold hover:underline">/words/</a> context<br />
+        Sealed 999 · Ditempa Bukan Diberi
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Epistemic Stance</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Epistemic Tag: INT — interpretive synthesis across AI governance, constitutional AI, and AGI risk
+      </p>
+    </div>
+  </div>
+  <div class="mt-12 pt-6 border-t border-forge-iron/40 text-center">
+    <div class="font-display text-lg font-black italic uppercase tracking-tighter text-forge-gold">
+      Ditempa Bukan Diberi
+    </div>
+    <div class="font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1">
+      Forged, not given · ARIF FAZIL · arif-fazil.com · 2026
+    </div>
+  </div>
+</section>
 </article>`,
 };
 

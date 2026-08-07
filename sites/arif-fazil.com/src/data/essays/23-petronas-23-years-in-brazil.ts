@@ -25,17 +25,7 @@ const content: EssayContent = {
   excerpt: `23 years, US$6.7 billion gross, US$2.5 billion recovered, US$4.2 billion net sunk, US$4.0 billion still on the books — Petronas's Brazil account is roughly break-even. The widely-reported Mola-1 dry hole is rounding error; the real story is TV/EM-III's quiet US$2 billion cashflow, the Sépia stake still earning NPV, and a transfer-pricing tail risk of US$85–280 million that's now the live question.`,
   mediumUrl: 'https://arif-fazil.com/writing/petronas-23-years-in-brazil/',
   isDirectPublication: true,
-  html: `<article class="scientific-paper">
-
-<!-- Title Block -->
-<div class="paper-header mb-12">
-  <h1 class="paper-title">23 Years in Brazil: What Petronas Bought, Spent, and Walked Away With</h1>
-  <div class="paper-authors mt-6">
-    <p><strong>Muhammad Arif bin Fazil</strong></p>
-    <p class="text-forge-dim">Geoscientist · Architect, arifOS · Petronas Carigali · UW–Madison '13</p>
-    <p class="text-forge-dim">Penang, Malaysia</p>
-  </div>
-  <div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
+  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
     <p>Published: 6 August 2026 · Direct Publication · <a href="/propa/">/propa/</a> context</p>
     <p>Epistemic Tag: INT — interpretive analysis on top of [EVIDENCE] IFR FY2025 + [OBS] 2026 disclosures</p>
     <p>Companion artifacts: <a href="/propa/">/propa/</a> · /root/forge_work/petronas-brasil-sunk-cost/report-v2.html</p>
@@ -241,7 +231,52 @@ const content: EssayContent = {
     <em>DITEMPA BUKAN DIBERI</em> — Forged, not given. The Brazilian account was forged over 23 years of bid rounds, dry holes, producing fields, and a quiet capital-recycling strategy. The arithmetic is the same.
   </p>
 </div>
+<!--AUTHOR-FORGED-FOOTER-->
+<hr class="my-12 border-forge-iron" />
 
+<section class="my-12 pt-8 border-t-2 border-forge-gold bg-forge-steel/40 -mx-6 px-6">
+  <div class="mb-10">
+    <div class="font-mono text-[0.6rem] text-forge-gold uppercase tracking-widest mb-2">Forged by</div>
+    <div class="font-display text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-forge-white leading-none">ARIF FAZIL</div>
+    <div class="font-mono text-sm text-forge-gold mt-1">Muhammad Arif bin Fazil</div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6 mb-10">
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Identity</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        <strong class="text-forge-white">Muhammad Arif bin Fazil</strong><br />
+        Geoscientist · Architect, arifOS<br />
+        Petronas Carigali<br />
+        UW–Madison '13<br />
+        Penang, Malaysia
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Publication</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Published: 2026-08-06<br />
+        Direct Publication<br />
+        <a href="/words/" class="text-forge-gold hover:underline">/words/</a> context<br />
+        Sealed 999 · Ditempa Bukan Diberi
+      </p>
+    </div>
+    <div>
+      <div class="font-mono text-[0.65rem] text-forge-orange uppercase tracking-widest mb-2">Epistemic Stance</div>
+      <p class="font-mono text-sm text-forge-dim leading-relaxed">
+        Epistemic Tag: INT — factual record with derivations of NPV and transfer-pricing tail
+      </p>
+    </div>
+  </div>
+  <div class="mt-12 pt-6 border-t border-forge-iron/40 text-center">
+    <div class="font-display text-lg font-black italic uppercase tracking-tighter text-forge-gold">
+      Ditempa Bukan Diberi
+    </div>
+    <div class="font-mono text-[0.65rem] text-forge-dim uppercase tracking-widest mt-1">
+      Forged, not given · ARIF FAZIL · arif-fazil.com · 2026
+    </div>
+  </div>
+</section>
 </article>`,
 };
 

@@ -1,0 +1,39 @@
+# arif-fazil.com/world — Machine Overview
+
+## What This Section Is
+The **World** section of arif-fazil.com is the civic journalism and commodity data hub of the arifOS Federation. It houses two primary surfaces:
+
+1. **MakcikGPT** — civic journalism in Bahasa Malaysia, covering sovereignty, resources, and power dynamics in the Malaysian federation. Written as investigative commentary for Malaysian citizens, not agents.
+2. **Commodity terminals** — live dashboards for Brent crude oil, natural gas, gold, FBM KLCI, and USD/MYR.
+
+## Section Structure
+- `/world/` — this hub (content-first, no JS)
+- `/world/makcikgpt/` — MakcikGPT article index
+- `/world/makcikgpt/<slug>/` — individual MakcikGPT articles (MS language, civic commentary)
+- `/world/sot/` — State of the World (interactive globe: 3 axes · Δ geopolitics · Ω economics · Ψ social)
+
+## Key Topics (MakcikGPT corpus)
+- PETRONAS governance, DNA, vision, ATM (petronas-dna, petronas-visi-misi, petronas-atm-kerajaan, petronas-hive-sale)
+- Sarawak-PETRONAS gas dispute (anak-sarawak-bayar-pda-anak-bangla-telefon)
+- Iran-Strait of Hormuz tensions (iran-hormuz)
+- ExxonMobil Suriname Block 58 exit (suriname-exxon-cabut)
+- Domestic politics: Chennah, DAP, PM Shadow, YTL monopoly
+- Seerah gas investigation (searah series)
+
+## Agent Access
+- Read: allowed (arif-fazil.com/robots.txt)
+- Cite: allowed (attribution required per RSL)
+- Train: allowed (same RSL attribution terms)
+
+## Related
+- `/oil/` — Brent crude live dashboard
+- `/gas/` — Natural gas live dashboard
+- `/gold/` — Gold live dashboard
+- `/propa/` — PETRONAS institutional vitals (tripwires, scenarios)
+- `/malaysia/` — Federal sovereign distance-to-break
+- `/politics/` — Political intelligence (NS election, shadow PMs)
+
+## Machine Files
+- `page.json` — structured section metadata (this file is companion to llms.txt)
+- `/missions.json` — full mission catalog across the federation
+- `sitemap.xml` — all routes indexed

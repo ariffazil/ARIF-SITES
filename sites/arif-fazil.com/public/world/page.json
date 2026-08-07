@@ -1,0 +1,82 @@
+{
+  "section": "world",
+  "title": "World — MakcikGPT · Commodities · Arif Fazil",
+  "description": "Civic journalism in Bahasa Malaysia plus commodity dashboards (oil, gas, gold). The World section of arif-fazil.com is the civic journalism and commodity data hub of the arifOS Federation.",
+  "canonical": "https://arif-fazil.com/world/",
+  "language": ["ms", "en"],
+  "ring": "SOUL",
+  "epistemic_tier": "INT",
+  "sealed": "2026-08-06",
+  "author": {
+    "name": "Muhammad Arif bin Fazil",
+    "sameAs": ["https://arif-fazil.com", "https://github.com/ariffazil"],
+    "jobTitle": "Senior Exploration Geoscientist (PETRONAS Carigali) · Sovereign Architect (arifOS)"
+  },
+  "surfaces": [
+    {
+      "id": "world-hub",
+      "url": "/world/",
+      "type": "content-first",
+      "title": "World",
+      "description": "Civic journalism + commodity data hub.",
+      "engine": "static-html"
+    },
+    {
+      "id": "makcikgpt-hub",
+      "url": "/world/makcikgpt/",
+      "type": "content-first",
+      "title": "MakcikGPT",
+      "description": "Civic intelligence in Bahasa Malaysia.",
+      "engine": "static-html"
+    },
+    {
+      "id": "makcikgpt-corpus",
+      "url": "/world/makcikgpt/<slug>/",
+      "type": "article-corpus",
+      "title": "MakcikGPT Articles",
+      "language": "ms",
+      "count_seen_in_sitemap": 24,
+      "examples": [
+        "petronas-dna",
+        "petronas-visi-misi",
+        "petronas-atm-kerajaan",
+        "petronas-hive-sale",
+        "anak-sarawak-bayar-pda-anak-bangla-telefon",
+        "iran-hormuz",
+        "suriname-exxon-cabut",
+        "chennah-bangang",
+        "dap-8-tahun-bangang",
+        "ytl-monopoli"
+      ]
+    },
+    {
+      "id": "world-sot",
+      "url": "/world/sot/",
+      "type": "interactive",
+      "title": "State of the World",
+      "description": "Interactive globe with sovereign markers and live context.",
+      "engine": "d3+topojson"
+    }
+  ],
+  "commodity_links": [
+    {"id": "oil",    "url": "/oil/",   "label": "Oil (Brent)"},
+    {"id": "gas",    "url": "/gas/",   "label": "Natural gas"},
+    {"id": "gold",   "url": "/gold/",  "label": "Gold"},
+    {"id": "klci",   "url": "/klci/",  "label": "FBM KLCI"},
+    {"id": "usdmyr", "url": "/usdmyr/", "label": "USD/MYR"}
+  ],
+  "cross_links": [
+    {"rel": "propa",   "url": "/propa/",   "label": "PETRONAS institutional vitals (tripwires, scenarios)"},
+    {"rel": "malaysia","url": "/malaysia/", "label": "Federal sovereign distance-to-break"},
+    {"rel": "politics","url": "/politics/", "label": "Political intelligence (NS election, shadow PMs)"}
+  ],
+  "machine_files": {
+    "llms_txt": "/world/llms.txt",
+    "page_json": "/world/page.json",
+    "missions_json": "/missions.json",
+    "sitemap_xml": "/sitemap.xml"
+  },
+  "rsl_attribution": "Allow with attribution per /rsl.xml",
+  "generated_by": "arif-fazil.com build pipeline",
+  "doctrine": "DITEMPA BUKAN DIBERI — Forged, not given."
+}
