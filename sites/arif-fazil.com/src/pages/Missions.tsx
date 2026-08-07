@@ -52,11 +52,11 @@ export function Missions() {
           </motion.p>
           <div className="mt-8 flex flex-wrap gap-3">
             {[
-              { label: 'Missions', to: '/work/missions/', color: '#E4572E' },
-              { label: 'Proof Chamber', to: '/work/proof/', color: '#9AA0A8' },
-              { label: 'Resume', to: '/work/resume/', color: '#D4A853' },
-              { label: 'Well Portfolio', to: '/work/wells/', color: '#D4A853' },
-              { label: 'A-FORGE', href: 'https://forge.arif-fazil.com/', color: '#E4572E', external: true },
+              { label: 'Missions', to: '/work/missions/', href: '', color: '#E4572E', external: false },
+              { label: 'Proof Chamber', to: '/work/proof/', href: '', color: '#9AA0A8', external: false },
+              { label: 'Resume', to: '/work/resume/', href: '', color: '#D4A853', external: false },
+              { label: 'Well Portfolio', to: '/work/wells/', href: '', color: '#D4A853', external: false },
+              { label: 'A-FORGE', to: '', href: 'https://forge.arif-fazil.com/', color: '#E4572E', external: true },
             ].map((b) => (
               b.external ? (
                 <a key={b.label} href={b.href} target="_blank" rel="noreferrer"
@@ -122,7 +122,7 @@ export function Missions() {
                         {s.label} ↗
                       </a>
                     ) : (
-                      <Link key={s.href} to={s.href}
+                      <Link key={s.href} to={s.href ?? '/'}
                         className="font-mono text-[12px] text-[#D4A853] hover:text-[#EDEAE2] transition-colors">
                         {s.label} →
                       </Link>

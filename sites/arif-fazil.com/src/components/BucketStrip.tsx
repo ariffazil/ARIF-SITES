@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import SectionHeader from '@/components/SectionHeader'
 
 const buckets = [
   { label: 'Home',  href: '/',        emoji: '⌂', color: '#E4572E', bg: '#1A1210', ring: 'rgba(228,87,46,0.3)' },

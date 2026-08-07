@@ -4,7 +4,7 @@
  * One door per federation organ. DITEMPA BUKAN DIBERI.
  */
 
-const organs = [
+const organs: Array<{ label: string; desc: string; href: string; color: string; ring: string; internal?: boolean }> = [
   { label: 'arifOS',      desc: 'Constitutional kernel · init→judge→seal',    href: 'https://arifos.arif-fazil.com/mcp',   color: '#9AA0A8', ring: 'rgba(154,160,168,0.2)' },
   { label: 'GEOX',        desc: 'Earth intelligence · 42 MCP tools',           href: 'https://geox.arif-fazil.com/mcp',     color: '#D4A853', ring: 'rgba(212,168,83,0.2)' },
   { label: 'WEALTH',      desc: 'Capital intelligence · NPV/EMV/risk',         href: 'https://wealth.arif-fazil.com/mcp',   color: '#C9A227', ring: 'rgba(201,162,39,0.2)' },
