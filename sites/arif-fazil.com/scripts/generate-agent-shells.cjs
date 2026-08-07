@@ -69,12 +69,10 @@ function shell({ title, description, canonical, body, ring = 'SOUL' }) {
     <nav class="nav" aria-label="Primary">
       <a href="/">Home</a>
       <a href="/earth">Earth</a>
-      <a href="/economics">Economics</a>
       <a href="/world">World</a>
-      <a href="/writing">Writing</a>
-      <a href="/doctrine">Doctrine</a>
-      <a href="/missions">Missions</a>
-      <a href="/999/">999</a>
+      <a href="/words">Words</a>
+      <a href="/work">Work</a>
+      <a href="/llms.txt">llms.txt</a>
       <a href="/propa/">VITALS</a>
       <a href="/llms.txt">llms.txt</a>
     </nav>
