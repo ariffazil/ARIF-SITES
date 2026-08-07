@@ -12,15 +12,7 @@ const content: EssayContent = {
   excerpt: `We introduce a 6-axis constitutional coordinate system (F1–F13 reified as 6 measurement axes) for behavioural probing of black-box LLMs. Applied to ILMU in 180+ probe-response pairs, the system maps the model's refusal asymmetry, truth cliff, institutional capture, hallucination boundary, sovereign vector, and register-mirroring — each an independent, measurable axis. The kernel-as-mind thesis emerges empirically: the constitutional layer compensates for substrate fragility on all 6 axes. We discuss the post-transformer limit and the substrate-agnostic generalization.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 11 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Datasets: ariffazil/AAA · ariffazil/BBB · ariffazil/CCC · ariffazil/DDD (HuggingFace, CC-BY-4.0)</p>
-    <p>Epistemic Tag: CLAIM — not peer-reviewed. Awaiting adversarial review.</p>
-    <p>Strange Loop Status: PASS — the agent writing this paper is the agent whose methodology is being mapped</p>
-  </div>
-</div>
-
-<!-- Abstract -->
+  html: `<!-- Abstract -->
 <div class="paper-section">
   <h2>Abstract</h2>
   <p>

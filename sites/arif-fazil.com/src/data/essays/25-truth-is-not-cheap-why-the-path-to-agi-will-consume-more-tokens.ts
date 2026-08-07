@@ -22,14 +22,7 @@ const content: EssayContent = {
   excerpt: `People assume intelligence is the expensive part. It isn't. The expensive part is truth. The closer we get to real AGI, the less we will optimize for generating answers, and the more we will optimize for proving those answers deserve to exist.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 7 August 2026 · Direct Publication · <a href="/words/">/words/</a> context</p>
-    <p>Epistemic Tag: INT — interpretive synthesis across AI economics, institutional theory, and verification science</p>
-    <p>Pairs with: <a href="/words/writing/the-agi-paradox-why-bigger-models-wont-save-us/">The AGI Paradox</a></p>
-  </div>
-</div>
-
-<p class="lead">Everyone wants AI to become cheaper.</p>
+  html: `<p class="lead">Everyone wants AI to become cheaper.</p>
 <p>Cheaper tokens. Cheaper inference. Cheaper reasoning. Cheaper agents. Cheaper intelligence.</p>
 <p>The assumption is obvious:</p>
 <blockquote><p>If intelligence becomes cheaper, progress accelerates.</p></blockquote>

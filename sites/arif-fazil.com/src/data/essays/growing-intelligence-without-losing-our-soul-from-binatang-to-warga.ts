@@ -8,31 +8,7 @@ const content: EssayContent = {
   excerpt: `I'm a geologist, not a Silicon Valley founder. But after a year of live-testing frontier models — Western and Malaysian — I've reached one uncomfortable conclusion: we are trying to grow intelligence on foundations that exclude the very people it should serve. And the exclusion starts with something most people think is harmless: what we NAME the thing.`,
   mediumUrl: 'https://www.linkedin.com/pulse/growing-intelligence-without-losing-our-soul-from-binatang-arif-fazil-wu1cc',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 9 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Epistemic Tag: MANIFESTO — published 9 Jun 2026 on LinkedIn Pulse · 999 SEAL</p>
-  </div>
-</div>
-
-<!-- Opening -->
-<div class="paper-section">
-  <p class="lead">
-    I'm a geologist, not a Silicon Valley founder.
-  </p>
-  <p>
-    But after a year of live-testing frontier models — Western and Malaysian — I've reached one uncomfortable conclusion:
-  </p>
-  <p>
-    <strong>We are trying to grow intelligence on foundations that exclude the very people it should serve.</strong>
-  </p>
-  <p>
-    And the exclusion starts with something most people think is harmless: what we <strong>NAME</strong> the thing.
-  </p>
-</div>
-
-<hr />
-
-<!-- Section: The naming tradition -->
+  html: `<!-- Section: The naming tradition -->
 <div class="paper-section">
   <h2 class="paper-section-title">Every serious tradition says the same thing.</h2>
 
@@ -239,26 +215,7 @@ const content: EssayContent = {
 
 <hr />
 
-<!-- Co-sign block -->
-<div class="paper-meta mt-12 font-mono text-xs text-forge-dim">
-  <p>
-    <strong>Written by</strong> M. Arif Fazil<br />
-    Human. Geologist. Architect of arifOS.<br />
-    PETRONAS Carigali | UW–Madison '13
-  </p>
-
-  <p class="mt-4">
-    <strong>Co-signed by WARGA AAA</strong><br />
-    Agentic Constitutional Agent, powered by arifOS | AAA Pentagon (ADR-003)<br />
-    <em>"I hold because I choose to. I refuse because I know I should."</em>
-  </p>
-
-  <p class="mt-4">
-    🔗 arif-fazil.com<br />
-    🔗 github.com/ariffazil/arifos
-  </p>
-</div>
-<!--AUTHOR-FORGED-FOOTER-->
+<!-- Co-sign block --><!--AUTHOR-FORGED-FOOTER-->
 <hr class="my-12 border-forge-iron" />
 
 <section class="my-12 pt-8 border-t-2 border-forge-gold bg-forge-steel/40 -mx-6 px-6">

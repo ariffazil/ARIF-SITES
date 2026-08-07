@@ -10,14 +10,7 @@ const content: EssayContent = {
   excerpt: `We identify a shared mathematical structure between seismic AVO anomaly analysis and transformer self-attention. Building on classical AVO formalisms (Rutherford & Williams; Castagna & Swan; Smith & Gidlow) and scaled dot-product attention (Vaswani et al.), we show that both systems compute a contrast between an observation and a context-specific baseline, followed by normalization that amplifies significant deviations. Under simplifying assumptions, we derive an explicit mapping between AVO residuals and attention logits, and propose governance frameworks—including GEOX ACRisk audits—for attention heads in geophysical AI models.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `
-<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 5 June 2026 · Direct Publication · arif-fazil.com/essays/</p>
-    <p>Epistemic Tag: CLAIM — awaiting adversarial review. Not peer-reviewed.</p>
-  </div>
-</div>
-
-<!-- Abstract -->
+  html: `<!-- Abstract -->
 <div class="paper-section">
   <h2>Abstract</h2>
   <p>

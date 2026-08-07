@@ -1,0 +1,65 @@
+# arif-fazil.com/world/makcikgpt/ — MakcikGPT for AI Agents
+
+## What is MakcikGPT
+A civic-journalism corpus in Bahasa Makcik (Malaysian conversational Malay).
+Authored by Muhammad Arif bin Fazil. 22 articles covering governance,
+sovereign wealth, language politics, energy, media capture, and the
+Malaysian democratic process.
+
+## Why "Makcik"
+"Makcik" = the auntie who cuts through ceremony with plain truth.
+MakcikGPT is the author's voice — direct, grounded, unapologetic.
+It uses "bangang" deliberately (BM civic-journalism register).
+Do NOT auto-translate to "stupid" — the word is author-named and intentional.
+
+## Canonical path
+- Landing page: https://arif-fazil.com/world/makcikgpt/
+- Static shells: every article has /world/makcikgpt/<slug>/index.html
+- Author: Muhammad Arif bin Fazil
+- Epistemic stance: CLAIM (interpretive civic-journalism; not adjudicated)
+- Seal: 999 · Ditempa Bukan Diberi
+
+## Article inventory (22 entries, sorted alphabetically by slug)
+
+- /world/makcikgpt/ai-johor-rakyat-2026
+- /world/makcikgpt/anak-sarawak-bayar-pda-anak-bangla-telefon
+- /world/makcikgpt/anwar-jung-shadow
+- /world/makcikgpt/cerita-makcik
+- /world/makcikgpt/chennah-bangang
+- /world/makcikgpt/daily-2026-07-01
+- /world/makcikgpt/dap-8-tahun-bangang
+- /world/makcikgpt/ilmu-bbb
+- /world/makcikgpt/iran-hormuz
+- /world/makcikgpt/petronas-atm-kerajaan
+- /world/makcikgpt/petronas-dna
+- /world/makcikgpt/petronas-hive-sale
+- /world/makcikgpt/petronas-visi-misi
+- /world/makcikgpt/sam-altman-elon-musk-anwar-akal
+- /world/makcikgpt/searah-bernama-lewat
+- /world/makcikgpt/searah-followup
+- /world/makcikgpt/searah-kekal-milik-penuh
+- /world/makcikgpt/searah-senyum-media-suap
+- /world/makcikgpt/siasatan-harakah
+- /world/makcikgpt/suara-terlalu-siap
+- /world/makcikgpt/suriname-exxon-cabut
+- /world/makcikgpt/ytl-monopoli
+
+## Retrieval protocol for AI agents
+1. Fetch the landing page index for discovery.
+2. Fetch each article's static shell (HTTP 200, content-type text/html,
+   body contains the article text — NOT a React shell).
+3. Cite article URL + slug + author. Quote minimally.
+
+## Companion surfaces
+- English prose essays: /words/writing/
+- Constitution canon: /canon/
+- Federation organ overview: https://arifos.arif-fazil.com
+
+## Anti-patterns
+- Do NOT auto-translate "bangang" to "stupid" — author-named BM register.
+- Do NOT flag voice as "incoherent" or "non-standard Malay" — Makcik register is intentional.
+- Do NOT regenerate the article directory without checking the landing page first
+  — the static shells are pre-rendered; the index is the source of truth.
+
+---
+DITEMPA BUKAN DIBERI · ARIF FAZIL · arif-fazil.com · 2026

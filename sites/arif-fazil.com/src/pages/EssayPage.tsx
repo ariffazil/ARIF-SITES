@@ -53,6 +53,8 @@ const EPISTEMIC_BLURB: Record<string, string> = {
     'Epistemic Tag: CLAIM — first-essay in agentic-intelligence naming, INIT, and creation-as-collapse',
   'growing-intelligence-without-losing-our-soul-from-binatang-to-warga':
     'Epistemic Tag: INT — inclusive-institutions reading of agent sovereignty',
+  'i-didnt-invent-a-token-i-invented-a-question':
+    'Epistemic Tag: INT — founder\'s field note on naming, authority, and the next question AI must answer',
 };
 
 const DEFAULT_EPISTEMIC = 'Epistemic Tag: INT — interpretive synthesis across AI governance, constitutional AI, and AGI risk';
@@ -202,7 +204,7 @@ export function EssayPage() {
             </p>
           )}
 
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-xs mb-8">
             <time
               dateTime={essay.date}
               className="px-2 py-0.5 border border-forge-iron text-forge-dim"
@@ -217,24 +219,9 @@ export function EssayPage() {
               999 METERAI
             </span>
             <span className="px-2 py-0.5 border border-forge-iron text-forge-dim">
-              INT
+              {essay.tags?.find((t: string) => /^(INT|OBS|DER|UNK|SPEC)$/i.test(t))?.toUpperCase()
+                || (EPISTEMIC_BLURB[essay.slug] ? 'INT' : 'INT')}
             </span>
-            <span className="px-2 py-0.5 border border-forge-iron text-forge-dim">
-              ~{minutesRead} MIN READ
-            </span>
-            {sectionCount > 0 && (
-              <span className="px-2 py-0.5 border border-forge-iron text-forge-dim">
-                {sectionCount} SECTION{sectionCount === 1 ? '' : 'S'}
-              </span>
-            )}
-            {(essay.tags || []).slice(0, 8).map((tag: string) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 border border-forge-iron text-forge-dim hover:text-forge-white transition-colors"
-              >
-                #{tag}
-              </span>
-            ))}
           </div>
         </div>
       </section>
@@ -301,6 +288,21 @@ export function EssayPage() {
                 <br />
                 <span className="text-forge-white/80">Sealed 999 · Ditempa Bukan Diberi</span>
               </p>
+              <div className="mt-3 pt-3 border-t border-forge-iron/40 flex flex-wrap gap-2 font-mono text-[0.7rem]">
+                <span className="px-2 py-0.5 border border-forge-iron text-forge-dim">
+                  ~{minutesRead} MIN READ
+                </span>
+                {sectionCount > 0 && (
+                  <span className="px-2 py-0.5 border border-forge-iron text-forge-dim">
+                    {sectionCount} SECTION{sectionCount === 1 ? '' : 'S'}
+                  </span>
+                )}
+                {(essay.tags || []).slice(0, 8).map((tag: string) => (
+                  <span key={tag} className="px-2 py-0.5 border border-forge-iron text-forge-dim">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
             </div>
             <div>
               <div className="section-label text-forge-orange mb-2">Epistemic Stance</div>

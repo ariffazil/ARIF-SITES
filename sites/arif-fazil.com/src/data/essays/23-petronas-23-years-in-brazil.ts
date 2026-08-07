@@ -25,35 +25,7 @@ const content: EssayContent = {
   excerpt: `23 years, US$6.7 billion gross, US$2.5 billion recovered, US$4.2 billion net sunk, US$4.0 billion still on the books — Petronas's Brazil account is roughly break-even. The widely-reported Mola-1 dry hole is rounding error; the real story is TV/EM-III's quiet US$2 billion cashflow, the Sépia stake still earning NPV, and a transfer-pricing tail risk of US$85–280 million that's now the live question.`,
   mediumUrl: 'https://arif-fazil.com/writing/petronas-23-years-in-brazil/',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 6 August 2026 · Direct Publication · <a href="/propa/">/propa/</a> context</p>
-    <p>Epistemic Tag: INT — interpretive analysis on top of [EVIDENCE] IFR FY2025 + [OBS] 2026 disclosures</p>
-    <p>Companion artifacts: <a href="/propa/">/propa/</a> · /root/forge_work/petronas-brasil-sunk-cost/report-v2.html</p>
-  </div>
-</div>
-
-<!-- Opening -->
-<div class="paper-section">
-  <p class="lead">
-    The Mola-1 well was a real dry hole.
-  </p>
-  <p>
-    It was a 3,027-metre probe into the Macabu pre-salt carbonates of the Campos Basin, drilled between December 2023 and April 2024, and it came up water. The C-M-661 block was returned to the Brazilian regulator (ANP) in August 2026. Reuters, BNamericas, and the trade press wrote it up as the latest chapter in Petronas's troubled Brazil adventure.
-  </p>
-  <p>
-    They were wrong about the chapter.
-  </p>
-  <p>
-    <strong>US$170 million</strong> against <strong>US$6.7 billion</strong> of Brazilian spending is a rounding error. The dry hole is the smallest change in the cost ledger since 2003 — and the cost ledger is the only thing that matters in a long-tail E&amp;P retreat.
-  </p>
-  <p>
-    This essay is the full cost of Petronas's Brazil adventure from 2003 to today, and what it actually owns now that the headlines have moved on. The most-quoted fact (the dry hole) is the least important. The un-quoted fact (Tartaruga Verde + Espadarte M-III cashflow) is the only one that paid for the ride.
-  </p>
-</div>
-
-<hr />
-
-<!-- Section 1 -->
+  html: `<!-- Section 1 -->
 <div class="paper-section">
   <h2 class="paper-section-title">Section 1 — The three acts (2003 → 2026)</h2>
 

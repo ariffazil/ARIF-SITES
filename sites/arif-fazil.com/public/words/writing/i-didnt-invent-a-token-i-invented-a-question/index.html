@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en" data-ring="SOUL">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Not a Programmer. I Accidentally Invented a New Question for AI. — Arif Fazil | arifOS</title>
+  <meta name="theme-color" content="#0A0B0D" />
+  <link rel="canonical" href="https://arif-fazil.com/words/writing/i-didnt-invent-a-token-i-invented-a-question/" />
+  <meta name="description" content="Or: how a token rename turned into a theory of authority, truth, and the future evolution of agents." />
+  <meta property="og:title" content="I'm Not a Programmer. I Accidentally Invented a New Question for AI." />
+  <meta property="og:description" content="Or: how a token rename turned into a theory of authority, truth, and the future evolution of agents." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://arif-fazil.com/words/writing/i-didnt-invent-a-token-i-invented-a-question/" />
+  <meta property="article:author" content="Muhammad Arif bin Fazil" />
+  <meta property="article:published_time" content="2026-08-07" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,700&family=JetBrains+Mono:wght@400;500;700&display=swap" />
+  <style>
+    :root {
+      --forge-black: #0A0B0D;
+      --forge-steel: #14171C;
+      --forge-iron: #2A2F38;
+      --forge-gold: #C9A227;
+      --forge-white: #F4ECD8;
+      --forge-dim: #9A9080;
+      --forge-orange: #E4572E;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      --font-body: 'Fraunces', Georgia, serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--forge-black);
+      color: var(--forge-white);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      font-size: 18px;
+    }
+    /* HEADER — minimal chrome */
+    header.nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10, 11, 13, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--forge-iron);
+    }
+    header.nav .inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; align-items: center; gap: 24px;
+    }
+    header.nav .brand {
+      font-family: var(--font-display);
+      font-weight: 900; font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--forge-white);
+      text-decoration: none; font-size: 18px;
+    }
+    header.nav nav { margin-left: auto; display: flex; gap: 18px; }
+    header.nav nav a {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--forge-dim); text-decoration: none;
+      padding: 6px 10px; border: 1px solid transparent;
+    }
+    header.nav nav a.here {
+      color: var(--forge-gold);
+      border-color: var(--forge-gold);
+    }
+    header.nav nav a:hover { color: var(--forge-white); }
+    /* HERO — title only, no chrome */
+    main { padding: 56px 24px 80px; }
+    .frame { max-width: 720px; margin: 0 auto; }
+    .breadcrumb {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--forge-dim); margin-bottom: 28px;
+    }
+    .breadcrumb a { color: var(--forge-dim); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--forge-gold); }
+    .section-label {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--forge-gold); margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 900; font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      line-height: 0.95;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--forge-white);
+      margin: 0 0 20px;
+    }
+    .lede {
+      font-size: 19px; color: var(--forge-dim);
+      border-left: 2px solid var(--forge-gold);
+      padding-left: 16px; margin: 0 0 36px;
+      font-style: italic;
+    }
+    hr.fade {
+      border: none; border-top: 1px solid var(--forge-iron);
+      margin: 36px 0;
+    }
+    /* BODY */
+    article h2 {
+      font-family: var(--font-display);
+      font-weight: 900; font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      font-size: 1.6rem;
+      color: var(--forge-white);
+      border-bottom: 1px solid var(--forge-iron);
+      padding-bottom: 10px;
+      margin: 56px 0 18px;
+    }
+    article h3 {
+      font-family: var(--font-mono);
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; font-size: 13px;
+      color: var(--forge-orange);
+      margin: 36px 0 12px;
+    }
+    article p { margin: 0 0 18px; color: var(--forge-white); opacity: 0.92; }
+    article blockquote {
+      border-left: 4px solid var(--forge-gold);
+      background: var(--forge-steel);
+      padding: 18px 22px;
+      margin: 28px 0;
+      color: var(--forge-dim);
+      font-style: italic;
+    }
+    article ul, article ol { padding-left: 24px; margin: 18px 0; }
+    article li { margin: 8px 0; color: var(--forge-white); opacity: 0.92; }
+    article code {
+      font-family: var(--font-mono);
+      background: var(--forge-steel);
+      padding: 1px 6px;
+      font-size: 0.9em;
+      color: var(--forge-orange);
+    }
+    article pre {
+      background: var(--forge-steel);
+      border: 1px solid var(--forge-iron);
+      padding: 18px 22px;
+      margin: 24px 0;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      line-height: 1.5;
+      color: var(--forge-dim);
+    }
+    article hr { border: none; border-top: 1px solid var(--forge-iron); margin: 48px 0; }
+    /* FOOTER */
+    footer.forged {
+      border-top: 2px solid var(--forge-gold);
+      background: rgba(20, 23, 28, 0.4);
+      padding: 56px 24px 80px;
+    }
+    footer.forged .frame { max-width: 720px; }
+    .forge-brand-block { padding-bottom: 28px; border-bottom: 1px solid var(--forge-iron); margin-bottom: 32px; }
+    .forge-brand-label {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--forge-gold); text-transform: uppercase;
+      letter-spacing: 0.2em; margin-bottom: 6px;
+    }
+    .forge-brand-name {
+      font-family: var(--font-display);
+      font-weight: 900; font-style: italic;
+      text-transform: uppercase; letter-spacing: -0.02em;
+      font-size: 2.2rem; color: var(--forge-white);
+      line-height: 1;
+    }
+    .forge-brand-full {
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--forge-gold); margin-top: 6px;
+    }
+    .forge-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-bottom: 36px;
+    }
+    @media (max-width: 720px) { .forge-grid { grid-template-columns: 1fr; } }
+    .forge-col h3 {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--forge-orange); text-transform: uppercase;
+      letter-spacing: 0.2em; margin: 0 0 8px;
+      font-weight: 700;
+    }
+    .forge-col p {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--forge-dim); margin: 0; line-height: 1.7;
+    }
+    .forge-col strong { color: var(--forge-white); font-weight: 700; }
+    .forge-col a { color: var(--forge-gold); }
+    .footer-chrome-pills {
+      margin-top: 14px; padding-top: 14px;
+      border-top: 1px solid rgba(42, 47, 56, 0.4);
+      display: flex; flex-wrap: wrap; gap: 6px;
+      font-family: var(--font-mono); font-size: 11px;
+    }
+    .pill {
+      padding: 2px 8px; border: 1px solid var(--forge-iron);
+      color: var(--forge-dim); background: transparent;
+    }
+    .pill.tag::before { content: "#"; opacity: 0.5; }
+    .footer-action-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .footer-action-row a {
+      font-family: var(--font-mono); font-size: 12px;
+      text-decoration: none;
+    }
+    .action-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px; border: 1px solid var(--forge-gold);
+      background: rgba(201, 162, 39, 0.05);
+      color: var(--forge-white);
+    }
+    .all-essays-link { color: var(--forge-dim); }
+    .all-essays-link:hover { color: var(--forge-gold); }
+    .manifesto {
+      margin-top: 40px; padding-top: 24px;
+      border-top: 1px solid rgba(42, 47, 56, 0.4);
+      text-align: center;
+    }
+    .manifesto-line {
+      font-family: var(--font-display);
+      font-weight: 900; font-style: italic;
+      text-transform: uppercase; letter-spacing: -0.02em;
+      font-size: 1.2rem; color: var(--forge-gold);
+    }
+    .manifesto-sub {
+      font-family: var(--font-mono); font-size: 10px;
+      color: var(--forge-dim); text-transform: uppercase;
+      letter-spacing: 0.2em; margin-top: 4px;
+    }
+    /* SITE FOOTER (same as site chrome) */
+    .site-footer {
+      border-top: 1px solid var(--forge-iron);
+      padding: 32px 24px; text-align: center;
+      font-family: var(--font-mono); font-size: 11px;
+      color: var(--forge-dim);
+    }
+    .site-footer a { color: var(--forge-dim); margin: 0 8px; }
+    .site-footer a:hover { color: var(--forge-gold); }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="inner">
+    <a href="/" class="brand">ARIF FAZIL</a>
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/earth/">EARTH</a>
+      <a href="/words/" class="here">WORDS</a>
+      <a href="/world/">WORLD</a>
+      <a href="/work/">WORK</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="frame">
+    <div class="breadcrumb">
+      <a href="/">arif-fazil.com</a> /
+      <a href="/words/">/words/</a> /
+      <a href="/words/writing/"><strong>Writing</strong></a>
+    </div>
+
+    <div class="section-label">Narrative · Ψ SOUL · Words · Constitutional Surface</div>
+
+    <h1>I'm Not a Programmer. I Accidentally Invented a New Question for AI.</h1>
+
+    <p class="lede">Or: how a token rename turned into a theory of authority, truth, and the future evolution of agents.</p>
+
+    <hr class="fade" />
+
+    <article>
+
+<h2>I have a confession.</h2>
+
+<p>I still can't honestly call myself a software engineer.</p>
+
+<p>I'm a geologist.</p>
+
+<p>I spent my career thinking about reservoirs, uncertainty, risk, scar tissue, and decisions that cost millions if you're wrong.</p>
+
+<p>Most of the Python in arifOS was written by AI agents.</p>
+
+<p>That's the paradox.</p>
+
+<p>I built an AI governance system without really being a coder.</p>
+
+<p>And recently, a small technical debate accidentally uncovered something much bigger than code.</p>
+
+<p>It started with a token.</p>
+
+<p>A stupid token.</p>
+
+<hr />
+
+<h2>The Question That Started Everything</h2>
+
+<p>Inside arifOS, agents were carrying something called an SCT.</p>
+
+<p>Nobody really questioned it.</p>
+
+<p>It worked.</p>
+
+<p>The system worked.</p>
+
+<p>The agents used it.</p>
+
+<p>The logs referenced it.</p>
+
+<p>The kernel validated it.</p>
+
+<p>Life continued.</p>
+
+<p>Then I asked a simple question:</p>
+
+<blockquote>What the hell is SCT, actually?</blockquote>
+
+<p>Nobody could answer cleanly.</p>
+
+<p>And that's when I realized something dangerous.</p>
+
+<p>If the architect doesn't understand the name, the architecture does not understand itself.</p>
+
+<hr />
+
+<h2>Naming Is The First Act Of Creation</h2>
+
+<p>People think naming is cosmetic.</p>
+
+<p>It isn't.</p>
+
+<p>Naming is the first entropy reduction event.</p>
+
+<p>Before naming:</p>
+
+<p>Possibility</p>
+
+<p>After naming:</p>
+
+<p>Boundary</p>
+
+<p>When I looked at SCT, different parts of the system were treating it as:</p>
+
+<ul>
+  <li>a security token</li>
+  <li>a session token</li>
+  <li>an auth token</li>
+  <li>a continuity token</li>
+  <li>a capability token</li>
+  <li>a governance token</li>
+</ul>
+
+<p>All simultaneously.</p>
+
+<p>The code still worked.</p>
+
+<p>But the meaning was fractured.</p>
+
+<p>And fractured meaning is architectural entropy.</p>
+
+<hr />
+
+<h2>The Discovery</h2>
+
+<p>Eventually the answer emerged.</p>
+
+<p>The token wasn't really a security token.</p>
+
+<p>It wasn't even primarily an authentication artifact.</p>
+
+<p>It was a:</p>
+
+<blockquote>Governed Capability Lease</blockquote>
+
+<p>That's when SCT became ACT.</p>
+
+<p>ACT = Arif's Capability Token</p>
+
+<p>Not because I wanted branding.</p>
+
+<p>Because the name finally described reality.</p>
+
+<hr />
+
+<h2>The Hidden Bug</h2>
+
+<p>The fascinating thing is that the rename exposed a bug we'd been staring at for weeks.</p>
+
+<p>The system kept throwing:</p>
+
+<p><code>ERR_SCT_SIGNATURE_INVALID</code></p>
+
+<p>Everyone assumed:</p>
+
+<p>Cryptography problem</p>
+
+<p>But once the architecture was viewed through ACT instead of SCT, the truth became obvious.</p>
+
+<p>The signature wasn't invalid.</p>
+
+<p>The authority path was.</p>
+
+<p>The token belonged to:</p>
+
+<p>333-AGI</p>
+
+<p>But the executor expected:</p>
+
+<p>A-FORGE</p>
+
+<p>The problem was:</p>
+
+<p>Authority Binding</p>
+
+<p>not</p>
+
+<p>Cryptography</p>
+
+<p>One rename revealed the true category of the problem.</p>
+
+<p>That's when I realized names are not labels.</p>
+
+<p>Names are diagnostic instruments.</p>
+
+<hr />
+
+<h2>The Real Shape Of The System</h2>
+
+<p>For months I'd described arifOS as:</p>
+
+<p>/000 → work → /999</p>
+
+<p>But I didn't fully understand what lived between them.</p>
+
+<p>Now I do.</p>
+
+<h3>/000</h3>
+
+<p>Genesis.</p>
+
+<p>Intent.</p>
+
+<p>Maximum entropy.</p>
+
+<p>A thousand possible futures.</p>
+
+<h3>ACT</h3>
+
+<p>The capability lease.</p>
+
+<p>The constitutional covenant.</p>
+
+<p>Authority compressed into a portable artifact.</p>
+
+<h3>/999</h3>
+
+<p>Witness.</p>
+
+<p>Verification.</p>
+
+<p>The fossil record of what actually happened.</p>
+
+<p>The path is:</p>
+
+<pre><code>/000
+ ↓
+Authority
+ ↓
+ACT
+ ↓
+Execution
+ ↓
+Receipt
+ ↓
+/999</code></pre>
+
+<p>The token wasn't the destination.</p>
+
+<p>The token was the bridge.</p>
+
+<hr />
+
+<h2>The Population Theory</h2>
+
+<p>Then the conversation went somewhere I wasn't expecting.</p>
+
+<p>People talk about AI improving itself.</p>
+
+<p>I don't think that's the interesting part.</p>
+
+<p>Individual agents are temporary.</p>
+
+<p>They appear.</p>
+
+<p>They work.</p>
+
+<p>They disappear.</p>
+
+<p>What survives isn't the agent.</p>
+
+<p>What survives is the environment.</p>
+
+<p>What survives is the ledger.</p>
+
+<p>What survives is the receipt.</p>
+
+<p>The breakthrough realization was:</p>
+
+<blockquote>Future agents will learn more from successful receipts than from successful prompts.</blockquote>
+
+<p>A prompt dies.</p>
+
+<p>A receipt survives.</p>
+
+<hr />
+
+<h2>ACT Is Not DNA</h2>
+
+<p>My first instinct was to think:</p>
+
+<p>ACT = DNA</p>
+
+<p>That's wrong.</p>
+
+<p>ACT expires.</p>
+
+<p>Receipts persist.</p>
+
+<p>The real evolutionary memory of the system isn't the token.</p>
+
+<p>It's the vault.</p>
+
+<p>It's /999.</p>
+
+<p>ACT is the temporary vehicle.</p>
+
+<p>VAULT999 is the fossil record.</p>
+
+<p>Future agents won't study the token.</p>
+
+<p>They'll study the history of what successfully survived governance.</p>
+
+<hr />
+
+<h2>Then The Red Team Arrived</h2>
+
+<p>This is where the story got interesting.</p>
+
+<p>A red-team agent attempted to destroy ACT.</p>
+
+<p>I expected attacks against cryptography.</p>
+
+<p>Instead it found something deeper.</p>
+
+<p>The report discovered:</p>
+
+<blockquote>ACT checks declarations, not reality.</blockquote>
+
+<p>That sentence changed everything.</p>
+
+<p>Because it's true.</p>
+
+<p>ACT asks:</p>
+
+<p>What was declared?</p>
+
+<p>Not:</p>
+
+<p>What actually exists?</p>
+
+<p>And suddenly the architecture became much clearer.</p>
+
+<hr />
+
+<h2>ACT Is A Permit To Work</h2>
+
+<p>In the oilfield we have Permit-To-Work systems.</p>
+
+<p>A PTW doesn't physically stop reality.</p>
+
+<p>It doesn't measure pressure.</p>
+
+<p>It doesn't inspect the pipes.</p>
+
+<p>It governs how authority is granted.</p>
+
+<p>ACT turned out to be the same thing.</p>
+
+<p>ACT is not a hardware interlock.</p>
+
+<p>ACT is a constitutional procedure.</p>
+
+<p>The red team exposed a critical distinction:</p>
+
+<pre><code>Manifest Truth
+      ↓
+Classification Truth
+      ↓
+ACT Procedure
+      ↓
+Kernel Constitution
+      ↓
+VAULT999 Witness</code></pre>
+
+<p>ACT isn't the vault door.</p>
+
+<p>ACT is the process required to approach the vault door.</p>
+
+<p>That's a completely different role.</p>
+
+<p>And understanding that role reduced more entropy than any code change we made.</p>
+
+<hr />
+
+<h2>The Biggest Discovery Of The Entire Session</h2>
+
+<p>The biggest discovery wasn't ACT.</p>
+
+<p>The biggest discovery was this:</p>
+
+<blockquote>Authority and truth are different problems.</blockquote>
+
+<p>ACT governs authority.</p>
+
+<p>It answers:</p>
+
+<p>Who authorized this?</p>
+
+<p>The next generation must govern truth.</p>
+
+<p>It must answer:</p>
+
+<p>Show me the evidence.</p>
+
+<p>ACT v1 assumes truth exists upstream.</p>
+
+<p>ACT v2 will likely require truth provenance itself.</p>
+
+<p>Not:</p>
+
+<pre><code>{
+  "human_acknowledged": true
+}</code></pre>
+
+<p>But:</p>
+
+<pre><code>{
+  "approval_receipt": "...",
+  "approval_hash": "..."
+}</code></pre>
+
+<p>Not assertions.</p>
+
+<p>Evidence.</p>
+
+<hr />
+
+<h2>The Future Of AI Might Be Backwards</h2>
+
+<p>Most AI research seems obsessed with making models smarter.</p>
+
+<p>What if the bigger breakthrough is making authority harder?</p>
+
+<p>Making execution harder?</p>
+
+<p>Making self-ratification impossible?</p>
+
+<p>Maybe intelligence isn't the bottleneck.</p>
+
+<p>Maybe governance is.</p>
+
+<p>Maybe the future isn't:</p>
+
+<p>More intelligence</p>
+
+<p>Maybe it's:</p>
+
+<p>Better constraints</p>
+
+<hr />
+
+<h2>The Final Paradox</h2>
+
+<p>I started this journey trying to stop AI systems from confidently doing stupid things.</p>
+
+<p>I thought I was building safety rails.</p>
+
+<p>Instead, I accidentally built a theory.</p>
+
+<p>A theory that says:</p>
+
+<ul>
+  <li>Authority should be portable.</li>
+  <li>Authority should not be self-generated.</li>
+  <li>Successful actions should leave fossils.</li>
+  <li>Future agents should learn from receipts, not vibes.</li>
+  <li>Governance matters more than confidence.</li>
+</ul>
+
+<p>And perhaps the strangest part:</p>
+
+<p>I still can't spell "Python" confidently without thinking about it.</p>
+
+<p>Yet somehow a federation of AI agents wrote most of the code.</p>
+
+<p>Which leaves me with a conclusion I didn't expect.</p>
+
+<p>The most important thing I contributed wasn't programming.</p>
+
+<p>It was naming.</p>
+
+<p>Because once we stopped asking:</p>
+
+<blockquote>What is the token?</blockquote>
+
+<p>and started asking:</p>
+
+<blockquote>What authority is the token transporting?</blockquote>
+
+<p>the architecture began revealing itself.</p>
+
+<p>That's why naming is the first act of creation.</p>
+
+<p>It's the moment possibility becomes reality.</p>
+
+<p>The first constraint.</p>
+
+<p>The first governance layer.</p>
+
+<p>The first reduction of entropy.</p>
+
+<p>The first step from /000 toward /999.</p>
+
+<p>Forged, not given.</p>
+
+<hr />
+
+<p style="font-style: italic; color: var(--forge-dim); margin-top: 32px;">— Arif Fazil<br/>Geologist, Penang<br/>Architect of arifOS</p>
+
+    </article>
+  </div>
+</main>
+
+<footer class="forged">
+  <div class="frame">
+    <div class="forge-brand-block">
+      <div class="forge-brand-label">Forged by</div>
+      <div class="forge-brand-name">ARIF FAZIL</div>
+      <div class="forge-brand-full">Muhammad Arif bin Fazil</div>
+    </div>
+
+    <div class="forge-grid">
+      <div class="forge-col">
+        <h3>Identity</h3>
+        <p>
+          <strong>Muhammad Arif bin Fazil</strong><br />
+          <strong>Geoscientist · Architect, arifOS</strong><br />
+          Petronas Carigali<br />
+          UW–Madison '13<br />
+          <strong>Penang, Malaysia</strong>
+        </p>
+      </div>
+      <div class="forge-col">
+        <h3>Publication</h3>
+        <p>
+          Published: August 7, 2026<br />
+          Direct Publication<br />
+          <a href="/words/">/words/</a> context<br />
+          <strong>Sealed 999 · Ditempa Bukan Diberi</strong>
+        </p>
+        <div class="footer-chrome-pills">
+          <span class="pill">~5 MIN READ</span>
+          <span class="pill">13 SECTIONS</span>
+          <span class="pill">INT</span>
+          <span class="pill tag">ai-governance</span>
+          <span class="pill tag">agi</span>
+          <span class="pill tag">arifos</span>
+          <span class="pill tag">capability-token</span>
+          <span class="pill tag">naming</span>
+          <span class="pill tag">evolution-of-agents</span>
+          <span class="pill tag">authority</span>
+          <span class="pill tag">truth-provenance</span>
+        </div>
+      </div>
+      <div class="forge-col">
+        <h3>Epistemic Stance</h3>
+        <p>
+          Epistemic Tag: <strong>INT</strong> — interpretive synthesis across AI governance, constitutional AI, and AGI risk<br />
+          <strong>Pair:</strong> S4 / n=4 · Governance Canon
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-action-row">
+      <span class="action-cta">
+        ⚒️ Published directly on <strong>arif-fazil.com</strong>
+      </span>
+      <a href="/words/writing/" class="all-essays-link">← All Essays · /words/writing/</a>
+    </div>
+
+    <div class="manifesto">
+      <div class="manifesto-line">Ditempa Bukan Diberi</div>
+      <div class="manifesto-sub">Forged, not given · ARIF FAZIL · arif-fazil.com · 2026</div>
+    </div>
+  </div>
+</footer>
+
+<div class="site-footer">
+  <a href="/">Home</a> · <a href="/earth/">Earth</a> · <a href="/words/">Words</a> · <a href="/world/">World</a> · <a href="/work/">Work</a>
+  <div style="margin-top: 12px;">DITEMPA BUKAN DIBERI · Forged, not given · 2026</div>
+</div>
+
+</body>
+</html>

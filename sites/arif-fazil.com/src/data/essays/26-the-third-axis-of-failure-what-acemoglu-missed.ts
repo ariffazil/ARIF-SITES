@@ -25,44 +25,7 @@ const content: EssayContent = {
   excerpt: `Acemoglu explains why nations fail through institutions. But there is a third axis missing: simulation. Good institutions, smart people, and capable AI become dangerous not through corruption, but by gradually optimizing for the appearance of reality instead of maintaining contact with it.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 7 August 2026 · Direct Publication · <a href="/words/">/words/</a> context</p>
-    <p>Epistemic Tag: INT — interpretive synthesis across institutional economics, organizational failure theory, and AI governance</p>
-    <p>Companion pieces: <a href="/writing/the-agi-paradox-why-bigger-models-wont-save-us/">The AGI Paradox</a> · <a href="/writing/truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens/">Truth Is Not Cheap</a></p>
-  </div>
-</div>
-
-<!-- Opening -->
-<div class="paper-section">
-  <p class="lead">
-    The moment reality loses the argument, failure has already begun.
-  </p>
-  <p>
-    Daron Acemoglu, Simon Johnson, and James Robinson won the 2024 Nobel Prize in Economics for helping explain why some nations prosper and others remain poor through the lens of institutions. Their work emphasizes the difference between inclusive institutions and extractive institutions.
-  </p>
-  <p>
-    It is one of the most important ideas of the last fifty years.
-  </p>
-  <p>
-    It is also incomplete.
-  </p>
-  <p>
-    Not wrong. Incomplete.
-  </p>
-  <p>
-    I believe there is a third axis missing. And the missing axis explains something that neither economics nor AI fully understands today:
-  </p>
-  <blockquote>
-    Why good institutions become stupid.<br/>
-    Why intelligent people do evil things.<br/>
-    Why smart AI systems become dangerous.<br/>
-    Why successful civilizations suddenly start lying to themselves.
-  </blockquote>
-</div>
-
-<hr />
-
-<!-- Section 1 -->
+  html: `<!-- Section 1 -->
 <div class="paper-section">
   <h2 class="paper-section-title">Section 1 — Acemoglu's Two Axes</h2>
   <p>

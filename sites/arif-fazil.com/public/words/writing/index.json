@@ -1,10 +1,27 @@
 {
   "schema": "arifos.writing_index.v1",
-  "as_of": "2026-08-07T07:09:37Z",
-  "count": 14,
+  "as_of": "2026-08-07T16:45:07Z",
+  "count": 15,
   "human_index": "/words/writing",
   "feed": "/feed.xml",
   "items": [
+    {
+      "title": "I'm Not a Programmer. I Accidentally Invented a New Question for AI.",
+      "slug": "i-didnt-invent-a-token-i-invented-a-question",
+      "href": "/words/writing/i-didnt-invent-a-token-i-invented-a-question",
+      "date": "2026-08-07",
+      "territory": "writing",
+      "language": "en",
+      "tags": [
+        "AI-Governance",
+        "AGI",
+        "arifos",
+        "CapabilityToken",
+        "Naming"
+      ],
+      "risk_level": "INT",
+      "epoch": "2026-08-07"
+    },
     {
       "title": "The AGI Paradox: Why Bigger Models Won't Save Us, and Why the Smartest Thing in the Room Might Be an Institution",
       "slug": "the-agi-paradox-why-bigger-models-wont-save-us",

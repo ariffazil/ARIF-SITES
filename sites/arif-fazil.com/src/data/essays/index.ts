@@ -18,6 +18,7 @@ import e23 from "./23-petronas-23-years-in-brazil";
 import e24 from "./24-the-agi-paradox-why-bigger-models-wont-save-us";
 import e25 from "./25-truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens";
 import e26 from "./26-the-third-axis-of-failure-what-acemoglu-missed";
+import e27 from "./27-i-didnt-invent-a-token-i-invented-a-question";
 import e15 from "./growing-intelligence-without-losing-our-soul-from-binatang-to-warga";
 import e18 from "./18-the-mind-is-not-the-model-6-axis-constitutional-coordinate-system";
 import e19 from "./19-the-tool-is-the-thought";
@@ -77,7 +78,7 @@ import g47 from "./generated/g_scar_behind_the_vision";
 import g48 from "./generated/g_manifesto_of_forged_intelligence";
 import g49 from "./generated/g_arifos_as_a_prism";
 
-export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, e23, e24, e25, e26, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
+export const essayModules = [e01, e02, e03, e04, e05, e06, e07, e08, e09, e10, e11, e12, e13, e15, e18, e19, e20, e21, e22, e23, e24, e25, e26, e27, g0, g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18, g19, g20, g21, g22, g23, g24, g25, g26, g27, g28, g29, g30, g31, g32, g33, g34, g35, g36, g37, g38, g39, g40, g41, g42, g43, g44, g45, g46, g47, g48, g49];
 
 export const allEssays: EssayMeta[] = [
   {
@@ -626,6 +627,15 @@ export const allEssays: EssayMeta[] = [
     mediumUrl: "https://arif-fazil.com/words/writing/the-third-axis-of-failure-what-acemoglu-missed/",
     isDirectPublication: true,
   },
+  {
+    title: `I'm Not a Programmer. I Accidentally Invented a New Question for AI.`,
+    date: "2026-08-07",
+    slug: "i-didnt-invent-a-token-i-invented-a-question",
+    excerpt: `Or: how a token rename turned into a theory of authority, truth, and the future evolution of agents. A geologist wrote a constitution. The agents wrote most of the Python. The most important thing he contributed wasn't code — it was naming.`,
+    tags: ["ai-governance", "naming", "authority", "truth", "constitutional-ai", "arifos", "founder", "introspection"],
+    mediumUrl: "https://arif-fazil.com/words/writing/i-didnt-invent-a-token-i-invented-a-question/",
+    isDirectPublication: true,
+  },
 ];
 
 export function getEssay(slug: string) {
@@ -655,6 +665,7 @@ const CURATED_SLUGS: Record<string, string> = {
   "the-agi-paradox-why-bigger-models-wont-save-us": "AI Governance",
   "truth-is-not-cheap-why-the-path-to-agi-will-consume-more-tokens": "AI Governance",
   "the-third-axis-of-failure-what-acemoglu-missed": "AI Governance",
+  "i-didnt-invent-a-token-i-invented-a-question": "AI Governance",
 
   // 🧠 Constitutional AI
   "ai-constitution-based-on-physics": "Constitutional AI",

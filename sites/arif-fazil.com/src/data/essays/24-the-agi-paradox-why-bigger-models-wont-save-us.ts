@@ -21,58 +21,7 @@ const content: EssayContent = {
   excerpt: `The smarter an AI becomes, the less important intelligence becomes — and the more the bottleneck shifts to trust, verification, coordination, accountability, and governance. The closer we get to AGI, the less the problem resembles computer science and the more it resembles civilization itself.`,
   mediumUrl: '',
   isDirectPublication: true,
-  html: `<div class="paper-meta mt-4 font-mono text-xs text-forge-dim">
-    <p>Published: 7 August 2026 · Direct Publication · <a href="/words/">/words/</a> context</p>
-    <p>Epistemic Tag: INT — interpretive synthesis across AI governance, institutional economics, and systems theory</p>
-  </div>
-</div>
-
-<!-- Opening -->
-<div class="paper-section">
-  <p class="lead">
-    The smarter an AI becomes, the less important intelligence becomes.
-  </p>
-  <p>
-    For the last few years, the AI industry has been obsessed with a single question:
-  </p>
-  <blockquote>
-    How do we build a smarter model?
-  </blockquote>
-  <p>
-    Every month brings a bigger benchmark, a larger context window, a faster agent, a more impressive demo.
-  </p>
-  <p>
-    GPT.<br/>Claude.<br/>Gemini.<br/>Grok.<br/>Kimi.<br/>Open-source challengers.
-  </p>
-  <p>
-    Each release comes with the same implicit promise: <em>"Look. It's getting smarter."</em>
-  </p>
-  <p>
-    Perhaps.
-  </p>
-  <p>
-    But I increasingly suspect that the entire industry may be asking the wrong question.
-  </p>
-  <p>
-    The real question is not: <em>How do we build a smarter AI?</em>
-  </p>
-  <p>
-    The real question is: <em>How do we build an AI that can be trusted after it becomes smart?</em>
-  </p>
-  <p>
-    That sounds similar.
-  </p>
-  <p>
-    It isn't.
-  </p>
-  <p>
-    The difference is the difference between intelligence and civilization.
-  </p>
-</div>
-
-<hr />
-
-<!-- Section 1 -->
+  html: `<!-- Section 1 -->
 <div class="paper-section">
   <h2 class="paper-section-title">Section 1 — The First Mistake: Confusing Intelligence with Reliability</h2>
   <p>
