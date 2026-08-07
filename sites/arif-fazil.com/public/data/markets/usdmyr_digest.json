@@ -8,19 +8,19 @@
     "exchange": "yfinance"
   },
   "seal": {
-    "observed_at": "2026-08-03T17:47:25.287Z",
+    "observed_at": "2026-08-07T11:00:00Z",
     "url": "https://arif-fazil.com/usdmyr/",
     "data_layer_url": "https://arif-fazil.com/usdmyr/api/snapshot",
     "coherence_id": "b9e461f6bf876dc6c45fc896985ed780be533f3cfdc771a568c92551c6d63a95",
     "engine": "WEALTH institutional intelligence (yfinance + technical analysis)"
   },
   "one_liner": {
-    "ms": "USD/MYR (Ringgit) pada 4.09 · perubahan +0.54%",
-    "en": "USD/MYR (Ringgit FX) at 4.09 · +0.54% change"
+    "ms": "Ringgit pada 4.07/USD (Jun 2026) \u00b7 kukuh dari purata 4.42 awal 2025",
+    "en": "MYR at 4.07/USD (Jun 2026) \u00b7 firmer from 4.42 early-2025 avg"
   },
   "role": {
-    "ms": "Pasangan FX utama · Import inflasi · Rizab BNM",
-    "en": "Primary FX pair · Import inflation · BNM reserves"
+    "ms": "Pasangan FX utama \u00b7 Import inflasi \u00b7 Rizab BNM",
+    "en": "Primary FX pair \u00b7 Import inflation \u00b7 BNM reserves"
   },
   "obs_facts": {
     "price": 4.093,
@@ -45,17 +45,17 @@
     "source": "yfinance via /usdmyr/api/snapshot"
   },
   "interpretation_int": [
-    "RSI 58.2 is in NEUTRAL zone — mid-range",
-    "EMA trend is BULLISH — price above EMA50",
+    "RSI 58.2 is in NEUTRAL zone \u2014 mid-range",
+    "EMA trend is BULLISH \u2014 price above EMA50",
     "Signal: NEUTRAL"
   ],
   "risk_warnings": [
-    "Price at $4.09 — mid-range between S/R levels",
-    "RSI normal — no extreme"
+    "Price at $4.09 \u2014 mid-range between S/R levels",
+    "RSI normal \u2014 no extreme"
   ],
   "watch_conditions": [
-    "Brent < $70/bbl × 2 quarters → liquidity squeeze risk (institutional)",
-    "USD/MYR > 4.50 stress band → sovereign stress alert (institutional)"
+    "Brent < $70/bbl \u00d7 2 quarters \u2192 liquidity squeeze risk (institutional)",
+    "USD/MYR > 4.50 stress band \u2192 sovereign stress alert (institutional)"
   ],
   "external_signals": {
     "page_url": "https://arif-fazil.com/usdmyr/",

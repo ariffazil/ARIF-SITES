@@ -1,119 +1,60 @@
 {
   "meta": {
     "date": "2026-08-07",
-    "generated_at": "2026-08-07T15:00:02.092425+08:00",
-    "observed_at": "2026-08-07T07:00:12.390205+00:00",
-    "source": "arifOS WEALTH \u2014 yfinance + FLAME (free-tier LLM)",
-    "model_note": "Synth via FLAME free-tier mesh. Market data from yfinance."
+    "generated_at": "2026-08-07T19:00:00+08:00",
+    "observed_at": "2026-08-07T11:00:00Z",
+    "source": "arifOS WEALTH — yfinance + IMF WEO + World Bank Open Data",
+    "pulse": "WEEKLY_ORGAN_PULSE",
+    "model_note": "Weekly WEALTH Organ Pulse — w/e Fri 7 Aug 2026. Capital lane: computes evidence, never allocates."
+  },
+  "weekly_pulse": {
+    "crude": {
+      "wti": { "close": 77.66, "wow_pct": -8.3, "one_month_pct": 10.3, "unit": "USD/bbl" },
+      "brent": { "close": 82.89, "wow_pct": -8.0, "one_month_pct": 11.8, "unit": "USD/bbl", "brent_wti_spread": 5.20 },
+      "note": "Both benchmarks well off late-July intramonth highs (WTI 93.50, Brent 102.01) — geopolitical risk premium deflating fast.",
+      "source": "Yahoo Finance — CL=F, BZ=F historical prices, as of 7 Aug 2026"
+    },
+    "energy_equities": {
+      "xle": { "close": 58.16, "wow_pct": -1.4, "one_month_pct": 6.4, "as_of": "2026-08-06" },
+      "note": "US energy equities holding up better than crude tape. NYSE Energy Sector Index +1.6% Thu 6 Aug after −1.8% Wed — choppy.",
+      "source": "Yahoo Finance — XLE historical prices, as of 6 Aug 2026"
+    },
+    "gas": {
+      "henry_hub": { "close": 2.65, "wow_pct": -3.6, "one_month_pct": -18.9, "unit": "USD/MMBtu" },
+      "note": "Weak US gas tape. Malaysian LNG pricing is oil-linked/JKM-driven — read-through to PETRONAS gas revenue is limited.",
+      "source": "Yahoo Finance — NG=F historical prices, as of 7 Aug 2026"
+    }
+  },
+  "malaysia_macro": {
+    "gdp": { "2025": 5.1, "2026F": 4.7, "2027F": 4.3, "unit": "pct", "usd_2025": 472.2 },
+    "cpi": { "2025": 1.4, "2026F": 1.9, "2027F": 2.0, "unit": "pct" },
+    "myr": { "end_jun_2026": 4.07, "feb_2026_strong": 3.88, "early_2025_avg": 4.42, "unit": "MYR/USD" },
+    "sources": ["World Bank Open Data", "IMF WEO", "IMF IFS"]
+  },
+  "exploration_economics": {
+    "price_deck": "Spot Brent 83 after −8% week; 1-month range 72–102 → wider P90/P50/P10 bands for EMV runs.",
+    "fx_translation": "Revenue USD-denominated, MYR opex. Ringgit sub-4.00 compresses USD cost coverage — sensitize 3.90 vs 4.30.",
+    "cost_escalation": "CPI 1.9% 2026F supports low real-terms opex/capex escalation for Malaysian offshore.",
+    "demand_risk": "Speed of unwind from July geopolitical spike is key. Premium rebuild → re-rate cash flows; further fade → breakeven focus."
   },
   "bursa": {
-    "klci_close": 1733.8299560546875,
+    "klci_close": 1733.83,
     "klci_change_pct": -0.19,
-    "most_active": null,
-    "top_gainers_search": [],
-    "source_urls": []
+    "source": "Yahoo Finance"
   },
   "ringgit": {
-    "usd_myr": 4.0879998207092285,
-    "trend": "1 USD = 4.0880 MYR",
-    "sources": []
+    "usd_myr": 4.07,
+    "trend": "1 USD = 4.07 MYR (end-June 2026). Off Feb high of 3.88 but firmer than early-2025 avg of 4.42.",
+    "sources": ["IMF IFS"]
   },
   "economy": {
     "items": [
-      {
-        "title": "Q2 2026 GDP Advance Estimate",
-        "desc": "DOSM released the Q2 2026 advance GDP estimate at 5.8% growth.",
-        "category": "GDP",
-        "source_id": "DOSM"
-      },
-      {
-        "title": "Overnight Policy Rate Stability",
-        "desc": "Bank Negara Malaysia maintains the Overnight Policy Rate at 3.00%.",
-        "category": "SNAPSHOT",
-        "source_id": "BNM"
-      }
+      { "title": "GDP Growth 2025", "desc": "Malaysia GDP grew 5.1% in 2025. GDP US$472.2bn.", "category": "GDP", "source_id": "World Bank" },
+      { "title": "GDP Forecast 2026F", "desc": "IMF WEO projects 4.7% growth in 2026, 4.3% in 2027.", "category": "GDP", "source_id": "IMF WEO" },
+      { "title": "CPI Inflation", "desc": "CPI 1.4% (2025). WEO forecast: 1.9% (2026F), 2.0% (2027F). Benign inflation supports low cost escalation.", "category": "CPI", "source_id": "World Bank / IMF WEO" },
+      { "title": "OPR Stability", "desc": "Bank Negara Malaysia maintains OPR at 3.00%.", "category": "SNAPSHOT", "source_id": "BNM" }
     ]
   },
-  "politics": {
-    "narratives": [
-      {
-        "title": "Public Sentiment and Leadership Approval",
-        "desc": "Merdeka Center public opinion data registers Prime Minister Anwar Ibrahim's approval rating at 52%, with 42% noting the country is moving in the right direction.",
-        "source_id": "MERDEKA"
-      }
-    ],
-    "economy_policy": [
-      {
-        "title": "Fuel Subsidy Rationalisation Implementation",
-        "desc": "BUDI95 operates for RON95 with a 300L/month quota at RM1.99/L for eligible households, alongside floated unsubsidised pricing at RM3.72/L.",
-        "source_id": "KPDN"
-      }
-    ],
-    "regional": []
-  },
-  "social": {
-    "cost_of_living": [
-      {
-        "title": "Diesel and Fuel Price Structures",
-        "desc": "Peninsula Malaysia diesel floats at RM4.37/L following rationalisation, while Sabah and Sarawak maintain subsidised rates at RM2.15/L.",
-        "source_id": "MOF"
-      }
-    ],
-    "labor": [],
-    "youth_career": []
-  },
-  "oil_energy": {
-    "brent_price": 83.5999984741211,
-    "malaysia_oil": [],
-    "energy_transition": []
-  },
-  "global": {
-    "fed": {
-      "items": [
-        {
-          "title": "Upcoming FOMC Deliberations",
-          "desc": "The Federal Reserve's rate path remains dependent on incoming US macroeconomic prints ahead of scheduled meetings.",
-          "source_id": "FOMC"
-        }
-      ]
-    },
-    "china": {
-      "items": []
-    },
-    "asean": {
-      "items": []
-    }
-  },
-  "so_what": [
-    {
-      "domain": "MARKET",
-      "signal": "KLCI edges down 0.19% to 1733.83",
-      "delta": "The benchmark index closed lower at 1733.83, down 0.19% on the session.",
-      "omega": "Minor consolidation following recent periods as regional sentiment adjusts to current valuations.",
-      "xi": "Maintain disciplined entry points on blue-chip equities.",
-      "psi": "Local retail portfolios experience slight consolidation pressure.",
-      "tone": "neutral",
-      "source_id": "BURSA"
-    },
-    {
-      "domain": "FX / RINGGIT",
-      "signal": "Ringgit trades at 4.0880 against USD",
-      "delta": "USD/MYR stands at 4.0880 with steady currency flow.",
-      "omega": "Ringgit retention reflects stable macroeconomic underpinnings and domestic liquidity.",
-      "xi": "Favorable exchange levels support import-heavy operational cost profiles.",
-      "psi": "Malaysians transacting or traveling overseas benefit from firmer purchasing power.",
-      "tone": "positive",
-      "source_id": "BNM"
-    },
-    {
-      "domain": "OIL & GAS",
-      "signal": "Brent crude marks $83.60 per barrel",
-      "delta": "Global benchmark Brent crude settles at $83.60 per barrel.",
-      "omega": "Crude valuations directly influence fiscal revenue projections and petroleum-related corporate earnings.",
-      "xi": "Monitor upstream services and energy sector cash flows.",
-      "psi": "National petroleum revenues remain robust to support developmental spending.",
-      "tone": "neutral",
-      "source_id": "MOF"
-    }
-  ]
+  "as_of": "2026-08-07T19:00:00+08:00",
+  "seal": "WEEKLY_PULSE_v1"
 }
