@@ -2,6 +2,9 @@
 node_modules/
 **/node_modules/
 
+# Quarantine (manual asset relocation, not for deployment)
+_quarantine/
+
 # Build output
 dist/
 **/dist/
