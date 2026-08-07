@@ -37,6 +37,17 @@
     "cost_escalation": "CPI 1.9% 2026F supports low real-terms opex/capex escalation for Malaysian offshore.",
     "demand_risk": "Speed of unwind from July geopolitical spike is key. Premium rebuild → re-rate cash flows; further fade → breakeven focus."
   },
+  "oil_energy": {
+    "brent_price": 82.89,
+    "wti_price": 77.66,
+    "brent_wow_pct": -8.0,
+    "wti_wow_pct": -8.3
+  },
+  "so_what": [
+    {"label": "CRUDE", "text": "Brent gives back 8% after July geopolitical spike. WTI 77.66."},
+    {"label": "RINGGIT", "text": "MYR 4.07/USD — firmer than early-2025 avg of 4.42."},
+    {"label": "CPI", "text": "Inflation benign at 1.4% — supports low cost escalation for O&G work programs."}
+  ],
   "bursa": {
     "klci_close": 1733.83,
     "klci_change_pct": -0.19,
